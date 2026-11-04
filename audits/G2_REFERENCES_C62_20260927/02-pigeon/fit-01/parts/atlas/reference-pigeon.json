@@ -1,0 +1,421 @@
+{
+  "frames": {
+    "beak.png": {
+      "frame": {
+        "h": 81,
+        "w": 114,
+        "x": 1912,
+        "y": 154
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 81,
+        "w": 114
+      },
+      "spriteSourceSize": {
+        "h": 81,
+        "w": 114,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 1204,
+        "w": 1145,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 1204,
+        "w": 1145
+      },
+      "spriteSourceSize": {
+        "h": 1204,
+        "w": 1145,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "chest.png": {
+      "frame": {
+        "h": 354,
+        "w": 294,
+        "x": 1705,
+        "y": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 354,
+        "w": 294
+      },
+      "spriteSourceSize": {
+        "h": 354,
+        "w": 294,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-foot.png": {
+      "frame": {
+        "h": 82,
+        "w": 265,
+        "x": 1616,
+        "y": 836
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 82,
+        "w": 265
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 265,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-shin.png": {
+      "frame": {
+        "h": 64,
+        "w": 99,
+        "x": 1912,
+        "y": 245
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 99
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 99,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-thigh.png": {
+      "frame": {
+        "h": 139,
+        "w": 114,
+        "x": 1912,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 139,
+        "w": 114
+      },
+      "spriteSourceSize": {
+        "h": 139,
+        "w": 114,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-wing-flight.png": {
+      "frame": {
+        "h": 129,
+        "w": 286,
+        "x": 1160,
+        "y": 778
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 129,
+        "w": 286
+      },
+      "spriteSourceSize": {
+        "h": 129,
+        "w": 286,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-wing-root.png": {
+      "frame": {
+        "h": 109,
+        "w": 237,
+        "x": 1160,
+        "y": 917
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 109,
+        "w": 237
+      },
+      "spriteSourceSize": {
+        "h": 109,
+        "w": 237,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 149,
+        "w": 226,
+        "x": 1469,
+        "y": 432
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 149,
+        "w": 226
+      },
+      "spriteSourceSize": {
+        "h": 149,
+        "w": 226,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-foot.png": {
+      "frame": {
+        "h": 95,
+        "w": 254,
+        "x": 1616,
+        "y": 928
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 95,
+        "w": 254
+      },
+      "spriteSourceSize": {
+        "h": 95,
+        "w": 254,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-shin.png": {
+      "frame": {
+        "h": 73,
+        "w": 43,
+        "x": 1912,
+        "y": 319
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 73,
+        "w": 43
+      },
+      "spriteSourceSize": {
+        "h": 73,
+        "w": 43,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-thigh.png": {
+      "frame": {
+        "h": 107,
+        "w": 137,
+        "x": 1469,
+        "y": 747
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 107,
+        "w": 137
+      },
+      "spriteSourceSize": {
+        "h": 107,
+        "w": 137,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-wing-flight.png": {
+      "frame": {
+        "h": 277,
+        "w": 742,
+        "x": 1160,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 277,
+        "w": 742
+      },
+      "spriteSourceSize": {
+        "h": 277,
+        "w": 742,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-wing-root.png": {
+      "frame": {
+        "h": 336,
+        "w": 299,
+        "x": 1160,
+        "y": 432
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 336,
+        "w": 299
+      },
+      "spriteSourceSize": {
+        "h": 336,
+        "w": 299,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck-lower.png": {
+      "frame": {
+        "h": 170,
+        "w": 193,
+        "x": 1709,
+        "y": 292
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 170,
+        "w": 193
+      },
+      "spriteSourceSize": {
+        "h": 170,
+        "w": 193,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck-upper.png": {
+      "frame": {
+        "h": 146,
+        "w": 213,
+        "x": 1469,
+        "y": 591
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 146,
+        "w": 213
+      },
+      "spriteSourceSize": {
+        "h": 146,
+        "w": 213,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "tail.png": {
+      "frame": {
+        "h": 130,
+        "w": 539,
+        "x": 1160,
+        "y": 292
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 130,
+        "w": 539
+      },
+      "spriteSourceSize": {
+        "h": 130,
+        "w": 539,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "reference-pigeon.png",
+    "scale": "1",
+    "size": {
+      "h": 1214,
+      "w": 2031
+    }
+  }
+}

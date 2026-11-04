@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tegu",
+  "masterSha256": "4adc0d8c91148320337bd67d6b6a9515a5dbc16ef063d896a3d887c4780c8026",
+  "required": [
+    "heavy banded body with beaded scales"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "heavy banded body with beaded scales",
+      "status": "PRESENT",
+      "observed": "Full original: heavy blocky jowled head, black-and-pale beaded body with distinct bands, thick tapering tail and four visible feet. Near legs are robust and clearly painted; far upper limbs remain partly body-occluded. The tail appears shorter than the canonical slightly-longer-than-body ratio and needs species review. Broad margins."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gila Monster",
+  "masterSha256": "48095a24652bf04d0bf062053003e07cea9eb410f73d7e100c3d9d80a5de1068",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

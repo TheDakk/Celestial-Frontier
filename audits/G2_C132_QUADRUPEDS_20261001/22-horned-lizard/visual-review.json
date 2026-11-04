@@ -1,0 +1,28 @@
+{
+  "name": "Horned Lizard",
+  "masterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: broad squat spiny body, backward-pointing crown horns, pointed flank fringe and natural short tail. Crown horns and marginal spikes are exaggerated; species realism needs review. Only three independent feet can be confirmed; the far forelimb is unresolved behind the near foreleg. HOLD for unresolved fourth limb and exaggerated ornament. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 409,
+      "y0": 517,
+      "x1": 854,
+      "y1": 747
+    },
+    "margins": {
+      "left": 409,
+      "right": 399,
+      "top": 517,
+      "bottom": 506
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

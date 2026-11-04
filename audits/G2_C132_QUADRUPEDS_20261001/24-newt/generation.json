@@ -1,0 +1,14 @@
+{
+  "id": "24-newt",
+  "name": "Newt",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-44dbd468-0fae-478a-bc39-6f0da304f3e6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+  "bytes": 975770,
+  "promptSha256": "38e91d6feda0764940a13cbf864ad8e66b18d29b13d68ca65e3dfc4c70b64814",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

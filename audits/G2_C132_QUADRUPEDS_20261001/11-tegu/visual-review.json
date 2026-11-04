@@ -1,0 +1,28 @@
+{
+  "name": "Tegu",
+  "masterSha256": "4adc0d8c91148320337bd67d6b6a9515a5dbc16ef063d896a3d887c4780c8026",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: heavy blocky jowled head, black-and-pale beaded body with distinct bands, thick tapering tail and four visible feet. Near legs are robust and clearly painted; far upper limbs remain partly body-occluded. The tail appears shorter than the canonical slightly-longer-than-body ratio and needs species review. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 247,
+      "y0": 525,
+      "x1": 986,
+      "y1": 729
+    },
+    "margins": {
+      "left": 247,
+      "right": 267,
+      "top": 525,
+      "bottom": 524
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

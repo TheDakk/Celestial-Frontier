@@ -1,0 +1,312 @@
+[
+ {
+  "id": "c54-01-dingo",
+  "name": "Dingo",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/01-dingo",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/01-dingo/master.png"
+ },
+ {
+  "id": "c54-02-jackal",
+  "name": "Jackal",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/02-jackal",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/02-jackal/master.png"
+ },
+ {
+  "id": "c54-03-hyena",
+  "name": "Hyena",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/03-hyena",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/03-hyena/master.png"
+ },
+ {
+  "id": "c54-04-lion",
+  "name": "Lion",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/04-lion",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/04-lion/master.png"
+ },
+ {
+  "id": "c54-05-tiger",
+  "name": "Tiger",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/05-tiger",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/05-tiger/master.png"
+ },
+ {
+  "id": "c54-06-leopard",
+  "name": "Leopard",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/06-leopard",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/06-leopard/master.png"
+ },
+ {
+  "id": "c54-07-jaguar",
+  "name": "Jaguar",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar/master.png"
+ },
+ {
+  "id": "c54-08-snow-leopard",
+  "name": "Snow Leopard",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/08-snow-leopard",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/08-snow-leopard/master.png"
+ },
+ {
+  "id": "c54-09-ocelot",
+  "name": "Ocelot",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/09-ocelot",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/09-ocelot/master.png"
+ },
+ {
+  "id": "c54-10-serval",
+  "name": "Serval",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/10-serval",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/10-serval/master.png"
+ },
+ {
+  "id": "c54-11-stoat",
+  "name": "Stoat",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/11-stoat",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/11-stoat/master.png"
+ },
+ {
+  "id": "c54-12-weasel",
+  "name": "Weasel",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/12-weasel",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/12-weasel/master.png"
+ },
+ {
+  "id": "c56-02-caracal",
+  "name": "Caracal",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/02-caracal",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/02-caracal/master.png"
+ },
+ {
+  "id": "c56-03-coyote",
+  "name": "Coyote",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/03-coyote",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/03-coyote/master.png"
+ },
+ {
+  "id": "c56-04-bobcat",
+  "name": "Bobcat",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/04-bobcat",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/04-bobcat/master.png"
+ },
+ {
+  "id": "c56-05-lynx",
+  "name": "Lynx",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/05-lynx",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/05-lynx/master.png"
+ },
+ {
+  "id": "c56-06-mink",
+  "name": "Mink",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/06-mink",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/06-mink/master.png"
+ },
+ {
+  "id": "c56-07-marten",
+  "name": "Marten",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/07-marten",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/07-marten/master.png"
+ },
+ {
+  "id": "c56-08-fisher",
+  "name": "Fisher",
+  "family": "quadruped",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/08-fisher",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/08-fisher/master.png"
+ },
+ {
+  "id": "c57-01-tiger",
+  "name": "Tiger",
+  "family": "quadruped",
+  "packet": "audits/G2_PATTERN_C57_20260926/01-tiger",
+  "master": "audits/G2_PATTERN_C57_20260926/01-tiger/master.png"
+ },
+ {
+  "id": "c57-02-leopard",
+  "name": "Leopard",
+  "family": "quadruped",
+  "packet": "audits/G2_PATTERN_C57_20260926/02-leopard",
+  "master": "audits/G2_PATTERN_C57_20260926/02-leopard/master.png"
+ },
+ {
+  "id": "c57-04-ocelot",
+  "name": "Ocelot",
+  "family": "quadruped",
+  "packet": "audits/G2_PATTERN_C57_20260926/04-ocelot",
+  "master": "audits/G2_PATTERN_C57_20260926/04-ocelot/master.png"
+ },
+ {
+  "id": "c57-05-snow-leopard",
+  "name": "Snow Leopard",
+  "family": "quadruped",
+  "packet": "audits/G2_PATTERN_C57_20260926/05-snow-leopard",
+  "master": "audits/G2_PATTERN_C57_20260926/05-snow-leopard/master.png"
+ },
+ {
+  "id": "c57-06-clouded-leopard",
+  "name": "Clouded Leopard",
+  "family": "quadruped",
+  "packet": "audits/G2_PATTERN_C57_20260926/06-clouded-leopard",
+  "master": "audits/G2_PATTERN_C57_20260926/06-clouded-leopard/master.png"
+ },
+ {
+  "id": "c59-01-elk",
+  "name": "Elk",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/01-elk",
+  "master": "audits/G2_C59_20260926/01-elk/master.png"
+ },
+ {
+  "id": "c59-02-moose",
+  "name": "Moose",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/02-moose",
+  "master": "audits/G2_C59_20260926/02-moose/master.png"
+ },
+ {
+  "id": "c59-03-bison",
+  "name": "Bison",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/03-bison",
+  "master": "audits/G2_C59_20260926/03-bison/master.png"
+ },
+ {
+  "id": "c59-04-raccoon",
+  "name": "Raccoon",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/04-raccoon",
+  "master": "audits/G2_C59_20260926/04-raccoon/master.png"
+ },
+ {
+  "id": "c59-05-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/05-badger",
+  "master": "audits/G2_C59_20260926/05-badger/master.png"
+ },
+ {
+  "id": "c59-06-wolverine",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/06-wolverine",
+  "master": "audits/G2_C59_20260926/06-wolverine/master.png"
+ },
+ {
+  "id": "q20-01-coyote",
+  "name": "Coyote",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/01-coyote"
+ },
+ {
+  "id": "q20-02-red-fox",
+  "name": "Red Fox",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/02-red-fox"
+ },
+ {
+  "id": "q20-03-arctic-fox",
+  "name": "Arctic Fox",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/03-arctic-fox"
+ },
+ {
+  "id": "q20-04-fennec-fox",
+  "name": "Fennec Fox",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/04-fennec-fox"
+ },
+ {
+  "id": "q20-05-caracal",
+  "name": "Caracal",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/05-caracal"
+ },
+ {
+  "id": "q20-06-lynx",
+  "name": "Lynx",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/06-lynx"
+ },
+ {
+  "id": "q20-07-cougar",
+  "name": "Cougar",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/07-cougar"
+ },
+ {
+  "id": "q20-08-mongoose",
+  "name": "Mongoose",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/08-mongoose"
+ },
+ {
+  "id": "q20-09-badger",
+  "name": "Badger",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger"
+ },
+ {
+  "id": "q20-10-raccoon",
+  "name": "Raccoon",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/10-raccoon"
+ },
+ {
+  "id": "q20-11-marmot",
+  "name": "Marmot",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/11-marmot"
+ },
+ {
+  "id": "q20-12-brown-bear",
+  "name": "Brown Bear",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/12-brown-bear"
+ },
+ {
+  "id": "q20-13-cattle",
+  "name": "Cattle",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/13-cattle"
+ },
+ {
+  "id": "q20-14-bison",
+  "name": "Bison",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/14-bison"
+ },
+ {
+  "id": "q20-15-donkey",
+  "name": "Donkey",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/15-donkey"
+ },
+ {
+  "id": "q20-16-wild-horse",
+  "name": "Wild Horse",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/16-wild-horse"
+ },
+ {
+  "id": "q20-17-camel",
+  "name": "Camel",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/17-camel"
+ },
+ {
+  "id": "q20-18-tapir",
+  "name": "Tapir",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/18-tapir"
+ },
+ {
+  "id": "q20-19-wild-boar",
+  "name": "Wild Boar",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/19-wild-boar"
+ },
+ {
+  "id": "q20-20-goat",
+  "name": "Goat",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/20-goat"
+ }
+]

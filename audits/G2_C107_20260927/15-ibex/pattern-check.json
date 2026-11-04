@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ibex",
+  "masterSha256": "bb4389651cc2da9f04448ea8ea67cc7fdfc69bceb8db60c3f579c6577275bc0e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

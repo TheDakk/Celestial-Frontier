@@ -1,0 +1,14 @@
+{
+  "id": "12-lizard",
+  "name": "Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d232198f-ccc4-482b-b2c9-6c2041ea2f28.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9be71c29629125411d1f7df0738cd41a1943b5fef5e1cdd17407dc958442f070",
+  "bytes": 964517,
+  "promptSha256": "d04fbcab71cf0fbb1327bf155fa7db4faf018d70b6fa93586e5ccbdac71fc08b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

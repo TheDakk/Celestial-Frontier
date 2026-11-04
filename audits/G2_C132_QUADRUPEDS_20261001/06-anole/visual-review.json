@@ -1,0 +1,28 @@
+{
+  "name": "Anole",
+  "masterSha256": "5e50f89d74593377dd2d9876a0e6a16ec9b1bfdb950b20f86dba280e22dcce43",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: green slender anole with orange expanded throat dewlap, long continuous tail and four readable feet. Individual toe pads are small but visible; near/far upper limbs overlap at body roots, so separability is not fully established. The orange dewlap remains continuously attached beneath the throat; broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 248,
+      "y0": 545,
+      "x1": 942,
+      "y1": 736
+    },
+    "margins": {
+      "left": 248,
+      "right": 311,
+      "top": 545,
+      "bottom": 517
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

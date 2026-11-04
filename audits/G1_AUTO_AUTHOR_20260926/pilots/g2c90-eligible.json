@@ -1,0 +1,170 @@
+[
+ {
+  "id": "01-anaconda",
+  "name": "Anaconda",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/01-anaconda",
+  "master": "audits/G2_C90_20260927/01-anaconda/master.png"
+ },
+ {
+  "id": "02-cobra",
+  "name": "Cobra",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/02-cobra",
+  "master": "audits/G2_C90_20260927/02-cobra/master.png"
+ },
+ {
+  "id": "03-viper",
+  "name": "Viper",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/03-viper",
+  "master": "audits/G2_C90_20260927/03-viper/master.png"
+ },
+ {
+  "id": "04-rattlesnake",
+  "name": "Rattlesnake",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/04-rattlesnake",
+  "master": "audits/G2_C90_20260927/04-rattlesnake/master.png"
+ },
+ {
+  "id": "05-sand-boa",
+  "name": "Sand Boa",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/05-sand-boa",
+  "master": "audits/G2_C90_20260927/05-sand-boa/master.png"
+ },
+ {
+  "id": "06-cave-snake",
+  "name": "Cave Snake",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/06-cave-snake",
+  "master": "audits/G2_C90_20260927/06-cave-snake/master.png"
+ },
+ {
+  "id": "07-catfish",
+  "name": "Catfish",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/07-catfish",
+  "master": "audits/G2_C90_20260927/07-catfish/master.png"
+ },
+ {
+  "id": "08-gar",
+  "name": "Gar",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/08-gar",
+  "master": "audits/G2_C90_20260927/08-gar/master.png"
+ },
+ {
+  "id": "09-bowfin",
+  "name": "Bowfin",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/09-bowfin",
+  "master": "audits/G2_C90_20260927/09-bowfin/master.png"
+ },
+ {
+  "id": "10-tilapia",
+  "name": "Tilapia",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/10-tilapia",
+  "master": "audits/G2_C90_20260927/10-tilapia/master.png"
+ },
+ {
+  "id": "11-piranha",
+  "name": "Piranha",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/11-piranha",
+  "master": "audits/G2_C90_20260927/11-piranha/master.png"
+ },
+ {
+  "id": "12-killifish",
+  "name": "Killifish",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/12-killifish",
+  "master": "audits/G2_C90_20260927/12-killifish/master.png"
+ },
+ {
+  "id": "13-arctic-cod",
+  "name": "Arctic Cod",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/13-arctic-cod",
+  "master": "audits/G2_C90_20260927/13-arctic-cod/master.png"
+ },
+ {
+  "id": "14-viperfish",
+  "name": "Viperfish",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/14-viperfish",
+  "master": "audits/G2_C90_20260927/14-viperfish/master.png"
+ },
+ {
+  "id": "15-squirrel",
+  "name": "Squirrel",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/15-squirrel",
+  "master": "audits/G2_C90_20260927/15-squirrel/master.png"
+ },
+ {
+  "id": "16-chipmunk",
+  "name": "Chipmunk",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/16-chipmunk",
+  "master": "audits/G2_C90_20260927/16-chipmunk/master.png"
+ },
+ {
+  "id": "17-rabbit",
+  "name": "Rabbit",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/17-rabbit",
+  "master": "audits/G2_C90_20260927/17-rabbit/master.png"
+ },
+ {
+  "id": "18-hare",
+  "name": "Hare",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/18-hare",
+  "master": "audits/G2_C90_20260927/18-hare/master.png"
+ },
+ {
+  "id": "19-pika",
+  "name": "Pika",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/19-pika",
+  "master": "audits/G2_C90_20260927/19-pika/master.png"
+ },
+ {
+  "id": "20-hedgehog",
+  "name": "Hedgehog",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/20-hedgehog",
+  "master": "audits/G2_C90_20260927/20-hedgehog/master.png"
+ },
+ {
+  "id": "21-meerkat-v2",
+  "name": "Meerkat",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/21-meerkat-v2",
+  "master": "audits/G2_C90_20260927/21-meerkat-v2/master.png"
+ },
+ {
+  "id": "22-kinkajou",
+  "name": "Kinkajou",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/22-kinkajou",
+  "master": "audits/G2_C90_20260927/22-kinkajou/master.png"
+ },
+ {
+  "id": "23-sloth-bear",
+  "name": "Sloth Bear",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/23-sloth-bear",
+  "master": "audits/G2_C90_20260927/23-sloth-bear/master.png"
+ },
+ {
+  "id": "24-river-otter",
+  "name": "River Otter",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/24-river-otter",
+  "master": "audits/G2_C90_20260927/24-river-otter/master.png"
+ }
+]

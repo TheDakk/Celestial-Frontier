@@ -1,0 +1,87 @@
+[
+ {
+  "id": "05-cat-v2",
+  "family": "quadruped",
+  "packet": "audits/G2_REFERENCES_C62_20260927/05-cat-v2"
+ },
+ {
+  "id": "07-weasel",
+  "family": "quadruped",
+  "packet": "audits/G2_REFERENCES_C62_20260927/07-weasel"
+ },
+ {
+  "id": "08-ant",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/08-ant"
+ },
+ {
+  "id": "09-cricket",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket"
+ },
+ {
+  "id": "01-robin",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/01-robin"
+ },
+ {
+  "id": "02-pigeon",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon"
+ },
+ {
+  "id": "03-duck-v2",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/03-duck-v2"
+ },
+ {
+  "id": "04-hawk-v2",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2"
+ },
+ {
+  "id": "c136-sprawler-05-monitor-lizard",
+  "family": "quadruped",
+  "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard"
+ },
+ {
+  "id": "c136-sprawler-15-iguana",
+  "family": "quadruped",
+  "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana"
+ },
+ {
+  "id": "c136-sprawler-24-newt",
+  "family": "quadruped",
+  "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt"
+ },
+ {
+  "id": "codex-ref-04-earthworm-material",
+  "family": "annelid",
+  "packet": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material"
+ },
+ {
+  "id": "codex-ref-05-sponge-material",
+  "family": "sessile-filter",
+  "packet": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material"
+ },
+ {
+  "id": "codex-ref-01-caiman-tail-contour",
+  "family": "quadruped",
+  "packet": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour"
+ },
+ {
+  "id": "codex-ref-02-giraffe-neck-contour",
+  "family": "quadruped",
+  "packet": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour"
+ },
+ {
+  "id": "codex-ref-01-leech",
+  "family": "annelid",
+  "packet": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech"
+ },
+ {
+  "id": "codex-ref-02-sea-squirt",
+  "family": "sessile-filter",
+  "packet": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt"
+ }
+]

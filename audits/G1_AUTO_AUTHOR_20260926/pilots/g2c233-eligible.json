@@ -1,0 +1,378 @@
+[
+ {
+  "id": "01-impala",
+  "name": "Impala",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/01-impala",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Correct the previous source which visibly has a third foreleg/five legs: one natural Impala with exactly its four real legs, two forelegs and two hindlegs. Quiet natural stance, four distinct complete feet on a common baseline, connected individually to actual torso emergence. Keep the real tail, two visible ears, lyre-shaped ringed horns, black hind-hoof tufts and rump stripes; never reinterpret a fifth painted leg as fringe.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "03-impala",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "04-impala",
+     "master": "audits/G2_C110_20260927/04-impala/master.png",
+     "packet": "audits/G2_C110_20260927/04-impala"
+    }
+   ]
+  }
+ },
+ {
+  "id": "02-banana-slug",
+  "name": "Banana Slug",
+  "family": "gastropod",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/02-banana-slug",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/02-banana-slug/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Expose the actual small oral opening underneath the front head, separately from the two short sensory tentacles and two long ocular tentacles. No invented lips or large face. Preserve the complete genuine anatomy and leave generous empty margins around all stalks.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "22-banana-slug",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug"
+    }
+   ]
+  }
+ },
+ {
+  "id": "03-prawn",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Correct the prior hidden walking-leg roots by choosing a shallow underside view: every actual thoracic root-to-tip path must be readable as far as biological visibility allows. Retain all ten real walking legs, swimmerets and antennules; do not delete or relocate real structures to fit a coarse template. Keep entire antennae inside generous margins.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "23-prawn",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn"
+    }
+   ]
+  }
+ },
+ {
+  "id": "04-crab",
+  "name": "Crab",
+  "family": "brachyuran",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/04-crab",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/04-crab/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Correct the prior obscured posterior walking chains: direct slightly elevated frontal view with eight complete actual leg silhouettes and true roots visible where they emerge from beneath the carapace, plus both genuine claws. Do not add hidden limbs, cut holes in shell or substitute eye stalks for legs.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "24-crab",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/24-crab"
+    }
+   ]
+  }
+ },
+ {
+  "id": "05-brittle-star",
+  "name": "Brittle Star",
+  "family": "radial",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/05-brittle-star",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/05-brittle-star/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Use the biologically short-armed Ophiacantha kokusai representative documented in biological-reference.json, with five complete arms and a clearly bounded real disc. This is a fresh painting with real natural proportions, never geometric stretching of the former source or adaptation of anatomy to a rig threshold.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+     "id": "02-brittle-star",
+     "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+     "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star"
+    }
+   ]
+  }
+ },
+ {
+  "id": "06-sloth",
+  "name": "Sloth",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "07-tortoise",
+  "name": "Tortoise",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "08-box-turtle",
+  "name": "Box Turtle",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "09-pond-turtle",
+  "name": "Pond Turtle",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "10-snapping-turtle",
+  "name": "Snapping Turtle",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "11-softshell-turtle",
+  "name": "Softshell Turtle",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "12-turtle",
+  "name": "Turtle",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "13-dog",
+  "name": "Dog",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/13-dog",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Previous source has long fur obscuring proximal limb attachments. Use a naturally short body coat with the canonical high plumed tail, both natural erect ears and black nose. Keep four real complete leg silhouettes visibly separate from shoulder/hip emergence through every paw in a quiet level stance. Preserve fur and real joints; no shaved anatomy or hidden-part invention.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+     "id": "06-dog",
+     "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+     "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin"
+    },
+    {
+     "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+     "id": "03-dog",
+     "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+     "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+    }
+   ]
+  }
+ },
+ {
+  "id": "14-wolf",
+  "name": "Wolf",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/14-wolf",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/14-wolf/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "The earlier upper limb roots overlap and its generated rig refuses gallop compression. Paint a natural neutral standing wolf with all four actual leg silhouettes independently readable through knee/hock and paw, broad blocky head, erect triangular ears, narrow deep chest and a low straight bushy tail. This source correction does not claim to repair the solver or existing static refusal.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C106_20260927/pilot.json",
+     "id": "21-wolf",
+     "master": "audits/G2_C106_20260927/21-wolf/master.png",
+     "packet": "audits/G2_C106_20260927/21-wolf"
+    }
+   ]
+  }
+ },
+ {
+  "id": "15-jaguar",
+  "name": "Jaguar",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/15-jaguar",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/15-jaguar/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Preserve the stocky powerful real Jaguar and mandatory rosettes with dark central spots. Four short real legs must be independently traceable from visible torso emergence to full paws, with a quiet natural level stance; no long-legged leopard substitute and no extra fringe-shaped leg. Prior source authoring reported unassigned limb-down paint.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+     "id": "07-jaguar",
+     "master": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar/master.png",
+     "packet": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar"
+    },
+    {
+     "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+     "id": "03-jaguar",
+     "master": "audits/G2_PATTERN_C57_20260926/03-jaguar/master.png",
+     "packet": "audits/G2_PATTERN_C57_20260926/03-jaguar"
+    },
+    {
+     "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+     "id": "07-jaguar-pattern-first",
+     "master": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first/master.png",
+     "packet": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first"
+    }
+   ]
+  }
+ },
+ {
+  "id": "16-serval",
+  "name": "Serval",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/16-serval",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/16-serval/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Preserve the exceptionally long real legs, enormous upright oval ears, short tail and spotted/barred coat. Show all four actual narrow leg shafts separately from their natural visible roots through the paws on one level, not merely separated toe tips. Keep genuine slender proportions; do not shorten legs to fit a generic cat. Prior authoring left two limb-down structures unassigned.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+     "id": "10-serval",
+     "master": "audits/G2_THROUGHPUT_C54_20260926/10-serval/master.png",
+     "packet": "audits/G2_THROUGHPUT_C54_20260926/10-serval"
+    }
+   ]
+  }
+ },
+ {
+  "id": "17-otter",
+  "name": "Otter",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/17-otter",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/17-otter/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "A slight natural head turn reveals both tiny actual external ears from attached base to tip, without enlarging them into mammal reference ears. Preserve sleek streamlined tube body, broad whiskered muzzle, thick tapering muscular tail and four short actual legs with separate feet. Prior source lacks far-ear-tip coverage.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C107_20260927/pilot.json",
+     "id": "17-otter",
+     "master": "audits/G2_C107_20260927/17-otter/master.png",
+     "packet": "audits/G2_C107_20260927/17-otter"
+    }
+   ]
+  }
+ },
+ {
+  "id": "18-wolverine",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Separate the actual four thick short legs and huge clawed paws from the natural fur outline, preserving the heavy bear-like build, humped shoulders, real pale stripe along each flank and bushy tail. A slight natural stance separation reveals limb paths without clipping fur, inventing joints or adding legs. Prior authoring leaves limb-down/fringe paint unexplained.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "06-wolverine",
+     "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+     "packet": "audits/G2_C59_20260926/06-wolverine"
+    }
+   ]
+  }
+ },
+ {
+  "id": "19-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/19-badger",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/19-badger/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Preserve the real broad low-slung body, white facial stripe and long digging foreclaws. Show four actual limb silhouettes from their visible low torso emergence through each foot, both small attached ears where naturally visible, and the real short tail separately from hind feet. Never lengthen the tail to mimic a reference. Prior source has unassigned limb paint and short-tail/ear coverage refusals.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+     "id": "09-badger",
+     "master": null,
+     "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger"
+    },
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "05-badger",
+     "master": "audits/G2_C59_20260926/05-badger/master.png",
+     "packet": "audits/G2_C59_20260926/05-badger"
+    }
+   ]
+  }
+ },
+ {
+  "id": "20-beaver",
+  "name": "Beaver",
+  "family": "quadruped",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Slight natural head turn reveals both actual small rounded ears while preserving broad whiskered muzzle and orange incisors. Four actual short leg silhouettes and feet are distinct; the entire flat scaly paddle tail remains connected at its real base and separate from hind feet. No enlarged ears or furry rat tail. Prior authoring lacks far-ear-tip coverage.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C101_20260927/pilot.json",
+     "id": "24-beaver",
+     "master": "audits/G2_C101_20260927/24-beaver/master.png",
+     "packet": "audits/G2_C101_20260927/24-beaver"
+    }
+   ]
+  }
+ },
+ {
+  "id": "21-seahorse",
+  "name": "Seahorse",
+  "family": "fish",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/21-seahorse",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/21-seahorse/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "22-giant-squid",
+  "name": "Giant Squid",
+  "family": "cephalopod",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/22-giant-squid",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/22-giant-squid/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "23-vampire-squid",
+  "name": "Vampire Squid",
+  "family": "cephalopod",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/23-vampire-squid",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/23-vampire-squid/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "24-nautilus",
+  "name": "Nautilus",
+  "family": "cephalopod",
+  "packet": "audits/C186_CREATURE_SUPPLY_20261002/24-nautilus",
+  "master": "audits/C186_CREATURE_SUPPLY_20261002/24-nautilus/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ }
+]

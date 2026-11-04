@@ -1,0 +1,555 @@
+[
+ {
+  "id": "01-clam",
+  "name": "Clam",
+  "family": "bivalve",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/01-clam",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "02-prawn",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior side-oblique sources hide thoracic roots. Paint directly DORSAL from above, longitudinal body axis horizontal and head right, two sides of thorax equally exposed, all five genuine walking-leg pairs separated from actual roots through distal tips. Retain real swimmerets, antennules, six abdominal sections and intact tail fan. Do not fabricate extra legs or suppress true anatomy; all antennae complete inside the generous margins.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "03-prawn",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn"
+    },
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "23-prawn",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn"
+    }
+   ]
+  }
+ },
+ {
+  "id": "03-shrimp",
+  "name": "Shrimp",
+  "family": "crustacean-small",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior reference source has ambiguous far thoracic chains. Paint directly DORSAL from above, body axis horizontal head right, with five real walking pairs visible on both sides from roots to tips, not a side view. Retain swimmerets, antennules, real rostrum, two eyes, six abdomen sections and tail fan; no lobster claws or invented anatomy. Keep every long antenna inside generous margins.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+     "id": "01-shrimp",
+     "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+     "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp"
+    }
+   ]
+  }
+ },
+ {
+  "id": "04-snail",
+  "name": "Snail",
+  "family": "gastropod",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/04-snail",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Old source mouth is obscured. Paint a real right-facing crawling snail with a small ordinary ventral oral slit visible underneath the front between the two real short sensory tentacles, distinct from both. Exactly two upper eye-bearing stalks and two lower sensory tentacles; no circular open cartoon mouth, third lower projection, lips or face. Keep coiled shell and complete natural broad foot.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_SIMPLE_ORIGINALS_20261002/pilot.json",
+     "id": "03-snail",
+     "master": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail/master.png",
+     "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail"
+    }
+   ]
+  }
+ },
+ {
+  "id": "05-impala",
+  "name": "Impala",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/05-impala",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior source has no separately observable far-ear tip. Use a natural shallow head turn to expose both actual ears from attached base to tip; preserve the lyre-shaped ringed horns, rump stripes and four real legs. No enlarged invented ears or fifth limb.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "01-impala",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/01-impala"
+    },
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "03-impala",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "04-impala",
+     "master": "audits/G2_C110_20260927/04-impala/master.png",
+     "packet": "audits/G2_C110_20260927/04-impala"
+    }
+   ]
+  }
+ },
+ {
+  "id": "06-dog",
+  "name": "Dog",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/06-dog",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior tightly curled plumed tail was classified as an unassigned top appendage. Retain the real high plumed tail with a visibly continuous open arch from rump to tip, not a closed loop over the back; natural quadruped stance, four complete separate leg silhouettes and two actual ears. This does not claim to repair a classifier.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "13-dog",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/13-dog"
+    },
+    {
+     "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+     "id": "06-dog",
+     "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+     "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin"
+    },
+    {
+     "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+     "id": "03-dog",
+     "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+     "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+    }
+   ]
+  }
+ },
+ {
+  "id": "07-wolverine",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior bushy tail merged into body fringe and tail3 was refused. Show its actual short bushy tail attached at the rump and clearly separate from hind legs and flank, without lengthening it. Separate four real limbs and preserve the pale sweeping flank stripe, massive paws and shaggy coat.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "18-wolverine",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine"
+    },
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "06-wolverine",
+     "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+     "packet": "audits/G2_C59_20260926/06-wolverine"
+    }
+   ]
+  }
+ },
+ {
+  "id": "08-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/08-badger",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior body/fringe authoring left unexplained paint. Show four genuine low legs and clawed feet separately from their natural body emergence, the genuine short tail distinct from rear feet, both visible small ears, and the facial stripe. Preserve coarse fur but avoid disconnected fur islands; do not stretch the animal.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "19-badger",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/19-badger/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/19-badger"
+    },
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "05-badger",
+     "master": "audits/G2_C59_20260926/05-badger/master.png",
+     "packet": "audits/G2_C59_20260926/05-badger"
+    },
+    {
+     "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+     "id": "09-badger",
+     "master": null,
+     "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger"
+    }
+   ]
+  }
+ },
+ {
+  "id": "09-beaver",
+  "name": "Beaver",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Prior paint was unexplained around body/feet. Show four real leg silhouettes and the full actual paddle tail joined at its true base, separated from hind feet; expose true small ears with a slight head turn. Preserve orange incisors, real webbed hind feet and natural bulky fur, no invented limb.",
+   "priorSources": [
+    {
+     "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "20-beaver",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver/master.png",
+     "packet": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver"
+    },
+    {
+     "pilot": "audits/G2_C101_20260927/pilot.json",
+     "id": "24-beaver",
+     "master": "audits/G2_C101_20260927/24-beaver/master.png",
+     "packet": "audits/G2_C101_20260927/24-beaver"
+    }
+   ]
+  }
+ },
+ {
+  "id": "10-fishing-cat",
+  "name": "Fishing Cat",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier authoring left unassigned limb paint. Preserve the stocky short-legged spotted Fishing Cat with real proportionately short tail; display all four actual limb paths from body emergence to separate paws and both rounded ears. No extra shaggy limb-shaped appendage.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C83_20260927/pilot-original.json",
+     "id": "17-fishing-cat",
+     "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+     "packet": "audits/G2_C83_20260927/17-fishing-cat"
+    },
+    {
+     "pilot": "audits/G2_C83_20260927/pilot.json",
+     "id": "17-fishing-cat",
+     "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+     "packet": "audits/G2_C83_20260927/17-fishing-cat"
+    }
+   ]
+  }
+ },
+ {
+  "id": "11-african-wild-dog",
+  "name": "African Wild Dog",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source layout left an unassigned limb-down structure. Preserve its irregular painted coat and large round ears while exposing four real long leg chains, separate paw tips, and an actual continuous white-tipped tail. No invented fifth leg or forced symmetric coat.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C83_20260927/pilot-original.json",
+     "id": "19-african-wild-dog",
+     "master": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+     "packet": "audits/G2_C83_20260927/19-african-wild-dog"
+    },
+    {
+     "pilot": "audits/G2_C83_20260927/pilot.json",
+     "id": "19-african-wild-dog",
+     "master": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+     "packet": "audits/G2_C83_20260927/19-african-wild-dog"
+    }
+   ]
+  }
+ },
+ {
+  "id": "13-aardvark",
+  "name": "Aardvark",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source left substantial unexplained anatomy. Preserve long rabbit-like ears, tubular pig-like snout, thick tapering tail and real digging claws; separate four actual limbs from trunk emergence to their feet, tail distinct from legs. Do not shorten long anatomical structures to fit a generic mammal.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C83_20260927/pilot-original.json",
+     "id": "24-aardvark",
+     "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+     "packet": "audits/G2_C83_20260927/24-aardvark"
+    },
+    {
+     "pilot": "audits/G2_C83_20260927/pilot.json",
+     "id": "24-aardvark",
+     "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+     "packet": "audits/G2_C83_20260927/24-aardvark"
+    }
+   ]
+  }
+ },
+ {
+  "id": "14-okapi",
+  "name": "Okapi",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source far ear was hidden. Reveal both real large ears in a shallow natural head turn with uninterrupted bases, keep four real legs, striped rump/legs and actual short tufted tail visibly separate. No giraffe neck or invented horns.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C76_20260927/pilot.json",
+     "id": "24-okapi",
+     "master": "audits/G2_C76_20260927/24-okapi/master.png",
+     "packet": "audits/G2_C76_20260927/24-okapi"
+    }
+   ]
+  }
+ },
+ {
+  "id": "15-pronghorn",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source tail3 was refused. Paint the actual short white-rump tail with its real base and full natural tip distinct from the hindquarters and rear feet, without elongation; reveal both real ears and four true hoofed legs.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "13-pronghorn",
+     "master": "audits/G2_C95_20260927/13-pronghorn/master.png",
+     "packet": "audits/G2_C95_20260927/13-pronghorn"
+    }
+   ]
+  }
+ },
+ {
+  "id": "16-springbok",
+  "name": "Springbok",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source hides the far ear. Slight natural head turn exposes both true ears base to tip while preserving lyre horns, dark flank band, white underside and four separate real hoofed legs. Actual short tail visible, no artificial elongation.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "14-springbok",
+     "master": "audits/G2_C95_20260927/14-springbok/master.png",
+     "packet": "audits/G2_C95_20260927/14-springbok"
+    }
+   ]
+  }
+ },
+ {
+  "id": "17-duiker",
+  "name": "Duiker",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source short tail was not covered. Show the actual short attached tail with a distinct natural tip separated from hind legs, both real ears and all four small hoofed legs. Do not replace short species anatomy with a long generic antelope tail.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "16-duiker",
+     "master": "audits/G2_C95_20260927/16-duiker/master.png",
+     "packet": "audits/G2_C95_20260927/16-duiker"
+    }
+   ]
+  }
+ },
+ {
+  "id": "18-serow",
+  "name": "Serow",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/18-serow",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source short tail3 was refused. Preserve coarse genuine coat, real short tail clearly separate from rump and feet, true horns and ears, and four visible hoofed leg chains. Avoid detached coat fragments and do not lengthen its tail.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "18-serow",
+     "master": "audits/G2_C95_20260927/18-serow/master.png",
+     "packet": "audits/G2_C95_20260927/18-serow"
+    }
+   ]
+  }
+ },
+ {
+  "id": "19-bison",
+  "name": "Bison",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/19-bison",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source had unexplained low paint. Preserve the real shoulder hump and dense beard; separate all four true legs and hoof ends from the hanging coat, keeping their actual roots where visible. Preserve real horns, ears and attached tufted tail; do not shave the coat or invent hidden joints.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "03-bison",
+     "master": "audits/G2_C59_20260926/03-bison/master.png",
+     "packet": "audits/G2_C59_20260926/03-bison"
+    },
+    {
+     "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+     "id": "14-bison",
+     "master": null,
+     "packet": "audits/G2_QUADRUPED_PILOT_20260926/14-bison"
+    }
+   ]
+  }
+ },
+ {
+  "id": "20-warthog",
+  "name": "Warthog",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Earlier source tail3 was refused. Show the genuine thin attached tufted tail completely inside the frame and separate from hind legs, natural stance not a copied long mammal tail. Preserve real facial warts, paired upward tusks, bristle mane and four distinct hoofed leg paths.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C98_20260927/pilot.json",
+     "id": "22-warthog",
+     "master": "audits/G2_C98_20260927/22-warthog/master.png",
+     "packet": "audits/G2_C98_20260927/22-warthog"
+    }
+   ]
+  }
+ },
+ {
+  "id": "21-caribou",
+  "name": "Caribou",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Previous source left a limb-down appendage unassigned. Show four and only four real hoofed legs clearly separated through joints and hooves, keeping actual shaggy neck and antlers. Both real ears exposed by natural head angle and natural short tail separate; no invented fifth leg.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "12-caribou",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "17-caribou",
+     "master": "audits/G2_C110_20260927/17-caribou/master.png",
+     "packet": "audits/G2_C110_20260927/17-caribou"
+    },
+    {
+     "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+     "id": "12-caribou",
+     "master": "audits/G2_C136_REPAIRS_20261002/12-caribou/master.png",
+     "packet": "audits/G2_C136_REPAIRS_20261002/12-caribou"
+    }
+   ]
+  }
+ },
+ {
+  "id": "22-yak",
+  "name": "Yak",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/22-yak",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Previous source has unassigned limb-down paint under hanging hair. Preserve its actual long dense skirt but clearly expose the four real leg/hoof ends, with continuous natural paths at visible emergence; no fringe shaped as an extra leg, no shaving or invented hidden roots. Actual bushy tail separate.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "13-yak",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/13-yak"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "19-yak",
+     "master": "audits/G2_C110_20260927/19-yak/master.png",
+     "packet": "audits/G2_C110_20260927/19-yak"
+    },
+    {
+     "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+     "id": "14-yak",
+     "master": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+     "packet": "audits/G2_C136_REPAIRS_20261002/14-yak"
+    }
+   ]
+  }
+ },
+ {
+  "id": "23-bactrian-camel",
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Previous source has unexplained paint. Preserve two real humps, shaggy neck, true two-toed padded feet and naturally short tail. Separate four actual limb silhouettes and feet from hanging hair, ears and tail visible as far as natural anatomy permits; no third hump or extra limb.",
+   "priorSources": [
+    {
+     "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "18-bactrian-camel",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+     "packet": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "24-bactrian-camel",
+     "master": "audits/G2_C110_20260927/24-bactrian-camel/master.png",
+     "packet": "audits/G2_C110_20260927/24-bactrian-camel"
+    }
+   ]
+  }
+ },
+ {
+  "id": "24-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Repeated tail3 refusal on earlier sources. Preserve true heavy horns, dark hide and four genuine hoofed legs while showing the complete real attached tail and terminal tuft separate from body and rear feet. Do not elongate the tail to a reference template.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+     "id": "15-buffalo",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo/master.png",
+     "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo"
+    },
+    {
+     "pilot": "audits/G2_C110_20260927/pilot.json",
+     "id": "05-buffalo",
+     "master": "audits/G2_C110_20260927/05-buffalo/master.png",
+     "packet": "audits/G2_C110_20260927/05-buffalo"
+    },
+    {
+     "pilot": "audits/G2_C136_TARGETED_EDITS_20261002/pilot.json",
+     "id": "07-buffalo",
+     "master": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png",
+     "packet": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo"
+    },
+    {
+     "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+     "id": "07-buffalo",
+     "master": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+     "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo"
+    }
+   ]
+  }
+ }
+]

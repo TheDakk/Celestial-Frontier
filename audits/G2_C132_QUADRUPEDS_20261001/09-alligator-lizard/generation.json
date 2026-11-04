@@ -1,0 +1,14 @@
+{
+  "id": "09-alligator-lizard",
+  "name": "Alligator Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3ef77938-9b8b-47c4-9c10-8fe3096c7b13.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bd3d7db69693b6c8cec7ad746c58e0936d345a24f71acfbdce2b55cb8c700598",
+  "bytes": 981928,
+  "promptSha256": "987e055d0abf7525ff81876bd95896c0fcb305185ac60f31907d6891e5b12d28",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

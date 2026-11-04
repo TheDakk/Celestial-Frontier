@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gharial",
+  "masterSha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

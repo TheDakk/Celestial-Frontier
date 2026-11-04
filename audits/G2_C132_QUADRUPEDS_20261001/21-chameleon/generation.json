@@ -1,0 +1,14 @@
+{
+  "id": "21-chameleon",
+  "name": "Chameleon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5a419280-d3f2-4f1d-b3ce-eee332c4a27e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0fd53c8caa597c8edc05cee3423e30482e065e0dae62cc3e50a94c9b8720ba2f",
+  "bytes": 1094964,
+  "promptSha256": "4680dfed0684df7e44f9db050714090d31231b523cf5ef4094e7d0e5a615a1b0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Mountain Lizard",
+  "masterSha256": "f6a578011c5c7b497b55fffbc8516630d129cc8cce6cf2d85356aedc46246661",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: granular-scaled slender body, long banded tail exceeding head-and-body length, bent sprawling near limbs and long clawed toes. Three feet are independently readable; fourth/far hindlimb remains unresolved behind the near thigh. HOLD for missing independent fourth-limb visibility. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 278,
+      "y0": 564,
+      "x1": 985,
+      "y1": 722
+    },
+    "margins": {
+      "left": 278,
+      "right": 268,
+      "top": 564,
+      "bottom": 531
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

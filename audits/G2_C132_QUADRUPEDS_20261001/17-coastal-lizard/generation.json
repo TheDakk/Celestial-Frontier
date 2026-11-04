@@ -1,0 +1,14 @@
+{
+  "id": "17-coastal-lizard",
+  "name": "Coastal Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-6ddb4a68-86f5-4daf-b319-163c7e973516.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5db624cdd2993284581f6e1c5514152569e30919f9e83b82c85f784d49eaf580",
+  "bytes": 983928,
+  "promptSha256": "b2081f60a2d4816835040ffd9e546e809810fd73e8cebdfe80561e63334a74b5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

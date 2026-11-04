@@ -1,0 +1,69 @@
+{
+  "name": "Gharial",
+  "family": "quadruped",
+  "species": {
+    "name": "Gharial",
+    "aspect": 5.5,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "sprawling",
+    "mustRead": [
+      "extremely long needle-thin snout studded with interlocking teeth",
+      "bulbous pot knob on the snout tip of males",
+      "tall laterally flattened paddle tail"
+    ]
+  },
+  "genome": {
+    "seed": 3366889721,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 9,
+    "body": 0,
+    "loco": 0,
+    "trait": 3,
+    "size": 0,
+    "diet": 4,
+    "head": 7,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 5,
+    "detail": 9,
+    "accent": 1,
+    "temper": 2,
+    "sense": 0,
+    "repro": 2,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gharial"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gharial\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3366889721\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "index": 351,
+  "profile": {
+    "id": "crocodilian",
+    "names": [
+      "Caiman",
+      "Crocodile",
+      "Alligator",
+      "Gharial"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Low sprawling legs and tail; no fur/ears from a mammal template."
+  }
+}

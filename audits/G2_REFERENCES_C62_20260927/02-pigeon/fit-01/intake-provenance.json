@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "093f566d833ecf044db9b8a1c15f87d3541f801f",
+  "helperSha256": "851efe46637057a7de5b7fc2129a1db1ffdf064ceee66f3c0e721ded06df44be",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+      "sha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/authoring.json",
+      "sha256": "52852e5335c2d613a4cf4b260f3f43f3eec7c7c7b21044b5e832971b55e62d6f"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/subject-source.json",
+      "sha256": "2f333aaf62ac5171e2f632100e2c2fd5b83f61a0899e3401c28719d21061968a"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "094e651eb8725fdb21afcd2748f59b2cfdba3015067ef9d0d1b226c968cb54e6",
+  "bindingHash": "fafdb1f947d7799bce1bcc8917df00dfe7671833514e549eb64e9c9ee9a0d733",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+      "sha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/authoring.json",
+      "sha256": "52852e5335c2d613a4cf4b260f3f43f3eec7c7c7b21044b5e832971b55e62d6f",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/subject-source.json",
+      "sha256": "2f333aaf62ac5171e2f632100e2c2fd5b83f61a0899e3401c28719d21061968a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/02-pigeon/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

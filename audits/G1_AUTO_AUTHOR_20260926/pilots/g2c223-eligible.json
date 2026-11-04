@@ -1,0 +1,390 @@
+[
+ {
+  "id": "01-zebra",
+  "name": "Zebra",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "02-zebra",
+   "previousMaster": "audits/G2_C110_20260927/02-zebra/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+   ],
+   "previousVisual": "Full original: bold black-white stripes over body, belly and all four separate legs; upright brush mane, complete dark-tufted tail and both ears. Upper near/far forelegs partially overlap; exact authoring review remains.",
+   "correction": "Keep the real tufted tail fully continuous from its bare upper half to its dark tuft, clear of the hind legs. Preserve bold black-white stripes across body, belly and all legs and the stiff upright brush mane; not a flowing horse mane. Separate the true upper foreleg contours where visible."
+  }
+ },
+ {
+  "id": "02-kudu",
+  "name": "Kudu",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "03-kudu",
+   "previousMaster": "audits/G2_C110_20260927/03-kudu/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)"
+   ],
+   "previousVisual": "Full original: paired tall corkscrew horns, large dish-like ears, multiple thin white vertical flank stripes and facial chevron, dewlap/beard, complete tufted tail and four separate hooves. Horn ownership and chest fringe need scoring.",
+   "correction": "Keep both true huge rounded dish ears fully readable from crown attachments to complete tips, naturally separated from the towering corkscrew horns. Preserve the 6–10 thin white vertical flank stripes and real dewlap/beard; do not turn fringe into an extra leg."
+  }
+ },
+ {
+  "id": "03-impala",
+  "name": "Impala",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "04-impala",
+   "previousMaster": "audits/G2_C110_20260927/04-impala/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+    "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 7% paint (reference 70%)",
+    "missing-anatomy: part fore-far-paw (foreFarPaw) covers 5% paint (reference 57%)"
+   ],
+   "previousVisual": "Full original: lyre-shaped ringed horns, dark rump stripes on white, small black tufts above hind hooves, slender legs, both ear tips, complete short dark-tipped tail. Ground contacts distinct; no motion admission.",
+   "correction": "Show each actual slender foreleg through its full ankle and cloven hoof with clear separation from the other leg. Preserve the real black hind-hoof tufts and dark rump stripes, not extra appendages; retain lyre-shaped ringed horns."
+  }
+ },
+ {
+  "id": "04-eland",
+  "name": "Eland",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/04-eland",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "07-eland",
+   "previousMaster": "audits/G2_C110_20260927/07-eland/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-near-tip (earNearTip) covers 19% paint (reference 62%)",
+    "missing-anatomy: part tail1 (tail1) covers 13% paint (reference 45%)"
+   ],
+   "previousVisual": "Full original: ox-like shoulder hump, straight tightly spiral horns, large throat dewlap, fine pale flank stripes, four hoof contacts and complete tufted tail. Both ears visible; upper foreleg overlaps need exact authoring review.",
+   "correction": "Show both true ear outlines and the continuous natural tail root/shaft/tuft clear of the hind leg. Preserve the ox-like shoulder hump and real throat dewlap rather than removing them as unexplained paint. Separate real foreleg contours."
+  }
+ },
+ {
+  "id": "05-gazelle",
+  "name": "Gazelle",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "08-gazelle",
+   "previousMaster": "audits/G2_C110_20260927/08-gazelle/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 35%)",
+    "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+   ],
+   "previousVisual": "Full original: tan upper body, broad dark flank band above white belly, facial eye stripe, slender ringed lyre horns, both ears, complete short tufted tail and four fine separate legs. No acceptance beyond visible layout.",
+   "correction": "Show both actual ear attachments and full tips without moving them away from the crown; keep the complete natural short tail tip clear of hind legs. Retain the dark flank band between tan back and white belly, delicate legs and ringed lyre horns."
+  }
+ },
+ {
+  "id": "06-hartebeest",
+  "name": "Hartebeest",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "09-hartebeest",
+   "previousMaster": "audits/G2_C110_20260927/09-hartebeest/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+   ],
+   "previousVisual": "Full original: narrow elongated face, high shoulders sloping rearward, bracket/ring horns above the forehead, both ears, true dark-tuft tail and four separate hooves. HOLD head angle and horn pedestal proportions require anatomical scoring.",
+   "correction": "Use a slight natural head turn only enough to reveal both real ears from their actual crown attachments. Preserve the extremely long narrow face, steeply sloping back and bracket horns rising from their real bony pedestal; do not invent or relocate an ear."
+  }
+ },
+ {
+  "id": "07-oryx",
+  "name": "Oryx",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "10-oryx",
+   "previousMaster": "audits/G2_C110_20260927/10-oryx/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-near-tip (earNearTip) covers 6% paint (reference 62%)"
+   ],
+   "previousVisual": "Full original: very long straight swept-back horns, black-white face mask and dark leg markings, muscular blocky body, complete long dark tail and four hooves. Natural long horns remain uncut.",
+   "correction": "Make the actual near ear tip fully visible beside, not fused into, the horn base. Preserve both unshortened long straight rapier horns, black face mask and leg markings. Zoom out rather than clipping horns."
+  }
+ },
+ {
+  "id": "08-gaur",
+  "name": "Gaur",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "11-gaur",
+   "previousMaster": "audits/G2_C110_20260927/11-gaur/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)",
+    "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)"
+   ],
+   "previousVisual": "Full original: high muscular shoulder ridge, white lower-leg stockings on all four feet, pale grey forehead, upcurving horns, both ears and complete tuft tail. HOLD exaggerated round shoulder hump/body contour and upper foreleg overlap need scoring.",
+   "correction": "Use the true tall muscular shoulder ridge, not a round spherical hump. Distinguish both foreleg roots, wrists and full hooves in a natural stance. All four lower legs retain white stockings and the real grey forehead lies between the upcurving horns."
+  }
+ },
+ {
+  "id": "09-deer",
+  "name": "Deer",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/09-deer",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "14-deer",
+   "previousMaster": "audits/G2_C110_20260927/14-deer/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+   ],
+   "previousVisual": "Full original: branched antlers, both ears, slender tan body, four separate feet, natural short pale underside tail. Antler and proximal leg ownership require exact scoring.",
+   "correction": "Preserve its actual short tail continuously from root to visible tip, clear of hind legs, without lengthening it to match a reference. Retain branched sweeping antlers and large cupped ears; only real anatomical segments may be visible."
+  }
+ },
+ {
+  "id": "10-antelope",
+  "name": "Antelope",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "15-antelope",
+   "previousMaster": "audits/G2_C110_20260927/15-antelope/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+    "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+   ],
+   "previousVisual": "Full original: tan upper body and white belly, dark eye stripe, paired ringed lyre horns, both ears, natural short flicked tail and four slender legs. Generic canonical antelope identity remains subject to scoring.",
+   "correction": "Keep all four real leg contours separate through their complete hooves, both natural ears visible, and the true short flicking tail clear of limbs. Retain unbranched ringed horns and tan flank/white belly. No extra limb from a fringe or tail."
+  }
+ },
+ {
+  "id": "11-reindeer",
+  "name": "Reindeer",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "16-reindeer",
+   "previousMaster": "audits/G2_C110_20260927/16-reindeer/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-far-root (earFarRoot) covers 21% paint (reference 68%)",
+    "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+   ],
+   "previousVisual": "Full original: white neck ruff, dark brown body, four separated feet, short pale tail. HOLD oversized broad palmated antler fans look moose-like; broad brow shovel over face and horn/ear ownership require anatomy review.",
+   "correction": "Correct the earlier moose-like antlers: real reindeer antlers are tall branching beams with a forward-sweeping brow shovel over the face, not giant bilateral moose paddles. Show actual ear bases where visible, pale neck mane, broad splayed hooves and complete natural short tail."
+  }
+ },
+ {
+  "id": "12-caribou",
+  "name": "Caribou",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "17-caribou",
+   "previousMaster": "audits/G2_C110_20260927/17-caribou/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part ear-near-tip (earNearTip) covers 20% paint (reference 62%)"
+   ],
+   "previousVisual": "Full original: white bib, dark torso, natural short white tail, four ground contacts. HOLD oversized palmated antler fans look moose-like and hoof proportions need review; numerical motion cannot clear this anatomy hold.",
+   "correction": "Correct the earlier moose-like antlers: tall sweeping branched beams with a forward brow shovel, not massive moose paddle fans. Preserve the leaner leggy wild form, white neck ruff and broad splayed snowshoe hooves. Both real ear contours remain connected and distinct where visible."
+  }
+ },
+ {
+  "id": "13-yak",
+  "name": "Yak",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/13-yak",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "19-yak",
+   "previousMaster": "audits/G2_C110_20260927/19-yak/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+    "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+   ],
+   "previousVisual": "Full original: shaggy long brown coat, curved horns, long bushy tail, four separate hooves. HOLD near ear visible but far ear obscured, upper legs hidden by long coat; no absence claim.",
+   "correction": "Preserve the real long flank-hair curtain, low head, humped shoulders and bushy tail plume. A slight natural head turn may expose the actual far ear; never add it. Separate all four hoof contacts and visible ankle contours without shaving the coat or inventing hidden upper legs."
+  }
+ },
+ {
+  "id": "14-takin",
+  "name": "Takin",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/14-takin",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "20-takin",
+   "previousMaster": "audits/G2_C110_20260927/20-takin/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+   ],
+   "previousVisual": "Full original: golden shaggy high-shouldered stocky body, broad dark convex muzzle, swept ringed horns, short dark tail and four separated hooves. HOLD far ear ambiguous and horns/body proportions require review.",
+   "correction": "Keep a stocky goat-antelope body on genuinely short thick legs, golden shaggy coat, humped shoulders and Roman-nosed muzzle. Expose the actual far forefoot and its visible ankle outline naturally, without changing the leg length or removing coat. Horns sweep outward then back."
+  }
+ },
+ {
+  "id": "15-sheep",
+  "name": "Sheep",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "21-sheep",
+   "previousMaster": "audits/G2_C110_20260927/21-sheep/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 38%)"
+   ],
+   "previousVisual": "Full original: woolly cream fleece, both ears, natural long wool-covered tail, four separated black hooves. Hornless subject was requested, not an absence admission. Foreleg roots overlap beneath fleece.",
+   "correction": "Retain thick woolly fleece, narrow bare face and bare lower legs. Paint the canonical short drooping tail, not the earlier long wool-covered tail; preserve its actual connected root. Separate the visible foreleg contours without creating false gaps inside the fleece."
+  }
+ },
+ {
+  "id": "16-wild-sheep",
+  "name": "Wild Sheep",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "22-wild-sheep",
+   "previousMaster": "audits/G2_C110_20260927/22-wild-sheep/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 28% paint (reference 90%)"
+   ],
+   "previousVisual": "Full original: large curled ram horns, brown body with pale belly/rump, natural short dark/pale tail and four hooves. HOLD far ear obscured by horn and hindquarter/foreleg roots need scoring.",
+   "correction": "Preserve a short coarse hair coat rather than woolly fleece, muscular body and massive curling horns. Separate the real far foreleg ankle and complete hoof, and show actual ear edges only where visible around the horns; never infer a hidden ear or relocate it."
+  }
+ },
+ {
+  "id": "17-dromedary-camel",
+  "name": "Dromedary Camel",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "23-dromedary-camel",
+   "previousMaster": "audits/G2_C110_20260927/23-dromedary-camel/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+   ],
+   "previousVisual": "Full original: exactly one hump, long curved neck, both ears, complete tufted tail, four separated broad two-toed feet. HOLD very thin limb joints and upper near/far leg overlap require anatomical scoring.",
+   "correction": "Preserve exactly one hump, a curved long neck, true knobbly knee pads and broad two-toed padded feet. Show the complete real tail from root to tuft clear of hind legs, and naturally connected full limbs rather than thread-thin sticks. Camel feet are padded, not horse hooves."
+  }
+ },
+ {
+  "id": "18-bactrian-camel",
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "previousId": "24-bactrian-camel",
+   "previousMaster": "audits/G2_C110_20260927/24-bactrian-camel/master.png",
+   "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+   ],
+   "previousVisual": "Full original: exactly two distinct humps, shaggy brown coat, both ears, complete long tufted tail and four separate broad feet. Upper forelegs obscured by chest coat; no admission from visible feet alone.",
+   "correction": "Preserve exactly two separate humps, real shaggy neck/chest/hump hair, curved neck and broad padded feet. Show the complete true tail shaft and tuft clear of legs. Distinguish visible leg contours without erasing the chest coat or inventing hidden upper parts."
+  }
+ },
+ {
+  "id": "19-gibbon",
+  "name": "Gibbon",
+  "family": "primate",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "20-leech",
+  "name": "Leech",
+  "family": "annelid",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/20-leech",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "21-sea-squirt",
+  "name": "Sea Squirt",
+  "family": "sessile-filter",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "22-banana-slug",
+  "name": "Banana Slug",
+  "family": "gastropod",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "23-prawn",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ },
+ {
+  "id": "24-crab",
+  "name": "Crab",
+  "family": "brachyuran",
+  "packet": "audits/C213_CREATURE_SUPPLY_20261002/24-crab",
+  "master": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null
+ }
+]

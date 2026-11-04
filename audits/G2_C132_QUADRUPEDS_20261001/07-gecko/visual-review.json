@@ -1,0 +1,28 @@
+{
+  "name": "Gecko",
+  "masterSha256": "fbb7425e044bd453d5503155288f7cbde2c97deb315c526ff9bcf2dc957f8a85",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: large lidless eye with vertical slit pupil, granular spotted skin, plump ringed tail and four visible padded feet. Some toes merge within pad clusters and the far limb roots are partly occluded; exact toe count remains unconfirmed. No invented mammalian ears. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 343,
+      "y0": 525,
+      "x1": 902,
+      "y1": 742
+    },
+    "margins": {
+      "left": 343,
+      "right": 351,
+      "top": 525,
+      "bottom": 511
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

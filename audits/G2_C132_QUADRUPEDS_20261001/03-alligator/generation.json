@@ -1,0 +1,14 @@
+{
+  "id": "03-alligator",
+  "name": "Alligator",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2c699fe1-6aba-4c32-a113-457fa749ba51.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "64f9dc3207fa10afccd71456fe950a37c2caf9d1fcf5864602553ab59bb32140",
+  "bytes": 1215719,
+  "promptSha256": "c15e56b4d857b6949b10b4daeea4774edb4db2ae7e87daafdc19d13ad9a20284",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

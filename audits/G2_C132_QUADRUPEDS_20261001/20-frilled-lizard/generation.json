@@ -1,0 +1,14 @@
+{
+  "id": "20-frilled-lizard",
+  "name": "Frilled Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-55a47faa-c943-40bf-b75f-b6ea17537452.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7383537e8a389ca9963f5131850847deedf3593d196983e89194af43bd2a2147",
+  "bytes": 1015266,
+  "promptSha256": "ad269e570d89df0ffbbdf897bc95ca29dcb2cacfed03211b9d201ac076ef023c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

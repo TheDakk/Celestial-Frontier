@@ -1,0 +1,24 @@
+{
+  "schema": "cf.reviewed-adult-mayfly-mouthparts/v1",
+  "name": "Mayfly",
+  "family": "insect",
+  "scope": "exact-master-only-no-visual-admission",
+  "context": {
+    "lifeStage": "adult",
+    "pose": "winged-side-right"
+  },
+  "absent": [
+    "mandible"
+  ],
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original shows an adult winged form with raised veined wing surface(s), complete abdomen and cerci, and no separate projecting chewing jaw. This review removes only the functional chewing actuator; it does not approve antenna length, wing inventory or leg geometry.",
+    "observedWingSurfaces": 1,
+    "visibleChewingJaws": false
+  },
+  "biologySource": "https://entomology.mgcafe.uky.edu/node/1619",
+  "masterSha256": "3806594e9dc3afe8d9f92d2fb768a5bca58c0f8fc45fb0d1aa3a711f86afbffa",
+  "subjectSha256": "01f03f5f658f7c6203954d725e7fc499957964e64c109c773b9c66b0e408b7e7",
+  "promptSha256": "ea19eb61c7e9a03cc7c7b410281ec6610290ee17c2495084f2e86751082ed0dd"
+}

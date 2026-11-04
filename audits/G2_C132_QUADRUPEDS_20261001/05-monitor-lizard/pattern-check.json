@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Monitor Lizard",
+  "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

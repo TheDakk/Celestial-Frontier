@@ -1,0 +1,72 @@
+[
+ {
+  "id": "17-python",
+  "name": "Python",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/17-python",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/17-python/master.png"
+ },
+ {
+  "id": "18-boa",
+  "name": "Boa",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/18-boa",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/18-boa/master.png"
+ },
+ {
+  "id": "19-racer",
+  "name": "Racer",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/19-racer",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/19-racer/master.png"
+ },
+ {
+  "id": "20-garter-snake",
+  "name": "Garter Snake",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/20-garter-snake",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/20-garter-snake/master.png"
+ },
+ {
+  "id": "17-tree-snake",
+  "name": "Tree Snake",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/17-tree-snake",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/17-tree-snake/master.png"
+ },
+ {
+  "id": "18-rat-snake",
+  "name": "Rat Snake",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/18-rat-snake",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/18-rat-snake/master.png"
+ },
+ {
+  "id": "19-cottonmouth",
+  "name": "Cottonmouth",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/19-cottonmouth",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/19-cottonmouth/master.png"
+ },
+ {
+  "id": "21-mamba",
+  "name": "Mamba",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/21-mamba",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/21-mamba/master.png"
+ },
+ {
+  "id": "23-whip-snake",
+  "name": "Whip Snake",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/23-whip-snake",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/23-whip-snake/master.png"
+ },
+ {
+  "id": "24-grass-snake",
+  "name": "Grass Snake",
+  "family": "serpent",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/24-grass-snake",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/24-grass-snake/master.png"
+ }
+]

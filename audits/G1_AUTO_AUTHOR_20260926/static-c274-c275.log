@@ -1,0 +1,10 @@
+== g2c257ceph start 01:43:29
+{"tag":"g2c257ceph","scored":4,"static":0,"nativePass":0,"nativeFail":[]}
+== g2c257ceph exit 0 01:43:36
+== g2c274 start 01:43:36
+{"tag":"g2c274","scored":23,"static":7,"nativePass":0,"nativeFail":[]}
+== g2c274 exit 0 01:44:55
+== g2c275 start 01:44:55
+{"tag":"g2c275","scored":24,"static":10,"nativePass":0,"nativeFail":[]}
+== g2c275 exit 0 01:46:13
+ALLDONE
