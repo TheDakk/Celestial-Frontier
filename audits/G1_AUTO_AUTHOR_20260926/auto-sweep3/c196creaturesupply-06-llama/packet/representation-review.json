@@ -1,0 +1,116 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Llama",
+  "family": "quadruped",
+  "masterSha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992",
+  "subjectSha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de",
+  "promptSha256": "cb4ffaae45a4f35b715b42099313372c4625c2f64d6f6819641eb7e0c26db8c6",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          367,
+          578
+        ],
+        "tail1": [
+          324,
+          680
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              301.05,
+              584.6928571428572
+            ],
+            [
+              310.00714285714287,
+              560.8071428571428
+            ],
+            [
+              321.95,
+              542.8928571428571
+            ],
+            [
+              339.8642857142857,
+              524.9785714285714
+            ],
+            [
+              354.79285714285714,
+              516.0214285714286
+            ],
+            [
+              366.73571428571427,
+              510.04999999999995
+            ],
+            [
+              370.73571428571427,
+              510.04999999999995
+            ],
+            [
+              370.73571428571427,
+              639.6385854341736
+            ],
+            [
+              301.16982174240525,
+              610.3117875972885
+            ],
+            [
+              301.05,
+              609.5928571428572
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              370.73571428571427,
+              639.6385854341736
+            ],
+            [
+              370.73571428571427,
+              648.4071428571428
+            ],
+            [
+              340.87857142857143,
+              672.2928571428572
+            ],
+            [
+              325.95,
+              684.2357142857143
+            ],
+            [
+              321.95,
+              684.2357142857143
+            ],
+            [
+              307.0214285714286,
+              645.4214285714286
+            ],
+            [
+              301.16982174240525,
+              610.3117875972885
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "f2dd5711b6cea421e885633a753984443a1ffab715f1d510dbbded0bd85f232e"
+}

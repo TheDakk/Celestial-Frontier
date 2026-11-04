@@ -1,0 +1,66 @@
+{
+  "name": "Spotted Hyena",
+  "family": "quadruped",
+  "species": {
+    "name": "Spotted Hyena",
+    "aspect": 1.8,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "back sloping sharply down from high shoulders to low hips",
+      "massive thick neck and heavy jaws",
+      "rounded ears and blotchy spots"
+    ]
+  },
+  "genome": {
+    "seed": 3336210817,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 8,
+    "body": 6,
+    "loco": 13,
+    "trait": 3,
+    "size": 4,
+    "diet": 2,
+    "head": 3,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 9,
+    "detail": 2,
+    "accent": 11,
+    "temper": 3,
+    "sense": 1,
+    "repro": 4,
+    "life": 1,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Spotted Hyena"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Spotted Hyena\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3336210817\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "index": 195,
+  "profile": {
+    "id": "hyena",
+    "names": [
+      "Hyena",
+      "Spotted Hyena",
+      "Striped Hyena"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

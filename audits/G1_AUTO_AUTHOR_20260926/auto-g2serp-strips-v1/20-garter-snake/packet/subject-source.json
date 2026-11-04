@@ -1,0 +1,81 @@
+{
+  "name": "Garter Snake",
+  "family": "serpent",
+  "species": {
+    "name": "Garter Snake",
+    "aspect": 8,
+    "headFrac": 0.05,
+    "eyes": "normal",
+    "posture": "crawling",
+    "mustRead": [
+      "long pale stripes running the whole body length",
+      "slender limbless body",
+      "small head barely wider than the neck"
+    ]
+  },
+  "genome": {
+    "seed": 1374282322,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 3,
+    "body": 6,
+    "loco": 8,
+    "trait": 22,
+    "size": 1,
+    "diet": 5,
+    "head": 0,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 7,
+    "habitat": 11,
+    "detail": 1,
+    "accent": 15,
+    "temper": 2,
+    "sense": 2,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Garter Snake"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Garter Snake\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1374282322\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 132,
+  "profile": {
+    "id": "snake",
+    "names": [
+      "Cobra",
+      "Viper",
+      "Tree Snake",
+      "Rat Snake",
+      "Garter Snake",
+      "Cottonmouth",
+      "Water Snake",
+      "Mamba",
+      "Rattlesnake",
+      "Racer",
+      "Mountain Viper",
+      "Whip Snake",
+      "Grass Snake",
+      "King Snake",
+      "Cave Snake",
+      "Snake",
+      "Vine Snake"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike"
+    ],
+    "notes": ""
+  }
+}

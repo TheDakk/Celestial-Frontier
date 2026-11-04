@@ -1,0 +1,167 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cottonmouth\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"422978903\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"22\"]]]]",
+    "seed": 422978903,
+    "ownerId": "authored:archetype-sprint/19-cottonmouth",
+    "earthName": "Cottonmouth"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 422978903,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 11,
+    "body": 5,
+    "loco": 5,
+    "trait": 22,
+    "size": 2,
+    "diet": 4,
+    "head": 0,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 1,
+    "detail": 3,
+    "accent": 16,
+    "temper": 3,
+    "sense": 8,
+    "repro": 1,
+    "life": 4,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cottonmouth"
+  },
+  "geometry": {
+    "cutoutAssetHash": "7aeecbf0c3b2f7de4a7a5b652cb5c5e2074b4be0607af4387ac6764992c99b72",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6216,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.8662679425837321,
+      0.45614035087719296
+    ],
+    "head": [
+      0.9242424242424242,
+      0.4365231259968102
+    ],
+    "jaw": [
+      0.9524720893141947,
+      0.43668261562998406
+    ],
+    "seg0": [
+      0.8152312599681021,
+      0.486682615629984
+    ],
+    "seg1": [
+      0.750956937799043,
+      0.474481658692185
+    ],
+    "seg2": [
+      0.6630781499202552,
+      0.531658692185008
+    ],
+    "seg3": [
+      0.5760765550239234,
+      0.5578149920255183
+    ],
+    "seg4": [
+      0.4913078149920255,
+      0.5005582137161085
+    ],
+    "seg5": [
+      0.4043062200956938,
+      0.4910685805422647
+    ],
+    "seg6": [
+      0.3180223285486444,
+      0.5291866028708134
+    ],
+    "seg7": [
+      0.23253588516746412,
+      0.5544657097288676
+    ],
+    "seg8": [
+      0.13763955342902712,
+      0.5521531100478468
+    ],
+    "seg9": [
+      0.051355661881977675,
+      0.5237639553429027
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/19-cottonmouth/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Automatic serpent strip transfer from python: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "4aa43dbe4e5072518410376cbe2e4515fa399c66939d3a60ecdf4523db847150",
+    "subjectSourceSha256": "07cc2edc24be78445f3878099b82494be9cbd12f84cbd7017e489a42c0eccab5",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.06120356227869043,
+      "jaw": 0.028230115603862283,
+      "seg0": 0.05947749917942188,
+      "seg1": 0.06542210513649054,
+      "seg2": 0.1048422363271807,
+      "seg3": 0.09084838763485072,
+      "seg4": 0.10229407582537897,
+      "seg5": 0.08751760195686085,
+      "seg6": 0.09432864658598003,
+      "seg7": 0.08914575281809366,
+      "seg8": 0.09492450629155857,
+      "seg9": 0.09083421186625798
+    },
+    "measures": {
+      "body": 0.764775100997894,
+      "bone-min": 0.028230115603862283,
+      "bone-max": 0.1048422363271807,
+      "head/body": 0.08002818370895022
+    }
+  },
+  "recipeHash": "0c46015f147980ee345fa9651e4b86ce786ecbd8d494651c00a8e1b072706dda"
+}
