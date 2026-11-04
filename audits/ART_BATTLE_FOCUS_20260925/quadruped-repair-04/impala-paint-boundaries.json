@@ -1,0 +1,9 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "reason": "Observed interior torso root patch is continuous with surrounding spine paint; other independent silhouettes stay separate."
+}
