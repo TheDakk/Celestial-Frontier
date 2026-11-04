@@ -1,0 +1,49 @@
+{
+  "oldOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "currentOwnerSha256": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d",
+  "soleDelta": "Added refusal for semanticOwnership fields; no valid ordinary-field algorithm change",
+  "unchangedCandidateCollar": true,
+  "rows": [
+    {
+      "id": "01-grouper",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "c7affac2fb654051ac03f23b200317e19a992c4f1c614f2b4c2a3e635d78a17d"
+    },
+    {
+      "id": "01-mackerel",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "e578fae523bbb3b2f7b79377b53f089e6a59ce4758c12b6195dd88a84cce8a9b"
+    },
+    {
+      "id": "02-barracuda",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "63de1fe878a32a9376a5240588ceceb6e1c0be24446701db791263b2e2146f02"
+    },
+    {
+      "id": "04-sardine",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "dc1e5a48cca3dacb7c1c269b9736b1cc3f58761dff5383883eef28bd3115ee81"
+    },
+    {
+      "id": "05-sailfish",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "4efa2678a99c43c5f4cf1c07f87d9094fd0fb9b0c649eaf4f502cc16318f1afb"
+    },
+    {
+      "id": "06-mullet",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "1d6aa5d30993dea6a0a5fd2c4bab158bda368728cf840a578aaa0ac6134e7c0e"
+    },
+    {
+      "id": "07-mahi-mahi",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "13d9b1b4736630b6acfb833b6cdc19b991bff49e357298f6de122d13b7510983"
+    },
+    {
+      "id": "07-tarpon",
+      "status": "BYTE_IDENTICAL",
+      "bindingHash": "157865b205cc3de064a42188dc9292497def79ba48c57b3299b54dc8bd866e11"
+    }
+  ],
+  "decision": "Re-seal audit fish recipe to current owner after selector controls; retain new semantic-field refusal. No I5 measurement authority changed."
+}

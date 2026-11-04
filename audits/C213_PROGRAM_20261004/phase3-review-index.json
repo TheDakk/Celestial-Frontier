@@ -1,0 +1,12 @@
+[
+  {
+    "packet": "audits/G2_C118_20260927/19-mayfly",
+    "review": "audits/G2_C118_20260927/19-mayfly/reviewed-presence.json",
+    "status": "EXACT_ADULT_MOUTH_ACTUATOR_REVIEW_ONLY"
+  },
+  {
+    "packet": "audits/G2_C81_20260927/22-mayfly",
+    "review": "audits/G2_C81_20260927/22-mayfly/reviewed-presence.json",
+    "status": "EXACT_ADULT_MOUTH_ACTUATOR_REVIEW_ONLY"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "scope": "Full-original inspection of four representative refusals; no assignment relaxed",
+  "observations": [
+    {
+      "id": "c203creaturesupplyb-04-springbok",
+      "class": "limb-down",
+      "observation": "Four natural legs, no udder or fifth limb. Reference impala counter joins both hind-leg owners in one component; winner-only assignment loses the separately painted far hind leg.",
+      "proposedOwner": "existing distinct hind chain, one-to-one assignment required"
+    },
+    {
+      "id": "c203creaturesupplyb-24-fangtooth",
+      "class": "front",
+      "observation": "Large open lower jaw and species teeth; reference bass head/jaw exist but no reference front component is counted.",
+      "proposedOwner": "existing head/jaw, reference-paint and target-overlap evidence required"
+    },
+    {
+      "id": "g2c163familyoriginals-09-spider-monkey",
+      "class": "top",
+      "observation": "Raised continuous natural tail. Chimpanzee reference is tailless and offers no tail owner.",
+      "proposedOwner": "requires independently qualified tailed reference; never assign to head or exempt as extra"
+    },
+    {
+      "id": "g2c114-24-diving-beetle",
+      "class": "limb-down",
+      "observation": "Natural broad hind swimming leg; both hind legs collapse to one counted reference component.",
+      "proposedOwner": "existing separate hind leg chains, not a wing/body exemption"
+    }
+  ]
+}

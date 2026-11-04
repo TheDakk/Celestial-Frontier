@@ -1,0 +1,1610 @@
+[
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/c192creaturesupply-15-pronghorn/fit/intake-provenance.json",
+    "originalSha256": "fd1d264e677f6453f3eaf1fd0045cd16b0b3cf16a19fa2ffbdf530851f058ee6",
+    "normalizedSha256": "c7dabf4d0c8e25bbc5b64fa7c1b7f1095d424cc3752f2128df7b5b7978568c05",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/c196creaturesupply-06-llama/fit/intake-provenance.json",
+    "originalSha256": "d2f942413633b381b290e85798ff0f5405b84eb208655b3c7d6d3ed877b67746",
+    "normalizedSha256": "7780b3a8d44644c5eb87d3cb108407bdc360db34497b077c1f93d30b9242d758",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/c202creaturesupply-02-wild-boar/fit/intake-provenance.json",
+    "originalSha256": "17f3b99496e685c091916b3d1d6a406154103114b62c4c37aeb11ef7920a075f",
+    "normalizedSha256": "c5bebde8ec0ecf563b60144e5ffc25841870d4d4281c675cc53ef0ab1b1057aa",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/c203creaturesupply-12-alpaca/fit/intake-provenance.json",
+    "originalSha256": "0eb74f89ce9b634f31c1f03a863196e2cbc8954d951ffffc6395304c48eb944d",
+    "normalizedSha256": "f6bf0b9cf96cdec2982d82bb9a1842b12eb602572a5ac983a6a44eab5ffbcc5c",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/g2c107-16-chamois/fit/intake-provenance.json",
+    "originalSha256": "052264819d3204c80da4ab0b5e386406888d7ec1c34a2d89cc58aac78e00d58b",
+    "normalizedSha256": "f95bdeb2c13b4eec8cd7e96a153c2c96856171d05aa3e3025ccda081f2b5c3c6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/g2c76-19-alpaca/fit/intake-provenance.json",
+    "originalSha256": "44dda3e66bfdfca9edb6bd5d4a81ff9611f9ad4bd8ccfa82e686ce8ff9259995",
+    "normalizedSha256": "ff636b85d6446c036d1c21e4964e54d977824312530f8f684c3bab35cf50b781",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/g2c90-17-rabbit/fit/intake-provenance.json",
+    "originalSha256": "cf87b87cafd6d52c2cca991372e52bc644796acf81aa7570a125681713b96f5a",
+    "normalizedSha256": "4cb0025ea4bb65d80ebcedf0cc51c92cac47fc20557e460149318a5ee898e9fc",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-deliveries/g2c95-13-pronghorn/fit/intake-provenance.json",
+    "originalSha256": "cb2ada9ec774466d756f07293433cfa7c10b3bfaedb5e77fcdcb2ebcd1a5e618",
+    "normalizedSha256": "e66d6f15e92b773e96b900db7895d7ff80aefc30ac62d13af1b498fc922e1156",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-root-validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase1-yield.json",
+    "originalSha256": "c3accc59f8618023375d384d76b43539852f6a1f8c1b8c161c6f01be2ce34da0",
+    "normalizedSha256": "9625c6506081da2f16e531d449d510178a8b5acf8f8c02cf4c8428e2c637528d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/c192creaturesupply-16-springbok/fit/intake-provenance.json",
+    "originalSha256": "2512b65e07f82e41138de7219fa8a1ea4e06fcff1d3559d987e82068d205f502",
+    "normalizedSha256": "4e336fc77411c23e5930b6f108b0c5f2b43627cb52b265d588536f929bbec037",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/c203creaturesupply-13-gerenuk/fit/intake-provenance.json",
+    "originalSha256": "eb071e60fcba2f7346ca577a5d243c7f712e126dc44fc0ba514b468f9ec0e5bf",
+    "normalizedSha256": "8feb39d75321ce2f9fa2f9cabfd5d3dd4ef7bf604f70330e6651a2c5a41ed8c6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/c203creaturesupplyb-04-springbok/fit/intake-provenance.json",
+    "originalSha256": "d242d81ca56de1c5fb24f6f6eb076d7b443f079afab49c78d317dd88911c909a",
+    "normalizedSha256": "d1740fd1ff0bd0ce349a64634a5c2f5350032d530ebebc435845e70e082a92c4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/g2c106-11-knifefish/fit/intake-provenance.json",
+    "originalSha256": "d2275a58a70742bd323faafa8fda0df19f30d303b07b2b8c187744059dca5736",
+    "normalizedSha256": "47ac1f7d84e07764994524621708f8a506d436894989e7721ea48888becb9074",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/g2c76-06-arowana/fit/intake-provenance.json",
+    "originalSha256": "f7ae197c5c4990b433e5a781aba1c4ba996e6ef2bbe7bdd9fd8ace9e693be3b2",
+    "normalizedSha256": "109f45d0ad8c5394a3fccf25f98c003cba139f24495ab995b154a9aee7367951",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-deliveries/g2c90-09-bowfin/fit/intake-provenance.json",
+    "originalSha256": "eef18e08109baffc2b67feba4db4db3f433b09968b51bb793c55b34546b84a0e",
+    "normalizedSha256": "d17b700f50980b0edbd99ccf4be58ddba9fd3e4eb22e9689264fe3f39b409a94",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-root-validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase2-yield.json",
+    "originalSha256": "6cd017e309061b78d02548ceab4b38a528ceb8d65aa6847787a9ac67865580d8",
+    "normalizedSha256": "f48c289475bfba6234cf7e1f7468b4dd8077fa0cedb4396c8a75e44570cc1b35",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "5f69dc7d29284d942919d480ba81c6a39a6e9d89046b912dfabdb39925300c84",
+    "normalizedSha256": "4809efcec447e904418e9e4bfd456d81f446f01d181fad4b4abecb5e34bca498",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "a8ff79cab0e63e216df55a837bc6e671ab317dd81749c1aeb712f8a302427aae",
+    "normalizedSha256": "3ce49cb2c6ed259ce5fc6771ac792e2d525a92da5d0131ec337ae191dd1ddebf",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "83894f18be847e545d33b07b7fc08eb118d22eb1ff01abffaa0d2d19c9e2becb",
+    "normalizedSha256": "a35664ed26cdb2076be612031bdbf5c482f4d518bec3bb572e0ec6827e3e2c9d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "7599e01ff4a6331b7c416be36798907987dad2410c39fb2cdd7de2253485d1c1",
+    "normalizedSha256": "ff89f9517b3674150bf1700a344c82e4dca80c173770e7602b8c342cc1fcb4ac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "258d3cffc1783bc0853215b39d9dbb26246ac797ed5efe429694110be1781e0d",
+    "normalizedSha256": "15fe8a31a0a30578b1051b2d3015a472d7636067c02678c5eaa9345b54a0d0e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "1d45db873ec6250cc42c3ed1886f3dfecdcfdf8971e849739b42e9ba1b410b88",
+    "normalizedSha256": "4c1dc9bb22144b45d8107fa2483efe9df7e046ed1d0f19f9002b6512455325c0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/summary.json",
+    "originalSha256": "1d3ae5452e0b56acdab997aac76ce9954fb5c61e3839a0abf43bdb3227a51107",
+    "normalizedSha256": "935508c637b4eae2c970be3ed0b16ac8334fda33a50bd590199eacf5613023fd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "583bfb305b22749c814bb4623264a44a51a7e6be47354bf6e0f0430a271be22d",
+    "normalizedSha256": "24fa292efd360f7957f8b9916d7c8f0d6ae1072323b3b784bd401780f6d7d20a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "a8ff79cab0e63e216df55a837bc6e671ab317dd81749c1aeb712f8a302427aae",
+    "normalizedSha256": "3ce49cb2c6ed259ce5fc6771ac792e2d525a92da5d0131ec337ae191dd1ddebf",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "83894f18be847e545d33b07b7fc08eb118d22eb1ff01abffaa0d2d19c9e2becb",
+    "normalizedSha256": "a35664ed26cdb2076be612031bdbf5c482f4d518bec3bb572e0ec6827e3e2c9d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "7599e01ff4a6331b7c416be36798907987dad2410c39fb2cdd7de2253485d1c1",
+    "normalizedSha256": "ff89f9517b3674150bf1700a344c82e4dca80c173770e7602b8c342cc1fcb4ac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "258d3cffc1783bc0853215b39d9dbb26246ac797ed5efe429694110be1781e0d",
+    "normalizedSha256": "15fe8a31a0a30578b1051b2d3015a472d7636067c02678c5eaa9345b54a0d0e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "1d45db873ec6250cc42c3ed1886f3dfecdcfdf8971e849739b42e9ba1b410b88",
+    "normalizedSha256": "4c1dc9bb22144b45d8107fa2483efe9df7e046ed1d0f19f9002b6512455325c0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c114-23-water-beetle/fallback-1/score.json",
+    "originalSha256": "00c0f22df1660ad82c27dfc31fe88a73fae9077241b705c80e87585189967f95",
+    "normalizedSha256": "1900b60e4a55ecb9e7f2a4133926f6c0ee5248140ffb662c5a16bceba56913d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/summary.json",
+    "originalSha256": "658799b1c5b08e7ff60887eca9cfda6c5a0112a7efac4322bd232eb47d2ba062",
+    "normalizedSha256": "3f5479b69df820c380134a5bfbb4a33b15a8ced56217821cf146eb7819b216c6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/report.json",
+    "originalSha256": "c91b30f7641a9ef9a1414a91341a222452d5022f78d8766efcd05a3f5262f797",
+    "normalizedSha256": "f25863d6631eb70787a004f86a635840859bdcd79393f3eef9c93e00f0a4be61",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/report.json",
+    "originalSha256": "c68f5d3012cee9660da8d5785f5cb327000b466574a5b8f9570f783d17acaf82",
+    "normalizedSha256": "952c026113b7af9f6c7832b5e75d19e778d22540590c6ab92a105b9fd610618d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/report.json",
+    "originalSha256": "c57644544fef8ced999d217ceb400cff621eba1836d9a27f2b5599ebc0c3f2fe",
+    "normalizedSha256": "7368b95273a787a648eb9dc8d5b3a4af48b145340bef1e915ee7ffa06d0afebc",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/report.json",
+    "originalSha256": "715da0bf9bfab9298773dbd4cedcd459940ebebdd226eb76f421d099cab80416",
+    "normalizedSha256": "5f41cd5e5064e1587de59cf01fea1ce34e6d4af7c4bbe2c2efd3e453be097f14",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/report.json",
+    "originalSha256": "b675f651b3e5d802f3e1d7a157cd9d861f49b4a4e465f1c0b209ed461c06e30d",
+    "normalizedSha256": "50e5dc849d6869b8ad1f230cc58a23d64e783d2196825c392981ccec5e14dbad",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/report.json",
+    "originalSha256": "e2112938acc9a0abda71b908373eaec06203e1a9b785e695474dd434a76c766e",
+    "normalizedSha256": "b712d60af287014743cc999792b2c15404ac4f32fbf05531560e7d01e0bbb20d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/report.json",
+    "originalSha256": "8602d9b34ab41333d6c97ef7f9424faab01d3d8f3831911ba6c8b521fc9f7014",
+    "normalizedSha256": "ee4e9ebacff017ce041bbd113b760e8cc1efd49ac2397165f6ed4df8132743e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/report.json",
+    "originalSha256": "b3148dcf63cc05746db2b8b62e078224bd1c0c4d797309c5edaa7f5093d17dc7",
+    "normalizedSha256": "6ab52d31ff742eeebb66e0c17a97f6325c0cb341a515ad31d0fee50f1c309b10",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/report.json",
+    "originalSha256": "415ef7e17a3b3a4f7b25d03d009a0906f9caa419fe5d1f3dadc8ebaee316781c",
+    "normalizedSha256": "ddb870386154c813bbd7365235a79d23ee99fcfe1f7c873d9c47219e0c8ca120",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/report.json",
+    "originalSha256": "fe10f8ebba9d6f0ba0338bf3717746b3c877529af8a901a7becdb6f97424bd4a",
+    "normalizedSha256": "31fe218cfb23e25a99afb682977b23c1b74ea1a79a24f15da03bea197948f8a0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/report.json",
+    "originalSha256": "a28edd7d8c1d83b5db9a2c7ec81e146010260997bb3597ff49f2720617634a17",
+    "normalizedSha256": "8b9d4351ab0db4fb2406bafd23759286c05154fecbf70cc5e0484a6e6a747520",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/report.json",
+    "originalSha256": "0c8de5133b8acb5e136682206374b09e56644101a8fa53e5512928954cfdfb6c",
+    "normalizedSha256": "08fe3bdfa9ad7ba4855cb190920be574a561f212508d5009b1b58ead6f4b9f22",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/report.json",
+    "originalSha256": "2a93bfc5d789bb54b4a905b753a554a1239f7fa1765ebc687724d9e955125374",
+    "normalizedSha256": "e4f23d7666aa45b2d07198c5833ea61cfc6c43b1689a16309851804c984a692a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/report.json",
+    "originalSha256": "1129b492af5622b709cdc3ef0afccea44399f33f2d75f80e68b8e36266850458",
+    "normalizedSha256": "81173d067e633d30451685a42d79e573b5beed5cd3e8dc04a0f92bbeefd2c997",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/report.json",
+    "originalSha256": "5684a0b9f5c82f7c0afd3ad8af7dfd617a4a5f95b60cd5956652c227dba3cbdf",
+    "normalizedSha256": "79febb9a1c3f98950366474c11a4f0ad9ad028503ddc9954dbe9b64412886fac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/report.json",
+    "originalSha256": "2d89759aec58c06ff55d19c4ddb5a3e6faf76379306e0c6db97d30674a4b2ebd",
+    "normalizedSha256": "90b0b04b57de4779d6de0b8e6f98a64022b76439c6e5e34f74b3bae66ef4c62d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/report.json",
+    "originalSha256": "88d059c29188a445e11613bad22759610ab8124783d69c1c6b403f69098f2430",
+    "normalizedSha256": "3ef5982d1fb0f9a8671293be8497d104ed71651f8151adce1501247c48ec1f52",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/report.json",
+    "originalSha256": "73e76b6e1ea3056d9a70db0ce8a3c55961c4dd5ef286a3c10f3ff618704c6151",
+    "normalizedSha256": "3f342657d86286c032605f80cd3ee84a391d9ca77d03e748a2f519f4302fbff8",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase3-root-validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase3-yield.json",
+    "originalSha256": "30c1e1b00b697671b99da08d557f312e7fdbdacb247bd41bd60c1a817c67f266",
+    "normalizedSha256": "6ce17e2e359acb445736d552c96aaf51aa67cb1ee1accba048da1fbdbec050af",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-02-elephant/fit/intake-provenance.json",
+    "originalSha256": "1dc6890ed04cda56955a68b75e272829cb9546ca83d763b388d4079698f55bbb",
+    "normalizedSha256": "4f05557bc17bc5d3fd67a62da1b19cf7e6aa5aed9a692eaf0b73d95d49b5265f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-17-tahr/fit/intake-provenance.json",
+    "originalSha256": "e53e4b9817223ca351102280a7b0192e1af0a8cd87f2aac44753408bd65fa02b",
+    "normalizedSha256": "1abf9ec718cb99a1ad942944d7881b00d106ccbfa4da7e371e27114379f660a1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-root-validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "583bfb305b22749c814bb4623264a44a51a7e6be47354bf6e0f0430a271be22d",
+    "normalizedSha256": "24fa292efd360f7957f8b9916d7c8f0d6ae1072323b3b784bd401780f6d7d20a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "a8ff79cab0e63e216df55a837bc6e671ab317dd81749c1aeb712f8a302427aae",
+    "normalizedSha256": "3ce49cb2c6ed259ce5fc6771ac792e2d525a92da5d0131ec337ae191dd1ddebf",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "83894f18be847e545d33b07b7fc08eb118d22eb1ff01abffaa0d2d19c9e2becb",
+    "normalizedSha256": "a35664ed26cdb2076be612031bdbf5c482f4d518bec3bb572e0ec6827e3e2c9d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "7599e01ff4a6331b7c416be36798907987dad2410c39fb2cdd7de2253485d1c1",
+    "normalizedSha256": "ff89f9517b3674150bf1700a344c82e4dca80c173770e7602b8c342cc1fcb4ac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "258d3cffc1783bc0853215b39d9dbb26246ac797ed5efe429694110be1781e0d",
+    "normalizedSha256": "15fe8a31a0a30578b1051b2d3015a472d7636067c02678c5eaa9345b54a0d0e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "1d45db873ec6250cc42c3ed1886f3dfecdcfdf8971e849739b42e9ba1b410b88",
+    "normalizedSha256": "4c1dc9bb22144b45d8107fa2483efe9df7e046ed1d0f19f9002b6512455325c0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c114-23-water-beetle/fallback-1/score.json",
+    "originalSha256": "00c0f22df1660ad82c27dfc31fe88a73fae9077241b705c80e87585189967f95",
+    "normalizedSha256": "1900b60e4a55ecb9e7f2a4133926f6c0ee5248140ffb662c5a16bceba56913d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/summary.json",
+    "originalSha256": "3da6ea0d07135dfd6ac6066d54057c630e8c2c041bddc9ce6632383d4b78e420",
+    "normalizedSha256": "b6e2eee5c1367cd151704f3f97d3a7c5ddf7622d9a9f4cc9efd2fba4e9caf272",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/report.json",
+    "originalSha256": "f2e5c7661e1ca78fb8a829f668c876b9de5cb8e5c5c96f6665a936832e1994f4",
+    "normalizedSha256": "23799489e25fa1c29317aba85f8c959c28a777c4bc90939245ae63da9aedf983",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/report.json",
+    "originalSha256": "cbcb71a0250b1ccb72d4b0565905c4800dae8d586f44a99f5eb85fb0d0da06c1",
+    "normalizedSha256": "aeb336d01dab18315ca6e3d1b9c76f0204645c7a600b80b4456e15880fbea150",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-transparent-tahr-build.log",
+    "originalSha256": "9505c9dd5c08a90f3c824b893c29638d3ae70762b739f5d3bc7e84bba3764bf5",
+    "normalizedSha256": "0a52277a9978bb42704f8b661d33e09fb75324966208ed98d94e138f31e397f8",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-transparent-tahr-build02.log",
+    "originalSha256": "027069d272056417e2654549b9419e641c0b28b12bffc7f201e9f5fa83ed9fd0",
+    "normalizedSha256": "f130e2380c48e470fad8d8a0327e7f346eba3f6e9403d36b8f292509969e7ba0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-yield.json",
+    "originalSha256": "b72d6a28adbdd8322b6e55c8e77bc592549f37379ac79aefec368382e73dda8f",
+    "normalizedSha256": "fc2a179442899e69942a560ba4de0c77b89ef9323aa9851aaded29fd6fb3b0a1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "583bfb305b22749c814bb4623264a44a51a7e6be47354bf6e0f0430a271be22d",
+    "normalizedSha256": "24fa292efd360f7957f8b9916d7c8f0d6ae1072323b3b784bd401780f6d7d20a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "a8ff79cab0e63e216df55a837bc6e671ab317dd81749c1aeb712f8a302427aae",
+    "normalizedSha256": "3ce49cb2c6ed259ce5fc6771ac792e2d525a92da5d0131ec337ae191dd1ddebf",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "83894f18be847e545d33b07b7fc08eb118d22eb1ff01abffaa0d2d19c9e2becb",
+    "normalizedSha256": "a35664ed26cdb2076be612031bdbf5c482f4d518bec3bb572e0ec6827e3e2c9d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "7599e01ff4a6331b7c416be36798907987dad2410c39fb2cdd7de2253485d1c1",
+    "normalizedSha256": "ff89f9517b3674150bf1700a344c82e4dca80c173770e7602b8c342cc1fcb4ac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "258d3cffc1783bc0853215b39d9dbb26246ac797ed5efe429694110be1781e0d",
+    "normalizedSha256": "15fe8a31a0a30578b1051b2d3015a472d7636067c02678c5eaa9345b54a0d0e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "1d45db873ec6250cc42c3ed1886f3dfecdcfdf8971e849739b42e9ba1b410b88",
+    "normalizedSha256": "4c1dc9bb22144b45d8107fa2483efe9df7e046ed1d0f19f9002b6512455325c0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c114-23-water-beetle/fallback-1/score.json",
+    "originalSha256": "00c0f22df1660ad82c27dfc31fe88a73fae9077241b705c80e87585189967f95",
+    "normalizedSha256": "1900b60e4a55ecb9e7f2a4133926f6c0ee5248140ffb662c5a16bceba56913d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p4/summary.json",
+    "originalSha256": "6fefcd7302bfd29786600531887ab6084527a739c8ee698b5e0b18a2022e81aa",
+    "normalizedSha256": "d13857326575b98a1ad8f415ada8ba0ec85e579d6bc84c0b33e3842dc2e806d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/06-hyena/fit/intake-provenance.json",
+    "originalSha256": "062c12d032fd05e0511f66d064b28a11ff7b89b7ab9e76ade5feb85c2f1478e0",
+    "normalizedSha256": "6a83c03365ac2c35d17c3c818ab219e0e53d955d35930cf7262e75d580495882",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/08-impala/fit/intake-provenance.json",
+    "originalSha256": "bcc46ae93b398cb74ac27121111354491eee249fafd26bdff98626c3da4233ae",
+    "normalizedSha256": "3867b9ac33ab7e8081e422a0d366d90ee7557ebcbcbb504930f2128aa415d95b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/09-kinkajou/fit/intake-provenance.json",
+    "originalSha256": "a1699ab215189a097e0dac8552b1ebddf4dedebca5fb70ff43ab88491170a4c8",
+    "normalizedSha256": "8d96199f50bbc29cd74d72ff150dc24c49e7561b2a44cd3b9617d123ecffd1e0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/14-red-fox/fit/intake-provenance.json",
+    "originalSha256": "a1ad639e96e37ca3196dfbaf72e697b81c953d90b15f41033378c469ddd59e68",
+    "normalizedSha256": "2a3c543d6e68d36a9d341bf9004aad411756141aded320bb6ea41920ba5c9c00",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/21-auk/fit/intake-provenance.json",
+    "originalSha256": "ae2924e68789ec2504a48ad11190161c238587524f74ff721db4bd05901e411c",
+    "normalizedSha256": "15bab0594e2aac9ccfc5f279450f440ddad5ae2c357a712031a68030d2406548",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/27-gull/fit/intake-provenance.json",
+    "originalSha256": "8b9fa22759e819b40d5d586c116727c5b3a87150dfb028f9e40d3f2e7cf35cbb",
+    "normalizedSha256": "691717e8743712bd5523e982c4c0acf16f6d8b3f1f08237773f3b20a494170ca",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/28-kookaburra/fit/intake-provenance.json",
+    "originalSha256": "5e629c6936b98735ab6d3c9a985f16f39f78d2832cc3af5cc39aa7c132db62c6",
+    "normalizedSha256": "c214285e8cdd9f8a2cb803abf20aa16fc10ea6cc1322e2d85f817a30900f8b64",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/29-osprey/fit/intake-provenance.json",
+    "originalSha256": "b92627712ab8edb495bf4faad7dea196a07e43e2618cc70f5748d2e3da3ce4d4",
+    "normalizedSha256": "3a940284f60ab9b806fdaabc5150835aca90f882d28e0ed2141868b8528cf28c",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/33-arowana-source02/fit/intake-provenance.json",
+    "originalSha256": "39d2f154a78ad278e654e64dc0b833e2c7003fbc97634978aea4d81e57f8e54f",
+    "normalizedSha256": "dd8b4751d3a4605c3bb92dbde29f6a0a6cf03deabd53ac7655aff93cbd609743",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/34-blenny/fit/intake-provenance.json",
+    "originalSha256": "a02d0e0a5dde8209524abfdb485e03a878fe20ccd23fca041fe127056e888ced",
+    "normalizedSha256": "499b9e485a2599dd201aba75540aedc17d44a6356f2405834551bf4e96c27491",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/deliveries/37-knifefish/fit/intake-provenance.json",
+    "originalSha256": "e62f9cbd37d8c9ff1dc8df945a09fa54261c810d4e37576071e7f6dd72ae7d4e",
+    "normalizedSha256": "4774e9e59674c469707db9bfd0b61ef820e5cfce07683df942bf8d640ecaa1be",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/request-controls.log",
+    "originalSha256": "06582681baf53b2e26f40d818c6712281ed1df412c43e580e16f956b7f2f9a3a",
+    "normalizedSha256": "2660257aa255a2732d6251edc9e4bc54e41f97bc3c7c15a2ab6dd76d92600839",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/scores.json",
+    "originalSha256": "de06f09b66dcfcc9025614f61016b61990e133040b60a72e2c77fed3fffdefe6",
+    "normalizedSha256": "15682b7f3e132afad6be6d458c833b435e690755508e3923f023a2d6e408396a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_ORIGINALS_20261004/validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213supply/40-wahoo-source02/score.json",
+    "originalSha256": "3118abf9d9a4613eef5c68490c32f67fc0cbd2beba07343bd246da15b4f6a676",
+    "normalizedSha256": "29629d28917ddacc5330cfc76136726862cbe72ac242b7ac26f44f91f2e912a5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213supply/summary.json",
+    "originalSha256": "fff155721e756590ee17323fa78809e8aaf770875baf8ed5cfc8e2b4ecd20958",
+    "normalizedSha256": "03cb2334ab10175a3a87745e4baae72be35b5d180e6f66c8cebfd289adbe96c7",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase5-yield.json",
+    "originalSha256": "299bbc5085ee3d44db5e012f16f7957282ec25231daafa210153aca091feed31",
+    "normalizedSha256": "dbc07e1b373fabb904a77bb9a2217a6e5d98eee6763d8e4d5eb653e0f89fb13e",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "583bfb305b22749c814bb4623264a44a51a7e6be47354bf6e0f0430a271be22d",
+    "normalizedSha256": "24fa292efd360f7957f8b9916d7c8f0d6ae1072323b3b784bd401780f6d7d20a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "a8ff79cab0e63e216df55a837bc6e671ab317dd81749c1aeb712f8a302427aae",
+    "normalizedSha256": "3ce49cb2c6ed259ce5fc6771ac792e2d525a92da5d0131ec337ae191dd1ddebf",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "83894f18be847e545d33b07b7fc08eb118d22eb1ff01abffaa0d2d19c9e2becb",
+    "normalizedSha256": "a35664ed26cdb2076be612031bdbf5c482f4d518bec3bb572e0ec6827e3e2c9d",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "7599e01ff4a6331b7c416be36798907987dad2410c39fb2cdd7de2253485d1c1",
+    "normalizedSha256": "ff89f9517b3674150bf1700a344c82e4dca80c173770e7602b8c342cc1fcb4ac",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "258d3cffc1783bc0853215b39d9dbb26246ac797ed5efe429694110be1781e0d",
+    "normalizedSha256": "15fe8a31a0a30578b1051b2d3015a472d7636067c02678c5eaa9345b54a0d0e3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "1d45db873ec6250cc42c3ed1886f3dfecdcfdf8971e849739b42e9ba1b410b88",
+    "normalizedSha256": "4c1dc9bb22144b45d8107fa2483efe9df7e046ed1d0f19f9002b6512455325c0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c114-23-water-beetle/fallback-1/score.json",
+    "originalSha256": "00c0f22df1660ad82c27dfc31fe88a73fae9077241b705c80e87585189967f95",
+    "normalizedSha256": "1900b60e4a55ecb9e7f2a4133926f6c0ee5248140ffb662c5a16bceba56913d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p5/summary.json",
+    "originalSha256": "8aed628bdd19bdb1f11560728da4633ae0f6dd5feea3bf3bc46336a667cbaafd",
+    "normalizedSha256": "229608268de4e3e57f56709631c066ac90a14977b6c47c8ebc0c49310c383560",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_REFERENCES_20261004/ant-intake.log",
+    "originalSha256": "f7a29fec6b638e4f0e77347e679578f82ea943e95e0390edc9411a1e64484bdb",
+    "normalizedSha256": "2b1053fd2f7c1d496f5cb2c8bb43af99ef25fceebc0ee7f942ceeefdafb82725",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_REFERENCES_20261004/native-capuchin/report.json",
+    "originalSha256": "7eed1f68502b617b0bf00c5cb46671fd783d6dd2b5c7e99a6f32208280c64461",
+    "normalizedSha256": "b2b3762b84ca6cb17ecf5e21a86c9c80aafaa37a604391ed3157160cfba753a8",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_REFERENCES_20261004/validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-partial.json",
+    "originalSha256": "d85e22e545d47bdc877d816dab987f1b57c7af86bf95b986b9a3c65dd80ada9e",
+    "normalizedSha256": "adaf414e4785eda32e25fac0478ef844e1dd603abc903746988a3862851166ca",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196creaturesupply-22-carrion-beetle/score.json",
+    "originalSha256": "cf4e84dd1b21841656347b8ca7c6ecd2513ece2f7728839d3d8ceac291d1eb2f",
+    "normalizedSha256": "871d3bf850e39c116a0d5c69e9ef3d0959b6e308b58a7b590de302e8e6bb7ce6",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-01-caiman/score.json",
+    "originalSha256": "2ac72831ee0889ee0c61c2972a5a0b24cdfec816e1e87e159215b6452e6d2423",
+    "normalizedSha256": "0b3759b50f9107b3b79a6570e1b545e1925e132a1f0c2ef3af27c454a3c3fca0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-06-mountain-lizard/fallback-1/score.json",
+    "originalSha256": "a68d8e46b348ddc72406858cc85efc52d263c17703855b38a36745abf41d2629",
+    "normalizedSha256": "82bf2a7456fdb3059cd73572b1271a7bce82f922b98d7a5604413f83534b1f1f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-06-mountain-lizard/score.json",
+    "originalSha256": "583bfb305b22749c814bb4623264a44a51a7e6be47354bf6e0f0430a271be22d",
+    "normalizedSha256": "24fa292efd360f7957f8b9916d7c8f0d6ae1072323b3b784bd401780f6d7d20a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-09-agama/fallback-1/score.json",
+    "originalSha256": "3bdfaedc80e2b6a7ac786b9194516f2f326aa463a9cbf5c9fad34fb8e4bf1b06",
+    "normalizedSha256": "7c76e78210eb96abae807b70ff5f20ad7fc2864d42be7e8702022c7591604f39",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-09-agama/score.json",
+    "originalSha256": "e4c78c47d9791f5e3aa0a192349f1bb2b88140e6d7df99d785636f1363de16e2",
+    "normalizedSha256": "6379a258c3ae3193333421bc673e073de2974ca0e3ff60d4b0c30b524301a844",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-10-gila-monster/score.json",
+    "originalSha256": "9509c07c776d86a4c12480408fccc73c36a3d2467f4200e26cdb6c433d2c6b53",
+    "normalizedSha256": "1f168db48aea39e6ed584fa3465c874ea74e9ebf65b05d629a8a6eea18384e29",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-21-mandrill/score.json",
+    "originalSha256": "49c04b45dd25b360f91824e72198f9c687ae995715aa14d72cf00d672fa93761",
+    "normalizedSha256": "97a699eaa7160d9a517ebe9072692dc3ec2622f2ccb523c3d8e5d50906ee42d0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplya-07-kinkajou/score.json",
+    "originalSha256": "1451cb2075b7bdb44a843be35708dd88922d3c501a94ef96085df45ff7166f4d",
+    "normalizedSha256": "e157e5ba7308d638bc38659f48ffa7327f8f4dfcce31f044199fcaa5ff3265d4",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-01-gorilla/score.json",
+    "originalSha256": "faa6c792344090781e9900aa0613ecc670700681e37ad393a932b248e732c5de",
+    "normalizedSha256": "75a2b9073ddd9802746bd29684b33c7a945f13280e5b8269c9fdf97105d34b0e",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-09-tamarin/score.json",
+    "originalSha256": "4b673265312a119076d6ac41ae40877d179863dc10bd9922564f4270a182341b",
+    "normalizedSha256": "62569ea5c1c3aee3e0a4b4335beda2b31c0e98b0b46c06b546b0325275f16bfc",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-12-baboon/score.json",
+    "originalSha256": "873a4f60f934df35c1a66c411cb76a352b46cadfa837220107c35de89cf16499",
+    "normalizedSha256": "6c6e51800c34931778c2de4b6bed37c9504c39a2019ddb5ec4b7101663cafd3b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyc-02-flamingo/score.json",
+    "originalSha256": "258c9f2e9758d661df2f9840ae45b36ade37c15ee4b0bb40d654ecdf41a47b90",
+    "normalizedSha256": "18badabcf132f494e98586e73ebe320c188ceafd99f7c352ffa6cb185ec762f3",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c203creaturesupply-20-kookaburra/fallback-2/score.json",
+    "originalSha256": "222814f0dc2cd754c83993e2bcadfca43d6c94d9bb2f98250b4a7ba911add29b",
+    "normalizedSha256": "4fd86f8144e6982f211bf36f25193c5e3f32b22601da78166fd8161a6bffa259",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c203creaturesupply-24-wahoo/score.json",
+    "originalSha256": "5cb3fd641045c8275edb0fdfc80dde195661e0f0b352b5e3e26a75adef56052e",
+    "normalizedSha256": "56e06cc5152c8536db8c08ea6ff6fb82a7f0c01b146406cdc580b291d393b202",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c206birdsourcerepaints-22-macaw/score.json",
+    "originalSha256": "b4da99ee3384f0786810bcbae9bad7a9916fc5cfe15bc2e5075e0045e838ac18",
+    "normalizedSha256": "51562d2c28b8e2e4a71526a30dd71b42c50cf7cc88509c601b3d37f95c15cb60",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c210originals-02-baboon-framing02/score.json",
+    "originalSha256": "28d47813007ec19d15b632eb61d9e688301988325435a00259bffccf49b06c30",
+    "normalizedSha256": "3e5d2ad02625e4ef242fb653f6e374aaae0e2e1f86ed32471df32c1a9d96d1b0",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/g2c106-17-kakapo/fallback-1/score.json",
+    "originalSha256": "859f7354f003b520b3b0781ce4bb539a12d35755a579144e4c3236f5d7099835",
+    "normalizedSha256": "bf669734106404d229748abf6d03f0c57748fceb60501af336fabf5feb1bd836",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/g2c107-10-giant-anteater/score.json",
+    "originalSha256": "72c41a2f35848a4cd968445d25dd5f31201d22403dc40ca7bf2cc1abae6d409b",
+    "normalizedSha256": "c38a9febd1ef0d10f9916745d4c4943b4d463f04ffe5639b6eafae98fe0fb704",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-07-howler-monkey/fit/intake-provenance.json",
+    "originalSha256": "f67f1f8eb1e5808b2547049be94109180e777cafbc6dcb623ffd04377a907d8f",
+    "normalizedSha256": "6b637ce2fcb3ac8509a80f3d2bee4700bab640d9ed34dcd4e10cb8c6cb6a8b80",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-07-howler-monkey/static.json",
+    "originalSha256": "cee535bf5f37289b62cea9b863ba4bbab44d5a4de35b98a1cc32ad611afdae36",
+    "normalizedSha256": "f3cba956eb16443923bf275c650d6d90a82629f20ee9a15cb50e426b354785cd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-07-howler-monkey/static.json.sources.json",
+    "originalSha256": "9a9a4cbc6919017b645067fcad2fa2cdfa0db2e5f7f3ba0092bff8ce464999a4",
+    "normalizedSha256": "2473f18c2e43b17754f72cdd9864b6076f4b81a5152f67c8592e44d6efa30bcc",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-11-langur/fit/intake-provenance.json",
+    "originalSha256": "f6c2920fcfcfecd6573fc853820b0d854bece7fbb1180c60aecbaed894441a55",
+    "normalizedSha256": "cbab45405fc5c57674fae78ec79fc00ec1de495fa9f730f54b43669404174529",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-11-langur/static.json",
+    "originalSha256": "51fb7bdefd35213a0c6b9914a011694958b1659e2b43d0f5c0c5298cdf8de24f",
+    "normalizedSha256": "f8c1c33db3ced7ef61c39535eb35317bc66c000b00f6864e5b931c1b041b6083",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-deliveries/c198creaturesupplyb-11-langur/static.json.sources.json",
+    "originalSha256": "45c66827b7f9837e8ae4f73db1a35acbc96922b58ddcb169225a74298b7754df",
+    "normalizedSha256": "9ea4288fb174a40d9cb42cab5bb87f492259047510620b6d38982f0c80c7d8b5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase6-yield.json",
+    "originalSha256": "8944da9336d2b1965413833083f9d0c89bc13f77c3e99c4d991ea5303475a171",
+    "normalizedSha256": "0deb0cca2ddf879b016e48188a02862e5a516e7b7b7a60880ce4bc3ef1caf5c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_RESUME_20261009/toolchain-check.json",
+    "originalSha256": "30483c407f0fd428d1029921671410c7b4fd4b4821e498a47ae512dc943390f6",
+    "normalizedSha256": "cd081d008ec2c2e2d1f86636ddc8255559fe479d8224629863e499308dc2b04b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_RESUME_20261009/toolchain-verify.json",
+    "originalSha256": "04f03f780a4e1aa55ae242e9661dcc203bf4a3589a550768d98746b38db08681",
+    "normalizedSha256": "a0abadeed5d7e111f165a87ce1766f6536475869455771940500e27a8df0bc9f",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/C213_RESUME_20261009/validate.log",
+    "originalSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "normalizedSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c114-23-water-beetle/fallback-1/score.json",
+    "originalSha256": "00c0f22df1660ad82c27dfc31fe88a73fae9077241b705c80e87585189967f95",
+    "normalizedSha256": "1900b60e4a55ecb9e7f2a4133926f6c0ee5248140ffb662c5a16bceba56913d5",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c118-06-marsh-rodent/score.json",
+    "originalSha256": "ee935afbd9c41c3670f70047b243e9790134edf45af205eab93adfcc43e9d35b",
+    "normalizedSha256": "766d765fcf7988296c507e960d50d74c67e2f8eaa3613ee68e684091e18f923b",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c121-03-stork/score.json",
+    "originalSha256": "ca74022cf29b425a173d9edfa9dec4d9a5a868847c6d24c83383fef3835ee9a6",
+    "normalizedSha256": "cc0555053f8207f4132ffe2395096f3733cbe4c7977c8704de413e8f2ad65820",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c121-22-carrion-beetle/score.json",
+    "originalSha256": "62f092660ec29bfa4981b20e1c088d1b9bb57cd07e249d5abf97f96823f9210d",
+    "normalizedSha256": "3a5fc332578f9df3dd4b1b07b31a03882589543b3f0bf3fcd07133ed13ebdef2",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-02-crocodile/score.json",
+    "originalSha256": "b912b75eee854e26165e7e1ab330a8056934d18588080b60dfe8ca343a45961d",
+    "normalizedSha256": "57d79fba9a70371c05ec3a1b2238e3e58e7ce902a46226b2f260911bcef2a7dd",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-19-gila-monster/score.json",
+    "originalSha256": "d54ee39566eca4cf73a7a18f9a49ba6a84a92a269c0465bed8710227131f7456",
+    "normalizedSha256": "ee4acc366de211dce34681076d24c4fa122ceab0e935d2b40c7eb9bb2768fc82",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-21-chameleon/score.json",
+    "originalSha256": "c12d4736840ff4162fa4f5ae691c9544cf1aafa04556e8d52da7973e283fb954",
+    "normalizedSha256": "fc1a45caf085ed5dc74d8a39715ca5b93de6b84adfbbc358587f2b52ec1240de",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c163familyoriginals-02-salamander/score.json",
+    "originalSha256": "2455eaf117873befedfeaf6b13bb64e5b73a1f392d250b20f8856796898b438a",
+    "normalizedSha256": "1f6796e352cf523cfa13242b450734c1f26d0b5e89adf24dfdb143cb67c57f84",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c59-12-ladybug/fallback-1/score.json",
+    "originalSha256": "63b8cd631098552a703de6b7ee487201a4f524f9da1aae1679b30d63d2c90e66",
+    "normalizedSha256": "8c726e259f28609673f4330150c5ebb1f2bdd50e8f03082e12e2fa750498d497",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c72-19-carrion-beetle/score.json",
+    "originalSha256": "5095d9978f19251a56925367e3edabb9c9d96207f4778e5772896733cefc67f8",
+    "normalizedSha256": "07b496b250e89647abdcddeb78c963b20abd8e7bb80312b93e67e121352934c1",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c83-15-kookaburra/score.json",
+    "originalSha256": "2aedeecb503fc7202a788c1a0efaeac42d08c5384a00139420210cbabf0a9720",
+    "normalizedSha256": "982f3e193179ae30228b932d101c2ea873f98600ed99b549470f496e143bdc04",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c98-11-osprey/score.json",
+    "originalSha256": "efeb3941bcf08b8be6c3e9f4eb87c3379890cd082c80ea45701cd44e5fe03a7d",
+    "normalizedSha256": "b7bd55a43b37912c8f05839b9c0f84630c0741253079f69fe662ab5b657210ae",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  },
+  {
+    "file": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/summary.json",
+    "originalSha256": "b06e506c5e002d1089467ac40b93e51bbb51a1d31632bbd4a4dfe514e9e168d7",
+    "normalizedSha256": "e0a0116bfc902fd1ccc91fbcc1157db303e16ad3fa9ca48ed1a0e6e5579b9b24",
+    "change": "Home prefix only; all measurements and input hashes unchanged"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "c91b30f7641a9ef9a1414a91341a222452d5022f78d8766efcd05a3f5262f797",
+    "frames": 872,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "c68f5d3012cee9660da8d5785f5cb327000b466574a5b8f9570f783d17acaf82",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-fringe03-tahr",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "f2e5c7661e1ca78fb8a829f668c876b9de5cb8e5c5c96f6665a936832e1994f4",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-bee",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "c57644544fef8ced999d217ceb400cff621eba1836d9a27f2b5599ebc0c3f2fe",
+    "frames": 789,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "715da0bf9bfab9298773dbd4cedcd459940ebebdd226eb76f421d099cab80416",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "b675f651b3e5d802f3e1d7a157cd9d861f49b4a4e465f1c0b209ed461c06e30d",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "e2112938acc9a0abda71b908373eaec06203e1a9b785e695474dd434a76c766e",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "8602d9b34ab41333d6c97ef7f9424faab01d3d8f3831911ba6c8b521fc9f7014",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-cow",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "b3148dcf63cc05746db2b8b62e078224bd1c0c4d797309c5edaa7f5093d17dc7",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-falcon-c275",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "415ef7e17a3b3a4f7b25d03d009a0906f9caa419fe5d1f3dadc8ebaee316781c",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "fe10f8ebba9d6f0ba0338bf3717746b3c877529af8a901a7becdb6f97424bd4a",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "a28edd7d8c1d83b5db9a2c7ec81e146010260997bb3597ff49f2720617634a17",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "0c8de5133b8acb5e136682206374b09e56644101a8fa53e5512928954cfdfb6c",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "2a93bfc5d789bb54b4a905b753a554a1239f7fa1765ebc687724d9e955125374",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "1129b492af5622b709cdc3ef0afccea44399f33f2d75f80e68b8e36266850458",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "5684a0b9f5c82f7c0afd3ad8af7dfd617a4a5f95b60cd5956652c227dba3cbdf",
+    "frames": 789,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "2d89759aec58c06ff55d19c4ddb5a3e6faf76379306e0c6db97d30674a4b2ebd",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-stork",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "88d059c29188a445e11613bad22759610ab8124783d69c1c6b403f69098f2430",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-source-wild-pig",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "73e76b6e1ea3056d9a70db0ce8a3c55961c4dd5ef286a3c10f3ff618704c6151",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  },
+  {
+    "native": "audits/C213_PROGRAM_20261004/native-transparent-tahr02",
+    "status": "DIAGNOSTIC_PASS",
+    "sourcesVerified": 909,
+    "originalReportSha256": "cbcb71a0250b1ccb72d4b0565905c4800dae8d586f44a99f5eb85fb0d0da06c1",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "scope": "Numerical diagnostic only; full-motion review and admission remain Claude-owned"
+  }
+]

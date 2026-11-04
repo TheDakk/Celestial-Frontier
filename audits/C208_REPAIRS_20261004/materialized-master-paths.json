@@ -1,0 +1,58 @@
+[
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/packet/master.png",
+    "sha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/10-cow/packet/master.png",
+    "sha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/16-hyrax/packet/master.png",
+    "sha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/17-cardinal/packet/master.png",
+    "sha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/18-sparrow/packet/master.png",
+    "sha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/19-pigeon/packet/master.png",
+    "sha256": "7c93c25025d4f8c4e1edd4953f1a35610f1c5b3c24f9cc3af96af7dfa7ce556a"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/11-toucan/packet/master.png",
+    "sha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/13-falcon/packet/master.png",
+    "sha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/14-duck/packet/master.png",
+    "sha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/16-stork/packet/master.png",
+    "sha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/17-arapaima-framing02/packet/master.png",
+    "sha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/20-angelfish/packet/master.png",
+    "sha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/21-tuna/packet/master.png",
+    "sha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/23-swordfish-framing02/packet/master.png",
+    "sha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417"
+  }
+]

@@ -1,0 +1,26 @@
+✔ v2 folded is optional, declared, painted and does not change the rig or contact inventory (0.948875ms)
+✔ folded malformed, unknown, duplicate and overlapping declarations refuse (0.592458ms)
+✔ three applied presence inputs preserve accepted geometry, hidden sets and contact chains (6.556584ms)
+✔ declared hidden pair keeps complete skeleton, flags inferred joints and excludes exactly two contact chains (2.36525ms)
+✔ missing pair is never inferred by admission, declared or undeclared; absent cannot replace hidden (0.785ms)
+✔ actual eight-visible painter admits unchanged; same paint assigned to declared hidden joints refuses in both intake routes (176.452708ms)
+✔ exact reviewed Hyrax removes only the optional tail inventory (5.444208ms)
+✔ refuses different master (1.017333ms)
+✔ refuses different subject (0.719084ms)
+✔ refuses different request (0.681667ms)
+✔ refuses species mismatch (1.134166ms)
+✔ refuses missing life stage (1.061292ms)
+✔ refuses different pose (1.011292ms)
+✔ refuses unreviewed (1.029791ms)
+✔ refuses invented evidence (1.056292ms)
+✔ refuses mandatory leg absence (1.531459ms)
+✔ refuses duplicate declaration (1.06775ms)
+✔ refuses reference-only absence on a tailed species (3.390834ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 390.139292

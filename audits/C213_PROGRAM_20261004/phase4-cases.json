@@ -1,0 +1,162 @@
+[
+  {
+    "id": "c202creaturesupply-10-river-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/c202creaturesupply-10-river-otter/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-10-river-otter/fallback-1/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+    "bindingSha256": "87d79e23cfb1c732d9e96f617fc408c0130d9b270fe0bef2b1f9270feb2f5ce2"
+  },
+  {
+    "id": "g2c118-04-sea-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/g2c118-04-sea-otter/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-04-sea-otter/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c",
+    "bindingSha256": "43c6db4d0098e3961f47b4344ddd154a6eef96bbb0be0343873eb38d1ab177c6"
+  },
+  {
+    "id": "g2c90-24-river-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/g2c90-24-river-otter/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c90-24-river-otter/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "78bed438cf5d4c99c93ff311bb945bbd86ce8f5d90b310ee1a4898edeebf2540",
+    "bindingSha256": "c04a265ef76866eddd852d5f0d1962a5762860f54a35a33bbd99faaa69a27092"
+  },
+  {
+    "id": "g2c118-09-colugo",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/g2c118-09-colugo/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-09-colugo/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618",
+    "bindingSha256": "aacc568f5ea18df5710b638e0b5280a8fd26bf873c1a1bc2a86c565b13380d44"
+  },
+  {
+    "id": "c202creaturesupply-16-spotted-hyena",
+    "class": "shoulder faint",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/c202creaturesupply-16-spotted-hyena/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-16-spotted-hyena/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+    "bindingSha256": "6371619af84402ea6ad1b1a8d6629e2803ecedff11f8ec8c637332a72ac8a6c7"
+  },
+  {
+    "id": "g2c95-17-nilgai",
+    "class": "shoulder faint",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/g2c95-17-nilgai/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c95-17-nilgai/fallback-1/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
+    "bindingSha256": "9972a05a1c1e2674c770ed8de9145097f97ef6a105e39aababd0e029ac5f2048"
+  },
+  {
+    "id": "c202creaturesupply-06-impala",
+    "class": "victory appendage",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/c202creaturesupply-06-impala/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-06-impala/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "8474e759f7bcb5b9e96dee47c84190fc9b78bc81e6fa0c7c40bc9f2e31efdc7b",
+    "bindingSha256": "e56f97b699ac8dedb6e860d42e05fad5b8466598d9e342a684a98d5471584d81"
+  },
+  {
+    "id": "c203creaturesupplyb-23-swordfish",
+    "class": "victory appendage",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/c203creaturesupplyb-23-swordfish/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+    "bindingSha256": "29b340c9e3c3ecab4d2fa2da038b77a82a45db64dac95d86a145ef5eff5701ac"
+  },
+  {
+    "id": "wild-pig",
+    "class": "deep-body faint",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/07-wild-pig/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+    "bindingSha256": "2dc3ec346e89e2a8e14fcc305380d783e620bee93353da83c41f0eb930cbe4f5"
+  },
+  {
+    "id": "cow",
+    "class": "deep-body faint",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/10-cow/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/10-cow/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+    "bindingSha256": "75ba6de528851cb3c464a7f66875248dc9d250676eb59c9ffdb1b6e32b025131"
+  },
+  {
+    "id": "stork",
+    "class": "victory crown",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/16-stork/native-fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/16-stork/fallback-2/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461",
+    "bindingSha256": "c6c5eeaa49cebe26c27bccfccda42edff6d3bbc75dc10e18a3af82c20a44073f"
+  },
+  {
+    "id": "falcon-c275",
+    "class": "native fold",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/13-falcon/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/13-falcon/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+    "bindingSha256": "6b3169258708070fb1a4a35d0a95215a0ba316d8fab9eb7867d3935bf88e0360"
+  },
+  {
+    "id": "bee",
+    "class": "abdomen ribbon",
+    "fit": "audits/C210_CONTINUATION_20261004/inputs/g2c136targetededits-21-bee/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c136targetededits-21-bee/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa",
+    "bindingSha256": "1d2c2e99eae7574710bcad49a177863b0cabacd5212364eae5dd1df264042571"
+  },
+  {
+    "id": "g2c98-21-pig",
+    "class": "deep-body faint",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c98-21-pig/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c98-21-pig/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1",
+    "bindingSha256": "fca8fcd22e54926b60aca15fe11f6cdd20da5ee0b48b4a9e8190b20ef2803152"
+  },
+  {
+    "id": "g2c95-23-springtail",
+    "class": "native fold",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c95-23-springtail/fallback-1/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c95-23-springtail/fallback-1/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
+    "bindingSha256": "269314915a9d476a71bccf4e81516c25dbbf5150074a1f6fd3a90be531c2f3b8"
+  },
+  {
+    "id": "g2c101-20-snow-petrel",
+    "class": "wing tear",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c101-20-snow-petrel/fit",
+    "exists": true,
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c101-20-snow-petrel/packet/master.png",
+    "masterExists": true,
+    "masterSha256": "4e2ac41fd0f0a1428d075c50c2697ba78f4b5aeeb218d80bdc258d1b6969910e",
+    "bindingSha256": "720a64569d27730d8d84b06f3a07dc70ff10a31183043ad58ee2ec87ef2c014e"
+  }
+]

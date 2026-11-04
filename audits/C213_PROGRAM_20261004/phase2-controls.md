@@ -1,0 +1,9 @@
+# Named appendage ownership controls
+
+The previous comparison chooses one target branch per connected reference branch. A reference branch containing both hind-leg owners can therefore overlook the second real target leg. The candidate keeps named anatomical chains separate and finds a one-to-one assignment covering both previously assigned and unassigned target branches. Each assignment requires at least half the target branch under the mapped named owner and the existing 10% mapped-owner overlap. Root/body/remainder cannot supply a slot; no owner absent from the reference is invented. Existing missing-paint, detached, ground, family, proportion and later static checks remain unchanged.
+
+Eight outcome/unit controls pass, including a real inventory comparison recovering four legs from two joined components, rejecting a fifth leg even under a full-body remainder, and refusing shifted owners that would steal a previous assignment. These exercise the new assignment entry point.
+
+The existing image mutation battery is NOT entirely green: two positives admit; flipped 4/4, wrong-family 4/4, erased 4/4 refuse; duplicated 1/2 refuses. The duplicated Impala admits both with the new named-owner path inactive (the initial partPaint indexing defect) and active (correct array lookup). Its extra branch is 5.07% paint, below the unchanged 6% unassigned-branch threshold. This pre-existing control failure is retained, not relabeled PASS or repaired by weakening/changing a measurement. The first and corrected implementation outputs are separately retained. Chimpanzee has no second same-family corpus subject, so that legacy runner skips it; this is not a primate control pass.
+
+The whole-backlog sweep is diagnostic only. No native, certification, gallery admission or all-pairs assertion follows from these controls.

@@ -1,0 +1,88 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "masterSha256": "b4b4a70dba8d7fff52b00de9edc38acb5787416b6c16197aa754d324d082de95",
+  "subjectSha256": "19801f49ece13ad5a2447a0cf391e9af1cc802bba1659e11b3fdf7009df2e5fd",
+  "promptSha256": "e93f440ea9413508ec52764a058ecdf58de0a9245099e4658aa0de431c352658",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Independently inspected full 1254-square original; retain all other anatomy and existing limits."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Full original reviewed: continuous natural tail visible from rump attachment to terminal fur tip; no crop or hidden terminal. Polygon boundaries are source observations, not transferred long-tail subdivisions.",
+      "landmarksPx": {
+        "tail0": [
+          295,
+          529
+        ],
+        "tail1": [
+          270,
+          561
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              308,
+              507
+            ],
+            [
+              285,
+              517
+            ],
+            [
+              269,
+              537
+            ],
+            [
+              288,
+              546
+            ],
+            [
+              306,
+              533
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              269,
+              537
+            ],
+            [
+              259,
+              546
+            ],
+            [
+              257,
+              568
+            ],
+            [
+              271,
+              580
+            ],
+            [
+              288,
+              546
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "05a1483045ccbe22333f4ccacd15a8c109cb900b8c5db0de02a214e40738f6c9"
+}

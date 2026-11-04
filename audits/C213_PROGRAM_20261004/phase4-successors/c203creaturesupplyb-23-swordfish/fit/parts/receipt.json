@@ -1,0 +1,192 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "ef41096c096a112533ebf4531b4bac75b4e351c475ef06c26a0b96ef67721a25",
+  "declarationHash": "43f6cfd7d3a2862a94afcd7ef11afd8cf2aed18cc4f121d74927fc3e1d3b73c0",
+  "paintedPixels": 135804,
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 615,
+        "y": 654,
+        "width": 208,
+        "height": 164
+      },
+      "pixels": 12380
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 731,
+        "y": 657,
+        "width": 142,
+        "height": 72
+      },
+      "pixels": 3907
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 616,
+        "y": 354,
+        "width": 143,
+        "height": 184
+      },
+      "pixels": 10852
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 979,
+        "y": 633,
+        "width": 162,
+        "height": 8
+      },
+      "pixels": 518
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 925,
+        "y": 614,
+        "width": 275,
+        "height": 29
+      },
+      "pixels": 3553
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 70,
+        "y": 472,
+        "width": 138,
+        "height": 322
+      },
+      "pixels": 15614
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 809,
+        "y": 628,
+        "width": 17,
+        "height": 8
+      },
+      "pixels": 122
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 196,
+        "y": 591,
+        "width": 81,
+        "height": 82
+      },
+      "pixels": 3221
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 272,
+        "y": 566,
+        "width": 142,
+        "height": 136
+      },
+      "pixels": 10075
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 354,
+        "y": 548,
+        "width": 184,
+        "height": 221
+      },
+      "pixels": 21987
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 525,
+        "y": 507,
+        "width": 108,
+        "height": 223
+      },
+      "pixels": 16202
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 598,
+        "y": 509,
+        "width": 110,
+        "height": 223
+      },
+      "pixels": 14243
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 674,
+        "y": 482,
+        "width": 278,
+        "height": 220
+      },
+      "pixels": 23130
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "71ca2ee96565a779ab409529fe4e82828311aca43f99787a8f39dee198ef68c6",
+  "keyer": {
+    "erodedPixels": 4628,
+    "despilledPixels": 51,
+    "unresolvedEdgePixels": 0,
+    "narrowEdgeDonors": 1
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

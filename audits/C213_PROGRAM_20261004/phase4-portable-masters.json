@@ -1,0 +1,97 @@
+[
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-10-river-otter/fallback-1/packet/master.png",
+    "sha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/13-falcon/packet/master.png",
+    "sha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/packet/master.png",
+    "sha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-09-colugo/packet/master.png",
+    "sha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c98-21-pig/packet/master.png",
+    "sha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c90-24-river-otter/packet/master.png",
+    "sha256": "78bed438cf5d4c99c93ff311bb945bbd86ce8f5d90b310ee1a4898edeebf2540"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-16-spotted-hyena/packet/master.png",
+    "sha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c101-20-snow-petrel/packet/master.png",
+    "sha256": "4e2ac41fd0f0a1428d075c50c2697ba78f4b5aeeb218d80bdc258d1b6969910e"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-04-sea-otter/packet/master.png",
+    "sha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c95-23-springtail/fallback-1/packet/master.png",
+    "sha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/cow/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/10-cow/packet/master.png",
+    "sha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/stork/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/16-stork/fallback-2/packet/master.png",
+    "sha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish/packet/master.png",
+    "sha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c136targetededits-21-bee/packet/master.png",
+    "sha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-06-impala/packet/master.png",
+    "sha256": "8474e759f7bcb5b9e96dee47c84190fc9b78bc81e6fa0c7c40bc9f2e31efdc7b"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c95-17-nilgai/fallback-1/packet/master.png",
+    "sha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-02-elephant/fit",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-02-elephant/packet/master.png",
+    "sha256": "b3ecb68e096c5ad004935ebb316f46bfe5bab5fbb83f2cdb94a072452cdccc1a"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-17-tahr/fit",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-17-tahr/packet/master.png",
+    "sha256": "54ce9418dd0c2d5885fa0ac038cec489f4ee0ab82f4c51a70894addf45940f18"
+  },
+  {
+    "fit": "audits/C213_PROGRAM_20261004/phase4-transparent-tahr02/joined-fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213fringe03/fringe03-17-tahr/packet/master.png",
+    "sha256": "27c3cfa57942e0d8f5f119036a70582e505e611110e8ce8a025a96e0cc9e9959"
+  }
+]

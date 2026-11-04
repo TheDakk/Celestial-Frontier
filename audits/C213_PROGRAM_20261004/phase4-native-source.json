@@ -1,0 +1,114 @@
+[
+  {
+    "id": "c202creaturesupply-10-river-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c118-04-sea-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c90-24-river-otter",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c118-09-colugo",
+    "class": "mouth/eye/chest",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "c202creaturesupply-16-spotted-hyena",
+    "class": "shoulder faint",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "c203creaturesupplyb-23-swordfish",
+    "class": "victory appendage",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "wild-pig",
+    "class": "deep-body faint",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "cow",
+    "class": "deep-body faint",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/cow/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "stork",
+    "class": "victory crown",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/stork/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "falcon-c275",
+    "class": "native fold",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c98-21-pig",
+    "class": "deep-body faint",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c95-23-springtail",
+    "class": "native fold",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c101-20-snow-petrel",
+    "class": "wing tear",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "g2c95-17-nilgai",
+    "class": "shoulder faint",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "c202creaturesupply-06-impala",
+    "class": "victory appendage",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/fit",
+    "exit": 0,
+    "noRetry": true
+  },
+  {
+    "id": "bee",
+    "class": "abdomen ribbon",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/fit",
+    "exit": 0,
+    "noRetry": true
+  }
+]

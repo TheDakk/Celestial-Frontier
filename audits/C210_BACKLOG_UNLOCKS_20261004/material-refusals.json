@@ -1,0 +1,187 @@
+[
+  {
+    "id": "c186creaturesupply-06-sloth",
+    "name": "Sloth",
+    "profile": "xenarthran",
+    "otherReasons": [
+      "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-07-tortoise",
+    "name": "Tortoise",
+    "profile": "tortoise",
+    "otherReasons": [
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)",
+      "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-08-box-turtle",
+    "name": "Box Turtle",
+    "profile": "tortoise",
+    "otherReasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)",
+      "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-09-pond-turtle",
+    "name": "Pond Turtle",
+    "profile": "freshwater-turtle",
+    "otherReasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+      "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 31%)",
+      "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-10-snapping-turtle",
+    "name": "Snapping Turtle",
+    "profile": "freshwater-turtle",
+    "otherReasons": [
+      "missing-anatomy: part tail2 (tail2) covers 16% paint (reference 63%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-11-softshell-turtle",
+    "name": "Softshell Turtle",
+    "profile": "freshwater-turtle",
+    "otherReasons": [
+      "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 45%)",
+      "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-12-turtle",
+    "name": "Turtle",
+    "profile": "freshwater-turtle",
+    "otherReasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 24%)",
+      "unexplained-anatomy: 12.9% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "id": "c192creaturesupply-03-shrimp",
+    "name": "Shrimp",
+    "profile": "shrimp-prawn",
+    "otherReasons": [
+      "no-reference: no other hand-authored subject of family crustacean-small"
+    ]
+  },
+  {
+    "id": "c196invertebrateoriginals-01-shrimp",
+    "name": "Shrimp",
+    "profile": "shrimp-prawn",
+    "otherReasons": [
+      "no-reference: no other hand-authored subject of family crustacean-small"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-06-hippopotamus",
+    "name": "Hippopotamus",
+    "profile": "hippo",
+    "otherReasons": [
+      "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "g2c107-10-giant-anteater",
+    "name": "Giant Anteater",
+    "profile": "toothless-clawed-mammal",
+    "otherReasons": []
+  },
+  {
+    "id": "g2c107-22-armadillo",
+    "name": "Armadillo",
+    "profile": "xenarthran",
+    "otherReasons": [
+      "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 8.6%)"
+    ]
+  },
+  {
+    "id": "g2c114-01-forest-elephant",
+    "name": "Forest Elephant",
+    "profile": "elephant",
+    "otherReasons": [
+      "unexplained-anatomy: 13.0% of the paint lies away from the body and in no part (reference 5.6%)"
+    ]
+  },
+  {
+    "id": "g2c114-02-elephant",
+    "name": "Elephant",
+    "profile": "elephant",
+    "otherReasons": []
+  },
+  {
+    "id": "g2c114-03-asian-elephant",
+    "name": "Asian Elephant",
+    "profile": "elephant",
+    "otherReasons": [
+      "missing-anatomy: part tail2 (tail2) covers 14% paint (reference 42%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 8% paint (reference 57%)",
+      "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.7%)"
+    ]
+  },
+  {
+    "id": "g2c114-04-african-elephant",
+    "name": "African Elephant",
+    "profile": "elephant",
+    "otherReasons": [
+      "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 1.7%)"
+    ]
+  },
+  {
+    "id": "g2c114-05-rhinoceros",
+    "name": "Rhinoceros",
+    "profile": "rhino",
+    "otherReasons": [
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 8% paint (reference 23%)"
+    ]
+  },
+  {
+    "id": "g2c114-06-hippopotamus",
+    "name": "Hippopotamus",
+    "profile": "hippo",
+    "otherReasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 33%)",
+      "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "g2c118-10-echidna",
+    "name": "Echidna",
+    "profile": "toothless-clawed-mammal",
+    "otherReasons": [
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 7% paint (reference 38%)",
+      "missing-anatomy: part tail2 (tail2) covers 15% paint (reference 63%)"
+    ]
+  },
+  {
+    "id": "g2c118-12-platypus",
+    "name": "Platypus",
+    "profile": "platypus",
+    "otherReasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+    ]
+  },
+  {
+    "id": "g2c118-23-rhinoceros",
+    "name": "Rhinoceros",
+    "profile": "rhino",
+    "otherReasons": [
+      "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 39%)",
+      "missing-anatomy: part tail2 (tail2) covers 14% paint (reference 42%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 13% paint (reference 57%)"
+    ]
+  },
+  {
+    "id": "g2c76-22-pangolin",
+    "name": "Pangolin",
+    "profile": "toothless-clawed-mammal",
+    "otherReasons": [
+      "unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 8.3%)"
+    ]
+  }
+]

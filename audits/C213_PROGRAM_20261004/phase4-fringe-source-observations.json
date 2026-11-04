@@ -1,0 +1,118 @@
+[
+  {
+    "id": "fringe02-17-tahr",
+    "name": "Tahr",
+    "family": "quadruped",
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe-source02/17-tahr",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe-source02/17-tahr/master.png",
+    "masterSha256": "139e792068ab8cd164044522edf8823043405669e0d225847369d4a90ecbe71c",
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 62,
+        "y0": 241,
+        "x1": 1205,
+        "y1": 1121
+      },
+      "margins": {
+        "left": 62,
+        "right": 48,
+        "top": 241,
+        "bottom": 132
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "requirements": []
+  },
+  {
+    "id": "fringe02-02-elephant",
+    "name": "Elephant",
+    "family": "quadruped",
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe-source02/02-elephant",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe-source02/02-elephant/master.png",
+    "masterSha256": "071a981d8885d6c1b32cebb800f33a6dcd56db4074607f2983a7acd79bfd7e9b",
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 88,
+        "y0": 229,
+        "x1": 1251,
+        "y1": 1086
+      },
+      "margins": {
+        "left": 88,
+        "right": 2,
+        "top": 229,
+        "bottom": 167
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "requirements": []
+  },
+  {
+    "id": "fringe03-17-tahr",
+    "name": "Tahr",
+    "family": "quadruped",
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe-source03/17-tahr",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe-source03/17-tahr/master.png",
+    "masterSha256": "27c3cfa57942e0d8f5f119036a70582e505e611110e8ce8a025a96e0cc9e9959",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 243,
+        "y0": 368,
+        "x1": 1030,
+        "y1": 964
+      },
+      "margins": {
+        "left": 243,
+        "right": 223,
+        "top": 368,
+        "bottom": 289
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "requirements": []
+  },
+  {
+    "id": "fringe03-02-elephant",
+    "name": "Elephant",
+    "family": "quadruped",
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe-source03/02-elephant",
+    "master": "audits/C213_PROGRAM_20261004/phase4-fringe-source03/02-elephant/master.png",
+    "masterSha256": "c7a63970c76ad88f230ce89ec5d3f7568d7f58f61a44001569f6b146793ecb18",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 266,
+        "y0": 368,
+        "x1": 1058,
+        "y1": 936
+      },
+      "margins": {
+        "left": 266,
+        "right": 195,
+        "top": 368,
+        "bottom": 317
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "requirements": []
+  }
+]

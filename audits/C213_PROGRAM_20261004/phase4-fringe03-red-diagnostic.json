@@ -1,0 +1,16 @@
+[
+  {
+    "id": "17-tahr",
+    "redVisible": 896,
+    "redTransparent": 0,
+    "redAlphaMass": 3.9921568627450843,
+    "scope": "Saturated red diagnostic, not universal fringe detector or changed pixels"
+  },
+  {
+    "id": "02-elephant",
+    "redVisible": 833,
+    "redTransparent": 0,
+    "redAlphaMass": 3.854901960784301,
+    "scope": "Saturated red diagnostic, not universal fringe detector or changed pixels"
+  }
+]

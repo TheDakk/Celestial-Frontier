@@ -1,0 +1,474 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/axial-faint.test.ts (10 tests | 1 failed) 2147ms
+   × preserves every captured non-faint canonical action and every explicit editor timeline 117ms
+ ❯ apps/game/src/motion/painted-bird-author.test.ts (14 tests | 1 failed) 2847ms
+   × preserves every already-passing probe outcome 504ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves every captured non-faint canonical action and every explicit editor timeline
+AssertionError: expected '{"kind":"motion-timeline","actionId":…' to be '{"kind":"motion-timeline","actionId":…' // Object.is equality
+
+Expected: "{"kind":"motion-timeline","actionId":"victory","family":"victory","loop":false,"seed":1996548726,"recipeHash":"6c4c9316cfd540ac6e391b2a124a079a135aa6a0aec95b9ba412fbf5d34f4575","massClass":"medium","limitsRad":{"root":{"min":-0.4363323129985824,"max":0.4363323129985824},"pelvis":{"min":-0.3490658503988659,"max":0.3490658503988659},"spine":{"min":-0.4363323129985824,"max":0.4363323129985824},"chest":{"min":-0.3490658503988659,"max":0.3490658503988659},"neck0":{"min":-0.7853981633974483,"max":0.7853981633974483},"neck1":{"min":-0.7853981633974483,"max":0.7853981633974483},"head":{"min":-0.6981317007977318,"max":0.6981317007977318},"beak":{"min":-0.5235987755982988,"max":0.08726646259971647},"legFarKnee":{"min":-1.2217304763960306,"max":1.2217304763960306},"legFarAnkle":{"min":-1.4835298641951802,"max":1.4835298641951802},"legFarFoot":{"min":-0.7853981633974483,"max":0.7853981633974483},"legNearKnee":{"min":-1.2217304763960306,"max":1.2217304763960306},"legNearAnkle":{"min":-1.4835298641951802,"max":1.4835298641951802},"legNearFoot":{"min":-0.7853981633974483,"max":0.7853981633974483},"wingFarRoot":{"min":-1.0471975511965976,"max":1.6580627893946132},"wingFarTip":{"min":-1.2217304763960306,"max":1.2217304763960306},"wingNearRoot":{"min":-1.0471975511965976,"max":1.6580627893946132},"wingNearTip":{"min":-1.2217304763960306,"max":1.2217304763960306},"tailFan":{"min":-0.6981317007977318,"max":0.6981317007977318}},"bodyMs":600,"durationMs":792,"phases":[["rear",210],["toss",150],["settle",240]],"tracks":{"root":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"pelvis":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"spine":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.2617993877991494,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.2617993877991494,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"chest":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck0":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.17453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.20943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck1":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.13962634015954636,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.2617993877991494,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"head":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.20943951023931956,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.5235987755982988,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"beak":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarAnkle":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearAnkle":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingFarRoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":1.4835298641951802,"ease":"ease-out"},{"ms":360,"t":0.6,"value":1.5707963267948966,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingFarTip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0.9599310885968813,"ease":"ease-out"},{"ms":360,"t":0.6,"value":1.0471975511965976,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingNearRoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":1.4835298641951802,"ease":"ease-out"},{"ms":360,"t":0.6,"value":1.5707963267948966,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingNearTip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0.9599310885968813,"ease":"ease-out"},{"ms":360,"t":0.6,"value":1.0471975511965976,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tailFan":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.2617993877991494,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.4363323129985824,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"root":{"dx":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"dy":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.04,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.044,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"secondary":[{"partId":"wingFar","joint":"wingFarRoot","driver":"chest","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":270,"t":0.45,"value":1.8544123302439752,"ease":"ease-out"},{"ms":306,"t":0.51,"value":1.4835298641951802,"ease":"sine-in-out"},{"ms":420,"t":0.7,"value":1.9634954084936207,"ease":"back-out"},{"ms":456,"t":0.76,"value":1.5707963267948966,"ease":"sine-in-out"},{"ms":660,"t":1.1,"value":0,"ease":"back-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingFar","joint":"wingFarTip","driver":"chest","order":1,"lagMs":120,"overshoot":0.2125,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":330,"t":0.55,"value":1.1639164449237185,"ease":"ease-out"},{"ms":402,"t":0.67,"value":0.9599310885968813,"ease":"sine-in-out"},{"ms":480,"t":0.8,"value":1.2697270308258746,"ease":"back-out"},{"ms":552,"t":0.92,"value":1.0471975511965976,"ease":"sine-in-out"},{"ms":720,"t":1.2,"value":0,"ease":"back-out"},{"ms":792,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingNear","joint":"wingNearRoot","driver":"chest","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":270,"t":0.45,"value":1.8544123302439752,"ease":"ease-out"},{"ms":306,"t":0.51,"value":1.4835298641951802,"ease":"sine-in-out"},{"ms":420,"t":0.7,"value":1.9634954084936207,"ease":"back-out"},{"ms":456,"t":0.76,"value":1.5707963267948966,"ease":"sine-in-out"},{"ms":660,"t":1.1,"value":0,"ease":"back-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingNear","joint":"wingNearTip","driver":"chest","order":1,"lagMs":120,"overshoot":0.2125,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":330,"t":0.55,"value":1.1639164449237185,"ease":"ease-out"},{"ms":402,"t":0.67,"value":0.9599310885968813,"ease":"sine-in-out"},{"ms":480,"t":0.8,"value":1.2697270308258746,"ease":"back-out"},{"ms":552,"t":0.92,"value":1.0471975511965976,"ease":"sine-in-out"},{"ms":720,"t":1.2,"value":0,"ease":"back-out"},{"ms":792,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tailFan","joint":"tailFan","driver":"pelvis","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tailfan","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":270,"t":0.45,"value":-0.32724923474893675,"ease":"ease-out"},{"ms":306,"t":0.51,"value":-0.2617993877991494,"ease":"sine-in-out"},{"ms":420,"t":0.7,"value":-0.545415391248228,"ease":"back-out"},{"ms":456,"t":0.76,"value":-0.4363323129985824,"ease":"sine-in-out"},{"ms":660,"t":1.1,"value":0,"ease":"back-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]}],"deform":{"squash":0,"stretch":0},"hitstopMs":0,"luminousPulseMs":0,"clamped":[],"notes":["earth species \"Hawk\" mass uncalibrated (medium); gait from physical habitat/anatomy","physical realm: G1 automatic: Earth fauna profile raptor media air+ground (capability, not painted pose; adult flight is a separate declaration)","materials: record surface \"feathers\" wins over genome skin \"translucent\" (observer disagreement)","leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 1.4%"],"hash":"ad3c82b8"}"
+Received: "{"kind":"motion-timeline","actionId":"victory","family":"victory","loop":false,"seed":1996548726,"recipeHash":"6c4c9316cfd540ac6e391b2a124a079a135aa6a0aec95b9ba412fbf5d34f4575","massClass":"medium","limitsRad":{"root":{"min":-0.4363323129985824,"max":0.4363323129985824},"pelvis":{"min":-0.3490658503988659,"max":0.3490658503988659},"spine":{"min":-0.4363323129985824,"max":0.4363323129985824},"chest":{"min":-0.3490658503988659,"max":0.3490658503988659},"neck0":{"min":-0.7853981633974483,"max":0.7853981633974483},"neck1":{"min":-0.7853981633974483,"max":0.7853981633974483},"head":{"min":-0.6981317007977318,"max":0.6981317007977318},"beak":{"min":-0.5235987755982988,"max":0.08726646259971647},"legFarKnee":{"min":-1.2217304763960306,"max":1.2217304763960306},"legFarAnkle":{"min":-1.4835298641951802,"max":1.4835298641951802},"legFarFoot":{"min":-0.7853981633974483,"max":0.7853981633974483},"legNearKnee":{"min":-1.2217304763960306,"max":1.2217304763960306},"legNearAnkle":{"min":-1.4835298641951802,"max":1.4835298641951802},"legNearFoot":{"min":-0.7853981633974483,"max":0.7853981633974483},"wingFarRoot":{"min":-1.0471975511965976,"max":1.6580627893946132},"wingFarTip":{"min":-1.2217304763960306,"max":1.2217304763960306},"wingNearRoot":{"min":-1.0471975511965976,"max":1.6580627893946132},"wingNearTip":{"min":-1.2217304763960306,"max":1.2217304763960306},"tailFan":{"min":-0.6981317007977318,"max":0.6981317007977318}},"bodyMs":600,"durationMs":792,"phases":[["rear",210],["toss",150],["settle",240]],"tracks":{"root":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"pelvis":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"spine":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"chest":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck0":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.017453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.020943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck1":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.013962634015954637,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.026179938779914945,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"head":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.020943951023931956,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.05235987755982989,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"beak":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarAnkle":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearAnkle":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingFarRoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingFarTip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingNearRoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"wingNearTip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tailFan":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"root":{"dx":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"dy":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"secondary":[{"partId":"wingFar","joint":"wingFarRoot","driver":"chest","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingFar","joint":"wingFarTip","driver":"chest","order":1,"lagMs":120,"overshoot":0.2125,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":792,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingNear","joint":"wingNearRoot","driver":"chest","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"wingNear","joint":"wingNearTip","driver":"chest","order":1,"lagMs":120,"overshoot":0.2125,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"wing","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":792,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tailFan","joint":"tailFan","driver":"pelvis","order":0,"lagMs":60,"overshoot":0.25,"damping":0.5,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tailfan","flutterMs":60,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":696,"t":1,"value":0,"ease":"ease-out"}]}],"deform":{"squash":0,"stretch":0},"hitstopMs":0,"luminousPulseMs":0,"clamped":[],"notes":["earth species \"Hawk\" mass uncalibrated (medium); gait from physical habitat/anatomy","physical realm: G1 automatic: Earth fauna profile raptor media air+ground (capability, not painted pose; adult flight is a separate declaration)","materials: record surface \"feathers\" wins over genome skin \"translucent\" (observer disagreement)","leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 1.4%","grounded-bird:folded-victory-v1"],"hash":"39b51ce4"}"
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:36:128
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > preserves every already-passing probe outcome
+AssertionError: expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(19) }
+
+- Expected
++ Received
+
+@@ -6,11 +6,11 @@
+      "squash": 0,
+      "stretch": 0,
+    },
+    "durationMs": 792,
+    "family": "victory",
+-   "hash": "eea92028",
++   "hash": "5e44d2b2",
+    "hitstopMs": 0,
+    "kind": "motion-timeline",
+    "limitsRad": {
+      "beak": {
+        "max": 0.08726646259971647,
+@@ -95,10 +95,11 @@
+    "notes": [
+      "earth species \"Goose\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+      "physical realm: G1 automatic: Earth fauna profile swimming-bird media air+water+ground (capability, not painted pose; adult flight is a separate declaration)",
+      "materials: record surface \"feathers\" wins over genome skin \"scaled\" (observer disagreement)",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 2.2%",
++     "grounded-bird:folded-victory-v1",
+    ],
+    "phases": [
+      [
+        "rear",
+        210,
+@@ -149,17 +150,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.04,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.044,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -176,40 +177,10 @@
+        "keys": [
+          {
+            "ease": "ease-out",
+            "ms": 0,
+            "t": 0,
+-           "value": 0,
+-         },
+-         {
+-           "ease": "ease-out",
+-           "ms": 270,
+-           "t": 0.45,
+-           "value": 1.8544123302439752,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 306,
+-           "t": 0.51,
+-           "value": 1.4835298641951802,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 420,
+-           "t": 0.7,
+-           "value": 1.9634954084936207,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 456,
+-           "t": 0.76,
+-           "value": 1.5707963267948966,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 660,
+-           "t": 1.1,
+            "value": 0,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 696,
+@@ -237,40 +208,10 @@
+        "keys": [
+          {
+            "ease": "ease-out",
+            "ms": 0,
+            "t": 0,
+-           "value": 0,
+-         },
+-         {
+-           "ease": "ease-out",
+-           "ms": 330,
+-           "t": 0.55,
+-           "value": 1.1639164449237185,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 402,
+-           "t": 0.67,
+-           "value": 0.9599310885968813,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 480,
+-           "t": 0.8,
+-           "value": 1.2697270308258746,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 552,
+-           "t": 0.92,
+-           "value": 1.0471975511965976,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 720,
+-           "t": 1.2,
+            "value": 0,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 792,
+@@ -302,40 +243,10 @@
+            "t": 0,
+            "value": 0,
+          },
+          {
+            "ease": "ease-out",
+-           "ms": 270,
+-           "t": 0.45,
+-           "value": 1.8544123302439752,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 306,
+-           "t": 0.51,
+-           "value": 1.4835298641951802,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 420,
+-           "t": 0.7,
+-           "value": 1.9634954084936207,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 456,
+-           "t": 0.76,
+-           "value": 1.5707963267948966,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 660,
+-           "t": 1.1,
+-           "value": 0,
+-         },
+-         {
+-           "ease": "ease-out",
+            "ms": 696,
+            "t": 1,
+            "value": 0,
+          },
+        ],
+@@ -363,40 +274,10 @@
+            "t": 0,
+            "value": 0,
+          },
+          {
+            "ease": "ease-out",
+-           "ms": 330,
+-           "t": 0.55,
+-           "value": 1.1639164449237185,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 402,
+-           "t": 0.67,
+-           "value": 0.9599310885968813,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 480,
+-           "t": 0.8,
+-           "value": 1.2697270308258746,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 552,
+-           "t": 0.92,
+-           "value": 1.0471975511965976,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 720,
+-           "t": 1.2,
+-           "value": 0,
+-         },
+-         {
+-           "ease": "ease-out",
+            "ms": 792,
+            "t": 1,
+            "value": 0,
+          },
+        ],
+@@ -420,40 +301,10 @@
+        "keys": [
+          {
+            "ease": "ease-out",
+            "ms": 0,
+            "t": 0,
+-           "value": 0,
+-         },
+-         {
+-           "ease": "ease-out",
+-           "ms": 270,
+-           "t": 0.45,
+-           "value": -0.32724923474893675,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 306,
+-           "t": 0.51,
+-           "value": -0.2617993877991494,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 420,
+-           "t": 0.7,
+-           "value": -0.545415391248228,
+-         },
+-         {
+-           "ease": "sine-in-out",
+-           "ms": 456,
+-           "t": 0.76,
+-           "value": -0.4363323129985824,
+-         },
+-         {
+-           "ease": "back-out",
+-           "ms": 660,
+-           "t": 1.1,
+            "value": 0,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 696,
+@@ -537,17 +388,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.20943951023931956,
++         "value": -0.020943951023931956,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.5235987755982988,
++         "value": -0.05235987755982989,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -719,17 +570,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.17453292519943295,
++         "value": -0.017453292519943295,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.20943951023931956,
++         "value": -0.020943951023931956,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -745,17 +596,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.13962634015954636,
++         "value": -0.013962634015954637,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.2617993877991494,
++         "value": -0.026179938779914945,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -823,17 +674,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.2617993877991494,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.2617993877991494,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -849,17 +700,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": -0.2617993877991494,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": -0.4363323129985824,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -875,17 +726,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": 1.4835298641951802,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": 1.5707963267948966,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -901,17 +752,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": 0.9599310885968813,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": 1.0471975511965976,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -927,17 +778,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": 1.4835298641951802,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": 1.5707963267948966,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+@@ -953,17 +804,17 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 210,
+          "t": 0.35,
+-         "value": 0.9599310885968813,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 360,
+          "t": 0.6,
+-         "value": 1.0471975511965976,
++         "value": 0,
+        },
+        {
+          "ease": "back-out",
+          "ms": 600,
+          "t": 1,
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:53:24
+     51|     if(failures(f,before,'stage')===0)expectPassingFaint(before,after);
+     52|     else expectCoherentFaintHead(before,after);
+     53|    }else expect(after).toEqual(before);
+       |                        ^
+     54|   }
+     55|  }}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 22 passed (24)
+      Tests  2 failed | 152 passed (154)
+   Start at  15:14:12
+   Duration  5.75s (transform 2.14s, setup 0ms, import 4.28s, tests 27.82s, environment 2ms)
+

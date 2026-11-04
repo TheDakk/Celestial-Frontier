@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "mutation": "Hash-correct semantic ownership flag on real Tuna binding",
+  "expected": "semantic field must retain original source owners",
+  "retainedGuard": true
+}

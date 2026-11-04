@@ -1,0 +1,406 @@
+[
+  {
+    "name": "Poison Dart Frog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Bullfrog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Scorpion",
+    "posture": "crawling"
+  },
+  {
+    "name": "Glass Frog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Land Snail",
+    "posture": "crawling"
+  },
+  {
+    "name": "Frog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Deer Tick",
+    "posture": "crawling"
+  },
+  {
+    "name": "Lamprey",
+    "posture": "swimming"
+  },
+  {
+    "name": "Crayfish",
+    "posture": "crawling"
+  },
+  {
+    "name": "Wood Frog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Jerboa",
+    "posture": "biped"
+  },
+  {
+    "name": "Toad",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Camel Spider",
+    "posture": "crawling"
+  },
+  {
+    "name": "Brine Shrimp",
+    "posture": "swimming"
+  },
+  {
+    "name": "Water Flea",
+    "posture": "swimming"
+  },
+  {
+    "name": "Freshwater Snail",
+    "posture": "crawling"
+  },
+  {
+    "name": "Walrus",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Seal",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Beluga",
+    "posture": "swimming"
+  },
+  {
+    "name": "Narwhal",
+    "posture": "swimming"
+  },
+  {
+    "name": "Orca",
+    "posture": "swimming"
+  },
+  {
+    "name": "Right Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Krill",
+    "posture": "swimming"
+  },
+  {
+    "name": "Copepod",
+    "posture": "swimming"
+  },
+  {
+    "name": "Amphipod",
+    "posture": "swimming"
+  },
+  {
+    "name": "Fur Seal",
+    "posture": "quadruped"
+  },
+  {
+    "name": "Blue Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Humpback Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Sea Urchin",
+    "posture": "sessile"
+  },
+  {
+    "name": "Sea Cucumber",
+    "posture": "crawling"
+  },
+  {
+    "name": "Cave Shrimp",
+    "posture": "crawling"
+  },
+  {
+    "name": "Fly Larvae",
+    "posture": "crawling"
+  },
+  {
+    "name": "Freshwater Shrimp",
+    "posture": "crawling"
+  },
+  {
+    "name": "Stingray",
+    "posture": "swimming"
+  },
+  {
+    "name": "Caecilian",
+    "posture": "crawling"
+  },
+  {
+    "name": "River Dolphin",
+    "posture": "swimming"
+  },
+  {
+    "name": "Manatee",
+    "posture": "swimming"
+  },
+  {
+    "name": "Freshwater Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Water Snail",
+    "posture": "crawling"
+  },
+  {
+    "name": "Sea Turtle",
+    "posture": "swimming"
+  },
+  {
+    "name": "Ray",
+    "posture": "swimming"
+  },
+  {
+    "name": "Oyster",
+    "posture": "sessile"
+  },
+  {
+    "name": "Sea Lion",
+    "posture": "quadruped"
+  },
+  {
+    "name": "Hermit Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Razor Clam",
+    "posture": "sessile"
+  },
+  {
+    "name": "Sea Snail",
+    "posture": "crawling"
+  },
+  {
+    "name": "Sand Dollar",
+    "posture": "sessile"
+  },
+  {
+    "name": "Limpet",
+    "posture": "sessile"
+  },
+  {
+    "name": "Chiton",
+    "posture": "crawling"
+  },
+  {
+    "name": "Barnacle",
+    "posture": "sessile"
+  },
+  {
+    "name": "Sea Anemone",
+    "posture": "sessile"
+  },
+  {
+    "name": "Nudibranch",
+    "posture": "crawling"
+  },
+  {
+    "name": "Dolphin",
+    "posture": "swimming"
+  },
+  {
+    "name": "Marine Worm",
+    "posture": "crawling"
+  },
+  {
+    "name": "Mudskipper",
+    "posture": "crawling"
+  },
+  {
+    "name": "Mud Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Dugong",
+    "posture": "swimming"
+  },
+  {
+    "name": "Lobster",
+    "posture": "crawling"
+  },
+  {
+    "name": "Porpoise",
+    "posture": "swimming"
+  },
+  {
+    "name": "Cold-Water Coral",
+    "posture": "sessile"
+  },
+  {
+    "name": "Manta Ray",
+    "posture": "swimming"
+  },
+  {
+    "name": "Eagle Ray",
+    "posture": "swimming"
+  },
+  {
+    "name": "Giant Clam",
+    "posture": "sessile"
+  },
+  {
+    "name": "Cowrie",
+    "posture": "crawling"
+  },
+  {
+    "name": "Coral",
+    "posture": "sessile"
+  },
+  {
+    "name": "Conch",
+    "posture": "crawling"
+  },
+  {
+    "name": "Abalone",
+    "posture": "crawling"
+  },
+  {
+    "name": "Gray Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Scallop",
+    "posture": "sessile"
+  },
+  {
+    "name": "Sperm Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Pilot Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Beaked Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Portuguese Man-of-War",
+    "posture": "swimming"
+  },
+  {
+    "name": "Comb Jelly",
+    "posture": "swimming"
+  },
+  {
+    "name": "Giant Isopod",
+    "posture": "crawling"
+  },
+  {
+    "name": "Tube Worm",
+    "posture": "sessile"
+  },
+  {
+    "name": "Isopod",
+    "posture": "crawling"
+  },
+  {
+    "name": "Polychaete Worm",
+    "posture": "crawling"
+  },
+  {
+    "name": "Giant Tube Worm",
+    "posture": "sessile"
+  },
+  {
+    "name": "Vent Shrimp",
+    "posture": "crawling"
+  },
+  {
+    "name": "Vent Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Scale Worm",
+    "posture": "crawling"
+  },
+  {
+    "name": "Whale",
+    "posture": "swimming"
+  },
+  {
+    "name": "Deep-Water Coral",
+    "posture": "sessile"
+  },
+  {
+    "name": "Coconut Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Harvestman",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Pseudoscorpion",
+    "posture": "crawling"
+  },
+  {
+    "name": "Flatworm",
+    "posture": "crawling"
+  },
+  {
+    "name": "Cave Frog",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Mite",
+    "posture": "crawling"
+  },
+  {
+    "name": "Ice Worm",
+    "posture": "crawling"
+  },
+  {
+    "name": "Kangaroo",
+    "posture": "biped"
+  },
+  {
+    "name": "Wallaby",
+    "posture": "biped"
+  },
+  {
+    "name": "Tardigrade",
+    "posture": "crawling"
+  },
+  {
+    "name": "Horseshoe Crab",
+    "posture": "crawling"
+  },
+  {
+    "name": "Salp",
+    "posture": "swimming"
+  },
+  {
+    "name": "Pyrosome",
+    "posture": "swimming"
+  },
+  {
+    "name": "Lancelet",
+    "posture": "swimming"
+  },
+  {
+    "name": "Sea Spider",
+    "posture": "sprawling"
+  },
+  {
+    "name": "Fairy Shrimp",
+    "posture": "swimming"
+  },
+  {
+    "name": "Tadpole Shrimp",
+    "posture": "swimming"
+  }
+]

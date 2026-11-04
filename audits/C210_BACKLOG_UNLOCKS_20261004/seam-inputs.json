@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c202creaturesupply-10-river-otter",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-10-river-otter/fallback-1/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/c202creaturesupply-10-river-otter/fit"
+  },
+  {
+    "id": "g2c118-04-sea-otter",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-04-sea-otter/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/g2c118-04-sea-otter/fit"
+  },
+  {
+    "id": "g2c90-24-river-otter",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c90-24-river-otter/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/g2c90-24-river-otter/fit"
+  },
+  {
+    "id": "g2c118-09-colugo",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c118-09-colugo/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/g2c118-09-colugo/fit"
+  },
+  {
+    "id": "c202creaturesupply-16-spotted-hyena",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-16-spotted-hyena/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/c202creaturesupply-16-spotted-hyena/fit"
+  },
+  {
+    "id": "g2c95-17-nilgai",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c95-17-nilgai/fallback-1/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/g2c95-17-nilgai/fit"
+  },
+  {
+    "id": "c202creaturesupply-06-impala",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-06-impala/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/c202creaturesupply-06-impala/fit"
+  },
+  {
+    "id": "c203creaturesupplyb-23-swordfish",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish/fit",
+    "fit": "audits/C210_BACKLOG_UNLOCKS_20261004/seam-inputs/c203creaturesupplyb-23-swordfish/fit"
+  }
+]

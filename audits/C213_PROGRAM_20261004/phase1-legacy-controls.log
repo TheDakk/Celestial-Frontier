@@ -1,0 +1,37 @@
+✔ admitted ear review → exactly the four pinna joints are excluded (1997.620125ms)
+✔ tampered review (any hash mismatch) or another painting → no exclusion at all (2.849542ms)
+✔ no review / null / [] → author output byte-identical to the author without the option (4064.235875ms)
+✔ admitted exclusions: no ear reason, no ear part or landmark, every other reason kept (2008.590125ms)
+✔ an ear-absent review does not excuse a missing leg (2237.984166ms)
+✔ the remainder part is never excluded (1977.437583ms)
+✔ five exact-source reviews admitted; unchanged mandatory body/leg limits (9.48225ms)
+✔ stale master refuses (0.916958ms)
+✔ stale subject refuses (0.71375ms)
+✔ stale prompt refuses (0.718542ms)
+✔ stale declaration (1.49775ms)
+✔ wrong family (1.890042ms)
+✔ no review (1.016375ms)
+✔ hidden terminal (0.940833ms)
+✔ cropped terminal (1.006292ms)
+✔ omitted middle (0.981ms)
+✔ degenerate tip (0.962625ms)
+✔ mandatory leg exemption (0.921625ms)
+✔ lost tail region (0.93375ms)
+✔ unknown evidence (0.913291ms)
+✔ swapped ear side (1.037125ms)
+✔ no antler (0.9875ms)
+✔ invented hidden coordinates (0.985167ms)
+✔ biologically absent (0.868625ms)
+✔ changed occluder (0.862917ms)
+✔ represented tail keeps distal contribution and legacy object identity (1.335125ms)
+✔ absence conflict refuses; mandatory anatomy cannot be hidden (1.873042ms)
+✔ visible ear pixels survive on head; invented actuator and erased sliver refuse (0.554084ms)
+✔ off-paint invented tip refuses independently of metadata (0.249833ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12522.560958

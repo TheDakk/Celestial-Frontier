@@ -1,0 +1,32 @@
+[
+  {
+    "id": "c203creaturesupplyb-07-brown-bear",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear",
+    "name": "Brown Bear",
+    "family": "quadruped"
+  },
+  {
+    "id": "c203creaturesupplyb-03-pronghorn",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped"
+  },
+  {
+    "id": "c203creaturesupplyb-05-duiker",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker",
+    "name": "Duiker",
+    "family": "quadruped"
+  },
+  {
+    "id": "c203creaturesupplyb-06-serow",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow",
+    "name": "Serow",
+    "family": "quadruped"
+  },
+  {
+    "id": "c203creaturesupply-05-moose",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose",
+    "name": "Moose",
+    "family": "quadruped"
+  }
+]
