@@ -1,0 +1,243 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"10052\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"21\"]]]]",
+    "seed": 10052,
+    "ownerId": "resolveProceduralCanvas:quad/faunaQuadruped",
+    "earthName": null
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "f4389be3fab67d91bcba54e20d1c94f7a6d1476a3c98766227e74d0d22d437d0",
+    "width": 880,
+    "height": 880,
+    "groundLineY": 0.65,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "hindFarRoot": [
+      0.4127168454161148,
+      0.5559867937064802
+    ],
+    "hindFarKnee": [
+      0.40061406569736485,
+      0.6141463113150427
+    ],
+    "hindFarAnkle": [
+      0.4095414896381149,
+      0.6329077404134578
+    ],
+    "hindFarPaw": [
+      0.4159092737109088,
+      0.6475516075805473
+    ],
+    "foreFarRoot": [
+      0.597799991077746,
+      0.556200032156041
+    ],
+    "foreFarKnee": [
+      0.6057131670152459,
+      0.6142276337726806
+    ],
+    "foreFarAnkle": [
+      0.600213719587746,
+      0.6329461532980059
+    ],
+    "foreFarPaw": [
+      0.5967800858719148,
+      0.6475516086094566
+    ],
+    "hindNearRoot": [
+      0.4229168454161148,
+      0.5559867937064802
+    ],
+    "hindNearKnee": [
+      0.41081406569736484,
+      0.6141463113150427
+    ],
+    "hindNearAnkle": [
+      0.41974148963811486,
+      0.6329077404134578
+    ],
+    "hindNearPaw": [
+      0.4261092737109088,
+      0.6475516075805473
+    ],
+    "foreNearRoot": [
+      0.607999991077746,
+      0.556200032156041
+    ],
+    "foreNearKnee": [
+      0.615913167015246,
+      0.6142276337726806
+    ],
+    "foreNearAnkle": [
+      0.610413719587746,
+      0.6329461532980059
+    ],
+    "foreNearPaw": [
+      0.606980085871915,
+      0.6475516086094566
+    ],
+    "earFarRoot": [
+      0.6267677550207225,
+      0.5149836288583254
+    ],
+    "earFarTip": [
+      0.6267677550207225,
+      0.5117570288583254
+    ],
+    "earNearRoot": [
+      0.6396157550207224,
+      0.5149836288583254
+    ],
+    "earNearTip": [
+      0.6396157550207224,
+      0.5117570288583254
+    ],
+    "tail0": [
+      0.3772080879378011,
+      0.5588427077394218
+    ],
+    "tail1": [
+      0.3390858657155789,
+      0.5633760410727551
+    ],
+    "tail2": [
+      0.3123191990489122,
+      0.5724427077394217
+    ],
+    "tail3": [
+      0.2969080879378011,
+      0.5860427077394217
+    ],
+    "root": [
+      0.509903014348491,
+      0.5577799101798905
+    ],
+    "pelvis": [
+      0.4194488454161148,
+      0.559733163797276
+    ],
+    "spine": [
+      0.509903014348491,
+      0.5577799101798905
+    ],
+    "chest": [
+      0.604531991077746,
+      0.5602458848582055
+    ],
+    "neck": [
+      0.6100984014735846,
+      0.5600604554193513
+    ],
+    "head": [
+      0.6434526350207224,
+      0.5254313888583253
+    ],
+    "jaw": [
+      0.6596660318951664,
+      0.5258642698096908
+    ]
+  },
+  "materials": {
+    "surface": "fur",
+    "paletteSource": "genome"
+  },
+  "weapons": [
+    {
+      "kind": "bite",
+      "contactJoint": "jaw",
+      "source": "painted jaw contact; no claim of teeth"
+    },
+    {
+      "kind": "claw",
+      "contactJoint": "foreNearPaw",
+      "source": "painted paw claw strokes"
+    }
+  ],
+  "clipSetId": "quadruped-land-v1",
+  "genome": {
+    "seed": 10052,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 0,
+    "body": 12,
+    "loco": 12,
+    "trait": 21,
+    "size": 4,
+    "diet": 4,
+    "head": 0,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 1,
+    "detail": 0,
+    "accent": 4,
+    "temper": 9,
+    "sense": 6,
+    "repro": 6,
+    "life": 5,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1
+  },
+  "habitat": {
+    "realm": "land",
+    "source": "source genome habitat/locomotion + resolved anatomy"
+  },
+  "source": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-2/master.png",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09047525560583218,
+      "spine": 0.09047525560583218,
+      "chest": 0.09466110219060407,
+      "neck": 0.005569498071791915,
+      "head": 0.04807990376867429,
+      "jaw": 0.01621917458215078,
+      "hindFarRoot": 0.0077042269474107295,
+      "hindFarKnee": 0.059405443903579075,
+      "hindFarAnkle": 0.020777153800093304,
+      "hindFarPaw": 0.015968453888999118,
+      "foreFarRoot": 0.007854218489933472,
+      "foreFarKnee": 0.05856467282242146,
+      "foreFarAnkle": 0.01950966158670663,
+      "foreFarPaw": 0.015003638403709883,
+      "hindNearRoot": 0.005105126135288847,
+      "hindNearKnee": 0.059405443903579075,
+      "hindNearAnkle": 0.020777153800093304,
+      "hindNearPaw": 0.015968453888999118,
+      "foreNearRoot": 0.005328784860323416,
+      "foreNearKnee": 0.05856467282242146,
+      "foreNearAnkle": 0.01950966158670666,
+      "foreNearPaw": 0.015003638403709831,
+      "tail0": 0.04225014206286989,
+      "tail1": 0.038390818411068034,
+      "tail2": 0.028260553584261074,
+      "tail3": 0.020553888821315796,
+      "earFarRoot": 0.019686058763297314,
+      "earFarTip": 0.0032265999999999684,
+      "earNearRoot": 0.011130019638437199,
+      "earNearTip": 0.0032265999999999684
+    }
+  },
+  "recipeHash": "0971e433da9ce11b993822e6641e4aa3764054db37fb82b6192bca42ada22b1e"
+}

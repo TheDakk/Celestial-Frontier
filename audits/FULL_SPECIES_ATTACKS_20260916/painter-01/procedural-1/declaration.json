@@ -1,0 +1,115 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "715f9a28f5a2a0ae1e833cd698680c63f7e4803720a76a748d90519ed9b32635",
+  "cutoutSha256": "3d3cf975862f6dd2155a4e6bd68c6a3390bef75d4dcf17052e28e80bf0b90cbc",
+  "labelsFile": "labels.png",
+  "labelsSha256": "0f035c8e3361f2fac0f14db9e214bf2ebe2e5b854945ac6ee18f3872fcc63a3e",
+  "parts": [
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "567598b441ec9198dfb43013cd95fb55d8badfe049b9eec3776ac5b9cac45d9c"
+}
