@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "07-oryx-tail-ears",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/master.png",
+  "sourceSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx/authoring.json",
+  "priorAuthoringSha256": "ff9ec838b54b543641adda1dd418c41d616bdb5560a700df1ee8b2a64a45388a",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "All four continuous tail sections are traced along the actual down-left tail and moved before inherited limb/pelvis polygons. The previous tail0 region was empty after earlier owners claimed its root.",
+    "Observed near/far ear corrections are inherited from C186 first candidate. Neither hidden horn base nor far limb attachment is invented."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}
