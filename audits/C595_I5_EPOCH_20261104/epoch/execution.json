@@ -1,0 +1,165 @@
+{
+  "epoch": "i5-v2-69c1901f3376",
+  "head": "69c1901f337606990fbce7ca796036ec92751ab2",
+  "source": "/private/tmp/cf-i5-v2-69c1901f33",
+  "instrument": {
+    "commit": "69c1901f337606990fbce7ca796036ec92751ab2",
+    "sha256": "33e8d3fdb7598de5d49648ff0e8b71a005661e62cc54ecb55f287749351787c7"
+  },
+  "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 0,
+      "runId": "i5-v2-69c1901f3376-calibration-1",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-2",
+      "exitCode": 0,
+      "runId": "i5-v2-69c1901f3376-calibration-2",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-3",
+      "exitCode": 0,
+      "runId": "i5-v2-69c1901f3376-calibration-3",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "certification",
+      "exitCode": 0,
+      "runId": "i5-v2-69c1901f3376-certification",
+      "verificationExitCode": 0
+    }
+  ],
+  "commands": [
+    {
+      "name": "prepare-build",
+      "executable": "npx",
+      "args": [
+        "vite",
+        "build",
+        "--mode",
+        "evidence"
+      ],
+      "startedAt": "2026-11-04T19:39:52.299Z",
+      "durationMs": 5917.544749999999,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "edge-preflight",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-11-04T19:40:06.256Z",
+      "durationMs": 2977.21775,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-11-04T19:40:13.746Z",
+      "durationMs": 79786.957666,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1-verify",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--verify-run=i5-v2-69c1901f3376-calibration-1"
+      ],
+      "startedAt": "2026-11-04T19:41:38.154Z",
+      "durationMs": 8338.622833000001,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-11-04T19:41:51.105Z",
+      "durationMs": 80150.47966600001,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2-verify",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--verify-run=i5-v2-69c1901f3376-calibration-2"
+      ],
+      "startedAt": "2026-11-04T19:43:15.800Z",
+      "durationMs": 8393.232250000001,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-3",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-11-04T19:43:28.765Z",
+      "durationMs": 79757.28100000002,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-3-verify",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--verify-run=i5-v2-69c1901f3376-calibration-3"
+      ],
+      "startedAt": "2026-11-04T19:44:53.133Z",
+      "durationMs": 8371.662750000018,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "certification",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs"
+      ],
+      "startedAt": "2026-11-04T19:45:06.158Z",
+      "durationMs": 80305.608917,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "certification-verify",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-69c1901f33/instrument/collector.mjs",
+        "--verify-run=i5-v2-69c1901f3376-certification"
+      ],
+      "startedAt": "2026-11-04T19:46:31.155Z",
+      "durationMs": 8272.908957999956,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "status": "certified",
+  "finalSource": {
+    "head": "69c1901f337606990fbce7ca796036ec92751ab2",
+    "status": ""
+  },
+  "v1Unchanged": true
+}

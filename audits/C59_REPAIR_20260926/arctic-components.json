@@ -1,0 +1,2333 @@
+[
+  {
+    "pixels": 57177,
+    "seed": [
+      736,
+      383
+    ],
+    "border": [
+      [
+        "fore-near-root",
+        293
+      ],
+      [
+        "hind-far-root",
+        230
+      ],
+      [
+        "pelvis",
+        191
+      ],
+      [
+        "chest",
+        111
+      ],
+      [
+        "root",
+        76
+      ],
+      [
+        "hind-near-root",
+        27
+      ],
+      [
+        "fore-near-knee",
+        13
+      ]
+    ]
+  },
+  {
+    "pixels": 7696,
+    "seed": [
+      391,
+      742
+    ],
+    "border": [
+      [
+        "tail2",
+        254
+      ],
+      [
+        "hind-near-knee",
+        103
+      ],
+      [
+        "tail1",
+        92
+      ],
+      [
+        "hind-near-ankle",
+        21
+      ]
+    ]
+  },
+  {
+    "pixels": 7093,
+    "seed": [
+      980,
+      256
+    ],
+    "border": [
+      [
+        "chest",
+        137
+      ],
+      [
+        "ear-near-root",
+        113
+      ],
+      [
+        "ear-near-tip",
+        42
+      ],
+      [
+        "neck",
+        38
+      ]
+    ]
+  },
+  {
+    "pixels": 6123,
+    "seed": [
+      952,
+      764
+    ],
+    "border": [
+      [
+        "fore-far-knee",
+        142
+      ],
+      [
+        "fore-far-ankle",
+        108
+      ],
+      [
+        "fore-near-paw",
+        75
+      ],
+      [
+        "fore-near-knee",
+        68
+      ],
+      [
+        "fore-near-ankle",
+        48
+      ],
+      [
+        "fore-far-paw",
+        17
+      ],
+      [
+        "chest",
+        16
+      ],
+      [
+        "fore-far-root",
+        11
+      ]
+    ]
+  },
+  {
+    "pixels": 6063,
+    "seed": [
+      222,
+      603
+    ],
+    "border": [
+      [
+        "tail2",
+        282
+      ],
+      [
+        "tail1",
+        74
+      ]
+    ]
+  },
+  {
+    "pixels": 5109,
+    "seed": [
+      1146,
+      486
+    ],
+    "border": [
+      [
+        "neck",
+        180
+      ],
+      [
+        "chest",
+        87
+      ],
+      [
+        "head",
+        11
+      ]
+    ]
+  },
+  {
+    "pixels": 1261,
+    "seed": [
+      1190,
+      306
+    ],
+    "border": [
+      [
+        "head",
+        45
+      ],
+      [
+        "ear-far-root",
+        21
+      ]
+    ]
+  },
+  {
+    "pixels": 737,
+    "seed": [
+      841,
+      827
+    ],
+    "border": [
+      [
+        "fore-near-ankle",
+        99
+      ],
+      [
+        "fore-near-knee",
+        21
+      ]
+    ]
+  },
+  {
+    "pixels": 183,
+    "seed": [
+      651,
+      914
+    ],
+    "border": [
+      [
+        "hind-far-paw",
+        57
+      ]
+    ]
+  },
+  {
+    "pixels": 162,
+    "seed": [
+      834,
+      783
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        43
+      ]
+    ]
+  },
+  {
+    "pixels": 147,
+    "seed": [
+      693,
+      708
+    ],
+    "border": [
+      [
+        "hind-far-root",
+        34
+      ],
+      [
+        "hind-far-knee",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 98,
+    "seed": [
+      1068,
+      223
+    ],
+    "border": [
+      [
+        "ear-near-tip",
+        48
+      ],
+      [
+        "ear-far-tip",
+        42
+      ],
+      [
+        "ear-far-root",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 91,
+    "seed": [
+      615,
+      878
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        17
+      ]
+    ]
+  },
+  {
+    "pixels": 76,
+    "seed": [
+      492,
+      947
+    ],
+    "border": [
+      [
+        "hind-near-paw",
+        25
+      ]
+    ]
+  },
+  {
+    "pixels": 52,
+    "seed": [
+      161,
+      928
+    ],
+    "border": [
+      [
+        "tail3",
+        12
+      ],
+      [
+        "tail2",
+        11
+      ]
+    ]
+  },
+  {
+    "pixels": 51,
+    "seed": [
+      623,
+      810
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        13
+      ]
+    ]
+  },
+  {
+    "pixels": 36,
+    "seed": [
+      560,
+      925
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        15
+      ],
+      [
+        "hind-far-paw",
+        6
+      ]
+    ]
+  },
+  {
+    "pixels": 35,
+    "seed": [
+      612,
+      822
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        13
+      ],
+      [
+        "hind-far-knee",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 34,
+    "seed": [
+      1078,
+      17
+    ],
+    "border": []
+  },
+  {
+    "pixels": 32,
+    "seed": [
+      481,
+      939
+    ],
+    "border": [
+      [
+        "hind-near-paw",
+        11
+      ],
+      [
+        "hind-near-ankle",
+        10
+      ]
+    ]
+  },
+  {
+    "pixels": 25,
+    "seed": [
+      550,
+      910
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        14
+      ]
+    ]
+  },
+  {
+    "pixels": 21,
+    "seed": [
+      674,
+      746
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        14
+      ]
+    ]
+  },
+  {
+    "pixels": 19,
+    "seed": [
+      992,
+      988
+    ],
+    "border": [
+      [
+        "fore-near-paw",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 18,
+    "seed": [
+      632,
+      914
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        5
+      ],
+      [
+        "hind-far-paw",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 18,
+    "seed": [
+      1066,
+      917
+    ],
+    "border": [
+      [
+        "fore-far-paw",
+        5
+      ],
+      [
+        "fore-far-ankle",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 16,
+    "seed": [
+      1000,
+      968
+    ],
+    "border": [
+      [
+        "fore-far-paw",
+        5
+      ]
+    ]
+  },
+  {
+    "pixels": 14,
+    "seed": [
+      789,
+      893
+    ],
+    "border": []
+  },
+  {
+    "pixels": 12,
+    "seed": [
+      33,
+      751
+    ],
+    "border": [
+      [
+        "tail2",
+        9
+      ]
+    ]
+  },
+  {
+    "pixels": 11,
+    "seed": [
+      1084,
+      16
+    ],
+    "border": []
+  },
+  {
+    "pixels": 11,
+    "seed": [
+      40,
+      748
+    ],
+    "border": [
+      [
+        "tail2",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 11,
+    "seed": [
+      661,
+      767
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        10
+      ]
+    ]
+  },
+  {
+    "pixels": 11,
+    "seed": [
+      867,
+      958
+    ],
+    "border": [
+      [
+        "fore-near-paw",
+        9
+      ],
+      [
+        "fore-near-ankle",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 10,
+    "seed": [
+      468,
+      842
+    ],
+    "border": [
+      [
+        "hind-near-knee",
+        9
+      ]
+    ]
+  },
+  {
+    "pixels": 9,
+    "seed": [
+      631,
+      909
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 8,
+    "seed": [
+      596,
+      384
+    ],
+    "border": []
+  },
+  {
+    "pixels": 7,
+    "seed": [
+      254,
+      908
+    ],
+    "border": [
+      [
+        "tail2",
+        7
+      ]
+    ]
+  },
+  {
+    "pixels": 6,
+    "seed": [
+      0,
+      496
+    ],
+    "border": []
+  },
+  {
+    "pixels": 6,
+    "seed": [
+      965,
+      893
+    ],
+    "border": []
+  },
+  {
+    "pixels": 6,
+    "seed": [
+      795,
+      895
+    ],
+    "border": []
+  },
+  {
+    "pixels": 5,
+    "seed": [
+      899,
+      328
+    ],
+    "border": []
+  },
+  {
+    "pixels": 5,
+    "seed": [
+      934,
+      853
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      927,
+      244
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      210,
+      406
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      218,
+      406
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      1150,
+      559
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      1072,
+      683
+    ],
+    "border": [
+      [
+        "chest",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      678,
+      737
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      797,
+      896
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      793,
+      897
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      627,
+      901
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      973,
+      918
+    ],
+    "border": []
+  },
+  {
+    "pixels": 4,
+    "seed": [
+      286,
+      927
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      670,
+      51
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      668,
+      52
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      212,
+      406
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      216,
+      407
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      1157,
+      487
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      753,
+      724
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      832,
+      752
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        3
+      ]
+    ]
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      833,
+      758
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      656,
+      772
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      616,
+      818
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      795,
+      891
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      793,
+      893
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      548,
+      909
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      250,
+      912
+    ],
+    "border": [
+      [
+        "tail2",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      203,
+      917
+    ],
+    "border": []
+  },
+  {
+    "pixels": 3,
+    "seed": [
+      489,
+      949
+    ],
+    "border": [
+      [
+        "hind-near-paw",
+        4
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      666,
+      48
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      668,
+      49
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      694,
+      52
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      700,
+      53
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      746,
+      79
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      750,
+      83
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      821,
+      87
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1217,
+      165
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      300,
+      180
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      330,
+      234
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      928,
+      240
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      931,
+      242
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      927,
+      248
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      915,
+      312
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      919,
+      312
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1207,
+      326
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1207,
+      343
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      105,
+      489
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      0,
+      503
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1152,
+      532
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1136,
+      596
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      699,
+      709
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      706,
+      716
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      706,
+      720
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      723,
+      724
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      765,
+      727
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      33,
+      748
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      27,
+      755
+    ],
+    "border": [
+      [
+        "tail2",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      954,
+      857
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      956,
+      857
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      332,
+      879
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      622,
+      879
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      330,
+      881
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      308,
+      883
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      303,
+      885
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      799,
+      888
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      628,
+      905
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      629,
+      907
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      194,
+      921
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      288,
+      925
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      184,
+      930
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      182,
+      931
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      855,
+      934
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      985,
+      941
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      485,
+      947
+    ],
+    "border": [
+      [
+        "hind-near-paw",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      497,
+      950
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      866,
+      953
+    ],
+    "border": [
+      [
+        "fore-near-ankle",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      105,
+      1180
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      103,
+      1181
+    ],
+    "border": []
+  },
+  {
+    "pixels": 2,
+    "seed": [
+      1030,
+      1220
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      252,
+      19
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1079,
+      25
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1081,
+      26
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1082,
+      27
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      698,
+      47
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      672,
+      51
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      666,
+      53
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      660,
+      55
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      694,
+      55
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      753,
+      83
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1215,
+      166
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1214,
+      168
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1211,
+      170
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1221,
+      170
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      640,
+      236
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      935,
+      293
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      936,
+      294
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      920,
+      314
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      925,
+      315
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      889,
+      335
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1207,
+      335
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1207,
+      339
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1205,
+      353
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1203,
+      357
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      825,
+      371
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      834,
+      371
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      823,
+      372
+    ],
+    "border": [
+      [
+        "chest",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      590,
+      383
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      582,
+      385
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      664,
+      385
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      210,
+      404
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      214,
+      407
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      220,
+      409
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      216,
+      411
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      218,
+      411
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      212,
+      415
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1157,
+      501
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      248,
+      554
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1145,
+      556
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1114,
+      621
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      168,
+      631
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1108,
+      642
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      111,
+      667
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      111,
+      669
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1074,
+      685
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      80,
+      690
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      70,
+      702
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      41,
+      703
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      43,
+      703
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      41,
+      706
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      694,
+      711
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      696,
+      717
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      696,
+      720
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      55,
+      722
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      763,
+      727
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      773,
+      739
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      778,
+      740
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      50,
+      747
+    ],
+    "border": [
+      [
+        "tail2",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      43,
+      750
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      28,
+      753
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      29,
+      754
+    ],
+    "border": [
+      [
+        "tail2",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      832,
+      756
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      829,
+      760
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      662,
+      769
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      27,
+      783
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      19,
+      799
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      624,
+      808
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      16,
+      819
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      614,
+      820
+    ],
+    "border": [
+      [
+        "hind-far-knee",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      18,
+      821
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      841,
+      821
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      19,
+      822
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      935,
+      835
+    ],
+    "border": [
+      [
+        "fore-near-knee",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      470,
+      840
+    ],
+    "border": [
+      [
+        "hind-near-knee",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      469,
+      841
+    ],
+    "border": [
+      [
+        "hind-near-knee",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      935,
+      858
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      337,
+      861
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      958,
+      869
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      335,
+      879
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      848,
+      879
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      333,
+      881
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      288,
+      885
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      297,
+      885
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      797,
+      888
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      787,
+      891
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      789,
+      891
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      797,
+      891
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      799,
+      891
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      787,
+      893
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      797,
+      893
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      799,
+      897
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      787,
+      899
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      789,
+      899
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      244,
+      901
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      789,
+      901
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      797,
+      907
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      799,
+      907
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      795,
+      908
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      797,
+      909
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      631,
+      913
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      218,
+      914
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      249,
+      914
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      635,
+      914
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      671,
+      915
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      210,
+      916
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      192,
+      919
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      197,
+      919
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      556,
+      919
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      558,
+      922
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      559,
+      923
+    ],
+    "border": [
+      [
+        "hind-far-ankle",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      676,
+      930
+    ],
+    "border": [
+      [
+        "hind-far-paw",
+        2
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      487,
+      948
+    ],
+    "border": [
+      [
+        "hind-near-paw",
+        1
+      ]
+    ]
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      1000,
+      970
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      993,
+      983
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      542,
+      1187
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      909,
+      1196
+    ],
+    "border": []
+  },
+  {
+    "pixels": 1,
+    "seed": [
+      911,
+      1197
+    ],
+    "border": []
+  }
+]

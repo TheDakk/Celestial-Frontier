@@ -1,0 +1,12 @@
+✔ stealing across knee masks is corrected; proximal/other/zero owners preserved (2.0095ms)
+✔ mirror geometry keeps anatomical side identity (0.602375ms)
+✔ missing/duplicate joints fail closed (0.170167ms)
+✔ same-side longitudinal cuts are preserved (0.654667ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.979
