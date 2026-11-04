@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-olm-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-olm-c2-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "olm"
+  ],
+  "startedUnix": 1792381437.210803,
+  "beforeGiB": 56.458641052246094,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 6.03,
+  "lowestGiB": 56.45304870605469,
+  "afterGiB": 56.44964599609375
+}

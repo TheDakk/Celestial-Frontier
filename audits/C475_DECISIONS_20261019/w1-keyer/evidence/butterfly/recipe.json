@@ -1,0 +1,416 @@
+{
+  "schema": "cf.source-bound-post-key-derivative/v1",
+  "id": "butterfly",
+  "source": {
+    "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/master.png",
+    "sha256": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b",
+    "bytes": 1600722
+  },
+  "canonical": {
+    "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/parts/keyed.png",
+    "sha256": "afb03f63690274e95dd24b23eb30b5391d93a899863c26167a01cd91f425a393",
+    "bytes": 1613710
+  },
+  "canonicalRgbaSha256": "2832d3d44e36242f2d38a9e15e009eca14119051e6834852b35bae3e68f8be62",
+  "keyColor": "magenta",
+  "protectedPixels": [],
+  "despillPixels": [],
+  "implementation": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/proposal/port/v2/tools/creature-animation/post-key-matte.mjs",
+    "sha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35",
+    "bytes": 4614
+  },
+  "output": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/butterfly/derivative.png",
+    "sha256": "c8a289c6afbe9ad0a02bae7073164eb012a0a84c8afa7c76ce95fa9f1ae9a4d7",
+    "rgbaSha256": "265fdb703d2ceec2b3d4337b79db515f451411838cf21337f66ed848cbb88db1"
+  },
+  "independentOutcome": {
+    "unsupportedPixels": 0,
+    "canonicalAlphaLoss": 0,
+    "criticalTipRootAttached": true
+  },
+  "oldCriticalAttached": false,
+  "newCriticalAttached": true,
+  "metrics": {
+    "alphaChanged": 6224,
+    "rgbChanged": 3488,
+    "canonicalRgbChanged": 0,
+    "restoredVisible": 6224,
+    "foregroundAbove16": 178122,
+    "marginsPx": {
+      "left": 337,
+      "right": 292,
+      "top": 277,
+      "bottom": 301
+    },
+    "canonical8percent": {
+      "horizontal": 100.32000000000001,
+      "vertical": 100.32000000000001
+    },
+    "sourcePathPixels": 170,
+    "oldPathMissing": 144,
+    "newPathMissing": 0
+  },
+  "actualFringeWitnesses": [
+    {
+      "sourceXY": [
+        472,
+        277
+      ],
+      "sourceRGBA": [
+        246,
+        132,
+        215,
+        255
+      ],
+      "outputRGBA": [
+        226,
+        200,
+        162,
+        157
+      ],
+      "donorXY": [
+        471,
+        278
+      ],
+      "donorRGBA": [
+        226,
+        200,
+        162,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        460,
+        278
+      ],
+      "sourceRGBA": [
+        251,
+        181,
+        239,
+        255
+      ],
+      "outputRGBA": [
+        236,
+        233,
+        211,
+        194
+      ],
+      "donorXY": [
+        459,
+        279
+      ],
+      "donorRGBA": [
+        236,
+        233,
+        211,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        461,
+        278
+      ],
+      "sourceRGBA": [
+        251,
+        206,
+        243,
+        255
+      ],
+      "outputRGBA": [
+        240,
+        245,
+        221,
+        212
+      ],
+      "donorXY": [
+        460,
+        279
+      ],
+      "donorRGBA": [
+        240,
+        245,
+        221,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        462,
+        278
+      ],
+      "sourceRGBA": [
+        253,
+        218,
+        245,
+        255
+      ],
+      "outputRGBA": [
+        239,
+        248,
+        221,
+        221
+      ],
+      "donorXY": [
+        461,
+        279
+      ],
+      "donorRGBA": [
+        239,
+        248,
+        221,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        463,
+        278
+      ],
+      "sourceRGBA": [
+        252,
+        218,
+        242,
+        255
+      ],
+      "outputRGBA": [
+        244,
+        251,
+        231,
+        220
+      ],
+      "donorXY": [
+        462,
+        279
+      ],
+      "donorRGBA": [
+        244,
+        251,
+        231,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        464,
+        278
+      ],
+      "sourceRGBA": [
+        253,
+        219,
+        240,
+        255
+      ],
+      "outputRGBA": [
+        242,
+        249,
+        227,
+        223
+      ],
+      "donorXY": [
+        463,
+        279
+      ],
+      "donorRGBA": [
+        242,
+        249,
+        227,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        465,
+        278
+      ],
+      "sourceRGBA": [
+        247,
+        206,
+        225,
+        255
+      ],
+      "outputRGBA": [
+        245,
+        253,
+        231,
+        209
+      ],
+      "donorXY": [
+        464,
+        279
+      ],
+      "donorRGBA": [
+        245,
+        253,
+        231,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        466,
+        278
+      ],
+      "sourceRGBA": [
+        247,
+        206,
+        226,
+        255
+      ],
+      "outputRGBA": [
+        246,
+        254,
+        230,
+        208
+      ],
+      "donorXY": [
+        465,
+        279
+      ],
+      "donorRGBA": [
+        246,
+        254,
+        230,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        467,
+        278
+      ],
+      "sourceRGBA": [
+        244,
+        200,
+        224,
+        255
+      ],
+      "outputRGBA": [
+        248,
+        253,
+        231,
+        203
+      ],
+      "donorXY": [
+        466,
+        279
+      ],
+      "donorRGBA": [
+        248,
+        253,
+        231,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        468,
+        278
+      ],
+      "sourceRGBA": [
+        234,
+        195,
+        212,
+        255
+      ],
+      "outputRGBA": [
+        227,
+        204,
+        204,
+        241
+      ],
+      "donorXY": [
+        469,
+        278
+      ],
+      "donorRGBA": [
+        227,
+        204,
+        204,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        478,
+        278
+      ],
+      "sourceRGBA": [
+        248,
+        191,
+        217,
+        255
+      ],
+      "outputRGBA": [
+        242,
+        194,
+        201,
+        245
+      ],
+      "donorXY": [
+        477,
+        278
+      ],
+      "donorRGBA": [
+        242,
+        194,
+        201,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        479,
+        278
+      ],
+      "sourceRGBA": [
+        246,
+        165,
+        218,
+        255
+      ],
+      "outputRGBA": [
+        184,
+        178,
+        110,
+        156
+      ],
+      "donorXY": [
+        478,
+        279
+      ],
+      "donorRGBA": [
+        184,
+        178,
+        110,
+        255
+      ]
+    }
+  ],
+  "receipt": {
+    "schema": "cf.post-key-matte/v1",
+    "originalRgbaSha256": "db711e6cf1c9ac22a8899024ae9c21715acdce64de16bc14641216b2706fc4b8",
+    "canonicalRgbaSha256": "2832d3d44e36242f2d38a9e15e009eca14119051e6834852b35bae3e68f8be62",
+    "outputRgbaSha256": "265fdb703d2ceec2b3d4337b79db515f451411838cf21337f66ed848cbb88db1",
+    "keyColor": "magenta",
+    "restoredSourcePixels": 6224,
+    "despilledPixels": 3488,
+    "unresolvedPixels": 0,
+    "protectedPigmentPixels": 0,
+    "canonicalUnchanged": true,
+    "originalUnchanged": true,
+    "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+    "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+    "despill": "observed-source donor through connected support; least-squares key unmix",
+    "admission": false
+  },
+  "review": {
+    "cpuOnly": true,
+    "native": false,
+    "AI": false,
+    "classification": "REPRESENTATIVE_CPU_OUTCOME_ONLY"
+  }
+}

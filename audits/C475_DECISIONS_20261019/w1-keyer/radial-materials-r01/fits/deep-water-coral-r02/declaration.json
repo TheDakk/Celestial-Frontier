@@ -1,0 +1,115 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a",
+  "cutoutSha256": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216",
+  "labelsFile": "labels.png",
+  "labelsSha256": "f06d33a223107fe1b3ae07b812dce125a76dbd3834e3f32726dbc186c000f974",
+  "parts": [
+    {
+      "id": "soft-crown-field-13",
+      "joint": "polyp13Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-8",
+      "joint": "polyp8Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-9",
+      "joint": "polyp9Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-10",
+      "joint": "polyp10Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-11",
+      "joint": "polyp11Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-12",
+      "joint": "polyp12Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-15",
+      "joint": "polyp15Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-17",
+      "joint": "polyp17Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-19",
+      "joint": "polyp19Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-0",
+      "joint": "polyp0Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-1",
+      "joint": "polyp1Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-2",
+      "joint": "polyp2Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-3",
+      "joint": "polyp3Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-4",
+      "joint": "polyp4Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-5",
+      "joint": "polyp5Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-6",
+      "joint": "polyp6Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-7",
+      "joint": "polyp7Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-14",
+      "joint": "polyp14Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-16",
+      "joint": "polyp16Tip",
+      "layer": "near"
+    },
+    {
+      "id": "soft-crown-field-18",
+      "joint": "polyp18Tip",
+      "layer": "near"
+    },
+    {
+      "id": "calcified-calyx-skeleton",
+      "joint": "skeleton",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "6eb542dae25e06a3c4191fd42de9c1227eff888573dfc9652e098f2d2713aa5d"
+}

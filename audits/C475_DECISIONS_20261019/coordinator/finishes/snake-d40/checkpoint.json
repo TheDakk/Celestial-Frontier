@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "c475-snake-d40",
+  "checkpointReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-snake/native-r01/checkpoint-final.json",
+  "nativeReview": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-snake-native-r01/review.json",
+  "nativePlan": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/native-plan-bound.json",
+  "nativeReport": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/native/report.json",
+  "triage": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-finished-next3",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": true,
+  "checkpointReviewSha256": "0c268861f52f1ae3dd920a424e01800f61c45f7c410a2a2731fe54e3dd0a3caf",
+  "nativeReviewSha256": "349c63a8272cfaba8b4705d8cedf806166938b4ec84fb0a08af578d1b9f63cd7",
+  "nativePlanSha256": "a1ae9ef5f8df3730a9560e80c2809021187f59f27b58fb2c66c4d766732bdd79",
+  "nativeReportSha256": "1062e87844528e3e56bd93ddda810bbb9e9d64c22b1cf35892450c4c81d6b16b"
+}

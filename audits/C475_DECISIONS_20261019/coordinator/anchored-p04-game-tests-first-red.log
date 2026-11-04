@@ -1,0 +1,111 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts (7 tests | 7 failed) 5ms
+   × Sea Anemone compiles the real sting card without inventing physical melee 3ms
+   × Sea Anemone actual transcript fallback selects at-stand cast and preserves combat result 0ms
+   × Sea Anemone cast fixes every base and moves every observed soft crown field, with both outcome controls 0ms
+   × Deep-Water Coral compiles the real sting card without inventing physical melee 0ms
+   × Deep-Water Coral actual transcript fallback selects at-stand cast and preserves combat result 0ms
+   × Deep-Water Coral cast fixes every base and moves every observed soft crown field, with both outcome controls 0ms
+   × new family selection remains scoped and missing observed oral uses painted body centre 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Sea Anemone compiles the real sting card without inventing physical melee
+MotionCompileError: motion refused (unsupported-template): template "anchored-soft-polyp" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:26:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Sea Anemone actual transcript fallback selects at-stand cast and preserves combat result
+MotionCompileError: motion refused (unsupported-template): template "anchored-soft-polyp" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:35:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Sea Anemone cast fixes every base and moves every observed soft crown field, with both outcome controls
+MotionCompileError: motion refused (unsupported-template): template "anchored-soft-polyp" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:59:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Deep-Water Coral compiles the real sting card without inventing physical melee
+MotionCompileError: motion refused (unsupported-template): template "anchored-skeleton-soft-polyps" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:26:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Deep-Water Coral actual transcript fallback selects at-stand cast and preserves combat result
+MotionCompileError: motion refused (unsupported-template): template "anchored-skeleton-soft-polyps" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:35:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > Deep-Water Coral cast fixes every base and moves every observed soft crown field, with both outcome controls
+MotionCompileError: motion refused (unsupported-template): template "anchored-skeleton-soft-polyps" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:59:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  apps/game/src/motion/anchored-material-attack.test.ts > new family selection remains scoped and missing observed oral uses painted body centre
+MotionCompileError: motion refused (unsupported-template): template "anchored-soft-polyp" has no motion library (known: quadruped, hopper, biped-bird, fish, insect, serpent, arachnid, radial, plant-woody, plant-herb, myriapod, cephalopod, flyer-membrane, primate)
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:131:45
+    129|   const templateId = record.template ? String(record.template.id) : fa…
+    130|   const baseTemplate = resolveTemplate(templateId, templateVersion);
+    131|   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('un…
+       |                                             ^
+    132|   const resolved = resolveFixedAttachments(resolveAnatomyInventory(bas…
+    133|   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupp…
+ ❯ apps/game/src/motion/anchored-material-attack.test.ts:81:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  08:33:59
+   Duration  825ms (transform 459ms, setup 0ms, import 597ms, tests 5ms, environment 0ms)
+

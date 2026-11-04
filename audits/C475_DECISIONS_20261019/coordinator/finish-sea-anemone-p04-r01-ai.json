@@ -1,0 +1,21 @@
+{
+  "stage": "finish-sea-anemone-p04-r01-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-sea-anemone-p04-r01-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/subjects.json"
+  ],
+  "startedUnix": 1792501169.536542,
+  "beforeGiB": 53.94197463989258,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 59.128,
+  "lowestGiB": 44.58580780029297,
+  "afterGiB": 50.94157791137695
+}

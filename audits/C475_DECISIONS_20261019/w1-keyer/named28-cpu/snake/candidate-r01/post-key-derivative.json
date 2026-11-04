@@ -1,0 +1,66 @@
+{
+  "schema": "cf.post-key-derivative-receipt/v1",
+  "requestSha256": "316d49c2687c0c7847a1571a9873220e0a255a6933f487d39de95fcd701abb70",
+  "implementation": {
+    "cliSha256": "b8b6feb0af06174ea4d91a4a248ce09c8b4955646e4682dfcf9e3df7392f1931",
+    "mathSha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35"
+  },
+  "inputs": [
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/master.png",
+      "sha256": "9c2a590bd5505f24a15d03573ce402465b2bd74ea23daf7cea464664de8d17ba",
+      "bytes": 1286544
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/parts/keyed.png",
+      "sha256": "8910c952ca7f5f1bd7cb7b66f1bbd2b27cf7864053894a59d76d3ba15d75051d",
+      "bytes": 1134122,
+      "rgbaSha256": "3ddf6a3ea80a53484249d611d7f4f7d45cecc6bd7e3a56724f3670a7cd56b7cc"
+    },
+    {
+      "path": "audits/C275_CODEX_20261017/w2-checkpoint/reviews/c275-snake/visual-review-final.json",
+      "sha256": "b814aec75699a0e81d31f15df992ef9eba3b2d72dc251d505ab25a546e69cd3a",
+      "bytes": 247396
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "sha256": "a59fb245e24aa2a38c3aaaf5def30d97bb55edfe4ac5f9c0ccbf3319b3b54151",
+      "bytes": 99122
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/binding.json",
+      "sha256": "f49f8e28534668f027d4ffd489dbd70be08bfe92c18e6d5cf1e9c407163f5de0",
+      "bytes": 581252
+    }
+  ],
+  "originalSource": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/master.png",
+  "canonicalKeyed": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/parts/keyed.png",
+  "canonicalRgbaSha256": "3ddf6a3ea80a53484249d611d7f4f7d45cecc6bd7e3a56724f3670a7cd56b7cc",
+  "output": {
+    "file": "master.png",
+    "sha256": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+    "rgbaSha256": "ad717734e37c216044d7866889c1124382abac15f5361c75c96b4d4d50118171",
+    "width": 1254,
+    "height": 1254
+  },
+  "derivative": {
+    "schema": "cf.post-key-matte/v1",
+    "originalRgbaSha256": "7c7cefcd9121eb77b7985765d9089f96f6d05fe23415476549e6277a1f7b0ad8",
+    "canonicalRgbaSha256": "3ddf6a3ea80a53484249d611d7f4f7d45cecc6bd7e3a56724f3670a7cd56b7cc",
+    "outputRgbaSha256": "ad717734e37c216044d7866889c1124382abac15f5361c75c96b4d4d50118171",
+    "keyColor": "magenta",
+    "restoredSourcePixels": 2479,
+    "despilledPixels": 1439,
+    "unresolvedPixels": 0,
+    "protectedPigmentPixels": 0,
+    "canonicalUnchanged": true,
+    "originalUnchanged": true,
+    "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+    "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+    "despill": "observed-source donor through connected support; least-squares key unmix",
+    "admission": false
+  },
+  "classification": "source-bound post-seal matte derivative; never a new untouched generated original",
+  "nativeAcceptance": false,
+  "aiAcceptance": false
+}

@@ -1,0 +1,3 @@
+C475: deliver Comb native with unchanged C261 pink hold
+
+Native and independent full-size physical review pass, but C261 pink134/132 exceeds unchanged100 cutoff. Retain all five stills and exact W2_HOLD; no AI finish or class propagation. Six approved independent checks pass; no runtime changes or certification.

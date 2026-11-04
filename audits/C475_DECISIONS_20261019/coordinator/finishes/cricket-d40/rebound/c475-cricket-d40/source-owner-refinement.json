@@ -1,0 +1,2681 @@
+{
+  "schema": "cf.c475-source-owner-refinement/v1",
+  "sourceFit": "audits/C475_DECISIONS_20261019/w1-keyer/representatives/cricket/final-fit",
+  "sourceLabelsSha256": "b8100727d17f17cc550f6dcc2c563cc45f053214f143d23c96a09c2015601615",
+  "outputLabelsSha256": "2373db62cdd8473327e9832a461f7fbef6ca6541374c923874cee76f5b086d65",
+  "sourceMasterSha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+  "movedPixels": 287,
+  "moves": [
+    {
+      "pixel": [
+        511,
+        645
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        512,
+        645
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        645
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        645
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        512,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        646
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        512,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        647
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        512,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        648
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        649
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        513,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        650
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        514,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        651
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        652
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        653
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        539,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        541,
+        654
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        515,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        539,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        540,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        541,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        542,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        543,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        544,
+        655
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        539,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        540,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        541,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        542,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        543,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        544,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        545,
+        656
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        516,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        539,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        540,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        541,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        542,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        543,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        544,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        545,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        546,
+        657
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        517,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        539,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        540,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        541,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        542,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        543,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        544,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        545,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        546,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        547,
+        658
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        518,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        519,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        520,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        521,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        522,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        523,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        524,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        525,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        526,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        527,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        528,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        529,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        530,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        531,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        532,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        533,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        534,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        535,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        536,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        537,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    },
+    {
+      "pixel": [
+        538,
+        659
+      ],
+      "from": 20,
+      "to": 4,
+      "reason": "Exact observed far jumping-femur distal paint; retained wing-owned detached287px control"
+    }
+  ],
+  "unresolved": [],
+  "sourceRgbaChangedChannels": 0,
+  "nonRemainderChanged": 0,
+  "paintLost": 0,
+  "parts": {
+    "id": "c475-d40-cricket-selected",
+    "parts": 21,
+    "atlasSize": {
+      "width": 760,
+      "height": 2047
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFrontFarFoot",
+        "part": "front-far-lower",
+        "vertex": 32,
+        "distancePx": 1.0000000000000284,
+        "supports": [
+          1247,
+          1246
+        ]
+      },
+      {
+        "joint": "legFrontNearFoot",
+        "part": "front-near-lower",
+        "vertex": 39,
+        "distancePx": 6.363961030678912,
+        "supports": [
+          1315
+        ]
+      },
+      {
+        "joint": "legMidFarFoot",
+        "part": "mid-far-lower",
+        "vertex": 4,
+        "distancePx": 1.414213562373086,
+        "supports": [
+          1093
+        ]
+      },
+      {
+        "joint": "legMidNearFoot",
+        "part": "mid-near-lower",
+        "vertex": 36,
+        "distancePx": 1.4142135623731353,
+        "supports": [
+          1197
+        ]
+      },
+      {
+        "joint": "legHindFarFoot",
+        "part": "hind-far-lower-exposed",
+        "vertex": 47,
+        "distancePx": 6.7268120235368505,
+        "supports": [
+          750
+        ]
+      },
+      {
+        "joint": "legHindNearFoot",
+        "part": "hind-near-lower",
+        "vertex": 36,
+        "distancePx": 8.06225774829852,
+        "supports": [
+          942
+        ]
+      }
+    ],
+    "sourceBindingHash": "a75be698a5c4cbbb936f9f8195bb3ffe6846e19b5ab423fbd44dc5eafeee773b",
+    "sourceVertices": 1219,
+    "vertices": 1626,
+    "sharedSupports": 119,
+    "pins": 1143,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 13,
+    "excludedOverlaps": 19,
+    "observedExcludedBoundaries": 19,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 19,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "classification": "placement only; native/physical review pending"
+}

@@ -1,0 +1,1 @@
+C475: deliver rigid-test and soft-worm READY, sign three clean finish checkpoints

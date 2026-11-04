@@ -1,0 +1,8 @@
+apps/game/src/battle2/cast-attack-d31.test.ts(172,256): error TS2379: Argument of type '{ template: { id: string; }; anatomy: { schema: 'cf.anatomy-presence/v2'; absent: never[]; appendages: { polypFields: number; }; } | undefined; }' is not assignable to parameter of type '{ readonly template: { readonly id: string; }; readonly anatomy?: AnatomyPresence; readonly geometry?: { readonly fixedAttachments?: Readonly<Record<string, readonly [number, number]>>; }; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'anatomy' are incompatible.
+    Type '{ schema: "cf.anatomy-presence/v2"; absent: never[]; appendages: { polypFields: number; }; } | undefined' is not assignable to type 'AnatomyPresence'.
+      Type 'undefined' is not assignable to type 'AnatomyPresence'.
+apps/game/src/motion/specialized-anatomy.test.ts(17,34): error TS2379: Argument of type '{ template: { id: string; }; anatomy: { schema: 'cf.anatomy-presence/v2'; absent: never[]; appendages: { polypFields: number; }; } | undefined; }' is not assignable to parameter of type '{ readonly template: { readonly id: string; }; readonly anatomy?: AnatomyPresence; readonly geometry?: { readonly fixedAttachments?: Readonly<Record<string, readonly [number, number]>>; }; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'anatomy' are incompatible.
+    Type '{ schema: "cf.anatomy-presence/v2"; absent: never[]; appendages: { polypFields: number; }; } | undefined' is not assignable to type 'AnatomyPresence'.
+      Type 'undefined' is not assignable to type 'AnatomyPresence'.

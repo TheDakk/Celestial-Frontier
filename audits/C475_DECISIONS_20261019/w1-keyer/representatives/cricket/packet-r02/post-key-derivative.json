@@ -1,0 +1,61 @@
+{
+  "schema": "cf.post-key-derivative-receipt/v1",
+  "requestSha256": "a6790063f2bd290d20d3bf2173f08e483b685aa530b878979453b90669005597",
+  "implementation": {
+    "cliSha256": "b8b6feb0af06174ea4d91a4a248ce09c8b4955646e4682dfcf9e3df7392f1931",
+    "mathSha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35"
+  },
+  "inputs": [
+    {
+      "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+      "sha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+      "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+      "rgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/request.json",
+      "sha256": "fe8a839a242a216f375a2fd6f50c93cb04be6e38c5e205b6f723dfa8bbc1bbac"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/prompt.txt",
+      "sha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/generation.json",
+      "sha256": "a8c69fb513c45c44bbce0621faeeecb92027cb34872341e538ea897fd8325354"
+    }
+  ],
+  "originalSource": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+  "canonicalKeyed": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+  "canonicalRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+  "output": {
+    "file": "master.png",
+    "sha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+    "rgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583",
+    "width": 1254,
+    "height": 1254
+  },
+  "derivative": {
+    "schema": "cf.post-key-matte/v1",
+    "originalRgbaSha256": "910804966801939828a0fd85f197e7e1517282cd35d45aa29fbecd56f85abb30",
+    "canonicalRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+    "outputRgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583",
+    "keyColor": "magenta",
+    "restoredSourcePixels": 10235,
+    "despilledPixels": 5240,
+    "unresolvedPixels": 0,
+    "protectedPigmentPixels": 0,
+    "canonicalUnchanged": true,
+    "originalUnchanged": true,
+    "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+    "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+    "despill": "observed-source donor through connected support; least-squares key unmix",
+    "admission": false
+  },
+  "classification": "source-bound post-seal matte derivative; never a new untouched generated original",
+  "nativeAcceptance": false,
+  "aiAcceptance": false
+}

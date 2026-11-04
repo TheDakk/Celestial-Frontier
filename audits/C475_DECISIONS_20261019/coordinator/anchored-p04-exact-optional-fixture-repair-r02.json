@@ -1,0 +1,16 @@
+{
+  "status": "TWO_TEST_ONLY_FIXTURES_OMIT_OPTIONAL_PROPERTY_WHEN_UNDEFINED",
+  "reason": "TypeScript exactOptionalPropertyTypes rejects explicit anatomy:undefined; conditional spread preserves same runtime fixtures and all assertions.",
+  "rows": [
+    {
+      "path": "port/v2/apps/game/src/battle2/cast-attack-d31.test.ts",
+      "beforeSha256": "cdd490d1e3c4a9dfa59b875d4153c0c7b874e612c90855043bd63334945f2833",
+      "sha256": "2a1aba751d737b5c9f280e0c8533c5bacc3de2bd664d44feb68f829e5382da96"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "beforeSha256": "f9dc0f87f89cb3db6581f9c2ae89ff56a349352f75745754743b41ca81cf47cf",
+      "sha256": "ac8e88cabd19e3c01a523f8ded8649c4283b179555703eabc53bd765785ec51a"
+    }
+  ]
+}

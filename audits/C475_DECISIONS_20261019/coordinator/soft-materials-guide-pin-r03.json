@@ -1,0 +1,19 @@
+{
+  "stage": "soft-materials-guide-pin-r03",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-soft-materials-guide-pin",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/update-motion-draft-pin-r03.mjs"
+  ],
+  "startedUnix": 1792463960.302837,
+  "beforeGiB": 54.17833709716797,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.01,
+  "lowestGiB": 54.178314208984375,
+  "afterGiB": 54.17822265625
+}

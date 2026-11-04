@@ -1,0 +1,20 @@
+{
+  "stage": "develop-soft-materials-r03",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-soft-materials-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792464370.8034759,
+  "beforeGiB": 54.1120491027832,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 142.478,
+  "lowestGiB": 53.96575927734375,
+  "afterGiB": 54.05514144897461
+}

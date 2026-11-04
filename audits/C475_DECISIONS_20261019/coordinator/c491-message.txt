@@ -1,0 +1,1 @@
+C475: preserve reviewed soft-material producer with explicit red profile and blocked checks

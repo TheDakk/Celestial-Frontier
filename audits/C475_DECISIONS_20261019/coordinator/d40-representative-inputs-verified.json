@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "freeze": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-freeze-r01.json",
+      "sha256": "3c01b4cd519ed2259cf44d81445811f64ce1d043893296c6fcef78b46edbc563",
+      "files": 79,
+      "selectedFit": "audits/C475_DECISIONS_20261019/w1-keyer/representatives/butterfly/continuous-r01/fit"
+    },
+    {
+      "freeze": "audits/C475_DECISIONS_20261019/w1-keyer/cricket-freeze-r01.json",
+      "sha256": "d7dd92904e331946ee2b7f7aa2e771d62e16780ac13de5d4af8026f3ae318d56",
+      "files": 135,
+      "selectedFit": "audits/C475_DECISIONS_20261019/w1-keyer/representatives/cricket/continuous-r03/fit"
+    }
+  ],
+  "canonicalRebinds": 0,
+  "AIStarted": false,
+  "nativeStarted": false
+}

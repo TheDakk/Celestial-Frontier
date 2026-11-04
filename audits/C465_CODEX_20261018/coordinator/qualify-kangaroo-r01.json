@@ -1,0 +1,19 @@
+{
+  "stage": "qualify-kangaroo-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-kangaroo-owner-r01",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/kangaroo/run-r01.mjs"
+  ],
+  "startedUnix": 1792377733.233365,
+  "beforeGiB": 59.82234573364258,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.039,
+  "lowestGiB": 59.8177375793457,
+  "afterGiB": 59.81396484375
+}

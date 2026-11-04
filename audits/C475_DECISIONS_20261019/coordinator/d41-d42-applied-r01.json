@@ -1,0 +1,160 @@
+{
+  "status": "EXACT_FROZEN_PROPOSAL_APPLIED",
+  "sourceHead": "67619e75658ce4e4578687f36547aa4e2c5758b8",
+  "manifest": {
+    "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal-manifest-r02.json",
+    "sha256": "2a6e2b15e4b52a0aba457aa722f5559a9ab17ced55a457490155d68b3b5edfa5"
+  },
+  "freeze": {
+    "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/freeze-final-r02.json",
+    "sha256": "a9820baa74116d5d763ac0afbf9faf9853e0e17826f175c93cf6169361adade2"
+  },
+  "rows": [
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "baselineSha256": "a1d579f56930dcd440adc333ca583759fb8531dc6df1d90e5631079051f22f73",
+      "newSha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/cast-attack.ts"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "baselineSha256": "eef4e5e023f21707639d90a796e6bf900aea8d255b6d2b5327aeaa43c05e215f",
+      "newSha256": "ec687bae19aa340c2b2a381e1f286b852357992fd0de4ba1a77f478cab877349",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/compact-myriapod.test.ts"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+      "baselineSha256": null,
+      "newSha256": "459d3b9efbf802729fda8b66296689f46c76e6f502368ba3533996583549c522",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "baselineSha256": "7e09871221e4739fd0b8759d5bb5d43c1e693c559c7eb9b76a9e050aecdf2723",
+      "newSha256": "84ebbae0e4e886f30c4624bad5ee99ca78f2792ad1ddfbd16cbea4e56c5a5b0f",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/anatomy-inventory.d.mts"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "baselineSha256": "be782b4467850c2d3b1f9f3a26546d3e579d23a1d591599c8e983005ae027406",
+      "newSha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/anatomy-inventory.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "baselineSha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "newSha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/family-contracts.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "baselineSha256": "723afbb4f90d03d9457f2f5e8cecb9efe24ad27d663683ad0b0774bcdc961591",
+      "newSha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/intake-authored.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "baselineSha256": null,
+      "newSha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "baselineSha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df",
+      "newSha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/repeated-anatomy.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "baselineSha256": "9e68eacfae52fe116d4c52a649e00e77e77caa52c2d452363c894e4bc3c2242d",
+      "newSha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/semantic-part-packing.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "baselineSha256": "3e7e26106891d3dfabacccc87e5881df484d03c9ba977e790c2bf2c27a66e11c",
+      "newSha256": "f5c151c19908d0bd2ca00c839c104877ed768dafa7d47977523e809fe85e012f",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/skeleton-pose.d.mts"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "baselineSha256": "26c11e94b09cf8b297c408e0f02e754ba0cb70affe8fdd01779aa04285e54a1a",
+      "newSha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/skeleton-pose.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "baselineSha256": null,
+      "newSha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "baselineSha256": null,
+      "newSha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.test.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/source-representation.mjs",
+      "baselineSha256": "068e7a029da1b8b3dc5a504bf6b56a5fb0555a17f1d65995199e6e26a500d4ef",
+      "newSha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/source-representation.mjs"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "baselineSha256": "db0b4d4485ae888e3cf75d7b8681964b2a9367be343cd9a16a60ed567093557e",
+      "newSha256": "b3004385c6181917ec12fccf2d188949914f1003fca0edd06147f607191bba20",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/specialized-templates.d.mts"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "baselineSha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "newSha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/specialized-templates.mjs"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "baselineSha256": "f6f2e6a16a389a9b6516314fd23b6df504dd40e1a3a68fc4741439cd26d4c8e6",
+      "newSha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/reviewed-representation.mjs"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+      "baselineSha256": null,
+      "newSha256": "9b955cacbcc8d56933f052c6ab3d89aa2a50251e0fb86232c823bcfceae0310b",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.d.mts"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "baselineSha256": "465dc6730e914b45c77ac95cf8ae383ebd2828c41787c51d2871957fd729a745",
+      "newSha256": "305cdc1f46ae7cc12372ff002dc68de21ab14844f9c6c1354ff60bb9a166520a",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "baselineSha256": null,
+      "newSha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.mjs"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "baselineSha256": null,
+      "newSha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "baselineSha256": "1001719307a03717ec39b080858e8f5b5c334c0cb75e73a02ea1ccd7e0832732",
+      "newSha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/source-join-continuity.mjs"
+    }
+  ],
+  "rootReview": {
+    "sourceRepresentation": "Only exact-master reviewed Isopod/GiantIsopod sevenNear chains plus actualFar; fullyoccludedFar inventory only; no biologicalabsence or hiddenactuator invention.",
+    "budget": "D42 only resolvedmyriapod96 through allreaders; default64/render32/semantic64 unchanged. No eligibleCentipedesource or nativephoneproof.",
+    "sourceMaterial": "FixedTube base/tube; softcrown. Softaxial source caps. Rigidtest allvertices measured with same8ULPepsilon. Nautiloid rigid shell+actualcrown, no8+2fiction.",
+    "overlap": "Four source/type/cast/profile merges independently reviewed against branch snapshots; unaffectedfunctions/templateobjects preserved by124checks."
+  },
+  "I5RecertificationRequired": true,
+  "nativeYet": false
+}

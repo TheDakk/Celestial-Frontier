@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-tropicbird-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-tropicbird-observed-boundary",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-one-r01.mjs",
+    "tropicbird"
+  ],
+  "startedUnix": 1792381030.1417,
+  "beforeGiB": 56.766971588134766,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.044,
+  "lowestGiB": 56.7537956237793,
+  "afterGiB": 56.75205612182617
+}

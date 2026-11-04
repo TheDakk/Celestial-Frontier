@@ -1,0 +1,22 @@
+{
+  "stage": "soft-materials-root-source-tests-r03",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-soft-materials-source-tests",
+    "--",
+    "node",
+    "--test",
+    "port/v2/tools/creature-animation/soft-material-source.test.mjs",
+    "port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+    "port/v2/tools/painted-creature/nautiloid-source-request.test.mjs"
+  ],
+  "startedUnix": 1792464044.357294,
+  "beforeGiB": 53.7872314453125,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.006,
+  "lowestGiB": 53.7872314453125,
+  "afterGiB": 53.7872314453125
+}

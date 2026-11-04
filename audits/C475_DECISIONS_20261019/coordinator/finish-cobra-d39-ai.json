@@ -1,0 +1,21 @@
+{
+  "stage": "finish-cobra-d39-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cobra-d39-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/subjects.json"
+  ],
+  "startedUnix": 1792455105.4766972,
+  "beforeGiB": 59.44068145751953,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.428,
+  "lowestGiB": 49.059539794921875,
+  "afterGiB": 56.41274642944336
+}

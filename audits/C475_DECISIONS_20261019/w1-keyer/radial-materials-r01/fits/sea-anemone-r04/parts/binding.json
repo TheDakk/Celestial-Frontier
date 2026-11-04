@@ -1,0 +1,138 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "f842663b379684f6f166b2d86bdccd789a977270cff075e81d584638f76262cd",
+  "atlasSha256": "3c1f819c6b3821f7e86d92ea2bd1a0fcf4f7ae08fc2027e4696b570e6f19c1ce",
+  "atlasSize": {
+    "width": 658,
+    "height": 976
+  },
+  "parts": [
+    {
+      "id": "pedal-disc",
+      "joint": "base",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 322,
+        "y": 136,
+        "width": 331,
+        "height": 116
+      },
+      "cutout": {
+        "x": 381,
+        "y": 790,
+        "width": 331,
+        "height": 116
+      }
+    },
+    {
+      "id": "oral-disc",
+      "joint": "oral",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 322,
+        "y": 5,
+        "width": 146,
+        "height": 121
+      },
+      "cutout": {
+        "x": 550,
+        "y": 505,
+        "width": 146,
+        "height": 121
+      }
+    },
+    {
+      "id": "upper-crown-envelope",
+      "joint": "crownFar",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 757,
+        "width": 261,
+        "height": 214
+      },
+      "cutout": {
+        "x": 489,
+        "y": 312,
+        "width": 261,
+        "height": 214
+      }
+    },
+    {
+      "id": "left-crown-envelope",
+      "joint": "crownLeft",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 410,
+        "width": 229,
+        "height": 337
+      },
+      "cutout": {
+        "x": 347,
+        "y": 336,
+        "width": 229,
+        "height": 337
+      }
+    },
+    {
+      "id": "right-crown-envelope",
+      "joint": "crownRight",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 307,
+        "height": 395
+      },
+      "cutout": {
+        "x": 657,
+        "y": 379,
+        "width": 307,
+        "height": 395
+      }
+    },
+    {
+      "id": "near-crown-envelope",
+      "joint": "crownNear",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 244,
+        "y": 410,
+        "width": 215,
+        "height": 159
+      },
+      "cutout": {
+        "x": 506,
+        "y": 602,
+        "width": 215,
+        "height": 159
+      }
+    },
+    {
+      "id": "soft-column",
+      "joint": "column",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 244,
+        "y": 579,
+        "width": 240,
+        "height": 134
+      },
+      "cutout": {
+        "x": 419,
+        "y": 661,
+        "width": 240,
+        "height": 134
+      }
+    }
+  ],
+  "bindingHash": "b4f6abfb586db0b22b4c074c4993991a4881f995b0c0b607d5ac46705d85d2d6"
+}

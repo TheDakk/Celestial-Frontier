@@ -1,0 +1,103 @@
+{
+  "schema": "cf.c475-new-cricket-observations/v1",
+  "original": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+  "originalSha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+  "full1254Viewed": true,
+  "criticalCrops": [
+    "evidence/cricket-source-critical2x.png",
+    "evidence/cricket-six-leg-observation2x.png",
+    "evidence/cricket-leg-grid-r02-2x.png"
+  ],
+  "landmarksPx": {
+    "root": [
+      658,
+      811
+    ],
+    "thorax": [
+      754,
+      773
+    ],
+    "head": [
+      842,
+      788
+    ],
+    "mandible": [
+      850,
+      846
+    ],
+    "abdomen": [
+      539.5,
+      792
+    ],
+    "legHindFarKnee": [
+      486,
+      575
+    ],
+    "legHindFarFoot": [
+      396,
+      846
+    ],
+    "legHindNearKnee": [
+      376,
+      609
+    ],
+    "legHindNearFoot": [
+      216,
+      889
+    ],
+    "legMidFarKnee": [
+      558,
+      790
+    ],
+    "legMidFarFoot": [
+      449,
+      941
+    ],
+    "legMidNearKnee": [
+      696,
+      797
+    ],
+    "legMidNearFoot": [
+      647,
+      939
+    ],
+    "legFrontFarKnee": [
+      908,
+      847
+    ],
+    "legFrontFarFoot": [
+      969,
+      911
+    ],
+    "legFrontNearKnee": [
+      804,
+      866
+    ],
+    "legFrontNearFoot": [
+      875,
+      984
+    ],
+    "antennaFar": [
+      565,
+      134
+    ],
+    "antennaNear": [
+      753,
+      153
+    ],
+    "wingFar": [
+      589,
+      678
+    ],
+    "wingNear": [
+      615,
+      714
+    ]
+  },
+  "visibleWalkingTerminals": 6,
+  "wholeLegBiologicalAbsencesDeclared": 0,
+  "partialOcclusion": "Far hind knee575y and distal tarsus846y are visible; middle of the shaft is covered by abdomen/near hind leg. Only exposed knee-shin patch and foot paint are owned; no invisible shaft or bone/control is invented. Folded upper wing lip and lower forewing paint independently observed.",
+  "naturalOcclusionAllowed": true,
+  "unobservedControlsInvented": false,
+  "classification": "MANUAL_CPU_AUTHORING_NOT_VISUAL_ACCEPTANCE"
+}

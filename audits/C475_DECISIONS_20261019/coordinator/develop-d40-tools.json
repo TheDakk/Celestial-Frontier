@@ -1,0 +1,22 @@
+{
+  "stage": "develop-d40-tools",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D40-develop",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792455596.588487,
+  "beforeGiB": 57.23995590209961,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 20.07,
+  "lowestGiB": 57.217987060546875,
+  "afterGiB": 57.236900329589844
+}

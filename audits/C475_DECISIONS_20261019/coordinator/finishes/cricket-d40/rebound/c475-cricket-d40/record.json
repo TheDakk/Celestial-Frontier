@@ -1,0 +1,232 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cricket\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1711376071\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"2\"]]]]",
+    "seed": 1711376071,
+    "ownerId": "authored:archetype-sprint/c475-d40-cricket-r02",
+    "earthName": "Cricket"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1711376071,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 17,
+    "body": 14,
+    "loco": 8,
+    "trait": 2,
+    "size": 0,
+    "diet": 2,
+    "head": 8,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 3,
+    "habitat": 10,
+    "detail": 9,
+    "accent": 0,
+    "temper": 7,
+    "sense": 4,
+    "repro": 3,
+    "life": 4,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cricket"
+  },
+  "geometry": {
+    "cutoutAssetHash": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7974481658692185,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5247208931419458,
+      0.6467304625199362
+    ],
+    "thorax": [
+      0.6012759170653907,
+      0.6164274322169059
+    ],
+    "head": [
+      0.671451355661882,
+      0.6283891547049442
+    ],
+    "mandible": [
+      0.6778309409888357,
+      0.6746411483253588
+    ],
+    "abdomen": [
+      0.4302232854864434,
+      0.631578947368421
+    ],
+    "legHindFarKnee": [
+      0.3875598086124402,
+      0.4585326953748006
+    ],
+    "legHindFarFoot": [
+      0.3157894736842105,
+      0.6746411483253588
+    ],
+    "legHindNearKnee": [
+      0.29984051036682613,
+      0.48564593301435405
+    ],
+    "legHindNearFoot": [
+      0.1722488038277512,
+      0.7089314194577353
+    ],
+    "legMidFarKnee": [
+      0.4449760765550239,
+      0.6299840510366826
+    ],
+    "legMidFarFoot": [
+      0.3580542264752791,
+      0.7503987240829346
+    ],
+    "legMidNearKnee": [
+      0.5550239234449761,
+      0.6355661881977671
+    ],
+    "legMidNearFoot": [
+      0.5159489633173844,
+      0.7488038277511961
+    ],
+    "legFrontFarKnee": [
+      0.7240829346092504,
+      0.6754385964912281
+    ],
+    "legFrontFarFoot": [
+      0.7727272727272727,
+      0.726475279106858
+    ],
+    "legFrontNearKnee": [
+      0.6411483253588517,
+      0.6905901116427432
+    ],
+    "legFrontNearFoot": [
+      0.6977671451355661,
+      0.784688995215311
+    ],
+    "antennaFar": [
+      0.45055821371610844,
+      0.10685805422647528
+    ],
+    "antennaNear": [
+      0.6004784688995215,
+      0.12200956937799043
+    ],
+    "wingFar": [
+      0.4696969696969697,
+      0.5406698564593302
+    ],
+    "wingNear": [
+      0.4904306220095694,
+      0.569377990430622
+    ]
+  },
+  "materials": {
+    "surface": "brown/gold layered chitin; folded forewings, cranked jumping hind femora and long continuous segmented antennae"
+  },
+  "source": "audits/C475_DECISIONS_20261019/w1-keyer/representatives/cricket/packet-r02/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "New manual observations on exact C444A source and derivative. No C279 Cricket authoring, labels or landmarks read/reused.",
+    "sourceFacing": "right",
+    "abdomenAxisPx": [
+      [
+        340,
+        797
+      ],
+      [
+        739,
+        787
+      ]
+    ],
+    "abdomenAxisRule": "D37 midpoint of observed abdomen tip-to-thoracic-insertion centreline; midpoint539.5,792.",
+    "partialOcclusion": "Far hind knee575y and distal tarsus846y are visible; middle of the shaft is covered by abdomen/near hind leg. Only exposed knee-shin patch and foot paint are owned; no invisible shaft or bone/control is invented. Folded upper wing lip and lower forewing paint independently observed.",
+    "postKeyDerivative": {
+      "receiptFile": "post-key-derivative.json",
+      "receiptSha256": "586a9b99e9464995ea381ba9b10398f2c1d8ce9a5de6c942274d38c65e65a74b",
+      "originalSourceSha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76"
+    },
+    "visualAcceptance": "New source-observed CPU proposal; static/native/worstpose review pending",
+    "ownerContourCorrection": {
+      "predecessor": "representatives/cricket/raw-fit",
+      "observedFailure": "Static green r01 still gave source wing/fringe/shin arcs to fixed-body remainder. Independent allparts sheet retained as failing visual ownership control.",
+      "method": "Expand manual priority polygons/corridors along observed source contour; no RGB/alpha or landmarks changed. Corridor width is authoring selection only, never a biological gate.",
+      "unchangedLandmarksAndPresence": true
+    },
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "d1b49fe0c6a7c6c70649b6d35d474e7c21229a52cae89aaf7948d97342128868",
+    "subjectSourceSha256": "96a6895e4c9b327fa113731126107fe866eef8c5a485fc9b34effaf02b790a87",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.08233435087170846,
+      "head": 0.07118760416737419,
+      "mandible": 0.04668989208390571,
+      "abdomen": 0.17172236657311035,
+      "legFrontFarKnee": 0.13624933418930496,
+      "legFrontFarFoot": 0.07050542251025109,
+      "legFrontNearKnee": 0.08420161496515352,
+      "legFrontNearFoot": 0.10981935458976136,
+      "legMidFarKnee": 0.15688665353493533,
+      "legMidFarFoot": 0.14850960072036218,
+      "legMidNearKnee": 0.050055358298166534,
+      "legMidNearFoot": 0.11978988071037217,
+      "legHindFarKnee": 0.26571662148746167,
+      "legHindFarFoot": 0.22771439219424386,
+      "legHindNearKnee": 0.32858348245947505,
+      "legHindNearFoot": 0.257169306165823,
+      "antennaFar": 0.566381910838401,
+      "antennaNear": 0.5113290868817072,
+      "wingFar": 0.1518296073736823,
+      "wingNear": 0.12041731357414104
+    },
+    "measures": {
+      "body": 0.241249158791906,
+      "bone-min": 0.04668989208390571,
+      "bone-max": 0.566381910838401,
+      "leg/body:legFrontFar": 0.8570175238534045,
+      "leg/body:legFrontNear": 0.8042348024196483,
+      "leg/body:legMidFar": 1.2658956233655627,
+      "leg/body:legMidNear": 0.7040241709403924,
+      "leg/body:legHindFar": 2.045317033031911,
+      "leg/body:legHindNear": 2.4279992998050206
+    }
+  },
+  "recipeHash": "b8cedb13d8383237fc4a6293951f50a93db1d74ed8255dfa9773a9acbbccb748"
+}

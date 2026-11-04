@@ -1,0 +1,7 @@
+{
+  "status": "INSTRUMENT_WRAPPER_CORRECTION",
+  "firstAttempt": "develop-d40-tools",
+  "diagnosis": "Outer DISK_RECOVERY exclusive workspace wrapper overlaps the compiler test child kit-export owner. check-profile already runs its commands from V2_ROOT; this was not a cwd problem. Five child compiler tests correctly refused overlap before later unit owners.",
+  "correction": "Keep toolchain whole-job reservation; remove redundant outer workspace wrapper, as in actual D39 profile invocation. Retain first RED. No test, source, limit, seal or dependency changes.",
+  "retryScope": "Corrected invocation only"
+}

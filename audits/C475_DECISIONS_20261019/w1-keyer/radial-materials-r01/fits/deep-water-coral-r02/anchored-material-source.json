@@ -1,0 +1,199 @@
+{
+  "schema": "cf.anchored-material-source/v1",
+  "status": "PASS",
+  "family": "anchored-skeleton-soft-polyps",
+  "sourceRgbaSha256": "1b2a6815c4d32f5ca28d153d9864e33196ca4808a5d7beac72b5aa087db0633d",
+  "fields": [
+    {
+      "joint": "skeleton",
+      "pixel": [
+        620,
+        800
+      ],
+      "owner": "calcified-calyx-skeleton",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp0Tip",
+      "pixel": [
+        647,
+        379
+      ],
+      "owner": "soft-crown-field-0",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp1Tip",
+      "pixel": [
+        704,
+        357
+      ],
+      "owner": "soft-crown-field-1",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp2Tip",
+      "pixel": [
+        766,
+        431
+      ],
+      "owner": "soft-crown-field-2",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp3Tip",
+      "pixel": [
+        570,
+        432
+      ],
+      "owner": "soft-crown-field-3",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp4Tip",
+      "pixel": [
+        526,
+        477
+      ],
+      "owner": "soft-crown-field-4",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp5Tip",
+      "pixel": [
+        403,
+        534
+      ],
+      "owner": "soft-crown-field-5",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp6Tip",
+      "pixel": [
+        471,
+        551
+      ],
+      "owner": "soft-crown-field-6",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp7Tip",
+      "pixel": [
+        337,
+        647
+      ],
+      "owner": "soft-crown-field-7",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp8Tip",
+      "pixel": [
+        391,
+        648
+      ],
+      "owner": "soft-crown-field-8",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp9Tip",
+      "pixel": [
+        511,
+        627
+      ],
+      "owner": "soft-crown-field-9",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp10Tip",
+      "pixel": [
+        583,
+        575
+      ],
+      "owner": "soft-crown-field-10",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp11Tip",
+      "pixel": [
+        542,
+        660
+      ],
+      "owner": "soft-crown-field-11",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp12Tip",
+      "pixel": [
+        602,
+        637
+      ],
+      "owner": "soft-crown-field-12",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp13Tip",
+      "pixel": [
+        685,
+        712
+      ],
+      "owner": "soft-crown-field-13",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp14Tip",
+      "pixel": [
+        868,
+        501
+      ],
+      "owner": "soft-crown-field-14",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp15Tip",
+      "pixel": [
+        822,
+        516
+      ],
+      "owner": "soft-crown-field-15",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp16Tip",
+      "pixel": [
+        923,
+        558
+      ],
+      "owner": "soft-crown-field-16",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp17Tip",
+      "pixel": [
+        748,
+        574
+      ],
+      "owner": "soft-crown-field-17",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp18Tip",
+      "pixel": [
+        835,
+        726
+      ],
+      "owner": "soft-crown-field-18",
+      "alpha": 255
+    },
+    {
+      "joint": "polyp19Tip",
+      "pixel": [
+        770,
+        743
+      ],
+      "owner": "soft-crown-field-19",
+      "alpha": 255
+    }
+  ],
+  "scope": "Hash-bound observed source field ownership only; aggregate controls are not an individual tentacle/polyp biological census. No hidden paint or native acceptance.",
+  "nativeAcceptance": false
+}

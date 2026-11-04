@@ -1,0 +1,8 @@
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}]}
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"c475-cricket-d40","rows":[{"id":"c475-cricket-d40","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/finished"}

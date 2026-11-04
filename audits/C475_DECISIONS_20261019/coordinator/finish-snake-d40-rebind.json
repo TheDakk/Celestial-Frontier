@@ -1,0 +1,20 @@
+{
+  "stage": "finish-snake-d40-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-snake-d40-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40"
+  ],
+  "startedUnix": 1792462959.9169338,
+  "beforeGiB": 52.43794631958008,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.007,
+  "lowestGiB": 52.437931060791016,
+  "afterGiB": 52.43431854248047
+}

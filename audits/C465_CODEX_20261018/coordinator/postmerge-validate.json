@@ -1,0 +1,14 @@
+{
+  "stage": "postmerge-validate",
+  "command": [
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792377346.577705,
+  "beforeGiB": 60.272216796875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.047,
+  "lowestGiB": 60.272216796875,
+  "afterGiB": 60.272216796875
+}

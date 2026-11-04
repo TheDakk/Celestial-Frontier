@@ -1,0 +1,77 @@
+{
+  "status": "PASS_CURRENT_RUNTIME_BYTES_UNCHANGED_FROM_C484",
+  "runtime": [
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "sha256": "4c35b295da5826582860e29e3457419b8760d44af82294591e6ef93815467e80"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "5275fd94511f2743583ef34a4681b5c1b431ea14b6413b451769d5aeae560274"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb"
+    }
+  ],
+  "profile": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-r02.json",
+  "profileResult": "6089PASS/sole staleI5bindingRED",
+  "sixIndependentOwners": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-independent-owners-r02.json",
+  "rootValidate": "audits/C475_DECISIONS_20261019/coordinator/validate-d41-route-r02.json"
+}

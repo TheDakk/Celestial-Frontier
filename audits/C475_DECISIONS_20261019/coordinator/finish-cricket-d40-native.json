@@ -1,0 +1,20 @@
+{
+  "stage": "finish-cricket-d40-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cricket-d40-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/finished-plan.json"
+  ],
+  "startedUnix": 1792456650.4444091,
+  "beforeGiB": 55.51350021362305,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.04,
+  "lowestGiB": 55.42970657348633,
+  "afterGiB": 55.47970962524414
+}

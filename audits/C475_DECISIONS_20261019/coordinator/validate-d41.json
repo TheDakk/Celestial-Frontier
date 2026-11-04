@@ -1,0 +1,21 @@
+{
+  "stage": "validate-d41",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-root-validate",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792458766.09129,
+  "beforeGiB": 56.06000518798828,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.047,
+  "lowestGiB": 56.05531311035156,
+  "afterGiB": 56.055206298828125
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "cf.c475-source-conforming-remesh/v1",
+  "sourceFit": "audits/C475_DECISIONS_20261019/w1-keyer/representatives/cricket/selected-fit",
+  "sourceMasterSha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+  "reason": "Exact retained fold replay localizes all-weld r01 failure at coarse abdomen/tarsal contact-pin faces. Refine source-conforming mesh, with all observed boundaries retained and same solver/guard/contact/ruler limits.",
+  "boundaryStep": 12,
+  "interiorStep": 28,
+  "rgbaChangedChannels": 0,
+  "labelChangedPixels": 0,
+  "recordUnchanged": true,
+  "guardChanges": [],
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFrontFarFoot",
+        "part": "front-far-lower",
+        "vertex": 56,
+        "distancePx": 1.0000000000000284,
+        "supports": [
+          2597,
+          2598
+        ]
+      },
+      {
+        "joint": "legFrontNearFoot",
+        "part": "front-near-lower",
+        "vertex": 93,
+        "distancePx": 0.5000000000000142,
+        "supports": [
+          2787
+        ]
+      },
+      {
+        "joint": "legMidFarFoot",
+        "part": "mid-far-lower",
+        "vertex": 3,
+        "distancePx": 1.414213562373086,
+        "supports": [
+          2318
+        ]
+      },
+      {
+        "joint": "legMidNearFoot",
+        "part": "mid-near-lower",
+        "vertex": 70,
+        "distancePx": 1.4142135623731353,
+        "supports": [
+          2492
+        ]
+      },
+      {
+        "joint": "legHindFarFoot",
+        "part": "hind-far-lower-exposed",
+        "vertex": 87,
+        "distancePx": 6.403124237432878,
+        "supports": [
+          1072
+        ]
+      },
+      {
+        "joint": "legHindNearFoot",
+        "part": "hind-near-lower",
+        "vertex": 56,
+        "distancePx": 2.23606797749976,
+        "supports": [
+          2044
+        ]
+      }
+    ],
+    "sourceBindingHash": "14eb5d0061d4c40cd9a9ae27fd5699022cd420cacdd09cdd22c09615a06eebb0",
+    "sourceVertices": 3263,
+    "vertices": 3365,
+    "sharedSupports": 773,
+    "pins": 1254,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 13,
+    "excludedOverlaps": 19,
+    "observedExcludedBoundaries": 19,
+    "weldedExcludedBoundaries": 19,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  }
+}

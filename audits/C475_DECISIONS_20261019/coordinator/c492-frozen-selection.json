@@ -1,0 +1,28 @@
+{
+  "status": "PASS_COMPLETED_IMMUTABLE_CPU_EVIDENCE_ONLY",
+  "verifiedPins": 1301,
+  "historicalCodePins": [],
+  "freezes": [
+    "w1-keyer/named28-current-r03/freeze-r01.json",
+    "w1-keyer/positive-fringe-r01/freeze-r01.json",
+    "w1-keyer/thin-support-r01/freeze-r01.json",
+    "w1-keyer/radial-materials-r01/sea-anemone-handoff-r02/freeze.json",
+    "w2-worm-radial/remaining-materials-cpu-r01/reviews/sea-anemone-source-r03/freeze-r01.json",
+    "w2-worm-radial/remaining-materials-cpu-r01/reviews/sea-anemone-source-r04/freeze-r01.json",
+    "w2-worm-radial/next-materials-cpu-r01/sea-cucumber-c221-r01/freeze-r01.json",
+    "w2-worm-radial/next-materials-cpu-r01/scale-worm-c221-r01/freeze-r01.json",
+    "w3-crustacean-cephalopod/propagation-cpu-r01/amphipod-krill-r01/freeze-r01.json",
+    "w3-crustacean-cephalopod/propagation-cpu-r01/amphipod-krill-r01/integration-test-r02/freeze.json",
+    "w3-crustacean-cephalopod/review-anteater-material-hold-r01/freeze.json",
+    "w3-crustacean-cephalopod/review-water-flea-thin-source-r01/freeze.json",
+    "w3-crustacean-cephalopod/review-water-flea-thin-mask-r02/freeze.json",
+    "w4-review/water-flea-thin-mask-r02/freeze.json",
+    "coordinator/anchored-resolved-cpu-r01/freeze.json"
+  ],
+  "excludedRegenerableOrDependencyScratch": [
+    "audits/C475_DECISIONS_20261019/w1-keyer/thin-support-r01/node_modules/c475-thin-tests/actual.test.mjs"
+  ],
+  "noForceAdd": true,
+  "productionEdits": false,
+  "postRedOwnersExecuted": false
+}

@@ -1,0 +1,7 @@
+{
+  "status": "SETUP_CORRECTION_BEFORE_SOURCE_EDIT",
+  "firstFailure": "Cannot find module esbuild; dependency not installed in current approved Vite/Rolldown toolchain",
+  "firstScript": "d41-guide-pin-first-attempt.mjs.txt",
+  "productionCopyUntouchedByFirstAttempt": true,
+  "correction": "Use installed TypeScript AST to read only literal Object.freeze draft bullet arrays, and assert exact existing121-row5738bc24 hash before any edit. No new dependency, eval, data stub or gate change."
+}

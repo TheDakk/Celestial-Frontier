@@ -1,0 +1,23 @@
+{
+  "stage": "qualify-snowshoe-hare-c2-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-hare-second-observed-boundary",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-boundary-version.mjs",
+    "snowshoe-hare",
+    "c2-r02"
+  ],
+  "startedUnix": 1792381752.926819,
+  "beforeGiB": 56.37127685546875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.046,
+  "lowestGiB": 56.362613677978516,
+  "afterGiB": 56.359657287597656
+}

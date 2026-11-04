@@ -1,0 +1,22 @@
+{
+  "stage": "d41-root-guards",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-root-guards",
+    "--",
+    "node",
+    "--test",
+    "port/v2/tools/quadruped-proof/source-join-continuity.test.mjs",
+    "port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+    "port/v2/tools/creature-animation/soft-axial-source.test.mjs"
+  ],
+  "startedUnix": 1792458275.041265,
+  "beforeGiB": 56.144744873046875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.016,
+  "lowestGiB": 56.14462661743164,
+  "afterGiB": 56.144569396972656
+}

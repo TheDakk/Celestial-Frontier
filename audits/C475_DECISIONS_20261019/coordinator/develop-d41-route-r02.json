@@ -1,0 +1,20 @@
+{
+  "stage": "develop-d41-route-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-develop-route-fixed",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792458946.305898,
+  "beforeGiB": 56.0406379699707,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 152.573,
+  "lowestGiB": 55.8638916015625,
+  "afterGiB": 55.95335006713867
+}

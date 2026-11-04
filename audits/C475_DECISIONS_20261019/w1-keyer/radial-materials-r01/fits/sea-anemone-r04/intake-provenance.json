@@ -1,0 +1,73 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "acff88a884f1f9da6f018ef77b7af4432e079a6f",
+  "helperSha256": "649bd082369da526fe701f1822aa38ad2fcc1ad53a9fa9c9b87816d102a48512",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/master.png",
+      "sha256": "723e7cef2e69b97b1708798289d6eff15f09d9461c1d1713be1e6d0e042c54d5"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/authoring.json",
+      "sha256": "aece7a0872a4cde069f53cb9bb8ceba8d5e1ccba023644b919711a534b830896"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/subject-source.json",
+      "sha256": "d9cd92d333cb5eca6874f636195977bb39db5ae134f6aa8a4bf6a1e06da5db2d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "f842663b379684f6f166b2d86bdccd789a977270cff075e81d584638f76262cd",
+  "bindingHash": "1d0c3e537ca32373ce156f30e14abbd089e7f45117aa0b05f985e3512cde3291",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "base",
+    "oral",
+    "crownFar",
+    "crownLeft",
+    "crownRight",
+    "crownNear",
+    "column"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/master.png",
+      "sha256": "723e7cef2e69b97b1708798289d6eff15f09d9461c1d1713be1e6d0e042c54d5",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/authoring.json",
+      "sha256": "aece7a0872a4cde069f53cb9bb8ceba8d5e1ccba023644b919711a534b830896",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/subject-source.json",
+      "sha256": "d9cd92d333cb5eca6874f636195977bb39db5ae134f6aa8a4bf6a1e06da5db2d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/sea-anemone-r04/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

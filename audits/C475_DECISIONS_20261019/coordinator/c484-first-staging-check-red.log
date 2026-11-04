@@ -1,0 +1,162 @@
+audits/C475_DECISIONS_20261019/coordinator/d41-root-motion-tests.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-r02.log:1072: trailing whitespace.
++[plugin builtin:vite-reporter] 
+audits/C475_DECISIONS_20261019/coordinator/develop-d41.log:864: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/coordinator/develop-d41.log:867: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r01.log:17: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r02.log:17: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r03.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/combined-runtime-r01.patch:107: trailing whitespace.
++ 
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/combined-runtime-r02.patch:128: trailing whitespace.
++ 
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/evidence/rigid-publisher-first-red-r04.log:5723: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/evidence/rigid-publisher-green-r02.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/instrument-review-r01.patch:40: trailing whitespace.
++ 
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts:26: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts:28: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts:30: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts:35: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts:2: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts:4: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts:6: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts:8: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs:49: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs:55: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs:61: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs:66: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs:6: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs:10: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs:14: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs:19: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts:26: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts:28: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts:30: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts:35: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts:2: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts:4: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts:6: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts:8: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs:49: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs:55: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs:61: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs:66: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs:6: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs:10: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs:14: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs:17: leftover conflict marker
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/integrated-anatomy-final-r02.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/integrated-anatomy-r01.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r01.log:37: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r01.log:44: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r01.log:46: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:35: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:36: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:37: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:39: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:77: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log:79: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:35: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:36: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:37: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:39: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:77: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log:79: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:35: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:36: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:37: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:39: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:77: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log:79: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:70: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:71: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:72: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:74: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:112: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:114: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:137: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:138: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:139: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:141: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:179: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:181: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:204: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:205: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:206: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:208: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:246: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:248: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:271: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:272: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:273: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:275: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:313: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:315: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:338: space before tab in indent.
++  	const wrapper = new Error(summary);
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:339: space before tab in indent.
++  	                ^
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:340: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:342: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:380: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log:382: trailing whitespace.
++  
+audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/specialized-anatomy-soft-r01.log:20: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/specialized-anatomy-soft-r02.log:9: new blank line at EOF.
+audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r02.patch:30: trailing whitespace.
++ 
+audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r03.patch:30: trailing whitespace.
++ 
+audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm-runtime-r02.patch:19: trailing whitespace.
++ 

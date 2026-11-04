@@ -1,0 +1,78 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e888ffd656cafcaf002fb2f3b2f81f81ac874c08",
+  "helperSha256": "723afbb4f90d03d9457f2f5e8cecb9efe24ad27d663683ad0b0774bcdc961591",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/master.png",
+      "sha256": "ca2128a1d42be32696b1b12605b160006ae878bfff651a014c18bfa302d3abef"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/authoring.json",
+      "sha256": "828d7a8a1b92a5d35fbfb50c8266c53d338a671a4c5cd2cca294aa1f1345877b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/subject-source.json",
+      "sha256": "5345ae2511ffa85944799c9de00881a0d01697a757c23ba864d4ae90c7c8e691"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "051e3e4df2cadd28ee860ffef6bd8704308d9af995c3cf9c5a7dede47df7be34",
+  "bindingHash": "adda9d942deb15532a819a63d6d665f16e79d80c59e913591de2131a34011ecd",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "jaw",
+    "head",
+    "seg9",
+    "seg0",
+    "seg1",
+    "seg2",
+    "seg3",
+    "seg4",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg8"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/master.png",
+      "sha256": "ca2128a1d42be32696b1b12605b160006ae878bfff651a014c18bfa302d3abef",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/authoring.json",
+      "sha256": "828d7a8a1b92a5d35fbfb50c8266c53d338a671a4c5cd2cca294aa1f1345877b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/subject-source.json",
+      "sha256": "5345ae2511ffa85944799c9de00881a0d01697a757c23ba864d4ae90c7c8e691",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

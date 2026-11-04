@@ -1,0 +1,23 @@
+{
+  "stage": "qualify-monkey-retained-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-monkey-retained-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-retained-context.mjs",
+    "monkey",
+    "r01"
+  ],
+  "startedUnix": 1792381392.735842,
+  "beforeGiB": 55.51729202270508,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.033,
+  "lowestGiB": 55.51677703857422,
+  "afterGiB": 56.50783157348633
+}

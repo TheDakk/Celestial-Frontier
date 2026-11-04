@@ -1,0 +1,18 @@
+{
+  "status": "SOURCE_RETENTION_AND_FRINGE_HOLD",
+  "files": [
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-source-r01/source-material-witness-3x.png",
+      "sha256": "90d721f041376706ab9a56bda5154be90417e38438337c1e499c081a84b26db4",
+      "actuallyViewed": true
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-source-r01/keyed-material-witness-3x.png",
+      "sha256": "b0dac3987bb14ede50b65aea62665cd5cd2d2609f10c5e2ceb336a20fef7ec84",
+      "actuallyViewed": true
+    }
+  ],
+  "observation": "The actual source upper/lower pale antenna fans retain courses that the keyed derivative shortens, interrupts or omits; pink residue also remains on exposed strands. This is a source/material judgment, not a new pixel/island/zero-trim ruler. The separate431pixel owner repair/staticPASS does not repair these missing courses.",
+  "AIShouldProceed": false,
+  "nativeShouldProceed": false
+}

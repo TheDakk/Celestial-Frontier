@@ -1,0 +1,20 @@
+{
+  "stage": "finish-cobra-d39-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cobra-d39-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39"
+  ],
+  "startedUnix": 1792455162.9612632,
+  "beforeGiB": 56.41273498535156,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 56.41272735595703,
+  "afterGiB": 57.40877914428711
+}

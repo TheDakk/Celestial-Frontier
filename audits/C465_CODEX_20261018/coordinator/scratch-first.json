@@ -1,0 +1,21 @@
+{
+  "status": "PASS_OWN_REGENERABLE_TEST_CACHE_ONLY",
+  "cache": "port/v2/node_modules/.vite",
+  "bytes": 57894,
+  "files": [
+    {
+      "path": "port/v2/node_modules/.vite/vitest/da39a3ee5e6b4b0d3255bfef95601890afd80709/results.json",
+      "bytes": 57871,
+      "sha256": "105a81c7c3c1591dc66bbad0c1180a4c4bbeea82600fccb287af1bc2b35b6213"
+    },
+    {
+      "path": "port/v2/node_modules/.vite/deps_temp_8cd12bd7/package.json",
+      "bytes": 23,
+      "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+    }
+  ],
+  "authenticMastersOrUniqueEvidenceRemoved": 0,
+  "trackedChanges": [],
+  "previewDirectoriesRetained": 2,
+  "untrackedPngReconstructableRgbaRemainingFromC444": 0
+}

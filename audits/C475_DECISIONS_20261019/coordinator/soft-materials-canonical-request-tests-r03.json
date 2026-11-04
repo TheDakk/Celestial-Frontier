@@ -1,0 +1,20 @@
+{
+  "stage": "soft-materials-canonical-request-tests-r03",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-soft-materials-canonical-requests",
+    "--",
+    "node",
+    "--test",
+    "port/v2/tools/painted-creature/soft-material-source-request.test.mjs"
+  ],
+  "startedUnix": 1792464197.337441,
+  "beforeGiB": 53.7872314453125,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.014,
+  "lowestGiB": 53.7872314453125,
+  "afterGiB": 53.7872314453125
+}

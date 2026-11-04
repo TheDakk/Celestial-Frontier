@@ -1,0 +1,34 @@
+{
+  "schema": "cf.post-key-matte-request/v1",
+  "original": {
+    "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/master.png",
+    "sha256": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b"
+  },
+  "canonical": {
+    "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/parts/keyed.png",
+    "sha256": "afb03f63690274e95dd24b23eb30b5391d93a899863c26167a01cd91f425a393",
+    "rgbaSha256": "2832d3d44e36242f2d38a9e15e009eca14119051e6834852b35bae3e68f8be62"
+  },
+  "lineage": [
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/prompt.txt",
+      "sha256": "c1fc2b9eb92e7e1eecd7fffb127e2f259f42146a3727de83daa8c67fe3dcc9c7"
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/subject-source.json",
+      "sha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd"
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/declaration.json",
+      "sha256": "37b341df3ce0e63a7afd06696cac9ac3ae48057ed96fef44ef42f63fe7b33894"
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/labels.png",
+      "sha256": "a4a32f44aef9688701091b55439bc7b820b01d8f5d481032ba981bff20284a82"
+    }
+  ],
+  "keyColor": "magenta",
+  "protectedPixels": [],
+  "despillPixels": [],
+  "scope": "Actual observed continuous antenna shafts; native and AI remain untested"
+}

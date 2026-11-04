@@ -1,0 +1,66 @@
+{
+  "status": "PASS_TEN_SOURCE_PRODUCER_SIGNATURES_G",
+  "rows": [
+    {
+      "name": "Butterfly",
+      "producerCommit": "7701b4148029aa22b8f1b3735d3c698b945c1fd3",
+      "signature": "G",
+      "packetSha256": "2a155c70216558edb064bd57c0fb9f34b8380795bf687acbb079853689f240ee"
+    },
+    {
+      "name": "Cobra",
+      "producerCommit": "0dfbaa08620f0eacbcab935bb5cb9e06e6218c86",
+      "signature": "G",
+      "packetSha256": "a6429f89dd77b9ef488d1f176d0b76341e72ec5ac1a3279177d7efd0452fca20"
+    },
+    {
+      "name": "Cricket",
+      "producerCommit": "06c68a7b63245fd39dadc12aaf6531a20a14b090",
+      "signature": "G",
+      "packetSha256": "78da1a76c94d5ab7cdb01eaa150b209c79a4a7753216ade9d9fa3551fd472a77"
+    },
+    {
+      "name": "Flatworm",
+      "producerCommit": "bcdb10d8841f0337925d03d1f78544cd5c7479e8",
+      "signature": "G",
+      "packetSha256": "337e4193b7806d8caff2ec481df33e563a6f8b2e377fd8aebd52ae3a369fa2e9"
+    },
+    {
+      "name": "Giant Isopod",
+      "producerCommit": "ed9fdc97070400122e7d0cb81d1bfc49b751be63",
+      "signature": "G",
+      "packetSha256": "2bd68823ba306655c87273f301f0bf6f899ecc8643b01467ee2c9b29a7b61546"
+    },
+    {
+      "name": "Ice Worm",
+      "producerCommit": "7701b4148029aa22b8f1b3735d3c698b945c1fd3",
+      "signature": "G",
+      "packetSha256": "3db372c54ea745e8fef13100d604b195329180272c27fc4cc706b0b3bbeeddc7"
+    },
+    {
+      "name": "Nautilus",
+      "producerCommit": "ed9fdc97070400122e7d0cb81d1bfc49b751be63",
+      "signature": "G",
+      "packetSha256": "86d9d766fe50f4ba3888ddb50b42c8ffd05e588fe1903e54a526dfe7f9dd0473"
+    },
+    {
+      "name": "Sand Dollar",
+      "producerCommit": "bcdb10d8841f0337925d03d1f78544cd5c7479e8",
+      "signature": "G",
+      "packetSha256": "4eae47bb69bf9afeae63121f93aea91ccfd617f78758e910669d3f933b44659d"
+    },
+    {
+      "name": "Snake",
+      "producerCommit": "ed9fdc97070400122e7d0cb81d1bfc49b751be63",
+      "signature": "G",
+      "packetSha256": "71e5fb4b9bb47f72b7978322efe7e8dc9efad5bdcc83c2f2dbc94a9a9a27415b"
+    },
+    {
+      "name": "Tube Worm",
+      "producerCommit": "7701b4148029aa22b8f1b3735d3c698b945c1fd3",
+      "signature": "G",
+      "packetSha256": "fe8c1fa628a86c969f443745ac91678410569d8d11c88a0da76ef37353b2403e"
+    }
+  ],
+  "nativeOrTestOwnersExecuted": false
+}

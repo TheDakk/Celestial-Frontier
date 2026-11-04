@@ -1,0 +1,70 @@
+{
+  "creatureId": "c444-02-cobra-c",
+  "parts": [
+    {
+      "name": "mouth-and-retained-fork.png",
+      "path": "parts/mouth-and-retained-fork.png",
+      "sha256": "5c6224310cb8984a207eb381612be39fef9c11a6d72673e689ee390759d3a19e"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "d266050e4fab26196f3eb2917476bf66700178321114fb78c9781f2dd217694d"
+    },
+    {
+      "name": "tail-seg9-complete-source-tip.png",
+      "path": "parts/tail-seg9-complete-source-tip.png",
+      "sha256": "52455849f0f1a70be4d02088480132a11a31319c1114578c33010dbbe551be5a"
+    },
+    {
+      "name": "body-seg0.png",
+      "path": "parts/body-seg0.png",
+      "sha256": "3e43d6678eba099f1ca3b0327ca5886d42331bb0df888d6e91e04483eda2248d"
+    },
+    {
+      "name": "body-seg1.png",
+      "path": "parts/body-seg1.png",
+      "sha256": "f7593d2fc94c76fc6e55f64fd1649a44a5859ca24ee996c716e1181a22f16df6"
+    },
+    {
+      "name": "body-seg2.png",
+      "path": "parts/body-seg2.png",
+      "sha256": "95e277ad1c4f70db95d73849241533c27a2779978eea10f7d56b361fdab0714d"
+    },
+    {
+      "name": "body-seg3.png",
+      "path": "parts/body-seg3.png",
+      "sha256": "532a320057337fc6aa0e06588c7303b8b2aa80614a9306882288ffa77e791ea6"
+    },
+    {
+      "name": "body-seg4.png",
+      "path": "parts/body-seg4.png",
+      "sha256": "26e08d3df7db4014841d823c457acb4a3f39025a5f8b2e24c7b8edc68e14513c"
+    },
+    {
+      "name": "body-seg5.png",
+      "path": "parts/body-seg5.png",
+      "sha256": "05adfa2d024b65e8f6ec7e24c0c52b2f44f7fc32f5dccc55c1ec6857f16434c9"
+    },
+    {
+      "name": "body-seg6.png",
+      "path": "parts/body-seg6.png",
+      "sha256": "8ba8cc063140e2d98275e28fff011602f29e2d58315f228b8c2c2edf40f5b692"
+    },
+    {
+      "name": "body-seg7.png",
+      "path": "parts/body-seg7.png",
+      "sha256": "86949e12001ddde9575d21b6edb1074b9c896442468c011a470dffa69b0a895f"
+    },
+    {
+      "name": "body-seg8.png",
+      "path": "parts/body-seg8.png",
+      "sha256": "ac1887129ca370effb4706f59017f0672fb2a871af3d791eef7481f2fe43caa5"
+    },
+    {
+      "name": "hood-neck-root.png",
+      "path": "parts/hood-neck-root.png",
+      "sha256": "60b1ffafc15fcca83bc10c2c4a63528f7e2838bfec3688ec09d511a267d6216a"
+    }
+  ]
+}

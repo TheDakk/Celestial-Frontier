@@ -1,0 +1,27 @@
+{
+  "stage": "triage-cricket-finished",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Cricket-finished-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C475_DECISIONS_20261019/coordinator/freeze-triage.py",
+    "triage-cricket-finished",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native"
+  ],
+  "startedUnix": 1792456706.476347,
+  "beforeGiB": 55.47220230102539,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.116,
+  "lowestGiB": 55.467369079589844,
+  "afterGiB": 55.467140197753906
+}

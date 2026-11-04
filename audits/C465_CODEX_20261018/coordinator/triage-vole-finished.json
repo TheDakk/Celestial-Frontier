@@ -1,0 +1,24 @@
+{
+  "stage": "triage-vole-finished",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-finished-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C465_CODEX_20261018/coordinator/freeze-triage.py",
+    "triage-vole-finished",
+    "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native"
+  ],
+  "startedUnix": 1792380368.413574,
+  "beforeGiB": 56.03234100341797,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 48.196,
+  "lowestGiB": 56.021400451660156,
+  "afterGiB": 56.0211067199707
+}

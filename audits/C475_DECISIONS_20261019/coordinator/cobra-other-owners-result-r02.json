@@ -1,0 +1,65 @@
+{
+  "status": "PASS_REMAINING_INDEPENDENT_OWNERS_NOT_PROFILE",
+  "profileRemains": "RED_SINGLE_STALE_I5_PRODUCER_BINDING",
+  "scope": "Six independent non-npm-test owners only; no rerun of failed test owner, no certificate/gate bypass.",
+  "rows": [
+    {
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0
+    }
+  ]
+}

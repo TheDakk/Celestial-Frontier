@@ -1,0 +1,72 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "dca46790a55a7a3716986166067de3148b7c0f21913e9ac74308e7858d8396e4",
+      "bytes": 11146
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c493-commit-attempt.log",
+      "sha256": "3cea81a33c9d5cdd23355f8d73950b80f0b0e9087d5ef4e212afe4988ab611c6",
+      "bytes": 196
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c493-paths.txt",
+      "sha256": "411066c047aff1283f2baad34c6e987c329b03aaaa76ca627359072ab897ce1c",
+      "bytes": 408391
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c493-staged-proof.commit.log",
+      "sha256": "880dd78c08dbb7496946a70d9cb56852615399a20af7a675dd709f3fd1346cf9",
+      "bytes": 193785
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c494-message.txt",
+      "sha256": "5c80faca15520e9a19b21786bdab8157ec4ad1d4152885294fbc6bf7410e0671",
+      "bytes": 316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/disk-terminal.log",
+      "sha256": "4b59c4b7265fec3e082336f2b4f2adfdbb4720207947af4a2c1caa7d3d81cba6",
+      "bytes": 1873
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-terminal-r01.py",
+      "sha256": "476e7d319fb03b4447f5b7bee33ed851c82b004f125aba6fb6322e4d99659302",
+      "bytes": 11110
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/terminal-peer-end-read.json",
+      "sha256": "1bbe095f2db3b753af622b9c1c7d06a9bdc1212bcf30c6fe2b0315cbffe09cf2",
+      "bytes": 1607
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/terminal-predecessor-signatures.json",
+      "sha256": "4643ce0feff429c53a9c5cbd3f70e8af0f0610697dd4ac4d94732daf49adda0c",
+      "bytes": 923
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/terminal-final/README.md",
+      "sha256": "2e1ceb5af9a4d2a80b85d89cb7e1a6e580844cbfe61ce43a5af68da5a74c9625",
+      "bytes": 2584
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/terminal-final/progress170.json",
+      "sha256": "eb6b8b14b5b5239d7954b08ab2fa34976e416efe88130f0c0ace2ec4cdf021c2",
+      "bytes": 873943
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/terminal-final/terminal.json",
+      "sha256": "2341f2d1b0e89c9518f2fda4147f7d75b3e88ff03ee297efe9da3749058d572c",
+      "bytes": 5070
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "46f2b749293bb9c4debd0939772f9b93b29705876d81d039fa837d52fe55a9f9",
+      "bytes": 574445
+    }
+  ],
+  "files": 13,
+  "remoteOperations": false
+}

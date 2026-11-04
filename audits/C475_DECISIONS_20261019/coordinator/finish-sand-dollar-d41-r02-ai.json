@@ -1,0 +1,21 @@
+{
+  "stage": "finish-sand-dollar-d41-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-sand-dollar-d41-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02/subjects.json"
+  ],
+  "startedUnix": 1792462013.8352342,
+  "beforeGiB": 55.00297164916992,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 54.476,
+  "lowestGiB": 45.64081573486328,
+  "afterGiB": 51.99581527709961
+}

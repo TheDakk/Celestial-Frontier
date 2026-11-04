@@ -1,0 +1,23 @@
+{
+  "stage": "sea-urchin-d41-root-static",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-sea-urchin-d41-static",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs",
+    "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/static.json"
+  ],
+  "startedUnix": 1792458745.835757,
+  "beforeGiB": 56.06383514404297,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.011,
+  "lowestGiB": 56.06382751464844,
+  "afterGiB": 56.063720703125
+}

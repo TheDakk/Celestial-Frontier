@@ -1,0 +1,47 @@
+{
+  "status": "RUNTIME_CPU_TESTED_NATIVE_PENDING",
+  "runtimeChangedPaths": [
+    "port/v2/apps/game/src/motion/serpent-victory.ts",
+    "port/v2/apps/game/src/release-content.ts"
+  ],
+  "gameImportedToolChanges": [],
+  "I5RecertificationRequired": true,
+  "oldLandingAndAquaticFunctionBodyByteIdentical": true,
+  "knownMotionFix": "Dry/non-aquatic serpent victory head/jaw12/4post-landing cap; no newtemplate/profileoverride",
+  "acceptedDrySpeciesPotentiallyAffected": 19,
+  "acceptedFieldsPairedPoses": 1620,
+  "acceptedFieldArapOrPartRefusals": 0,
+  "rootTrunkAndTailDeltas": 0,
+  "nominalCaps": {
+    "head": 12,
+    "jaw": 4
+  },
+  "oldLandedTrunkRulersUnchanged": {
+    "maxSinkBL": 0.02,
+    "maxPosteriorDriftBL": 0.02,
+    "minHeadRiseBL": 0.06
+  },
+  "intentionalTestScopeChange": "Dry raw-head-rise equality superseded by explicitcap/root assertions; all original envelope thresholds and three negativecontrols retained",
+  "regression": "OriginalactualCobraRED1failed3passed; exactcurrent3files25PASS; firstgreen selector also collectedoldC274shadow and refused, diagnosticretained",
+  "runtimePins": [
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "sha256": "4c35b295da5826582860e29e3457419b8760d44af82294591e6ef93815467e80"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "03f0e3a2cf0e9e79d42fa374997a40eed3b9d73dbec70b5f5cb9297e4cc9cceb"
+    }
+  ],
+  "GUIDEAuthority": {
+    "status": "PASS",
+    "draftBulletCount": 121,
+    "oldSha256": "2ecf6f00ff8fb1458211a51473df02bdbda3dd9469b1e77c6c87cf373dc1f202",
+    "newSha256": "5738bc24f3d8f1de2ea488b42169b83b0b625ccc14cf30135f3e44a1207ecc66",
+    "changedBullet": "CREATURE MOTION STUDIES",
+    "noNewBulletOrVersion": true
+  },
+  "selectedCertificate": "C464_IMPORTED_UNCHANGED",
+  "newAdmissions": 0,
+  "allPairs": "HOLD"
+}

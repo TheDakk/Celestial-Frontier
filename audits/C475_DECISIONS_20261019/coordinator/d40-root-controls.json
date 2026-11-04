@@ -1,0 +1,24 @@
+{
+  "stage": "d40-root-controls",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D40-CPU",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C475_DECISIONS_20261019/coordinator/post-key-vitest.config.mjs"
+  ],
+  "startedUnix": 1792455534.713872,
+  "beforeGiB": 57.24346160888672,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.026,
+  "lowestGiB": 57.24201583862305,
+  "afterGiB": 57.24217987060547
+}

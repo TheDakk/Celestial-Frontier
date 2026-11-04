@@ -1,0 +1,27 @@
+{
+  "stage": "triage-chiton-c2-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-chiton-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C465_CODEX_20261018/coordinator/freeze-triage.py",
+    "triage-chiton-c2-r02",
+    "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native",
+    "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native",
+    "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/native",
+    "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native"
+  ],
+  "startedUnix": 1792382765.4390779,
+  "beforeGiB": 55.84429931640625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 46.157,
+  "lowestGiB": 55.842037200927734,
+  "afterGiB": 55.84185028076172
+}

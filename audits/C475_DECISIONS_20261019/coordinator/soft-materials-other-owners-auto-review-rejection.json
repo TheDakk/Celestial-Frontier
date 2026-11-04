@@ -1,0 +1,10 @@
+{
+  "status": "AUTO_APPROVAL_REVIEW_REJECTED_BEFORE_EXECUTION",
+  "action": "Six independent non-npm-test develop owners",
+  "reason": "The develop profile just returned RED, and the user instructions require stopping after any nonzero/red result rather than running subsequent owners or retry stages.",
+  "commandExecuted": false,
+  "profile": "6089PASS/sole staleI5current-producer-authorities RED",
+  "certificateBindingChanged": false,
+  "certificationOrBrowserStageRequested": false,
+  "next": "Read exact profile ownership and certification stop scope before any retry; do not bypass via another execution route."
+}

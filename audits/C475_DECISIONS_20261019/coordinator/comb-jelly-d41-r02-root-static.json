@@ -1,0 +1,23 @@
+{
+  "stage": "comb-jelly-d41-r02-root-static",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-comb-jelly-d41-r02-static",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs",
+    "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/static.json"
+  ],
+  "startedUnix": 1792464092.4961312,
+  "beforeGiB": 54.144561767578125,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.017,
+  "lowestGiB": 54.14386749267578,
+  "afterGiB": 54.14430236816406
+}

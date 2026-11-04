@@ -1,0 +1,20 @@
+{
+  "stage": "butterfly-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Butterfly-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native-plan-bound.json"
+  ],
+  "startedUnix": 1792455991.763081,
+  "beforeGiB": 57.03031539916992,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.064,
+  "lowestGiB": 56.61745834350586,
+  "afterGiB": 56.99392318725586
+}

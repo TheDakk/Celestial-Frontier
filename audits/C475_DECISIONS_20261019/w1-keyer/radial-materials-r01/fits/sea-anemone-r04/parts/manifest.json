@@ -1,0 +1,40 @@
+{
+  "creatureId": "c475-sea-anemone-anchored-r04",
+  "parts": [
+    {
+      "name": "pedal-disc.png",
+      "path": "parts/pedal-disc.png",
+      "sha256": "cd2af9306beaebd1b846ec456e01e66c4864095ff30cb51bf28ae7ee071e2902"
+    },
+    {
+      "name": "oral-disc.png",
+      "path": "parts/oral-disc.png",
+      "sha256": "959d0da9819a1460b29c0829692a2a32f5b5d1853b544e5600d2a77266f5d1ff"
+    },
+    {
+      "name": "upper-crown-envelope.png",
+      "path": "parts/upper-crown-envelope.png",
+      "sha256": "e1b97593fec8fcad2d82c693d3397d1f782b917ac6600ef4c7579bcd14b5ecd3"
+    },
+    {
+      "name": "left-crown-envelope.png",
+      "path": "parts/left-crown-envelope.png",
+      "sha256": "6d9b2dffc4af6d2fa075f6d9b8a41561082e6c6dc9ef3a497ce98214911e840b"
+    },
+    {
+      "name": "right-crown-envelope.png",
+      "path": "parts/right-crown-envelope.png",
+      "sha256": "c10373a0dc4d6f65cff51c613b4679f70771f493ffb5054179126a3374ab98ff"
+    },
+    {
+      "name": "near-crown-envelope.png",
+      "path": "parts/near-crown-envelope.png",
+      "sha256": "dcc8e3e9a2218b1dc506be361113298f6c9b6baa761f15d010102dac5f9cd3c9"
+    },
+    {
+      "name": "soft-column.png",
+      "path": "parts/soft-column.png",
+      "sha256": "6c15b4e39cb0cafbc1884edcb8374b846a9c2742cc8bb7a656117590b76cba85"
+    }
+  ]
+}

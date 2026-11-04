@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "bytesDeleted": 12634633,
+  "PNGByteMismatchNegativeControl": true,
+  "uniqueOriginalsOrFinishedAssetsDeleted": 0,
+  "rows": [
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-master.rgba",
+      "status": "RETAIN_SIGNED_EVIDENCE",
+      "reason": "Already selected in signed wave; no unique or pinned evidence deletion."
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-labels.rgba",
+      "status": "RETAIN_SIGNED_EVIDENCE",
+      "reason": "Already selected in signed wave; no unique or pinned evidence deletion."
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/finished/prepared/c465-scallop-c2-r01-master.rgba",
+      "status": "RETAIN_SIGNED_EVIDENCE",
+      "reason": "Already selected in signed wave; no unique or pinned evidence deletion."
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/finished/prepared/c465-scallop-c2-r01-labels.rgba",
+      "status": "RETAIN_SIGNED_EVIDENCE",
+      "reason": "Already selected in signed wave; no unique or pinned evidence deletion."
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-master.rgba",
+      "status": "DELETED_PNG_EXACT_UNTRACKED_SCRATCH",
+      "bytes": 6290064,
+      "sha256": "e9c1b19bc06a2716d7e5481ea9270af47e5ad8a4c4dfc5bc95cca7d5b6746dc3",
+      "regenerateFrom": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-masterPng.png",
+      "pngSha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+      "recipe": "sharp(PNG).ensureAlpha().raw().toBuffer(); exact input hash verified"
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-labels.rgba",
+      "status": "DELETED_PNG_EXACT_UNTRACKED_SCRATCH",
+      "bytes": 6290064,
+      "sha256": "5029999997b4faf6a25d1b599195f51fc6c99938959c943ef906af895db29d55",
+      "regenerateFrom": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-labels.png",
+      "pngSha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe",
+      "recipe": "sharp(PNG).ensureAlpha().raw().toBuffer(); exact input hash verified"
+    },
+    {
+      "path": "port/v2/node_modules/.vite",
+      "status": "DELETED_IGNORED_REGENERABLE_CACHE",
+      "bytes": 54314
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/node_modules/.vite",
+      "status": "DELETED_IGNORED_REGENERABLE_CACHE",
+      "bytes": 191
+    }
+  ]
+}

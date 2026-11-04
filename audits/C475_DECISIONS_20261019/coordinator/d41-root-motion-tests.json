@@ -1,0 +1,22 @@
+{
+  "stage": "d41-root-motion-tests",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-motion-tests",
+    "--",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C475_DECISIONS_20261019/coordinator/d41-root-vitest.config.mjs"
+  ],
+  "startedUnix": 1792458383.8563929,
+  "beforeGiB": 56.1501350402832,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 6.017,
+  "lowestGiB": 56.1466178894043,
+  "afterGiB": 56.14988708496094
+}

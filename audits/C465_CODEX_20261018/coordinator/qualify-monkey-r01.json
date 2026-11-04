@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-monkey-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-monkey-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-one-r01.mjs",
+    "monkey"
+  ],
+  "startedUnix": 1792381376.615721,
+  "beforeGiB": 55.53984451293945,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 16.079,
+  "lowestGiB": 55.51920700073242,
+  "afterGiB": 55.51729202270508
+}

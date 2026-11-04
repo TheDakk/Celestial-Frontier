@@ -1,0 +1,84 @@
+{
+  "status": "PASS_ACTUAL_HABITAT_INPUT_CONTROLS",
+  "rows": [
+    {
+      "slug": "tube-worm-d41-r02",
+      "realm": "aquatic",
+      "actualMedium": "water",
+      "script": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/script.json",
+        "sha256": "a721fbd562faa3747b766aca119d21b6511ee4421bcab3f8255b5c00ae22bcb3"
+      },
+      "record": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/record.json",
+        "sha256": "9f0c19f6a5a0dfb0dffcf0a2beaa6005ab460379bbb7e63a123f6112d106d017"
+      },
+      "positive": "READY",
+      "rejectedMutants": [
+        "missing-liquid",
+        "wrong-liquid",
+        "dry-default"
+      ]
+    },
+    {
+      "slug": "ice-worm-d41",
+      "realm": "land",
+      "actualMedium": "ground",
+      "script": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/script.json",
+        "sha256": "177812c190efad8bc72832c0db8d036da29317a18f2495580bd4ddde48e02967"
+      },
+      "record": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/record.json",
+        "sha256": "6803229340b3d650bc22396827579585877bfed7ebd58dc8f26a5946de88710c"
+      },
+      "positive": "READY",
+      "rejectedMutants": []
+    },
+    {
+      "slug": "flatworm-d41-r02",
+      "realm": "aquatic",
+      "actualMedium": "water",
+      "script": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/script.json",
+        "sha256": "849adf3758e2734a3954693594676ea5a9b2241c543ec35cb0bbdd1f376cfd13"
+      },
+      "record": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/record.json",
+        "sha256": "3c98e35fc1244d34f0ce206dffa855f14951b44457d319343b08cc8e98a35152"
+      },
+      "positive": "READY",
+      "rejectedMutants": [
+        "missing-liquid",
+        "wrong-liquid",
+        "dry-default"
+      ]
+    },
+    {
+      "slug": "sand-dollar-d41-r02",
+      "realm": "aquatic",
+      "actualMedium": "water",
+      "script": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/script.json",
+        "sha256": "3d862a6b056ab596f9750d665af4a3eadbb1a1c95a14a448bc8cc4ff18e65938"
+      },
+      "record": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/record.json",
+        "sha256": "d9ce5d54982f08dd487f02fda1782518107149f7748c91774f905aefce7f5352"
+      },
+      "positive": "READY",
+      "rejectedMutants": [
+        "missing-liquid",
+        "wrong-liquid",
+        "dry-default"
+      ]
+    }
+  ],
+  "positiveControls": 4,
+  "rejectedMutants": 9,
+  "actualFirstRefusal": {
+    "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/native/report.json",
+    "sha256": "711dd86006b86e3e15b9210151fcbe1ca4f34a38416944cdce30ad9ac0915893"
+  },
+  "runtimeOrGateChanges": false
+}

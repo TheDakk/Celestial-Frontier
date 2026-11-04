@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"FAIL"}],"last":{"phase":"loading","stage":"decode"}}
+{"status":"running","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"complete","subject":"c475-tube-worm-d41-r02","rows":[{"id":"c475-tube-worm-d41-r02","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/finishes/tube-worm-d41-r02/finished"}

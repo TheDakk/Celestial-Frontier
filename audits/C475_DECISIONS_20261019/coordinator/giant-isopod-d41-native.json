@@ -1,0 +1,20 @@
+{
+  "stage": "giant-isopod-d41-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-giant-isopod-d41-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/native-plan-bound.json"
+  ],
+  "startedUnix": 1792462229.23822,
+  "beforeGiB": 53.938629150390625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.051,
+  "lowestGiB": 53.84312438964844,
+  "afterGiB": 53.895782470703125
+}

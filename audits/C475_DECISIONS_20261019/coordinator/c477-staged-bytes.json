@@ -1,0 +1,117 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "230f37eddb9574a301ec17d3661e66a5c224e8ea9b5a30c9d04adad5004260f6",
+      "bytes": 3012
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "sha256": "ec3bbd3c0c44302c5f7cf951c03d3f9b6787cefb6e2a50a26472b36164e05a14",
+      "bytes": 3968976
+    },
+    {
+      "path": "UI_TOOLCHAIN.md",
+      "sha256": "e0b71b890c9c2ae1e10e9187c2a641b3dce0c5b70a8cc6d2f1a07c92a75b6810",
+      "bytes": 46502
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/PLAN.md",
+      "sha256": "ad2c4c8b19a44666e4f81d1310e4714fc3a6b9f5031055ad9e953c9ef0ff7e52",
+      "bytes": 2744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/SPEC.md",
+      "sha256": "326270d14eb2464881f1e26ee194491bb816ecbdb9a9e9b95bd40e066983d51b",
+      "bytes": 2900
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/commit-owned.py",
+      "sha256": "2a7fef65c71e6a757eb57a87e1c9ba3694d9443a05a423e2f87411c412e0f693",
+      "bytes": 2786
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/disk-start.log",
+      "sha256": "f21bf482b306158940f9372c95390333f5e512fe7512632f9f4b202e68772a06",
+      "bytes": 1873
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/identity.json",
+      "sha256": "c84603d62f3a39d0ee1f0e319ba36b4b039879166ce9de7e5bf78bf6b428a075",
+      "bytes": 625
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/postmerge-proof.json",
+      "sha256": "6ae15d7c2dabe0b2911c97ddc3a48baa4a20f37105d9f9e80f905bdc83b94cdc",
+      "bytes": 172
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/postmerge-validate.json",
+      "sha256": "c866fd5406a17dd8089ad9540e63bc3dac5b1eff66a1ef1024593a2628228f09",
+      "bytes": 464
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/postmerge-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/preflight.json",
+      "sha256": "e0abe0c57c74a01396f692f7517044113dd00b2ffe4fce5e5431cf3f1b6f615d",
+      "bytes": 9555
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/premerge-validate.json",
+      "sha256": "094c56e6ce336ef32de60c7c333a28cbec097fc402036f0464d9299b6c4eb2ee",
+      "bytes": 462
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/premerge-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/prior-roadmap-verbatim.md",
+      "sha256": "f6bd1102a5ced3cb2f73beec53082ca219cef5461874da3effa61279f113fb85",
+      "bytes": 4607
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/run-stage.py",
+      "sha256": "98bccc13eaedf480ff0536505186c1561de14d1e4ac4fcbeb259c8008cb8b216",
+      "bytes": 1581
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/scratch-start.json",
+      "sha256": "20420544a389952a30f06675b33452fea86e7c0daeaca7d0b4a47c390c410e1a",
+      "bytes": 149
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/startup-check.json",
+      "sha256": "ab3a3bc24f9f4188cafd98fa8342b48977cc9de9704af0f1f7682cec8b3c8812",
+      "bytes": 6893
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/startup-reaper.json",
+      "sha256": "c78e31f364373cd8813d738cdf87a1f19e6175b9aa25c18466b4600df74c64cb",
+      "bytes": 36
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/startup-receipt.json",
+      "sha256": "4cb3184bbd7621c998f72df6360bc33ea569788bd2c99394fc8374339c7c1d73",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/startup-verify.json",
+      "sha256": "c2c74ef79a74614d23d4368103d0653952c3b957a2bc45167b40e1fb4d894c3e",
+      "bytes": 10038
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "e4929892775e7328467926870489479704377b7832c0ad5df28f1eb4e9674112",
+      "bytes": 559193
+    }
+  ],
+  "files": 22,
+  "remoteOperations": false
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "develop-d41",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792458635.292688,
+  "beforeGiB": 56.07860565185547,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 22.08,
+  "lowestGiB": 56.05440139770508,
+  "afterGiB": 56.07496643066406
+}

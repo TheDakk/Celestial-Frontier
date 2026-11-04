@@ -1,0 +1,23 @@
+{
+  "stage": "butterfly-d40-r02-root-static",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-butterfly-d40-r02-static",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs",
+    "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/static.json"
+  ],
+  "startedUnix": 1792459544.402262,
+  "beforeGiB": 55.87831115722656,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.021,
+  "lowestGiB": 55.87741470336914,
+  "afterGiB": 55.87801742553711
+}

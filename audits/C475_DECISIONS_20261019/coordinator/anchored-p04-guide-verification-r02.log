@@ -1,0 +1,19 @@
+node:internal/modules/esm/assert:110
+        throw new ERR_IMPORT_ATTRIBUTE_MISSING(url, 'type', validType);
+              ^
+
+TypeError [ERR_IMPORT_ATTRIBUTE_MISSING]: Module "file://~/Projects/celestial-frontier-openai-mac/port/v2/version.json" needs an import attribute of "type: json"
+    at validateAttributes (node:internal/modules/esm/assert:110:15)
+    at defaultLoadSync (node:internal/modules/esm/load:161:3)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:853:12)
+    at #loadSync (node:internal/modules/esm/loader:885:53)
+    at ModuleLoader.load (node:internal/modules/esm/loader:834:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:540:31)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:606:36)
+    at afterResolve (node:internal/modules/esm/loader:658:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:664:12)
+    at ModuleJobSync.syncLink (node:internal/modules/esm/module_job:328:33) {
+  code: 'ERR_IMPORT_ATTRIBUTE_MISSING'
+}
+
+Node.js v26.12.0

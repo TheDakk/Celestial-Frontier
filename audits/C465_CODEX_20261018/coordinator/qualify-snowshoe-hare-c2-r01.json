@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-snowshoe-hare-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-snowshoe-hare-c2-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "snowshoe-hare"
+  ],
+  "startedUnix": 1792381400.809498,
+  "beforeGiB": 56.507808685302734,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 10.045,
+  "lowestGiB": 56.498191833496094,
+  "afterGiB": 56.49639129638672
+}

@@ -1,0 +1,165 @@
+{
+  "status": "PASS",
+  "unchangedExistingTemplates": 19,
+  "newTemplates": 2,
+  "sourceRoutePositiveAndNegative": 18,
+  "newJointCounts": {
+    "errant-soft-worm": 28,
+    "ctenophore-body": 6
+  },
+  "genericCapsOrMotionRulersChanged": false,
+  "ctenophoreOnlyExistingSourceBoundaryFitOption": true,
+  "rows": [
+    {
+      "id": "unchanged-cladoceran",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-notostracan",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-isopod",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-nautiloid",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-axial-soft-worm",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-echinoderm-test",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-tube-worm",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-brachyuran",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-bivalve",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-gastropod",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-annelid",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-crustacean-clawed",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-crustacean-small",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-sessile-filter",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-colonial-filter",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-barnacle",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-lobopod",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-xiphosuran",
+      "status": "PASS"
+    },
+    {
+      "id": "unchanged-larva",
+      "status": "PASS"
+    },
+    {
+      "id": "Marine Worm-route",
+      "baseline": "annelid",
+      "proposal": "errant-soft-worm"
+    },
+    {
+      "id": "Marine Worm-{\"id\":\"unsupported\",\"candidateTemplates\":[\"annelid\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Marine Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Marine Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[\"annelid\",\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Marine Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Marine Worm-non-species",
+      "status": "EXISTING_GENERIC_ROUTE_UNCHANGED"
+    },
+    {
+      "id": "Polychaete Worm-route",
+      "baseline": "annelid",
+      "proposal": "errant-soft-worm"
+    },
+    {
+      "id": "Polychaete Worm-{\"id\":\"unsupported\",\"candidateTemplates\":[\"annelid\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Polychaete Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Polychaete Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[\"annelid\",\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Polychaete Worm-{\"id\":\"annelid-water\",\"candidateTemplates\":[]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Polychaete Worm-non-species",
+      "status": "EXISTING_GENERIC_ROUTE_UNCHANGED"
+    },
+    {
+      "id": "Comb Jelly-route",
+      "baseline": "radial",
+      "proposal": "ctenophore-body"
+    },
+    {
+      "id": "Comb Jelly-{\"id\":\"unsupported\",\"candidateTemplates\":[\"radial\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Comb Jelly-{\"id\":\"comb-jelly\",\"candidateTemplates\":[\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Comb Jelly-{\"id\":\"comb-jelly\",\"candidateTemplates\":[\"radial\",\"wrong\"]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Comb Jelly-{\"id\":\"comb-jelly\",\"candidateTemplates\":[]}",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "Comb Jelly-non-species",
+      "status": "EXISTING_GENERIC_ROUTE_UNCHANGED"
+    }
+  ]
+}

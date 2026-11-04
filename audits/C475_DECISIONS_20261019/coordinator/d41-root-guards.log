@@ -1,0 +1,32 @@
+✔ complete source terminal owners pass; unrelated families remain unchanged (0.408209ms)
+✔ anterior source erasure refuses (0.383166ms)
+✔ anterior missing or misassigned owner refuses (0.15925ms)
+✔ anterior offsource landmark refuses (0.078375ms)
+✔ posterior source erasure refuses (0.062959ms)
+✔ posterior missing or misassigned owner refuses (0.060708ms)
+✔ posterior offsource landmark refuses (0.050083ms)
+✔ malformed source refuses before indexing (0.046625ms)
+✔ a one-owner test measures every published point through rigid rotation and translation (0.56675ms)
+✔ scale fails the same unchanged rigid-surface epsilon (0.473291ms)
+✔ shear fails the same unchanged rigid-surface epsilon (0.090333ms)
+✔ reflection fails the same unchanged rigid-surface epsilon (0.074625ms)
+✔ local deformation fails the same unchanged rigid-surface epsilon (0.081667ms)
+✔ cannot claim the rigid one-owner path for a soft or multi-owner source (0.222292ms)
+✔ missing, shortened, collapsed or nonfinite published surfaces refuse (0.085208ms)
+✔ an empty, truncated, nonfinite or misindexed authored reference cannot pass vacuously (0.170167ms)
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (2.088167ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (0.763667ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.282708ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (0.4585ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (9.775875ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (1140.48ms)
+✔ fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse (0.36925ms)
+✔ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (1.643ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1299.024667

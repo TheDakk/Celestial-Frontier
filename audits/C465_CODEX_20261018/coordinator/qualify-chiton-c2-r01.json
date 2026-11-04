@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-chiton-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-chiton-c2-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "chiton"
+  ],
+  "startedUnix": 1792381410.9506729,
+  "beforeGiB": 56.50054168701172,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.042,
+  "lowestGiB": 56.491615295410156,
+  "afterGiB": 56.4892692565918
+}

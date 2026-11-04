@@ -1,0 +1,30 @@
+{
+  "schema": "cf.post-key-matte-request/v1",
+  "original": {
+    "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+    "sha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76"
+  },
+  "canonical": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+    "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+    "rgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0"
+  },
+  "lineage": [
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/request.json",
+      "sha256": "fe8a839a242a216f375a2fd6f50c93cb04be6e38c5e205b6f723dfa8bbc1bbac"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/prompt.txt",
+      "sha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747"
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/generation.json",
+      "sha256": "a8c69fb513c45c44bbce0621faeeecb92027cb34872341e538ea897fd8325354"
+    }
+  ],
+  "keyColor": "magenta",
+  "protectedPixels": [],
+  "despillPixels": [],
+  "scope": "Actual observed continuous antenna shafts; native and AI remain untested"
+}

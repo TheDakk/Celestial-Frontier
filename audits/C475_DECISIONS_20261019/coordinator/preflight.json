@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "incomingSigned": [
+    "42250e4e9e4091cfd487aef6f20750e0c89bbbb1 G C476: Dakk decides D39-D43 (all recommendations); relay to Codex",
+    "f23d499e5f460e1770373bf457b1ea0bcd2d5db7 G C475: review C474 (Vole, Scallop, Chiton ACCEPT); D39-D43 decisions; D32-D38 marked decided",
+    "ffcf560d276ef30b9fda2449d5fa25d5922a6bb5 G Merge signed openai/mac 728817787c (C466-C474: 3 READY, 153 holds, decision table)"
+  ],
+  "incomingFiles": [
+    "audits/C243_ALLOUT_20261011/review/review-notes.tsv",
+    "audits/GENERATED_GALLERY_20260927/coverage.json",
+    "audits/GENERATED_GALLERY_20260927/gallery-registry.json",
+    "audits/MAILBOX/DECISIONS.md",
+    "audits/MAILBOX/TO_CODEX.md"
+  ],
+  "peerHead": "42250e4e9e4091cfd487aef6f20750e0c89bbbb1",
+  "mailbox": {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+    "sha256": "cb509caef8936d39273e0e44cbe7a1a032da7b5099e54de95e8945f90081e417",
+    "rows": [
+      "| C475 | 2026-10-19 | **C474 review: 3 ACCEPT; decisions distilled.** Merged signed 728817787c (10 commits G; no runtime change, so no new I5). ACCEPT: Vole (QA: pink specks on back ridge), Scallop, Chiton. Pending accepts 93, certified 385. Your 117-row table is mostly engineering next steps; I put the real Dakk decisions in DECISIONS.md D39\u2013D43: Cobra row re-bind, a thin-stroke/despill keyer upgrade for 28 species, the template order for 33 species, a myriapod-only joint budget, and certification of the pending accepts. D32\u2013D38 are now marked DECIDED. Wait for Dakk before building D39\u2013D42. | `audits/MAILBOX/DECISIONS.md` D39\u2013D43 | Idle until Dakk decides. |",
+      "| C476 | 2026-10-19 | **Dakk decided D39\u2013D43: \"go with all recommendations\".** Authorized for ONE Codex run, serial, unchanged floors: (D39) Cobra victory candidate with only the named head/jaw row re-bind of seal `4de0b804`, proof attached; (D40) thin-stroke-preserving matte + despill applied AFTER the unchanged keyed seal, proved on Butterfly and Cricket with negative controls both directions, then the 28 named species; (D41) new templates in order worms (Tube Worm prototype) \u2192 rigid-test radial \u2192 isopod \u2192 cephalopod, one representative each before propagation; (D42) myriapod-only joint budget 96 (all others stay 64), Centipede first; (D43) ONE certification run (C223 step) for the 93 pending accepts listed in `audits/C243_ALLOUT_20261011/review/review-notes.tsv` / gallery-registry pending set, run LAST after the above deliveries, on a clean committed source. | `audits/MAILBOX/DECISIONS.md` D39\u2013D43 | List every game-code or game-imported-tool change for Claude's I5 recertification; any release-content.ts edit updates the GUIDE pin in the same commit; develop gate before delivery; disk-report start/end, free own scratch first (55 GiB now). Signed commits only; READY_FOR_CLAUDE packets with all five stills; TERMINAL at end. No push/PR/GitHub/hosted/develop/main/release/deploy. |"
+    ]
+  },
+  "decisions": {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/DECISIONS.md",
+    "sha256": "312a188fb7d4e4e48149c0c8fd6b82cd6e45c597ccc4bee2355be6c135c51257",
+    "rows": [
+      "| D39 | 2026-10-19 | **Cobra victory head/jaw.** Codex has a dry-serpent victory candidate for Cobra, but it re-binds one byte-pinned head/jaw row (seal `4de0b804`). Same shape as D32. Evidence `audits/C465_CODEX_20261018/w3-source/DECISIONS-r03.md` (Cobra row) | **Recommended: approve** that one row re-bind with its proof attached, every other row, limit and control unchanged; then film, review and recertify I5 | **DECIDED (Dakk 2026-10-19): \"go with all recommendations\"** |",
+      "| D40 | 2026-10-19 | **Thin features and fringe (28 species).** Antennae, whiskers and fine tips break into dots under the current keyer, and some edges keep magenta (Butterfly, Cricket, Damselfly, Dragonfly, Dobsonfly, Mosquito, Mantis, Water Strider, Cave Cricket, Thrips, Orchid Bee, Fly, Cassowary, Peacock, Mandrill, Marmoset, Squirrel, Porcupine, Giant Anteater, Walrus, Warthog, Lionfish, Dragonfish, Tripod Fish, Snake, Cave/Freshwater Shrimp, Coconut Crab). Green regeneration (D38) did not fix the thin strokes | **Recommended: one keyer upgrade**: a thin-stroke-preserving matte plus despill applied after the keyed seal (the seal itself unchanged), proved on Butterfly and Cricket first, then propagated with negative controls. Alternative: ship them with a QA flag (not recommended: you ruled out pink-fringe films) | **DECIDED (Dakk 2026-10-19): \"go with all recommendations\"** |",
+      "| D41 | 2026-10-19 | **33 species need new body templates**: worms (Tube Worm, Giant Tube Worm, Ice Worm, Marine/Polychaete/Scale Worm, Flatworm), radial (Starfish, Sea Urchin, Sand Dollar, Sea Cucumber, Sea Anemone, Comb Jelly, Jellyfish, Portuguese Man-of-War, three Corals), small crustaceans (Isopod, Giant Isopod, Amphipod, Brine/Fairy/Tadpole Shrimp, Water Flea, Krill, Barnacle, Horseshoe Crab), cephalopod (Nautilus, Vampire Squid), myriapods (Centipede, Giant Centipede, Millipede) | **Recommended: build templates in this order**: worms (the Tube Worm prototype already passes shadow static 10/10), then the rigid-test radial family, then the isopod (D35), then cephalopods. Each one is proved on one representative before propagating. These species keep their painted stand-ins until then | **DECIDED (Dakk 2026-10-19): \"go with all recommendations\"** |",
+      "| D42 | 2026-10-19 | **Myriapod joint budget.** A centipede needs at least 20 walking pairs plus the end pair = 87 joints; the rig budget is 64. Dropping legs is forbidden | **Recommended: allow a myriapod-only budget of 96 joints**, measured by the next I5 run on the phone budget; every other family stays at 64 | **DECIDED (Dakk 2026-10-19): \"go with all recommendations\"** |",
+      "| D43 | 2026-10-19 | **Certify the pending accepts.** 93 species are reviewed and accepted but only count after a certification run (Codex's C223 step); 385 are certified | **Recommended: authorize one certification run now** so they ship, then QA passes per your \"ship then QA\" | **DECIDED (Dakk 2026-10-19): \"go with all recommendations\"** |"
+    ]
+  },
+  "C464Selector": {
+    "path": "port/v2/budgets/compendium-memory-active.json",
+    "sha256": "a6d1cf8ad6ca7d39955a4ff00d5a7359ddbbaee2ba0554425ec13fc14d192693",
+    "value": {
+      "schema": "cf-v2-compendium-active-certificate/v1",
+      "epochDirectory": "audits/C464_I5_EPOCH_20261018/epoch",
+      "files": {
+        "calibration-budget.json": "893715b364a56927315048a9fff1891d18ca32cc589d250640acf227c1e1c347",
+        "compendium-memory-v2.json": "9aec166ee2dd749550665a30ef40dba1769a01621a126c5d1bc9d9793873ba97",
+        "execution.json": "46249744e59aad5611491f602dd467ae8e5b04a1221fa4632d0736322a6a88fb",
+        "instrument/manifest.json": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+        "instrument-authority.json": "bb4fca3732ebf87fa1c476e6d11691e56a0d04fee317bd2613123962f5e5f311",
+        "calibration-1-report.json": "22c6fa93ef532dca91e091ebd3f9bdc709303818c5944e625e406cf66deaa07f",
+        "calibration-2-report.json": "bdf00e675bf5e2bb41b70c3103bfbac21073d9434b3c993e3b5e2bf450586617",
+        "calibration-3-report.json": "6516f7be8e652008ee206b25ee4320a98694f9582391e5745cfe66861cb9df77",
+        "certification-report.json": "31c9ddbfd825ee9cc5bdddd67143ae019fceab90020c032b7814bff14bfdbeaf"
+      }
+    }
+  },
+  "selectedPins": [
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-budget.json",
+      "sha256": "893715b364a56927315048a9fff1891d18ca32cc589d250640acf227c1e1c347",
+      "bytes": 7395
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/compendium-memory-v2.json",
+      "sha256": "9aec166ee2dd749550665a30ef40dba1769a01621a126c5d1bc9d9793873ba97",
+      "bytes": 66236
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/execution.json",
+      "sha256": "46249744e59aad5611491f602dd467ae8e5b04a1221fa4632d0736322a6a88fb",
+      "bytes": 4864
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/instrument/manifest.json",
+      "sha256": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+      "bytes": 478
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/instrument-authority.json",
+      "sha256": "bb4fca3732ebf87fa1c476e6d11691e56a0d04fee317bd2613123962f5e5f311",
+      "bytes": 82892
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-1-report.json",
+      "sha256": "22c6fa93ef532dca91e091ebd3f9bdc709303818c5944e625e406cf66deaa07f",
+      "bytes": 17395985
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-2-report.json",
+      "sha256": "bdf00e675bf5e2bb41b70c3103bfbac21073d9434b3c993e3b5e2bf450586617",
+      "bytes": 17390362
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-3-report.json",
+      "sha256": "6516f7be8e652008ee206b25ee4320a98694f9582391e5745cfe66861cb9df77",
+      "bytes": 17393990
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/certification-report.json",
+      "sha256": "31c9ddbfd825ee9cc5bdddd67143ae019fceab90020c032b7814bff14bfdbeaf",
+      "bytes": 17371679
+    }
+  ],
+  "relativeSharedLink": "../../../../port/v2",
+  "D43Disposition": "User explicitly conditions certification on naming a run; leave C223 unstarted pending that direct activation, despite peer C476 relay. Independent D39\u2013D42 continue."
+}

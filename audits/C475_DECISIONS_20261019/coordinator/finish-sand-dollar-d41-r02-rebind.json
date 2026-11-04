@@ -1,0 +1,20 @@
+{
+  "stage": "finish-sand-dollar-d41-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-sand-dollar-d41-r02-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02"
+  ],
+  "startedUnix": 1792462068.511171,
+  "beforeGiB": 51.99574661254883,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.011,
+  "lowestGiB": 51.99573516845703,
+  "afterGiB": 52.990936279296875
+}

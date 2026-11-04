@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-cockatoo-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-cockatoo-c2-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "cockatoo"
+  ],
+  "startedUnix": 1792381419.0440462,
+  "beforeGiB": 56.48910140991211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 10.049,
+  "lowestGiB": 56.46699905395508,
+  "afterGiB": 56.4666748046875
+}

@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-scallop-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-scallop-observed-mantle",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "scallop"
+  ],
+  "startedUnix": 1792379949.480402,
+  "beforeGiB": 60.36006546020508,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.042,
+  "lowestGiB": 60.34930419921875,
+  "afterGiB": 60.34495162963867
+}

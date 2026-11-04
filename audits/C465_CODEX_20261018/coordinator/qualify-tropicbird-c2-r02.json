@@ -1,0 +1,23 @@
+{
+  "stage": "qualify-tropicbird-c2-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-tropicbird-second-observed-boundary",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-boundary-version.mjs",
+    "tropicbird",
+    "c2-r02"
+  ],
+  "startedUnix": 1792381650.401427,
+  "beforeGiB": 56.366661071777344,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.043,
+  "lowestGiB": 56.36073684692383,
+  "afterGiB": 56.3598747253418
+}

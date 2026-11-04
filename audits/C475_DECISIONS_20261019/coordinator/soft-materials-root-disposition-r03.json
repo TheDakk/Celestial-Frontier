@@ -1,0 +1,43 @@
+{
+  "status": "APPLIED_CPU_PRODUCER_NATIVE_BLOCKED_PENDING_SIX_CHECK_APPROVAL",
+  "baselineProducer": "633cd4627f52b89efaea1267d364ea33032ade47",
+  "appliedPaths": 8,
+  "newTestPath": "port/v2/tools/painted-creature/soft-material-source-request.test.mjs",
+  "targetedTests": 24,
+  "rootComposition": {
+    "oldTemplatesUnchanged": 19,
+    "sourceRouteControls": 18,
+    "otherSpeciesFallbackParity": 18
+  },
+  "rootCombStatic": "PASS10actions121samples",
+  "fullDevelop": {
+    "status": "RED",
+    "nodeToolsPass": 787,
+    "runnerControlPass": 56,
+    "vitestPass": 6089,
+    "vitestFailures": 1,
+    "soleFailure": "current-producer-authorities stale I5 producer binding"
+  },
+  "otherOwners": {
+    "status": "AUTO_REVIEW_BLOCKED_NOT_EXECUTED",
+    "userApprovalRequested": true
+  },
+  "guide": {
+    "status": "PASS",
+    "count": 121,
+    "changedBullets": 1,
+    "onlyMotionStudiesChanged": true,
+    "beforeSha256": "819865f171eb0eddd513e5428fe3964bb7b8968e6bcdcdcf57421049f70335c9",
+    "afterSha256": "17f7ad327a89ba6fdbcdbc9ab8144716deb4c5d884730275691dd647a2af2357",
+    "releaseSha256": "5d8ea39ede3066882335e168da82e8ee57b98c00b90293afe4180c7dffcb4eba",
+    "guideSha256": "a81dcaf52cd5c6037c81d28e612bcb061789a182cedc767f29652321bcc842b8",
+    "productionVersionChanged": false
+  },
+  "runtimeCodeAndPipelinePaths": 18,
+  "certificateChanged": false,
+  "D43Activated": false,
+  "newAdmissions": 0,
+  "newReady": 0,
+  "rootQueue": "RESERVED_BUT_NATIVE_IDLE_PENDING_APPROVAL",
+  "cpuWorkers": "CONTINUE_SOURCE_TEMPLATE_AND_OUTCOME_WORK"
+}

@@ -1,0 +1,12 @@
+{
+  "agent": "OpenAI/Codex",
+  "OS": "Darwin",
+  "branch": "openai/mac",
+  "root": "~/Projects/celestial-frontier-openai-mac",
+  "startHead": "728817787cfde9ba7514edcff2a826a507cae308",
+  "peerHead": "42250e4e9e4091cfd487aef6f20750e0c89bbbb1",
+  "startFreeGiB": 59.50927734375,
+  "D39to42Approval": "Direct user message2026-10-19 plus signed C476; latest user restricts D43 activation to named run.",
+  "initialStartupReuseAssumption": "Same uninterrupted session; audits/C465_CODEX_20261018/coordinator/startup-receipt.json",
+  "startupReceipt": "audits/C475_DECISIONS_20261019/coordinator/startup-receipt.json"
+}

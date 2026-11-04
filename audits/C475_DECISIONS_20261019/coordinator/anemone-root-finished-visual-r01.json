@@ -1,0 +1,69 @@
+{
+  "status": "ROOT_ALL_FIVE_ACTUAL_FINISHED_FULLSIZE_VIEWED_VISIBLE_SURFACES_CLEAN",
+  "film": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native",
+  "producerCommit": "79851868432ebf811fc206b98d38ba88ab1ffd0f",
+  "frames": [
+    {
+      "frame": "turn1-hit-reaction-50",
+      "actual": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native/turn1-hit-reaction-50.png",
+        "sha256": "4516328d85e056914a16e299a45c163529993bb4b62df342d0ead671cdbf1d2e"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "frame": "turn2-dodge-reaction-50",
+      "actual": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native/turn2-dodge-reaction-50.png",
+        "sha256": "6ea14e3a5a76e0cc489711bd837892b30739fa4c53fab2ed775ed8c9ccc584a5"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "frame": "turn3-hit-reaction-50",
+      "actual": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native/turn3-hit-reaction-50.png",
+        "sha256": "c6da9be35282c0867cd742f5c93adeb3d43193811e4100ddfde49f78220ce007"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "frame": "turn3-hit-idle-50",
+      "actual": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native/turn3-hit-idle-50.png",
+        "sha256": "16136a1bc279ac87504358ae0653d98e7b2c5710356ddc7db1beb49619377ac3"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "frame": "turn3-hit-idle-90",
+      "actual": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sea-anemone-p04-r01/native/turn3-hit-idle-90.png",
+        "sha256": "5ab0e2e627870972efcd3ec4bd9d31d4dee3d5e66278d7a61b3fe683ac59313c"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ]
+    }
+  ],
+  "finding": "Visible column/crowns/pedalbase continuous in all5; no new visible detached seam or crown folding. Right FX partly occludes dodge/turn3hit target; no assertion for hidden pixels. Actual finished/source colours checked in the full frames.",
+  "independentW2W3AndC261Pending": true
+}

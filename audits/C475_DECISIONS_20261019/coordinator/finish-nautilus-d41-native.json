@@ -1,0 +1,20 @@
+{
+  "stage": "finish-nautilus-d41-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-nautilus-d41-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished-plan.json"
+  ],
+  "startedUnix": 1792462881.22384,
+  "beforeGiB": 52.49574661254883,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.049,
+  "lowestGiB": 52.470401763916016,
+  "afterGiB": 53.4685173034668
+}

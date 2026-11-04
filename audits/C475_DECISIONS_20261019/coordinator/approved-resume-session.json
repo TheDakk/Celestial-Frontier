@@ -1,0 +1,9 @@
+{
+  "status": "CONTINUED_C475_SESSION_AFTER_EXPLICIT_SIX_CHECK_APPROVAL",
+  "startupReceipt": "audits/C475_DECISIONS_20261019/coordinator/startup-receipt.json",
+  "rule": "UI_TOOLCHAIN.md continued messages in same uninterrupted session do not trigger another update pass; recheck executable identity",
+  "localNodeIdentity": "v26.12.0",
+  "matchesQualifiedReceipt": true,
+  "toolUpdatesOrDependencyOrSealChanges": false,
+  "nativeBrowserIdentityGuard": "Native wrapper/resolver checks installed executable/protocol before isolated launch"
+}

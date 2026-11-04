@@ -1,0 +1,133 @@
+{
+  "source": {
+    "path": "audits/C243_ALLOUT_20261011/execution/batch05/c243b05r1c1-18-sea-anemone/master.png",
+    "sha256": "ce4d0febb47c6fb158f0fe7fd950cfefb081403b4e6351a9031b7a7dbb90553f",
+    "bytes": 1466508,
+    "rgbaSha256": "8278e0211d955892b96d001a98c40ba144473e41a0c488b070392752787dfb75"
+  },
+  "canonical": {
+    "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-inspections-r01/anemone-c243-keyed.png",
+    "sha256": "cb7dff311ebe63ba2343aa525cf4bfc073392db2a65d6e6ec6e6a36a62520f99",
+    "bytes": 1608846,
+    "rgbaSha256": "3c7a3f47314f4ec43b37870fcc62d4e2e24b92b5739b2541a0ef5892813d03f1",
+    "origin": "Existing W2 source-inspection stored canonical; no fresh rekey."
+  },
+  "derivative": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/sources/sea-anemone/derivative-r01/master.png",
+    "sha256": "723e7cef2e69b97b1708798289d6eff15f09d9461c1d1713be1e6d0e042c54d5",
+    "bytes": 1605873,
+    "rgbaSha256": "f56d6370b426e86fb8fd5731f65644c96a4eba3bba4df5eafcae4595047eb6ba"
+  },
+  "landmarks": [
+    {
+      "joint": "root",
+      "pixel": [
+        544,
+        878
+      ],
+      "rgba": [
+        243,
+        205,
+        174,
+        255
+      ]
+    },
+    {
+      "joint": "base",
+      "pixel": [
+        544,
+        866
+      ],
+      "rgba": [
+        249,
+        134,
+        77,
+        255
+      ]
+    },
+    {
+      "joint": "column",
+      "pixel": [
+        553,
+        745
+      ],
+      "rgba": [
+        211,
+        44,
+        14,
+        255
+      ]
+    },
+    {
+      "joint": "oral",
+      "pixel": [
+        628,
+        555
+      ],
+      "rgba": [
+        141,
+        28,
+        6,
+        255
+      ]
+    },
+    {
+      "joint": "crownFar",
+      "pixel": [
+        565,
+        407
+      ],
+      "rgba": [
+        228,
+        188,
+        154,
+        255
+      ]
+    },
+    {
+      "joint": "crownLeft",
+      "pixel": [
+        422,
+        527
+      ],
+      "rgba": [
+        238,
+        156,
+        116,
+        255
+      ]
+    },
+    {
+      "joint": "crownRight",
+      "pixel": [
+        805,
+        578
+      ],
+      "rgba": [
+        220,
+        109,
+        57,
+        255
+      ]
+    },
+    {
+      "joint": "crownNear",
+      "pixel": [
+        608,
+        680
+      ],
+      "rgba": [
+        118,
+        11,
+        3,
+        255
+      ]
+    }
+  ],
+  "allPaintRetained": true,
+  "sourceCoordinatesMoved": 0,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "biologicalTentacleCensus": "many overlapping, no exact count claim",
+  "nativeAcceptance": false
+}

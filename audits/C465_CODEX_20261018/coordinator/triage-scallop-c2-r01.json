@@ -1,0 +1,25 @@
+{
+  "stage": "triage-scallop-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-scallop-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C465_CODEX_20261018/coordinator/freeze-triage.py",
+    "triage-scallop-c2-r01",
+    "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native",
+    "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native"
+  ],
+  "startedUnix": 1792380491.5876281,
+  "beforeGiB": 55.94077682495117,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 46.173,
+  "lowestGiB": 55.92359924316406,
+  "afterGiB": 55.923519134521484
+}

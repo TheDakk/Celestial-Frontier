@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "count": 121,
+  "changedBullets": 1,
+  "onlyMotionStudiesChanged": true,
+  "beforeSha256": "819865f171eb0eddd513e5428fe3964bb7b8968e6bcdcdcf57421049f70335c9",
+  "afterSha256": "17f7ad327a89ba6fdbcdbc9ab8144716deb4c5d884730275691dd647a2af2357",
+  "releaseSha256": "5d8ea39ede3066882335e168da82e8ee57b98c00b90293afe4180c7dffcb4eba",
+  "guideSha256": "a81dcaf52cd5c6037c81d28e612bcb061789a182cedc767f29652321bcc842b8",
+  "productionVersionChanged": false
+}

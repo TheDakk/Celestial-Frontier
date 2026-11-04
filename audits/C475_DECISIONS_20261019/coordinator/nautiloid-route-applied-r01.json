@@ -1,0 +1,28 @@
+{
+  "status": "APPLIED_EXACT_THREE_FILE_SOURCE_ROUTE_REPAIR",
+  "freeze": {
+    "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/freeze-r01.json",
+    "sha256": "c3efac4548c798f8a9f3c9ee67bca19e79047aaea35ae9705419aa9a7f4c8c52"
+  },
+  "rows": [
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "baselineSha256": "305cdc1f46ae7cc12372ff002dc68de21ab14844f9c6c1354ff60bb9a166520a",
+      "proposalSha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992",
+      "appliedSha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "baselineSha256": "777fa13dc678909206a4cff25e6c4de834b378bf060116f5e12c9ce4c9bf2104",
+      "proposalSha256": "6a0159c2ca0b954eb595e3c45b431ddd0818940338bf0fab931d37c95c5d9c41",
+      "appliedSha256": "6a0159c2ca0b954eb595e3c45b431ddd0818940338bf0fab931d37c95c5d9c41"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/nautiloid-source-request.test.mjs",
+      "baselineSha256": null,
+      "proposalSha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766",
+      "appliedSha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766"
+    }
+  ],
+  "rootReview": "Biological cephalopod profile remains unchanged; exact source-template vocabulary distinguishes Nautilus rigid shell and unsuckered crown; generic cephalopod and base-family requests preserved. Actual root compiler tests and full profile next."
+}

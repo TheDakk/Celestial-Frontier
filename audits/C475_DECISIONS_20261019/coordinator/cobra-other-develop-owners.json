@@ -1,0 +1,20 @@
+{
+  "stage": "cobra-other-develop-owners",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D39-independent-owners",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/run-independent-develop-owners.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/cobra-other-owners-result.json"
+  ],
+  "startedUnix": 1792454304.8826082,
+  "beforeGiB": 59.60282897949219,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 4.011,
+  "lowestGiB": 59.602638244628906,
+  "afterGiB": 59.60255432128906
+}

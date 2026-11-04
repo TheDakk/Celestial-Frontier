@@ -1,0 +1,14 @@
+{
+  "stage": "premerge-validate",
+  "command": [
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792377155.380482,
+  "beforeGiB": 60.272216796875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 12.048,
+  "lowestGiB": 60.272216796875,
+  "afterGiB": 60.272216796875
+}

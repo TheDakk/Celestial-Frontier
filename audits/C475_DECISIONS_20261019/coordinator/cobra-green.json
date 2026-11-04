@@ -1,0 +1,24 @@
+{
+  "stage": "cobra-green",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cobra-approved-row",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C475_DECISIONS_20261019/coordinator/cobra-green-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C475_DECISIONS_20261019/coordinator/cobra-vitest.config.mjs"
+  ],
+  "startedUnix": 1792454003.002742,
+  "beforeGiB": 59.682037353515625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.01,
+  "lowestGiB": 59.682029724121094,
+  "afterGiB": 59.681907653808594
+}

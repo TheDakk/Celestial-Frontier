@@ -1,0 +1,1 @@
+export default {root:process.cwd()+'/port/v2',test:{include:['apps/game/src/motion/specialized-anatomy.test.ts','apps/game/src/motion/compact-myriapod.test.ts','apps/game/src/motion/source-observed-small-crustacean.test.ts'],exclude:[],maxWorkers:1,fileParallelism:false,passWithNoTests:false}};

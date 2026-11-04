@@ -1,0 +1,113 @@
+{
+  "status": "PHYSICAL_CLEAN",
+  "actualFiveViewedFullsize": true,
+  "frames": [
+    {
+      "name": "turn1-hit-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/turn1-hit-reaction-50.png",
+        "sha256": "40bee2197861cc8da9ca4b32b4fcc200918a34d13c0e272ad20bf0b8b6f5be75",
+        "bytes": 1521191
+      },
+      "actual2x": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/turn1-hit-reaction-50-fullframe-2x.png",
+        "sha256": "ece89167263c31225de51f99d54e261d578cea5c0e9c6ed022e3e537a4b0608a",
+        "bytes": 1854550
+      },
+      "dimensions": [
+        1024,
+        576
+      ],
+      "atMs": 5098.333333333334,
+      "independentFullsizeViewed": true,
+      "observation": "Both current actors retain broad readable heads and forward snouts, actual eye/face paint, attached hood/neck roots, continuous trunk strips and complete uncrossed terminal tail bends. Mouth-connected fork stems and bifurcation remain visible at the existing thin distal-stage scale; no detached tongue or missing anatomy is inferred.",
+      "nearestMismatchChannels": 0
+    },
+    {
+      "name": "turn2-dodge-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/turn2-dodge-reaction-50.png",
+        "sha256": "6eb04c3d1c22d9eac484f722e39ae5a2885a1baaf551c99a852aa9970f2735e6",
+        "bytes": 1542968
+      },
+      "actual2x": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/turn2-dodge-reaction-50-fullframe-2x.png",
+        "sha256": "62e9615c9eb1cc1f3926e85c00fabcb3a2715ed854063ddfec300207dd58d246",
+        "bytes": 1865026
+      },
+      "dimensions": [
+        1024,
+        576
+      ],
+      "atMs": 7940,
+      "independentFullsizeViewed": true,
+      "observation": "The left head/hood and exposed trunk remain coherent and attached. Dodge text and scripted FX obscure much of the right hood/central trunk; those pixels are not claimed clean from this frame. Both actual exposed tongue stems remain connected; right anatomy is independently exposed in the exact idle50/90 frames.",
+      "nearestMismatchChannels": 0
+    },
+    {
+      "name": "turn3-hit-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/turn3-hit-reaction-50.png",
+        "sha256": "63fe50cdaac688dac1f5dc2d2579cdd1173bb63db36f089e0c8588cc2100b7d3",
+        "bytes": 1519173
+      },
+      "actual2x": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/turn3-hit-reaction-50-fullframe-2x.png",
+        "sha256": "0d7ceda0819ee8a8d5f7dafcfda20accaf54377c25ef7b99bf16c65ae174e492",
+        "bytes": 1853058
+      },
+      "dimensions": [
+        1024,
+        576
+      ],
+      "atMs": 11296.666666666668,
+      "independentFullsizeViewed": true,
+      "observation": "The left head remains broad and forward over its joined hood. The right faint/reaction head angles downward with its source face and lower jaw still connected to the hood. Exposed body strips and full terminal tail contours remain continuous on both actors, with no crossing, through-body slit or floating source paint observed.",
+      "nearestMismatchChannels": 0
+    },
+    {
+      "name": "turn3-hit-idle-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/turn3-hit-idle-50.png",
+        "sha256": "ea90d3129b77b9c8cd816dcfdaba65f4db81d6e1f64ee6cac66c20dbfabcbc35",
+        "bytes": 1521113
+      },
+      "actual2x": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/turn3-hit-idle-50-fullframe-2x.png",
+        "sha256": "cf83603ac96ff2367d51d503955de7d6db8ffadd5cae93a8c6a301e3ecad854f",
+        "bytes": 1853675
+      },
+      "dimensions": [
+        1024,
+        576
+      ],
+      "atMs": 12096.666666666666,
+      "independentFullsizeViewed": true,
+      "observation": "At the exact victory300ms context, the left head retains its broad source-like face, eye and forward snout above a continuous hood/neck junction. The old inverted triangular flap and backward/upturned face are absent. The mouth-connected bifurcation remains exposed with the existing thin distal-tip caveat. The right faint head/lower jaw and hood remain joined; both full trunk/tail contours are continuous.",
+      "nearestMismatchChannels": 0
+    },
+    {
+      "name": "turn3-hit-idle-90",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/turn3-hit-idle-90.png",
+        "sha256": "2c69e025e0cd24d6bfefe5acfa09a2cc033711b84ec89c69aa87a82c16194108",
+        "bytes": 1518173
+      },
+      "actual2x": {
+        "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/turn3-hit-idle-90-fullframe-2x.png",
+        "sha256": "25b177edbbf65ba972b82ffeb7974660a5e1138f29e119a83f4f8044d99ae626",
+        "bytes": 1851515
+      },
+      "dimensions": [
+        1024,
+        576
+      ],
+      "atMs": 12336.666666666666,
+      "independentFullsizeViewed": true,
+      "observation": "At exact victory540ms, the left head settles into the broad forward source-like profile while remaining attached to its hood; this frame independently passes and is not used to excuse300ms. The right faint face, lower jaw and tongue stem remain attached. Both root/lower-neck transitions, trunk-strip boundaries and complete uncrossed terminal tails remain coherent.",
+      "nearestMismatchChannels": 0
+    }
+  ],
+  "finding": "Victory300ms head remains broad and forward, eye and snout readable, hood/root/body/tail continuity intact at300/540ms. Right hit/faint jaw remains natural and attached. Existing distal fork trim/AA caveat retained. Dodge FX hides right centre, so no inference through FX.",
+  "AIStarted": false
+}

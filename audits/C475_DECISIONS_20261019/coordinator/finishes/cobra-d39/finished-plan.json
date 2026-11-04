@@ -1,0 +1,48 @@
+[
+  {
+    "id": "c475-cobra-d39",
+    "packetId": "c475-cobra-d39",
+    "name": "Cobra",
+    "fit": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/rebound/c475-cobra-d39",
+    "nativeDir": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native",
+    "nativeReport": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/report.json",
+    "script": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/script.json",
+    "masterSha256": "ca2128a1d42be32696b1b12605b160006ae878bfff651a014c18bfa302d3abef",
+    "staticReport": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/static.json",
+    "observedPacket": "audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/observed-r01/c444-02-cobra-c",
+    "sourceHead": "0dfbaa08620f0eacbcab935bb5cb9e06e6218c86",
+    "status": "SIGNED_PRODUCER_BOUND_FOR_NATIVE",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exactWorstContext": "Current original left victory idle50 inverted head/hood counterexample must close, with actual head/snouthood/readable width at both exact victory300ms idle50 and540ms idle90. Inspect both actors in allfive current1024x576still frames; source/keyed/master and all13publishedparts; mouth-connected bifurcated fork and existing distaltrim caveat; head/hood and root/lowerneck continuity; lowerjaw/faintshape; curve-strip body joints and full uncrossed terminaltail. Idle90 recovery cannot excuse idle50. No new numeric fork/zero-trim/anatomical ruler.",
+    "sourceFixProof": "audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/cpu-disposition01.json",
+    "nativeAcceptance": false,
+    "limitsOrRuntimeChanged": true,
+    "finish": "Only currentnative/C261 +independentW2_CLEAN mayfinish.",
+    "sourcePacketId": "c444-02-cobra-c",
+    "runtimeChangeDisclosure": {
+      "status": "D39_APPLIED_MORE_APPROVED_CHANGES_PENDING",
+      "gameCodeAndImportedTools": [
+        "port/v2/apps/game/src/motion/serpent-victory.ts",
+        "port/v2/apps/game/src/release-content.ts"
+      ],
+      "testOnly": [
+        "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts",
+        "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+        "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+        "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts"
+      ],
+      "guideAuthority": "port/v2/tools/slicesmoke.mjs",
+      "I5RecertificationRequired": true,
+      "selectedCertificate": "C464_UNCHANGED_STALE_PRODUCER_AFTER_D39",
+      "namedRowRebind": "D39synthetic:serpent/victoryheadjaw4de0b804→47620037",
+      "noOtherSealsRebound": true
+    },
+    "baselineStaticReport": "audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/cpu-r01/static.json",
+    "baselineStaticScope": "Fresh C475 current-runtime static plus exact preserved C444 baseline; known head/hood counterexample also needs native W2.",
+    "producerMustBeSignedBeforeNative": true,
+    "sourceHeadMustMatchNativeReportSource": true,
+    "finishedMaster": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/finished/c475-cobra-d39-finished.png",
+    "finishReceipt": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/finished/c475-cobra-d39-receipt.json",
+    "checkpointReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/checkpoint-final.json"
+  }
+]

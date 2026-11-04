@@ -1,0 +1,20 @@
+{
+  "stage": "native-vole-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-r02-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/plan.json"
+  ],
+  "startedUnix": 1792379771.200139,
+  "beforeGiB": 60.427040100097656,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 26.056,
+  "lowestGiB": 60.02448272705078,
+  "afterGiB": 60.39214324951172
+}

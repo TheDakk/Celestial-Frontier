@@ -1,0 +1,40 @@
+free: 51 GiB (target >= 60 at batch end; inference needs 42, floor 30)
+WARN: below the 60 GiB batch-end target
+
+== shared git store
+ 38G	~/Projects/Celestial-Frontier/.git
+
+== celestial-frontier-anthropic-mac: largest untracked + ignored (top 12)
+   0.01 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/05-caracal/fit/
+   0.01 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/10-raccoon/fit/
+   0.01 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/13-cattle/fit/
+   0.01 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/15-donkey/fallback-1/fit/
+   0.01 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/q20-06-lynx/fit/
+   0.03 GiB  node_modules/
+   0.04 GiB  audits/C266_ALLOUT_20261017/intake-quadrupeds/scorer/auto-before/
+   0.06 GiB  audits/C266_ALLOUT_20261017/intake-quadrupeds/scorer/auto-after/
+   0.11 GiB  audits/G1_AUTO_AUTHOR_20260926/native-g2c258-fishseams/
+   0.14 GiB  tools/local-image-generation/node_modules/
+   0.19 GiB  port/v2/apps/game/dist/
+   0.25 GiB  port/v2/node_modules/
+
+== celestial-frontier-openai-mac: largest untracked + ignored (top 12)
+   0.75 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-c228p2/
+   0.80 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-c234p6/
+   0.81 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-c234p2/
+   0.81 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-c234p3/
+   0.82 GiB  audits/G1_AUTO_AUTHOR_20260926/auto-c228p5/
+   0.83 GiB  audits/C132_PHONE_FINISH_20261001/model-cache/
+   1.29 GiB  audio-production/audition/
+   1.30 GiB  audio-production/review-packs/
+   1.65 GiB  audio-production/source-audio/
+   2.88 GiB  audio-production/masters/
+   5.27 GiB  audio-production/reaper/
+   9.27 GiB  port/v2/apps/game/smoke/
+
+== agent scratch and temp clones
+1.4G	/private/tmp/claude-501
+183M	/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/
+
+== extra worktrees (remove merged agent worktrees with --force --force)
+none

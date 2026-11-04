@@ -1,0 +1,21 @@
+{
+  "stage": "finish-ice-worm-d41-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-ice-worm-d41-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/ice-worm-d41/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/ice-worm-d41/subjects.json"
+  ],
+  "startedUnix": 1792460726.598256,
+  "beforeGiB": 54.396812438964844,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 54.636,
+  "lowestGiB": 45.01165771484375,
+  "afterGiB": 53.365909576416016
+}

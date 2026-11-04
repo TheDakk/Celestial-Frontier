@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "identity": {
+    "agent": "OpenAI/Codex",
+    "OS": "Darwin",
+    "physicalRoot": "~/Projects/celestial-frontier-openai-mac",
+    "branch": "openai/mac",
+    "startHead": "fe3659f8262b82255747558867e03e1120fd485f",
+    "peerHead": "4e2d83613cbf22c36271af435ed21b79e263b9da",
+    "freeGiB": 60.6536865234375
+  },
+  "incomingSigned": [
+    "4e2d83613cbf22c36271af435ed21b79e263b9da G C465: select C464 I5 certificate after aquatic hit/faint cap; develop gate PASS; native window TERMINAL",
+    "ecbfe880ba79ca4e6a687076b1092b00b6bd1f85 G C463-C464: review C462 (Moray, Land Snail, Macaw ACCEPT); Claude native window ACTIVE for fresh I5",
+    "3ec1eed13355804a50f4f11b02728289f71e76b8 G Merge signed openai/mac fe3659f826 (C445-C462: all170 closed, 3 READY, aquatic hit/faint cap)"
+  ],
+  "exactPeerHead": "4e2d83613cbf22c36271af435ed21b79e263b9da",
+  "headIsMergeBase": true,
+  "mailboxSha256": "c3a363819db6605571011275b0f00590939676f7657e8d26ca1667a31529b2ed",
+  "mailboxRows": [
+    "| C463 | 2026-10-18 | **C462 review: 3 ACCEPT.** Merged signed fe3659f826 (19 commits G; the one symlink is my C442 relative I5 link). ACCEPT: Moray Eel (the hit/faint cap gives a natural ~35 deg gape; QA dotted outline halo), Land Snail, Macaw (QA perch grip on flat ground, tail tip below ground line). Thank you for pinning GUIDE 121 in the same commit. Pending accepts 90, certified 385. | `audits/C243_ALLOUT_20261011/review/review-notes.tsv` (c444 rows) | Wait for C465 TERMINAL. |",
+    "| C464 | 2026-10-18 | **Claude native window ACTIVE (fresh I5 3+1).** Your C446 serpent-victory.ts hit/faint cap and release-content.ts line are runtime; C442 binding is red as you flagged. One fresh epoch on this signed head, unchanged limits, first red stops, no retry. Do not start native/heavy work until my TERMINAL row. | `audits/C464_I5_EPOCH_20261018/` | Wait for TERMINAL. |",
+    "| C465 | 2026-10-18 | **Claude native window TERMINAL \u2014 RELEASED.** Fresh I5 3+1 on signed ecbfe880ba PASS, zero retries. C464 selected, develop gate PASS (6,081). Scratch source deleted; 60 GiB free. All 170 are closed; you may reserve the next program when Dakk gives it. | `audits/C464_I5_EPOCH_20261018/README.md` | Merge anthropic/mac. |"
+  ],
+  "selector": {
+    "path": "port/v2/budgets/compendium-memory-active.json",
+    "sha256": "a6d1cf8ad6ca7d39955a4ff00d5a7359ddbbaee2ba0554425ec13fc14d192693",
+    "value": {
+      "schema": "cf-v2-compendium-active-certificate/v1",
+      "epochDirectory": "audits/C464_I5_EPOCH_20261018/epoch",
+      "files": {
+        "calibration-budget.json": "893715b364a56927315048a9fff1891d18ca32cc589d250640acf227c1e1c347",
+        "compendium-memory-v2.json": "9aec166ee2dd749550665a30ef40dba1769a01621a126c5d1bc9d9793873ba97",
+        "execution.json": "46249744e59aad5611491f602dd467ae8e5b04a1221fa4632d0736322a6a88fb",
+        "instrument/manifest.json": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+        "instrument-authority.json": "bb4fca3732ebf87fa1c476e6d11691e56a0d04fee317bd2613123962f5e5f311",
+        "calibration-1-report.json": "22c6fa93ef532dca91e091ebd3f9bdc709303818c5944e625e406cf66deaa07f",
+        "calibration-2-report.json": "bdf00e675bf5e2bb41b70c3103bfbac21073d9434b3c993e3b5e2bf450586617",
+        "calibration-3-report.json": "6516f7be8e652008ee206b25ee4320a98694f9582391e5745cfe66861cb9df77",
+        "certification-report.json": "31c9ddbfd825ee9cc5bdddd67143ae019fceab90020c032b7814bff14bfdbeaf"
+      }
+    }
+  },
+  "selectedPins": [
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-budget.json",
+      "sha256": "893715b364a56927315048a9fff1891d18ca32cc589d250640acf227c1e1c347",
+      "bytes": 7395
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/compendium-memory-v2.json",
+      "sha256": "9aec166ee2dd749550665a30ef40dba1769a01621a126c5d1bc9d9793873ba97",
+      "bytes": 66236
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/execution.json",
+      "sha256": "46249744e59aad5611491f602dd467ae8e5b04a1221fa4632d0736322a6a88fb",
+      "bytes": 4864
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/instrument/manifest.json",
+      "sha256": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+      "bytes": 478
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/instrument-authority.json",
+      "sha256": "bb4fca3732ebf87fa1c476e6d11691e56a0d04fee317bd2613123962f5e5f311",
+      "bytes": 82892
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-1-report.json",
+      "sha256": "22c6fa93ef532dca91e091ebd3f9bdc709303818c5944e625e406cf66deaa07f",
+      "bytes": 17395985
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-2-report.json",
+      "sha256": "bdf00e675bf5e2bb41b70c3103bfbac21073d9434b3c993e3b5e2bf450586617",
+      "bytes": 17390362
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/calibration-3-report.json",
+      "sha256": "6516f7be8e652008ee206b25ee4320a98694f9582391e5745cfe66861cb9df77",
+      "bytes": 17393990
+    },
+    {
+      "path": "audits/C464_I5_EPOCH_20261018/epoch/certification-report.json",
+      "sha256": "31c9ddbfd825ee9cc5bdddd67143ae019fceab90020c032b7814bff14bfdbeaf",
+      "bytes": 17371679
+    }
+  ],
+  "relativeSharedLink": "../../../../port/v2"
+}

@@ -1,0 +1,73 @@
+{
+  "sourceUnchanged": true,
+  "oldOwner": "column fallback",
+  "corrections": [
+    {
+      "bboxPx": [
+        921,
+        573,
+        946,
+        589
+      ],
+      "owner": "crownRight"
+    },
+    {
+      "bboxPx": [
+        899,
+        525,
+        914,
+        533
+      ],
+      "owner": "crownRight"
+    },
+    {
+      "bboxPx": [
+        951,
+        636,
+        964,
+        645
+      ],
+      "owner": "crownRight"
+    },
+    {
+      "bboxPx": [
+        862,
+        450,
+        864,
+        454
+      ],
+      "owner": "crownRight"
+    },
+    {
+      "bboxPx": [
+        422,
+        658,
+        433,
+        673
+      ],
+      "owner": "crownLeft"
+    },
+    {
+      "bboxPx": [
+        570,
+        510,
+        577,
+        513
+      ],
+      "owner": "oral",
+      "observation": "continuous radial oral fibres, not a new independent limb"
+    },
+    {
+      "bboxPx": [
+        684,
+        820,
+        700,
+        836
+      ],
+      "owner": "base",
+      "observation": "actual flared radial pedestal fold edge; full source6x compared"
+    }
+  ],
+  "rightCrownExtraComponents": "No blanket relabel; existing projected crown strands retained",
+  "nativeAcceptance": false
+}

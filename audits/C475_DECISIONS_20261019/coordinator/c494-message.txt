@@ -1,0 +1,5 @@
+C475: close reservation with evidenced holds and blocked terminal
+
+Post TERMINAL_BLOCKED_AUTO_REVIEW and release C477. Retain ten actual READY packets, current62/170 dispositions, final disk/cleanup/idle-lock receipts and the pending six-check approval boundary.
+
+No runtime, native, certification or remote action.

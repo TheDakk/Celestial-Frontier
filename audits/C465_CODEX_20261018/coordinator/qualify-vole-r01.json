@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-vole-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-observed-join",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-one-r01.mjs",
+    "vole"
+  ],
+  "startedUnix": 1792378737.233741,
+  "beforeGiB": 59.75057601928711,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 16.078,
+  "lowestGiB": 59.72457504272461,
+  "afterGiB": 59.72208023071289
+}

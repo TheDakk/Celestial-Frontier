@@ -1,0 +1,7 @@
+{
+  "firstAttempt": "triage-anemone-native-r01",
+  "failure": "exclusive.mjs accepts command directly; extra -- attempted executable -- and failed ENOENT before checker/output directory creation",
+  "measurementRan": false,
+  "correction": "Remove surplus argument only; fresh r02 stage/output, same checker/frames/limits.",
+  "nativeReFilmed": false
+}
