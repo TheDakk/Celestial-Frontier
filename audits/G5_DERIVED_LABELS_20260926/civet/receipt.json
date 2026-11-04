@@ -1,0 +1,182 @@
+{
+ "schema": "cf.derived-ownership-evidence/v1",
+ "kind": "DERIVED OWNERSHIP EVIDENCE: derived from the admitted binding; not a manual label source, not an anatomical admission",
+ "creatureId": "civet",
+ "generatorSha256": "2c34c9ea65e397e53a2b94d262f9f287854ecf389ece81dedea43d78dbee30dc",
+ "derivation": "tools/morph/build-card-masters.mjs derived-from-binding branch (kind=part order, atlas alpha into native cut-out, far before near, R=label, A=255); malformed geometry refuses",
+ "pin": {
+  "creatureId": "civet",
+  "masterPath": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+  "masterSha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+  "masterWidth": 1254,
+  "masterHeight": 1254,
+  "recordPath": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+  "recordSha256": "c89cec5b79a58697ac469fb905bac39efc6a927116314ae30097779305349527",
+  "recipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+  "alphaPath": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/alpha.png",
+  "alphaSha256": "51d6fdba3ee24b0c73568562957b8790f68d9ef15fefa3e3b7ed734dcc05d11d",
+  "bindingSha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+  "atlasPath": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
+  "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+ },
+ "sourceChecks": {
+  "record": true,
+  "master": true,
+  "alpha": true,
+  "binding": true,
+  "atlas": true,
+  "recipe": true
+ },
+ "dimensions": {
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": {
+  "pngSha256": "da39e0a76713f5adee819751c96db00ffebad52288b3d113a84baf218ced2132",
+  "rgbaSha256": "43590f52f80fec30b727181bd707a5f9fdf6ad9328b845fc8a0f063c273dde24",
+  "map": [
+   {
+    "label": 1,
+    "id": "ear-far",
+    "joint": "earFarTip",
+    "layer": "near"
+   },
+   {
+    "label": 2,
+    "id": "ear-near",
+    "joint": "earNearTip",
+    "layer": "near"
+   },
+   {
+    "label": 3,
+    "id": "jaw",
+    "joint": "jaw",
+    "layer": "near"
+   },
+   {
+    "label": 4,
+    "id": "head",
+    "joint": "head",
+    "layer": "near"
+   },
+   {
+    "label": 5,
+    "id": "fore-near-paw",
+    "joint": "foreNearPaw",
+    "layer": "near"
+   },
+   {
+    "label": 6,
+    "id": "fore-near-lower",
+    "joint": "foreNearAnkle",
+    "layer": "near"
+   },
+   {
+    "label": 7,
+    "id": "fore-near-upper",
+    "joint": "foreNearKnee",
+    "layer": "near"
+   },
+   {
+    "label": 8,
+    "id": "fore-far-paw",
+    "joint": "foreFarPaw",
+    "layer": "far"
+   },
+   {
+    "label": 9,
+    "id": "fore-far-lower",
+    "joint": "foreFarAnkle",
+    "layer": "far"
+   },
+   {
+    "label": 10,
+    "id": "fore-far-upper",
+    "joint": "foreFarKnee",
+    "layer": "far"
+   },
+   {
+    "label": 11,
+    "id": "hind-near-paw",
+    "joint": "hindNearPaw",
+    "layer": "near"
+   },
+   {
+    "label": 12,
+    "id": "hind-near-lower",
+    "joint": "hindNearAnkle",
+    "layer": "near"
+   },
+   {
+    "label": 13,
+    "id": "hind-near-upper",
+    "joint": "hindNearKnee",
+    "layer": "near"
+   },
+   {
+    "label": 14,
+    "id": "hind-far-paw",
+    "joint": "hindFarPaw",
+    "layer": "far"
+   },
+   {
+    "label": 15,
+    "id": "hind-far-lower",
+    "joint": "hindFarAnkle",
+    "layer": "far"
+   },
+   {
+    "label": 16,
+    "id": "hind-far-upper",
+    "joint": "hindFarKnee",
+    "layer": "far"
+   },
+   {
+    "label": 17,
+    "id": "tail-tip",
+    "joint": "tail3",
+    "layer": "near"
+   },
+   {
+    "label": 18,
+    "id": "tail-middle",
+    "joint": "tail2",
+    "layer": "near"
+   },
+   {
+    "label": 19,
+    "id": "tail-root",
+    "joint": "tail1",
+    "layer": "near"
+   },
+   {
+    "label": 20,
+    "id": "neck",
+    "joint": "neck",
+    "layer": "near"
+   },
+   {
+    "label": 21,
+    "id": "chest",
+    "joint": "chest",
+    "layer": "near"
+   },
+   {
+    "label": 22,
+    "id": "torso",
+    "joint": "spine",
+    "layer": "near"
+   }
+  ],
+  "overwrites": {},
+  "paintedPixels": 516758,
+  "unownedPaintedPixels": 0
+ },
+ "controls": {
+  "reproducesShippedCardLabels512": true,
+  "changedBindingBreaksReproduction": true,
+  "changedDimensionsRefuse": true,
+  "identityFinishConservation": "PASS"
+ },
+ "note": "Civet: the original master is opaque (keyed); these labels do not change that and do not make it card-eligible (C45.md)."
+}

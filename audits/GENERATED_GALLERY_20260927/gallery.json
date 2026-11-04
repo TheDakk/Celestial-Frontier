@@ -1,0 +1,2372 @@
+{
+ "schema": "cf.generated-gallery/v1",
+ "total": 338,
+ "entries": [
+  {
+   "family": "Quadrupeds",
+   "name": "Coyote",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Arctic Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/arctic-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "tail blotches; shoulder shards when rearing (Codex)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Fennec Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fennec-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Dingo",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/dingo",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Jackal",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/jackal",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Coyote (C56)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote-c56-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Caracal",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cougar",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cougar",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Lion",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lion",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tiger (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/tiger-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "no stripes painted (D27); hairline chest seam"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Leopard (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/leopard-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "no spots painted (D27)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Ocelot (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "no spots painted (D27); chest notch"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Snow Leopard (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/snow-leopard-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "pattern re-paint"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Clouded Leopard (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/clouded-leopard-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "pattern re-paint"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Raccoon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Raccoon (C59)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon-c59-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Marmot",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marmot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "head crumples in crouch (Codex)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cattle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cattle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "back humps when rearing (Codex)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Weasel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/weasel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (re-run on the correct fallback fit)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mink (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mink-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": ""
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Marten",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marten",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Fisher (elbow repaired)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fisher-elbow-repaired-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "thin pale chest strand"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mongoose",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mongoose",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Caracal (C56)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal-c56-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Ocelot (pattern re-paint)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-pattern-re-paint-",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "spotted; clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Donkey",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache; observed-support rerun: 886/887 frames, 0 refusals (borderline performance)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Lynx",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean in reaction; Codex saw fragments in other frames"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cheetah",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (both ears / offset feet / clear tail layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Maned Wolf",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sand Cat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Red Panda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/18-red-panda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Pampas Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/19-pampas-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wildcat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/21-wildcat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Spectacled Bear",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/23-spectacled-bear",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hare",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/18-hare",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Meerkat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/21-meerkat-v2",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/15-mouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tree Shrew",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/17-tree-shrew",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Ground Squirrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/18-ground-squirrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Bongo",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/15-bongo",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Bobcat",
+   "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gerbil",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/20-gerbil",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Possum",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/22-possum",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (one faint chest scratch at full size)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/22-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Panda",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/12-panda/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: white slivers floated beside the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mountain Goat",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/14-mountain-goat/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gopher",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/19-gopher/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: an ear outline floated above the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Pony",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c107-23-wild-pony/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Ass",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Polar Bear",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-07-polar-bear/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair; one faint dark line at the neck in late idle remains (for Dakk's pass)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sun Bear",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-14-sun-bear/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Arctic Hare",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-18-arctic-hare/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: black ear-tip fragments floated above the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wombat",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-01-wombat/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sugar Glider",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/08-sugar-glider",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Koala",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Alligator",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the g2c136s sprawler-profile pass (snout no longer crosses the ground)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/15-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horned Lizard",
+   "nativeDir": "audits/QUAD_ISLANDS_C136_20261002/22-horned-lizard/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wildebeest",
+   "nativeDir": "audits/ISLANDS_C151_20261002/08-wildebeest/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Saiga",
+   "nativeDir": "audits/ISLANDS_C151_20261002/13-saiga/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Land Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136ra/16-land-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (sprawler pool + reviewed ear absence)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Alligator",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/03-alligator",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the earlier snout-through-ground hold is resolved"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gharial",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/04-gharial",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the snout-tip ghara stays attached"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gecko",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/07-gecko",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Alligator Lizard",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/09-alligator-lizard",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tegu",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/11-tegu",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Land Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/16-land-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Coastal Lizard",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/17-coastal-lizard",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Komodo Dragon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/18-komodo-dragon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horned Lizard",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/22-horned-lizard",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Newt",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/24-newt",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mara",
+   "nativeDir": "audits/ISLANDS_C178_20261002/01-mara/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated an ear-tip sliver over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Pony",
+   "nativeDir": "audits/HEADS_C181_20261002/wild-pony",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair still floats a small fleck beside the lowered head in the late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giraffe",
+   "nativeDir": "audits/ISLANDS_C196_20261002/14-giraffe/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Banteng",
+   "nativeDir": "audits/ISLANDS_C196_20261002/16-banteng/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Marine Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/13-marine-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (sprawler profile + Codex C204 pinna review)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giraffe",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/14-giraffe",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C196 acceptance (pinna re-score run)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Banteng",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/16-banteng",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C196 acceptance (pinna re-score run)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Eland",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/04-eland",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hartebeest",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/06-hartebeest",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Reindeer",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/11-reindeer",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Sheep",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/16-wild-sheep",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Zebra",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/01-zebra",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: ear-tip flecks float over the lowered head in the late idle; island repair refused at the cap (5.9% > 5%, D28)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Eland",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/04-eland",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hartebeest",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/06-hartebeest",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Reindeer",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/11-reindeer",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Sheep",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/16-wild-sheep",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wolf",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c233-14-wolf/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Jaguar",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/15-jaguar",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Serval",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Otter",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/17-otter",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Zebra",
+   "nativeDir": "audits/FILMS_C186_20261002/01-zebra-fallback-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Kudu",
+   "nativeDir": "audits/FILMS_C186_20261002/02-kudu",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gazelle",
+   "nativeDir": "audits/FILMS_C186_20261002/05-gazelle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Oryx",
+   "nativeDir": "audits/FILMS_C186_20261002/07-oryx-tail-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gaur",
+   "nativeDir": "audits/FILMS_C186_20261002/08-gaur-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit (a tiny attached bluish mark on the shoulder noted)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Deer",
+   "nativeDir": "audits/FILMS_C186_20261002/09-deer-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Antelope",
+   "nativeDir": "audits/FILMS_C186_20261002/10-antelope-tail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sheep",
+   "nativeDir": "audits/FILMS_C186_20261002/15-sheep-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "African Wild Dog",
+   "nativeDir": "audits/ISLANDS_C239_20261003/11-african-wild-dog/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (D28 cap)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giant Otter",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/02-giant-otter",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Musk Ox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/07-musk-ox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Bull",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/09-bull",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Quoll",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/10-quoll",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Ass",
+   "nativeDir": "audits/FILMS_C250_20261003/wild-ass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (the loose hoof fragment is gone)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horse",
+   "nativeDir": "audits/FILMS_C250_20261003/horse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Serval",
+   "nativeDir": "audits/FILMS_C250_20261003/serval",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Civet",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/08-civet",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Stoat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/09-stoat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Chipmunk",
+   "nativeDir": "audits/ISLANDS_C256_20261003/11-chipmunk/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hamster",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/17-hamster",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tasmanian Devil",
+   "nativeDir": "audits/ISLANDS_C256_20261003/21-tasmanian-devil/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Pika",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/23-pika",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Pig",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/07-wild-pig",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): held faint (turn3 idle-50/90): head folds ~90deg down, snout driven below the ground plane, near foreleg folds back under the chest"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/10-cow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): held faint: two sharp triangular spikes tear up from the withers, see-through hole on the flank, ear tip detached at the neck"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hyrax",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/16-hyrax",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD-minor): whole in reaction/faint/late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Capybara",
+   "nativeDir": "audits/ISLANDS_C274_20261004/02-capybara/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Grizzly Bear",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/08-grizzly-bear",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction, faint and late idle"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Python",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Racer",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-racer",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Garter Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/20-garter-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Tree Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-tree-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Rat Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/18-rat-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Cottonmouth",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-cottonmouth",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean; strikes mouth-open"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Mamba",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/21-mamba",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Grass Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/24-grass-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Water Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/10-water-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "King Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/21-king-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Grass Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/22-grass-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Whip Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/23-whip-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (the new painting; the C56 Whip was refused)"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Vine Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/24-vine-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Anaconda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/01-anaconda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Viper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/03-viper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Sand Boa",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/05-sand-boa",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Cave Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/06-cave-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Eel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/02-eel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Electric Eel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/03-electric-eel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)"
+  },
+  {
+   "family": "Birds",
+   "name": "Raven",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raven",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "tail splits in hit reaction (wing/tail overlap)"
+  },
+  {
+   "family": "Birds",
+   "name": "Vulture",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/vulture",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "feather shard above wing in reaction"
+  },
+  {
+   "family": "Birds",
+   "name": "Goose",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/goose",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Quail",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/quail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Robin",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/robin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Starling",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/starling",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Ibis",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ibis",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Oystercatcher",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/oystercatcher",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Spoonbill",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/spoonbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "thin crack across the wing"
+  },
+  {
+   "family": "Birds",
+   "name": "Kestrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/kestrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Heron",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/heron",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "left fighter far wing hangs away (wing split)"
+  },
+  {
+   "family": "Birds",
+   "name": "Magpie",
+   "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-magpie-observed",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "passes with observed supports; upper-back/neck shards (Codex)"
+  },
+  {
+   "family": "Birds",
+   "name": "Dove",
+   "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-dove-observed",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "passes with observed supports; tail curl, neck shards (Codex)"
+  },
+  {
+   "family": "Birds",
+   "name": "Curlew",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/09-curlew",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Coot",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/14-coot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Rail",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/16-rail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Tanager",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Roadrunner",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/11-roadrunner",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Sandgrouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/12-sandgrouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Woodpecker",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/14-woodpecker",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Eider Duck",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Puffin",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/07-puffin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Swan",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/09-swan",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Cormorant",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/10-cormorant",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Gannet",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/07-gannet",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean; faint wing line"
+  },
+  {
+   "family": "Birds",
+   "name": "Booby",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/08-booby",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Bustard",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/09-bustard",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Seriema",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/10-seriema",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Chicken",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/11-chicken",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Desert Owl",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/12-desert-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Harpy Eagle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/13-harpy-eagle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Skua",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/18-skua",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/13-hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: far-wing fragment floats above the back in turn3 idle; walks on feet (Codex hold)"
+  },
+  {
+   "family": "Birds",
+   "name": "Snow Petrel",
+   "nativeDir": "audits/BIRD_ISLANDS_20260927/20-snow-petrel/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floating sliver fixed by the island repair, but a wing seam gap shows background (late idle) and a grey line crosses the near wing (reaction)"
+  },
+  {
+   "family": "Birds",
+   "name": "Rhea",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "Birds",
+   "name": "Seabird",
+   "nativeDir": "audits/BIRD_ISLANDS_20260927/20-seabird/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle after the remainder-island repair (the floating neck/back sliver is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/24-hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)"
+  },
+  {
+   "family": "Birds",
+   "name": "Finch",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/01-finch",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/04-lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 10.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Chough",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-05-chough/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Birds",
+   "name": "Ptarmigan",
+   "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated white flecks over the lowered head)"
+  },
+  {
+   "family": "Birds",
+   "name": "Raven",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/07-raven",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 12.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Vulture",
+   "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-09-hawk/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/10-crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 8.3% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Sandpiper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/12-sandpiper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (long bill and legs intact)"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-14-snowy-owl/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/16-lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (6.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c151-18-hawk/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/HEADS_C181_20261002/lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C181 head-contour repair (crest attached; earlier fits floated a crown sliver)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/HEADS_C181_20261002/hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C181 head-contour repair (the crown island held since C101 is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/HEADS_C181_20261002/hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/HEADS_C181_20261002/crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/HEADS_C181_20261002/snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snow Petrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/snow-petrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: a seam line at the near shoulder remains in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the C181 head contours + Codex C201 shared faint fix (spike gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a small pink opening shows at the belly between the legs in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Moorhen",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/04-moorhen",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Bittern",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: Codex reproduced a texture-independent walk fold (ARAP folded triangles) on this geometry; the earlier painter-texture native pass did not hit it"
+  },
+  {
+   "family": "Birds",
+   "name": "Condor",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/08-condor",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Turkey",
+   "nativeDir": "audits/ISLANDS_C211_20261002/09-turkey/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Grouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (11.7% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Guineafowl",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/12-guineafowl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hornbill",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (35.6% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Parrot",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (40.4% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Weaverbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (10% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Grouse",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/grouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hornbill",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/hornbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Parrot",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/parrot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Weaverbird",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/weaverbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Bittern",
+   "nativeDir": "audits/FILMS_C186_20261002/bittern-fit02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Plover",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/03-plover",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Partridge",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/04-partridge",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Rooster",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/05-rooster",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Swallow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/08-swallow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Jay",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/09-jay",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Rhea",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/10-rhea",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Cardinal",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/17-cardinal",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): turn3 victory: attacker body stretches into a twisted ribbon, head lost, wing pulled to a long spike"
+  },
+  {
+   "family": "Birds",
+   "name": "Sparrow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/18-sparrow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD-minor): after island repair (audits/ISLANDS_C274_20261004, 2,445 px shard -> far-wing-root) the floating shard is gone and native PASS"
+  },
+  {
+   "family": "Birds",
+   "name": "Pigeon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/19-pigeon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): turn3 victory: neck stretches into a thin S ribbon carrying the head to the raised wing"
+  },
+  {
+   "family": "Birds",
+   "name": "Toucan",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/11-toucan",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory neck stretches into a yellow ribbon"
+  },
+  {
+   "family": "Birds",
+   "name": "Duck",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/14-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory neck ribbon"
+  },
+  {
+   "family": "Birds",
+   "name": "Stork",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/16-stork",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): crown/eye piece separates from the face with a gap"
+  },
+  {
+   "family": "Fish",
+   "name": "Cod + Perch (gill welds)",
+   "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "tails full; Cod belly sliver"
+  },
+  {
+   "family": "Fish",
+   "name": "Carp",
+   "nativeDir": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole and clean after Codex fin repair"
+  },
+  {
+   "family": "Fish",
+   "name": "Herring",
+   "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-10-herring-welded",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "lumpy back in reaction"
+  },
+  {
+   "family": "Fish",
+   "name": "Trout",
+   "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "lumpy back; dorsal floats in reaction"
+  },
+  {
+   "family": "Fish",
+   "name": "Grayling",
+   "nativeDir": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex far-fin collar + near-fin welds"
+  },
+  {
+   "family": "Fish",
+   "name": "Minnow",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
+  },
+  {
+   "family": "Fish",
+   "name": "Sculpin",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-sculpin-final",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "now whole after Codex keyed-label pectoral welds (was fragmented)"
+  },
+  {
+   "family": "Fish",
+   "name": "Walleye",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-walleye-final",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean after Codex tail+axis repair"
+  },
+  {
+   "family": "Fish",
+   "name": "Whitefish",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
+  },
+  {
+   "family": "Fish",
+   "name": "Pacu",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-pacu-final",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "fine seam near the pectoral remains; tail+axis repaired"
+  },
+  {
+   "family": "Fish",
+   "name": "Cichlid",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
+  },
+  {
+   "family": "Fish",
+   "name": "Tetra",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; belly loop (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Pike",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion in late pose"
+  },
+  {
+   "family": "Fish",
+   "name": "Bass",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/02-bass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Char",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sturgeon",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; chest opening (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Paddlefish",
+   "nativeDir": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body whole after Codex axial repair; small rostrum fleck"
+  },
+  {
+   "family": "Fish",
+   "name": "Goldfish",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
+  },
+  {
+   "family": "Fish",
+   "name": "Mackerel",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; diagonal chest slit in late pose (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Haddock",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; face compressed (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Pollock",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sardine",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Anchovy",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mullet",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; small belly edge (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tarpon",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; belly slit in late pose (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Grouper",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; gill hole gone"
+  },
+  {
+   "family": "Fish",
+   "name": "Barracuda",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sailfish",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; chest crease (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mahi-Mahi",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; whole; cracks closed"
+  },
+  {
+   "family": "Fish",
+   "name": "Goby",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/01-goby",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Wrasse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/03-wrasse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Damselfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/04-damselfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Clownfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/05-clownfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Butterflyfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/06-butterflyfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Surgeonfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Gar",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fixed fish recipe; tiny fleck (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tilapia",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/10-tilapia",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Piranha",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/11-piranha",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Killifish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fixed fish recipe"
+  },
+  {
+   "family": "Fish",
+   "name": "Arctic Cod",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/13-arctic-cod",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Viperfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/14-viperfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Parrotfish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fixed fish recipe"
+  },
+  {
+   "family": "Fish",
+   "name": "Boxfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/04-boxfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Archerfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/06-archerfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Rabbitfish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fixed fish recipe; angular back (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sea Bass",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fixed fish recipe"
+  },
+  {
+   "family": "Fish",
+   "name": "Bonefish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/04-bonefish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Tigerfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/05-tigerfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Coelacanth",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/06-coelacanth",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Cold-Water Fish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fish batch seam repair"
+  },
+  {
+   "family": "Fish",
+   "name": "Blind Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/02-blind-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Small Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/03-small-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Sunfish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after Codex fish batch seam repair"
+  },
+  {
+   "family": "Fish",
+   "name": "Tang",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/05-tang",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Reef Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/06-reef-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Icefish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/08-icefish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable (translucent)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mudminnow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/09-mudminnow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Snailfish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: improved but splits head/trunk in late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Salmon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/01-salmon/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Cave Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/03-cave-fish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Lanternfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/07-lanternfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Barreleye",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/10-barreleye/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Ocean Sunfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/01-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Great White Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/02-great-white-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (98 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "Fish",
+   "name": "Mako Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/04-mako-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: extra finlets in the painting (Codex hold); motion whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Whale Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/05-whale-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (76/77 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Basking Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/06-basking-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (89/96 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Reef Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/07-reef-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Hammerhead Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/08-hammerhead-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/09-flounder/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body gaps remain in reaction and late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Halibut",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/10-halibut/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: lower-body gap in late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Juvenile Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Blobfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Monkfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/20-flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body gap line remains in reaction and late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Halibut",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (this C118 painting; the C106 Halibut stays held)"
+  },
+  {
+   "family": "Fish",
+   "name": "Basking Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body/tail cracks remain in the late idle on both the plain and the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Great White Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mako Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Snailfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "Fish",
+   "name": "Whale Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C222 source-bound join correction (body cracks closed)"
+  },
+  {
+   "family": "Fish",
+   "name": "Snapper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/18-snapper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Triggerfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/19-triggerfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Pufferfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/22-pufferfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Remora",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/24-remora",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/FILMS_C261_20261003/tiger-shark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Cardinalfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/23-cardinalfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction, faint and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Arapaima",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/17-arapaima-framing02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): victory: pectoral strand tears off below the gill"
+  },
+  {
+   "family": "Fish",
+   "name": "Angelfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/20-angelfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): defender dorsal filament floats detached above the fin"
+  },
+  {
+   "family": "Fish",
+   "name": "Tuna",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/21-tuna",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): pale rectangular holes on the defender flank"
+  },
+  {
+   "family": "Fish",
+   "name": "Swordfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/23-swordfish-framing02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory: bill detaches and floats free of the head, pectoral chunk floats loose"
+  },
+  {
+   "family": "Insects",
+   "name": "Beetle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "first insect; legs slightly smeared"
+  },
+  {
+   "family": "Insects",
+   "name": "Cockroach",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-21-cockroach",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Insects",
+   "name": "Termite",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-24-termite",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "thin abdomen line (right); abdomen-peel history — check other frames"
+  },
+  {
+   "family": "Insects",
+   "name": "Dung Beetle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-25-dung-beetle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Insects",
+   "name": "Firefly",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-30-firefly",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean; glowing abdomen"
+  },
+  {
+   "family": "Insects",
+   "name": "Wasp",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/18-wasp",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact"
+  },
+  {
+   "family": "flyer-membrane",
+   "name": "Bat",
+   "nativeDir": "audits/BAT_C190_20261002/bat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle, flying fully inside the frame (the earlier staging hold was a review-crop error: the crop sheet shows only the ground band)"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/FILMS_C261_20261003/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit"
+  },
+  {
+   "family": "arachnid",
+   "name": "Spider",
+   "nativeDir": "audits/FILMS_C186_20261002/03-spider-palp",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "brachyuran",
+   "name": "Crab",
+   "nativeDir": "audits/FILMS_C186_20261002/06-crab-source-joins",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "radial",
+   "name": "Brittle Star",
+   "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "annelid",
+   "name": "Earthworm",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/01-earthworm-direct",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "annelid",
+   "name": "Leech",
+   "nativeDir": "audits/FILMS_C250_20261003/leech",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "sessile-filter",
+   "name": "Sponge",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/02-sponge-direct-anchored",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "gastropod",
+   "name": "Banana Slug",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/04-banana-slug-visible-mouth",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "gastropod",
+   "name": "Snail",
+   "nativeDir": "audits/FILMS_C250_20261003/snail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "bivalve",
+   "name": "Mussel",
+   "nativeDir": "audits/FILMS_C250_20261003/mussel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "crustacean-small",
+   "name": "Prawn",
+   "nativeDir": "audits/FILMS_C261_20261003/prawn",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit (foreleg-tip strike)"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+node:fs:778
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/private/tmp/cf-card-native-uud2Wp/favicon.ico'
+    at Object.openSync (node:fs:778:18)
+    at Object.readFileSync (node:fs:624:35)
+    at Server.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/native.mjs:13:297)
+    at Server.emit (node:events:514:20)
+    at parserOnIncoming (node:_http_server:1394:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:125:17) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/private/tmp/cf-card-native-uud2Wp/favicon.ico'
+}
+
+Node.js v26.10.0

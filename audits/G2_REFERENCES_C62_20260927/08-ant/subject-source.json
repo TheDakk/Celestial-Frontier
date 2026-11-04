@@ -1,0 +1,91 @@
+{
+  "name": "Ant",
+  "family": "insect",
+  "species": {
+    "name": "Ant",
+    "aspect": 2.4,
+    "headFrac": 0.28,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "three distinct body lumps pinched by a narrow waist",
+      "elbowed antennae",
+      "six thin legs splayed from the middle segment"
+    ],
+    "note": "Generic name read as a representative worker ant. The waist petiole between thorax and abdomen is the read; drawing it as a smooth two-part body makes it a beetle."
+  },
+  "genome": {
+    "seed": 3772671348,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 10,
+    "body": 13,
+    "loco": 6,
+    "trait": 7,
+    "size": 1,
+    "diet": 0,
+    "head": 5,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 12,
+    "temper": 6,
+    "sense": 2,
+    "repro": 6,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ant"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ant\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3772671348\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 226,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

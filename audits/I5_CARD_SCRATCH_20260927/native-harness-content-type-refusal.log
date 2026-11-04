@@ -1,0 +1,17 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:865
+  const terminalError = (message) => new Error(`${label}: ${message}`);
+                                     ^
+
+Error: Card scratch ownership: Session with given id not found.
+    at terminalError (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:865:38)
+    at ws.onmessage (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:1072:34)
+    at callListener (/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/event-target.js:290:14)
+    at WebSocket.onMessage (/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/event-target.js:209:9)
+    at WebSocket.emit (node:events:514:20)
+    at Receiver.receiverOnMessage (/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/websocket.js:1239:20)
+    at Receiver.emit (node:events:514:20)
+    at Receiver.dataMessage (/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/receiver.js:633:14)
+    at /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/receiver.js:566:12
+    at /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ws/lib/permessage-deflate.js:311:9
+
+Node.js v26.10.0

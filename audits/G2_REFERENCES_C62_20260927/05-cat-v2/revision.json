@@ -1,0 +1,6 @@
+{
+  "priorPacket": "audits/G2_REFERENCES_C62_20260927/05-cat",
+  "reason": "Give the explicitly authored root marker a visible16x16 body patch instead of an empty background triangle; all limb cuts unchanged.",
+  "sourceRgbaChanged": false,
+  "limitsChanged": false
+}

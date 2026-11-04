@@ -1,0 +1,110 @@
+{
+  "creatureId": "reference-cricket",
+  "parts": [
+    {
+      "name": "hind-near-lower.png",
+      "path": "parts/hind-near-lower.png",
+      "sha256": "0b7f779672f5418b95a4e1ae1661d17edba8c5a90276d7b1699253ecd0c830ef"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "path": "parts/hind-far-lower.png",
+      "sha256": "7ddf016ef1dc69ae5c69c4627fc40174c57fa9a179d80cb69b05fe8b94a58c11"
+    },
+    {
+      "name": "mid-near-lower.png",
+      "path": "parts/mid-near-lower.png",
+      "sha256": "5be222dc84717841a4be90416a8d4631ed61ee898c020d4613ff6951613a1bd0"
+    },
+    {
+      "name": "mid-far-lower.png",
+      "path": "parts/mid-far-lower.png",
+      "sha256": "60de5d291ab05e89690363208ec9b13064c282a74899fa69006ad415d066b41d"
+    },
+    {
+      "name": "front-near-lower.png",
+      "path": "parts/front-near-lower.png",
+      "sha256": "f9215d72c50d458143d08030b56885ffea05be38177f7643bc7057bb3155c870"
+    },
+    {
+      "name": "front-far-lower.png",
+      "path": "parts/front-far-lower.png",
+      "sha256": "c8b86656c2fe2556e30ae4c876ab0f819ed0180d9385958c5e778eba37e1f2e0"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "path": "parts/hind-near-upper.png",
+      "sha256": "7db33e36f906d66d0ef0755ef351aad010f6d4d61f8cff85a520f7f4a5f81f98"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "path": "parts/hind-far-upper.png",
+      "sha256": "12432d45490fcbd10870454ae497f1b97c225535774d0a43a2c2f6d6242897f6"
+    },
+    {
+      "name": "mid-near-upper.png",
+      "path": "parts/mid-near-upper.png",
+      "sha256": "ac4d44dc9dfd1e6c2c126b9f940e107802b8bc135c81a5e959a5ef4b5c2f1244"
+    },
+    {
+      "name": "mid-far-upper.png",
+      "path": "parts/mid-far-upper.png",
+      "sha256": "2bc8ae61e0bf61465e9c3716c783062fcea5aa5dd998b10b9dec0ce70f6cc296"
+    },
+    {
+      "name": "front-near-upper.png",
+      "path": "parts/front-near-upper.png",
+      "sha256": "d5c5c217380eb59a2f7f3bbd5e7d660e82384eca9b5cff57218e38c04dcde58d"
+    },
+    {
+      "name": "front-far-upper.png",
+      "path": "parts/front-far-upper.png",
+      "sha256": "a1104ca263947b3b69241cf1bdd4fc6ee74d99bcb4a6bcb375f63b42a2558c51"
+    },
+    {
+      "name": "antenna-far.png",
+      "path": "parts/antenna-far.png",
+      "sha256": "ae785543c1b7649f0d2861beb62427dd20ecba161251cfbc75a60468fda79b63"
+    },
+    {
+      "name": "antenna-near.png",
+      "path": "parts/antenna-near.png",
+      "sha256": "b0a143e84e819c8b2d5ed1c28103176933d275b1fe85d0dcf2d40d00d1eec747"
+    },
+    {
+      "name": "mandible.png",
+      "path": "parts/mandible.png",
+      "sha256": "73793ec37bb230d70862002557abf7e143febdab3c24e794f0997a222ca1f1af"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "7c7a51df5c7debf4f55373829bc3e1eff3fe6168e947e52a6149a945d3585d52"
+    },
+    {
+      "name": "wing-far.png",
+      "path": "parts/wing-far.png",
+      "sha256": "c48ac32c10c18f6f791a62a2e7c422ed55b2b82b84dd25b424a88fbca469d0df"
+    },
+    {
+      "name": "wing-near.png",
+      "path": "parts/wing-near.png",
+      "sha256": "110aeff357fb55468ee08392603c6d520dc0d647f2c4151f01997e6f80725491"
+    },
+    {
+      "name": "thorax.png",
+      "path": "parts/thorax.png",
+      "sha256": "620be32043f6e51a0d0e5db4c8fd9af767c43aa9ed0267e78d0820cfd87cb0a4"
+    },
+    {
+      "name": "abdomen.png",
+      "path": "parts/abdomen.png",
+      "sha256": "4fc30bce2860ca73d5b6ed2037015085723f9673347ee165de99911a98d479b9"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "52678e08e1005f520e040c7ea4081984590926920b54dddbfe6f0e3c29b6e474"
+    }
+  ]
+}

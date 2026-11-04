@@ -1,0 +1,46 @@
+[
+ {
+  "id": "civet",
+  "reproduction": true,
+  "changedBinding": true,
+  "changedDimensions": true,
+  "conservation": "PASS",
+  "labels": 22,
+  "unowned": 0,
+  "painted": 516758,
+  "pngSha256": "da39e0a76713f5adee819751c96db00ffebad52288b3d113a84baf218ced2132"
+ },
+ {
+  "id": "eel",
+  "reproduction": true,
+  "changedBinding": true,
+  "changedDimensions": true,
+  "conservation": "PASS",
+  "labels": 13,
+  "unowned": 0,
+  "painted": 69953,
+  "pngSha256": "1b07c0600205a24f8d42a025f2d909b4374b156718a39fa2da268a0b32eac0c3"
+ },
+ {
+  "id": "rat",
+  "reproduction": true,
+  "changedBinding": true,
+  "changedDimensions": true,
+  "conservation": "PASS",
+  "labels": 31,
+  "unowned": 0,
+  "painted": 151783,
+  "pngSha256": "9205f57215cb3631e592b8bcda5ffa335365cda028aa1c117d11e454d984212e"
+ },
+ {
+  "id": "salamander",
+  "reproduction": true,
+  "changedBinding": true,
+  "changedDimensions": true,
+  "conservation": "PASS",
+  "labels": 27,
+  "unowned": 0,
+  "painted": 140137,
+  "pngSha256": "56052d9264e158d7c6080dc39310675ba07b30ff9c44890d9ea5f60352496520"
+ }
+]
