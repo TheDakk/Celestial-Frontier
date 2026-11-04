@@ -1,0 +1,281 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "4da2cc2b59759a2eb24a24d358f6dc3bfec6837e",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0006753883071235068,
+      "maxGapPx": 0.00007209061921344092,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.005121095895763859,
+      "maxGapPx": 0.000057452026161611267,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0010773276174865015,
+      "maxGapPx": 0.00006780586235280568,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:climb",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007859311271319297,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:punch",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00030766878980169294,
+      "maxGapPx": 0.00006944704878753947,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00017423362403201265,
+      "maxGapPx": 0.00006944704878753947,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.004519378839146495,
+      "maxGapPx": 0.00007267170354490904,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00044190084505962434,
+      "maxGapPx": 0.00006944704878753947,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006764896008272545,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.004630485158928411,
+      "maxGapPx": 0.0000713814905237731,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000030614514564143955,
+      "maxGapPx": 0.00006710998106000966,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0005763732936929365,
+      "maxGapPx": 0.0000742118261019185,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000030614514564143955,
+      "maxGapPx": 0.00008085451416722135,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "d26919f941ddf48e495653a3a27de25cda60c1c86a4a7955fdf729f84bdd4de5",
+  "bindingHash": "3c87195000b6b262a7a5377f787c61ae0fd4599eb69fef17e919fb79520bb920",
+  "family": "primate",
+  "contacts": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:walk",
+    "approach:climb",
+    "melee:punch",
+    "melee:bite",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 1130,
+    "attemptedSamples": 1130,
+    "status": "PASS",
+    "maxPaintDriftPx": 0.020431370036806677,
+    "maxGapPx": 0.00008843729931283153,
+    "maxEndpointError": 3.510833468576701e-16,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4091.563018336892
+      },
+      {
+        "id": "alert",
+        "startMs": 4091.563018336892,
+        "endMs": 4975.563018336892
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 4975.563018336892,
+        "endMs": 6059.563018336892
+      },
+      {
+        "id": "approach:climb",
+        "startMs": 6059.563018336892,
+        "endMs": 7143.563018336892
+      },
+      {
+        "id": "melee:punch",
+        "startMs": 7143.563018336892,
+        "endMs": 8314.229685003558
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 8314.229685003558,
+        "endMs": 9484.896351670224
+      },
+      {
+        "id": "cast",
+        "startMs": 9484.896351670224,
+        "endMs": 10758.896351670224
+      },
+      {
+        "id": "hit",
+        "startMs": 10758.896351670224,
+        "endMs": 11872.896351670224
+      },
+      {
+        "id": "dodge",
+        "startMs": 11872.896351670224,
+        "endMs": 12816.896351670224
+      },
+      {
+        "id": "faint",
+        "startMs": 12816.896351670224,
+        "endMs": 14000.896351670224
+      },
+      {
+        "id": "victory",
+        "startMs": 14000.896351670224,
+        "endMs": 15264.896351670224
+      },
+      {
+        "id": "tame",
+        "startMs": 15264.896351670224,
+        "endMs": 16568.896351670224
+      },
+      {
+        "id": "feed",
+        "startMs": 16568.896351670224,
+        "endMs": 17812.896351670224
+      }
+    ],
+    "durationMs": 18812.896351670224
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/record.json",
+      "sha256": "c6a5892c45933b2b86a213567620f00ea9449d364af1b89e622a36d42d30144c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/binding.json",
+      "sha256": "3be858c029a910b54ebfbf4277f20a30f06e7c572f0ee8eeaa0dafb36079cdc2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/parts/manifest.json",
+      "sha256": "bf3af7a0413b63964743ffb48a51dbcbb36d912ba065b62d65a605b6636891bc",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/parts/atlas/c198creaturesupplyb-07-howler-monkey.png",
+      "sha256": "49effe9fa5f6031197c2533abf5f97de459b0dece3dee64db96ac7375c01a727",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/parts/keyed.png",
+      "sha256": "2ed169cd0069142d6eb3b98c964c5886067e411d1d66a247da3c59734f2c433d",
+      "unchanged": true
+    }
+  ]
+}

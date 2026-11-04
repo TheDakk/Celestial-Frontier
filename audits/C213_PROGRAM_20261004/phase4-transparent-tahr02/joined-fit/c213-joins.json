@@ -1,0 +1,23 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-transparent-tahr02/fit",
+  "sourceBindingSha256": "cfaa92ca28951a4a29cce329a55624b18bc787bfd5aaf031c223714c9c6ab604",
+  "candidateBindingSha256": "63419b945614a10d3ad7779537aa37c49e0baaed1ef3e876a8da4f414b993072",
+  "paintBoundaryPairs": [
+    [
+      "chest",
+      "root"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "27c3cfa57942e0d8f5f119036a70582e505e611110e8ce8a025a96e0cc9e9959",
+  "sourceAtlasSha256": "aada1c86532efdba54fcbe512983b3e285d38d4caa01ed79aad6d598af174963",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

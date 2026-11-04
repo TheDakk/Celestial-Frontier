@@ -1,0 +1,710 @@
+[
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/redfox-static01.json",
+    "beforeSha256": "cee1d1b22a2ce983a542b7926ca99c195275dc30047fcb1d39362af872c2a84e",
+    "afterSha256": "e908c8f0a90d8fdeda17c5cc14323cfbd91b92a0e9a4add362e12512b6ce28d2",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-static04.json.sources.json",
+    "beforeSha256": "3948453133bacf4cc5f357178bc4ea6e410338e39328c402fd00eaa2c3190a6e",
+    "afterSha256": "d17fbc33e6fcfe392550cd7c4898a3131dff2b25dff19cd82e2ef07e7419008e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-static04.json",
+    "beforeSha256": "ef603e644d021aaf0a7c75af150bb5e6710a96caa12fb29263bae653451d6e22",
+    "afterSha256": "43ef64605eeb7a5fa2721d7bac782ab44f6078ff53c67917aae9897043ff6ef1",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/redfox-static01.json.sources.json",
+    "beforeSha256": "ba3969091619bb8e58374b8d52989c87d9779eaf570bb1848b5902d8d1530ba3",
+    "afterSha256": "6c0bc96ddc1fbeeb75f584da79f3183b252e39c906ba3efaf8895eb006d6fbf9",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/static.json",
+    "beforeSha256": "98838c6ee440928403c134ed5134fd369c31a7ef84185318f0f713f72532fb26",
+    "afterSha256": "75e8c83b1265fbc7c280ee3573f93ec5f8e91d4eb19d4438fe3cd18028a2d1c8",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/static.json.sources.json",
+    "beforeSha256": "4454561d58101d6bd65e1718ce22efd9de34a131b112238496d00d2644790e3b",
+    "afterSha256": "d317e65a9ce72903e50ce1613e11ed0b7565f509c286556cb02ac6dc881e9ce6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/native/report.json",
+    "beforeSha256": "fca8f4a856e0a40459813c1b7442616d3bd0eabd588195505d7cea8906470dc7",
+    "afterSha256": "1a016be62a17cb35c91f1b3aff96bc4faa21cd11161a8703fb4b45747bb64345",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/fit/intake-provenance.json",
+    "beforeSha256": "dbe134a733325ee8fa0e2b7b4793583ef1a77fc306cfeb0fde561d8b364f73d5",
+    "afterSha256": "90bdfbee6b5dec10b3a1d2eb0b537455c57c3d8f585883fffa953fb94fd7db2c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/static.json",
+    "beforeSha256": "aa5dc1fdc141c336b269cdc85206c057051ec3876a3348b461b18857c59d2c5b",
+    "afterSha256": "33f1a8d85ca41728f0a19f33fa450caaba3e0964f714ec60b6dc05569dd1ac65",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/static.json.sources.json",
+    "beforeSha256": "b136561cd25c07323aaec94702faef390cf9ada81a20c921ade7c80a5c4448a7",
+    "afterSha256": "9e4e8d8e6f9b8a2a3ed0fda6da9663280420817a2c53b66b70ef186a816acd66",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/native/report.json",
+    "beforeSha256": "8eec8689e7dee495ca87e9cf0f2e622ff2d94001faab40b3d2bcb922b23d2946",
+    "afterSha256": "8c0b405074abdfc1fc71ffcf691fa6bebf6269488e713c3ec8d2abeecd75c11e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/fit/intake-provenance.json",
+    "beforeSha256": "a94d14ad4b148f06132500e07a9e13888d4f9f8baf7cb468c03884ea6ff0829f",
+    "afterSha256": "9fff00cb09c27475048d9c866948a92d522a8d25933cc4d7b0d1f58330cf138d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c72-12-egret/static.json",
+    "beforeSha256": "3955bef67cc897cfa1e3a654152339104f2ae5c9ffac88330c2a872cffb8f6e1",
+    "afterSha256": "d3192c2d4746d9db76515c50c4ee0d73a682b653961ac3b0e16cc18561dcde1c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c72-12-egret/static.json.sources.json",
+    "beforeSha256": "8cc291795605f79b2ba0a7dda1630efd0e94e014c47aa1ce56b031a77d32b8ed",
+    "afterSha256": "67df944c487628e4546842215813292d9176e4f9d680270f7fdd8cc2bb02901e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/static.json",
+    "beforeSha256": "3e1c685630643fbd4309d8e15fca15b9ce19fe082f8712ba1c218bd26525ecb4",
+    "afterSha256": "9a605fbfa0a85fec5f0939e1b94d53fd8ab522dd7b7efd17c7d49fab9751d26c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/static.json.sources.json",
+    "beforeSha256": "6cf43050b5032149d16050e6e5ca3393cd1c9c75db1cc39f02b3c33fa4e020da",
+    "afterSha256": "d095176ea8225f322932fa72cd4f250b4dda4bcc32a7238026edbf8460103c9d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/native/report.json",
+    "beforeSha256": "cd190434da56c297cac87083cb5f49c3514cab21bb3fef83b34dd78c1e84e8c4",
+    "afterSha256": "d6c8e9ca3416837173fb4d2d83e1ec0d329e5075a0399be932f56d741eaca0ad",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/fit/intake-provenance.json",
+    "beforeSha256": "b2de86b1b7c02c1a1e424abe0b648bbbfc8221f444fedabe589ff692523b4d2c",
+    "afterSha256": "7f1d3f6612b3f26be18925a483af2463881265db6c1070cb1488e02416b09eae",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/static.json",
+    "beforeSha256": "def021426a0fe34c2ab6021679ef7be53367f0efca2494c344ae5afbaaafee91",
+    "afterSha256": "896eccba783b7977aab25d99372649229bc3a1fd1c7b08daee0af4b3034b2579",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/static.json.sources.json",
+    "beforeSha256": "7c689387aaa83a2cdb3d5541f08d79d40eec9597deccb421edff639dc03e3a2f",
+    "afterSha256": "883bf622abc5e93936f90107aa87c1e15e9be061c4ee6c1e106fc4c336988867",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/native/report.json",
+    "beforeSha256": "b98b0fdf19e01633324ecf80e08136b4ff65d83fd66c377096b2ed1f32d01d05",
+    "afterSha256": "1fefeee7892e2d567f57593f68236c08f8dfaacef70cd0b2f5095db4dc3a1e9d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/fit/intake-provenance.json",
+    "beforeSha256": "6f0ace0c0435b6cee0708aba518114cf9033d97b9b69c699ea1f8bf74ab1bda0",
+    "afterSha256": "10a7ef92e5a47bea0d7c3ef8ca4b640587dc85bcc34e76edd37d6643d9d60d52",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/static.json",
+    "beforeSha256": "69e6e4850b23a6f1273b82893b61f7868f624daa012c5cec455a65a0e005b308",
+    "afterSha256": "c6cfa4ea019b1741bc6653af461b28f58cff8c9a7a9c8f420991658d510bfd8c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/static.json.sources.json",
+    "beforeSha256": "33f3f8a77f9142d15b7bc2cc5bf73d885e21b9d93ca0483dd018ce26c87616f7",
+    "afterSha256": "b0e7e7a4fee732d5a02f83037fa6cee67db37efd475f916c2b9a691bb97cebd0",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/native/report.json",
+    "beforeSha256": "73e969770dd483d2d527ba43774c572fedf3ca8de4eeedc4d557324be69a6d50",
+    "afterSha256": "f3eaacf5052e668f38c645280aa1c8d6aaf03adfb520fa9de4c826fee421378e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/fit/intake-provenance.json",
+    "beforeSha256": "0d323d62a3f0db957cc1d1253f713472ffee3ffaf2cbe7308a1f0da46d69d30f",
+    "afterSha256": "530f8ac949c7a830334dd9911bf06f1f808ed8e1d9b4481364047a420e60c986",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/static.json",
+    "beforeSha256": "d1f599c42d3f3bed1e2a76c8e02fb141d54be2503be2f12375427470f6513b61",
+    "afterSha256": "540c4679e62b2cf2641e566347f4418cd30dfe3c6ac4a6a95ca10df820abbe69",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/static.json.sources.json",
+    "beforeSha256": "9f7e6e47827554b50911b3378bb464449d71453b4045bbeb8e5ea4095a0beeb5",
+    "afterSha256": "68226c634915386962f8e816fd54a2306845db65d076f14b3dce59db8c8ec729",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/native/report.json",
+    "beforeSha256": "1d4938b1b92d5f6bcc41b9ee8ebd4890e004fcf1d9e9cf5cb13df4d4b220bbad",
+    "afterSha256": "e88bfd01b47dd4f0e0ef0277d74f689c5da063efac970533963cd48ddf40e985",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/fit/intake-provenance.json",
+    "beforeSha256": "d9314bab542448d7c889cc4d78ee67770c3293c7adcaa0d3792327ebaad5ca2a",
+    "afterSha256": "530aac1a1d7ec70b93fd8ace4077bf86f5f5639705b0e43b1b3e7b4c45eecb6e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/static.json",
+    "beforeSha256": "0f41abb6873b9c0803f257350a7ea0ad1b8aab3773855396f7122bc8aa19898c",
+    "afterSha256": "d7e4cb86710b9a0ade5d7737cd4a6effe888c7a50f8c9a809f696647ec42a5cf",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/static.json.sources.json",
+    "beforeSha256": "65cffec693a39102f63c71bbdd4b10aef3204b1eb711d13c96788855e2590610",
+    "afterSha256": "0782f9774ed355d7110aa0119bf6cfd12802ba9c71782148f5ee00def4532f91",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/native/report.json",
+    "beforeSha256": "071667b6d727c57871e87f9d583c5b0fb38840ee4aff5d6d863cfc7110321c80",
+    "afterSha256": "276e06c9feb587196aeb295b516c26964e659658d7082c95698e95a14c6d15df",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/fit/intake-provenance.json",
+    "beforeSha256": "d1c32ecb290d0c6afa73502b286b6374429284b4f6100c1144f0cfd10b71920a",
+    "afterSha256": "15cb34b328605df5270614c85ca39f195e1bdab759a8cd0c9e8fe0b28bd463a7",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/static.json",
+    "beforeSha256": "3cd17dc951082459ee31458e1a93afdd6596b355a1da978f6ea3b15f7d2c3f36",
+    "afterSha256": "750660210aade025ed87cecf580413ea64d83db9f6a464eee74aedf04d985bf7",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/static.json.sources.json",
+    "beforeSha256": "921722c3abde69681eea25bfaa4cd3a5ef21b383aa751110f28d916246181671",
+    "afterSha256": "ca06907056843456f18e06fd855be064234c88ea94e8bf290680419d53066f6c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/native/report.json",
+    "beforeSha256": "e209aa9115a424f72aeadb7c130f9ad8c7e2d3eb085504ccd378a2584c935fe3",
+    "afterSha256": "867da7938d570755e980797451144c3ef356404fd070d52ae9db9e6ad1cafaf0",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/static.json",
+    "beforeSha256": "533738759ce7252e7f538d4b9f7180391157814c6aa8461f64f809ec83229db4",
+    "afterSha256": "83d9eab7c998a8c882b38e3383131d2b1518b726ac05a6690fcdaf820130f089",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/static.json.sources.json",
+    "beforeSha256": "c52440c56b08b7fdcf0f1cfdbc1304ffb68ee9c170d3b313c5eec8430811035d",
+    "afterSha256": "e3db92c3dd177dade03cb1aada1a441502979868a98848b1a0f4f348ac28c5c7",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/native/report.json",
+    "beforeSha256": "9c9033ddd8b791c33bf84f62ef54a26722d65c1c470db958dafa264affae6f49",
+    "afterSha256": "85c85924f5c823674162c5a97d11c638201424c72e6674baf5dfbc24a62ca22d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/fit/intake-provenance.json",
+    "beforeSha256": "dcbd69fcd8e967ee83f715fcd100e7432f4e7ffb6b54a1b5ca6fcc385f3f4a02",
+    "afterSha256": "2257e34c53dbbdf7fb6017d5e85995531b8a40456ffcdb8a6030b6b6d244c71a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/static.json",
+    "beforeSha256": "22a092821ff922ddb8c6fa54d4a59696a3c1cb6027a9d0195488bf7b25683ecf",
+    "afterSha256": "dcf04282db50a5c1ef25fc3763e9f6cac7954fe4b7b95fc9efdf964938a39440",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/static.json.sources.json",
+    "beforeSha256": "01dac5e74f1b61e2a81f10f3c3dae33af7c7b95b777f5d6b59d56e56ab940d08",
+    "afterSha256": "4ca1df8efab9a8baf112312a339fb164d0e5303e4b31fb29d489ea39ed417f74",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/native/report.json",
+    "beforeSha256": "270c5f23ba147477f8b44ff1963cedc1441b4903f2cabc19d0bbc94c3bd67669",
+    "afterSha256": "d658f98466861e49db905ab54efd1e1cb8c7e47c1284ccb7f4b2a441af0da882",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/fit/intake-provenance.json",
+    "beforeSha256": "b89ef8a82d2472d7c96d00f9903676cb513e178b833166c05f1174373588356c",
+    "afterSha256": "422cb7660b96f5cdb8b9839b7dcaab1056253b64580c3237fa694bae41082ea6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/static.json",
+    "beforeSha256": "fabb3ce52cf57ef1b983afee329e0f7e5dd08e4974fa92e523f31b4cfc355f19",
+    "afterSha256": "a381d67b6d8702714412337bc3f528a6dc2bb425b62113669db16db97df81fc3",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/static.json.sources.json",
+    "beforeSha256": "f1473c5fe90f7d7c3784162b7dbc3ef92b08d6b5e0c2a6b0a2fc3ca12536fda9",
+    "afterSha256": "bf0ef4bd78fbb2c8f5390264c6c26b6aa8843b2fff8625d2cec538a0deed177f",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/native/report.json",
+    "beforeSha256": "b64e5346372e0c1ee90a98c4ba4a25af44103c9cb7fe057e2cbf7ee9bc0b0e75",
+    "afterSha256": "dcf9d32c5fab1448b569c029d33825a1edfed330ed3aa1cfa05184d1b244a4aa",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/fit/intake-provenance.json",
+    "beforeSha256": "30c2f2e4ba61a47c47af888419e6920d20d16532192ccd41cd03d34aad52041e",
+    "afterSha256": "757b382b29d34d134997f4ad2108f7709f34223b6588bbbf7353b8d32a2940da",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/static.json",
+    "beforeSha256": "91478b77a39a8954e6b50226cde002ad499b3e35989f3134fdf3c601ef2974eb",
+    "afterSha256": "2241db67eaef62e57b8b02060b23404edc5afe5c69865f6d04c0e4dccfbf2ebf",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/static.json.sources.json",
+    "beforeSha256": "1eacfe61747b01ffd8462a6c3e85ff123d384a3d53dfa02ce6df7f44a5bc4ad5",
+    "afterSha256": "1e31ae4677604b55f49107b61f87ca5c23acaad1af11e03ddec7c964a6acec91",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/native/report.json",
+    "beforeSha256": "957cc71be3767532a58c50798bb568ddf227672874db0a886c34a6c44709c591",
+    "afterSha256": "ea0bc3777b69fd2080e3ef8cac495030b27df4f06009f481fce17eab7e7dc3df",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/fit/intake-provenance.json",
+    "beforeSha256": "e225fb28bb7106766b51cb8a66c713567fdc7e4f45155b4e5825a171b430efb5",
+    "afterSha256": "fd7d3a5d760621160599048f11cd875358da926240af0ad631ee686d04d70d82",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/static.json",
+    "beforeSha256": "88b8ccde3d4dfc878b3f9c75952f788a83ab1409d846f89de47e8dc48f2fcf86",
+    "afterSha256": "9cba3c40d3b0da5709f7975574dc58d10952156c07750b201334d586ebf1662e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/static.json.sources.json",
+    "beforeSha256": "379e8d921dcc14e38960a4a8d9d96c94b151efcceae849b67a46b998e3225445",
+    "afterSha256": "096150ae30f3ce112fd4325812cf3adb54fb040ca159590169cc43124d3bd233",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/native/report.json",
+    "beforeSha256": "2daa1920617d0fcf187eff5a15c662d237f5ad9f5d05b52ec85a59f3e7111fec",
+    "afterSha256": "6119aa0533dc84554004e99861ad3e183f3bab9ec7ae822fdd6ed67caca533a6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/static.json",
+    "beforeSha256": "3c3aced4bdae0d62f768a83a824cc97a49242b301ac596a10363f41c2a2d6e28",
+    "afterSha256": "a5b3e8f706dcd722106b976747b0beb3acbd4e22832ec08e568bd4768d4632f6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/static.json.sources.json",
+    "beforeSha256": "226d03b565f046321955c23a998e0507c69a9859925ebaeb3304728607b878d0",
+    "afterSha256": "025bd37319dc576c326fbff016cd0ee061279754875272fdd8b7842ac5a8e927",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/native/report.json",
+    "beforeSha256": "5dabe40b793e583ca11286eaab640ddda116f673281cebca26a47b153a923a71",
+    "afterSha256": "98f86cfdf706249efd0539fe09274f0b7c75307d22cdaabb74ae4103f70e448b",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/fit/intake-provenance.json",
+    "beforeSha256": "ffa89b2beaadd0b9922c1c97e3503dcfda359d62269bd784ea77468bc304603e",
+    "afterSha256": "fb0891893dc385b728eb4f448283c8490841528b520f0f8ea837add31c87fcfa",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/redfox-fit01/intake-provenance.json",
+    "beforeSha256": "dcbd69fcd8e967ee83f715fcd100e7432f4e7ffb6b54a1b5ca6fcc385f3f4a02",
+    "afterSha256": "2257e34c53dbbdf7fb6017d5e85995531b8a40456ffcdb8a6030b6b6d244c71a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/report.json",
+    "beforeSha256": "9c7bc9d23042566729098a9480e7b1dd61e922334704b7829c19b949f2dff110",
+    "afterSha256": "0ce86e0a68a456810f48f4757b75ce5ce6c7b367dfeb29c66adedbcaad11595b",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/static.json",
+    "beforeSha256": "8546f12797d979b6176829899aa5b03a6a2dde20be002a40759ae52c08397b86",
+    "afterSha256": "f028e84e16e7a952b0dfa807c89abac009b745970efe5841a5330699a7d9705f",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/static.json.sources.json",
+    "beforeSha256": "ab016d67cedeca2f73cfc4c775a52f7e3df38e4d945e10b9a5d347ec36dbca2c",
+    "afterSha256": "93ffb82651f88d9f86e125c20901c7b186999dd8c29f12fe95b45e6f99fa8525",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/native/report.json",
+    "beforeSha256": "eb02cf819b45c157c93a6a51f7b594979c467389a98d16bb490bd4cef90a83fc",
+    "afterSha256": "71413a20e402d646febd62d141d12a2bdf517b8a1607ea0a48a8a2f1c903df51",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/fit/intake-provenance.json",
+    "beforeSha256": "dbe134a733325ee8fa0e2b7b4793583ef1a77fc306cfeb0fde561d8b364f73d5",
+    "afterSha256": "90bdfbee6b5dec10b3a1d2eb0b537455c57c3d8f585883fffa953fb94fd7db2c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/static.json",
+    "beforeSha256": "9bf5cf0bfa7d957261a8a8908d6b7945e40df60d28fc26e5dc71b88f1cba3a3c",
+    "afterSha256": "ae251419c070bfb3c62585e45388769332a357f14bcf8e13b8bacae00b3785c2",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/static.json.sources.json",
+    "beforeSha256": "5e600eb1c68fb47da0db37d4bd39f5805721a377f57633da36ca31e8491c22dc",
+    "afterSha256": "a685d6c7482f204576e005e23a19a5922083e1a320a90bfc3706008ab4815f56",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/native/report.json",
+    "beforeSha256": "5e2d85ddd10bdbaca1f2d4e70550dcd53294945130cfe65e874ade9e81271343",
+    "afterSha256": "01cc9bdde495e41b999e6ed0be7d8651217511f2f08e2e566c37b51f5b3b5cb3",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/fit/intake-provenance.json",
+    "beforeSha256": "a94d14ad4b148f06132500e07a9e13888d4f9f8baf7cb468c03884ea6ff0829f",
+    "afterSha256": "9fff00cb09c27475048d9c866948a92d522a8d25933cc4d7b0d1f58330cf138d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/static.json",
+    "beforeSha256": "5204c9791fe464e02593984cca8689b66029d3bbef72646ca1818143792925d3",
+    "afterSha256": "d9cd14ea9490ecb800d464df3463fd1dc401ac63d6089b601e64a19eda7aa24e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/static.json.sources.json",
+    "beforeSha256": "2487fe6095f9e8d4232f5af5d01a6a4ccbbc92cb8241721d87429ef1b96513ab",
+    "afterSha256": "4ee2b8ec16097fde859463da76c7cbd2cd04479b18053e16125355f267eb2875",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/native/report.json",
+    "beforeSha256": "c478c042db2f6312e354876429b78d8a78b0c66225ea4fdbf612695d08328346",
+    "afterSha256": "3daaf12948176eb9e07f4d7dc9109010dc2109fc4d366b581e0ab0ff375104b1",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/fit/intake-provenance.json",
+    "beforeSha256": "b2de86b1b7c02c1a1e424abe0b648bbbfc8221f444fedabe589ff692523b4d2c",
+    "afterSha256": "7f1d3f6612b3f26be18925a483af2463881265db6c1070cb1488e02416b09eae",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/static.json",
+    "beforeSha256": "e0fd3f0cc5159f452eb8a067f6d140c859f4adba54ae9bb27c89828c4ccc76f6",
+    "afterSha256": "aeaf28a1fef4647e736c02e298bf00c670b3c100b146c2ecb491f855bb29e741",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/static.json.sources.json",
+    "beforeSha256": "a6cd14ebc7523e18a2df047ce4112d10ab8469c36798d1877ef43fcaa1abf0ed",
+    "afterSha256": "0f34d921979d00a588fd8529b6d6efafb10e3e87c162283172f6f0142d703088",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/native/report.json",
+    "beforeSha256": "af1f3eb9c50d0ab967e528ff82a32f51f07a96087bcdfd7c52a04c7b25e1b11a",
+    "afterSha256": "b2a4d7841c9b8591790b01e616ef5db0572c726dfea2edc585f5c1e9215e1578",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/fit/intake-provenance.json",
+    "beforeSha256": "d9314bab542448d7c889cc4d78ee67770c3293c7adcaa0d3792327ebaad5ca2a",
+    "afterSha256": "530aac1a1d7ec70b93fd8ace4077bf86f5f5639705b0e43b1b3e7b4c45eecb6e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/static.json",
+    "beforeSha256": "bcbd4f864941581d7066d3b171c83aefd1917aca0a1cdfdf667471f3a5a09fec",
+    "afterSha256": "e81eea4141c2eb85a91952fa2e55763712228d317a7f727e7be1f7eb88fbf93c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/static.json.sources.json",
+    "beforeSha256": "eb75f8b5bb9fb0b300b2a2081031ca78e121408955cf3d0479be2cb761b03c3d",
+    "afterSha256": "986efd71f8af9e1cf8951d2a53586fd3fc3ce249c5f2e9f21560c487273b0930",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/native/report.json",
+    "beforeSha256": "55665e688b512fa21e9877afbb3768602e7ef7a4ed85004b24f4c67b137b44c1",
+    "afterSha256": "6857a734be4ae30b5a75a3f05f95d4ff5715c2373c18ab94b0ca3bea6b9e12c3",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/intake-provenance.json",
+    "beforeSha256": "d1c32ecb290d0c6afa73502b286b6374429284b4f6100c1144f0cfd10b71920a",
+    "afterSha256": "15cb34b328605df5270614c85ca39f195e1bdab759a8cd0c9e8fe0b28bd463a7",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/static.json",
+    "beforeSha256": "81ba91fcab35cd8a8b89038bb4bc7bf70732c5078d097e8361ece59a5bed4c82",
+    "afterSha256": "086ca018c5aa1ee9b83867d35e432d428af54ff8336e3c3c4c119b8b2d8d8f11",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/static.json.sources.json",
+    "beforeSha256": "d97af00752b9817e40b9aceb7b180849ea8738f307e8a0c1c99bba0c40d59f00",
+    "afterSha256": "fd483301ee4b9694e6cbf2c235060e51c36605c0b61e42fe179fd2b13f89f5ec",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/native/report.json",
+    "beforeSha256": "8d25d2972b0803ba253cca9bbcae5719137c1e1c51b7894824bb3f6acc1f4faa",
+    "afterSha256": "dba11bcfa35e6df6d00db5c9464224ab6a9714ddb89b6f281574a2f229af0e5a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/static.json",
+    "beforeSha256": "6001421fdefd3e288e7d50d40e4d886d33fb44a66af4690b15fcf2c96786ac96",
+    "afterSha256": "ba08cf7c2911020ee2b2badbff58cccda89f9befc860d2b1209cc116e1b41e24",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/static.json.sources.json",
+    "beforeSha256": "e442e10d2eda8d7f26b16471f908f4bc3e4d8d25fe1ff017077f7672de11a8db",
+    "afterSha256": "5b009bbb2f14bb13271cd10849f183d070bdadcf6fc538499983d76dcd318ca6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/native/report.json",
+    "beforeSha256": "c6975ba5be978e3a0c9e4d00a9885e8d0267a4c82e2a2562a54986adf85fb335",
+    "afterSha256": "7067afdc9aa435f4789d9bf78c44be21c26438888b6311a8b8a2548bb5a25a23",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/fit/intake-provenance.json",
+    "beforeSha256": "dcbd69fcd8e967ee83f715fcd100e7432f4e7ffb6b54a1b5ca6fcc385f3f4a02",
+    "afterSha256": "2257e34c53dbbdf7fb6017d5e85995531b8a40456ffcdb8a6030b6b6d244c71a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/static.json",
+    "beforeSha256": "2fddf926378c0400b10031a225be05e8b7ffe0c88979c3c29225c1496aa3a2f3",
+    "afterSha256": "b60c80884f17c48d13961b6ea213bcdb091e1d5a29c6881d5e62fbeb496f2459",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/static.json.sources.json",
+    "beforeSha256": "e6f20dc9a89da405fca58087172af92ad61a1a9475b487b7acba0dcea96e27e2",
+    "afterSha256": "9b2bf0b2fc6bed84f5e392a123f37e10ed13657d0ea8e0e33b81f407251b1af0",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/native/report.json",
+    "beforeSha256": "a099838baee9dd76f4571c6dee29c4c2094511841fddc6da0d25bdf8b3ba2d26",
+    "afterSha256": "69beda1e736924ac56ecb02221c10f8005f6f78c70b680ebdccfe580a95c976a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/fit/intake-provenance.json",
+    "beforeSha256": "b89ef8a82d2472d7c96d00f9903676cb513e178b833166c05f1174373588356c",
+    "afterSha256": "422cb7660b96f5cdb8b9839b7dcaab1056253b64580c3237fa694bae41082ea6",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/static.json",
+    "beforeSha256": "f80287ae3d83bd058add2bb41a00dcb579e2b938ad75389cc74df9fdb0d89433",
+    "afterSha256": "50dd2dd64f4521d153259c7e36a3304cca808c08450790fd18bb0e43541a601d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/static.json.sources.json",
+    "beforeSha256": "fb0af0c09cbe002782d2e5479c46df58d8eb0f376f159afe38fa7fa6cf40d06f",
+    "afterSha256": "1ca9ada41a3dcb69e6fde0164a6d5f8aef9b5b9d8e23f42c66fb356c8a194025",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/native/report.json",
+    "beforeSha256": "8f52a55ed2596098ad2138df68ee86a332cf978a1e1254d9cd7c1e14a2104d12",
+    "afterSha256": "11f5157a16eeb30a0032d1bfd1ff1c8bc548d0a9fbe40cb56cae7f1d48711e4b",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/fit/intake-provenance.json",
+    "beforeSha256": "e225fb28bb7106766b51cb8a66c713567fdc7e4f45155b4e5825a171b430efb5",
+    "afterSha256": "fd7d3a5d760621160599048f11cd875358da926240af0ad631ee686d04d70d82",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/static.json",
+    "beforeSha256": "592ea5cf3c4f2f02464efa2dfa6235269079d5a08dc613aeeaf142de89036dcd",
+    "afterSha256": "b69238e6ffd74908a4baa3e8eca7ba9bb6c5097181bc186359feabec0e486626",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/static.json.sources.json",
+    "beforeSha256": "dcccda9c3bc4605170c5c973ddcd4380d3c4bd69f44943fceb2422e6f6a2703b",
+    "afterSha256": "5a051df44c1e0460f2f4b58729a61a99941fafe814b3f486206d47d09c454fac",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/native/report.json",
+    "beforeSha256": "95c74040aec4747224ab2e5fab55067b4b7563886c1e418e583ebd42049f6f98",
+    "afterSha256": "b78ffb3e2aeea30d9230fbf2401c21d49653664acf179aee1eb97c639a2f06dc",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/static.json",
+    "beforeSha256": "26d82b030f3fcfd77f14b0bd74f3f7dcc4768d60ee9bc005f03e5bcb51b4df32",
+    "afterSha256": "81fc3f412d35f8684e6c201dde296fe0ad34c85318d53dbcce5026a7e1571f7a",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/static.json.sources.json",
+    "beforeSha256": "32cc18ef697f2d91d9d44752ff70858e1313dc4d9f999e621b131295afca3438",
+    "afterSha256": "2819585560d62580b402a1c928c33be028fb5b282e2d431f28bb9f0bff760f5c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/native/report.json",
+    "beforeSha256": "6f2e4e844d889a243f716f64ed4c72161d4dc313a14de37e917d7f6cf519bc40",
+    "afterSha256": "b0fa0c069ba4c492263d3e8c3b45b6035ab13f5020366d88e531387092e19560",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/fit/intake-provenance.json",
+    "beforeSha256": "ffa89b2beaadd0b9922c1c97e3503dcfda359d62269bd784ea77468bc304603e",
+    "afterSha256": "fb0891893dc385b728eb4f448283c8490841528b520f0f8ea837add31c87fcfa",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215springtail/g2c95-23-springtail/intake.log",
+    "beforeSha256": "d8ebaf18ffde818b91f54f1e3a0a43d92f82712e6042249eeef34dce11c9fd04",
+    "afterSha256": "3b2ee7a9a3de101c0e9f3f7c47c444d69ac52710fab8214556812b3814053516",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215springtail/g2c95-23-springtail/static.json",
+    "beforeSha256": "c98f7e50f6df7b66975c2db216c4b3af4bd0cc606927de77cd6074a66e5b8635",
+    "afterSha256": "23c18e1721932b8abae0adac1a95ae1757e7b7495951cc9dc6d23cbb0a41a562",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215springtail/g2c95-23-springtail/static.json.sources.json",
+    "beforeSha256": "4b2ed2187e20cbc446286cad2700357e56f36ad7259d39892f260ddd415c0019",
+    "afterSha256": "4910783ac77c75b23b0a49b1bc02f75d23808dc8584a55ff5251b75d0777784f",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215springtail/g2c95-23-springtail/fit/intake-provenance.json",
+    "beforeSha256": "bb78fe62955baea30b0f1826864a4a82e3f7588bcb36f0a951815fb8972ac442",
+    "afterSha256": "504d81bf88dcc629062efdcfa57085b62c13127878955a4b412f3c1f02763010",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215fishdefault/c203creaturesupplyb-17-arapaima-framing02/intake.log",
+    "beforeSha256": "06a794cb540f71146b48e0268eed5feda1df7b7f1d1fb468d4e138779d9afac1",
+    "afterSha256": "390701fb19f1cec75c9d326df5e8f124de0df5fd0f456dd67b84565ae871bd7e",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215fishdefault/c203creaturesupplyb-17-arapaima-framing02/static.json",
+    "beforeSha256": "7f563bd3c739546bdc2af6018c1b7ca8a9c36898ac5448623c3073361db701e1",
+    "afterSha256": "f0b6b031be07f1dc39b28f9b155a2e1988a14130c29eecc96748edddb9e691ec",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215fishdefault/c203creaturesupplyb-17-arapaima-framing02/static.json.sources.json",
+    "beforeSha256": "d4376126f745feb6b056533f69af8e8c5bb0a86d0c3191e25175c99800e1d017",
+    "afterSha256": "88766040844e4d1a6674792213ac3d9ea74835e43e912b0e8845cb1f6472350d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c215fishdefault/c203creaturesupplyb-17-arapaima-framing02/fit/intake-provenance.json",
+    "beforeSha256": "68af757378b98e046e4582394c4f978b8878868015c4f9edaa59b4b1ba8f5fbe",
+    "afterSha256": "dd0dc957a6ee7913f46668921cfe2425f7cbcc8472b756c4b0dc41e52797a74d",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault/summary.json",
+    "beforeSha256": "c49e305c46c36e64ea318bcd12dadc0cdff2ac4d68e020498497136fab5bc528",
+    "afterSha256": "2768957513b5858210a09040135190aff255a1154fe0a28086b0cf5b66bc7cc3",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault/fish-seams.log",
+    "beforeSha256": "8794c92b040ce244ea389de46c75bde61bd8891194a5bb91f6e6fe996b586d49",
+    "afterSha256": "154e9fa33547358541aeb7749deffae4c793865575084a1288d1891a17e0352c",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault-fishseams/summary.json",
+    "beforeSha256": "73267127aee1a27afaffef04737276de700ccb74d17d2c2b8f679e31820d5c98",
+    "afterSha256": "e11171d81a3f48f1bc875b00ae1c435f3c76bf7656fa7df18f0e71d186dbc2b4",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault-fishseams/c203creaturesupplyb-17-arapaima-framing02/static.json",
+    "beforeSha256": "626cea741d25d14ae551e51462c414254d86492b9caea00608745853ed32a9f2",
+    "afterSha256": "13468357b22d22184262f0a281045d7c57ef79b2cd741c1f9dfbcb0498862363",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault-fishseams/c203creaturesupplyb-17-arapaima-framing02/static.json.sources.json",
+    "beforeSha256": "dacb185384f2290d733fc79bbaf451168344210d3756cb1213b4026e28db68e0",
+    "afterSha256": "5196f4ccb1d846c4c48656da17959a6e9946212b195b3ebb9461a83e9dc3a601",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault-fishseams/c203creaturesupplyb-17-arapaima-framing02/receipt.json",
+    "beforeSha256": "53a286ed8b2cb618350badec1b3e23f859a629c24ae269b2a8add9431747104e",
+    "afterSha256": "ad4f28665ff69b65651fd6f662892a8811ae78e1d601d25815f3137e713640ec",
+    "change": "Home prefix transport only; native captured-source hashes verified before normalization."
+  }
+]

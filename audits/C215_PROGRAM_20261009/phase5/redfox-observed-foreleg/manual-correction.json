@@ -1,0 +1,39 @@
+{
+  "schema": "cf.c215-source-landmark-correction/v1",
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-14-red-fox/packet",
+  "masterSha256": "33adca09e84ff407eef260aab716d6a0d2af8d8ea882133d70e240d5aaa45e10",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Near forelimb elbow lies on the black upper foreleg around830,694; wrist is at the lower leg/paw junction around805,849; planted paw centre lies forward at825,869. The transferred ankle had been around807,804, substantially above the observed wrist, leaving a long artificial painted-foot offset. Only these three independently observed points change; all other automatic transferred landmarks and ownership polygons retain their provenance.",
+  "before": {
+    "foreNearKnee": [
+      848,
+      657
+    ],
+    "foreNearAnkle": [
+      807,
+      804.3
+    ],
+    "foreNearPaw": [
+      806.3,
+      855
+    ]
+  },
+  "after": {
+    "foreNearKnee": [
+      830,
+      694
+    ],
+    "foreNearAnkle": [
+      805,
+      849
+    ],
+    "foreNearPaw": [
+      825,
+      869
+    ]
+  },
+  "sourcePixelsEdited": false,
+  "limitsChanged": false,
+  "status": "OBSERVATION_ONLY_REQUIRES_PIXEL_STATIC_NATIVE_CHECKS"
+}

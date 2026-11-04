@@ -1,0 +1,5 @@
+{
+  "fit": "audits/C215_PROGRAM_20261009/phase5/redfox-fit01",
+  "sourceCorrection": "audits/C215_PROGRAM_20261009/phase5/redfox-observed-foreleg/manual-correction.json",
+  "static": "audits/C215_PROGRAM_20261009/phase5/redfox-static01.json"
+}

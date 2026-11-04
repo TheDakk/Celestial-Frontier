@@ -1,0 +1,43 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Auk",
+      "dn": "Auk",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Auk",
+      "dn": "Auk",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Auk",
+      "dn": "Auk",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Auk",
+      "dn": "Auk",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

@@ -1,0 +1,254 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  01:32:00
+   Duration  300ms (transform 123ms, setup 0ms, import 161ms, tests 22ms, environment 0ms)
+
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/axial-faint.test.ts (10 tests | 8 failed) 1314ms
+   × removes the reproduced 'hawk' nape/skull paint separation without changing its fit 275ms
+   × removes the reproduced 'crow' nape/skull paint separation without changing its fit 33ms
+   × removes the reproduced 'snowy-owl' nape/skull paint separation without changing its fit 36ms
+   × removes the reproduced 'capuchin' nape/skull paint separation without changing its fit 17ms
+   × preserves every captured non-faint canonical action and every explicit editor timeline 167ms
+   × preserves 'hawk' wing/tail geometry during the faint transition 342ms
+   × preserves 'crow' wing/tail geometry during the faint transition 119ms
+   × preserves 'snowy-owl' wing/tail geometry during the faint transition 161ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'hawk' nape/skull paint separation without changing its fit
+ FAIL  apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'crow' nape/skull paint separation without changing its fit
+ FAIL  apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'snowy-owl' nape/skull paint separation without changing its fit
+AssertionError: expected [ { partId: 'wingFar', …(15) }, …(4) ] to deeply equal [ { partId: 'wingFar', …(15) }, …(4) ]
+
+- Expected
++ Received
+
+@@ -10,28 +10,10 @@
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+        },
+        {
+-         "ease": "ease-in",
+-         "ms": 294,
+-         "t": 0.5653846153846154,
+-         "value": 0,
+-       },
+-       {
+-         "ease": "ease-out",
+-         "ms": 580,
+-         "t": 1.1153846153846154,
+-         "value": -0.6544984694978735,
+-       },
+-       {
+-         "ease": "sine-in-out",
+-         "ms": 616,
+-         "t": 1.1846153846153846,
+-         "value": -0.5235987755982988,
+-       },
+-       {
+          "ease": "ease-out",
+          "ms": 616,
+          "t": 1,
+          "value": 0,
+        },
+@@ -59,28 +41,10 @@
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+        },
+        {
+-         "ease": "ease-in",
+-         "ms": 354,
+-         "t": 0.6807692307692308,
+-         "value": 0,
+-       },
+-       {
+-         "ease": "ease-out",
+-         "ms": 640,
+-         "t": 1.2307692307692308,
+-         "value": -0.7406741013150935,
+-       },
+-       {
+-         "ease": "sine-in-out",
+-         "ms": 712,
+-         "t": 1.3692307692307693,
+-         "value": -0.6108652381980153,
+-       },
+-       {
+          "ease": "ease-out",
+          "ms": 712,
+          "t": 1,
+          "value": 0,
+        },
+@@ -105,31 +69,13 @@
+      "keys": [
+        {
+          "ease": "ease-out",
+          "ms": 0,
+          "t": 0,
+-         "value": 0,
+-       },
+-       {
+-         "ease": "ease-in",
+-         "ms": 294,
+-         "t": 0.5653846153846154,
+          "value": 0,
+-       },
+-       {
+-         "ease": "ease-out",
+-         "ms": 580,
+-         "t": 1.1153846153846154,
+-         "value": -0.6544984694978735,
+        },
+        {
+-         "ease": "sine-in-out",
+-         "ms": 616,
+-         "t": 1.1846153846153846,
+-         "value": -0.5235987755982988,
+-       },
+-       {
+          "ease": "ease-out",
+          "ms": 616,
+          "t": 1,
+          "value": 0,
+        },
+@@ -154,29 +100,11 @@
+      "keys": [
+        {
+          "ease": "ease-out",
+          "ms": 0,
+          "t": 0,
+-         "value": 0,
+-       },
+-       {
+-         "ease": "ease-in",
+-         "ms": 354,
+-         "t": 0.6807692307692308,
+          "value": 0,
+-       },
+-       {
+-         "ease": "ease-out",
+-         "ms": 640,
+-         "t": 1.2307692307692308,
+-         "value": -0.7406741013150935,
+-       },
+-       {
+-         "ease": "sine-in-out",
+-         "ms": 712,
+-         "t": 1.3692307692307693,
+-         "value": -0.6108652381980153,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 712,
+          "t": 1,
+@@ -203,29 +131,11 @@
+      "keys": [
+        {
+          "ease": "ease-out",
+          "ms": 0,
+          "t": 0,
+-         "value": 0,
+-       },
+-       {
+-         "ease": "ease-in",
+-         "ms": 294,
+-         "t": 0.5653846153846154,
+          "value": 0,
+-       },
+-       {
+-         "ease": "ease-out",
+-         "ms": 580,
+-         "t": 1.1153846153846154,
+-         "value": 0.4363323129985824,
+-       },
+-       {
+-         "ease": "sine-in-out",
+-         "ms": 616,
+-         "t": 1.1846153846153846,
+-         "value": 0.3490658503988659,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 616,
+          "t": 1,
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:31:169
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'capuchin' nape/skull paint separation without changing its fit
+AssertionError: expected [ …(3) ] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+@@ -7,14 +7,14 @@
+    },
+    {
+      "ease": "ease-in",
+      "ms": 234,
+      "t": 0.45,
+-     "value": 0.5235987755982988,
++     "value": 0,
+    },
+    {
+      "ease": "ease-out",
+      "ms": 520,
+      "t": 1,
+-     "value": 0.6981317007977318,
++     "value": 0,
+    },
+  ]
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:32:203
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves every captured non-faint canonical action and every explicit editor timeline
+AssertionError: expected '{"kind":"motion-timeline","actionId":…' to be '{"kind":"motion-timeline","actionId":…' // Object.is equality
+
+Expected: "{"kind":"motion-timeline","actionId":"victory","family":"victory","loop":false,"seed":470008303,"recipeHash":"4275e4cd5949666e1b7482000888319b14a3914b472530598e8c5f4792b96881","massClass":"medium","limitsRad":{"root":{"min":-0.5235987755982988,"max":0.5235987755982988},"pelvis":{"min":-0.4363323129985824,"max":0.4363323129985824},"spine":{"min":-0.5235987755982988,"max":0.5235987755982988},"chest":{"min":-0.4363323129985824,"max":0.4363323129985824},"neck":{"min":-0.6108652381980153,"max":0.6108652381980153},"head":{"min":-0.6981317007977318,"max":0.6981317007977318},"jaw":{"min":-0.6108652381980153,"max":0.08726646259971647},"armFarShoulder":{"min":-1.7453292519943295,"max":1.7453292519943295},"armFarElbow":{"min":-1.9198621771937625,"max":1.9198621771937625},"armFarHand":{"min":-1.0471975511965976,"max":1.0471975511965976},"armNearShoulder":{"min":-1.7453292519943295,"max":1.7453292519943295},"armNearElbow":{"min":-1.9198621771937625,"max":1.9198621771937625},"armNearHand":{"min":-1.0471975511965976,"max":1.0471975511965976},"legFarHip":{"min":-1.3962634015954636,"max":1.3962634015954636},"legFarKnee":{"min":-1.9198621771937625,"max":1.9198621771937625},"legFarFoot":{"min":-0.8726646259971648,"max":0.8726646259971648},"legNearHip":{"min":-1.3962634015954636,"max":1.3962634015954636},"legNearKnee":{"min":-1.9198621771937625,"max":1.9198621771937625},"legNearFoot":{"min":-0.8726646259971648,"max":0.8726646259971648},"tail0":{"min":-0.6981317007977318,"max":0.6981317007977318},"tail1":{"min":-0.8726646259971648,"max":0.8726646259971648},"tail2":{"min":-0.8726646259971648,"max":0.8726646259971648}},"bodyMs":600,"durationMs":984,"phases":[["rear",210],["toss",150],["settle",240]],"tracks":{"root":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"pelvis":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"spine":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.3141592653589793,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.3141592653589793,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"chest":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.17453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.17453292519943295,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.13962634015954636,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.20943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"head":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.20943951023931956,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.4886921905584123,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"jaw":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.20943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarShoulder":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-1.7453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-1.7453292519943295,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarElbow":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.6981317007977318,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.7853981633974483,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarHand":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.3490658503988659,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.4363323129985824,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearShoulder":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-1.7453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-1.7453292519943295,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearElbow":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.6981317007977318,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.7853981633974483,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearHand":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.3490658503988659,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.4363323129985824,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarHip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearHip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail0":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.20943951023931956,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.2792526803190927,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail1":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.17453292519943295,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.20943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail2":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.10471975511965978,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.13962634015954636,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"root":{"dx":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"dy":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.06,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.064,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"secondary":[{"partId":"tail","joint":"tail0","driver":"pelvis","order":0,"lagMs":80,"overshoot":0.2,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":290,"t":0.48333333333333334,"value":-0.25132741228718347,"ease":"ease-out"},{"ms":338,"t":0.5633333333333334,"value":-0.20943951023931956,"ease":"sine-in-out"},{"ms":440,"t":0.7333333333333333,"value":-0.33510321638291124,"ease":"back-out"},{"ms":488,"t":0.8133333333333334,"value":-0.2792526803190927,"ease":"sine-in-out"},{"ms":680,"t":1.1333333333333333,"value":0,"ease":"back-out"},{"ms":728,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tail","joint":"tail1","driver":"pelvis","order":1,"lagMs":160,"overshoot":0.17,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":370,"t":0.6166666666666667,"value":-0.20420352248333654,"ease":"ease-out"},{"ms":466,"t":0.7766666666666666,"value":-0.17453292519943295,"ease":"sine-in-out"},{"ms":520,"t":0.8666666666666667,"value":-0.24504422698000386,"ease":"back-out"},{"ms":616,"t":1.0266666666666666,"value":-0.20943951023931956,"ease":"sine-in-out"},{"ms":760,"t":1.2666666666666666,"value":0,"ease":"back-out"},{"ms":856,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tail","joint":"tail2","driver":"pelvis","order":2,"lagMs":240,"overshoot":0.13999999999999999,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":450,"t":0.75,"value":-0.11938052083641214,"ease":"ease-out"},{"ms":594,"t":0.99,"value":-0.10471975511965978,"ease":"sine-in-out"},{"ms":600,"t":1,"value":-0.15917402778188283,"ease":"back-out"},{"ms":744,"t":1.24,"value":-0.13962634015954636,"ease":"sine-in-out"},{"ms":840,"t":1.4,"value":0,"ease":"back-out"},{"ms":984,"t":1,"value":0,"ease":"ease-out"}]}],"deform":{"squash":0,"stretch":0},"hitstopMs":0,"luminousPulseMs":0,"clamped":[],"notes":["earth species \"Capuchin\" mass uncalibrated (medium); gait from physical habitat/anatomy","physical realm: exact-name Earth fauna presentation profile","materials: record surface \"fur\" wins over genome skin \"crystalline\" (observer disagreement)","leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legFar 2.4%"],"hash":"c338ddad"}"
+Received: "{"kind":"motion-timeline","actionId":"victory","family":"victory","loop":false,"seed":470008303,"recipeHash":"4275e4cd5949666e1b7482000888319b14a3914b472530598e8c5f4792b96881","massClass":"medium","limitsRad":{"root":{"min":-0.5235987755982988,"max":0.5235987755982988},"pelvis":{"min":-0.4363323129985824,"max":0.4363323129985824},"spine":{"min":-0.5235987755982988,"max":0.5235987755982988},"chest":{"min":-0.4363323129985824,"max":0.4363323129985824},"neck":{"min":-0.6108652381980153,"max":0.6108652381980153},"head":{"min":-0.6981317007977318,"max":0.6981317007977318},"jaw":{"min":-0.6108652381980153,"max":0.08726646259971647},"armFarShoulder":{"min":-1.7453292519943295,"max":1.7453292519943295},"armFarElbow":{"min":-1.9198621771937625,"max":1.9198621771937625},"armFarHand":{"min":-1.0471975511965976,"max":1.0471975511965976},"armNearShoulder":{"min":-1.7453292519943295,"max":1.7453292519943295},"armNearElbow":{"min":-1.9198621771937625,"max":1.9198621771937625},"armNearHand":{"min":-1.0471975511965976,"max":1.0471975511965976},"legFarHip":{"min":-1.3962634015954636,"max":1.3962634015954636},"legFarKnee":{"min":-1.9198621771937625,"max":1.9198621771937625},"legFarFoot":{"min":-0.8726646259971648,"max":0.8726646259971648},"legNearHip":{"min":-1.3962634015954636,"max":1.3962634015954636},"legNearKnee":{"min":-1.9198621771937625,"max":1.9198621771937625},"legNearFoot":{"min":-0.8726646259971648,"max":0.8726646259971648},"tail0":{"min":-0.6981317007977318,"max":0.6981317007977318},"tail1":{"min":-0.8726646259971648,"max":0.8726646259971648},"tail2":{"min":-0.8726646259971648,"max":0.8726646259971648}},"bodyMs":600,"durationMs":984,"phases":[["rear",210],["toss",150],["settle",240]],"tracks":{"root":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"pelvis":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"spine":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"chest":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"neck":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.020943951023931952,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.03141592653589793,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"head":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.03141592653589793,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.07330382858376185,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"jaw":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.20943951023931956,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarShoulder":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.6981317007977318,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.6981317007977318,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarElbow":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.2792526803190927,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.3141592653589793,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armFarHand":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.13962634015954636,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.17453292519943295,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearShoulder":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.6981317007977318,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.6981317007977318,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearElbow":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.2792526803190927,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.3141592653589793,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"armNearHand":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.13962634015954636,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.17453292519943295,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarHip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legFarFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearHip":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearKnee":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"legNearFoot":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail0":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.04188790204786391,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.05585053606381855,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail1":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.03490658503988659,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.04188790204786391,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"tail2":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":-0.020943951023931956,"ease":"ease-out"},{"ms":360,"t":0.6,"value":-0.027925268031909273,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"root":{"dx":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}],"dy":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":210,"t":0.35,"value":0,"ease":"ease-out"},{"ms":360,"t":0.6,"value":0,"ease":"back-out"},{"ms":600,"t":1,"value":0,"ease":"back-out"}]},"secondary":[{"partId":"tail","joint":"tail0","driver":"pelvis","order":0,"lagMs":80,"overshoot":0.2,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":290,"t":0.48333333333333334,"value":-0.05026548245743669,"ease":"ease-out"},{"ms":338,"t":0.5633333333333334,"value":-0.04188790204786391,"ease":"sine-in-out"},{"ms":440,"t":0.7333333333333333,"value":-0.06702064327658225,"ease":"back-out"},{"ms":488,"t":0.8133333333333334,"value":-0.05585053606381855,"ease":"sine-in-out"},{"ms":680,"t":1.1333333333333333,"value":0,"ease":"back-out"},{"ms":728,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tail","joint":"tail1","driver":"pelvis","order":1,"lagMs":160,"overshoot":0.17,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":370,"t":0.6166666666666667,"value":-0.04084070449666731,"ease":"ease-out"},{"ms":466,"t":0.7766666666666666,"value":-0.03490658503988659,"ease":"sine-in-out"},{"ms":520,"t":0.8666666666666667,"value":-0.049008845396000776,"ease":"back-out"},{"ms":616,"t":1.0266666666666666,"value":-0.04188790204786391,"ease":"sine-in-out"},{"ms":760,"t":1.2666666666666666,"value":0,"ease":"back-out"},{"ms":856,"t":1,"value":0,"ease":"ease-out"}]},{"partId":"tail","joint":"tail2","driver":"pelvis","order":2,"lagMs":240,"overshoot":0.13999999999999999,"damping":0.55,"squash":0,"stretch":0,"rigid":false,"quiverMs":0,"wobbleMs":0,"pulseMs":0,"kind":"tail","flutterMs":0,"keys":[{"ms":0,"t":0,"value":0,"ease":"ease-out"},{"ms":450,"t":0.75,"value":-0.023876104167282426,"ease":"ease-out"},{"ms":594,"t":0.99,"value":-0.020943951023931956,"ease":"sine-in-out"},{"ms":600,"t":1,"value":-0.03183480555637657,"ease":"back-out"},{"ms":744,"t":1.24,"value":-0.027925268031909273,"ease":"sine-in-out"},{"ms":840,"t":1.4,"value":0,"ease":"back-out"},{"ms":984,"t":1,"value":0,"ease":"ease-out"}]}],"deform":{"squash":0,"stretch":0},"hitstopMs":0,"luminousPulseMs":0,"clamped":[],"notes":["earth species \"Capuchin\" mass uncalibrated (medium); gait from physical habitat/anatomy","physical realm: exact-name Earth fauna presentation profile","materials: record surface \"fur\" wins over genome skin \"crystalline\" (observer disagreement)","leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legFar 2.4%","grounded-primate:coherent-victory-v1"],"hash":"c81a415d"}"
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:36:180
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves 'hawk' wing/tail geometry during the faint transition
+AssertionError: expected 61.4242103962806 to be less than 0.001
+ ❯ apps/game/src/motion/axial-faint.test.ts:69:43
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves 'crow' wing/tail geometry during the faint transition
+AssertionError: expected 53.98139216562248 to be less than 0.001
+ ❯ apps/game/src/motion/axial-faint.test.ts:69:43
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves 'snowy-owl' wing/tail geometry during the faint transition
+AssertionError: expected 57.70264332792162 to be less than 0.001
+ ❯ apps/game/src/motion/axial-faint.test.ts:69:43
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  8 failed | 15 passed (23)
+   Start at  01:32:00
+   Duration  1.64s (transform 439ms, setup 0ms, import 666ms, tests 2.33s, environment 0ms)

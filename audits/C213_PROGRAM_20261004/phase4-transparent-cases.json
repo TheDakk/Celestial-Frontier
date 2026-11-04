@@ -1,0 +1,13 @@
+[
+  {
+    "id": "fringe03-17-tahr",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c213fringe03/fringe03-17-tahr/fit",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213fringe03/fringe03-17-tahr/packet/master.png",
+    "masterSha256": "27c3cfa57942e0d8f5f119036a70582e505e611110e8ce8a025a96e0cc9e9959",
+    "status": "NATIVE_DIAGNOSTIC_PASS",
+    "elephant": "REFUSE: fore-far-paw paint 16%, reference57%; no retry",
+    "native": "audits/C213_PROGRAM_20261004/native-fringe03-tahr",
+    "nativeExit": 0,
+    "bindingSha256": "19b642e82d38e0be8f1c263be3cfb1a732c38541f21099a885b05204001131e4"
+  }
+]

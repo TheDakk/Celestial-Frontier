@@ -1,0 +1,134 @@
+{
+  "status": "ALL16_REFERENCED_MASTERS_PRESENT",
+  "selected": [
+    {
+      "id": "c213originals-21-auk",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/fit",
+      "recordSha256": "2ccf4b9531f99b3a047678eab89dd71579be5cff2bbcfa78d68997e0d13df1b1",
+      "bindingSha256": "1635c57e2581938ffd989e5cf5eabede27c8481888a001d2ad562672f602582f",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-21-auk/fallback-1/packet/master.png",
+      "masterSha256": "548c857828eecc4f19f69595ff3b158ce0c636439ce7185bffc49e1f3f3e319e"
+    },
+    {
+      "id": "c213originals-28-kookaburra",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/fit",
+      "recordSha256": "11b55bcedaf3fa439a0d1cb9103cab18b1c4614574893660079e056e6bc88f51",
+      "bindingSha256": "441ff67833ec2433a5a67f29f1181bd099dd393619d50a2f54a41a8f216f8296",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-28-kookaburra/packet/master.png",
+      "masterSha256": "842cf0005e4ef524453cf6de0643832e2c62a8af5b71bddcb1055004a26727b3"
+    },
+    {
+      "id": "c213originals-29-osprey",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/fit",
+      "recordSha256": "5ada0e51f4774c1d0a36b1f2ca721350560f30196e9fe90d6db59c18fab3bbb7",
+      "bindingSha256": "34c8204950cd1aab5f15d9391e2fee8fe6e89813e827f484872cfa5164887cf2",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-29-osprey/fallback-2/packet/master.png",
+      "masterSha256": "64247913aa67722600b5ebfb87875470691e85776f7918462089a7edebd62dc3"
+    },
+    {
+      "id": "c198creaturesupplyb-07-howler-monkey",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit",
+      "recordSha256": "c6a5892c45933b2b86a213567620f00ea9449d364af1b89e622a36d42d30144c",
+      "bindingSha256": "3be858c029a910b54ebfbf4277f20a30f06e7c572f0ee8eeaa0dafb36079cdc2",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c198creaturesupplyb-07-howler-monkey/packet/master.png",
+      "masterSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05"
+    },
+    {
+      "id": "c198creaturesupplyb-11-langur",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/fit",
+      "recordSha256": "4e53b2434863e4493674053d261d76006552fa60608ae61ebbd919b7fd542f40",
+      "bindingSha256": "67e1fe0ef07f4c988c4bedbaf3c55681d99ca4a9f511558455357e9f5a01b3e5",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c198creaturesupplyb-11-langur/packet/master.png",
+      "masterSha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd"
+    },
+    {
+      "id": "c202creaturesupply-02-wild-boar",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/fit",
+      "recordSha256": "76eb3e49fb2d10349c58a88040b62d4a42fba3dd2f31dcaf2f4c56978f708d3c",
+      "bindingSha256": "c483f6d2168b58429f7d6c367d08674ec4be0a6a6442a48935300343352e58b2",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/master.png",
+      "masterSha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458"
+    },
+    {
+      "id": "c203creaturesupply-07-wild-pig",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/fit",
+      "recordSha256": "490a9592bbabc32599ceb0c2c94bf907125c002cf75feab1747e27d0c15830fb",
+      "bindingSha256": "cbd85f442b868f478af9d3f389279be0bc928be6b6f2f2a09f19ec7ba661a9b0",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/master.png",
+      "masterSha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342"
+    },
+    {
+      "id": "c203creaturesupply-10-cow",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/fit",
+      "recordSha256": "aacc57a8720ece2f76a329ca6f0b7f2333037337fe6eaf2a95c50abcd2c30db6",
+      "bindingSha256": "7339dfaea6c760709e438eb639fd2906f10c9fdcb396ab5a7353d17bf1ab1979",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-10-cow/packet/master.png",
+      "masterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011"
+    },
+    {
+      "id": "g2c95-17-nilgai",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/fit",
+      "recordSha256": "be79e417aedecfee00513cf0f728cb4598084b0b378bc8869241935948a719b7",
+      "bindingSha256": "c358a31a328e5853bdd6565d3f3dd78978bb1372e4af37531676ab00c033fe4a",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c95-17-nilgai/fallback-1/packet/master.png",
+      "masterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906"
+    },
+    {
+      "id": "c203creaturesupply-13-gerenuk",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/fit",
+      "recordSha256": "862ce83c295c3ab4a4e422ff9db0a236f89619a798b9f00b4bd3623b8d420495",
+      "bindingSha256": "ec71bdfe2c6254ce8b2653d7916e357957bf045fc929ea7a98a30c3ba9134d64",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-13-gerenuk/packet/master.png",
+      "masterSha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987"
+    },
+    {
+      "id": "c213originals-09-kinkajou",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/fit",
+      "recordSha256": "ac10304b022b363e160a33b5349179edb20c10cbbb438deed9071cc3aef1d936",
+      "bindingSha256": "e2ef2d67688b158635ae057db0636a83586ce6f2f4b8713302e6bc34c3ce0631",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-09-kinkajou/fallback-1/packet/master.png",
+      "masterSha256": "81db16a82a459aa8c3f24ca0aa93853cb56e076bef615a0fb0cf544ab7634017"
+    },
+    {
+      "id": "c202creaturesupply-12-wolverine",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/fit",
+      "recordSha256": "fe899ae597e6cd9271d665978105d57e46466460e90b1a17e68ee76ad35ef502",
+      "bindingSha256": "a2ef0b3d43b2f1f488b6d23514810d31f67389602b28d37dffec6bca4b4e970d",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-12-wolverine/packet/master.png",
+      "masterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c"
+    },
+    {
+      "id": "g2c72-12-egret",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors/g2c72-12-egret/fit",
+      "recordSha256": "c3464c0041cc0ce2c933495cfec0f623593d06dfdfa2cddc33c3386593c2c66f",
+      "bindingSha256": "9ab2b27491b6c3c63b05e9efbad8f451cea4af8de774dc46123b19cc83e1790b",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c72-12-egret/packet/master.png",
+      "masterSha256": "e09bb365089998c4983e565fffa63ca7e4dc5f9f3a3bf298bb7563a05b63ac57"
+    },
+    {
+      "id": "g2c95-23-springtail",
+      "fit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/fit",
+      "recordSha256": "5bbfadea2012f09ea6beb661f6ca6098019e66da378c93509cd64508150539fe",
+      "bindingSha256": "80eefd484b693f76ba6a9d9c839ee5f04d27eb12340d46b834a8a2ab2f66361b",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p3/g2c95-23-springtail/fallback-1/packet/master.png",
+      "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd"
+    },
+    {
+      "id": "c213originals-14-red-fox",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/fit",
+      "recordSha256": "4f530b40fccfcee7543868c17793b808851a83b09706a81a9c281a5601e7e3a7",
+      "bindingSha256": "722438743a945d5d68d39bc4637d0d420b010419aec02ec40a412590ae2b797f",
+      "master": "audits/C215_PROGRAM_20261009/phase5/redfox-observed-foreleg/master.png",
+      "masterSha256": "33adca09e84ff407eef260aab716d6a0d2af8d8ea882133d70e240d5aaa45e10"
+    },
+    {
+      "id": "g2c136targetededits-21-bee",
+      "fit": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/fit",
+      "recordSha256": "923fb2afc9e0980de14f3f33792a177e5560f75fc59e40399c4797e372eddeb3",
+      "bindingSha256": "e4343cc975a76ef6e5e0270bcdf57f6c245d4113a3828937b79e9ef9ae5bbfa2",
+      "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c136targetededits-21-bee/packet/master.png",
+      "masterSha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa"
+    }
+  ],
+  "scope": "Exact selected source integrity; held rows are not admitted"
+}

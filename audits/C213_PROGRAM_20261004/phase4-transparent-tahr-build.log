@@ -1,0 +1,8 @@
+file://~/Projects/celestial-frontier-openai-mac/audits/C213_PROGRAM_20261004/phase4-transparent-islands.mjs:55
+  if (declaration.schema !== 'cf.keyed-part-intake/v1') throw Error('Exact keyed-label fit required');
+                                                              ^
+
+Error: Exact keyed-label fit required
+    at file://~/Projects/celestial-frontier-openai-mac/audits/C213_PROGRAM_20261004/phase4-transparent-islands.mjs:55:63
+
+Node.js v26.10.0

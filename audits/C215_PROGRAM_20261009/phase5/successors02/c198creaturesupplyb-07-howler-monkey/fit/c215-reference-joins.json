@@ -1,0 +1,51 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c198creaturesupplyb-07-howler-monkey/fit",
+  "sourceBindingSha256": "d62929800c3a4ecfa2c129b59d46370446424ef95470adc633d059ee93f925a2",
+  "candidateBindingSha256": "3be858c029a910b54ebfbf4277f20a30f06e7c572f0ee8eeaa0dafb36079cdc2",
+  "paintBoundaryPairs": [
+    [
+      "arm-far-elbow",
+      "arm-near-elbow"
+    ],
+    [
+      "arm-far-elbow",
+      "body"
+    ],
+    [
+      "arm-far-elbow",
+      "neck"
+    ],
+    [
+      "arm-near-elbow",
+      "body"
+    ],
+    [
+      "arm-near-elbow",
+      "neck"
+    ],
+    [
+      "body",
+      "chest"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "body",
+      "neck"
+    ],
+    [
+      "body",
+      "tail1"
+    ],
+    [
+      "body",
+      "tail2"
+    ]
+  ],
+  "sourceMasterSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+  "sourceAtlasSha256": "49effe9fa5f6031197c2533abf5f97de459b0dece3dee64db96ac7375c01a727",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

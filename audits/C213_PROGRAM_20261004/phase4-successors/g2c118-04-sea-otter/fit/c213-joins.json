@@ -1,0 +1,23 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit",
+  "sourceBindingSha256": "c58053b907be1f6001613a7091b79d67e10135df20ea1d05b86fc35d12a66f25",
+  "candidateBindingSha256": "2bbd88ac7cc7339f74ea4c859a5ad31e0bf4b414e4f97742f438d96f736aebea",
+  "paintBoundaryPairs": [
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c",
+  "sourceAtlasSha256": "9dce7c85705c2732c36149e2c957f4b596e7f81af80b3dab28060e6ad62411dc",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

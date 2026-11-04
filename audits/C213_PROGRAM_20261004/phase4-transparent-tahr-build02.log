@@ -1,0 +1,9 @@
+file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:14
+ if(keyedLabels&&masterData.some((v,i)=>i%4===3&&v!==255))throw Error('Keyed labels require an opaque original; native alpha uses painter intake');
+                                                                ^
+
+Error: Keyed labels require an opaque original; native alpha uses painter intake
+    at buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:14:65)
+    at async file://~/Projects/celestial-frontier-openai-mac/audits/C213_PROGRAM_20261004/phase4-transparent-islands.mjs:84:18
+
+Node.js v26.10.0
