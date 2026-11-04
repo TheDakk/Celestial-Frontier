@@ -1,0 +1,22 @@
+{
+  "name": "Shark",
+  "exemplar": "Reef Shark",
+  "covers": [
+    "Reef Shark",
+    "Shark",
+    "Juvenile Shark",
+    "Great White Shark",
+    "Tiger Shark",
+    "Mako Shark",
+    "Whale Shark",
+    "Basking Shark"
+  ],
+  "bodyPlan": "fish",
+  "mustPaint": [
+    "tall triangular first dorsal; asymmetric tail with a long upper lobe",
+    "row of gill slits; crescent mouth under a conical snout",
+    "grey back over a white belly as shading",
+    "masks: striped = tiger-shark bars, spotted = whale-shark checkerboard"
+  ],
+  "why": "8 misleading. Whale and Basking Shark (giant mouths) stay caveat. Hammerhead needs its own head."
+}

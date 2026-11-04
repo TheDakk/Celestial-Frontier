@@ -1,0 +1,21 @@
+{
+  "name": "Pike",
+  "exemplar": "Pike",
+  "covers": [
+    "Pike",
+    "Gar",
+    "Barracuda",
+    "Wahoo",
+    "Remora",
+    "Mudminnow",
+    "Killifish",
+    "Icefish"
+  ],
+  "bodyPlan": "fish",
+  "mustPaint": [
+    "elongate torpedo body (aspect about 5)",
+    "long flattened toothy snout; dorsal fin set far back near the tail",
+    "plain mottled green, with no painted bean spots"
+  ],
+  "why": "3 misleading and 5 caveat. Gar (beak) stays caveat."
+}

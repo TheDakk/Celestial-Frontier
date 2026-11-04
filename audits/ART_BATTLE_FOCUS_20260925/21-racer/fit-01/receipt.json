@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "racer",
+    "parts": 13,
+    "atlasSize": {
+      "width": 629,
+      "height": 2047
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "0f5ce8046b83350ad6f4418f6b1cd69efaabb30b46d7e1321c772aceaa834351",
+    "recordRecipeHash": "ab3049f66313ddd6c6655213317d485a43fa6c9487915ceb474dd2930ce5c7a1",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "0f5ce8046b83350ad6f4418f6b1cd69efaabb30b46d7e1321c772aceaa834351",
+      "atlasSha256": "0a84839efb0850384cfed4527eb45945de805e9f482a1b9d0bfbe8d690421fe3",
+      "parts": 13,
+      "comparedChannels": 1752868,
+      "changedChannels": 0
+    },
+    "vertices": 408,
+    "partVertices": 730,
+    "parts": 13,
+    "leaves": 160,
+    "triangles": 640,
+    "ownershipEdges": 589,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "02f467e31fc1c50858585743b59d5fa5e1fcd781bf3e540a27b1f6b7d0115a2e",
+    "sourceVertices": 408,
+    "vertices": 429,
+    "sharedSupports": 112,
+    "pins": 78,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 2,
+    "observedExcludedBoundaries": 2,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 2,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "ab3049f66313ddd6c6655213317d485a43fa6c9487915ceb474dd2930ce5c7a1",
+  "bindingHash": "16543657b99bfe274d84c4c3f4c4ca30e55c5f2acc0b53e6612c18d8483b9869",
+  "masterSha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

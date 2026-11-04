@@ -1,0 +1,44 @@
+[
+  {
+    "generation": 1,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "positiveAlphaBox": [
+      21,
+      401,
+      1254,
+      860
+    ],
+    "alphaOver127Box": [
+      27,
+      531,
+      1231,
+      744
+    ],
+    "sha256": "d2ed73d1e674ee9cce44f79c30a72510bc3477b1b53b1640b8478c819a25ce8d",
+    "decision": "REJECT framing: insufficient mandated safe margins; no pixel cleanup or resize used"
+  },
+  {
+    "generation": 2,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "positiveAlphaBox": [
+      31,
+      53,
+      1213,
+      1198
+    ],
+    "alphaOver127Box": [
+      64,
+      539,
+      1206,
+      744
+    ],
+    "sha256": "25951330361e8c108485245e3f323c4f2a002157e1b0a1aecd77cb20dfe09b8d",
+    "decision": "REJECT framing: insufficient mandated safe margins; no pixel cleanup or resize used"
+  }
+]
