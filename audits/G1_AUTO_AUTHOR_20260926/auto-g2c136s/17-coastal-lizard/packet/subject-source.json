@@ -1,0 +1,82 @@
+{
+  "name": "Coastal Lizard",
+  "family": "quadruped",
+  "species": {
+    "name": "Coastal Lizard",
+    "aspect": 3.5,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "long tapering tail longer than the body",
+      "sprawling bent-elbow limbs with splayed clawed toes",
+      "scaly wedge head with a visible ear opening"
+    ],
+    "note": "Generic name - interpreted as a rock/side-blotched lizard type."
+  },
+  "genome": {
+    "seed": 3650784952,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 6,
+    "body": 9,
+    "loco": 15,
+    "trait": 15,
+    "size": 1,
+    "diet": 5,
+    "head": 2,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 13,
+    "detail": 2,
+    "accent": 8,
+    "temper": 6,
+    "sense": 0,
+    "repro": 0,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Coastal Lizard"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coastal Lizard\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3650784952\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 402,
+  "profile": {
+    "id": "lizard",
+    "names": [
+      "Monitor Lizard",
+      "Anole",
+      "Gecko",
+      "Skink",
+      "Alligator Lizard",
+      "Mountain Lizard",
+      "Tegu",
+      "Wall Lizard",
+      "Lizard",
+      "Whiptail",
+      "Agama",
+      "Iguana",
+      "Land Iguana",
+      "Coastal Lizard",
+      "Komodo Dragon",
+      "Gila Monster",
+      "Frilled Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Reptile-specific absence and skin declarations required."
+  }
+}

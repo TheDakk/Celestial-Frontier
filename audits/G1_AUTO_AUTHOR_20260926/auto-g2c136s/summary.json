@@ -1,0 +1,342 @@
+[
+ {
+  "id": "01-caiman",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 15.5% of the paint lies away from the body and in no part (reference 9.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-crocodile",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 9.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-alligator",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "INTAKE_REFUSED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "04-gharial",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-base",
+    "ear-far-tip",
+    "ear-far-base"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-monitor-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part jaw (jaw) covers 9% paint (reference 31%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-anole",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)",
+   "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 10%)",
+   "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-gecko",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": []
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "08-skink",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)",
+   "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 48%)",
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 20% paint (reference 87%)",
+   "unexplained-anatomy: 14.2% of the paint lies away from the body and in no part (reference 8.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-alligator-lizard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": []
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "10-mountain-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-near-paw (hindNearPaw) covers 11% paint (reference 40%)",
+   "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 27% paint (reference 80%)",
+   "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 46%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-tegu",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "12-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 19% paint (reference 83%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-whiptail",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)",
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+   "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 2.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-agama",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-iguana",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-land-iguana",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-coastal-lizard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": []
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "18-komodo-dragon",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "19-gila-monster",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 15.0% of the paint lies away from the body and in no part (reference 9.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-frilled-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 8.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-chameleon",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 14.5% of the paint lies away from the body and in no part (reference 5.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-horned-lizard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+   ]
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "23-marine-iguana",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 46%)",
+   "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 86%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-newt",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "reviewedPresence": {
+   "absent": [
+    "external-ears"
+   ],
+   "removedParts": []
+  },
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ }
+]

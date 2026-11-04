@@ -1,0 +1,70 @@
+{
+  "name": "Mako Shark",
+  "family": "fish",
+  "species": {
+    "name": "Mako Shark",
+    "aspect": 4.5,
+    "headFrac": 0.22,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "sharply pointed conical snout",
+      "nearly symmetric crescent tail with a keeled stalk",
+      "large black eye and metallic indigo-blue back"
+    ]
+  },
+  "genome": {
+    "seed": 2192034820,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 6,
+    "body": 13,
+    "loco": 17,
+    "trait": 3,
+    "size": 3,
+    "diet": 4,
+    "head": 2,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 14,
+    "detail": 9,
+    "accent": 13,
+    "temper": 8,
+    "sense": 4,
+    "repro": 2,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mako Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mako Shark\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2192034820\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "index": 481,
+  "profile": {
+    "id": "predatory-shark",
+    "names": [
+      "Juvenile Shark",
+      "Shark",
+      "Reef Shark",
+      "Hammerhead Shark",
+      "Great White Shark",
+      "Tiger Shark",
+      "Mako Shark"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

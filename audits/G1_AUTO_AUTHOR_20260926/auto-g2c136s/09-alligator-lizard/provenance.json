@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "09-alligator-lizard",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "bd3d7db69693b6c8cec7ad746c58e0936d345a24f71acfbdce2b55cb8c700598",
+ "subjectSourceSha256": "c677cfb939b65289675d3005e42f196dd4145980a1ed149a269a95ece0e0d973",
+ "identity": {
+  "name": "Alligator Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Alligator Lizard\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1726351456\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 1726351456,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wall-lizard",
+  "authoringSha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca",
+  "masterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0275,
+     "class": "front",
+     "attach": {
+      "x": 329,
+      "y": 196.5,
+      "relX": 1.01,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2622,
+     "class": "rear",
+     "attach": {
+      "x": 218,
+      "y": 212.5,
+      "relX": -0.01,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0473,
+     "class": "limb-down",
+     "attach": {
+      "x": 229.5,
+      "y": 219,
+      "relX": 0.1,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0278,
+     "class": "limb-down",
+     "attach": {
+      "x": 294,
+      "y": 219,
+      "relX": 0.69,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0292,
+     "class": "limb-down",
+     "attach": {
+      "x": 278,
+      "y": 221,
+      "relX": 0.54,
+      "relY": 1.03
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "wall-lizard",
+   "byClass": {
+    "front": 3,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

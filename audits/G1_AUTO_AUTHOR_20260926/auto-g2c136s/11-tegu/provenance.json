@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "11-tegu",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4adc0d8c91148320337bd67d6b6a9515a5dbc16ef063d896a3d887c4780c8026",
+ "subjectSourceSha256": "37eff1e4f0128dc5e5238a0e590153c99f8807c2419063f035bfd479dbcbfaa9",
+ "identity": {
+  "name": "Tegu",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tegu\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3533430200\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 3533430200,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0317,
+     "class": "front",
+     "attach": {
+      "x": 316,
+      "y": 186.5,
+      "relX": 1.01,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2584,
+     "class": "rear",
+     "attach": {
+      "x": 201.4,
+      "y": 213.8,
+      "relX": 0.02,
+      "relY": 0.8
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0362,
+     "class": "limb-down",
+     "attach": {
+      "x": 284.5,
+      "y": 220,
+      "relX": 0.74,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0425,
+     "class": "limb-down",
+     "attach": {
+      "x": 265,
+      "y": 221,
+      "relX": 0.57,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0285,
+     "class": "limb-down",
+     "attach": {
+      "x": 228.1,
+      "y": 223.9,
+      "relX": 0.25,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
