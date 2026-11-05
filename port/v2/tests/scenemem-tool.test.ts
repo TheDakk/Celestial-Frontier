@@ -1609,7 +1609,7 @@ describe('scene-memory terminal verifier', () => {
     expect(detached.errors).toContain(
       'contract input is detached from the collected profile evidence',
     );
-  });
+  }, 30_000); /* 3.6 s of a 5 s budget on the hosted runner (PR #46 run 2), over it under x64 emulation; the assertion is unchanged */
 
   it('negative control: a cross-profile initial snapshot cannot launder v6 growth', () => {
     const report = currentReportFixture();
