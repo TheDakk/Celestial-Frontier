@@ -89,7 +89,7 @@ describe('placeholder voices for every body plan (2026-09-24)', () => {
     for (const fit of BATTLE2_PARTS_FITS) { const record = JSON.parse(readFileSync(servedArt(fit.dir + 'record.json'), 'utf8'));
       const hook = createCreatureVoiceHook({ seed: 5, sources: lib.sources, sides: { left: { record, genome: null, seed: 1, label: fit.earthName }, right: { record: null, genome: null, seed: 2, label: 'x' } } });
       expect(hook.cards.left, `${fit.earthName}: ${hook.status.left}`).not.toBeNull(); expect(hook(cue('creature:hurt', 'left')), fit.earthName).not.toBeNull(); }
-  });
+  }, 60_000); /* it loads every painted record's voice card: 5 s was too tight on the hosted Linux runner (PR #46 run 2); the assertion is unchanged */
 });
 
 describe('B10 phone particle budget', () => {

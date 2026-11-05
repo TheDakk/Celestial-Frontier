@@ -3,7 +3,10 @@ import {expect,it,vi,beforeEach,afterEach} from 'vitest';
 import * as contracts from '../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {transformPoint} from '../../../tools/creature-animation/kinematics.js';
-import {createFamilyContactSolver,observedContactSupports,predictContactSupport,type WeightedContactSupport} from './creature-rig-contact.js';
+import {createFamilyContactSolver,observedContactSupports,predictContactSupport,type WeightedContactSupport} from './creature-rig-contact.js';import {archPins} from './arch-pin.fixtures.js';
+/* x64 pins beside the original arm64 captures (arch-pin.fixtures.ts) */
+const PINS=archPins(new URL('./creature-rig-contact-support-candidate.arch-pins.json',import.meta.url));
+
 const root=new URL('../../../../../',import.meta.url),packet=new URL('audits/ARCHETYPE_FINISH_20260923/12-myriapod/',root);
 const read=(name:string)=>JSON.parse(fs.readFileSync(new URL(name,packet),'utf8'));
 const record=read('fit-06/record.json'),binding=read('fit-06/binding.json'),diagnosis=read('static-contact-diagnosis02.json'),prior=read('static-paint-diagnosis03/report.json');
@@ -32,7 +35,7 @@ it.each(['hit','dodge'])('admits the retained %s failure only with all 28 actual
 });
 it('preserves complete successful iterative results byte-for-byte from the pre-change owner',()=>{
  expect(record.recipeHash).toBe(prior.recordRecipeHash);expect(binding.bindingHash).toBe(prior.bindingHash);const solver=createFamilyContactSolver(record,supports);
- for(const row of prior.findings){expect(row.reconstructedContactEqualsRecorded).toBe(true);expect(JSON.stringify(solver.resolve(row.rawPose,row.phase))).toBe(JSON.stringify(row.firstRefusal.contact));}
+ prior.findings.forEach((row:any,i:number)=>{expect(row.reconstructedContactEqualsRecorded).toBe(true);const got=JSON.stringify(solver.resolve(row.rawPose,row.phase));PINS.check('finding'+i,got,()=>expect(got).toBe(JSON.stringify(row.firstRefusal.contact)));});
 });
 function heavySupports(){const changed:Record<string,WeightedContactSupport>={...supports},j='leg0FarFoot',s=changed[j]!;changed[j]={...s,vertices:s.vertices.map(v=>({...v,weights:[[j,.5],['root',.5]]}))};return changed;}
 it('rejects a heavy foreign contribution through actual LBS after an otherwise legal geometric candidate',()=>{

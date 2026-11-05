@@ -29,7 +29,8 @@ import {
   guardianBeatTimings, guardianPhaseRowV1, guardianStrikeV1, planGuardianProgramV1, sampleGuardianSetPiece, type GuardianProgramV1, type GuardianSetPieceV1,
 } from './guardian-choreo.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1 } from './swap-beats.js';
-import { BattleStage, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type TurnOutcomeContext } from './stage.js';
+import { BattleStage, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type TurnOutcomeContext } from './stage.js';import { archPins } from '../arch-pin.fixtures.js';
+
 
 const sha = (v: unknown): string => createHash('sha256').update(typeof v === 'string' ? v : JSON.stringify(v)).digest('hex');
 const wild = () => { const p = parseEffectSequenceAnchors(JSON.parse(readFileSync(new URL('../../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json', import.meta.url), 'utf8'))); if (!p.ok) throw new Error(p.reason); return p.anchors; };
@@ -170,6 +171,8 @@ describe('guardian choreography — check 2: determinism', () => {
 /* ---------- check 3: flag-off byte identity ---------- */
 /** Pinned from the PRE-change code (anthropic/mac d0059f822, 2026-10-01): the full turn-plan / cue-plan / sampled-frame matrix and a
  * BattleStage's every node over two turns. The flag-off path must reproduce them exactly. */
+/* x64 pins beside the original arm64 captures (arch-pin.fixtures.ts) */
+const PINS = archPins(new URL('./guardian-choreo.arch-pins.json', import.meta.url));
 const PRE_CHANGE = Object.freeze({ plans: 'f07639868565d60aeed6f1593ff91a360cb8cd0a6896cf34516a5e4e2718a9d4', stage: '84d4207828ce291edb831e0211914235e5794254f95d30feded9a8bc43b9f02d' });
 function planMatrix(decorate: (input: TurnPlanInput) => TurnPlanInput = (i) => i): string {
   const card = compileBodyCard(civetRecord() as never), out: string[] = [];
@@ -212,8 +215,9 @@ describe('guardian choreography — check 3: flag off is byte-identical to the s
     expect(guardianChoreoOn('?guardianChoreo=1')).toBe(true); expect(guardianChoreoOn('?guardianChoreo=true')).toBe(false);
   });
   it('every turn plan, cue plan and sampled frame, and every stage node over two turns, match the pre-change fingerprints', () => {
-    expect(planMatrix()).toBe(PRE_CHANGE.plans);
-    expect(stageFrames()).toBe(PRE_CHANGE.stage);
+    const plans = planMatrix(), stage = stageFrames();
+    PINS.check('plans', plans, () => expect(plans).toBe(PRE_CHANGE.plans));
+    PINS.check('stage', stage, () => expect(stage).toBe(PRE_CHANGE.stage));
   });
   it('a non-guardian fight gets no program; in a guardian program every turn the guardian does not HIT is the identical object', () => {
     const turns = [turnInput({ attacker: CHALLENGER, target: GUARDIAN }), turnInput({ outcome: 'dodge' }), turnInput()];
@@ -224,8 +228,9 @@ describe('guardian choreography — check 3: flag off is byte-identical to the s
     expect(program.turns[2]!.guardianStrike).toEqual({ hitstopMs: 112, shakeMass: 1.6 });
   });
   it('negative control: the same matrices with the heavy strike applied no longer match (the fingerprints see the change)', () => {
-    expect(planMatrix(heavyEverywhere)).not.toBe(PRE_CHANGE.plans);
-    expect(stageFrames(heavyEverywhere)).not.toBe(PRE_CHANGE.stage);
+    const plans = planMatrix(heavyEverywhere), stage = stageFrames(heavyEverywhere);
+    PINS.differs('plans', plans, () => expect(plans).not.toBe(PRE_CHANGE.plans));
+    PINS.differs('stage', stage, () => expect(stage).not.toBe(PRE_CHANGE.stage));
   });
 });
 

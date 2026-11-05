@@ -9,7 +9,10 @@ import {castAttackOf,CAST_ATTACK_NOTE} from './cast-attack.js';
 import {attackRepertoire,compileAnatomyAttack} from '../anatomy-attacks.js';
 import {buildTurnPlan,sampleClip} from '../battle2/choreography.js';
 import {familyContractForRecord} from '../../../../tools/creature-animation/family-contracts.mjs';
-import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';
+import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';import {archPins} from '../arch-pin.fixtures.js';
+/* x64 pins beside the original arm64 captures (arch-pin.fixtures.ts) */
+const PINS=archPins(new URL('./small-crustacean-attack.arch-pins.json',import.meta.url));
+
 const root=new URL('../../../../../../',import.meta.url),fit='audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01',read=(p:string)=>JSON.parse(fs.readFileSync(new URL(p,root),'utf8'));
 const record=read(fit+'/record.json'),baseline=read('audits/C198_PRAWN_ATTACK_20261003/baseline.json');
 /* C266 D33 landed Mussel hashes (valve pair mirrored to open; cast keeps its captured 86871751). */
@@ -48,9 +51,10 @@ it('actual source and mirrored source gather, extend tips, return exactly, keep 
  }
 });
 it('unchanged Prawn non-melee curves and all prior-family outcomes remain byte-identical',()=>{
- const c=card();for(const [id,tl]of Object.entries(baseline.prior))expect(JSON.stringify(buildTimeline(c,id,c.identity.seed))).toBe(JSON.stringify(tl));
- for(const row of baseline.unchanged){const c=compileBodyCard(row.record,row.record.genome);for(const[id,tl]of Object.entries(row.timelines)){
+ const c=card();for(const [id,tl]of Object.entries(baseline.prior)){const got=JSON.stringify(buildTimeline(c,id,c.identity.seed));PINS.check('prior/'+id,got,()=>expect(got).toBe(JSON.stringify(tl)));}
+ baseline.unchanged.forEach((row:any,ri:number)=>{const c=compileBodyCard(row.record,row.record.genome);for(const[id,tl]of Object.entries(row.timelines) as [string,any][]){
   const after=buildTimeline(c,id,c.identity.seed);
+  PINS.check(`unchanged${ri}/${id}`,after,()=>{
   if(c.template.id==='insect'&&['hit','tame'].includes(id)){
    /* C234 3ae4a8380 intentionally quarters canonical source-step/reaction excursion. Independently transform only the captured affected channels; preserve every other byte. */
    const expected=structuredClone(tl) as typeof after;
@@ -73,7 +77,8 @@ it('unchanged Prawn non-melee curves and all prior-family outcomes remain byte-i
    expect(after).toEqual({...expected,tracks,notes:[...expected.notes,'bivalve:landmark-opening-sign-v1'],hash:BIVALVE_OPENING_HASH[id]});
    if(expected.tracks.valveFar!.some(k=>k.value!==0))expect(after.tracks.valveFar).not.toEqual(expected.tracks.valveFar);
   }else expect(JSON.stringify(after)).toBe(JSON.stringify(tl));
- }}
+  });
+ }});
  const idle=actionsFor(c.template.id)!.idle!;expect(smallCrustaceanAttackAction(c,idle)).toBe(idle);
  const melee=actionsFor(c.template.id)!['melee:claw']!;expect(smallCrustaceanAttackAction({...c,template:{...c.template,id:'quadruped'}},melee)).toBe(melee);
 });

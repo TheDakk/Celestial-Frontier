@@ -90,7 +90,7 @@ describe('D56: the page reads the library through the shard index (holds only th
     const byPath = (x: { path: string }, y: { path: string }) => (x.path < y.path ? -1 : x.path > y.path ? 1 : 0);
     expect(regenerated.flatMap((r) => r.body.files).sort(byPath)).toEqual([...content].sort(byPath)); // the union is every content file, exactly once
     expect(content.length).toBeGreaterThan(1000);
-  });
+  }, 120_000); /* it re-hashes every library file (~690 MiB at D60, growing with each delivery); the assertion is unchanged */
   it('refuses a shard that vouches for another bucket\'s file, and an index entry that is not a bucket (negative controls of the bucket rule)', async () => {
     const wolfShard = JSON.parse(readFileSync(LIB + 'shards/' + artLibraryGroupOfV1(WOLF_MASTER) + '.json', 'utf8')) as { schema: string; group: string; files: { path: string; bytes: number; sha256: string }[] };
     const serve = (index: unknown, shard: unknown) => { const ib = new TextEncoder().encode(JSON.stringify(index)), sb = new TextEncoder().encode(JSON.stringify(shard));
