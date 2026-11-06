@@ -10274,6 +10274,16 @@ function syncPlanetsideLayout(): void {
       || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
 }
 const surfaceSceneLayoutObserver = new ResizeObserver(syncPlanetsideLayout);
+/* The Survey card's max-height follows the measured Planetside strip, which grows as its portraits load. When the card
+   shrinks under a focused control, keep that control inside the card instead of leaving it clipped below the new bottom
+   edge (Glass large-phone capture focus, PR #46 run 5). Only an already-focused control inside the card is scrolled. */
+const surveyFocusKeeper = new ResizeObserver(() => {
+  const focused = document.activeElement;
+  if (!(focused instanceof HTMLElement) || focused === card || !card.contains(focused)) return;
+  const f = focused.getBoundingClientRect(), c = card.getBoundingClientRect();
+  if (f.top < c.top || f.bottom > c.bottom) focused.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+});
+surveyFocusKeeper.observe(card);
 for (const element of [sideEl, ...['topbar', 'searchbox', 'objchip', 'sceneactions']
   .map(id => document.getElementById(id)).filter(element => element !== null)]) {
   surfaceSceneLayoutObserver.observe(element);
