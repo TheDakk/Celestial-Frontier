@@ -1,0 +1,373 @@
+[
+  {
+    "id": "c243b06r1c2-09-baboon",
+    "name": "Baboon",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-09-baboon",
+    "masterSha256": "aac0db0517d351c2112b7db2df70b52c992b98e2e2baf7259daa27468124fa7a",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-19-boa",
+    "name": "Boa",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-19-boa",
+    "masterSha256": "49ffed780e7409e01b8099335b0c078376eabc9cc5fd070572adb6898c054e23",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c2-20-caecilian",
+    "name": "Caecilian",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-20-caecilian",
+    "masterSha256": "4e5cd230ffac1f648da52270f1f72d0c8ccc0bb4ef69883c4ce7d3f0ee65985d",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong family: length/thickness 7.97 < 8",
+      "facing: the right (head) end is not thicker than the left (tail) end (49.3 vs 63.4)"
+    ]
+  },
+  {
+    "id": "c243b06r1c2-10-chimpanzee",
+    "name": "Chimpanzee",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-10-chimpanzee",
+    "masterSha256": "1179cefc2851a31052b182e0170e80789b52f4733c20529d4282cea49eb1c164",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0135 < 0.0216)",
+      "missing-anatomy: part foot-far (legFarFoot) covers 16% paint (reference 74%)",
+      "unexplained-anatomy: 26.6% of the paint lies away from the body and in no part (reference 10.3%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-25-clam",
+    "name": "Clam",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-25-clam",
+    "masterSha256": "c2b69589dcbb11a333c22758c8408db8f3697043889c21059bf49f57f44299e9",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-21-cobra",
+    "name": "Cobra",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-21-cobra",
+    "masterSha256": "a4608f1873030047bb4a0b6d4819e59030eab33c9046d0ddfa3fe3bf116da8d4",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "not x-monotone: the dominant column run holds 78.2 % (coil or overlap; vertical strips cannot separate it)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-30-coconut-crab",
+    "name": "Coconut Crab",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-30-coconut-crab",
+    "masterSha256": "eca2c15dba369a339957d14327e794fb0cb25439be38b5d1cd5b3ba894ea11d6",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "id": "c243b06r1c2-02-deer-tick",
+    "name": "Deer Tick",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-02-deer-tick",
+    "masterSha256": "bd5c5500b2b13940301343ef7c524cab195393af278b4e197b8f3fce027d3ba0",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 20.5% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 2.1% of the paint; every same-family reference shows at least 5.9%",
+      "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 4.2%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-32-freshwater-crab",
+    "name": "Freshwater Crab",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-32-freshwater-crab",
+    "masterSha256": "fce9baf5e1ac4f972a932aba749db5e587108a0549c7f49e4c85c4c26a98c7e9",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-26-giant-clam",
+    "name": "Giant Clam",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-26-giant-clam",
+    "masterSha256": "323a293b3a162b78fedd9e22ed87aaf5c275ffcd36b00e6b5862876c436736ae",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "id": "c243b06r1c2-11-gibbon",
+    "name": "Gibbon",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-11-gibbon",
+    "masterSha256": "5f5fa609296e15bfc97728416455d21a4c3c3a4bf78bcec627a17cb9c9d96d07",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c1-03-harvestman",
+    "name": "Harvestman",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-03-harvestman",
+    "masterSha256": "3c2349cb3e28b1205f0d375aa7a8e8ad9db8519bdee1068b12978096377a2d88",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 7.0% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a front appendage of 19.1% paint that no reference appendage lands on",
+      "missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%)",
+      "missing-anatomy: part chelicera-far (cheliceraFar) covers 32% paint (reference 94%)",
+      "missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 5% paint (reference 58%)",
+      "missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 17% paint (reference 99%)",
+      "missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 6% paint (reference 66%)",
+      "missing-anatomy: part leg2-near-upper (leg2NearKnee) covers 0% paint (reference 86%)",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 5% paint (reference 73%)",
+      "missing-anatomy: part leg3-near-upper (leg3NearKnee) covers 15% paint (reference 94%)",
+      "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 5% paint (reference 62%)",
+      "missing-anatomy: part leg4-near-upper (leg4NearKnee) covers 18% paint (reference 86%)",
+      "missing-anatomy: part abdomen (abdomen) covers 8% paint (reference 93%)",
+      "missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 3% paint (reference 69%)",
+      "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 6% paint (reference 84%)",
+      "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 3% paint (reference 82%)",
+      "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 8% paint (reference 80%)",
+      "missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 5% paint (reference 95%)",
+      "missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 4% paint (reference 88%)",
+      "missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 8% paint (reference 88%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-12-lemur",
+    "name": "Lemur",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-12-lemur",
+    "masterSha256": "2e3ce35170ae6eaffc03394fcdc46cf936d69d7e7e00f23965dbc82ec2f9608b",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c243b06r1c2-13-mandrill",
+    "name": "Mandrill",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-13-mandrill",
+    "masterSha256": "e60b5468ba2a3d638823a71eb7490ea7ce9a3e60a4d5b31194b68199238e1813",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c2-14-marmoset",
+    "name": "Marmoset",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-14-marmoset",
+    "masterSha256": "86ee474d47f035740817c2fd7cd2d0069500c08b4ca8c46ec3687f4fe4ad7be3",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+      "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 72%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-04-mite",
+    "name": "Mite",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-04-mite",
+    "masterSha256": "cd19771a0fbe8527d0d1dfc1b6195f4e53ea9ecd16e3326b0e2473fd96f19c4a",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: insect matches clearly better (0.0263 < 0.0389)",
+      "extra-anatomy (unassigned): a limb-down appendage of 17.0% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 3.1% of the paint; every same-family reference shows at least 5.9%",
+      "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 18% paint (reference 62%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "name": "Mountain Viper",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-22-mountain-viper",
+    "masterSha256": "c29a0cf9154c496750beff1d5a1b3f89a8688a3f4f3b0c7d6a5e7f6a146b0ddc",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c1-33-mud-crab",
+    "name": "Mud Crab",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-33-mud-crab",
+    "masterSha256": "4dd781bf838c2f5cebdb458988b649853fd47bb7e79652ff85cb829f649cd752",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-27-oyster",
+    "name": "Oyster",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-27-oyster",
+    "masterSha256": "66ca0e3842ee587857dd9b96200060b5a21c213eefbac41d34c1b7725b4e2674",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-05-pseudoscorpion",
+    "name": "Pseudoscorpion",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-05-pseudoscorpion",
+    "masterSha256": "779868e2b424372ee1dc0e8b414dd582298e907c6cdddd9896c5f0205073f1ba",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: insect matches clearly better (0.0236 < 0.0339)",
+      "missing-anatomy (family floor): the largest rear appendage is 3.4% of the paint; every same-family reference shows at least 5.9%",
+      "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 0% paint (reference 73%)",
+      "unexplained-anatomy: 9.5% of the paint lies away from the body and in no part (reference 4.2%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "name": "Rattlesnake",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-23-rattlesnake",
+    "masterSha256": "cd3be1b41982b6b9e8ed972deae2927ddad3608d7ef0bef1bf6aee95e4029cea",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c1-28-razor-clam",
+    "name": "Razor Clam",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-28-razor-clam",
+    "masterSha256": "6a7e5ce502c2a13ec4ec08c4c43e1191f3e750e35ebc1fc4a75f5bfd97bfae43",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-29-scallop",
+    "name": "Scallop",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-29-scallop",
+    "masterSha256": "0353271a63924bf1d73eca55770c748d76e12fe5a80986128155236a41cb7280",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-06-scorpion",
+    "name": "Scorpion",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-06-scorpion",
+    "masterSha256": "76daba7662c0e823195e5138ca18613ebd67ad2ecde5d49125014d68ab8847fb",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-07-sea-spider",
+    "name": "Sea Spider",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-07-sea-spider",
+    "masterSha256": "8ebff8b53c9069b0346be990a2ba11d2f9284b4e0b0f65928cc1609b85c178d9",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "missing-anatomy: part chelicerafar (cheliceraFar) covers 26% paint (reference 89%)",
+      "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 13% paint (reference 53%)",
+      "missing-anatomy: part leg2farfoot (leg2FarFoot) covers 19% paint (reference 61%)",
+      "missing-anatomy: part leg3farfoot (leg3FarFoot) covers 17% paint (reference 53%)",
+      "missing-anatomy: part abdomen (abdomen) covers 29% paint (reference 94%)",
+      "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 0.8%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c2-24-snake",
+    "name": "Snake",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-24-snake",
+    "masterSha256": "7b27d9ac8d6480dade558ea3915a6f96102e7b0deb7a553011ddad8b2c8f920f",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+  },
+  {
+    "id": "c243b06r1c1-01-tube-worm",
+    "name": "Tube Worm",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-01-tube-worm",
+    "masterSha256": "df52a08f5be7c03429a302a0b8a75047524fdb6a506d81ecb07a17102f549c86",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 21.7% paint that no reference appendage lands on",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 2%)",
+      "missing-anatomy: part segment1 (segment1) covers 0% paint (reference 7%)",
+      "missing-anatomy: part segment2 (segment2) covers 0% paint (reference 11%)",
+      "missing-anatomy: part segment3 (segment3) covers 2% paint (reference 17%)",
+      "missing-anatomy: part segment4 (segment4) covers 3% paint (reference 18%)",
+      "missing-anatomy: part segment5 (segment5) covers 6% paint (reference 15%)"
+    ]
+  },
+  {
+    "id": "c243b06r1c1-34-vent-crab",
+    "name": "Vent Crab",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-34-vent-crab",
+    "masterSha256": "99ad8d44c52822197cd7ca49543d80ceb7b0b24079391130f19bcdd4dedf454c",
+    "status": "SOURCE_EVIDENCE_NOT_VISUAL_ADMISSION",
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  }
+]

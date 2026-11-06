@@ -1,0 +1,11 @@
+{
+  "source": "audits/FISH_PIPELINE_C88_20260927/compile.mjs",
+  "sourceSha256": "7728e4212c72865af76f5e11b6b860ea513bb8de226949c3ea258449e5160472",
+  "copy": "audits/G1_AUTO_AUTHOR_20260926/fish-seams-fit.mjs",
+  "copySha256": "29c7048df20b0bee75a7f915b5912afe36bcb61eb5f57c0de3c33a254e57b65f",
+  "changes": [
+    "explicit fresh output argument; fixed tail-axial mode",
+    "import identical C88 fish-split owner"
+  ],
+  "recipeBodyUnchanged": true
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Armadillo",
+  "masterSha256": "3d6fceaf77d7b140513e8a67c0faa21781dd5bccca605d83e330e6883f54b423",
+  "subjectSha256": "76dbe307c7d77b8543519fc754821a0e7fbc0efcf43ecfb1e1396ea4b7ec4a77",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Continuous dorsal shell and transverse bands; four exposed limb chains remain outside this region.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-armour",
+      "kind": "armour",
+      "joint": "spine",
+      "canonicalFeature": "hinged bands of armour across the middle of the back",
+      "polygonPx": [
+        [
+          346,
+          576
+        ],
+        [
+          385,
+          523
+        ],
+        [
+          449,
+          466
+        ],
+        [
+          531,
+          433
+        ],
+        [
+          610,
+          408
+        ],
+        [
+          676,
+          414
+        ],
+        [
+          739,
+          444
+        ],
+        [
+          800,
+          486
+        ],
+        [
+          856,
+          522
+        ],
+        [
+          900,
+          551
+        ],
+        [
+          899,
+          605
+        ],
+        [
+          864,
+          654
+        ],
+        [
+          801,
+          680
+        ],
+        [
+          719,
+          687
+        ],
+        [
+          624,
+          678
+        ],
+        [
+          529,
+          670
+        ],
+        [
+          441,
+          658
+        ],
+        [
+          382,
+          631
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "b11e2363f78cd32c8ae5b329adc8c45c14355eb9879deff04e9c0d61147bb461"
+}

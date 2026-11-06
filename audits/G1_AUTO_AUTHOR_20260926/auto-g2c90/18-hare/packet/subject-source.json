@@ -1,0 +1,74 @@
+{
+  "name": "Hare",
+  "family": "quadruped",
+  "species": {
+    "name": "Hare",
+    "aspect": 1.9,
+    "headFrac": 0.28,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "very long black-tipped ears",
+      "long rangy hind legs",
+      "lean angular body"
+    ],
+    "note": "Leggier and rangier than a rabbit, with proportionally much longer ears."
+  },
+  "genome": {
+    "seed": 1599311171,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 17,
+    "body": 7,
+    "loco": 8,
+    "trait": 17,
+    "size": 4,
+    "diet": 3,
+    "head": 8,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 16,
+    "temper": 3,
+    "sense": 0,
+    "repro": 4,
+    "life": 3,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hare"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hare\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1599311171\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "index": 120,
+  "profile": {
+    "id": "rabbit-hopper",
+    "names": [
+      "Pika",
+      "Rabbit",
+      "Hare",
+      "Snowshoe Hare",
+      "Jackrabbit",
+      "Jerboa",
+      "Arctic Hare",
+      "Mara"
+    ],
+    "candidateTemplates": [
+      "hopper",
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

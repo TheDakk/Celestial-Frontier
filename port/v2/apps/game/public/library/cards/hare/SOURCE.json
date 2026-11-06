@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hare",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/18-hare/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "083befac221764f38fbac869e8e62d1a630db782687ced8fe45c4160e9ca5529"
+}

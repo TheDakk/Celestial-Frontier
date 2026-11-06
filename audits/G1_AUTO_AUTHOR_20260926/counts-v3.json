@@ -1,0 +1,790 @@
+[
+ {
+  "id": "salmon",
+  "family": "fish",
+  "appendages": 8,
+  "byClass": {
+   "top": 1,
+   "rear": 2,
+   "front": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 30,
+  "inventory": [
+   "fin:dorsal:3.4%",
+   "fin/other:caudal+spine5:13.1%",
+   "head:head+jaw:3.7%",
+   "other:spine5+spine4:1.4%",
+   "other:spine3:1.4%",
+   "fin:near-pectoral:1.6%"
+  ]
+ },
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "appendages": 5,
+  "byClass": {
+   "top": 1,
+   "front": 1,
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "head:head+beak:3.3%",
+   "wing:far-wing-shoulder:0.6%",
+   "wing:far-wing-flight:4.7%",
+   "wing/tail:near-wing-flight+tail:7.0%",
+   "leg:near-shin+far-shin+near-foot:12.7%"
+  ]
+ },
+ {
+  "id": "beetle",
+  "family": "insect",
+  "appendages": 10,
+  "byClass": {
+   "top": 1,
+   "rear": 3,
+   "limb-down": 6
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "other:elytron-far:0.6%",
+   "other/wing:elytron-near+membrane-far:6.3%",
+   "other/head:thorax+head:7.7%",
+   "wing:membrane-near:3.1%",
+   "leg:front-far-upper+front-far-lower:2.1%",
+   "leg:front-near-lower:4.4%",
+   "leg:mid-far-lower:1.7%",
+   "leg:mid-near-lower:3.2%",
+   "leg:hind-near-lower+hind-far-lower:5.0%"
+  ]
+ },
+ {
+  "id": "python",
+  "family": "serpent",
+  "appendages": 2,
+  "byClass": {
+   "top": 1,
+   "rear": 1
+  },
+  "detached": 0,
+  "coreRadius": 11,
+  "inventory": [
+   "head:head:9.2%",
+   "other:body-segment-9+body-segment-8:10.0%"
+  ]
+ },
+ {
+  "id": "tree-frog",
+  "family": "hopper",
+  "appendages": 4,
+  "byClass": {
+   "front": 1,
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 21,
+  "inventory": [
+   "head:head+jaw:3.8%",
+   "leg:far-hind-foot+near-hind-lower+near-hind-foot:39.8%",
+   "leg:far-front-upper+far-front-lower+far-front-foot:6.3%",
+   "leg:near-front-lower+near-front-foot:5.7%"
+  ]
+ },
+ {
+  "id": "chimpanzee",
+  "family": "primate",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "other": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "head:head+jaw:0.8%",
+   "arm:far-arm-lower-hand:6.2%",
+   "leg:near-leg-lower-foot:10.6%",
+   "leg:far-leg-lower-foot:7.7%",
+   "arm:near-arm-lower-hand:7.2%"
+  ]
+ },
+ {
+  "id": "starfish",
+  "family": "radial",
+  "appendages": 5,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "tentacle:arm0-tip+arm0-middle:5.0%",
+   "tentacle:arm1-tip+arm1-middle:9.3%",
+   "tentacle:arm4-tip+arm4-middle:8.5%",
+   "tentacle:arm3-middle+arm3-tip:13.5%",
+   "tentacle:arm2-middle+arm2-tip:13.6%"
+  ]
+ },
+ {
+  "id": "tarantula",
+  "family": "arachnid",
+  "appendages": 4,
+  "byClass": {
+   "top": 2,
+   "rear": 1,
+   "limb-down": 1
+  },
+  "detached": 0,
+  "coreRadius": 31,
+  "inventory": [
+   "leg:leg3-far-distal+leg3-far-upper:6.3%",
+   "leg/other:leg4-far-distal+abdomen:5.9%",
+   "leg:leg4-near-upper+leg4-near-distal:7.9%"
+  ]
+ },
+ {
+  "id": "octopus",
+  "family": "cephalopod",
+  "appendages": 3,
+  "byClass": {
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "tentacle:arm7-base+arm4-middle:31.2%"
+  ]
+ },
+ {
+  "id": "fruit-bat",
+  "family": "flyer-membrane",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "rear": 2,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "wing:wing-far-wrist+wing-far-elbow:0.9%",
+   "wing:wing-far-distal:4.8%",
+   "head-appendage/head:ear-near+head:8.4%",
+   "wing:wing-near-distal:4.1%",
+   "wing/leg:wing-near-wrist+leg-far-upper+leg-far-foot:2.1%",
+   "leg:leg-near-upper+leg-near-foot:1.5%"
+  ]
+ },
+ {
+  "id": "centipede",
+  "family": "myriapod",
+  "appendages": 32,
+  "byClass": {
+   "top": 16,
+   "limb-down": 16
+  },
+  "detached": 0,
+  "coreRadius": 8,
+  "inventory": [
+   "head:head:2.0%",
+   "leg:leg6-far:1.3%",
+   "leg:leg5-far:1.2%",
+   "leg:leg7-far:1.3%",
+   "leg:leg4-far:1.2%",
+   "other:ultimate-far:2.2%",
+   "leg:leg13-far:1.4%",
+   "leg:leg3-far:1.2%",
+   "leg:leg8-far:1.4%",
+   "leg:leg2-far:1.2%",
+   "leg:leg12-far:1.4%",
+   "leg:leg11-far:1.4%",
+   "leg:leg9-far:1.4%",
+   "leg:leg10-far:1.5%",
+   "leg:leg1-far:1.2%",
+   "leg:leg0-far:1.1%",
+   "head-appendage:ultimate-near:2.2%",
+   "head:head:2.4%",
+   "leg:leg5-near:1.9%",
+   "leg:leg4-near:1.8%",
+   "leg:leg6-near:1.8%",
+   "leg:leg3-near:1.8%",
+   "leg:leg13-near:1.8%",
+   "leg:leg7-near:1.8%",
+   "leg:leg2-near:1.8%",
+   "leg:leg12-near:1.7%",
+   "leg:leg1-near:1.8%",
+   "leg:leg0-near:1.8%",
+   "leg:leg8-near:1.8%",
+   "leg:leg11-near:1.7%",
+   "leg:leg10-near:1.8%",
+   "leg:leg9-near:1.8%"
+  ]
+ },
+ {
+  "id": "sturgeon",
+  "family": "fish",
+  "appendages": 4,
+  "byClass": {
+   "rear": 1,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 19,
+  "inventory": [
+   "fin/other:caudal+dorsal+rear-body:24.8%",
+   "head:head+jaw:6.2%",
+   "other:pelvic-body+mid-body:2.3%",
+   "fin:near-pectoral+far-pectoral:2.1%"
+  ]
+ },
+ {
+  "id": "wall-lizard",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "front": 3,
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 12,
+  "inventory": [
+   "head:head+jaw:2.5%",
+   "tail:tail3+tail0+tail2+tail1:22.1%",
+   "leg:fore-far-ankle+fore-far-paw:3.7%",
+   "leg:fore-near-ankle+fore-near-paw:5.3%",
+   "leg:hind-near-ankle+hind-near-paw:5.6%",
+   "leg:hind-far-ankle+hind-far-paw+hind-far-knee:2.0%"
+  ]
+ },
+ {
+  "id": "cougar",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "top": 2,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 28,
+  "inventory": [
+   "head:neck+head:7.5%",
+   "tail:tail1+tail2+tail3:11.4%",
+   "leg:hind-far-knee+hind-far-ankle+hind-far-paw:4.4%",
+   "leg:fore-near-knee+fore-far-knee+fore-near-ankle:10.2%",
+   "leg:hind-near-ankle+hind-near-paw:4.7%"
+  ]
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "appendages": 4,
+  "byClass": {
+   "other": 1,
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 28,
+  "inventory": [
+   "head:head+neck:20.2%",
+   "leg/tail:hind-near-root+tail1+tail2:2.6%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw+hind-far-paw:15.1%",
+   "leg:fore-near-knee+fore-near-paw:10.6%"
+  ]
+ },
+ {
+  "id": "marmot",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "front": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "head-appendage:ear-far-tip+ear-near-tip+ear-far-root:0.7%",
+   "head:head+jaw:1.7%",
+   "tail/leg:tail1+hind-near-root+tail2+tail3:5.2%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw:3.1%",
+   "leg:hind-far-ankle+hind-far-paw:1.7%",
+   "leg:fore-far-ankle+fore-near-ankle:4.1%"
+  ]
+ },
+ {
+  "id": "bass",
+  "family": "fish",
+  "appendages": 5,
+  "byClass": {
+   "top": 2,
+   "rear": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "fin:dorsal:1.8%",
+   "fin:dorsal:3.2%",
+   "fin/other:caudal+body-5:15.3%",
+   "other:body-3:3.4%",
+   "other:body-0:2.5%"
+  ]
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "appendages": 4,
+  "byClass": {
+   "top": 1,
+   "limb-down": 3
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "head:head:1.3%",
+   "leg:hind-near-knee+hind-far-knee:9.7%",
+   "leg:fore-near-knee+fore-far-knee:6.2%"
+  ]
+ },
+ {
+  "id": "tang",
+  "family": "fish",
+  "appendages": 4,
+  "byClass": {
+   "rear": 2,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "fin:caudal:10.0%",
+   "other:body-5:0.7%",
+   "other:body-1:0.8%"
+  ]
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "appendages": 5,
+  "byClass": {
+   "top": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 25,
+  "inventory": [
+   "head-appendage/head:ear-near-tip+ear-far-root+head:7.2%",
+   "tail:tail1+tail2+tail3:11.6%",
+   "leg:fore-far-knee+fore-near-knee+fore-near-ankle:10.3%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw:4.7%",
+   "leg:hind-far-knee+hind-far-ankle+hind-far-paw:4.5%"
+  ]
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "appendages": 4,
+  "byClass": {
+   "top": 1,
+   "front": 1,
+   "rear": 1,
+   "limb-down": 1
+  },
+  "detached": 0,
+  "coreRadius": 27,
+  "inventory": [
+   "head:head+neck-upper:13.6%",
+   "head:neck-lower:0.8%",
+   "wing/tail:far-wing-flight+near-wing-flight+tail:16.4%",
+   "leg:far-foot+near-foot:7.6%"
+  ]
+ },
+ {
+  "id": "river-otter",
+  "family": "quadruped",
+  "appendages": 7,
+  "byClass": {
+   "front": 2,
+   "rear": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 16,
+  "inventory": [
+   "head:head+jaw:3.2%",
+   "tail:tail1+tail2:12.2%",
+   "leg:fore-far-knee+fore-far-ankle+fore-far-paw:3.7%",
+   "leg:hind-far-knee+hind-far-ankle+hind-far-paw:3.3%",
+   "leg:hind-near-ankle+hind-near-paw:3.6%",
+   "leg:fore-near-knee+fore-near-ankle+fore-near-paw:4.1%"
+  ]
+ },
+ {
+  "id": "brown-bear",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "front": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "other:chest:1.0%",
+   "head:head+jaw:2.6%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw:7.0%",
+   "leg:fore-far-knee+fore-far-ankle+fore-far-paw:5.5%",
+   "leg:hind-far-knee+hind-far-ankle+hind-far-paw:5.1%",
+   "leg:fore-near-knee+fore-near-ankle+fore-near-paw:6.3%"
+  ]
+ },
+ {
+  "id": "goose",
+  "family": "biped-bird",
+  "appendages": 5,
+  "byClass": {
+   "top": 2,
+   "other": 1,
+   "rear": 1,
+   "limb-down": 1
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "wing:near-wing-flight:10.4%",
+   "wing:far-wing-flight:7.7%",
+   "head/other:head+neck-upper+neck-lower+chest:10.9%",
+   "tail:tail:4.6%",
+   "leg:far-foot+near-foot:4.2%"
+  ]
+ },
+ {
+  "id": "heron",
+  "family": "biped-bird",
+  "appendages": 5,
+  "byClass": {
+   "rear": 1,
+   "top": 1,
+   "other": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 29,
+  "inventory": [
+   "wing:near-wing-flight:9.2%",
+   "wing:far-wing-flight:2.0%",
+   "head:beak+neck-upper+neck-lower:14.5%",
+   "tail/leg:tail+near-foot:6.6%",
+   "leg:far-shin+far-foot:3.5%"
+  ]
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "appendages": 5,
+  "byClass": {
+   "rear": 2,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "wing:far-wing-flight+near-wing-flight:7.7%",
+   "head:head+beak:3.0%",
+   "tail:tail:6.6%",
+   "leg:near-shin+near-foot:1.9%",
+   "leg:far-shin+far-foot:2.2%"
+  ]
+ },
+ {
+  "id": "ibex",
+  "family": "quadruped",
+  "appendages": 4,
+  "byClass": {
+   "top": 1,
+   "other": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 26,
+  "inventory": [
+   "head:head:29.6%",
+   "tail/leg:tail1+tail0+hind-far-root:2.5%",
+   "leg:hind-near-knee+hind-near-ankle:11.8%",
+   "leg:fore-far-knee+fore-near-paw:10.7%"
+  ]
+ },
+ {
+  "id": "reef-shark",
+  "family": "fish",
+  "appendages": 7,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 20,
+  "inventory": [
+   "fin:dorsal:5.5%",
+   "fin/other:caudal+rear-body:21.9%",
+   "head:head+jaw:6.3%",
+   "other:pelvic-body:0.6%",
+   "other:pelvic-body+mid-body:0.6%",
+   "fin:near-pectoral:3.4%",
+   "fin:far-pectoral:0.9%"
+  ]
+ },
+ {
+  "id": "pike",
+  "family": "fish",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 3
+  },
+  "detached": 0,
+  "coreRadius": 15,
+  "inventory": [
+   "fin:dorsal:2.9%",
+   "fin/other:caudal+tail-peduncle:14.1%",
+   "head:head+jaw:6.6%",
+   "other:tail-peduncle+rear-body:3.4%",
+   "other:mid-body+pelvic-body:3.5%",
+   "fin:near-pectoral+far-pectoral:2.7%"
+  ]
+ },
+ {
+  "id": "racer",
+  "family": "serpent",
+  "appendages": 2,
+  "byClass": {
+   "rear": 1,
+   "front": 1
+  },
+  "detached": 0,
+  "coreRadius": 4,
+  "inventory": [
+   "other:segment-9+segment-8:11.1%",
+   "head:jaw:1.6%"
+  ]
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "appendages": 7,
+  "byClass": {
+   "top": 3,
+   "other": 1,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "head:head+neck-upper:6.5%",
+   "wing:far-wing-flight:3.5%",
+   "tail:tail:1.5%",
+   "leg:near-shin+near-foot:4.6%",
+   "leg:far-shin+far-foot:3.1%"
+  ]
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "appendages": 4,
+  "byClass": {
+   "top": 1,
+   "front": 1,
+   "rear": 1,
+   "limb-down": 1
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "wing:far-wing-flight+near-wing-flight:19.5%",
+   "head:head+beak+neck-lower:14.5%",
+   "wing/tail:near-wing-flight+tail:6.5%",
+   "leg:near-shin+far-foot+near-foot:7.6%"
+  ]
+ },
+ {
+  "id": "herring",
+  "family": "fish",
+  "appendages": 5,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 18,
+  "inventory": [
+   "fin:dorsal:2.3%",
+   "fin/other:caudal+rear-body+tail-peduncle:20.8%",
+   "head:head+jaw:4.7%",
+   "other:mid-body:2.5%",
+   "fin:far-pectoral:2.0%"
+  ]
+ },
+ {
+  "id": "wild-horse",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "top": 2,
+   "front": 1,
+   "limb-down": 3
+  },
+  "detached": 0,
+  "coreRadius": 26,
+  "inventory": [
+   "head-appendage/head:ear-near-tip+ear-far-tip+neck:1.1%",
+   "head:head+jaw:5.5%",
+   "tail:tail1+tail2+tail3:10.2%",
+   "leg:hind-far-ankle+hind-near-ankle:11.8%",
+   "leg:fore-near-knee+fore-far-ankle+fore-near-ankle:10.3%"
+  ]
+ },
+ {
+  "id": "salamander",
+  "family": "quadruped",
+  "appendages": 6,
+  "byClass": {
+   "front": 1,
+   "rear": 1,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 15,
+  "inventory": [
+   "head:head+jaw:2.1%",
+   "tail:tail3+tail1+tail2:18.2%",
+   "leg:fore-far-knee+fore-far-ankle+fore-far-paw:2.6%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw:3.9%",
+   "leg:hind-far-knee+hind-far-paw:3.4%",
+   "leg:fore-near-ankle+fore-near-paw:3.1%"
+  ]
+ },
+ {
+  "id": "eel",
+  "family": "serpent",
+  "appendages": 3,
+  "byClass": {
+   "rear": 1,
+   "front": 1,
+   "limb-down": 1
+  },
+  "detached": 0,
+  "coreRadius": 9,
+  "inventory": [
+   "other:segment-9+segment-8:8.4%",
+   "head:head+jaw:3.6%"
+  ]
+ },
+ {
+  "id": "honeybee",
+  "family": "insect",
+  "appendages": 9,
+  "byClass": {
+   "top": 1,
+   "front": 2,
+   "rear": 2,
+   "limb-down": 4
+  },
+  "detached": 0,
+  "coreRadius": 26,
+  "inventory": [
+   "wing:wing-far:13.4%",
+   "wing:wing-near:17.1%",
+   "wing:wing-near:3.8%",
+   "head-appendage/head/other:antenna-far+head+mandible:3.2%",
+   "other:abdomen:2.4%",
+   "leg:leg-front-near+leg-front-near-foot:3.0%",
+   "leg:leg-mid-near+leg-mid-near-foot+leg-mid-far-foot:5.2%",
+   "leg:leg-front-far+leg-front-far-foot:1.3%",
+   "leg:leg-hind-far-foot+leg-hind-near-foot:5.7%"
+  ]
+ },
+ {
+  "id": "rat",
+  "family": "quadruped",
+  "appendages": 5,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 2
+  },
+  "detached": 0,
+  "coreRadius": 26,
+  "inventory": [
+   "tail:tail1+tail0:12.4%",
+   "head:head+jaw:14.8%",
+   "leg:hind-near-knee+hind-near-ankle+hind-near-paw:4.0%",
+   "leg:fore-near-ankle+fore-far-paw+fore-near-paw:4.9%"
+  ]
+ },
+ {
+  "id": "dragonfly",
+  "family": "insect",
+  "appendages": 6,
+  "byClass": {
+   "top": 1,
+   "rear": 1,
+   "front": 1,
+   "limb-down": 3
+  },
+  "detached": 0,
+  "coreRadius": 15,
+  "inventory": [
+   "wing:wing-far:23.7%",
+   "wing/other:wing-near+abdomen:57.7%",
+   "head/other:head+mandible:0.9%",
+   "leg:leg-front-far-knee+leg-front-far-foot:0.6%",
+   "leg:leg-hind-far-knee+leg-hind-near-foot+leg-hind-far-foot:2.1%",
+   "leg:leg-mid-near-knee+leg-front-near-knee+leg-mid-far-foot+leg-mid-near-foot:2.8%"
+  ]
+ },
+ {
+  "id": "jellyfish",
+  "family": "radial",
+  "appendages": 7,
+  "byClass": {
+   "other": 4,
+   "limb-down": 3
+  },
+  "detached": 0,
+  "coreRadius": 32,
+  "inventory": [
+   "other/tentacle:bell+arm1-seg0+arm1-seg1:12.5%",
+   "other/tentacle:bell+arm7-seg0+arm7-seg1:7.1%",
+   "tentacle:arm2-seg0+arm2-seg1+arm2-seg2:4.7%",
+   "tentacle:arm3-seg0+arm3-seg1+arm3-seg2:4.3%",
+   "tentacle:arm6-seg0+arm6-seg1+arm6-seg2:4.5%",
+   "tentacle:arm8-oral+arm9-oral+arm10-oral:23.2%",
+   "tentacle:arm5-seg0+arm5-seg1+arm5-seg2:4.8%"
+  ]
+ }
+]

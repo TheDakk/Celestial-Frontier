@@ -1,0 +1,93 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:packice",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "packice"
+  },
+  "seed": 2044523455,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template packice; canonical profile packice\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #a0b8c8; named material flat thick continuous cold gray-blue ice.\n  Atmosphere: canonical weather wind-cold; authored medium ground; distant low pack-ice silhouettes and dark cold sea channels behind the fight.\n  Flora pigment: source profile packice; permitted forms none; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families marine, bird, fish; no fauna are painted into these arena layers.\n  One signature: cold; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/packice/arena-far.prompt.txt",
+  "systemCardSourceSha256": "2455db42d416190417e0e15b88678838d40c78df261851b8de478475feec2747",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "packice",
+  "habitatVariant": null,
+  "medium": "ground",
+  "canonicalProfile": {
+    "sig": "#a0b8c8",
+    "fauna": [
+      "marine",
+      "bird",
+      "fish"
+    ],
+    "flora": [],
+    "hazard": "cold",
+    "weather": "wind-cold"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "1460297e2d3b3d4f6141ddc784e3b9d12ed5e28669cbbf59ddd62dd2d320c781",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "4e6f41035bbdb8177c7b14c945bae93f86c42a54602770d15bd8f9bd8cdd002c",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "f5ad02bfaec031c73dcecf08c2a1a15bf013142d1f205d97e4121cb070086b66",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  }
+}

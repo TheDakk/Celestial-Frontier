@@ -1,0 +1,20 @@
+{
+  "stage": "develop-cobra",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D39-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792454060.681344,
+  "beforeGiB": 59.68362808227539,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 156.501,
+  "lowestGiB": 59.515708923339844,
+  "afterGiB": 59.604637145996094
+}

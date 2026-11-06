@@ -1,0 +1,20 @@
+{
+  "stage": "native-best4-mantis",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-best4-mantis",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/best4-mantis/plan.json"
+  ],
+  "startedUnix": 1792342607.041329,
+  "beforeGiB": 71.7722396850586,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.09,
+  "lowestGiB": 71.37345886230469,
+  "afterGiB": 71.73802947998047
+}

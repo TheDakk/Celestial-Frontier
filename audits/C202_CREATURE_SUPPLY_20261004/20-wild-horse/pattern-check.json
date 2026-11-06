@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wild Horse",
+  "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

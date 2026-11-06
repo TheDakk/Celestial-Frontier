@@ -1,0 +1,33 @@
+{
+  "status": "PHYSICAL_CLEAN_IN_EXPOSED_SCOPE",
+  "actualFiveFullsizeViewed": true,
+  "frames": [
+    {
+      "id": "turn1-hit-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native/turn1-hit-reaction-50.png",
+      "sha256": "fa9c6d4cbae915e008657bf5138b7dba72c064ed38e3829f33843985553d9e8b"
+    },
+    {
+      "id": "turn2-dodge-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native/turn2-dodge-reaction-50.png",
+      "sha256": "36d7832e47d814064482d1771a535babb5cba16437a40af203f37ce6c2972490"
+    },
+    {
+      "id": "turn3-hit-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native/turn3-hit-reaction-50.png",
+      "sha256": "217621ec197c4d175d40298ed970f7c14adccdb303effa407169cc1884527709"
+    },
+    {
+      "id": "turn3-hit-idle-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native/turn3-hit-idle-50.png",
+      "sha256": "cf8cbb78cd6f0455afa16003a8ffb3b5fe47db8c799284f9878475e0b4c55c05"
+    },
+    {
+      "id": "turn3-hit-idle-90",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native/turn3-hit-idle-90.png",
+      "sha256": "d67cc775e1cc11f5f1db4cbd2fa559851823dd5a3a56a96775b846c792113fc9"
+    }
+  ],
+  "finding": "Source-sized long curved antennae remain attached; six source-visible termini, head/body/wing and farfemur/smallfarfoot boundaries retain natural exposed shapes, with no floating femur or slit. No inferred hidden shaft or FX-hidden right fields. Finish retains source pigment and outline.",
+  "independentW2W3Required": true
+}

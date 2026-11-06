@@ -1,0 +1,2972 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "693041abb5c09bd39ad15d6be5827850665ab8e0533efdf7eddfc0d16ec7668a",
+      "bytes": 4576
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/c468-staged-exact-bytes.commit.log",
+      "sha256": "4aa6f25a4f4e2758060fb4f8ad62e8efca3002d30befe8c425dbae1e88c30773",
+      "bytes": 50925
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-ai.json",
+      "sha256": "2ced4b8e83827da778d10d96ade80a552553c307a50cb397a2539759e9236670",
+      "bytes": 575
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-ai.log",
+      "sha256": "96a829cc30512a0bc5a2e81e7fe4656c3eacdc0be48ab31a2d36e3a2fb304011",
+      "bytes": 1032
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-native.json",
+      "sha256": "90dc0310b72d5456e8dd9c91325d707fa864bc1fb80c0bd3580b38bbda5a153b",
+      "bytes": 526
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-native.log",
+      "sha256": "82b94d2a9721319754dc06d99d49c8ab25c11f70856bae9effe8531f98b06970",
+      "bytes": 202
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-rebind.json",
+      "sha256": "e3881682b3ba82c504c6b57bf5d641cb426535c764bbf5c32aba9b1c1496bfa3",
+      "bytes": 500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-vole-r02-rebind.log",
+      "sha256": "0ee3cd4c08ec6d439377246a1f39b832e78f5b18396fc9fdd4e50a105b3008ed",
+      "bytes": 68
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/checkpoint.json",
+      "sha256": "4fe16a5e43e85bde0533e223b872b1d62290679b0443718988a9041f6f01e230",
+      "bytes": 1004
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/subjects.json",
+      "sha256": "44ebe3a4978d752cdcf9f2c16ab9a23a90e4fb62e1d2f0692689e571dcee0d3c",
+      "bytes": 237
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/c465-vole-r02.log",
+      "sha256": "26eb96794f9e1d486aafddf21e9a394276eed0dce533b95da717ea4084059779",
+      "bytes": 213
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/chain-verification.json",
+      "sha256": "c33eac90f077c37ddbf94208ab300af37dd572fd0d846f881ee9ec82d79c2096",
+      "bytes": 123
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finish-subjects.json",
+      "sha256": "045888f4509ae8d8b3cc26370847a294a0ff2f27d730d6179a56de361c6a77dc",
+      "bytes": 230
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished-plan.json",
+      "sha256": "ad9ba4e73c41dee8ded3aa6a9754e926efbb076ffca9a0bb6589f5fb002c6cc0",
+      "bytes": 1116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/c465-vole-r02-finished.png",
+      "sha256": "b4c8a5bd6264a924e063ccf0d9c7c9a2463d049d23a02c0a6afcb342daad89b7",
+      "bytes": 1418578
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/c465-vole-r02-receipt.json",
+      "sha256": "c165e511613e1b7769949d70adcc0c983251f57619b580629cffd844f8d33989",
+      "bytes": 29367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-binding.json",
+      "sha256": "a43661cbcb14dd0e265ebdf74a7e5bfd5896c35d20142f2e3da44815ddc89e5e",
+      "bytes": 873010
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-labels.png",
+      "sha256": "ccde5e6100e73251a50ab18cf89ce38d5ca3dbf38f040ba894e0be061b865421",
+      "bytes": 38499
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-labels.rgba",
+      "sha256": "cba5a4417fd5e5c0b4278c3eea9557676a17c9934209df7a1a9a2ca5ccad188b",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-master.rgba",
+      "sha256": "cb4133035f41699d915a2c79ef4a789b864d039f0d4466646e93d1ab54433239",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/c465-vole-r02-masterPng.png",
+      "sha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+      "bytes": 1465402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/client.mjs",
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+      "bytes": 133185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/prepared/inputs.json",
+      "sha256": "01afc1cf9df3367be6321e336362f7bcab7121aa14f77e9ca227b106f400dbe0",
+      "bytes": 1827
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/progress.json",
+      "sha256": "786b2a7b597ca16321a603069e8d796c27d12494f56f887d43f0bb86a7ba1f84",
+      "bytes": 150
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/result.json",
+      "sha256": "cfc0b8f69a5273a0be4162bb5ee593b703e9565dff62249bd533b53378d19421",
+      "bytes": 61150
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native-results.json",
+      "sha256": "4ab7d6644e2565cc1bbe51e45b3a77d44f2bccfc30f3ac0986a3ad8ee1da2bf6",
+      "bytes": 1168
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/battle-full.webm",
+      "sha256": "4d8b87355f5ed0910c7ed4eb84826cfe2dea79d3fb688a29c49361502cf4e6bc",
+      "bytes": 10695430
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/report.json",
+      "sha256": "d935e94f5fe1da1f6df2a85abae9391106a10f38e353702f96f86ef181c21995",
+      "bytes": 400646
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn0-hit-approach-50.png",
+      "sha256": "00e63cb94e2f395e0fc3755fcb0dc847b21a859fbb784af1cbed5cd7fb2c7a89",
+      "bytes": 1543782
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn0-hit-impact.png",
+      "sha256": "e5903b266f66e2c9295e1bab3f0f6a2365c35aba71f6d816db694fd906fcd9da",
+      "bytes": 987621
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "3dc1508275b3a3bd9d2a9cd48ce106da6912a64c9aada146e650db12d6eb3815",
+      "bytes": 1542643
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn0-hit-return-end.png",
+      "sha256": "0ea58bc9d33c1c8d1b6f1dc3e3eae8a95f62be56ca2ae98f62397e80fe407921",
+      "bytes": 1507363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn1-hit-approach-50.png",
+      "sha256": "5c456c0c994581ac05f9df6164d4320ccae0ba2447cfe929aa3520c07b22f6dd",
+      "bytes": 1540071
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn1-hit-impact.png",
+      "sha256": "2639a798748455b96fc9683dadbb58389db733df319b7cc51222dc00bada64b6",
+      "bytes": 987725
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "a9026e9879a192c68aad69cc46175d77123edb7d5cbb3095d4dbdc7bb8d48054",
+      "bytes": 1543649
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn1-hit-return-end.png",
+      "sha256": "a245fb5d3f806780f00beb073051582f4896f6302332ce35c86f44e73b6f669a",
+      "bytes": 1507407
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "53f703cbc9ca0dfc412b4d497484e03d4f11c5ef64aaf890efaad1efb93e3c7d",
+      "bytes": 1539297
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn2-dodge-impact.png",
+      "sha256": "580c3fac945c8c43e8b4a5a4264b66aebbd129898730c355002bdeea983a7b79",
+      "bytes": 1544532
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "3612d972a1d39365d753982069e3817a7ff248e0d3caca9c5b3285f59c8db3bc",
+      "bytes": 1580004
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn2-dodge-return-end.png",
+      "sha256": "0ea58bc9d33c1c8d1b6f1dc3e3eae8a95f62be56ca2ae98f62397e80fe407921",
+      "bytes": 1507363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-approach-50.png",
+      "sha256": "00e63cb94e2f395e0fc3755fcb0dc847b21a859fbb784af1cbed5cd7fb2c7a89",
+      "bytes": 1543782
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-idle-50.png",
+      "sha256": "1675e3945102616520b219f509ad7a0a6139417a0b7085196c19cc11eddde184",
+      "bytes": 1523248
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-idle-90.png",
+      "sha256": "be6832bf89c098ac7f67e6b3f3d4f7875960e63ee0f346f29801782a088848e6",
+      "bytes": 1522073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-impact.png",
+      "sha256": "a91173ae7a60747a606b387590ea83982cac6f74e86ade1ba519588b6ab268c7",
+      "bytes": 1009343
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "73b3efca668975e1bf3886afd847f1021bc595f390036767d9c262e283e706b4",
+      "bytes": 1543095
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/turn3-hit-return-end.png",
+      "sha256": "a2fa1e3fffd0930bee8c95fd9d0a75c8d8d0fa89058e127227f73ff90bcbbdd1",
+      "bytes": 1507086
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebind-results.json",
+      "sha256": "412885222b0a6dc4c4e1dc50b5a36941b2343884121d8142ceb955c6641a331c",
+      "bytes": 14376
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/binding.json",
+      "sha256": "e4c3c808b6b7762ce5e74c8812a9d3aaae00be46783225a2d148f9a141e262a8",
+      "bytes": 873010
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/declaration.json",
+      "sha256": "6923083021c12aa868762386c31bcbed8b635820db010f696990fa88684ae36d",
+      "bytes": 2876
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/finished-rebind.json",
+      "sha256": "4cb500068356c9b5104b131022bcff78fdfba604112bd4b9830f018e303533b8",
+      "bytes": 13544
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/labels.png",
+      "sha256": "ccde5e6100e73251a50ab18cf89ce38d5ca3dbf38f040ba894e0be061b865421",
+      "bytes": 38499
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/atlas/c266-15-vole.json",
+      "sha256": "8772e33263330e64bd593bf39bc400d1a435f1493fa7c2a221ede3dde8439cf4",
+      "bytes": 10593
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/atlas/c266-15-vole.png",
+      "sha256": "40a83303218cf5ce3ee18ef527a5845d10fa15d226946b4e6f3cf3a186d7defa",
+      "bytes": 471199
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/atlas/receipt.json",
+      "sha256": "1cb21eadd2b95487abb6a8572be352be25491f0e88bd760066d63a0fabe546d9",
+      "bytes": 4122
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/binding.json",
+      "sha256": "04a4d9df9dae6934faf7cd22230aa5457d439593f139c5071dc23493dc12a250",
+      "bytes": 8714
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/keyed.png",
+      "sha256": "d75b460db23782c5fb88e2284ea3c28eab84bf7fd6c18b90ee2f005289b65b48",
+      "bytes": 1425096
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/manifest.json",
+      "sha256": "e9d8fcb065599fd2f4de5df408d78c8d9a6595d1c00b4c8b4042ae54f7c776dd",
+      "bytes": 4438
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/ownership.png",
+      "sha256": "fb302b4a6e25402a49b6d00e62957bf84922b42201d7051e47dd960b9570f3ff",
+      "bytes": 13107
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/body.png",
+      "sha256": "6afa2cb74eb51896ffc3955728b9d1e39bf8cb96b73a0589e56b79af8432754d",
+      "bytes": 260013
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/ear-near-root.png",
+      "sha256": "86efcca7d883b66600abedaca90e21d8cef5ea9f6d440f75a26d1bef8a3027ef",
+      "bytes": 6321
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/ear-near-tip.png",
+      "sha256": "1a7dfe60e3286d9a283bc4efe1db46e2dfb53735ec0e9eead4f29d080a498b5e",
+      "bytes": 5086
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-far-ankle.png",
+      "sha256": "bf3b8f85b110050cbc81449a78efdaecc306afc32a8b1c4542d461f7714298fc",
+      "bytes": 2625
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-far-knee.png",
+      "sha256": "ff1d002ab425b8793bda9f76b093df7810aa397a82912fd99f18d33f50474f1f",
+      "bytes": 3537
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-far-paw.png",
+      "sha256": "c5ca80c22fbfb971a7dac2f0ed485fba14447c535dee782eef831ef5055cc8bc",
+      "bytes": 959
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-far-root.png",
+      "sha256": "e43dde696c7871328a14abf76dab766c42425d7c17315b6662b8a576573e6fcf",
+      "bytes": 4816
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-near-ankle.png",
+      "sha256": "78248fa4345bdf6b35636ac3d2f7e3bc0f25da7add48bb2d164cca2b4ad76779",
+      "bytes": 4138
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-near-knee.png",
+      "sha256": "7b80abd4f968d27888fbdda9510beef8f12fef50cc56ed77136f26c256284237",
+      "bytes": 2527
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-near-paw.png",
+      "sha256": "8603f94aa68db68c2e5d5e4d983f3670748947b37186b94275a78ed699bda39e",
+      "bytes": 1425
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/fore-near-root.png",
+      "sha256": "24e9de0b5b8b9611910babf6cffed851945ed7d03ed829202f5bc1ec4115bd82",
+      "bytes": 3476
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/head.png",
+      "sha256": "fb6293ecbcc8782cd5f584cf2700735cdd87b8e528e636599d8a049f9cf344c2",
+      "bytes": 79670
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-far-ankle.png",
+      "sha256": "7c14cfcb2fe211aa326f512185527b5185d5d9579331fbe6154a74ab217ae2f7",
+      "bytes": 1794
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-far-knee.png",
+      "sha256": "cecc436f340cd5970cf048eb064302b8b7510622ded02c2a79686330051f1b99",
+      "bytes": 3614
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-far-paw.png",
+      "sha256": "d23ffb63442cc85ffc42c063f3e4f0926c9eb1113e0f980c56bda88d0ba4ba12",
+      "bytes": 2424
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-far-root.png",
+      "sha256": "b33a76269f2b96aa10deac13d7c2d0a4307bf1fae2a0b624d88ff09ccaf549bf",
+      "bytes": 4652
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-near-ankle.png",
+      "sha256": "5631c6d3d2c072d2a23e38b626601187425d4f65a91afb142851e86c7fd15b22",
+      "bytes": 3827
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-near-knee.png",
+      "sha256": "daf28166af54780db48dd473a2aa6d5f69fee8eb20d068b67dd95580cc58bdf0",
+      "bytes": 4495
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-near-paw.png",
+      "sha256": "b270e352ba7625e5fb6c48fb766eb8c539ca2dfe43fd3eae644a077b80e588c0",
+      "bytes": 3849
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/hind-near-root.png",
+      "sha256": "55e0d92152d7dd4721445dec404c74bd2d95c9d5b7bb891e617e922846262368",
+      "bytes": 8014
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/jaw.png",
+      "sha256": "5ef75248f9d068ecb7529aa2d3247799cea6a0f7e1b9c6185b599fe6ac02546d",
+      "bytes": 3226
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/neck.png",
+      "sha256": "ab19f696903f5c68e601855de14bacde41f2142847e44086eb7e7e8b77771c47",
+      "bytes": 37445
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/tail-base.png",
+      "sha256": "23037aae04179ab5bd0ebe9f13b617965b31a2e88ea6821a7451cc9def93eab3",
+      "bytes": 3790
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/tail-distal.png",
+      "sha256": "37e7137532ec19fc6418227d834dda395a8cb05a7851949bc569049b2fbc510c",
+      "bytes": 1981
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/tail-middle.png",
+      "sha256": "182611b66abea3e383ef0720e4c85b1dd4236106193f994f06e7e3ece4049208",
+      "bytes": 2847
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/parts/tail-tip.png",
+      "sha256": "59bc3cca06a94b401a8b3268345a1795069a986f712481c791c40376fdba86cb",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/parts/receipt.json",
+      "sha256": "05c42d31ea2a785387d44ce3db97f8e7002686074d91ca89b8a4e037e95db947",
+      "bytes": 7017
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/pre-split-binding.json",
+      "sha256": "f196c23941d7c4c99ff71d2677e8b328077e5d35bf50d27cbfc0c9bdb8bf6271",
+      "bytes": 674604
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/record.json",
+      "sha256": "76a258812a823c33e9209dbd491118e55f61cd59d11b0112a9656afc63ec3368",
+      "bytes": 7421
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/rebind-summary.json",
+      "sha256": "412885222b0a6dc4c4e1dc50b5a36941b2343884121d8142ceb955c6641a331c",
+      "bytes": 14376
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/freeze-wave.py",
+      "sha256": "52704b62e3f15c0ba2e4f2810b805ecaef9a4c78ceca160c94a027219303e433",
+      "bytes": 1528
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/make-ready-packet.py",
+      "sha256": "d4285603d22b78c4d97e6db1e11b3767bcb4e347f873f9ca6dd7bfa9a0a13425",
+      "bytes": 5172
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-scallop-c2-r01.json",
+      "sha256": "09dce1d1aee5ed495ed7fdba8b5b1c62c1565b2447b1f801322e6b142f749ea4",
+      "bytes": 526
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-scallop-c2-r01.log",
+      "sha256": "b8497a01f63552829927f5c3053e27f5ff90f3e25dbfde8fc9e381a30e5106b7",
+      "bytes": 208
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-a/generation.json",
+      "sha256": "5785b076f8130fd12c1ee7fd9650fd7dd5264980a4a03fdea34e31ed04a76407",
+      "bytes": 1234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-a/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-a/lease.json",
+      "sha256": "4f4e1978094686980fd2c020e8a3d83c36ef2257167e55c8b399e44921987f59",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-a/master.png",
+      "sha256": "6dfabe87187a0a095023ae7ed8970dacdd5994ac4a878e9f2ad335695e939164",
+      "bytes": 1423307
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-b/generation.json",
+      "sha256": "5d013adabcd1248b4136844f4c7c0670f855bfdf59b09cb197a77733d6303ef7",
+      "bytes": 1236
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-b/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-b/lease.json",
+      "sha256": "77acb3ca12e06fae5c7a3e155d05f2c19b4cc9ead9e73fea0501d69ef1de7597",
+      "bytes": 294
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-b/master.png",
+      "sha256": "80fc2e07d392b37115c4ea6393d42769b964065950a562b5cd79dabe63105bdb",
+      "bytes": 1427649
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-c/generation.json",
+      "sha256": "d77bda47c8a5a3d05049e2a5137056b6b77e5faae4d72059347d9db6a8bd667a",
+      "bytes": 1235
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-c/lease.json",
+      "sha256": "03f89943cf6d8538d3322073a166f55d4087c9f9e8b5e81ecbf3d87cf25c2b2c",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-c/master.png",
+      "sha256": "bee8de260cab0ec8cd8b7c09efcd41952036076964f797ca7425c7628a08909d",
+      "bytes": 1443306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-d/generation.json",
+      "sha256": "f02ebd8f06d20e7abf53b81d8c5ac77b243cda86bae9cfcadccba3cf417b610a",
+      "bytes": 1234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-d/lease.json",
+      "sha256": "1ccf5cf70ead4223d6510128c3140e7e8c8210368ee8e9a3bbc7a6959196ba53",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-d/master.png",
+      "sha256": "1fa914337a0e40afb027bdfe69bd2263ec5342e5288a083c32958e302bce47ae",
+      "bytes": 1449769
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/c465-scallop-c2-r01.log",
+      "sha256": "60c9ca861a64a828f75da863f41d22d2658dd129f2eaa6301af6394629f7e46c",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/finish-subjects.json",
+      "sha256": "44ebe3a4978d752cdcf9f2c16ab9a23a90e4fb62e1d2f0692689e571dcee0d3c",
+      "bytes": 237
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native-results.json",
+      "sha256": "3cc1427ed2f7b3cc7a4c901e005122944d2f93467d76304682b4566b5dd05a0e",
+      "bytes": 737
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/battle-full.webm",
+      "sha256": "4338654fed756e7417fb18fabe7d13f819cead18ad7a9ee3ee0cd58b2e0f411c",
+      "bytes": 7642083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/report.json",
+      "sha256": "84ff1264bbe10b5d320694cc6c4b4f2d717127417f04d16c6c5dccf75d20fcfa",
+      "bytes": 357466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn0-hit-approach-50.png",
+      "sha256": "c14238469c35668797f0ea57ddd242cca4915db47a642791233f86058766a9f0",
+      "bytes": 1171435
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn0-hit-impact.png",
+      "sha256": "80cc93b47c6997809c57b05ca2221b30ea10fda333d6552625a415082f6dd833",
+      "bytes": 676822
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn0-hit-reaction-50.png",
+      "sha256": "d6d50506b6451e08dce58f9ea6daf9dc6ef64c07afa28b187645bb247557980b",
+      "bytes": 1197221
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn0-hit-return-end.png",
+      "sha256": "0542f877906f94380e6baeec278649d3931e511eda928284b7e78d3b7758858c",
+      "bytes": 1167162
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn1-hit-approach-50.png",
+      "sha256": "e2241a00d9311a6c6cda8061e8f5574d496fa6ed52c9b47d66ecff39f853ef08",
+      "bytes": 1173159
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn1-hit-impact.png",
+      "sha256": "ca2985c22ef0e1217e611fbad14c9bb56cb6e0103c3a0cab004a39ddedb903b0",
+      "bytes": 660299
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn1-hit-reaction-50.png",
+      "sha256": "6b84af316cf7f459b359b9f22241d7e29dc840a7e85d33c729c7ee882768caa9",
+      "bytes": 1175604
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn1-hit-return-end.png",
+      "sha256": "bf27ce2f888f3d6b7419816c279c6c6bb7c443fbb89874b0de8042ec293c3a3f",
+      "bytes": 1167070
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn2-dodge-approach-50.png",
+      "sha256": "c14238469c35668797f0ea57ddd242cca4915db47a642791233f86058766a9f0",
+      "bytes": 1171435
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn2-dodge-impact.png",
+      "sha256": "96bab50e0b8104bc6929a31a70b91d9d590688c4bdf98876897bfe11695338ed",
+      "bytes": 1189113
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn2-dodge-reaction-50.png",
+      "sha256": "1fc48fbef292e4bf453be29900dceb06ba9ecb00586ad16ff701296e1d4b16f5",
+      "bytes": 1192551
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn2-dodge-return-end.png",
+      "sha256": "0542f877906f94380e6baeec278649d3931e511eda928284b7e78d3b7758858c",
+      "bytes": 1167162
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-approach-50.png",
+      "sha256": "c14238469c35668797f0ea57ddd242cca4915db47a642791233f86058766a9f0",
+      "bytes": 1171435
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-idle-50.png",
+      "sha256": "a2743878d6535b4e9171599e1930ce16d8bebb359351f49f4ad89f1e8eaf1037",
+      "bytes": 1169922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-idle-90.png",
+      "sha256": "f38036c004037f98b2c91e4df18dc9b3f6e53485b8796127379d65948f30eba0",
+      "bytes": 1166541
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-impact.png",
+      "sha256": "80cc93b47c6997809c57b05ca2221b30ea10fda333d6552625a415082f6dd833",
+      "bytes": 676822
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-reaction-50.png",
+      "sha256": "97e10827e08134a86d6ff892e9fee04aca507930e275bf818bcb97c7a920887a",
+      "bytes": 1193728
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/native/turn3-hit-return-end.png",
+      "sha256": "df8c48dd02451e5eb31db9f60b64bca1540aeb267c0db9e7aa5add251e78ec45",
+      "bytes": 1166076
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/scallop-c2-r01/plan.json",
+      "sha256": "19b8afb1db11b5bf6f00ea6ef636202abf5752c2354b38d0a94c806f05d58919",
+      "bytes": 685
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-secretary-retained-r01.json",
+      "sha256": "919836f411dceda8ce3e6e8772d989ba335eee88c26e7dfe89235bb943fe8872",
+      "bytes": 568
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-secretary-retained-r01.log",
+      "sha256": "859a8974e7d52feb530bf591cc1f5a771c7c15dbffb6a78dcc2e6fcbc28e4abc",
+      "bytes": 110
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-tropicbird-r01.json",
+      "sha256": "a2d2c0f887ddaaec1a16567a7eb48026283dc7afc1e362dbbe879e92e68c7666",
+      "bytes": 539
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-tropicbird-r01.log",
+      "sha256": "5cb62fa43ae69e16e3ec7329c6dbc90e7affdef926763df104f350ab247b38ab",
+      "bytes": 153
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01.json",
+      "sha256": "21447a96891c523a0b36ede7e741db9d9d72072d6ab49a81b981508ce2d3689e",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01.log",
+      "sha256": "f3c03a1ae4e4a36aa882e46a7a86feb570bb44ffb9b287d9ef68bf9e9b1ce1e8",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/checker.log",
+      "sha256": "5fe47a7712a0b2b41df6e109e78072cdd9336c42f5ecaaf3114ac2acdc65e47b",
+      "bytes": 1619
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/current-rows.json",
+      "sha256": "817013362f9639702a02640d45426bd0af61001c3f5b34377b9d963235833763",
+      "bytes": 1111
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/fragment-triage.json",
+      "sha256": "342d61065630fd0a901317636eef5a44feec5d1d573c0e0638038115b2ce184b",
+      "bytes": 174353
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/freeze.json",
+      "sha256": "67f11acdc2e16f91e03b9dbd18a024f8db86de44208e4171a76601809e4d1199",
+      "bytes": 220175
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/roots.json",
+      "sha256": "0e509c64e14e68b8361faad8a2cd7abd6575d899786269e984fefcd5ab53588e",
+      "bytes": 13224
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-scallop-c2-r01/verification.json",
+      "sha256": "4e08495a9a89b064031e2da70f39d59120dc1e6959950f6cc94a08e6b9ae8b24",
+      "bytes": 1516
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished.json",
+      "sha256": "7520ee45b630cc6a7185b0cbf0347a7b8a4e49a50bd2d519b2fc232dcc1bd156",
+      "bytes": 672
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished.log",
+      "sha256": "60a606fa2f4f5ab1ba163ba109ccadca2e476c5888e6a8464efbc74afbf47c3e",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/checker.log",
+      "sha256": "ee79b880e026276a08af7c0daa1da050d1143f0ce203776b453ed1364b6bdc2b",
+      "bytes": 1685
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/current-rows.json",
+      "sha256": "3e26da0dc19b4d64b04cd079458676fbea108d2f0761572e5681ac7d0b72fa16",
+      "bytes": 740
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/fragment-triage.json",
+      "sha256": "9bebfe896e32e79226981ac1215233be7ad954c8ce80801759d8d821f50303dc",
+      "bytes": 174279
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/freeze.json",
+      "sha256": "0c495f5b7be7239c89c79ff9e15773e6a8116e1f53b1a2b0f630e35314c5e8bf",
+      "bytes": 219623
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/roots.json",
+      "sha256": "06ba36349cc0d188387f46ec67112d5f13bcd464ab65c90cff50a5da789c782e",
+      "bytes": 13159
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-finished/verification.json",
+      "sha256": "37cc6959b89dbb2edc77a2a2781048c99989b98f38075771efdddade4fe6d678",
+      "bytes": 1115
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/vole-r02/manifest.json",
+      "sha256": "62994544b67a0e18cc7bc577d495bd19335a89dea794ba02f7c4cc951ae1fa27",
+      "bytes": 13705
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/vole-r02/packet.json",
+      "sha256": "13bb25e078525f33f17c72c10a7a578665b9a1e06a4f4cd0bb5dd4fd52b6f0b0",
+      "bytes": 10067
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/vole-r02/verification.json",
+      "sha256": "38090e37b16bca0fbc70005cb43649b3285ab97dc4064322773d27947c3f805a",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C2-REVIEW.md",
+      "sha256": "95eb07be29af4bd76d963363dbfac512f6fa8e2eae60a9f5aee898a01c1e5a46",
+      "bytes": 4202
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C2-phase-input-manifest.json",
+      "sha256": "2cd9b0e0757118cb29879d1acf09140182f805573a0a1ff98043912895fcda75",
+      "bytes": 9319
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C2-ranks5-16-review.json",
+      "sha256": "8218d7d2f84e3b98d866f4aef054878708f9ef919599490e4293c53453d7fc04",
+      "bytes": 26767
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C2-task-report.md",
+      "sha256": "71a0173cd1eabcdef083977626344acc1a2d0bff87744e82da5191c2dc48a01c",
+      "bytes": 3493
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/blue-whale/plan-c2-r01.json",
+      "sha256": "c6ac923c97bf5da79f1fce8fc6d5a93e9966612148f9d8f11f5364530ee3f7b1",
+      "bytes": 738
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/cockatoo/plan-c2-r01.json",
+      "sha256": "8ae4fc54ed296d666b355e6e1d53772891912d8bcb7f8dbc83ac98da69ab9d12",
+      "bytes": 828
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/owner-plan-preflight-r01.json",
+      "sha256": "c637c4f8932a00e7dcd7482e6bd3ca1ddfb116c8e294616be98ef93b16eb51e9",
+      "bytes": 1688296
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/plan-r01.json",
+      "sha256": "5c7a6e684463b9bbdd9c15ef3150e4e937ea6c7a252deb830d3e75cc8da67cea",
+      "bytes": 1596
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/preview-instrument-first-red.json",
+      "sha256": "0f1fc7dfddf91783a3c2dd835b78ff4a8ee655a7fcd70677c5eab64616798cc5",
+      "bytes": 370
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/root-carapace-owner-3x.png",
+      "sha256": "a78389d75c1722604c2bb59bd6d3f6e88c90e965f836cb9aabab2912f9919c7c",
+      "bytes": 23029
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/root-carapace-source-3x.png",
+      "sha256": "e9999391fb9e154829351a33a5bf2398f72439a657e3527aa4073bb1c0ffee56",
+      "bytes": 269568
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/run-r01.mjs",
+      "sha256": "9846222b39e916b4fd4ef71a1b640dbd8af622ec30c35f61bafc7d2d724b1667",
+      "bytes": 1699
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/scutum-owner-plan-4x.png",
+      "sha256": "aa8a7039affc02cd55f2517ab8dba73cc0483f874bb5fc2f110052ad16fe586c",
+      "bytes": 210938
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/olm/plan-c2-r01.json",
+      "sha256": "ab2a3a5a790f0e60cf35fee6de5b9d06166cfa309d29bb664149fef3051a4533",
+      "bytes": 910
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-fragments.json",
+      "sha256": "927fd6387bfb107c965e682f5ef5a78d72df035987973e62343e14f49759b9e8",
+      "bytes": 9339
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-raster.log",
+      "sha256": "a5901d9729c1737c7235ffa7d42412ef8c831c56e956f4d1482250f8741d06be",
+      "bytes": 3450
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-rest-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-rest-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn1_reaction_50_left-000-owner.png",
+      "sha256": "de4e90947ab9f1b5b4ddb867967bfffa390b01b875ed07e850860847c636664c",
+      "bytes": 14373
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn1_reaction_50_left-000-paint.png",
+      "sha256": "1f46c444b9023c9f60c758d48bdd3c05e3cbaa6e7c8b773fa0a9a9a327b458c0",
+      "bytes": 253581
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn1_reaction_50_right-000-owner.png",
+      "sha256": "5efb1812e0c00b48d78dfda6f20caf88c4e1aacb928f08496a9bee16a813dc88",
+      "bytes": 14118
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn1_reaction_50_right-000-paint.png",
+      "sha256": "07db0f5b1c90d1b719ea67a41d7e8b7b5875c10ab33f8828b8bf48e24750f6a0",
+      "bytes": 252788
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_50_left-000-owner.png",
+      "sha256": "45dce67afeacb95e06a99c0b77e5814d042f4cb30d435fc545c5ebcf98b4328d",
+      "bytes": 14122
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_50_left-000-paint.png",
+      "sha256": "67fccd6cb803bd1a0940aa7f96e9585f07d782b3473cf4b4b2a85d3e24c9b84f",
+      "bytes": 252397
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_50_right-000-owner.png",
+      "sha256": "5bb0145a246ad7c87419fba4db5ea29e036dd18a987048ca1f2817680e3b18fd",
+      "bytes": 14172
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_50_right-000-paint.png",
+      "sha256": "7f8a06e3abdae81043efa73da42209083a7edacca7af6ac9a28ffc46be848864",
+      "bytes": 233383
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_90_left-000-owner.png",
+      "sha256": "fadf84a32dc94450d2f648db0e9ab83c1318645bfe25e30af84a7b07ce45af65",
+      "bytes": 13935
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_90_left-000-paint.png",
+      "sha256": "bd2ce999340a0defe2a6edd4a8fc96f1b91582300f963dd086dc4283012725c4",
+      "bytes": 252762
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_90_right-000-owner.png",
+      "sha256": "5bb0145a246ad7c87419fba4db5ea29e036dd18a987048ca1f2817680e3b18fd",
+      "bytes": 14172
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_idle_90_right-000-paint.png",
+      "sha256": "7f8a06e3abdae81043efa73da42209083a7edacca7af6ac9a28ffc46be848864",
+      "bytes": 233383
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_reaction_50_left-000-owner.png",
+      "sha256": "ab7b276f7a22f552c1d697c6d4331aa8d2ed719a2397397dda94609fb3437f93",
+      "bytes": 14187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_reaction_50_left-000-paint.png",
+      "sha256": "e3976bd3be0c2320de028a2e6c80834741f8134bb466c62a6b8b721cde82687e",
+      "bytes": 253347
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_reaction_50_right-000-owner.png",
+      "sha256": "0376ef9bc4d32c07d79d2148d27499b447f70d170b51d1a717653c271b159cef",
+      "bytes": 14212
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01-turn3_reaction_50_right-000-paint.png",
+      "sha256": "fbb420750c5d09fe7ab685471d41ba9b1cf3c3356f275fa9e82fc3c7ee1e08d0",
+      "bytes": 222581
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01.json",
+      "sha256": "d6b99252c639f72bdf6922542bc09840567a2f6c666c86ac728a2ba85e0888d3",
+      "bytes": 479193
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-exact-r01.log",
+      "sha256": "c5d2e0f4578276a93c9f6f71c959273aa9412d1146b732e9563ed5905c1a08c9",
+      "bytes": 224
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-fragments.json",
+      "sha256": "127b744af346419757781cf11d96af7b132e685836a782023adb498a1a92dda8",
+      "bytes": 9340
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-raster.log",
+      "sha256": "850fa008d08fbacdf73aa07d25775982264e8d735e12c9e2202ad1ec36bfd82f",
+      "bytes": 3450
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-rest-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-rest-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn1_reaction_50_left-000-owner.png",
+      "sha256": "1d6eebad54de5f7d7605b0699dab894138da4527d01700e115964655aeae866a",
+      "bytes": 14373
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn1_reaction_50_left-000-paint.png",
+      "sha256": "578f60a1e888ee9dbdc3f3d9fc0ec6d6582872748f03443a853bce54db853303",
+      "bytes": 253577
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn1_reaction_50_right-000-owner.png",
+      "sha256": "8997c8b0cebe2834dd4a03050cfb8acd96a8be3d804a6220c18440f5dbdd4e90",
+      "bytes": 14115
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn1_reaction_50_right-000-paint.png",
+      "sha256": "6658d6a61ab690c528907a1d9cfda6fa62ab113ca8ac575c08e2b20fe1d2a3ef",
+      "bytes": 252786
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_50_left-000-owner.png",
+      "sha256": "45dce67afeacb95e06a99c0b77e5814d042f4cb30d435fc545c5ebcf98b4328d",
+      "bytes": 14122
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_50_left-000-paint.png",
+      "sha256": "67fccd6cb803bd1a0940aa7f96e9585f07d782b3473cf4b4b2a85d3e24c9b84f",
+      "bytes": 252397
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_50_right-000-owner.png",
+      "sha256": "427a4ce3285041360871e6e5d282c3b5c5512e1989c3a1af616448aefa89dc35",
+      "bytes": 14166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_50_right-000-paint.png",
+      "sha256": "9676ae3a34aab6958ddcee95950d583078734eb32ec2a95d24ee5b2e6ea0285d",
+      "bytes": 233349
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_90_left-000-owner.png",
+      "sha256": "fadf84a32dc94450d2f648db0e9ab83c1318645bfe25e30af84a7b07ce45af65",
+      "bytes": 13935
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_90_left-000-paint.png",
+      "sha256": "bd2ce999340a0defe2a6edd4a8fc96f1b91582300f963dd086dc4283012725c4",
+      "bytes": 252762
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_90_right-000-owner.png",
+      "sha256": "427a4ce3285041360871e6e5d282c3b5c5512e1989c3a1af616448aefa89dc35",
+      "bytes": 14166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_idle_90_right-000-paint.png",
+      "sha256": "9676ae3a34aab6958ddcee95950d583078734eb32ec2a95d24ee5b2e6ea0285d",
+      "bytes": 233349
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_reaction_50_left-000-owner.png",
+      "sha256": "ab7b276f7a22f552c1d697c6d4331aa8d2ed719a2397397dda94609fb3437f93",
+      "bytes": 14187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_reaction_50_left-000-paint.png",
+      "sha256": "6bc10522999c764a6aeea6e2179c4919b2eca57b114960cebb135f747f0bae9e",
+      "bytes": 253347
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_reaction_50_right-000-owner.png",
+      "sha256": "ef0ab280d213dd8ffb3dfb084778dbde7b2d899bcbceaafe627c3486fc537965",
+      "bytes": 14216
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01-turn3_reaction_50_right-000-paint.png",
+      "sha256": "affcaaca50e612247b31fc4a4ea6c6833d7a3fd065c5f77dca45eabf1f15fd80",
+      "bytes": 222582
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01.json",
+      "sha256": "7f2051b66f824aacc8bf1fc8877a7ba4bab79512e10cde640dfbf6c1bce49257",
+      "bytes": 479205
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-exact-r01.log",
+      "sha256": "c5d2e0f4578276a93c9f6f71c959273aa9412d1146b732e9563ed5905c1a08c9",
+      "bytes": 224
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/physical-review-r01.json",
+      "sha256": "ca9cb823aa1f7107036b251932514deef0d11de1c79ab7c5b0e8751f45d64908",
+      "bytes": 4686
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-012-owner.png",
+      "sha256": "4c82d43331bc705ebf85073a5dc674af79ad235b27dd4cf63527feab2738076d",
+      "bytes": 11580
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-012-paint.png",
+      "sha256": "142d991b96e9c4c3b0d57a053d9f3f40de94aceb8d8c8e0db177c315a5545589",
+      "bytes": 171460
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-024-owner.png",
+      "sha256": "dea5c33550d6aa95f2ec736878c64974f398b6b547ffbcad992a03cc6b9d7d8e",
+      "bytes": 11701
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-024-paint.png",
+      "sha256": "3eb00ff04623f58dbd7cfc82cbedd882ea26a024d3860a4c9ae34caa693dcddb",
+      "bytes": 170140
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-036-owner.png",
+      "sha256": "baa18e8b9869552abac8ca5c0734f4fd8a76b3690dfe809dd4ff95e60684eb67",
+      "bytes": 11685
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-036-paint.png",
+      "sha256": "0045ed5e4dbe1680ab89b72e6c06c83ff2526d3ff04e42310c1907cba107d98b",
+      "bytes": 166716
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-060-owner.png",
+      "sha256": "16fad962ac4f6611f42243af7293cf31b31fc980731c5c8560a903f6520b9ea0",
+      "bytes": 12357
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-060-paint.png",
+      "sha256": "320bdccbb2837e11c864ca0377a04d13602433502e48ffb28b755b64526d450e",
+      "bytes": 152449
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-090-owner.png",
+      "sha256": "c06002f9e0b59e632e59a82af3bea3b31e9f393d486b517fd8768c86edf5f76b",
+      "bytes": 13051
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-090-paint.png",
+      "sha256": "54dca00dd33fa696ff28751c4a6a2f700f78c9cb9dd91426019a35cdc915bf51",
+      "bytes": 157424
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-108-owner.png",
+      "sha256": "5dbf4d01397213365b14d1cd8d2d89635e419bf564b972e249a736716c25e669",
+      "bytes": 12252
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-108-paint.png",
+      "sha256": "4f3a427f76d9dd7116660d9de5761201b9aa07a65cf6b8840b7b76fac478c2bd",
+      "bytes": 157698
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-120-owner.png",
+      "sha256": "4dc9a061053191e1d15c2ca6ebfccda21d9c03ec9578541849a5d74fd9ae89af",
+      "bytes": 12354
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-faint-120-paint.png",
+      "sha256": "5fafc7cd6cfafe19b1d79a4fe8d1463b918018106673e2f7d4289b72ecf84804",
+      "bytes": 164904
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-fragments.json",
+      "sha256": "0191ec61913a8e4ee5ee2706d20ef50cf86d90c270c0adce81d3125b7203b63d",
+      "bytes": 13101
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-012-owner.png",
+      "sha256": "90cf54be35fe2526dbfa50900d827abbdf6a07d50c01626402ebfa80969891ad",
+      "bytes": 12367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-012-paint.png",
+      "sha256": "f9cb5ac4fb3241a8534ecf321920048006df99943c0e0e04286f9a04bb3de0f3",
+      "bytes": 168006
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-024-owner.png",
+      "sha256": "8c09706d2190bbba2e35000fb6344df94579b903c3722527c67fe69f9df8db39",
+      "bytes": 12846
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-024-paint.png",
+      "sha256": "05dad34b35013afa64ee53839872c1219141ebd8954d52e3f580c3f2a5d92c97",
+      "bytes": 165157
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-036-owner.png",
+      "sha256": "d15f31f369c590b18966b0c5e7a7613a590d5ef42886bab39992cc590d4f047c",
+      "bytes": 12673
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-036-paint.png",
+      "sha256": "1acd6e38f550808c03d99e8dc6f57a2c3352a7cdb7c320cb98baf5aa884f8487",
+      "bytes": 167071
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-060-owner.png",
+      "sha256": "39cda43817c246552d17d4c7f5792d866fc78da0846943fc2ee1572221010f65",
+      "bytes": 11952
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-060-paint.png",
+      "sha256": "5a86523eb6e8a7a094c136bd837240b76d64387a9d23534078da2c423c814015",
+      "bytes": 172036
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-090-owner.png",
+      "sha256": "de2f11f63f551eae891782dcb7166b4c0e400eaa88541484f02bd433b3b89cb7",
+      "bytes": 11544
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-090-paint.png",
+      "sha256": "45c96160eec390f6918dadd78279ef41c4585d32a680dc314b8dc4f945e83be0",
+      "bytes": 171989
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-108-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-108-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-120-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-hit-120-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-pose.json",
+      "sha256": "e7f898d501bf82003855e36c7c738a68c35c89517d0d96b1a7b229fdfe7f0aa6",
+      "bytes": 1077270
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-pose.log",
+      "sha256": "6ec488d63a1767396d7ed9e7a5d21c9a66f67d75706761627f371d771f7b0511",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-raster.log",
+      "sha256": "97d9395992811e89fbbec58fc39cfa61005a29621317299e3d932725c2f75ea5",
+      "bytes": 5533
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-rest-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-rest-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-012-owner.png",
+      "sha256": "82f4169df97e5b09ba266cde182ce7efbfd9d1e94e0bfeadfa467b62d8bd7e9b",
+      "bytes": 11523
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-012-paint.png",
+      "sha256": "5dfb0f58d85d0c8693cfc2b9291d78698d9d42dcf926804376800d239d8da244",
+      "bytes": 171895
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-024-owner.png",
+      "sha256": "cfd93f7620acb74d73bf319461b8e9ec0c90f2c13c70673e55f40aaf76310ae5",
+      "bytes": 11524
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-024-paint.png",
+      "sha256": "a6d9ca5d3ae7e95f2c305eb283e4b23f3951064eee38ee428e5b8653b10d51ce",
+      "bytes": 171846
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-036-owner.png",
+      "sha256": "b1d5ee23fa62d83e26e62a181f74afe35adda81224990f75c688dcea18eeeae3",
+      "bytes": 11537
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-036-paint.png",
+      "sha256": "2d15a01b72e8f3ca0ac4860eaf625d0df665aa541ddc4a97a7740f19cea35349",
+      "bytes": 171900
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-060-owner.png",
+      "sha256": "6b0919cf9f16937761da9af98514bd5625a5fd56030a1344457a775a84e6b868",
+      "bytes": 11516
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-060-paint.png",
+      "sha256": "26aab82e4ffdd78c75c1cb00efa654940238325f83fd9984c239fb148573d680",
+      "bytes": 171923
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-090-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-090-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-108-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-108-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-120-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/baseline-victory-120-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-012-owner.png",
+      "sha256": "a2dc18685a3854a3a8393720e674ef6c55320644abe976f231d6a7ea0dff176d",
+      "bytes": 11572
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-012-paint.png",
+      "sha256": "4e4539e531110cf8b6e6faa67464c0ed42dd1ba10efd6ed555eba78b3c30351a",
+      "bytes": 171415
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-024-owner.png",
+      "sha256": "2aa972e3e02fa55f54728e45175b5d97b7023851ae489e7cf235d45fdddf3aae",
+      "bytes": 11697
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-024-paint.png",
+      "sha256": "e414021c3ad4d1a75e923b4e1d05d13f243005432ef1514d3fefa06f70063628",
+      "bytes": 170294
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-036-owner.png",
+      "sha256": "a8a953306d5e76cfe8a345627dbe03e3b5bc53a59e9d5e96a816666c8d632da3",
+      "bytes": 11715
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-036-paint.png",
+      "sha256": "983447406b708b37b19fda13b11c3ad5af4201e831d5d2165a002c1a1b34e622",
+      "bytes": 167279
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-060-owner.png",
+      "sha256": "c7f4c4edf63c3919370eb63ce3f098d08f9c37dfb349de5bdb0adf3357dc72b5",
+      "bytes": 12380
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-060-paint.png",
+      "sha256": "d535e077f282598ae439d292ed5f2e8bf3c457496f9209b90baec620f626a435",
+      "bytes": 153732
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-090-owner.png",
+      "sha256": "ffab14f106bf71cfe74c38ff48b8fdc1c686f0135c833c0df001940cf26bbb37",
+      "bytes": 13035
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-090-paint.png",
+      "sha256": "564025a05a8e533ffbe8aca9addd038c3c42e0da5affef5639e1e8931cb35e9f",
+      "bytes": 159267
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-108-owner.png",
+      "sha256": "32475841ac79e87a9047b1b046dcfa1f10e2772794278c258fb8361103523628",
+      "bytes": 12250
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-108-paint.png",
+      "sha256": "0729850cf250189b1c21b8cfef3acd2d824e5b05e791fb07264c40c79187dd74",
+      "bytes": 157693
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-120-owner.png",
+      "sha256": "4dc9a061053191e1d15c2ca6ebfccda21d9c03ec9578541849a5d74fd9ae89af",
+      "bytes": 12354
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-faint-120-paint.png",
+      "sha256": "aaacc9ccc2a71fdd24e332ceb8cd1cb45853e5f40f3aaa2ecdfef3ed276e65bf",
+      "bytes": 164898
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-fragments.json",
+      "sha256": "72a65b5e5b0027f5316221badc8e1bfdadc2da9668b632e52faebf12267082ae",
+      "bytes": 13064
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-012-owner.png",
+      "sha256": "73a519e49ee3bed4eb28e1673ce5c6116eef53d697cb563af44283416591433a",
+      "bytes": 12339
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-012-paint.png",
+      "sha256": "aa94063b5d3ef3bdae7614045b3111cf70578b4fa41a1510e1b629e11eca98f7",
+      "bytes": 166296
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-024-owner.png",
+      "sha256": "2aa7340cbae99858d3201b77f650ba95f5e5ba61b43cb94f8aa7edc903a1e71f",
+      "bytes": 12832
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-024-paint.png",
+      "sha256": "18bbdbfd4e64241cfa80fee7dc644ae5b394baf169b0c9c5a6dde8198add2dfa",
+      "bytes": 164682
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-036-owner.png",
+      "sha256": "6d5dc6eceab8d0b0aa60eb6308f925898477b42a2baed6062111db2522bb755c",
+      "bytes": 12653
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-036-paint.png",
+      "sha256": "021f18dcff78bdf6ce579ec2a25b3671bf0b2be1a3d2e85ed7a9a8d49f680ad2",
+      "bytes": 165448
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-060-owner.png",
+      "sha256": "0829e07888bb6591a16441334c92583ec5e253f4d7af614ef73bd85dc1e77150",
+      "bytes": 11945
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-060-paint.png",
+      "sha256": "b77c6690b1cfd553dbd98858ad2bebd6cbff79ad83c80de3bafea1a84869d34d",
+      "bytes": 171945
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-090-owner.png",
+      "sha256": "de2f11f63f551eae891782dcb7166b4c0e400eaa88541484f02bd433b3b89cb7",
+      "bytes": 11544
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-090-paint.png",
+      "sha256": "45c96160eec390f6918dadd78279ef41c4585d32a680dc314b8dc4f945e83be0",
+      "bytes": 171989
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-108-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-108-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-120-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-hit-120-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-pose.json",
+      "sha256": "cb4c07ac04822b3102451e074de6cb7468f531d3f6400de89829a8cfe4aed5bd",
+      "bytes": 1077448
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-pose.log",
+      "sha256": "6ec488d63a1767396d7ed9e7a5d21c9a66f67d75706761627f371d771f7b0511",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-raster.log",
+      "sha256": "a8b26508e04e827ff960d41dba9a4df0045a7e30ff2eb416de31a5740ff7c038",
+      "bytes": 5495
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-rest-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-rest-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-000-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-000-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-012-owner.png",
+      "sha256": "43a897e1c9b76a876d98bcae4f35a92ed18ee52fb7248a548e8db23e302075d5",
+      "bytes": 11512
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-012-paint.png",
+      "sha256": "a5192ac5ab11b58a51f3dd2268cf6dc21035513968b66ec482ef28173d03ad08",
+      "bytes": 171857
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-024-owner.png",
+      "sha256": "a871e630451d2216108c7a4c18ad7df550e3c6c28786d4707161ffeb42373f34",
+      "bytes": 11522
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-024-paint.png",
+      "sha256": "921f71c2067789d750f57f2a68c473291a58bea007807e330981db8ea16f109c",
+      "bytes": 171800
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-036-owner.png",
+      "sha256": "0f01e19eeb1fd944329328e7734760c0d1d6f2e50c8a40e6a142048b07ec75a4",
+      "bytes": 11527
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-036-paint.png",
+      "sha256": "7a967311e9947b8d15c11841eeaf99287925c598d1f733448462d9ea1408f13b",
+      "bytes": 171814
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-060-owner.png",
+      "sha256": "37fbf1dbf6201bd8e1273a5666b9e3e753123b10df6d7719abc3c3e9551cba46",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-060-paint.png",
+      "sha256": "076eede2652aa020e2880ec792e9cd2c82020811a6f830b33843cc277110e35c",
+      "bytes": 171869
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-090-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-090-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-108-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-108-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-120-owner.png",
+      "sha256": "a7d6b9e4a1b97b76c958f00b784691b13b019543ae72c1eba9417036ca023aa3",
+      "bytes": 11500
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/candidate-victory-120-paint.png",
+      "sha256": "058e401ece81387e8a733f637669760e33a0ebd75f74e6efde17ef1603b9817d",
+      "bytes": 171922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/compile-r01.log",
+      "sha256": "3f719549a5c029ad4e0bd475f865612b2bf95ea299dfe346785d1e5e1732e920",
+      "bytes": 199
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/binding.json",
+      "sha256": "34b95c8d7065a47967448ce2de46edd0e64f5bd9535ec87eb04c3a9ae51455ac",
+      "bytes": 733718
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/declaration.json",
+      "sha256": "0da2b018d17295b62757be853dc1e018c30951a21bf9836f71b99b332d1c389a",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/labels.png",
+      "sha256": "5e454820f70bd5c5e92b360feaa1feb13e9a73ab6c65afd446d14953d4424fb4",
+      "bytes": 37185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/atlas/c266-13-tropicbird-c1.json",
+      "sha256": "f0570d6b13b24f6c2e6080912b6e36911c7425f90cb93f2639daf45adeb7cbee",
+      "bytes": 6978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/atlas/c266-13-tropicbird-c1.png",
+      "sha256": "a4281e4f50cb7e22f58f180d620c40aa8dd89d698026b9eb5f53bb6ff6a3265c",
+      "bytes": 139029
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/atlas/receipt.json",
+      "sha256": "a33f41d9e2fcce71639d93ec6015ad52896f3b0ee6583fa2e207a17d356ab005",
+      "bytes": 2926
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/binding.json",
+      "sha256": "4ea729ddd9d111586b8faa7205b848c92670fc2fff94123306dc0a940cad0d37",
+      "bytes": 5793
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/keyed.png",
+      "sha256": "9e3e0d833e34101d64dca10a9d2798b2ebcc196dc2913c209af6805478e11f37",
+      "bytes": 1182008
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/manifest.json",
+      "sha256": "5dd6b2d2c76bed1ca27b008ff8be7dd4a347ef6c36c2ff85e5c6b08a05d7ba21",
+      "bytes": 2847
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/ownership.png",
+      "sha256": "abb24b498dd474bb0324ef7c5ed40422427dba415c4b9789bc9bd69dc3cb0032",
+      "bytes": 10365
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/beak.png",
+      "sha256": "413904a8c13f704bd3827c864861d6b3d322f312e7d9ef0e8914b17bb3d1b051",
+      "bytes": 5325
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/body.png",
+      "sha256": "26c00d2ea599ed838d813fdf9bde1068204b644bd0eadcc2dbbd38ec676e88ca",
+      "bytes": 20072
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/chest.png",
+      "sha256": "5bedab0c085cc54c14c9dc110fa472dae9d3649b176e1a1b89a9ca5dab4bcd66",
+      "bytes": 8470
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/far-foot.png",
+      "sha256": "0f65784d691207ecd648c7b72592aef0e83edbdd8223de7dc0fe6d12b92f4179",
+      "bytes": 2297
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/far-shin.png",
+      "sha256": "7d214ed2566fdf960f5269b4a72384679c64b19c427108820a9692e9cec144f8",
+      "bytes": 1280
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/far-thigh.png",
+      "sha256": "b56de183b3d42869210793dcbb20cbd1f2349e3485c35729804699f6fc07e06a",
+      "bytes": 1576
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/far-wing-flight.png",
+      "sha256": "dc73c61f97660201e5de53e65bb14a87f868512cd777af3b3daaf56d7d3d6f8a",
+      "bytes": 1811
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/far-wing-root.png",
+      "sha256": "f326d67ba8df75bc390e72cf586b76f6eb7cb4b6ce34a8202bbbe1c09a6c8966",
+      "bytes": 5119
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/head.png",
+      "sha256": "48e45f036e368fa8a6bfca4f46424ae5733e92bdc2bf95c7ad022992e4c8486f",
+      "bytes": 16177
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/near-foot.png",
+      "sha256": "e54d1d55d9658da475b834f6cf36fa3c856be1ea8ede9ba99f4cf3f4a0d57d7f",
+      "bytes": 2606
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/near-shin.png",
+      "sha256": "bcfebcad9b51dba63536b7fc6d55ed48b8a45083dbc6333a9e98c8d1a0c437f6",
+      "bytes": 1087
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/near-thigh.png",
+      "sha256": "27db20056138d3907c8414c17f66ef06559a84568d73d9d8d4ad0217165ec38f",
+      "bytes": 1805
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/near-wing-flight.png",
+      "sha256": "267268f24dfafe3a05f9ef48253fd21febff2635a2c914282be4ba3d9cf3d7b4",
+      "bytes": 18355
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/near-wing-root.png",
+      "sha256": "14c0dc0544b2a6329b000f462eb7cb3bc25e2b44128a1ffb8432228cfd2b5f44",
+      "bytes": 33161
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/neck-lower.png",
+      "sha256": "b7418ed728a6b8947e0f05feb75be4e8abd4214152938f771f20d2818c523c50",
+      "bytes": 6294
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/neck-upper.png",
+      "sha256": "63f359146eab0d1a6a79e96107467094fab4f043809e50268f2df46d8eead9fc",
+      "bytes": 7085
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/parts/tail.png",
+      "sha256": "9b9e121d0ce906b11e6c846ab1697704156cf65505e4650dd07a1dd4a0a45899",
+      "bytes": 23458
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/parts/receipt.json",
+      "sha256": "9ffc28b6984063bf7a9994407a851278626918941756df80d134c4f3bf0f52b4",
+      "bytes": 4843
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/pre-split-binding.json",
+      "sha256": "e6c86935e107a72cea2de87c5f9803f367d177007b976410c44742ae95566577",
+      "bytes": 499946
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/fit/record.json",
+      "sha256": "fe7f91183e762136c25359bdebac7839075e4c7ff348ac6348e9f41806054ba7",
+      "bytes": 6432
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/relabel-r01/receipt.json",
+      "sha256": "4d6bfaaa9ea5582cf88890a695b83d73e7c87aa704b006264c43ee9d15817c2b",
+      "bytes": 2075
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/run-r01.json",
+      "sha256": "0dd28a35679c0be6c0eb3992a58c5cfe99f257c720d9151132c13a525caa7929",
+      "bytes": 2855
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/static-r01.json",
+      "sha256": "0ee4eb4a218ae83c063a1b0043f1d8d5437906c94229fbf590028f1aba4715a1",
+      "bytes": 8415
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/static-r01.json.sources.json",
+      "sha256": "8a7c6488e5d20179eb834f531ffece7e30339715c933e1115c751b2e12f6c9ab",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/static-r01.log",
+      "sha256": "002f55295922f0b3af3f5e458f0fdeeec37987531f91ab87a0a563edb14194fc",
+      "bytes": 2185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-a/legs-thorax-keyed-2x.png",
+      "sha256": "0e6062d6253c70783a2b2d3e469732a9e43164d5dbf0593c27dd682cc97b9577",
+      "bytes": 186485
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-a/legs-thorax-original-2x.png",
+      "sha256": "89623500c278d69376514d7ef016b8cb78506bb815d9cdda774037fcfad4ecad",
+      "bytes": 524185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-a/tail-filaments-keyed-2x.png",
+      "sha256": "7c453fba7f71cf0f2fd33b30cb7d5c4263826d1a05060858f331bd413b6713ad",
+      "bytes": 43928
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-b/legs-thorax-keyed-2x.png",
+      "sha256": "f35dfcdc3f0df84b21efa2337ae2e8aebb090396c2ace0cd48f5807045b6cf91",
+      "bytes": 207685
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-b/legs-thorax-original-2x.png",
+      "sha256": "507b23fff51d2856de7e7fb1208e79bd0aabd866366733e1ba986638d082abf0",
+      "bytes": 557999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-b/tail-filaments-keyed-2x.png",
+      "sha256": "cf08b700065a3554c4b70010a2f588ce881552b569a0848c3ab3762df403cc26",
+      "bytes": 45301
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-c/legs-thorax-keyed-2x.png",
+      "sha256": "e2788de288a72db9407e08f304c10d23892b324bbd0129ce2839a26c91e22a64",
+      "bytes": 203364
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-c/legs-thorax-original-2x.png",
+      "sha256": "e75047b6e6cc23d183ea42230be5c165e140dd54c4223c54d4bec3f4840ec3f8",
+      "bytes": 558252
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-c/tail-filaments-keyed-2x.png",
+      "sha256": "44ea420710bad28fb579f9052273c5e8248ca5a38ea0e60e7355ad8136eff0df",
+      "bytes": 37148
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-d/legs-thorax-keyed-2x.png",
+      "sha256": "5670563690dde7b8670f7d39e790a4da08d8dae97963ed8478182fefa9d5e19d",
+      "bytes": 217026
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-d/legs-thorax-original-2x.png",
+      "sha256": "d0881b229fdf25842b2ea1bcecdf407ea1ef44fa5832d6f6f8a8e9586e835238",
+      "bytes": 589177
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/w1-source-review/c465-mayfly-d/tail-filaments-keyed-2x.png",
+      "sha256": "714f640315bc0916d561e61db568a3f889f71bebebdcb8d8b42cd287686ea7e7",
+      "bytes": 40946
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/continuation-status-r02.json",
+      "sha256": "e64715bbf125e35e6fc797243c1e2e339163308ca74ed4ce344541eabcd7933b",
+      "bytes": 3322
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/kangaroo-b-assessment/README.md",
+      "sha256": "5fff151d29ac66170ef5c901102275b003f3d0cae67fd50cbbf1de944f6a6638",
+      "bytes": 2467
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/kangaroo-b-assessment/api-inspection.json",
+      "sha256": "7444089cf5662b0f3d62e58b84d566e15b892310678774246df4add18af9ad81",
+      "bytes": 4428
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/kangaroo-b-assessment/freeze.json",
+      "sha256": "5ab2e444f3000d53ad9cc6a8f2f8831ff6047e89e97ad0c562bf55291f2e5113",
+      "bytes": 968
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/kangaroo-b-assessment/inspect-api.mjs",
+      "sha256": "ad162dbcd17f4326bb6b58716d5f1b5fb158f1850fa30b905670dd30c5636af1",
+      "bytes": 2210
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/kangaroo-b-assessment/review.json",
+      "sha256": "473fc62b4325d96975118666b2fe50995f22c78fb52cc43a87cb6245e2a7040f",
+      "bytes": 6802
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/join-current-c261.py",
+      "sha256": "934744427739265beb734a08d18df7ac7268c479ac34631120b9c5cf3f52f6fb",
+      "bytes": 2369
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/checkpoint-final.json",
+      "sha256": "99248038b36a87bfb0c3f797a1f2130420000da5f21ab1402626acd344dda094",
+      "bytes": 4804
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/checkpoint-freeze.json",
+      "sha256": "20df7ce36d5d42ba2633627f8ef286da6049a3fae785a0a225d4dbb588281904",
+      "bytes": 1272
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/evidence.json",
+      "sha256": "ce2a7de13332e5ec86e5ae2b4241b0b666b57ee548f3b46c0f32a22732ec2817",
+      "bytes": 224355
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/freeze.json",
+      "sha256": "eff584cde844b4134586c6ea45534e3bc1adfefc235650fb83fb97a43ad95a89",
+      "bytes": 3622
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/hinge-neutral.png",
+      "sha256": "2dcf4e839dfcf99fc61ee252b49813229532c40837b9b0570be99aff8c3d7259",
+      "bytes": 50305
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/keyed-neutral.png",
+      "sha256": "50e903a73365a744c8722a860237b3033bff414a119638a6770c51b7af8f8440",
+      "bytes": 533715
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/mantle-neutral.png",
+      "sha256": "ae138c9f9493d80f4e5c53504b20c362c1365c5a665a4a1e1335ac2bf70d94ff",
+      "bytes": 98326
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/review-config.json",
+      "sha256": "e1dcb868f97828712fcd409734aaeabd9bd4ec5541261efe5a3cb4f0cbcfdeaa",
+      "bytes": 3208
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/review.json",
+      "sha256": "23a96af925ee5c8a84b8af75767aedb733b454ecd19f8805afe166e4e365270e",
+      "bytes": 12401
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/review.md",
+      "sha256": "d4965ea5ded6f25ffae83411cf794554c11da701b364b12d2896f4e7f4e8259c",
+      "bytes": 1439
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/source-owner-conservation.json",
+      "sha256": "584c3b9c9bd8001931783d5806b9b9310bab68578a22f9636084db5ad52562ae",
+      "bytes": 10622
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "626ecc478b1f3197a606a8cf4b8c0568339b35e99c10d87ac3a3016f6246e3b1",
+      "bytes": 1392371
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "6f611801749f01286dfab4fe566334bc2e4179aafbce9ce47a891914b45a595b",
+      "bytes": 1408989
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "41fdcab1d9508e16d7f0a99880472b01a1e99a47008f269c69d7d771ff63422d",
+      "bytes": 1379883
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "253030ccaa72ddee822c2f949ae6ab0abe57da57146dc1965a0ed6be007cebfd",
+      "bytes": 1374331
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "24a834cd23f6ad072bcc34a8f44dc042ac0ddeff76b1f1366a53d116af788770",
+      "bytes": 1413772
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/valvefar-neutral.png",
+      "sha256": "e5efdf25cc34b686adf21c8b2a24771948edc1f84b332386ac8d765bd215ff98",
+      "bytes": 279169
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/native-c2-r01/valvenear-neutral.png",
+      "sha256": "c3fbf922869af350fb6704fd179ad6b9678b8c1a630517577424ea54d0aa76b7",
+      "bytes": 81307
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/prepare-evidence.mjs",
+      "sha256": "3ecf030a499c86158c03352db4505ea561eae337bcfc0b418c7b10ab0d283421",
+      "bytes": 3663
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/scallop-native-review/verify-review.mjs",
+      "sha256": "9ec90d4d1a6ea6ec45ffc6d2b30bc609d4c8b186ab97462c5d1e37e6d902ec34",
+      "bytes": 4792
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/README.md",
+      "sha256": "c6ad25834136127aff3188ca6f7fc6ccd8eeb2c99681786e87e1196b374a3066",
+      "bytes": 2550
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/body-neutral.png",
+      "sha256": "7258aff4e843cdc3e2db15b121a653605bc50bf84aee1b9f4fb4c9add3cd171a",
+      "bytes": 231073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/checkpoint-final.json",
+      "sha256": "b58bb9ae88dd77d3637801380119ade2cdabd9e12bfcf760114c0b24a0a77ba4",
+      "bytes": 10111
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/checkpoint-finished-freeze.json",
+      "sha256": "7f2e4e3b31ee821ecf6c835299b3bf315940027fce019f5f959a1af4646b10d0",
+      "bytes": 1444
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/checkpoint-finished.json",
+      "sha256": "8dfdf3d0b65d219bc49991f0b5d82c06236865cffebdbb51aa4ee782a3d8a9a4",
+      "bytes": 11188
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/conservation-check.json",
+      "sha256": "57ad9b2533e2942b9cfb23bff2b7bc6690da92a909a217b26a2a661506260eee",
+      "bytes": 11648
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/ear-near-root-neutral.png",
+      "sha256": "153742e0c724f5009633731add7fd7860664c487a646b7ff4faade9d02bf164f",
+      "bytes": 5584
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/ear-near-tip-neutral.png",
+      "sha256": "3a124fe6ea3e7663ae37e63ff0e158845b5ec331663822e5ad3be611a922c3ba",
+      "bytes": 4470
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/evidence.json",
+      "sha256": "b20a1364e5f2a5d4808a0478bf887e1a8e6aed4d20e4113d1cb46c9e389e3a7f",
+      "bytes": 243834
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-far-ankle-neutral.png",
+      "sha256": "8ebf9a7f3e6b2892c0d1c8b578fb24ce8af71ceed31f3b1519388155a83d2238",
+      "bytes": 2330
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-far-knee-neutral.png",
+      "sha256": "c18a83aea3ca9e89734db3d58764777e75af57b513062bc91cc0fb458f77ef08",
+      "bytes": 3158
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-far-paw-neutral.png",
+      "sha256": "032ca83719ce853bfcec2dc0cf45de0be818363c5a3c69e82332f164f600761d",
+      "bytes": 891
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-far-root-neutral.png",
+      "sha256": "ad780c400e3b0be78cfeb3e252d1b349f6d2d9918f6d831ab0246a577d574b79",
+      "bytes": 4220
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-near-ankle-neutral.png",
+      "sha256": "7796aad6dd740e41e4c552442f053344d676e07df61a3a36852fc03be2956905",
+      "bytes": 3713
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-near-knee-neutral.png",
+      "sha256": "c6c39526556abd1139ec060c8538b07c13303759e621956f3fefd55184818688",
+      "bytes": 2233
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-near-paw-neutral.png",
+      "sha256": "f30b2e9d44cb03e7e51c4ce08e19a7bc8722b192e435e59b81e873f6889fb522",
+      "bytes": 1288
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/fore-near-root-neutral.png",
+      "sha256": "915d41cf3127e956f0213de001d857dce9406ec01771dfedf87ada609e1e2fc9",
+      "bytes": 3073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/freeze.json",
+      "sha256": "d2d486eb9cd76e56e3db4e815436c0df3c1926c3790b0cd9a763ab97f7f1c2db",
+      "bytes": 8659
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/head-neutral.png",
+      "sha256": "40822d5a7e054a3acf99800f8b707d7a48f590e551488f54be97235a87ea3dbc",
+      "bytes": 70841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-far-ankle-neutral.png",
+      "sha256": "762dd5210693739606e775bd67b8c9a1abf1939d482d5473abba9ae03916df63",
+      "bytes": 1595
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-far-knee-neutral.png",
+      "sha256": "010d56907bfb68f2c0ba5091b56d6ac79e88f668322edc0a0058cf9394566f95",
+      "bytes": 3183
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-far-paw-neutral.png",
+      "sha256": "ff0e9d3fbc0390990c1df8f4f7d3abf105356253ef4f0726e1fc7bac4c8087df",
+      "bytes": 2164
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-far-root-neutral.png",
+      "sha256": "e132fff86460b962625205dab798e6cc2d8c5e032bd7b1f19f1de7a12d2d83ff",
+      "bytes": 4083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-near-ankle-neutral.png",
+      "sha256": "a22c74e80b5a7b680e00b37e1fdee4ec4faa24666d03555b21dfc5d1398114bd",
+      "bytes": 3419
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-near-knee-neutral.png",
+      "sha256": "d483277158cbb8074f62efcd3758266d5df240dfc0fbbd929b9cf1675784c8c0",
+      "bytes": 4002
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-near-paw-neutral.png",
+      "sha256": "96b1bec57d487a10ae7a7495e3ead3d1ee5255c207ec42b1f539bee0194979ea",
+      "bytes": 3446
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/hind-near-root-neutral.png",
+      "sha256": "1fb4b69c3222073c4df3dca93960ff0e6df4145bdeeebeff8840d3bb237bb1bd",
+      "bytes": 7114
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/jaw-neutral.png",
+      "sha256": "f5781bdf11fac70521bf03dd8a2b8c277a134f3c760c1c33300301da3764999d",
+      "bytes": 2909
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/keyed-neutral.png",
+      "sha256": "18ef1b14e008ab6bb2188d1da2aa1e310cb595063d2357e81be5d3c0a4971fa7",
+      "bytes": 429068
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/neck-neutral.png",
+      "sha256": "eb4d96d5430b7e3c1e59c6b40f6383a8926c0b03ddb9715d92fca5a330ff10de",
+      "bytes": 33402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/review-config.json",
+      "sha256": "833e4d7e0cc769aca70e7e074770b11d6b58e119ba4174a85bb2d7ac14a5f078",
+      "bytes": 3210
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/review.json",
+      "sha256": "2505fae709691de6e96148e2db57d40d48ac76ed91b91a26eca514038ec22cfa",
+      "bytes": 32142
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/review.md",
+      "sha256": "94ef4f946c91c353b67ca5fce52f9200f2f23a131a8cbdfc9ee26b3e24567ad8",
+      "bytes": 1491
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/tail-base-neutral.png",
+      "sha256": "1dc5743814bfcb0b5112d4e7891286e91e89b8e1bf163eec45783a7d17175d71",
+      "bytes": 3356
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/tail-distal-neutral.png",
+      "sha256": "0959bf350be3117b90660b04599106b029429c888a61e1da498c8e1fe4a8f8df",
+      "bytes": 1776
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/tail-middle-neutral.png",
+      "sha256": "bb3a31b41354c9756e543cea5effbe60a9b5293ecacb40ec0f9181fbe6e18c00",
+      "bytes": 2545
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/tail-tip-neutral.png",
+      "sha256": "6fe418507bc8338a2fe4af5c10b1b043b2b6254d649d26c3e69f95e43151a37b",
+      "bytes": 561
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "f5b176780097feed9858cda9c037c54d3d50502565e7ad4f60e42a733431cb5b",
+      "bytes": 1863858
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "6857c7eecc645d5fac7523af8c4ed75e7a4fadc7bdb7f8296a5c565f65345432",
+      "bytes": 1904154
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "2d9c7168fa21b4a049ac37137ef901493f7c101a0ac45819969fe0b2893d70e8",
+      "bytes": 1825382
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "e9750e5efa972f3b16429ce22289332c91ea7f5b5e33782cf7f230cb157b4130",
+      "bytes": 1822448
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/finished-r02/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "099a444a54e05405b2f38f93d8d6bb2a08945c4344bb94f5b3ec8416d8d38f10",
+      "bytes": 1864906
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/checkpoint-freeze.json",
+      "sha256": "8613beec5289e1f5ecdb3d5b590d0d32a1861d63149382c67fd8303867cb48ca",
+      "bytes": 1032
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/verify-finished-conservation.mjs",
+      "sha256": "20b1ebb63bc8563dfa6bfad8cc0860f02375d5982541d97ad0cd51f88bda8190",
+      "bytes": 7012
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/README.md",
+      "sha256": "ce6ac20e7d09ec54364eed503c2b8a106fac73f33a2e99d4516c216b5eba92c4",
+      "bytes": 3022
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/decision-table-ref.json",
+      "sha256": "7b49fc815e0fb929ef479d25330f804c39aadd333c82844d02ff18e41e871649",
+      "bytes": 1700
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/delivery-snapshot.json",
+      "sha256": "46cc372f1d69962b3d2f88b67487782b475cc40600a0299730ca0314dfd85aff",
+      "bytes": 2127
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/five-still-index.json",
+      "sha256": "89684cc425f98a5997ecd6470d7c6c7cc386374292a9fdce9aee065094098365",
+      "bytes": 397
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/freeze.json",
+      "sha256": "79c122b4b2a8cddb5e0537c68bc42c91a6e000d8eb4bc55d7ac07988a703d910",
+      "bytes": 2535
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/membership170.json",
+      "sha256": "8f6f1172e5160e3fa0bb6dc18f88fd25c71c64f1b1451e6b77cff5e1cd46dad3",
+      "bytes": 191136
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/override-contract.json",
+      "sha256": "a8cdf4000d6fb0efa6abe83074ef6a3c3fca8cc3534beeff8ce88524834ab192",
+      "bytes": 2680
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/override-ledger.json",
+      "sha256": "bb760ab8c7c95526fce075090a43a48491b52a09ad0a3bc2ca65624bc785f433",
+      "bytes": 10827
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/source32-snapshot.json",
+      "sha256": "7aa8c1ba0feccb85d08b61132fbc1fd0ae7c8a1a2689185ff37ffdd6544816bd",
+      "bytes": 35391
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/verification.json",
+      "sha256": "b39235ef61b860ca0176cea0246798d590f11ec519bd2352d2bcacdcb40df12c",
+      "bytes": 1181
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/verify-paperwork.py",
+      "sha256": "b1df54367bf33914c632fe56dc0fe3171d98925457771716a4cd3bb489f1240b",
+      "bytes": 9044
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/all26-parts-sheet.png",
+      "sha256": "8ba58d7f4220b513d5e649269cfe2e34ece46e896f72f85cfdb5d69b4630755e",
+      "bytes": 371427
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/body-neutral.png",
+      "sha256": "7258aff4e843cdc3e2db15b121a653605bc50bf84aee1b9f4fb4c9add3cd171a",
+      "bytes": 231073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/c261-join.json",
+      "sha256": "6c9817f64dc8d6a67ea5a9cc985b4f05a10d4dad5597037cf9db4923792124b9",
+      "bytes": 2041
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/conservation.json",
+      "sha256": "932330c9d5ef017d78da90661382f89d7b49498b7c6e286074bb8842f4397ab7",
+      "bytes": 14962
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/ear-near-root-neutral.png",
+      "sha256": "153742e0c724f5009633731add7fd7860664c487a646b7ff4faade9d02bf164f",
+      "bytes": 5584
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/ear-near-tip-neutral.png",
+      "sha256": "3a124fe6ea3e7663ae37e63ff0e158845b5ec331663822e5ad3be611a922c3ba",
+      "bytes": 4470
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/evidence.json",
+      "sha256": "399141c05822b29d9cc1858bc6fbb9a4c5eb210e11e94533ef48310964949ffc",
+      "bytes": 238415
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/finalize-review.mjs",
+      "sha256": "7fe6c66580347e700d6bbc4b119acce6577d972b1b5c9c0286e14f815b5a12b4",
+      "bytes": 8867
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/finished-jaw-ear-3x.png",
+      "sha256": "08a4d8c6a29d01ad4dd626590a3bbf4f251b9737e72397a47867f15e91b5e2e2",
+      "bytes": 152362
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/finished-keyed-neutral.png",
+      "sha256": "18ef1b14e008ab6bb2188d1da2aa1e310cb595063d2357e81be5d3c0a4971fa7",
+      "bytes": 429068
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-far-ankle-neutral.png",
+      "sha256": "8ebf9a7f3e6b2892c0d1c8b578fb24ce8af71ceed31f3b1519388155a83d2238",
+      "bytes": 2330
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-far-knee-neutral.png",
+      "sha256": "c18a83aea3ca9e89734db3d58764777e75af57b513062bc91cc0fb458f77ef08",
+      "bytes": 3158
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-far-paw-neutral.png",
+      "sha256": "032ca83719ce853bfcec2dc0cf45de0be818363c5a3c69e82332f164f600761d",
+      "bytes": 891
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-far-root-neutral.png",
+      "sha256": "ad780c400e3b0be78cfeb3e252d1b349f6d2d9918f6d831ab0246a577d574b79",
+      "bytes": 4220
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-near-ankle-neutral.png",
+      "sha256": "7796aad6dd740e41e4c552442f053344d676e07df61a3a36852fc03be2956905",
+      "bytes": 3713
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-near-knee-neutral.png",
+      "sha256": "c6c39526556abd1139ec060c8538b07c13303759e621956f3fefd55184818688",
+      "bytes": 2233
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-near-paw-neutral.png",
+      "sha256": "f30b2e9d44cb03e7e51c4ce08e19a7bc8722b192e435e59b81e873f6889fb522",
+      "bytes": 1288
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/fore-near-root-neutral.png",
+      "sha256": "915d41cf3127e956f0213de001d857dce9406ec01771dfedf87ada609e1e2fc9",
+      "bytes": 3073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/head-neutral.png",
+      "sha256": "40822d5a7e054a3acf99800f8b707d7a48f590e551488f54be97235a87ea3dbc",
+      "bytes": 70841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-far-ankle-neutral.png",
+      "sha256": "762dd5210693739606e775bd67b8c9a1abf1939d482d5473abba9ae03916df63",
+      "bytes": 1595
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-far-knee-neutral.png",
+      "sha256": "010d56907bfb68f2c0ba5091b56d6ac79e88f668322edc0a0058cf9394566f95",
+      "bytes": 3183
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-far-paw-neutral.png",
+      "sha256": "ff0e9d3fbc0390990c1df8f4f7d3abf105356253ef4f0726e1fc7bac4c8087df",
+      "bytes": 2164
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-far-root-neutral.png",
+      "sha256": "e132fff86460b962625205dab798e6cc2d8c5e032bd7b1f19f1de7a12d2d83ff",
+      "bytes": 4083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-near-ankle-neutral.png",
+      "sha256": "a22c74e80b5a7b680e00b37e1fdee4ec4faa24666d03555b21dfc5d1398114bd",
+      "bytes": 3419
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-near-knee-neutral.png",
+      "sha256": "d483277158cbb8074f62efcd3758266d5df240dfc0fbbd929b9cf1675784c8c0",
+      "bytes": 4002
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-near-paw-neutral.png",
+      "sha256": "96b1bec57d487a10ae7a7495e3ead3d1ee5255c207ec42b1f539bee0194979ea",
+      "bytes": 3446
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/hind-near-root-neutral.png",
+      "sha256": "1fb4b69c3222073c4df3dca93960ff0e6df4145bdeeebeff8840d3bb237bb1bd",
+      "bytes": 7114
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/jaw-neutral.png",
+      "sha256": "f5781bdf11fac70521bf03dd8a2b8c277a134f3c760c1c33300301da3764999d",
+      "bytes": 2909
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/neck-neutral.png",
+      "sha256": "eb4d96d5430b7e3c1e59c6b40f6383a8926c0b03ddb9715d92fca5a330ff10de",
+      "bytes": 33402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/original-jaw-ear-3x.png",
+      "sha256": "40154bf43fae14f1871c1e4eb366a3d5975c55a92b88de422986e0dbac30935d",
+      "bytes": 150949
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/original-keyed-neutral.png",
+      "sha256": "81416692da1d94562ba1202861ee906ba934b5c3231d6fdccaadaf1ea3658986",
+      "bytes": 421367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/prepare-evidence.mjs",
+      "sha256": "84db2003daf1c78e668b0638cf87b99a5c80b958e2c76196dd07d1cc863b05ea",
+      "bytes": 9333
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/review.json",
+      "sha256": "de5398f082a62779ab589e2478a6f0fb1b4ef4ca8ad31ba8e10f51f5e314f173",
+      "bytes": 39494
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/review.md",
+      "sha256": "83eacf10910803718e1461644fd15562852e08bbc0b4d44c3174c73ec979ec08",
+      "bytes": 1931
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/tail-base-neutral.png",
+      "sha256": "1dc5743814bfcb0b5112d4e7891286e91e89b8e1bf163eec45783a7d17175d71",
+      "bytes": 3356
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/tail-distal-neutral.png",
+      "sha256": "0959bf350be3117b90660b04599106b029429c888a61e1da498c8e1fe4a8f8df",
+      "bytes": 1776
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/tail-middle-neutral.png",
+      "sha256": "bb3a31b41354c9756e543cea5effbe60a9b5293ecacb40ec0f9181fbe6e18c00",
+      "bytes": 2545
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/tail-tip-neutral.png",
+      "sha256": "6fe418507bc8338a2fe4af5c10b1b043b2b6254d649d26c3e69f95e43151a37b",
+      "bytes": 561
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn1-hit-reaction-50-actors-2x.png",
+      "sha256": "fda4b57b1b690f6d3bdca416fd723268723d48eb9e959a743a9a0de724c2e5d1",
+      "bytes": 909091
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "f5b176780097feed9858cda9c037c54d3d50502565e7ad4f60e42a733431cb5b",
+      "bytes": 1863858
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn2-dodge-reaction-50-actors-2x.png",
+      "sha256": "a9778b5564e8782c084be70d3d12c10a8705803303603b88c69cacb3426c1107",
+      "bytes": 922711
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "6857c7eecc645d5fac7523af8c4ed75e7a4fadc7bdb7f8296a5c565f65345432",
+      "bytes": 1904154
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-idle-50-actors-2x.png",
+      "sha256": "5900b9b0bdb1f0963323c67a3e4bf1d57076c91158a2b82d1772a06f0ab5e2d1",
+      "bytes": 867866
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "2d9c7168fa21b4a049ac37137ef901493f7c101a0ac45819969fe0b2893d70e8",
+      "bytes": 1825382
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-idle-90-actors-2x.png",
+      "sha256": "3c77e0fa17d49e0bcbff933343d8b23f09d70f80370552c19673faf0a9be5701",
+      "bytes": 864748
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "e9750e5efa972f3b16429ce22289332c91ea7f5b5e33782cf7f230cb157b4130",
+      "bytes": 1822448
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-reaction-50-actors-2x.png",
+      "sha256": "67825f5662c799d53a6337693bdfa17adbb967c4de07c99fe1ebb536b32c384f",
+      "bytes": 908463
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "099a444a54e05405b2f38f93d8d6bb2a08945c4344bb94f5b3ec8416d8d38f10",
+      "bytes": 1864906
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-vole-review/verification.json",
+      "sha256": "8efb99f0770b12a0092891ac6ef07ad11dbbe6de94ec9a930616c48eecda6880",
+      "bytes": 421
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-keyed-neutral-2x.png",
+      "sha256": "df692ae25c8523e5054308786e94932a78859a97b34e9facad52f4627c4013e2",
+      "bytes": 484024
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-keyed-neutral-native.png",
+      "sha256": "0fb4ac1fe17079ab18e9dfbc17bcda02e548f4a52c314c88d07f18e4325739a0",
+      "bytes": 433348
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-original-2x.png",
+      "sha256": "6ec6c40e53a69271fb0616a2f99cb4e2d5b0e1e0d02a2e376db5ee43188d75ae",
+      "bytes": 555957
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-original-native.png",
+      "sha256": "f20583f078ae4965489016bfaa6ad5f67328236a64f9d12ea47f757a188559d0",
+      "bytes": 490211
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-raw-classifier-neutral-2x.png",
+      "sha256": "300c810d86987c7c675a3e1bb029eb57ef8d8f87e1abf636850550ecfa174c40",
+      "bytes": 488196
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/chest-belly-forearms-raw-classifier-neutral-native.png",
+      "sha256": "728697586b636c7ea1b0117416313ee2dab5c3e243f1d3f711c8f6c89bbfa566",
+      "bytes": 437534
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-keyed-neutral-2x.png",
+      "sha256": "c94abe8d50b4f4da0c1e3916178722814fe6aa459b23493d0aa44d853a421cd2",
+      "bytes": 465370
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-keyed-neutral-native.png",
+      "sha256": "b7cfbf75826ecd9e41ae99b065cb21029e68461e6d712966a7babd3fbe53269a",
+      "bytes": 410985
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-original-2x.png",
+      "sha256": "0c9fbc6476b4031cfbc9cfe264688c01e7145505ba10f1689233b3977d575e9a",
+      "bytes": 642705
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-original-native.png",
+      "sha256": "9358f2fba54cdcae707ecb1769cd95e2999ba45a60318bc825d0e54419416cd9",
+      "bytes": 550365
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-raw-classifier-neutral-2x.png",
+      "sha256": "c9751ec969a8502d901345fe526b93495e37c6b54f237661c664cfe8fa9d7e7d",
+      "bytes": 475189
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/hips-hindfeet-raw-classifier-neutral-native.png",
+      "sha256": "00dde978967a7038a0a545bcece315e9a9182f9f956952c7f81a30ab85060b38",
+      "bytes": 420620
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/keyed-on-neutral.png",
+      "sha256": "b5b7688c4842fbc9bc76ae0bcbee359d8c9e40081e3d58d5d87a511d443598e9",
+      "bytes": 879474
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/keyed-preview.png",
+      "sha256": "64a1f2f9d3a80e1a7ce52a051cc6122947aca4ade812276650c4c7a35fce88c2",
+      "bytes": 1814529
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/numeric.json",
+      "sha256": "c110edb5b4d6d1e360ccb83d38d8a1d3afe932f0c2ea59a79e182816fb8ec783",
+      "bytes": 11770
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/observations.json",
+      "sha256": "87b81df3658ae656180aef97fc2d9d9d9cad6a7a88099a9f2a485b69def2cd8c",
+      "bytes": 5402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-a/raw-classifier-on-neutral.png",
+      "sha256": "bb0c2fcff054fc1a5e0f0789efb34aff24079e74cc034154e7ef69c9d2c19068",
+      "bytes": 898451
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-keyed-neutral-2x.png",
+      "sha256": "d36dfd418e4ca0e8cbc65669c52c421a7cd6f5103a1d60f0ccd63bdb451829a8",
+      "bytes": 341545
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-keyed-neutral-native.png",
+      "sha256": "5b3bda93e7ba6346ae2c91c436c593079288adff1fea1360ccfa63b90eb719e9",
+      "bytes": 302959
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-original-2x.png",
+      "sha256": "d0b2b181338da4c0be9047abf25887ae4d5105ed7bae44caa42fecad05abc49f",
+      "bytes": 454473
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-original-native.png",
+      "sha256": "42da640e24eaef0d2ded407983c9415950301dbd27a6d0368529af9151f7d94f",
+      "bytes": 390925
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-raw-classifier-neutral-2x.png",
+      "sha256": "71d4505bb1813a8cb3ac5fc07bec0cfe728c32f2bb6a486157b04202effb13b3",
+      "bytes": 345989
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/chest-belly-forearms-raw-classifier-neutral-native.png",
+      "sha256": "ee3f461ea8d06cb95960871307f23957c7feb351a208b83196cddf60d3054a97",
+      "bytes": 307164
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-keyed-neutral-2x.png",
+      "sha256": "aa3706d4c34654ba91580d740990d80bf6cc98de3d6175400990b72500c96b06",
+      "bytes": 347198
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-keyed-neutral-native.png",
+      "sha256": "0376ba3d84fee153049159e511cd20bcac069e0eb7e01132fcf9fd96f8bddf51",
+      "bytes": 303296
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-original-2x.png",
+      "sha256": "73cb21d5043308722436eafbb88d5a426f0ad3fda38979d6e3f7f217faee1c36",
+      "bytes": 549426
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-original-native.png",
+      "sha256": "0d78ca335e345ff68286c752ad07527f22597df6549d66add6584fdb4b28c32f",
+      "bytes": 459084
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-raw-classifier-neutral-2x.png",
+      "sha256": "e5ce7c53b9c7c234775a43741de25fab66e2a8b7839c70a4b46de9c74aaacb43",
+      "bytes": 356292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/hips-hindfeet-raw-classifier-neutral-native.png",
+      "sha256": "a0ef3911be3cb5a9951c4cd150c27d7c8a0a372fdd9224b55c5e1906b2befd5c",
+      "bytes": 310978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/keyed-on-neutral.png",
+      "sha256": "416706c18a4c50aca8696c7d837d5ae2e4bc38064dd94fe80d53b7be11579079",
+      "bytes": 601070
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/keyed-preview.png",
+      "sha256": "bb3b47d70774e4f4f05cb08c4cb254c1b35648a5700a44df60f4e224449830ed",
+      "bytes": 1581896
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/numeric.json",
+      "sha256": "2c0b50b8760f4f54f84df2e38cda7f4458005e6d7e152cb51c8339854a1a6f69",
+      "bytes": 11819
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/observations.json",
+      "sha256": "3e6c9e6578b25b3136a8a8ef891d05da616a736e1430f754f43ec1b1984f05b5",
+      "bytes": 5402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-b/raw-classifier-on-neutral.png",
+      "sha256": "0bafa4b216fa643b06efa60d035bef037471959c2d96702ca13d6072b0dd75ba",
+      "bytes": 616924
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-keyed-neutral-2x.png",
+      "sha256": "189d61171ddcf77207e8f552c10f86eb386a0715ea97fba2d02c619c643d2ed2",
+      "bytes": 340268
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-keyed-neutral-native.png",
+      "sha256": "ce6bc602a0ad2709fca73ada16d6ad950c23b10a8fb09d095da242cf5bdca446",
+      "bytes": 299082
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-original-2x.png",
+      "sha256": "668f58774e3b82d5279baa035da3a2e3838096349b6b295de5bfed2caaa63708",
+      "bytes": 453324
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-original-native.png",
+      "sha256": "fdb3c0d402af36f11574eaa0cad3e1066edb6057c941a4e974cea93b285fa06d",
+      "bytes": 387359
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-raw-classifier-neutral-2x.png",
+      "sha256": "94a950e466438210feebe85cae53decc362871fdd5178bb06770ddb0444de646",
+      "bytes": 344848
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/chest-belly-forearms-raw-classifier-neutral-native.png",
+      "sha256": "c5726fa4c8e7ae84ee664e1a9c2d7bcfeb4c97015ef2a186f155e27c4d0a5a8b",
+      "bytes": 303569
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-keyed-neutral-2x.png",
+      "sha256": "2ab8fc812c49666023e04365702fc62f83349b8836b3359c62a7ca9fae8093a0",
+      "bytes": 290254
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-keyed-neutral-native.png",
+      "sha256": "b453118921891401b4624a53ef4e939dc83ed8f61b58dfaaeb92e58e8827ee47",
+      "bytes": 249206
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-original-2x.png",
+      "sha256": "a08ed22ba114833517392b24dd119384d01659351712200fa189198e144f08ab",
+      "bytes": 501030
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-original-native.png",
+      "sha256": "a31ddd7615c613b393a794a264b23d518e76af4ccb8bd26313af8862876b38d0",
+      "bytes": 410468
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-raw-classifier-neutral-2x.png",
+      "sha256": "ca1c3b49d3f56e5f73608d7e4aca7cbe1018b97ec8b15976ef52bac50131a11a",
+      "bytes": 298584
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/hips-hindfeet-raw-classifier-neutral-native.png",
+      "sha256": "85d135f49c21602b319402d917f84873f9225a06b4f9785536f3149ed7738225",
+      "bytes": 257140
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/keyed-on-neutral.png",
+      "sha256": "1ef8d601f4edf9a4dcd577aaad06be6dd8c7c00765655ee636b03e506469afa3",
+      "bytes": 543964
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/keyed-preview.png",
+      "sha256": "6f9be3b17ee711af736e53df4ac23beef94d57f2fc28f29ea758141a28b9648e",
+      "bytes": 1535555
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/numeric.json",
+      "sha256": "dab15247b15ec71d2c1a3dd2a1c27f0c266df243d494eb98e625448bb99b08cc",
+      "bytes": 11617
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/observations.json",
+      "sha256": "d2c25f376202f63c1d5cebc61e084ac85600af88cfdcd2ffcf1d458ef46bf695",
+      "bytes": 5401
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-c/raw-classifier-on-neutral.png",
+      "sha256": "370e80288e334acf599439f98dd5099659ac6d70c0a9c57774c2baa64dcea446",
+      "bytes": 559105
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-keyed-neutral-2x.png",
+      "sha256": "de62504d2b76a5283356f50766d7b7aa7d266c26298c48b794bd3c97152abc25",
+      "bytes": 394960
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-keyed-neutral-native.png",
+      "sha256": "c2996976fa62ad2a76d1fd25765b6ac6b6bb05ba8ac0ca5b5bfa84fe0c2fe161",
+      "bytes": 349651
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-original-2x.png",
+      "sha256": "c645807064296311c40776703c01c6a1132b8b8801c5f1740dfa3fd42e5a61ab",
+      "bytes": 492749
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-original-native.png",
+      "sha256": "4dba0b794171aa04eb982b0f716dd3196755666047527e386085b53f44b7d6ca",
+      "bytes": 426071
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-raw-classifier-neutral-2x.png",
+      "sha256": "9a2ed73bcca6e423245bdf51c841a210a60c4ba19c07f28982d3b5b567e5fd20",
+      "bytes": 398674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/chest-belly-forearms-raw-classifier-neutral-native.png",
+      "sha256": "e4f9c3b7349e19faf262405e9222139c71242d73febcdfee3446c7d2bac54887",
+      "bytes": 352886
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-keyed-neutral-2x.png",
+      "sha256": "93a34f2596921a03fb7e5445b2733d8307e85deaa140edcaabc39116db2da484",
+      "bytes": 408840
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-keyed-neutral-native.png",
+      "sha256": "06f01e3f36793706ef0229795037720c554fe83c7f81259e25eb83b8759a9c5c",
+      "bytes": 358673
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-original-2x.png",
+      "sha256": "008a4d74bc0b660b697f457ba22c81bcd70709b1e7d60d7f0cc0479ae0483054",
+      "bytes": 613306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-original-native.png",
+      "sha256": "e8009e5057ffc5710e0751ab0b02717f87935ff5c0fb5039eee1a3b74f3a62d2",
+      "bytes": 518756
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-raw-classifier-neutral-2x.png",
+      "sha256": "b90ab80bde75cda48fc8df33165273cc281bfadfe3599778bb21fef2d174f850",
+      "bytes": 419019
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/hips-hindfeet-raw-classifier-neutral-native.png",
+      "sha256": "6428e9f4dfb05af368fce96c6491b8678c2dacd93be260459011a40c3fba9b84",
+      "bytes": 368425
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/keyed-on-neutral.png",
+      "sha256": "7611e85414551e2fd84f57ba386c9f9368e022350cb1da19e65e9e26af8ec20e",
+      "bytes": 721674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/keyed-preview.png",
+      "sha256": "c3f4fbb5507a1c75eb47f22eda30911358d11ff60e8c26d297843fe812291b8e",
+      "bytes": 1722850
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/numeric.json",
+      "sha256": "14bb5e30879334223b290ba2f79c7282bff3f5dfeecddc93346cac7c31db41fe",
+      "bytes": 12715
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/observations.json",
+      "sha256": "bb5ca220119260f606313bd52ac6d756c2326cc8c51298e2794a7064d8521605",
+      "bytes": 5402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-kangaroo-d/raw-classifier-on-neutral.png",
+      "sha256": "003ce8e7fd99067d36307e7d22082993c9e7190b8b7586b7fa726963811b29fd",
+      "bytes": 739810
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-a/keyed-on-neutral.png",
+      "sha256": "15f172407b0db8fbab61b75988cff920fec5048c9cacdd153eaa45381a73f89c",
+      "bytes": 376496
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-a/keyed-preview.png",
+      "sha256": "9820933564c6847d37be1f564c545da867bf74c10dfa1bd369aa360103505ad2",
+      "bytes": 1393278
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-a/numeric.json",
+      "sha256": "743182c27def503cb81fdbd2c13d0dc7750f884b33c6fd035fb7320ea40f80d1",
+      "bytes": 9194
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-a/raw-classifier-on-neutral.png",
+      "sha256": "c8e5e38489191475bdb6ee305f71fba265cf685afc1200c86504e95e136ff305",
+      "bytes": 399866
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-b/keyed-on-neutral.png",
+      "sha256": "351572303bedd8b25a62abdea4ed4a7d0fc8ef8da893d2cc387f47bb53ac2275",
+      "bytes": 364614
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-b/keyed-preview.png",
+      "sha256": "8b2323265cbd1401f4819962a5da7427e32c632363c466b15f0ae5b770b80b34",
+      "bytes": 1374811
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-b/numeric.json",
+      "sha256": "f95b4a0276163ecda9fcbf98f30687531ce3dec464d490cd0855782ac708c753",
+      "bytes": 8530
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-b/raw-classifier-on-neutral.png",
+      "sha256": "3eef83f7a2b613073725f2898c46ea078fabd6101e08476763511823fd2e5438",
+      "bytes": 386905
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-c/keyed-on-neutral.png",
+      "sha256": "225236479faef1e8d61fca16b1e505b8594a43cb55a6b3c89b435f97cd0f6562",
+      "bytes": 371534
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-c/keyed-preview.png",
+      "sha256": "8541834468b321311d950b78a13a334d7f743bf1af44207adb8c4fd9cc1bd320",
+      "bytes": 1398242
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-c/numeric.json",
+      "sha256": "fdcf97a317a211ec1ab1e2e5afde49d8dfc572c5c8d6aef560fa803a71b720d9",
+      "bytes": 8775
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-c/raw-classifier-on-neutral.png",
+      "sha256": "18b562ca8e89b2764cab0e39a4261e094519fbca1e346f43788c9a9dc71250e3",
+      "bytes": 396960
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-d/keyed-on-neutral.png",
+      "sha256": "4833abaac4c64b78d85a1b0eefd15383729087c574ab5ef631763b7165aea11e",
+      "bytes": 383614
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-d/keyed-preview.png",
+      "sha256": "5d1cb45f18d8e24e28a0c816e2cb5f8dcbb7ee4f72d366b13f499719e97061a5",
+      "bytes": 1430855
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-d/numeric.json",
+      "sha256": "d4d23cf3c571a146f3bf8e0d11476c87ad15d39422b5aad57f31ff76a8619c61",
+      "bytes": 8614
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-mayfly-d/raw-classifier-on-neutral.png",
+      "sha256": "3a7c7e37f22dad1473cf0e2d06597fe670dec5e71db46cf9752de2c843d0d7f2",
+      "bytes": 410355
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/close-kangaroo.py",
+      "sha256": "3c2564da9344bc2504840d50103d662e55154805b65da8ae349c03a597ce5a9d",
+      "bytes": 5727
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/kangaroo/review.json",
+      "sha256": "34f646a3ae7e3bd023eb46ee69f1fa9fc59e35a609acd941d6aa1aa75e4c1fb9",
+      "bytes": 9776
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/manual-review-checklist.json",
+      "sha256": "4215bbabbcb49c7315cdf4cbe3f473643f115e56da5201befd44c8b5edae54f6",
+      "bytes": 3724
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave03-vole-ready/README.md",
+      "sha256": "f7d533f5ff75c24e8a26cba8bb9a8cffc301dc3a3258abb53212ec47e767955e",
+      "bytes": 2202
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave03-vole-ready/manifest.json",
+      "sha256": "ef98a096e61f1296281b6ecad2e2fb3b7947a0e92f08ee7779d5d58f1de8985a",
+      "bytes": 470502
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "4be266068064cb6558793c08dbe990f90284181da38105c943ccf51884e7e13d",
+      "bytes": 553921
+    }
+  ],
+  "files": 593,
+  "remoteOperations": false
+}

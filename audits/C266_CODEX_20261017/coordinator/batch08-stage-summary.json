@@ -1,0 +1,48 @@
+{
+  "status": "ALL_24_STAGES_PASS",
+  "rows": [
+    {
+      "slug": "godwit",
+      "seconds": 80.704,
+      "lowestGiB": 82.34683227539062
+    },
+    {
+      "slug": "freshwater-crab",
+      "seconds": 80.78200000000001,
+      "lowestGiB": 82.28038024902344
+    },
+    {
+      "slug": "tortoise-a04",
+      "seconds": 76.811,
+      "lowestGiB": 82.21059036254883
+    },
+    {
+      "slug": "sea-turtle",
+      "seconds": 82.708,
+      "lowestGiB": 82.15127182006836
+    },
+    {
+      "slug": "fur-seal",
+      "seconds": 77.218,
+      "lowestGiB": 81.10403823852539
+    },
+    {
+      "slug": "goat-a02",
+      "seconds": 82.914,
+      "lowestGiB": 82.0546646118164
+    },
+    {
+      "slug": "shrew",
+      "seconds": 76.699,
+      "lowestGiB": 81.96884536743164
+    },
+    {
+      "slug": "anole-a02",
+      "seconds": 80.434,
+      "lowestGiB": 81.91604232788086
+    }
+  ],
+  "totalStageSeconds": 638.27,
+  "minimumGiB": 81.10403823852539,
+  "notSessionWalltime": true
+}

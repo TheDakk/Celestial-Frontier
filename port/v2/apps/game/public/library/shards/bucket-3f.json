@@ -1,0 +1,131 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-3f",
+ "files": [
+  {
+   "path": "library/cards/arapaima/SOURCE.json",
+   "bytes": 330,
+   "sha256": "67d73a9ae0f1056001105b434ec444e318c287dac232be0175aa424d978db291"
+  },
+  {
+   "path": "library/cards/arapaima/card/card.json",
+   "bytes": 2960,
+   "sha256": "257a9070274a21b0534fef03d1fcea26b25eb376b89181286b3cd5558fc096d9"
+  },
+  {
+   "path": "library/cards/arapaima/card/labels-512.png",
+   "bytes": 4759,
+   "sha256": "9a01f070a4f81f838068012e821d1cbcdc5022b1f9ef056ebdda97814da3fd33"
+  },
+  {
+   "path": "library/cards/arapaima/card/master-512.png",
+   "bytes": 75545,
+   "sha256": "c7ed750338eef75b41e071157531abf9939ae2820f871471314984adaf14f954"
+  },
+  {
+   "path": "library/cards/arapaima/record.json",
+   "bytes": 5208,
+   "sha256": "735bfdb51f68c91ae20558d7f78290defc96b873c221893e193eb294ce113286"
+  },
+  {
+   "path": "library/cards/mamba/SOURCE.json",
+   "bytes": 292,
+   "sha256": "88b2c7670b3b30891ee4e974993eb3710e335aa34a35bd4fff447515cd81df4c"
+  },
+  {
+   "path": "library/cards/mamba/card/card.json",
+   "bytes": 2873,
+   "sha256": "7a5465421fff68b2de88f5e86698b4da56aac5e66bf73fb8471754d924b633f6"
+  },
+  {
+   "path": "library/cards/mamba/card/labels-512.png",
+   "bytes": 5699,
+   "sha256": "5f3591d0be86bdb8713bce9b7cfd33802812b3fa958b73a15579abc2db44382f"
+  },
+  {
+   "path": "library/cards/mamba/card/master-512.png",
+   "bytes": 45440,
+   "sha256": "c2031afa103148a54579bba5242558babd5395d1dc0018194fde8948d854275d"
+  },
+  {
+   "path": "library/cards/mamba/record.json",
+   "bytes": 5097,
+   "sha256": "564515eb57732e10ed5312f075f13cbaa566d02c9c95e0623bd9c560ce687a6e"
+  },
+  {
+   "path": "library/cards/sloth/SOURCE.json",
+   "bytes": 289,
+   "sha256": "10cd0a4cd74a405e25f921898392f35b50853150cbcd00c3367d2e9348354fc5"
+  },
+  {
+   "path": "library/cards/sloth/card/card.json",
+   "bytes": 5878,
+   "sha256": "f2d89bbaec06b13e90855f87155f54f54a15a5ca2db8b8244eac3b4f446e3d3e"
+  },
+  {
+   "path": "library/cards/sloth/card/labels-512.png",
+   "bytes": 8929,
+   "sha256": "96b09653b1db03da0e01787619f3717918f4520797eb03527cb5dc1fc8282fcb"
+  },
+  {
+   "path": "library/cards/sloth/card/master-512.png",
+   "bytes": 123370,
+   "sha256": "148e399c2fa9f7f87e7e7c60c85556289383691134945a41beb09d1babd754d5"
+  },
+  {
+   "path": "library/cards/sloth/record.json",
+   "bytes": 7529,
+   "sha256": "6411a6614e04559cc676b9f8fd547e214d144183117934e6ca5dcd5f69cd9a25"
+  },
+  {
+   "path": "library/creature-finish-source/02-capybara/labels.png",
+   "bytes": 46141,
+   "sha256": "d64f427728da1568da2aa9faa08daca7d911b6779cb1930c4d335172d5e691b8"
+  },
+  {
+   "path": "library/creature-finish-source/02-capybara/master.png",
+   "bytes": 1502072,
+   "sha256": "ca45af3e18f80811e623afb7c5b5540b9934069453ff63a63e18f3f9adb295ed"
+  },
+  {
+   "path": "library/creature-finish-source/02-haddock-fixed-01/labels.png",
+   "bytes": 40330,
+   "sha256": "2fb79035f5939869e5678f02f67e0650dcca464ca43dd6a1438c77bb6a68f9c5"
+  },
+  {
+   "path": "library/creature-finish-source/02-haddock-fixed-01/master.png",
+   "bytes": 1187759,
+   "sha256": "5b021ce12e532886dcc39d347374981e885282633eeb642f5ca3e1712550b8c7"
+  },
+  {
+   "path": "library/creature-finish-source/c196creaturesupply-06-llama/labels.png",
+   "bytes": 45735,
+   "sha256": "9d29931981123712542895d13ad8eea119725ebae59d9cbb3cd7dbd1cb183587"
+  },
+  {
+   "path": "library/creature-finish-source/c196creaturesupply-06-llama/master.png",
+   "bytes": 1336802,
+   "sha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992"
+  },
+  {
+   "path": "library/creature-finish-source/c266-16-water-vole/labels.png",
+   "bytes": 37537,
+   "sha256": "e0a29f720c24eb31205c2a0a3e7922190d079461e720026ce745af76b0f01695"
+  },
+  {
+   "path": "library/creature-finish-source/c266-16-water-vole/master.png",
+   "bytes": 1413019,
+   "sha256": "a8186faafd418ce56c3488d6b9dca5ee8f88182cc3a2107e7d576f0a39159ce7"
+  },
+  {
+   "path": "library/creature-finish-source/g2c118-07-flying-squirrel/labels.png",
+   "bytes": 40932,
+   "sha256": "439bb837622394e61c9d58792315ca60c7e5237defc0e0df789d26cc9ce02d3d"
+  },
+  {
+   "path": "library/creature-finish-source/g2c118-07-flying-squirrel/master.png",
+   "bytes": 1159436,
+   "sha256": "03bcfd34b45e87fcebb7c7691cad965f55fd5c205788033f8358e545722adbce"
+  }
+ ]
+}

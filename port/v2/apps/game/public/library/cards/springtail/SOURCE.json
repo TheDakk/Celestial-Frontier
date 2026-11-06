@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Springtail",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/rebound-01/c243b03r1c1-27-springtail/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b306b7867dfac5689543fe1bd9ee52da6d590fb1fddc2f08eb01f63f49004cd2"
+}

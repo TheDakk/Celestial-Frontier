@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "mergeBase": "c1cafd6e762454d75a9aee22b6c15a00ed07bd42",
+  "peerCommit": "ace47592c",
+  "changedFiles": 6210,
+  "allowedScopes": [
+    "audits/C266_ALLOUT_20261017/",
+    "audits/MAILBOX/TO_CODEX.md"
+  ],
+  "runtimeChanged": false,
+  "note": "Three-dot incoming comparison; direct HEAD-to-peer tree comparison also lists own-lane additions and is not an incoming change list."
+}

@@ -1,0 +1,102 @@
+FRAMING PRIORITY: One small whole creature in the central 60 percent of a square 1254 by 1254 canvas. Every extremity at least 200 pixels from all edges. Flat pure magenta background, no ground or shadow. Do not enlarge to fill the frame.
+
+REPAINT ATTENTION: Previous refusals/HOLD observations (diagnostics only, never permission to invent anatomy): missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-near-hoof (hindNearPaw) covers 0% paint (reference 71%); missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 0% paint (reference 88%); missing-anatomy: part hind-near-knee (hindNearKnee) covers 0% paint (reference 76%); missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 16% paint (reference 61%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 44%); unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 8.6%). Previous paintings failed to expose or preserve these reference regions: hind-near-hoof, hind-near-ankle, hind-near-knee, ear-far-tip, hind-far-paw. Make the corresponding REAL anatomical structures readable at their true attachments where they exist. These are diagnostic labels, not permission to add anatomy. Species truth has priority: small external ear flaps; very long fore-flippers propping the chest up; dog-like whiskered muzzle. Unlike a true seal it walks on all fours with hind flippers rotated forward. Preserve naturally short or absent tails and absent external ears. Never invent a missing part to imitate another species. Keep the true tail, feet, limb roots, ear contours and naturally visible far-side parts separately readable wherever biologically possible. No detached strands or islands. Use a calm, clearly separated natural stance, with continuous clean contours and no appendage crossings.
+
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Dakk at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Fur Seal; real named anatomy and natural materials take priority over raw procedural genes. Isolated library master, not an Earth landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+Species identity features FIRST: small external ear flaps; very long fore-flippers propping the chest up; dog-like whiskered muzzle. One Earth Fur Seal. These identifying pigment patterns and structures override conflicting generic colour or procedural-genome suggestions.
+Canonical identity note: Unlike a true seal it walks on all fours with hind flippers rotated forward.
+Genomic identity (Earth anatomy takes priority): {"seed":983015948,"kingdom":"fauna","color":5,"form":1,"body":7,"loco":10,"trait":1,"size":5,"diet":5,"head":9,"limbs":4,"skin":4,"tail":0,"pattern":7,"eyes":5,"behavior":11,"habitat":0,"detail":9,"accent":15,"temper":5,"sense":9,"repro":0,"life":3,"metab":4,"lumin":false,"gen":0,"heat":1,"_earthName":"Fur Seal"}
+One whole anatomically accurate specimen of Fur Seal in the approved painted hand, facing RIGHT. Preserve every canonical identity feature and natural pigment/pattern. Isolated on uniform pure magenta, no floor, cast shadow, props, scenery, labels or text. The WHOLE silhouette and every natural appendage tip must have generous clear margin on ALL four sides, with the complete subject in the central half of a square image and empty magenta occupying at least the outer quarter on every side. Do not crop, mirror or manually shrink anatomy to satisfy a generic rig. This is an original painting only; no supported limb count or animation is implied. Quiet species-correct haul-out or shallow swimming posture, head right. Keep the near/far foreflippers and paired hindflippers readable where naturally visible. Do not manufacture four mammalian walking legs. Preserve natural ear flaps and species-correct flipper posture.
+
+ACCURACY
+One anatomically accurate Fur Seal; natural pinniped body with two foreflippers and two posterior hindflippers; no walking paws; no duplicate subject. Required counts are requests, not measured evidence. No added anatomy, equipment or fantasy growth.
+
+LAYOUT
+One whole anatomically accurate specimen of Fur Seal in the approved painted hand, facing RIGHT. Preserve every canonical identity feature and natural pigment/pattern. Isolated on uniform pure magenta, no floor, cast shadow, props, scenery, labels or text. The WHOLE silhouette and every natural appendage tip must have generous clear margin on ALL four sides, with the complete subject in the central half of a square image and empty magenta occupying at least the outer quarter on every side. Do not crop, mirror or manually shrink anatomy to satisfy a generic rig. This is an original painting only; no supported limb count or animation is implied. Quiet species-correct haul-out or shallow swimming posture, head right. Keep the near/far foreflippers and paired hindflippers readable where naturally visible. Do not manufacture four mammalian walking legs. Preserve natural ear flaps and species-correct flipper posture.
+
+TECHNICAL OUTPUT
+  Create a square 1254 x 1254 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+
+TARGETED REPAINT: Low four-flipper haul-out walk, rather than a steep upright sitting pose. Both long foreflippers and both rotated rear flippers are separately readable and support body at a common level. Show two small real ear flaps where naturally visible. THIRD-CANDIDATE PRIORITY: two distinct support flipper tips touch the SAME horizontal bottom line of the silhouette. Use a true side view, no nearest flipper hanging far lower in perspective. Keep rear flippers genuinely attached and visible; no invented legs or external ears.
+
+
+FINAL COMPOSITION CHECK: Paint the animal SMALL, like a miniature specimen in a large empty square. The complete animal including every appendage must fit inside a central box no wider than 650 pixels and no taller than 650 pixels on the native 1254 by 1254 canvas. Leave at least 275 pixels of flat magenta on EVERY side. No close-up. Do not fill the canvas. This is part of the newly generated painting, not a request to resize or pad a finished image.

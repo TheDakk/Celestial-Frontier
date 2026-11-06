@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gila Monster",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c196quadrupedoriginals-10-gila-monster/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "54bdaeb08c328acb2995352a53df3fda820d884819ff1283151b163aadb382d5"
+}

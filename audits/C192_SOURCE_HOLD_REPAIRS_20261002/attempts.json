@@ -1,0 +1,249 @@
+{
+  "schema": "cf.c192-attempt-inventory/v1",
+  "staticArtifacts": [
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-02/static.json",
+      "sha256": "0b3e61f70c0e986e03c96cecbe2f006aeb843f8ab4b9010282ed8f8fb24d7400",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1709,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/islands-01/static.json",
+      "sha256": "64c12876ff15234b0a11a9db5998ba3640f3c0cb0b4d7dedea379022063cd9bc",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1709,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/static-01.json",
+      "sha256": "78643af5441dc2788197667d39d470bfa23bfee63660b68a8734cea1d75ba4e4",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1709,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/axial-joins-02/static.json",
+      "sha256": "c9c0a0e12a95e550c58cb948683bd1288dddd6cd343f8d05026a126d99708ff1",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1710,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/islands-01/static.json",
+      "sha256": "5dc84315140cc6760dc4f380c6c84eadfeb68bf2b0888614188be0f63660e8f8",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1710,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/static-01.json",
+      "sha256": "3a3f2bc3f5020e338ffd47c1c263309e2d214ec3ab4b6ef7468387aec8af0fa7",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1710,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/islands-01/static.json",
+      "sha256": "069bac59136109babfb64a40df8287aadbf8113496a07cdc1a17faea25a6fc58",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1705,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/static-01.json",
+      "sha256": "4e1d013c44442f8a33341bc077912a751f8d1f7f06b6b75f9d4d7f525bfd020a",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1705,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/axial-joins-02/static.json",
+      "sha256": "5f5457a15cf54711cbee9752d2d03edb16b0f743fb3df8b6427ad04141fa5473",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1705,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/islands-01/static.json",
+      "sha256": "2bdacfd309c21c7b2986146382c25e8f2730c98f257f8f5061d8dcc7c2ba286a",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1705,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/static-01.json",
+      "sha256": "58143ce114169d22a3cead8c9cb1be18f51a537827b7184ae6d8b79b488dcac4",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1705,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/islands-01/static.json",
+      "sha256": "8dcecea9e429dc68afe15b369f65e5ae46c887d898072138de5042c20e061a37",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionSamples": 1694,
+      "presentationSamples": 1082,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/static-01.json",
+      "sha256": "0dc3be624570ca3da25a480164a7f83f8470e1975ae87baca56e50dcbeed014b",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionSamples": 1694,
+      "presentationSamples": 1082,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/static.json",
+      "sha256": "d87eef5e514d8d51c50c9f070ec954ac4f4440e9dd1547623d058493d3195815",
+      "historicalBaseline": false,
+      "status": "RED",
+      "actions": 14,
+      "actionSamples": 1635,
+      "presentationSamples": 1086,
+      "refusals": [
+        {
+          "action": "faint",
+          "ms": 367.8666666666667,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+        }
+      ]
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/static-01.json",
+      "sha256": "833c53c90ca5e4aa9edae30c31411e2e585176a26be78d2fec33b8b82eba563a",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionSamples": 1694,
+      "presentationSamples": 1086,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/islands-01/static.json",
+      "sha256": "e9a4992072783c39c0e3fb34d7a039da56b97b56828d1295c4b6720800df7407",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionSamples": 1694,
+      "presentationSamples": 1086,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/static-01.json",
+      "sha256": "b06aa7e4dcbad6e9d1f07c8ed6a938fec9494e07d6a20b5ac9dd3bf46a831396",
+      "historicalBaseline": false,
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionSamples": 1694,
+      "presentationSamples": 1086,
+      "refusals": []
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-horse/static.json",
+      "sha256": "f1b08dec24de51d1ecb9f20f5a20622c967303d16c510726d14422389fcf09f7",
+      "historicalBaseline": true,
+      "status": "RED",
+      "actions": 19,
+      "actionSamples": 2201,
+      "presentationSamples": 1254,
+      "refusals": [
+        {
+          "action": "faint",
+          "ms": 197.8,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+        }
+      ]
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-serval/static.json",
+      "sha256": "fef1fa84b138e156873c7b9d68d8937da86b528fa3efe04e2a7685dbf7838903",
+      "historicalBaseline": true,
+      "status": "RED",
+      "actions": 19,
+      "actionSamples": 2089,
+      "presentationSamples": 569,
+      "refusals": [
+        {
+          "action": "approach:hop",
+          "ms": 116.5,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"
+        },
+        {
+          "action": "melee:tail",
+          "ms": 144.3111111111111,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4"
+        }
+      ]
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-wild-ass/static.json",
+      "sha256": "4b1c48693415605d50a0fbeb5b4e769e3c032daf11b6da01c585bf9d825f4bc4",
+      "historicalBaseline": true,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1709,
+      "refusals": []
+    }
+  ],
+  "preparationRefusals": [
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-preparation-refusal.json",
+      "sha256": "0bded1bddce77fd4d3fc784edfd5e4ceb9c88b0aaca76b5da4d5cd7ee1f31bf8",
+      "outcome": "retained instrument/preparation refusal; not a product/static PASS"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-preparation-refusal-02.json",
+      "sha256": "a055b3476c51fc45483290cc78964b11829741be24606867990f325331200e3a",
+      "outcome": "retained instrument/preparation refusal; not a product/static PASS"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-01/instrument-refusal.json",
+      "sha256": "78ee945b61a13a026b7f0cbf7533d2bfd870df45300464ff3c580222b173bb61",
+      "outcome": "retained instrument/preparation refusal; not a product/static PASS"
+    }
+  ],
+  "freshImageGenerationCalls": 1,
+  "retryPolicy": "All failed artifacts retained. Each successor changes source-observed authoring or audit preparation; no unchanged native or static retry.",
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

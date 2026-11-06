@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hoatzin",
+ "fitDir": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/rebound/c243b04r2c1-17-hoatzin/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "122d6459ad94b50ff786dfc488a77906af2789f50141c4dc996c83ccf62c5c9d"
+}

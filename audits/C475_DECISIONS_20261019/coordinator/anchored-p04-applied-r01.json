@@ -1,0 +1,125 @@
+{
+  "status": "APPLIED_EXACT_REVIEWED14_AFTER_BASELINE_RED_NEW_CHECKS_REQUIRED",
+  "baseHead": "d3c59face3a264081a35505e340e6513613268e6",
+  "proposal": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-manifest-r04.json",
+  "proposalSha256": "9226af33b9d0c437ee3a75230c1f58609e3775bfe92dbd3917f4994d97a2a9dd",
+  "independentReview": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/p04-review/review.json",
+  "reviewSha256": "0d0d87e1e1a102b2d39052c5812293837c2985e44e91057ffb48283e09773714",
+  "rows": [
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "beforeSha256": "fa5d8ff6288718d4db6b8c4ecc179902f29b8e2ed9cd0deefd48caf1906e1bcb",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "ebfc86a25b07231ce96cb012da9cf2a5bd5a8c8f2718fdd7390c0df907a76f66",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "ebfc86a25b07231ce96cb012da9cf2a5bd5a8c8f2718fdd7390c0df907a76f66"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "beforeSha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "5f3d60ea0d80e2c55ec80bd64aac43949c4b1dab42163e51d97b4e2fa73c4952",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "5f3d60ea0d80e2c55ec80bd64aac43949c4b1dab42163e51d97b4e2fa73c4952"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+      "beforeSha256": "4edca5a6e77c520b877e4bdb9d776bd9ebecb1f75a4710dc2f19c1900323e15c",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+      "sha256": "53f7ecba5b6e2deae57a43645c3560f4bfe5dc440e17a5d37130a7d69ae09a9e",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "53f7ecba5b6e2deae57a43645c3560f4bfe5dc440e17a5d37130a7d69ae09a9e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "beforeSha256": "84ebbae0e4e886f30c4624bad5ee99ca78f2792ad1ddfbd16cbea4e56c5a5b0f",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "1f0b108b4b37cd93ae446ea71adcad2a1c978982bd69c1a833291cb4b53b65b6",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "1f0b108b4b37cd93ae446ea71adcad2a1c978982bd69c1a833291cb4b53b65b6"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-actions.ts",
+      "beforeSha256": "215e21a6cdab841b64bc9b7e0ef940f5d3b93e13c6cc6a1928df6a6eb351cf77",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/apps/game/src/motion/specialized-actions.ts",
+      "sha256": "fae08d528fe7e45236041bf714ce7ec403d4d2e77680c6d18c5b27d95bfdc46b",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "fae08d528fe7e45236041bf714ce7ec403d4d2e77680c6d18c5b27d95bfdc46b"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "beforeSha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "0785207ef98db42e3542e343df511c0756e0f79758d5a7dd566451a052666019",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "0785207ef98db42e3542e343df511c0756e0f79758d5a7dd566451a052666019"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "beforeSha256": "6bf219c583f754a9162155c7ecdae8f952a279d387f6a90985407173ffe15d0f",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "19929e645d82c38bdd9d042c027f701778bcdde89bee48be605c4ce766315a87",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "19929e645d82c38bdd9d042c027f701778bcdde89bee48be605c4ce766315a87"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-anchored-material-surfaces.mjs",
+      "beforeSha256": null,
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/pin-anchored-material-surfaces.mjs",
+      "sha256": "53db17769564d93d9325e86ef9c9f32d973cfbf09659efeacfa704074c9daa6a",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "53db17769564d93d9325e86ef9c9f32d973cfbf09659efeacfa704074c9daa6a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anchored-material-source.mjs",
+      "beforeSha256": null,
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/anchored-material-source.mjs",
+      "sha256": "b0419872c4de30b1f4c38da76237d04a274e67e911cb27de15969aaa029ce92f",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "b0419872c4de30b1f4c38da76237d04a274e67e911cb27de15969aaa029ce92f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "beforeSha256": "eef4243ed0d3f93f16816d16271fa5b43cf1dbbb2a90282dbf2247d0a8cb6107",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "83ce8366d743dea46d7764f247ae519086fd421af2110fea487b773f53485c9b",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "83ce8366d743dea46d7764f247ae519086fd421af2110fea487b773f53485c9b"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "beforeSha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "e7fcf5a0dbd3253d58972b2e9c3ca16da3233f42266e681baf72fa9fea3c5b74",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "e7fcf5a0dbd3253d58972b2e9c3ca16da3233f42266e681baf72fa9fea3c5b74"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "beforeSha256": "be1ab29802900a4d32dcde66eced1a8dc88af4fd421ddfa4de16aa96620138d4",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "3eb70245c15e9ad8d2b351a69f163219dafc74f8a82314610d6cbd7b4fc88c54",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "3eb70245c15e9ad8d2b351a69f163219dafc74f8a82314610d6cbd7b4fc88c54"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "beforeSha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "37029e7ef02d8297c9173f12451fee961b302ce948f1f3cf4a887f1cd08794ca",
+      "origin": "Exact parent reconciled C491+P03 class copy; no P04 change",
+      "actualAfterSha256": "37029e7ef02d8297c9173f12451fee961b302ce948f1f3cf4a887f1cd08794ca"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "beforeSha256": "5a4b045a619fa9ccf077305ab51ab219c2f11606d37b13860fa134f5d122775f",
+      "copy": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/proposal-r04/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "8d45122ece264fe11f734888e5268209595e3fd1e8c0dca5af3ffeff5e0d88dc",
+      "origin": "NEW P04 narrow anchored cast registration and exact observed-count expansion only",
+      "actualAfterSha256": "8d45122ece264fe11f734888e5268209595e3fd1e8c0dca5af3ffeff5e0d88dc"
+    }
+  ],
+  "nativeStartedForNewProducer": false,
+  "sealsOrLimitsRebound": false,
+  "ColdAndDeepSourceOwnerHoldsUnchanged": true
+}

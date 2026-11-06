@@ -1,0 +1,201 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-29",
+ "files": [
+  {
+   "path": "library/cards/bonefish/SOURCE.json",
+   "bytes": 287,
+   "sha256": "aff5aa64789f7e3211400dd4ef221921facc9ccadd681515c5e8dbde52b4b85a"
+  },
+  {
+   "path": "library/cards/bonefish/card/card.json",
+   "bytes": 2955,
+   "sha256": "99e5270e3a1b8d49d9ecc1775ef87654696af7ab550c7881fb2a12ba60ca806b"
+  },
+  {
+   "path": "library/cards/bonefish/card/labels-512.png",
+   "bytes": 4172,
+   "sha256": "222ae9872a8aad8440d2c8919d558fc45d664eecf635efecbe4959494af8cb31"
+  },
+  {
+   "path": "library/cards/bonefish/card/master-512.png",
+   "bytes": 70640,
+   "sha256": "5b0964d9e01988e384f2101dfdab2baaa413fc492fa083520645fd4fa7283710"
+  },
+  {
+   "path": "library/cards/bonefish/record.json",
+   "bytes": 5135,
+   "sha256": "d5e85f6408e3390992f2c2fa8ffc4be4b89973997df3c013e21eeaaf4467a77a"
+  },
+  {
+   "path": "library/cards/catfish/SOURCE.json",
+   "bytes": 325,
+   "sha256": "da1f139abed0951534bb5afda000d4a9994f4be46a99088988648bc7d0198d1b"
+  },
+  {
+   "path": "library/cards/catfish/card/card.json",
+   "bytes": 2940,
+   "sha256": "8c0a91d3679e4c1a6ac0ac97935e86bd421ff519cca05557b69fc881be74891e"
+  },
+  {
+   "path": "library/cards/catfish/card/labels-512.png",
+   "bytes": 5179,
+   "sha256": "e2f1ad4e415c445c2998301cca6e551c8b2a3248477981ee547e66d56e8e06db"
+  },
+  {
+   "path": "library/cards/catfish/card/master-512.png",
+   "bytes": 60293,
+   "sha256": "6f4c8654dfee22ba8ba3a3d5315966a798ed46f2149b687d159fdc43273cdfd9"
+  },
+  {
+   "path": "library/cards/catfish/record.json",
+   "bytes": 5158,
+   "sha256": "2bc58d5f74de000c04c45e9f9cd096aeda9fbf895250e07687e370d721ef4887"
+  },
+  {
+   "path": "library/cards/lark/SOURCE.json",
+   "bytes": 277,
+   "sha256": "a9e86fc98934912fe756b4561cac562b5a3512c502358dc4d43c161e8954dde2"
+  },
+  {
+   "path": "library/cards/lark/card/card.json",
+   "bytes": 3733,
+   "sha256": "d339f92f6ee16520c99c419efc2bf8f1ea9116e7912e9231abad08a25134e7d2"
+  },
+  {
+   "path": "library/cards/lark/card/labels-512.png",
+   "bytes": 5164,
+   "sha256": "39908aff1db3f501c941786a9aea7309fc618beed4acc600d78d4c97c39b0096"
+  },
+  {
+   "path": "library/cards/lark/card/master-512.png",
+   "bytes": 41328,
+   "sha256": "e5e0d1d2bc903902b753fe12f2ee2ae860e57834913fde47fb15803d7c4378dc"
+  },
+  {
+   "path": "library/cards/lark/record.json",
+   "bytes": 6301,
+   "sha256": "5817b0cbae9ee0786603f3cf0c1cc98365985f061f3cb2197c92ef02ec055e32"
+  },
+  {
+   "path": "library/cards/mudminnow/SOURCE.json",
+   "bytes": 289,
+   "sha256": "daf435d9700c43f740a9731d2eeab5b7423fce4177675ddb40c6018ff02e2e34"
+  },
+  {
+   "path": "library/cards/mudminnow/card/card.json",
+   "bytes": 2940,
+   "sha256": "1232124595058fe1b32a53c4121e58ce1601c2898842588955dd1ea0e08ef4f8"
+  },
+  {
+   "path": "library/cards/mudminnow/card/labels-512.png",
+   "bytes": 3427,
+   "sha256": "9e14b19b7f0793ac89516e29c5d8122c6ef2d1a325a61619a03dc843eec11400"
+  },
+  {
+   "path": "library/cards/mudminnow/card/master-512.png",
+   "bytes": 73492,
+   "sha256": "f44590408129d1027381a528410609da03a5cd27504e66c3a3be7957928d2c1b"
+  },
+  {
+   "path": "library/cards/mudminnow/record.json",
+   "bytes": 5141,
+   "sha256": "1024359d3f8eaa7d9b1e833dfc92d75d1d589740f21e370c5d52e38038a1f078"
+  },
+  {
+   "path": "library/cards/remora/SOURCE.json",
+   "bytes": 284,
+   "sha256": "2914301bd601044dae7eb39a71072834a29087f1d1145db3f75fb2b3f0062bda"
+  },
+  {
+   "path": "library/cards/remora/card/card.json",
+   "bytes": 2951,
+   "sha256": "2e1111e1a67990f054e07c8c20f3f3051163d222690db150f96fa9795da5546c"
+  },
+  {
+   "path": "library/cards/remora/card/labels-512.png",
+   "bytes": 3777,
+   "sha256": "530fecd746252770ba411ee069a316560378861d95d165aac42b671b68c3f4a2"
+  },
+  {
+   "path": "library/cards/remora/card/master-512.png",
+   "bytes": 65317,
+   "sha256": "77c8da87e2ca5b4b7546011a2036d112706b9dfe667d5e1987c7bd05db6f6b67"
+  },
+  {
+   "path": "library/cards/remora/record.json",
+   "bytes": 5128,
+   "sha256": "f5dabd9b6fbe01c2355ea381fedacea100a7433f089be3f4866fe92c233c4671"
+  },
+  {
+   "path": "library/creature-finish-source/07-lanternfish/labels.png",
+   "bytes": 41280,
+   "sha256": "bbe38eb2e69340749de4b0c3b3e74f535edf94e00bf0430f0d04cad2e45ea3a5"
+  },
+  {
+   "path": "library/creature-finish-source/07-lanternfish/master.png",
+   "bytes": 1267852,
+   "sha256": "334e72ae3c94814620061bfa4a2b344e0ebb2a6bce29fb18f4ce6420a8cf02e6"
+  },
+  {
+   "path": "library/creature-finish-source/10-raven/labels.png",
+   "bytes": 52535,
+   "sha256": "5cc1d3d1dee278ec4f478168070e2ee00aeb0379bb73e9e518a78f16a2f54bd9"
+  },
+  {
+   "path": "library/creature-finish-source/10-raven/master.png",
+   "bytes": 1171072,
+   "sha256": "d27628f43b32ca2ba8374f9178feafa7af2fff367b3f8cf35fbed956b3fb59b7"
+  },
+  {
+   "path": "library/creature-finish-source/13-cattle/labels.png",
+   "bytes": 59403,
+   "sha256": "5020727c5bceb97aebd0585daf765fd5639b0b8f6b0b48af8459d4f341c65eae"
+  },
+  {
+   "path": "library/creature-finish-source/13-cattle/master.png",
+   "bytes": 1366460,
+   "sha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb"
+  },
+  {
+   "path": "library/creature-finish-source/c54-24-termite/labels.png",
+   "bytes": 55100,
+   "sha256": "9f59454cd7e2707a95ea6d88d631b1154901dc988b42eadb46da96fb7dcf6acc"
+  },
+  {
+   "path": "library/creature-finish-source/c54-24-termite/master.png",
+   "bytes": 729757,
+   "sha256": "e0394e76c977fb2fe01ac14950eaf203bf19d5e6c8f505e7c9f17f2330821301"
+  },
+  {
+   "path": "library/creature-finish-source/g2c107-18-jackrabbit/labels.png",
+   "bytes": 44015,
+   "sha256": "804eed509247200efa93c77af5b41ed3ff3a6b4a8b742513913a7d1f857fb7c3"
+  },
+  {
+   "path": "library/creature-finish-source/g2c107-18-jackrabbit/master.png",
+   "bytes": 1319137,
+   "sha256": "374cb7bd83ddf7bdce51c28f8d9c72c084ac4949ec1aa67c57a3b7c6016e589e"
+  },
+  {
+   "path": "library/creature-finish-source/vent-crab/labels.png",
+   "bytes": 24207,
+   "sha256": "ea38a3aa433bc98aa3568a534e43d8090c60dead8b26f57f59c4969385042166"
+  },
+  {
+   "path": "library/creature-finish-source/vent-crab/master.png",
+   "bytes": 55183,
+   "sha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c"
+  },
+  {
+   "path": "library/creature-finish/93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121/original.png",
+   "bytes": 620954,
+   "sha256": "3dc67852481db05866d89b0a825cecbd0211368e09e9b0455297c0aeca481bd7"
+  },
+  {
+   "path": "library/creature-finish/93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121/receipt.json",
+   "bytes": 8757,
+   "sha256": "6fc8e58962b327998ecda1da59641979a71d5160fbaf01485854304f0ada2b2a"
+  }
+ ]
+}

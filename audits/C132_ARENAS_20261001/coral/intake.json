@@ -1,0 +1,615 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "coral",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 7222,
+        "despilledPixels": 784,
+        "unresolvedEdgePixels": 33
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 93,
+        "corrected": [
+          {
+            "index": 734129,
+            "sourceIndex": 734130
+          },
+          {
+            "index": 735801,
+            "sourceIndex": 735802
+          },
+          {
+            "index": 737472,
+            "sourceIndex": 739145
+          },
+          {
+            "index": 737473,
+            "sourceIndex": 737474
+          },
+          {
+            "index": 739144,
+            "sourceIndex": 739145
+          },
+          {
+            "index": 752247,
+            "sourceIndex": 752246
+          },
+          {
+            "index": 753950,
+            "sourceIndex": 753949
+          },
+          {
+            "index": 755621,
+            "sourceIndex": 753949
+          },
+          {
+            "index": 755623,
+            "sourceIndex": 755622
+          },
+          {
+            "index": 757293,
+            "sourceIndex": 757292
+          },
+          {
+            "index": 757294,
+            "sourceIndex": 755622
+          },
+          {
+            "index": 758965,
+            "sourceIndex": 758964
+          },
+          {
+            "index": 758966,
+            "sourceIndex": 760638
+          },
+          {
+            "index": 758967,
+            "sourceIndex": 757295
+          },
+          {
+            "index": 758968,
+            "sourceIndex": 757296
+          },
+          {
+            "index": 758969,
+            "sourceIndex": 757297
+          },
+          {
+            "index": 760639,
+            "sourceIndex": 760638
+          },
+          {
+            "index": 765658,
+            "sourceIndex": 763986
+          },
+          {
+            "index": 767330,
+            "sourceIndex": 767329
+          },
+          {
+            "index": 769003,
+            "sourceIndex": 769002
+          },
+          {
+            "index": 770947,
+            "sourceIndex": 769275
+          },
+          {
+            "index": 772619,
+            "sourceIndex": 772618
+          },
+          {
+            "index": 774299,
+            "sourceIndex": 772627
+          },
+          {
+            "index": 777280,
+            "sourceIndex": 775608
+          },
+          {
+            "index": 777281,
+            "sourceIndex": 775609
+          },
+          {
+            "index": 777282,
+            "sourceIndex": 775610
+          },
+          {
+            "index": 778950,
+            "sourceIndex": 777278
+          },
+          {
+            "index": 778951,
+            "sourceIndex": 777279
+          },
+          {
+            "index": 778952,
+            "sourceIndex": 777279
+          },
+          {
+            "index": 778953,
+            "sourceIndex": 775609
+          },
+          {
+            "index": 778954,
+            "sourceIndex": 777283
+          },
+          {
+            "index": 778955,
+            "sourceIndex": 777283
+          },
+          {
+            "index": 780623,
+            "sourceIndex": 780622
+          },
+          {
+            "index": 780637,
+            "sourceIndex": 778965
+          },
+          {
+            "index": 780638,
+            "sourceIndex": 778966
+          },
+          {
+            "index": 780964,
+            "sourceIndex": 779292
+          },
+          {
+            "index": 785693,
+            "sourceIndex": 784021
+          },
+          {
+            "index": 787332,
+            "sourceIndex": 785660
+          },
+          {
+            "index": 787333,
+            "sourceIndex": 785661
+          },
+          {
+            "index": 787334,
+            "sourceIndex": 785662
+          },
+          {
+            "index": 787336,
+            "sourceIndex": 785664
+          },
+          {
+            "index": 787366,
+            "sourceIndex": 785694
+          },
+          {
+            "index": 788976,
+            "sourceIndex": 787304
+          },
+          {
+            "index": 789038,
+            "sourceIndex": 789037
+          },
+          {
+            "index": 789039,
+            "sourceIndex": 787367
+          },
+          {
+            "index": 790711,
+            "sourceIndex": 790710
+          },
+          {
+            "index": 792320,
+            "sourceIndex": 790648
+          },
+          {
+            "index": 792383,
+            "sourceIndex": 792382
+          },
+          {
+            "index": 794009,
+            "sourceIndex": 792337
+          },
+          {
+            "index": 794055,
+            "sourceIndex": 794054
+          },
+          {
+            "index": 795721,
+            "sourceIndex": 794049
+          },
+          {
+            "index": 795726,
+            "sourceIndex": 794054
+          },
+          {
+            "index": 795727,
+            "sourceIndex": 794054
+          },
+          {
+            "index": 797354,
+            "sourceIndex": 795682
+          },
+          {
+            "index": 800700,
+            "sourceIndex": 800699
+          },
+          {
+            "index": 802372,
+            "sourceIndex": 802371
+          },
+          {
+            "index": 807363,
+            "sourceIndex": 805691
+          },
+          {
+            "index": 810709,
+            "sourceIndex": 810708
+          },
+          {
+            "index": 812382,
+            "sourceIndex": 810710
+          },
+          {
+            "index": 812383,
+            "sourceIndex": 812384
+          },
+          {
+            "index": 812429,
+            "sourceIndex": 810757
+          },
+          {
+            "index": 812430,
+            "sourceIndex": 810758
+          },
+          {
+            "index": 812432,
+            "sourceIndex": 810760
+          },
+          {
+            "index": 825783,
+            "sourceIndex": 824111
+          },
+          {
+            "index": 825790,
+            "sourceIndex": 824118
+          },
+          {
+            "index": 825792,
+            "sourceIndex": 824120
+          },
+          {
+            "index": 827463,
+            "sourceIndex": 825791
+          },
+          {
+            "index": 829136,
+            "sourceIndex": 827464
+          },
+          {
+            "index": 834144,
+            "sourceIndex": 832472
+          },
+          {
+            "index": 834147,
+            "sourceIndex": 832475
+          },
+          {
+            "index": 834152,
+            "sourceIndex": 832480
+          },
+          {
+            "index": 835799,
+            "sourceIndex": 834127
+          },
+          {
+            "index": 835819,
+            "sourceIndex": 835818
+          },
+          {
+            "index": 835820,
+            "sourceIndex": 834148
+          },
+          {
+            "index": 837471,
+            "sourceIndex": 837470
+          },
+          {
+            "index": 840826,
+            "sourceIndex": 839154
+          },
+          {
+            "index": 864251,
+            "sourceIndex": 862579
+          },
+          {
+            "index": 864739,
+            "sourceIndex": 863067
+          },
+          {
+            "index": 871432,
+            "sourceIndex": 869760
+          },
+          {
+            "index": 873104,
+            "sourceIndex": 873103
+          },
+          {
+            "index": 915861,
+            "sourceIndex": 914189
+          },
+          {
+            "index": 917533,
+            "sourceIndex": 915862
+          },
+          {
+            "index": 917534,
+            "sourceIndex": 915862
+          },
+          {
+            "index": 919205,
+            "sourceIndex": 920877
+          },
+          {
+            "index": 919206,
+            "sourceIndex": 919207
+          },
+          {
+            "index": 920875,
+            "sourceIndex": 920874
+          },
+          {
+            "index": 921680,
+            "sourceIndex": 920008
+          },
+          {
+            "index": 923352,
+            "sourceIndex": 923353
+          },
+          {
+            "index": 925024,
+            "sourceIndex": 925025
+          },
+          {
+            "index": 940857,
+            "sourceIndex": 939185
+          },
+          {
+            "index": 942543,
+            "sourceIndex": 940871
+          },
+          {
+            "index": 944215,
+            "sourceIndex": 944214
+          },
+          {
+            "index": 947559,
+            "sourceIndex": 947558
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 913823,
+      "visiblePixels": 659529,
+      "firstPaintedY": 376,
+      "firstPaintedYNormalized": 0.3995749202975558,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 5419,
+        "despilledPixels": 50,
+        "unresolvedEdgePixels": 9
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 9,
+        "corrected": [
+          {
+            "index": 1222180,
+            "sourceIndex": 1220508
+          },
+          {
+            "index": 1223852,
+            "sourceIndex": 1220508
+          },
+          {
+            "index": 1225524,
+            "sourceIndex": 1227196
+          },
+          {
+            "index": 1228911,
+            "sourceIndex": 1227239
+          },
+          {
+            "index": 1230583,
+            "sourceIndex": 1230584
+          },
+          {
+            "index": 1235604,
+            "sourceIndex": 1233932
+          },
+          {
+            "index": 1237276,
+            "sourceIndex": 1237275
+          },
+          {
+            "index": 1238948,
+            "sourceIndex": 1238947
+          },
+          {
+            "index": 1240620,
+            "sourceIndex": 1240619
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 1337382,
+      "visiblePixels": 235970,
+      "firstPaintedY": 691,
+      "firstPaintedYNormalized": 0.7343251859723698,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "eff1594b06a0597539ed1eddd4890e94431276a87a2ed745f39c68c0a67701bb",
+    "seed": 491577885,
+    "systemCardSourceSha256": "fe07f0161d18e1375a83ab63e0b6bc02a5bafd3b0a09cad07da5fc4b7eb2c518",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b",
+          "bytes": 2791460,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b",
+          "bytes": 2791460,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "c3b27fef2839d7c7d4fa977a5454a7d6260e6ff173573dcac08600f7bfd19e35",
+          "bytes": 1986773,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "1c40747146a50da140a511710e659d957644720e11d5fbcda9cdff88ed0802d2",
+          "bytes": 2746067,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 913823,
+        "visiblePixels": 659529,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "e3030926df94f572ea0789a2e1b7703ccb01ac1666c86d19b0d38ac9c6125e4d",
+          "bytes": 1356659,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "89cdfbebb5ffc62006f71b815f9613af950c84f6c784effb8e3492fca2b02651",
+          "bytes": 1641982,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1337382,
+        "visiblePixels": 235970,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/coral/arena-manifest.json",
+    "sha256": "9c1c23027928d1b6348bf859a25a74ff7be7e23b0d42f6c4c5d2c156f5cfb09e"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "id": "08-gar",
+    "before": "Original turn1 reaction has a clear vertical rear-body/dorsal cut with a pointed belly shard on both fish.",
+    "after": "Reviewed turn1 reaction and turn3 late idle at full 1024x576. Rear-body/dorsal cuts are closed and tail stalk stays whole. Late right fish has a strong but continuous body curve; tiny detached fleck near the lower mid-stage remains. No visual admission.",
+    "lateReaction": "Also reviewed turn3-hit-reaction-50.png at full size. Visible body/tail regions remain attached, but impact effects obscure portions of the head/chest; the late idle image is the clearer inspection.",
+    "reviewedFiles": [
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/08-gar/turn1-hit-reaction-50.png",
+        "sha256": "3f0c15e586594634fcca8c7309015a2f7bf84bbfa9cf2a8a902ae048aa6fd29b"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn1-hit-reaction-50.png",
+        "sha256": "eff153968e5e7ba21d5931b3a5673ccc81c6fc6548ee1593f51965a52b47f02e"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-reaction-50.png",
+        "sha256": "29f3071932363f93e4205c9f0e86d99ca4f1273f5914f959cbabeb3ab63148bd"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-idle-90.png",
+        "sha256": "31e1d02833a0315728f054396231f08c994460a1e66aa401ae976d9bd75b59c2"
+      }
+    ],
+    "status": "DIAGNOSTIC_IMPROVEMENT_NOT_ADMITTED"
+  },
+  {
+    "id": "12-killifish",
+    "before": "Original turn1 reaction has large angular openings through midbody and rear body plus a thin detached belly filament.",
+    "after": "Full-size turn1 reaction and turn3 late idle: large triangular/rectangular body openings are closed, the body and tail remain continuous. Fine scales and gill/fin borders remain visible; no large hole apparent in these two poses. Not visual admission.",
+    "lateReaction": "Also reviewed turn3-hit-reaction-50.png at full size. Visible body/tail regions remain attached, but impact effects obscure portions of the head/chest; the late idle image is the clearer inspection.",
+    "reviewedFiles": [
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/12-killifish/turn1-hit-reaction-50.png",
+        "sha256": "d52a05c759e8c91f14cfaf845109cda98fa313a13ffc38cab45e10fbdf28d797"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "631ec6634ef3236e3aaf123d9b6784230c72a5a127160ca678edc028d2887c70"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-reaction-50.png",
+        "sha256": "aeac1550358748936b4bb8c85e07246e5b8a495e123585413908c45e87b0a67b"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-idle-90.png",
+        "sha256": "2bfbaf85cbf2787be8ca88700c95bd3d04b3bdf6bb95695ee646c7d330f9c81a"
+      }
+    ],
+    "status": "DIAGNOSTIC_IMPROVEMENT_NOT_ADMITTED"
+  },
+  {
+    "id": "02-parrotfish",
+    "before": "Original turn1 reaction has dark rectangular pectoral-root openings on both fish.",
+    "after": "Full-size turn1 reaction and turn3 late idle: pectoral-root openings are closed; whole body and tail remain attached. Forehead/jaw shape is stylized and the late downturned snout remains a proportion caveat. No visual admission.",
+    "lateReaction": "Also reviewed turn3-hit-reaction-50.png at full size. Visible body/tail regions remain attached, but impact effects obscure portions of the head/chest; the late idle image is the clearer inspection.",
+    "reviewedFiles": [
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/02-parrotfish/turn1-hit-reaction-50.png",
+        "sha256": "c8f1e09911e4a8d3adb00a8a72063e06dbf63539c34e6ad7b63768fc73734302"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "883c90e5ddc783af938811661888aef1e49e24a93ccd86f108790112ab36bf3b"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-reaction-50.png",
+        "sha256": "ce59c990d1dd1a4a30fd5bcc7a0d13d0b59fe05e8c5a0f22c27a931650758700"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-idle-90.png",
+        "sha256": "169ec140a2e9afc19606824d3dc3a5ae99b0ee7b092cae706f369f79fa7467c9"
+      }
+    ],
+    "status": "DIAGNOSTIC_IMPROVEMENT_NOT_ADMITTED"
+  },
+  {
+    "id": "02-rabbitfish",
+    "before": "Original turn1 reaction has large right-angle body/pectoral openings on both fish.",
+    "after": "Full-size turn1 reaction and turn3 late idle: right-angle body openings are closed; tail, belly and fins stay attached. Late right fish dorsal/back curve is angular but no large opening is apparent. Small muzzle and fin-border quality caveats remain, no visual admission.",
+    "lateReaction": "Also reviewed turn3-hit-reaction-50.png at full size. Visible body/tail regions remain attached, but impact effects obscure portions of the head/chest; the late idle image is the clearer inspection.",
+    "reviewedFiles": [
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/02-rabbitfish/turn1-hit-reaction-50.png",
+        "sha256": "58380832160f82ca99415073a906a827af03f97a471fb19447d5f87ac22adb02"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "436f5ebb2948986cfed1c68696b7aad1fd131f80f9628d366f606dd0a9b2d82b"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-reaction-50.png",
+        "sha256": "b0e1e1f42e15e0e753a20b8837421caba949788b8cc4fb7086323b863693f49b"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-idle-90.png",
+        "sha256": "b6b9efc5e953625d6427740a7febedde52ff9c5b54df76f3a18cd7111affb0be"
+      }
+    ],
+    "status": "DIAGNOSTIC_IMPROVEMENT_NOT_ADMITTED"
+  },
+  {
+    "id": "03-sea-bass",
+    "before": "Original turn1 reaction has a vertical body/chest slit beside the pectoral fin, especially visible on the left fish.",
+    "after": "Full-size turn1 reaction and turn3 late idle: the chest slit is closed and body/tail stay whole. Fins/gill edges remain fine creases; no large hole apparent. Original head/fin anatomy remains subject to final review, not visual admission.",
+    "lateReaction": "Also reviewed turn3-hit-reaction-50.png at full size. Visible body/tail regions remain attached, but impact effects obscure portions of the head/chest; the late idle image is the clearer inspection.",
+    "reviewedFiles": [
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/03-sea-bass/turn1-hit-reaction-50.png",
+        "sha256": "da890e6938306d4e00b78bec630b622aec9479c7723abb43be45a216ee45e6cd"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn1-hit-reaction-50.png",
+        "sha256": "7a22c5a240c0ece69d7117eede4315289343da723009f5ee3331861f298ced27"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-reaction-50.png",
+        "sha256": "5cdec804dd3bb90492107bcaf2688fc700397fc8c79979c34f9c1f6f27809f96"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-idle-90.png",
+        "sha256": "beed0878ea77b93fac0404629aebb395c6bdf130953d0ecc737c318b8778f872"
+      }
+    ],
+    "status": "DIAGNOSTIC_IMPROVEMENT_NOT_ADMITTED"
+  }
+]

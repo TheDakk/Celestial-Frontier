@@ -1,0 +1,20 @@
+{
+  "stage": "finish-pheasant-signed-r02-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-pheasant-signed-r02-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/finished-plan.json"
+  ],
+  "startedUnix": 1792288702.157689,
+  "beforeGiB": 77.7736930847168,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.061,
+  "lowestGiB": 77.37289428710938,
+  "afterGiB": 78.73946380615234
+}

@@ -1,0 +1,39 @@
+{
+ "schema": "cf.c266-observed-source/v1",
+ "species": "Godwit",
+ "candidate": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-32-godwit",
+ "masterFrom": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-32-godwit/master.png",
+ "masterSha256": "0589b03bfa2c742b656d74bbbfa3a1694ab285ccf4eb92d9ffd864335ce7d622",
+ "masterCopySha256": "0589b03bfa2c742b656d74bbbfa3a1694ab285ccf4eb92d9ffd864335ce7d622",
+ "subjectSourceSha256": "ec2f1e0014b2063e640c902975e35d71180650c868002a2772f97aeac9223c1a",
+ "mustRead": [
+  "very long straight bill with a faint upward tilt and a pale base",
+  "long dark legs trailing behind in flight",
+  "cinnamon breast barred with dark chevrons"
+ ],
+ "note": null,
+ "why": "Strict right-facing lateral walking godwit: long straight bill, both long legs with separate toe fans, folded near wing with primaries over the barred tail, all with clear margins.",
+ "observed": {
+  "legs": 2,
+  "feet": 2,
+  "wingsFolded": 2,
+  "tail": "barred undertail and dark tail tips under the primaries"
+ },
+ "presence": {
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [],
+  "folded": []
+ },
+ "limitations": [
+  "Long-legged mapping: legKnee is the intertarsal joint; thigh owner is the visible tibiotarsus (C215 ostrich convention).",
+  "Far wing is not separately visible; far-wing owners are the upper back/primaries edge above the near wing (interpretation, robin convention)."
+ ],
+ "joints": 19,
+ "parts": 17,
+ "copiedUnchanged": [
+  "master.png",
+  "subject-source.json",
+  "prompt.txt"
+ ]
+}

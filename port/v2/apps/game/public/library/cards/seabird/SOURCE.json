@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Seabird",
+ "fitDir": "audits/BIRD_ISLANDS_20260927/20-seabird/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cf3629ab8ec6800063836468cb148aacb1363f153edf089aeb2864d4d9a2802e"
+}

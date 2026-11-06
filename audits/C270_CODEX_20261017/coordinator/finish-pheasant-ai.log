@@ -1,0 +1,3 @@
+Error: Commit producer before native inference
+    at file://~/Projects/celestial-frontier-openai-mac/audits/AI_FINISH_C121_20261001/finish-batch.mjs:19:113
+{"status":"LEAF_RED","output":"~/Projects/celestial-frontier-openai-mac/audits/C270_CODEX_20261017/coordinator/finishes/pheasant/finished","error":"Error: Commit producer before native inference\n    at file://~/Projects/celestial-frontier-openai-mac/audits/AI_FINISH_C121_20261001/finish-batch.mjs:19:113"}

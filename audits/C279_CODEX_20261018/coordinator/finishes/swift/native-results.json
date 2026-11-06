@@ -1,0 +1,21 @@
+[
+  {
+    "id": "c275-w1-15-c266-swift",
+    "packetId": "c275-w1-15-c266-swift",
+    "name": "Swift",
+    "fit": "audits/C279_CODEX_20261018/coordinator/finishes/swift/rebound/c275-w1-15-c266-swift",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/finishes/swift/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/finishes/swift/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/swift/script.json",
+    "masterSha256": "59e105ebf2cfad778ce1c7f84a329e9ee8b379918c653890a8adcfae608e7afb",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/static02/swift.json",
+    "observedPacket": "audits/C279_CODEX_20261018/w3-intake/observed01/c275-w1-15-c266-swift",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "nativeAcceptance": false,
+    "finishedMaster": "audits/C279_CODEX_20261018/coordinator/finishes/swift/finished/c275-w1-15-c266-swift-finished.png",
+    "finishReceipt": "audits/C279_CODEX_20261018/coordinator/finishes/swift/finished/c275-w1-15-c266-swift-receipt.json",
+    "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/swift/checkpoint-final.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

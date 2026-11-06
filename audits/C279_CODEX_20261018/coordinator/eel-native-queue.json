@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c279-moray-eel",
+    "packetId": "c279-moray-eel",
+    "name": "Moray Eel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r2c2-21-moray-eel",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/plans/moray-eel/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/plans/moray-eel/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/moray-eel/script.json",
+    "masterSha256": "f3025c0f60aa004477c5e68c6c1ac665fd92843051c8c5ea3177b8dee268897a"
+  },
+  {
+    "id": "c279-gulper-eel",
+    "packetId": "c279-gulper-eel",
+    "name": "Gulper Eel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c2-12-gulper-eel",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/script.json",
+    "masterSha256": "d15d5144a1555d80ea8b6ea85f65c4d9ee59eff662cd11dfa52a3e337b380a77"
+  }
+]

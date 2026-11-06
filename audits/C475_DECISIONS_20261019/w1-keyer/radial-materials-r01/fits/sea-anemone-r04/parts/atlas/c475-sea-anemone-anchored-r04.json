@@ -1,0 +1,181 @@
+{
+  "frames": {
+    "left-crown-envelope.png": {
+      "frame": {
+        "h": 337,
+        "w": 229,
+        "x": 5,
+        "y": 410
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 337,
+        "w": 229
+      },
+      "spriteSourceSize": {
+        "h": 337,
+        "w": 229,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-crown-envelope.png": {
+      "frame": {
+        "h": 159,
+        "w": 215,
+        "x": 244,
+        "y": 410
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 159,
+        "w": 215
+      },
+      "spriteSourceSize": {
+        "h": 159,
+        "w": 215,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "oral-disc.png": {
+      "frame": {
+        "h": 121,
+        "w": 146,
+        "x": 322,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 121,
+        "w": 146
+      },
+      "spriteSourceSize": {
+        "h": 121,
+        "w": 146,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "pedal-disc.png": {
+      "frame": {
+        "h": 116,
+        "w": 331,
+        "x": 322,
+        "y": 136
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 116,
+        "w": 331
+      },
+      "spriteSourceSize": {
+        "h": 116,
+        "w": 331,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "right-crown-envelope.png": {
+      "frame": {
+        "h": 395,
+        "w": 307,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 395,
+        "w": 307
+      },
+      "spriteSourceSize": {
+        "h": 395,
+        "w": 307,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "soft-column.png": {
+      "frame": {
+        "h": 134,
+        "w": 240,
+        "x": 244,
+        "y": 579
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 134,
+        "w": 240
+      },
+      "spriteSourceSize": {
+        "h": 134,
+        "w": 240,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "upper-crown-envelope.png": {
+      "frame": {
+        "h": 214,
+        "w": 261,
+        "x": 5,
+        "y": 757
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 214,
+        "w": 261
+      },
+      "spriteSourceSize": {
+        "h": 214,
+        "w": 261,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c475-sea-anemone-anchored-r04.png",
+    "scale": "1",
+    "size": {
+      "h": 976,
+      "w": 658
+    }
+  }
+}

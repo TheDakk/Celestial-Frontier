@@ -1,0 +1,20 @@
+{
+  "stage": "tube-worm-r02-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Tube-Worm-r02-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native-plan-bound.json"
+  ],
+  "startedUnix": 1792459670.0610502,
+  "beforeGiB": 55.85638427734375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.061,
+  "lowestGiB": 55.46821594238281,
+  "afterGiB": 55.830665588378906
+}

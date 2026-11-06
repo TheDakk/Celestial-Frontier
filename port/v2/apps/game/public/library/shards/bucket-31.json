@@ -1,0 +1,221 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-31",
+ "files": [
+  {
+   "path": "library/cards/arctic-fox/SOURCE.json",
+   "bytes": 292,
+   "sha256": "053f3ea1111512e76dd945189eb6c4961d00592c34f7fbee19f765939597b89b"
+  },
+  {
+   "path": "library/cards/arctic-fox/card/card.json",
+   "bytes": 5882,
+   "sha256": "6041e53dd5d023f2403b0c5e96f38bb7b158d5ca2ad3162aab62dbb0e7831164"
+  },
+  {
+   "path": "library/cards/arctic-fox/card/labels-512.png",
+   "bytes": 13300,
+   "sha256": "6f0ba756c8bbd43a376916df12c4ae3411d466b23bfad6e0cd91b9ae5a7ccc72"
+  },
+  {
+   "path": "library/cards/arctic-fox/card/master-512.png",
+   "bytes": 218459,
+   "sha256": "4ef18d2e2ee1ffa4ebf78ac3bb7fd372e9d98d550e308318b14b282da8cb3df8"
+  },
+  {
+   "path": "library/cards/arctic-fox/record.json",
+   "bytes": 7516,
+   "sha256": "ca01c02e0a1f609517ffd9111a98c545dc3ef16db6e210d06ccf367bd758df0d"
+  },
+  {
+   "path": "library/cards/cave-snake/SOURCE.json",
+   "bytes": 291,
+   "sha256": "35c669b91f840d1c36c2bd45662bb0437a1d9a7014087db69ca698cf8494f0c3"
+  },
+  {
+   "path": "library/cards/cave-snake/card/card.json",
+   "bytes": 2898,
+   "sha256": "ca5e35d5565fc2418fb625f1bc7602365bbc54d8612973222df2fcfe460597e6"
+  },
+  {
+   "path": "library/cards/cave-snake/card/labels-512.png",
+   "bytes": 2817,
+   "sha256": "ebbee6427e7c1b6ea46b4f769542a590f818458af13b0ec5aedfb5c60c55e580"
+  },
+  {
+   "path": "library/cards/cave-snake/card/master-512.png",
+   "bytes": 31780,
+   "sha256": "4e70f4a95e57a8df32532ad0912bf8be9adbfa4e0b5f71ef136dc3fc3a1614e1"
+  },
+  {
+   "path": "library/cards/cave-snake/record.json",
+   "bytes": 5113,
+   "sha256": "2008e1bf3b137732cf2a0c325b8cc40d24d1f1c79f7cc743618403ecc82652f4"
+  },
+  {
+   "path": "library/cards/eland/SOURCE.json",
+   "bytes": 283,
+   "sha256": "f88a3f333891def68ea873f356da3488af2b232709b576e726742fda1d129a09"
+  },
+  {
+   "path": "library/cards/eland/card/card.json",
+   "bytes": 5898,
+   "sha256": "28489adf39682ec7c29456984391d57fadede45e84aec2bdedefa7caaeb9e011"
+  },
+  {
+   "path": "library/cards/eland/card/labels-512.png",
+   "bytes": 7432,
+   "sha256": "cc18d943ee8016cae07150768180dd9cbc530fedf4ea0875e70e8beead08a24b"
+  },
+  {
+   "path": "library/cards/eland/card/master-512.png",
+   "bytes": 147809,
+   "sha256": "685945e6b4cced7641c82d31d09e0237bfcbdb87d173586ea61a315eabc44ae3"
+  },
+  {
+   "path": "library/cards/eland/record.json",
+   "bytes": 7497,
+   "sha256": "88b53e060722d3e9cb7113daa3e5252cafc3b97eb9fbeb68f89401e719f74a07"
+  },
+  {
+   "path": "library/cards/gila-monster/SOURCE.json",
+   "bytes": 319,
+   "sha256": "fa72ff2b508510953fc597ef28f8c89f8c034fa1e3681f13567ba71c2f2ef6b9"
+  },
+  {
+   "path": "library/cards/gila-monster/card/card.json",
+   "bytes": 5276,
+   "sha256": "83d8515a3cb4b10f65ac7078ef0a22588ffd904f72e25d13cef719cf1ac4619c"
+  },
+  {
+   "path": "library/cards/gila-monster/card/labels-512.png",
+   "bytes": 7370,
+   "sha256": "7cf49fa05b2fdd6fbc917e2467fdad8cc85dc1718b2c43e94a0c4a5515c257b7"
+  },
+  {
+   "path": "library/cards/gila-monster/card/master-512.png",
+   "bytes": 74933,
+   "sha256": "b3f0dabbd2481573332195079a1075f32a4e9d6a435c79a8d3f55da44fa8ca52"
+  },
+  {
+   "path": "library/cards/gila-monster/record.json",
+   "bytes": 7166,
+   "sha256": "6621276be8e378362b8c89923347fcf92aa8aa096aa26449908af9a13a79d795"
+  },
+  {
+   "path": "library/cards/gorilla/SOURCE.json",
+   "bytes": 325,
+   "sha256": "7b7bc61c67446e9d1de1f6435cdf111ecc2f19be6422eb5df88a39cfbd9491cd"
+  },
+  {
+   "path": "library/cards/gorilla/card/card.json",
+   "bytes": 3462,
+   "sha256": "5ea56608b5231cfb4920ea27bc5fc34d94a1ae7fd925d614f4cb1ffa1e5bc955"
+  },
+  {
+   "path": "library/cards/gorilla/card/labels-512.png",
+   "bytes": 5382,
+   "sha256": "b0eed77d7773ce23d6ba85b9c35ab871de1211cc15a9e34f613b091a18c4f77c"
+  },
+  {
+   "path": "library/cards/gorilla/card/master-512.png",
+   "bytes": 95075,
+   "sha256": "3ee31f7764b0295abf86099bca4afffe2b0706909558d7a5977ddd90964b17eb"
+  },
+  {
+   "path": "library/cards/gorilla/record.json",
+   "bytes": 6045,
+   "sha256": "2f04c2b5ba7b9b1ca64779cf51c4c418137c324a336f6dfd026fc10cf1df5d71"
+  },
+  {
+   "path": "library/cards/raven/SOURCE.json",
+   "bytes": 285,
+   "sha256": "e9193a6053e3a8cfdecc7d8925248072a28593cf18ff1148fa00c7d9b506e7a7"
+  },
+  {
+   "path": "library/cards/raven/card/card.json",
+   "bytes": 3753,
+   "sha256": "4f6deb307539b7fd9fb68ded02b2d83b405f2112293f36d0e591ab39ae8910a0"
+  },
+  {
+   "path": "library/cards/raven/card/labels-512.png",
+   "bytes": 13430,
+   "sha256": "d6060db1c5b36289e6b4d024b032ce4cf428cb46f474c21ea27c0c470454f529"
+  },
+  {
+   "path": "library/cards/raven/card/master-512.png",
+   "bytes": 207624,
+   "sha256": "362aedc765ec9ff318dfee5431b18ad97bcf95b27a03f2366838530b6d18b6c1"
+  },
+  {
+   "path": "library/cards/raven/record.json",
+   "bytes": 5932,
+   "sha256": "b4730bbd828370fa723bbb53df6168fc7f93711ddf61dd4d6f1638511712ef9e"
+  },
+  {
+   "path": "library/cards/viperfish/SOURCE.json",
+   "bytes": 300,
+   "sha256": "319eb7faae750b558f014b15345282b6d6687db03a2b48a2e6d4e9c358816c65"
+  },
+  {
+   "path": "library/cards/viperfish/card/card.json",
+   "bytes": 2969,
+   "sha256": "b6f2014e7a9560c759b93cc1e75a9e4ee88c4c6d3fb66bf62016f661fe8d6d76"
+  },
+  {
+   "path": "library/cards/viperfish/card/labels-512.png",
+   "bytes": 6058,
+   "sha256": "3d735e0c980f740e742822553167773c2595b15a54a9d817e9d1bc2399a7eb54"
+  },
+  {
+   "path": "library/cards/viperfish/card/master-512.png",
+   "bytes": 63538,
+   "sha256": "f40043d954f11a89298f33b0e5acdd7f4a36b964bac8f4a777e4aad28cdfd02c"
+  },
+  {
+   "path": "library/cards/viperfish/record.json",
+   "bytes": 5156,
+   "sha256": "dfab5b9ab94b683ef85c9b4fdac9abf48e2fda872d77eb74a379d2ddec600b8a"
+  },
+  {
+   "path": "library/creature-finish-source/18-rat-snake/labels.png",
+   "bytes": 39209,
+   "sha256": "ab21eab37d10dcb0f597bf8127e990a7d2c59267c5a98a71d588e4d7dfad89a7"
+  },
+  {
+   "path": "library/creature-finish-source/18-rat-snake/master.png",
+   "bytes": 258456,
+   "sha256": "1e4811f1863d1a2cd27dd8f34e4e154223b99a0edb5aa322a5958773b96e118c"
+  },
+  {
+   "path": "library/creature-finish-source/c196quadrupedoriginals-24-proboscis-monkey/labels.png",
+   "bytes": 44359,
+   "sha256": "4998a65746056cf89ea25740cad5a6d645041f52667e78571d74a51a7d6e9c36"
+  },
+  {
+   "path": "library/creature-finish-source/c196quadrupedoriginals-24-proboscis-monkey/master.png",
+   "bytes": 1335566,
+   "sha256": "cdd39cb9749eb0880b3db4f448309cf861b7a57bf7a3c334ad30b12acbaae38b"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c118-09-colugo/labels.png",
+   "bytes": 42085,
+   "sha256": "bc508bc0853f6494cce433cd5138bd5c2ab9c50bfe3549092aea8a2e976a8132"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c118-09-colugo/master.png",
+   "bytes": 1302697,
+   "sha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618"
+  },
+  {
+   "path": "library/creature-finish-source/c213originals-06-hyena/labels.png",
+   "bytes": 45351,
+   "sha256": "956f31b9bae437e19007dc17f056a409523b7c24720698470144659d9a487070"
+  },
+  {
+   "path": "library/creature-finish-source/c213originals-06-hyena/master.png",
+   "bytes": 1355604,
+   "sha256": "eb806ec468b0ce2c2cfc0aa98ccafc61ed133e50a36dd4894e20c2860709b076"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sloth Bear",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c3-01-sloth-bear/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ae823a0b8513baede083f730433ff6fc7186e4f379d2b84d151a4c234e2c55ec"
+}

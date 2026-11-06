@@ -1,0 +1,9 @@
+{
+  "existingCommit": "07c93945",
+  "passesPreviouslyApplied": 1,
+  "newPasses": 0,
+  "changedRgbPixels": 190,
+  "alphaUnchanged": true,
+  "verifiedOutputSha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e",
+  "verifiedCompositeSha256": "84e023f37216cbe2c6df54313dfb1a59a6c7db3bf94d441f53cbbda36c0abd5c"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "opensea",
+  "biome": "opensea",
+  "medium": "water",
+  "recipe": "audits/C132_ARENAS_20261001/opensea/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/opensea/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/arena-far.webp",
+      "runtimeSha256": "b9fc1ac2937cf5e6f8266b04dc42f64fbaf8a6b54bd9aa470f5cd5beb3e6f53f",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+        "sha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.webp",
+      "runtimeSha256": "a0894e807a32c879ca9b890a1a082b9ce415d26dd2c0521ce1bbfec3ab6cac45",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.png",
+        "sha256": "fa870f9646b4f230e928c668e1c65daad5db2e4dc0fa2d54735db684b6e4d65d"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/keyed/arena-near.webp",
+      "runtimeSha256": "f4c51b0776900d2f6bcf54aee0c44ea154674862cb095b74d476d22803a97c37",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/opensea/keyed/arena-near.png",
+        "sha256": "813f1d875a14322328844717a493738d87cc0d6b82256a2efbbe48dee98e4c5d"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

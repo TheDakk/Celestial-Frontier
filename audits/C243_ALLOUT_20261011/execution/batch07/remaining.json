@@ -1,0 +1,206 @@
+[
+  {
+    "name": "Abalone",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Continuous shell and muscular foot; tentacles and fringe stay attached in all five frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Chiton",
+    "status": "INTAKE_REFUSED",
+    "reason": "wrong-family: sessile-filter matches clearly better (0.0097 < 0.0295)",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Conch",
+    "status": "INTAKE_REFUSED",
+    "reason": "wrong-family: fish matches clearly better (0.0167 < 0.0270)",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Land Snail",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family gastropod",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Limpet",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Continuous conical shell/foot; no detached appendage or transparent shell break in all five frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Crayfish",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Hermit Crab",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Lobster",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Fruit Bat",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family flyer-membrane",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Insect-Eating Bat",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Vampire Bat",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Centipede",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family myriapod",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Giant Centipede",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Millipede",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Pyrosome",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family colonial-filter; Small detached blue bead-like islands outside colony rim and upper silhouette; source is not one clean connected colony.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Salp",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family colonial-filter",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Barnacle",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family barnacle",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Fly Larvae",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family larva",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Tardigrade",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family lobopod; Only five separated lobopod paths visible; canonical four pairs/eight limbs cannot be verified.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Sea Squirt",
+    "status": "COMPILER_BLOCKED",
+    "reason": "Unsupported controlled library family",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/compiler-blockers.json"
+  },
+  {
+    "name": "Horseshoe Crab",
+    "status": "INTAKE_REFUSED",
+    "reason": "no-reference: no other hand-authored subject of family xiphosuran",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/attempts.json"
+  },
+  {
+    "name": "Bison",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Shoulder hump, head, beard and forelegs remain connected across all five frames; no back-step gap or detached horn observed.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Buffalo",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Forelegs and horns remain attached, no floating horn or head/foreleg fragments seen in all five frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Dog",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Muzzle, chest, all limbs and complete curved furry tail stay connected in all five frames; no detached fur slab or visible key fringe observed.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Forest Elephant",
+    "status": "HOLD",
+    "reason": "Pink/magenta fringe remains along tusk tips/edges in reaction and late frames; triage flags11pixels.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Giant Salamander",
+    "status": "INTAKE_REFUSED",
+    "reason": "Error: Family admission: proportion bound: leg/torso:hindFar",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/class-intake-blockers.json"
+  },
+  {
+    "name": "Goat",
+    "status": "HOLD",
+    "reason": "Small pale grey rectangular/triangular discontinuity in left upper flank at turn3-idle50/90; source/ownership seam needs repair.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Kinkajou",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Head/neck seam stays closed and no detached ear/head fringe or tail piece seen across all five frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Okapi",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "No detached head/fringe piece or foreleg break seen in all five finished frames; neck contour continuous.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Shrew",
+    "status": "STATIC_RED",
+    "reason": "approach:walk foreFarAnkle paint drift0.250007296370275 exceeds unchanged0.25px bound",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c98-19-shrew/static.json"
+  },
+  {
+    "name": "Takin",
+    "status": "HOLD",
+    "reason": "Visible pink/magenta short fringe remnants below beard/chin on both creatures persist across reaction and late frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  },
+  {
+    "name": "Vole",
+    "status": "INTAKE_REFUSED",
+    "reason": "Error: Family admission: proportion bound: leg/torso:hindFar",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/class-intake-blockers.json"
+  },
+  {
+    "name": "Wall Lizard",
+    "status": "INTAKE_REFUSED",
+    "reason": "Error: Family admission: proportion bound: leg/torso:hindFar",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/class-intake-blockers.json"
+  },
+  {
+    "name": "Water Buffalo",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "Horns and forelegs remain attached; no duplicated horn, detached knee or shell-like body break in all five frames.",
+    "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/visual-review.json"
+  }
+]

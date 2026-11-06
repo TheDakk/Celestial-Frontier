@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Jackrabbit",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/g2c107-18-jackrabbit/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bb6da204d272759135062019bd4191c152a9480cc4e352b7aff45d8ac8d12f40"
+}

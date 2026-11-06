@@ -1,0 +1,308 @@
+{
+  "name": "Sparrow",
+  "family": "biped-bird",
+  "species": {
+    "name": "Sparrow",
+    "aspect": 1.6,
+    "headFrac": 0.28,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "stout conical seed-cracking bill",
+      "round-headed chunky body",
+      "short square-ended tail"
+    ]
+  },
+  "genome": {
+    "seed": 4188265330,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 10,
+    "body": 13,
+    "loco": 7,
+    "trait": 16,
+    "size": 1,
+    "diet": 0,
+    "head": 8,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 9,
+    "temper": 9,
+    "sense": 8,
+    "repro": 1,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sparrow"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sparrow\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4188265330\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "index": 251,
+  "contract": {
+    "id": "biped-bird",
+    "version": 1,
+    "clipSetId": "biped-bird-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck0",
+        "chest"
+      ],
+      [
+        "neck1",
+        "neck0"
+      ],
+      [
+        "head",
+        "neck1"
+      ],
+      [
+        "beak",
+        "head"
+      ],
+      [
+        "legFarKnee",
+        "pelvis"
+      ],
+      [
+        "legFarAnkle",
+        "legFarKnee"
+      ],
+      [
+        "legFarFoot",
+        "legFarAnkle"
+      ],
+      [
+        "legNearKnee",
+        "pelvis"
+      ],
+      [
+        "legNearAnkle",
+        "legNearKnee"
+      ],
+      [
+        "legNearFoot",
+        "legNearAnkle"
+      ],
+      [
+        "wingFarRoot",
+        "chest"
+      ],
+      [
+        "wingFarTip",
+        "wingFarRoot"
+      ],
+      [
+        "wingNearRoot",
+        "chest"
+      ],
+      [
+        "wingNearTip",
+        "wingNearRoot"
+      ],
+      [
+        "tailFan",
+        "pelvis"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck0",
+      "neck1",
+      "head",
+      "beak",
+      "legFarKnee",
+      "legFarAnkle",
+      "legFarFoot",
+      "legNearKnee",
+      "legNearAnkle",
+      "legNearFoot",
+      "wingFarRoot",
+      "wingFarTip",
+      "wingNearRoot",
+      "wingNearTip",
+      "tailFan"
+    ],
+    "legs": [
+      "legFar",
+      "legNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -25,
+        "max": 25
+      },
+      "pelvis": {
+        "min": -20,
+        "max": 20
+      },
+      "spine": {
+        "min": -25,
+        "max": 25
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck0": {
+        "min": -45,
+        "max": 45
+      },
+      "neck1": {
+        "min": -45,
+        "max": 45
+      },
+      "head": {
+        "min": -40,
+        "max": 40
+      },
+      "beak": {
+        "min": -30,
+        "max": 5
+      },
+      "legFarKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legFarAnkle": {
+        "min": -85,
+        "max": 85
+      },
+      "legFarFoot": {
+        "min": -45,
+        "max": 45
+      },
+      "legNearKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legNearAnkle": {
+        "min": -85,
+        "max": 85
+      },
+      "legNearFoot": {
+        "min": -45,
+        "max": 45
+      },
+      "wingFarRoot": {
+        "min": -60,
+        "max": 95
+      },
+      "wingFarTip": {
+        "min": -70,
+        "max": 70
+      },
+      "wingNearRoot": {
+        "min": -60,
+        "max": 95
+      },
+      "wingNearTip": {
+        "min": -70,
+        "max": 70
+      },
+      "tailFan": {
+        "min": -40,
+        "max": 40
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.06,
+        "max": 0.65,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/torso:legFar",
+        "min": 0.3,
+        "max": 3.5,
+        "kind": "ratio",
+        "bones": [
+          "legFarKnee",
+          "legFarAnkle",
+          "legFarFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legNear",
+        "min": 0.3,
+        "max": 3.5,
+        "kind": "ratio",
+        "bones": [
+          "legNearKnee",
+          "legNearAnkle",
+          "legNearFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "wing/torso",
+        "min": 0.4,
+        "max": 4.5,
+        "kind": "ratio",
+        "bones": [
+          "wingFarRoot",
+          "wingFarTip"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  }
+}

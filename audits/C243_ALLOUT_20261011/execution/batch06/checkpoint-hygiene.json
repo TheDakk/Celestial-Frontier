@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "files": 402,
+  "scrubbed": [
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/fit/intake-provenance.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c221program-02-camel-spider/static.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/static.json.sources.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-19-boa/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-06-orangutan/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-09-spider-monkey/static.json",
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/fit/intake-provenance.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-06-orangutan/static.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-04-gorilla/static.json.sources.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-23-rattlesnake/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/c196quadrupedoriginals-20-monkey/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/static.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-04-gorilla/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c221program-02-camel-spider/static.json.sources.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-04-gorilla/static.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-09-spider-monkey/static.json.sources.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-22-mountain-viper/report.json",
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/fit/intake-provenance.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-06-orangutan/static.json.sources.json"
+  ],
+  "protectedUnchanged": 16
+}

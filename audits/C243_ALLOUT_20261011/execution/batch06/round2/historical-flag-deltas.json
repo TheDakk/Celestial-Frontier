@@ -1,0 +1,66 @@
+[
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+    "old": {
+      "turn3-hit-idle-50": [
+        {
+          "px": 293,
+          "box": [
+            387,
+            251,
+            418,
+            277
+          ]
+        }
+      ],
+      "turn3-hit-idle-90": []
+    },
+    "new": {
+      "turn3-hit-idle-50": [
+        {
+          "px": 223,
+          "box": [
+            386,
+            251,
+            418,
+            277
+          ]
+        }
+      ],
+      "turn3-hit-idle-90": []
+    },
+    "fullSizeLook": "Original1024x576 idle50 inspected again: known thin Stonefly antenna region at [386,251,418,277], median-mask box shifts1pixel/293\u2192223pixels; no new detached body part. Existing C259 false-flag diagnosis retained."
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+    "old": {
+      "turn3-hit-idle-50": [
+        {
+          "px": 293,
+          "box": [
+            387,
+            251,
+            418,
+            277
+          ]
+        }
+      ],
+      "turn3-hit-idle-90": []
+    },
+    "new": {
+      "turn3-hit-idle-50": [
+        {
+          "px": 223,
+          "box": [
+            386,
+            251,
+            418,
+            277
+          ]
+        }
+      ],
+      "turn3-hit-idle-90": []
+    },
+    "fullSizeLook": "Original1024x576 idle50 inspected again: known thin Stonefly antenna region at [386,251,418,277], median-mask box shifts1pixel/293\u2192223pixels; no new detached body part. Existing C259 false-flag diagnosis retained."
+  }
+]

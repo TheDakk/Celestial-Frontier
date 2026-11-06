@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mako Shark\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2192034820\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"3\"]]]]",
+    "seed": 2192034820,
+    "ownerId": "authored:archetype-sprint/mako-shark-framing-v2",
+    "earthName": "Mako Shark"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2192034820,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 6,
+    "body": 13,
+    "loco": 17,
+    "trait": 3,
+    "size": 3,
+    "diet": 4,
+    "head": 2,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 14,
+    "detail": 9,
+    "accent": 13,
+    "temper": 8,
+    "sense": 4,
+    "repro": 2,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mako Shark"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7058112305831304,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6130781499202551,
+      0.49362041467304624
+    ],
+    "head": [
+      0.7008771929824561,
+      0.49856459330143543
+    ],
+    "jaw": [
+      0.6973684210526315,
+      0.5147527910685805
+    ],
+    "spine0": [
+      0.5618819776714514,
+      0.49306220095693776
+    ],
+    "spine1": [
+      0.516347687400319,
+      0.4946570972886762
+    ],
+    "spine2": [
+      0.47647527910685805,
+      0.4972089314194577
+    ],
+    "spine3": [
+      0.42830940988835725,
+      0.4995215311004785
+    ],
+    "spine4": [
+      0.3684210526315789,
+      0.49920255183413076
+    ],
+    "spine5": [
+      0.3236044657097289,
+      0.4990430622009569
+    ],
+    "caudal": [
+      0.29401913875598085,
+      0.49473684210526314
+    ],
+    "dorsal": [
+      0.5014354066985646,
+      0.43110047846889954
+    ],
+    "pectoralNear": [
+      0.553030303030303,
+      0.5449760765550239
+    ],
+    "pectoralFar": [
+      0.5901116427432217,
+      0.5471291866028708
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/mako-shark-framing-v2/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile predatory-shark media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from reef-shark. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "a9641d0d389d2fade3dfd9f4e2b9ecc7416601151c4f2d206dddc6cec545311c",
+    "subjectSourceSha256": "6a6e1eeb56f942ee1c08210e1b93deb9fea1363873928244768432a2aaabb81f",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.08793814226459214,
+      "jaw": 0.016564094524112265,
+      "spine0": 0.05119921537955467,
+      "spine1": 0.04556221334400621,
+      "spine2": 0.0399539835379587,
+      "spine3": 0.04822135496705148,
+      "spine4": 0.059889206729492356,
+      "spine5": 0.044816870710334404,
+      "caudal": 0.029897075149130016,
+      "dorsal": 0.06528261569154765,
+      "pectoralFar": 0.058229280652870065,
+      "pectoralNear": 0.07901359328277095
+    },
+    "measures": {
+      "body": 0.238352561152359,
+      "bone-min": 0.016564094524112265,
+      "bone-max": 0.08793814226459214,
+      "caudal/body": 0.12543215396800078,
+      "head/body": 0.36894146150324175
+    }
+  },
+  "recipeHash": "4cdb059901feddc37b4088690bdaaf8019fa09e995ffb7cc976686c9741141a8"
+}

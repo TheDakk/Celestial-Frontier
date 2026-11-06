@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "canyon",
+  "biome": "canyon",
+  "recipe": "audits/C132_ARENAS_20261001/canyon/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/canyon/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/canyon/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/canyon/arena-far.png",
+      "runtimeSha256": "681f975e530324d6a09ce7d71d420a9392e8aec335e5f40d88f5064e97f2b073"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/canyon/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/canyon/keyed/arena-mid.png",
+      "runtimeSha256": "2e29d50db09b031921a5b810513c49e283ae07eeab8605423efcbbbcc03f2410"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/canyon/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/canyon/keyed/arena-near.png",
+      "runtimeSha256": "4f5ce6eb13f32078ed0568ced59dc9e66db6fa4371ba791b81a09c2fb9b2fc95"
+    }
+  }
+}

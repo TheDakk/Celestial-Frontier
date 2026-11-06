@@ -1,0 +1,144 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c81-21-caddisfly",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "be301b56fb826b1f84690a389f4d62b58f79d8713e6cba23b50ade600fe356fb",
+ "subjectSourceSha256": "82a42c535342f3952ad0e24e9c335a25d3e40acd439d29b5fae60478470ab46c",
+ "identity": {
+  "name": "Caddisfly",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caddisfly\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1354641709\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 1354641709,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "09-cricket",
+  "authoringSha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1",
+  "masterSha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0128,
+     "class": "top",
+     "attach": {
+      "x": 129.5,
+      "y": 163,
+      "relX": 0.44,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.3103,
+     "class": "front",
+     "attach": {
+      "x": 182.9,
+      "y": 200.2,
+      "relX": 0.99,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0376,
+     "class": "rear",
+     "attach": {
+      "x": 85,
+      "y": 203.5,
+      "relX": -0.01,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0112,
+     "class": "limb-down",
+     "attach": {
+      "x": 168,
+      "y": 217,
+      "relX": 0.84,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.025,
+     "class": "limb-down",
+     "attach": {
+      "x": 157,
+      "y": 219,
+      "relX": 0.72,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0161,
+     "class": "rear",
+     "attach": {
+      "x": 107,
+      "y": 228,
+      "relX": 0.21,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 2,
+    "limb-down": 2
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "09-cricket",
+   "byClass": {
+    "front": 1,
+    "rear": 3,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 2,
+    "limb-down": 2
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legFrontNear+legFrontFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

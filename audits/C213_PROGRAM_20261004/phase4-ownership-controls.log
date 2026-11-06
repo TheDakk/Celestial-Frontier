@@ -1,0 +1,20 @@
+✔ a sliver between two parts goes to the part it borders most; the main body and every other owner are untouched (0.81125ms)
+✔ ties and longer borders: an island touching wing on 3 sides and head on 1 goes to wing (0.11775ms)
+✔ control: an island with no painted neighbour stays remainder; a diagonal touch counts as connected (not an island) (0.134125ms)
+✔ control: an island over an explicit 5% cap refuses as structural; the D28 default (0.5) admits it (0.270084ms)
+✔ mutation: moving the MAIN component instead would change the body — the rule never does (0.144833ms)
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (179.138875ms)
+✔ a changed keyed colour refuses even though original PNG and record still match (5.226375ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (275.157ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (1333.204625ms)
+✔ connected thin fur donor repairs the reported no-interior case, preserving alpha (3.091208ms)
+✔ no donor across an air gap; no fabricated neutral pixel (1.062833ms)
+✔ genuine interior pigment and delivered source bytes remain unchanged (2.381542ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2186.416875

@@ -1,0 +1,71 @@
+{
+  "name": "Shark",
+  "family": "fish",
+  "species": {
+    "name": "Shark",
+    "aspect": 4.4,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "tall triangular first dorsal fin",
+      "asymmetric tail with a longer upper lobe",
+      "crescent mouth set under the snout with gill slits behind"
+    ],
+    "note": "generic name - drawn as a representative requiem shark"
+  },
+  "genome": {
+    "seed": 2187015386,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 0,
+    "body": 7,
+    "loco": 10,
+    "trait": 7,
+    "size": 1,
+    "diet": 1,
+    "head": 9,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 4,
+    "habitat": 15,
+    "detail": 7,
+    "accent": 12,
+    "temper": 8,
+    "sense": 0,
+    "repro": 5,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Shark\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2187015386\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 433,
+  "profile": {
+    "id": "predatory-shark",
+    "names": [
+      "Juvenile Shark",
+      "Shark",
+      "Reef Shark",
+      "Hammerhead Shark",
+      "Great White Shark",
+      "Tiger Shark",
+      "Mako Shark"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

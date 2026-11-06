@@ -1,0 +1,51 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/run.mjs",
+  "toolReceipt": "acda2f",
+  "exitCode": 0,
+  "firstRefusalArapExecutions": 3,
+  "firstRefusalsReproduced": 3,
+  "targetOnlyAttempted": 363,
+  "targetOnlyResolved": 351,
+  "targetOnlyErrors": 12,
+  "fullyPinnedTrianglesInspectedPerResolvedSample": 1907,
+  "unionInvertedTriangles": 19,
+  "unionAffectedParts": 12,
+  "scope": "Exactly three recorded first-refusal ARAP executions plus121 canonical contact/target-only samples each for hit/dodge/tame. No other rows, presentation, native, acceptance battery, mesh or source edits.",
+  "loadedSourceCount": 58,
+  "staticSourceCount": 62,
+  "allHashesMatchedAtExecution": true,
+  "sourceJoinRead": {
+    "toolReceipt": "c568d8",
+    "exitCode": 0,
+    "tracedRootPins": 22,
+    "parts": 12,
+    "scope": "Read-only retained final source-join/pixel extraction, no split or pose execution"
+  },
+  "hashes": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/diagnose.ts",
+      "sha256": "d2f3c4a1a8b95cd49d9e50d62ea3f882344391e653bcbf0a0a5f49061b8966d9"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/run.mjs",
+      "sha256": "49c06e11745e7d99c55d3d0fd1c93aa03c975fb922631df77effae8c32faafdf"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/report.json",
+      "sha256": "07cb55d4a4ae1227d037d4c7476ee281a4f40e46397230b8435cae44462400ab"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/root-edge-inspection.mjs",
+      "sha256": "b1fbecee8437f5de7e346e6eab7a90ed8a581b512ef3090d3a8c1ce71a0c2266"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/root-edge-inspection.json",
+      "sha256": "1e407fb5a0a5fe9b02b16a541edc1b505d067e16a6da79cc0843845c832cad86"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/ownership-summary.json",
+      "sha256": "51464ae8515932cec4e26e161630e1a679aafb1d0b6e62148667477d3c0505ce"
+    }
+  ]
+}

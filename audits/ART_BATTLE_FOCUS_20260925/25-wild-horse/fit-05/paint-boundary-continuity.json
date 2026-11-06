@@ -1,0 +1,17 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b",
+  "bindingHash": "e5ec652ac3791d30e39a8bf729c75ea36910a190db49bd3380a3cb34bd9eb600",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Native01 shows a rectangular neck/torso edge during faint. This observed continuous coat boundary shares supports; ears, limbs and tail keep their independent boundaries."
+}

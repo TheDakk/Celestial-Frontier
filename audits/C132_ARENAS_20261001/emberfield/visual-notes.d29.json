@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "emberfield",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/emberfield/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/emberfield/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+    "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+    "audits/C132_ARENAS_20261001/emberfield/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Orange ash ground, basalt towers and smoke are present; the flat fighting band remains clear.",
+    "MID repeats a distant geological ridge already in FAR. Its keyed outline cuts sharply across the background, including abrupt contour steps around the left arch and right distant rocks. NEAR introduces a paler horizontal earth band at the lower edge. These are concrete composition holds.",
+    "No visible sun disk or fauna occurs in the selected paintings, but the orange directional light is stronger than the near-neutral system card and needs review. No native motion, physical-medium admission or acceptance is claimed."
+  ]
+}

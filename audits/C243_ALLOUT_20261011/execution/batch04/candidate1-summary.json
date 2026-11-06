@@ -1,0 +1,31 @@
+{
+  "round": 1,
+  "candidate": 1,
+  "attempts": 26,
+  "eligibleStaticPass": [
+    "Snipe"
+  ],
+  "numericalStaticPassButSourceHeld": [
+    "Swift"
+  ],
+  "admitIntakeRefused": [
+    "Tern"
+  ],
+  "remainingForCandidate2": 25,
+  "classPass": [
+    "Cockatoo",
+    "Frigatebird",
+    "Hoatzin",
+    "Kakapo",
+    "Kookaburra",
+    "Osprey",
+    "Eagle"
+  ],
+  "classRed": [
+    "Egret"
+  ],
+  "classNoBinding": [
+    "Macaw"
+  ],
+  "standingReferencePoolUnchanged": true
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wild Ass",
+ "fitDir": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0db916226143b9ce12adf70b1a3eb16b585ce06675d29b91e5ff191a45bd1099"
+}

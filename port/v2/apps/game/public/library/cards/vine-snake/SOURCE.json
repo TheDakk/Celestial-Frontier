@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Vine Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4da8727feaafa062bb66794cd7755bb4d5ff425150e15e3307c1e0e259b5d296"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    144,
+    1264,
+    5248,
+    1254,
+    4217,
+    3708,
+    3210,
+    1256,
+    3269,
+    845,
+    1643,
+    1074,
+    627,
+    2695,
+    1804,
+    691,
+    1005,
+    4562,
+    7943,
+    7218,
+    7859,
+    27706,
+    4108,
+    4572,
+    5324,
+    8267,
+    9159
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "spine"
+}

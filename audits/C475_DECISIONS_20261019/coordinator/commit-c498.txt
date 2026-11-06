@@ -1,0 +1,4 @@
+C498: freeze Anemone W2-clean C261 checkpoint before AI
+
+All5original stills, zero fragments, pink4/5; independent W2 clean.
+No new READY or runtime change; C495 serial finish continues.

@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dove\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1790073773\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"1\"]]]]",
+    "seed": 1790073773,
+    "ownerId": "authored:archetype-sprint/c56-15-dove",
+    "earthName": "Dove"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1790073773,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 15,
+    "body": 12,
+    "loco": 13,
+    "trait": 1,
+    "size": 5,
+    "diet": 1,
+    "head": 6,
+    "limbs": 5,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 4,
+    "detail": 8,
+    "accent": 11,
+    "temper": 4,
+    "sense": 1,
+    "repro": 0,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dove"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8588a60567e7c84e600ac32613b1c7a6a2bd11edc46d7b115fd71a14e2bd70a0",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8187453907873113,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5527113237639554,
+      0.5046251993620414
+    ],
+    "pelvis": [
+      0.5434609250398724,
+      0.6019138755980861
+    ],
+    "spine": [
+      0.6454545454545454,
+      0.4853269537480064
+    ],
+    "chest": [
+      0.7668261562998405,
+      0.43452950558213715
+    ],
+    "neck0": [
+      0.8057416267942583,
+      0.3712918660287082
+    ],
+    "neck1": [
+      0.8192982456140352,
+      0.2956140350877193
+    ],
+    "head": [
+      0.8350079744816586,
+      0.22631578947368422
+    ],
+    "beak": [
+      0.9240031897926635,
+      0.27073365231259966
+    ],
+    "legNearKnee": [
+      0.5327751196172249,
+      0.6865231259968102
+    ],
+    "legNearAnkle": [
+      0.5095693779904307,
+      0.7696172248803828
+    ],
+    "legNearFoot": [
+      0.5353269537480063,
+      0.7933811802232855
+    ],
+    "legFarKnee": [
+      0.6921850079744817,
+      0.6979266347687401
+    ],
+    "legFarAnkle": [
+      0.7549441786283891,
+      0.772488038277512
+    ],
+    "legFarFoot": [
+      0.790829346092504,
+      0.7825358851674641
+    ],
+    "wingNearRoot": [
+      0.6854864433811803,
+      0.43923444976076553
+    ],
+    "wingNearTip": [
+      0.27352472089314195,
+      0.5740031897926634
+    ],
+    "wingFarRoot": [
+      0.653030303030303,
+      0.378628389154705
+    ],
+    "wingFarTip": [
+      0.5062998405103668,
+      0.43205741626794253
+    ],
+    "tailFan": [
+      0.21961722488038277,
+      0.6421052631578947
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-poolv2/c56-15-dove/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 02-pigeon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "eb97a9a1b0cfdcf211656073f74772f70fe6baa417f5fa7ffca6f34366b4bd48",
+    "subjectSourceSha256": "978abc186970523d697ad64ae2271fb3a9e4ce548023143e081952ed9049d24d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09772745980693673,
+      "spine": 0.15490387003483477,
+      "chest": 0.1315729784543389,
+      "neck0": 0.07425235955908274,
+      "neck1": 0.0768824818132039,
+      "head": 0.07105661423314068,
+      "beak": 0.09946403816168344,
+      "legFarKnee": 0.17702345259400667,
+      "legFarAnkle": 0.09745828027604524,
+      "legFarFoot": 0.037265325317934465,
+      "legNearKnee": 0.08528136778080359,
+      "legNearAnkle": 0.08627360960179227,
+      "legNearFoot": 0.03504537462271912,
+      "wingFarRoot": 0.12678497954874404,
+      "wingFarTip": 0.15615533794776745,
+      "wingNearRoot": 0.08147567365425142,
+      "wingNearTip": 0.43344558376467135,
+      "tailFan": 0.3263281933375849
+    },
+    "measures": {
+      "body": 0.2791228293448157,
+      "bone-min": 0.03504537462271912,
+      "bone-max": 0.43344558376467135,
+      "leg/torso:legFar": 1.116881263061676,
+      "leg/torso:legNear": 0.7401771918487192,
+      "wing/torso": 1.013676732070453
+    }
+  },
+  "recipeHash": "7e6143c687e1d0f4abe5af98959180a0fdf5c30ac09011b77dbe79ff3ce3e37d"
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "finish-pheasant-signed-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-pheasant-signed-r02-rebind",
+    "--",
+    "node",
+    "audits/C270_CODEX_20261017/coordinator/rebind-one.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02"
+  ],
+  "startedUnix": 1792288700.115697,
+  "beforeGiB": 75.77655410766602,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.013,
+  "lowestGiB": 75.77655029296875,
+  "afterGiB": 77.77371978759766
+}

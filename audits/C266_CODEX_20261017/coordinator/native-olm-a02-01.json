@@ -1,0 +1,20 @@
+{
+  "stage": "native-olm-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-olm",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/olm-a02-01/plan.json"
+  ],
+  "startedUnix": 1792274005.2314901,
+  "beforeGiB": 84.07666015625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.08,
+  "lowestGiB": 83.67985916137695,
+  "afterGiB": 84.05073547363281
+}

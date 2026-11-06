@@ -1,0 +1,56 @@
+[
+  {
+    "id": "g2c114-17-tahr",
+    "masterSha256": "54ce9418dd0c2d5885fa0ac038cec489f4ee0ab82f4c51a70894addf45940f18",
+    "before": {
+      "edge": 149,
+      "interior": 115,
+      "receipt": {
+        "erodedPixels": 6863,
+        "despilledPixels": 1234,
+        "unresolvedEdgePixels": 133
+      }
+    },
+    "after": {
+      "edge": 43,
+      "interior": 115,
+      "receipt": {
+        "erodedPixels": 6863,
+        "despilledPixels": 1355,
+        "unresolvedEdgePixels": 12,
+        "narrowEdgeDonors": 121
+      }
+    },
+    "alphaChanges": 0,
+    "interiorChanges": 0,
+    "sourceModified": false,
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-17-tahr/packet"
+  },
+  {
+    "id": "g2c114-02-elephant",
+    "masterSha256": "b3ecb68e096c5ad004935ebb316f46bfe5bab5fbb83f2cdb94a072452cdccc1a",
+    "before": {
+      "edge": 100,
+      "interior": 147,
+      "receipt": {
+        "erodedPixels": 5910,
+        "despilledPixels": 356,
+        "unresolvedEdgePixels": 53
+      }
+    },
+    "after": {
+      "edge": 61,
+      "interior": 147,
+      "receipt": {
+        "erodedPixels": 5910,
+        "despilledPixels": 397,
+        "unresolvedEdgePixels": 12,
+        "narrowEdgeDonors": 41
+      }
+    },
+    "alphaChanges": 0,
+    "interiorChanges": 0,
+    "sourceModified": false,
+    "packet": "audits/C213_PROGRAM_20261004/phase4-fringe/g2c114-02-elephant/packet"
+  }
+]

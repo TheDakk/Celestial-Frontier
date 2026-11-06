@@ -1,0 +1,7 @@
+{
+  "subject": "c196quadrupedoriginals-20-monkey",
+  "scope": "Diagnostic inspection of original native turn3-hit-reaction-50 and turn3-hit-idle-90, not final finished review",
+  "observation": "Right defeated primate remains upright on hands/feet with raised tail; no visible collapse in late idle. Source pixels/geometry unchanged by AI finish, so review finished pose before any readiness claim.",
+  "trace": "Transcript hpB=0 selects targetFaints in BattleStage, faint clip holds final pose. paintedGroundedMotion reduces primate root gain and zeroes pelvis/spine/chest/hip channels; groundedPrimateFaintAction only accepts measured supported lowering if >=.05 and unchanged contacts fit. No runtime edits or ruler changes made.",
+  "status": "VISUAL_HOLD_PENDING_FINISHED_REVIEW"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c266-19-coati-a02",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/native/report.json",
+  "name": "Coati",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/coati-a02-01/visual-review.json",
+  "checkpointReviewSha256": "3c146bc7430d9606e44f2aa386e1fe395b07305b9a2b493f37c02c2e5de60082",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "auxiliaryOwnerCheck": {
+    "packet": "19-coati-a02",
+    "family": "quadruped",
+    "status": "PASS",
+    "short": [],
+    "min": 207
+  },
+  "eligibilityRationale": "Upright banded tail, neck/jaw and four whole feet remain continuous; no opening, detached paint or visible pink residue was found in the five required views."
+}

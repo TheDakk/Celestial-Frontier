@@ -1,0 +1,7 @@
+{
+  "path": "ROADMAP_ARCHIVE.md",
+  "beforeSha256": "dbfc4fb84edc867ef144fba2daa3ca396162f8cd6054fb9032f9509d1f08bc43",
+  "afterSha256": "ae733580f5e6522c7ccf0a60d7fb02d5bc1acaf9b83507a484551e84c409ee4a",
+  "replacements": 298,
+  "change": "Previously retained absolute home prefixes normalized to ~/ per Dakk. Archived content otherwise unchanged."
+}

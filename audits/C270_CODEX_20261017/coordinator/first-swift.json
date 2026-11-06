@@ -1,0 +1,20 @@
+{
+  "stage": "first-swift",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-swift",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/plan.json"
+  ],
+  "startedUnix": 1792286274.88474,
+  "beforeGiB": 81.68963623046875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.068,
+  "lowestGiB": 81.28745651245117,
+  "afterGiB": 81.66047668457031
+}

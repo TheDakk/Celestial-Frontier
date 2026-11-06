@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tree Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/17-tree-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9a6fe593ee08d6d84b1ed651ccbcccaea1aba3f1a4aeca30254932ef38dbbc0b"
+}

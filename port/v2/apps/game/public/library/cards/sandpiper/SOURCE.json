@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sandpiper",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/12-sandpiper/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "10cd2e99d7d2f8db50ee11916ebdbe5b8bb6eee4b61cf2a243fc30ea6a4a9803"
+}

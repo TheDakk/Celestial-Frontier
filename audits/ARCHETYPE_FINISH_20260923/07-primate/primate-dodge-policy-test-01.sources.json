@@ -1,0 +1,60 @@
+{
+  "scope": "One new focused primate dodge policy suite. Explicit owner and retained input hashes; no full static, ARAP, native film or broader tests.",
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "apps/game/src/creature-rig-contact-primate.test.ts"
+  ],
+  "exitCode": 0,
+  "files": [
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-primate.test.ts",
+      "sha256": "417fb2e089afd6563c6a0eba653a2810cfff677106b3b47fa5a860fbb67e69c4",
+      "afterSha256": "417fb2e089afd6563c6a0eba653a2810cfff677106b3b47fa5a860fbb67e69c4",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "ad1806b36ad10e875fa2eab376b93d790410188c055e6c9d4213ae255249d832",
+      "afterSha256": "ad1806b36ad10e875fa2eab376b93d790410188c055e6c9d4213ae255249d832",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "bdc13e1bf752e03df12781bace420f7e5ff77750d873556c20d2c88f89f16886",
+      "afterSha256": "bdc13e1bf752e03df12781bace420f7e5ff77750d873556c20d2c88f89f16886",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587",
+      "afterSha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "afterSha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/record.json",
+      "sha256": "7b9e02fd2a933da15ed9ee2f0a5fb968acb19952f961ba3ed2d9ebc8a1fa2f05",
+      "afterSha256": "7b9e02fd2a933da15ed9ee2f0a5fb968acb19952f961ba3ed2d9ebc8a1fa2f05",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/binding.json",
+      "sha256": "c4c833c1ead26e62440b0d91bc34a7041286078eb832ffef8da73b6dd0e2d858",
+      "afterSha256": "c4c833c1ead26e62440b0d91bc34a7041286078eb832ffef8da73b6dd0e2d858",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.json",
+      "sha256": "2edbb1e9fa574f9712c958b3b26d827f471ff282406319a002c44ca8d5bc385a",
+      "afterSha256": "2edbb1e9fa574f9712c958b3b26d827f471ff282406319a002c44ca8d5bc385a",
+      "unchanged": true
+    }
+  ]
+}

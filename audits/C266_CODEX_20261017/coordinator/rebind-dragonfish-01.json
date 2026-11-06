@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-dragonfish-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-rebind-dragonfish",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "dragonfish"
+  ],
+  "startedUnix": 1792273268.42862,
+  "beforeGiB": 83.5418701171875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 83.5418701171875,
+  "afterGiB": 83.5418701171875
+}

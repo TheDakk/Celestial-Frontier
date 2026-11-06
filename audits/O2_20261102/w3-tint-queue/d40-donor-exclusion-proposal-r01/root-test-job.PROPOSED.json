@@ -1,0 +1,14 @@
+{
+  "id": "o2-d40-donor-exclusion-outcomes-proposal-red",
+  "argv": [
+    "node",
+    "--test",
+    "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/donor-exclusion.outcomes.test.mjs"
+  ],
+  "cwd": ".",
+  "proposalOnly": true,
+  "dispatchAuthorized": false,
+  "precondition": "Root reviews scope and pins first; root executes test-first RED on unchanged live module before any feature implementation. Worker has not run this job.",
+  "expectedCurrentLiveOutcome": "Nonzero because current API ignores exclusion and cannot satisfy donor/material/binding/unresolved outcomes. Historical/empty controls must retain their exact baselines.",
+  "laterGreen": "Same frozen outcomes against root-reviewed implementation; actual R03 diagnostic/material inspection remains separate."
+}

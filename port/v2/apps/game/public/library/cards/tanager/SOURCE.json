@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tanager",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/13-tanager/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8e2811ec0a13bb215441807b5f5d520f337885d75af66bfc8e44979e3ef008d9"
+}

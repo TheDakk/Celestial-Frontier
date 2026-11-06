@@ -1,0 +1,9 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "reason": "Explicit manually authored tiny interior root patch belongs to contiguous torso paint. Other independent surfaces retain existing split behavior."
+}

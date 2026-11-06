@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
+import { BIOME_PROFILE_AUTHORITY_V1 } from '@cf/domain-biome-profile';
+import { createDistantEcologyHintPlan } from '../src/ecology.js';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress } from '@cf/scene';
@@ -20,8 +22,11 @@ import {
   combatCuePlan,
   createAudioRuntime,
   createCombatGameplayVoiceRequest,
+  createDistantEcologyVoiceRequest,
   inspectAudioStaticPurity,
   projectCombatCueParticipantsV1,
+  type AudioRuntime,
+  type AudioVoiceRequest,
   type AudioAnalyserNodeLike,
   type AudioContextLike,
   type AudioCounterpartReceipt,
@@ -37,7 +42,7 @@ import {
 
 beforeAll(() => installCaptureHooks());
 
-type AutomationEvent = Readonly<{ kind: 'set' | 'exponential'; value: number; time: number }>;
+type AutomationEvent = Readonly<{ kind: 'set' | 'exponential' | 'linear' | 'cancel'; value: number; time: number }>;
 
 class FakeParam implements AudioParamLike {
   value = 0;
@@ -46,6 +51,15 @@ class FakeParam implements AudioParamLike {
   setValueAtTime(value: number, time: number): void {
     this.value = value;
     this.events.push({ kind: 'set', value, time });
+  }
+
+  cancelScheduledValues(time: number): void {
+    this.events.push({ kind: 'cancel', value: this.value, time });
+  }
+
+  linearRampToValueAtTime(value: number, time: number): void {
+    this.value = value;
+    this.events.push({ kind: 'linear', value, time });
   }
 
   exponentialRampToValueAtTime(value: number, time: number): void {
@@ -128,7 +142,7 @@ class FakeBiquad extends FakeNode {
 }
 
 class SynthesisContext implements AudioContextLike {
-  readonly currentTime = 6;
+  currentTime = 6;
   readonly sampleRate = 48_000;
   readonly destination = new FakeNode();
   readonly gains: FakeGain[] = [];
@@ -313,6 +327,34 @@ function reservationFor(fixture: DamageFixture): AudioVoiceReservation {
   });
 }
 
+const FOREGROUND_FACTORS = Object.freeze({ music: 0.75, ambience: 0.75, creature: 1, 'combat-gameplay': 1, ui: 1 });
+const SAVED_GAINS = Object.freeze({ music: 0.8, ambience: 0.6, creature: 0.65, 'combat-gameplay': 0.7, ui: 0.9 });
+
+function acceptMixBuses(context: SynthesisContext, factor: number, music = 0.8, ambience = 0.6): void {
+  const expected = [music * factor, ambience * factor, 0.65, 0.7, 0.9];
+  expected.forEach((gain, index) => expect(context.gains[index + 1]!.gain.value).toBeCloseTo(gain, 12));
+}
+
+function startCombat(runtime: AudioRuntime, context: SynthesisContext,
+  kind: 'plain' | 'different' = 'plain', mutate?: (request: AudioVoiceRequest) => AudioVoiceRequest) {
+  const canonical = createCombatGameplayVoiceRequest(damageFixture(kind));
+  const before = new Set<FakeScheduledNode>([...context.oscillators, ...context.bufferSources]);
+  const result = runtime.playVoice(mutate ? mutate(canonical) : canonical);
+  if (result.kind !== 'started') throw new Error(`combat mix fixture did not start: ${result.kind}`);
+  const sources = [...context.oscillators, ...context.bufferSources].filter(source => !before.has(source));
+  const completion = sources.reduce((latest, source) => source.stopWhens[0]! > latest.stopWhens[0]! ? source : latest);
+  return { ...result, completion, sources, request: canonical };
+}
+
+async function combatMixFixture() {
+  const context = new SynthesisContext();
+  const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 500,
+    categoryGains: SAVED_GAINS, verifyCounterpart: () => true, scheduleVoiceDeadline: () => () => {},
+  });
+  await runtime.activate();
+  return { context, runtime };
+}
+
 describe('Arc 8 source-authored combat gameplay voice', () => {
   it('renders the exact legacy impact/critical/ability formulas with deterministic cue-keyed noise', () => {
     const fixture = damageFixture('critical-ability');
@@ -325,7 +367,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
       concurrencyGroup: 'combat-gameplay-impact', maxConcurrent: 2,
       nodeCount: 11,
       maxDurationMs: expect.any(Number),
-      mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
+      mixIntent: { schema: 'cf.audio.voice-mix-intent/v1', factors: FOREGROUND_FACTORS },
       meaning: { kind: 'meaningful', counterpart: fixture.counterpart },
     });
     const reservation = reservationFor(fixture);
@@ -530,7 +572,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
       nodes: { active: 25 },
       voices: { active: 1, started: 1 },
       creatureEmitters: { active: 0 },
-      voiceMix: { activeOwners: 1, factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors },
+      voiceMix: { activeOwners: 1, factors: FOREGROUND_FACTORS },
     });
     const rawSources: FakeScheduledNode[] = [
       ...context.oscillators,
@@ -597,6 +639,90 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     });
     expect(stopContext.oscillators.every((node) => node.disconnectCalls === 1)).toBe(true);
     expect(stopContext.bufferSources.every((node) => node.disconnectCalls === 1)).toBe(true);
+  });
+
+  it('keeps real biosphere playback below overlapping combat and restores the latest saved gain only after the last cue', async () => {
+    const { context, runtime } = await combatMixFixture();
+    const plan = createDistantEcologyHintPlan({ canonicalWorldKey: 'galaxy:999/system:424242/world:earth',
+      biomeProfile: { schema: BIOME_PROFILE_AUTHORITY_V1.schema, digest: BIOME_PROFILE_AUTHORITY_V1.digest, key: 'temperate' },
+      surfaced: { source: 'survey-roster', evidenceKey: 'surface-earth:living-biosphere', granularity: 'biosphere' },
+    });
+    const ecology = createDistantEcologyVoiceRequest({ plan,
+      counterpart: { counterpartKey: plan.evidenceKey, eventKey: plan.planId, generation: 3 } });
+    expect(runtime.playVoice(ecology).kind).toBe('started');
+    const ecologySource = context.oscillators[0]!;
+    // Actual contemporaneous source → envelope → voice gain → ambience bus → destination.
+    expect(ecologySource.connections).toEqual([context.gains[6]]);
+    expect(context.gains[6]!.connections).toEqual([context.gains[7]]);
+    expect(context.gains[7]!.connections).toEqual([context.gains[2]]);
+    expect(context.gains[2]!.connections).toEqual([context.analysers[2]]);
+    expect(context.analysers[2]!.connections).toEqual([context.gains[0]]);
+    expect(context.gains[0]!.connections).toEqual([context.analysers[0]]);
+    expect(context.analysers[0]!.connections).toEqual([context.limiters[0]]);
+    expect(context.limiters[0]!.connections).toEqual([context.destination]);
+    acceptMixBuses(context, 1);
+    const first = startCombat(runtime, context);
+    acceptMixBuses(context, 0.75);
+    expect(context.gains[2]!.gain.events.at(-1)).toEqual({ kind: 'linear', value: 0.6 * 0.75, time: 6.025 });
+    const events = context.gains[2]!.gain.events.length;
+    const second = startCombat(runtime, context, 'different');
+    acceptMixBuses(context, 0.75); // Minimum factor, never multiplied twice.
+    expect(context.gains[2]!.gain.events).toHaveLength(events); // Overlap cannot restart the ramp.
+    expect(runtime.diagnostics().gains.categories).toEqual(SAVED_GAINS);
+    context.currentTime = 6.05;
+    first.completion.finish();
+    acceptMixBuses(context, 0.75);
+    expect(context.gains[2]!.gain.events).toHaveLength(events);
+    expect(second.sources.every(source => source.disconnectCalls === 0)).toBe(true);
+    runtime.setCategoryGain('music', 0.2);
+    runtime.setCategoryGain('ambience', 0);
+    acceptMixBuses(context, 0.75, 0.2, 0);
+    context.currentTime = 6.15;
+    second.completion.finish();
+    acceptMixBuses(context, 1, 0.2, 0);
+    expect(context.gains[1]!.gain.events.at(-1)).toMatchObject({ kind: 'linear', value: 0.2 });
+    expect(context.gains[1]!.gain.events.at(-1)!.time).toBeCloseTo(6.24, 12);
+    expect(runtime.diagnostics()).toMatchObject({ voices: { active: 1 }, gains: { categories: { music: 0.2, ambience: 0 } },
+      voiceMix: { factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors } });
+    expect(ecologySource.disconnectCalls).toBe(0);
+    await runtime.dispose();
+  });
+
+  it.each(['manual', 'mute', 'hidden', 'context-loss', 'dispose'] as const)(
+    'releases the combat mix owner on %s without rewriting saved categories', async finish => {
+      const { context, runtime } = await combatMixFixture();
+      const combat = startCombat(runtime, context);
+      acceptMixBuses(context, 0.75);
+      if (finish === 'manual') runtime.stopVoice(combat.voiceId);
+      else if (finish === 'mute') await runtime.setMuted(true);
+      else if (finish === 'hidden') await runtime.setHidden(true);
+      else if (finish === 'context-loss') { context.state = 'closed'; runtime.diagnostics(); }
+      else await runtime.dispose();
+      expect(runtime.diagnostics()).toMatchObject({ voices: { active: 0 }, gains: { categories: SAVED_GAINS },
+        voiceMix: { activeOwners: 0, factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors } });
+      expect(combat.sources.every(source => source.disconnectCalls === 1)).toBe(true);
+      if (finish === 'manual') acceptMixBuses(context, 1);
+      else expect(runtime.diagnostics().nodes.active).toBe(0);
+      if (finish === 'mute') expect(context.gains[0]!.gain.value).toBe(0);
+      await runtime.dispose();
+    });
+
+  it('rejects neutral combat and premature bus restoration through the same actual-bus acceptor', async () => {
+    const { context, runtime } = await combatMixFixture();
+    const neutral = startCombat(runtime, context, 'plain', request => ({ ...request, mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 }));
+    expect(() => acceptMixBuses(context, 0.75)).toThrow();
+    runtime.stopVoice(neutral.voiceId);
+    const first = startCombat(runtime, context);
+    startCombat(runtime, context, 'different');
+    first.completion.finish();
+    acceptMixBuses(context, 0.75);
+    const ambience = context.gains[2]!.gain;
+    const valid = ambience.value;
+    ambience.value = SAVED_GAINS.ambience;
+    expect(() => acceptMixBuses(context, 0.75)).toThrow();
+    ambience.value = valid;
+    acceptMixBuses(context, 0.75);
+    await runtime.dispose();
   });
 
   it('passes static purity and rejects entropy/clock/gameplay-RNG mutants', () => {

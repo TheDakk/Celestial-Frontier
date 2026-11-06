@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "saltflat",
+  "biome": "saltflat",
+  "recipe": "audits/C132_ARENAS_20261001/saltflat/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/saltflat/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+      "runtimeSha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.png",
+      "runtimeSha256": "83def4a22aa019ea339096891370c485dd81dc3565da9a97f18a96b5f3073a12"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.png",
+      "runtimeSha256": "59ffd4aa59c2b01a3032bbe9da9a77114bd5b94813d22c1c5df7fa9d4fd79729"
+    }
+  }
+}

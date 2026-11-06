@@ -1,0 +1,21 @@
+{
+  "stage": "finish-dragonfish-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-finish-dragonfish",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792273165.7426188,
+  "beforeGiB": 83.75997161865234,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.726,
+  "lowestGiB": 74.36531066894531,
+  "afterGiB": 82.72843933105469
+}

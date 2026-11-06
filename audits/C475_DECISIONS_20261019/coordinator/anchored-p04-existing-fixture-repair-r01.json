@@ -1,0 +1,17 @@
+{
+  "status": "EXACT_TWO_TEST_FIXTURES_REPAIRED_NO_PRODUCTION_OR_ASSERTION_REMOVAL",
+  "rows": [
+    {
+      "path": "port/v2/apps/game/src/battle2/cast-attack-d31.test.ts",
+      "beforeSha256": "03533223dedcaad4267ee7177cfd7c32c642ed10797f9cde757bd4a1b1d3f6c4",
+      "proposed": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/p04-review/profile-findings-r01/proposed/port/v2/apps/game/src/battle2/cast-attack-d31.test.ts",
+      "sha256": "cdd490d1e3c4a9dfa59b875d4153c0c7b874e612c90855043bd63334945f2833"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "beforeSha256": "701f858b24b6ef82acbef21444df8a365d81a86de59c94f60b8b07f6d88ac815",
+      "proposed": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/p04-review/profile-findings-r01/proposed/port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "sha256": "f9dc0f87f89cb3db6581f9c2ae89ff56a349352f75745754743b41ca81cf47cf"
+    }
+  ]
+}

@@ -1,0 +1,1457 @@
+{
+  "scope": "Read-only source-keyer diagnosis; no native/admission claim; existing triage colour predicate unchanged",
+  "rows": [
+    {
+      "name": "Moth",
+      "file": "audits/G2_C92_20260927/19-moth/master.png",
+      "sourceSha256": "cab5adf003dc1f840c70bb8f1ea756e7a3269a3f6cbad77cfcb97991b7d7d3ef",
+      "keyedReceipt": {
+        "erodedPixels": 7069,
+        "despilledPixels": 3747,
+        "unresolvedEdgePixels": 3,
+        "narrowEdgeDonors": 761,
+        "connectedFringeDonors": 234
+      },
+      "magentaVisible": 78,
+      "magentaInterior": 78,
+      "magentaEdge": 0,
+      "pinkInterior": 4046,
+      "samples": [
+        {
+          "x": 977,
+          "y": 464,
+          "source": [
+            205,
+            88,
+            155
+          ],
+          "keyed": [
+            205,
+            88,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 968,
+          "y": 471,
+          "source": [
+            197,
+            91,
+            165
+          ],
+          "keyed": [
+            197,
+            91,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 962,
+          "y": 489,
+          "source": [
+            198,
+            95,
+            164
+          ],
+          "keyed": [
+            198,
+            95,
+            164
+          ],
+          "interior": true
+        },
+        {
+          "x": 961,
+          "y": 490,
+          "source": [
+            196,
+            103,
+            178
+          ],
+          "keyed": [
+            196,
+            103,
+            178
+          ],
+          "interior": true
+        },
+        {
+          "x": 962,
+          "y": 490,
+          "source": [
+            192,
+            99,
+            167
+          ],
+          "keyed": [
+            192,
+            99,
+            167
+          ],
+          "interior": true
+        },
+        {
+          "x": 960,
+          "y": 491,
+          "source": [
+            188,
+            92,
+            153
+          ],
+          "keyed": [
+            188,
+            92,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 953,
+          "y": 492,
+          "source": [
+            204,
+            101,
+            158
+          ],
+          "keyed": [
+            204,
+            101,
+            158
+          ],
+          "interior": true
+        },
+        {
+          "x": 1013,
+          "y": 492,
+          "source": [
+            209,
+            101,
+            160
+          ],
+          "keyed": [
+            209,
+            101,
+            160
+          ],
+          "interior": true
+        },
+        {
+          "x": 963,
+          "y": 495,
+          "source": [
+            215,
+            94,
+            155
+          ],
+          "keyed": [
+            215,
+            94,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 964,
+          "y": 495,
+          "source": [
+            221,
+            104,
+            162
+          ],
+          "keyed": [
+            221,
+            104,
+            162
+          ],
+          "interior": true
+        },
+        {
+          "x": 957,
+          "y": 496,
+          "source": [
+            193,
+            98,
+            162
+          ],
+          "keyed": [
+            193,
+            98,
+            162
+          ],
+          "interior": true
+        },
+        {
+          "x": 962,
+          "y": 496,
+          "source": [
+            208,
+            107,
+            173
+          ],
+          "keyed": [
+            208,
+            107,
+            173
+          ],
+          "interior": true
+        },
+        {
+          "x": 963,
+          "y": 496,
+          "source": [
+            218,
+            103,
+            171
+          ],
+          "keyed": [
+            218,
+            103,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 964,
+          "y": 496,
+          "source": [
+            230,
+            105,
+            163
+          ],
+          "keyed": [
+            230,
+            105,
+            163
+          ],
+          "interior": true
+        },
+        {
+          "x": 965,
+          "y": 496,
+          "source": [
+            229,
+            109,
+            154
+          ],
+          "keyed": [
+            229,
+            109,
+            154
+          ],
+          "interior": true
+        },
+        {
+          "x": 957,
+          "y": 497,
+          "source": [
+            196,
+            103,
+            155
+          ],
+          "keyed": [
+            196,
+            103,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 1004,
+          "y": 497,
+          "source": [
+            185,
+            91,
+            152
+          ],
+          "keyed": [
+            185,
+            91,
+            152
+          ],
+          "interior": true
+        },
+        {
+          "x": 1018,
+          "y": 502,
+          "source": [
+            196,
+            96,
+            151
+          ],
+          "keyed": [
+            196,
+            96,
+            151
+          ],
+          "interior": true
+        },
+        {
+          "x": 1019,
+          "y": 502,
+          "source": [
+            199,
+            99,
+            162
+          ],
+          "keyed": [
+            199,
+            99,
+            162
+          ],
+          "interior": true
+        },
+        {
+          "x": 1020,
+          "y": 502,
+          "source": [
+            203,
+            98,
+            169
+          ],
+          "keyed": [
+            203,
+            98,
+            169
+          ],
+          "interior": true
+        },
+        {
+          "x": 1021,
+          "y": 502,
+          "source": [
+            205,
+            107,
+            163
+          ],
+          "keyed": [
+            205,
+            107,
+            163
+          ],
+          "interior": true
+        },
+        {
+          "x": 942,
+          "y": 504,
+          "source": [
+            194,
+            92,
+            153
+          ],
+          "keyed": [
+            194,
+            92,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 982,
+          "y": 505,
+          "source": [
+            186,
+            82,
+            153
+          ],
+          "keyed": [
+            186,
+            82,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 972,
+          "y": 509,
+          "source": [
+            218,
+            108,
+            165
+          ],
+          "keyed": [
+            218,
+            108,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 972,
+          "y": 510,
+          "source": [
+            225,
+            102,
+            163
+          ],
+          "keyed": [
+            225,
+            102,
+            163
+          ],
+          "interior": true
+        },
+        {
+          "x": 972,
+          "y": 511,
+          "source": [
+            227,
+            94,
+            153
+          ],
+          "keyed": [
+            227,
+            94,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 941,
+          "y": 512,
+          "source": [
+            198,
+            102,
+            155
+          ],
+          "keyed": [
+            198,
+            102,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 942,
+          "y": 512,
+          "source": [
+            209,
+            105,
+            165
+          ],
+          "keyed": [
+            209,
+            105,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 944,
+          "y": 512,
+          "source": [
+            214,
+            107,
+            171
+          ],
+          "keyed": [
+            214,
+            107,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 945,
+          "y": 512,
+          "source": [
+            208,
+            105,
+            177
+          ],
+          "keyed": [
+            208,
+            105,
+            177
+          ],
+          "interior": true
+        },
+        {
+          "x": 972,
+          "y": 512,
+          "source": [
+            227,
+            91,
+            153
+          ],
+          "keyed": [
+            227,
+            91,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 941,
+          "y": 513,
+          "source": [
+            205,
+            77,
+            154
+          ],
+          "keyed": [
+            205,
+            77,
+            154
+          ],
+          "interior": true
+        },
+        {
+          "x": 934,
+          "y": 520,
+          "source": [
+            210,
+            75,
+            155
+          ],
+          "keyed": [
+            210,
+            75,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 935,
+          "y": 520,
+          "source": [
+            216,
+            103,
+            171
+          ],
+          "keyed": [
+            216,
+            103,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 1002,
+          "y": 520,
+          "source": [
+            192,
+            92,
+            157
+          ],
+          "keyed": [
+            192,
+            92,
+            157
+          ],
+          "interior": true
+        },
+        {
+          "x": 1003,
+          "y": 520,
+          "source": [
+            200,
+            87,
+            159
+          ],
+          "keyed": [
+            200,
+            87,
+            159
+          ],
+          "interior": true
+        },
+        {
+          "x": 1004,
+          "y": 520,
+          "source": [
+            204,
+            80,
+            156
+          ],
+          "keyed": [
+            204,
+            80,
+            156
+          ],
+          "interior": true
+        },
+        {
+          "x": 1005,
+          "y": 520,
+          "source": [
+            209,
+            79,
+            158
+          ],
+          "keyed": [
+            209,
+            79,
+            158
+          ],
+          "interior": true
+        },
+        {
+          "x": 932,
+          "y": 521,
+          "source": [
+            210,
+            109,
+            155
+          ],
+          "keyed": [
+            210,
+            109,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 933,
+          "y": 521,
+          "source": [
+            224,
+            96,
+            166
+          ],
+          "keyed": [
+            224,
+            96,
+            166
+          ],
+          "interior": true
+        }
+      ]
+    },
+    {
+      "name": "Bee",
+      "file": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs/master.png",
+      "sourceSha256": "86ebce3660f1464fdb532daf723c998fd70d035aa105790eefed2336cd832396",
+      "keyedReceipt": {
+        "erodedPixels": 14813,
+        "despilledPixels": 6661,
+        "unresolvedEdgePixels": 15,
+        "narrowEdgeDonors": 2361,
+        "connectedFringeDonors": 702
+      },
+      "magentaVisible": 424,
+      "magentaInterior": 416,
+      "magentaEdge": 8,
+      "pinkInterior": 7810,
+      "samples": [
+        {
+          "x": 278,
+          "y": 378,
+          "source": [
+            219,
+            108,
+            183
+          ],
+          "keyed": [
+            219,
+            108,
+            183
+          ],
+          "interior": true
+        },
+        {
+          "x": 279,
+          "y": 378,
+          "source": [
+            224,
+            105,
+            186
+          ],
+          "keyed": [
+            224,
+            105,
+            186
+          ],
+          "interior": true
+        },
+        {
+          "x": 280,
+          "y": 378,
+          "source": [
+            226,
+            104,
+            188
+          ],
+          "keyed": [
+            226,
+            104,
+            188
+          ],
+          "interior": true
+        },
+        {
+          "x": 281,
+          "y": 378,
+          "source": [
+            230,
+            108,
+            189
+          ],
+          "keyed": [
+            230,
+            108,
+            189
+          ],
+          "interior": true
+        },
+        {
+          "x": 313,
+          "y": 382,
+          "source": [
+            215,
+            105,
+            177
+          ],
+          "keyed": [
+            215,
+            105,
+            177
+          ],
+          "interior": true
+        },
+        {
+          "x": 314,
+          "y": 382,
+          "source": [
+            210,
+            101,
+            176
+          ],
+          "keyed": [
+            210,
+            101,
+            176
+          ],
+          "interior": true
+        },
+        {
+          "x": 315,
+          "y": 382,
+          "source": [
+            211,
+            101,
+            178
+          ],
+          "keyed": [
+            211,
+            101,
+            178
+          ],
+          "interior": true
+        },
+        {
+          "x": 316,
+          "y": 382,
+          "source": [
+            212,
+            109,
+            181
+          ],
+          "keyed": [
+            212,
+            109,
+            181
+          ],
+          "interior": true
+        },
+        {
+          "x": 353,
+          "y": 383,
+          "source": [
+            223,
+            108,
+            182
+          ],
+          "keyed": [
+            223,
+            108,
+            182
+          ],
+          "interior": true
+        },
+        {
+          "x": 354,
+          "y": 383,
+          "source": [
+            224,
+            109,
+            182
+          ],
+          "keyed": [
+            224,
+            109,
+            182
+          ],
+          "interior": true
+        },
+        {
+          "x": 355,
+          "y": 383,
+          "source": [
+            225,
+            109,
+            185
+          ],
+          "keyed": [
+            225,
+            109,
+            185
+          ],
+          "interior": true
+        },
+        {
+          "x": 311,
+          "y": 384,
+          "source": [
+            218,
+            106,
+            180
+          ],
+          "keyed": [
+            218,
+            106,
+            180
+          ],
+          "interior": true
+        },
+        {
+          "x": 355,
+          "y": 384,
+          "source": [
+            224,
+            109,
+            189
+          ],
+          "keyed": [
+            224,
+            109,
+            189
+          ],
+          "interior": true
+        },
+        {
+          "x": 312,
+          "y": 385,
+          "source": [
+            220,
+            107,
+            185
+          ],
+          "keyed": [
+            220,
+            107,
+            185
+          ],
+          "interior": true
+        },
+        {
+          "x": 305,
+          "y": 387,
+          "source": [
+            215,
+            102,
+            177
+          ],
+          "keyed": [
+            215,
+            102,
+            177
+          ],
+          "interior": true
+        },
+        {
+          "x": 306,
+          "y": 387,
+          "source": [
+            212,
+            95,
+            174
+          ],
+          "keyed": [
+            212,
+            95,
+            174
+          ],
+          "interior": true
+        },
+        {
+          "x": 307,
+          "y": 387,
+          "source": [
+            212,
+            98,
+            176
+          ],
+          "keyed": [
+            212,
+            98,
+            176
+          ],
+          "interior": true
+        },
+        {
+          "x": 306,
+          "y": 388,
+          "source": [
+            212,
+            108,
+            178
+          ],
+          "keyed": [
+            212,
+            108,
+            178
+          ],
+          "interior": true
+        },
+        {
+          "x": 307,
+          "y": 388,
+          "source": [
+            214,
+            105,
+            177
+          ],
+          "keyed": [
+            214,
+            105,
+            177
+          ],
+          "interior": true
+        },
+        {
+          "x": 308,
+          "y": 388,
+          "source": [
+            213,
+            108,
+            174
+          ],
+          "keyed": [
+            213,
+            108,
+            174
+          ],
+          "interior": true
+        },
+        {
+          "x": 407,
+          "y": 402,
+          "source": [
+            211,
+            104,
+            172
+          ],
+          "keyed": [
+            211,
+            104,
+            172
+          ],
+          "interior": true
+        },
+        {
+          "x": 408,
+          "y": 402,
+          "source": [
+            215,
+            108,
+            175
+          ],
+          "keyed": [
+            215,
+            108,
+            175
+          ],
+          "interior": true
+        },
+        {
+          "x": 456,
+          "y": 402,
+          "source": [
+            214,
+            104,
+            173
+          ],
+          "keyed": [
+            214,
+            104,
+            173
+          ],
+          "interior": true
+        },
+        {
+          "x": 409,
+          "y": 403,
+          "source": [
+            214,
+            108,
+            170
+          ],
+          "keyed": [
+            214,
+            108,
+            170
+          ],
+          "interior": true
+        },
+        {
+          "x": 465,
+          "y": 410,
+          "source": [
+            213,
+            107,
+            166
+          ],
+          "keyed": [
+            213,
+            107,
+            166
+          ],
+          "interior": true
+        },
+        {
+          "x": 466,
+          "y": 410,
+          "source": [
+            209,
+            102,
+            162
+          ],
+          "keyed": [
+            209,
+            102,
+            162
+          ],
+          "interior": true
+        },
+        {
+          "x": 467,
+          "y": 410,
+          "source": [
+            207,
+            105,
+            159
+          ],
+          "keyed": [
+            207,
+            105,
+            159
+          ],
+          "interior": true
+        },
+        {
+          "x": 467,
+          "y": 411,
+          "source": [
+            208,
+            106,
+            170
+          ],
+          "keyed": [
+            208,
+            106,
+            170
+          ],
+          "interior": true
+        },
+        {
+          "x": 468,
+          "y": 411,
+          "source": [
+            207,
+            103,
+            165
+          ],
+          "keyed": [
+            207,
+            103,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 469,
+          "y": 411,
+          "source": [
+            210,
+            106,
+            165
+          ],
+          "keyed": [
+            210,
+            106,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 470,
+          "y": 411,
+          "source": [
+            210,
+            105,
+            166
+          ],
+          "keyed": [
+            210,
+            105,
+            166
+          ],
+          "interior": true
+        },
+        {
+          "x": 471,
+          "y": 411,
+          "source": [
+            206,
+            99,
+            163
+          ],
+          "keyed": [
+            206,
+            99,
+            163
+          ],
+          "interior": true
+        },
+        {
+          "x": 472,
+          "y": 411,
+          "source": [
+            209,
+            102,
+            166
+          ],
+          "keyed": [
+            209,
+            102,
+            166
+          ],
+          "interior": true
+        },
+        {
+          "x": 473,
+          "y": 411,
+          "source": [
+            206,
+            100,
+            166
+          ],
+          "keyed": [
+            206,
+            100,
+            166
+          ],
+          "interior": true
+        },
+        {
+          "x": 474,
+          "y": 411,
+          "source": [
+            206,
+            105,
+            165
+          ],
+          "keyed": [
+            206,
+            105,
+            165
+          ],
+          "interior": true
+        },
+        {
+          "x": 483,
+          "y": 413,
+          "source": [
+            211,
+            107,
+            171
+          ],
+          "keyed": [
+            211,
+            107,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 484,
+          "y": 413,
+          "source": [
+            212,
+            104,
+            171
+          ],
+          "keyed": [
+            212,
+            104,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 485,
+          "y": 413,
+          "source": [
+            213,
+            105,
+            171
+          ],
+          "keyed": [
+            213,
+            105,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 431,
+          "y": 414,
+          "source": [
+            220,
+            107,
+            171
+          ],
+          "keyed": [
+            220,
+            107,
+            171
+          ],
+          "interior": true
+        },
+        {
+          "x": 432,
+          "y": 414,
+          "source": [
+            219,
+            105,
+            167
+          ],
+          "keyed": [
+            219,
+            105,
+            167
+          ],
+          "interior": true
+        }
+      ]
+    },
+    {
+      "name": "Water Beetle",
+      "file": "audits/G2_C114_20260927/23-water-beetle/master.png",
+      "sourceSha256": "2878f81146a315c801bc7a1a6202a077541ce7e8fd5e1317da52ce0ffb615c58",
+      "keyedReceipt": {
+        "erodedPixels": 8539,
+        "despilledPixels": 1056,
+        "unresolvedEdgePixels": 0,
+        "narrowEdgeDonors": 177,
+        "connectedFringeDonors": 2
+      },
+      "magentaVisible": 11,
+      "magentaInterior": 11,
+      "magentaEdge": 0,
+      "pinkInterior": 319,
+      "samples": [
+        {
+          "x": 488,
+          "y": 649,
+          "source": [
+            238,
+            106,
+            153
+          ],
+          "keyed": [
+            238,
+            106,
+            153
+          ],
+          "interior": true
+        },
+        {
+          "x": 486,
+          "y": 650,
+          "source": [
+            228,
+            90,
+            158
+          ],
+          "keyed": [
+            228,
+            90,
+            158
+          ],
+          "interior": true
+        },
+        {
+          "x": 487,
+          "y": 650,
+          "source": [
+            237,
+            99,
+            170
+          ],
+          "keyed": [
+            237,
+            99,
+            170
+          ],
+          "interior": true
+        },
+        {
+          "x": 489,
+          "y": 652,
+          "source": [
+            246,
+            106,
+            151
+          ],
+          "keyed": [
+            246,
+            106,
+            151
+          ],
+          "interior": true
+        },
+        {
+          "x": 286,
+          "y": 692,
+          "source": [
+            234,
+            102,
+            162
+          ],
+          "keyed": [
+            234,
+            102,
+            162
+          ],
+          "interior": true
+        },
+        {
+          "x": 212,
+          "y": 694,
+          "source": [
+            236,
+            98,
+            166
+          ],
+          "keyed": [
+            236,
+            98,
+            166
+          ],
+          "interior": true
+        },
+        {
+          "x": 213,
+          "y": 694,
+          "source": [
+            232,
+            88,
+            155
+          ],
+          "keyed": [
+            232,
+            88,
+            155
+          ],
+          "interior": true
+        },
+        {
+          "x": 424,
+          "y": 717,
+          "source": [
+            223,
+            107,
+            156
+          ],
+          "keyed": [
+            223,
+            107,
+            156
+          ],
+          "interior": true
+        },
+        {
+          "x": 425,
+          "y": 717,
+          "source": [
+            205,
+            103,
+            156
+          ],
+          "keyed": [
+            205,
+            103,
+            156
+          ],
+          "interior": true
+        },
+        {
+          "x": 465,
+          "y": 747,
+          "source": [
+            217,
+            109,
+            163
+          ],
+          "keyed": [
+            217,
+            109,
+            163
+          ],
+          "interior": true
+        },
+        {
+          "x": 457,
+          "y": 757,
+          "source": [
+            210,
+            95,
+            152
+          ],
+          "keyed": [
+            210,
+            95,
+            152
+          ],
+          "interior": true
+        }
+      ]
+    },
+    {
+      "name": "Yak",
+      "file": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-13-yak/master.png",
+      "sourceSha256": "99cefd54c58e6633f6745236c8e53f89169fbb4def9ee8aba4d3f1224350390e",
+      "keyedReceipt": {
+        "erodedPixels": 5369,
+        "despilledPixels": 946,
+        "unresolvedEdgePixels": 5,
+        "narrowEdgeDonors": 55,
+        "connectedFringeDonors": 1
+      },
+      "magentaVisible": 1,
+      "magentaInterior": 1,
+      "magentaEdge": 0,
+      "pinkInterior": 173,
+      "samples": [
+        {
+          "x": 362,
+          "y": 651,
+          "source": [
+            202,
+            106,
+            156
+          ],
+          "keyed": [
+            202,
+            106,
+            156
+          ],
+          "interior": true
+        }
+      ]
+    }
+  ]
+}

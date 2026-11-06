@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Reef disc fish",
+    "exemplar": "Tang",
+    "covers": [
+      "Tang",
+      "Surgeonfish",
+      "Butterflyfish",
+      "Angelfish",
+      "Damselfish",
+      "Reef Fish",
+      "Clownfish",
+      "Triggerfish",
+      "Rabbitfish",
+      "Piranha",
+      "Pacu",
+      "Sunfish"
+    ],
+    "bodyPlan": "fish",
+    "mustPaint": [
+      "tall round plate-thin disc body (aspect about 1.4)",
+      "small pointed mouth; long low dorsal and anal fins",
+      "crescent tail",
+      "plain base with a full six-mask set (banded = clownfish and butterflyfish bars, eye-spotted = butterflyfish eyespot)"
+    ],
+    "why": "12 misleading. Clownfish (rounded fins) and Piranha/Pacu (jaw) stay caveat."
+  }
+]

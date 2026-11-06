@@ -1,0 +1,22 @@
+{
+  "nativeReport": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/report.json",
+  "reportSha256": "df430987e19683f0e4b7de5bc64a4e26c55eee02a8b308d555892828c0b29a88",
+  "verified": [
+    {
+      "file": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit/record.json",
+      "sha256": "a6831977886903f95c658911a8158ca7be9f28eb0c39c6c1d3f12a195b7783c0"
+    },
+    {
+      "file": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit/binding.json",
+      "sha256": "ccf78210d11277c2eec19ded90ddf715ca6fcd9dab3f640df48851324b172bc6"
+    },
+    {
+      "file": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit/parts/keyed.png",
+      "sha256": "110520ffc6336e6074dbed0e06e0f2b2cb9c966bdadff89285bb0547cd8d15d6"
+    },
+    {
+      "file": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit/parts/atlas/c243b04r2c1-17-hoatzin.png",
+      "sha256": "3087e90aae9f97ae98c9aa755a4561f1aa9656751fca51392e8d4e71978c5ca2"
+    }
+  ]
+}

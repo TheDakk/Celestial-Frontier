@@ -1,0 +1,167 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Vine Snake\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2275764236\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"8\"]]]]",
+    "seed": 2275764236,
+    "ownerId": "authored:archetype-sprint/24-vine-snake",
+    "earthName": "Vine Snake"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2275764236,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 5,
+    "body": 0,
+    "loco": 9,
+    "trait": 8,
+    "size": 5,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 3,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 15,
+    "detail": 0,
+    "accent": 2,
+    "temper": 1,
+    "sense": 7,
+    "repro": 0,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Vine Snake"
+  },
+  "geometry": {
+    "cutoutAssetHash": "4df561a87ecfe77a4d394ec4a4a63b6754196b804979d6559df1a16b82a5b6c3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5641,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.8379585326953748,
+      0.427591706539075
+    ],
+    "head": [
+      0.8812599681020733,
+      0.4182615629984051
+    ],
+    "jaw": [
+      0.890909090909091,
+      0.4332535885167464
+    ],
+    "seg0": [
+      0.8018341307814992,
+      0.44409888357256777
+    ],
+    "seg1": [
+      0.7548644338118022,
+      0.46523125996810205
+    ],
+    "seg2": [
+      0.682695374800638,
+      0.5211323763955343
+    ],
+    "seg3": [
+      0.5984051036682615,
+      0.5550239234449761
+    ],
+    "seg4": [
+      0.5201754385964912,
+      0.5222488038277512
+    ],
+    "seg5": [
+      0.44066985645933016,
+      0.48508771929824557
+    ],
+    "seg6": [
+      0.36004784688995217,
+      0.48604465709728867
+    ],
+    "seg7": [
+      0.2697767145135566,
+      0.5311802232854864
+    ],
+    "seg8": [
+      0.17830940988835725,
+      0.5517543859649122
+    ],
+    "seg9": [
+      0.12416267942583731,
+      0.5467304625199362
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Automatic serpent strip transfer from racer: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "f730d261636373d35a206792506d9489d7558702a72f6cee7b4c6c1e7905dcd6",
+    "subjectSourceSha256": "b1cff29a88e46d972100f45f1f2970b301b9a8a0fb7d2a8f2d9e891ca637113e",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.04429521291031332,
+      "jaw": 0.017828808151065648,
+      "seg0": 0.039717241939116146,
+      "seg1": 0.051504657707315146,
+      "seg2": 0.09128695359354612,
+      "seg3": 0.09084870262680735,
+      "seg4": 0.08481797547197624,
+      "seg5": 0.08776151659114557,
+      "seg6": 0.08062768852544461,
+      "seg7": 0.10092619419975128,
+      "seg8": 0.09375267455042811,
+      "seg9": 0.0543792996144835
+    },
+    "measures": {
+      "body": 0.6853990348546745,
+      "bone-min": 0.017828808151065648,
+      "bone-max": 0.10092619419975128,
+      "head/body": 0.06462689711797633
+    }
+  },
+  "recipeHash": "4da8727feaafa062bb66794cd7755bb4d5ff425150e15e3307c1e0e259b5d296"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Osprey",
+ "fitDir": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/rebound/c279-osprey-owner-r03/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d90d6b169a4f471c96f81638ad8724c8ce76b8dbdb7461d08ee6f92eb5f105b9"
+}

@@ -1,0 +1,19 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit",
+  "sourceBindingSha256": "3ce47b0daa67e37219fa6d4ea30585da15c26788104ed280433b651eff8cc122",
+  "candidateBindingSha256": "2bab7ff6aa1f2f35bbebe6aad1ae490d63186bd7bd9a3c48dfb8b2f94a7123f9",
+  "paintBoundaryPairs": [
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1",
+  "sourceAtlasSha256": "dfc32b7e647052317ef0407cacfc7dcf69bf89226b3a21df3ced8179d5960ef0",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

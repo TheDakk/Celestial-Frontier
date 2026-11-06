@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Softshell Turtle",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/rebound/c266-06-softshell-turtle/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d6229ae040d8117859f47d58a2c52ad416935444893aa9c3a41d420134f4cd89"
+}

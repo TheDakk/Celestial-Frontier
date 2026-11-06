@@ -1,0 +1,496 @@
+[
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/native/turn0-hit-approach-50.png",
+        "sha256": "c56e16992ab40ac2cbe42c5f315c95f887608e7563089a98959e3ba6a8b3e913"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/native/turn3-hit-idle-50.png",
+        "sha256": "9b83d5f7c33518a0e4f22a3b2ca04542152f96a5c630a11739b422fc41682be6"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-09-kinkajou/native/turn3-hit-idle-90.png",
+        "sha256": "1dbf169703fedffd5ea6bf39d2b041d691930dae5f8480a42d99f00f4d141c96"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 811,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/native/turn0-hit-approach-50.png",
+        "sha256": "cae53fe9d86a2b3397c3bc25cb6182445a9491b90da9a66c6932ef0774559d56"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/native/turn3-hit-idle-50.png",
+        "sha256": "03e27411cfa291a0a965c375ba94df3d76897fa69176d9041999a833bf51e3a1"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-02-wild-boar/native/turn3-hit-idle-90.png",
+        "sha256": "8349cc6babf13ac7fe6a87fa6cabc619aa0cc532c467c8c004a04872577a1107"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/native/turn0-hit-approach-50.png",
+        "sha256": "5b56a8bc564d59612ad300dde5d0d4fa01ae402cfc54efd5d352b3a2debf8960"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/native/turn3-hit-idle-50.png",
+        "sha256": "9b077dd1aacdac869f87df89b45fbfb8344a8ef3e6c7ff4fd876a5bb25e5e466"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-10-cow/native/turn3-hit-idle-90.png",
+        "sha256": "84e675a40870f562b3d13bd401f0236fa4a8ed4ef3d3c1d9d367795f0d575fde"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 768,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/native/turn0-hit-approach-50.png",
+        "sha256": "d7c20a66ac5b58db1fd7b980fa39544553370f13e10ca454e919d3b7aadbeca6"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/native/turn3-hit-idle-50.png",
+        "sha256": "fd296e470979cc3d6c6278fe76c4ed41ab7935bae6caa00701f27f03c4e2b12b"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-28-kookaburra/native/turn3-hit-idle-90.png",
+        "sha256": "178eafb7d6a0c493a52836aa76ab401da82f79a98c1b1b0f8fdefc2758f5b5a8"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/native/turn0-hit-approach-50.png",
+        "sha256": "57ab367a16e8b6235fbad088979f2447be025a344bc8a956783206d4d58ed7bf"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/native/turn3-hit-idle-50.png",
+        "sha256": "ff57dcc5d3569c94c5bbf3506088405e2662acb77595a3ffab31e22150a87c8a"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-29-osprey/native/turn3-hit-idle-90.png",
+        "sha256": "444c32283cbe528562ac0536cc76fea21296cf1590060bdb56f7479a598519da"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/native/turn0-hit-approach-50.png",
+        "sha256": "c5b032989e12804db032f18b8246084c31ee47c0fb9d5ba4cfc9b24b9f1976b7"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/native/turn3-hit-idle-50.png",
+        "sha256": "e2b62967e7680ce6c7fcff6b9f08d0d2ceaa4336e79db5f68ce4974037946a7a"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-13-gerenuk/native/turn3-hit-idle-90.png",
+        "sha256": "0046f0dea480c3fcf9860ceeb6d9e0623bf2d4d08b85ca95d23304084fb5da8a"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/native/turn0-hit-approach-50.png",
+        "sha256": "7070d9175cf520d7a00998ac97a12f81426774db9605273419572963fd43261c"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/native/turn3-hit-idle-50.png",
+        "sha256": "f46077c3f6ff0ebf1b841fd61675a60bdfd9e28d3ce6ad365a61a2a3127c7064"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-07-howler-monkey/native/turn3-hit-idle-90.png",
+        "sha256": "2f9c988b1fc2857d6199b49534f59968d068bc7e93dae31c15df78455d6cc0f0"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/native/turn0-hit-approach-50.png",
+        "sha256": "60977ae7675f75c561de861aed6ad525db04c994509253cf171715c7e4784583"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/native/turn3-hit-idle-50.png",
+        "sha256": "10c26d5061e0f42f9483366ee5ce27b38bfce33f7747ec794f4c2b1e96537f31"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c202creaturesupply-12-wolverine/native/turn3-hit-idle-90.png",
+        "sha256": "017f29dbc37ea788f7b64f611784a87d4e75cad1b8ae49801dffe100ffdbfbdb"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/native/turn0-hit-approach-50.png",
+        "sha256": "bedb4b1745f199c0763a3f14baf187f6932e7177c23b0e30dbca97fb92d6c598"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/native/turn3-hit-idle-50.png",
+        "sha256": "ca3c8f96ccb08728dfa57daa3781c0a6dca41e46317aaf387c7f55b765eaba21"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-14-red-fox/native/turn3-hit-idle-90.png",
+        "sha256": "c18c6961a239808161e33d6664afe12b082d5297ee3e3c6cbe8a9bad180e1460"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 789,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/native/turn0-hit-approach-50.png",
+        "sha256": "96cbb0cca74250480180f11eb8f634fa6d16219a5b5a738e3a69f483af674166"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/native/turn3-hit-idle-50.png",
+        "sha256": "b34abfb696654035c49990a6847c8eec338b165823f750068cc0e2b61cf6ab62"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c136targetededits-21-bee/native/turn3-hit-idle-90.png",
+        "sha256": "33568b1500fbe10a51c6ddb87ba6c536669eb666e1dbfdbf1a3f329cd2665f36"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/native/turn0-hit-approach-50.png",
+        "sha256": "b65cd0ba6626f88d5eb742fb74c0c7904d64bf525c03bb43b85e365411e9db45"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/native/turn3-hit-idle-50.png",
+        "sha256": "48b7234556b7dba07dd6bb75863e1aeef8e94a0c4d4ec44d8313f3f582384af0"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c213originals-21-auk/native/turn3-hit-idle-90.png",
+        "sha256": "0d29ce5d3df02c5e05a60146b599ac2e8a1ac2682c72e2a3e9e091945c3e19e4"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/native/turn0-hit-approach-50.png",
+        "sha256": "48ff408decc74d8e0f617b0e23318ca57d2e5d5f93d802130bb9b039172e53dd"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/native/turn3-hit-idle-50.png",
+        "sha256": "d9fb4978df4383f11620177f3c3296daefea70aee8169bcfff05f6627becc2f8"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c203creaturesupply-07-wild-pig/native/turn3-hit-idle-90.png",
+        "sha256": "5d0e8a1ba5cebc1d3e53b39a5998e917ff13c2e9461fe3d90cf606ffa189e29b"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/native/turn0-hit-approach-50.png",
+        "sha256": "9dcc7fc20d8585aa8ee9bfd567fb33ca7ee2f581c13d8244c115c30f6c3388c5"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/native/turn3-hit-idle-50.png",
+        "sha256": "4e20335b540a01cab33f54f7144e98443f8efa0e35fd0e3f84bca443ccf1a6bd"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/g2c95-17-nilgai/native/turn3-hit-idle-90.png",
+        "sha256": "e0d8e638a7060345ad06b587310313d963316f24a64aaebd0c65ed6adf07b88a"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/native/turn0-hit-approach-50.png",
+        "sha256": "4e1c26404d7e4620a37ab353eef3156a3424c6af8ad20b1ff65610faa61b6cdc"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/native/turn3-hit-idle-50.png",
+        "sha256": "ec6c32419b6b8253c2fa7a58fd12fbe0dfc37059452b3dc13688271d5ff79325"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors/c198creaturesupplyb-11-langur/native/turn3-hit-idle-90.png",
+        "sha256": "32591217bcecc187c31ab3496885acc668a5d81d6992b253e6be754d84724c82"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/native/turn0-hit-approach-50.png",
+        "sha256": "293381ac3108357343db1604c71fb7dc8dc731141753df0ee77b874b0fcc81c4"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/native/turn3-hit-idle-50.png",
+        "sha256": "8bcbfba3b43b1840668d2ad4a2eaa9b59dc972036cfe0ff0bd84bc9d4ec3dc4c"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-09-kinkajou/native/turn3-hit-idle-90.png",
+        "sha256": "ef8689df6541af30ee7d32c3bf9b8118674bd8e12a28430c24a5e07bf9fb1050"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 811,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/native/turn0-hit-approach-50.png",
+        "sha256": "c3efb7ee6c933c253c2e3bb28802062aa14c953d539be8298c4a1ac197053efb"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/native/turn3-hit-idle-50.png",
+        "sha256": "3655a7abbc7cba1a0684e77aa3649e3de016738784a79c58e3b469e2280df5c6"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-02-wild-boar/native/turn3-hit-idle-90.png",
+        "sha256": "096b87935bc07555f83ef187fe9ec42d941c79f48b3d39366b42d8c6ac7978dd"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/native/turn0-hit-approach-50.png",
+        "sha256": "6404ee1c45c34d4ace3953c9e4cb23aacc5c49fde6759bdff7bd1da6689fbcaa"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/native/turn3-hit-idle-50.png",
+        "sha256": "ce326d343a17e832c8c8cb3f66dceac3818d0af4d1f7129e60794414013d88c6"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-10-cow/native/turn3-hit-idle-90.png",
+        "sha256": "c49ca4b90d7d4e278709d12e94ea808df5b6d4143cf0bc9ba66b1789b1371c89"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/native/turn0-hit-approach-50.png",
+        "sha256": "ffa5c6d51393474a5c62550153807918f5f6d9c28279be5a34c3d58ecd69b8c8"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/native/turn3-hit-idle-50.png",
+        "sha256": "ee70e90c932162a19ded9185ece00682033e409e5910055594d9267fbe7797bb"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/native/turn3-hit-idle-90.png",
+        "sha256": "73b946e1b64ffb2b383273c5c93566bb1e3cd6c7a79f220286e1194f050a6a79"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/native/turn0-hit-approach-50.png",
+        "sha256": "99d36b4075685a31655751b4984482c1bda1abd8cb89af1faede79e611e76181"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/native/turn3-hit-idle-50.png",
+        "sha256": "0c7f7b908f2bfffd399cf30e42a310ca4a32423e66299007db7d66de94327610"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/native/turn3-hit-idle-90.png",
+        "sha256": "06ccdb61bec4360439432ca85393de55824c30df2ed97cbe52bc69ec14187200"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/native/turn0-hit-approach-50.png",
+        "sha256": "ca8dca1e7dedde5dfd5f47ce0075759d49386d779be78f0edc5a50d1308bdc20"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/native/turn3-hit-idle-50.png",
+        "sha256": "3c818616fa0e5368918b104bd62295a65121103d93048342884d5e91ad9d9a85"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/native/turn3-hit-idle-90.png",
+        "sha256": "81a103383763a4b2f7d862a05a318ade5922a50165447f21cbbcc03a6e3b66e1"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/native/turn0-hit-approach-50.png",
+        "sha256": "0a27618dedad514423a3dcc8edb483216ac66f18844a69c840f121a927a4e2a7"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/native/turn3-hit-idle-50.png",
+        "sha256": "47d6d4e7ceaf70bf878b488f19e18977fb8aba42b293e338e646ad809987122c"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c213originals-14-red-fox/native/turn3-hit-idle-90.png",
+        "sha256": "085ffbe67747eb89df0c8f8d4b6b3495c787ea12c435a9c986c438a184a71d97"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 789,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/native/turn0-hit-approach-50.png",
+        "sha256": "96cbb0cca74250480180f11eb8f634fa6d16219a5b5a738e3a69f483af674166"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/native/turn3-hit-idle-50.png",
+        "sha256": "5b0e47395dbbef9d692138f405cd01f5144fa49931e14f0876972d844fc369e2"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c136targetededits-21-bee/native/turn3-hit-idle-90.png",
+        "sha256": "ab0a090ef5bbe2cc2f4b16150f435e1bd4d6394a5f17a5c9ed383a726ca686fc"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/native/turn0-hit-approach-50.png",
+        "sha256": "d8d2d2106ff411866f73fa4e2f0a6eeddcc882d133cccfc4229c2fe898ff5770"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/native/turn3-hit-idle-50.png",
+        "sha256": "9f20c0569dc7eda338dd18522f00a11e80117f14d1695a62dba6b4e4c0431bfa"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/native/turn3-hit-idle-90.png",
+        "sha256": "bc08d7ead90da2c6d80d63d2bef232f20447fdd2e69a296f04dd6b707c6335bb"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/native/turn0-hit-approach-50.png",
+        "sha256": "5a84319c56bbff268a055ac41c540543eb29737feb68cd34d17f5364535af195"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/native/turn3-hit-idle-50.png",
+        "sha256": "a1c6d4193a0311200296379cfafa5e3cc21a8263e54bf597cff85c7d3a1ae5ea"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/native/turn3-hit-idle-90.png",
+        "sha256": "4fe9a8ab535a4e4ac9d082ce312d74ae2e3abca77e72d69311149b60e9f4229d"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/native/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/native/turn0-hit-approach-50.png",
+        "sha256": "d5ee6928f6f4eb187b514662fb9020e77795cdf320f753bdc775ca4c00d50e76"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/native/turn3-hit-idle-50.png",
+        "sha256": "01212b7cda9718ba2128620e06ca51299c90914e9c8c4ec4ee690697665c74b2"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/native/turn3-hit-idle-90.png",
+        "sha256": "d65634908a23874eab5a197a7a8f764b47c3a9e4c55e81a76895d2e446402d4d"
+      }
+    ]
+  },
+  {
+    "report": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/report.json",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "reviewStills": [
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/turn0-hit-approach-50.png",
+        "sha256": "3d48150fc6cae9d030f65320a8d5ef28ca93ebe81a3e6d6a1682b096c0a36c1c"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/turn3-hit-idle-50.png",
+        "sha256": "80d4b1ec3990f56687ffe057eba0cf23435186e81d27ad612c125ae784d3a68e"
+      },
+      {
+        "path": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/turn3-hit-idle-90.png",
+        "sha256": "9a8fc7be98473d2ee905ba126a72439667bf996f3473a1bcf24481701780ae56"
+      }
+    ]
+  }
+]

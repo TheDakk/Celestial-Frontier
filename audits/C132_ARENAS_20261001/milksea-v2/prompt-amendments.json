@@ -1,0 +1,29 @@
+{
+  "reason": "Bounded explicit forbidden-element/framing repair; no source-pixel editing",
+  "amendments": [
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/milksea/arena-far.prompt.txt",
+        "sha256": "9bb5dfd04789149e949070f7123219edb24ef21b20ae494905a962c75992dbc8"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.prompt.txt",
+        "sha256": "efdffee13583d049360e9ed5b3c141e8a3af1788ae824c9d1a5d745880058fce"
+      },
+      "exactSentPromptVerified": true
+    },
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/milksea/arena-near.prompt.txt",
+        "sha256": "ea55551040e748fa914aa3f21e88fb01ff9a6012d3db9af3c9dfb528b049e6e4"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.prompt.txt",
+        "sha256": "a089f84b0942fc74cc593d9e543fe279b134d7ed0af2909cd2fdf3af69ba56a2"
+      },
+      "exactSentPromptVerified": true
+    }
+  ]
+}

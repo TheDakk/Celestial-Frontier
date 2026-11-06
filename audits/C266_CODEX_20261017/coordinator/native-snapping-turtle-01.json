@@ -1,0 +1,20 @@
+{
+  "stage": "native-snapping-turtle-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-snapping-turtle-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/plan.json"
+  ],
+  "startedUnix": 1792277351.879961,
+  "beforeGiB": 92.32799530029297,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.058,
+  "lowestGiB": 91.91257858276367,
+  "afterGiB": 92.27774810791016
+}

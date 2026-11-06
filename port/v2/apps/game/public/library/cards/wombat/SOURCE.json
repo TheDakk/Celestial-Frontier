@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wombat",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/g2c118-01-wombat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5c7cbb720056b4653a225a306a9ad4a9a6e7ac929363dd659cfa6867d2d70860"
+}

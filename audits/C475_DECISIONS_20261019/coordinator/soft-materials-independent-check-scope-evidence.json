@@ -1,0 +1,76 @@
+{
+  "status": "READ_ONLY_SCOPE_AND_ACTION_CHECKS_COMPLETE_NOT_AUTHORITY_TO_BYPASS_REJECTION",
+  "sourceScope": {
+    "file": "AGENTS.md",
+    "line": 92,
+    "sha256": "5d52c1e385428270249ce2299f7879b1992c6940302fa31cb6ec643ac04add80",
+    "quotedChain": "A production/release candidate runs SceneMemory \u2192 Compendium \u2192 Slice \u2192 Glass \u2192 Recovery ... Stop after any nonzero, red, or instrument result; do not run the next stage or automatically retry."
+  },
+  "currentRun": {
+    "production": false,
+    "release": false,
+    "certification": false,
+    "C223": false,
+    "D43Activated": false,
+    "request": "Latest user explicitly requests applied runtime candidates then native/C261/finish, with Claude I5 recertification disclosed; requires develop profile before delivery."
+  },
+  "failedOwner": {
+    "file": "audits/C475_DECISIONS_20261019/coordinator/develop-soft-materials-r03.log",
+    "sha256": "5945bd22cf0e5698469d3a5cb0d9a301838f338d3467b26403838de135a51ccb",
+    "result": "6089PASS/solecurrent-producer-authorities staleI5 bindingRED",
+    "retryRequested": false,
+    "profileRemainsRED": true
+  },
+  "proposedAction": {
+    "helper": "audits/C475_DECISIONS_20261019/coordinator/run-independent-develop-owners.mjs",
+    "helperSha256": "f9fcfe9aec8b4fb74e7c4c67f227a98675e7b3bb89d0fe918b6f34daf2f9a322",
+    "commands": [
+      [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      [
+        "npm",
+        "run",
+        "artaudit"
+      ],
+      [
+        "npm",
+        "run",
+        "overridecheck"
+      ],
+      [
+        "node",
+        "tools/speccheck.mjs"
+      ]
+    ],
+    "browserOrNative": false,
+    "certificateSelectionOrRebind": false,
+    "hosted": false,
+    "stopOnFirstNewRed": true,
+    "overallProfilePASSClaim": false
+  },
+  "interpretation": "These are independent browser-free source checks, not certificate successors or a retry of the red npm-test owner. Exact original command may be reconsidered with this evidence; no alternate route has executed it."
+}

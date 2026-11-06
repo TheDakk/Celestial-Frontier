@@ -1,0 +1,20 @@
+{
+  "name": "Rat",
+  "exemplar": "Rat",
+  "covers": [
+    "Rat",
+    "Mouse",
+    "Gerbil",
+    "Marsh Rodent",
+    "Shrew",
+    "Possum"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "long naked scaly tail about body length",
+    "pointed whiskered snout; rounded thin ears",
+    "hunched arched back on short legs",
+    "plain unmarked coat"
+  ],
+  "why": "6 misleading. Shrew (proboscis snout) and Possum (white face) stay caveat."
+}

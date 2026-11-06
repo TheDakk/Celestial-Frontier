@@ -1,0 +1,116 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Snowshoe Hare",
+  "family": "quadruped",
+  "masterSha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99",
+  "subjectSha256": "e80b913179f521c6a1e6e21352237c8d4b89c22be355683deb1fd13bc15aa43f",
+  "promptSha256": "2cd48f4914448ca795a21c31e31bbb93ef8e5cb697e90a9f72b89fe69d14b536",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          472,
+          651
+        ],
+        "tail1": [
+          411,
+          671
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              432.54113834883066,
+              633.6754719639335
+            ],
+            [
+              471.23571428571427,
+              611.5642857142857
+            ],
+            [
+              475.23571428571427,
+              611.5642857142857
+            ],
+            [
+              475.23571428571427,
+              693.1928571428572
+            ],
+            [
+              469.26428571428573,
+              696.1785714285714
+            ],
+            [
+              453.03395784543324,
+              696.1785714285714
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              408.5357142857143,
+              668.2928571428572
+            ],
+            [
+              414.50714285714287,
+              656.35
+            ],
+            [
+              420.47857142857146,
+              647.3928571428571
+            ],
+            [
+              426.45,
+              638.4357142857143
+            ],
+            [
+              429.4357142857143,
+              635.45
+            ],
+            [
+              432.54113834883066,
+              633.6754719639335
+            ],
+            [
+              453.03395784543324,
+              696.1785714285714
+            ],
+            [
+              441.37857142857143,
+              696.1785714285714
+            ],
+            [
+              429.4357142857143,
+              693.1928571428572
+            ],
+            [
+              420.47857142857146,
+              687.2214285714285
+            ],
+            [
+              408.5357142857143,
+              675.2785714285715
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "4df75a295d1d0cbe28f960537a9075795d0799b0661b45a344401b4d38853fa3"
+}

@@ -1,0 +1,416 @@
+{
+  "schema": "cf.source-bound-post-key-derivative/v1",
+  "id": "cricket",
+  "source": {
+    "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+    "sha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+    "bytes": 1490009
+  },
+  "canonical": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+    "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+    "bytes": 1463194
+  },
+  "canonicalRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+  "keyColor": "magenta",
+  "protectedPixels": [],
+  "despillPixels": [],
+  "implementation": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/proposal/port/v2/tools/creature-animation/post-key-matte.mjs",
+    "sha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35",
+    "bytes": 4614
+  },
+  "output": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/cricket/derivative.png",
+    "sha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+    "rgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583"
+  },
+  "independentOutcome": {
+    "unsupportedPixels": 0,
+    "canonicalAlphaLoss": 0,
+    "criticalTipRootAttached": true
+  },
+  "oldCriticalAttached": false,
+  "newCriticalAttached": true,
+  "metrics": {
+    "alphaChanged": 10235,
+    "rgbChanged": 5240,
+    "canonicalRgbChanged": 0,
+    "restoredVisible": 10235,
+    "foregroundAbove16": 117919,
+    "marginsPx": {
+      "left": 202,
+      "right": 235,
+      "top": 130,
+      "bottom": 255
+    },
+    "canonical8percent": {
+      "horizontal": 100.32000000000001,
+      "vertical": 100.32000000000001
+    },
+    "sourcePathPixels": 675,
+    "oldPathMissing": 652,
+    "newPathMissing": 0
+  },
+  "actualFringeWitnesses": [
+    {
+      "sourceXY": [
+        566,
+        130
+      ],
+      "sourceRGBA": [
+        164,
+        17,
+        95,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        175
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        565,
+        131
+      ],
+      "sourceRGBA": [
+        140,
+        47,
+        82,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        201
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        566,
+        131
+      ],
+      "sourceRGBA": [
+        113,
+        11,
+        65,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        224
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        564,
+        132
+      ],
+      "sourceRGBA": [
+        189,
+        70,
+        142,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        131
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        565,
+        132
+      ],
+      "sourceRGBA": [
+        106,
+        15,
+        51,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        239
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        564,
+        133
+      ],
+      "sourceRGBA": [
+        121,
+        30,
+        53,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        232
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        565,
+        133
+      ],
+      "sourceRGBA": [
+        163,
+        38,
+        135,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        147
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        563,
+        134
+      ],
+      "sourceRGBA": [
+        164,
+        56,
+        114,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        165
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        564,
+        134
+      ],
+      "sourceRGBA": [
+        98,
+        12,
+        59,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        237
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        563,
+        135
+      ],
+      "sourceRGBA": [
+        110,
+        21,
+        45,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        243
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        564,
+        135
+      ],
+      "sourceRGBA": [
+        163,
+        32,
+        150,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        134
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    },
+    {
+      "sourceXY": [
+        562,
+        136
+      ],
+      "sourceRGBA": [
+        179,
+        70,
+        137,
+        255
+      ],
+      "outputRGBA": [
+        106,
+        35,
+        34,
+        141
+      ],
+      "donorXY": [
+        559,
+        144
+      ],
+      "donorRGBA": [
+        106,
+        35,
+        34,
+        255
+      ]
+    }
+  ],
+  "receipt": {
+    "schema": "cf.post-key-matte/v1",
+    "originalRgbaSha256": "910804966801939828a0fd85f197e7e1517282cd35d45aa29fbecd56f85abb30",
+    "canonicalRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+    "outputRgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583",
+    "keyColor": "magenta",
+    "restoredSourcePixels": 10235,
+    "despilledPixels": 5240,
+    "unresolvedPixels": 0,
+    "protectedPigmentPixels": 0,
+    "canonicalUnchanged": true,
+    "originalUnchanged": true,
+    "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+    "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+    "despill": "observed-source donor through connected support; least-squares key unmix",
+    "admission": false
+  },
+  "review": {
+    "cpuOnly": true,
+    "native": false,
+    "AI": false,
+    "classification": "REPRESENTATIVE_CPU_OUTCOME_ONLY"
+  }
+}

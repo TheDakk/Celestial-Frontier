@@ -1,0 +1,68 @@
+[
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/islands01/cardinal/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/17-cardinal/packet/master.png",
+    "sha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/islands01/duck/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/14-duck/packet/master.png",
+    "sha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/islands01/duiker/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-05-duiker/packet/master.png",
+    "sha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/inputs/g2c114-22-loon/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c114-22-loon/packet/master.png",
+    "sha256": "fd9a04775fc0d54221ec5815491611d796d2ae976cce77abd4883fbe47d04e7d",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/inputs/g2c76-11-falcon/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c76-11-falcon/fallback-1/packet/master.png",
+    "sha256": "7b79aae0b3727faf36aa8bf41668a7dd3842368a7c845094800f5a72e0af70d1",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/inputs/g2c98-17-petrel/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c98-17-petrel/packet/master.png",
+    "sha256": "d17d866d740ce789aa8f4cfe40f9abda554561e6a9f779368d73f3ba679e8d50",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/islands01/serow/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-06-serow/packet/master.png",
+    "sha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/C210_CONTINUATION_20261004/islands01/toucan/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/11-toucan/packet/master.png",
+    "sha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-03-pronghorn/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-03-pronghorn/packet/master.png",
+    "sha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-05-duiker/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-05-duiker/packet/master.png",
+    "sha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+    "trackedBefore": false
+  },
+  {
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-06-serow/fit",
+    "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c210-policy01/c203creaturesupplyb-06-serow/packet/master.png",
+    "sha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+    "trackedBefore": false
+  }
+]

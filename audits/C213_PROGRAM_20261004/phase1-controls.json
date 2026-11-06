@@ -1,0 +1,2216 @@
+{
+  "status": "PASS",
+  "measured": [
+    {
+      "id": "c192creaturesupply-15-pronghorn",
+      "name": "Pronghorn",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Pronghorn",
+        "family": "quadruped",
+        "masterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+        "subjectSha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+        "promptSha256": "4ed368c3860bfdf20ef6a7140a5c738126c2d187304aedfc929e9c0b524105ba",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                334,
+                561
+              ],
+              "tail1": [
+                336,
+                622
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    283.1357142857143,
+                    566.7785714285715
+                  ],
+                  [
+                    286.12142857142857,
+                    548.8642857142858
+                  ],
+                  [
+                    289.1071428571429,
+                    539.9071428571428
+                  ],
+                  [
+                    295.0785714285714,
+                    530.95
+                  ],
+                  [
+                    301.05,
+                    524.9785714285714
+                  ],
+                  [
+                    304.0357142857143,
+                    521.9928571428571
+                  ],
+                  [
+                    307.0214285714286,
+                    519.0071428571429
+                  ],
+                  [
+                    321.95,
+                    507.06428571428575
+                  ],
+                  [
+                    330.90714285714284,
+                    501.09285714285716
+                  ],
+                  [
+                    337.89285714285717,
+                    501.09285714285716
+                  ],
+                  [
+                    337.89285714285717,
+                    591.4051522248244
+                  ],
+                  [
+                    290.94625668449197,
+                    592.944385026738
+                  ],
+                  [
+                    286.12142857142857,
+                    585.7071428571429
+                  ],
+                  [
+                    283.1357142857143,
+                    570.7785714285715
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    337.89285714285717,
+                    591.4051522248244
+                  ],
+                  [
+                    337.89285714285717,
+                    624.5214285714286
+                  ],
+                  [
+                    333.89285714285717,
+                    624.5214285714286
+                  ],
+                  [
+                    292.09285714285716,
+                    594.6642857142857
+                  ],
+                  [
+                    290.94625668449197,
+                    592.944385026738
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "5459fe595dd2b20c9b172d59003d86ddc2565017d2199700ad365ec689580762"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c192creaturesupply-16-springbok",
+      "name": "Springbok",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Springbok",
+        "family": "quadruped",
+        "masterSha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+        "subjectSha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52",
+        "promptSha256": "366d2a15198674654e94896aca30498c309f10db45a6122ccc082643b64ce902",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                346,
+                567
+              ],
+              "tail1": [
+                273,
+                641
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    283.73047016274865,
+                    578.5787070524412
+                  ],
+                  [
+                    289.1071428571429,
+                    563.7928571428572
+                  ],
+                  [
+                    292.09285714285716,
+                    557.8214285714286
+                  ],
+                  [
+                    301.05,
+                    539.9071428571428
+                  ],
+                  [
+                    304.0357142857143,
+                    536.9214285714286
+                  ],
+                  [
+                    312.99285714285713,
+                    527.9642857142858
+                  ],
+                  [
+                    321.95,
+                    521.9928571428571
+                  ],
+                  [
+                    345.8357142857143,
+                    507.06428571428575
+                  ],
+                  [
+                    349.8357142857143,
+                    507.06428571428575
+                  ],
+                  [
+                    349.8357142857143,
+                    630.4928571428571
+                  ],
+                  [
+                    338.6280182232346,
+                    632.734396355353
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    271.1928571428571,
+                    614.55
+                  ],
+                  [
+                    277.1642857142857,
+                    596.6357142857142
+                  ],
+                  [
+                    283.73047016274865,
+                    578.5787070524412
+                  ],
+                  [
+                    338.6280182232346,
+                    632.734396355353
+                  ],
+                  [
+                    275.1928571428571,
+                    645.4214285714286
+                  ],
+                  [
+                    271.1928571428571,
+                    645.4214285714286
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "cd830bf5108953a0bed38d230e3d908d8732b5ee824074f24aec6dfbbce11af0"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c196creaturesupply-06-llama",
+      "name": "Llama",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Llama",
+        "family": "quadruped",
+        "masterSha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992",
+        "subjectSha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de",
+        "promptSha256": "cb4ffaae45a4f35b715b42099313372c4625c2f64d6f6819641eb7e0c26db8c6",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                367,
+                578
+              ],
+              "tail1": [
+                324,
+                680
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    301.05,
+                    584.6928571428572
+                  ],
+                  [
+                    310.00714285714287,
+                    560.8071428571428
+                  ],
+                  [
+                    321.95,
+                    542.8928571428571
+                  ],
+                  [
+                    339.8642857142857,
+                    524.9785714285714
+                  ],
+                  [
+                    354.79285714285714,
+                    516.0214285714286
+                  ],
+                  [
+                    366.73571428571427,
+                    510.04999999999995
+                  ],
+                  [
+                    370.73571428571427,
+                    510.04999999999995
+                  ],
+                  [
+                    370.73571428571427,
+                    639.6385854341736
+                  ],
+                  [
+                    301.16982174240525,
+                    610.3117875972885
+                  ],
+                  [
+                    301.05,
+                    609.5928571428572
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    370.73571428571427,
+                    639.6385854341736
+                  ],
+                  [
+                    370.73571428571427,
+                    648.4071428571428
+                  ],
+                  [
+                    340.87857142857143,
+                    672.2928571428572
+                  ],
+                  [
+                    325.95,
+                    684.2357142857143
+                  ],
+                  [
+                    321.95,
+                    684.2357142857143
+                  ],
+                  [
+                    307.0214285714286,
+                    645.4214285714286
+                  ],
+                  [
+                    301.16982174240525,
+                    610.3117875972885
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "f2dd5711b6cea421e885633a753984443a1ffab715f1d510dbbded0bd85f232e"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c196creaturesupply-08-ibex",
+      "name": "Ibex",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Ibex",
+        "family": "quadruped",
+        "masterSha256": "5f57a75bb93cddf170a779663db9912413b41a50a43eeb63b97ba917e2ef2e9e",
+        "subjectSha256": "aac4d0174240b5350ada4297d2dc78f923e5a97e175d6ed00eb875377a95d8d8",
+        "promptSha256": "0dc71cd51e5456ac3ac0bcedcf1692a765c56a6bce425fe347a275c5b9f2e3f8",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                358,
+                640
+              ],
+              "tail1": [
+                279,
+                707
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    288.5959095402867,
+                    638.2399530400395
+                  ],
+                  [
+                    327.9214285714286,
+                    587.6785714285714
+                  ],
+                  [
+                    336.87857142857143,
+                    578.7214285714285
+                  ],
+                  [
+                    339.8642857142857,
+                    575.7357142857143
+                  ],
+                  [
+                    348.82142857142856,
+                    569.7642857142857
+                  ],
+                  [
+                    354.79285714285714,
+                    566.7785714285715
+                  ],
+                  [
+                    361.7785714285714,
+                    566.7785714285715
+                  ],
+                  [
+                    361.7785714285714,
+                    717.0785714285714
+                  ],
+                  [
+                    357.7785714285714,
+                    717.0785714285714
+                  ],
+                  [
+                    355.30355534910314,
+                    716.8952369041664
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    277.1642857142857,
+                    677.25
+                  ],
+                  [
+                    286.12142857142857,
+                    641.4214285714286
+                  ],
+                  [
+                    288.5959095402867,
+                    638.2399530400395
+                  ],
+                  [
+                    355.30355534910314,
+                    716.8952369041664
+                  ],
+                  [
+                    277.1642857142857,
+                    711.1071428571429
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "7c7559366e8623a0ebfb1d76d5cb8272003d7deb08e8e8f4ec8e78d1806fc4d4"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c198creaturesupplya-24-snowshoe-hare",
+      "name": "Snowshoe Hare",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Snowshoe Hare",
+        "family": "quadruped",
+        "masterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+        "subjectSha256": "e80b913179f521c6a1e6e21352237c8d4b89c22be355683deb1fd13bc15aa43f",
+        "promptSha256": "d5d32ef021415ef339217bbbed67c4f38162f8c9497a02cd5a5b6b9df3af7fc4",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                358,
+                672
+              ],
+              "tail1": [
+                360,
+                739
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    336.87857142857143,
+                    653.3642857142858
+                  ],
+                  [
+                    345.8357142857143,
+                    629.4785714285714
+                  ],
+                  [
+                    354.79285714285714,
+                    608.5785714285714
+                  ],
+                  [
+                    357.7785714285714,
+                    605.5928571428572
+                  ],
+                  [
+                    361.7785714285714,
+                    605.5928571428572
+                  ],
+                  [
+                    361.7785714285714,
+                    705.4170575692964
+                  ],
+                  [
+                    343.8515777660417,
+                    705.9521917084763
+                  ],
+                  [
+                    339.8642857142857,
+                    693.1928571428572
+                  ],
+                  [
+                    336.87857142857143,
+                    657.3642857142858
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    361.7785714285714,
+                    705.4170575692964
+                  ],
+                  [
+                    361.7785714285714,
+                    740.9642857142858
+                  ],
+                  [
+                    354.79285714285714,
+                    740.9642857142858
+                  ],
+                  [
+                    343.8515777660417,
+                    705.9521917084763
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "2e43fba5ee1e76c3a23e991853b2514ba0ac17402da850aa078848b8d33052bc"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c202creaturesupply-02-wild-boar",
+      "name": "Wild Boar",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Wild Boar",
+        "family": "quadruped",
+        "masterSha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+        "subjectSha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b",
+        "promptSha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                302,
+                578
+              ],
+              "tail1": [
+                214,
+                686
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    220.3486675590168,
+                    601.3211365295692
+                  ],
+                  [
+                    274.17857142857144,
+                    521.9928571428571
+                  ],
+                  [
+                    286.12142857142857,
+                    510.04999999999995
+                  ],
+                  [
+                    295.0785714285714,
+                    501.09285714285716
+                  ],
+                  [
+                    298.06428571428575,
+                    498.1071428571429
+                  ],
+                  [
+                    305.05,
+                    498.1071428571429
+                  ],
+                  [
+                    305.05,
+                    660.35
+                  ],
+                  [
+                    296.43783039647576,
+                    663.3197136563876
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    199.53571428571428,
+                    635.45
+                  ],
+                  [
+                    217.45000000000002,
+                    605.5928571428572
+                  ],
+                  [
+                    220.3486675590168,
+                    601.3211365295692
+                  ],
+                  [
+                    296.43783039647576,
+                    663.3197136563876
+                  ],
+                  [
+                    218.46428571428572,
+                    690.2071428571429
+                  ],
+                  [
+                    214.46428571428572,
+                    690.2071428571429
+                  ],
+                  [
+                    211.47857142857143,
+                    687.2214285714285
+                  ],
+                  [
+                    205.50714285714287,
+                    678.2642857142857
+                  ],
+                  [
+                    199.53571428571428,
+                    669.3071428571428
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "09a2a21246d83253bd7815939616cea85e67c94c7059cf5cd79889da109d484f"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c202creaturesupply-13-ibex",
+      "name": "Ibex",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Ibex",
+        "family": "quadruped",
+        "masterSha256": "d8061ecc314acecf182be381b10ba01306a3d7734e06ff185f9e13970fbfe683",
+        "subjectSha256": "aac4d0174240b5350ada4297d2dc78f923e5a97e175d6ed00eb875377a95d8d8",
+        "promptSha256": "597860b7770af61b1701b919010e58fc2ffaf0051cfc74b1d234ee5a0449e4e5",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                379,
+                633
+              ],
+              "tail1": [
+                318,
+                703
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    310.93833580980686,
+                    635.2676926342602
+                  ],
+                  [
+                    315.97857142857146,
+                    623.5071428571429
+                  ],
+                  [
+                    324.9357142857143,
+                    611.5642857142857
+                  ],
+                  [
+                    354.79285714285714,
+                    578.7214285714285
+                  ],
+                  [
+                    366.73571428571427,
+                    569.7642857142857
+                  ],
+                  [
+                    378.67857142857144,
+                    563.7928571428572
+                  ],
+                  [
+                    382.67857142857144,
+                    563.7928571428572
+                  ],
+                  [
+                    382.67857142857144,
+                    697.7841836734694
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    307.0214285714286,
+                    644.4071428571428
+                  ],
+                  [
+                    310.93833580980686,
+                    635.2676926342602
+                  ],
+                  [
+                    382.67857142857144,
+                    697.7841836734694
+                  ],
+                  [
+                    382.67857142857144,
+                    705.1357142857142
+                  ],
+                  [
+                    315.97857142857146,
+                    705.1357142857142
+                  ],
+                  [
+                    310.00714285714287,
+                    690.2071428571429
+                  ],
+                  [
+                    307.0214285714286,
+                    675.2785714285715
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "c0ccaa87a022c55a7bfd90824b876bf71bbc79fa3eea41a34096c36c55d5e676"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c202creaturesupply-14-chamois",
+      "name": "Chamois",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Chamois",
+        "family": "quadruped",
+        "masterSha256": "33745921fcd0a61a8e6937bd97d67d296b0dc21d3d0689b1117aae85df178f9c",
+        "subjectSha256": "8c6be5954958c0984e24dedd103f78dc377c42284570087d27b7e46337e1feb2",
+        "promptSha256": "5daefa2bfb973b63421e8fcee09cef1aaaeb04a5669a130b5a7624516bca11d0",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                382,
+                581
+              ],
+              "tail1": [
+                385,
+                649
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    327.9214285714286,
+                    590.6642857142857
+                  ],
+                  [
+                    330.90714285714284,
+                    569.7642857142857
+                  ],
+                  [
+                    333.89285714285717,
+                    563.7928571428572
+                  ],
+                  [
+                    339.8642857142857,
+                    554.8357142857143
+                  ],
+                  [
+                    348.82142857142856,
+                    542.8928571428571
+                  ],
+                  [
+                    366.73571428571427,
+                    524.9785714285714
+                  ],
+                  [
+                    381.6642857142857,
+                    513.0357142857143
+                  ],
+                  [
+                    385.6642857142857,
+                    513.0357142857143
+                  ],
+                  [
+                    385.6642857142857,
+                    614.9045168067227
+                  ],
+                  [
+                    332.97403846153844,
+                    617.2290865384615
+                  ],
+                  [
+                    330.90714285714284,
+                    612.5785714285714
+                  ],
+                  [
+                    327.9214285714286,
+                    600.6357142857142
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    385.6642857142857,
+                    614.9045168067227
+                  ],
+                  [
+                    385.6642857142857,
+                    651.3928571428571
+                  ],
+                  [
+                    378.67857142857144,
+                    651.3928571428571
+                  ],
+                  [
+                    342.85,
+                    639.45
+                  ],
+                  [
+                    332.97403846153844,
+                    617.2290865384615
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "ca807e2c1ab9dc78227e927828e9f2da57bfd63a28ba74e8971bca8e3ef8b8ce"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c202creaturesupply-24-llama",
+      "name": "Llama",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Llama",
+        "family": "quadruped",
+        "masterSha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+        "subjectSha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de",
+        "promptSha256": "f97b65977fb9f4c77f1802b95a970f0b311d6381ff3360d04ff92aa8de137233",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                366,
+                600
+              ],
+              "tail1": [
+                369,
+                720
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    283.1357142857143,
+                    590.6642857142857
+                  ],
+                  [
+                    289.1071428571429,
+                    566.7785714285715
+                  ],
+                  [
+                    301.05,
+                    542.8928571428571
+                  ],
+                  [
+                    310.00714285714287,
+                    530.95
+                  ],
+                  [
+                    321.95,
+                    516.0214285714286
+                  ],
+                  [
+                    324.9357142857143,
+                    513.0357142857143
+                  ],
+                  [
+                    351.8071428571429,
+                    501.09285714285716
+                  ],
+                  [
+                    391.6357142857143,
+                    501.09285714285716
+                  ],
+                  [
+                    394.62142857142857,
+                    504.0785714285714
+                  ],
+                  [
+                    394.62142857142857,
+                    508.0785714285714
+                  ],
+                  [
+                    377.7697970553124,
+                    659.7432550736172
+                  ],
+                  [
+                    299.95617134025173,
+                    661.6885957164938
+                  ],
+                  [
+                    298.06428571428575,
+                    657.3642857142858
+                  ],
+                  [
+                    283.1357142857143,
+                    615.5642857142857
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    377.7697970553124,
+                    659.7432550736172
+                  ],
+                  [
+                    370.73571428571427,
+                    723.0500000000001
+                  ],
+                  [
+                    363.75,
+                    723.0500000000001
+                  ],
+                  [
+                    318.9642857142857,
+                    705.1357142857142
+                  ],
+                  [
+                    299.95617134025173,
+                    661.6885957164938
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "d571c66e75930005adb21a8d89df25149e1c5dc887f9202aa1e7a9ebb53bee9d"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "c203creaturesupply-12-alpaca",
+      "name": "Alpaca",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Alpaca",
+        "family": "quadruped",
+        "masterSha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+        "subjectSha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd",
+        "promptSha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                334,
+                588
+              ],
+              "tail1": [
+                303,
+                678
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    268.20714285714286,
+                    608.5785714285714
+                  ],
+                  [
+                    271.1928571428571,
+                    581.7071428571429
+                  ],
+                  [
+                    283.1357142857143,
+                    557.8214285714286
+                  ],
+                  [
+                    298.06428571428575,
+                    533.9357142857143
+                  ],
+                  [
+                    315.97857142857146,
+                    519.0071428571429
+                  ],
+                  [
+                    327.9214285714286,
+                    513.0357142857143
+                  ],
+                  [
+                    337.89285714285717,
+                    513.0357142857143
+                  ],
+                  [
+                    337.89285714285717,
+                    639.6797619047619
+                  ],
+                  [
+                    268.20714285714286,
+                    615.6769047619048
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    337.89285714285717,
+                    639.6797619047619
+                  ],
+                  [
+                    337.89285714285717,
+                    666.3214285714286
+                  ],
+                  [
+                    311.0214285714286,
+                    681.25
+                  ],
+                  [
+                    301.05,
+                    681.25
+                  ],
+                  [
+                    292.09285714285716,
+                    672.2928571428572
+                  ],
+                  [
+                    286.12142857142857,
+                    666.3214285714286
+                  ],
+                  [
+                    274.17857142857144,
+                    651.3928571428571
+                  ],
+                  [
+                    271.1928571428571,
+                    642.4357142857143
+                  ],
+                  [
+                    268.20714285714286,
+                    633.4785714285714
+                  ],
+                  [
+                    268.20714285714286,
+                    615.6769047619048
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "6db84b4429383e1dfed4c074fae4cdf120bffa8582db7df49dc76a6349da5287"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c107-15-ibex",
+      "name": "Ibex",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Ibex",
+        "family": "quadruped",
+        "masterSha256": "bb4389651cc2da9f04448ea8ea67cc7fdfc69bceb8db60c3f579c6577275bc0e",
+        "subjectSha256": "aac4d0174240b5350ada4297d2dc78f923e5a97e175d6ed00eb875377a95d8d8",
+        "promptSha256": "4b878138e75a9a8090f317bccb997d9d20150e1bf63301c965481eed398c3d7b",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                379,
+                661
+              ],
+              "tail1": [
+                304,
+                700
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    319.4956805019305,
+                    638.184000965251
+                  ],
+                  [
+                    375.6928571428571,
+                    611.5642857142857
+                  ],
+                  [
+                    382.67857142857144,
+                    611.5642857142857
+                  ],
+                  [
+                    382.67857142857144,
+                    714.0928571428572
+                  ],
+                  [
+                    378.67857142857144,
+                    714.0928571428572
+                  ],
+                  [
+                    357.2543478260869,
+                    710.7968227424749
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    298.06428571428575,
+                    671.2785714285715
+                  ],
+                  [
+                    304.0357142857143,
+                    656.35
+                  ],
+                  [
+                    310.00714285714287,
+                    644.4071428571428
+                  ],
+                  [
+                    318.9642857142857,
+                    638.4357142857143
+                  ],
+                  [
+                    319.4956805019305,
+                    638.184000965251
+                  ],
+                  [
+                    357.2543478260869,
+                    710.7968227424749
+                  ],
+                  [
+                    301.05,
+                    702.15
+                  ],
+                  [
+                    298.06428571428575,
+                    690.2071428571429
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "6a023d9c1efb8850e2abbc1d7bc0a3f67b34e6dcd3870d9b53cc195c9bbef2ee"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c107-16-chamois",
+      "name": "Chamois",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Chamois",
+        "family": "quadruped",
+        "masterSha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147",
+        "subjectSha256": "8c6be5954958c0984e24dedd103f78dc377c42284570087d27b7e46337e1feb2",
+        "promptSha256": "31042a980f4d6e08ad583ea537d9898f51be9b6925a91cc5a1c604d0497d0568",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                382,
+                558
+              ],
+              "tail1": [
+                327,
+                613
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    337.6328571428571,
+                    568.6328571428571
+                  ],
+                  [
+                    342.85,
+                    560.8071428571428
+                  ],
+                  [
+                    366.73571428571427,
+                    536.9214285714286
+                  ],
+                  [
+                    369.7214285714286,
+                    533.9357142857143
+                  ],
+                  [
+                    378.67857142857144,
+                    527.9642857142858
+                  ],
+                  [
+                    385.6642857142857,
+                    527.9642857142858
+                  ],
+                  [
+                    385.6642857142857,
+                    591.6785714285714
+                  ],
+                  [
+                    369.4970588235294,
+                    600.4970588235294
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    324.9357142857143,
+                    611.5642857142857
+                  ],
+                  [
+                    327.9214285714286,
+                    596.6357142857142
+                  ],
+                  [
+                    330.90714285714284,
+                    587.6785714285714
+                  ],
+                  [
+                    336.87857142857143,
+                    569.7642857142857
+                  ],
+                  [
+                    337.6328571428571,
+                    568.6328571428571
+                  ],
+                  [
+                    369.4970588235294,
+                    600.4970588235294
+                  ],
+                  [
+                    352.82142857142856,
+                    609.5928571428572
+                  ],
+                  [
+                    340.87857142857143,
+                    615.5642857142857
+                  ],
+                  [
+                    324.9357142857143,
+                    615.5642857142857
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "edf58a4c1f843d0b382051af112a001a5e64a0eb486c4da959290b88510926c5"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c76-19-alpaca",
+      "name": "Alpaca",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Alpaca",
+        "family": "quadruped",
+        "masterSha256": "3025d643d0b13ad45d7457ca408ce4d7e8149ecaf6b063ffb5afa54ae7ef4664",
+        "subjectSha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd",
+        "promptSha256": "fc1de084cb78477a3e8f0818d7b7ec1bb3203afe9cfa8deb838bb4c3225d8083",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                392,
+                581
+              ],
+              "tail1": [
+                362,
+                660
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    327.9214285714286,
+                    587.6785714285714
+                  ],
+                  [
+                    330.90714285714284,
+                    575.7357142857143
+                  ],
+                  [
+                    342.85,
+                    551.85
+                  ],
+                  [
+                    345.8357142857143,
+                    548.8642857142858
+                  ],
+                  [
+                    360.76428571428573,
+                    536.9214285714286
+                  ],
+                  [
+                    381.6642857142857,
+                    530.95
+                  ],
+                  [
+                    396.59285714285716,
+                    527.9642857142858
+                  ],
+                  [
+                    400.59285714285716,
+                    527.9642857142858
+                  ],
+                  [
+                    415.5214285714286,
+                    533.9357142857143
+                  ],
+                  [
+                    421.49285714285713,
+                    539.9071428571428
+                  ],
+                  [
+                    421.49285714285713,
+                    543.9071428571428
+                  ],
+                  [
+                    397.3962130039618,
+                    628.2453973432766
+                  ],
+                  [
+                    329.097569803516,
+                    602.3092037228542
+                  ],
+                  [
+                    327.9214285714286,
+                    594.6642857142857
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    397.3962130039618,
+                    628.2453973432766
+                  ],
+                  [
+                    391.6357142857143,
+                    648.4071428571428
+                  ],
+                  [
+                    385.6642857142857,
+                    654.3785714285715
+                  ],
+                  [
+                    373.7214285714286,
+                    663.3357142857143
+                  ],
+                  [
+                    360.76428571428573,
+                    663.3357142857143
+                  ],
+                  [
+                    351.8071428571429,
+                    654.3785714285715
+                  ],
+                  [
+                    339.8642857142857,
+                    642.4357142857143
+                  ],
+                  [
+                    333.89285714285717,
+                    633.4785714285714
+                  ],
+                  [
+                    329.097569803516,
+                    602.3092037228542
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "9afda8a5a406dd249abe4413ec64a5794e756c80c2c2e09649c930699c3ce19e"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c76-20-llama",
+      "name": "Llama",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Llama",
+        "family": "quadruped",
+        "masterSha256": "69670282790169f2dac084fd02ed709181bf1e2d0773e67447a89d2b5a435a08",
+        "subjectSha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de",
+        "promptSha256": "81d44474c8c78fab1baee3b3874c62236e5eeae4bd1fc15d5fd447df9b09eb0d",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                414,
+                608
+              ],
+              "tail1": [
+                360,
+                699
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    335.1029911075182,
+                    622.7039727451207
+                  ],
+                  [
+                    336.87857142857143,
+                    599.6214285714286
+                  ],
+                  [
+                    345.8357142857143,
+                    575.7357142857143
+                  ],
+                  [
+                    354.79285714285714,
+                    560.8071428571428
+                  ],
+                  [
+                    366.73571428571427,
+                    545.8785714285715
+                  ],
+                  [
+                    369.7214285714286,
+                    542.8928571428571
+                  ],
+                  [
+                    375.6928571428571,
+                    539.9071428571428
+                  ],
+                  [
+                    393.6071428571429,
+                    533.9357142857143
+                  ],
+                  [
+                    414.50714285714287,
+                    530.95
+                  ],
+                  [
+                    430.45,
+                    530.95
+                  ],
+                  [
+                    448.3642857142857,
+                    536.9214285714286
+                  ],
+                  [
+                    451.35,
+                    539.9071428571428
+                  ],
+                  [
+                    454.3357142857143,
+                    542.8928571428571
+                  ],
+                  [
+                    454.3357142857143,
+                    546.8928571428571
+                  ],
+                  [
+                    418.2367105738001,
+                    672.0360700108264
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    333.89285714285717,
+                    638.4357142857143
+                  ],
+                  [
+                    335.1029911075182,
+                    622.7039727451207
+                  ],
+                  [
+                    418.2367105738001,
+                    672.0360700108264
+                  ],
+                  [
+                    409.55,
+                    702.15
+                  ],
+                  [
+                    406.56428571428575,
+                    705.1357142857142
+                  ],
+                  [
+                    402.56428571428575,
+                    705.1357142857142
+                  ],
+                  [
+                    357.7785714285714,
+                    702.15
+                  ],
+                  [
+                    339.8642857142857,
+                    666.3214285714286
+                  ],
+                  [
+                    333.89285714285717,
+                    642.4357142857143
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "f91a80f3c620c7ac9a780316eda19fc6e2e94e39dc4071fcc5b2f3139d954a77"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c90-17-rabbit",
+      "name": "Rabbit",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Rabbit",
+        "family": "quadruped",
+        "masterSha256": "8bcee4a5c170ecf6624ca15b37922652469d8e2a0860f9edf2d40ceda9aea839",
+        "subjectSha256": "4f26f9d27f66d420e4b54f2573de8aadff9b46510980b4063b1d3f9be42bba36",
+        "promptSha256": "6562607ccf47aa8a4eb6032b3f65b8e50739209c2e50e4756dcd225293c12f60",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                391,
+                646
+              ],
+              "tail1": [
+                325,
+                678
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    331.9051486584481,
+                    608.1793691080493
+                  ],
+                  [
+                    345.8357142857143,
+                    602.6071428571429
+                  ],
+                  [
+                    390.62142857142857,
+                    587.6785714285714
+                  ],
+                  [
+                    394.62142857142857,
+                    587.6785714285714
+                  ],
+                  [
+                    394.62142857142857,
+                    708.1214285714286
+                  ],
+                  [
+                    382.67857142857144,
+                    711.1071428571429
+                  ],
+                  [
+                    381.8095238095238,
+                    711.1071428571429
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    315.97857142857146,
+                    638.4357142857143
+                  ],
+                  [
+                    318.9642857142857,
+                    629.4785714285714
+                  ],
+                  [
+                    321.95,
+                    623.5071428571429
+                  ],
+                  [
+                    324.9357142857143,
+                    617.5357142857143
+                  ],
+                  [
+                    330.90714285714284,
+                    608.5785714285714
+                  ],
+                  [
+                    331.9051486584481,
+                    608.1793691080493
+                  ],
+                  [
+                    381.8095238095238,
+                    711.1071428571429
+                  ],
+                  [
+                    363.75,
+                    711.1071428571429
+                  ],
+                  [
+                    354.79285714285714,
+                    708.1214285714286
+                  ],
+                  [
+                    342.85,
+                    702.15
+                  ],
+                  [
+                    339.8642857142857,
+                    699.1642857142857
+                  ],
+                  [
+                    330.90714285714284,
+                    690.2071428571429
+                  ],
+                  [
+                    321.95,
+                    681.25
+                  ],
+                  [
+                    318.9642857142857,
+                    669.3071428571428
+                  ],
+                  [
+                    315.97857142857146,
+                    654.3785714285715
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "96c847d1c780b0b90a684f3504816c5ac192adccba0cd76ec7123f7bb3cfb7d9"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c95-13-pronghorn",
+      "name": "Pronghorn",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Pronghorn",
+        "family": "quadruped",
+        "masterSha256": "0cb05436326b123d20b6c52d6d480673549d612dc661ffaa10be902c5756cf28",
+        "subjectSha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+        "promptSha256": "236c69fa39b296223a317c187adc4bea4a0e05cb00e76043ac7b15ce397c4bd3",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                379,
+                566
+              ],
+              "tail1": [
+                381,
+                623
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    348.82142857142856,
+                    548.8642857142858
+                  ],
+                  [
+                    351.8071428571429,
+                    536.9214285714286
+                  ],
+                  [
+                    354.79285714285714,
+                    530.95
+                  ],
+                  [
+                    363.75,
+                    519.0071428571429
+                  ],
+                  [
+                    366.73571428571427,
+                    516.0214285714286
+                  ],
+                  [
+                    378.67857142857144,
+                    510.04999999999995
+                  ],
+                  [
+                    382.67857142857144,
+                    510.04999999999995
+                  ],
+                  [
+                    382.67857142857144,
+                    594.406015037594
+                  ],
+                  [
+                    358.1794693877551,
+                    595.2656326530612
+                  ],
+                  [
+                    357.7785714285714,
+                    594.6642857142857
+                  ],
+                  [
+                    354.79285714285714,
+                    588.6928571428572
+                  ],
+                  [
+                    351.8071428571429,
+                    579.7357142857143
+                  ],
+                  [
+                    348.82142857142856,
+                    564.8071428571428
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    382.67857142857144,
+                    594.406015037594
+                  ],
+                  [
+                    382.67857142857144,
+                    624.5214285714286
+                  ],
+                  [
+                    378.67857142857144,
+                    624.5214285714286
+                  ],
+                  [
+                    363.75,
+                    603.6214285714286
+                  ],
+                  [
+                    358.1794693877551,
+                    595.2656326530612
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "a7292b721c098c33b4739468c7d790358bf5c4b90b54481373580d84b309187d"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    },
+    {
+      "id": "g2c95-14-springbok",
+      "name": "Springbok",
+      "review": {
+        "schema": "cf.reviewed-source-representation/v1",
+        "name": "Springbok",
+        "family": "quadruped",
+        "masterSha256": "e6870bf363c0fe0885a5e43acb0ee6e69480ceb42f0766da902e815562278a52",
+        "subjectSha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52",
+        "promptSha256": "e43150ce785a84f3115c9380cbfa97024c1ffc2a350ff0d59ec39a9d20ada34b",
+        "scope": "exact-master-only-no-visual-admission",
+        "review": {
+          "method": "Measured compact-tail v1",
+          "reviewer": "Codex",
+          "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+        },
+        "evidence": {
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "compactTail": {
+            "terminal": "tail1",
+            "visibility": "entire-root-to-tip",
+            "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+            "landmarksPx": {
+              "tail0": [
+                349,
+                558
+              ],
+              "tail1": [
+                263,
+                642
+              ]
+            },
+            "regions": [
+              {
+                "joint": "tail0",
+                "polygonPx": [
+                  [
+                    290.6718317085685,
+                    584.3068753206772
+                  ],
+                  [
+                    321.95,
+                    530.95
+                  ],
+                  [
+                    327.9214285714286,
+                    521.9928571428571
+                  ],
+                  [
+                    339.8642857142857,
+                    510.04999999999995
+                  ],
+                  [
+                    342.85,
+                    507.06428571428575
+                  ],
+                  [
+                    348.82142857142856,
+                    504.0785714285714
+                  ],
+                  [
+                    352.82142857142856,
+                    504.0785714285714
+                  ],
+                  [
+                    352.82142857142856,
+                    615.5642857142857
+                  ],
+                  [
+                    330.08528428093643,
+                    624.6587434304826
+                  ]
+                ]
+              },
+              {
+                "joint": "tail1",
+                "polygonPx": [
+                  [
+                    262.23571428571427,
+                    641.4214285714286
+                  ],
+                  [
+                    271.1928571428571,
+                    617.5357142857143
+                  ],
+                  [
+                    290.6718317085685,
+                    584.3068753206772
+                  ],
+                  [
+                    330.08528428093643,
+                    624.6587434304826
+                  ],
+                  [
+                    293.1071428571429,
+                    639.45
+                  ],
+                  [
+                    275.1928571428571,
+                    645.4214285714286
+                  ],
+                  [
+                    262.23571428571427,
+                    645.4214285714286
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "declarationSha256": "552e43ffd70b31aa6c7f0c876f150d35ae731cc1e1a02945c8baa66d1f832bd5"
+      },
+      "controls": [
+        "exact-source replay",
+        "stale landmark",
+        "long-tail identity",
+        "amputated tail",
+        "no ear exemption"
+      ]
+    }
+  ]
+}

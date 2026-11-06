@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "CANDIDATE_FOR_SCORING",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/master.png",
+      "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/07-capuchin-review/faint-0p9.png",
+      "sha256": "6a6aa319cfd6d515007da39b26f53b35423154d4689bbda7547aa48f58078c44"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/faint-0p9.png",
+      "sha256": "4e0ad3f431d351e084f997dc0ea665c724e185be671ffac956b4473e579485d2"
+    }
+  ],
+  "findings": [
+    "D28 reassigns 1469 remainder pixels, preserving all original source/keyed RGBA. The detached hindleg strip visible in the earlier faint comparison disappears.",
+    "The limited retained pose does not independently establish that the previously native-observed neck seam is resolved throughout a film. Minor fur/limb overlaps remain.",
+    "All old source landmarks and priority contours were preserved. This is not a newly independent source reference."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false
+}

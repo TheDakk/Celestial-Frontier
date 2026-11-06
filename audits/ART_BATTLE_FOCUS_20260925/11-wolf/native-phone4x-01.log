@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"claw (foreNearPaw)","right":"bite (jaw)"},"capture":{"frames":933,"cpuP95Ms":5,"frameDeltaP95Ms":16.700000000000728}}

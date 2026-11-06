@@ -1,0 +1,69 @@
+{
+  "schema": "cf.c132-d29-delivery-batch/v1",
+  "date": "2026-10-02",
+  "newTriplets": 4,
+  "selectedPaintings": 12,
+  "mechanicalCandidateChecksPassed": 8,
+  "registrationCorrectlyRefused": 4,
+  "sourceAndInputHashesChecked": 76,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "nativeRun": false,
+  "rows": [
+    {
+      "id": "carbon",
+      "biome": "carbon",
+      "manifest": "audits/C132_ARENAS_20261001/carbon/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/carbon/d29/delivery-review.json",
+      "reviewSha256": "3e08bf41c8cb2f98df6ed3e8957ecaf5583c76c91b6b832abdbf9dea6e6d5536",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. Distinct matte graphite terrain, neutral cloudy sky and open static fighting band; no copied celestial bodies or lettering observed.",
+        "The NEAR edge introduces a coarse gray texture boundary at the bottom and cuts some larger MID rocks. Small green/mauve edge traces remain along side rock silhouettes.",
+        "FAR remains densely detailed through the lower scene, and the dark palette needs moving-creature readability review. These visual holds remain despite mechanical clearance."
+      ]
+    },
+    {
+      "id": "sulfurdeck",
+      "biome": "sulfurdeck",
+      "manifest": "audits/C132_ARENAS_20261001/sulfurdeck/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/sulfurdeck/d29/delivery-review.json",
+      "reviewSha256": "4cc5174841b2484d714e331a711f5a9fc59559676274c533e42677354949a636",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. Gold-green mineral crust and storm atmosphere produce a distinct family, with open static stands and no painted flora or celestial bodies observed.",
+        "The NEAR strip shifts toward a cooler gray-green tone and introduces a visible lower-frame boundary. MID side formations are more saturated than distant material; fine chroma remnants remain at some ridge edges.",
+        "Independent full-size scoring, combatant readability under the yellow atmosphere and native battle appearance remain untested. No visual acceptance is claimed."
+      ]
+    },
+    {
+      "id": "obsidian",
+      "biome": "obsidian",
+      "manifest": "audits/C132_ARENAS_20261001/obsidian/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/obsidian/d29/delivery-review.json",
+      "reviewSha256": "0584d551ad47493e8b50ac8adf7e6b5dc656c0e4249a791a3dc59b1aa1ab729f",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. Dark fractured glass and open fighting band are readable as a distinct volcanic material; no invented celestial bodies or lettering observed.",
+        "The sky and highlights use stronger warm golden illumination than the near-neutral diffuse system card asks for. NEAR introduces a cooler foreground color band and texture discontinuity.",
+        "Fine green edge traces remain on side glass silhouettes, and dark-body/effect readability is untested. Independent scoring and native battle proof remain pending."
+      ]
+    },
+    {
+      "id": "abyssgreen",
+      "biome": "abyssgreen",
+      "manifest": "audits/C132_ARENAS_20261001/abyssgreen/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/abyssgreen/d29/delivery-review.json",
+      "reviewSha256": "5f50d32a6bdd7b83d0d122fa0d8fe76efcca1bc6e2aebda7ed2bc11f5cc52d72",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. Dense olive atmosphere and barren mineral ground follow the greenhouse family, with open static stands and no flora/fauna or celestial bodies observed.",
+        "A brighter sky opening appears toward upper right while the template requests upper-left authoring light; layer lighting needs independent review. NEAR is browner/finer than the MID and makes a clear bottom seam.",
+        "Side ridge edges retain subtle green/mauve traces; the strongly colored atmosphere needs combatant readability review. Mechanical clearance does not supply acceptance."
+      ]
+    }
+  ],
+  "remainingOriginallyUnpaintedTriplets": 4,
+  "scope": "Four separately painted native-size triplets with no generation retries. Mechanical candidate readiness does not confer visual, habitat, native or phone admission."
+}

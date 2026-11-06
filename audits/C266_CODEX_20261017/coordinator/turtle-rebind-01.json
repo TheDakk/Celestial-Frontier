@@ -1,0 +1,20 @@
+{
+  "stage": "turtle-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-turtle-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "turtle"
+  ],
+  "startedUnix": 1792279777.995617,
+  "beforeGiB": 88.09490585327148,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 88.09489440917969,
+  "afterGiB": 88.09120178222656
+}

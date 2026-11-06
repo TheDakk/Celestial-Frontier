@@ -1,0 +1,254 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "0984a2b0e43cc3dc597fe6c4208b93646b6a4ef80ed829f6fac99d2777a98acb",
+  "declarationHash": "6623a1762ae67a428b7171be2a0c564b89b0094e1eba8029f8a51271d3198328",
+  "paintedPixels": 80331,
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 618,
+        "y": 646,
+        "width": 8,
+        "height": 8
+      },
+      "pixels": 64
+    },
+    {
+      "id": "arm0seg2",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 640,
+        "y": 200,
+        "width": 71,
+        "height": 125
+      },
+      "pixels": 1893
+    },
+    {
+      "id": "arm0seg1",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 583,
+        "y": 323,
+        "width": 119,
+        "height": 114
+      },
+      "pixels": 3943
+    },
+    {
+      "id": "arm0seg0",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 567,
+        "y": 416,
+        "width": 99,
+        "height": 150
+      },
+      "pixels": 5906
+    },
+    {
+      "id": "arm1seg2",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 942,
+        "y": 516,
+        "width": 95,
+        "height": 96
+      },
+      "pixels": 1893
+    },
+    {
+      "id": "arm1seg1",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 826,
+        "y": 533,
+        "width": 118,
+        "height": 79
+      },
+      "pixels": 3958
+    },
+    {
+      "id": "arm1seg0",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 715,
+        "y": 537,
+        "width": 114,
+        "height": 96
+      },
+      "pixels": 4666
+    },
+    {
+      "id": "arm2seg2",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 766,
+        "y": 909,
+        "width": 119,
+        "height": 77
+      },
+      "pixels": 1855
+    },
+    {
+      "id": "arm2seg1",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 743,
+        "y": 764,
+        "width": 80,
+        "height": 148
+      },
+      "pixels": 4852
+    },
+    {
+      "id": "arm2seg0",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 661,
+        "y": 680,
+        "width": 130,
+        "height": 105
+      },
+      "pixels": 4540
+    },
+    {
+      "id": "arm3seg2",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 350,
+        "y": 887,
+        "width": 35,
+        "height": 99
+      },
+      "pixels": 1178
+    },
+    {
+      "id": "arm3seg1",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 362,
+        "y": 796,
+        "width": 172,
+        "height": 94
+      },
+      "pixels": 5065
+    },
+    {
+      "id": "arm3seg0",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 496,
+        "y": 678,
+        "width": 111,
+        "height": 156
+      },
+      "pixels": 5418
+    },
+    {
+      "id": "arm4seg2",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 217,
+        "y": 458,
+        "width": 102,
+        "height": 50
+      },
+      "pixels": 1209
+    },
+    {
+      "id": "arm4seg1",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 315,
+        "y": 460,
+        "width": 82,
+        "height": 113
+      },
+      "pixels": 3075
+    },
+    {
+      "id": "arm4seg0",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 361,
+        "y": 544,
+        "width": 182,
+        "height": 96
+      },
+      "pixels": 6269
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 614,
+        "y": 559,
+        "width": 32,
+        "height": 11
+      },
+      "pixels": 202
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 321,
+        "y": 454,
+        "width": 559,
+        "height": 423
+      },
+      "pixels": 24345
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 13442,
+    "despilledPixels": 620,
+    "unresolvedEdgePixels": 24
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Coati",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/rebound/c266-19-coati-a02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c80b3ca27c9faaf865b08c204a6f949898b5fab2cf5e63efede6c31927baf035"
+}

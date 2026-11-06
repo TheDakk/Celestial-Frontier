@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Caddisfly",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/g2c81-21-caddisfly/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7cbadb7099844d1bf5e9f1070945584cc44f625baaaeac37d2694c710b224490"
+}

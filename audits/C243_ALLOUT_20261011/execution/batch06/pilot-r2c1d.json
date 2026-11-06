@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b06r2c1-15-gorilla",
+    "name": "Gorilla",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-15-gorilla",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-15-gorilla/master.png"
+  },
+  {
+    "id": "c243b06r2c1-16-monkey",
+    "name": "Monkey",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-16-monkey",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-16-monkey/master.png"
+  },
+  {
+    "id": "c243b06r2c1-17-orangutan",
+    "name": "Orangutan",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-17-orangutan",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-17-orangutan/master.png"
+  },
+  {
+    "id": "c243b06r2c1-18-spider-monkey",
+    "name": "Spider Monkey",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-18-spider-monkey",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-18-spider-monkey/master.png"
+  }
+]

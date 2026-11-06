@@ -1,0 +1,11 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 1 failed) 98ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 23ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 34 passed (35)
+   Start at  12:47:19
+   Duration  397ms (transform 110ms, setup 0ms, import 181ms, tests 98ms, environment 0ms)
+

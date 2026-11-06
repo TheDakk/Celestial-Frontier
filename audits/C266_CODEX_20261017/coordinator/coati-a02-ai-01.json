@@ -1,0 +1,21 @@
+{
+  "stage": "coati-a02-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-coati-a02-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792280346.333028,
+  "beforeGiB": 85.52142715454102,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.662,
+  "lowestGiB": 76.13414001464844,
+  "afterGiB": 85.50175476074219
+}

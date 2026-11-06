@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b06r2c2-11-gibbon",
+    "name": "Gibbon",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-11-gibbon",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-11-gibbon/master.png"
+  },
+  {
+    "id": "c243b06r2c2-12-lemur",
+    "name": "Lemur",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-12-lemur",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-12-lemur/master.png"
+  },
+  {
+    "id": "c243b06r2c2-13-mandrill",
+    "name": "Mandrill",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-13-mandrill",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-13-mandrill/master.png"
+  },
+  {
+    "id": "c243b06r2c2-14-marmoset",
+    "name": "Marmoset",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-14-marmoset",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-14-marmoset/master.png"
+  }
+]

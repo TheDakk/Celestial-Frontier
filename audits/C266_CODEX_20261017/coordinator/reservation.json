@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-17T20:16:29.267729+00:00",
+  "identity": "Codex / Darwin / ~/Projects/celestial-frontier-openai-mac / openai/mac / origin/openai/mac",
+  "startFreeGiB": 100,
+  "scope": "50 reference blocked only; four decision holds excluded",
+  "peerReadThrough": "C266",
+  "status": "ACTIVE",
+  "heavySerial": true,
+  "inferenceMinimumGiB": 42,
+  "floorGiB": 30,
+  "runtimePatchesApplied": false,
+  "allPairs": "HOLD",
+  "githubAuthorized": false
+}

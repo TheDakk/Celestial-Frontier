@@ -1,0 +1,20 @@
+{
+  "stage": "native-additional-moth",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-additional-moth",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-moth/plan.json"
+  ],
+  "startedUnix": 1792338495.9131572,
+  "beforeGiB": 72.61576461791992,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.09,
+  "lowestGiB": 72.20328521728516,
+  "afterGiB": 72.58475875854492
+}

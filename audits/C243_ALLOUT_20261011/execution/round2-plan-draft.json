@@ -1,0 +1,1154 @@
+{
+  "status": "DRAFT_REFRESH_AT_BATCH7_DELIVERY",
+  "gapSource": "audits/C243_ALLOUT_20261011/execution/gap-after-c256.json",
+  "unacceptedAtC256": 222,
+  "batchSpecies": 218,
+  "rounds": [
+    {
+      "batch": 1,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 2,
+          "name": "Coati",
+          "family": "quadruped"
+        },
+        {
+          "index": 3,
+          "name": "Porcupine",
+          "family": "quadruped"
+        },
+        {
+          "index": 4,
+          "name": "Squirrel",
+          "family": "quadruped"
+        },
+        {
+          "index": 5,
+          "name": "Mole",
+          "family": "quadruped"
+        },
+        {
+          "index": 7,
+          "name": "Water Vole",
+          "family": "quadruped"
+        },
+        {
+          "index": 9,
+          "name": "Giant Anteater",
+          "family": "quadruped"
+        },
+        {
+          "index": 10,
+          "name": "Pangolin",
+          "family": "quadruped"
+        },
+        {
+          "index": 11,
+          "name": "Echidna",
+          "family": "quadruped"
+        },
+        {
+          "index": 12,
+          "name": "Ibex",
+          "family": "quadruped"
+        },
+        {
+          "index": 13,
+          "name": "Yak",
+          "family": "quadruped"
+        },
+        {
+          "index": 14,
+          "name": "Wild Horse",
+          "family": "quadruped"
+        },
+        {
+          "index": 15,
+          "name": "Camel",
+          "family": "quadruped"
+        },
+        {
+          "index": 16,
+          "name": "Dromedary Camel",
+          "family": "quadruped"
+        },
+        {
+          "index": 17,
+          "name": "Warthog",
+          "family": "quadruped"
+        },
+        {
+          "index": 19,
+          "name": "Walrus",
+          "family": "quadruped"
+        },
+        {
+          "index": 20,
+          "name": "Seal",
+          "family": "quadruped"
+        },
+        {
+          "index": 21,
+          "name": "Fur Seal",
+          "family": "quadruped"
+        },
+        {
+          "index": 22,
+          "name": "Sea Lion",
+          "family": "quadruped"
+        },
+        {
+          "index": 24,
+          "name": "Anole",
+          "family": "quadruped"
+        },
+        {
+          "index": 25,
+          "name": "Skink",
+          "family": "quadruped"
+        },
+        {
+          "index": 26,
+          "name": "Whiptail",
+          "family": "quadruped"
+        },
+        {
+          "index": 27,
+          "name": "Frilled Lizard",
+          "family": "quadruped"
+        },
+        {
+          "index": 28,
+          "name": "Tortoise",
+          "family": "quadruped"
+        },
+        {
+          "index": 29,
+          "name": "Box Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 30,
+          "name": "Pond Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 31,
+          "name": "Snapping Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 32,
+          "name": "Softshell Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 33,
+          "name": "Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 34,
+          "name": "Sea Turtle",
+          "family": "quadruped"
+        },
+        {
+          "index": 35,
+          "name": "Olm",
+          "family": "quadruped"
+        },
+        {
+          "index": 36,
+          "name": "Blind Salamander",
+          "family": "quadruped"
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 3,
+          "name": "Blue Whale",
+          "family": "fish"
+        },
+        {
+          "index": 4,
+          "name": "Catfish",
+          "family": "fish"
+        },
+        {
+          "index": 6,
+          "name": "Dragonfish",
+          "family": "fish"
+        },
+        {
+          "index": 7,
+          "name": "Eagle Ray",
+          "family": "fish"
+        },
+        {
+          "index": 8,
+          "name": "Fangtooth",
+          "family": "fish"
+        },
+        {
+          "index": 11,
+          "name": "Gray Whale",
+          "family": "fish"
+        },
+        {
+          "index": 12,
+          "name": "Gulper Eel",
+          "family": "fish"
+        },
+        {
+          "index": 15,
+          "name": "Lancelet",
+          "family": "fish"
+        },
+        {
+          "index": 16,
+          "name": "Lionfish",
+          "family": "fish"
+        },
+        {
+          "index": 17,
+          "name": "Lungfish",
+          "family": "fish"
+        },
+        {
+          "index": 18,
+          "name": "Manatee",
+          "family": "fish"
+        },
+        {
+          "index": 19,
+          "name": "Manta Ray",
+          "family": "fish"
+        },
+        {
+          "index": 21,
+          "name": "Moray Eel",
+          "family": "fish"
+        },
+        {
+          "index": 22,
+          "name": "Narwhal",
+          "family": "fish"
+        },
+        {
+          "index": 23,
+          "name": "Oarfish",
+          "family": "fish"
+        },
+        {
+          "index": 24,
+          "name": "Pilot Whale",
+          "family": "fish"
+        },
+        {
+          "index": 25,
+          "name": "Pipefish",
+          "family": "fish"
+        },
+        {
+          "index": 26,
+          "name": "Ray",
+          "family": "fish"
+        },
+        {
+          "index": 27,
+          "name": "Seahorse",
+          "family": "fish"
+        },
+        {
+          "index": 28,
+          "name": "Stingray",
+          "family": "fish"
+        },
+        {
+          "index": 29,
+          "name": "Tripod Fish",
+          "family": "fish"
+        },
+        {
+          "index": 30,
+          "name": "Whale",
+          "family": "fish"
+        },
+        {
+          "index": 32,
+          "name": "River Dolphin",
+          "family": "fish"
+        },
+        {
+          "index": 34,
+          "name": "Ant",
+          "family": "insect"
+        }
+      ]
+    },
+    {
+      "batch": 3,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 2,
+          "name": "Butterfly",
+          "family": "insect"
+        },
+        {
+          "index": 3,
+          "name": "Cave Cricket",
+          "family": "insect"
+        },
+        {
+          "index": 4,
+          "name": "Cricket",
+          "family": "insect"
+        },
+        {
+          "index": 5,
+          "name": "Damselfly",
+          "family": "insect"
+        },
+        {
+          "index": 6,
+          "name": "Diving Beetle",
+          "family": "insect"
+        },
+        {
+          "index": 7,
+          "name": "Dobsonfly",
+          "family": "insect"
+        },
+        {
+          "index": 8,
+          "name": "Dragonfly",
+          "family": "insect"
+        },
+        {
+          "index": 9,
+          "name": "Fly",
+          "family": "insect"
+        },
+        {
+          "index": 10,
+          "name": "Giant Water Bug",
+          "family": "insect"
+        },
+        {
+          "index": 11,
+          "name": "Grasshopper",
+          "family": "insect"
+        },
+        {
+          "index": 12,
+          "name": "Honeybee",
+          "family": "insect"
+        },
+        {
+          "index": 13,
+          "name": "Leafcutter Ant",
+          "family": "insect"
+        },
+        {
+          "index": 14,
+          "name": "Mantis",
+          "family": "insect"
+        },
+        {
+          "index": 15,
+          "name": "Mayfly",
+          "family": "insect"
+        },
+        {
+          "index": 16,
+          "name": "Mosquito",
+          "family": "insect"
+        },
+        {
+          "index": 17,
+          "name": "Orchid Bee",
+          "family": "insect"
+        },
+        {
+          "index": 18,
+          "name": "Scorpionfly",
+          "family": "insect"
+        },
+        {
+          "index": 19,
+          "name": "Stick Insect",
+          "family": "insect"
+        },
+        {
+          "index": 21,
+          "name": "Water Strider",
+          "family": "insect"
+        },
+        {
+          "index": 22,
+          "name": "Bee",
+          "family": "insect"
+        },
+        {
+          "index": 24,
+          "name": "Ladybug",
+          "family": "insect"
+        },
+        {
+          "index": 26,
+          "name": "Moth",
+          "family": "insect"
+        },
+        {
+          "index": 28,
+          "name": "Thrips",
+          "family": "insect"
+        },
+        {
+          "index": 30,
+          "name": "Cassowary",
+          "family": "biped-bird"
+        },
+        {
+          "index": 31,
+          "name": "Eagle",
+          "family": "biped-bird"
+        },
+        {
+          "index": 32,
+          "name": "Godwit",
+          "family": "biped-bird"
+        },
+        {
+          "index": 33,
+          "name": "Grebe",
+          "family": "biped-bird"
+        },
+        {
+          "index": 34,
+          "name": "Guillemot",
+          "family": "biped-bird"
+        }
+      ]
+    },
+    {
+      "batch": 4,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 1,
+          "name": "Kingfisher",
+          "family": "biped-bird"
+        },
+        {
+          "index": 2,
+          "name": "Kiwi",
+          "family": "biped-bird"
+        },
+        {
+          "index": 3,
+          "name": "Ostrich",
+          "family": "biped-bird"
+        },
+        {
+          "index": 4,
+          "name": "Owl",
+          "family": "biped-bird"
+        },
+        {
+          "index": 5,
+          "name": "Peacock",
+          "family": "biped-bird"
+        },
+        {
+          "index": 6,
+          "name": "Pelican",
+          "family": "biped-bird"
+        },
+        {
+          "index": 7,
+          "name": "Pheasant",
+          "family": "biped-bird"
+        },
+        {
+          "index": 8,
+          "name": "Quetzal",
+          "family": "biped-bird"
+        },
+        {
+          "index": 9,
+          "name": "Secretary Bird",
+          "family": "biped-bird"
+        },
+        {
+          "index": 11,
+          "name": "Swift",
+          "family": "biped-bird"
+        },
+        {
+          "index": 12,
+          "name": "Tern",
+          "family": "biped-bird"
+        },
+        {
+          "index": 13,
+          "name": "Tropicbird",
+          "family": "biped-bird"
+        },
+        {
+          "index": 14,
+          "name": "Cockatoo",
+          "family": "biped-bird"
+        },
+        {
+          "index": 15,
+          "name": "Egret",
+          "family": "biped-bird"
+        },
+        {
+          "index": 16,
+          "name": "Frigatebird",
+          "family": "biped-bird"
+        },
+        {
+          "index": 17,
+          "name": "Hoatzin",
+          "family": "biped-bird"
+        },
+        {
+          "index": 18,
+          "name": "Kakapo",
+          "family": "biped-bird"
+        },
+        {
+          "index": 19,
+          "name": "Kookaburra",
+          "family": "biped-bird"
+        },
+        {
+          "index": 20,
+          "name": "Macaw",
+          "family": "biped-bird"
+        },
+        {
+          "index": 21,
+          "name": "Osprey",
+          "family": "biped-bird"
+        },
+        {
+          "index": 22,
+          "name": "Amphipod",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 23,
+          "name": "Brine Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 24,
+          "name": "Cave Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 25,
+          "name": "Copepod",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 26,
+          "name": "Fairy Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 27,
+          "name": "Freshwater Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 28,
+          "name": "Giant Isopod",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 29,
+          "name": "Isopod",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 30,
+          "name": "Krill",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 31,
+          "name": "Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 32,
+          "name": "Tadpole Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 33,
+          "name": "Vent Shrimp",
+          "family": "crustacean-small"
+        },
+        {
+          "index": 34,
+          "name": "Water Flea",
+          "family": "crustacean-small"
+        }
+      ]
+    },
+    {
+      "batch": 5,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 1,
+          "name": "Bullfrog",
+          "family": "hopper"
+        },
+        {
+          "index": 2,
+          "name": "Cave Frog",
+          "family": "hopper"
+        },
+        {
+          "index": 3,
+          "name": "Frog",
+          "family": "hopper"
+        },
+        {
+          "index": 4,
+          "name": "Glass Frog",
+          "family": "hopper"
+        },
+        {
+          "index": 5,
+          "name": "Jerboa",
+          "family": "hopper"
+        },
+        {
+          "index": 6,
+          "name": "Kangaroo",
+          "family": "hopper"
+        },
+        {
+          "index": 7,
+          "name": "Poison Dart Frog",
+          "family": "hopper"
+        },
+        {
+          "index": 8,
+          "name": "Toad",
+          "family": "hopper"
+        },
+        {
+          "index": 9,
+          "name": "Wallaby",
+          "family": "hopper"
+        },
+        {
+          "index": 10,
+          "name": "Wood Frog",
+          "family": "hopper"
+        },
+        {
+          "index": 11,
+          "name": "Snowshoe Hare",
+          "family": "hopper"
+        },
+        {
+          "index": 12,
+          "name": "Cold-Water Coral",
+          "family": "radial"
+        },
+        {
+          "index": 13,
+          "name": "Comb Jelly",
+          "family": "radial"
+        },
+        {
+          "index": 14,
+          "name": "Coral",
+          "family": "radial"
+        },
+        {
+          "index": 15,
+          "name": "Deep-Water Coral",
+          "family": "radial"
+        },
+        {
+          "index": 16,
+          "name": "Portuguese Man-of-War",
+          "family": "radial"
+        },
+        {
+          "index": 17,
+          "name": "Sand Dollar",
+          "family": "radial"
+        },
+        {
+          "index": 18,
+          "name": "Sea Anemone",
+          "family": "radial"
+        },
+        {
+          "index": 19,
+          "name": "Sea Cucumber",
+          "family": "radial"
+        },
+        {
+          "index": 20,
+          "name": "Sea Urchin",
+          "family": "radial"
+        },
+        {
+          "index": 21,
+          "name": "Cuttlefish",
+          "family": "cephalopod"
+        },
+        {
+          "index": 22,
+          "name": "Deep-Sea Octopus",
+          "family": "cephalopod"
+        },
+        {
+          "index": 23,
+          "name": "Giant Octopus",
+          "family": "cephalopod"
+        },
+        {
+          "index": 24,
+          "name": "Giant Squid",
+          "family": "cephalopod"
+        },
+        {
+          "index": 25,
+          "name": "Nautilus",
+          "family": "cephalopod"
+        },
+        {
+          "index": 26,
+          "name": "Octopus",
+          "family": "cephalopod"
+        },
+        {
+          "index": 27,
+          "name": "Squid",
+          "family": "cephalopod"
+        },
+        {
+          "index": 28,
+          "name": "Vampire Squid",
+          "family": "cephalopod"
+        },
+        {
+          "index": 29,
+          "name": "Flatworm",
+          "family": "annelid"
+        },
+        {
+          "index": 30,
+          "name": "Giant Tube Worm",
+          "family": "annelid"
+        },
+        {
+          "index": 31,
+          "name": "Ice Worm",
+          "family": "annelid"
+        },
+        {
+          "index": 32,
+          "name": "Marine Worm",
+          "family": "annelid"
+        },
+        {
+          "index": 33,
+          "name": "Polychaete Worm",
+          "family": "annelid"
+        },
+        {
+          "index": 34,
+          "name": "Scale Worm",
+          "family": "annelid"
+        }
+      ]
+    },
+    {
+      "batch": 6,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 1,
+          "name": "Tube Worm",
+          "family": "annelid"
+        },
+        {
+          "index": 2,
+          "name": "Deer Tick",
+          "family": "arachnid"
+        },
+        {
+          "index": 3,
+          "name": "Harvestman",
+          "family": "arachnid"
+        },
+        {
+          "index": 4,
+          "name": "Mite",
+          "family": "arachnid"
+        },
+        {
+          "index": 5,
+          "name": "Pseudoscorpion",
+          "family": "arachnid"
+        },
+        {
+          "index": 6,
+          "name": "Scorpion",
+          "family": "arachnid"
+        },
+        {
+          "index": 7,
+          "name": "Sea Spider",
+          "family": "arachnid"
+        },
+        {
+          "index": 8,
+          "name": "Camel Spider",
+          "family": "arachnid"
+        },
+        {
+          "index": 9,
+          "name": "Baboon",
+          "family": "primate"
+        },
+        {
+          "index": 10,
+          "name": "Chimpanzee",
+          "family": "primate"
+        },
+        {
+          "index": 11,
+          "name": "Gibbon",
+          "family": "primate"
+        },
+        {
+          "index": 12,
+          "name": "Lemur",
+          "family": "primate"
+        },
+        {
+          "index": 13,
+          "name": "Mandrill",
+          "family": "primate"
+        },
+        {
+          "index": 14,
+          "name": "Marmoset",
+          "family": "primate"
+        },
+        {
+          "index": 15,
+          "name": "Gorilla",
+          "family": "primate"
+        },
+        {
+          "index": 16,
+          "name": "Monkey",
+          "family": "primate"
+        },
+        {
+          "index": 17,
+          "name": "Orangutan",
+          "family": "primate"
+        },
+        {
+          "index": 18,
+          "name": "Spider Monkey",
+          "family": "primate"
+        },
+        {
+          "index": 19,
+          "name": "Boa",
+          "family": "serpent"
+        },
+        {
+          "index": 20,
+          "name": "Caecilian",
+          "family": "serpent"
+        },
+        {
+          "index": 21,
+          "name": "Cobra",
+          "family": "serpent"
+        },
+        {
+          "index": 22,
+          "name": "Mountain Viper",
+          "family": "serpent"
+        },
+        {
+          "index": 23,
+          "name": "Rattlesnake",
+          "family": "serpent"
+        },
+        {
+          "index": 24,
+          "name": "Snake",
+          "family": "serpent"
+        },
+        {
+          "index": 25,
+          "name": "Clam",
+          "family": "bivalve"
+        },
+        {
+          "index": 26,
+          "name": "Giant Clam",
+          "family": "bivalve"
+        },
+        {
+          "index": 27,
+          "name": "Oyster",
+          "family": "bivalve"
+        },
+        {
+          "index": 28,
+          "name": "Razor Clam",
+          "family": "bivalve"
+        },
+        {
+          "index": 29,
+          "name": "Scallop",
+          "family": "bivalve"
+        },
+        {
+          "index": 30,
+          "name": "Coconut Crab",
+          "family": "brachyuran"
+        },
+        {
+          "index": 31,
+          "name": "Fiddler Crab",
+          "family": "brachyuran"
+        },
+        {
+          "index": 32,
+          "name": "Freshwater Crab",
+          "family": "brachyuran"
+        },
+        {
+          "index": 33,
+          "name": "Mud Crab",
+          "family": "brachyuran"
+        },
+        {
+          "index": 34,
+          "name": "Vent Crab",
+          "family": "brachyuran"
+        }
+      ]
+    },
+    {
+      "batch": 7,
+      "round": 2,
+      "candidatesRequired": 3,
+      "species": [
+        {
+          "index": 1,
+          "name": "Abalone",
+          "family": "gastropod"
+        },
+        {
+          "index": 2,
+          "name": "Chiton",
+          "family": "gastropod"
+        },
+        {
+          "index": 3,
+          "name": "Conch",
+          "family": "gastropod"
+        },
+        {
+          "index": 4,
+          "name": "Land Snail",
+          "family": "gastropod"
+        },
+        {
+          "index": 5,
+          "name": "Limpet",
+          "family": "gastropod"
+        },
+        {
+          "index": 6,
+          "name": "Crayfish",
+          "family": "crustacean-clawed"
+        },
+        {
+          "index": 7,
+          "name": "Hermit Crab",
+          "family": "crustacean-clawed"
+        },
+        {
+          "index": 8,
+          "name": "Lobster",
+          "family": "crustacean-clawed"
+        },
+        {
+          "index": 9,
+          "name": "Fruit Bat",
+          "family": "flyer-membrane"
+        },
+        {
+          "index": 10,
+          "name": "Insect-Eating Bat",
+          "family": "flyer-membrane"
+        },
+        {
+          "index": 11,
+          "name": "Vampire Bat",
+          "family": "flyer-membrane"
+        },
+        {
+          "index": 12,
+          "name": "Centipede",
+          "family": "myriapod"
+        },
+        {
+          "index": 13,
+          "name": "Giant Centipede",
+          "family": "myriapod"
+        },
+        {
+          "index": 14,
+          "name": "Millipede",
+          "family": "myriapod"
+        },
+        {
+          "index": 15,
+          "name": "Pyrosome",
+          "family": "colonial-filter"
+        },
+        {
+          "index": 16,
+          "name": "Salp",
+          "family": "colonial-filter"
+        },
+        {
+          "index": 17,
+          "name": "Barnacle",
+          "family": "barnacle"
+        },
+        {
+          "index": 18,
+          "name": "Fly Larvae",
+          "family": "larva"
+        },
+        {
+          "index": 19,
+          "name": "Tardigrade",
+          "family": "lobopod"
+        },
+        {
+          "index": 20,
+          "name": "Sea Squirt",
+          "family": "sessile-filter"
+        },
+        {
+          "index": 21,
+          "name": "Horseshoe Crab",
+          "family": "xiphosuran"
+        },
+        {
+          "index": 22,
+          "name": "Bison",
+          "family": "quadruped"
+        },
+        {
+          "index": 23,
+          "name": "Buffalo",
+          "family": "quadruped"
+        },
+        {
+          "index": 24,
+          "name": "Dog",
+          "family": "quadruped"
+        },
+        {
+          "index": 25,
+          "name": "Forest Elephant",
+          "family": "quadruped"
+        },
+        {
+          "index": 26,
+          "name": "Giant Salamander",
+          "family": "quadruped"
+        },
+        {
+          "index": 27,
+          "name": "Goat",
+          "family": "quadruped"
+        },
+        {
+          "index": 28,
+          "name": "Kinkajou",
+          "family": "quadruped"
+        },
+        {
+          "index": 29,
+          "name": "Okapi",
+          "family": "quadruped"
+        },
+        {
+          "index": 30,
+          "name": "Shrew",
+          "family": "quadruped"
+        },
+        {
+          "index": 31,
+          "name": "Takin",
+          "family": "quadruped"
+        },
+        {
+          "index": 32,
+          "name": "Vole",
+          "family": "quadruped"
+        },
+        {
+          "index": 33,
+          "name": "Wall Lizard",
+          "family": "quadruped"
+        },
+        {
+          "index": 34,
+          "name": "Water Buffalo",
+          "family": "quadruped"
+        }
+      ]
+    }
+  ],
+  "noMaster": [
+    "Tree Frog",
+    "Jellyfish",
+    "Starfish",
+    "Tarantula"
+  ],
+  "rule": "Three fresh canonical candidates for every still-unaccepted species, previous refusal and reviewer HOLDs included; then class/native/finish/triage. Refresh on any newer signed reviewer registry."
+}

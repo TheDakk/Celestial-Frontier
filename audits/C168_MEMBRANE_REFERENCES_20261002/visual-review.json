@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c168-full-size-review/v1",
+  "inspectedAtNativeSize": [
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/master.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/ownership-preview-01.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/ownership-preview-01.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/joint-preview-01.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/master.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/observation-preview.png"
+  ],
+  "selectedSpreadCandidate": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours",
+  "findings": [
+    "Contour successor assigns previously body-owned patagium, distal web rim, throat and ear edges to their observed existing owners; source pixels and prior owners are preserved.",
+    "Small remainder fringes and one isolated three-pixel component remain; no automatic island transfer or visual acceptance.",
+    "Spread Bat is airborne, with no observed ground contact; static aerial checks do not establish grounded crawl, folded-wing transition or hanging.",
+    "Far attachment, exact elongated finger count, tail-bone versus inter-femoral membrane identity and heavy vein texture remain source review holds.",
+    "Standing Vampire Bat forelimb tips show multiple claws, ambiguous far folded anatomy and unequal support extents; no fit or complete authoring was fabricated."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c475-deep-water-coral-r02",
+    "parts": 21,
+    "atlasSize": {
+      "width": 1647,
+      "height": 566
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "b5f2635753f3b656fcd4c86ef809de59288272e4deec9f5045fd3f9e68984398",
+    "recordRecipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "b5f2635753f3b656fcd4c86ef809de59288272e4deec9f5045fd3f9e68984398",
+      "atlasSha256": "a9f92d9a8f9d20a02effc702d77f09a23d31747ab1084f20d10093ac35812421",
+      "parts": 21,
+      "comparedChannels": 1893416,
+      "changedChannels": 0
+    },
+    "vertices": 1289,
+    "partVertices": 2166,
+    "parts": 21,
+    "leaves": 587,
+    "triangles": 2396,
+    "ownershipEdges": 2345,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "bf1b47ad3218994d664b10807e1ab65cbc19b02dab785f5799074f23aeefcddc",
+    "sourceVertices": 1289,
+    "vertices": 1455,
+    "sharedSupports": 352,
+    "pins": 207,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 20,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0,
+    "anchoredFixedMaterial": {
+      "schema": "cf.anchored-material-fixed-surfaces/v1",
+      "sourceBindingHash": "d778fbd7f1470f18b93f2e06d49afb8bb67d002c36823c7764c3a59ed25c323c",
+      "fixedOwner": "calcified-calyx-skeleton",
+      "fixedSupports": 986,
+      "sourceCoordinateChanges": 0,
+      "topologyChanges": 0,
+      "atlasChanges": 0,
+      "policy": "Actual full fixed material and existing shared attachment supports inherit unchanged anchored root; distinct soft fields retain their source weights."
+    }
+  },
+  "recordRecipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a",
+  "bindingHash": "84e96b12b03dba4adba82cf5e8c62eb65ab94344ad258adffef0d2819634aa18",
+  "masterSha256": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

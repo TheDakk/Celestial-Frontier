@@ -1,0 +1,616 @@
+[
+  {
+    "id": "g2c76-09-swift",
+    "family": "biped-bird",
+    "name": "Swift",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c114-24-diving-beetle",
+    "family": "insect",
+    "name": "Diving Beetle",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+      "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+    ]
+  },
+  {
+    "id": "c203creaturesupplyb-04-springbok",
+    "family": "quadruped",
+    "name": "Springbok",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-09-spider-monkey",
+    "family": "primate",
+    "name": "Spider Monkey",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 23.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 19.4% of the paint lies away from the body and in no part (reference 9.6%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-10-macaque",
+    "family": "primate",
+    "name": "Macaque",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+      "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+      "missing-anatomy: part far-leg-upper (legFarKnee) covers 25% paint (reference 77%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplya-02-hyena",
+    "family": "quadruped",
+    "name": "Hyena",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c114-16-gerenuk",
+    "family": "quadruped",
+    "name": "Gerenuk",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)",
+      "missing-anatomy: part ear-far-root (earFarRoot) covers 17% paint (reference 94%)"
+    ]
+  },
+  {
+    "id": "c192creaturesupply-06-dog",
+    "family": "quadruped",
+    "name": "Dog",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c196quadrupedoriginals-19-langur",
+    "family": "primate",
+    "name": "Langur",
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0174 < 0.0271)",
+      "extra-anatomy (unassigned): a limb-down appendage of 8.1% paint that no reference appendage lands on",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+      "missing-anatomy: part far-leg-upper (legFarKnee) covers 2% paint (reference 77%)"
+    ]
+  },
+  {
+    "id": "g2c59-05-badger",
+    "family": "quadruped",
+    "name": "Badger",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+      "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "c196creaturesupply-16-dragonfly",
+    "family": "insect",
+    "name": "Dragonfly",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 6.6% paint that no reference appendage lands on",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 29% paint (reference 99%)",
+      "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 2% paint (reference 25%)",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+      "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 16% paint (reference 81%)"
+    ]
+  },
+  {
+    "id": "g2c92-24-orchid-bee",
+    "family": "insect",
+    "name": "Orchid Bee",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on",
+      "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-20-deep-sea-octopus",
+    "family": "cephalopod",
+    "name": "Deep-Sea Octopus",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on",
+      "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+      "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 14% paint (reference 51%)",
+      "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 3% paint (reference 95%)"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-19-giant-octopus",
+    "family": "cephalopod",
+    "name": "Giant Octopus",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 31.3% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+      "missing-anatomy: part final-arm0seg1 (arm0Seg1) covers 30% paint (reference 92%)"
+    ]
+  },
+  {
+    "id": "c196quadrupedoriginals-08-whiptail",
+    "family": "quadruped",
+    "name": "Whiptail",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+      "missing-anatomy: part hind-far-knee (hindFarKnee) covers 25% paint (reference 83%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+      "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 20%)",
+      "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 8.3%)"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-11-baboon",
+    "family": "primate",
+    "name": "Baboon",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c76-06-arowana",
+    "family": "fish",
+    "name": "Arowana",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 7.0% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-08-spider-monkey",
+    "family": "primate",
+    "name": "Spider Monkey",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 18.7% paint that no reference appendage lands on",
+      "unexplained-anatomy: 15.8% of the paint lies away from the body and in no part (reference 9.6%)"
+    ]
+  },
+  {
+    "id": "c192creaturesupply-16-springbok",
+    "family": "quadruped",
+    "name": "Springbok",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-08-howler-monkey",
+    "family": "primate",
+    "name": "Howler Monkey",
+    "reasons": [
+      "extra-anatomy (unassigned): a other appendage of 16.4% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c95-20-mosquito",
+    "family": "insect",
+    "name": "Mosquito",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+      "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 8% paint (reference 36%)",
+      "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+      "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 24% paint (reference 99%)",
+      "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 26% paint (reference 88%)",
+      "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)",
+      "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 11% paint (reference 31%)",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 37%)",
+      "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 11% paint (reference 77%)",
+      "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 0% paint (reference 62%)",
+      "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+      "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%)",
+      "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)",
+      "missing-anatomy: part head (head) covers 20% paint (reference 98%)"
+    ]
+  },
+  {
+    "id": "c196creaturesupply-17-damselfly",
+    "family": "insect",
+    "name": "Damselfly",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 17.0% paint that no reference appendage lands on",
+      "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+      "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 25%)",
+      "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 11% paint (reference 40%)",
+      "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 1% paint (reference 32%)",
+      "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 14% paint (reference 44%)",
+      "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 15% paint (reference 52%)",
+      "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+      "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 14% paint (reference 75%)",
+      "missing-anatomy: part head (head) covers 27% paint (reference 88%)",
+      "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 1.6%)"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-13-gerenuk",
+    "family": "quadruped",
+    "name": "Gerenuk",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c196creaturesupply-23-orchid-bee",
+    "family": "insect",
+    "name": "Orchid Bee",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 7.5% paint that no reference appendage lands on",
+      "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 0.1%)"
+    ]
+  },
+  {
+    "id": "g2c106-23-porcupine",
+    "family": "quadruped",
+    "name": "Porcupine",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 14% paint (reference 45%)",
+      "missing-anatomy: part tail1 (tail1) covers 27% paint (reference 81%)",
+      "unexplained-anatomy: 11.6% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-07-howler-monkey",
+    "family": "primate",
+    "name": "Howler Monkey",
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0122 < 0.0205)",
+      "extra-anatomy (unassigned): a rear appendage of 15.4% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c72-17-water-strider",
+    "family": "insect",
+    "name": "Water Strider",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+      "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 44%)",
+      "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 36%)",
+      "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+      "missing-anatomy: part mandible (mandible) covers 17% paint (reference 63%)",
+      "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.1%)"
+    ]
+  },
+  {
+    "id": "g2c87-17-coati",
+    "family": "quadruped",
+    "name": "Coati",
+    "reasons": [
+      "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c213creaturesupply-13-yak",
+    "family": "quadruped",
+    "name": "Yak",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-17-squid",
+    "family": "cephalopod",
+    "name": "Squid",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a front appendage of 11.1% paint that no reference appendage lands on",
+      "missing-anatomy: part eye-near (eyeNear) covers 7% paint (reference 100%)",
+      "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+      "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 68%)",
+      "missing-anatomy: part arm6-middle (arm6Seg1) covers 13% paint (reference 92%)",
+      "missing-anatomy: part mantle (mantle) covers 19% paint (reference 82%)",
+      "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+      "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 12% paint (reference 51%)",
+      "missing-anatomy: part contour-mantle (mantle) covers 10% paint (reference 73%)",
+      "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 0% paint (reference 73%)",
+      "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 0.4%)"
+    ]
+  },
+  {
+    "id": "g2c59-06-wolverine",
+    "family": "quadruped",
+    "name": "Wolverine",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+      "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "id": "g2c136repairs-23-carrion-beetle",
+    "family": "insect",
+    "name": "Carrion Beetle",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c203creaturesupplyb-24-fangtooth",
+    "family": "fish",
+    "name": "Fangtooth",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "id": "g2c95-24-cold-adapted-insect",
+    "family": "insect",
+    "name": "Cold-Adapted Insect",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)"
+    ]
+  },
+  {
+    "id": "c196framingsuccessors-08-whiptail-framing-v2",
+    "family": "quadruped",
+    "name": "Whiptail",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+      "missing-anatomy: part hind-far-knee (hindFarKnee) covers 27% paint (reference 83%)",
+      "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 20%)"
+    ]
+  },
+  {
+    "id": "g2c101-08-fangtooth",
+    "family": "fish",
+    "name": "Fangtooth",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on",
+      "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-21-goat",
+    "family": "quadruped",
+    "name": "Goat",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)",
+      "missing-anatomy: part ear-far-root (earFarRoot) covers 0% paint (reference 90%)"
+    ]
+  },
+  {
+    "id": "g2c163familyoriginals-12-lemur",
+    "family": "primate",
+    "name": "Lemur",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 33.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 22.8% of the paint lies away from the body and in no part (reference 9.6%)"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-04-coati",
+    "family": "quadruped",
+    "name": "Coati",
+    "reasons": [
+      "facing: the mirrored painting matches quadruped better (0.0140 < 0.0287)",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "family": "primate",
+    "name": "Monkey",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 17.2% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-03-squid",
+    "family": "cephalopod",
+    "name": "Squid",
+    "reasons": [
+      "wrong-family: insect matches clearly better (0.0306 < 0.0481)",
+      "extra-anatomy (unassigned): a rear appendage of 15.1% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 9.4% paint that no reference appendage lands on",
+      "missing-anatomy: part arm5-middle (arm5Seg1) covers 24% paint (reference 89%)",
+      "missing-anatomy: part arm6-middle (arm6Seg1) covers 5% paint (reference 92%)",
+      "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 81%)",
+      "missing-anatomy: part contour-arm5seg1 (arm5Seg1) covers 15% paint (reference 74%)",
+      "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 19% paint (reference 71%)",
+      "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 0.4%)"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-20-wild-horse",
+    "family": "quadruped",
+    "name": "Wild Horse",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 10.7% paint that no reference appendage lands on",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+    ]
+  },
+  {
+    "id": "c203creaturesupplyb-19-blenny",
+    "family": "fish",
+    "name": "Blenny",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 9.8% paint that no reference appendage lands on",
+      "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 3.5%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyc-14-bowfin",
+    "family": "fish",
+    "name": "Bowfin",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.2% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyc-23-fangtooth",
+    "family": "fish",
+    "name": "Fangtooth",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on",
+      "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-13-dog",
+    "family": "quadruped",
+    "name": "Dog",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c83-20-spotted-hyena",
+    "family": "quadruped",
+    "name": "Spotted Hyena",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+    ]
+  },
+  {
+    "id": "g2c121-23-water-strider",
+    "family": "insect",
+    "name": "Water Strider",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 26%)",
+      "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 8% paint (reference 34%)",
+      "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 4% paint (reference 58%)",
+      "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 14% paint (reference 69%)",
+      "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 25% paint (reference 73%)",
+      "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 81%)",
+      "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 32%)",
+      "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 35%)",
+      "missing-anatomy: part mandible (mandible) covers 14% paint (reference 63%)",
+      "missing-anatomy: part abdomen (abdomen) covers 8% paint (reference 54%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-17-giant-octopus",
+    "family": "cephalopod",
+    "name": "Giant Octopus",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 9.6% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+      "missing-anatomy: part arm0-middle (arm0Seg1) covers 13% paint (reference 66%)",
+      "missing-anatomy: part arm0-base (arm0Seg0) covers 32% paint (reference 99%)",
+      "missing-anatomy: part arm4-tip (arm4Seg2) covers 21% paint (reference 66%)",
+      "missing-anatomy: part final-arm0seg1 (arm0Seg1) covers 3% paint (reference 92%)",
+      "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 13% paint (reference 95%)",
+      "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 0.4%)"
+    ]
+  },
+  {
+    "id": "g2c90-09-bowfin",
+    "family": "fish",
+    "name": "Bowfin",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c186creaturesupply-22-giant-squid",
+    "family": "cephalopod",
+    "name": "Giant Squid",
+    "reasons": [
+      "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0525)",
+      "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+      "missing-anatomy: part arm0-tip (arm0Seg2) covers 0% paint (reference 42%)",
+      "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+      "missing-anatomy: part arm4-tip (arm4Seg2) covers 22% paint (reference 66%)",
+      "missing-anatomy: part arm6-tip (arm6Seg2) covers 12% paint (reference 68%)",
+      "missing-anatomy: part mantle (mantle) covers 24% paint (reference 82%)",
+      "missing-anatomy: part contour-arm0seg2 (arm0Seg2) covers 0% paint (reference 40%)",
+      "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+      "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 13% paint (reference 51%)",
+      "missing-anatomy: part contour-mantle (mantle) covers 19% paint (reference 73%)",
+      "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 0.4%)"
+    ]
+  },
+  {
+    "id": "g2c136repairs-24-water-strider",
+    "family": "insect",
+    "name": "Water Strider",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 11.5% paint that no reference appendage lands on",
+      "extra-anatomy (detached): 1 separate paint island(s) of \u2265 1% (reference 0)",
+      "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 44%)",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 26%)",
+      "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 0% paint (reference 34%)",
+      "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 36%)",
+      "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 9% paint (reference 58%)",
+      "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 42%)",
+      "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 7% paint (reference 88%)",
+      "missing-anatomy: part antenna-near (antennaNear) covers 11% paint (reference 35%)",
+      "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)",
+      "missing-anatomy: part abdomen (abdomen) covers 3% paint (reference 54%)"
+    ]
+  },
+  {
+    "id": "g2c106-11-knifefish",
+    "family": "fish",
+    "name": "Knifefish",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 7.1% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "g2c81-19-dragonfly",
+    "family": "insect",
+    "name": "Dragonfly",
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on",
+      "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+      "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+      "missing-anatomy: part elytron-near (thorax) covers 27% paint (reference 98%)",
+      "missing-anatomy: part elytron-far (thorax) covers 22% paint (reference 79%)",
+      "missing-anatomy: part membrane-near (wingNear) covers 23% paint (reference 89%)",
+      "missing-anatomy: part membrane-far (wingFar) covers 27% paint (reference 86%)"
+    ]
+  },
+  {
+    "id": "c192creaturesupply-22-yak",
+    "family": "quadruped",
+    "name": "Yak",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyc-21-lionfish",
+    "family": "fish",
+    "name": "Lionfish",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on",
+      "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-13-lemur",
+    "family": "primate",
+    "name": "Lemur",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 25.9% paint that no reference appendage lands on",
+      "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 9.6%)"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-11-langur",
+    "family": "primate",
+    "name": "Langur",
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 14.5% paint that no reference appendage lands on"
+    ]
+  }
+]

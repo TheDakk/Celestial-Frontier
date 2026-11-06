@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "FrigateFinish": "PASS",
+  "nativePlans": [
+    "audits/C279_CODEX_20261018/coordinator/plans/osprey-owner-r03/plan.json",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-black-fly/plan.json",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-moth/plan.json",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-caecilian-observed02/plan.json",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-dragonfish-observed02/plan.json",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-thrips/plan.json"
+  ]
+}

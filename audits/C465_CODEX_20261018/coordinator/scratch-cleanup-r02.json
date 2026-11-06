@@ -1,0 +1,21 @@
+{
+  "stage": "scratch-cleanup-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-scratch-cleanup",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/coordinator/cleanup-untracked-scratch.mjs"
+  ],
+  "startedUnix": 1792384131.331229,
+  "beforeGiB": 55.490196228027344,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 55.49018859863281,
+  "afterGiB": 55.49053192138672
+}

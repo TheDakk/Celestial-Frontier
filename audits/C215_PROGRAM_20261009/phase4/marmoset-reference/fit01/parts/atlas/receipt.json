@@ -1,0 +1,119 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c215-independent-marmoset",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "c6374b57c4cef9f016eb6d33975e3bc34894c02aab409af2e1f3a6e91feea1b9",
+    "pngSha256": "3641859d7f2ae554f3d91fd1b15ca6b52f4748d2d0d84d17f2b47c71716c303a"
+  },
+  "parts": [
+    {
+      "name": "chest.png",
+      "sha256": "ebddc6b84b4fecb6bca732e6db78eecda2a5508c792063f78f65e3fed6f613ff"
+    },
+    {
+      "name": "foot-far.png",
+      "sha256": "aa34b65cd4337829ff512138b21383404da1bcc7f729d0b07898da9edccf2bba"
+    },
+    {
+      "name": "foot-near.png",
+      "sha256": "499365ff73290c84fdf12d0ebb075c46c6c7206ec23c661d231bb18660a65c57"
+    },
+    {
+      "name": "forearm-far.png",
+      "sha256": "0bd4517c96643bb1ab379101e331de3b72f38dc5194e23762b346796e5efed1b"
+    },
+    {
+      "name": "forearm-near.png",
+      "sha256": "841b43054b80b0bd280c4ea642bc2f5b7002db178b29dd3e8cf8f23c583fbc8f"
+    },
+    {
+      "name": "hand-far.png",
+      "sha256": "7b40e5da260fc881d4e73d20f43f30b25d214ed5e0994176c9a2604af4edde30"
+    },
+    {
+      "name": "hand-near.png",
+      "sha256": "efb7c00fd3acbcf34a30694b63886089e2bd5a4b280790538ffa726ec72e2f94"
+    },
+    {
+      "name": "head.png",
+      "sha256": "d57f10440dbd8c0b121be112cf406b19efb0bf5b6f1fa747b95ba55436a8af4b"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "2430f757db2250fdc8d08308f4679fcdf568cc96d163fc159aa8d78c0347f167"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "dae5eea4fd8a98c3723cec0d0d2b0f6382736c59eeca10ddb32d8b972e0dce54"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "8c9d6eb31d509a28d2c1d53ed1065abe65362cbf676be0e47c326f4cfb80b144"
+    },
+    {
+      "name": "root.png",
+      "sha256": "feaa55c46aa93bf4eb3f68ab7f5382ca8f5261c55c9baa97c5381a31b2226fdf"
+    },
+    {
+      "name": "shin-far.png",
+      "sha256": "d9efa36739ca4e27304eadab1cf8e34b7e923fa957969ba63f8bb699b9e6d9de"
+    },
+    {
+      "name": "shin-near.png",
+      "sha256": "feee53fdac17e145c4546e4a9a070ef1e3b80378dea270978856ce3d5915497b"
+    },
+    {
+      "name": "spine.png",
+      "sha256": "9d3e32839b163e36272d1f05d0d0ba5b1536ac8f2b8be7269f0af2c9e76c8b66"
+    },
+    {
+      "name": "tail-end.png",
+      "sha256": "6d60566d3e060b912fbe5d85c544e9a0e0b26f6f93e2388b9f0ca13092635048"
+    },
+    {
+      "name": "tail-middle.png",
+      "sha256": "d4eea50200663f03ee0d8378f1706b682a6696b441f11471eb8e1d262f1ed0dd"
+    },
+    {
+      "name": "tail-root.png",
+      "sha256": "f0a4a3e12fcf59a2a1c043a97b0031cf1ef915eae6b5164d66560f2e12785def"
+    },
+    {
+      "name": "thigh-far.png",
+      "sha256": "f10a71c3ba4f5407e8e76fd6c56b63a0ee997034b57243296b9936abb5ee8348"
+    },
+    {
+      "name": "thigh-near.png",
+      "sha256": "90e3550febe3963cec9134bd9ba170bb4ae484df1e94aae1e52b9da60ecc3d05"
+    },
+    {
+      "name": "upper-arm-far.png",
+      "sha256": "9096a0cb972c9e473cd4c872ae18baa96131e3731a83aed76c485a9540205d7d"
+    },
+    {
+      "name": "upper-arm-near.png",
+      "sha256": "375b99ff954ab6f27c4644d2de6ea2f13a89d573e39fd03ac32dfc76bc9863ec"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

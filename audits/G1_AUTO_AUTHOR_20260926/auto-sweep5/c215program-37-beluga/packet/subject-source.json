@@ -1,0 +1,72 @@
+{
+  "name": "Beluga",
+  "family": "fish",
+  "species": {
+    "name": "Beluga",
+    "aspect": 3.4,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "bulging rounded melon forehead",
+      "no dorsal fin, only a low ridge along the back",
+      "uniform white body with a visible neck crease"
+    ]
+  },
+  "genome": {
+    "seed": 2086713398,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 6,
+    "body": 8,
+    "loco": 0,
+    "trait": 20,
+    "size": 4,
+    "diet": 1,
+    "head": 5,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 0,
+    "habitat": 11,
+    "detail": 1,
+    "accent": 14,
+    "temper": 8,
+    "sense": 6,
+    "repro": 7,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Beluga"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Beluga\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2086713398\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 303,
+  "profile": {
+    "id": "toothed-cetacean",
+    "names": [
+      "Beluga",
+      "Narwhal",
+      "Orca",
+      "River Dolphin",
+      "Dolphin",
+      "Porpoise",
+      "Sperm Whale",
+      "Pilot Whale",
+      "Beaked Whale"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Swimming template needs mammalian fluke axis/absence declarations; narwhal tusk remains conditional."
+  }
+}

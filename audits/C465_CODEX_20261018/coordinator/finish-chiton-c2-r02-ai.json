@@ -1,0 +1,21 @@
+{
+  "stage": "finish-chiton-c2-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-chiton-c2-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished",
+    "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/subjects.json"
+  ],
+  "startedUnix": 1792383176.889771,
+  "beforeGiB": 56.66730499267578,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.666,
+  "lowestGiB": 46.298500061035156,
+  "afterGiB": 52.65446090698242
+}

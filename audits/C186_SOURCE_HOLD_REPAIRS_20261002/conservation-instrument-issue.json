@@ -1,0 +1,6 @@
+{
+  "status": "FIRST_REPLAY_REFUSED",
+  "cause": "Initial independent replay evaluated authored pixel-space polygons directly. Intake normalizes vertices and pixel centers first; floating-point boundary ownership differed at a few exactly-on-edge pixels.",
+  "correction": "Replay now follows the exact normalized declared polygon semantics; no raster tolerance and no authored pixel or compiler change.",
+  "firstExecution": "Stopped on Zebra ownership equality; no conservation result was emitted; failure retained here."
+}

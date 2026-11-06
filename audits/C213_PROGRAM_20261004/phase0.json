@@ -1,0 +1,7 @@
+{
+  "status": "SKIPPED_NO_EXPLICIT_AUTHORITY",
+  "staticBefore": 27,
+  "staticAfter": 27,
+  "countSource": "Claude sweep2 baseline; certification skipped, source unchanged",
+  "mergedHead": "c66048c32"
+}

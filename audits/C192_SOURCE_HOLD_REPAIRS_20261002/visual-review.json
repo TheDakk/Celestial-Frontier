@@ -1,0 +1,170 @@
+{
+  "schema": "cf.c192-full-size-source-review/v1",
+  "reviewer": "OpenAI/Codex",
+  "scope": "Source-size software raster review, actual loaded-rig geometry parity and exact source observation. Not a native/GPU/finished-film, full-stage grounding, performance or quality admission.",
+  "authoringScope": "Changed landmarks/regions are directly source-observed; unchanged G1 authoring remains inherited. These are mixed-origin repairs, not independent whole-family references.",
+  "rows": [
+    {
+      "name": "Wild Ass",
+      "id": "01-wild-ass",
+      "selectedFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-02/fit",
+      "status": "CORRECTED_CANDIDATE_VISUAL_HELD",
+      "correction": "Four observed fore-far chain landmarks and contours follow the actual bent limb through its fetlock. The ankle/hoof fragment visible in the retained baseline is continuous in the successor. Two explicitly observed continuous axial boundaries close the small torso hole and mane opening.",
+      "holds": [
+        "Sharp angular limb bending remains in the raw faint pose.",
+        "Small shoulder/overlapping-leg separations remain; this is not a whole-fit visual acceptance."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-wild-ass/review-01/faint-0p9.png",
+          "sha256": "a7e0622733deffa415a83a6529dba190b3a7c20f5215752156841ac4d0fa9820",
+          "review": "full-size source-resolution inspection"
+        },
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-02/review/faint-0p9.png",
+          "sha256": "e6bcee5573c617cba3a319a094ef4e5bf7c557e7204e969e6705ddc54a2c8c43",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Serval",
+      "id": "02-serval-tail-neck",
+      "selectedFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/axial-joins-02/fit",
+      "status": "CORRECTED_CANDIDATE_VISUAL_HELD",
+      "correction": "The inherited long tail masks and controls reached down the hind leg; the actual source has a short tail at x267–362/y529–591. Four tail controls/contours and a source-observed nape region were corrected. Original hop 116.5 ms and tail 144.3111111111111 ms folds are removed on exact offline replay; two axial joins close the upper-back V gap.",
+      "holds": [
+        "A displaced triangular ear/nape patch remains behind the near ear.",
+        "Angular leg bends and small rear/overlapping-limb separations remain."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/review-01/faint-0p9.png",
+          "sha256": "0f542a198f3f65c63ed2896d79f9ac168c189e3c1cbf1afedf4365b7e11e28e8",
+          "review": "full-size source-resolution inspection"
+        },
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/axial-joins-02/review/faint-0p9.png",
+          "sha256": "fe5f71e68278394dd0b8ae3c23732b265d38156164914227c6b5e96b0e522b8a",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Horse",
+      "id": "03b-horse-pinnae",
+      "selectedFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/axial-joins-02/fit",
+      "status": "CORRECTED_CANDIDATE_VISUAL_HELD",
+      "correction": "Four fore-far chain controls/contours place the ankle at the visible fetlock instead of the cannon segment; the exact 197.8 ms faint refusal now passes. Four ear controls and contours move inherited mane points onto visible pinnae; a source-observed mane envelope and two axial joins remove the detached mane strip and torso hole.",
+      "holds": [
+        "The hind-leg bend remains sharply pinched in raw faint.",
+        "Magenta residue remains along some mane/tail edges; original narrow overlap traces are not globally welded."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/review-01/faint-0p9.png",
+          "sha256": "5ad4dcdc3134b0c4ae24445b948fa2f2266fe243550c03cda31adf74208fee91",
+          "review": "full-size source-resolution inspection"
+        },
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/axial-joins-02/review/faint-0p9.png",
+          "sha256": "d5560425d27b18bacaf285bf7939ec656c52e504aafc4f24733e197d5ec85201",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Rhea",
+      "id": "04-rhea-legs",
+      "selectedFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/islands-01/fit",
+      "status": "STRONG_ANATOMICAL_AND_VISUAL_HOLD",
+      "correction": "Six controls and six contours follow the two visible leg chains and feet. Source pixels and the established limits are unchanged. This repairs the observed leg ownership, not the inherited whole bird.",
+      "holds": [
+        "The full-size faint shows severe blocky wing/back feather tears and dangling feather pieces despite static PASS.",
+        "The inherited far-wing interpretation cannot be independently observed from this source. The current bird presence contract does not authorize declaring hidden wings absent; no hidden wing was invented."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/review-01/faint-0p9.png",
+          "sha256": "6d6f704c86bad04e1059532aee3b4e89a83a9487d4df16927c6808d28e50f4aa",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Snow Petrel",
+      "id": "05b-snow-petrel-leg",
+      "selectedFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/islands-01/fit",
+      "status": "STRONG_ANATOMICAL_AND_VISUAL_HOLD",
+      "correction": "The near folded-wing root and tip now follow the visible rounded shoulder/fold. That first candidate failed post-D28 at faint 367.8666666666667 ms with two folds; exact localization found fixed-root ownership inside the visible near leg. The successor corrects three near-leg points/contours and passes the unchanged static suite.",
+      "holds": [
+        "The full-size faint still shows a large back/far-wing opening, wing/tail crossing and separated white feather surfaces.",
+        "Inherited far-wing/back ownership is unobserved and unresolved. No whole-fit admission or successful shoulder-film claim."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/review-01/faint-0p9.png",
+          "sha256": "99be052c14a70bad7f817b6aed0b67ec9786dc3e6ee65cac4bf07b236e99482c",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Tiger Shark",
+      "id": "06-tiger-shark-v4",
+      "selectedFit": null,
+      "status": "FRESH_SOURCE_AWAITING_SCORING",
+      "correction": "One builtin ImageGen source edit introduces a visible concave subterminal notch near the distal upper caudal lobe, whose upper lobe remains longer than the lower. Native 1254 × 1254 bytes, dark vertical flank bars and requested 8% margins are retained in source observation.",
+      "holds": [
+        "The rounded/sharp notch shape and overall anatomy still need independent scoring.",
+        "The generator changed source bytes beyond the tail. This is a new painting; no existing masks or fit were rebound."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/06-tiger-shark-v4/master.png",
+          "sha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    },
+    {
+      "name": "Capuchin",
+      "id": "07-capuchin-review",
+      "selectedFit": null,
+      "status": "REVIEW_ONLY_UNRESOLVED",
+      "correction": "Ten actual-rig/offline publication parity samples review the existing C168 contour fit. No source, contours or runtime were changed. Historical neck/head anchor separation is near zero, so a blanket neck weld is not supported by the measured evidence.",
+      "holds": [
+        "The neck sampling/arm/shoulder seam attribution remains unresolved.",
+        "Raw faint shows other torso/limb/tail surface separations. Source-size raw-action ground positions are not a battle-stage grounding measurement."
+      ],
+      "images": [
+        {
+          "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/07-capuchin-review/faint-0p9.png",
+          "sha256": "6a6aa319cfd6d515007da39b26f53b35423154d4689bbda7547aa48f58078c44",
+          "review": "full-size source-resolution inspection"
+        }
+      ],
+      "qualityAccepted": false,
+      "independentReferenceEligible": false,
+      "native": false
+    }
+  ]
+}

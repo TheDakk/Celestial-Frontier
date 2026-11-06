@@ -1,0 +1,20 @@
+{
+  "stage": "finished-native-ant-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-finished-native-ant-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/ant-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792278903.685481,
+  "beforeGiB": 86.66483688354492,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.074,
+  "lowestGiB": 86.27653503417969,
+  "afterGiB": 86.62873840332031
+}

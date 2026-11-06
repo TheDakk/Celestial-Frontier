@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "hotglow",
+  "biome": "hotglow",
+  "recipe": "audits/C132_ARENAS_20261001/hotglow/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/hotglow/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "runtimeSha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.png",
+      "runtimeSha256": "530a0c1663875f59be735228bc938603596da8274be7a6949183e21b37ace0e6"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.png",
+      "runtimeSha256": "9ef3436ef78096a29eaa50519e062863cd12359fa7f2a176736da4c854f3a27f"
+    }
+  }
+}

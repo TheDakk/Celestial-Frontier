@@ -1,0 +1,613 @@
+{
+  "schema": "cf.c132-arena-lane-batch/v1",
+  "agent": "creature-supply",
+  "batch": 3,
+  "nativeCandidateCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "newOriginalTriplets": 4,
+  "targetedEditedPlates": 6,
+  "freshReplacementPlates": 2,
+  "generatedOutputs": 20,
+  "totalGeneratedBytes": 33686184,
+  "selectedNewTriplets": 3,
+  "masterAndRuntimeCandidatePasses": 6,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "generation": [
+    {
+      "id": "glass",
+      "role": "far",
+      "bytes": 2525727,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-far.png",
+        "sha256": "322408547856877f07f1d9067e1a8045fb7a9a530c424309b4ed7dd5f6660e7b"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-far.generation.json",
+        "sha256": "ff12e7b72a94f3d866e0179e5c15c493fd9969b95ca6d8ee36cd3432b664ac2d"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-far.prompt.txt",
+        "sha256": "6fdae785315dc48dafa2583c7394acc06d683facb391119d0923a36779a3a966"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glass",
+      "role": "mid",
+      "bytes": 1856080,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-mid.png",
+        "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-mid.generation.json",
+        "sha256": "c2ef203779457a5e75fc84062910ef8d1a8406bcd78ab719df4b85441fa96757"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-mid.prompt.txt",
+        "sha256": "75c9622cad525013fea12a4d0ac740cbfdd99596692f28c67ad1adeb1a2741ee"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glass",
+      "role": "near",
+      "bytes": 1199763,
+      "canvas": {
+        "width": 1983,
+        "height": 793
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-near.png",
+        "sha256": "0f057f2a9e59cf769ffbd43cce675f22d3598cace33e1ac919961321c8bb7cb4"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-near.generation.json",
+        "sha256": "3137d30e42c5af612ad1f866361ab1f0542f3f6b86fb93c365920fc66bfde419"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glass/arena-near.prompt.txt",
+        "sha256": "6ce9a3c235df3192ea7bf0f52686f4f50c55f115a92f8ca32df2d1d0146e5358"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "banded",
+      "role": "far",
+      "bytes": 2231523,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-far.png",
+        "sha256": "73585f636175feb9cc1f9b7fc37387c38c6d0def37ffcf71eb87ac6565858019"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-far.generation.json",
+        "sha256": "744bbe1825e13a2b840cc41f09ee557062a98248e38db3f64b082908d6f8172c"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-far.prompt.txt",
+        "sha256": "38f439da2b5de6546c8d74298aba69cf02c5aacb95c63c65c82053e20fc813fe"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "banded",
+      "role": "mid",
+      "bytes": 1376312,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-mid.png",
+        "sha256": "ff64aca4895c2fb4ceb50c5ad045306edba5cf43b27f235c63ca8015f12584ad"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-mid.generation.json",
+        "sha256": "0d59602b16629cd710c1d41bbeef0b27a95dd890af77b7ca1123412726ad93db"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-mid.prompt.txt",
+        "sha256": "5cb0a25c1435195b62f6eb40aef0a269931f03fcb2f7fc32d6dd9811e4c93540"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "banded",
+      "role": "near",
+      "bytes": 1038672,
+      "canvas": {
+        "width": 1983,
+        "height": 793
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-near.png",
+        "sha256": "60a75157d73549de0a1d1b432f57d38f2c35e8c92e7b690b5688ee23933188e2"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-near.generation.json",
+        "sha256": "4c64294c5bb92383f4485beda93d41e02d916164581f8510858470af992e7be4"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/banded/arena-near.prompt.txt",
+        "sha256": "b9a16fd0bcdb39a7bd2882a79ff40472959fba106c8ae2c7c4e568ca1b047e23"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ammonia",
+      "role": "far",
+      "bytes": 2029629,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.png",
+        "sha256": "2d753931ba321372ea5ae3451ae86e8fad1c3b196e81e23824f111b7ad670435"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.generation.json",
+        "sha256": "5d60bebe23eb07cfc1d3b9e3092225b183e467ef446b69598c661ace2ac586aa"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.prompt.txt",
+        "sha256": "6f93ecba4de71d26cac956facfc858a65d8289b5b533d4c625fca3c90051dbcc"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ammonia",
+      "role": "mid",
+      "bytes": 1411826,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.png",
+        "sha256": "6868916ca7d1fe2638a278b364e993673d051d793b0ddcda92affb53639bfb04"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.generation.json",
+        "sha256": "ae6cbae7ca63aa61475c21f789c7115d86cb8d59b6a49ce1dc338b00d933decc"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.prompt.txt",
+        "sha256": "5554b80da953643fba201e3224d7c28f1a56f492865b1e48315ddbbb6aae631c"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ammonia",
+      "role": "near",
+      "bytes": 1013347,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.png",
+        "sha256": "aecac2746afe7839b2c137562ba2ba7eaaa6ee9d3ce7fefaf20194505a898fed"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.generation.json",
+        "sha256": "4b48820f330139373aa059d5dd47f83f2cbe9ed0b79f3df18d39b764393cf1b9"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.prompt.txt",
+        "sha256": "cd006a24fc1ed339d9f46ac6eaad59383ce81eae3ad3c2251c7342eeeab48ed4"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "magmasea",
+      "role": "far",
+      "bytes": 2301856,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.png",
+        "sha256": "3121c0e6c38e806279a9023ffa1eb681152a9f41a0f3ebeffd7806c71612054f"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.generation.json",
+        "sha256": "0e8b09478f0c322bafe0ac284fa372ac67a228670246199cc70d747afe7bd322"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.prompt.txt",
+        "sha256": "debaecc6640072bf231fe3b834b429d37975652c1ce59f15cea62cd356618c25"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "magmasea",
+      "role": "mid",
+      "bytes": 1771030,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.png",
+        "sha256": "692c3a0fecf585d47282dac521091de8719d17c022933af14badb342613df6d5"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.generation.json",
+        "sha256": "09d0a28c0d8ed40c7be868e541ded2f2e0749aaf2754ebcffd9922709b65dd49"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.prompt.txt",
+        "sha256": "39979956d0aeba885fa8fc8dfff9f4b69d07c42444a6d0f13375967c1c3aa2d3"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "magmasea",
+      "role": "near",
+      "bytes": 1340688,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.png",
+        "sha256": "b44cb97de22a0a7867b0d6bf38c1449b671a95f581b98b4622ebc642032fcdbb"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.generation.json",
+        "sha256": "951738ea0ce36caeaf48fe11b0a9c4db10efad4bd55438c7a5fe55345a598b46"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.prompt.txt",
+        "sha256": "92dc3fe3edffdc207c55cc38d1d77767e7a501c15fb52ca885f8d6df81b1afd3"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glass-v2",
+      "role": "far",
+      "bytes": 2424314,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.png",
+        "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.generation.json",
+        "sha256": "558479b311fe516a4f3876a33547f7e90466060928d6eee718ffad4f8de1386d"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.prompt.txt",
+        "sha256": "380db829fde0e53696ab17c6a8a5ff8364cffc9c0513aae4a646f547a6efdefc"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.successor-provenance.json",
+        "sha256": "4e3a3ad3c00646b7695aa2a7bd53234226c85d2edadf1ce57101c6e9aca443f9"
+      }
+    },
+    {
+      "id": "glass-v2",
+      "role": "near",
+      "bytes": 1219095,
+      "canvas": {
+        "width": 1983,
+        "height": 793
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.png",
+        "sha256": "4dd04701cbc5071640ca6633e02a88a7b23c1a5ee30c7eb156f6b42006093da7"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.generation.json",
+        "sha256": "9147000ecf128a7e7adc30ec2e99ae5229fa120681d6c3f8f9fdf180a56b37a3"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.prompt.txt",
+        "sha256": "f0d68a779328e9e0b44b4cf4242164b92f56c60ed097df07110462096207dc54"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.successor-provenance.json",
+        "sha256": "65b4bb6ecdaff0d358a1311485b2fd4a6a8cf2efe95e3a840790b6f8f8aa9949"
+      }
+    },
+    {
+      "id": "banded-v2",
+      "role": "far",
+      "bytes": 2113703,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.png",
+        "sha256": "b8387a84c7b831ca508606adbb9cea2e031a1dec8a46974ab4b8ff5d3748f0ba"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.generation.json",
+        "sha256": "796845de6c95c95ca9a5ad3c948a212bd885cbd16c8ff7f4d875e264931cd39a"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.prompt.txt",
+        "sha256": "190ec87a3cee249fc39df9f5ccf9aa9170ea6eecbf46808cd5446fea0a0f6b3f"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.successor-provenance.json",
+        "sha256": "dc66477559340153f6cbf0c91f495a831f49ef3f30a9cbee584e0acf86180bb4"
+      }
+    },
+    {
+      "id": "banded-v2",
+      "role": "near",
+      "bytes": 1077366,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.png",
+        "sha256": "b0f1c74d42c52a2975dfbffac817f8c862475a8dc09b477971553fc98b28eca9"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.generation.json",
+        "sha256": "6b6fde0162489325f2f300fb4abea349874514a16a3dc192ce1716a7d0f0769c"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.prompt.txt",
+        "sha256": "5a2aed037815ffcfc772b5283b4cb0c4cf7375eb62da2387544c85192269208a"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.successor-provenance.json",
+        "sha256": "459ac51f5c5fa609e5e43a30c2df6ca2ad63ebaf592d2691de1c201cf9cff6a8"
+      }
+    },
+    {
+      "id": "ammonia-v2",
+      "role": "far",
+      "bytes": 1963647,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.png",
+        "sha256": "9a41d230571c21671dc209ec99afa28fee9763948900b475ce06e47d60a705a5"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.generation.json",
+        "sha256": "c32a257caf2d02dd743f7f08abaa616f4a5762cde486d29ed4b9943bffe4e3e8"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.prompt.txt",
+        "sha256": "49c01c547247478d2b04cc017eef071338f2f7af424e9017a8791fd339e33074"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.successor-provenance.json",
+        "sha256": "16cf6ff265f0913088d08036068682fbb33d455f9d3c323beb5f889fd004cefc"
+      }
+    },
+    {
+      "id": "ammonia-v2",
+      "role": "mid",
+      "bytes": 1371068,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.png",
+        "sha256": "64dc8b32fe69337c308941f9c2466ea2996a7e019dcfc249855a1b958e518e86"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.generation.json",
+        "sha256": "4c00821a85a7631a0a4ae0d2bd07894980bef374ee45e87a00c3c76de611fd58"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.prompt.txt",
+        "sha256": "45e7f9173be40783e5ade50dc2c64d242a2398670b54df9823658489889e35d2"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.successor-provenance.json",
+        "sha256": "9e16791fc1e88f5c8bd526b59dfbb315f85c3b13febbb2fe318ae77154d21618"
+      }
+    },
+    {
+      "id": "magmasea-v2",
+      "role": "far",
+      "bytes": 2225804,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+        "sha256": "259bb7d86ca0a3f761542c908f132eb45da5349558569915baa18749622b1129"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.generation.json",
+        "sha256": "f3e8eebcaad6abec9942c8af0c36519caac2191afa3411f729de932ddef51c93"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.prompt.txt",
+        "sha256": "242eda7e72d67f88a1b156686db95b209929950adef443f63ee88902ba471c91"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.successor-provenance.json",
+        "sha256": "86c9bcdb3d175a915c63d9ada87a8f0cdde46c10b25d6c756350f6646540fa47"
+      }
+    },
+    {
+      "id": "magmasea-v2",
+      "role": "near",
+      "bytes": 1194734,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.png",
+        "sha256": "87fbc7ef55d2aff2e33c4e2c53818974a00b848fbbdbc278e44322d22d798759"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.generation.json",
+        "sha256": "ce9d256037d83a2b98163a34921af4bd42443fdc156319519ead779ec5bd6523"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.prompt.txt",
+        "sha256": "6600723f17d69d1f3a6d728663aab7bae087839aa59004d49ac587993499b657"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.successor-provenance.json",
+        "sha256": "6a723a5fe92507c88a443399471c91125994d4fc072b498ef1fad878603b97c7"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "banded-v2",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery.pending.json",
+        "sha256": "f2b1a4346872a948db842a08d0ffec5aae4abdff7971b86d4b5ac4afdbd97a43"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery-review.json",
+        "sha256": "a845ecf17f61c2bc99a40857469c2c2d90589be27181b277b68a63e0cc6dd5ae"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/visual-notes.d29.json",
+        "sha256": "edc3b3eedc5a1a18a4aa54783b2c934ae2b80407f773b341169d771171bf98d3"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-composed-review.png",
+        "sha256": "35f790e931ed152b96a235ac7f75af5b3698350b4b608d07422966e0647dfbb2"
+      },
+      "findings": [
+        "Native 1672×941 composite inspected full size. The edited FAR has no visible planets or moons and retains continuous cream-tan atmospheric cloud bands.",
+        "The MID produces conspicuous thin clipped wisps and hard step-like cloud edges on both sides. A flat brighter registration band spans the middle and the NEAR forms another bright horizontal seam at the bottom. Small pink/key-colored remnants remain along some cloud contours.",
+        "The layers are cloud AIR imagery, not solid ground; proper airborne creature anchoring and physical-medium compatibility are not proven by alpha checks.",
+        "Visual acceptance, parallax continuity, moving-rig occlusion and native performance remain held. qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "ammonia-v2",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery.pending.json",
+        "sha256": "f557c6fd91de600ee865731da5d51888729f83ddc76b9e42b398982700386f87"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery-review.json",
+        "sha256": "86a3f370cb6949f3c4718812f37fe38f5e19f5e428be4407e7f226834f50d096"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/visual-notes.d29.json",
+        "sha256": "c6dd6ba6d3898e88ac9fa71a6e2645739c496212c6f8354dd3be07e64b329a7e"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-composed-review.png",
+        "sha256": "e77008ef43e4126b6a790f0d3b1d14df2e151a107ffc16ae1bd4fe1e693e3499"
+      },
+      "findings": [
+        "Native 1672×941 composite inspected full size. The edited FAR removes the celestial bodies and the solid icy spires; FAR and MID now read primarily as lavender-gray and pale-cyan cloud banks.",
+        "The MID clouds have pale cyan and pink patches along side silhouettes. The keyed edge is visibly hard against the FAR cloud depth; the NEAR creates a pronounced separate pastel band along the bottom.",
+        "Cloud plane is an authoring registration surface for AIR, not solid floor. Atmospheric softness, magenta contamination, cloud color conservation, parallax seams and moving airborne-rig placement all need review.",
+        "No visual acceptance, medium admission, runtime registration or native performance claim is made. qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "magmasea-v2",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery.pending.json",
+        "sha256": "500d120a9fc7c2da0aea3f486186a721fc1a5dba0133a14fca9665bd4d74f35a"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery-review.json",
+        "sha256": "9476e6443ade9e73294587402090120d37b117c956b81b85c397e0bb1c3eea38"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/visual-notes.d29.json",
+        "sha256": "27ed8acc756197199839e1d9c4a3c5df649d7d54d35d3b74b904b9eb14ed3e13"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-composed-review.png",
+        "sha256": "ddc9f8a07587f731381e6ddae097a19fdc23fbb84a761e637863f21b07abccf7"
+      },
+      "findings": [
+        "Native 1672×941 composite inspected full size. The sun disk is removed from FAR; the cooled dark fighting shelf remains continuous and the lower NEAR no longer covers the fighting path.",
+        "The MID repeats an orange lava horizon across the central FAR lava sea; its hard contour is visible. Green/pink key-edge remnants remain on some side rock edges.",
+        "The NEAR makes a bright warm lower seam and a distinct change of ground texture. Some orange crack-like highlights remain in the cooled floor; staging review must confirm they read as harmless surface lighting rather than hazards across the runway.",
+        "The vivid molten background and warm lighting need full-size readability and actual creature contact review. Mechanics are green, while visual acceptance, physical-medium admission, parallax and native proof remain held."
+      ]
+    }
+  ],
+  "heldFamily": {
+    "id": "glass",
+    "selectedSuccessor": "glass-v2",
+    "status": "INTAKE_REFUSED",
+    "reason": "NEAR remains native 1983×793; FAR/MID are 1672×941",
+    "refusal": {
+      "path": "audits/C132_ARENAS_20261001/glass-v2/intake-held.json",
+      "sha256": "6b59bc6180d2f47111f48070f8addf772994b44b36ff37d896a4f842e8a0f24a"
+    },
+    "visualNotes": {
+      "path": "audits/C132_ARENAS_20261001/glass-v2/visual-notes.held.json",
+      "sha256": "24702bfb5d0aa0bf38f156acf96999c0512aac0ca7b47e5e69c9c8c7c997c81a"
+    },
+    "finalizationRun": false
+  },
+  "refusedPredecessors": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glass/intake-held.json",
+      "sha256": "88e11698de8a36e17a0b255fab65e58f3ba8fbc7ec5163827a2615d625134fc7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded/intake-held.json",
+      "sha256": "ec8f1f292addd9db109438cb67fa318efab9f4046e04913d3f6332b966406340"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea/intake-held.json",
+      "sha256": "e3c33b10aa6706a346d094a3387b2e3a9eed28293ab097c404ef4fce4458b538"
+    }
+  ],
+  "visualHeldPredecessor": {
+    "path": "audits/C132_ARENAS_20261001/ammonia/visual-held.json",
+    "sha256": "79816a378bfcfd2a3d258525e5c2d62e919714749ebf4029fae22b3c3c01bf0c"
+  },
+  "scope": "Audit-only painting deliveries. Eight bounded corrections completed; no further generation this batch. No product code, registry, native run, certificate or gate changed.",
+  "remaining": [
+    "Glass requires a future native 1672×941 NEAR painting; no canvas conversion allowed",
+    "Independent full-size scoring, seam/fringe repair and moving-rig/parallax proof for every triplet",
+    "Banded and Ammonia require correct AIR physical-medium review",
+    "Dakk acceptance, Claude wiring and packaging within the unchanged budget"
+  ]
+}

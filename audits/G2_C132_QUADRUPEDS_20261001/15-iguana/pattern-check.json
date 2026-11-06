@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Iguana",
+  "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3",
+  "required": [
+    "banded tail far longer than the body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "banded tail far longer than the body",
+      "status": "PRESENT",
+      "observed": "Full original: jowled green/brown iguana, hanging dewlap, prominent continuous dorsal crest, strongly banded tail and four feet. Crest tips contain warm reddish/pink-looking edges against magenta and need despill/key review. Tail appears insufficiently long for the canonical far-longer-than-body requirement; HOLD on proportion. Far proximal limbs remain occluded. Broad margins."
+    }
+  ]
+}

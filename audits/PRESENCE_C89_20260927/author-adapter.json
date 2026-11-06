@@ -1,0 +1,23 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/24-hyrax/packet",
+  "sourceAuthoringSha256": "b45a877050e1607695ea397909f89bc3f6d05fb4fa8fb4944451b0f645cd0fd5",
+  "newAuthoringSha256": "939f334534c35c81904be9e02322ae34e61bef01666cb612889ac36ef6a3c13a",
+  "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
+  "removedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "removedParts": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "retainedPolygonsChanged": 0,
+  "retainedLandmarksChanged": 0,
+  "newHandLandmarks": false,
+  "newHandPolygons": false,
+  "reviewedPresenceOnly": true
+}

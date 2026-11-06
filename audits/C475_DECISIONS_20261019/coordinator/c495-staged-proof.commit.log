@@ -1,0 +1,14 @@
+[openai/mac 02be557223] C475: record approved six checks and resume serial queue
+ 14 files changed, 3067 insertions(+), 1 deletion(-)
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/approved-resume-session.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/approved-six-r04.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/c494-paths.txt
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/c495-message.txt
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/c495-peer-end-read.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/c495-staged-proof.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-r04.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-r04.log
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-result-r04.json
+ create mode 100644 audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/README.md
+ create mode 100644 audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/report.json
+ create mode 100644 audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/comb-source-review-r01.json

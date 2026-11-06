@@ -1,0 +1,20 @@
+{
+  "stage": "snapping-turtle-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-snapping-turtle-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "snapping-turtle"
+  ],
+  "startedUnix": 1792279856.692033,
+  "beforeGiB": 88.02078628540039,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 88.02076721191406,
+  "afterGiB": 88.01634216308594
+}

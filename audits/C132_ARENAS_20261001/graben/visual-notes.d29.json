@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "graben",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/graben/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native full-size composite inspected at 1672×941. The broad gray fault plain is continuous at the stand line, with side cliffs and an open central run-up.",
+    "The MID has a conspicuous second pale-gray fault-wall band across the center; its sharp clipped contour and cooler color differ from the atmospheric FAR. Some green/cyan or pink edge remnants remain on cliff tips and moss.",
+    "The lower NEAR grit/moss layer changes texture and color along its upper edge. The FAR bright region is stronger at upper right, so shared-light agreement needs visual review.",
+    "Mechanical candidate checks do not prove smooth parallax, creature-ground contact, silhouette clearance or visual acceptance; qualityAccepted stays false."
+  ]
+}

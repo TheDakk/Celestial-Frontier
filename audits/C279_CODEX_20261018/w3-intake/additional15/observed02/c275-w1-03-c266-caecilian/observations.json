@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c279-observed-author/v1",
+  "masterSha256": "64ea849b4589fc77713b2709d206aa411ea9e652d4fde86eea12bb0b00fe7564",
+  "subjectSha256": "b7ea7287209fb3e8284e160ffeb4f5787a1e8f31188f6bd09bf89f3ebb6f28f7",
+  "promptSha256": "5605947e66279d5749b2b40c216e3b9122abf0865fa0454d2593a0660ce8ae42",
+  "inspection": "Actual1254 original viewed; moist annular limbless trunk, blunt head and free external sensory tentacle.",
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "autoAuthorReused": false,
+  "notes": [
+    "Root/segment/closed-jaw anchors locate actual continuous painted body tissue; no new limb/eye/mouth surface was invented.",
+    "The source sensory tentacle stays continuous head-owned tissue; no unsupported antenna joint or label transfer.",
+    "Ten trunk strips are an authoring convention for this actual x-monotone painted trunk, not a width-ratio exemption."
+  ],
+  "nativeAcceptance": false
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fruit Bat",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bd4cb0a581b7fae2d754c16a1478dc917817411e0fea37418999355d7d1c0d9a"
+}

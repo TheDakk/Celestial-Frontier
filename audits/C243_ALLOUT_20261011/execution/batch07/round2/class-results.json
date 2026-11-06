@@ -1,0 +1,63 @@
+[
+  {
+    "id": "c243b07r2c3-03-conch",
+    "name": "Conch",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/fit",
+    "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/score.json",
+    "exitCode": 0,
+    "origin": "round2-new-original",
+    "originalStatic": "PASS_STATIC",
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-03-conch/fit"
+  },
+  {
+    "id": "c243b07r2c2-25-forest-elephant",
+    "name": "Forest Elephant",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/fit",
+    "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/score.json",
+    "exitCode": 0,
+    "origin": "round2-new-original",
+    "originalStatic": "PASS_STATIC",
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c2-25-forest-elephant/fit"
+  },
+  {
+    "id": "c243b07r2c3-26-giant-salamander",
+    "name": "Giant Salamander",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/fit",
+    "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/score.json",
+    "exitCode": 0,
+    "origin": "round2-new-original",
+    "originalStatic": "PASS_STATIC",
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-26-giant-salamander/fit"
+  },
+  {
+    "id": "c243b07r2c3-31-takin",
+    "name": "Takin",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/fit",
+    "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/score.json",
+    "exitCode": 0,
+    "origin": "round2-new-original",
+    "originalStatic": "PASS_STATIC",
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-31-takin/fit"
+  },
+  {
+    "id": "c243b07r2c2-33-wall-lizard",
+    "name": "Wall Lizard",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/fit",
+    "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/score.json",
+    "exitCode": 0,
+    "origin": "round2-new-original",
+    "originalStatic": "PASS_STATIC",
+    "staticExitCode": 1,
+    "static": "RED",
+    "selection": "Changed repair RED held; distinct new unfilmed original green selected once",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/fit"
+  }
+]

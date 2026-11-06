@@ -1,0 +1,16 @@
+{
+ "id": "09-alligator-lizard",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "reviewedPresence": {
+  "absent": [
+   "external-ears"
+  ],
+  "removedParts": []
+ },
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

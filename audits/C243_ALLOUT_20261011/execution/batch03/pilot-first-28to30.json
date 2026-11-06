@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c1-28-thrips",
+    "name": "Thrips",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-28-thrips",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-28-thrips/master.png"
+  },
+  {
+    "id": "c243b03r1c1-29-water-beetle",
+    "name": "Water Beetle",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-29-water-beetle",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-29-water-beetle/master.png"
+  },
+  {
+    "id": "c243b03r1c1-30-cassowary",
+    "name": "Cassowary",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-30-cassowary",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-30-cassowary/master.png"
+  }
+]

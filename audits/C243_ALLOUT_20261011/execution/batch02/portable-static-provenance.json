@@ -1,0 +1,79 @@
+[
+  {
+    "id": "c243b02r1c1-01-anglerfish",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g01to03/c243b02r1c1-01-anglerfish/static.json",
+    "measuredSha256": "b2848ed0da3272e800028e155e466818b6ead525c67eb44cf12c2ecb137c4025",
+    "portableSha256": "c7dd3d3c0aa22ee33072b3a52ae2f99d96e7682b728e92b632300608b58ed69f",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c1-05-deep-sea-fish",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g04to06/c243b02r1c1-05-deep-sea-fish/static.json",
+    "measuredSha256": "9b9547b3ec69324ebce0d6780b7afb1ec0f881cd7277d08a9c46d1d0a40af4eb",
+    "portableSha256": "e34d804136d88e05c83f59f1c50f9087ee927c7b7e5560b179b446dbbe0f4934",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c1-09-flying-fish",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g07to09/c243b02r1c1-09-flying-fish/static.json",
+    "measuredSha256": "79c465422de7af81557677ed97f84eab637182606ca013340be5ffd415c96b43",
+    "portableSha256": "7f294a10b9f096a79860bf2b141713c2360493203bece4392cba1a72f28033e6",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c1-20-marlin",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g19to21/c243b02r1c1-20-marlin/static.json",
+    "measuredSha256": "5ac944b0cb23272c3169a35f5d2d60d50777c19d3909fdb17194ef7f7da84cbe",
+    "portableSha256": "8338ed9236be1b28f953406fe44a30edca2a8fac32f26cbfe577872b1a0b4558",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c2-02-beaked-whale",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g02to04/c243b02r1c2-02-beaked-whale/static.json",
+    "measuredSha256": "f9437a941b5a390819ce02cc26874ee3687f3ea4fa2b92ebcf3d764350037fca",
+    "portableSha256": "51583c5a021d3f9f615dbee2cc7ec32c97b47ee38b1fab50cb2d4b540908a739",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c2-10-flying-gurnard",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g10to12/c243b02r1c2-10-flying-gurnard/static.json",
+    "measuredSha256": "ccbfc67106279e8f85a1108869c487de6b5890c053e4138b95fe4a28f8e5e8bd",
+    "portableSha256": "ea666fdd78327853c6e6209c8482738f56da079ee4cb16b052bc031af2d0b34a",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c2-14-lamprey",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g13to15/c243b02r1c2-14-lamprey/static.json",
+    "measuredSha256": "47e8185ff9a22846d6f6e576c4ef9d63090d44f1039f65317566951729c2d61d",
+    "portableSha256": "1ddca44554afe13c699aa283e5b3da4a34f7636192cdb7a7a07a4dcebbc29b64",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c3-13-humpback-whale",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g12to15/c243b02r1c3-13-humpback-whale/static.json",
+    "measuredSha256": "ee25097fbc2c092693ec689ba27b20a32ca5dff33f8a3b50c3db9e021f9ebca1",
+    "portableSha256": "553c0429c8debeb298140bf445a0ef45a6316b3179908aecab4cc59011ea164d",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c3-16-lionfish",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g16to18/c243b02r1c3-16-lionfish/static.json",
+    "measuredSha256": "37eacfc6ef26e417c8f4553835f9d964ef24c8c3361b11674e1aeeaa9ae35817",
+    "portableSha256": "07022d743ef3594833d1bf649752e11e5c4a6fc4dfecd3f32dff79ff08d59655",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c3-25-pipefish",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g23to25/c243b02r1c3-25-pipefish/static.json",
+    "measuredSha256": "be432975ef1f8d857d9b561b4bea0263540709e372519cbc5856393dccca713d",
+    "portableSha256": "b1770d8b6827698f485985251121296f913729dfe7b19017bce1e7ed841302c5",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  },
+  {
+    "id": "c243b02r1c1-33-wahoo",
+    "staticReport": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1s33/c243b02r1c1-33-wahoo/static.json",
+    "measuredSha256": "795553d6d8e04e160ded0733a1f3f30ab503cf078cc23efb2539ff08dbaf039e",
+    "portableSha256": "d97d34aec95889fbc0cc88419233f056ba0625e83df4ca466447fdc743a13a1d",
+    "normalization": "Home prefix to ~/ only; restoring the local home prefix reproduces the guarded route measured hash; no measurement value changed."
+  }
+]

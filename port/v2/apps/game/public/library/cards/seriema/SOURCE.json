@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Seriema",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/10-seriema/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8f83b14e9941aac8146de6e83f88efcfdbed6de30b7c4929dec7269397913a3c"
+}

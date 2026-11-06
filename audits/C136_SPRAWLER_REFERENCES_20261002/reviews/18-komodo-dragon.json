@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Komodo Dragon",
+  "family": "quadruped",
+  "masterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+  "subjectSha256": "a8fdbf942a0833c5cc2aed7a7d8890b5f6dac8e171350340bcfc9c924f9e4f7f",
+  "promptSha256": "c24bede77a1b9f5f386586b88242cd554e3ee22910c4db7ce966ce46e553e216",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: heavy scaled monitor-like body, loose throat/neck folds, long forked pale-yellow tongue, muscular tapering tail and four visible clawed feet. Far upper limbs partly occluded; body support is elevated and requires grounded rig inspection. Tail/body ratio is approximately half total but not measured. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/18-komodo-dragon/visual-review.json",
+    "sha256": "b84aabc6e67026cec45a90eb0ebde27675d9a159b2ba81f4ef888c6cb0dfbfc1"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

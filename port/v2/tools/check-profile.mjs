@@ -20,15 +20,23 @@ const DEVELOP_COMMANDS = Object.freeze([
   command('npm', 'run', 'overridecheck'),
   command('node', 'tools/speccheck.mjs'),
 ]);
+/* D55 (Dakk 2026-11-04): the per-creature battery over EVERY delivered archetype, per delivery batch and inside production. */
+const LIBRARY_COMMANDS = Object.freeze([
+  command('node', 'tools/library-battery.mjs', '--part=sweep'),
+  command('node', 'tools/library-battery.mjs', '--part=arena'),
+  command('node', 'tools/library-battery.mjs', '--part=matchup'),
+]);
 const PRODUCTION_COMMANDS = Object.freeze([
   ...DEVELOP_COMMANDS,
   command('npm', 'run', 'overridecontrol'),
+  ...LIBRARY_COMMANDS,
 ]);
 
 export const CHECK_PROFILE_COMMANDS = Object.freeze({
   dev: DEV_COMMANDS,
   develop: DEVELOP_COMMANDS,
   production: PRODUCTION_COMMANDS,
+  library: LIBRARY_COMMANDS,
 });
 
 export function checkProfileCommands(profile) {
@@ -100,10 +108,10 @@ export function runCheckProfile(
 function main() {
   const args = process.argv.slice(2);
   const profile = args.length === 1
-    ? /^--profile=(dev|develop|production)$/.exec(args[0])?.[1]
+    ? /^--profile=(dev|develop|production|library)$/.exec(args[0])?.[1]
     : undefined;
   if (!profile) {
-    throw new Error('usage: node tools/check-profile.mjs --profile=dev|develop|production');
+    throw new Error('usage: node tools/check-profile.mjs --profile=dev|develop|production|library');
   }
   runCheckProfile(profile);
   console.log(`\nCHECK PROFILE: PASS (${profile})`);

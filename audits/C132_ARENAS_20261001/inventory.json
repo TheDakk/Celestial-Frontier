@@ -1,0 +1,1074 @@
+{
+  "schema": "cf.c132-arena-program/v1",
+  "canonicalFamilyCount": 43,
+  "habitatVariants": 2,
+  "firstDelivery": [
+    "freshwater-lake",
+    "coral",
+    "dunesea",
+    "tundra",
+    "jungle",
+    "savanna",
+    "marsh",
+    "karst-cave"
+  ],
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "compiler": {
+    "path": "audits/C132_ARENAS_20261001/compile.mjs",
+    "sha256": "07ca6d6d9a3d073fd49df2c90fd12ecf9353aa4539fccbd208b3a651bd02fa73"
+  },
+  "templates": [
+    {
+      "id": "temperate",
+      "name": "Temperate woodland",
+      "profileKey": "temperate",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/temperate/arena-far.prompt.txt",
+          "sha256": "5f538e4e84b73bccebe048c66af311f9e9b612f88c008569528ef24646b8c3de"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/temperate/arena-mid.prompt.txt",
+          "sha256": "273c42f37444e9997a765bef86a430d7fe973d34d35c35afc22763154f7bf337"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/temperate/arena-near.prompt.txt",
+          "sha256": "31e1f885ba09b8ffe7084c1f9b5988e74b9f00df6ace8e81872178d71d9fbe86"
+        }
+      ]
+    },
+    {
+      "id": "savanna",
+      "name": "Golden savanna",
+      "profileKey": "savanna",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/savanna/arena-far.prompt.txt",
+          "sha256": "42d4a5625e9eb0175d176a5518828f67f162446030106fa540fc627f26e68fc9"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/savanna/arena-mid.prompt.txt",
+          "sha256": "3096bff14adea35a92f2504d7d557f17834af97306d73804517f8b8307423134"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/savanna/arena-near.prompt.txt",
+          "sha256": "6c2d378dae2f6364cedb7267348f022ace2a11ab21627f5dcdf953adfab3787b"
+        }
+      ]
+    },
+    {
+      "id": "jungle",
+      "name": "Rainforest clearing",
+      "profileKey": "jungle",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/jungle/arena-far.prompt.txt",
+          "sha256": "71414a9083d4729022e435057faef6c98748b333437beb0df01157206ec1894f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/jungle/arena-mid.prompt.txt",
+          "sha256": "c27e5868cb8f414632dc11033e941566477c430be0bb4f6218f66078d12c34b5"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/jungle/arena-near.prompt.txt",
+          "sha256": "31a2ef0cc510a3708bd02e7704c77cb546d91be14aa42959b318965969ec15bd"
+        }
+      ]
+    },
+    {
+      "id": "marsh",
+      "name": "Reed marsh",
+      "profileKey": "marsh",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/marsh/arena-far.prompt.txt",
+          "sha256": "09e958aabd96e8d2c438f777a72291458ab3b98258b2ac89b8adfc6bb75bbefe"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.prompt.txt",
+          "sha256": "4dc939a19f3bda62553ec6c4abbcf19b269d5e6c24a41abbfaa1f5d8924c06cd"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/marsh/arena-near.prompt.txt",
+          "sha256": "07249961fa9f7a3db266cf484227c829e5d247fdc5f4758962679aeb8eee339f"
+        }
+      ]
+    },
+    {
+      "id": "swamp",
+      "name": "Blackwater swamp",
+      "profileKey": "swamp",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/swamp/arena-far.prompt.txt",
+          "sha256": "c99208c3bc0c7b791a034fde10b6916f9c216d5c7ef999a459ba9270647d718e"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/swamp/arena-mid.prompt.txt",
+          "sha256": "30934b1f5f1b48ce1374de497b91b00876dc3667e456a2e4b98acb13c558a6da"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/swamp/arena-near.prompt.txt",
+          "sha256": "513cb354e8d7f89e6f5d13cb213dc56eb68d34580d85dc2bb3b0ae184b6d6663"
+        }
+      ]
+    },
+    {
+      "id": "mangrove",
+      "name": "Mangrove shore",
+      "profileKey": "mangrove",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.prompt.txt",
+          "sha256": "dd56e66c4c4991c6edf0b756303741d401317b3b2f56f212f097e222c7c8c13c"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.prompt.txt",
+          "sha256": "75dafe575131eb0b91251c71d40baa10b18fbbe2b5490f6f6df60b2d51504263"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.prompt.txt",
+          "sha256": "82760c7030b255d5569031d6dc6b61172fbccdb6d7d96d8e617a3c4629b7ae44"
+        }
+      ]
+    },
+    {
+      "id": "tundra",
+      "name": "Snow-dusted tundra",
+      "profileKey": "tundra",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/tundra/arena-far.prompt.txt",
+          "sha256": "578001a58550e4cc126e922e63e2a5d59398e614ea0ef41c2c5a9f1a3fc91515"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.prompt.txt",
+          "sha256": "1dafbd695b870dd5bcc30ff7b002247d81cec6bcd6a36dc3f5d2db628e5e2934"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/tundra/arena-near.prompt.txt",
+          "sha256": "7d7550681c53552dfab9d196de11cf4338fcc7eb7054200ebf4b0b32e64c769c"
+        }
+      ]
+    },
+    {
+      "id": "karst",
+      "name": "Limestone karst",
+      "profileKey": "karst",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/karst/arena-far.prompt.txt",
+          "sha256": "ddbe0d72a3c7b4645e79d06d031dc29f299b56cbd9cbccada3f6b580af03421b"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/karst/arena-mid.prompt.txt",
+          "sha256": "70fb09c7d4cfb15d34894fcd09854ffc2287ad5915cb02743bac12295f46830c"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/karst/arena-near.prompt.txt",
+          "sha256": "c3f1901254d93189c4bb5f578cd863c96f8ea0c70f4a587ffe60b14a73cab523"
+        }
+      ]
+    },
+    {
+      "id": "saltflat",
+      "name": "White salt flat",
+      "profileKey": "saltflat",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.prompt.txt",
+          "sha256": "d9e74f6b6cfd2dfafe4acf6f0314d5aa17f0741fd2926187f11879d8bb108b81"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.prompt.txt",
+          "sha256": "afdf9d835b1da0d47e7b43acc2e19c4934424f28bd21421cca257039160ed253"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.prompt.txt",
+          "sha256": "5ce07eb235466a39c8970952320eda87c4586a39ccf6e1e0209256a81e6b5179"
+        }
+      ]
+    },
+    {
+      "id": "fungal",
+      "name": "Fungal grove",
+      "profileKey": "fungal",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/fungal/arena-far.prompt.txt",
+          "sha256": "14e2941185ca987c958d0b96283d538d7e8cee2270f60f748fe961128e3e798d"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/fungal/arena-mid.prompt.txt",
+          "sha256": "9eb7efaef76807fdc89ee909fc504e8c6f8c22d1bfef2f08506f46f51b1b3ab4"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/fungal/arena-near.prompt.txt",
+          "sha256": "2461023202b2d0ff732df7c63e62ad80d16aa7f5cbc8d0119284954a551ef67d"
+        }
+      ]
+    },
+    {
+      "id": "crystalsteppe",
+      "name": "Crystal steppe",
+      "profileKey": "crystalsteppe",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-far.prompt.txt",
+          "sha256": "994b5946289e9bf9e5bbda14bd44b4271e3a806b6e910ee0e5009d1153599d5f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-mid.prompt.txt",
+          "sha256": "338f0450dc6ebbd1110cced6ca7df57f87cd9273098eaf6e64ae04237d1380c0"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-near.prompt.txt",
+          "sha256": "d4992eacdbdd5529ebce306c2bc47851456f64636a30df516311ec5570ce0c44"
+        }
+      ]
+    },
+    {
+      "id": "opensea",
+      "name": "Open ocean shelf",
+      "profileKey": "opensea",
+      "habitatVariant": null,
+      "medium": "water",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/opensea/arena-far.prompt.txt",
+          "sha256": "5d098d53fff3d9ec84016c9f769f71e2772281c3f181ec0ece992add120f543d"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/opensea/arena-mid.prompt.txt",
+          "sha256": "317d1cab20539a60047d4ccadf56e34d9b08b41f588e07f7c57ffd6bec115eee"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/opensea/arena-near.prompt.txt",
+          "sha256": "f16c7bebc991e96c71ebaea95da8b2b5560269de7f47de2ec39d7c75d7cd09a6"
+        }
+      ]
+    },
+    {
+      "id": "archipelago",
+      "name": "Island shore",
+      "profileKey": "archipelago",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/archipelago/arena-far.prompt.txt",
+          "sha256": "c17d9cd67b1cbf5f0676e9ce6f64095b95b8e593b283bbc2689ff11785b8899f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/archipelago/arena-mid.prompt.txt",
+          "sha256": "cc23087bb759fbe1bfab04bdd0a27ee25d06ab0df88d8a35931bfdf678ae3403"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/archipelago/arena-near.prompt.txt",
+          "sha256": "ea2375344eeed820e55b4a7e1ec8b423ec8f737dfe23a9c4dcfaed2b981df1f5"
+        }
+      ]
+    },
+    {
+      "id": "coral",
+      "name": "Turquoise coral reef",
+      "profileKey": "coral",
+      "habitatVariant": null,
+      "medium": "water",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/coral/arena-far.prompt.txt",
+          "sha256": "dc3ba0a4b111a7aeff67f2f7db47b7f5d22194527912071ea0a37602b81c7220"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/coral/arena-mid.prompt.txt",
+          "sha256": "5f543f8789b58d6d5ec9a7a664a833d986f1657af833a63fea537c6603efffdc"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/coral/arena-near.prompt.txt",
+          "sha256": "bd3264f09bcb1773aafbffd88acddcbe553d352f6f1d222c6acb3509de657712"
+        }
+      ]
+    },
+    {
+      "id": "stormsea",
+      "name": "Storm sea shelf",
+      "profileKey": "stormsea",
+      "habitatVariant": null,
+      "medium": "water",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.prompt.txt",
+          "sha256": "484f8fa948c3652c7b2dcd07f5f743e87e0fb002bc3ad206cdea09dc6b0cdbb0"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/stormsea/arena-mid.prompt.txt",
+          "sha256": "4b23a8553228acc81e42fa04055a9e54ecfe11ed134cc225d3670495669046a9"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.prompt.txt",
+          "sha256": "94f6febfbe787d6681b89291ca229c3b2a2ecb029a13d708b9a579ce0c477797"
+        }
+      ]
+    },
+    {
+      "id": "volcisle",
+      "name": "Volcanic island shore",
+      "profileKey": "volcisle",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.prompt.txt",
+          "sha256": "ad70073ad97d1b258206057876b7ec5eec509673013182ea3b95bec38fe1edbd"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/volcisle/arena-mid.prompt.txt",
+          "sha256": "32a3e77b7468150841b485ddd3572a481bd775eeed6473e58377478112e082da"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/volcisle/arena-near.prompt.txt",
+          "sha256": "d0356117922f11c54c3f1bea780eb5914f0f3fc91f1d2d833b43d8399c6fac68"
+        }
+      ]
+    },
+    {
+      "id": "abyssal",
+      "name": "Abyssal plain",
+      "profileKey": "abyssal",
+      "habitatVariant": null,
+      "medium": "water",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.prompt.txt",
+          "sha256": "e6c79427bce79812932ce5d0aa00b8faa04c1064ad55021954aad8fc2564c7da"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.prompt.txt",
+          "sha256": "8a03ac60a12262ce7e9ec59c94525471de02d513e4049e11482a98fd607aff88"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.prompt.txt",
+          "sha256": "316a200dd0b7afd3e2f387eb4b0bff9fb0a5603ba142295bbda29380314a0c60"
+        }
+      ]
+    },
+    {
+      "id": "milksea",
+      "name": "Luminous milk sea",
+      "profileKey": "milksea",
+      "habitatVariant": null,
+      "medium": "water",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/milksea/arena-far.prompt.txt",
+          "sha256": "9bb5dfd04789149e949070f7123219edb24ef21b20ae494905a962c75992dbc8"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/milksea/arena-mid.prompt.txt",
+          "sha256": "9162e8e240c43d8fb4aaed6d1611a4948cb51c7e141d50312f4fc651d04c508b"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/milksea/arena-near.prompt.txt",
+          "sha256": "ea55551040e748fa914aa3f21e88fb01ff9a6012d3db9af3c9dfb528b049e6e4"
+        }
+      ]
+    },
+    {
+      "id": "glacier",
+      "name": "Glacial plain",
+      "profileKey": "glacier",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/glacier/arena-far.prompt.txt",
+          "sha256": "59cd9e643ad78f17981ed0b03bed574245a1fd576d8f4353d5bf136d0791361d"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.prompt.txt",
+          "sha256": "f71349737585f69bdaabd1e312f8cb55e828ad9295baab54c04130b0217972bf"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/glacier/arena-near.prompt.txt",
+          "sha256": "72fe2a5c42bf61f66b2600ecd15d2617769e25892472de50680b3d5ea097ab00"
+        }
+      ]
+    },
+    {
+      "id": "packice",
+      "name": "Pack ice floe",
+      "profileKey": "packice",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/packice/arena-far.prompt.txt",
+          "sha256": "2455db42d416190417e0e15b88678838d40c78df261851b8de478475feec2747"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/packice/arena-mid.prompt.txt",
+          "sha256": "bc671496e57ff897c08777223f6840713296b93b455adbf5a7c481910bb2742f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/packice/arena-near.prompt.txt",
+          "sha256": "a34c18a5afc8883e5d1205a15c6af635c31a482305bc31ee4f9e6128e8ec44ce"
+        }
+      ]
+    },
+    {
+      "id": "cryogeyser",
+      "name": "Cryogeyser terrace",
+      "profileKey": "cryogeyser",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.prompt.txt",
+          "sha256": "a48e4819285030f26a4c3b11bcc993dbc73d334b1f70b2891deb74dd9f60d5b8"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.prompt.txt",
+          "sha256": "d5a549af62a2c1015d3d62e06d27a6335a6f1a2e97fcdcf0d00b89148c595b7a"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.prompt.txt",
+          "sha256": "ba7b150a4a0ff0fea72fe890b847184ba901ad5565fc299cac6604e911abb09b"
+        }
+      ]
+    },
+    {
+      "id": "blueice",
+      "name": "Blue ice field",
+      "profileKey": "blueice",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/blueice/arena-far.prompt.txt",
+          "sha256": "1eabcdf250a5bb9d731ee55a5d5eb8f23b303a436b5108d78d9a3ab736b2a40e"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/blueice/arena-mid.prompt.txt",
+          "sha256": "692f3e57f8e169c0ce85ca646742cd862c2903cda99dc996cab85ba5b0306a9d"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/blueice/arena-near.prompt.txt",
+          "sha256": "df87c345cd420e6d704f20cd9da9b92592574ee8da61c3d3ab712ae9c2ac54a6"
+        }
+      ]
+    },
+    {
+      "id": "dunesea",
+      "name": "Desert dune basin",
+      "profileKey": "dunesea",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.prompt.txt",
+          "sha256": "12d98453e31625da116102a5d3c781e8db1779a2b9b92f5ead6e7da9e962c69f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.prompt.txt",
+          "sha256": "a191f784c44a3d09c06447120d237e2c7b36dddd27e0faf986cfdad8f67ad351"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.prompt.txt",
+          "sha256": "bb255b84dfb84238ec1c45c41d3deeb2d3dd6d61069f440b285a415d52957258"
+        }
+      ]
+    },
+    {
+      "id": "canyon",
+      "name": "Red-rock canyon",
+      "profileKey": "canyon",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/canyon/arena-far.prompt.txt",
+          "sha256": "848c3d706c57d03858815eda2e2a9a06a8257e730a2657616e82c36b20a1f322"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/canyon/arena-mid.prompt.txt",
+          "sha256": "b760a4ba88beaca30f7ec1563266fb5a00652942418ad781c9991c2b5e5332b6"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/canyon/arena-near.prompt.txt",
+          "sha256": "6d6fd80663eb1d0b27be22b4675f0ca493ddeae4ebe11c118d2b83ef3a6916c4"
+        }
+      ]
+    },
+    {
+      "id": "saltpan",
+      "name": "Desert salt pan",
+      "profileKey": "saltpan",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/saltpan/arena-far.prompt.txt",
+          "sha256": "1f241d7e5b97990148d2cfc34fe5e82629c22face2442cef9b03175af5b9db2a"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/saltpan/arena-mid.prompt.txt",
+          "sha256": "4a9c878866f979aec4633d8b8adf3421c9910e0bd8c9950f8da0c7def4976aef"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/saltpan/arena-near.prompt.txt",
+          "sha256": "0e6f5daa4232e0120d7e98d943f71b4ccb6fd02f243d4ffb82e776ab8a387ebc"
+        }
+      ]
+    },
+    {
+      "id": "oxide",
+      "name": "Rust oxide plain",
+      "profileKey": "oxide",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/oxide/arena-far.prompt.txt",
+          "sha256": "b48bd6f670e36de940e6baea6968d200a16b027c119ff33259a33a9d7455bf4d"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/oxide/arena-mid.prompt.txt",
+          "sha256": "292939539248597e4939c95ac03093c81cb660fc35590436c0d43d8176b1eb3e"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/oxide/arena-near.prompt.txt",
+          "sha256": "9d325452e0a7d1d1517b0fa61c771667b90a149bf67305f9916b722eb6dd26af"
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "Glass desert",
+      "profileKey": "glass",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/glass/arena-far.prompt.txt",
+          "sha256": "6fdae785315dc48dafa2583c7394acc06d683facb391119d0923a36779a3a966"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/glass/arena-mid.prompt.txt",
+          "sha256": "75c9622cad525013fea12a4d0ac740cbfdd99596692f28c67ad1adeb1a2741ee"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/glass/arena-near.prompt.txt",
+          "sha256": "6ce9a3c235df3192ea7bf0f52686f4f50c55f115a92f8ca32df2d1d0146e5358"
+        }
+      ]
+    },
+    {
+      "id": "cratered",
+      "name": "Cratered airless basin",
+      "profileKey": "cratered",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/cratered/arena-far.prompt.txt",
+          "sha256": "a65d96f88d3aefdcecc7a049df40be0729f6d3f667abb6193e796de687295de6"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/cratered/arena-mid.prompt.txt",
+          "sha256": "0538e73dfeb1719364b54247c5d587ad1e25e434bfbbce6a35ca91d29a31ad98"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/cratered/arena-near.prompt.txt",
+          "sha256": "a8c810a4dbdf3e634af901be0e5e147c4f0d969a8f4913821e8de90edf3b22c8"
+        }
+      ]
+    },
+    {
+      "id": "boulder",
+      "name": "Boulder field clearing",
+      "profileKey": "boulder",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/boulder/arena-far.prompt.txt",
+          "sha256": "9eb716b25699def447704162bec67524ec2e9e79f1501106833ef0a2da95d70b"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/boulder/arena-mid.prompt.txt",
+          "sha256": "710cc060835f3700b179eb8adbb85c5bf6a0757d9e1664eda5b6a69e00435e8a"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/boulder/arena-near.prompt.txt",
+          "sha256": "e43cff514d155c131f75b553f41ad7f8e7b4e3dcbc1233c2f4e22704b4614ecd"
+        }
+      ]
+    },
+    {
+      "id": "graben",
+      "name": "Graben canyon floor",
+      "profileKey": "graben",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/graben/arena-far.prompt.txt",
+          "sha256": "dfe6fd8dbb777c661547ddeaa2522ad39ed348c2a8cbfc64cadf7789b072a25b"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/graben/arena-mid.prompt.txt",
+          "sha256": "99698dbe5c70e865b944b23a4c44c76dd04949ca68414b623c90227ff7522cff"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/graben/arena-near.prompt.txt",
+          "sha256": "533eec1f6911e27b4a3c57d0d28a9bc80df882f7413a9719a355a6e9bffc42e6"
+        }
+      ]
+    },
+    {
+      "id": "geode",
+      "name": "Geode chamber",
+      "profileKey": "geode",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/geode/arena-far.prompt.txt",
+          "sha256": "358f88a21d7e5ddc90e4ae5cbc4a1808db5ffc0c1d34bb6bd88c778234f7ece9"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/geode/arena-mid.prompt.txt",
+          "sha256": "3849649e37bff22aafecb868b6acc84d574e00dd4424ef6a972a2c662bc38c13"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/geode/arena-near.prompt.txt",
+          "sha256": "01cb44f1dd91d704d9cf139bfd32c99d0340f6940d4687fbfcca77ab8df72ecf"
+        }
+      ]
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon plain",
+      "profileKey": "carbon",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/carbon/arena-far.prompt.txt",
+          "sha256": "1ba2edd197edc6f591af58da1df2ca7effbf39f99bfe3494cb93545cdc028f89"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/carbon/arena-mid.prompt.txt",
+          "sha256": "f420f4003d1ccc17989821cb434d4129a06b9034c04bd29dd54e87d952241def"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/carbon/arena-near.prompt.txt",
+          "sha256": "ee0e1c1902b6fcd1a528905c08ff6902c16d17e5fa0893d94ac7f686d93b6fbf"
+        }
+      ]
+    },
+    {
+      "id": "sulfurdeck",
+      "name": "Sulfur terrace",
+      "profileKey": "sulfurdeck",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.prompt.txt",
+          "sha256": "c8361236632f21f7a3b8d8b30025c899aea6192222fa9b17e944c61391afd5a6"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.prompt.txt",
+          "sha256": "5d6e000a7fe1a1e56bf3d5755b3ff8769a76bdcf35fc74ddd9e978d57076ba58"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.prompt.txt",
+          "sha256": "d4068a3e9b6251d83466fadd6df2ec7ea571ef85e05bcb01f4053a398b8d7aa1"
+        }
+      ]
+    },
+    {
+      "id": "acidhaze",
+      "name": "Acid-haze shelf",
+      "profileKey": "acidhaze",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/acidhaze/arena-far.prompt.txt",
+          "sha256": "ba67b33741881a3b3e30dc5e466e6d520d2d8bc95503002c0a070b26aa9b2a02"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.prompt.txt",
+          "sha256": "8099dafc19116c77bbf472cfa7ef711b31cbc59393687452772a4c2a4b815ffb"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near.prompt.txt",
+          "sha256": "f1fa0d67dab37b7bbf2a53570bed1b39744ec06ddab22d7165a4c641cb0d06c7"
+        }
+      ]
+    },
+    {
+      "id": "abyssgreen",
+      "name": "Greenhouse basin",
+      "profileKey": "abyssgreen",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.prompt.txt",
+          "sha256": "5aa28457b53f0d4ca1240d4ecaf8e2ab48b8aa21cf8767b3775091d8cd5fdb2f"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.prompt.txt",
+          "sha256": "16d54adb355f27b0424b93ed51b888d7d211ed82c0f6edafd1f6189c6e8bcef2"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.prompt.txt",
+          "sha256": "abb1922cce865b3b88aee505c7f87d0ed4dda15183c594c1e5f7bbce6615434c"
+        }
+      ]
+    },
+    {
+      "id": "ashwaste",
+      "name": "Ash plain",
+      "profileKey": "ashwaste",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/ashwaste/arena-far.prompt.txt",
+          "sha256": "735708e583854dfe4d1500be1c38fa6af6be398d46dfe5a9c754b4895bcf0e58"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.prompt.txt",
+          "sha256": "a3b9a764f182abef88f9aa56860c025748481a54ddab3927a5e441b4312be0fc"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/ashwaste/arena-near.prompt.txt",
+          "sha256": "67ca2803aec47ee4df3bf3821befc8c6d99c0d6e84081cdb86a0e2864a54ec31"
+        }
+      ]
+    },
+    {
+      "id": "emberfield",
+      "name": "Ember plain",
+      "profileKey": "emberfield",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.prompt.txt",
+          "sha256": "751fd9dbbf4431a65b5f2de58e44b1fdba28704be549c293c7c7e0abfe2a2afe"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/emberfield/arena-mid.prompt.txt",
+          "sha256": "87d44394841474a7998e0bf4a6dd43d23d4695ed71bb13ef6db191a99a7ef494"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/emberfield/arena-near.prompt.txt",
+          "sha256": "861624ec1541d8e050c2381a836765219abc6b69f0800ecb8d557944bd8bc725"
+        }
+      ]
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian field",
+      "profileKey": "obsidian",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.prompt.txt",
+          "sha256": "d57e2db620eeade8b8860bc09228af83f861a8b8c2c28b8ff6daa8ffcc30599b"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.prompt.txt",
+          "sha256": "4857635e7741438affca8978cf9792b63d6d133c6aa3feae81a23c20e11b4071"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.prompt.txt",
+          "sha256": "1081da0ed4c4f1fe66c2f6d0eacd61c92a2ebe30f0d1ef14a2691284cd82b89e"
+        }
+      ]
+    },
+    {
+      "id": "magmasea",
+      "name": "Magma sea shelf",
+      "profileKey": "magmasea",
+      "habitatVariant": null,
+      "medium": "ground",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.prompt.txt",
+          "sha256": "debaecc6640072bf231fe3b834b429d37975652c1ce59f15cea62cd356618c25"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.prompt.txt",
+          "sha256": "39979956d0aeba885fa8fc8dfff9f4b69d07c42444a6d0f13375967c1c3aa2d3"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.prompt.txt",
+          "sha256": "92dc3fe3edffdc207c55cc38d1d77767e7a501c15fb52ca885f8d6df81b1afd3"
+        }
+      ]
+    },
+    {
+      "id": "banded",
+      "name": "Banded cloud deck",
+      "profileKey": "banded",
+      "habitatVariant": null,
+      "medium": "air",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/banded/arena-far.prompt.txt",
+          "sha256": "38f439da2b5de6546c8d74298aba69cf02c5aacb95c63c65c82053e20fc813fe"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/banded/arena-mid.prompt.txt",
+          "sha256": "5cb0a25c1435195b62f6eb40aef0a269931f03fcb2f7fc32d6dd9811e4c93540"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/banded/arena-near.prompt.txt",
+          "sha256": "b9a16fd0bcdb39a7bd2882a79ff40472959fba106c8ae2c7c4e568ca1b047e23"
+        }
+      ]
+    },
+    {
+      "id": "ammonia",
+      "name": "Ammonia cloud deck",
+      "profileKey": "ammonia",
+      "habitatVariant": null,
+      "medium": "air",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.prompt.txt",
+          "sha256": "6f93ecba4de71d26cac956facfc858a65d8289b5b533d4c625fca3c90051dbcc"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.prompt.txt",
+          "sha256": "5554b80da953643fba201e3224d7c28f1a56f492865b1e48315ddbbb6aae631c"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.prompt.txt",
+          "sha256": "cd006a24fc1ed339d9f46ac6eaad59383ce81eae3ad3c2251c7342eeeab48ed4"
+        }
+      ]
+    },
+    {
+      "id": "stormeye",
+      "name": "Storm-eye cloud deck",
+      "profileKey": "stormeye",
+      "habitatVariant": null,
+      "medium": "air",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.prompt.txt",
+          "sha256": "91e4acf79e7a8c5a184715c15705f53caf5605c37b7db89b7132e785cac0ee67"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/stormeye/arena-mid.prompt.txt",
+          "sha256": "5a22b3539692cafa97983f2d0f23fccb52f8445e2a4df7d845e5b954ff23e400"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/stormeye/arena-near.prompt.txt",
+          "sha256": "27559ec6efc6e785c1cb3c9edc0a37167e62142b5dd83916b1c7f22f56f7587b"
+        }
+      ]
+    },
+    {
+      "id": "hotglow",
+      "name": "Ember cloud deck",
+      "profileKey": "hotglow",
+      "habitatVariant": null,
+      "medium": "air",
+      "firstDelivery": false,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.prompt.txt",
+          "sha256": "ec2ba09e710610bbeed064caee32c19a6292ff317972ce5600e229db36a6960c"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.prompt.txt",
+          "sha256": "20cefaa051eb0a3e3c2ac7b8ee409588fdae699a2e2acd45938f03327d7028b4"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.prompt.txt",
+          "sha256": "e818de6b60ffdfb89fd7d0108c78f6b271951ab8d7e88247ae6f59cbf681975a"
+        }
+      ]
+    },
+    {
+      "id": "freshwater-lake",
+      "name": "Freshwater lakebed",
+      "profileKey": "temperate",
+      "habitatVariant": "Freshwater / Temperate Lake",
+      "medium": "water",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-far.prompt.txt",
+          "sha256": "03ef273d667d68b2ae7c738a18a3b4f2f8a1bd595909643765fa97d5d340fd96"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-mid.prompt.txt",
+          "sha256": "e35e98a4c9b8239f9b18ac41e8954e30fc80ce1ec3c56b14c7e271beeab9ac56"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near.prompt.txt",
+          "sha256": "3b16a914cfdfe0c094a9345ab8c62f679391159094bc1a558732b415ab77a35c"
+        }
+      ]
+    },
+    {
+      "id": "karst-cave",
+      "name": "Limestone cave",
+      "profileKey": "karst",
+      "habitatVariant": "Cave / Limestone Cave",
+      "medium": "ground",
+      "firstDelivery": true,
+      "status": "PROMPTS_READY",
+      "prompts": [
+        {
+          "path": "audits/C132_ARENAS_20261001/karst-cave/arena-far.prompt.txt",
+          "sha256": "cdeafb0f9929e152cc369077945267d9839c5c7f33a250c5865f6e50212ed029"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.prompt.txt",
+          "sha256": "9de8d1481b710a391753e2ae83fb2c4dcdf52411b1bcc9e30f4daaadebf6b8d0"
+        },
+        {
+          "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near.prompt.txt",
+          "sha256": "b6c993e7e7c75c65b196630c31538e3445eceda3669076804c70b75be0e1ae1b"
+        }
+      ]
+    }
+  ]
+}

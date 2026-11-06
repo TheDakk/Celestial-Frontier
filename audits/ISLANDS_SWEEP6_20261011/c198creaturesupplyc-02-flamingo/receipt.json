@@ -1,0 +1,425 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c198creaturesupplyc-02-flamingo/fit",
+  "sourceMasterSha256": "1a8827a4e64120ad280b8ffb1123b68b858669fbe777db08318258d8f07692e4",
+  "keyedRgbaSha256": "088c5b126d90c901d47c72750b59e1ef9d6c6fbf15ea775b1edfc7611a34830b",
+  "remainder": "spine",
+  "remainderPixels": 20259,
+  "movedPixels": 11835,
+  "islands": [
+    {
+      "pixels": 95,
+      "to": "head",
+      "border": {
+        "head": 51
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "head": 2
+      }
+    },
+    {
+      "pixels": 695,
+      "to": "head",
+      "border": {
+        "beak": 42,
+        "head": 62
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "head",
+      "border": {
+        "head": 8,
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 4
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 20
+      }
+    },
+    {
+      "pixels": 614,
+      "to": "beak",
+      "border": {
+        "beak": 65,
+        "head": 13
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 6927,
+      "to": "chest",
+      "border": {
+        "neck-lower": 45,
+        "far-wing-tip": 5,
+        "far-wing-root": 137,
+        "near-wing-root": 193,
+        "pelvis": 38,
+        "chest": 221
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 5
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 3
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 3
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "neck-upper",
+      "border": {
+        "neck-upper": 7,
+        "neck-lower": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-root",
+      "border": {
+        "near-wing-root": 2,
+        "pelvis": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "pelvis",
+      "border": {
+        "near-wing-root": 1,
+        "pelvis": 3
+      }
+    },
+    {
+      "pixels": 181,
+      "to": "tail",
+      "border": {
+        "tail": 60,
+        "pelvis": 6
+      }
+    },
+    {
+      "pixels": 421,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 140,
+        "chest": 6
+      }
+    },
+    {
+      "pixels": 1709,
+      "to": "pelvis",
+      "border": {
+        "tail": 105,
+        "pelvis": 106
+      }
+    },
+    {
+      "pixels": 297,
+      "to": "near-wing-tip",
+      "border": {
+        "thigh-far": 29,
+        "near-wing-tip": 55
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-tip",
+      "border": {
+        "near-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 35,
+      "to": "tail",
+      "border": {
+        "tail": 10
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "tail",
+      "border": {
+        "tail": 5
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "tail",
+      "border": {
+        "tail": 3
+      }
+    },
+    {
+      "pixels": 104,
+      "to": "thigh-far",
+      "border": {
+        "thigh-far": 42
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "thigh-far",
+      "border": {
+        "thigh-far": 11
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "shin-near",
+      "border": {
+        "shin-near": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "thigh-far",
+      "border": {
+        "thigh-far": 3
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "shin-near",
+      "border": {
+        "shin-near": 10
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "thigh-far",
+      "border": {
+        "thigh-far": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "thigh-far",
+      "border": {
+        "thigh-far": 2
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "shin-far",
+      "border": {
+        "shin-far": 5,
+        "thigh-far": 3
+      }
+    },
+    {
+      "pixels": 73,
+      "to": "shin-far",
+      "border": {
+        "shin-far": 10
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "foot-near",
+      "border": {
+        "foot-near": 2,
+        "shin-near": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "foot-near",
+      "border": {
+        "foot-near": 2
+      }
+    },
+    {
+      "pixels": 436,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 85,
+        "shin-far": 17
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "foot-near",
+      "border": {
+        "foot-near": 6
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 9
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 2
+      }
+    },
+    {
+      "pixels": 91,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 22
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c198creaturesupplyc-02-flamingo",
+    "parts": 19,
+    "atlasSize": {
+      "width": 735,
+      "height": 1013
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "shin-far",
+        "vertex": 74,
+        "distancePx": 5.894064811316645,
+        "supports": [
+          547
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "shin-near",
+        "vertex": 87,
+        "distancePx": 8.113722943260983,
+        "supports": [
+          289,
+          287
+        ]
+      }
+    ],
+    "sourceBindingHash": "76138438e9322ae529dd682548789e0c291c480c0322be18c775827db2321769",
+    "sourceVertices": 1038,
+    "vertices": 1249,
+    "sharedSupports": 234,
+    "pins": 409,
+    "independentSurfaceParts": 19,
+    "sourceJoins": 14,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

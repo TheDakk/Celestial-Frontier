@@ -1,0 +1,88 @@
+{
+  "scope": "Explicit compact tame:2 declaration; unchanged existing subdivision/body arithmetic and numeric limits. Test additions follow in the same owned test file.",
+  "files": [
+    {
+      "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "beforeSha256": "4031bd79f82af72c90de74552540e68a4ee71a14039a86483e6f8a6c79184673",
+      "afterSha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae",
+      "edits": [
+        {
+          "before": "travelSubsteps:{hit:2,dodge:2}",
+          "after": "travelSubsteps:{hit:2,dodge:2,tame:2}"
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "beforeSha256": "16d66bf1bb75954f202745f33afeed985ce290320e7fdf375a399ba823598343",
+      "afterSha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1",
+      "edits": [
+        {
+          "before": "Record<'hit'|'dodge',2>",
+          "after": "Record<'hit'|'dodge'|'tame',2>"
+        }
+      ]
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "beforeSha256": "a8dc92d1ced5978a6bea52f4a8f0ef88bab441b3f28248823f26b4bcba4ddca7",
+      "afterSha256": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+      "edits": [
+        {
+          "before": "// Reaction cadence is an explicit compact-model choice, not a reach-based\n // adjustment. Only the two declared source-step reactions may subdivide.",
+          "after": "// Step cadence is an explicit compact-model choice, not a reach-based\n // adjustment. Only declared hit, dodge and tame source-step actions subdivide."
+        },
+        {
+          "before": "(id!=='hit'&&id!=='dodge')",
+          "after": "(id!=='hit'&&id!=='dodge'&&id!=='tame')"
+        },
+        {
+          "before": "(phase.actionId==='hit'||phase.actionId==='dodge')",
+          "after": "(phase.actionId==='hit'||phase.actionId==='dodge'||phase.actionId==='tame')"
+        }
+      ]
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-travel-substeps.test.ts",
+      "beforeSha256": "391c19c84a4c5fa453299943c149066e4f6b57900a3db4eb0331c221116b7a88",
+      "afterSha256": "9e4e2146b343d364166d19715caacd0a67a90c3d298b012f0c1382e5723f2288",
+      "edits": [
+        {
+          "before": "it('retains exact root arithmetic at source waypoints, substep midpoints and endpoints in both reactions'",
+          "after": "it('retains exact root arithmetic at source waypoints, substep midpoints and endpoints in all declared actions'"
+        },
+        {
+          "before": "for(const id of['hit','dodge']){const{card,timeline}=at(r,id,0)",
+          "after": "for(const id of['hit','dodge','tame']){const{card,timeline}=at(r,id,0)"
+        },
+        {
+          "before": "toEqual({hit:2,dodge:2});",
+          "after": "toEqual({hit:2,dodge:2,tame:2});"
+        },
+        {
+          "before": "[['tame',100],['tame',400],['hit',450],['dodge',280]]",
+          "after": "[['alert',50],['tame',400],['tame',640],['hit',450],['dodge',280]]"
+        },
+        {
+          "before": "for(const id of['hit','dodge']){const s=at(r,id,50)",
+          "after": "for(const id of['hit','dodge','tame']){const s=at(r,id,50)"
+        },
+        {
+          "before": "{hit:'2'},{tame:2},{other:2}",
+          "after": "{hit:'2'},{feed:2},{other:2}"
+        }
+      ]
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+      "beforeSha256": "c113e516fbb7bfbd9193c7bcc60b4dbd5a744d112aa09c898b6bbf95854e0f63",
+      "afterSha256": "53783ccf5b1e955e7528f35184895146edde9b074813fd23c4d4f7421c10adb2",
+      "edits": [
+        {
+          "before": "expect(removedCadence).toEqual({hit:2,dodge:2});",
+          "after": "expect(removedCadence).toEqual({hit:2,dodge:2,tame:2});"
+        }
+      ]
+    }
+  ]
+}

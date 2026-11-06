@@ -1,0 +1,55 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c198creaturesupplyb-11-langur/fit",
+  "sourceBindingSha256": "7f4cbcc833ff361256cfe6796ebb244b85e18303d497f4500191b0695d543cf4",
+  "candidateBindingSha256": "67e1fe0ef07f4c988c4bedbaf3c55681d99ca4a9f511558455357e9f5a01b3e5",
+  "paintBoundaryPairs": [
+    [
+      "arm-far-elbow",
+      "arm-near-elbow"
+    ],
+    [
+      "arm-far-elbow",
+      "body"
+    ],
+    [
+      "arm-far-elbow",
+      "neck"
+    ],
+    [
+      "arm-near-elbow",
+      "body"
+    ],
+    [
+      "arm-near-elbow",
+      "neck"
+    ],
+    [
+      "body",
+      "chest"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "body",
+      "jaw"
+    ],
+    [
+      "body",
+      "neck"
+    ],
+    [
+      "body",
+      "tail1"
+    ],
+    [
+      "body",
+      "tail2"
+    ]
+  ],
+  "sourceMasterSha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd",
+  "sourceAtlasSha256": "f4fd452e17015552b7e151bfe9bc2fd43b5d78548c22e5c0d868b819a5d19757",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

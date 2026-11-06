@@ -1,0 +1,150 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c110-17-caribou",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d50180c7f247c38da4f7d88bb04265a621416b6ef58971354239afaa8d7b75ee",
+ "subjectSourceSha256": "288038c032007bdbb74de5fdd76cd928ede640bb5162acf1d8ee44e8d294b9fe",
+ "identity": {
+  "name": "Caribou",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caribou\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"630921880\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 630921880,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c204-qualified-short-tail-reindeer",
+  "authoringSha256": "63b3097ab0ea1776156afc64073e064d04a96cace379ae01a08634749243a399",
+  "masterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2638,
+     "class": "top",
+     "attach": {
+      "x": 282.2,
+      "y": 191.3,
+      "relX": 0.96,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0055,
+     "class": "top",
+     "attach": {
+      "x": 228.5,
+      "y": 180,
+      "relX": 0.64,
+      "relY": 0
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.017,
+     "class": "top",
+     "attach": {
+      "x": 123,
+      "y": 204.5,
+      "relX": -0.01,
+      "relY": 0.4
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0594,
+     "class": "limb-down",
+     "attach": {
+      "x": 131.9,
+      "y": 240.1,
+      "relX": 0.05,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.007,
+     "class": "limb-down",
+     "attach": {
+      "x": 264,
+      "y": 240,
+      "relX": 0.85,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0505,
+     "class": "limb-down",
+     "attach": {
+      "x": 159.5,
+      "y": 241,
+      "relX": 0.22,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0998,
+     "class": "limb-down",
+     "attach": {
+      "x": 231.5,
+      "y": 242,
+      "relX": 0.66,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "c204-qualified-short-tail-reindeer",
+   "byClass": {
+    "top": 3,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 3,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreFar+foreNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

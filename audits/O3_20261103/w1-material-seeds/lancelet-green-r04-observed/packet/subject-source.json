@@ -1,0 +1,66 @@
+{
+  "name": "Lancelet",
+  "family": "fish",
+  "species": {
+    "name": "Lancelet",
+    "aspect": 7,
+    "headFrac": 0.1,
+    "eyes": "hidden",
+    "posture": "swimming",
+    "mustRead": [
+      "translucent blade-shaped body pointed at both ends",
+      "rows of V-shaped muscle chevrons visible through the skin",
+      "fringe of oral tentacles where a head would be"
+    ],
+    "note": "Has no head, no jaws and no eyes - just a stiffening notochord line running end to end."
+  },
+  "genome": {
+    "seed": 235195156,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 10,
+    "body": 11,
+    "loco": 15,
+    "trait": 23,
+    "size": 5,
+    "diet": 3,
+    "head": 3,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 5,
+    "detail": 6,
+    "accent": 0,
+    "temper": 9,
+    "sense": 7,
+    "repro": 7,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Lancelet"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lancelet\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"235195156\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 623,
+  "profile": {
+    "id": "jawless-fish",
+    "names": [
+      "Lamprey",
+      "Lancelet"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No articulated biting jaw invented."
+  }
+}

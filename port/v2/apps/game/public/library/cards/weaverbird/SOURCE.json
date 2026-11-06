@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Weaverbird",
+ "fitDir": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1f14d80a70ff376f0703c4a8f51ebe70d18660316a12f4352b2279b8b19718a4"
+}

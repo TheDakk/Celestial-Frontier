@@ -1,0 +1,85 @@
+{
+ "c192creaturesupply-15-pronghorn": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c192creaturesupply-15-pronghorn/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c192creaturesupply-16-springbok": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c192creaturesupply-16-springbok/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c196creaturesupply-06-llama": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c196creaturesupply-06-llama/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c198creaturesupplya-01-red-fox": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c198creaturesupplya-01-red-fox/fallback-1/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c202creaturesupply-12-wolverine": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-12-wolverine/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c203creaturesupply-12-alpaca": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-12-alpaca/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c203creaturesupplyb-04-springbok": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupplyb-04-springbok/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c107-16-chamois": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c107-16-chamois/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c72-12-egret": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c72-12-egret/fit",
+  "islands": "PLACED",
+  "static": "RED"
+ },
+ "g2c76-19-alpaca": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c76-19-alpaca/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c213originals-06-hyena": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-06-hyena/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c213originals-27-gull": {
+  "tag": "sweep3",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-27-gull/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

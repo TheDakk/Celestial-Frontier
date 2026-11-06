@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Banteng",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196p/16-banteng/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ce9e216879754d19cca5f086dff40cde4995e014c7a86506857e9e15a7b746bb"
+}

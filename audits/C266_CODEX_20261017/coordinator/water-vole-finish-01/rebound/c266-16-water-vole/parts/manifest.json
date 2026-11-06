@@ -1,0 +1,135 @@
+{
+  "creatureId": "c266-16-water-vole",
+  "parts": [
+    {
+      "name": "ear-near-tip.png",
+      "path": "parts/ear-near-tip.png",
+      "sha256": "55c8b32a2b7b549be0bf356c6d7c14da1b41e6d0f4e38fa17c75cb9c863c360c"
+    },
+    {
+      "name": "ear-near-root.png",
+      "path": "parts/ear-near-root.png",
+      "sha256": "d026ab9d62bc279a81a32c76c19c2345cf6272068910dd4f648a8f614f46bef2"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "bdc0c1f494e335fe7428b3586a21f69a6d405f615cdee7d1c859085643091bba"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "e1522b74cd4408659126af177034c998d8a56773048049eed533c0d18302fbe9"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "b8861d9f317b56c16291337096708929b9c7a983a25998b8c56cfbb0b6bbd477"
+    },
+    {
+      "name": "tail-tip.png",
+      "path": "parts/tail-tip.png",
+      "sha256": "1b7edca65af1ea5fc317eff2600b1766f328ff1b26dc3a43b0d6f40788ecf0c0"
+    },
+    {
+      "name": "tail-distal.png",
+      "path": "parts/tail-distal.png",
+      "sha256": "d729b4a7b80b22cd82c48d086b0e1162fb2df22feb8b76972691794f4002d4f8"
+    },
+    {
+      "name": "tail-middle.png",
+      "path": "parts/tail-middle.png",
+      "sha256": "cd4ad467abfaa02679db1312a8d1848199a695f1c682232405143843be831ebe"
+    },
+    {
+      "name": "tail-base.png",
+      "path": "parts/tail-base.png",
+      "sha256": "2e068fc87b39754b2a57c12187c146bb1f9884eb5b196c5e5842d6f877dd2bb5"
+    },
+    {
+      "name": "fore-near-paw.png",
+      "path": "parts/fore-near-paw.png",
+      "sha256": "5d0311bf9389581aef521bbce10e669af6f0fd8afb8b794553eda2eac4f6de33"
+    },
+    {
+      "name": "fore-near-ankle.png",
+      "path": "parts/fore-near-ankle.png",
+      "sha256": "271947a12e97dc216e77e057ed49c11374f8a9c4ff8f8c3459b1088ea800a27b"
+    },
+    {
+      "name": "fore-near-knee.png",
+      "path": "parts/fore-near-knee.png",
+      "sha256": "caaf35e08abdc8e020bf1d95f96323bfdd7d29e2cb2b2f7656496abbfba1f276"
+    },
+    {
+      "name": "fore-near-root.png",
+      "path": "parts/fore-near-root.png",
+      "sha256": "d8c75f1be42a85451e057ede95dabfea840dbb91d368c5efffb5aaa77167723a"
+    },
+    {
+      "name": "hind-near-paw.png",
+      "path": "parts/hind-near-paw.png",
+      "sha256": "148d62c9456bc36e3418ee96cbdb2e79e24cf4e04e982f0a68ff3e3afb77ff96"
+    },
+    {
+      "name": "hind-near-ankle.png",
+      "path": "parts/hind-near-ankle.png",
+      "sha256": "b6b273f76de06d926d74cfd8d9c773558108b43eaec0010940e9678a3eae08a2"
+    },
+    {
+      "name": "hind-near-knee.png",
+      "path": "parts/hind-near-knee.png",
+      "sha256": "a0c511c5aa4ae63f9bba66ebaed86388d064aa2dc9bc728efec5a1450493659d"
+    },
+    {
+      "name": "hind-near-root.png",
+      "path": "parts/hind-near-root.png",
+      "sha256": "ad7689b7487d408ebd08bfea2c5a902242076bcff0d83db37e044140a600ee82"
+    },
+    {
+      "name": "fore-far-paw.png",
+      "path": "parts/fore-far-paw.png",
+      "sha256": "243dff5d5d04fcb0c0c119db825046a2f791dbf70595ed816ab3cd5fbf8556eb"
+    },
+    {
+      "name": "fore-far-ankle.png",
+      "path": "parts/fore-far-ankle.png",
+      "sha256": "8564f5962d0eb199b3e8c1ea6e0dc74a565762dc3a9e484b0bf24821cd0d1f80"
+    },
+    {
+      "name": "fore-far-knee.png",
+      "path": "parts/fore-far-knee.png",
+      "sha256": "30297520a85d2cc6503fdb87ed2960d934c9bfe86db46c3efa83b048728cef1d"
+    },
+    {
+      "name": "fore-far-root.png",
+      "path": "parts/fore-far-root.png",
+      "sha256": "3f9fcc5b6560ee45ff1fc8a65306276a5c7e79f2291fc90b994ad6e5224e4c38"
+    },
+    {
+      "name": "hind-far-paw.png",
+      "path": "parts/hind-far-paw.png",
+      "sha256": "d45af23b52397ee7d5f3e604cf9623b10a3cdd3f24133e9519a2179b8eac87aa"
+    },
+    {
+      "name": "hind-far-ankle.png",
+      "path": "parts/hind-far-ankle.png",
+      "sha256": "82ec5bdeb7da9565d9273d3277e5d374b3fe83220f21a6816e61a402c73d6eca"
+    },
+    {
+      "name": "hind-far-knee.png",
+      "path": "parts/hind-far-knee.png",
+      "sha256": "205c7b1d8e514d88f1aa37d5ac93c0620a03e2b55034945f88fe509556b1733e"
+    },
+    {
+      "name": "hind-far-root.png",
+      "path": "parts/hind-far-root.png",
+      "sha256": "903080aef730805c4634ab8e25cb6ceba555323bfbbfefab49eff903ff668e48"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "854fdb57ab771243315dc23d5ef45225252e8947e2e5d0541f0523eaaf571019"
+    }
+  ]
+}

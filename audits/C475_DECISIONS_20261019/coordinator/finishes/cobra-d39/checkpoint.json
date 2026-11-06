@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "c475-cobra-d39",
+  "checkpointReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/checkpoint-final.json",
+  "nativeReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cobra/native-r01/physical-review.json",
+  "nativePlan": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native-plan-bound.json",
+  "nativeReport": "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native/report.json",
+  "triage": "audits/C475_DECISIONS_20261019/coordinator/triage-cobra-native",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": true,
+  "checkpointReviewSha256": "d6ee76b92e909f2e61b019ffab418f818b7ea621dd6f5c6d92c63d0f3233f91c",
+  "nativeReviewSha256": "34187ff3f3bef06ba0ca7f396a38542c7eba225f7be305ec1277121998a605e9",
+  "nativePlanSha256": "00883f473a641fb68accef8c9ca95973be039c7407dad0ccdc769e99e18338c5",
+  "nativeReportSha256": "cac4760cec95fdb56f1376c933ca9885fbf567b10ee7185a072d6c9ee379c60e"
+}

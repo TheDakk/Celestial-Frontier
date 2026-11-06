@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Woodpecker",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/14-woodpecker/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c1ecd248e27044d898c47321c4dc18631fddfa71ea1fb4f4c85f711f8eff8419"
+}

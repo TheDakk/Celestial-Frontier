@@ -1,0 +1,31 @@
+✔ five exact-source reviews admitted; unchanged mandatory body/leg limits (7.0675ms)
+✔ stale master refuses (0.871125ms)
+✔ stale subject refuses (0.623333ms)
+✔ stale prompt refuses (0.605166ms)
+✔ stale declaration (2.440125ms)
+✔ wrong family (2.018375ms)
+✔ no review (0.941959ms)
+✔ hidden terminal (0.906125ms)
+✔ cropped terminal (1.049ms)
+✔ omitted middle (1.157083ms)
+✔ degenerate tip (0.936083ms)
+✔ mandatory leg exemption (0.838583ms)
+✔ lost tail region (0.910375ms)
+✔ unknown evidence (0.820209ms)
+✔ swapped ear side (0.954041ms)
+✔ no antler (0.94375ms)
+✔ invented hidden coordinates (0.875583ms)
+✔ biologically absent (0.813667ms)
+✔ changed occluder (0.820958ms)
+✔ represented tail keeps distal contribution and legacy object identity (1.076958ms)
+✔ absence conflict refuses; mandatory anatomy cannot be hidden (0.83625ms)
+✔ visible ear pixels survive on head; invented actuator and erased sliver refuse (0.343792ms)
+✔ off-paint invented tip refuses independently of metadata (0.176875ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237.485083

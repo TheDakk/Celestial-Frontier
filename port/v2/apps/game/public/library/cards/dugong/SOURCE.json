@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dugong",
+ "fitDir": "audits/C234_PROGRAM_20261011/phase1/rebound-new/c215program-43-dugong/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "11f71267de6469dc73a70d58fa399b42fb6f13f385bb3c93502f23955d7cfc83"
+}

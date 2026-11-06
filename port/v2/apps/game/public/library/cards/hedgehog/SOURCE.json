@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hedgehog",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c90-20-hedgehog/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c94849ef54483860c824ac1e7a77b657ccfbcaf48f0f8f47cf9a0b4bc3c50a43"
+}

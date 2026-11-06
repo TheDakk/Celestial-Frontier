@@ -1,0 +1,28 @@
+{
+  "name": "Frilled Lizard",
+  "masterSha256": "7383537e8a389ca9963f5131850847deedf3593d196983e89194af43bd2a2147",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: large connected circular frill around neck, visible open pink mouth, long thin banded tail and four visible feet. The near-side frill reads as a textured sheet and must receive connected neck/head ownership; far limb roots remain occluded. Pink mouth/warmer frill tones require careful key-conservation review against the magenta key. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 241,
+      "y0": 495,
+      "x1": 938,
+      "y1": 758
+    },
+    "margins": {
+      "left": 241,
+      "right": 315,
+      "top": 495,
+      "bottom": 495
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

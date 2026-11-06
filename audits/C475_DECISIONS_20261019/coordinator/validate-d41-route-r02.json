@@ -1,0 +1,21 @@
+{
+  "stage": "validate-d41-route-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D41-route-validate",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792459146.461327,
+  "beforeGiB": 55.94546127319336,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.04,
+  "lowestGiB": 55.94441604614258,
+  "afterGiB": 55.94442367553711
+}

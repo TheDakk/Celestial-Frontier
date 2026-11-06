@@ -1,0 +1,21 @@
+{
+  "stage": "pond-turtle-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-pond-turtle-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/pond-turtle-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/pond-turtle-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792279645.091282,
+  "beforeGiB": 88.19316101074219,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 50.956,
+  "lowestGiB": 77.81795501708984,
+  "afterGiB": 85.17908096313477
+}

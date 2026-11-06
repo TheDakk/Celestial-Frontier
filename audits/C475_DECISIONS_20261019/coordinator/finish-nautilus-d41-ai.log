@@ -1,0 +1,7 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c475-nautilus-d41","rows":[{"id":"c475-nautilus-d41","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c475-nautilus-d41","rows":[{"id":"c475-nautilus-d41","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c475-nautilus-d41","rows":[{"id":"c475-nautilus-d41","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c475-nautilus-d41","rows":[{"id":"c475-nautilus-d41","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"complete","subject":"c475-nautilus-d41","rows":[{"id":"c475-nautilus-d41","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished"}

@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "crystalsteppe-v2",
+  "biome": "crystalsteppe",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "crystalsteppe"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "crystalsteppe"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "crystalsteppe"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.generation.json",
+      "sha256": "b73bc69b832ee596bff795a577857f7ad9bbb878350607d538105f0fd73f1444"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.generation.json",
+      "sha256": "1660d56f86069f9325880a628f7870a4d5fb527baea8b6c6104cf6ceb842da58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.generation.json",
+      "sha256": "f91d1cd3e4d8c6aff5c579dd9f293f9f923bd7d912144b8ed5d9a25793a6b493"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-composed-review.png",
+      "sha256": "d7d5073e6c80b44ef6def0a5b84c77df628ae41566c8269f749a44c621d1b967"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.png",
+      "sha256": "a6b2fa8e3529b14edc11faff61aa0869f4047977538e026048f81d066a4b588b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.png",
+      "sha256": "5ca14224c64e03e87fc93431aeb5e67ab3aaf8573389e1785faf09a8303f940b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.png",
+      "sha256": "ef2ca07ff932d0e351a6017f8a26de9c1410a63f72c56de87d520060951a9c6c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/visual-notes.d29.json",
+      "sha256": "0dba1778d0c5af5b4e21ef6ba2392a1d8b053752f7953329676f578256ec632e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-manifest.json",
+      "sha256": "18fee991a1b1a354324140ac3a5ce54407ded8c0b77302d18b3a2b908c203f47"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-recipe.json",
+      "sha256": "facf363a6b7b9fe7d5fc57a02316f7ebd90ef85c024f0f15f706b056d848000e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.generation.json",
+      "sha256": "b73bc69b832ee596bff795a577857f7ad9bbb878350607d538105f0fd73f1444"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.prompt.txt",
+      "sha256": "3551519c9545c570fd1619268118752be9c3ba063438790b4c26790d3236bf42"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.generation.json",
+      "sha256": "1660d56f86069f9325880a628f7870a4d5fb527baea8b6c6104cf6ceb842da58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-mid.prompt.txt",
+      "sha256": "338f0450dc6ebbd1110cced6ca7df57f87cd9273098eaf6e64ae04237d1380c0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-mid.png",
+      "sha256": "5ca14224c64e03e87fc93431aeb5e67ab3aaf8573389e1785faf09a8303f940b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-mid.png",
+      "sha256": "d325237a32bd89c7bbb80ed4603246ba22ec5ae2410f0ab1a5bb547a7387c5dd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.generation.json",
+      "sha256": "f91d1cd3e4d8c6aff5c579dd9f293f9f923bd7d912144b8ed5d9a25793a6b493"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-near.prompt.txt",
+      "sha256": "d4992eacdbdd5529ebce306c2bc47851456f64636a30df516311ec5570ce0c44"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-near.png",
+      "sha256": "ef2ca07ff932d0e351a6017f8a26de9c1410a63f72c56de87d520060951a9c6c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-near.png",
+      "sha256": "f4232612489b3bc9971573e1c0ea1108ec916edc443baa8340b53332503a2d35"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/crystalsteppe-v2/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. The repaired FAR removes unsupported celestial bodies, leaving a neutral clouded sky and distant crystals. Both static stands remain clear.",
+      "Dense crystal/grass/rock detail repeats across FAR and MID; small green/mauve edge remnants remain near low terrain silhouettes. NEAR has a discernible horizontal texture boundary.",
+      "The static composition is mechanically admissible, but independent full-size scoring and moving creature readability are untested; quality remains held."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

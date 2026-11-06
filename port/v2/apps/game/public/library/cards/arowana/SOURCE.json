@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Arowana",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c213originals-33-arowana-source02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "efeb1bd3c02f5f540426c9c87c47d0d019670430794b54457e3dded3abc20b0c"
+}

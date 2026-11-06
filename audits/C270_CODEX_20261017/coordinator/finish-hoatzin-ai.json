@@ -1,0 +1,21 @@
+{
+  "stage": "finish-hoatzin-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-hoatzin-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin/subjects.json"
+  ],
+  "startedUnix": 1792288200.7840068,
+  "beforeGiB": 79.99130630493164,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 2.005,
+  "lowestGiB": 79.99129486083984,
+  "afterGiB": 79.97601699829102
+}

@@ -1,0 +1,736 @@
+{
+ "rows": [
+  {
+   "set": "corpus",
+   "id": "salmon",
+   "name": "Salmon",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Salmon",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "eagle",
+   "name": "Eagle",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Eagle",
+   "profile": "raptor"
+  },
+  {
+   "set": "corpus",
+   "id": "beetle",
+   "name": "Beetle",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Beetle",
+   "profile": "mandibulate-insect"
+  },
+  {
+   "set": "corpus",
+   "id": "python",
+   "name": "Python",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Python",
+   "profile": "constricting-snake"
+  },
+  {
+   "set": "corpus",
+   "id": "tree-frog",
+   "name": "Tree Frog",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Tree Frog",
+   "profile": "frog"
+  },
+  {
+   "set": "corpus",
+   "id": "chimpanzee",
+   "name": "Chimpanzee",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Chimpanzee",
+   "profile": "primate"
+  },
+  {
+   "set": "corpus",
+   "id": "starfish",
+   "name": "Starfish",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Starfish",
+   "profile": "echinoderm"
+  },
+  {
+   "set": "corpus",
+   "id": "tarantula",
+   "name": "Tarantula",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Tarantula",
+   "profile": "spider"
+  },
+  {
+   "set": "corpus",
+   "id": "octopus",
+   "name": "Octopus",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Octopus",
+   "profile": "cephalopod"
+  },
+  {
+   "set": "corpus",
+   "id": "fruit-bat",
+   "name": "Fruit Bat",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Fruit Bat",
+   "profile": "bat"
+  },
+  {
+   "set": "corpus",
+   "id": "centipede",
+   "name": "Centipede",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Centipede",
+   "profile": "centipede"
+  },
+  {
+   "set": "corpus",
+   "id": "sturgeon",
+   "name": "Sturgeon",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Sturgeon",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "wall-lizard",
+   "name": "Wall Lizard",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Wall Lizard",
+   "profile": "lizard"
+  },
+  {
+   "set": "corpus",
+   "id": "cougar",
+   "name": "Cougar",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Cougar",
+   "profile": "felid"
+  },
+  {
+   "set": "corpus",
+   "id": "impala",
+   "name": "Impala",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Impala",
+   "profile": "hoofed-horned"
+  },
+  {
+   "set": "corpus",
+   "id": "marmot",
+   "name": "Marmot",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Marmot",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "corpus",
+   "id": "bass",
+   "name": "Bass",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Bass",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "cattle",
+   "name": "Cattle",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Cattle",
+   "profile": "hoofed-horned"
+  },
+  {
+   "set": "corpus",
+   "id": "tang",
+   "name": "Tang",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Tang",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "wolf",
+   "name": "Wolf",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Wolf",
+   "profile": "canid"
+  },
+  {
+   "set": "corpus",
+   "id": "gull",
+   "name": "Gull",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Gull",
+   "profile": "bird"
+  },
+  {
+   "set": "corpus",
+   "id": "river-otter",
+   "name": "River Otter",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "River Otter",
+   "profile": "aquatic-pawed-mammal"
+  },
+  {
+   "set": "corpus",
+   "id": "brown-bear",
+   "name": "Brown Bear",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Brown Bear",
+   "profile": "bear"
+  },
+  {
+   "set": "corpus",
+   "id": "goose",
+   "name": "Goose",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Goose",
+   "profile": "swimming-bird"
+  },
+  {
+   "set": "corpus",
+   "id": "heron",
+   "name": "Heron",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Heron",
+   "profile": "wading-bird"
+  },
+  {
+   "set": "corpus",
+   "id": "sparrow",
+   "name": "Sparrow",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Sparrow",
+   "profile": "bird"
+  },
+  {
+   "set": "corpus",
+   "id": "ibex",
+   "name": "Ibex",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Ibex",
+   "profile": "hoofed-horned"
+  },
+  {
+   "set": "corpus",
+   "id": "reef-shark",
+   "name": "Reef Shark",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Reef Shark",
+   "profile": "predatory-shark"
+  },
+  {
+   "set": "corpus",
+   "id": "pike",
+   "name": "Pike",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Pike",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "racer",
+   "name": "Racer",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Racer",
+   "profile": "snake"
+  },
+  {
+   "set": "corpus",
+   "id": "grouse",
+   "name": "Grouse",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Grouse",
+   "profile": "ground-foraging-bird"
+  },
+  {
+   "set": "corpus",
+   "id": "sandpiper",
+   "name": "Sandpiper",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Sandpiper",
+   "profile": "wading-bird"
+  },
+  {
+   "set": "corpus",
+   "id": "herring",
+   "name": "Herring",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Herring",
+   "profile": "fish"
+  },
+  {
+   "set": "corpus",
+   "id": "wild-horse",
+   "name": "Wild Horse",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Wild Horse",
+   "profile": "hoofed-unhorned"
+  },
+  {
+   "set": "corpus",
+   "id": "salamander",
+   "name": "Salamander",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Salamander",
+   "profile": "salamander"
+  },
+  {
+   "set": "corpus",
+   "id": "eel",
+   "name": "Eel",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Eel",
+   "profile": "eel"
+  },
+  {
+   "set": "corpus",
+   "id": "honeybee",
+   "name": "Honeybee",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Honeybee",
+   "profile": "mandibulate-insect"
+  },
+  {
+   "set": "corpus",
+   "id": "rat",
+   "name": "Rat",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Rat",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "corpus",
+   "id": "dragonfly",
+   "name": "Dragonfly",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Dragonfly",
+   "profile": "mandibulate-insect"
+  },
+  {
+   "set": "corpus",
+   "id": "jellyfish",
+   "name": "Jellyfish",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Jellyfish",
+   "profile": "cnidarian"
+  },
+  {
+   "set": "g2",
+   "id": "01-coyote",
+   "name": "Coyote",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Coyote",
+   "profile": "canid"
+  },
+  {
+   "set": "g2",
+   "id": "02-red-fox",
+   "name": "Red Fox",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Red Fox",
+   "profile": "canid"
+  },
+  {
+   "set": "g2",
+   "id": "03-arctic-fox",
+   "name": "Arctic Fox",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Arctic Fox",
+   "profile": "canid"
+  },
+  {
+   "set": "g2",
+   "id": "04-fennec-fox",
+   "name": "Fennec Fox",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Fennec Fox",
+   "profile": "canid"
+  },
+  {
+   "set": "g2",
+   "id": "05-caracal",
+   "name": "Caracal",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Caracal",
+   "profile": "felid"
+  },
+  {
+   "set": "g2",
+   "id": "06-lynx",
+   "name": "Lynx",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Lynx",
+   "profile": "felid"
+  },
+  {
+   "set": "g2",
+   "id": "07-cougar",
+   "name": "Cougar",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Cougar",
+   "profile": "felid"
+  },
+  {
+   "set": "g2",
+   "id": "08-mongoose",
+   "name": "Mongoose",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Mongoose",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "g2",
+   "id": "09-badger",
+   "name": "Badger",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Badger",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "g2",
+   "id": "10-raccoon",
+   "name": "Raccoon",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Raccoon",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "g2",
+   "id": "11-marmot",
+   "name": "Marmot",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Marmot",
+   "profile": "small-clawed-mammal"
+  },
+  {
+   "set": "g2",
+   "id": "12-brown-bear",
+   "name": "Brown Bear",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Brown Bear",
+   "profile": "bear"
+  },
+  {
+   "set": "g2",
+   "id": "13-cattle",
+   "name": "Cattle",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Cattle",
+   "profile": "hoofed-horned"
+  },
+  {
+   "set": "g2",
+   "id": "14-bison",
+   "name": "Bison",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Bison",
+   "profile": "hoofed-horned"
+  },
+  {
+   "set": "g2",
+   "id": "15-donkey",
+   "name": "Donkey",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Donkey",
+   "profile": "hoofed-unhorned"
+  },
+  {
+   "set": "g2",
+   "id": "16-wild-horse",
+   "name": "Wild Horse",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Wild Horse",
+   "profile": "hoofed-unhorned"
+  },
+  {
+   "set": "g2",
+   "id": "17-camel",
+   "name": "Camel",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Camel",
+   "profile": "hoofed-unhorned"
+  },
+  {
+   "set": "g2",
+   "id": "18-tapir",
+   "name": "Tapir",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Tapir",
+   "profile": "tapir"
+  },
+  {
+   "set": "g2",
+   "id": "19-wild-boar",
+   "name": "Wild Boar",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Wild Boar",
+   "profile": "suid"
+  },
+  {
+   "set": "g2",
+   "id": "20-goat",
+   "name": "Goat",
+   "visualKeyMatchesGenome": true,
+   "visualKeyMatchesGenomeNoName": true,
+   "genomeNameField": "Goat",
+   "profile": "hoofed-horned"
+  }
+ ],
+ "shipped": [
+  {
+   "earthName": "Crab",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Coconut Crab",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Freshwater Crab",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Mud Crab",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Vent Crab",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Civet",
+   "corpusId": null,
+   "status": "UNEVALUABLE: no hand authoring.json (labelled-parts rig)"
+  },
+  {
+   "earthName": "Salmon",
+   "corpusId": "salmon",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Eagle",
+   "corpusId": "eagle",
+   "status": "ADMIT + RED"
+  },
+  {
+   "earthName": "Beetle",
+   "corpusId": "beetle",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Python",
+   "corpusId": "python",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Tree Frog",
+   "corpusId": "tree-frog",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Chimpanzee",
+   "corpusId": "chimpanzee",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Starfish",
+   "corpusId": "starfish",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Tarantula",
+   "corpusId": "tarantula",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Octopus",
+   "corpusId": "octopus",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Fruit Bat",
+   "corpusId": "fruit-bat",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Centipede",
+   "corpusId": "centipede",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Bass",
+   "corpusId": "bass",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Tang",
+   "corpusId": "tang",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Dragonfly",
+   "corpusId": "dragonfly",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Sturgeon",
+   "corpusId": "sturgeon",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Wolf",
+   "corpusId": "wolf",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Impala",
+   "corpusId": "impala",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "River Otter",
+   "corpusId": "river-otter",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Heron",
+   "corpusId": "heron",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Marmot",
+   "corpusId": "marmot",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Wall Lizard",
+   "corpusId": "wall-lizard",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Cougar",
+   "corpusId": "cougar",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Ibex",
+   "corpusId": "ibex",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Pike",
+   "corpusId": "pike",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Goose",
+   "corpusId": "goose",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Gull",
+   "corpusId": "gull",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Racer",
+   "corpusId": "racer",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Eel",
+   "corpusId": "eel",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Salamander",
+   "corpusId": "salamander",
+   "status": "ADMIT + INTAKE_REFUSED"
+  },
+  {
+   "earthName": "Rat",
+   "corpusId": "rat",
+   "status": "REFUSE"
+  },
+  {
+   "earthName": "Reef Shark",
+   "corpusId": "reef-shark",
+   "status": "ADMIT + PASS_STATIC"
+  },
+  {
+   "earthName": "Jellyfish",
+   "corpusId": "jellyfish",
+   "status": "REFUSE"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+  "stage": "qualify-blue-whale-c2-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-blue-whale-c2-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+    "blue-whale"
+  ],
+  "startedUnix": 1792381429.1333919,
+  "beforeGiB": 56.4666748046875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.035,
+  "lowestGiB": 56.459476470947266,
+  "afterGiB": 56.458656311035156
+}

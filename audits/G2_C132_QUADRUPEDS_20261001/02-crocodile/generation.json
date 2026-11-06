@@ -1,0 +1,14 @@
+{
+  "id": "02-crocodile",
+  "name": "Crocodile",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-184179d4-b077-49c6-a5cb-b3a02dcff805.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "62969b41d45b809baadc954106b24c84d0bd9f8f2acb6fd5528249d72c9c17ef",
+  "bytes": 1205814,
+  "promptSha256": "3ff8cd71fee4560e3bca7611944248a8a032e37d4d7b755fdebf58d6fc1506d8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

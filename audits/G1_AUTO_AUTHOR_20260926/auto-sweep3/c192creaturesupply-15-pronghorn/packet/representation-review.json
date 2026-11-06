@@ -1,0 +1,124 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "masterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+  "subjectSha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+  "promptSha256": "4ed368c3860bfdf20ef6a7140a5c738126c2d187304aedfc929e9c0b524105ba",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          334,
+          561
+        ],
+        "tail1": [
+          336,
+          622
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              283.1357142857143,
+              566.7785714285715
+            ],
+            [
+              286.12142857142857,
+              548.8642857142858
+            ],
+            [
+              289.1071428571429,
+              539.9071428571428
+            ],
+            [
+              295.0785714285714,
+              530.95
+            ],
+            [
+              301.05,
+              524.9785714285714
+            ],
+            [
+              304.0357142857143,
+              521.9928571428571
+            ],
+            [
+              307.0214285714286,
+              519.0071428571429
+            ],
+            [
+              321.95,
+              507.06428571428575
+            ],
+            [
+              330.90714285714284,
+              501.09285714285716
+            ],
+            [
+              337.89285714285717,
+              501.09285714285716
+            ],
+            [
+              337.89285714285717,
+              591.4051522248244
+            ],
+            [
+              290.94625668449197,
+              592.944385026738
+            ],
+            [
+              286.12142857142857,
+              585.7071428571429
+            ],
+            [
+              283.1357142857143,
+              570.7785714285715
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              337.89285714285717,
+              591.4051522248244
+            ],
+            [
+              337.89285714285717,
+              624.5214285714286
+            ],
+            [
+              333.89285714285717,
+              624.5214285714286
+            ],
+            [
+              292.09285714285716,
+              594.6642857142857
+            ],
+            [
+              290.94625668449197,
+              592.944385026738
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "5459fe595dd2b20c9b172d59003d86ddc2565017d2199700ad365ec689580762"
+}

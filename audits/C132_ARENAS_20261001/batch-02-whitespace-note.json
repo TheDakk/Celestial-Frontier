@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-exact-prompt-byte-note/v1",
+  "deliveryCommit": "06d821a9d",
+  "gitDiffCheck": "Whitespace-only findings in exact sent prompt artifacts and one retained audit helper EOF blank.",
+  "disposition": "Preserve the hash-bound sent prompt bytes and original helper snapshot. Trimming them would destroy exact generator provenance. No product-source whitespace findings.",
+  "affectedFiles": [
+    "acidhaze/arena-far-correction.prompt.txt",
+    "acidhaze/arena-near-correction.prompt.txt",
+    "effects-agent-finalize-batches.mjs",
+    "fungal/arena-near-correction.prompt.txt",
+    "hotglow/arena-far-correction.prompt.txt",
+    "saltpan-r2/arena-mid.prompt.txt",
+    "saltpan-r2/arena-near-correction.prompt.txt",
+    "saltpan-r2/arena-near.prompt.txt"
+  ]
+}

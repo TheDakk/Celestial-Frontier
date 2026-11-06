@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-arena-repair/v1",
+  "scope": "MID painting replacement only; FAR/NEAR original bytes retained",
+  "editSource": {
+    "path": "audits/C132_ARENAS_20261001/savanna/arena-mid.png",
+    "sha256": "1b61f61d129a26eb8d3e18c8a291c631bb8103593e1064f287f71d694c02da8b"
+  },
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "reason": "Remove chopped jungle trunks / magenta-contaminated savanna horizon at the painting side; original retained."
+}

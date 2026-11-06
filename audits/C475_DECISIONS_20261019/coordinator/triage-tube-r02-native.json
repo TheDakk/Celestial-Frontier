@@ -1,0 +1,28 @@
+{
+  "stage": "triage-tube-r02-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Tube-r02-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C475_DECISIONS_20261019/coordinator/freeze-triage.py",
+    "triage-tube-r02-native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native"
+  ],
+  "startedUnix": 1792459751.0261629,
+  "beforeGiB": 55.831756591796875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 48.187,
+  "lowestGiB": 55.8282585144043,
+  "afterGiB": 55.828269958496094
+}

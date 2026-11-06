@@ -1,0 +1,275 @@
+[
+ {
+  "id": "01-cardinalfish",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 6.9% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-rabbitfish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "03-sea-bass",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "04-bonefish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-tigerfish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-coelacanth",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "07-gannet",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "08-booby",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "09-bustard",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "10-seriema",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "11-chicken",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "12-rooster",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 9.3% of the paint lies away from the body and in no part (reference 1.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-pronghorn",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-springbok",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+   "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-bongo",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "16-duiker",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-nilgai",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: empty authored part: tail0\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file:///Use",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 38%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "18-serow",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-butterfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 40%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 26% paint (reference 77%)",
+   "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-mosquito",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+   "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 8% paint (reference 36%)",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+   "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 24% paint (reference 99%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 26% paint (reference 88%)",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 11% paint (reference 31%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 37%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 11% paint (reference 77%)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 0% paint (reference 62%)",
+   "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%)",
+   "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)",
+   "missing-anatomy: part head (head) covers 20% paint (reference 98%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-black-fly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-fly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-springtail",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile springtail; the motion kit refuses an unclassified surface"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-cold-adapted-insect",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)"
+  ],
+  "semanticPresence": null
+ }
+]

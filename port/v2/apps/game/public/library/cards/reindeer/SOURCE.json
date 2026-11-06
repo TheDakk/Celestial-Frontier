@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Reindeer",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/11-reindeer/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d7253303adff3468cd1ee0ca75a154b8be71f61446c62ed92b2953bfcc2aaea2"
+}

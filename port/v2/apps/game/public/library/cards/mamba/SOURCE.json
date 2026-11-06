@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mamba",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/21-mamba/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bb2e84d587a5209453204839393e23062f268b1304a5a0d5a75df28d3069824f"
+}

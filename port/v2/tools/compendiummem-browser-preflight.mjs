@@ -47,7 +47,9 @@ const CHROME_BROWSER = '/usr/bin/google-chrome';
 const EDGE_EXTRACT_COMMAND = 'dpkg-deb --extract "$edge_package" "$edge_root"';
 const EDGE_CERTIFICATION_STEP_NAME = 'one-attempt Compendium memory certification';
 const EDGE_VERIFIER_STEP_NAME = 'verify current Compendium memory evidence';
-const EDGE_VERIFIER_COMMAND = 'run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"';
+/** D57 (2026-11-04): the certification step verifies the ACTIVE v2 I5 certificate (tools/compendium-certificate.mjs). */
+const EDGE_CERTIFICATION_COMMAND = 'run: node tools/compendium-certificate.mjs';
+const EDGE_VERIFIER_COMMAND = 'run: node tools/compendium-certificate.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"';
 const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
   Object.freeze({
     relative: '.github/workflows/test.yml',
@@ -420,7 +422,7 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
     `${label} certification`,
   );
   const certificationRunLine = exactDirectLine(
-    lines, 'run: npm run compendiummem', stepIndent + 2,
+    lines, EDGE_CERTIFICATION_COMMAND, stepIndent + 2,
     certificationStart + 1, certificationEnd, `${label} certification`,
   );
   assert(certificationWorkingLine < (certificationBrowser?.envLine ?? certificationRunLine)
@@ -433,7 +435,7 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
   }
   assert(directCertificationRuns.length === 1
     && directCertificationRuns[0] === certificationRunLine,
-  `${label}: certification must own only the exact npm run compendiummem command`);
+  `${label}: certification must own only the exact ${EDGE_CERTIFICATION_COMMAND.slice('run: '.length)} command`);
 
   const directVerifierIfs = [];
   for (let index = verifierStart + 1; index < verifierEnd; index++) {
@@ -1163,7 +1165,7 @@ async function runSelftest() {
 
     const wrongCertificationBrowser = mutateWorkflowStepBrowser(
       source, EDGE_CERTIFICATION_STEP_NAME, contract.certificationBrowser,
-      'run: npm run compendiummem', `${contract.relative} certification`,
+      EDGE_CERTIFICATION_COMMAND, `${contract.relative} certification`,
     );
     await expectRejected(`${contract.relative} wrong certification CF_BROWSER`,
       () => assertCompendiumEdgeWorkflowContract(wrongCertificationBrowser, contract),

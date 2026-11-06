@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c3-10-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-10-giant-water-bug",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-10-giant-water-bug/master.png"
+  },
+  {
+    "id": "c243b03r1c3-11-grasshopper",
+    "name": "Grasshopper",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-11-grasshopper",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-11-grasshopper/master.png"
+  },
+  {
+    "id": "c243b03r1c3-13-leafcutter-ant",
+    "name": "Leafcutter Ant",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-13-leafcutter-ant",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-13-leafcutter-ant/master.png"
+  }
+]

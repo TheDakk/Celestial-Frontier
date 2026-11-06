@@ -1,0 +1,167 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Garter Snake\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1374282322\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"22\"]]]]",
+    "seed": 1374282322,
+    "ownerId": "authored:archetype-sprint/20-garter-snake",
+    "earthName": "Garter Snake"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1374282322,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 3,
+    "body": 6,
+    "loco": 8,
+    "trait": 22,
+    "size": 1,
+    "diet": 5,
+    "head": 0,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 7,
+    "habitat": 11,
+    "detail": 1,
+    "accent": 15,
+    "temper": 2,
+    "sense": 2,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Garter Snake"
+  },
+  "geometry": {
+    "cutoutAssetHash": "10ae1f3d8f48b5bb2a9f426eeba06c471307e184a51e2f52037c4280076c6c09",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5636,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.8312599681020735,
+      0.4667464114832536
+    ],
+    "head": [
+      0.875438596491228,
+      0.43907496012759173
+    ],
+    "jaw": [
+      0.8852472089314194,
+      0.4563795853269537
+    ],
+    "seg0": [
+      0.7944976076555024,
+      0.4943381180223285
+    ],
+    "seg1": [
+      0.7466507177033492,
+      0.5065390749601276
+    ],
+    "seg2": [
+      0.6730462519936204,
+      0.48165869218500795
+    ],
+    "seg3": [
+      0.5872408293460925,
+      0.50207336523126
+    ],
+    "seg4": [
+      0.5074960127591707,
+      0.5302232854864434
+    ],
+    "seg5": [
+      0.42655502392344496,
+      0.5187400318979266
+    ],
+    "seg6": [
+      0.34441786283891546,
+      0.48724082934609253
+    ],
+    "seg7": [
+      0.25247208931419457,
+      0.49848484848484853
+    ],
+    "seg8": [
+      0.15925039872408292,
+      0.5448165869218501
+    ],
+    "seg9": [
+      0.10406698564593302,
+      0.5559808612440191
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/20-garter-snake/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Automatic serpent strip transfer from racer: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "5d9b8f05adfc9a6b85da75c3c14c7ae1461471c3848edc6a4d5534b8155be502",
+    "subjectSourceSha256": "d8c9585e58e132329674bcbf5c7cd5ad1d3242304daf033ad91861caaf17e558",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.05212926650621291,
+      "jaw": 0.01989117722238357,
+      "seg0": 0.04596491504769749,
+      "seg1": 0.04937801361224934,
+      "seg2": 0.07769588676018256,
+      "seg3": 0.08820050697873726,
+      "seg4": 0.08456745108406058,
+      "seg5": 0.08175150632669258,
+      "seg6": 0.0879699550552768,
+      "seg7": 0.09263073591120809,
+      "seg8": 0.10410049751597365,
+      "seg9": 0.05630142183013116
+    },
+    "measures": {
+      "body": 0.6931769410478223,
+      "bone-min": 0.01989117722238357,
+      "bone-max": 0.10410049751597365,
+      "head/body": 0.07520340539229868
+    }
+  },
+  "recipeHash": "60f7736cb8746098d710c96d6ba93624fc91bd29dd7d4e9cde6d384b8dec404b"
+}

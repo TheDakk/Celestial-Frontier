@@ -1,0 +1,87 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "a22acd258af1ccd32d460eeab1976d6da04ee609",
+  "helperSha256": "83ce8366d743dea46d7764f247ae519086fd421af2110fea487b773f53485c9b",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/master.png",
+      "sha256": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/authoring.json",
+      "sha256": "fc7f8950d657297040c1eccaea1767baeb6a214e7461625a861073fdc6038a70"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/subject-source.json",
+      "sha256": "5aea2e9256538a83cf66c523e2138249bceb0fb4f9d4f2a6c7a2fdf7b4d1f6ff"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/presence.json",
+      "sha256": "cdd5ad25a4e7b7901a1979a91a4337f8fbe55b4c8e593520cf13d3cb85b01fe3"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a",
+  "bindingHash": "84e96b12b03dba4adba82cf5e8c62eb65ab94344ad258adffef0d2819634aa18",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "polyp13Tip",
+    "polyp8Tip",
+    "polyp9Tip",
+    "polyp10Tip",
+    "polyp11Tip",
+    "polyp12Tip",
+    "polyp15Tip",
+    "polyp17Tip",
+    "polyp19Tip",
+    "polyp0Tip",
+    "polyp1Tip",
+    "polyp2Tip",
+    "polyp3Tip",
+    "polyp4Tip",
+    "polyp5Tip",
+    "polyp6Tip",
+    "polyp7Tip",
+    "polyp14Tip",
+    "polyp16Tip",
+    "polyp18Tip",
+    "skeleton"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/master.png",
+      "sha256": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/authoring.json",
+      "sha256": "fc7f8950d657297040c1eccaea1767baeb6a214e7461625a861073fdc6038a70",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/subject-source.json",
+      "sha256": "5aea2e9256538a83cf66c523e2138249bceb0fb4f9d4f2a6c7a2fdf7b4d1f6ff",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/node_modules/c475-radial-p04-runtime/audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/presence.json",
+      "sha256": "cdd5ad25a4e7b7901a1979a91a4337f8fbe55b4c8e593520cf13d3cb85b01fe3",
+      "unchanged": true
+    }
+  ]
+}

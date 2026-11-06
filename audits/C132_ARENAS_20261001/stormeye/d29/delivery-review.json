@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "stormeye",
+  "biome": "stormeye",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "stormeye"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "stormeye"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "stormeye"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.generation.json",
+      "sha256": "0b240fffbe0e54290c84810ac35ce35c80a995cd36c2159e454d3276d4cc346c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-mid.generation.json",
+      "sha256": "b3bb47fb6222035c5e713c4c54f0142c25b6371c865e7309b39b955999e8434f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-near.generation.json",
+      "sha256": "4b3ec65a6be39208bbb0093a70696c4046b77b71c75ac877a76051e513b65618"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-composed-review.png",
+      "sha256": "a0f9baf39d944fc7335caece975e1810ec9bdf9b08b58006e1e5e977bfe88b22"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-plates-review.png",
+      "sha256": "701d21962c232f201f71e57d57586d21bb7b6e3c3c7bee40e50534c2e49b2251"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+      "sha256": "78d588d167503fe15b06033f1906bcf8f32fd1b8511eabc33934c1e76be5ae97"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+      "sha256": "f11ea578db27058caf54492b28184763cd7dde23ad0a2cda5e576b252a21c247"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-near.png",
+      "sha256": "3e9ab533f107cadb7035f8169b69c974499bcbaa2c95bb21e39ea75df947aab3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/visual-notes.d29.json",
+      "sha256": "8fd8ed4c82adb5494d39497a13272047c62b0facdf17dfdacd3580fbcfde3b1b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-manifest.json",
+      "sha256": "c098be27a861d5f7fff72298ad7b7fe39d3305aa08d207f5b4b5cb32e15b7914"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-recipe.json",
+      "sha256": "a5d3700a9f00ddc0dd75019fff0a351e8e3ee3fac13b33dd73a329c771383247"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.generation.json",
+      "sha256": "0b240fffbe0e54290c84810ac35ce35c80a995cd36c2159e454d3276d4cc346c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.prompt.txt",
+      "sha256": "91e4acf79e7a8c5a184715c15705f53caf5605c37b7db89b7132e785cac0ee67"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-mid.generation.json",
+      "sha256": "b3bb47fb6222035c5e713c4c54f0142c25b6371c865e7309b39b955999e8434f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-mid.prompt.txt",
+      "sha256": "5a22b3539692cafa97983f2d0f23fccb52f8445e2a4df7d845e5b954ff23e400"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.png",
+      "sha256": "67507ec83fd958ecfb70443fd24d45b6c93822a3aefaf23ecb018e509804c2ec"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-near.generation.json",
+      "sha256": "4b3ec65a6be39208bbb0093a70696c4046b77b71c75ac877a76051e513b65618"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/arena-near.prompt.txt",
+      "sha256": "27559ec6efc6e785c1cb3c9edc0a37167e62142b5dd83916b1c7f22f56f7587b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.png",
+      "sha256": "06bc165010281fd8e7afdb7216b2c1896c0242d752f7625474874cf9e1099e02"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/stormeye/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. The large storm eye and layered amber clouds are readable; the sampled shared path and both stands are clear of NEAR.",
+      "MID cloud silhouettes form a visibly hard, cut-paper edge over FAR. A second small spiral appears at the right edge, and NEAR forms an obvious separate cloud shelf with a sharp contour across the lower fifth. Their perspective and scale need a composition repair.",
+      "Amber lighting, cloudy ground readability and creature contrast remain visual holds. Authoring a cloud band does not establish valid support, motion or physical-medium behavior. No native or visual acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

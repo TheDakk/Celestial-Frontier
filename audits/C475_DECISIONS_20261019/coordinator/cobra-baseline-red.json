@@ -1,0 +1,25 @@
+{
+  "stage": "cobra-baseline-red",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cobra-baseline",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C475_DECISIONS_20261019/coordinator/cobra-baseline-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C475_DECISIONS_20261019/coordinator/cobra-vitest.config.mjs",
+    "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts"
+  ],
+  "startedUnix": 1792453955.401581,
+  "beforeGiB": 59.697532653808594,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 59.69752883911133,
+  "afterGiB": 59.697322845458984
+}

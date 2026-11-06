@@ -1,0 +1,27 @@
+{
+  "round": 2,
+  "batch": 2,
+  "generated": 48,
+  "scored": 48,
+  "staticPassSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin"
+  ],
+  "authorAdmitSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin"
+  ],
+  "next": "Candidate3 compiled24; start03BlueWhale",
+  "reservation": "C359 ACTIVE",
+  "sourceHead": "6d9b11785"
+}

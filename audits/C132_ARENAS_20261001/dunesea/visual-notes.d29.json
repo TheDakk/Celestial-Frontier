@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "dunesea",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/dunesea/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/dunesea/arena-plates-review.png"
+  ],
+  "findings": [
+    "Full native-size composition and four-row plate sheet inspected. Warm desert material, continuous central fighting band and deep atmosphere are readable; no invented moons are present in the selected FAR.",
+    "The MID introduces another ridge contour across the already painted terrain, creating a conspicuous pasted strip and mauve boundary around the center and right. NEAR adds a separate horizontal texture band and small magenta foliage remnants. These remain visual holds after D29 size admission.",
+    "No new generation or rekeying in this revalidation. Historical originals, intake and previous dimension rejection stay unchanged."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "c266-04-turtle",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/turtle-01/native/report.json",
+  "name": "Turtle",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/turtle-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/turtle-01/visual-review.json",
+  "checkpointReviewSha256": "3458954cdafa264e14c779aecc441bfbaa5c74db8fdf34a4cc13cd5660c12a31",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

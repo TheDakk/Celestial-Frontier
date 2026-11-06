@@ -1,0 +1,21 @@
+{
+  "stage": "cobra-static-proof-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Cobra-static-proof-complete-note",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/qualify-cobra.mjs"
+  ],
+  "startedUnix": 1792454648.636535,
+  "beforeGiB": 59.54938507080078,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 6.035,
+  "lowestGiB": 59.54665756225586,
+  "afterGiB": 59.54924774169922
+}

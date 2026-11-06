@@ -1,0 +1,24 @@
+{
+  "status": "ACTUAL_READY_AND_FINAL_OVERLAY_REBUILT_AFTER_REAL_W4_STALE_PROGRAM_PIN_FINDING",
+  "readyPacket": "audits/C475_DECISIONS_20261019/ready/sea-anemone-p04-r01/packet.json",
+  "readyPacketSha256": "7cdc04302a234420a819d0436e8ce0313fb6b600c89890389c10dbb580df0fbd",
+  "selectedOverlay": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/p04-final-overlay-r01/final-selected-r02",
+  "delivery": "audits/C475_DECISIONS_20261019/delivery/wave20-anemone-ready-final-dispositions",
+  "runtimeListSha256": "a98c22bde8369c1173f45e528b5d144829bafc8ff908a48c4ed5179603b01d66",
+  "counts": {
+    "scoped62": {
+      "READY": 11,
+      "HOLD": 51
+    },
+    "original170": {
+      "priorClaudeACCEPT": 17,
+      "READY": 11,
+      "HOLD": 142
+    }
+  },
+  "independentW4": "PENDING",
+  "current62Sha256": "6c5621be8fe67e4c4d331328da99f742ffd79f8b341dcd4978f5237cad758622",
+  "progress170Sha256": "eaee2fc730d8e49ee3bf9b6e5aef933beecf796623020fc2ab66349cd0d1a1a2",
+  "firstPreparation": "audits/C475_DECISIONS_20261019/coordinator/c499-final-preparation.json",
+  "correction": "Firstselectedoverlay pinned runtime-list before its finalAnemoneannotation; freshselectedr02 generated after finalmetadata and all5outputs recopied. No runtime/source/gate/packet changed."
+}

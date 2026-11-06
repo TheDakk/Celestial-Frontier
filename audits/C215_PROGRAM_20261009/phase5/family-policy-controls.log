@@ -1,0 +1,28 @@
+✔ 02-bullfrog-source independently canonical optional inventory only (5.736583ms)
+✔ 02-bullfrog-source changed master refuses (2.281917ms)
+✔ 02-bullfrog-source changed subject refuses (1.15075ms)
+✔ 02-bullfrog-source changed prompt refuses (2.307375ms)
+✔ 03-gorilla-source independently canonical optional inventory only (3.405542ms)
+✔ 03-gorilla-source changed master refuses (2.486458ms)
+✔ 03-gorilla-source changed subject refuses (1.331542ms)
+✔ 03-gorilla-source changed prompt refuses (2.683583ms)
+✔ cropped monkey cannot acquire ape-tail absence (1.635375ms)
+✔ forged frog profile and wrong canonical species refuse (1.0235ms)
+✔ larval context never receives adult frog absence (0.207667ms)
+✔ source declaration cannot omit a mandatory limb or add an ear exemption to ape (5.916417ms)
+✔ canonical wingless Springtail removes only wings, preserving every leg and mouthpart (5.295709ms)
+✔ source-bound review rejects changed master (1.997875ms)
+✔ source-bound review rejects changed subject (1.033667ms)
+✔ source-bound review rejects changed prompt (2.101208ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.name='Bee' (0.555208ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.profile.id='bee' (0.47275ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.species.note='Winged insect' (0.437458ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.lifeStage='larva' (0.156625ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 239.845042

@@ -1,0 +1,201 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pigeon\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"4134020298\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"0\"]]]]",
+    "seed": 4134020298,
+    "ownerId": "authored:archetype-sprint/reference-pigeon",
+    "earthName": "Pigeon"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4134020298,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 13,
+    "body": 6,
+    "loco": 14,
+    "trait": 0,
+    "size": 2,
+    "diet": 5,
+    "head": 7,
+    "limbs": 0,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 16,
+    "detail": 5,
+    "accent": 6,
+    "temper": 5,
+    "sense": 7,
+    "repro": 7,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pigeon"
+  },
+  "geometry": {
+    "cutoutAssetHash": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8771929824561403,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5502392344497608,
+      0.5303030303030303
+    ],
+    "pelvis": [
+      0.5239234449760766,
+      0.6379585326953748
+    ],
+    "spine": [
+      0.6539074960127592,
+      0.5127591706539075
+    ],
+    "chest": [
+      0.7926634768740032,
+      0.4433811802232855
+    ],
+    "neck0": [
+      0.8277511961722488,
+      0.3660287081339713
+    ],
+    "neck1": [
+      0.8277511961722488,
+      0.2807017543859649
+    ],
+    "head": [
+      0.8452950558213717,
+      0.19617224880382775
+    ],
+    "beak": [
+      0.9409888357256778,
+      0.24401913875598086
+    ],
+    "legNearKnee": [
+      0.46810207336523124,
+      0.7200956937799043
+    ],
+    "legNearAnkle": [
+      0.4481658692185008,
+      0.817384370015949
+    ],
+    "legNearFoot": [
+      0.4864433811802233,
+      0.8405103668261563
+    ],
+    "legFarKnee": [
+      0.6746411483253588,
+      0.75518341307815
+    ],
+    "legFarAnkle": [
+      0.7328548644338118,
+      0.8261562998405104
+    ],
+    "legFarFoot": [
+      0.7671451355661882,
+      0.8429027113237639
+    ],
+    "wingNearRoot": [
+      0.6985645933014354,
+      0.45534290271132377
+    ],
+    "wingNearTip": [
+      0.2535885167464115,
+      0.5893141945773525
+    ],
+    "wingFarRoot": [
+      0.65311004784689,
+      0.3843700159489633
+    ],
+    "wingFarTip": [
+      0.5055821371610846,
+      0.43859649122807015
+    ],
+    "tailFan": [
+      0.18341307814992025,
+      0.6698564593301436
+    ]
+  },
+  "materials": {
+    "surface": "slate grey feathers, two dark wing bars, green purple iridescent neck, orange eye, white cere and red scaled feet"
+  },
+  "source": "audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Standing folded-wing reference painting; no flight surface inferred."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Manual observation of this exact new master: two separated standing legs; near folded flight feathers and the narrower upper feather band assigned to the far folded wing. Full tail excluded from wing polygons. No automatic packet or transferred coordinates. Wing pose is declared here because anatomy.folded describes leg chains only.",
+    "wingPose": "folded above tail; no unfolded underside evidenced",
+    "visualAcceptance": "Dakk pending; semantic interpretation remains reviewable",
+    "sourceFacing": "right",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "52852e5335c2d613a4cf4b260f3f43f3eec7c7c7b21044b5e832971b55e62d6f",
+    "subjectSourceSha256": "2f333aaf62ac5171e2f632100e2c2fd5b83f61a0899e3401c28719d21061968a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1108252136067031,
+      "spine": 0.18047363735320826,
+      "chest": 0.1551339027452007,
+      "neck0": 0.08493852473336587,
+      "neck1": 0.08532695374800642,
+      "head": 0.0863309001768699,
+      "beak": 0.10698889844496598,
+      "legFarKnee": 0.19093846831803743,
+      "legFarAnkle": 0.09179317729841578,
+      "legFarFoot": 0.03816104023606192,
+      "legNearKnee": 0.09931031547398306,
+      "legNearAnkle": 0.09931031547398302,
+      "legNearFoot": 0.044721132034481484,
+      "wingFarRoot": 0.15151725004842373,
+      "wingFarTip": 0.15717822703070092,
+      "wingNearRoot": 0.09485611574634768,
+      "wingNearTip": 0.4647063758445274,
+      "tailFan": 0.3420011515180623
+    },
+    "measures": {
+      "body": 0.3317853987738857,
+      "bone-min": 0.03816104023606192,
+      "bone-max": 0.4647063758445274,
+      "leg/torso:legFar": 0.9671694023859259,
+      "leg/torso:legNear": 0.733431199449156,
+      "wing/torso": 0.9304070589601292
+    }
+  },
+  "recipeHash": "094e651eb8725fdb21afcd2748f59b2cfdba3015067ef9d0d1b226c968cb54e6"
+}

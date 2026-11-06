@@ -1,0 +1,20 @@
+{
+  "stage": "native-chiton-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C392-native-chiton",
+    "--",
+    "python3",
+    "audits/C243_ALLOUT_20261011/execution/run-native.py",
+    "audits/C266_CODEX_20261017/coordinator/chiton-01/plan.json"
+  ],
+  "startedUnix": 1792269461.410887,
+  "beforeGiB": 95.98018264770508,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 2.005,
+  "lowestGiB": 95.98017883300781,
+  "afterGiB": 95.97797012329102
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "2712ded20b817acb4dc0f29af9b91c200279cec89f423bf365333716e862f441",
+  "cutoutSha256": "20d61d7b9c235f061c1129eaafcb0eca23e832ec47954ab050c4f3b2247f3ee0",
+  "keyedRgbaSha256": "5d44e6f0cd117d5180a472e1bd177037498358469a5ef1ec3dba68a2945807cd",
+  "labelsFile": "labels.png",
+  "labelsSha256": "77bbbd283e15681cf75a3a8a4aed7bab32975ed87d21328166888a65ade24a23",
+  "parts": [
+    {
+      "id": "root-patch",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-shoulder",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-shoulder",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "df94cab3e15d3a74046c58b16316b3696d8bcdad26a4d145a8df52f34d2d8100"
+}

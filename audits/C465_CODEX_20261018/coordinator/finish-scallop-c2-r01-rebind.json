@@ -1,0 +1,20 @@
+{
+  "stage": "finish-scallop-c2-r01-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-scallop-c2-r01-rebind",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01"
+  ],
+  "startedUnix": 1792381218.9668522,
+  "beforeGiB": 54.59944152832031,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.003,
+  "lowestGiB": 54.59943771362305,
+  "afterGiB": 54.59566879272461
+}

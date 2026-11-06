@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Manatee\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2582445823\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"19\"]]]]",
+    "seed": 2582445823,
+    "ownerId": "authored:archetype-sprint/c243b02r2c2-18-manatee",
+    "earthName": "Manatee"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2582445823,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 10,
+    "body": 6,
+    "loco": 17,
+    "trait": 19,
+    "size": 0,
+    "diet": 2,
+    "head": 0,
+    "limbs": 0,
+    "skin": 4,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 3,
+    "habitat": 10,
+    "detail": 7,
+    "accent": 8,
+    "temper": 2,
+    "sense": 1,
+    "repro": 0,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Manatee"
+  },
+  "geometry": {
+    "cutoutAssetHash": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5633321807224266,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6984848484848485,
+      0.4575757575757575
+    ],
+    "head": [
+      0.7877990430622009,
+      0.45933014354066987
+    ],
+    "jaw": [
+      0.7842105263157895,
+      0.5011961722488039
+    ],
+    "spine0": [
+      0.6444178628389154,
+      0.4414673046251994
+    ],
+    "spine1": [
+      0.5650717703349283,
+      0.43014354066985644
+    ],
+    "spine2": [
+      0.49170653907496015,
+      0.43269537480063797
+    ],
+    "spine3": [
+      0.4256778309409888,
+      0.4496810207336523
+    ],
+    "spine4": [
+      0.361164274322169,
+      0.47464114832535886
+    ],
+    "spine5": [
+      0.2997607655502392,
+      0.49338118022328553
+    ],
+    "caudal": [
+      0.26371610845295057,
+      0.494896331738437
+    ],
+    "dorsal": [
+      0.5496012759170654,
+      0.381658692185008
+    ],
+    "pectoralNear": [
+      0.6759170653907496,
+      0.47535885167464115
+    ],
+    "pectoralFar": [
+      0.6802232854864434,
+      0.48556618819776715
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile sirenian media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from tang. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "0ea2549079108a010ea86e4416b3fa7eb4841ae244128b3d7d7a70fe2311c21c",
+    "subjectSourceSha256": "3fb81d452ad2d8d49116fd2bbae7484e0bea56e86844ab926c40ab7395e966f1",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.08933142349204481,
+      "jaw": 0.04201954083791939,
+      "spine0": 0.056415611255200226,
+      "spine1": 0.08015004694800629,
+      "spine2": 0.07340959756911644,
+      "spine3": 0.06817846042265033,
+      "spine4": 0.0691737447085521,
+      "spine5": 0.06419953025560055,
+      "caudal": 0.03607648804103564,
+      "dorsal": 0.050893189427779414,
+      "pectoralFar": 0.03342078529224368,
+      "pectoralNear": 0.028732268784626907
+    },
+    "measures": {
+      "body": 0.3485449256424049,
+      "bone-min": 0.028732268784626907,
+      "bone-max": 0.08933142349204481,
+      "caudal/body": 0.10350599129952295,
+      "head/body": 0.25629816106889985
+    }
+  },
+  "recipeHash": "35b43f7b40e3035523ab8baa493011a852764f2559c7de21d4570c9870dccad3"
+}

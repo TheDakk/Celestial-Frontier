@@ -1,0 +1,35 @@
+[
+  {
+    "id": "02-serval-tail-neck",
+    "args": [
+      "node",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-rig.bundle.mjs",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/islands-01/fit",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/master.png",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/review-01"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "03-horse-front-chain",
+    "args": [
+      "node",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-rig.bundle.mjs",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/islands-01/fit",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/master.png",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/review-01"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "04-rhea-legs",
+    "args": [
+      "node",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-rig-birds.bundle.mjs",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/islands-01/fit",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/master.png",
+      "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/review-01"
+    ],
+    "exitCode": 0
+  }
+]

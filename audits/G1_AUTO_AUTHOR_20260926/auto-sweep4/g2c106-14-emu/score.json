@@ -1,0 +1,10 @@
+{
+ "id": "g2c106-14-emu",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

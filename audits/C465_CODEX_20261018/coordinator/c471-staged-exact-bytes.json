@@ -1,0 +1,2092 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "50dad4ae24891067a5920ed2a94f59e31bc8bfa16be6eb3075969ee30a5e7b73",
+      "bytes": 5689
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/c470-staged-exact-bytes.commit.log",
+      "sha256": "05f32bf150fcee62006a73f64d06a0c22e84690ff0404da94368ea7b5b348df6",
+      "bytes": 135664
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-a/generation.json",
+      "sha256": "2f41783fa7dc04ac58d0d644da3574120da4ecc79b2cb914fbb963f3a0459caf",
+      "bytes": 1254
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-a/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-a/lease.json",
+      "sha256": "307e84b8290450a3b7dadac52dccfd8656a6e2209313db535398744d426af2c1",
+      "bytes": 289
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-a/master.png",
+      "sha256": "273b1ae5b60cb664b31dade5cb95162fdfcffdec47318a59452a8eb4c4b2b101",
+      "bytes": 1585406
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-b/generation.json",
+      "sha256": "3f6dbfb115b36a383eff2eab7aa2970ee513bb1cab7968a42cdc54760f1f96bd",
+      "bytes": 1256
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-b/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-b/lease.json",
+      "sha256": "6f787d5aef5004da83b9a7456e90210c7a10f8c694b24398d4ffe65227a389c7",
+      "bytes": 292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-b/master.png",
+      "sha256": "7c03f3e0024f5696293d77df8840944d92ef658bec7fe4d839a0bd4c7f195d26",
+      "bytes": 1577591
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-c/generation.json",
+      "sha256": "30c43ad4b9cbcee24f062b330666a157aa93a76260347af841720b0397760a57",
+      "bytes": 1252
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-c/lease.json",
+      "sha256": "1320834e043c5a650a55eb3baf30dfc7cbdd5fbbada3a326b15feda3ec99705a",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-c/master.png",
+      "sha256": "fdb24b9473ebcb65a632ec3e68b33ff8a5694e9254fe565d50868f232ae363c3",
+      "bytes": 1312239
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-d/generation.json",
+      "sha256": "0a0c2ae082ff4f50c585ae8c1a30748ecf5ce5dbc1da454bfc09c72629dd2367",
+      "bytes": 1253
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-d/lease.json",
+      "sha256": "a0b01c60e40473277b5ef7a907933c59c3691bf39a8e3e84076901f0277070bb",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-d/master.png",
+      "sha256": "5e460f0c4f08e19b9cb82e43f557c2c3df15b60af9eae12a980bbb6bcc7f815f",
+      "bytes": 1287366
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-a/generation.json",
+      "sha256": "e900c12dcdae15704cc60744a2f8e9d2648f4ef680d7263d007916c96c900b94",
+      "bytes": 1259
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-a/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-a/lease.json",
+      "sha256": "4995154ab5cfceaadf81a623297433d7f83dea9e411e3442e4d1abc4e4f04a0e",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-a/master.png",
+      "sha256": "f30bc66d0ea549f547ef4222267dd058270b3583b8f12a7a7243a393d9d7dac4",
+      "bytes": 1544463
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-b/generation.json",
+      "sha256": "1e10dd07c9877a471699161121604ad4029eabc2acb0bd5dcf53461afdb367ab",
+      "bytes": 1260
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-b/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-b/lease.json",
+      "sha256": "524a7058abe36fbe1add27fb7b8379cfb841901669144f090fa3a02acd61099c",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-b/master.png",
+      "sha256": "2eab48d0f3acd72451f3bf2dfb21182b67160d40ad1ae127142a89f38b97bd3e",
+      "bytes": 1624413
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-c/generation.json",
+      "sha256": "81aa589117cc01d138ffc8f250b9a939a85ddf3f5a2bcc7956771479e72744eb",
+      "bytes": 1259
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-c/lease.json",
+      "sha256": "c5375327d7ebfbb2b1307a9fb962b0fa8b413cd2abc64b1f097ca4fd7674a7f3",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-c/master.png",
+      "sha256": "421de9980466c907658702707ddea865de86e14d07079ed0aeba42e76d6d595d",
+      "bytes": 1484863
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-d/generation.json",
+      "sha256": "a85d96f4d4b2c62d7721a7c6b2dca49f2d2ea718260e8320ea59dc4fff15e8a0",
+      "bytes": 1259
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-d/lease.json",
+      "sha256": "4043c724677615bf76cc4a6cbfb6fc43f6fe3b5a0b9093cdc5da60355d96a494",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-d/master.png",
+      "sha256": "d7804655f90dc9b47bbafcbc69f1a3058fbbf88851d24dc80b2adbc2c2e9d356",
+      "bytes": 1516425
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-chiton-c2-r02.json",
+      "sha256": "9c004e2e69537c6e0cb4e1d5624be9c2aa9830b234002dbbc88df5d819e37bb7",
+      "bytes": 551
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-chiton-c2-r02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-snowshoe-hare-c2-r03.json",
+      "sha256": "6329d55c53cabc796ab1991a31bdb04a442f83a1fe2433a9cdda95269b8dc8c2",
+      "bytes": 566
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-snowshoe-hare-c2-r03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-fragments.json",
+      "sha256": "bf782c7cbab5ed9b448790917d04964c95b4d88cb864478a3edd48bc26d8c4d6",
+      "bytes": 2138
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-raster.log",
+      "sha256": "0fcfb8f657764442d2b7d32a8307d4639a0a6b64cd96a0543aa4ba0c51f3f829",
+      "bytes": 900
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-rest-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-rest-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn1_reaction_50_left-000-owner.png",
+      "sha256": "aae5c875e2ea286fbc907e45b1449bb31e3fafaa3cc538ba8ab8b07459bda9a1",
+      "bytes": 14281
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn1_reaction_50_left-000-paint.png",
+      "sha256": "3e879829c0bd4be46b9374a8147ed0e8f3d56d58bc29414d96ed4325209fdab7",
+      "bytes": 587553
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn1_reaction_50_right-000-owner.png",
+      "sha256": "bdaf83558fdfdfa3b3a69a608d4f2093850a418753f50a9ace1d94ff5aee963e",
+      "bytes": 12959
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn1_reaction_50_right-000-paint.png",
+      "sha256": "4ec3b355e17c5dd3bb1e53aa1bd5a241a09f49e193f746cdb12b7c953969cb60",
+      "bytes": 561364
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_50_left-000-owner.png",
+      "sha256": "500ac4433abeef5f524f0c620b15d7eb88b8b33ee9f9d67395eceb17bfcb0953",
+      "bytes": 14124
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_50_left-000-paint.png",
+      "sha256": "5fb32372ecc223841a2de72dd2648090a51ec0feea14da5784499d4866721871",
+      "bytes": 577264
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_50_right-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_50_right-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_90_left-000-owner.png",
+      "sha256": "68033eaff5c2366615da09690984364d409f550c1eed4d6746895926ab98c548",
+      "bytes": 12917
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_90_left-000-paint.png",
+      "sha256": "5584ab3324d1c7faca14859c4804e47e3913bf6c918318961b37b88df2e7ff3c",
+      "bytes": 545842
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_90_right-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_idle_90_right-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_reaction_50_left-000-owner.png",
+      "sha256": "f92b0796b6113a05ffba57ed62b95733c09f812c1ed16fe591c262731dcc223e",
+      "bytes": 13451
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_reaction_50_left-000-paint.png",
+      "sha256": "ea0064ff34cda72d216296f1ab98b9df7b3e3c7f30f4a95d12b3d41ef0c30675",
+      "bytes": 585559
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_reaction_50_right-000-owner.png",
+      "sha256": "ce9754e207353128bd009f1ae0121c136df9cbe480df194c442b7a16610dcf52",
+      "bytes": 13375
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02-turn3_reaction_50_right-000-paint.png",
+      "sha256": "62e661e8017c921cad69832ac1c011fba22efc11ff370a065800ed423a86ad95",
+      "bytes": 577932
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02.json",
+      "sha256": "708b4f33b1772eba11c94b060ccfaffe8dfd76f0bc2fae439d8e67179f62cf41",
+      "bytes": 448840
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/baseline-c2-r02.log",
+      "sha256": "70d1326189749e932f91c0cce93cb9026e34de88fc25cdba5e1fcbcdd66cdd4e",
+      "bytes": 211
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/binding.json",
+      "sha256": "0b8905a6010b9c1521b722c2340c52b43191dcdb7cf1871e4a880ccdcbae0e61",
+      "bytes": 842263
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/declaration.json",
+      "sha256": "458bc6e6b4dd1b2dd486ab092c60ed23b7e8481ceac0358c8043bbac673524a2",
+      "bytes": 1023
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/labels.png",
+      "sha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe",
+      "bytes": 37129
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/atlas/c266-01-chiton.json",
+      "sha256": "caf424b1b0384aae905422c805943016cc2f4767b89267a58f1309c4b6c99ca7",
+      "bytes": 2578
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/atlas/c266-01-chiton.png",
+      "sha256": "0db1c13fcad7ed70388be0d323e0be1ca9622e2d079644b2608ec9eb56d40f59",
+      "bytes": 545622
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/atlas/receipt.json",
+      "sha256": "b5b0906d4f3a224eb38c75b9f33b1723fabff85f817baf1dcdf1f06a915afccb",
+      "bytes": 1514
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/binding.json",
+      "sha256": "a1306ea4c448f44f513c52e486acf3c06371821c3c567d50639549ddb6583395",
+      "bytes": 2268
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/keyed.png",
+      "sha256": "c9b297cdaa52765362218b28efa92d9fc39c3c874e8a7b1e184973cb43954122",
+      "bytes": 1545234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/manifest.json",
+      "sha256": "1bce716d22c7e0b081f9a41d8d5a1b39fedafd4a13a7c613f12861ab9f3e5b8f",
+      "bytes": 1020
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/ownership.png",
+      "sha256": "194d381b2635830b19bf35f9831603d3d8bea444df8cd0e07e7fe1ac807079be",
+      "bytes": 12788
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/foot-back.png",
+      "sha256": "c3766b31c18d714983f2e7c93ac079b29bf1f6d4f4a7f9cf8e73d95455232ffd",
+      "bytes": 60176
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/foot-front.png",
+      "sha256": "45273bb00a235829b2dabc97aec12fa663cd90fd25cf2093f1ab6c76dac3ed6b",
+      "bytes": 45733
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/foot-mid.png",
+      "sha256": "5cdb91dea00b1d61141106584b4f8dba82fa2eb039537cc5b01a82d2d64d9865",
+      "bytes": 59434
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/foot-tail.png",
+      "sha256": "f08e73878a52056d8dd692eb69e314f5fd7e332deb931485cfb0c5c274ca2c7f",
+      "bytes": 68650
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/head.png",
+      "sha256": "98245f029da6d0f96b9aa343cbfc4b754e8f1407beca877b531451434ee71636",
+      "bytes": 20341
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/parts/shell.png",
+      "sha256": "d78842cf28fc1ec3dcaba624a812179a64d5d2860cd41532d0fdd0a23a611423",
+      "bytes": 375885
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/parts/receipt.json",
+      "sha256": "6fa4213832a719813e6f29631ba9e3805c280e3c110b9f5b3b4f37396a862da9",
+      "bytes": 2235
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/pre-split-binding.json",
+      "sha256": "72cbbf81d1b34cf847b577e5b79911e97320a98cb8a8a7556e136282fee980be",
+      "bytes": 589127
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/fit/record.json",
+      "sha256": "43a9d3e095c321347959cd521a5c8ef1ac2c0c3ce0a3507fb6020128d6a07091",
+      "bytes": 4999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/boundary-c2-r02/receipt.json",
+      "sha256": "805602def1ee8a4047061e80775cc64318da1613307c7ce97e612802daf36334",
+      "bytes": 1881
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-fragments.json",
+      "sha256": "7029b0b5efbb00e5fda8dd59b259413bd4b03126bfd49b32af01281edbe6f5f2",
+      "bytes": 2102
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-raster.log",
+      "sha256": "352f7a09280fb90793626420112fe5a22532386e886d853ecc76d0f0c214d1be",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-rest-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-rest-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn1_reaction_50_left-000-owner.png",
+      "sha256": "fd66b4846f19351233f497a303fb1706bcb3c5240856e8ce6f9c2077800e9280",
+      "bytes": 14054
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn1_reaction_50_left-000-paint.png",
+      "sha256": "c2d271b2bd7edf3c7640e2915d19835c53f323d1e6ea9fcc4f04b1ca8ccc8959",
+      "bytes": 602377
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn1_reaction_50_right-000-owner.png",
+      "sha256": "f9616ea76316a104760bcb014a2d17023af4b91e9b865586b5e5bf855d844aa5",
+      "bytes": 12880
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn1_reaction_50_right-000-paint.png",
+      "sha256": "97fd6d5357c65694782c0c997da23a015a83f2aeb955861e06ce74f48024eb29",
+      "bytes": 561551
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_50_left-000-owner.png",
+      "sha256": "78fd3f4371a814622b8c5ed94802695218e1e132337284ad48dcb6083600b8f5",
+      "bytes": 13811
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_50_left-000-paint.png",
+      "sha256": "574e05b5775ecf28fa5cec267eeb794befd0a79b21445ad2d31889bced67f3f8",
+      "bytes": 583625
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_50_right-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_50_right-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_90_left-000-owner.png",
+      "sha256": "98b82802f37df8c7380745230b842d3d63cdf446e3a3781d0b81391325caf98b",
+      "bytes": 12825
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_90_left-000-paint.png",
+      "sha256": "8cb4aa3f9fc683dba8dc0d4ea7e33bd75dcca7f505ee2a7187f5ce6b9da485b5",
+      "bytes": 545727
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_90_right-000-owner.png",
+      "sha256": "6fd2cdfec0a9ce9de7cc94ba29d915cf3381b66d3d372c02dc52c3fbaa89fb15",
+      "bytes": 12978
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_idle_90_right-000-paint.png",
+      "sha256": "87275e52e42b17969f07b0a2bb74f4e07a2168ca962c0107d25da5ac41618e98",
+      "bytes": 584073
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_reaction_50_left-000-owner.png",
+      "sha256": "619e925a97375474770366de75ba5bb078dd69255175a0bcfdc6cf06bcc976a4",
+      "bytes": 13169
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_reaction_50_left-000-paint.png",
+      "sha256": "75c8b93e287a68b98d47afe74500232c0e45818f620da56f3f5236352101b505",
+      "bytes": 593292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_reaction_50_right-000-owner.png",
+      "sha256": "7876fcb7a3c895aaf8e01eb17a11d5f74d6979b1ed6bf116652c2e4d826b6e35",
+      "bytes": 13240
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02-turn3_reaction_50_right-000-paint.png",
+      "sha256": "e2d3d409c7ea3d0177df359e3f9d5d25281548711597380d5a08ce2de234e10e",
+      "bytes": 579708
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02.json",
+      "sha256": "ff4ae6940884e6acc55a7b5b8a64e7848e0b5f945a15941bf02fcbcf2477dad2",
+      "bytes": 448901
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/candidate-c2-r02.log",
+      "sha256": "70d1326189749e932f91c0cce93cb9026e34de88fc25cdba5e1fcbcdd66cdd4e",
+      "bytes": 211
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/compile-c2-r02.log",
+      "sha256": "f3b0c13c6f748ede0aa81ce2b6b72056c0d508f28ae5590e73a3b4a5f1078430",
+      "bytes": 1477
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/conservation-c2-r02.json",
+      "sha256": "150b40b6d91ed8d310002883ba005df4d8d3c5d37c156b82d7cf48d47a257600",
+      "bytes": 3398
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/native-producer-plan-c2-r02.json",
+      "sha256": "9c705b3a98bf219fd6d80fc1031851d5aae568f84d076d6f65770a2120415666",
+      "bytes": 698
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/physical-review-c2-r02.json",
+      "sha256": "7fadc4fcf23b0be68bae816d59713997b4f6102a17f72ca54ce33173ebbc8b52",
+      "bytes": 5363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/producer-freeze-c2-r02.json",
+      "sha256": "18471cfe425e8ed6075d47530f3dbac2ff288ad33a0a4296c522c9287c92ea20",
+      "bytes": 5801
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/run-c2-r02.json",
+      "sha256": "b6696935ce13c37217036d017cf8cfa3a087bf44a29b8306754aa70ac2060336",
+      "bytes": 2871
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/static-c2-r02.json",
+      "sha256": "76db4c0a41dd80a4bbb4be9bdad27f10f57c6b78b52d16fc140debee70b4a89d",
+      "bytes": 6350
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/static-c2-r02.json.sources.json",
+      "sha256": "e0eab4b38abdafd562d212373fa469cfceba53e6886faa6e39bdb3e9743fc8c1",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/static-c2-r02.log",
+      "sha256": "e15dff57513b335448ddf29851d867c0548930aaa7352010b12d5b50c0210cef",
+      "bytes": 1452
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/conservation-owner-r01.json",
+      "sha256": "349a0fd85a1d8853ef4f1c1fbe2b8f0733fb1772b12084391c09af1266f1f811",
+      "bytes": 1888
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/verify-owner-conservation-r01.mjs",
+      "sha256": "656ac8eb2df05c187aade5339a46b0723da465a2db7d73e1903c64f740f109fb",
+      "bytes": 4621
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/run-hare-c2-r03.mjs",
+      "sha256": "3c586943f9877300ed3fc10f9f7af76ccfa6bd8892612b1d892716c5626fe124",
+      "bytes": 1842
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-fragments.json",
+      "sha256": "6defffe895f953793670030638fb2ae4373a5018d2ab32d746a879f7b97fc556",
+      "bytes": 2474
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-raster.log",
+      "sha256": "4ff8b6e5da7b1cd86dac01dc5eb99f7dbccd3aa4ae1a84da504d28f9168672b7",
+      "bytes": 1103
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-rest-000-owner.png",
+      "sha256": "79df664f33c45b19a4b3fda453fe11eac2b37b0181b94600c0b207ec0c10d970",
+      "bytes": 14578
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-rest-000-paint.png",
+      "sha256": "7e4b433e533c50c1b0739d82c6aa40995a4ab7a7719e13ca56b8c93d87013ab8",
+      "bytes": 328674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn1_reaction_50_left-000-owner.png",
+      "sha256": "b4a942edbf0db81a9cf0e77058ea768579e7ef8ff346b37e3e3e3aeb5f4b7502",
+      "bytes": 14698
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn1_reaction_50_left-000-paint.png",
+      "sha256": "1b374459711a05c308c88681d00f76719c5993c57b883ff0e7044105041288df",
+      "bytes": 325727
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn1_reaction_50_right-000-owner.png",
+      "sha256": "efd58f96e7810f0877578a509a90e54a60a0959817f086e1b2e9af6a76345407",
+      "bytes": 14639
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn1_reaction_50_right-000-paint.png",
+      "sha256": "aef826dea0b8bb901babe146451e326580717aeefc998d508738432996fd62e0",
+      "bytes": 328615
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_50_left-000-owner.png",
+      "sha256": "0e227ac16e602fdef76f0f83eb88aa864ff271fd5c10fec0ae3ecf9c01619b0a",
+      "bytes": 15178
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_50_left-000-paint.png",
+      "sha256": "92410df13026ef18b257ad75718a0df4b04bb5834dee6d4b620b1cd27849681f",
+      "bytes": 327441
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_50_right-000-owner.png",
+      "sha256": "b84d10caa945b1be1c8db81b59748887c74229c72d4b53d182d1d4c73f285d54",
+      "bytes": 14876
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_50_right-000-paint.png",
+      "sha256": "731322707dee38e9d0e4039e728d6c526b146a5fc37f49d1641e80ff388d3839",
+      "bytes": 329079
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_90_left-000-owner.png",
+      "sha256": "6ac0585129c151b4397c5a046530e4b4ba6e3c78bfebbf5bd4708f2d0b60ccf1",
+      "bytes": 14768
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_90_left-000-paint.png",
+      "sha256": "39254a275cfac3b705a5ac2694ed10f9e0276dd6635d6e6cc12d7688a3103bfa",
+      "bytes": 329238
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_90_right-000-owner.png",
+      "sha256": "b84d10caa945b1be1c8db81b59748887c74229c72d4b53d182d1d4c73f285d54",
+      "bytes": 14876
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_idle_90_right-000-paint.png",
+      "sha256": "731322707dee38e9d0e4039e728d6c526b146a5fc37f49d1641e80ff388d3839",
+      "bytes": 329079
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_reaction_50_left-000-owner.png",
+      "sha256": "40ac81fc83fde01eff1d257610c1f35fc236fbf7d7da9453c32910692b60bb0d",
+      "bytes": 14738
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_reaction_50_left-000-paint.png",
+      "sha256": "9b641671819c685028d076f1e3432e83b2d259212e789c571eee3525a04540b2",
+      "bytes": 327763
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_reaction_50_right-000-owner.png",
+      "sha256": "8e9d1893529d80e5b66e46bb45ebebd13157ef1f6209c1df61b328eb34425558",
+      "bytes": 14994
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03-turn3_reaction_50_right-000-paint.png",
+      "sha256": "5594c06e5960345d9dc774b73eca66df79e38f1189d29b39ac59ce9902e9ed80",
+      "bytes": 328746
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03.json",
+      "sha256": "9dbac2c1e637d7789c414c7c4b4762e9c5f0b3b9b8923e2723147d878f496e69",
+      "bytes": 697408
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/baseline-c2-r03.log",
+      "sha256": "b79dc6753081b4a2c51b768d8a3200cd584ceb8e10966a1f4421b49b2709636e",
+      "bytes": 223
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/binding.json",
+      "sha256": "e2b5b3f700f79598a623026e15d2caa8904d1ab2f68bb3c59e46ae8c105a075e",
+      "bytes": 1282633
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/declaration.json",
+      "sha256": "4473c3896e6321c1a49384f3c8a431de3b67cbf7ad5b313046da46ce62cbab1a",
+      "bytes": 3279
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/labels.png",
+      "sha256": "dbc1476a7fe61aecabd2964d6a1451e438f5b352de623bb4f34fca7d6a0f8f04",
+      "bytes": 40617
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/atlas/c266-11-snowshoe-hare-c1.json",
+      "sha256": "5a948a699e92040a3d0fff2a99ecd78c813afe79ba79f3f6f04ff060a021c514",
+      "bytes": 12610
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/atlas/c266-11-snowshoe-hare-c1.png",
+      "sha256": "35f29d0beddceb14c10b58c872d32887bbad0f171a4dc8203d7ee9323bb52ed3",
+      "bytes": 287508
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/atlas/receipt.json",
+      "sha256": "52531d61a461c5b9bdd306dd81f5b03a082c434f0b3b69a77fb66f349935f92b",
+      "bytes": 4744
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/binding.json",
+      "sha256": "58e920a62dc061efef68db46b9dbc74aa9d8ee470e07dda2903e31cd0ee68b43",
+      "bytes": 10295
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/keyed.png",
+      "sha256": "4e40c4405ff530d24e9e34162191b2b91879b0c4e4e6eb13fd7877a0e2fc1b18",
+      "bytes": 1358007
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/manifest.json",
+      "sha256": "f3e9fc53803283c3d3c38ea9ab68150e18d1517583e6862a7dbd2eff004152a1",
+      "bytes": 5220
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/ownership.png",
+      "sha256": "17cb1f8955cc5fbcf0dfaee403f78063bdb4099605fa4081e5256860970c2812",
+      "bytes": 14320
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/chest.png",
+      "sha256": "2cb101616fb2cd2624837dfe2bb7e59db57f5f82efebcedf04bb794c90edbef8",
+      "bytes": 15757
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/ear-far-root.png",
+      "sha256": "e31f41d75edf0d677fb2f0e3600229c7e57b5c8d1da314915cec95163f5a19a6",
+      "bytes": 7296
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/ear-far-tip.png",
+      "sha256": "bfbab692354ab01dc7c092f472a1e6de22a4ee33e23203059b1e0e3e44640bc0",
+      "bytes": 490
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/ear-near-root.png",
+      "sha256": "ac506650f265c3203a32380f6ea78205eac1735324be13e7a6291ecc18e3dae6",
+      "bytes": 16789
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/ear-near-tip.png",
+      "sha256": "d2a260587d52fe104b8dcce81740a304509a934cb19bb14cde5ab4cb595693db",
+      "bytes": 901
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-far-ankle.png",
+      "sha256": "04ee50491b9914b9d2f3f9196c267ca35cd33c1b25d8a5a958e2a0b6ddd73334",
+      "bytes": 1602
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-far-knee.png",
+      "sha256": "5b349f88cb00ae7657d268979ca352b6ff447fa376d8f960d6f2ea3eb5adfc3c",
+      "bytes": 8944
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-far-paw.png",
+      "sha256": "280d2bc93a70bf4f41b6fb1e93f8aa3d8835d7acf43ebaeba221633747fe63be",
+      "bytes": 5903
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-far-root.png",
+      "sha256": "920a9c2f1ae33db4220fa5d1472916f28c950199de26616abdd02488a0124cdc",
+      "bytes": 9234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-near-ankle.png",
+      "sha256": "2641cf8dea5819efc4e0665949a342d12132b7a649895034281060e0fb7ec554",
+      "bytes": 1653
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-near-knee.png",
+      "sha256": "c6ee2429e4f15939ab90283959f63d918032972f4c91e4f9222ee16601fcd337",
+      "bytes": 10718
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-near-paw.png",
+      "sha256": "aa43ffbcb5a333ca6a3d7552bb399bd4930d8ee9ef9aaf3a55ca8ecc826a5605",
+      "bytes": 7757
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/fore-near-root.png",
+      "sha256": "1ac9801dd581310b644693ddc9b5ebd839e921bf0a20c7d70b436231e395f30b",
+      "bytes": 11562
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/head.png",
+      "sha256": "6f5540713cc01422ee8437002bd90d3bdc20bcc2a6e7069efd114a08ed458d8a",
+      "bytes": 29720
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-far-ankle.png",
+      "sha256": "9e39499d0e08dbb4cacb8abcc7ff3c5f255ac9c9989949696c9d25aefa795fdb",
+      "bytes": 4691
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-far-knee.png",
+      "sha256": "ae8e46855599c11b37a68fa4fa2b7ac461c23fa42dfb0b006f7e2e54be7f2467",
+      "bytes": 9860
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-far-paw.png",
+      "sha256": "ec2637a3c19e43aadc12fcc18df82cc22dccd7aa755d67fd8855def6aa435e8f",
+      "bytes": 13787
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-far-root.png",
+      "sha256": "446dd379b847016056df36dac05955d010090809eee3356ca9c4f6bfd6633677",
+      "bytes": 5205
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-near-ankle.png",
+      "sha256": "5807b72cc09855900f11ce074f982f6f930c06b2b8e9c556a7650482c9c3c937",
+      "bytes": 6450
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-near-knee.png",
+      "sha256": "4eef7a80fc48166604d7de834919d7c01ac37304eefbe1250bd53d89a57ae7fc",
+      "bytes": 8579
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-near-paw.png",
+      "sha256": "f0b14ea16f603e40276a98a25ce6e113bca38e3526f304ce7edde5d1bce5ad3a",
+      "bytes": 16654
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/hind-near-root.png",
+      "sha256": "cc4c67643c3665ca59e06cd37abced0e130b5bfa00fa758b1a3b0c964ed1d7c6",
+      "bytes": 28520
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/jaw.png",
+      "sha256": "43acb4a3c03353d77aa49e7fe66e68f3f232ec07d969bb549b426e1494320f1a",
+      "bytes": 2966
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/neck.png",
+      "sha256": "7a27109653b3212d59606281536332fc7b1b288c5003ea0318a26d26c13e30ae",
+      "bytes": 16113
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/pelvis.png",
+      "sha256": "0bde1be6d38e2a22e2b2cab52982ff466077b2df3787ac40bb07c476fe801f42",
+      "bytes": 7154
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/root.png",
+      "sha256": "ccdc972a7132dfe9749393de49dcda0a7f8815fef2a756dc4302582521a28c1f",
+      "bytes": 27726
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/spine.png",
+      "sha256": "8281bb2aa8f46ca83fa4de586c2108d8767f4cbd8eca222c12f36f9b23cd0363",
+      "bytes": 41534
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/tail0.png",
+      "sha256": "7a2c5f2c9c7bf86c89c980566d9f32f9676c2e658f13c94afa42794f022da0b6",
+      "bytes": 3923
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/tail1.png",
+      "sha256": "677359474aec7aac34254f9224c14488aa7d12ecdb86735bf18f6382ca5ad4e2",
+      "bytes": 4187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/tail2.png",
+      "sha256": "e6d9bc3beb3c3279b2d8e50e1cc6f2e0a8edb35fa1e94d69a211572b0126a19b",
+      "bytes": 3557
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/parts/tail3.png",
+      "sha256": "13ac7233e8405111a3d95f6102ec27f59436490d9f73d6ec2aede1839cf8d619",
+      "bytes": 1696
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/parts/receipt.json",
+      "sha256": "92b1f1e4ab8b8435f50af8bbd6a3d05b844a7a2062c8f8f726e2c3bd33e43553",
+      "bytes": 8166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/pre-split-binding.json",
+      "sha256": "7868ca9a626ab151666630753329d314c3340eb713cf510fd2a5ff335e26f996",
+      "bytes": 802475
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/fit/record.json",
+      "sha256": "d3419836b59d6b71ce0117f354002dfa18745c1d275c42267de0f97f2d1dd52c",
+      "bytes": 7923
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/boundary-c2-r03/receipt.json",
+      "sha256": "62a243a6deeb3485f299095c95d932d3f589fe358e8a01e715db6923fca3b580",
+      "bytes": 2668
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-fragments.json",
+      "sha256": "6acaa141725b50a1b661a204bfa6140593911d9a1d2608a7086dbec940e4a97f",
+      "bytes": 2563
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-raster.log",
+      "sha256": "2e10dab14006a51390789f651c1efa153dd931dc68070ad7da1cd52a4a731d54",
+      "bytes": 1191
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-rest-000-owner.png",
+      "sha256": "79df664f33c45b19a4b3fda453fe11eac2b37b0181b94600c0b207ec0c10d970",
+      "bytes": 14578
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-rest-000-paint.png",
+      "sha256": "7e4b433e533c50c1b0739d82c6aa40995a4ab7a7719e13ca56b8c93d87013ab8",
+      "bytes": 328674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn1_reaction_50_left-000-owner.png",
+      "sha256": "1f3884627b85325f8c24430ec578ce1a9e68297ac67ed06d81d84dd3910bb9b0",
+      "bytes": 14704
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn1_reaction_50_left-000-paint.png",
+      "sha256": "4c53f1ca7b0cd43666b1763db0fe6f8a3aadc1bae700f32ff50d6b43565d36a4",
+      "bytes": 325852
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn1_reaction_50_right-000-owner.png",
+      "sha256": "2c303fafa2c010cdd8977b1eb800c8aac1903f363cc0c397856b937e4becc2d7",
+      "bytes": 14643
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn1_reaction_50_right-000-paint.png",
+      "sha256": "4c3a9c7cee218a56dd5426845e596cc08f8a5642ff588c0b37f3b2a202b8a608",
+      "bytes": 328694
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_50_left-000-owner.png",
+      "sha256": "6027494c1873adf0c63156004a110f93d9c22dfdabb255f2bd29979247b7cc47",
+      "bytes": 15047
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_50_left-000-paint.png",
+      "sha256": "0bbd108bc124b4f39ede9fa13ebd65d8d52b4f7e67f9a9e51c6ede86cac61b87",
+      "bytes": 327673
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_50_right-000-owner.png",
+      "sha256": "f70aeec23d98634a465efcd6e620343dcd81b64c807cb9fb511c5e629e949ba8",
+      "bytes": 14712
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_50_right-000-paint.png",
+      "sha256": "3271f4d2d31c331457f7b7784f35656bd2f42e2f2599ffbecaa96370e466ee83",
+      "bytes": 329215
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_90_left-000-owner.png",
+      "sha256": "1aee1969dcebe426fd4007855e5a7bdab19b80b38895597c9dba9b5242d88d61",
+      "bytes": 14852
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_90_left-000-paint.png",
+      "sha256": "e4b17f9456ba7f78d82c44c5b30a25e479275bf09af95642b5d26fd56a7ca352",
+      "bytes": 329435
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_90_right-000-owner.png",
+      "sha256": "f70aeec23d98634a465efcd6e620343dcd81b64c807cb9fb511c5e629e949ba8",
+      "bytes": 14712
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_90_right-000-paint.png",
+      "sha256": "3271f4d2d31c331457f7b7784f35656bd2f42e2f2599ffbecaa96370e466ee83",
+      "bytes": 329215
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_reaction_50_left-000-owner.png",
+      "sha256": "3991aa6109e6ca6211d1dec84a4e151e9240fc8386054692991b0b5c0a4f99a8",
+      "bytes": 14757
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_reaction_50_left-000-paint.png",
+      "sha256": "d1c937dea30147a17269c4c2f0e42cee26a5897a025ee4c01911fcf1c7021ebc",
+      "bytes": 327916
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_reaction_50_right-000-owner.png",
+      "sha256": "4f1079e1f83f21524eb7f0d63bdf3fd196669f2b0cab26f8f8d79b633f3ae9d9",
+      "bytes": 14892
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_reaction_50_right-000-paint.png",
+      "sha256": "cdcb7dcf895cf38f7b035b63e912ed6c79ecd39d442e6d69d26017784e8bf0b2",
+      "bytes": 328608
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03.json",
+      "sha256": "b9b23cf0aec5c1dd86c655522fff01b42ce00419952a59ea227f92042fefc896",
+      "bytes": 696815
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03.log",
+      "sha256": "b79dc6753081b4a2c51b768d8a3200cd584ceb8e10966a1f4421b49b2709636e",
+      "bytes": 223
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/compile-c2-r03.log",
+      "sha256": "f076308597ec46d0953de812792f1c05ca8472c48f7d014d7eb89f8192c944ac",
+      "bytes": 1923
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/conservation-c2-r02.json",
+      "sha256": "562f770104684f3f63f67b4312eb0318df67bc421216347b5fcb2c5e58a4ef40",
+      "bytes": 6976
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/plan-c2-r03.json",
+      "sha256": "fce265f6fa5b884975e316394aa0e634e0efaf6f8cd3ed489269caeecda69300",
+      "bytes": 1012
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/run-c2-r03.json",
+      "sha256": "cbcc738155192ff7c1aedf70dbc4dcde17a5a0233ac904f5fb28912597dc8f7c",
+      "bytes": 3055
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/static-c2-r03.json",
+      "sha256": "b336da43630b7cc337b177ca29a4bbece42ca6ccca72a2b1e4b38b86c736dcbf",
+      "bytes": 10547
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/static-c2-r03.json.sources.json",
+      "sha256": "8a7145b5a0313fffbed5d1fd6c76c084b8cbbb1348632cce5100aa861171d3df",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/static-c2-r03.log",
+      "sha256": "1fd880524433bf50e8beda278eab1c86b6585076b3479078c0e50cb4654079df",
+      "bytes": 2887
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/conservation-c2-r02.json",
+      "sha256": "4e5efb15f8830315544fe8b9c33155159f17389f73552aa28f4313ddaae9bdf5",
+      "bytes": 4977
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/README.md",
+      "sha256": "f55b87e6812da25f88c01d84cf3561f8426f1eb684afb7568d7af257ec24868a",
+      "bytes": 3705
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/build-snapshot.py",
+      "sha256": "9c128e352669a0608fb772a3ef7a1a2bfef0aec6f701de8acb70421c163135a9",
+      "bytes": 8603
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/hold-overlays-r01.json",
+      "sha256": "6e23e735d52cf441a2fc95c714f53fb082ea3d871c9fff0c78bd3d0027a4e679",
+      "bytes": 13635
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/inputs-c470-draft-r01.json",
+      "sha256": "3471e193bca5512a1919983f157207329c00cb3a2ddf2801aebdec86f7ee0814",
+      "bytes": 3037
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/reference-selection-r01.json",
+      "sha256": "4e46fa5d2918a3cbbabe69a4458a20e5237dd6e1b31989134e3a2dbd488df428",
+      "bytes": 363097
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/select-reference-evidence.py",
+      "sha256": "c52ed8a5006f30ad9a098b83f7c638df7676e088bfe75a1300eb479bd4f70341",
+      "bytes": 2696
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/dispositions170.json",
+      "sha256": "447958a859fa4569dcc639ffc96a926c2e3e5b860cfb28f58bd7836fcb2ab014",
+      "bytes": 551752
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/five-still-index.json",
+      "sha256": "5f6ce8d8459601b05bda93b9c76517682388654a44289069c5c1de835477088f",
+      "bytes": 6219
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/hold-witnesses154.json",
+      "sha256": "ce0bdb30cfe865fd5ded8dd89227b9c8e0989692232fc59cb4e0a09c61855773",
+      "bytes": 542645
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/selected-files.json",
+      "sha256": "e7e01d0f9c28adcdc0301e5d2067d2bcb2dc6a741bfcfc52e28e94dac989257a",
+      "bytes": 146849
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/snapshot.json",
+      "sha256": "759e46f73cac77b8288c8c945417a3fd55625349ed2387124b03e545cf572ccb",
+      "bytes": 2088
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/source-progress.json",
+      "sha256": "48b1e317d22e800d77e88c91a9ea3e60a065cbcdef52b2ba7f69d6db4836e2d6",
+      "bytes": 32166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/snapshots/c470-draft-r01/verification.json",
+      "sha256": "334c7a0542e4cb3edb044be5d955de54683d6a3a968a65550f2b4b6a25d373ef",
+      "bytes": 1802
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/verify-snapshot.py",
+      "sha256": "673d834f6fae3f141023514d40c4a3dcab7708b5952039d7933f8d29b0c2f7e0",
+      "bytes": 9821
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/wave-r02/README.md",
+      "sha256": "3496caed9eb9a4a35ceffb58d5955fab6d4d0ea4129a72dbb2466409a6435145",
+      "bytes": 2711
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/wave-r02/freeze.json",
+      "sha256": "d1768eb19a7b626cf76eee3d9fc284188ecd5adebe15f87b41efdcbae2696bd7",
+      "bytes": 2276
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/wave-r02/verification.json",
+      "sha256": "f28815f63ac85cc0e9c733604bce531e85abb423a6e12f3afe11977805f8c049",
+      "bytes": 1004
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-paperwork/wave-r02/verify-current-wave.py",
+      "sha256": "94b3ce912d802fe12af5af0a6bf80bdb5d5c2e3739dfb740d4909b4b366aca28",
+      "bytes": 6221
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-keyed-neutral-2x.png",
+      "sha256": "6aea59f198006eb01af8653ba9356052f7b9d387c85c940b8ef0af58711bbc51",
+      "bytes": 45936
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-keyed-neutral-native.png",
+      "sha256": "ca5ab56d321d1bc76601c86c445a6851a67b070b1365088b1ea0cbe4f185126d",
+      "bytes": 32185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-original-2x.png",
+      "sha256": "aa733a431746898131fd14fd97fdddd0948c98fff2e63ec67627a507d9e05aca",
+      "bytes": 212437
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-original-native.png",
+      "sha256": "ccc35bbd586c3a5d440eab738548e25ffd6c5f7acad0ae20107f7eecb9b1d44b",
+      "bytes": 161955
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "fbdbe109b7b288a3466fb519284e67f059f9d11ca5fec66ef1d6c535d6d59d0d",
+      "bytes": 57928
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "315a1921fca4d67794357a2bee6ae470296aeccd81db5ffbb1346685796a6c45",
+      "bytes": 43133
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/keyed-on-neutral.png",
+      "sha256": "58646d85e8e0b523efe5c979e0cd7fcc1355fe96a15f1c6c9cdf367db62b2ff1",
+      "bytes": 142901
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/keyed-preview.png",
+      "sha256": "9bf32cecb1d7efce929a3420ac394672bbb7a678fd07614456f3ae427f885530",
+      "bytes": 1123353
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-keyed-neutral-2x.png",
+      "sha256": "d82120aadf098188614bc2c572dca854d9a0bc6169f89d45cc97e9d9c80ee6b8",
+      "bytes": 163490
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-keyed-neutral-native.png",
+      "sha256": "ac3c6efa2c58a1c1f7f3eb494c819e04d05f68c4fccfae54ed4c34ac84f682d4",
+      "bytes": 118934
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-original-2x.png",
+      "sha256": "d5cf7fddfccb7373643908adb6e535f4890ada14874c2c39ee1d0654d7604c96",
+      "bytes": 668322
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-original-native.png",
+      "sha256": "941052f0a9adca2484cffda9077b39db36578fdf63d7c06030efa30f15a8c7e2",
+      "bytes": 500742
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-raw-classifier-neutral-2x.png",
+      "sha256": "1e98974c6dff541a663232035d6344b57f1afe9ef0d6e5d2c775c63497844e1e",
+      "bytes": 188942
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/leg-shafts-and-tarsi-raw-classifier-neutral-native.png",
+      "sha256": "fd49f160cea4521a2ab0aff548dc4da62930f436206b476927c99f50c86b2a90",
+      "bytes": 142390
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/numeric.json",
+      "sha256": "7ea618f0653f0303aa1650be9468b580416efc9e582e8792692b77134fc10ea9",
+      "bytes": 20809
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/observations.json",
+      "sha256": "dea14f02907e6f5d783b8f4b8c035921ecd9a3fe6b3375e86a32456c287ca6b1",
+      "bytes": 4237
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-a/raw-classifier-on-neutral.png",
+      "sha256": "7305b44c4ea38f041a0c42639eb53ee4959ec73738ae649f21e587e115aabee9",
+      "bytes": 168993
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-keyed-neutral-2x.png",
+      "sha256": "065ed225997b925de24520080ff5206edca70c78eadcccf7c40e011504ae781f",
+      "bytes": 45623
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-keyed-neutral-native.png",
+      "sha256": "1548be8891c3aa40606814f5ce300646ba9a1d2c4749572577e5aa909385a688",
+      "bytes": 31674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-original-2x.png",
+      "sha256": "489d402efd5728399f4caec4b828574dfb0d0082d6f36a08c13a0985d81ed6cc",
+      "bytes": 221417
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-original-native.png",
+      "sha256": "9a91c607d0b4c005be90e49abd6a50011265a66119c5615b953c4103f1aaa3cd",
+      "bytes": 168832
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "d09ca3e77b4a23a2b7ed654272d7c75ec22b195328a4a3b7b93fc509b54c7c9d",
+      "bytes": 58433
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "f32d44538e361e647bffbea124671e696c0255683cface5283afefb39fefae77",
+      "bytes": 43426
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/keyed-on-neutral.png",
+      "sha256": "9cb69b5d8f1dbaa45b8a3c585662038651e25d951f7a4eb4088e4c336214b21b",
+      "bytes": 137662
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/keyed-preview.png",
+      "sha256": "f93b28f3b172243c51e32092d556574c7e0f6bf3019eee2bc2663908ecd9ed8d",
+      "bytes": 1182317
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-keyed-neutral-2x.png",
+      "sha256": "257e04d8691ccf1cc25df73d6fe416e7c6db027739d8be0cd16ed14c6ee3348d",
+      "bytes": 157814
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-keyed-neutral-native.png",
+      "sha256": "4cc5ec5248ed1aac39fe6cab0bb4144284b429b8a370036dd394be9d1991cf9c",
+      "bytes": 112794
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-original-2x.png",
+      "sha256": "2f2e93a8a89b634af2d883e91283ee81129fcde38ddc1c5e72dbb2f14b849808",
+      "bytes": 697562
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-original-native.png",
+      "sha256": "21145180f56fae337ca7d0ba3b009069fe6c4048a4ac4fdcdd48202cd845d61c",
+      "bytes": 515092
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-raw-classifier-neutral-2x.png",
+      "sha256": "d37ff11455cb1bef3a51d88a977c1dc7b2e43a7ed6b52c7a3ac3ab4759acb3cd",
+      "bytes": 182179
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/leg-shafts-and-tarsi-raw-classifier-neutral-native.png",
+      "sha256": "ce94b84d57536fa37a6a15b4fd38c3c6cd09611e61766c7ffbd3b6071c75ad55",
+      "bytes": 135874
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/numeric.json",
+      "sha256": "381065f34a51587e27bc7c00534508fd539ce1149000a326ef0cbcd08fd4f6cb",
+      "bytes": 20796
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/observations.json",
+      "sha256": "0310d2fef68b3a867e632195983c0754c567ca36d8d8aa15158804a17728f349",
+      "bytes": 4332
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-b/raw-classifier-on-neutral.png",
+      "sha256": "a6c73a9d55a6f7c21d7b163404436724b0c2c5bcd490adac39598a01330b3960",
+      "bytes": 165236
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-keyed-neutral-2x.png",
+      "sha256": "031b6cb54e45374eb1e624793c22e796ea1dc5a2fb155fe0fee0d3d69085d516",
+      "bytes": 42887
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-keyed-neutral-native.png",
+      "sha256": "aef421bc3df3997e641fd1e54016a7a815c26f423725064ec6f861788c6c2245",
+      "bytes": 29290
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-original-2x.png",
+      "sha256": "90b6f922b3ad9a8111cadcc5c05c5b85f5ed023274e951c6591dd853dd17f953",
+      "bytes": 218553
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-original-native.png",
+      "sha256": "eeb9a7c6502d83a48f7c934ed56a4a36a1677083d1c9c33b619be991f3bbdf1f",
+      "bytes": 165319
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "72ed94f0ea6080f6ebb951486c357e8755edd12963e7d328a3d384d3e07df1cd",
+      "bytes": 55059
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "b83333fa7d85a27a54600d66a501bf71aaae9bd3af31fe281e10dced83277ba8",
+      "bytes": 40032
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/keyed-on-neutral.png",
+      "sha256": "c5f22f6856c2b1fa128c334e3d4882d85e3ae9b0d5eb0e71258aefa41fc34146",
+      "bytes": 146533
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/keyed-preview.png",
+      "sha256": "1e5305470370d234e464ef6111948f635f7e8f3935025da041144d6e8747dea4",
+      "bytes": 1201433
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-keyed-neutral-2x.png",
+      "sha256": "b71ad7e420135e2440084f196fe8d0539d3d9df7c5ca0e74fdeb50b7201d0c57",
+      "bytes": 167401
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-keyed-neutral-native.png",
+      "sha256": "13bfa49af99c5a0c2c4c727c57771972e491d50af9acef91c16e2e7160ca31ec",
+      "bytes": 121698
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-original-2x.png",
+      "sha256": "3b1aabe7474e2a9945d18978f104ec85b6a41e134dc48e0a72fd2e075a5f9e82",
+      "bytes": 712551
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-original-native.png",
+      "sha256": "80131932b85e390982d934928685e71213bd0f934bf0ebe10f116f7b1648ea88",
+      "bytes": 527300
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-raw-classifier-neutral-2x.png",
+      "sha256": "fd14b36d042bee2c78b6641311df572fb3a7b1e32f67505ec99af3165e7c1758",
+      "bytes": 191038
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/leg-shafts-and-tarsi-raw-classifier-neutral-native.png",
+      "sha256": "c3a1dbf915e344d0703a1f3e55f950dc61dd49be9acf419a1b4e1fdce76137dc",
+      "bytes": 143145
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/numeric.json",
+      "sha256": "c303e13d6dafddeaeabbc7e605382c25c1d0f2bc52ca26b885e43c15bdc7219a",
+      "bytes": 21779
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/observations.json",
+      "sha256": "b17747b5241eb6b93e784298cdf697d8f0b9c7a7dd28bad2af8f4dcdfb0c30ac",
+      "bytes": 4333
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-c/raw-classifier-on-neutral.png",
+      "sha256": "a61f05428612616611018d1692c5c184fbb6a16338901e01026021ff6defb505",
+      "bytes": 172781
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-keyed-neutral-2x.png",
+      "sha256": "fc51442b6eec5b297cd66ee822255304b64188beb00c1d666852c1f91e12668e",
+      "bytes": 42638
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-keyed-neutral-native.png",
+      "sha256": "e16276a43bb8b88b66c29d211997cf66428e0349dfb6d37cdb37c7ee0ca42a81",
+      "bytes": 29109
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-original-2x.png",
+      "sha256": "4691ecafdbd612fb3f07a4efab8ed1c3ed24449ef8d6115629c5308ee67deac8",
+      "bytes": 212607
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-original-native.png",
+      "sha256": "7e7e8bf3dd5080a4e0a58a873bf6bbe9dd4681558aee345c2b8fa321348425ae",
+      "bytes": 161710
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "bfbc3f557b2254cf00ca191d0118cffc8387a4e3ecebe0fcbeb0296be3e419ef",
+      "bytes": 54078
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "23ac7a5a3053bf96056e2c4d0680de0922c5a55fdccb277c96ebc96c2d1d3769",
+      "bytes": 39695
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/keyed-on-neutral.png",
+      "sha256": "5921da22e53d453b1d644830995838360b0f564bc0cedc3b9324e23c10658bf8",
+      "bytes": 140385
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/keyed-preview.png",
+      "sha256": "1af9bafda1ecf354fadd9d6e9e108c93c548ec3454375a6e683bef2b6671603b",
+      "bytes": 1163499
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-keyed-neutral-2x.png",
+      "sha256": "7b9c02d4047924fec9f5396fac5fd1b9899b340283544c6cce297b97c3177b77",
+      "bytes": 161510
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-keyed-neutral-native.png",
+      "sha256": "e219a7e08cb202b99b69f7127a6772f73cfa418af45ce7ba72398db19fe49d41",
+      "bytes": 116155
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-original-2x.png",
+      "sha256": "9e2d0963caef5f96421cb2b15b743ccaf2cce091d7bcbbb302cf1d5518e4cb7f",
+      "bytes": 702219
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-original-native.png",
+      "sha256": "12be82382b5de2c45881342d31bf95e585bbc441d5ffa0a08466737eccd84628",
+      "bytes": 522843
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-raw-classifier-neutral-2x.png",
+      "sha256": "065721d49bac0923c03d9848c54c243675c3a2a81d937537442239be032bfc87",
+      "bytes": 188400
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/leg-shafts-and-tarsi-raw-classifier-neutral-native.png",
+      "sha256": "47df8df4132d3d81001d4145441a5b16c33512c2777fee43ccbba78d9cd46a93",
+      "bytes": 140957
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/numeric.json",
+      "sha256": "d8acc62ad007f08b61434247dd7e5f22b78f57533e94ba9a4358d4f473380631",
+      "bytes": 20891
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/observations.json",
+      "sha256": "ce3a7faa99545f8b56fc85855db9de0cf25cf4602a010b049873d26afb1f17e0",
+      "bytes": 4237
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-stick-insect-d/raw-classifier-on-neutral.png",
+      "sha256": "47a2a2a31a7aeb40f23fe11560c1788d44f21304a47ddd0e77f8d945fb78c146",
+      "bytes": 166877
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-keyed-neutral-2x.png",
+      "sha256": "3a0440ab7fe3ac7dc4e2a9b8573adb256e98b50b12c4abec62f57500affe90b2",
+      "bytes": 524544
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-keyed-neutral-native.png",
+      "sha256": "befb46b6e5789add0f45c9a328fcde5fe64c7320ec9ec153e956dba4f8179f54",
+      "bytes": 437895
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-original-2x.png",
+      "sha256": "70d7e8d3a0217b367e2e1755458ad0aae8aa8a98db51b7a94adab16e7e2a327c",
+      "bytes": 1182783
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-original-native.png",
+      "sha256": "9e0a7e689d62c0d0408a3f2bd5651813d23aee1a3e7e53e7df25679c67215ff3",
+      "bytes": 947274
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-raw-classifier-neutral-2x.png",
+      "sha256": "59703f7c53e52097c489f0657ddc418a3dc9a31957317617daaa4b8cd2093f84",
+      "bytes": 571619
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/antennae-raw-classifier-neutral-native.png",
+      "sha256": "70ed4a228eca3d8d88d6319e612486dda02265312a301a7ba2505a907c754d8f",
+      "bytes": 481598
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-keyed-neutral-2x.png",
+      "sha256": "adf9ff9b8c2f59de8c1b986696d27981fa2c168bdf9db001185e67b459a6108b",
+      "bytes": 261762
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-keyed-neutral-native.png",
+      "sha256": "44c038856f1547da6d622b24374c019e9bbe86410390809f1befb55ed5bf6913",
+      "bytes": 226754
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-original-2x.png",
+      "sha256": "f7f5a3ba48de8a063fe5be0d6e7eb92bec565316c689726400fded136ed07958",
+      "bytes": 375514
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-original-native.png",
+      "sha256": "68c9d075cbde7a7821a50cbff136427a496fa432d8b4ac74eb1623f8d34b7692",
+      "bytes": 321094
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-raw-classifier-neutral-2x.png",
+      "sha256": "a38e9680ba63a8dce3c6e2c51dc6614113e86db7d964192533a677c643e13ccd",
+      "bytes": 274995
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/dorsal-patch-head-raw-classifier-neutral-native.png",
+      "sha256": "6b3436afadd513a2cf0b6a9a1b3571d70e14fa9c80e4d90b644b9d2021d662f3",
+      "bytes": 239773
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/keyed-on-neutral.png",
+      "sha256": "239afa75ae67d9cd133eed191c393d0d817544994438f8dc4e510279beee5031",
+      "bytes": 654808
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/keyed-preview.png",
+      "sha256": "1aec3266069ece003157109d90ab189c7771565b62b1cd4c59921666627e5cf7",
+      "bytes": 1738750
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-keyed-neutral-2x.png",
+      "sha256": "8f47a99dfcc1116f8679dab640df797fe8a7deba254b9c39872aca41e2dd3b26",
+      "bytes": 407298
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-keyed-neutral-native.png",
+      "sha256": "6df49360960117b1ea8f412d041b33e788c9881514fa3651e8d227ebba23bc34",
+      "bytes": 361460
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-original-2x.png",
+      "sha256": "ff234d075c474d8dd77bc07481da34424298da8bac44b72df9a36cc5ae55da1c",
+      "bytes": 656057
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-original-native.png",
+      "sha256": "d8678db67589794689da6fd18133a9938da92bd570dab6ab7e4f3e3795f6cc6a",
+      "bytes": 562838
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-raw-classifier-neutral-2x.png",
+      "sha256": "caf9c62815981dcafbce56b31a848624a15bcdbec4935693f3103b1fcccee5d3",
+      "bytes": 434793
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/legs-feeding-claws-raw-classifier-neutral-native.png",
+      "sha256": "777c58bf993c6cb32fa7ca2060be55a077f1436cbec58f630239fef8b9d3823a",
+      "bytes": 388474
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/numeric.json",
+      "sha256": "6ffe1257e8bd245056f03b33afc8021141481a233ee72fd5a98b8e9fddfb9369",
+      "bytes": 35564
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/raw-classifier-on-neutral.png",
+      "sha256": "0419fd7ee76d0d5941d69f8afafd8260a3d9f7409e9f4a5935baf07e8333f989",
+      "bytes": 707974
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-keyed-neutral-2x.png",
+      "sha256": "02629a4ad5179a180238785251bc526bb90075a91578286b266a2674085fd01d",
+      "bytes": 134660
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-keyed-neutral-native.png",
+      "sha256": "356d6bc78a525729004ec01fe3004095fc7a3b022e336442fa244a9e48d9427f",
+      "bytes": 118721
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-original-2x.png",
+      "sha256": "7c854abecb8e90515b79e2f26757258e5482dbcbe4e422b976faeaf1bf0af104",
+      "bytes": 210267
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-original-native.png",
+      "sha256": "09ea11b11f41233d6d4ef4d095066cc5dffdeb5c7eb047c6bd0a3afd09670386",
+      "bytes": 179435
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-raw-classifier-neutral-2x.png",
+      "sha256": "cae44d5b21cb9a84397ad99c065ce3cb300cd3dbdd0a9760087c9e92ce862a7a",
+      "bytes": 139402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/tail-fan-raw-classifier-neutral-native.png",
+      "sha256": "fe6746660127d5a6b31cdcaabda84798fe7375ff0fae3725018f496974bd23dd",
+      "bytes": 123521
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-keyed-neutral-2x.png",
+      "sha256": "ee0b34851610103dbd10e18bf886962a09f4e4d6ed2f7d6a9eabbf05dc1ea69d",
+      "bytes": 616893
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-keyed-neutral-native.png",
+      "sha256": "bd93d1952f3735765e1cd7ce1e72aacb8d2b32f28995002fa768134f9ceb54f0",
+      "bytes": 521086
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-original-2x.png",
+      "sha256": "c0dfa2a8cd8a1746e3fba4b51750d87fddccf74c18f1037581509aea99f4056f",
+      "bytes": 1271100
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-original-native.png",
+      "sha256": "0df5a118201bda0c248073138fbbd58b151d3005d14d79038054442caf947fa5",
+      "bytes": 1035535
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-raw-classifier-neutral-2x.png",
+      "sha256": "6842b948be5c73e76af051cc5d22463c166d6559fa122711395c094e42b0bd8e",
+      "bytes": 673828
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/antennae-raw-classifier-neutral-native.png",
+      "sha256": "4be9a632880190de07933029e5bb4536aeb945f34cb87624fdd2d59a4a1d7314",
+      "bytes": 574241
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-keyed-neutral-2x.png",
+      "sha256": "d54924c122ca7324f6e0e23ea72cbc24d0b76548741414748662d9c178033a0c",
+      "bytes": 324141
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-keyed-neutral-native.png",
+      "sha256": "8125a5277535b906ffea928ee33f16f8c851410ae40c879a224ce9379cf2a7fe",
+      "bytes": 283186
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-original-2x.png",
+      "sha256": "a2f3161ad1c5ebc36aa16666f3c2ea8ca66fa5c2f306a829d03c933aa463b02a",
+      "bytes": 414415
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-original-native.png",
+      "sha256": "b6d573e420f1d62b8548379d0035833133dbd0615997b3131597155245096da0",
+      "bytes": 357735
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-raw-classifier-neutral-2x.png",
+      "sha256": "68fb38fecb8cea562a5ca5e4719f5497aae5318ff5a041b717830e3cdddd6b3a",
+      "bytes": 334974
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/dorsal-patch-head-raw-classifier-neutral-native.png",
+      "sha256": "f9a15045d7dfdec2fee54521c6d4d27281fbec2967c3a1141b7613b9e4d04750",
+      "bytes": 293825
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/keyed-on-neutral.png",
+      "sha256": "931be79bdfa761fe9a9fa8d9cf783a50e4501c53a85f08ed58464d79be6fc27a",
+      "bytes": 744330
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/keyed-preview.png",
+      "sha256": "68cd8f27194b18c8a8726dcd0316173bc928066c74eb2303b18e2085554ce644",
+      "bytes": 1835313
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-keyed-neutral-2x.png",
+      "sha256": "2c79a6db68bc9b34434f8b83d8be58d05e4d21f082428911d01dbbfd5205aaee",
+      "bytes": 379054
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-keyed-neutral-native.png",
+      "sha256": "aba44a468327d3a8e561d2fcb08554ebc0ce8272be54aea8be1d9a430bf20d21",
+      "bytes": 333335
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-original-2x.png",
+      "sha256": "ad7c4cff852dc4b1bb0729f3d0a19f3137dbd8b140f66efb7254ec157a060a32",
+      "bytes": 656269
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-original-native.png",
+      "sha256": "b05c129d6cdc1c78170ec4a51f657ed2218dd82d5ce6cee7a97340777bdf7446",
+      "bytes": 562926
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-raw-classifier-neutral-2x.png",
+      "sha256": "d6948308929c80b8d964e80b05f2cefc4b30fe4a38a7b2030790cfc70ec8ec1f",
+      "bytes": 420821
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/legs-feeding-claws-raw-classifier-neutral-native.png",
+      "sha256": "76935a8069dabe6cc4592bfaa2751527de2aa3bc62b9282961272c5f62a1fd23",
+      "bytes": 374333
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/numeric.json",
+      "sha256": "2e9d4a02cec36b2c9d896aa93583b2669934565843232498af0f95c575449b66",
+      "bytes": 41643
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/raw-classifier-on-neutral.png",
+      "sha256": "481649e169361c80f02db0f8dd992e0fe36ee51db2009e9d729a752553798156",
+      "bytes": 812105
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-keyed-neutral-2x.png",
+      "sha256": "25816c36459e6218d41427d321860551cb7c209050dbeb3f7799cc8f03ca864d",
+      "bytes": 103372
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-keyed-neutral-native.png",
+      "sha256": "df7f6d9f5cfff77682c9984ae83a5ef5d37e067fca46b166e695894300eb2200",
+      "bytes": 88928
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-original-2x.png",
+      "sha256": "4288d2444045084873a95707ae0516197958d176edd1d46e6253fd8e46287981",
+      "bytes": 184839
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-original-native.png",
+      "sha256": "e730a8efa08611115c8376c787933afa8131e02834f94878f8a3093415f149ab",
+      "bytes": 154693
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-raw-classifier-neutral-2x.png",
+      "sha256": "1300c8e28565207b9d06fa535849400b3ca0266fa71a3bc7ea8eddb2ee00658e",
+      "bytes": 109726
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/tail-fan-raw-classifier-neutral-native.png",
+      "sha256": "f1627f7fd02e428f80654fd3b6ec2a71659d56c2126e4a393b0831599250dc68",
+      "bytes": 95485
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-keyed-neutral-2x.png",
+      "sha256": "bb22389103616d93f5d15a8edd7f680b9add20f44fd801dd7b8fbddcda8818b3",
+      "bytes": 449507
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-keyed-neutral-native.png",
+      "sha256": "009a3072fc22f413f5eab8b96354bba6ea02198827e1f518925ae5962e9aa133",
+      "bytes": 373994
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-original-2x.png",
+      "sha256": "0e23f5fffd8100c06a26b68768bb82514496bb72d9fd1f44161d99997e07454b",
+      "bytes": 1079863
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-original-native.png",
+      "sha256": "64788fb5d4de88f869d2ca0d7df8c0b1fa6998f522f29aa63fb0620add9abc69",
+      "bytes": 856064
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-raw-classifier-neutral-2x.png",
+      "sha256": "408c61ca84d333baa0a4e9f05c931539290dbf688a6de733a27cd32ddaf25df4",
+      "bytes": 489037
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/antennae-raw-classifier-neutral-native.png",
+      "sha256": "eb630d6444f34b29cd42327fe7a47cee301e0f4427e578dc9790ac071ef704df",
+      "bytes": 408954
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-keyed-neutral-2x.png",
+      "sha256": "6b0ba60a6b82217f90d1f827ac7a5b49c31c30726f7eb102035bdd92683dcab5",
+      "bytes": 225704
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-keyed-neutral-native.png",
+      "sha256": "f922595034b1445187762b98f1da15ae97e230e2f04580969bd21ba73f68da69",
+      "bytes": 197083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-original-2x.png",
+      "sha256": "ab5dbedd109b0816e674b951c4b856bfb45a366048f9bfcc12dd2fda83e4a6e0",
+      "bytes": 347498
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-original-native.png",
+      "sha256": "ecb2f836c518637ebedbf7c4706d5ee120f4f4f49cfee7d41f9ce1680cd77e41",
+      "bytes": 296879
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-raw-classifier-neutral-2x.png",
+      "sha256": "1560a173a591e54c9baad32c538743fe16e302e974c223be245bddce1658555d",
+      "bytes": 238954
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/dorsal-patch-head-raw-classifier-neutral-native.png",
+      "sha256": "a710bf80f107b620bd34232ade05bcf013366405ba513a0b4f3eb903ffb38b89",
+      "bytes": 209811
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/keyed-on-neutral.png",
+      "sha256": "bbc9854770de11bde1fbc4e20a7907f4f383edb4257f6e9c7d4cdc33fac34834",
+      "bytes": 566587
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/keyed-preview.png",
+      "sha256": "0e3b013970dbbf027af746561700bc494791a3173abaf44b01ff6e1c5c7b972e",
+      "bytes": 1607311
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-keyed-neutral-2x.png",
+      "sha256": "3edf5913214173940050783bdeca5ded080c413c1b4a0f0c3ecca9a9a1f53e22",
+      "bytes": 316793
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-keyed-neutral-native.png",
+      "sha256": "5847c63f037d7372cea48e2776325df956435a581922faaf856bf8a296103be8",
+      "bytes": 276986
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-original-2x.png",
+      "sha256": "f42be4a29ab2d28a2bffbf04d3122b80204ff7ab93f22b0bbcc710d70aaae830",
+      "bytes": 593553
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-original-native.png",
+      "sha256": "76e1925090983853832333e768a0734c5b495b380b6c83aa9dfe317acf7eb5e2",
+      "bytes": 499102
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-raw-classifier-neutral-2x.png",
+      "sha256": "63dd0e11b967955a8e7fb1a9748a01ed8368a9af9fc44ef3909602d1cc0d6c10",
+      "bytes": 345606
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/legs-feeding-claws-raw-classifier-neutral-native.png",
+      "sha256": "19f2201d395140ce1e571d0ad6201d9ead825198b0c0ddf6a72e7bb83aa8e44d",
+      "bytes": 304540
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/numeric.json",
+      "sha256": "1631b3c1719abf6363b5d7cbdca50f0f5de362923db89f333bb8b2317abde5e1",
+      "bytes": 37441
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/raw-classifier-on-neutral.png",
+      "sha256": "8d50b36062825ac2c12050ca9c938e630c50ee56f491ba2081e0110a3f378f18",
+      "bytes": 608410
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-keyed-neutral-2x.png",
+      "sha256": "80fbf817b7079ad301393c9ca168c5b67bba1b5452688aa563f07bc2ef8ed098",
+      "bytes": 103865
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-keyed-neutral-native.png",
+      "sha256": "bbc5850e1b7cbc2e45819f21a3ac34854eff336d8829ae1cfc968eb7248acbb7",
+      "bytes": 89611
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-original-2x.png",
+      "sha256": "4a9219b86a44b2af3fe25165c91ea3e57e1414504ccc60e05cffe30923fd095b",
+      "bytes": 181236
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-original-native.png",
+      "sha256": "3af650b6825dc8e59e10f33fa4d693d73359453e31f700986e7d13967128e3b8",
+      "bytes": 150427
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-raw-classifier-neutral-2x.png",
+      "sha256": "68857e061742b802e45d54e73d57076367bdbe1638210fd3b514a0b52eb78679",
+      "bytes": 107599
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/tail-fan-raw-classifier-neutral-native.png",
+      "sha256": "bf814894982cd4ecd378b96509994f72550bfe139a7575840be57c9fd51a9c5d",
+      "bytes": 92991
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-keyed-neutral-2x.png",
+      "sha256": "7a7dadf435801061b58ad026072c2135513c5288bac55ffcce360648107811e7",
+      "bytes": 520038
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-keyed-neutral-native.png",
+      "sha256": "a3682d2132fd30c047c3b3c6329c5a96f914569082ebfc6fe1a436d0e740d9b9",
+      "bytes": 430640
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-original-2x.png",
+      "sha256": "889cab301745791cef0347d81aa65713fcaeedacbe0a2e1767f9951bb1807fa8",
+      "bytes": 1155282
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-original-native.png",
+      "sha256": "5b3c97f42e917253150c0e39f42863991234e9ddccb78fa1b0da18318d725b2d",
+      "bytes": 918595
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-raw-classifier-neutral-2x.png",
+      "sha256": "7291573ab0a1a110e333af1a480bfeb970e12c978b7e8656bf01998a13ed8a01",
+      "bytes": 564583
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/antennae-raw-classifier-neutral-native.png",
+      "sha256": "8c8e567e20fc508785303727fa470c433f0400d3c97cf4ce30e7e7de96a29f29",
+      "bytes": 470333
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-keyed-neutral-2x.png",
+      "sha256": "31ad7461eb089fa906f325bbc3f773507f38e8f1b3bf5a4329c9665c9c688b11",
+      "bytes": 294367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-keyed-neutral-native.png",
+      "sha256": "0acc264a6644ef94d11c78ce567e03ce806b7a776c2838c10490bfc97d13acbf",
+      "bytes": 253187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-original-2x.png",
+      "sha256": "ef6051948d2ffcb5becc0408530e0ff675fbf840053c2aa94d22ab3af4ecf252",
+      "bytes": 385599
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-original-native.png",
+      "sha256": "55844b48b1dd36688730890c5b17252fa98f4315aebaf525fa0610cdf37af48b",
+      "bytes": 328150
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-raw-classifier-neutral-2x.png",
+      "sha256": "3eef8be15a9f21e2af2fdff644b17a8ce86ec1cb9adb8c156dcceaf4dafe66bb",
+      "bytes": 303458
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/dorsal-patch-head-raw-classifier-neutral-native.png",
+      "sha256": "b23eb63cd3ecee6ec8afea279b07357f026c4965df7df4e68a6ebb762d61da29",
+      "bytes": 262153
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/keyed-on-neutral.png",
+      "sha256": "a09e06631de85277ae10f9fa70f9254648b5d04fc5885f6159ed1cb5baf1ed18",
+      "bytes": 616429
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/keyed-preview.png",
+      "sha256": "def499e8a77c061d48139533b10848206b9c758df417e6333859e8f8af7862ca",
+      "bytes": 1682207
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-keyed-neutral-2x.png",
+      "sha256": "5554e424f0faa6d2d9ab14117bc66e9072360c36d47e3cacaa8d7ec00fae3792",
+      "bytes": 331638
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-keyed-neutral-native.png",
+      "sha256": "3f966de5b8dbacfb47255445bb69fbaa9d6e6275548ff9c74b25a9ef7efe2d8b",
+      "bytes": 286040
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-original-2x.png",
+      "sha256": "842bbdf99572a4814f54b5ed79499474f0ca067e4fd2af6c27a1c4a8353ce4cc",
+      "bytes": 595295
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-original-native.png",
+      "sha256": "b65cb43fe667068c56f398fc3c2ba06f8d080d007456cbc4f90e81f094628473",
+      "bytes": 500095
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-raw-classifier-neutral-2x.png",
+      "sha256": "eb7deb60a62a44443b3d508f4059a58ae6280523f8365a12289603b4f4c324fd",
+      "bytes": 363099
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/legs-feeding-claws-raw-classifier-neutral-native.png",
+      "sha256": "7ce04cb3e38897c839343680b90f6c0fe023dac26abc74ecb9ce1be0c949257a",
+      "bytes": 316756
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/numeric.json",
+      "sha256": "f5ca5af1832035e952882f65c7348d96fe5fa3e4c018392bfcb506771a9e3416",
+      "bytes": 42143
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/raw-classifier-on-neutral.png",
+      "sha256": "a341615f5df5f9bafa04ac6da801fa58a10bab360cd561f57c6a90378f3ae7ca",
+      "bytes": 670620
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-keyed-neutral-2x.png",
+      "sha256": "3a68ca94756d529191331a70a8bfd4d63905c022286a31fc9ec1a23027ab1953",
+      "bytes": 95122
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-keyed-neutral-native.png",
+      "sha256": "3584c95e1ee520adc1008b49e9fce0c41b39b0317b4a0aafd7032db41dcabfc2",
+      "bytes": 81259
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-original-2x.png",
+      "sha256": "5b066833e6c085f709f9dc79dc596b449370557b9a0106978c4e08b5f1c4df90",
+      "bytes": 180927
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-original-native.png",
+      "sha256": "e7ef72a0fc6a68b97e49be0936314779ef8c6888ef1693738162e44b4fc5d610",
+      "bytes": 149491
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-raw-classifier-neutral-2x.png",
+      "sha256": "1d576b94c29179fa283307f6480f7f693b3dd584cf9b7170e277cefe4764a58e",
+      "bytes": 102201
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/tail-fan-raw-classifier-neutral-native.png",
+      "sha256": "b39bff388ba60e200b262db60b6dd1cee8ec0a6c87bbc94a304be6377561e6a9",
+      "bytes": 87172
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/critical-boxes-stick-insect.json",
+      "sha256": "317f0ee4b912a79c0612d4780099b48785ec6aff9c3d9fad2104915d065e9f0d",
+      "bytes": 111
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/critical-boxes-vent-shrimp.json",
+      "sha256": "d635fc665aecc0ffb8c381d403dc7cd835b3e787479156346532e54e62530ac6",
+      "bytes": 205
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/finalize-stick-insect-review.mjs",
+      "sha256": "2abe9f4af44ae9d309b35f1134d78d1caae89be5244ab16b8a00e683129f307d",
+      "bytes": 5532
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/stick-insect/review.json",
+      "sha256": "d0c08cc4e0139fd836b1de24406100948287730763da2727df1dfbb1bd2f3f82",
+      "bytes": 8309
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/stick-insect/verification.json",
+      "sha256": "8002cc5e29ea468192740df2771280271dae6bde950e2f67bd5da9eed88f0245",
+      "bytes": 502
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave05-chiton-producer/README.md",
+      "sha256": "868ddf04ae3aaf2114455fd5c5cea7eb213cead4934cb510ffc8ef9eda27371f",
+      "bytes": 2060
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave05-chiton-producer/manifest.json",
+      "sha256": "82b7d2c75c0b1ee34851f92f69e41ec13deb5eed07cdfb15d7ec7056ef84cae5",
+      "bytes": 836377
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "1fd2766f3d4ecde367335c8bfe42af1bd5821cc324fa1b00258a8b4da415cb9e",
+      "bytes": 555711
+    }
+  ],
+  "files": 417,
+  "remoteOperations": false
+}

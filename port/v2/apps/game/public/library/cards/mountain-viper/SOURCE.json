@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mountain Viper",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c1-22-mountain-viper/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3da8f38ad8384e4ba7de358c23444e11c8ad0c836fe31f728a397b11d75d56af"
+}

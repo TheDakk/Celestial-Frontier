@@ -1,0 +1,312 @@
+{
+  "status": "FINAL_GENERATION_SCOPE_NO_ADMISSION",
+  "verifiedPrompts": 29,
+  "generatedOriginals": 19,
+  "cpuAssessmentCandidates": 4,
+  "sourceHolds": 15,
+  "notGenerated": 10,
+  "generated": [
+    {
+      "name": "Shrimp",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/master.png",
+      "masterSha256": "ec47bfd97a551cb1dafcbbc02ca5d8ee36fcb1167a02c916b6146f8bf3b34828",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-d5c8f84f-0feb-4b95-a0e4-61418d5fcf0a.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-crustaceans/prompts/31-shrimp.txt",
+      "promptSha256": "089fb17d384d9b5969898c48e9cabbd58d1bfc6270fdd4fde699daf750579e13",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/source-census-02.json",
+      "reviewSha256": "135f9b930e487595c18c8df4bc1bdc4c6c74c3a91d7d3327fe41894110ff7483"
+    },
+    {
+      "name": "Wall Lizard",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/master.png",
+      "masterSha256": "153304fbb6732c550425652eecf9538493e3297d729837966285ed978bf3f203",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-264228ca-d5d4-493e-bb13-4d152cb2654d.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/wall-lizard/prompt.txt",
+      "promptSha256": "7bc4197aaff4b402127a7a159f29fe8d85dca2ba6d53de0cde7e8c5128880232",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/source-review.json",
+      "reviewSha256": "091fa85867cbbde1650787190a961819f7c12773b17f754007242a6f09563573"
+    },
+    {
+      "name": "Frigatebird",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/master.png",
+      "masterSha256": "cf97ecb71d845f6629a1d73642c1e8173f16d166eb7d1b14ef86c49a26677ddb",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-920fb193-74fb-45b3-bbe4-096f11606e11.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/frigatebird/prompt.txt",
+      "promptSha256": "5263a71f2d49b44ffd5ccdca323443868f971c98dff0ee5fe46093f18cfa5130",
+      "disposition": "CANDIDATE_FOR_CLAUDE_CPU_ASSESSMENT_PROMPT_QA_REMAINS",
+      "review": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/source-review.json",
+      "reviewSha256": "0a6a1e2fae25b0e8fdfb386850d03a7e7bb248181faa722a34f3d87c40bf3dd0"
+    },
+    {
+      "name": "Mite",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/master.png",
+      "masterSha256": "4501ea1247d9e39f68a8a2f80cf6853d2bba2f33c184628995c1ab8e342ba61b",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-83b41e62-7e03-44a7-ac15-ba3c48b6632b.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/mite/prompt.txt",
+      "promptSha256": "2eaf3dfc6ae5f4a943263a4027759c35d1e4f8e60710d45da95de2fd3b4d6478",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/source-review.json",
+      "reviewSha256": "5c0dbd53e45bd69421349a1ad6c2c8c349b3636613e45d711c1019571af79620"
+    },
+    {
+      "name": "Macaw",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/master.png",
+      "masterSha256": "4a0a3458465d1f3e2864bc7673a7454ee8193dff429579b0075101fa6f2b0ee9",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-f3c08157-22dd-4984-8a09-b0395abc9aac.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/macaw/prompt.txt",
+      "promptSha256": "bd504c3fa48fb975147fe8a277fcd294fe73a7939e66a385ebcf32c9deabe64f",
+      "disposition": "CANDIDATE_FOR_CLAUDE_CPU_ASSESSMENT_PROMPT_QA_REMAINS",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/source-review.json",
+      "reviewSha256": "805be14c14858687aba4e0a75d4a81c9ebabb7f11a73b059a286e94a6adbedac"
+    },
+    {
+      "name": "Swift",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/master.png",
+      "masterSha256": "907cc704528e9c1afa440f9b6217ec21c2b85642d7b63d28c4227d7197fa7721",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-335b04fd-04af-4248-96e2-ad33bcba5e35.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/swift/prompt.txt",
+      "promptSha256": "d0613f80995604152cd7cc1f92981d7e4f804b1fa2aba96a421b1dd8f6f94773",
+      "disposition": "CANDIDATE_FOR_CLAUDE_CPU_ASSESSMENT_PROMPT_QA_REMAINS",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/source-review.json",
+      "reviewSha256": "626d7d0f5d3fa248988935edff225a430e81d0d59cf548278888c95a0d5908aa"
+    },
+    {
+      "name": "Caecilian",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/master.png",
+      "masterSha256": "f0e1e2b4e20bea2acf935dcdf1b07063d2dffe191ee6f59e38c104a4c8ebcaff",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-fc2486ac-f814-452c-832d-454fffbca9e6.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/caecilian/prompt.txt",
+      "promptSha256": "5605947e66279d5749b2b40c216e3b9122abf0865fa0454d2593a0660ce8ae42",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/source-review.json",
+      "reviewSha256": "8353ace01249064c7199c3d1c019adcaa4dd8d57d6f5d0580b82de1119b65057"
+    },
+    {
+      "name": "Sea Spider",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/master.png",
+      "masterSha256": "0b65a21f07fc87c60a4a0aad61bc62f286d44aa92c5abd87ed0a8df8dc0727f6",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-9012ec36-57ca-4df7-b549-1147e80c0ed4.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/sea-spider/prompt.txt",
+      "promptSha256": "05e3fcb2a2345d68c0a75b17d2e5bfff31ba9041cecff048f1e1939f2460b518",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/source-review.json",
+      "reviewSha256": "65e0a2c2fdba49c4eb09a2733065a0ba67c433c367e13a9ec9998026965da687"
+    },
+    {
+      "name": "Leafcutter Ant",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/master.png",
+      "masterSha256": "c08d4d2fcae73e2d3bd9c7ae7978fe628557eb18cf0ec0515b9a72c253cb42c1",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-4097367d-9d92-4a96-b3a7-dc4dd89019d1.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/leafcutter-ant/prompt.txt",
+      "promptSha256": "8ca74a31ba6e4c989307aa0648050ac50966d1a6eac78905cab1f99b79c93784",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/source-review.json",
+      "reviewSha256": "d664f5e27107107c48609a7a71fd7db3c38b62707164121bed0dd2786557119f"
+    },
+    {
+      "name": "Mud Crab",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/master.png",
+      "masterSha256": "661a9de9d7bda02b99eaf09a5ab305fdb800f262a70c96c7773e431734e3c53e",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-4fb1b7ef-7ad9-4961-a5eb-d1ed789930ff.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/crabs/source-prompts/mud-crab/prompt.txt",
+      "promptSha256": "e7f24adb46358b37287c3a1260d734912b37735d87c52d977c41baf92996135d",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/source-review.json",
+      "reviewSha256": "35f8c781038bdfc1e856a279df40e087df6af60d304b011bc3514e96e56e05af"
+    },
+    {
+      "name": "Cricket",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/cricket-01/master.png",
+      "masterSha256": "d8f42daef3f7b95706759661fa4b5eb2741ab36782938b514f504c81b813a75b",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-aa70327f-57b4-42c7-bee4-261974c67d2b.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/cricket/prompt.txt",
+      "promptSha256": "dc62a2509042703cfb387287987598287c6baed62c60cdb25d8565315f3f8dc9",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/cricket-source-review/source-review.json",
+      "reviewSha256": "c6080b837db79815266d177bcb630dcaab1ff91e01ad93898c55f0d833ca12c3"
+    },
+    {
+      "name": "Black Fly",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/black-fly-01/master.png",
+      "masterSha256": "ac3b84248f505c9591213396d3b6e6f5c19ca3f7a8e80e005ef9519f720aa541",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-a88025c6-7950-4bf7-95f0-3222809c1880.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/black-fly/prompt.txt",
+      "promptSha256": "23652caa0926bbd6c7bfa2f40c56211ba5b768d6f8161f69305a8bda7c43d168",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/black-fly-01/source-review.json",
+      "reviewSha256": "1152b7de0b5a185aad06f0f41fa5f5a5be702971b3a048894ecc3594bcd0f004"
+    },
+    {
+      "name": "Damselfly",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/damselfly-01/master.png",
+      "masterSha256": "eefa99e3cd0edcf33862fd3bcd6aeb983888de864f8ce3b733cc40ff88bf471d",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-cc46cb88-47a3-4ead-93a8-d07cc1182e83.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/damselfly/prompt.txt",
+      "promptSha256": "f9bbcd6a5558142129f9fc6668903a686e710ab268a0fc4da00501d7a8504b7c",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/damselfly-01/source-review.json",
+      "reviewSha256": "f308cfccedeef26f5cf20eeb156555ea9132cb0e2fe5c2e4f5181cca1a6474fc"
+    },
+    {
+      "name": "Mayfly",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mayfly-01/master.png",
+      "masterSha256": "d33351e48e2f3fecba607ec05993e45b7dae4ae5b0f103987022a8e9f4adc3ed",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-33609b4c-ea30-4654-8a30-206b048f2e7c.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/mayfly/prompt.txt",
+      "promptSha256": "9a23d157a636514961f5511a9f2d6df2eb019ba62c9a0dee0cd2a591f53e48ad",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/mayfly-01/source-review.json",
+      "reviewSha256": "e82c1990c9be3acf9ff76ce79186aa4f6c6de981454b50f37fe218007cee6f02"
+    },
+    {
+      "name": "Mantis",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mantis-01/master.png",
+      "masterSha256": "7714a7e05410752f9e31bea7e0b88ee4be9d27b1ab43dc9dbee13872455a96b2",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-8398f72b-e7c7-46c9-83d0-41797675813d.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/mantis/prompt.txt",
+      "promptSha256": "6a33fb3a6abc853810ca5073d6fdc7a36b3416344c0606074650e2ac84593e12",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/mantis-01/source-review.json",
+      "reviewSha256": "1b4f96f15ad68f3e56b66ce20f9ec72bc5c18f14c0218521fdc36beb386eaebf"
+    },
+    {
+      "name": "Diving Beetle",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/diving-beetle-01/master.png",
+      "masterSha256": "bc9ee84b450cc087ba43cb4799d5e200efd92e42c17e053c2cd35cebd4443af3",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-823544bd-3392-448e-8ab7-a647e3f9df82.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/diving-beetle/prompt.txt",
+      "promptSha256": "df6cc9eff12004f905ee01ca3d950445e9436a72f9de558952eb7a18b5a27d98",
+      "disposition": "CANDIDATE_FOR_CLAUDE_CPU_ASSESSMENT_PROMPT_QA_REMAINS",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/diving-beetle-01/source-review.json",
+      "reviewSha256": "3a410528be050806d4e93ac8dcb1d8580314cf373291601014d2987f6a9a2d59"
+    },
+    {
+      "name": "Stick Insect",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/stick-insect-01/master.png",
+      "masterSha256": "5927baef96b76c4a25fad3857dfe344bf80e4354fe0e0722592b40f6a13afabb",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-9318f4a4-7b41-4f8e-8ba8-92eee8ad4533.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/prompts/stick-insect/prompt.txt",
+      "promptSha256": "d729a5c52b96ce357b1183812a302ec353bd7beb8872aa86c30d81c6793a7c0b",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/stick-insect-01/source-review.json",
+      "reviewSha256": "d81b5616c4ed6fa09acd2150f00bd3dc3e65a6e3ef8f9c7174ec3ae154628bcb"
+    },
+    {
+      "name": "Cobra",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/cobra-01/master.png",
+      "masterSha256": "4a6d89020492b6753ca145452fa3352f05cfbf1734bf63cb816ad467620ef0fb",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-2adc4cbb-4bda-41a6-a684-a54a3f4079a9.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/identity-prompts/cobra/prompt.txt",
+      "promptSha256": "33c18267c8c15b5f69e3cb2a445fed351ba57500b683acfa6275d937dd38a1a2",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources-02/cobra-01/source-review.json",
+      "reviewSha256": "0fa391f56813adef9da4c61cd1335b10b8dc67ff7c927143325223fcf29d5e27"
+    },
+    {
+      "name": "Coconut Crab",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/coconut-crab-01/master.png",
+      "masterSha256": "9fc280c31d0dca9806707dca6ffc3d4acd688fff49197a17c7e2786ebad0488b",
+      "defaultOriginal": "~/.codex/generated_images/01a14b80-bce9-7860-8877-481db24c123b/exec-35920e50-3701-4b72-b4e5-c567d074d11e.png",
+      "defaultEqual": true,
+      "outputModified": false,
+      "verifiedC266Prompt": "audits/C266_ALLOUT_20261017/identity-static-classstops/crabs/source-prompts/coconut-crab/prompt.txt",
+      "promptSha256": "1608e762ca24de54093945ec4479e4369292f01b1294a213505a13d27837fa43",
+      "disposition": "SOURCE_HOLD",
+      "review": "audits/C266_CODEX_20261017/w3-c266-finished/coconut-source-review/source-review.json",
+      "reviewSha256": "6be56c9e9097f44168b6b03fb27ef8f103b23f64b5430460f908488662a6c7f4"
+    }
+  ],
+  "deferred": [
+    {
+      "name": "Camel Spider",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Representation decision: canonical view/inventory remains unresolved."
+    },
+    {
+      "name": "Marmoset",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Representation decision: canonical visible coat/identity source requirements remain unresolved."
+    },
+    {
+      "name": "Pseudoscorpion",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Representation decision: tiny anatomy/inventory remains unresolved."
+    },
+    {
+      "name": "Rattlesnake",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Dakk coil representation decision remains."
+    },
+    {
+      "name": "Copepod",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "D-C266-CR2 limb representation decision remains."
+    },
+    {
+      "name": "Cave Shrimp",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Shrimp class representative exposes only nine proved legs; no propagation."
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Shrimp class representative exposes only nine proved legs; no propagation."
+    },
+    {
+      "name": "Vent Shrimp",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Shrimp class representative exposes only nine proved legs; no propagation."
+    },
+    {
+      "name": "Osprey",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Raised-wing Frigatebird source requires independent CPU/source proof before propagation."
+    },
+    {
+      "name": "Dragonfly",
+      "disposition": "NOT_GENERATED_CLASS_OR_DECISION_HOLD",
+      "reason": "Damselfly representative does not establish required eye arrangement; no propagation."
+    }
+  ],
+  "accepted": 0,
+  "C268PromptsUsed": 0,
+  "runtimeChanged": false
+}

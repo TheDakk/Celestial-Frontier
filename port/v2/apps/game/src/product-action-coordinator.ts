@@ -20,11 +20,19 @@ export interface ProductActionCoordinatorDiagnostics {
   readonly operation: string | null;
 }
 
+export type ProductActionSettleHook = (settled: Readonly<{ operation: string; durable: boolean }>) => void;
+
 export interface ProductActionCoordinator {
   /** Synchronous. Null means another receipt-bearing action already owns work. */
   tryClaim(operation: string): ProductActionClaim | null;
   diagnostics(): ProductActionCoordinatorDiagnostics;
   readonly busy: boolean;
+  /** K20: binds the one settle observer. It runs synchronously once per settled
+   * claim, after the latch is released and the barrier resolved, so a
+   * presentation owner (notification history) can drain work it deferred while
+   * the action was in flight. It owns no product state; a hook fault propagates
+   * to the settling caller. A second binding is refused. */
+  bindSettleHook(hook: ProductActionSettleHook): void;
 }
 
 function checkedOperation(operation: unknown): string {
@@ -35,6 +43,7 @@ function checkedOperation(operation: unknown): string {
 }
 
 export function createProductActionCoordinator(): ProductActionCoordinator {
+  let onSettle: ProductActionSettleHook | null = null;
   let activeToken: object | null = null;
   let activeOperation: string | null = null;
 
@@ -62,6 +71,7 @@ export function createProductActionCoordinator(): ProductActionCoordinator {
           activeToken = null;
           activeOperation = null;
           resolveBarrier(durable);
+          onSettle?.(Object.freeze({ operation: canonicalOperation, durable }));
         },
       });
     },
@@ -73,6 +83,11 @@ export function createProductActionCoordinator(): ProductActionCoordinator {
       });
     },
     get busy(): boolean { return activeToken !== null; },
+    bindSettleHook(hook: ProductActionSettleHook): void {
+      if (typeof hook !== 'function') throw new TypeError('Product action settle hook must be a function');
+      if (onSettle !== null) throw new Error('Product action settle hook is already bound');
+      onSettle = hook;
+    },
   });
 }
 

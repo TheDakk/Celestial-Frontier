@@ -1,0 +1,21 @@
+[openai/mac f4ac17f57d] C477: reserve serial D39-D42 implementation after signed peer merge
+ 23 files changed, 1051 insertions(+), 11 deletions(-)
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/PLAN.md
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/SPEC.md
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/c477-staged-bytes.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/commit-owned.py
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/disk-start.log
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/identity.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/postmerge-proof.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/postmerge-validate.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/postmerge-validate.log
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/preflight.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/premerge-validate.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/premerge-validate.log
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/prior-roadmap-verbatim.md
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/run-stage.py
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/scratch-start.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/startup-check.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/startup-reaper.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/startup-receipt.json
+ create mode 100644 audits/C475_DECISIONS_20261019/coordinator/startup-verify.json

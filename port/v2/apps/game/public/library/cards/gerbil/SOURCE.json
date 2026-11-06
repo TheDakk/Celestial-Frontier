@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gerbil",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/20-gerbil/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f5e29844303f968050a349885d2c553a0153c555f759441b4b6ae5e4f6df3fb2"
+}

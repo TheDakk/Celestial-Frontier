@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {byteRange} from './review-server.mjs';
+test('media byte probes, seeking and suffix reads retain exact boundaries',()=>{assert.equal(byteRange(undefined,100),null);assert.deepEqual(byteRange('bytes=0-1',100),{start:0,end:1});assert.deepEqual(byteRange('bytes=40-',100),{start:40,end:99});assert.deepEqual(byteRange('bytes=-8',100),{start:92,end:99});assert.deepEqual(byteRange('bytes=80-200',100),{start:80,end:99});});
+test('malformed and out-of-bounds ranges refuse instead of returning an empty movie',()=>{for(const h of ['bytes=-0','bytes=100-','bytes=4-2','bytes=0-1,4-5','bytes=-','stuff'])assert.throws(()=>byteRange(h,100));});

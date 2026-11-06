@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fox",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c106/22-fox/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c3e679e10759e26d1bb0c1f52fd4928b12cbb8c7bc3922242f6b5d5c19d5c05f"
+}

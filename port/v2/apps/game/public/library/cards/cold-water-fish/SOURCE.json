@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cold-Water Fish",
+ "fitDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "055974a65dbab7baaf5b9aa72bd808efb943223f175256c3ac8564064fd93f58"
+}

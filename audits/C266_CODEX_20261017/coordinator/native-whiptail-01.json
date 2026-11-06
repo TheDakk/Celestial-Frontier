@@ -1,0 +1,20 @@
+{
+  "stage": "native-whiptail-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-whiptail-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/whiptail-01/plan.json"
+  ],
+  "startedUnix": 1792277627.4354718,
+  "beforeGiB": 91.79742813110352,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.078,
+  "lowestGiB": 91.36894607543945,
+  "afterGiB": 91.74204635620117
+}

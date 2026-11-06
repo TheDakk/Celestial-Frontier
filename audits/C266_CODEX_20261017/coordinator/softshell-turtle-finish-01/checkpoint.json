@@ -1,0 +1,10 @@
+{
+  "id": "c266-06-softshell-turtle",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/native/report.json",
+  "name": "Softshell Turtle",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/softshell-turtle-01/visual-review.json",
+  "checkpointReviewSha256": "f235a6fb2d271248c9ed77ca1d9b555b3c5a9dfb37ed5151c6b6bca3b29f57fb",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

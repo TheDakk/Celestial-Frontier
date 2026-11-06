@@ -1,0 +1,8 @@
+{
+  "tag": "c234p1",
+  "sourceHead": "7f1374ebad21c9690468098af05ce53fddc41677",
+  "signature": "G",
+  "poolSha256": "efcf43c186d264ebcaf727e4bf8ac0f52c122ce6a3e461b7995eb7af4f3538c8",
+  "outputDirectoriesInitiallyAbsent": true,
+  "scope": "Static diagnostic only; all457must complete before yield"
+}

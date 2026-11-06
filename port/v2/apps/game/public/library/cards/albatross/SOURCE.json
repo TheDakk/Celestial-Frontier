@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Albatross",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-11-albatross/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d8de0f94b255a08140cf27d0e0dc58da5e8e69adf9c3c356d9dcd44ea5205808"
+}

@@ -1,0 +1,65 @@
+{
+  "creatureId": "c243b02r2c2-32-river-dolphin",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "72628148c6f78bc58b05544f9f404af227988e7777e978c81f235e302d00ff05"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "b873936b35cbf0c21f8ddad08a576b560664a918321e540b9eddad7eb912a162"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "847f26f08a14c2c6e070a76ceccfaa51603023a13820558b170d5e7a1fde84dd"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "fae0704a2b21968b9ebf0e6f913d71df11443084a419576114c819dc2f1d2d7b"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "2d860001ca6eb2094296d66c0fc79d0c2ab9811ac48b8a6c621428cff0001843"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "3df462c0823303c98ffc280bf00bbcb1e7ccae75dac9836e095a02c254720914"
+    },
+    {
+      "name": "spine5.png",
+      "path": "parts/spine5.png",
+      "sha256": "bd7fb9117fc53edfd1c90a47ba50719a1cf267b145881fe77182605d82365faf"
+    },
+    {
+      "name": "spine4.png",
+      "path": "parts/spine4.png",
+      "sha256": "0e99d9865af909913fea9c7718c5c8c8131c182390413ea41c8c59acd9aad9bf"
+    },
+    {
+      "name": "spine3.png",
+      "path": "parts/spine3.png",
+      "sha256": "90c0c17036f64a7db2db67d59a780cebd283c8d90f81dfd45219f2c211108fba"
+    },
+    {
+      "name": "spine2.png",
+      "path": "parts/spine2.png",
+      "sha256": "e7c9f0e7ad1620650eb89cdf024df43f99be113a0785f77b6a60758beb9ee18d"
+    },
+    {
+      "name": "spine1.png",
+      "path": "parts/spine1.png",
+      "sha256": "c9b2875c506417f59f201240a6dc56ba40f8372ded4b8e4a16d33497eb036338"
+    },
+    {
+      "name": "spine0.png",
+      "path": "parts/spine0.png",
+      "sha256": "a1bff83540bf40b662c6dff52e71c45ecf8a62a433449fe84919e8d347c4485a"
+    }
+  ]
+}

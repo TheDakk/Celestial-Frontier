@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-21-water-strider-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C398-c267-21-water-strider-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-21-water-strider-01/plan.json"
+  ],
+  "startedUnix": 1792276927.2587578,
+  "beforeGiB": 91.9007797241211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.076,
+  "lowestGiB": 91.45098114013672,
+  "afterGiB": 91.82440567016602
+}

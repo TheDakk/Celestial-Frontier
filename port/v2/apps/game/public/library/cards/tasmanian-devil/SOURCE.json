@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tasmanian Devil",
+ "fitDir": "audits/ISLANDS_C256_20261003/21-tasmanian-devil/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d813631c1ed3d88201540469e941ec59ce5c64212b7c6371ab30d5534c28d22b"
+}

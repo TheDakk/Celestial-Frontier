@@ -1,0 +1,14 @@
+{
+  "status": "PASS_FROZEN_PINS_CURRENT_OR_NAMED_HISTORICAL_PRODUCER",
+  "verifiedPins": 503,
+  "historicalCodePins": [],
+  "frozenInputs": [
+    "w2-worm-radial/remaining-materials-cpu-r01/materials-proposal-freeze-r03.json",
+    "w1-keyer/review-comb-eightpaths-r01/freeze-r01.json",
+    "w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/freeze-r01.json",
+    "w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-correction-freeze-r02.json",
+    "w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-resolution-freeze-r03.json"
+  ],
+  "native": false,
+  "postRedCheckOwnersExecuted": false
+}

@@ -1,0 +1,71 @@
+{
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "species": {
+    "name": "Alpine Salamander",
+    "aspect": 4.5,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "sprawling",
+    "mustRead": [
+      "glossy jet-black moist skin",
+      "blunt rounded head with bulging eyes",
+      "short sprawling legs and a rounded tail"
+    ]
+  },
+  "genome": {
+    "seed": 686828774,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 15,
+    "body": 11,
+    "loco": 12,
+    "trait": 0,
+    "size": 2,
+    "diet": 3,
+    "head": 6,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 5,
+    "accent": 6,
+    "temper": 9,
+    "sense": 5,
+    "repro": 4,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Alpine Salamander"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Alpine Salamander\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"686828774\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 259,
+  "profile": {
+    "id": "salamander",
+    "names": [
+      "Salamander",
+      "Newt",
+      "Giant Salamander",
+      "Alpine Salamander",
+      "Olm",
+      "Blind Salamander",
+      "Axolotl"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Preserve tail and optional external gills; no mammalian ears."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.o2-d40-donor-exclusion-proposal-verification/v1",
+  "status": "PROPOSAL_AND_OUTCOME_TESTS_PREPARED_UNEXECUTED",
+  "syntax": "PASS node --check donor-exclusion.outcomes.test.mjs",
+  "ownJSONParsed": true,
+  "historicalRequestSourcePinsMatched": true,
+  "testExecution": false,
+  "runtimeOrAlgorithmFilesEdited": false,
+  "productionExecution": false,
+  "note": "Source-bound sample excludes one eligible olive donor index and targets two exact pixels only. It is diagnostic data, not a complete or accepted R03 fix."
+}

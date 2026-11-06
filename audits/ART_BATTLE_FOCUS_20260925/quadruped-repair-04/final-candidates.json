@@ -1,0 +1,82 @@
+[
+  {
+    "name": "impala",
+    "fit": "impala-fit-02",
+    "static": "impala-static-02.json",
+    "run": "native-impala-04",
+    "recordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+    "bindingHash": "7f46c3c78a097b0c7c69dc0a4226de2caaca2a538e998e3308379577fd516de4",
+    "rows": 19,
+    "staticStatus": "PASS_STATIC",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "name": "marmot",
+    "fit": "marmot-fit-02",
+    "static": "marmot-static-02.json",
+    "run": "native-marmot-04",
+    "recordRecipeHash": "307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8",
+    "bindingHash": "20858222d7a37fe3fab9fb0474a931a8a93b464ec32c11c773978a911d66b40c",
+    "rows": 19,
+    "staticStatus": "PASS_STATIC",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "name": "cattle",
+    "fit": "cattle-fit-02",
+    "static": "cattle-static-02.json",
+    "run": "native-cattle-05",
+    "recordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+    "bindingHash": "4d9e7ccc9e2e6f594fb4b97d606897869da5e3b4f094e0bcfb62619fff10132c",
+    "rows": 19,
+    "staticStatus": "PASS_STATIC",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "name": "lizard",
+    "fit": "lizard-fit-03",
+    "static": "lizard-static-03.json",
+    "run": "native-lizard-05",
+    "recordRecipeHash": "bc67c6cfcdcac93e010a04f896fc94dfce60e74e8ae35591fa904f9bcfbccda0",
+    "bindingHash": "0abd67fedc482805206475f80b9f4fd1fa9283e361f88da4c0488f5ac30d36e1",
+    "rows": 19,
+    "staticStatus": "PASS_STATIC",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "name": "bear",
+    "fit": "../14-brown-bear/fit-02",
+    "static": "bear-static-03.json",
+    "run": "native-bear-04",
+    "recordRecipeHash": "d43c5000ac4b244221129547aecb379dc4993df3af0173d33128fd2f12e59bec",
+    "bindingHash": "cc132c36231bc98610bd7e285bf27c9d133bee14322f34a5514fddd333c6ac0a",
+    "rows": 19,
+    "staticStatus": "PASS_STATIC",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  }
+]

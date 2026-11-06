@@ -1,0 +1,65 @@
+{
+ "schema": "cf.identity-card/v1",
+ "films": [
+  {
+   "id": "c243b07r2c2-25-forest-elephant",
+   "film": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/native-01/c243b07r2c2-25-forest-elephant",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-25-forest-elephant/subject-source.json",
+   "name": "Forest Elephant",
+   "markers": [
+    "trunk reaching the ground",
+    "straight downward-pointing tusks",
+    "rounded ears smaller than a savanna elephant's"
+   ],
+   "note": "smaller and darker than the savanna elephant, with straighter tusks and oval ears"
+  },
+  {
+   "id": "c243b07r2c2-33-wall-lizard",
+   "film": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/native-01/c243b07r2c2-33-wall-lizard",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-33-wall-lizard/subject-source.json",
+   "name": "Wall Lizard",
+   "markers": [
+    "tail roughly twice the body length",
+    "flattened slender body pressed to the surface",
+    "long splayed toes"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b07r2c3-03-conch",
+   "film": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/native-01/c243b07r2c3-03-conch",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-03-conch/subject-source.json",
+   "name": "Conch",
+   "markers": [
+    "broad flared shell lip",
+    "knobby pointed spire",
+    "two long stalked eyes peering out from under the lip"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b07r2c3-26-giant-salamander",
+   "film": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/native-01/c243b07r2c3-26-giant-salamander",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-26-giant-salamander/subject-source.json",
+   "name": "Giant Salamander",
+   "markers": [
+    "broad flattened shovel head",
+    "wrinkled fleshy skin folds along the flanks",
+    "tiny lidless dot eyes"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b07r2c3-31-takin",
+   "film": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/native-01/c243b07r2c3-31-takin",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-31-takin/subject-source.json",
+   "name": "Takin",
+   "markers": [
+    "horns sweeping outward then back like a wildebeest's",
+    "humped shoulders on short thick legs",
+    "long shaggy golden coat with an arched Roman-nosed muzzle"
+   ],
+   "note": "a goat-antelope built like a small bison - far stockier than any goat"
+  }
+ ]
+}

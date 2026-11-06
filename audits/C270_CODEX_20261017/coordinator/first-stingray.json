@@ -1,0 +1,20 @@
+{
+  "stage": "first-stingray",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-stingray",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/plan.json"
+  ],
+  "startedUnix": 1792286604.093175,
+  "beforeGiB": 81.28520965576172,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.073,
+  "lowestGiB": 80.86508178710938,
+  "afterGiB": 81.21332550048828
+}

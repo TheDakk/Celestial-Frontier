@@ -1,0 +1,181 @@
+{
+  "frames": {
+    "axial-body.png": {
+      "frame": {
+        "h": 239,
+        "w": 805,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 239,
+        "w": 805
+      },
+      "spriteSourceSize": {
+        "h": 239,
+        "w": 805,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "caudal.png": {
+      "frame": {
+        "h": 128,
+        "w": 222,
+        "x": 1762,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 222
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 222,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "dorsal.png": {
+      "frame": {
+        "h": 95,
+        "w": 696,
+        "x": 820,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 95,
+        "w": 696
+      },
+      "spriteSourceSize": {
+        "h": 95,
+        "w": 696,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-pectoral.png": {
+      "frame": {
+        "h": 50,
+        "w": 72,
+        "x": 1782,
+        "y": 143
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 50,
+        "w": 72
+      },
+      "spriteSourceSize": {
+        "h": 50,
+        "w": 72,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 140,
+        "w": 157,
+        "x": 1526,
+        "y": 93
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 140,
+        "w": 157
+      },
+      "spriteSourceSize": {
+        "h": 140,
+        "w": 157,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 23,
+        "w": 79,
+        "x": 1693,
+        "y": 143
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 23,
+        "w": 79
+      },
+      "spriteSourceSize": {
+        "h": 23,
+        "w": 79,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-pectoral.png": {
+      "frame": {
+        "h": 78,
+        "w": 226,
+        "x": 1526,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 78,
+        "w": 226
+      },
+      "spriteSourceSize": {
+        "h": 78,
+        "w": 226,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c215program-37-beluga.png",
+    "scale": "1",
+    "size": {
+      "h": 249,
+      "w": 1989
+    }
+  }
+}

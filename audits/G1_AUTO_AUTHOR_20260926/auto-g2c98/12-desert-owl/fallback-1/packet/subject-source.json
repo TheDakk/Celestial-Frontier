@@ -1,0 +1,75 @@
+{
+  "name": "Desert Owl",
+  "family": "biped-bird",
+  "species": {
+    "name": "Desert Owl",
+    "aspect": 0.8,
+    "headFrac": 0.34,
+    "eyes": "prominent",
+    "posture": "biped",
+    "mustRead": [
+      "flat facial disc with huge forward-facing eyes",
+      "pale sandy-buff plumage",
+      "feathered legs and hooked bill nearly hidden in face feathers"
+    ],
+    "note": "Generic - interpreted as a pale desert-dwelling owl (desert tawny owl type). Owls are taller than wide when perched."
+  },
+  "genome": {
+    "seed": 1720152698,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 1,
+    "body": 13,
+    "loco": 13,
+    "trait": 6,
+    "size": 3,
+    "diet": 5,
+    "head": 6,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 1,
+    "detail": 0,
+    "accent": 6,
+    "temper": 3,
+    "sense": 6,
+    "repro": 1,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Desert Owl"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Desert Owl\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1720152698\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 560,
+  "profile": {
+    "id": "raptor",
+    "names": [
+      "Eagle",
+      "Owl",
+      "Hawk",
+      "Falcon",
+      "Snowy Owl",
+      "Osprey",
+      "Kestrel",
+      "Desert Owl",
+      "Harpy Eagle"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "peck"
+    ],
+    "notes": ""
+  }
+}

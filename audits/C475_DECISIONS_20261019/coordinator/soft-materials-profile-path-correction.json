@@ -1,0 +1,9 @@
+{
+  "status": "SETUP_PATH_CORRECTED_BEFORE_ANY_PROFILE_OR_STAGE_LAUNCH",
+  "firstWorkingDirectory": "port/v2",
+  "firstError": "Python could not find relative audits/.../run-stage.py under port/v2; no profile/stage was launched.",
+  "correctedWorkingDirectory": "repository root",
+  "actualProfile": "node port/v2/tools/check-profile.mjs --profile=develop",
+  "gateRetry": false,
+  "thresholdsOrCertificateBindingsChanged": false
+}

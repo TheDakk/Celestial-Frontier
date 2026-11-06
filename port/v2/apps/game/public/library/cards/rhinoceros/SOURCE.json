@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rhinoceros",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c114-05-rhinoceros/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8521303bb34b554800a54f37af6c2e23189acf47a9828fb41dce9e5077bad7d4"
+}

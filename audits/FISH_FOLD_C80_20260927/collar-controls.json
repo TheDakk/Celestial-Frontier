@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "name": "grayling",
+      "releasedFinShapePins": 31
+    },
+    {
+      "name": "carp",
+      "releasedFinShapePins": 9
+    }
+  ],
+  "negativeControls": [
+    "source-coordinate change",
+    "removed root pin",
+    "solver budget increase"
+  ],
+  "status": "PASS"
+}

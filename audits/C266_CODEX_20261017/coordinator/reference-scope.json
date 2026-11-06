@@ -1,0 +1,611 @@
+{
+  "sourceCount": 50,
+  "deferredRuleDecision": [
+    "Barnacle",
+    "Horseshoe Crab",
+    "Tardigrade",
+    "Fly Larvae"
+  ],
+  "rows": [
+    {
+      "name": "Barnacle",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family barnacle",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Bullfrog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cave Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Centipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family myriapod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Clam",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cold-Water Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Comb Jelly",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Crayfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cuttlefish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Deep-Sea Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Deep-Water Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Flatworm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fly Larvae",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family larva",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Centipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Tube Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Glass Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Hermit Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Horseshoe Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family xiphosuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ice Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Jellyfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Jerboa",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Land Snail",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family gastropod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Lobster",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Marine Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Millipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Nautilus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Poison Dart Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Polychaete Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Portuguese Man-of-War",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Salp",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sand Dollar",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scale Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scorpion",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Anemone",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Cucumber",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Urchin",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Starfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tarantula",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 1,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tardigrade",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family lobopod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Toad",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tree Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tube Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Dakk/C259 worm reference packet required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vampire Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Wood Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    }
+  ]
+}

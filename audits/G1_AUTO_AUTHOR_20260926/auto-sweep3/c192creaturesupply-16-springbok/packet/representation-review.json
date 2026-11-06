@@ -1,0 +1,116 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Springbok",
+  "family": "quadruped",
+  "masterSha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+  "subjectSha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52",
+  "promptSha256": "366d2a15198674654e94896aca30498c309f10db45a6122ccc082643b64ce902",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          346,
+          567
+        ],
+        "tail1": [
+          273,
+          641
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              283.73047016274865,
+              578.5787070524412
+            ],
+            [
+              289.1071428571429,
+              563.7928571428572
+            ],
+            [
+              292.09285714285716,
+              557.8214285714286
+            ],
+            [
+              301.05,
+              539.9071428571428
+            ],
+            [
+              304.0357142857143,
+              536.9214285714286
+            ],
+            [
+              312.99285714285713,
+              527.9642857142858
+            ],
+            [
+              321.95,
+              521.9928571428571
+            ],
+            [
+              345.8357142857143,
+              507.06428571428575
+            ],
+            [
+              349.8357142857143,
+              507.06428571428575
+            ],
+            [
+              349.8357142857143,
+              630.4928571428571
+            ],
+            [
+              338.6280182232346,
+              632.734396355353
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              271.1928571428571,
+              614.55
+            ],
+            [
+              277.1642857142857,
+              596.6357142857142
+            ],
+            [
+              283.73047016274865,
+              578.5787070524412
+            ],
+            [
+              338.6280182232346,
+              632.734396355353
+            ],
+            [
+              275.1928571428571,
+              645.4214285714286
+            ],
+            [
+              271.1928571428571,
+              645.4214285714286
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "cd830bf5108953a0bed38d230e3d908d8732b5ee824074f24aec6dfbbce11af0"
+}

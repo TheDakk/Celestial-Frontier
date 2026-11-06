@@ -1,0 +1,203 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gorilla\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3633000217\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 3633000217,
+    "ownerId": "authored:archetype-sprint/g2c163familyoriginals-04-gorilla",
+    "earthName": "Gorilla"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3633000217,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 15,
+    "body": 7,
+    "loco": 15,
+    "trait": 10,
+    "size": 3,
+    "diet": 3,
+    "head": 3,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 1,
+    "accent": 3,
+    "temper": 8,
+    "sense": 2,
+    "repro": 7,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gorilla"
+  },
+  "geometry": {
+    "cutoutAssetHash": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8067430807605871,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6210526315789473,
+      0.48676236044657095
+    ],
+    "pelvis": [
+      0.43556618819776716,
+      0.48660287081339715
+    ],
+    "spine": [
+      0.5378787878787878,
+      0.45438596491228067
+    ],
+    "chest": [
+      0.6299043062200956,
+      0.4024720893141946
+    ],
+    "neck": [
+      0.6666666666666666,
+      0.382615629984051
+    ],
+    "head": [
+      0.6956937799043063,
+      0.3587719298245614
+    ],
+    "jaw": [
+      0.7201754385964912,
+      0.40199362041467307
+    ],
+    "armFarShoulder": [
+      0.7056618819776714,
+      0.44561403508771924
+    ],
+    "armFarElbow": [
+      0.7159489633173843,
+      0.5897129186602871
+    ],
+    "armFarHand": [
+      0.7237639553429027,
+      0.7526315789473684
+    ],
+    "armNearShoulder": [
+      0.6329346092503988,
+      0.42503987240829344
+    ],
+    "armNearElbow": [
+      0.6676236044657098,
+      0.5742424242424242
+    ],
+    "armNearHand": [
+      0.7074162679425837,
+      0.7106060606060606
+    ],
+    "legFarHip": [
+      0.40199362041467307,
+      0.4997607655502393
+    ],
+    "legFarKnee": [
+      0.3588516746411483,
+      0.5955342902711324
+    ],
+    "legFarFoot": [
+      0.29609250398724085,
+      0.7318979266347687
+    ],
+    "legNearHip": [
+      0.3929824561403509,
+      0.49306220095693776
+    ],
+    "legNearKnee": [
+      0.5199362041467305,
+      0.5582137161084529
+    ],
+    "legNearFoot": [
+      0.4933014354066986,
+      0.719377990430622
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c234p4/g2c163familyoriginals-04-gorilla/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile primate media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from chimpanzee. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "bdaf57bbacb30a905f4559e1e33ad5c606787de57211e8e95c6f8bdf960b3894",
+    "subjectSourceSha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+    "presenceSha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.18548651194936747,
+      "spine": 0.10726507856394918,
+      "chest": 0.1056586319502573,
+      "neck": 0.04178217470086081,
+      "head": 0.03756454898180462,
+      "jaw": 0.049673596102839015,
+      "armFarShoulder": 0.08718048961660274,
+      "armFarElbow": 0.1444656093655176,
+      "armFarHand": 0.1631059899884009,
+      "armNearShoulder": 0.022770322137329508,
+      "armNearElbow": 0.15318200893990244,
+      "armNearHand": 0.14205103797191268,
+      "legFarHip": 0.036058944818952554,
+      "legFarKnee": 0.10504187509079066,
+      "legFarFoot": 0.15011247391033275,
+      "legNearHip": 0.043070839112339984,
+      "legNearKnee": 0.14269538906147403,
+      "legNearFoot": 0.16335034197584758
+    },
+    "measures": {
+      "body": 0.21176707135937597,
+      "bone-min": 0.022770322137329508,
+      "bone-max": 0.18548651194936747,
+      "arm/torso:armFar": 1.8640862643872214,
+      "arm/torso:armNear": 1.501665801995637,
+      "leg/torso:legFar": 1.375158526539176,
+      "leg/torso:legNear": 1.6485876104750903
+    }
+  },
+  "recipeHash": "6c1823e41e553cf4ab286ae14ce80195559f7441eff8802833c017875170ee0a"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c266-11-grasshopper",
+    "name": "Grasshopper",
+    "family": "insect",
+    "packet": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper",
+    "fit": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper",
+    "packetId": "grasshopper-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/grasshopper-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/report.json",
+    "masterSha256": "2c54eaebbf64734d63a3772f6cbd13a691a0d3c6fb552346b24deb9aadf3b611",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/c266-11-grasshopper-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/c266-11-grasshopper-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/grasshopper01/visual-review.json"
+  }
+]

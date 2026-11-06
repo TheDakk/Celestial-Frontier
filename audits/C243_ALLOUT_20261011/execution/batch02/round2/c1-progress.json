@@ -1,0 +1,19 @@
+{
+  "round": 2,
+  "batch": 2,
+  "candidate": 1,
+  "generated": 24,
+  "scored": 24,
+  "staticPass": [
+    "Gray Whale",
+    "Pilot Whale"
+  ],
+  "authorAdmit": [
+    "Gray Whale",
+    "Pilot Whale",
+    "River Dolphin"
+  ],
+  "next": "Candidate2 compiled24; start03BlueWhale",
+  "reservation": "C359 ACTIVE",
+  "sourceHead": "6d9b11785"
+}

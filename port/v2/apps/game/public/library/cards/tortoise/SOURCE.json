@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tortoise",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/rebound/c266-01-tortoise-a04/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "986ef879bd90355b2b1c897767abb3c8862c708d96280a4de25e45a636a12bfe"
+}

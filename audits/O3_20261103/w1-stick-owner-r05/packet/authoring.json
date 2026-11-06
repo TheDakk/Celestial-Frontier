@@ -1,0 +1,1326 @@
+{
+  "id": "o3-stick-insect-observed-owner-r05",
+  "family": "insect",
+  "landmarksPx": {
+    "root": [
+      607,
+      621
+    ],
+    "thorax": [
+      691,
+      614
+    ],
+    "head": [
+      829,
+      599
+    ],
+    "mandible": [
+      841,
+      610
+    ],
+    "abdomen": [
+      455,
+      622
+    ],
+    "legFrontFarKnee": [
+      860,
+      665
+    ],
+    "legFrontFarFoot": [
+      930,
+      762
+    ],
+    "legFrontNearKnee": [
+      744,
+      674
+    ],
+    "legFrontNearFoot": [
+      815,
+      775
+    ],
+    "legMidFarKnee": [
+      681,
+      663
+    ],
+    "legMidFarFoot": [
+      699,
+      722
+    ],
+    "legMidNearKnee": [
+      551,
+      655
+    ],
+    "legMidNearFoot": [
+      494,
+      774
+    ],
+    "legHindFarKnee": [
+      489,
+      567
+    ],
+    "legHindFarFoot": [
+      398,
+      713
+    ],
+    "legHindNearKnee": [
+      454,
+      610
+    ],
+    "legHindNearFoot": [
+      324,
+      773
+    ],
+    "antennaFar": [
+      1082,
+      446
+    ],
+    "antennaNear": [
+      1120,
+      502
+    ]
+  },
+  "groundLineY": 0.6251993620414673,
+  "habitat": {
+    "realm": "land",
+    "source": "Actual isolated crawling twig insect, six leg terminals arranged below the body. Current mandibulate-insect profile supports ground only; no flight declaration or scene effects."
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          603,
+          618
+        ],
+        [
+          612,
+          618
+        ],
+        [
+          612,
+          625
+        ],
+        [
+          603,
+          625
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          449,
+          606
+        ],
+        [
+          459,
+          611
+        ],
+        [
+          438,
+          646
+        ],
+        [
+          414,
+          680
+        ],
+        [
+          390,
+          716
+        ],
+        [
+          370,
+          749
+        ],
+        [
+          350,
+          767
+        ],
+        [
+          331,
+          778
+        ],
+        [
+          313,
+          782
+        ],
+        [
+          309,
+          773
+        ],
+        [
+          322,
+          765
+        ],
+        [
+          343,
+          759
+        ],
+        [
+          360,
+          742
+        ],
+        [
+          380,
+          707
+        ],
+        [
+          404,
+          670
+        ],
+        [
+          427,
+          635
+        ]
+      ]
+    },
+    {
+      "id": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          546,
+          648
+        ],
+        [
+          557,
+          650
+        ],
+        [
+          554,
+          679
+        ],
+        [
+          548,
+          706
+        ],
+        [
+          542,
+          724
+        ],
+        [
+          529,
+          753
+        ],
+        [
+          514,
+          772
+        ],
+        [
+          497,
+          783
+        ],
+        [
+          483,
+          783
+        ],
+        [
+          480,
+          774
+        ],
+        [
+          491,
+          767
+        ],
+        [
+          505,
+          762
+        ],
+        [
+          518,
+          746
+        ],
+        [
+          523,
+          724
+        ],
+        [
+          523,
+          708
+        ],
+        [
+          530,
+          693
+        ],
+        [
+          538,
+          674
+        ]
+      ]
+    },
+    {
+      "id": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          738,
+          667
+        ],
+        [
+          749,
+          668
+        ],
+        [
+          765,
+          699
+        ],
+        [
+          790,
+          746
+        ],
+        [
+          802,
+          760
+        ],
+        [
+          818,
+          768
+        ],
+        [
+          827,
+          772
+        ],
+        [
+          829,
+          782
+        ],
+        [
+          811,
+          784
+        ],
+        [
+          794,
+          774
+        ],
+        [
+          779,
+          756
+        ],
+        [
+          752,
+          704
+        ]
+      ]
+    },
+    {
+      "id": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          848,
+          655
+        ],
+        [
+          868,
+          655
+        ],
+        [
+          882,
+          690
+        ],
+        [
+          904,
+          738
+        ],
+        [
+          920,
+          752
+        ],
+        [
+          940,
+          756
+        ],
+        [
+          946,
+          767
+        ],
+        [
+          937,
+          778
+        ],
+        [
+          926,
+          774
+        ],
+        [
+          924,
+          769
+        ],
+        [
+          908,
+          766
+        ],
+        [
+          888,
+          749
+        ],
+        [
+          867,
+          694
+        ]
+      ]
+    },
+    {
+      "id": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          674,
+          655
+        ],
+        [
+          686,
+          656
+        ],
+        [
+          692,
+          687
+        ],
+        [
+          701,
+          713
+        ],
+        [
+          707,
+          713
+        ],
+        [
+          710,
+          727
+        ],
+        [
+          685,
+          728
+        ],
+        [
+          684,
+          719
+        ],
+        [
+          691,
+          715
+        ],
+        [
+          683,
+          691
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          451,
+          604
+        ],
+        [
+          460,
+          605
+        ],
+        [
+          469,
+          605
+        ],
+        [
+          470,
+          606.8148148148148
+        ],
+        [
+          478,
+          608
+        ],
+        [
+          551,
+          625
+        ],
+        [
+          581,
+          633
+        ],
+        [
+          592,
+          630
+        ],
+        [
+          602,
+          620
+        ],
+        [
+          609,
+          626
+        ],
+        [
+          598,
+          640
+        ],
+        [
+          583,
+          645
+        ],
+        [
+          549,
+          637
+        ],
+        [
+          476,
+          620
+        ],
+        [
+          452,
+          616
+        ]
+      ]
+    },
+    {
+      "id": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          675,
+          621
+        ],
+        [
+          688,
+          622
+        ],
+        [
+          707,
+          639
+        ],
+        [
+          727,
+          652
+        ],
+        [
+          749,
+          668
+        ],
+        [
+          749,
+          678
+        ],
+        [
+          740,
+          683
+        ],
+        [
+          719,
+          665
+        ],
+        [
+          699,
+          654
+        ],
+        [
+          680,
+          640
+        ],
+        [
+          675,
+          630
+        ]
+      ]
+    },
+    {
+      "id": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          796,
+          601
+        ],
+        [
+          809,
+          601
+        ],
+        [
+          827,
+          619
+        ],
+        [
+          847,
+          642
+        ],
+        [
+          867,
+          660
+        ],
+        [
+          867,
+          670
+        ],
+        [
+          859,
+          675
+        ],
+        [
+          840,
+          653
+        ],
+        [
+          819,
+          633
+        ],
+        [
+          795,
+          620
+        ]
+      ]
+    },
+    {
+      "id": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          599,
+          620
+        ],
+        [
+          617,
+          622
+        ],
+        [
+          616,
+          633
+        ],
+        [
+          607,
+          644
+        ],
+        [
+          590,
+          652
+        ],
+        [
+          560,
+          662
+        ],
+        [
+          548,
+          662
+        ],
+        [
+          545,
+          652
+        ],
+        [
+          575,
+          641
+        ],
+        [
+          595,
+          631
+        ]
+      ]
+    },
+    {
+      "id": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          667,
+          617
+        ],
+        [
+          680,
+          620
+        ],
+        [
+          684,
+          638
+        ],
+        [
+          687,
+          661
+        ],
+        [
+          681,
+          667
+        ],
+        [
+          675,
+          661
+        ],
+        [
+          672,
+          639
+        ]
+      ]
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          838,
+          593
+        ],
+        [
+          850,
+          587
+        ],
+        [
+          860,
+          582
+        ],
+        [
+          880,
+          570
+        ],
+        [
+          900,
+          559
+        ],
+        [
+          920,
+          550
+        ],
+        [
+          940,
+          541
+        ],
+        [
+          960,
+          533
+        ],
+        [
+          980,
+          526
+        ],
+        [
+          1000,
+          521
+        ],
+        [
+          1020,
+          515
+        ],
+        [
+          1040,
+          510
+        ],
+        [
+          1060,
+          506
+        ],
+        [
+          1080,
+          503
+        ],
+        [
+          1100,
+          501
+        ],
+        [
+          1128,
+          499
+        ],
+        [
+          1129,
+          505
+        ],
+        [
+          1100,
+          507
+        ],
+        [
+          1080,
+          509
+        ],
+        [
+          1060,
+          513
+        ],
+        [
+          1040,
+          517
+        ],
+        [
+          1020,
+          522
+        ],
+        [
+          1000,
+          527
+        ],
+        [
+          980,
+          533
+        ],
+        [
+          960,
+          540
+        ],
+        [
+          940,
+          548
+        ],
+        [
+          920,
+          557
+        ],
+        [
+          900,
+          567
+        ],
+        [
+          880,
+          577
+        ],
+        [
+          860,
+          590
+        ],
+        [
+          850,
+          597
+        ],
+        [
+          842,
+          600
+        ]
+      ]
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          839,
+          590
+        ],
+        [
+          850,
+          581
+        ],
+        [
+          860,
+          573
+        ],
+        [
+          880,
+          557
+        ],
+        [
+          900,
+          541
+        ],
+        [
+          920,
+          526
+        ],
+        [
+          940,
+          513
+        ],
+        [
+          960,
+          500
+        ],
+        [
+          980,
+          489
+        ],
+        [
+          1000,
+          478
+        ],
+        [
+          1020,
+          468
+        ],
+        [
+          1040,
+          459
+        ],
+        [
+          1060,
+          451
+        ],
+        [
+          1080,
+          444
+        ],
+        [
+          1090,
+          440
+        ],
+        [
+          1091,
+          448
+        ],
+        [
+          1080,
+          450
+        ],
+        [
+          1060,
+          457
+        ],
+        [
+          1040,
+          465
+        ],
+        [
+          1020,
+          474
+        ],
+        [
+          1000,
+          485
+        ],
+        [
+          980,
+          495
+        ],
+        [
+          960,
+          507
+        ],
+        [
+          940,
+          520
+        ],
+        [
+          920,
+          534
+        ],
+        [
+          900,
+          548
+        ],
+        [
+          880,
+          564
+        ],
+        [
+          860,
+          581
+        ],
+        [
+          850,
+          589
+        ],
+        [
+          841,
+          597
+        ]
+      ]
+    },
+    {
+      "id": "mouth",
+      "joint": "mandible",
+      "layer": "near",
+      "polygonPx": [
+        [
+          825,
+          601
+        ],
+        [
+          841,
+          598
+        ],
+        [
+          851,
+          601
+        ],
+        [
+          856,
+          609
+        ],
+        [
+          852,
+          618
+        ],
+        [
+          839,
+          620
+        ],
+        [
+          825,
+          616
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          810,
+          583
+        ],
+        [
+          828,
+          582
+        ],
+        [
+          841,
+          589
+        ],
+        [
+          847,
+          600
+        ],
+        [
+          839,
+          610
+        ],
+        [
+          823,
+          611
+        ],
+        [
+          810,
+          603
+        ],
+        [
+          807,
+          591
+        ]
+      ]
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "layer": "near",
+      "polygonPx": [
+        [
+          594,
+          604
+        ],
+        [
+          669,
+          602
+        ],
+        [
+          689,
+          599
+        ],
+        [
+          795,
+          584
+        ],
+        [
+          813,
+          588
+        ],
+        [
+          815,
+          611
+        ],
+        [
+          694,
+          629
+        ],
+        [
+          621,
+          642
+        ],
+        [
+          598,
+          636
+        ]
+      ]
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "far",
+      "polygonPx": [
+        [
+          300,
+          620
+        ],
+        [
+          337,
+          608
+        ],
+        [
+          443,
+          605
+        ],
+        [
+          520,
+          604
+        ],
+        [
+          529,
+          609
+        ],
+        [
+          548,
+          609
+        ],
+        [
+          558,
+          604
+        ],
+        [
+          600,
+          604
+        ],
+        [
+          600,
+          636
+        ],
+        [
+          548,
+          638
+        ],
+        [
+          470,
+          638
+        ],
+        [
+          466,
+          631
+        ],
+        [
+          444,
+          631
+        ],
+        [
+          438,
+          638
+        ],
+        [
+          338,
+          637
+        ],
+        [
+          303,
+          629
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "legHindFarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          482,
+          560
+        ],
+        [
+          497,
+          564
+        ],
+        [
+          483,
+          599
+        ],
+        [
+          463,
+          634
+        ],
+        [
+          445,
+          667
+        ],
+        [
+          428,
+          703
+        ],
+        [
+          410,
+          719
+        ],
+        [
+          390,
+          724
+        ],
+        [
+          374,
+          724
+        ],
+        [
+          372,
+          709
+        ],
+        [
+          388,
+          707
+        ],
+        [
+          397,
+          705
+        ],
+        [
+          410,
+          692
+        ],
+        [
+          427,
+          657
+        ],
+        [
+          447,
+          621
+        ],
+        [
+          465,
+          589
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          482,
+          559
+        ],
+        [
+          496,
+          559
+        ],
+        [
+          520,
+          578
+        ],
+        [
+          555,
+          606
+        ],
+        [
+          554,
+          619
+        ],
+        [
+          543,
+          619
+        ],
+        [
+          508,
+          589
+        ],
+        [
+          481,
+          571
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Fresh source-observed Stick Insect annotation on the preserved first default D40 derivative. No G1 controls, reference masks or old labels reused. Root intake only; compiled part/pivot and material acceptance pending.",
+    "sourceFacing": "right",
+    "D37": {
+      "proximalAbdomenAxisPx": [
+        595,
+        622
+      ],
+      "distalAbdomenAxisPx": [
+        315,
+        622
+      ],
+      "midpointPx": [
+        455,
+        622
+      ],
+      "reason": "Midpoint of the visible segmented abdominal axis from the posterior tip to the anterior abdominal transition, rather than centroid, old reference or ruler adjustment. Both endpoints and midpoint are actual positive-alpha source pixels."
+    },
+    "presenceMeaning": "Source-observed exposed segmented twig body carries no separate wings/elytra/membrane. Existing optional wings group alone is absent. All six real leg courses, both antennae and the actual mouth remain; no hidden/folded groups and no inferred life stage. Current mandibulate-insect profile explicitly treats wings as conditional.",
+    "mouthMeaning": "Mandible vocabulary follows the short actual mouth/jaw field beneath the small painted eye, without invented fang or alternate mouth geometry.",
+    "limitations": [
+      "Near/far names describe visible painted overlap ordering; no hidden leg shafts, reverse surfaces or replacement paint are inferred.",
+      "The rear bent-up leg is visible from its body insertion through the upper bend and lower exposed shaft; its crossing is owned only where actual source paint exists.",
+      "Priority polygons at crossings and the small painted root field require actual compiled part/pivot/source-join review; this metadata is not motion acceptance.",
+      "Olive/gold/green-brown cuticle and warm rose highlights are visible in magenta-backed raw. Source origin does not waive unchanged C261 pink/material review.",
+      "No floor, leaf, twig, water-contact or other identity effects are added or inferred."
+    ],
+    "materialApproval": false,
+    "nativeAcceptance": false,
+    "observedPaletteDescription": "source-observed olive/gold/green-brown segmented cuticle with warm pale and rose highlights; unchanged default magenta-key D40 native-alpha derivative; C261 and compiled material review pending",
+    "ownerCorrection": "Fresh source-observed correction after actual19-PNG independent source-owner HOLD. Long near antenna and six actual leg courses retained; no copied compiled masks, new anatomy absence, source pixels or control/ruler changes. Root-only blocked intake; actual parts/source joins need independent review again.",
+    "ownerCorrectionR03": {
+      "status": "SOURCE_SPECIFIC_CANDIDATE_NOT_COMPILED_OR_ACCEPTED",
+      "observedInputs": "O3 stick002-owner-r02 actual19PNG readback and exact keyed source; literal source courses only",
+      "changedOwnerPolygons": [
+        "antenna-near",
+        "antenna-far",
+        "front-far-upper",
+        "mid-near-lower"
+      ],
+      "retainedBodyRootPatchPx": [
+        603,
+        618,
+        611,
+        624
+      ],
+      "retainedBodyRootMeaning": "Existing explicit positive-paint root field (63 pixels), not newly invented body material. Independent compiled review must decide whether its root ownership is acceptable. No OWNER_CLEAN claim.",
+      "unchanged": "All source/master/post-key-lineage/presence/subject/prompt bytes; all19 IDs/joints/layers, six leg chains, two antenna controls,19 landmarks incl.D37, family/material/habitat/remainder metadata. No alpha deletion or label transfer.",
+      "farHindPriority": "Both existing far hind chain regions placed after abdomen so the actual painted abdominal surface owns its crossing bar. No hidden shaft is drawn; six chain controls remain unchanged.",
+      "partOrderChangedOnly": [
+        "hind-far-lower",
+        "hind-far-upper"
+      ]
+    },
+    "ownerCorrectionR04": {
+      "status": "ONE_BOUNDED_LOCAL_CONTOUR_CANDIDATE_NOT_COMPILED_OR_ACCEPTED",
+      "witnessAuthority": "audits/O3_20261103/w3-static/stick-r03-compiled-review/exact-crossing-witnesses.json",
+      "changedOnly": "abdomen polygon local upper contour at x520..558 and lower contour at x438..470; no priority/global order change from R03",
+      "meaning": "Follow actual horizontal torso boundaries at two far-hind crossings. Existing far-hind source owners regain painted shaft protrusions above/below torso, while abdominal bars remain abdomen. No alpha/color, limb pivot,19IDs or D37 change. Root63pixel patch unchanged.",
+      "upperShaftWitnesses": [
+        [
+          535,
+          604
+        ],
+        [
+          539,
+          605
+        ],
+        [
+          541,
+          606
+        ]
+      ],
+      "lowerShaftWitnesses": [
+        [
+          450,
+          634
+        ],
+        [
+          447,
+          637
+        ],
+        [
+          448,
+          635
+        ]
+      ],
+      "noAcceptanceClaim": true
+    },
+    "ownerCorrectionR05": {
+      "status": "ONE_SOURCE_LOCAL_10_PIXEL_CONTOUR_CANDIDATE_NOT_COMPILED",
+      "changedOnly": "existing hind-near-upper top rim x460..470,y605..607",
+      "witnessAuthority": "audits/O3_20261103/w2-wave-a/stick-r04-compiled-review/near-knee-peak-pixels.json",
+      "meaning": "Ten independently witnessed near-hind knee-peak shaft/rim pixels return from abdomen to their existing actual leg owner. No global reorder, source pixels or new anatomy. All R04 abdomen/far-shaft/antenna fixes preserved."
+    }
+  }
+}

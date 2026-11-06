@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Catfish",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five full-size frames inspected: continuous head/body/fin joins and attached barbels; no visible pink fringe or detached fragment."
+  },
+  {
+    "name": "Gray Whale",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five full-size frames inspected: knuckle ridge and barnacled identity retained, continuous head/body/tail joins and attached flippers; far flipper bends sharply in victory but no floating fragment seen."
+  },
+  {
+    "name": "Gulper Eel",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its body/tail exits the lower frame; a small upper-mouth fragment appears above the head. Luminous tail tip also reads separated in the horizontal frames. Mechanical PASS does not clear these visual defects."
+  },
+  {
+    "name": "Manatee",
+    "status": "HOLD",
+    "reason": "All five full-size frames show a large back/flank tear with triangular detached paint; turn3-hit-idle-50 opens a broad background wedge between head/back and body. D28 mechanical PASS is not visual acceptance."
+  },
+  {
+    "name": "Moray Eel",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its lower body/tail exits the frame. In other frames the body and jaw stay connected; midpoint visibility remains a visual HOLD."
+  },
+  {
+    "name": "Pilot Whale",
+    "status": "HOLD",
+    "reason": "All five full-size frames show an open neck/back seam; turn3-hit-idle-50 separates the left head/chest from the body through a broad background wedge, with a long back strip extending away. Mechanical PASS does not clear the tear."
+  },
+  {
+    "name": "River Dolphin",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50/90: a long background seam opens along the right dolphin's upper back and thin chest/flipper strands hang below the left animal. Rounded melon identity is retained, but the repaired fit still tears."
+  },
+  {
+    "name": "Lionfish",
+    "status": "HOLD",
+    "reason": "All five full-size frames inspected: body and fin-ray attachments remain connected, but pink key-colour residue persists on fine tail and fin-ray tips. Changed D28 placement does not clear the prior fringe HOLD."
+  },
+  {
+    "name": "Pipefish",
+    "status": "HOLD",
+    "reason": "All five full-size frames inspected: thin body and snout remain continuous, but dorsal, pectoral and tail fins read saturated pink. Changed D28 placement does not clear the prior key-colour fringe HOLD."
+  }
+]

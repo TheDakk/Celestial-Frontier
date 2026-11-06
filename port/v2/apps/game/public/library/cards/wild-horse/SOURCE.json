@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wild Horse",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-14-wild-horse/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "61cc430c6a9b75164c6090885bca22214cd3df9ca43b736adf842f8b0a3bd8cd"
+}

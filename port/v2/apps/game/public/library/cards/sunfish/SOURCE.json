@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sunfish",
+ "fitDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f77e28556913edaef4b9f642298f91280bb3d1e858e163ef20a0a7507efcb869"
+}

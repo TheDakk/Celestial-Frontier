@@ -1,0 +1,9 @@
+{
+  "status": "FIRST_RED_STOP",
+  "rows": [
+    {
+      "name": "row-proof",
+      "exit": 1
+    }
+  ]
+}

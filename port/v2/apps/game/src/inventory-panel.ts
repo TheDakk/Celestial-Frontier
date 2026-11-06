@@ -165,6 +165,9 @@ export interface InventoryPanelControllerOptions {
   readonly openers?: readonly (HTMLElement | null)[];
   readonly onAction?: (request: InventoryPanelActionRequest) => Promise<InventoryPanelActionOutcome>;
   readonly requiresSalvageConfirmation?: (request: InventoryPanelActionRequest) => boolean;
+  /** v1.8.9 parity (D16, the salvage dialog's "don't ask again", v1 `data-salvoff`): turn the saved Confirm-salvage switch off.
+   * Absent = the confirmation offers no such choice. */
+  readonly disableSalvageConfirmation?: () => void;
   /** Production panels retain state while closed, but not a hidden row tree
    * or six dormant event subscriptions. Tests and standalone consumers keep
    * the historical eager behavior unless they opt into this lifecycle. */
@@ -172,6 +175,17 @@ export interface InventoryPanelControllerOptions {
 }
 
 type InventoryStatusFilter = 'all' | 'equipped' | 'protected';
+
+/** v1.8.9 "Salvage all junk" (`_junkItems`): every UNEQUIPPED, unprotected Common/Uncommon (rarity tier ≤ 1) gear instance —
+ * never a relic, never a favorite or locked one, never a pending reward. Listed in inventory order. */
+export function salvageAllCandidatesV1(state: Arc2LootStateV1 | null): readonly string[] {
+  if (state?.kind !== 'inventory') return Object.freeze([]);
+  const equipped = new Set(state.inventory.equipped.map((row) => row.instanceId));
+  return Object.freeze(state.inventory.entries.filter((entry) => !entry.favorite && !entry.locked
+    && !equipped.has(entry.instance.instanceId)
+    && entry.instance.rarityTier <= 1
+    && getLootCatalogueDefinition(entry.instance.baseId)?.category === 'gear').map((entry) => entry.instance.instanceId));
+}
 
 function textNumber(value: number, percent = false): string {
   const amount = percent ? value * 100 : value;
@@ -247,6 +261,10 @@ export class InventoryPanelController {
   readonly #openers: readonly (HTMLElement | null)[];
   readonly #actionAdapter: InventoryPanelControllerOptions['onAction'] | null;
   readonly #requiresSalvageConfirmation: NonNullable<InventoryPanelControllerOptions['requiresSalvageConfirmation']>;
+  readonly #disableSalvageConfirmation: InventoryPanelControllerOptions['disableSalvageConfirmation'] | null;
+  #salvageAllArmed = false;
+  #salvageAllRunning = false;
+  #salvageAllResult: string | null = null;
   readonly #deferWhileClosed: boolean;
   readonly #background = new Map<HTMLElement, Readonly<{ inert: boolean; ariaHidden: string | null }>>();
   #backgroundObserver: MutationObserver | null = null;
@@ -274,6 +292,7 @@ export class InventoryPanelController {
     this.#openers = Object.freeze([...(options.openers ?? [])]);
     this.#actionAdapter = options.onAction ?? null;
     this.#requiresSalvageConfirmation = options.requiresSalvageConfirmation ?? (() => false);
+    this.#disableSalvageConfirmation = options.disableSalvageConfirmation ?? null;
     this.#deferWhileClosed = options.deferWhileClosed ?? false;
     if (options.sheet.ownerDocument !== this.#document) {
       throw new Error('Inventory panel and sheet must belong to one document');
@@ -316,6 +335,7 @@ export class InventoryPanelController {
     this.#convergencePending = false;
     this.#page = 0;
     this.#salvageConfirmationFor = null;
+    if (!this.#salvageAllRunning) this.#salvageAllArmed = false;
     if (!this.#deferWhileClosed || this.#panelOpen) this.render();
   }
 
@@ -400,6 +420,8 @@ export class InventoryPanelController {
       + `${inventory.equipped.length} equipped · ${inventory.pendingRewards.length} pending`);
     summary.dataset.inventoryState = 'inventory';
     fragment.append(summary, this.#tools());
+    const salvageAll = this.#salvageAllControl();
+    if (salvageAll !== null) fragment.append(salvageAll);
     if (this.#state.stackableCounts.length) {
       const stacks = this.#node('ul', 'inventory-stack-list');
       stacks.setAttribute('aria-label', 'Stackable item counts');
@@ -606,6 +628,76 @@ export class InventoryPanelController {
     );
     tools.append(status);
     return tools;
+  }
+
+  /** The bulk "Salvage all" row: shown only while there is junk (or a result to report). First tap arms when the Confirm
+   * salvage switch is on; the second confirms (v1 `data-salvall`). */
+  #salvageAllControl(): HTMLElement | null {
+    const junk = salvageAllCandidatesV1(this.#state);
+    if (junk.length === 0 && this.#salvageAllResult === null) return null;
+    const row = this.#node('div', 'inventory-salvage-all');
+    if (junk.length > 0) {
+      const button = this.#node('button', '', this.#salvageAllRunning ? `Salvaging… (${junk.length} left)`
+        : this.#salvageAllArmed ? `Confirm — salvage ${junk.length} item${junk.length === 1 ? '' : 's'}`
+          : `♺ Salvage all Common/Uncommon (${junk.length})`);
+      button.type = 'button';
+      button.dataset.inventorySalvageAll = this.#salvageAllArmed ? 'armed' : 'ready';
+      button.title = 'Breaks every unequipped, unprotected Common or Uncommon piece down into materials. Favorites, locked and equipped gear are never touched.';
+      button.disabled = this.#salvageAllRunning || this.#pendingAction !== null || this.#convergencePending || this.#actionAdapter === null;
+      row.append(button);
+    }
+    if (this.#salvageAllResult !== null) {
+      const status = this.#node('p', 'inventory-action-status', this.#salvageAllResult);
+      status.dataset.inventorySalvageAllStatus = 'true';
+      status.setAttribute('role', 'status');
+      row.append(status);
+    }
+    return row;
+  }
+
+  async #runSalvageAll(): Promise<void> {
+    const adapter = this.#actionAdapter;
+    if (!adapter || this.#salvageAllRunning || this.#pendingAction || this.#convergencePending) return;
+    const junk = salvageAllCandidatesV1(this.#state);
+    if (junk.length === 0) { this.#salvageAllArmed = false; this.render(); return; }
+    if (!this.#salvageAllArmed) {
+      let confirmationRequired = false;
+      try { confirmationRequired = this.#requiresSalvageConfirmation(Object.freeze({ operation: 'salvage', instanceId: junk[0]! })); } catch { confirmationRequired = true; }
+      if (confirmationRequired) {
+        this.#salvageAllArmed = true;
+        this.#salvageAllResult = null;
+        this.render();
+        this.#panelBody.querySelector<HTMLButtonElement>('[data-inventory-salvage-all]')?.focus();
+        return;
+      }
+    }
+    this.#salvageAllArmed = false;
+    this.#salvageAllRunning = true;
+    this.#salvageAllResult = null;
+    this.render();
+    let salvaged = 0;
+    let stopped: string | null = null;
+    try {
+      for (const instanceId of junk) {
+        if (this.#disposed) return;
+        const request: InventoryPanelActionRequest = Object.freeze({ operation: 'salvage', instanceId });
+        this.#pendingAction = request;
+        let outcome: InventoryPanelActionOutcome;
+        try { outcome = await adapter(request); } catch (error) { outcome = { kind: 'refused', detail: error instanceof Error ? error.message : String(error), state: null }; }
+        this.#pendingAction = null;
+        this.#recordAction(request, outcome);
+        if (outcome.kind === 'committed' && outcome.state?.kind === 'inventory') { this.#state = outcome.state; salvaged++; continue; }
+        if (outcome.kind === 'committed') { salvaged++; this.#convergencePending = true; stopped = 'convergence-reload'; break; }
+        stopped = `${outcome.kind}: ${outcome.detail}`;
+        break;
+      }
+    } finally {
+      this.#pendingAction = null;
+      this.#salvageAllRunning = false;
+    }
+    if (this.#disposed) return;
+    this.#salvageAllResult = `♺ Salvaged ${salvaged} item${salvaged === 1 ? '' : 's'}${stopped === null ? '' : ` — stopped (${stopped})`}.`;
+    if (!this.#deferWhileClosed || this.#panelOpen) this.render();
   }
 
   #pager(page: InventoryPanelPage): HTMLElement {
@@ -965,6 +1057,14 @@ export class InventoryPanelController {
         this.#salvageConfirmationFor = instanceId;
         sourceButton.dataset.confirmation = 'required';
         sourceButton.textContent = 'Confirm salvage exact item';
+        if (this.#disableSalvageConfirmation !== null && sourceButton.parentElement !== null
+          && sourceButton.parentElement.querySelector('[data-inventory-salvage-off]') === null) {
+          const off = this.#node('button', '', "Salvage — don't ask again");
+          off.type = 'button';
+          off.dataset.inventorySalvageOff = instanceId;
+          off.title = 'Salvage this item now and stop asking (Settings → Confirm salvage turns it back on).';
+          sourceButton.after(off);
+        }
         this.#setActionStatus('Confirm salvage to destroy this exact unprotected instance.', 'confirmation-required');
         sourceButton.focus();
         return;
@@ -1096,6 +1196,7 @@ export class InventoryPanelController {
 
   readonly #onPanelClick = (event: Event): void => {
     const target = event.target as Element | null;
+    if (target?.closest('[data-inventory-salvage-all]')) { void this.#runSalvageAll(); return; }
     const pager = target?.closest<HTMLButtonElement>('[data-inventory-page]');
     if (pager) {
       const direction = pager.dataset.inventoryPage;
@@ -1113,6 +1214,7 @@ export class InventoryPanelController {
     if (!target?.matches('[data-inventory-query]')) return;
     this.#query = target.value;
     this.#page = 0;
+    this.#salvageAllArmed = false;
     const selection = target.selectionStart ?? target.value.length;
     this.render();
     const replacement = this.#panelBody.querySelector<HTMLInputElement>('[data-inventory-query]');
@@ -1136,6 +1238,17 @@ export class InventoryPanelController {
 
   readonly #onSheetClick = (event: Event): void => {
     const target = event.target as Element | null;
+    const off = target?.closest<HTMLButtonElement>('[data-inventory-salvage-off]');
+    if (off?.dataset.inventorySalvageOff && this.#disableSalvageConfirmation !== null
+      && this.#salvageConfirmationFor === off.dataset.inventorySalvageOff && !this.#pendingAction) {
+      /* v1 data-salvoff: the switch goes off, then this exact salvage proceeds (already confirmed by this press). */
+      this.#disableSalvageConfirmation?.();
+      const source = [...this.#sheetBody.querySelectorAll<HTMLButtonElement>('[data-inventory-action="salvage"][data-instance-id]')]
+        .find((button) => button.dataset.instanceId === off.dataset.inventorySalvageOff);
+      off.remove();
+      if (source) void this.#runAction('salvage', source.dataset.instanceId!, source);
+      return;
+    }
     const action = target?.closest<HTMLButtonElement>(
       '[data-inventory-action][data-instance-id]',
     );

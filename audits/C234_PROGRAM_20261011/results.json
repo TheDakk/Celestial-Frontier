@@ -1,0 +1,114 @@
+{
+  "program": "C234",
+  "baseline": 52,
+  "final": 63,
+  "scoredPerPhase": 457,
+  "phases": [
+    {
+      "phase": 1,
+      "scored": 457,
+      "staticBefore": 52,
+      "staticAfter": 52,
+      "gainedPackets": [],
+      "lostPackets": [],
+      "gainedSpecies": [],
+      "lostSpecies": [],
+      "changedPacketSpecies": [],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    },
+    {
+      "phase": 2,
+      "scored": 457,
+      "staticBefore": 52,
+      "staticAfter": 52,
+      "gainedPackets": [],
+      "lostPackets": [],
+      "gainedSpecies": [],
+      "lostSpecies": [],
+      "changedPacketSpecies": [],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    },
+    {
+      "phase": 3,
+      "scored": 457,
+      "staticBefore": 52,
+      "staticAfter": 52,
+      "gainedPackets": [],
+      "lostPackets": [],
+      "gainedSpecies": [],
+      "lostSpecies": [],
+      "changedPacketSpecies": [],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    },
+    {
+      "phase": 4,
+      "scored": 457,
+      "staticBefore": 52,
+      "staticAfter": 52,
+      "gainedPackets": [],
+      "lostPackets": [],
+      "gainedSpecies": [],
+      "lostSpecies": [],
+      "changedPacketSpecies": [],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    },
+    {
+      "phase": 5,
+      "scored": 457,
+      "staticBefore": 52,
+      "staticAfter": 63,
+      "gainedPackets": [
+        "c196creaturesupply-18-water-beetle",
+        "c196quadrupedoriginals-20-monkey",
+        "g2c114-23-water-beetle",
+        "g2c121-22-carrion-beetle",
+        "g2c163familyoriginals-04-gorilla",
+        "g2c83-16-cockatoo",
+        "g2c92-19-moth",
+        "g2c92-20-aphid",
+        "g2c95-23-springtail",
+        "g2throughputc56-26-cicada",
+        "insectreferencesc86-04-bee-six-legs"
+      ],
+      "lostPackets": [],
+      "gainedSpecies": [
+        "Aphid",
+        "Carrion Beetle",
+        "Cicada",
+        "Cockatoo",
+        "Gorilla",
+        "Monkey",
+        "Moth",
+        "Springtail",
+        "Water Beetle"
+      ],
+      "lostSpecies": [],
+      "changedPacketSpecies": [
+        "Aphid",
+        "Bee",
+        "Carrion Beetle",
+        "Cicada",
+        "Cockatoo",
+        "Gorilla",
+        "Monkey",
+        "Moth",
+        "Springtail",
+        "Water Beetle"
+      ],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    },
+    {
+      "phase": 6,
+      "scored": 457,
+      "staticBefore": 63,
+      "staticAfter": 63,
+      "gainedPackets": [],
+      "lostPackets": [],
+      "gainedSpecies": [],
+      "lostSpecies": [],
+      "changedPacketSpecies": [],
+      "scope": "Fixed-cohort static diagnostic, not native/visual admission or certification"
+    }
+  ],
+  "admission": "Claude native and visual review; no certification"
+}

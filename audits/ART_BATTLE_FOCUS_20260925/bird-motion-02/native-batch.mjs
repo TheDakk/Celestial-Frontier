@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';import {spawnSync} from 'node:child_process';
+const p=import.meta.dirname,base=path.dirname(p),root=path.resolve(p,'../../..'),rows=[];
+for(const[name,fit,packet]of [['gull','12-gull/fit-03','12-gull'],['goose','bird-motion-02/goose-fit-04','15-goose'],['heron','16-heron/fit-01','16-heron']]){
+ const out=p+'/native-'+name+'-01';if(fs.existsSync(out)||fs.existsSync(out+'.log'))throw Error('New output required');const fd=fs.openSync(out+'.log','wx'),command=[base+'/quadruped-repair-04/native-composed-proposal-02-runner.mjs',base+'/'+fit,base+'/'+fit,out,base+'/'+packet+'/battle-script.json'];
+ const run=spawnSync(process.execPath,command,{cwd:root,env:{...process.env,CF_CPU_THROTTLE:'4',CF_BROWSER:'/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'},stdio:['ignore',fd,fd],timeout:300000});fs.closeSync(fd);const report=fs.existsSync(out+'/report.json')?JSON.parse(fs.readFileSync(out+'/report.json')):null;rows.push({name,command,exit:run.status,status:report?.status,error:run.error?String(run.error):report?.error,cpuP95Ms:report?.capture?.cpuP95Ms,refusals:report?.capture?.refusalsAtEnd});fs.writeFileSync(p+'/native-batch-results.json',JSON.stringify(rows,null,2)+'\n');console.log(JSON.stringify(rows.at(-1)));if(!report||run.error)break;
+}

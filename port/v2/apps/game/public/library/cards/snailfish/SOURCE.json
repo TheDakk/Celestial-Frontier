@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snailfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ec8a15beae0477844b133daabd970463220c792851fbde27acd8ae0c9fd68ad7"
+}

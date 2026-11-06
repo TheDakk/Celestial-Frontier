@@ -1,0 +1,1178 @@
+[
+  {
+    "n": 1,
+    "id": "c243b02r1c3-35-black-fly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 84,
+      "box": [
+        570,
+        299,
+        587,
+        311
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/001.png",
+    "sourceBox": [
+      498,
+      245,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 1
+  },
+  {
+    "n": 2,
+    "id": "c243b02r1c3-35-black-fly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 81,
+      "box": [
+        437,
+        299,
+        453,
+        311
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/002.png",
+    "sourceBox": [
+      365,
+      245,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 2
+  },
+  {
+    "n": 3,
+    "id": "c243b02r1c3-35-black-fly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 72,
+      "box": [
+        447,
+        314,
+        462,
+        320
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/003.png",
+    "sourceBox": [
+      374,
+      257,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 3
+  },
+  {
+    "n": 4,
+    "id": "c243b02r1c3-35-black-fly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 84,
+      "box": [
+        570,
+        299,
+        587,
+        311
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/004.png",
+    "sourceBox": [
+      498,
+      245,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 4
+  },
+  {
+    "n": 5,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 174,
+      "box": [
+        552,
+        272,
+        569,
+        285
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/005.png",
+    "sourceBox": [
+      480,
+      218,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 5
+  },
+  {
+    "n": 6,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 96,
+      "box": [
+        739,
+        452,
+        754,
+        468
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/006.png",
+    "sourceBox": [
+      666,
+      400,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 6
+  },
+  {
+    "n": 7,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 174,
+      "box": [
+        552,
+        272,
+        569,
+        285
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/007.png",
+    "sourceBox": [
+      480,
+      218,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 7
+  },
+  {
+    "n": 8,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 96,
+      "box": [
+        739,
+        452,
+        754,
+        468
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/008.png",
+    "sourceBox": [
+      666,
+      400,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 8
+  },
+  {
+    "n": 9,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 174,
+      "box": [
+        552,
+        272,
+        569,
+        285
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/009.png",
+    "sourceBox": [
+      480,
+      218,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 9
+  },
+  {
+    "n": 10,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 96,
+      "box": [
+        739,
+        452,
+        754,
+        468
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/010.png",
+    "sourceBox": [
+      666,
+      400,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 10
+  },
+  {
+    "n": 11,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 174,
+      "box": [
+        552,
+        272,
+        569,
+        285
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/011.png",
+    "sourceBox": [
+      480,
+      218,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 11
+  },
+  {
+    "n": 12,
+    "id": "c243b04r1c2-07-pheasant",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 96,
+      "box": [
+        739,
+        452,
+        754,
+        468
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/012.png",
+    "sourceBox": [
+      666,
+      400,
+      160,
+      120
+    ],
+    "page": 1,
+    "tile": 12
+  },
+  {
+    "n": 13,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 538,
+      "box": [
+        704,
+        420,
+        757,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/013.png",
+    "sourceBox": [
+      650,
+      376,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 1
+  },
+  {
+    "n": 14,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 121,
+      "box": [
+        597,
+        264,
+        623,
+        270
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/014.png",
+    "sourceBox": [
+      530,
+      207,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 2
+  },
+  {
+    "n": 15,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 538,
+      "box": [
+        704,
+        420,
+        757,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/015.png",
+    "sourceBox": [
+      650,
+      376,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 3
+  },
+  {
+    "n": 16,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 121,
+      "box": [
+        597,
+        264,
+        623,
+        270
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/016.png",
+    "sourceBox": [
+      530,
+      207,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 4
+  },
+  {
+    "n": 17,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c72-12-egret",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 538,
+      "box": [
+        704,
+        420,
+        757,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/017.png",
+    "sourceBox": [
+      650,
+      376,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 5
+  },
+  {
+    "n": 18,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c72-12-egret",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 121,
+      "box": [
+        597,
+        264,
+        623,
+        270
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/018.png",
+    "sourceBox": [
+      530,
+      207,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 6
+  },
+  {
+    "n": 19,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c72-12-egret",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 538,
+      "box": [
+        704,
+        420,
+        757,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/019.png",
+    "sourceBox": [
+      650,
+      376,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 7
+  },
+  {
+    "n": 20,
+    "id": "g2c72-12-egret",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c72-12-egret",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 121,
+      "box": [
+        597,
+        264,
+        623,
+        270
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/020.png",
+    "sourceBox": [
+      530,
+      207,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 8
+  },
+  {
+    "n": 21,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 86,
+      "box": [
+        883,
+        406,
+        900,
+        415
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/021.png",
+    "sourceBox": [
+      811,
+      350,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 9
+  },
+  {
+    "n": 22,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 92,
+      "box": [
+        119,
+        413,
+        136,
+        424
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/022.png",
+    "sourceBox": [
+      47,
+      358,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 10
+  },
+  {
+    "n": 23,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 86,
+      "box": [
+        883,
+        406,
+        900,
+        415
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/023.png",
+    "sourceBox": [
+      811,
+      350,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 11
+  },
+  {
+    "n": 24,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 86,
+      "box": [
+        883,
+        406,
+        900,
+        415
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/024.png",
+    "sourceBox": [
+      811,
+      350,
+      160,
+      120
+    ],
+    "page": 2,
+    "tile": 12
+  },
+  {
+    "n": 25,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 92,
+      "box": [
+        119,
+        413,
+        136,
+        424
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/025.png",
+    "sourceBox": [
+      47,
+      358,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 1
+  },
+  {
+    "n": 26,
+    "id": "c243b02r2c2-12-gulper-eel",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-12-gulper-eel",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 86,
+      "box": [
+        883,
+        406,
+        900,
+        415
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/026.png",
+    "sourceBox": [
+      811,
+      350,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 2
+  },
+  {
+    "n": 27,
+    "id": "c243b02r1c3-13-humpback-whale",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 48,
+      "box": [
+        736,
+        467,
+        743,
+        476
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/027.png",
+    "sourceBox": [
+      659,
+      411,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 3
+  },
+  {
+    "n": 28,
+    "id": "c243b02r1c3-13-humpback-whale",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 48,
+      "box": [
+        736,
+        467,
+        743,
+        476
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/028.png",
+    "sourceBox": [
+      659,
+      411,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 4
+  },
+  {
+    "n": 29,
+    "id": "c243b04r1c1-10-snipe",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c1-10-snipe",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 150,
+      "box": [
+        756,
+        438,
+        782,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/029.png",
+    "sourceBox": [
+      689,
+      385,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 5
+  },
+  {
+    "n": 30,
+    "id": "c243b04r1c1-10-snipe",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c1-10-snipe",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 150,
+      "box": [
+        756,
+        438,
+        782,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/030.png",
+    "sourceBox": [
+      689,
+      385,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 6
+  },
+  {
+    "n": 31,
+    "id": "c243b04r1c1-10-snipe",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c1-10-snipe",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 150,
+      "box": [
+        756,
+        438,
+        782,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/031.png",
+    "sourceBox": [
+      689,
+      385,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 7
+  },
+  {
+    "n": 32,
+    "id": "c243b04r1c1-10-snipe",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c1-10-snipe",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 150,
+      "box": [
+        756,
+        438,
+        782,
+        452
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/032.png",
+    "sourceBox": [
+      689,
+      385,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 8
+  },
+  {
+    "n": 33,
+    "id": "c243b04r1c2-03-ostrich",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-03-ostrich",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 126,
+      "box": [
+        583,
+        254,
+        599,
+        269
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/033.png",
+    "sourceBox": [
+      511,
+      201,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 9
+  },
+  {
+    "n": 34,
+    "id": "c243b04r1c2-03-ostrich",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-03-ostrich",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 126,
+      "box": [
+        583,
+        254,
+        599,
+        269
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/034.png",
+    "sourceBox": [
+      511,
+      201,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 10
+  },
+  {
+    "n": 35,
+    "id": "c243b04r1c2-03-ostrich",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-03-ostrich",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 126,
+      "box": [
+        583,
+        254,
+        599,
+        269
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/035.png",
+    "sourceBox": [
+      511,
+      201,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 11
+  },
+  {
+    "n": 36,
+    "id": "c243b04r1c2-03-ostrich",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-03-ostrich",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 126,
+      "box": [
+        583,
+        254,
+        599,
+        269
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/036.png",
+    "sourceBox": [
+      511,
+      201,
+      160,
+      120
+    ],
+    "page": 3,
+    "tile": 12
+  },
+  {
+    "n": 37,
+    "id": "c243b04r1c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-12-tern",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 53,
+      "box": [
+        969,
+        292,
+        984,
+        300
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/037.png",
+    "sourceBox": [
+      864,
+      236,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 1
+  },
+  {
+    "n": 38,
+    "id": "c243b04r1c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-12-tern",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 53,
+      "box": [
+        969,
+        292,
+        984,
+        300
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/038.png",
+    "sourceBox": [
+      864,
+      236,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 2
+  },
+  {
+    "n": 39,
+    "id": "c243b04r1c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-12-tern",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 53,
+      "box": [
+        969,
+        292,
+        984,
+        300
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/039.png",
+    "sourceBox": [
+      864,
+      236,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 3
+  },
+  {
+    "n": 40,
+    "id": "c243b04r1c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-12-tern",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 53,
+      "box": [
+        969,
+        292,
+        984,
+        300
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/040.png",
+    "sourceBox": [
+      864,
+      236,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 4
+  },
+  {
+    "n": 41,
+    "id": "c243b02r1c2-14-lamprey",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 276,
+      "box": [
+        435,
+        415,
+        460,
+        439
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/041.png",
+    "sourceBox": [
+      367,
+      367,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 5
+  },
+  {
+    "n": 42,
+    "id": "c243b03r1c1-26-moth",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c1-26-moth",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 633,
+      "box": [
+        438,
+        264,
+        462,
+        340
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/042.png",
+    "sourceBox": [
+      370,
+      238,
+      160,
+      127
+    ],
+    "page": 4,
+    "tile": 6
+  },
+  {
+    "n": 43,
+    "id": "c243b03r1c1-26-moth",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 633,
+      "box": [
+        438,
+        264,
+        462,
+        340
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/043.png",
+    "sourceBox": [
+      370,
+      238,
+      160,
+      127
+    ],
+    "page": 4,
+    "tile": 7
+  },
+  {
+    "n": 44,
+    "id": "c243b03r1c2-20-stonefly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 250,
+      "box": [
+        386,
+        251,
+        418,
+        277
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/044.png",
+    "sourceBox": [
+      322,
+      204,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 8
+  },
+  {
+    "n": 45,
+    "id": "c243b03r1c2-20-stonefly",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 250,
+      "box": [
+        386,
+        251,
+        418,
+        277
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/045.png",
+    "sourceBox": [
+      322,
+      204,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 9
+  },
+  {
+    "n": 46,
+    "id": "c243b03r2c3-26-moth",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/round2/ai-finish/native-01/c243b03r2c3-26-moth",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 44,
+      "box": [
+        425,
+        301,
+        435,
+        308
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/046.png",
+    "sourceBox": [
+      350,
+      244,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 10
+  },
+  {
+    "n": 47,
+    "id": "c243b03r2c3-26-moth",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/round2/native/c243b03r2c3-26-moth",
+    "frame": "turn3-hit-idle-50",
+    "flag": {
+      "px": 44,
+      "box": [
+        425,
+        301,
+        435,
+        308
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/047.png",
+    "sourceBox": [
+      350,
+      244,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 11
+  },
+  {
+    "n": 48,
+    "id": "c243b07r1c1-05-limpet",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-05-limpet",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 46,
+      "box": [
+        423,
+        456,
+        435,
+        465
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/048.png",
+    "sourceBox": [
+      349,
+      400,
+      160,
+      120
+    ],
+    "page": 4,
+    "tile": 12
+  },
+  {
+    "n": 49,
+    "id": "c243b07r1c1-05-limpet",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b07r1c1-05-limpet",
+    "frame": "turn3-hit-idle-90",
+    "flag": {
+      "px": 46,
+      "box": [
+        423,
+        456,
+        435,
+        465
+      ]
+    },
+    "crop": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/flag-boxes/049.png",
+    "sourceBox": [
+      349,
+      400,
+      160,
+      120
+    ],
+    "page": 5,
+    "tile": 1
+  }
+]

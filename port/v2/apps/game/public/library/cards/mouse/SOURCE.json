@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mouse",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/15-mouse/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "82126b575ba00c73279164ed635b218f6c0af3a20cf78bedeb7a388268ccba33"
+}

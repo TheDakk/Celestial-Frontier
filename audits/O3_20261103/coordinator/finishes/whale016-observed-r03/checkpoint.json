@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "o3-whale016-observed-r03",
+  "checkpointReview": "audits/O3_20261103/coordinator/checkpoints/whale016-observed-r03-original/W2.json",
+  "nativeReview": "audits/O3_20261103/w1-whale-r03-native-review/physical-review.json",
+  "nativePlan": "audits/O3_20261103/coordinator/plans/whale016-observed-r03/native-plan-bound.json",
+  "nativeReport": "audits/O3_20261103/coordinator/plans/whale016-observed-r03/native/report.json",
+  "triage": "audits/O3_20261103/coordinator/triage-whale016-observed-r03-original",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": false,
+  "checkpointReviewSha256": "6ba8eb3e90ee4b83eaa9ffb9aba74e2b6dcb8f1697da4016f0e8b14b26e05eba",
+  "nativeReviewSha256": "69c0ed1e5d000b1b23376b7158f14619a7c6f8bdfbdda17df48e607649e6ae6d",
+  "nativePlanSha256": "c6c1e8b65f2cfe83a076878d2fa38d3d602285fd8764a292f1e8bc01395b789f",
+  "nativeReportSha256": "86ef40f39cd54e0304976987e60a06a6a242384e66ee9b1716c039080e741e51"
+}

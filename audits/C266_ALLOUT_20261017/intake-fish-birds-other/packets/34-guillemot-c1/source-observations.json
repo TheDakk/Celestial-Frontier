@@ -1,0 +1,40 @@
+{
+ "schema": "cf.c266-observed-source/v1",
+ "species": "Guillemot",
+ "candidate": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-34-guillemot",
+ "masterFrom": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-34-guillemot/master.png",
+ "masterSha256": "bf8c2f81ca3f35356ff1e9fe264fdac6f35ffb18c26d444b8477552328b61964",
+ "masterCopySha256": "bf8c2f81ca3f35356ff1e9fe264fdac6f35ffb18c26d444b8477552328b61964",
+ "subjectSourceSha256": "93829443d08e045dd8779b632184810c20fd910d7aeb88bf73af153a526e4d6a",
+ "mustRead": [
+  "long slender pointed dagger bill",
+  "upright chocolate-brown-and-white body",
+  "narrow head running smoothly into the neck"
+ ],
+ "note": null,
+ "why": "Strict right-facing lateral upright guillemot: dagger bill, both short legs with separate webbed feet, folded near wing with white bar and short tail, all with clear margins.",
+ "observed": {
+  "legs": 2,
+  "feet": 2,
+  "webbedFeet": true,
+  "wingsFolded": 2,
+  "tail": "short dark tail under the primaries"
+ },
+ "presence": {
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [],
+  "folded": []
+ },
+ "limitations": [
+  "Short-legged mapping: tibiotarsus is inside the body; thigh owner is the leg exit only.",
+  "Far wing is not separately visible; far-wing owners are the dark back and the upper wing edge (interpretation, robin convention)."
+ ],
+ "joints": 19,
+ "parts": 17,
+ "copiedUnchanged": [
+  "master.png",
+  "subject-source.json",
+  "prompt.txt"
+ ]
+}

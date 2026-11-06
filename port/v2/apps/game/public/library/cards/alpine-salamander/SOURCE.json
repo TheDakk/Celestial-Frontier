@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Alpine Salamander",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c136repairs-02-alpine-salamander/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1cfe781c3ee6d6678bcd099ff501d0e2ba323d3cba4955e43d534bd7ae219bbf"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "SIGNING_BLOCKED",
+  "head": "fd26b9f8",
+  "aheadCachedOriginOpenaiMac": 121,
+  "aheadCachedOriginDevelop": 232,
+  "attempt": "git commit -S",
+  "error": "1Password: agent returned an error; failed to write commit object",
+  "work": "saved/staged",
+  "githubWrites": false,
+  "mainTsHunks": 0
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "finish-giant-isopod-d41-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-giant-isopod-d41-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41"
+  ],
+  "startedUnix": 1792462794.982903,
+  "beforeGiB": 52.559532165527344,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 52.55952072143555,
+  "afterGiB": 52.5492057800293
+}

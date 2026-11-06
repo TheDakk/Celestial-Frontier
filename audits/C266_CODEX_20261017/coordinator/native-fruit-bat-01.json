@@ -1,0 +1,20 @@
+{
+  "stage": "native-fruit-bat-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C393-fruit-bat-diagnostic",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/plan.json"
+  ],
+  "startedUnix": 1792270493.0306828,
+  "beforeGiB": 95.3605842590332,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.06,
+  "lowestGiB": 94.8736801147461,
+  "afterGiB": 95.25575256347656
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "qualify-tropicbird-retained-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-tropicbird-retained-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/run-retained-context.mjs",
+    "tropicbird",
+    "r01"
+  ],
+  "startedUnix": 1792381370.541504,
+  "beforeGiB": 55.543846130371094,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 6.029,
+  "lowestGiB": 55.540042877197266,
+  "afterGiB": 55.539859771728516
+}

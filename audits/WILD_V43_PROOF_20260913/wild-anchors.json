@@ -1,0 +1,105 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "wild-maw-proof-v43",
+  "theme": "wild",
+  "abilityId": "maw",
+  "abilityName": "Savage Maw",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "coordinateSpace": "normalized full canvas; top-left origin",
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "direction": "left-to-right",
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/wild-launch.png",
+      "keyedImage": "registered/wild-launch.png",
+      "imageSha256": "164b45aad0448d2d642698136570b06b05a75f8ddf9f9a08421cf2d8edd3ed1b",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false,
+      "alphaBoundsPixels": {
+        "x": 157,
+        "y": 412,
+        "width": 230,
+        "height": 219
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "second-pass/registered/wild-travel.png",
+      "keyedImage": "second-pass/registered/wild-travel.png",
+      "imageSha256": "de5f72e6ed3253e9b184e6cd8b4f9a1f3419592a4e8bb5c64c045375fafaa70b",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false,
+      "alphaBoundsPixels": {
+        "x": 138,
+        "y": 348,
+        "width": 675,
+        "height": 361
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "targeted-pass/registered/wild-impact.png",
+      "keyedImage": "targeted-pass/registered/wild-impact.png",
+      "imageSha256": "9a1920c40b748248766b46452968fae308dc15c8a2da6f35de00da6798c0e735",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false,
+      "alphaBoundsPixels": {
+        "x": 574,
+        "y": 384,
+        "width": 301,
+        "height": 295
+      }
+    }
+  ],
+  "qualityAccepted": false,
+  "registration": "Shared 1024-square intake canvas; visible launch/travel origins and impact contact aligned within half a pixel. Empty anchors are virtual. Visual motion acceptance pending; generated masters did not obey requested occupied bounds."
+}

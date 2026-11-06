@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "o1-050-snowshoe-hare-owner-r02",
+  "checkpointReview": "audits/OVERNIGHT_20261101/codex/coordinator/checkpoints/snowshoe-hare050-original-r02/W2.json",
+  "nativeReview": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/snowshoe-hare050-native-r02-independent/physical.json",
+  "nativePlan": "audits/OVERNIGHT_20261101/codex/coordinator/plans/050-snowshoe-hare-owner-r02/native-plan-bound.json",
+  "nativeReport": "audits/OVERNIGHT_20261101/codex/coordinator/plans/050-snowshoe-hare-owner-r02/native/report.json",
+  "triage": "audits/OVERNIGHT_20261101/codex/coordinator/triage-snowshoe-hare050-original-r02",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": true,
+  "checkpointReviewSha256": "c5b523694034f63c67a6236c26b12f1445d13f000b824141471bcfeb25371892",
+  "nativeReviewSha256": "7ecd7c98ea324c630f352714e2570fe59ed1edf1b5867cac24feb8005738b8fa",
+  "nativePlanSha256": "824226609a695ea3b48fa25079b98a1fa665c51815d8363afe4453d25ec8f75d",
+  "nativeReportSha256": "e226e09b59bf637d87d67c546c67b812188c4d2b839bd00811fa165cd293fdcd"
+}

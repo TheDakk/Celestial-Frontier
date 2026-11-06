@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Snapping Turtle",
+  "slug": "05-snapping-turtle",
+  "id": "c266-intake-snapping-turtle",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-31-snapping-turtle",
+  "masterSha256": "cb575b448e21f209cca9e9f98449b9e69e04dca2da24bd5972660da8a0ca9259",
+  "masterCopySha256": "cb575b448e21f209cca9e9f98449b9e69e04dca2da24bd5972660da8a0ca9259",
+  "subjectSourceSha256": "97524cd57b379e83072a96e37887ac871c7c4e34f699001fcbb6d73de8ab4818",
+  "promptSha256": "32210886b674eecdedd9427d0cbd61cba3cdf03f27bb43a45b1f4a66cdc5183d",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+  "observation": "Full-size review: rough ridged shell; four separate clawed feet (hind near x≈338-510, hind far x≈542-645, fore near x≈758-895, fore far x≈845-963); long saw-toothed tail; massive hooked beak with the mouth open (upper and lower jaw both painted). Nothing missing; the refusal is an auto-author transfer failure.",
+  "joints": 27,
+  "parts": 25,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/05-snapping-turtle.mjs"
+}

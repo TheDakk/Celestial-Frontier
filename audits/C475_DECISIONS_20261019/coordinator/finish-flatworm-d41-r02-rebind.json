@@ -1,0 +1,20 @@
+{
+  "stage": "finish-flatworm-d41-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-flatworm-d41-r02-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/flatworm-d41-r02"
+  ],
+  "startedUnix": 1792462155.887254,
+  "beforeGiB": 52.96361541748047,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.024,
+  "lowestGiB": 52.96086502075195,
+  "afterGiB": 52.96076965332031
+}

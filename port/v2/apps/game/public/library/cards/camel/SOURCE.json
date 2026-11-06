@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Camel",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b01r2c3-15-camel/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9869f48ef1032a4c49941853f6763c2309b22f87fbab2417fdf8a43295b58423"
+}

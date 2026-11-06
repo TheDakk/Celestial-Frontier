@@ -1,0 +1,72 @@
+{
+  "scope": "Manual diagnostic samples prompted by apparent fill in inline generator preview; final composite is the display authority",
+  "eyeCenters": [
+    {
+      "x": 318,
+      "y": 592,
+      "alpha": 0
+    },
+    {
+      "x": 510,
+      "y": 592,
+      "alpha": 1
+    },
+    {
+      "x": 713,
+      "y": 592,
+      "alpha": 1
+    },
+    {
+      "x": 910,
+      "y": 592,
+      "alpha": 1
+    },
+    {
+      "x": 414,
+      "y": 697,
+      "alpha": 1
+    },
+    {
+      "x": 614,
+      "y": 703,
+      "alpha": 1
+    },
+    {
+      "x": 811,
+      "y": 697,
+      "alpha": 0
+    }
+  ],
+  "stripeGaps": [
+    {
+      "x": 500,
+      "y": 650,
+      "alpha": 1
+    },
+    {
+      "x": 600,
+      "y": 650,
+      "alpha": 0
+    },
+    {
+      "x": 700,
+      "y": 650,
+      "alpha": 1
+    },
+    {
+      "x": 500,
+      "y": 719,
+      "alpha": 1
+    },
+    {
+      "x": 600,
+      "y": 719,
+      "alpha": 1
+    },
+    {
+      "x": 700,
+      "y": 719,
+      "alpha": 1
+    }
+  ]
+}

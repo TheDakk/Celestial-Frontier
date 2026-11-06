@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "records": 15,
+  "uniqueMasters": 5,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b07r2c3-03-conch",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/packet/master.png",
+      "sha256": "b313071c72c98a6239254f8280d9f16a27f3cecaec797a7f1c507149d5028938"
+    },
+    {
+      "id": "c243b07r2c2-25-forest-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/packet/master.png",
+      "sha256": "cf7a829573a672e2f10eb7258abc248197b242e7ccabdbca775369774e0f65f9"
+    },
+    {
+      "id": "c243b07r2c3-26-giant-salamander",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/packet/master.png",
+      "sha256": "d57d055a641549f6f08a88aeee77d572361259bfc3f83368075f02fadaee66a0"
+    },
+    {
+      "id": "c243b07r2c3-31-takin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/packet/master.png",
+      "sha256": "6660584d2d6fb266787451b78f75b4118b70f67555f111b17ad1bc57b1d7de21"
+    },
+    {
+      "id": "c243b07r2c2-33-wall-lizard",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/packet/master.png",
+      "sha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98"
+    },
+    {
+      "id": "c243b07r2c3-03-conch",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/packet/master.png",
+      "sha256": "b313071c72c98a6239254f8280d9f16a27f3cecaec797a7f1c507149d5028938"
+    },
+    {
+      "id": "c243b07r2c2-25-forest-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/packet/master.png",
+      "sha256": "cf7a829573a672e2f10eb7258abc248197b242e7ccabdbca775369774e0f65f9"
+    },
+    {
+      "id": "c243b07r2c3-26-giant-salamander",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/packet/master.png",
+      "sha256": "d57d055a641549f6f08a88aeee77d572361259bfc3f83368075f02fadaee66a0"
+    },
+    {
+      "id": "c243b07r2c3-31-takin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/packet/master.png",
+      "sha256": "6660584d2d6fb266787451b78f75b4118b70f67555f111b17ad1bc57b1d7de21"
+    },
+    {
+      "id": "c243b07r2c2-33-wall-lizard",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/packet/master.png",
+      "sha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98"
+    },
+    {
+      "id": "c243b07r2c3-03-conch",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/packet/master.png",
+      "sha256": "b313071c72c98a6239254f8280d9f16a27f3cecaec797a7f1c507149d5028938"
+    },
+    {
+      "id": "c243b07r2c2-25-forest-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/packet/master.png",
+      "sha256": "cf7a829573a672e2f10eb7258abc248197b242e7ccabdbca775369774e0f65f9"
+    },
+    {
+      "id": "c243b07r2c3-26-giant-salamander",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/packet/master.png",
+      "sha256": "d57d055a641549f6f08a88aeee77d572361259bfc3f83368075f02fadaee66a0"
+    },
+    {
+      "id": "c243b07r2c3-31-takin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/packet/master.png",
+      "sha256": "6660584d2d6fb266787451b78f75b4118b70f67555f111b17ad1bc57b1d7de21"
+    },
+    {
+      "id": "c243b07r2c2-33-wall-lizard",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/packet/master.png",
+      "sha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-monkey-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C394-monkey-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/monkey-01/plan.json"
+  ],
+  "startedUnix": 1792271673.439796,
+  "beforeGiB": 96.14349365234375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 26.059,
+  "lowestGiB": 95.723388671875,
+  "afterGiB": 96.10465240478516
+}

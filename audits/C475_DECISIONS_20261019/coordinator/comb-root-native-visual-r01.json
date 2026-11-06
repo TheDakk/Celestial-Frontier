@@ -1,0 +1,91 @@
+{
+  "status": "ROOT_PHYSICAL_CLEAN_C261_PINK_HOLD_NO_AI",
+  "all5ActualNativeViewed": [
+    {
+      "id": "turn1-hit-reaction-50",
+      "actualFullsizeViewed": true,
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn1-hit-reaction-50.png",
+        "sha256": "3a2a0cd35e24ccf70a32a9efdf3f7b31d02849054b92eec30138d84e3fdba22f",
+        "bytes": 1169720
+      },
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "turn2-dodge-reaction-50",
+      "actualFullsizeViewed": true,
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn2-dodge-reaction-50.png",
+        "sha256": "f1e06d4be9c9ba3e77142ccedbd2a3559deb57e0ed74ff6073596e0012e84f1f",
+        "bytes": 1192889
+      },
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "turn3-hit-reaction-50",
+      "actualFullsizeViewed": true,
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-reaction-50.png",
+        "sha256": "f52d144cdaa868e684760a5384f37ca8926b1c4f39b3a32926b8e88260d03755",
+        "bytes": 1194569
+      },
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "turn3-hit-idle-50",
+      "actualFullsizeViewed": true,
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-idle-50.png",
+        "sha256": "518033f7c6eb71f4c4f9804a47818a027f4e378a43b46c27429b0f78862401b6",
+        "bytes": 1167635
+      },
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "turn3-hit-idle-90",
+      "actualFullsizeViewed": true,
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-idle-90.png",
+        "sha256": "e5f983faca4419769edbea8caa4965b6c31c42c8a794425eeae462415a9edc16",
+        "bytes": 1167900
+      },
+      "dimensions": [
+        1024,
+        576
+      ]
+    }
+  ],
+  "nativeReportSource": "02be557223c20437d131e91700ec5c0a0f43e98e",
+  "sourceMaterial": "Original rainbow courses are present in source; no source paint stripped/desaturated. Pink numeric result retained; not silently reclassified as a passing gate.",
+  "physicalScope": "Continuous oral/caps/body in clear poses. Right actor partially FX-occluded on dodge/hit. Prior r02 actualsource/parts/retainedcast/victory also independentlyreviewed.",
+  "C261Current": {
+    "id": "native",
+    "film": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 134,
+      "turn3-hit-idle-90": 132
+    },
+    "fragmentTotal": 0
+  },
+  "AIEligible": false,
+  "limitsChanged": false,
+  "rulerOrSealRebound": false
+}

@@ -1,0 +1,302 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "05534905d638a386fe8f8aca9406d8b8efd3c8cb2f49d008333530b8794d550c",
+      "bytes": 12035
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c495-commit-attempt.log",
+      "sha256": "45857ed48e5b70202d44aff679bd74fe17cab1a6ee9fe8ea0344bf69b398db8f",
+      "bytes": 194
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c495-paths.txt",
+      "sha256": "a457247d4ec235d57c842c9186b3179f9a9181eda2c7dd9b6bcae678ef5dc29d",
+      "bytes": 210107
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c495-staged-proof.commit.log",
+      "sha256": "ac30d1c1257f397b0f38f2dad7ce241accf259c19aad667a2476310232674f81",
+      "bytes": 1267
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c496-message.txt",
+      "sha256": "927ed43add7815ab5e4fa13ab92ed4767fec80e171719078c3b37b1d73e8b153",
+      "bytes": 314
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c496-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-jelly-r02-native.json",
+      "sha256": "b835120042e108d31280bf8aa59fe824a3a7df83ce4959d1e84d9ff75782148b",
+      "bytes": 546
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-jelly-r02-native.log",
+      "sha256": "905ca6d069eb571d773d123106cc8575d46a77d0ba5b0d96871adcc6c3371bf2",
+      "bytes": 214
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-root-native-visual-r01.json",
+      "sha256": "b271edf996251db40344e7d1f0ab1f724b8f6e765f312a912014253a40ec25a4",
+      "bytes": 2991
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/disk-approved-resume-start.log",
+      "sha256": "5ab08957b2789248e35ceeae80ca8ba208995c8b2dab1f915a64f0221c3ef1bc",
+      "bytes": 1873
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/c475-comb-jelly-d41-r02.log",
+      "sha256": "2b0ec27d403197a098fa46706fe95bb6abf41401060fda587f87c7c5a3cb28c5",
+      "bytes": 539
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/finish-subjects.json",
+      "sha256": "804f8b3f3d45584373939cb5f7d3c253ddc4e4da0f21132676f20a620ecbe815",
+      "bytes": 270
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native-plan-bound.json",
+      "sha256": "7e787b400ca458be7fff50e7e300ef1424740f6957d2d6eca902da9d0e0f1b19",
+      "bytes": 1704
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native-results.json",
+      "sha256": "5df6157d9a97bd96ad6ebe1d49b6d0f98389e0ac7fc258e8756cd71344888cf6",
+      "bytes": 1706
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/battle-full.webm",
+      "sha256": "d16e20c5c459cb079c7e1faac29df5e8458d54fb3cadc7e90a3b93e598befb60",
+      "bytes": 7796483
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/report.json",
+      "sha256": "656cfa515b3befa5d97689f1735f16331f43f93e024fa2c73241a0a64b3d1107",
+      "bytes": 357167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn0-hit-approach-50.png",
+      "sha256": "40c38061f838148c8e5f40d59748b2ed8c24842731395dd3910ffe6f359ea6e0",
+      "bytes": 1167825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn0-hit-impact.png",
+      "sha256": "7c0b84036199f3140f27f6f1903c2d294e54cd10811068575146460810797ece",
+      "bytes": 677735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "7fa36fe4250826b4bc68239e69c9a08fb45876f5aaa5a09f5f016b34ca7c2ed7",
+      "bytes": 1196682
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn0-hit-return-end.png",
+      "sha256": "9e634d6f1d5d1411005de83e61204ea7336d4d883d0cd670282bc34f768ede64",
+      "bytes": 1167640
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn1-hit-approach-50.png",
+      "sha256": "ed046c7fe03ae4402d607941e26c29cc8a78d1e0f34d9a455593470c173d6030",
+      "bytes": 1170174
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn1-hit-impact.png",
+      "sha256": "2db5aefb1a1b3cd4a154dc2bc21ee9a9134477f33b90789b9d0125c780ad2d41",
+      "bytes": 659515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "3a2a0cd35e24ccf70a32a9efdf3f7b31d02849054b92eec30138d84e3fdba22f",
+      "bytes": 1169720
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn1-hit-return-end.png",
+      "sha256": "8310f354ac4b2527d954b8449a5cab9da3afaafafd216a3965cbf66f34a21e45",
+      "bytes": 1167655
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "40c38061f838148c8e5f40d59748b2ed8c24842731395dd3910ffe6f359ea6e0",
+      "bytes": 1167825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn2-dodge-impact.png",
+      "sha256": "1a387095c6d4f0eafd1745617cc5d57f113567ef62a6010637473ab25aab7391",
+      "bytes": 1189598
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "f1e06d4be9c9ba3e77142ccedbd2a3559deb57e0ed74ff6073596e0012e84f1f",
+      "bytes": 1192889
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn2-dodge-return-end.png",
+      "sha256": "9e634d6f1d5d1411005de83e61204ea7336d4d883d0cd670282bc34f768ede64",
+      "bytes": 1167640
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-approach-50.png",
+      "sha256": "40c38061f838148c8e5f40d59748b2ed8c24842731395dd3910ffe6f359ea6e0",
+      "bytes": 1167825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-idle-50.png",
+      "sha256": "518033f7c6eb71f4c4f9804a47818a027f4e378a43b46c27429b0f78862401b6",
+      "bytes": 1167635
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-idle-90.png",
+      "sha256": "e5f983faca4419769edbea8caa4965b6c31c42c8a794425eeae462415a9edc16",
+      "bytes": 1167900
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-impact.png",
+      "sha256": "7c0b84036199f3140f27f6f1903c2d294e54cd10811068575146460810797ece",
+      "bytes": 677735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "f52d144cdaa868e684760a5384f37ca8926b1c4f39b3a32926b8e88260d03755",
+      "bytes": 1194569
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native/turn3-hit-return-end.png",
+      "sha256": "7f98447a0892122d3699e424fa53977415d91e19d02e3046bcde3b5aca7597bc",
+      "bytes": 1167775
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01.json",
+      "sha256": "eb752d034b9991ad0f4a31b1ff328b07840cdeab56b4bdf36cb178a1717e3d24",
+      "bytes": 2282
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01.log",
+      "sha256": "8170083b4f4bc77fd6816180cee3a6a42a11e4dcc88c67dfcc5575b174867f45",
+      "bytes": 61
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/checker.log",
+      "sha256": "215b8f8782f595eef6f87fbd4e10595e5c3dcb822a7b947b5799ba8e23637e36",
+      "bytes": 1694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/current-rows.json",
+      "sha256": "5067b2f935db282ed1ba20faf5215d12ff278c650fd51346157b790f43cea2b6",
+      "bytes": 8298
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/fragment-triage.json",
+      "sha256": "606b78bff2641705a08f8237f446fe33e4503c5a9617dfbfd5accbe04f35051e",
+      "bytes": 184136
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/freeze.json",
+      "sha256": "9391ae5a09e43a8c3b32222b2783c507308abbd01947ebfc18cfdc726c081326",
+      "bytes": 234021
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/roots.json",
+      "sha256": "5073f01414fa0bb83e90fded18103ed94187f69fdbf59fa3a40c21b839e6dc6e",
+      "bytes": 14970
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-comb-native-r01/verification.json",
+      "sha256": "170249003186a3911784571f0f3b8527404b8c0b704b03b59b8d2168a26a7488",
+      "bytes": 9274
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave17-comb-c261-hold/README.md",
+      "sha256": "de2d45ee985c02fa4e7aab5cd8043077a17f9e9dfe0d3d6b2d1495a69b6bf297",
+      "bytes": 1211
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave17-comb-c261-hold/decision-request.json",
+      "sha256": "95976d7e7dbfe629cbf73cb7c23295cc64d5927f8a983ba4754f09eb6733bf7a",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/comb-w3-finish-r01/disposition.json",
+      "sha256": "0493305d5657be522572e5ff992af0377fc66cac436307db77b529db4e7d0443",
+      "bytes": 3311
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/comb-w3-finish-r01/freeze.json",
+      "sha256": "289af6a29f37206f26d536221d71db7a0889b78ff2bef3995f2b37af8c82f4de",
+      "bytes": 565
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/comb-w3-finish-r01/source-review.json",
+      "sha256": "31e31e5721d94aac1869444a2585bd057ea7f87bd1242da526f60fbb755a1e6c",
+      "bytes": 4934
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/README.md",
+      "sha256": "4a56e46275c5ce0dc065b3ec1ace7790324325437ae7c4eeae2c36ac97eb2e44",
+      "bytes": 2223
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/port/v2/apps/game/src/motion/anchored-material-attack.test.ts",
+      "sha256": "13cc0a104caee97ba2752b4d3cd2cda7baf57754b071bbbfbc8c310fd3dff070",
+      "bytes": 5944
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/port/v2/tools/creature-animation/anchored-material-source.test.mjs",
+      "sha256": "3f65e908054d109d4558d23cf38b46739e5a637e47246a8d52169c12ad91bce4",
+      "bytes": 4119
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/proposal.json",
+      "sha256": "4f020583752f0550e4420047abd86604bcbbf7e6c5894c1f26246682614edba2",
+      "bytes": 8519
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/README.md",
+      "sha256": "b879523d474a626dbd9c2f5fde05a8787f3ce8f2e49f83b7cb3cddf280e95544",
+      "bytes": 770
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/checkpoint-freeze.json",
+      "sha256": "8b50c098459a3b3d1d17b34ec5c9423a00935002a82757bb18ca4705e246ebd7",
+      "bytes": 1846
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/checkpoint-review.json",
+      "sha256": "085b4ead615573a2a6f69b94302822212167ee07cb9c20ef6501059e7701c18e",
+      "bytes": 6176
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/p04-review/full14.diff",
+      "sha256": "a71a42871712a31c3685367454540059ddafb5471b6f2799524217bdd875821d",
+      "bytes": 26256
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/physical-freeze.json",
+      "sha256": "f1a2410a9ae56ce6bcecbecad1c32013b0fcff94a68e4d7bfe5cc32d979835d1",
+      "bytes": 9660
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/physical.json",
+      "sha256": "d52aade0f5ead7d7eebb12aef3fc044c062ce3dfba9cd68cba6754da584d0783",
+      "bytes": 13029
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "48568d0b0a65b8c80f8adf41bc8c4e0187b4a785d7d42227b956420363cecd35",
+      "bytes": 575989
+    }
+  ],
+  "files": 59,
+  "remoteOperations": false
+}

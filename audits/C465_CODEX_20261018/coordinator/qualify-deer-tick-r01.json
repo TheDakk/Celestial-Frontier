@@ -1,0 +1,21 @@
+{
+  "stage": "qualify-deer-tick-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-deer-tick-r01",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/run-r01.mjs"
+  ],
+  "startedUnix": 1792381443.282804,
+  "beforeGiB": 56.44964599609375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 10.051,
+  "lowestGiB": 56.421104431152344,
+  "afterGiB": 56.41750717163086
+}

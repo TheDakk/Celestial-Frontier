@@ -1,0 +1,14 @@
+{
+  "stage": "runtime-root-validate",
+  "command": [
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792378562.4964302,
+  "beforeGiB": 59.50927734375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.051,
+  "lowestGiB": 59.50927734375,
+  "afterGiB": 59.50927734375
+}

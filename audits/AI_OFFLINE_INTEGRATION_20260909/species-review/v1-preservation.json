@@ -1,0 +1,8 @@
+{
+  "base": "8c10463a7b0330e12f5ca42f958c85ab9b7eb6a3",
+  "source": "port/v2/apps/game/src/landfall-fidelity.ts",
+  "builderTextUnchanged": true,
+  "builderSha256": "3947624ba74186a643e2ed7690283e7e65a5907e509168317c74382711d08b1e",
+  "originalRecipeBytesUntouched": true,
+  "scope": "Exact original V1 builder text is unchanged; shared assessment behavior is covered by all retained V1 outcomes."
+}

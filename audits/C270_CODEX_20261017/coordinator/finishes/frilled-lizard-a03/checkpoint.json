@@ -1,0 +1,11 @@
+{
+  "id": "c270-frilled-lizard-a03",
+  "name": "Frilled Lizard",
+  "nativePlan": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/plan.json",
+  "nativeReport": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/report.json",
+  "fit": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit",
+  "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/checkpoint.json",
+  "checkpointReviewSha256": "4bf4ef6d48141ec080a451910cb7cff01d012de7292f6dd2bbc13d725080ba5b",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "sourceProofSha256": "bba9b005919a674a6c6db58f94b9b24f3098b223a95529ae5ed2fe3d78b3c0ba"
+}

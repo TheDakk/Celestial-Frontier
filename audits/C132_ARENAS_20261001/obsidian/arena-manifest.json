@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/obsidian/arena-recipe.json",
+    "sha256": "0fadc7a027b3615896c9a009b0199dcac0bf138f0b0ba9a70343194af7e38dfb"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+        "sha256": "c28b96232ea566178b8ad6a57fab20b3f66e7ddd0663641a1feca3183e81a817"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+        "sha256": "c28b96232ea566178b8ad6a57fab20b3f66e7ddd0663641a1feca3183e81a817"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+        "sha256": "b473f17016471025f259142a4c930a0996834a46155e061af9b41e4e1d512761"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.png",
+        "sha256": "cb6f82922c8ab007a118f8c53d1009600e1613c00b73cabb62c5fdbd22a7a00c"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.png",
+        "sha256": "ab21b88fb8f821526c12caa272065f61e802f51c4bdebe19fff86cf007fdd440"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.png",
+        "sha256": "4c31ca8bbe64da14507535aa83af6b9da4fabc452e5b1f762aec3fda62d3fee5"
+      }
+    }
+  ]
+}

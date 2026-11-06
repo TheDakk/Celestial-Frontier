@@ -1,0 +1,21 @@
+{
+  "stage": "finish-wall-lizard-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-wall-lizard-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/wall-lizard/finished",
+    "audits/C279_CODEX_20261018/coordinator/finishes/wall-lizard/subjects.json"
+  ],
+  "startedUnix": 1792346233.999339,
+  "beforeGiB": 70.22922897338867,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.308,
+  "lowestGiB": 59.87006378173828,
+  "afterGiB": 66.22444534301758
+}

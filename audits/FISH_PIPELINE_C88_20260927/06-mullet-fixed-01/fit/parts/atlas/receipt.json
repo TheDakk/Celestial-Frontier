@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "06-mullet-fixed-01",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "2d7555821491b9e74cc0120f780a340090b8142fc9894f777c507160d426d2ed",
+    "pngSha256": "72ceae8aa7f40fb06838999a68260b778fece985609eb303d1f18b8e4d49f4eb"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "fdb93838af5b921670968b747eb49785ef8e027fa29e2c4f90ed4b1cabf32f86"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "bd3a19cb74599dfe7284aab8a218c241fc7b1dc2cd8cdcbdbc7d7d8fb590974f"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "d837846c854a3f562eb61bee3b646d6ca9d414d96a516b0554f4c8b37c723048"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "34dc8dff4527253806a558d2620c644222481508c44c0bd35761c9b7799be546"
+    },
+    {
+      "name": "front-body.png",
+      "sha256": "87d83c63b1bf1ae42384f2dcb7870c77f79c37d26709c16275937e0ccf06ebe9"
+    },
+    {
+      "name": "head.png",
+      "sha256": "8c7af6747ced8357df1043357ed44c7d65fd5c7edde1ec6d8cc2466151c33137"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "25293d1dbbe3e5b3b007cb65c4042a0eca5c715d1d3cc9551a3ba2435b5ff4c2"
+    },
+    {
+      "name": "mid-body.png",
+      "sha256": "0039498b8bd5d1c4dc8a3638642ca1883a4fd3e24e5c74528accfcd1f46293c6"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "cc31bfec356d1b36a7703e27cbd80c30859fa8f4d10ef3eed5c4124bc82db7a2"
+    },
+    {
+      "name": "pelvic-body.png",
+      "sha256": "750abbca821d55517f9d039c53a07a951ef187f572e3de2eb68bbeb45d3cb6a4"
+    },
+    {
+      "name": "rear-body.png",
+      "sha256": "43c33401c32894e7a2dacdea43bc366615b6ca1635a38999b206f82b1947b57d"
+    },
+    {
+      "name": "root.png",
+      "sha256": "e315289dc6d33d51a0dcacc35be41b954c6b5a39e82d1dbe02550aa63831c525"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "sha256": "b7c8ff691a87f60cb34cf66fbb39909c6f8be093300d512fc28ad9bbf0c0b58d"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

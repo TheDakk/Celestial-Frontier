@@ -1,0 +1,28 @@
+{
+  "name": "Water Buffalo",
+  "masterSha256": "0ec1da34c61152637b0e102fd3a557289791ab4f97b726c06be0f41a7c9a5200",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad long swept horns, both actual ears, sparse dark coat and four hoof endpoints; complete tufted tail. Far upper foreleg remains behind near chest/leg; hind roots also share trunk silhouette. Near/far contacts close but not identical. Slight head turn preserves both ears without inventing detached parts.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 240,
+      "y0": 367,
+      "x1": 1018,
+      "y1": 890
+    },
+    "margins": {
+      "left": 240,
+      "right": 235,
+      "top": 367,
+      "bottom": 363
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

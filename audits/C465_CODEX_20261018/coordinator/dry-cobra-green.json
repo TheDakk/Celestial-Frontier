@@ -1,0 +1,27 @@
+{
+  "stage": "dry-cobra-green",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-dry-cobra-green",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C465_CODEX_20261018/coordinator/cobra-green-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "port/v2/vitest.config.ts",
+    "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/serpent-victory.test.ts"
+  ],
+  "startedUnix": 1792378403.527072,
+  "beforeGiB": 59.770362854003906,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 4.01,
+  "lowestGiB": 59.770259857177734,
+  "afterGiB": 59.770137786865234
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Skua",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/18-skua/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ac81b8d6969bbd87cbff751d3d00ca5cdaf24c51b07188d49a50b4d9ba5df066"
+}

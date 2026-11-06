@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c183-intake-derivation/v1",
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+  "sourceSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "target": "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+  "targetSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "changes": [
+    {
+      "from": "sourceLandmarksReused:false",
+      "to": "sourceLandmarksReused:true",
+      "count": 3
+    },
+    {
+      "from": "One manually observed sprint painting; no family-wide visual acceptance",
+      "to": "Exact native-selected C211 bird with original transferred geometry and manual additive source contours; not an independent reference or quality acceptance",
+      "count": 1
+    }
+  ],
+  "checksChanged": false,
+  "reason": "Truthful successor provenance only."
+}

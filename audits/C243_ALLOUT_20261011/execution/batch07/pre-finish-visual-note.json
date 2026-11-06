@@ -1,0 +1,21 @@
+{
+  "status": "PRE_FINISH_DIAGNOSTIC_HOLD",
+  "observations": [
+    {
+      "name": "Goat",
+      "frame": "turn3-hit-idle-50",
+      "observation": "Right defeated goat remains standing; small pale rectangular patch on left goat flank visible."
+    },
+    {
+      "name": "Buffalo",
+      "frame": "turn3-hit-idle-50",
+      "observation": "Right defeated buffalo remains standing in late idle. No collapse is readable in this still."
+    },
+    {
+      "name": "Abalone",
+      "frame": "turn3-hit-idle-50",
+      "observation": "Whole shell/foot visible on both sides in aquatic scene; no detached shell island apparent at full size."
+    }
+  ],
+  "scope": "Pre-finish diagnostic only. All native passes still receive AI/rebind and five-frame finished review. Mechanical pass alone does not clear a visual hold."
+}

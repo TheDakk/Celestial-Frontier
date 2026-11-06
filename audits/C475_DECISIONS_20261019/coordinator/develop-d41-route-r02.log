@@ -1,0 +1,1132 @@
+
+[check:develop] npm test
+
+> cf-v2@0.0.0 test
+> npm run test:tools && node tools/run-unit-tests.mjs
+
+
+> cf-v2@0.0.0 test:tools
+> node tools/test-node-tools.mjs
+
+✔ empty source region refuses instead of tracing the unvisited background as whole-canvas paint (0.558084ms)
+✔ real named chains retain four/six independent limb owners (0.681208ms)
+✔ split reference component can assign two distinct real limbs (0.917125ms)
+✔ one chain cannot pay for two limbs or a duplicated fifth leg (0.204458ms)
+✔ new appendage cannot steal the only owner of an already assigned one (0.188958ms)
+✔ unknown owner/absent tail cannot supply any matching edge (0.1265ms)
+✔ inventory recovers four painted legs from two joined reference components (1.895625ms)
+✔ inventory rejects a fifth leg even with a full-body remainder covering it (0.590917ms)
+✔ inventory rejects shifted owners instead of stealing a previous assignment (1.152917ms)
+✔ tailed target cannot inherit missing tail from cheaper tailless reference; contour judge stays unchanged (1.771666ms)
+✔ explicit admitted absence permits earless reference but never removes a required ear implicitly (0.17825ms)
+✔ no compatible reference stays empty; no joint is synthesized (0.09ms)
+✔ undeclared extra joints refuse rather than silently discard (0.204958ms)
+✔ unchanged compatible order and legacy callers are preserved (0.200625ms)
+✔ contradictory and malformed inventories refuse (0.397125ms)
+✔ retained Gorilla counterexample demonstrates tail inventory mismatch without borrowing absence (0.52075ms)
+✔ admitted ear review → exactly the four pinna joints are excluded (3850.304083ms)
+✔ tampered review (any hash mismatch) or another painting → no exclusion at all (3.254125ms)
+✔ no review / null / [] → author output byte-identical to the author without the option (5913.335833ms)
+✔ admitted exclusions: no ear reason, no ear part or landmark, every other reason kept (2175.212125ms)
+✔ an ear-absent review does not excuse a missing leg (2242.875416ms)
+✔ the remainder part is never excluded (1993.741208ms)
+✔ 1-px and 2-px bodies refuse with a named reason (no NaN) (2.596209ms)
+✔ empty canvas refuses (0.190334ms)
+✔ a synthetic tapering right-facing snake profiles OK with finite measures (6.585208ms)
+✔ reports the real Mongoose blended failure even when every isolated action passes (2.024625ms)
+✔ isolated and presentation failures retain their own first refusal; no synthesized success (0.109958ms)
+✔ both runner subject tables follow the current home: /virtual/cf-anatomy-home-a (194.305042ms)
+✔ both runner subject tables follow the current home: /virtual/cf anatomy home b (363.342959ms)
+✔ separates exact triangle LBS, model covariance and published ARAP residual (0.492959ms)
+✔ all retained ordinary family fixtures preserve record identity and bytes (0.463333ms)
+✔ explicit adhesive pads are refused before an ankle-only consumer can produce evidence (0.193375ms)
+✔ malformed, falsey and future declarations cannot silently fall back to ankle marks (0.096625ms)
+✔ absence introduces no replacement validation of the old record path (0.054417ms)
+✔ desktop admits full-film at3.5ms and rejects above/missing; per-clip timings cannot substitute (0.485125ms)
+✔ phone and painter retain the strict2ms per-clip gate (0.104041ms)
+✔ desktop CPU cannot conceal geometry, rest, contact, continuity or capture reds (0.767625ms)
+✔ full review retains every row and complete faint duration before settling (0.980542ms)
+✔ encoded full-row duration rejects a truncated ten-second film and excessive recorder padding (0.110791ms)
+✔ arena intake binds full compiler card, context, ground, dimensions and keyed copies; mutations refuse (994.797208ms)
+✔ closed twelve-at-a-time inventory retains original bytes and refuses missing, duplicate, reordered and stale inputs (223.69875ms)
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (508.22075ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (80.420625ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (4.743042ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (6512.812292ms)
+✔ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (7551.964459ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (8.036125ms)
+✔ odd mono PCM frame count retains RIFF padding; the old unpadded output refuses (0.4685ms)
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (0.943667ms)
+✔ 24-bit extensible PCM is equivalent; float subtype, layout and reduced precision refuse (0.466959ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (210.376334ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (18.370125ms)
+✔ all closed ability/battle inventories pass; missing, extra, renamed, wet and unlicensed cues refuse (37.218667ms)
+✔ bed inventory binds a stereo source and exact loop sidecar; malformed or stale loops refuse (272.235625ms)
+✔ loop discontinuity is measured per channel without claiming it is inaudible (0.124958ms)
+✔ shared joint angles move only their authored head support, leave the attachment still and preserve rest (2.513583ms)
+✔ real Civet source supports pass all ear/jaw envelope combinations and retain the neck-removal failure control (381.590167ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (1.25525ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.105291ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.646958ms)
+✔ Platypus intake preserves every atlas channel and binds named Earth anatomy; old straight chains fail 3% slack (347.149833ms)
+✔ head views bind the unchanged accepted turnaround and record, and have real source pixels (49.438958ms)
+✔ observes every phase of every turn through final recovery; preserves ten-second minimum (8.336834ms)
+✔ old ten-second truncation, omitted/reordered turns, erased phases and invented endpoints refuse (18.825791ms)
+✔ independent encoded duration and proportional frame floor reject old ten-second media and stalled capture (0.465666ms)
+✔ capture loss and rig refusals remain independently visible; neither failure masks the other (3.591917ms)
+✔ accounts first and last sample deltas and separates same-named Wasm leaves by module/caller (0.942208ms)
+✔ refuses missing/foreign samples, deltas and malformed capture metadata (0.933292ms)
+✔ native js-to-wasm trampolines are skipped when locating the actual caller (0.166375ms)
+✔ films draw the game's runtime plates: the registered temperate set, despilled MID, never the proof dir keyed MID (2.29625ms)
+✔ guardian script option: absent = today, true = the program for the right-side guardian; every malformed field refuses (0.416917ms)
+✔ film timeline: the wiring's order (entrance, phase where it changed, turns, finale), contiguous, and turns only without a program (0.234291ms)
+✔ guardian capture check: every set piece and every turn phase observed in order; skipped, reordered or mislabelled samples refuse (7.247625ms)
+(node:10185) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all published Float32 meshes contribute extrema, including a remote seam vertex (0.637125ms)
+✔ invalid geometry cannot yield passing bounds: empty inventory (0.162208ms)
+✔ invalid geometry cannot yield passing bounds: wrong numeric type (0.045042ms)
+✔ invalid geometry cannot yield passing bounds: odd coordinate count (0.039792ms)
+✔ invalid geometry cannot yield passing bounds: NaN (0.042167ms)
+✔ invalid geometry cannot yield passing bounds: infinity (0.043291ms)
+✔ invalid geometry cannot yield passing bounds: zero height (0.037625ms)
+✔ invalid geometry cannot yield passing bounds: duplicate mesh id (0.038416ms)
+✔ the full sweep expands from actual extrema; invalid samples are not skipped (0.14225ms)
+✔ a refused or unchanged pose cannot contribute its stale mesh as a measured sample (0.124167ms)
+✔ off-centre painted bounds use their actual centre and foot, not half the cutout (0.379625ms)
+✔ water and air cap only oversized scale; ground and already-small mass scale stay unchanged (0.063375ms)
+✔ full swept geometry, rather than rest height, determines the medium scale (0.100958ms)
+✔ the existing source-owned habitat gate still refuses an oversized organism (74.855083ms)
+✔ holder facing, root dynamic scale and camera shake all enter the current frame receipt (0.32975ms)
+✔ ground skips medium-band height only and cannot hide an offscreen body (0.11525ms)
+✔ frame assessment has no epsilon and rejects malformed or collapsed transforms (0.21825ms)
+✔ ground framing closes the retained Python bottom breach without changing its foot or gate (0.320583ms)
+✔ ground fit accounts for upward motion, off-centre foot and both camera extrema (0.264667ms)
+✔ ground framing refuses unavailable or malformed placement and camera evidence (0.181708ms)
+✔ shared ground framing preserves equal and unequal source mass ratios across turn roles (0.42475ms)
+✔ alpha 1 and 8 pixels expand sizing while transparent coloured pixels do not (0.64475ms)
+✔ opaque legacy input retains the exact former bounding box (0.094ms)
+✔ one positive corner pixel is retained and empty alpha refuses (0.181292ms)
+✔ malformed dimensions cannot yield a misleading box (0.696792ms)
+✔ explicit scales govern the actual holder transform, width and cadence, and are copied (2.249708ms)
+✔ omitted scales retain exact ordinary and guardian arithmetic and turn output (3.273542ms)
+✔ invalid or incomplete presentation scales refuse before the stage can render (0.861ms)
+✔ timing records constructor rest, play implicit ticks, transitions and both actual rig sides (0.658375ms)
+✔ reduced-motion play rest is measured but ticks do not fabricate rig updates (0.572708ms)
+✔ mirroring uses the same published mouth, not the opposite body end (0.505375ms)
+✔ three-turn capture admits full film and rejects truncated, 30 Hz and over-budget controls (0.148375ms)
+✔ weapon contact uses the declared painted paw, not an unrelated jaw (0.78975ms)
+✔ same encounter replays exactly; distinct seeds alter composition and every actor has a turn (3.071292ms)
+✔ dry fish, foreign biome templates, duplicate actors and missing cards refuse (0.330541ms)
+✔ run-up and return are bounded, return to home, and seek matches frame playback (0.360708ms)
+✔ impact follows the anatomy motion contact time, not settling duration (0.342ms)
+✔ missing anatomical contact time cannot silently use the old percentage estimate (0.4035ms)
+✔ mixed broker/painted rows admit only against their actual independent inventories (1.487542ms)
+✔ resource sums preserve broker evidence and include data URLs, masks and archetypes (2.5575ms)
+✔ actual browser expression retains a painted row without laundering its broker indices (6.326334ms)
+✔ the retained calibration miss is refused; only matched painted ownership repairs that miss (1.81525ms)
+✔ full classifier accepts a mixed-owner ready carrier and rejects wrong-owner forgery (43.318958ms)
+✔ native entry follows observed controls without a four-Tab assumption or focus injection (0.224167ms)
+✔ mixed-owner error control follows the first actual broker row and rejects missing recovery (4.752ms)
+✔ retained overflow stays pending inside the unchanged carrier bound; identity forgeries refuse (25.120833ms)
+✔ error publication cannot accept a still-rendering painted sibling (31.86725ms)
+✔ stopped foreground deadline retains the last raw pending observation and still cleans up (0.703125ms)
+✔ v2 foreground owns the real page before emulation and preserves exact receipt refusals (0.56025ms)
+✔ native keyboard codes match the host while retaining semantic events and edit commands (0.868292ms)
+✔ new evidence aliases home paths without changing samples, hashes or diagnostic content (2.901417ms)
+✔ only the generated v2 writer adds privacy; sealed v1 writer and raw evaluator stay exact (6.096833ms)
+✔ the actual generated atomic writer removes a synthetic home; omitted-wrapper mutant fails privacy (5.496666ms)
+✔ valid empty epoch and three independent, raw-reducible controls admit; v1 never changes (2.852042ms)
+✔ growth guard phone.mountedRowsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.297041ms)
+✔ growth guard phone.heapUsedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.17325ms)
+✔ growth guard phone.documentsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.1705ms)
+✔ growth guard phone.nodesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.16825ms)
+✔ growth guard phone.embedderHeapUsedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.162791ms)
+✔ growth guard phone.backingStorageBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.600708ms)
+✔ growth guard phone.heapAggregateBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.154167ms)
+✔ growth guard phone.jsEventListenersMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.155417ms)
+✔ growth guard phone.liveCacheEntriesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.190291ms)
+✔ growth guard phone.liveDecodedPixelsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.141709ms)
+✔ growth guard phone.liveDecodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.134791ms)
+✔ growth guard phone.liveEncodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.11975ms)
+✔ growth guard phone.queuedJobsPeakMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.123125ms)
+✔ growth guard phone.activeJobsPeakMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.109417ms)
+✔ growth guard phone.liveLeasesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.113542ms)
+✔ growth guard phone.liveSubscribersMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.108417ms)
+✔ growth guard phone.livePortraitCacheEntriesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (4.25625ms)
+✔ growth guard phone.livePortraitEncodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (1.133125ms)
+✔ growth guard phone.warmHeapAggregateRangeBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (1.656208ms)
+✔ growth guard phone.warmEncodedBytesRangeMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.373458ms)
+✔ growth guard desktop.mountedRowsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.317166ms)
+✔ growth guard desktop.heapUsedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.440125ms)
+✔ growth guard desktop.documentsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.301ms)
+✔ growth guard desktop.nodesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.327167ms)
+✔ growth guard desktop.embedderHeapUsedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.288625ms)
+✔ growth guard desktop.backingStorageBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.315208ms)
+✔ growth guard desktop.heapAggregateBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.327292ms)
+✔ growth guard desktop.jsEventListenersMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.691333ms)
+✔ growth guard desktop.liveCacheEntriesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.3495ms)
+✔ growth guard desktop.liveDecodedPixelsMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.32ms)
+✔ growth guard desktop.liveDecodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (3.518625ms)
+✔ growth guard desktop.liveEncodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.149667ms)
+✔ growth guard desktop.queuedJobsPeakMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (1.683375ms)
+✔ growth guard desktop.activeJobsPeakMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.13125ms)
+✔ growth guard desktop.liveLeasesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.115292ms)
+✔ growth guard desktop.liveSubscribersMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.108875ms)
+✔ growth guard desktop.livePortraitCacheEntriesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.106208ms)
+✔ growth guard desktop.livePortraitEncodedBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.107292ms)
+✔ growth guard desktop.warmHeapAggregateRangeBytesMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.10425ms)
+✔ growth guard desktop.warmEncodedBytesRangeMax: unchanged passes, excess/NaN and ceiling-equal sample refuse (0.10425ms)
+✔ activation rejects historical ruler hash (2.102917ms)
+✔ activation rejects allowance increase (0.667334ms)
+✔ activation rejects ceiling absorption (0.562584ms)
+✔ activation rejects source substitution (3.075042ms)
+✔ activation rejects missing sample (0.495334ms)
+✔ activation rejects repeated run (1.530584ms)
+✔ activation rejects metric forgery (0.513167ms)
+✔ activation rejects producer substitution (0.471625ms)
+✔ activation rejects measurement substitution (0.4375ms)
+✔ activation rejects browser substitution (0.593958ms)
+✔ calibration uses guarded finite limits, never the legacy unbounded evaluator (0.140709ms)
+✔ the native outcome evaluator itself reports growth as failure during calibration (80.662334ms)
+✔ native action order and outcome evaluation retain the sealed v1 contract (1.6915ms)
+✔ phase ledger admits exactly three independent calibration attempts and one certificate (0.238708ms)
+✔ a running or failed phase can neither retry nor continue (0.056875ms)
+✔ materialized authority bytes are portable while dependency links bind the real signed tree (11.217125ms)
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (19.848917ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (1.82125ms)
+✔ historical compiled solve rows retain exact arithmetic for short, four, eight and wide neighbor rows (21.269333ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (4.7835ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (2.585375ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (2.649208ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.930958ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.808291ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.323334ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.352167ms)
+✔ one-pixel exposed join fails between opaque endpoints; restored pixels pass (1.063625ms)
+✔ published surface displacement is measured, including reflected meshes and non-square scales (0.389ms)
+✔ socket evaluator accepts quadruped vocabulary without quadruped assumptions (synthetic) (0.211ms)
+✔ socket evaluator accepts hopper vocabulary without quadruped assumptions (synthetic) (0.5475ms)
+✔ socket evaluator accepts biped-bird vocabulary without quadruped assumptions (synthetic) (0.178458ms)
+✔ socket evaluator accepts fish vocabulary without quadruped assumptions (synthetic) (0.229833ms)
+✔ socket evaluator accepts insect vocabulary without quadruped assumptions (synthetic) (0.264042ms)
+✔ socket evaluator accepts serpent vocabulary without quadruped assumptions (synthetic) (0.149458ms)
+✔ socket evaluator accepts arachnid vocabulary without quadruped assumptions (synthetic) (0.142083ms)
+✔ socket evaluator accepts radial vocabulary without quadruped assumptions (synthetic) (0.155458ms)
+✔ socket evaluator accepts plant-woody vocabulary without quadruped assumptions (synthetic) (0.06625ms)
+✔ socket evaluator accepts plant-herb vocabulary without quadruped assumptions (synthetic) (0.054208ms)
+✔ socket evaluator accepts myriapod vocabulary without quadruped assumptions (synthetic) (0.048334ms)
+✔ socket evaluator accepts cephalopod vocabulary without quadruped assumptions (synthetic) (0.044541ms)
+✔ socket evaluator accepts flyer-membrane vocabulary without quadruped assumptions (synthetic) (0.0485ms)
+✔ socket evaluator accepts primate vocabulary without quadruped assumptions (synthetic) (0.044041ms)
+✔ native alpha preserves every RGBA channel and old keying resurrects invisible background (4.840833ms)
+✔ opaque keyed sources retain the established intake result exactly (2.069208ms)
+✔ blank and mixed opaque-border exports refuse (0.457416ms)
+✔ same-joint region masks share one named owner and retain priority mapping (0.7135ms)
+✔ a changed joint is never merged just because its name or layer matches (0.092125ms)
+✔ one-region-per-joint packets remain byte-identical and keep the remainder identity (0.621917ms)
+✔ duplicate identities and unknown remainder refuse (0.256959ms)
+✔ a remainder region sharing another joint remains the merged remainder owner (0.069959ms)
+✔ depth is pivot-distance and cumulative-limit driven, with fixed floor/cap (4.825042ms)
+✔ bands duplicate only own descendant opaque ink and attach to ancestor in descendant layer (0.834166ms)
+✔ unowned hips and tail root resolve to torso; true siblings do not become ancestors (0.127708ms)
+✔ descendant size cap prevents whole small appendage duplication (0.051666ms)
+✔ mesh profile refuses nonpositive, fractional and excessive steps before reading sources (0.972917ms)
+✔ absent and empty refinements are byte-identical to the retained writer including receipt and hashes (113.544833ms)
+✔ local rectangles refine intersecting ink while preserving distant geometry, source ownership and packed bytes (59.03375ms)
+✔ refinement confined to an empty quadtree region retains binding bytes and records only the authored receipt (64.435167ms)
+✔ malformed, out-of-image and coarsening refinement rectangles refuse before source reads (0.685666ms)
+✔ captured Centipede approach publishes intact paint with exact WASM/JS parity inside the original budget (199.790458ms)
+✔ removing delayed damping reproduces the actual fold and exhausted budget; prior safe pose remains unchanged (489.127292ms)
+✔ contradictory pinned folds and nonfinite input still refuse without publishing output (0.710084ms)
+✔ compiled field preserves weight order and bitwise Float32/Float64 output parity (0.819167ms)
+✔ each current matrix and each component is read once; in-place edits cannot hide behind a cache (0.363292ms)
+✔ source geometry and sparse weights are captured immutably; recompilation observes source edits (0.113916ms)
+✔ missing/nonfinite/malformed matrices and Float32/Float64 overflow refuse atomically (0.158ms)
+✔ failure after a valid call and later recovery do not leak partially computed scratch (0.077125ms)
+✔ invalid source/foreign state and destination refuse, without accepting inherited matrices (0.201083ms)
+✔ candidate-03 actual Civet field is bitwise equal at every retained named native pose (132.627417ms)
+✔ civet complete contact inventory passes; formerly green missing pairs refuse (31.921708ms)
+✔ fox complete contact inventory passes; formerly green missing pairs refuse (23.915333ms)
+✔ procedural complete contact inventory passes; formerly green missing pairs refuse (34.397166ms)
+✔ intact rest and rigid motion preserve the authored notch; real separation fails (6.682458ms)
+✔ a covered rotated cut passes and removing its support fails on the same geometry (1.260625ms)
+✔ empty, overlapping, malformed and clipped observations refuse rather than pass (0.977167ms)
+✔ transparent diagnostic padding preserves the true gap count and detects canvas escape (1.961125ms)
+✔ rest and arbitrary rigid rotation/translation preserve all measures; output and buffers are reused (1.42775ms)
+✔ flipped, collapsed, compressed and stretched triangles expose distinct failures without thresholds (0.157959ms)
+✔ anisotropy uses the full deformation gradient and survives skewed source triangles (0.10675ms)
+✔ genuinely transparent triangles are excluded, but finite geometry is still checked (0.092125ms)
+✔ ink inside a triangle counts even when vertices and centroid are transparent (0.084ms)
+✔ bounding-box ink outside the triangle does not count, but a sliver crossing a texel does (0.111875ms)
+✔ bilinear support, cutout origin, RGBA alpha and normalized rig output are handled explicitly (0.1155ms)
+✔ painted zero-area source triangles and nonfinite/overflow poses cannot produce complete measurements (0.083417ms)
+✔ mixed triangles count ink individually and classify only the actual corrupt/strained triangle (0.106667ms)
+✔ malformed source, missing alpha and malformed posed buffers refuse before measurements (0.299625ms)
+✔ exact repeated active-set field skips work and publishes every original Float32 byte (127.988125ms)
+✔ one ULP and signed-zero changes invalidate, no tolerance or target quantization (0.240834ms)
+✔ refused solve invalidates the entry and never publishes cached geometry (0.922916ms)
+✔ owner-private bounded entry and input/output ownership cannot cross rigs (0.125208ms)
+✔ legacy quadruped without a pad declaration retains its original bounds, seal and source admission (13.892084ms)
+✔ legacy quadruped refuses present undefined pads in geometry, sealing and runtime admission (2.786042ms)
+✔ legacy quadruped refuses null pads in geometry, sealing and runtime admission (2.662292ms)
+✔ legacy quadruped refuses malformed pads in geometry, sealing and runtime admission (7.194584ms)
+✔ legacy quadruped refuses complete valid-looking pads in geometry, sealing and runtime admission (9.670042ms)
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (25.054791ms)
+✔ hopper: exact family anatomy, immutable contract and hostile-record controls (5.662542ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (7.59975ms)
+✔ fish: exact family anatomy, immutable contract and hostile-record controls (2.465042ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (2.961083ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (1.600875ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (3.089208ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (5.985167ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (4.042833ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (5.625125ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (4.917333ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (6.785416ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (3.004583ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (2.634541ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.216417ms)
+✔ old hopper and fish fixture clip-set names are rejected instead of silently using different motion (0.116125ms)
+✔ fixed sockets keep their source location under local rotation and inherit actual root rotation/translation (1.838458ms)
+✔ admission bone lengths measure socket-to-knee and knee-to-foot without adding geometry or mutating source (0.235042ms)
+✔ missing, malformed, extra, sparse and nonfinite socket data refuse without a parent-pivot fallback (0.214584ms)
+✔ foreign-model declarations and source-substituted resolved sockets refuse (0.134584ms)
+✔ source alpha validates the exact socket pixel rather than a nearby substitute (0.13ms)
+✔ absent socket declarations preserve legacy definition identity and exact parent-pivot matrices (0.087958ms)
+✔ legacy quadruped shortcuts refuse present socket declarations in geometry, sealing and admission (17.723417ms)
+✔ v2 folded is optional, declared, painted and does not change the rig or contact inventory (1.730667ms)
+✔ folded malformed, unknown, duplicate and overlapping declarations refuse (1.588875ms)
+✔ three applied presence inputs preserve accepted geometry, hidden sets and contact chains (5.386333ms)
+✔ declared hidden pair keeps complete skeleton, flags inferred joints and excludes exactly two contact chains (2.62025ms)
+✔ missing pair is never inferred by admission, declared or undeclared; absent cannot replace hidden (0.872125ms)
+✔ actual eight-visible painter admits unchanged; same paint assigned to declared hidden joints refuses in both intake routes (237.433709ms)
+✔ opaque same-joint intake preserves every priority owner and exact keyed pixel (2823.814458ms)
+✔ native-alpha Ant retains exact historical labels and part-owner inventory (2148.640292ms)
+✔ joint underlap never introduces a rest-visible pixel outside opaque base coverage (0.765875ms)
+✔ excluded crop corner key is ignored but retained key ink refuses (0.241708ms)
+✔ keyAndDespill magenta: matched 1254 geometry removes only the key field (222.037208ms)
+✔ intakeAuthoredPixels magenta: matched 1254 geometry removes only the key field (177.824042ms)
+✔ keyAndDespill green: matched 1254 geometry removes only the key field (223.084875ms)
+✔ intakeAuthoredPixels green: matched 1254 geometry removes only the key field (221.172542ms)
+✔ opposite, omitted green and unsupported keys refuse with isolation and support guards (1850.579458ms)
+✔ default magenta retains the captured historical bytes and complete receipt (377.674833ms)
+✔ green edge spill is removed while interior color and source input remain exact (0.523667ms)
+✔ explicit key on transparent delivered alpha refuses rather than claim keyed provenance (0.24825ms)
+✔ new explicit-key labels bind key color, original, record and every keyed channel (43.03075ms)
+✔ magenta connected-fringe donor follows only continuous alpha; air gaps and absent clean donors stay unresolved (40.968666ms)
+✔ green connected-fringe donor follows only continuous alpha; air gaps and absent clean donors stay unresolved (21.980291ms)
+✔ authored intake never exposes the terrain isolation bypass through key options (5.921917ms)
+✔ inherited and non-enumerable terrain flags cannot bypass authored isolation (4.095542ms)
+✔ explicit key refuses partially opaque RGBA even without any zero-alpha pixel (0.164208ms)
+✔ file builder admits explicit green labels and refuses wrong key, keyed bytes, record binding and original tampering (502.194875ms)
+✔ author CLI carries explicit green through record, label declaration, provenance and packed output (2232.331458ms)
+✔ stored historical Aphid v1 keyed-RGBA seal admits unchanged without a rebind (475.373125ms)
+✔ TypeScript green and default keyer callers typecheck while unsupported key is rejected (178.162625ms)
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (211.902542ms)
+✔ a changed keyed colour refuses even though original PNG and record still match (6.630583ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (271.751708ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (2236.135084ms)
+✔ actual floating paint is refused although its rest and geometric seams passed (5.727875ms)
+✔ all observed final limb parts are connected; no pixel deletion is used (56.258583ms)
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (121.640708ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (57.950709ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (57.695833ms)
+✔ integrated admitted forward kernel preserves targets, pins, all output bytes and diagnostics (7.465ms)
+✔ unavailable Wasm retains the original JS path without changing admitted outcomes (0.874083ms)
+✔ a real leaf trap after private-memory work falls back from untouched input and disables the leaf (1.435ms)
+✔ floor underflow retains original source admission and the JS solver (0.79175ms)
+✔ floor overflow retains original source admission and identical refusal without publication (0.752083ms)
+✔ contradictory hard pins retain exact recoverable refusal and atomic output on admitted and fallback paths (1.270542ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (76.928958ms)
+✔ only real multi-owner interior vertices with a painted ancestor qualify (5.76275ms)
+✔ three copies of one point expose a native hole that pair-only geometry misses (1.253666ms)
+✔ socket triangle has zero rest area, uses only descendant texel and validates all owners (1.701875ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (1.005625ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.195333ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.269583ms)
+✔ thin nonzero painted triangles cannot bypass orientation checks (0.127125ms)
+✔ asset solver profile cannot override orientation defaults or add inherited tuning fields (5.539917ms)
+✔ retained five-pixel tie keeps exact runtime winner and independent static observation (1.126875ms)
+✔ truly identical distance retains the first vertex rather than last-on-equality (0.446916ms)
+✔ valid nonsquare and fractional geometry keeps runtime operation order bit-for-bit (0.151416ms)
+✔ empty surfaces remain empty and invalid numeric geometry cannot certify a support (0.152167ms)
+✔ ordinary split locks the actual observer support, with no coordinate or source-UV changes (7.971042ms)
+✔ existing-field refresh pins the missing contributing support and preserves all other source state (2.061334ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (401.498292ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (343.672583ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (856.834334ms)
+✔ every original lower-alpha column including faint high contour contributes actual mesh supports (1.949208ms)
+✔ pinning source supports removes painted drift that a fixed paw bone alone misses (1.0325ms)
+✔ two paw owners cannot silently share pinned supports and missing alpha/mesh refuses (0.336ms)
+✔ POSIX and Windows writers are relative, relocatable and refuse escapes (0.505709ms)
+✔ normalization precedes hashing without mutating an old record (9.392541ms)
+✔ source symlink into another repository refuses (0.771666ms)
+✔ quadruped reseal removes historical recipe metadata before sealing a portable source (2.76775ms)
+✔ frontal source wings both lift under canonical positive flap; old broadcast lifts one and drops one (1.333125ms)
+✔ source-view declarations fail closed and unmarked side views retain the canonical basis (0.221333ms)
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (11.079375ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (3.020167ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (95.260917ms)
+✔ one CLI atlas is byte-stable across input order; original pixels and hashes survive (1574.0905ms)
+✔ parent attachment movement carries a rigid leaf without world pins; exact rest remains exact (1.857917ms)
+✔ wrong parent and invented attachment are refused (0.160958ms)
+✔ strip is exactly zero-area at rest, covers moving edge separation, samples only original descendant pixel (1.869709ms)
+✔ source caps, foreign pixels, bad ownership, malformed geometry and nonfinite motion refuse (0.373542ms)
+✔ subpixel overlap closes the captured strike raster crack; exact-edge control opens it (2.623958ms)
+✔ ancestral contacts resolve pelvis ink to torso and refuse independent siblings (0.352958ms)
+✔ reconstructs full filtered opaque coverage and colour; old independent alpha-over is the failing control (2.833292ms)
+✔ does not guard outer silhouettes, nonopaque paint, independent limbs or distal body overlaps (10.569958ms)
+✔ refuses apparently aligned boundaries carried by different skin fields and foreign-frame padding (0.813917ms)
+✔ fish decoder guard retains source pixels and refuses the old quadruped inventory (0.330625ms)
+✔ 38 actual semantic regions pack into32 without dropping alpha or an owner (22.771708ms)
+✔ rejects coercible labels and RGBA inputs before snapshotting (8.534708ms)
+✔ transparent source RGB is preserved and mutation fails its exact hash (599.345833ms)
+✔ snapshots prevent caller mutation during awaited hashing (2.000084ms)
+✔ plan refuses omitted/duplicate/reordered regions and an extra render part (1.17975ms)
+✔ refuses cross-depth, disconnected anatomy, nonadjacent source and unknown/empty owners (4.146417ms)
+✔ hash/paint/group mutation and biological absence are rejected (5.263625ms)
+✔ packing retains exact38-owner field bytes; every joint moves actual published geometry (1527.82475ms)
+✔ uses the owner body axis and parent pivot; root displacement applies exactly once (1.014291ms)
+✔ snapshots template and landmarks; failed frames cannot poison subsequent poses (1.657ms)
+✔ refuses malformed topology, ambiguous inventories, hidden prototype joints and bad body axes (0.489125ms)
+✔ matches the previous quadruped evaluator exactly for all three real records (9.021458ms)
+✔ jointScale (morph M1): a scaled joint grows its sub-tree about its own pivot; siblings and ancestors are untouched; no option is byte-identical (0.266584ms)
+✔ smooths actual adjacent influences deterministically without changing topology, positions or original weights (3.2795ms)
+✔ refuses invalid topology or unsupported iterations (0.566167ms)
+✔ complete source terminal owners pass; unrelated families remain unchanged (0.463833ms)
+✔ anterior source erasure refuses (0.177834ms)
+✔ anterior missing or misassigned owner refuses (0.294292ms)
+✔ anterior offsource landmark refuses (0.166833ms)
+✔ posterior source erasure refuses (0.136709ms)
+✔ posterior missing or misassigned owner refuses (0.084917ms)
+✔ posterior offsource landmark refuses (0.05925ms)
+✔ malformed source refuses before indexing (0.04975ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (157.627542ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (14.335958ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (57.615833ms)
+✔ flat source ownership boundaries weld only when explicitly requested (5.138084ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.975875ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (2.810916ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (1.6255ms)
+✔ contact conflict repair releases only neighbouring non-contact pins without changing weights (3.053875ms)
+✔ named continuous paint welds an observed boundary without silently welding other surfaces (5.104542ms)
+✔ one authored weld leaves an adjacent undeclared surface independent (1.812458ms)
+✔ branch reindex preserves every source interpolation but opposing paws have separate vertices/solver topology (10.25125ms)
+✔ proximal root socket stays shared and malformed source references fail closed (1.527125ms)
+✔ a bent distal paw behind the root plane retains its painted limb ownership (10.314959ms)
+✔ source/record corruption and unsupported anatomy refuse before producing a binding (10.524875ms)
+✔ uniform authoring scale preserves normalized interpolation, weights and surfaces and repeated builds are identical (3.484167ms)
+✔ actual part faces enter solver topology even when cached vertex interpolation references other faces (5.380208ms)
+✔ actual ancestral attachment welds below root plane while an opposing sibling remains separate (5.799208ms)
+✔ physical proximal skin joins axial/upper sibling owners while limb pairs and distal crossings remain split (4.890291ms)
+✔ shared shoulder skin retains proximal limb influence without importing distal foot transforms (14.452541ms)
+✔ shared muscle influences cross a socket continuously while an opposing distal foot remains independent (4.590208ms)
+✔ absence preserves the legacy result without inspecting new-model arguments (0.666ms)
+✔ the actual hopper inventory accepts explicit positive-alpha anchors without inference or mutation (2.809125ms)
+✔ the exact declared pixel must contain paint; neighboring paint cannot admit a transparent point (0.2235ms)
+✔ closed source boundaries choose their own edge pixel and do not search inward (0.121584ms)
+✔ unknown schemas, malformed payloads and non-exact contact inventories fail closed (0.6235ms)
+✔ invalid numbers, sparse coordinates and unusable source dimensions cannot be admitted (0.325375ms)
+✔ source walk stops before a transparent hole and never exceeds the original depth cap (2.182416ms)
+✔ textured hinge omits the duplicate silhouette, maps the source interior, and refuses foreign UVs (0.457791ms)
+✔ complete descendant support distinguishes a missing band from absent source ink (1.154083ms)
+✔ inverse mapping follows translation and rotation rather than the rest image coordinate (0.741708ms)
+✔ invalid matrices, geometry, data and targets refuse instead of reporting no ink (1.29375ms)
+✔ verifies the hidden band against packed bytes and refuses a resealed pixel or dimension mismatch (21.951041ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (6.318583ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (10.552584ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (2.853584ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.54075ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (1.373292ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.828958ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.293208ms)
+✔ all pin masks/signs retain exact positions and the entire queue at multiple budgets (8.693459ms)
+✔ shared-vertex incident traversal preserves duplicates, heap order and repeated seeks (14.430083ms)
+✔ shared triangles respect every moved-corner mask without skipping a first incident update (4.757292ms)
+✔ equal priorities use triangle ID order and preserve stale unused heap entries (0.140166ms)
+✔ half-floor stopping retains nonempty queue; degenerate removal and full budget retain original counters (0.291209ms)
+✔ signed-zero-only progress, underflow and overflowing finite coordinates preserve Object.is semantics (0.216917ms)
+✔ shared-corner fixture exercises both unchanged and changed queued priorities and rejects overbroad skipping (2.599ms)
+✔ equal-priority mutant is rejected by full queue parity even when coordinates do not change (0.557083ms)
+✔ mixed finite/overflowing shared triangles preserve the original unordered-priority behavior (1.104208ms)
+✔ private topology is snapshotted; runtime absence and denied memory give null without caller changes (0.624625ms)
+✔ valid arithmetic mutant and no-op export fail admission before touching caller state (0.967709ms)
+✔ post-admission trap, invalid result, invalid counters and invalid heap are transactional (1.306875ms)
+✔ malformed topology, reset state and call budgets fail closed (0.508625ms)
+✔ artifact admits exactly one thirteen-i32 memory-only leaf and rejects linker inputs (5.791625ms)
+✔ every pin mask and orientation sign preserves exact coordinates, counts and stalled state (5.17425ms)
+✔ deterministic shared-vertex fixtures preserve scalar ordering over repeated seeks (4.078542ms)
+✔ signed-zero-only progress consumes the second pass before stalling (0.133583ms)
+✔ stationary pinned and degenerate constraints stall; contradictory constraints retain the full 64 sweeps (0.166375ms)
+✔ extreme finite inputs preserve Object.is behavior when arithmetic overflows or underflows (0.140875ms)
+✔ fixed private topology survives caller mutation and runtime absence uses an explicit null fallback (0.162042ms)
+✔ valid arithmetic mutant and a no-op forward export are rejected before caller mutation (0.261375ms)
+✔ malformed constraints and over-budget calls fail closed (0.311833ms)
+✔ memory-only artifact admission rejects relocation, globals, tables, data and function imports (1.276042ms)
+✔ full motion stays inside the frame; the rest-only fit clips a lunge (0.392875ms)
+✔ empty and nonfinite motion cannot receive an apparently valid fit (0.116875ms)
+✔ media byte probes, seeking and suffix reads retain exact boundaries (0.682666ms)
+✔ malformed and out-of-bounds ranges refuse instead of returning an empty movie (0.144417ms)
+✔ transparent ink cannot pass; one real pixel has exact bounds (0.694667ms)
+✔ pixel parity detects a one-channel defect and different dimensions (0.088583ms)
+✔ complete census refuses omitted, duplicated, extra and unfinished cases (0.151625ms)
+✔ all four derived maps independently reproduce exact PNG/pixels, ownership and unchanged source pins; generated module is current (4313.817542ms)
+✔ changed original atlas, binding geometry, receipt dimensions and generator provenance refuse before supplementary admission (235.213459ms)
+✔ forged label pixels with a matching forged receipt cannot replace original pinned ownership (871.06925ms)
+✔ travelling wave passes; standing, anti-phase and reversed waves fail (16.79275ms)
+✔ chain identity and sample integrity refuse rather than silently pass (0.338667ms)
+✔ tripod passes; one swapped foot and forced half-duty fail (1.709958ms)
+✔ path needs real history; matching path passes and displaced path fails (5.114167ms)
+✔ strike distinguishes fast extension from a slow generic excursion (0.249208ms)
+✔ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (5.469209ms)
+✔ dependency discovery rejects missing dependency (1.238292ms)
+✔ dependency discovery rejects ambiguous runtime and typed files (1.200291ms)
+✔ dependency discovery rejects source boundary escape (1.745166ms)
+✔ dependency discovery rejects symlink directory escape (1.910291ms)
+✔ dependency discovery rejects declaration-only dependency (1.394042ms)
+✔ dependency discovery rejects malformed transitive JS (2.368458ms)
+▶ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy
+  ✔ transitive route mutation (428.426542ms)
+  ✔ arbitrary Object.create prototype (439.400583ms)
+  ✔ Object.create property descriptors (561.710459ms)
+  ✔ aliased Object.create (915.000125ms)
+  ✔ outside-art re-export cannot hide a second route owner (CC) (460.733333ms)
+  ✔ private route function reassignment (726.847333ms)
+  ✔ public ordinary branch disconnects (735.747833ms)
+  ✔ public capture branch returns replay ink (1208.090916ms)
+  ✔ selected painter bypasses ink (740.824666ms)
+  ✔ topology helper skips painting (725.345792ms)
+  ✔ topology callback loses the painter (736.126333ms)
+  ✔ topology callback receives the wrong ink (734.759083ms)
+  ✔ topology callback changes painter genome (738.701416ms)
+  ✔ route precedence remains enforced (730.980458ms)
+✔ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (11858.150541ms)
+✔ exact adult Mayfly review removes only functional chewing mandible (4.102375ms)
+✔ rejects naiad (1.233042ms)
+✔ rejects no positive wing evidence (1.019541ms)
+✔ rejects visible jaws (1.027417ms)
+✔ rejects missing antenna (1.009667ms)
+✔ rejects missing leg (0.993ms)
+✔ rejects unreviewed (1.51225ms)
+✔ rejects tampered master (1.800375ms)
+✔ rejects chewing beetle (2.83825ms)
+✔ rejects another soft-mouth insect (1.060166ms)
+✔ six deterministic nonempty white masks preserve source alpha ceiling and bytes (31.657959ms)
+✔ reject outside alpha, partial-alpha excess, RGB contamination and empty mutants (2.422208ms)
+✔ refuse unknown patterns and empty source (0.557167ms)
+✔ exact reviewed external-pinna absence: 01-caiman (6.939709ms)
+✔ exact reviewed external-pinna absence: 02-crocodile (3.117667ms)
+✔ exact reviewed external-pinna absence: 03-alligator (2.801041ms)
+✔ exact reviewed external-pinna absence: 04-gharial (3.060666ms)
+✔ exact reviewed external-pinna absence: 05-monitor-lizard (3.36675ms)
+✔ exact reviewed external-pinna absence: 06-anole (2.593ms)
+✔ exact reviewed external-pinna absence: 07-gecko (2.756666ms)
+✔ exact reviewed external-pinna absence: 08-skink (2.568167ms)
+✔ exact reviewed external-pinna absence: 09-alligator-lizard (2.804292ms)
+✔ exact reviewed external-pinna absence: 10-mountain-lizard (4.001208ms)
+✔ exact reviewed external-pinna absence: 11-tegu (2.137375ms)
+✔ exact reviewed external-pinna absence: 12-lizard (1.896208ms)
+✔ exact reviewed external-pinna absence: 13-whiptail (2.539917ms)
+✔ exact reviewed external-pinna absence: 14-agama (3.1625ms)
+✔ exact reviewed external-pinna absence: 15-iguana (6.829917ms)
+✔ exact reviewed external-pinna absence: 16-land-iguana (2.934625ms)
+✔ exact reviewed external-pinna absence: 17-coastal-lizard (3.516542ms)
+✔ exact reviewed external-pinna absence: 18-komodo-dragon (2.892833ms)
+✔ exact reviewed external-pinna absence: 19-gila-monster (2.6165ms)
+✔ exact reviewed external-pinna absence: 20-frilled-lizard (3.930416ms)
+✔ exact reviewed external-pinna absence: 21-chameleon (2.938ms)
+✔ exact reviewed external-pinna absence: 22-horned-lizard (2.419833ms)
+✔ exact reviewed external-pinna absence: 23-marine-iguana (2.350834ms)
+✔ exact reviewed external-pinna absence: 24-newt (2.428375ms)
+✔ external-pinna review refuses changed master (0.850125ms)
+✔ external-pinna review refuses changed subject (0.526125ms)
+✔ external-pinna review refuses changed prompt (0.486959ms)
+✔ external-pinna review refuses canonical name changed (0.871333ms)
+✔ external-pinna review refuses profile assertion changed (0.873792ms)
+✔ external-pinna review refuses profile hash changed (1.389417ms)
+✔ external-pinna review refuses rebound but altered canonical anatomy (0.877375ms)
+✔ external-pinna review refuses rebound but altered profile (0.858167ms)
+✔ external-pinna review refuses juvenile context (0.795833ms)
+✔ external-pinna review refuses swimming context (0.785417ms)
+✔ external-pinna review refuses wrong family (0.791792ms)
+✔ external-pinna review refuses mandatory limb removal (0.785958ms)
+✔ external-pinna review refuses extra tail absence (0.807041ms)
+✔ external-pinna review refuses hidden is not absent (0.790042ms)
+✔ external-pinna review refuses ear canal removal (1.2385ms)
+✔ external-pinna review refuses missing visual observation (0.853375ms)
+✔ external-pinna review refuses blank reviewer (0.826792ms)
+✔ external-pinna review refuses missing painting observation (1.446292ms)
+✔ external-pinna review refuses blanket profile scope (1.583833ms)
+✔ a fully consistent mammal cannot inherit a reptile absence decision (2.534166ms)
+✔ identity/changed interiors conserve alpha, ownership components and label gradients; edge mutants fail (75.71825ms)
+✔ desktop class admitted, phone and setting/model-input mutants refused (0.350167ms)
+✔ real independent compact branch uses observed terminal; no ear/leg exemption (14.512375ms)
+✔ long-tail identity remains refused even with compact paint (0.126167ms)
+✔ amputated source tail cannot create an allowance (132.566792ms)
+✔ intake independently rejects changed measured coordinates (315.649083ms)
+✔ automatic measurement cannot smuggle an occluded near ear (1.048333ms)
+✔ exact reviewed Hyrax removes only the optional tail inventory (5.368083ms)
+✔ refuses different master (0.998416ms)
+✔ refuses different subject (0.672958ms)
+✔ refuses different request (0.710333ms)
+✔ refuses species mismatch (1.114208ms)
+✔ refuses missing life stage (1.084125ms)
+✔ refuses different pose (1.039917ms)
+✔ refuses unreviewed (1.060375ms)
+✔ refuses invented evidence (1.570125ms)
+✔ refuses mandatory leg absence (1.137541ms)
+✔ refuses duplicate declaration (1.084292ms)
+✔ refuses reference-only absence on a tailed species (2.5075ms)
+✔ five exact-source reviews admitted; unchanged mandatory body/leg limits (14.394375ms)
+✔ stale master refuses (1.016125ms)
+✔ stale subject refuses (1.872667ms)
+✔ stale prompt refuses (1.785333ms)
+✔ stale declaration (2.644792ms)
+✔ wrong family (2.0065ms)
+✔ no review (1.026333ms)
+✔ hidden terminal (1.091208ms)
+✔ cropped terminal (1.042625ms)
+✔ omitted middle (1.091709ms)
+✔ degenerate tip (1.050375ms)
+✔ mandatory leg exemption (1.002625ms)
+✔ lost tail region (1.045ms)
+✔ unknown evidence (1.01925ms)
+✔ swapped ear side (2.046625ms)
+✔ no antler (2.1825ms)
+✔ invented hidden coordinates (1.117208ms)
+✔ biologically absent (1.045208ms)
+✔ changed occluder (2.390667ms)
+✔ represented tail keeps distal contribution and legacy object identity (1.136542ms)
+✔ absence conflict refuses; mandatory anatomy cannot be hidden (1.349417ms)
+✔ visible ear pixels survive on head; invented actuator and erased sliver refuse (0.491125ms)
+✔ off-paint invented tip refuses independently of metadata (0.234625ms)
+✔ Goat independent visible source points validate and preserve unrelated owners (6.876625ms)
+✔ Goat complete chain cannot be shortened or renamed to bypass inventory (1.177458ms)
+✔ Goat erased visible endpoint refuses instead of becoming absent (0.941ms)
+✔ Goat swapped master, changed observation coordinates and missing owner refuse (4.6905ms)
+✔ Goat resealed unpainted or extra anatomy cannot waive inventory (1.77325ms)
+✔ Hippopotamus independent visible source points validate and preserve unrelated owners (4.413875ms)
+✔ Hippopotamus complete chain cannot be shortened or renamed to bypass inventory (0.995833ms)
+✔ Hippopotamus erased visible endpoint refuses instead of becoming absent (0.989ms)
+✔ Hippopotamus swapped master, changed observation coordinates and missing owner refuse (0.919667ms)
+✔ Hippopotamus resealed unpainted or extra anatomy cannot waive inventory (3.501625ms)
+✔ Ibex independent visible source points validate and preserve unrelated owners (11.698083ms)
+✔ Ibex complete chain cannot be shortened or renamed to bypass inventory (0.999167ms)
+✔ Ibex erased visible endpoint refuses instead of becoming absent (0.925542ms)
+✔ Ibex swapped master, changed observation coordinates and missing owner refuse (0.862125ms)
+✔ Ibex resealed unpainted or extra anatomy cannot waive inventory (2.187084ms)
+✔ Okapi independent visible source points validate and preserve unrelated owners (9.318708ms)
+✔ Okapi complete chain cannot be shortened or renamed to bypass inventory (0.927709ms)
+✔ Okapi erased visible endpoint refuses instead of becoming absent (3.1285ms)
+✔ Okapi swapped master, changed observation coordinates and missing owner refuse (3.76325ms)
+✔ Okapi resealed unpainted or extra anatomy cannot waive inventory (1.63325ms)
+✔ Rat independent visible source points validate and preserve unrelated owners (2.400084ms)
+✔ Rat complete chain cannot be shortened or renamed to bypass inventory (0.91ms)
+✔ Rat erased visible endpoint refuses instead of becoming absent (0.832125ms)
+✔ Rat swapped master, changed observation coordinates and missing owner refuse (0.797708ms)
+✔ Rat resealed unpainted or extra anatomy cannot waive inventory (1.517208ms)
+✔ Agouti independent visible source points validate and preserve unrelated owners (15.289584ms)
+✔ Agouti complete chain cannot be shortened or renamed to bypass inventory (0.951458ms)
+✔ Agouti erased visible endpoint refuses instead of becoming absent (0.853875ms)
+✔ Agouti swapped master, changed observation coordinates and missing owner refuse (0.835083ms)
+✔ Agouti resealed unpainted or extra anatomy cannot waive inventory (1.592375ms)
+✔ Moose independent visible source points validate and preserve unrelated owners (2.433125ms)
+✔ Moose complete chain cannot be shortened or renamed to bypass inventory (0.971666ms)
+✔ Moose erased visible endpoint refuses instead of becoming absent (0.95225ms)
+✔ Moose swapped master, changed observation coordinates and missing owner refuse (0.84775ms)
+✔ Moose resealed unpainted or extra anatomy cannot waive inventory (2.205ms)
+✔ Beaver independent visible source points validate and preserve unrelated owners (3.17175ms)
+✔ Beaver complete chain cannot be shortened or renamed to bypass inventory (0.968ms)
+✔ Beaver erased visible endpoint refuses instead of becoming absent (1.074834ms)
+✔ Beaver swapped master, changed observation coordinates and missing owner refuse (1.853166ms)
+✔ Beaver resealed unpainted or extra anatomy cannot waive inventory (2.979791ms)
+✔ Buffalo independent visible source points validate and preserve unrelated owners (2.593375ms)
+✔ Buffalo complete chain cannot be shortened or renamed to bypass inventory (1.07325ms)
+✔ Buffalo erased visible endpoint refuses instead of becoming absent (1.116625ms)
+✔ Buffalo swapped master, changed observation coordinates and missing owner refuse (1.932958ms)
+✔ Buffalo resealed unpainted or extra anatomy cannot waive inventory (3.388667ms)
+✔ Wild Horse independent visible source points validate and preserve unrelated owners (2.381208ms)
+✔ Wild Horse complete chain cannot be shortened or renamed to bypass inventory (1.032292ms)
+✔ Wild Horse erased visible endpoint refuses instead of becoming absent (1.925709ms)
+✔ Wild Horse swapped master, changed observation coordinates and missing owner refuse (1.761667ms)
+✔ Wild Horse resealed unpainted or extra anatomy cannot waive inventory (2.161459ms)
+✔ Bee independent visible source points validate and preserve unrelated owners (2.374042ms)
+✔ Bee complete chain cannot be shortened or renamed to bypass inventory (1.99525ms)
+✔ Bee erased visible endpoint refuses instead of becoming absent (1.804458ms)
+✔ Bee swapped master, changed observation coordinates and missing owner refuse (3.027167ms)
+✔ Bee resealed unpainted or extra anatomy cannot waive inventory (3.866833ms)
+✔ Water Buffalo independent visible source points validate and preserve unrelated owners (4.858625ms)
+✔ Water Buffalo complete chain cannot be shortened or renamed to bypass inventory (1.345375ms)
+✔ Water Buffalo erased visible endpoint refuses instead of becoming absent (1.768458ms)
+✔ Water Buffalo swapped master, changed observation coordinates and missing owner refuse (1.479667ms)
+✔ Water Buffalo resealed unpainted or extra anatomy cannot waive inventory (1.695541ms)
+✔ Jackrabbit independent visible source points validate and preserve unrelated owners (1.275083ms)
+✔ Jackrabbit complete chain cannot be shortened or renamed to bypass inventory (0.868834ms)
+✔ Jackrabbit erased visible endpoint refuses instead of becoming absent (0.896833ms)
+✔ Jackrabbit swapped master, changed observation coordinates and missing owner refuse (0.816209ms)
+✔ Jackrabbit resealed unpainted or extra anatomy cannot waive inventory (1.587125ms)
+✔ audio evidence rejects silence, corruption and incomplete tracks (50.612708ms)
+✔ skin capture refuses rest drift, untested motion, slow update and diagnostic substitution (1.316791ms)
+✔ capture binds complete source inventory, manifest, generated program and actual asset routing before filming (0.707541ms)
+✔ independent media duration rejects first short recordings and missing/overlong evidence (0.079875ms)
+✔ startup feeds frames before acknowledgment and refuses a recorder that never starts (0.251292ms)
+✔ the creature budget counts slow producer sampling and slow contact solving (2.340875ms)
+✔ timing preserves the callback result, executes once and never masks failures (0.212ms)
+✔ planning is taken from the native owner; duplicate or missing declarations refuse (1.542125ms)
+✔ changed producer is refused before exporting any evidence; existing output is protected (1.362667ms)
+✔ actual current producer exports 1201 resolved poses each, deterministically and source-bound (2811.511916ms)
+✔ impact exposure follows the struck side and leaves the attacker neutral (0.596833ms)
+✔ explicit-time fading is history-free and cannot brighten a miss or reduced-motion turn (0.244292ms)
+✔ pacing admits a real 60 Hz trace and rejects 30 Hz, stalls, missing samples and slow rigs (3.705708ms)
+✔ motion evidence rejects static appendages, missing phases and missing endpoints (13.521708ms)
+✔ turn sampler retains additive curves, freezes hitstop and kills every compiled player (1.439292ms)
+✔ samples actual lowest alpha and retains perspective offsets rather than flattening paws (0.931083ms)
+✔ negative control exposes drifting painted contact with a perfectly fixed skeleton (0.436875ms)
+✔ airborne rigid translation separates intended motion from skin-following error (0.137334ms)
+✔ refuses missing source ink, uncovered painted contour, wrong binding and malformed published buffers (0.29925ms)
+✔ a one-owner test measures every published point through rigid rotation and translation (1.558209ms)
+✔ scale fails the same unchanged rigid-surface epsilon (0.998834ms)
+✔ shear fails the same unchanged rigid-surface epsilon (0.09625ms)
+✔ reflection fails the same unchanged rigid-surface epsilon (0.076542ms)
+✔ local deformation fails the same unchanged rigid-surface epsilon (0.46725ms)
+✔ cannot claim the rigid one-owner path for a soft or multi-owner source (0.239375ms)
+✔ missing, shortened, collapsed or nonfinite published surfaces refuse (0.105792ms)
+✔ an empty, truncated, nonfinite or misindexed authored reference cannot pass vacuously (0.193958ms)
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (1.961416ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (2.492542ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.751208ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (1.683459ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (5.716834ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (1209.555166ms)
+✔ fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse (0.62925ms)
+✔ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (5.312083ms)
+✔ one idle clip continues across roles and pauses in both existing hitstops (2.665916ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.636375ms)
+✔ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (2167.584667ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.517208ms)
+✔ positive complete measured-count control is accepted (1.069167ms)
+✔ negative control: missing cohort (0.121875ms)
+✔ negative control: missing threat (0.095625ms)
+✔ negative control: nonfinite (0.09125ms)
+✔ negative control: empty corpus (0.136167ms)
+✔ negative control: overlap seeds (0.121625ms)
+✔ negative control: forged policy (0.093792ms)
+✔ negative control: too large easy gap (0.076167ms)
+✔ negative control: too small normal gap (0.078667ms)
+✔ negative control: too large Command edge (0.124584ms)
+✔ negative control: omitted phase (0.081375ms)
+✔ negative control: omitted Withdraw (0.057167ms)
+✔ negative control: no swap exercised (0.054458ms)
+✔ negative control: flat stances (0.087916ms)
+✔ negative control: globally best press (0.423875ms)
+✔ negative control: broken replay (0.247958ms)
+✔ negative control: broken parity (0.140708ms)
+✔ plan enumeration is exactly all 384 order/stance combinations with stable ties (1.239125ms)
+✔ a wrong-stance resolver changes selected policy; no evaluation input enters selection (0.588917ms)
+✔ Command visits phase, next-fighter and Withdraw, including branches after finding a win (0.565083ms)
+✔ search refuses a truncated tree which excludes the Auto win (0.547792ms)
+✔ unbounded or unknown Break is an instrument failure, never a green truncated search (0.26025ms)
+✔ declared D17 outcomes admit a complete positive control (1.109542ms)
+✔ wrong version (0.528375ms)
+✔ wrong count (0.327334ms)
+✔ candidate rebound (0.32725ms)
+✔ training reused (0.461083ms)
+✔ missing cohort (0.288ms)
+✔ duplicate cohort (0.22275ms)
+✔ fractional wins (0.150167ms)
+✔ normal too small (0.145333ms)
+✔ titan too large (0.150958ms)
+✔ near-total defeats (0.124708ms)
+✔ oracle cannot stand for playable Command (0.113625ms)
+✔ missing phase (0.09725ms)
+✔ missing withdrawal (0.1125ms)
+✔ missing swap (0.1125ms)
+✔ solo drifts (0.091833ms)
+✔ drop threat (0.267958ms)
+✔ wrong stance beats right (0.363917ms)
+✔ right stance ties (0.197ms)
+✔ parity mismatch (0.185834ms)
+✔ empty replay (0.168416ms)
+✔ changing actual fight seeds cannot change forecast policy when public stats are unchanged (1.038208ms)
+✔ Command policy reads the offered break and preserves its actual terminal outcome (0.197125ms)
+✔ a candidate cannot remove or redefine an inconvenient threat (0.834875ms)
+✔ Recovery checks exact fallen and swapped outcomes, including preserved pre-existing wounds (2.126208ms)
+✔ candidate Recovery duration cannot rebind the unchanged policy (2.057917ms)
+✔ declared D17 outcomes admit a complete positive control (0.417833ms)
+✔ recovery absent (0.178583ms)
+✔ recovery duration raised (0.14875ms)
+✔ recovery duration lowered (0.1285ms)
+✔ defeat wound added (0.12875ms)
+✔ missing recovery outcomes (0.128917ms)
+✔ recovery mutation missed (0.129291ms)
+✔ no fallen recovery (0.170167ms)
+✔ no swapped recovery (0.121667ms)
+✔ raw engine substituted (0.123667ms)
+✔ production mismatch (0.111541ms)
+✔ missing production (0.101333ms)
+✔ phase bypass (0.10325ms)
+✔ epoch rebound (0.087583ms)
+✔ wrong version (0.097958ms)
+✔ wrong count (0.088166ms)
+✔ candidate rebound (0.083542ms)
+✔ training reused (0.077125ms)
+✔ missing cohort (0.076625ms)
+✔ duplicate cohort (0.069333ms)
+✔ fractional wins (0.098959ms)
+✔ normal too small (0.071667ms)
+✔ titan too large (0.822417ms)
+✔ near-total defeats (0.352042ms)
+✔ oracle cannot stand for playable Command (0.263958ms)
+✔ missing phase (0.224084ms)
+✔ missing withdrawal (0.34675ms)
+✔ missing swap (0.111458ms)
+✔ solo drifts (0.083042ms)
+✔ drop threat (0.090167ms)
+✔ wrong stance beats right (0.087292ms)
+✔ right stance ties (0.074834ms)
+✔ parity mismatch (0.065958ms)
+✔ empty replay (0.063583ms)
+✔ changing actual fight seeds cannot change forecast policy when public stats are unchanged (0.289959ms)
+✔ Command policy reads the offered break and preserves its actual terminal outcome (0.086208ms)
+✔ a candidate cannot remove or redefine an inconvenient threat (0.310291ms)
+ℹ tests 779
+ℹ suites 0
+ℹ pass 779
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16607.95175
+✔ canonical controlled route Gorilla (0.663833ms)
+✔ canonical controlled route Chimpanzee (0.045417ms)
+✔ canonical controlled route Orangutan (0.050875ms)
+✔ canonical controlled route Capuchin (0.040375ms)
+✔ canonical controlled route Howler Monkey (0.043834ms)
+✔ canonical controlled route Spider Monkey (0.038541ms)
+✔ canonical controlled route Tamarin (0.044875ms)
+✔ canonical controlled route Macaque (0.035833ms)
+✔ canonical controlled route Langur (0.039458ms)
+✔ canonical controlled route Baboon (0.0715ms)
+✔ canonical controlled route Monkey (0.043333ms)
+✔ canonical controlled route Lemur (0.041958ms)
+✔ canonical controlled route Gibbon (0.02775ms)
+✔ canonical controlled route Mandrill (0.02075ms)
+✔ canonical controlled route Marmoset (0.019209ms)
+✔ canonical controlled route Aye-Aye (0.019875ms)
+✔ canonical controlled route Proboscis Monkey (0.01875ms)
+✔ canonical controlled route Fruit Bat (0.01675ms)
+✔ canonical controlled route Bat (0.017ms)
+✔ canonical controlled route Insect-Eating Bat (0.01775ms)
+✔ canonical controlled route Vampire Bat (0.017042ms)
+✔ canonical controlled route Squid (0.018125ms)
+✔ canonical controlled route Octopus (0.016625ms)
+✔ canonical controlled route Cuttlefish (0.016375ms)
+✔ canonical controlled route Giant Octopus (0.018542ms)
+✔ canonical controlled route Giant Squid (0.015834ms)
+✔ canonical controlled route Vampire Squid (0.024667ms)
+✔ canonical controlled route Deep-Sea Octopus (0.015333ms)
+✔ canonical controlled route Nautilus (0.030542ms)
+✔ canonical controlled route Centipede (0.016583ms)
+✔ canonical controlled route Giant Centipede (0.015708ms)
+✔ canonical controlled route Millipede (0.016125ms)
+✔ existing quadruped request is byte-for-byte unchanged (0.385292ms)
+✔ existing biped-bird request is byte-for-byte unchanged (0.031292ms)
+✔ existing serpent request is byte-for-byte unchanged (0.036334ms)
+✔ existing fish request is byte-for-byte unchanged (0.019333ms)
+✔ existing insect request is byte-for-byte unchanged (0.020875ms)
+✔ ambiguous, mixed and unknown families refuse (0.224292ms)
+✔ species-dependent cephalopod counts and structures stay distinct (0.130875ms)
+✔ millipede, centipede, primate and bat painting requests retain real anatomy (0.032833ms)
+✔ all four new routes compile complete canonical requests with hashes and source provenance (665.652042ms)
+✔ actual compiled prompt preserves canonical identity note: Angelfish (165.629584ms)
+✔ actual compiled prompt preserves canonical identity note: Roadrunner (165.079292ms)
+✔ actual upright Meerkat uses its sole canonical quadruped anatomy route (166.524917ms)
+✔ upright posture cannot invent a missing or ambiguous quadruped route (0.135666ms)
+✔ only canonical frog and scorpion profiles gain source request routes (0.452417ms)
+✔ requests distinguish four frog limbs from eight scorpion legs plus pedipalps (0.080583ms)
+✔ actual compiled canonical packets retain identity and do not fabricate observations (336.058792ms)
+✔ exact Nautilus source route returns a nautiloid template with cephalopod taxonomy unchanged (0.562417ms)
+✔ Nautilus source layout retains rigid spiral shell, hood and genuinely numerous unsuckered tentacles (0.198834ms)
+✔ wrong, mixed and missing source signatures never select nautiloid or its request (0.0655ms)
+✔ generic octopus and squid retain their canonical source family and their existing anatomy requests (0.169209ms)
+✔ actual canonical Nautilus compiler writes the narrow source request and exact hashes (169.194125ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 53
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2113.968334
+
+> @cf/game@0.0.0 build
+> vite build --mode evidence
+
+vite v8.2.0 building client environment for evidence...
+[2K
+transforming...✓ 1339 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/__local_ai/MISSING.json                                                                 0.06 kB │ gzip:     0.08 kB
+dist/manifest.webmanifest                                                                    0.72 kB
+dist/icons/celestial-frontier-maskable.svg                                                   1.13 kB │ gzip:     0.53 kB
+dist/icons/celestial-frontier.svg                                                            1.13 kB │ gzip:     0.53 kB
+dist/audit.html                                                                              1.17 kB │ gzip:     0.48 kB
+dist/hybrid-matrix.html                                                                      1.25 kB │ gzip:     0.50 kB
+dist/__local_ai/kit-stage-worker.mjs                                                         1.32 kB
+dist/audiovisual-pilot.html                                                                  2.35 kB │ gzip:     0.70 kB
+dist/__local_ai/denoiser-shapes.mjs                                                          2.37 kB
+dist/__local_ai/kit-worker-expansion.mjs                                                     3.92 kB
+dist/assets/card-BDZgZ1XH.json                                                               4.10 kB │ gzip:     1.36 kB
+dist/assets/card-DRUK9mE2.json                                                               4.22 kB │ gzip:     1.23 kB
+dist/assets/card-Bxz6_Jrd.json                                                               4.35 kB │ gzip:     1.34 kB
+dist/assets/Inter-LICENSE-CkXC2-KD.txt                                                       4.38 kB │ gzip:     1.97 kB
+dist/assets/card-vkcAKTML.json                                                               4.42 kB │ gzip:     1.38 kB
+dist/__local_ai/kit-weather-math.mjs                                                         4.43 kB
+dist/assets/record-BBjgFyvf.json                                                             4.72 kB │ gzip:     1.61 kB
+dist/assets/record-DdS59Dx0.json                                                             5.01 kB │ gzip:     2.05 kB
+dist/assets/card-CAUzdBLt.json                                                               5.57 kB │ gzip:     1.57 kB
+dist/assets/record-BKd5K7vS.json                                                             5.61 kB │ gzip:     2.40 kB
+dist/assets/labels-512-BbX56XP1.png                                                          6.17 kB
+dist/assets/card-DF3xGeVN.json                                                               6.30 kB │ gzip:     1.70 kB
+dist/__local_ai/creature-finish-math.mjs                                                     6.32 kB
+dist/assets/record-CVey_Q4Q.json                                                             6.37 kB │ gzip:     2.55 kB
+dist/assets/planet-surface-turn.worker-jKUKmrS4.js                                           6.45 kB
+dist/assets/card-CuKsOTQe.json                                                               6.50 kB │ gzip:     1.76 kB
+dist/assets/record-k4xg1FhE.json                                                             6.82 kB │ gzip:     2.81 kB
+dist/assets/record-BF00u0w-.json                                                             7.37 kB │ gzip:     2.98 kB
+dist/assets/record-DK2TI86Q.json                                                             7.59 kB │ gzip:     3.13 kB
+dist/assets/labels-512-D2xkxUJB.png                                                          7.78 kB
+dist/assets/eye-spotted-Bp51yhdL.png                                                         7.93 kB
+dist/assets/record-CMXRP5xo.json                                                             7.98 kB │ gzip:     3.08 kB
+dist/assets/record-DumRKjFB.json                                                             8.01 kB │ gzip:     2.47 kB
+dist/assets/record-D1b87GRe.json                                                             8.36 kB │ gzip:     3.36 kB
+dist/assets/record-Io5-SKjb.json                                                             8.48 kB │ gzip:     3.48 kB
+dist/assets/labels-512-6Bkfk6sp.png                                                          8.71 kB
+dist/assets/record-LGzrcEaL.json                                                             8.93 kB │ gzip:     3.31 kB
+dist/__local_ai/kit-engine-math.mjs                                                          8.99 kB
+dist/assets/record-Cg3aMOHE.json                                                             9.45 kB │ gzip:     3.95 kB
+dist/__local_ai/gpu-profile.mjs                                                              9.72 kB
+dist/assets/labels-512-DjmD2rdG.png                                                          9.98 kB
+dist/__local_ai/pipeline-math.mjs                                                           10.22 kB
+dist/assets/card-Bja8PTrt.json                                                              10.47 kB │ gzip:     2.43 kB
+dist/__local_ai/kit-contact-math.mjs                                                        11.63 kB
+dist/assets/labels-512-C9cSL_jj.png                                                         11.64 kB
+dist/assets/scout-chemical-132-Dt4gyYnA.webp                                                12.53 kB
+dist/assets/labels-512-DM-KWuvc.png                                                         13.02 kB
+dist/assets/spotted-Npj35y7d.png                                                            13.23 kB
+dist/assets/master-512-JNA_uuPu.png                                                         13.63 kB
+dist/assets/labels-512-CqbyMkPA.png                                                         13.65 kB
+dist/assets/labels-512-CUCCGc4m.png                                                         14.01 kB
+dist/assets/striped-DRaiiscJ.png                                                            15.88 kB
+dist/assets/banded-J_IBEsae.png                                                             15.99 kB
+dist/assets/labels-512-Bxpx5dH_.png                                                         16.85 kB
+dist/assets/marbled-DePoFqIw.png                                                            17.44 kB
+dist/assets/labels-512-CPYF3VnG.png                                                         17.62 kB
+dist/assets/labels-512-PaPC2Z6s.png                                                         17.67 kB
+dist/__local_ai/kit-worker-engine.mjs                                                       17.79 kB
+dist/assets/spotted-DV13xmy3.png                                                            19.13 kB
+dist/assets/mottled-C_mFzxOE.png                                                            19.78 kB
+dist/assets/labels-512-nRPkt-Cm.png                                                         20.54 kB
+dist/assets/labels-512-D7_opa_i.png                                                         22.95 kB
+dist/assets/spotted-yAu-My4j.png                                                            23.58 kB
+dist/assets/record-BQaHM9iv.json                                                            23.77 kB │ gzip:     7.92 kB
+dist/assets/eye-spotted-BLF25HDp.png                                                        25.78 kB
+dist/assets/markings-Bsq4OiRW.json                                                          26.55 kB │ gzip:    10.14 kB
+dist/assets/cf-pilot-ui-nav-bMnbTxA8.wav                                                    26.92 kB
+dist/assets/marbled-B8SNTQY6.png                                                            30.18 kB
+dist/assets/cf-pilot-combat-contact-DHZD2lYd.wav                                            33.64 kB
+dist/assets/mottled-B4rrFPjC.png                                                            36.01 kB
+dist/assets/striped-BRF6Zryg.png                                                            36.77 kB
+dist/assets/striped-rNNGX3QK.png                                                            38.38 kB
+dist/assets/scout-chemical-300-CxcU_kic.webp                                                40.66 kB
+dist/assets/eye-spotted-Dkz9BjrI.png                                                        41.43 kB
+dist/assets/banded-CHJSJMK_.png                                                             42.16 kB
+dist/assets/cf-pilot-ui-refusal-CMon7hko.wav                                                43.24 kB
+dist/assets/eye-spotted-CBG0LWL5.png                                                        43.58 kB
+dist/assets/marbled-RKI8bNzh.png                                                            44.65 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs       51.40 kB
+dist/assets/markings-CpbQXX1w.json                                                          57.47 kB │ gzip:     6.67 kB
+dist/assets/markings-BFE-G3bb.json                                                          62.71 kB │ gzip:     7.04 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs                        66.34 kB
+dist/assets/cf-pilot-ui-settlement-uF_X4Ois.wav                                             67.24 kB
+dist/assets/master-512-DgLhmkdn.png                                                         73.33 kB
+dist/assets/mottled-ByR3wC9E.png                                                            75.17 kB
+dist/index.html                                                                             80.80 kB │ gzip:    17.96 kB
+dist/assets/banded-B_fAJ91N.png                                                             92.23 kB
+dist/assets/scout-chemical-512-DcNawgH5.webp                                                92.89 kB
+dist/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs                    98.93 kB
+dist/assets/master-512-DOVn1JdB.png                                                        102.69 kB
+dist/service-worker.js                                                                     105.84 kB
+dist/assets/mars-dunesea-v1-cFwkRNdy.webp                                                  127.08 kB
+dist/assets/earth-riverbank-v1-C4EQQH_D.webp                                               130.30 kB
+dist/assets/cf-pilot-scout-landing-D1k5tYuE.wav                                            134.44 kB
+dist/assets/master-512-BPk7psfU.png                                                        139.94 kB
+dist/assets/markings-hrRTHUtX.json                                                         140.72 kB │ gzip:    20.67 kB
+dist/__local_ai/browser-variant-plan.json                                                  142.91 kB │ gzip:    13.70 kB
+dist/assets/banded-Aqv8fLnj.png                                                            143.62 kB
+dist/assets/striped-BwucMPN6.png                                                           153.13 kB
+dist/assets/master-512-CRnahgKk.png                                                        162.94 kB
+dist/assets/master-512-BtQCfXeT.png                                                        162.99 kB
+dist/assets/spotted-DcgjgvDz.png                                                           165.10 kB
+dist/assets/master-512-C-lA7FB0.png                                                        191.58 kB
+dist/assets/marbled-COAlzh-t.png                                                           191.75 kB
+dist/assets/mottled-DxDdjh2s.png                                                           214.89 kB
+dist/assets/master-512-BKBi4tKj.png                                                        216.03 kB
+dist/assets/biome-vista.worker-D3XRSJZJ.js                                                 220.68 kB
+dist/assets/cf-pilot-scout-approach-Be38_iqZ.wav                                           230.44 kB
+dist/assets/master-512-BQm200Oe.png                                                        242.81 kB
+dist/assets/master-512-BMaSjuP5.png                                                        247.87 kB
+dist/assets/master-512-CX1yDyzc.png                                                        291.53 kB
+dist/assets/master-512-DAxCPv4x.png                                                        307.04 kB
+dist/assets/master-512-CThTiPmB.png                                                        319.90 kB
+dist/assets/master-512-CnK6bxUo.png                                                        320.80 kB
+dist/assets/earth-rainy-phone-DFt5murF.webp                                                343.07 kB
+dist/assets/InterVariable-DiVDrmQJ.woff2                                                   352.24 kB
+dist/assets/earth-civet-landing-v1-DxWosWSp.webp                                           600.75 kB
+dist/assets/earth-rainy-landscape-DPgApIAi.webp                                            765.31 kB
+dist/assets/earth-resident.worker-Bdx0FxgO.js                                              978.44 kB
+dist/assets/species-art.worker-BXhoYT5u.js                                               1,342.64 kB
+dist/assets/cf-pilot-exploration-music-CMF8UCKw.wav                                      4,608.04 kB
+dist/assets/cf-pilot-temperate-bed-C_jKRyj6.wav                                          4,608.04 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm  25,749.87 kB │ gzip: 6,442.00 kB
+dist/assets/webworkerAll-CCI_wjmn.js                                                         0.05 kB │ gzip:     0.06 kB
+dist/assets/release-identity-CIuedefi.js                                                     0.13 kB │ gzip:     0.13 kB │ map:     0.78 kB
+dist/assets/getTextureBatchBindGroup-WYWz1eAc.js                                             0.40 kB │ gzip:     0.31 kB │ map:     1.79 kB
+dist/assets/getPo2TextureFromSource-BZgiTsLH.js                                              0.47 kB │ gzip:     0.32 kB │ map:     1.69 kB
+dist/assets/modulepreload-polyfill-P2Xu9kJm.js                                               0.67 kB │ gzip:     0.38 kB
+dist/assets/CanvasPool-BdanJG_4.js                                                           0.80 kB │ gzip:     0.46 kB │ map:     3.52 kB
+dist/assets/landfall-content-hash-CrbKW37F.js                                                1.08 kB │ gzip:     0.62 kB │ map:     3.46 kB
+dist/assets/src-B2fXMzXR.js                                                                  1.16 kB │ gzip:     0.62 kB │ map:     5.69 kB
+dist/assets/preload-helper-Czpn1I53.js                                                       1.19 kB │ gzip:     0.67 kB
+dist/assets/speciesidentity-Dv9PKGDT.js                                                      1.33 kB │ gzip:     0.54 kB │ map:     5.04 kB
+dist/assets/morph-atlas-cache-DyrqE7xe.js                                                    1.44 kB │ gzip:     0.74 kB │ map:     5.80 kB
+dist/assets/visual-effect-policy-DOpWhvoj.js                                                 1.57 kB │ gzip:     0.70 kB │ map:     7.17 kB
+dist/assets/painted-stand-in-DkJXtWr-.js                                                     2.11 kB │ gzip:     1.10 kB │ map:     7.53 kB
+dist/assets/kinematics-CrJ0NZEd.js                                                           2.69 kB │ gzip:     1.30 kB │ map:    12.93 kB
+dist/assets/art-library-BsgIFKLn.js                                                          2.72 kB │ gzip:     1.33 kB │ map:    11.24 kB
+dist/assets/local-model-sha256-DcmCFA0U.js                                                   2.74 kB │ gzip:     1.44 kB │ map:     8.41 kB
+dist/assets/quadruped-template-iVP9ggdx.js                                                   3.02 kB │ gzip:     1.57 kB │ map:    17.44 kB
+dist/assets/derive-Bm83kMQ0.js                                                               3.05 kB │ gzip:     1.57 kB │ map:    10.66 kB
+dist/assets/worldlife-wiring-DhKrXaei.js                                                     3.47 kB │ gzip:     1.64 kB │ map:    17.22 kB
+dist/assets/Mesh-CJGjoDAy.js                                                                 3.95 kB │ gzip:     1.59 kB │ map:    15.15 kB
+dist/assets/src-UKmQ1keR.js                                                                  4.11 kB │ gzip:     2.04 kB │ map:    17.09 kB
+dist/assets/lib-C3JpBsMz.js                                                                  4.66 kB │ gzip:     1.68 kB │ map:    66.46 kB
+dist/assets/surface-polish-CBmmi-Kj.js                                                       4.73 kB │ gzip:     1.69 kB │ map:    18.75 kB
+dist/assets/voice-identity-DRlnfpdj.js                                                       5.59 kB │ gzip:     2.39 kB │ map:    19.63 kB
+dist/assets/canvasUtils-BdWL41L6.js                                                          6.07 kB │ gzip:     2.08 kB │ map:    21.93 kB
+dist/assets/creature-finish-app-bI4y4F3A.js                                                  6.46 kB │ gzip:     3.01 kB │ map:    15.48 kB
+dist/assets/png-encode-BNz89e2L.js                                                           7.14 kB │ gzip:     2.97 kB │ map:    25.70 kB
+dist/assets/src-DDq_m0Mw.js                                                                  8.13 kB │ gzip:     2.69 kB │ map:    22.40 kB
+dist/assets/world-roster-D-0FqAgQ.js                                                         8.62 kB │ gzip:     3.14 kB │ map:    33.90 kB
+dist/assets/dsp-Cy566e-v.js                                                                  9.37 kB │ gzip:     3.85 kB │ map:    37.90 kB
+dist/assets/battle2-matchup-CcjItTx_.js                                                      9.39 kB │ gzip:     4.09 kB │ map:    30.84 kB
+dist/assets/repeated-anatomy-qYAGlMbF.js                                                     9.55 kB │ gzip:     3.68 kB │ map:    27.75 kB
+dist/assets/listening-review-O1zbCCN2.js                                                     9.77 kB │ gzip:     3.72 kB │ map:    28.88 kB
+dist/assets/organic-DKM6HRZT.js                                                             10.41 kB │ gzip:     4.01 kB │ map:    44.09 kB
+dist/assets/planet-surface-turn-view-CmXsq8Rp.js                                            10.42 kB │ gzip:     4.06 kB │ map:    28.29 kB
+dist/assets/BufferResource-C1plebTW.js                                                      10.57 kB │ gzip:     2.81 kB │ map:    25.66 kB
+dist/assets/local-model-manifest-Dhed6Rnb.js                                                12.64 kB │ gzip:     5.42 kB │ map:    40.58 kB
+dist/assets/morph-params-DhK9ZD2y.js                                                        12.69 kB │ gzip:     5.67 kB │ map:    49.97 kB
+dist/assets/src-CH6IBQsV.js                                                                 13.50 kB │ gzip:     5.94 kB │ map:    30.92 kB
+dist/assets/painted-card-source-6bZhgaTO.js                                                 13.88 kB │ gzip:     5.53 kB │ map:    63.56 kB
+dist/assets/init-9-szki8F.js                                                                15.31 kB │ gzip:     4.80 kB │ map:    53.39 kB
+dist/assets/earth-fauna-profiles-BYEhtlIU.js                                                16.44 kB │ gzip:     6.44 kB │ map:    31.96 kB
+dist/assets/earth-layered-recipe-DTHL9JNN.js                                                16.50 kB │ gzip:     4.36 kB │ map:    34.64 kB
+dist/assets/combat-chronicle-CBiYjjJR.js                                                    16.59 kB │ gzip:     5.91 kB │ map:    55.61 kB
+dist/assets/audit-D0c_2qfD.js                                                               16.61 kB │ gzip:     6.53 kB │ map:    68.44 kB
+dist/assets/pilot-sound-player-flbZH-Tm.js                                                  16.93 kB │ gzip:     6.58 kB │ map:    44.56 kB
+dist/assets/soundscape-DCUk9Gwo.js                                                          19.11 kB │ gzip:     7.80 kB │ map:    89.29 kB
+dist/assets/audiovisualPilot-BAOqFGrK.js                                                    19.25 kB │ gzip:     7.36 kB │ map:    43.75 kB
+dist/assets/landfall-conditioning-D_1Rkl9Z.js                                               19.77 kB │ gzip:     7.61 kB │ map:    59.17 kB
+dist/assets/src-BZPXKiEv.js                                                                 20.61 kB │ gzip:     6.63 kB │ map:   105.08 kB
+dist/assets/init-CDdLwmtt.js                                                                24.71 kB │ gzip:     8.52 kB │ map:   105.91 kB
+dist/assets/device-probe-BMfx-3Q-.js                                                        24.76 kB │ gzip:     9.67 kB │ map:    55.62 kB
+dist/assets/audiovisual-pilot-B6iPl5YM.js                                                   25.15 kB │ gzip:     6.55 kB │ map:    39.93 kB
+dist/assets/local-ai-game-BdoaQCEZ.js                                                       25.31 kB │ gzip:     9.83 kB │ map:    73.65 kB
+dist/assets/hybridMatrix-I3f72o54.js                                                        33.88 kB │ gzip:    11.04 kB │ map:    97.55 kB
+dist/assets/original-voices-xh9fQSyu.js                                                     36.85 kB │ gzip:    11.76 kB │ map:   130.96 kB
+dist/assets/WebGPURenderer-BjidRpHt.js                                                      38.53 kB │ gzip:    10.79 kB │ map:   123.97 kB
+dist/assets/browserAll-CmA5K3k-.js                                                          42.63 kB │ gzip:    11.12 kB │ map:   156.69 kB
+dist/assets/src-BUdRBUq6.js                                                                 48.44 kB │ gzip:    13.09 kB │ map:   195.40 kB
+dist/assets/ART_KIT-BvK9ksuX.js                                                             50.35 kB │ gzip:    19.46 kB │ map:     0.08 kB
+dist/assets/biome-vista-surface-D7mTCpJX.js                                                 57.39 kB │ gzip:    17.59 kB │ map:   228.82 kB
+dist/assets/WebGLRenderer-qeHi6k43.js                                                       68.03 kB │ gzip:    18.72 kB │ map:   215.94 kB
+dist/assets/RenderTargetSystem-DUsRdIdr.js                                                  71.14 kB │ gzip:    20.22 kB │ map:   262.67 kB
+dist/assets/worldlife-DA1javRf.js                                                           71.19 kB │ gzip:    23.59 kB │ map:   261.54 kB
+dist/assets/tame-greeting-audio-C0PEx13T.js                                                 78.14 kB │ gzip:    20.48 kB │ map:   269.81 kB
+dist/assets/creature-finish-admission-Zv6_aANd.js                                           78.83 kB │ gzip:    24.39 kB │ map:   153.10 kB
+dist/assets/CanvasRenderer-S0y0Qw5Y.js                                                      87.43 kB │ gzip:    27.42 kB │ map:   463.49 kB
+dist/assets/audio-identity-projector-DLpAGO5E.js                                           100.39 kB │ gzip:    27.85 kB │ map:   340.85 kB
+dist/assets/Geometry-BhLxjYlb.js                                                           101.67 kB │ gzip:    31.17 kB │ map:   500.48 kB
+dist/assets/src-CUa5Mmad.js                                                                117.34 kB │ gzip:    31.31 kB │ map:   450.90 kB
+dist/assets/body-card-DNvRkvoL.js                                                          126.46 kB │ gzip:    34.54 kB │ map:   406.13 kB
+dist/assets/src-BvV-Q80H.js                                                                130.72 kB │ gzip:    50.13 kB │ map:   430.48 kB
+dist/assets/guide-content-B1Fu4Fq4.js                                                      140.92 kB │ gzip:    48.06 kB │ map:   159.45 kB
+dist/assets/release-content-C4KQhxjd.js                                                    160.81 kB │ gzip:    62.04 kB │ map:   182.29 kB
+dist/assets/battle2-wiring-CM5xb0ZZ.js                                                     244.28 kB │ gzip:    73.33 kB │ map:   841.03 kB
+dist/assets/speciesart-B5wt11ZE.js                                                       1,294.83 kB │ gzip:   365.40 kB │ map: 4,517.42 kB
+dist/assets/main-B_otOd59.js                                                             1,722.60 kB │ gzip:   459.31 kB │ map: 5,895.59 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.55s
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/current-producer-authorities.test.ts (5 tests | 1 failed) 3130ms
+     × binds every live memory budget required by the active check profile 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/current-producer-authorities.test.ts > current producer authorities > binds every live memory budget required by the active check profile
+AssertionError: expected [ 'inputs.index.sha256', …(8) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "inputs.index.sha256",
++   "inputs.owner.relativePath",
++   "inputs.owner.sha256",
++   "inputs.painter.relativePath",
++   "inputs.painter.sha256",
++   "inputs.serviceWorker.sha256",
++   "inputs.worker.relativePath",
++   "inputs.worker.sha256",
++   "sha256",
++ ]
+
+ ❯ tests/current-producer-authorities.test.ts:73:8
+     71|     expect(authorityMismatchPaths(
+     72|       compendiumBudget.producerAuthority, current.compendium.producer,
+     73|     )).toEqual([]);
+       |        ^
+     74|     expect(current.compendium.certificate.ok, current.compendium.certi…
+     75|     expect(current.compendium).toMatchObject({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 597 passed | 1 skipped (599)
+      Tests  1 failed | 6089 passed | 2 expected fail | 3 skipped (6095)
+   Start at  21:16:12
+   Duration  124.94s (transform 19.52s, setup 0ms, import 169.20s, tests 746.70s, environment 643ms)
+
+CHECK PROFILE: FAIL
+Error: Command failed: npm test
+    at genericNodeError (node:internal/errors:999:15)
+    at wrappedFn (node:internal/errors:544:14)
+    at checkExecSyncError (node:child_process:990:11)
+    at execFileSync (node:child_process:1026:15)
+    at runCheckCommand (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:82:3)
+    at runCheckProfile (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:96:5)
+    at main (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:108:3)
+    at file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:114:5
+    at #evaluateSync (node:internal/modules/esm/module_job:702:24)
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:717:43)

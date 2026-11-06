@@ -1,0 +1,18 @@
+{
+  "id": "c243b04r2c1-17-hoatzin",
+  "name": "Hoatzin",
+  "nativePlan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json",
+  "nativeReport": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/report.json",
+  "fit": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit",
+  "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/visual-review-final.json",
+  "checkpointReviewSha256": "d67525fe2e6d384a176c01b7478ac4ff5235efa99b81e0297516820ac8d08f0c",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "sourceProofSha256": "a9757db6c7584595bc497fd26c80d85a10a1c7499e6eb2c3cd4f7df951cdf091",
+  "preflightResumption": {
+    "oldRun": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin",
+    "oldResultSha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+    "reason": "Corrected clean signed Git precondition after final W2 README completion; prior guard refused before model/browser/inference",
+    "priorInferenceExecuted": false,
+    "unchangedSourceAndCheckpoint": true
+  }
+}

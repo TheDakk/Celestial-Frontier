@@ -1,0 +1,69 @@
+{
+  "name": "Sea Lion",
+  "family": "quadruped",
+  "species": {
+    "name": "Sea Lion",
+    "aspect": 2.4,
+    "headFrac": 0.18,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "small external ear flaps",
+      "long fore-flippers lifting the chest clear of the ground",
+      "blunt dog-like whiskered muzzle"
+    ],
+    "note": "Walks on all fours with hind flippers rotated forward - a true seal cannot, and has no ear flaps."
+  },
+  "genome": {
+    "seed": 3714168032,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 0,
+    "body": 15,
+    "loco": 14,
+    "trait": 19,
+    "size": 2,
+    "diet": 2,
+    "head": 9,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 9,
+    "temper": 0,
+    "sense": 5,
+    "repro": 5,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Lion"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Lion\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3714168032\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 400,
+  "profile": {
+    "id": "pinniped",
+    "names": [
+      "Walrus",
+      "Seal",
+      "Fur Seal",
+      "Sea Lion"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Requires flipper topology and swimming/haul-out poses, not a four-legged walking substitute."
+  }
+}

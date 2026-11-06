@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Horned Lizard",
+  "family": "quadruped",
+  "masterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+  "subjectSha256": "0cb14f95cfad32e809d650ae54f6425c1c78b3363bbf4dd6a71d15fb65b3b0af",
+  "promptSha256": "54335815d388b41e451a6f4ac92080e2e788f4a72fa8833dc7cbbced8b88f767",
+  "profileId": "special-lizard",
+  "profileSha256": "029802099bca9d725755be2995dc309c4322fff995bb2c9cb0a125868f319b4e",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: broad squat spiny body, backward-pointing crown horns, pointed flank fringe and natural short tail. Crown horns and marginal spikes are exaggerated; species realism needs review. Only three independent feet can be confirmed; the far forelimb is unresolved behind the near foreleg. HOLD for unresolved fourth limb and exaggerated ornament. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/22-horned-lizard/visual-review.json",
+    "sha256": "56713cd6c5a141771269010ecfd2877ec99e1da00045dbcad18efa964603e2b1"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

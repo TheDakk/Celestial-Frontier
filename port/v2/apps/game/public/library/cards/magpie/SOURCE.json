@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Magpie",
+ "fitDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/inputs/c56-13-magpie/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b5ff525d0121db954b7fd54dc1451aa40df7bea01525fba081ac471f4635c4b3"
+}

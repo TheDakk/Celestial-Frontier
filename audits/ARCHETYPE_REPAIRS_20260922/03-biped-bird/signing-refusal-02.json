@@ -1,0 +1,9 @@
+{
+  "status": "REFUSED",
+  "action": "git -c gpg.ssh.program=/Applications/1Password.app/Contents/MacOS/op-ssh-sign commit -q -S -F /private/tmp/cf-eagle-commit.txt",
+  "toolChunk": "928918",
+  "exitCode": 128,
+  "message": "1Password: agent returned an error; failed to write commit object",
+  "unchangedHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+  "scope": "No unsigned fallback. Socket exists; configuration uses SSH signing and the 1Password helper. User asked to approve runtime key request."
+}

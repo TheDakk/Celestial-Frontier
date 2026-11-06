@@ -1,0 +1,109 @@
+{
+  "status": "STATIC_READY_NOT_FILMED",
+  "jobs": [
+    {
+      "id": "c266-01-tortoise-a04",
+      "name": "Tortoise",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/qual-codex-r01/islands/fit",
+      "packetId": "tortoise-a04-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/native/report.json",
+      "masterSha256": "883b143342b5344961f2ffab576c472e5c73af9ed6130cd47bd58519c63c644b",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-07-sea-turtle",
+      "name": "Sea Turtle",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/qual-codex-r01/islands/fit",
+      "packetId": "sea-turtle-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/native/report.json",
+      "masterSha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-08-fur-seal",
+      "name": "Fur Seal",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/qual-codex-r01/islands/fit",
+      "packetId": "fur-seal-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/native/report.json",
+      "masterSha256": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-13-goat-a02",
+      "name": "Goat",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/qual-codex-r01/islands/fit",
+      "packetId": "goat-a02-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/native/report.json",
+      "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-14-shrew",
+      "name": "Shrew",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/qual-codex-r01/islands/fit",
+      "packetId": "shrew-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/shrew-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/shrew-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/shrew-01/native/report.json",
+      "masterSha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-22-anole-a02",
+      "name": "Anole",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/qual-codex-r01/islands/fit",
+      "packetId": "anole-a02-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/native/report.json",
+      "masterSha256": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-25-olm-a02",
+      "name": "Olm",
+      "family": "quadruped",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/qual-codex-r01/islands/fit",
+      "packetId": "olm-a02-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/olm-a02-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/olm-a02-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/olm-a02-01/native/report.json",
+      "masterSha256": "9a671beb029f3480400283cc4ca3ab6b348f877f39353f01e2d9aa02cbcc39ab",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    },
+    {
+      "id": "c266-26-chimpanzee-a02",
+      "name": "Chimpanzee",
+      "family": "primate",
+      "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/qual-codex-r01/islands/fit",
+      "packetId": "chimpanzee-a02-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/native/report.json",
+      "masterSha256": "9d0696ed48a22ebe3fa89646173108a7290b73f3c00c4f6847cfadd8fbb1b4be",
+      "scope": "First representative of this contact/anatomy class; not yet filmed"
+    }
+  ]
+}

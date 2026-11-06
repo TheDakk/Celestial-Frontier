@@ -110,7 +110,7 @@ function wiringErrors(main: string, index: string): string[] {
   if (!charterDelegation.includes('STARTER_CHARTER_IDS_V1.find(')
     || !charterDelegation.includes('button.dataset.starterCharterAccept')
     || !charterDelegation.includes('button === null || button.disabled')
-    || !charterDelegation.includes('void runStarterCharterAccept(id)')) {
+    || !charterDelegation.includes('void acceptStarterCharterWithPilot(id, event.isTrusted)')) {
     errors.push('Starter Accept delegation does not validate the exact canonical id');
   }
   if (!binderDelegation.includes('ARC9_BINDER_CLAIMABLE_SET_IDS_V1.find(')
@@ -144,7 +144,9 @@ function wiringErrors(main: string, index: string): string[] {
   if (count(starter, 'trainingCheckpointWriteHeld') < 2
     || count(starter, 'trainingActive()') < 2
     || !inOrder(starter, [
-      'const operation = operationForStarterCharterAcceptV1(id);',
+      // 2026-09-25: one audited path for starter AND weekly Charters; the operation is still named before the claim
+      'const operation = isWeeklyCharterIdV1(id)',
+      'operationForStarterCharterAcceptV1(id);',
       'productActionCoordinator.tryClaim(operation)',
       'starterCharterAcceptPendingId = id;',
       'await smokeProductActionHold.holdIfArmed(actionClaim.operation);',

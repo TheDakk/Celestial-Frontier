@@ -1,0 +1,123 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "b8cedb13d8383237fc4a6293951f50a93db1d74ed8255dfa9773a9acbbccb748",
+  "cutoutSha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696",
+  "labelsFile": "labels.png",
+  "labelsSha256": "2373db62cdd8473327e9832a461f7fbef6ca6541374c923874cee76f5b086d65",
+  "parts": [
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near"
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-lower-exposed",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "mouth-palps",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "layer": "near"
+    },
+    {
+      "id": "wing-far",
+      "joint": "wingFar",
+      "layer": "far"
+    },
+    {
+      "id": "wing-near",
+      "joint": "wingNear",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "sourceOwnerRefinement": {
+    "schema": "cf.source-painted-label-refinement/v1",
+    "sourceDeclarationHash": "9fc750ddaf92792baea950e010d38bca60539a00e3bbfc02c7589aff6baea3f6",
+    "method": "Exact287px source-observed far jumping-femur fragment previously owned by wingNear",
+    "sourceRgbaChangedChannels": 0,
+    "nonRemainderChanged": 0,
+    "noGuessedBoneSegmentation": true
+  },
+  "declarationHash": "85b7f2527c528b632e6d3c364e7cbdd1231279d41dd674876d884ed6b73d1e56"
+}

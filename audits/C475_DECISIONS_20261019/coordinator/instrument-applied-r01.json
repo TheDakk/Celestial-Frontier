@@ -1,0 +1,19 @@
+{
+  "status": "APPLIED_NATIVE_PUBLICATION_PARITY_ONLY",
+  "rows": [
+    {
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/proposal/audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "path": "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "beforeSha256": "f37f8acdfeed3c7cb791a8cd1a450576cefb081968599bbd81c120b653eb15ba",
+      "afterSha256": "832bc6de935cc7187f585bcd39ab2352e53087178bbdce1b11152148338e5583"
+    },
+    {
+      "source": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/proposal/audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "path": "audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "beforeSha256": "d302d602b67ce0f83bddcbe22a0d99d3ab0c3d95784af6c0a5e501010d1afe4e",
+      "afterSha256": "0559e518e9d7e8dc3bbd72f73f50b0897a87caf424489de36d4c989e5a79b993"
+    }
+  ],
+  "rootReview": "Both instruments now publish actual existing rigid-parent groups in native order and assert shape after final publication. RealPixiCPU22controls prove no-group byteidentity and reject omission/wrongparent; whole-sourcejoin remainsRED for falsehinge. No change to numeric/contact/sourcejoin/C261 or motion.",
+  "I5GameRuntimeChangedByThisDelta": false
+}

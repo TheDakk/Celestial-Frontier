@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "candidates": 2,
+  "verifiedFiles": 8,
+  "scope": "Exact source proof only; visual checkpoint binding and signed W4 producer still required",
+  "proofs": [
+    {
+      "name": "Ostrich",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/native/report.json",
+      "reportSha256": "976d041d66fd91929252786cc4e02699f65844e5e7ef8effff678d3d337133b5",
+      "verified": [
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1/qual-r01/islands/fit/record.json",
+          "sha256": "ab4ab9ab115336c5736b7f625ec34bf17962edf65fccfecbd180ee0b85befc47"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1/qual-r01/islands/fit/binding.json",
+          "sha256": "998673c90fd25af1a25210eb7a34781a43b35b3ad99628a1a391bf5241597e5e"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1/qual-r01/islands/fit/parts/keyed.png",
+          "sha256": "e16ba8a87d03839e3661de7d19cf3be9ded17285b6c08c701bfa3d61e88f421b"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1/qual-r01/islands/fit/parts/atlas/c266-03-ostrich-c1.png",
+          "sha256": "ca3c94e9926f63d5910f0138a985afe5a925187562a4a46d7ca418bb35e761f3"
+        }
+      ]
+    },
+    {
+      "name": "Pelican",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-06-pelican-c1-01/native/report.json",
+      "reportSha256": "aff040d6a3860e7f2b6ca41199781bbfeced11c582213adc19633228bec157a1",
+      "verified": [
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-pelican-c1/qual-r01/islands/fit/record.json",
+          "sha256": "8cf5474c46bce51a9199d07fe437ae687fe7b353ab43026b671c73035258b30d"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-pelican-c1/qual-r01/islands/fit/binding.json",
+          "sha256": "8666d551efd67034ff778625b13116deeb8b4da056bbaff4f3acce5f4b4bb3a4"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-pelican-c1/qual-r01/islands/fit/parts/keyed.png",
+          "sha256": "ae295eec90b7746411bb2c846054ea2cd70b593de969920bede3803419a380f4"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-pelican-c1/qual-r01/islands/fit/parts/atlas/c266-06-pelican-c1.png",
+          "sha256": "5d73dcdfac83c18a873c6480edfeaf625e5dd47a1633ec88f2fe8fc51235b23f"
+        }
+      ]
+    }
+  ]
+}

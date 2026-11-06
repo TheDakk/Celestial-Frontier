@@ -1,0 +1,10 @@
+{
+  "id": "c266-08-fur-seal",
+  "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/native/report.json",
+  "name": "Fur Seal",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/fur-seal01/visual-review.json",
+  "checkpointReviewSha256": "c373cbccf9a17a7001bb67ed29aa79a985bde981481f7f2ceb38e89fab5b7fbe",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

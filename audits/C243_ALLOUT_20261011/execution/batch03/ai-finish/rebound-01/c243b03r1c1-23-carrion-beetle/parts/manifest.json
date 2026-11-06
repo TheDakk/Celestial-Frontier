@@ -1,0 +1,110 @@
+{
+  "creatureId": "c243b03r1c1-23-carrion-beetle",
+  "parts": [
+    {
+      "name": "hind-near-lower.png",
+      "path": "parts/hind-near-lower.png",
+      "sha256": "449d0f03fc98a37adcef7c2aa2a436137dd20f3db928c412fccda567835013ac"
+    },
+    {
+      "name": "mid-near-lower.png",
+      "path": "parts/mid-near-lower.png",
+      "sha256": "781684a55a6cc8dee6a81773ce74e97f37b325b6d6fba43d266a75011b000929"
+    },
+    {
+      "name": "front-near-lower.png",
+      "path": "parts/front-near-lower.png",
+      "sha256": "819f6f5c1d97a1407f2df7d1825eaadec7301d35f33a212adb96d0e5ad8992e5"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "path": "parts/hind-near-upper.png",
+      "sha256": "41080560a258ad19cc25bbce2dbb19bef3849b2204f7b2c86b81e168b6cf94b0"
+    },
+    {
+      "name": "mid-near-upper.png",
+      "path": "parts/mid-near-upper.png",
+      "sha256": "3484f3663711749cfb769f4adce9681736fbcee34dbaf2990f2cc31800d48459"
+    },
+    {
+      "name": "front-near-upper.png",
+      "path": "parts/front-near-upper.png",
+      "sha256": "4f6c8fe62a4262fcaf2d015356470b89fd3ab4a200797f8eeb14363fbc74a01a"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "path": "parts/hind-far-lower.png",
+      "sha256": "f646a470dab039c7bdcfcedef9cbe6a75abe010ef9780c02b5962818157f3726"
+    },
+    {
+      "name": "mid-far-lower.png",
+      "path": "parts/mid-far-lower.png",
+      "sha256": "bb7583253274a46b80b7c6f72628e386bb3b288fa9a1427dfeb02303b7b65260"
+    },
+    {
+      "name": "front-far-lower.png",
+      "path": "parts/front-far-lower.png",
+      "sha256": "e3132e350cac0aedf0f05ecfeec3dba16a9cf68550de7a95ead2f5833fef891b"
+    },
+    {
+      "name": "front-far-upper.png",
+      "path": "parts/front-far-upper.png",
+      "sha256": "915d5bf9db021ed1d55db67ae24f8d857ebc3042d21513603286976542e0594c"
+    },
+    {
+      "name": "mid-far-upper.png",
+      "path": "parts/mid-far-upper.png",
+      "sha256": "8b3fe93deb83b4fd75e34a1addebcd3616ed0353c7c4c7dcada2c40656a17d79"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "path": "parts/hind-far-upper.png",
+      "sha256": "8c315597f37df979aca7c23df4edf99a2011c91b7246084af895ea109de91803"
+    },
+    {
+      "name": "antenna-far.png",
+      "path": "parts/antenna-far.png",
+      "sha256": "4c49569db1d09f39c59c0bc8e9c9c3f2e002166f841e1365793a369b205a8a90"
+    },
+    {
+      "name": "antenna-near.png",
+      "path": "parts/antenna-near.png",
+      "sha256": "ead35b5d8089109b65e049e85eedc0181e1ba30f8732c1d32d8071080e8a7972"
+    },
+    {
+      "name": "mandible.png",
+      "path": "parts/mandible.png",
+      "sha256": "9319ba7d44cc6ebbe6fa09607a0394847916cfab7e8d73c82af9c059a522ee92"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "7050a9121a19a473e6a862cff2b6fb6ab53f07d55b18ecf81a7fb5af4f72b4cb"
+    },
+    {
+      "name": "thorax.png",
+      "path": "parts/thorax.png",
+      "sha256": "b7ededf451ac15b95b47f4f38316d0c0284895eddcd86940ce8fd2d180c808bd"
+    },
+    {
+      "name": "membrane-near.png",
+      "path": "parts/membrane-near.png",
+      "sha256": "475296540adfda7a3ffe96ec400fd5c38aa08c5adb1566c86a1d35e6a0a09f92"
+    },
+    {
+      "name": "membrane-far.png",
+      "path": "parts/membrane-far.png",
+      "sha256": "a9685c87d23dbc0add3cf5ba9d6e724a330b65b426205f1ee8ac39f6c1463d65"
+    },
+    {
+      "name": "abdomen.png",
+      "path": "parts/abdomen.png",
+      "sha256": "7b32eb7c9f7a0aba52fefe0dc7f9139896443bcabe55423071b9c9f7d4c4c813"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "f03dbfa8708ad8cfb5021668ed6de5762083bc1e19647046ef3b8c5bcfec5c90"
+    }
+  ]
+}

@@ -358,9 +358,22 @@ export interface ShipyardPreviewDiagnostics {
   readonly stateKey: string | null;
 }
 
+/** Optional local-review artwork. The native SVG remains the identity and
+ * lifecycle owner; no asset or pilot module is loaded by this module. */
+export interface ShipyardPreviewPresentation {
+  readonly starterScoutImageUrl: string;
+}
+
+export function starterScoutPreviewEligible(state: ShipVisualState): boolean {
+  return state.chassisStage === 0 && state.liverySeed === 0x5111
+    && state.provenance === 'owned-items' && state.installedSystemIds.length === 0
+    && !state.hardpoints.array && !state.hardpoints.autoext && !state.hardpoints.cscoop;
+}
+
 interface PreviewRecord {
   readonly element: SVGSVGElement;
   readonly stateKey: string;
+  readonly releasePresentation: () => void;
 }
 
 /** Owns the Shipyard's single code-native SVG preview. Diagnostics are
@@ -374,7 +387,10 @@ export class ShipyardPreviewOwner {
   private peakActivePreviewCount: 0 | 1 = 0;
   private repairedFaultCount = 0;
 
-  constructor(private readonly mount: HTMLElement) {}
+  constructor(
+    private readonly mount: HTMLElement,
+    private readonly presentation: ShipyardPreviewPresentation | null = null,
+  ) {}
 
   open(state: ShipVisualState): SVGSVGElement {
     this.repairFaults();
@@ -419,14 +435,54 @@ export class ShipyardPreviewOwner {
     const element = createShipyardPreview(this.mount.ownerDocument, state);
     const stateKey = shipVisualStateKey(state);
     this.mount.append(element);
-    this.current = { element, stateKey };
+    this.current = { element, stateKey, releasePresentation: this.presentCandidate(element, state) };
     this.createdPreviewCount++;
     this.peakActivePreviewCount = 1;
     return element;
   }
 
+  private presentCandidate(element: SVGSVGElement, state: ShipVisualState): () => void {
+    const url = this.presentation?.starterScoutImageUrl;
+    if (!url || !starterScoutPreviewEligible(state)) return () => undefined;
+    const chassis = element.querySelector<SVGGElement>('[data-layer="chassis"]');
+    if (chassis === null) return () => undefined;
+    const candidate = svgElement(this.mount.ownerDocument, 'image', {
+      x: 0, y: 0, width: 360, height: 180, preserveAspectRatio: 'xMidYMid meet',
+      'data-shipyard-candidate': 'starter-scout', 'aria-hidden': 'true',
+      focusable: 'false',
+    });
+    let released = false;
+    candidate.style.pointerEvents = 'none';
+    candidate.style.display = 'none';
+    const show = (): void => {
+      if (released || !this.isActive(element) || candidate.parentNode !== element
+        || candidate.getAttribute('href') !== url) return;
+      chassis.style.display = 'none';
+      candidate.style.display = '';
+      element.dataset.visualTreatment = 'pilot-scout';
+    };
+    const fallback = (): void => {
+      if (released) return;
+      candidate.style.display = 'none';
+      chassis.style.display = '';
+      element.dataset.visualTreatment = 'polished-v1';
+    };
+    candidate.addEventListener('load', show);
+    candidate.addEventListener('error', fallback);
+    element.append(candidate);
+    candidate.setAttribute('href', url);
+    return (): void => {
+      released = true;
+      candidate.removeEventListener('load', show);
+      candidate.removeEventListener('error', fallback);
+      candidate.removeAttribute('href');
+      candidate.remove();
+    };
+  }
+
   private detachCurrent(): void {
     if (this.current === null) return;
+    this.current.releasePresentation();
     if (this.isActive(this.current.element)) this.current.element.remove();
     this.current = null;
     this.disposedPreviewCount++;
@@ -439,6 +495,7 @@ export class ShipyardPreviewOwner {
       : null;
 
     if (this.current !== null && active === null) {
+      this.current.releasePresentation();
       this.repairedFaultCount++;
       this.disposedPreviewCount++;
       this.current = null;

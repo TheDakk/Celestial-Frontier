@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Turtle",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/rebound/c266-04-turtle/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c47253c228baa3e3453467e22b4b977cb2ff1ba789a6b2f0f0b1f9f3151eaa7a"
+}

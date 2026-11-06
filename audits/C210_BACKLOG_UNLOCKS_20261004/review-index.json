@@ -1,0 +1,32 @@
+[
+  {
+    "id": "c203creaturesupplyb-07-brown-bear",
+    "review": "audits/C210_BACKLOG_UNLOCKS_20261004/reviews/c203creaturesupplyb-07-brown-bear.json",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear",
+    "name": "Brown Bear"
+  },
+  {
+    "id": "c203creaturesupplyb-03-pronghorn",
+    "review": "audits/C210_BACKLOG_UNLOCKS_20261004/reviews/c203creaturesupplyb-03-pronghorn.json",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn",
+    "name": "Pronghorn"
+  },
+  {
+    "id": "c203creaturesupplyb-05-duiker",
+    "review": "audits/C210_BACKLOG_UNLOCKS_20261004/reviews/c203creaturesupplyb-05-duiker.json",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker",
+    "name": "Duiker"
+  },
+  {
+    "id": "c203creaturesupplyb-06-serow",
+    "review": "audits/C210_BACKLOG_UNLOCKS_20261004/reviews/c203creaturesupplyb-06-serow.json",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow",
+    "name": "Serow"
+  },
+  {
+    "id": "c203creaturesupply-05-moose",
+    "review": "audits/C210_BACKLOG_UNLOCKS_20261004/reviews/c203creaturesupply-05-moose.json",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose",
+    "name": "Moose"
+  }
+]

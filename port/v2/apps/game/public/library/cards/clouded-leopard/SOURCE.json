@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Clouded Leopard",
+ "fitDir": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c186eebbfd378a701e370300fca203d35dffc7df61cd7f9876fddfba849a3c12"
+}

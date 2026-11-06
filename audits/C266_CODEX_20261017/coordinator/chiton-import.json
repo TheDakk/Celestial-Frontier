@@ -1,0 +1,187 @@
+{
+  "at": "2026-10-17T20:37:39.701674+00:00",
+  "claudeVerified": true,
+  "runtimePatchApplied": false,
+  "files": [
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "sha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2",
+      "bytes": 7643
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/verify/README.md",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/verify/README.md",
+      "sha256": "6da4a3f9f71e9c6fd08c804ec7dc46ce99cbb8082ff53a3287d16c909c892cfc",
+      "bytes": 4069
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/static-r03.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/static-r03.json",
+      "sha256": "fad96ec3639e7dde1a2cef58f4b2528cc465b654475721e17f43d5aff9e7e0ba",
+      "bytes": 879
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/controls-chiton.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/controls-chiton.json",
+      "sha256": "14383ec24eb7d5f82c13ade517484a39f4b0cbe5db4cd144949c7999b1c1b7fb",
+      "bytes": 2148
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/owner-components.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/owner-components.json",
+      "sha256": "119d654e2224ab1a69a737120d4d86424062e6990370b5ef351aa37ac1bcc9db",
+      "bytes": 784
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/master.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/master.png",
+      "sha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+      "bytes": 1592242
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/prompt.txt",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/prompt.txt",
+      "sha256": "b175a2e3dfeae8776be596540b2f05de5998f2d408a1a6d17c1ff9a58082136d",
+      "bytes": 10869
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/subject-source.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/subject-source.json",
+      "sha256": "ccc12d30f45a6cc946ae9d430fe4461e91d38bbb9ce92e9d183adfdbfb557967",
+      "bytes": 2254
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/authoring.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/authoring.json",
+      "sha256": "44b090c2d0b0455f9a71133c407b4f0881a5d448d3158f473bd30ea04d757858",
+      "bytes": 3762
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/presence.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/presence.json",
+      "sha256": "6863cbb6b2245b41df479d8537eb4ecd1476f7bb497746c92705c22bc0c91a15",
+      "bytes": 103
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/source.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/source.json",
+      "sha256": "7942b4184d1acb109025e9b2011255818f10304d0f9b6c789bf8a0b370546db2",
+      "bytes": 306
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/record.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/record.json",
+      "sha256": "43a9d3e095c321347959cd521a5c8ef1ac2c0c3ce0a3507fb6020128d6a07091",
+      "bytes": 4999
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/binding.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/binding.json",
+      "sha256": "0deb6c0fdaaee70cf8a661be2edfaf9a141ad71bd242b9a1a8a101711e970e57",
+      "bytes": 793925
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/pre-split-binding.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/pre-split-binding.json",
+      "sha256": "72cbbf81d1b34cf847b577e5b79911e97320a98cb8a8a7556e136282fee980be",
+      "bytes": 589127
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/declaration.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/declaration.json",
+      "sha256": "458bc6e6b4dd1b2dd486ab092c60ed23b7e8481ceac0358c8043bbac673524a2",
+      "bytes": 1023
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/labels.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/labels.png",
+      "sha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe",
+      "bytes": 37129
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/binding.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/binding.json",
+      "sha256": "a1306ea4c448f44f513c52e486acf3c06371821c3c567d50639549ddb6583395",
+      "bytes": 2268
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/keyed.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/keyed.png",
+      "sha256": "c9b297cdaa52765362218b28efa92d9fc39c3c874e8a7b1e184973cb43954122",
+      "bytes": 1545234
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/ownership.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/ownership.png",
+      "sha256": "194d381b2635830b19bf35f9831603d3d8bea444df8cd0e07e7fe1ac807079be",
+      "bytes": 12788
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/manifest.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/manifest.json",
+      "sha256": "1bce716d22c7e0b081f9a41d8d5a1b39fedafd4a13a7c613f12861ab9f3e5b8f",
+      "bytes": 1020
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/receipt.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/receipt.json",
+      "sha256": "6fa4213832a719813e6f29631ba9e3805c280e3c110b9f5b3b4f37396a862da9",
+      "bytes": 2235
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-front.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-front.png",
+      "sha256": "45273bb00a235829b2dabc97aec12fa663cd90fd25cf2093f1ab6c76dac3ed6b",
+      "bytes": 45733
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/shell.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/shell.png",
+      "sha256": "d78842cf28fc1ec3dcaba624a812179a64d5d2860cd41532d0fdd0a23a611423",
+      "bytes": 375885
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/head.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/head.png",
+      "sha256": "98245f029da6d0f96b9aa343cbfc4b754e8f1407beca877b531451434ee71636",
+      "bytes": 20341
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-back.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-back.png",
+      "sha256": "c3766b31c18d714983f2e7c93ac079b29bf1f6d4f4a7f9cf8e73d95455232ffd",
+      "bytes": 60176
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-mid.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-mid.png",
+      "sha256": "5cdb91dea00b1d61141106584b4f8dba82fa2eb039537cc5b01a82d2d64d9865",
+      "bytes": 59434
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-tail.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-tail.png",
+      "sha256": "f08e73878a52056d8dd692eb69e314f5fd7e332deb931485cfb0c5c274ca2c7f",
+      "bytes": 68650
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.json",
+      "sha256": "caf424b1b0384aae905422c805943016cc2f4767b89267a58f1309c4b6c99ca7",
+      "bytes": 2578
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.png",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.png",
+      "sha256": "0db1c13fcad7ed70388be0d323e0be1ca9622e2d079644b2608ec9eb56d40f59",
+      "bytes": 545622
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/receipt.json",
+      "local": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/receipt.json",
+      "sha256": "b5b0906d4f3a224eb38c75b9f33b1723fabff85f817baf1dcdf1f06a915afccb",
+      "bytes": 1514
+    }
+  ]
+}

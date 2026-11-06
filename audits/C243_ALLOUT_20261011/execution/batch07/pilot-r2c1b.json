@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b07r2c1-26-giant-salamander",
+    "name": "Giant Salamander",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-26-giant-salamander",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-26-giant-salamander/master.png"
+  },
+  {
+    "id": "c243b07r2c1-27-goat",
+    "name": "Goat",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-27-goat",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-27-goat/master.png"
+  },
+  {
+    "id": "c243b07r2c1-30-shrew",
+    "name": "Shrew",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-30-shrew",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-30-shrew/master.png"
+  }
+]

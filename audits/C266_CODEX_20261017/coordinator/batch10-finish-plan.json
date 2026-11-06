@@ -1,0 +1,102 @@
+{
+  "status": "EIGHT_C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "jobs": [
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01",
+      "slug": "box-turtle-a03",
+      "id": "c266-02-box-turtle-a03",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/native/report.json",
+      "name": "Box Turtle",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/box-turtle-a03-01/visual-review.json",
+      "checkpointReviewSha256": "5d430b730ec97b655106c458482dd90817c2da69731f72788cab444a1d1680d6",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/pond-turtle-finish-01",
+      "slug": "pond-turtle",
+      "id": "c266-03-pond-turtle",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/03-pond-turtle/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/native/report.json",
+      "name": "Pond Turtle",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/pond-turtle-01/visual-review.json",
+      "checkpointReviewSha256": "50d3bd3b785906e83f96c2c7b246532fd212181f8ad7302a04367a0ef0fe0d27",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01",
+      "slug": "turtle",
+      "id": "c266-04-turtle",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/turtle-01/native/report.json",
+      "name": "Turtle",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/turtle-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/turtle-01/visual-review.json",
+      "checkpointReviewSha256": "3458954cdafa264e14c779aecc441bfbaa5c74db8fdf34a4cc13cd5660c12a31",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01",
+      "slug": "snapping-turtle",
+      "id": "c266-05-snapping-turtle",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/native/report.json",
+      "name": "Snapping Turtle",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/snapping-turtle-01/visual-review.json",
+      "checkpointReviewSha256": "9acfacdc6f7268545000ad7e610b3a6e3a6cc1357a1a8a8681101facbc43c8ae",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01",
+      "slug": "softshell-turtle",
+      "id": "c266-06-softshell-turtle",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/native/report.json",
+      "name": "Softshell Turtle",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/softshell-turtle-01/visual-review.json",
+      "checkpointReviewSha256": "f235a6fb2d271248c9ed77ca1d9b555b3c5a9dfb37ed5151c6b6bca3b29f57fb",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01",
+      "slug": "sea-lion",
+      "id": "c266-09-sea-lion",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/native/report.json",
+      "name": "Sea Lion",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/sea-lion-01/visual-review.json",
+      "checkpointReviewSha256": "49ca4377c5d3f4bf50237dce22f15ac7774b447aa9042ef0c3740c30ada2a020",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01",
+      "slug": "dromedary-camel",
+      "id": "c266-11-dromedary-camel",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/native/report.json",
+      "name": "Dromedary Camel",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/dromedary-camel-01/visual-review.json",
+      "checkpointReviewSha256": "94cfd04849e5b3f0410f07938811dac5aa251abedeca4cf2e5de2102e123cc5c",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/ibex-a02-finish-01",
+      "slug": "ibex-a02",
+      "id": "c266-12-ibex-a02",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/12-ibex-a02/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/ibex-a02-01/native/report.json",
+      "name": "Ibex",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/ibex-a02-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/ibex-a02-01/visual-review.json",
+      "checkpointReviewSha256": "c40a0d7460c481474833f81eaa62ae9f259506a1ba7b7079a494742ee7df55ab",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    }
+  ],
+  "accepted": 0
+}

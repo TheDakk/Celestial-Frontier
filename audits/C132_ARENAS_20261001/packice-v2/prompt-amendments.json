@@ -1,0 +1,16 @@
+{
+  "reason": "One bounded native-dimension repair after exact prepared prompts returned mixed unadmitted canvases",
+  "amendments": [
+    {
+      "scope": "SUBJECT only; all frozen kit blocks unchanged",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/packice/arena-near.prompt.txt",
+        "sha256": "a34c18a5afc8883e5d1205a15c6af635c31a482305bc31ee4f9e6128e8ec44ce"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.prompt.txt",
+        "sha256": "18a3eafe72639a3eb476ff12fa37797261058f208c0cb41e70add81fcf2a9372"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "status": "RESOURCE_BLOCKED_AFTER_BOUNDED_RECOVERY",
+  "producerHead": "8fc6d39ec830d7714ac1e99887e25189ceca577f",
+  "terminalReceipt": "ai-finish/finish-01/result.json",
+  "exportedFinishedImages": 0,
+  "interimPassRows": 8,
+  "stopReason": "Free disk fell below 30 GiB during inference; exact owned browser PID 22690 terminated, runner exited and locks released. Cause of disk growth not established.",
+  "freeMinimumObservedGiB": 23.42,
+  "correction": "Removed only enumerated untracked old Codex derived parts; preserve all tracked evidence and masters. Resume in separate groups of at most four subjects, new browser per group and existing conservation checks; no product gate rerun.",
+  "freeAfterCleanupGiB": 32.08160400390625,
+  "groups": [
+    "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/group-01",
+    "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/group-02",
+    "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/group-03",
+    "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/group-04",
+    "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/group-05"
+  ],
+  "admissionClaimed": false,
+  "secondAttempt": "ai-finish/group-01/finish-01/result.json",
+  "secondAttemptMinimumObservedGiB": 24.68,
+  "secondAttemptExportedFinishedImages": 0,
+  "secondOwnedBrowserPid": 23531,
+  "secondAttemptCorrectionResult": "A four-subject group still crossed the floor during first inference. Stopped exact owned browser; no further inference attempted.",
+  "totalDerivedCleanupGiB": 4.48,
+  "freeAtHandoffGiB": 34.26,
+  "resumeCondition": "Restore enough headroom for observed roughly 9 GiB transient disk growth while remaining above 30 GiB; target at least 42 GiB before a separately recorded resume. Cause unproven; do not delete system swap, active models, committed evidence or masters.",
+  "workspaceLockPresent": false,
+  "toolchainLockPresent": false
+}

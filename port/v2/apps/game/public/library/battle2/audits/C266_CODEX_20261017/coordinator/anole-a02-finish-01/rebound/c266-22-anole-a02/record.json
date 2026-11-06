@@ -1,0 +1,244 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Anole\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2017753090\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"2\"]]]]",
+    "seed": 2017753090,
+    "ownerId": "authored:archetype-sprint/c266-intake-anole",
+    "earthName": "Anole"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2017753090,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 16,
+    "body": 5,
+    "loco": 16,
+    "trait": 2,
+    "size": 5,
+    "diet": 3,
+    "head": 2,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 6,
+    "accent": 7,
+    "temper": 2,
+    "sense": 0,
+    "repro": 4,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Anole"
+  },
+  "geometry": {
+    "cutoutAssetHash": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6060606060606061,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5901116427432217,
+      0.5007974481658692
+    ],
+    "spine": [
+      0.5901116427432217,
+      0.4864433811802233
+    ],
+    "pelvis": [
+      0.518341307814992,
+      0.5063795853269537
+    ],
+    "chest": [
+      0.6539074960127592,
+      0.5023923444976076
+    ],
+    "neck": [
+      0.7017543859649122,
+      0.4784688995215311
+    ],
+    "head": [
+      0.7535885167464115,
+      0.44258373205741625
+    ],
+    "jaw": [
+      0.7854864433811802,
+      0.4529505582137161
+    ],
+    "hindNearRoot": [
+      0.5223285486443381,
+      0.5007974481658692
+    ],
+    "hindNearKnee": [
+      0.4768740031897927,
+      0.5303030303030303
+    ],
+    "hindNearAnkle": [
+      0.430622009569378,
+      0.5582137161084529
+    ],
+    "hindNearPaw": [
+      0.4266347687400319,
+      0.580542264752791
+    ],
+    "hindFarRoot": [
+      0.5677830940988836,
+      0.5167464114832536
+    ],
+    "hindFarKnee": [
+      0.5303030303030303,
+      0.5574162679425837
+    ],
+    "hindFarAnkle": [
+      0.5518341307814992,
+      0.569377990430622
+    ],
+    "hindFarPaw": [
+      0.5757575757575758,
+      0.5749601275917066
+    ],
+    "foreNearRoot": [
+      0.6682615629984051,
+      0.5103668261562998
+    ],
+    "foreNearKnee": [
+      0.6427432216905901,
+      0.5406698564593302
+    ],
+    "foreNearAnkle": [
+      0.6555023923444976,
+      0.5789473684210527
+    ],
+    "foreNearPaw": [
+      0.6658692185007975,
+      0.5940988835725678
+    ],
+    "foreFarRoot": [
+      0.6905901116427432,
+      0.5167464114832536
+    ],
+    "foreFarKnee": [
+      0.7081339712918661,
+      0.5422647527910686
+    ],
+    "foreFarAnkle": [
+      0.7288676236044657,
+      0.5661881977671451
+    ],
+    "foreFarPaw": [
+      0.7464114832535885,
+      0.5725677830940988
+    ],
+    "tail0": [
+      0.45454545454545453,
+      0.5
+    ],
+    "tail1": [
+      0.3588516746411483,
+      0.507177033492823
+    ],
+    "tail2": [
+      0.2551834130781499,
+      0.4944178628389155
+    ],
+    "tail3": [
+      0.17703349282296652,
+      0.4609250398724083
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Pinned Earth fauna profile lizard capability (ground)."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "External pinnae absent (lizard: canonical group fact in reviewed-presence.mjs). Four limbs, dewlap (neck), head, jaw and the long tail hand-authored on the exact original.",
+    "limitations": "Limb owners are capsules between hand-placed landmarks (C262 precedent); the dewlap is owned by the neck. Interior root/spine/pelvis/chest are control frames. a02 (after an a01 PASS_STATIC whose full-size ownership review showed toe tips and the tail tip falling to the remainder) makes each paw a box over the whole spread foot and extends the tail-tip cap.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "ff02179b1a158063b5f38e5bb86aa866bceb2fc5297c4c782e5127aed119b33a",
+    "subjectSourceSha256": "43388f373b8f8a4edfa96aeca8e955d05ba43afea7e6abaa824d83b217c155b0",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.07198709072462527,
+      "spine": 0.0744878057905479,
+      "chest": 0.06575926037667723,
+      "neck": 0.053494449222482914,
+      "head": 0.06304381300176198,
+      "jaw": 0.0335402565308024,
+      "hindFarRoot": 0.050516940876273946,
+      "hindFarKnee": 0.055306350508452,
+      "hindFarAnkle": 0.024630694117193833,
+      "hindFarPaw": 0.024566063478069187,
+      "foreFarRoot": 0.03939103360519444,
+      "foreFarKnee": 0.030967285229581486,
+      "foreFarAnkle": 0.03165778826360316,
+      "foreFarPaw": 0.01866778295170598,
+      "hindNearRoot": 0.006859908506413529,
+      "hindNearKnee": 0.054191282322271085,
+      "hindNearAnkle": 0.054020859822774936,
+      "hindNearPaw": 0.022681758617747804,
+      "foreNearRoot": 0.016420462744795822,
+      "foreNearKnee": 0.039616403025117236,
+      "foreNearAnkle": 0.04034804032112763,
+      "foreNearPaw": 0.018358635459683182,
+      "tail0": 0.064114039050213,
+      "tail1": 0.0959625412446487,
+      "tail2": 0.10445049014375082,
+      "tail3": 0.0850245801292621
+    },
+    "measures": {
+      "torso": 0.1356248114170252,
+      "head": 0.06304381300176198,
+      "head/torso": 0.464839820554014,
+      "bone-min": 0.006859908506413529,
+      "bone-max": 0.10445049014375082,
+      "leg/torso:hindFar": 0.7705309007389821,
+      "leg/torso:foreFar": 0.5993951666773399,
+      "leg/torso:hindNear": 0.9651176609589186,
+      "leg/torso:foreNear": 0.7249638010820886
+    }
+  },
+  "recipeHash": "c714175a9efe5afae77ce3bff503793668a1f8a621130e230317791943117e20"
+}

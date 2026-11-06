@@ -1,0 +1,131 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "f13c0fabaf89ba28d70224c1f55e143c1e23b6cf8d3699a9e26426c939d141b6",
+  "cutoutSha256": "cb575b448e21f209cca9e9f98449b9e69e04dca2da24bd5972660da8a0ca9259",
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near"
+    },
+    {
+      "id": "tail-distal",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-base",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "plate-remainder",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "near-hind-paw",
+      "joint": "hindNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "near-hind-ankle",
+      "joint": "hindNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "near-hind-shin",
+      "joint": "hindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "near-hind-emergence",
+      "joint": "hindNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-hind-paw",
+      "joint": "hindFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "far-hind-ankle",
+      "joint": "hindFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "far-hind-shin",
+      "joint": "hindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "far-hind-emergence",
+      "joint": "hindFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-front-paw",
+      "joint": "foreNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "near-front-ankle",
+      "joint": "foreNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "near-front-shin",
+      "joint": "foreNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "near-front-emergence",
+      "joint": "foreNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-front-paw",
+      "joint": "foreFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "far-front-ankle",
+      "joint": "foreFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "far-front-shin",
+      "joint": "foreFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "far-front-emergence",
+      "joint": "foreFarRoot",
+      "layer": "far"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "d3e9b90c021b9f0f823031de54feedf448582370bf61171223b1d3de28b9e768",
+  "keyedRgbaSha256": "156ea0d76874ea88450eaee7bad66ef6cde6fa8eac3b5bf6c8c3aabcd99e75a8",
+  "declarationHash": "f7e3dae65713bcbe7979ee314dbb3c74b0294ad65113e403050131827ae665cf"
+}

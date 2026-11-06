@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c243b04r2c1-17-hoatzin",
+    "name": "Hoatzin",
+    "family": "biped-bird",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/packet",
+    "fit": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/rebound/c243b04r2c1-17-hoatzin",
+    "packetId": "c270-hoatzin-01",
+    "script": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/script.json",
+    "nativeDir": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/native",
+    "nativeReport": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/native/report.json",
+    "masterSha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "finishedMaster": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/finished/c243b04r2c1-17-hoatzin-finished.png",
+    "finishReceipt": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/finished/c243b04r2c1-17-hoatzin-receipt.json",
+    "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/visual-review-final.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

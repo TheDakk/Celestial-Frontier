@@ -1,0 +1,20 @@
+{
+  "stage": "native-grasshopper-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C394-grasshopper-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/grasshopper-01/plan.json"
+  ],
+  "startedUnix": 1792271823.505558,
+  "beforeGiB": 95.95904922485352,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.065,
+  "lowestGiB": 95.79037475585938,
+  "afterGiB": 96.1512565612793
+}

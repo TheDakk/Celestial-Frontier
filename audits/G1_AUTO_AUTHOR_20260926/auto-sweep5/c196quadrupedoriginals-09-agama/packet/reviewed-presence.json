@@ -1,0 +1,12 @@
+{
+  "schema": "cf.canonical-external-pinnae/v1",
+  "name": "Agama",
+  "family": "quadruped",
+  "masterSha256": "4bf1e5d2fc7d1931395c7aa2171fcd4d7bb11baaca71dc53ac61b32a9c203e26",
+  "subjectSha256": "8b219d428b241085d1d93becabcf881b77413ccca5ff47abe06a91a5a4a07028",
+  "promptSha256": "ff52967b1dcb7eb9d893e93d40e2d37925c235255b9cb818a5e6d8e793c4ae97",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "fact": "external-pinnae-absent",
+  "scope": "canonical-group-fact-no-painted-limb-or-motion-exemption"
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "opensea",
+  "biome": "opensea",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "opensea"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "opensea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "opensea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-far.generation.json",
+      "sha256": "f6261e78632cc689b2e340c2517b04245c3219b176539758ce3d53300cd2e06d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-mid.generation.json",
+      "sha256": "efa0de335a9a25a1fa4d7c3c9c898d0a8ade4b9bb81cd3c27078a96f4a697f64"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-near.generation.json",
+      "sha256": "21bb21855fbd85a2a34c837acd730fec37b478638de0612681da5e0e5f8e1e26"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-composed-review.png",
+      "sha256": "5a2fe39be434af32d9f9a7659baf4a3d7c871533ac2fb3d30a36b9be1cd69974"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-plates-review.png",
+      "sha256": "5019ca19534126ac2bfd44dab3734e441cf93059067556fea72e28733dd5d211"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+      "sha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+      "sha256": "dc13c467cdbfc86c411bba6824289fceac25fa6936ef90de58b71970c0704019"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-near.png",
+      "sha256": "213df9cc1127e761c08e0ef01232c8f5b8558d3fd09b6447952ad20c28ace42c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/visual-notes.d29.json",
+      "sha256": "de6566d0ff79d8c6c07def5b8c6c9165e827d6bf834847a47f8de03810ced047"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-manifest.json",
+      "sha256": "7a96dd381188c31a3fbfc7a536f225bfb7323a43c885967e484d500a785f5baf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-recipe.json",
+      "sha256": "264e84815108fa53b0cb2a8a17ea13ab228673b758b7b4b88c3fb69a85bc5b41"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-far.generation.json",
+      "sha256": "f6261e78632cc689b2e340c2517b04245c3219b176539758ce3d53300cd2e06d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-far-correction.prompt.txt",
+      "sha256": "4590209f3a98b466e4cc86980816bd374a822a81eeb4a2ff0cf4ffc136ea8745"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-mid.generation.json",
+      "sha256": "efa0de335a9a25a1fa4d7c3c9c898d0a8ade4b9bb81cd3c27078a96f4a697f64"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-mid.prompt.txt",
+      "sha256": "317d1cab20539a60047d4ccadf56e34d9b08b41f588e07f7c57ffd6bec115eee"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.png",
+      "sha256": "fa870f9646b4f230e928c668e1c65daad5db2e4dc0fa2d54735db684b6e4d65d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-near.generation.json",
+      "sha256": "21bb21855fbd85a2a34c837acd730fec37b478638de0612681da5e0e5f8e1e26"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/arena-near-correction.prompt.txt",
+      "sha256": "c078419ddb89a46dfa195dc5412731e7f0c5ddc37b2ddff2976852913acfed5e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/opensea/keyed/arena-near.png",
+      "sha256": "813f1d875a14322328844717a493738d87cc0d6b82256a2efbbe48dee98e4c5d"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/opensea/visual-notes.d29.json",
+    "findings": [
+      "All selected original paintings, full native-size composition and four-row plate sheet inspected. The selected FAR contains empty blue underwater habitat with distant shelves; MID leaves a wide continuous silt runway, and NEAR leaves the stands clear.",
+      "The first FAR baked fish into the scene and is retained as arena-far-attempt-1 with REJECTED_BAKED_FAUNA. A SUBJECT-only correction produced the selected fish-free FAR. The first NEAR was ultra-wide and is retained as arena-near-attempt-1 with REJECTED_WRONG_ASPECT; a SUBJECT-only canvas correction produced the selected 1672 by 941 NEAR.",
+      "Small magenta/cyan remnants remain around outer kelp silhouettes, and the lower NEAR band changes texture and depth abruptly. Physical underwater battle behavior and player contrast are not established by this static habitat painting."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

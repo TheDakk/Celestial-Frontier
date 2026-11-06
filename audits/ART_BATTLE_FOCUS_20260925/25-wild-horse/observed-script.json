@@ -1,0 +1,43 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Wild Horse",
+      "dn": "Wild Horse",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Wild Horse",
+      "dn": "Wild Horse",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Wild Horse",
+      "dn": "Wild Horse",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Wild Horse",
+      "dn": "Wild Horse",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

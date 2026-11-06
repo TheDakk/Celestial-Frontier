@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Clownfish\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"4146211263\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 4146211263,
+    "ownerId": "authored:archetype-sprint/05-clownfish",
+    "earthName": "Clownfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4146211263,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 12,
+    "body": 5,
+    "loco": 5,
+    "trait": 14,
+    "size": 2,
+    "diet": 1,
+    "head": 2,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 10,
+    "detail": 0,
+    "accent": 12,
+    "temper": 1,
+    "sense": 9,
+    "repro": 0,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Clownfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f0c243583fa619afab456422e121283c46dede7275d315519e6e771d3095f5ce",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6908367390184833,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6901116427432217,
+      0.48468899521531095
+    ],
+    "head": [
+      0.7708931419457735,
+      0.4564593301435407
+    ],
+    "jaw": [
+      0.7905103668261563,
+      0.5289473684210526
+    ],
+    "spine0": [
+      0.6528708133971293,
+      0.46475279106858053
+    ],
+    "spine1": [
+      0.5900318979266348,
+      0.4555821371610845
+    ],
+    "spine2": [
+      0.5188197767145136,
+      0.46076555023923443
+    ],
+    "spine3": [
+      0.4443381180223286,
+      0.474481658692185
+    ],
+    "spine4": [
+      0.3566188197767145,
+      0.485725677830941
+    ],
+    "spine5": [
+      0.28939393939393937,
+      0.48636363636363633
+    ],
+    "caudal": [
+      0.21148325358851675,
+      0.4862041467304626
+    ],
+    "dorsal": [
+      0.5101275917065391,
+      0.35350877192982455
+    ],
+    "pectoralNear": [
+      0.6433014354066986,
+      0.5221690590111643
+    ],
+    "pectoralFar": [
+      0.678548644338118,
+      0.5572567783094099
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/05-clownfish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "a0119b1ab481f379828a4632f218cf10b5e3ddda0b77ffa253a73b5293aa5002",
+    "subjectSourceSha256": "a6df5323c26f2746cef29b2b2f50e290e241617892a47ca4f3c967ba2ddae986",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.0855719849219136,
+      "jaw": 0.07509561375559523,
+      "spine0": 0.042241349483236074,
+      "spine1": 0.06350456826559032,
+      "spine2": 0.07140051805602377,
+      "spine3": 0.07573406837502027,
+      "spine4": 0.0884370015948964,
+      "spine5": 0.06722790740137509,
+      "caudal": 0.07791084904950256,
+      "dorsal": 0.12962897069000048,
+      "pectoralFar": 0.07348323669592013,
+      "pectoralNear": 0.05996624628096638
+    },
+    "measures": {
+      "body": 0.36411875338891514,
+      "bone-min": 0.042241349483236074,
+      "bone-max": 0.12962897069000048,
+      "caudal/body": 0.21397098700457762,
+      "head/body": 0.2350111993009989
+    }
+  },
+  "recipeHash": "1253747fc4e888438a34b856627a01c34c369b92e9873231285241693514c8d3"
+}

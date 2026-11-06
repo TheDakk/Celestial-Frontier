@@ -1,0 +1,412 @@
+{
+  "reviewer": "Codex",
+  "framesReviewed": 40,
+  "admission": "Claude only",
+  "rows": [
+    {
+      "name": "Mole",
+      "packetId": "c243b01r2c3-05-mole",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-05-mole",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c3-05-mole",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3a/c243b01r2c3-05-mole/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "2c929f3ffe22d2f4ce6ecaf8f5d9c7c8f2f18c533f05f36f85ea47ba7a0dfaf3",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-05-mole/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-05-mole/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-05-mole/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c3-05-mole",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c3-05-mole-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-05-mole",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-05-mole/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Five full-size frames: four attached feet, continuous snout/head/body and tail; no detached source fragments. Quadruped stays planted after defeat (C257 motion-design QA).",
+      "identity": {
+        "huge outward-turned spade forepaws": "seen",
+        "pink pointed fleshy snout": "seen",
+        "cylindrical neckless velvet body": "seen",
+        "No visible eyes or external ears; the forelimbs sit at the very front, almost beside the head.": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c3-05-mole",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-05-mole",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 0,
+            "turn3-hit-idle-90": 0
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Yak",
+      "packetId": "c243b01r2c1-13-yak",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-13-yak",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-13-yak",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-13-yak/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "c09d6aa80ce3730e727ad2fb91db7d9fb4edd43c40aaf9fd65054a97369e8ff4",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-13-yak/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-13-yak/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-13-yak/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c1-13-yak",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c1-13-yak-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-13-yak",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-13-yak/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Five full-size frames: shaggy coat and attached tail remain continuous; no previous magenta fringe seen. Two horns remain attached. Planted defeat is existing QA.",
+      "identity": {
+        "curtain of long hair hanging to the ground along the flanks": "seen",
+        "humped shoulders and low-carried head": "seen",
+        "bushy horse-like tail plume": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c1-13-yak",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-13-yak",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 7,
+            "turn3-hit-idle-90": 4
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Wild Horse",
+      "packetId": "c243b01r2c1-14-wild-horse",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-14-wild-horse",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-14-wild-horse",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-14-wild-horse/score.json",
+      "static": "RED",
+      "masterSha256": "6110240bf16bcd7b194f31488ae8557c842dac23adf77623cbef1683e4232414",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-14-wild-horse/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-14-wild-horse/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-14-wild-horse/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c1-14-wild-horse",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c1-14-wild-horse-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-14-wild-horse",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-14-wild-horse/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Five full-size frames: upright mane, ears, tail and limb contours remain attached after source-island repair; no head duplication or visible fold. Planted defeat is existing QA.",
+      "identity": {
+        "stiff upright brush mane with no forelock": "seen",
+        "stocky barrel body on short legs": "seen",
+        "large heavy head": "seen",
+        "Read as Przewalski's horse: dun coat, erect mane, dark dorsal stripe. Not a slender domestic riding horse with a flowing mane.": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c1-14-wild-horse",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-14-wild-horse",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 0,
+            "turn3-hit-idle-90": 0
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Camel",
+      "packetId": "c243b01r2c3-15-camel",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-15-camel",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c3-15-camel",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3c/c243b01r2c3-15-camel/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "367146f9fa4a1543b476d73bde1f07a01d694824ca7ce87c4a3af8f1f42ae342",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-15-camel/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-15-camel/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-15-camel/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c3-15-camel",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c3-15-camel-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-15-camel",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-15-camel/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Five full-size frames: exactly ONE hump; continuous head/jaw/neck, no C250 detached jaw fragments; four legs attached. Planted defeat is existing QA.",
+      "identity": {
+        "hump on the back": "seen",
+        "long curving neck held high": "seen",
+        "very long knobbly-kneed legs": "seen",
+        "Generic name read as a representative dromedary. Taller than most people draw: the leg mass is roughly half the total height.": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c3-15-camel",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-15-camel",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 0,
+            "turn3-hit-idle-90": 0
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Warthog",
+      "packetId": "c243b01r2c2-17-warthog",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-17-warthog",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c2-17-warthog",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c2d/c243b01r2c2-17-warthog/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "27f4f09d48b55c4df93919fe49b3f3353e3f400af618f81c49899a059c24c74c",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c2-17-warthog/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c2-17-warthog/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c2-17-warthog/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c2-17-warthog",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c2-17-warthog-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c2-17-warthog",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c2-17-warthog/report.json",
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Reddish fine fringe along the mane tips at full size despite automated magenta count zero; visual HOLD.",
+      "identity": {
+        "upward-curving tusks and fleshy facial warts": "seen",
+        "erect bristly mane along the neck and spine": "seen",
+        "thin tufted tail carried straight up": "missing: thin tufted tail seen, but straight-up carriage is not present in this identity still; held film needs the pose marker confirmed elsewhere before readiness.",
+        "the head is large, flat-fronted and wedge-like; the body is leggier than a domestic pig's": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c2-17-warthog",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c2-17-warthog",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 31,
+            "turn3-hit-idle-90": 33
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Walrus",
+      "packetId": "c243b01r2c3-19-walrus",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-19-walrus",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c3-19-walrus",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3d/c243b01r2c3-19-walrus/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "61682f47c5c140d401a82cea83a5b74eb6c6f0ce914358a58f81a0d54c278113",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-19-walrus/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-19-walrus/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-19-walrus/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c3-19-walrus",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c3-19-walrus-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-19-walrus",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-19-walrus/report.json",
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Pink whisker fringe visible around the muzzle across reaction and late frames despite automated magenta count zero; visual HOLD.",
+      "identity": {
+        "pair of long downward tusks": "seen",
+        "dense bristle moustache on a squared muzzle": "seen",
+        "vast wrinkled blubbery body on short flippers": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c3-19-walrus",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-19-walrus",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 5,
+            "turn3-hit-idle-90": 6
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Skink",
+      "packetId": "c243b01r2c3-25-skink",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-25-skink",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c3-25-skink",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3e/c243b01r2c3-25-skink/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "2302b6e14584caa2106e838e7eeba4edb5b08ad588aae12aa7ff1c13beaa5015",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-25-skink/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-25-skink/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-25-skink/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c3-25-skink",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c3-25-skink-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-25-skink",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-25-skink/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 0,
+      "observation": "Five full-size frames: four feet and long continuous tail, head and limb roots attached; dodge FX obscures part of opponent but idle/reaction outlines clean.",
+      "identity": {
+        "smooth glossy overlapping polished scales": "seen",
+        "cylindrical body with very small short legs": "seen",
+        "tapering tail as long as the body": "seen",
+        "generic representative: a typical ground skink; it looks polished and almost limbless, not spiky or crested": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c3-25-skink",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-25-skink",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 4,
+            "turn3-hit-idle-90": 3
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    },
+    {
+      "name": "Blind Salamander",
+      "packetId": "c243b01r2c1-36-blind-salamander",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-36-blind-salamander",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c1-36-blind-salamander",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1h/c243b01r2c1-36-blind-salamander/score.json",
+      "static": "PASS_STATIC",
+      "masterSha256": "0bfea63012d503706bf32bf771766c2861e391cb28b8389b9b2f6cf9e58e71b1",
+      "originalFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-36-blind-salamander/fit",
+      "classStatus": "REPAIRED_STATIC_PASS",
+      "repairReceipt": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-36-blind-salamander/receipt.json",
+      "staticReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-36-blind-salamander/static.json",
+      "staticExitCode": 0,
+      "id": "c243b01r2c1-36-blind-salamander",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native-scripts/c243b01r2c1-36-blind-salamander-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-36-blind-salamander",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-36-blind-salamander/report.json",
+      "status": "READY_FOR_CLAUDE",
+      "framesReviewed": 5,
+      "detail": "original 1024x576",
+      "magentaTotal": 2,
+      "observation": "Five full-size frames: four small limbs, continuous finned tail and attached red external gills; no exposed eyes, no detached head/neck sliver. Natural pink body/gills; two triage pixels below unchanged threshold.",
+      "identity": {
+        "blood-red feathery external gills": "seen",
+        "chalk-white unpigmented skin": "seen",
+        "spindly toothpick legs": "seen",
+        "Interpreted as the Texas blind salamander / olm type. Eyes are absent or buried under skin - never draw open eyes; the head is broad and flat, not pointed.": "seen"
+      },
+      "c259Recheck": {
+        "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+        "fragmentPrecheck": {
+          "id": "c243b01r2c1-36-blind-salamander",
+          "film": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-36-blind-salamander",
+          "key": "earth-temperate-v1|ground|ground",
+          "status": "CHECKED",
+          "fragments": {
+            "turn3-hit-idle-50": [],
+            "turn3-hit-idle-90": []
+          },
+          "pink": {
+            "turn3-hit-idle-50": 178,
+            "turn3-hit-idle-90": 186
+          },
+          "fragmentTotal": 0
+        },
+        "flaggedBoxReview": [
+          {
+            "kind": "PINK",
+            "frames": [
+              "turn3-hit-idle-50",
+              "turn3-hit-idle-90"
+            ],
+            "counts": [
+              178,
+              186
+            ],
+            "fullSizeLook": "Both1024x576 victory frames and exact1254 original inspected. All pink-predicate pixels in actor envelope fall in the red external-gill regions [322,326,374,381]/[649,327,700,385] and late [323,327,374,382]/[649,327,700,385]; counts exactly match C259. These are the canonical blood-red feathery gills, preserved in the unchanged source; chalk-white skin has a subtle natural underlying blush, no open eyes. No background-magenta fringe or extra fragment seen. No threshold or gate weakened.",
+            "coordinateEvidence": "audits/C243_ALLOUT_20261011/execution/final-measure/blind-gill-pink-locations.json"
+          }
+        ],
+        "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+      }
+    }
+  ],
+  "c259RecheckEvidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json"
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-sea-lion-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-sea-lion-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/sea-lion-01/plan.json"
+  ],
+  "startedUnix": 1792277399.051521,
+  "beforeGiB": 92.23978424072266,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.062,
+  "lowestGiB": 91.82149124145508,
+  "afterGiB": 92.18708038330078
+}

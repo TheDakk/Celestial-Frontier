@@ -1,0 +1,5 @@
+{"id":"easy","baselineWins":256,"plannedWins":256,"commandWins":256,"oracleWins":256,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":0,"commandEdgePp":0}
+{"id":"normal","baselineWins":132,"plannedWins":160,"commandWins":160,"oracleWins":160,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":10.9375,"commandEdgePp":0}
+{"id":"guardian","baselineWins":57,"plannedWins":94,"commandWins":142,"oracleWins":144,"phaseNodes":500,"withdrawnTerminals":1927,"swapEdges":585,"solo":{"v1Wins":42,"phaseWins":33},"planningGapPp":14.453125,"commandEdgePp":18.75}
+{"id":"titan","baselineWins":101,"plannedWins":149,"commandWins":197,"oracleWins":198,"phaseNodes":563,"withdrawnTerminals":2148,"swapEdges":771,"solo":{"v1Wins":17,"phaseWins":10},"planningGapPp":18.75,"commandEdgePp":18.75}
+{"status":"SCOPED_PASS","findings":[]}

@@ -1,0 +1,389 @@
+{
+  "id": "05-sailfish",
+  "family": "fish",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      845.1,
+      627.1
+    ],
+    "head": [
+      914.6,
+      640.1
+    ],
+    "jaw": [
+      950.6,
+      661.3
+    ],
+    "spine0": [
+      839.8,
+      601.6
+    ],
+    "spine1": [
+      775.7,
+      565.1
+    ],
+    "spine2": [
+      627,
+      580.2
+    ],
+    "spine3": [
+      486.1,
+      609.4
+    ],
+    "spine4": [
+      392.4,
+      643.9
+    ],
+    "spine5": [
+      280.7,
+      647.5
+    ],
+    "caudal": [
+      223.1,
+      624.2
+    ],
+    "dorsal": [
+      614.5,
+      434.6
+    ],
+    "pectoralNear": [
+      743.9,
+      730.2
+    ],
+    "pectoralFar": [
+      698.9,
+      782.9
+    ]
+  },
+  "groundLineY": 0.8053788717279459,
+  "materials": {
+    "surface": "scales"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          799.7,
+          672.5
+        ],
+        [
+          813.4,
+          667.4
+        ],
+        [
+          825.4,
+          672.7
+        ],
+        [
+          711.7,
+          754.4
+        ],
+        [
+          633.9,
+          790.3
+        ],
+        [
+          665.3,
+          770.7
+        ]
+      ]
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          768.9,
+          727.6
+        ],
+        [
+          825.8,
+          696.2
+        ],
+        [
+          706.1,
+          781.6
+        ],
+        [
+          649.7,
+          813.6
+        ],
+        [
+          698.8,
+          778
+        ]
+      ]
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "far",
+      "polygonPx": [
+        [
+          484.4,
+          513.7
+        ],
+        [
+          603.1,
+          360.2
+        ],
+        [
+          756.3,
+          436.5
+        ],
+        [
+          738.4,
+          454.1
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          926.1,
+          647.6
+        ],
+        [
+          956.7,
+          650.1
+        ],
+        [
+          1091.8,
+          645.6
+        ],
+        [
+          994.7,
+          677
+        ],
+        [
+          919.4,
+          682.3
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          852.9,
+          581.5
+        ],
+        [
+          1160.7,
+          627.3
+        ],
+        [
+          962.9,
+          704.2
+        ],
+        [
+          807.9,
+          713.9
+        ],
+        [
+          841.5,
+          649.9
+        ],
+        [
+          850.1,
+          596.6
+        ]
+      ]
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "far",
+      "polygonPx": [
+        [
+          144.6,
+          463.2
+        ],
+        [
+          251.8,
+          581.7
+        ],
+        [
+          270,
+          677.4
+        ],
+        [
+          123.6,
+          822.2
+        ]
+      ]
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          254,
+          565.2
+        ],
+        [
+          366.6,
+          600
+        ],
+        [
+          357.7,
+          723.3
+        ],
+        [
+          282.7,
+          751.7
+        ]
+      ]
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          380.3,
+          560.3
+        ],
+        [
+          475.7,
+          498.6
+        ],
+        [
+          441.7,
+          778.7
+        ],
+        [
+          354,
+          766.4
+        ]
+      ]
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          475.7,
+          498.6
+        ],
+        [
+          552.7,
+          483.9
+        ],
+        [
+          510.2,
+          782.8
+        ],
+        [
+          441.3,
+          780
+        ]
+      ]
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          552.7,
+          483.9
+        ],
+        [
+          749.4,
+          449.5
+        ],
+        [
+          605.7,
+          768.5
+        ],
+        [
+          517.1,
+          763.9
+        ]
+      ]
+    },
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          749.4,
+          449.5
+        ],
+        [
+          813.2,
+          453.9
+        ],
+        [
+          674.8,
+          766.1
+        ],
+        [
+          621.7,
+          752.7
+        ]
+      ]
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          813.8,
+          450.1
+        ],
+        [
+          854.7,
+          504.7
+        ],
+        [
+          797.6,
+          664
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from salmon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

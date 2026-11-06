@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b03r2c3-02-butterfly",
+    "name": "Butterfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-02-butterfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-02-butterfly/master.png"
+  },
+  {
+    "id": "c243b03r2c3-03-cave-cricket",
+    "name": "Cave Cricket",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-03-cave-cricket",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-03-cave-cricket/master.png"
+  },
+  {
+    "id": "c243b03r2c3-04-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-04-cricket",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-04-cricket/master.png"
+  },
+  {
+    "id": "c243b03r2c3-05-damselfly",
+    "name": "Damselfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-05-damselfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c3-05-damselfly/master.png"
+  }
+]

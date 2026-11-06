@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Blind Fish\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2676834582\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"5\"]]]]",
+    "seed": 2676834582,
+    "ownerId": "authored:archetype-sprint/02-blind-fish",
+    "earthName": "Blind Fish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2676834582,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 0,
+    "body": 1,
+    "loco": 10,
+    "trait": 5,
+    "size": 2,
+    "diet": 1,
+    "head": 5,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 16,
+    "detail": 2,
+    "accent": 7,
+    "temper": 6,
+    "sense": 6,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Blind Fish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "4c069841eace21a8698bfe84bac1103d2c425017302445017911f2c752f752df",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8309484265999147,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6789473684210526,
+      0.48660287081339715
+    ],
+    "head": [
+      0.8031897926634769,
+      0.49497607655502396
+    ],
+    "jaw": [
+      0.8149122807017544,
+      0.5331738437001595
+    ],
+    "spine0": [
+      0.6070175438596491,
+      0.4883572567783094
+    ],
+    "spine1": [
+      0.5322169059011164,
+      0.49513556618819776
+    ],
+    "spine2": [
+      0.48141945773524725,
+      0.49457735247208934
+    ],
+    "spine3": [
+      0.4295055821371611,
+      0.5018341307814992
+    ],
+    "spine4": [
+      0.3736044657097289,
+      0.4940988835725678
+    ],
+    "spine5": [
+      0.30925039872408294,
+      0.47974481658692186
+    ],
+    "caudal": [
+      0.2309409888357257,
+      0.4767942583732057
+    ],
+    "dorsal": [
+      0.487799043062201,
+      0.4119617224880383
+    ],
+    "pectoralNear": [
+      0.573524720893142,
+      0.5797448165869219
+    ],
+    "pectoralFar": [
+      0.6689792663476873,
+      0.5774322169059012
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/02-blind-fish/fallback-1/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from reef-shark. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "40c184ce1885f5fb888357d7382b56687181257fb4a49639134b242524cae9e2",
+    "subjectSourceSha256": "79181e547cdeb669a35ca1af227e765a38316e439588c40e1f63ab4f6720b19b",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.1245242568981086,
+      "jaw": 0.03995605261636284,
+      "spine0": 0.07195121633126274,
+      "spine1": 0.07510712960471644,
+      "spine2": 0.05080051518161024,
+      "spine3": 0.052418616073352076,
+      "spine4": 0.05643375645140606,
+      "spine5": 0.06593546220829438,
+      "caudal": 0.07836497604692591,
+      "dorsal": 0.09429122342527566,
+      "pectoralFar": 0.09137468561115222,
+      "pectoralNear": 0.1406746482997996
+    },
+    "measures": {
+      "body": 0.29789166965230085,
+      "bone-min": 0.03995605261636284,
+      "bone-max": 0.1406746482997996,
+      "caudal/body": 0.2630653490189689,
+      "head/body": 0.4180185939521347
+    }
+  },
+  "recipeHash": "6ea8dd4e14a29a085cc39bb244239bfe7cba7027e0d308ee3752adb5714922d5"
+}

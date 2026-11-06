@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Whip Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/23-whip-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "22495b0929e978f0402e47db659b7d4fe9477e47ea2ab7693a9a8354f01b9494"
+}

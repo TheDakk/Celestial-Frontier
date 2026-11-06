@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "African Elephant",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c1-18-african-elephant/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "dd1d44257f29e63b667f70b38e10f776726fc8b53b14dcec2f0e78bb9a21e492"
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "hotglow",
+  "biome": "hotglow",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "hotglow"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "hotglow"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "hotglow"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.generation.json",
+      "sha256": "d1c505e789e8d2691f53e83d6c814f4c78e117cf859fc4bb376526c92ad0439e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.generation.json",
+      "sha256": "f448739bf6a3e4eaea5b1000fb2bd54a72e97538629b5a89845a7d2548fd514c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.generation.json",
+      "sha256": "ab36aaad98f921337dadd8a08c7fbdc22b61391e0345dc58e22dce6d010cfdc0"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-composed-review.png",
+      "sha256": "09754ef29328fe834a50eef04b4c4dab5c033a67f8d6d216db48148c914e304b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-plates-review.png",
+      "sha256": "932c5605ce6bde99eefa8baf7cc642cd1708267dac43ea922cff68399f7a6ea4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "sha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+      "sha256": "11898aad8825da3ca9b78d01d706601736570493592182a4ce88074fe1ee1243"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.png",
+      "sha256": "38e4211c721682889db238cda25ecc7ff93351609a825f0c01108f840670af96"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/visual-notes.d29.json",
+      "sha256": "76b4d9f7ef122a43b8cfc449c25078a25891b997f5a79dfad316b5cb05f26752"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-manifest.json",
+      "sha256": "f719fe7840fc8d5648ad4df1b6498aa9b89bdb84c9b79e903d853ab863a271d2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-recipe.json",
+      "sha256": "2565bb68f6a675fdaeafc3c3bdc29cd9e11cef74dbc3a3de41039423d830b046"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.generation.json",
+      "sha256": "d1c505e789e8d2691f53e83d6c814f4c78e117cf859fc4bb376526c92ad0439e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-far-correction.prompt.txt",
+      "sha256": "670450b5397d273c3742e1d4aa0bba3030c2a3706335b37783623718600f9453"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.generation.json",
+      "sha256": "f448739bf6a3e4eaea5b1000fb2bd54a72e97538629b5a89845a7d2548fd514c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.prompt.txt",
+      "sha256": "20cefaa051eb0a3e3c2ac7b8ee409588fdae699a2e2acd45938f03327d7028b4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.png",
+      "sha256": "530a0c1663875f59be735228bc938603596da8274be7a6949183e21b37ace0e6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.generation.json",
+      "sha256": "ab36aaad98f921337dadd8a08c7fbdc22b61391e0345dc58e22dce6d010cfdc0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.prompt.txt",
+      "sha256": "e818de6b60ffdfb89fd7d0108c78f6b271951ab8d7e88247ae6f59cbf681975a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.png",
+      "sha256": "9ef3436ef78096a29eaa50519e062863cd12359fa7f2a176736da4c854f3a27f"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/hotglow/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amber cloud banks and a broad shared band provide the intended hot-glow material without fauna.",
+      "MID has conspicuous purple/magenta tint along the cloud rim and broad cloud faces near both sides. MID and NEAR create hard horizontal cloud shelves with independent scale and illumination, making the composition visibly layered. These remain visual holds despite the mechanical key result.",
+      "Selected FAR removes the invented planet and moon; that predecessor is retained. Intense orange light and cloud support need authoring/runtime review. No physical-medium admission, native proof or quality acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

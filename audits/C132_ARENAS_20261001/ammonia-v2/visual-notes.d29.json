@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "ammonia-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/ammonia-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native 1672×941 composite inspected full size. The edited FAR removes the celestial bodies and the solid icy spires; FAR and MID now read primarily as lavender-gray and pale-cyan cloud banks.",
+    "The MID clouds have pale cyan and pink patches along side silhouettes. The keyed edge is visibly hard against the FAR cloud depth; the NEAR creates a pronounced separate pastel band along the bottom.",
+    "Cloud plane is an authoring registration surface for AIR, not solid floor. Atmospheric softness, magenta contamination, cloud color conservation, parallax seams and moving airborne-rig placement all need review.",
+    "No visual acceptance, medium admission, runtime registration or native performance claim is made. qualityAccepted stays false."
+  ]
+}

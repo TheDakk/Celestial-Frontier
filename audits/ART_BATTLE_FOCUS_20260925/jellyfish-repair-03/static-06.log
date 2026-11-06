@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0,"gap":0.00009689560472654538,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0,"gap":0.00011984712906852638,"exactRest":true,"firstRefusal":null}
+{"id":"approach:drift","status":"PASS","samples":121,"drift":0,"gap":0.00008339586514576584,"exactRest":true,"firstRefusal":null}
+{"id":"approach:pulse","status":"PASS","samples":121,"drift":0,"gap":0.00011810802226137642,"exactRest":true,"firstRefusal":null}
+{"id":"melee:sting-arms","status":"PASS","samples":121,"drift":0,"gap":0.00011656502076125127,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0,"gap":0.00011656502031575942,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0,"gap":0.00010179873270471651,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"RED","samples":13,"drift":0,"gap":0.00010000440523403914,"exactRest":true,"firstRefusal":{"ms":61.53333333333333,"sampleNumber":14,"error":"RecoverablePoseError: Paint skin folded triangle: arm10-oral 189"}}
+{"id":"faint","status":"PASS","samples":121,"drift":0,"gap":0.00009123070490127024,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0,"gap":0.0001163429207410841,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0,"gap":0.00011147894477640263,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0,"gap":0.00010797202818028757,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0,"gap":0.0000769983241250323,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

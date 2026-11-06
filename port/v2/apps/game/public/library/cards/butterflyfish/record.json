@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Butterflyfish\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"522397937\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"13\"]]]]",
+    "seed": 522397937,
+    "ownerId": "authored:archetype-sprint/06-butterflyfish",
+    "earthName": "Butterflyfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 522397937,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 9,
+    "body": 4,
+    "loco": 7,
+    "trait": 13,
+    "size": 5,
+    "diet": 4,
+    "head": 9,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 18,
+    "detail": 8,
+    "accent": 7,
+    "temper": 3,
+    "sense": 2,
+    "repro": 7,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Butterflyfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "a1dc3415acbec70e77b2c6653673e5305afa4cec8385c27bd0d8afed42828d96",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7936020840109843,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6731259968102073,
+      0.4852472089314195
+    ],
+    "head": [
+      0.7518341307814992,
+      0.47934609250398724
+    ],
+    "jaw": [
+      0.7911483253588517,
+      0.5405901116427432
+    ],
+    "spine0": [
+      0.6272727272727273,
+      0.44577352472089316
+    ],
+    "spine1": [
+      0.5611642743221691,
+      0.4332535885167464
+    ],
+    "spine2": [
+      0.49290271132376395,
+      0.4508771929824561
+    ],
+    "spine3": [
+      0.4229665071770335,
+      0.4885964912280702
+    ],
+    "spine4": [
+      0.330622009569378,
+      0.5135566188197768
+    ],
+    "spine5": [
+      0.28429027113237637,
+      0.5036682615629984
+    ],
+    "caudal": [
+      0.22671451355661884,
+      0.4763157894736842
+    ],
+    "dorsal": [
+      0.4862041467304626,
+      0.25534290271132376
+    ],
+    "pectoralNear": [
+      0.620494417862839,
+      0.5386762360446571
+    ],
+    "pectoralFar": [
+      0.6631578947368422,
+      0.584688995215311
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/06-butterflyfish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "4ca42e4350bd511ced104410deeda79881e257ad00448da26c6f9e7ee01f1679",
+    "subjectSourceSha256": "842d279aacbd082b4c0a79182deccdfb0d6654a96d8f886ca425442c9f0a2eee",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.0789290410959929,
+      "jaw": 0.07277661558175288,
+      "spine0": 0.06050366990876793,
+      "spine1": 0.06728355188359245,
+      "spine2": 0.07049987530023734,
+      "spine3": 0.0794595375684678,
+      "spine4": 0.09565832011803554,
+      "spine5": 0.04737520021944408,
+      "caudal": 0.0637426512612953,
+      "dorsal": 0.19305758947091597,
+      "pectoralFar": 0.09994014167628636,
+      "pectoralNear": 0.07499829358565532
+    },
+    "measures": {
+      "body": 0.3478343941793054,
+      "bone-min": 0.04737520021944408,
+      "bone-max": 0.19305758947091597,
+      "caudal/body": 0.18325574563059616,
+      "head/body": 0.22691557366608694
+    }
+  },
+  "recipeHash": "be99f63fca4387a27199f0f0f96fb925ece106e1884ffbc8799e9051a3d30446"
+}

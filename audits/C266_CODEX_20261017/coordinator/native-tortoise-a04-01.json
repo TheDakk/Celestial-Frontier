@@ -1,0 +1,20 @@
+{
+  "stage": "native-tortoise-a04-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-tortoise",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/plan.json"
+  ],
+  "startedUnix": 1792273540.6930711,
+  "beforeGiB": 83.53235626220703,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.082,
+  "lowestGiB": 83.12823867797852,
+  "afterGiB": 83.48103332519531
+}

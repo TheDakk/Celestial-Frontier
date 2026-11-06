@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Frigatebird",
+ "fitDir": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/rebound/c279-frigatebird-owner-r02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b163758aa0c8b271eefab69f9c03dc675e9f45c8b9200eda57de08e04e613121"
+}

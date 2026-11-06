@@ -1,0 +1,52 @@
+{
+  "status": "RESUMPTION_REQUIRES_NEW_CLEAN_SIGNED_HEAD",
+  "guard": {
+    "path": "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "sha256": "28ee20498d2b31fb42824ecc2a48b101babdec92dbeaa5720675468053df6fe8",
+    "line": 19,
+    "order": "clean-tree refusal before workspace lock, model fetch, browser and inference"
+  },
+  "changedPrecondition": [
+    "audits/C270_CODEX_20261017/w2-checkpoint/README.md"
+  ],
+  "oldRefusalsRetained": true,
+  "sourceGeometryOrLimitsChanged": false,
+  "rows": [
+    {
+      "slug": "hoatzin",
+      "resumedSlug": "hoatzin-signed-r02",
+      "name": "Hoatzin",
+      "oldRun": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin",
+      "newRun": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02",
+      "oldResultSha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "oldInferenceExecuted": false,
+      "sourceFit": "audits/C266_ALLOUT_20261017/seams-birds-shells/hoatzin/cand02/fit",
+      "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/visual-review-final.json",
+      "checkpointReviewSha256": "d67525fe2e6d384a176c01b7478ac4ff5235efa99b81e0297516820ac8d08f0c"
+    },
+    {
+      "slug": "kookaburra",
+      "resumedSlug": "kookaburra-signed-r02",
+      "name": "Kookaburra",
+      "oldRun": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra",
+      "newRun": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02",
+      "oldResultSha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "oldInferenceExecuted": false,
+      "sourceFit": "audits/C266_ALLOUT_20261017/seams-birds-shells/kookaburra/cand01/fit",
+      "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/visual-review-final.json",
+      "checkpointReviewSha256": "1c18e4e7ad37413617142613affd5700eda66d8e6646e90bdf3ad448d8721a4d"
+    },
+    {
+      "slug": "pheasant",
+      "resumedSlug": "pheasant-signed-r02",
+      "name": "Pheasant",
+      "oldRun": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant",
+      "newRun": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02",
+      "oldResultSha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "oldInferenceExecuted": false,
+      "sourceFit": "audits/C266_ALLOUT_20261017/seams-birds-shells/pheasant/cand02/fit",
+      "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/visual-review-final.json",
+      "checkpointReviewSha256": "870f90f6646c858e22c1364e24c05b94727e08780a62b9e75237656c0ac7ca5a"
+    }
+  ]
+}

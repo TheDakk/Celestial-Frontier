@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Coastal Lizard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/17-coastal-lizard/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "fd0d94dd282f53343adef29ddb6241b7844de3ffb204ad978238bd94dd06779b"
+}

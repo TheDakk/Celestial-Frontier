@@ -1,0 +1,209 @@
+{
+  "timelineNotes": [
+    "earth species \"Albatross\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+    "physical realm: G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)",
+    "materials: record surface \"feathers\" wins over genome skin \"chitinous\" (observer disagreement)",
+    "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 0.0%",
+    "axial-faint:coherent-upper-body-v1",
+    "grounded-bird:painted-faint-gain=0.6890625"
+  ],
+  "rows": [
+    {
+      "travel": "solver",
+      "errors": []
+    },
+    {
+      "travel": "stage",
+      "errors": [
+        {
+          "ms": 439.06666666666666,
+          "error": "Contact: joint limit legNearFoot faint@439.06666666666666: -45.016409144276544"
+        },
+        {
+          "ms": 445,
+          "error": "Contact: joint limit legNearFoot faint@445: -45.04115734582341"
+        },
+        {
+          "ms": 450.93333333333334,
+          "error": "Contact: joint limit legNearFoot faint@450.93333333333334: -45.06290129286111"
+        },
+        {
+          "ms": 456.8666666666667,
+          "error": "Contact: joint limit legNearFoot faint@456.8666666666667: -45.08191182468607"
+        },
+        {
+          "ms": 462.8,
+          "error": "Contact: joint limit legNearFoot faint@462.8: -45.098435449964406"
+        },
+        {
+          "ms": 468.73333333333335,
+          "error": "Contact: joint limit legNearFoot faint@468.73333333333335: -45.112694892152035"
+        },
+        {
+          "ms": 474.6666666666667,
+          "error": "Contact: joint limit legNearFoot faint@474.6666666666667: -45.12488957440994"
+        },
+        {
+          "ms": 480.6,
+          "error": "Contact: joint limit legNearFoot faint@480.6: -45.13519604768646"
+        },
+        {
+          "ms": 486.53333333333336,
+          "error": "Contact: joint limit legNearFoot faint@486.53333333333336: -45.14376836505843"
+        },
+        {
+          "ms": 492.46666666666664,
+          "error": "Contact: joint limit legNearFoot faint@492.46666666666664: -45.15073840491968"
+        },
+        {
+          "ms": 498.4,
+          "error": "Contact: joint limit legNearFoot faint@498.4: -45.15621614517424"
+        },
+        {
+          "ms": 504.3333333333333,
+          "error": "Contact: joint limit legNearFoot faint@504.3333333333333: -45.160289890186526"
+        },
+        {
+          "ms": 510.26666666666665,
+          "error": "Contact: joint limit legNearFoot faint@510.26666666666665: -45.16302645191539"
+        },
+        {
+          "ms": 516.2,
+          "error": "Contact: joint limit legNearFoot faint@516.2: -45.164471286316875"
+        },
+        {
+          "ms": 522.1333333333333,
+          "error": "Contact: joint limit legNearFoot faint@522.1333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 528.0666666666667,
+          "error": "Contact: joint limit legNearFoot faint@528.0666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 534,
+          "error": "Contact: joint limit legNearFoot faint@534: -45.16473013663341"
+        },
+        {
+          "ms": 539.9333333333333,
+          "error": "Contact: joint limit legNearFoot faint@539.9333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 545.8666666666667,
+          "error": "Contact: joint limit legNearFoot faint@545.8666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 551.8,
+          "error": "Contact: joint limit legNearFoot faint@551.8: -45.16473013663341"
+        },
+        {
+          "ms": 557.7333333333333,
+          "error": "Contact: joint limit legNearFoot faint@557.7333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 563.6666666666666,
+          "error": "Contact: joint limit legNearFoot faint@563.6666666666666: -45.16473013663341"
+        },
+        {
+          "ms": 569.6,
+          "error": "Contact: joint limit legNearFoot faint@569.6: -45.16473013663341"
+        },
+        {
+          "ms": 575.5333333333333,
+          "error": "Contact: joint limit legNearFoot faint@575.5333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 581.4666666666667,
+          "error": "Contact: joint limit legNearFoot faint@581.4666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 587.4,
+          "error": "Contact: joint limit legNearFoot faint@587.4: -45.16473013663341"
+        },
+        {
+          "ms": 593.3333333333334,
+          "error": "Contact: joint limit legNearFoot faint@593.3333333333334: -45.16473013663341"
+        },
+        {
+          "ms": 599.2666666666667,
+          "error": "Contact: joint limit legNearFoot faint@599.2666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 605.2,
+          "error": "Contact: joint limit legNearFoot faint@605.2: -45.16473013663341"
+        },
+        {
+          "ms": 611.1333333333333,
+          "error": "Contact: joint limit legNearFoot faint@611.1333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 617.0666666666667,
+          "error": "Contact: joint limit legNearFoot faint@617.0666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 623,
+          "error": "Contact: joint limit legNearFoot faint@623: -45.16473013663341"
+        },
+        {
+          "ms": 628.9333333333333,
+          "error": "Contact: joint limit legNearFoot faint@628.9333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 634.8666666666667,
+          "error": "Contact: joint limit legNearFoot faint@634.8666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 640.8,
+          "error": "Contact: joint limit legNearFoot faint@640.8: -45.16473013663341"
+        },
+        {
+          "ms": 646.7333333333333,
+          "error": "Contact: joint limit legNearFoot faint@646.7333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 652.6666666666666,
+          "error": "Contact: joint limit legNearFoot faint@652.6666666666666: -45.16473013663341"
+        },
+        {
+          "ms": 658.6,
+          "error": "Contact: joint limit legNearFoot faint@658.6: -45.16473013663341"
+        },
+        {
+          "ms": 664.5333333333333,
+          "error": "Contact: joint limit legNearFoot faint@664.5333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 670.4666666666667,
+          "error": "Contact: joint limit legNearFoot faint@670.4666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 676.4,
+          "error": "Contact: joint limit legNearFoot faint@676.4: -45.16473013663341"
+        },
+        {
+          "ms": 682.3333333333334,
+          "error": "Contact: joint limit legNearFoot faint@682.3333333333334: -45.16473013663341"
+        },
+        {
+          "ms": 688.2666666666667,
+          "error": "Contact: joint limit legNearFoot faint@688.2666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 694.2,
+          "error": "Contact: joint limit legNearFoot faint@694.2: -45.16473013663341"
+        },
+        {
+          "ms": 700.1333333333333,
+          "error": "Contact: joint limit legNearFoot faint@700.1333333333333: -45.16473013663341"
+        },
+        {
+          "ms": 706.0666666666667,
+          "error": "Contact: joint limit legNearFoot faint@706.0666666666667: -45.16473013663341"
+        },
+        {
+          "ms": 712,
+          "error": "Contact: joint limit legNearFoot faint@712: -45.16473013663341"
+        }
+      ]
+    }
+  ]
+}

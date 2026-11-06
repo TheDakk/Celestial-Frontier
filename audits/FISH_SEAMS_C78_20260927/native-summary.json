@@ -1,0 +1,35 @@
+[
+  {
+    "name": "sculpin",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 4.100000023841858,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Five observed pectoral/body welds close large pectoral openings in reviewed hit and return/faint frames. Full tail and body remain assembled. Original scaleless-identity/plate texture concern is unchanged; no Dakk admission."
+  },
+  {
+    "name": "walleye",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.899999976158142,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Body and tail assembled in return/faint; faint gill/body hairline remains. Original both-caudad-lobes white marking concern unchanged."
+  },
+  {
+    "name": "pacu",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 5.5,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Body and tail assembled; fine vertical torso/fin junction seams remain visible. No whole-painting admission."
+  }
+]

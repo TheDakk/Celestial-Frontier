@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Coati",
+  "slug": "19-coati-a02",
+  "id": "c266-intake-coati",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-02-coati",
+  "masterSha256": "24ddde4eec55e1efa6972ea91feefe836c750c4e188aed4e7c4c719a8ff9e870",
+  "masterCopySha256": "24ddde4eec55e1efa6972ea91feefe836c750c4e188aed4e7c4c719a8ff9e870",
+  "subjectSourceSha256": "4da9589fc09a392a8f2dc2a0398ff0ed28529def67c1b5f25058db27ee950447",
+  "promptSha256": "e1577dc8bf83bf9cbf12281e0929fd0a139aa2bffbbb06d6006fe5324bb6ef51",
+  "refusal": "facing: the mirrored painting matches quadruped better (0.0185 < 0.0370); wrong-family: primate matches clearly better (0.0232 < 0.0370)",
+  "observation": "Full-size review: coati walking right (head and snout on the right, so facing is correct); long upturned snout, both small rounded ears (near x≈802-836, far tip x≈839-855), faintly banded tail held straight up like a flagpole (x≈330-480, y≈283-712), long low body, four separate plantigrade feet. The facing/wrong-family refusals come from the tall vertical tail dominating the contour; nothing is missing or extra.",
+  "joints": 31,
+  "parts": 28,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/19-coati-a02.mjs"
+}

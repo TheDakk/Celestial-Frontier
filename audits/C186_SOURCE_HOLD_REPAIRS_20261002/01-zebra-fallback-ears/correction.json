@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "01-zebra-fallback-ears",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/master.png",
+  "sourceSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/01-zebra/fallback-1/packet/authoring.json",
+  "priorAuthoringSha256": "023e3571c30aa3ca2bd12720c25433f2a95e99c4219a868df761793e2b62e6fb",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": false,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "Uses the separately retained C223 fallback-1 body/limb authoring that actually passed static, with the same manually observed pinna correction as the first C186 candidate. The first candidate tail-contact compression refusal remains unchanged.",
+    "No acceptance claim for either historical native fit or this static successor; two wholly separate prior recipes are explicitly identified."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

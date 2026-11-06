@@ -1,0 +1,121 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "dac79e2060b4672c04ff5db0828bdb9e998ecf5fc4b58ff68618d30700a72e2e",
+  "cutoutSha256": "cdd39cb9749eb0880b3db4f448309cf861b7a57bf7a3c334ad30b12acbaae38b",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "hand-near",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "forearm-near",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "upper-arm-near",
+      "joint": "armNearShoulder",
+      "layer": "near"
+    },
+    {
+      "id": "hand-far",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "forearm-far",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "upper-arm-far",
+      "joint": "armFarShoulder",
+      "layer": "far"
+    },
+    {
+      "id": "foot-near",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "shin-near",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "thigh-near",
+      "joint": "legNearHip",
+      "layer": "near"
+    },
+    {
+      "id": "foot-far",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "shin-far",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "thigh-far",
+      "joint": "legFarHip",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "tail-end",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "4998a65746056cf89ea25740cad5a6d645041f52667e78571d74a51a7d6e9c36",
+  "keyedRgbaSha256": "8ee597837129fdaf9a296365014b296adbe8a029e35c6616a7919213d878afc5",
+  "declarationHash": "10a5408ca562fb52c26326f073d866e61eb3f4f184bca7c8a634ef871b0e935e"
+}

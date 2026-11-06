@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/037-isopod-d40-owner-r02/finished/prepared/o1-037-isopod-d40-owner-r02-master.rgba",
+      "bytes": 6290064,
+      "sha256": "6acd679c6639ceaf8a12bf71b6bcd524eb15a5d2f0660da13b7fb73bbad9e75e",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/037-isopod-d40-owner-r02/finished/prepared/o1-037-isopod-d40-owner-r02-masterPng.png",
+        "sha256": "06a7c1002fc78c39e9732928752d9caf3d72fdc93ee71f35ef01b141616cc7d4"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/037-isopod-d40-owner-r02/finished/prepared/o1-037-isopod-d40-owner-r02-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "19c66c77b7a8796774e0a2637ac4343622f8be70086526878e50dd5162c2df5d",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/037-isopod-d40-owner-r02/finished/prepared/o1-037-isopod-d40-owner-r02-labels.png",
+        "sha256": "b32aef1ae90fe52cd2cb6d28303caa199bada9a5347af89a2c5ec58d4ef47cc4"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03/finished/prepared/o1-112-clam-matte-owner-r03-master.rgba",
+      "bytes": 6290064,
+      "sha256": "f61a3a6a5fe66f76ceb057112db9509cad9e34f1520bb82e2b1dd7925023eb5c",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03/finished/prepared/o1-112-clam-matte-owner-r03-masterPng.png",
+        "sha256": "60fb2bcda7448fa6399bef14383942e6024c563faf7c0350b7c4da10638968b9"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03/finished/prepared/o1-112-clam-matte-owner-r03-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "8e928c8989ec1e309a9a1fc2d3407fe88d288d5823b8626a09a0cee11b327578",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03/finished/prepared/o1-112-clam-matte-owner-r03-labels.png",
+        "sha256": "9d9f0008fe30df6411d2da624e9d4cb2217c2b35f62d8e20e28da27ea66f8dad"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01-clean-source-r02/finished/prepared/o1-egret-owner-r01-master.rgba",
+      "bytes": 6290064,
+      "sha256": "91474f72d1a13eb44e3bdd48601be5745cadc9236d227da54fcc95446339466e",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01-clean-source-r02/finished/prepared/o1-egret-owner-r01-masterPng.png",
+        "sha256": "255177143a3a087d71e9e9bb12519bb120ea42d80a7421854496a156ffdcf400"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01-clean-source-r02/finished/prepared/o1-egret-owner-r01-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "8dad0cae2e41a5751624c9f67ebd66169705facb633da7493fd4fd4ef8e62c66",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01-clean-source-r02/finished/prepared/o1-egret-owner-r01-labels.png",
+        "sha256": "5bbbb97c968bde17cc4e8606dd6561096078b3b8f5a3d3d8199c2f4576c2a7d5"
+      }
+    }
+  ],
+  "kept": [
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-master.rgba",
+      "reason": "already removed by prior proven own cleanup"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-labels.rgba",
+      "reason": "already removed by prior proven own cleanup"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/cockatoo-owner-r01/finished/prepared/o1-cockatoo-owner-r01-master.rgba",
+      "reason": "tracked frozen historical delivery evidence; retained"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/cockatoo-owner-r01/finished/prepared/o1-cockatoo-owner-r01-labels.rgba",
+      "reason": "tracked frozen historical delivery evidence; retained"
+    }
+  ],
+  "bytesRemoved": 37740384,
+  "protectedReadyPins": 275,
+  "protectedPinsUnchanged": true,
+  "scope": "Only exact-regenerable untracked own O1 buffers; tracked/frozen/source/native/finish/certificate evidence retained"
+}

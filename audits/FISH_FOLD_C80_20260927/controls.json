@@ -1,0 +1,13 @@
+{
+  "positive": "exact expected placement, separate root/front-spine/foreign owners and original RGBA preserved",
+  "refusals": [
+    "wrong-owner",
+    "root-remainder",
+    "duplicate-spine-owner",
+    "missing-painted-root",
+    "nonmonotone-axis",
+    "invalid-raster"
+  ],
+  "disabledIdentityGuard": "changes protected dorsal label: control detects weakened identity",
+  "helperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11"
+}

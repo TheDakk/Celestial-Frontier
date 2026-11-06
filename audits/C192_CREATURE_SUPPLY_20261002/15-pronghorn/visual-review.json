@@ -1,0 +1,28 @@
+{
+  "name": "Pronghorn",
+  "masterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four hooves and leg shafts, white rump and underside, throat bands, both upright ears and a small naturally short white tail protruding at the rump. Only one forked horn silhouette is independently clear; the far horn is hidden or merged and cannot be inferred as separately painted. Tail tip is distinct but close to the rump. Proximal roots and species proportions remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 258,
+      "y0": 213,
+      "x1": 1000,
+      "y1": 976
+    },
+    "margins": {
+      "left": 258,
+      "right": 253,
+      "top": 213,
+      "bottom": 277
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

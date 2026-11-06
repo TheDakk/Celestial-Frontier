@@ -1,0 +1,1320 @@
+{
+  "status": "FROZEN_EARLY_SOURCE_DELIVERY",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "3acb20ba06f2f40977d93f33e55242a7c0ed8ba88ebfbd94dc592253103eda1c"
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "a6fc31b5c10a6ff3be1e6fea2ee871446429d19f2c3a488d8d5d5aff5f6d8475"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/I5_CHANGES.md",
+      "sha256": "52afeec70a6d37866cb9af2dd5c5dcab39e769af5ab4c292ec9d489d730ca038"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/PLAN.md",
+      "sha256": "b586f8b2d387475e76790bca8327cec903db6636a17d5d906bd63511f70e8400"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/guardian-size-framing-r03.txt",
+      "sha256": "150f0b790847389c57436862e2a14efe3de8e9b0277cbf913ddefc810d7d6dc1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/inspect-maintenance.py",
+      "sha256": "b2629a96db4d06d282121838657f59ff33438c504beca125bed4cb6e429c7474"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/install-maintenance.py",
+      "sha256": "fa18ec04eaffc58a34c1cc31b55161c9caf20276c81101381b4518ed16beba93"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/merge-message.txt",
+      "sha256": "7133e547ddb03789b90facfd188ae4479d1e909b5a746acd0a4017204a842d7c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/merge-result.json",
+      "sha256": "6dea17bf0d6aed8c6a736f7cc7b741c19adf45259869b539dbb5ce0426c1cf8c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/merge.log",
+      "sha256": "ab3d919318a837bd170bf1ef8a75b843ed481dc97860e27702fd7d9c8c097019"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/plan-maintenance.py",
+      "sha256": "e1f4eb5e5da5f93ff8d172122fa3fe2bd7e6bfe1368aaefb80e7398f3d588884"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/queue_owner.py",
+      "sha256": "d5fe8a3ac08249a8b99f541721b063bc01d65fe79201fefacdc1ab0bb17576bf"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/reservation-plan.json",
+      "sha256": "e5716ca67acc4c11ae51269947d0250e95be7516d4b63c7076e1770b23f3f7e1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/reservation-session.json",
+      "sha256": "422293f4ffb19659c08e1ef153a3776c2daa180501724bfc218481089725e396"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/submit-stage.py",
+      "sha256": "39868359daa19eeb32e7d45ecc60b31a8c2df1374bba1b26c2a5a484f9364dee"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/README.md",
+      "sha256": "19f896668c312a9f56e02bbfebf370b8ed82f699ad03fe47a51744fef0b0326c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/source-r01/generation.json",
+      "sha256": "c0271b1c66c9096898d2153b0afb3ba2f179833a46423d72803d2899bebf2ddc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/source-r01/original.png",
+      "sha256": "b5dc20b6f23ce132acbba22ba511947331427f546c81cb2818c180f049fc6b6b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/source-r01/toolPrompt.txt",
+      "sha256": "4a246767dafe3024a9e65d0c7607721a8645fc3e8774460cf1093be65b4b617f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/source-r02/generation.json",
+      "sha256": "b5d396a9ad2c2e71f845d870b756405761f8d7151cf985c1e8f9553c9c199b3c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/guardian/source-r02/original.png",
+      "sha256": "99d6aa3dfc2a6f0406d7391cae128ca267200c76644d46dd8281fd7de43ec936"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/01-cave-cricket/canonicalprompt.txt",
+      "sha256": "4a0d8b643208a52a7da3f417fd2bf5d8fea56709fd6f555d6ec9e26c94bb705b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/01-cave-cricket/request.json",
+      "sha256": "0f5e22f608483516b729a2c44550aabefb8aa6255833ca85fa865dbdd676b620"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/02-damselfly/canonicalprompt.txt",
+      "sha256": "dd0b3d70cb7cb5622c2ff51c59020b6302939c7f65e082e3211356e4d7f4e6b5"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/02-damselfly/request.json",
+      "sha256": "4d37ecbe38b57e09f52a01cbba4ec74ed357fb2d426a0933ecc75400f5a4a9bc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/03-diving-beetle/canonicalprompt.txt",
+      "sha256": "11b95950195b67e9932c91aad04a487feaee05e5a7099c92afbd803d09c2f208"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/03-diving-beetle/request.json",
+      "sha256": "cfbbc6790f38917a3e1731a00f27f84939014871169c895ac1975a2ccb78c039"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/04-dobsonfly/canonicalprompt.txt",
+      "sha256": "512d9bf507bd27cb1e9af4ceb11aff865f648b570fcd3098368c52b5957a51de"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/04-dobsonfly/request.json",
+      "sha256": "3cedd98b88f5bf02b9e6d4af3643c4b428c36171d753ba265df663e00fd5f84e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/05-dragonfly/canonicalprompt.txt",
+      "sha256": "c554b36d1403fe53a3ec326c40531a5705f5b87f79067ca2c3cf121ca726a5dd"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/05-dragonfly/request.json",
+      "sha256": "431b42ed50f73bceb75c83a08f566a5b4d7ef686ba4c5aacdce991c56ad65e5c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/06-fly/canonicalprompt.txt",
+      "sha256": "7ff161e686326f4807138b5ae928fa32de23f9b81aadc1a182947400373d9b3b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/06-fly/request.json",
+      "sha256": "a48a0e16bf57be13c3a9400dfcd9a6b81f526338273bbe6a0d09022bebf4e110"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/07-honeybee/canonicalprompt.txt",
+      "sha256": "72581e46eeac18afe9362126346d52c3bc696fd30091b0c16cb4ce1371f7b2a2"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/07-honeybee/request.json",
+      "sha256": "6296a1311ae4f4541c7e0ba43bc30c6531047a4caf6d5b07cdea2108d5bcb497"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/08-leafcutter-ant/canonicalprompt-r02.txt",
+      "sha256": "7c65018e915efec247818d0491661f9d1d80cf82e30c14a36b979904861e0cd4"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/08-leafcutter-ant/canonicalprompt.txt",
+      "sha256": "a54b4cc93a70807a3b2b025c4161db698af678a0a0284b0be5547345ebc47447"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/08-leafcutter-ant/request.json",
+      "sha256": "0ed76582ea0efc839eed6bcab3ec36c2919914b3c053b37a1f75edaabf5322e0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/09-mantis/canonicalprompt.txt",
+      "sha256": "dfc245a5c0e75ce827c020a4d638547d301513729918080317b248b8e98cf95a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/09-mantis/request.json",
+      "sha256": "c8522e792c464da3336e903bc36d71d176c94f16c0aa18aa8c1f7b0b43a76903"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/10-mayfly/canonicalprompt.txt",
+      "sha256": "9f05fcf1b5cc5b3e3e6a6ab6efe338a62999132fe528c4bacb8642f5cf831798"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/10-mayfly/request.json",
+      "sha256": "86dd3a122f45cad7d46c3efcb654464e954e709bdbdf266ba50a737f90180868"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/11-mosquito/canonicalprompt.txt",
+      "sha256": "d1340fc09f787e5ab0f69fd8580e0141604d7efbc10a61de0bcb83caa22c7486"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/11-mosquito/request.json",
+      "sha256": "1c87e62a829cf71d31725c317b3890ed567d49afb12b7e7d633d5b941c0ef42d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/12-orchid-bee/canonicalprompt.txt",
+      "sha256": "97ec5293d2fb236367348d67457f0c41c5edb939856d84600077f9d5c3483ba4"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/12-orchid-bee/request.json",
+      "sha256": "060601b69ba0326f74eb863647593182b207cd16bc14e2612db4314bbde84130"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/13-scorpionfly/canonicalprompt.txt",
+      "sha256": "b7ae949a2d0d1511aff5efd758023175bea2acdc6d8b146f0c6f891603b303bb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/13-scorpionfly/request.json",
+      "sha256": "0624e523a156f0d584c34d0603d358751fd683e2dab254c99ec33067d39bcb85"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/14-stick-insect/canonicalprompt.txt",
+      "sha256": "087fab0f67952239ebfdf5a54d433161de2e6ad3e2f7e1b38f9878d82fb8ac8c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/14-stick-insect/request.json",
+      "sha256": "807941a99960bedd24dcd7dd97fc382e21eea45e5fc559fac58f26f0719c64cf"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/15-thrips/canonicalprompt.txt",
+      "sha256": "4624ce6ea5bcb5410ed7a2aefefaa7cf6a3b1058f6d50e729ba44331818dbc25"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/15-thrips/request.json",
+      "sha256": "d0f6fe6d2107409af92bff35ad91fea2c6e4eb5454d19ebf98a15bc2c31db1ec"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/16-water-strider/canonicalprompt.txt",
+      "sha256": "ce9d649070610fb717ffaa29be687dcb0adbd1848d56d9fb26befcb704174802"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/16-water-strider/request.json",
+      "sha256": "8981a079fed85d334312f6ab926d0e9265e9409755dc9eef5ce3bcce9e5b3457"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/01-blue-whale/canonicalprompt.txt",
+      "sha256": "17de9fc0ca4be567eb178aa891f02401a715719d990a1582eee0e8580223d51c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/01-blue-whale/request.json",
+      "sha256": "e755b5ee5608b61ff2a133a4715f00ab850d05f85eb19e073f9ca0ce6a050f23"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/02-eagle-ray/canonicalprompt.txt",
+      "sha256": "651d2be52352f001734537a8c52f85a549ee567fccf1e6e83d83d9498af2a047"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/02-eagle-ray/request.json",
+      "sha256": "3d70c485cb51d8f60868adc4e0b5db820c0eaa3170cb3f51a4e3292c69696cce"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/03-fangtooth/canonicalprompt.txt",
+      "sha256": "e98b35e99666023241bd445b70140e7303cfe55856de30ab7a86afbb4f52caae"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/03-fangtooth/request.json",
+      "sha256": "e600a8646ae480147ff5a0e8c2002f631ccb64f9db6c9c9549b500d9ddc01237"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/04-gulper-eel/canonicalprompt.txt",
+      "sha256": "dba74b68c2cba0ede5c870cbb5ec6fd72ea784efe1e4c18db2ae31163b8b16f2"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/04-gulper-eel/request.json",
+      "sha256": "6cc6ded69a3ef377265200cd190b1e8f65f58200a4918df930468f7e60b5af5b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/05-lancelet/canonicalprompt.txt",
+      "sha256": "a164ee51bbe19e9b3fbbb8e2e6f57c8ce9aad361bbc0aade11564d2ff3b8dc1e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/05-lancelet/request.json",
+      "sha256": "a4a517295d06de5778db57d5f60d47faf6d8546946226129400def62e543014d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/06-lungfish/canonicalprompt.txt",
+      "sha256": "7ef66a7680ed8a9b64e5b1a4d69d280922680cf0109f4b0920217a3313be6edf"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/06-lungfish/request.json",
+      "sha256": "e5cc41e3f3e71a2de7e6b08b8b598fe17bedae57f02db2dd77cbc960434d99df"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/07-manta-ray/canonicalprompt.txt",
+      "sha256": "98c84519a3810b8daa5f2004095edbf4c0e410a8783cbd53a9b50eb1ef605092"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/07-manta-ray/request.json",
+      "sha256": "86850d4d280ebbf98f29bd94ea7f9e22a1976e7de5a46f08a6be6692b6a95d49"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/08-narwhal/canonicalprompt.txt",
+      "sha256": "dc9ce7fce2bf751bc9d6deedbfba32b21a5c3bc2dcd1fd2f5f9aa606c37fb6f3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/08-narwhal/request.json",
+      "sha256": "5be71b2e8c2a4a1d12176f2b82e809797c355271af7cf0e5075d00be49c21833"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/09-oarfish/canonicalprompt.txt",
+      "sha256": "a3d5b738ef4bba6dd4e43d32727501c8d7832d39f00cc45770d4d69ab170ac26"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/09-oarfish/request.json",
+      "sha256": "6282557ca2833ca48a73c463ebdf0ebc3bf8c9e3181ab016cef7775508571a11"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/10-ray/canonicalprompt.txt",
+      "sha256": "a14d822bd5138fc003db779d77d1712a59ad3c6aefbae61adf7c1f562c78025c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/10-ray/request.json",
+      "sha256": "f48886a2d90237abf4949bccfb931684ca2544d009f06cf76ae74f93f4b4f7c5"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/11-seahorse/canonicalprompt.txt",
+      "sha256": "9e37713618e466e009f5d32037481a14ab7642c08f3874cb3162109c1f74a4b3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/11-seahorse/request.json",
+      "sha256": "fc3dbd01cf4edff52979e214b67af741b2de7690759806ab5dddea4c6bbadc6a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/12-stingray/canonicalprompt.txt",
+      "sha256": "b254853277110b6d074b1bc4fcb286b39996214474d1a7d920d8e2619295e7da"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/12-stingray/request.json",
+      "sha256": "bc6388d5ed7e29a2bd2b0d6559f76079c105d7019fc81ee37c6a6d5c191a7dec"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/13-tripod-fish/canonicalprompt.txt",
+      "sha256": "987bde36a1b405217e7562b9354be702557c66b7568762f3aac1209afeed6019"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/13-tripod-fish/request.json",
+      "sha256": "54cbe969c28f7bba17342bab1495c10969c82ee8c69efe8de095ba596f2f6dac"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/14-whale/canonicalprompt.txt",
+      "sha256": "2ab4c70785e7204a9cc52d2700a5d6e9e20ea9c45432552936214edcb5f6398d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/14-whale/request.json",
+      "sha256": "1dd6ad4e6e164ef9e6607adeaa8f4b422ce7094ccfb0d1cc94f24f8ddb20227b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/01-amphipod/canonicalprompt.txt",
+      "sha256": "2f6a3faeb1d90c4317d8e7c74c07ff20c1db62ad7c862b237ee630912f3b9646"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/01-amphipod/request.json",
+      "sha256": "3cfc4e532d7fc8cebe5eeebc1779df7d2822968a78ce933ea560f8f129b1fb15"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/02-brine-shrimp/canonicalprompt.txt",
+      "sha256": "a860e5d91ffd28fc6db19d405f469dc6cb159a7b8637908e8e8db3772c0aa5e7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/02-brine-shrimp/request.json",
+      "sha256": "8fae58c81f14c048cc44424dd44798b5a43c38f65ad9f9b2ba141345c44f8be6"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/03-cave-shrimp/canonicalprompt.txt",
+      "sha256": "dee75e38f0a8c9caaf516a15f92608ae3cf060119bb05f4430c5fd131c5d06b5"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/03-cave-shrimp/request.json",
+      "sha256": "ba8fc7b1575e1365e2e5ebb3234bba0a6ecd42ffd2f91941370aa98d2412c1cd"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/04-copepod/canonicalprompt.txt",
+      "sha256": "352114cf3d3fbcf7df834f7256f50b630f87d2bd1a79e8a4311f7223f8bdbbef"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/04-copepod/request.json",
+      "sha256": "9b296894ad3214acd30ccece1ffd5a583cbd83fd7d1c16bc0661011e5f3f8738"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/05-fairy-shrimp/canonicalprompt.txt",
+      "sha256": "99a03bff67d21c4ed6853311a649affd3042556bc1dc6166c3c91375d5957d5c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/05-fairy-shrimp/request.json",
+      "sha256": "b9cfc5fda282f60513067f1e5976df0b979da949d28bcd828b0a5815aba725b8"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/06-freshwater-shrimp/canonicalprompt.txt",
+      "sha256": "27500d166d5ef396e10d12a8711f556a0d160d81ad7618d212cc7d3fa8c6ac3a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/06-freshwater-shrimp/request.json",
+      "sha256": "bda6df8f4916752d122ca9e25d3cf496d682af75bb2afa6c3f722f72e5635cd1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/07-isopod/canonicalprompt.txt",
+      "sha256": "278c1b42e149fd10bfdcfdf132d2d845e4401d3fcf4be5c689b5f0076265df40"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/07-isopod/request.json",
+      "sha256": "37342cde715ffe96bb33e5f3c3966b8b36eb7b559f94dac27b109603138b1f35"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/08-krill/canonicalprompt.txt",
+      "sha256": "8ba8a1a77d58ebec3e1d75b27fc98918e31555d92841cd2b93809290834dfe7f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/08-krill/request.json",
+      "sha256": "f1e33ec4ff25e6411ebce0bfb73db13add8e8a83076631346f99b018941b9c29"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/09-shrimp/canonicalprompt-r02.txt",
+      "sha256": "0e22f41771672985ff0c5e35a3ca91ffa946c8c185be173dbdbae71fb7027f1b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/09-shrimp/canonicalprompt.txt",
+      "sha256": "691e1e4f2f67acc881e2c2c8ec25640a8d65df84736f0898ba2a9b164f2b84d0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/09-shrimp/request.json",
+      "sha256": "5c86f206899b6c542d766a73c29752682944f74cd21985f50f1e65ebfb891786"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/10-tadpole-shrimp/canonicalprompt.txt",
+      "sha256": "109352c395f1ccf58fdf3db9707b6fc0452cb7ec573168f522c9e41e1c485139"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/10-tadpole-shrimp/request.json",
+      "sha256": "82369764460eb547a3bc49f2a8d9adfe2a4b3a72b1810baf4cdf9980713f67d0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/11-vent-shrimp/canonicalprompt.txt",
+      "sha256": "c001c6756599a9873a5f8025b356cb67b60294bbb45e6e8ab9387130a93aa794"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/11-vent-shrimp/request.json",
+      "sha256": "c3951b45f0e69f3786815553fbc48d1b68bac527db2dc9d452558d5d121e7be7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/12-water-flea/canonicalprompt.txt",
+      "sha256": "0dea4ff60ff7637e0e09116c5de9d653eca1c208a2fee5b77ab67053bd5fe232"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/12-water-flea/request.json",
+      "sha256": "83c675669b45e3fc455f6f1961d49419aa498e3d222712c096409d32e32fc300"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/01-bullfrog/canonicalprompt.txt",
+      "sha256": "737ced1b15235c9f9c9d59f2ef7600a73be58ea7903c59f46cfbed341ff3ad4d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/01-bullfrog/request.json",
+      "sha256": "38c019274882cdd21457e934ae2931a567aff1b3a27a0cf9ea74a2e97604b110"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/02-cave-frog/canonicalprompt.txt",
+      "sha256": "57eef84cdb170fb6e3f7d714a008479dc1b1e1b5acb975a236e062234a4aee69"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/02-cave-frog/request.json",
+      "sha256": "f8cb1a1465f54011821ee393af875d6f34010b6cc0d55eabe095bf858e803a8f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/03-frog/canonicalprompt.txt",
+      "sha256": "be537f22acdd999ba9e00a3e84c02edfd626193d26982cb4d140e8b25e948e15"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/03-frog/request.json",
+      "sha256": "335f8dd41dbd06de0acf5690e9ad793d6a530bcb7d7a5842a17776d44885507d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/04-glass-frog/canonicalprompt.txt",
+      "sha256": "e00e75aca567426e04c420899d67c24dc92349b7f9dc040859b2d50c232c3914"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/04-glass-frog/request.json",
+      "sha256": "4bd44b28e72df99d75295cffd2ec97ee77c10e69f33713e10eb6b5c92d7110c9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/05-jerboa/canonicalprompt.txt",
+      "sha256": "416d72f38a2b676452a57e9fd4a96a692cdec0005055b1e2cbd5780289b5e482"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/05-jerboa/request.json",
+      "sha256": "eb3cf43850c75704389aa97e38138f3b53a4513e678ff199add4149c952c5571"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/06-kangaroo/canonicalprompt.txt",
+      "sha256": "ced55e13098eb8aac90fe2522b1144a72d9cff499c80f87b778ef872c76193fd"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/06-kangaroo/request.json",
+      "sha256": "46b1f69838caedb81c1c7d822c5b4b678ac41c2a89a68a5674942a66dfa6f175"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/07-poison-dart-frog/canonicalprompt.txt",
+      "sha256": "13b53f35c753d2a152130ee46a6df16c6d1ea60c33e262944ac534b51c5eeb0d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/07-poison-dart-frog/request.json",
+      "sha256": "1b2cd62d7dc2830020cfaf19b86d760db7dff35475444ece9c16b998c377c8be"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/08-snowshoe-hare/canonicalprompt.txt",
+      "sha256": "f4f98ef6f9d0ed4ec9f7960b28c61223989b6926467dff5b835fc0a576be3cda"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/08-snowshoe-hare/request.json",
+      "sha256": "350c4963f2308d43ddd7242cd48924d63d731b29f7d7a6b624778b42227f4888"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/09-toad/canonicalprompt.txt",
+      "sha256": "474c22117a5bf179d23be7d1bbbbe5e400f9ea65a662df9193354c87a0cb08c3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/09-toad/request.json",
+      "sha256": "070d6f03f6ee354d291f7e2c28b1a08c5cc634462ab0b3ca2526b465d833321f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/10-tree-frog/canonicalprompt.txt",
+      "sha256": "cb563bf60f36b03654e727bbbb4f15ae064d954a464b387ce16c115784b3c145"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/10-tree-frog/request.json",
+      "sha256": "9501daff51eb2c5ec86cc3a0f7e332ec032448ad329bf7ca7f88c3d8741e01e7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/11-wallaby/canonicalprompt.txt",
+      "sha256": "d8e7f8bd7ad2813cead9707aaffc690c71b283216f8594f610c4e8a18a2c7d1b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/11-wallaby/request.json",
+      "sha256": "2099917888eeaf2e4743b58e6cdab60bc07b7628425ddb031bc6564828b3f30b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/12-wood-frog/canonicalprompt.txt",
+      "sha256": "d3f336c8c6518edad1564c7e4ecc7b0b448aff0d5dec3fa28c5f58c8c13d8fa9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/12-wood-frog/request.json",
+      "sha256": "70d1b075556d030318f92e57e0e8ffcc8944eea3f520ba8dc417226bc600db15"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/01-echidna/canonicalprompt.txt",
+      "sha256": "a78cbf7703fb43879b1e978e2f42593f1c3b6475ecd2f526f17274a5f5f2a667"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/01-echidna/request.json",
+      "sha256": "fc30e41bac9d4382e3d564fda4376e4abedb1042e63763d2d9fe4938ace14c14"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/02-giant-anteater/canonicalprompt.txt",
+      "sha256": "1264a241a96e1ed99800d7b17c3528b6724294cc25332bf4c166a9c7c5825958"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/02-giant-anteater/request.json",
+      "sha256": "d93fda002ac7f4b93f697cd33ae670589132e9ae366d99de4424e840b738f659"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/03-olm/canonicalprompt.txt",
+      "sha256": "9265cf18e1646e1a0317063e5e7349176ba760ed038887a537f507973c0bea9d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/03-olm/request.json",
+      "sha256": "8b2485af9c4b84100d857ff39feda1f7ecfc6e8cdfbadad977fa6513275636a6"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/04-pangolin/canonicalprompt.txt",
+      "sha256": "b15a75e2d707db290f9e077230ef0c4e953d0515d1841ff0984fd313193754a1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/04-pangolin/request.json",
+      "sha256": "a74b3478553ae71653f2a936056f97361d71ac13efa802700b4a90c3b05ebf6d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/05-porcupine/canonicalprompt.txt",
+      "sha256": "7f6d95baa7466c5807536d56c85e2e01086f30d792d51c9275b1c7432defee6f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/05-porcupine/request.json",
+      "sha256": "f54ac5c6b36b1ba71a01a7641f48b05c8dce8a764600f7534a4d77f14bc56fa5"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/06-seal/canonicalprompt.txt",
+      "sha256": "302addf9798f39797c91ee3dcf889134bfc22b9d586de524fe2cdd6006c12172"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/06-seal/request.json",
+      "sha256": "399f339134cae402063b94ed03d30f4bbf7c274933353f9d433f0bdf2d6f86de"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/07-squirrel/canonicalprompt.txt",
+      "sha256": "bbb1d24c46716eff4300ef2d90066df8629acdd229430737f3fd966af95bbf7f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/07-squirrel/request.json",
+      "sha256": "93dfbe94c34de9a51ae7424c7dbb8d165a71891044e6cb9f5ff1ae73d3e7dd72"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/08-walrus/canonicalprompt.txt",
+      "sha256": "6eb1bdfaaa65d1f2711b3823fec483176f477602bcf262e854a44d64b77e77f1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/08-walrus/request.json",
+      "sha256": "fc69a420662cc64ab7ad1b0f918b62050bf9459793f05a65cd027380a8db9c0d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/09-warthog/canonicalprompt.txt",
+      "sha256": "f7f31621f2cf1d1ff288f221b0da02c358656fd0ef4af10dccf9766456515f19"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/09-warthog/request.json",
+      "sha256": "128848ef8a976ad1954c3d9a47e41d645f294988c3c70ab7e85cd8610c3162be"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/10-whiptail/canonicalprompt.txt",
+      "sha256": "60b6e9502cd1e3caae6ddcbd05156a70c3680d34057b34f95c69f0e48dc5c4b5"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/10-whiptail/request.json",
+      "sha256": "b4d966e0092233c99fa74401a658d59c342b556bd85b1892d7bdb3056e5bed62"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/01-cassowary/canonicalprompt.txt",
+      "sha256": "c5105544f874c895cc494767eb45986efef41d9e9847acec59b70307a94b96c7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/01-cassowary/request.json",
+      "sha256": "95f025510d9b662c3da85481f854a651ba279825d80d4ffc6f2a480b2d3b9475"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/02-grebe/canonicalprompt.txt",
+      "sha256": "024714579ae2f7347fa93bda777b12305f378a0636bd634a71198d522c052e7b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/02-grebe/request.json",
+      "sha256": "5e4232cc7ae3fd17f0654f3c98306c35f1ed0198b63e4b0e75884304d09ebb80"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/03-kakapo/canonicalprompt.txt",
+      "sha256": "63b798621823fdd970c3f95651c08e9783cde5f4cf3f3f9cf06a62daf33f0111"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/03-kakapo/request.json",
+      "sha256": "f14afa5c9fec62cc739a5184b5a16ed5f45d777a14eb503ff5b902fb2d3fe957"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/04-kingfisher/canonicalprompt.txt",
+      "sha256": "4afa45c6a103d15f69bb608bea2e2fe1178e8d6011d3cb940736e521b31de356"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/04-kingfisher/request.json",
+      "sha256": "4e9ed0b390222fc21b0e9e03cfb351a1004104b58e9caed2130a5c94f7f1a222"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/05-kiwi/canonicalprompt.txt",
+      "sha256": "c9c57a0426f168bd41bbf161105641a31592ef3da599921defc3f07020c2004a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/05-kiwi/request.json",
+      "sha256": "1739497483b249c3f754b440a1ac3098fb4d179b0d3887b5381e820b504cd2dc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/06-peacock/canonicalprompt.txt",
+      "sha256": "996bd8732506a0777f768e0e2dc207cf4e6ff0eda66ae8aecca7cc968f3c22c7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/06-peacock/request.json",
+      "sha256": "4e92a312408e60e073abcb768e3baae74ff55f219f7c60c647dc1e42926edfc9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/07-quetzal/canonicalprompt.txt",
+      "sha256": "749d21ffaf9792d5d3820729c37b4a4208126b60afcc45356459f59c19718567"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/07-quetzal/request.json",
+      "sha256": "4f54ec86825a6a953072bd0a7779ff7e3a87f3de44f04a34b9f438a371603066"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/08-secretary-bird/canonicalprompt.txt",
+      "sha256": "7264448f22c351b9be9906f0a0d287361512d0afb0507e10f7c4cf33a0a11876"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/08-secretary-bird/request.json",
+      "sha256": "e9537bb21144957b4d158ff49a77f976ce57231e2eae9ac40e75c36e056ddd66"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/09-tropicbird/canonicalprompt.txt",
+      "sha256": "9aace7ae15ccc1f734b19ab108c270c87e2119b72bfc855f6cc3e10f09126a9b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/09-tropicbird/request.json",
+      "sha256": "0ee4a57828a5c300f5baf84f2d058e4a2952df8ec988c58498738342d86e593f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/01-cold-water-coral/canonicalprompt.txt",
+      "sha256": "21840b004f97d9dcca80bbc6b697235232333b2546b674332d81010ec00e3db1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/01-cold-water-coral/request.json",
+      "sha256": "4008296c1c26f27d766fbc194c7e7082e0e21f2f1841946d4e3e48bc58d6233a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/02-comb-jelly/canonicalprompt.txt",
+      "sha256": "850b7fcff847d65e17e1836cf821edf26cd9947931109cbd21c8f162cd2b2706"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/02-comb-jelly/request.json",
+      "sha256": "e786111c2d6bacc20c35407a581d8a96a590b956e958b7fb6062d0b27b6369b2"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/03-coral/canonicalprompt.txt",
+      "sha256": "e3f643e694b4879b390f81f187d5dc8118f3340dc986773b2f1e6a0590a0e6ac"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/03-coral/request.json",
+      "sha256": "a62c723f76e0f00b123848e720cad82c5992b3eb95cac6d2227711baef39c321"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/04-deep-water-coral/canonicalprompt.txt",
+      "sha256": "9f2d752edd758cf32fa68861a77b9a24e98ad10a01b17ebed066fe76d959cbcc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/04-deep-water-coral/request.json",
+      "sha256": "50c74e81f49f25d1f99195d012dd01374f27b9186cd3063f1e917a23d6f6a35b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/05-jellyfish/canonicalprompt.txt",
+      "sha256": "7788a9b4fcfb3a66f4d43a09a20a1c73d1233090a363af3e36c9ddc2295afca9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/05-jellyfish/request.json",
+      "sha256": "e9d378b34f567817852b273ac1e8a68dff486e2337d93a63728fa8d1ec29c1aa"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/06-portuguese-man-of-war/canonicalprompt.txt",
+      "sha256": "c12af967f5ad95444c0371b6399e0ab691f2dcba104a3724369dcd42a0d2b18b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/06-portuguese-man-of-war/request.json",
+      "sha256": "e4b2881e0864dab6110adff4954e7abd9ba7494e90489133f169b5c62776ca09"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/07-sea-cucumber/canonicalprompt.txt",
+      "sha256": "613d35339e38997ac4041ca145fc2fe76ddf9e0f899857d31db44fb566d069fc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/07-sea-cucumber/request.json",
+      "sha256": "001e7caa7b97bd791764b6fb888dc4f5d46de8bee23959bcc7e9e5463a6495a0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/08-sea-urchin/canonicalprompt.txt",
+      "sha256": "7251c0a1016f1e398db44c6e7931013f54873312af58df35023e539a4e09ded3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/08-sea-urchin/request.json",
+      "sha256": "5add97b2f1e1b61266d6a2090e3f25a25fb3a93068bfdb7e0c680cbc83f037cc"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/09-starfish/canonicalprompt.txt",
+      "sha256": "262318d5605e9bbf8ce2e80bbd825b49f693bf96821ec3cd8e8d7b56cc0cd57e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/09-starfish/request.json",
+      "sha256": "158e882d1f3f9d519a8272da921932bc3e455c5767dbeb4210b7e2c08c0552e9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/01-camel-spider/canonicalprompt.txt",
+      "sha256": "73891f7c543bb57e7d44fbd30fe312a9824e5f675c3ab3a52470b58c30a2f0a3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/01-camel-spider/request.json",
+      "sha256": "653e52bb0fcd0cbffffc354a1ceb1e087aa68ed4488447a7b2945be73c4696be"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/02-deer-tick/canonicalprompt.txt",
+      "sha256": "a4e636ec55b84fbf0203e666beaa6e8e653f0bb2c1b1701a3f130ff4e5f04ad9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/02-deer-tick/request.json",
+      "sha256": "7ab730319c2e82ad118a0d0bf11285e0d0422d25fa92c3b05f367957819884c8"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/03-harvestman/canonicalprompt.txt",
+      "sha256": "f94d5e58447729180d851101435fa8396d5d64220767eb76a178b0ef192167c1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/03-harvestman/request.json",
+      "sha256": "e951012b74b2e711175fe932b563ffe864a1c363380b6d5318bc8d24fd500abe"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/04-mite/canonicalprompt-r02.txt",
+      "sha256": "616c260bc977a3efd1ad606d90bf9f3fad54ff0ba1007025b74797b5cec7ae8c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/04-mite/canonicalprompt.txt",
+      "sha256": "2c30b6d662ae182845b51c9bb564a67883b67382e0dad71eecc4001930c23199"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/04-mite/request.json",
+      "sha256": "c39873907f152f3b6cd96bd4a7ff8e89f0ac303f1abc71bf2d6e24a983eb7cc1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/05-pseudoscorpion/canonicalprompt.txt",
+      "sha256": "6c5f3e039caf516a0d5fc4567a80cfc971c72eb798a26edc127c73b9e42c21e6"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/05-pseudoscorpion/request.json",
+      "sha256": "a5b669d925610fe7415c3803ac55a7c52b31a03484df2ffe124988e78f2a6f8a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/06-scorpion/canonicalprompt.txt",
+      "sha256": "89a3a1595f7dbb1977e730b6db6e330de5982ca3d4e31cd74539c4f15373e122"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/06-scorpion/request.json",
+      "sha256": "6c1017a39bd627e818b05f0697244ea81c90686b7b735d69e7f7226393424144"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/07-sea-spider/canonicalprompt-r02.txt",
+      "sha256": "08f0371158306ee1bfc3b671a7bd889e7983aaa49f40e05acb185c97a59bb8fd"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/07-sea-spider/canonicalprompt.txt",
+      "sha256": "59b19d465f084be2c27156ac14b779411345c372b61e2ca64075bd1fef462cb0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/07-sea-spider/request.json",
+      "sha256": "d6712e1dc2a196c102622bee1c4aa957f48a638df356e713a708015251b201d6"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/08-tarantula/canonicalprompt.txt",
+      "sha256": "81a1c3adefe9a3ba6190ea065f6f84e7f6cbab920c66f8ad5ebb0fbe18175e1c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/08-tarantula/request.json",
+      "sha256": "e27f52bcc53b930518547ff9c8f8d17ab172a7b9f0815ca6f9704bf41169684e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/01-cuttlefish/canonicalprompt.txt",
+      "sha256": "68985e4331bd33a1e6f289a51748494326fcb16d26c833c6978d01f34df7087e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/01-cuttlefish/request.json",
+      "sha256": "20bc16c2db7154c317113a17b4ff2e87c9d80798667cbd28caa4c51e013819a0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/02-deep-sea-octopus/canonicalprompt.txt",
+      "sha256": "0fc1511017dd56304b20447878c07cba85b95448a2754d2e8e4980bcb8c5259a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/02-deep-sea-octopus/request.json",
+      "sha256": "cabe25746ace37117da24e8109eb5b37f9e73fb07103ce68c213a5acfd6bcc3a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/03-giant-octopus/canonicalprompt.txt",
+      "sha256": "7f1f8a6eeb66922114db00184326ebce15bf2b138ff231564be77007d7b11d02"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/03-giant-octopus/request.json",
+      "sha256": "6c89b52fe1546537c68f67b2300f9f11e58bfa6ee72f3b5839c569bbea81b0b7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/04-giant-squid/canonicalprompt.txt",
+      "sha256": "efb0ca059a5f4525d277bada63954b8db73c7db9ff9c995e23960925eec01588"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/04-giant-squid/request.json",
+      "sha256": "21bae41be54b677c45da10617f3a05368cbfb614abb94c8140e735162ca7944d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/05-octopus/canonicalprompt.txt",
+      "sha256": "832fbcb2e2b32c08d5bcf4b739dde067af14db7a6980f1dc7ade77c41e6d1e7a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/05-octopus/request.json",
+      "sha256": "640c33cc5d46a9430770ce12b191cec092d3d70865c24ac6bf6bb6732f84a322"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/06-squid/canonicalprompt.txt",
+      "sha256": "5a27f48a7c6b10233b59121aa253bbcc2b64d25cfe32b6e8f286e984b598f97d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/06-squid/request.json",
+      "sha256": "db8c4cfbbd988ee29821ec56aace3a96128215c6cde0e96926baabc7a52ed692"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/07-vampire-squid/canonicalprompt.txt",
+      "sha256": "24e226db45f6e0724891a9218362aae4b218b11ada7e30e15f88a79e1ba3292d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/07-vampire-squid/request.json",
+      "sha256": "24e803f3e6f43fb6267db3e316e2b37c786cedc5791a4820b8089a08e20cba1f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/01-baboon/canonicalprompt.txt",
+      "sha256": "8cc8aec7ad27de71770c2aa2f95c3c99283914de83c2f12be0def23cbcad1063"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/01-baboon/request.json",
+      "sha256": "1b3282e7d055979f212b663899807dbd58c36b20b0400de5718d57c06030e13b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/02-chimpanzee/canonicalprompt.txt",
+      "sha256": "64d98303d554d70ec91aedcd89244ff6e4661ee3da7506a38a6faa3c9201e4ae"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/02-chimpanzee/request.json",
+      "sha256": "641ae002ba1cf2785784183285342f6078652c96272cffca57ba578b87d56f03"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/03-gibbon/canonicalprompt.txt",
+      "sha256": "ccaf734a8e6afebcdc87a4308ba8ddb61e1728c649ac205b7dca4cd4fce3b8d7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/03-gibbon/request.json",
+      "sha256": "9e51234403c60dd8da816254adecd881a739db091cbd078c82f6df29c44f5d03"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/04-mandrill/canonicalprompt.txt",
+      "sha256": "1e2534a5e8b5b4f6d89cb068f1f6e03b99b199992762d3f9d88e8feafd8234a1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/04-mandrill/request.json",
+      "sha256": "626f3f4a85738f0fa39b0f47cfa6ead8da44553d560db6b1e3f617538aaf7c9c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/05-marmoset/canonicalprompt.txt",
+      "sha256": "9062f0aca0e9258e923464c4ce6fd177482b31f86cb52b8a5e250d5402ab729e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/05-marmoset/request.json",
+      "sha256": "75b48f98c48d9d86e798753dd1c869098f429a014002bebea4899b3c7a8728fb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/06-orangutan/canonicalprompt.txt",
+      "sha256": "09e2def997a4e7c607350701c72fbcf5729fb2f82ee39ed7fc2ceb054770d65b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/06-orangutan/request.json",
+      "sha256": "80f7cf191ca3f4ee59275fc7d15a5fac5845762c20a877ee962beb7389628f12"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/01-giant-tube-worm/canonicalprompt.txt",
+      "sha256": "28e37d2bfb2c23510c4570b0006e1f928a638fd6a44f2d940cbe2f3537d5636b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/01-giant-tube-worm/request.json",
+      "sha256": "e578eec05cee04b22ad0413a63fb668af342cfe64e97d13342298cc4f79580d0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/02-marine-worm/canonicalprompt.txt",
+      "sha256": "4c5ae072915e808fdb8aeb8c4aa1b19694cf7d306e3bfc2eaeb35c9392496e56"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/02-marine-worm/request.json",
+      "sha256": "be116c7211ba2658772d038933ca3e9531caaddea0fc99e5ce062d154010e335"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/03-polychaete-worm/canonicalprompt.txt",
+      "sha256": "2de70bc01ba07f9ba227622461ccd7b43aed6e83f32e45ba2992d61e26a81133"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/03-polychaete-worm/request.json",
+      "sha256": "fad81aafa88dfe04e3f93171696f5692da1c8ae8629b55632958d5fca046ac7f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/04-scale-worm/canonicalprompt.txt",
+      "sha256": "185ade70603bd5a67e4fd1664cfe60ea47eaa2f4769cefe0ae96e3e12f709b7b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/04-scale-worm/request.json",
+      "sha256": "247714df9b55717fbd340c66943442b9162ec019bd1ff6e74e13c89439efa463"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/01-coconut-crab/canonicalprompt.txt",
+      "sha256": "22836cd6dd60eab19df85ed573763c8625d15ac0783d8f512038d4645092d823"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/01-coconut-crab/request.json",
+      "sha256": "dc0139ad5f7588ffbe5d914d376b38e1c5b976432b68fb8b5bc224feed7d3d48"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/02-fiddler-crab/canonicalprompt.txt",
+      "sha256": "c27c428a03bbcfccbd7a0330765e50d1fb6437ef64f6dca63b0441195e68b715"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/02-fiddler-crab/request.json",
+      "sha256": "9f1f4ec1acf54343370c8972b97043383c8e423ed287b6a38e2da0b681c4ed53"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/03-mud-crab/canonicalprompt-r02.txt",
+      "sha256": "5c618eab665a96f0a1e9c149c882969c004714c57229b1f784553a539cac9fd7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/03-mud-crab/canonicalprompt.txt",
+      "sha256": "1dbc8483d9be6cbec15cea802e01e280629847c16e537e72263ac14355e6e6a8"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/03-mud-crab/request.json",
+      "sha256": "b1044362be80400b42928dc9b5683ab2ed1996abdb9583a3dcf8a47f4b7dbe0b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/04-vent-crab/canonicalprompt.txt",
+      "sha256": "205c117c64b03e7e288140d70c690e10f0c3f2c6a120a5265446e4fd896d02ad"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/04-vent-crab/request.json",
+      "sha256": "1c3704a86a42a0620297632c106053441293680fdd461ef3e867d7875c33e10a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/01-clam/canonicalprompt.txt",
+      "sha256": "b736d3a3dab32b42981d8346cf9f1b28ef003d94e7d2e70b0fbb83d8b958271c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/01-clam/request.json",
+      "sha256": "c11e046b287372f891b9ca22628c8918a852fecb88ecd5cfd71ccd1d08bc7a8e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/02-giant-clam/canonicalprompt.txt",
+      "sha256": "16815a7a91218894735e6a601f4a96c277dad7e97e5040ba4e6e9f1135f5298a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/02-giant-clam/request.json",
+      "sha256": "3fad80b738a54eb471bb572cd83014d7a8bb0ae27a90d309993ba43c97c046f3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/03-razor-clam/canonicalprompt.txt",
+      "sha256": "e6adf9ed01ac6b4453342db5ea03cdcfe3dbcea405225920f0dfcd3436c5e222"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/03-razor-clam/request.json",
+      "sha256": "c8360c9656ba11c450ab335a5c67b95f1e531b6ba066a288be87f2ac201d4fac"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/01-crayfish/canonicalprompt.txt",
+      "sha256": "dea7d4bfb248efbcfd91a2f70b2b869c343b10fffed91f00a5d847319260e05c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/01-crayfish/request.json",
+      "sha256": "e93c9c883d055c6f75be060cbce8fbfbd7f910ebac3ed6a1665e6fb2dab142ba"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/02-hermit-crab/canonicalprompt.txt",
+      "sha256": "6bf346a92fe1c4846b9ad9aaf7e8cb52833de399b9150e8dcc9ff57a75ef74ec"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/02-hermit-crab/request.json",
+      "sha256": "3e5fda77c6608261c77a37eeb0ad8793fdb4e11d3ea32215d486ad82fa239e3d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/03-lobster/canonicalprompt.txt",
+      "sha256": "92bcfe813711aaf6ce0ec67ac3f9f809ef10445ef658211f19d551f4d0d3eb57"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/03-lobster/request.json",
+      "sha256": "a9032b523d904e0cc8e08cff7593970228563b10b0af9b4b647347252b05ed8e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/01-fruit-bat/canonicalprompt.txt",
+      "sha256": "1992b1ab4df2e0dd5bf670ce515b156775f4cf7ac18ced4b13b86a67c29b7f15"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/01-fruit-bat/request.json",
+      "sha256": "e49e91d901cc3ab19b2c5f1f4c66a6067a06b57b34a4964916d356ef1f2007e2"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/02-insect-eating-bat/canonicalprompt.txt",
+      "sha256": "887a006106198a7b643fa7bcf8f8ef4cbac8a78512c4804c9963bfe11108db6f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/02-insect-eating-bat/request.json",
+      "sha256": "d83c5267eddb36169b0349fa4b6661f8ddcfdff405a7939d19c8e7d86c06ab3a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/03-vampire-bat/canonicalprompt.txt",
+      "sha256": "a70064eee71f0520cb03e0d9361a6dcb459972812b8ffcc4d5d004095f3ae8a0"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/03-vampire-bat/request.json",
+      "sha256": "9ca26967453502500c70ffec491b713509f36ea907c23f7ba4ef61d896caa523"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/01-centipede/canonicalprompt.txt",
+      "sha256": "162a75da54209eb772b8688d22c36b0b698ce004504bf3e54de0495aeb3db1e9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/01-centipede/request.json",
+      "sha256": "c9179ba88a4e31ca0929967bb2167dc7078505427df9034a26a04cf0617dedee"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/02-giant-centipede/canonicalprompt.txt",
+      "sha256": "4c9493dc09fb95f6d957204dc8476fd85d2cdc4b0645ff27cf9dba4c45f8f822"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/02-giant-centipede/request.json",
+      "sha256": "cab2c732264200d3734f519d71c97c324163ed378799cf155811bbf1d33e8c5b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/03-millipede/canonicalprompt.txt",
+      "sha256": "9250d338e6c8c48266d9dfbdf8c8e7b1d3be7d5885ef9412f1f1f76e461c5904"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/03-millipede/request.json",
+      "sha256": "b61b28a799a0e2143b2948e588b89f2414de33cd099b4db34443f4fe2930e233"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/01-pyrosome/canonicalprompt.txt",
+      "sha256": "4a2289415b42878563800f38e3bd3ef250812993f9e32cb321e6bbf398d59892"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/01-pyrosome/request.json",
+      "sha256": "e054dc7222aa81759f3805123c2f0ed81701717a1de4b8802b97d7924f3ae9d3"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/02-salp/canonicalprompt.txt",
+      "sha256": "18069db42bb370001abb27b48c0eb301ad20401aa8fb58def6664d107d76b0df"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/02-salp/request.json",
+      "sha256": "d2edb99d06097d29601ec3df203a7739e78784ca1133157ed53f52ee69e28dc1"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/18-barnacle/01-barnacle/canonicalprompt.txt",
+      "sha256": "5491a655aa288e83c730b8859d1d84724654607979910d8c03e3b3877298546a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/18-barnacle/01-barnacle/request.json",
+      "sha256": "7982b907ecc95dbd049f1d6a09bfed50a1e032d96ec3a9d9e33d7055aa46ea62"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/19-larva/01-fly-larvae/canonicalprompt.txt",
+      "sha256": "4de2ada9b8d164455c7adf8097dccc3e2335a61e07a5e28604f0b57f58f73422"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/19-larva/01-fly-larvae/request.json",
+      "sha256": "5e3df4a9d92219420c9684512c85abf962faeec056ba0fc28e981ab2ce899fa9"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/20-lobopod/01-tardigrade/canonicalprompt.txt",
+      "sha256": "a7f8d5675d916a950d206cf9ea00e3f092bddccbf98b75ec06a86defe33c0ddf"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/20-lobopod/01-tardigrade/request.json",
+      "sha256": "c805196aeb78df6129f076070f7b2f4df167bbcef5d5fb9dd5bae57e8d99e1a7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/21-serpent/01-rattlesnake/canonicalprompt.txt",
+      "sha256": "2ecdda880b7b3aa232b29f84c5d0b310ffbe8697aa850f4005dda55c8f5d2327"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/21-serpent/01-rattlesnake/request.json",
+      "sha256": "05b529b6d5f3e1c9129a749a644296581a4f44f4e6d8577fe7cffae492f14f1f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/22-sessile-filter/01-sea-squirt/canonicalprompt.txt",
+      "sha256": "037962552d220a385f58dc3f1c3f2772f098959c3a3bab75db43218137cbc44c"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/22-sessile-filter/01-sea-squirt/request.json",
+      "sha256": "de9698fd0ac512252897375dbd7725b716340c70058c4867243afea8c01c2a11"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/23-xiphosuran/01-horseshoe-crab/canonicalprompt.txt",
+      "sha256": "f714d63e42e4ab7b455873259f787c25fd35e9ca447fa0e58dad96a1423a404e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/23-xiphosuran/01-horseshoe-crab/request.json",
+      "sha256": "86b4bfc9a4944e0541edd140fdd56d52b3d490920d081e66ffdaf74cb492f374"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/README.md",
+      "sha256": "06adf3da1776e06ae6c333f15ce238de2b8fd7a9f4c386a732d67bf2acb584fb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/SOURCE_REVIEW_SERVICE.md",
+      "sha256": "15381fb9119aa2b4209d4f619744b48317418607213061ffb3ddd1249157fab8"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/coverage-input.json",
+      "sha256": "d9e9a696a1ab3e1ab2508e9a23c519529abbed0ed727d6c4eaace34c37a13f50"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/current-layouts.json",
+      "sha256": "29f7320ab393b86bd579d615f4cdce70099ce8d4c9c7c3d0562d7002fa71bb5d"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/families.json",
+      "sha256": "967c576aff0199873c4b527ed478c758f5b27cc78e8e79ca1d2d757dfa455121"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-brown-bear/canonicalprompt-r02.txt",
+      "sha256": "8affbaa0109150c149525633b96feac1609cc4d56993662e891ed53722d970fe"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-brown-bear/canonicalprompt.txt",
+      "sha256": "507e59b119802c1a75d911c5dc1ab1dbc43297740e6192a8c9ad0c7d27e8151e"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-brown-bear/request-r02.json",
+      "sha256": "82de884d52f60de39029a1ded365b8b256409412df9d188333e6c97d88bc543b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-brown-bear/request.json",
+      "sha256": "bb5d93d94e9ac12a7200833abada0957a4fd1588eea8c0bc72bcfff4bed9a74b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-review-r01.json",
+      "sha256": "c3392b4ee40180d782c68078038f58cfd7f5c461220f5530c6d57c945a9bbaeb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/guardian-review-r02.json",
+      "sha256": "ecba3e8dbfe08d0489d31d1b4905a4b755231f3f5afc05b661c067a77b96473f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/layouts.mjs",
+      "sha256": "078d2a8ec7268e28abb4c82f68c36d6d6afc35f0fbbfbf3c7744e8e985429952"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/prepare.py",
+      "sha256": "be8c520d8678d4fe046f66c5815a401ddae7c1e947bc1d80067013c5a6b7cefb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/queue-r01.json",
+      "sha256": "7a7f37b62e73337c9d78d03891d052f151fc1dcdf8127a6efcb38e01dffb356b"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/queue.json",
+      "sha256": "ada8687fbe923b6a60f63a3681dda8390feac98bee262d03980b468d53429452"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/refine-and-verify.py",
+      "sha256": "a829fd2c35f79f69525240010ac51da115b82116c36583da95773631cd816a62"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/review-source-batch.mjs",
+      "sha256": "b62e206935d4e6c878cdb614124e9bd27855fd36ddc6e86a8e16eba9a912c79f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/source-index.json",
+      "sha256": "93cfe40282e7cc763067bf5c0b4dc032000dab729716855de7e400d715527ac7"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/source-metrics.mjs",
+      "sha256": "a102068ac70597333aadce04b79fedead7aca02f464ceb5c48abb9e122dffe2f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/source-review-service-example-output.json",
+      "sha256": "f152f62d948b073b00a9ff177cf7c17630a52d440724e1062e64d9354f4e61ad"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/source-review-service-example-output.json.raw.gz",
+      "sha256": "14e2b10331fa9e935de2846d154cb3bf1a29635905bc9e4f8c49e740f957bc15"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/source-review-service-example.json",
+      "sha256": "2815ea8ef512a2d6ec3a240af414a0369bc4c5f5763f36bc2700d303aa2b0317"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w1-source/verification.json",
+      "sha256": "9f6f4e830013588542e96f9c27e55624c66936639a51a950316a51a408317911"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/PIPELINE_REUSE.md",
+      "sha256": "e17172f30cf81ba764b980611c28750c54afd8b89024dddc6d902cf95e295a0a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/README.md",
+      "sha256": "3bb53c2da0d99ee468d3d1eb2cb3f9b9fe8d79630341bf5f2935d75ace0a6221"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/freeze.json",
+      "sha256": "ef4bf73bf08fd701d723e76a61209bf6ebc90fd32b7ea58c7668e9f5a1087b7a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/probe_entry.py",
+      "sha256": "aa7e9c6b97836a934b98c7abea9e2e77672e3ea939141dcdf799ff67c70775af"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/probe_lock.mjs",
+      "sha256": "dda0eaf5d5c089070ff16fa468c5a43b5071fcf694855977ffabd330cbf00085"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/qualification-r03.json",
+      "sha256": "0f75a9a6a36a2eb9b7d06065f53d1e5603ed5e44dfa31818da8d8de42aec9806"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/qualify.py",
+      "sha256": "2c845b1086b4af619ce6a565ce22b4942f0d990c3b3688a39024abe70bb75881"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/queue_owner.py",
+      "sha256": "d5fe8a3ac08249a8b99f541721b063bc01d65fe79201fefacdc1ab0bb17576bf"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w2-checkpoint/queue-proposal-r01/raw-probe-evidence.tar.gz",
+      "sha256": "2dda2b9a8f31096ae21bb7fc332a45ed4bb9e1714e4a6288fb12154975b39ea2"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/I5_CHANGES.md",
+      "sha256": "b50bb2b77004c0f342bbd971cdbbb05cf43e6d57a0639187679ff1f14e79c19f"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/README.md",
+      "sha256": "04dc1ef8c0d243345b40ca1a1aad48e0f11a73614c6715872725b0a9d27fdb06"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/evidence-verification.json",
+      "sha256": "e22c508239f334d34c6dec9adefff237f363c7eec0e2a384f61e403aa0ede3fd"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/holds-exact.json",
+      "sha256": "143aeda14efe6064f50f446281fdb353dbba96a0399f6232c3e7614d6e733dbb"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/manifest.json",
+      "sha256": "3ff45064a9502c13d4c602f1023bd970b8b4813dc4843cbb51e8f3e6f41a6303"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/serial-repair-plan.json",
+      "sha256": "b3e7a909fc2ceb48174d239dbdedca57fb4f2a2c62f0c2d7bfc43bbadb5e56b6"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/wave-audit-spec.json",
+      "sha256": "e670dc32e7aa8e83e3291251331e47e8f36cb5731b2324b26b09569a94c19e9a"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/work-order-examples-history.json",
+      "sha256": "ceb86de4b80f8bebcf20193330bc123c6f526a71e07adbf236afa483c52b36e7"
+    }
+  ],
+  "READY": [],
+  "guardianStatus": "SIZE_AND_MARGIN_HOLD",
+  "runtimeChanges": false
+}

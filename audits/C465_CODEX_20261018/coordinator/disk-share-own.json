@@ -1,0 +1,22 @@
+{
+  "stage": "disk-share-own",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-byte-identical-disk-sharing",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "/opt/homebrew/bin/python3.12",
+    "audits/C465_CODEX_20261018/coordinator/disk-sharing/share-identical-files.py",
+    "--all"
+  ],
+  "startedUnix": 1792384166.4870138,
+  "beforeGiB": 55.501529693603516,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.021,
+  "lowestGiB": 55.50150680541992,
+  "afterGiB": 55.635353088378906
+}

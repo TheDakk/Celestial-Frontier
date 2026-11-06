@@ -1,0 +1,189 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "ec2b9c5b6f723ea150f286589362794c6b3b231569724a8f8b47dd4ad888d21e",
+  "declarationHash": "b243c7004ff4339d0db9038d360c2676b7a16707a8a31d9334b318166e70871b",
+  "paintedPixels": 73220,
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1017,
+        "y": 627,
+        "width": 59,
+        "height": 21
+      },
+      "pixels": 808
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 997,
+        "y": 574,
+        "width": 82,
+        "height": 71
+      },
+      "pixels": 3396
+    },
+    {
+      "id": "body-segment-0",
+      "joint": "seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 908,
+        "y": 568,
+        "width": 44,
+        "height": 97
+      },
+      "pixels": 3667
+    },
+    {
+      "id": "body-segment-1",
+      "joint": "seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 826,
+        "y": 549,
+        "width": 82,
+        "height": 120
+      },
+      "pixels": 6716
+    },
+    {
+      "id": "body-segment-2",
+      "joint": "seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 745,
+        "y": 526,
+        "width": 81,
+        "height": 125
+      },
+      "pixels": 7152
+    },
+    {
+      "id": "body-segment-3",
+      "joint": "seg3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 663,
+        "y": 527,
+        "width": 82,
+        "height": 182
+      },
+      "pixels": 11676
+    },
+    {
+      "id": "body-segment-4",
+      "joint": "seg4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 582,
+        "y": 587,
+        "width": 81,
+        "height": 125
+      },
+      "pixels": 8702
+    },
+    {
+      "id": "body-segment-5",
+      "joint": "seg5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 500,
+        "y": 553,
+        "width": 82,
+        "height": 150
+      },
+      "pixels": 9435
+    },
+    {
+      "id": "body-segment-6",
+      "joint": "seg6",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 419,
+        "y": 551,
+        "width": 81,
+        "height": 104
+      },
+      "pixels": 7047
+    },
+    {
+      "id": "body-segment-7",
+      "joint": "seg7",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 330,
+        "y": 560,
+        "width": 89,
+        "height": 109
+      },
+      "pixels": 6363
+    },
+    {
+      "id": "body-segment-8",
+      "joint": "seg8",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 248,
+        "y": 612,
+        "width": 82,
+        "height": 59
+      },
+      "pixels": 3473
+    },
+    {
+      "id": "body-segment-9",
+      "joint": "seg9",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 181,
+        "y": 627,
+        "width": 67,
+        "height": 33
+      },
+      "pixels": 1271
+    },
+    {
+      "id": "neck-root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 952,
+        "y": 567,
+        "width": 45,
+        "height": 81
+      },
+      "pixels": 3514
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 2583,
+    "despilledPixels": 3,
+    "unresolvedEdgePixels": 0
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "8e913bd5b33562c88e772ab0050c18da0158d6f211debe0caeba9e361da59cca",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Quail",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/15-quail/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b5953b2f5fcb1b8678d75aee9890f052282267f37cd51a088bd48cad7c260b49"
+}

@@ -17,6 +17,7 @@ import {
 
 interface TestWindow extends Window {
   readonly Element: typeof Element;
+  readonly HTMLElement: typeof HTMLElement;
   readonly Event: typeof Event;
   readonly KeyboardEvent: typeof KeyboardEvent;
   readonly MouseEvent: typeof MouseEvent;
@@ -426,6 +427,155 @@ afterEach(() => {
 });
 
 describe('Arc 3 Engineering/Shipyard presentation controller', () => {
+  it('opts into compact Shipyard hierarchy without losing facts, actions, the native Close, or current-look fallback', () => {
+    const view = shell();
+    const onAction = vi.fn();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, openers: [view.opener], onAction });
+    setFullView(readModel({ stage: 0 }));
+    open(view);
+    const facts = (): string[] => [...view.body.querySelectorAll<HTMLElement>(
+      '[data-ship-hardpoint], [data-ship-system], [data-research-id], [data-recipe-id], [data-engineering-fact], [data-engineering-deposits]',
+    )].map((node) => node.outerHTML).sort();
+    const originalFacts = facts();
+    const originalActions = [...view.body.querySelectorAll<HTMLButtonElement>('[data-engineering-action]')]
+      .map((node) => node.outerHTML).sort();
+    const originalRole = view.body.querySelector('.engineering-ship-role')!.textContent;
+    expect(view.body.querySelector('[data-engineering-pilot-style]')).toBeNull();
+    expect(view.body.querySelector('[data-shipyard-candidate]')).toBeNull();
+    controller.setPresentation({ mode: 'audiovisual-pilot', starterScoutImageUrl: '/assets/scout.webp' });
+    expect(view.body.dataset.engineeringPresentation).toBe('audiovisual-pilot');
+    expect([...view.body.querySelectorAll<HTMLDetailsElement>('[data-engineering-section]')]
+      .map((node) => node.dataset.engineeringSection)).toEqual(['ship-details', 'fabricator', 'research', 'mining', 'skimming']);
+    expect(view.body.querySelector('[data-engineering-section="fabricator"] > summary')!.textContent).toBe('Fabricator · 1 available');
+    expect(view.body.querySelector('[data-engineering-section="research"] > summary')!.textContent).toBe('Research Bench · 1 available');
+    expect(view.body.querySelector('.engineering-ship-role')!.textContent).toBe(originalRole);
+    expect(facts()).toEqual(originalFacts);
+    expect([...view.body.querySelectorAll<HTMLButtonElement>('[data-engineering-action]')]
+      .map((node) => node.outerHTML).sort()).toEqual(originalActions);
+    const details = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="ship-details"]')!;
+    const provenance = details.querySelector<HTMLElement>('.engineering-ship-provenance')!;
+    const mountRow = details.querySelector<HTMLElement>('[data-ship-hardpoint]')!;
+    expect(details.open).toBe(false);
+    expect(browserFocusEligible(provenance)).toBe(false);
+    expect(browserFocusEligible(mountRow)).toBe(false);
+    expect(browserFocusEligible(details.querySelector<HTMLElement>('summary')!)).toBe(true);
+    details.open = true;
+    expect(browserFocusEligible(provenance)).toBe(true);
+    expect(browserFocusEligible(mountRow)).toBe(true);
+    const recipeDetails = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!;
+    const action = recipeDetails.querySelector<HTMLButtonElement>('[data-recipe-id="plate"] button')!;
+    expect(browserFocusEligible(action)).toBe(false);
+    recipeDetails.open = true;
+    expect(browserFocusEligible(action)).toBe(true);
+    action.click();
+    expect(onAction).toHaveBeenCalledExactlyOnceWith({ operation: 'fabricate', id: 'plate' });
+    expect(Object.isFrozen(onAction.mock.calls[0]![0])).toBe(true);
+    expect([...view.body.querySelectorAll<HTMLButtonElement>('[data-engineering-action]')].every((node) => node.disabled)).toBe(true);
+    expect(view.panel.querySelectorAll('[data-pnx="shipyard"]')).toHaveLength(1);
+    expect(view.panel.querySelector('[data-pnx="shipyard"]')).toBe(view.close);
+    expect(view.close.disabled).toBe(false);
+    controller.setPending(null);
+    controller.setPresentation(null);
+    expect(view.body.dataset.engineeringPresentation).toBeUndefined();
+    expect(view.body.querySelector('[data-engineering-pilot-style]')).toBeNull();
+    expect(view.body.querySelector('[data-shipyard-candidate]')).toBeNull();
+    expect([...view.body.querySelectorAll('details > summary')].map((node) => node.textContent))
+      .toEqual(['Mining', 'Stellar Skimming', 'Research Bench', 'Fabricator']);
+    expect(facts()).toEqual(originalFacts);
+    controller.registration().onClose();
+    expect(view.document.activeElement).toBe(view.opener);
+    expect(controller.diagnostics()).toMatchObject({ activeCount: 0, retainedDomCount: 0, activePreviewCount: 0, retainedPreviewCount: 0 });
+  });
+
+  it('retains pilot disclosure, exact focus and native reading position across heartbeat and releases missing summary focus to Close', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, openers: [view.opener], onAction: vi.fn() });
+    const presentation = { mode: 'audiovisual-pilot' as const, starterScoutImageUrl: '/assets/scout.webp' };
+    controller.setPresentation(presentation);
+    setFullView(readModel({ stage: 0 }));
+    expect(controller.diagnostics().retainedDomCount).toBe(0);
+    open(view);
+    const details = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="ship-details"]')!;
+    details.open = true;
+    const firstSummary = details.querySelector<HTMLElement>('summary')!;
+    firstSummary.focus();
+    view.panel.scrollTop = 71; view.panel.scrollLeft = 2;
+    const focus = vi.spyOn(dom!.window.HTMLElement.prototype, 'focus');
+    const firstPreview = view.body.querySelector('[data-cf-shipyard-preview]');
+    controller.setPresentation({ ...presentation });
+    expect(view.body.querySelector('[data-cf-shipyard-preview]')).toBe(firstPreview);
+    setFullView(readModel({ stage: 0, miningDue: 3 }));
+    const nextDetails = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="ship-details"]')!;
+    expect(nextDetails.open).toBe(true);
+    expect(nextDetails.querySelector('summary')).not.toBe(firstSummary);
+    expect(view.document.activeElement).toBe(nextDetails.querySelector('summary'));
+    expect(focus).toHaveBeenLastCalledWith({ preventScroll: true });
+    expect(view.panel.scrollTop).toBe(71); expect(view.panel.scrollLeft).toBe(2);
+    controller.setPresentation(null);
+    expect(view.document.activeElement).toBe(view.close);
+    expect(view.panel.scrollTop).toBe(71); expect(view.panel.scrollLeft).toBe(2);
+    focus.mockRestore();
+    controller.registration().onClose();
+    expect(view.document.activeElement).toBe(view.opener);
+  });
+
+  it('leaves ordinary focus scrolling authoritative before and after the pilot comparison', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, openers: [view.opener], onAction: vi.fn() });
+    setFullView(readModel({ stage: 0 }));
+    open(view);
+    const research = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')!;
+    research.open = true;
+    research.querySelector<HTMLElement>('summary')!.focus();
+    const nativeFocus = dom!.window.HTMLElement.prototype.focus;
+    const focus = vi.spyOn(dom!.window.HTMLElement.prototype, 'focus').mockImplementation(function (this: HTMLElement, options?: FocusOptions) {
+      nativeFocus.call(this, options);
+      // Model the browser's lawful focus scroll, which jsdom does not perform.
+      if (view.body.contains(this) && options?.preventScroll !== true) {
+        view.panel.scrollTop = 9; view.panel.scrollLeft = 1;
+      }
+    });
+    try {
+      view.panel.scrollTop = 71; view.panel.scrollLeft = 2;
+      setFullView(readModel({ stage: 0, miningDue: 3 }));
+      expect(focus).toHaveBeenLastCalledWith();
+      expect(view.panel.scrollTop).toBe(9); expect(view.panel.scrollLeft).toBe(1);
+      view.panel.scrollTop = 71; view.panel.scrollLeft = 2;
+      controller.setPresentation({ mode: 'audiovisual-pilot', starterScoutImageUrl: '/assets/scout.webp' });
+      expect(focus).toHaveBeenLastCalledWith({ preventScroll: true });
+      expect(view.panel.scrollTop).toBe(71); expect(view.panel.scrollLeft).toBe(2);
+      controller.setPresentation(null);
+      expect(focus).toHaveBeenLastCalledWith({ preventScroll: true });
+      expect(view.panel.scrollTop).toBe(71); expect(view.panel.scrollLeft).toBe(2);
+      view.panel.scrollTop = 93; view.panel.scrollLeft = 3;
+      setFullView(readModel({ stage: 0, miningDue: 4 }));
+      expect(focus).toHaveBeenLastCalledWith();
+      expect(view.panel.scrollTop).toBe(9); expect(view.panel.scrollLeft).toBe(1);
+      expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')!.open).toBe(true);
+      expect(view.document.activeElement).toBe(view.body.querySelector('[data-engineering-section="research"]>summary'));
+    } finally { focus.mockRestore(); }
+  });
+
+  it('keeps protected pilot inspection independently available and switches upgraded ships back to their native preview', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
+    controller.setPresentation({ mode: 'audiovisual-pilot', starterScoutImageUrl: '/assets/scout.webp' });
+    controller.setView(protectedView(0));
+    open(view);
+    expect(view.body.querySelector('[data-shipyard-candidate]')).not.toBeNull();
+    expect(view.body.querySelectorAll('[data-engineering-action]')).toHaveLength(0);
+    expect(view.body.querySelector('[data-engineering-state="unavailable"]')!.textContent)
+      .toBe('Engineering details and actions are unavailable while this expedition is protected.');
+    setFullView(readModel({ stage: 2 }));
+    expect(view.body.querySelector('[data-shipyard-candidate]')).toBeNull();
+    expect([...view.body.querySelectorAll('[data-hardpoint]')].map((node) => node.getAttribute('data-hardpoint')))
+      .toEqual(['array', 'autoext']);
+    expect(controller.diagnostics()).toMatchObject({ activeCount: 1, activePreviewCount: 1, retainedPreviewCount: 0, faultCount: 0 });
+    expect(() => controller!.setPresentation({ mode: 'audiovisual-pilot', starterScoutImageUrl: ' ' })).toThrow('nonempty image URL');
+    expect(view.body.querySelector('[data-shipyard-candidate]')).toBeNull();
+  });
+
+
   it('owns one static shell with independent action, summary, and 320px bounds controls', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
     expect(touchFloorContract(index, '#shipyardpanel button.engineering-action')).toBe(true);

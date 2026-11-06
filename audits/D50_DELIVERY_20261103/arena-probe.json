@@ -1,0 +1,2261 @@
+{
+ "schema": "cf.d50-arena-probe/v1",
+ "test": "apps/game/src/battle2/library-arena.test.ts (every archetype with a card fights)",
+ "rows": [
+  {
+   "name": "Aardvark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Abalone",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "African Elephant",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "African Wild Dog",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Agama",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Agouti",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Albatross",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Alligator",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Alligator Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Alpaca",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Alpine Salamander",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Anaconda",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Anchovy",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Angelfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Anglerfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Anole",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ant",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Antelope",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Aphid",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Arapaima",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Archerfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Arctic Cod",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Arctic Fox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Arctic Hare",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Armadillo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Arowana",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Auk",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Avocet",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Axolotl",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bactrian Camel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Badger",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Banana Slug",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Banteng",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Barracuda",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Barreleye",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Basking Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Beaked Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Beaver",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Beluga",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bison",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bittern",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Black Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Black Fly",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Blenny",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Blind Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Blind Salamander",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Blobfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Boa",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bonefish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bongo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Booby",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bowfin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Box Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Boxfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Brittle Star",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Brown Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Buffalo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bull",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bumblebee",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Bustard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Butterfly",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Butterflyfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Caddisfly",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Caecilian",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Caiman",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Camel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Capuchin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Capybara",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Caracal",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cardinalfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Caribou",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Carp",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Carrion Beetle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Catfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cattle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cave Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cave Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Chameleon",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Chamois",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Char",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cheetah",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Chicken",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Chipmunk",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Chiton",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Chough",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cicada",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cichlid",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Clam",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Clouded Leopard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Clownfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Coastal Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Coati",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cobra",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cockatoo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cockroach",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cod",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Coelacanth",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cold-Adapted Insect",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cold-Water Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Colugo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Conch",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Condor",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Coot",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cormorant",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cottonmouth",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cow",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cowrie",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Coyote",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Crane",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Cricket",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Crocodile",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Crow",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Curlew",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Damselfish",
+   "ok": false,
+   "why": "refusals 2 ARAP skin: unresolved folded triangles: 2"
+  },
+  {
+   "name": "Deep-Sea Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Deer",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Desert Owl",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dingo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dog",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dolphin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Donkey",
+   "ok": false,
+   "why": "refusals 86 ARAP skin: unresolved folded triangles: 8"
+  },
+  {
+   "name": "Dove",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dromedary Camel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dugong",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Dung Beetle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Earthworm",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Eider Duck",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Eland",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Electric Eel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Elk",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Emu",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Fennec Fox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Finch",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Firefly",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Fisher",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Fishing Cat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Flamingo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Flatworm",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Flatworm"
+  },
+  {
+   "name": "Flounder",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Flying Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Flying Gurnard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Flying Squirrel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Forest Elephant",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Fox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Freshwater Snail",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Frigatebird",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Frilled Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Fur Seal",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gannet",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gar",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Garter Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gaur",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gazelle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gecko",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gerbil",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gerenuk",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gharial",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Giant Isopod",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Giant Isopod"
+  },
+  {
+   "name": "Giant Otter",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Giant Salamander",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Giant Water Bug",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gila Monster",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Giraffe",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Goat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Goby",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Godwit",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Goldfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gopher",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gorilla",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grass Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grasshopper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Gray Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grayling",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Great White Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grizzly Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ground Squirrel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grouper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Grouse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Guillemot",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Guinea Pig",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Guineafowl",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Haddock",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Halibut",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hammerhead Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hamster",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hare",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Harpy Eagle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hartebeest",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hawk",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hedgehog",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Herring",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hippopotamus",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hoatzin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hornbill",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Horned Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Horse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Howler Monkey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hummingbird",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Humpback Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hyena",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Hyrax",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ibis",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ice Worm",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Ice Worm"
+  },
+  {
+   "name": "Icefish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Iguana",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Isopod",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Isopod"
+  },
+  {
+   "name": "Jackal",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Jackrabbit",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Jaguar",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Jay",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Juvenile Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Kestrel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Killifish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "King Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Kinkajou",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Knifefish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Koala",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Komodo Dragon",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Kudu",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ladybug",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lamprey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Land Iguana",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Land Snail",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Langur",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lanternfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Leech",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Lemming",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lemur",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Leopard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Limpet",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Lion",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Llama",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Locust",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Lynx",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Macaque",
+   "ok": false,
+   "why": "refusals 6 Contact: faint@585.333333333333 exceeds scale compression bound"
+  },
+  {
+   "name": "Macaw",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mackerel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Magpie",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mahi-Mahi",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mako Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mamba",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Manatee",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Maned Wolf",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mara",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Marine Iguana",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Marlin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Marsh Rodent",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Marten",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Meerkat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mink",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Minnow",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mole",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mongoose",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Monitor Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Monkfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Moorhen",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Moose",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Moray Eel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mountain Goat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mountain Lizard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mountain Tapir",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mountain Viper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mouse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mudminnow",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mudskipper",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Mullet",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Musk Ox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Mussel",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Nautilus",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Nautilus"
+  },
+  {
+   "name": "Newt",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Nilgai",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Nudibranch",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Ocean Sunfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ocelot",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Okapi",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Orca",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Oryx",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Osprey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ostrich",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Otter",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Oyster",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Oystercatcher",
+   "ok": false,
+   "why": "refusals 1 ARAP skin: unresolved folded triangles: 13"
+  },
+  {
+   "name": "Pacu",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Paddlefish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pampas Fox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Panda",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Parrot",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Parrotfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Partridge",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Peccary",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pelican",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Penguin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pig",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pika",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pilot Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Piranha",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Platypus",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Plover",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Polar Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pollock",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pond Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Porpoise",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Possum",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Prairie Dog",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Prawn",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Proboscis Monkey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pronghorn",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Ptarmigan",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Pufferfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Puffin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Quail",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Quoll",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rabbit",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rabbitfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Raccoon",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rail",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rat Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Raven",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Red Fox",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Red Panda",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Reef Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Reindeer",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Remora",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rhea",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rhinoceros",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Right Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "River Dolphin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Roadrunner",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Robin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Rooster",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Saiga",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sailfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sand Boa",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sand Cat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sand Dollar",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Sand Dollar"
+  },
+  {
+   "name": "Sandgrouse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sandpiper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sardine",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Scallop",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Screamer",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sculpin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sea Anemone",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Sea Anemone"
+  },
+  {
+   "name": "Sea Bass",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sea Lion",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sea Otter",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sea Snail",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Sea Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Seabird",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Seriema",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Serval",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sheep",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Shrew",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Skink",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Skua",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sloth",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sloth Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Small Fish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snail",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Snailfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snapper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snapping Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snipe",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snow Leopard",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snowshoe Hare",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Snowy Owl",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Softshell Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Spectacled Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sperm Whale",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Spider",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Spider Monkey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sponge",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Spoonbill",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Spotted Hyena",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Springbok",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Springtail",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Starling",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Stoat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Stonefly",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Stork",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Striped Hyena",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sugar Glider",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sun Bear",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Sunfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Surgeonfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Swallow",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Swan",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Swift",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Swordfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tahr",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Takin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tamarin",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tanager",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tapir",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tarpon",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tasmanian Devil",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tegu",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Termite",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tern",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tetra",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tiger",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tiger Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tigerfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tilapia",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tortoise",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tree Shrew",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tree Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Triggerfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Trout",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Tube Worm",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Tube Worm"
+  },
+  {
+   "name": "Tuna",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Turkey",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Turtle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Vine Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Viper",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Viperfish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Vole",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Vulture",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wahoo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Walleye",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wasp",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Water Beetle",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Water Buffalo",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Water Snail",
+   "ok": false,
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Water Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Water Vole",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Weasel",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Weaverbird",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Whale Shark",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Whip Snake",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Whitefish",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Ass",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Boar",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Horse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Pig",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Pony",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wild Sheep",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wildcat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wildebeest",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wolverine",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wombat",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Woodpecker",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Wrasse",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Yak",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "name": "Zebra",
+   "ok": true,
+   "why": ""
+  }
+ ]
+}

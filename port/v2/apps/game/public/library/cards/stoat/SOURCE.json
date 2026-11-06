@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Stoat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/09-stoat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8e1f712f2ae3a9f2db37ab703df3ab0316fd8af4fdc74905584e6b6be6f30c8d"
+}

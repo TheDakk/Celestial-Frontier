@@ -1,0 +1,6 @@
+{
+  "url": "https://raw.githubusercontent.com/huggingface/diffusers/040c7cde626504d14caf63b13b8b25b6a9f62120/src/diffusers/pipelines/flux2/pipeline_flux2_klein.py",
+  "scope": "Small official source only; no weights or execution",
+  "status": "READ_UNAVAILABLE",
+  "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+}

@@ -1,0 +1,227 @@
+{
+  "name": "Salmon",
+  "family": "fish",
+  "species": {
+    "name": "Salmon",
+    "aspect": 3.5,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "swimming",
+    "mustRead": [
+      "small fleshy adipose fin behind the dorsal",
+      "forked tail",
+      "hooked kype jaw on spawning males"
+    ]
+  },
+  "genome": {
+    "seed": 3927271512,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 6,
+    "body": 2,
+    "loco": 13,
+    "trait": 20,
+    "size": 0,
+    "diet": 3,
+    "head": 4,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 8,
+    "detail": 6,
+    "accent": 2,
+    "temper": 5,
+    "sense": 4,
+    "repro": 5,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Salmon"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Salmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3927271512\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 145,
+  "contract": {
+    "id": "fish",
+    "version": 1,
+    "clipSetId": "fish-aquatic-v1",
+    "graph": [
+      [
+        "head",
+        "root"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "spine0",
+        "root"
+      ],
+      [
+        "spine1",
+        "spine0"
+      ],
+      [
+        "spine2",
+        "spine1"
+      ],
+      [
+        "spine3",
+        "spine2"
+      ],
+      [
+        "spine4",
+        "spine3"
+      ],
+      [
+        "spine5",
+        "spine4"
+      ],
+      [
+        "caudal",
+        "spine5"
+      ],
+      [
+        "dorsal",
+        "spine1"
+      ],
+      [
+        "pectoralFar",
+        "root"
+      ],
+      [
+        "pectoralNear",
+        "root"
+      ]
+    ],
+    "bodyAxis": [
+      "spine0",
+      "spine5"
+    ],
+    "joints": [
+      "root",
+      "head",
+      "jaw",
+      "spine0",
+      "spine1",
+      "spine2",
+      "spine3",
+      "spine4",
+      "spine5",
+      "caudal",
+      "dorsal",
+      "pectoralFar",
+      "pectoralNear"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "head": {
+        "min": -30,
+        "max": 30
+      },
+      "jaw": {
+        "min": -35,
+        "max": 5
+      },
+      "spine0": {
+        "min": -35,
+        "max": 35
+      },
+      "spine1": {
+        "min": -35,
+        "max": 35
+      },
+      "spine2": {
+        "min": -35,
+        "max": 35
+      },
+      "spine3": {
+        "min": -35,
+        "max": 35
+      },
+      "spine4": {
+        "min": -35,
+        "max": 35
+      },
+      "spine5": {
+        "min": -35,
+        "max": 35
+      },
+      "caudal": {
+        "min": -50,
+        "max": 50
+      },
+      "dorsal": {
+        "min": -35,
+        "max": 35
+      },
+      "pectoralFar": {
+        "min": -60,
+        "max": 60
+      },
+      "pectoralNear": {
+        "min": -60,
+        "max": 60
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.1,
+        "max": 0.85,
+        "kind": "distance",
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "caudal/body",
+        "min": 0.05,
+        "max": 0.9,
+        "kind": "ratio",
+        "bones": [
+          "caudal"
+        ],
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      },
+      {
+        "id": "head/body",
+        "min": 0.04,
+        "max": 0.8,
+        "kind": "ratio",
+        "bones": [
+          "head"
+        ],
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      }
+    ]
+  }
+}

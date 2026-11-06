@@ -1,0 +1,15 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit",
+  "sourceBindingSha256": "952182704eb934c5061e36abbffd357ffb2eb85003cc2452e33b17cfc34e10d9",
+  "candidateBindingSha256": "421d5b9127a9d208ef9d7010e959744df9aa5e8facda063ad6ed44bf8a509b0a",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "head"
+    ]
+  ],
+  "sourceMasterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+  "sourceAtlasSha256": "37e15fd7eae7a7edaefe7cd5b4ae13752a03a17950817f5ff8eada96baf479b4",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

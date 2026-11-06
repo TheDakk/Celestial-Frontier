@@ -1,0 +1,68 @@
+{
+  "name": "Brittle Star",
+  "family": "radial",
+  "species": {
+    "name": "Brittle Star",
+    "aspect": 1,
+    "headFrac": 0.15,
+    "eyes": "hidden",
+    "posture": "sprawling",
+    "mustRead": [
+      "tiny central disc",
+      "five snaky whip arms many times longer than the disc is wide"
+    ],
+    "note": "arms are thin and flexible and clearly set off from the disc - not the thick tapering arms of a starfish"
+  },
+  "genome": {
+    "seed": 1016348045,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 7,
+    "body": 8,
+    "loco": 14,
+    "trait": 22,
+    "size": 1,
+    "diet": 3,
+    "head": 4,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 0,
+    "detail": 5,
+    "accent": 6,
+    "temper": 4,
+    "sense": 1,
+    "repro": 0,
+    "life": 4,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Brittle Star"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brittle Star\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1016348045\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 463,
+  "profile": {
+    "id": "echinoderm",
+    "names": [
+      "Starfish",
+      "Sea Urchin",
+      "Sea Cucumber",
+      "Sand Dollar",
+      "Brittle Star"
+    ],
+    "candidateTemplates": [
+      "radial"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No universal sting, jaw or jellyfish bell."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "cf.manual-anatomy-review/v1",
+  "reviewer": "Codex",
+  "masterSha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a",
+  "presence": {
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "counts": {
+    "legs": 6,
+    "feet": 6,
+    "wings": 4,
+    "antennae": 2
+  },
+  "wingOwnership": "Two visible lobes per existing near/far wing owner. No fourth-wing inference or extra joint invented.",
+  "visibleFeetPx": {
+    "frontFar": [
+      1051,
+      875
+    ],
+    "frontNear": [
+      1040,
+      938
+    ],
+    "midFar": [
+      963,
+      935
+    ],
+    "midNear": [
+      833,
+      1008
+    ],
+    "hindFar": [
+      748,
+      931
+    ],
+    "hindNear": [
+      654,
+      965
+    ]
+  },
+  "facing": "right",
+  "paintingFinding": "Complete abdomen and all wing/leg tips within frame; six separate terminal feet, no occluded declaration needed.",
+  "recipeHash": "20cc5903d9d0ac8dcd3714c110d14d3f25ff0ba7ebe33cc968f4fbe9155da9ac",
+  "bindingHash": "d18f7116c4dc4400646752b2e26b7a3e60f5e4164a96fd28b30aa9d80cd48aea"
+}

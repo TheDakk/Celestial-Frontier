@@ -1,0 +1,40 @@
+{
+  "creatureId": "c243b02r1c3-13-humpback-whale",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "b733b908bfa7de021ba92c7de335354237099cfc69940a8a06c17bc929674de9"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "9abbf986a88c8d387e80cf9c65a11e69eccdf49f3907a886d4b4a39f0ed638b7"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "49e0a13da33c1f60e246ecbe54b6f4f599e90a1a089c16b4dad97038697a9035"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "147c568ab9f2be30a65661cf3a0a83562a178b84e274f2456f5f9caa2821d5c2"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "17cb5980901f744942d36ac41318a9ed94c05886aa5ea99f928d281ded0a9c3c"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "d5c4c80f036cd5aa4cfa40bccfde948d435051b2afff612806df17159153d32a"
+    },
+    {
+      "name": "axial-body.png",
+      "path": "parts/axial-body.png",
+      "sha256": "f0d543a21f2504afd835f7a2b37adea94b6c5941160c08c40a64f1b244a42d4c"
+    }
+  ]
+}

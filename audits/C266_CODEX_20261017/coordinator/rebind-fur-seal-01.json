@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-fur-seal-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-fur-seal-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "fur-seal"
+  ],
+  "startedUnix": 1792275769.3323362,
+  "beforeGiB": 90.4624137878418,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 90.46238327026367,
+  "afterGiB": 90.45783996582031
+}

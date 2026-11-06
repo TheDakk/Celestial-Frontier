@@ -1,0 +1,66 @@
+{
+  "name": "Caecilian",
+  "family": "serpent",
+  "species": {
+    "name": "Caecilian",
+    "aspect": 12,
+    "headFrac": 0.05,
+    "eyes": "hidden",
+    "posture": "crawling",
+    "mustRead": [
+      "limbless worm-like body ringed with annular grooves",
+      "blunt bullet-shaped head with a tiny sensory tentacle",
+      "no visible eyes and no tail fin"
+    ],
+    "note": "An amphibian, not a worm or a snake - the rings are skin folds, and it has slick moist skin with no scales."
+  },
+  "genome": {
+    "seed": 1194279325,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 6,
+    "body": 0,
+    "loco": 15,
+    "trait": 14,
+    "size": 5,
+    "diet": 2,
+    "head": 0,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 6,
+    "detail": 6,
+    "accent": 12,
+    "temper": 8,
+    "sense": 1,
+    "repro": 1,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Caecilian"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caecilian\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1194279325\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 365,
+  "profile": {
+    "id": "caecilian",
+    "names": [
+      "Caecilian"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike"
+    ],
+    "notes": "Limb-free amphibian; no venom or constriction inferred."
+  }
+}

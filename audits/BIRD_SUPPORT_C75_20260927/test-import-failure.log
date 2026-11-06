@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts [ apps/game/src/motion/painted-bird-author.test.ts ]
+Error: Cannot find module './gsap-player.js' imported from /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/painted-bird-author.test.ts
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:7:1
+      5| import {buildTimeline,buildActionTimeline} from './timeline.js';
+      6| import {actionsFor} from './family-actions.js';
+      7| import {createGsapPlayer} from './gsap-player.js';
+       | ^
+      8| import {createFamilyContactSolver,observedContactSupports} from '../cr…
+      9| const root=new URL('../../../../../../',import.meta.url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  13 passed (13)
+   Start at  03:39:40
+   Duration  625ms (transform 340ms, setup 0ms, import 304ms, tests 357ms, environment 0ms)
+

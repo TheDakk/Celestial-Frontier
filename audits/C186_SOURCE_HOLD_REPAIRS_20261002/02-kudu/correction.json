@@ -1,0 +1,36 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "02-kudu",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/master.png",
+  "sourceSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/02-kudu/packet/authoring.json",
+  "priorAuthoringSha256": "327c621f00a385b1d77e11677f7898c80d6506c7441cdcebb7ad45b1828d9c30",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [
+    "head-horns-outline"
+  ],
+  "findings": [
+    "Two rounded pinnae are visible separately from the two spiral horns. The old near-tip point x750/y150 is on horn material, not an ear. Each corrected pinna is traced at its observed silhouette.",
+    "Both horns belong rigidly to the head owner, not ear joints. Far leg proximal attachments partly emerge from behind torso; this correction does not assert hidden roots."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation outcome pending; no visual motion admission.",
+    "Unedited transferred landmarks/regions have not become independent manual reference evidence."
+  ]
+}

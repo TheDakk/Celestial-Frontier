@@ -1,0 +1,105 @@
+{
+  "schema": "cf.c198-hold-queue-terminal/v1",
+  "status": "TERMINAL_BOUNDED_DELIVERY",
+  "supersedes": "queue-status.pending.json",
+  "qualityAccepted": false,
+  "native": false,
+  "rows": [
+    {
+      "subject": "Capuchin prior source",
+      "terminal": "CANDIDATE_FOR_SCORING_HELD",
+      "selectedFit": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit",
+      "review": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/visual-review.final.json",
+      "requirement": "Full-size finished-rig/native review must assess the prior neck seam throughout the film.",
+      "recordFileSha256": "e4b290a32bc4b7a11477385e74116ffa5edec99613bd4911bf5707793d1086c8",
+      "bindingFileSha256": "b4cca64fad85e80f759a1e4de70f5089bb0dd5723a01fc624ca88515ed5037f4",
+      "internalRecipeHash": "fc4bea0ed333f25bd35bffb5a4d2a1a1f9083ff9cce9abd9f17b6f618901ad5b",
+      "internalBindingHash": "d135ec2d837d4ee91390dbf55aff51b22a3a9320c7af216a8ca77b4be8a9fb6e"
+    },
+    {
+      "subject": "Tiger Shark",
+      "terminal": "CANDIDATE_FOR_SCORING_HELD",
+      "selectedFit": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit",
+      "review": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/visual-review.final.json",
+      "requirement": "Native/full-size scoring of the exact new source-bound fit, tail proportions and hard fin/texture seams.",
+      "recordFileSha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac",
+      "bindingFileSha256": "4dc5130d7d572367dd86a88d7e1d8fa4a065bf87da6f48de04f7e04ee491224a",
+      "internalRecipeHash": "17ec462c8c42ac5c2c001c1453dc14c071c74b1e5e98aefd6532be7065629a1e",
+      "internalBindingHash": "a4a5b03471d98a119ba21ce088b230b8f56b255cbf1f0cead993acd7afa4f183"
+    },
+    {
+      "subject": "Snow Petrel",
+      "terminal": "VISUAL_REJECT",
+      "selectedFit": null,
+      "diagnosticFits": [
+        "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01",
+        "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit",
+        "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit"
+      ],
+      "review": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/visual-review.final.json",
+      "requirement": "A source contour/control-boundary solution preserving head/eye shape while closing the axial opening. Current join successor is not eligible for admission."
+    },
+    {
+      "subject": "Rhea",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_SOURCE_HOLDS_20261003/04-rhea-source-hold/source-review.json",
+      "requirement": "A separately visible far-wing base and unambiguous fan ownership; no hidden root may be invented."
+    },
+    {
+      "subject": "Capybara C248",
+      "terminal": "STATIC_AND_VISUAL_HOLD",
+      "selectedFit": null,
+      "diagnosticFit": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01",
+      "review": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/visual-review.final.json",
+      "requirement": "New source-observed non-tail ownership/contact authoring. Tail absence is corrected but does not solve unchanged tail-action compression or inherited head/neck openings."
+    },
+    {
+      "subject": "Prawn",
+      "terminal": "SOURCE_FRINGE_HOLD",
+      "selectedFit": null,
+      "existingFit": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+      "review": "audits/C198_SOURCE_HOLDS_20261003/crustacean-review.final.json",
+      "requirement": "Real source-paint fringe correction/scoring; current exact attack-bound source is preserved."
+    },
+    {
+      "subject": "Shrimp",
+      "terminal": "SOURCE_OWNERSHIP_HOLD",
+      "selectedFit": null,
+      "existingFit": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01",
+      "review": "audits/C198_SOURCE_HOLDS_20261003/crustacean-review.final.json",
+      "requirement": "Trace and author a genuine proximal source attachment without repeating the retained wider-mask notch regression."
+    },
+    {
+      "subject": "Hawk / Snowy Owl",
+      "terminal": "PRESERVE_ACCEPTED_C190",
+      "selectedFit": null,
+      "requirement": "No new source hold was established; accepted originals and fits remain untouched."
+    },
+    {
+      "subject": "Fishing Cat C239",
+      "terminal": "STATIC_GEOMETRY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_SOURCE_HOLDS_20261003/selected-scoring-source-review.json",
+      "requirement": "Independent source-observed contact-chain authoring. Current exact compression refusals remain; no numerical tuning attempted."
+    },
+    {
+      "subject": "Water Beetle / Carrion Beetle C248",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_SOURCE_HOLDS_20261003/selected-scoring-source-review.json",
+      "requirement": "Six independently traceable leg chains. Current full-size paintings do not support the transferred inventory."
+    },
+    {
+      "subject": "Other C239/C248 transfer/pattern/reference refusals",
+      "terminal": "EXACT_REFUSALS_RETAINED",
+      "selectedFit": null,
+      "review": "audits/C198_SOURCE_HOLDS_20261003/scoring-refusals.json",
+      "requirement": "Reference/transfer or pattern source work per exact row; the old transfer failures are not re-labeled as proven absence, and no re-score was run."
+    }
+  ],
+  "parentReview": {
+    "path": "audits/C198_PROGRAM_20261003/parent-held-joins-review.json",
+    "sha256": "d0f092ee71fb4cf12493fc28a9529b34b6448ae5b5d522a02fb584cbbcffd06c"
+  }
+}

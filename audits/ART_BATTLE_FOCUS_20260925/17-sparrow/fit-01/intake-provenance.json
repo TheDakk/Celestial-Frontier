@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e62a3229c8e1b728c68139db6727fdd0167a2d64",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/master.png",
+      "sha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/authoring.json",
+      "sha256": "255354d342b53f270b2ceb5d4ccc635cbea91dcfbc05d996ea6b00b0e5598cdd"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/subject-source.json",
+      "sha256": "3588bbdfde56faf6a8f9db297c67f600adbe78f6f4542fa5513600e73e078b6a"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+  "bindingHash": "59bda4f29a89e83068eee53211e65a5ee03c051aa337c86f499064d5b25ee273",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarRoot",
+    "wingFarTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/master.png",
+      "sha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/authoring.json",
+      "sha256": "255354d342b53f270b2ceb5d4ccc635cbea91dcfbc05d996ea6b00b0e5598cdd",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/subject-source.json",
+      "sha256": "3588bbdfde56faf6a8f9db297c67f600adbe78f6f4542fa5513600e73e078b6a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "status": "APPLIED_REVIEWED_ORDINARY_RUNTIME_REPAIR",
+  "paths": [
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "beforeSha256": "62021bc98b88c571807f639c3291eff128f668e302e767d3e606575d62a5569a",
+      "afterSha256": "a3ae3d26e3facbcfea6c638cc0dd627d12897c4cda5bb6db1518e55723c6f877"
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "beforeSha256": "f3f0fb0c4d88415140934ec9f634cb1b6230097c65d408f9eb481701e80b0338",
+      "afterSha256": "fbd2d2ff8c431b53ea6f55cc373cb3c8e81625088c1342c50102c349c5d7e7ce"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "beforeSha256": "fbcce09ba6dad717b6dd8d6a1e717cf6ddbfef0e720901f3c44903644b103f80",
+      "afterSha256": "5ee80c109875a7986b7d9d7cf946887783fb03ee37a587910df452ad993040b7"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "beforeSha256": "9428549a0a3ab51b3276d30b74f3a272ef65f0a40743055a8337fbe6ee409307",
+      "afterSha256": "7201330384e9ba0cd547c4c73264cdfd03fde17f84ace96c8ca18ae3969346af"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "beforeSha256": "75a8c7b01001c9c0be4cda7092360ff58f9ceeb62a75d1a829418b9e7a1e4d9a",
+      "afterSha256": "62722af1e4945865bbf0f4bae2f962386561817b7a8384c9d14ef2f2447ee0bd"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped-tail.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "89f8e09bcdc105ab02525f4996db12efe3401c4ccc2d9bf9b05d71284e4f9051"
+    }
+  ],
+  "changesGateSeal": false,
+  "changesLimit": false,
+  "jointBudgetUnchanged": true,
+  "guideBulletCount": 121,
+  "I5RecertificationRequired": true,
+  "testsRun": 0,
+  "ordinaryFullStaticPending": true,
+  "nativePending": true
+}

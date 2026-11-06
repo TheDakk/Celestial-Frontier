@@ -1,0 +1,65 @@
+[
+  {
+    "id": "native-13-falcon",
+    "originalReportSha256": "04ad85def0597918a368204b18f3ba6159d32e3f3885724a02e1fb5b857c2327",
+    "verifiedInputs": 907,
+    "status": "FAIL",
+    "frames": 780,
+    "refusals": 6,
+    "captureFailures": 1
+  },
+  {
+    "id": "native-16-hyrax",
+    "originalReportSha256": "9f2caae496c47c20e170f02ce289d418acc9a506f5f62707a8bfd6c73bb3146f",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0
+  },
+  {
+    "id": "native-17-arapaima-framing02",
+    "originalReportSha256": "6c21a0430fb9b4935891738db3648264d1f3c2f4577996222013a8b43b3e6779",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0
+  },
+  {
+    "id": "native-18-sparrow",
+    "originalReportSha256": "784e1ca6b6cd647a250198e4597eed033e6d0aff3704a159e1a96868430bb445",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0
+  },
+  {
+    "id": "native-20-angelfish",
+    "originalReportSha256": "77bd2ba68aea078f3b1b23162f4d7d5209da37022f2f8428811a12fa30583144",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0
+  },
+  {
+    "id": "native-21-tuna",
+    "originalReportSha256": "39349c6a790dd3ea3e356a9e8ba4d654d4f48519ebbe347a0f7d6342b0abcec6",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0
+  },
+  {
+    "id": "native-23-swordfish-framing02",
+    "originalReportSha256": "5346ede92faf94452e53137ba900d765780f07a0117d703c36fc50feb709eeb9",
+    "verifiedInputs": 907,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0
+  }
+]

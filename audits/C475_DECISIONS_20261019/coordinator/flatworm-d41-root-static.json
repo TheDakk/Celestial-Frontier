@@ -1,0 +1,23 @@
+{
+  "stage": "flatworm-d41-root-static",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-flatworm-d41-static",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs",
+    "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/static.json"
+  ],
+  "startedUnix": 1792458743.753442,
+  "beforeGiB": 56.06396484375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 56.0639533996582,
+  "afterGiB": 56.063838958740234
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "cratered-v2",
+  "biome": "cratered",
+  "recipe": "audits/C132_ARENAS_20261001/cratered-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/cratered-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.png",
+      "runtimeSha256": "b1536fc9b8905b461c72acb4312986ab3c764b286a7478cd659c84b5a790dfc9"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-mid.png",
+      "runtimeSha256": "55db841396e71b88593140cb0c72db4f5c527e4e66d2c82caf3d1c8a04687099"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-near.png",
+      "runtimeSha256": "c1a7e4d0cdb8bc0cdbb19ed56e90e6e97daa958f071110ebd11c5b46a51621cf"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';
+const repo=path.resolve(import.meta.dirname,'../..'),sha=b=>createHash('sha256').update(b).digest('hex');
+for(const row of JSON.parse(fs.readFileSync(new URL('inputs.json',import.meta.url)))){const raw=fs.readFileSync(path.join(repo,row.canonicalMaster));if(sha(raw)!==row.masterSha256)throw Error('Canonical master changed');const target=path.join(repo,row.recordSource);fs.mkdirSync(path.dirname(target),{recursive:true});if(fs.existsSync(target)){if(sha(fs.readFileSync(target))!==row.masterSha256)throw Error('Existing master differs');}else fs.writeFileSync(target,raw,{flag:'wx'});}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "01-mackerel",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/01-mackerel",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "04-sardine",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/04-sardine",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/04-sardine-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "06-mullet",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/06-mullet",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/06-mullet-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "07-tarpon",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/07-tarpon",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "01-grouper",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/01-grouper",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/01-grouper-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "02-barracuda",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/02-barracuda",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "05-sailfish",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/05-sailfish",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "07-mahi-mahi",
+    "sourceFit": "audits/FISH_PIPELINE_C88_20260927/inputs/07-mahi-mahi",
+    "candidate": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  }
+]

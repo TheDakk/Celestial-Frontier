@@ -1,0 +1,63 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-10-cow/fit",
+  "sourceBindingSha256": "2c391d9484e1a43faad04cd483a9f2f2a1bb9e94ffc660d1ef38816c5f8b3bf3",
+  "candidateBindingSha256": "7339dfaea6c760709e438eb639fd2906f10c9fdcb396ab5a7353d17bf1ab1979",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "ear-near-root"
+    ],
+    [
+      "ear-far-root",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-root",
+      "spine"
+    ],
+    [
+      "ear-far-tip",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "spine"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "head",
+      "spine"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+  "sourceAtlasSha256": "83eace42392a080238d9832308f09ff594990f05b9d4b5469bd966889296d3d9",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

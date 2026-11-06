@@ -1,0 +1,5 @@
+import fs from 'node:fs';import {createRequire} from 'node:module';
+import {at,local} from './context.mjs';
+const {createSourceJoinProbe,assessSourceJoinContinuity}=await import('../../port/v2/tools/quadruped-proof/source-join-continuity.mjs');const {createPaintPublication}=await import('../C132_FAINT_GROUND_20261002/paint-publication.mjs');
+const require=createRequire(new URL('../../port/v2/package.json',import.meta.url)),{PNG}=require('pngjs'),base='audits/C186_BITTERN_REPAIR_20261002',fit=base+'/fit01',record=JSON.parse(fs.readFileSync(fit+'/record.json')),binding=JSON.parse(fs.readFileSync(fit+'/binding.json')),a=PNG.sync.read(fs.readFileSync(fit+'/parts/atlas/07-bittern.png')),probe=createSourceJoinProbe({record,binding,atlas:{rgba:a.data,width:a.width,height:a.height}}),s=at(local),f=createPaintPublication(record,binding,'land').publish(s.pose,s.context),measurement=assessSourceJoinContinuity(probe,f.positions);
+fs.writeFileSync(base+'/source-joins01.json',JSON.stringify({probe,measurement},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(measurement.excluded.map(e=>({name:e.name,gap:e.maxGapPx})).sort((a,b)=>b.gap-a.gap)));

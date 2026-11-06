@@ -1,0 +1,86 @@
+{
+  "schema": "cf.c475-exact-source-owner-reuse/v1",
+  "originalSource": {
+    "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/master.png",
+    "sha256": "9c2a590bd5505f24a15d03573ce402465b2bd74ea23daf7cea464664de8d17ba",
+    "bytes": 1286544
+  },
+  "canonicalSeal": "3ddf6a3ea80a53484249d611d7f4f7d45cecc6bd7e3a56724f3670a7cd56b7cc",
+  "originalFit": {
+    "directory": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit",
+    "record": {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/record.json",
+      "sha256": "7db5dbdd60f092ee87b07ec5f9f98e3ff27f5af46cee971a3de9e017c2d60502",
+      "bytes": 5317
+    },
+    "binding": {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/binding.json",
+      "sha256": "f49f8e28534668f027d4ffd489dbd70be08bfe92c18e6d5cf1e9c407163f5de0",
+      "bytes": 581252
+    },
+    "masterMatchesDiagnostic": true,
+    "keyed": {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/parts/keyed.png",
+      "sha256": "8910c952ca7f5f1bd7cb7b66f1bbd2b27cf7864053894a59d76d3ba15d75051d",
+      "bytes": 1134122
+    },
+    "labelDeclaration": {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/declaration.json",
+      "sha256": "c6ee0017fc9c231d17e6a891693f0bdf2149ca204645cafe1fbb067d4cb17a68",
+      "bytes": 1646
+    },
+    "scope": "Retained actual fit witness; source differs from diagnostic best4 where masterMatchesDiagnostic=false."
+  },
+  "existingSourceOwnerPixels": 42669,
+  "existingSourceOwnerChanges": 0,
+  "newSourcePaintedEdgeOwners": 2479,
+  "ownerCounts": {
+    "head": 180,
+    "body-segment-0": 250,
+    "body-segment-5": 182,
+    "body-segment-4": 198,
+    "body-segment-6": 216,
+    "body-segment-3": 211,
+    "jaw": 220,
+    "body-segment-9": 226,
+    "neck-root": 48,
+    "body-segment-1": 198,
+    "body-segment-7": 186,
+    "body-segment-2": 177,
+    "body-segment-8": 187
+  },
+  "unresolved": [],
+  "sourceRgbaChanges": 0,
+  "newMaster": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/master.png",
+  "newMasterSha256": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+  "recordRecipeHash": "f04f334a0928d3295f32e812133ae9147a09377c121e0eeb5e9809c0fef847fb",
+  "bindingHash": "2a106f958e4827fd130bd40f5617697d34aac6329f1c8738367a40448f8ccd62",
+  "parts": {
+    "id": "c475-d40-snake",
+    "parts": 13,
+    "atlasSize": {
+      "width": 591,
+      "height": 266
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "64cf44aaec0e3952a9c653d6db4cc2f0b38bcdd3f75e20b3a1a382270382dad4",
+    "sourceVertices": 1093,
+    "vertices": 1115,
+    "sharedSupports": 245,
+    "pins": 165,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 2,
+    "observedExcludedBoundaries": 2,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "limits": "CPU source ownership proposal; exact source pigment/fringe/parts/retained poses remain independent. No native admission."
+}

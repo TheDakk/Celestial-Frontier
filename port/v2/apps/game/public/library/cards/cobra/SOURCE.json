@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cobra",
+ "fitDir": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/rebound/c475-cobra-d39/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "051e3e4df2cadd28ee860ffef6bd8704308d9af995c3cf9c5a7dede47df7be34"
+}

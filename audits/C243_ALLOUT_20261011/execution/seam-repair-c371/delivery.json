@@ -1,0 +1,57 @@
+{
+  "status": "DELIVERED_FOR_CLAUDE_REVIEW",
+  "sourceHead": "4a6ca1ab6",
+  "targets": 8,
+  "ready": [
+    "Camel",
+    "Pilot Whale",
+    "Manatee",
+    "River Dolphin",
+    "Ladybug",
+    "Tern"
+  ],
+  "held": [
+    "Hoatzin",
+    "Kakapo"
+  ],
+  "staticSelectedBefore": 8,
+  "staticSelectedAfter": 8,
+  "note": "Selected sources were already staticPASS;repair targets attached visual tears. No full-backlog diagnostic rerun. No admission/certification inferred.",
+  "sourceFitCandidates": 17,
+  "nativeOriginalPass": 12,
+  "aiFinishPass": 8,
+  "rebindGeometryIdentical": 8,
+  "finishedNativePass": 8,
+  "finishedReviewStills": 40,
+  "reviewScale": 2,
+  "allC243FilmsChecked": 248,
+  "newFilmRows": 20,
+  "newFragmentFlags": 0,
+  "newPinkThresholdFlags": 0,
+  "newMagentaThresholdFlags": 0,
+  "singleFxMagentaPixel": {
+    "film": "Manatee",
+    "frame": "turn2-dodge-reaction-50",
+    "xy": [
+      343,
+      181
+    ],
+    "inspectionScale": 4
+  },
+  "historicalFragmentBoxesInspected": 49,
+  "historicalMaskDeltas": 8,
+  "identityCards": 8,
+  "identityMarkersAnswered": 24,
+  "referenceBlockedSkipped": true,
+  "headroomGiBAtStart": 64.849853515625,
+  "headroomGiBObservedMinimumSample": 53.0242919921875,
+  "headroomGiBAtDelivery": 60.6536865234375,
+  "hardFloorGiB": 30,
+  "allPairs": "HOLD",
+  "runtimeChanged": false,
+  "rulersChanged": false,
+  "sourceMasterBytesChanged": false,
+  "githubWrites": false,
+  "C223Run": false,
+  "certificationRun": false
+}

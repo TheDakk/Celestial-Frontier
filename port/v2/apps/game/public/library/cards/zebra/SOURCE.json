@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Zebra",
+ "fitDir": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "fbb17a96719e2b07e518167c9f4537ec993050e7d89559df95685eb9fd8d3ab3"
+}

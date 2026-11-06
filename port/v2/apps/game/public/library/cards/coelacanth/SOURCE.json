@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Coelacanth",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/06-coelacanth/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e2af3cd67e5223f34c03962c746c0d0ff17d569a0137bac7339bc120fa03c140"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.c186-source-repair-batch/v1",
+  "status": "FROZEN_AUDIT_CANDIDATES",
+  "diskFreeGiBStart": 138,
+  "diskFreeGiBEnd": 137.33,
+  "node": "v26.10.0",
+  "toolStartup": "Uninterrupted current session receipt reused",
+  "sourcePixelsChanged": 0,
+  "runtimeChanges": false,
+  "nativeRuns": 0,
+  "allPairRuns": 0,
+  "mailboxReadAtBatchEnd": {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+    "sha256": "78dcc55fabd7f789df5648e2b65bb0534d19590ca268f768024cbbba161e54cb",
+    "latestReviewedRow": "C186; sweep not authorized"
+  },
+  "privacyScan": "No user-folder paths in new text records",
+  "selectedCount": 8,
+  "selectedStaticActionSamples": 18392,
+  "selectedSourceAndOutputMutationControls": "PASS",
+  "qualityAdmission": false,
+  "remainingHolds": "remaining-holds.json",
+  "originLimit": "Not independent whole-family reference records; correction-only manual scope is explicit."
+}

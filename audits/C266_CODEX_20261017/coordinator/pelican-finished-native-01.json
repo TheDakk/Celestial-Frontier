@@ -1,0 +1,20 @@
+{
+  "stage": "pelican-finished-native-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C402-pelican-finished-native-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/pelican-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792281624.757092,
+  "beforeGiB": 85.81743621826172,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.071,
+  "lowestGiB": 85.4227180480957,
+  "afterGiB": 85.78340530395508
+}

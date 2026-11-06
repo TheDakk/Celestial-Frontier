@@ -1,0 +1,142 @@
+[
+  {
+    "id": "c213originals-21-auk",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Whole outline in approach, mid-victory and held faint. Back wing-tip spike absent in reviewed stills; head remains a connected blunt profile. Claude admission pending."
+  },
+  {
+    "id": "c213originals-28-kookaburra",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "status": "HOLD_VISUAL",
+    "observation": "Approach whole; held faint has a conspicuously stretched angular crown/nape despite numeric PASS. Source joins alone do not restore the natural crest silhouette."
+  },
+  {
+    "id": "c213originals-29-osprey",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "status": "HOLD_VISUAL",
+    "observation": "Approach whole; held faint stretches the white crown/nape into a rear-pointing triangle. No numeric refusal, but same crown silhouette class persists."
+  },
+  {
+    "id": "c198creaturesupplyb-07-howler-monkey",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "status": "HOLD_VISUAL",
+    "observation": "Head inversion is fixed; head stays upright at mid-victory and faint. A triangular arm connector/web remains at mid-victory between lifted forearm and chest, more pronounced on Langur. Approach and late90 hide the defect; not visually admitted."
+  },
+  {
+    "id": "c198creaturesupplyb-11-langur",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "status": "HOLD_VISUAL",
+    "observation": "Head inversion is fixed; head stays upright at mid-victory and faint. A triangular arm connector/web remains at mid-victory between lifted forearm and chest, more pronounced on Langur. Approach and late90 hide the defect; not visually admitted."
+  },
+  {
+    "id": "c202creaturesupply-02-wild-boar",
+    "status": "HOLD_VISUAL",
+    "observation": "Head no longer crushed into ground; near foreleg remains a connected supported bend. Tiny far-ear tip separates above the head during victory/faint; approach does not show it. Named deep-body defect improves, separate island hold persists.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-07-wild-pig",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Snout remains above ground and forelegs stay connected in the held faint; victory modest lift retains full outline. Approach whole. Ready for Claude visual admission review.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-10-cow",
+    "status": "HOLD_VISUAL",
+    "observation": "Shoulder curl reduced but held foreleg remains folded/crossed; small crown tip detached. Needs supported faint correction.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "g2c95-17-nilgai",
+    "status": "HOLD_VISUAL",
+    "observation": "Near foreleg still folds backward at knee in faint despite smaller torso displacement; approach whole.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-13-gerenuk",
+    "status": "HOLD_VISUAL",
+    "observation": "Victory kick smaller and readable, but held faint near foreleg makes a complete ribbon loop. Approach whole.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c213originals-09-kinkajou",
+    "status": "HOLD_VISUAL",
+    "observation": "Vertical crown/face seam persists at approach and victory; a tail segment gap opens at mid-victory. Late90 hides the tail defect.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-12-wolverine",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Raised paw keeps its claws attached in mid-victory; no floating claw shard seen. Source outline whole at approach/held faint.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c213originals-14-red-fox",
+    "status": "HOLD_VISUAL",
+    "observation": "Corrected foreleg now passes native approach; faint leg does not fold. Small far-ear tip still separates during victory, so native failure resolved but separate island hold remains.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "g2c136targetededits-21-bee",
+    "status": "HOLD_VISUAL",
+    "observation": "Victory abdomen and wings now stay attached; held faint lifts abdomen into a tall separated stalk. Same articulated-body class moves to faint, so not visually admitted.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  }
+]

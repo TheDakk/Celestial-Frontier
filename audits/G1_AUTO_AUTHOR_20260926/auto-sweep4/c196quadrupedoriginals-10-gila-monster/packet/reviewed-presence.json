@@ -1,0 +1,12 @@
+{
+  "schema": "cf.canonical-external-pinnae/v1",
+  "name": "Gila Monster",
+  "family": "quadruped",
+  "masterSha256": "d5b52d51feebbe4c3f4b35311e7abc225f4b8b9703196b4d02c881a3252d263f",
+  "subjectSha256": "50056b61f2b3da1fccb46ec02f91f8a2145396c5195a7c9b3a4620cd5584ec96",
+  "promptSha256": "c78a581b59c5c1b169001c200d1390cda23fcba3c56471115b0580a1519d561c",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "fact": "external-pinnae-absent",
+  "scope": "canonical-group-fact-no-painted-limb-or-motion-exemption"
+}

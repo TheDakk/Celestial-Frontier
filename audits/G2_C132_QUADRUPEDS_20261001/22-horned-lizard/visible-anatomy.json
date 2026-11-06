@@ -1,0 +1,143 @@
+{
+  "id": "22-horned-lizard",
+  "name": "Horned Lizard",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 5371,
+    "coreRadius": 12,
+    "bodyBox": {
+      "x0": 173,
+      "y0": 188,
+      "x1": 259,
+      "y1": 231
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1452,
+        "pixels": 780,
+        "box": {
+          "x0": 243,
+          "y0": 173,
+          "x1": 286,
+          "y1": 211
+        },
+        "attach": {
+          "x": 256,
+          "y": 196.5,
+          "relX": 0.96,
+          "relY": 0.2
+        },
+        "dir": {
+          "x": 0.89,
+          "y": -0.45
+        },
+        "class": "front",
+        "length": 38.1
+      },
+      {
+        "k": 1,
+        "frac": 0.1449,
+        "pixels": 778,
+        "box": {
+          "x0": 137,
+          "y0": 200,
+          "x1": 179,
+          "y1": 250
+        },
+        "attach": {
+          "x": 172.9,
+          "y": 214.6,
+          "relX": 0,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -0.75,
+          "y": 0.66
+        },
+        "class": "limb-down",
+        "length": 50.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0681,
+        "pixels": 366,
+        "box": {
+          "x0": 234,
+          "y0": 229,
+          "x1": 269,
+          "y1": 250
+        },
+        "attach": {
+          "x": 241,
+          "y": 229,
+          "relX": 0.79,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.61,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 35
+      },
+      {
+        "k": 3,
+        "frac": 0.0274,
+        "pixels": 147,
+        "box": {
+          "x0": 191,
+          "y0": 231,
+          "x1": 212,
+          "y1": 243
+        },
+        "attach": {
+          "x": 195.1,
+          "y": 231.9,
+          "relX": 0.26,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.52,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 20.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 151,
+        "x1": 170,
+        "cx": 161.6
+      },
+      {
+        "x0": 246,
+        "x1": 269,
+        "cx": 257.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

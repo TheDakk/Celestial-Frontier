@@ -1,0 +1,20 @@
+{
+  "stage": "develop-runtime-profile",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-runtime-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792378906.101532,
+  "beforeGiB": 59.715938568115234,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 144.477,
+  "lowestGiB": 59.596336364746094,
+  "afterGiB": 59.68559646606445
+}

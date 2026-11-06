@@ -1,0 +1,47 @@
+{
+  "scope": "Aggregate of the unchanged-runtime baseline, every repaint score and source-bound class successor static checks. Duplicate source packets counted separately; no visual admission.",
+  "baselinePackets": 74,
+  "baselineStaticPass": 7,
+  "baselineSpecies": [
+    "Bee",
+    "Carrion Beetle",
+    "Moth",
+    "Springtail",
+    "Water Beetle"
+  ],
+  "repaintCandidates": 91,
+  "afterStaticPassPackets": 18,
+  "afterStaticPassSpecies": [
+    "Bee",
+    "Bumblebee",
+    "Carrion Beetle",
+    "Eagle",
+    "Fly",
+    "Honeybee",
+    "Ladybug",
+    "Locust",
+    "Moth",
+    "Springtail",
+    "Stonefly",
+    "Thrips",
+    "Water Beetle"
+  ],
+  "gainedSpecies": [
+    "Bumblebee",
+    "Eagle",
+    "Fly",
+    "Honeybee",
+    "Ladybug",
+    "Locust",
+    "Stonefly",
+    "Thrips"
+  ],
+  "lostSpecies": [],
+  "followUpAquaticStaticPass": [
+    "Flying Fish",
+    "Humpback Whale",
+    "Beaked Whale",
+    "Lamprey"
+  ],
+  "sourceOwnershipLimitsChanged": false
+}

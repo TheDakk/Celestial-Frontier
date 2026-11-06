@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rooster",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/05-rooster/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e085e918a393d5209875bd1caf5bfb076a034e036dc7dbcbb9197f1264d8aa3f"
+}

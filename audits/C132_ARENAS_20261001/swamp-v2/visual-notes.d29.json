@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "swamp-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/swamp-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/swamp-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/swamp-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/swamp-v2/arena-near.png"
+  ],
+  "findings": [
+    "All three originals and full-size composition inspected at native1672\u00d7941. Mossy swamp trees and dark wet mud provide a distinct habitat with open static fighting stands.",
+    "MID includes visibly chopped side trunks and a duplicated desaturated tree line; magenta/green edge remnants remain around those silhouettes.",
+    "NEAR cuts side foliage at an obvious straight horizontal lower-frame seam. Detail density and overlapping tree silhouettes compete with the stage; this candidate requires visual repair and independent review."
+  ]
+}

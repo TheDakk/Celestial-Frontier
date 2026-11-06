@@ -1,0 +1,96 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "source-body-root-patch",
+      "joint": "root",
+      "owner": "source-body-root-patch"
+    },
+    {
+      "region": "whole-long-near-pectoral",
+      "joint": "pectoralNear",
+      "owner": "whole-long-near-pectoral"
+    },
+    {
+      "region": "whole-narrow-far-pectoral",
+      "joint": "pectoralFar",
+      "owner": "whole-narrow-far-pectoral"
+    },
+    {
+      "region": "actual-small-dorsal",
+      "joint": "dorsal",
+      "owner": "actual-small-dorsal"
+    },
+    {
+      "region": "actual-pleated-lower-head-jaw",
+      "joint": "jaw",
+      "owner": "actual-pleated-lower-head-jaw"
+    },
+    {
+      "region": "actual-eye-upper-head",
+      "joint": "head",
+      "owner": "actual-eye-upper-head"
+    },
+    {
+      "region": "whole-horizontal-notched-flukes",
+      "joint": "caudal",
+      "owner": "whole-horizontal-notched-flukes"
+    },
+    {
+      "region": "actual-axial-body-spine5",
+      "joint": "spine5",
+      "owner": "actual-axial-body-spine5"
+    },
+    {
+      "region": "actual-axial-body-spine4",
+      "joint": "spine4",
+      "owner": "actual-axial-body-spine4"
+    },
+    {
+      "region": "actual-axial-body-spine3",
+      "joint": "spine3",
+      "owner": "actual-axial-body-spine3"
+    },
+    {
+      "region": "actual-axial-body-spine2",
+      "joint": "spine2",
+      "owner": "actual-axial-body-spine2"
+    },
+    {
+      "region": "actual-axial-body-spine1",
+      "joint": "spine1",
+      "owner": "actual-axial-body-spine1"
+    },
+    {
+      "region": "whole-source-body-remainder",
+      "joint": "spine0",
+      "owner": "whole-source-body-remainder"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    120,
+    9003,
+    3145,
+    1339,
+    11477,
+    7849,
+    6000,
+    2523,
+    4181,
+    6432,
+    7886,
+    6892,
+    10477
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "whole-source-body-remainder"
+}

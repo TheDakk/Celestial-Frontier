@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c279-observed-author/v1",
+  "reviewer": "/root/c279_intake",
+  "masterSha256": "4e79f78c6322ade07a0881f5491930c1b002d1c4e85e50471cf2d30822b2a30e",
+  "promptSha256": "5263a71f2d49b44ffd5ccdca323443868f971c98dff0ee5fe46093f18cfa5130",
+  "subjectSha256": "f0e580a0d310b2e6fe954269a08153ebef85981370c4c687f9e72309d7230c19",
+  "inspection": "Native1254 original viewed; landmarks/polygon boundaries authored against actual painted anatomy. Root/spine/chest anchors locate continuous painted body, not unseen appendages.",
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "autoAuthorReused": false,
+  "notes": [
+    "Two separate complete feet; two complete M-profile raised wings; deep two-prong fork tail and hooked bill. Red throat pouch owned by observed lower-neck source region.",
+    "Near/Far are source overlap assignments: broad foreground wing/left foot are near; smaller background wing/right foot far."
+  ],
+  "nativeAcceptance": false
+}

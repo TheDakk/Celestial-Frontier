@@ -1,0 +1,26 @@
+{
+  "status": "TERMINAL_RELEASED_BATCH_COMPLETE",
+  "reservation": "C380",
+  "deliveryCommit": "d8c099ba0c61095a9c432bd1907330abc79c3198",
+  "signature": "G",
+  "ready": [
+    "River Dolphin"
+  ],
+  "held": [
+    "Hoatzin",
+    "Kakapo"
+  ],
+  "lowestGiB": 78.46561050415039,
+  "freeGiB": 86.61277389526367,
+  "bothLocksAbsent": true,
+  "heavyJobsRemaining": 0,
+  "peerReadThrough": "C263 CPU-only ACTIVE;no qualifiedTERMINALpackets consumed",
+  "gameProgramStillIncomplete": true,
+  "nextClaude": "Review finishedDolphin;completequalifiedreference/sourcepackets.",
+  "nextCodex": "Consumechangedpeerreview/qualifiedpacketsinfreshreservedbatch;do notrepeatknownREDsourcejoins.",
+  "appSwitchOrUserRelayNeeded": false,
+  "gitHubWrites": false,
+  "C223": false,
+  "certification": false,
+  "allPairs": "HOLD"
+}

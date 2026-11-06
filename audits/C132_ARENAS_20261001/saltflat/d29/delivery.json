@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "saltflat",
+  "biome": "saltflat",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/saltflat/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/saltflat/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/arena-far.webp",
+      "runtimeSha256": "4f2aac9e7daa36d411f0ff2f486e9173ec3d2a56b5d2785ba9aa1086d382eaa0",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+        "sha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.webp",
+      "runtimeSha256": "132dccaa7e9ca036754f2d852805caa4a9c8628ec1ea73126aef38d5915863e9",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.png",
+        "sha256": "83def4a22aa019ea339096891370c485dd81dc3565da9a97f18a96b5f3073a12"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/saltflat/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.webp",
+      "runtimeSha256": "310b89d3c9a5c9caf718ad5b401d95a3d1c01ade7c2f14475c2601bc6b459ab7",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.png",
+        "sha256": "59ffd4aa59c2b01a3032bbe9da9a77114bd5b94813d22c1c5df7fa9d4fd79729"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

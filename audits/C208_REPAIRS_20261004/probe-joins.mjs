@@ -1,0 +1,5 @@
+import fs from 'node:fs';import {createRequire} from 'node:module';import {createSourceJoinProbe} from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+const {PNG}=createRequire(new URL('../../port/v2/package.json',import.meta.url))('pngjs'),B='audits/C208_REPAIRS_20261004',J=p=>JSON.parse(fs.readFileSync(p)),rows=[];
+for(const id of ['07-wild-pig','10-cow','16-hyrax','17-cardinal','18-sparrow','19-pigeon','11-toucan','14-duck','16-stork','13-falcon']){
+ const fit=B+'/inputs/'+id+(id==='16-stork'?'/native-fit':'/fit'),r=J(fit+'/record.json'),b=J(fit+'/pre-split-binding.json'),m=J(fit+'/parts/manifest.json'),a=PNG.sync.read(fs.readFileSync(fit+'/parts/atlas/'+m.creatureId+'.png')),p=createSourceJoinProbe({record:r,binding:b,atlas:{rgba:a.data,width:a.width,height:a.height}}),owners=new Map(b.parts.map(p=>[p.id,p.joint]));rows.push({id,fit,excluded:p.excluded.map(e=>({parts:[e.ancestorPart,e.descendantPart],joints:[owners.get(e.ancestorPart),owners.get(e.descendantPart)],edges:e.sourceEdges})),joins:p.joins.length});
+}fs.writeFileSync(B+'/source-adjacencies.json',JSON.stringify(rows,null,2)+'\n');console.log(JSON.stringify(rows));

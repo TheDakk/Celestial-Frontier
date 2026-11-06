@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Spotted Hyena",
+ "fitDir": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b28c42cd8f03224f5dab8caca674dbc79a999448f8750724720ec7fb1e1894bb"
+}

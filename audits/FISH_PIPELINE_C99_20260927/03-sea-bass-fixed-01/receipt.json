@@ -1,0 +1,254 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_PIPELINE_C99_20260927/inputs/03-sea-bass",
+  "sourceRecordSha256": "0b067185f2efa3caf5a93d2af39ee7ec481f88b4c9c2c79b612719479c82659b",
+  "sourceLabelsSha256": "eec5c679809c79eb9c9fb7f33e9a82bf03b7670660e50a6737a3c6cff7224f17",
+  "newLabelsSha256": "427158e9a1ede21536d56400a32ca2a6397d56aebb109d160cbb29ae1242e36f",
+  "newDecodedLabelsSha256": "28313751daaf40bd21a17f216463bb20967c2c171013fdfdafeab9ac485b18b8",
+  "sourceMasterSha256": "c96b9b2ce864dfd8e33a0497817d94fb5c17c4ca5535ca01421e5bc7359fd8fb",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "body-5",
+    "tailOwner": 6,
+    "stalkOwner": 13,
+    "sharedEdges": 88
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 11801,
+    "phases": [
+      {
+        "phase": "tail",
+        "changedPixels": 0,
+        "reason": "No connected remainder-to-tail gap",
+        "components": []
+      },
+      {
+        "phase": "axial",
+        "moved": 11801,
+        "protectedOwners": 1554181,
+        "counts": {
+          "8": 5244,
+          "9": 2506,
+          "10": 3856,
+          "12": 195
+        },
+        "anchor": [
+          873,
+          617
+        ],
+        "rootAnchorRadiusPx": 8,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.6965709728867624,
+            0.4927432216905901
+          ],
+          [
+            0.6566188197767145,
+            0.48237639553429024
+          ],
+          [
+            0.5940191387559809,
+            0.4803827751196172
+          ],
+          [
+            0.5169059011164274,
+            0.4828548644338118
+          ],
+          [
+            0.439792663476874,
+            0.4876395534290271
+          ],
+          [
+            0.3675438596491228,
+            0.4937001594896332
+          ],
+          [
+            0.29696969696969694,
+            0.4932216905901116
+          ]
+        ],
+        "scope": "Diagnostic placement, not anatomy or visual admission"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "46b37838d532e84fa088ffee3cf4ddf22c3ac8694051b60db60bc393249cc961",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "03-sea-bass-fixed-01",
+    "parts": 13,
+    "atlasSize": {
+      "width": 633,
+      "height": 1240
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "d6222c52dd7d01e02e1f3049fe8108a85fee6cd838c74ab7bc54fc2512492047",
+    "sourceVertices": 1058,
+    "vertices": 1115,
+    "sharedSupports": 376,
+    "pins": 289,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 9,
+    "independentExcludedBoundaries": 4,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body-0",
+        "dorsal"
+      ],
+      [
+        "body-0",
+        "far-pectoral"
+      ],
+      [
+        "body-0",
+        "near-pectoral"
+      ],
+      [
+        "body-1",
+        "near-pectoral"
+      ],
+      [
+        "body-2",
+        "dorsal"
+      ],
+      [
+        "body-2",
+        "near-pectoral"
+      ],
+      [
+        "body-3",
+        "dorsal"
+      ],
+      [
+        "body-4",
+        "dorsal"
+      ],
+      [
+        "body-5",
+        "dorsal"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe"
+  },
+  "joins": [
+    {
+      "name": "body--body-0",
+      "sourceEdges": 179
+    },
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 57
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 296
+    },
+    {
+      "name": "body-0--body-1",
+      "sourceEdges": 337
+    },
+    {
+      "name": "body-1--body-2",
+      "sourceEdges": 237
+    },
+    {
+      "name": "body-1--dorsal",
+      "sourceEdges": 87
+    },
+    {
+      "name": "body-2--body-3",
+      "sourceEdges": 202
+    },
+    {
+      "name": "body-3--body-4",
+      "sourceEdges": 210
+    },
+    {
+      "name": "body-4--body-5",
+      "sourceEdges": 90
+    },
+    {
+      "name": "body-5--caudal",
+      "sourceEdges": 88
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 218
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body-0|body-2",
+      "sourceEdges": 10
+    },
+    {
+      "name": "body-0|dorsal",
+      "sourceEdges": 45
+    },
+    {
+      "name": "body-0|far-pectoral",
+      "sourceEdges": 80
+    },
+    {
+      "name": "body-0|near-pectoral",
+      "sourceEdges": 75
+    },
+    {
+      "name": "body-1|near-pectoral",
+      "sourceEdges": 181
+    },
+    {
+      "name": "body-2|dorsal",
+      "sourceEdges": 118
+    },
+    {
+      "name": "body-2|near-pectoral",
+      "sourceEdges": 221
+    },
+    {
+      "name": "body-3|body-5",
+      "sourceEdges": 2
+    },
+    {
+      "name": "body-3|dorsal",
+      "sourceEdges": 127
+    },
+    {
+      "name": "body-4|dorsal",
+      "sourceEdges": 90
+    },
+    {
+      "name": "body-5|dorsal",
+      "sourceEdges": 2
+    },
+    {
+      "name": "body|jaw",
+      "sourceEdges": 24
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 37
+    }
+  ]
+}

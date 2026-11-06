@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Anglerfish",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/rebound-01/c243b02r1c1-01-anglerfish/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3d03eb2b0e7ae9400d3ede39c30dedee57088ac4683c3e386e2895c66ea04238"
+}

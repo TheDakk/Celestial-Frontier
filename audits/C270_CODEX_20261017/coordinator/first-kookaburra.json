@@ -1,0 +1,20 @@
+{
+  "stage": "first-kookaburra",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-kookaburra",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/plan.json"
+  ],
+  "startedUnix": 1792286491.3044171,
+  "beforeGiB": 81.46662521362305,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.054,
+  "lowestGiB": 81.06511306762695,
+  "afterGiB": 81.43251419067383
+}

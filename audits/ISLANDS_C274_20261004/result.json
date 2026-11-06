@@ -1,0 +1,16 @@
+{
+ "18-sparrow": {
+  "tag": "g2c274",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/18-sparrow/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "02-capybara": {
+  "tag": "g2c275",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/02-capybara/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

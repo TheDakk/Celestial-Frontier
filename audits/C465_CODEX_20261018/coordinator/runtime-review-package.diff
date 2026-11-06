@@ -1,0 +1,239 @@
+BASE f09484007256f0e733b26442dde12e91cc53515b G
+
+diff --git a/MOTION_KIT.md b/MOTION_KIT.md
+index 22c85298a1..92883bc271 100644
+--- a/MOTION_KIT.md
++++ b/MOTION_KIT.md
+@@ -1,19 +1,19 @@
+ # Celestial Frontier Motion Kit
+ 
+ Motion direction and animation contract, PROPOSED version 1, 2026-09-12. Companion to ART_KIT.md. One motion hand for the whole universe: every creature, plant, ship, effect, panel and reveal moves by the same rules, and every rule is compiled from game data by one interpreter. Nothing is animated per creature by hand.
+ 
+ Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler from the resolved-anatomy record; sections 4 to 7 are the closed action, timing, secondary-motion and staging vocabularies.
+ 
+ Implementation notes refreshed through 2026-10-18; the historical implementation paragraph is dated 2026-09-13. Sections 1, 2, 5 and 6 remain frozen.
+ 
+-C444 implementation (matches code 2026-10-18): the D32 serpent victory retains its landed trunk and root lift. Aquatic axial cards bound effective projected head/jaw turns at12°/4° during victory, hit and faint. Reactions receive that cap independently of victory root lift, so a losing eel’s held lower lip stays forward. Dry serpent channels, other actions/families, trunk/root tracks, joint limits, timing, easing, positive-rise/trunk rulers and the C198 sealed land-serpent row are unchanged. Actual Moray/Gulper compiled paint/ARAP, separate jaw-patch and exact target-faint idle50/90 regression plus both-direction controls are in `audits/C444_CODEX_20261018/w2-motion/`; C279 victory proof remains historical. This runtime change requires Claude I5 recertification; selected C442 is imported and does not certify the changed bundle.
++C465 implementation (matches code 2026-10-18): the existing D32 serpent landing and root lift are unchanged. All serpent victories now bound nominal effective projected head/jaw keys at12°/4° after that landing; aquatic hit/faint retain the C446 cap byte-equivalently. This deliberately changes dry victory head motion, fixing Cobra’s inverted/flattened head while preserving actual root/seg0..9/tail geometry, timing, easing, limits and other actions/families. The universal minimum-rise/sink/posterior-drift rulers and three original landing negative controls are unchanged; the obsolete dry raw-head-rise equality is replaced by explicit cap/root assertions. Exact Cobra compiled-source head/depth regression reproduces the original RED and passes with both-direction controls;19accepted dry source fields have1620 paired poses with no ARAP/part refusals and zero root/trunk/tail deltas. Those CPU results are not visual acceptance: Cobra must prove the native representative before propagation/finish. Evidence: `audits/C465_CODEX_20261018/`; previous C444 reaction and C279 victory proofs remain historical. Runtime changes require Claude I5 recertification; selected C464 is imported unchanged and does not certify the new bundle.
+ 
+ ## 0. How to use
+ 
+ ```text
+ CELESTIAL FRONTIER - MOTION KIT
+ motion_id: frontier-motion   |   proposed v1, 2026-09-12   |   one hand, compiled
+ 
+ Every motion recipe is assembled in this order:
+     MOTION LOCK -> FROZEN MOTION -> BODY CARD -> ACTION -> TIMING
+     -> SECONDARY -> STAGING -> BUDGET
+diff --git a/port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts b/port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts
+index a85411deee..0e10832be2 100644
+--- a/port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts
++++ b/port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts
+@@ -35,24 +35,24 @@ function make(f:typeof CASES[number]){
+   return Object.fromEntries(Object.entries(pairs).map(([name,[a,b]])=>{const s=source[b!]!.map((x:number,k:number)=>x-source[a!]![k]),p=[(out[b!*2]!-out[a!*2]!)*w,(out[b!*2+1]!-out[a!*2+1]!)*h],angle=Math.abs(Math.atan2(s[0]!*p[1]!-s[1]!*p[0]!,s[0]!*p[0]!+s[1]!*p[1]!))*180/Math.PI;return[name,{angleDeg:angle,forward:p[0]!,lengthRatio:Math.hypot(...p)/Math.hypot(...s)}];}));}
+  return {r,c,authored,tl,at};
+ }
+ const findings:any[]=[];
+ it.each(CASES)('$name actual ARAP upper snout and lower lip remain forward at reported idle50 and across victory',f=>{
+  const x=make(f),rows=[];
+  for(let ms=0;ms<=600;ms+=5)rows.push({ms,...x.at(ms)});
+  findings.push({name:f.name,rows});
+  for(const {ms,...got}of rows)for(const [surface,v]of Object.entries(got)as any){expect(v.angleDeg,f.name+' '+surface+' '+ms+'ms '+JSON.stringify(v)).toBeLessThanOrEqual(30);expect(v.forward).toBeGreaterThan(0);expect(v.lengthRatio).toBeGreaterThan(.6);}
+ });
+-it('aquatic cap does not mutate the authored source and is a no-op for every other action/family and dry serpent',()=>{
++it('caps do not mutate authored source and leave every unrelated action/family exact',()=>{
+  const fixtures=read('port/v2/tools/creature-animation/test-fixtures/family-records.json').records;let checked=0;
+- for(const fixture of Object.values(fixtures)as any[]){const c=compileBodyCard(fixture,fixture.genome);for(const a of Object.values(actionsFor(c.template.id,c.anatomy)!)as any[]){const before=structuredClone(a),got=candidate(c,a);expect(a).toEqual(before);if(c.template.id!=='serpent'||(a.id!=='victory'&&!(c.realm==='aquatic'&&['hit','faint'].includes(a.id))))expect(got).toBe(a);else if(c.realm!=='aquatic')for(let i=0;i<a.poses.length;i++)for(const j of ['head','jaw'])expect(got.poses[i]!.joints[j]).toEqual(a.poses[i].joints[j]);checked++;}}
+- for(const f of CASES){const x=make(f);for(const a of Object.values(actionsFor('serpent',x.c.anatomy)!)as any[]){if(!['victory','hit','faint'].includes(a.id))expect(candidate(x.c,a)).toBe(a);}const dry={...x.c,realm:'land' as const};const dryAction=candidate(dry,x.authored);for(let i=0;i<x.authored.poses.length;i++)for(const j of ['head','jaw'])expect(dryAction.poses[i]!.joints[j]).toEqual(x.authored.poses[i]!.joints[j]);}
++ for(const fixture of Object.values(fixtures)as any[]){const c=compileBodyCard(fixture,fixture.genome);for(const a of Object.values(actionsFor(c.template.id,c.anatomy)!)as any[]){const before=structuredClone(a),got=candidate(c,a);expect(a).toEqual(before);if(c.template.id!=='serpent'||(a.id!=='victory'&&!(c.realm==='aquatic'&&['hit','faint'].includes(a.id))))expect(got).toBe(a);else for(const p of got.poses)for(const[j,cap]of [['head',12],['jaw',4]]as const){const g=(c.amplitudeProfile?.scales[j]??1)*(c.projectionScales?.[j]??1)*(c.projectionSigns?.[j]??1);if(g!==0)expect(Math.abs((p.joints[j]??0)*g)).toBeLessThanOrEqual(cap+1e-10);}checked++;}}
++ for(const f of CASES){const x=make(f);for(const a of Object.values(actionsFor('serpent',x.c.anatomy)!)as any[]){if(!['victory','hit','faint'].includes(a.id))expect(candidate(x.c,a)).toBe(a);}const dry={...x.c,realm:'land' as const};const dryAction=candidate(dry,x.authored);for(const p of dryAction.poses)for(const[j,cap]of [['head',12],['jaw',4]]as const){const g=(dry.amplitudeProfile?.scales[j]??1)*(dry.projectionScales?.[j]??1)*(dry.projectionSigns?.[j]??1);if(g!==0)expect(Math.abs((p.joints[j]??0)*g)).toBeLessThanOrEqual(cap+1e-10);}}
+  expect(checked).toBeGreaterThan(100);
+ });
+ it.each(CASES.flatMap(f=>['hit','faint'].map(action=>({...f,action}))))('$name $action projects head/jaw within the existing aquatic cap and preserves every other track',f=>{
+  const r=read(f.fit+'/record.json'),c=compileBodyCard(r,r.genome),authored=actionsFor('serpent',c.anatomy)![f.action]!,before=structuredClone(authored);
+  const raw=buildActionTimeline(c,authored,c.identity.seed),got=buildTimeline(c,f.action,c.identity.seed);
+  for(const [joint,cap]of [['head',12],['jaw',4]]as const)expect(Math.max(...got.tracks[joint]!.map(k=>Math.abs(k.value)*180/Math.PI)),f.name+'/'+f.action+'/'+joint).toBeLessThanOrEqual(cap+1e-10);
+  for(const [joint,track]of Object.entries(raw.tracks))if(!['head','jaw'].includes(joint))expect(got.tracks[joint],joint).toEqual(track);
+  expect(got.root).toEqual(raw.root);expect(got.durationMs).toEqual(raw.durationMs);expect(got.bodyMs).toEqual(raw.bodyMs);expect(authored).toEqual(before);
+ });
+ it('both-direction painted controls: current curl and an exaggerated opposite gape fail the same angular outcome',()=>{
+diff --git a/port/v2/apps/game/src/motion/serpent-victory.test.ts b/port/v2/apps/game/src/motion/serpent-victory.test.ts
+index 557f402639..9be66207d7 100644
+--- a/port/v2/apps/game/src/motion/serpent-victory.test.ts
++++ b/port/v2/apps/game/src/motion/serpent-victory.test.ts
+@@ -38,20 +38,21 @@ it.each(records())('%s: the victory rears on a landed trunk; the authored, hover
+  const got=envelope(record,tl);
+  expect(got,JSON.stringify(got)).toMatchObject({pass:true});
+  expect(tl.notes).toContain('serpent:landing-victory-v1');expect(tl.clamped).toEqual([]);
+  // control 1 (the defect): the raw authored family victory hangs the trunk ~0.9 body lengths below its rest line
+  const raw=envelope(record,buildActionTimeline(card,authored,5));expect(raw.pass).toBe(false);expect(raw.sink).toBeGreaterThan(.5);
+  // control 2 (hover): lifting the root without sloping the trunk back down floats the posterior body off its line
+  const hover=envelope(record,buildActionTimeline(card,{...authored,poses:authored.poses.map(p=>({...p,joints:Object.fromEntries(Object.entries(p.joints).filter(([j])=>!SEGS.includes(j)))}))},5));
+  expect(hover.pass).toBe(false);expect(hover.drift).toBeGreaterThan(ENVELOPE.maxPosteriorDriftBL);
+  // control 3 (mirrored sign): the same solved angles with the wrong sign lift the trunk instead of landing it
+  const flipped=envelope(record,negateSegs(tl));expect(flipped.pass).toBe(false);
+- // Dry axial head rise stays exact; aquatic head rotation is intentionally bounded.
+- // The original numeric minimum rise and trunk rulers above still govern every record.
+- if(card.realm!=='aquatic')expect(got.rise).toBeCloseTo(raw.rise,9);
+- else expect(tl.root).toEqual(buildActionTimeline(card,authored,5).root);
++ // C465 intentionally bounds dry victory head/jaw as well. The original
++ // minimum head rise, trunk sink/drift rulers and three negative controls stay unchanged.
++ expect(tl.root).toEqual(buildActionTimeline(card,authored,5).root);
++ for(const[joint,cap]of [['head',12],['jaw',4]]as const)
++  expect(Math.max(...tl.tracks[joint]!.map(k=>Math.abs(k.value)*180/Math.PI))).toBeLessThanOrEqual(cap+1e-10);
+ });
+ it('changes no other family or serpent action',()=>{
+  for(const id of Object.keys(fixtures)){const card=compileBodyCard({...structuredClone(fixtures[id]),identity:{...fixtures[id].identity,earthName:null},recipeHash:'synthetic-control'});
+   for(const action of Object.keys(actionsFor(card.template.id,card.anatomy)!)){const tl=buildTimeline(card,action,17);
+    expect(tl.notes.includes('serpent:landing-victory-v1'),id+'/'+action).toBe(id==='serpent'&&action==='victory');}}
+ });
+diff --git a/port/v2/apps/game/src/motion/serpent-victory.ts b/port/v2/apps/game/src/motion/serpent-victory.ts
+index 7e5939ccf7..d0818b62f0 100644
+--- a/port/v2/apps/game/src/motion/serpent-victory.ts
++++ b/port/v2/apps/game/src/motion/serpent-victory.ts
+@@ -1,29 +1,43 @@
+ import type {MotionAction} from './actions.js';
+ import type {BodyCard} from './body-card.js';
+ 
+ /** A serpent's skeleton hangs its trunk TAIL-WARD from a neck root: head->root, seg0->root, seg1->seg0 ... seg9 (the
+  * serpent template graph; every painted record puts `root` just behind the head). Each seg rotates about its PARENT's
+  * landmark, so the authored family victory (seg0 -35, seg1 -30, seg2 -18, seg3 -6) swings the whole trailing body DOWN
+  * about the neck (cumulative -89 deg): the C243 Boa/Mountain Viper films hang ~0.9 body lengths of trunk below the
+  * ground line, under the opaque near plate and past the frame bottom (C262 axial-foreground proof).
+  *
+- * The rear and authored root lift are kept; aquatic head/jaw turns are bounded below, while dry axial tracks stay unchanged.
++ * The rear and authored root lift are kept; victory head/jaw turns are bounded below for dry and aquatic serpents.
+  * The trunk now LANDS: seg0 slopes the
+  * body from the lifted neck back down to its rest line and seg(m+1) counter-rotates by the same angle, so seg(m+1)..
+  * seg9 lie where they rested. m and the angle are solved from this card's own landmarks so the descent equals the
+- * authored lift (root dy x body axis). Aquatic victories, hits and faints cap projected head/jaw turns at 12/4 deg so an
++ * authored lift (root dy x body axis). Victories and aquatic hits/faints cap projected head/jaw turns at 12/4 deg so an
+  * already-open painted gape does not curl upright or hang vertically. Limits, timing, easing, other actions and families are untouched. */
+ export const SERPENT_VICTORY_NOTE = 'serpent:landing-victory-v1';
+ const SEGS = Array.from({length:10},(_,k)=>'seg'+k);
+ const MAX_DEG = 38; // inside the template's +-45 seg limit with the idle layer (+-4 deg) on top
+ export function serpentVictoryAction(card:BodyCard,action:MotionAction):MotionAction{
++ const landed=serpentLandingAction(card,action);
++ // Dry Cobra's victory inverted its already-painted head. Bound only these
++ // nominal head/jaw keys after the existing landing, including unchanged poses.
++ if(card.template.id!=='serpent'||card.realm==='aquatic'||action.id!=='victory')return landed;
++ return {...landed,poses:landed.poses.map(p=>{
++  const joints:Record<string,number>={...p.joints};
++  for(const [joint,cap]of [['head',12],['jaw',4]]as const){
++   const g=(card.amplitudeProfile?.scales[joint]??1)*(card.projectionScales?.[joint]??1)*(card.projectionSigns?.[joint]??1);
++   if(g!==0&&joints[joint]!==undefined)joints[joint]=Math.max(-cap,Math.min(cap,joints[joint]!*g))/g;
++  }
++  return {...p,joints};
++ })};
++}
++function serpentLandingAction(card:BodyCard,action:MotionAction):MotionAction{
+  // Reactions do not have a victory landing/root lift. Bound their painted gape
+  // independently so the losing eel's held faint cannot leave its lower lip vertical.
+  if(card.template.id==='serpent'&&card.realm==='aquatic'&&['hit','faint'].includes(action.id))return {...action,poses:action.poses.map(p=>{
+   const joints:Record<string,number>={...p.joints};
+   for(const [joint,cap]of [['head',12],['jaw',4]]as const){
+    const g=(card.amplitudeProfile?.scales[joint]??1)*(card.projectionScales?.[joint]??1)*(card.projectionSigns?.[joint]??1);
+    if(g!==0&&joints[joint]!==undefined)joints[joint]=Math.max(-cap,Math.min(cap,joints[joint]!*g))/g;
+   }
+   return {...p,joints};
+  })};
+diff --git a/port/v2/apps/game/src/release-content.ts b/port/v2/apps/game/src/release-content.ts
+index 37258022e8..c0dced8e35 100644
+--- a/port/v2/apps/game/src/release-content.ts
++++ b/port/v2/apps/game/src/release-content.ts
+@@ -971,21 +971,21 @@ export const V2_DRAFT_RELEASE = Object.freeze({
+         '🪟 A FAILED VISTA CANNOT POISON THE NEXT VISIT: Malformed worker results, throwing bitmap cleanup, context loss, and failed Pixi mounts now stay fail-soft; an unmountable cached canvas is evicted and a new canvas is committed only after it mounts successfully.',
+       ]),
+     }),
+     Object.freeze({
+       category: 'Under the Hood',
+       bullets: Object.freeze([
+         "🌐 READY FOR OTHER LANGUAGES: the Settings panel now draws its words from a translation table (English unchanged); more screens follow.",
+         "📱 DEVICE CHECK: a hidden page (?deviceProbe=1) measures how smoothly the painted battles run on your phone, over a longer stretch as it warms up, and what the painted art keeps in memory, and gives you one block to copy. It sends nothing anywhere.",
+         "🎧 All sound is original and generated on the device — nothing downloaded, no recordings, no AI audio; the hidden Listening page now reviews every sound in the game.",
+         "🔬 DEVICE PROBE: The optional device probe checks Opus and AAC decoding from hash-checked samples and reports which formats work on this device. It does not silently select or download new production sound sources.",
+-        '🐾 CREATURE MOTION STUDIES: Fish and snakes carry travelling body waves, while walking insects and spiders spend longer on supporting feet and centipede steps ripple along the body. Fixed a Centipede approach stall that could interrupt a painted battle. Low-slung creatures now keep a shallow trunk motion through attacks and reactions, with a level head during idle. Painted birds and primates use a gentler upper-body collapse so their napes stay together during faint; primate shoulders and elbows follow that shared movement. Painted birds keep their feet within the same movement limits in battle and in the motion preview. Grounded painted birds celebrate with a small head lift while keeping their wings folded. Reviewed short tails use their painted terminal instead of requiring an invisible extra segment. Painted quadrupeds keep idle and trot motion within their foot reach, and insects with observed leg sockets take shorter recovery steps. Existing painted artwork is preserved; the motion study remains separate from release and full biomechanical qualification. The painted battle preview checks its bundled art identities without downloading painter masters, and switching matchups keeps the main game renderer alive. Painted primates celebrate with a head nod and supported arms. Grounded quadrupeds and insects use gentler supported faint poses; short-forelimbed hoppers keep their body closer to their supports. Snake victories land the trunk on the ground, and eels keep the upper snout and lower jaw in shape through victories, hits and fainting.',
++        '🐾 CREATURE MOTION STUDIES: Fish and snakes carry travelling body waves, while walking insects and spiders spend longer on supporting feet and centipede steps ripple along the body. Fixed a Centipede approach stall that could interrupt a painted battle. Low-slung creatures now keep a shallow trunk motion through attacks and reactions, with a level head during idle. Painted birds and primates use a gentler upper-body collapse so their napes stay together during faint; primate shoulders and elbows follow that shared movement. Painted birds keep their feet within the same movement limits in battle and in the motion preview. Grounded painted birds celebrate with a small head lift while keeping their wings folded. Reviewed short tails use their painted terminal instead of requiring an invisible extra segment. Painted quadrupeds keep idle and trot motion within their foot reach, and insects with observed leg sockets take shorter recovery steps. Existing painted artwork is preserved; the motion study remains separate from release and full biomechanical qualification. The painted battle preview checks its bundled art identities without downloading painter masters, and switching matchups keeps the main game renderer alive. Painted primates celebrate with a head nod and supported arms. Grounded quadrupeds and insects use gentler supported faint poses; short-forelimbed hoppers keep their body closer to their supports. Snake victories land the trunk on the ground and keep the painted head and jaw in shape; eels keep the upper snout and lower jaw in shape through victories, hits and fainting.',
+         '🧱 A MODULAR CORE UNDER ONE UNIVERSE: Deterministic domain facades, strict root and app TypeScript programs, Pixi rendering, and IndexedDB persistence form the current playable Phase-4 foundation without changing seeded world identity. One versioned, digested 43-key domain biome-profile authority binds the exact current-world roster environment fingerprint to art and to a pure already-surfaced distant-ecology plan. A strict playback join accepts only exact visible inhabited-biosphere evidence and renders one generic deterministic neutral signal; it writes no save, spends no Yield, and reveals no species.',
+         '🔐 ONE DURABLE AUTHORITY AT A TIME: Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts, an active-play-only clock, and isolated SessionRNG counters commit product state together. A lease-storage failure or rejected repository-revision read immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring; a losing tab cannot rebase, and a failed transaction publishes neither the reward nor its entropy advance.',
+         '🔢 THE REVISION CEILING FAILS CLOSED: The maximum safe revision remains readable, but a mutation that would overflow it returns a typed protected outcome before changing product rows, receipts, F4 state, or revision bytes.',
+         '🌐 BROWSER UPDATES ARE PROVENANCE, NOT BASELINES: Local Chromium-driving art and layout tools resolve an explicit or installed compatible Edge/Chrome executable across macOS, Windows, and Linux. Before art evidence, the connected browser must report complete Chromium-family identity, version, executable, revision, user agent, JavaScript, and CDP 1.3 provenance. Any compatible point version is accepted and never demands a visual rebaseline by itself.',
+         '📦 ART ARRIVES WHEN IT IS NEEDED: Species art loads on demand. The read-only Compendium supports up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row; each visible row moves from a neutral placeholder to an exact 132px thumbnail keyed by the complete genome. Search filters the logical count, Back restores the saved row and focus, and Close returns focus to the exact opener. Planetside shares the same bounded thumbnail lease path, leases release with their visible owners, and only specimen detail publishes and retains an exact 440px portrait with gentle selected-image motion that stops when hidden, closed, or reduced motion is enabled; thumbnail scratch art is downsampled to 132px before it crosses the worker boundary. The worker keeps its immutable data-URL handoff, while the window converts only settled 132px thumbnails into revocable Blob URLs. Closed surfaces release their visible owners, evict unowned portraits, and retain only the 17 most-recently used unleased thumbnails for bounded warm reuse; live leases survive, reacquisition works, and invalid, dropped, oversize, duplicate, evicted, or finally disposed art releases its Blob ownership.',
+         '🧵 ONE BACKGROUND PAINTER AT A TIME, OWNED END TO END: A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry so painting needs no second module fetch. One broker serializes work, deduplicates complete-genome keys, bounds caches and leases, validates every 132px/440px result, contains failed tiles, revokes stale bfcache work, and terminates an idle or replaced producer without a synchronous renderer fallback.',
+         '🪐 HD SURFACES HAVE ONE NAMED OWNER: A named HD surface-planet texture attachment binds each completion to the exact surface generation and planet identity, retains the displayed predecessor until an acquired successor publishes, rejects stale work, suppresses same-texture swaps, and cancels and releases its timer and leases at the owning scene boundary.',
+         '📚 HISTORY STAYS HISTORY: All 56 v1 releases and 398 legacy bullets remain byte-parity checked and separate from the v2.0 development bulletin; this draft cannot trigger the shipped-update popup or mutate the seen-release marker.',
+         '🧪 THE TEST FLEET DRIVES THE REAL SURFACES: Determinism and parity checks, full TypeScript tests, one-attempt browser smoke, a 12-viewport responsive matrix, deliberate broken-build controls, and nine automated play lenses guard the development package. Closed Inventory panels retain their inventory, filter, and page state without keeping hidden item rows or dormant event subscriptions, and every registered panel opener shares one focus-capture owner. The memory ruler names the exact exceeded counter and cannot move merely because the browser received a compatible point update. Automated lenses still do not replace human play.',
+         '🔬 RELOADS HAVE AN EVIDENCE CHAIN: Import settlement, renderer release, navigation commit, replacement boot, ready publication, and later page commandability are measured as separate ordered outcomes instead of one blind reload delay.',
+diff --git a/port/v2/tools/painted-creature/README.md b/port/v2/tools/painted-creature/README.md
+index 59d57b031c..bfed242bb3 100644
+--- a/port/v2/tools/painted-creature/README.md
++++ b/port/v2/tools/painted-creature/README.md
+@@ -1,13 +1,13 @@
+ # Controlled creature painting tools
+ 
+-C444/C279 source admission clarification (matches code 2026-10-18): requested650/275 framing and a perfectly flat key background are prompt QA, not new canonical gates. Use the unchanged8% clear margin and actual keyed-RGBA intake, plus observed anatomy/identity/pose review. Tools imported by the game bundle count as runtime for I5 regardless of their directory name; declare any such source change for recertification. Current proof/evidence: `audits/C444_CODEX_20261018/`; previous source reviews remain in `audits/C279_CODEX_20261018/`. Any `release-content.ts` edit must update `GUIDE_DRAFT_BULLET_AUTHORITY` in `port/v2/tools/slicesmoke.mjs` in the same commit and pass the browser-free develop profile. Motion notes stay inside CREATURE MOTION STUDIES; the draft has121bullets.
++C465/C444 source admission clarification (matches code 2026-10-18): requested650/275 framing and a perfectly flat key background are prompt QA, not new canonical gates. Use the unchanged8% clear margin and actual keyed-RGBA intake, plus observed anatomy/identity/pose review. Tools imported by the game bundle count as runtime for I5 regardless of their directory name; declare any such source change for recertification. Current proof/evidence: `audits/C444_CODEX_20261018/`; previous source reviews remain in `audits/C279_CODEX_20261018/`. Any `release-content.ts` edit must update `GUIDE_DRAFT_BULLET_AUTHORITY` in `port/v2/tools/slicesmoke.mjs` in the same commit and pass the browser-free develop profile. Motion notes stay inside CREATURE MOTION STUDIES; the draft has121bullets.
+ 
+ C275 explicit key provenance (matches authoring code 2026-10-18): `intakeAuthoredPixels` accepts only an optional own `keyColor` of `magenta` or `green`; an explicit key requires an entirely opaque original. A new authored packet may declare `authoring.json` `keyColor:"green"`. Its new `cf.keyed-part-intake/v2` declaration binds `cf.chroma-key/v1` keying provenance through the existing declaration hash and exact keyed-RGBA SHA256. Existing v1 declarations retain implicit magenta and their original seals; the retained Aphid v1 pixels still admit, while a fresh incompatible rekey continues to refuse. No existing seal is rebound. `buildAuthoredParts` rekeys from that explicit provenance; terrain bypasses and unsupported keys refuse. Generic auto-author/tip callers still use implicit magenta: new green sources must use the explicit authored-packet route. Source identity/framing, conservation, static, C261 and independent finished-film reviews remain required. Evidence: `audits/C275_CODEX_20261017/coordinator/green-integrated/`.
+ 
+ Matches code as of 2026-10-09.
+ 
+ `compile-library-master.mjs` compiles a canonical Earth fauna name, genomic identity, ART_KIT prompt and locked style reference into a new immutable request packet. It supplies painting vocabulary for quadruped, bird, serpent, fish, insect, primate, myriapod, cephalopod and membrane-wing flyer families. The four extended routes require an explicitly supported named species; mixed or unknown family routing refuses. Generic layouts remain; canonical source-profile overrides below distinguish biological subfamilies. Primates preserve real arms/hands and species tails; myriapods preserve their own leg-pair pattern rather than a rig joint count; cephalopods distinguish eight arms, feeding tentacles, sensory filaments, fins and the Nautilus shell; bat wings are forelimbs. This is prompt support, never rig, motion, attack or gallery admission.
+ 
+ As of 2026-10-04, the canonical `frog` profile with sole `hopper` family and Scorpion with sole `arachnid` family also compile source requests. Frog requests preserve adult four-limb/no-tail anatomy; Scorpion requests preserve eight walking legs, two chelate pedipalps and segmented sting tail. Mixed/unknown routes still refuse. These source routes do not add qualified anatomy references or relax intake; far limbs hidden in a generated painting remain unresolved.
+ 
+ `reviewed-presence.mjs` preserves two explicit visual-review schemas and adds a separate canonical biological-fact schema. `cf.reviewed-optional-absence/v1` retains the existing canonical tailless-quadruped tail policy. `cf.reviewed-external-ear-absence/v1` admits external-pinna absence only for a hash-bound adult sprawler painting whose independent pinned Earth profile is lizard, special-lizard, marine-iguana, crocodilian or salamander. Both routes bind exact master, canonical subject and prompt bytes and require full-original review. The ear route also binds the complete current Earth profile and accepts only `external-pinnae-only`, one absence decision and `exact-master-only-no-visual-admission` scope. Ear openings, tympana, protective flaps, horns, casques, frills and gills remain natural head/neck paint. That visual-review route refuses mammals and changed/rebound canonical or profile assertions. Failed paint ownership never implies absence.
+diff --git a/port/v2/tools/slicesmoke.mjs b/port/v2/tools/slicesmoke.mjs
+index 6f33b13fe5..ff901da732 100644
+--- a/port/v2/tools/slicesmoke.mjs
++++ b/port/v2/tools/slicesmoke.mjs
+@@ -6937,21 +6937,21 @@ try {
+     ['prime-codex', 'regions', 'partial'], ['prime-codex', 'endings', 'partial'],
+     ['living-universe', 'determinism', 'partial'], ['settings-saving', 'settings', 'partial'],
+     ['settings-saving', 'saving', 'partial'],
+   ].map((row) => Object.freeze({ categoryId: row[0], id: row[1], availability: row[2] })));
+   const GUIDE_RELEASE_HISTORY_AUTHORITY = Object.freeze({
+     count: 57,
+     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
+   });
+   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
+     count: 121,
+-    sha256: '2ecf6f00ff8fb1458211a51473df02bdbda3dd9469b1e77c6c87cf373dc1f202',
++    sha256: '5738bc24f3d8f1de2ea488b42169b83b0b625ccc14cf30135f3e44a1207ecc66',
+   });
+   const assessGuideOrderedAuthority = (rows, authority) => {
+     const values = Array.isArray(rows) ? rows : [];
+     const sha256 = createHash('sha256').update(JSON.stringify(values)).digest('hex');
+     return { ok: values.length === authority.count && sha256 === authority.sha256,
+       count: values.length, sha256, expectedCount: authority.count, expectedSha256: authority.sha256 };
+   };
+   const assessGuideSearchIngress = (search) => ({
+     ok: search?.present === true && search.disabled === false && search.ariaDisabled !== 'true'
+       && Number.isInteger(search.tabIndex) && search.tabIndex >= 0,
+
+NEW TRACKED-AT-COMMIT TEST port/v2/apps/game/src/motion/dry-serpent-victory.test.ts
+// C465 exact Cobra outcome regression; the runtime timeline owns the fix. Diagnostic output is opt-in.
+import fs from 'node:fs';import path from 'node:path';import {it,expect,afterAll} from 'vitest';
+import {compileBodyCard} from './body-card.js';
+import {actionsFor} from './family-actions.js';
+import {buildTimeline,buildActionTimeline} from './timeline.js';
+import {serpentVictoryAction as runtime} from './serpent-victory.js';
+import {sampleClip,addPose} from '../battle2/choreography.js';
+import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';
+import {familyContractForRecord} from '../../../../tools/creature-animation/family-contracts.mjs';
+import {createCompiledSkinField,applyCompiledSkinField} from '../../../../tools/creature-animation/compiled-skin-field.mjs';
+import {createArapScratch,solveArapSkin} from '../../../../tools/creature-animation/arap-skin.mjs';
+import {applyPaintPart,paintPartAreas,assertPaintPartShape} from '../../../../tools/creature-animation/paint-skin.mjs';
+const ROOT=path.resolve(new URL('../../../../../../',import.meta.url).pathname),HERE=new URL('.',import.meta.url).pathname,read=(p:string)=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
+const FIT='audits/C444_CODEX_20261018/w3-intake/best4-intake/cobra/cpu-r01/raw-fit';
+const findings:any[]=[],controls:any[]=[],scope:any[]=[],gainRows:any[]=[];
+function uncapped(c:any,a:any){const z=runtime(c,a);if(c.template.id!=='serpent'||c.realm==='aquatic'||a.id!=='victory')return z;return {...z,poses:z.poses.map((p:any,i:number)=>{const joints={...p.joints};for(const j of ['head','jaw']){delete joints[j];if(a.poses[i].joints[j]!==undefined)joints[j]=a.poses[i].joints[j];}return {...p,joints};})};}
+function proposal(c:any,a:any){const z=runtime(c,a);if(c.template.id!=='serpent'||c.realm==='aquatic'||a.id!=='victory')return z;return {...z,poses:z.poses.map((p:any)=>{const joints={...p.joints};for(const[j,cap]of [['head',12],['jaw',4]] as const){const g=(c.amplitudeProfile?.scales[j]??1)*(c.projectionScales?.[j]??1)*(c.projectionSigns?.[j]??1);if(g!==0&&joints[j]!==undefined)joints[j]=Math.max(-cap,Math.min(cap,joints[j]*g))/g;}return{...p,joints};})};}
+const adapt=runtime;
+function make(adapter=adapt){const r=read(FIT+'/record.json'),b=read(FIT+'/binding.json'),c=compileBodyCard(r,r.genome),a=actionsFor('serpent',c.anatomy)!.victory!,tl=adapter===runtime?buildTimeline(c,'victory',c.identity.seed):buildActionTimeline(c,adapter(c,a),c.identity.seed),idle=buildTimeline(c,'idle',c.identity.seed),prog=createSkeletonPoseProgram(familyContractForRecord(r),r.landmarks),skin=b.paintSkin,w=r.geometry.width,h=r.geometry.height,compiled=createCompiledSkinField(skin,w,h),scratch=createArapScratch(skin.vertices,skin.triangles,w,h,skin.solver),target=new Float32Array(skin.vertices.length*2),field=target.slice(),part=skin.parts.find((p:any)=>p.id==='head'),out=new Float32Array(part.vertices.length*2),areas=paintPartAreas(part,skin),source=part.vertices.map((v:any)=>v.triangle.reduce((p:number[],k:number,i:number)=>[p[0]!+skin.vertices[k].x*v.barycentric[i],p[1]!+skin.vertices[k].y*v.barycentric[i]],[0,0])),annotations=[{name:'headAxis',xy:[[851,361.5],[1008,361.5]]},{name:'headDepth',xy:[[969,342],[969,381]]}].map(a=>({...a,indices:a.xy.map(xy=>{const i=source.findIndex((s:number[])=>Math.hypot(s[0]!-xy[0]!,s[1]!-xy[1]!)<.01);expect(i).toBeGreaterThanOrEqual(0);return i;})})),turn=read('audits/C444_CODEX_20261018/coordinator/plans/cobra-c/native/report.json').gates.turns[3];
+ const at=(elapsed:number,override=tl)=>{const absolute=turn.beats.returnEnd+elapsed,ic=absolute-(turn.beats.hitstopEnd-turn.beats.impactAt),pose=addPose(sampleClip({source:'timeline',timeline:idle},ic),sampleClip({source:'timeline',timeline:override},elapsed));applyCompiledSkinField(compiled,prog.evaluate(pose),target);solveArapSkin(scratch,target,field);applyPaintPart(part,field,out);assertPaintPartShape(part,skin,out,w,h,areas);const result:any={absoluteMs:absolute,elapsedMs:elapsed,joints:Object.fromEntries(Object.entries(pose).filter(([j])=>['root','head','jaw'].includes(j)).map(([j,v]:any)=>[j,v.rotation*180/Math.PI]))};for(const a of annotations){const[i,j]=a.indices,s=a.xy[1]!.map((v:number,k:number)=>v-a.xy[0]![k]!),v=[(out[j!*2]!-out[i!*2]!)*w,(out[j!*2+1]!-out[i!*2+1]!)*h];result[a.name]={angleDeg:Math.abs(Math.atan2(s[0]!*v[1]!-s[1]!*v[0]!,s[0]!*v[0]!+s[1]!*v[1]!))*180/Math.PI,forward:v[0],vector:v,lengthRatio:Math.hypot(...v)/Math.hypot(...s)};}return result;};return{c,a,tl,turn,at,annotations};}
+it('actual Cobra dry victory preserves forward nonflattened painted head through exact idle50/90 and complete victory sweep',()=>{const x=make(),rows=[];for(let ms=0;ms<=x.tl.durationMs;ms+=10)rows.push(x.at(ms));rows.push(x.at(x.tl.durationMs));for(const[fraction,name]of [[.5,'turn3-hit-idle-50'],[.9,'turn3-hit-idle-90']]as const)rows.push({canonical:name,...x.at(600*fraction)});findings.push({species:'Cobra',fit:FIT,bodyMs:x.tl.bodyMs,durationMs:x.tl.durationMs,annotations:x.annotations,authoredAction:x.a,adaptedAction:adapt(x.c,x.a),compiledHeadTrack:x.tl.tracks.head,compiledJawTrack:x.tl.tracks.jaw,rows});for(const r of rows){expect(r.headAxis.angleDeg,'head source direction '+JSON.stringify(r)).toBeLessThanOrEqual(30);expect(r.headAxis.forward).toBeGreaterThan(0);expect(r.headAxis.lengthRatio).toBeGreaterThan(.6);expect(r.headDepth.lengthRatio).toBeGreaterThan(.6);}});
+it('both excessive directions and the original actual idle50 deformation are rejected by the same outcome',()=>{const x=make(proposal),old=make(uncapped),raw=old.at(300);expect(raw.headAxis.angleDeg>30||raw.headAxis.forward<=0||raw.headAxis.lengthRatio<=.6||raw.headDepth.lengthRatio<=.6).toBe(true);for(const sign of[-1,1]){const wrong={...x.tl,tracks:{...x.tl.tracks,head:x.tl.tracks.head!.map(k=>({...k,value:k.value===0?0:sign*Math.PI/2}))}},z=x.at(300,wrong);expect(z.headAxis.angleDeg>30||z.headAxis.forward<=0||z.headAxis.lengthRatio<=.6||z.headDepth.lengthRatio<=.6).toBe(true);controls.push({sign,at300:z});}controls.push({actualRuntimeAt300:raw});});
+it('proposal changes only dry serpent victory head/jaw; root/trunk/timing/limits and all other actions/families remain exact',()=>{const fixtures=read('port/v2/tools/creature-animation/test-fixtures/family-records.json').records;for(const[name,r]of [...Object.entries(fixtures),['Cobra',read(FIT+'/record.json')]]as any[]){const c=compileBodyCard(r,r.genome);for(const[action,a]of Object.entries(actionsFor(c.template.id,c.anatomy)!)){const before=structuredClone(a),b=buildActionTimeline(c,uncapped(c,a),c.identity.seed),z=buildActionTimeline(c,proposal(c,a),c.identity.seed);expect(a).toEqual(before);const diff=Object.keys(b.tracks).filter(j=>JSON.stringify(b.tracks[j])!==JSON.stringify(z.tracks[j]));if(c.template.id==='serpent'&&c.realm!=='aquatic'&&action==='victory'){expect(diff.every(j=>['head','jaw'].includes(j))).toBe(true);expect({...z,tracks:b.tracks,hash:b.hash}).toEqual(b);}else expect(z).toEqual(b);scope.push({name,template:c.template.id,realm:c.realm,action,diff,beforeHash:b.hash,afterHash:z.hash});}}});
+it('both signs and zero gain preserve projected12/4 proposal caps',()=>{const r=read(FIT+'/record.json'),base=compileBodyCard(r,r.genome);for(const amp of[0,.25,1,2])for(const scale of[.5,1,2])for(const sign of[-1,1]){const c={...base,amplitudeProfile:{...base.amplitudeProfile,scales:{...base.amplitudeProfile?.scales,head:amp,jaw:amp}},projectionScales:{...base.projectionScales,head:scale,jaw:scale},projectionSigns:{...base.projectionSigns,head:sign,jaw:sign}},a=actionsFor('serpent',c.anatomy)!.victory!,tl=buildActionTimeline(c,proposal(c,a),17),maxima=Object.fromEntries([['head',12],['jaw',4]].map(([j,cap])=>{const max=Math.max(...tl.tracks[j]!.map(k=>Math.abs(k.value)*180/Math.PI));expect(max).toBeLessThanOrEqual(Number(cap)+1e-10);return[j,max];}));gainRows.push({amp,scale,sign,maxima});}});
+afterAll(()=>{const dir=process.env.C465_COBRA_EVIDENCE_DIR;if(!dir)return;fs.mkdirSync(dir,{recursive:true});for(const[name,value]of Object.entries({findings,controls,scope,gainRows}))fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify(value,null,2)+'\n',{flag:'wx'});});

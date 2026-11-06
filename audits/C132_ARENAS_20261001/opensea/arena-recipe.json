@@ -1,0 +1,96 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:opensea",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "opensea"
+  },
+  "seed": 2302311807,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template opensea; canonical profile opensea\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #2a5a8a; named material flat dark blue-gray ocean-floor sediment.\n  Atmosphere: canonical weather swell; authored medium water; deep blue open water with distant submerged shelves and sparse seaweed.\n  Flora pigment: source profile opensea; permitted forms seaweed; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families fish, marine, jelly, ceph; no fauna are painted into these arena layers.\n  One signature: no biome hazard in source; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/opensea/arena-far.prompt.txt",
+  "systemCardSourceSha256": "5d098d53fff3d9ec84016c9f769f71e2772281c3f181ec0ece992add120f543d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "opensea",
+  "habitatVariant": null,
+  "medium": "water",
+  "canonicalProfile": {
+    "sig": "#2a5a8a",
+    "fauna": [
+      "fish",
+      "marine",
+      "jelly",
+      "ceph"
+    ],
+    "flora": [
+      "seaweed"
+    ],
+    "hazard": null,
+    "weather": "swell"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "dc13c467cdbfc86c411bba6824289fceac25fa6936ef90de58b71970c0704019",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "213df9cc1127e761c08e0ef01232c8f5b8558d3fd09b6447952ad20c28ace42c",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  }
+}

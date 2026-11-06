@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tang",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/",
+ "markingsDir": "audits/ART_BATTLE_FOCUS_20260925/10-tang/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5f4535d1145c37d9a3c20b4bb87f719bd7a9fa462f130c2658d1ebd94980ead8"
+}

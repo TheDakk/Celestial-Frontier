@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sugar Glider",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/08-sugar-glider/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "72d593ddb64e2b235bfb4a1fda1ef6b07538aac0c500c365476ac6dce505f17b"
+}

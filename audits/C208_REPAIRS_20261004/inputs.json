@@ -1,0 +1,1828 @@
+[
+  {
+    "id": "07-wild-pig",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/07-wild-pig/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "2dc3ec346e89e2a8e14fcc305380d783e620bee93353da83c41f0eb930cbe4f5"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "3a020417ec0c88b95856bae1e839120a57a6bd14ed4aa1628e5f30aeff04c980"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "f888fdf9ae46638dcda21ba5260d3b62b95129efe8032357819feb01ccdee77b"
+      },
+      {
+        "path": "parts/atlas/07-wild-pig.json",
+        "sha256": "c5fc383da35bf765c6e55cebf594e7ecdcd8bb044c043cf83ef34aeaa52aa156"
+      },
+      {
+        "path": "parts/atlas/07-wild-pig.png",
+        "sha256": "55b2ea8dff7dc7bdf7df0a8e5352cf5896bfbee6f4282bcfd49184a8d8d36f70"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "9cecce1067535c01574da486bb56100d414e2735409fd85eeaf7c49c695404b2"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "a55031998426151e55148de31133efabf77527daca64c49bf4daa5bae02ea83e"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "a7f7ce0caebe1745d6007bb769c00a403957ef3c3aa97a0d6b9d55b9649c1463"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "cd6d5d14adb6d35952a5e7c1a05618fcc54903107e321c98dd299cd66e72f5d6"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "fae6f3bd754a5dc24685c98ab9302189ba4fc1d2fe8bae1b6e7c2a2b9a4f7f9d"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "65352a8a3bb936acae4e4ad24f2a082aa3fdf5090af145b51542eba1d8c927bb"
+      },
+      {
+        "path": "parts/parts/ear-far-root.png",
+        "sha256": "2d5dd4126c2f3f25e8f2048a4078a1324c986f7be7881ba43a62c389b3f08b90"
+      },
+      {
+        "path": "parts/parts/ear-far-tip.png",
+        "sha256": "b8acd82ae40370bbccb85a7f1317de0ca414d818d95e89ede107b37294056f29"
+      },
+      {
+        "path": "parts/parts/ear-near-root.png",
+        "sha256": "1035ebb31dd4c6347279657f732484353dc3bc6f552325ab3efd37c865785fa4"
+      },
+      {
+        "path": "parts/parts/ear-near-tip.png",
+        "sha256": "63d41a24cea3af556b62c1659a82335ce20ff06330084908c6ca811a6b95c83d"
+      },
+      {
+        "path": "parts/parts/fore-far-ankle.png",
+        "sha256": "2adaeac2ce2a91c82be38c9631ba34db65f62c56b76cf645e6cb1c7abb2edaab"
+      },
+      {
+        "path": "parts/parts/fore-far-knee.png",
+        "sha256": "e387f97c3e9879f79e7d7ce0a148cdec43a1f8cc278b799707c169791f258681"
+      },
+      {
+        "path": "parts/parts/fore-far-paw.png",
+        "sha256": "227da64ad4b64a2d49a05946117fd606662fdc725d737c356b09558f45ba9417"
+      },
+      {
+        "path": "parts/parts/fore-far-root.png",
+        "sha256": "c439a72bf9443ad599c8ae7b46a60f49bac5d6bcfbc5e734887acdbb6252c61c"
+      },
+      {
+        "path": "parts/parts/fore-near-ankle.png",
+        "sha256": "cc776915007f175ae5843798343a10cd6b3ff66a484d3f1c22b3dacd35b8bb41"
+      },
+      {
+        "path": "parts/parts/fore-near-knee.png",
+        "sha256": "34b670e2d09c879d7e1d4dda3fcafd85e0de35ce3b03d962ef89409ac5d5ad74"
+      },
+      {
+        "path": "parts/parts/fore-near-paw.png",
+        "sha256": "927b82fc960ebac04a369e69198a22b1f22f2b4c177e69e5af6a3c1a7a04fa20"
+      },
+      {
+        "path": "parts/parts/fore-near-root.png",
+        "sha256": "2c35ea29e1d47433041a10285a2bf196c4f630079693644bd3a6c9308a6db292"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "a28d539e3a8ed1dbeede4ea9d283880e2ae04a3c84386d444e1404e641a3f214"
+      },
+      {
+        "path": "parts/parts/hind-far-ankle.png",
+        "sha256": "fe9ebf55bdb526bf89f7f02f0426b08bb8654caee02fdd358c4e0896d2ea1108"
+      },
+      {
+        "path": "parts/parts/hind-far-knee.png",
+        "sha256": "eb0ddae0cef427e61a27425f23c99a939c74f2987d9a09bb05cae8dbc4cf511a"
+      },
+      {
+        "path": "parts/parts/hind-far-paw.png",
+        "sha256": "63050a6683fd59c49f69d5cd08cc06a5e90ec7b9293c944ed8ea12d05227f7fe"
+      },
+      {
+        "path": "parts/parts/hind-far-root.png",
+        "sha256": "42a6dbeda5a4fc3854d7f88cee8a9b5a92818e471113845fd14d81600d03432a"
+      },
+      {
+        "path": "parts/parts/hind-near-ankle.png",
+        "sha256": "a6af9f5ab0f9094a7c156b473e96ab4d052341f568c0334b2cb03305f2b63533"
+      },
+      {
+        "path": "parts/parts/hind-near-knee.png",
+        "sha256": "6026b40f2290bdb1eec54960efa1488233960df735e703eb3331514c8803d324"
+      },
+      {
+        "path": "parts/parts/hind-near-paw.png",
+        "sha256": "27548c4e47b8fb06bb7182a4e548dfc8eb6a82a51b7c65a88899be8fbb877530"
+      },
+      {
+        "path": "parts/parts/hind-near-root.png",
+        "sha256": "eb1ca16aea9f0734411d859d6f75df8e29bcab8e25abe91a1e3a5b384c13ec74"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "a80ae951d2c6330612d391411641798042e339ac2aad7422ed78145b33b21454"
+      },
+      {
+        "path": "parts/parts/neck.png",
+        "sha256": "e6db3b137bbb41d01bf0e30b9ece5fcb6d8b3e0f7a8554b9cff63c3be1435f3c"
+      },
+      {
+        "path": "parts/parts/pelvis.png",
+        "sha256": "67aec3492463279c1d2dc983956f04ab97a57d45d485b9933af2f8af2b88f6aa"
+      },
+      {
+        "path": "parts/parts/root.png",
+        "sha256": "949aa0bc47aa7a3a54b7e05941f6c66685e58630adf7cb4a908b5360a75f26fc"
+      },
+      {
+        "path": "parts/parts/spine.png",
+        "sha256": "dc2b442dcd305fa50193679f62ae7f3eb84b0d17ad2ae112604a5753eecf5e84"
+      },
+      {
+        "path": "parts/parts/tail0.png",
+        "sha256": "0cba4e0e7f2c668dffdb5e4abc025e68daa0b6e4326f9fbc53112081bc0afcaa"
+      },
+      {
+        "path": "parts/parts/tail1.png",
+        "sha256": "b520e7c0e37a0af7b6d00d6876396741a97c24ba8b6cca4089494eeccee02be4"
+      },
+      {
+        "path": "parts/parts/tail2.png",
+        "sha256": "6d47869a4c87bfdc729e84e377129e7fd158177419cf1c23c7e1ce8391a87d36"
+      },
+      {
+        "path": "parts/parts/tail3.png",
+        "sha256": "6b29b195ae4473addb70979042eec75b78f92ea1899ffb3354b65fc521eaf68b"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "1c0192d3f5735b38ec5fd004997e9157ea3e56807b8efd34dcb001ed08b17bfb"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "25cdbb41bbb1277eec5c32f4a12b9f9ce079cf91f4dd8dd81a252d9b77f8eff6"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "d6128b657f8d4a8e54e6fb83004208bcc9d26bf1e4a85c707d5ebefb090e5c0a"
+      },
+      {
+        "path": "record.json",
+        "sha256": "0f1ec677a31c27bd5781f9383f7f6525a756b761e1a34e0230012765b1dfa06e"
+      }
+    ]
+  },
+  {
+    "id": "10-cow",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/10-cow/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/10-cow/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "75ba6de528851cb3c464a7f66875248dc9d250676eb59c9ffdb1b6e32b025131"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "ebfe212b5e94fb92d9ae86e36da61cf1f0b463d154828079438371208a21e67d"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "d9cf544efec31706172a1a2744f74bf894418911b967b51c6481f4bdc2ab9c8b"
+      },
+      {
+        "path": "parts/atlas/10-cow.json",
+        "sha256": "be46e39a08d928fcb7dc3f51e537c45b328f8e1ced960c0c9d6778761eb14afa"
+      },
+      {
+        "path": "parts/atlas/10-cow.png",
+        "sha256": "29f3840e26560f7bd3974330b8829f2a4c8320925980c3e2b9bd79b3db246820"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "a36597c51b5c1a76e8ea9d73933afa2623037e1ffda90328db23f58e9d131fcd"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "7b93d6b8e0e4fcdd6f10d1e5913e0d4bd6b972322c65171aef2bd2cda6e2a7b0"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "9793d47508c954b9fa0a00539a688551719c1e7db97e91045eaa9d7735d1289f"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "52f513e3677635849c7b59cb11628548bf3c20cb42868a298f7e7d450a3ae00d"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "f2808799a65e175b4162705d4c45ddacb4c8b4be8f3fbde3495ced0bca93248c"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "7accad53b3bc7262ab1d42321bd194d3ece5a06dbff70be84f3e2c6884dcc3bb"
+      },
+      {
+        "path": "parts/parts/ear-far-root.png",
+        "sha256": "e2aa8e31027d8fd7d66dc97ef86b69e5a80524196a37ffd5f3087b443c853b12"
+      },
+      {
+        "path": "parts/parts/ear-far-tip.png",
+        "sha256": "4b8d4fed4c031ec7a4da5ded0e53ed1a3ab03538a0c73ed9a490d86ce13dee79"
+      },
+      {
+        "path": "parts/parts/ear-near-root.png",
+        "sha256": "0622b567265a617aad5ec27d8d7351d579f977bbe383b471b8cb54197ed4f4b1"
+      },
+      {
+        "path": "parts/parts/ear-near-tip.png",
+        "sha256": "e14716539c5576d217ee938414194006ec05f9d22f6b927f9d93e6367bdd0030"
+      },
+      {
+        "path": "parts/parts/fore-far-ankle.png",
+        "sha256": "ddb28d0f98626b35bb805b80b6fe27be873cd70f9f1a2059614f54a1f2273d06"
+      },
+      {
+        "path": "parts/parts/fore-far-knee.png",
+        "sha256": "b992e50c64adad9743b98cb3bedca09c39b7e3630a68c98aab82ba8adebb34ba"
+      },
+      {
+        "path": "parts/parts/fore-far-paw.png",
+        "sha256": "f8a14b5af7e9506ca90849e4e4b3293a19bc2a8d172d54ba7660e79acdce8b30"
+      },
+      {
+        "path": "parts/parts/fore-far-root.png",
+        "sha256": "486cdae3958823ab6976335f11c77b7a0e009271693254a53f9c906bbdd5322b"
+      },
+      {
+        "path": "parts/parts/fore-near-ankle.png",
+        "sha256": "b9c82f1c0685f689587dea35b80dffd1a2b6298333bb28ccddceecf241462efd"
+      },
+      {
+        "path": "parts/parts/fore-near-knee.png",
+        "sha256": "626f2457bfeee884cc02e25740776b715a5ddfdffa4392a68fc521424a72c737"
+      },
+      {
+        "path": "parts/parts/fore-near-paw.png",
+        "sha256": "0daf163f14e911ce74dde8f33e98bd89153ada4d709a2d20daf45e715fc89c08"
+      },
+      {
+        "path": "parts/parts/fore-near-root.png",
+        "sha256": "dc87dcfc1ff9e743c24f2a207178d07b6b2925438af72f3f6260e321d89b3f63"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "9d06cec34372f6a7836122f64c749cceb7813d19be4274085d4765d9c90ff81b"
+      },
+      {
+        "path": "parts/parts/hind-far-ankle.png",
+        "sha256": "cafd598d235efb3c767be2b7d907b4cf80031c168daeeb94cc78698d343a505e"
+      },
+      {
+        "path": "parts/parts/hind-far-knee.png",
+        "sha256": "758ec08874226d3e2f1a998a073108490a00955d801eb2e56cdf45d7b3d25b05"
+      },
+      {
+        "path": "parts/parts/hind-far-paw.png",
+        "sha256": "08be6874294a5f31f3f32848c79f8bd588ced5da5d99ab1012b473f0dcceb13a"
+      },
+      {
+        "path": "parts/parts/hind-far-root.png",
+        "sha256": "da4945e668e6357430d2285aab6700c9c847854c1aed49eddf4ee8da8d5e8480"
+      },
+      {
+        "path": "parts/parts/hind-near-ankle.png",
+        "sha256": "0faeb5b413438ec86b4579d2248ead599e71dcb8342a0cf2d4fcd2a87c14eb1a"
+      },
+      {
+        "path": "parts/parts/hind-near-knee.png",
+        "sha256": "98e296c1da0a4224361288567bb268959aae1476d5576dd8fc14df3380397a2b"
+      },
+      {
+        "path": "parts/parts/hind-near-paw.png",
+        "sha256": "5639d3b150b8b28241c31f9051484586356343b7965d5117e92c297daaf00536"
+      },
+      {
+        "path": "parts/parts/hind-near-root.png",
+        "sha256": "eb8f7226e83f9db8b44a5ecf1497c9ca38f58046acb31e7e455d13d2d85441c6"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "7ec1666b3e3eb07bfdcb9c316c9d229429694958372de8e6c6206181ef7e8b0a"
+      },
+      {
+        "path": "parts/parts/neck.png",
+        "sha256": "0ed3def8fe17074523638f603008ed8c5552d67958b0134fbb87e0fae9bbc89b"
+      },
+      {
+        "path": "parts/parts/pelvis.png",
+        "sha256": "4eed41090555a90a6e3c2590b77f301df3828d93c1cae9581b91263c32eb1b60"
+      },
+      {
+        "path": "parts/parts/root.png",
+        "sha256": "575ffbeae9e77ee4cd6aad2500f5165d1fe18263a01a0b29c3d7a7ff721e818b"
+      },
+      {
+        "path": "parts/parts/spine.png",
+        "sha256": "0cb15dd4b864a9b0ff573fcff98083cee21c9c8912ecf3404bb3dee49fbe7169"
+      },
+      {
+        "path": "parts/parts/tail0.png",
+        "sha256": "abad34d8b8e3129ccc4d124a9225c330a59c17b9e45c69fcf2473b155be7548f"
+      },
+      {
+        "path": "parts/parts/tail1.png",
+        "sha256": "678dc5c141aab2b7e4874e2d24a8a151249d14696690c2998b24d4491b745887"
+      },
+      {
+        "path": "parts/parts/tail2.png",
+        "sha256": "1a7c8a682ea81370bc89b12fc1c0fb6f2cd0f7d16ee97eea0499ea60218897a0"
+      },
+      {
+        "path": "parts/parts/tail3.png",
+        "sha256": "e85c91ef0727a00caa376fb8a7f1bbac2e51f65a9fd6cd1c12755ecaf0e859df"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "2ae7cf2a92a33450f59ea0f6bc3d77c1751eaac51ad24ae40ef532fb8ce5b4b4"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "c83aa2ab9aa011525d1352f72253751c1cd49837b558966c0ccc28021bbe8feb"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "050dfef5fef5a6db630c06f96036bfda314ccf25e278fdd390e340a89f9617b9"
+      },
+      {
+        "path": "record.json",
+        "sha256": "565b7780152b7ce9fa84e093c6998f9a3915068c8d1a2208fd0a6931797e1477"
+      }
+    ]
+  },
+  {
+    "id": "16-hyrax",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/16-hyrax/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "8d60c6a2b0077fe8683a8959cc865f097a965329e7218f675f5d6c24c297d071"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "220f19266e8b0af22c3190382f141eff8feb70d666bdfcac6531cfc5ba7ce03c"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "48342d65e5543bfd69b94d989d65a6782df6a68ebe2c5bdbd3864660839d5944"
+      },
+      {
+        "path": "parts/atlas/16-hyrax.json",
+        "sha256": "0d83fde785cb4ecb91238f8df81f3415e1f3ec9ef13fbdd51f6d1380e2bc39db"
+      },
+      {
+        "path": "parts/atlas/16-hyrax.png",
+        "sha256": "416ea39a5c1304ed0d6b333b60815a1d52280c31112cd0d2f0a47b10e0041a37"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "c42b2b0627f59a1458b1c39f53a45a7597cd450394c4c734152344c65d28a4df"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "0b7dc5215271652f9980252b4fd6d99e540158a19c4a0e1859ffbf6d18763aff"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "308ffdf0137cf7c8b6693262de871ed4a37a1f7eae6a0531fd23f79c5ccda368"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "5a2fc7d18579988cbd1de05675eae52add423b7c52d418141309271a0942cd21"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "0165662eb9ab8a93949d13447b4105d2d31c0407b906c0835144b36d7f24e044"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "3131fcf28e52aa71218f5d826caf0ab2a57e51bc581b854bd03395fabcc7e2d4"
+      },
+      {
+        "path": "parts/parts/ear-far-root.png",
+        "sha256": "cc86b412973c8d0118d8c105018c4eb1196c2fb32bc166fac9f40bedfcc5492d"
+      },
+      {
+        "path": "parts/parts/ear-far-tip.png",
+        "sha256": "0e9d3383887ce60eba308ebe1b40ec20aad070ffeeb9e44ef2637cef30210857"
+      },
+      {
+        "path": "parts/parts/ear-near-root.png",
+        "sha256": "1bc4d738a919bd65a6944b8d2a47abe9d2bc4c492e2c1727bb6e01bbd2430c1f"
+      },
+      {
+        "path": "parts/parts/ear-near-tip.png",
+        "sha256": "1aaf63e4671818f80db6c22e5775602a51b6a65ed100eae6ff69ef1913e86a9f"
+      },
+      {
+        "path": "parts/parts/fore-far-ankle.png",
+        "sha256": "ba9c6d683a9b697aa79ac282b1f81d1218620b0d63f4eecf765790357e6d7d33"
+      },
+      {
+        "path": "parts/parts/fore-far-knee.png",
+        "sha256": "79e1419521335d38b08b92d1d82a36e70141099f08ad739790ade44164ae9894"
+      },
+      {
+        "path": "parts/parts/fore-far-paw.png",
+        "sha256": "85785abb51de7a75826ac96903b33ef55260e14f26a57d805a075ff17a9ca369"
+      },
+      {
+        "path": "parts/parts/fore-far-root.png",
+        "sha256": "29d287ef335ce12be8c65a9e03d21c84ca017c0deff03950cd1019ecc4f2d47d"
+      },
+      {
+        "path": "parts/parts/fore-near-ankle.png",
+        "sha256": "9868b6fe1b2da486a73398171b3fd749f1b637b4c9b0606fa3b3a3c6da59bd4d"
+      },
+      {
+        "path": "parts/parts/fore-near-knee.png",
+        "sha256": "b0fca36891eb2b69a32d19bba54b704ca38b201d26513e9288ec78d9b474470a"
+      },
+      {
+        "path": "parts/parts/fore-near-paw.png",
+        "sha256": "9cdd96c2d9916105d7c60e0a05d21a873a564bfc7350bba84ded012932cb4df5"
+      },
+      {
+        "path": "parts/parts/fore-near-root.png",
+        "sha256": "355c4c5ed7b02f70c65a984df6cd253830bc9afb67df13c9607010fd4007ea58"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "6450dc246891dfaa229c355465e1509fe2329e6c0920dc9c0e3a6c5a38ffaa14"
+      },
+      {
+        "path": "parts/parts/hind-far-ankle.png",
+        "sha256": "8f305dc97d9c6cfad8f927cdb3376fd877de5124b14a85f65ae01f5aa38237d0"
+      },
+      {
+        "path": "parts/parts/hind-far-knee.png",
+        "sha256": "e6eef79a0e6eae4ee3ff65b8051bbdd92f810943cff9e6ed2faeeb4378e987e8"
+      },
+      {
+        "path": "parts/parts/hind-far-paw.png",
+        "sha256": "2238da27a9115298774bc9144993e5d283854f9979a3dc6e472da8ea125cf84e"
+      },
+      {
+        "path": "parts/parts/hind-far-root.png",
+        "sha256": "718d3084c8a84f14c93996c6abfdcdc18af65daedbee41890dfbb48c66a7f11d"
+      },
+      {
+        "path": "parts/parts/hind-near-ankle.png",
+        "sha256": "3131577ffaec293f4478bb16554636f7cbe611614275460e41b37ba6244792cd"
+      },
+      {
+        "path": "parts/parts/hind-near-knee.png",
+        "sha256": "12345b872e10348f948ec6635e4f4d97f79b7ab0f135accc88b9ff66a5d840aa"
+      },
+      {
+        "path": "parts/parts/hind-near-paw.png",
+        "sha256": "f9e500b0abf5abd71bf352dabfb950fce94e6fd63766bed788bb57b608dc376e"
+      },
+      {
+        "path": "parts/parts/hind-near-root.png",
+        "sha256": "50438e14336482a03c39ba1ff5eba1c7351389254fd43d3b42f9d5920bb5dc76"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "2d773b72da8c5633594db91a239938930eb59012cff983f08582d38cf4cf6507"
+      },
+      {
+        "path": "parts/parts/neck.png",
+        "sha256": "d6024923a1108a8d991ab30b4910613c64850ff2398eafd4b31de1cf26e1d9bd"
+      },
+      {
+        "path": "parts/parts/pelvis.png",
+        "sha256": "29d5e07170771fa8a50619a3c86044eacc0952710758c68c8c3535ba6400a913"
+      },
+      {
+        "path": "parts/parts/root.png",
+        "sha256": "a88b49a31f2fc7d3dd365569b92b74ff397e50a3361eb9340efebda86170c62e"
+      },
+      {
+        "path": "parts/parts/spine.png",
+        "sha256": "290e08a3bc657b06b839c36065a62a83c87c9d617d395662e53420ba5f522607"
+      },
+      {
+        "path": "parts/parts/tail0.png",
+        "sha256": "fa0de888ed4a441fd6df1ace6fcbf1e22a64f37cc9fa7ccb31b27eb1ed86e1c7"
+      },
+      {
+        "path": "parts/parts/tail1.png",
+        "sha256": "b499168930b922a785368e7a94205a035334eba569da59a0b05fcc9e1cd6856f"
+      },
+      {
+        "path": "parts/parts/tail2.png",
+        "sha256": "4ab978839018b07f9df8b8a5d33e44156a79cc168b0f4b4a2892c8a71f825993"
+      },
+      {
+        "path": "parts/parts/tail3.png",
+        "sha256": "e7f53ddcce79e080c121cfbca04caeba797fc2e7d4401baaf0cb1a9abbb5ab15"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "71371f423cb6e7eead3161d81e1e4ae387ac646ac531f59a7bedbaf97315de47"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "df7e7c25fce579b3bd513c17f3330f1e711fcb197e213be5a623ca893165015f"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "161d53c8ef14a41e35dcb63b29dcab9ed5d7f29d81ef24c2665863cd09d429fc"
+      },
+      {
+        "path": "record.json",
+        "sha256": "fc3664eac587fece1043abb384eae2bebf9612c323d355330cc8d3a938075f21"
+      }
+    ]
+  },
+  {
+    "id": "17-cardinal",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/17-cardinal/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/17-cardinal/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "c0af1ba11ccd004eb29fe101bcee82b38de3abc540bf0835592a89b595970383"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "0cb3eb894673669d7f5a5080435575f88d0b6eb4c7bfa8f0884c878976a2bfb7"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "1276bb4948adce4fe62fb8ecf0bc66c93f09f0d8a7b3e9c38261bb504c7c3268"
+      },
+      {
+        "path": "parts/atlas/17-cardinal.json",
+        "sha256": "acc3a8958244a880d69fab7ef19ec1367c8bf900833593af4f1ad88f72f3ffc9"
+      },
+      {
+        "path": "parts/atlas/17-cardinal.png",
+        "sha256": "978e19e50cc6d1d4dec396ac0be10df9ff4f627cfa0e749f572a97063b570017"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "44989d368c449fbebbba5f9424042290001eee8c2144d10e49f0772914c50fe6"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "5cf261ca87e93a1c60a436b6a1619b4ff9f87a22a4a8d4a2b660ac3ac19afe33"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "66ab44100e26f71439a227a3bd47594e284a1e8b4aae30f00dea11a3da73d2b6"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "d54fba8a1e8b73e19c500e311ba68b66cc49d54e80746dc749d974eabb516881"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "af3d53b41e1322761689798025c5dc92a7011c0dda3481f4e4d5c3a1de042087"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "002c125005c942efce4fcc299e026339ca7f683d5f18181e4b0e2da70a6120f2"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "4390e66dce32ded4d9d4ad498227da7de6cffc0db361cad3cea903db4961b0d6"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "b6411c743cedb79ae70632fe442cae275ac4e9b18ff56d87ea5831e10ca62158"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "3c7cd089ff1afc1e9b9b6e150ed0b88e0d7bfe291c48bf711f6927549fb1dd96"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "bacdf2920d77cfe459a85a8c36ec99ad1b38df6caa33c4daa00a63790bdbd012"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "41324dbeccb3543d5cd7b4b967b5f254e2451095a2f0aeedc134592c743de309"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "679bc2d96c1fe6d99064739f1344c910287b6b6e62c6c81235262460cf13be99"
+      },
+      {
+        "path": "parts/parts/far-wing-root.png",
+        "sha256": "77d6bcdd6f48fa5aafb836267ecb528056f5e666a9b8716f65ac92442743ac0b"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "0ec48b58eacfb2bd451930c8c9e45d87392cea58f6a9a1ecd4a4d15aad8cf00d"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "c09ca3286758c7094c37bebdfd279151579a24382bbb07570f17f3c7578f7d76"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "bcf2e7d63ac79828e92081184e9ba2c6b174c6e5e4407a7983c832b75502afe6"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "644e80614dd1f9999cec502b2a2cc0792f8965c0bc3caa607962ac4001859a04"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "00ec029bd1333e8e170fe3380a11790585d31831f075f61c84f4f51370e4c910"
+      },
+      {
+        "path": "parts/parts/near-wing-root.png",
+        "sha256": "01d3e201ee302bc5db2da369d9cedcca92e6019e08341503cb01d784a2e845b7"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "f5b5e77ff05b1358d5e3950787a9d17975ce102d12835f3db40a0b3d908f5b3a"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "549c50e7accc77c60a7a4d51e79b6ebd619bf90169f2f03915341a3702c113e6"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "f967322d53d17f01b79a4e2ce09f4468b6a855f67562f2e66354509a159f11c1"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "900cc6098d88b09ef06cee787ea98df91397a692d4f0f4c11b96455febf00fc9"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "3b345d043bd78e8a1595213e182d28bb0a0a943a6924c483d4c2e374aae2d993"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "05b7687e0b60735f95010749078d5f390ed638243104db76cc34dd5a313c9a25"
+      },
+      {
+        "path": "record.json",
+        "sha256": "b922ce9cef28f518f5f3b1a3e5543635a839cd941fbdcf150c17278484ab2837"
+      }
+    ]
+  },
+  {
+    "id": "18-sparrow",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/ISLANDS_C274_20261004/18-sparrow/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "8bf4a2128a4fd77e1bc86bbff7983ba95c7222245197a8d6c2e716ed5334b3a0"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "ceba274aa7a7c281a03673a5c26c02c86ceb450b028a78154a385b1b7d612ecf"
+      },
+      {
+        "path": "labels.png",
+        "sha256": "1d19ea95fdd47983324b62f2b1345d222ddd61d40fd98b84bdd62bf9210baf2f"
+      },
+      {
+        "path": "parts/atlas/18-sparrow.json",
+        "sha256": "7ab4e00ad9275f4d4189181dc1d528ec731361e4d4127732781c7742254fa756"
+      },
+      {
+        "path": "parts/atlas/18-sparrow.png",
+        "sha256": "3412b2677468696a3aa3d211208fe7b0b6445e4811f203d6ee8e0dab4effb0db"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "fcdbb7b23edd22525e6e58ebff41c37fd244dd346adf5e15ce27b156c4268042"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "52e124fe146ebc274bfb3f4f1d3b84f3d8e20eebd8e32cfacb5f773e2e4155b0"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "6d0eee2d25ec53a9809f66991e6714b31ffb0d776ddd9eb58333ac71e1eaaaa4"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "0301082062c128ad533231457eb2f80e72c6fda8ee61930f5dbd57904b32adbb"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "76a06af5d705408e278a8fb21f057535a40537b3e73eab454559f5664f2baec1"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "29dfbb09ebbd1ff95d3b226753f4ac6d51e5c4eab2dafb097025168c782ea390"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "eb2e76c8ebfb5df1637d4ffff67482284de3413b98fdf0eb268a9215bc01b0c7"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "e70ce6cbf09c95b273acb1a2fbf58042c6c754c00310ccc4dab4fbe87f95f966"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "c40681cb9352044c915a80b4660410d75e7244f7533c011bf7d6b7e74867d8ad"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "84f8883ea0ced0f7c801d93cc918184f2aabab32c341e5ac12dd07082b4717bd"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "f9bcedbcd36ab81327f94c0b33290fbcfb02779c34382b2d3ed1484768cb81bb"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "fd22ba471812dff0ef8ca1357f8888a7170fa5f66ceb44b02f2cc8e960f5d938"
+      },
+      {
+        "path": "parts/parts/far-wing-root.png",
+        "sha256": "91bb22bfd2daba7d4930d85feb49bfd64e9e725b26c61a4e9ee6f4bb77ca93f6"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "282905ee4161c0982b1404af246d2ec2b7ab4f5489563529965ff893af415950"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "cf9ecc47eea526dcc34e29e35cb649c714cc25f5f053cf2d64ac52ea65dfc477"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "74d3005d1aeb06eb01ce10198cd76032b60d0c186456924f1c682d2197d4b1e7"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "30d281879fb0903def4f9d9356ee37e3e455f7d1238d77eef0a0817e8adc04ee"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "55ff0c4c106515b7a896ca86ab27977acad7b4a5ea398d54eb296d48c37519e5"
+      },
+      {
+        "path": "parts/parts/near-wing-root.png",
+        "sha256": "5c327aab96a48e8741bf6eb034dd2a653d25894f1c6aa3990808df280cb5dce7"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "2e8688202b999b1c9b9b022f3cb88ff2ab464eb8c2c7287d6cba7558ea1d2863"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "5dce22d8f16f4964e501feae212ab63e6eccd76b992e7752ef1ab48b2c2502ec"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "dcf33ededba268e51d51845c179917736978134848214cabf8b7305b199944bb"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "8a09891b145b47e050d27633039e862b4148b0b0312c31fe3e1afd074bc394e9"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "0f538c24e32ccee4ce71d134c7aa66a76c2750a9261b09fa19ea58b6e334d130"
+      },
+      {
+        "path": "record.json",
+        "sha256": "f7fb60088f536c7048f93848d953b7b47e2677cd8a67c78ce245d5e5ca14833d"
+      }
+    ]
+  },
+  {
+    "id": "19-pigeon",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/19-pigeon/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/19-pigeon/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "64d8313c668db1cf3b49d2d8020aa343a2b1a5caef483fce3762e9bfb28d681c"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "6fbacdf20a7f58e90e102d2452099621da7ce01a9d1d5de601d4bff166e6340e"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "9a69eed237935daceb56d9705eb2f8976cb7f6fae1683b09c0ca6264d15fd5e9"
+      },
+      {
+        "path": "parts/atlas/19-pigeon.json",
+        "sha256": "f260efad5ff2d40f800827fa52c0b5ff1bf5fd8038b99cc3e699001faba36c43"
+      },
+      {
+        "path": "parts/atlas/19-pigeon.png",
+        "sha256": "8918a0c8333ac97226fa537c8ecfca66d351ec20067bdb47ddc373629251ec11"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "e312f52c861af322d1f2d423f48356ec05e619244cc0507a9d142ab577d5882a"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "c694d840180408835168765ea6c50ed31021d0c8255a0f1fc90c8e324dd759d6"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "8473d958ad837e55a4fef7e2a5c71f4e2da243e109783378073e38a620a64135"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "f33fd4c1b2682dce3e5acc0b6545b0c78594ffb8c70767fd1b202ab887b1f0b6"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "3b64153a4092723e209273042c85817be13f12c1f71788fe56377b82802ddc58"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "fd862bf609e6f20ee5f581d5b6aa244c0c3d5907918c96a5fef6c21f2053c602"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "4d1d4364ddf6c5870d1a64922cf7f905f9045899419ad6f8f43eb7374ce67a51"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "f74198140e42e239925243cd4695253f4aa2731937e134205d99a91ec68008de"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "7bdf2c5d466a275d198bf3f63c6385685e9384f26017c28b610be9554b5588aa"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "b20b3ce4b59f455d8c82c1a8c003ca3565ddb33459b72b172234bd1fa16b50c1"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "aad774c17cf59153a02f60baf665fa546fdb99d9373832554754fa230fb8a926"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "609895c13f7418bc197f260a862bf1179adb4e5306d4ae62c0e8540d620427b3"
+      },
+      {
+        "path": "parts/parts/far-wing-shoulder.png",
+        "sha256": "6be353459114c5062921881cc702f3a4fabe1f86bd4f1ee707b525229452bb1d"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "fbefa5c27f2f6abd818a7557a44932c288fdf6e8ec29c85a30980bba736887ee"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "05e7a9e3ed1c68c55f459b86369b2a62668e2243137e238ab42cc8a355bb3803"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "f5239e5428fdbd63c1d851ce60cc9c6aefa176940dbe2fabaf4417da1ecac1f7"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "3e8db062a5e6c3c243a92d649a8d28a61ed971925e2173ba9c4e5ad3f4812507"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "d607479d23d1473d61f301066444bec0ca21edb5188844df73070d85b5a5af06"
+      },
+      {
+        "path": "parts/parts/near-wing-shoulder.png",
+        "sha256": "6751c2cc7751dd62850cc97205ee28a338fbe981f2e130a62123e41f56c080c3"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "ca2a23d82aaf981a7a5caecda8c9611e5db14981878e7f0f8d3c7343f831c424"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "217cc1b027521eebe1133d8458ed7a33b24a6e2aa0ffd035d386a866b0cf9268"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "c31856104c484e134de3b8f4e39862412b4b9b3b98c039d2aa5c5af5e6ecb3db"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "056615476936e73f5085d7e63afeef7644513b050585e638dfa197a28eb6ebd5"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "0da73dc00e23975751c420e2f2515e81714086f802f4e2212e2f7c6bd0d3f06c"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "b3a27ba6598885f20ad2bd4aae34648d063bed0b263cd29d0d9ddd75ea29612b"
+      },
+      {
+        "path": "record.json",
+        "sha256": "4623652273b498885d0df6d24653efa88440a813d4c925f77fe0a5b31dea77ce"
+      }
+    ]
+  },
+  {
+    "id": "11-toucan",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/11-toucan/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/11-toucan/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "cbf4306e77ecefb3b95d4a994a26f807c38b0c5ddd49639bc4c4b62562e603e8"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "c6b66c40ea6e715f5f392dc1b39ba207be8c4754d11e2e68bb8cfa4dc93cfbbb"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "d84c3bfd0014ac313fce41c32379df8a483a6a97c8ee76c22f97d4f60004f6e9"
+      },
+      {
+        "path": "parts/atlas/11-toucan.json",
+        "sha256": "f40bc7dec21ddd61a6ec059ea695efbbe51939204f19b31544519609b96c0e1a"
+      },
+      {
+        "path": "parts/atlas/11-toucan.png",
+        "sha256": "6b7aa8de07ec9e01d55b635944f6695c831ba9d9588385b67eb30786aed97fc0"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "2ffc169afcdf0bd7d7acd5b8a900755c6cd49d15225866afa28f673e5c022a49"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "661f8976cc5ced6720d347328c4f1eff384f4d2a19478ec652cb2d6d746887e4"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "926442bced163fcc343ce768828b0f5c90465a4c32a9f33fdc38b03f071247b1"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "9ba219ac84304b7204ee6a1dfb9108a287c5b12918bd43e5ed6fac5e4b66f292"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "2698b083ef2c89df363c146890d1a6a866d6969717ae661187a3ae30d9ec9b62"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "14fe6965948a11144f4308b277f61d99b65070da4571598fb38373ed08cac198"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "b8c1294c6e4e46a613745c9d0ed08f2556d97fd9d18e6e95047076e13dc9a797"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "9721a445d009b9eb2d7757bd172bb39d38cb14bac695b9782c2f0e7f03f02ed1"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "8829716f82bf6b7caaee7d8562ed7ca80f3ad9d7513d674cf271fcea98ff8a68"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "0b1d7546fe4c643dd00d787b5fe5cb761ec9f7686c890b3bc98d167ab4ef900e"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "94729a153420b3fe6c623f85827a76f28d564a244a4efd20956d629df31d781e"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "f3fc83415c8dd7ed35b80be107b2d669a2172b619dd6c2af30efaa71bf941e37"
+      },
+      {
+        "path": "parts/parts/far-wing-root.png",
+        "sha256": "4dea015981ab39c2230dad677e2e6b7731774e70a521052df996405bf1e4797b"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "107044181ecd964ee346f7b23aab9a7057bcedc99749d6c1b20d6df58d8959b5"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "492d7eb77a4d203bd1fb5a812b64f28c4a06a964edc7383642f516fadf73dea1"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "2e3ab8f772bfc76bb9098f6e044d26c9838ec583137bcaa87d8b3bac92d69b5e"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "ff8a20b97dae9c79a6f76a0ff2f4754fb9e9cb1329f412b0870822a75d6a924d"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "17ee0248da3eb323043c54e331b4fd9c66832def88f8bcf2c8aa6761fb6edea7"
+      },
+      {
+        "path": "parts/parts/near-wing-root.png",
+        "sha256": "94f21c7911b1f44137cbfc2af6cb62b706c09e418a35e7170ed9e5de686c089f"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "ffff7626a7b9c453f73fd8b57bb5a6e9d5bee612b86be773e823b8603ca1fb63"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "8223283959a3808a2459ca30aea4e400bc49394a9361aed25aab417ec490b028"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "6f4e198b90a219becc8f3545a835552d4ffc8506e0ca4d770f9d2b4365efc32a"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "523817fce87d51158c246c4f8048b928b73fbad32e72cbea628ffa903a17d02c"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "8830fc0000d46d2794c48755a3f5e7e447d54cbad06961d4312d69677be975a9"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "0f25c1884a98b7fa253a150d1a61b99ac61dcf3507d2dd23b14ef29b82aaf94b"
+      },
+      {
+        "path": "record.json",
+        "sha256": "cb0897d5b388275edfed3e7469adc9f093d880ca2abdf573d04be06fc5766c02"
+      }
+    ]
+  },
+  {
+    "id": "13-falcon",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/13-falcon/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/13-falcon/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "6b3169258708070fb1a4a35d0a95215a0ba316d8fab9eb7867d3935bf88e0360"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "9a2942c852119227ddec60a97d4e6e7031bf5020194dd6122e9578ed50fbb8ac"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "c51a7111a46e7754035f27f5cb0bde2c1b35811c35b7bc982062ebcd7de1e0dc"
+      },
+      {
+        "path": "parts/atlas/13-falcon.json",
+        "sha256": "f37ea4b08e8a953d0174a97dda84663452cf19e8444b0a21e33355ed8dd351c4"
+      },
+      {
+        "path": "parts/atlas/13-falcon.png",
+        "sha256": "ca8f3d70279b2a1c26a302d1a72e5077751ec1b4f476fd1ba5bf02ba721560ef"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "916684f4bba6a8ba7662d7f252fe5da1cedeb93070e3153c9a32cd275fb8b5d0"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "513e1905c3963d8ad21a6da493ebecb24cd9540396da06410dd2e9adcb32ee26"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "16ebd4930587fee13e5f95fd06d20492b840444d71bd8b8383ae7e7bbd7e2feb"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "67ab04d90dfb16612cec040e0111da1f4d3b11ae3d660f2e69f7ef3c4bb9f1a4"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "495a9c53a6507f9539ad64a7f92df4f478b74fd0ce6144d7fecfc0a7d3148dfd"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "e154ea6dce634cdb628a499425f02dfb40879e9a40414d9f0eddb952fb40058c"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "e23748366b76d77b53e4ac6d43860d894eea5e7cf40b32af9d563b29f8a544b9"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "2c6aa5dd338c6da4c1638870dfcb1bcc5d4497a7c18f0716f274cb9ccd09c005"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "6d4e35b69fbdaf7816c72d8ee2635905fba0fc0790d90817ef92189cb62ecd9d"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "c9874201c65b6d4ea9f2829b7b8afdfd9fbf97267868c548ec7f85d89bea1f8a"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "1cfb18ab506ba87200269c68ab065ca8e7022d97684a440b4329c93db691d16d"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "3e2911b7318ce4a8a98be0d6dd051c2293b6e630559c520ee89cda54cdf92f4c"
+      },
+      {
+        "path": "parts/parts/far-wing-root.png",
+        "sha256": "6cc6df9bd0f4764af92e09b40cd09e098b2cbedd0a9c78b15ea53b507e37a84b"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "b7ee4ae80a17bf977b32f7e7b0b25e280c7af4d0fcb73e6e5fa780f7c0aa25fd"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "4e72f727d82b3c4c126208d77062ef69f149efd065623198779fc447f369112a"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "d0069d61dbeab52dfd3ed55e935a7ae0b72d8dcd2b86696263c899cd87c54d2c"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "b369d8d28a050c3dea27a721e84dc143637b77a1b69891d990ff28fbc80c7c22"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "0261f521ad0e0fe71e567fb27da9923da44dcae7ad19477c415dec89bcf05bb9"
+      },
+      {
+        "path": "parts/parts/near-wing-root.png",
+        "sha256": "15e52aac1df403a43e89f4073c6e5b177889d4c29594292517c04c4647d3b220"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "cd7213001f1b5f5ceb995c03a1a09c45a67439373b0ca020f383c60d9e7ccfd5"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "bd702f6cbaa8aad4955699e08900c3796d61d984bea902810a1954f18b6fae63"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "394f964dd2db8ea028c532e0259ec7de6d27654fde584896969d38d98e5c0c82"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "374d499e47b251f0a33484a2baf4c6160a521be4113debce11baf57f7eff1406"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "1640ea51867ec385131af673214812572a9331aa95d3d0b598ef90da394e4669"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "9e75715857abbfd9b65b5b5b81278b842938b4698935be21d56f109c59d4e4ca"
+      },
+      {
+        "path": "record.json",
+        "sha256": "47b1160003159966f27cd2d23589ab7315e8ce8588adbc7c5764a81921d4b086"
+      }
+    ]
+  },
+  {
+    "id": "14-duck",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/14-duck/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/14-duck/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "d883254d2feda478d0003d60792596435e840a8b4c17df9211a4717c53ae3edd"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "f35e1a8ebeff0111c820ad1d8f459ab664422d8794f6741f520c6e9bdbe4f970"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "157d7ed13285723b9cb266fe4dc5c1e2123f68519246705112dc93ad9904a3c3"
+      },
+      {
+        "path": "parts/atlas/14-duck.json",
+        "sha256": "c26c95219cff5b62a7d49a2df05c7e77b11f72d19ee68ee0b7bf8f6e263a2ce5"
+      },
+      {
+        "path": "parts/atlas/14-duck.png",
+        "sha256": "22302f6492170545889035caf49bd0dd9ba58260e6868e07d78a9fe2204ed90d"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "d694782621bc8b57a3909ecb97c3b92b591d0f097bf4eba826c78bef67c6c6f5"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "3571e08cd6ce63388cd61b7b76306d70c97a73548e11691bfeac1fa4b195e2bd"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "61b58cd44da91a1ada70f10ba152a2bfee75bd4262567190b7c20e07e1ab4383"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "ee3ede68d8d772d6fdd259c79350960d0fe13a39591478f9901000d95e316fc7"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "932634f90187af2b6f68c48ec773e0df4a133f22928580f44be36758f0b3a45e"
+      },
+      {
+        "path": "parts/parts/beak.png",
+        "sha256": "bda3013f837bfda093df7214a4b188b2113830f4fb100aa1bc2bdef3012ebc0e"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "c6380077c4bdaeabd58f3f028627a6ef030e73dafdb97ea86789f4be51022ca6"
+      },
+      {
+        "path": "parts/parts/chest.png",
+        "sha256": "2934554c5308f91c255a800a55978761e2673b37bd76c834352258268545c53e"
+      },
+      {
+        "path": "parts/parts/far-foot.png",
+        "sha256": "bdc0fa1b9a513c5da2a8f92022a7ee11c3f0472c53e1cfe34cfbad55c46ad180"
+      },
+      {
+        "path": "parts/parts/far-shin.png",
+        "sha256": "fd63af8b194a46c146f6c6ab2057b55bd4d13df3e218078853400f63deab6770"
+      },
+      {
+        "path": "parts/parts/far-thigh.png",
+        "sha256": "3e37c35c7c51bbc95f557ab6dada15f9b57983f0848be60cd8d7e26c7619a655"
+      },
+      {
+        "path": "parts/parts/far-wing-flight.png",
+        "sha256": "ad2ce7f9d458044690f91256df06c0a21169cd4ba86af2cabf3affb37f914c9c"
+      },
+      {
+        "path": "parts/parts/far-wing-root.png",
+        "sha256": "1c7590634159ea72775bcec3a9f00038121a66f868d1876e17cfef86606378ca"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "23764370815af66663230ec702709ef95fc0b6b9215313449d26d3328a6329b6"
+      },
+      {
+        "path": "parts/parts/near-foot.png",
+        "sha256": "9a994179a2a386b47f6b4225d2fe662c2121167744bec8cef0b2cf068c89d18a"
+      },
+      {
+        "path": "parts/parts/near-shin.png",
+        "sha256": "e0b09b2b72f097242b33d761117c7e1ba5d74739f23f75fb706e5d90dfdff32a"
+      },
+      {
+        "path": "parts/parts/near-thigh.png",
+        "sha256": "059d3501526c25fe29374e85862ac09bb05a619e2ebbc24be714e16d3b01d008"
+      },
+      {
+        "path": "parts/parts/near-wing-flight.png",
+        "sha256": "2d0f8ddde4324776874a3075d226603c0c5eb1c737c8f2d87ffafe2b240da46e"
+      },
+      {
+        "path": "parts/parts/near-wing-root.png",
+        "sha256": "25b6b4b51ede9e40ef88d8594205ef9b93af298444cf3081c7daaebb20e39d8b"
+      },
+      {
+        "path": "parts/parts/neck-lower.png",
+        "sha256": "b11478623164f4792a917d1f7fe72e91c5a6723285f7ed20ef4cacae02b434ca"
+      },
+      {
+        "path": "parts/parts/neck-upper.png",
+        "sha256": "21e848228937577a233ee8050bca3e46e826104d0af8dd4bee03ef63b00d1327"
+      },
+      {
+        "path": "parts/parts/tail.png",
+        "sha256": "0ccbfcbdc8959f17b0f18a2ccac6c01f20e54e54c822689c7db867d159bed661"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "d7fa427905f7d5623688f529c33a8a0bcae7422df09322555a449cd6d72b2923"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "5b806d9e1b4bf1bc5cb3b98aff36ba5c0ff1e2707204dc9e29eb6d5b84646f8a"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "2820af6500ab2523a832d3d08ba49c5ba280ec6cf97ca9b3326dbe2518d381cb"
+      },
+      {
+        "path": "record.json",
+        "sha256": "889324eb7a9a524989bbbb63fc3ff85d8d6956914905c4762b22a19f69411d3e"
+      }
+    ]
+  },
+  {
+    "id": "16-stork",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/16-stork/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/16-stork/fit",
+    "files": [
+      {
+        "path": "declaration.json",
+        "sha256": "b451aa9e97a327da1d8597499a5f1c033ef031419b7d3749d9d26f3e01fecb41"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "a1e80b2691642beaf79fcb9499157675d75a24ae678239b4e43bdd52e826b10f"
+      },
+      {
+        "path": "record.json",
+        "sha256": "80c4221459a899d1af0c890b995b1cb0aea0cb3d653437b6b055dbf0131ea53c"
+      },
+      {
+        "path": "refusal.json",
+        "sha256": "fc934a2e142df9dc314e1ec7307cc3f974600c08b71aa5bf99b080806ea209ce"
+      }
+    ]
+  },
+  {
+    "id": "17-arapaima-framing02",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/17-arapaima-framing02/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/17-arapaima-framing02/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "969779043b9a0bb1500b19ad329e0502e51ad003d90dee8d54b9561fa50beb01"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "e3a8df0e0ef59ab3bc13f0edf47619c78e66c80465015222fad062ad17dbd0ff"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "6a3f5cc10a1e84b2c8be3b77d03d405c722177091135ced5ad90709d6e8a7b04"
+      },
+      {
+        "path": "parts/atlas/17-arapaima-framing02.json",
+        "sha256": "6af2bbd0e0386559ff57633860d3836a449214f5536729add7d0ee92ce8e5861"
+      },
+      {
+        "path": "parts/atlas/17-arapaima-framing02.png",
+        "sha256": "3674fb31e5c07e001addd858bd552f2236812977b26a7d2e0c12172b6b8b9393"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "d3b4133f59dd5f98ce9edb0841f859aad05f655500003b5e86f20b6c4b2ce152"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "e4e24d2978bb7e710969970220a544a57d1ea6e701647524763fd45186dc786d"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "39da4ac0a4b3f16c6ac06721ca2dd4ace2da544667d4d7881482d38d9e0365b2"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "37f0dc4970d5af3e7bf15811f73228dee7a5a7ed6187bc8e399a1ca7442731a8"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "f3f952de4f30a79537bbde884c6f5c493f44477d502b4b74a6fcfd157db2b691"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "d75dd1b70f54acb69ddfc915ad3df044505fad2620a30f2ca6d41b17e6a4bdc3"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "9cb23368c133162660352b0db7e453bac89e00cd51f6c41da2a52fd80d1256c3"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "d65be4903ec911231f7eaa089390b75782b417f2f1d20672380d34393e2aa250"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "e889975dc2f53e3202df267b9baf42954aa0fe8f611e10e88d31e69879cded5b"
+      },
+      {
+        "path": "parts/parts/front-body.png",
+        "sha256": "a4aae91015c587368d47b818a171c3dc560d86b88de8e608acad6b4d5d8fcd49"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "3656c9d5abac176e2f5a75361aacf15bb27659081a8ec96a900262d181ca2cf4"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "8c9a496b0f70c1441738383a3d04a75663a4642a5ce1e9fb28aedcd5009a2552"
+      },
+      {
+        "path": "parts/parts/mid-body.png",
+        "sha256": "31e8c331ec07642bf33e90c8de1e1ac757c28dc577fb4f48eea2cc3df7013e77"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "76f3cf08c8246eed66428ea5435502378d91acae2b8738470cd37d681c680ad7"
+      },
+      {
+        "path": "parts/parts/pelvic-body.png",
+        "sha256": "b54543e0727befd7bdde2a60b953d997db902bae5c69d5eaab8f59ebdd04d2f4"
+      },
+      {
+        "path": "parts/parts/rear-body.png",
+        "sha256": "a37e49760489e2e1ac38bdda3df1e10757318d26858d623231bdd1211057c8ee"
+      },
+      {
+        "path": "parts/parts/root.png",
+        "sha256": "fad92b3d153b017a6980e41d7fb6ad1c41aa61408cdbd24af2a998ffb7d0b6af"
+      },
+      {
+        "path": "parts/parts/tail-peduncle.png",
+        "sha256": "b9949975e800db709eaba1579ced547d8b0294b34c0c717c7f40a5a2670af8dc"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "71537c37aada9bb1361829a80f5bcd98dcd409838d4ee8794e3515bd08823584"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "443e6ab8dc247679c05cbdbdcb54d8882dbb3003afd98697a9b972a9685be8ca"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "446da370bce63db38e5aa37d44f66a9e8adcae18054f8ff2a21ff3fc3e22c0a0"
+      },
+      {
+        "path": "record.json",
+        "sha256": "8e3b2ee17bd736564be37148b54baa16dd005a9f39e2a3eb00ef76c8c7f48242"
+      }
+    ]
+  },
+  {
+    "id": "20-angelfish",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/20-angelfish/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/20-angelfish/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "7abd6bcef3812c3f8a35a25f85f8c17fd4dbc0bcf664b0f45f8506d45b4ede2d"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "7ba8490377119edf6535fd652867b0b0eb7bcefbf22e54c01d5e293995d42ea5"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "8d70e3906908d5d1b4c7d19a9b8d93947fb1cc94b262a9cc211c6f7594167a40"
+      },
+      {
+        "path": "parts/atlas/20-angelfish.json",
+        "sha256": "cafd8ac9f938412cc023d1b534b9a4cfc04219c05d1e503c5791126ac7ed4cb2"
+      },
+      {
+        "path": "parts/atlas/20-angelfish.png",
+        "sha256": "bac9fb6ad662fa1f9ba1ee9cde1bfed1df5f80dafa47332d05340c6b10130d6e"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "8bb28aef9a4a7d1e10603429f079c063fffe348e0e8d37dc14ec0f2f2ea245ea"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "1f610e17b86b924859e52d5e3994447f0f45d4f3c9cd6f44864bfacfb5098029"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "898a5d1cda8b5b408b4e8bb9c4935f11d138b87b87e2562bb4d73e9e3b71d4ec"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "0903f02945ea558c35ab1d030a7de1860e07f1b2699a5db989b7db381e356a83"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "eb30194e4c9ccaa1e9e0b95046b38f075eebe1a1b9eeee708e43c8bd7300c0e5"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "9bb8e56b1234d20331936b729ce981fd672225ef55a81d2b2ac11286744dd692"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "87bccc2e647270391465b38e8ebb8221c233638656ff46783c502a7fcdd80894"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "c68c387abeef073f971d940957091018e709825dc4077a1aff50ac847afc5b64"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "d719bef6ad27b5fd102c9f94bdc419dab1962f89082f8dbc11e6ad9e28a862b2"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "00dc1e9cd52c955cf86501ea7061afe1cf645d3f02a8a229fc7d3e6a577feb31"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "fc1a3209d893e6ecb80f4b1f63b618c95a51fbfa70157b4bf84d0cfd79c54715"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "f32a102b8859131f8998b1cd40fae03f57dea2f16b9f3a7f26ea5ed5f76275a9"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "3ab1175bfa839a7ff8bda11c65e81ac7a6ba2e16cfbb41cc1203c83d8c1bb69d"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "16e9c86c26ecccce4d7b3a4b63be22cfc48cb03281a9dbd3d808dda4cf3671d1"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "f5542662b2e3203da75ca299141cbc3b6cc0a8d7e364381e82cea6aa980eb7d8"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "8f80f3ab7adef83fa5dfba0908f10789abeae009df94e5118a7eb4e743106171"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "61d8827c07d3d73650990e1eaeee27eb8460097a1d4740c8c536fcaa080239b0"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "ab8385a0516c332f5f786cf4e6baa93d843942f5c0a512a6ec09da0c4cfe3a1d"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "a4b5dfbd66e55627e7a9dd4c654c51590ce6c7e5f7bc7b8ce8021367ada12e1b"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "88ececc3d5bed35670b6cc6d8353f08366d0f09fea3ce7df923dccb5c77e0537"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "6141593746b3523598c75cff20d3da1734ceaff03543b7c40a3270693b023de6"
+      },
+      {
+        "path": "record.json",
+        "sha256": "7cbf94a1244beec2b99eda59091ce8f578dd07662923045d062db11e24360789"
+      }
+    ]
+  },
+  {
+    "id": "21-tuna",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/21-tuna/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/21-tuna/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "c46f9af357111d31f354bb48b6e5c4cf7e8dd9a81bace986730ced058d5c34e1"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "c1c682b3d871ed956997b2ce4f63a8136592d83683327418f94dc3ea10a16b05"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "e4527733927be293df45cb0749e20b024ab2d5780d05a015a09f0c1cc2f8970c"
+      },
+      {
+        "path": "parts/atlas/21-tuna.json",
+        "sha256": "287bf37b0b26266cb1f601f29c4663161d87ad0376f89da0f9417b93c37b1e6f"
+      },
+      {
+        "path": "parts/atlas/21-tuna.png",
+        "sha256": "11c2e8f3b74bc50f1108a5b45fe2fbba8f4e2e2ee07433ecfc0ddf296515b8e8"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "9b0c577769f1dbf1a87a3f21f151606c7542c8e2f9acbc122add25d5fafccb04"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "4da2d8550b375ffd116409bea09554cafb87498b5ac3892ad9d1dab4e72bbb96"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "5123c634297e31c545800364998719e11a9365fa98eebd3890f34edcd2cfa424"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "db8d780f9e8dda80b12f003be02d0fdb960d614ad5d4f39e05b9e92fcba7d98f"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "8f4bdacc5ec0e92bba2187570f17c037a0fae993d617f71edb4d1d73bae7f215"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "b832ab641b451cd6471dff0dfe2ddf16ae1ada35fe736fb3b1dad116d391478b"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "f57e34e9ab6c3196a93cb06219786536f87e3e280f7e59122f338a5c496c1bf7"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "be5fbeed310f0537061c3facda759833264899c5f55f447a20bcbf11f5900121"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "3eaf1b5a15eed4b180b1a32f92339638e263bbb734f9d7c0910cc4cf648d3b4e"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "e28229c7c110b96541d53c211bcbdf5bc0fa3117eb3b0378f427b32bdb858075"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "1a00bea96bc8e91fe5b11d59af35826355fdb4d79c32e4d94c42cdeb74ccfa05"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "9ee2878bfaba9bb14402ed942554057e2f9210db04702fc18c8aabc2492c56dc"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "a1c8d02d6b08a39703eeae6f03583bfcbf8b1f4a4a3e6cfe37ff6a03667a9dfd"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "1c856d0aa0d4029ddb68d44c418d64c6692e26cc322b535f81d9bbf774b27516"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "6dda2a3bf8a58b976e206cd9557f0fc6e3640a4387bd4931bf357246b338a273"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "c8507cc5908719814af7d54272aa9267488066d1ebddef05dd001a3f02e4204b"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "e2cf09747805068c6c5aa301ce5ae61bd05519cc6ac847bdde32599092aee978"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "c40f32083dd072f2a04c1c234f9a284105158cce192f235098bee08ca65e6637"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "3757cfb25d8afa3893b669272f91918f3fb7e9557ac88fa5025310b78890690d"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "49aa970bed4f746b1f469a1263b7035a016e951592941f8f7e533abf5fc1f279"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "050b3d1aeda7ab91781ac78fb23edc36dc7cf81abc95e8905e931218042bd4fc"
+      },
+      {
+        "path": "record.json",
+        "sha256": "52876764f4b65b38f8c4f60b1502f364b35cb6c30f4d2736ca3aa986942454bf"
+      }
+    ]
+  },
+  {
+    "id": "23-swordfish-framing02",
+    "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/23-swordfish-framing02/fit",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/23-swordfish-framing02/fit",
+    "files": [
+      {
+        "path": "binding.json",
+        "sha256": "8564393a7d886dc9d37971025596cf57d3358ad68ad21b7fb211d882c9623b36"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "44a50e9cc8672c5ed07956af60ecb1f699ba45dcbb74d6436c0c908a7e145ede"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "da075852ebbdb2214842e3a63712dcfb647d52fa940b85e0432ee2d9dc8c9bc2"
+      },
+      {
+        "path": "parts/atlas/23-swordfish-framing02.json",
+        "sha256": "70e20d3b4d8fc3d8a1adc04c8b858331e5296eb91856a1224536009dfb9c005b"
+      },
+      {
+        "path": "parts/atlas/23-swordfish-framing02.png",
+        "sha256": "c8c138dee63df3849a2f03ab0755148894fcd8234171ed21e370e530b1bb0e25"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "0b1fab73bb7f6a90d86401da4549ecf0b8a7ff3569edee8b6d3d6f701f98358c"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "73cdafb0b6b1276c769063d3e1c0a90dcff0f9b6452b0b2babbb2763ac20df57"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "de9e46115d79e1670316275314fae2441266fa6e9c3a7688d4eb6a46c4268290"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "ed667d69c3cb763cd1f56547be414cb37659170b26caf231242e99a929c042ef"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "640af9f865514e80d273be151bfee31c1153db1bf1688b5d9705dbb7a1499a1a"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "1d574a971f8efa1b6f88efe73425aabeca812d7d7f74892053e846bf661cc194"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "6e0b73332ede5e03255d2318562e350dab68e00cc732ff9a425f67c78bf3e792"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "95f43b59439942cc16f7aefc535249e72b97e1cc0b513770761bfed11855667e"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "0db5a533ae5672e34dbf660450c270d03fda807f2e8d7d253e5b3ffe49c65412"
+      },
+      {
+        "path": "parts/parts/front-body.png",
+        "sha256": "4721263df10aeb96c904dc7a39c3b2e01a9d608834885bf770847d349802d41e"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "d31637fb0208f337976bd107caffc79eb5564596da7db19a5ecf13235cbb593a"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "5f909967a9f2ba900ac1241449145899ea39f9c680eedae93abc81bc402cfc5c"
+      },
+      {
+        "path": "parts/parts/mid-body.png",
+        "sha256": "98cdf1aac1ac8501632e6b7d4e4810c120eb41e4c471e4550e6f0cc2042ad13d"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "75ff52452cde345cb5e200f6dd1ff1c6f31f7b663cedbccdb390dd8f43f73afe"
+      },
+      {
+        "path": "parts/parts/pelvic-body.png",
+        "sha256": "aa5aa72e20284d0bd3ee416c2c80b00f6b2ba0aa7b1b35a386a72cf1495b3914"
+      },
+      {
+        "path": "parts/parts/rear-body.png",
+        "sha256": "ac4e3f7cad6d48c8aa9944dcf70df43e7aef9b4369775a0eef48e9efef7dff58"
+      },
+      {
+        "path": "parts/parts/root.png",
+        "sha256": "b3f8d8d4bcf84e6b8185ecc5127cb545a04cfdcd14d49ca6283ea9103432a28c"
+      },
+      {
+        "path": "parts/parts/tail-peduncle.png",
+        "sha256": "c0cc1fa3d2800ca6d2eb6ac363ca06c98df19880334a45908e732412e0378c9e"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "e584b1624fc0d2b41177135af826638f4128db6dc07715fd2c780704fb816ebf"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "d2692fe95b8f2f2a5315ff7d1169013a9a362aca4923067d19e53bc3557ee68e"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "3a87239bb3642d44172ef135fc2e25c0ce64047d4d9e26a6a37c62624fa22422"
+      },
+      {
+        "path": "record.json",
+        "sha256": "0f72ef37a21cb78e90e4970f4954d31816b68d222d1333f13cdea0be097ecd29"
+      }
+    ]
+  }
+]

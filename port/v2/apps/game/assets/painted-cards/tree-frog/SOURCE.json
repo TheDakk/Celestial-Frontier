@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tree Frog",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a"
+}

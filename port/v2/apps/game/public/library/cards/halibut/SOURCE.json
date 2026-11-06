@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Halibut",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "20c474dca9c889b69aabd83f9698f395cdfa87aa9faf448bfde633523eac5f60"
+}

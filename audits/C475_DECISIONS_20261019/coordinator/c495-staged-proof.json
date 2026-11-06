@@ -1,0 +1,72 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "23ed02a66520ec6d9f9c2b3b40b51844ed8498df416704234ca624b68f30dff5",
+      "bytes": 11698
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/approved-resume-session.json",
+      "sha256": "e243404c2f8c621f24c58d414df9dd3e829236f917133ffe7740a6e55710c794",
+      "bytes": 542
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/approved-six-r04.json",
+      "sha256": "f775c872c21f7978d095442ccce7e2a64b34b4095f09eea84fe00a7863132e7a",
+      "bytes": 792
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c494-paths.txt",
+      "sha256": "13dcc9c18f9adcad05d488bcb7fc68fda28459e3fc4f40ddf34dff2ef1af5160",
+      "bytes": 209420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c495-message.txt",
+      "sha256": "9a83e4b35b84fb083a1587f1d37eef70d89b2101c176fc863782bfdb445a35ba",
+      "bytes": 272
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c495-peer-end-read.json",
+      "sha256": "faf306ed81f6d9a099b8eea3721fb2706bbed8f2f1c1e5fb03c4c242cdc9fbda",
+      "bytes": 1582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-r04.json",
+      "sha256": "2e76f85b751bffcbf7cec0b39dff58cc9f0842de1fe3ced9bb9d41c969678748",
+      "bytes": 592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-r04.log",
+      "sha256": "0b096483b97e37869a4f0f04d86a8fc5acc1be8af897920990847de4d1b10028",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-result-r04.json",
+      "sha256": "feb6d67723cbb3ed8740aaa068f564bc0bb43c78159daab81468bbd20e603fac",
+      "bytes": 1140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/README.md",
+      "sha256": "7d4aed2a2d2974703f65f7ec02e93c7af8b54488a017a6aa9d3475cd73235953",
+      "bytes": 1687
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/report.json",
+      "sha256": "3fea05305f8d5ba9b66be95dcdb5f05ffd039d4e68c5b14793d0e635cf905765",
+      "bytes": 17904
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/resume-checkpoint-r01/comb-source-review-r01.json",
+      "sha256": "1e018cf232e28f03d767b841c7782f3c6b876a530263e9d43a2183856ecb4310",
+      "bytes": 9024
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "6e246e1925eeec935d6801e2e12dbb1e05bd4d2b52bb2a2c650ad6d629fc8fce",
+      "bytes": 575198
+    }
+  ],
+  "files": 13,
+  "remoteOperations": false
+}

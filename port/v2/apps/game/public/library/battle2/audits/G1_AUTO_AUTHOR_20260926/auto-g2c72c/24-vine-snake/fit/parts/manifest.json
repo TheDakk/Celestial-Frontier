@@ -1,0 +1,70 @@
+{
+  "creatureId": "24-vine-snake",
+  "parts": [
+    {
+      "name": "root-patch.png",
+      "path": "parts/root-patch.png",
+      "sha256": "92ab4295500cb4f79bcff42b0f15382f756c1f84d4b8de3409f01313c7e20ef2"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "b3d2de69517633b19a50fa8da71a066361009f2335ef682ab7254b997ba94e59"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "e9de4b4738882bf3cae28188c473582949f22c764246fcfe944a1bda7c261831"
+    },
+    {
+      "name": "segment-0.png",
+      "path": "parts/segment-0.png",
+      "sha256": "7416f44d10dc91a6ba80d9bc2348651d079b3d35c3d4760ba3b335623b18fb44"
+    },
+    {
+      "name": "segment-1.png",
+      "path": "parts/segment-1.png",
+      "sha256": "34ca60ed2f9a6476c09dd486ff89bd70c84669001941aa89e10b09328e19a38a"
+    },
+    {
+      "name": "segment-2.png",
+      "path": "parts/segment-2.png",
+      "sha256": "57f6c0704ebd2d04f3d42202f6b3d7b8d2cb5eb6f9a5faa82ac71b0de360743e"
+    },
+    {
+      "name": "segment-3.png",
+      "path": "parts/segment-3.png",
+      "sha256": "783bdd8d0d9e426787e448e49a38b33cf13613959b359f1f9d7b54ff7b00fd1a"
+    },
+    {
+      "name": "segment-4.png",
+      "path": "parts/segment-4.png",
+      "sha256": "60afc144e8c1a96fb776418cb82e7dc738fbfb50a61a60a3e68a7a168566192e"
+    },
+    {
+      "name": "segment-5.png",
+      "path": "parts/segment-5.png",
+      "sha256": "c38a0e33ee85cebbfdeeac39c4b3b95641368b30781b6cfc09c2492ba6399c0d"
+    },
+    {
+      "name": "segment-6.png",
+      "path": "parts/segment-6.png",
+      "sha256": "522c2c4a64adbe9c9ef8c3f4ebbe4ec71d81dcc7e59a154361f08fcd6ba573d9"
+    },
+    {
+      "name": "segment-7.png",
+      "path": "parts/segment-7.png",
+      "sha256": "17d50f42adc98026e6130149bebdc1d407d4c1c02ae206639c557162bd60fecb"
+    },
+    {
+      "name": "segment-8.png",
+      "path": "parts/segment-8.png",
+      "sha256": "dc0b64c34bab3f9426dda57a0394130a9e9ae2bf3117b7db8de01ce2780e474f"
+    },
+    {
+      "name": "segment-9.png",
+      "path": "parts/segment-9.png",
+      "sha256": "6eca3126c6b581e18c6a1ff08279eb63c6f5877bd18d5e0ae50afd337000696a"
+    }
+  ]
+}

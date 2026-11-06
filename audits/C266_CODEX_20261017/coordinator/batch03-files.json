@@ -1,0 +1,652 @@
+[
+  {
+    "file": "ROADMAP.md",
+    "bytes": 4145,
+    "sha256": "8368ce1eb0a1d5d7cffce0afe652d779f47949723caae5a9d857bf2368f63a4a"
+  },
+  {
+    "file": "ROADMAP_ARCHIVE.md",
+    "bytes": 3816586,
+    "sha256": "bb96055885b41a08605a0c3a22f1b9e191129b72e6e285f59658b03b4af0b81a"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/authoring.json",
+    "bytes": 3762,
+    "sha256": "44b090c2d0b0455f9a71133c407b4f0881a5d448d3158f473bd30ea04d757858"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/master.png",
+    "bytes": 1592242,
+    "sha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/presence.json",
+    "bytes": 103,
+    "sha256": "6863cbb6b2245b41df479d8537eb4ecd1476f7bb497746c92705c22bc0c91a15"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/prompt.txt",
+    "bytes": 10869,
+    "sha256": "b175a2e3dfeae8776be596540b2f05de5998f2d408a1a6d17c1ff9a58082136d"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/binding.json",
+    "bytes": 793925,
+    "sha256": "0deb6c0fdaaee70cf8a661be2edfaf9a141ad71bd242b9a1a8a101711e970e57"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/declaration.json",
+    "bytes": 1023,
+    "sha256": "458bc6e6b4dd1b2dd486ab092c60ed23b7e8481ceac0358c8043bbac673524a2"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/labels.png",
+    "bytes": 37129,
+    "sha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.json",
+    "bytes": 2578,
+    "sha256": "caf424b1b0384aae905422c805943016cc2f4767b89267a58f1309c4b6c99ca7"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.png",
+    "bytes": 545622,
+    "sha256": "0db1c13fcad7ed70388be0d323e0be1ca9622e2d079644b2608ec9eb56d40f59"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/receipt.json",
+    "bytes": 1514,
+    "sha256": "b5b0906d4f3a224eb38c75b9f33b1723fabff85f817baf1dcdf1f06a915afccb"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/binding.json",
+    "bytes": 2268,
+    "sha256": "a1306ea4c448f44f513c52e486acf3c06371821c3c567d50639549ddb6583395"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/keyed.png",
+    "bytes": 1545234,
+    "sha256": "c9b297cdaa52765362218b28efa92d9fc39c3c874e8a7b1e184973cb43954122"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/manifest.json",
+    "bytes": 1020,
+    "sha256": "1bce716d22c7e0b081f9a41d8d5a1b39fedafd4a13a7c613f12861ab9f3e5b8f"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/ownership.png",
+    "bytes": 12788,
+    "sha256": "194d381b2635830b19bf35f9831603d3d8bea444df8cd0e07e7fe1ac807079be"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-back.png",
+    "bytes": 60176,
+    "sha256": "c3766b31c18d714983f2e7c93ac079b29bf1f6d4f4a7f9cf8e73d95455232ffd"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-front.png",
+    "bytes": 45733,
+    "sha256": "45273bb00a235829b2dabc97aec12fa663cd90fd25cf2093f1ab6c76dac3ed6b"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-mid.png",
+    "bytes": 59434,
+    "sha256": "5cdb91dea00b1d61141106584b4f8dba82fa2eb039537cc5b01a82d2d64d9865"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-tail.png",
+    "bytes": 68650,
+    "sha256": "f08e73878a52056d8dd692eb69e314f5fd7e332deb931485cfb0c5c274ca2c7f"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/head.png",
+    "bytes": 20341,
+    "sha256": "98245f029da6d0f96b9aa343cbfc4b754e8f1407beca877b531451434ee71636"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/shell.png",
+    "bytes": 375885,
+    "sha256": "d78842cf28fc1ec3dcaba624a812179a64d5d2860cd41532d0fdd0a23a611423"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/receipt.json",
+    "bytes": 2235,
+    "sha256": "6fa4213832a719813e6f29631ba9e3805c280e3c110b9f5b3b4f37396a862da9"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/pre-split-binding.json",
+    "bytes": 589127,
+    "sha256": "72cbbf81d1b34cf847b577e5b79911e97320a98cb8a8a7556e136282fee980be"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/record.json",
+    "bytes": 4999,
+    "sha256": "43a9d3e095c321347959cd521a5c8ef1ac2c0c3ce0a3507fb6020128d6a07091"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/source.json",
+    "bytes": 306,
+    "sha256": "7942b4184d1acb109025e9b2011255818f10304d0f9b6c789bf8a0b370546db2"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/subject-source.json",
+    "bytes": 2254,
+    "sha256": "ccc12d30f45a6cc946ae9d430fe4461e91d38bbb9ce92e9d183adfdbfb557967"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+    "bytes": 7643,
+    "sha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/controls-chiton.json",
+    "bytes": 2148,
+    "sha256": "14383ec24eb7d5f82c13ade517484a39f4b0cbe5db4cd144949c7999b1c1b7fb"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/owner-components.json",
+    "bytes": 784,
+    "sha256": "119d654e2224ab1a69a737120d4d86424062e6990370b5ef351aa37ac1bcc9db"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/static-r03.json",
+    "bytes": 879,
+    "sha256": "fad96ec3639e7dde1a2cef58f4b2528cc465b654475721e17f43d5aff9e7e0ba"
+  },
+  {
+    "file": "audits/C266_ALLOUT_20261017/intake-crustaceans/verify/README.md",
+    "bytes": 4069,
+    "sha256": "6da4a3f9f71e9c6fd08c804ec7dc46ce99cbb8082ff53a3287d16c909c892cfc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/README.md",
+    "bytes": 2212,
+    "sha256": "6e1d032c3feb9f3b9e0482a0a45416804c61eed5259fa3ef983ce5384c4ce99c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/batch02-runtime-guard.json",
+    "bytes": 413,
+    "sha256": "f79f707b3f7ffa72132cf296d77fbb69a933b079a20777603c0e962e0ceeb2ce"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/batch02-validate.log",
+    "bytes": 1093,
+    "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/batch03-validate.log",
+    "bytes": 1093,
+    "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/chiton-01.log",
+    "bytes": 359,
+    "sha256": "1b09e1757d0d9d442b060d5c7f7817c106d686c1c81cc548963e6ab261ac7c1a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/finish-subjects.json",
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/native-results.json",
+    "bytes": 819,
+    "sha256": "1c56199c4fd1341b9262a3780880ff70153c16fb815195527b4ae4fc9409e6c3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/native/report.json",
+    "bytes": 216195,
+    "sha256": "c0e22e7863fe8e22fb75528fbdb493b49e5943fb3626454653b052f8e8eca333"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/plan.json",
+    "bytes": 778,
+    "sha256": "6dd618973bcd9f51b80ea50b49198d4b914b8d573a315fe0a39e7ea635343c78"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/script.json",
+    "bytes": 650,
+    "sha256": "9db46af067be486e76ef4486c52201ef880f17d0e836f1ae6cf059a20ffdafaa"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/chiton-02-water.log",
+    "bytes": 349,
+    "sha256": "7327d4b08a8c265e4e32490d3666b25d377953958a25cdce41c656c7090d2b95"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/diagnosis.json",
+    "bytes": 462,
+    "sha256": "d619cbbc35632ae2f6029ee51bf88ae5380294bb31d60b7203a8aa8d991993be"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/finish-subjects.json",
+    "bytes": 228,
+    "sha256": "e14933a54921619b38eb452dcc8399f2a29a188ad65cef4d2ffdc802ff200f1a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native-assessment.json",
+    "bytes": 116,
+    "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native-results.json",
+    "bytes": 854,
+    "sha256": "7936ad859677fb5e931b6294fbd0abc61dbfea25b0ce5731ead695bd62ba49c5"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/report.json",
+    "bytes": 356192,
+    "sha256": "aeebb3e78363f9815c058f06c4d0bba0b644429ebb1a0d4bf636c7b2886865f0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn1-hit-reaction-50.png",
+    "bytes": 1189180,
+    "sha256": "65df743ba24fee98b997e474857475553fb83e967d2d8c3d5b4974ed87534a6a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn2-dodge-reaction-50.png",
+    "bytes": 1201272,
+    "sha256": "01ca0df4a3e355aa86e909186113a5a4fc4a23c36ce9fd47ede349b5746c3ddf"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-idle-50.png",
+    "bytes": 1186307,
+    "sha256": "113ba61840301b380efc89768ac67ed12ba67cadbcc64087ec8e8d765b9bd241"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-idle-90.png",
+    "bytes": 1177730,
+    "sha256": "c659d67d4d36ca287405d1dc66f154cd6d7ed5f7e803deca700c5943f9523fd6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-reaction-50.png",
+    "bytes": 1201686,
+    "sha256": "ff64d33c26c1ab3cd22f12d9dece3bbc84bcc6e9583411ef885fddfb64051163"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/plan.json",
+    "bytes": 802,
+    "sha256": "83f220ecf3952421cb6e19449452b80bf095be6924a613a09ae44abbb5a6ef16"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/script.json",
+    "bytes": 761,
+    "sha256": "88eff4e1c274da1dc766a643439234dc76ef0701dc5c981407935ec059b0dc80"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-dispatch-diagnosis.json",
+    "bytes": 597,
+    "sha256": "d24fd45a18cf2ebae1bf24fa1d4c40f96110b2bc6e524b1f2348ae86002f4bdd"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-import.json",
+    "bytes": 11586,
+    "sha256": "a8e8151b01897a0de0d1dade6e155f367fcaf522f8d6ff988c58a6a530756fe8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/chiton-native-media-manifest.json",
+    "bytes": 4956,
+    "sha256": "e012d533d201cb35187fff136ca404cf9bd84f961b214ada884f91f8bdb5bd06"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/finish-queue.json",
+    "bytes": 751,
+    "sha256": "d2cf3488a8af2a268306cdd4f9703d7be2cd6cf4c8fd4448242854de9b466e71"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/hold-imagegen-lease.mjs",
+    "bytes": 1340,
+    "sha256": "456d539ac6cb7c4ca0829e9b637f74a40ffad1c07c5cd2fe73f55067b009a7ab"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/merge-validate.log",
+    "bytes": 1093,
+    "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-01-corrected-plan.json",
+    "bytes": 524,
+    "sha256": "19dea4fc18a592a2afd0724b792997cfa65d2dcee53d512b9e6358158625fb08"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-01-corrected-plan.log",
+    "bytes": 111,
+    "sha256": "d3a1b8ae601be40b9bbe7562af28c9b02b98f9618526e83ec1860085b694fa28"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-01.json",
+    "bytes": 493,
+    "sha256": "ff44d4a79b60a1d1408d30de11c68781557c5b3c10cdb719d5bdeadb8bfa2a2c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-01.log",
+    "bytes": 936,
+    "sha256": "e98ac336e775835c6a1d46a5d24edad498a9acf0f8621f2f880551d891fa67e9"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-02-water.json",
+    "bytes": 510,
+    "sha256": "829f11b5acc6ceb86d0f7e65bdb6490f0d977ccd17b7c7ca4e90bd5ff9e9048b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-chiton-02-water.log",
+    "bytes": 206,
+    "sha256": "f8dc07e400b6e9d0e058044258f33c9acccfac5fdd5cd1b1bd86847496aeb7c2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-reference-snail.json",
+    "bytes": 514,
+    "sha256": "5a42b0ed11ba6e1ddffd9041f0d2f983bfb0a3a80a98a2ef37b48186a660b0f8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-reference-snail.log",
+    "bytes": 120,
+    "sha256": "1bff86f76d0fb4719d46f447d0c3eaaeef16208d34d97bb6d87924125d64ddc0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/native-wrapper-selftest.json",
+    "bytes": 69,
+    "sha256": "64edb532126c43529b7e0d4b7125785152a872235e72b79b8269ada9d102e986"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/index.json",
+    "bytes": 1073,
+    "sha256": "8a93db6f855c2a8699ee8d09d131bf5ffa81f7da109bf21b74a0066dda966867"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/generation.json",
+    "bytes": 928,
+    "sha256": "c45ad55a55361a2501222104584bca5993614344c3e849810cdcf0a2cb976907"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/lease-release.json",
+    "bytes": 114,
+    "sha256": "5894bace537db566040ddac91b7d16916df164ba49f1bf7b8b807917f03610e7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/lease.json",
+    "bytes": 285,
+    "sha256": "99186728536cfb69f59b118f5dd349da2728549115abbab36462e3ad4fca37f1"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/master.png",
+    "bytes": 1556624,
+    "sha256": "ec47bfd97a551cb1dafcbbc02ca5d8ee36fcb1167a02c916b6146f8bf3b34828"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/prompt.txt",
+    "bytes": 11562,
+    "sha256": "089fb17d384d9b5969898c48e9cabbd58d1bfc6270fdd4fde699daf750579e13"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/request.json",
+    "bytes": 1345,
+    "sha256": "72007930b9f1efbf11ae4d861bef729c176a76e8cc70c352584b8a0e16f4bf38"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/subject-source.json",
+    "bytes": 2262,
+    "sha256": "7c5cde6fefcb3abd33da8db65e45d6f1710ec1f807e43e4d12c202f1056b75b1"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/reference-review.html",
+    "bytes": 868,
+    "sha256": "2adc1578a1501fc76f61fbdb5f0000f525c7ee67a376e4d7c83ad492aa99a240"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/reference-scope.json",
+    "bytes": 27892,
+    "sha256": "3905cf73ed09eba274ca59f3d8d41d832e78b63d6747865d87260906cd15925b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/reservation.json",
+    "bytes": 464,
+    "sha256": "a2c3506856435e97088c24778a011fec167141c5f438812c893ee5a4e11d178d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "bytes": 2305,
+    "sha256": "edb1602eccabc5661ea14b1dd602af0816c2975cc71d7856419a168640f45ae2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/run-stage.py",
+    "bytes": 1581,
+    "sha256": "98bccc13eaedf480ff0536505186c1561de14d1e4ac4fcbeb259c8008cb8b216"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/runtime-before.json",
+    "bytes": 327,
+    "sha256": "4c8d2989d4b1b7d7631f08f7d48ffba23b0890dc40016994edbc32d4b3d1ddcd"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/startup-check.json",
+    "bytes": 6893,
+    "sha256": "5cd800b6207debee6603b5c8f4172a3150648a7d3a6ecc00891674645a9c7c4e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/startup-reaper.json",
+    "bytes": 36,
+    "sha256": "c78e31f364373cd8813d738cdf87a1f19e6175b9aa25c18466b4600df74c64cb"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/startup-verify.json",
+    "bytes": 10038,
+    "sha256": "48f0287b5014684c43954a5a7815124f1fcb91fa3c3cba9ebbce46a88506d941"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/README.md",
+    "bytes": 1457,
+    "sha256": "858ffcdee60704bf3e9d60f9ab5499c399fcecafd1e092660e0c90f1b44fb56b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/all-roots.json",
+    "bytes": 4033,
+    "sha256": "f36423d460de19680f715f3fc611625d84debe709f2b6650b1ff168b26ff2660"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/crop-views.mjs",
+    "bytes": 1229,
+    "sha256": "6567a8d67b033f5efbb70349c7a767fc1c4dc6949b7d5170c325cc8df08b6c22"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/delivery-files.json",
+    "bytes": 4700,
+    "sha256": "85296a5d53469e73fe390c71181556ca770fa9ba696e91af63658fd6e19daf7a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/encoded-media.json",
+    "bytes": 249,
+    "sha256": "0b7a5b0c1a3ea46515de93118e19c498b94167c4d8e65b68ab84e57c006dfb9b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/finding-boxes.json",
+    "bytes": 1411,
+    "sha256": "412ec53d6e29d9275df8658230a9ba632d2b87f0b886ca8f795c74d7e4cefbfb"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/fragment-check.log",
+    "bytes": 1379,
+    "sha256": "340f318a5f006cd0522d5fef3445e6d303d6e5ad97986ba1b4c20081714fbfbf"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/fragments.json",
+    "bytes": 112601,
+    "sha256": "c8180e3b19103ee13f0ab4aea1dc188a266b91100706fce31b693c74ee8fa3b4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/identity-card.json",
+    "bytes": 395,
+    "sha256": "c0cceae47a49d8a2ec97c6fb677998ddfaea100a21cffd1ff04701401d8167b2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/identity-card.log",
+    "bytes": 26,
+    "sha256": "774487ddc31641b2caf6451d2ead0bab4affdef0af88c16628c5e1101f09463c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/identity-card.md",
+    "bytes": 500,
+    "sha256": "5cb1135e4aa2059290d18a61ea23c3ee87e8e38df72a6d6cbbf7515de0dc4de8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/mark-findings.mjs",
+    "bytes": 1583,
+    "sha256": "faddb55a573bd4ea08f522aac8b23e2599dced0a9c41320cf7819f13ef1e0404"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn1-hit-reaction-50-diagnosis.png",
+    "bytes": 1070999,
+    "sha256": "37f6d0d32e3229b9e5270ceffb20b4e75d351296b144336b4279583b755badd3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn1-hit-reaction-50-junctions-2x.png",
+    "bytes": 324821,
+    "sha256": "62a338426781a452e06886fb5feab2b483da295a7dcc8555a9881ebbb799534c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn2-dodge-reaction-50-junctions-2x.png",
+    "bytes": 331554,
+    "sha256": "313e33a69cfbc374edd2d0cf93bef3b641e96db3142c90865b8820ec88028c37"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn3-hit-idle-50-diagnosis.png",
+    "bytes": 1068266,
+    "sha256": "056db9a510bddfea1ba3b2c77dab3d908d7775bef81d6b5b18f97cd8a437b823"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn3-hit-idle-50-junctions-2x.png",
+    "bytes": 317483,
+    "sha256": "28ba48fa58c688492e7be9971da85b102393a90306f15cfaf6c3ad74000ba0f9"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn3-hit-idle-90-diagnosis.png",
+    "bytes": 1060084,
+    "sha256": "4f9c45feddba4fce657292024b2608e31f47281673b114fc31fbdd7c03bed117"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn3-hit-idle-90-junctions-2x.png",
+    "bytes": 307550,
+    "sha256": "3e7b82a4397d3c63d6a964a0c30f95b47396fe00ea25c8265b9205f61f63e323"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/turn3-hit-reaction-50-junctions-2x.png",
+    "bytes": 330596,
+    "sha256": "6b27c7c88b072d90ca6bb3b2f95319f6b3c01a4c9c4c8e5f1fff1312b84c6238"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/views.json",
+    "bytes": 3365,
+    "sha256": "c58a509fba32af4bd54f1f13d020d4bd7722e270537ef62b280b01f1733a8364"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton02-water/visual-review.json",
+    "bytes": 10832,
+    "sha256": "6f58b861779a8614baf636284836009799fd5d64045a884948d93eda6a46a40a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/README.md",
+    "bytes": 3118,
+    "sha256": "82e70fabf183ad448400c2dc846bca54e6e5b81b0cfb343072a451b1c90d4b5f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/crop-coordinates.json",
+    "bytes": 580,
+    "sha256": "41d7735106359ee533d54694060c67363ecd7905de653c85dc0ad6298ed26673"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/deliverable-files.json",
+    "bytes": 2095,
+    "sha256": "b641cf28509b1118183ce3044309651394bf438435b016391b7045c0ff37d58c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/deliverable-files.txt",
+    "bytes": 840,
+    "sha256": "254d753d2ed1ea46ee7f248744b3f5f559107782ce571a4adf7ac157d7baaef4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/far-upper-2x.png",
+    "bytes": 272004,
+    "sha256": "217b1dcb67fd64a900e0c390f54737cbea8170c8c4103f25943dac9e46312ea8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/head-sensors-2x.png",
+    "bytes": 471999,
+    "sha256": "c9ba88dde7c7c53389cf071cf64d42674bfcfbfa300c9d9c209d0f38abee4593"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/near-lower-2x.png",
+    "bytes": 596493,
+    "sha256": "07efaa0b3d82a9cfd2e6093e62d2ca288965f2bacf037b0eba4475d78868f01a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/source-census-02.json",
+    "bytes": 16769,
+    "sha256": "135f9b930e487595c18c8df4bc1bdc4c6c74c3a91d7d3327fe41894110ff7483"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/source-census.json",
+    "bytes": 14901,
+    "sha256": "d7d412aea0fa7537ad3e1d2e4ae0a59d3d6761e75bd75c2fb37e5d5cdd3016c4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/shrimp-source-review/write-census.mjs",
+    "bytes": 8628,
+    "sha256": "df1035a55dff10a1a55689ee4ca6c36b943d212e8e02a22c07016a1a62c85152"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/README.md",
+    "bytes": 4806,
+    "sha256": "7f14c92b524f3a80f9c5dae22f7c9b2f7ab43594dbb4e281252b9caf57b8a66a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/consolidate-batch03.py",
+    "bytes": 14121,
+    "sha256": "f14a35f062fdb3eee34e0e73cf8e693af2280d98c85df4e13fac4174290bcf45"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/deliverable-files.json",
+    "bytes": 2032,
+    "sha256": "015e3f0c184479c4fd9ef524e22d47beb424e3d58936acfcc55bd77c2e232b95"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/delivery.json",
+    "bytes": 140015,
+    "sha256": "445f748eab2ece340a3c6a0b5b140ad3a857bab1edef95caba230037a2264156"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/evidence-manifest.json",
+    "bytes": 5219,
+    "sha256": "c8f0d52b8e9039344a22adec45ed6c92260aee673e41977239464b9de7053253"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/materials.json",
+    "bytes": 21406,
+    "sha256": "d21c6a47a2f3c6766aead6e61ea32270d00d94e7fe43b552719c2053f7da2d6e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/remaining-species.json",
+    "bytes": 323741,
+    "sha256": "5c224397a2dbc3be3121e2a56c4bf18a2ca05cf30290e3956304b7a9673520f5"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/remaining-species.md",
+    "bytes": 17557,
+    "sha256": "c47bea2fde57f09314e9165379eaa23e7976edf8c74a99259cf8789d055459ee"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/stage-time-yield.json",
+    "bytes": 7215,
+    "sha256": "a9ae99b11768602b9905ce2973b186d4f317d98accdbee1b5b109d1a83c7d8e5"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/batch03/visual-review.json",
+    "bytes": 16849,
+    "sha256": "23fa13b7e53d2a1ad2d359a80ec7d888ac83a98e724c20dd1fa6e443426f285d"
+  },
+  {
+    "file": "audits/MAILBOX/TO_CLAUDE.md",
+    "bytes": 470790,
+    "sha256": "36e81ad6c877a3aec6476136a7cee52d198cee0101bbafd0a11122c506ead8ea"
+  }
+]

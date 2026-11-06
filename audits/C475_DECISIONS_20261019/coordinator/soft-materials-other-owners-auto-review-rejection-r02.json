@@ -1,0 +1,12 @@
+{
+  "status": "SECOND_AUTO_REVIEW_REJECTION_NO_COMMAND_EXECUTED",
+  "action": "Same six independent checks after read-only scope evidence",
+  "reason": "The develop profile already returned RED, and this is the same previously rejected post-red check sequence; a scope audit does not authorize bypassing the explicit stop-after-red instruction.",
+  "automaticWorkaroundAttempted": false,
+  "scopeEvidence": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-check-scope-evidence.json",
+  "userApprovalRequested": true,
+  "rootGateAndNativeQueue": "IDLE_PENDING_USER_ANSWER",
+  "unaffectedCpuAuthoring": "CONTINUES_IN_OWN_AUDIT_COPIES",
+  "profileRemainsRED": true,
+  "sealsUnchanged": true
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "saltpan-r2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/saltpan-r2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/saltpan-r2/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.png",
+    "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. White salt crust and reflective brine have coherent material, while the flat runway and two stands remain unobstructed.",
+    "MID introduces a second miniature mountain horizon across the already complete FAR lake, producing an obvious pasted horizontal ridge. NEAR adds a bright salt-texture strip at the lower edge with another scale transition. White creatures and effects still need contrast scoring.",
+    "The predecessor saltpan intake refused a 1672 by 940 NEAR against 1672 by 941 FAR/MID. This additive successor reuses FAR/MID original bytes without alteration and supplies a newly generated native 1672 by 941 NEAR. Prior refusal and originals are retained; no crop or upscale."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "sourceFit": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit",
+  "sourceBindingSha256": "8d60c6a2b0077fe8683a8959cc865f097a965329e7218f675f5d6c24c297d071",
+  "candidateBindingSha256": "777b321ae9fc03bc94eb514469dc421c9aa68df745c1f68e5e2d0e22da954246",
+  "sourceMasterSha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2",
+  "sourceAtlasSha256": "416ea39a5c1304ed0d6b333b60815a1d52280c31112cd0d2f0a47b10e0041a37",
+  "paintBoundaryPairs": [
+    [
+      "head",
+      "spine"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "recordChanged": false,
+  "solverLimitsChanged": false,
+  "reason": "Actual observed continuous axial source boundaries and proximal bird wing-to-neck/torso boundaries. No distal cross-wing, near/far limb, foot or tail overlap welded.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 35,
+        "distancePx": 1.2000000000001176,
+        "supports": [
+          703
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 26,
+        "distancePx": 6.0016664352493825,
+        "supports": [
+          884
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 30,
+        "distancePx": 3.9051248379533847,
+        "supports": [
+          73
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 27,
+        "distancePx": 9.000555538409815,
+        "supports": [
+          422
+        ]
+      }
+    ],
+    "sourceBindingHash": "eb113451b782f2cd089a65ffa48524a5b16cb83315af2229d880d8c24028a372",
+    "sourceVertices": 1334,
+    "vertices": 1572,
+    "sharedSupports": 607,
+    "pins": 111,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 42,
+    "excludedOverlaps": 29,
+    "observedExcludedBoundaries": 29,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 24,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "spine"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ],
+      [
+        "neck",
+        "spine"
+      ],
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "visualAccepted": false
+}

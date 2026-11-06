@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "o3-lancelet008-green-r05-atlas",
+  "checkpointReview": "audits/O3_20261103/coordinator/checkpoints/lancelet008-green-r05-atlas-original/W2.json",
+  "nativeReview": "audits/O3_20261103/coordinator/reviews/lancelet-green-r05-physical-normalized.json",
+  "nativePlan": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/native-plan-bound.json",
+  "nativeReport": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/native/report.json",
+  "triage": "audits/O3_20261103/coordinator/triage-whale016-observed-r03-original",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": false,
+  "checkpointReviewSha256": "3961f83093b9af146d6498333f1ebfcbf0e001c662a4af314681f9770238c039",
+  "nativeReviewSha256": "994730bd8c191aed015289b802d8f3a6d1825859d0e7a543b40976d370d8bb54",
+  "nativePlanSha256": "951d61aea5cfa2f07bece0fe8319d1d5c82ed5e5e3bcd6d4d40a6ec532df77fc",
+  "nativeReportSha256": "d266627606bba6ae2a160e08ff28e1958c1036b97430f9b52f427bddd4ec80f5"
+}

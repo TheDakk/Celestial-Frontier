@@ -1,0 +1,214 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Butterfly\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1023541417\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 1023541417,
+    "ownerId": "authored:archetype-sprint/c266-insect-butterfly",
+    "earthName": "Butterfly"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1023541417,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 15,
+    "body": 14,
+    "loco": 16,
+    "trait": 4,
+    "size": 1,
+    "diet": 4,
+    "head": 8,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 10,
+    "detail": 1,
+    "accent": 9,
+    "temper": 6,
+    "sense": 8,
+    "repro": 7,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Butterfly"
+  },
+  "geometry": {
+    "cutoutAssetHash": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7575757575757576,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5422647527910686,
+      0.6299840510366826
+    ],
+    "thorax": [
+      0.5757575757575758,
+      0.60207336523126
+    ],
+    "head": [
+      0.631578947368421,
+      0.5709728867623605
+    ],
+    "mandible": [
+      0.6547049441786283,
+      0.6124401913875598
+    ],
+    "abdomen": [
+      0.4565390749601276,
+      0.6610845295055822
+    ],
+    "legHindFarKnee": [
+      0.44896331738437,
+      0.6874003189792663
+    ],
+    "legHindFarFoot": [
+      0.39473684210526316,
+      0.7328548644338118
+    ],
+    "legHindNearKnee": [
+      0.4840510366826156,
+      0.69377990430622
+    ],
+    "legHindNearFoot": [
+      0.4529505582137161,
+      0.7432216905901117
+    ],
+    "legMidFarKnee": [
+      0.5382775119617225,
+      0.6738437001594896
+    ],
+    "legMidFarFoot": [
+      0.5087719298245614,
+      0.7065390749601276
+    ],
+    "legMidNearKnee": [
+      0.5645933014354066,
+      0.6618819776714514
+    ],
+    "legMidNearFoot": [
+      0.5614035087719298,
+      0.7527910685805422
+    ],
+    "legFrontFarKnee": [
+      0.6116427432216905,
+      0.6539074960127592
+    ],
+    "legFrontFarFoot": [
+      0.6507177033492823,
+      0.7368421052631579
+    ],
+    "legFrontNearKnee": [
+      0.6419457735247209,
+      0.6395534290271132
+    ],
+    "legFrontNearFoot": [
+      0.6905901116427432,
+      0.7097288676236044
+    ],
+    "antennaFar": [
+      0.7121212121212122,
+      0.41626794258373206
+    ],
+    "antennaNear": [
+      0.759170653907496,
+      0.4433811802232855
+    ],
+    "wingNear": [
+      0.44657097288676234,
+      0.44657097288676234
+    ],
+    "wingFar": [
+      0.4784688995215311,
+      0.4784688995215311
+    ]
+  },
+  "materials": {
+    "surface": "scaled wings with species pattern, furry thorax, segmented abdomen and thin jointed legs"
+  },
+  "source": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Manual pixel-space observations on this exact retained original. The mandible joint owns the coiled proboscis at the true mouth (the template mouthpart actuator; butterflies have no chewing jaws and none was invented). Wings are closed: both visible wing surfaces (near forewing + near hindwing) are owned by wingNear; the far wings are directly behind them and own no paint.",
+    "sourceFacing": "right",
+    "limitations": [
+      "wingFar is an interpretation behind the closed near wings and owns no part",
+      "antennae are hair-thin: keyed alpha keeps a 1-2 px line plus the clubs; owners follow the keyed line",
+      "hind far femur is under the abdomen; only its distal end and the tibia/tarsus are painted"
+    ],
+    "visualAcceptance": "Dakk pending; static evidence only, native film and full-size film review pending",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "1f29998d5bbaa4c95f94673bae4a10166c2aa959e9eec9b7e0267bc74414a512",
+    "subjectSourceSha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.043597884953226994,
+      "head": 0.06390043262381373,
+      "mandible": 0.04747998611356996,
+      "abdomen": 0.133023939354547,
+      "legFrontFarKnee": 0.06304381300176193,
+      "legFrontFarFoot": 0.09167879755150145,
+      "legFrontNearKnee": 0.07606334666450026,
+      "legFrontNearFoot": 0.08538655522475647,
+      "legMidFarKnee": 0.08096750062742143,
+      "legMidFarFoot": 0.04404051442259673,
+      "legMidNearKnee": 0.06084168918728067,
+      "legMidNearFoot": 0.09096503497032972,
+      "legHindFarKnee": 0.15283151832107697,
+      "legHindFarFoot": 0.07075751778910083,
+      "legHindNearKnee": 0.1296926313181068,
+      "legHindNearFoot": 0.05841001619531102,
+      "antennaFar": 0.1744152406322946,
+      "antennaNear": 0.1804419218338878,
+      "wingFar": 0.1572995564747386,
+      "wingNear": 0.20216372668251678
+    },
+    "measures": {
+      "body": 0.1968732208569608,
+      "bone-min": 0.043597884953226994,
+      "bone-max": 0.20216372668251678,
+      "leg/body:legFrontFar": 0.7858997271430727,
+      "leg/body:legFrontNear": 0.8200704046314097,
+      "leg/body:legMidFar": 0.6349670844306619,
+      "leg/body:legMidNear": 0.7710887417639511,
+      "leg/body:legHindFar": 1.1357006053790704,
+      "leg/body:legHindNear": 0.9554506534440492
+    }
+  },
+  "recipeHash": "f0b7d9d9d7fc109369039298ca02cf573f3c3165f9aba2b327090f54208c52e1"
+}

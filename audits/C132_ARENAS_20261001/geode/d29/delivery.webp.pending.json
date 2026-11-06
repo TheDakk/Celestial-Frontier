@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "geode",
+  "biome": "geode",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/geode/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/geode/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/geode/arena-far.webp",
+      "runtimeSha256": "d4edbeaa90838867aeea5f39597b1f21bf0e7ea8e05421a517c32464daf8a4a4",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+        "sha256": "91fda9e39bce736f279ce7139c3e00e5d993f85c97d23fcd116a933e5ba7dd71"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/geode/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/geode/keyed/arena-mid.webp",
+      "runtimeSha256": "6eeda2623d07246f4f21fe38be8813d06eb245a7cac38fac0b6ee651f76c7527",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-mid.png",
+        "sha256": "04b9e11a384536bd8ebb5eede20b55312bbae9b3f50140f71646fde9ad2ff729"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/geode/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/geode/keyed/arena-near.webp",
+      "runtimeSha256": "c14e065837c6344d94cf099c87aed327aeaa580bacc8319d6f88940fdf852d9c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-near.png",
+        "sha256": "7bf04f80a2340518446cfd1e0d243f629626eb21943279ef9ecef5337172969d"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

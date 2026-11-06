@@ -1,0 +1,35 @@
+{
+  "runId": "20260923-chimpanzee-native-01",
+  "readyMs": 400,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Chimpanzee",
+      "dn": "Chimpanzee",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "an": "Chimpanzee",
+      "dn": "Chimpanzee",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Chimpanzee",
+      "dn": "Chimpanzee",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 30,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

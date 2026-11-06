@@ -1,0 +1,147 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b01r1c1-06-guinea-pig",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "73986ca246af8afeb5a66c9da3e58c2659b0a05f8408955236c810a6f44b1312",
+    "pngSha256": "02a4dfe179088dca6b4f29c0ae5576bb109e11721384eda0a62ffe750007f169"
+  },
+  "parts": [
+    {
+      "name": "chest.png",
+      "sha256": "5cf847025e04e0fc71c33cf238a7ea63a6fd90e1afa54a8b4cf472cb7d101f11"
+    },
+    {
+      "name": "ear-far-root.png",
+      "sha256": "07c24d61760f2bbd31fa33b8a79341b78d2a5aeb15db44b77ef177fedbcf0035"
+    },
+    {
+      "name": "ear-far-tip.png",
+      "sha256": "66c98a47cb9697955480c4bee21e7e8a383b9213caf15998210e857f501c2168"
+    },
+    {
+      "name": "ear-near-root.png",
+      "sha256": "4aaa6ea4c1b689010b462399b05f4d2c1000039fb9164eef4522cbfbeff1ac08"
+    },
+    {
+      "name": "ear-near-tip.png",
+      "sha256": "76c150ddd2be66c7e0214d5e7fa6a6360942633c0e9a38446a04d3b4c67e0c7b"
+    },
+    {
+      "name": "fore-far-ankle.png",
+      "sha256": "d22eb02f2032f9afacc52939fcd1e5d87c05596bfc0a6b3faa141ce2657213fb"
+    },
+    {
+      "name": "fore-far-knee.png",
+      "sha256": "c7d94905116f74f554d7d90760878650b02f3228934db7615c437f54e3fc0752"
+    },
+    {
+      "name": "fore-far-paw.png",
+      "sha256": "3591ff640a5c045a77c3801508555c5cd7b4cbc73b72497c5c3b317f6b0f2865"
+    },
+    {
+      "name": "fore-far-root.png",
+      "sha256": "ee983ece4882aee044c162c7c41d26dd7cc3eee622a47f99c63ac14f8402f7c9"
+    },
+    {
+      "name": "fore-near-ankle.png",
+      "sha256": "1b3bb5b8ad2f91ea349ca49ff1ec7b248fb41920165b1245ae5938852e06425a"
+    },
+    {
+      "name": "fore-near-knee.png",
+      "sha256": "70a0222371c46f5d79768d368c6849d33dab28e3f44f6a64dbd7608beb17be6d"
+    },
+    {
+      "name": "fore-near-paw.png",
+      "sha256": "b260e6f522fc86ec40627a0dc63c0471decaf7afac3b3cfdfe9d3cdc9815323b"
+    },
+    {
+      "name": "fore-near-root.png",
+      "sha256": "010e1a846a7f31d516d97e78ade37b14e20fc503268a9d63f653883a84af2be4"
+    },
+    {
+      "name": "head.png",
+      "sha256": "38a1742b67a3ca7ab24342c3a46f6fcb65c0d96e3ac6c22f25c974aee4d8c9fb"
+    },
+    {
+      "name": "hind-far-ankle.png",
+      "sha256": "1ee3c3ba9cf0ef0fde80c558b84bdb66de1b1d2563313614b2f4143efc9b9434"
+    },
+    {
+      "name": "hind-far-knee.png",
+      "sha256": "6806b9f5af33986f064c5d04a8541b65dbad716bb40ecef90dac9482b6c9fd26"
+    },
+    {
+      "name": "hind-far-paw.png",
+      "sha256": "d13af5d1097e6c2fb13674e6f1c5c0f45e77030892f046febb2184138bf590d9"
+    },
+    {
+      "name": "hind-far-root.png",
+      "sha256": "f4fc5c9357be45a893446382ba28e7b718036507a109c2ac474cd3fb89b7ba63"
+    },
+    {
+      "name": "hind-near-ankle.png",
+      "sha256": "463d4698938fd57bd9cda2875b1b094694d4f92c7b9e7e0cec9dd22f3dc55265"
+    },
+    {
+      "name": "hind-near-knee.png",
+      "sha256": "5d7e5c56322af1c0b768ab187ac3a8651b507b4388752710e52b2d5df2bb5744"
+    },
+    {
+      "name": "hind-near-paw.png",
+      "sha256": "e741f1430587561ee65fa38c70ff90342f808a915bca5c345b04bd6b64dba954"
+    },
+    {
+      "name": "hind-near-root.png",
+      "sha256": "ea2d25d5f94f6fb3caca4aa35f99d4201b4305fbdb9f90c6b6547c32b748fbe9"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "1744ea0974065cccdc27aceaf90055d1064a298d0977b1c97a5bf3c6438c9a9e"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "63a50bb6c67ce203302cfebbbaf5b2eb7444bf5f3d1c70d2823f425b12e2bc82"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "2e69daa96a826ad45c5085c8ff2ec83bb7233b6d31351f6d3d8941e69524b28f"
+    },
+    {
+      "name": "reviewed-tail-0.png",
+      "sha256": "52def45f10b60c48c9041543959066bdf21cb2d5b9955ef06a397a2d3ef44b0a"
+    },
+    {
+      "name": "reviewed-tail-1.png",
+      "sha256": "8a5bd56c371d39599f1da273ae8b954ae5ee23697e661eed9b3f9feaecee6dec"
+    },
+    {
+      "name": "root.png",
+      "sha256": "a46326745dcaf4a607d846fc511a612ed175b910856f13758d80f2c18d2d88c8"
+    },
+    {
+      "name": "spine.png",
+      "sha256": "064736282a1a4b331f582fbee06e2c1d8c8bdd31ea7375ef2731f9ab662c4e6f"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

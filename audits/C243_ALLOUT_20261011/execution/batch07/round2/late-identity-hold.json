@@ -1,0 +1,12 @@
+{
+  "status": "SOURCE_IDENTITY_HOLD",
+  "name": "Wall Lizard",
+  "id": "c243b07r2c2-33-wall-lizard",
+  "masterSha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98",
+  "marker": "tail roughly twice the body length",
+  "answer": "missing: selected original tail visually about1.3 times the snout-to-hindbody length, not roughly twice; limb/pigment identity alone does not clear this marker.",
+  "sourceEvidence": "Full1254 source C2 already inspected; approximate tail tip x228/root680 and snout1030/root680, lengths452/350; these are explanatory manual observations, no altered gate or master.",
+  "otherCandidates": "C1/C3 also look about1.1\u20131.4 body lengths; no candidate claimed identity-clear.",
+  "chain": "Native PASS before this late marker check. Complete required native-PASS finish chain, but never READY; final visual-review must answer marker missing.",
+  "admission": "Claude only; static diagnostic may remain rawPASS."
+}

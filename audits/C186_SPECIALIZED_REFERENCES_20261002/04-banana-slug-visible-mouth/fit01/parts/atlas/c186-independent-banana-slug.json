@@ -1,0 +1,229 @@
+{
+  "frames": {
+    "eyefar.png": {
+      "frame": {
+        "h": 224,
+        "w": 122,
+        "x": 5,
+        "y": 1160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 224,
+        "w": 122
+      },
+      "spriteSourceSize": {
+        "h": 224,
+        "w": 122,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "eyenear.png": {
+      "frame": {
+        "h": 176,
+        "w": 185,
+        "x": 5,
+        "y": 1394
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 176,
+        "w": 185
+      },
+      "spriteSourceSize": {
+        "h": 176,
+        "w": 185,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot0.png": {
+      "frame": {
+        "h": 138,
+        "w": 163,
+        "x": 267,
+        "y": 901
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 138,
+        "w": 163
+      },
+      "spriteSourceSize": {
+        "h": 138,
+        "w": 163,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot1.png": {
+      "frame": {
+        "h": 249,
+        "w": 252,
+        "x": 5,
+        "y": 901
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 249,
+        "w": 252
+      },
+      "spriteSourceSize": {
+        "h": 249,
+        "w": 252,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot2.png": {
+      "frame": {
+        "h": 346,
+        "w": 261,
+        "x": 5,
+        "y": 545
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 346,
+        "w": 261
+      },
+      "spriteSourceSize": {
+        "h": 346,
+        "w": 261,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot3.png": {
+      "frame": {
+        "h": 530,
+        "w": 351,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 530,
+        "w": 351
+      },
+      "spriteSourceSize": {
+        "h": 530,
+        "w": 351,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 149,
+        "w": 196,
+        "x": 137,
+        "y": 1160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 149,
+        "w": 196
+      },
+      "spriteSourceSize": {
+        "h": 149,
+        "w": 196,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "mouth.png": {
+      "frame": {
+        "h": 44,
+        "w": 64,
+        "x": 137,
+        "y": 1319
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 44,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 44,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "root.png": {
+      "frame": {
+        "h": 8,
+        "w": 8,
+        "x": 137,
+        "y": 1373
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 8,
+        "w": 8
+      },
+      "spriteSourceSize": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c186-independent-banana-slug.png",
+    "scale": "1",
+    "size": {
+      "h": 1575,
+      "w": 435
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fisher",
+ "fitDir": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "af24321f3c93fde4b5e61e8df2bf6961cf7fb37ebac7b082cd62e7da508fbe42"
+}

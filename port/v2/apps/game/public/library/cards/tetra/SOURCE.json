@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tetra",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/08-tetra-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e1bbb75a45d76d97acc0daaf62f8b5ae5b20fea9cf67746d60656acfb2b8807d"
+}

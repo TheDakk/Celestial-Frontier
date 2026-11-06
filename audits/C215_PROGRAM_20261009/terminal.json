@@ -1,0 +1,32 @@
+{
+  "reservation": "C306",
+  "status": "TERMINAL_RELEASED",
+  "mailboxRow": "C314",
+  "program": "C215",
+  "phase6Commit": "ea009ab5ce377243dab7e56622abb1e3de4faca4",
+  "signature": "G",
+  "phases": "1-6 complete with explicit holds",
+  "staticTrajectory": [
+    51,
+    59,
+    77,
+    79,
+    85,
+    84,
+    84
+  ],
+  "fixedCohort": 500,
+  "newSpeciesOriginals": 48,
+  "masters": 60,
+  "selectedFramingPass": 48,
+  "sourceHolds": 6,
+  "remainingWithoutOriginal": 45,
+  "taskOwnedJobs": 0,
+  "sharedLockExists": false,
+  "optionalRuntimeRestored": true,
+  "freeGiB": 85,
+  "latestClaudeRow": "C218",
+  "certification": "I5 PASS; develop RED; no retry authority",
+  "push": "NOT_RUN",
+  "allPairs": "HOLD"
+}

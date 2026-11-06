@@ -1,0 +1,85 @@
+{
+  "creatureId": "c275-w1-06-c266-frigatebird",
+  "parts": [
+    {
+      "name": "near-foot.png",
+      "path": "parts/near-foot.png",
+      "sha256": "1b5c8d8c7a3fe4854cc21753ba2b34f11718f527cb50d12a2b5cbbd77bcd0934"
+    },
+    {
+      "name": "far-foot.png",
+      "path": "parts/far-foot.png",
+      "sha256": "6bff89ccab8821535d52a47886379b2d3c74bbbe51fb6db72a2b612adb19d460"
+    },
+    {
+      "name": "near-shin.png",
+      "path": "parts/near-shin.png",
+      "sha256": "fc45fdd6bfcfa1a18173214e97302a582c0095a2d5e200170f817abef1155132"
+    },
+    {
+      "name": "far-shin.png",
+      "path": "parts/far-shin.png",
+      "sha256": "15c7a2b2e23233e465c325b9a65bb4283d6c0d02b091d8c00443eca0e8cd200e"
+    },
+    {
+      "name": "near-thigh.png",
+      "path": "parts/near-thigh.png",
+      "sha256": "e2bf59dbc16443df531b5ea051e03de3bdfc80e56959237acccc0a52ddcdf1e8"
+    },
+    {
+      "name": "far-thigh.png",
+      "path": "parts/far-thigh.png",
+      "sha256": "8afef1d01bb3c2b18b4e6b3592d51353aac909aa71344245abc0c1c59e343337"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "864767891c3cbe1b56a88f943d20e8c28e1256030a77be73d04fe492d5a03617"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "b8d2a421254bc7d94d98449edde36c7f68d178b4e1e02524b8dba7ead4682522"
+    },
+    {
+      "name": "neck-upper.png",
+      "path": "parts/neck-upper.png",
+      "sha256": "c734d3b12e4f38f70e91261224f457d3ea2ccdb3098db71855327813dda2d293"
+    },
+    {
+      "name": "neck-lower-pouch.png",
+      "path": "parts/neck-lower-pouch.png",
+      "sha256": "337e02c32684497dbfee844ca37925a7fd271176b63a270094ed9bd45c88ac49"
+    },
+    {
+      "name": "near-wing-shoulder.png",
+      "path": "parts/near-wing-shoulder.png",
+      "sha256": "5f296da66ce040a2d4ef329a22beffce71e18f757f15156f55110d41c3c443a9"
+    },
+    {
+      "name": "near-wing-flight.png",
+      "path": "parts/near-wing-flight.png",
+      "sha256": "b77b71983e222a4bb0e4084d57ccbc00565c10ce58188f4e3c9cb4d4868bc910"
+    },
+    {
+      "name": "far-wing-shoulder.png",
+      "path": "parts/far-wing-shoulder.png",
+      "sha256": "b6cc82bedcdda7e8ad08579e94c4039c6f7c168a69b105fb9eccd6b7443694e6"
+    },
+    {
+      "name": "far-wing-flight.png",
+      "path": "parts/far-wing-flight.png",
+      "sha256": "0a66c537754e1a4aa3af6cbb90d62fa7619b7000a8cd25fb916d7cd78ac98380"
+    },
+    {
+      "name": "tail.png",
+      "path": "parts/tail.png",
+      "sha256": "c6eb321d05e005bf4cc64d8c93ee9a4c074e5e092d0022efe5e82afe2167cd72"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "7e570616ca9d4b9fc4cbf8bd227cd61cd7f5b20b2f73a80079e5c1f2e65769bf"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Starling",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-07-starling/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cdd010aa3e25188944758c117470d99c82dfa283705faf1d425a496a31215f6b"
+}

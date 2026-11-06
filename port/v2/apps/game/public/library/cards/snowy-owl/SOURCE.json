@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snowy Owl",
+ "fitDir": "audits/ISLANDS_D28_20261002/g2c121-14-snowy-owl/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cb49b33df285d91249bb00264a87891c38f10627bdb9c65e86573731ea89be70"
+}

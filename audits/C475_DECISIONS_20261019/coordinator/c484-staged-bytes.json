@@ -1,0 +1,3282 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "60c0944b32f902aff48045f2078c3b92d9a33c7be619cb7a6f3b2797caa8e7e2",
+      "bytes": 31086
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "c5c62f669ba12d7dad29ffe9006bae9cccaa7f2bb12e4164471e269d8914cd59",
+      "bytes": 4474
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "sha256": "0559e518e9d7e8dc3bbd72f73f50b0897a87caf424489de36d4c989e5a79b993",
+      "bytes": 17150
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/PLAN.md",
+      "sha256": "553525b75672f11f0a3905b6673dbdaf38956389fec9d61584654d3c0a1f32b0",
+      "bytes": 2744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/bind-native-plan.py",
+      "sha256": "8d2c542dfc8daff8b082c93a19a88f5fcc8622bd9a2a3fe9c412521f7f0eb211",
+      "bytes": 1305
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/bind-plan-realm.py",
+      "sha256": "b289ec167742e10fcec519268e4f34fe25ca442006ca1714a88b58ee91160f37",
+      "bytes": 1243
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c478-staged-bytes.commit.log",
+      "sha256": "73f77d1d0e475d23876fcf874d014d7cecac60dfaf0293402785eaadec67b6d7",
+      "bytes": 6737
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-first-staging-check-red.log",
+      "sha256": "d1fb038b632b9ed11ccdaeade7f81559ecc2c91e73b74e4ecbd7058a5f78e6c9",
+      "bytes": 14647
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-message.txt",
+      "sha256": "f7ef64ddf9a177fedbe33a77aa505cd075bbba259cfe35e8bc6eb5345653b061",
+      "bytes": 240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-staging-instrument-correction.json",
+      "sha256": "0ef5e60e7517d45b7bce662214db98a7ead7f50ee669d7c9aa5db6ec3a926912",
+      "bytes": 2523
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/collect-producer-wave.py",
+      "sha256": "894b2be2d7081f362f0ca5386896d32601e96da5c8b7ac4dc27e2abb768cd9f1",
+      "bytes": 2006
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/commit-owned.py",
+      "sha256": "6d67c8e46a3d02542131f20fd2f5615f89c27267554dee94dbbddd3531d244ac",
+      "bytes": 3766
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-d42-applied-r01.json",
+      "sha256": "b32e87a40d8102ed74421b8ca8741eab69fd9f388e92c8b753654a62c09e01c7",
+      "bytes": 10548
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-draft-note-pin.json",
+      "sha256": "7d186db186f8812af0c59a056d6656fdcff996b6eae018ac5f64fda2fbf40557",
+      "bytes": 446
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-draft-note-pin.log",
+      "sha256": "03e586c36e6a75d68ba1e09e11f83371b4fda513a71850fc083075ffb41fdbd8",
+      "bytes": 106
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-guide-pin-first-attempt.mjs.txt",
+      "sha256": "1496dda96c05d6c59dccb5292ace66ef2a0fe8534c2624ffd95241e6129d864e",
+      "bytes": 2963
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-guide-pin-instrument-correction.json",
+      "sha256": "7de65e33e9ca774539fe1961417c08d397e6ea6eb8d2bcd447985b1c007d58c1",
+      "bytes": 495
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-guide-pin-loader-correction-r03.json",
+      "sha256": "3257fe2adc7cd4c7e60e65f93457262efcf828c552be94404862da65dd4fceda",
+      "bytes": 657
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-guide-pin-proof.json",
+      "sha256": "ea49fe303c2f08888698513a0694f38cb810a3d055d8e425b16dce853e73c055",
+      "bytes": 478
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-guide-pin-second-attempt.mjs.txt",
+      "sha256": "3e591f6697f3115e1dec81c58ac0054b056bcb70c4ecc88216c8431f76891de0",
+      "bytes": 3367
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-guards.json",
+      "sha256": "ff9181424682b3febe4dcc3a6c2dd2fecaee8f285d5dc1cd1a693b02c5619c46",
+      "bytes": 586
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-guards.log",
+      "sha256": "6697df26ce8813d4290a54d5a53db30889405601afa1def8218cb43a80d17d19",
+      "bytes": 2174
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-motion-tests.json",
+      "sha256": "5d60765c1147ef48f7b03764787044fae4a7f09ee0ccfad733336008780dccad",
+      "bytes": 523
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-motion-tests.log",
+      "sha256": "b963e36b008589eec1a2da4efcc1b86e3cba94ada56901a8fda9cc41d99179d3",
+      "bytes": 235
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-vitest.config.mjs",
+      "sha256": "3107c27367902a946e5cc61587eaaff01ea013a264504ba1c374b62e7c2e4c03",
+      "bytes": 296
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-independent-owners.json",
+      "sha256": "feb6d67723cbb3ed8740aaa068f564bc0bb43c78159daab81468bbd20e603fac",
+      "bytes": 1140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-independent.json",
+      "sha256": "0560dc17b7898af9eeb85926b7f19539acfa4fb037d024b6083d83da42752ded",
+      "bytes": 554
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-independent.log",
+      "sha256": "0b096483b97e37869a4f0f04d86a8fc5acc1be8af897920990847de4d1b10028",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-independent-owners-r02.json",
+      "sha256": "feb6d67723cbb3ed8740aaa068f564bc0bb43c78159daab81468bbd20e603fac",
+      "bytes": 1140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-independent-r02.json",
+      "sha256": "b05c5de38de3f67e1d41461fa1f125787da0d185423183027a5217915f67e756",
+      "bytes": 573
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-independent-r02.log",
+      "sha256": "0b096483b97e37869a4f0f04d86a8fc5acc1be8af897920990847de4d1b10028",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-r02.json",
+      "sha256": "723a6d33a4ffad2a16effb53b8f33eef76e58b091f1fc1aaf07acefe2dd5aa40",
+      "bytes": 444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-r02.log",
+      "sha256": "9eb54cc446b62b63d77de083059d4e9f518423886ea0f7e63bf2017918e8ee0a",
+      "bytes": 100221
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41.json",
+      "sha256": "2e1d8be80081d38d8b18e55983b6ed4f7e244ce7a12511ae88bdee23ff9bba8f",
+      "bytes": 422
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41.log",
+      "sha256": "8a52dbde7051aa48be08a2071d8f16fdcbaea643227b59ddb0b4b7d2e9915d76",
+      "bytes": 74295
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-d41-root-static.json",
+      "sha256": "6565d47f564db680b2ec794678909d8cc902cc6b9db4af010dfc9ce484ed8d8c",
+      "bytes": 689
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-d41-root-static.log",
+      "sha256": "f9a70b48ec2276e7352530f86b8b464d924bcfb2aab50db767eaaf051d062a0b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-d41-root-static.json",
+      "sha256": "3f035e123a256eef56e788bf499cd3ce92d7a58d17b0c9c00e003b4db5097379",
+      "bytes": 686
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-d41-root-static.log",
+      "sha256": "17d52707782bdf13bff2244b6447a302167e081d60c94f3de575401fef20875b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/instrument-applied-r01.json",
+      "sha256": "09e28766e48486641f4c05a4528baf236af6671f6e084fb404e88e7936272ad2",
+      "bytes": 1348
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/nautiloid-route-applied-r01.json",
+      "sha256": "a94000483a4497bb9e3713f803a79e036ef62655613bbd692aefd56df1d1fd1f",
+      "bytes": 1581
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/plan.json",
+      "sha256": "b983b6aa236c5f7e286cbab8915837ff5d9aee1158f821e121e4e225449094bd",
+      "bytes": 1340
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/realm-proof.json",
+      "sha256": "ce2592233f50d134ca96aa1a3fede670e67f2c24c3d72e570d0d593cfe663f7d",
+      "bytes": 543
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/script.json",
+      "sha256": "1ff31c285b015911eb0d25e0647f80ce767af0ed20a562bafb25424e41facdbd",
+      "bytes": 709
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/static.json",
+      "sha256": "110509ab017028c64f1dfa7274e366a6c3aef4f86ba5de592b543d1b57d8b8aa",
+      "bytes": 6478
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41/static.json.sources.json",
+      "sha256": "393b95afdb71e2b9b03b34f90980da526f1699c676153723f3fada088f1d6884",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/plan.json",
+      "sha256": "c51e08780d0e194ad536db0b550c94a4ee2ce5f72d37702abd74082bd47f2103",
+      "bytes": 1611
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/realm-proof.json",
+      "sha256": "24433b16f55ef3b81228692b50fa8843f5c69cc7e512d561e0deff239d04cd48",
+      "bytes": 540
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/script.json",
+      "sha256": "177812c190efad8bc72832c0db8d036da29317a18f2495580bd4ddde48e02967",
+      "bytes": 666
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/static.json",
+      "sha256": "910a107659a92c73fa88d513866312b0d76598d9355a07e810015bc1f4668733",
+      "bytes": 6450
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/static.json.sources.json",
+      "sha256": "1846f3f972b032caf22e5c385859efe41d7266bf033075fc2649d22a20b939b1",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41/plan.json",
+      "sha256": "c3ca6f35560ff6d7b0860734a86daabbef337171ac97a460a76c0c438680e24b",
+      "bytes": 1804
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41/realm-proof.json",
+      "sha256": "8ecd9d3e790098d0427561d79ab5ad1af5c5c3117738275a3e4fbca9714add0b",
+      "bytes": 549
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41/script.json",
+      "sha256": "5b3d4be0ce5e440c4580b17da612eefea6f7a7486fa6b7a35250cddd715d6869",
+      "bytes": 733
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41/static.json",
+      "sha256": "6a83d02ba5de204d20dcd48804069d170101ba7e4e8ca59753df9fdde582ce6f",
+      "bytes": 6438
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41/static.json.sources.json",
+      "sha256": "21eea637e186326de247a6b0650ca14f312640e12e3b58be117d450ba808f1f8",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/plan.json",
+      "sha256": "690455fddd1e92b1fb8c030caf9c5219812c260231af9009c8ef749141b0b340",
+      "bytes": 1610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/realm-proof.json",
+      "sha256": "bce4116ebb4203cd5f665b8f076eb8f22b8d5d0931cd8aa5c495c8e4a906c893",
+      "bytes": 547
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/script.json",
+      "sha256": "18e4d905923369b9d016af34fe5097c3daa44bea6f5af8b6a70c5b79784afd41",
+      "bytes": 725
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/static.json",
+      "sha256": "164330defe39a1b86e0ee53d4d36f360b1b351275e91da804136377604b13444",
+      "bytes": 6417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-urchin-d41/static.json.sources.json",
+      "sha256": "150aabe184c785bee51c8c22f828e5f2eb7c904589a322c08e5dc93eef7732c6",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/plan.json",
+      "sha256": "0403153160d8e72e1d3c6192c823f3ba1d6b0967686fff144da03d943591a533",
+      "bytes": 1589
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/realm-proof.json",
+      "sha256": "f2e5289d539ad137de5977d433ca876c52aeaeea7007c50dd83a87307bcd216a",
+      "bytes": 545
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/script.json",
+      "sha256": "7220db762d23d0093f51375305deb339444a85686468d22ce1d1f8e7bd67296c",
+      "bytes": 717
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/static.json",
+      "sha256": "8e65aff62b69e4986dd657429c082c7610c909a66ae9fdf933f74de671679aa4",
+      "bytes": 6410
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/static.json.sources.json",
+      "sha256": "2e901f4139ea2d21b3219ad7c2af3812464910340232bca7bc24c5f7905ce30b",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/qualify-d41-plans.py",
+      "sha256": "917ee9eaf9b432e87b5709b99208eac23c98138359d44e7a72b0dd87989d908c",
+      "bytes": 853
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/runtime-change-list.json",
+      "sha256": "917fcdb181086905a355c08d8c38ab7a1cce958fb9922030f8c0014f69edbbf4",
+      "bytes": 3249
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-d41-root-static.json",
+      "sha256": "c0c97e00f5bb6a43c5e2968827ccfaf5543d5340dff33f790a0a8824d694057a",
+      "bytes": 699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-d41-root-static.log",
+      "sha256": "4a3c6ed15ce991ebcd4f93c07b3b7f789f17eb8ace925d1763a951f51c4b034b",
+      "bytes": 1451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sea-urchin-d41-root-static.json",
+      "sha256": "8022abbaf24e545e01b5367ae3027a77d350c042e463978f58f9e27d41c69772",
+      "bytes": 683
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sea-urchin-d41-root-static.log",
+      "sha256": "0eb642a3ea270ea247248c8c5d53043deda67319dce0ad3bde6e790eee722767",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-root-static.json",
+      "sha256": "cccec2c3bbe3fe33b32b66cc2e878f5328f1a3c0d14fcff055841e71c151a71a",
+      "bytes": 673
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-root-static.log",
+      "sha256": "2b74ecae5cd74360c55049ef84c0fbe0c5687422dff15ce109385b588b5a96f3",
+      "bytes": 1456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/update-motion-draft-pin.mjs",
+      "sha256": "bbf017a0580186d9969af80107dd98ae242293649cc2f621938ba53c16ebbfbc",
+      "bytes": 2942
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41-route-r02.json",
+      "sha256": "4502a9ac4c327cbcb5de1fd1d2daa9957cafcaa00c2240e8c1c2cb7a035cd6c7",
+      "bytes": 465
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41-route-r02.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41.json",
+      "sha256": "2c7db028228765fb9da24f2957cdd183b6cf7efe18910aeb6251fa601ba4706e",
+      "bytes": 455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-post-d40.json",
+      "sha256": "7540b1339918a1f09007b4567e5e0782000dba5c0963d9a564905ccc042889ee",
+      "bytes": 396
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-post-d40.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave07-d41-d42-producer/README.md",
+      "sha256": "2275533f5d472bc2b81e7d20b1f3f92990ae55adaf8e98fd5cf40b48cc8e364e",
+      "bytes": 5423
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave07-d41-d42-producer/delivery.json",
+      "sha256": "48468316896a8d141161c56a6c25e79a0b120ac78bcf543fa8c326cb84c429e3",
+      "bytes": 4100
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/add-rigid-proposal.py",
+      "sha256": "ad14a6dd3124bc88c3068810640c9fba77e7d1185f1e0f60c3cd9e5c0cca0806",
+      "bytes": 8423
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/add-tube-rigidity.py",
+      "sha256": "ed3441cc1181c9054d4cb75b921c8861ad129464c851cbfdf1c907fd7d28ec4d",
+      "bytes": 4401
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/build-inventory.py",
+      "sha256": "6c1155da56b7464cb6b8537ca08388c4c2ac6d0966d59ead470822c12976d48d",
+      "bytes": 7588
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/controls-r02.ts",
+      "sha256": "d45aed13357f30b43e1a00eab0207b6a831305354d40abcbb7f7184d1b2b28e4",
+      "bytes": 8724
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/controls.ts",
+      "sha256": "9c5e3fa72da187dfc364a29d79de484565d4593ad8b1539656d99271f95a7787",
+      "bytes": 8280
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/cpu-typescript-loader.mjs",
+      "sha256": "fda8319ba50d88ebb9a916c0069e0f1378f46a5816c29938ebe9e449e75afb17",
+      "bytes": 312
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/disk-worker-end-r01.json",
+      "sha256": "2b6816c3b6475bdd7b85d3f5e24163a49426a0e28cebc2ac93d1757cfa5ce31c",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/existing-source-join-tests-r01.log",
+      "sha256": "fecd0d1caa0febb998fe883cd461d178187ebf087632d8846c77c830a99757aa",
+      "bytes": 2578
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/existing-source-join-tests-r02.log",
+      "sha256": "5412286b998a2bd8cacf1600ea532ea8288ac8d665ab4502550755fb0f1bc0a9",
+      "bytes": 1203
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/final-source-surface-tests-r03.log",
+      "sha256": "5e9ca02394fd6a000581e9cebf1cfea2990f6740e85cea63fd69df349d2a28a5",
+      "bytes": 1886
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/frozen-crown-negative/binding-diagnostic-unsealed.json",
+      "sha256": "8acdefcb5c1d26e3839eff625181d575476a1344cf7aa5f4c1bd6419d626ab1f",
+      "bytes": 160726
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/frozen-crown-negative/record.json",
+      "sha256": "9f0c19f6a5a0dfb0dffcf0a2beaa6005ab460379bbb7e63a123f6112d106d017",
+      "bytes": 4121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/new-rigid-surface-tests-r01.log",
+      "sha256": "c71558989c40094fb3f17fa54e4cdad51bbbd98d27cef8df1dfff120470b54d6",
+      "bytes": 685
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/new-rigid-surface-tests-r02.log",
+      "sha256": "2b45bfe1ba359c88f2d9f9c467f5cb9ed0f6ef2d76d18cbe37314d6bf8418c4f",
+      "bytes": 786
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/outcome-controls-r01.json",
+      "sha256": "bc34d2fd84b4ba378475009f9886d7584cf7e4f5b42e514c152c4f7452a08ab2",
+      "bytes": 3288
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/outcome-controls-r02.json",
+      "sha256": "87e0300cf9bfca30046ebcbec027be478b6a95dde5b152c5278509e17670a1aa",
+      "bytes": 3419
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/result.json",
+      "sha256": "4596d2eaa847a2637b5785f215ef9930444e24592cdb0b207fc24d774be90a4f",
+      "bytes": 3887
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/tube-before-cast299.916667-pose.json",
+      "sha256": "a8ef9c6e8fa08624ec7c90ad4ac2939d422dbc63e13c3fd2a2d1a43fa3dceaa6",
+      "bytes": 637
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/tube-before-cast299.916667.png",
+      "sha256": "c0a17c17c0c8e352c03fa81eaf9f5fe2151077213665fa4894246351109b1f10",
+      "bytes": 319143
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/tube-fixed-cast299.916667-pose.json",
+      "sha256": "e2ee59f8edbe49f432fec0e0589f266272a147e48cb95870d411d977e82631fc",
+      "bytes": 637
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/tube-fixed-cast299.916667.png",
+      "sha256": "3debf7d3065fda8b2d8c83e674c72f02354745049dfbd27baff1b72cdb48f25f",
+      "bytes": 318867
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/urchin-cast299.916667-pose.json",
+      "sha256": "ad143f799a3e5fb636d032aa89c67505f97cf24db7dbfa8fd29b7c4d4506511a",
+      "bytes": 476
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/physical-contexts-r01/urchin-cast299.916667.png",
+      "sha256": "1e963bfc018536a4fa0cc38592006b4be7ab792192aabad1278d1e812fa395d0",
+      "bytes": 567113
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/binding.json",
+      "sha256": "771eb698dbb2a92268f7f9498d49952736a8eb500721aac22f0cdb84e71362e2",
+      "bytes": 787138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/declaration.json",
+      "sha256": "51879c9af026c770133e9107d5f31c7231572feaff9b671a03c2f618a51e0a16",
+      "bytes": 666
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/intake-provenance.json",
+      "sha256": "249bbf90f3ace4c0cc51069a670f3432484e9a0b19aa6486b5e0adafea7d3245",
+      "bytes": 3649
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/atlas/c274-sea-urchin-observed-r01.json",
+      "sha256": "08c30fb636b6779beef45b6215ebacdd325abfe8f21b66ffac6b7ec5548c42dc",
+      "bytes": 589
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/atlas/c274-sea-urchin-observed-r01.png",
+      "sha256": "5079ae6f9729cc10a20b9de1ded0e692458c9c5e7436ee7ae1a22937b8129ed1",
+      "bytes": 554357
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/atlas/receipt.json",
+      "sha256": "1724040c0adfb7fe0f0fd2080b302321435c831fedbe202d80a7a1bf30fdd02b",
+      "bytes": 908
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/binding.json",
+      "sha256": "198eb61229b2cd9e5583d61dc5a3440df6cef88cd0aea2a77c3e3ad77895d0a7",
+      "bytes": 696
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/keyed.png",
+      "sha256": "f8862e643acda5bd388dd3ca08c0c07f07726890841d47bd07c1db63fa4e269a",
+      "bytes": 1784403
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/manifest.json",
+      "sha256": "c838f3c4f24fe9133563f7fb605050f769c19df291e00c3acae4b0f407a628d3",
+      "bytes": 244
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/ownership.png",
+      "sha256": "aaf151177ffc62f1fb4f4fe131173d4c7472aaf48bf4914672c2e9f34b110dad",
+      "bytes": 22134
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/parts/test-and-spines.png",
+      "sha256": "883a2cb99a56cbbc1a9d3a0eb081c448ffbb684c5ffd08ca9aca945aaea7b38b",
+      "bytes": 634993
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/parts/receipt.json",
+      "sha256": "052dfc421a65413a238851a530f051e24ec695a4f38bca53d4b5bd52e7b04040",
+      "bytes": 982
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/pre-split-binding.json",
+      "sha256": "8f77fe54387dd62368ea1b8e3d63f0db201759cc484dbf8ee36130e3cf540804",
+      "bytes": 769773
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/receipt.json",
+      "sha256": "ff09494b72d8004c22e86365c96902aae3e165f1653d7ff35c494cd76b169988",
+      "bytes": 2051
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-fit-r01/record.json",
+      "sha256": "f672a0137c620e052076f4590260bf8ea58ed2d764cc00939551190da8ed1477",
+      "bytes": 3983
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-candidate-intake-r01.log",
+      "sha256": "8978e9dd54cb324f398050492b8b1dc4f17c11f9f0a79f265d0ceb3d3ca0d8ba",
+      "bytes": 603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-final-static-r02.json",
+      "sha256": "3f617ac997aa2fbe117816dd336fe829ebdf87372bfe1e34a39a51099d142ae2",
+      "bytes": 6787
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-final-static-r02.json.sources.json",
+      "sha256": "fc3b55d750e5b1d7738f65ec3b512049413c42ef126de12ba46ad865b5bce43b",
+      "bytes": 24676
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-final-static-r02.log",
+      "sha256": "0eb642a3ea270ea247248c8c5d53043deda67319dce0ad3bde6e790eee722767",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-static-r01.json",
+      "sha256": "285d0bb3084bb66312187155a491771bd4339074abd7d6cd4a49dd98af13092e",
+      "bytes": 6787
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-static-r01.json.sources.json",
+      "sha256": "bb58550d45529fad924e12bab65c26e00d1132178cc49348dfcc2356f41d4f7d",
+      "bytes": 24676
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/sea-urchin-static-r01.log",
+      "sha256": "0eb642a3ea270ea247248c8c5d53043deda67319dce0ad3bde6e790eee722767",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r01.log",
+      "sha256": "02d1955b6660196f6b856e653a7c14ee2af54a8841e477d608ddf6a51c04a408",
+      "bytes": 886
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r02.log",
+      "sha256": "e6068886b565b8b52ba6d596f1723908c6fd3d352477b00f2b2b0217d9fbf8c1",
+      "bytes": 886
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/specialized-anatomy-tests-r03.log",
+      "sha256": "48094f0bd077ba3b8e168ab5040ee782075941e669478a39615458c2fa3853fb",
+      "bytes": 318
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-fit/intake-provenance.json",
+      "sha256": "40dc6c2fe14e9db56d140eab54ce775dd28feba1be41a4410f473a0a6b1096d3",
+      "bytes": 3866
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-fit/refusal.json",
+      "sha256": "59c661c900978d07ac87c852eaeb4aced29eadfd85cac755a4fa15b639dd989d",
+      "bytes": 518
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-intake-bundled.log",
+      "sha256": "98f3b3f9459ebe6b4efa93877731cb552dd2c0aa6a2274f6e03e44f5a4d20dab",
+      "bytes": 905
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-intake-loader.log",
+      "sha256": "f5a1ac3587c7f162add230bb589cc48e4bdda65f5078e5147f4e831dc48679d5",
+      "bytes": 1074
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-intake-r02.log",
+      "sha256": "cecc7e5a26370345e84b6befc95e0d57b9a6ae7dc6231a435496219b550cefbf",
+      "bytes": 922
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-baseline-intake.log",
+      "sha256": "717e98dd91c4a00a47e68baf617ea9a5cfc0cc1736597fbb9ab09e1eaee597a9",
+      "bytes": 1243
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/binding.json",
+      "sha256": "97be02c30c1121eab29fb82e4bd2e2ef54e9a944be6f98e8abe13fbf7c881402",
+      "bytes": 532058
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/declaration.json",
+      "sha256": "8a5a909ac08cbd4d569994284bcb993e530fed6a5960287b27f2fd6813b1dcab",
+      "bytes": 1893
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/intake-provenance.json",
+      "sha256": "35541afc16a1acdc5671a6156f55a5ce9ba2d97f34976bcf87956939aeab48bc",
+      "bytes": 3664
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/atlas/c274-tube-worm-observed-r01.json",
+      "sha256": "3284937ab1174765848a880c2e511b7961d96f4053486b8e7fa796010f5ee679",
+      "bytes": 1371
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/atlas/c274-tube-worm-observed-r01.png",
+      "sha256": "a830f2b7ca94d5688f8d31fc5a991d373f2ea5d81e5ef30d738c327d8f0357e5",
+      "bytes": 297962
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/atlas/receipt.json",
+      "sha256": "1834a74291d97213f7b4fd246204df09a82c0e9df289e454d5d6d4c87444a51c",
+      "bytes": 1141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/binding.json",
+      "sha256": "563c0f810d24bc0d6166da014dbc774dda423b220a4668002d3420f07ad0cff1",
+      "bytes": 1305
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/keyed.png",
+      "sha256": "207431226e4b0742cbae0c7ce8fc36e524f0afad137acc91348ea59274cbc0d9",
+      "bytes": 1474909
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/manifest.json",
+      "sha256": "ac209764a92a1fa3708a84bf6365a1912ce29cd8c95c1063b1c074dc0a79be70",
+      "bytes": 531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/ownership.png",
+      "sha256": "39d455dc8361d46d9b8e9e5aac79d6297f81dff1a5029ffaa91e2835166ecef7",
+      "bytes": 14824
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/parts/base.png",
+      "sha256": "7ec10a7f4ca48ed3bf57967cd20ee4befc9c07b7d9a35fb1642878853ba27df4",
+      "bytes": 31863
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/parts/crown.png",
+      "sha256": "e2530a84a3bcaba4c4b21fab95a4b1e6a04d01d4ddab10f6476c9121dcca04bf",
+      "bytes": 160522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/parts/tube.png",
+      "sha256": "bdf37623d6eb2a44bc2cb64debeab5e910e50ecfec0d629fe630a88e966e8562",
+      "bytes": 147392
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/parts/receipt.json",
+      "sha256": "5ec224035938c082e4644368c36a549c7bea228d4dba265f4a984e285d8a85ce",
+      "bytes": 1417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/pre-split-binding.json",
+      "sha256": "c275d6fd9f499272150d1ad9bb42c2a6753fda9f4a3dddd15dce26148725eabd",
+      "bytes": 487428
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/receipt.json",
+      "sha256": "7d5ca3607c1f1ff42b4cbbdff1db2347f401c931ec66ba7ce493afe6ca127ccb",
+      "bytes": 2047
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r02/record.json",
+      "sha256": "9f0c19f6a5a0dfb0dffcf0a2beaa6005ab460379bbb7e63a123f6112d106d017",
+      "bytes": 4121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/binding.json",
+      "sha256": "fa2ab9c023df832f3c5ce48be0dde828d72a9e9da348a49b200efaa1ad711dbd",
+      "bytes": 506070
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/declaration.json",
+      "sha256": "8a5a909ac08cbd4d569994284bcb993e530fed6a5960287b27f2fd6813b1dcab",
+      "bytes": 1893
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/intake-provenance.json",
+      "sha256": "fc427e29306a26bdc8abfe6b6c75fcd4b16443873b79044c92f8c09628e303b1",
+      "bytes": 3664
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/atlas/c274-tube-worm-observed-r01.json",
+      "sha256": "3284937ab1174765848a880c2e511b7961d96f4053486b8e7fa796010f5ee679",
+      "bytes": 1371
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/atlas/c274-tube-worm-observed-r01.png",
+      "sha256": "a830f2b7ca94d5688f8d31fc5a991d373f2ea5d81e5ef30d738c327d8f0357e5",
+      "bytes": 297962
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/atlas/receipt.json",
+      "sha256": "1834a74291d97213f7b4fd246204df09a82c0e9df289e454d5d6d4c87444a51c",
+      "bytes": 1141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/binding.json",
+      "sha256": "563c0f810d24bc0d6166da014dbc774dda423b220a4668002d3420f07ad0cff1",
+      "bytes": 1305
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/keyed.png",
+      "sha256": "207431226e4b0742cbae0c7ce8fc36e524f0afad137acc91348ea59274cbc0d9",
+      "bytes": 1474909
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/manifest.json",
+      "sha256": "ac209764a92a1fa3708a84bf6365a1912ce29cd8c95c1063b1c074dc0a79be70",
+      "bytes": 531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/ownership.png",
+      "sha256": "39d455dc8361d46d9b8e9e5aac79d6297f81dff1a5029ffaa91e2835166ecef7",
+      "bytes": 14824
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/parts/base.png",
+      "sha256": "7ec10a7f4ca48ed3bf57967cd20ee4befc9c07b7d9a35fb1642878853ba27df4",
+      "bytes": 31863
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/parts/crown.png",
+      "sha256": "e2530a84a3bcaba4c4b21fab95a4b1e6a04d01d4ddab10f6476c9121dcca04bf",
+      "bytes": 160522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/parts/tube.png",
+      "sha256": "bdf37623d6eb2a44bc2cb64debeab5e910e50ecfec0d629fe630a88e966e8562",
+      "bytes": 147392
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/parts/receipt.json",
+      "sha256": "5ec224035938c082e4644368c36a549c7bea228d4dba265f4a984e285d8a85ce",
+      "bytes": 1417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/pre-split-binding.json",
+      "sha256": "c275d6fd9f499272150d1ad9bb42c2a6753fda9f4a3dddd15dce26148725eabd",
+      "bytes": 487428
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/receipt.json",
+      "sha256": "25e1d54c4aea4a0bb675c47f781d20797ccef97f4f241cb4c8347e253f6742f4",
+      "bytes": 2697
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-fit-r03/record.json",
+      "sha256": "9f0c19f6a5a0dfb0dffcf0a2beaa6005ab460379bbb7e63a123f6112d106d017",
+      "bytes": 4121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-intake-r02.log",
+      "sha256": "b60414700a1c2e81288cbf1fa736f7de86e9b2a6c9fa9f1e2c3f8fb0011fe36f",
+      "bytes": 602
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-intake-r03.log",
+      "sha256": "9ae40a00b96556a2ab01eae2d377b8d350094ee3f5bb3cbe75a11e4dd14fba1b",
+      "bytes": 602
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-candidate-intake.log",
+      "sha256": "529776321142d498a452730e9100d78523e06dd002064edf013c5a2e87b20018",
+      "bytes": 1370
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-final-static-r03.json",
+      "sha256": "ae8e7226f9519206c8fa702cdaaa4d4ee673d04745f9cdf7f06ac1aedd8627c5",
+      "bytes": 6780
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-final-static-r03.json.sources.json",
+      "sha256": "b7dee3f8a8bdd4db45ca9eb717b2c33157ebe57803b3c6134149eeb0ef3411e9",
+      "bytes": 24676
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-final-static-r03.log",
+      "sha256": "2b74ecae5cd74360c55049ef84c0fbe0c5687422dff15ce109385b588b5a96f3",
+      "bytes": 1456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-frozen-crown-negative-r02.json",
+      "sha256": "2a0c5026626bf667225417aee774e57de43c0e877f5f048e66ca1e468d5e74a8",
+      "bytes": 1777
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-rigid-owners-baseline-r01.json",
+      "sha256": "93b6d5bf6fb43ebfaf497a1158d01b3588d84353224d9239251177d9e4ef2669",
+      "bytes": 2223
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-rigid-owners-baseline-r02.json",
+      "sha256": "93b6d5bf6fb43ebfaf497a1158d01b3588d84353224d9239251177d9e4ef2669",
+      "bytes": 2223
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-rigid-owners-candidate-r02.json",
+      "sha256": "3e78f5deac4f69aa45d4cbf4eb9ba5a4e5bda1184232088cc33b9bfc432d3315",
+      "bytes": 1956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-rigid-owners-candidate-r03.json",
+      "sha256": "3e78f5deac4f69aa45d4cbf4eb9ba5a4e5bda1184232088cc33b9bfc432d3315",
+      "bytes": 1956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r01.json",
+      "sha256": "13cd659a2e73ac309f5b57f1c6d690ec8a9742edf357b1a68c88d3ef66db0fbe",
+      "bytes": 6791
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r01.json.sources.json",
+      "sha256": "2a7fabdeef49af0d623a40ba041986dcffa396d137c408d13ed754641440ddc9",
+      "bytes": 24367
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r01.log",
+      "sha256": "08f1bc586c77d8ddc1ed8880e09700fccd3a57b454a493a1839f92cd568c5b9b",
+      "bytes": 1466
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r02.json",
+      "sha256": "ae8e7226f9519206c8fa702cdaaa4d4ee673d04745f9cdf7f06ac1aedd8627c5",
+      "bytes": 6780
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r02.json.sources.json",
+      "sha256": "ae76f0255c9f46537bab9b9972250526efdd5f13111b4cdb9957021cffb68077",
+      "bytes": 24676
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/evidence/tube-worm-static-r02.log",
+      "sha256": "2b74ecae5cd74360c55049ef84c0fbe0c5687422dff15ce109385b588b5a96f3",
+      "bytes": 1456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/author-sand-dollar.mjs",
+      "sha256": "3d458c881a17086f6700d9729bd98926970cc187038077cbb49564802827a00c",
+      "bytes": 2540
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "a1d579f56930dcd440adc333ca583759fb8531dc6df1d90e5631079051f22f73",
+      "bytes": 11431
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "eef4e5e023f21707639d90a796e6bf900aea8d255b6d2b5327aeaa43c05e215f",
+      "bytes": 12966
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "7e09871221e4739fd0b8759d5bb5d43c1e693c559c7eb9b76a9e050aecdf2723",
+      "bytes": 905
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "be782b4467850c2d3b1f9f3a26546d3e579d23a1d591599c8e983005ae027406",
+      "bytes": 4401
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "bytes": 74520
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "723afbb4f90d03d9457f2f5e8cecb9efe24ad27d663683ad0b0774bcdc961591",
+      "bytes": 14404
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df",
+      "bytes": 3929
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "9e68eacfae52fe116d4c52a649e00e77e77caa52c2d452363c894e4bc3c2242d",
+      "bytes": 9264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "3e7e26106891d3dfabacccc87e5881df484d03c9ba977e790c2bf2c27a66e11c",
+      "bytes": 1021
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "26c11e94b09cf8b297c408e0f02e754ba0cb70affe8fdd01779aa04285e54a1a",
+      "bytes": 4389
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "068e7a029da1b8b3dc5a504bf6b56a5fb0555a17f1d65995199e6e26a500d4ef",
+      "bytes": 2003
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "db0b4d4485ae888e3cf75d7b8681964b2a9367be343cd9a16a60ed567093557e",
+      "bytes": 848
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "bytes": 6203
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "f6f2e6a16a389a9b6516314fd23b6df504dd40e1a3a68fc4741439cd26d4c8e6",
+      "bytes": 7134
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "465dc6730e914b45c77ac95cf8ae383ebd2828c41787c51d2871957fd729a745",
+      "bytes": 13036
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/baseline/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "1001719307a03717ec39b080858e8f5b5c334c0cb75e73a02ea1ccd7e0832732",
+      "bytes": 10706
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/combined-runtime-r01.patch",
+      "sha256": "3a2b127f1971ceca19906c695b132ac623d0510e41a8a508a23600c8492f2556",
+      "bytes": 58066
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/combined-runtime-r02.patch",
+      "sha256": "4491118ed8e1be309e557818336e1e6369a47a52f323227b352b067187d1b134",
+      "bytes": 64270
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/compose-r02.py",
+      "sha256": "842633093b5da6a5272bfe36b38d74f45e6c7ca1f6bb4ef4323f14dc7dc9cfcd",
+      "bytes": 7013
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/compose.py",
+      "sha256": "995075edd00145cbc9c5416f5e12c667f5d18f41e44a485edb2aff74130f7915",
+      "bytes": 6251
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/composition-proof-r02.json",
+      "sha256": "2cf213ba2ea80440b012893432db85568c67fd64dd4787b7ec80b427f8ae1d31",
+      "bytes": 788
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/freeze-final-r02.json",
+      "sha256": "a9820baa74116d5d763ac0afbf9faf9853e0e17826f175c93cf6169361adade2",
+      "bytes": 45515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/input-receipt-r02.json",
+      "sha256": "986f750c141eaf55e1b16a7931c804cca649650869e2e1920d01669f7965b4eb",
+      "bytes": 15935
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/input-receipt.json",
+      "sha256": "0441e1f089d992f8a80972f0804cf03422bc7b3ce18c9d83c4d48ef7a1ab8662",
+      "bytes": 14870
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/baseline/audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "sha256": "d302d602b67ce0f83bddcbe22a0d99d3ab0c3d95784af6c0a5e501010d1afe4e",
+      "bytes": 16711
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/baseline/audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "sha256": "f37f8acdfeed3c7cb791a8cd1a450576cefb081968599bbd81c120b653eb15ba",
+      "bytes": 12459
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/evidence/native-runtime-bundle-inputs-r01.json",
+      "sha256": "d7d7d9d0b441cc4525829722c24beefff0930087cda9b0489a631f9e32365f82",
+      "bytes": 50309
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/evidence/rigid-publisher-first-red-r04.log",
+      "sha256": "ff3eadaf6f94fc2315710926b4cbc98d6db03e3d777295cf1b3bbaf4b17511cc",
+      "bytes": 138378
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/evidence/rigid-publisher-green-r02.log",
+      "sha256": "e927873a855bab4bad17ec63ece533f5d26a4b5b020e53fc96e900ddf4578d29",
+      "bytes": 275
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/freeze-r01.json",
+      "sha256": "65d59920e81850c19728b6d44eaecf9ef4bd0b63e934ba938eda16a340791273",
+      "bytes": 3290
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/instrument-review-r01.patch",
+      "sha256": "6c232f441a05cc6f13028c593c75bd83bb20dc1bddb2bbfb5473c7dc59b5fef7",
+      "bytes": 5551
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/manifest-r01.json",
+      "sha256": "496a07825fd2bf0e4dac468dfe4c8486e0df46dca57f41ea7c3c7cfd96fbd8da",
+      "bytes": 2968
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/proposal/audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "sha256": "0559e518e9d7e8dc3bbd72f73f50b0897a87caf424489de36d4c989e5a79b993",
+      "bytes": 17150
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/proposal/audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "sha256": "832bc6de935cc7187f585bcd39ab2352e53087178bbdce1b11152148338e5583",
+      "bytes": 12841
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/stage.py",
+      "sha256": "68790c4acd28e143f651aa07bb1676a3aec62c7f095fc6121f898b45a8b2b802",
+      "bytes": 3970
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/w1-proof-freeze.json",
+      "sha256": "9123af3eaa8eca3f678703109bb8908ea395fa8f860333ffa975e4bd0de7a342",
+      "bytes": 6204
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/instrument-delta-r01/w1-proposals.json",
+      "sha256": "de87e67a3802cac2a69bd5ddab0bf522a57069595bc6372989c583a41951a3ce",
+      "bytes": 1889
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "9c03755b12794ceb285f9d99e82d0a91ae20d62330e5bbb1eb2d6bb7369dcb73",
+      "bytes": 13120
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "ded16462436fa4df351d3cebe98adf438b88bb1c909c53abfa89e6b3d0f0366a",
+      "bytes": 1805
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "ef6f0199b9bf9143a332fe9a39b335dade92f5157d22867f73dd821cec0fcc43",
+      "bytes": 11444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "33468436ecb21e0da2210b0ac89ec19c574681588934c3aea04a0dd00ba40615",
+      "bytes": 14770
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e82dabf37c6262b632e324bd3562287657815eb1f87922b7d0869af3776de5a7",
+      "bytes": 13116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "e6205537164893f37999b9f8c2f4c71811d2514fc8edf7c8f9f6b50093ef5272",
+      "bytes": 1801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "bb08a04ec411d825ee6a4b52af5925c0aee113189c0ec15572a054cf0621f748",
+      "bytes": 11440
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "c9169937d6bf9e45625d90000ed5eecf6d076a3f541565721f07800212068a9d",
+      "bytes": 14446
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal-manifest-r01.json",
+      "sha256": "49cf598d15c15328754088ae2eb27aaf0e57de908285b06373ec6bb08b9a926c",
+      "bytes": 10423
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal-manifest-r02.json",
+      "sha256": "2a6e2b15e4b52a0aba457aa722f5559a9ab17ced55a457490155d68b3b5edfa5",
+      "bytes": 11197
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079",
+      "bytes": 12579
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "ec687bae19aa340c2b2a381e1f286b852357992fd0de4ba1a77f478cab877349",
+      "bytes": 12966
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+      "sha256": "459d3b9efbf802729fda8b66296689f46c76e6f502368ba3533996583549c522",
+      "bytes": 4751
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "84ebbae0e4e886f30c4624bad5ee99ca78f2792ad1ddfbd16cbea4e56c5a5b0f",
+      "bytes": 953
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c",
+      "bytes": 4668
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f",
+      "bytes": 74684
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "bytes": 15089
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8",
+      "bytes": 3957
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808",
+      "bytes": 9426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "f5c151c19908d0bd2ca00c839c104877ed768dafa7d47977523e809fe85e012f",
+      "bytes": 1128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726",
+      "bytes": 4715
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "bytes": 1656
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "sha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "bytes": 1426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b",
+      "bytes": 2816
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "b3004385c6181917ec12fccf2d188949914f1003fca0edd06147f607191bba20",
+      "bytes": 944
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c",
+      "bytes": 9763
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379",
+      "bytes": 11091
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+      "sha256": "9b955cacbcc8d56933f052c6ab3d89aa2a50251e0fb86232c823bcfceae0310b",
+      "bytes": 596
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "305cdc1f46ae7cc12372ff002dc68de21ab14844f9c6c1354ff60bb9a166520a",
+      "bytes": 14188
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "bytes": 3721
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "sha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "bytes": 3010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/proposal/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/barnacle-static-r02.json",
+      "sha256": "5ade409557961cace291fc3168188305a147dd30035910958f2f05b082b09959",
+      "bytes": 6958
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/barnacle-static-r02.json.sources.json",
+      "sha256": "fb2451ab5ba36751ae5a2b2aed41cc601da0888e524cf7395db233ecb08711fe",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/barnacle-static-r02.log",
+      "sha256": "ec7f49965b66d1fdc2c587181f6f5ef52975756dcc4666fe63b645c8b61f95c7",
+      "bytes": 1456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/flatworm-static-r02.json",
+      "sha256": "209f40fbfb5456638d1cba28d3b50130346d8e89e28ff02c697ef78aacc6aba8",
+      "bytes": 6948
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/flatworm-static-r02.json.sources.json",
+      "sha256": "f13391ff9efcf5fc8957636f4b3814c84ec18023f7b343353664ae41ae97db67",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/flatworm-static-r02.log",
+      "sha256": "f9a70b48ec2276e7352530f86b8b464d924bcfb2aab50db767eaaf051d062a0b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/giant-isopod-static-r02.json",
+      "sha256": "90a14ca44a84376778659c30a652fac9cd79853c5059ef6b254f983b57d2fb4c",
+      "bytes": 7121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/giant-isopod-static-r02.json.sources.json",
+      "sha256": "1405d7089ce96df834a886715b47410e346e4b2121326578ad0ea8abb315ae0b",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/giant-isopod-static-r02.log",
+      "sha256": "5c5aa8c1ef37e71aa40a61074f0d22d02b7dfffa5951191b46505613b4103804",
+      "bytes": 1452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/ice-static-r02.json",
+      "sha256": "58a2de1691076b6a7e161eb3126202b2e2befbabe8eeefc4a0ee959e24441b23",
+      "bytes": 6920
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/ice-static-r02.json.sources.json",
+      "sha256": "304288473df6007ec5501be25c41c5c9209e75e8d81e21afe5879bc5ab6e0e1b",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/ice-static-r02.log",
+      "sha256": "17d52707782bdf13bff2244b6447a302167e081d60c94f3de575401fef20875b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/integrated-anatomy-final-r02.log",
+      "sha256": "6555b1a796bf524180f9aa98390440f69074b31814000dba87c6cfbd474b004c",
+      "bytes": 352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/integrated-anatomy-r01.log",
+      "sha256": "2c483ba5333d81ce3431b4a9fb54d78c1bde5249a62db312b95f521e4bacaad0",
+      "bytes": 352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-dense-static-r03.json",
+      "sha256": "8b39973b7a8f0dd5e7fbd24831bde8f2fdd1c1fa3c1eb984b4d533c4a8930a3a",
+      "bytes": 68159
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-dense-static-r03.json.sources.json",
+      "sha256": "816d53629146d07416e0ac8c3e3138b97ba0902560abdbf1d567bf964586c27f",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-dense-static-r03.log",
+      "sha256": "93388167cd4b339c8b29dae9347ca34c8d1f34e26690f8614756e66dca7e885f",
+      "bytes": 2794
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-static-r02.json",
+      "sha256": "2d4aefa822685f7a53d4c3f339cca700b46ef171637c646b4ee5e40f4ee2a654",
+      "bytes": 67263
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-static-r02.json.sources.json",
+      "sha256": "a543079e67f6070930a2be47121db738464e345a40e4206f3e89babf7bcf10a3",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/isopod-static-r02.log",
+      "sha256": "45bcfca5ef199bb920c1978e2a1351dc43cdaffd72c582c11214f9931b1cf6cf",
+      "bytes": 2715
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/nautilus-static-r02.json",
+      "sha256": "5641e04211f99646a4fd04397dee601b352e70ee4e00f05c64ab57d1f3fcaf82",
+      "bytes": 6935
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/nautilus-static-r02.json.sources.json",
+      "sha256": "92062e1ced4c04f71d8c27a9ab037896cc60ee5203f97e1de43c3c99fd1874fa",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/nautilus-static-r02.log",
+      "sha256": "617076542ac8069f5e29ef7ac1df173dd759a6e384235e552363a79fa7d4172a",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-controls-r01.json",
+      "sha256": "7875cebc99b86bc241bf3f8855941274cc88692763efa57134bb19e02dbcdc3e",
+      "bytes": 2533
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-controls-r02.json",
+      "sha256": "52dd80baab88bd65fe406eee07f305a24d78ce20136d97c11734427ae2d6c1c8",
+      "bytes": 2533
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-intake-r01.log",
+      "sha256": "f8625b1cadea04a2429795e69a30b39f5d509185c73e306da0be8ef1dce0da0d",
+      "bytes": 1124
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-intake-r02.log",
+      "sha256": "076eb94242b2bc6c5cd599e94e935fe74c6b31713a6a22263ca3254a14c488fa",
+      "bytes": 649
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-static-r01.json",
+      "sha256": "5517a51d227d37d5efc21ad6140ba33eeb311a6f83e7f9fe35ff32565f6bb2f0",
+      "bytes": 6993
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-static-r01.json.sources.json",
+      "sha256": "b6e2f7aebb25b03477f8960d547506122cbf17f851eea45e615caed40bb045c7",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/sand-dollar-static-r01.log",
+      "sha256": "4a3c6ed15ce991ebcd4f93c07b3b7f789f17eb8ace925d1763a951f51c4b034b",
+      "bytes": 1451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/source-guards-r01.log",
+      "sha256": "dacc529543d894f9413b1530face421c2d562e6be120de7e2562167985a11e8d",
+      "bytes": 1024
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/source-guards-r02.log",
+      "sha256": "7040e099bfcb77cbf8c54992fdf1a50db2441a293c1aca12c5a1698c6adafc6b",
+      "bytes": 2820
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/source-guards-r03.log",
+      "sha256": "bd1698b297545aba2d9dfe74efd44219efe4e51f87f3a2bd9c0a42d3b5b38845",
+      "bytes": 2358
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/source-sweeps-r03.json",
+      "sha256": "b82bba3c19fea0be7d4b7346c802b53453f410ed8a89d3dfebffe19df2cd04f3",
+      "bytes": 3062
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tadpole-shrimp-static-r02.json",
+      "sha256": "da4a6d1ee832fe143df0a9bb890f62980b6568366b7753b9ffd7d746fce2dd59",
+      "bytes": 6980
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tadpole-shrimp-static-r02.json.sources.json",
+      "sha256": "4c3e72d1bae2115271faed1968e8581f40f2505f701d822ca5c73daa0a968d0c",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tadpole-shrimp-static-r02.log",
+      "sha256": "0d97b27b82ae084fe5d923229c49b7efb341e6ead2f7dd86c5ec6c19aa81a265",
+      "bytes": 1449
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tube-static-r01.json.sources.json",
+      "sha256": "d13f78bee414238ab3c80a77dfdbb2ce74e0c440ef1ecb7ee3538b56ae568e4c",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tube-static-r01.log",
+      "sha256": "172ecb664ffc5028d86d7ceb161182adea07441dcb3a27876fd411909479c5fc",
+      "bytes": 1185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tube-static-r02.json",
+      "sha256": "53560382b356e69562ca14c28b743ca2a65253c8cd928747e9718c2e20f24ac5",
+      "bytes": 6930
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tube-static-r02.json.sources.json",
+      "sha256": "880c0e94836b78bc9c6d7d80dc915104f57147b34c4ef10d85480aeb9a6f4abf",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/tube-static-r02.log",
+      "sha256": "2b74ecae5cd74360c55049ef84c0fbe0c5687422dff15ce109385b588b5a96f3",
+      "bytes": 1456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/urchin-static-r02.json",
+      "sha256": "2a6f9ae61bae14df70c433d0438c07aa818e5c100e2aefaee44a53cbb0326ada",
+      "bytes": 6942
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/urchin-static-r02.json.sources.json",
+      "sha256": "cb35b2d83d55faa5e35335106c2ea2b19eb68cdbf1d6f6db0ce4910356d86ce2",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/urchin-static-r02.log",
+      "sha256": "0eb642a3ea270ea247248c8c5d53043deda67319dce0ad3bde6e790eee722767",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/water-flea-static-r02.json",
+      "sha256": "37319ddb2fce45dd2983110ceac30fd24bce50fa0bf487cd2e5c044e72420802",
+      "bytes": 6963
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/water-flea-static-r02.json.sources.json",
+      "sha256": "2dc9ac1f062d97b082e22002765d3ab9b0f63ad8e42cb5687640e1044daad48c",
+      "bytes": 27076
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/reports/water-flea-static-r02.log",
+      "sha256": "2305e647fe91702afd5cf5cf451b52c3ea94b4537ec41c6620b456d2e585cd92",
+      "bytes": 1457
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/run-source-sweeps-r02.mjs",
+      "sha256": "0c1fa164054513dbbdd587ad0bf04b6b43b5c306b740a78dadd7e0174af8d382",
+      "bytes": 2934
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/run-source-sweeps-r03.mjs",
+      "sha256": "8199d64a43326322868e193ca3dedcf8af910b5ca7dd6912dfa62a28091783aa",
+      "bytes": 3017
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/run-source-sweeps.mjs",
+      "sha256": "0866fc113dc320234affd15dc796716f148f31076e8b20c5004385dff2b08f9a",
+      "bytes": 2633
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar-controls-r02.mjs",
+      "sha256": "edcfaafe6f15f5e681baef23ce24440d688f5f6af0acd45331489e009681d20e",
+      "bytes": 3782
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar-controls.mjs",
+      "sha256": "d5a83bfa143a340b4489fbfc40676c044dde094eac25978ebf81267e2493e6ec",
+      "bytes": 3442
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/binding.json",
+      "sha256": "8a189ea8aa52a3db4e971448a964e0ea194d629b63eeb5b730943c65010879ca",
+      "bytes": 466780
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/declaration.json",
+      "sha256": "96a3d290e32a15ed8c9a680b2b5934347718ddb84381eb95a92cf4b52caf87d3",
+      "bytes": 662
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/intake-provenance.json",
+      "sha256": "7faf81108850b0cf204ba9a17f74c678941105792a9ce3c8a3f65ed4c270438a",
+      "bytes": 4105
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/atlas/c475-sand-dollar-test-r01.json",
+      "sha256": "8d9fece465ad31c2f0163d326a2697d5dd75997fdefbdb81d0c3f6abd5d89ac9",
+      "bytes": 584
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/atlas/c475-sand-dollar-test-r01.png",
+      "sha256": "8970dc1dc2de472f0257df02de0bb99c16661500759114966b13b689c264839c",
+      "bytes": 672597
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/atlas/receipt.json",
+      "sha256": "6bbcd7635b1e450c5a03515772a42b8682e4de5a57193ef21aa86eed23cd9978",
+      "bytes": 903
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/binding.json",
+      "sha256": "cfc8976e23614dc3547533044181d242b25f51a92fa1177a0177cfc075f411ea",
+      "bytes": 694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/keyed.png",
+      "sha256": "39c63bebcb97b27af46e20a059fb243f2932bd33228783d2303b7933ae5a05ca",
+      "bytes": 1742158
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/manifest.json",
+      "sha256": "09ba787507dabdb076484de4ad3272f17ad5a504686679c80a1de418e2f9b46f",
+      "bytes": 237
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/ownership.png",
+      "sha256": "2474319d97e135181c3901f6480ee1c485c0957ecd8a323c93252f8b485aa96c",
+      "bytes": 14603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/parts/complete-test.png",
+      "sha256": "41934e995127ec9cc5af010d65be358627fc2bd1e9d40fd8bdc03f0e235ed333",
+      "bytes": 778965
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/parts/receipt.json",
+      "sha256": "a85c5c1eaf57070c44bf8547fdb83a56167ae9f6bf506b831930dde0f7d748d1",
+      "bytes": 938
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/pre-split-binding.json",
+      "sha256": "12c1751ffa331f3e53b51932b6c1003956ce317c282c47a4194aade13322d7f6",
+      "bytes": 457345
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/receipt.json",
+      "sha256": "d4703308685626e39a8bea875bb2ec59ee192cfb8dfd5cea66a9eb83faf528f6",
+      "bytes": 2043
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/cpu-r01/fit/record.json",
+      "sha256": "d9ce5d54982f08dd487f02fda1782518107149f7748c91774f905aefce7f5352",
+      "bytes": 4018
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/authoring.json",
+      "sha256": "232cc9c54966e89e11ba811b8a0c77840c639665999074e34ef2c14b2375ccd2",
+      "bytes": 1341
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/master.png",
+      "sha256": "7a156eef658fdf62c93309c09cc66687693d8e04952858f9140a4e390f2f7245",
+      "bytes": 1716023
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/prompt.txt",
+      "sha256": "4e729717fc0d98d7f3998b6f8da1e73d9ce7a6abaea233edd32349e168bfdde2",
+      "bytes": 10340
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/source-observation.json",
+      "sha256": "b73aaf7ac7cde263cfdd6e9deeb2d18fc1c490d57d99373174638c35b65faadb",
+      "bytes": 501
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/observed-r01/subject-source.json",
+      "sha256": "d7c56c8a1a4a7354f740d8748e81c48aed21f7c38b741754aba77535a01e7969",
+      "bytes": 2253
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/source-views-r01/keyed-neutral.png",
+      "sha256": "f54e34c58a4548619cf1e3577cb0975afc8767347905faeb9864d6097b35f34e",
+      "bytes": 724823
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/sand-dollar/source-views-r01/lunule-upper-right-6x.png",
+      "sha256": "0eadd52890f0a0b7921db6c36e8d41bcd3c00f2a5808be853069f279f348bc15",
+      "bytes": 42025
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "6e2c0b246614f247350e27568d3c4550d6e66a5552d9e9a1fd13532fd95c489a",
+      "bytes": 11891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+      "sha256": "459d3b9efbf802729fda8b66296689f46c76e6f502368ba3533996583549c522",
+      "bytes": 4751
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "11ab0f4f4a33f4346acc901fbc213483e18667da7659c1ac4031f82d3297202d",
+      "bytes": 896
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "30cc99f0c16b8179cb136076b7eb242c598153105d59b6e3a5833b01309e3b2d",
+      "bytes": 8758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+      "sha256": "9b955cacbcc8d56933f052c6ab3d89aa2a50251e0fb86232c823bcfceae0310b",
+      "bytes": 596
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "526d68cd8bed2eb5e4ffb7377aa4ae93fa3018bde43ec1072055a7bc301ad08c",
+      "bytes": 13667
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "6e2c0b246614f247350e27568d3c4550d6e66a5552d9e9a1fd13532fd95c489a",
+      "bytes": 11891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "11ab0f4f4a33f4346acc901fbc213483e18667da7659c1ac4031f82d3297202d",
+      "bytes": 896
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/small/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "30cc99f0c16b8179cb136076b7eb242c598153105d59b6e3a5833b01309e3b2d",
+      "bytes": 8758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "fda85453f99476ccb435d69f7aa8b2893ec58bdec8b49c28573af193287013e3",
+      "bytes": 12119
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "bytes": 15089
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "bytes": 1656
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "sha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "bytes": 1426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "4633dfebdd8537d331d76f9abc577ca271b126b023d505925f012bbdbed1cff2",
+      "bytes": 896
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "09aa234c78ef229b6f3d4cf09e6fc86e8db5964c70a70fa3a367937a713a1b2b",
+      "bytes": 7208
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/soft/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "0919db24a304f8bc53e38e029940681a035e83be29e58b949a2ad8027d87c513",
+      "bytes": 13533
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "7c5f049e91ea5f9685f10c44d5706ca62a9d43168c130e1030291312213b277c",
+      "bytes": 11949
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "ced7765b89a16c4455b9ebedefe2ba5e7ff55c017a100695b135f0b9a1f89bb7",
+      "bytes": 14713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "691c49b497a66752c6cb93291a6c067490cb5144aa15460f8cb89747727bef51",
+      "bytes": 878
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "4494bb79380d7e5604c188a7604f2a6f7bbb31b950d955ad7181a0f43a4996bd",
+      "bytes": 6751
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "d6b40db04843ab440ee8cabf880b211a21475b42d14833964186973e83885773",
+      "bytes": 13323
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "bytes": 3721
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "sha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "bytes": 3010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w2/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "778ff7836368008af839bb879da41b9de018f1309e06212b4b2cf5eb9fa440fa",
+      "bytes": 11668
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "ec687bae19aa340c2b2a381e1f286b852357992fd0de4ba1a77f478cab877349",
+      "bytes": 12966
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "84ebbae0e4e886f30c4624bad5ee99ca78f2792ad1ddfbd16cbea4e56c5a5b0f",
+      "bytes": 953
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c",
+      "bytes": 4668
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f",
+      "bytes": 74684
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8",
+      "bytes": 3957
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808",
+      "bytes": 9426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "f5c151c19908d0bd2ca00c839c104877ed768dafa7d47977523e809fe85e012f",
+      "bytes": 1128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726",
+      "bytes": 4715
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b",
+      "bytes": 2816
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "99b9f708ea6618abbf22a947d4aeeb9d096aa7de56f28bcb0dcb8c41e9b8d02a",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "6770a9e0f9dfc5009f1c8f7e1ab983e221fd630a30e55c838a585a6c8596cdae",
+      "bytes": 7366
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379",
+      "bytes": 11091
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/snapshots/w3/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "56b45a949e21fe6778e069cadd4e5e20bb69f4e5350624dda5d5456b430ece70",
+      "bytes": 13350
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/source-sweep-summary-r02.json",
+      "sha256": "3794b817acafe264bb9903707691d65c4397ce84a60f17df84ada908574ab3f9",
+      "bytes": 4492
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/task-report-r02.md",
+      "sha256": "93e6e0314f1d0870f04368ab244e0dbde3a3d7087671cbb35cc5f1644d03cd96",
+      "bytes": 5299
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/verify-composition.mjs",
+      "sha256": "134d8a0983eb8b22710358579687c01e90147eed1512d2be38bb2c2dbd7efc31",
+      "bytes": 5051
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/isolation.json",
+      "sha256": "ad20a6836795678858af2dc6b61303a0df239a0a057940c7864d2b4eb15b03ad",
+      "bytes": 266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/manifest-r01.json",
+      "sha256": "5a1dca1285ca163821d72c6b3153bf5d66c9894fcd0dfb2ae280c9e34a771f81",
+      "bytes": 36756
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/patch-replay-r03.json",
+      "sha256": "867787e1803f6f4450f2f3504844b0c4043461e06078466fbcd85fc7f0ceb28f",
+      "bytes": 195
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/physical-contexts.ts",
+      "sha256": "b1bdf3d50d6aca5cb4b98c6a864fb16347e1e3ae75ef7807fe82ec6dceae07a7",
+      "bytes": 6594
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/prepare-proposal.py",
+      "sha256": "04779544d6adb21cc2a190b6c932e1752412813bd7761c7070922512cf821d6c",
+      "bytes": 2225
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "c8c7f1deb505c039cd5a65d851a6d8dab043314376faefbc03c1ae626843d4e7",
+      "bytes": 11569
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "ced7765b89a16c4455b9ebedefe2ba5e7ff55c017a100695b135f0b9a1f89bb7",
+      "bytes": 14713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "d90bfbfab342ef6f4fc1180cb2681e94b4076d97849231c4fdd1240d35e26ff2",
+      "bytes": 860
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "98818e435934755181747a03f2c8a54adb46a5cc3947a4a11a5cac12bd3553c8",
+      "bytes": 6493
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal-tube/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "ac622f9f949b45f4e203f4d705bd8119712fc3a1e45c50c708fe0b771b25fe54",
+      "bytes": 13178
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "7c5f049e91ea5f9685f10c44d5706ca62a9d43168c130e1030291312213b277c",
+      "bytes": 11949
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "ced7765b89a16c4455b9ebedefe2ba5e7ff55c017a100695b135f0b9a1f89bb7",
+      "bytes": 14713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "691c49b497a66752c6cb93291a6c067490cb5144aa15460f8cb89747727bef51",
+      "bytes": 878
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "4494bb79380d7e5604c188a7604f2a6f7bbb31b950d955ad7181a0f43a4996bd",
+      "bytes": 6751
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "d6b40db04843ab440ee8cabf880b211a21475b42d14833964186973e83885773",
+      "bytes": 13323
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "bytes": 3721
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "sha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "bytes": 3010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/proposal/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-source-tests-r01.patch",
+      "sha256": "b71d07430bcc51d690b327eb43c10d3cae1091474e1e4e1a4ff4a171234b452a",
+      "bytes": 2737
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r01-pins.json",
+      "sha256": "6f2fa07bdea39e9c2e72a456ff8c5fb509e117e7b86835f2c170b3cfc0df0e0e",
+      "bytes": 1413
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r01.patch",
+      "sha256": "9ed08e681bd04871442b38a5f88475f66677c86123f891376e1492ec94105e4e",
+      "bytes": 19849
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r02-pins.json",
+      "sha256": "810e5758697ddb79037b5c4e934d17bdb6a3eb41e06a31c9c5ba601b83dc853f",
+      "bytes": 1611
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r02.patch",
+      "sha256": "2856f86d379e947088d60d576ef312a932531758f725b78874e912aa4db6460d",
+      "bytes": 23398
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r03-pins.json",
+      "sha256": "d0a85ea0b2f4f96d004e04f044a83b9260469ce808bbb13fde31a585a7ec200e",
+      "bytes": 1673
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-test-on-tube-r03.patch",
+      "sha256": "bc197c49233d7f8b58a2bcd8a0c1a446691e3a1dbe45f56ad75daf378b522c5c",
+      "bytes": 16928
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-tube-outcome-r02.ts",
+      "sha256": "9511773a650fd361c1fe61ed31261795fc1edfa334d04257b3dc03910915fb75",
+      "bytes": 2793
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/rigid-tube-outcome.ts",
+      "sha256": "489adf34c372fb54e4a42a2bdc5c92c9220fe5ea2275bc458c33c5ef6024c5bb",
+      "bytes": 2771
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r01.log",
+      "sha256": "6b925e3eeac05b998d99c7412105f69c0ce9898b9023535bd343c99dd9f090d7",
+      "bytes": 4552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r02.log",
+      "sha256": "571081aebfe297e522ae08276d5704966d7da0263f81fd7b72e1816660d7df43",
+      "bytes": 9973
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r03.log",
+      "sha256": "f36bed593e54d71c5a94fc8f5022798945bfc16ddffddbe59e74b4e9dd236302",
+      "bytes": 9970
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline-new-test-r04.log",
+      "sha256": "96e5eadfb08fb4b69bb71e0bca9c5717595eeff7cc6bf3cd97658c1f25149c4c",
+      "bytes": 9972
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline/port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "sha256": "777fa13dc678909206a4cff25e6c4de834b378bf060116f5e12c9ce4c9bf2104",
+      "bytes": 7978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/baseline/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "305cdc1f46ae7cc12372ff002dc68de21ab14844f9c6c1354ff60bb9a166520a",
+      "bytes": 14188
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/freeze-r01.json",
+      "sha256": "c3efac4548c798f8a9f3c9ee67bca19e79047aaea35ae9705419aa9a7f4c8c52",
+      "bytes": 5569
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/green-tests-r01.log",
+      "sha256": "17f2ab34c3792d12ef67c202d85e1b7e58d681b5826be931ff0ab5b763bcd4d6",
+      "bytes": 43471
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/input-receipt-r01.json",
+      "sha256": "b34d45b2a06a4c37557873414bfbb40a628fbb3815582a6c2c989afd49980c8f",
+      "bytes": 383
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/isolated-package-resolution-r01.json",
+      "sha256": "4da81689dc4b0283c2dc1ace935120cb2c03dbe4969e8f015babf803370efcba",
+      "bytes": 4326
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/nautiloid-source-request.test.mjs",
+      "sha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766",
+      "bytes": 3729
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/nautiloid-source-route-r01.patch",
+      "sha256": "919252e7bd29374cf84eec82609300e862345058e559690f20a7f6a234296f0c",
+      "bytes": 9528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/patch-r01.py",
+      "sha256": "b64d3ba90ff914dcc1ce25754338e95dcaf9e86e133b530297680ee63dc23973",
+      "bytes": 3005
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/prepare-r01.py",
+      "sha256": "a5eef6bb5387286e2333f4b685a24f4adf8357c006340bb9bd16b329259f6277",
+      "bytes": 610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/proposal-manifest-r01.json",
+      "sha256": "f11603f9594f44245eb9c2ff48f2928e29fbece7514e58b257b86cabfceab874",
+      "bytes": 907
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/proposal/port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "sha256": "6a0159c2ca0b954eb595e3c45b431ddd0818940338bf0fab931d37c95c5d9c41",
+      "bytes": 8128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/proposal/port/v2/tools/painted-creature/nautiloid-source-request.test.mjs",
+      "sha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766",
+      "bytes": 3729
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992",
+      "bytes": 15055
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/pure-route-controls-r01.log",
+      "sha256": "85b1343e8b2bd5e23f95084d46f003ecb14f410cdf445f6aef45a0913147a5b6",
+      "bytes": 738
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/route-contract-repair-r01/task-report-r01.md",
+      "sha256": "c36d7a97420e62863002b8d756f10577d141d5a66c8518856e41903b73e5be8b",
+      "bytes": 1651
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/runtime-files-r03.json",
+      "sha256": "b23aa74e93fa1f43b3bf84af1d910afd4d89bce3d959c77c23428b942bea8f8a",
+      "bytes": 1881
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/runtime-source-pins-r01.json",
+      "sha256": "0a96757cb5c6aa2f7f13a5f54ceeef88e73f1f0542f4da14f69319a4eae739f4",
+      "bytes": 1475
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/runtime-source-pins-r02.json",
+      "sha256": "a863d9e3b4e8e82acdb9aae7026ff2e2295a2e62192f22c3e6de9d153002ca38",
+      "bytes": 1932
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/authoring.json",
+      "sha256": "3d1136ff0c2da3a352fffe9e2b0f50a313ab0dafee5852e04fca91548f1b5960",
+      "bytes": 1334
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/master.png",
+      "sha256": "9f6ce16564dfe8a7a9fe904993da39a0947262d1e16fcecae63a2f73966fbef0",
+      "bytes": 1666708
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/pattern-check.json",
+      "sha256": "c2b01801c1e6e8d8d60eb7f10a59a8a8cb4c3fe4957fcd109d871bc9480233a0",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/prompt.txt",
+      "sha256": "984d565d4cff2ad85c2f6795430875a82ca4972557b10002d8c3b1df1317673f",
+      "bytes": 9952
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/source.json",
+      "sha256": "48820bfc493d8ee4592edc387e2e00b329eba48e0ff56ed7aba98cde8538e0d9",
+      "bytes": 318
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/sea-urchin/observed-r01/subject-source.json",
+      "sha256": "6c50479a33435b85eda95646e3bb329cea5c1d7c36b56f9e53f7a182e84e9331",
+      "bytes": 2114
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/actual-intake-controls-r02.mjs",
+      "sha256": "cfe8300306943a05f84afc4604c41502cfceea8e10f5fe14f283fff5a13e235f",
+      "bytes": 2278
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/actual-intake-controls.mjs",
+      "sha256": "3e213ab8aab882b3d7a9197dd18e4ad499a896f8951ce1bca97f9b7a11ba710e",
+      "bytes": 2273
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/author-flatworm.mjs",
+      "sha256": "121da434a5bac0503da48f3155cfaefadabfa1a7bab9e3f22b7eaa564112a619",
+      "bytes": 4465
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/author-ice-worm.mjs",
+      "sha256": "494a94d295b27e606f3a490fcb695f3f0e14f4fb5e56c996a170cc886dc81b2c",
+      "bytes": 4426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/axial-soft-on-tube-rigid-r01.patch",
+      "sha256": "3ab2899e6e3ddc1d527219f99f6ed0cc5b2322130ed00974bd5c907dc69a45d6",
+      "bytes": 10851
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/binding.json",
+      "sha256": "b5fa52299f23c626404d3f05b9564ffa81ce1ce027c734a9778ab45c6b989b61",
+      "bytes": 647570
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/declaration.json",
+      "sha256": "9a344eb82b182a7867dfea6156880a19050d39d0fbaf31f998ce596253e39a9b",
+      "bytes": 4024
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/intake-provenance.json",
+      "sha256": "a7854a1379c72b41f6e523fbda01b65e06d260d82861d104621bcb60fd707ddd",
+      "bytes": 4006
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/atlas/c475-flatworm-soft-r01.json",
+      "sha256": "bfb0b0ac8f7269003f93adadd4d132cfef017f917be64219ad036b37660fa985",
+      "bytes": 3750
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/atlas/c475-flatworm-soft-r01.png",
+      "sha256": "6f2a7e379147b66f3407cc000038620ee010eb135ce491d8587f25dcbf370b58",
+      "bytes": 168367
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/atlas/receipt.json",
+      "sha256": "6127d4bc80be3ff4b44095bd0c823d24064839f6faff1669e5c25757f90a9004",
+      "bytes": 1890
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/binding.json",
+      "sha256": "7051bb5c693357f5dbcaf8c912c4b5f0abbd2610fa00ac77fc991fa2b1e2a39a",
+      "bytes": 3199
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/keyed.png",
+      "sha256": "681e1e2d01d99123e2d6f8d894dd4cc7a506a0854d15a641060491f96251b777",
+      "bytes": 1175906
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/manifest.json",
+      "sha256": "f3a85c267ef718839249aced2c5f67ced276ed36312babb13093be0b6b554c76",
+      "bytes": 1494
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/ownership.png",
+      "sha256": "fcee21f309cd8242db3cc5a8a656dc7895129ab020ba9941fd3c992415f6a5a7",
+      "bytes": 10006
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/anterior.png",
+      "sha256": "05c235a57dc6192a8f13e8f49ca4a0e17bd3536956ec4b1f0d5207bf1cb778cb",
+      "bytes": 42244
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial1.png",
+      "sha256": "13aa08895ff7f88ebfd3591494c351aa5d5a46fac2b87831fee86a59a44e253f",
+      "bytes": 34016
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial2.png",
+      "sha256": "98aebb85dc2899537eb61476a8c5a6f9a40dbf9b1bb2c8f2cf07ec0a2645a8b2",
+      "bytes": 27020
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial3.png",
+      "sha256": "eb576c1ddb251841a18e93f0286e722c5a486e5c20522d8e55db877da305eb32",
+      "bytes": 30356
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial4.png",
+      "sha256": "65e46be22025bcde8fd21cee8d08f3487f43b17fb725b8e581e3fa162f0fb22a",
+      "bytes": 30706
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial5.png",
+      "sha256": "6998d02daada2dd10401b7734b7baf835b34e301be91b4ca82ccce2907ecc785",
+      "bytes": 26623
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial6.png",
+      "sha256": "035766ff85260a335155ae8d0ae810bfae5a8c74dd75e5377422d551b58f7334",
+      "bytes": 20156
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/axial7.png",
+      "sha256": "a8fa09803734f7412e4c21b027c141bcb5ff81171e3b0ae6eaf81501493ceacf",
+      "bytes": 15991
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/parts/posterior.png",
+      "sha256": "85363f2831391c627dc70d79fe7e5f6dc226e07f44d0d83b318df7ea1d502674",
+      "bytes": 6344
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/parts/receipt.json",
+      "sha256": "b74f1f2120c8ee65b4e2ab8c69817ae6192a2324d4b9d231838bba8f64647198",
+      "bytes": 2739
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/pre-split-binding.json",
+      "sha256": "0058f11355d039ceb06d85512b91c2cff15e27a4d5944b70816b765c1f36c8ab",
+      "bytes": 388085
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/receipt.json",
+      "sha256": "3d6663b588fba9f71d50c7e57828dd58debab51007c17e1520f0229d215a06d8",
+      "bytes": 2041
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/record.json",
+      "sha256": "3c98e35fc1244d34f0ce206dffa855f14951b44457d319343b08cc8e98a35152",
+      "bytes": 4909
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-candidate-fit-r01/soft-axial-source.json",
+      "sha256": "259fa500b2010675bef30d51bdbc7f7ab1655151536e10c0edda51a17365f479",
+      "bytes": 555
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-intake-r01.log",
+      "sha256": "84a8e308dd3827d7d41fc5c41eb6aa2b81d199a48e836984519c6574f4a79422",
+      "bytes": 633
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01.log",
+      "sha256": "42ddf5eec22e04dd9d4690e27b28111488fcd8830383f1adf1a60d7fdbf0f678",
+      "bytes": 365
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/cast-worst.png",
+      "sha256": "b340af86704a9817e9524cbef5a56521f9279a3cc336e6df37214b6dc5707134",
+      "bytes": 181196
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/film-dodge-worst.png",
+      "sha256": "929a79ab2a5df78ad16b14ed1e9c9aed0d37f10ce8831d3210a41f91a192f398",
+      "bytes": 179885
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/film-faint-hold-worst.png",
+      "sha256": "a33d68cf9f0e950f56915417a1af1ce1fd25750ed97de04f717e7191c681a55f",
+      "bytes": 177597
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/film-faint-worst.png",
+      "sha256": "4082a7eefe8310671ed3f350609332cbdc4cb065d1f8ee8b568bfa0736d2869e",
+      "bytes": 180053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/film-hit-worst.png",
+      "sha256": "36e3674fd50de0c5805dbb8cc35cfad1ae7c3dbe54fb3e0833063ddee4d17a05",
+      "bytes": 180610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/result.json",
+      "sha256": "6843d983369f05a0fbba805b9a49353b053643108f691717ebc442f8abca6ee2",
+      "bytes": 19656
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-outcome-r01/victory-worst.png",
+      "sha256": "c1db551ea9a0ebb2784664f161b82db77de9987689ccdd72b6d57cb3894501be",
+      "bytes": 181980
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-static-r01.json",
+      "sha256": "2decb9d4352299147f8529200a930edd70408d21334c03e91ebaa08d4f805d5d",
+      "bytes": 6933
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-static-r01.json.sources.json",
+      "sha256": "7cb0792dfa9e8416178860a520c420d8df1343cb9e6179aff88e7afc3ef24672",
+      "bytes": 25951
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/flatworm-static-r01.log",
+      "sha256": "f9a70b48ec2276e7352530f86b8b464d924bcfb2aab50db767eaaf051d062a0b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-baseline-unknown-template/intake-provenance.json",
+      "sha256": "8a729cefc1024dc7407665a95f1b5f47b05dc0d2132e1f5711023ae22e4090e8",
+      "bytes": 4154
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-baseline-unknown-template/refusal.json",
+      "sha256": "d130d0cb5eea8484adbfdc2e4b3455079c1ca0d4e12e83dda5b3e79bac46e1ef",
+      "bytes": 558
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/binding.json",
+      "sha256": "5a13a618cb397aeaf01bc6f09ec0383f34b34a47faf3039fbb540291a1a684f5",
+      "bytes": 430491
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/declaration.json",
+      "sha256": "49ffb676c8d658dfe8a0fb5390a440bc6d67b2e2fa249e200f234b2175c50bd3",
+      "bytes": 4032
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/intake-provenance.json",
+      "sha256": "9e29fae6a213206b33b4d5048907d912cd799c6f8ddde1b4bc90037581313e8f",
+      "bytes": 4006
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/atlas/c475-ice-worm-soft-r01.json",
+      "sha256": "ab7c1c20a2b620fed2bb7531a30a069ff3cf8ee2ef88b8adc4817bc5554d9b06",
+      "bytes": 3724
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/atlas/c475-ice-worm-soft-r01.png",
+      "sha256": "d61baac9b2501a599fe8da6fa5a3c32cfc8c5d9f55d17e10b597af1aa7d5eaf5",
+      "bytes": 88042
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/atlas/receipt.json",
+      "sha256": "b23420eafaf1eeacbc161ac622759fd3dd9f59c92c5fbafe1b307d585b986dee",
+      "bytes": 1890
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/binding.json",
+      "sha256": "eee99f327db30b8811c135b16d08aafe61d754418a97f61894e9e99ab8d82cb0",
+      "bytes": 3180
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/keyed.png",
+      "sha256": "401b973a23932e448bbc3aa20570b20c569317ebf0e638b85f7c5ba00720ced6",
+      "bytes": 1083532
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/manifest.json",
+      "sha256": "10b99d36d857383467ddafa97f26ef2f0cd79dfe1e01051f3b9ae1442016ac16",
+      "bytes": 1494
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/ownership.png",
+      "sha256": "81c14a277f2e0a22c8b7f73bbb8e25ece8b6b7928a279fc1768a9b4fcca7db4d",
+      "bytes": 8705
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/anterior.png",
+      "sha256": "0645af84e60ad8fb63aa31f12421f95f4fdfe2716f5cb62d094e78878c9a5280",
+      "bytes": 10238
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial1.png",
+      "sha256": "7e0b58ace94eed966df6899ebfa1748c990e85579870d0a1fe54d96af44d7c5e",
+      "bytes": 13028
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial2.png",
+      "sha256": "0caa6ae14c6d6761cfd503c9bdf1b962abd7c6c572809fa571aff5be5fcbae50",
+      "bytes": 13531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial3.png",
+      "sha256": "5c152588673ff31c45ad88582f6aba185fcde525ce54f94b18d3b84e5eec387e",
+      "bytes": 12696
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial4.png",
+      "sha256": "1d444bfdbefc17e8594860fc3227e2c24c57d2488aa38de3ea7ae0a1585ad7ac",
+      "bytes": 11957
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial5.png",
+      "sha256": "ac0674793f377576600f20d4b3723e7c8612eec1ab08c3b72ccb32c361058801",
+      "bytes": 12876
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial6.png",
+      "sha256": "91aae8bd83d3070bceaf59871029add9f4ad58d4d51eb89c49b3da97e1e8eea8",
+      "bytes": 11931
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/axial7.png",
+      "sha256": "303c754fc7c58d00f96b5426f5652c22d3e5b14822e4b1c559112d614ed17846",
+      "bytes": 11481
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/parts/posterior.png",
+      "sha256": "057700980f9da23ca16470c92f3e3468e5279b95e0dacbe26aff29a616cdbbbc",
+      "bytes": 5104
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/parts/receipt.json",
+      "sha256": "424db68f456db448e3dadc7d8718fdd1ddcbcffe8f63bae48295a826b5be59ce",
+      "bytes": 2731
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/pre-split-binding.json",
+      "sha256": "b43eb180c595c3e5a5a9567c6c66ebc9ca13691cd82fd20d8bc3291cd9e19f90",
+      "bytes": 249028
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/receipt.json",
+      "sha256": "b7029159d8343edface4b2c0b02c3aa5c84e972f09b2dd047e25bb5eea4a8bc2",
+      "bytes": 2039
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/record.json",
+      "sha256": "6803229340b3d650bc22396827579585877bfed7ebd58dc8f26a5946de88710c",
+      "bytes": 4867
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-fit-r01/soft-axial-source.json",
+      "sha256": "7350e56ee978fce7ec575e26efb6be0b95a4c7bc4cc9e5065686ecdaf42870b3",
+      "bytes": 555
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-candidate-intake-r01.log",
+      "sha256": "5e0e7b4f989bb051c598920c6b39a26a80e3894b1744f55133e35bcb89f45dc3",
+      "bytes": 628
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01.log",
+      "sha256": "47fcbc0c741a86cd536998e93d9cf7fdbb57f2797e5a053f2ef70241f77ecf0a",
+      "bytes": 364
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/cast-worst.png",
+      "sha256": "4c4a5beb18379056b051aaddaaf1dcb717edf8799101d59196f909a60fb7a881",
+      "bytes": 99622
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/film-dodge-worst.png",
+      "sha256": "3c46a7a21d3e22a5c96efcac881e9af273ecb44973ae32243c70c91287b7d162",
+      "bytes": 98550
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/film-faint-hold-worst.png",
+      "sha256": "f4a7c87ff5146d7b9e44ad49c9da8c39040a41bfe87ad56d6b3105cf23d29c19",
+      "bytes": 97113
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/film-faint-worst.png",
+      "sha256": "e847f4d0da1710e45585cce53f1a0a9af59e3c8c5817ef90fdcdf9cf2de505b8",
+      "bytes": 97394
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/film-hit-worst.png",
+      "sha256": "1cad41e0cf3b066580179ecc889490e2b950f618cb34e944ecc6e9653d0f85ba",
+      "bytes": 98837
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/result.json",
+      "sha256": "defe483e391cbc4822ae620f7d960680827499a9295ae33ae32dba0ac0688aac",
+      "bytes": 19652
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-outcome-r01/victory-worst.png",
+      "sha256": "9497ac9c97c9fe3e8380b23d11a8b4d4e3feb64f23f24668126b7586240ae597",
+      "bytes": 99435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-static-r01.json",
+      "sha256": "452d5d66ed6c6cfb72057f4b3f0979ca3ddbbbfdf7bfa1fad8d298ab50d15193",
+      "bytes": 6905
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-static-r01.json.sources.json",
+      "sha256": "b4040c46a4a49828d6236aaa87c9624d3239787c4a8fe56e245ed2e2b87c3474",
+      "bytes": 25951
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/ice-static-r01.log",
+      "sha256": "17d52707782bdf13bff2244b6447a302167e081d60c94f3de575401fef20875b",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/specialized-anatomy-soft-r01.log",
+      "sha256": "de4ff756c620c21b86484c041b254dd5dd10d941f29ee3065f139b6b21fc998e",
+      "bytes": 1956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/evidence/specialized-anatomy-soft-r02.log",
+      "sha256": "86b3869b028b9f9cffa6c87cf4524eda31e8cdc08e700cbdd141fabf7279b24f",
+      "bytes": 335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/authoring.json",
+      "sha256": "8fc6d842c81a2eeb6844f67b10db00d358f3b45c426023f49d709768cf551c7c",
+      "bytes": 4260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/master.png",
+      "sha256": "1c23d80e4ef0fca7bfe03c67e08a9002fa8e207cda1861a70ba2da8bebce0cc5",
+      "bytes": 1273635
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/prompt.txt",
+      "sha256": "5de36c5042943a570d26073523f6ec6f3926fca17fd9fb81bf945b8bf83328e8",
+      "bytes": 11699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/source-observation.json",
+      "sha256": "e50413df02fd3f3e4389c7781c7e9a00a096f83d7dcccdf9834617131f6a7161",
+      "bytes": 2159
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/flatworm/observed-r01/subject-source.json",
+      "sha256": "cd22fc2c3cfb40cff4e8747fa405861db9ac29dfc2124ad80e083520d91e5f6e",
+      "bytes": 2341
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/authoring.json",
+      "sha256": "8e3599740857a3f2292ee8d0fc54c7b90a5c749f06b3a09884ffe4480617fc53",
+      "bytes": 4237
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/master.png",
+      "sha256": "879f06a460a08d85d2f51c516e680e9195f055c1676762577093e5610a808a63",
+      "bytes": 1231469
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/prompt.txt",
+      "sha256": "2bbc972cef13ab39870f50a8be1cdb81cba8103d97ebb1264a045921d61d5530",
+      "bytes": 10967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/source-observation.json",
+      "sha256": "bbec0b2f60703cd9ca39478e3e58f5663b8186537ba684bf4f904945e46976e1",
+      "bytes": 2154
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/ice-worm/observed-r01/subject-source.json",
+      "sha256": "0b851df6f7c1527d90030977580eadf766d31095da2726589ffc7e25eed9b967",
+      "bytes": 2165
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r01/anterior-intake.log",
+      "sha256": "51635e8e22ce37c4c98c5a96d3ebb2b3f670a7d61873ea0611a926404d2dbc1e",
+      "bytes": 1248
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r01/anterior-provenance.json",
+      "sha256": "d3a89db06e06175439e0ce314c08841eb76e2e4401c7adfe4df879751d709423",
+      "bytes": 4515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r01/anterior-refusal.json",
+      "sha256": "583c4c5791cb5744807324f3a9794832479b18cee0747147fc98c2ae9700f000",
+      "bytes": 807
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r01/posterior-intake.log",
+      "sha256": "7f6037a15ac387c5035d36c2deb2119ff78cdff160268241ac74dc62c470ad40",
+      "bytes": 1249
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/authoring.json",
+      "sha256": "8e3599740857a3f2292ee8d0fc54c7b90a5c749f06b3a09884ffe4480617fc53",
+      "bytes": 4237
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/master.png",
+      "sha256": "c077383e673b6eacc736c1d510941298f65d5b24e194410541d7df9a0a309d75",
+      "bytes": 832756
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/prompt.txt",
+      "sha256": "2bbc972cef13ab39870f50a8be1cdb81cba8103d97ebb1264a045921d61d5530",
+      "bytes": 10967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/source-observation.json",
+      "sha256": "bbec0b2f60703cd9ca39478e3e58f5663b8186537ba684bf4f904945e46976e1",
+      "bytes": 2154
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-erased-source/subject-source.json",
+      "sha256": "0b851df6f7c1527d90030977580eadf766d31095da2726589ffc7e25eed9b967",
+      "bytes": 2165
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-intake.log",
+      "sha256": "7b8518dd5dc25835353c38fefb1f67c69b65f954cb7bb9833d58d62f769f1c92",
+      "bytes": 1248
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-provenance.json",
+      "sha256": "75c0751e6c9c3dace16d12892ec32c4613f6cc1857d284027a2f5c51b4f3be3c",
+      "bytes": 4515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/anterior-refusal.json",
+      "sha256": "583c4c5791cb5744807324f3a9794832479b18cee0747147fc98c2ae9700f000",
+      "bytes": 807
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/authoring.json",
+      "sha256": "8e3599740857a3f2292ee8d0fc54c7b90a5c749f06b3a09884ffe4480617fc53",
+      "bytes": 4237
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/master.png",
+      "sha256": "1b236d18b04fb4dacdf910a34f0661415ce369aee11dad3c8d302e1b21ad0457",
+      "bytes": 843289
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/prompt.txt",
+      "sha256": "2bbc972cef13ab39870f50a8be1cdb81cba8103d97ebb1264a045921d61d5530",
+      "bytes": 10967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/source-observation.json",
+      "sha256": "bbec0b2f60703cd9ca39478e3e58f5663b8186537ba684bf4f904945e46976e1",
+      "bytes": 2154
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-erased-source/subject-source.json",
+      "sha256": "0b851df6f7c1527d90030977580eadf766d31095da2726589ffc7e25eed9b967",
+      "bytes": 2165
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-intake.log",
+      "sha256": "51d674c912bf43cc49d085c95578885e611886368d9d81d0799cd79d3e56ab29",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-provenance.json",
+      "sha256": "18902daf472b542abd5c0363c113c91a4d6bfb477e8858aa816ffeb100d6cc18",
+      "bytes": 4524
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/posterior-refusal.json",
+      "sha256": "a4e3b17aae57df1b4f9a2e9fb36af29842ca9b8a9955ceec1a75b2a023895bed",
+      "bytes": 808
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/intake-control-r02/result.json",
+      "sha256": "532767b102812c9040daab616d6449f1a7bac7bc823740c3e310acdd19b149a0",
+      "bytes": 606
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/manifest-r01.json",
+      "sha256": "a1d4c21a2973723121a8c20cf5059adcfcc312231441963d9ed02bf3e554fa97",
+      "bytes": 38034
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/package-proposal.py",
+      "sha256": "e85fb96321224349bff438015be48ab3ee00b1b3962c9c8d037ff10eceb41464",
+      "bytes": 1845
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/patch-replay-r01.json",
+      "sha256": "cfa6da04c21589dad8de2f739dbba40c68b62142fb9e0142995829b3eb3ecda1",
+      "bytes": 755
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/prepare-proposal.py",
+      "sha256": "4c11293fe439e55f237527f703c88b8c3ec7ab8a8ae3b7210365ec204df74f7e",
+      "bytes": 3163
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/prepare-source-views.mjs",
+      "sha256": "40a0800e7f567ae276a0e17f38179171b7e24ea6028b24cb6bd35ef8dbed3d51",
+      "bytes": 705
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/propagation-plan-r01.json",
+      "sha256": "c35a66aab1a5bf562a84fbad8b9c2df28a21e3945ce87b839dab3cc09e3032d5",
+      "bytes": 2787
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "fda85453f99476ccb435d69f7aa8b2893ec58bdec8b49c28573af193287013e3",
+      "bytes": 12119
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "bytes": 15089
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "bytes": 1656
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "sha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "bytes": 1426
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "4633dfebdd8537d331d76f9abc577ca271b126b023d505925f012bbdbed1cff2",
+      "bytes": 896
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "09aa234c78ef229b6f3d4cf09e6fc86e8db5964c70a70fa3a367937a713a1b2b",
+      "bytes": 7208
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "0919db24a304f8bc53e38e029940681a035e83be29e58b949a2ad8027d87c513",
+      "bytes": 13533
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/runtime-files-r01.json",
+      "sha256": "891394cc6ad1d144b9f306687d7da4f112931a227b35294f91a7356e3c9611b9",
+      "bytes": 3768
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/soft-outcome.ts",
+      "sha256": "05744603a21e1ea911b65026ba228f6bb923e5b1185eb1ff5c585c7f1c118cc4",
+      "bytes": 7232
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/soft-source-controls.mjs",
+      "sha256": "aea31a6d665f34c2ee122406e93181ce70ba3410bf3983f39378aa4430d904fb",
+      "bytes": 1977
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-controls-baseline.log",
+      "sha256": "636487da9ec3e380f73464fb99a1f191791b00737711b2de591f873098b370ed",
+      "bytes": 1917
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-controls-r01.log",
+      "sha256": "c4ecadf2b83be09e8981b5fb44b217e861705c8f39282e2315f6f5d6a4aa23f7",
+      "bytes": 657
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-review-r01.json",
+      "sha256": "d9a1bc860e2990294bbfbd4b675e30805e6bce0e243e58fff09fcd865b3f376c",
+      "bytes": 2618
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-route-controls-r01.json",
+      "sha256": "bd457f399de46f95b7a63db1321f30d2a083c4c1e1add6a95b57a1b52a12533f",
+      "bytes": 1125
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-route-controls.mjs",
+      "sha256": "4e0aa0fe193a5eef604f331ab04c81a6ed6a99e9cdf59d50135466501470ef28",
+      "bytes": 1518
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-unit-r01.log",
+      "sha256": "1ca0b27bf55ac651c35ed37c79590fe0d1de8d8265d0f73e83196946a1c7e632",
+      "bytes": 595
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/anterior.png",
+      "sha256": "b89dd5626f2f72aaa11cbeb670505853ab0a9acee8888fa5d8a1bdf2483ccd8d",
+      "bytes": 38065
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial1.png",
+      "sha256": "dbc545859502a65ce31e895a659e4a1e9b4503a1769e3c57cde524d6af3b4029",
+      "bytes": 30804
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial2.png",
+      "sha256": "03e92d142c8e1a33c475c60fc972a37e28bbcafe9726420c8c0d639b1bbdbf78",
+      "bytes": 24216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial3.png",
+      "sha256": "16dfdc79fab098dfb3a3846e28865ae41c1bb8233de6db982d29bc1af36805f3",
+      "bytes": 27318
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial4.png",
+      "sha256": "d9ba8415772f04be09ac714bcaa27da528b3bd45a7013ebb9b96c22176a1d603",
+      "bytes": 27556
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial5.png",
+      "sha256": "0fa53a27374c0fe847df95feb68585c380e04018066fa62bfabb94a78049eacf",
+      "bytes": 23685
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial6.png",
+      "sha256": "d0b75013c65986a69b83aa1bc99467dab7e474d74fa7dd251c8b740084874e97",
+      "bytes": 18060
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/axial7.png",
+      "sha256": "40b8cba128972f35a3337c148ef68608fadaae6873e695a238d63e0a26291617",
+      "bytes": 14343
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/keyed-neutral.png",
+      "sha256": "20cbce7c4382c8c2d4983b4305b3f446fc59891040d2cb6593ac56af800618a8",
+      "bytes": 235059
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-flatworm/posterior.png",
+      "sha256": "6d31652956af18288c42c37b4d1a65b782c634336409f9b836d1eb1fed33f5ac",
+      "bytes": 5608
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/anterior.png",
+      "sha256": "dfaaace24c86d9c1fb484207aea2cedd2645547bb362a0f683bf5a86c4e63abc",
+      "bytes": 9152
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial1.png",
+      "sha256": "08bef07f7bd9384a7e7709b2c0a570dd057cc993bec9389abf43e6638881cbe0",
+      "bytes": 11591
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial2.png",
+      "sha256": "6d19da5552f7cdc7cdcad492caf161e42f42f515d7ad5aaca8aeac369a124224",
+      "bytes": 12135
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial3.png",
+      "sha256": "17e92d858c201012e6295bd547aa6e57a685ca95cbf35e42f904bf88c3810a93",
+      "bytes": 11358
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial4.png",
+      "sha256": "0b5216a3aebb08f32b42255ac8de61937e711fe84e9c495ea731816a3343e086",
+      "bytes": 10629
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial5.png",
+      "sha256": "bcc11701551c54b1adab20ac90c19d000accad02d1db28bcc0beef3a779f8be5",
+      "bytes": 11487
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial6.png",
+      "sha256": "46f01c5a2f1ca6f80a759951bf5ab5af50aa3f2a472a18430fbcbcf703c294b3",
+      "bytes": 10582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/axial7.png",
+      "sha256": "f0f98568e7aba1787055dc4a2dea79cce6faf30c991e6bca3fcfed07a7a20668",
+      "bytes": 10231
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/keyed-neutral.png",
+      "sha256": "44b5b9e736f817f370e5583abd22a4b4b906d5be45d57ff17b0a69e2eb722732",
+      "bytes": 117746
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/source-views-ice/posterior.png",
+      "sha256": "9d9cffd9f066828fd51b780d0bcbc1e4d8c7bf496f739a5a34231af69c6351a8",
+      "bytes": 4522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/soft-worms-r01/task-report-r01.md",
+      "sha256": "375e17f00a0fe347e64f25063211df8f13f719e82c17ce2c934cac67ad8417a3",
+      "bytes": 5373
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/source-inventory18-r01.json",
+      "sha256": "738962277e7fbef24ae9a315f2fdfbae9be46cfdf017e1301aa867a06890beff",
+      "bytes": 21931
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/split-sequential-patches.py",
+      "sha256": "9ef6b3be69f0acc60e49e039beabf8de4b1697eab100834132664c145883375a",
+      "bytes": 2343
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/task-report-r01.md",
+      "sha256": "a1ca608dc8bef1d799b03742df994646af24a451825aba69b70c51bbb56f4064",
+      "bytes": 7637
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r01.patch",
+      "sha256": "d567b81f1e5645a859d3b0638cc7d487fd78530de03fab1af37e6de1966a90a9",
+      "bytes": 13932
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r02.patch",
+      "sha256": "30b8e048e40063ffe06b3cbb0096e94056baddb0986117e5e576057d24a3a09c",
+      "bytes": 17980
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r03-pins.json",
+      "sha256": "ead5fc607ac60b551d3158a828c92a76b0824e9c25dc6e5cd0f9085a6580ecac",
+      "bytes": 2130
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-rigid-runtime-r03.patch",
+      "sha256": "fceac5eec9050694462d147ac933a5e2e042f87b01ce930736bece69d71df670",
+      "bytes": 21529
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm-runtime-r01.patch",
+      "sha256": "66ebb5d0e70e63d1fd26e210f519a6910fbd6cd2a0f86bf707b47e8aaacdf14d",
+      "bytes": 3928
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm-runtime-r02-pins.json",
+      "sha256": "cdfd240beaaf5a33369a4faa610ca85e46276637e3b5ef65f497786c15285fe3",
+      "bytes": 1482
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm-runtime-r02.patch",
+      "sha256": "d5271209b5bf2df5bcebee4c97aa9381d329026310794aa9f3be343d2668c301",
+      "bytes": 7976
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm-source-pins-r01.json",
+      "sha256": "68c2ed4e87176641513dd21e64b7d89ec3738824981bb3edc8ccc528d2df3717",
+      "bytes": 1025
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/authoring.json",
+      "sha256": "cc055dd3aa8e1d869a8e24d0e0b1d71e66b9b4d985e037c49bda59245016ff68",
+      "bytes": 2192
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/master.png",
+      "sha256": "df52a08f5be7c03429a302a0b8a75047524fdb6a506d81ecb07a17102f549c86",
+      "bytes": 1488252
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/pattern-check.json",
+      "sha256": "5a45c9f374e201c1f2dc10cdc978597354de2fcb1253b8675573290e47999213",
+      "bytes": 285
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/prompt.txt",
+      "sha256": "cbcd3291c8a0fc1357c49d9f7fdad673be0016489feea76f99cfa3aaddaa303e",
+      "bytes": 11236
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/source.json",
+      "sha256": "229c1ed68226c4293fb606f0e9ec1cf2f7fe52bdc06c496becfdca4fd96da408",
+      "bytes": 329
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/tube-worm/observed-r01/subject-source.json",
+      "sha256": "6353d23a6146d773baf17a27d455b5095ad06333a976987c1bc39cb1559ff65d",
+      "bytes": 2331
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-sand-dollar-source-r01/freeze.json",
+      "sha256": "ca9447eaedefec8f307f3bc1029700bff935ed8a6868f35c3e166e4f4defd33e",
+      "bytes": 1791
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-sand-dollar-source-r01/review.json",
+      "sha256": "3de24ef64954cb969e04cadbc68a3747bd8abaf327a1d81ab652c58c0ffe5b44",
+      "bytes": 5093
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/body-control-keyed-3x.png",
+      "sha256": "a68991841b165ea6f70c19c5a3dba2aa01cde22226f4f32d5bfc0ce417521dea",
+      "bytes": 1606
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/body-control-source-3x.png",
+      "sha256": "a404ebf3900a32131432978eeb1edeb036fb024940969fd07ac6fe87a0341e3a",
+      "bytes": 1565
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/right-spines-keyed-3x.png",
+      "sha256": "e66adac18eadb8d57b1f6b99b1670d4c18f0bd69f25a703b8060be651aeb19a2",
+      "bytes": 37412
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/right-spines-source-3x.png",
+      "sha256": "76a40ed7ef6b429f852b14c4a66c328c9a215d68de40dc800bbebd067032a63e",
+      "bytes": 60434
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/upper-inner-spines-keyed-3x.png",
+      "sha256": "48e76d5b025f34cadf8f2c28185fdf4e2a55032e1db709e090d47e0c1eb1d9db",
+      "bytes": 32594
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/upper-inner-spines-source-3x.png",
+      "sha256": "9eef3c1345d427eebbe12dd15315acbebb2fbc814d49f04ad05f86da904a8f3d",
+      "bytes": 40700
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-radial-r01/urchin-keyed-loss-witness.json",
+      "sha256": "59166d76c660caff312331dbb23a63ed637001933c517c4f84c73e0a03fa7cb9",
+      "bytes": 12800
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-sources-r01/freeze.json",
+      "sha256": "abb5492fe7806e1912bdc16eef8277d8821498621c68b6d0e52a21176d9a8fc6",
+      "bytes": 5937
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-w2-sources-r01/review.json",
+      "sha256": "364a195e324277e1a57933ef69fc05ca1ba3bb762b6fb4cc057b3e2cb172f8a4",
+      "bytes": 13792
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "sha256": "832bc6de935cc7187f585bcd39ab2352e53087178bbdce1b11152148338e5583",
+      "bytes": 12841
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "0551a4cfcc65bcfc1acfc8f5257900c7a0b3cd616037a4b868e19a9dc0e00c4a",
+      "bytes": 564936
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079",
+      "bytes": 12579
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "ec687bae19aa340c2b2a381e1f286b852357992fd0de4ba1a77f478cab877349",
+      "bytes": 12966
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+      "sha256": "459d3b9efbf802729fda8b66296689f46c76e6f502368ba3533996583549c522",
+      "bytes": 4751
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "5275fd94511f2743583ef34a4681b5c1b431ea14b6413b451769d5aeae560274",
+      "bytes": 168705
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "84ebbae0e4e886f30c4624bad5ee99ca78f2792ad1ddfbd16cbea4e56c5a5b0f",
+      "bytes": 953
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c",
+      "bytes": 4668
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f",
+      "bytes": 74684
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "bytes": 15089
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8",
+      "bytes": 3957
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808",
+      "bytes": 9426
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "f5c151c19908d0bd2ca00c839c104877ed768dafa7d47977523e809fe85e012f",
+      "bytes": 1128
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726",
+      "bytes": 4715
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "bytes": 1656
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "sha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "bytes": 1426
+    },
+    {
+      "path": "port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b",
+      "bytes": 2816
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "b3004385c6181917ec12fccf2d188949914f1003fca0edd06147f607191bba20",
+      "bytes": 944
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c",
+      "bytes": 9763
+    },
+    {
+      "path": "port/v2/tools/painted-creature/README.md",
+      "sha256": "06188a55d1e486c882bb503fd0d94e6d23b5af78ea63dff98227a710390b6510",
+      "bytes": 14648
+    },
+    {
+      "path": "port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "sha256": "6a0159c2ca0b954eb595e3c45b431ddd0818940338bf0fab931d37c95c5d9c41",
+      "bytes": 8128
+    },
+    {
+      "path": "port/v2/tools/painted-creature/nautiloid-source-request.test.mjs",
+      "sha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766",
+      "bytes": 3729
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379",
+      "bytes": 11091
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+      "sha256": "9b955cacbcc8d56933f052c6ab3d89aa2a50251e0fb86232c823bcfceae0310b",
+      "bytes": 596
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992",
+      "bytes": 15055
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "bytes": 3721
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "sha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "bytes": 3010
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "2655b2213064fb69dde5901c5f9cad4d5a7d4a7c9ee50d422728be33c42c9df5",
+      "bytes": 1892663
+    }
+  ],
+  "files": 655,
+  "remoteOperations": false
+}

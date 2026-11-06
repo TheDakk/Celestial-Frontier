@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Grizzly Bear",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/08-grizzly-bear/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b64dcab0060b60352b81ba1ce7dbf020f911e4ba61b8338749d9b54aec5a229e"
+}

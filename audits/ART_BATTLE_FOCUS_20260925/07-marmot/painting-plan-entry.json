@@ -1,0 +1,28 @@
+{
+  "name": "Stocky rodent",
+  "exemplar": "Marmot",
+  "covers": [
+    "Marmot",
+    "Prairie Dog",
+    "Gopher",
+    "Ground Squirrel",
+    "Lemming",
+    "Hamster",
+    "Guinea Pig",
+    "Capybara",
+    "Agouti",
+    "Hyrax",
+    "Vole",
+    "Water Vole",
+    "Pika",
+    "Wombat"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "fat barrel body on very short legs",
+    "blunt rounded head with small ears set low in the fur",
+    "SHORT furry tail, so tail 0.7 reads as tailless (guinea pig, capybara, hyrax, pika, wombat)",
+    "plain unmarked brown agouti coat"
+  ],
+  "why": "14 misleading. Includes Pika from the Tree Frog and Wombat. Their shared identity is 'round short-legged body, no real tail', which the Civet's long ringed tail breaks. Gopher (incisors) and Agouti (legs) stay caveat."
+}

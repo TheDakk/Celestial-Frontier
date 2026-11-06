@@ -1,0 +1,246 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "782b11fa1ec42ae28b67923c5ffe5c0ecb1e894a91399b38457f3bccffb2d2b4",
+  "atlasSha256": "ce8bd862b1dff509d8dd9dd79017ccdeee21b7336f07bcdb5e80098518b7556c",
+  "atlasSize": {
+    "width": 760,
+    "height": 291
+  },
+  "parts": [
+    {
+      "id": "source-body-root-patch",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 194,
+        "y": 94,
+        "width": 12,
+        "height": 10
+      },
+      "cutout": {
+        "x": 742,
+        "y": 591,
+        "width": 12,
+        "height": 10
+      }
+    },
+    {
+      "id": "whole-long-near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 94,
+        "width": 179,
+        "height": 163
+      },
+      "cutout": {
+        "x": 572,
+        "y": 600,
+        "width": 179,
+        "height": 163
+      }
+    },
+    {
+      "id": "whole-narrow-far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 446,
+        "y": 84,
+        "width": 82,
+        "height": 97
+      },
+      "cutout": {
+        "x": 726,
+        "y": 650,
+        "width": 82,
+        "height": 97
+      }
+    },
+    {
+      "id": "actual-small-dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 538,
+        "y": 84,
+        "width": 73,
+        "height": 33
+      },
+      "cutout": {
+        "x": 576,
+        "y": 521,
+        "width": 73,
+        "height": 33
+      }
+    },
+    {
+      "id": "actual-pleated-lower-head-jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 243,
+        "y": 5,
+        "width": 193,
+        "height": 110
+      },
+      "cutout": {
+        "x": 790,
+        "y": 542,
+        "width": 193,
+        "height": 110
+      }
+    },
+    {
+      "id": "actual-eye-upper-head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 228,
+        "height": 79
+      },
+      "cutout": {
+        "x": 755,
+        "y": 516,
+        "width": 228,
+        "height": 79
+      }
+    },
+    {
+      "id": "whole-horizontal-notched-flukes",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 446,
+        "y": 5,
+        "width": 174,
+        "height": 69
+      },
+      "cutout": {
+        "x": 271,
+        "y": 531,
+        "width": 174,
+        "height": 69
+      }
+    },
+    {
+      "id": "actual-axial-body-spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 538,
+        "y": 127,
+        "width": 68,
+        "height": 62
+      },
+      "cutout": {
+        "x": 389,
+        "y": 582,
+        "width": 68,
+        "height": 62
+      }
+    },
+    {
+      "id": "actual-axial-body-spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 401,
+        "y": 191,
+        "width": 53,
+        "height": 95
+      },
+      "cutout": {
+        "x": 457,
+        "y": 568,
+        "width": 53,
+        "height": 95
+      }
+    },
+    {
+      "id": "actual-axial-body-spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 333,
+        "y": 125,
+        "width": 58,
+        "height": 126
+      },
+      "cutout": {
+        "x": 510,
+        "y": 550,
+        "width": 58,
+        "height": 126
+      }
+    },
+    {
+      "id": "actual-axial-body-spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 194,
+        "y": 125,
+        "width": 60,
+        "height": 140
+      },
+      "cutout": {
+        "x": 568,
+        "y": 542,
+        "width": 60,
+        "height": 140
+      }
+    },
+    {
+      "id": "actual-axial-body-spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 264,
+        "y": 125,
+        "width": 59,
+        "height": 155
+      },
+      "cutout": {
+        "x": 628,
+        "y": 527,
+        "width": 59,
+        "height": 155
+      }
+    },
+    {
+      "id": "whole-source-body-remainder",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 630,
+        "y": 5,
+        "width": 125,
+        "height": 160
+      },
+      "cutout": {
+        "x": 687,
+        "y": 519,
+        "width": 125,
+        "height": 160
+      }
+    }
+  ],
+  "bindingHash": "797f7ee73f0e3edc3d42ffda0471f75477842dc2d55d7671e37ded756785883f"
+}

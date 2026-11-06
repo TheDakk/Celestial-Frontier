@@ -1,0 +1,134 @@
+[
+  {
+    "id": "c243b07r1c1-01-abalone",
+    "packetId": "c243b07r1c1-01-abalone",
+    "name": "Abalone",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-01/c243b07r1c1-01-abalone",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c243b07r1c1-01-abalone-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-01-abalone",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-01-abalone/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c1-01-abalone"
+  },
+  {
+    "id": "c243b07r1c1-05-limpet",
+    "packetId": "c243b07r1c1-05-limpet",
+    "name": "Limpet",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-01/c243b07r1c1-05-limpet",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c243b07r1c1-05-limpet-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-05-limpet",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-05-limpet/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c1-05-limpet"
+  },
+  {
+    "id": "c192creaturesupply-24-buffalo",
+    "packetId": "c192creaturesupply-24-buffalo",
+    "name": "Buffalo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-01/c192creaturesupply-24-buffalo",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c192creaturesupply-24-buffalo-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c192creaturesupply-24-buffalo",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c192creaturesupply-24-buffalo/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c192creaturesupply-24-buffalo/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c192creaturesupply-24-buffalo"
+  },
+  {
+    "id": "c203creaturesupply-01-water-buffalo",
+    "packetId": "c203creaturesupply-01-water-buffalo",
+    "name": "Water Buffalo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-01/c203creaturesupply-01-water-buffalo",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c203creaturesupply-01-water-buffalo-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupply-01-water-buffalo",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupply-01-water-buffalo/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c203creaturesupply-01-water-buffalo/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c203creaturesupply-01-water-buffalo"
+  },
+  {
+    "id": "c202creaturesupply-21-goat",
+    "packetId": "c202creaturesupply-21-goat",
+    "name": "Goat",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-02/c202creaturesupply-21-goat",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c202creaturesupply-21-goat-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c202creaturesupply-21-goat",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c202creaturesupply-21-goat/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c202creaturesupply-21-goat/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c202creaturesupply-21-goat"
+  },
+  {
+    "id": "c203creaturesupplyb-01-okapi",
+    "packetId": "c203creaturesupplyb-01-okapi",
+    "name": "Okapi",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-02/c203creaturesupplyb-01-okapi",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c203creaturesupplyb-01-okapi-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupplyb-01-okapi",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupplyb-01-okapi/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c203creaturesupplyb-01-okapi/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c203creaturesupplyb-01-okapi"
+  },
+  {
+    "id": "g2c110-20-takin",
+    "packetId": "g2c110-20-takin",
+    "name": "Takin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-02/g2c110-20-takin",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/g2c110-20-takin-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c110-20-takin",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c110-20-takin/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c110-20-takin/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c110-20-takin"
+  },
+  {
+    "id": "g2c114-01-forest-elephant",
+    "packetId": "g2c114-01-forest-elephant",
+    "name": "Forest Elephant",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-02/g2c114-01-forest-elephant",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/g2c114-01-forest-elephant-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c114-01-forest-elephant",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c114-01-forest-elephant/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c114-01-forest-elephant/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c114-01-forest-elephant"
+  },
+  {
+    "id": "g2c59-03-bison",
+    "packetId": "g2c59-03-bison",
+    "name": "Bison",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/g2c59-03-bison",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/g2c59-03-bison-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c59-03-bison",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c59-03-bison/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c59-03-bison/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c59-03-bison"
+  },
+  {
+    "id": "g2referencesc62-06-dog",
+    "packetId": "g2referencesc62-06-dog",
+    "name": "Dog",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/g2referencesc62-06-dog",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/g2referencesc62-06-dog-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2referencesc62-06-dog",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2referencesc62-06-dog/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2referencesc62-06-dog/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2referencesc62-06-dog"
+  },
+  {
+    "id": "c213originals-09-kinkajou",
+    "packetId": "c213originals-09-kinkajou",
+    "name": "Kinkajou",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/c213originals-09-kinkajou",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c213originals-09-kinkajou-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c213originals-09-kinkajou",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c213originals-09-kinkajou/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c213originals-09-kinkajou/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c213originals-09-kinkajou"
+  },
+  {
+    "id": "c243b01r1c2-15-camel",
+    "packetId": "c243b01r1c2-15-camel",
+    "name": "Camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/c243b01r1c2-15-camel",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c243b01r1c2-15-camel-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b01r1c2-15-camel",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b01r1c2-15-camel/report.json",
+    "score": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c243b01r1c2-15-camel/static.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c243b01r1c2-15-camel"
+  }
+]

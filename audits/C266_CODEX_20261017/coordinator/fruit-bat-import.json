@@ -1,0 +1,265 @@
+{
+  "claudeVerified": true,
+  "checkedPins": 86,
+  "scope": "Existing supported observed aerial source declaration for diagnostic review only; no game runtime patch/adoption. Dakk realm decision and air median remain holds before propagation/acceptance.",
+  "files": [
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "sha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e",
+      "bytes": 15043
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/verify/README.md",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/verify/README.md",
+      "sha256": "64921f512b5807c1d730898e2c91606582e5db962d9a1287f04700780e45ec56",
+      "bytes": 6009
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/intake.log",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/intake.log",
+      "sha256": "ba5f49702b8ad28eb08c789e978b02d4f76df68073bf338b6a2f644c45cd9e63",
+      "bytes": 339
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json",
+      "sha256": "99a4dfbbe0c8b379e41a2f642d1f64a949266bacb81008937d0e9ba61b24edaf",
+      "bytes": 7553
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json.sources.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json.sources.json",
+      "sha256": "5df7176ee1bb3d4b6c81a95421e7f2397ba8b8da6dcfa3de1ca5eb99fe1ffb40",
+      "bytes": 18023
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.log",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.log",
+      "sha256": "cf2f92125ada985e47c54e752b9e89fd0333a2aa158b03c9f5248fd30755c14a",
+      "bytes": 1834
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/record.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/record.json",
+      "sha256": "35ac5f3c8be1f9cc831190aa75b1eb61965e99ebf5ea73350466ad691e3df159",
+      "bytes": 6982
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/binding.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/binding.json",
+      "sha256": "6c424d159b36d4e80f1350a9d80e302390ccf697792e5c53277257923827dfe4",
+      "bytes": 1314509
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/pre-split-binding.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/pre-split-binding.json",
+      "sha256": "cb63af81f29cc4a18dda9744a71e14167b4130fa734c6f719265ea87999874c8",
+      "bytes": 873406
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/intake-provenance.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/intake-provenance.json",
+      "sha256": "41b898ea49ca182df2aa66fa0391d269e99075f8b0369efe5940f04d98f4b356",
+      "bytes": 3449
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/declaration.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/declaration.json",
+      "sha256": "15b64920570bc06ad8ea5c25f58f7323252c152f7c72aa28bf19886902d4392b",
+      "bytes": 11602
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/receipt.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/receipt.json",
+      "sha256": "470ca6c5b6afd05fb1d15d72e0055c9d6d3079514546ad9a1205188e13ee2bb3",
+      "bytes": 2444
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/binding.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/binding.json",
+      "sha256": "72f6692d1366a60b7947599cc27091710ef474a925a8ed62e7c0ef602f3779ae",
+      "bytes": 6185
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/keyed.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/keyed.png",
+      "sha256": "95ca462e4a3beb2c0bce4947af77d9ee7ca824c5b437a99ac368f10ecf035d8b",
+      "bytes": 1559056
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/ownership.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/ownership.png",
+      "sha256": "d6dd421df551a35a5ffceacef11c9f97cbe915fef4dcadcf8973f927fa702ab3",
+      "bytes": 15806
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/manifest.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/manifest.json",
+      "sha256": "3dee0a1dac3d3fb4a57fa1db5ec5db675ac8bb912206b64131e39b9396d540fd",
+      "bytes": 3087
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/receipt.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/receipt.json",
+      "sha256": "6502093c63675b7317614836a3501b38f0a53d5b96fb1a363971e4025316439f",
+      "bytes": 4966
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-base.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-base.png",
+      "sha256": "deb26fa0ca0ae77349260232fb7a1b33872d96825265ab48eaa44916c2863a02",
+      "bytes": 16105
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-base.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-base.png",
+      "sha256": "2842676cca16ca86117715a1844ab633fc8d7f531225eaaccc8091c25479d2a8",
+      "bytes": 7958
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/jaw.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/jaw.png",
+      "sha256": "6e95a0110fe11f2ef2dc40bce846141d3eaba786bf866db29f7cb853c94a8cc7",
+      "bytes": 2661
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-elbow.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-elbow.png",
+      "sha256": "7223c3e731659b474d5fa1fd788531c60836b03eb70d245c790c0fa2b354fb53",
+      "bytes": 8939
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-distal.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-distal.png",
+      "sha256": "c8089932b4604de6403bd00cf88e32f496650986cb74029078c4eaea04fb61d4",
+      "bytes": 174979
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-elbow.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-elbow.png",
+      "sha256": "f1fae5e880b9029b3e5148c2f67ebc2e8c796e4aa64e7d720d703978c8cc2fe7",
+      "bytes": 30605
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-foot.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-foot.png",
+      "sha256": "0dd445f3a9683f33868baa79de86c439fffdcf998b2328536c28e284f54ad914",
+      "bytes": 5689
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/body.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/body.png",
+      "sha256": "ecce05f0d441993defaf2879f68914c934c97e39fcad27e23dcc8ac4de2c39e4",
+      "bytes": 113209
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-upper.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-upper.png",
+      "sha256": "22d61540c5a571b76066f3979fbff06dd4e0cebb0a07ab80251ec866d918120b",
+      "bytes": 12021
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-foot.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-foot.png",
+      "sha256": "65ffbbca81549b82d4bf01919ce721c5aac2cee78cbe23db6f70f840554aa3f2",
+      "bytes": 3220
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/head.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/head.png",
+      "sha256": "b5399deb7c903cfdc5b09152021088bc1f0688f74b74a397e3dcb9c45459beac",
+      "bytes": 21739
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/tail.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/tail.png",
+      "sha256": "e5de2046aca448fc3a7c2df540468a3a474946f550ccc95d3b0faa94f8fc7921",
+      "bytes": 2985
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-far.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-far.png",
+      "sha256": "d5235ba3d00043c7d3f7c5f2473b9c0609d770b0acd538bafb7006e0003b47ac",
+      "bytes": 2452
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-near.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-near.png",
+      "sha256": "1fa00cb6e039bb05df984bdb41f5764ed70f5cc97cef1f873f62077950cb440d",
+      "bytes": 6771
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-wrist.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-wrist.png",
+      "sha256": "a8ab7f887e13c3bd5fe7b797174ccb0440306993d4ef271e806cb480a8ecad12",
+      "bytes": 21161
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-wrist.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-wrist.png",
+      "sha256": "9438f9f5f793208911fb77e9714b1d5568f9be358321d578926a190dd90dcf45",
+      "bytes": 103240
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-distal.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-distal.png",
+      "sha256": "eddb17fe93cf1c7af722f0337db6b1f86afd16262f5cfc37b5924c580a6d7ed6",
+      "bytes": 38606
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-upper.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-upper.png",
+      "sha256": "b666dcb399abf8ca2a688ecc1b4e884aef4e572e68e11cab14625b194af95551",
+      "bytes": 8308
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.json",
+      "sha256": "16054f9042e40ee1b609b304d00678e94112fb2e773f7568d59f868a4b52bbcc",
+      "bytes": 7443
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.png",
+      "sha256": "ecab538bd0ac177fc6d5fce97ce4b079b3aade2831abd443bd47117875a8f3fa",
+      "bytes": 489496
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/receipt.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/receipt.json",
+      "sha256": "ffd72c66fad2df35867ce1ff7a337e58e55f074e61c828d33c3c23b5e5b2ced2",
+      "bytes": 3092
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/presence.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/master.png",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/master.png",
+      "sha256": "06f0e80ad5183a5c1a076dc4afb9e3bf48a5b60ece306a621095db27b772d411",
+      "bytes": 1517856
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/prompt.txt",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/prompt.txt",
+      "sha256": "a2e5fc052fd88386bfb4d13697bb79d2f169a96969d20ac6ce085742f66cba52",
+      "bytes": 10946
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/authoring.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/authoring.json",
+      "sha256": "d6b218c7958d0177ffd9513600991df102c849106f297408888bb5404c4c135b",
+      "bytes": 7561
+    },
+    {
+      "peer": "~/Projects/celestial-frontier-anthropic-mac/audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/subject-source.json",
+      "local": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/subject-source.json",
+      "sha256": "f342a6764c31fa352cfcc8d171066c23086226386efbe19018d970fe3349727f",
+      "bytes": 2254
+    }
+  ]
+}

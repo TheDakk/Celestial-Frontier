@@ -1,0 +1,67 @@
+{
+  "name": "Marine Iguana",
+  "family": "quadruped",
+  "species": {
+    "name": "Marine Iguana",
+    "aspect": 4,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "blunt square salt-crusted snout",
+      "laterally flattened paddle-like swimming tail",
+      "low spiny crest and long curved claws"
+    ],
+    "note": "stubby blunt face and dark sooty body - not the long pointed green-iguana profile"
+  },
+  "genome": {
+    "seed": 3330632582,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 5,
+    "body": 15,
+    "loco": 7,
+    "trait": 1,
+    "size": 3,
+    "diet": 5,
+    "head": 5,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 14,
+    "detail": 9,
+    "accent": 12,
+    "temper": 1,
+    "sense": 1,
+    "repro": 3,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Marine Iguana"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marine Iguana\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3330632582\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 525,
+  "profile": {
+    "id": "marine-iguana",
+    "names": [
+      "Marine Iguana"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": ""
+  }
+}

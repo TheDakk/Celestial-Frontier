@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c3-17-orchid-bee",
+    "name": "Orchid Bee",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-17-orchid-bee",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-17-orchid-bee/master.png"
+  },
+  {
+    "id": "c243b03r1c3-18-scorpionfly",
+    "name": "Scorpionfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-18-scorpionfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-18-scorpionfly/master.png"
+  },
+  {
+    "id": "c243b03r1c3-19-stick-insect",
+    "name": "Stick Insect",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-19-stick-insect",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-19-stick-insect/master.png"
+  }
+]

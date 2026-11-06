@@ -1,0 +1,387 @@
+[
+  {
+    "name": "Abalone",
+    "family": "gastropod",
+    "priorPackets": [
+      "c215program-24-abalone-02"
+    ],
+    "reasons": [
+      "missing-anatomy: part eye-far (eyeFar) covers 16% paint (reference 64%)"
+    ]
+  },
+  {
+    "name": "Chiton",
+    "family": "gastropod",
+    "priorPackets": [
+      "c215program-21-chiton-02"
+    ],
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0089 < 0.0332)"
+    ]
+  },
+  {
+    "name": "Conch",
+    "family": "gastropod",
+    "priorPackets": [
+      "c215program-23-conch"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 6.5% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Land Snail",
+    "family": "gastropod",
+    "priorPackets": [
+      "c215program-16-land-snail"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family gastropod"
+    ]
+  },
+  {
+    "name": "Limpet",
+    "family": "gastropod",
+    "priorPackets": [
+      "c215program-20-limpet-02"
+    ],
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0130 < 0.0196)"
+    ]
+  },
+  {
+    "name": "Crayfish",
+    "family": "crustacean-clawed",
+    "priorPackets": [
+      "c215program-26-crayfish"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ]
+  },
+  {
+    "name": "Hermit Crab",
+    "family": "crustacean-clawed",
+    "priorPackets": [
+      "c215program-28-hermit-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ]
+  },
+  {
+    "name": "Lobster",
+    "family": "crustacean-clawed",
+    "priorPackets": [
+      "c215program-27-lobster"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ]
+  },
+  {
+    "name": "Fruit Bat",
+    "family": "flyer-membrane",
+    "priorPackets": [
+      "g2c163familyoriginals-21-fruit-bat"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family flyer-membrane"
+    ]
+  },
+  {
+    "name": "Insect-Eating Bat",
+    "family": "flyer-membrane",
+    "priorPackets": [
+      "g2c163familyoriginals-23-insect-eating-bat"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Vampire Bat",
+    "family": "flyer-membrane",
+    "priorPackets": [
+      "g2c163familyoriginals-24-vampire-bat"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Centipede",
+    "family": "myriapod",
+    "priorPackets": [
+      "c198creaturesupplyb-18-centipede",
+      "c210originals-05-centipede-framing02",
+      "c210originals-05-centipede",
+      "g2c163familyoriginals-13-centipede"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family myriapod"
+    ]
+  },
+  {
+    "name": "Giant Centipede",
+    "family": "myriapod",
+    "priorPackets": [
+      "c198creaturesupplyb-19-giant-centipede",
+      "g2c163familyoriginals-14-giant-centipede"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Millipede",
+    "family": "myriapod",
+    "priorPackets": [
+      "c198creaturesupplyb-20-millipede",
+      "c210originals-06-millipede-framing02",
+      "c210originals-06-millipede",
+      "g2c163familyoriginals-15-millipede"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Pyrosome",
+    "family": "colonial-filter",
+    "priorPackets": [
+      "c221program-41-pyrosome"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family colonial-filter"
+    ]
+  },
+  {
+    "name": "Salp",
+    "family": "colonial-filter",
+    "priorPackets": [
+      "c221program-40-salp"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family colonial-filter"
+    ]
+  },
+  {
+    "name": "Barnacle",
+    "family": "barnacle",
+    "priorPackets": [
+      "c221program-15-barnacle"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family barnacle"
+    ]
+  },
+  {
+    "name": "Fly Larvae",
+    "family": "larva",
+    "priorPackets": [
+      "c221program-11-fly-larvae"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family larva"
+    ]
+  },
+  {
+    "name": "Tardigrade",
+    "family": "lobopod",
+    "priorPackets": [
+      "c221program-38-tardigrade"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family lobopod"
+    ]
+  },
+  {
+    "name": "Sea Squirt",
+    "family": "sessile-filter",
+    "priorPackets": [
+      "c213creaturesupply-21-sea-squirt"
+    ],
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 2.1%",
+      "unexplained-anatomy: 41.1% of the paint lies away from the body and in no part (reference 33.1%)"
+    ]
+  },
+  {
+    "name": "Horseshoe Crab",
+    "family": "xiphosuran",
+    "priorPackets": [
+      "c221program-39-horseshoe-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family xiphosuran"
+    ]
+  },
+  {
+    "name": "Bison",
+    "family": "quadruped",
+    "priorPackets": [
+      "c192creaturesupply-19-bison",
+      "c202creaturesupply-18-bison",
+      "g2c59-03-bison",
+      "g2quadrupedpilot-14-bison"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 25% paint (reference 84%)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 24% paint (reference 84%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 11% paint (reference 46%)"
+    ]
+  },
+  {
+    "name": "Buffalo",
+    "family": "quadruped",
+    "priorPackets": [
+      "c192creaturesupply-24-buffalo",
+      "c196quadrupedoriginals-15-buffalo",
+      "c202creaturesupply-08-buffalo",
+      "g2c110-05-buffalo",
+      "g2c136repairs-07-buffalo",
+      "g2c136targetededits-07-buffalo"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 1.7%)",
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)",
+      "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 1.7%)"
+    ]
+  },
+  {
+    "name": "Dog",
+    "family": "quadruped",
+    "priorPackets": [
+      "c132references-03-dog",
+      "c186creaturesupply-13-dog",
+      "c192creaturesupply-06-dog",
+      "c202creaturesupply-23-dog",
+      "g2referencesc62-06-dog"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+      "missing-anatomy: part tail2 (tail2) covers 10% paint (reference 69%)",
+      "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 50%)"
+    ]
+  },
+  {
+    "name": "Forest Elephant",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c114-01-forest-elephant"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Giant Salamander",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c136repairs-01-giant-salamander",
+      "g2c136targetededits-01-giant-salamander"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Goat",
+    "family": "quadruped",
+    "priorPackets": [
+      "c202creaturesupply-21-goat",
+      "g2quadrupedpilot-20-goat"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Kinkajou",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-07-kinkajou",
+      "g2c90-22-kinkajou",
+      "c213originals-09-kinkajou"
+    ],
+    "reasons": [
+      "missing-anatomy: part jaw (jaw) covers 18% paint (reference 77%)",
+      "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 5.6%)"
+    ]
+  },
+  {
+    "name": "Okapi",
+    "family": "quadruped",
+    "priorPackets": [
+      "c192creaturesupply-14-okapi",
+      "c203creaturesupplyb-01-okapi",
+      "g2c76-24-okapi"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+    ]
+  },
+  {
+    "name": "Shrew",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-14-shrew",
+      "g2c98-19-shrew",
+      "c213originals-16-shrew"
+    ],
+    "reasons": [
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 20% paint (reference 66%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 15% paint (reference 52%)",
+      "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 1.7%)",
+      "missing-anatomy: part fore-near-knee (foreNearKnee) covers 27% paint (reference 84%)",
+      "unexplained-anatomy: 20.3% of the paint lies away from the body and in no part (reference 8.6%)"
+    ]
+  },
+  {
+    "name": "Takin",
+    "family": "quadruped",
+    "priorPackets": [
+      "c213creaturesupply-14-takin",
+      "g2c110-20-takin"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)"
+    ]
+  },
+  {
+    "name": "Vole",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-12-vole",
+      "g2c92-16-vole",
+      "c213originals-19-vole"
+    ],
+    "reasons": [
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 12% paint (reference 48%)",
+      "unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 5.1%)",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 43%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 24%)",
+      "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "name": "Wall Lizard",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c163familyoriginals-03-wall-lizard"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Water Buffalo",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196quadrupedoriginals-17-water-buffalo",
+      "c203creaturesupply-01-water-buffalo",
+      "g2c110-13-water-buffalo",
+      "g2c136repairs-10-water-buffalo"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+    ]
+  }
+]

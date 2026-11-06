@@ -1,0 +1,28 @@
+{
+  "status": "HOLD_OWNER_REVIEW_REQUESTED",
+  "species": [
+    "Boa",
+    "Mountain Viper"
+  ],
+  "frames": [
+    "turn3-hit-idle-50",
+    "turn3-hit-idle-90"
+  ],
+  "observation": "At midpoint the winner body/tail is lost behind a horizontal boundary near y480 inside the1024x576 image; at late idle tail reaches left image edge. Full-size stills are primary evidence.",
+  "sourceFacts": [
+    {
+      "file": "port/v2/apps/game/src/battle2/stage.ts",
+      "lines": "149-158",
+      "fact": "Actor holders are added before the near plate, which is drawn over them."
+    },
+    {
+      "file": "port/v2/apps/game/src/battle2/parts-rig.ts",
+      "lines": "165-178",
+      "fact": "Tallest-pose probe measures largest upward rise; it does not establish a lower envelope against foreground occlusion."
+    }
+  ],
+  "inference": "Near-plate over-occlusion may contribute; this is not proof of GPU clipping or the physical bottom image edge.",
+  "owner": "Claude battle2/motion per PARALLEL_GIT_PROTOCOL.md; source-side review requested without heavy work during C363",
+  "rulers": "unchanged; no plate removal, scale cap change, contact/ARAP weakening, C223 or certification",
+  "next": "Review axial victory anchoring/foreground envelope under unchanged limits; independent batch7 continues."
+}

@@ -1,0 +1,34 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Python",
+      "dn": "Python",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "an": "Python",
+      "dn": "Python",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Python",
+      "dn": "Python",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 30,
+      "hpB": 0
+    }
+  ],
+  "runId": "20260923-python-open-native-01"
+}

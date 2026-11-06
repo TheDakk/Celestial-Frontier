@@ -1,0 +1,49 @@
+{
+  "status": "EXACT_FROZEN_AUDIT_WITNESS_EXCEPTION_ONLY",
+  "firstCheckExit": 2,
+  "evidenceLog": "audits/C475_DECISIONS_20261019/coordinator/c484-first-staging-check-red.log",
+  "verbatimWitnesses": [
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e82dabf37c6262b632e324bd3562287657815eb1f87922b7d0869af3776de5a7",
+      "bytes": 13116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "e6205537164893f37999b9f8c2f4c71811d2514fc8edf7c8f9f6b50093ef5272",
+      "bytes": 1801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "bb08a04ec411d825ee6a4b52af5925c0aee113189c0ec15572a054cf0621f748",
+      "bytes": 11440
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "c9169937d6bf9e45625d90000ed5eecf6d076a3f541565721f07800212068a9d",
+      "bytes": 14446
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "9c03755b12794ceb285f9d99e82d0a91ae20d62330e5bbb1eb2d6bb7369dcb73",
+      "bytes": 13120
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "ded16462436fa4df351d3cebe98adf438b88bb1c909c53abfa89e6b3d0f0366a",
+      "bytes": 1805
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "ef6f0199b9bf9143a332fe9a39b335dade92f5157d22867f73dd821cec0fcc43",
+      "bytes": 11444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/integration-staging-r01/merge-evidence-r02/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "33468436ecb21e0da2210b0ac89ec19c574681588934c3aea04a0dd00ba40615",
+      "bytes": 14770
+    }
+  ],
+  "productionConflictWhitespaceCheck": "UNCHANGED",
+  "signingAttemptedBeforeCorrection": false
+}

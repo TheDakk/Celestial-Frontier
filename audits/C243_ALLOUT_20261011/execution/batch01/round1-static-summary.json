@@ -1,0 +1,286 @@
+{
+  "scope": "Batch 1 first repaint round; diagnostic only; native and finish pending",
+  "species": 37,
+  "baselinePackets": 74,
+  "baselineScored": 72,
+  "baselineStaticPass": 0,
+  "repaintAttempts": 99,
+  "eligibleAdmitStaticPass": 8,
+  "gainedStaticSpecies": [
+    "Sloth Bear",
+    "Guinea Pig",
+    "Yak",
+    "African Elephant",
+    "Crocodile",
+    "Axolotl",
+    "Marsh Rodent",
+    "Camel"
+  ],
+  "lostStaticSpecies": [],
+  "roundTwo": [
+    {
+      "name": "Anole",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required"
+      ]
+    },
+    {
+      "name": "Blind Salamander",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 68%)",
+        "missing-anatomy: part hind-near-knee (hindNearKnee) covers 22% paint (reference 70%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 17% paint (reference 66%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 21% paint (reference 63%)",
+        "missing-anatomy: part hind-far-knee (hindFarKnee) covers 28% paint (reference 80%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 22% paint (reference 71%)",
+        "missing-anatomy: part fore-far-knee (foreFarKnee) covers 26% paint (reference 78%)"
+      ]
+    },
+    {
+      "name": "Box Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ]
+    },
+    {
+      "name": "Coati",
+      "attempts": 3,
+      "lastReasons": [
+        "facing: the mirrored painting matches quadruped better (0.0206 < 0.0441)",
+        "wrong-family: primate matches clearly better (0.0270 < 0.0441)",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on"
+      ]
+    },
+    {
+      "name": "Dromedary Camel",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+      ]
+    },
+    {
+      "name": "Echidna",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+        "missing-anatomy: part ear-far-root (earFarRoot) covers 0% paint (reference 67%)"
+      ]
+    },
+    {
+      "name": "Frilled Lizard",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 18% paint (reference 56%)",
+        "missing-anatomy: part fore-far-knee (foreFarKnee) covers 16% paint (reference 76%)",
+        "unexplained-anatomy: 19.6% of the paint lies away from the body and in no part (reference 8.3%)"
+      ]
+    },
+    {
+      "name": "Fur Seal",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 44%)",
+        "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 8.6%)"
+      ]
+    },
+    {
+      "name": "Giant Anteater",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 69%)"
+      ]
+    },
+    {
+      "name": "Ibex",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 8% paint (reference 62%)",
+        "unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    },
+    {
+      "name": "Mole",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)",
+        "unexplained-anatomy: 13.1% of the paint lies away from the body and in no part (reference 5.1%)"
+      ]
+    },
+    {
+      "name": "Olm",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 53%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 3% paint (reference 53%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 18% paint (reference 57%)",
+        "missing-anatomy: part fore-near-knee (foreNearKnee) covers 27% paint (reference 90%)",
+        "missing-anatomy: part fore-far-knee (foreFarKnee) covers 16% paint (reference 59%)"
+      ]
+    },
+    {
+      "name": "Pangolin",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 1.9%)"
+      ]
+    },
+    {
+      "name": "Pond Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 14% paint (reference 67%)"
+      ]
+    },
+    {
+      "name": "Porcupine",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+        "missing-anatomy: part tail-tip (tail3) covers 10% paint (reference 39%)",
+        "missing-anatomy: part tail-root (tail0) covers 26% paint (reference 88%)"
+      ]
+    },
+    {
+      "name": "Sea Lion",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 61%)"
+      ]
+    },
+    {
+      "name": "Sea Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 24%)",
+        "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 14% paint (reference 56%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 4% paint (reference 32%)",
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 0% paint (reference 71%)",
+        "missing-anatomy: part fore-near-knee (foreNearKnee) covers 23% paint (reference 66%)"
+      ]
+    },
+    {
+      "name": "Seal",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 9% paint (reference 71%)",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 43%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 10% paint (reference 38%)"
+      ]
+    },
+    {
+      "name": "Skink",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.2%)"
+      ]
+    },
+    {
+      "name": "Snapping Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 8.3%)"
+      ]
+    },
+    {
+      "name": "Softshell Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 4% paint (reference 67%)"
+      ]
+    },
+    {
+      "name": "Squirrel",
+      "attempts": 3,
+      "lastReasons": [
+        "facing: the mirrored painting matches quadruped better (0.0201 < 0.0244)",
+        "extra-anatomy (unassigned): a top appendage of 40.7% paint that no reference appendage lands on",
+        "missing-anatomy: part root (root) was transferred off the canvas (area < 1 px\u00b2)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+        "missing-anatomy: part tail3 (tail3) covers 14% paint (reference 45%)",
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ]
+    },
+    {
+      "name": "Tortoise",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required"
+      ]
+    },
+    {
+      "name": "Turtle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 8% paint (reference 67%)"
+      ]
+    },
+    {
+      "name": "Walrus",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 51%)",
+        "missing-anatomy: part jaw (jaw) covers 18% paint (reference 53%)",
+        "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 3.4%)"
+      ]
+    },
+    {
+      "name": "Warthog",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part tail0 (tail0) covers 8% paint (reference 87%)"
+      ]
+    },
+    {
+      "name": "Water Vole",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 11% paint (reference 48%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+        "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 5.1%)"
+      ]
+    },
+    {
+      "name": "Whiptail",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+        "missing-anatomy: part hind-far-knee (hindFarKnee) covers 23% paint (reference 94%)",
+        "missing-anatomy: part hind-far-root (hindFarRoot) covers 5% paint (reference 100%)",
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+        "unexplained-anatomy: 7.1% of the paint lies away from the body and in no part (reference 2.2%)"
+      ]
+    },
+    {
+      "name": "Wild Horse",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%)",
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 17% paint (reference 70%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 20% paint (reference 57%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 23%)"
+      ]
+    }
+  ]
+}

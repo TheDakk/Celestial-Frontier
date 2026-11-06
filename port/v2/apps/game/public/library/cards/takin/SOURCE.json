@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Takin",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/rebound-01/c243b07r2c3-31-takin/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4006c7b1eb8c0fe7ab9a62e3c8c0801a3c8d54f1e7025d305bc3f27e3b283b36"
+}

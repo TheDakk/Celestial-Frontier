@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mountain Lizard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c196quadrupedoriginals-06-mountain-lizard/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a7f4ff020fe72b58127926a8939abade5f3b5d22ad4c64a6115d47e5f9f074ce"
+}

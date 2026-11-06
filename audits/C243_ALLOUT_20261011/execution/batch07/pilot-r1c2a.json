@@ -1,0 +1,16 @@
+[
+  {
+    "id": "c243b07r1c2-02-chiton",
+    "name": "Chiton",
+    "family": "gastropod",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c2-02-chiton",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c2-02-chiton/master.png"
+  },
+  {
+    "id": "c243b07r1c2-03-conch",
+    "name": "Conch",
+    "family": "gastropod",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c2-03-conch",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c2-03-conch/master.png"
+  }
+]

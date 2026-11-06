@@ -37,6 +37,7 @@ import {
   prepareF4AuthorityUpdate,
   readF4Authority,
   readLegacyXpFirstsAuthority,
+  combatOpenEncounterMemberIdsV1,
   type Arc5OwnershipMigrationEvidenceV2,
   type Arc5OwnershipV2SuccessorProtectionReason,
   type F4MultiOutcomePreDrawDeriveInput,
@@ -80,7 +81,9 @@ export type Arc5BreedPreDrawRefusalReasonV1 =
   | 'capacity:f4-authority-unrepresentable'
   | `capacity:achievement:${Arc9ProgressionProjectionProtectionReasonV1}`
   | `capacity:xp-firsts:${LegacyXpFirstsProtectionReason}`
-  | 'capacity:complete-save-unrepresentable';
+  | 'capacity:complete-save-unrepresentable'
+  | 'open-encounter:parent-in-command-fight'
+  | 'open-encounter:carrier-protected';
 
 export type Arc5BreedTransactionOutcomeV1 =
   F4RuntimePreDrawMultiOutcomeCommitOutcome<Arc5BreedPreDrawRefusalReasonV1>;
@@ -667,6 +670,13 @@ export async function commitArc5BreedActionV1(
             kind: 'refused' as const,
             reason: 'preflight:earned-stardust-invalid' as const,
           });
+        }
+        /* §20 Command: a companion held by an open Command fight cannot breed until that fight settles (Withdraw is always
+           offered), read from the SAME detached extensions this transaction commits against — never from UI state. */
+        const held = combatOpenEncounterMemberIdsV1(preDraw.extensions);
+        if (held === null) return Object.freeze({ kind: 'refused' as const, reason: 'open-encounter:carrier-protected' as const });
+        if (captured.parentCreatureIds.some((id) => held.includes(id))) {
+          return Object.freeze({ kind: 'refused' as const, reason: 'open-encounter:parent-in-command-fight' as const });
         }
         const preflight = preflightArc5BreedV1(captured.ownershipV2, {
           parentCreatureIds: captured.parentCreatureIds,

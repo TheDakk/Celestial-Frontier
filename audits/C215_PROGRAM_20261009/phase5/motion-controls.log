@@ -1,0 +1,12 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  4 passed (4)
+      Tests  24 passed (24)
+   Start at  01:42:25
+   Duration  1.77s (transform 448ms, setup 0ms, import 650ms, tests 2.57s, environment 0ms)
+
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json

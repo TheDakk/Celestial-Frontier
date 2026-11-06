@@ -1,0 +1,19 @@
+{
+  "stage": "rebind-dolphin01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "c380-rebind-dolphin01",
+    "--",
+    "node",
+    "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/rebind.mjs"
+  ],
+  "startedUnix": 1792211048.646083,
+  "beforeGiB": 86.78219985961914,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.004,
+  "lowestGiB": 86.78219223022461,
+  "afterGiB": 86.79669570922852
+}

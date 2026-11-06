@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Viperfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/14-viperfish/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b8a5f78715b3cafa715d3a322706e5643393ed6c8951e344e9d7acffd6802639"
+}

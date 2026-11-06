@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Goat",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/rebound/c266-13-goat-a02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0b62d55f874bc89a8388edf25dffaa2b41ff621cab7026903a973ea4025990c7"
+}

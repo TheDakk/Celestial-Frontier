@@ -1,0 +1,34 @@
+{
+  "status": "PASS_BROWSER_FREE_FISH_SUCCESSOR",
+  "summary": {
+    "schema": "cf.g1-score-batch/v1",
+    "batch": "audits/SWEEP3_20261009",
+    "tag": "c215fishdefault",
+    "pilot": 1,
+    "patternSkipped": [],
+    "scored": 1,
+    "admitPassStatic": [
+      "c203creaturesupplyb-17-arapaima-framing02"
+    ],
+    "refused": [],
+    "staticRed": [],
+    "native": [],
+    "fishSeams": [
+      {
+        "id": "c203creaturesupplyb-17-arapaima-framing02",
+        "status": "STATIC_PASS_NOT_NATIVE",
+        "name": "Arapaima",
+        "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c215fishdefault/c203creaturesupplyb-17-arapaima-framing02/fit",
+        "sourceMasterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+        "sourceStaticSha256": "7f563bd3c739546bdc2af6018c1b7ca8a9c36898ac5448623c3073361db701e1",
+        "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c215fishdefault-fishseams/c203creaturesupplyb-17-arapaima-framing02/fit",
+        "static": "PASS_STATIC",
+        "staticExitCode": 0
+      }
+    ],
+    "runnerExit": 0
+  },
+  "sealedOwnerUnchanged": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d",
+  "nativeReportsCreated": 0,
+  "rawAndSuccessorStaticPass": true
+}

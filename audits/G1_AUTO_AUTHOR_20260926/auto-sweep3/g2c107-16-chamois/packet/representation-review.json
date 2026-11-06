@@ -1,0 +1,116 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Chamois",
+  "family": "quadruped",
+  "masterSha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147",
+  "subjectSha256": "8c6be5954958c0984e24dedd103f78dc377c42284570087d27b7e46337e1feb2",
+  "promptSha256": "31042a980f4d6e08ad583ea537d9898f51be9b6925a91cc5a1c604d0497d0568",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          382,
+          558
+        ],
+        "tail1": [
+          327,
+          613
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              337.6328571428571,
+              568.6328571428571
+            ],
+            [
+              342.85,
+              560.8071428571428
+            ],
+            [
+              366.73571428571427,
+              536.9214285714286
+            ],
+            [
+              369.7214285714286,
+              533.9357142857143
+            ],
+            [
+              378.67857142857144,
+              527.9642857142858
+            ],
+            [
+              385.6642857142857,
+              527.9642857142858
+            ],
+            [
+              385.6642857142857,
+              591.6785714285714
+            ],
+            [
+              369.4970588235294,
+              600.4970588235294
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              324.9357142857143,
+              611.5642857142857
+            ],
+            [
+              327.9214285714286,
+              596.6357142857142
+            ],
+            [
+              330.90714285714284,
+              587.6785714285714
+            ],
+            [
+              336.87857142857143,
+              569.7642857142857
+            ],
+            [
+              337.6328571428571,
+              568.6328571428571
+            ],
+            [
+              369.4970588235294,
+              600.4970588235294
+            ],
+            [
+              352.82142857142856,
+              609.5928571428572
+            ],
+            [
+              340.87857142857143,
+              615.5642857142857
+            ],
+            [
+              324.9357142857143,
+              615.5642857142857
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "edf58a4c1f843d0b382051af112a001a5e64a0eb486c4da959290b88510926c5"
+}

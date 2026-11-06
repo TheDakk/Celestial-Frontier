@@ -1,0 +1,202 @@
+[
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "control": "exact-positive",
+    "status": "PASS"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "control": "changed-master",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "control": "near-ear-only",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "control": "unknown-profile",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "control": "unreviewed",
+    "status": "PASS_REJECTED"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "control": "exact-positive",
+    "status": "PASS"
+  }
+]

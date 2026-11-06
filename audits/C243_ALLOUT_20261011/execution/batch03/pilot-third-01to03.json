@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c3-01-bumblebee",
+    "name": "Bumblebee",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-01-bumblebee",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-01-bumblebee/master.png"
+  },
+  {
+    "id": "c243b03r1c3-02-butterfly",
+    "name": "Butterfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-02-butterfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-02-butterfly/master.png"
+  },
+  {
+    "id": "c243b03r1c3-03-cave-cricket",
+    "name": "Cave Cricket",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-03-cave-cricket",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-03-cave-cricket/master.png"
+  }
+]

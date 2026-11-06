@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-13-tropicbird-c1-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-c267-13-tropicbird-c1-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-13-tropicbird-c1-01/plan.json"
+  ],
+  "startedUnix": 1792278214.093343,
+  "beforeGiB": 91.11649703979492,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.053,
+  "lowestGiB": 90.7117919921875,
+  "afterGiB": 91.07514953613281
+}

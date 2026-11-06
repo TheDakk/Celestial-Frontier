@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lion",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/04-lion/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bf06bf354ad3872f982d9068957f0e66bdca8f546a941ba5dd1ec87832add9c3"
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-dolphin01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "c380-finished-native01",
+    "--",
+    "python3",
+    "audits/C243_ALLOUT_20261011/execution/run-native.py",
+    "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/plan.json"
+  ],
+  "startedUnix": 1792211059.595457,
+  "beforeGiB": 86.79247665405273,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.048,
+  "lowestGiB": 86.39347457885742,
+  "afterGiB": 86.75830078125
+}

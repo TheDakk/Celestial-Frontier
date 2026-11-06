@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Mole",
+    "packetId": "c243b01r2c3-05-mole",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-05-mole",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3a/c243b01r2c3-05-mole/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3a/c243b01r2c3-05-mole/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "2c929f3ffe22d2f4ce6ecaf8f5d9c7c8f2f18c533f05f36f85ea47ba7a0dfaf3"
+  },
+  {
+    "name": "Echidna",
+    "packetId": "c243b01r2c3-11-echidna",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-11-echidna",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3b/c243b01r2c3-11-echidna/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3b/c243b01r2c3-11-echidna/score.json",
+    "static": "INTAKE_REFUSED",
+    "masterSha256": "de3a5ac1277682d1ed52e8e2b16962e21ff80bd1648e2128cd310c35c2f49ebf"
+  },
+  {
+    "name": "Yak",
+    "packetId": "c243b01r2c1-13-yak",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-13-yak",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-13-yak/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-13-yak/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "c09d6aa80ce3730e727ad2fb91db7d9fb4edd43c40aaf9fd65054a97369e8ff4"
+  },
+  {
+    "name": "Wild Horse",
+    "packetId": "c243b01r2c1-14-wild-horse",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-14-wild-horse",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-14-wild-horse/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1c/c243b01r2c1-14-wild-horse/score.json",
+    "static": "RED",
+    "masterSha256": "6110240bf16bcd7b194f31488ae8557c842dac23adf77623cbef1683e4232414"
+  },
+  {
+    "name": "Camel",
+    "packetId": "c243b01r2c3-15-camel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-15-camel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3c/c243b01r2c3-15-camel/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3c/c243b01r2c3-15-camel/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "367146f9fa4a1543b476d73bde1f07a01d694824ca7ce87c4a3af8f1f42ae342"
+  },
+  {
+    "name": "Warthog",
+    "packetId": "c243b01r2c2-17-warthog",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-17-warthog",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c2d/c243b01r2c2-17-warthog/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c2d/c243b01r2c2-17-warthog/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "27f4f09d48b55c4df93919fe49b3f3353e3f400af618f81c49899a059c24c74c"
+  },
+  {
+    "name": "Walrus",
+    "packetId": "c243b01r2c3-19-walrus",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-19-walrus",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3d/c243b01r2c3-19-walrus/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3d/c243b01r2c3-19-walrus/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "61682f47c5c140d401a82cea83a5b74eb6c6f0ce914358a58f81a0d54c278113"
+  },
+  {
+    "name": "Skink",
+    "packetId": "c243b01r2c3-25-skink",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-25-skink",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3e/c243b01r2c3-25-skink/fallback-1/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3e/c243b01r2c3-25-skink/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "2302b6e14584caa2106e838e7eeba4edb5b08ad588aae12aa7ff1c13beaa5015"
+  },
+  {
+    "name": "Blind Salamander",
+    "packetId": "c243b01r2c1-36-blind-salamander",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-36-blind-salamander",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1h/c243b01r2c1-36-blind-salamander/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1h/c243b01r2c1-36-blind-salamander/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "0bfea63012d503706bf32bf771766c2861e391cb28b8389b9b2f6cf9e58e71b1"
+  }
+]

@@ -1,0 +1,121 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Lancelet",
+ "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+ "source": {
+  "master": "audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/master.png",
+  "masterSha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+  "keyedSha256": "0f31db58b9ba1d8ee0825882c41d473535a2f7a597aebcbdae7c506af643adcc",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "bdaecfb3e7de1e58d539723eae449d066aa26bc23015512a3e59920818fdaa55",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "spine1",
+   "joint": "spine1",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "oral-hood-cirri",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "caudal-whole-tip",
+   "joint": "caudal",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "spine5",
+   "joint": "spine5",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "spine4",
+   "joint": "spine4",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "spine3",
+   "joint": "spine3",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "spine2",
+   "joint": "spine2",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "spine0",
+   "joint": "spine0",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "anterior-body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.6626794258373205,
+   0.4880382775119617
+  ],
+  "head": [
+   0.6929824561403509,
+   0.49362041467304624
+  ],
+  "spine0": [
+   0.6291866028708134,
+   0.48484848484848486
+  ],
+  "spine1": [
+   0.5669856459330144,
+   0.4864433811802233
+  ],
+  "spine2": [
+   0.4984051036682616,
+   0.4920255183413078
+  ],
+  "spine3": [
+   0.430622009569378,
+   0.49681020733652315
+  ],
+  "spine4": [
+   0.36363636363636365,
+   0.5007974481658692
+  ],
+  "spine5": [
+   0.3054226475279107,
+   0.5031897926634769
+  ],
+  "caudal": [
+   0.26555023923444976,
+   0.5063795853269537
+  ],
+  "dorsal": [
+   0.5645933014354066,
+   0.4529505582137161
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "cb1ff2748f09a4ac6f410d75db3e5ff343a1420e92ca4dd33e3be5d3766d3cd3",
+  "labelsSha256": "b9e226743cc94632683ae857ae61f24bd0903c52d89561c60131ec3fa2e737f6",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

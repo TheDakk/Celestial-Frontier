@@ -1,0 +1,47 @@
+✔ Recovery checks exact fallen and swapped outcomes, including preserved pre-existing wounds (0.850666ms)
+✔ candidate Recovery duration cannot rebind the unchanged policy (0.537334ms)
+✔ declared D17 outcomes admit a complete positive control (0.147209ms)
+✔ recovery absent (0.12475ms)
+✔ recovery duration raised (0.127667ms)
+✔ recovery duration lowered (0.097583ms)
+✔ defeat wound added (0.163ms)
+✔ missing recovery outcomes (0.11575ms)
+✔ recovery mutation missed (0.124875ms)
+✔ no fallen recovery (0.131625ms)
+✔ no swapped recovery (0.132042ms)
+✔ raw engine substituted (0.1145ms)
+✔ production mismatch (0.095708ms)
+✔ missing production (0.088417ms)
+✔ phase bypass (0.108042ms)
+✔ epoch rebound (0.10425ms)
+✔ wrong version (0.081042ms)
+✔ wrong count (0.06475ms)
+✔ candidate rebound (0.071542ms)
+✔ training reused (0.058125ms)
+✔ missing cohort (0.060125ms)
+✔ duplicate cohort (0.067416ms)
+✔ fractional wins (0.318417ms)
+✔ normal too small (0.08025ms)
+✔ titan too large (0.069958ms)
+✔ near-total defeats (0.069459ms)
+✔ oracle cannot stand for playable Command (0.05875ms)
+✔ missing phase (0.057ms)
+✔ missing withdrawal (0.055542ms)
+✔ missing swap (0.055041ms)
+✔ solo drifts (0.055917ms)
+✔ drop threat (0.090458ms)
+✔ wrong stance beats right (0.062ms)
+✔ right stance ties (0.082334ms)
+✔ parity mismatch (0.059083ms)
+✔ empty replay (0.061125ms)
+✔ changing actual fight seeds cannot change forecast policy when public stats are unchanged (0.226708ms)
+✔ Command policy reads the offered break and preserves its actual terminal outcome (0.0605ms)
+✔ a candidate cannot remove or redefine an inconvenient threat (0.278ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.3855

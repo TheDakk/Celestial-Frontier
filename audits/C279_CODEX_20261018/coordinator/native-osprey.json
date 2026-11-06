@@ -1,0 +1,20 @@
+{
+  "stage": "native-osprey",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-native-osprey",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/osprey/plan.json"
+  ],
+  "startedUnix": 1792335607.685282,
+  "beforeGiB": 76.86943817138672,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.061,
+  "lowestGiB": 76.44831085205078,
+  "afterGiB": 76.83480834960938
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "o3-whale016-observed-r03",
+    "packetId": "o3-whale016-observed-r03",
+    "name": "Whale",
+    "fit": "audits/O3_20261103/coordinator/finishes/whale016-observed-r03/rebound/o3-whale016-observed-r03",
+    "nativeDir": "audits/O3_20261103/coordinator/finishes/whale016-observed-r03/native",
+    "nativeReport": "audits/O3_20261103/coordinator/finishes/whale016-observed-r03/native/report.json",
+    "script": "audits/O3_20261103/coordinator/plans/whale016-observed-r03/script.json",
+    "masterSha256": "c111e2b54f814f311cab79c3b2c4153fbd4f3d1374d8e332e312170cf9767728",
+    "observedPacket": "audits/O3_20261103/coordinator/sources/whale-observed-r03/packet",
+    "staticReport": "audits/O3_20261103/coordinator/plans/whale016-observed-r03/static.json",
+    "sourceHead": "24afbac3cfaf4616d26af9d71e5355075d7aa5db",
+    "status": "DIAGNOSTIC_PASS",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exactWorstContext": "Two source-observed continuous head/body and throat/body boundaries share existing field; fins independent. Corrected source-edge atlas gutters. Controls and ownership unchanged.",
+    "nativeAcceptance": false,
+    "producerMustBeSignedBeforeNative": true,
+    "sourceHeadMustMatchNativeReportSource": true,
+    "compiledRealm": "aquatic",
+    "realmProof": "audits/O3_20261103/coordinator/plans/whale016-observed-r03/realm-proof.json",
+    "classRepresentative": {
+      "species": "Lancelet",
+      "nativeFilm": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/native",
+      "physicalReview": "audits/O3_20261103/w2-wave-a/lancelet-green-r05-native-review/physical-review.json",
+      "requiredPhysicalStatus": "PHYSICAL_CLEAN",
+      "triage": "audits/O3_20261103/coordinator/triage-lancelet-green-r05-original",
+      "requiredFragments": 0,
+      "pinkCutoffExclusive": 100,
+      "requiredBeforeThisNative": true
+    },
+    "finishedMaster": "audits/O3_20261103/coordinator/finishes/whale016-observed-r03/finished/o3-whale016-observed-r03-finished.png",
+    "finishReceipt": "audits/O3_20261103/coordinator/finishes/whale016-observed-r03/finished/o3-whale016-observed-r03-receipt.json",
+    "checkpointReview": "audits/O3_20261103/coordinator/checkpoints/whale016-observed-r03-original/W2.json",
+    "exitCode": 0
+  }
+]

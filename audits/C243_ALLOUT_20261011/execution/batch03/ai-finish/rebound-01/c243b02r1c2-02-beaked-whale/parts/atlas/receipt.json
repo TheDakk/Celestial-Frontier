@@ -1,0 +1,59 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b02r1c2-02-beaked-whale",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "9aaad5130820b6c4ee8852684c178b901c8495ffdbbe269513df3327bfcd582c",
+    "pngSha256": "63d13eebdd33c20c2fbed209921c1638da5480ce43604504ab1f74e40db7cc17"
+  },
+  "parts": [
+    {
+      "name": "axial-body.png",
+      "sha256": "a958abb54df2ad61eb7009b23a57cfd986b8be94e573d22a2368bf45260f545f"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "c03f76c074e6fda744e953b305247e06a3e110fc1a6a3c183158068e5064c0d0"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "92428f66cc2192b64517c0cfce18ff1efd9be637d1677d541e0618c93e510075"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "bd943fe6559bad9b617f50ca4484b7362fed94364103bdd3f9cc3349dc947107"
+    },
+    {
+      "name": "head.png",
+      "sha256": "c2f58e7d9f3b2f23c812482ade073dd84ccb2328935c0a8ef479a3cff6484198"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "992b9b522607f061a237bbcd844aa7f9087525652eea2e14e32416d82edb8a76"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "8f738dbdab05f58d4cf73e926a4b9efd43606db1e3d7dc84f8c0aa2d09ed6c37"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

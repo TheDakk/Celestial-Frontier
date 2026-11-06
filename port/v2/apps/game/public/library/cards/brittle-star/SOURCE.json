@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Brittle Star",
+ "fitDir": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/fit01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0984a2b0e43cc3dc597fe6c4208b93646b6a4ef80ed829f6fac99d2777a98acb"
+}

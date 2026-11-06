@@ -1,0 +1,146 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-38",
+ "files": [
+  {
+   "path": "library/cards/clownfish/SOURCE.json",
+   "bytes": 289,
+   "sha256": "e510148622dc812e53753802dc808542779fff6386747446a59cb88e6aa3bf8f"
+  },
+  {
+   "path": "library/cards/clownfish/card/card.json",
+   "bytes": 2939,
+   "sha256": "1c948c84969585ad68254635db3429d2836cd5f99f0f631afcf5b95e46fc8d5b"
+  },
+  {
+   "path": "library/cards/clownfish/card/labels-512.png",
+   "bytes": 4534,
+   "sha256": "7cb8c8b59cc40a47618a643c02dda6a8cd6cb8f3a9b7aa6514604dee892e2a80"
+  },
+  {
+   "path": "library/cards/clownfish/card/master-512.png",
+   "bytes": 106523,
+   "sha256": "d3dac81078e896273371ca894d36a5ab5c0784eb06938019219b43fab24093cd"
+  },
+  {
+   "path": "library/cards/clownfish/record.json",
+   "bytes": 5148,
+   "sha256": "8af2df347b68f961ccbea4a1a6050c42da08140217046ed33f44f88bc3a629cf"
+  },
+  {
+   "path": "library/cards/mink/SOURCE.json",
+   "bytes": 275,
+   "sha256": "d71bdff824a9720a32f4d2f83dcfb1f93b7707f35e9c37338d9313718cda388f"
+  },
+  {
+   "path": "library/cards/mink/card/card.json",
+   "bytes": 5867,
+   "sha256": "4d2c4f70924c3f1d188de700853030b61d5064c37695ea845efa93df8802657b"
+  },
+  {
+   "path": "library/cards/mink/card/labels-512.png",
+   "bytes": 12307,
+   "sha256": "d7cb3c2193e00da8e3be9e39c18aff61e405d881f2f497272edffbcb718f8723"
+  },
+  {
+   "path": "library/cards/mink/card/master-512.png",
+   "bytes": 150848,
+   "sha256": "ba1f596a6d39a287ffea1d23f5947bf114ecc9a90ae3bba909897feed3de92f4"
+  },
+  {
+   "path": "library/cards/mink/record.json",
+   "bytes": 7495,
+   "sha256": "72e89ce3582895277bf78ceacd7c2d818a75d9e8929140021d7a61a3a41dfd71"
+  },
+  {
+   "path": "library/cards/wild-pig/SOURCE.json",
+   "bytes": 313,
+   "sha256": "47d919c58fccf4a51c279ac088a834044880b4a02412c794dfa18a4bcee90cd3"
+  },
+  {
+   "path": "library/cards/wild-pig/card/card.json",
+   "bytes": 5924,
+   "sha256": "b50809b7ff6c6f51b7c6719884b7f664cd9c355ffac89118db2a729a382cbc3a"
+  },
+  {
+   "path": "library/cards/wild-pig/card/labels-512.png",
+   "bytes": 6928,
+   "sha256": "47fe839f3408648ea18e1ff145fcb74bbb44298512547f784d718c569bb20c44"
+  },
+  {
+   "path": "library/cards/wild-pig/card/master-512.png",
+   "bytes": 124326,
+   "sha256": "bc4e872a77a07924e423b076a5d6a2e8a184b04af7046d846bca13318f863e46"
+  },
+  {
+   "path": "library/cards/wild-pig/record.json",
+   "bytes": 7544,
+   "sha256": "490a9592bbabc32599ceb0c2c94bf907125c002cf75feab1747e27d0c15830fb"
+  },
+  {
+   "path": "library/cards/yak/SOURCE.json",
+   "bytes": 317,
+   "sha256": "7a2a14f9446b4616d182e58c37d3352080e60e730fc1391e8050670a7244dcf2"
+  },
+  {
+   "path": "library/cards/yak/card/card.json",
+   "bytes": 5882,
+   "sha256": "adc4ad85a75e2a386263fb4bc98eaaaa0414000fa738b5f6cadf0e0b30522365"
+  },
+  {
+   "path": "library/cards/yak/card/labels-512.png",
+   "bytes": 7082,
+   "sha256": "4880ea34edb81c1d1476835713a20285f84e3666cd3f61ea73137dc2199f12e5"
+  },
+  {
+   "path": "library/cards/yak/card/master-512.png",
+   "bytes": 97841,
+   "sha256": "7e596f4b382323bc542344d9509fb281ec785936ac2911c583f81b30f36f16c4"
+  },
+  {
+   "path": "library/cards/yak/record.json",
+   "bytes": 7516,
+   "sha256": "e57b3bb96eafbf49cccd8d81e8e9a330a8f6435f674dd20dec11a2a21ea67360"
+  },
+  {
+   "path": "library/creature-finish-source/01-cold-water-fish/labels.png",
+   "bytes": 41622,
+   "sha256": "b20ac79486e6232622e66508c055337b4d15d14677bdba73882768ca154cdab9"
+  },
+  {
+   "path": "library/creature-finish-source/01-cold-water-fish/master.png",
+   "bytes": 1280273,
+   "sha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997"
+  },
+  {
+   "path": "library/creature-finish-source/18-hawk/labels.png",
+   "bytes": 39019,
+   "sha256": "36acd099d38f3afad1a08c8da593fd7e6f38a4c73b4514c78cd3c14e70edefa2"
+  },
+  {
+   "path": "library/creature-finish-source/18-hawk/master.png",
+   "bytes": 1138608,
+   "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa"
+  },
+  {
+   "path": "library/creature-finish-source/o3-lancelet-green-source-observed-r04/labels.png",
+   "bytes": 36406,
+   "sha256": "bdaecfb3e7de1e58d539723eae449d066aa26bc23015512a3e59920818fdaa55"
+  },
+  {
+   "path": "library/creature-finish-source/o3-lancelet-green-source-observed-r04/master.png",
+   "bytes": 1145022,
+   "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf"
+  },
+  {
+   "path": "library/creature-finish-source/pike/labels.png",
+   "bytes": 42210,
+   "sha256": "915d74261a74eca04e027fa348baf100c2485168b09f46301b95ea2c7a51e09b"
+  },
+  {
+   "path": "library/creature-finish-source/pike/master.png",
+   "bytes": 382928,
+   "sha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+  }
+ ]
+}

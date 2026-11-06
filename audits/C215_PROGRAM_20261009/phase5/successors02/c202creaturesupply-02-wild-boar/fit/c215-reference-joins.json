@@ -1,0 +1,59 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/fit",
+  "sourceBindingSha256": "434c3c43b83c218f0c0f22b1455c23944f9dacadc6dab47fd43ef5259d3e3c9f",
+  "candidateBindingSha256": "c483f6d2168b58429f7d6c367d08674ec4be0a6a6442a48935300343352e58b2",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "ear-near-root"
+    ],
+    [
+      "ear-far-root",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "spine"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "head",
+      "spine"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+  "sourceAtlasSha256": "068fa63c34f41f4a796fb4f3ec5607930f011daf17af7325c626dbe160513dbe",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

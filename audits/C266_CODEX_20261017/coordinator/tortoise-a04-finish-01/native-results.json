@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-01-tortoise-a04",
+    "name": "Tortoise",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04",
+    "fit": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/rebound/c266-01-tortoise-a04",
+    "packetId": "tortoise-a04-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/native/report.json",
+    "masterSha256": "883b143342b5344961f2ffab576c472e5c73af9ed6130cd47bd58519c63c644b",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/finished/c266-01-tortoise-a04-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/finished/c266-01-tortoise-a04-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/tortoise01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

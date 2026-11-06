@@ -1,0 +1,290 @@
+[
+  {
+    "id": "04-gharial",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/04-gharial/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/04-gharial/record.json",
+        "sha256": "ba3f9abf31d28aedae7b18c9e6d712f89c5c2ca49238422c37692ad51db14805",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/04-gharial/binding.json",
+        "sha256": "cf2a2627f8a21a00404b03385908d55c6708d3d9390339d04ff236c9d0cdf61f",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/04-gharial/parts/manifest.json",
+        "sha256": "be55e091eb27ad690e9cf6b84d828a0048f42a243fa4c28c755b834d0411ff87",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/04-gharial/parts/atlas/04-gharial.png",
+        "sha256": "fded16f9ae3f5867620a969d13caa08c60bad4a3e8274b433fdaaf6cdfb67664",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/04-gharial/parts/keyed.png",
+        "sha256": "0c8f1aac239b4c4cc8f743aa10b5dc35a77bc0bcd173cfbf9242d5d4f4af137b",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/04-gharial.json"
+  },
+  {
+    "id": "07-gecko",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/07-gecko/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/07-gecko/record.json",
+        "sha256": "83a6bb2b2adf3597cae7a7b71b3c3e13a1756514978edda3e6878246d78376ce",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/07-gecko/binding.json",
+        "sha256": "86f12d1fbfdd9a3a5474b34f6a49f857d4bc2ba8028ea60ccd6ce832db16e325",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/07-gecko/parts/manifest.json",
+        "sha256": "9bd8a0b3b388871aa5436d0e5f4d3e3f8e8d943a911b8a466964eba2ee122fcb",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/07-gecko/parts/atlas/07-gecko.png",
+        "sha256": "cbad15350b632d7cf5217d87c9fa966eaf7555369140353566e630a507ae9781",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/07-gecko/parts/keyed.png",
+        "sha256": "1ab375811e064ccab0dfc0ed33ebc8098731156a2a54ed379756378cba2e8420",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/07-gecko.json"
+  },
+  {
+    "id": "09-alligator-lizard",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/09-alligator-lizard/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/09-alligator-lizard/record.json",
+        "sha256": "80365cbf3f9a92c778821e18fcefdc5aa65d669ba55806359b9a6a8e7695610d",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/09-alligator-lizard/binding.json",
+        "sha256": "8fba4a3c5b9e5de1aac02beef03477477d482f478e30465874a671af3c02fd5f",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/09-alligator-lizard/parts/manifest.json",
+        "sha256": "c382a4214fa99e284dbcda4558dfea44da65a5ff93d1a15de8715114054dca9b",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/09-alligator-lizard/parts/atlas/09-alligator-lizard.png",
+        "sha256": "6f898cbe5f66fb097565398f67aea14597f22ca55ea0bcd5a6de70788cb720ff",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/09-alligator-lizard/parts/keyed.png",
+        "sha256": "d34d2a1d213b870e17dcf29b1ac79e70b4639fa98196d85127496e0624749f22",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/09-alligator-lizard.json"
+  },
+  {
+    "id": "11-tegu",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/11-tegu/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/11-tegu/record.json",
+        "sha256": "ddb82b3a83711e0bc54f5a7225dc835a0d8e0ec95cab155457967c0e153a7a9e",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/11-tegu/binding.json",
+        "sha256": "a67a8950befc37fa477407801ab1e5d6febee818a978c56ad952b30e45dfa458",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/11-tegu/parts/manifest.json",
+        "sha256": "8be6b75d6ded59df32d054775f34b22be3e087eeebbe13465e8fb5da58d1ed04",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/11-tegu/parts/atlas/11-tegu.png",
+        "sha256": "56df9ef306d272cc0f029a9ca0064e9a29c622b96cb920fc374ddcd960e796bf",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/11-tegu/parts/keyed.png",
+        "sha256": "d8f8aa2336d41a9a8ddfa20c52bbd60d578f56ba154f84769256993cccf58efd",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/11-tegu.json"
+  },
+  {
+    "id": "16-land-iguana",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/16-land-iguana/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/16-land-iguana/record.json",
+        "sha256": "9e4c2c976bbb218db8865adf76d13854ce6ac82416b61efe06a28cdd7c804207",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/16-land-iguana/binding.json",
+        "sha256": "aba87906190ff18b815c559aad733ffc7212057bcdb0f4fe0ec323aa7a55c7b7",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/16-land-iguana/parts/manifest.json",
+        "sha256": "77faf31605ffbb5a01765518601a657dd62406c39f162836a8920d28c93d8bd4",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/16-land-iguana/parts/atlas/16-land-iguana.png",
+        "sha256": "736356de580b81eba53bed14a0b7d9f18412e9265ac3b1cb6421c04c10f11085",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/16-land-iguana/parts/keyed.png",
+        "sha256": "ce48e7e5ee52264a6c20be7409714a66cf2c7452418adf5e24901ec75a5a6892",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/16-land-iguana.json"
+  },
+  {
+    "id": "17-coastal-lizard",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/17-coastal-lizard/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/17-coastal-lizard/record.json",
+        "sha256": "3866d16a42b424cc28b30da63f5709f0ec3099a323cdbf51f320eb10573fcb0d",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/17-coastal-lizard/binding.json",
+        "sha256": "e78e46aced991f0c7a3e8efc2d2f181fd2e8edf5e5e2c80c8e2ca751cde405d7",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/17-coastal-lizard/parts/manifest.json",
+        "sha256": "a6de44a376ad7da66b3e4623715e2342fb9454b394d17b16559193275f31c331",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/17-coastal-lizard/parts/atlas/17-coastal-lizard.png",
+        "sha256": "917a60593c532780ad3c08377feb6fd217746f36788ebed670697f80487d8a93",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/17-coastal-lizard/parts/keyed.png",
+        "sha256": "327a06cba1f9914cc9cf1ec4b210ed9a4061130a51fc2a81d50254d0656c9617",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/17-coastal-lizard.json"
+  },
+  {
+    "id": "18-komodo-dragon",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/18-komodo-dragon/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/18-komodo-dragon/record.json",
+        "sha256": "0ee666577f4c14c375c23d867f314e9d1b22a67d412bc58f26d1f67f563226b6",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/18-komodo-dragon/binding.json",
+        "sha256": "7acc6e4be63eab585c847f38c38a4a7d4d14d6abfece050adcef27b520e7851b",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/18-komodo-dragon/parts/manifest.json",
+        "sha256": "168361321ded4ed58da5ffc913d847699d2f48b6866a264eed2eb7f269226332",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/18-komodo-dragon/parts/atlas/18-komodo-dragon.png",
+        "sha256": "4659fe3271b0c20ac66d214d4a595de095710d8884df2b41b34d8b7bc9d7d30a",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/18-komodo-dragon/parts/keyed.png",
+        "sha256": "ba71f4492308913a4b3c130b9209f0af9b1193ed5a8262fc397b8471aef13709",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/18-komodo-dragon.json"
+  },
+  {
+    "id": "22-horned-lizard",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/22-horned-lizard/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/22-horned-lizard/record.json",
+        "sha256": "339e587e646a749f826527d5b181b6203a69dbd6d537de6cf65d9612f7c77eca",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/22-horned-lizard/binding.json",
+        "sha256": "124fd18b5e77610a184bb2c50d298ee175754979707cff5fba91dde619e9b2cc",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/22-horned-lizard/parts/manifest.json",
+        "sha256": "efc0c753e83160af55d4014c28d51c9023590fa9aea66ea2ac45d4d8fd119ef2",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/22-horned-lizard/parts/atlas/22-horned-lizard.png",
+        "sha256": "d83a4976e93c04cf364a5cc217e9150fa403592884301e83e68c36b66d35372b",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/22-horned-lizard/parts/keyed.png",
+        "sha256": "785d9afb3ac668f375d967b170d896c6db5176dcd02040c1934c22fd0a66882c",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/22-horned-lizard.json"
+  },
+  {
+    "id": "24-newt",
+    "unchangedOriginalSource": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136ra/24-newt/fit",
+    "inputs": [
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/24-newt/record.json",
+        "sha256": "aa8a5f6d1fffb4735fcc6f0cb1ebf6669ccfee0d06436401319f47b461f6954e",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/24-newt/binding.json",
+        "sha256": "1a3f9d47d576f5185c78bb021192072d35bf2310693f1f3fd28e0b9cf73e0257",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/24-newt/parts/manifest.json",
+        "sha256": "4fcee1c4731e84884f75b46f63b1437d0df2b9ae80fc1acd631e06bb71fe9a9d",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/24-newt/parts/atlas/24-newt.png",
+        "sha256": "16d9c33d375a352e55c9ac1cc2740babc2f020a0a3237a031fe9240f45cdc82c",
+        "unchanged": true
+      },
+      {
+        "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_SPRAWLER_MOTION_20261002/fits/24-newt/parts/keyed.png",
+        "sha256": "0d1897d4d299fb68f5efb94e7404055d9abd85c03cf119261a6342083ad11cc1",
+        "unchanged": true
+      }
+    ],
+    "static": "audits/C163_SPRAWLER_MOTION_20261002/static-02/24-newt.json"
+  }
+]

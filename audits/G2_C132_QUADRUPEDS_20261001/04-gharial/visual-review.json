@@ -1,0 +1,28 @@
+{
+  "name": "Gharial",
+  "masterSha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: narrow needle snout with male terminal knob, fine teeth, scuted trunk, four visible feet and tall flattened tail. The upturned tail tip is blunt and fin-like rather than a clearly tapering terminal; retain tail-shape review hold. Near and far foot heights differ, with far upper limbs partially occluded. Broad magenta margins now present after the explicit central-rectangle composition instruction.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 563,
+      "x1": 1029,
+      "y1": 717
+    },
+    "margins": {
+      "left": 269,
+      "right": 224,
+      "top": 563,
+      "bottom": 536
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

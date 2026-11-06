@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Barreleye",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/10-barreleye/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "49f0fece62688331fef93a34b2b2e86077e82b27908550786276fba8e0bcfa71"
+}

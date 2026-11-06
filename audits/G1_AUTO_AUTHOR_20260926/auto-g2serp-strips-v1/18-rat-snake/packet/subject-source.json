@@ -1,0 +1,82 @@
+{
+  "name": "Rat Snake",
+  "family": "serpent",
+  "species": {
+    "name": "Rat Snake",
+    "aspect": 7,
+    "headFrac": 0.05,
+    "eyes": "normal",
+    "posture": "coiled",
+    "mustRead": [
+      "long slender body with a flat-bottomed loaf cross-section",
+      "blunt rounded head barely wider than the neck",
+      "large round eyes with round pupils"
+    ],
+    "note": "generic representative: a black/corn rat snake; a harmless colubrid with no triangular viper head"
+  },
+  "genome": {
+    "seed": 3379042373,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 13,
+    "body": 11,
+    "loco": 10,
+    "trait": 20,
+    "size": 5,
+    "diet": 4,
+    "head": 6,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 4,
+    "detail": 8,
+    "accent": 16,
+    "temper": 3,
+    "sense": 9,
+    "repro": 4,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rat Snake"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rat Snake\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3379042373\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 100,
+  "profile": {
+    "id": "snake",
+    "names": [
+      "Cobra",
+      "Viper",
+      "Tree Snake",
+      "Rat Snake",
+      "Garter Snake",
+      "Cottonmouth",
+      "Water Snake",
+      "Mamba",
+      "Rattlesnake",
+      "Racer",
+      "Mountain Viper",
+      "Whip Snake",
+      "Grass Snake",
+      "King Snake",
+      "Cave Snake",
+      "Snake",
+      "Vine Snake"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike"
+    ],
+    "notes": ""
+  }
+}

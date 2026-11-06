@@ -1,0 +1,21 @@
+{
+  "stage": "premerge-validate",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-premerge-validate",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792453644.3486562,
+  "beforeGiB": 59.88063430786133,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.023,
+  "lowestGiB": 59.879093170166016,
+  "afterGiB": 59.87909698486328
+}

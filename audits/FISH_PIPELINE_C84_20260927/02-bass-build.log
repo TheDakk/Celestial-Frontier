@@ -1,0 +1,10 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_LABELS_C56_20260926/gap-labels.mjs:4
+ const need=(ok,m)=>{if(!ok)throw Error('Gap labels: '+m);};
+                                  ^
+
+Error: Gap labels: gap exceeds quarter-width locality
+    at need (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_LABELS_C56_20260926/gap-labels.mjs:4:35)
+    at fillRemainderGap (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_LABELS_C56_20260926/gap-labels.mjs:15:63)
+    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_PIPELINE_C84_20260927/compile.mjs:27:35
+
+Node.js v26.10.0

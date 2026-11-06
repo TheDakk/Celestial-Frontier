@@ -1,0 +1,5 @@
+C500: post terminal with eleven READY packets and explicit holds
+
+Release C495 after signed C499, final W4, disk/cleanup/floor/idle proof.
+All six user-approved checks pass; sole stale I5 RED remains honest.
+No certification, seal, runtime or remote/protected-branch action.

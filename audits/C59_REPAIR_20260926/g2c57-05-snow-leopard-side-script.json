@@ -1,0 +1,42 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Snow Leopard",
+      "dn": "Snow Leopard",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Snow Leopard",
+      "dn": "Snow Leopard",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Snow Leopard",
+      "dn": "Snow Leopard",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Snow Leopard",
+      "dn": "Snow Leopard",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

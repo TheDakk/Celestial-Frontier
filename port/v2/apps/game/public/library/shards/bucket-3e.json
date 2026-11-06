@@ -1,0 +1,276 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-3e",
+ "files": [
+  {
+   "path": "library/cards/agama/SOURCE.json",
+   "bytes": 305,
+   "sha256": "97920c8a0fb5ca3a07c44cd9ed434905be629dfea3e5f95ac6844e440efc3988"
+  },
+  {
+   "path": "library/cards/agama/card/card.json",
+   "bytes": 5270,
+   "sha256": "d3f8181c4d44724524419cab44041e464772d9df1474fdacd0214213f4acd6aa"
+  },
+  {
+   "path": "library/cards/agama/card/labels-512.png",
+   "bytes": 4537,
+   "sha256": "99110a8ef13b3e228b53d22b9af6b5c376a78bcfa47584ca351cee7995cf028d"
+  },
+  {
+   "path": "library/cards/agama/card/master-512.png",
+   "bytes": 46790,
+   "sha256": "877d171307babd2bee197e335516dcf241f0e77fa4f0899ff06fbde5bc6d50b9"
+  },
+  {
+   "path": "library/cards/agama/record.json",
+   "bytes": 7117,
+   "sha256": "c0c2a64c9fe4a66acedbb73b36393e7e64e94366a6639bd0f80785bbf97341fc"
+  },
+  {
+   "path": "library/cards/arowana/SOURCE.json",
+   "bytes": 309,
+   "sha256": "9272980715780f1ad0a4e01b0bff02882d16431016c1e1ea015716c72c4ddbb4"
+  },
+  {
+   "path": "library/cards/arowana/card/card.json",
+   "bytes": 2983,
+   "sha256": "c5d495832757667cdb347969530b194efc16b5f99fe47ab83cf08a64d73f1c2b"
+  },
+  {
+   "path": "library/cards/arowana/card/labels-512.png",
+   "bytes": 3556,
+   "sha256": "e478066417cef1f624fe3e3d00112dfb92a20286df2a54954b322862a5a69ff5"
+  },
+  {
+   "path": "library/cards/arowana/card/master-512.png",
+   "bytes": 58520,
+   "sha256": "80532f08d74df6cc048af9415a8f25dafbf472efe281cc8593f43c1e71e0beab"
+  },
+  {
+   "path": "library/cards/arowana/record.json",
+   "bytes": 5186,
+   "sha256": "9c362d45fbd33962ffb6ac3811e3139731675ff4cad791d0d9033efe107efe29"
+  },
+  {
+   "path": "library/cards/capuchin/SOURCE.json",
+   "bytes": 298,
+   "sha256": "e3c96d99bd0dcdc3845bd652d6ae753097b7fc408bfc44b0dab86208e116d1fb"
+  },
+  {
+   "path": "library/cards/capuchin/card/card.json",
+   "bytes": 3908,
+   "sha256": "dccf399baf93dd5a1abbccb233848b39d4e2463e2dff8cb7f6106b806faf05c5"
+  },
+  {
+   "path": "library/cards/capuchin/card/labels-512.png",
+   "bytes": 7644,
+   "sha256": "2a991bd377e4679519b5842b99253d64db4a6fdedd603e4154152d51ad0e4c8c"
+  },
+  {
+   "path": "library/cards/capuchin/card/master-512.png",
+   "bytes": 89206,
+   "sha256": "17b616c73144d4f026348a9a1d180484e7cf2ed3b81c37dd7db943226cbafedc"
+  },
+  {
+   "path": "library/cards/capuchin/record.json",
+   "bytes": 7843,
+   "sha256": "e4b290a32bc4b7a11477385e74116ffa5edec99613bd4911bf5707793d1086c8"
+  },
+  {
+   "path": "library/cards/killifish/SOURCE.json",
+   "bytes": 290,
+   "sha256": "f3d149c345d2b4836d07dad94180827daa82aef7cece13b4f35757df36b2ac8d"
+  },
+  {
+   "path": "library/cards/killifish/card/card.json",
+   "bytes": 2894,
+   "sha256": "f414a2a68af2ca6abc9ef4736d2dec25e8a11e8d90c48f6d432dfcb109270075"
+  },
+  {
+   "path": "library/cards/killifish/card/labels-512.png",
+   "bytes": 4943,
+   "sha256": "b619f2ba7a11f07128117c89d9b29f7d118b1913819abd372ee0edc696a38d58"
+  },
+  {
+   "path": "library/cards/killifish/card/master-512.png",
+   "bytes": 61750,
+   "sha256": "44c14973d70c1a608741108f90a35bd9a45b32e2be3d1bf6e0c086b6f0313262"
+  },
+  {
+   "path": "library/cards/killifish/record.json",
+   "bytes": 5119,
+   "sha256": "dafb095470a6591a1e3c5caae86b953caaac3973b6dd3f34e20bfb79d73ea150"
+  },
+  {
+   "path": "library/cards/mole/SOURCE.json",
+   "bytes": 319,
+   "sha256": "e8ece6cf9cd3f804c9c90aa26bd17e48cbf6421ebf1611466cbcbea371150b08"
+  },
+  {
+   "path": "library/cards/mole/card/card.json",
+   "bytes": 5612,
+   "sha256": "f04c22bff67b4a0295442196449ce163757af2643ee1818b036db3013c8b5675"
+  },
+  {
+   "path": "library/cards/mole/card/labels-512.png",
+   "bytes": 6414,
+   "sha256": "51bed222644d1b0dbf156a34f5f540e2a0f5dd22b89e95f6841ac72d7a625a93"
+  },
+  {
+   "path": "library/cards/mole/card/master-512.png",
+   "bytes": 60178,
+   "sha256": "30e63613e67a8312ab18199931c992642f0a42685c9f342a2fdd9ae874b611f0"
+  },
+  {
+   "path": "library/cards/mole/record.json",
+   "bytes": 7552,
+   "sha256": "098a4b129ea9a68218b47b973ee3498ace937864e37ec77baab96d84297fb7c1"
+  },
+  {
+   "path": "library/cards/snowshoe-hare/SOURCE.json",
+   "bytes": 354,
+   "sha256": "8800a47d98d450fb7f002acac658f553999f759d05cd94e6cdc5485cc985eb45"
+  },
+  {
+   "path": "library/cards/snowshoe-hare/card/card.json",
+   "bytes": 5633,
+   "sha256": "984b99a0df90ee2c6fd29689ac5c368d92e92e4ea7c0434974a7abad4fab19ea"
+  },
+  {
+   "path": "library/cards/snowshoe-hare/card/labels-512.png",
+   "bytes": 5726,
+   "sha256": "18c8c1ceb5e87c9c7a991d809f48f866801f2e071fd397474c3eb4f55a77b00f"
+  },
+  {
+   "path": "library/cards/snowshoe-hare/card/master-512.png",
+   "bytes": 44927,
+   "sha256": "06834ed582cfff6f8237cfcf423b3802e7d01b0796dfc32db1ef8e4a5d8522d9"
+  },
+  {
+   "path": "library/cards/snowshoe-hare/record.json",
+   "bytes": 7772,
+   "sha256": "e7dd31008cf37dcfa2e531ff63991487ac8f839d9e4c860c187df0b736897f0a"
+  },
+  {
+   "path": "library/cards/snowy-owl/SOURCE.json",
+   "bytes": 282,
+   "sha256": "22b80b443d1c368db9518a8b638ab143a2b8e31c2461666a31d8f00c041950fb"
+  },
+  {
+   "path": "library/cards/snowy-owl/card/card.json",
+   "bytes": 3757,
+   "sha256": "786a9d301899fc922443e880b081f749dc421fd0469b47b5957e325c227bcb6c"
+  },
+  {
+   "path": "library/cards/snowy-owl/card/labels-512.png",
+   "bytes": 6491,
+   "sha256": "ca9fc27a4637617607977a967b89248342f5fa2f921749076d7df52299eea0ff"
+  },
+  {
+   "path": "library/cards/snowy-owl/card/master-512.png",
+   "bytes": 97886,
+   "sha256": "70fe7cccbba251d25779db023353091d1eec6e26300ebbb5368e15a573274875"
+  },
+  {
+   "path": "library/cards/snowy-owl/record.json",
+   "bytes": 5963,
+   "sha256": "bf8d8d566815cee1daa041bde1e63484833bec3770584ac26c356bb51609dd38"
+  },
+  {
+   "path": "library/cards/striped-hyena/SOURCE.json",
+   "bytes": 292,
+   "sha256": "6b0ec796c3e6ece000f8c842ac0ef34bc7e670d23cc6eabf814b5eb8a39fd0ca"
+  },
+  {
+   "path": "library/cards/striped-hyena/card/card.json",
+   "bytes": 5891,
+   "sha256": "d43401179cf739dfbb2212f4a2a91ffe88171b3dc8f8b15caeac278f5a47b601"
+  },
+  {
+   "path": "library/cards/striped-hyena/card/labels-512.png",
+   "bytes": 7524,
+   "sha256": "a6ffb8309920b6c8b1371b50f899f6930ca4b7f78b839dcbc6aa94bacaaa9d46"
+  },
+  {
+   "path": "library/cards/striped-hyena/card/master-512.png",
+   "bytes": 67678,
+   "sha256": "003291733b3fb1190e950f3d98b1de5953a8c502a7ba65863e8aa00e194c2ccd"
+  },
+  {
+   "path": "library/cards/striped-hyena/record.json",
+   "bytes": 7546,
+   "sha256": "02d1a1ccb989df7fefffb9faba54905ce2f5a9d635ea4a8bab1a2b5e8f41288e"
+  },
+  {
+   "path": "library/cards/sun-bear/SOURCE.json",
+   "bytes": 281,
+   "sha256": "7ff6ae02139c2c74702a952dabf1e5ef108894ca4ac048f078cfbed4b1e09f5d"
+  },
+  {
+   "path": "library/cards/sun-bear/card/card.json",
+   "bytes": 5875,
+   "sha256": "d2cdcd3dc364581cbb740dfc0df9a209b023cbe6e1dcd2fff199f20607e4d02d"
+  },
+  {
+   "path": "library/cards/sun-bear/card/labels-512.png",
+   "bytes": 7753,
+   "sha256": "f9a3ab5c777ee29132f1dc61cdc5e8d3f6ffa3b70fabe6a99da320ded71fca68"
+  },
+  {
+   "path": "library/cards/sun-bear/card/master-512.png",
+   "bytes": 88568,
+   "sha256": "3932461d116e2b29eea5d1f0dc1e5293dead670b2dd3c24018ed173dd0ca14b0"
+  },
+  {
+   "path": "library/cards/sun-bear/record.json",
+   "bytes": 7520,
+   "sha256": "6b4884bb84cfeb287616b60fe6e4c7b3c36a331a6b43cd2e6a28690aeb83e82b"
+  },
+  {
+   "path": "library/cards/walleye/SOURCE.json",
+   "bytes": 285,
+   "sha256": "f9e90b311154afe490e9c9507b52b41e0ede5cd52a95b16edefec502b1144d69"
+  },
+  {
+   "path": "library/cards/walleye/card/card.json",
+   "bytes": 2908,
+   "sha256": "df7825ed65ccb0052f76a0e34dd2265db85524304409da6c06efe888546c82b5"
+  },
+  {
+   "path": "library/cards/walleye/card/labels-512.png",
+   "bytes": 6578,
+   "sha256": "232846cb89401973f1f750e1b4aaa9a565e3df8fb5fcb1d1737346d4889e4fb6"
+  },
+  {
+   "path": "library/cards/walleye/card/master-512.png",
+   "bytes": 154411,
+   "sha256": "7ffd38952b09a965b2f096c9baf855810c1043e54ed0290ff9034f3ed2643220"
+  },
+  {
+   "path": "library/cards/walleye/record.json",
+   "bytes": 5144,
+   "sha256": "df13119f385bb2435c6dfc8f37a2bab2c4a3c0e3eb709566a0097c1d385a6d72"
+  },
+  {
+   "path": "library/creature-finish-source/07-marten/labels.png",
+   "bytes": 55672,
+   "sha256": "107e071e98b7b1eaa1b5d742158b9f8c7165560fa04e76490ad508c98672bcc5"
+  },
+  {
+   "path": "library/creature-finish-source/07-marten/master.png",
+   "bytes": 1105742,
+   "sha256": "b189641e56694cb76d9cc23c5fea23959a0d3216abe94c1be1893f209b31966f"
+  },
+  {
+   "path": "library/creature-finish-source/c56-13-magpie/labels.png",
+   "bytes": 47685,
+   "sha256": "1e895d41251f3831af71f3b59786d852531d2e783e1b7f61ff269445e37b5191"
+  },
+  {
+   "path": "library/creature-finish-source/c56-13-magpie/master.png",
+   "bytes": 674060,
+   "sha256": "c548d79ad9dd3591b5a82f2395cef5b8ddb6a12ef371b7a7a4628c6bf5e06571"
+  }
+ ]
+}

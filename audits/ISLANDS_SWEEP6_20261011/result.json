@@ -1,0 +1,58 @@
+{
+ "c186creaturesupply-06-sloth": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c186creaturesupply-06-sloth/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c198creaturesupplyb-09-tamarin": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c198creaturesupplyb-09-tamarin/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c196quadrupedoriginals-24-proboscis-monkey": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c196quadrupedoriginals-24-proboscis-monkey/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c107-18-jackrabbit": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c107-18-jackrabbit/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c76-18-agouti": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c76-18-agouti/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c101-24-beaver": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c101-24-beaver/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c203creaturesupply-05-moose": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c203creaturesupply-05-moose/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "c198creaturesupplyc-02-flamingo": {
+  "tag": "sweep6",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c198creaturesupplyc-02-flamingo/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

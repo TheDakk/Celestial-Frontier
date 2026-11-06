@@ -1,0 +1,235 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10032\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 10032,
+    "ownerId": "authored:painted-procedural/crystalline",
+    "earthName": null
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "dadcce22d2e76d0f7ea5e44bf2acd55a95effba26fa17bb4b2f205577a48d5e3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.924,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ],
+    "contactPolicy": "painted perspective; motion diagnostic, not planted contact acceptance"
+  },
+  "landmarks": {
+    "root": [
+      0.53,
+      0.52
+    ],
+    "pelvis": [
+      0.431,
+      0.509
+    ],
+    "spine": [
+      0.558,
+      0.481
+    ],
+    "chest": [
+      0.673,
+      0.543
+    ],
+    "neck": [
+      0.729,
+      0.411
+    ],
+    "head": [
+      0.761,
+      0.323
+    ],
+    "jaw": [
+      0.831,
+      0.356
+    ],
+    "tail0": [
+      0.386,
+      0.513
+    ],
+    "tail1": [
+      0.289,
+      0.585
+    ],
+    "tail2": [
+      0.179,
+      0.626
+    ],
+    "tail3": [
+      0.082,
+      0.673
+    ],
+    "earNearRoot": [
+      0.657,
+      0.287
+    ],
+    "earNearTip": [
+      0.524,
+      0.1
+    ],
+    "earFarRoot": [
+      0.831,
+      0.264
+    ],
+    "earFarTip": [
+      0.9,
+      0.1
+    ],
+    "hindNearRoot": [
+      0.419,
+      0.532
+    ],
+    "hindNearKnee": [
+      0.384,
+      0.644
+    ],
+    "hindNearAnkle": [
+      0.331,
+      0.803
+    ],
+    "hindNearPaw": [
+      0.33,
+      0.853
+    ],
+    "hindFarRoot": [
+      0.528,
+      0.584
+    ],
+    "hindFarKnee": [
+      0.485,
+      0.711
+    ],
+    "hindFarAnkle": [
+      0.532,
+      0.793
+    ],
+    "hindFarPaw": [
+      0.559,
+      0.818
+    ],
+    "foreNearRoot": [
+      0.621,
+      0.562
+    ],
+    "foreNearKnee": [
+      0.648,
+      0.724
+    ],
+    "foreNearAnkle": [
+      0.669,
+      0.858
+    ],
+    "foreNearPaw": [
+      0.688,
+      0.904
+    ],
+    "foreFarRoot": [
+      0.748,
+      0.565
+    ],
+    "foreFarKnee": [
+      0.738,
+      0.675
+    ],
+    "foreFarAnkle": [
+      0.799,
+      0.821
+    ],
+    "foreFarPaw": [
+      0.835,
+      0.867
+    ]
+  },
+  "materials": {
+    "surface": "crystalline",
+    "paletteSource": "genome"
+  },
+  "clipSetId": "quadruped-land-v1",
+  "source": "audits/PAINTED_VARIATION_MOTION_20260916/masters/crystalline-10032.png",
+  "genome": {
+    "seed": 10032,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 17,
+    "body": 11,
+    "loco": 0,
+    "trait": 18,
+    "size": 1,
+    "diet": 3,
+    "head": 4,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 11,
+    "detail": 0,
+    "accent": 16,
+    "temper": 8,
+    "sense": 1,
+    "repro": 5,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1
+  },
+  "provenance": {
+    "sourceRecord": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-1/record.json",
+    "sourceRecipeHash": "5e0c97e81f8a67d1f6b593f60bc4d8150ad1b55db6ad3d651e5ddbe27277a825",
+    "observationSha256": "bf433ed7b0f1ff70a45df8a64b163c68ea5720607f7a77074e412a3d0d2a97d7",
+    "kitAccepted": false,
+    "perCreatureClipEdits": 0
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09960923651951162,
+      "spine": 0.1300499903883119,
+      "chest": 0.13064838307457158,
+      "neck": 0.1433875866314794,
+      "head": 0.09363759928575699,
+      "jaw": 0.07738862965578336,
+      "hindFarRoot": 0.12261321299109651,
+      "hindFarKnee": 0.1340820644232479,
+      "hindFarAnkle": 0.09451454914456302,
+      "hindFarPaw": 0.03679673898594816,
+      "foreFarRoot": 0.07816009211867646,
+      "foreFarKnee": 0.11045361017187272,
+      "foreFarAnkle": 0.15823084402227014,
+      "foreFarPaw": 0.05841232746604091,
+      "hindNearRoot": 0.025942243542145717,
+      "hindNearKnee": 0.11734138229968147,
+      "hindNearAnkle": 0.16760071598892412,
+      "hindNearPaw": 0.05000999900019988,
+      "foreNearRoot": 0.05536244214266568,
+      "foreNearKnee": 0.16423458831805188,
+      "foreNearAnkle": 0.13563554106501732,
+      "foreNearPaw": 0.04976946855251722,
+      "tail0": 0.04517742799230605,
+      "tail1": 0.1208014900570353,
+      "tail2": 0.11739250401963491,
+      "tail3": 0.10778682665335315,
+      "earFarRoot": 0.09154780172128653,
+      "earFarTip": 0.1779241411388573,
+      "earNearRoot": 0.11005453193758082,
+      "earNearTip": 0.2294733099948663
+    }
+  },
+  "recipeHash": "a4b33f492442305bb787bbd5dd6809e33b375447f0b36896b8b25f33af1b0669"
+}

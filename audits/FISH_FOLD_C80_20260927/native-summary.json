@@ -1,0 +1,68 @@
+[
+  {
+    "case": "native-carp-fin-collar",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 5.299999952316284,
+    "supports": "observed"
+  },
+  {
+    "case": "native-carp-pectoral",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 5.699999928474426,
+    "supports": "observed"
+  },
+  {
+    "case": "native-grayling-fin-collar",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.700000047683716,
+    "supports": "observed"
+  },
+  {
+    "case": "native-grayling-pectoral",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.700000047683716,
+    "supports": "observed"
+  },
+  {
+    "case": "native-paddlefish-first-axis",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.100000023841858,
+    "supports": "rest (default)"
+  },
+  {
+    "case": "native-paddlefish-observed",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.1999999284744263,
+    "supports": "observed"
+  }
+]

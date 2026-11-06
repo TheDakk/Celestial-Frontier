@@ -1,0 +1,12 @@
+✔ exact repeated active-set field skips work and publishes every original Float32 byte (71.919458ms)
+✔ one ULP and signed-zero changes invalidate, no tolerance or target quantization (0.102083ms)
+✔ refused solve invalidates the entry and never publishes cached geometry (0.537458ms)
+✔ owner-private bounded entry and input/output ownership cannot cross rigs (0.094084ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 175.44625

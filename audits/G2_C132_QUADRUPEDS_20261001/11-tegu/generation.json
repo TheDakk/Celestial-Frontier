@@ -1,0 +1,14 @@
+{
+  "id": "11-tegu",
+  "name": "Tegu",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-7b8ca642-7e35-4c51-9ece-50e5178ffc89.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4adc0d8c91148320337bd67d6b6a9515a5dbc16ef063d896a3d887c4780c8026",
+  "bytes": 1055486,
+  "promptSha256": "3b34d3359b1a2e35e4ceabc86df6abe20b74115a4cb0edc9f385b9c7592021d1",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,2436 @@
+{
+  "status": "C371_REPAIRS_DELIVERED_WITH_EXPLICIT_BLOCKERS",
+  "admissionSource": "Claude C260:385 certified+46 pending=431 including pending;200 still unaccepted",
+  "count": 200,
+  "ownReadyNotAdmission": 6,
+  "statusCounts": {
+    "SOURCE_INTAKE_REFUSED": 90,
+    "REFERENCE_BLOCKED": 64,
+    "VISUAL_HOLD": 20,
+    "SOURCE_IDENTITY_HOLD": 14,
+    "READY_AWAITING_CLAUDE_REVIEW": 6,
+    "FAMILY_INTAKE_REFUSED": 1,
+    "COMPILER_BLOCKED": 2,
+    "STATIC_RED": 2,
+    "STATIC_RED_OR_INTAKE_HOLD": 1
+  },
+  "acceptedByC260": [
+    "Blind Salamander",
+    "Catfish",
+    "Conch",
+    "Eagle",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Gorilla",
+    "Gray Whale",
+    "Lemur",
+    "Mole",
+    "Skink",
+    "Spider Monkey",
+    "Takin",
+    "Wild Horse",
+    "Yak"
+  ],
+  "rows": [
+    {
+      "name": "Amphipod",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: insect matches clearly better (0.0498 < 0.0815); missing-anatomy: part leg0far-foot (leg0FarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg1far-foot (leg1FarFoot) covers 6% paint (reference 28%); missing-anatomy: part head (head) covers 7% paint (reference 2%); unexplained-anatomy: 57.2% of the paint lies away from the body and in no part (reference 0.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Anole",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part tail3 (tail3) covers 10% paint (reference 65%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ant",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches insect better (0.0323 < 0.0423); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%); unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 1.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Baboon",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 0.5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Barnacle",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family barnacle",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Bee",
+      "status": "VISUAL_HOLD",
+      "reason": "All five full-size stills show saturated pink wing membranes after finish. Body, pollen baskets and legs remain attached; C255 wing-colour hold persists.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 13,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Black Fly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Blue Whale",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a front appendage of 7.3% paint that no reference appendage lands on",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Boa",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills reviewed full size. Victory midpoint turn3-idle50 swings the left winner body downward and it is abruptly cut off at a fixed horizontal staging/render boundary near y480, losing lower body/tail while arena background continues below. At idle90 left tail also reaches/cuts the left edge. This is a full-figure clipping HOLD despite native mechanics PASS; the cutoff is inside the1024x576 image, not its physical bottom edge. Earlier reaction bodies remain continuous; saddle blotches/red tail/dark eye stripe preserved. Blue/gold dodge shards are FX.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 4,
+        "guardedRoutePassPackets": 4,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Box Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Brine Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part tailfan (tailFan) covers 5% paint (reference 3%); missing-anatomy: part abdomen5 (abdomen5) covers 7% paint (reference 5%); missing-anatomy: part abdomen4 (abdomen4) covers 7% paint (reference 6%); unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 0.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Bullfrog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Butterfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 9% paint (reference 40%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 8% paint (reference 25%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Caecilian",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Tiny front protrusion cannot be independently identified as the canonical sensory tentacle; mouth-tip projection alone is not proof.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Camel",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Both creatures continuous at visible seams in all five finished frames. Right hump wedge at original x735\u2013745,y262\u2013276 is closed in both late idle frames. Dodge FX occludes middle body;other frames show those junctions. One hump,long curved high neck,and very long knobbly legs seen. No fragment or identity clearance inferred from numeric PASS.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Camel Spider",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Distinct pair of long leg-like pedipalps held forward is not independently readable; jaws and walking legs are not substitutes.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cassowary",
+      "status": "VISUAL_HOLD",
+      "reason": "Five full-size stills reviewed. Blue neck, red wattles and casque retain identity, but the right bird's rear plumage separates into large splayed chunks with background gaps in turn3 hit reaction; a long back/rear lobe stays raised during victory idle. HOLD for plumage fragmentation.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cave Cricket",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (detached): 1 separate paint island(s) of \u2265 1% (reference 0); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 15% paint (reference 49%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cave Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cave Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 20.7% paint that no reference appendage lands on; missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 28%); missing-anatomy: part leg0near-upper (leg0NearKnee) covers 12% paint (reference 36%); missing-anatomy: part leg3near-upper (leg3NearKnee) covers 16% paint (reference 48%); missing-anatomy: part head (head) covers 0% paint (reference 2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Centipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family myriapod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Chimpanzee",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part hand-near (armNearHand) covers 17% paint (reference 73%); unexplained-anatomy: 28.8% of the paint lies away from the body and in no part (reference 10.3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Chiton",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: sessile-filter matches clearly better (0.0101 < 0.0314); wrong-family: sessile-filter matches clearly better (0.0104 < 0.0301); wrong-family: sessile-filter matches clearly better (0.0092 < 0.0311)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Clam",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Coati",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches quadruped better (0.0185 < 0.0370); wrong-family: primate matches clearly better (0.0232 < 0.0370)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cobra",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Overall silhouette is wider than tall, about665x535px; canonical reared cobra requires taller than wide.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cockatoo",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 2.3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Coconut Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cold-Water Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Comb Jelly",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Copepod",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: quadruped matches clearly better (0.0350 < 0.0657); extra-anatomy (unassigned): a front appendage of 11.3% paint that no reference appendage lands on; missing-anatomy: part leg1far-foot (leg1FarFoot) covers 0% paint (reference 28%); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%); missing-anatomy: part leg0near-foot (leg0NearFoot) covers 6% paint (reference 29%); missing-anatomy: part tailfan (tailFan) covers 2% paint (reference 3%); missing-anatomy: part abdomen5 (abdomen5) covers 6% paint (reference 5%); missing-anatomy: part head (head) covers 3% paint (reference 2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Crayfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cricket",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%); missing-anatomy: part antenna-near (antennaNear) covers 4% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 1% paint (reference 32%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Cuttlefish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Damselfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches insect better (0.0339 < 0.0421); missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%); missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%); missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 7% paint (reference 29%); missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 3% paint (reference 25%); missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 9% paint (reference 40%); missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 0% paint (reference 44%); missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 11% paint (reference 52%); missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 62%); missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 23% paint (reference 67%); missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 17% paint (reference 75%); unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 1.6%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Deep-Sea Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Deep-Water Coral",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Deer Tick",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on; missing-anatomy (family floor): the largest rear appendage is 3.2% of the paint; every same-family reference shows at least 5.9%",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Diving Beetle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 4% paint (reference 36%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 10% paint (reference 37%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Dobsonfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 7% paint (reference 25%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 11% paint (reference 31%); missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 1% paint (reference 32%); missing-anatomy: part head (head) covers 20% paint (reference 98%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Dragonfish",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 17.8% of the paint lies away from the body and in no part (reference 4.6%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Dragonfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 7% paint (reference 32%); missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 59%); missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 13% paint (reference 46%); missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 6% paint (reference 63%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 11,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Dromedary Camel",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 1.7%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Eagle Ray",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part caudal (caudal) covers 21% paint (reference 66%); missing-anatomy: part rear-body (spine4) covers 10% paint (reference 48%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Echidna",
+      "status": "FAMILY_INTAKE_REFUSED",
+      "reason": "Family intake: leg/torso:hindFar unchanged proportion bound",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Egret",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 22% paint (reference 72%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fairy Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 14% paint (reference 44%); missing-anatomy: part leg1far-foot (leg1FarFoot) covers 7% paint (reference 28%); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 5% paint (reference 29%); missing-anatomy: part leg4near-foot (leg4NearFoot) covers 8% paint (reference 26%); missing-anatomy: part tailfan (tailFan) covers 2% paint (reference 3%); missing-anatomy: part abdomen5 (abdomen5) covers 6% paint (reference 5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fangtooth",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 4.6%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fiddler Crab",
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 1,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Flatworm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fly",
+      "status": "VISUAL_HOLD",
+      "reason": "Five full-size stills reviewed. Large red eyes, grey-striped bristly thorax, two grey wings and halteres retain identity. Fine pink traces remain at wing tips/edges and bristle edges; a narrow head-to-thorax separation is visible when the left head lifts at turn3 idle-50. HOLD for fringe/head continuity review.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fly Larvae",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family larva",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Freshwater Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 16.8% paint that no reference appendage lands on; missing-anatomy: part leg2far-foot (leg2FarFoot) covers 8% paint (reference 28%); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%); missing-anatomy: part antenna-far (antennaFarTip) covers 7% paint (reference 21%); missing-anatomy: part head (head) covers 1% paint (reference 2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Frigatebird",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Folded wings conceal the required very long M-shaped flight outline; forked tail and scarlet throat pouch are seen, but that wing identity marker is not demonstrated.; Male scarlet throat pouch, long hooked bill and scissor-forked tail are seen, but compact folded wings again conceal the required very long M-shaped flight-wing outline.; Scissor tail, long hooked bill and inflated scarlet pouch are clear, but folded wings still do not demonstrate the canonical very long crooked M-shaped wing outline; generic compiled pose conflict is documented.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Frilled Lizard",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part tail3 (tail3) covers 5% paint (reference 20%); unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 8.3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fruit Bat",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family flyer-membrane",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Fur Seal",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Anteater",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Centipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Clam",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Isopod",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: insect matches clearly better (0.0337 < 0.0692); missing-anatomy: part leg0far-foot (leg0FarFoot) covers 10% paint (reference 29%); source framing REFUSE",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Tube Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Giant Water Bug",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 5% paint (reference 62%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Gibbon",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills viewed full size. Long arms, hook hands and tailless white-ringed face stay readable. Suspected small background notch at lower neck/far shoulder on left and horizontal wrist/hand discontinuity on defeated right require source/fragment comparison before disposition. Defeated figure remains visible in a lower standing crouch, not disappearance; no collapse claim. Blue/gold angular shards in dodge and reaction are attack FX.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Glass Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Goat",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on; missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 19%); missing-anatomy: part tail3 (tail3) covers 2% paint (reference 5%); missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 19%); missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Godwit",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 22% paint (reference 72%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Grasshopper",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Grebe",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.4%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Guillemot",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 2.4%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Gulper Eel",
+      "status": "VISUAL_HOLD",
+      "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its body/tail exits the lower frame; a small upper-mouth fragment appears above the head. Luminous tail tip also reads separated in the horizontal frames. Mechanical PASS does not clear these visual defects.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Harvestman",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a top appendage of 7.9% paint that no reference appendage lands on; extra-anatomy (unassigned): a top appendage of 7.6% paint that no reference appendage lands on; extra-anatomy (unassigned): a rear appendage of 8.8% paint that no reference appendage lands on; extra-anatomy (unassigned): a front appendage of 14.3% paint that no reference appendage lands on; missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%); missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 1% paint (reference 58%); missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 26% paint (reference 99%); missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 12% paint (reference 66%); missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 12% paint (reference 73%); missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 9% paint (reference 62%); missing-anatomy: part abdomen (abdomen) covers 30% paint (reference 93%); missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 5% paint (reference 69%); missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 10% paint (reference 84%); missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 10% paint (reference 82%); missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 10% paint (reference 87%); missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 1% paint (reference 80%); missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 27% paint (reference 95%); missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 1% paint (reference 88%); missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 8% paint (reference 88%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Hermit Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Hoatzin",
+      "status": "VISUAL_HOLD",
+      "reason": "HOLD: long background-coloured horizontal/diagonal tear remains from folded wing to tail;clear on left in turn1/turn2 and right victory90. Corrected source islands clean up small pieces but do not close the main seam. Reviewed closure candidate03 is staticRED and was not filmed. Rufous spiky crest,blue face/red eye,long broad tail and heavy chest/slim neck all seen.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Honeybee",
+      "status": "VISUAL_HOLD",
+      "reason": "All five full-size stills retain strong pink wing membranes. Fine face/hair fringe also remains; near hind pollen-bearing lower leg looks sliced/flattened in first hit reaction. Wing-colour HOLD persists.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Horseshoe Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family xiphosuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ibex",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 8% paint (reference 62%); missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 35%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ice Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Insect-Eating Bat",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Isopod",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: insect matches clearly better (0.0291 < 0.0672); missing-anatomy (family floor): the largest rear appendage is 8.4% of the paint; every same-family reference shows at least 21.3%; missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Jellyfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Jerboa",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Kakapo",
+      "status": "VISUAL_HOLD",
+      "reason": "HOLD: wing-to-tail/body opening persists;right turn3-hit-reaction50 also has a large V-shaped head/nape-to-upper-back opening. D28 upper remainder patch assigned to far-wing-root does not produce coherent head/back anatomy in that pose. StaticRED candidate03 refused and was not filmed. Moss-green black/yellow mottling,owl-like whiskered face and squat heavy parrot body all seen.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Kangaroo",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Kingfisher",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 1.5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Kiwi",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches biped-bird better (0.0145 < 0.0198); unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 1.5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Kookaburra",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills viewed at original size. Turn3 reaction opens a very large vertical arena-background slit through the defeated right bird crown/nape, leaving a duplicated back-of-head section. This confirms the source-inspected nape ownership problem; the complete transfer was refused by the empty-painter-part guard and no arbitrary source pixels were left to evade it. Victory settles cleaner but reaction remains HOLD. Dagger bill, brown eye stripe on whitish head and compact short-tailed body remain readable.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Krill",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 1% paint (reference 20%); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 20%); missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 20%); missing-anatomy: part head (head) covers 7% paint (reference 2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ladybug",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Red elytron continuous in both creatures across all five finished frames;the prior grey-blue line is replaced by uninterrupted red shell paint. No see-through shell junction seen. Dome,red spotted cases with faint longitudinal painted split,and small black head beneath shield seen. Natural thin antennae/legs remain independent.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Lancelet",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part jaw (jaw) covers 19% paint (reference 61%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Land Snail",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family gastropod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Leafcutter Ant",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Canonical mustRead requires overhead leaf; generated leaf again projects below/in front of face.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Lionfish",
+      "status": "VISUAL_HOLD",
+      "reason": "All five full-size frames inspected: body and fin-ray attachments remain connected, but pink key-colour residue persists on fine tail and fin-ray tips. Changed D28 placement does not clear the prior fringe HOLD.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Lobster",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Lungfish",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: quadruped matches clearly better (0.0166 < 0.0279); missing-anatomy (family floor): the largest rear appendage is 4.3% of the paint; every same-family reference shows at least 10.0%; unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Macaw",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Huge pale hooked bill, finely lined bare white face and long attached tail are seen, but the tail trails diagonally left and the figure is wider than tall rather than the required vertically hanging perched silhouette.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Manatee",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Long diagonal slit and back grid closed in both poses and both creatures. All visible shoulder/fin and caudal junctions continuous across five finished frames;dodge/strike FX-covered regions checked in clear idle frames. Rounded paddle,split downturned blunt muzzle and paired front flippers,no rear limbs seen.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mandrill",
+      "status": "STATIC_RED",
+      "reason": "Mandrill primary fit refuses leg/torso:legFar proportion; admitted fallback1 changed D28 fit refuses presentation legNearFoot joint limit54.18358.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Manta Ray",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 3.6% of the paint; every same-family reference shows at least 10.0%; missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%); unexplained-anatomy: 17.5% of the paint lies away from the body and in no part (reference 6.9%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mantis",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 12% paint (reference 39%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 16% paint (reference 82%); unexplained-anatomy: 18.5% of the paint lies away from the body and in no part (reference 0.3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Marine Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Marmoset",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Canonical squirrel-sized upright bark-clinging pose not shown; source walks horizontally. Generic walking/no-prop instructions conflict with canonical marker.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mayfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 56%); missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 3% paint (reference 31%); missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 0% paint (reference 56%); missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 5% paint (reference 52%); missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 0% paint (reference 69%); unexplained-anatomy: 12.1% of the paint lies away from the body and in no part (reference 1.6%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Millipede",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mite",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Only six walking-leg tips independently visible; anterior mouth appendages do not establish eight legs.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Monkey",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills viewed full size. Defeated right far forearm/wrist has a sharp light horizontal patch/discontinuity above dark hand in turn3 reaction and both victory frames, reading as an offset or doubled hand edge; source/original-native comparison required. Curling tail stays continuous, four limbs visible, capuchin face/round eyes and opposing digits readable. No broad chest tear or pink fringe observed. Defeated figure remains in standing crouch; no collapse claim. Attack shards are FX.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Moray Eel",
+      "status": "VISUAL_HOLD",
+      "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its lower body/tail exits the frame. In other frames the body and jaw stay connected; midpoint visibility remains a visual HOLD.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mosquito",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches insect better (0.0347 < 0.0454); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 7% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 4% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 11% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 0% paint (reference 77%); missing-anatomy: part antenna-near (antennaNear) covers 1% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%); missing-anatomy: part head (head) covers 1% paint (reference 98%); missing-anatomy: part thorax (thorax) covers 29% paint (reference 99%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Moth",
+      "status": "VISUAL_HOLD",
+      "reason": "All five full-size stills show vivid pink antenna combs/fringe and small pink flecks beside the tips. Body/wing roots remain attached; fringe HOLD persists.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 4,
+        "guardedRoutePassPackets": 4,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mountain Viper",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills reviewed full size. Left winner body at victory midpoint ends abruptly along the same horizontal internal render boundary near y480; the lower body/tail is missing below it although arena remains visible. Late idle also cuts tail at left edge. HOLD shared axial victory clipping class. Triangular head/narrow neck, zigzag dorsal band and slit eye remain readable; no broad body tear or detached head. Dodge shards are FX.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 4,
+        "guardedRoutePassPackets": 4,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Mud Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Narwhal",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%); missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%); unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 4.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Nautilus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Oarfish",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part dorsal (dorsal) covers 8% paint (reference 46%); unexplained-anatomy: 23.0% of the paint lies away from the body and in no part (reference 3.5%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Octopus",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Olm",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part hind-far-paw (hindFarPaw) covers 12% paint (reference 39%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Orangutan",
+      "status": "STATIC_RED",
+      "reason": "Orangutan changed D28 fit refuses approach:climb with4 folded triangles.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Orchid Bee",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 27% paint (reference 88%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 10% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 77%); missing-anatomy: part mid-far-upper (legMidFarKnee) covers 24% paint (reference 81%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Osprey",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "White underside, dark eye mask, hooked bill and outsized talons are seen, but folded wings do not demonstrate the required crooked M-shaped wings.; White underside, dark eye mask, hooked bill and outsized talons are seen, but folded wings conceal the required crooked M-shaped wing outline.; White underside, eye mask, hooked bill and outsized talons are clear. Folded wings still conceal the required crooked M-shaped wing outline.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ostrich",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 11.7% of the paint lies away from the body and in no part (reference 2.4%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Owl",
+      "status": "STATIC_RED_OR_INTAKE_HOLD",
+      "reason": "No source-eligible static PASS after all three originals and authorized class repair; RED",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Oyster",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pangolin",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Peacock",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part near-foot (legNearFoot) covers 6% paint (reference 35%); missing-anatomy: part far-shin (legFarAnkle) covers 27% paint (reference 84%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pelican",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 2.4%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pheasant",
+      "status": "VISUAL_HOLD",
+      "reason": "All five finished stills viewed at original size. In turn3 reaction and both victory frames a long detached brown/white shoulder blade with a green upright tip floats behind the defeated right bird neck, separated from body by arena background. Long tail, red wattle, green-black head and white neck ring remain readable. Dodge FX cover much of the head but are not the detached creature fragment. HOLD source ownership/shoulder fragment class.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pilot Whale",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Both diagonal melon/neck and pectoral/flank slits closed. Visible seams continuous across five frames and both creatures;FX-covered joints checked in clear victory frames. Bulbous overhanging melon,forward swept low dorsal,black body and pale throat anchor patch seen.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pipefish",
+      "status": "VISUAL_HOLD",
+      "reason": "All five full-size frames inspected: thin body and snout remain continuous, but dorsal, pectoral and tail fins read saturated pink. Changed D28 placement does not clear the prior key-colour fringe HOLD.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Poison Dart Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Polychaete Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pond Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Porcupine",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%); missing-anatomy: part tail-tip (tail3) covers 6% paint (reference 39%); missing-anatomy: part tail-middle (tail1) covers 8% paint (reference 57%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Portuguese Man-of-War",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pseudoscorpion",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Five near-side walking branches plus obscured far stubs; four correct walking pairs not established.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Pyrosome",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Quetzal",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 75%); unexplained-anatomy: 11.7% of the paint lies away from the body and in no part (reference 2.2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Rattlesnake",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Final source is an open horizontal S body with no clearly coiled base; canonical coiled posture not met.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Ray",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 6.9%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Razor Clam",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "River Dolphin",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Back slit and throat/pectoral openings closed in both creatures across all clear seams in five frames. Long toothed tweezer beak,low ridge and bulging melon/mobile neck seen;small tooth row visible in reaction50 and left idle90. QA: left idle50 upper beak pitches sharply upward while mouth is wide open;not a detached seam. Retain for Claude motion-design review.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 3,
+        "guardedRoutePassPackets": 3,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Salp",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sand Dollar",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scale Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scallop",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scorpion",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Scorpionfly",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches insect better (0.0336 < 0.0401); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 6% paint (reference 88%); missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%); unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 1.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Anemone",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Cucumber",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Lion",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 8.6%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Spider",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Four eyes on one small turret cannot be independently confirmed; only two prominent eye bumps readable.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Squirt",
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 1,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: flyer-membrane matches clearly better (0.0220 < 0.0316); missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 24%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 1% paint (reference 32%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 0% paint (reference 71%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Sea Urchin",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Seahorse",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%); unexplained-anatomy: 25.6% of the paint lies away from the body and in no part (reference 4.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Seal",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 18% paint (reference 71%); missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 43%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 38%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Secretary Bird",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 2.3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 8,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Shrew",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 50%); missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 21% paint (reference 66%); missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 52%); unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.7%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 16% paint (reference 50%); missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 66%); missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 25% paint (reference 76%); unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 1.7%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 4% paint (reference 28%); missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%); missing-anatomy: part leg4near-foot (leg4NearFoot) covers 0% paint (reference 26%); missing-anatomy: part antenna-far (antennaFarTip) covers 6% paint (reference 21%); missing-anatomy: part head (head) covers 6% paint (reference 2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Snake",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "body not continuous: 2.5 % of the length has no paint",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Snapping Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Snowshoe Hare",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "All three final-round sources refuse unexplained paint:6.6%,9.1%,7.0%; no valid new fit; prior changed D28 fit already static RED and not retried.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Softshell Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 20% paint (reference 67%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Squirrel",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "facing: the mirrored painting matches quadruped better (0.0197 < 0.0304); missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Starfish",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Stick Insect",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on; missing-anatomy: part hind-near-lower (legHindNearFoot) covers 10% paint (reference 42%); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 7% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 6% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 19% paint (reference 88%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 7% paint (reference 25%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 6% paint (reference 31%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 17% paint (reference 77%); missing-anatomy: part hind-far-upper (legHindFarKnee) covers 14% paint (reference 62%); missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 25%); missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%); missing-anatomy: part elytron-near (thorax) covers 14% paint (reference 98%); missing-anatomy: part elytron-far (thorax) covers 21% paint (reference 79%); missing-anatomy: part membrane-far (wingFar) covers 26% paint (reference 86%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 10,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Stingray",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 26.4% of the paint lies away from the body and in no part (reference 6.9%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Swift",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "Cigar body, tiny feet, short notched tail and long stiff swept-back wing tips are seen, but the closed bill does not demonstrate the required enormous gape.; Stiff swept-back sickle-wing tips, cigar body, almost hidden feet and short notched tail are visible; closed tiny bill still does not demonstrate the required enormous gape.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: fish matches clearly better (0.0283 < 0.0686); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg3near-foot (leg3NearFoot) covers 0% paint (reference 32%); missing-anatomy: part tailfan (tailFan) covers 1% paint (reference 3%); missing-anatomy: part abdomen5 (abdomen5) covers 2% paint (reference 5%); missing-anatomy: part abdomen4 (abdomen4) covers 4% paint (reference 6%); missing-anatomy: part abdomen3 (abdomen3) covers 7% paint (reference 8%); unexplained-anatomy: 22.1% of the paint lies away from the body and in no part (reference 0.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tarantula",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 1,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tardigrade",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family lobopod",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tern",
+      "status": "READY_AWAITING_CLAUDE_REVIEW",
+      "reason": "Tiny throat/shoulder notch closed across visible seams in five frames and both creatures. Head/cap stays attached in right turn3 reaction and victory. Two deep-fork streamers,long pointed folded wings,slim red/black dagger bill and black crown seen. Streamers rise in right victory but retain narrow pointed forms;not detached ribbons.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Thrips",
+      "status": "VISUAL_HOLD",
+      "reason": "Five full-size stills retain pink linear fringe along the long wing edges/tips, visible on both creatures at victory idle. Body and legs attached; wing-fringe HOLD persists.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 5,
+        "rawStaticPassPackets": 2,
+        "guardedRoutePassPackets": 2,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Toad",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tortoise",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tree Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family-reference packet requested C362/C363/C366; per Dakk/C259 no repaint until available.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch08/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 0,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tripod Fish",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 26% paint (reference 82%); missing-anatomy: part far-pectoral (pectoralFar) covers 5% paint (reference 97%); missing-anatomy: part jaw (jaw) covers 5% paint (reference 93%); missing-anatomy: part head (head) covers 11% paint (reference 48%); missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 54%); unexplained-anatomy: 20.6% of the paint lies away from the body and in no part (reference 4.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tropicbird",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 7.1% of the paint lies away from the body and in no part (reference 1.2%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Tube Worm",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Dakk/C259 worm reference packet required",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Turtle",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vampire Bat",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vampire Squid",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vent Crab",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vent Shrimp",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "wrong-family: insect matches clearly better (0.0431 < 0.0704); missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1; missing-anatomy: part leg0far-foot (leg0FarFoot) covers 0% paint (reference 20%); missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 20%); missing-anatomy: part tailfan (tailFan) covers 8% paint (reference 3%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Vole",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%); missing-anatomy: part fore-far-paw (foreFarPaw) covers 0% paint (reference 72%); missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 95%); missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 94%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%); unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.1%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Wall Lizard",
+      "status": "SOURCE_IDENTITY_HOLD",
+      "reason": "All five films show continuous body, four splayed limbs/toes and attached tapering tail, without a new seam. Source tail remains approximately1.3\u00d7 body, failing canonical roughly twice-body marker. Identity HOLD overrides raw static/native PASS.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch07/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 4,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Wallaby",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 2,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Walrus",
+      "status": "VISUAL_HOLD",
+      "reason": "Pink whisker fringe visible around the muzzle across reaction and late frames despite automated magenta count zero; visual HOLD.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Warthog",
+      "status": "VISUAL_HOLD",
+      "reason": "Reddish fine fringe along the mane tips at full size despite automated magenta count zero; visual HOLD.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 1,
+        "guardedRoutePassPackets": 1,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Water Flea",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 3.1% of the paint; every same-family reference shows at least 21.3%; missing-anatomy: part leg0far-foot (leg0FarFoot) covers 2% paint (reference 29%); missing-anatomy: part leg0far-upper (leg0FarKnee) covers 11% paint (reference 44%); missing-anatomy: part leg1far-foot (leg1FarFoot) covers 5% paint (reference 28%); missing-anatomy: part leg1far-upper (leg1FarKnee) covers 8% paint (reference 43%); missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg1near-foot (leg1NearFoot) covers 0% paint (reference 25%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch04/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 6,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Water Strider",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (detached): 1 separate paint island(s) of \u2265 1% (reference 0); missing-anatomy: part hind-near-lower (legHindNearFoot) covers 6% paint (reference 42%); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 9% paint (reference 40%); missing-anatomy: part mid-near-upper (legMidNearKnee) covers 34% paint (reference 99%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 25%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 1% paint (reference 31%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 9% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 77%); missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 25%); missing-anatomy: part antenna-near (antennaNear) covers 9% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 1% paint (reference 32%); missing-anatomy: part head (head) covers 0% paint (reference 98%); missing-anatomy: part membrane-far (wingFar) covers 11% paint (reference 86%); missing-anatomy: part thorax (thorax) covers 30% paint (reference 99%); unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 1.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch03/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Water Vole",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%); unexplained-anatomy: 11.7% of the paint lies away from the body and in no part (reference 5.1%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Whale",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on; unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 3.0%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch02/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 7,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Whiptail",
+      "status": "SOURCE_INTAKE_REFUSED",
+      "reason": "unexplained-anatomy: 14.8% of the paint lies away from the body and in no part (reference 9.7%)",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 9,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    },
+    {
+      "name": "Wood Frog",
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Qualified family/inventory reference packet requested C362/C363; unchanged references unavailable. No repaint attempted in final round.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/batch05/round2/remaining.json",
+      "fullStaticDiagnostic": {
+        "scoredPackets": 3,
+        "rawStaticPassPackets": 0,
+        "guardedRoutePassPackets": 0,
+        "note": "No diagnostic PASS overrides this selected-film/source identity or Claude admission disposition."
+      }
+    }
+  ]
+}

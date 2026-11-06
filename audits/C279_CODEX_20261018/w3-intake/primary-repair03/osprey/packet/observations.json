@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c279-observed-author/v1",
+  "masterSha256": "1f7e7cb24d4e18617ad672a6a755cbabf051ac9e45125d2c30d4e58a8e4261fc",
+  "subjectSha256": "d0f8e8334213a4323de68c986b494241174070e8a962e2504b9812f0ede799fe",
+  "promptSha256": "dc49de41f30291a3985abf612939562f856b1a21da88f6cd0b378634e7ac7228",
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "autoAuthorReused": false,
+  "inspection": "Actual native1254 master viewed by /root/c279_intake; body landmarks locate continuous painted anatomy and visible joints/tips.",
+  "notes": [
+    "Two physically separate complete taloned feet and raised half-open wings; dark eye stripe, hooked bill, white underside.",
+    "Automatic Osprey transferred from Goose and ADMIT but intake observed-split refused contact/fixed-owner overlap. This independently painted packet corrects own source foot polygons and landmarks; no source-image change."
+  ],
+  "nativeAcceptance": false
+}

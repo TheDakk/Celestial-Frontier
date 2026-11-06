@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lizard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c196quadrupedoriginals-07-lizard/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "46077002ba22bcac23b18326611d4c36ad8c849cb2126d85d0f403476ba64f4a"
+}

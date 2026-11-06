@@ -1,0 +1,139 @@
+{
+  "schema": "cf.c186-source-ownership-review/v1",
+  "scope": "Full-size 1254-square original and ownership views; no film or native review. Gaur final successor review is retained separately.",
+  "rows": [
+    {
+      "id": "01-zebra-fallback-ears",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/master.png",
+          "sha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "5791f911ab331b7b49110b5a0575fe8bf17867f813ac00b1b09454aaa582e5e6"
+        }
+      ],
+      "findings": [
+        "Ear silhouette ownership now follows each actual pinna from base to tip. Full-size source and labels reviewed.",
+        "The inherited successful fallback has broad axial/upper-limb boundaries and a depth convention different from the original automatic recipe. These are disclosed; no native-equivalence claim is made."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "02-kudu",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/master.png",
+          "sha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/islands-01/fit/parts/ownership.png",
+          "sha256": "58285b1a6390dd230102d498c26a219982cd69a44398fe03cf1ca3741cc716f6"
+        }
+      ],
+      "findings": [
+        "Both ears are distinct from the two head-owned spiral horns after correction and placement.",
+        "Front-leg upper ownership still shares a broad inherited polygon across visible emergence; motion/depth fidelity remains unqualified."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "05-gazelle",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/master.png",
+          "sha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/islands-01/fit/parts/ownership.png",
+          "sha256": "c7c9f80b7404271825d3c91993e41b5572ad67ef80e300372cf0b461161d3b16"
+        }
+      ],
+      "findings": [
+        "The short attached tail is divided along its actual contour and ends at its real tuft. All four distal hooves remain represented.",
+        "Inherited upper front-leg assignment crosses the chest/leg emergence and needs full-size motion review."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "07-oryx-tail-ears",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/master.png",
+          "sha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "74b9eb70f6ded33901d566ed54afad29885891f97b441460908e0706fd60b20a"
+        }
+      ],
+      "findings": [
+        "Near pinna is now ear-owned instead of mane-owned. The narrow far tip is limited to observed tissue. Both horns remain head-owned.",
+        "Corrected tail ownership follows the visible long shaft and tuft; inherited upper-leg and chest ownership remains coarse."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "09-deer-observed-ears",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/master.png",
+          "sha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "c75a53778e7f4625427dc0771c28a610dc5b7b8a6170cad95bb37a4e703354b2"
+        }
+      ],
+      "findings": [
+        "The final source/ownership view shows both actual pinnae separately owned and both antlers wholly head-owned. The earlier technical PASS with ear-owned tines is superseded and retained.",
+        "Short source tail is kept short; no new tail painting or hidden antler roots were invented."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "10-antelope-tail",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/master.png",
+          "sha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/islands-01/fit/parts/ownership.png",
+          "sha256": "9fa13bc07115f4a54c8b2d2f4fa5dae153df5345d1be3ce8d94af90af5286153"
+        }
+      ],
+      "findings": [
+        "The short black/white tail remains attached and source-limited, with four short segments ending at its real point.",
+        "Body/limb ownership is inherited, including broad diagonal proximal boundaries; motion quality remains unqualified."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    },
+    {
+      "id": "15-sheep-observed-ears",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-observed-ears/master.png",
+          "sha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-observed-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "938f1e27e7642ae7dff8132e2221002006642b62de667a436973a1ac63da8149"
+        }
+      ],
+      "findings": [
+        "The near vertical pinna and short far pinna are now owned at their actual positions. Earlier forehead-owned ear envelopes are retained only as superseded evidence.",
+        "Wool obscures exact proximal joint anatomy. Existing leg and neck motion needs full-size review."
+      ],
+      "qualityAccepted": false,
+      "nativeReviewed": false
+    }
+  ]
+}

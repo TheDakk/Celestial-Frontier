@@ -1,0 +1,1652 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "17c1079237df3e8b4735e5cbbb787431d1228cf267e3f32e9701d967b538437d",
+      "bytes": 4956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/bind-native-plan.py",
+      "sha256": "870714929536a9314ec8ec25bdef5991348ff60faeb9960caf7fcec768d6e68a",
+      "bytes": 1600
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/bind-plan-realm.py",
+      "sha256": "9b0b0d4028ed5b46147b3639f6cd5c4002738acd726826520b9862f49a625614",
+      "bytes": 1293
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-d40-r02-root-static.json",
+      "sha256": "61140cddcbddebc849769fa8a3fc66403e59b7df7be73cef4db5b942b456e97e",
+      "bytes": 699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-d40-r02-root-static.log",
+      "sha256": "bbec4d8a45bfcfad0fc253829920d20cba8ba7c11b5dd3b7811c90d985c51175",
+      "bytes": 1837
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-paths.txt",
+      "sha256": "93157814660009c54ecb3377672be4ba323ee8ed1c4eeb090a4cee4b22766c1d",
+      "bytes": 103364
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c484-staged-bytes.commit.log",
+      "sha256": "1b423351495bb29a669d7cedde809a769801c4cce9b30c9e90a9c79a359de6a5",
+      "bytes": 77204
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c485-message.txt",
+      "sha256": "45234b4b442e89c897fdfc81be3513706c4b424bfb14863e5716a75d7ed49f8f",
+      "bytes": 276
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c485-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c485-unchanged-runtime-verification.json",
+      "sha256": "1df4ab4dd534f5dc058e4af79ce07b568c5609436ec3c6ca7c23345390ecf59b",
+      "bytes": 3436
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/check-native-worlds.mjs",
+      "sha256": "12b331cf7cb165792843dbf9a76bbcb17bee1ff9a8dcd445c402da4151164f3a",
+      "bytes": 2448
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/native-world-controls-r01.json",
+      "sha256": "9add71ea382322e96c2e9ac1a61919fb35c8d21bae08f6d2d123cbb667b5fa96",
+      "bytes": 3005
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/native-world-controls.json",
+      "sha256": "6d9797762706e32ecabff71aaebc32eae8b1e3924f504dfde8f6ddd7e1205357",
+      "bytes": 451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/native-world-controls.log",
+      "sha256": "0d9f11389c4597c278c96600c39ec9f7911831d36524747a7084cb3180487f93",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/plan.json",
+      "sha256": "cf0c9b5c298ab97b50868bf489c2b28131319340c0d4bcd31039bf77294490e5",
+      "bytes": 1497
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/realm-proof.json",
+      "sha256": "aab067d6dd9240fe95cc971012892832cc8ee3f5f14b47dd172468c991c227e3",
+      "bytes": 552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/script.json",
+      "sha256": "e15971ec6df2b7ea4f87bfde03199195176b30cfae0dde50eefb036c6788e911",
+      "bytes": 674
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/static.json",
+      "sha256": "2e91afea8e2b661460ad0f7eb1b298f7a3680de68ee23ee83809c27189e16748",
+      "bytes": 7722
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/static.json.sources.json",
+      "sha256": "f76d2fc2994e0a23c2c978caa2b143e02d8d729a66010d15820b186314272fbe",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/plan.json",
+      "sha256": "ea7194cd28159a9e4d4b0f20fee26e54b44922c3c20496f4191f41303b6e17d1",
+      "bytes": 1464
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/realm-proof.json",
+      "sha256": "c301da9dd2e6975a0349210e617d7d7aa2f28ab91d235c9bce1e0f0ab85cf88a",
+      "bytes": 547
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/script.json",
+      "sha256": "849adf3758e2734a3954693594676ea5a9b2241c543ec35cb0bbdd1f376cfd13",
+      "bytes": 777
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/plan.json",
+      "sha256": "598c49bdd47c2b8c6ad460ddefb8355b939fde5381d101499eaf3404873dead8",
+      "bytes": 1931
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/realm-proof.json",
+      "sha256": "0a804b54990c8f0902535ae6d8c635c109c91f1a51bb61905c348eb26bc9bc5b",
+      "bytes": 553
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/script.json",
+      "sha256": "3d862a6b056ab596f9750d665af4a3eadbb1a1c95a14a448bc8cc4ff18e65938",
+      "bytes": 801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/plan.json",
+      "sha256": "5ff571606e0d5a543e9a386c176a5eca6a3e2c553086204323cd815ef0f12084",
+      "bytes": 1714
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/realm-proof.json",
+      "sha256": "72628a1e226e7d17fa915b29bf3573c267a732fde0b9fcc57301f363fe29e3ef",
+      "bytes": 549
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/script.json",
+      "sha256": "a721fbd562faa3747b766aca119d21b6511ee4421bcab3f8255b5c00ae22bcb3",
+      "bytes": 785
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/c475-tube-worm-d41.log",
+      "sha256": "4737df52234697df99039c02259c5be936c92e0c9521d5a4482b30cef2c3b37a",
+      "bytes": 365
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/finish-subjects.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/native-assessment.json",
+      "sha256": "d0358863ed480e8a4e6b9ae91d1975b3a7cc324e0c009c661c165b3ebc3b8364",
+      "bytes": 105
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/native-plan-bound.json",
+      "sha256": "69abdd2f0c9f3bdfb8e29d1e5d0b1251377470857777aab54971e697e228b289",
+      "bytes": 1608
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/native-results.json",
+      "sha256": "71bf0c8f58963398633291f4ee0150a589e078996dd318c100a5a56d56175acb",
+      "bytes": 1599
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41/native/report.json",
+      "sha256": "711dd86006b86e3e15b9210151fcbe1ca4f34a38416944cdce30ad9ac0915893",
+      "bytes": 216750
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/run-world-controls.mjs",
+      "sha256": "3d03e69f1d5c9a67430dd7afbfa6bd5bea69551546bfddea17b1c0cf097a2c61",
+      "bytes": 553
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-native.json",
+      "sha256": "79ed2ffeb1805e97b0f6b3bffa20ca3377d5c5ffeb50d09143bfc581f8d460eb",
+      "bytes": 528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-native.log",
+      "sha256": "1c35c40c50e20a13d16507f34a8d976b4c85969b18e4039fe0e4547692d529be",
+      "bytes": 190
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave08-corrected-world-butterfly-producer/README.md",
+      "sha256": "496f0e29f282e5b4ab860a8d6b43d1a31e8bd3fd319b57a29f272822da8b5f1c",
+      "bytes": 3073
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/abdomen-current-owners6x.png",
+      "sha256": "cadfe36c52836f335ef2f1a414acfa19639b102d580300dd5b6a56e5f860182c",
+      "bytes": 119117
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/abdomen-source6x-grid.png",
+      "sha256": "a141dcf5dbf51c769bce8333aa6178fffffab0554f41226e492eb2b44dfd28a4",
+      "bytes": 182319
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/abdomen-source6x.png",
+      "sha256": "51cc50604ddb3c59096f276311526c0e3dbd7f931b884b9725ce63e19025227e",
+      "bytes": 110283
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/abdomen-wide5x.png",
+      "sha256": "c1ed9cd3e0e518a478ed5883330cd5e0b1fa33276bd5ad2bdc9c43e073bd6a25",
+      "bytes": 131476
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/actual-outcomes-r01.json",
+      "sha256": "4987aea5c6c957a7d1948088a585dbd70b0429a7c0c601f9c1497d26cb53dd57",
+      "bytes": 21134
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/antenna-original-canonical-derivative4x.png",
+      "sha256": "386abca3b0d53b1fec68e9f0b4351a88bb4a54299714aafcd74b7e8e50e8300a",
+      "bytes": 99141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/antenna-source6x.png",
+      "sha256": "88756c2a21e0f8d22418428ae8190e32819158b1e853800533a1cf8947097153",
+      "bytes": 83774
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-instrument-delta.json",
+      "sha256": "86f9f5612255ffe80069debce706fd61ba188b668b897bcee9f83c4a2df483a7",
+      "bytes": 718
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-source-owned-r03.log",
+      "sha256": "482a408c467de9b42be2918dcc357a749be7ff054db600ba22b47acb0d28647e",
+      "bytes": 758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-source-owned-r03/result.json",
+      "sha256": "36c7b493e5718a0efa12f31645d3743c10f8a22bdef2bd0594d24b0e17824b2f",
+      "bytes": 77981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-source-owned-r03/source-published-victory300.png",
+      "sha256": "aed2531accadb441f3952a4f8e95cf06cbb4f32f0faa9d6c50962558a314a34b",
+      "bytes": 403373
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-source-owned-r03/source-published-victory364.png",
+      "sha256": "01a54c7e168e41e817fee14c0fdec614713e92ab19423b70a9d738cca23532cf",
+      "bytes": 399186
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-source-owned-r03/source-published-victory540.png",
+      "sha256": "b6d9eeb336b8c59a8d8d137ebf59bea847bdbb5f3bc0cd7c987ee723208eebfd",
+      "bytes": 403568
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-visible-r04.log",
+      "sha256": "814bdd170691968f5e05e6595bf62ce1da3f1e8dcb39c3c60908cbca884c5237",
+      "bytes": 754
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-visible-r04/result.json",
+      "sha256": "b8a9f45e3e3d6adaa6df3df22a8f6d7a3a018fc66ba65b0f8511cd3fa4ee82d2",
+      "bytes": 75694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-visible-r04/source-published-victory300.png",
+      "sha256": "438a5d71d5674f2fa34494a06330318f9a899eba53e8071dc5cf6b4d55faa95a",
+      "bytes": 404744
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-visible-r04/source-published-victory364.png",
+      "sha256": "c02e265193204d10beb47ab948881ffc776e86e7a46db66da0a50b680a81cc68",
+      "bytes": 400021
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/articulation-visible-r04/source-published-victory540.png",
+      "sha256": "e893825bd28609939174aef19a77eb3b101fc39c07a474b82461a43efecc6d0c",
+      "bytes": 403254
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/author-observed-r01.mjs",
+      "sha256": "22b01ffeff42a894a7245c808adbe7f5fd68702aad8df9c6b3b4c03cfc2800da",
+      "bytes": 6657
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/canonical-freeze-r01/keyed.png",
+      "sha256": "57f301f13d41676157adecd6d1366b5b55e253f41fb5457dea947e4b569c9aae",
+      "bytes": 1456120
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/canonical-freeze-r01/receipt.json",
+      "sha256": "f12b8b28b2c894534c4ac4b1a05b86645e662e563fae887b411fbd4e21983fac",
+      "bytes": 3254
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/canonical-neutral.png",
+      "sha256": "55d8d6724b802db6a4b6dc358d690b99bc3f1668e87c1d748aa31b8a03f28d36",
+      "bytes": 425608
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/compile-source-owned-r03.mjs",
+      "sha256": "98d6482417e65df6dfacffe48a23c9e27ff32fc5860927d275a561c4ed0ae7c1",
+      "bytes": 5340
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/compile-visible-material-r04.log",
+      "sha256": "db4d0c679c5b7a15af7edf0ccb3f7be3bd0079c8ca8d527cd2d1cab2af2c6466",
+      "bytes": 1164
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/compile-visible-material-r04.mjs",
+      "sha256": "aaa40a57c5b0f1ead449f2790c84d88ea767077a1f200ad51336267a53e93ac3",
+      "bytes": 5266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/derivative-neutral.png",
+      "sha256": "878df81e84fd99bd49915e78c8c315fbcc4fe46824249263466fe539e2bfbaeb",
+      "bytes": 441255
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/derivative-r01/master.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/derivative-r01/post-key-derivative.json",
+      "sha256": "5edde04058c52319bfdd0c2b900c1d069067a70c0d7b055ff6b79765df3b334e",
+      "bytes": 4010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/derivative-r01/request.json",
+      "sha256": "552e8ea6c5f7eb8c6ff57b3c50b984c12a4f556d1c0a42e4215b81892ed86030",
+      "bytes": 2242
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/freeze-r01.json",
+      "sha256": "43ef0edac2656a48302cb9c327e63aece195e236d7841f6980bf86b0bde6a105",
+      "bytes": 80258
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/frozen233-recheck-r01.json",
+      "sha256": "b84db8f89ace29ae3e0d49ce24e7591a13729bc10c88ebbfb8d3728a6a9c9cf1",
+      "bytes": 787
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r01.log",
+      "sha256": "0891d073fdedb09ac760292ec08af51b388d247cd8421ad9c7ddafab9ddd7365",
+      "bytes": 582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r01/parts-sheet.png",
+      "sha256": "61e59a912f9f9b0c8037dd944fac974da3412ef3a4c403f94fb453d92105a999",
+      "bytes": 239188
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r01/remainder-components.json",
+      "sha256": "fddde936f150fd873d7e90f16187c81f161cdff028e9193db9ea19b135568369",
+      "bytes": 5594
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r02.log",
+      "sha256": "df28a73b7e8d1c3b7c33191f8c0adfe9903361f91db162bac4341a39b28dc9be",
+      "bytes": 580
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r02/parts-sheet.png",
+      "sha256": "b51a08fda31f287a2738468cb0b2c036c85701f2480290e4c50393fee7986521",
+      "bytes": 237670
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-raw-r02/remainder-components.json",
+      "sha256": "e4e43c2c5177423be620b95a5d7e1b1f210b1ee1b70babec9e40970447f16750",
+      "bytes": 5329
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-source-owned-r03.log",
+      "sha256": "671bba8e76ff0bd2ff8ed70df870ee01390a3efc415cfd300ae348b70a954663",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-source-owned-r03/parts-sheet.png",
+      "sha256": "a8c4ec69590e193a8e5103bf9774d97a9b58671eb2c0781ccf356e2356aa802b",
+      "bytes": 241592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-source-owned-r03/remainder-components.json",
+      "sha256": "c5cfbf5a7e5e7e25b40ee35987f9095da2548dd39e6e84e0a0126146ea51fdd2",
+      "bytes": 93
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-visible-r04.log",
+      "sha256": "671bba8e76ff0bd2ff8ed70df870ee01390a3efc415cfd300ae348b70a954663",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-visible-r04/parts-sheet.png",
+      "sha256": "c61d739c35944e67c7eba2f0f7931295437536711a92cbc0dabc712abc14fa14",
+      "bytes": 254220
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/inspection-visible-r04/remainder-components.json",
+      "sha256": "c5cfbf5a7e5e7e25b40ee35987f9095da2548dd39e6e84e0a0126146ea51fdd2",
+      "bytes": 93
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/intake-r01.log",
+      "sha256": "1e7f9360132c995f8517f701da43e561ceddf7141b36217b4b2ae61a526a756a",
+      "bytes": 339
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/intake-r02.log",
+      "sha256": "4a0601e79c1566f615a8cebdfc71d6fe62e161fee077b6c709991f305fd24647",
+      "bytes": 339
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/matte-request-r01.json",
+      "sha256": "552e8ea6c5f7eb8c6ff57b3c50b984c12a4f556d1c0a42e4215b81892ed86030",
+      "bytes": 2242
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/native-order-articulation.ts",
+      "sha256": "f19ffad98985e3ab92340a7b34eef5d00dbed29d7427bae99ef307ca41a02724",
+      "bytes": 7921
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/outcome-control-exits-r01.json",
+      "sha256": "b174981e74e8e158d9c902187b98d45f985ffd62c3ce0ffb78e4a3f8013da2ba",
+      "bytes": 886
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/authoring.json",
+      "sha256": "917cf2d3234ff4aa7cfeed4c00dbfddf5598bd3071492d6e3e83ff40c8392373",
+      "bytes": 18593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/master.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/post-key-derivative.json",
+      "sha256": "5edde04058c52319bfdd0c2b900c1d069067a70c0d7b055ff6b79765df3b334e",
+      "bytes": 4010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/prompt.txt",
+      "sha256": "cda87517290a916cd8227d1837c3f4c0cf02aaf20e481416c9a84d47b80c25ed",
+      "bytes": 11240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/source-observations.json",
+      "sha256": "37ac7e6d49b96afb6bdb6e2cc1c52d7e0591de19985bedd3eb8b470e79b8dc68",
+      "bytes": 4390
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r01/subject-source.json",
+      "sha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd",
+      "bytes": 2400
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/authoring.json",
+      "sha256": "898ba1e7dda5afd97a82249edbb0ae39a8fd6f9343d301bdc7664b8ef16e3582",
+      "bytes": 19136
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/master.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/post-key-derivative.json",
+      "sha256": "5edde04058c52319bfdd0c2b900c1d069067a70c0d7b055ff6b79765df3b334e",
+      "bytes": 4010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/prompt.txt",
+      "sha256": "cda87517290a916cd8227d1837c3f4c0cf02aaf20e481416c9a84d47b80c25ed",
+      "bytes": 11240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/source-observations.json",
+      "sha256": "37ac7e6d49b96afb6bdb6e2cc1c52d7e0591de19985bedd3eb8b470e79b8dc68",
+      "bytes": 4390
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/packet-r02/subject-source.json",
+      "sha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd",
+      "bytes": 2400
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/prepare-outcome-controls-r01.mjs",
+      "sha256": "dadb1714d265b0595515662e159b9f47e9e2df929529a48ef0569598b49be179",
+      "bytes": 2957
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/prepare-source-r01.mjs",
+      "sha256": "1b2da92b7d95a0d872f70747714afac1e164ec4b241299fc5e521e0d0990a488",
+      "bytes": 4452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/binding.json",
+      "sha256": "934c440f439f21e9e6a5df6e73ed6c7f7dec7106e810dad0cc59c8a4aa2382f5",
+      "bytes": 1056038
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/declaration.json",
+      "sha256": "018db64c69a80c894a900a8751c50fba440f0d059c273b3b047bf666c86398eb",
+      "bytes": 2335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/intake-provenance.json",
+      "sha256": "edd237e25f0c8de1cb47a1570f356d7fd8df0b2afa6640c34d27a8d88321f0f0",
+      "bytes": 3635
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/label-authoring-receipt.json",
+      "sha256": "e793f3cd6b400300c70d26c0e0bdfeda40c5528ab760bb030da0a72119c5777a",
+      "bytes": 2797
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/labels.png",
+      "sha256": "359288f98c59ff932ad5687be7df2365e17ccacbdfa6b4faaf34a89dd82dbd31",
+      "bytes": 42515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/atlas/c475-d40-butterfly-alternate-r01.json",
+      "sha256": "52ab99e351dc31379e89c6b17f9886cc66f54a6722b93739414ce661830432e5",
+      "bytes": 8294
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/atlas/c475-d40-butterfly-alternate-r01.png",
+      "sha256": "c65d3a03c54848222a71101c40ced2d549bce6a33f893e510ab7828e09d0fd3d",
+      "bytes": 427810
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/atlas/receipt.json",
+      "sha256": "c3c669ea806e22f233580dc6fa333325b9ead396a8629d19f661e90ea929b3ca",
+      "bytes": 3407
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/binding.json",
+      "sha256": "360a28746402e798185274cfedd2e5b523c17bd46c2086c4fa3d81670e5fe929",
+      "bytes": 6914
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/keyed.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/manifest.json",
+      "sha256": "28c68636b7b51c131d4745be302fcf92c459299d9fe9d254fe028d4eff5154f3",
+      "bytes": 3528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/ownership.png",
+      "sha256": "fa20b07b24bdfb9e1b1111b584ec03825ca07256cad64bb5705b0fd9e6cb9452",
+      "bytes": 30266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/abdomen.png",
+      "sha256": "fb95a271952138d2e30a30461dc879ca08643c20cbf4170e0a68a74c91eeba16",
+      "bytes": 15262
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/antenna-far.png",
+      "sha256": "9c5da3c1bb32f7ed90b9ec465a739904134f254dafe64143ba553629e359fa95",
+      "bytes": 3982
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/antenna-near.png",
+      "sha256": "4e2692c607939f49110e099fe3428b58f6d452465acdbe7afcde73b36700886e",
+      "bytes": 2320
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/body.png",
+      "sha256": "94b6de3c7316c61e1e446371beac7a29ad69e73f72ac41dae0a474baebb01227",
+      "bytes": 80414
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/head.png",
+      "sha256": "6cd2e08e3a9ece2af89cb7eb195dc6fde46b3554529696725efa175ef5256d35",
+      "bytes": 8127
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-frontfar-lower.png",
+      "sha256": "b1111fc29052ffbc34e5549bc15de0532d246f3be1a84152c73ace50130bb5b5",
+      "bytes": 2693
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-frontfar-upper.png",
+      "sha256": "45419bca71a1577bcff98233f64181e28a41ded2ea0e491be828d4f0497d37b6",
+      "bytes": 2121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-frontnear-lower.png",
+      "sha256": "b40f5a5159240836f3e23637167f1a8d86ca4e6a071832e8c15c3655debe6636",
+      "bytes": 1395
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-frontnear-upper.png",
+      "sha256": "3638e90943ecf4578a9076191378b30a10caf31b7104c865b3989c7a48a34918",
+      "bytes": 642
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-hindfar-lower.png",
+      "sha256": "33e7400ba7934ba7d00807f4fdab80c70542565af602f41c1cac77819e90ed2a",
+      "bytes": 1683
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-hindfar-upper.png",
+      "sha256": "a0e4a05196709469269c689c390516da1c8fefda400488e638e7c33042623d3c",
+      "bytes": 1084
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-hindnear-lower.png",
+      "sha256": "65aa647e1bb42a30bd9c4e440f2047f83e8c13dfb9e39e349bd76ba5bf22baa7",
+      "bytes": 3062
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-hindnear-upper.png",
+      "sha256": "dadecd87cb45f7e031608b87e3f23a81c5355f628a9619bf0050447af5e232d3",
+      "bytes": 2603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-midfar-lower.png",
+      "sha256": "82ac14c3206929ffe411994a88f8900fbc8df3e84b2c3f2e159767fa7cb96721",
+      "bytes": 1694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-midfar-upper.png",
+      "sha256": "a46495118b0b277fa9d2cdf3354c0a705d831100139be409a66cd96fdbb51e6a",
+      "bytes": 1215
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-midnear-lower.png",
+      "sha256": "0d0c3192553fca33afe6787669800c1d1b2d52a0759fc353ff37c555f993d1b0",
+      "bytes": 2352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/leg-midnear-upper.png",
+      "sha256": "78b6a19ec837e8fd48612fd46ceaa6ff699bcb54938803e8d7a2e03a90030a23",
+      "bytes": 766
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/proboscis.png",
+      "sha256": "0e3cb2c3872f5cb002801f1dd41d865cb6da2cca0a17add21165ddcaf8886ef4",
+      "bytes": 2391
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/thorax.png",
+      "sha256": "2bd1ef194bb5a93dd4e6e2746c05c4cd858dc8cdb1233399396bf59d553a7eb3",
+      "bytes": 18403
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/parts/wings.png",
+      "sha256": "609055db4d4a5cf1eba3ab6f7680007672b63afe95b5373977a0ee520a65389b",
+      "bytes": 340204
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/parts/receipt.json",
+      "sha256": "284614d861a0432ba4552909c9804f111da66c57335fd58060b4014cb144ad4a",
+      "bytes": 5501
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/pre-split-binding.json",
+      "sha256": "6a8d373252aba59b52f19a02af2cbf0a1231ab5d58ffe2d2f6e208b46117d84e",
+      "bytes": 788767
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/receipt.json",
+      "sha256": "d13adfe2176f78eadb90f1e6c1531ced05e3e406b87637478148df2cb6d2905f",
+      "bytes": 3360
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r01/record.json",
+      "sha256": "6c5aa357699c02d3a38c1a5938903328feb2dea090396f8f32b16b5ffc5d5cba",
+      "bytes": 7522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/binding.json",
+      "sha256": "ea3974734487643549949a0f8ad26b5725d04a60ab31d4e894a643df36426332",
+      "bytes": 950589
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/declaration.json",
+      "sha256": "8b0d1c50af7d4eb0944da226e2fabcb83526ee493dc0584b230fa46e54fcfd27",
+      "bytes": 2335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/intake-provenance.json",
+      "sha256": "6514b5f0f66e6933ad33ac9426c27d2d4a494dd7c6af12c2fd8ebbcd1b7113f0",
+      "bytes": 3635
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/label-authoring-receipt.json",
+      "sha256": "d22d00e02725ad1f72e5ffce639f7eab1973105e3be557302014d27a7c001d9d",
+      "bytes": 2796
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/labels.png",
+      "sha256": "d42df9d03325211f92835eb89ba28c91a4cd6d7030c0bfcb53494f36e4e56712",
+      "bytes": 41638
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/atlas/c475-d40-butterfly-alternate-r02.json",
+      "sha256": "03dca5551071260ae6d65e78b6729ad30652b9cde1efd08381eae8fa239133b5",
+      "bytes": 8290
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/atlas/c475-d40-butterfly-alternate-r02.png",
+      "sha256": "c8b4ebee8d531aba7b394d15eba1849dbb49c2a83ba0ae8701a1bde8c07e6203",
+      "bytes": 421798
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/atlas/receipt.json",
+      "sha256": "373312490ccb88e464e95bd4bd12d54faf07aef64bbd1e04b890a1443257c34e",
+      "bytes": 3407
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/binding.json",
+      "sha256": "a7a28f131e693434732e9156fdcd19aea4b7f516826c9cab7209d24ea66569e5",
+      "bytes": 6911
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/keyed.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/manifest.json",
+      "sha256": "e190ac049f85aa09129a43adcb75965c6fa443cb9d6e14d017f20b58d05d1745",
+      "bytes": 3528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/ownership.png",
+      "sha256": "856b9d27678ea946cd2f91deb4afa149a5e7572cb5472be220a3d73a991d30ab",
+      "bytes": 29516
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/abdomen.png",
+      "sha256": "a4faa616512bfadf56cebf04a1622d427974b17dc1e2bfb46a812d6ebe956815",
+      "bytes": 15202
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/antenna-far.png",
+      "sha256": "9c5da3c1bb32f7ed90b9ec465a739904134f254dafe64143ba553629e359fa95",
+      "bytes": 3982
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/antenna-near.png",
+      "sha256": "6e5e0ede9febf54841d87e7de84322db407eec38b1d7ffc32101f993254897e5",
+      "bytes": 2887
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/body.png",
+      "sha256": "2c8ca90f2d10488168713585013cbd1b67fd4cfbcf305f12b78bfc77a68d342e",
+      "bytes": 19712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/head.png",
+      "sha256": "36eeacb0ab75b135a3399fae0bda2dac8ab08689aef485019c5c297a8ff37e6b",
+      "bytes": 8437
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-frontfar-lower.png",
+      "sha256": "b1111fc29052ffbc34e5549bc15de0532d246f3be1a84152c73ace50130bb5b5",
+      "bytes": 2693
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-frontfar-upper.png",
+      "sha256": "45419bca71a1577bcff98233f64181e28a41ded2ea0e491be828d4f0497d37b6",
+      "bytes": 2121
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-frontnear-lower.png",
+      "sha256": "b40f5a5159240836f3e23637167f1a8d86ca4e6a071832e8c15c3655debe6636",
+      "bytes": 1395
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-frontnear-upper.png",
+      "sha256": "3638e90943ecf4578a9076191378b30a10caf31b7104c865b3989c7a48a34918",
+      "bytes": 642
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-hindfar-lower.png",
+      "sha256": "33e7400ba7934ba7d00807f4fdab80c70542565af602f41c1cac77819e90ed2a",
+      "bytes": 1683
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-hindfar-upper.png",
+      "sha256": "a0e4a05196709469269c689c390516da1c8fefda400488e638e7c33042623d3c",
+      "bytes": 1084
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-hindnear-lower.png",
+      "sha256": "65aa647e1bb42a30bd9c4e440f2047f83e8c13dfb9e39e349bd76ba5bf22baa7",
+      "bytes": 3062
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-hindnear-upper.png",
+      "sha256": "dadecd87cb45f7e031608b87e3f23a81c5355f628a9619bf0050447af5e232d3",
+      "bytes": 2603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-midfar-lower.png",
+      "sha256": "82ac14c3206929ffe411994a88f8900fbc8df3e84b2c3f2e159767fa7cb96721",
+      "bytes": 1694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-midfar-upper.png",
+      "sha256": "a46495118b0b277fa9d2cdf3354c0a705d831100139be409a66cd96fdbb51e6a",
+      "bytes": 1215
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-midnear-lower.png",
+      "sha256": "0d0c3192553fca33afe6787669800c1d1b2d52a0759fc353ff37c555f993d1b0",
+      "bytes": 2352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/leg-midnear-upper.png",
+      "sha256": "78b6a19ec837e8fd48612fd46ceaa6ff699bcb54938803e8d7a2e03a90030a23",
+      "bytes": 766
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/proboscis.png",
+      "sha256": "0e3cb2c3872f5cb002801f1dd41d865cb6da2cca0a17add21165ddcaf8886ef4",
+      "bytes": 2391
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/thorax.png",
+      "sha256": "7a8b53f048e02f0331262d39ab53f2cec65d2a148ec2c45467527a3b746c6b5c",
+      "bytes": 16688
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/parts/wings.png",
+      "sha256": "05ac2eac3840280baa23e5368c22b1ff34013057d4d60edcba779919ce01830d",
+      "bytes": 397771
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/parts/receipt.json",
+      "sha256": "1eef88aaf3e3d0c1aabf6384d66ba8c2f26de9a50261cc6e8ec24cfc6d9e2f46",
+      "bytes": 5499
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/pre-split-binding.json",
+      "sha256": "47071e2cdafa992cfa211d71547abad450031e8a064ad5c649254a1d3fc44e79",
+      "bytes": 706041
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/receipt.json",
+      "sha256": "72d9f220b970fe458d7039f452272ed1c2cdd1c65460a720f512f6f60cc9fb82",
+      "bytes": 3359
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/raw-fit-r02/record.json",
+      "sha256": "8507b80832d5d865b909bd0dc5ea455600d8bc9cd9d1120c4b0a46719ab47237",
+      "bytes": 8109
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/refine-author-r02.mjs",
+      "sha256": "0052f7515db7b752708dfd9281da7d5a67d91cb247e7be4bfc9f152a5f77456a",
+      "bytes": 1978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-commands-r03.json",
+      "sha256": "a8660c5621c68420be98bec632cc853108ed6ea20d4a26a395bcd0ec4ccc4409",
+      "bytes": 2267
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-commands-r04.json",
+      "sha256": "b1e010628d97f7ac05320e88061c9e201c2bb67b9ea817df2b2519a3be8c3440",
+      "bytes": 2814
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-commands-unmarked-r04.json",
+      "sha256": "edf5beabd6d38da62de867c2909c53f276ba009ab3fa269d39841bd4fe94c44d",
+      "bytes": 2799
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-dodge50-r03.log",
+      "sha256": "d958bc16a0b610db66153f96922328fac4ce5db3db910f25b8efc71b957482f0",
+      "bytes": 151
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-dodge50-r04.log",
+      "sha256": "9028d6146efb1157736733a139fcffa1e64f19e17e728809f026fcdb7fd92d40",
+      "bytes": 155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-dodge50-unmarked-r04.log",
+      "sha256": "9028d6146efb1157736733a139fcffa1e64f19e17e728809f026fcdb7fd92d40",
+      "bytes": 155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle50-r03.log",
+      "sha256": "7a42ed593ea81bd85c2784ecbd9fee570d7e6159ad54a636e61a21c186364098",
+      "bytes": 163
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle50-r04.log",
+      "sha256": "25c5ad46feb0fb813d3f5e3a562619cd21bfc902cf601e209b39e983250ab088",
+      "bytes": 167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle50-unmarked-r04.log",
+      "sha256": "25c5ad46feb0fb813d3f5e3a562619cd21bfc902cf601e209b39e983250ab088",
+      "bytes": 167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle90-r03.log",
+      "sha256": "7b79aa35e779e7c738adee1e66f817eb98534a8af6079e236938a55809720513",
+      "bytes": 163
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle90-r04.log",
+      "sha256": "c66384f5c49bce93d696d5e093f052fd292446452aa3310b309e99ef6d28a7d4",
+      "bytes": 167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-faint-idle90-unmarked-r04.log",
+      "sha256": "c66384f5c49bce93d696d5e093f052fd292446452aa3310b309e99ef6d28a7d4",
+      "bytes": 167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-hit50-r03.log",
+      "sha256": "e21d86b4e3a40a3d716be6eb4c2b1033823824192a13c7e4d697740bfb67b714",
+      "bytes": 151
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-hit50-r04.log",
+      "sha256": "0e39337d6ddb55b5e725f6318e2390260a88c70d75abf9de61ab34ff2779924e",
+      "bytes": 155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-hit50-unmarked-r04.log",
+      "sha256": "0e39337d6ddb55b5e725f6318e2390260a88c70d75abf9de61ab34ff2779924e",
+      "bytes": 155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/dodge50/film50-film_dodge.png",
+      "sha256": "4ee6fd17f5537981f283fe46f883a2e07b3f010fb24b2bb7781985d2e78487fb",
+      "bytes": 391679
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/dodge50/pose-gap.json",
+      "sha256": "51fb4bc40bafdd7dba3d43b391f0903116b07e92c321355aacaadd033d27d1f3",
+      "bytes": 1411
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/dodge50/worst-film_dodge.png",
+      "sha256": "4ee6fd17f5537981f283fe46f883a2e07b3f010fb24b2bb7781985d2e78487fb",
+      "bytes": 391679
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/faint-idle50/film50-film_faint_hold.png",
+      "sha256": "8c7545b806116166c183793b2267dff201f307ec07d6e3e4e9e733ee12b1bc25",
+      "bytes": 373246
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/faint-idle50/pose-gap.json",
+      "sha256": "c3efd0795cb53f11d9b80254545549f0ec26fefb39d6910abad4897f2aa48c15",
+      "bytes": 3566
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/faint-idle50/worst-film_faint_hold.png",
+      "sha256": "56f640fa621e32153acbaa48b6225a7032b9eadd3b5dd79fcc31eb72f6295dfa",
+      "bytes": 373238
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/faint-idle90/pose-gap.json",
+      "sha256": "7f8e525a19c9c151aa63ebdd0323d778167f8e13125337fe2bf5b6348b23f6b6",
+      "bytes": 2161
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/faint-idle90/worst-film_faint_hold.png",
+      "sha256": "7cc9f36e2f75c3463c3c2bba47fbb9747b6cc23c64595044caee91e037c7b432",
+      "bytes": 373376
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/hit50/film50-film_hit.png",
+      "sha256": "9be40a55d303599ef9ccc3990681696cfeaedb69a95d15bb53d21de4ebf6f74f",
+      "bytes": 393538
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/hit50/pose-gap.json",
+      "sha256": "ed3b5cc35ba4288ed77e923f5473a491d709c68cb07959e69cecc4602c28872a",
+      "bytes": 3891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/hit50/worst-film_hit.png",
+      "sha256": "544a74ec3cd1dadc84db3f6b4e62fe3e70605a52f26f665f1121a4021e08252d",
+      "bytes": 393017
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/victory50/pose-gap.json",
+      "sha256": "459b234c2b660b56a675881e2c3cf0f1bfc01b0cfbb6f2e717f88bad78343e82",
+      "bytes": 2423
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-source-owned-r03/victory50/worst-victory.png",
+      "sha256": "72db49038ecf15a1f7ba6c1d1de56bba8fcca4f56986a0077b15a37f1ce842fb",
+      "bytes": 387059
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-delta.json",
+      "sha256": "40e4707c535d9f17af9b7e8dddfa27a4da1a76019790f08408a7bfe1b8ca2928",
+      "bytes": 474
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/dodge50/film50-film_dodge.png",
+      "sha256": "279d596b670f748caa3dd386daeb19c85af1777e7bead634d9506d6c5b504fca",
+      "bytes": 391840
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/dodge50/pose-gap.json",
+      "sha256": "a2f59b9829c2c6602632f836928b0010b0e1158252e661661460773a2dc98db0",
+      "bytes": 1420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/dodge50/worst-film_dodge.png",
+      "sha256": "279d596b670f748caa3dd386daeb19c85af1777e7bead634d9506d6c5b504fca",
+      "bytes": 391840
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/faint-idle50/film50-film_faint_hold.png",
+      "sha256": "4168220c0c4ec77c3996ba7c9a4841feb108ae0c51042a9e706b0001d4b94a8d",
+      "bytes": 366262
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/faint-idle50/pose-gap.json",
+      "sha256": "266f0a32fe5dd874cc2e2393069af375b60b57abf1ded934bbd589e15cffd424",
+      "bytes": 3182
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/faint-idle50/worst-film_faint_hold.png",
+      "sha256": "4168220c0c4ec77c3996ba7c9a4841feb108ae0c51042a9e706b0001d4b94a8d",
+      "bytes": 366262
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/faint-idle90/pose-gap.json",
+      "sha256": "4246065670a6985ff04dbdb95949968b995ff5b59bf2b60b556cccbe595f48d5",
+      "bytes": 1976
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/faint-idle90/worst-film_faint_hold.png",
+      "sha256": "91cf4db1c8b9e15a1b029c4bb49d353448d9b4dfcab08ae9544dc869a16b5d45",
+      "bytes": 366984
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/hit50/film50-film_hit.png",
+      "sha256": "4ebfa71b0c13cf82500a094791b1d6e85c69271d8774c8dc6fa7d0bd5398ebb6",
+      "bytes": 392964
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/hit50/pose-gap.json",
+      "sha256": "0d16d4ae2a39a245f9830e65d0f8ea1b396cf5ffecd2051d21c189bf97b2a25a",
+      "bytes": 3502
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/hit50/worst-film_hit.png",
+      "sha256": "4ebfa71b0c13cf82500a094791b1d6e85c69271d8774c8dc6fa7d0bd5398ebb6",
+      "bytes": 392964
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/victory50/pose-gap.json",
+      "sha256": "566d1493c1e0e91c75e4cbba94b5d00d0c32df8dfbcee3c02bafa0583e4ba32b",
+      "bytes": 2552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked-r04/victory50/worst-victory.png",
+      "sha256": "49682b59954bc9acb2d44fe698f23dd2d0a329f192803cfb64b35f877e58b2af",
+      "bytes": 384980
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-unmarked.ts",
+      "sha256": "ee35440bc4c545f50daa1bef9799cb240c363cf28620a89ffd0590974a835ceb",
+      "bytes": 17593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-victory50-r03.log",
+      "sha256": "79bdc3b179ae91d53d026fca30c2d0cf0cb1ee277df000f35f02547dc790a675",
+      "bytes": 149
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-victory50-r04.log",
+      "sha256": "769c45018831d765c4942ff7c95020052cf7834bd1764d10952427e329cb170c",
+      "bytes": 153
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-victory50-unmarked-r04.log",
+      "sha256": "769c45018831d765c4942ff7c95020052cf7834bd1764d10952427e329cb170c",
+      "bytes": 153
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/dodge50/film50-film_dodge.png",
+      "sha256": "279d596b670f748caa3dd386daeb19c85af1777e7bead634d9506d6c5b504fca",
+      "bytes": 391840
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/dodge50/pose-gap.json",
+      "sha256": "a2f59b9829c2c6602632f836928b0010b0e1158252e661661460773a2dc98db0",
+      "bytes": 1420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/dodge50/worst-film_dodge.png",
+      "sha256": "279d596b670f748caa3dd386daeb19c85af1777e7bead634d9506d6c5b504fca",
+      "bytes": 391840
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/faint-idle50/film50-film_faint_hold.png",
+      "sha256": "1ebea3b5d0a3508dfba4d889506c2f4d65f4a63eb637cf2b2304b9e639e4d2ff",
+      "bytes": 366586
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/faint-idle50/pose-gap.json",
+      "sha256": "266f0a32fe5dd874cc2e2393069af375b60b57abf1ded934bbd589e15cffd424",
+      "bytes": 3182
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/faint-idle50/worst-film_faint_hold.png",
+      "sha256": "5aa954cfd579deae7905f6f4955902635361477fdb71f2810c6542b0c9c3e940",
+      "bytes": 366572
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/faint-idle90/pose-gap.json",
+      "sha256": "4246065670a6985ff04dbdb95949968b995ff5b59bf2b60b556cccbe595f48d5",
+      "bytes": 1976
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/faint-idle90/worst-film_faint_hold.png",
+      "sha256": "aed842624043784de3eacebb86c71fa475a789323ad872fe862523579171ac08",
+      "bytes": 367368
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/hit50/film50-film_hit.png",
+      "sha256": "f7ee619c9a6501a04ded7052910ea193dc087bf37d5c394e41a059967aa30139",
+      "bytes": 393906
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/hit50/pose-gap.json",
+      "sha256": "0d16d4ae2a39a245f9830e65d0f8ea1b396cf5ffecd2051d21c189bf97b2a25a",
+      "bytes": 3502
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/hit50/worst-film_hit.png",
+      "sha256": "bb93fdcb69645a8e79793c8c5222ed0c2476c82ad0e3b90f76e28a7120d19175",
+      "bytes": 393450
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/victory50/pose-gap.json",
+      "sha256": "566d1493c1e0e91c75e4cbba94b5d00d0c32df8dfbcee3c02bafa0583e4ba32b",
+      "bytes": 2552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/retained-visible-r04/victory50/worst-victory.png",
+      "sha256": "6be567ab5955c99c358cc61c20b53eb271ea9400f6b29696ecb0457075c43d94",
+      "bytes": 386951
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/review-r01.json",
+      "sha256": "35322e2f24281a51476ea1b0c10a5cce7baaa15d51053255b739af2d5616511c",
+      "bytes": 2900
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/run-outcome-controls-r01.mjs",
+      "sha256": "b247ac810ec7a3a89947b061b8735f59b4eb9f0218a2bd0ee5bb5a26cec6bd8d",
+      "bytes": 830
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/run-retained-r03.mjs",
+      "sha256": "deecf27c0c09e7000d536f44f12f0cbc65089909fb5a0ef36c4856af018cf95d",
+      "bytes": 1030
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/run-retained-r04.mjs",
+      "sha256": "bba3bff9e58855d1f41963fcd58a19ee7566e2569c0f3f25d06b8833df2f6477",
+      "bytes": 1053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/run-retained-unmarked-r04.mjs",
+      "sha256": "82ba0c73bd31551ecd521a354cd9d63ccf370021f04308da5a13e7f2084c194c",
+      "bytes": 1068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-hinge-legs3x-grid.png",
+      "sha256": "a235ebc2f213f8adc542a77e9a90e2d2db09e80a45130795efd46ded38b55e0c",
+      "bytes": 310672
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-hinge-legs3x.png",
+      "sha256": "688c1fa796fa0cb7d14070222657a1eac2d7ec6298664c582119019fac2f9dff",
+      "bytes": 244125
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-hinge6x.png",
+      "sha256": "f8afae440369c5e8d623341f0387a44910e588535884e4d63050d7bc2692b8c9",
+      "bytes": 116180
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-matte-check-r01.json",
+      "sha256": "ad42ea1a39b7b9394a91344da42796f66611011869e8c667977a84846bb152f5",
+      "bytes": 4927
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/binding.json",
+      "sha256": "1bb273d2aac6eb699f26a96d986b4d015fdddb97f68cc946a79795ba4bab691a",
+      "bytes": 1875255
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/declaration.json",
+      "sha256": "eaeb63f80a4b1c98fd1cb02ccf56d1d4cfcec3203e0d93085319b2119cf0e82d",
+      "bytes": 2891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/labels.png",
+      "sha256": "3bb584a5b3223e2cdf89c3db4459d2c5b5d186c9685e3ec1908708b1643f4ada",
+      "bytes": 40870
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/atlas/c475-d40-butterfly-alternate-source-r03.json",
+      "sha256": "68d6b02e167209c152e7fb20dffc1554e9672e2d6925d0d323292755e9ab913b",
+      "bytes": 8283
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/atlas/c475-d40-butterfly-alternate-source-r03.png",
+      "sha256": "3edf85121fbb2b74942204995e69a2d0dc0f9035eba5e49aa328a6806a13a24b",
+      "bytes": 411044
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/atlas/receipt.json",
+      "sha256": "2b764a2d92bcb57e48dbcdb7094ce2c6d0e89a54f65d670dfaec739855f40346",
+      "bytes": 3414
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/binding.json",
+      "sha256": "1f1bdb2f68f7374f6938dac5fdad151ff959e1f3789d3e5fc9f24c2ffb9166cc",
+      "bytes": 6897
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/keyed.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/manifest.json",
+      "sha256": "433c9359b406891bdd087d2077a590027a2058931d6e3d9e40091ad9a3cac54c",
+      "bytes": 3535
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/ownership.png",
+      "sha256": "45e7bb64dca929aa10d44a4e9bf93947d827a0c1a328ad104bba2d8c1fed1660",
+      "bytes": 28572
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/abdomen.png",
+      "sha256": "5d6cfe54168dd1c9859ec25c499c346016485532f9231c62e52b3fe14998de49",
+      "bytes": 16681
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/antenna-far.png",
+      "sha256": "b1d85accc20580e7382c5d08d4ab06fc320cf943ce72dce8bc18b17a4b134161",
+      "bytes": 4770
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/antenna-near.png",
+      "sha256": "aca8676613cd0a273fcf7cd61f91bc4e6cec1b27d665f459f86b08df54467e22",
+      "bytes": 3605
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/body.png",
+      "sha256": "b75880bffa04a3fe96df6091950fe4ff23da12dce6d35328db7025cee3fbff80",
+      "bytes": 1283
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/head.png",
+      "sha256": "9e0b91e2359a217cde7b4c9b439377d57ee30b69bf1b0e564ffed5d6ac1d5fef",
+      "bytes": 8753
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-frontfar-lower.png",
+      "sha256": "ebbce26127dffb21631593619fcbc385d4b0504ed0cb75688a066f244d8bb45b",
+      "bytes": 2906
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-frontfar-upper.png",
+      "sha256": "31a1502424ac6fa2b437d9a6ea6caf43c841b11070fc3a26d980f8638b5a7f93",
+      "bytes": 2260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-frontnear-lower.png",
+      "sha256": "8b4a8b887992d33e7733c95d8fb0fe963dbdfb4ecafb75ea9625a12351f603f0",
+      "bytes": 1868
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-frontnear-upper.png",
+      "sha256": "f1f61f0d83e2e582e42cbb69d71affde5b3ac326522626d2449052bc5e95134b",
+      "bytes": 689
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-hindfar-lower.png",
+      "sha256": "19247bdb9d229bbe63c26894703347df12d4e346fb742c1f67b4a50d0cad0625",
+      "bytes": 1910
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-hindfar-upper.png",
+      "sha256": "c2c4528d1ceabeb293a501e2c819c0eeddf491269d5bbbae3b456b8adc2349d7",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-hindnear-lower.png",
+      "sha256": "589bb86f0927f1f35c5555922d63de2c39da5cf506bf89268c97529c60ecae11",
+      "bytes": 3300
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-hindnear-upper.png",
+      "sha256": "c56fbe3ef7d98a9c7eed40aa0bf5f4686d54a0ecd7028146e89c401edfc65f83",
+      "bytes": 2910
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-midfar-lower.png",
+      "sha256": "d378d01d8a17dcafe03be4e8644ed4327acdd910064507dbc4c3affc78ed1bc4",
+      "bytes": 1803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-midfar-upper.png",
+      "sha256": "a46495118b0b277fa9d2cdf3354c0a705d831100139be409a66cd96fdbb51e6a",
+      "bytes": 1215
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-midnear-lower.png",
+      "sha256": "463a95f6cff6ff4b215043a4cff950f623d58a7353ff297b2a67d6c0afb284cc",
+      "bytes": 2730
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/leg-midnear-upper.png",
+      "sha256": "5916d630c7bae1f4e794452d4b046862552b904200e8d6571e6852dd213de2f0",
+      "bytes": 804
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/proboscis.png",
+      "sha256": "051121278087ca3e0ad071c83f4f9e31a0762f99df050d14cb4944cc521c0630",
+      "bytes": 4156
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/thorax.png",
+      "sha256": "2ea123bb1f6bc66f5536e34316ebdc312eb14a3912c4b6f056f126e0c4749a1c",
+      "bytes": 18044
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/parts/wings.png",
+      "sha256": "368db32f25a7a455ee6081cc7e081e89ea8cf18af26801760d1675f145921bb1",
+      "bytes": 403205
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/parts/receipt.json",
+      "sha256": "929182a260ac8a25f84e09494f65c4c10609613770b6a8ea626f96c0717a20fc",
+      "bytes": 5499
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/pre-split-binding.json",
+      "sha256": "ed1a706d13203428dc4f6808b07d0b9e9ed02e21e39d8c9acc70f0f7620f52cd",
+      "bytes": 1464930
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/record.json",
+      "sha256": "8507b80832d5d865b909bd0dc5ea455600d8bc9cd9d1120c4b0a46719ab47237",
+      "bytes": 8109
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/source-join-probe.json",
+      "sha256": "ca5ef516707f2a63524d105d442a128d7915998da502643a341eec286c3b96d8",
+      "bytes": 819186
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/source-owned-r03/fit/source-ownership-receipt.json",
+      "sha256": "9069d5e02ae4a094f61c129ac8388eb729494e991242f5931035bb028852940c",
+      "bytes": 661383
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/static-source-owned-r03.json",
+      "sha256": "16d5e6ea40f859410608ad694b0ac427f0846cbb8452e6b1ead71768c74c6e2d",
+      "bytes": 7701
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/static-source-owned-r03.json.sources.json",
+      "sha256": "aa9d3b466479286070fa11b18ab6682eb3dfeddb964b8e792090d2bfa934c621",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/static-source-owned-r03.log",
+      "sha256": "0281e0926d3c1fcf9c9f38a33f6ad2bd0d2fe5d2e6fd3cb04fcc401ac51edf0a",
+      "bytes": 1837
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/static-visible-r04.json",
+      "sha256": "24909fcf29b3cd2b3bd90d6f31a9db2d93beff53f1bdacc601254b5ae29df82b",
+      "bytes": 7722
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/static-visible-r04.log",
+      "sha256": "bbec4d8a45bfcfad0fc253829920d20cba8ba7c11b5dd3b7811c90d985c51175",
+      "bytes": 1837
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/task-report-r01.md",
+      "sha256": "e43a344f834ff00cb1f96d31e02bf40be5951a954aea39cb6052e1ad8d05e9c9",
+      "bytes": 4743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/test-source-r01.mjs",
+      "sha256": "998ba356999be79511e7484924ab68b8e70dbf79215dc2752308b1e7c92a8d55",
+      "bytes": 2847
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/unmarked-verification-r01.json",
+      "sha256": "5605e87fc960ffc4350440f21edf631f61e82938e577b9ef70458daa76777b7b",
+      "bytes": 2341
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/verification-r01.json",
+      "sha256": "1c6d846248ad79d66d39398d9eea4e5192fe3b88fee7d80db475f0f5eabc9d25",
+      "bytes": 409
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/verify-unmarked-r01.mjs",
+      "sha256": "d4c242ed51f098e010c577715007e722af9a66b884ec3dc400f5cc65c096aa2c",
+      "bytes": 1585
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/binding.json",
+      "sha256": "8a96d186e921b1b3aebbdc85cdf084142bcb80b45d6d3c8b60adbacc343ff62d",
+      "bytes": 1914880
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/declaration.json",
+      "sha256": "817f2da92b34422f623fdce78c991a1f753043c912ea9d028f55c1b40f4cef8e",
+      "bytes": 4163
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/labels.png",
+      "sha256": "57d6d8d0d3b95dc47427bbdf02fa18f087c7ad2829ebbf214b36d8d912c08173",
+      "bytes": 40958
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/atlas/c475-d40-butterfly-alternate-visible-r04.json",
+      "sha256": "d1d43616f961b83a6ffeaba2e1e3e7549fd6920e9a48d11076c84c191fcc4249",
+      "bytes": 8281
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/atlas/c475-d40-butterfly-alternate-visible-r04.png",
+      "sha256": "acfc5dde720273ba9b1211466403fd5e8aab427fbe23b9901e3d87fee87e29d5",
+      "bytes": 412693
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/atlas/receipt.json",
+      "sha256": "5bbb89f112569d6c78252ec9d6e6fd4471003facb2e865ac6d417552a7f343d2",
+      "bytes": 3415
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/binding.json",
+      "sha256": "b10b073b3ee13fc831231eba6a113418e50f05af67dc97f3ab7136dc4f5110fd",
+      "bytes": 6892
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/keyed.png",
+      "sha256": "0c67ea75dd5c8f39314f685195497ffa1924453491c7182651118c45eaab8c9e",
+      "bytes": 1454138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/manifest.json",
+      "sha256": "97682b0eacdeee39be5c3895e1165df5206dc1ad8b79d8983e55654802417a95",
+      "bytes": 3536
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/ownership.png",
+      "sha256": "53fdf9e8df09769bd4ab8e2cfdcc777a1c50a2848bbba188bb4cc21240d68f19",
+      "bytes": 28646
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/abdomen.png",
+      "sha256": "7b6df7a33b0335591127505708f32c93a5e5aaab4a0cab4ca3a0fc1cbf7a1e1a",
+      "bytes": 26440
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/antenna-far.png",
+      "sha256": "b1d85accc20580e7382c5d08d4ab06fc320cf943ce72dce8bc18b17a4b134161",
+      "bytes": 4770
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/antenna-near.png",
+      "sha256": "aca8676613cd0a273fcf7cd61f91bc4e6cec1b27d665f459f86b08df54467e22",
+      "bytes": 3605
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/body.png",
+      "sha256": "b75880bffa04a3fe96df6091950fe4ff23da12dce6d35328db7025cee3fbff80",
+      "bytes": 1283
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/head.png",
+      "sha256": "9e0b91e2359a217cde7b4c9b439377d57ee30b69bf1b0e564ffed5d6ac1d5fef",
+      "bytes": 8753
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-frontfar-lower.png",
+      "sha256": "ebbce26127dffb21631593619fcbc385d4b0504ed0cb75688a066f244d8bb45b",
+      "bytes": 2906
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-frontfar-upper.png",
+      "sha256": "31a1502424ac6fa2b437d9a6ea6caf43c841b11070fc3a26d980f8638b5a7f93",
+      "bytes": 2260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-frontnear-lower.png",
+      "sha256": "8b4a8b887992d33e7733c95d8fb0fe963dbdfb4ecafb75ea9625a12351f603f0",
+      "bytes": 1868
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-frontnear-upper.png",
+      "sha256": "f1f61f0d83e2e582e42cbb69d71affde5b3ac326522626d2449052bc5e95134b",
+      "bytes": 689
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-hindfar-lower.png",
+      "sha256": "19247bdb9d229bbe63c26894703347df12d4e346fb742c1f67b4a50d0cad0625",
+      "bytes": 1910
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-hindfar-upper.png",
+      "sha256": "c2c4528d1ceabeb293a501e2c819c0eeddf491269d5bbbae3b456b8adc2349d7",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-hindnear-lower.png",
+      "sha256": "589bb86f0927f1f35c5555922d63de2c39da5cf506bf89268c97529c60ecae11",
+      "bytes": 3300
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-hindnear-upper.png",
+      "sha256": "c56fbe3ef7d98a9c7eed40aa0bf5f4686d54a0ecd7028146e89c401edfc65f83",
+      "bytes": 2910
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-midfar-lower.png",
+      "sha256": "d378d01d8a17dcafe03be4e8644ed4327acdd910064507dbc4c3affc78ed1bc4",
+      "bytes": 1803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-midfar-upper.png",
+      "sha256": "a46495118b0b277fa9d2cdf3354c0a705d831100139be409a66cd96fdbb51e6a",
+      "bytes": 1215
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-midnear-lower.png",
+      "sha256": "463a95f6cff6ff4b215043a4cff950f623d58a7353ff297b2a67d6c0afb284cc",
+      "bytes": 2730
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/leg-midnear-upper.png",
+      "sha256": "5916d630c7bae1f4e794452d4b046862552b904200e8d6571e6852dd213de2f0",
+      "bytes": 804
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/proboscis.png",
+      "sha256": "051121278087ca3e0ad071c83f4f9e31a0762f99df050d14cb4944cc521c0630",
+      "bytes": 4156
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/thorax.png",
+      "sha256": "5ba18f60014cd8d9f6ca801619c3233cd97f8ae83ae590fa136db1f2739c2841",
+      "bytes": 19294
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/parts/wings.png",
+      "sha256": "986d9c35a32a4c223ced0a0d608e46d7a1da9333830a102fddb264757b3776e4",
+      "bytes": 392217
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/parts/receipt.json",
+      "sha256": "c5ac71b828b13c1d1732eeef5ac9717f7f3ce80897347f20c1b0310165151752",
+      "bytes": 5499
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/pre-split-binding.json",
+      "sha256": "d4cc6f6d3b02425d739f32337fe5d650dca8ce09d2df09ca6d887885093198e8",
+      "bytes": 1489725
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/record.json",
+      "sha256": "8507b80832d5d865b909bd0dc5ea455600d8bc9cd9d1120c4b0a46719ab47237",
+      "bytes": 8109
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/source-join-probe.json",
+      "sha256": "9b456dfee1d3660623acb4e2f97ab3f65e40b90f9a3ac25f2f99818cca6635eb",
+      "bytes": 874104
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/visible-material-r04/fit/source-ownership-receipt.json",
+      "sha256": "608408641650ff8be83118a8e13e19ed37f45cec81274fee20053ce45f183d91",
+      "bytes": 392692
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/vitest-actual-r01.log",
+      "sha256": "e99f80579b57033ed76ec4d8674d240c3c51765d1c7d4a858602d522de4b18fc",
+      "bytes": 298
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/vitest-actual-r02.log",
+      "sha256": "a9e3198014bde92c11031767c7c2852378eebec417d731d591ac90c9a5a531c0",
+      "bytes": 298
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/vitest-old-eroded-r01.log",
+      "sha256": "3e90f0f35b745142a4eb1bd9a32ab93b01d901283e2a2dab4b365595a8e75c20",
+      "bytes": 14089
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/vitest-opaque-original-r01.log",
+      "sha256": "164fbab54a6957cf86506d1245d320c82f073609ab155c70d2d7826149c28db9",
+      "bytes": 1952
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/butterfly-alternate-r01/vitest.config.mjs",
+      "sha256": "530fed69f7009e1e7f4c84fe7c9bd74804afdf9bbbd268e4bc0ea5388a5bdca4",
+      "bytes": 272
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "5b98da8aadc581552225cba3ffc44d6aba8ff7b7d5ad2bd8331ca6f93d2b330e",
+      "bytes": 565862
+    }
+  ],
+  "files": 329,
+  "remoteOperations": false
+}

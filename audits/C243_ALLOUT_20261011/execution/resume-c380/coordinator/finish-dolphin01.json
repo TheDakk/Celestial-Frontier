@@ -1,0 +1,21 @@
+{
+  "stage": "finish-dolphin01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "c380-finish-dolphin01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01",
+    "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finish-subjects.json"
+  ],
+  "startedUnix": 1792210928.281217,
+  "beforeGiB": 88.89400100708008,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 65.626,
+  "lowestGiB": 78.46561050415039,
+  "afterGiB": 85.83209609985352
+}

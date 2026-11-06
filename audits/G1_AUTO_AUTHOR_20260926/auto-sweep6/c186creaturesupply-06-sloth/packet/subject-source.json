@@ -1,0 +1,66 @@
+{
+  "name": "Sloth",
+  "family": "quadruped",
+  "species": {
+    "name": "Sloth",
+    "aspect": 1.2,
+    "headFrac": 0.26,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "long hooked scythe claws",
+      "small round flat face with a faint smile",
+      "shaggy coarse greenish fur"
+    ],
+    "note": "generic representative: a three-toed sloth. Normally hangs upside down beneath a branch, so the limbs read above the body"
+  },
+  "genome": {
+    "seed": 657590311,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 2,
+    "body": 0,
+    "loco": 14,
+    "trait": 3,
+    "size": 2,
+    "diet": 5,
+    "head": 3,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 10,
+    "detail": 5,
+    "accent": 3,
+    "temper": 2,
+    "sense": 9,
+    "repro": 5,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sloth"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sloth\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"657590311\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "index": 13,
+  "profile": {
+    "id": "xenarthran",
+    "names": [
+      "Sloth",
+      "Armadillo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw"
+    ],
+    "notes": ""
+  }
+}

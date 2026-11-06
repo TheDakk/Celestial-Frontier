@@ -1,0 +1,17 @@
+/** Exact one-bullet update and same-commit 121-row Guide authority; no browser run. */
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import{createRequire}from'node:module';import{createHash}from'node:crypto';
+const req=createRequire(process.cwd()+'/port/v2/package.json'),{createServer}=await import(req.resolve('vite'));
+const B='audits/C475_DECISIONS_20261019/coordinator',scratch=B+'/node_modules/c475-soft-materials-draft-pin';fs.mkdirSync(scratch,{recursive:true});
+const release='port/v2/apps/game/src/release-content.ts',guide='port/v2/tools/slicesmoke.mjs',sha=b=>createHash('sha256').update(b).digest('hex');
+async function bullets(tag){
+ const server=await createServer({configFile:false,root:path.resolve('port/v2'),cacheDir:path.resolve(scratch+'/'+tag),server:{host:'127.0.0.1',middlewareMode:true,hmr:{host:'127.0.0.1',port:0}},appType:'custom'});
+ try{const m=await server.ssrLoadModule('/apps/game/src/release-content.ts');const rows=m.V2_DRAFT_RELEASE.sections.flatMap(x=>x.bullets);assert.equal(rows.length,121);return rows;}finally{await server.close();}
+}
+const text=fs.readFileSync(release,'utf8'),g=fs.readFileSync(guide,'utf8'),pin=/GUIDE_DRAFT_BULLET_AUTHORITY = Object\.freeze\(\{\s+count: 121,\s+sha256: '([a-f0-9]{64})',/g,m=[...g.matchAll(pin)];assert.equal(m.length,1);
+const before=await bullets('before');assert.equal(sha(JSON.stringify(before)),m[0][1]);
+const old="Painted studies keep tube worms planted as their crowns move, bend soft worms along their bodies, and give urchins, small crustaceans and nautiluses distinct body movement.";
+const extra="Painted studies keep tube worms planted as their crowns move, let soft worms and comb jellies bend without splitting their painted surfaces, and give urchins, small crustaceans and nautiluses distinct body movement.";
+assert.equal(text.split(old).length-1,1);assert.equal(text.split('CREATURE MOTION STUDIES').length-1,1);const at=text.indexOf(old);assert(text.lastIndexOf('CREATURE MOTION STUDIES',at)>=0);fs.writeFileSync(release+'.c475tmp',text.replace(old,extra));fs.renameSync(release+'.c475tmp',release);
+const after=await bullets('after');assert.equal(after.filter((x,i)=>x!==before[i]).length,1);const changed=after.find((x,i)=>x!==before[i]);assert(changed.includes('CREATURE MOTION STUDIES'));const next=sha(JSON.stringify(after));assert.notEqual(next,m[0][1]);
+const exact=m[0][0],replacement=exact.replace(m[0][1],next);assert.equal(g.split(exact).length-1,1);fs.writeFileSync(guide+'.c475tmp',g.replace(exact,replacement));fs.renameSync(guide+'.c475tmp',guide);
+fs.writeFileSync(B+'/soft-materials-guide-pin-proof-r03.json',JSON.stringify({status:'PASS',count:121,changedBullets:1,onlyMotionStudiesChanged:true,beforeSha256:m[0][1],afterSha256:next,releaseSha256:sha(fs.readFileSync(release)),guideSha256:sha(fs.readFileSync(guide)),productionVersionChanged:false},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({status:'PASS',count:121,sha256:next}));

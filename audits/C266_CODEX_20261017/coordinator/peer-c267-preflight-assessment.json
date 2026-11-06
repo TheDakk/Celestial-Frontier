@@ -1,0 +1,8 @@
+{
+  "status": "PASS_EXPECTED_PEER_MAILBOX_ADVANCE",
+  "rawReport": "audits/C266_CODEX_20261017/coordinator/peer-c267-preflight.json",
+  "equalEvidenceOverlaps": 451,
+  "expectedDifference": "Peer-owned TO_CODEX advances from C266 to C267; no local edit to that file",
+  "ownTrackedCleanRequiredBeforeMerge": true,
+  "signedPeer": "ace47592c G; verify-commit good"
+}

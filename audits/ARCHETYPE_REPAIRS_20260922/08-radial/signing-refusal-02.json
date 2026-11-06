@@ -1,0 +1,9 @@
+{
+  "toolReceipt": "21831d",
+  "exitCode": 128,
+  "signer": "configured /Applications/1Password.app/Contents/MacOS/op-ssh-sign with terminal",
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "headUnchanged": "4f82025c490d39b80b78bfab81ac53232a780a74",
+  "interpretation": "Per-request refusal. Root cause and lock state not established; Chimpanzee predecessor signed successfully after explicit retry.",
+  "nextAction": "User asked to bring this task to foreground for already authorized retry; no security settings changed."
+}

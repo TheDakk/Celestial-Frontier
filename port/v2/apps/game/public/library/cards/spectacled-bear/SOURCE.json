@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Spectacled Bear",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/23-spectacled-bear/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9b45251a662a03865994c3081ce24bf0e7574fcf4fff3e202f9f9dcd02f5197a"
+}

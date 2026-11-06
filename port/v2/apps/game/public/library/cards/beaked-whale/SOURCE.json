@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Beaked Whale",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/rebound-01/c243b02r1c2-02-beaked-whale/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6d7e6c8243dcd7b7a5e1204f25103d2df47c0f1a93bacede03b53d8ba46d36dd"
+}

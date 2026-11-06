@@ -1,0 +1,28 @@
+{
+  "name": "Skink",
+  "masterSha256": "33426fa518e345737cd9246e7d2e7ca325e90442c2b384a01bcbac8cb524be30",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: glossy longitudinal rows of smooth overlapping scales, cylindrical trunk, small limbs and continuous tapering tail. Only the two near legs and a partial far forelimb are independently readable; the far hindlimb cannot be established. HOLD for unresolved fourth limb, despite broad framing margins. No anatomical admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 336,
+      "y0": 584,
+      "x1": 917,
+      "y1": 682
+    },
+    "margins": {
+      "left": 336,
+      "right": 336,
+      "top": 584,
+      "bottom": 571
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

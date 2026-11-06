@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Softshell Turtle",
+  "slug": "06-softshell-turtle",
+  "id": "c266-intake-softshell-turtle",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-32-softshell-turtle",
+  "masterSha256": "ead89bd3f4ff12785589a604efa0c30b5d1a7fc94c00d613b99088a52b512c35",
+  "masterCopySha256": "ead89bd3f4ff12785589a604efa0c30b5d1a7fc94c00d613b99088a52b512c35",
+  "subjectSourceSha256": "cb5bac8c60c9c16ef979edf33405aa78726e76f4df723dfe1613d7d8c9068630",
+  "promptSha256": "02e70152f9600069ae8f4efc8df599941cae31b0e77e2bf09de85dc9e7a24193",
+  "refusal": "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 20% paint (reference 67%)",
+  "observation": "Full-size review: flat leathery pancake shell without scutes; four separate fully webbed paddle feet (hind near fan x≈168-360, hind far x≈443-572, fore near paddle x≈790-960, fore far visible under the plastron x≈695-795); short tail; long neck and tubular snorkel snout. The refusal is a tortoise shin-fringe part transferred onto a webbed paddle, not missing paint.",
+  "joints": 27,
+  "parts": 25,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/06-softshell-turtle.mjs"
+}

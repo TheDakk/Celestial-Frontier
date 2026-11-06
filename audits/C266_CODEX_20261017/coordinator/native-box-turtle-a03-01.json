@@ -1,0 +1,20 @@
+{
+  "stage": "native-box-turtle-a03-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-box-turtle-a03-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/plan.json"
+  ],
+  "startedUnix": 1792277278.9305542,
+  "beforeGiB": 91.49151229858398,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.064,
+  "lowestGiB": 91.08089447021484,
+  "afterGiB": 91.44021987915039
+}

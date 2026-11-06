@@ -1,0 +1,2 @@
+# Reproducible local diagnostic bundles; input scripts and receipts are retained.
+*.bundle.mjs

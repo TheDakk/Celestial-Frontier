@@ -1,0 +1,66 @@
+{
+  "status": "APPLIED_AWAITING_ROOT_CHECKS_NO_NATIVE",
+  "baselineProducer": {
+    "commit": "633cd4627f52b89efaea1267d364ea33032ade47",
+    "signature": "G"
+  },
+  "manifest": {
+    "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal-manifest-r03.json",
+    "sha256": "0edf845acd6ce45a65ba925ca027c898129f49084c3be7c2995b6ae19c6cca78"
+  },
+  "independentReview": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/review-r01.json",
+    "sha256": "cba505bbfa2bafd1168238f710f2b3ee41d79e469e8f9319074312d06c14a401"
+  },
+  "frozenPinsVerified": 272,
+  "rows": [
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "beforeSha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079",
+      "afterSha256": "5a4b045a619fa9ccf077305ab51ab219c2f11606d37b13860fa134f5d122775f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "beforeSha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "afterSha256": "eef4243ed0d3f93f16816d16271fa5b43cf1dbbb2a90282dbf2247d0a8cb6107"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "beforeSha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "afterSha256": "877dde31a926360ab2f65489b2187a42149ee1c60d5bd058dadba4e828013e82"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.mjs",
+      "beforeSha256": null,
+      "afterSha256": "f4f22724eab07df832a792bacde6f1164d03d3eb5a2d75dedfe8ae0b3ceb38f1"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "6f2a72c7f191152c2fd4cc13a9cc9e12821cc28eeedf001df06e65709b82004d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "beforeSha256": "b3004385c6181917ec12fccf2d188949914f1003fca0edd06147f607191bba20",
+      "afterSha256": "be1ab29802900a4d32dcde66eced1a8dc88af4fd421ddfa4de16aa96620138d4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "beforeSha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c",
+      "afterSha256": "fa5d8ff6288718d4db6b8c4ecc179902f29b8e2ed9cd0deefd48caf1906e1bcb"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "beforeSha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992",
+      "afterSha256": "6bf219c583f754a9162155c7ecdae8f952a279d387f6a90985407173ffe15d0f"
+    }
+  ],
+  "canonicalKeyedSealsRebound": false,
+  "limitsChanged": false,
+  "sourceGeometryOrPaintChanged": false,
+  "notes": [
+    "New ctenophore-only boundary coupling uses existing preservePaintBoundaries. Existing19templateobjects preserved by controls.",
+    "Existing axial guard diagnostic receipt adds fields:[]; no old template/motion change claimed.",
+    "W1 baseline runtime pins are historical at this exact signed baselineProducer; verify those code rows against its Git blobs after this applied change."
+  ]
+}

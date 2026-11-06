@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-34-guillemot-c1-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-c267-34-guillemot-c1-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/plan.json"
+  ],
+  "startedUnix": 1792278053.51877,
+  "beforeGiB": 91.39169692993164,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.047,
+  "lowestGiB": 90.99192428588867,
+  "afterGiB": 91.3579330444336
+}

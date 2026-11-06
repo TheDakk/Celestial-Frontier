@@ -1,0 +1,14 @@
+{
+  "status": "IDLE_TOOLCHAIN_AND_OWN_WORKSPACE_LOCKS_ABSENT",
+  "toolchain": {
+    "path": "/private/tmp/celestial-frontier-toolchain-501.lock",
+    "exists": false
+  },
+  "workspace": {
+    "path": "/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/celestial-frontier-workspace-e5c3a01ec0513024d9ea.lock.json",
+    "exists": false
+  },
+  "nativeQueue": "IDLE_ALL_ROOT_NATIVE_AI_AND_CPU_WORKERS_COMPLETED",
+  "noProcessEnumerationOrLockDeletion": true,
+  "reservation": "C495_RELEASED_AT_C500_TERMINAL"
+}

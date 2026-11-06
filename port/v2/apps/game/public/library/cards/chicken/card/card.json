@@ -1,0 +1,211 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Chicken",
+ "recordRecipeHash": "e00e3747d9c9f636fdf0c18f02361847daf4af4d8c56223a40c5de22015311e9",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/11-chicken/packet/master.png",
+  "masterSha256": "49392525bd98a806cd38c6c3053549b0654af40bd44ef16d8f49eb3759c1e4a2",
+  "keyedSha256": "60475a06152aedfba0a3b0ca4df07811d203a25f828984632c32482c80284efb",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "1b79b085ef0f3c44320b519826059ceb4f1f059c04cac135ba04740e56f56f47",
+  "labelSource": "binding parts (atlas frames → cut-out boxes, far then near)",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "root-patch",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "near-foot",
+   "joint": "legNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "far-foot",
+   "joint": "legFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 4,
+   "id": "near-shin",
+   "joint": "legNearAnkle",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "far-shin",
+   "joint": "legFarAnkle",
+   "layer": "far"
+  },
+  {
+   "label": 6,
+   "id": "near-thigh",
+   "joint": "legNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "far-thigh",
+   "joint": "legFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 8,
+   "id": "beak",
+   "joint": "beak",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "neck-upper",
+   "joint": "neck1",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "neck-lower",
+   "joint": "neck0",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "near-wing-shoulder",
+   "joint": "wingNearRoot",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "near-wing-flight",
+   "joint": "wingNearTip",
+   "layer": "near"
+  },
+  {
+   "label": 14,
+   "id": "far-wing-shoulder",
+   "joint": "wingFarRoot",
+   "layer": "far"
+  },
+  {
+   "label": 15,
+   "id": "far-wing-flight",
+   "joint": "wingFarTip",
+   "layer": "far"
+  },
+  {
+   "label": 16,
+   "id": "tail",
+   "joint": "tailFan",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 18,
+   "id": "torso",
+   "joint": "spine",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5637958532695375,
+   0.5101275917065391
+  ],
+  "pelvis": [
+   0.4756778309409888,
+   0.5727272727272728
+  ],
+  "spine": [
+   0.5420255183413079,
+   0.48867623604465704
+  ],
+  "chest": [
+   0.5921850079744817,
+   0.4550239234449761
+  ],
+  "neck0": [
+   0.6015151515151514,
+   0.3860446570972887
+  ],
+  "neck1": [
+   0.6399521531100478,
+   0.32751196172248803
+  ],
+  "head": [
+   0.6943381180223286,
+   0.28046251993620414
+  ],
+  "beak": [
+   0.7192982456140351,
+   0.2997607655502392
+  ],
+  "legNearKnee": [
+   0.4178628389154705,
+   0.6355661881977671
+  ],
+  "legNearAnkle": [
+   0.4082934609250399,
+   0.6895534290271133
+  ],
+  "legNearFoot": [
+   0.4342105263157895,
+   0.7109250398724083
+  ],
+  "legFarKnee": [
+   0.516267942583732,
+   0.6231259968102073
+  ],
+  "legFarAnkle": [
+   0.5425837320574163,
+   0.6853269537480063
+  ],
+  "legFarFoot": [
+   0.5873205741626795,
+   0.7125199362041468
+  ],
+  "wingNearRoot": [
+   0.5399521531100478,
+   0.4114035087719298
+  ],
+  "wingNearTip": [
+   0.3850079744816587,
+   0.5719298245614035
+  ],
+  "wingFarRoot": [
+   0.5556618819776714,
+   0.3929027113237639
+  ],
+  "wingFarTip": [
+   0.46291866028708134,
+   0.38955342902711326
+  ],
+  "tailFan": [
+   0.33883572567783093,
+   0.4108452950558214
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "09d491bdba8bd90448d436665d55c0c596dfa0144aba3a3fef6cec6cb5107fc9",
+  "labelsSha256": "6609f13cee8a0171d6af65afe999481035ab8df358834d4da5b2b3d70e94983f",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

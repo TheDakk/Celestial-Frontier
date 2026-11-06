@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gannet",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/07-gannet/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c9ada9aee324531d1c34ad5881cac781cf41dd21e3ba05ed0426762eb206aee8"
+}

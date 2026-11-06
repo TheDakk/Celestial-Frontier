@@ -1,0 +1,10 @@
+{
+  "id": "c266-32-godwit-c1",
+  "fit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/32-godwit-c1/qual-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/godwit-01/native/report.json",
+  "name": "Godwit",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/godwit-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/godwit01/visual-review.json",
+  "checkpointReviewSha256": "29ce5e531feb0c487b829e1fb841aa5a7bce1b195605b0907ed6e6104634227d",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

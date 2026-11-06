@@ -1,0 +1,862 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "name": "grasshopper",
+      "files": [
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/checkpoint.json",
+          "bytes": 516,
+          "sha256": "fdfb914da6ac6bb1bb49fc172a52b21c0171d23cd054bcba83e7d5baae38c7a8",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finish-subjects.json",
+          "bytes": 250,
+          "sha256": "e37e7f27ed0735e8f049a01ee4ca6a005330eb25fc909f38e449418a19dd3eea",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/c266-11-grasshopper-finished.png",
+          "bytes": 1415767,
+          "sha256": "e40f446c9e8815aae2823502bbb145f3678a6d5a5e7b768ddb281dca7177506f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/c266-11-grasshopper-receipt.json",
+          "bytes": 23199,
+          "sha256": "a58f18bc61e8240ed098d695f4a26b44456c81e5dcb165da5294f56f21bc1be7",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/c266-11-grasshopper-binding.json",
+          "bytes": 1082137,
+          "sha256": "0518fffb7c5b8af8bd001ce4c8c6a7efd1ad07d237017a9391a0379aca06885f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/c266-11-grasshopper-labels.png",
+          "bytes": 42013,
+          "sha256": "712d74669d44998585a79fa29f4e1ad549878db1f4979cc8c802fcacee938577",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/c266-11-grasshopper-labels.rgba",
+          "bytes": 6290064,
+          "sha256": "8f057068c419dd7c1a9621d2a5838558ad8e4891326c10f102ab2f418edf4f3d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/c266-11-grasshopper-master.rgba",
+          "bytes": 6290064,
+          "sha256": "541a24c55c4ba9b8b97b56b9928c92e6c55538967e48e07889c6837d23b705eb",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/c266-11-grasshopper-masterPng.png",
+          "bytes": 1429609,
+          "sha256": "2c54eaebbf64734d63a3772f6cbd13a691a0d3c6fb552346b24deb9aadf3b611",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/client.mjs",
+          "bytes": 133185,
+          "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/prepared/inputs.json",
+          "bytes": 1867,
+          "sha256": "66c1ec829fa7135b8f815419c3d2c0340e375036cc162cbfad4363d09d10149c",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/progress.json",
+          "bytes": 162,
+          "sha256": "12703774645f1eb1b06c85b444ebcd4269b487bcc0bbce6b328302059887d06f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished/result.json",
+          "bytes": 54281,
+          "sha256": "e6225c25ebd27ea23be6558573a62307f2b93c2efad19a68c5494ce7d8fb84fb",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished-plan.json",
+          "bytes": 1134,
+          "sha256": "382c24e9cb452f749a590891517e65e8d000105cbc19976d6ffb62b7db1ca7c0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/grasshopper-01.log",
+          "bytes": 224,
+          "sha256": "c8362f1b856bb3547f72538c22bcc36d22848a02eff995d077fa6b77f5168fbd",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/battle-full.webm",
+          "bytes": 9494827,
+          "sha256": "283008be8f15ece9e6e775efca0c95e91528efccde7c149181890482d0fe82af",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/report.json",
+          "bytes": 374266,
+          "sha256": "437619772df12131037f788b38a76e926a1187a8b2693bdd7ee838535ac89ab6",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn0-hit-approach-50.png",
+          "bytes": 1519124,
+          "sha256": "83d20b2fad231c3777fb7f8606c79310947b442f41366ef3a6f66e4ee7df308c",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn0-hit-impact.png",
+          "bytes": 984889,
+          "sha256": "68bf2343538c49cb416b2b0bbe5d94e420a5511730aff09b8b783172b9a727d5",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn0-hit-reaction-50.png",
+          "bytes": 1543474,
+          "sha256": "ae8642e84db4d77992bc9358e7c1fac91b7dfc19ef5c62aa03a719fbf99f37ef",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn0-hit-return-end.png",
+          "bytes": 1519046,
+          "sha256": "d8cadd40db9e5320214aebcff9bbc3d05dc5e3d15396f3471e080492836c847a",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn1-hit-approach-50.png",
+          "bytes": 1520293,
+          "sha256": "8e1aa72049223941706b13d8594d5afd9c9ec7824b962e4b621916b34993af62",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn1-hit-impact.png",
+          "bytes": 1520041,
+          "sha256": "6be3f8fd8f3d3fd645229ed5480aece9eb931ebbb412bed88d431bc29e3e139b",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn1-hit-reaction-50.png",
+          "bytes": 1519236,
+          "sha256": "6bcf469af717316508c61ef383979721fe5c0581ade7fb3fd9844ee9b192af8d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn1-hit-return-end.png",
+          "bytes": 1519120,
+          "sha256": "659b2a300b92eb1ff3354a0a83150a95aa73a269505435557411ac7a5ac39c14",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn2-dodge-approach-50.png",
+          "bytes": 1519124,
+          "sha256": "83d20b2fad231c3777fb7f8606c79310947b442f41366ef3a6f66e4ee7df308c",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn2-dodge-impact.png",
+          "bytes": 1538335,
+          "sha256": "11754e4304d00c3ef41f1d63334b7d4a7245689c21b3ba65da9faa5d02760531",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn2-dodge-reaction-50.png",
+          "bytes": 1539762,
+          "sha256": "8ef91088074118294bfbd8a845084efd0a9c6b404483eec853a0e54c50b1cb37",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn2-dodge-return-end.png",
+          "bytes": 1519076,
+          "sha256": "a598a3630c29ea9439fefb0911ebd9a7379a97fc2dad74acf8f7183353f4c4a7",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-approach-50.png",
+          "bytes": 1519124,
+          "sha256": "83d20b2fad231c3777fb7f8606c79310947b442f41366ef3a6f66e4ee7df308c",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-idle-50.png",
+          "bytes": 1518521,
+          "sha256": "d3625ccb1c9ca186050fe10554460f0d920956d124eacfb2873a7fe42fc1c863",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-idle-90.png",
+          "bytes": 1512227,
+          "sha256": "29cbe5db17f61dc3328812fa23d05dd8b21875dacf8d356cc6e96af475bae327",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-impact.png",
+          "bytes": 1519562,
+          "sha256": "b744ca97c313d1b3f5bbf9c9ba6f3a1901cf4eb4ec6171e640d02b1c351bf7fa",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-reaction-50.png",
+          "bytes": 1539982,
+          "sha256": "31e50d2de9d1b3d09d9b180a08ddaa02bae04bf81b986cbf8a6bf8c1341a2de1",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native/turn3-hit-return-end.png",
+          "bytes": 1519115,
+          "sha256": "4045c07ed10e41da61b335861a948b4a0b69bd435c3bb4e918ec5c3d784734bc",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native-assessment.json",
+          "bytes": 116,
+          "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/native-results.json",
+          "bytes": 1186,
+          "sha256": "e480a833c239801b864559d847c536fb3f116a225df803f0a49f9fdd91a63d11",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebind-results.json",
+          "bytes": 11235,
+          "sha256": "840e9f1d12852fb27fbabad734ff9e849b1dc74fcca3bf8b4c98da4202bcb1a2",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/binding.json",
+          "bytes": 1082137,
+          "sha256": "5eb95e021d8efd4a393bf4ac4222065f8c0ecb3b8a8aa7d9675e4b92a5ecce57",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/declaration.json",
+          "bytes": 2409,
+          "sha256": "e8755f0516e8007b6a711edf8f5586856874f17fb613ba60b67ea4094cec2490",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/finished-rebind.json",
+          "bytes": 10583,
+          "sha256": "834402a6de801672bf1d2ebffc2d16c3a16403bed0c49346827849137abb75a0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/labels.png",
+          "bytes": 42013,
+          "sha256": "712d74669d44998585a79fa29f4e1ad549878db1f4979cc8c802fcacee938577",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/atlas/c266-11-grasshopper.json",
+          "bytes": 8271,
+          "sha256": "b9c66ba70b14c8dd81f495001c9e36cfe33256d75e909d21a507453999d52289",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/atlas/c266-11-grasshopper.png",
+          "bytes": 386936,
+          "sha256": "f21c46a89316f1fa9eff98fa38b1ad2ede9fa7c0533a9d12dd69b604eca64a70",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/atlas/receipt.json",
+          "bytes": 3381,
+          "sha256": "0766f18e9d75ac15ead080d32a52b61124c48d3f08f1d66b1e84c4c2d459e8cd",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/binding.json",
+          "bytes": 6897,
+          "sha256": "3226b9f09261b6c76bb87a40b242b43ac9fde2d3b629f6e68af6cfe67659afea",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/keyed.png",
+          "bytes": 1420870,
+          "sha256": "8a75fcb84cf5aafc0696aef5bd189799a7368ff470c68fee88cf623194e2a915",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/manifest.json",
+          "bytes": 3489,
+          "sha256": "7b1e1b198bae2a232ae62ddc7fe07da5048efd6a82002067edf73d0f61502fab",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/ownership.png",
+          "bytes": 15616,
+          "sha256": "82ee4a4323fb920250887d04dc60ae97e5e1013fa517d5987b14f931d11c9de3",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/abdomen.png",
+          "bytes": 62713,
+          "sha256": "5625bcaa3443cc5b7e8d2d661c469e7cc71fc84f1013dd3e50f79a1f63146e7a",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/antenna-far-0.png",
+          "bytes": 1145,
+          "sha256": "3ffed6c65127dbc726de9a13a7f43f52baa6fe420e7c9d226151f7a9c8d96234",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/antenna-near-0.png",
+          "bytes": 1717,
+          "sha256": "61dd68feb65b831921e16ee075925479c2607b1ceb25d471975abc19391aac1e",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/body.png",
+          "bytes": 2743,
+          "sha256": "5df30f96c80737b1908e176a1f90dbdcebc71ba0af94a5ada54c27679884d971",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/front-far-lower-0.png",
+          "bytes": 918,
+          "sha256": "b6cbd1e96fcd52cbc324fac0a3d8b5ad31eda2b9017dac3b7f33bfb65e3a57b8",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/front-far-upper.png",
+          "bytes": 1784,
+          "sha256": "8b7b33d5d47fd7cc5e1f5c53a8529671df19a6fafbab7a308df4dee613fe8e93",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/front-near-lower-0.png",
+          "bytes": 4471,
+          "sha256": "efc8733084997870523c0e028818f0936b7e1ab9feb7335cf8d703307737c1ba",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/front-near-upper.png",
+          "bytes": 6249,
+          "sha256": "19a2a89582656221504d2e2596dd8e5a1f948907fc41afa13ee858d0e2454586",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/head.png",
+          "bytes": 23539,
+          "sha256": "5c3ab007c1399bc9b647bd57828715932854e96161fe8458ed0ea0d320948c58",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/hind-far-femur.png",
+          "bytes": 30676,
+          "sha256": "5d7f6aee9835f9ed196a50a410d9f51163c2b06148e91c02689ebef14cc4fd4c",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/hind-far-tibia-b-0.png",
+          "bytes": 9479,
+          "sha256": "5b44830729837bcc939a1c26d6cafa014aa67fa8d69619276cacb6fa9457085d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/hind-near-femur.png",
+          "bytes": 54342,
+          "sha256": "69745f0d89beba092984e7bfe020e7c6eb70e1d3f18b311c874d443f5e6ef042",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/hind-near-tibia-b-0.png",
+          "bytes": 17906,
+          "sha256": "8a9eca40b11bc070ac8e4806a7f737b91fc8ee695060e438c03101f507f901e0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/mandible.png",
+          "bytes": 4882,
+          "sha256": "f350516001f0431c933d4e40b20699fca547fc726d8d54b1015b8fe1faebf366",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/mid-far-lower-0.png",
+          "bytes": 4638,
+          "sha256": "58cec14838d44ffe2ef6ffea7fc9994b4ac976868820037c1a5f070586ddca91",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/mid-far-upper.png",
+          "bytes": 3788,
+          "sha256": "74859891b8d02c0d5942ed96b6d28f94948b755ea550957ef420099406240afb",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/mid-near-lower-0.png",
+          "bytes": 4696,
+          "sha256": "2829c91388f6f28b33e60e3e5193d7119ca40247d70d64167d811cb3cbd16332",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/mid-near-upper.png",
+          "bytes": 5624,
+          "sha256": "30005abd36930f6533bed1e5ed553bae9cedcc61bd586ec1f80f3e78dc581cc9",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/thorax.png",
+          "bytes": 65512,
+          "sha256": "290403e3d682e44697d48b0331c70e12b52bbd979a0802e65ee47428ac418e37",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/parts/wing-near.png",
+          "bytes": 63442,
+          "sha256": "0256e9e6a5d995cca1f7ca32315943c588c1fe052731b96a16edf59da3124ffd",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/parts/receipt.json",
+          "bytes": 5695,
+          "sha256": "abd9fb4d4050b950311407de72ff650ed22b0e60cba0dfb33a379400eeab8aa4",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/pre-split-binding.json",
+          "bytes": 766045,
+          "sha256": "ffee110419d6c0a3f0099e256037089469eda1f11072b230fb6e33d9f5321d17",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/record.json",
+          "bytes": 6773,
+          "sha256": "03dcc41cb0ddf42aedfbb1aa436d77ab7183238991e6c6d9ed9eb7dc9758b43d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/rebind-summary.json",
+          "bytes": 11235,
+          "sha256": "840e9f1d12852fb27fbabad734ff9e849b1dc74fcca3bf8b4c98da4202bcb1a2",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/subjects.json",
+          "bytes": 257,
+          "sha256": "16a148bba64d07e64f5f009f891bc774848efe25f3acc83ee444f2c21bb63a59",
+          "rawMediaLocalOnly": false
+        }
+      ]
+    },
+    {
+      "name": "dragonfish",
+      "files": [
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/checkpoint.json",
+          "bytes": 533,
+          "sha256": "bf963854677d767d2cf2a4457cc25d20a9b2f6c98eea0113037e9af2f0836852",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/dragonfish-01.log",
+          "bytes": 189,
+          "sha256": "fdc104a6ff4b7df95592c7c0ca0acaf9f229cd98b6f8d1d85d0e049afbf04fd4",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finish-subjects.json",
+          "bytes": 252,
+          "sha256": "952178488da3fc1858b042ad11bb0bb3b9b7ba8200bf4561fa328e7d415e6e78",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/c266-06-dragonfish-c3-finished.png",
+          "bytes": 1201791,
+          "sha256": "209fd1259d5a48bceff9a99b9b6d631af3f2aadee016837885626e511e7459e1",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/c266-06-dragonfish-c3-receipt.json",
+          "bytes": 16252,
+          "sha256": "9b423615570822fd22abf870120d7ccdc89dec7df1cc0009e90feba99091379b",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/c266-06-dragonfish-c3-binding.json",
+          "bytes": 731424,
+          "sha256": "9d318f5bca1ff81bbec13e9c4c2f53be6f105fc4f1d06c07447ebbfba64f030c",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/c266-06-dragonfish-c3-labels.png",
+          "bytes": 38345,
+          "sha256": "b00a28f753088e704ece1650774b457c0cbc6d6073d2663fb978a8accffff88f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/c266-06-dragonfish-c3-labels.rgba",
+          "bytes": 6290064,
+          "sha256": "3ba2b47a45346c658d18442744dfcfc859ce52cd439d8bf360b2cdae091bd144",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/c266-06-dragonfish-c3-master.rgba",
+          "bytes": 6290064,
+          "sha256": "50b31f3d9a03e4f5bca9e7f6fc8e9c5be1d089951cf18b3d88a137022ada2a54",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/c266-06-dragonfish-c3-masterPng.png",
+          "bytes": 1316618,
+          "sha256": "6b1400c64476c2508efd8a755d15e8fa4c35506babd4220976739504c9a20e52",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/client.mjs",
+          "bytes": 133185,
+          "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/prepared/inputs.json",
+          "bytes": 1875,
+          "sha256": "5a5e62dd2b4f52e15da1d02cfbffffc85a9958a4f1fcf7eb6106a94d9dc7172e",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/progress.json",
+          "bytes": 166,
+          "sha256": "32e6843136bced66b7d3a42c2df40c870088dd8de865daa0b58a4f450eae2e87",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished/result.json",
+          "bytes": 46482,
+          "sha256": "521443ba4d4c47c1b7fb56535560dd3b37f8dbc0ee5a42713c1ddf8a9b02a26a",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/finished-plan.json",
+          "bytes": 1155,
+          "sha256": "c396d5eddeb79cb7c83cd218a9a0ea9771fafb1e1ccc62fe44d36d5b1099070b",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/battle-full.webm",
+          "bytes": 7770632,
+          "sha256": "84f0de0aecb8906e359240e70ffaca29d9469cce781ca6025d5cc838d42f3691",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/report.json",
+          "bytes": 358961,
+          "sha256": "61a2c884750cc0c3052f147eabccbe20d5ac1ae4118ebc3ebadef1c7bc5da612",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn0-hit-approach-50.png",
+          "bytes": 1124032,
+          "sha256": "599d0488ef12e93611ed6070242814640682f003870af61b0a93129c30909b28",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn0-hit-impact.png",
+          "bytes": 645961,
+          "sha256": "c1b4cbb19a2b78abbf8ab896f8ad08122d0764838399c9580c27a2b481d94adb",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn0-hit-reaction-50.png",
+          "bytes": 1156928,
+          "sha256": "0eb918cc98f410742d7cb91d6d39af07bbb06a62bf862700e7b4957fcb00b0c6",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn0-hit-return-end.png",
+          "bytes": 1124425,
+          "sha256": "60295113876f2cd21037eef6553f99fee24370e397bc9871fba5ced328b7b760",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn1-hit-approach-50.png",
+          "bytes": 1126276,
+          "sha256": "734d223d975ebee1217b21c4f7130b8daa8c4dbdde6159d9e34b5e69ae3992ef",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn1-hit-impact.png",
+          "bytes": 1126637,
+          "sha256": "9109da82b60a132cc4947b35704c350d51f42e6e65803fea43d2e96109420696",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn1-hit-reaction-50.png",
+          "bytes": 1135635,
+          "sha256": "5ea57a1b23476554c706c6a64b5158d32466824da3193571e5072d0d2aaa2bd4",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn1-hit-return-end.png",
+          "bytes": 1124176,
+          "sha256": "f2a01a3a6a4549bf9e60aa5ce09815eafa0f2d92c09ae02313d2f2789105dbf9",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn2-dodge-approach-50.png",
+          "bytes": 1124032,
+          "sha256": "599d0488ef12e93611ed6070242814640682f003870af61b0a93129c30909b28",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn2-dodge-impact.png",
+          "bytes": 1150684,
+          "sha256": "51861ea0f17dc164feaa7e4a1d77ef24c50005bbdd6ad9c387107800bfa11e11",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn2-dodge-reaction-50.png",
+          "bytes": 1154955,
+          "sha256": "b26e9f2bc397b005216905a4c3a579b0aca77b2eff967163ee25f61ff73d1dca",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn2-dodge-return-end.png",
+          "bytes": 1124425,
+          "sha256": "60295113876f2cd21037eef6553f99fee24370e397bc9871fba5ced328b7b760",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-approach-50.png",
+          "bytes": 1124032,
+          "sha256": "599d0488ef12e93611ed6070242814640682f003870af61b0a93129c30909b28",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-idle-50.png",
+          "bytes": 1129734,
+          "sha256": "9fbd3d91a1b85e3567fe7c73c0387dc8c4340af358adc89e7dbb73463f044c05",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-idle-90.png",
+          "bytes": 1129804,
+          "sha256": "eceb1ed156ceb76c305594bde4267c889f245b83d274977ab922f937b95ef8e5",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-impact.png",
+          "bytes": 1126433,
+          "sha256": "7acbf96bca0d376f104cfc856838900c88770020e4d25ab0954504bdebd42a8c",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-reaction-50.png",
+          "bytes": 1153690,
+          "sha256": "acafa3f957a89230c5295c91abdd9b96aeba8a776b9d50e9c2404497b3ed0db7",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native/turn3-hit-return-end.png",
+          "bytes": 1129721,
+          "sha256": "67ae5c72a57e2cc3c75c0ac3dc266ba59d43871206d8fc454d5c9bd65ce2e2d6",
+          "rawMediaLocalOnly": true
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native-assessment.json",
+          "bytes": 116,
+          "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/native-results.json",
+          "bytes": 1207,
+          "sha256": "ddc17e2c147c05a6030348d0f67831c4c137db94c87db052856d69f644e00c9a",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebind-results.json",
+          "bytes": 7652,
+          "sha256": "ea59aa0abc0942b6aa53188514ba529b4ad0da8c6941a81b3d2311f2fe9a0c62",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/binding.json",
+          "bytes": 731424,
+          "sha256": "2f57297fdab6e005f7fe348ff5657955c433265c1aceb9545868cfa02eba30c7",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/declaration.json",
+          "bytes": 1604,
+          "sha256": "ff413c5b29c6c12ea661d40a3bdd3706ceefedf34eac9be73d235f4a383b63a0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/finished-rebind.json",
+          "bytes": 7210,
+          "sha256": "28d9eb8e0ea62939f4241fc5de559eec87b9c8fc717e99b468d48d9ccdfbf27f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/labels.png",
+          "bytes": 38345,
+          "sha256": "b00a28f753088e704ece1650774b457c0cbc6d6073d2663fb978a8accffff88f",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/atlas/c266-06-dragonfish-c3.json",
+          "bytes": 5356,
+          "sha256": "e4464e2ffa2900e084f09df2ed0a011cdcede8061e377ff52e9aed9df560ff9d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/atlas/c266-06-dragonfish-c3.png",
+          "bytes": 201718,
+          "sha256": "a0ab5ba6a6a4ba3e3cda8abd28e0a1e52c45889d5c2b757e81b2c260600383d6",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/atlas/receipt.json",
+          "bytes": 2386,
+          "sha256": "3460601ae1c15d1ef068f52dedd4ee42e307e8f9da1a0e7fee4f5974c5559f5a",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/binding.json",
+          "bytes": 4466,
+          "sha256": "fdb86921b5292e102760000a538d460d13b407bf1a23466cf98601488aded42e",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/keyed.png",
+          "bytes": 1200986,
+          "sha256": "af8e1257607585a33e70cc5b4ac878b31f4ae19b8725d696ac5beda8e0a1c7b5",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/manifest.json",
+          "bytes": 2127,
+          "sha256": "fa616abca6192cd0cee1a930f9c48f294266b952a9926aed42886540a7780722",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/ownership.png",
+          "bytes": 11545,
+          "sha256": "97b365069e997cb3d915f91391594716e7ccb66078c0cc451528ee5f480e6c45",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-0.png",
+          "bytes": 27317,
+          "sha256": "4107c893e9a05dc258b78d4c3200edb93b81e8d23ccceed36e7c622c3547d2cc",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-1.png",
+          "bytes": 26237,
+          "sha256": "d1a1bf9ccda7d25d615dd18becb4ba95821f2af3cb25f16c041aaa1502a1aee3",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-2.png",
+          "bytes": 22370,
+          "sha256": "14c7ffb9344332557ec3ffc80dde1bcc0e1dd435178004c8acf7d55a8d778f30",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-3.png",
+          "bytes": 21501,
+          "sha256": "33c3bf18136db5ad038616b31b7d5a621eab2f3d925e84ad811853e1dc3748c5",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-4.png",
+          "bytes": 13618,
+          "sha256": "2e853e0b33fbd69fcfc4af66bffcc94f6e13c38bc9991ac7c86fe3ce81351d8c",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body-5.png",
+          "bytes": 6297,
+          "sha256": "836e5e96db6abd1ef2305aec507b7b1f006f75e0639d5947e9e56f379da1f42d",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/body.png",
+          "bytes": 1049,
+          "sha256": "789832f98ede811b659ca98a1061a7432341e49cde2236e71a53577cbc5723dc",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/caudal.png",
+          "bytes": 11431,
+          "sha256": "a03210619f506ef8e143bf6faf9974f82c490a9ed5e1e0366ded5e16b5fc8a40",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/dorsal.png",
+          "bytes": 4220,
+          "sha256": "41dbf4fdfa98e75c087e9cdc6e16a5980048a41794a4e7f34fb03d3e1e2acc75",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/far-pectoral.png",
+          "bytes": 793,
+          "sha256": "40a86783a50ac1517d6d97da753874bc92ae1d3078894dba6836add7101d90a0",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/head.png",
+          "bytes": 36292,
+          "sha256": "b31eb31bd1bbf93eed26a0752fea8373e5c32576177f533b7b9b7a3c34fe9dfd",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/jaw.png",
+          "bytes": 9573,
+          "sha256": "f9bcb7efe954e22355e7042bd95f2f6d9b4fb780d360fe4e65e0f5b33cee310b",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/parts/near-pectoral.png",
+          "bytes": 8849,
+          "sha256": "0339eddf42793678bdec078ac27b0d8c2ed3dd23747df36c22eadbe73cf55a1b",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/parts/receipt.json",
+          "bytes": 3899,
+          "sha256": "90314f10eb28768b533e54d3fb3735cc969b3cf3de8399b91388f855de19c787",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/pre-split-binding.json",
+          "bytes": 459067,
+          "sha256": "793fb30005af69e89e9b0c6314bc809001d6f66cd4bc9e72a0cb91b2d6f80479",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/c266-06-dragonfish-c3/record.json",
+          "bytes": 5682,
+          "sha256": "f66996164d19d720e1c9210e96f1daadb57290b72417eeb54b9611969f0dfc46",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/rebound/rebind-summary.json",
+          "bytes": 7652,
+          "sha256": "ea59aa0abc0942b6aa53188514ba529b4ad0da8c6941a81b3d2311f2fe9a0c62",
+          "rawMediaLocalOnly": false
+        },
+        {
+          "path": "audits/C266_CODEX_20261017/coordinator/dragonfish-finish-01/subjects.json",
+          "bytes": 253,
+          "sha256": "f19e849ff3b9ee3c06f42546bf054abdd0acd03088ce9eac4acec6bb7f78ecb0",
+          "rawMediaLocalOnly": false
+        }
+      ]
+    }
+  ],
+  "note": "Default source, raw capture and prepared inputs retained at exact paths; media omitted from Git where not required checkpoint stills"
+}

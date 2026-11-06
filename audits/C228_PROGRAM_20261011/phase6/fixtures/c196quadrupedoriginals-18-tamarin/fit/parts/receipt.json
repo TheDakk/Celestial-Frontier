@@ -1,0 +1,307 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "9fc25829f4b1e20d6b9eac7dfd81e79f2fa469d86c75e75da018c0b8fc2fb3d3",
+  "declarationHash": "8802b37d83587b9917b24a62e8668df7aca8db1c5dbe8d46e8e5d70c9e4f24b3",
+  "paintedPixels": 145382,
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 664,
+        "y": 582,
+        "width": 10,
+        "height": 7
+      },
+      "pixels": 56
+    },
+    {
+      "id": "hand-near",
+      "joint": "armNearHand",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 835,
+        "y": 794,
+        "width": 62,
+        "height": 52
+      },
+      "pixels": 1724
+    },
+    {
+      "id": "forearm-near",
+      "joint": "armNearElbow",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 738,
+        "y": 659,
+        "width": 137,
+        "height": 149
+      },
+      "pixels": 6326
+    },
+    {
+      "id": "upper-arm-near",
+      "joint": "armNearShoulder",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 717,
+        "y": 561,
+        "width": 108,
+        "height": 131
+      },
+      "pixels": 9533
+    },
+    {
+      "id": "hand-far",
+      "joint": "armFarHand",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 922,
+        "y": 772,
+        "width": 87,
+        "height": 47
+      },
+      "pixels": 1982
+    },
+    {
+      "id": "forearm-far",
+      "joint": "armFarElbow",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 867,
+        "y": 689,
+        "width": 79,
+        "height": 97
+      },
+      "pixels": 4101
+    },
+    {
+      "id": "upper-arm-far",
+      "joint": "armFarShoulder",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 833,
+        "y": 596,
+        "width": 90,
+        "height": 122
+      },
+      "pixels": 6345
+    },
+    {
+      "id": "foot-near",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 531,
+        "y": 764,
+        "width": 72,
+        "height": 35
+      },
+      "pixels": 1294
+    },
+    {
+      "id": "shin-near",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 519,
+        "y": 710,
+        "width": 49,
+        "height": 62
+      },
+      "pixels": 2002
+    },
+    {
+      "id": "thigh-near",
+      "joint": "legNearHip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 536,
+        "y": 594,
+        "width": 113,
+        "height": 143
+      },
+      "pixels": 8414
+    },
+    {
+      "id": "foot-far",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 648,
+        "y": 776,
+        "width": 120,
+        "height": 49
+      },
+      "pixels": 2735
+    },
+    {
+      "id": "shin-far",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 633,
+        "y": 714,
+        "width": 44,
+        "height": 79
+      },
+      "pixels": 2028
+    },
+    {
+      "id": "thigh-far",
+      "joint": "legFarHip",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 628,
+        "y": 612,
+        "width": 70,
+        "height": 148
+      },
+      "pixels": 5641
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 934,
+        "y": 514,
+        "width": 50,
+        "height": 38
+      },
+      "pixels": 909
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 802,
+        "y": 397,
+        "width": 210,
+        "height": 196
+      },
+      "pixels": 21661
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 827,
+        "y": 533,
+        "width": 123,
+        "height": 86
+      },
+      "pixels": 6667
+    },
+    {
+      "id": "tail-end",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 168,
+        "y": 810,
+        "width": 96,
+        "height": 71
+      },
+      "pixels": 2397
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 154,
+        "y": 698,
+        "width": 225,
+        "height": 156
+      },
+      "pixels": 6213
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 350,
+        "y": 540,
+        "width": 186,
+        "height": 173
+      },
+      "pixels": 5016
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 528,
+        "y": 532,
+        "width": 107,
+        "height": 100
+      },
+      "pixels": 5543
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 721,
+        "y": 495,
+        "width": 121,
+        "height": 136
+      },
+      "pixels": 6827
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 173,
+        "y": 472,
+        "width": 846,
+        "height": 397
+      },
+      "pixels": 37968
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 7105,
+    "despilledPixels": 1350,
+    "unresolvedEdgePixels": 2,
+    "narrowEdgeDonors": 64
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "68ea5985a80094d046798941237a2f662a1aeb573522d97e4f5df53565977742",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "cryogeyser-v2",
+  "biome": "cryogeyser",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cryogeyser"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cryogeyser"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cryogeyser"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.generation.json",
+      "sha256": "38c154624b481426b8f1af2bf042ed60b09e9f08440335bbb3ddd25234016c35"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.generation.json",
+      "sha256": "9d73aa705e7b14724d528d45fd336033a82a550cc0af1d8163595115b1dc5d85"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-near.generation.json",
+      "sha256": "e7ff56baf317745f3490a7903f972db9f0d20fbbb19044d62219502ca49ffc00"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-composed-review.png",
+      "sha256": "95daf99606ab7e8deed82ca2b27a440afe8d31fa0b32b4c09279b70eece0748a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/visual-notes.d29.json",
+      "sha256": "aba81d97f0db73113085169ff02c26597f1379e2220c5efb50bf3ffc38022ebb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-manifest.json",
+      "sha256": "138041e8885fba7d954e6e1ef520e26c3f75bbb405ab1deb40409169ea3920bd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-recipe.json",
+      "sha256": "b19d65807a1125c8149f4156166df3588d085c15e6034a42487483260f0e8ca3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.generation.json",
+      "sha256": "38c154624b481426b8f1af2bf042ed60b09e9f08440335bbb3ddd25234016c35"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.prompt.txt",
+      "sha256": "04366b9116dd1e2cd9973224b80480deb986b840a08a8606e15eae0bb7f456e1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.png",
+      "sha256": "55de22d80c94bf8e9e97daf1aa1cea61f3103a5e4fddf131311de514114dcdd2"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.generation.json",
+      "sha256": "9d73aa705e7b14724d528d45fd336033a82a550cc0af1d8163595115b1dc5d85"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.prompt.txt",
+      "sha256": "acaf97b446b292eb2e33f7734b9d8fcbcce222c16d5a1313662ee4c98d4d534b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.png",
+      "sha256": "64e73d3461e4be62ff3349fafcd328531c27ad3c1ff57262537c8dea676e4f3e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-mid.png",
+      "sha256": "c4f73756f12517b01a3b9f61a9b155c6841550cefec525839df51174edb97438"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-near.generation.json",
+      "sha256": "e7ff56baf317745f3490a7903f972db9f0d20fbbb19044d62219502ca49ffc00"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.prompt.txt",
+      "sha256": "ba7b150a4a0ff0fea72fe890b847184ba901ad5565fc299cac6604e911abb09b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.png",
+      "sha256": "afdfdb4d08936af457794385ab033db03f4814233ac963df53cf669d697cea45"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-near.png",
+      "sha256": "afdfdb4d08936af457794385ab033db03f4814233ac963df53cf669d697cea45"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-near.png",
+      "sha256": "1f70919895534e5cbfbc494ca4f8b14e971e3a4177bec9e200b3366f57a8d400"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/cryogeyser-v2/visual-notes.d29.json",
+    "findings": [
+      "Full-size 1672×941 composite inspected. Cold blue mineral ice, distant vapor columns and irregular rocky ice shelves distinguish the cryogeyser environment; the central lower lane remains clear.",
+      "The targeted FAR removes both unbound celestial bodies; the targeted MID removes all visible vapor from the magenta field while the opaque FAR retains atmospheric plumes. The original master triplet remains unchanged under cryogeyser/.",
+      "The MID ice shelf is brighter and more cyan than the FAR ground, and repeated terrain bands remain visible. NEAR edges and pale vegetation tips still show scattered color remnants and create a foreground texture seam. These are visual holds.",
+      "Geyser atmosphere is static painted FAR content; no dynamic geyser effect, contact proof, habitat routing or native parallax is demonstrated. No quality acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Carrion Beetle\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4058135998\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 4058135998,
+    "ownerId": "authored:archetype-sprint/c243b03r1c1-23-carrion-beetle",
+    "earthName": "Carrion Beetle"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4058135998,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 16,
+    "body": 13,
+    "loco": 9,
+    "trait": 6,
+    "size": 2,
+    "diet": 5,
+    "head": 8,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 6,
+    "habitat": 8,
+    "detail": 1,
+    "accent": 13,
+    "temper": 7,
+    "sense": 3,
+    "repro": 6,
+    "life": 2,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Carrion Beetle"
+  },
+  "geometry": {
+    "cutoutAssetHash": "9258118b365c8e0a7a271125b6af21d4ccb888a919d95513c57314eb0125f929",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6837883719848683,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5944178628389154,
+      0.4688197767145135
+    ],
+    "thorax": [
+      0.6717703349282297,
+      0.4307814992025519
+    ],
+    "head": [
+      0.7110845295055822,
+      0.44768740031897925
+    ],
+    "mandible": [
+      0.7531897926634769,
+      0.516347687400319
+    ],
+    "abdomen": [
+      0.43548644338118025,
+      0.5038277511961722
+    ],
+    "legFrontFarKnee": [
+      0.6524720893141946,
+      0.5312599681020734
+    ],
+    "legFrontFarFoot": [
+      0.7314194577352472,
+      0.6206539074960127
+    ],
+    "legFrontNearKnee": [
+      0.6148325358851675,
+      0.5182615629984051
+    ],
+    "legFrontNearFoot": [
+      0.6649122807017543,
+      0.653030303030303
+    ],
+    "legMidFarKnee": [
+      0.5576555023923445,
+      0.523365231259968
+    ],
+    "legMidFarFoot": [
+      0.5801435406698564,
+      0.6192185007974481
+    ],
+    "legMidNearKnee": [
+      0.5119617224880383,
+      0.50311004784689
+    ],
+    "legMidNearFoot": [
+      0.43054226475279106,
+      0.6590909090909091
+    ],
+    "legHindFarKnee": [
+      0.4082934609250399,
+      0.5460925039872407
+    ],
+    "legHindFarFoot": [
+      0.38405103668261564,
+      0.5838118022328549
+    ],
+    "legHindNearKnee": [
+      0.39768740031897926,
+      0.46754385964912276
+    ],
+    "legHindNearFoot": [
+      0.24441786283891548,
+      0.64792663476874
+    ],
+    "antennaFar": [
+      0.7956140350877193,
+      0.35311004784689
+    ],
+    "antennaNear": [
+      0.814274322169059,
+      0.40614035087719297
+    ],
+    "wingFar": [
+      0.30199362041467304,
+      0.4363636363636364
+    ],
+    "wingNear": [
+      0.3087719298245614,
+      0.5124401913875598
+    ]
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1h/c243b03r1c1-23-carrion-beetle/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile mandibulate-insect media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from beetle. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "1bdeb4499abb4865cdda3f486fd941481cc012611cddfa1a2560e3ddc0254b27",
+    "subjectSourceSha256": "372af2b8ec1d59e3ddfbfe9fba0c838cc3d7465f4846f063fa37ac6f0938d039",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.08619927780674935,
+      "head": 0.04279503928990316,
+      "mandible": 0.08054246214070905,
+      "abdomen": 0.24731727059575376,
+      "legFrontFarKnee": 0.1023149304655569,
+      "legFrontFarFoot": 0.1192642586065779,
+      "legFrontNearKnee": 0.10437755755714291,
+      "legFrontNearFoot": 0.14377271692042173,
+      "legMidFarKnee": 0.14694877490599417,
+      "legMidFarFoot": 0.09845588426597796,
+      "legMidNearKnee": 0.17541439952026652,
+      "legMidNearFoot": 0.17595214455165828,
+      "legHindFarKnee": 0.28760509550240465,
+      "legHindFarFoot": 0.044837936987458166,
+      "legHindNearKnee": 0.27653738660373256,
+      "legHindNearFoot": 0.23670550622916883,
+      "antennaFar": 0.1268468088466965,
+      "antennaNear": 0.11123978886733636,
+      "wingFar": 0.36981884599317755,
+      "wingNear": 0.37206986456467117
+    },
+    "measures": {
+      "body": 0.2812579671263511,
+      "bone-min": 0.04279503928990316,
+      "bone-max": 0.37206986456467117,
+      "leg/body:legFrontFar": 0.7878147998296295,
+      "leg/body:legFrontNear": 0.8822870939904316,
+      "leg/body:legMidFar": 0.8725251827683431,
+      "leg/body:legMidNear": 1.2492678791000378,
+      "leg/body:legHindFar": 1.1819861882899751,
+      "leg/body:legHindNear": 1.8248119264914349
+    }
+  },
+  "recipeHash": "09894febd713841fa9f7c606224f78cfff25cb5e6d94780b47802f76351af08c"
+}

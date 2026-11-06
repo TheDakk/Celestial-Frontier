@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Anaconda",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/01-anaconda/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "fc1c0984e55e67f510dd3b4a82b3d110aad21c750eaa59402fc79b889ba93eab"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Anchovy",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7e21e222e7b46a04604c9f81a17bca3a32250ddadb89aabeb2d2f0cc6a2a1e33"
+}

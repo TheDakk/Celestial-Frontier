@@ -1,0 +1,838 @@
+{
+  "schema": "cf.c172-shared-head-source-diagnosis/v1",
+  "scope": "Bounded source diagnostic and neck-neutral causal control, not runtime implementation or admission.",
+  "rows": [
+    {
+      "id": "hawk",
+      "nearestPositiveAlpha": [
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            651,
+            496
+          ],
+          "alpha": 255,
+          "face": 19,
+          "vertices": [
+            18,
+            15,
+            13
+          ],
+          "published": [
+            0.6518947005271912,
+            0.40401000082492833
+          ],
+          "stage": [
+            590.1424409004811,
+            275.8871093943169
+          ],
+          "distance": 0.18175175097195254
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            652,
+            496
+          ],
+          "alpha": 255,
+          "face": 19,
+          "vertices": [
+            18,
+            15,
+            13
+          ],
+          "published": [
+            0.6521765649318695,
+            0.404755973815918
+          ],
+          "stage": [
+            589.9645204874103,
+            276.3579876623552
+          ],
+          "distance": 0.3597415213902006
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            651,
+            495
+          ],
+          "alpha": 255,
+          "face": 19,
+          "vertices": [
+            18,
+            15,
+            13
+          ],
+          "published": [
+            0.6526406705379486,
+            0.4037281334400177
+          ],
+          "stage": [
+            589.6715645136458,
+            275.7091871000431
+          ],
+          "distance": 0.43868213033823145
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            652,
+            495
+          ],
+          "alpha": 255,
+          "face": 16,
+          "vertices": [
+            18,
+            13,
+            19
+          ],
+          "published": [
+            0.652922534942627,
+            0.40447410643100734
+          ],
+          "stage": [
+            589.4936441005749,
+            276.18006536808133
+          ],
+          "distance": 0.5374196066993363
+        }
+      ],
+      "frames": [
+        {
+          "mode": "axial-coherent",
+          "pose": {
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck0": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck1": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.3490658503988659,
+              "dx": 0,
+              "dy": 0
+            },
+            "beak": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarAnkle": {
+              "rotation": -0.9424777960769379,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearAnkle": {
+              "rotation": -0.9424777960769379,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tailFan": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "root": {
+              "rotation": 0.19650293892815063,
+              "dx": -0.016083984375,
+              "dy": 0.16083984375000002
+            }
+          },
+          "contactDrift": 0.01676131313389451
+        }
+      ]
+    },
+    {
+      "id": "crow",
+      "nearestPositiveAlpha": [
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            692,
+            463
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.6885508179664612,
+            0.4146899372339249
+          ],
+          "stage": [
+            604.1911827409998,
+            291.0178917551308
+          ],
+          "distance": 0.19201811205680408
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            693,
+            463
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.6888473004102706,
+            0.4154436349868775
+          ],
+          "stage": [
+            604.0151135390203,
+            291.4654830532563
+          ],
+          "distance": 0.46572834563782345
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            693,
+            462
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.6896821200847625,
+            0.41522440016269685
+          ],
+          "stage": [
+            603.5193471388384,
+            291.3352881585987
+          ],
+          "distance": 0.5860420823109507
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            692,
+            464
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.6877159982919694,
+            0.41490917205810546
+          ],
+          "stage": [
+            604.6869491411817,
+            291.14808664978835
+          ],
+          "distance": 0.7027295200970238
+        }
+      ],
+      "frames": [
+        {
+          "mode": "axial-coherent",
+          "pose": {
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck0": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck1": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.3490658503988659,
+              "dx": 0,
+              "dy": 0
+            },
+            "beak": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarAnkle": {
+              "rotation": -0.8874867681644276,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearAnkle": {
+              "rotation": -0.8881009008371188,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tailFan": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "root": {
+              "rotation": 0.24434609527920614,
+              "dx": -0.02,
+              "dy": 0.2
+            }
+          },
+          "contactDrift": 0.006136722963465419
+        }
+      ]
+    },
+    {
+      "id": "snowy-owl",
+      "nearestPositiveAlpha": [
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            670,
+            461
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.734927674578993,
+            0.38773221993132645
+          ],
+          "stage": [
+            567.9321225237805,
+            282.9393668124901
+          ],
+          "distance": 0.09101502736104601
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            670,
+            462
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.7341611201041625,
+            0.3879520269600969
+          ],
+          "stage": [
+            568.2989403870888,
+            283.04455065431887
+          ],
+          "distance": 0.3022418168173361
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            671,
+            461
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.7351474808234917,
+            0.3884987764452633
+          ],
+          "stage": [
+            567.8269390572478,
+            283.3061856515681
+          ],
+          "distance": 0.3517097427317824
+        },
+        {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            669,
+            461
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.7347078683344942,
+            0.38696566341738947
+          ],
+          "stage": [
+            568.0373059903133,
+            282.572547973412
+          ],
+          "distance": 0.4290768834922865
+        }
+      ],
+      "frames": [
+        {
+          "mode": "axial-coherent",
+          "pose": {
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck0": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck1": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.3490658503988659,
+              "dx": 0,
+              "dy": 0
+            },
+            "beak": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarAnkle": {
+              "rotation": -0.9424777960769379,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearAnkle": {
+              "rotation": -0.9424777960769379,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.20943951023931956,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tailFan": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "root": {
+              "rotation": 0.24434609527920614,
+              "dx": -0.02,
+              "dy": 0.2
+            }
+          },
+          "contactDrift": 0.009804187841951714
+        }
+      ]
+    },
+    {
+      "id": "capuchin",
+      "nearestPositiveAlpha": [
+        {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            784,
+            563
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6365375267831903,
+            0.52861424810008
+          ],
+          "stage": [
+            651.8631867040078,
+            347.9726962209586
+          ],
+          "distance": 0.13951119779495402
+        },
+        {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            783,
+            563
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6357637643814087,
+            0.528421329824548
+          ],
+          "stage": [
+            652.2103860069005,
+            347.886130770601
+          ],
+          "distance": 0.23922473388733798
+        },
+        {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            784,
+            564
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6363446085076583,
+            0.5293880105018616
+          ],
+          "stage": [
+            651.9497521543655,
+            348.3198955238513
+          ],
+          "distance": 0.3238178379444393
+        },
+        {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            783,
+            564
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6355708461058767,
+            0.5291950922263297
+          ],
+          "stage": [
+            652.2969514572582,
+            348.2333300734938
+          ],
+          "distance": 0.37765472480079215
+        }
+      ],
+      "frames": [
+        {
+          "mode": "axial-coherent",
+          "pose": {
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.4537856055185257,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": 0.6108652381980153,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.6981317007977318,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0.17453292519943295,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": 0.6108652381980153,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.6981317007977318,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0.17453292519943295,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.6981317007977318,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.2777791859305834,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearHip": {
+              "rotation": 0.6981317007977318,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": -0.5235987755982988,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.2918062753427412,
+              "dx": 0,
+              "dy": 0
+            },
+            "tail0": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tail1": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tail2": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "root": {
+              "rotation": 0.24434609527920614,
+              "dx": -0.02,
+              "dy": 0.2
+            }
+          },
+          "contactDrift": 0.02260925026426202
+        }
+      ]
+    }
+  ],
+  "qualityAccepted": false
+}

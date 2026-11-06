@@ -1,0 +1,21 @@
+{
+  "stage": "finish-cricket-d40-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cricket-d40-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/subjects.json"
+  ],
+  "startedUnix": 1792456585.4931588,
+  "beforeGiB": 57.602821350097656,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 60.83,
+  "lowestGiB": 48.165924072265625,
+  "afterGiB": 54.521358489990234
+}

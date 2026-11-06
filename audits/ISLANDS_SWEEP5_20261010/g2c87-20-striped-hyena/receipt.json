@@ -1,0 +1,315 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/g2c87-20-striped-hyena/fit",
+  "sourceMasterSha256": "d40de6a36b421cc5dd7495eb8ac0fe01af0baf2e90429874a33f71b6157506fe",
+  "keyedRgbaSha256": "b349626a75c3e8a929034975476385c4af2018e91d8523e63f848645b3193669",
+  "remainder": "spine",
+  "remainderPixels": 19928,
+  "movedPixels": 2456,
+  "islands": [
+    {
+      "pixels": 373,
+      "to": "neck",
+      "border": {
+        "neck": 32
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 29,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-near-tip": 5,
+        "ear-far-tip": 19
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "neck",
+      "border": {
+        "neck": 3
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "neck",
+      "border": {
+        "neck": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 24,
+      "to": "neck",
+      "border": {
+        "neck": 3
+      }
+    },
+    {
+      "pixels": 5,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 81,
+      "to": "neck",
+      "border": {
+        "neck": 12
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "neck",
+      "border": {
+        "neck": 3
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 4,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 943,
+      "to": "neck",
+      "border": {
+        "jaw": 16,
+        "head": 34,
+        "neck": 82,
+        "chest": 8
+      }
+    },
+    {
+      "pixels": 163,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-knee": 5,
+        "hind-far-root": 52
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "tail1": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "tail1",
+      "border": {
+        "tail1": 5
+      }
+    },
+    {
+      "pixels": 328,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-knee": 34,
+        "hind-near-root": 46,
+        "hind-far-root": 8
+      }
+    },
+    {
+      "pixels": 31,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 19
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "hind-near-knee": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 4
+      }
+    },
+    {
+      "pixels": 26,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 10,
+        "hind-near-ankle": 4
+      }
+    },
+    {
+      "pixels": 137,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 34,
+        "hind-near-ankle": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 5,
+        "fore-far-ankle": 2
+      }
+    },
+    {
+      "pixels": 173,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 27,
+        "hind-far-ankle": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 43,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 12,
+        "fore-near-ankle": 10
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 2,
+        "hind-far-ankle": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 2
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 11
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 5
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "g2c87-20-striped-hyena",
+    "parts": 31,
+    "atlasSize": {
+      "width": 876,
+      "height": 557
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 35,
+        "distancePx": 4.525483399593955,
+        "supports": [
+          372
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 40,
+        "distancePx": 5.993329625508611,
+        "supports": [
+          469
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 39,
+        "distancePx": 5.147815070493491,
+        "supports": [
+          97
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 29,
+        "distancePx": 6.977822009767772,
+        "supports": [
+          259
+        ]
+      }
+    ],
+    "sourceBindingHash": "3af861978f029cbcae0a1fd8d232f813b9658102a6039a16af30d5bde6384c4c",
+    "sourceVertices": 895,
+    "vertices": 1061,
+    "sharedSupports": 374,
+    "pins": 86,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 33,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

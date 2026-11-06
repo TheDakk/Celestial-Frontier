@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Butterflyfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/06-butterflyfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "be99f63fca4387a27199f0f0f96fb925ece106e1884ffbc8799e9051a3d30446"
+}

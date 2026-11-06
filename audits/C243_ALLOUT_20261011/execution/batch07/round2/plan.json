@@ -1,0 +1,321 @@
+{
+  "batch": 7,
+  "round": 2,
+  "supported": [
+    {
+      "index": 2,
+      "name": "Chiton",
+      "family": "gastropod"
+    },
+    {
+      "index": 3,
+      "name": "Conch",
+      "family": "gastropod"
+    },
+    {
+      "index": 25,
+      "name": "Forest Elephant",
+      "family": "quadruped"
+    },
+    {
+      "index": 26,
+      "name": "Giant Salamander",
+      "family": "quadruped"
+    },
+    {
+      "index": 27,
+      "name": "Goat",
+      "family": "quadruped"
+    },
+    {
+      "index": 30,
+      "name": "Shrew",
+      "family": "quadruped"
+    },
+    {
+      "index": 31,
+      "name": "Takin",
+      "family": "quadruped"
+    },
+    {
+      "index": 32,
+      "name": "Vole",
+      "family": "quadruped"
+    },
+    {
+      "index": 33,
+      "name": "Wall Lizard",
+      "family": "quadruped"
+    }
+  ],
+  "blocked": [
+    {
+      "index": 4,
+      "name": "Land Snail",
+      "family": "gastropod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family gastropod"
+    },
+    {
+      "index": 6,
+      "name": "Crayfish",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 7,
+      "name": "Hermit Crab",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 8,
+      "name": "Lobster",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 9,
+      "name": "Fruit Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family flyer-membrane"
+    },
+    {
+      "index": 10,
+      "name": "Insect-Eating Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 11,
+      "name": "Vampire Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 12,
+      "name": "Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family myriapod"
+    },
+    {
+      "index": 13,
+      "name": "Giant Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 14,
+      "name": "Millipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 15,
+      "name": "Pyrosome",
+      "family": "colonial-filter",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+    },
+    {
+      "index": 16,
+      "name": "Salp",
+      "family": "colonial-filter",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+    },
+    {
+      "index": 17,
+      "name": "Barnacle",
+      "family": "barnacle",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family barnacle"
+    },
+    {
+      "index": 18,
+      "name": "Fly Larvae",
+      "family": "larva",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family larva"
+    },
+    {
+      "index": 19,
+      "name": "Tardigrade",
+      "family": "lobopod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family lobopod"
+    },
+    {
+      "index": 20,
+      "name": "Sea Squirt",
+      "family": "sessile-filter",
+      "batch": 7,
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+    },
+    {
+      "index": 21,
+      "name": "Horseshoe Crab",
+      "family": "xiphosuran",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family xiphosuran"
+    }
+  ],
+  "allSpecies": [
+    {
+      "index": 2,
+      "name": "Chiton",
+      "family": "gastropod"
+    },
+    {
+      "index": 3,
+      "name": "Conch",
+      "family": "gastropod"
+    },
+    {
+      "index": 4,
+      "name": "Land Snail",
+      "family": "gastropod"
+    },
+    {
+      "index": 6,
+      "name": "Crayfish",
+      "family": "crustacean-clawed"
+    },
+    {
+      "index": 7,
+      "name": "Hermit Crab",
+      "family": "crustacean-clawed"
+    },
+    {
+      "index": 8,
+      "name": "Lobster",
+      "family": "crustacean-clawed"
+    },
+    {
+      "index": 9,
+      "name": "Fruit Bat",
+      "family": "flyer-membrane"
+    },
+    {
+      "index": 10,
+      "name": "Insect-Eating Bat",
+      "family": "flyer-membrane"
+    },
+    {
+      "index": 11,
+      "name": "Vampire Bat",
+      "family": "flyer-membrane"
+    },
+    {
+      "index": 12,
+      "name": "Centipede",
+      "family": "myriapod"
+    },
+    {
+      "index": 13,
+      "name": "Giant Centipede",
+      "family": "myriapod"
+    },
+    {
+      "index": 14,
+      "name": "Millipede",
+      "family": "myriapod"
+    },
+    {
+      "index": 15,
+      "name": "Pyrosome",
+      "family": "colonial-filter"
+    },
+    {
+      "index": 16,
+      "name": "Salp",
+      "family": "colonial-filter"
+    },
+    {
+      "index": 17,
+      "name": "Barnacle",
+      "family": "barnacle"
+    },
+    {
+      "index": 18,
+      "name": "Fly Larvae",
+      "family": "larva"
+    },
+    {
+      "index": 19,
+      "name": "Tardigrade",
+      "family": "lobopod"
+    },
+    {
+      "index": 20,
+      "name": "Sea Squirt",
+      "family": "sessile-filter"
+    },
+    {
+      "index": 21,
+      "name": "Horseshoe Crab",
+      "family": "xiphosuran"
+    },
+    {
+      "index": 25,
+      "name": "Forest Elephant",
+      "family": "quadruped"
+    },
+    {
+      "index": 26,
+      "name": "Giant Salamander",
+      "family": "quadruped"
+    },
+    {
+      "index": 27,
+      "name": "Goat",
+      "family": "quadruped"
+    },
+    {
+      "index": 30,
+      "name": "Shrew",
+      "family": "quadruped"
+    },
+    {
+      "index": 31,
+      "name": "Takin",
+      "family": "quadruped"
+    },
+    {
+      "index": 32,
+      "name": "Vole",
+      "family": "quadruped"
+    },
+    {
+      "index": 33,
+      "name": "Wall Lizard",
+      "family": "quadruped"
+    }
+  ]
+}

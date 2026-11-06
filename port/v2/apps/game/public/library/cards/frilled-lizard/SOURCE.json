@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Frilled Lizard",
+ "fitDir": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/rebound/c270-frilled-lizard-a03/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5861cde8bcc9a8a6d7705e241081bbca792c380abdfcae3a7fe4bc4b05115366"
+}

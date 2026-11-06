@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Sea Lion",
+  "slug": "09-sea-lion",
+  "id": "c266-intake-sea-lion",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-22-sea-lion",
+  "masterSha256": "b1fbf73c7fc9ced7c6255eb3b0c5d848d828755e0d583295130080eb37442281",
+  "masterCopySha256": "b1fbf73c7fc9ced7c6255eb3b0c5d848d828755e0d583295130080eb37442281",
+  "subjectSourceSha256": "73d77f6ee38d0ea87ddc002bff91b3e8131dcdbe92182d65f7cef3cc3b005e03",
+  "promptSha256": "6ca44dc099884866461dc1ee78f7c8905a5d7a91fbdd27b65eb20cc6105ffa2c",
+  "refusal": "unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 8.6%)",
+  "observation": "Full-size review: upright sea lion; long fore-flippers lift the chest; near hind flipper rotated forward under the body, far hind flipper trailing back; small pointed tail visible between the hind flippers (x≈365-383, y≈736-764); small near ear flap; whiskered blunt muzzle. No extra anatomy: the 13.4% unexplained paint is the long forward-rotated near hind flipper and the large fore-flipper blades that the transferred reference did not cover.",
+  "joints": 31,
+  "parts": 26,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/09-sea-lion.mjs"
+}

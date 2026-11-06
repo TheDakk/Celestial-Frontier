@@ -1,0 +1,20 @@
+[
+  {
+    "name": "grayling",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/01-grayling/packet/master.png",
+    "sha256": "09ba182690b8c5d3207ea28c1ada45b57482813b939d292ee1b7d88f73a68905",
+    "canonicalMaster": "audits/G2_C72_20260927/01-grayling/master.png"
+  },
+  {
+    "name": "carp",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/09-carp/packet/master.png",
+    "sha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+    "canonicalMaster": "audits/G2_FAMILY_PILOT_20260926/09-carp/master.png"
+  },
+  {
+    "name": "paddlefish",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/05-paddlefish/packet/master.png",
+    "canonicalMaster": "audits/G2_C76_20260927/05-paddlefish/master.png",
+    "sha256": "d523000757f946be13ce5e2d38cb77f2046bc576ff4b304081c4f48e69773b33"
+  }
+]

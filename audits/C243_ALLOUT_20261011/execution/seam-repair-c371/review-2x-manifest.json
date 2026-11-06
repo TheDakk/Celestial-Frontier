@@ -1,0 +1,402 @@
+[
+  {
+    "name": "Camel",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/turn1-hit-reaction-50.png",
+    "sourceSha256": "82e03c79d9805680430d1d1d9871564a7e9237400280ebd6ce850941787f1076",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Camel-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "2e00003a69b7f30b85fa2dc313e5e08de55a7414fc4e12428dfa3c027ed59889"
+  },
+  {
+    "name": "Camel",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/turn2-dodge-reaction-50.png",
+    "sourceSha256": "d084cfc98e506b1246a2f90e9558cd60fd1a1486524442a47306be0548108e9d",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Camel-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "ee63e5f522522ed3de289a289dc6b07a13244be4f722d34308f8602de2b482cb"
+  },
+  {
+    "name": "Camel",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/turn3-hit-reaction-50.png",
+    "sourceSha256": "68634991835fb49925209710eb372d86dcf93ec266707db2c683ae53f0626bda",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Camel-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "500933cd811949b638e58e5a2fb28af8b6202f3a3d7867957552046bff6e7738"
+  },
+  {
+    "name": "Camel",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/turn3-hit-idle-50.png",
+    "sourceSha256": "a12802160c64ba7c9848f4f604647b0620e489dd57cc6c50942624a1bfe320b1",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Camel-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "a90fd406e0b89915d0b314a25a144611196c3a38a2b60ea26e6bb956e5ca10b4"
+  },
+  {
+    "name": "Camel",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/turn3-hit-idle-90.png",
+    "sourceSha256": "913dc9d752df185804c0995d08637049aa24ca38de788ce5a2d8fadadae8ecc5",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Camel-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "0c8f0c70a97c94d88f4fb5cce7e3b5c311f4e794feced072350fb5ae1df14a19"
+  },
+  {
+    "name": "Manatee",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/turn1-hit-reaction-50.png",
+    "sourceSha256": "b555b8bcd78a4af62d77e2a0d9b6a976b104d5246635ffbe9e882e7779b862ce",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Manatee-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "78b36904a9d0df17e0bb38d94d7f1f62688feda7ee15640bede72d12b1c5374f"
+  },
+  {
+    "name": "Manatee",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/turn2-dodge-reaction-50.png",
+    "sourceSha256": "33725157425bac9299af97e62e1b9333b9e1596682d99a708f3ffdbe765e6f6e",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Manatee-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "95261d4ad123a7def79b59957c5468840a739f2ea1361a79e3362581050239a0"
+  },
+  {
+    "name": "Manatee",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/turn3-hit-reaction-50.png",
+    "sourceSha256": "4a32bce514bf98f229484929f1a2345fd276a995eea2b172bec41c001514937d",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Manatee-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "bc01385f2ce7a019f8736c641f18b71d75333cc2d1ab35164fff748a40eedca0"
+  },
+  {
+    "name": "Manatee",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/turn3-hit-idle-50.png",
+    "sourceSha256": "7e08d2aa99d7270c05ccb0e7cb92f775e56e0c89d2890a95808b93dc2bcc9501",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Manatee-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "0b8995566b37de0a6fbbc5b653f158f161a00ad68b0f8286859ee02d19001377"
+  },
+  {
+    "name": "Manatee",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/turn3-hit-idle-90.png",
+    "sourceSha256": "2c9054ff9c6e871dd402049b6d1898419c739a095871dfe5da6ef2b531dd28cb",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Manatee-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "8ba9809f03df4172cffcca5d81bf314e4d5520e639f84d9252d81ca7ee84eaa7"
+  },
+  {
+    "name": "Pilot Whale",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/turn1-hit-reaction-50.png",
+    "sourceSha256": "7b71fc253b911225d66e9d463322d343cf17af9e4d9a592bbee91bd46969a95e",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Pilot-Whale-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "072de1226a7505861397b2cdff923dd487716dd0a4c966339ef32e4b0cc28714"
+  },
+  {
+    "name": "Pilot Whale",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/turn2-dodge-reaction-50.png",
+    "sourceSha256": "c50d904e03089f432b45f781e8c7bc3f22d0c46a5bd8f4c7c36c1b7a4edf5676",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Pilot-Whale-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "11b2b184f2da415c8af032d1711ca2d2c129a768a1908ee68a5bd42ecf11da74"
+  },
+  {
+    "name": "Pilot Whale",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/turn3-hit-reaction-50.png",
+    "sourceSha256": "ab2feb458b863fc75a955981c3221099d1fe7cc04610e9772d4bc8dd01db066e",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Pilot-Whale-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "aeb839ea082ae7dcfb3dfd4811d9ee942139ca47f9610653f6082ca3c0b69dd1"
+  },
+  {
+    "name": "Pilot Whale",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/turn3-hit-idle-50.png",
+    "sourceSha256": "76af19f7a56e459768e1a50f2e514a5a89e0decb8178eaeb5dd0b2f7d3ccb8bc",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Pilot-Whale-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "bf03c6a88ae6227ffe2737b811a7ef28c4da096b7ac2511e2c9d382333159cd8"
+  },
+  {
+    "name": "Pilot Whale",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/turn3-hit-idle-90.png",
+    "sourceSha256": "20035d127d2eb860a29001483b2f6f3399ead4172bb94f926e775f325d3e0376",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Pilot-Whale-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "65e7c22a8d3e44ae0ff0c1ee0cdafe5656bdb3b8ac45fbca2b092662bde349f4"
+  },
+  {
+    "name": "River Dolphin",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/turn1-hit-reaction-50.png",
+    "sourceSha256": "87d2df18977f2aabe324d355f982a6bfc8d49af3e32710fd88a19104229e1b57",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/River-Dolphin-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "0df3b830fc3f368065f323d4646c1e55bd05a01fe76673e4133e08d1cde8b788"
+  },
+  {
+    "name": "River Dolphin",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/turn2-dodge-reaction-50.png",
+    "sourceSha256": "90cb915ef8c0e1bad955eab0457967e48ae597baa66decb2e0f49e087e1b3297",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/River-Dolphin-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "c127eaa034e886b3e0343a34ea3d68c156571fb738996defb397c84b38093939"
+  },
+  {
+    "name": "River Dolphin",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/turn3-hit-reaction-50.png",
+    "sourceSha256": "fb7287561edf767edaf0dff02fc0fb3ecf6259b41282b6b1b5724e389600c9c7",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/River-Dolphin-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "694e593941820c47aa2da3270f6e18c5fac80120b716e2c774e32c97c7498155"
+  },
+  {
+    "name": "River Dolphin",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/turn3-hit-idle-50.png",
+    "sourceSha256": "7766e98d767b3b6c7d81b63cd1f085875abebf16c351d0705369e21634486699",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/River-Dolphin-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "5c5cfb5cd8cafbe5440f934fb768f74954dac4bbda6dc5a51281e92dc49251d1"
+  },
+  {
+    "name": "River Dolphin",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/turn3-hit-idle-90.png",
+    "sourceSha256": "819671afd641e8ee747366f321974c03b580b621592b219442b6053a5669e249",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/River-Dolphin-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "8dc03c8b9a4869b41696cc6bd0923274b5f3a48a85ef1cb09e6227f86684c103"
+  },
+  {
+    "name": "Ladybug",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/turn1-hit-reaction-50.png",
+    "sourceSha256": "5741a79a38eb1cd352006f49f12d6de87b3202f22b11c9081f940933db2f9511",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Ladybug-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "5a57c208dc3afc57e5c0929ce5a43ebd2a3fc767242290ecc6b9e61b3249df62"
+  },
+  {
+    "name": "Ladybug",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/turn2-dodge-reaction-50.png",
+    "sourceSha256": "1a8ff7a357ceb80ecee1bb763b587ac923ced23de5ad707776a26485d021bbf6",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Ladybug-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "47ca2a380ab8aaad77743794ee62cfc7caa58effb81394359fe033ddf9d4b899"
+  },
+  {
+    "name": "Ladybug",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/turn3-hit-reaction-50.png",
+    "sourceSha256": "8e1931daa1166bfb07db50062eb484f64c63cf7bff0a5e7bcf8f0b8b9f0a7e5c",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Ladybug-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "02d3c963642041012ecd62c22e4e5ef52da0b35972ab22c9c2189dee7759d124"
+  },
+  {
+    "name": "Ladybug",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/turn3-hit-idle-50.png",
+    "sourceSha256": "0759e611c24bdb4c23703823460036ccf16a4593fb96fd76db645517fecf458a",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Ladybug-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "17a571a50e51fda60ee2aa84de1c68b2fc6a9c97d14df8745a6ef7f8014c1fc2"
+  },
+  {
+    "name": "Ladybug",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/turn3-hit-idle-90.png",
+    "sourceSha256": "b99302abd0d8f9ea7851b3e5fa2e9eabe791b64f677fb16618a0f78045451963",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Ladybug-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "9f517c86d0e6189ab697fffbb4f6cf383c8faa0fafeeab6d084924811f8efca0"
+  },
+  {
+    "name": "Hoatzin",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/turn1-hit-reaction-50.png",
+    "sourceSha256": "4bdb8672d6764130e9f7f0a68bf7ace8361ca1a003587ad5c152ded7a7dd86bd",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Hoatzin-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "14d2aed296e8256186727636e77d25ef8e44d9969200f7b9a1cd9b4141a2592b"
+  },
+  {
+    "name": "Hoatzin",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/turn2-dodge-reaction-50.png",
+    "sourceSha256": "af73016a9bffa95d580fe86d1a583aad91babf9f3095732d629a8b2f2f3616cc",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Hoatzin-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "a1af994b136b2c708fbd750149dbfd27770446f234a2ee6dce534d38c09e9cab"
+  },
+  {
+    "name": "Hoatzin",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/turn3-hit-reaction-50.png",
+    "sourceSha256": "a483dc36c2548ac2816ece3381b11d847515cf2516c624cc6d60aae8747692ca",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Hoatzin-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "617028d1efa552e8370457b7ba95bf30a477a573dab04f0c6c188ec104915ab9"
+  },
+  {
+    "name": "Hoatzin",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/turn3-hit-idle-50.png",
+    "sourceSha256": "9f3273b11c78ffcaabbe2a65e4d0f088ccdf1f68211e3af34d3280511eddb4c8",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Hoatzin-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "52ff8e13200f4ce8426c66bd693175b3a0c37a80a3e36b70db760c603487644c"
+  },
+  {
+    "name": "Hoatzin",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/turn3-hit-idle-90.png",
+    "sourceSha256": "2ac9ac8f5eed91b38878ad366a66e9b0d85a9c72d0aa5e14d5805d1a01151b51",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Hoatzin-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "044f82a4c6701523de8786636d168b57b129bf9043173602095392c35115927f"
+  },
+  {
+    "name": "Kakapo",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/turn1-hit-reaction-50.png",
+    "sourceSha256": "84d7eda399539e65015712df422578acf8bca971a7e41b0477f6038cbf950ac3",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Kakapo-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "dd22956ff315258f96ac8555407746a6e8c5e18979f2874379f5b66a11ea7426"
+  },
+  {
+    "name": "Kakapo",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/turn2-dodge-reaction-50.png",
+    "sourceSha256": "911ef561fb475240350b2efd4f7bc8e102d3cd935072e1e15f5fbdb5f8223962",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Kakapo-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "ebf60880b842c61615d29d9b36278509e64b074a87b8923f9b40d79b672ae58c"
+  },
+  {
+    "name": "Kakapo",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/turn3-hit-reaction-50.png",
+    "sourceSha256": "c5a15ebab5a3c7ae9afe392b2eb099bca4bf1db4a9098cc5001958421dca5513",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Kakapo-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "ffd9b5c507584cc41d8da857f05c2e3ba9b3c4f9b450c1083d12a78fe3624cd1"
+  },
+  {
+    "name": "Kakapo",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/turn3-hit-idle-50.png",
+    "sourceSha256": "fbf3a0127cec2becca4bd75e149114cb65d741ef51b79d65f26f4155dcbdd345",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Kakapo-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "a8f3457281353b0aedde2b98d15e4a8fb38d7d736266f3045a63b22a8af706ea"
+  },
+  {
+    "name": "Kakapo",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/turn3-hit-idle-90.png",
+    "sourceSha256": "4214e20fe532b2a033bbb0331469575f7d19313b61dc0afaff3eadf591126bd3",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Kakapo-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "800f753883ebf37ec738cfbda22b7f09930068d61ad21f4f5e68a2aae47dd01e"
+  },
+  {
+    "name": "Tern",
+    "frame": "turn1-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/turn1-hit-reaction-50.png",
+    "sourceSha256": "d3fbf39c0d175510d66444046b57cb03f8bbaeef9a71986e2e4d947e69a196ef",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Tern-turn1-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "b5377a735a1eb6ac22b8a97e44a1339ec1f8754198b9ad8fc82ec4a6ebf87a50"
+  },
+  {
+    "name": "Tern",
+    "frame": "turn2-dodge-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/turn2-dodge-reaction-50.png",
+    "sourceSha256": "c3e89305170b0834f68c0b2a2c95a706a544a5dac0e230a51ca38b6b0ffd8f83",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Tern-turn2-dodge-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "76d0ae12a171741c1e82be71fdd89a18682ef3450288c9c9213cd3b2e10ebf65"
+  },
+  {
+    "name": "Tern",
+    "frame": "turn3-hit-reaction-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/turn3-hit-reaction-50.png",
+    "sourceSha256": "3bafc804fc7800132161a791324badfa8e87744d2e2cd9a9a0dfdbc0cb6e9f62",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Tern-turn3-hit-reaction-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "6f4a2bf4199ba78b92b5903bab9534f5e502c9a1c85eed831bc4ba358b1671b6"
+  },
+  {
+    "name": "Tern",
+    "frame": "turn3-hit-idle-50",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/turn3-hit-idle-50.png",
+    "sourceSha256": "327e42de533ef6c333f87cb4c290cc2dda293593b61da0b0fa6cb62c0a5e66bb",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Tern-turn3-hit-idle-50.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "6b127a989513deeccf53cba4d05adac994855d7f7d68fe8d784f374d15bcf766"
+  },
+  {
+    "name": "Tern",
+    "frame": "turn3-hit-idle-90",
+    "source": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/turn3-hit-idle-90.png",
+    "sourceSha256": "5884202fd10ce07888a18b620bef85d9614f26d5ea33aa36116bf47f46073a0a",
+    "review": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/review-2x/Tern-turn3-hit-idle-90.png",
+    "scale": 2,
+    "method": "nearest-neighbour diagnostic view",
+    "reviewSha256": "f2f6e2722950197490065cd3076e7991eaeec58aed19f0f5b169156a27988d6c"
+  }
+]

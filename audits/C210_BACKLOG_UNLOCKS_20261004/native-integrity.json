@@ -1,0 +1,248 @@
+[
+  {
+    "id": "native-bird-11-toucan",
+    "originalReportSha256": "f5c34f7b3d040c383663407079bc8c29fddd0025698d31e94a12ea4525a613c0",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "cf4acd8a75370f38004f2d0749d85e9cdca7a816fe9649794d279dce9889ade2",
+      "bytes": 8774042,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-bird-11-toucan/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-bird-14-duck",
+    "originalReportSha256": "82668f5ee16887b9183d10871f47f44c351d095a3dc0709297f24ad499dba6bf",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "c69943dc3d33d078aa50ca7dc28fcef73b19c0bca04517a8bc9706ad49ed1f85",
+      "bytes": 8993564,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-bird-14-duck/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-bird-17-cardinal",
+    "originalReportSha256": "f3902676674edd043eb18f037e7c949bf4087e3a184f85ed417106d52189d373",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "17b48380c2dc3286abf15d0c8428196599b61c2ce3deab1435596adc67f18684",
+      "bytes": 8926230,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-bird-17-cardinal/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-bird-18-sparrow",
+    "originalReportSha256": "fb72fad8ca1834e8998c0c54cc4e6b90ee55bc753534e25f3564ad7fc35a004e",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "3b78f3d60f5ad414be1d084718ae6313f2b00f9304c38ec2ca283c55ff7012b4",
+      "bytes": 8897591,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-bird-18-sparrow/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-bird-19-pigeon",
+    "originalReportSha256": "263321f47446b6657616e895817c82aadb6e9788a36813666ee7b39313d501f6",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "7b034c3d0f55789f15f37cd8ff10f6da93908da4f125623502278b77933f4d3c",
+      "bytes": 8696593,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-bird-19-pigeon/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c202creaturesupply-06-impala",
+    "originalReportSha256": "8255fbaecf510291f650121169158a7141e0ad88dc3829c39b480e9a63deea5d",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "c13ae9c5074a5578132c3f2d50c2fcd421957647bcd26990a70471a6f3c6c5a4",
+      "bytes": 11371281,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c202creaturesupply-06-impala/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c202creaturesupply-10-river-otter",
+    "originalReportSha256": "a59f45eb63283c5808464177eed9a4e4a77a6fafd9fa560295d28187e8757a50",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "d57773eee6bf91ef1e2c471e8476823090487a116102b65c8c608c85cf7114b5",
+      "bytes": 11155083,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c202creaturesupply-10-river-otter/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c202creaturesupply-16-spotted-hyena",
+    "originalReportSha256": "75647171ff73e114391ff79646c439ee5dd8e45b0f5d678a82d4b04da385cbaa",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "5ef950389a331a52a0ef5b901b95dd7863ec3c59a3916a97b025efd5f16767f9",
+      "bytes": 11020523,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c202creaturesupply-16-spotted-hyena/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c203creaturesupplyb-03-pronghorn",
+    "originalReportSha256": "2525f5a0fe276f7d7e98fa4f41981d487a8726c081056e926dec762a755b56a5",
+    "verifiedInputs": 908,
+    "historicalSnapshots": [
+      "audits/C210_BACKLOG_UNLOCKS_20261004/policy-native-timeline.snapshot.ts"
+    ],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 811,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "a93fad731a3211f1cffe01ce50e55216ff33cd4dc6ce1b27a8ee38dcd596f98c",
+      "bytes": 9387634,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c203creaturesupplyb-03-pronghorn/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c203creaturesupplyb-05-duiker",
+    "originalReportSha256": "f8e35b5f9fed9089b740fb8df5f91a7006da5c3c0f169c15b5c0c9f6d14f5e5e",
+    "verifiedInputs": 908,
+    "historicalSnapshots": [
+      "audits/C210_BACKLOG_UNLOCKS_20261004/policy-native-timeline.snapshot.ts"
+    ],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 811,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "6a8b92b8b10778cb25ad11bad925efc391af878d3d4e51857e0beb9f8ef8b296",
+      "bytes": 9515799,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c203creaturesupplyb-05-duiker/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c203creaturesupplyb-06-serow",
+    "originalReportSha256": "5303dcf6247b9d273fb1598f38948e595e7647c725ae125e2d18c9995501b542",
+    "verifiedInputs": 908,
+    "historicalSnapshots": [
+      "audits/C210_BACKLOG_UNLOCKS_20261004/policy-native-timeline.snapshot.ts"
+    ],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 872,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "129f7a2ebe02eab33afb40e9c089b758473651292e5718e05c5d04d90a141990",
+      "bytes": 10026024,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c203creaturesupplyb-06-serow/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-c203creaturesupplyb-23-swordfish",
+    "originalReportSha256": "3c8b3a0cd1dd5cd1fddc6d7c50068c0a48bacba468b59aa6af2ae6c437b655ca",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "08aee6240858f9877de5ebbac33d5ae93a807ccd76ab9ce3222bc40e40a1888b",
+      "bytes": 7334126,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-c203creaturesupplyb-23-swordfish/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-g2c118-04-sea-otter",
+    "originalReportSha256": "e104ea664a71b48fbb88be04493caf8c51e085c04787869bf4504464b0691d1b",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "2d72207f00fac06678971fdbfba1441a48551e8d40b2c8055c5293cab748d4ef",
+      "bytes": 10797905,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-g2c118-04-sea-otter/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-g2c118-09-colugo",
+    "originalReportSha256": "6f17c03748b84c531c68a674b88ed3bffbd673ab5a533552fcfdf3c96d2921cb",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "755816bdfd41a2de03cc46f4d1803e49bdc304955dfab2729a1e5f7116569a7d",
+      "bytes": 10824722,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-g2c118-09-colugo/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-g2c90-24-river-otter",
+    "originalReportSha256": "da13d39e1724ae50a743e2409eccdc1e3fe70383d20d4816ba2382428becf72d",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "21b6956f075693b970b433da466e70c95e4a9222bb5ca4a388ca0c47f8d3c199",
+      "bytes": 10368402,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-g2c90-24-river-otter/battle-full.webm"
+    }
+  },
+  {
+    "id": "native-g2c95-17-nilgai",
+    "originalReportSha256": "db3c8bddfaad071bf4d74a40cd1ed5f6e635fec26c4b75898b67f02fbd01c91e",
+    "verifiedInputs": 909,
+    "historicalSnapshots": [],
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "refusals": 0,
+    "captureFailures": 0,
+    "film": {
+      "sha256": "71bbaaa3bd1b9855a9eea87461ab8a506724385cbc837030dac68ed12514b762",
+      "bytes": 11141325,
+      "retainedPath": "~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/native-g2c95-17-nilgai/battle-full.webm"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "intake",
+  "id": "10-grouse",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+    "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate",
+    "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01"
+  ],
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/intake.log",
+  "logSha256": "96e1497ed7d0779d0ce34678842ebf549ab15eb39f566aac4eedc51f75a78e84",
+  "nativeRuns": 0
+}

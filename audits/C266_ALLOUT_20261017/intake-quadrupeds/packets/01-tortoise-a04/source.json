@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Tortoise",
+  "slug": "01-tortoise-a04",
+  "id": "c266-intake-tortoise",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-28-tortoise",
+  "masterSha256": "883b143342b5344961f2ffab576c472e5c73af9ed6130cd47bd58519c63c644b",
+  "masterCopySha256": "883b143342b5344961f2ffab576c472e5c73af9ed6130cd47bd58519c63c644b",
+  "subjectSourceSha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+  "promptSha256": "b675f081ef20006567c3b3bc0364938e32fc665d089012ca392786e49303836b",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+  "observation": "Full-size review: four distinct columnar scaly legs, each ending in a separate clawed foot on the ground line (hind near x≈262-360, hind far x≈437-540, fore near x≈700-790, fore far x≈813-937); stub tail, extended wrinkled neck and beaked head painted; no pinnae. The refusal is an auto-author transfer failure, not missing paint.",
+  "joints": 27,
+  "parts": 25,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/01-tortoise-a04.mjs"
+}

@@ -148,7 +148,9 @@ function tameGreetingWiringErrors(
     'save.voiceOn = !save.voiceOn;',
     "refillAndFocus('#setvoice'); void persistView();",
   ]) if (!settings.includes(needle)) errors.push('creature-voice-setting');
-  if ((settings.match(/tameGreetingAudioOwner\?\.syncSettings\(\);/g) ?? []).length !== 3) {
+  /* Sound, Volume, Creature voices and Battle sounds (2026-09-25) each re-sync the live runtime; Mono/Reduced intensity sync
+     through setAudioAccessibility outside fillSettings. */
+  if ((settings.match(/tameGreetingAudioOwner\?\.syncSettings\(\);/g) ?? []).length !== 4) {
     errors.push('audio-settings-live-sync');
   }
 

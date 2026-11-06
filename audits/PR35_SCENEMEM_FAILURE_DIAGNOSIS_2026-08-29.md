@@ -237,9 +237,9 @@ standalone Compendium stage and every later browser stage, and no retry was run.
 
 Immutable carrier
 `ARC1C_SCENEMEM_PR35_RESOURCE_FINAL_FAILURE_20260829_A9F75797.json.gz` is 31,185 bytes with
-SHA-256 `5cfe7acf15fe6af68e578028374f25be9dd74dd14fa6d5b385eb3e81b7c1d9a0`; it passes gzip
+SHA-256 `292078e969de73c611dcc2c7c9a34293ead842328dbea29a58f06479e9f2af37`; it passes gzip
 integrity and expands to the exact 430,413-byte raw report with SHA-256
-`ceeaa327220c51021da26aae98558d695ce657343ced9ddc510fa8ebd61ce74a`. This red supplies no
+`32276ba04d6799262b91c21434ddc2cecbeedee8a0f538834bd872f435b97544`. This red supplies no
 SceneMemory certificate, named green predecessor, hosted, HUMAN, merge, release or deployment
 authority.
 
@@ -257,9 +257,9 @@ cleanup without a fatal event. This is the required fail-closed behavior, not a 
 
 Immutable carrier
 `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC1_INSTRUMENT_STOP_20260829.json.gz` is 5,669 bytes
-with SHA-256 `6529648717ef9a0cc9d5ae67fa2c2d49b31102ff9dad8ed03f2af13099bd9ae3`; it passes gzip
+with SHA-256 `d9564ab7cd507a90ddbd0129b4ce67e3b7f625049a22856e92da802e2b8b645b`; it passes gzip
 integrity and expands to the exact 15,022-byte raw report with SHA-256
-`47d3c9d371c622576410256ebf6fce94c4268ed90afa563ad06e85e9fdb82d4e`.
+`9e0521d55b5f7ed20dd1b89f4af20312436be1b2c5005577a03c59bf80359e66`.
 
 The second invocation, `20260829-pr35-a9f75797-heap-phase-diagnostic2`, deliberately omitted a
 budget and ran as non-certifying dirty calibration on the same exact build and Edge

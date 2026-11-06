@@ -1,0 +1,99 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c192-islands-01-capuchin-fringes",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "30ac8f9fbf8e1b70a0dc80fdd719034b44b90969474f33e378c88b6c4ea1246e",
+    "pngSha256": "91be058206214eab8c62c28ff7e5c4f19acd269c06e968a5442c549c997845de"
+  },
+  "parts": [
+    {
+      "name": "arm-far-elbow.png",
+      "sha256": "774febeab65ff7653df52c8470a389aeb4c928bbf5c2a8f326e90e9aa84152c7"
+    },
+    {
+      "name": "arm-far-hand.png",
+      "sha256": "770a731456826533514e1b341960d55d4cb24ecb673c730e3183d3e82d1a9b05"
+    },
+    {
+      "name": "arm-near-elbow.png",
+      "sha256": "e8112f79aa3220b3d5298658d921f0d2cff5cd4c2e85a6bd902ad020008dd7d2"
+    },
+    {
+      "name": "arm-near-hand.png",
+      "sha256": "8eb0f1f8c6c128f8cc94463cdf00b06f887d59802f66636cc7076bf7ef08a5a6"
+    },
+    {
+      "name": "body.png",
+      "sha256": "2dba6a8ebeb91abf2512955a34b33681d2227af27ad6b14bf50c6c3bbab35776"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "f5e6c6296027c6ed7d981af8c9c4aeeced03da2e524bc33a9eb63a5c06f1602d"
+    },
+    {
+      "name": "head.png",
+      "sha256": "9b436fd18c7a195051272f649ba9530204d2dee1eaaa550953de1fe41d25a98d"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "68b47482abfd642896b4ac56b269bd215931f5996566703295e59b1d38460fa1"
+    },
+    {
+      "name": "leg-far-foot.png",
+      "sha256": "e9ba1ef9d4bd84c5a1901917f87956f4f336784e8679d81f196cc97c2683850b"
+    },
+    {
+      "name": "leg-far-knee.png",
+      "sha256": "c70d5202f4762dc0975cf5677b3cbac57492ab6bec2ce633c89f60a36c1794e3"
+    },
+    {
+      "name": "leg-near-foot.png",
+      "sha256": "7399cbb7b79d4e811de810df8c45027f2dec1eb620f7344a4b5b9d0aee79a5e9"
+    },
+    {
+      "name": "leg-near-knee.png",
+      "sha256": "eb58e03f45a756f9882ec983691d7754cea08420e687408504dd10023ca1d022"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "452a2fbf87814994ea1d7d9bb1cba1c2277345289b39538cda15bf5fe6c060fe"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "f0a82428fee13c024edf35f100718eb0e63451e7e3a6e016817174322a459417"
+    },
+    {
+      "name": "tail0.png",
+      "sha256": "b90c3638b4035ab574f1b02f331fb2fabed6368ec07e3a648a88c298cae2f6a2"
+    },
+    {
+      "name": "tail1.png",
+      "sha256": "0df07ca2f8188dd384faf44a20bd9546e25a73445f73c4275a5b51a16774d999"
+    },
+    {
+      "name": "tail2.png",
+      "sha256": "fd43ab347eb1f93568ec77052ff67a53d45ed1b14ca35026c9f4eee73eb0ac35"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

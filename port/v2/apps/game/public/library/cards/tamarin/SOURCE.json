@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tamarin",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/c198creaturesupplyb-09-tamarin/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e5fea38bc98eccfb2687fcc844be84e2f018ee1133a208a2c384046fd2a87b6d"
+}

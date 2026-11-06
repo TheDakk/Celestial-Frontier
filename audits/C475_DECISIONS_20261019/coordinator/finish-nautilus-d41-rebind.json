@@ -1,0 +1,20 @@
+{
+  "stage": "finish-nautilus-d41-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-nautilus-d41-rebind",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/rebind-one.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41"
+  ],
+  "startedUnix": 1792462879.167009,
+  "beforeGiB": 52.4997673034668,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.013,
+  "lowestGiB": 52.49974822998047,
+  "afterGiB": 52.49574661254883
+}

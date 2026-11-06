@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "09-deer-observed-ears",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/master.png",
+  "sourceSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/authoring.json",
+  "priorAuthoringSha256": "f09b847f51dbefb551726a83b2a821ce841cc2e9f0c7ecfd0b1c40e4bf3dff39",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [],
+  "findings": [
+    "Full-size ownership revealed existing ear polygons on antler tines despite the static PASS. Both actual pinnae are now manually traced and their four landmarks relocated to ear tissue. Tines revert to their correct head owner.",
+    "Prior tail and left-antler corrections remain exact; no source pixels or limits changed."
+  ],
+  "originalPixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Inherited automatic limb regions still require full-size motion review."
+  ]
+}

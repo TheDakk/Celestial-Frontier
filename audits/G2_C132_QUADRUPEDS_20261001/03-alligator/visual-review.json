@@ -1,0 +1,28 @@
+{
+  "name": "Alligator",
+  "masterSha256": "64f9dc3207fa10afccd71456fe950a37c2caf9d1fcf5864602553ab59bb32140",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: broad closed snout, teeth mostly hidden, heavily scuted back, thick continuous tail and four visible feet. Far upper limbs are occluded. Tail looks shorter than the canonical longer-than-body requirement; retain identity hold. Side margins visibly below 8 percent; framing hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 46,
+      "y0": 488,
+      "x1": 1207,
+      "y1": 750
+    },
+    "margins": {
+      "left": 46,
+      "right": 46,
+      "top": 488,
+      "bottom": 503
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

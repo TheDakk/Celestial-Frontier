@@ -1,0 +1,158 @@
+{
+  "status": "SKIP_UNTIL_QUALIFIED_REFERENCE_PACKET",
+  "requestedIn": [
+    "C362",
+    "C363"
+  ],
+  "species": [
+    {
+      "name": "Bullfrog",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Cave Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Cold-Water Coral",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Comb Jelly",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Coral",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Cuttlefish",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Deep-Sea Octopus",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Deep-Water Coral",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Flatworm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Giant Octopus",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Giant Squid",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Giant Tube Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Glass Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Ice Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Jellyfish",
+      "reason": "Dakk/C259: await qualified frog/toad or radial/coral/jelly reference packet before further attempts."
+    },
+    {
+      "name": "Jerboa",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Kangaroo",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Marine Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Nautilus",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Octopus",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Poison Dart Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Polychaete Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Portuguese Man-of-War",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Sand Dollar",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Scale Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Sea Anemone",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Sea Cucumber",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Sea Urchin",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Squid",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Starfish",
+      "reason": "Dakk/C259: await qualified frog/toad or radial/coral/jelly reference packet before further attempts."
+    },
+    {
+      "name": "Toad",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Tree Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or radial/coral/jelly reference packet before further attempts."
+    },
+    {
+      "name": "Tube Worm",
+      "reason": "Dakk/C259: await qualified frog/toad or worm reference packet before further attempts."
+    },
+    {
+      "name": "Vampire Squid",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Wallaby",
+      "reason": "No qualified reference supplies the declared anatomy inventory."
+    },
+    {
+      "name": "Wood Frog",
+      "reason": "Dakk/C259: await qualified frog/toad or radial/coral/jelly reference packet before further attempts."
+    }
+  ],
+  "rule": "Continue supported independent families; exact reference masters required. Do not treat source generation as qualification."
+}

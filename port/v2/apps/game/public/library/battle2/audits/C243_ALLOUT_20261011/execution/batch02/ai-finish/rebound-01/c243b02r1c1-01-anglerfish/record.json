@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Anglerfish\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1898729327\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"8\"]]]]",
+    "seed": 1898729327,
+    "ownerId": "authored:archetype-sprint/c243b02r1c1-01-anglerfish",
+    "earthName": "Anglerfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1898729327,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 12,
+    "body": 10,
+    "loco": 15,
+    "trait": 8,
+    "size": 3,
+    "diet": 2,
+    "head": 8,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 6,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 11,
+    "habitat": 15,
+    "detail": 5,
+    "accent": 10,
+    "temper": 4,
+    "sense": 3,
+    "repro": 0,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Anglerfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "9eb5077f0e18bf4b62ed060266e1a2f6501076893e2ba3013562dcafe303e0bb",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6317456587307129,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5685805422647527,
+      0.5187400318979266
+    ],
+    "head": [
+      0.6093301435406698,
+      0.4891547049441786
+    ],
+    "jaw": [
+      0.6692982456140351,
+      0.5548644338118022
+    ],
+    "spine0": [
+      0.5144338118022329,
+      0.5038277511961722
+    ],
+    "spine1": [
+      0.4523125996810208,
+      0.4940988835725678
+    ],
+    "spine2": [
+      0.41299840510366825,
+      0.4917862838915471
+    ],
+    "spine3": [
+      0.39577352472089317,
+      0.4893141945773525
+    ],
+    "spine4": [
+      0.37208931419457736,
+      0.49401913875598086
+    ],
+    "spine5": [
+      0.3390749601275917,
+      0.49194577352472085
+    ],
+    "caudal": [
+      0.30861244019138756,
+      0.4828548644338118
+    ],
+    "dorsal": [
+      0.46578947368421053,
+      0.3942583732057416
+    ],
+    "pectoralNear": [
+      0.5364433811802233,
+      0.5553429027113237
+    ],
+    "pectoralFar": [
+      0.6177033492822966,
+      0.5697767145135566
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g01to03/c243b02r1c1-01-anglerfish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "751ef0850644fdc60d1de2e3b210fa890e59a50957b35b881144b3d59b5728a0",
+    "subjectSourceSha256": "b74f22c42827ac92885d5e2b2cb5e964cb72e2ca40e72bca19434e5cbdd8b324",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.05035694167745288,
+      "jaw": 0.08896033798349774,
+      "spine0": 0.056162661399800945,
+      "spine1": 0.06287842126394595,
+      "spine2": 0.03938215347782027,
+      "spine3": 0.01740137149130106,
+      "spine4": 0.024147014887535425,
+      "spine5": 0.033079395669245386,
+      "caudal": 0.03179008884798542,
+      "dorsal": 0.10074598574239166,
+      "pectoralFar": 0.07083638289531312,
+      "pectoralNear": 0.04870900609081683
+    },
+    "measures": {
+      "body": 0.1757609406382251,
+      "bone-min": 0.01740137149130106,
+      "bone-max": 0.10074598574239166,
+      "caudal/body": 0.18087118066476485,
+      "head/body": 0.2865081484805224
+    }
+  },
+  "recipeHash": "3d03eb2b0e7ae9400d3ede39c30dedee57088ac4683c3e386e2895c66ea04238"
+}

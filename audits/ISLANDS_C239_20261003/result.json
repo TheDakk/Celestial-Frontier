@@ -1,0 +1,8 @@
+{
+ "11-african-wild-dog": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c239/11-african-wild-dog/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

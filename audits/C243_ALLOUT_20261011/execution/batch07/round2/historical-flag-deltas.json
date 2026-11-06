@@ -1,0 +1,90 @@
+[
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale",
+    "frame": "turn3-hit-idle-50",
+    "old": [],
+    "new": [
+      {
+        "px": 48,
+        "box": [
+          736,
+          467,
+          743,
+          476
+        ]
+      }
+    ],
+    "fullSizeLook": "Full1024x576 viewed. Existing held first-round Humpback film has a tiny detached pale chip beside the right flipper at [736,467,743,476] in both victory frames; retain HOLD, not its separately accepted later replacement."
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale",
+    "frame": "turn3-hit-idle-90",
+    "old": [],
+    "new": [
+      {
+        "px": 48,
+        "box": [
+          736,
+          467,
+          743,
+          476
+        ]
+      }
+    ],
+    "fullSizeLook": "Full1024x576 viewed. Existing held first-round Humpback film has a tiny detached pale chip beside the right flipper at [736,467,743,476] in both victory frames; retain HOLD, not its separately accepted later replacement."
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+    "frame": "turn3-hit-idle-50",
+    "old": [
+      {
+        "px": 223,
+        "box": [
+          386,
+          251,
+          418,
+          277
+        ]
+      }
+    ],
+    "new": [
+      {
+        "px": 213,
+        "box": [
+          386,
+          251,
+          418,
+          277
+        ]
+      }
+    ],
+    "fullSizeLook": "Full1024x576 viewed again. Thin upper Stonefly antenna known C259 false flag; same box,223\u2192213 pixels after median-mask change, no new body fragment."
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+    "frame": "turn3-hit-idle-50",
+    "old": [
+      {
+        "px": 223,
+        "box": [
+          386,
+          251,
+          418,
+          277
+        ]
+      }
+    ],
+    "new": [
+      {
+        "px": 213,
+        "box": [
+          386,
+          251,
+          418,
+          277
+        ]
+      }
+    ],
+    "fullSizeLook": "Full1024x576 viewed again. Thin upper Stonefly antenna known C259 false flag; same box,223\u2192213 pixels after median-mask change, no new body fragment."
+  }
+]

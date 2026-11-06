@@ -1,0 +1,1 @@
+{"expected":"proposal","rows":[{"mode":"rest","refused":83,"first":{"ms":2020.2055555555555,"error":"Error: Contact: joint limit legNearFoot faint@400.2055555555555: 45.33205374812872"}},{"mode":"observed","refused":0,"first":null}]}

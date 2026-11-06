@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Vole",
+ "fitDir": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b646a5e20e1b2d0b9fced6331bdea9b469a1b8ee4eaf72847745ad46051f991e"
+}

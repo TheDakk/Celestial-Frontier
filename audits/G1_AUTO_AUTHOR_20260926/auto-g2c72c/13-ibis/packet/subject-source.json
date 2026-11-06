@@ -1,0 +1,82 @@
+{
+  "name": "Ibis",
+  "family": "biped-bird",
+  "species": {
+    "name": "Ibis",
+    "aspect": 1,
+    "headFrac": 0.32,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "long smoothly downcurved bill",
+      "bare skin on the face",
+      "long neck held out and long legs"
+    ]
+  },
+  "genome": {
+    "seed": 4016608749,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 15,
+    "body": 15,
+    "loco": 3,
+    "trait": 10,
+    "size": 0,
+    "diet": 0,
+    "head": 1,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 4,
+    "repro": 1,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ibis"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ibis\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4016608749\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 180,
+  "profile": {
+    "id": "wading-bird",
+    "names": [
+      "Heron",
+      "Egret",
+      "Ibis",
+      "Stork",
+      "Crane",
+      "Spoonbill",
+      "Flamingo",
+      "Curlew",
+      "Snipe",
+      "Plover",
+      "Sandpiper",
+      "Rail",
+      "Bittern",
+      "Oystercatcher",
+      "Godwit",
+      "Avocet",
+      "Screamer"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

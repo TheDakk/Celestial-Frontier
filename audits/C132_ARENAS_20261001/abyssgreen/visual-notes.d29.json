@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "abyssgreen",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/abyssgreen/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/abyssgreen/arena-far.png",
+    "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.png",
+    "audits/C132_ARENAS_20261001/abyssgreen/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. Dense olive atmosphere and barren mineral ground follow the greenhouse family, with open static stands and no flora/fauna or celestial bodies observed.",
+    "A brighter sky opening appears toward upper right while the template requests upper-left authoring light; layer lighting needs independent review. NEAR is browner/finer than the MID and makes a clear bottom seam.",
+    "Side ridge edges retain subtle green/mauve traces; the strongly colored atmosphere needs combatant readability review. Mechanical clearance does not supply acceptance."
+  ]
+}

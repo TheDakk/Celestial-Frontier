@@ -1,0 +1,20 @@
+{
+  "stage": "native-chiton-02-water",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C392-chiton-water",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/chiton-02-water/plan.json"
+  ],
+  "startedUnix": 1792269672.338175,
+  "beforeGiB": 95.76022338867188,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.09,
+  "lowestGiB": 95.30962371826172,
+  "afterGiB": 95.68719863891602
+}

@@ -1,0 +1,14 @@
+✔ matching exact source and observed anatomical pair accepted (0.652833ms)
+✔ changed generator bytes refuses (0.522541ms)
+✔ changed pre-split field refuses (0.09925ms)
+✔ unknown/unobserved boundary refuses (0.11475ms)
+✔ no anatomical evidence refuses (0.079833ms)
+✔ duplicate boundary refuses (0.068958ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 136.7565

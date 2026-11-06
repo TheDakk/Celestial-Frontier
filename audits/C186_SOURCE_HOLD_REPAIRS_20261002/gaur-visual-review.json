@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c186-source-ownership-review/v1",
+  "id": "08-gaur-observed-ears",
+  "fullSizeInspected": [
+    {
+      "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/master.png",
+      "sha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6"
+    },
+    {
+      "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit/parts/ownership.png",
+      "sha256": "f6d1df8e6cccf7632cb1133fe7d8f2ef83ef4f1e2a8adcd0471e114d8d6f27a8"
+    }
+  ],
+  "findings": [
+    "The final view places the complete near pinna and visible small far pinna on ear owners, leaving both horns head-owned. Inherited crest ownership from the previous Gaur candidates is absent.",
+    "The corrected front chain has visible source root, knee, pastern and full hoof ownership. The previous faint refusal is retained; this successor passes the same static owner.",
+    "Broad inherited body and opposite-limb regions remain motion-review limitations."
+  ],
+  "qualityAccepted": false,
+  "nativeReviewed": false
+}

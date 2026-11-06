@@ -1,0 +1,13 @@
+{
+  "reviewer": "bounded read-only code reviewer",
+  "sourceHead": "52ce321de",
+  "findings": [
+    {
+      "priority": "P2",
+      "issue": "Selected fit record.source duplicates not retained at exact referenced paths",
+      "resolution": "Retain all twenty batch-one/two selected source paths; eight removed duplicate paths restored from tracked canonical sources with exact SHA-256 equality. No record or pixel changes. Add indexed-master retention guard and negative controls."
+    }
+  ],
+  "checks": "No grouping, conservation or selection regression found; all fourteen finish subjects match manifest IDs and native source hashes. Both axial successors retain original record and semantic-label bytes.",
+  "programClarification": "Nonselected originals intentionally remain untracked under the explicit selected-candidates-only program rule."
+}

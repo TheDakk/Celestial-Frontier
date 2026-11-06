@@ -1,0 +1,20 @@
+{
+  "stage": "guillemot-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-guillemot-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "guillemot"
+  ],
+  "startedUnix": 1792281073.394221,
+  "beforeGiB": 87.10557174682617,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 87.10556411743164,
+  "afterGiB": 87.1019172668457
+}

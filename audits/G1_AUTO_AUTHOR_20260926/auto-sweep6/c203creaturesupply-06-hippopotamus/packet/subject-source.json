@@ -1,0 +1,66 @@
+{
+  "name": "Hippopotamus",
+  "family": "quadruped",
+  "species": {
+    "name": "Hippopotamus",
+    "aspect": 2.2,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "enormous barrel body on stumpy pillar legs",
+      "huge squared muzzle wider than the skull",
+      "tiny ears, eyes and nostrils in a line on top of the head"
+    ]
+  },
+  "genome": {
+    "seed": 1327369223,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 6,
+    "body": 13,
+    "loco": 11,
+    "trait": 8,
+    "size": 5,
+    "diet": 5,
+    "head": 4,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 12,
+    "detail": 1,
+    "accent": 0,
+    "temper": 1,
+    "sense": 5,
+    "repro": 5,
+    "life": 2,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hippopotamus"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hippopotamus\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1327369223\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 199,
+  "profile": {
+    "id": "hippo",
+    "names": [
+      "Hippopotamus"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "headbutt"
+    ],
+    "notes": ""
+  }
+}

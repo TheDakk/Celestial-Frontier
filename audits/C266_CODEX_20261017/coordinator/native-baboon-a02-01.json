@@ -1,0 +1,20 @@
+{
+  "stage": "native-baboon-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-baboon-a02-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/baboon-a02-01/plan.json"
+  ],
+  "startedUnix": 1792277675.143591,
+  "beforeGiB": 91.7107925415039,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 22.054,
+  "lowestGiB": 91.29421997070312,
+  "afterGiB": 91.67515182495117
+}

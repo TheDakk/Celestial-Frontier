@@ -1,0 +1,361 @@
+{
+  "status": "FROZEN32_INDEPENDENT_CALLS_ONE_ALREADY_COMPLETED",
+  "authority": {
+    "path": "audits/C465_CODEX_20261018/w3-source/effective-authority-freeze-r02.json",
+    "sha256": "4851d7c4d4a094435c45682e188dfdbb648f3e3a2f78ec5e030766b669b67c25"
+  },
+  "rows": [
+    {
+      "id": "c465-gulper-eel-a",
+      "species": "Gulper Eel",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gulper-eel-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/requests/gulper-eel/a/request.json",
+        "sha256": "a4774ad32cf85bf84ffe2ba88f41f3d9cf6fd5dd519008ac5de2706b5976bd1d",
+        "bytes": 3569
+      },
+      "frozenRequestSha256": "a4774ad32cf85bf84ffe2ba88f41f3d9cf6fd5dd519008ac5de2706b5976bd1d"
+    },
+    {
+      "id": "c465-gulper-eel-b",
+      "species": "Gulper Eel",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gulper-eel-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gulper-eel-b/request.json",
+        "sha256": "e97ad25e58f2878b68d1fdadec3fa617e7eebb9a9f54c110c9b3c99fb9ef8db0",
+        "bytes": 4648
+      },
+      "frozenRequestSha256": "e97ad25e58f2878b68d1fdadec3fa617e7eebb9a9f54c110c9b3c99fb9ef8db0"
+    },
+    {
+      "id": "c465-gulper-eel-c",
+      "species": "Gulper Eel",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gulper-eel-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gulper-eel-c/request.json",
+        "sha256": "4acbded92af4b6d53e2825ff854ebb63e1033b79888a256a73b20b7c196c18e1",
+        "bytes": 4646
+      },
+      "frozenRequestSha256": "4acbded92af4b6d53e2825ff854ebb63e1033b79888a256a73b20b7c196c18e1"
+    },
+    {
+      "id": "c465-gulper-eel-d",
+      "species": "Gulper Eel",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gulper-eel-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gulper-eel-d/request.json",
+        "sha256": "2670bdf4712aa97d8bbc8e6da45d8400838af0771856551db41367e9920544c3",
+        "bytes": 4669
+      },
+      "frozenRequestSha256": "2670bdf4712aa97d8bbc8e6da45d8400838af0771856551db41367e9920544c3"
+    },
+    {
+      "id": "c465-mayfly-a",
+      "species": "Mayfly",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-mayfly-a/request.json",
+        "sha256": "a3fbcae39003fbde154293e46592b5cb31182955aedd322d354eb7f93e77b647",
+        "bytes": 4573
+      },
+      "frozenRequestSha256": "a3fbcae39003fbde154293e46592b5cb31182955aedd322d354eb7f93e77b647"
+    },
+    {
+      "id": "c465-mayfly-b",
+      "species": "Mayfly",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-mayfly-b/request.json",
+        "sha256": "efdc5765567e0da37d8c8a1b848a575dae8703b9974f28adcdfc10fa0c7db093",
+        "bytes": 4599
+      },
+      "frozenRequestSha256": "efdc5765567e0da37d8c8a1b848a575dae8703b9974f28adcdfc10fa0c7db093"
+    },
+    {
+      "id": "c465-mayfly-c",
+      "species": "Mayfly",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-mayfly-c/request.json",
+        "sha256": "49db6daea357a95fd1887c82eb8c868560c1b9fbd16081151ea9329841600325",
+        "bytes": 4583
+      },
+      "frozenRequestSha256": "49db6daea357a95fd1887c82eb8c868560c1b9fbd16081151ea9329841600325"
+    },
+    {
+      "id": "c465-mayfly-d",
+      "species": "Mayfly",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-mayfly-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-mayfly-d/request.json",
+        "sha256": "31c8fef7aeb6140bde254e65682c8d3c98faa86a3711410d279efab4ebfefbc1",
+        "bytes": 4585
+      },
+      "frozenRequestSha256": "31c8fef7aeb6140bde254e65682c8d3c98faa86a3711410d279efab4ebfefbc1"
+    },
+    {
+      "id": "c465-stick-insect-a",
+      "species": "Stick Insect",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-stick-insect-a/request.json",
+        "sha256": "205cb1847c4000a4e1fbd2006d491fb3416bd5c396fe17fc1775f530108b5af6",
+        "bytes": 4423
+      },
+      "frozenRequestSha256": "205cb1847c4000a4e1fbd2006d491fb3416bd5c396fe17fc1775f530108b5af6"
+    },
+    {
+      "id": "c465-stick-insect-b",
+      "species": "Stick Insect",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-stick-insect-b/request.json",
+        "sha256": "e7f9f734e8c5bad93002cb189cc05b94726bcd687e8764f9cd86831c9587c354",
+        "bytes": 4439
+      },
+      "frozenRequestSha256": "e7f9f734e8c5bad93002cb189cc05b94726bcd687e8764f9cd86831c9587c354"
+    },
+    {
+      "id": "c465-stick-insect-c",
+      "species": "Stick Insect",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-stick-insect-c/request.json",
+        "sha256": "587273ce4c347146a3fc9c80b494df3f43962fc2c502215e8571477521af0bb7",
+        "bytes": 4448
+      },
+      "frozenRequestSha256": "587273ce4c347146a3fc9c80b494df3f43962fc2c502215e8571477521af0bb7"
+    },
+    {
+      "id": "c465-stick-insect-d",
+      "species": "Stick Insect",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-stick-insect-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-stick-insect-d/request.json",
+        "sha256": "919b9b6d434b486b81fe20baebce8e3431cc5e1b525b7ef6a19f2bfc39bbb3d3",
+        "bytes": 4447
+      },
+      "frozenRequestSha256": "919b9b6d434b486b81fe20baebce8e3431cc5e1b525b7ef6a19f2bfc39bbb3d3"
+    },
+    {
+      "id": "c465-vent-shrimp-a",
+      "species": "Vent Shrimp",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-vent-shrimp-a/request.json",
+        "sha256": "2df1008c0d5593261bf699292deaec4d91879bf7564cb3e9bf6b861cdbe1a90d",
+        "bytes": 4635
+      },
+      "frozenRequestSha256": "2df1008c0d5593261bf699292deaec4d91879bf7564cb3e9bf6b861cdbe1a90d"
+    },
+    {
+      "id": "c465-vent-shrimp-b",
+      "species": "Vent Shrimp",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-vent-shrimp-b/request.json",
+        "sha256": "a2fcda28ea3faabe4c9d89525e4ebd2da933c3e34f9747807373f418d84e4b16",
+        "bytes": 4647
+      },
+      "frozenRequestSha256": "a2fcda28ea3faabe4c9d89525e4ebd2da933c3e34f9747807373f418d84e4b16"
+    },
+    {
+      "id": "c465-vent-shrimp-c",
+      "species": "Vent Shrimp",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-vent-shrimp-c/request.json",
+        "sha256": "2ba9011f9ddd184f2e3f164e556dfa4ec7ad67878d672fa872f912be0397a973",
+        "bytes": 4622
+      },
+      "frozenRequestSha256": "2ba9011f9ddd184f2e3f164e556dfa4ec7ad67878d672fa872f912be0397a973"
+    },
+    {
+      "id": "c465-vent-shrimp-d",
+      "species": "Vent Shrimp",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-vent-shrimp-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-vent-shrimp-d/request.json",
+        "sha256": "570cd9206426ea04467c35c6f6f6ae336f8e74e138bb4d33f2f8d19d3d16b5bc",
+        "bytes": 4633
+      },
+      "frozenRequestSha256": "570cd9206426ea04467c35c6f6f6ae336f8e74e138bb4d33f2f8d19d3d16b5bc"
+    },
+    {
+      "id": "c465-diving-beetle-a",
+      "species": "Diving Beetle",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-diving-beetle-a/request.json",
+        "sha256": "0c3a0d750eac312b6766ef1dea7a76a05546511c650ad27a353ebee0b6cf8dfa",
+        "bytes": 4393
+      },
+      "frozenRequestSha256": "0c3a0d750eac312b6766ef1dea7a76a05546511c650ad27a353ebee0b6cf8dfa"
+    },
+    {
+      "id": "c465-diving-beetle-b",
+      "species": "Diving Beetle",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-diving-beetle-b/request.json",
+        "sha256": "f97467d8af800789e96e1ad71d18ed0860ae27e8a2b5fe74662ffacd1f204128",
+        "bytes": 4384
+      },
+      "frozenRequestSha256": "f97467d8af800789e96e1ad71d18ed0860ae27e8a2b5fe74662ffacd1f204128"
+    },
+    {
+      "id": "c465-diving-beetle-c",
+      "species": "Diving Beetle",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-diving-beetle-c/request.json",
+        "sha256": "819fbe5a79146ecadf5d958a6db895a5f94aaae57efb5cd9fca7c361ba86adf5",
+        "bytes": 4387
+      },
+      "frozenRequestSha256": "819fbe5a79146ecadf5d958a6db895a5f94aaae57efb5cd9fca7c361ba86adf5"
+    },
+    {
+      "id": "c465-diving-beetle-d",
+      "species": "Diving Beetle",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-diving-beetle-d/request.json",
+        "sha256": "2eb0418afbf21daabf68df633e92a48ab39031a7f05ac8f4509310861afc937d",
+        "bytes": 4394
+      },
+      "frozenRequestSha256": "2eb0418afbf21daabf68df633e92a48ab39031a7f05ac8f4509310861afc937d"
+    },
+    {
+      "id": "c465-rattlesnake-a",
+      "species": "Rattlesnake",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-rattlesnake-a/request.json",
+        "sha256": "b430752a4a6be861edebcfa3e7abc23f54ea75b0523c507dc824fca77f1c054b",
+        "bytes": 4572
+      },
+      "frozenRequestSha256": "b430752a4a6be861edebcfa3e7abc23f54ea75b0523c507dc824fca77f1c054b"
+    },
+    {
+      "id": "c465-rattlesnake-b",
+      "species": "Rattlesnake",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-rattlesnake-b/request.json",
+        "sha256": "40d94f8a7e17841896a402090dbdc3f59392a2e79078db0721d508559bbddbb0",
+        "bytes": 4574
+      },
+      "frozenRequestSha256": "40d94f8a7e17841896a402090dbdc3f59392a2e79078db0721d508559bbddbb0"
+    },
+    {
+      "id": "c465-rattlesnake-c",
+      "species": "Rattlesnake",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-rattlesnake-c/request.json",
+        "sha256": "309dd3808ca6821a68abdbe91e01fbfb5e5179ef914c325a76cfc67a631ac977",
+        "bytes": 4608
+      },
+      "frozenRequestSha256": "309dd3808ca6821a68abdbe91e01fbfb5e5179ef914c325a76cfc67a631ac977"
+    },
+    {
+      "id": "c465-rattlesnake-d",
+      "species": "Rattlesnake",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-rattlesnake-d/request.json",
+        "sha256": "386f44105ddfc7c03d4dfb7a2f54e5be709baedd131ca66c48cd738a3d876056",
+        "bytes": 4577
+      },
+      "frozenRequestSha256": "386f44105ddfc7c03d4dfb7a2f54e5be709baedd131ca66c48cd738a3d876056"
+    },
+    {
+      "id": "c465-gibbon-a",
+      "species": "Gibbon",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gibbon-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gibbon-a/request.json",
+        "sha256": "cfd5becf83e6f29446294b3b0c6e3090946c2daf8f57dca3840c4afeb4027269",
+        "bytes": 4720
+      },
+      "frozenRequestSha256": "cfd5becf83e6f29446294b3b0c6e3090946c2daf8f57dca3840c4afeb4027269"
+    },
+    {
+      "id": "c465-gibbon-b",
+      "species": "Gibbon",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gibbon-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gibbon-b/request.json",
+        "sha256": "e43ec3c48818c79e6e4ef79b86c3a3c6a900ea67769e075814a8be6995d3769a",
+        "bytes": 4720
+      },
+      "frozenRequestSha256": "e43ec3c48818c79e6e4ef79b86c3a3c6a900ea67769e075814a8be6995d3769a"
+    },
+    {
+      "id": "c465-gibbon-c",
+      "species": "Gibbon",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gibbon-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gibbon-c/request.json",
+        "sha256": "6d7d3327181b8c5319cd2bafecc0ebfdaf699ce28c60e0797115c1cc8f687c04",
+        "bytes": 4734
+      },
+      "frozenRequestSha256": "6d7d3327181b8c5319cd2bafecc0ebfdaf699ce28c60e0797115c1cc8f687c04"
+    },
+    {
+      "id": "c465-gibbon-d",
+      "species": "Gibbon",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-gibbon-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-gibbon-d/request.json",
+        "sha256": "0efae5df834e1d09230c4f6c751885a5731d6ed0321bc6348b15baeb8b989892",
+        "bytes": 4731
+      },
+      "frozenRequestSha256": "0efae5df834e1d09230c4f6c751885a5731d6ed0321bc6348b15baeb8b989892"
+    },
+    {
+      "id": "c465-kangaroo-a",
+      "species": "Kangaroo",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-a",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-kangaroo-a/request.json",
+        "sha256": "c22280563803fadc7c87743923d07ea52e9bcbd15589c0af87de3ebd5a47d067",
+        "bytes": 4972
+      },
+      "frozenRequestSha256": "c22280563803fadc7c87743923d07ea52e9bcbd15589c0af87de3ebd5a47d067"
+    },
+    {
+      "id": "c465-kangaroo-b",
+      "species": "Kangaroo",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-b",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-kangaroo-b/request.json",
+        "sha256": "0912f5e4ae81db7fdeda15f2b1275e2929b21d2988cee4cecc9d30d4f1602513",
+        "bytes": 4977
+      },
+      "frozenRequestSha256": "0912f5e4ae81db7fdeda15f2b1275e2929b21d2988cee4cecc9d30d4f1602513"
+    },
+    {
+      "id": "c465-kangaroo-c",
+      "species": "Kangaroo",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-c",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-kangaroo-c/request.json",
+        "sha256": "bf5ab5b50902ecdfc8a357fbc1fa16af5b8ddeb1436b40526c92cd157237fb5b",
+        "bytes": 4975
+      },
+      "frozenRequestSha256": "bf5ab5b50902ecdfc8a357fbc1fa16af5b8ddeb1436b40526c92cd157237fb5b"
+    },
+    {
+      "id": "c465-kangaroo-d",
+      "species": "Kangaroo",
+      "packet": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-d",
+      "request": {
+        "path": "audits/C465_CODEX_20261018/w3-source/composition-r02/c465-kangaroo-d/request.json",
+        "sha256": "0f99c887e9bbff7868bc15b0d4b17ef076a418c2cc6add23a725f1bd89af2200",
+        "bytes": 4965
+      },
+      "frozenRequestSha256": "0f99c887e9bbff7868bc15b0d4b17ef076a418c2cc6add23a725f1bd89af2200"
+    }
+  ]
+}

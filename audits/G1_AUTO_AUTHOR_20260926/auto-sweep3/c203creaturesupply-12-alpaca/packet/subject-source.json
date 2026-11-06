@@ -1,0 +1,76 @@
+{
+  "name": "Alpaca",
+  "family": "quadruped",
+  "species": {
+    "name": "Alpaca",
+    "aspect": 1.1,
+    "headFrac": 0.17,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "dense woolly fleece covering the whole body",
+      "blunt short face under a topknot fringe",
+      "short straight spear-shaped ears"
+    ]
+  },
+  "genome": {
+    "seed": 4125011888,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 4,
+    "body": 11,
+    "loco": 8,
+    "trait": 21,
+    "size": 1,
+    "diet": 5,
+    "head": 7,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 13,
+    "detail": 1,
+    "accent": 15,
+    "temper": 6,
+    "sense": 2,
+    "repro": 7,
+    "life": 3,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Alpaca"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Alpaca\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"4125011888\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 552,
+  "profile": {
+    "id": "hoofed-unhorned",
+    "names": [
+      "Zebra",
+      "Wild Horse",
+      "Wild Ass",
+      "Camel",
+      "Wild Pony",
+      "Dromedary Camel",
+      "Bactrian Camel",
+      "Horse",
+      "Donkey",
+      "Llama",
+      "Alpaca",
+      "Okapi"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": "No generic claw; horn use not inferred."
+  }
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Remora",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f5e631ef6fbb45cf77ef030cb98058993b3a87687d240c73a54080fb113805be"
+}

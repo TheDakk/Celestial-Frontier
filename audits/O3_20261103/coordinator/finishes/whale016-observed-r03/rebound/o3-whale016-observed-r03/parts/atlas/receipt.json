@@ -1,0 +1,92 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "o3-whale-observed-r03",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "4dc4cf0be6abe25da201b82942fa46008f9c4fc72b71de6b288352034943d778",
+    "pngSha256": "a3e1ca34a274a7b9181ab71f41b54259e41a7ee19a5750fb8be2352255b27ac8"
+  },
+  "parts": [
+    {
+      "name": "actual-axial-body-spine1.png",
+      "sha256": "6555516ef36d044b53ece87473552b19cc0bee624af93a36c3c788399ae7a18a"
+    },
+    {
+      "name": "actual-axial-body-spine2.png",
+      "sha256": "8a4fd55295f5abc3ed0459ab18d928c937ac4cba3c77218229372fa1a9353680"
+    },
+    {
+      "name": "actual-axial-body-spine3.png",
+      "sha256": "082fd3433d0dbeb7814c83fd6a427aa2e90a2629dd53e87af10337ace4716d74"
+    },
+    {
+      "name": "actual-axial-body-spine4.png",
+      "sha256": "b6050d274e044956de7b6d95a43d42420c21fc6bb5dad25e5ece9ace0bd0f3ee"
+    },
+    {
+      "name": "actual-axial-body-spine5.png",
+      "sha256": "7d84c356c91399af150010f752d8b2381a09124fd6bcf308936bc6b8259890b4"
+    },
+    {
+      "name": "actual-eye-upper-head.png",
+      "sha256": "46c748dd8ce7ce0ca9917f50a915b6dd1b3e92de6563f77778190f5774d1ff93"
+    },
+    {
+      "name": "actual-pleated-lower-head-jaw.png",
+      "sha256": "e1658bc5d4eb0be83e48e250e75dd544ff44580fe33af860ed384f96656a2515"
+    },
+    {
+      "name": "actual-small-dorsal.png",
+      "sha256": "7a42a399ab269afbba08315ae3e640f1bee03db041c8d7c89c229d62109e5f86"
+    },
+    {
+      "name": "source-body-root-patch.png",
+      "sha256": "502ac504b75e45cc0fc529047a17f6db1220480530caf621ab58edfed39c5922"
+    },
+    {
+      "name": "whole-horizontal-notched-flukes.png",
+      "sha256": "925f54fb5c4716e77ef63358d05a9ec3fe841c3b08888664db82e6f6d8bfdf91"
+    },
+    {
+      "name": "whole-long-near-pectoral.png",
+      "sha256": "fa64e87fa24e1eefb145e2a2943ffcfcc1af264bb5e6fc5d511ded3cd01571cf"
+    },
+    {
+      "name": "whole-narrow-far-pectoral.png",
+      "sha256": "e877547eb717879fdd61fce415ae91ee4807e9d493dd4967dda1b99938793f6f"
+    },
+    {
+      "name": "whole-source-body-remainder.png",
+      "sha256": "0a265e01405275e0f075e9a97eac34aa6dfc37afd868a06ee22f0d3db5114f27"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1",
+  "sourceEdgeGutters": {
+    "changedTexels": 4093,
+    "correctedRgbaSha256": "788cbd8a1d2f6c4ec1122c0beff2a9ecbcbf2448ca51c9f8d1e1fda5ae49042a",
+    "innerFramesUnchanged": true,
+    "packedPngSha256": "de95aff6b781057710adaca5acd5c26d6db5f831cdbf9eb941f3dfe3e324365d",
+    "packedRgbaSha256": "b725efec19f299bf2e4b271480f6a6bbb68932e66e376b05271aaa275cfb76ff",
+    "ringTexels": 5378,
+    "schema": "cf.atlas-source-edge-gutters/v1"
+  }
+}

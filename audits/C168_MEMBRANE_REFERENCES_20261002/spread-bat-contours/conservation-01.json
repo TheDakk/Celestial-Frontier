@@ -1,0 +1,159 @@
+{
+  "schema": "cf.c168-reference-conservation/v1",
+  "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+  "authoringSha256": "b637b3646b288efe7f4f49096c1ec1e364d91be8678e4a06fed48046e2b8d253",
+  "recordRecipeHash": "c4fd5091d6d027275b44fe33dbc4d5c4720bfa75b258052f27efeac2be4a18cd",
+  "keyedRgbaSha256": "f926edb7417c1e521523f8e665fddb4e917758be6497c265ffbfefc02b4c3311",
+  "ownershipSha256": "84b1d676a42965d05ed1232aca6babb61fa67ab5d6e557a8628349d327ce5242",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "structural remainder control rejected at unchanged 5% cap"
+  ],
+  "islandCap": 0.05,
+  "islandOutcome": {
+    "status": "PASS",
+    "remainderPixels": 2032,
+    "movablePixels": 215,
+    "islands": [
+      {
+        "pixels": 6,
+        "to": 11,
+        "border": {
+          "11": 11
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 11,
+        "border": {
+          "11": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 11,
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 23,
+        "to": 10,
+        "border": {
+          "10": 11
+        }
+      },
+      {
+        "pixels": 3,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 2,
+        "to": 11,
+        "border": {
+          "11": 3,
+          "12": 3
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 11,
+        "border": {
+          "11": 3,
+          "12": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 11,
+        "border": {
+          "11": 4,
+          "12": 4
+        }
+      },
+      {
+        "pixels": 24,
+        "to": 11,
+        "border": {
+          "11": 23,
+          "12": 23
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 56,
+        "to": 12,
+        "border": {
+          "6": 7,
+          "12": 17
+        }
+      },
+      {
+        "pixels": 21,
+        "to": 12,
+        "border": {
+          "12": 19,
+          "13": 17,
+          "21": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 15,
+        "border": {
+          "15": 1
+        }
+      },
+      {
+        "pixels": 38,
+        "to": 18,
+        "border": {
+          "4": 9,
+          "18": 17,
+          "21": 14
+        }
+      },
+      {
+        "pixels": 27,
+        "to": 14,
+        "border": {
+          "14": 26
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 2,
+        "border": {
+          "2": 1
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 18,
+        "border": {
+          "3": 3,
+          "18": 4
+        }
+      }
+    ]
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Termite",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c54-24-termite/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "99aaa47a3055f958b27bb3d50b1b0edaf2c939d687c28e7b9e9311c731720a33"
+}

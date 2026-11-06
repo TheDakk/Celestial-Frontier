@@ -1,0 +1,34 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > reports only actual monotonic stage/step work and leaves ready/original retention to its caller
+AssertionError: expected [ …(5) ] to deeply equal [ …(4) ]
+
+- Expected
++ Received
+
+@@ -1,7 +1,13 @@
+  [
+    [
++     "Drawing the landfall",
++     2,
++     7,
++     null,
++   ],
++   [
+      "Drawing 1 of 4",
+      3,
+      7,
+      null,
+    ],
+
+ ❯ tests/local-ai-runtime.test.ts:161:82
+    159|     const f = fixture(); await f.run();
+    160|     const drawing = f.progress.filter(row => row.phase.startsWith('Dra…
+    161|     expect(drawing.map(row => [row.phase, row.completed, row.total, ro…
+       |                                                                                  ^
+    162|       ['Drawing 1 of 4', 3, 7, null], ['Drawing 2 of 4', 4, 7, 200], […
+    163|     ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "crab",
+    "file": "crab.json",
+    "sha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4",
+    "recipeHash": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "coconut-crab",
+    "file": "coconut-crab.json",
+    "sha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef",
+    "recipeHash": "e73140997301d696a49373f0f5b2525468bb5d0abe337be566fb04e2e84a7e04",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "freshwater-crab",
+    "file": "freshwater-crab.json",
+    "sha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202",
+    "recipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "mud-crab",
+    "file": "mud-crab.json",
+    "sha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408",
+    "recipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "vent-crab",
+    "file": "vent-crab.json",
+    "sha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c",
+    "recipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "persimmon",
+    "file": "persimmon.json",
+    "sha256": "a7523b8214c525af3e076a1b6f915ca13b5de499ca6b6275a95970a426337c44",
+    "recipeHash": "e07677101fe8d009ae67d29b0dd6aceae4190b3185672d23c93d7514bf6af50a",
+    "source": "audits/ANATOMY_COMPLETION_20260917/persimmon-04/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "cranberry",
+    "file": "cranberry.json",
+    "sha256": "967f5f33289a14777853b1e6b4947c89089088d56a0f2586bcce541b946202c3",
+    "recipeHash": "5ea4e622886089ac81f8140f2509c80f607743d0a8c29b7ddf599091368c350a",
+    "source": "audits/ANATOMY_COMPLETION_20260917/cranberry-07/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  },
+  {
+    "id": "devils-club",
+    "file": "devils-club.json",
+    "sha256": "ad5d507478eac71228f3178f8c8f01ddcad197c809f1e29b20e8f2702a1e92d9",
+    "recipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+    "source": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/record.json",
+    "transformations": "none; mirrored geometry is an explicit detached test projection"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "scope": "Unchanged40 scored baseline packets (44pilot,4pattern exclusions) plus43 new-source scores and seven bounded remainder repairs. Diagnostic aggregate; no visual or Claude admission claim.",
+  "baselinePilot": 44,
+  "baselineScored": 40,
+  "baselineStaticPassSpecies": 2,
+  "afterStaticPassSpecies": 8,
+  "before": [
+    "Gorilla",
+    "Monkey"
+  ],
+  "after": [
+    "Boa",
+    "Gibbon",
+    "Gorilla",
+    "Monkey",
+    "Mountain Viper",
+    "Orangutan",
+    "Rattlesnake",
+    "Snake"
+  ],
+  "gained": [
+    "Boa",
+    "Gibbon",
+    "Mountain Viper",
+    "Orangutan",
+    "Rattlesnake",
+    "Snake"
+  ],
+  "lost": [],
+  "repaintCandidates": 43,
+  "repaintedSpecies": 28,
+  "firstCandidates": 28,
+  "secondCandidates": 15,
+  "compilerBlocked": [
+    "Fiddler Crab"
+  ],
+  "newSourceEligibleStaticPassSpecies": [
+    "Boa",
+    "Mountain Viper",
+    "Rattlesnake",
+    "Gibbon",
+    "Snake"
+  ],
+  "repairedStaticRedRecovered": [
+    "Orangutan"
+  ],
+  "classRepairRed": [
+    "Camel Spider",
+    "Spider Monkey",
+    "Mandrill"
+  ],
+  "referenceBlocked": [
+    "Scorpion",
+    "Clam",
+    "Giant Clam",
+    "Oyster",
+    "Razor Clam",
+    "Scallop",
+    "Coconut Crab",
+    "Freshwater Crab",
+    "Mud Crab",
+    "Vent Crab"
+  ],
+  "decision": "Use up-to-three first-round authority: one candidate for missing-reference inventories; two for remaining source classes. Persistent refusals and source holds remain due for explicit final round. Ignored realms addendum has no effect.",
+  "controls": "Rulers, reference pool, source ownership, limits and runtime unchanged. Retry-prompt bookkeeping changed only;3/3 output controls and rootvalidatePASS."
+}

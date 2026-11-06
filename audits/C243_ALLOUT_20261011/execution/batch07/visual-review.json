@@ -1,0 +1,119 @@
+{
+  "status": "COMPLETE",
+  "scope": "Own full-size finished-film review; admission remains Claude. Gold hit discs and large blue-white slash effects are battle FX.",
+  "rows": [
+    {
+      "name": "Abalone",
+      "id": "c243b07r1c1-01-abalone",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Continuous shell and muscular foot; tentacles and fringe stay attached in all five frames.",
+      "qa": ""
+    },
+    {
+      "name": "Limpet",
+      "id": "c243b07r1c1-05-limpet",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Continuous conical shell/foot; no detached appendage or transparent shell break in all five frames.",
+      "qa": "Dark undershell line reads as source shading."
+    },
+    {
+      "name": "Buffalo",
+      "id": "c192creaturesupply-24-buffalo",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Forelegs and horns remain attached, no floating horn or head/foreleg fragments seen in all five frames.",
+      "qa": "Defeated animal remains on its feet in late frames; retain faint-readability diagnostic for Claude."
+    },
+    {
+      "name": "Water Buffalo",
+      "id": "c203creaturesupply-01-water-buffalo",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Horns and forelegs remain attached; no duplicated horn, detached knee or shell-like body break in all five frames.",
+      "qa": "Defeated animal remains on its feet in late frames; retain faint-readability diagnostic for Claude."
+    },
+    {
+      "name": "Goat",
+      "id": "c202creaturesupply-21-goat",
+      "status": "HOLD",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Small pale grey rectangular/triangular discontinuity in left upper flank at turn3-idle50/90; source/ownership seam needs repair.",
+      "qa": "Defeated right goat remains standing."
+    },
+    {
+      "name": "Okapi",
+      "id": "c203creaturesupplyb-01-okapi",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "No detached head/fringe piece or foreleg break seen in all five finished frames; neck contour continuous.",
+      "qa": "Defeated right animal remains planted; faint readability diagnostic retained."
+    },
+    {
+      "name": "Takin",
+      "id": "g2c110-20-takin",
+      "status": "HOLD",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Visible pink/magenta short fringe remnants below beard/chin on both creatures persist across reaction and late frames.",
+      "qa": "Triage count pending; visible fine-structure tint is independently held."
+    },
+    {
+      "name": "Forest Elephant",
+      "id": "g2c114-01-forest-elephant",
+      "status": "HOLD",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Pink/magenta fringe remains along tusk tips/edges in reaction and late frames; triage flags11pixels.",
+      "qa": "Trunk/ear/forelegs remain attached."
+    },
+    {
+      "name": "Bison",
+      "id": "g2c59-03-bison",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Shoulder hump, head, beard and forelegs remain connected across all five frames; no back-step gap or detached horn observed.",
+      "qa": "Defeated animal remains planted; faint readability diagnostic retained."
+    },
+    {
+      "name": "Dog",
+      "id": "g2referencesc62-06-dog",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Muzzle, chest, all limbs and complete curved furry tail stay connected in all five frames; no detached fur slab or visible key fringe observed.",
+      "qa": "Defeated animal remains planted; faint readability diagnostic retained."
+    },
+    {
+      "name": "Kinkajou",
+      "id": "c213originals-09-kinkajou",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Head/neck seam stays closed and no detached ear/head fringe or tail piece seen across all five frames.",
+      "qa": "Defeated animal remains planted; faint readability diagnostic retained."
+    },
+    {
+      "name": "Camel",
+      "id": "c243b01r1c2-15-camel",
+      "status": "HOLD",
+      "framesReviewed": 5,
+      "fullSize": true,
+      "observation": "Jaw/head fringe seam repaired, but the source has two prominent humps against canonical representative-dromedary note; source-identity HOLD.",
+      "qa": "C357 correction to C356 readiness; fresh one-hump round2 original is separate and not yet admitted."
+    }
+  ],
+  "framesReviewed": 60,
+  "ready": 8,
+  "hold": 4,
+  "triage": "triage/triage.json",
+  "correction": "C357 Camel source identity"
+}

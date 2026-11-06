@@ -1,0 +1,81 @@
+{
+  "name": "Cat",
+  "family": "quadruped",
+  "species": {
+    "name": "Cat",
+    "aspect": 2.2,
+    "headFrac": 0.22,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "triangular upright ears on a round short-muzzled head",
+      "long expressive tail",
+      "vertical slit pupils and long whiskers"
+    ]
+  },
+  "genome": {
+    "seed": 983375020,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 7,
+    "body": 14,
+    "loco": 11,
+    "trait": 14,
+    "size": 5,
+    "diet": 5,
+    "head": 1,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 13,
+    "detail": 5,
+    "accent": 15,
+    "temper": 4,
+    "sense": 3,
+    "repro": 7,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cat\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"983375020\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 522,
+  "profile": {
+    "id": "felid",
+    "names": [
+      "Jaguar",
+      "Leopard",
+      "Tiger",
+      "Clouded Leopard",
+      "Ocelot",
+      "Lion",
+      "Cougar",
+      "Snow Leopard",
+      "Bobcat",
+      "Lynx",
+      "Caracal",
+      "Fishing Cat",
+      "Cheetah",
+      "Serval",
+      "Sand Cat",
+      "Wildcat",
+      "Cat"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

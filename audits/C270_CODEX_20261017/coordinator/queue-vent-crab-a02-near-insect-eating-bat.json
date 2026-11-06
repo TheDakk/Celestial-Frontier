@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "vent-crab-a02-near",
+    "plan": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/plan.json",
+    "exitCode": 0,
+    "output": "270_CODEX_20261017/w1-source/vent-crab-a02-near/plan.json\"], \"startedUnix\": 1792286449.1124759, \"beforeGiB\": 81.53105163574219, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 22.051, \"lowestGiB\": 81.44367599487305, \"afterGiB\": 81.50153732299805}\n"
+  },
+  {
+    "slug": "hoatzin",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json",
+    "exitCode": 0,
+    "output": "s/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json\"], \"startedUnix\": 1792286471.202888, \"beforeGiB\": 81.50152969360352, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 20.07, \"lowestGiB\": 81.09087753295898, \"afterGiB\": 81.46663665771484}\n"
+  },
+  {
+    "slug": "kookaburra",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/plan.json",
+    "exitCode": 0,
+    "output": "0_CODEX_20261017/w2-checkpoint/plans/kookaburra/plan.json\"], \"startedUnix\": 1792286491.3044171, \"beforeGiB\": 81.46662521362305, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 20.054, \"lowestGiB\": 81.06511306762695, \"afterGiB\": 81.43251419067383}\n"
+  },
+  {
+    "slug": "pheasant",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/plan.json",
+    "exitCode": 0,
+    "output": "270_CODEX_20261017/w2-checkpoint/plans/pheasant/plan.json\"], \"startedUnix\": 1792286511.4053252, \"beforeGiB\": 81.43250274658203, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 20.074, \"lowestGiB\": 81.01740264892578, \"afterGiB\": 81.39770126342773}\n"
+  },
+  {
+    "slug": "whale",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/plan.json",
+    "exitCode": 0,
+    "output": "dits/C270_CODEX_20261017/w2-checkpoint/plans/whale/plan.json\"], \"startedUnix\": 1792286531.549758, \"beforeGiB\": 81.3976936340332, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.06, \"lowestGiB\": 80.99538803100586, \"afterGiB\": 81.37101364135742}\n"
+  },
+  {
+    "slug": "narwhal",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/plan.json",
+    "exitCode": 0,
+    "output": "s/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/plan.json\"], \"startedUnix\": 1792286549.738901, \"beforeGiB\": 81.37100219726562, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.081, \"lowestGiB\": 80.9657974243164, \"afterGiB\": 81.34455108642578}\n"
+  },
+  {
+    "slug": "manta-ray",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/plan.json",
+    "exitCode": 0,
+    "output": "270_CODEX_20261017/w2-checkpoint/plans/manta-ray/plan.json\"], \"startedUnix\": 1792286567.930411, \"beforeGiB\": 81.34453201293945, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.049, \"lowestGiB\": 80.94468688964844, \"afterGiB\": 81.32154083251953}\n"
+  },
+  {
+    "slug": "ray",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/plan.json",
+    "exitCode": 0,
+    "output": "dits/C270_CODEX_20261017/w2-checkpoint/plans/ray/plan.json\"], \"startedUnix\": 1792286586.026549, \"beforeGiB\": 81.32152557373047, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.037, \"lowestGiB\": 80.91179275512695, \"afterGiB\": 81.28530883789062}\n"
+  },
+  {
+    "slug": "stingray",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/plan.json",
+    "exitCode": 0,
+    "output": "C270_CODEX_20261017/w2-checkpoint/plans/stingray/plan.json\"], \"startedUnix\": 1792286604.093175, \"beforeGiB\": 81.28520965576172, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.073, \"lowestGiB\": 80.86508178710938, \"afterGiB\": 81.21332550048828}\n"
+  },
+  {
+    "slug": "insect-eating-bat",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/plan.json",
+    "exitCode": 0,
+    "output": "X_20261017/w2-checkpoint/plans/insect-eating-bat/plan.json\"], \"startedUnix\": 1792286622.226994, \"beforeGiB\": 81.21331787109375, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 18.054, \"lowestGiB\": 80.78926086425781, \"afterGiB\": 81.16057968139648}\n"
+  }
+]

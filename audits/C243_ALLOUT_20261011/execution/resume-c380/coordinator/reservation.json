@@ -1,0 +1,15 @@
+{
+  "status": "ACTIVE",
+  "authority": "User: Can you resume developement? following verified disk recovery; one fresh bounded finish attempt, old RED retained.",
+  "priorStoppedAttempt": "audits/C243_ALLOUT_20261011/execution/parallel-c262/coordinator/finish-dolphin01.json",
+  "unchangedCheckpoint": "parallel-c262/w2-checkpoint/visual-review.json: River Dolphin CLEAN;5frame/crop hashes reverified",
+  "preflightFreeGiB": 88.91399765014648,
+  "minimumPreInferenceGiB": 42,
+  "hardFloorGiB": 30,
+  "peer": "C263 CPU-only ACTIVE explicitly nonblocking; no qualified packets before TERMINAL",
+  "startup": "Reuse uninterrupted session C374 startup PASS;Node26.12.0/ImageMagick7.1.2-34 unchanged",
+  "sourceMerge": "2863e14cf00588b412ccd0570be6db060ca41ed9",
+  "onlyCoordinatorOwnsHeavyAndGitAndMailbox": true,
+  "noHosted": true,
+  "allPairs": "HOLD"
+}

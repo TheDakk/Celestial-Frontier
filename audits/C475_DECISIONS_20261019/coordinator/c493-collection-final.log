@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/collect-c493-frozen.py", line 54, in <module>
+    assert p.is_file() and not p.is_symlink() and 'node_modules' not in p.parts
+AssertionError

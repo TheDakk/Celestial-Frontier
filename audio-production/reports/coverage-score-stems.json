@@ -1,0 +1,295 @@
+{
+  "schema": "cf.audio-music-stems/v1",
+  "sourceProjectSha256": "cfadfff1639beb9446b297ea80474002346be52464d0f0d43ed69b209ea3d96c",
+  "sourceUnchanged": true,
+  "tracks": [
+    {
+      "part": "score-bass",
+      "projectSha256": "f27f946c5affcef46f5ec65bff63c060815b3870811b7f23c807e8ee37068083",
+      "timelineSha256": "63fd4e5c8296d7a5afc8e8c00d03c571bce50a38488e9664b4d675d7171a6bee",
+      "muteScope": "other instrument tracks only",
+      "entries": [
+        {
+          "id": "v3.music.menu",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.menu.score-bass.wav",
+          "sha256": "30f63516d86c45e89a6998c0c6188cf23f371ab41861a97cbe6cf474cd9e2f76",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.calm",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.calm.score-bass.wav",
+          "sha256": "c83180400ec6cfcd2739bd411b11b7f1fbb62f7281966cb7c4e7cae6a393e234",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.wonder",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.wonder.score-bass.wav",
+          "sha256": "3ab2d9b59f9497c72e5b600e5163ebe07ac1e31b2f83f7ffc0d2cadc7b421d7b",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.tension",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.tension.score-bass.wav",
+          "sha256": "f8e30bc01795a2c95531f24f9e825d5f1ba671c882dccb1c22254c3f3d2656b5",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.battle",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.battle.score-bass.wav",
+          "sha256": "a0495d1ed80ee64c241ce242b82482ccc291749111d2bdaa5c39844b1140abc1",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.major-battle",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.major-battle.score-bass.wav",
+          "sha256": "0717da833a9dbbb9d323a92a7d9032f000476b74ea8ef66d29cec6feae9c6f1e",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.victory-discovery",
+          "part": "score-bass",
+          "path": "reaper/coverage-score-stems/v3.music.victory-discovery.score-bass.wav",
+          "sha256": "5de82414485a9526fe321716afccd606ad013696b521b41d2f4c78dfb3880304",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "part": "score-harmony",
+      "projectSha256": "bee6f386f604697798e4938c523d796baca6f6f3587c0872c8fb5f46ba4e90e0",
+      "timelineSha256": "95b42ef5e7230db0cccb326ac33e019f48f9c95d50a295ccf7e8e83d51562638",
+      "muteScope": "other instrument tracks only",
+      "entries": [
+        {
+          "id": "v3.music.menu",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.menu.score-harmony.wav",
+          "sha256": "124950f9b607d390c2b7a2b314be3b34e96dbb1b14fef58f99c1c41a9b209fc3",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.calm",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.calm.score-harmony.wav",
+          "sha256": "7b2d11307fdc5403402097975547c75e2cda3315ae046ff8bfb08ab67ad0bfa4",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.wonder",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.wonder.score-harmony.wav",
+          "sha256": "fc68c5f28f25f67cdab982eb2675bb7a9bf75af5bbeeea4e945a5c0a987fea5a",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.tension",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.tension.score-harmony.wav",
+          "sha256": "22032cb7a5d2e98d0e2ea8df1acd6424d884612e208a43bfff444ea9d3c8df06",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.battle",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.battle.score-harmony.wav",
+          "sha256": "3e8692d317c15ac1f1579030e39f80d32e66cec27c51c698d7c78928d0c1d396",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.major-battle",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.major-battle.score-harmony.wav",
+          "sha256": "8bd1082914d1a41175237a822c3b77575604622462f4562c2865545a716601e5",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.victory-discovery",
+          "part": "score-harmony",
+          "path": "reaper/coverage-score-stems/v3.music.victory-discovery.score-harmony.wav",
+          "sha256": "2ad96aaba1bf4b957a827dc889da387cf4c689f97b32744bcbbbed03b45363f7",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "part": "score-melody",
+      "projectSha256": "c0ece6f46aafe65c59e2307831183e7306f1da050e4e2bf9f3cb000af2d978e6",
+      "timelineSha256": "0baf0b1e56943476327d209119b481a4a8442ce6ff44d89fe5b7c0291350467a",
+      "muteScope": "other instrument tracks only",
+      "entries": [
+        {
+          "id": "v3.music.menu",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.menu.score-melody.wav",
+          "sha256": "6e7decfdf5612c5e5e846df63f66d65ca4eb14ec2aa1680153e5604aa37a20a2",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.calm",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.calm.score-melody.wav",
+          "sha256": "4d32be73edb1b012f382207103168b1cc6ed0c0dd11e1559b17046465c99b2ed",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.wonder",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.wonder.score-melody.wav",
+          "sha256": "60983c02dbc4f6e60b736c7128f75b226e6bc197eef2e804cee1bba28197e317",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.tension",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.tension.score-melody.wav",
+          "sha256": "1693d3184880987d316ddf1777c77380c3e1c080ce4369c80a28e2deefdf4f88",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.battle",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.battle.score-melody.wav",
+          "sha256": "75b45c4ce67c4777e7938322cb4ee60152898860536a44a1229ef0136f528928",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.major-battle",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.major-battle.score-melody.wav",
+          "sha256": "7d35434572b3266b5c986a003ddec4d439e37e288685325e03e5fc395f799230",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.victory-discovery",
+          "part": "score-melody",
+          "path": "reaper/coverage-score-stems/v3.music.victory-discovery.score-melody.wav",
+          "sha256": "e47d9fde651190a9f847766f341866074ce113ec03ff32c6c7cc94847fc344f9",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "part": "score-rhythm",
+      "projectSha256": "9da72613a18262c7b66ec7e479c7cbbf3683b61a6ac92cc5b13a4d6e4d133f47",
+      "timelineSha256": "5dd091910a7aa5a6af1026c24a7c03544e65cd8bef655d08f3f43b58492d3e55",
+      "muteScope": "other instrument tracks only",
+      "entries": [
+        {
+          "id": "v3.music.menu",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.menu.score-rhythm.wav",
+          "sha256": "9f2395f1a17274d571a4fa3d1cde6637b53ee873af6cda2c207d6a9beaf0addd",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.calm",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.calm.score-rhythm.wav",
+          "sha256": "1540ca363cfa1f77b4745fb49031ef85d66d02b902162ac6310a0f3803f4e7d4",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.wonder",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.wonder.score-rhythm.wav",
+          "sha256": "1540ca363cfa1f77b4745fb49031ef85d66d02b902162ac6310a0f3803f4e7d4",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.tension",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.tension.score-rhythm.wav",
+          "sha256": "979d880b31f1bcc861e4dc934fcc8189c9767477e6e2aed061ebf0b686a727f3",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.battle",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.battle.score-rhythm.wav",
+          "sha256": "1f3fa358e9b694de268aafaae2eced29c135b98be3983bbc6f5c005d9dce3dfa",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.major-battle",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.major-battle.score-rhythm.wav",
+          "sha256": "b213ca165ddaf3eb846d21ad03a8b6a560edbba77d54ef47dfc7042cbf2ccd94",
+          "frames": 768000,
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        {
+          "id": "v3.music.victory-discovery",
+          "part": "score-rhythm",
+          "path": "reaper/coverage-score-stems/v3.music.victory-discovery.score-rhythm.wav",
+          "sha256": "b687a33b3bded7d2bc871727124fc88ced5a1485369e4e3ef3e23eb3a9999163",
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2
+        }
+      ]
+    }
+  ],
+  "stems": 28,
+  "sameStartAndFrameLengths": true,
+  "listeningAccepted": false,
+  "loopReview": "pending"
+}

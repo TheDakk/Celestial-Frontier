@@ -1,0 +1,35 @@
+node:internal/modules/esm/resolve:989
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anchored-material-source.mjs' imported from ~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anchored-material-source.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:241:11)
+    at moduleResolve (node:internal/modules/esm/resolve:846:10)
+    at defaultResolve (node:internal/modules/esm/resolve:973:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:752:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:772:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:810:56)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:651:27)
+    at ModuleJobSync.syncLink (node:internal/modules/esm/module_job:328:33)
+    at ModuleJobSync.link (node:internal/modules/esm/module_job:626:17)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:616:26) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anchored-material-source.mjs'
+}
+
+Node.js v26.12.0
+✖ port/v2/tools/creature-animation/anchored-material-source.test.mjs (100.039208ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.570834
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/anchored-material-source.test.mjs:1:1
+✖ port/v2/tools/creature-animation/anchored-material-source.test.mjs (100.039208ms)
+  'test failed'

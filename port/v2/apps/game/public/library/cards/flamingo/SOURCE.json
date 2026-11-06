@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Flamingo",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/c198creaturesupplyc-02-flamingo/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7f85bb10fdaf635dc06e818350617c129e2eb492f694236cddf3bc5303982a59"
+}

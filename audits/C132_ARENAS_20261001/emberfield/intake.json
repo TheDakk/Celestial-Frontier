@@ -1,0 +1,215 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "emberfield",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 6036,
+        "despilledPixels": 27,
+        "unresolvedEdgePixels": 4
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 4,
+        "corrected": [
+          {
+            "index": 707257,
+            "sourceIndex": 712273
+          },
+          {
+            "index": 708929,
+            "sourceIndex": 712273
+          },
+          {
+            "index": 710601,
+            "sourceIndex": 712273
+          },
+          {
+            "index": 710602,
+            "sourceIndex": 712274
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 966616,
+      "visiblePixels": 606736,
+      "firstPaintedY": 337,
+      "firstPaintedYNormalized": 0.35812964930924546,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3970,
+        "despilledPixels": 4,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1371017,
+      "visiblePixels": 202335,
+      "firstPaintedY": 785,
+      "firstPaintedYNormalized": 0.8342189160467588,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "8ff735f503a03f7942eeab22332e199418024748b9682c733d4c4eb0cadc10fc",
+    "seed": 377302800,
+    "systemCardSourceSha256": "751fd9dbbf4431a65b5f2de58e44b1fdba28704be549c293c7c7e0abfe2a2afe",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883",
+          "bytes": 2324713,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883",
+          "bytes": 2324713,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "8959dbe8d55122938dd7b4c52bdeda71d289b273bcc8d5ff71b7986f9900698e",
+          "bytes": 1815996,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "4cb93b2fd53cd16a0f9447f6d6a3585d2adacb4d5578c33fb9e89ec421c2d8b5",
+          "bytes": 2445793,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 966616,
+        "visiblePixels": 606736,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "7cd3110ce547adf1e3e632357b849fd4d1a38cdb3642e2acfc6b40e5a5b833de",
+          "bytes": 1198338,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "64fdcafb8570f4a6da990281b7c1cdb081385adf2d52169e9cf1f095019b87b3",
+          "bytes": 1445453,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1371017,
+        "visiblePixels": 202335,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/emberfield/arena-manifest.json",
+    "sha256": "d2706f1b0d287287ab4bb8745841ce6c3a843817efa4bcad7c5155a3d6976ca4"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

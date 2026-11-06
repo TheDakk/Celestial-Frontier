@@ -1,0 +1,6 @@
+{
+  "firstNextStageCommand": "Rejected before execution; auto-review believed inference still running",
+  "safeResolution": "Fresh stage/result PASS and artifact SHA verified;both locks absent and scoped process check empty;then direct rebind approved and completed,followed by native separately.",
+  "noBypass": true,
+  "productRetry": false
+}

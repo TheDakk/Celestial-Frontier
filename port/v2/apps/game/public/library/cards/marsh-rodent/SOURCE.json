@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Marsh Rodent",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c2-08-marsh-rodent/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "af3402b73f5264f9c1535475add1153e2a204f0c441536b1a0f9eeddc02dc418"
+}

@@ -1,0 +1,144 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c56-11-robin",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5d076e3e2e95ddfcc2fe2046d57f3ab8f1dfeb2d2a1a95f8a0bea65c7840f2ec",
+ "subjectSourceSha256": "6471dd3b51794f5020fc4fb7716ad50541b350d824246e982f866138b1645081",
+ "identity": {
+  "name": "Robin",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Robin\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1321939587\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 1321939587,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0086,
+     "class": "top",
+     "attach": {
+      "x": 328,
+      "y": 64,
+      "relX": 0.81,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0115,
+     "class": "top",
+     "attach": {
+      "x": 370.5,
+      "y": 95.5,
+      "relX": 0.92,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0068,
+     "class": "front",
+     "attach": {
+      "x": 368,
+      "y": 163,
+      "relX": 0.91,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1171,
+     "class": "rear",
+     "attach": {
+      "x": 126.1,
+      "y": 223.9,
+      "relX": 0.28,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0375,
+     "class": "limb-down",
+     "attach": {
+      "x": 208.2,
+      "y": 270.8,
+      "relX": 0.5,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.042,
+     "class": "limb-down",
+     "attach": {
+      "x": 259.5,
+      "y": 273,
+      "relX": 0.63,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

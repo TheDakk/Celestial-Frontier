@@ -1,0 +1,101 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-2e",
+ "files": [
+  {
+   "path": "library/cards/deep-sea-fish/SOURCE.json",
+   "bytes": 330,
+   "sha256": "0c793ead5d8bda11dbbe65911171a01babb94fc4dacbb09fe3eb249c326c0570"
+  },
+  {
+   "path": "library/cards/deep-sea-fish/card/card.json",
+   "bytes": 2939,
+   "sha256": "03359507e826f5aa947d759008516d09c19f34fceeb56aeb242fd50ae23970c6"
+  },
+  {
+   "path": "library/cards/deep-sea-fish/card/labels-512.png",
+   "bytes": 5801,
+   "sha256": "327044319f5343789b909427692d7f5f4b024d59fa8d90b44424218cd4fa6593"
+  },
+  {
+   "path": "library/cards/deep-sea-fish/card/master-512.png",
+   "bytes": 55387,
+   "sha256": "24ca2b97151d9bdb29d1f1c59dedb07328246cebcaaf71820864bb2f745fef6c"
+  },
+  {
+   "path": "library/cards/deep-sea-fish/record.json",
+   "bytes": 5203,
+   "sha256": "fe72bc13b609b2b94a754e6f8e27aef12c435861ce5e384e89e2ed59435131f6"
+  },
+  {
+   "path": "library/cards/raccoon/SOURCE.json",
+   "bytes": 290,
+   "sha256": "ef68a6ad9235ffbeb2beb84639aff9f31905a73c2050af411f7f5fd79ab62286"
+  },
+  {
+   "path": "library/cards/raccoon/card/card.json",
+   "bytes": 5877,
+   "sha256": "6668db59d96c349760153ccf99493185062c9dd689bd25a681faf825d71bcc72"
+  },
+  {
+   "path": "library/cards/raccoon/card/labels-512.png",
+   "bytes": 13182,
+   "sha256": "79061b10f65dfa3d5581d7e09a4138e4e7d688c69f193bd656790082f3469986"
+  },
+  {
+   "path": "library/cards/raccoon/card/master-512.png",
+   "bytes": 223152,
+   "sha256": "820b208da6520b232dba8bf71382d544504e9b941a71f171d1d996af118352a2"
+  },
+  {
+   "path": "library/cards/raccoon/record.json",
+   "bytes": 7526,
+   "sha256": "dd13e0b464fb8fc777a64d16a7e7b7f135f7ffe085d3d7b855797122d2912102"
+  },
+  {
+   "path": "library/cards/whip-snake/SOURCE.json",
+   "bytes": 292,
+   "sha256": "7ecaad4a210fd0f79d1ed85d2129e5e6e84d4f5c11d7757c6ddcaf1ae18b4011"
+  },
+  {
+   "path": "library/cards/whip-snake/card/card.json",
+   "bytes": 2906,
+   "sha256": "c07ed55d73fbd4737fad8f2c888f4f5240e4ce065588f1d1fe3931fa8a00a1c8"
+  },
+  {
+   "path": "library/cards/whip-snake/card/labels-512.png",
+   "bytes": 3156,
+   "sha256": "2a69a91c85228b7e49f48123cfe1eb9f49f38f1cb26f11c84b23a9883d5e578c"
+  },
+  {
+   "path": "library/cards/whip-snake/card/master-512.png",
+   "bytes": 31937,
+   "sha256": "51c2236c428cac136d169e8bd0663a9495278e26ab9213c61baa9424d5008dda"
+  },
+  {
+   "path": "library/cards/whip-snake/record.json",
+   "bytes": 5115,
+   "sha256": "ee3822c68e8e664c31e8ac4e718560b0f6da34b0ab71960c33f53908ff151b60"
+  },
+  {
+   "path": "library/creature-finish-source/c243b01r2c3-05-mole/labels.png",
+   "bytes": 39274,
+   "sha256": "3acd03ddbf6129d49300b9d5435e58692a4171f5df533f786adf7a319eecb0c4"
+  },
+  {
+   "path": "library/creature-finish-source/c243b01r2c3-05-mole/master.png",
+   "bytes": 1404063,
+   "sha256": "2c929f3ffe22d2f4ce6ecaf8f5d9c7c8f2f18c533f05f36f85ea47ba7a0dfaf3"
+  },
+  {
+   "path": "library/creature-finish-source/c56-02-caracal/labels.png",
+   "bytes": 60140,
+   "sha256": "2ab75b270b407c0d79dc7acfdc80ac48a282b2d1e80e7177af4927dc4709f8f8"
+  },
+  {
+   "path": "library/creature-finish-source/c56-02-caracal/master.png",
+   "bytes": 1254692,
+   "sha256": "3be2272dccc1c3ba905d58b84cd8f3a4056a5779633a5d6fb099ac193108ff9d"
+  }
+ ]
+}

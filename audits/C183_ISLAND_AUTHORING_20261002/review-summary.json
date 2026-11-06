@@ -1,0 +1,467 @@
+{
+  "schema": "cf.c183-island-review/v1",
+  "rows": [
+    {
+      "id": "10-grouse",
+      "status": "REVIEW_HELD",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01",
+      "recordRecipeHash": "46946b6dbcfd31dd2223ce5ba99b6059a1876518d457924f7dbb3151ba61e578",
+      "staticRows": 14,
+      "actionSamples": 1694,
+      "sourcePixelChanges": 0,
+      "priorAnatomicalOwnersChanged": 0,
+      "moved": {
+        "head": 998,
+        "neck1": 1205
+      },
+      "controls": 8,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2111 px is 11.7% of the remainder (> 5%): structural, not a sliver"
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "remainderPixels": 15876,
+        "moved": 267,
+        "islands": [
+          {
+            "pixels": 136,
+            "to": 6,
+            "border": {
+              "2": 10,
+              "4": 15,
+              "6": 27
+            }
+          },
+          {
+            "pixels": 3,
+            "to": null,
+            "border": {}
+          },
+          {
+            "pixels": 10,
+            "to": 2,
+            "border": {
+              "2": 7
+            }
+          },
+          {
+            "pixels": 3,
+            "to": 2,
+            "border": {
+              "2": 3
+            }
+          },
+          {
+            "pixels": 3,
+            "to": 2,
+            "border": {
+              "2": 1
+            }
+          },
+          {
+            "pixels": 4,
+            "to": 2,
+            "border": {
+              "2": 5
+            }
+          },
+          {
+            "pixels": 71,
+            "to": 2,
+            "border": {
+              "2": 26
+            }
+          },
+          {
+            "pixels": 25,
+            "to": 2,
+            "border": {
+              "2": 6
+            }
+          },
+          {
+            "pixels": 8,
+            "to": 1,
+            "border": {
+              "1": 2
+            }
+          },
+          {
+            "pixels": 7,
+            "to": 1,
+            "border": {
+              "1": 2
+            }
+          }
+        ]
+      },
+      "publicationSamples": 256,
+      "actualRigParityChecks": 12,
+      "visualHold": "Held-faint head island improves; original wing/tail joins and foot flecks remain, plus mid-faint neck/shoulder opening and pointed posterior edge.",
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    },
+    {
+      "id": "20-hornbill",
+      "status": "REVIEW_HELD",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01",
+      "recordRecipeHash": "8bc43495d3dfdb2cbde250e91201affbeb54b38722a05324fcb85cf44ff26e59",
+      "staticRows": 14,
+      "actionSamples": 1694,
+      "sourcePixelChanges": 0,
+      "priorAnatomicalOwnersChanged": 0,
+      "moved": {
+        "head": 774,
+        "beak": 854,
+        "neck1": 1923,
+        "tailFan": 3337
+      },
+      "controls": 8,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2687 px is 9.6% of the remainder (> 5%): structural, not a sliver"
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "remainderPixels": 21030,
+        "moved": 573,
+        "islands": [
+          {
+            "pixels": 134,
+            "to": 8,
+            "border": {
+              "8": 52
+            }
+          },
+          {
+            "pixels": 365,
+            "to": 9,
+            "border": {
+              "9": 89,
+              "10": 75
+            }
+          },
+          {
+            "pixels": 5,
+            "to": 12,
+            "border": {
+              "12": 6
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 12,
+            "border": {
+              "12": 2
+            }
+          },
+          {
+            "pixels": 5,
+            "to": 4,
+            "border": {
+              "2": 2,
+              "4": 7
+            }
+          },
+          {
+            "pixels": 61,
+            "to": 2,
+            "border": {
+              "2": 8
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 2,
+            "border": {
+              "2": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 2,
+            "border": {
+              "2": 2
+            }
+          }
+        ]
+      },
+      "publicationSamples": 256,
+      "actualRigParityChecks": 12,
+      "visualHold": "Held-faint head island improves; original wing/tail joins and foot flecks remain, plus mid-faint neck/shoulder opening and pointed posterior edge.",
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    },
+    {
+      "id": "21-parrot",
+      "status": "REVIEW_HELD",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01",
+      "recordRecipeHash": "911850b22fbf887ec2741b5f5bfb7c0e70459f5ae5bfdfe929bd1ce56c23e292",
+      "staticRows": 14,
+      "actionSamples": 1694,
+      "sourcePixelChanges": 0,
+      "priorAnatomicalOwnersChanged": 0,
+      "moved": {
+        "head": 719,
+        "beak": 889,
+        "neck1": 1759
+      },
+      "controls": 8,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2291 px is 8.3% of the remainder (> 5%): structural, not a sliver"
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "remainderPixels": 24233,
+        "moved": 852,
+        "islands": [
+          {
+            "pixels": 1,
+            "to": 6,
+            "border": {
+              "6": 2
+            }
+          },
+          {
+            "pixels": 2,
+            "to": 3,
+            "border": {
+              "3": 4
+            }
+          },
+          {
+            "pixels": 282,
+            "to": 15,
+            "border": {
+              "15": 47
+            }
+          },
+          {
+            "pixels": 7,
+            "to": 6,
+            "border": {
+              "6": 4
+            }
+          },
+          {
+            "pixels": 241,
+            "to": 4,
+            "border": {
+              "2": 10,
+              "4": 80
+            }
+          },
+          {
+            "pixels": 170,
+            "to": 15,
+            "border": {
+              "15": 23
+            }
+          },
+          {
+            "pixels": 40,
+            "to": 15,
+            "border": {
+              "15": 14
+            }
+          },
+          {
+            "pixels": 16,
+            "to": 2,
+            "border": {
+              "2": 11
+            }
+          },
+          {
+            "pixels": 42,
+            "to": 2,
+            "border": {
+              "2": 6
+            }
+          },
+          {
+            "pixels": 6,
+            "to": 1,
+            "border": {
+              "1": 10
+            }
+          },
+          {
+            "pixels": 5,
+            "to": 2,
+            "border": {
+              "2": 2
+            }
+          },
+          {
+            "pixels": 39,
+            "to": 2,
+            "border": {
+              "2": 5
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 1,
+            "border": {
+              "1": 1
+            }
+          }
+        ]
+      },
+      "publicationSamples": 256,
+      "actualRigParityChecks": 12,
+      "visualHold": "Held-faint head island improves; original wing/tail joins and foot flecks remain, plus mid-faint neck/shoulder opening and pointed posterior edge.",
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    },
+    {
+      "id": "24-weaverbird",
+      "status": "REVIEW_HELD",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01",
+      "recordRecipeHash": "1f14d80a70ff376f0703c4a8f51ebe70d18660316a12f4352b2279b8b19718a4",
+      "staticRows": 14,
+      "actionSamples": 1694,
+      "sourcePixelChanges": 0,
+      "priorAnatomicalOwnersChanged": 0,
+      "moved": {
+        "head": 641,
+        "neck1": 1425
+      },
+      "controls": 8,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2065 px is 10.0% of the remainder (> 5%): structural, not a sliver"
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "remainderPixels": 18687,
+        "moved": 384,
+        "islands": [
+          {
+            "pixels": 1,
+            "to": 8,
+            "border": {
+              "8": 2,
+              "9": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 8,
+            "border": {
+              "8": 2,
+              "9": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 16,
+            "border": {
+              "16": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 16,
+            "border": {
+              "16": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 16,
+            "border": {
+              "16": 2
+            }
+          },
+          {
+            "pixels": 193,
+            "to": 15,
+            "border": {
+              "15": 26
+            }
+          },
+          {
+            "pixels": 18,
+            "to": 15,
+            "border": {
+              "15": 4
+            }
+          },
+          {
+            "pixels": 4,
+            "to": 15,
+            "border": {
+              "15": 3
+            }
+          },
+          {
+            "pixels": 1,
+            "to": 3,
+            "border": {
+              "3": 2
+            }
+          },
+          {
+            "pixels": 32,
+            "to": 3,
+            "border": {
+              "1": 5,
+              "3": 17
+            }
+          },
+          {
+            "pixels": 34,
+            "to": 2,
+            "border": {
+              "2": 7
+            }
+          },
+          {
+            "pixels": 8,
+            "to": 1,
+            "border": {
+              "1": 2
+            }
+          },
+          {
+            "pixels": 2,
+            "to": null,
+            "border": {}
+          },
+          {
+            "pixels": 87,
+            "to": 1,
+            "border": {
+              "1": 27
+            }
+          },
+          {
+            "pixels": 2,
+            "to": 1,
+            "border": {
+              "1": 2
+            }
+          },
+          {
+            "pixels": 1,
+            "to": null,
+            "border": {}
+          }
+        ]
+      },
+      "publicationSamples": 256,
+      "actualRigParityChecks": 12,
+      "visualHold": "Held-faint head island improves; original wing/tail joins and foot flecks remain, plus mid-faint neck/shoulder opening and pointed posterior edge.",
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    }
+  ],
+  "visualReview": "Original/candidate held-right and mid-left1254software stills inspected full size; artifacts remain visible despite numerical controls. Initial/other-facing stills are retained but do not substitute for native review.",
+  "spider": "HELD: genuine pedipalp lacks separate joint and is occluded at its root; one separate painting successor, no authored fit",
+  "brittleStar": "HELD: source geometry exceeds unchanged8x radial bound",
+  "qualityAccepted": false
+}

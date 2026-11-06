@@ -1,0 +1,137 @@
+[
+ {
+  "id": "c54-13-duck",
+  "name": "Duck",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/13-duck",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/13-duck/master.png"
+ },
+ {
+  "id": "c54-14-goose",
+  "name": "Goose",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/14-goose",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/14-goose/master.png"
+ },
+ {
+  "id": "c54-15-quail",
+  "name": "Quail",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/15-quail",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/15-quail/master.png"
+ },
+ {
+  "id": "c54-16-partridge",
+  "name": "Partridge",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C54_20260926/16-partridge",
+  "master": "audits/G2_THROUGHPUT_C54_20260926/16-partridge/master.png"
+ },
+ {
+  "id": "c56-09-crow",
+  "name": "Crow",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/09-crow",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/09-crow/master.png"
+ },
+ {
+  "id": "c56-10-raven",
+  "name": "Raven",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/10-raven",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/10-raven/master.png"
+ },
+ {
+  "id": "c56-11-robin",
+  "name": "Robin",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/11-robin",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/11-robin/master.png"
+ },
+ {
+  "id": "c56-12-cardinal",
+  "name": "Cardinal",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal/master.png"
+ },
+ {
+  "id": "c56-13-magpie",
+  "name": "Magpie",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/13-magpie",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/13-magpie/master.png"
+ },
+ {
+  "id": "c56-14-jay",
+  "name": "Jay",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/14-jay",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/14-jay/master.png"
+ },
+ {
+  "id": "c56-15-dove",
+  "name": "Dove",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/15-dove",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/15-dove/master.png"
+ },
+ {
+  "id": "c56-16-pigeon",
+  "name": "Pigeon",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon/master.png"
+ },
+ {
+  "id": "c59-07-starling",
+  "name": "Starling",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/07-starling",
+  "master": "audits/G2_C59_20260926/07-starling/master.png"
+ },
+ {
+  "id": "c59-08-vulture",
+  "name": "Vulture",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/08-vulture",
+  "master": "audits/G2_C59_20260926/08-vulture/master.png"
+ },
+ {
+  "id": "c59-09-kingfisher",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/09-kingfisher",
+  "master": "audits/G2_C59_20260926/09-kingfisher/master.png"
+ },
+ {
+  "id": "fam-01-hawk",
+  "name": "Hawk",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/01-hawk"
+ },
+ {
+  "id": "fam-02-heron",
+  "name": "Heron",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/02-heron"
+ },
+ {
+  "id": "fam-03-pheasant",
+  "name": "Pheasant",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/03-pheasant"
+ },
+ {
+  "id": "fam-04-robin",
+  "name": "Robin",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/04-robin"
+ },
+ {
+  "id": "fam-05-kingfisher",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher"
+ }
+]

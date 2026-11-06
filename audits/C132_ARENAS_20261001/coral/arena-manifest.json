@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/coral/arena-recipe.json",
+    "sha256": "eff1594b06a0597539ed1eddd4890e94431276a87a2ed745f39c68c0a67701bb"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+        "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+        "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-mid.png",
+        "sha256": "c3b27fef2839d7c7d4fa977a5454a7d6260e6ff173573dcac08600f7bfd19e35"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.png",
+        "sha256": "1c40747146a50da140a511710e659d957644720e11d5fbcda9cdff88ed0802d2"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-near.png",
+        "sha256": "e3030926df94f572ea0789a2e1b7703ccb01ac1666c86d19b0d38ac9c6125e4d"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.png",
+        "sha256": "89cdfbebb5ffc62006f71b815f9613af950c84f6c784effb8e3492fca2b02651"
+      }
+    }
+  ]
+}

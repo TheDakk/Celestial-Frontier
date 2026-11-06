@@ -1,0 +1,9 @@
+[
+ {
+  "id": "24-hyrax",
+  "name": "Hyrax",
+  "family": "quadruped",
+  "packet": "audits/G2_C87_20260927/24-hyrax",
+  "master": "audits/G2_C87_20260927/24-hyrax/master.png"
+ }
+]

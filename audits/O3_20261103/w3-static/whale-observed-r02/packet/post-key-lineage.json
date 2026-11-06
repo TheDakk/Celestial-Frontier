@@ -1,0 +1,25 @@
+{
+  "original": {
+    "path": "audits/OVERNIGHT_20261101/codex/sources/wave05/030-14-whale/original.png",
+    "sha256": "fdf6373af4c798f0375712331020bafd94c8936f87fdaeadfe527cec5200ec3e",
+    "bytes": 1329885
+  },
+  "canonical": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/016-whale-r01/keyed-canonical.png",
+    "sha256": "21404ad8a578351a6e887e5a319c68dcce78d294c577b6ab775c1dc5ed2338e0",
+    "bytes": 1222326
+  },
+  "canonicalRgbaSha256": "f09f270566d9d8c3526e47ff79b8028d4f90b027ed4752ea064d3746e8b4655e",
+  "derivative": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/016-whale-r01/derivative/master.png",
+    "sha256": "c111e2b54f814f311cab79c3b2c4153fbd4f3d1374d8e332e312170cf9767728",
+    "bytes": 1221782
+  },
+  "receipt": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/016-whale-r01/derivative/post-key-derivative.json",
+    "sha256": "09583d462f89bba6281ad40e775987f7e313e8358f5944ce5a746d48b1e9fed4",
+    "bytes": 3049
+  },
+  "classification": "Current default D40 native-alpha derivative, not untouched painting",
+  "materialApproval": false
+}

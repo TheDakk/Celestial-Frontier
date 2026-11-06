@@ -1,0 +1,117 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2c6e6ce24492511ba3778cee48ed2d161e0ee945",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/master.png",
+      "sha256": "7131b058c5cd4b9502a7fd7e6a8bcb2c1e4ed47236633c56155a079bf14ab6e1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/authoring.json",
+      "sha256": "7a6a2ad94651ac7e772f57759f9a2726ad507d18bcba6354d0e8ce4f14cbd47c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/subject-source.json",
+      "sha256": "8b93646e5d8e3e201f0435324e357e6e5770c50623c4f96e8641c82de83136a7"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/presence.json",
+      "sha256": "b62f4b2784c07b2c31c2c56d4522de61f62ec421073faa89d001c0c419d7aa2e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/representation-review.json",
+      "sha256": "1f08d7dfa25b195c34938c154c61bf27e9a8c0e0bbfb40d0dbcb3be31ca9b236"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/prompt.txt",
+      "sha256": "aa4d627f49f32cb9ba91e85058664363e95d36664e0410c5729e2b9c863af766"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "81bc50b2d142a81bef64ed044152adb527ab3a47a2b5cf297435f8ef3d8bda60",
+  "bindingHash": "272daf89976b0ec71b2dd19aa5487cae50878f3b40424b26bd49dce3d29bab5b",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail0",
+    "tail1",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/master.png",
+      "sha256": "7131b058c5cd4b9502a7fd7e6a8bcb2c1e4ed47236633c56155a079bf14ab6e1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/authoring.json",
+      "sha256": "7a6a2ad94651ac7e772f57759f9a2726ad507d18bcba6354d0e8ce4f14cbd47c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/subject-source.json",
+      "sha256": "8b93646e5d8e3e201f0435324e357e6e5770c50623c4f96e8641c82de83136a7",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/presence.json",
+      "sha256": "b62f4b2784c07b2c31c2c56d4522de61f62ec421073faa89d001c0c419d7aa2e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/representation-review.json",
+      "sha256": "1f08d7dfa25b195c34938c154c61bf27e9a8c0e0bbfb40d0dbcb3be31ca9b236",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/prompt.txt",
+      "sha256": "aa4d627f49f32cb9ba91e85058664363e95d36664e0410c5729e2b9c863af766",
+      "unchanged": true
+    }
+  ]
+}

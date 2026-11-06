@@ -1,0 +1,298 @@
+[
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/master.png",
+    "sha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/authoring.json",
+    "sha256": "b27a467a4f86c51b0b3c1924b80d49938a19cb403fe62caf161b21c8a4ce35f6"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/subject-source.json",
+    "sha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/presence.json",
+    "sha256": "97b33eb99cc28811caeb7b023a470e69dcbe308f591696cd12f38d20ec621d1b"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/prompt.txt",
+    "sha256": "4ed368c3860bfdf20ef6a7140a5c738126c2d187304aedfc929e9c0b524105ba"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c192creaturesupply-15-pronghorn/packet/representation-review.json",
+    "sha256": "f92b0f37ca5fe5cb11f6ddc45e3e3c49d9a88bbd026b4ead4920f4bfe2404c96"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/master.png",
+    "sha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/authoring.json",
+    "sha256": "f5806e8d58ec731b72843e264d5f3fdc756348a7fef2f5d751049b376125699e"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/subject-source.json",
+    "sha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/presence.json",
+    "sha256": "1968e59cd3184a4b3234c1bac04b1ea8f3f401be0bf2736af65510e36e2932e7"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/prompt.txt",
+    "sha256": "cb4ffaae45a4f35b715b42099313372c4625c2f64d6f6819641eb7e0c26db8c6"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c196creaturesupply-06-llama/packet/representation-review.json",
+    "sha256": "5bd6b7aaaf0eaf914acce714504ab497398fca091398f0ad4e8ef54377c303ea"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/master.png",
+    "sha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/authoring.json",
+    "sha256": "5515322d182ac876e9b96f1f6aa6adcd432d39c95f278235d05dac94c1dbbe5f"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/subject-source.json",
+    "sha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/presence.json",
+    "sha256": "c0d6eaa6d2fa765cd0f223247a932c709f1e3a78bf678e60bd67f13c366a705e"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/prompt.txt",
+    "sha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c202creaturesupply-02-wild-boar/packet/representation-review.json",
+    "sha256": "4461be44869bd939ca054d6d5bdbd4ee95d65c121f32525092a215b7bb087044"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/master.png",
+    "sha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/authoring.json",
+    "sha256": "a92b8595b4559d537f272ccfd2480961a83e433a5172af95dd52283d626b3ea9"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/subject-source.json",
+    "sha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/presence.json",
+    "sha256": "1fd75eaecd055616818b4ee0aa6ea5e3bd69fd627552b4c21960797643d14818"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/prompt.txt",
+    "sha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/c203creaturesupply-12-alpaca/packet/representation-review.json",
+    "sha256": "30d5a60be24b06e1ecacdae746756104761ee9add4d1195825451c50f5032676"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/master.png",
+    "sha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/authoring.json",
+    "sha256": "2c6db3fc91cc18e02f8ad5c4ae72d6c27208fe2cf735891e1b8d5725a985bdf1"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/subject-source.json",
+    "sha256": "8c6be5954958c0984e24dedd103f78dc377c42284570087d27b7e46337e1feb2"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/presence.json",
+    "sha256": "3fa3d1bcfc0b9b0ce9c1838a2de98450cc992cfa2ca039ff19f37e36e1f705b0"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/prompt.txt",
+    "sha256": "31042a980f4d6e08ad583ea537d9898f51be9b6925a91cc5a1c604d0497d0568"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c107-16-chamois/packet/representation-review.json",
+    "sha256": "444019285308a2770b94455fe6518c588a36c5de9d592e7bab2de34512b12799"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/master.png",
+    "sha256": "3025d643d0b13ad45d7457ca408ce4d7e8149ecaf6b063ffb5afa54ae7ef4664"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/authoring.json",
+    "sha256": "d274ba9b0b1a652cbf3295a66f10971a68bb9d9125ae8437f888145cc9790c61"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/subject-source.json",
+    "sha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/presence.json",
+    "sha256": "65e5ace24a1aeb660eceb452ff0dece25fa613607b3d91f231f93958084f3f29"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/prompt.txt",
+    "sha256": "fc1de084cb78477a3e8f0818d7b7ec1bb3203afe9cfa8deb838bb4c3225d8083"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c76-19-alpaca/packet/representation-review.json",
+    "sha256": "4d5f71cc41248947d13762f90d2732ca182ff2c8818aba4f6964186e06097768"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/master.png",
+    "sha256": "8bcee4a5c170ecf6624ca15b37922652469d8e2a0860f9edf2d40ceda9aea839"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/authoring.json",
+    "sha256": "31db253b99e0552188859cb30cf3e791cf06f59c5cedfec90603d841a6b4d9a0"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/subject-source.json",
+    "sha256": "4f26f9d27f66d420e4b54f2573de8aadff9b46510980b4063b1d3f9be42bba36"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/presence.json",
+    "sha256": "b002553b24d17ddd332ac5a448b4022b642eaa2fe302b41f9b0df257b597064b"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/prompt.txt",
+    "sha256": "6562607ccf47aa8a4eb6032b3f65b8e50739209c2e50e4756dcd225293c12f60"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c90-17-rabbit/packet/representation-review.json",
+    "sha256": "3ea1b5894207f435c6c55a2467290bee4b534f7e44349a067368e7b5512e31e9"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/master.png",
+    "sha256": "0cb05436326b123d20b6c52d6d480673549d612dc661ffaa10be902c5756cf28"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/authoring.json",
+    "sha256": "a25d4ea077686b868d0ceb461325183cb410ecf9159fd2858ce3e4099592d9d7"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/subject-source.json",
+    "sha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/presence.json",
+    "sha256": "2e4626bafea5be440037243da32cf93f46792aecd2faca207720993ce8358dd9"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/prompt.txt",
+    "sha256": "236c69fa39b296223a317c187adc4bea4a0e05cb00e76043ac7b15ce397c4bd3"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p1/g2c95-13-pronghorn/packet/representation-review.json",
+    "sha256": "c72ed02cb8505ca31528d76e88c0b268bd9b3a90f74929a430f93a82f112dfb5"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/master.png",
+    "sha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/authoring.json",
+    "sha256": "ee917e0430a90a4525612106068fdd49bcaec155796b5d13d0b5f317ebbbd3dd"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/subject-source.json",
+    "sha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/presence.json",
+    "sha256": "8f500e91cfba6a663a5e65ac76a76f22af52a636e736d94d2f1733ec2aef8ffd"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/prompt.txt",
+    "sha256": "366d2a15198674654e94896aca30498c309f10db45a6122ccc082643b64ce902"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c192creaturesupply-16-springbok/packet/representation-review.json",
+    "sha256": "7fc227989c14fd4f98b7f07f1be8b8f37209c2aa1a05d8e91c7dec48d625d2ae"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-13-gerenuk/packet/master.png",
+    "sha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-13-gerenuk/packet/authoring.json",
+    "sha256": "c492f6433a8f200321f1a712ef83c8acfca72fd362152577d19e2ae8005b9852"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-13-gerenuk/packet/subject-source.json",
+    "sha256": "c44d4b7814a11ea0a686d4a8196606a49ebc3ff55ff7ce8e5272377b54e7b270"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupply-13-gerenuk/packet/presence.json",
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupplyb-04-springbok/packet/master.png",
+    "sha256": "56cbdddd56053fae72e77f6b6891e43d44aac23a9fbf7639d97c3fb687fbd4d4"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupplyb-04-springbok/packet/authoring.json",
+    "sha256": "a37f3275b3c316d858f70d1a3608b823754e4157774260c81137ba01cb4f649b"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupplyb-04-springbok/packet/subject-source.json",
+    "sha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/c203creaturesupplyb-04-springbok/packet/presence.json",
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c106-11-knifefish/packet/master.png",
+    "sha256": "ac04c75913d0bc7caf6ee945b6b964f0273f4e02e4e9b4acac22f81f1bd3a4ec"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c106-11-knifefish/packet/authoring.json",
+    "sha256": "ae1439d85abe9057c0892414d1946adfc206d0e029706b6e87a211b6e66c169b"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c106-11-knifefish/packet/subject-source.json",
+    "sha256": "e6da12ae58e5830d6e0591126c0200ceaa6601d96c52881585dc7a520149ae50"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c106-11-knifefish/packet/presence.json",
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c76-06-arowana/packet/master.png",
+    "sha256": "9572aa74902130df48701d1d278658d9058aa839925205bb1811c2bed96c8713"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c76-06-arowana/packet/authoring.json",
+    "sha256": "3739aef0220e8c2e12da14403822c556a268d0b65eca5cd2c21afa73b90e46dd"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c76-06-arowana/packet/subject-source.json",
+    "sha256": "e31ec4df6213086fd6c958de6c36b58f76d7c063dbb768552295e4dd55539144"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c76-06-arowana/packet/presence.json",
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c90-09-bowfin/packet/master.png",
+    "sha256": "6f388e17a14ab175d83e8cdf14e63ef47b10f8fde079d04862d5810a8bd3ac24"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c90-09-bowfin/packet/authoring.json",
+    "sha256": "791c3aaff1e2afa2ae79e297c94d13bf6a3199ea746898976765d1747c2bec95"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c90-09-bowfin/packet/subject-source.json",
+    "sha256": "507118d0809dd1e9b957f334810747a89409292d61cbac0a4ef55a18df165374"
+  },
+  {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p2/g2c90-09-bowfin/packet/presence.json",
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  }
+]

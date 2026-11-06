@@ -1,0 +1,82 @@
+{
+  "status": "PASS_ALL18_APPLIED_PATHS_EXACT_SIGNED_C491",
+  "producer": "acff88a884f1f9da6f018ef77b7af4432e079a6f",
+  "rows": [
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "5a4b045a619fa9ccf077305ab51ab219c2f11606d37b13860fa134f5d122775f"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "sha256": "4c35b295da5826582860e29e3457419b8760d44af82294591e6ef93815467e80"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "5d8ea39ede3066882335e168da82e8ee57b98c00b90293afe4180c7dffcb4eba"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "acdd6a5e665e6849cbdab8b551892f2a49f89bfbeb6706282dc32753c333d94c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "eef4243ed0d3f93f16816d16271fa5b43cf1dbbb2a90282dbf2247d0a8cb6107"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "6f64e631e95bd903b5bf199102a6522769c6c188fbf2e54102ff77732b53e5e8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "877dde31a926360ab2f65489b2187a42149ee1c60d5bd058dadba4e828013e82"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.mjs",
+      "sha256": "f4f22724eab07df832a792bacde6f1164d03d3eb5a2d75dedfe8ae0b3ceb38f1"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "fa5d8ff6288718d4db6b8c4ecc179902f29b8e2ed9cd0deefd48caf1906e1bcb"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "6bf219c583f754a9162155c7ecdae8f952a279d387f6a90985407173ffe15d0f"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb"
+    }
+  ],
+  "newAnchored13Applied": false,
+  "postRedOwnersExecuted": false,
+  "native": false,
+  "AI": false
+}

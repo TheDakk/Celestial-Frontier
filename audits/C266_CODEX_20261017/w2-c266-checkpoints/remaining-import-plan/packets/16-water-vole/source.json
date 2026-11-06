@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Water Vole",
+  "slug": "16-water-vole",
+  "id": "c266-intake-water-vole",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-07-water-vole",
+  "masterSha256": "a8186faafd418ce56c3488d6b9dca5ee8f88182cc3a2107e7d576f0a39159ce7",
+  "masterCopySha256": "a8186faafd418ce56c3488d6b9dca5ee8f88182cc3a2107e7d576f0a39159ce7",
+  "subjectSourceSha256": "4b56fb879b47012b3a9ce3d84ad1c169041d09b412b1c7ce0fbe0a0cf34c7b07",
+  "promptSha256": "e7738190f2231c0772bcb9a3d21d0504c521466d4b54b3a29a2e3cf19f9407c5",
+  "refusal": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%); unexplained-anatomy: 11.7% of the paint lies away from the body and in no part (reference 5.1%)",
+  "observation": "Full-size review: chubby water vole walking right; blunt muzzle with whiskers, small near ear almost buried in fur (x≈748-793, y≈544-594), furred tail about half the body length, four separate small clawed feet. Nothing extra: the unexplained paint is the long furred tail and whiskers, and the fore-near paw miss is a transfer offset on a small foot.",
+  "joints": 31,
+  "parts": 26,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/16-water-vole.mjs"
+}

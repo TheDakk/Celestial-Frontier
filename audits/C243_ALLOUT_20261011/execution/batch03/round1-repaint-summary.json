@@ -1,0 +1,336 @@
+{
+  "round": 1,
+  "species": 34,
+  "candidates": 91,
+  "selectedStaticPass": [
+    {
+      "name": "Carrion Beetle",
+      "id": "c243b03r1c1-23-carrion-beetle",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1h/c243b03r1c1-23-carrion-beetle/score.json"
+    },
+    {
+      "name": "Moth",
+      "id": "c243b03r1c1-26-moth",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-26-moth/score.json"
+    },
+    {
+      "name": "Springtail",
+      "id": "c243b03r1c1-27-springtail",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-27-springtail/score.json"
+    },
+    {
+      "name": "Thrips",
+      "id": "c243b03r1c1-28-thrips",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1j/c243b03r1c1-28-thrips/score.json"
+    },
+    {
+      "name": "Honeybee",
+      "id": "c243b03r1c2-12-honeybee",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2d/c243b03r1c2-12-honeybee/score.json"
+    },
+    {
+      "name": "Stonefly",
+      "id": "c243b03r1c2-20-stonefly",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2g/c243b03r1c2-20-stonefly/score.json"
+    },
+    {
+      "name": "Eagle",
+      "id": "c243b03r1c2-31-eagle",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/score.json"
+    },
+    {
+      "name": "Bumblebee",
+      "id": "c243b03r1c3-01-bumblebee",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3a/c243b03r1c3-01-bumblebee/score.json"
+    },
+    {
+      "name": "Ladybug",
+      "id": "c243b03r1c3-24-ladybug",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/score.json"
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "Bee",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part mandible (mandible) covers 2% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 15% paint (reference 98%)"
+      ]
+    },
+    {
+      "name": "Butterfly",
+      "attempts": 3,
+      "latestReasons": [
+        "facing: the mirrored painting matches insect better (0.0284 < 0.0405)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 10% paint (reference 31%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 17% paint (reference 77%)"
+      ]
+    },
+    {
+      "name": "Cassowary",
+      "attempts": 3,
+      "latestReasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+      ]
+    },
+    {
+      "name": "Cave Cricket",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 7% paint (reference 39%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 16% paint (reference 51%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 2% paint (reference 47%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 19%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 4% paint (reference 18%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 60%)",
+        "missing-anatomy: part head (head) covers 10% paint (reference 86%)",
+        "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 0.3%)"
+      ]
+    },
+    {
+      "name": "Cricket",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 0% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 2% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)"
+      ]
+    },
+    {
+      "name": "Damselfly",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 29%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 4% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 8% paint (reference 32%)",
+        "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 13% paint (reference 56%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 11% paint (reference 52%)",
+        "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 16% paint (reference 67%)",
+        "missing-anatomy: part head (head) covers 0% paint (reference 88%)",
+        "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 1.6%)"
+      ]
+    },
+    {
+      "name": "Diving Beetle",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 13% paint (reference 37%)",
+        "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+      ]
+    },
+    {
+      "name": "Dobsonfly",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 5% paint (reference 49%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 11% paint (reference 39%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 47%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 5% paint (reference 46%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 21% paint (reference 82%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+      ]
+    },
+    {
+      "name": "Dragonfly",
+      "attempts": 3,
+      "latestReasons": [
+        "extra-anatomy (unassigned): a top appendage of 16.7% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 7% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 8% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 7% paint (reference 25%)",
+        "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+      ]
+    },
+    {
+      "name": "Fly",
+      "attempts": 3,
+      "latestReasons": []
+    },
+    {
+      "name": "Giant Water Bug",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%)"
+      ]
+    },
+    {
+      "name": "Godwit",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 18% paint (reference 72%)",
+        "missing-anatomy: part tail (tailFan) covers 23% paint (reference 89%)",
+        "unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ]
+    },
+    {
+      "name": "Grasshopper",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 25% paint (reference 77%)"
+      ]
+    },
+    {
+      "name": "Grebe",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 27% paint (reference 84%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 2.4%)"
+      ]
+    },
+    {
+      "name": "Guillemot",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 16% paint (reference 84%)",
+        "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 2.4%)"
+      ]
+    },
+    {
+      "name": "Leafcutter Ant",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 62%)",
+        "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 1.0%)"
+      ]
+    },
+    {
+      "name": "Locust",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 13% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 21% paint (reference 62%)"
+      ]
+    },
+    {
+      "name": "Mantis",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 13% paint (reference 39%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 47%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 0% paint (reference 68%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 8% paint (reference 96%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)",
+        "missing-anatomy: part mandible (mandible) covers 14% paint (reference 60%)",
+        "unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 0.3%)"
+      ]
+    },
+    {
+      "name": "Mayfly",
+      "attempts": 3,
+      "latestReasons": [
+        "facing: the mirrored painting matches insect better (0.0358 < 0.0430)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 3% paint (reference 31%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 9% paint (reference 40%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 6% paint (reference 44%)",
+        "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ]
+    },
+    {
+      "name": "Mosquito",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 4% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 15% paint (reference 62%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 2% paint (reference 89%)",
+        "unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 1.0%)"
+      ]
+    },
+    {
+      "name": "Orchid Bee",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 14% paint (reference 88%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+        "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+      ]
+    },
+    {
+      "name": "Scorpionfly",
+      "attempts": 3,
+      "latestReasons": [
+        "extra-anatomy (unassigned): a top appendage of 10.2% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a rear appendage of 7.2% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 47%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 18%)",
+        "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 0.3%)"
+      ]
+    },
+    {
+      "name": "Stick Insect",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 13% paint (reference 42%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 9% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 5% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 2% paint (reference 31%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 12% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 10% paint (reference 62%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 23% paint (reference 98%)",
+        "unexplained-anatomy: 14.4% of the paint lies away from the body and in no part (reference 1.0%)"
+      ]
+    },
+    {
+      "name": "Water Beetle",
+      "attempts": 3,
+      "latestReasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 0% paint (reference 25%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 0% paint (reference 62%)"
+      ]
+    },
+    {
+      "name": "Water Strider",
+      "attempts": 3,
+      "latestReasons": [
+        "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 12% paint (reference 42%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 1% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%)",
+        "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 1% paint (reference 100%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 20% paint (reference 99%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 11% paint (reference 88%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 1% paint (reference 77%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 81%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 8% paint (reference 62%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 15% paint (reference 98%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 20% paint (reference 89%)",
+        "missing-anatomy: part thorax (thorax) covers 8% paint (reference 99%)",
+        "missing-anatomy: part abdomen (abdomen) covers 7% paint (reference 96%)"
+      ]
+    }
+  ],
+  "scope": "Repaint source intake/static only; class successors and native/finish not included."
+}

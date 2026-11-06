@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Porpoise\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"934645862\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 934645862,
+    "ownerId": "authored:archetype-sprint/c215program-41-porpoise",
+    "earthName": "Porpoise"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 934645862,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 0,
+    "body": 1,
+    "loco": 17,
+    "trait": 16,
+    "size": 3,
+    "diet": 2,
+    "head": 4,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 2,
+    "detail": 0,
+    "accent": 10,
+    "temper": 4,
+    "sense": 1,
+    "repro": 3,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Porpoise"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1f048e044b57230111c8d4b104eb228b75436023fb538e7aae934d7a2ceaabb8",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5753879946338837,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6891547049441786,
+      0.48389154704944176
+    ],
+    "head": [
+      0.751993620414673,
+      0.4737639553429027
+    ],
+    "jaw": [
+      0.7766347687400319,
+      0.5314992025518341
+    ],
+    "spine0": [
+      0.6397129186602871,
+      0.4767942583732057
+    ],
+    "spine1": [
+      0.5768740031897927,
+      0.4740829346092504
+    ],
+    "spine2": [
+      0.5180223285486444,
+      0.4738437001594897
+    ],
+    "spine3": [
+      0.4550239234449761,
+      0.47934609250398724
+    ],
+    "spine4": [
+      0.37559808612440193,
+      0.48748006379585324
+    ],
+    "spine5": [
+      0.2783094098883573,
+      0.4939393939393939
+    ],
+    "caudal": [
+      0.24681020733652312,
+      0.4925039872408294
+    ],
+    "dorsal": [
+      0.5386762360446571,
+      0.4076555023923445
+    ],
+    "pectoralNear": [
+      0.6798245614035088,
+      0.5021531100478469
+    ],
+    "pectoralFar": [
+      0.6858054226475279,
+      0.509090909090909
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/c215program-41-porpoise/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile toothed-cetacean media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from tang. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "673c9e4a3989886a6c8d50ff3f92416d7a10820b9430b2b26647cf504f76365d",
+    "subjectSourceSha256": "98e7bc8eeab83d69f678a4611168d02b2fa80aae5873fe23a64b46672af31bae",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.06364980291628791,
+      "jaw": 0.06277376013167255,
+      "spine0": 0.04994859094605003,
+      "spine1": 0.0628973812973238,
+      "spine2": 0.05885216088802115,
+      "spine3": 0.0632382429161238,
+      "spine4": 0.0798412495083288,
+      "spine5": 0.09750286903299396,
+      "caudal": 0.031531891059556824,
+      "dorsal": 0.07662684363723737,
+      "pectoralFar": 0.02542096652764407,
+      "pectoralNear": 0.02050698080250292
+    },
+    "measures": {
+      "body": 0.36180996645510655,
+      "bone-min": 0.02050698080250292,
+      "bone-max": 0.09750286903299396,
+      "caudal/body": 0.08715042144498059,
+      "head/body": 0.17592053513590977
+    }
+  },
+  "recipeHash": "92df3b98644b649bae5956097df2305c300ab9f9d5c0f1a47391de16d777f02c"
+}

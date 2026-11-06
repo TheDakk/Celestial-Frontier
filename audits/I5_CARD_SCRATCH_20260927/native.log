@@ -1,0 +1,152 @@
+[
+  {
+    "name": "old",
+    "phase": "ready",
+    "heap": {
+      "usedSize": 1392468,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 309488,
+      "backingStorageSize": 2355716
+    }
+  },
+  {
+    "name": "old",
+    "phase": "render-1",
+    "heap": {
+      "usedSize": 2351016,
+      "totalSize": 4980736,
+      "embedderHeapUsedSize": 571496,
+      "backingStorageSize": 14221892
+    }
+  },
+  {
+    "name": "old",
+    "phase": "gc-1",
+    "heap": {
+      "usedSize": 1568172,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 309488,
+      "backingStorageSize": 2425412
+    }
+  },
+  {
+    "name": "old",
+    "phase": "render-2",
+    "heap": {
+      "usedSize": 1911888,
+      "totalSize": 4718592,
+      "embedderHeapUsedSize": 571496,
+      "backingStorageSize": 14291588
+    }
+  },
+  {
+    "name": "old",
+    "phase": "gc-2",
+    "heap": {
+      "usedSize": 1574268,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 309488,
+      "backingStorageSize": 2425412
+    }
+  },
+  {
+    "name": "old",
+    "phase": "render-3",
+    "heap": {
+      "usedSize": 2217844,
+      "totalSize": 5242880,
+      "embedderHeapUsedSize": 571496,
+      "backingStorageSize": 14291588
+    }
+  },
+  {
+    "name": "old",
+    "phase": "gc-3",
+    "heap": {
+      "usedSize": 1664032,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 309488,
+      "backingStorageSize": 9503300
+    }
+  },
+  {
+    "name": "old",
+    "phase": "output",
+    "sha256": "b63a90163ecd30dee83c1750eaa05549bea783e73db133d103668c430760af1c"
+  },
+  {
+    "name": "new",
+    "phase": "ready",
+    "heap": {
+      "usedSize": 1393884,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 307832,
+      "backingStorageSize": 2357052
+    }
+  },
+  {
+    "name": "new",
+    "phase": "render-1",
+    "heap": {
+      "usedSize": 2217928,
+      "totalSize": 4718592,
+      "embedderHeapUsedSize": 570120,
+      "backingStorageSize": 2426748
+    }
+  },
+  {
+    "name": "new",
+    "phase": "gc-1",
+    "heap": {
+      "usedSize": 1574048,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 307832,
+      "backingStorageSize": 2426748
+    }
+  },
+  {
+    "name": "new",
+    "phase": "render-2",
+    "heap": {
+      "usedSize": 1973844,
+      "totalSize": 5242880,
+      "embedderHeapUsedSize": 570120,
+      "backingStorageSize": 2496444
+    }
+  },
+  {
+    "name": "new",
+    "phase": "gc-2",
+    "heap": {
+      "usedSize": 1580768,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 307832,
+      "backingStorageSize": 2426748
+    }
+  },
+  {
+    "name": "new",
+    "phase": "render-3",
+    "heap": {
+      "usedSize": 2404904,
+      "totalSize": 5242880,
+      "embedderHeapUsedSize": 570120,
+      "backingStorageSize": 2496444
+    }
+  },
+  {
+    "name": "new",
+    "phase": "gc-3",
+    "heap": {
+      "usedSize": 1671288,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 307832,
+      "backingStorageSize": 2426748
+    }
+  },
+  {
+    "name": "new",
+    "phase": "output",
+    "sha256": "b63a90163ecd30dee83c1750eaa05549bea783e73db133d103668c430760af1c"
+  }
+]

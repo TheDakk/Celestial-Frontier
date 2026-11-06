@@ -1,0 +1,81 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-19",
+ "files": [
+  {
+   "path": "library/cards/maned-wolf/SOURCE.json",
+   "bytes": 291,
+   "sha256": "619af0cbf200165df4113c9e585ae13ef5369242f9a35f73982a447f6b56bfb6"
+  },
+  {
+   "path": "library/cards/maned-wolf/card/card.json",
+   "bytes": 5904,
+   "sha256": "dedf7bb1a56cbe52ff3b1824cf5fbc2ce9c48899c3c9b0299bbd2bdf0130cbf8"
+  },
+  {
+   "path": "library/cards/maned-wolf/card/labels-512.png",
+   "bytes": 6001,
+   "sha256": "a3db4fde4d8ce7d8cb4eb6a86210515e9998d1fb32459f07f4f56a0049faccac"
+  },
+  {
+   "path": "library/cards/maned-wolf/card/master-512.png",
+   "bytes": 68130,
+   "sha256": "7e87fb4640971e4d24405ea188d1a7ddbc67ae30a71f42ead0eee2fd53131215"
+  },
+  {
+   "path": "library/cards/maned-wolf/record.json",
+   "bytes": 7519,
+   "sha256": "31412e779d1e81087332f14d4cadbcdcfc66d374aa2da991efb51b5944b7de0a"
+  },
+  {
+   "path": "library/creature-finish-source/03-sea-bass-fixed-01/labels.png",
+   "bytes": 40667,
+   "sha256": "427158e9a1ede21536d56400a32ca2a6397d56aebb109d160cbb29ae1242e36f"
+  },
+  {
+   "path": "library/creature-finish-source/03-sea-bass-fixed-01/master.png",
+   "bytes": 1300132,
+   "sha256": "c96b9b2ce864dfd8e33a0497817d94fb5c17c4ca5535ca01421e5bc7359fd8fb"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c2-02-beaked-whale/labels.png",
+   "bytes": 13891,
+   "sha256": "b66e7b983b6710407b0b7d2d3d9d6fead007ac7bf1dd20495d60b52f02401b18"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c2-02-beaked-whale/master.png",
+   "bytes": 1311953,
+   "sha256": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d"
+  },
+  {
+   "path": "library/creature-finish-source/crab/labels.png",
+   "bytes": 23023,
+   "sha256": "2f8752420492af502902f818cfd35fc8085719ab2752e09ae2aad92218067075"
+  },
+  {
+   "path": "library/creature-finish-source/crab/master.png",
+   "bytes": 48886,
+   "sha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655"
+  },
+  {
+   "path": "library/creature-finish-source/dragonfly/labels.png",
+   "bytes": 53732,
+   "sha256": "ace081d5deb8c9728f500458a054453a6249cda18814fc82d16da508092a7e71"
+  },
+  {
+   "path": "library/creature-finish-source/dragonfly/master.png",
+   "bytes": 975776,
+   "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+  },
+  {
+   "path": "library/creature-finish-source/starfish/labels.png",
+   "bytes": 57280,
+   "sha256": "7e5c10d96ef98da4260f60d14d885a5bb0357a1d171e88a7f4de020848643f87"
+  },
+  {
+   "path": "library/creature-finish-source/starfish/master.png",
+   "bytes": 1647339,
+   "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+  }
+ ]
+}

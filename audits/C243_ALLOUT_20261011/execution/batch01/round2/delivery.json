@@ -1,0 +1,34 @@
+{
+  "status": "BATCH_DELIVERED_FOR_CLAUDE_REVIEW",
+  "batch": 1,
+  "round": 2,
+  "species": 31,
+  "exactOriginals": 93,
+  "sourceCheckpoint": "e5fd3dce4",
+  "staticBefore": 2,
+  "staticAfter": 8,
+  "nativePass": 8,
+  "aiFinishPass": 8,
+  "rebindPass": 8,
+  "finishedNativePass": 8,
+  "protectedRgbChanges": 0,
+  "alphaChanges": 0,
+  "reviewStills": 40,
+  "ready": [
+    "Mole",
+    "Yak",
+    "Wild Horse",
+    "Camel",
+    "Skink",
+    "Blind Salamander"
+  ],
+  "holds": {
+    "Warthog": "Reddish fine fringe along the mane tips at full size despite automated magenta count zero; visual HOLD.",
+    "Walrus": "Pink whisker fringe visible around the muzzle across reaction and late frames despite automated magenta count zero; visual HOLD."
+  },
+  "remaining": "audits/C243_ALLOUT_20261011/execution/batch01/round2/remaining.json",
+  "triage": "audits/C243_ALLOUT_20261011/execution/batch01/round2/triage/triage.json",
+  "limits": "unchanged",
+  "allPairs": "HOLD",
+  "certification": "not run"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "EXACT_NEW_PROPOSAL_COPIES",
+  "rows": [
+    {
+      "source": "audits/C475_DECISIONS_20261019/w1-keyer/proposal/port/v2/tools/creature-animation/post-key-matte.mjs",
+      "production": "port/v2/tools/creature-animation/post-key-matte.mjs",
+      "sha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35",
+      "existingFileChanged": false
+    },
+    {
+      "source": "audits/C475_DECISIONS_20261019/w1-keyer/proposal/port/v2/tools/creature-animation/derive-post-key-matte.mjs",
+      "production": "port/v2/tools/creature-animation/derive-post-key-matte.mjs",
+      "sha256": "b8b6feb0af06174ea4d91a4a248ce09c8b4955646e4682dfcf9e3df7392f1931",
+      "existingFileChanged": false
+    }
+  ],
+  "keyedSealChanged": false,
+  "classification": "offline post-seal derivative authoring tools; no existing game import changed",
+  "I5DiscloseToClaude": true
+}

@@ -1,0 +1,67 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-13-gerenuk/fit",
+  "sourceBindingSha256": "372662ee12615f3e19c5ddc89d34403c0c615d6d8b8268cd0f073164c462b094",
+  "candidateBindingSha256": "ec71bdfe2c6254ce8b2653d7916e357957bf045fc929ea7a98a30c3ba9134d64",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "spine"
+    ],
+    [
+      "ear-far-tip",
+      "head"
+    ],
+    [
+      "ear-far-tip",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-root",
+      "spine"
+    ],
+    [
+      "ear-near-tip",
+      "spine"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "head",
+      "spine"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "spine",
+      "tail-middle"
+    ],
+    [
+      "spine",
+      "tail-root"
+    ]
+  ],
+  "sourceMasterSha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987",
+  "sourceAtlasSha256": "18f1c4117f38a372de064aea9eea8a25cb1a0fe2cdf9752f7b1873af191a9f15",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

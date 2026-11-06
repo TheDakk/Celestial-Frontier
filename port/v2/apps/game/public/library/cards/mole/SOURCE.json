@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mole",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c3-05-mole/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "18aa686a8bb7ec58ff63292495da3c9f688a4e3861540c684f2d1c68cdd90fe3"
+}

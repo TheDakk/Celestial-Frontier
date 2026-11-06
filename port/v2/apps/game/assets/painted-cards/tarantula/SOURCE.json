@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tarantula",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "c475-cricket-d40",
+  "checkpointReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cricket/native-r01/checkpoint-final.json",
+  "nativeReview": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-cricket/native-r01/physical-review.json",
+  "nativePlan": "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native-plan-bound.json",
+  "nativeReport": "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native/report.json",
+  "triage": "audits/C475_DECISIONS_20261019/coordinator/triage-d40-originals",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": true,
+  "checkpointReviewSha256": "b8122fefc8152fa15b5d34e189daac4b9bd105e81b2583bd767e9093e346f9e3",
+  "nativeReviewSha256": "a4eb99d3ab74726ab6a723ca3f39bbbdfdbd8bc7e0bc54d21bcb8cae40744c78",
+  "nativePlanSha256": "6578112f4b3bffa0ec23d1999892909ecaeb9803adf3c09c4731aebbf8340029",
+  "nativeReportSha256": "e315b83538d7cd9182ef1ccfdf8f49ec2b49a591a48d39e98f24753ff864f9e6"
+}

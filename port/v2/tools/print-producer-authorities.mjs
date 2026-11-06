@@ -16,6 +16,7 @@ import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { checkCommandInvocation } from './check-profile.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
+import { activeCompendiumMeasurementSources, readActiveCompendiumBudget, verifyActiveCompendiumCertificate } from './compendiummem-active.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -46,7 +47,8 @@ export function authorityMismatchPaths(expected, observed, prefix = '') {
 
 /** Keep the CLI fail-closed unless every independently derived live authority matches. */
 export function producerAuthorityExitCode(report) {
-  return report?.sceneMemory?.budgetMatches === true
+  return report?.compendium?.certificate?.ok === true
+    && report?.sceneMemory?.budgetMatches === true
     && report?.compendium?.measurementBudgetMatches === true
     && report?.compendium?.producerBudgetMatches === true
     ? 0
@@ -62,7 +64,8 @@ const PRODUCER_AUTHORITY_CHECK_PROFILES = Object.freeze(['dev', 'develop', 'prod
  */
 export function producerAuthorityCheckProfileExitCode(report, profile) {
   if (!PRODUCER_AUTHORITY_CHECK_PROFILES.includes(profile)) return 2;
-  return report?.compendium?.measurementBudgetMatches === true
+  return report?.compendium?.certificate?.ok === true
+    && report?.compendium?.measurementBudgetMatches === true
     && report?.compendium?.producerBudgetMatches === true
     && (profile !== 'production' || report?.sceneMemory?.budgetMatches === true)
     ? 0
@@ -140,9 +143,9 @@ function compendiumAuthorities(fixture) {
     fixtureSpec: hashFile(COMPENDIUM_FIXTURE_SPEC_PATH),
     fixtureRows: fixture.rowsSha256,
     fixtureGenerator: hashFile(file('tools', 'compendiummem-fixture.mjs')),
-    budgetSchema: hashFile(file('budgets', 'compendium-memory-v1.schema.json')),
-    outcomeContract: hashFile(file('tools', 'compendiummem-contract.mjs')),
-    collector: hashFile(file('tools', 'compendiummem.mjs')),
+    budgetSchema: hashFile(file('budgets', 'compendium-memory-v2-policy.json')),
+    outcomeContract: activeCompendiumMeasurementSources.outcomeContract,
+    collector: activeCompendiumMeasurementSources.collector,
     browserCdp: hashFile(file('tools', 'browsercdp.mjs')),
     browserPath: hashFile(file('tools', 'browserpath.mjs')),
     workspaceLock: hashFile(file('tools', 'workspacelock.mjs')),
@@ -173,19 +176,57 @@ function compendiumAuthorities(fixture) {
   return Object.freeze({ measurement, producer });
 }
 
+/** Hash all non-ignored source inputs, including imported legacy fixtures and kit assets.
+ * Unit readers do not build or acquire a checkout lock. The runner prepares this receipt
+ * before starting Vitest; any source or dist drift makes that receipt unusable. */
+export function authoritySourceDigest() {
+  const names = execFileSync('git', ['ls-files', '-z', '--cached', '--others',
+    '--exclude-standard', '--', 'port', 'tools', 'main.js', 'celestial-frontier.html',
+    'ART_KIT.md', 'package.json', 'package-lock.json'],
+    { cwd: repoRoot, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  // The Vite plugin also emits ignored installed runtime bytes from the root tool
+  // workspace. Bind the actual allowlist, not just its package-lock declaration.
+  const plugin = fs.readFileSync(path.join(appDir, 'kit-runtime-assets.ts'), 'utf8');
+  const lists = [...plugin.matchAll(/const names = (\[[\s\S]*?\]);/g)];
+  if (lists.length !== 1) throw new Error('Cannot identify kit runtime input inventory');
+  const runtimeNames = JSON.parse(lists[0][1].replace(/'/g, '"'));
+  if (!Array.isArray(runtimeNames) || !runtimeNames.length || !runtimeNames.every(name =>
+    typeof name === 'string' && /^[a-zA-Z0-9@._/-]+$/.test(name)
+    && !name.startsWith('/') && !name.split('/').includes('..'))) {
+    throw new Error('Invalid kit runtime input inventory');
+  }
+  const files = [...names.split('\0').filter(Boolean),
+    ...runtimeNames.map(name => 'tools/local-image-generation/' + name)];
+  const entries = [...new Set(files)].sort().map(name => {
+    const absolute = path.join(repoRoot, name);
+    if (!fs.existsSync(absolute)) return [name, 'deleted'];
+    if (!fs.lstatSync(absolute).isFile()) throw new Error('Nonregular authority input: ' + name);
+    return [name, hashFile(absolute)];
+  });
+  return sha256(stableJson(entries));
+}
+
 export function collectCurrentProducerAuthorities() {
   const releaseWorkspaceLock = acquireWorkspaceLock('current producer authority build');
   try {
+    const sourceSha256 = authoritySourceDigest();
     const buildInvocation = checkCommandInvocation('npm', ['run', 'build', '--', '--mode', 'evidence']);
     execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir, stdio: 'inherit' });
+    if (authoritySourceDigest() !== sourceSha256) throw new Error('Source changed during authority build');
+    return observeCurrentProducerAuthorities(sourceSha256);
+  } finally {
+    releaseWorkspaceLock();
+  }
+}
+
+function observeCurrentProducerAuthorities(sourceSha256) {
     const fixture = buildCompendiumFixture();
     const build = distIdentity();
     const sceneMemory = sceneMemoryProducerAuthority(fixture, build);
     const compendium = compendiumAuthorities(fixture);
     const sceneBudget = readJson(path.join(v2Root, 'budgets', 'scene-memory-v2.json'));
-    const compendiumBudget = readJson(path.join(
-      v2Root, 'budgets', 'compendium-memory-v1.json',
-    ));
+    const compendiumBudget = readActiveCompendiumBudget();
+    const certificate = verifyActiveCompendiumCertificate(compendium.measurement, compendium.producer);
     const sceneMemoryBudgetMismatches = authorityMismatchPaths(
       sceneBudget.authority?.producer, sceneMemory,
     );
@@ -201,6 +242,7 @@ export function collectCurrentProducerAuthorities() {
         schema: build.schema,
         sha256: build.sha256,
         fileCount: build.files.length,
+        sourceSha256,
       }),
       sceneMemory: Object.freeze({
         producer: sceneMemory,
@@ -208,6 +250,7 @@ export function collectCurrentProducerAuthorities() {
         budgetMismatches: sceneMemoryBudgetMismatches,
       }),
       compendium: Object.freeze({
+        certificate,
         measurement: compendium.measurement,
         producer: compendium.producer,
         measurementBudgetMatches: compendiumMeasurementBudgetMismatches.length === 0,
@@ -218,9 +261,23 @@ export function collectCurrentProducerAuthorities() {
         numericCeilingsSha256: sha256(stableJson(compendiumBudget.ceilings)),
       }),
     });
-  } finally {
-    releaseWorkspaceLock();
+}
+
+export function assertPreparedAuthorityBuild(prepared, observed) {
+  if (!prepared || prepared.schema !== observed.schema
+    || typeof prepared.sourceSha256 !== 'string'
+    || prepared.sourceSha256 !== observed.sourceSha256
+    || prepared.sha256 !== observed.sha256 || prepared.fileCount !== observed.fileCount) {
+    throw new Error('Missing/stale authority build receipt; use npm test (the pre-test build owner)');
   }
+}
+
+export function readPreparedProducerAuthorities(prepared) {
+  const sourceSha256 = authoritySourceDigest();
+  const observed = observeCurrentProducerAuthorities(sourceSha256);
+  assertPreparedAuthorityBuild(prepared, observed.build);
+  if (authoritySourceDigest() !== sourceSha256) throw new Error('Source changed during authority read');
+  return observed;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -1,0 +1,21 @@
+{
+  "stage": "postmerge-validate",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-postmerge-validate",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792453743.4694788,
+  "beforeGiB": 59.73603820800781,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.025,
+  "lowestGiB": 59.73569107055664,
+  "afterGiB": 59.735694885253906
+}

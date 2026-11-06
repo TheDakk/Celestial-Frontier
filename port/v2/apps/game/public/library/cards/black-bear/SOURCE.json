@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Black Bear",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c203creaturesupply-03-black-bear/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a245d9d394f1c2b8fb30d574d338b3fc23ddca70cbc9de137d39cb8f729c3a67"
+}

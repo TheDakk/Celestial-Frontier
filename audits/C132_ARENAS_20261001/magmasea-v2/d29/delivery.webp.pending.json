@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "magmasea-v2",
+  "biome": "magmasea",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/magmasea-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/magmasea-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.webp",
+      "runtimeSha256": "ee6ccea96da3c3a783c3b66231f0bdb398b09fd2470e7a739ea03d06223970fd",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+        "sha256": "259bb7d86ca0a3f761542c908f132eb45da5349558569915baa18749622b1129"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "afa3d3bb038e00fadb3ac6bf499f97e0eece75deb02f70bf3a6c3181636bb680",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.png",
+        "sha256": "591f80012e1b2e283622b699589b3cd062498bb2f4d0907704e7b35dd7bb09b0"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.webp",
+      "runtimeSha256": "67bbd2fc4ffb67ed88fa2639f597328c88e7ea1891b8972275727b808714a01d",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.png",
+        "sha256": "2d9c0b7caab2b9db91961d8b258e2ef337e9af295556c22d23ce205311e9c4c2"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

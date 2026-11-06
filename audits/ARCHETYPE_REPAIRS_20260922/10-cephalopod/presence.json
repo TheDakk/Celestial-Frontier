@@ -1,0 +1,7 @@
+{
+  "schema":"cf.anatomy-presence/v2",
+  "absent":["fins"],
+  "hidden":[],
+  "folded":[],
+  "appendages":{"arms":8,"feedingTentacles":0}
+}

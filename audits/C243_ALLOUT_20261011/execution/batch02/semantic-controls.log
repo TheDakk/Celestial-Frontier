@@ -1,0 +1,16 @@
+✔ 38 actual semantic regions pack into32 without dropping alpha or an owner (7.608042ms)
+✔ rejects coercible labels and RGBA inputs before snapshotting (2.853458ms)
+✔ transparent source RGB is preserved and mutation fails its exact hash (102.795333ms)
+✔ snapshots prevent caller mutation during awaited hashing (1.770833ms)
+✔ plan refuses omitted/duplicate/reordered regions and an extra render part (1.156458ms)
+✔ refuses cross-depth, disconnected anatomy, nonadjacent source and unknown/empty owners (3.3495ms)
+✔ hash/paint/group mutation and biological absence are rejected (3.16475ms)
+✔ packing retains exact38-owner field bytes; every joint moves actual published geometry (635.964041ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 939.126542

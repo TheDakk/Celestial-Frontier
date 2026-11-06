@@ -1,0 +1,21 @@
+{
+  "stage": "finish-osprey-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-osprey-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/osprey/finished",
+    "audits/C279_CODEX_20261018/coordinator/finishes/osprey/subjects.json"
+  ],
+  "startedUnix": 1792339641.633426,
+  "beforeGiB": 72.77638626098633,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.672,
+  "lowestGiB": 62.40218734741211,
+  "afterGiB": 69.76568603515625
+}

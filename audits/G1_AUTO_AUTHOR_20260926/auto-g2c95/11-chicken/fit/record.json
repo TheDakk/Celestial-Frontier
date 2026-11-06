@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chicken\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2877309391\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 2877309391,
+    "ownerId": "authored:archetype-sprint/11-chicken",
+    "earthName": "Chicken"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2877309391,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 2,
+    "body": 15,
+    "loco": 1,
+    "trait": 6,
+    "size": 5,
+    "diet": 5,
+    "head": 7,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 11,
+    "detail": 1,
+    "accent": 3,
+    "temper": 7,
+    "sense": 7,
+    "repro": 7,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Chicken"
+  },
+  "geometry": {
+    "cutoutAssetHash": "49392525bd98a806cd38c6c3053549b0654af40bd44ef16d8f49eb3759c1e4a2",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7113062498414774,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5637958532695375,
+      0.5101275917065391
+    ],
+    "pelvis": [
+      0.4756778309409888,
+      0.5727272727272728
+    ],
+    "spine": [
+      0.5420255183413079,
+      0.48867623604465704
+    ],
+    "chest": [
+      0.5921850079744817,
+      0.4550239234449761
+    ],
+    "neck0": [
+      0.6015151515151514,
+      0.3860446570972887
+    ],
+    "neck1": [
+      0.6399521531100478,
+      0.32751196172248803
+    ],
+    "head": [
+      0.6943381180223286,
+      0.28046251993620414
+    ],
+    "beak": [
+      0.7192982456140351,
+      0.2997607655502392
+    ],
+    "legNearKnee": [
+      0.4178628389154705,
+      0.6355661881977671
+    ],
+    "legNearAnkle": [
+      0.4082934609250399,
+      0.6895534290271133
+    ],
+    "legNearFoot": [
+      0.4342105263157895,
+      0.7109250398724083
+    ],
+    "legFarKnee": [
+      0.516267942583732,
+      0.6231259968102073
+    ],
+    "legFarAnkle": [
+      0.5425837320574163,
+      0.6853269537480063
+    ],
+    "legFarFoot": [
+      0.5873205741626795,
+      0.7125199362041468
+    ],
+    "wingNearRoot": [
+      0.5399521531100478,
+      0.4114035087719298
+    ],
+    "wingNearTip": [
+      0.3850079744816587,
+      0.5719298245614035
+    ],
+    "wingFarRoot": [
+      0.5556618819776714,
+      0.3929027113237639
+    ],
+    "wingFarTip": [
+      0.46291866028708134,
+      0.38955342902711326
+    ],
+    "tailFan": [
+      0.33883572567783093,
+      0.4108452950558214
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/11-chicken/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile ground-foraging-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from grouse. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "081f3a36e8deff90e8a0c7d6ed659fbe469ca309c757016b4035a760d6d1c4e2",
+    "subjectSourceSha256": "74274a980d6dcffd152c77abd4200ff231f8584aeff83148b139190de0089a38",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.10809026747581028,
+      "spine": 0.10708217587812113,
+      "chest": 0.060402421669723795,
+      "neck0": 0.06960740452246947,
+      "neck1": 0.070024849299697,
+      "head": 0.07191302491093496,
+      "beak": 0.031550439825363666,
+      "legFarKnee": 0.06471157973931808,
+      "legFarAnkle": 0.0675387282942254,
+      "legFarFoot": 0.052353064250444885,
+      "legNearKnee": 0.08538912460271907,
+      "legNearAnkle": 0.054828780466918615,
+      "legNearFoot": 0.03359226143907439,
+      "wingFarRoot": 0.0720623599945736,
+      "wingFarTip": 0.09280367913748136,
+      "wingNearRoot": 0.06805153711370172,
+      "wingNearTip": 0.2231062449860335,
+      "tailFan": 0.21197060283839703
+    },
+    "measures": {
+      "body": 0.16561401128100234,
+      "bone-min": 0.031550439825363666,
+      "bone-max": 0.2231062449860335,
+      "leg/torso:legFar": 1.114660353046858,
+      "leg/torso:legNear": 1.0494895037220195,
+      "wing/torso": 0.995483642095485
+    }
+  },
+  "recipeHash": "e00e3747d9c9f636fdf0c18f02361847daf4af4d8c56223a40c5de22015311e9"
+}

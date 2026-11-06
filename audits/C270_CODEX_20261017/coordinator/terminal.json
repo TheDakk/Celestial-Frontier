@@ -1,0 +1,70 @@
+{
+  "schema": "cf.c270-terminal/v1",
+  "status": "TERMINAL",
+  "reservation": "C406",
+  "reservationStatus": "RELEASED",
+  "at": "2026-10-18T02:21:25.669364+00:00",
+  "sourceCommit": "6a5fb482486339ef5940cc3f546e411190a3f608",
+  "sourceCommitSignature": "G",
+  "sourceTrackedTreeWasCleanBeforeTerminalEdits": true,
+  "deliveryManifestSha256": "c7d1e6c1aa3e98c68f39aa5fe5d756a07fcf09042d1c967be0cff5fb0271c280",
+  "receipts": {
+    "audits/C270_CODEX_20261017/w4-delivery/final/snapshot-01/delivery.json": "9f0ab327803a6e0c0bc0e2272ca7696970dae22217916032162db1a50f15b211",
+    "audits/C270_CODEX_20261017/w4-delivery/final/snapshot-01/deliverable-files.json": "c7d1e6c1aa3e98c68f39aa5fe5d756a07fcf09042d1c967be0cff5fb0271c280",
+    "audits/C270_CODEX_20261017/w4-delivery/final/snapshot-01/verification.json": "ab7deb752035beaf4512ad4ec0f7b388b100437de0ed46df9ba7afcbac177cf0",
+    "audits/C270_CODEX_20261017/coordinator/c410-staging-byte-verification.json": "693deef6fd6a1e35faeb8f3eabb8b3690967ec50152d5ec32b55ff858cc3c98f",
+    "audits/C270_CODEX_20261017/coordinator/terminal-idle-lock.json": "a32fadf25daba339772b643cdbd58705a9d4bd904c1b43fa572959dbace3e790",
+    "audits/C270_CODEX_20261017/coordinator/c411-validate.log": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+  },
+  "uniqueTargets": 28,
+  "dispositions": {
+    "readyForClaude": [
+      "Frilled Lizard",
+      "Hoatzin"
+    ],
+    "filmHold": 12,
+    "newOriginalSourceHold": 8,
+    "preFilmHold": 5,
+    "fiddlerCpuSourceHold": 1
+  },
+  "firstNativeDiagnostics": 14,
+  "finishedNativeDiagnostics": 4,
+  "successfulActiveFinishChains": 4,
+  "retainedPreInferenceRefusals": 3,
+  "oldRefusalsExecutedInference": false,
+  "stageStatuses": {
+    "RED": 3,
+    "PASS": 26
+  },
+  "allEightGenerationLeasesReleased": true,
+  "allThreeWorkersCompletedAndFrozen": true,
+  "jobsQueued": [],
+  "sharedAndWorkspaceLocksAvailable": true,
+  "currentFreeDiskGiB": 79.345703125,
+  "minimumRecordedStageFreeDiskGiB": 69.41788101196289,
+  "inferenceStartFloorGiB": 42,
+  "runningFloorGiB": 30,
+  "peerMailbox": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+  "peerMailboxReadThrough": "C270",
+  "peerMailboxSha256": "5f3cc445f8e62dd1ba55d6456b8504d34937b59b4a4d831e025f28aea5065ee0",
+  "peerHead": "a77a829a07bc5e9a5e39aac95368bc6f7abe06d5",
+  "incomingPeerCommits": 0,
+  "cachedOriginBehindAheadBeforeTerminal": "0\t372",
+  "newAdmissions": 0,
+  "coverage": {
+    "certified": 385,
+    "pendingCertification": 76,
+    "unaccepted": 170,
+    "total": 631
+  },
+  "runtimeDiffFrom69d625ed7": "EMPTY",
+  "runtimePatchesApplied": false,
+  "allPairs": "HOLD",
+  "prohibitedFilmsRun": false,
+  "pinkFringeClass": "HOLD including Dragonfish",
+  "GithubWrites": false,
+  "certification": false,
+  "C223": false,
+  "codexNext": "Stop bounded queue. No automatic continuation.",
+  "claudeNext": "Merge signed newer openai/mac after usual local checks; independently review two exact READY films and diagnose holds only with changed verified inputs. No Dakk relay, app switch or PR needed."
+}

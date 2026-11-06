@@ -1,0 +1,20 @@
+{
+  "stage": "finished-native-fur-seal-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finished-native-fur-seal-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792275773.0881448,
+  "beforeGiB": 90.45782852172852,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.035,
+  "lowestGiB": 90.0561752319336,
+  "afterGiB": 90.42931747436523
+}

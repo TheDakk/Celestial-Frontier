@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Fur Seal",
+  "slug": "08-fur-seal",
+  "id": "c266-intake-fur-seal",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-21-fur-seal",
+  "masterSha256": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+  "masterCopySha256": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+  "subjectSourceSha256": "537d9ce00f24b948ef1cfee36d4abbefefbeb18fc2be80acd21d2e68ee859d53",
+  "promptSha256": "9ff19aaa80458939ca45c850dc2f7c2f15f0cac640f5c67c2e06c83ada267777",
+  "refusal": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+  "observation": "Full-size review: upright fur seal; small near external ear flap painted behind the eye (x≈831-859, y≈405-419); the far ear is hidden behind the head in this strict lateral view (no far-ear paint exists, so the refusal is correct about paint but the anatomy is occluded, not absent). Long fore-flippers propping the chest, two hind flippers on the ground, whiskered dog-like muzzle. The small tail is not visible between the hind flippers.",
+  "joints": 31,
+  "parts": 22,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/08-fur-seal.mjs"
+}

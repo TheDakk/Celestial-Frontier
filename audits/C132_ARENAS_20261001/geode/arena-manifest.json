@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/geode/arena-recipe.json",
+    "sha256": "46be226ed88c1dce942d8d8f1a64e00e15c19a64e6bb2ebf4e7671e6bc3af37c"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+        "sha256": "91fda9e39bce736f279ce7139c3e00e5d993f85c97d23fcd116a933e5ba7dd71"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+        "sha256": "91fda9e39bce736f279ce7139c3e00e5d993f85c97d23fcd116a933e5ba7dd71"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/geode/arena-mid.png",
+        "sha256": "d11278b2f1ea19a89f38c9f9edf60ca8ce671cc13a634d2099c6abdc8d156a4b"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-mid.png",
+        "sha256": "04b9e11a384536bd8ebb5eede20b55312bbae9b3f50140f71646fde9ad2ff729"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/geode/arena-near.png",
+        "sha256": "9f476f217a389934de3759dfc60834bc32aa2705d2f6138deddf4aa63eac8ddd"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-near.png",
+        "sha256": "7bf04f80a2340518446cfd1e0d243f629626eb21943279ef9ecef5337172969d"
+      }
+    }
+  ]
+}

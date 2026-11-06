@@ -1,0 +1,32 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Coastal Lizard",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "b2081f60a2d4816835040ffd9e546e809810fd73e8cebdfe80561e63334a74b5",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "lizard",
+  "authoringCreated": false,
+  "sourceHead": "4cad826c922d7b7952a357aa9391b398f792e09a",
+  "basePromptSha256": "4bc23d0b0d2f9e31d7ad4ff04f326ed962594132fc9a3612deb3ce4bbf32f648",
+  "layoutCompilerSha256": "88f275578192695408fb33a8b211cd53b9557d72b99999cce7b7215ce6742f36",
+  "layoutClarification": {
+    "framing": "ZOOMED-OUT COMPOSITION: one small complete specimen centred in a large empty pure magenta square. The entire creature including its natural tail and all toes spans only HALF the canvas width and no more than HALF its height. Keep at least 200 pixels of empty magenta on every side of the 1254-square canvas. Do not shorten or crop the tail to make the body larger. Empty margin is intentional.",
+    "layout": "Strict side profile facing RIGHT, head right and tail left. Exactly one anatomically accurate adult with FOUR natural legs, two forelegs and two hindlegs, each visibly attached to the correct body region. Offset the near and far legs in a quiet natural planted walking stride so their shafts and every foot are separately readable against the background; do not invent, elongate, cross or detach a limb to expose it. Preserve the real species posture, natural bend of elbows and knees, exact toes and natural tail shape. The true tail is continuous from its body attachment through its full natural tip, visually clear of feet; do not lengthen a short tail. Preserve all canonical identity features and natural pigment patterns. No mammalian external ears, fur, hooves or invented horns. No scenery, floor, cast shadow, labels or props. Every natural structure must remain inside the frame with at least 8 percent clear margin. Preserve the natural lizard sprawl, bent elbows and knees, species-correct scales, head and complete tail length. Retain natural toe pads, claws, dewlaps, crests and colour bands only where this species has them. Do not turn the legs into straight mammalian pillars.",
+    "prefix": "Species identity FIRST: long tapering tail longer than the body; sprawling bent-elbow limbs with splayed clawed toes; scaly wedge head with a visible ear opening. One Earth Coastal Lizard. Natural named anatomy and pigments take priority over raw procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: one small complete specimen centred in a large empty pure magenta square. The entire creature including its natural tail and all toes spans only HALF the canvas width and no more than HALF its height. Keep at least 200 pixels of empty magenta on every side of the 1254-square canvas. Do not shorten or crop the tail to make the body larger. Empty margin is intentional.\nPreserve the natural lizard sprawl, bent elbows and knees, species-correct scales, head and complete tail length. Retain natural toe pads, claws, dewlaps, crests and colour bands only where this species has them. Do not turn the legs into straight mammalian pillars.\n\n"
+  },
+  "sourceSelection": "Novel G2 subject absent from accepted and held gallery rows, all prior G2 pilots and the manual corpus; checked before generation.",
+  "preCompositionPromptSha256": "9fc89be3855ebcb12c99f304d01f26a72ed75e317655e5ecbf1bae8bb00920fc",
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 square is mostly empty magenta. Zoom the creature OUT, making it TINY within the image. The COMPLETE silhouette, including both the long tail tip and snout, must lie within the central rectangle x=314 through x=940, y=314 through y=940. Do not let any toe, tail or nose approach the outer half of the canvas. The bounding rectangle is a placement instruction only: DO NOT PAINT A RECTANGLE, RULER, GRID OR LABEL. Preserve natural body proportions; make the entire animal smaller, not its tail shorter.",
+  "compositionCompilerSha256": "5b1aa12bea3ae0a5406ad1707b5d330a7fd0bbb1d4b5ed136a2a037c34421139"
+}

@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tanager\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2786421096\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 2786421096,
+    "ownerId": "authored:archetype-sprint/13-tanager",
+    "earthName": "Tanager"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2786421096,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 15,
+    "body": 1,
+    "loco": 0,
+    "trait": 16,
+    "size": 2,
+    "diet": 5,
+    "head": 9,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 6,
+    "detail": 4,
+    "accent": 14,
+    "temper": 8,
+    "sense": 2,
+    "repro": 5,
+    "life": 4,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tanager"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b29c75e172a38cc05447f686c3c674d3b0b61e80c4e3135307624c723938f00d",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6717140190377443,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5086921850079744,
+      0.5058213716108453
+    ],
+    "pelvis": [
+      0.48748006379585324,
+      0.5437001594896331
+    ],
+    "spine": [
+      0.5490430622009569,
+      0.4925837320574163
+    ],
+    "chest": [
+      0.6239234449760765,
+      0.4517543859649123
+    ],
+    "neck0": [
+      0.6448165869218501,
+      0.4148325358851675
+    ],
+    "neck1": [
+      0.6539872408293461,
+      0.383652312599681
+    ],
+    "head": [
+      0.65311004784689,
+      0.35207336523126
+    ],
+    "beak": [
+      0.6956140350877192,
+      0.36435406698564593
+    ],
+    "legNearKnee": [
+      0.46475279106858053,
+      0.5743221690590112
+    ],
+    "legNearAnkle": [
+      0.4725677830940989,
+      0.6384370015948964
+    ],
+    "legNearFoot": [
+      0.48540669856459334,
+      0.6525518341307814
+    ],
+    "legFarKnee": [
+      0.5430622009569378,
+      0.5704146730462519
+    ],
+    "legFarAnkle": [
+      0.5820574162679426,
+      0.6378787878787878
+    ],
+    "legFarFoot": [
+      0.5983253588516746,
+      0.6487240829346093
+    ],
+    "wingNearRoot": [
+      0.5614832535885168,
+      0.433652312599681
+    ],
+    "wingNearTip": [
+      0.40861244019138754,
+      0.48939393939393944
+    ],
+    "wingFarRoot": [
+      0.5502392344497608,
+      0.40606060606060607
+    ],
+    "wingFarTip": [
+      0.4789473684210527,
+      0.42639553429027116
+    ],
+    "tailFan": [
+      0.3554226475279107,
+      0.5327751196172249
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/13-tanager/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "12ce5963ec604926c5fe10e6a2a08b076c0a1d1799ff8249f7fb3c2d365784f9",
+    "subjectSourceSha256": "052b50e5e5de17edf76ede1caed3a4e8e9e0a31a61cb98ff3a786de68859a552",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04341378418755876,
+      "spine": 0.08001807249652972,
+      "chest": 0.08528837685693114,
+      "neck0": 0.0424234179867369,
+      "neck1": 0.032500880253061845,
+      "head": 0.03159112825503351,
+      "beak": 0.04424256510362793,
+      "legFarKnee": 0.06166878631820467,
+      "legFarAnkle": 0.0779232545989271,
+      "legFarFoot": 0.01955163371065,
+      "legNearKnee": 0.03813445155875351,
+      "legNearAnkle": 0.06458936329972227,
+      "legNearFoot": 0.01908052011803088,
+      "wingFarRoot": 0.08670227449628762,
+      "wingFarTip": 0.07413527816067658,
+      "wingNearRoot": 0.06501124949295549,
+      "wingNearTip": 0.1627163622576731,
+      "tailFan": 0.13250855703530381
+    },
+    "measures": {
+      "body": 0.16453212919351334,
+      "bone-min": 0.01908052011803088,
+      "bone-max": 0.1627163622576731,
+      "leg/torso:legFar": 0.9672498338643999,
+      "leg/torso:legNear": 0.7403072917949498,
+      "wing/torso": 0.9775449539572676
+    }
+  },
+  "recipeHash": "8e2811ec0a13bb215441807b5f5d520f337885d75af66bfc8e44979e3ef008d9"
+}

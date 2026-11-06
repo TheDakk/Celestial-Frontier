@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c444-02-cobra-c",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "35a5320aa982ef0538f48d7559a30778a901edfe9553d0eeb08e275420700cb1",
+    "pngSha256": "75bdf378c8e175401bed320ca01c39a40c0f9be545db4e1f44e57c5f6439112f"
+  },
+  "parts": [
+    {
+      "name": "body-seg0.png",
+      "sha256": "26a6212116444997328ed14148fdcbe0d602341e9383761a6a86ab66ad65302f"
+    },
+    {
+      "name": "body-seg1.png",
+      "sha256": "dddd5e007d8c47b1447ee7ec043182dbc46fbeddb3d85bf7a7c4a65150b86dca"
+    },
+    {
+      "name": "body-seg2.png",
+      "sha256": "23f06b9cd2e200373c0fe6d529206ef8ee1245e069d944a6f7e25cbf810ec034"
+    },
+    {
+      "name": "body-seg3.png",
+      "sha256": "703228f094545d6b9dd134ec12a89ef07d2f78ed8c90fa94ea18daf70293bb7f"
+    },
+    {
+      "name": "body-seg4.png",
+      "sha256": "97ff9143914a9e8fc05a37433c64b0d8f805d2bbb682c3327832784e2ae42351"
+    },
+    {
+      "name": "body-seg5.png",
+      "sha256": "84b41262f05600b81f1a802c64e96e4e1bb84011d5d731bad347aa07b5637674"
+    },
+    {
+      "name": "body-seg6.png",
+      "sha256": "0acd8e0c9c25b753e2751f94dd87e0c0d41b3b1c441f6cfbf6ff93e31c9b71bb"
+    },
+    {
+      "name": "body-seg7.png",
+      "sha256": "9d714d2f85c1e0a4a50e912cfa25b491a18f45e0668965c5c952870eb8380d4b"
+    },
+    {
+      "name": "body-seg8.png",
+      "sha256": "21623950ece935b503439c5079a7ddead10d4c27f029a1ce554ddedf6dcf0919"
+    },
+    {
+      "name": "head.png",
+      "sha256": "6c1ba7156883d7d880ad36c7f2c91a7ee36f143c318b4a73e206da7799462d9c"
+    },
+    {
+      "name": "hood-neck-root.png",
+      "sha256": "5b625664af05d6ef4421fe86560e490fc602c89f2256abe9208af50c6b1b3d62"
+    },
+    {
+      "name": "mouth-and-retained-fork.png",
+      "sha256": "e5281f66daf6d090ecb2218001a1f58c8c102a87066252397f4fe6fecd94a5ce"
+    },
+    {
+      "name": "tail-seg9-complete-source-tip.png",
+      "sha256": "df089a605574158e39abb6296aad286f5e40dd3c9869ea9d8ba85893222b0cd9"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

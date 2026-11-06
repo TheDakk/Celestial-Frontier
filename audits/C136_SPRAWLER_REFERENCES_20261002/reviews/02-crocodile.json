@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "masterSha256": "62969b41d45b809baadc954106b24c84d0bd9f8f2acb6fd5528249d72c9c17ef",
+  "subjectSha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3",
+  "promptSha256": "3ff8cd71fee4560e3bca7611944248a8a032e37d4d7b755fdebf58d6fc1506d8",
+  "profileId": "crocodilian",
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: long narrow snout with enlarged lower tooth visible, rows of scutes, continuous banded swimming tail and four visible feet. Far proximal legs remain body-occluded. Side margins visibly below 8 percent; framing hold. Actual tail is comparatively short for a crocodile, and dorsolateral rather than strict side presentation needs review.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/02-crocodile/visual-review.json",
+    "sha256": "8bd73d2cc4637204cd3fb68461f868572872f489bea52ebf4045e9f4afaa1281"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

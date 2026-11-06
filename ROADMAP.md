@@ -1,290 +1,275 @@
-# Celestial Frontier — Roadmap & Session Handoff
+# Celestial Frontier — live handoff
 
-## 📌 PINNED — STANDING PROCEDURE (Dakk, 2026-07-20): UPDATE THE MARKDOWN DOCS AS WE GO.
+## O1 overnight sprint — morning report, 2026-11-02 (Claude)
 
-The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION · BIOME_ATLAS ·
-SPECIES_AND_GENOME · RARITY_AND_GRADES · RARITY_UNIVERSAL · CAPTURE_AND_BIOSPHERE ·
-COMBAT_AND_CONQUEST · PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS ·
-BREEDING_AND_SHARING · DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO · AUDIO_LICENSES ·
-EXPLORATION_SHIPS_LOOT_AND_COMPANIONS) are current system references. Update the affected reference
-and `celestial-frontier-codebase-reference.md` in the same batch as its code; source wins when they
-disagree. `PROCESS_LAWS.md` is the standing reference for earned implementation/testing laws.
+> **D50 tier 2 + D52 (2026-11-03):** 100 certified species delivered on signed branch `anthropic/d50-delivery` 72ec482362 (D52 representative matchup pairs on the same branch). Develop there: one expected red (Compendium/I5 authority) → fresh I5 epoch after O3, then merge into anthropic/mac. Full 381 waits on D55 (test scale).
+> **D50 slice 1 (2026-11-03):** 24 certified species delivered into the game library on signed branch `anthropic/d50-delivery` 4b908221e0 (not yet on anthropic/mac: needs a fresh I5 epoch after O3). 381/451 pass every game gate; 70 held with reasons. Full roster waits on D52 (matchup picker). Details: that branch's `audits/D50_DELIVERY_20261103/README.md`.
+> **O3 CLOSED (C584 TERMINAL, C585):** Stick Insect, Whale and Lancelet accepted at full size and certified vs C502 → **coverage 496/631**; 48 holds, 9 author prerequisites, 2 partial (ledger `audits/O3_20261103/w4-terminal-ledger-r05/current-ledger.json`). Guardian tail test red (same-object cache assertion) stays HOLD.
+> **D50 + D56 on anthropic/mac, I5 GREEN (C588, 2026-11-04):** 100 delivered species are in the game library. The C586 phone-heap red (whole art-library manifest held by the page) is fixed by D56: the page reads the library through a pinned shard index. Fresh epoch C588 PASS and selected (phone used 11.34 MB vs 11.53 MB ceiling). PR #44 push (Dakk "push 44", 2026-11-04) REFUSED by the identity guard: Codex O2/O3 evidence carries the home path (D58); local browser boundary stops at the retired v1 Compendium step (D57). Nothing pushed.
+> **Update 2026-11-03 (C549):** O2 ended at a profile HOLD (C546: SceneMemory 20 s timeout under worker CPU load; green 6097/6102 on the merged tree when idle). Clam accepted and certified against C502 → **coverage 493/631**. Open: 48 not reached, 14 holds (9 source material incl. Egret, 4 owner/pivot, guardian r03 tail/contact static). D40 tools are offline-only; C502 still applies. Next: O3 per TO_CODEX C549.
+> **Update 2026-11-02 (C533):** Dakk decided D47 (guardians at 1254²) and D48. D48 ran once and was green end to end: Snowshoe Hare, Isopod and Cockatoo certified against C502 (`i5-v2-0a5b6d4d00c8`); **coverage 492/631**. Next: Codex program O2 (guardian r03 rig/film, Egret regen, Clam lip, the 60 deferred, white-tint check), per TO_CODEX C533.
 
-## 📌 PINNED — ROADMAP HYGIENE
+**Result:** 3 new Earth species accepted (Snowshoe Hare, Isopod, Cockatoo), **not yet certified**; coverage stays 489/631.
+Gallery for your QA pass: `audits/OVERNIGHT_20261101/gallery/README.md`; tick notes `audits/OVERNIGHT_20261101/CLAUDE_NOTES.md`.
 
-Keep this file as the lean live handoff: current state, the active batch, next work and process.
-Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newest first, with
-nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
-the archive verbatim and refresh this handoff in place.
+- **Codex (C510–C530, TERMINAL at the 06:00 cutoff):** all 131 missing source paintings generated and source-reviewed; 116 serial stages.
+  Final 142: 3 accepted, 79 evidenced HOLD (exact defect + next step per species in
+  `audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c530-terminal/remaining-species.tsv`), 60 eligible but not reached.
+- **Claude review:** 5 READY packets reviewed at full size with 2x crops. ACCEPT Hare, Isopod, Cockatoo. HOLD Clam (upper-valve lip
+  floats as a separate sliver when gaped) and Egret (lilac/magenta cast on white plumage; the pink metric misses tints on white).
+- **D44 end chain STOPPED at step 1:** the pre-certification develop gate went red (4/6102 v1 seal tests). The cause was Claude's
+  stale untracked `main.js`: root `validate.js` rebuilt the tracked html from it. Repaired (html restored, `main.js` regenerated from
+  the tracked html, tree clean). No retry was run overnight, per D44. Re-run needs D48. The fresh I5 epoch was skipped because nothing
+  in the runtime changed since C502.
+- **Guardian:** the third bear draw has good framing (r03); the generator only makes 1254² → D47.
+- **Pace:** 3 accepts in 7.5 h. The bottleneck is the serial native → W2 → finish → re-film chain plus source-level holds; the 60
+  deferred species are the ready queue for the next run.
 
-## SESSION HANDOFF — 2026-09-05 · BATCH 4 FINAL REVIEW HANDOFF
+**Decisions for Dakk:** D47 (guardian at generator-native 1254², recommended yes), D48 (re-run the single D44 certification, recommended
+yes). Then the next O-run: resume the 60 deferred species and the bivalve/white-bird fixes.
 
-## PR #41 hosted-timeout correction — 2026-09-05
+## C524 O1 Isopod READY — ACTIVE,2026-11-02
 
-Dakk/Claude's hosted handoff reports run `33976307813`, battery job `101333510983`,
-agent lane on `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, RED at
-“v2 base-profile static gates”: 1 failed / 3,099 passed / 1 skipped. The unchanged
-Glass targeted CLI test took 16,693 ms against its 15,000 ms cap (PR #40: 13,372 ms).
-The larger 301-file suite slowed heavy files across the runner; this is an instrument
-timeout correction. No retry was run; the approval label was removed; PR #41 remains open.
+NewREADY:Isopod,allfivefinishedstills/27parts/61pins;C522signedpreAI→conservedfinish/rebind/freshnative→independentW2/rootW3CLEAN, C261461922exact0frags1/3pink. PeerC523HareACCEPTO1#1. Cockatooindependentfive+16twoX/focused4XCLEAN/0frags3/3pink, preAIcheckpointsigningnow. Egret17part/sourceconserved/plumejoin+depth/fullstaticPASS andClam34postsealdespill/200+70ownerpixels/fullstaticPASS producersfrozenbeforefilm. Warthogolivematerial+20headjawownerHOLD/repairinprep; WhaleleftthroatwindowHOLD/noAI. Exactwave audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c524-isopod-ready-cockatoo-checkpoint. No runtime/registry/seal/limitchanges/rootvalidatePASS;free53.79GiB,12580128Bownregenscratchremoved/all66Harepinsunchanged. Onediskreportdirectlauncherfailurebeforebodyretained,zshdocumentedentryPASS. Rootserial42start30floorACTIVEuntil06EST; ClaudeCPUreviewIsopodnow thenI5+D44afterTERMINAL. NoDakkrelay/appswitch/remote/protectedbranch/release/deploy.
 
-Signed, locally verified correction head: `8f8948feb857a279b347ec7ffa096582befd7a3c`.
-Only eleven timeout literals changed: Glass targeted CLI test 15,000 → 60,000 ms and
-its child 10,000 → 20,000 ms; four evidence-chain test caps and five acquisition-planner
-20,000 ms test caps → 60,000 ms. The optional acquisition 30,000 ms cap and evidence-chain
-15,000 ms child timeout remain unchanged. Assertions, fixtures, selection, worker settings,
-global config, product, tools, pins, policy and workflows are unchanged.
+## C522 O1 Hare READY — ACTIVE,2026-11-02
 
-All requested commands passed on that exact signed source in a fresh local checkout with
-no root `main.js`, no worker overrides and clean tracked source before/after:
-typecheck 2.955 s; artunused 1.476 s; Vitest 301 files / 3,100 passed / 1 skipped
-(43.631 s); exact `node tools/check-profile.mjs --profile=develop` once (46.837 s).
-The profile also passed artaudit, overridecheck and speccheck. No browser run was repeated.
+READY_FOR_CLAUDE:SnowshoeHare,allfivefinishedstills/29parts/66pins, signedC520preAI→conservedfinish/rebind/freshnative→independentfinishedW2+rootW3CLEAN;C261459/918exactHare0frags0pink. Isopodindependentfive+16twoXPHYSICALCLEAN/0frags2/3pink<100, preAIcheckpointsigningnow. Cockatoo17partRGBAunchanged/source-depth+3joincandidatefullstaticPASS, producerbeforefilm. WhaleR03rightheadcutclosed butleftthroatwindowHOLD/noAI. Warthog1351ownerpixelr02awaitsintake; Clam200owner+34postsealdespillrepairinprogress. Exactwave audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c522-hare-ready-isopod-checkpoint. Runtime/registry/seals/limitsunchanged/rootvalidatePASS; free53.79GiB. Rootone42start30floorreservationACTIVEuntil06EST; ClaudeCPUreviewHarenow thenI5+D44afterTERMINAL. NoDakkrelay/appswitch/remote/protectedbranch/release/deploy.
 
-OpenAI/Codex on macOS owns `/Users/dakk/Projects/celestial-frontier-openai-mac`,
-`openai/review-batch4-gameplay-20260905` and its matching origin branch; unrelated
-untracked `.DS_Store` remains untouched. These four reporting files form a signed
-documentation-only successor; the final user handoff names its exact pushed SHA.
-Budget UNFROZEN, PUBLIC per Dakk, private fallback cap 3,000; zero hosted attempts authorized.
-The authorized branch push updates existing PR #41 → `develop` without a workflow trigger
-(the battery is label-only; other workflows are manual). Codex stops after this push.
-Dakk separately authorizes agent-lane attempt 2 for the exact reported head and base;
-Claude may fetch the correction from its own `anthropic/windows` checkout. No new PR,
-label, hosted attempt, merge or release is authorized. No need to open Claude now unless
-Dakk wants that review; the copy-ready PR fields remain in the proposed-PR audit.
+## C520 O1 Hare signed pre-AI — ACTIVE,2026-11-02
 
-## Review correction — tracked v1 test source, 2026-09-05
+HareR02 nativeC518producerG, all5fullsize/root+independentW2/10twoXcrops PHYSICALCLEAN;C261456/912exact0frags0pink. SignedW2checkpoint BEFOREAI: coordinator/finishes/050-snowshoe-hare-owner-r02. Nextfinish/rebind/freshfilm/C261/W2W3 beforeREADY. Isopod5,323ownerpixels/39anchors/RGBAunchanged andWhaleR03existingbodyheadjoin+184pixels fullstaticPASS/producersbeforefilm. Clamintake/staticPASS but200ownerpixels+pinkgapfleckHOLD/boundedrepair; WarthogsingleautoREFUSE retained, observedauthoringunderway. Runtime/registry/seals/limitsunchanged; rootvalidatePASS/lastproperdevelop6097PASS. Exactwave audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c520-hare-pre-ai. O1oneheavyreservation42start30floorACTIVEuntil06EST; ClaudeCPUonly thenI5+D44afterTERMINAL. NoDakkrelay/appswitch/remote/protectedbranch/release/deploy.
 
-Signed correction source: `2881cda1818b4d81b98f10da63c442b9f837d504`, successor to reviewed `bc42dbc`.
-Only the travel-presentation test's module-level legacy read changes to
-`readTrackedV1Source().script`. The sixth test still uses fs/fileURLToPath, so those
-imports remain. All six test bodies/assertions, product files, tools, pins and authorities are unchanged.
+## C518 O1 Hare producer — ACTIVE,2026-11-02
 
-With root `main.js` absent: typecheck PASS (2.470 s), artunused PASS (1.749 s),
-Vitest PASS (301 files / 3,100 passed / 1 skipped; 61.000 s), and
-`node tools/check-profile.mjs --profile=develop` PASS once (67.410 s).
-The profile also passes artaudit (34 sources), overridecheck (1,014 keys) and speccheck
-(454 fields). Both full suites used local `VITEST_MAX_WORKERS=4`; selection and timeouts
-are unchanged. The ignored bootstrap was restored byte-for-byte; unrelated .DS_Store is untouched.
+All131sources fullsizeCPUreviewed,candidate/HOLD only. BlueWhaler02 actualnative retains throat/bodywindow and head/bodycut despiteC261455/910 current0frags0pink;W2HOLD/noAI. Hareobserved4,152ownerpixels/sixanchorfix preservesRGBA+tail;19actions/presentation fullstaticPASS, producersigningbeforefilm. Isopod existingliveD40 restores39anchors afterunchangedseal/nativealpha intakePASS but observed27partowners needrepairbeforefilm. No runtime/registry/seal/limitchanges. Evidence audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c518-hare-producer. One serialreservationACTIVE42start30floor until06EST; ClaudeCPUonly thenI5+D44 afterTERMINAL. No Dakkrelay/appswitch/remote/protectedbranch/release/deploy.
 
-The first unrestricted Vitest run stopped at 299 files passed / 2 failed: the existing
-arc4-acquisition-planner 5,000 ms and evidence-chain-tools 20,000 ms timeout limits.
-No ENOENT occurred. That red is retained; only the local worker cap changed before the passing run.
-Initial / passing-suite / profile log SHA256:
-`d5ffb8673de34e5a5f4c0d06923c02a29c81e310e1b7d50ad17a65e07cc555ce` /
-`18e5f66f378fefe1c6d4b4423927d46c093773810a208cf329477bdb6c3a9f5e` /
-`09c98d45f492b34549eecb5f6754d8448bca5a630d8e5ad5e04d59dc2132092f`.
+## C516 O1 all-source wave — ACTIVE,2026-11-02
 
-Codex publishes the signed correction and the three requested handoff documents; the final
-handoff names the reporting successor's exact pushed SHA. Claude may fetch that head from its
-own anthropic/windows checkout; this work is not in develop. Dakk separately authorizes the
-single agent-lane attempt. Budget UNFROZEN, PUBLIC, zero hosted attempts authorized.
-No PR, label, hosted attempt, merge or release was performed.
+All131 unique unrepresented fauna sources generated1254² with original hashes/requests; source-review/qualification continues, READYnone. Thirdguardian framingPASS butsize1254vs1536→D47OPEN/HOLD. BlueWhaler01 actualnativehead/throatholes HOLD despiteC2610/0, noAI; r02 observedowner/jawrepair freshstaticPASS producerbeforefilm; Honeybee461pixelowner/staticimprovement stillwingmaterialHOLD/notnativeeligible. Dragonfish500pixelownerrepair staticPASS but independentfinmaterialHOLD, itsplanrefusesnative. Lionfish/Pipefish freshgreen framingPASS/materialHOLD; Snowshoe limb/earownerrepair underway. Exactsource131list+stageevidence: audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c516-all-sources. No runtime/registry/seal/limitchanges. Codex oneheavyreservation ACTIVE,42start/30floor; finishcurrentstageat06:00EST/11:00UTC thenTERMINAL/release. Claude CPUreview now thenI5+oneD44 afterTERMINAL. No Dakkrelay/appswitchneeded; no push/PR/GitHub/hosted/develop/main/release/deploy.
 
-## Morning report — Batch 4 complete, 2026-09-05
+## C514 O1 native producer — ACTIVE,2026-11-02
 
-The signed core and all five primary gameplay items are accepted and pushed. Stretch 3a–3c
-is complete. Step 3d's first analytical pass is recorded; answerability and throttled galaxy
-timings remain parked because the existing profiler could not resolve them. No product step
-was reverted. All final required correctness checks passed.
+BlueWhale observed13part source/fit PASS_STATIC, independent W3source/rest conservation clean; one665690edgeownerpixel disclosed. Nativeplan under audits/OVERNIGHT_20261101/codex/coordinator/plans/017-blue-whale-observed-r01 is being signed before binding/film. No W2checkpoint/finish/READY yet. Dragonfish literal68pixel toothowner repair reduces cast166.75ms4→2folds; retainedHOLD/no native. Correctport/v2developPASS on signedC512; wrongroot-entrypoint failure preserved, no gate bypass. Runtime/registry/seals/limits unchanged. Reservation remainsACTIVE until drained/06:00EST; next native→C261→fullsizephysical/W2signedcheckpoint→AI→freshnative→W2W3 beforeREADY. ClaudeCPUreview now, I5+D44 afterTERMINAL. No Dakkrelay/appswitch or hosted action needed.
 
-OpenAI/Codex worked on macOS in `/Users/dakk/Projects/celestial-frontier-openai-mac`,
-branch `openai/review-batch4-gameplay-20260905`, with its matching origin branch.
-Base develop is `9ea01041dcdc711190bbf909ea8bb743cd993734`; a final fetch confirmed that base unchanged.
-The original `openai/mac` history stays at `84b6f22`; parked backup
-`cf1b9a7843200ecc281c5113b4139909dc0e3a29` remains preserved.
+## C512 O1 overnight — ACTIVE, 2026-11-02
 
-**Final validated head: `b173353b9e273c4b223e8ee8d6ee181081f79b4a`, pushed at 13:11:29 UTC.**
-This morning report is carried in a signed documentation-only successor. Its own commit hash
-cannot be embedded in its contents; the final user handoff records that successor's exact
-pushed SHA and time. Browser evidence below names the validated head, not the later report.
+Single Codex heavy reservation remains ACTIVE until queue drained or06:00EST (11:00UTC); Claude CPU-only review until TERMINAL, then Claude owns I5 +oneD44. C510 guardian raw source delivered early, both1254²/framingHOLD; signed C511 review merged3252745, D47size questionOPEN, no upscale. C512 source wave:36/131 unique fauna paintings plus CaveCricketcorrective; READYnone. Current source reviews and exact11registry HOLD plans: audits/OVERNIGHT_20261101/codex/{w1-source,w4-paperwork}. BlueWhale G1transfer REFUSE10.4% unexplainedanatomy retained; observedauthoring underway.
 
-### Checkpoints
+Scopedidletoolmaintenance+sevenCLIchecksPASS; Node26.13.0 preservedthroughO1. RootvalidatePASS and develop6097PASS onC510 aftermaintenance. Runtime/game-importedpaths unchanged, I5_CHANGES.md is authoritative. No registry/certification/seal/limit changes. NextCodex: remaining sourcegeneration, one representativepercompatiblefamily, signed W2CLEAN beforeAI; finish/native/C261/W2W3 beforeREADY. Newsealedrow/limit requestsbecomeHOLD+proposal. Claude may review sourceCPU now; no Dakkrelay/appswitchrequired. No push/PR/GitHub/hosted/develop/main/release/deploy. Exactwaveproof: audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c512-source-wave/delivery.json.
 
-All times are UTC on 2026-09-05. Fast counts are test files / passed tests / skipped tests.
-Browser durations are command durations, not player-response timings. Every accepted phone
-pair had zero findings and zero instrument failures.
+## C507 Claude review of C506 — 2026-11-01
 
-| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
-| --- | --- | --- | --- | --- |
-| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
-| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
-| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
-| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
-| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
-| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
-| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
-| 3d phone analysis | Accepted source `b173353b9e273c4b223e8ee8d6ee181081f79b4a`; documentation successor follows | `b173353b9e273c4b223e8ee8d6ee181081f79b4a` pushed 2026-09-05 13:11:29 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 386.147s; small/large phone 16.466s / 16.521s PASS; zero findings/instrument failures |
+Lane anthropic/mac. Merged signed openai/mac 1dcb95ddd1 (C504–C506, all G, no symlinks) as signed --no-ff a29af4915e. Independent check: gallery-registry.json diff is exactly 104 note-only lines, every removed note `HELD (PENDING-CERT)`, every added note `certified i5-v2-0a5b6d4d00c8 on 0a5b6d4d00`, no other field touched. Develop gate `node tools/check-profile.mjs --profile=develop` (run from port/v2) PASS on the merged head. Disk 65 GiB free (above 60 target). D43 ACCEPTED: 489/631 certified, 0 pending.
 
-### Final validation
+Next (needs Dakk): the remaining 142 (11 registry HOLD + 131 unrepresented) need a new authorized authoring program; C501 QA caveats are for a later QA pass. No push/PR/label/hosted/release/deploy authorized.
 
-The new raw-evidence archive is retained locally, outside Git. Automatic approval review rejected its public upload because raw local logs and phone evidence were not specifically authorized for that destination. Its publication is parked; this report retains exact source, result and artifact identities. No archive content is included in this reporting push.
+## C506 D43 certification — TERMINAL,2026-10-20
 
-At the final validated source: typecheck and artunused PASS; **301 test files, 3,100 passed,
-1 skipped**, four workers with unchanged selection and timeouts. Glass selftest PASS in
-1.996 s. Slice PASS in 386.147 s; small/large phone PASS in
-16.466 / 16.521 s. Root validation PASS with all **50 legacy
-fingerprints unchanged**, and Actions budget-policy selftest PASS with **81 controls**.
-The fast suite checked the unchanged product/test tree before signing the evidence-document
-commit; the final selftest/browser/root/policy checks ran on the exact clean committed head.
+Ownlane openai/mac. Delivery: audits/C504_D43_CERTIFICATION_20261020/delivery/terminal/README.md. Signed peer44491cbcca/threeG commits merged9a7f6a6ef4G. Clean signed C504reservation5067a25656G; single certification metadata6e44a34da4G.
 
-- Slice terminal log SHA256: `751ca0d127d5323aaa9e5cab07af922b4fb97b89b9de270c4afbdab1dc35824b`.
-- Small phone: `20260905131837619-84499-5f1df329d7fc`;
-  report SHA256 `ec558fc2838e2881161b7c6ef3d2f5417c20ece6d2045e4762c22dfcd3dd7adf`.
-- Large phone: `20260905131854210-84645-6fbf165724b3`;
-  report SHA256 `7f5d8ecf513e163cc13cb8c992c1a10d7b7333a646fe7081c4ac6e67fbe56f21`.
-- Current draft: **79 outcomes**, rendered ordered-li SHA256
-  `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
-- Compendium producer: `c1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4`.
-  Measurement authority, ruler, ceilings and samples are byte-identical to the base.
-- All workflow files, the Actions policy and all three protected portrait-lock references
-  match the base. No artlock run, hosted attempt, label, PR, merge into develop/main or release.
+D43 completed once, zero retries:104pending accepts certified,385→489/631certified,104→0pending,0species failures. Exact104existingnote-only changes/730other objects/order unchanged; canonicalcoverage agrees. Pre/postdevelop6097PASS and postrootvalidatePASS. IndependentW3 PASS14checks/581pins/0findings. The remaining142unaccepted are11registeredHOLD+131unrepresented, outside this104certification set; All-pairsHOLD.
 
-Exact command records, immutable phone metadata and every earlier red are retained below.
-These are local Edge/CDP phone diagnostics; they do not supply full twelve-row certification,
-canonical Chrome named verification, native heap evidence or physical iPhone/Safari proof.
+Selected C502 remains unchanged: measuredproduct0a5b6d4d00c87770f11750d53b7b7685112ba441, epochi5-v2-0a5b6d4d00c8;9selectedfiles/23runtime/520films unchanged. No newI5/game/importedtool/GUIDE/selector/seal/limit changes. Existing C501QA notes are retained for later authorized QA.
 
-## Signed WIP disposition
+Start/enddiskreport exit0. Endfree51.50GiB, chainminimum51.47GiB;42start/30floor held. Own254571byte regenerable stagingcopy removed; authentic/pinned/unique evidence kept. Chain drained, CPUworkerscomplete, shared/ownlocksabsent; C506releasesreservation. Absolutepeer mailbox re-read at batchend, no peer writes. Startupscopedgh/Homebrew maintenance verified7capabilities; no game/testdependency changes.
 
-The signed WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` remains preserved as provenance. Its primary items were recovered individually onto the current core; the whole WIP was not applied.
+## Fresh-session handoff
 
-| WIP item | Final primary disposition |
-| --- | --- |
-| Accepted Starter bioscan Charter | Recovered in 2a: acceptance followed by a later explicit Bioscan, the authored 15 Stardust and exact Earpiece reward; no earlier Survey/Capture backfill and no weekly lifecycle. |
-| Descent and wave-offs | Recovered in 2b: deterministic descent, the authored descent gear effects, canonical failure learning at +20 percentage points per failure capped at five, and canonical first binding for unresolved legacy seed-only history. No Hull descent reduction was introduced. |
-| Fifty-Paragon hunt | Recovered in 2c: the authored 50 exact-home catalogue discoveries, source-validated identities, found-entry Inspect versus missing-entry travel, and a separate `para10` Claim for +120 Stardust after ten finds. Protected static portraits are unchanged; pre-feature saves with an already-Bioscanned home retain the explicit refusal, with no backfill. |
-| Exact-instance progression | Recovered in 2d: individual XP, level, class, innates, wounds and recovery display; exact twins and retired snapshots; finite fractional XP preservation; the existing 486 cap and additional innate unlocks at levels 3 and 6. No care, bond, mission or new XP mechanic was added. |
-| Mature Atlas | Recovered in 2e: List/Chart, filters, Home, exact-row Remove and one-level eight-second Undo, strict route/receipt/CAS ownership, restoration of an originally absent route as absent, and bounded chart clusters that open existing List actions with focus return. |
+Codex complete; do not rerun D43 or invoke registry-notes against this certified ledger. Claude may review C506 via shared signed Git; any later QA/heavy work needs its own scope/reservation. No relay/appswitch/pushwait needed. C501 caveats include sessile contact/Butterflyabdomen/TubeWormtips/IceWormgrounding and laterBoa/MountainViperQA after the dry-serpent cap. No push/PR/GitHubwrite/hosted/develop/main/release/deploy occurred or is authorized. C504ACTIVE/C505pending checkpoint archived verbatim at ROADMAP_ARCHIVE top; current terminal evidence owns the result.
 
-| Remaining parked WIP | Reason |
-| --- | --- |
-| Weekly Charter lifecycle and joins | Weekly generation, acceptance, rollover and reward joins are separate from the accepted Starter bioscan recovery. The primary instructions did not authorize recovering them. |
-| Forge Training | The additional Forge lesson work is outside the existing fifteen-card curriculum and the ordered primary scope. Existing Training copy was reconciled only for the recovered mechanics. |
-| Living portrait preview | The preview remains outside the gameplay recovery and subject to the separate graphics pilot approval boundary. No protected-portrait or Phase 2 art work is included. |
-| Unrelated bulk copy and whole-file WIP replacements | Only copy belonging to the recovered primary owners was carried forward. Bulk Main/Guide/ROADMAP changes cannot replace the current core, independent measurement expectations, current lane policy or dated evidence. |
+## C508 — current fresh-session handoff,2026-11-01
 
-The WIP's legacy Settings import door, “awaits Dakk's real save export” claim and blanket 78-bullet assumption are superseded, rather than future features awaiting recovery. Fresh-start policy, the retained evidence-only codec/import helpers and planned-ledger matching, and independently fixed per-checkpoint release inventories remain authoritative.
+Read absolute peer C507; D43 ACCEPTED. Signed --no-ff merge 5b99fb0445G of8ff7696a73 retained both parents after twoG checks and hand-reviewed documentation-only reconciliation. RootvalidatePASS; developPASS fromport/v2 (6097passed/2expected fail/3skipped) on that clean merged head. Evidence: audits/C508_C507_SYNC_20261101/README.md. No runtime/importedtool/GUIDE/registry/coverage/selector/seal changes; no D43 rerun or native/heavy program started. Certified489/631,pending0;142remain outside scope, All-pairsHOLD.
 
-Companion care/bond/missions, random loot/affix/socket/vendor tables, achievement reward quantities, conquest–imbue coexistence and an extra first-victory Guardian cache remain reserved product decisions; this is not a claim that each has an implemented WIP owner. Audio-source backup still needs Dakk's external destination and remains outside this gameplay batch. Stretch outcomes are recorded below.
+Endfree64.47GiB; check wrapper exited/descendantsdrained/sharedlockabsent. Official tool metadata checked; authoring upgrades deferred for the explicit merge/check-only handoff, current toolchain retained. One own-mailbox status row C508 records completion. Both lanes stay IDLE until Dakk names the next program; no relay/appswitch/pushwait needed. No push/PR/GitHub/hosted/release/deploy authorized or performed.
 
-## Stretch outcomes
+## C510 O1 overnight — ACTIVE,2026-11-01
 
-- **3a:** existing focused tests reject shallow/malformed mint registration and public-registry
-  clones. The three WorldConfig assertions pin GCELL 42, Sol coordinates 560/170, and frozen
-  home/Sol anchors. Full suites exercise them; no duplicate suite or generator change.
-- **3b:** Engineering aliases the canonical frozen Research ID tuple. Independently written
-  test and browser lists still detect missing or reordered production rows.
-- **3c:** the existing landing-card owner now contains the unchanged renderer and presentation
-  state type. Main supplies the same escape function and keeps world/save checks and wiring.
-  Policy, RNG, receipt/CAS, visible disclosure and accessibility behavior remain unchanged.
-- **3d:** current phone, canvas, resource and limited boot evidence is recorded in
-  `audits/BATCH4_PHONE_EVIDENCE_20260905.md`. Unresolved profiler timings are parked;
-  no instrument change or optimization was made during the measurement-only step.
+Authorized D44–D46 work order audits/OVERNIGHT_20261101/WORK_ORDER.md; signed merge b4b914ef7bG(twoincomingG). Root owns one serial heavy reservation until queue drain or2026-11-02 06:00EST(11:00Z),42start/30floor. CPUW1source/W2checkpoint/W4paperwork are in codex subdirs. Plan codex/PLAN.md; runtime ledger codex/I5_CHANGES.md. Exact queue131unrepresented+11actualregistryHOLDs; Butterfly alreadycertifiedQA, Comb/Centipede/WaterFlea in131.1311254requests/29green ready.
 
-## Decisions made unattended
+Guardian generated first and deliveredearly at codex/guardian: both untouched native outputs1254, canonicalleft/rightmarginsRED despite1536/framing correction. SIZE_AND_MARGIN_HOLD, no resize/pad/claim1536; requires supportednative1536source route. ZeroREADYyet; allother source/repair work continues. Sharedqueue running/coordinator session13678; jobs immutable/oneatatime; do notstartnestedgloballocks or detached stages. Startupmaintenance underway beforelocalnative. ClaudeCPU-only untilTERMINAL, then owns I5+oneD44. No Codexcertification/remote/protectedbranch/release/deploy; All-pairsHOLD.
 
-- Preserved the signed core as a real merge parent and recovered later WIP by completed owner.
-  This retained provenance and the fresh-start boundary instead of restoring stale import code.
-- Used authored descent tables and gear with seeded weather. Earth, Training and proven
-  canonical revisits roll nothing; ordinary attempts use two fixed SessionRNG draws in one
-  receipt/CAS. Wave-offs keep the ship in orbit, floor HP at one and grant no arrival reward.
-- Bound unresolved seed-only approach history on its first source-verified canonical encounter.
-  The old seed cannot prove its former full address; this retains history without inventing one.
-- Kept already-scanned pre-feature Paragon homes explicitly unavailable for new discovery credit.
-  Automatic backfill or repeated hazards would invent behavior outside explicit Discover Life.
-- Preserved finite fractional XP and used the existing level curve. Rounding would rewrite valid
-  creatures. Passive refresh preserves semantic focus with preventScroll and does not steal focus.
-- Used bounded chart clusters and existing List actions for overlapping phone targets. Eight-second
-  Undo restores the exact retained row and original route state; an absent route stays absent.
-- Restored the actual dark Paragon button background after the phone contrast red, and restored
-  the missing visible Route unavailable explanation after Atlas's browser red. Gate intent stayed
-  intact. Corrected all eight references to say a wave-off leaves the ship in orbit.
-- Kept independent expectations while correcting obsolete source spans and narrowly matching
-  existing hold/codec-timer owners. Only producer authority and exact source inventories moved;
-  no ruler, timeout, workflow, policy or measurement threshold was changed.
-- Retained the configured signer through the temporary 1Password failure; Dakk's unlock restored
-  signing and SSH. No unsigned bypass or rewritten history.
-- Parked unresolved profiler measurements because this step explicitly permits measurement only.
-  The retained result does not establish whether setup, profiler or product caused the refusal.
+## C526 O1 current handoff — ACTIVE,2026-11-02
 
-## Blocked / reverted
+C526delivery audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c526-cockatoo-ready-clam-egret-checkpoints/README.md: newCockatooREADY(allfive/17parts/53pins/6negativecontrols), priorIsopodREADY andpeerC523HareACCEPT. SignedC524preAI checkpoint precedes Cockatoofinish/conservedrebind/freshnative. C261464films/928pins currentCockatoo0frags4/4pink; Clam0/0 andEgret12/12 independentlyfivefullsizeCLEAN, checkpoints signedBEFOREAIhere. Starfish firstobserved18control/17partrep fullstaticPASS; Monkeytwoactualsourcejoins/staticPASS; bothproducersbeforefilm.
 
-**No unresolved required correctness gate and no product reversion.** The optional raw-evidence archive export is blocked by automatic approval review and remains local; publishing it needs separate authorization. Fifteen browser reds were
-corrected on new sources and retained in the audit; no unchanged-source browser retry.
-The separate Step 3d measurement remains incomplete and was not rerun:
+All131sources/fullsizeCPUQAcomplete; guardianr03framingcleanbut1254size/D47OPENHOLD. BlueWhaler03rightcutclosed/leftthroatwindowHOLD: exactpose diagnostic cannot uniquelychooseonepair, no blanketweld/AI. WarthogR03D40guard correctlycaught inputconfiguration mismatch; failedattemptkept, proposedr04 changesrequestonly/noalgorithm,sealsorlimits. RootvalidatePASS; runtime/game-importedI5_CHANGES remainsNONE, registryunchanged.
 
-```text
-Source: 4fa82d0c9fd648fcb05497552e244d594b1a959f
-Command: npm run perf -- 4
-Exit: 1; elapsed: 28.472 seconds
-SLICE PERF @ 4× CPU (phone 390×844@3x):
-  painted:    1292ms
-  answerable: NEVER
-  galaxy rebuild (throttled): -1ms
-  (v1.8.5 law: painted ≠ answerable — budgets land with plan §20)
-SLICE PERF: measurement incomplete — painted, answerable, and galaxy rebuild must all resolve
-```
+Rootone serialreservationACTIVE42start/30floor until2026-11-02T11:00Z(06EST), finishonlycurrentstageatcutoff. Next Clam/EgretAI→rebind→freshfilm→W2W3; Starfish/Monkeyfirstnativeonthissignedproducer. Exact142liveledger w4-paperwork/o1-dispositions-draft-r01 differentiates evidencedHOLD fromunexecutedpendingstage. Signedperwave/mailbox; ClaudeCPUreviewREADYnowandI5+oneD44onlyafterCodexTERMINAL. No Dakkrelay/appswitch/pushwait or remote/protectedbranch/release/deploy. All-pairsHOLD.
 
-Log SHA256: `dd989f243a7d69411cb4cd4e452061c6e84becfed3221b4c14936641dd2f2c60`.
-Answerability and throttled rebuild remain unavailable measurements, not valid timings.
-The audit's REDS JSON contains all sixteen retained browser/profile records; full historical
-failure output remains below. Temporary signing and SSH failures are resolved.
+## C528 O1 current handoff — ACTIVE,2026-11-02
 
-## Phone findings and remaining human gates
+Delivery audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c528-clam-egret-ready-remaining-holds/README.md: newClam/EgretREADY allfivefinishedstills,5parts42pins/17parts53pins; signedC526preAI→unchangedconservedfinish/rebind/freshnative→independentW2/rootW3CLEAN. C261468films936pins exactClam0frags0/0pink, Egret0frags20/19pink. Total5O1READYproduced(Hare,Isopod,Cockatoo,Clam,Egret); peerC523/C525acceptedHare/Isopod, threeawaitreview. No Codexadmissions/certification.
 
-The Step 3c phone samples record replacement readiness of **684.1 / 620.7 ms**, actual renderer
-DPR **2**, combined canvas backing pixels **1,454,080 / 3,015,840**, and released canvases **1×1**.
-Their disposed audio snapshots have zero use, so they do not prove populated-cache performance.
-Slice printed one **29 ms** rebuild; the separate 4× profiler observed paint at **1,292 ms**
-but did not resolve answerability or throttled rebuild. These sources remain separately named
-in the phone audit. The final unchanged-product phone pair additionally records replacement
-readiness of **627.6 / 611.2 ms**.
+Starfishfirst18control5armrep source/17parts/staticcleanbutnativeleftidle50/90foldsintoopenloop/basketHOLD/noAI/nopropagation. Monkeytwojoinsrepairtorso,buttailrootsteppednotchHOLD; true49edgepelvis-tailattachmentalreadyjoined, remaining91edgesiblingtail-thighpairnotuniquelyproved/nointervalAPI, noblindweld. Warthogr04existingD40 bounded417pixelchange/20protectedsourcepixelconservationPASSbutactualgray1254/2xmaterialstilloliveHOLD/nointake; failedr03requestguardkept. Whaleoneposeexactmeshdiagnosticambiguoushead/flippervsfar/nearflippercut, noblanketweld/AI. EightnewsourceG1mappingREFUSE retainedexact; no absence/limitwaiver.
 
-Native heap/GPU allocations, populated art/audio cache behavior, installed offline pack size and
-eviction, physical iPhone/Safari persistence, thermal/battery effects and response-time percentiles
-remain unmeasured. SceneMemory stays quarantined. Combined Arc 4.5, separate Arc 5.5 HUMAN
-combat review and Gate C real-device v2 persistence remain open. The audiovisual pilot approval
-stop stands; audio-source backup still needs the separate external destination decision.
+EgretinitialfinishguardLEAF_RED beforemodel/browser/inference becauseauditLFwritereditdirtiedtree; signed0547cb correction+samepreAIproof→freshseparateclean-sourceR02finish/nativePASS. Oldfailureunchanged. Runtime/I5_CHANGESNONE,registry/seals/limitsunchanged, rootvalidatePASS; ClamREADYoriginalprovenancecorrectedbeforewavefreeze toimmutablegeneratorrawwithpostsealqualifiedinputseparatelylinked/oldmetadataretained. All131rawsources/fullsizeQAcomplete; guardianr03framingcleanbutnative1254/D47OPENsizeHOLD.
 
-## Proposed PR — review only, leave unopened
+One rootserialreservation42start/30floor ACTIVE until2026-11-02T11:00Z(06EST), finishonlycurrentstageatcutoff. NextbestremainingbivalveobservedsourcepilotunderexistingclassprooffromClam, ifconcreteandtime; exact142ledgerdistinguishesHOLDfromunexecutedeligiblependingchain. Everynewcheckpoint signedbeforeAI. ClaudeCPUreviewREADYnow,I5+oneD44onlyafterTERMINAL. No Dakkrelay/appswitch/pushwait/remote/protectedbranch/release/deploy. All-pairsHOLD.
 
-**Base:** `develop` at `9ea01041dcdc711190bbf909ea8bb743cd993734`.
-**Source:** `openai/review-batch4-gameplay-20260905`; use its final signed reporting head,
-whose exact SHA is in the final user handoff. The validated product head is `b173353b9e273c4b223e8ee8d6ee181081f79b4a`.
+## C530 O1 TERMINAL — current fresh-session handoff,2026-11-02
 
-**Title:** Connect authored expedition systems, creature progression and mature Atlas
+O1reservationRELEASED2026-11-02T11:00:00.098Z(06EST), reasonCUTOFF,116completedstages/descendantsdrained/ownerexited/shared+workspacelocksabsent; allO1CPUworkersstopped. Delivery audits/OVERNIGHT_20261101/codex/coordinator/deliveries/c530-terminal/README.md. This is a cutoff, not a claim the full species queue was drained. All131 initiallyunrepresented sourcepaintings are untouchednative1254²/fullsizeCPUreviewed. Guardianearlysource/r03framingretainedbut1254vs1536D47OPENsizeHOLDoutside142.
 
-**Description:**
+Finalexact142ledger remaining-species.json/tsv:3ClaudeACCEPTED(HareC523,IsopodC525,CockatooC527),79evidencedHOLD,60eligibleDEFERRED,0READYpending. Deferred is unfinishedeligibleauthoring/materialreview, not an inventedanatomyfailure. FivehistoricalREADYpackets/25finishedcanonicalstills/275manifestpinsretained; C529 **Clam/Egret HOLD supersedes earlier W2/W3 CLEAN and finish eligibility**. Clamrigidvalvelipwronglymantle-owned floatsaswater-separatedsliver; Egretwhiteplumagefinishlilac/magenta/plumestreaks/greenoutline. RootactualClamfilm/source/owner3cropsconfirmsrigidlipmisownership. Nextauthorizedrunonly: traceactualrigidliptovalvewithsoftmantlepreserved; regenerateEgretgreen/refinish. Near-whitehuediagnosticproposalonly, no newlimit/gate applied.
 
-Complete the fresh-start v2 expedition loop with authored Research effects, explicit Discover
-Life and Flora meals, Scout XP, the accepted Starter Charter, deterministic descent, fifty
-Paragons, individual creature progression, and the mature Atlas. Co-deliver Guide, Training,
-release copy and current references. Preserve exact authority, one receipt/CAS, deterministic
-outcomes and the fresh-start save boundary.
+BivalvepropagationSTOPPED. RazorR02sixparts/sevenanchors/sourceunchangedbutuppersiphonsurface[835610..961633]stilllower-valve-owned; ownerHOLDplusclassreferenceHOLD, noR03/static/native/AI. Starfisharm-loopcollapse/Monkeytailnotch/Warthogolive/Whaleambiguouscut/eightnewsourceG1mappingREFUSEandallotherexactsource/decisionHOLDsretainwitnesses. No blindjoins/falseabsence/rulerchanges.
 
-Verify the existing mint/clone and WorldConfig controls, share only the production Research ID
-owner, and move unchanged Landing presentation into its existing module. Record the first phone
-analysis; unresolved profiler timings and reserved gameplay/art scope remain explicitly parked.
+Rootvalidate0028PASS/develop0025PASS6097tests599files; actualruntime/game-importeddiffEMPTY/I5_CHANGESNONE, GUIDE/selector/seals/limits/registryunchangedbyCodex. Enddisk0029PASS52.67GiB/terminalsnapshot52.64GiB;minimumprestage51.26/minimumobserved43.54GiB,unchanged42start30floorheld. Own50,320,512B(47.99MiB)exactregenerablebuffersremoved,275protectedpinsunchanged; tracked/frozen/source/certificateevidenceretained. PeerabsolutemailboxC529readatbatchend. No newCodexcertification; certifiedcoverage489untilClaudeacts.
 
-Local validation: 301 files / 3,100 passed / 1 skipped, typecheck, artunused, Glass selftest,
-exact-source Slice and both phone diagnostics, 50 unchanged legacy fingerprints and 81 budget
-policy controls. The audit records source SHAs, report identities and all prior reds. Claude's
-checkout receives this work only after reviewed integration into develop. No hosted result,
-release or deployment is included.
+CodexstaysIDLE. Claude may merge signedC530, reviewexactHOLD/deferredqueue, then ownI5epoch+ONE D44 certificationforacceptedpendingonly; Clam/EgretHOLD. No Dakkrelay/appswitch/pushwait needed. No push/PR/GitHub/hosted/develop/main/release/deploy;All-pairsHOLD.
 
-## Paired next steps
+## C534 O2 current handoff — ACTIVE, 2026-11-02
 
-**Codex:** publish this signed report-only successor and report its exact pushed head. Handle
-bounded review corrections on the owned review branch if Dakk supplies them. The proposed PR
-remains unopened; no generic proceed or hosted authorization is inferred.
+Dakk C533/D47/D48: guardian native1254² accepted without upscale; peer D48 certified Hare/Isopod/Cockatoo, coverage492/631. Signed hand-reconciled --no-ff merge ca6a28f92d5e8a963a753ce47f80856277744510 includes peer9a4c279497/all18incomingG; only peer DECISIONS extra EOF whitespace reconciled with raw receipt retained.
 
-**Claude on anthropic/windows:** from Claude's own checkout, fetch origin and read the exact
-pushed branch plus this audit through Git. Review the gameplay, persistence boundaries and
-parked decisions. Do not copy files or edit the Mac checkout; this work is not in develop yet.
+Root single serial reservation ACTIVE, no O2 clock cutoff,42GiB before each stage/30GiB running floor. Exact order guardianr03→Egretgreen→Clamrigidlip→60deferred in C530 TSV order, with source-relative white tint diagnostic. Plan audits/O2_20261102/PLAN.md; runtime ledger I5_CHANGES.md currentlyNONE. Source/rig candidates and original observed HOLDs are frozen separately; no gate/limit/rebind changes. Native/AI require clean signed producers, independent all-five full-size W2 checkpoint BEFOREAI, fresh finishfilm and W2/W3 before READY. Root owns commits/mailbox/heavy; CPU workers use own subdirectories only.
 
-**Dakk:** open Claude now for the morning review. After that review, separately authorize the
-exact PR/agent-lane attempt. No GitHub action is required before review. Budget UNFROZEN,
-repository PUBLIC, private fallback 3,000, **zero hosted attempts authorized** for this campaign.
-Develop, main and the live release remain unchanged.
+Fresh official tool metadata and7capabilitiesPASS, no eligible updates; startfree54.145GiB. Root absent-main preflight stopped before gates, documented absent-only bootstrap byte-identical then validatePASS. Developpreflight PASS (6097 passed); root and develop gates green. Guardian original actual31parts independentHOLD for spine-owned limb/head/chin strips; W1R02 firstintakePASS but actual31part review found remaining spine-owned distal strips/far-depth precedence HOLD; boundedR03repair underway. Egret green brief and Clam1787observedownerpixel repair frozen, not film-cleared. Historical Clam/EgretREADYremain revokedC529. All60deferred must receive full chain or exact evidenced HOLD; no invented anatomy findings.
+
+ClaudeCPUreview per-speciesREADYnow; I5+oneaccepted-pendingcertification only after rootTERMINAL/releases. No relay/appswitch/pushwait required. No push/PR/label/GitHub/hosted/develop/main/release/deploy. All-pairsHOLD.
+
+C536 update: guardianR03 actual31parts independentSOURCECLEAN, but fullstatic melee:tail sample30@246.1778ms contact scalecompressionRED; other18+presentationPASS. GuardianNO_NATIVE/NO_AI pending CPU diagnosis, no row/limit bypass. Egretgreen source generated native1254²/f75402bc6763, freshobservedauthoringpending. Clam1787rigidlipowner candidate intake/fullstaticPASS/rootactualfiveparts+rawviewed; new signedproducer then native/worstgape beforeanyAI. Delivery audits/O2_20261102/coordinator/deliveries/c536-source-producer/README.md. Root postbatchvalidatePASS, runtimeNONE. O2reservationACTIVE.
+
+C538 current: Clam freshnative/C261469/9380frags0/0pink, independent9fullframes18twoX/rootallfiveCLEAN; newpreAIcheckpoint in coordinator/finishes/clam112-upper-lip-owner-r03 awaits signedC538 beforeAI. GuardianactualsourceCLEANbutfullstaticuniversalmelee:tailcompressionHOLD; readonlydiagnosis frozen/noNative/noAI/noactionfilter/guessanchor. Egretnative1254greenraw/all19sourceanchorsgoodbutpositive-alpha green/cyanplumes andbreastfringe ongray/blackHOLDbeforeintake; existingD40explicitselectedpostsealdespillrecipeCPUprep preservescanonicalseal. 60firstauthorrequests prepared,12no-refitemsalreadyhavetemplates; Tadpoleobservedpilotprep. RuntimeNONE/O2serialreservationACTIVE. Delivery audits/O2_20261102/coordinator/deliveries/c538-clam-pre-ai/README.md.
+
+## C540 O2 live handoff — ACTIVE, 2026-11-02
+
+Clam is READY_FOR_CLAUDE: audits/O2_20261102/coordinator/ready/clam112-upper-lip-owner-r03/packet.json. The upper rigid lip follows the upper valve in clear mirrored worst-gape poses; actual full-size W2/W3/root review is CLEAN. Signed producer7436fc81ecG and pre-AI checkpoint8ccc68e64dG precede conserved finish, geometry-identical rebind and fresh native. Five finished stills, five parts,41 pins and six controls; current C261470 films/940 pins, Clam zero fragments and pink0/0. Historical O1 Clam READY remains superseded; this is a fresh packet, not certification.
+
+Guardian native1254² size is accepted by D47, and R03 actual31 source parts are independently clean, but full static refuses melee:tail contact compression at246.1778ms. No native or AI; exact read-only diagnosis in w1-guardian/guardian-static-diagnosis-r01 retains the full battery and recommends an approved existing-row/contact correction. Egret has a fresh green1254 source and all19 observed anchors; default keyed/D40 material has positive-alpha green/cyan plume and breast fringe. One source-reviewed selected D40 derivative passed conservation after the immutable first keyed seal; visible cyan/olive fringe still awaits independent material clearance. No algorithm, seal or limit changes.
+
+Continue O2 in the exact60 C530 order from w3-tint-queue/deferred-60.tsv. First attempts: Mosquito/Stick Insect mapping REFUSE; Thrips unreviewed ADMIT with semantic presence unresolved; Water Strider mapping REFUSE. These are transfer results, not anatomical absence. W3 is reviewing Thrips and preparing bounded observed controls/D37 abdomen midpoint before intake. W1 is authoring one actual Tadpole Shrimp pilot for an existing registered template; twelve no-reference items need observed pilots, not a fabricated generic-family transfer. Keep original failures and fresh candidates separate.
+
+Root owns the active serial queue/reservation,42GiB before each heavy stage and30GiB running floor, no O2 cutoff. CPU workers write only fresh assigned subdirectories; do not dirty tracked files during native/AI. Plan and runtime ledger are audits/O2_20261102/PLAN.md and I5_CHANGES.md (currently NONE). Per-species signed READY deliveries/mailbox continue. Root validation and fresh develop6097 preflight passed; unchanged runtime/registry/seals/GUIDE. Claude reviews CPU-only now and owns I5 plus one accepted-pending certification after root TERMINAL/releases. No app switch, relay or push wait needed; no push/PR/label/hosted/develop/main/release/deploy. All-pairs HOLD.
+
+## C542 O2 live handoff — ACTIVE, 2026-11-03
+
+All60 first attempts are complete in exact C530 order: ten unreviewed G1 candidates,38 transfer refusals,11 no-qualified-reference constraints and one fresh manual Tadpole Shrimp intake. Snapshot: audits/O2_20261102/coordinator/deliveries/c542-first-author-wave/snapshot.json. Refusal is not anatomical absence; manual source/contract reviews continue. Tadpole actual painted-pink lamella loss and ten small shield-owner leaks are HOLD before static/native/AI. Lancelet fresh manual10-control/nine-owner intake and independent actual parts review CLEAN; first static fixture REFUSED unsupported smoothskin before actions, metadata diagnosis pending/no retry. Egret R03 still green/cyan/olive material HOLD, fourth neutral-feather green draw under unchanged8% check.
+
+Clam C540 remains sole READY with allfive finished stills and signed pre-AI W2. Guardian remains full-static tail/contact compression HOLD. Runtime/I5_CHANGES.md NONE; registry/seals/limits/GUIDE unchanged. Root owns active serial reservation42GiB beforeheavy/30running, no O2 cutoff. CPU workers use own fresh subdirectories only; native and AI require clean signed producers, independent actual fullsize W2 CLEAN signed beforeAI, fresh finish film/C261/W2W3 beforeREADY. Claude CPU review now; I5 and one accepted-pending certification after root TERMINAL/release. No push/PR/label/hosted/develop/main/release/deploy; All-pairs HOLD.
+
+## C544 O2 live handoff — ACTIVE, 2026-11-03
+
+Lancelet fresh R02 exact smoothskin→supported smooth skin packet-only correction, same source/labels/atlas/all9PNGs, independent source/parts/delta CLEAN and fullstaticPASS. Producer is being signed before first native; actualaquaticworldproof is in coordinator/plans/lancelet008-material-r02. No physicalW2/READY yet. OriginaltypoREFUSED and wrong-entrypoint wrapperfailure preserved separately.
+
+Applied D40 optional explicit source-bound donor exclusions to two pipeline tools, fully listed/pinned in audits/O2_20261102/I5_CHANGES.md and coordinator/runtime-change-list.json. Empty defaults/historical Butterfly/Cricket exact;16outcomes and feature/opacity/CLI opposite/restored controls PASS; fullnpmtest Node+6097Vitest PASS, independent codereview no blocking issue. R04 Egret controlled3target output matches expectations, outsidechange/growth/supportchange0; broader actualmaterial clearance pending, not READY. Two changed tools require Claude I5 review after TERMINAL; no game/release/GUIDE/classifier/seal/limit/registry change.
+
+Clam C540 sole READY; guardian staticcompression HOLD. Tadpole and WaterFlea observedsourcepaintloss HOLD; StickInsect firstmanual19part intake/review, Kangaroo observedpivot/owner repair and ColdWaterCoral sourcediagnosis continue in fresh worker dirs. All60 firstattempts preserved C542; mappingrefusal is not biologicalabsence. Root owns active42before/30running serialreservation, no cutoff. Sign clean producers and independent fullsize W2 beforeAI, freshfinishfilm/C261/W2W3 beforeeachREADY; readpeerabsolute mailbox at batchend. Claude CPUreviewnow/I5+onecertification after TERMINAL/release. No relay/appswitch/pushwait, push/PR/label/hosted/develop/main/release/deploy. All-pairsHOLD.
+
+## C546 O2 profile HOLD — CPU closure only, 2026-11-03
+
+Fresh signed C544 eb946fd21deb79c7ebe5bcf8bab972b873ff50d1 develop RED: unchanged tests/scenemem-tool.test.ts:1666 fixed-eighth-report negativecontrol timedout20,000ms (reported20,541ms),6096pass/1fail/2expected/3skip. Exact gate/log hashes: audits/O2_20261102/coordinator/deliveries/c546-profile-first-red/gate.json; raw log preserved/losslessly archived. Prior same-production-hash fullnpmtest6097PASS does not override currentRED. AGENTS.md:92 firstred stops: no retry/laterowner/native/AI/new limit/test change.
+
+Only alreadyassigned CPU source/owner recipe closure and readonly evidence continue; then signed TERMINAL/release, without claiming all60 visually completed. Clam C540 remains soleREADY. Lancelet fullstaticPASS producer signed, native/AI NOTRUN dueprofileHOLD. Egret source-specific fullrecipe and Stick/Kangaroo source-owner repairs remain unexecuted proposals. D40 two applied pipelinepaths/I5_CHANGES.md need Claude review afterTERMINAL; no registry/seal/ruler/Guide change. No certification or remote/protectedbranch action. ClaudeCPUreviewnow; any laterfreshdevelopattempt needs explicitauthority with unchanged20s budget.
+
+## C548 O2 TERMINAL — profile HOLD, reservation released, 2026-11-03
+
+O2 stopped at the required fresh signed-C544 develop profile: unchanged SceneMemory fixed-eighth-report negative-control test at port/v2/tests/scenemem-tool.test.ts:1666 timed out at20,000ms (reported20,541ms);6096pass/1fail. No retry, later gate owner, native or AI ran after red, per AGENTS.md:92. Earlier same-tool-hash fullnpmtest6097PASS and rootvalidatePASS do not replace RED. Exact delivery: audits/O2_20261102/coordinator/deliveries/c548-terminal/README.md and terminal.json.
+
+Final63 scoped items:1 READY_FOR_CLAUDE (Clam),14 observed source/owner/static HOLDs,48 PROGRAM_PROFILE_HOLD_NOT_REACHED. All60 first attempts and original species order/source hashes preserved; no completed-film-queue or biological failure claim for unvisited stages. Clam C540 five actual finished stills/all41pins/C538signedpreAI/fullsizeW2W3 remain verified; C261470/940, zero fragments/pink0/0. Guardian tail staticcompression HOLD; Egret R04 fullfringe recipe, Stick owner/chitin delta and Kangaroo16control/31owner correction frozen UNEXECUTED. Lancelet supported-label fullstaticPASS signed producer, nativeNOTRUN. Exact source losses/holds and next stages are in dispositions.json; W4 independently verifies63rows and41READYpins.
+
+Applied D40 optional explicit donor exclusion scope remains exactly two offline pipeline paths, listed/pinned in audits/O2_20261102/I5_CHANGES.md; defaults and historical Butterfly/Cricket bytes unchanged,16outcome/opposite-restored controls PASS and independent code review clean. Only3Egret diagnostic targets exercised it; no full-class propagation or materialacceptance. White-tint audit diagnostic/control report retained beside unchangedpink, including acceptedHarewarning without retuning. No game/release-content/Guide/registry/canonicalseal/ruler/limit or certificate-selector change; coverage492/631,0admissions/certifications.
+
+Root reservation RELEASED, all3CPUworkers idle, shared and own workspace locks absent;69recorded jobs, minimum43.50GiB,42before/30running held. Endfree approximately51.1GiB; own238,971,534bytes regenerablebuild/RGBA scratch removed, originals/uniqueevidence/41READYpins intact. Codex idle; no automatic retry/newprogram. Claude can review signedClam/holds and carry the already-authorized postTERMINAL chain only under its required green prechecks/firstredrule. No Dakkrelay/appswitch/pushwait, push/PR/label/GitHub/hosted/develop/main/release/deploy;All-pairsHOLD.
+
+## C554 O3 ACTIVE — signed peer merge and single reservation, 2026-11-03
+
+D49/C549/C551/C553 authorized O3 through drain or06:00 fixedEST2026-11-04 (11:00UTC). Signed hand-reviewed noff merge c6a9d386c6a6 integrates exact anthropic/mac1b5f1d9011 only; separate D50delivery excluded. Incoming7signaturesG, no game code, append-only certifiedClam retained; coverage493/631. O2contention red is closed by peer independent idle developPASS; run develop only between waves with allCPUworkers idle, firstred stops/no retry. No Codex I5/certification.
+
+Own ignoredVite54,524bytes and5,365exact duplicate generated copies6,899,959,219logicalbytes removed;418tracked originals and71retained evidence/control pins preserved (registry/coverage intentionally advance only to exact signedClammerge). APFSsharing yielded0physicalGiB; free51.5GiB, below60target but above authorized42start/30running. Pinned models and unique source/evidence untouched. tools/disk-report.sh start receipt retained; exit2 is60target warning, not42stage-start stop.
+
+One O3serial reservation active; freshofficial check/brewupdate scopedeligibleupdatesNONE, capabilityverifyPASS, versionsfixed. RootvalidatePASS1010render/50fingerprint/0booterrors. Lancelet identical retainedPASS_STATIC aquatic producer is first native; no repeated static run. Plan audits/O3_20261103/coordinator/PLAN.md; code/I5ledger sibling I5_CHANGES.md. CPUworkers inspect WaveA actualsources/owners, prepare bounded explicitkin API offlinecandidate and guardian/source-specific staticfix; they never own native/AI/Git/mailbox. C261+independentfullsizeW2CLEAN beforeAI and signedcheckpoint, allfive finishedstills/W3 beforeREADY. Rootposts per-species delivery; ClaudeCPUreviewnow, freshI5/D50and singlecertification afterTERMINAL only. No remote/protectedbranch/release action;All-pairsHOLD.
+
+## C556 O3 ACTIVE — Wave A evidence and bounded source/owner repairs, 2026-11-03
+
+Exact partial delivery audits/O3_20261103/coordinator/deliveries/c556-wave-a-evidence/README.md +14dispositions. NoREADY/AIyet. Lancelet firstnativepassed butC261471films/942pins finds0fragments andpink328/337>=100; independentallfivephysicalexposedjoinsclean, FXlimitations. Newnative1254green source edit source hash9091767b24557fadd4c628246ab89985373966b4706992f4a2149fbc7d79ca52 isretained; firstseal/defaultD40 +723targetfringe candidateconservealpha/support butone39pxlowercirrusgreenpatch remains. One literalpatchrecipepending.
+
+AllsixG1sourcecandidates retainobservedcontrol/owner defects; FruitBatfreshmanualcandidate hasresidualedgepaint, nointake. Thrips/Tadpoletruesource-materialholdsretained. StickR03removedantennafallback butcausedfarhindshafttransfer; R04restores6reportedwitnesses, independentnew10pxnear-kneeownerstrip remainsforlocalR05repair. Kangaroo31actualPNG/source review/exactrest reachedfullstaticfixtureREFUSED sourcebenddirectionmissingforeFar; actualforearmnearlystraight, no defensibleelbow nudge/actions/native. Wallabypropagationunproved. Egret executedfrozenfullrecipeconservedalpha/supportbutmaterialHOLDbanding/green; oneordinarydonorwhite-plumage datarecipeprepared. Guardian1254anchorssource-observed, motion.08tail/contactHOLDwithunappliedproposal, notfakedsourcefix.
+
+Nearestkin optionaldonor-onlyAPI remainsOFFLINECANDIDATE, originalproductionbytesuntouched; freshindependentreviewR02no blockers,14targetedtests/7defaultbytecomparisons/20exactrecipesread-onlyvalidated. No game/I5import changes, noI5/certification/D50merge. FreshrootvalidatePASS again; developonlybetweenwaves withALLCPUidle, firstred/no retry. Rootsingle42before/30runningreservationACTIVE untilqueue/cutoff11:00UTC11-04=06:00fixedEST; per-speciesREADYonlyafterW2/C261beforeAI, signedcheckpoint/allfivefinishedW3. ClaudeCPUreviewcanproceed; no apprelay/remote/protectedbranch orreleaseaction;All-pairsHOLD.
+
+## C558 O3 ACTIVE — Stick Insect fullstatic PASS producer, 2026-11-03
+
+Source-observed R05Stickcandidate now PASS_STATIC underunchanged contact/ARAP/sourcepixel limits; actual19parts/19controls/D37 reviewed, exact10pxlocalnearhindrimrepair pluspriorfarhind/antennafixes proved. The63pxrootpatch remainsvalidsourcebodyfield; no RGBA/IDs/depth/material/genome/presence change. Newnativeplan coordinator/plans/stick002-owner-r05/plan.json and delivery c558-stick-producer/README.md; signproducerbeforefirstnative, thenC261/independentfullfiveW2CLEAN/signedcheckpointbeforeAI. NoREADYyet.
+
+One42/30reservationcontinues. Lancelet new789targetsourcefringerecipeonlyexpandsobservedlowercirrus, oldseal/protectedflesh unchanged; materialreview/geometry/nativepending. OtherC556exactholdsretained. Kin-codeindependentreviewR02readybutproductionstillasisthroughWaveA. No game/I5pathchange/noI5/cert/D50merge; developonlybetweenwaves ALLCPUidle, firstred/noretry. PeerCPUreviewnow; per-speciesREADYthenTERMINALatdrain/11:00UTC11-04=06:00fixedEST. No relay/remote/protectedbranch/release action;All-pairsHOLD.
+
+## C560 O3 ACTIVE — Stick W2 checkpoint frozen before AI, 2026-11-03
+
+CurrentStickproducer9df20d7eaeG nativePASS; unchangedC261472films/944pins, Stick0fragments/pink0/0. Independentallfivefullsize/14actorcrops/supplementalapproach-return+rootallfivecrossreview PHYSICAL_CLEAN invisibleclearcontexts; stoneFX/dust/offframe/continuousplaybackunassessed. FrozenW2CLEAN andfinishcheckpoint/subjects under coordinator/checkpoints/stick002-owner-r05-original +finishes/stick002-owner-r05; C560signsBEFOREoneAI. NoREADY/finishyet. Paperworknormalizer validatedactualmedia-dictpin andeveryframeparent/hash afterinitialassumptionrefusals; no product/rulerchange.
+
+Lancelet greenR03source-materialHOLD retainsliteralolivecirri871633/874641/877645 despitepreservedsource/support; nointake/AI. EgretR02ordinarydonorwhite-plumagederive/readbackforactualreview, notmaterialaccepted. No game/I5changes/noI5/certification/D50merge; one42/30reservation untilqueue/cutoff11:00UTC11-04. RootfinishesStickchain thenWaveAend/between-waveCPU-idledevelop, thenexactindependentlyreviewedkinpayload/38dispositions andWaveCstaticpacketsbeforepeer-review/native. No relay/remote/protectedbranch/release;All-pairsHOLD.
+
+## C562 O3 ACTIVE — Stick Insect READY; Wave A complete, 2026-11-03
+
+Delivery audits/O3_20261103/coordinator/deliveries/c562-stick-ready-wave-a/README.md: oneREADY/13exactWaveA+interleavedHOLDs. Stick signed4ce7166deb checkpoint BEFOREoneAI,3,636insideRGB/0alpha-outside-protectedchanges, geometry-byte-identical texture rebind/freshnative andindependentallfivefinishedW2W3CLEAN. C261473/946 currentStick0fragments/pink0/0, historicalLancelet328/337 retained;19parts/55pins/sixrejectingcontrols. Visiblejoins/materialclean, FX/offframe/continuousplaybackunassessed. Noadmission/certification.
+
+Lancelet greenR03/EgretR02stillvisibleolivematerialHOLD; otherexactsource/owner/bend/runtimeholds in dispositions. AllworkersCPUidle; rootvalidatePASS; requiredbetween-wave developONCE next, noresultclaimed. Thenrootadopts independentlyreviewedoptionalcertifiedkinAPI andexecutesWaveB underONE42start/30floorreservation. No game/I5changes/noI5/cert/D50merge. ClaudeCPUreviewSticknow; afterTERMINALClaudeownsD50/freshI5whereapplicable/singlecertification. Cutoff11:00UTC11-04=06:00fixedEST, no remote/protectedbranch/release action;All-pairsHOLD.
+
+## C564 O3 ACTIVE — optional offline kin pin and Wave B dispositions, 2026-11-04
+
+Delivery audits/O3_20261103/coordinator/deliveries/c564-wave-b-pin-results/README.md +38-rowholds table. Applied4offlineauthor paths inI5_CHANGES.md, no game/I5import/release/GUIDE/registry/seal/ruler/selector changes. IndependentR02reviewclean; pinned-onlywordingcorrected;14outcome/opposite-restoredcontrolsPASS,7puredefaults andcompleteCLI8defaultfilesbyte-identical. Exact17missingcanonicaldonorinputs10,189,084Brestoredfrompinnedpeerbyteswithoutrecords/sealsrewritten;19eligible/26boundrecipes/38requests. All19realpinnedauthors retain80originalwitnesses andREFUSEunchanged; other19exactprerequisiteHOLD, no intake/native/admission. Whale10.4%unexplainedvs10.2allowance plusactualwrongpaddleowners; freshmanualsourcecandidatepending. IndependentmaterialsourceCLEANonlyWhale/Freshwater/Lungfish, other16exactHOLDs.
+
+C562signedWaveAheadCPU-idle developPASS6097/2expectedfail/3skip. PostcodeB/CboundarydevelopawaitsALLworkerCPUidle; firstredstops/noretry, notclaimedgreenyet. Rootcontinuesone42start/30floorreservation: newMarine/Larva defaultD40materialreview, WaveCnewbodyplanSTATIC_READYpeerreviewBEFOREnative, sourcefringerepair andmanualWhale. StickREADYremainsone; no otherREADYorcertification. ClaudeCPUreviewnow; D50/freshI5whereapplicable/singlecertificationonlyClaudeafterTERMINAL. Cutoff11:00UTC11-04; no relay/remote/protectedbranch/releaseaction;All-pairsHOLD.
+
+## C566 O3 ACTIVE — post-code develop green and Lancelet native producer, 2026-11-04
+
+Postcode B/CdevelopONCE on signed3a6a4c9122/allworkersCPUidle/load3.97:6097pass/2expectedfail/3skip/fullPASS. Fourkinpathsremainoffline; zero game/I5import/release/GUIDE/registry/seal/ruler changes. C502selected/noCodexI5/cert/D50merge. Delivery audits/O3_20261103/coordinator/deliveries/c566-lancelet-producer-and-boundary-gate/README.md. LanceletR04 independentmaterial/source/actual9compiledpartsCLEAN,10controls/51995pixels exactreconstruction,13actions×121+presentationPASS_STATIC, aquaticliquid-worldproof. Source208literalbad-donorexclusions change281pixels incl279RGB/248alphareductions;0mask/outside/protected/growth, notalpha-byteidentity. SignproducerthenONEnewnative/C261/W2 beforeAI; no newREADYyet.
+
+FlyLarvaPASS_STATIC10noncombatrowsbut no melee/cardweapons[]/actualamphibious; holdwithunapplied5pathactionproposal/outcomecontrolsnotexecuted, no retry/worldcoercion/film. Whale715pixel nearpaddlebodypleat repair: rootreviewguardstoppedonaddedprose butrootprematurelyqueuedONEintakePASS; actualsource/13controls/other12polygons thenverified, independentcompiledreviewblocksstatic/native/AI. WaterFleaR02marginHOLD87/94; freshnative1254R03marginPASS266/224/228/224butcurrentmaterialHOLDsetalfans. Egret491literal-seedrecipe dataonly. Peer C565 accepts Stick after full-size review; certification pending after TERMINAL, root registry unchanged. ONE42before/30floorreservationACTIVE untilqueue/drain11:00UTC11-04; firstkindSTATIC_READYpeerreviewBEFOREnativefilm. ClaudeCPUreviewnow, D50/freshI5whereapplicable/singlecertificationonlyafterTERMINAL. No relay/remote/protectedbranch/releaseaction;All-pairsHOLD.
+
+## C568 O3 ACTIVE — Whale native producer, 2026-11-04
+
+Whale R02 independent all-13 compiled-parts/source review CLEAN, 77,324 pixels reconstructed exactly. Throat-to-body repair is 715 author-space / 716 intake-normalized pixels; exact boundary witness documented. Full static ONCE: 13 actions ×121 plus presentation PASS, unchanged limits, aquatic liquid-water proof. Sign this producer then one native; no Whale READY/AI claim. Delivery audits/O3_20261103/coordinator/deliveries/c568-whale-producer/README.md.
+
+Lancelet R04 native PASS on signed e032fea8825fa9f44182b572bac90cd4bc3c1364; C261 474/948, zero fragments/pink 0/0. Independent W2 investigates faint straight cirri lines; AI blocked until actual verdict. C565 Stick accepted pending Claude certification, registry unchanged. Water Flea R03 material HOLD, Egret R03 seed-data review pending, Fly Larvae native-action HOLD/proposal unapplied. Root validate PASS. One 42/30 serial reservation continues to drain/11:00UTC; no game/I5 change, Codex epoch/certification, D50 merge or remote/protected-branch action. Claude reviews signed packets now; TERMINAL precedes Claude's D50/fresh I5 and single certification. All-pairs HOLD.
+
+## C570 O3 ACTIVE — offline repair source freeze, 2026-11-04
+
+Two root causes are fixed offline under unchanged limits. Atlas extrusion now copies exact nearest inner RGBA into gutters only, with original packed and corrected hashes in receipt; dependency pins/options/source/inner/non-gutter bytes stay exact. Lancelet R05 actual nine-part review and full static PASS, old R04 physical border-line HOLD retained. Whale first film has real neck/throat gaps; exact four-pose CPU reproduction proves excluded sibling fields open while old required joins pass. Optional author.paintBoundaryPairs routes two observed source adjacencies into the existing compiler. Same source/controls/owners; fresh Whale R03 intake/full static PASS, independent actual all-13 compiled review CLEAN_FOR_STATIC, new native pending. Fins remain independent; no guessed pivot or hidden jaw hinge.
+
+Final targeted suite11/11, independent code/import reviews no blockers; root validate PASS. Nine applied offline paths listed in audits/O3_20261103/I5_CHANGES.md, zero game/I5 imports, no seals/rows/limits/registry/selector/release/GUIDE changes. Source freeze commits before one between-wave develop with ALL worker CPU idle; no develop result yet. Delivery coordinator/deliveries/c570-offline-fixes-freeze/README.md.
+
+Egret R03 still material HOLD; all ten natural shades exact, no automatic additional recipe expansion. Fresh default Polychaete/Salp actual stroke/rim losses HOLD; one newly generated green Polychaete R02 margin HOLD86/69, no intake. Freshwater/Lungfish real concealed anatomy constraints evidenced; seven other first-kind proposals remain unbound, no false STATIC_READY. C565 Stick accepted, certification pending. One42/30 serial reservation to drain/11:00UTC; Claude can review signed packets now, owns D50/fresh I5 and single certification only after TERMINAL. No remote/protected-branch/release action; All-pairs HOLD.
+
+## C572 O3 ACTIVE — native producers after green gate, 2026-11-04
+
+Single repair-boundary develop on signed077636b7d681f92d6f474223f54e1a7da9171725: ALL workers CPU idle/load<4, native-AI queue waiting, PASS six owners/6097 tests/2expectedfail/3skip, no retry. Root validate PASS; no code changes since gate. Delivery coordinator/deliveries/c572-repair-native-producers/README.md. Sign then film Lancelet R05 first; its independent all-five physical W2/C261 must clear the representative atlas repair BEFORE Whale R03 native. Both fresh static13-action/actual source-owner-atlas reviews CLEAN, aquatic world proofs fixed; no new READY yet. Old failure evidence retained.
+
+Green Polychaete R02 material+margin HOLD, no author/intake; Egret R03 exact olive-fringe HOLD despite conservation. No automatic further source recipe/draw. CPU work may resume on one complete first-kind coral reference and guardian exact-contact diagnosis; no source invention, seal/row rebind or limit change. All9 applied paths offline, zero game/I5 imports, no Codex I5/certification/D50 merge. C565 Stick accepted pending Claude certification. One42start/30floor reservation to drain/11:00UTC; per-species READY after original W2/signed checkpoint/oneAI/fresh finished native/currentC261/fullfive W2W3. First-kind STATIC_READY peer review precedes native. Claude reviews now and owns D50/fresh I5/single certification after TERMINAL. No remote/protected-branch/release action; All-pairs HOLD.
+
+## C574 O3 ACTIVE — Lancelet pre-AI checkpoint, 2026-11-04
+
+Signed00934956 producer → Lancelet R05 native PASS → independent all-five actual full-size PHYSICAL_CLEAN, rectangles gone; root cross-viewed. C261477films/954pins retains old counterexamples, current0fragments/pink0/0. Frozen W2/finish checkpoint/subjects under coordinator/checkpoints/lancelet008-green-r05-atlas-original and finishes/lancelet008-green-r05-atlas. Sign C574 BEFORE one AI, then conserved texture rebind/fresh native/currentC261/full-five finished W2W3. No new READY or AI result yet. Raw physical review filepath schema caused a local precheck rejection; separate verified compatibility view preserves verdict/pins/observations/source, no product or review retry. Delivery coordinator/deliveries/c574-lancelet-pre-ai/README.md.
+
+Whale R03 native/C261 PASS after representative W2; upper neck cuts/atlas lines close, remaining near-paddle V under source-aware independent physical review, no AI. Guardian limiting hindNear exceeds unchanged cap by0.2434px; isolated existing-adapter extension passes sample but runtime patch remains UNAPPLIED/full validation pending. Cold-Water Coral material HOLD and concrete material-edit proposal, no first-kind false STATIC_READY. Nine applied paths remain offline; code unchanged since idle develop PASS6097/no retry. Root validate PASS. Stick accepted pending Claude cert; one42/30 reservation continues to drain/11:00UTC. Claude reviews signed species now and owns D50/fresh I5/single certification after TERMINAL. No remote/protectedbranch/release action; All-pairs HOLD.
+
+### O3 C576 — Whale pre-AI checkpoint (2026-11-04)
+
+Whale R03 independent source-aware PHYSICAL_CLEAN; signed pre-AI checkpoint before one finish. Lancelet finished/native/C261 clean; independent finished W2/W3 pending. Latest C261478/956 retains historical counterexamples. No runtime/I5/seal/limit change. One42/30 reservation continues to 11:00UTC cutoff; next: deliver each earned READY, material source repair, guardian proposal review. Claude may CPU-review commits now; epoch/certification only after TERMINAL. No app switch, relay or remote action.
+
+### O3 C578 — material repair producer (2026-11-04)
+
+Lancelet raw AI W3 material HOLD: sharp delta edge inside protected border; frozen evidence. New source-specific interior taper producer independently reviewed/tested, no derivative/inference yet. Whale finishednative/C261479-958/W3CLEAN; W2 pending. Coral freshgreen1254 marginPASS/materialpending, no old masks/count/falseSTATIC_READY. Guardian full focused tail121+presentation78 and real nonzero pass-through proof; runtime still unapplied. RootvalidatePASS/latestidledevelop6097PASS/gameunchanged. Next: conserved Lancelet derivative actual material review, Whale READY if W2earned, Coral source review, then scoped guardian ordinary runtime repair with all I5paths/copy authority listed and Claude epoch after TERMINAL. One42/30 reservation ends drain/11:00UTC; no remote action, All-pairs HOLD.
+
+### O3 C580 — Whale READY (2026-11-04)
+
+Whale13parts/49pins/allfivefinished actual W2W3 CLEAN, currentC261479/958 own0/0; READY packet coordinator/ready/whale016-observed-r03/packet.json. OneAI/signedprecheckpoint24afbac3; no new seal or limits. Raw W2media schema compatibility validated separately, no review/stage retry. Lancelet conservedinterior derivative1640RGB/3483deepAIexact passes conservation but awaits actual independent material. Coral newsource oliveHOLD; guardian runtimeproposal unapplied despite focused positive proof. Latest develop6097PASS/gameunchanged, rootvalidate beforedelivery. ClaudeCPUreviews now, certafterTERMINAL. Root continues42/30serial to drain/11:00UTC; no remote,All-pairsHOLD.
+
+### O3 C582 — Lancelet READY (2026-11-04)
+
+Lancelet R06 READY9parts/45pins/fullfive finished W2W3 CLEAN/C261480-960 own0-0 on e7eb9fd724 G. OneAI plus explicitly identified conservedpostAI derivative1640RGBonly2fields; oldAIW3HOLD retained, protected/alpha/outside/other7parts exact, no changedmodel/mask/seal/ruler. Packet coordinator/ready/lancelet008-green-r06-interior/packet.json; derivation.json links exactrawengine lineage. W3proposal author disclosed, independentW2source/master/fullfive CLEAN. Whale separatelyREADY/Stickacceptedpendingcert. Coral currentmaterial+donorHOLD; Fruitabsenceambiguous/HOLD. Guardian next ordinaryone-IDruntimefix after finalreview, listallgamepaths and samecommit121bulletGUIDEpin; root fullstatic/native/W2beforeAI. No Codex epoch/cert/D50merge; latestidledevelop6097PASS/gameunchanged/rootvalidatebeforecommit. One42-30 reservation to drain/11:00UTC; ClaudeCPUreviewnow/freshI5+certonlyafterTERMINAL. No remote action;All-pairsHOLD.
+
+## C584 O3 TERMINAL_TEST_HOLD — fresh-session handoff, 2026-11-04
+
+O3 stopped early on required guardian unit RED23PASS/1FAIL; no automatic retry or later static/native/AI/profile/validate. One serial reservation RELEASED,101stages/owned descendants drained; program queue NOT drained. Exact62 final ledger audits/O3_20261103/w4-terminal-ledger-r05:3Claudeacceptedpendingcert (Stick C565, Whale/Lancelet C583),48evidencedHOLD,9authorprereq,2partialsourcepending. No admission/certification; root registry838/coverage493-631 unchanged.
+
+READY producer packets remain immutable and were independently accepted: coordinator/ready/stick002-owner-r05,whale016-observed-r03,lancelet008-green-r06-interior; allfive actualstills. C261480/960 oldcounterexamples retained. Lancelet oneAI+explicitconservedpostAI2fieldderivative; rawAIHOLDretained/noAIretry. Whale cosmeticthroatnegative-spacecaveat carried. No WaveC STATIC_READY/nativeclaim. Narwhal/rays/Rattlesnakeunfinishedproposals preserved; GiantClam actualmandatoryhingeunlocatable, Coral exactolive/noeligible-islanddonor HOLD.
+
+Guardian failing Lizard same-object assertion is consistent with prefilled same-serialized-key cache returning an equivalent earlier action; source-read diagnosis only, not corrective proof. Do not weaken assertion, rerun, film or claimqualification. All6temporarycandidatepaths preserved under coordinator/guardian-tail-first-red/unverified-production-candidate and restored exactlyC582b608e71f; newtestremovedaftercopy. Currentgame/I5change0;9offlineproductiontoolsremain, completecandidate/restorepaths I5_CHANGES.md. Release/GUIDE121 restoredtogether, no seal/row/limit/selectorchange.
+
+Last green develop: oneALLCPUidle pre-candidate run on signedC582,6097pass/2expectedfail/3skip/all6owners; lastrootvalidateC582PASS. No terminal-head rerunafterRED. Finalowncleanup264132031logicalB rawscratch+ignoreddist, sources/models/namedfilms/pinsevidence retained. Enddiskreportcompleted;42start/30floorheld(min46.16/38.20), freevaluein coordinator/deliveries/c584-terminal/terminal.json, target60unmet.
+
+Codex IDLE, no nextprogram inferred. Claude may merge signedclosure/CPUreviewtestcacheevidence; its D50join/freshI5/singlecertification is afterTERMINALonly and subjectto greenprechecks/firstred. Codex nevermergedD50 orranepoch/certification. Sharedsignedobjects/mailboxes available; Dakk needsno relay/appswitch. No push/PR/label/hosted/develop/main/release/deploy. All-pairsHOLD. Fullhandoff coordinator/deliveries/c584-terminal/README.md.

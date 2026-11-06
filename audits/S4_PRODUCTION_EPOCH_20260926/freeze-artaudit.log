@@ -1,0 +1,8 @@
+
+> cf-v2@0.0.0 artaudit
+> node tools/artaudit.mjs
+
+ART AUDIT: 42 art sources · 0 findings
+  clean: no dead painters · no discarded rngs · no unused name params ·
+         no degenerate salts · no size-only variation · no pattern-globbed
+         file discovery · no stale-bundle readers

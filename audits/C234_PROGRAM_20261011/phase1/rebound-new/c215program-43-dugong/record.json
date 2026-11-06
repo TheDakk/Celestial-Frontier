@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dugong\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2657599145\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"23\"]]]]",
+    "seed": 2657599145,
+    "ownerId": "authored:archetype-sprint/c215program-43-dugong",
+    "earthName": "Dugong"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2657599145,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 11,
+    "body": 9,
+    "loco": 10,
+    "trait": 23,
+    "size": 1,
+    "diet": 5,
+    "head": 7,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 2,
+    "habitat": 0,
+    "detail": 7,
+    "accent": 9,
+    "temper": 5,
+    "sense": 0,
+    "repro": 7,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dugong"
+  },
+  "geometry": {
+    "cutoutAssetHash": "92d001c112508913a7c7bc4b14c7f4449124d7838f76c47e173dd49d165ec5d2",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5600456177014955,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6834130781499203,
+      0.48277511961722486
+    ],
+    "head": [
+      0.7644338118022329,
+      0.47926634768740034
+    ],
+    "jaw": [
+      0.7690590111642743,
+      0.5227272727272727
+    ],
+    "spine0": [
+      0.6401913875598085,
+      0.4735247208931419
+    ],
+    "spine1": [
+      0.5740829346092504,
+      0.46993620414673043
+    ],
+    "spine2": [
+      0.5078947368421053,
+      0.4735247208931419
+    ],
+    "spine3": [
+      0.4426634768740032,
+      0.4841307814992026
+    ],
+    "spine4": [
+      0.3723285486443381,
+      0.4995215311004785
+    ],
+    "spine5": [
+      0.2958532695374801,
+      0.512200956937799
+    ],
+    "caudal": [
+      0.2631578947368421,
+      0.5095693779904307
+    ],
+    "dorsal": [
+      0.5523923444976077,
+      0.4216108452950559
+    ],
+    "pectoralNear": [
+      0.660207336523126,
+      0.4972089314194577
+    ],
+    "pectoralFar": [
+      0.6615629984051037,
+      0.504066985645933
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/c215program-43-dugong/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile sirenian media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from tang. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "d1fab0b52db4cdc3899bfeb37aea762c4e18d2458cd2ef6cf6ae3e86c970272c",
+    "subjectSourceSha256": "64b1f2f76b1bbae3746cec6223cc6e3753ac5e70ddc7b91af2730a3f4b197df2",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.08109667540666826,
+      "jaw": 0.043706343640941114,
+      "spine0": 0.04420050241820637,
+      "spine1": 0.06620577772336364,
+      "spine2": 0.06628540545325186,
+      "spine3": 0.06608786423092784,
+      "spine4": 0.07199914792802282,
+      "spine5": 0.07751926311592458,
+      "caudal": 0.03280110883964788,
+      "dorsal": 0.05297001045435439,
+      "pectoralFar": 0.030508515923251642,
+      "pectoralNear": 0.027328398555199074
+    },
+    "measures": {
+      "body": 0.346503377700335,
+      "bone-min": 0.027328398555199074,
+      "bone-max": 0.08109667540666826,
+      "caudal/body": 0.09466317199370887,
+      "head/body": 0.23404295780574683
+    }
+  },
+  "recipeHash": "11f71267de6469dc73a70d58fa399b42fb6f13f385bb3c93502f23955d7cfc83"
+}

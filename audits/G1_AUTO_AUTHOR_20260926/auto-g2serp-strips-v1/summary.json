@@ -1,0 +1,101 @@
+[
+ {
+  "id": "17-python",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "18-boa",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the right (head) end is not thicker than the left (tail) end (64.8 vs 66.2)",
+   "tail not tapered: tip 77px vs median 113px (truncated tail?)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-racer",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "20-garter-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-tree-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "18-rat-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "19-cottonmouth",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "21-mamba",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "23-whip-snake",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part segment-9 owns 1.41 % of the paint (reference 5.96 %)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-grass-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ }
+]

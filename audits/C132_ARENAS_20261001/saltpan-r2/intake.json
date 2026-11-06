@@ -1,0 +1,191 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "saltpan-r2",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 4792,
+        "despilledPixels": 239,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 954359,
+      "visiblePixels": 618993,
+      "firstPaintedY": 492,
+      "firstPaintedYNormalized": 0.5228480340063762,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3770,
+        "despilledPixels": 24,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1340301,
+      "visiblePixels": 233051,
+      "firstPaintedY": 784,
+      "firstPaintedYNormalized": 0.8331562167906482,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "d641691da460d366b1e4ea9d87429182f27f86420a2a3bbfcc49343056cc4582",
+    "seed": 768461496,
+    "systemCardSourceSha256": "1f241d7e5b97990148d2cfc34fe5e82629c22face2442cef9b03175af5b9db2a",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "96d7803cdb5c0af891c22f0b51b4a594128b0145abbe24410cd677bb5ad6c18d",
+          "bytes": 2252043,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "96d7803cdb5c0af891c22f0b51b4a594128b0145abbe24410cd677bb5ad6c18d",
+          "bytes": 2252043,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "1b85a197e68630b682d77ad91e7f73bc5a211589087d3c43b615f6a268b05582",
+          "bytes": 1829669,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "05eae18de70e397c037a53fba87faf6210a01a6fdcf508b552414b0a0ca0df11",
+          "bytes": 2477256,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 954359,
+        "visiblePixels": 618993,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "b3285c4ede281fd16e1b42ca3e15d1392d5673e4cc3f291dd9c13605e7927152",
+          "bytes": 1228456,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "da940dda33cc225e7758bb2096628f72b84704dc15512ecb4a90ce8de6ebc506",
+          "bytes": 1468131,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1340301,
+        "visiblePixels": 233051,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-manifest.json",
+    "sha256": "89889cbde731dfdf8f58f528477da91f14fcb9dba066afc80fffae09f71c651f"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

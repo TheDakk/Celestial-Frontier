@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "ashwaste",
+  "biome": "ashwaste",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/ashwaste/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/ashwaste/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/arena-far.webp",
+      "runtimeSha256": "57bf2a936414916c8dc14ffe0f1a6b72ff38b2432d6513754cd56f5b4191fcb8",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+        "sha256": "22e9637990af45157cc2acd65fcf9ab514819b92d0692fa93c4787af6e4828de"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-mid.webp",
+      "runtimeSha256": "582e4b86e90d5d6fe6f9a48f5380f633d6f0af679d5f6d272686e76f6b5bc53c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-mid.png",
+        "sha256": "9a0ccd087db8f3b8a2b02a8aa500be25e550293cd58f42e11dbf0e2c742f8d10"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-near.webp",
+      "runtimeSha256": "81bd750a1756ef8f893866d3f881630dad1d7e75ce5bfacc46f0055a3f765d91",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-near.png",
+        "sha256": "f21120d29892fcef45b5ea58d9fc3defc298bfdcb29ab23e4d609f94f62a280b"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

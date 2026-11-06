@@ -1,0 +1,252 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c203creaturesupply-05-moose/fit",
+  "sourceMasterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+  "keyedRgbaSha256": "37d5841fa620a5a69071ba85a1726c052a400274397d95ef671aa573ebd961e5",
+  "remainder": "spine",
+  "remainderPixels": 48357,
+  "movedPixels": 2598,
+  "islands": [
+    {
+      "pixels": 261,
+      "to": "head",
+      "border": {
+        "head": 18
+      }
+    },
+    {
+      "pixels": 256,
+      "to": "head",
+      "border": {
+        "head": 20
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "neck",
+      "border": {
+        "neck": 18
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "neck": 4
+      }
+    },
+    {
+      "pixels": 187,
+      "to": "neck",
+      "border": {
+        "head": 20,
+        "neck": 69
+      }
+    },
+    {
+      "pixels": 215,
+      "to": "head",
+      "border": {
+        "head": 67
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "reviewed-tail-0",
+      "border": {
+        "reviewed-tail-0": 21,
+        "pelvis": 2
+      }
+    },
+    {
+      "pixels": 296,
+      "to": "jaw",
+      "border": {
+        "head": 19,
+        "jaw": 66
+      }
+    },
+    {
+      "pixels": 484,
+      "to": "neck",
+      "border": {
+        "head": 25,
+        "jaw": 39,
+        "neck": 70
+      }
+    },
+    {
+      "pixels": 57,
+      "to": "pelvis",
+      "border": {
+        "reviewed-tail-1": 15,
+        "pelvis": 25
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 4
+      }
+    },
+    {
+      "pixels": 36,
+      "to": "neck",
+      "border": {
+        "neck": 28
+      }
+    },
+    {
+      "pixels": 174,
+      "to": "neck",
+      "border": {
+        "neck": 35
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "neck": 5
+      }
+    },
+    {
+      "pixels": 302,
+      "to": "hind-near-knee",
+      "border": {
+        "hind-near-knee": 46,
+        "hind-far-knee": 9,
+        "pelvis": 14
+      }
+    },
+    {
+      "pixels": 76,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 46
+      }
+    },
+    {
+      "pixels": 79,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 19
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-paw": 2,
+        "fore-far-ankle": 13
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 5
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-ankle": 8
+      }
+    },
+    {
+      "pixels": 69,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 23
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-paw": 2,
+        "fore-near-ankle": 8
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 7
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c203creaturesupply-05-moose",
+    "parts": 27,
+    "atlasSize": {
+      "width": 1552,
+      "height": 501
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 39,
+        "distancePx": 3.546829570193644,
+        "supports": [
+          821
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 31,
+        "distancePx": 6.315061361538824,
+        "supports": [
+          1041
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 34,
+        "distancePx": 5.31413210223456,
+        "supports": [
+          465
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 25,
+        "distancePx": 3.624913792078399,
+        "supports": [
+          677
+        ]
+      }
+    ],
+    "sourceBindingHash": "1921f5ea2dbc3ec7d2bcd25860b4b2cc39fc6824a752aafd6407d88d8a0868cb",
+    "sourceVertices": 1498,
+    "vertices": 1626,
+    "sharedSupports": 419,
+    "pins": 375,
+    "independentSurfaceParts": 27,
+    "sourceJoins": 35,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

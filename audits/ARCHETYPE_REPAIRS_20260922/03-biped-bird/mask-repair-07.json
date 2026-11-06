@@ -1,0 +1,17 @@
+{
+  "basis": "Candidate06 anatomical rejection supersedes coarse approval. Use actual disconnected near/far silhouettes below884; preserve883 ambiguous inner-body pixels at845\u2013883.",
+  "declaredPixels": {
+    "wingComponents": 3465,
+    "outerLegComponentsAndExplicitAdjacentPixels": 1567,
+    "definiteInnerLegPieces": 934,
+    "total": 5966
+  },
+  "preserved": [
+    "all sourceRGBA",
+    "all prior non-body labels",
+    "upperbody/tail attachment",
+    "ambiguous innerleg845\u2013883",
+    "landmarks/materials/presence",
+    "all solver/gate/limit values"
+  ]
+}

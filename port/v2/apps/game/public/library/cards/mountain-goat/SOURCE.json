@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mountain Goat",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/14-mountain-goat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "19f3a39313b0c81e35034bbe73e12131a93df0f72d218e022765ca19b3d50904"
+}

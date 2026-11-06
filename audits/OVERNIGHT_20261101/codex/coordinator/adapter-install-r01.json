@@ -1,0 +1,42 @@
+{
+  "receiptSha256": "dbeeb0ac3ec9adb1b5ae753a6621fd08f8162d209538f473b725abece7158a86",
+  "rows": [
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/prepare-plan.py",
+      "sha256": "1e225c6924f8260bb0f411317e227c8d82ec8fd102f710ed91799495f9572483",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/prepare-finish.py",
+      "sha256": "8f784db6969f1a34bd81ab00aee4cc46b6b3107f55c364e2f99f5534e37151aa",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/rebind-one.mjs",
+      "sha256": "07411abedff17d45cc784fd40f864481c235a77ca2b3f3f386a26995ef711d0d",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/make-ready-packet.py",
+      "sha256": "39bff8fe8a1fd008f70c9bebe6dd8945a98905f7abd964114e1938337353e004",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/freeze-triage.py",
+      "sha256": "90b4883e06ef25426dba376a79645bfa0b57e22e457e785f18368c43dbb48d8f",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/bind-native-plan.py",
+      "sha256": "870714929536a9314ec8ec25bdef5991348ff60faeb9960caf7fcec768d6e68a",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/bind-plan-realm.py",
+      "sha256": "9b0b0d4028ed5b46147b3639f6cd5c4002738acd726826520b9862f49a625614",
+      "classification": "AUDIT_PATH_ONLY_ADAPTER"
+    }
+  ],
+  "runtimeChanges": [],
+  "assertionChanges": 0
+}

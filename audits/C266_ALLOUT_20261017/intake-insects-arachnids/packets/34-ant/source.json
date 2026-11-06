@@ -1,0 +1,36 @@
+{
+ "source": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c1-34-ant/master.png",
+ "sha256": "119ad5e0f252185aa7a8495b57c107860e212c2d0e40749f5d66f369896553b0",
+ "retainedOriginal": true,
+ "why": "Strict right-facing lateral worker ant: three distinct body lumps pinched by a petiole node, two elbowed antennae, mandibles, six legs from the mesosoma (one hind leg raised).",
+ "ownershipSummary": {
+  "slug": "ant",
+  "offPaint": [],
+  "paint": 54195,
+  "remainderFallbackPx": 4959,
+  "remainderFrac": 0.0915,
+  "joints": {
+   "antennaFar": 859,
+   "antennaNear": 1054,
+   "mandible": 1026,
+   "head": 6994,
+   "legFrontFarKnee": 491,
+   "legFrontFarFoot": 1017,
+   "legFrontNearKnee": 942,
+   "legFrontNearFoot": 1140,
+   "legMidNearKnee": 827,
+   "legMidNearFoot": 1291,
+   "legHindFarKnee": 369,
+   "legHindFarFoot": 1041,
+   "legHindNearKnee": 1731,
+   "legHindNearFoot": 2389,
+   "legMidFarKnee": 128,
+   "legMidFarFoot": 398,
+   "thorax": 9349,
+   "abdomen": 18190,
+   "root": 4959
+  },
+  "emptyParts": [],
+  "missingJointParts": []
+ }
+}

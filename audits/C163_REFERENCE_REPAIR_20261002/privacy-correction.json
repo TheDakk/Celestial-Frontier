@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c163-evidence-privacy-correction/v1",
+  "file": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/diagnosis.json",
+  "reason": "Native reports from a prior environment retained absolute legacy home prefixes; new diagnosis now records only ~/ aliases. Source files were not edited.",
+  "priorSha256": "88c2adcf29ea8430a686c2315e96184e4ef508449c4c23f6bcd19418621abe2f",
+  "currentSha256": "92a9742e1d7924284a1d85ce13ce431623be26ddb6ff1fc04db506b7ec4f158e",
+  "uniquePathEdits": 8
+}

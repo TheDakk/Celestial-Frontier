@@ -1,0 +1,73 @@
+{
+  "name": "Butterfly",
+  "slug": "02-butterfly",
+  "sourcePacket": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/02-butterfly",
+  "packet": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly",
+  "family": "insect",
+  "axisPx": [
+    [
+      470,
+      850
+    ],
+    [
+      675,
+      808
+    ]
+  ],
+  "axisReading": "Distal segmented abdomen tip to thoracic insertion, behind the closed wings.",
+  "method": "Half arc length along the observed abdomen centreline; straight abdomen uses its two anatomical endpoints.",
+  "oldAbdomenPx": [
+    575,
+    828
+  ],
+  "abdomenPx": [
+    572.5,
+    829
+  ],
+  "changedAuthoringFields": [
+    "landmarksPx.abdomen"
+  ],
+  "allOtherAuthoringFieldsIdentical": true,
+  "oldAuthoringSha256": "1ca75153f82550204b540bb10c77676c60be3a5fec5f9e50870c369d7be14aee",
+  "newAuthoringSha256": "1f29998d5bbaa4c95f94673bae4a10166c2aa959e9eec9b7e0267bc74414a512",
+  "copied": [
+    {
+      "file": "master.png",
+      "sha256": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b",
+      "bytes": 1600722
+    },
+    {
+      "file": "subject-source.json",
+      "sha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd",
+      "bytes": 2400
+    },
+    {
+      "file": "presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "file": "prompt.txt",
+      "sha256": "c1fc2b9eb92e7e1eecd7fffb127e2f259f42146a3727de83daa8c67fe3dcc9c7",
+      "bytes": 13306
+    }
+  ],
+  "oldRatios": {
+    "leg/body:legFrontFar": 0.7945257771670979,
+    "leg/body:legFrontNear": 0.8290715126471724,
+    "leg/body:legMidFar": 0.6419364949607043,
+    "leg/body:legMidNear": 0.779552226136949,
+    "leg/body:legHindFar": 1.1481660763494301,
+    "leg/body:legHindNear": 0.9659376975890533
+  },
+  "axisMidpointRatios": {
+    "leg/body:legFrontFar": 0.7858997271430727,
+    "leg/body:legFrontNear": 0.8200704046314097,
+    "leg/body:legMidFar": 0.6349670844306619,
+    "leg/body:legMidNear": 0.7710887417639511,
+    "leg/body:legHindFar": 1.1357006053790704,
+    "leg/body:legHindNear": 0.9554506534440492
+  },
+  "rulerMaximum": 2.5,
+  "nativeAcceptance": false
+}

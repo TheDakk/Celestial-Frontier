@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {acquireWorkspaceLock} from '../../../port/v2/tools/workspacelock.mjs';
+const packet=path.resolve(process.argv[2]);
+const receipt=path.join(packet,'lease.json'), signal=path.join(packet,'lease-release.json');
+if(fs.existsSync(receipt)||fs.existsSync(signal))throw Error('Fresh single-image lease required');
+const free=()=>{const s=fs.statfsSync('/System/Volumes/Data');return s.bavail*s.bsize/2**30;};
+const start=free();if(start<42)throw Error('Need42GiB before inference');
+const release=acquireWorkspaceLock('C465-single-imagegen');
+const row={status:'ACTIVE',startedAt:new Date().toISOString(),startedUnix:Date.now()/1000,beforeGiB:start,lowestGiB:start,inferenceMinimumGiB:42,floorGiB:30};
+const save=()=>{const t=receipt+'.tmp';fs.writeFileSync(t,JSON.stringify(row,null,2)+'\n');fs.renameSync(t,receipt);};
+save();console.log(JSON.stringify({status:'LEASE_READY',beforeGiB:start}));
+const finish=(status,code)=>{row.status=status;row.afterGiB=free();row.elapsedSeconds=Date.now()/1000-row.startedUnix;save();release();process.exit(code);};
+setInterval(()=>{row.lowestGiB=Math.min(row.lowestGiB,free());save();if(row.lowestGiB<30)finish('FLOOR_REFUSAL',1);if(fs.existsSync(signal))finish('RELEASED',0);if(Date.now()/1000-row.startedUnix>600)finish('TIMEOUT',1);},1000);

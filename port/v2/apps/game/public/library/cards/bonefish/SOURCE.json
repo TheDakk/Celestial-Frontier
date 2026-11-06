@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bonefish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/04-bonefish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5619f58d28e5242e2d2e65cf39ba31ae01fe21613dd3ceae1397d1418f46ed4d"
+}

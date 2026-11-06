@@ -1,0 +1,159 @@
+{
+  "schema": "cf.c186-bittern-independent-review/v1",
+  "reviewer": "effects_perf_recon",
+  "status": "SUPPORTS_BOUNDED_OFFLINE_CANDIDATE_WITH_VISUAL_HOLDS",
+  "mode": "Read-only inspection of retained code/results, JSON arithmetic, exact input hashes and two full-size software renders. No tests, rig loop, browser or native invocation. Only this review file is new.",
+  "confirmed": {
+    "originalPaintHash": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+    "candidatePaintHash": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+    "changedLandmarks": [
+      "legFarKnee",
+      "legFarAnkle",
+      "legFarFoot"
+    ],
+    "changedPolygons": [
+      "far-foot",
+      "far-shin",
+      "far-thigh"
+    ],
+    "otherAuthoringFieldChanges": [
+      "coverage"
+    ],
+    "recordFileSha256": "92701930d8656ea907b1fd71832649631f51e6f5ed26777dba68b5c4b8ba9a8a",
+    "bindingFileSha256": "2c1e6d92b21d28fa1a9d55d14e70389c401abc011ce960213d47318a4d43d79f",
+    "runtimeInputHashes": "MATCH",
+    "staticStatus": "PASS_STATIC",
+    "staticActions": 14,
+    "staticActionSamples": 1694,
+    "exactSourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "presentation": "PASS",
+    "retainedContextOriginal": {
+      "samples": 614,
+      "refusals": 1
+    },
+    "retainedContextCandidate": {
+      "samples": 614,
+      "refusals": 0
+    },
+    "actualLoadedRigParityPublications": 7,
+    "freshTurns": 5,
+    "freshPublications": 7684,
+    "freshRefusals": 0
+  },
+  "codeReview": [
+    "Retained context reconstructs native cadence and asserts exact original refusal context before replay. Original and candidate are evaluated against the same retained pose/context.",
+    "Dense replay asserts finite commandEnd/actionStart bounds and 614 samples per fit; explicit captured fractional instant is included beyond the integer-ms grid.",
+    "Actual loaded-rig review compares each mesh position buffer exactly with the independent publication, includes repeated/reverse seeks, and asserts inherited solver ceilings.",
+    "Fresh turns compile candidate anatomy and supports, alternate both attacker directions, include two dodge outcomes and final target faint. It samples 4ms plus exact beat boundaries; it is not native timing or exhaustive real-valued coverage."
+  ],
+  "fullSizeReview": {
+    "original": "original-neighbour-1504.png",
+    "candidate": "review02/recorded-failure-phase.png",
+    "findings": [
+      "The candidate far lower leg has a continuous visible shin into the foot and a readable bent knee. The original neighboring frame has a pinched/wedge-shaped shin at the ankle.",
+      "Large inherited white wing/body and shoulder/neck openings remain visible in both renders. The repaired leg does not justify whole-creature visual acceptance.",
+      "The images are software renders at different neighboring times (1504 versus the recorded 1504.1000000000004 instant), because the original refuses the exact captured instant. They are not matched native GPU frames."
+    ]
+  },
+  "actionableDocumentation": [
+    {
+      "file": "README.md",
+      "finding": "Recipe identity and file hashes were conflated in the reviewed text. e1b2d8d7\u2026 is record.recipeHash, and79c8a533\u2026 is binding.bindingHash; actual file SHA256 values are listed above and match runtime-review inputs.",
+      "recommendation": "Relabel internal identities explicitly or include the actual file SHA256 values. Root notified; no source or README edit by reviewer.",
+      "status": "RESOLVED_BEFORE_FREEZE",
+      "resolution": "Root relabeled internal identities as recipeHash/bindingHash and supplied actual file SHA256 values. Reviewer checked the revised text without runtime execution.",
+      "initialReviewedReadmeSha256": "cfe72a6f90f86f3310f402f073ec1378b0a122b9cacfcfcdde81212b9fa970b6",
+      "resolvedReadmeSha256": "cfe72a6f90f86f3310f402f073ec1378b0a122b9cacfcfcdde81212b9fa970b6"
+    }
+  ],
+  "limitations": [
+    "Finite offline sampling does not prove all real-valued phases or native 60fps.",
+    "The old finished AI atlas must be re-finished against this exact changed ownership; it cannot silently be rebound.",
+    "The narrow phase-dependent geometric refusal is supported; source repair changes the sampled outcome. Timing still determines which phase is observed, while texture and seek order were controlled in retained evidence.",
+    "No qualityAccepted, native admission, coverage increase or all-pair authorization is implied."
+  ],
+  "inputs": [
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/README.md",
+      "sha256": "cfe72a6f90f86f3310f402f073ec1378b0a122b9cacfcfcdde81212b9fa970b6"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/original-authoring.json",
+      "sha256": "5bbb29a6f0bbb5c400c32c2245522a45b2ce41c764c69504d408e1c4a1cbfae7"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/authoring.json",
+      "sha256": "e978e47aa00b807e30bd0c5c90b6b76f11aff204b4e8dc2ba62d9ad4c6454890"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/record.json",
+      "sha256": "92701930d8656ea907b1fd71832649631f51e6f5ed26777dba68b5c4b8ba9a8a"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/binding.json",
+      "sha256": "2c1e6d92b21d28fa1a9d55d14e70389c401abc011ce960213d47318a4d43d79f"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/atlas/07-bittern.png",
+      "sha256": "d9d782af6cd0c0060b4a3e92e7af544930cf0956ec1cf8e0b85593eed20327b2"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/context.mjs",
+      "sha256": "66e273418e432d7795c4bbc26198af82a4a4402a95286a784dcbf912f505508a"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate02-dense.mjs",
+      "sha256": "0851a4985735659c93a90c4e824578e889629f26be876cb3ecf8452dabb64ecd"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/candidate02-dense-replay.json",
+      "sha256": "73bb7fa6c265f46af3dd8cad82d369c8afead97917bdfa0a4b6c1d7816aa7757"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review02.mjs",
+      "sha256": "ae951510ba8ead4361f23d35fc7f1fed2f860485ed0dde03b12abc6897d5904e"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/runtime-review01.json",
+      "sha256": "52748c817ddbff1783b1e471a8cc3b99881a3e56f60ab0321917922be5a27b31"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.mjs",
+      "sha256": "8e7c6572e639e087bd30be340ed756fa3bd340491f587694492ecf7d2bb1a272"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.json",
+      "sha256": "c4f0c8b6d615c340c76ab8206dd817f6bb97a86cbede1a82671112b71ef61059"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static02.json",
+      "sha256": "36a590fb60e63c269735989c0cabcdd730f946e8be5d22b56a75376211db437a"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/source-controls.json",
+      "sha256": "b91b89253efb97295efd21c0d9bc5d61b142c34386a5f25df922642a9099f7a8"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/original-neighbour-1504.png",
+      "sha256": "1d89ded32a0a95e07069dd4431910345fa7104894c7c9e04070cc7f5ff726601"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/recorded-failure-phase.png",
+      "sha256": "521f49ced12ef45fb3ac03ad9fc4eee98a67c3a9b27a30ee44d9e2e970dd9e51"
+    }
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}

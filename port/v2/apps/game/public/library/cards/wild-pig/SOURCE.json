@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wild Pig",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-07-wild-pig/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b189286d9dd2dd9c87103d83ddb81bfb81528442f3a58fbc43c8a1ae56498e86"
+}

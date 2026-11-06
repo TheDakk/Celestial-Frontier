@@ -1,0 +1,21 @@
+{
+  "status": "PASS_PRE_DISPATCH_INPUT_CORRECTION",
+  "aquaticCorrections": [
+    {
+      "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-dragonfish-observed02/plan.json",
+      "script": "audits/C279_CODEX_20261018/coordinator/plans/additional-dragonfish-observed02/script.json",
+      "beforeSha256": "43e66128a89a2d12c57720a53fc4cef43c05a8c23db81cabe0cf130e9bae1511",
+      "afterSha256": "7068731ef5556ac1bc04d829311f2c068b86113e7eff86a3a3f497da3023011d",
+      "realm": "aquatic",
+      "waterContext": {
+        "key": "lake",
+        "liquid": "water",
+        "surfaceWater": true,
+        "cardHash": "lake-1"
+      },
+      "firstDispatchPending": true
+    }
+  ],
+  "unchangedRuntime": true,
+  "usesProvenC275CompleteWaterWorld": true
+}

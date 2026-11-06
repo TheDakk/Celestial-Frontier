@@ -1,0 +1,27 @@
+{
+  "status": "QUALIFIED_DIAGNOSTIC_REFERENCE",
+  "name": "Marmoset",
+  "family": "primate",
+  "packet": "audits/C215_PROGRAM_20261009/phase4/marmoset-reference",
+  "fit": "audits/C215_PROGRAM_20261009/phase4/marmoset-reference/fit02",
+  "sourceSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+  "manualAuthoringSha256": "e63f6c153df05d0e588e4a8eb713445276ee5e6f400361f3e43ad80fc5c32c41",
+  "static": "audits/C215_PROGRAM_20261009/phase5/marmoset-static04.json",
+  "native": "audits/C215_PROGRAM_20261009/phase5/marmoset-native04/report.json",
+  "staticActions": 13,
+  "nativeFrames": 872,
+  "nativeSourceHashes": "ALL_VERIFIED",
+  "visualReview": {
+    "reviewer": "Codex",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "observation": "Full-size approach, mid-victory50 and held-faint90 remain whole with supported arms and an upright head; no arm web. Existing fit02 unchanged."
+  },
+  "referenceTransferScope": "Independent manual source-specific polygons; leave-one-species-out retained. Not gallery admission.",
+  "successorChanges": [
+    "Runtime now keeps arms supported with head/tail gesture; record, source, authoring, binding unchanged."
+  ]
+}

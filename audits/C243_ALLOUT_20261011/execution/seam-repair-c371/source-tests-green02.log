@@ -1,0 +1,31 @@
+✔ Manatee reviewed continuous boundaries share the same field; independent overlaps remain separate (191.153125ms)
+✔ Pilot Whale reviewed continuous boundaries share the same field; independent overlaps remain separate (157.363459ms)
+✖ River Dolphin reviewed continuous boundaries share the same field; independent overlaps remain separate (136.900584ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 625.507292
+
+✖ failing tests:
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:69
+✖ River Dolphin reviewed continuous boundaries share the same field; independent overlaps remain separate (136.900584ms)
+  AssertionError [ERR_ASSERTION]: independent overlap negative control must remain separable
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:10:2)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

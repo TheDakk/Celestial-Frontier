@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "conservation",
+  "id": "10-grouse",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/prove-contours.mjs",
+    "10-grouse"
+  ],
+  "helperSha256": "84b7756870b1ba8bced0424048e5e92833d32cfe166117e5dbf2918f51e748eb",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/conservation.log",
+  "logSha256": "a270747992b1afd7bfc54fe19c9f4e49bb8e56d3e50c8ca14419ecae8d4d5ac2",
+  "nativeRuns": 0
+}

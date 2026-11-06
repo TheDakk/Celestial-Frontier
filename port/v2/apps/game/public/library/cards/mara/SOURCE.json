@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mara",
+ "fitDir": "audits/ISLANDS_C178_20261002/01-mara/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e0c9f099a36d2158c9dec0ff89a6207c8aa5b03d0e0e0cc3f6ed8851db2c275f"
+}

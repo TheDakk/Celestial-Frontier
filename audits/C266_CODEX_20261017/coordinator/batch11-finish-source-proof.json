@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "candidates": 3,
+  "verifiedFiles": 12,
+  "proofs": [
+    {
+      "name": "Water Vole",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/water-vole-01/native/report.json",
+      "reportSha256": "160c1ad4973137d321517d0dcab0a1aab5d95bcebd35192ad511291fd920dd07",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit/record.json",
+          "sha256": "069bb3f3abc1a534f3a0c789c7573e816ae7c290c9eef714d58765340dc939de"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit/binding.json",
+          "sha256": "39580302e63e8db9cded71726fab3418c1ae86c703d009771cedefe347b89d19"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit/parts/keyed.png",
+          "sha256": "3dd08006b6a64bc4cb6bbb868481c9aaec9399c721ad99fe282fc17303e30c6a"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit/parts/atlas/c266-16-water-vole.png",
+          "sha256": "af4fde8a8b25e293c292d180d76d7278be2c0adb0709a09988324ac675df3856"
+        }
+      ]
+    },
+    {
+      "name": "Coati",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/native/report.json",
+      "reportSha256": "9d46cb21be1e21a5e263008d9ca2c17f90735ede04044a555f0e0426c717b7b0",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit/record.json",
+          "sha256": "a6044850a87bb3f6a3d8067c6f8d29e029dbb1f1a2fb94ec7166805332e355f0"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit/binding.json",
+          "sha256": "0deb4b4b1d9ff4330329c4d02d752f278481b2732bda1b94d6e5b2f7ee6eb0a7"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit/parts/keyed.png",
+          "sha256": "c3ca7bfdc3a4a39d5e86cfdd4ad5713265c76e8aa17ec9a510c059c792a22c2b"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit/parts/atlas/c266-19-coati-a02.png",
+          "sha256": "3be04f8ed22f3c00e46d21a20a182f3813781086b7b0cf64f20595ceee031c9d"
+        }
+      ]
+    },
+    {
+      "name": "Frilled Lizard",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-01/native/report.json",
+      "reportSha256": "2517a2017e0f520f61d7e988931a40021d9050ed6d2e6cb32385f1e19b485b91",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/24-frilled-lizard-a02/islands/fit/record.json",
+          "sha256": "918d1b9394a8e852314ed42bd12536cc5986737ec84ace0ea06db30b18c05c4b"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/24-frilled-lizard-a02/islands/fit/binding.json",
+          "sha256": "d026b5384fc5bc6e85a2d99e31fc163d5ee828585bc4585c86afbfc0b79141a6"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/24-frilled-lizard-a02/islands/fit/parts/keyed.png",
+          "sha256": "5c328b682a9f24359246a724a5b93c2fde0e82386d19971ebcbf695786a3402a"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/24-frilled-lizard-a02/islands/fit/parts/atlas/c266-24-frilled-lizard-a02.png",
+          "sha256": "e557aeffe8d9bc616a56f9150c6d4678f51db2a5767d80ecef4b41532ad73802"
+        }
+      ]
+    }
+  ]
+}

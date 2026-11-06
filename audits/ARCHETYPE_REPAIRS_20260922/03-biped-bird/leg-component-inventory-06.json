@@ -1,0 +1,130 @@
+[
+  {
+    "bounds": [
+      579,
+      874,
+      599,
+      917
+    ],
+    "seedPx": [
+      581,
+      874
+    ],
+    "connectivity": 4,
+    "componentPixels": 521,
+    "regions": [
+      {
+        "toPart": "near-thigh",
+        "selectionRegionPxInclusive": [
+          579,
+          874,
+          599,
+          883
+        ],
+        "expectedPixels": 62
+      },
+      {
+        "toPart": "near-shin",
+        "selectionRegionPxInclusive": [
+          579,
+          884,
+          599,
+          917
+        ],
+        "expectedPixels": 459
+      }
+    ]
+  },
+  {
+    "bounds": [
+      759,
+      845,
+      808,
+      920
+    ],
+    "seedPx": [
+      779,
+      845
+    ],
+    "connectivity": 4,
+    "componentPixels": 1813,
+    "regions": [
+      {
+        "toPart": "near-thigh",
+        "selectionRegionPxInclusive": [
+          759,
+          845,
+          788,
+          883
+        ],
+        "expectedPixels": 553
+      },
+      {
+        "toPart": "near-shin",
+        "selectionRegionPxInclusive": [
+          759,
+          884,
+          788,
+          920
+        ],
+        "expectedPixels": 409
+      },
+      {
+        "toPart": "far-thigh",
+        "selectionRegionPxInclusive": [
+          789,
+          845,
+          808,
+          890
+        ],
+        "expectedPixels": 458
+      },
+      {
+        "toPart": "far-shin",
+        "selectionRegionPxInclusive": [
+          789,
+          891,
+          808,
+          920
+        ],
+        "expectedPixels": 393
+      }
+    ]
+  },
+  {
+    "bounds": [
+      937,
+      852,
+      964,
+      957
+    ],
+    "seedPx": [
+      940,
+      852
+    ],
+    "connectivity": 4,
+    "componentPixels": 1041,
+    "regions": [
+      {
+        "toPart": "far-thigh",
+        "selectionRegionPxInclusive": [
+          937,
+          852,
+          964,
+          890
+        ],
+        "expectedPixels": 346
+      },
+      {
+        "toPart": "far-shin",
+        "selectionRegionPxInclusive": [
+          937,
+          891,
+          964,
+          957
+        ],
+        "expectedPixels": 695
+      }
+    ]
+  }
+]

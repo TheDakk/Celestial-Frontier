@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Goat",
+  "slug": "13-goat-a02",
+  "id": "c266-intake-goat",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-27-goat",
+  "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+  "masterCopySha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+  "subjectSourceSha256": "6363e979a98244309bde957ee5b455fc98089b1b1322e064f70e86510aa565d6",
+  "promptSha256": "57877f3bcf1f965c45aa6b730ff866db9d0222a69e76c012cfd09df1be0d7a31",
+  "refusal": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)",
+  "observation": "Full-size review: shaggy goat standing right; backward-sweeping horns, long chin beard, upright ear, short tail flicked straight up over the rump (x≈349-417, y≈436-551), four separate legs with hooves. The tail is painted; the refusal is a transferred horizontal tail tip landing beside the upright tuft.",
+  "joints": 31,
+  "parts": 30,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/13-goat-a02.mjs"
+}

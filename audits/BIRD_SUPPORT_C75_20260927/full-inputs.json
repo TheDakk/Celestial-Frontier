@@ -1,0 +1,26 @@
+[
+  {
+    "name": "c54-14-goose",
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-14-goose/fit",
+    "copy": "audits/BIRD_SUPPORT_C75_20260927/full-inputs/c54-14-goose",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-14-goose/packet/master.png",
+    "canonicalMaster": "audits/G2_THROUGHPUT_C54_20260926/14-goose/master.png",
+    "masterSha256": "ace5ecc67e73e5f75f38d0e0ecfeab8f533317d4060131ec66ff2d9bca690b63"
+  },
+  {
+    "name": "c54-15-quail",
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-15-quail/fit",
+    "copy": "audits/BIRD_SUPPORT_C75_20260927/full-inputs/c54-15-quail",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-15-quail/packet/master.png",
+    "canonicalMaster": "audits/G2_THROUGHPUT_C54_20260926/15-quail/master.png",
+    "masterSha256": "bc9a9370f912802cc06e709719495b70b89ec8afe815dd8e84cf64ef27b16b96"
+  },
+  {
+    "name": "c56-10-raven",
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-10-raven/fit",
+    "copy": "audits/BIRD_SUPPORT_C75_20260927/full-inputs/c56-10-raven",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-10-raven/packet/master.png",
+    "canonicalMaster": "audits/G2_THROUGHPUT_C56_20260926/10-raven/master.png",
+    "masterSha256": "d27628f43b32ca2ba8374f9178feafa7af2fff367b3f8cf35fbed956b3fb59b7"
+  }
+]

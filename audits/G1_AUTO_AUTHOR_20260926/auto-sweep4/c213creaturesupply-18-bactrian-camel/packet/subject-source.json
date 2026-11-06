@@ -1,0 +1,76 @@
+{
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "species": {
+    "name": "Bactrian Camel",
+    "aspect": 1.4,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "two separate humps",
+      "shaggy hanging hair on the neck, chest and hump crowns",
+      "long curved neck and long legs"
+    ]
+  },
+  "genome": {
+    "seed": 2036945634,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 7,
+    "body": 12,
+    "loco": 1,
+    "trait": 20,
+    "size": 4,
+    "diet": 4,
+    "head": 0,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 1,
+    "detail": 1,
+    "accent": 10,
+    "temper": 0,
+    "sense": 6,
+    "repro": 7,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bactrian Camel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bactrian Camel\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2036945634\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 284,
+  "profile": {
+    "id": "hoofed-unhorned",
+    "names": [
+      "Zebra",
+      "Wild Horse",
+      "Wild Ass",
+      "Camel",
+      "Wild Pony",
+      "Dromedary Camel",
+      "Bactrian Camel",
+      "Horse",
+      "Donkey",
+      "Llama",
+      "Alpaca",
+      "Okapi"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": "No generic claw; horn use not inferred."
+  }
+}

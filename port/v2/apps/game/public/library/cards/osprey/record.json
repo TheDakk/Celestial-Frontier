@@ -1,0 +1,197 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Osprey\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1081382268\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 1081382268,
+    "ownerId": "authored:archetype-sprint/c275-w1-11-c266-osprey",
+    "earthName": "Osprey"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1081382268,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 5,
+    "body": 5,
+    "loco": 11,
+    "trait": 18,
+    "size": 1,
+    "diet": 1,
+    "head": 3,
+    "limbs": 3,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 17,
+    "detail": 9,
+    "accent": 15,
+    "temper": 4,
+    "sense": 6,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Osprey"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1f7e7cb24d4e18617ad672a6a755cbabf051ac9e45125d2c30d4e58a8e4261fc",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.752,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5741626794258373,
+      0.5446570972886763
+    ],
+    "pelvis": [
+      0.543859649122807,
+      0.5885167464114832
+    ],
+    "spine": [
+      0.6060606060606061,
+      0.5119617224880383
+    ],
+    "chest": [
+      0.6602870813397129,
+      0.48165869218500795
+    ],
+    "neck0": [
+      0.6786283891547049,
+      0.46810207336523124
+    ],
+    "neck1": [
+      0.7009569377990431,
+      0.44976076555023925
+    ],
+    "head": [
+      0.726475279106858,
+      0.4449760765550239
+    ],
+    "beak": [
+      0.75518341307815,
+      0.4625199362041467
+    ],
+    "legNearKnee": [
+      0.5342902711323764,
+      0.6618819776714514
+    ],
+    "legNearAnkle": [
+      0.529505582137161,
+      0.7200956937799043
+    ],
+    "legNearFoot": [
+      0.5271132376395534,
+      0.7376395534290271
+    ],
+    "legFarKnee": [
+      0.5988835725677831,
+      0.6658692185007975
+    ],
+    "legFarAnkle": [
+      0.6331738437001595,
+      0.7177033492822966
+    ],
+    "legFarFoot": [
+      0.6379585326953748,
+      0.7304625199362041
+    ],
+    "wingNearRoot": [
+      0.5518341307814992,
+      0.4433811802232855
+    ],
+    "wingNearTip": [
+      0.21770334928229665,
+      0.215311004784689
+    ],
+    "wingFarRoot": [
+      0.5956937799043063,
+      0.43221690590111644
+    ],
+    "wingFarTip": [
+      0.5342902711323764,
+      0.25598086124401914
+    ],
+    "tailFan": [
+      0.26953748006379585,
+      0.6499202551834131
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C279_CODEX_20261018/w3-intake/primary-repair03/osprey/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Pinned Earth fauna ground capability; observed feet define supports"
+  },
+  "coverage": {
+    "scope": "Single independently observed unchanged C275 master; native film and independent full-size review required",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "64ff2ff909ce07aa30269db545686096dd168506b771eacf3e3eec5d4faf56a2",
+    "subjectSourceSha256": "d0f8e8334213a4323de68c986b494241174070e8a962e2504b9812f0ede799fe",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.053309872131924216,
+      "spine": 0.09863889056501575,
+      "chest": 0.062119113537959965,
+      "neck0": 0.022807575193102194,
+      "neck1": 0.028895806909080484,
+      "head": 0.02596303125374749,
+      "beak": 0.03364437497564435,
+      "legFarKnee": 0.09492648255153424,
+      "legFarAnkle": 0.06214981744305802,
+      "legFarFoot": 0.013626800231766434,
+      "legNearKnee": 0.07398668902547506,
+      "legNearAnkle": 0.05841001619531095,
+      "legNearFoot": 0.017706222736183764,
+      "wingFarRoot": 0.0813436218843697,
+      "wingFarTip": 0.18662672457577684,
+      "wingNearRoot": 0.11500961006264715,
+      "wingNearTip": 0.40454837049462955,
+      "tailFan": 0.2811103757009783
+    },
+    "measures": {
+      "body": 0.15803161305792757,
+      "bone-min": 0.013626800231766434,
+      "bone-max": 0.40454837049462955,
+      "leg/torso:legFar": 1.0801832426008733,
+      "leg/torso:legNear": 0.9498284871771101,
+      "wing/torso": 1.695675575759137
+    }
+  },
+  "recipeHash": "d90d6b169a4f471c96f81638ad8724c8ce76b8dbdb7461d08ee6f92eb5f105b9"
+}

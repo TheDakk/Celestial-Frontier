@@ -1,0 +1,2446 @@
+{
+  "status": "FROZEN_FINAL_PAPERWORK_AND_CLEAN_RESUMPTION",
+  "files": [
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/c407-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/c408-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/c409-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/report.json",
+      "sha256": "0a60c491a0a20660fb063117ced46050b58f3b51de82f684eca29daf81e13838",
+      "bytes": 371853
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/turn1-hit-reaction-50.png",
+      "sha256": "66c4072f20f06c3d149ba137df3a11ea6fd7a5b431a91997a65027f5edb5e831",
+      "bytes": 1526359
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/turn2-dodge-reaction-50.png",
+      "sha256": "086159f72f36b1b1adbe91e2bb8baa5faa2b63fb4c8dfd761761a4aea3e5a216",
+      "bytes": 1549393
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/turn3-hit-idle-50.png",
+      "sha256": "f6458a4d3b0cbfe32b8b2f619e7f8614c64d6bd302917368867d20f37e780f17",
+      "bytes": 1522310
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/turn3-hit-idle-90.png",
+      "sha256": "1f5de8df54047bdac8db8653b7c724ce34ea4207794edf4d892454042e12c923",
+      "bytes": 1522277
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/frigatebird/turn3-hit-reaction-50.png",
+      "sha256": "821bca26c0868390ef8a8dddefb6d8ca4329d38859b39031e007074a2e0b577b",
+      "bytes": 1521915
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/report.json",
+      "sha256": "df430987e19683f0e4b7de5bc64a4e26c55eee02a8b308d555892828c0b29a88",
+      "bytes": 372922
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/turn1-hit-reaction-50.png",
+      "sha256": "0041ff27f9470dcb9e466584b14d0da687ad78453bdc38a30954bac016b7cdb3",
+      "bytes": 1510405
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/turn2-dodge-reaction-50.png",
+      "sha256": "a78038543df93d8a71d719d609ec2a5cebb5fc45c1f34aca7e736418a6613501",
+      "bytes": 1533288
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/turn3-hit-idle-50.png",
+      "sha256": "c3c282b30b2ed8ecf1a9107d62876493fa77e9aed1d46f9dafc212c0640b1428",
+      "bytes": 1506070
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/turn3-hit-idle-90.png",
+      "sha256": "439da1217bdf4d07ec7a9577fdb306478ea49a54a72a770e43dfd6c371867567",
+      "bytes": 1505922
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/hoatzin/turn3-hit-reaction-50.png",
+      "sha256": "1fe2fb06e9aa128d0e3284f8cb055a5bf3acc80fc043450be9c7713d115c07e4",
+      "bytes": 1508520
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/report.json",
+      "sha256": "15e0850a9de9dc5af9303c20354fd8c924ef2580776053c76b9ac03e342505f9",
+      "bytes": 365963
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/turn1-hit-reaction-50.png",
+      "sha256": "a123e182ff070a95a495117cda5149464082c5aabf9519b762b08a009e7e5880",
+      "bytes": 1528912
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/turn2-dodge-reaction-50.png",
+      "sha256": "06464c22a760adcd390c636712e1a41d000108c4f154768631f0b9adb4968f37",
+      "bytes": 1565895
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/turn3-hit-idle-50.png",
+      "sha256": "2c99387fa01f1d9bdf2a8795e44da388452cc8bdcd8986a8dd9c6ffdfe3c6022",
+      "bytes": 1527432
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/turn3-hit-idle-90.png",
+      "sha256": "09392528dfe3c0261a163215f4166b5f966d2b93645d248203e68a4b93ad9ea8",
+      "bytes": 1526155
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/insect-eating-bat/turn3-hit-reaction-50.png",
+      "sha256": "7060f78d4becbaf755a7ff64dcfedf44f406ca54b78201f07e89e9c1bda2d345",
+      "bytes": 1528825
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/report.json",
+      "sha256": "82810d896f89ca5696cfb267348b663a0da59b890507988c97530906421aced1",
+      "bytes": 372590
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/turn1-hit-reaction-50.png",
+      "sha256": "371cd99a75750f173f6196f5f65c5e101ddee86efe52b1c7033498a2b6204952",
+      "bytes": 1525501
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/turn2-dodge-reaction-50.png",
+      "sha256": "980085b67c58712141a4fd2f36cca368b8b7b9280814c655552bea749bcaace5",
+      "bytes": 1544189
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/turn3-hit-idle-50.png",
+      "sha256": "a8e7154ea4d2a714c296974c783c6dc62e792a531e873744cfca55f4af2d160b",
+      "bytes": 1520161
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/turn3-hit-idle-90.png",
+      "sha256": "6f71bed5d709bcedd8645482654c4f877035d4538e4f01015c338284064a8fe9",
+      "bytes": 1520328
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/kookaburra/turn3-hit-reaction-50.png",
+      "sha256": "c862cd5cfec9a568220535db189d918a45b3a0b7a223b4bfd909a6499b906b42",
+      "bytes": 1522447
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/report.json",
+      "sha256": "204430a4facbc7d6fb4faf9303e9c968a705cc03bb9da6e3420f9013ae111efb",
+      "bytes": 372738
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/turn1-hit-reaction-50.png",
+      "sha256": "7edc4776e720c8a44d53b68cb809a57de788b6bbbdd1d79b0dcd4ce5f1639eef",
+      "bytes": 1502105
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/turn2-dodge-reaction-50.png",
+      "sha256": "e374b95fd1ef90b7f8d1eb7e907c5659d84de5144801c97d721ce9dfd2a716f4",
+      "bytes": 1515202
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/turn3-hit-idle-50.png",
+      "sha256": "9444af95166854fc66f0bf2760d9d5b2317949c6ec57566588deeb208fa69e1e",
+      "bytes": 1503208
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/turn3-hit-idle-90.png",
+      "sha256": "5348e1a02110415a1afe7a01aba0117c1381260ed5b1bafa1acf40c0f5e30c81",
+      "bytes": 1503099
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/macaw/turn3-hit-reaction-50.png",
+      "sha256": "50fe69f7315cd8637373d61d77f779408375180e8bb2892208c1c2f9b00823bb",
+      "bytes": 1504449
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/report.json",
+      "sha256": "a5e8829decd6aeb21f33f6c16e333f3ec67d502d041ef75c5a1725412174c7d1",
+      "bytes": 371743
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/turn1-hit-reaction-50.png",
+      "sha256": "e169ad6f60514a4379379c179a3836c4e7b9fccf278e36af072bfa6d90e24393",
+      "bytes": 1516933
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/turn2-dodge-reaction-50.png",
+      "sha256": "3820c722c66494a6d171058e8810240e7d401ae0a188f06679b9c52744471c28",
+      "bytes": 1572534
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/turn3-hit-idle-50.png",
+      "sha256": "3726daf6b10a4bdb79e428d2cb66b9dc224db491d2dcb39aa57dd3fbc0897556",
+      "bytes": 1513232
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/turn3-hit-idle-90.png",
+      "sha256": "b1d83d84520f299a6bf782fd846fa9e39bf140d7c8b3b0acda0f251265c266b6",
+      "bytes": 1513146
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/pheasant/turn3-hit-reaction-50.png",
+      "sha256": "635f0df2dd337e71fa87c48d5b4443827cd8bbac1aa5773c7e875d6eb10b7851",
+      "bytes": 1517944
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/report.json",
+      "sha256": "ed200429330600df36d089b112463e2e00dd2618f43958ef4e8ded06494d1e85",
+      "bytes": 370728
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/turn1-hit-reaction-50.png",
+      "sha256": "c3575c8acd4889dd31926b2868ab8d5a1540737fd9e1944d283f4ffc58126fb8",
+      "bytes": 1505590
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/turn2-dodge-reaction-50.png",
+      "sha256": "2ab413e1aaabff06bd37271acef999bdaeb7d9ef0652b811b1e308208ebe0c62",
+      "bytes": 1535701
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/turn3-hit-idle-50.png",
+      "sha256": "7ae17f70c9fe97439cb2c8226899ca024cebd21da379abbd5742a1270734a010",
+      "bytes": 1501669
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/turn3-hit-idle-90.png",
+      "sha256": "f9357520bd1caaef571c2c89ec5d8ff1256f8eb6b431fe4474ae16b9305aadec",
+      "bytes": 1501162
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/films/swift/turn3-hit-reaction-50.png",
+      "sha256": "bbc4f49b49f7cdaa19a37e6e3e599b77e54fa4f7aa1fd10c86a518b9f54910c5",
+      "bytes": 1503917
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-birds-queue.json",
+      "sha256": "313268b636b689c83a4caf644208f4e848f93e38138873a777b2ed4d5485106f",
+      "bytes": 157
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-ai.json",
+      "sha256": "e085bdc66acc418b517ec101fe8a312c7b71f940401429e512c9d1932600115b",
+      "bytes": 614
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-ai.log",
+      "sha256": "342405cdf136e5ccd894d597fe9a9fee6c8181f4541ab37af59ab7022aeb7f09",
+      "bytes": 993
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-native.json",
+      "sha256": "d5a534e583723d34999354b19ede0911ff130ec2e64bdfd45e496078ee5e0fcb",
+      "bytes": 555
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-native.log",
+      "sha256": "822a9930a1b4abddab5c0f497e4da882a918a12d9991c75be3cf4b213397c6a9",
+      "bytes": 222
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-rebind.json",
+      "sha256": "6ff776cc17d6b2fc0ce6c0ec96378e15fbcdded2931a3c3b54adaf680abd5273",
+      "bytes": 529
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-frilled-lizard-a03-rebind.log",
+      "sha256": "28fbe4ff2078b3601ef365fa1886851c4b21b762139f1b1e9f57c9be291cb565",
+      "bytes": 78
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-hoatzin-ai.json",
+      "sha256": "28be637d7fae138285df0f3d65f4df9885f78e364cea5c7c8a7756a3bc82f335",
+      "bytes": 568
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-hoatzin-ai.log",
+      "sha256": "a94786409f4f0420bb617a66e34b687898cf068d9ac272a926f1d80f2e1e2bb0",
+      "bytes": 464
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-index-02.json",
+      "sha256": "df46890857eeaf9b45fa99ab5ea388a573c520c7253a94c86186c31db978a912",
+      "bytes": 603
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-index-03.json",
+      "sha256": "04aa312627c18c87e979fe5b355b2dce1a63cbbdd499ccce2df03d9d39a071fe",
+      "bytes": 301
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-index.json",
+      "sha256": "ec11792b1f5e8827d2397736e33ee0dd113ab94b98f4f80975dc47eb98d59f47",
+      "bytes": 313
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-kookaburra-ai.json",
+      "sha256": "4db78ab0b8c70666f50e4786b1c699595f9da6a3a34e1093cf5c7be15845c206",
+      "bytes": 579
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-kookaburra-ai.log",
+      "sha256": "0821984ca0ebbd27717f2d2ac80f364c9e8238b1a3b3e721f0d3aafdae2656a8",
+      "bytes": 467
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-pheasant-ai.json",
+      "sha256": "e7543267a10bd21bed1cc8eb3d5147d9f491db8cd926089e0f777d1fc19b17fe",
+      "bytes": 572
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finish-pheasant-ai.log",
+      "sha256": "b9fc1398baced0e99c80061c4f6748c263f8e9461fc3668c277a125a8013dee0",
+      "bytes": 465
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin/finished/result.json",
+      "sha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "bytes": 308
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/checkpoint.json",
+      "sha256": "a1f61db646e8a8c847f54266a17b2cb40ec9084b1bf1d33ab8c1a42437368f07",
+      "bytes": 1071
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/source-proof.json",
+      "sha256": "a9757db6c7584595bc497fd26c80d85a10a1c7499e6eb2c3cd4f7df951cdf091",
+      "bytes": 991
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/subjects.json",
+      "sha256": "f44a17d75894e1fa8c340271cc9134187a4000d2e5bd4146d72853dd509bce1a",
+      "bytes": 215
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra/finished/result.json",
+      "sha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "bytes": 308
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/checkpoint.json",
+      "sha256": "427462f7dd26a0fc25ede5da7f8c2ab4ded69160956210b44ca05f563313a141",
+      "bytes": 1092
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/source-proof.json",
+      "sha256": "2b186327f25fbdfe4d9268dbfbd24946272af2da095b57abbd0e64543c6aea47",
+      "bytes": 1009
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/subjects.json",
+      "sha256": "448320db76cc0eeccfd52e18eba64f6ae80388698dcc6f13c729c6994baca50a",
+      "bytes": 224
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant/finished/result.json",
+      "sha256": "5712e1c8d16ab9754ef619965ce5a0c797d0b51c9d673d73d363bf5f80460824",
+      "bytes": 308
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/checkpoint.json",
+      "sha256": "e4765c27d264b02499cb90218a8b2fe132d22b9699846eb5638cea6bedf2d870",
+      "bytes": 1078
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/source-proof.json",
+      "sha256": "4b4c4b20e2b583c8337185a14066d24cc9e5a0ab33e2fdf8e53480b752fd99d7",
+      "bytes": 997
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/subjects.json",
+      "sha256": "99d97254bc8cb203540bf27f7b679dd97012e72ad0fabcfcac71d7455ff9aea9",
+      "bytes": 218
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-frigatebird.json",
+      "sha256": "298544e0e3a578282c5b2fab85cbd5affdce075d00b190be5ce87111add76c3d",
+      "bytes": 506
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-frigatebird.log",
+      "sha256": "564721a7feb82224f624ff4178898ec099b11beaf1c1c757c3a85aebc7ae097a",
+      "bytes": 216
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-frilled-lizard-a03.json",
+      "sha256": "5d0f64ef6c98f2de505556dc4a1f40f7afe73d07edd026ebc20dc566f79b65e9",
+      "bytes": 521
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-frilled-lizard-a03.log",
+      "sha256": "822a9930a1b4abddab5c0f497e4da882a918a12d9991c75be3cf4b213397c6a9",
+      "bytes": 222
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-hoatzin.json",
+      "sha256": "fd9e23f44dea44c4ba6676dc1e7d855f52299a533156631c74f8d6606829965f",
+      "bytes": 496
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-hoatzin.log",
+      "sha256": "1efe79c6a179f5bc09b75c4195fad6544bc48d56de44831a086a084cafb2970a",
+      "bytes": 208
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-insect-eating-bat.json",
+      "sha256": "555fab43d5c01c50b6dcb24cc3c5aa90d34156bd7fd619c842eaf6f54de39ba4",
+      "bytes": 527
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-insect-eating-bat.log",
+      "sha256": "5bc6a9cb3a995442c22e9145884ba107c9461ff02701a52ec00c25c2781719fb",
+      "bytes": 228
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-kookaburra.json",
+      "sha256": "8f24f4342d322250d0668ceab7c5b81d322245109ac7ce3cb7c2641009396cb8",
+      "bytes": 507
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-kookaburra.log",
+      "sha256": "8fd1780442acf515befa95f4e3d0f564387ae6598324f4742f7ea11263c5b9ad",
+      "bytes": 214
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-macaw.json",
+      "sha256": "b663ed3319d512f1f8c2214223c7a56af134c165498b94736e1cbeff5192ff35",
+      "bytes": 490
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-macaw.log",
+      "sha256": "bfcc69d71a54fb559ed576ee392adf99c7974c1df1fb9d7330d4d57a5132c13a",
+      "bytes": 204
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-manta-ray.json",
+      "sha256": "2aee708caed53105b5893e2f43fa1104fe896fb916a085fa6e601735a9c828bb",
+      "bytes": 503
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-manta-ray.log",
+      "sha256": "64b7bba9752d9a056ba0669040ddf69bacf10ff605cd937929b1ef7952729fd2",
+      "bytes": 212
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-narwhal.json",
+      "sha256": "08873f22eaf872e1f725737c15fc74c85fbbc42041817a58273188ed21683901",
+      "bytes": 496
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-narwhal.log",
+      "sha256": "b96e2b62ded7493f12203ced88f1b77779ebeb976f1bcc600090dcff1da0ae45",
+      "bytes": 208
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-pheasant.json",
+      "sha256": "d16014e6aa46308a8d4c06c45833ef856c93937101ef01c7d39cb16d2bb3f596",
+      "bytes": 501
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-pheasant.log",
+      "sha256": "f061645d30479840dbc7f2c96e6ded541237f675ab2acdf9e6c363f7d2b26715",
+      "bytes": 210
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-ray.json",
+      "sha256": "7c1811dec330d04278504c48bcd4f5663dddeddb0016ea0d5e35a1d1901a0a0e",
+      "bytes": 485
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-ray.log",
+      "sha256": "3570175ea6ec4bae61a9ba7c3baa38d5d83c10f9aa034d936a5197f7c8e163eb",
+      "bytes": 200
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-stingray.json",
+      "sha256": "b05f54b2ab7c1ce09e275e00b9fe1c10270e7b83f336a50bd561e22799ef01c8",
+      "bytes": 500
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-stingray.log",
+      "sha256": "b1f44a3fb10680590ac142653846d6970889fabf387582b3c672e6d7326bc79f",
+      "bytes": 210
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-swift.json",
+      "sha256": "7193073b768386d9dde3a9bfe7ba6076da7e707667aa3e8b3a3156b10877812c",
+      "bytes": 490
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-swift.log",
+      "sha256": "afcd8a8aa02e59e16ff001547c0ee51f6ab46dd37adad65820254c054df08e51",
+      "bytes": 204
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-triage/current-rows.json",
+      "sha256": "f8d06391334d281ace378af1951676e103c9543f0469854ad6d63e933d9f9f60",
+      "bytes": 5936
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-triage/fragment-triage.json",
+      "sha256": "dbeba7e01c549911b2593552dabff7ee163125e54e9b9d3be5adb14364f0727f",
+      "bytes": 150969
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-triage/freeze.json",
+      "sha256": "4d6302634484f0205eb4dc56b6ed654bd9668f697d7f2bba29941d72757fbe18",
+      "bytes": 192220
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-triage/verification.json",
+      "sha256": "bb5944a9c5e6f2fd2ea077da61d3119237abf993d3e0e54de4ad3d7f33f59ac1",
+      "bytes": 267
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-vent-crab-a02-near.json",
+      "sha256": "3f0dfeb32373fb377cbb810a01b8dd85a351559af5140bde5a712347e3267218",
+      "bytes": 521
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-vent-crab-a02-near.log",
+      "sha256": "dabe1836585e8209e707d6571cc4055d830e00d001d06ded59bf28305ecd35c6",
+      "bytes": 212
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-whale.json",
+      "sha256": "7ba11b52d8f2da3a6600baa8484a35c5499f9fbdca17e2ce9a1be665c0023b16",
+      "bytes": 489
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/first-whale.log",
+      "sha256": "2fc1a5e452ad8ab86eb287889c8d8c95e70e92d18c9be525dbc45fba3853d1a4",
+      "bytes": 204
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/freeze-triage.py",
+      "sha256": "e360155a7acff5e8eb7df2f8e1357a5e0067098d8e0d51a0b197a29dc45dbb8e",
+      "bytes": 2999
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/hold-imagegen-lease.mjs",
+      "sha256": "456d539ac6cb7c4ca0829e9b637f74a40ffad1c07c5cd2fe73f55067b009a7ab",
+      "bytes": 1340
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/identity-and-sync.json",
+      "sha256": "fc96b372e6fa2dc153a60a0dc65cc1da57081d27d8186b65fe7cfedb31253a66",
+      "bytes": 511
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/native-wrapper-control.json",
+      "sha256": "64edb532126c43529b7e0d4b7125785152a872235e72b79b8269ada9d102e986",
+      "bytes": 69
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/post-merge-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/preflight-resumption.json",
+      "sha256": "e86f82aa1c6d677781ab722318b21ffd33068317998850896de014753f8e598a",
+      "bytes": 2646
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/prepare-clean-resumption.mjs",
+      "sha256": "75f3b0bbe2af067d88eaf71387be1fa49aaad833269d317b71ad416acc6d2250",
+      "bytes": 2569
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/prepare-finishes-02.mjs",
+      "sha256": "7e46002c64afc61b58061869a47ace7b13bbfdbf21684487331191e8e9ea6829",
+      "bytes": 1933
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/prepare-finishes-03.mjs",
+      "sha256": "2c39a87b98c286df0104dbaddc0488c0330500af79c947570b8c8c8f58bac2d5",
+      "bytes": 1933
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/prepare-finishes.mjs",
+      "sha256": "bf6e93ffd28bb45ab4ede8b9b39cbd7638b78325c05757412d0d634ec2bce93a",
+      "bytes": 1782
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/producer-02-files.json",
+      "sha256": "b0dc8bb61fb195551f4bd74739de29efe0115b62f1b1b40f771018539c12a025",
+      "bytes": 72295
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/producer-files.json",
+      "sha256": "9cadc469609af27aa73b786b47921a8927567cdc429a294d7ead0839af1151b8",
+      "bytes": 84428
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/queue-frilled-lizard-a03-swift.json",
+      "sha256": "d87106af4ed07be874c7c4f17150c24def690fad8bb259455222f0e72818ed06",
+      "bytes": 1679
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/queue-vent-crab-a02-near-insect-eating-bat.json",
+      "sha256": "a481d20c3c24de2d264d250a1db058f3d759873dd999f7efbd5a85fe7893eab6",
+      "bytes": 4197
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/rebind-one.mjs",
+      "sha256": "8802f36b47e174904fcda68201d51475e38dbeef39735a2460792131a4a66b3d",
+      "bytes": 1892
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/registry-review-sync.json",
+      "sha256": "ed56199652bf2bb30c1a189d2259bc358b13759f6a83cdaa83943120584ffb87",
+      "bytes": 22
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/run-clean-bird-queue.py",
+      "sha256": "ec39e105cb8b12227562a03419ff5e3ed73e7fc8259110b23adbf65d83b17cfa",
+      "bytes": 814
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/run-film-queue.py",
+      "sha256": "1227771b7e222a37a3a533d8144385c2c6e4ddc274cae2027868957116393290",
+      "bytes": 1047
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/run-finish-chain.py",
+      "sha256": "f5644c5b7c370913513c12b68205eb4b0b266acb0a6b016bc62863d76a22319e",
+      "bytes": 1151
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/run-stage.py",
+      "sha256": "98bccc13eaedf480ff0536505186c1561de14d1e4ac4fcbeb259c8008cb8b216",
+      "bytes": 1581
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/save-original.py",
+      "sha256": "0d5b2a3b5399eccbb783a4c3094ff8a12a88c2a72f98e5b42b97d4381a27df77",
+      "bytes": 773
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/select-producer-02.py",
+      "sha256": "f8dce5d28cdf87d4ebac160c08b8956e981f27cdbf2e1d83f2013dfa4434fc91",
+      "bytes": 1956
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/select-producer.py",
+      "sha256": "62d57f2e2b6c0586758c92576b1c94266a3de3d20622b4545a1d12c1c81cf5b3",
+      "bytes": 2539
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/select-resumption.py",
+      "sha256": "3a081513b85542917859bd010553384a9900fe888059856147aa4474b1e8237b",
+      "bytes": 1589
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/startup-check.json",
+      "sha256": "bdee9dcb77443e9fb5f4dbd2b851cef6532975e3e8f8657736169ea6fef6e1a5",
+      "bytes": 6893
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/startup-reaper.json",
+      "sha256": "c78e31f364373cd8813d738cdf87a1f19e6175b9aa25c18466b4600df74c64cb",
+      "bytes": 36
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/coordinator/startup-verify.json",
+      "sha256": "e82fc27ec3626431d08cfd1323fa22250e6850960318fc089e89ed6355ca995c",
+      "bytes": 10038
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/binding.json",
+      "sha256": "ed6fac005ed109a76c5ba8ddac79e365cbe3fd232d3d93edcb862a0ea948c332",
+      "bytes": 1167402
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/parts/atlas/c270-frilled-lizard-a03.png",
+      "sha256": "92313e8a34d80e304ca7944a760883388dcd4be71ed207ed8fe100908de3ee8e",
+      "bytes": 324794
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/parts/keyed.png",
+      "sha256": "5c328b682a9f24359246a724a5b93c2fde0e82386d19971ebcbf695786a3402a",
+      "bytes": 1390740
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/record.json",
+      "sha256": "1babb32eb35289ed65d056d19e06fd7f00c47378722f301caee2c5252bb63e62",
+      "bytes": 7812
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/report.json",
+      "sha256": "5e931ff984c75b0e4c9c9aa2e1c01b4589d0c4bdefda721cc2426cb7b20a95be",
+      "bytes": 384483
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/turn1-hit-reaction-50.png",
+      "sha256": "083e5135475af95c50b6e9e4d4c4b40dea3a73f069a1111d921def38041c1fd4",
+      "bytes": 1524369
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/turn2-dodge-reaction-50.png",
+      "sha256": "528ba3d73ef57f5f5acc2e4ebcce41341c9d0c8e6ec7d841c320de2988886f1f",
+      "bytes": 1603976
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/turn3-hit-idle-50.png",
+      "sha256": "49853d295604f2aa360a4bc208fe48758eef4c3235fd3e2bad38cd78dabc56f0",
+      "bytes": 1525928
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/turn3-hit-idle-90.png",
+      "sha256": "5ac910c8ed2c2c93abb36d6ad64110e119952518e0e1f2641dee3936134e7637",
+      "bytes": 1522161
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/turn3-hit-reaction-50.png",
+      "sha256": "983ed03d1086305b952a4b6cd0f35a59ca46663bdaa9d3869cabd10d24f85dc9",
+      "bytes": 1522647
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/packet/master.png",
+      "sha256": "b8c4f038ceb023dbbe5f67c9a941c182b85ad43dc45d077c2ec6daa02cf4abfb",
+      "bytes": 1457375
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/plan.json",
+      "sha256": "8692dbc5afde06a0b7fd6a711d579ca509b00513a8d58b7c5ba34278b267fe17",
+      "bytes": 4540
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/report.json",
+      "sha256": "44d9c6f293bf64379e6ae9c6ac917f9f83831d04f1dc8defb4fa5ac613f5e151",
+      "bytes": 374284
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/turn1-hit-reaction-50.png",
+      "sha256": "aae0707c92440134463faae4b0c4969c441052419d62a7be01d9aace4048b9f3",
+      "bytes": 1179560
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/turn2-dodge-reaction-50.png",
+      "sha256": "36e67396f681a530b0f66b290da00d56275249f8ffd58c060c35acd18b7f80c1",
+      "bytes": 1243176
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/turn3-hit-idle-50.png",
+      "sha256": "f42c3af6dfe67af7d747f522c008bef9a2bcfc98d38a95f788280b17cd519dba",
+      "bytes": 1175203
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/turn3-hit-idle-90.png",
+      "sha256": "2a5d237ba850057e9a3ce2cce0805416e7a95441edfb6a96a87f6b89e3d5cd0e",
+      "bytes": 1174464
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/native/turn3-hit-reaction-50.png",
+      "sha256": "516b735b211aafba2024d5c15de4113ef7ac2e11651a81d649aaa17806706ae9",
+      "bytes": 1251145
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/packet/master.png",
+      "sha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810",
+      "bytes": 1351192
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/plan.json",
+      "sha256": "2618b550ad9beb6ddf0b127379e18aa04b7935c0a6c9e27ef4a3eedf8f5c0699",
+      "bytes": 1736
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/raw-fit/binding.json",
+      "sha256": "ecb8523c920f10d026798a476e9bf8b592064a9f9afb1384d9dd3d199ae31f9b",
+      "bytes": 4151548
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/raw-fit/parts/atlas/c262-vp1-vent-crab.png",
+      "sha256": "24f6646cd5470e28e3db6821d78ba11d748fc08e820c31c92210c282edece38a",
+      "bytes": 1430006
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/raw-fit/parts/keyed.png",
+      "sha256": "eccdbf32fffb6444fec1f9f810442700a38370d180e31aa129857ff647dc6536",
+      "bytes": 1666735
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/raw-fit/record.json",
+      "sha256": "7bc83bf52a1ed0ef397ae8fd14dd01dc490dbf30243b5db144f09a0f35cb7f75",
+      "bytes": 9712
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/README.md",
+      "sha256": "6a909052aca0d1ffb2116a586255a20e00977771ac9e18661e5ecc61ccb8ef27",
+      "bytes": 2596
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/diagnosis-manifest.json",
+      "sha256": "0ceab432c19c0283c953d414888186bf4cbaa2d1bca2530954795d63d8992012",
+      "bytes": 2453
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/finalize.py",
+      "sha256": "09a06492997793f95416e4b830589034e699812ccd0456669520b47795647cef",
+      "bytes": 3333
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/manta-ray/observations.json",
+      "sha256": "942ccf5812724fdf13e75785fc35570ac141e2b2befafb63db2051282bf9f948",
+      "bytes": 3076
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/manta-ray/visual-review.json",
+      "sha256": "b83c4263f1a536df8ace0aaea2884630fecd02823609b076189913e828b692c6",
+      "bytes": 9790
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/narwhal/observations.json",
+      "sha256": "f3c5d9416c98b817382cd5c5a61f09c5a8d082592168201dabbf356fa4846ac6",
+      "bytes": 3473
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/narwhal/visual-review.json",
+      "sha256": "de71d9defb97583bd2dd737999b6fad6e0e4add1a21afc13572d49691b013e3d",
+      "bytes": 10501
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/ray/observations.json",
+      "sha256": "539d41ab01eac79412156774bde0ebec9b3eb1a7c76d88b5cbb6895b944986d1",
+      "bytes": 3341
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/ray/visual-review.json",
+      "sha256": "291ac66c5679fa02a322804fbe4f84932c1f6bdaffaf6fd33e28a4cc4ece1ca6",
+      "bytes": 10024
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/stingray/observations.json",
+      "sha256": "cd17620a7eb08f46700ba79caa881115c0c96104ab3dd53ea7c05764bfbb6120",
+      "bytes": 3482
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/stingray/visual-review.json",
+      "sha256": "8209cb3db96abbe5f0d2a187c45b610b4ddda31622a134d8f9847bbccdd739d7",
+      "bytes": 10255
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/summary.json",
+      "sha256": "d01d4d3819c6344234d22365facdc0b069e9cda6289cf20f59692657f6843a2c",
+      "bytes": 4049
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/verification.json",
+      "sha256": "d504d4901ef69867d558c66a9ad8aa5ba2b822fbd3cb4e903d1a7301f8c49f02",
+      "bytes": 543
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/whale/observations.json",
+      "sha256": "698a21393d5316a54ad8cdc71b457f3b488a26a34bff467fb2ae904165257127",
+      "bytes": 4068
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/whale/visual-review.json",
+      "sha256": "db817f202978272a860ab7b5c6149a9bad5c8189ebdc0d34f8970a93112d698b",
+      "bytes": 11667
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-aquatic/write-review.py",
+      "sha256": "a67b175459c3fbb282279a10fa336ae1ae263f6c19d3a1ba1499d78a2befc3e1",
+      "bytes": 3189
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/README.md",
+      "sha256": "176246f5afb0a2df10812f32927c0ac703b4a1e6a1efd05b191028575b9c07f4",
+      "bytes": 1869
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/batch-end.json",
+      "sha256": "523a8195edd614aeb1c35c1259bb78c82b26c2d69254e1e246a918ad898d568b",
+      "bytes": 415
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/initial-bird-source-review.json",
+      "sha256": "d4d72cd44161a5ab3877c5831ff1da31e6bddf07623eb883b1900298bfa0ed27",
+      "bytes": 2765
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packet-copy-receipt.json",
+      "sha256": "22180f4d0d61728438751e5279068e45412b294607678b5d76c0c5436e51b960",
+      "bytes": 9758
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/authoring.json",
+      "sha256": "c9c71b7f7bc79512bfcb9de13ad8a2e7534cabc545772f5d56bdff837c6672d9",
+      "bytes": 7851
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/master.png",
+      "sha256": "cf97ecb71d845f6629a1d73642c1e8173f16d166eb7d1b14ef86c49a26677ddb",
+      "bytes": 1456125
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/prompt.txt",
+      "sha256": "5263a71f2d49b44ffd5ccdca323443868f971c98dff0ee5fe46093f18cfa5130",
+      "bytes": 10763
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/intake.log",
+      "sha256": "df355aa945a3289da086f662e312b3e164b1f9dca47be68d34ca5d466a32d4d4",
+      "bytes": 336
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/binding.json",
+      "sha256": "8b5718a49f6a2bae0d59d3efaaa4869bef4e151ba386e458682049edd27480f3",
+      "bytes": 1037748
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/declaration.json",
+      "sha256": "87f64a5e85573d728ca7cbb44c477407f35528915bb49655dd40c7e464d9baf2",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/atlas/c266-frigatebird.json",
+      "sha256": "1a9ddbfbeb428847cf7304b4f876ec8d7a29ec1bacaaf0d2a9a1c8519661baa4",
+      "bytes": 6992
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/atlas/c266-frigatebird.png",
+      "sha256": "37988147aaa28cc8a457627bcd219d07e81a10615f84aabf41db35c81d6dbbd0",
+      "bytes": 401930
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/atlas/receipt.json",
+      "sha256": "11513174b7726be4c3c97ae6ba415bdf724cdcf842686ea0a80cd45746a0bd37",
+      "bytes": 2921
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/binding.json",
+      "sha256": "611072d4f3807cf120a5de40da7e55a7b2a18355517c0ffb9733aafd02e503f0",
+      "bytes": 5802
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/keyed.png",
+      "sha256": "70de332acb095b34b8c862ecea4f4e80e692ba7e0987cb6e930a8d6da6414caf",
+      "bytes": 1461984
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/manifest.json",
+      "sha256": "07d20e6bff2d6ee52f5cf9b0e6fb97cde59906fa09e923b9a04ac722f3a03f43",
+      "bytes": 2842
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/parts/receipt.json",
+      "sha256": "32b4ccbd8ccc2775db967b721aab62913fb0d87c31efd92ade5d5375ea69525d",
+      "bytes": 4859
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/pre-split-binding.json",
+      "sha256": "5a8a3e91f352de0b46a5793356a8c654ea864bac68c873646620800bc132228d",
+      "bytes": 805464
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/fit/record.json",
+      "sha256": "a0242b7925cc2c43d9505a335e747784e6d8213b256c0ef41779fee92f6159f9",
+      "bytes": 6586
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands/receipt.json",
+      "sha256": "5f1dce35b1bb188abba1aabf40ed76773074d8af02a04a735af394418619ab0a",
+      "bytes": 3664
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/islands.log",
+      "sha256": "f4e6cd1608c6aa4fcc24cd0ad6d7327c318e088f21e15456509f45fa58ef9ad4",
+      "bytes": 268
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/binding.json",
+      "sha256": "a0d56075317ace676800aeb06c46ffdcfb654322340a4b5c9808383d359f4951",
+      "bytes": 1048048
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/declaration.json",
+      "sha256": "43de8b409db36af60636bc89d1c318970c62ae3f24ec88ca57e8136945de6bb4",
+      "bytes": 12456
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/intake-provenance.json",
+      "sha256": "11945347dd6270302b68aab1abfa9a6e387787d7b1c6e017f22f0a40676086a0",
+      "bytes": 3271
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/parts/atlas/c268-frigatebird-01.json",
+      "sha256": "a4573c8b91b35c1a5854ac1698a9b4fb0b61fe6f0818d84118b789e5b7b1ac7e",
+      "bytes": 7003
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/parts/atlas/receipt.json",
+      "sha256": "d990c9ac3deaa4af055477b765c04f12b56e932bae53267f801e07e727920b81",
+      "bytes": 2924
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/parts/binding.json",
+      "sha256": "61b503fbb58cfc81f813a973d15d74670c772ef5ed4a880609d037451b0cbfce",
+      "bytes": 5810
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/parts/manifest.json",
+      "sha256": "78d596b197e8e77a0348b80d1daf1d2e4be0e5661cf4e3e34780e8cbaf4dcb3f",
+      "bytes": 2845
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/parts/receipt.json",
+      "sha256": "cb88bdbd864a8aa188685f9e1b596d64e860f50acfa3c9cd34aa29fe40c6ac27",
+      "bytes": 4680
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/pre-split-binding.json",
+      "sha256": "9fad7468d8447f48b1ffe31c3fc08089fc11617207f428fdb36d57282e731bbf",
+      "bytes": 818889
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/receipt.json",
+      "sha256": "69e84dff20479d7fae859615a5e75cac683a7dd60ba54b5da1d68599884f23cd",
+      "bytes": 2458
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/raw-fit/record.json",
+      "sha256": "a0242b7925cc2c43d9505a335e747784e6d8213b256c0ef41779fee92f6159f9",
+      "bytes": 6586
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/result.json",
+      "sha256": "314c7ec58f6d357e20bb6e35c16e80cd55d7f36f772445d6112e549228686e9e",
+      "bytes": 1068
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/static.json",
+      "sha256": "0149b10139c2bf98f02ee20563c711402773d8d68ed45d0e51668e2790f8ab43",
+      "bytes": 8381
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/static.json.sources.json",
+      "sha256": "814de4bffe92216435c3dcf0f7aac9293a1570e4095a0a8362d979b01bcf716d",
+      "bytes": 17780
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/qual-c270-v01/static.log",
+      "sha256": "10c2819ee0d8367b178f5478fe81c8d0dfda5ce127468826114aefa0e091b2f6",
+      "bytes": 2192
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/source-observations.json",
+      "sha256": "2648f5c264fa2a4183fecc60cacebba0d11a08a5e7e80d74605d596e66936b26",
+      "bytes": 1834
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/frigatebird/subject-source.json",
+      "sha256": "f0e580a0d310b2e6fe954269a08153ebef85981370c4c687f9e72309d7230c19",
+      "bytes": 2734
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/authoring.json",
+      "sha256": "2b3a41e17d621fbc19c944b1ed59f83479f7484ecfe5eb0e8c9e10a2c0d60b52",
+      "bytes": 19300
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/master.png",
+      "sha256": "0702ec0f8f93d155fe061bd97b4e82d6d629e72a8c045da19fda1c3eaacaf9b6",
+      "bytes": 1264500
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/intake.log",
+      "sha256": "b9cdc5f15f70039cad0b7461004ea17b18c023d2375f52fe41d8b86e7aea6079",
+      "bytes": 342
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/binding.json",
+      "sha256": "5730bd808dd9511c95a6cd0e3aa77d409d1781c89818af30559050b682f16b49",
+      "bytes": 1218918
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/declaration.json",
+      "sha256": "cd80eccde2f84b65bdeb443bd2b7237855252bd1005eedc84e21e26c9ad5ecfd",
+      "bytes": 2151
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/atlas/c266-insect-eating-bat.json",
+      "sha256": "cd1cc13260f09b454b2adae0b5d7404eb67960171d1d1eb3f89a8309e00f575a",
+      "bytes": 7434
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/atlas/c266-insect-eating-bat.png",
+      "sha256": "7e263466f87866bed8474a1975ba4625a38ab8af754bfecdb88ce8eabfc1a1e2",
+      "bytes": 444764
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/atlas/receipt.json",
+      "sha256": "bc8dc45f25235b59fcbb727cdcad2b5697f8e7b8f5883b700cda082766b2978e",
+      "bytes": 3091
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/binding.json",
+      "sha256": "3f9b1f51d4af6244402dec0a2a48bf0ba13a55f1860e7d5782d17d4c832d0ca3",
+      "bytes": 6177
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/keyed.png",
+      "sha256": "b564ec6c128959f8de056aa26a2cc811c149b9008ff4bc3baa531f1b37acc87f",
+      "bytes": 1520185
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/manifest.json",
+      "sha256": "e1c46ec67715e1e99acdd8a030f5bfbee96466b05f25feaa18eaf42d0810cbaa",
+      "bytes": 3086
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/parts/receipt.json",
+      "sha256": "a27ed552c4df957934a20b78542a60f622903cc81f9f8286203765740c45961a",
+      "bytes": 5146
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/pre-split-binding.json",
+      "sha256": "e24abab3b04b0bb545a60caa04daaf11ad8a8527a3a9c2be52c086c0fa2f8d51",
+      "bytes": 793970
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/fit/record.json",
+      "sha256": "394645329388652b7bb2bed0e51befb19b91ab893f7dc14353eba41d8c3ed6df",
+      "bytes": 6357
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands/receipt.json",
+      "sha256": "73f163c6c278afca79a96ac427b7a4c23a9147b2c6b4ef39792c80837f2629b2",
+      "bytes": 8235
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/islands.log",
+      "sha256": "6e1b9e7705689992ee4803cc118501e0181c88f25b15a7ab2be7e6789dc9c986",
+      "bytes": 1022
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/binding.json",
+      "sha256": "9b5b1541ff391dfc28401986a38bc8490a3b1358b77ff26c08fb824d45c41e70",
+      "bytes": 1301506
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/declaration.json",
+      "sha256": "c022991cb1440b1ae1f459bfc4d602dbeeb9109dd137efa2cd13d6b1ea87bda3",
+      "bytes": 25423
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/intake-provenance.json",
+      "sha256": "ed8511330017e8e0ad6defbcabe61592a6734a5566cf37277fe79ba1bbe1f953",
+      "bytes": 3353
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/parts/atlas/g2c163familyoriginals-23-insect-eating-bat.json",
+      "sha256": "1925e655e97493179079e1ebd3166180bdb1124d713daca4e665b78218c5ce8b",
+      "bytes": 7466
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/parts/atlas/receipt.json",
+      "sha256": "739639bebc1ea3d83dbc4eadf6e3115ea01df9ab9e141697ae2391f21eef04d4",
+      "bytes": 3111
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/parts/binding.json",
+      "sha256": "739bf09f2c7f07725bbf45074a9c31df95c8b6cca9f8faa4d7dbb08b192fc5e4",
+      "bytes": 6189
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/parts/manifest.json",
+      "sha256": "ff133be7ee6eaa37efec33a542a9ec3098455475d8c6298d434358c287f93ddd",
+      "bytes": 3106
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/parts/receipt.json",
+      "sha256": "ecdec7d23aef168c4939c8d4ee6afee6e4a236db9b666e5914310a374f28e902",
+      "bytes": 4967
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/pre-split-binding.json",
+      "sha256": "e9d70340a55b1668432bc9265bd53039a8eefd97adc31717f9d04fd7a18cf087",
+      "bytes": 849898
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/receipt.json",
+      "sha256": "fd3be6b8e9585795254bfa0333e6b192fd4c70ab554b41c04427e6dd9ae5c349",
+      "bytes": 2474
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/raw-fit/record.json",
+      "sha256": "394645329388652b7bb2bed0e51befb19b91ab893f7dc14353eba41d8c3ed6df",
+      "bytes": 6357
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/result.json",
+      "sha256": "0942d5a5e255b68318f19c3b70e47af815e37795384c6129e7469d8dbb2b60a5",
+      "bytes": 1029
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/static.json",
+      "sha256": "c86d3c8462dc427f616b4a44571666be8a6208b20bfc7119ec668a1be1fc6502",
+      "bytes": 7585
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/static.json.sources.json",
+      "sha256": "efe1ebdbcf7cd3b98462199cc3e6f0b30cde350542291230d6190c503dcfa012",
+      "bytes": 17780
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/qual-c270-v01/static.log",
+      "sha256": "24b7a98cc17e248a99220f04fd6c3c35a1adf3bbd7ccc39a78fd989e6d2bdc24",
+      "bytes": 1835
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/insect-eating-bat/subject-source.json",
+      "sha256": "8757fb8e8f2ef1e2b264a288997391c4d06eb3d5fd9cbb46f9ddbb67b262c872",
+      "bytes": 2312
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/authoring.json",
+      "sha256": "65b272cf707bd931972ac53ee580531dce5bff6679f6ab8dc1a9a81e39d6a9e3",
+      "bytes": 8352
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/master.png",
+      "sha256": "4a0a3458465d1f3e2864bc7673a7454ee8193dff429579b0075101fa6f2b0ee9",
+      "bytes": 1350073
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/prompt.txt",
+      "sha256": "bd504c3fa48fb975147fe8a277fcd294fe73a7939e66a385ebcf32c9deabe64f",
+      "bytes": 10936
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/intake.log",
+      "sha256": "fdb93e967974d2010ff4047034ce021266abb2c55c91ced8c9cf2cd1f973798d",
+      "bytes": 330
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/binding.json",
+      "sha256": "cb69524a96b3ba25e03112e03b755650e4b54ab15523c18f51285abe67fdd1bf",
+      "bytes": 884310
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/declaration.json",
+      "sha256": "8aebeb373d5cd593715ff53bc1ab61096522a94e5b209bb69d837133a7f0f78a",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/atlas/c266-macaw.json",
+      "sha256": "1aca455316bc0e7400ccb972b25f3344d59170a0ff04e9b3640b577d74d6aca7",
+      "bytes": 6982
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/atlas/c266-macaw.png",
+      "sha256": "e0706f9a7cbf5075e3d4da871e49ce3e44574b7a18212c9977deeb4c64d8c51d",
+      "bytes": 255123
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/atlas/receipt.json",
+      "sha256": "423ecfcef17c0ea7046c1bc192f325e3f717fdaab525ab30f087daa8cfdf017c",
+      "bytes": 2915
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/binding.json",
+      "sha256": "8d186934086d8f559891162f261a27d597b577af57a05c9989d2a6e3590714f7",
+      "bytes": 5801
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/keyed.png",
+      "sha256": "8588ecfdc181e69c1420fb2a1b35746c385190b9802284de76ff8ac4d8f01c37",
+      "bytes": 1322817
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/manifest.json",
+      "sha256": "e51ff89f266ec6b447791f7ada0873a10a146e3159dfd2b01de1dc250ca88cf4",
+      "bytes": 2836
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/parts/receipt.json",
+      "sha256": "323ea8707314d856f69489b0808bab1f016bc8bf507712d4ef9667ae33fc9c93",
+      "bytes": 4853
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/pre-split-binding.json",
+      "sha256": "2e2551daa776dedd36544ae6bdef81b42e2868b02fe61ee95c56cce836edb58a",
+      "bytes": 600430
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/fit/record.json",
+      "sha256": "704a44ae2a098c2cc82c8e1e5cc82a04bb56724525f74ae1405135347f7cfe31",
+      "bytes": 6621
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands/receipt.json",
+      "sha256": "8dee0c0c90296ecc3230f46e4e0edb8e7e1b528d57e3297de73abf6a63f63330",
+      "bytes": 5796
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/islands.log",
+      "sha256": "5d6298a417464cb812930822bb058e094ff5f4c22c2ab22324dcc44a501f6b28",
+      "bytes": 547
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/binding.json",
+      "sha256": "d3c54c037e303322190830c3fbb16a4e94a528cdc4514884ade48bec4cbe026f",
+      "bytes": 912659
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/declaration.json",
+      "sha256": "63ed8093d53cd808f2aaf72c38b013e339a7dbb953dfe6f49756b4ee7199692d",
+      "bytes": 13594
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/intake-provenance.json",
+      "sha256": "1af054d382178cff69594ce627eae00fd1eec3e570cd1a1428ff7568cb211803",
+      "bytes": 3223
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/parts/atlas/c268-macaw-01.json",
+      "sha256": "dc6f6986eee2cbb5172147772f1b068e4f824211d147ef6693cf736803940fdc",
+      "bytes": 6990
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/parts/atlas/receipt.json",
+      "sha256": "03a68fd5956dcd2184dd353c250c364f4206d6c7657bb51494c219f8bfba9307",
+      "bytes": 2918
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/parts/binding.json",
+      "sha256": "6f6e25c5348921bd1f8870bbe0fbb4aebbcb2f65bbcd128800513eaac3af29ec",
+      "bytes": 5807
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/parts/manifest.json",
+      "sha256": "6d23f30da7a55c619c6998b2f5afa9985c807bab6a1e04373344b125c7db2ca0",
+      "bytes": 2839
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/parts/receipt.json",
+      "sha256": "b877280d3c47d6ff27bb257056fa003f38ddc18b5f00a9144196f24a4e50d823",
+      "bytes": 4673
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/pre-split-binding.json",
+      "sha256": "79e5c8a0c326d2118bc99209162abfe139cfcf613aefef302e23768114f93b27",
+      "bytes": 626788
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/receipt.json",
+      "sha256": "802464e814ebb2034e80b757a1cd7887cd5b31e0e8e42cb65810112a64251a40",
+      "bytes": 2450
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/raw-fit/record.json",
+      "sha256": "704a44ae2a098c2cc82c8e1e5cc82a04bb56724525f74ae1405135347f7cfe31",
+      "bytes": 6621
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/result.json",
+      "sha256": "9207858991d45a9d4fe0ac24374aafc89fca5ee92667e2a74b32b315908b2bfb",
+      "bytes": 1055
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/static.json",
+      "sha256": "07aff4f294ce7313d7d59e694d4f7941d6cb7b3c7ccddaa75e587bd631c7f403",
+      "bytes": 8359
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/static.json.sources.json",
+      "sha256": "285087f7bb2f02cf4a21bbaf05d47b20a79b0a6b50843e6c3c5f55c8d30446c8",
+      "bytes": 17780
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/qual-c270-v01/static.log",
+      "sha256": "13b4a2b1299f939ef1f722c770aa6bb8bc1b99776c10d72606ca80e94ed6a817",
+      "bytes": 2177
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/source-observations.json",
+      "sha256": "68f9aeef5b143d04d0d97154da970aea1dd877234c8918a709a2ce1639c246b2",
+      "bytes": 1935
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/macaw/subject-source.json",
+      "sha256": "023896fcfe8cdf7ababd69ed4acb1320459a9d3978d3767d2f189b6cd36c46c5",
+      "bytes": 2803
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/squirrel/authoring.json",
+      "sha256": "1ca898b9b3c7a17dbf01726f723578db54db27ae8e336da114e5c64f04340c89",
+      "bytes": 12329
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/squirrel/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/squirrel/prompt.txt",
+      "sha256": "b36ebd4cb104514e8394492f6d57b1fb41c8f441df6d8ccb287a2757317912b9",
+      "bytes": 13551
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/squirrel/source.json",
+      "sha256": "e8dd91971ef8d1e46b647f7e66d8af8bc238b48419887df5848ac9db37f5b834",
+      "bytes": 1454
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/squirrel/subject-source.json",
+      "sha256": "08330aea2d5cd7e29ea978bc35b21d6fb95bac3b6193d536def4fc8a5d6bec24",
+      "bytes": 2796
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/authoring.json",
+      "sha256": "8973a63fba14d2f81b14bd6401d106b2e06ccd45a1faffef005fe221332300b1",
+      "bytes": 8233
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/master.png",
+      "sha256": "907cc704528e9c1afa440f9b6217ec21c2b85642d7b63d28c4227d7197fa7721",
+      "bytes": 1338135
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/prompt.txt",
+      "sha256": "d0613f80995604152cd7cc1f92981d7e4f804b1fa2aba96a421b1dd8f6f94773",
+      "bytes": 11262
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/intake.log",
+      "sha256": "083ebb4be32aeaa396bed109f0c63639c01aad61e56365810a452a77a2e94d68",
+      "bytes": 330
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/binding.json",
+      "sha256": "d2608a1388b71a2aac28855930d59ecd85e6d307fb59573b3df7b41e70307516",
+      "bytes": 931392
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/declaration.json",
+      "sha256": "1b20abc7479ec91f1b79523a792824e77a3360c477bf3dd052fa27cc7286b99e",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/atlas/c266-swift.json",
+      "sha256": "923888a43b89a83347011a31900c2e4b53d16f01ec20f1a20cb81d7849b4a365",
+      "bytes": 6969
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/atlas/c266-swift.png",
+      "sha256": "f17f39b7b60e5ee831c42319eb2b0b991566d58ad49578b09bd1efee3b4b647e",
+      "bytes": 262664
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/atlas/receipt.json",
+      "sha256": "7e91f3df5383b02bcb89fa9303546006793534f0528a50e2d208fb44c877363d",
+      "bytes": 2915
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/binding.json",
+      "sha256": "3050b6e7ca3d95d8d82044c6e0c18575069b1df3660558daa8fafdc22e7b1f65",
+      "bytes": 5791
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/keyed.png",
+      "sha256": "2a4f0e83e6d28d681ad9b9efe22a3d473ec2a6a102f9c9fa11ca707ba71e58f7",
+      "bytes": 1260355
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/manifest.json",
+      "sha256": "591e283b0b1ca13c30e54dfae01f8b57ca1f994bc7d8aa5c24d12f748f18ef78",
+      "bytes": 2836
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/parts/receipt.json",
+      "sha256": "eaa47a377bdd8c04ce4bb3746999183ddd65d50815e9318260590cf601806743",
+      "bytes": 4849
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/pre-split-binding.json",
+      "sha256": "60309c419a98fb4e7891af3c37149a449f0c4938b4f05b256c4f4bacdd208ff5",
+      "bytes": 638169
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/fit/record.json",
+      "sha256": "531ff53a1d08650bd9e488233da070de310e725a686a632a70c2a05b435dc07e",
+      "bytes": 6500
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands/receipt.json",
+      "sha256": "1a5a6d6bc3d1f1bba421b5c16bd898d36cbd1aa8df3b96284cdaf53b8cf5b19f",
+      "bytes": 3306
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/islands.log",
+      "sha256": "9e968f87afaf9748ce84bbc6d7b475e35fb7df0f9b36d62bba06f513cbeef7e6",
+      "bytes": 271
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/binding.json",
+      "sha256": "04c8dbf1885d244868fc3af85df62d300fa59bd0a434f60c5d08c1866cbf7dc5",
+      "bytes": 962675
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/declaration.json",
+      "sha256": "3c6a7a46fb11ec940788548baa2e010ebfaab3a9587f2216cbf75ce350226b45",
+      "bytes": 13619
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/intake-provenance.json",
+      "sha256": "39847243079cc9a3fb633f36643b96535be2491b580ff2d6734c285e9de759d5",
+      "bytes": 3223
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/parts/atlas/c268-swift-01.json",
+      "sha256": "613b24cfb61542a9e9bbb22a0354b8f9e81f2d0b5a8c9424658c0b27eb68345d",
+      "bytes": 6982
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/parts/atlas/receipt.json",
+      "sha256": "636166ca46131123a2011d194f1addcca407fd0e45d34de1a941353d197dc285",
+      "bytes": 2918
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/parts/binding.json",
+      "sha256": "976993ced1057373f185fb87db27fbb651652a04874463411f5fba964066cd44",
+      "bytes": 5800
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/parts/manifest.json",
+      "sha256": "90a98e70ce8e4c045a01c96cbc1fffc7b0cffb763003e974b0b78a2e473709e8",
+      "bytes": 2839
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/parts/receipt.json",
+      "sha256": "a01fa1136ef133a8bc3e822b1ca3543e3fa1873c73e4797bf8c15033623ed926",
+      "bytes": 4672
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/pre-split-binding.json",
+      "sha256": "9a3d96a921c8751c8e45029c87cc5c8078860d0c8a64dab55967ce80d323c58f",
+      "bytes": 658797
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/receipt.json",
+      "sha256": "1c6864b72efa037af036a7c9bd95e81415dd52653250d55391ea46abc54400eb",
+      "bytes": 2447
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/raw-fit/record.json",
+      "sha256": "531ff53a1d08650bd9e488233da070de310e725a686a632a70c2a05b435dc07e",
+      "bytes": 6500
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/result.json",
+      "sha256": "894a4ce6fc72bcaf83223673088bc1aeed455c7182f7aff38e9a93496770938a",
+      "bytes": 1055
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/static.json",
+      "sha256": "d88ed1ea281519eb6bb4d652b4baf97d7319c362d92215d692db0d9e328a8061",
+      "bytes": 8376
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/static.json.sources.json",
+      "sha256": "470260b9e36c48a0f9e71865afc688738cae2da457dfdd19290c71391cc7acf2",
+      "bytes": 17780
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/qual-c270-v01/static.log",
+      "sha256": "b47cf53b7732dd2e6fe7e5ac5d160dcc841a40c2c9951b716cb26b3b11a2f0c0",
+      "bytes": 2189
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/source-observations.json",
+      "sha256": "60d03d7e5fc32ce9d452311a9b8ed0f18c850fa3740ac8e5dedab4ea58e6d79e",
+      "bytes": 1829
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/packets/swift/subject-source.json",
+      "sha256": "70ac10cf1294dbd068b9bfce1ca85a2c2d52e1301c66547495c789b64d0835af",
+      "bytes": 2829
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plan-index.json",
+      "sha256": "989f3600c4b79ea2c87bba55d1ae2beebef27a3abea2526ffe8f6893420d74f0",
+      "bytes": 17937
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/finish-subjects.json",
+      "sha256": "c855a8e82c46d405e1ad1ad03e7a9fc8bccf58a9a1b8b149d8169d51a8abbf4c",
+      "bytes": 234
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/native-results.json",
+      "sha256": "38109b6be7fc6ebcd2ec764392747e7baca6f14b7f0b04d232334b5597ccfb65",
+      "bytes": 922
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/plan.json",
+      "sha256": "74f6bd16841c591275b3e39950f76684acd84a9453c58e26fa815d474c9f9cad",
+      "bytes": 870
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/script.json",
+      "sha256": "ed5aefb8306eaef6c7880baf67fdeece2d34067c28425d33d28a8695a64c5a81",
+      "bytes": 690
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/finish-subjects.json",
+      "sha256": "f44a17d75894e1fa8c340271cc9134187a4000d2e5bd4146d72853dd509bce1a",
+      "bytes": 215
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/native-results.json",
+      "sha256": "e42848eb14b92636ccfab084c69b7360f36ae0fb015acf742c382bec326811ce",
+      "bytes": 906
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json",
+      "sha256": "2451f9685b383ddff12379c590904cd629187b693c053b9947a75275129b0bbb",
+      "bytes": 854
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/script.json",
+      "sha256": "93284edff42204ec62c1b9b8e08cdcf21e821779e36e7ec191908134be0aaaa5",
+      "bytes": 658
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/finish-subjects.json",
+      "sha256": "5c85caf44eeaa44e3ac951e806161b59365d2d544d65629c7b86823da7c0ca6a",
+      "bytes": 252
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/native-results.json",
+      "sha256": "95c38a2ad6d25fcbdedff2355ba98fa475e3fd03c0bdae0bb7ab395340f7378b",
+      "bytes": 974
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/plan.json",
+      "sha256": "81f284be7d44bec886a95c9318b315e23878d676dd49ba9a40082a5f06c740d5",
+      "bytes": 922
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/script.json",
+      "sha256": "5ac2eed478baf8c4791806615cd03f2d37ea41777b59fdf0f02be46792450a59",
+      "bytes": 738
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/finish-subjects.json",
+      "sha256": "448320db76cc0eeccfd52e18eba64f6ae80388698dcc6f13c729c6994baca50a",
+      "bytes": 224
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/native-results.json",
+      "sha256": "74ecce5cd965e120eac664ee809f11bb1d4529a869fdc7a686231c9c37b66515",
+      "bytes": 930
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/plan.json",
+      "sha256": "ddd46821a2c62367339dfc6c39eea87e9a416b9ade28dd5798e0e85b228ea727",
+      "bytes": 878
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/script.json",
+      "sha256": "b753398b77e907194419aa3ba7625b30f950545441802f6572e03337389efb6a",
+      "bytes": 682
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/finish-subjects.json",
+      "sha256": "b2439362063a3988004cda5420e66a08077ad4016a8facf87f6c63f353179ee9",
+      "bytes": 216
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/native-results.json",
+      "sha256": "803131e16d21d7a6d2a7cc533ff54ada380a59c9e3a7586d1f7e3ac06ab201c7",
+      "bytes": 874
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/plan.json",
+      "sha256": "706b76779cdd8564e42dfe215d96daa62c1fddf6ce42b94f01d7587c45f70b57",
+      "bytes": 822
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/script.json",
+      "sha256": "ea2c57cb70398b7f9dfd02d239c649bd85226a82aa3a42de172d93e9e87016c6",
+      "bytes": 642
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/finish-subjects.json",
+      "sha256": "23f4458250d7d78eebb6d696238e272baef1d9512fddc05bb57ede106c387830",
+      "bytes": 252
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/native-results.json",
+      "sha256": "2e892ac51e349ba3826429a5192f3cbffeca52498d34ebc6710321c45f5a5c88",
+      "bytes": 945
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/plan.json",
+      "sha256": "5af00bcd6f43b75c10e393e6f32eb82fb4333255d8e12f71225b697c7b8a409f",
+      "bytes": 893
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/manta-ray/script.json",
+      "sha256": "95e5581932557f4aec4708fee15aa1c99ce9f57f7a848574718fbb78949d0825",
+      "bytes": 785
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/finish-subjects.json",
+      "sha256": "7b4922f5ddb3d8dd85a15323a500ae17612a488751b78ed3c8619c28e08ed39f",
+      "bytes": 240
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/native-results.json",
+      "sha256": "b82fbd51d6dbebd8c77576d5630d5097f28be190dbb985afb2de1947672bccb4",
+      "bytes": 920
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/plan.json",
+      "sha256": "11c8c218fb0d113ce15a630252be47689865aad8f91414bb4733215f729393a9",
+      "bytes": 868
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/script.json",
+      "sha256": "21874310a68a8b5983ac21515f23807c72fba141fa5d3cdde95f90eaa166da59",
+      "bytes": 769
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/finish-subjects.json",
+      "sha256": "99d97254bc8cb203540bf27f7b679dd97012e72ad0fabcfcac71d7455ff9aea9",
+      "bytes": 218
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/native-results.json",
+      "sha256": "dbb8e43164a56e11f873c8579f06e54efef2c3fa9337dd38bee57ce688930cae",
+      "bytes": 914
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/plan.json",
+      "sha256": "127b5c8eac9f0b277ec8d2e087bab0ab7fc1781f7361a24b6b0d917cc278be7f",
+      "bytes": 862
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/script.json",
+      "sha256": "0e41f39541261dc516a8ba2508741e256cbf119d97d82e9630ad9e3c0186d6a1",
+      "bytes": 666
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/finish-subjects.json",
+      "sha256": "2d53d978d8bafc1ba161fea0ad087050ac48e1dbe8ce329f8beeb9c41e280e6a",
+      "bytes": 228
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/native-results.json",
+      "sha256": "bcb1a88266c2ae5c8eb6f63e02de14036a5ecfd9aa9f46bec435a34bb262ea0d",
+      "bytes": 888
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/plan.json",
+      "sha256": "f0cd46b669daf46ab4a45eaab15e49deede74169fd8ccb08c7f2e87796014246",
+      "bytes": 836
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/ray/script.json",
+      "sha256": "878aed9507b65c8b2ca07d82a8d8c3b4fbf74c80c36e5bb50ae5e5db27a79fa3",
+      "bytes": 737
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/finish-subjects.json",
+      "sha256": "60472742c63ce7d36cc0071e5e632710657d201337b5ce2f038f05c5a3dea98c",
+      "bytes": 236
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/native-results.json",
+      "sha256": "8291735b85e3acd83ff0dcd9beaf656fa4f74641637a892bde741a89630f8aec",
+      "bytes": 921
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/plan.json",
+      "sha256": "0b43676b9560f283206f1ed899ac7bb30fa96d987f991488837d62c59e30f48e",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/stingray/script.json",
+      "sha256": "b2a73e7ef09bfcf009e4c3085bd6f50ac3575b45ab66041da4eb1ee683c581c8",
+      "bytes": 777
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/finish-subjects.json",
+      "sha256": "b5ead16bd3c27b1398705b5a1f46edc241c724a8c8afd41d2461aa6a70a955fe",
+      "bytes": 216
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/native-results.json",
+      "sha256": "368c9a16693cf748f6c46329a5cdf0f868077ed6e24a47d406b7ecedaa5dbc65",
+      "bytes": 874
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/plan.json",
+      "sha256": "b78e8d7f8d65d897d776e4b18650f12c97564cf4094c7b03a944605923a861ea",
+      "bytes": 822
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/script.json",
+      "sha256": "5c4c3d142a0b26a69307cdc609c1fd82c925de64d9d08844a778ef43c732b373",
+      "bytes": 642
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/finish-subjects.json",
+      "sha256": "32a0641f3cfa14e14a9f78d5dbc39d1353ab743287f0cc4bc1b6f16331873f21",
+      "bytes": 234
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/native-results.json",
+      "sha256": "8e1082e8d4227daa880b821ad3e9d394354fba90ff6e66b2dae52fa4a093091b",
+      "bytes": 904
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/plan.json",
+      "sha256": "051942683155f18ac608feb9027a64f53633bf40b8e6c412115586c6d11369a1",
+      "bytes": 852
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/plans/whale/script.json",
+      "sha256": "650ea993bbc510a57a74b8ccabcad3060ce0668aa104a76855b8ea83ea6b646d",
+      "bytes": 753
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/prepare-review.mjs",
+      "sha256": "989598b31fcd227c847ab0ce76d867e1dc425cd2cd054f6c8d90be963631ad48",
+      "bytes": 3256
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/ready-increment-01.json",
+      "sha256": "501acb0ec2a6d3201981277c62d91d0fde4eab3235081b6dde73249488e18f81",
+      "bytes": 1360
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/ready-increment-02.json",
+      "sha256": "83442fc23c44771578a793112befb0eba735023ebcb5ba005a956b0238d151f6",
+      "bytes": 3256
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/ready-increment-03.json",
+      "sha256": "05c1a4c2ad26731f4bfd4d6aab99fb1e0b0b8c5660048afd1c8608a06f76d552",
+      "bytes": 2576
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/review-hash-manifest.json",
+      "sha256": "feb8454786c643abdf9df85e512fd407c4c0ce181f8a54cbf317f4d5d00d2c00",
+      "bytes": 250824
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/review-summary.json",
+      "sha256": "3eb52618c685a39a1c67631c21a5e88b1a50c40dbb39f1214c3a6cbb7572ece3",
+      "bytes": 6043
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/flagged-tail-tip-8x.png",
+      "sha256": "cc461b72976140e2b29643a4dde7734b65d38a0e9b9c8936ea63b731b48317a3",
+      "bytes": 28752
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/prepared-evidence.json",
+      "sha256": "480e2969e11da6f188eb2b311790767f27e3c02db74e0755db27df60dd92285f",
+      "bytes": 238620
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "9d9447f648f2effa0d1eeedc4ce44aabec4dc469cb9a37dad354e989a0985485",
+      "bytes": 1859790
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "ea9513d8d4927c3845962a621db4574147669787e7a36039ed9ce86b44c9f5b4",
+      "bytes": 1873438
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "a2ad307a8309c98fa4100296142a1d122430f73a38fd466a61c22aa1dfa7d213",
+      "bytes": 1856826
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "7e9200ed9f4606d8060e5a0081ab95f76eca6c6d6f75a02e5a1c28744f1782d6",
+      "bytes": 1856828
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "f668b5539d91244683039e4224290f3fc331b1ec4f682446ccc3c846fcf0620e",
+      "bytes": 1862532
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/visual-review-final.json",
+      "sha256": "9c00fb371e8b330fc1b4a53d39f9146658873eade2091f154716df882b674fde",
+      "bytes": 10778
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-frigatebird-01/visual-review-prefreeze.json",
+      "sha256": "670668b7e3d471a6ca3eec15a6ab758c83f4d167b9a231fc6eb7c8f5430cdb28",
+      "bytes": 7445
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/prepared-evidence.json",
+      "sha256": "df646639720ae80b274dabfc4dc8fbd6069221c32ca306fa0323de7d4d0864da",
+      "bytes": 238469
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "48982c2972fdbd7346ce42a28c097d67e623592f7d21254283f799ca63100103",
+      "bytes": 1850251
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "22f6ef1120a5bb6bf6901dd0cf1c970d998403976fc9c21bd7da4c13b391930b",
+      "bytes": 1862316
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "b985c97b05546401b5156ef88ca50ca0dc196fe925eb8f2cfc687eb24b2368d2",
+      "bytes": 1846054
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "0471d31906c0031a6ce1ef382735ece20fb84054f12018621ff0c232a53bc87e",
+      "bytes": 1846035
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "6a9543be9a9271f8152ba16e7f258b7a39d17b05761c99e1b9f81c156d45c8fa",
+      "bytes": 1853525
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/visual-review-final.json",
+      "sha256": "d67525fe2e6d384a176c01b7478ac4ff5235efa99b81e0297516820ac8d08f0c",
+      "bytes": 8972
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/left-head-6x.png",
+      "sha256": "06d95285662e601c3f48cd3617eceb98cd2fda4f168eac75297d0212ede64b71",
+      "bytes": 24528
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/prepared-evidence.json",
+      "sha256": "903b218e7f0d16467351ce5a933f775eff30eaeec1d4c21bf7ed72c6c859caa6",
+      "bytes": 238756
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/right-head-6x.png",
+      "sha256": "94c093072774097690d7425db44810a94ae0a411a0238b462c3e1a89414015f9",
+      "bytes": 23782
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "dc53743d2c5e3b23cf18a7b530874dee32afd2860d0eb8fe248c4e59caa6190b",
+      "bytes": 1861649
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "6725a4e1c6c05b9b5628c819b6405b55bf5cae31dd18032057c0e2454be022e9",
+      "bytes": 1887014
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "563bbb58a300dd03901911ba6b09dd99ebb4d881fd6cca78c5032b6853f3f9bf",
+      "bytes": 1857742
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "8c18cd01e15beaa0c3b11f7d05428527002022011816d0a815bfbc967fc8f84a",
+      "bytes": 1856767
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "f3b243bbdcc500cc48591aab36ed1c8f5c4ecdb8ece55f0d63bc8379f7a8a47f",
+      "bytes": 1860796
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-insect-eating-bat-01/visual-review-final.json",
+      "sha256": "d6070fa7cc887019226e5fd368b2860b02b56c8ed5632494d83f5826cb15ecc3",
+      "bytes": 9773
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/prepared-evidence.json",
+      "sha256": "ddc9c9c45ae21a0dfc8f9fe99be4d083a6bd4c262fb0b1b27c18d1fd8bf0197c",
+      "bytes": 238538
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "ae2ee9890764d5b1ad6ff9f4ad0846f943fc05fee1f5d8dafd88aedc9c723214",
+      "bytes": 1864728
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "9cb86f23dff9d0f1f9a785c592c74815a572576ff0fc19279bc579ffdf8de170",
+      "bytes": 1870958
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "834ec41257d0ef2a7ec88602a3f2f27a2faa73095f8e261fdf422ede17917e1d",
+      "bytes": 1861619
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "e3e03597b0398e86e9ef56d8899a8529d076e16533fdb73202e2a024e4985136",
+      "bytes": 1861942
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "d5bef2db742485feeefec17755cd38d2505d4dcfcb18e2048a6b04882940019e",
+      "bytes": 1868387
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/visual-review-final.json",
+      "sha256": "1c18e4e7ad37413617142613affd5700eda66d8e6646e90bdf3ad448d8721a4d",
+      "bytes": 8556
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/left-tail-floor-4x.png",
+      "sha256": "42fc7dba8adb797010bb8a94ce058addc1e1a2602a804b1650f8db9d8b7607dc",
+      "bytes": 36196
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/prepared-evidence.json",
+      "sha256": "17d764cbf5c36b353adecf5ebdefa93f24efae499eb5ef636c48ab8e2445cce9",
+      "bytes": 238476
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/right-neck-shoulder-4x.png",
+      "sha256": "97b494b7593ce02882198370e00b7035350fab1d53f5da13e9f9cd6ecd518cfc",
+      "bytes": 22834
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "de7a79dac78f9877351d6cbcf758f6a8a307c5e7a0649c7f9203981c8537bae8",
+      "bytes": 1845177
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "56477153e83e77b8c1b3208397e81f61162d6767df2aafe8fb9aba9e22ac835a",
+      "bytes": 1854237
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "c2ebee2b02f88af35bbe7f8c5887c5aed42c68c30b767a9b5864ffbb883035aa",
+      "bytes": 1844370
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "932ef1288372d11caf3cfbf2b0276657ffdc1705b98312823822fe54501b409a",
+      "bytes": 1844322
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "c8e49d675dbc7c7d9e02467c35ec10f469855e3a70d09c0bebe68639212d9471",
+      "bytes": 1850146
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/visual-review-final.json",
+      "sha256": "2772004e52676e346dad6973afda06264259ed7ef1cf50b0dc8927537723cfbd",
+      "bytes": 10046
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-macaw-01/visual-review-prefreeze.json",
+      "sha256": "922c1675841a5854723dd66a102bc65a2cbdbb5189cd400dcf93d4394e3d2d4b",
+      "bytes": 8457
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-manta-ray-01/prepared-evidence.json",
+      "sha256": "3819c884da5b202a901731818de4f0b98860c4dc02d6e9becca1c45948049a08",
+      "bytes": 238737
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-narwhal-01/prepared-evidence.json",
+      "sha256": "2895fc206a580612a2df61937a8d3266442887f971327ad971ec2ed10e50158f",
+      "bytes": 238636
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/prepared-evidence.json",
+      "sha256": "14fa5765b23e77d2a37457d473d66c25383fe93fbda6a9a13a013587a1ce3b05",
+      "bytes": 238505
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/source-burgundy-breast-4x.png",
+      "sha256": "b213d6d188deee57b0f9e8bb33a72e1a316ccfd4fc67a31e3bf82e59d64f09f9",
+      "bytes": 63233
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "88dbd79b7662f2a49ba419e3415627964e7f3f24e989e0e18532ebb4cb2315bb",
+      "bytes": 1852993
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "ac8f7b71d25570934d49d1389bc9520b707cbb55e0e0b20a6cdb3d07034d60fd",
+      "bytes": 1897196
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "1eb18c85808b065ab8583d56e000c7287cf3d2a1423b42b987a16e5d9f822311",
+      "bytes": 1849467
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn3-hit-idle-50-pink-region-0-4x.png",
+      "sha256": "2c2686f5ac5d394ca351640916c8ed9d7010f2e7bf56452559891c3085c5e540",
+      "bytes": 33364
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn3-hit-idle-50-pink-region-1-4x.png",
+      "sha256": "7d00237f2705ef23f6cd36ebaf1cc5245117e3df5aad142f300fa3b1ffae6775",
+      "bytes": 25775
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "c832dc0d6e40d07aabf9be927c51b8cdb100e0279bac353ee44fe5c20d5e424a",
+      "bytes": 1849472
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "803b514aefbac3a20af13285505b7f664f252f75225fc86ae2c591b731743b4f",
+      "bytes": 1867369
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/visual-review-final.json",
+      "sha256": "870f90f6646c858e22c1364e24c05b94727e08780a62b9e75237656c0ac7ca5a",
+      "bytes": 10129
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-ray-01/prepared-evidence.json",
+      "sha256": "b837a6658a7e8a182f126fe9a74a5dd85f18a81904ce53e6e00bb664c621fc1e",
+      "bytes": 238557
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-stingray-01/prepared-evidence.json",
+      "sha256": "ce3149e6f67388fa701b448daefd65f672dd6c28573dc1f50949e85b3de21c4b",
+      "bytes": 238653
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/prepared-evidence.json",
+      "sha256": "0ce9fd41eb7228a95dfc9733759cef0475faff79c8fd979120a765d08da7fac4",
+      "bytes": 238475
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/right-neck-shoulder-4x.png",
+      "sha256": "9058a7f724011d1e2b4d79eeae9dc0d0f3c372b1689b1ed22c2da9d8db861870",
+      "bytes": 31771
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "343b6d028fcc1007040e788043d1a3e56f44369eae36803d557512d6c2a81885",
+      "bytes": 1845261
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "02cd84e52e334b8eb7b3348423572aa4139e1959d35783314780baafd09bcaa3",
+      "bytes": 1866766
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "a0bbd6f41f68ddb1f2404985eb40be56e4f414e1bfa18c2def2f92b0c919a7ed",
+      "bytes": 1842472
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "843271674d0866ba93aa756f61d51125a44868d32c82a355137293bd602e1d80",
+      "bytes": 1841967
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "5bd239e707c60d269b69d702702ec916ff6c924f78a2fa38b17698d5883bb700",
+      "bytes": 1851069
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/visual-review-final.json",
+      "sha256": "820d3f012bb17584297fbef7827078697fcf7a680a1acf1e366fbe47a66b59c2",
+      "bytes": 9552
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-swift-01/visual-review-prefreeze.json",
+      "sha256": "f8b78e3426da14bda25d4b01260effbf0fb32f5154dad1bf3d485d14310b9aca",
+      "bytes": 7963
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-whale-01/prepared-evidence.json",
+      "sha256": "705fd0e9d5adfe031ac8dd7af916803b768d155cb2f49b8c38478a36fac4cf27",
+      "bytes": 238582
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/checkpoint.json",
+      "sha256": "4bf4ef6d48141ec080a451910cb7cff01d012de7292f6dd2bbc13d725080ba5b",
+      "bytes": 10146
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/new-idle50-jaw-frill-4x.png",
+      "sha256": "be108dd8b5ff86865151d896e164d63af54096b5696acf2968c793f88ea900a4",
+      "bytes": 29299
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/prepared-evidence.json",
+      "sha256": "09deeb2bfc294c927202ed6fbe9982a5a1c0090e0a37aebf46d7e4c862070ba3",
+      "bytes": 238579
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/prior-idle50-retained-wedge-4x.png",
+      "sha256": "751a7f9a450e0598520e90f8f4c6c26393f7dd0ce35142455fbcfd9a638f63af",
+      "bytes": 29171
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "3809be929f18aa989d9fe7f5819b548ce03804b80bdf95c6b77dbac1f85b7479",
+      "bytes": 1853817
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "4bd89c7bc1bc84bca0371488f0dda915d8a8aa0cfaf354dcb711cb629268c10e",
+      "bytes": 1965048
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "87ba50e5a74bf52ef6e9bfbd20584bfc02b2ac599af7c8913d55a408348e6734",
+      "bytes": 1853509
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "6f799577b4237c7b7cf79f9e78d2621f4a44390eb697109253730a62547690f8",
+      "bytes": 1851312
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "9f4e1a1417a74328cbc4b77c8a12231bbfbe83143d3c8d0633852c21ca7fb094",
+      "bytes": 1852655
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/visual-review-final.json",
+      "sha256": "4bf4ef6d48141ec080a451910cb7cff01d012de7292f6dd2bbc13d725080ba5b",
+      "bytes": 10146
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/visual-review-prefreeze.json",
+      "sha256": "c2c4b81026498ff4cf247f9e4b80ea7d96c5ea86420efd19f96de49f57c6b6ca",
+      "bytes": 8480
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/pink-diagnosis-points.json",
+      "sha256": "d5f8c408c1efccb30e7e53c315ec87f7f34fa4556ab9e487321a50d107984dcc",
+      "bytes": 30445
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/prepared-evidence.json",
+      "sha256": "3c9c78de51e0d862922702032dfd9041f1ee3b4377e9754dbaace8159825fe70",
+      "bytes": 238363
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/source-eyes-claws-4x.png",
+      "sha256": "04f4f3e8ca9c6a47510df240aeddf6984966d36c00eb562f0c0fdda586fe9e31",
+      "bytes": 439219
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "08f070ed62285c9475de083f5674d9f36dc9def785f6179da010afa49e0a435b",
+      "bytes": 1404775
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "84a3cbbae54087ad8e87599597b0b7414d64ba1dcba8d1d7ac242eb64edad7a6",
+      "bytes": 1479588
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "a4eb94bd0a759cc6f641ec9a503efe2f791163e652c836e3006985c6e46812b3",
+      "bytes": 1391636
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "06bf7e7ae6cdf90b692e0592e5ba35618c93b34ef496415e4bc0d38ccadb2059",
+      "bytes": 1389726
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "51e990be160310a8606696855819b351485999a3c30bc6b2ce9a80ef4de82a28",
+      "bytes": 1494679
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/vent-crab-a02-near-01/visual-review-final.json",
+      "sha256": "77dbfda9c5667c4de0d9e12abb85120a0bf7689b58bb3be62702bbb6ec0e6dc8",
+      "bytes": 9577
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/README.md",
+      "sha256": "b106f4ce2cd5170b1559662c7c7ba2faf0799e488945b480b99cb449eb1f0a4f",
+      "bytes": 1953
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot/inspection-required.json",
+      "sha256": "cc1bced7b495ace11fe0deaf0119119330520094a973545a81bff3f42918c4b7",
+      "bytes": 5410
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot/provenance.json",
+      "sha256": "2931d5f5ddc827d5ac84b68991cd17eda77baeff7d760b172e3ee09cf5bf4781",
+      "bytes": 260714
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot/views.json",
+      "sha256": "533055d461e82109f09fb4ea7274732ff675145aaa7f35f2094e756692a5b515",
+      "bytes": 4055
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot-v2/encoded-media.json",
+      "sha256": "6cc3fd275603151b93e888354fdf99a4d5c13a7bd38eafc12fb375329bf70d3b",
+      "bytes": 195
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot-v2/inspection-required.json",
+      "sha256": "9b63ebb9b963de5174ed5c1f30355f5f7ab7467578a42515e5c6cd1f0c94fe35",
+      "bytes": 5425
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot-v2/provenance.json",
+      "sha256": "d7f7f8a4ab049ab75b71004e871ab4a11ef0ea368193fe3706d1d02f09c24ea9",
+      "bytes": 261334
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/calibration-guillemot-v2/views.json",
+      "sha256": "3cdae1aa5e3184c6390b8477c4b5c14bb77501a9f303c9d255edcddfab2598e1",
+      "bytes": 4070
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/frigatebird-first-second-look/README.md",
+      "sha256": "3d20099f5de972c865638adce37cb4ad79c98b31aa1799eb39faec6506ae6652",
+      "bytes": 662
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/frigatebird-first-second-look/second-look.json",
+      "sha256": "c0b28290e7c5efa4dee3543370224a85fbf716d06ef9173ee09e3f6f3851c4b8",
+      "bytes": 5281
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/helper-calibration.json",
+      "sha256": "62116b2c53ad30cccff8e0bb43fd4f480a07147eb3a7f1b3ec2b7cd067df3fbb",
+      "bytes": 366
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w3-finished/prepare-review.mjs",
+      "sha256": "64f708e637e706a2babf58ee54f855210adb04b5a471c59c348d76f2a5ca8eff",
+      "bytes": 9629
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w4-delivery/finished-frilled/helper-adaptation.json",
+      "sha256": "294ead22c0cd420c6197112d524de264a2f7a4705e56189f5f5bcb0a92a4aa4c",
+      "bytes": 1264
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w4-delivery/finished-frilled/initial-status.json",
+      "sha256": "e678286ca6700bda83343f7feb58bb074a298c1c7eb2d80c4fbc85d7ee0bf147",
+      "bytes": 399
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w4-delivery/finished-frilled/status.json",
+      "sha256": "9e059d57ad5ee41dcc192d91b35443cc55dccd2090c4843119bea49b090183fa",
+      "bytes": 826
+    },
+    {
+      "path": "audits/C270_CODEX_20261017/w4-delivery/finished-frilled/write-finished-review.py",
+      "sha256": "cdf24cd3d590ec7fb4145db8022fb8b7aa29a62f65656245b8b25d2531f02cc9",
+      "bytes": 6050
+    }
+  ],
+  "totalBytes": 197722253
+}

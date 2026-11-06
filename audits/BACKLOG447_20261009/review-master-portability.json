@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/master.png",
+    "committed": true
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/06-mountain-lizard/master.png",
+    "committed": true
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/09-agama/master.png",
+    "committed": true
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/10-gila-monster/master.png",
+    "committed": true
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "master": "audits/G2_C132_QUADRUPEDS_20261001/02-crocodile/master.png",
+    "committed": true
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "master": "audits/G2_C132_QUADRUPEDS_20261001/19-gila-monster/master.png",
+    "committed": true
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "master": "audits/G2_C132_QUADRUPEDS_20261001/21-chameleon/master.png",
+    "committed": true
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander/master.png",
+    "committed": true
+  }
+]

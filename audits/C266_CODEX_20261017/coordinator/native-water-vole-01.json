@@ -1,0 +1,20 @@
+{
+  "stage": "native-water-vole-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-water-vole-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/water-vole-01/plan.json"
+  ],
+  "startedUnix": 1792277500.4444969,
+  "beforeGiB": 92.03449249267578,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.049,
+  "lowestGiB": 91.61526489257812,
+  "afterGiB": 91.98238372802734
+}

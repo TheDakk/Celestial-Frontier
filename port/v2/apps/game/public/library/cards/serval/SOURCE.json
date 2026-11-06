@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Serval",
+ "fitDir": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "af8877a55530e9fbd797259c53c036036db17282cceac1488a9f0a6004a9f941"
+}

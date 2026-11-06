@@ -1,0 +1,20 @@
+{
+  "schema": "cf.orientation-active-wasm-leaf/v1",
+  "abi": "active(i32 x 13) -> i32; ceil(visits/triangleCount), mutable state size/projections/visits",
+  "sourceSha256": "5ef877836c58140ce32d9607c58e9c0068e00c6787887789ac6a52f299b2906b",
+  "objectSha256": "81970abe134928417897158f5069371b6422430f69c48d4ab38b5b982004a5d5",
+  "moduleSha256": "5df772043f97422cbdbd02505e156ee0fafb1ddbf2c791ca00ee41518420dd7c",
+  "moduleBytes": 4812,
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "flags": [
+    "--target=wasm32-unknown-unknown",
+    "-O3",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-fno-math-errno",
+    "-fno-builtin",
+    "-nostdlib",
+    "-c"
+  ],
+  "sections": "type; memory-only import; one function; one added export; code. All custom metadata removed; relocations/globals/data/tables/imported functions refused."
+}

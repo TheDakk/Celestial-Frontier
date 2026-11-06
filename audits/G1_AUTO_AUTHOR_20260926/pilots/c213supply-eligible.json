@@ -1,0 +1,398 @@
+[
+ {
+  "id": "01-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/01-badger",
+  "master": "audits/C213_ORIGINALS_20261004/01-badger/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "02-beaver",
+  "name": "Beaver",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/02-beaver",
+  "master": "audits/C213_ORIGINALS_20261004/02-beaver/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "03-coati",
+  "name": "Coati",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/03-coati",
+  "master": "audits/C213_ORIGINALS_20261004/03-coati/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "04-guinea-pig",
+  "name": "Guinea Pig",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/04-guinea-pig",
+  "master": "audits/C213_ORIGINALS_20261004/04-guinea-pig/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "05-hedgehog",
+  "name": "Hedgehog",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/05-hedgehog",
+  "master": "audits/C213_ORIGINALS_20261004/05-hedgehog/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "06-hyena",
+  "name": "Hyena",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/06-hyena",
+  "master": "audits/C213_ORIGINALS_20261004/06-hyena/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "07-ibex",
+  "name": "Ibex",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/07-ibex",
+  "master": "audits/C213_ORIGINALS_20261004/07-ibex/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "08-impala",
+  "name": "Impala",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/08-impala",
+  "master": "audits/C213_ORIGINALS_20261004/08-impala/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "09-kinkajou",
+  "name": "Kinkajou",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/09-kinkajou",
+  "master": "audits/C213_ORIGINALS_20261004/09-kinkajou/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "10-mole-source02",
+  "name": "Mole",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/10-mole-source02",
+  "master": "audits/C213_ORIGINALS_20261004/10-mole-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/10-mole/master.png"
+ },
+ {
+  "id": "11-peccary-source02",
+  "name": "Peccary",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/11-peccary-source02",
+  "master": "audits/C213_ORIGINALS_20261004/11-peccary-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/11-peccary/master.png"
+ },
+ {
+  "id": "12-platypus",
+  "name": "Platypus",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/12-platypus",
+  "master": "audits/C213_ORIGINALS_20261004/12-platypus/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "13-rat-source02",
+  "name": "Rat",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/13-rat-source02",
+  "master": "audits/C213_ORIGINALS_20261004/13-rat-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/13-rat/master.png"
+ },
+ {
+  "id": "14-red-fox",
+  "name": "Red Fox",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/14-red-fox",
+  "master": "audits/C213_ORIGINALS_20261004/14-red-fox/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "15-rhinoceros-source02",
+  "name": "Rhinoceros",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/15-rhinoceros-source02",
+  "master": "audits/C213_ORIGINALS_20261004/15-rhinoceros-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/15-rhinoceros/master.png"
+ },
+ {
+  "id": "16-shrew",
+  "name": "Shrew",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/16-shrew",
+  "master": "audits/C213_ORIGINALS_20261004/16-shrew/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "17-sloth-bear",
+  "name": "Sloth Bear",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/17-sloth-bear",
+  "master": "audits/C213_ORIGINALS_20261004/17-sloth-bear/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "18-squirrel-source02",
+  "name": "Squirrel",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/18-squirrel-source02",
+  "master": "audits/C213_ORIGINALS_20261004/18-squirrel-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/18-squirrel/master.png"
+ },
+ {
+  "id": "19-vole",
+  "name": "Vole",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/19-vole",
+  "master": "audits/C213_ORIGINALS_20261004/19-vole/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "20-wolverine-source02",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/C213_ORIGINALS_20261004/20-wolverine-source02",
+  "master": "audits/C213_ORIGINALS_20261004/20-wolverine-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/20-wolverine/master.png"
+ },
+ {
+  "id": "21-auk",
+  "name": "Auk",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/21-auk",
+  "master": "audits/C213_ORIGINALS_20261004/21-auk/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "22-avocet",
+  "name": "Avocet",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/22-avocet",
+  "master": "audits/C213_ORIGINALS_20261004/22-avocet/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "23-cockatoo",
+  "name": "Cockatoo",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/23-cockatoo",
+  "master": "audits/C213_ORIGINALS_20261004/23-cockatoo/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "24-crane",
+  "name": "Crane",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/24-crane",
+  "master": "audits/C213_ORIGINALS_20261004/24-crane/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "25-emu",
+  "name": "Emu",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/25-emu",
+  "master": "audits/C213_ORIGINALS_20261004/25-emu/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "26-godwit",
+  "name": "Godwit",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/26-godwit",
+  "master": "audits/C213_ORIGINALS_20261004/26-godwit/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "27-gull",
+  "name": "Gull",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/27-gull",
+  "master": "audits/C213_ORIGINALS_20261004/27-gull/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "28-kookaburra",
+  "name": "Kookaburra",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/28-kookaburra",
+  "master": "audits/C213_ORIGINALS_20261004/28-kookaburra/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "29-osprey",
+  "name": "Osprey",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/29-osprey",
+  "master": "audits/C213_ORIGINALS_20261004/29-osprey/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "30-owl",
+  "name": "Owl",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/30-owl",
+  "master": "audits/C213_ORIGINALS_20261004/30-owl/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "31-snipe",
+  "name": "Snipe",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/31-snipe",
+  "master": "audits/C213_ORIGINALS_20261004/31-snipe/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "32-tern-source02",
+  "name": "Tern",
+  "family": "biped-bird",
+  "packet": "audits/C213_ORIGINALS_20261004/32-tern-source02",
+  "master": "audits/C213_ORIGINALS_20261004/32-tern-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/32-tern/master.png"
+ },
+ {
+  "id": "33-arowana-source02",
+  "name": "Arowana",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/33-arowana-source02",
+  "master": "audits/C213_ORIGINALS_20261004/33-arowana-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/33-arowana/master.png"
+ },
+ {
+  "id": "34-blenny",
+  "name": "Blenny",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/34-blenny",
+  "master": "audits/C213_ORIGINALS_20261004/34-blenny/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "35-bowfin",
+  "name": "Bowfin",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/35-bowfin",
+  "master": "audits/C213_ORIGINALS_20261004/35-bowfin/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "36-catfish-source02",
+  "name": "Catfish",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/36-catfish-source02",
+  "master": "audits/C213_ORIGINALS_20261004/36-catfish-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/36-catfish/master.png"
+ },
+ {
+  "id": "37-knifefish",
+  "name": "Knifefish",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/37-knifefish",
+  "master": "audits/C213_ORIGINALS_20261004/37-knifefish/master.png",
+  "firstDelivery": false
+ },
+ {
+  "id": "38-lungfish-source02",
+  "name": "Lungfish",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/38-lungfish-source02",
+  "master": "audits/C213_ORIGINALS_20261004/38-lungfish-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/38-lungfish/master.png"
+ },
+ {
+  "id": "39-marlin-source02",
+  "name": "Marlin",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/39-marlin-source02",
+  "master": "audits/C213_ORIGINALS_20261004/39-marlin-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/39-marlin/master.png"
+ },
+ {
+  "id": "40-wahoo-source02",
+  "name": "Wahoo",
+  "family": "fish",
+  "packet": "audits/C213_ORIGINALS_20261004/40-wahoo-source02",
+  "master": "audits/C213_ORIGINALS_20261004/40-wahoo-source02/master.png",
+  "firstDelivery": false,
+  "predecessorMaster": "audits/C213_ORIGINALS_20261004/40-wahoo/master.png"
+ },
+ {
+  "id": "41-poison-dart-frog",
+  "name": "Poison Dart Frog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/41-poison-dart-frog",
+  "master": "audits/C213_ORIGINALS_20261004/41-poison-dart-frog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "42-bullfrog",
+  "name": "Bullfrog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/42-bullfrog",
+  "master": "audits/C213_ORIGINALS_20261004/42-bullfrog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "43-glass-frog",
+  "name": "Glass Frog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/43-glass-frog",
+  "master": "audits/C213_ORIGINALS_20261004/43-glass-frog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "44-frog",
+  "name": "Frog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/44-frog",
+  "master": "audits/C213_ORIGINALS_20261004/44-frog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "45-wood-frog",
+  "name": "Wood Frog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/45-wood-frog",
+  "master": "audits/C213_ORIGINALS_20261004/45-wood-frog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "46-toad",
+  "name": "Toad",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/46-toad",
+  "master": "audits/C213_ORIGINALS_20261004/46-toad/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "47-cave-frog",
+  "name": "Cave Frog",
+  "family": "hopper",
+  "packet": "audits/C213_ORIGINALS_20261004/47-cave-frog",
+  "master": "audits/C213_ORIGINALS_20261004/47-cave-frog/master.png",
+  "firstDelivery": true
+ },
+ {
+  "id": "48-scorpion",
+  "name": "Scorpion",
+  "family": "arachnid",
+  "packet": "audits/C213_ORIGINALS_20261004/48-scorpion",
+  "master": "audits/C213_ORIGINALS_20261004/48-scorpion/master.png",
+  "firstDelivery": true
+ }
+]

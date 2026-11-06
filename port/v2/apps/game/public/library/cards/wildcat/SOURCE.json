@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wildcat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f2307441b097aefc9eedaa64cfe521eaf13f08955610bc3c738487be9832cf7a"
+}

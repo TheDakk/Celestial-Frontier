@@ -1,0 +1,168 @@
+{
+  "corrects": "PYTHON_VISUAL_DIAGNOSIS_20260923/README.md and ROADMAP statement that presentation was not run",
+  "truth": "The existing static owner also ran its presentation row, which failed. Native candidate film was not run. Prior raw report already retains this result; no rerun or evidence change.",
+  "presentation": {
+    "id": "presentation",
+    "samples": 254,
+    "attemptedSamples": 255,
+    "status": "RED",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00006821442139131008,
+    "maxEndpointError": 0,
+    "exactRest": true,
+    "firstRefusal": {
+      "sampleIndex": 254,
+      "sampleNumber": 255,
+      "ms": 4233.333333333333,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 55\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:25375:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:25851:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:15651:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:26074:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:26115:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+      "contact": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": -0.02375
+          },
+          "head": {
+            "rotation": -0.345423,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg0": {
+            "rotation": -0.207254,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg1": {
+            "rotation": -0.138169,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg2": {
+            "rotation": -0.055268,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg4": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg5": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg6": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg7": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg8": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg9": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [],
+        "maxError": 0
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.02375
+        },
+        "head": {
+          "rotation": -0.345423,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg0": {
+          "rotation": -0.207254,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg1": {
+          "rotation": -0.138169,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg2": {
+          "rotation": -0.055268,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg4": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg5": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg6": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg7": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg8": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "seg9": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "arapStats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 360.599256432992,
+        "rmsTargetErrorPx": 46.48590918678872,
+        "maximumProjectionPx": 281.9100301001863,
+        "flippedTriangles": 55,
+        "minimumAreaRatio": -0.03659777965114919,
+        "orientationPasses": 128
+      },
+      "action": "alert"
+    }
+  }
+}

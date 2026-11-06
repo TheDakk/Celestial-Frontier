@@ -1,0 +1,153 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c196-prawn-contours",
+    "parts": 31,
+    "atlasSize": {
+      "width": 858,
+      "height": 795
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "a234d7f406de42ca6f680c3a3ff138e297f11e135d8152f3af654c8dcb738da7",
+    "recordRecipeHash": "d72e88d53aca2b1dcd02dc94a74fc0af2f5c45d611975f8ce3f51125b22edc07",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "a234d7f406de42ca6f680c3a3ff138e297f11e135d8152f3af654c8dcb738da7",
+      "atlasSha256": "64923cb51be322fc0e8f3bf17e00ec975332a5f428e3e5951bc2d241be8712b7",
+      "parts": 31,
+      "comparedChannels": 1121464,
+      "changedChannels": 0
+    },
+    "vertices": 936,
+    "partVertices": 1829,
+    "parts": 31,
+    "leaves": 391,
+    "triangles": 1576,
+    "ownershipEdges": 1570,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-foot",
+        "vertex": 24,
+        "distancePx": 1.4142135623731353,
+        "supports": [
+          18
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-foot",
+        "vertex": 17,
+        "distancePx": 8.062257748298503,
+        "supports": [
+          247
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-foot",
+        "vertex": 5,
+        "distancePx": 3.162277660168315,
+        "supports": [
+          52,
+          48
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-foot",
+        "vertex": 37,
+        "distancePx": 2.2360679774997907,
+        "supports": [
+          299,
+          297
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-foot",
+        "vertex": 7,
+        "distancePx": 4.924428900898037,
+        "supports": [
+          102
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-foot",
+        "vertex": 26,
+        "distancePx": 0.7071067811865677,
+        "supports": [
+          342
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-foot",
+        "vertex": 1,
+        "distancePx": 4.123105625617625,
+        "supports": [
+          147,
+          148
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-foot",
+        "vertex": 0,
+        "distancePx": 4.0311288741492515,
+        "supports": [
+          369
+        ]
+      },
+      {
+        "joint": "leg4FarFoot",
+        "part": "leg4far-foot",
+        "vertex": 0,
+        "distancePx": 2.6925824035672377,
+        "supports": [
+          192
+        ]
+      },
+      {
+        "joint": "leg4NearFoot",
+        "part": "leg4near-foot",
+        "vertex": 29,
+        "distancePx": 4.27814212012641,
+        "supports": [
+          441,
+          437
+        ]
+      }
+    ],
+    "sourceBindingHash": "ab5e13b2251bbfbbdec0f05128b6907bc88540b69e607e0e07b3f0b998277b20",
+    "sourceVertices": 936,
+    "vertices": 1063,
+    "sharedSupports": 291,
+    "pins": 200,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 30,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "d72e88d53aca2b1dcd02dc94a74fc0af2f5c45d611975f8ce3f51125b22edc07",
+  "bindingHash": "1e7428610a44b61cdcbdb5e1dcc9498239d4f6e7eb9debd041eff0b0866d7756",
+  "masterSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

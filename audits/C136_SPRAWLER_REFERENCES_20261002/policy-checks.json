@@ -1,0 +1,232 @@
+{
+  "scope": "Pure admission proposal and mutation controls only; no intake/static/native run.",
+  "productionChanged": false,
+  "pass": true,
+  "checks": [
+    {
+      "name": "exact original 01-caiman",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 02-crocodile",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 03-alligator",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 04-gharial",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 05-monitor-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 06-anole",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 07-gecko",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 08-skink",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 09-alligator-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 10-mountain-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 11-tegu",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 12-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 13-whiptail",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 14-agama",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 15-iguana",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 16-land-iguana",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 17-coastal-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 18-komodo-dragon",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 19-gila-monster",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 20-frilled-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 21-chameleon",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 22-horned-lizard",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 23-marine-iguana",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "exact original 24-newt",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "changed masterBytes",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "changed subjectBytes",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "changed promptBytes",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "different canonical name",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "profile assertion changed",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "profile hash changed",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "modified canonical species with rebound bytes",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "unreviewed juvenile context",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "non-grounded context",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "absent mandatory limb",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "extra tail absence",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "hidden external ear is not absence",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "ear opening is not a pinna",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "missing visual observation",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "blank reviewer",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "blank painting observation",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "blanket class scope",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "mammal with internally consistent subject still refuses",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "production policy remains tail-only",
+      "expected": "REFUSE",
+      "actual": "REFUSE"
+    },
+    {
+      "name": "ear absence preserves mandatory geometry",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "manual packets declare exactly the remaining inventory",
+      "expected": "PASS",
+      "actual": "PASS"
+    }
+  ]
+}

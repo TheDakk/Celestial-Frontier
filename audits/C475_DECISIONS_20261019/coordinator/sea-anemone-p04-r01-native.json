@@ -1,0 +1,20 @@
+{
+  "stage": "sea-anemone-p04-r01-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Anemone-P04-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native-plan-bound.json"
+  ],
+  "startedUnix": 1792500894.673277,
+  "beforeGiB": 54.010009765625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.04,
+  "lowestGiB": 53.62676239013672,
+  "afterGiB": 53.98167419433594
+}

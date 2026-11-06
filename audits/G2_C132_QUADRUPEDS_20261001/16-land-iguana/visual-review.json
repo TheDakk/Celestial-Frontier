@@ -1,0 +1,28 @@
+{
+  "name": "Land Iguana",
+  "masterSha256": "b2dd574965c5dec8535760ec0bae208f4ba17952b96f09f7fb4011f8e4726607",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: heavy yellow-orange jowled head, warm mottled scaly trunk, connected spiny nape/back crest, stout clawed legs and thick tapering tail. Four separate feet are visible, although far limb roots remain hidden and forelegs are relatively straight beneath the body. Pose needs reptile-contact review. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 255,
+      "y0": 498,
+      "x1": 973,
+      "y1": 771
+    },
+    "margins": {
+      "left": 255,
+      "right": 280,
+      "top": 498,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

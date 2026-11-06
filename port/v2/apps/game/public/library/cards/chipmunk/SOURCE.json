@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Chipmunk",
+ "fitDir": "audits/ISLANDS_C256_20261003/11-chipmunk/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "164b4a7084251f0444ac0aac931523ba7ab01ee91d516b0098e94f396aacb951"
+}

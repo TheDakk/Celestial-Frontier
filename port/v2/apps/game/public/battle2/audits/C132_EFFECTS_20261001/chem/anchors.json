@@ -1,0 +1,99 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "chem-c132-v43",
+  "theme": "chem",
+  "abilityId": "acid",
+  "abilityName": "Acid Spray",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/launch.png",
+      "keyedImage": "registered/launch.png",
+      "imageSha256": "333ecfa8f9fc749430f83744e127314aa7e8722d2ee8926f354b5722f9ee45db",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 139,
+        "y": 446,
+        "width": 317,
+        "height": 211
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "registered/travel.png",
+      "keyedImage": "registered/travel.png",
+      "imageSha256": "0167b8d4d433da139b9f1819815e2a880e9a2255b50ad003bf1e7289f197a985",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 151,
+        "y": 425,
+        "width": 682,
+        "height": 267
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "registered/impact.png",
+      "keyedImage": "registered/impact.png",
+      "imageSha256": "52ed2bd4cab580905c296368a65e09258f9b7b1470d5855f4262be644fda6f64",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 568,
+        "y": 420,
+        "width": 329,
+        "height": 285
+      }
+    }
+  ],
+  "qualityAccepted": false
+}

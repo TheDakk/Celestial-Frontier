@@ -1,0 +1,23 @@
+{
+  "stage": "cpu-quadruped-representatives",
+  "command": [
+    "node",
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/tools/qualify.mjs",
+    "codex-r01",
+    "01-tortoise-a04",
+    "07-sea-turtle",
+    "08-fur-seal",
+    "13-goat-a02",
+    "14-shrew",
+    "22-anole-a02",
+    "25-olm-a02",
+    "26-chimpanzee-a02"
+  ],
+  "startedUnix": 1792272436.988846,
+  "beforeGiB": 95.367431640625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 46.206,
+  "lowestGiB": 95.367431640625,
+  "afterGiB": 95.367431640625
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Alligator Lizard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "65bf1a8dbfb206b82ac9ac84e6979f7fec1396ec898369394e93b280f77425b2"
+}

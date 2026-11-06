@@ -1,0 +1,29 @@
+✔ complete source terminal owners pass; unrelated families remain unchanged (0.453291ms)
+✔ anterior source erasure refuses (0.207417ms)
+✔ anterior missing or misassigned owner refuses (0.133709ms)
+✔ anterior offsource landmark refuses (0.065458ms)
+✔ posterior source erasure refuses (0.057459ms)
+✔ posterior missing or misassigned owner refuses (0.068541ms)
+✔ posterior offsource landmark refuses (0.051708ms)
+✔ malformed source refuses before indexing (0.101ms)
+✔ errant-soft-worm preserves every observed support without mutating source bytes (1.593833ms)
+✔ errant-soft-worm refuses each erased material support (0.602542ms)
+✔ errant-soft-worm refuses borrowing another source owner for any observed field (1.234708ms)
+✔ errant-soft-worm refuses missing or off-source landmarks and malformed RGBA (0.139583ms)
+✔ ctenophore-body preserves every observed support without mutating source bytes (0.150708ms)
+✔ ctenophore-body refuses each erased material support (0.092917ms)
+✔ ctenophore-body refuses borrowing another source owner for any observed field (0.112667ms)
+✔ ctenophore-body refuses missing or off-source landmarks and malformed RGBA (0.061292ms)
+✔ exact Nautilus source route returns a nautiloid template with cephalopod taxonomy unchanged (0.584ms)
+✔ Nautilus source layout retains rigid spiral shell, hood and genuinely numerous unsuckered tentacles (0.21275ms)
+✔ wrong, mixed and missing source signatures never select nautiloid or its request (0.061541ms)
+✔ generic octopus and squid retain their canonical source family and their existing anatomy requests (0.167917ms)
+✔ actual canonical Nautilus compiler writes the narrow source request and exact hashes (190.895333ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.564833

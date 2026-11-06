@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "River Dolphin",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/rebound01/c243b02r2c2-32-river-dolphin/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9b8211bb49d02ae068c5043910327efeb8d670f6a649c0ee33d28bccec4bdcd5"
+}

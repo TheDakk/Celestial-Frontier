@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-15-lancelet-c3-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-c267-15-lancelet-c3-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-15-lancelet-c3-01/plan.json"
+  ],
+  "startedUnix": 1792277901.221581,
+  "beforeGiB": 91.5796127319336,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.038,
+  "lowestGiB": 91.17910766601562,
+  "afterGiB": 91.5521125793457
+}

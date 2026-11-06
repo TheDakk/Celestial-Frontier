@@ -1,0 +1,57 @@
+[
+ {
+  "id": "g2q-coyote",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/01-coyote/packet"
+ },
+ {
+  "id": "g2q-fennec",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/04-fennec-fox/packet"
+ },
+ {
+  "id": "g2q-caracal",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/05-caracal/packet"
+ },
+ {
+  "id": "g2q-cougar",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/07-cougar/packet"
+ },
+ {
+  "id": "g2q-raccoon",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/10-raccoon/packet"
+ },
+ {
+  "id": "g2q-donkey",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/15-donkey/packet"
+ },
+ {
+  "id": "g2c54-dingo",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/01-dingo/packet"
+ },
+ {
+  "id": "g2c54-jackal",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/02-jackal/packet"
+ },
+ {
+  "id": "g2c54-lion",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/04-lion/packet"
+ },
+ {
+  "id": "g2c54-weasel",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/12-weasel/packet"
+ },
+ {
+  "id": "g2c56-marten",
+  "family": "quadruped",
+  "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/07-marten/packet"
+ }
+]

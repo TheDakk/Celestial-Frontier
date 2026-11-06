@@ -1,0 +1,440 @@
+{
+  "program": "C243 ALL-OUT",
+  "batch": 2,
+  "species": 35,
+  "repaintAttempts": 86,
+  "staticBefore": 2,
+  "staticAfter": 14,
+  "gainedStaticSpecies": [
+    "Anglerfish",
+    "Deep-Sea Fish",
+    "Flying Fish",
+    "Marlin",
+    "Beaked Whale",
+    "Flying Gurnard",
+    "Lamprey",
+    "Humpback Whale",
+    "Lionfish",
+    "Pipefish",
+    "Black Fly",
+    "Wahoo"
+  ],
+  "lostStaticSpecies": [],
+  "nativePass": 14,
+  "finishPass": 14,
+  "rebindPass": 14,
+  "finishedNativePass": 14,
+  "readyForReview": 10,
+  "visualHolds": 4,
+  "sourceRefusals": [
+    {
+      "name": "Ant",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 2.5% of the paint; every same-family reference shows at least 3.8%",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 14% paint (reference 40%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 8% paint (reference 25%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Blue Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Catfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 20% paint (reference 86%)",
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 20% paint (reference 77%)",
+        "missing-anatomy: part jaw (jaw) covers 5% paint (reference 16%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Dragonfish",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Eagle Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part rear-body (spine4) covers 13% paint (reference 48%)",
+        "missing-anatomy: part pelvic-body (spine3) covers 21% paint (reference 65%)",
+        "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Fangtooth",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Gray Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 7.4% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Gulper Eel",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part segment-9 owns 1.40 % of the paint (reference 5.96 %)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Lancelet",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part jaw (jaw) covers 12% paint (reference 56%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Lungfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 6.1% of the paint; every same-family reference shows at least 10.0%"
+      ],
+      "static": null
+    },
+    {
+      "name": "Manatee",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 8.8% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Manta Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part caudal (caudal) covers 4% paint (reference 63%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Moray Eel",
+      "attempts": 3,
+      "lastReasons": [
+        "wrong family: length/thickness 7.53 < 8"
+      ],
+      "static": null
+    },
+    {
+      "name": "Narwhal",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%)",
+        "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Oarfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 1% paint (reference 69%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Pilot Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 9.5% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Seahorse",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 1.4% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+        "unexplained-anatomy: 19.8% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Stingray",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 18.0% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Tripod Fish",
+      "attempts": 3,
+      "lastReasons": [
+        "wrong-family: arachnid matches clearly better (0.0291 < 0.0485)",
+        "extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on",
+        "missing-anatomy: part jaw (jaw) covers 3% paint (reference 64%)",
+        "missing-anatomy: part head (head) covers 22% paint (reference 84%)",
+        "missing-anatomy: part caudal (caudal) covers 15% paint (reference 73%)",
+        "missing-anatomy: part body-3 (spine3) covers 4% paint (reference 82%)",
+        "missing-anatomy: part body-4 (spine4) covers 15% paint (reference 96%)",
+        "missing-anatomy: part body-5 (spine5) covers 8% paint (reference 43%)",
+        "unexplained-anatomy: 18.9% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part tail-peduncle (spine5) covers 8% paint (reference 18%)",
+        "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "static": null
+    }
+  ],
+  "rows": [
+    {
+      "id": "c221program-13-river-dolphin-v2",
+      "name": "River Dolphin",
+      "status": "HOLD",
+      "reason": "Key-magenta triage HOLD: 14 total pixels across five review frames; threshold 5 unchanged",
+      "magentaTotal": 14,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c221program-13-river-dolphin-v2/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c1-05-deep-sea-fish",
+      "name": "Deep-Sea Fish",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 2,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c2-02-beaked-whale",
+      "name": "Beaked Whale",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 1,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-02-beaked-whale/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c3-16-lionfish",
+      "name": "Lionfish",
+      "status": "HOLD",
+      "reason": "Key-magenta triage HOLD: 70 total pixels across five review frames; threshold 5 unchanged",
+      "magentaTotal": 70,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c3-25-pipefish",
+      "name": "Pipefish",
+      "status": "HOLD",
+      "reason": "Key-magenta triage HOLD: 10 total pixels across five review frames; threshold 5 unchanged",
+      "magentaTotal": 10,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c3-35-black-fly",
+      "name": "Black Fly",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 3,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-35-black-fly/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c215program-37-beluga",
+      "name": "Beluga",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c215program-37-beluga/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c1-01-anglerfish",
+      "name": "Anglerfish",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-01-anglerfish/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c1-09-flying-fish",
+      "name": "Flying Fish",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-09-flying-fish/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c1-20-marlin",
+      "name": "Marlin",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-20-marlin/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c1-33-wahoo",
+      "name": "Wahoo",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-33-wahoo/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c2-10-flying-gurnard",
+      "name": "Flying Gurnard",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-10-flying-gurnard/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c2-14-lamprey",
+      "name": "Lamprey",
+      "status": "HOLD",
+      "reason": "Full-size turn3-hit-idle-50: left lower mouth/sucker fragment floats free below the head; small belly sliver also visible. Mechanical PASS is not visual acceptance.",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c2-14-lamprey/turn3-hit-idle-90.png"
+      ]
+    },
+    {
+      "id": "c243b02r1c3-13-humpback-whale",
+      "name": "Humpback Whale",
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "reason": "No triage flag; source and film review remains Claude authority",
+      "magentaTotal": 0,
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale",
+      "frames": [
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale/turn1-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale/turn2-dodge-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale/turn3-hit-reaction-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale/turn3-hit-idle-50.png",
+        "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c3-13-humpback-whale/turn3-hit-idle-90.png"
+      ]
+    }
+  ],
+  "limitsChanged": false,
+  "allPairs": "HOLD",
+  "reservation": "C344 ACTIVE; next batch starts immediately",
+  "sourceCheckpoint": "52ce321de",
+  "finishProducer": "83eb8ddcc",
+  "review": "code-review.json",
+  "note": "All five review stills retained, including explicit holds. Exact selected master paths restored/retained; rejected originals intentionally not committed per program. No certification or hosted action."
+}

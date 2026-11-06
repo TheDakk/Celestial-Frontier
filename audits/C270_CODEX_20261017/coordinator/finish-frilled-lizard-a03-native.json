@@ -1,0 +1,20 @@
+{
+  "stage": "finish-frilled-lizard-a03-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-frilled-lizard-a03-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/finished-plan.json"
+  ],
+  "startedUnix": 1792287389.752716,
+  "beforeGiB": 78.10408782958984,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.076,
+  "lowestGiB": 77.70392608642578,
+  "afterGiB": 79.06813049316406
+}

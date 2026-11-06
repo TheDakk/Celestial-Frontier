@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Caiman",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c196quadrupedoriginals-01-caiman/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ea37fa9ec8889cb34ecfbe371f17401fab91f68c569167fe5694f6bd539d068f"
+}

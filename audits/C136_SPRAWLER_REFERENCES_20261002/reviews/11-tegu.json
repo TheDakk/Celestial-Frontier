@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Tegu",
+  "family": "quadruped",
+  "masterSha256": "4adc0d8c91148320337bd67d6b6a9515a5dbc16ef063d896a3d887c4780c8026",
+  "subjectSha256": "37eff1e4f0128dc5e5238a0e590153c99f8807c2419063f035bfd479dbcbfaa9",
+  "promptSha256": "3b34d3359b1a2e35e4ceabc86df6abe20b74115a4cb0edc9f385b9c7592021d1",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: heavy blocky jowled head, black-and-pale beaded body with distinct bands, thick tapering tail and four visible feet. Near legs are robust and clearly painted; far upper limbs remain partly body-occluded. The tail appears shorter than the canonical slightly-longer-than-body ratio and needs species review. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/11-tegu/visual-review.json",
+    "sha256": "80046fc5d72e15c8dcc98a090c164018a1ed823919a1ea6fdf7db3cafdbfe240"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Langur",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-11-langur/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4bfd77e3094e7791aad2c8a3087521118e2cdf1a73b0f54c00b6e9b8bd5ef634"
+}

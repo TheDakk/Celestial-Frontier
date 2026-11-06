@@ -1,0 +1,47 @@
+[
+  {
+    "case": "magpie-observed",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 775,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "cpuP95Ms": 4.5,
+    "supports": "observed"
+  },
+  {
+    "case": "dove-observed",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 780,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "cpuP95Ms": 5.199999928474426,
+    "supports": "observed"
+  },
+  {
+    "case": "magpie-rest-control",
+    "status": "FAIL",
+    "frames": 775,
+    "refusals": {
+      "left": 0,
+      "right": 51
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": "Contact: joint limit legNearKnee faint@1431.999998999999: -70.0266698602046"
+    },
+    "cpuP95Ms": 4.399999976158142,
+    "supports": "rest (default)"
+  }
+]

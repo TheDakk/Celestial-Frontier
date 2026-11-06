@@ -1,0 +1,42 @@
+{
+  "candidate": 2,
+  "scored": 22,
+  "rawPass": [
+    "Gibbon",
+    "Spider Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "eligiblePass": [
+    "Gibbon",
+    "Spider Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "sourceHolds": {
+    "Mite": "Only six independently readable walking-leg tips; eight-leg requirement remains unresolved.",
+    "Pseudoscorpion": "Five long near-side walking branches with obscured far-side stubs; four correct near/far walking pairs not independently established.",
+    "Sea Spider": "Three separate tall eye stalks painted, not four eyes on one small turret; canonical eye anatomy not met.",
+    "Camel Spider": "Eight walking legs plus two distinct forward pedipalps cannot all be independently traced; near/far limbs overlap or hide.",
+    "Marmoset": "Canonical upright bark-clinging stance again absent; walking/no-prop template conflict remains unresolved.",
+    "Caecilian": "Prominent round black eye-like side spot conflicts with no-visible-eye marker; front projection not independently established as sensory tentacle.",
+    "Cobra": "Overall silhouette about567x516px remains wider than tall; canonical reared posture aspect not met.",
+    "Rattlesnake": "Base has deeper open S/C bends but does not independently read as a coiled base; canonical coiled posture remains ambiguous."
+  },
+  "authorRefused": [
+    "Deer Tick",
+    "Harvestman",
+    "Mite",
+    "Pseudoscorpion",
+    "Sea Spider",
+    "Camel Spider",
+    "Baboon",
+    "Chimpanzee",
+    "Marmoset",
+    "Monkey",
+    "Caecilian",
+    "Cobra",
+    "Rattlesnake",
+    "Snake"
+  ]
+}

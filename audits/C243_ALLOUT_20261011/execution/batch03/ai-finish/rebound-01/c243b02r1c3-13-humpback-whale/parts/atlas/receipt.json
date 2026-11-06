@@ -1,0 +1,59 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b02r1c3-13-humpback-whale",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "b01ccfe5dfb43e7fe443ede127cb0670be896a1762202ed3da2f0cb4bb92ad9d",
+    "pngSha256": "5f95614f7b67a1abc156860460020b060681878475bbee3f2f6451264f0fb634"
+  },
+  "parts": [
+    {
+      "name": "axial-body.png",
+      "sha256": "62c3bf1b823961793e4d2efaa897ba5844195e8cf0b8b1304e16b8e19e9a71d0"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "f977111cf242267f123d4ba68bffe62decca56bb1948f4f202d45abc540172ec"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "1ae2dbfa810ed2069d4e790f78f241d4d76cffb46cbf5cae1fa6f45d2be5f28c"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "037ec7979bc750e43acbdc2600e439afc65d49687466477126087bba3c0c8dc1"
+    },
+    {
+      "name": "head.png",
+      "sha256": "5a6310e5347f24bd27b6200525100bedc50a2a00bdea1f966e54b039b44b85b1"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "c6a821d1af6b28139c713e0dbf46c627c3c9db331c95cbcb8bfc511665d9a163"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "7058d7a4c15fda3e02fc8ebcb2e5a1f47193410a804238bc81547cf1d37787ae"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

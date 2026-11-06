@@ -1,0 +1,20 @@
+{
+  "stage": "finish-scallop-c2-r01-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-scallop-c2-r01-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/finished-plan.json"
+  ],
+  "startedUnix": 1792381221.011345,
+  "beforeGiB": 54.59564971923828,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.07,
+  "lowestGiB": 54.56559753417969,
+  "afterGiB": 55.57249450683594
+}

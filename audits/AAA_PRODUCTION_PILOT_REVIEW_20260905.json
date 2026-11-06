@@ -1,0 +1,147 @@
+{
+  "recordedAtUtc": "2026-09-06T01:39:52.064132+00:00",
+  "reviewDateLocal": "2026-09-05",
+  "scope": "read-only visual comparison and one sampled native panel interaction; no acceptance certificate",
+  "production": {
+    "url": "https://celestialfrontier.github.io/",
+    "observedVersionFooter": "Celestial Frontier \u00b7 v1.8.9 (build 92098e9) \u00b7 Developed by Dakk"
+  },
+  "pilot": {
+    "urls": [
+      "http://127.0.0.1:4179/?avpilot=1",
+      "http://127.0.0.1:4179/audiovisual-pilot.html"
+    ],
+    "reviewedBranchHead": "7a1f3848f0d7571fd9d06956cd6910650c95b87e",
+    "verifiedSourceFromPriorBatch": "ab91d59ad0ff6badefa19fdc134c3f395241da57"
+  },
+  "browser": {
+    "product": "Edg/152.0.4191.62",
+    "protocol": "1.3",
+    "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+    "jsVersion": "15.2.23.8",
+    "headless": true,
+    "freshOwnedProfile": true,
+    "existingUserProfilesOrTabsInspected": false
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "deviceScaleFactor": 1,
+      "mobileEmulation": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "mobileEmulation": false
+    }
+  ],
+  "sampledShipyardInteraction": {
+    "viewport": "390x844",
+    "closeSizePx": [
+      44,
+      44
+    ],
+    "closeOwnsCenterHit": true,
+    "pilotControlsHiddenWhileOpen": true,
+    "trustedCloseClickClosedPanel": true,
+    "focusAfterClose": "dockshipyard",
+    "pilotControlsDisplayAfterClose": "block",
+    "claimLimit": "one local path; no full accessibility, Glass or real-device certification"
+  },
+  "evidenceCorrection": {
+    "historicalFile": "audits/aaa-pilot-bcd-20260905/temperate-comparison.png",
+    "finding": "both canonical landscapes absent in the committed capture; not valid ecology or improvement proof",
+    "freshCapture": "pilot-temperate-study.png",
+    "freshFinding": "both landscapes render; subtle atmosphere change, not a demonstrated substantial art upgrade",
+    "historicalBytesPreserved": true
+  },
+  "limitations": [
+    "v1 and v2 state, biome, roster and hull presentation differ; comparisons are qualitative, not pixel-matched",
+    "No complete live-production creature portrait comparison; catalogue access refused the uncatalogued specimen",
+    "No audio quality judgment or new audio render",
+    "No physical iPhone, Safari, touch, PWA or full overlay regression run",
+    "No product, protected portrait, workflow, policy or release change"
+  ],
+  "files": [
+    {
+      "file": "production-desktop-planetfall.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:31:29.440210+00:00",
+      "bytes": 494103,
+      "sha256": "f818a32e95fa2e544eb8a29484a37446a30962c2a30817d527261dec0f718ed8"
+    },
+    {
+      "file": "production-phone-shipyard.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:32:32.210230+00:00",
+      "bytes": 112514,
+      "sha256": "c099171a2ea0a546fa8f645c3627df4c8d75d8f0b7fb37bfc31fd2f890a88f8e"
+    },
+    {
+      "file": "production-phone-approach.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:32:31.384806+00:00",
+      "bytes": 193263,
+      "sha256": "d55fbb5e2363a1bf1cea85f374b55dae0deb70c7b49af90049d3717615d606fe"
+    },
+    {
+      "file": "pilot-desktop-landed.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:36:15.347483+00:00",
+      "bytes": 815946,
+      "sha256": "0d771f7aa1aad08998c2189057b321b432436eb7533ed8e555e836589c33fac6"
+    },
+    {
+      "file": "pilot-phone-landed.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:35:49.649521+00:00",
+      "bytes": 222568,
+      "sha256": "135eb5888b0a4e15b31f368a871e0a16b5386c4992f40c78156c07d9163acac9"
+    },
+    {
+      "file": "pilot-phone-shipyard.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:35:50.247278+00:00",
+      "bytes": 155870,
+      "sha256": "68396dee1666f1f861e8d8f48f892a3fc041fe54ec3cb010a1b7af08af0d246f"
+    },
+    {
+      "file": "pilot-study.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:36:24.088010+00:00",
+      "bytes": 449906,
+      "sha256": "cc6e95da1a6d597f74621e3d07ea93112048632d30c3cfd6bd7e5ecd51aa5791"
+    },
+    {
+      "file": "pilot-temperate-study.png",
+      "kind": "unaltered browser capture",
+      "capturedAtUtc": "2026-09-06T01:36:40.381466+00:00",
+      "bytes": 462233,
+      "sha256": "2c4b288eb55f5aaab96dc204e20220f9067c9fbc7bc7110634cdb448f45ae715"
+    },
+    {
+      "file": "world-comparison.png",
+      "kind": "labeled comparison assembly",
+      "inputs": [
+        "production-desktop-planetfall.png",
+        "pilot-desktop-landed.png"
+      ],
+      "operation": "uniform whole-viewport resize if needed; no crop or retouch",
+      "bytes": 450777,
+      "sha256": "728a8de1584dd1bb6e64ba04b146174d611a7b42625c2acb688534edbbe0bff2"
+    },
+    {
+      "file": "shipyard-comparison.png",
+      "kind": "labeled comparison assembly",
+      "inputs": [
+        "production-phone-shipyard.png",
+        "pilot-phone-shipyard.png"
+      ],
+      "operation": "uniform whole-viewport resize if needed; no crop or retouch",
+      "bytes": 278995,
+      "sha256": "f817aeead4c90f5a73e5ff2b28e9275b81a122906ddb70a4340b89ece9bab463"
+    }
+  ]
+}

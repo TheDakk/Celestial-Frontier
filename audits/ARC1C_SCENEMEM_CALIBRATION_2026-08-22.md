@@ -68,7 +68,7 @@ Each run used one attempt, zero automatic retries, four unmeasured warm-up cycle
 | `arc1c-candidate-1` | calibration | `2026-08-22T03:52:53.526Z`–`2026-08-22T03:53:01.757Z` | 8,231 ms | `045b43a26852449a810da3be36759c473f809994b3a68d4657af900875d4647b` | `ada50b3cc3f3c143d06ffc42d8e8b0cf3379a57ee17bf2ba1faa7eb11ca3bda0` |
 | `arc1c-candidate-2` | calibration | `2026-08-22T03:53:38.654Z`–`2026-08-22T03:53:46.703Z` | 8,049 ms | `d4a51a4422fe4a3ae89223110676fe0f9a7939c8f8892792dd98c0e210e2d958` | `80a77eeb21d970add3529a4375738ea2aa9234c2eb8f479a931c56ab2ac43601` |
 | `arc1c-candidate-3` | calibration | `2026-08-22T03:54:15.206Z`–`2026-08-22T03:54:23.290Z` | 8,084 ms | `4bf113e40fe6e94a4a127aba3256ecca2ab90cc9f7bd3564be00662a44238ff8` | `385d4622e669cc0849aced533da50869b01a6b11ef5d06e3e61afe5de910a593` |
-| `20260822-arc1-local-certification` | exact-budget certification | `2026-08-22T04:15:02.146Z`–`2026-08-22T04:15:10.476Z` | 8,330 ms | `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` | `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6` |
+| `20260822-arc1-local-certification` | exact-budget certification | `2026-08-22T04:15:02.146Z`–`2026-08-22T04:15:10.476Z` | 8,330 ms | `dca1f51757b1367b5e36fb8484cfbf7c8044ade492663f3068fbcf7a726ca502` | `5cc27677bf2d676d0593b8503db6157c2bd1402586993d5d8ecce9212e0dab23` |
 
 All three calibration reports are correctly marked `calibration-only-not-certified`; each independently replayed 42/42 green outcomes with no findings or fatal events. The exact-budget run is marked `contract-budget` and `pass`; it also replayed 42/42, with no failures, findings, or fatal events.
 

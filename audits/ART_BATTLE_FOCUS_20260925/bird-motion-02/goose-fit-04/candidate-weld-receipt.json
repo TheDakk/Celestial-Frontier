@@ -1,0 +1,108 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02",
+  "sourceRecordSha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b",
+  "sourceBindingSha256": "e6b29c345d9965ad2717af223340256cddc88be9d3c8d882a26d9f9ab67df9be",
+  "sourceAtlasSha256": "d97cb07ab477784d24779e13b10bc5a5fadb62beefff35882d9befe91c7c12ea",
+  "helperSha256": "959dc01a6f721f15a1b1ca20dda4f52a1cf7f4380e77ce320ad9e96147d4edaa",
+  "author": {
+    "author": "Codex",
+    "pairs": [
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ],
+    "reason": "Retain only the two proximal shoulder/neck feather junctions; body/wing welds in fit03 overconstrained flap/peck/claw/hit/victory and are explicitly rejected. Distal wing overlap edges and broad body/wing interfaces remain independent."
+  },
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 17,
+        "distancePx": 9.219544457292953,
+        "supports": [
+          69
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 32,
+        "distancePx": 11.661903789690609,
+        "supports": [
+          10,
+          2
+        ]
+      }
+    ],
+    "sourceBindingHash": "1e73855dee6a5870f4a8a811cfcf62f2dbf75c90b2e16a761c4b249201dabb5f",
+    "sourceVertices": 1893,
+    "vertices": 2304,
+    "sharedSupports": 358,
+    "pins": 1554,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 17,
+    "observedExcludedBoundaries": 17,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "bd0725f86d7b066587cc04cc781fee3cfd6192d57e98ecf9465ae8c8ec0ad22c",
+  "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
+}

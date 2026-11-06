@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "originals": 10,
+  "outputModified": false,
+  "rows": [
+    {
+      "name": "Shrimp",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/master.png",
+      "masterSha256": "ec47bfd97a551cb1dafcbbc02ca5d8ee36fcb1167a02c916b6146f8bf3b34828",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T20:42:46.648Z",
+        "startedUnix": 1792269766.648,
+        "beforeGiB": 95.367431640625,
+        "lowestGiB": 95.367431640625,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 95.367431640625,
+        "elapsedSeconds": 36.092000007629395
+      }
+    },
+    {
+      "name": "Wall Lizard",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/master.png",
+      "masterSha256": "153304fbb6732c550425652eecf9538493e3297d729837966285ed978bf3f203",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T20:56:05.985Z",
+        "startedUnix": 1792270565.985,
+        "beforeGiB": 94.9859619140625,
+        "lowestGiB": 94.9859619140625,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 94.9859619140625,
+        "elapsedSeconds": 29.062000036239624
+      }
+    },
+    {
+      "name": "Frigatebird",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/master.png",
+      "masterSha256": "cf97ecb71d845f6629a1d73642c1e8173f16d166eb7d1b14ef86c49a26677ddb",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:00:35.834Z",
+        "startedUnix": 1792270835.834,
+        "beforeGiB": 96.5118408203125,
+        "lowestGiB": 96.5118408203125,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.5118408203125,
+        "elapsedSeconds": 47.10899996757507
+      }
+    },
+    {
+      "name": "Mite",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/master.png",
+      "masterSha256": "4501ea1247d9e39f68a8a2f80cf6853d2bba2f33c184628995c1ab8e342ba61b",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:01:59.364Z",
+        "startedUnix": 1792270919.364,
+        "beforeGiB": 96.13037109375,
+        "lowestGiB": 96.13037109375,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.13037109375,
+        "elapsedSeconds": 22.062000036239624
+      }
+    },
+    {
+      "name": "Macaw",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/master.png",
+      "masterSha256": "4a0a3458465d1f3e2864bc7673a7454ee8193dff429579b0075101fa6f2b0ee9",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:04:45.349Z",
+        "startedUnix": 1792271085.349,
+        "beforeGiB": 96.13037109375,
+        "lowestGiB": 96.13037109375,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.13037109375,
+        "elapsedSeconds": 22.075999975204468
+      }
+    },
+    {
+      "name": "Swift",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/master.png",
+      "masterSha256": "907cc704528e9c1afa440f9b6217ec21c2b85642d7b63d28c4227d7197fa7721",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:07:18.205Z",
+        "startedUnix": 1792271238.205,
+        "beforeGiB": 96.19277954101562,
+        "lowestGiB": 96.14667510986328,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.15065002441406,
+        "elapsedSeconds": 31.067000150680542
+      }
+    },
+    {
+      "name": "Caecilian",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/master.png",
+      "masterSha256": "f0e1e2b4e20bea2acf935dcdf1b07063d2dffe191ee6f59e38c104a4c8ebcaff",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:08:02.605Z",
+        "startedUnix": 1792271282.605,
+        "beforeGiB": 96.17346954345703,
+        "lowestGiB": 96.15042114257812,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.158203125,
+        "elapsedSeconds": 30.07699990272522
+      }
+    },
+    {
+      "name": "Sea Spider",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/master.png",
+      "masterSha256": "0b65a21f07fc87c60a4a0aad61bc62f286d44aa92c5abd87ed0a8df8dc0727f6",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:08:43.840Z",
+        "startedUnix": 1792271323.84,
+        "beforeGiB": 96.14301681518555,
+        "lowestGiB": 96.1231803894043,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.12317276000977,
+        "elapsedSeconds": 30.075999975204468
+      }
+    },
+    {
+      "name": "Leafcutter Ant",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/master.png",
+      "masterSha256": "c08d4d2fcae73e2d3bd9c7ae7978fe628557eb18cf0ec0515b9a72c253cb42c1",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:09:28.466Z",
+        "startedUnix": 1792271368.467,
+        "beforeGiB": 96.32995986938477,
+        "lowestGiB": 96.32701873779297,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.37714004516602,
+        "elapsedSeconds": 31.07100009918213
+      }
+    },
+    {
+      "name": "Mud Crab",
+      "master": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/master.png",
+      "masterSha256": "661a9de9d7bda02b99eaf09a5ab305fdb800f262a70c96c7773e431734e3c53e",
+      "shape": "PNG 1254 1254",
+      "defaultOriginalEqual": true,
+      "promptExact": true,
+      "lease": {
+        "status": "RELEASED",
+        "startedAt": "2026-10-17T21:10:19.544Z",
+        "startedUnix": 1792271419.544,
+        "beforeGiB": 96.33121109008789,
+        "lowestGiB": 96.24567794799805,
+        "inferenceMinimumGiB": 42,
+        "floorGiB": 30,
+        "afterGiB": 96.24567413330078,
+        "elapsedSeconds": 86.19800019264221
+      }
+    }
+  ]
+}

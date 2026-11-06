@@ -1,0 +1,451 @@
+{
+  "program": "C243 ALL-OUT",
+  "batch": 3,
+  "species": 34,
+  "repaintAttempts": 91,
+  "staticBeforePackets": 7,
+  "staticAfterPackets": 18,
+  "staticBeforeSpecies": 5,
+  "staticAfterSpecies": 13,
+  "measurementScope": "Aggregate of the unchanged-runtime baseline, every repaint score and source-bound class successor static checks. Duplicate source packets counted separately; no visual admission.",
+  "gainedStaticSpecies": [
+    "Bumblebee",
+    "Eagle",
+    "Fly",
+    "Honeybee",
+    "Ladybug",
+    "Locust",
+    "Stonefly",
+    "Thrips"
+  ],
+  "lostStaticSpecies": [],
+  "followUpAquaticStaticPass": [
+    "Flying Fish",
+    "Humpback Whale",
+    "Beaked Whale",
+    "Lamprey"
+  ],
+  "nativePass": 17,
+  "finishPass": 17,
+  "rebindPass": 17,
+  "finishedNativePass": 17,
+  "readyForReview": [
+    {
+      "name": "Carrion Beetle",
+      "id": "c243b03r1c1-23-carrion-beetle",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Antenna clubs remain attached; no visible gaps or islands beyond battle FX.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Springtail",
+      "id": "c243b03r1c1-27-springtail",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Late-victory antenna chains remain attached; reaction tips partly covered by battle FX; no isolated tip conclusively visible outside FX.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Stonefly",
+      "id": "c243b03r1c2-20-stonefly",
+      "status": "READY_FOR_CLAUDE",
+      "note": "All five frames continuous; long antennae and rear cerci stay attached; no visible geometry islands.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Bumblebee",
+      "id": "c243b03r1c3-01-bumblebee",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Pale pink wing tint/head fringe prompted provisional caution; unchanged triage has0 key-magenta pixels, below5. No extra color ruler introduced; continuous geometry in all five frames; color QA note for Claude.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Ladybug",
+      "id": "c243b03r1c3-24-ladybug",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Continuous shell/head/leg outlines across all five frames; no obvious detached antenna tip.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Flying Fish",
+      "id": "c243b02r1c1-09-flying-fish",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier midbody wedge gap is absent from both victory frames; body and fin roots remain continuous.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Beaked Whale",
+      "id": "c243b02r1c2-02-beaked-whale",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier throat hole at flipper root is absent; throat/forebody remain continuous in late victory.",
+      "framesReviewed": 5,
+      "magentaTotal": 1
+    },
+    {
+      "name": "Lamprey",
+      "id": "c243b02r1c2-14-lamprey",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier lower mouth fragment and belly sliver absent; oral disc remains attached in all five frames.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Humpback Whale",
+      "id": "c243b02r1c3-13-humpback-whale",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier pale detached throat fragment is no longer floating; both flippers remain attached through victory. Far flipper remains pale and is visible below near flipper.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Water Beetle",
+      "id": "c196creaturesupply-18-water-beetle",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Antenna clubs stay joined to shafts in all five frames; hairy swimming legs remain attached. Pixel triage still required for fine hairs.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Bee",
+      "id": "g2c136targetededits-21-bee",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Five frames show attached abdomen/wing roots/antennae; pale pink wings noted for Claude, unchanged key-magenta triage below threshold.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Locust",
+      "id": "c198creaturesupplyb-22-locust",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Head/mandibles and hind-leg chains remain joined through all five frames; no visible split or island.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    }
+  ],
+  "visualHolds": [
+    {
+      "name": "Moth",
+      "id": "c243b03r1c1-26-moth",
+      "status": "HOLD",
+      "note": "Visible magenta speckling along both antenna fringes; geometry otherwise continuous. Requires triage count and later repaint/keying repair.",
+      "framesReviewed": 5,
+      "magentaTotal": 24
+    },
+    {
+      "name": "Thrips",
+      "id": "c243b03r1c1-28-thrips",
+      "status": "HOLD",
+      "note": "Strong pink/magenta retained in narrow wing fringes in all frames; leg and antenna geometry continuous.",
+      "framesReviewed": 5,
+      "magentaTotal": 108
+    },
+    {
+      "name": "Honeybee",
+      "id": "c243b03r1c2-12-honeybee",
+      "status": "HOLD",
+      "note": "Pink wing surfaces and pink head fringe survive finish; later triage determines count, hold preserved. No clearly detached geometry.",
+      "framesReviewed": 5,
+      "magentaTotal": 75
+    },
+    {
+      "name": "Eagle",
+      "id": "c243b03r1c2-31-eagle",
+      "status": "HOLD",
+      "note": "Detached/raised feather strip spikes behind neck in turn3 reaction and idle50/90; a background gap separates strip from nape. Neck/back ribbon class.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "name": "Fly",
+      "id": "c243b03r1c3-09-fly",
+      "status": "HOLD",
+      "note": "Pink/magenta wing tips and facial fringe; triage57. Geometry continuous after D28 repair.",
+      "framesReviewed": 5,
+      "magentaTotal": 57
+    }
+  ],
+  "sourceRefusals": [
+    {
+      "name": "Butterfly",
+      "attempts": 3,
+      "lastReasons": [
+        "facing: the mirrored painting matches insect better (0.0284 < 0.0405)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 10% paint (reference 31%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 17% paint (reference 77%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Cave Cricket",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 7% paint (reference 39%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 16% paint (reference 51%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 2% paint (reference 47%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 19%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 4% paint (reference 18%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 60%)",
+        "missing-anatomy: part head (head) covers 10% paint (reference 86%)",
+        "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Cricket",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 0% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 2% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Damselfly",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 29%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 4% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 8% paint (reference 32%)",
+        "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 13% paint (reference 56%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 11% paint (reference 52%)",
+        "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 16% paint (reference 67%)",
+        "missing-anatomy: part head (head) covers 0% paint (reference 88%)",
+        "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Diving Beetle",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 13% paint (reference 37%)",
+        "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Dobsonfly",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 5% paint (reference 49%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 11% paint (reference 39%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 47%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 5% paint (reference 46%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 21% paint (reference 82%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Dragonfly",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a top appendage of 16.7% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 7% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 8% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 7% paint (reference 25%)",
+        "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Giant Water Bug",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Grasshopper",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 25% paint (reference 77%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Leafcutter Ant",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 62%)",
+        "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 1.0%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Mantis",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 13% paint (reference 39%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 47%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 0% paint (reference 68%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 8% paint (reference 96%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)",
+        "missing-anatomy: part mandible (mandible) covers 14% paint (reference 60%)",
+        "unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Mayfly",
+      "attempts": 3,
+      "lastReasons": [
+        "facing: the mirrored painting matches insect better (0.0358 < 0.0430)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 3% paint (reference 31%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 9% paint (reference 40%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 6% paint (reference 44%)",
+        "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Mosquito",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 4% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 15% paint (reference 62%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 2% paint (reference 89%)",
+        "unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 1.0%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Orchid Bee",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 14% paint (reference 88%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+        "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Scorpionfly",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a top appendage of 10.2% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a rear appendage of 7.2% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 47%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 18%)",
+        "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Stick Insect",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 13% paint (reference 42%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 9% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 5% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 2% paint (reference 31%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 12% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 10% paint (reference 62%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 23% paint (reference 98%)",
+        "unexplained-anatomy: 14.4% of the paint lies away from the body and in no part (reference 1.0%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Water Strider",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 12% paint (reference 42%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 1% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%)",
+        "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 1% paint (reference 100%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 20% paint (reference 99%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 11% paint (reference 88%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 1% paint (reference 77%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 81%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 8% paint (reference 62%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 15% paint (reference 98%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 20% paint (reference 89%)",
+        "missing-anatomy: part thorax (thorax) covers 8% paint (reference 99%)",
+        "missing-anatomy: part abdomen (abdomen) covers 7% paint (reference 96%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Cassowary",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Godwit",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 18% paint (reference 72%)",
+        "missing-anatomy: part tail (tailFan) covers 23% paint (reference 89%)",
+        "unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Grebe",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 27% paint (reference 84%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    },
+    {
+      "name": "Guillemot",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 16% paint (reference 84%)",
+        "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE"
+    }
+  ],
+  "reviewStillCount": 85,
+  "freeGiB": 85.45,
+  "reservation": "C351 ACTIVE",
+  "admission": "Claude only; no certification claimed"
+}

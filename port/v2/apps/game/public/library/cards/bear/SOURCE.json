@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bear",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplya-05-bear/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f0721ef6c4649ab80efaff8730a6cc9201e5e12d4172142e207bb0dc82ae4899"
+}

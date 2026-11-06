@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Deep-Sea Fish",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/rebound-01/c243b02r1c1-05-deep-sea-fish/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c05ab4e552b35c5d620b9115a4fdb669076bed2571fb2c5ae6fc02b5f090f4ec"
+}

@@ -1,0 +1,7 @@
+{
+  "paintRunId": "20260923-tree-frog-paint-06",
+  "masterSha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+  "prompt": "../candidate-07/prompt.txt",
+  "toolReceipt": "../candidate-07/generation-receipt.json",
+  "change": "Explicit source pad anchors and new local authored mesh refinement; same generation6 pixels and limb contours."
+}

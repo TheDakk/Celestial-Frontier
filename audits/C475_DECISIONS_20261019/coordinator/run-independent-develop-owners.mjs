@@ -1,0 +1,4 @@
+import fs from'node:fs';import path from'node:path';import{spawnSync}from'node:child_process';import{checkProfileCommands}from'../../../port/v2/tools/check-profile.mjs';
+const out=process.argv[2];if(!out||fs.existsSync(out))throw Error('Fresh output required');const rows=[];let status='PASS_REMAINING_INDEPENDENT_OWNERS_NOT_PROFILE';
+for(const tokens of checkProfileCommands('develop').slice(1)){const r=spawnSync(tokens[0],tokens.slice(1),{cwd:path.resolve('port/v2'),stdio:'inherit',env:{...process.env,CF_V2_CHECK_PROFILE:'develop'}});rows.push({command:tokens,exitCode:r.status??1});if(r.error||r.status!==0){status='RED_FIRST_OWNER_STOP';process.exitCode=1;break;}}
+fs.writeFileSync(out,JSON.stringify({status,profileRemains:'RED_SINGLE_STALE_I5_PRODUCER_BINDING',scope:'Six independent non-npm-test owners only; no rerun of failed test owner, no certificate/gate bypass.',rows},null,2)+'\n',{flag:'wx'});

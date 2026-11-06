@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "records": 25,
+  "uniqueMasters": 8,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "candidate01/Hoatzin/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/packet/master.png",
+      "sha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d"
+    },
+    {
+      "id": "candidate01/Ladybug/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/packet/master.png",
+      "sha256": "c46506bcc25253cd607360162ba872a44207967cb2d26c608948f675c2c52b19"
+    },
+    {
+      "id": "candidate01/Camel/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3c/c243b01r2c3-15-camel/packet/master.png",
+      "sha256": "367146f9fa4a1543b476d73bde1f07a01d694824ca7ce87c4a3af8f1f42ae342"
+    },
+    {
+      "id": "candidate01/Pilot-Whale/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/packet/master.png",
+      "sha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678"
+    },
+    {
+      "id": "candidate01/Tern/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c2c/c243b04r2c2-12-tern/packet/master.png",
+      "sha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e"
+    },
+    {
+      "id": "candidate01/River-Dolphin/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/packet/master.png",
+      "sha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a"
+    },
+    {
+      "id": "candidate01/Manatee/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/packet/master.png",
+      "sha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a"
+    },
+    {
+      "id": "candidate01/Kakapo/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet/master.png",
+      "sha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d"
+    },
+    {
+      "id": "rebound02/c243b03r1c3-24-ladybug",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/packet/master.png",
+      "sha256": "c46506bcc25253cd607360162ba872a44207967cb2d26c608948f675c2c52b19"
+    },
+    {
+      "id": "rebound02/c243b04r2c2-12-tern",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c2c/c243b04r2c2-12-tern/packet/master.png",
+      "sha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e"
+    },
+    {
+      "id": "rebound02/c243b04r2c1-17-hoatzin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/packet/master.png",
+      "sha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d"
+    },
+    {
+      "id": "rebound02/c243b04r2c1-18-kakapo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet/master.png",
+      "sha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d"
+    },
+    {
+      "id": "candidate03/Hoatzin/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/packet/master.png",
+      "sha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d"
+    },
+    {
+      "id": "candidate03/Tern/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c2c/c243b04r2c2-12-tern/packet/master.png",
+      "sha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e"
+    },
+    {
+      "id": "candidate03/Kakapo/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet/master.png",
+      "sha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d"
+    },
+    {
+      "id": "bird-placement02/Hoatzin/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/packet/master.png",
+      "sha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d"
+    },
+    {
+      "id": "bird-placement02/Tern/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c2c/c243b04r2c2-12-tern/packet/master.png",
+      "sha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e"
+    },
+    {
+      "id": "bird-placement02/Kakapo/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet/master.png",
+      "sha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d"
+    },
+    {
+      "id": "candidate02/Pilot-Whale/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/packet/master.png",
+      "sha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678"
+    },
+    {
+      "id": "candidate02/River-Dolphin/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/packet/master.png",
+      "sha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a"
+    },
+    {
+      "id": "candidate02/Manatee/fit",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/packet/master.png",
+      "sha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a"
+    },
+    {
+      "id": "rebound01/c243b02r2c1-24-pilot-whale",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/packet/master.png",
+      "sha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678"
+    },
+    {
+      "id": "rebound01/c243b01r2c3-15-camel",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c3c/c243b01r2c3-15-camel/packet/master.png",
+      "sha256": "367146f9fa4a1543b476d73bde1f07a01d694824ca7ce87c4a3af8f1f42ae342"
+    },
+    {
+      "id": "rebound01/c243b02r2c2-32-river-dolphin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/packet/master.png",
+      "sha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a"
+    },
+    {
+      "id": "rebound01/c243b02r2c2-18-manatee",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/packet/master.png",
+      "sha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a"
+    }
+  ]
+}

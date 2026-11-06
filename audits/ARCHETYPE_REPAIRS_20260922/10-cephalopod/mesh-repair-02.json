@@ -1,0 +1,27 @@
+{
+  "previousFilm": "native-02",
+  "measuredRightP95Ms": 5.100000023841858,
+  "gateMs": 3.5,
+  "change": {
+    "boundaryStep": {
+      "from": 24,
+      "to": 40
+    },
+    "interiorStep": {
+      "from": 56,
+      "to": 80
+    }
+  },
+  "scope": "One legal authored mesh resolution candidate; existing writer options, not solver/gate changes",
+  "unchanged": [
+    "original master RGBA",
+    "explicit anatomy",
+    "all authoring landmarks and polygons",
+    "record identity",
+    "all fixed/shape/contact policy choices",
+    "shared solver and runtime",
+    "3.5ms numerical gate"
+  ],
+  "originalFitPreserved": "../../ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01",
+  "acceptance": "New candidate requires exact rest/static/native qualification; no performance number inferred from mesh size."
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Booby",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/08-booby/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "661bb3a9147f754da0b69780606df678c4268ec3577bbc29a857a28a721efdf2"
+}

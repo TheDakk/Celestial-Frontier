@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "verified": [
+    {
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/parallel-c262/coordinator/native-dolphin01/c243b02r2c2-32-river-dolphin/report.json",
+      "reportSha256": "a4bfc3ea3e218ea216bf20ea7c1d680e7f0bc5e03f505d77ca6ac04fe6b369ae",
+      "verified": [
+        {
+          "file": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/candidate01/fit/record.json",
+          "sha256": "9202352cd142207df65a0e3aae7ce19010f5db05be9cd183f904da932a173ee8"
+        },
+        {
+          "file": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/candidate01/fit/binding.json",
+          "sha256": "1ac0535b25f6cece9735f561adb3eb7b4ead4daf8a418f15127f92c2ef32fa07"
+        },
+        {
+          "file": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/candidate01/fit/parts/keyed.png",
+          "sha256": "fa1014cb0ace1e26976bdd345b92fe5bfa600d6d9eb92cecfee46fd1200100f1"
+        },
+        {
+          "file": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/candidate01/fit/parts/atlas/c243b02r2c2-32-river-dolphin.png",
+          "sha256": "d677b7a3d8b9fb4e30ebf7596d11cbf357ebe92ea132e938e6b0e352e537549f"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-1f",
+ "files": [
+  {
+   "path": "library/cards/blind-salamander/SOURCE.json",
+   "bytes": 343,
+   "sha256": "47d0d193fce9f9de4e316e9c79375b064688ee0d9d2feb5fe601a4700ba93d52"
+  },
+  {
+   "path": "library/cards/blind-salamander/card/card.json",
+   "bytes": 5243,
+   "sha256": "6962c6be4e59207efef41d3fd0bcf77511524a481bd484adcc72f592d81569d7"
+  },
+  {
+   "path": "library/cards/blind-salamander/card/labels-512.png",
+   "bytes": 5831,
+   "sha256": "1c297928cd9a6f11db628701b3e9992fdbb2f68051d8c24c120bd0926e2428ef"
+  },
+  {
+   "path": "library/cards/blind-salamander/card/master-512.png",
+   "bytes": 27504,
+   "sha256": "20cebfc293941bba23b606f02ccc1923df74ca334fc09655a0f4912fc59fd27e"
+  },
+  {
+   "path": "library/cards/blind-salamander/record.json",
+   "bytes": 7166,
+   "sha256": "ddddefa40c67b051c4dbe604d928bd66e256d2bce2de041e23e2b15dd1443d4c"
+  },
+  {
+   "path": "library/cards/clouded-leopard/SOURCE.json",
+   "bytes": 297,
+   "sha256": "91b616c02d28e503f11fe39d054561fc507f157bb0c543b552d6f5d5d649a730"
+  },
+  {
+   "path": "library/cards/clouded-leopard/card/card.json",
+   "bytes": 5895,
+   "sha256": "5d699d919cda10201f46cb2eace983f3bfbb6ee957a1037eb1a1480e83cf5ac6"
+  },
+  {
+   "path": "library/cards/clouded-leopard/card/labels-512.png",
+   "bytes": 11857,
+   "sha256": "24d314a697181e9e9f8e8b96968bc68583c6b7a4edd484218c5a446b2a7fae8f"
+  },
+  {
+   "path": "library/cards/clouded-leopard/card/master-512.png",
+   "bytes": 176068,
+   "sha256": "9624e16e091e828f2d88460c4133aa106689615ea567e9a3ade399d33818abd3"
+  },
+  {
+   "path": "library/cards/clouded-leopard/record.json",
+   "bytes": 7548,
+   "sha256": "90de2f2161855d9de920b27a802030eb50098a8d5abcf5577dd9c7cba14467e0"
+  },
+  {
+   "path": "library/cards/crocodile/SOURCE.json",
+   "bytes": 322,
+   "sha256": "1d0db4575e4d154561a91311ae922de4cdce1a1bfd717264a3bb3997ce6cc149"
+  },
+  {
+   "path": "library/cards/crocodile/card/card.json",
+   "bytes": 5267,
+   "sha256": "766b5b6440f4f3a8bcab47dbc5724524645ca0229de234e2b5b68c2befe3b111"
+  },
+  {
+   "path": "library/cards/crocodile/card/labels-512.png",
+   "bytes": 6299,
+   "sha256": "55f46a71102e99bc992787720c7db48697ea134ecfebdb36975a2589725b2972"
+  },
+  {
+   "path": "library/cards/crocodile/card/master-512.png",
+   "bytes": 54312,
+   "sha256": "3b2a7166f1ba762a67e0e93458ca98f117fc33d4091a2bea5b6cff44d7afb2e1"
+  },
+  {
+   "path": "library/cards/crocodile/record.json",
+   "bytes": 7154,
+   "sha256": "5c9292ccfc058a16acbc4207db45d46f9ed9f5fd1a1f11a7474e4ed7c61d2493"
+  },
+  {
+   "path": "library/cards/godwit/SOURCE.json",
+   "bytes": 309,
+   "sha256": "43fbd37d55747316aa55993c03a53ec80f9ea102735433f312038d3db0de260e"
+  },
+  {
+   "path": "library/cards/godwit/card/card.json",
+   "bytes": 3751,
+   "sha256": "df5569ab5460093f079c0e8b0645c357b5e45a8357049c780dc7be80f45d1be7"
+  },
+  {
+   "path": "library/cards/godwit/card/labels-512.png",
+   "bytes": 4808,
+   "sha256": "c5b554821d330039d2b4550bc323e216bba074ef5dc7835ff26ec911623b226a"
+  },
+  {
+   "path": "library/cards/godwit/card/master-512.png",
+   "bytes": 40540,
+   "sha256": "3d298bb2195f2b24f2e85f0710b999b7e906960df1edee6ee35f45af4c3ad982"
+  },
+  {
+   "path": "library/cards/godwit/record.json",
+   "bytes": 6333,
+   "sha256": "949b76dca7458f820746425046d8049d46c557f03faa079cebd3709bdc6fd5cb"
+  },
+  {
+   "path": "library/cards/osprey/SOURCE.json",
+   "bytes": 312,
+   "sha256": "ba06f63a9e1b15260d83cfa09524d5fe9c23901f64efa01b593e1a7ecce386ff"
+  },
+  {
+   "path": "library/cards/osprey/card/card.json",
+   "bytes": 3670,
+   "sha256": "aaff63fbf1b1e6fd71d7dc75cddcd5ccafff143c79c02a49ea640b2add5de373"
+  },
+  {
+   "path": "library/cards/osprey/card/labels-512.png",
+   "bytes": 7342,
+   "sha256": "632bb7b97243c64e2a0a318fbfff98052ef886fff6f14aea4d19f7b8f2e63838"
+  },
+  {
+   "path": "library/cards/osprey/card/master-512.png",
+   "bytes": 105103,
+   "sha256": "0a24a90ee5a52bd11ec982257a1658b84d9a4cfb5e13b7e0fc4316869cae3595"
+  },
+  {
+   "path": "library/cards/osprey/record.json",
+   "bytes": 5584,
+   "sha256": "67e0f07f7946b2114f8f4ab053ef563019ede82a19766579fd6fc38e02321e0a"
+  },
+  {
+   "path": "library/cards/paddlefish/SOURCE.json",
+   "bytes": 290,
+   "sha256": "bc8958ea5c9b85d2ac1e084e4006bf0e06b2b02daefa4550f833964ee798bfee"
+  },
+  {
+   "path": "library/cards/paddlefish/card/card.json",
+   "bytes": 2929,
+   "sha256": "86f51af9af4ff4d53551ad37bec7c0a7eff78773961a131a7223d7d02a73e64f"
+  },
+  {
+   "path": "library/cards/paddlefish/card/labels-512.png",
+   "bytes": 5357,
+   "sha256": "10e6c03972ed72246f18e455119000f325fcd45c6414503d92d6df859231d125"
+  },
+  {
+   "path": "library/cards/paddlefish/card/master-512.png",
+   "bytes": 64468,
+   "sha256": "ac52944ef19eae6032519838e7651c21145b6c2e9c3195d8dff1ff6095ccceed"
+  },
+  {
+   "path": "library/cards/paddlefish/record.json",
+   "bytes": 5153,
+   "sha256": "eefcd1236915abe1d56c653ce18cbaf774c174ab27ced42ce9c43267376c518f"
+  },
+  {
+   "path": "library/cards/plover/SOURCE.json",
+   "bytes": 284,
+   "sha256": "d3205fb4c2d385fabcad49032d2df43846249c88563887681b792828614964f8"
+  },
+  {
+   "path": "library/cards/plover/card/card.json",
+   "bytes": 3757,
+   "sha256": "04db8c4080a2de4fd170061d2603d81e0a6c4fe14dd226e067bf52c27c58e083"
+  },
+  {
+   "path": "library/cards/plover/card/labels-512.png",
+   "bytes": 4654,
+   "sha256": "79e72668b0ab5195917574173216fcdab77c7bded0a6aa5b0df29e3d1bbaceb9"
+  },
+  {
+   "path": "library/cards/plover/card/master-512.png",
+   "bytes": 80001,
+   "sha256": "a943af689aa6d03b41caaa0a60b419ff8d301d05181807b04808ce5c2b532f42"
+  },
+  {
+   "path": "library/cards/plover/record.json",
+   "bytes": 5934,
+   "sha256": "ba7adb9a69444d702d51eba29d58614a355d351d36b499f4b8260c6e1fc5e62b"
+  },
+  {
+   "path": "library/creature-finish-source/c266-07-sea-turtle/labels.png",
+   "bytes": 39535,
+   "sha256": "0ca490b245fbbc7640c40ca25cbd75601b3ab9690abd5699947fbe7185221502"
+  },
+  {
+   "path": "library/creature-finish-source/c266-07-sea-turtle/master.png",
+   "bytes": 1447030,
+   "sha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060"
+  },
+  {
+   "path": "library/creature-finish-source/tang/labels.png",
+   "bytes": 53309,
+   "sha256": "443f4d643b590ece80eafc7c8db3205bea0876bbb3d6983346144384f07f10b9"
+  },
+  {
+   "path": "library/creature-finish-source/tang/master.png",
+   "bytes": 1319605,
+   "sha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+  }
+ ]
+}

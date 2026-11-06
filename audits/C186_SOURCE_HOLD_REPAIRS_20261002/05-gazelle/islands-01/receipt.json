@@ -1,0 +1,181 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/fit01",
+  "sourceConservationSha256": "99941f85a968afb151834671ea59b4ea34975d2fe5b506202256eac4d73239ef",
+  "sourceMasterSha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+  "sourceBindingSha256": "9c2d9745fb9ee6befd275a73920851607bbf43298af29119a122ce77d886b030",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 829,
+  "remainderPixels": 40845,
+  "islands": [
+    {
+      "pixels": 253,
+      "to": "ear-near-tip",
+      "border": {
+        "18": 55
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "30": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail1",
+      "border": {
+        "30": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "tail1",
+      "border": {
+        "30": 4
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "tail1",
+      "border": {
+        "29": 2,
+        "30": 18
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail2",
+      "border": {
+        "29": 2
+      }
+    },
+    {
+      "pixels": 64,
+      "to": "tail2",
+      "border": {
+        "28": 8,
+        "29": 29
+      }
+    },
+    {
+      "pixels": 454,
+      "to": "tail3",
+      "border": {
+        "5": 4,
+        "27": 4,
+        "28": 46,
+        "29": 39,
+        "30": 28
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail3",
+      "border": {
+        "28": 3
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "tail3",
+      "border": {
+        "28": 11
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "tail3",
+      "border": {
+        "28": 6
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-05-gazelle",
+    "parts": 31,
+    "atlasSize": {
+      "width": 597,
+      "height": 1856
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 41,
+        "distancePx": 7.705841939723416,
+        "supports": [
+          773
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 52,
+        "distancePx": 3.0016662039606716,
+        "supports": [
+          937
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 41,
+        "distancePx": 7.138627319029937,
+        "supports": [
+          40
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 34,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          435
+        ]
+      }
+    ],
+    "sourceBindingHash": "792304f360faba12c203f1e0c9dc0ecf4f01b2ab570ab8b684d7c2ed82f91c51",
+    "sourceVertices": 1565,
+    "vertices": 1745,
+    "sharedSupports": 436,
+    "pins": 344,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 36,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

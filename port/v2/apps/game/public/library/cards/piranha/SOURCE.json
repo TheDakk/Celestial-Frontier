@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Piranha",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/11-piranha/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cde89061760e92b51364a667525ac0f40c745cf91db283529bd932d2dc67a07e"
+}

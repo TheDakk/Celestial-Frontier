@@ -1,0 +1,67 @@
+{
+  "name": "Dugong",
+  "family": "fish",
+  "species": {
+    "name": "Dugong",
+    "aspect": 4.5,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "dolphin-like fluked tail",
+      "downturned bristly disc snout",
+      "no dorsal fin at all"
+    ],
+    "note": "often confused with a manatee - dugong has a notched whale fluke, manatee a rounded paddle tail"
+  },
+  "genome": {
+    "seed": 2657599145,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 11,
+    "body": 9,
+    "loco": 10,
+    "trait": 23,
+    "size": 1,
+    "diet": 5,
+    "head": 7,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 2,
+    "habitat": 0,
+    "detail": 7,
+    "accent": 9,
+    "temper": 5,
+    "sense": 0,
+    "repro": 7,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dugong"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dugong\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2657599145\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 429,
+  "profile": {
+    "id": "sirenian",
+    "names": [
+      "Manatee",
+      "Dugong"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body",
+      "tail"
+    ],
+    "notes": "No legs or claw attack; fluke topology required."
+  }
+}

@@ -1,0 +1,759 @@
+{
+  "status": "PASS_EVERY_RECORDED_ROOT_STAGE_42_START_30_FLOOR",
+  "recordedStages": 93,
+  "lowestObservedGiB": 44.209346771240234,
+  "lowestStartGiB": 51.99574661254883,
+  "rows": [
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-other-develop-owners-r02.json",
+      "sha256": "c1912db156f19e3865d20cf6ac28569aaf052be9d33ea06e6e05d4f7e6102ac2",
+      "stage": "cobra-other-develop-owners-r02",
+      "beforeGiB": 59.578453063964844,
+      "lowestGiB": 59.57425308227539,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-r02.json",
+      "sha256": "723a6d33a4ffad2a16effb53b8f33eef76e58b091f1fc1aaf07acefe2dd5aa40",
+      "stage": "develop-d41-route-r02",
+      "beforeGiB": 56.0406379699707,
+      "lowestGiB": 55.8638916015625,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai.json",
+      "sha256": "7b9c5f324a046f285de22f58f9fd5c9a6be5c0c44e7b0d5214f15d47fc49bf4e",
+      "stage": "triage-flat-sand-pre-ai",
+      "beforeGiB": 53.7872314453125,
+      "lowestGiB": 53.7872314453125,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/postmerge-validate.json",
+      "sha256": "c866fd5406a17dd8089ad9540e63bc3dac5b1eff66a1ef1024593a2628228f09",
+      "stage": "postmerge-validate",
+      "beforeGiB": 59.73603820800781,
+      "lowestGiB": 59.73569107055664,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d40-tools-r02.json",
+      "sha256": "1415bb3e49490f989c09dabefb7d042eb1737eea9a838aab7de768a87c5f2305",
+      "stage": "develop-d40-tools-r02",
+      "beforeGiB": 57.23957443237305,
+      "lowestGiB": 57.0781135559082,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/giant-isopod-d41-root-static.json",
+      "sha256": "2e56a421f1056620017337ae0abd080adfb6daa5a78542d891cc668cffae36de",
+      "stage": "giant-isopod-d41-root-static",
+      "beforeGiB": 54.931640625,
+      "lowestGiB": 54.931640625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-sand-dollar-d41-r02-ai.json",
+      "sha256": "b880d1463d8a13a78d786b3fd339365343f02ee75d76f1f67967d03850109045",
+      "stage": "finish-sand-dollar-d41-r02-ai",
+      "beforeGiB": 55.00297164916992,
+      "lowestGiB": 45.64081573486328,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-flatworm-d41-r02-ai.json",
+      "sha256": "03d1fa0dd759cd03e6e70f4be2c0b50ca1bb8e6e62ed5d5ac6ca107e66a8e0d3",
+      "stage": "finish-flatworm-d41-r02-ai",
+      "beforeGiB": 52.97940444946289,
+      "lowestGiB": 46.61436462402344,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d40-root-controls.json",
+      "sha256": "8764070143d35ba1c3e0532549e196ba550cdfcbab93426b049bcca8b359267f",
+      "stage": "d40-root-controls",
+      "beforeGiB": 57.24346160888672,
+      "lowestGiB": 57.24201583862305,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cobra-d39-native.json",
+      "sha256": "fd5641a43d180adcc999052ae110c2dbe0ea48a3a4769a1305bc04b9cf6b8cb4",
+      "stage": "finish-cobra-d39-native",
+      "beforeGiB": 57.40874099731445,
+      "lowestGiB": 56.991092681884766,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-ice-worm-d41-ai.json",
+      "sha256": "df2be6ae9a0962c11d189a512fc468c66cc8aa58cf5fd2f7d32b5bc195e3bb10",
+      "stage": "finish-ice-worm-d41-ai",
+      "beforeGiB": 54.396812438964844,
+      "lowestGiB": 45.01165771484375,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-draft-note-pin.json",
+      "sha256": "7d186db186f8812af0c59a056d6656fdcff996b6eae018ac5f64fda2fbf40557",
+      "stage": "d41-draft-note-pin",
+      "beforeGiB": 56.20969009399414,
+      "lowestGiB": 56.209686279296875,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-native.json",
+      "sha256": "cdf4f1408e9634dd8ce6eae2efc8005335cc3fb4a237e5a53cff226b151396e2",
+      "stage": "ice-worm-native",
+      "beforeGiB": 55.77589797973633,
+      "lowestGiB": 55.36198806762695,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-guide-pin-r03.json",
+      "sha256": "a4021c524392bb4d95f0588c692bf2179a61740925565281beb29408d8543730",
+      "stage": "soft-materials-guide-pin-r03",
+      "beforeGiB": 54.17833709716797,
+      "lowestGiB": 54.178314208984375,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-ai.json",
+      "sha256": "fd91287ead242704141a66088782fd25d8a75aa2c3f36c0b589a5cdd6514bc9e",
+      "stage": "finish-snake-d40-ai",
+      "beforeGiB": 53.468597412109375,
+      "lowestGiB": 45.0796012878418,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-ai.json",
+      "sha256": "9d935b627eed7712114065c8726aaa316bd358708647ed519c6b8d3ea5b50c7b",
+      "stage": "finish-giant-isopod-d41-ai",
+      "beforeGiB": 53.59209060668945,
+      "lowestGiB": 44.209346771240234,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sea-urchin-d41-root-static.json",
+      "sha256": "8022abbaf24e545e01b5367ae3027a77d350c042e463978f58f9e27d41c69772",
+      "stage": "sea-urchin-d41-root-static",
+      "beforeGiB": 56.06383514404297,
+      "lowestGiB": 56.06382751464844,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41.json",
+      "sha256": "2e1d8be80081d38d8b18e55983b6ed4f7e244ce7a12511ae88bdee23ff9bba8f",
+      "stage": "develop-d41",
+      "beforeGiB": 56.07860565185547,
+      "lowestGiB": 56.05440139770508,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/giant-isopod-d41-native.json",
+      "sha256": "797949bfaff07bfb6a0d6e245bb0b18387c1b026c75558f22f6141ddee794d09",
+      "stage": "giant-isopod-d41-native",
+      "beforeGiB": 53.938629150390625,
+      "lowestGiB": 53.84312438964844,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cobra-d39-ai.json",
+      "sha256": "2d51406f63da2b50d69ab9f0f3b724314a97da9e4fdbffb348f11c17aa819f07",
+      "stage": "finish-cobra-d39-ai",
+      "beforeGiB": 59.44068145751953,
+      "lowestGiB": 49.059539794921875,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-d41-root-static.json",
+      "sha256": "c0c97e00f5bb6a43c5e2968827ccfaf5543d5340dff33f790a0a8824d694057a",
+      "stage": "sand-dollar-d41-root-static",
+      "beforeGiB": 56.063697814941406,
+      "lowestGiB": 56.06367111206055,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-cobra-finished.json",
+      "sha256": "37d794b817ede5ed2213d43014dd0e8a1c2a155673073c0aa30560b53157b81b",
+      "stage": "triage-cobra-finished",
+      "beforeGiB": 57.35892868041992,
+      "lowestGiB": 57.34513473510742,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-d41-root-static.json",
+      "sha256": "3f035e123a256eef56e788bf499cd3ce92d7a58d17b0c9c00e003b4db5097379",
+      "stage": "ice-worm-d41-root-static",
+      "beforeGiB": 56.06357955932617,
+      "lowestGiB": 56.06357192993164,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-source-tests-r03.json",
+      "sha256": "15f8b1782b05e224c400fdfd302cdfc7daaf4bffa838458f0f7e7ed10e8fc25a",
+      "stage": "soft-materials-root-source-tests-r03",
+      "beforeGiB": 53.7872314453125,
+      "lowestGiB": 53.7872314453125,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-cricket-finished.json",
+      "sha256": "d8faa2b213ae46a53f54406921c76f92201382637d43d5c81d8f24d0a9bff63d",
+      "stage": "triage-cricket-finished",
+      "beforeGiB": 55.47220230102539,
+      "lowestGiB": 55.467369079589844,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-native.json",
+      "sha256": "625c24f01c79031de87ce0ea00d7332e4642305672a2d53432fa86fb82608192",
+      "stage": "sand-dollar-native",
+      "beforeGiB": 54.13080978393555,
+      "lowestGiB": 53.739349365234375,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-cobra-native.json",
+      "sha256": "ceaf5a11080ef9762fdc3469aa638ff5d86ab8769e17d63248e2e03eb83570d1",
+      "stage": "triage-cobra-native",
+      "beforeGiB": 59.51778793334961,
+      "lowestGiB": 59.495357513427734,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cobra-d39-rebind.json",
+      "sha256": "905d7d3da778b54b931afa6ff117bd45dfe594845e1c8f1faedda6ca6cce106b",
+      "stage": "finish-cobra-d39-rebind",
+      "beforeGiB": 56.41273498535156,
+      "lowestGiB": 56.41272735595703,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cricket-d40-ai.json",
+      "sha256": "7f0d49259da8eacf92e5c57adf9e32012665214ddbb1b591794cda5767b16098",
+      "stage": "finish-cricket-d40-ai",
+      "beforeGiB": 57.602821350097656,
+      "lowestGiB": 48.165924072265625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-soft-materials-r03.json",
+      "sha256": "8131cff8d6e2c9195aed53d9a375cdc83b95d8d4be1c2ec9a275157d9e9d5009",
+      "stage": "develop-soft-materials-r03",
+      "beforeGiB": 54.1120491027832,
+      "lowestGiB": 53.96575927734375,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-green.json",
+      "sha256": "506e13391884325f4cc5408535e6fb5f62705780e72b72b25b78540ac5c3537b",
+      "stage": "cobra-green",
+      "beforeGiB": 59.682037353515625,
+      "lowestGiB": 59.682029724121094,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-baseline-red.json",
+      "sha256": "2b8af6da31d3549ea057e9fc7e91e2e3f9e357aad56f76d0a7b952a51ede6395",
+      "stage": "cobra-baseline-red",
+      "beforeGiB": 59.697532653808594,
+      "lowestGiB": 59.69752883911133,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-d41-root-static.json",
+      "sha256": "6565d47f564db680b2ec794678909d8cc902cc6b9db4af010dfc9ce484ed8d8c",
+      "stage": "flatworm-d41-root-static",
+      "beforeGiB": 56.06396484375,
+      "lowestGiB": 56.0639533996582,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41-route-r02.json",
+      "sha256": "4502a9ac4c327cbcb5de1fd1d2daa9957cafcaa00c2240e8c1c2cb7a035cd6c7",
+      "stage": "validate-d41-route-r02",
+      "beforeGiB": 55.94546127319336,
+      "lowestGiB": 55.94441604614258,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-d40-originals.json",
+      "sha256": "b729566a61d78112ca804f0a6206bd88cf57c060bb7c20087da10a83af837b01",
+      "stage": "triage-d40-originals",
+      "beforeGiB": 56.918609619140625,
+      "lowestGiB": 56.89853286743164,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-r02-native.json",
+      "sha256": "34ca433a3d28e7af3b1ef4d724a4eea756d052b5e7562b20f1c279bf2471b2e0",
+      "stage": "tube-worm-r02-native",
+      "beforeGiB": 55.85638427734375,
+      "lowestGiB": 55.46821594238281,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/nautilus-d41-root-static.json",
+      "sha256": "480efb8f4b5189c0fc8fd4e99f5376a2fbb00c4ab0cea2e5b66796acc222c29c",
+      "stage": "nautilus-d41-root-static",
+      "beforeGiB": 54.931640625,
+      "lowestGiB": 54.931640625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-ai.json",
+      "sha256": "2bfd8f278eab5e06c83db104cf5768a51156495a87474ab7716b5ca1c38eaf0d",
+      "stage": "finish-nautilus-d41-ai",
+      "beforeGiB": 53.520206451416016,
+      "lowestGiB": 46.144874572753906,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cricket-native.json",
+      "sha256": "d92e59d8191793e269113ab6114c063eee0d0eb1475239d1d62a70ccccc20263",
+      "stage": "cricket-native",
+      "beforeGiB": 56.97106170654297,
+      "lowestGiB": 56.86923599243164,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/native-world-controls.json",
+      "sha256": "6d9797762706e32ecabff71aaebc32eae8b1e3924f504dfde8f6ddd7e1205357",
+      "stage": "native-world-controls",
+      "beforeGiB": 55.89868927001953,
+      "lowestGiB": 55.898681640625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/water-flea-d41-r02-root-static.json",
+      "sha256": "bbd138ce6396498d7b9c67b2f4e39a66b5485d8f23071169506aa47ec5136cec",
+      "stage": "water-flea-d41-r02-root-static",
+      "beforeGiB": 53.741573333740234,
+      "lowestGiB": 53.74155044555664,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cricket-root-static.json",
+      "sha256": "3f1876a4cfbbe2f2afd761ab496bf31f0c67e1b4d7671f2c935a65736e8914e4",
+      "stage": "cricket-root-static",
+      "beforeGiB": 57.143150329589844,
+      "lowestGiB": 57.134761810302734,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-d41.json",
+      "sha256": "2c7db028228765fb9da24f2957cdd183b6cf7efe18910aeb6251fa601ba4706e",
+      "stage": "validate-d41",
+      "beforeGiB": 56.06000518798828,
+      "lowestGiB": 56.05531311035156,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native.json",
+      "sha256": "6dd1d82fd9d124619c944b2a0f0988918da816caee04435d77fbbd4d0330da2d",
+      "stage": "triage-tube-r02-native",
+      "beforeGiB": 55.831756591796875,
+      "lowestGiB": 55.8282585144043,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-motion-tests.json",
+      "sha256": "5d60765c1147ef48f7b03764787044fae4a7f09ee0ccfad733336008780dccad",
+      "stage": "d41-root-motion-tests",
+      "beforeGiB": 56.1501350402832,
+      "lowestGiB": 56.1466178894043,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-sand-dollar-d41-r02-rebind.json",
+      "sha256": "b4d3705468ab291fa195073af3df0aa511f2b606526120a648ceab6a627bf3fb",
+      "stage": "finish-sand-dollar-d41-r02-rebind",
+      "beforeGiB": 51.99574661254883,
+      "lowestGiB": 51.99573516845703,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-native.json",
+      "sha256": "2f95d3b27a4972aa2da5eb551a675050e2a253e29f912008d5d8ae24a77fb5cc",
+      "stage": "cobra-native",
+      "beforeGiB": 59.55244064331055,
+      "lowestGiB": 59.16558837890625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-canonical-request-tests-r03.json",
+      "sha256": "cab23d84a9ed48e83c4258029200319e23dea9b75fc2fd7262e2869cc7c1ba87",
+      "stage": "soft-materials-canonical-request-tests-r03",
+      "beforeGiB": 53.7872314453125,
+      "lowestGiB": 53.7872314453125,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/d41-root-guards.json",
+      "sha256": "ff9181424682b3febe4dcc3a6c2dd2fecaee8f285d5dc1cd1a693b02c5619c46",
+      "stage": "d41-root-guards",
+      "beforeGiB": 56.144744873046875,
+      "lowestGiB": 56.14462661743164,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-native.json",
+      "sha256": "79ed2ffeb1805e97b0f6b3bffa20ca3377d5c5ffeb50d09143bfc581f8d460eb",
+      "stage": "tube-worm-native",
+      "beforeGiB": 55.91246795654297,
+      "lowestGiB": 55.87847900390625,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-ice-worm-d41-native.json",
+      "sha256": "0e5009005ef1e193f48b15f02502ac99a3bbfe226e553334fad11a73f5c2d216",
+      "stage": "finish-ice-worm-d41-native",
+      "beforeGiB": 53.364051818847656,
+      "lowestGiB": 53.303585052490234,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-jelly-d41-r02-root-static.json",
+      "sha256": "7cf96487939ad838657015c7846758f40ab91cd74c558f55aa9926b928eb5f65",
+      "stage": "comb-jelly-d41-r02-root-static",
+      "beforeGiB": 54.144561767578125,
+      "lowestGiB": 54.14386749267578,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-butterfly-d40-r02-native.json",
+      "sha256": "396e6f7d219d7d248c6b6eff2365a045222d6bfcf4c829dbcf663eaf27673483",
+      "stage": "finish-butterfly-d40-r02-native",
+      "beforeGiB": 53.44780731201172,
+      "lowestGiB": 53.3794059753418,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-tube-worm-d41-r02-rebind.json",
+      "sha256": "8549e2ce46b481702e979ea62266ca747734f1e7783114aea8c0526f87c80f3d",
+      "stage": "finish-tube-worm-d41-r02-rebind",
+      "beforeGiB": 53.51821517944336,
+      "lowestGiB": 53.51818084716797,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-flatworm-d41-r02-rebind.json",
+      "sha256": "bf222cedff7260477b866917a0ac95ffc52e6045b368a5dc6fadb04c87ee331f",
+      "stage": "finish-flatworm-d41-r02-rebind",
+      "beforeGiB": 52.96361541748047,
+      "lowestGiB": 52.96086502075195,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-rebind.json",
+      "sha256": "70a281355eb370a4800c6bb49e51030395d8fa4f61a0fb722c4e76984211fd54",
+      "stage": "finish-nautilus-d41-rebind",
+      "beforeGiB": 52.4997673034668,
+      "lowestGiB": 52.49974822998047,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cricket-d40-rebind.json",
+      "sha256": "d9c6d0185dc24b56906acfa562f1ff05a40af1b20fe0060a25ab800a21ca0973",
+      "stage": "finish-cricket-d40-rebind",
+      "beforeGiB": 54.52134323120117,
+      "lowestGiB": 54.521339416503906,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-native.json",
+      "sha256": "ffd3dcfb2f7ead1285284d17cc5dd2a3500bedfe239a666897358c43b38af651",
+      "stage": "finish-giant-isopod-d41-native",
+      "beforeGiB": 52.54922866821289,
+      "lowestGiB": 52.52170944213867,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-root-static.json",
+      "sha256": "cccec2c3bbe3fe33b32b66cc2e878f5328f1a3c0d14fcff055841e71c151a71a",
+      "stage": "tube-worm-root-static",
+      "beforeGiB": 56.05562210083008,
+      "lowestGiB": 56.05558776855469,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-cobra.json",
+      "sha256": "be04e9d026f908566063211bd6cc38b848dbfb3b321da6b6b2ff07d012244448",
+      "stage": "develop-cobra",
+      "beforeGiB": 59.68362808227539,
+      "lowestGiB": 59.515708923339844,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/nautilus-d41-native.json",
+      "sha256": "3e02f8ece9abc28159e299913ffbaece83b23f5f648be9e881dfbd1d3d0fc99f",
+      "stage": "nautilus-d41-native",
+      "beforeGiB": 53.89558410644531,
+      "lowestGiB": 53.50619125366211,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-native.json",
+      "sha256": "122db3b88421ed8a387d717f0a6d5edb7431deab0a0dbe92ef0338742a18d9cd",
+      "stage": "finish-snake-d40-native",
+      "beforeGiB": 52.4343147277832,
+      "lowestGiB": 52.02751541137695,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-route-independent-r02.json",
+      "sha256": "b05c5de38de3f67e1d41461fa1f125787da0d185423183027a5217915f67e756",
+      "stage": "develop-d41-route-independent-r02",
+      "beforeGiB": 55.951194763183594,
+      "lowestGiB": 55.95009994506836,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-static-proof-r02.json",
+      "sha256": "544d029edac0909b6a278bce2fb945238609a54843d62364bd555dde21e8e3b8",
+      "stage": "cobra-static-proof-r02",
+      "beforeGiB": 59.54938507080078,
+      "lowestGiB": 59.54665756225586,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d41-independent.json",
+      "sha256": "0560dc17b7898af9eeb85926b7f19539acfa4fb037d024b6083d83da42752ded",
+      "stage": "develop-d41-independent",
+      "beforeGiB": 56.05698013305664,
+      "lowestGiB": 56.056610107421875,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-sand-dollar-d41-r02-native.json",
+      "sha256": "a4910430ef98cc43d8fe30a1ce1c0d8d6557a71b35596b49b47374ba06f43279",
+      "stage": "finish-sand-dollar-d41-r02-native",
+      "beforeGiB": 52.991722106933594,
+      "lowestGiB": 52.61573028564453,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-tube-worm-d41-r02-ai.json",
+      "sha256": "05790ca29621fbd1a5c2e2823b23b0a22d8596e0fb7e1ed176216d1a55d917f5",
+      "stage": "finish-tube-worm-d41-r02-ai",
+      "beforeGiB": 55.52626419067383,
+      "lowestGiB": 45.15776443481445,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-static-proof.json",
+      "sha256": "a4bd6c7655e8d97139f23a86d3ec1f696f45ac077078b65ed3ec3899e44be805",
+      "stage": "cobra-static-proof",
+      "beforeGiB": 59.556549072265625,
+      "lowestGiB": 59.55654525756836,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-ice-worm-d41-rebind.json",
+      "sha256": "17b1795c16dd3ea2e053ec1df3d7c7ed6b6f03419dcbb33e2b72368b057bbee6",
+      "stage": "finish-ice-worm-d41-rebind",
+      "beforeGiB": 53.36589050292969,
+      "lowestGiB": 53.365875244140625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/premerge-validate.json",
+      "sha256": "094c56e6ce336ef32de60c7c333a28cbec097fc402036f0464d9299b6c4eb2ee",
+      "stage": "premerge-validate",
+      "beforeGiB": 59.88063430786133,
+      "lowestGiB": 59.879093170166016,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-native.json",
+      "sha256": "2c77fb78b6b9f3f6b2726e970411ce02d4acb4493071dc8d145cfcebf370d5f8",
+      "stage": "butterfly-native",
+      "beforeGiB": 57.03031539916992,
+      "lowestGiB": 56.61745834350586,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-checks-r03.json",
+      "sha256": "a94408dc03b7454ec173e6f00b182ce616f82943807449d2aa8141667338b9a8",
+      "stage": "soft-materials-root-checks-r03",
+      "beforeGiB": 53.7872314453125,
+      "lowestGiB": 53.7872314453125,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-rebind.json",
+      "sha256": "8b5dec9d2a645886633393d3f8350d893b51ec7da5f2f293dc80a176ac27e6f4",
+      "stage": "finish-giant-isopod-d41-rebind",
+      "beforeGiB": 52.559532165527344,
+      "lowestGiB": 52.55952072143555,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native.json",
+      "sha256": "5fab2af9d71b049e5a4fb7f3e0ca78527c017b61b8efa6592a23514879f99951",
+      "stage": "triage-template-reps-native",
+      "beforeGiB": 55.68923568725586,
+      "lowestGiB": 55.66972732543945,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-cricket-d40-native.json",
+      "sha256": "cfd0258bc5776f7461e9e68d0267476d4c2f2a50d39ff173f07419a43f94c78c",
+      "stage": "finish-cricket-d40-native",
+      "beforeGiB": 55.51350021362305,
+      "lowestGiB": 55.42970657348633,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-butterfly-d40-r02-ai.json",
+      "sha256": "208e3d6259655216ed13fa5fedd2eede11170aab64d01329353edd2e7974abec",
+      "stage": "finish-butterfly-d40-r02-ai",
+      "beforeGiB": 54.491798400878906,
+      "lowestGiB": 46.09962844848633,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/validate-post-d40.json",
+      "sha256": "7540b1339918a1f09007b4567e5e0782000dba5c0963d9a564905ccc042889ee",
+      "stage": "validate-post-d40",
+      "beforeGiB": 55.34835433959961,
+      "lowestGiB": 55.34822082519531,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-native.json",
+      "sha256": "5d119c2aedf567e27d8e00def3a873743ec271b09e44edb9b1bb711a6058a31d",
+      "stage": "finish-nautilus-d41-native",
+      "beforeGiB": 52.49574661254883,
+      "lowestGiB": 52.470401763916016,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-d40-r02-root-static.json",
+      "sha256": "61140cddcbddebc849769fa8a3fc66403e59b7df7be73cef4db5b942b456e97e",
+      "stage": "butterfly-d40-r02-root-static",
+      "beforeGiB": 55.87831115722656,
+      "lowestGiB": 55.87741470336914,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-tube-worm-d41-r02-native.json",
+      "sha256": "6511781373c839138834c2a4625e67bf99f556a8104342ed940976ee396a84f6",
+      "stage": "finish-tube-worm-d41-r02-native",
+      "beforeGiB": 53.5149040222168,
+      "lowestGiB": 53.35463333129883,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-flatworm-d41-r02-native.json",
+      "sha256": "fa1a97d70443a12681fddabdd32cff4ecf71a501f99e2622f89a4892ebb73388",
+      "stage": "finish-flatworm-d41-r02-native",
+      "beforeGiB": 52.96076965332031,
+      "lowestGiB": 52.94129943847656,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/snake-d40-root-static.json",
+      "sha256": "9fa1ceed49d9d5af945b1d25e4d2604ce7544255c9b34724e5c5077a5a67d02c",
+      "stage": "snake-d40-root-static",
+      "beforeGiB": 54.931640625,
+      "lowestGiB": 54.931640625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-d40-tools.json",
+      "sha256": "759660baef5d46b8c595928b431c8753ce7882208731c7a3884cc6db1de58a27",
+      "stage": "develop-d40-tools",
+      "beforeGiB": 57.23995590209961,
+      "lowestGiB": 57.217987060546875,
+      "exitCode": 1
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-butterfly-d40-r02-rebind.json",
+      "sha256": "3e6d30d2795b0a6f82fd8b81c8fa69838c09374d8c239b3598c67295e331f3c3",
+      "stage": "finish-butterfly-d40-r02-rebind",
+      "beforeGiB": 53.45602798461914,
+      "lowestGiB": 53.45601272583008,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-root-static.json",
+      "sha256": "82638cedac1fb7e0acf9f454320be186a0558304b035076426aedc80b641c7de",
+      "stage": "butterfly-root-static",
+      "beforeGiB": 57.24063491821289,
+      "lowestGiB": 57.23856735229492,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished.json",
+      "sha256": "7763e8c6a2f8f25d2f4b577caee306790a7faf25376f42bbe81a43affe6e6f27",
+      "stage": "triage-next3-finished",
+      "beforeGiB": 53.40576171875,
+      "lowestGiB": 53.40576171875,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-native.json",
+      "sha256": "132b5cafd13cc6fc4e76422dc7b2dc188b8bcd7196748a21dcfa6348b6544aed",
+      "stage": "flatworm-native",
+      "beforeGiB": 54.171810150146484,
+      "lowestGiB": 53.77271270751953,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/snake-d40-native.json",
+      "sha256": "a8295f602b43f39e67774afa9ae5bdca556407e26173f3e5abe2aae59135187e",
+      "stage": "snake-d40-native",
+      "beforeGiB": 53.85710906982422,
+      "lowestGiB": 53.44757080078125,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-r02-native.json",
+      "sha256": "b26c9eef8bab1dd17342e469efcb10651b1979786d9ab6c1f96e3ba4fcd3e7f9",
+      "stage": "butterfly-r02-native",
+      "beforeGiB": 55.81251525878906,
+      "lowestGiB": 55.41802978515625,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-finished-next3.json",
+      "sha256": "b6fda62ac80e8ac4d404e66f9d7dfb1f59c33d705b1fbf59ce356bb5e12b2ed0",
+      "stage": "triage-flat-sand-finished-next3",
+      "beforeGiB": 53.7872314453125,
+      "lowestGiB": 53.40576171875,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-finished.json",
+      "sha256": "0fb065c49df9aea249619b012ec7fd3e73d899291ca2f439c92c5660b81c46df",
+      "stage": "triage-template-reps-finished",
+      "beforeGiB": 54.30665969848633,
+      "lowestGiB": 54.30615234375,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-rebind.json",
+      "sha256": "93d9f91320eebe159eef30ba9d84ee5776c8c8e62dfc502f44c03e0f2095f781",
+      "stage": "finish-snake-d40-rebind",
+      "beforeGiB": 52.43794631958008,
+      "lowestGiB": 52.437931060791016,
+      "exitCode": 0
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/cobra-other-develop-owners.json",
+      "sha256": "1e6519b31f46c4be1962008740d78cd9438977780249732d541e49fbf4a56747",
+      "stage": "cobra-other-develop-owners",
+      "beforeGiB": 59.60282897949219,
+      "lowestGiB": 59.602638244628906,
+      "exitCode": 1
+    }
+  ],
+  "noHeavyStageAfterAutoReviewBlock": true,
+  "evidenceBoundary": {
+    "profile": "develop-soft-materials-r03.json",
+    "endedUnix": 1792464513.2814758,
+    "rootStageRecordsStartingAfterBoundary": [],
+    "narrowPostRedAuditCpuChecksNotClassifiedAsHeavyStages": true
+  }
+}

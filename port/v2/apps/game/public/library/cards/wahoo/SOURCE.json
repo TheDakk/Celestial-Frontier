@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wahoo",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/rebound-01/c243b02r1c1-33-wahoo/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5c69e4c97b92d23f56b879afd7698bdde714b44404316ca7055baf5097004cbe"
+}

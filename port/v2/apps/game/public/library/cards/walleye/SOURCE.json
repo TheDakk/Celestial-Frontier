@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Walleye",
+ "fitDir": "audits/FISH_SEAMS_C78_20260927/walleye-tail-axial-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "abc3b5667053068c7b66e8c1bfc9ec7beb4cb79783626dfa33fccd5619ee227a"
+}

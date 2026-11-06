@@ -1,0 +1,120 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Agouti",
+  "family": "quadruped",
+  "masterSha256": "3a59d159f7e56fc58f6905ea2cfd2811a3986809f41f91cd77b53d15618faddc",
+  "subjectSha256": "81c5846a10133492adfd755d47fb9386e303e3b11a763f5d6c80b6b1c2a5272a",
+  "promptSha256": "11e1c613df36e603d111f3ff1ba5c5f9a90fcdadefb8aac6c245c531de4e28ae",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          394,
+          567
+        ],
+        "tail1": [
+          387,
+          636
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              360.76428571428573,
+              566.7785714285715
+            ],
+            [
+              366.73571428571427,
+              545.8785714285715
+            ],
+            [
+              381.6642857142857,
+              516.0214285714286
+            ],
+            [
+              387.6357142857143,
+              507.06428571428575
+            ],
+            [
+              390.62142857142857,
+              504.0785714285714
+            ],
+            [
+              393.6071428571429,
+              501.09285714285716
+            ],
+            [
+              397.6071428571429,
+              501.09285714285716
+            ],
+            [
+              397.6071428571429,
+              602.2210144927536
+            ],
+            [
+              365.52492063492065,
+              598.9662962962963
+            ],
+            [
+              360.76428571428573,
+              576.75
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              397.6071428571429,
+              602.2210144927536
+            ],
+            [
+              397.6071428571429,
+              636.4642857142858
+            ],
+            [
+              394.62142857142857,
+              639.45
+            ],
+            [
+              384.65000000000003,
+              639.45
+            ],
+            [
+              375.6928571428571,
+              630.4928571428571
+            ],
+            [
+              372.70714285714286,
+              624.5214285714286
+            ],
+            [
+              369.7214285714286,
+              618.55
+            ],
+            [
+              365.52492063492065,
+              598.9662962962963
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "0477452015a5d43b4a712021511467b94f685d31594bce410761aa175e376c28"
+}

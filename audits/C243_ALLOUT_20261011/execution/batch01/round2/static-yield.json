@@ -1,0 +1,20 @@
+{
+  "baseline": "round2/baseline.json",
+  "baselineScored": 60,
+  "baselinePatternSkipped": 2,
+  "before": 2,
+  "afterRepaint": 7,
+  "afterClass": 8,
+  "speciesGained": [
+    "Mole",
+    "Wild Horse",
+    "Warthog",
+    "Walrus",
+    "Skink",
+    "Blind Salamander"
+  ],
+  "speciesLost": [],
+  "baselineQualification": "Old Camel static PASS has source identity HOLD (two humps); new Camel is one hump. Static yield is diagnostic only.",
+  "runtimeAndRulers": "unchanged",
+  "classRepair": "Existing D28 source-remainder ownership; zero source RGBA changes, no C223 fix"
+}

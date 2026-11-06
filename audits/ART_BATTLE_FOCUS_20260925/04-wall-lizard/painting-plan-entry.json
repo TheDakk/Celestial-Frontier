@@ -1,0 +1,32 @@
+{
+  "name": "Monitor/wall lizard",
+  "exemplar": "Wall Lizard",
+  "covers": [
+    "Wall Lizard",
+    "Lizard",
+    "Anole",
+    "Gecko",
+    "Skink",
+    "Alligator Lizard",
+    "Mountain Lizard",
+    "Agama",
+    "Whiptail",
+    "Coastal Lizard",
+    "Tegu",
+    "Monitor Lizard",
+    "Komodo Dragon",
+    "Gila Monster",
+    "Iguana",
+    "Land Iguana",
+    "Marine Iguana"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "legs splayed sideways with elbows out; belly near the ground",
+    "wedge-shaped scaly head",
+    "tail about 1.5x the body (the tail morph then covers skinks through whiptails)",
+    "fine scale texture on a plain unmarked mid-tone base (luminance is kept, so any painted mark shows on every species this stands in for)",
+    "masks: striped = whiptail/skink stripes, banded = tegu/gila bands, spotted, mottled"
+  ],
+  "why": "17 misleading. A scaly sprawling reptile replaces a furry mammal. The heavy lizards (Monitor, Komodo, Tegu, Gila) and the crested iguanas stay caveat. A second, heavy Monitor Lizard painting would lift them later."
+}

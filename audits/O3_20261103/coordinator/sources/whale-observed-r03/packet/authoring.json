@@ -1,0 +1,637 @@
+{
+  "id": "o3-whale-observed-r03",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      748,
+      596
+    ],
+    "head": [
+      845,
+      533
+    ],
+    "jaw": [
+      855,
+      585
+    ],
+    "spine0": [
+      711,
+      600
+    ],
+    "spine1": [
+      659,
+      610
+    ],
+    "spine2": [
+      598,
+      617
+    ],
+    "spine3": [
+      537,
+      616
+    ],
+    "spine4": [
+      483,
+      611
+    ],
+    "spine5": [
+      431,
+      601
+    ],
+    "caudal": [
+      390,
+      583
+    ],
+    "dorsal": [
+      605,
+      535
+    ],
+    "pectoralNear": [
+      728,
+      626
+    ],
+    "pectoralFar": [
+      779,
+      682
+    ]
+  },
+  "groundLineY": 0.6076555023923444,
+  "materials": {
+    "surface": "smooth skin",
+    "paletteSource": "Actual retained blue-slate/cream baleen-whale source; default D40 master exact. Fine greenish ventral/tip rim remains independent material-review question; no repaint."
+  },
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Actual whole swimming baleen whale with two exposed long paddle flippers, real small dorsal, horizontal notched paired flukes and pleated lower throat. No fish gills, pelvic fins, teeth or concealed jaw fabricated."
+  },
+  "parts": [
+    {
+      "id": "source-body-root-patch",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          742,
+          591
+        ],
+        [
+          754,
+          591
+        ],
+        [
+          754,
+          601
+        ],
+        [
+          742,
+          601
+        ]
+      ]
+    },
+    {
+      "id": "whole-long-near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          737,
+          600
+        ],
+        [
+          751,
+          608
+        ],
+        [
+          748,
+          614
+        ],
+        [
+          743,
+          620
+        ],
+        [
+          739,
+          626
+        ],
+        [
+          734,
+          631
+        ],
+        [
+          730,
+          636
+        ],
+        [
+          727,
+          641
+        ],
+        [
+          724,
+          646
+        ],
+        [
+          721,
+          651
+        ],
+        [
+          720,
+          656
+        ],
+        [
+          720,
+          660
+        ],
+        [
+          713,
+          664
+        ],
+        [
+          708,
+          669
+        ],
+        [
+          704,
+          675
+        ],
+        [
+          703,
+          681
+        ],
+        [
+          703,
+          696
+        ],
+        [
+          678,
+          725
+        ],
+        [
+          641,
+          749
+        ],
+        [
+          603,
+          763
+        ],
+        [
+          572,
+          766
+        ],
+        [
+          568,
+          756
+        ],
+        [
+          590,
+          730
+        ],
+        [
+          613,
+          702
+        ],
+        [
+          635,
+          674
+        ],
+        [
+          661,
+          645
+        ],
+        [
+          688,
+          622
+        ],
+        [
+          714,
+          606
+        ]
+      ]
+    },
+    {
+      "id": "whole-narrow-far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          763,
+          671
+        ],
+        [
+          777,
+          664
+        ],
+        [
+          808,
+          650
+        ],
+        [
+          804,
+          678
+        ],
+        [
+          793,
+          704
+        ],
+        [
+          777,
+          729
+        ],
+        [
+          753,
+          747
+        ],
+        [
+          725,
+          751
+        ],
+        [
+          722,
+          739
+        ],
+        [
+          732,
+          715
+        ],
+        [
+          741,
+          694
+        ],
+        [
+          746,
+          680
+        ]
+      ]
+    },
+    {
+      "id": "actual-small-dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "polygonPx": [
+        [
+          570,
+          517
+        ],
+        [
+          606,
+          515
+        ],
+        [
+          633,
+          526
+        ],
+        [
+          651,
+          530
+        ],
+        [
+          645,
+          539
+        ],
+        [
+          625,
+          543
+        ],
+        [
+          596,
+          550
+        ],
+        [
+          576,
+          554
+        ],
+        [
+          577,
+          541
+        ],
+        [
+          583,
+          532
+        ],
+        [
+          575,
+          529
+        ],
+        [
+          575,
+          524
+        ]
+      ]
+    },
+    {
+      "id": "actual-pleated-lower-head-jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          808,
+          572
+        ],
+        [
+          832,
+          551
+        ],
+        [
+          895,
+          542
+        ],
+        [
+          949,
+          542
+        ],
+        [
+          990,
+          548
+        ],
+        [
+          990,
+          570
+        ],
+        [
+          949,
+          582
+        ],
+        [
+          905,
+          610
+        ],
+        [
+          856,
+          640
+        ],
+        [
+          817,
+          654
+        ],
+        [
+          790,
+          641
+        ],
+        [
+          790,
+          611
+        ]
+      ]
+    },
+    {
+      "id": "actual-eye-upper-head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          755,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          1000,
+          575
+        ],
+        [
+          974,
+          558
+        ],
+        [
+          955,
+          548
+        ],
+        [
+          898,
+          545
+        ],
+        [
+          852,
+          548
+        ],
+        [
+          826,
+          560
+        ],
+        [
+          809,
+          579
+        ],
+        [
+          795,
+          592
+        ],
+        [
+          774,
+          595
+        ],
+        [
+          755,
+          574
+        ]
+      ]
+    },
+    {
+      "id": "whole-horizontal-notched-flukes",
+      "joint": "caudal",
+      "layer": "near",
+      "polygonPx": [
+        [
+          263,
+          520
+        ],
+        [
+          451,
+          520
+        ],
+        [
+          452,
+          560
+        ],
+        [
+          435,
+          579
+        ],
+        [
+          415,
+          588
+        ],
+        [
+          407,
+          599
+        ],
+        [
+          383,
+          601
+        ],
+        [
+          343,
+          594
+        ],
+        [
+          293,
+          580
+        ],
+        [
+          263,
+          557
+        ]
+      ]
+    },
+    {
+      "id": "actual-axial-body-spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          385,
+          500
+        ],
+        [
+          457,
+          500
+        ],
+        [
+          457,
+          700
+        ],
+        [
+          385,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "actual-axial-body-spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          457,
+          500
+        ],
+        [
+          510,
+          500
+        ],
+        [
+          510,
+          700
+        ],
+        [
+          457,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "actual-axial-body-spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          510,
+          500
+        ],
+        [
+          568,
+          500
+        ],
+        [
+          568,
+          700
+        ],
+        [
+          510,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "actual-axial-body-spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          568,
+          500
+        ],
+        [
+          628,
+          500
+        ],
+        [
+          628,
+          700
+        ],
+        [
+          568,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "actual-axial-body-spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          628,
+          500
+        ],
+        [
+          687,
+          500
+        ],
+        [
+          687,
+          700
+        ],
+        [
+          628,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "whole-source-body-remainder",
+      "joint": "spine0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "remainderPart": "whole-source-body-remainder",
+  "coverage": {
+    "authoring": "MANUAL_SOURCE_OBSERVED_UNSCORED; old automatic10.4percent unexplained-anatomy REFUSE remains unchanged. No G1 admission is claimed.",
+    "controls": "All13 integer source controls reobserved against actual source; no Gray Whale transferred coordinates or source labels reused.",
+    "owners": "Priority whole actual paddle/fluke/head/jaw fields before posterior body axial fields and full source remainder. Offline priority projection still requires independent actual compiled part/attachment/pose review.",
+    "absence": "No absent, hidden or folded anatomy declared.",
+    "boundaryRefinement": "Actual offline separated source-projection review found finite edge remnants at flukes/nose/dorsal and flipper distal rims. Whole-source envelope boundaries expanded locally to observed paint; no joint/control/alpha/RGB or runtime/score/threshold change.",
+    "finalPeduncleObservation": "Source pixel389600is actual posterior neck/body boundary paint and lies immediately beyond previous axial-spine5left385..390draft bound. Final spine5envelope starts385, assigning this observed neck pixel to its contiguous posterior axial body rather than distant spine0remainder; sourceRGBA/controls unchanged.",
+    "dorsalTerminalWitness": "Actual small curled dorsal overhang579526/579527/580527 was still left on source axial projection; observed dorsal outline extends locally to enclose that real tip. No body/control/source/limit edits.",
+    "nearPaddleOwnerRepairR02": "Retraced actual pale right paddle edge at full root-to-ventral-throat crossing. The body/throat pleat strip behind the paddle returns to contiguous spine0body; controls, source RGBA, other region boundaries/depth/order remain exact. Three W2 witnesses are locators, not a threepixel relabel."
+  },
+  "paintBoundaryPairs": [
+    [
+      "actual-eye-upper-head",
+      "whole-source-body-remainder"
+    ],
+    [
+      "actual-pleated-lower-head-jaw",
+      "whole-source-body-remainder"
+    ]
+  ]
+}

@@ -1,0 +1,43 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Pig",
+   "dn": "Pig",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Pig",
+   "dn": "Pig",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Pig",
+   "dn": "Pig",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Pig",
+   "dn": "Pig",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ],
+ "supports": "observed"
+}

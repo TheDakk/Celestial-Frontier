@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "blueice",
+  "biome": "blueice",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "blueice"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "blueice"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "blueice"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-far.generation.json",
+      "sha256": "404c72b03ee4b3394d467b0c94e4aab804c803c1723a6692a8002609c753b30f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-mid.generation.json",
+      "sha256": "18b06fa05e4aba536507653c1c0a04b25d61fcc0db44721a8e476e93fd6b84de"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-near.generation.json",
+      "sha256": "ccf9f22b1b89416ca3ea6b352b28658329ae6769df1116a9cec09ef51d66a7f5"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-composed-review.png",
+      "sha256": "0340d646d4c6ec0de193bb39a0682594b962345177cb3a096eb2bc5460272b7f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-plates-review.png",
+      "sha256": "c60d7eecd06ae7f7f7a23908f7fd7fc1430d8403268654be1f0533b85b9380af"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+      "sha256": "088edd7634b8c7f7501bf50f855c95c01006365a9c421a8fceb01ec064b16283"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-mid.png",
+      "sha256": "7bd1962298a48162adbde94d850fa0a23ffe97205bf38ad0f6053aa29eb123b4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-near.png",
+      "sha256": "ae09468de474ba9f96d0d327905af57b107534fe1589c60b7fd6d588ff19f2f4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/visual-notes.d29.json",
+      "sha256": "3732b20b5114c577a0806718688f06fbd1179842d02bd06ec2f8eadc6a2f001b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-manifest.json",
+      "sha256": "b7efb939242913ef3d030052323dfb8494eabcfd14379da434725e733e0e6a4f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-recipe.json",
+      "sha256": "33809fc1d4d85894a3e5e0efc753f2b350aba586a8752474bf810fa01b1121d1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-far.generation.json",
+      "sha256": "404c72b03ee4b3394d467b0c94e4aab804c803c1723a6692a8002609c753b30f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-far.prompt.txt",
+      "sha256": "1eabcdf250a5bb9d731ee55a5d5eb8f23b303a436b5108d78d9a3ab736b2a40e"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-mid.generation.json",
+      "sha256": "18b06fa05e4aba536507653c1c0a04b25d61fcc0db44721a8e476e93fd6b84de"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-mid.prompt.txt",
+      "sha256": "692f3e57f8e169c0ce85ca646742cd862c2903cda99dc996cab85ba5b0306a9d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/keyed/arena-mid.png",
+      "sha256": "b7a4bc74e2c642145be4514ebc1a6aa89737d3ce653b615089f909b2db59b575"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-near.generation.json",
+      "sha256": "ccf9f22b1b89416ca3ea6b352b28658329ae6769df1116a9cec09ef51d66a7f5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/arena-near.prompt.txt",
+      "sha256": "df87c345cd420e6d704f20cd9da9b92592574ee8da61c3d3ab712ae9c2ac54a6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/blueice/keyed/arena-near.png",
+      "sha256": "05105616731ffd05b61291f0c6315bb64b5ecc9493bc1b0432033bd5437ab5eb"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/blueice/visual-notes.d29.json",
+    "findings": [
+      "All three original paintings, full native-size composition and four-row plate sheet inspected. Blue glacier and snowy mountain material is coherent, with a continuous ice runway and clear stand locations. Native size is 1672 by 941 with no upscaling.",
+      "NEAR repeats large cracks and an ice shelf from a different ground viewpoint, creating a strong horizontal shelf/seam across the lower frame. The background-to-MID ice edge also changes scale abruptly.",
+      "The bright cracked ground may compete with white creatures and effects; deep foreground cracks need scoring for whether the surface still reads as continuous traversable ice. No runtime, phone or visual acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

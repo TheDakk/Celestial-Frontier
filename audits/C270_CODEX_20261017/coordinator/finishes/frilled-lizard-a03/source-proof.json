@@ -1,0 +1,22 @@
+{
+  "nativeReport": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/native/report.json",
+  "reportSha256": "5e931ff984c75b0e4c9c9aa2e1c01b4589d0c4bdefda721cc2426cb7b20a95be",
+  "verified": [
+    {
+      "file": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/record.json",
+      "sha256": "1babb32eb35289ed65d056d19e06fd7f00c47378722f301caee2c5252bb63e62"
+    },
+    {
+      "file": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/binding.json",
+      "sha256": "ed6fac005ed109a76c5ba8ddac79e365cbe3fd232d3d93edcb862a0ea948c332"
+    },
+    {
+      "file": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/parts/keyed.png",
+      "sha256": "5c328b682a9f24359246a724a5b93c2fde0e82386d19971ebcbf695786a3402a"
+    },
+    {
+      "file": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/islands/fit/parts/atlas/c270-frilled-lizard-a03.png",
+      "sha256": "92313e8a34d80e304ca7944a760883388dcd4be71ed207ed8fe100908de3ee8e"
+    }
+  ]
+}

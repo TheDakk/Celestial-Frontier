@@ -1,0 +1,187 @@
+vite v8.2.0 building client environment for evidence...
+[2Ktransforming...✓ 1244 modules transformed.
+rendering chunks...
+[plugin cf-kit-runtime] local-AI runtime assets not installed under tools/local-image-generation (the preview snapshot never carries node_modules): node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs, node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs, node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm, node_modules/@huggingface/tokenizers/dist/tokenizers.mjs
+computing gzip size...
+dist/__local_ai/MISSING.json                             0.33 kB │ gzip:   0.18 kB
+dist/manifest.webmanifest                                0.72 kB
+dist/audit.html                                          0.94 kB │ gzip:   0.44 kB
+dist/hybrid-matrix.html                                  1.03 kB │ gzip:   0.46 kB
+dist/icons/celestial-frontier-maskable.svg               1.13 kB │ gzip:   0.53 kB
+dist/icons/celestial-frontier.svg                        1.13 kB │ gzip:   0.53 kB
+dist/__local_ai/kit-stage-worker.mjs                     1.30 kB
+dist/audiovisual-pilot.html                              1.52 kB │ gzip:   0.52 kB
+dist/__local_ai/denoiser-shapes.mjs                      2.37 kB
+dist/__local_ai/kit-worker-expansion.mjs                 3.92 kB
+dist/assets/card-BlldZX5C.json                           4.10 kB │ gzip:   1.36 kB
+dist/assets/card-DRUK9mE2.json                           4.22 kB │ gzip:   1.23 kB
+dist/assets/labels-512-D9_qVAVo.png                      4.24 kB
+dist/assets/card-DxOfUEXo.json                           4.35 kB │ gzip:   1.34 kB
+dist/assets/Inter-LICENSE-CkXC2-KD.txt                   4.38 kB │ gzip:   1.97 kB
+dist/assets/card-CFx22hZW.json                           4.42 kB │ gzip:   1.37 kB
+dist/__local_ai/kit-weather-math.mjs                     4.43 kB
+dist/assets/labels-512-ii_1GW6o.png                      4.49 kB
+dist/assets/labels-512-Ce---SIy.png                      4.50 kB
+dist/assets/record-BBjgFyvf.json                         4.72 kB │ gzip:   1.61 kB
+dist/assets/labels-512-C3DSnLKS.png                      4.98 kB
+dist/assets/record-X8-LwJuo.json                         5.01 kB │ gzip:   2.04 kB
+dist/assets/card-Dj7NqevC.json                           5.57 kB │ gzip:   1.57 kB
+dist/assets/record-Wx5uSFJc.json                         5.61 kB │ gzip:   2.40 kB
+dist/assets/card-zVhh3vfS.json                           5.87 kB │ gzip:   1.51 kB
+dist/assets/card-CzE1LoTO.json                           5.90 kB │ gzip:   1.51 kB
+dist/assets/card-CKrocSnU.json                           6.03 kB │ gzip:   1.56 kB
+dist/assets/labels-512-BbX56XP1.png                      6.17 kB
+dist/assets/record-Bje60Hy0.json                         6.37 kB │ gzip:   2.55 kB
+dist/assets/planet-surface-turn.worker-jKUKmrS4.js       6.45 kB
+dist/assets/card-CuKsOTQe.json                           6.50 kB │ gzip:   1.76 kB
+dist/assets/card-TMrtCfzp.json                           6.52 kB │ gzip:   1.78 kB
+dist/assets/record-BtqxYPzJ.json                         6.82 kB │ gzip:   2.81 kB
+dist/assets/record-Bceegcny.json                         7.35 kB │ gzip:   2.16 kB
+dist/assets/record--yEptcck.json                         7.37 kB │ gzip:   2.97 kB
+dist/assets/record-ChmihkP3.json                         7.59 kB │ gzip:   3.13 kB
+dist/assets/record-wSIXyLMh.json                         7.66 kB │ gzip:   2.29 kB
+dist/assets/labels-512-D2xkxUJB.png                      7.78 kB
+dist/assets/eye-spotted-Bp51yhdL.png                     7.93 kB
+dist/assets/record-BH6vSvTR.json                         7.98 kB │ gzip:   3.08 kB
+dist/assets/record-DumRKjFB.json                         8.01 kB │ gzip:   2.47 kB
+dist/assets/record-DhoOqmw2.json                         8.02 kB │ gzip:   2.50 kB
+dist/assets/record-DKWoUiJt.json                         8.23 kB │ gzip:   2.45 kB
+dist/assets/record-CltL4ka2.json                         8.36 kB │ gzip:   3.36 kB
+dist/assets/record-BtFhpwu5.json                         8.48 kB │ gzip:   3.48 kB
+dist/assets/labels-512-6Bkfk6sp.png                      8.71 kB
+dist/__local_ai/kit-engine-math.mjs                      8.99 kB
+dist/assets/record-DcSkrGqG.json                         9.45 kB │ gzip:   3.95 kB
+dist/__local_ai/gpu-profile.mjs                          9.72 kB
+dist/assets/labels-512-DjmD2rdG.png                      9.98 kB
+dist/__local_ai/pipeline-math.mjs                       10.22 kB
+dist/__local_ai/kit-contact-math.mjs                    10.26 kB
+dist/assets/card-BpQGSGK2.json                          10.47 kB │ gzip:   2.43 kB
+dist/assets/labels-512-C9cSL_jj.png                     11.64 kB
+dist/assets/scout-chemical-132-Dt4gyYnA.webp            12.53 kB
+dist/assets/labels-512-DM-KWuvc.png                     13.02 kB
+dist/assets/spotted-Npj35y7d.png                        13.23 kB
+dist/assets/master-512-JNA_uuPu.png                     13.63 kB
+dist/assets/labels-512-CqbyMkPA.png                     13.65 kB
+dist/assets/labels-512-CUCCGc4m.png                     14.01 kB
+dist/assets/striped-DRaiiscJ.png                        15.88 kB
+dist/assets/banded-J_IBEsae.png                         15.99 kB
+dist/assets/labels-512-Bxpx5dH_.png                     16.85 kB
+dist/__local_ai/kit-worker-engine.mjs                   17.34 kB
+dist/assets/marbled-DePoFqIw.png                        17.44 kB
+dist/assets/labels-512-CPYF3VnG.png                     17.62 kB
+dist/assets/labels-512-PaPC2Z6s.png                     17.67 kB
+dist/assets/mottled-C_mFzxOE.png                        19.78 kB
+dist/assets/labels-512-nRPkt-Cm.png                     20.54 kB
+dist/assets/master-512-BPmIua6S.png                     21.37 kB
+dist/assets/master-512-ClpueXuE.png                     21.78 kB
+dist/assets/master-512-C8o98squ.png                     22.72 kB
+dist/assets/master-512-BUMDqvl8.png                     23.08 kB
+dist/assets/spotted-yAu-My4j.png                        23.58 kB
+dist/assets/record-D3aPUASz.json                        23.77 kB │ gzip:   7.92 kB
+dist/assets/cf-pilot-ui-nav-bMnbTxA8.wav                26.92 kB
+dist/assets/marbled-B8SNTQY6.png                        30.18 kB
+dist/assets/cf-pilot-combat-contact-DHZD2lYd.wav        33.64 kB
+dist/assets/mottled-B4rrFPjC.png                        36.01 kB
+dist/assets/striped-rNNGX3QK.png                        38.38 kB
+dist/assets/scout-chemical-300-CxcU_kic.webp            40.66 kB
+dist/assets/eye-spotted-Dkz9BjrI.png                    41.43 kB
+dist/assets/cf-pilot-ui-refusal-CMon7hko.wav            43.24 kB
+dist/assets/eye-spotted-CBG0LWL5.png                    43.58 kB
+dist/assets/markings-D8dbiufZ.json                      57.47 kB │ gzip:   6.66 kB
+dist/assets/markings-wzqRFhdL.json                      62.71 kB │ gzip:   7.15 kB
+dist/service-worker.js                                  64.10 kB
+dist/assets/cf-pilot-ui-settlement-uF_X4Ois.wav         67.24 kB
+dist/index.html                                         70.08 kB │ gzip:  15.51 kB
+dist/assets/master-512-DgLhmkdn.png                     73.33 kB
+dist/assets/banded-B_fAJ91N.png                         92.23 kB
+dist/assets/scout-chemical-512-DcNawgH5.webp            92.89 kB
+dist/assets/master-512-DOVn1JdB.png                    102.69 kB
+dist/assets/mars-dunesea-v1-cFwkRNdy.webp              127.08 kB
+dist/assets/earth-riverbank-v1-C4EQQH_D.webp           130.30 kB
+dist/assets/cf-pilot-scout-landing-D1k5tYuE.wav        134.44 kB
+dist/assets/master-512-BPk7psfU.png                    139.94 kB
+dist/assets/markings-jGSfdbHl.json                     140.72 kB │ gzip:  19.85 kB
+dist/__local_ai/browser-variant-plan.json              142.91 kB │ gzip:  13.70 kB
+dist/assets/banded-Aqv8fLnj.png                        143.62 kB
+dist/assets/striped-BwucMPN6.png                       153.13 kB
+dist/assets/master-512-CRnahgKk.png                    162.94 kB
+dist/assets/master-512-BtQCfXeT.png                    162.99 kB
+dist/assets/spotted-DcgjgvDz.png                       165.10 kB
+dist/assets/marbled-COAlzh-t.png                       191.75 kB
+dist/assets/mottled-DxDdjh2s.png                       214.89 kB
+dist/assets/master-512-BKBi4tKj.png                    216.03 kB
+dist/assets/biome-vista.worker-D3XRSJZJ.js             220.68 kB
+dist/assets/cf-pilot-scout-approach-Be38_iqZ.wav       230.44 kB
+dist/assets/master-512-BQm200Oe.png                    242.81 kB
+dist/assets/master-512-BMaSjuP5.png                    247.87 kB
+dist/assets/master-512-CX1yDyzc.png                    291.53 kB
+dist/assets/master-512-DAxCPv4x.png                    307.04 kB
+dist/assets/master-512-CThTiPmB.png                    319.90 kB
+dist/assets/master-512-CnK6bxUo.png                    320.80 kB
+dist/assets/earth-rainy-phone-DFt5murF.webp            343.07 kB
+dist/assets/InterVariable-DiVDrmQJ.woff2               352.24 kB
+dist/assets/earth-civet-landing-v1-DxWosWSp.webp       600.75 kB
+dist/assets/earth-rainy-landscape-DPgApIAi.webp        765.31 kB
+dist/assets/earth-resident.worker-B6A_QkaS.js          978.34 kB
+dist/assets/species-art.worker-SHcKR5tI.js           1,342.56 kB
+dist/assets/cf-pilot-exploration-music-CMF8UCKw.wav  4,608.04 kB
+dist/assets/cf-pilot-temperate-bed-C_jKRyj6.wav      4,608.04 kB
+dist/assets/webworkerAll-CCI_wjmn.js                     0.05 kB │ gzip:   0.06 kB
+dist/assets/release-identity-CIuedefi.js                 0.13 kB │ gzip:   0.13 kB │ map:     0.78 kB
+dist/assets/getTextureBatchBindGroup-WYWz1eAc.js         0.40 kB │ gzip:   0.31 kB │ map:     1.79 kB
+dist/assets/getPo2TextureFromSource-BZgiTsLH.js          0.47 kB │ gzip:   0.32 kB │ map:     1.69 kB
+dist/assets/modulepreload-polyfill-P2Xu9kJm.js           0.67 kB │ gzip:   0.38 kB
+dist/assets/CanvasPool-BdanJG_4.js                       0.80 kB │ gzip:   0.46 kB │ map:     3.52 kB
+dist/assets/speciesidentity-Dv9PKGDT.js                  1.33 kB │ gzip:   0.54 kB │ map:     5.04 kB
+dist/assets/visual-effect-policy-DOpWhvoj.js             1.57 kB │ gzip:   0.70 kB │ map:     7.17 kB
+dist/assets/local-model-sha256-DcmCFA0U.js               2.74 kB │ gzip:   1.44 kB │ map:     8.41 kB
+dist/assets/worldlife-wiring-CDgyB8xE.js                 3.44 kB │ gzip:   1.62 kB │ map:    17.22 kB
+dist/assets/Mesh-DHS_l5-c.js                             3.95 kB │ gzip:   1.59 kB │ map:    15.15 kB
+dist/assets/surface-polish-CBmmi-Kj.js                   4.73 kB │ gzip:   1.69 kB │ map:    18.75 kB
+dist/assets/src-PpYgFp_O.js                              5.14 kB │ gzip:   2.47 kB │ map:    22.65 kB
+dist/assets/lib-BTmxI6xV.js                              5.80 kB │ gzip:   2.24 kB │ map:    66.45 kB
+dist/assets/canvasUtils-BdWL41L6.js                      6.07 kB │ gzip:   2.08 kB │ map:    21.93 kB
+dist/assets/src-DDq_m0Mw.js                              8.13 kB │ gzip:   2.69 kB │ map:    22.40 kB
+dist/assets/world-roster-ogx-giA9.js                     8.62 kB │ gzip:   3.13 kB │ map:    33.90 kB
+dist/assets/battle2-matchup-CfQh77Cl.js                  9.19 kB │ gzip:   4.01 kB │ map:    30.49 kB
+dist/assets/planet-surface-turn-view-CyESDNNu.js        10.40 kB │ gzip:   4.05 kB │ map:    28.29 kB
+dist/assets/BufferResource-C1plebTW.js                  10.57 kB │ gzip:   2.81 kB │ map:    25.66 kB
+dist/assets/repeated-anatomy-CjJiumbW.js                11.33 kB │ gzip:   4.47 kB │ map:    37.86 kB
+dist/assets/init-9-szki8F.js                            15.31 kB │ gzip:   4.80 kB │ map:    53.39 kB
+dist/assets/combat-chronicle-CVDYeTCx.js                15.73 kB │ gzip:   5.61 kB │ map:    52.79 kB
+dist/assets/earth-layered-recipe-DTHL9JNN.js            16.50 kB │ gzip:   4.36 kB │ map:    34.64 kB
+dist/assets/audit-vckFKaJi.js                           16.61 kB │ gzip:   6.54 kB │ map:    68.44 kB
+dist/assets/pilot-sound-player-DKfrcTKp.js              16.93 kB │ gzip:   6.58 kB │ map:    44.56 kB
+dist/assets/audiovisualPilot-DFVe_XOr.js                19.20 kB │ gzip:   7.34 kB │ map:    43.75 kB
+dist/assets/worldlife-CO88DIMy.js                       20.51 kB │ gzip:   8.64 kB │ map:    80.97 kB
+dist/assets/src-CoJqSmVu.js                             20.61 kB │ gzip:   6.63 kB │ map:   105.08 kB
+dist/assets/init-CDdLwmtt.js                            24.71 kB │ gzip:   8.52 kB │ map:   105.91 kB
+dist/assets/audiovisual-pilot-DfkJ7Cd5.js               25.15 kB │ gzip:   6.54 kB │ map:    39.93 kB
+dist/assets/hybridMatrix-BJl2GVP1.js                    33.88 kB │ gzip:  11.04 kB │ map:    97.55 kB
+dist/assets/WebGPURenderer-BjidRpHt.js                  38.53 kB │ gzip:  10.79 kB │ map:   123.97 kB
+dist/assets/local-ai-game-CpcQw9AV.js                   38.60 kB │ gzip:  14.95 kB │ map:   117.47 kB
+dist/assets/browserAll-CmA5K3k-.js                      42.63 kB │ gzip:  11.12 kB │ map:   156.69 kB
+dist/assets/secondary-BoGqcmCO.js                       46.78 kB │ gzip:  14.90 kB │ map:   144.45 kB
+dist/assets/WebGLRenderer-qeHi6k43.js                   68.03 kB │ gzip:  18.72 kB │ map:   215.94 kB
+dist/assets/landfall-conditioning-DhYbk4wy.js           69.16 kB │ gzip:  26.24 kB │ map:    59.46 kB
+dist/assets/RenderTargetSystem-DUsRdIdr.js              71.14 kB │ gzip:  20.22 kB │ map:   262.67 kB
+dist/assets/CanvasRenderer-S0y0Qw5Y.js                  87.43 kB │ gzip:  27.42 kB │ map:   463.49 kB
+dist/assets/Geometry-BhLxjYlb.js                       101.67 kB │ gzip:  31.17 kB │ map:   500.48 kB
+dist/assets/png-decode-Bkv1oZ3m.js                     105.98 kB │ gzip:  30.71 kB │ map:   351.95 kB
+dist/assets/src-BcaY20by.js                            115.78 kB │ gzip:  30.91 kB │ map:   444.25 kB
+dist/assets/src-App-IaSp.js                            129.52 kB │ gzip:  50.75 kB │ map:   406.77 kB
+dist/assets/guide-content-Cy7MxzST.js                  130.92 kB │ gzip:  44.31 kB │ map:   148.58 kB
+dist/assets/release-content-Gss_48g1.js                151.98 kB │ gzip:  58.39 kB │ map:   172.83 kB
+dist/assets/battle2-wiring-uTEMjQxn.js                 219.73 kB │ gzip:  72.22 kB │ map:   787.73 kB
+dist/assets/tame-greeting-audio-BnHC7qvo.js            244.72 kB │ gzip:  69.08 kB │ map:   880.78 kB
+dist/assets/speciesart-CBC2WKXP.js                   1,294.78 kB │ gzip: 365.40 kB │ map: 4,517.34 kB
+dist/assets/main-ChhYZAAf.js                         1,538.40 kB │ gzip: 406.66 kB │ map: 5,312.19 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.92s
+COMPENDIUM MEMORY: INSTRUMENT-FAIL — i5-v2-b4f191c3538f-calibration-1
+  instrument: phone middle-scroll-list thumb settlement: phase timed out after on-time falsy observations ({"schema":"cf-v2-compendium-thumb-settlement-observation/v3","surface":"list","expectedCount":null,"receiptToken":"phone-compendium-thumb-middle-scroll-list-1","ready":false,"reasons":["raw visual keys absent from broker lease inventory","raw visual keys absent from broker cache inventory","lazy-art witness epoch=8;worker=8;phases=8,8,81,80,80,80,0,0,0,0;results=80,0,25.300000071525574,6.399999976158142;errors=0,0,0,1,0;last=8,8,81,thumb132,result;lastError=null"],"ownership":{"selector":"#codexpanel [data-sel=\"codex-entry\"] img","rawImageCount":7,"rawLogicalIds":["cmem-0747","cmem-0748","cmem-0749","cmem-0750","cmem-0751","cmem-0752","cmem-0753"],"diagnosticImageCount":7,"diagnosticLogicalIds":["cmem-0747","cmem-0748","cmem-0749","cmem-0750","cmem-0751","cmem-0752","cmem-0753"]},"diagnostic":{"panelMode":"list","filteredCount":1500,"visible":true,"thumbStates":["ready","ready","ready","ready","ready","ready","ready"]},"images":[{"index":0,"logicalId":"cmem-0747","visualKeyLength":703,"leasedIndex":8,"cachedIndex":55,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":1,"logicalId":"cmem-0748","visualKeyLength":704,"leasedIndex":null,"cachedIndex":null,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":2,"logicalId":"cmem-0749","visualKeyLength":702,"leasedIndex":10,"cachedIndex":56,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":3,"logicalId":"cmem-0750","visualKeyLength":702,"leasedIndex":12,"cachedIndex":57,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":4,"logicalId":"cmem-0751","visualKeyLength":706,"leasedIndex":11,"cachedIndex":58,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":5,"logicalId":"cmem-0752","visualKeyLength":722,"leasedIndex":null,"cachedIndex":null,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132},{"index":6,"logicalId":"cmem-0753","visualKeyLength":700,"leasedIndex":9,"cachedIndex":59,"thumbState":"ready","srcPresent":true,"complete":true,"naturalWidth":132,"naturalHeight":132}],"art":{"available":true,"schema":"cf-v2-species-art-diagnostics/v1","queuedJobs":0,"activeJobs":0},"lazyArt":{"available":true,"schema":"cf-v2-species-art-worker-diagnostics/v2","state":"ready","importStarts":8,"identity":{"documentToken":"8e009067-2efa-4b1f-832b-017d735e183f","lastProducerEpoch":8,"lastWorkerInstanceId":8},"lastEvent":{"producerEpoch":8,"workerInstanceId":8,"jobId":81,"kind":"thumb132","event":"result"},"lastError":null,"phases":{"importStarts":8,"importCompletes":8,"thumbJobStarts":81,"thumbRenderCompletes":80,"thumbEncodeStarts":80,"thumbEncodeCompletes":80,"portraitJobStarts":0,"portraitRenderCompletes":0,"portraitEncodeStarts":0,"portraitEncodeCompletes":0},"results":{"count":80,"maxImportDurationMs":0,"maxRenderDurationMs":25.300000071525574,"maxEncodeDurationMs":6.399999976158142},"errors":{"capability":0,"protocol":0,"import":0,"paint":1,"encode":0}},"worker":{"available":true,"live":false,"starts":8,"ready":8,"disposals":8,"fatals":0,"protocolErrors":0},"broker":{"available":true,"cacheEntries":60,"leases":13,"subscribers":0,"queuedJobs":0,"activeJobs":0,"leasedKeyCount":13,"cachedKeyCount":60,"leasedDistinctKeyCount":13,"cachedDistinctKeyCount":60},"page":{"targetId":"BD6FBCE99C787A1D66C551701458DAFF","sessionId":"83D47D9C224F210B53F434F4F5711450","documentToken":"8e009067-2efa-4b1f-832b-017d735e183f","visibilityState":"visible","hidden":false,"focused":true}})

@@ -1,0 +1,21 @@
+{
+  "stage": "finish-vole-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/subjects.json"
+  ],
+  "startedUnix": 1792380244.152917,
+  "beforeGiB": 60.102684020996094,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 58.997,
+  "lowestGiB": 45.727821350097656,
+  "afterGiB": 55.08426284790039
+}

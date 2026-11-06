@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Giant Otter",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/02-giant-otter/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8167b843204b3f5c66e6537b8baab1364ee6dd5014b314f82be3341d3d031ed7"
+}

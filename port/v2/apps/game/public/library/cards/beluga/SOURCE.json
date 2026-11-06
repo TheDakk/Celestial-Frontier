@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Beluga",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/rebound-01/c215program-37-beluga/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "71309a036e933ed80191888db4e50d2813ce83f13d0941c78ae9f84112f1d7ee"
+}

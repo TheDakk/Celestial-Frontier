@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Marmot",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8"
+}

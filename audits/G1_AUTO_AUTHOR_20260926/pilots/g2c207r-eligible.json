@@ -1,0 +1,34 @@
+[
+ {
+  "id": "01-shrimp",
+  "name": "Shrimp",
+  "family": "crustacean-small",
+  "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp",
+  "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+  "purpose": "NEW_SPECIALIZED_SOURCE"
+ },
+ {
+  "id": "02-brittle-star",
+  "name": "Brittle Star",
+  "family": "radial",
+  "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star",
+  "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+  "purpose": "NEW_SPECIALIZED_SOURCE"
+ },
+ {
+  "id": "03-fiddler-crab",
+  "name": "Fiddler Crab",
+  "family": "brachyuran",
+  "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab",
+  "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/master.png",
+  "purpose": "NEW_SPECIALIZED_SOURCE"
+ },
+ {
+  "id": "04-spider",
+  "name": "Spider",
+  "family": "arachnid",
+  "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider",
+  "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/master.png",
+  "purpose": "NEW_SPECIALIZED_SOURCE"
+ }
+]

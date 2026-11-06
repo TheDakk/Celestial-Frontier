@@ -1,0 +1,21 @@
+{
+  "stage": "finish-snake-d40-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-snake-d40-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/subjects.json"
+  ],
+  "startedUnix": 1792462901.816045,
+  "beforeGiB": 53.468597412109375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.988,
+  "lowestGiB": 45.0796012878418,
+  "afterGiB": 52.437957763671875
+}

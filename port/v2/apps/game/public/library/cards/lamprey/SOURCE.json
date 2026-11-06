@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lamprey",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/rebound-01/c243b02r1c2-14-lamprey/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "82d7914d65e0a286c5e04806f052b8dd5aff20b3c8af25c899db2c9480ffb84e"
+}

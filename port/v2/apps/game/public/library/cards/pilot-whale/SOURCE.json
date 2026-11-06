@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pilot Whale",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c1-24-pilot-whale/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d03af2e98861ccec99bead380c47e1dc95a4893be39ba1a15c6ea1a315744af3"
+}

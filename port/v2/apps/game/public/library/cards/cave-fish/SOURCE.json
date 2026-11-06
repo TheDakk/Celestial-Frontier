@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cave Fish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/03-cave-fish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6268cd698622b6dfee2f07bf80dbae031f4fb27a370de7591adf4c9c73008802"
+}

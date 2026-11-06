@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "cratered-v2",
+  "biome": "cratered",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cratered"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cratered"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "cratered"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.generation.json",
+      "sha256": "72d9e4ee769e5da0a2c9759af7096c1af0514159b13b8c1d7ac528a293c32191"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.generation.json",
+      "sha256": "53a4de12730779a772b89e1405f36e08079fecd8dc0680e8e62095fe4dcb7cfb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.generation.json",
+      "sha256": "5408a260aac738c4de2a61be645d812d2536c5be7341732662980e29620acb83"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-composed-review.png",
+      "sha256": "d261750dd77e40106e8536126f4136355af68b56e69cefae46e44f515a9bede5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.png",
+      "sha256": "b1536fc9b8905b461c72acb4312986ab3c764b286a7478cd659c84b5a790dfc9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.png",
+      "sha256": "81e3c3e798b9ca247515fde238e9a28c3308ccfdf7503d70784b02b3c1f4451e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.png",
+      "sha256": "e4acaaa898b4a85e2419b1be7bfdc0c3c4ac19beb57f7a939ca2e3c078d697a6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/visual-notes.d29.json",
+      "sha256": "a60bec8b30275702d93ab7f7ddf3df7d170855815812ce4004720cae7bb31265"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-manifest.json",
+      "sha256": "ab28ec57ca91b6b8813597e72bcb1e5fc1197d489e53d0183770912d3191f1e2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-recipe.json",
+      "sha256": "d3cc72479a84f8e93a5986960afc054881cd35d820c788fdefe875cc4588ce1e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.generation.json",
+      "sha256": "72d9e4ee769e5da0a2c9759af7096c1af0514159b13b8c1d7ac528a293c32191"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.prompt.txt",
+      "sha256": "83fedd503ce66922ed587615aef4173057cb553ed4dd383419f9f561eedf4a6b"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.generation.json",
+      "sha256": "53a4de12730779a772b89e1405f36e08079fecd8dc0680e8e62095fe4dcb7cfb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered/arena-mid.prompt.txt",
+      "sha256": "0538e73dfeb1719364b54247c5d587ad1e25e434bfbbce6a35ca91d29a31ad98"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered/arena-mid.png",
+      "sha256": "81e3c3e798b9ca247515fde238e9a28c3308ccfdf7503d70784b02b3c1f4451e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-mid.png",
+      "sha256": "55db841396e71b88593140cb0c72db4f5c527e4e66d2c82caf3d1c8a04687099"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.generation.json",
+      "sha256": "5408a260aac738c4de2a61be645d812d2536c5be7341732662980e29620acb83"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.prompt.txt",
+      "sha256": "7688b8003f7f1f66af6ca722cb1a9d8ddaf774a1deb50086ce3bb532ea8f22e4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-near.png",
+      "sha256": "c1a7e4d0cdb8bc0cdbb19ed56e90e6e97daa958f071110ebd11c5b46a51621cf"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/cratered-v2/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. The repaired FAR removes unsupported celestial bodies, and replacement NEAR removes the visible pseudo-lettering from the first attempt.",
+      "MID adds another crater belt in front of FAR. NEAR creates a strong pale horizontal shelf that cuts the darker MID side rocks; thin green/mauve edge remnants remain.",
+      "Static stands are clear, but the repeated relief, seam and layer tonal mismatch need independent scoring/repair. No moving combatant or native qualification is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

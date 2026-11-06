@@ -1,0 +1,41 @@
+{
+  "status": "RUNNING_SERIAL",
+  "rows": [
+    {
+      "stage": "tropicbird-retained-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "monkey-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "monkey-retained-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "snowshoe-hare-c2-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "chiton-c2-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "cockatoo-c2-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "blue-whale-c2-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "olm-c2-r01",
+      "exitCode": 0
+    },
+    {
+      "stage": "deer-tick-r01",
+      "exitCode": 0
+    }
+  ]
+}

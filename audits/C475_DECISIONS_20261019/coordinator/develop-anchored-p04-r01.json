@@ -1,0 +1,20 @@
+{
+  "stage": "develop-anchored-p04-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-anchored-required-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792500036.07182,
+  "beforeGiB": 54.112884521484375,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 140.467,
+  "lowestGiB": 53.952903747558594,
+  "afterGiB": 54.042362213134766
+}

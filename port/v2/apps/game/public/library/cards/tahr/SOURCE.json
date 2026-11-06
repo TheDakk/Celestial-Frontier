@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tahr",
+ "fitDir": "audits/C213_PROGRAM_20261004/phase4-transparent-tahr02/joined-fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "00458999b45e27193f9c9cb3aa68fae8b1167bed2306b0bf8dd757fe117f3b3b"
+}

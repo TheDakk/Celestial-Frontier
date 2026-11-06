@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Guinea Pig",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c1-06-guinea-pig/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "81bc50b2d142a81bef64ed044152adb527ab3a47a2b5cf297435f8ef3d8bda60"
+}

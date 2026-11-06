@@ -1,0 +1,222 @@
+{
+  "scope": "Batch 2 first repaint round plus changed class fits; diagnostic only; finish and visual admission pending",
+  "species": 35,
+  "baselinePackets": 54,
+  "baselineScored": 52,
+  "baselineStaticPass": 2,
+  "repaintAttempts": 86,
+  "eligibleAdmitStaticPass": 12,
+  "gainedStaticSpecies": [
+    "Anglerfish",
+    "Deep-Sea Fish",
+    "Flying Fish",
+    "Marlin",
+    "Beaked Whale",
+    "Flying Gurnard",
+    "Lamprey",
+    "Humpback Whale",
+    "Lionfish",
+    "Pipefish",
+    "Black Fly",
+    "Wahoo"
+  ],
+  "lostStaticSpecies": [],
+  "existingClassHolds": [
+    "Beluga",
+    "River Dolphin"
+  ],
+  "roundTwo": [
+    {
+      "name": "Ant",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 2.5% of the paint; every same-family reference shows at least 3.8%",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 14% paint (reference 40%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 8% paint (reference 25%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Blue Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Catfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 20% paint (reference 86%)",
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 20% paint (reference 77%)",
+        "missing-anatomy: part jaw (jaw) covers 5% paint (reference 16%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Dragonfish",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Eagle Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part rear-body (spine4) covers 13% paint (reference 48%)",
+        "missing-anatomy: part pelvic-body (spine3) covers 21% paint (reference 65%)",
+        "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Fangtooth",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Gray Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 7.4% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Gulper Eel",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part segment-9 owns 1.40 % of the paint (reference 5.96 %)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Lancelet",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part jaw (jaw) covers 12% paint (reference 56%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Lungfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 6.1% of the paint; every same-family reference shows at least 10.0%"
+      ],
+      "static": null
+    },
+    {
+      "name": "Manatee",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a front appendage of 8.8% paint that no reference appendage lands on"
+      ],
+      "static": null
+    },
+    {
+      "name": "Manta Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part caudal (caudal) covers 4% paint (reference 63%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Moray Eel",
+      "attempts": 3,
+      "lastReasons": [
+        "wrong family: length/thickness 7.53 < 8"
+      ],
+      "static": null
+    },
+    {
+      "name": "Narwhal",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%)",
+        "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Oarfish",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 1% paint (reference 69%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Pilot Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 9.5% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Ray",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Seahorse",
+      "attempts": 3,
+      "lastReasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 1.4% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+        "unexplained-anatomy: 19.8% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Stingray",
+      "attempts": 3,
+      "lastReasons": [
+        "unexplained-anatomy: 18.0% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Tripod Fish",
+      "attempts": 3,
+      "lastReasons": [
+        "wrong-family: arachnid matches clearly better (0.0291 < 0.0485)",
+        "extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on",
+        "missing-anatomy: part jaw (jaw) covers 3% paint (reference 64%)",
+        "missing-anatomy: part head (head) covers 22% paint (reference 84%)",
+        "missing-anatomy: part caudal (caudal) covers 15% paint (reference 73%)",
+        "missing-anatomy: part body-3 (spine3) covers 4% paint (reference 82%)",
+        "missing-anatomy: part body-4 (spine4) covers 15% paint (reference 96%)",
+        "missing-anatomy: part body-5 (spine5) covers 8% paint (reference 43%)",
+        "unexplained-anatomy: 18.9% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null
+    },
+    {
+      "name": "Whale",
+      "attempts": 3,
+      "lastReasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part tail-peduncle (spine5) covers 8% paint (reference 18%)",
+        "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "static": null
+    }
+  ],
+  "classSuccessorsStaticPass": 2,
+  "afterStaticPass": 14
+}

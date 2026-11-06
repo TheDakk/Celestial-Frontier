@@ -1,0 +1,21 @@
+{
+  "stage": "finish-shrew-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-shrew-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275886.965757,
+  "beforeGiB": 91.3480453491211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 50.622,
+  "lowestGiB": 81.96884536743164,
+  "afterGiB": 89.33436584472656
+}

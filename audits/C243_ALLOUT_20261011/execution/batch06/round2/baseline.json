@@ -1,0 +1,345 @@
+{
+  "schema": "cf.g1-score-batch/v1",
+  "batch": "audits/C243_ALLOUT_20261011/execution/batch06",
+  "tag": "c243b06r2before",
+  "pilot": 87,
+  "patternSkipped": [
+    {
+      "id": "c210originals-02-baboon",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2c59-11-mountain-viper",
+      "pattern": "REFUSE"
+    },
+    {
+      "id": "g2throughputc54-18-boa",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2throughputc56-22-mountain-viper",
+      "pattern": "REFUSE"
+    }
+  ],
+  "scored": 83,
+  "admitPassStatic": [
+    "c196quadrupedoriginals-20-monkey",
+    "g2c163familyoriginals-04-gorilla",
+    "c243b06r1c1-19-boa",
+    "c243b06r1c1-22-mountain-viper",
+    "c243b06r1c1-23-rattlesnake",
+    "c243b06r1c2-11-gibbon",
+    "c243b06r1c2-24-snake"
+  ],
+  "refused": [
+    {
+      "id": "c192creaturesupply-01-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c196invertebrateoriginals-03-fiddler-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c196quadrupedoriginals-21-mandrill",
+      "reason": "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "c196quadrupedoriginals-22-marmoset",
+      "reason": "wrong-family: quadruped matches clearly better (0.0069 < 0.0150)"
+    },
+    {
+      "id": "c198creaturesupplyb-06-chimpanzee",
+      "reason": "unexplained-anatomy: 27.3% of the paint lies away from the body and in no part (reference 10.3%)"
+    },
+    {
+      "id": "c198creaturesupplyb-12-baboon",
+      "reason": "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "c198creaturesupplyb-13-lemur",
+      "reason": "extra-anatomy (unassigned): a top appendage of 8.7% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c198creaturesupplyb-14-mandrill",
+      "reason": "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "c198creaturesupplyb-15-marmoset",
+      "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+    },
+    {
+      "id": "c210originals-02-baboon-framing02",
+      "reason": "missing-anatomy: part jaw (jaw) covers 20% paint (reference 62%)"
+    },
+    {
+      "id": "c213creaturesupply-19-gibbon",
+      "reason": "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 9.6%)"
+    },
+    {
+      "id": "g2c118-13-snake",
+      "reason": "body not continuous: 1.7 % of the length has no paint"
+    },
+    {
+      "id": "g2c163familyoriginals-05-chimpanzee",
+      "reason": "wrong-family: quadruped matches clearly better (0.0157 < 0.0227)"
+    },
+    {
+      "id": "g2c163familyoriginals-11-baboon",
+      "reason": "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "g2c163familyoriginals-12-lemur",
+      "reason": "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "g2c90-02-cobra",
+      "reason": "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+    },
+    {
+      "id": "g2c90-04-rattlesnake",
+      "reason": "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+    },
+    {
+      "id": "c213originals-48-scorpion",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "id": "c215program-02-caecilian-02",
+      "reason": "facing: the right (head) end is not thicker than the left (tail) end (49.4 vs 71.4)"
+    },
+    {
+      "id": "c215program-29-freshwater-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c215program-30-mud-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c215program-31-vent-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c215program-32-coconut-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c215program-33-oyster",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c215program-34-razor-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c215program-35-giant-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c215program-36-scallop",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c221program-01-deer-tick",
+      "reason": "facing: the mirrored painting matches arachnid better (0.0152 < 0.0182)"
+    },
+    {
+      "id": "c221program-25-tube-worm",
+      "reason": "wrong-family: arachnid matches clearly better (0.0436 < 0.0657)"
+    },
+    {
+      "id": "c221program-33-harvestman",
+      "reason": "extra-anatomy (unassigned): a top appendage of 7.4% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c221program-34-pseudoscorpion",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 2.1% of the paint; every same-family reference shows at least 5.9%"
+    },
+    {
+      "id": "c221program-36-mite",
+      "reason": "wrong-family: sessile-filter matches clearly better (0.0177 < 0.0355)"
+    },
+    {
+      "id": "c221program-43-sea-spider",
+      "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+    },
+    {
+      "id": "c243b06r1c1-01-tube-worm",
+      "reason": "extra-anatomy (unassigned): a front appendage of 21.7% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-02-deer-tick",
+      "reason": "extra-anatomy (unassigned): a front appendage of 22.4% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-03-harvestman",
+      "reason": "extra-anatomy (unassigned): a top appendage of 7.0% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-04-mite",
+      "reason": "wrong-family: insect matches clearly better (0.0263 < 0.0389)"
+    },
+    {
+      "id": "c243b06r1c1-05-pseudoscorpion",
+      "reason": "wrong-family: insect matches clearly better (0.0236 < 0.0339)"
+    },
+    {
+      "id": "c243b06r1c1-06-scorpion",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "id": "c243b06r1c1-07-sea-spider",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-09-baboon",
+      "reason": "extra-anatomy (unassigned): a front appendage of 7.8% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-10-chimpanzee",
+      "reason": "wrong-family: quadruped matches clearly better (0.0136 < 0.0222)"
+    },
+    {
+      "id": "c243b06r1c1-11-gibbon",
+      "reason": "unexplained-anatomy: 15.1% of the paint lies away from the body and in no part (reference 9.6%)"
+    },
+    {
+      "id": "c243b06r1c1-12-lemur",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c1-13-mandrill",
+      "reason": "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 0.5%)"
+    },
+    {
+      "id": "c243b06r1c1-14-marmoset",
+      "reason": "wrong-family: hopper matches clearly better (0.0299 < 0.0438)"
+    },
+    {
+      "id": "c243b06r1c1-20-caecilian",
+      "reason": "facing: the right (head) end is not thicker than the left (tail) end (45.6 vs 67)"
+    },
+    {
+      "id": "c243b06r1c1-21-cobra",
+      "reason": "not x-monotone: the dominant column run holds 78.2 % (coil or overlap; vertical strips cannot separate it)"
+    },
+    {
+      "id": "c243b06r1c1-24-snake",
+      "reason": "body not continuous: 2.8 % of the length has no paint"
+    },
+    {
+      "id": "c243b06r1c1-25-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c243b06r1c1-26-giant-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c243b06r1c1-27-oyster",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c243b06r1c1-28-razor-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c243b06r1c1-29-scallop",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "id": "c243b06r1c1-30-coconut-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c243b06r1c1-32-freshwater-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c243b06r1c1-33-mud-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c243b06r1c1-34-vent-crab",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "id": "c243b06r1c2-01-tube-worm",
+      "reason": "extra-anatomy (unassigned): a top appendage of 7.2% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-02-deer-tick",
+      "reason": "extra-anatomy (unassigned): a front appendage of 20.5% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-03-harvestman",
+      "reason": "extra-anatomy (unassigned): a top appendage of 10.1% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-04-mite",
+      "reason": "wrong-family: quadruped matches clearly better (0.0182 < 0.0298)"
+    },
+    {
+      "id": "c243b06r1c2-05-pseudoscorpion",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 1.8% of the paint; every same-family reference shows at least 5.9%"
+    },
+    {
+      "id": "c243b06r1c2-07-sea-spider",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 10.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-09-baboon",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-10-chimpanzee",
+      "reason": "wrong-family: quadruped matches clearly better (0.0135 < 0.0216)"
+    },
+    {
+      "id": "c243b06r1c2-12-lemur",
+      "reason": "extra-anatomy (unassigned): a top appendage of 7.1% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c243b06r1c2-14-marmoset",
+      "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+    },
+    {
+      "id": "c243b06r1c2-20-caecilian",
+      "reason": "wrong family: length/thickness 7.97 < 8"
+    },
+    {
+      "id": "c243b06r1c2-21-cobra",
+      "reason": "not x-monotone: the dominant column run holds 82.4 % (coil or overlap; vertical strips cannot separate it)"
+    }
+  ],
+  "staticRed": [
+    {
+      "id": "c198creaturesupplyb-01-gorilla",
+      "static": "RED"
+    },
+    {
+      "id": "c198creaturesupplyb-08-spider-monkey",
+      "static": "RED"
+    },
+    {
+      "id": "g2c163familyoriginals-06-orangutan",
+      "static": "RED"
+    },
+    {
+      "id": "g2c163familyoriginals-09-spider-monkey",
+      "static": "RED"
+    },
+    {
+      "id": "c221program-02-camel-spider",
+      "static": "RED"
+    },
+    {
+      "id": "c243b06r1c2-13-mandrill",
+      "static": "RED"
+    }
+  ],
+  "native": [],
+  "fishSeams": [],
+  "runnerExit": 0
+}

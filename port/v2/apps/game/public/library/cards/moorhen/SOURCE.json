@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Moorhen",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/04-moorhen/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5f165a0c79de8e7d1b5c77379725495452e86475437da3d82a0b3b7f724b5f92"
+}

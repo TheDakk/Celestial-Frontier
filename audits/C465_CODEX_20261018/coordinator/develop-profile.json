@@ -1,0 +1,20 @@
+{
+  "stage": "develop-profile",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-develop-profile",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792377507.790945,
+  "beforeGiB": 60.49843978881836,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 160.574,
+  "lowestGiB": 60.3438835144043,
+  "afterGiB": 60.4317741394043
+}

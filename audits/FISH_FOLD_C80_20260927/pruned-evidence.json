@@ -1,0 +1,462 @@
+[
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn2-dodge-reaction-50.png",
+    "sha256": "bdcc20d637ede4eb38db33a42e1e21c9e3fc149fc4f0ea479a655de0229d5419",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn0-hit-return-end.png",
+    "sha256": "3f9d9245c0c3a11d824951f74004ee350945b72960f0fc8e5162017709647b40",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn3-hit-approach-50.png",
+    "sha256": "b5f7bcd5e0949c9262071d328430d7ec8f7b3eb8028ab3284732860f4dbf39b9",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn0-hit-approach-50.png",
+    "sha256": "b5f7bcd5e0949c9262071d328430d7ec8f7b3eb8028ab3284732860f4dbf39b9",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn1-hit-approach-50.png",
+    "sha256": "c56ccc8913b808b0ef0178034fe24737cd41b519c907919c8327e98d0adace35",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn1-hit-reaction-50.png",
+    "sha256": "f159679016efe304797f0a5756baf97a14c97f56af428b2083a8a55c60222fe2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn2-dodge-return-end.png",
+    "sha256": "3f9d9245c0c3a11d824951f74004ee350945b72960f0fc8e5162017709647b40",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn1-hit-impact.png",
+    "sha256": "f00add4a65b03b3b5e672734228598d0039cdddd197520eb2d4ddc383ab5a884",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn0-hit-impact.png",
+    "sha256": "a433a1fdb6643a288030c20d72b84c47ee0cfb9ead2365562b6d48389fb98145",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn1-hit-return-end.png",
+    "sha256": "6ccb4759e308933606735e5aae690154ccad4d06430eb6b6f6a516e4b3f9f615",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn2-dodge-impact.png",
+    "sha256": "d649cc09d85b2cf61368b2936a75fc2bbd3b277dc5a4c68611b9d30e0915c41b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn2-dodge-approach-50.png",
+    "sha256": "b5f7bcd5e0949c9262071d328430d7ec8f7b3eb8028ab3284732860f4dbf39b9",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn3-hit-impact.png",
+    "sha256": "61e5b1ae6ba5751bf119ea8be0d62f55c344801b67396f3304f112382d78ea89",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn3-hit-idle-90.png",
+    "sha256": "35a414fe7d92cd9b0dfc54358576fce0b3a055ee8605c0bda6227b9b59ef5b85",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-fin-collar/turn3-hit-idle-50.png",
+    "sha256": "a47c4b6819908dc87070bf39d4dc9f2b3f11816a89a1dbdeb33f756d5d63ba79",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn2-dodge-reaction-50.png",
+    "sha256": "cf19eac739cb5b3309516c5d4e5e5c6d061446e52713b480bc7ffc1c55835ef1",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn0-hit-return-end.png",
+    "sha256": "e746aca5a2d0dacbcd22407bfd7b020ae88b258cb07a1c602fbe4b3ea7a32aed",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn3-hit-approach-50.png",
+    "sha256": "cde20b96fe0699d6dc44cf6fcc3fe10bbdd4a62c393d6a565d81fbda19f14a53",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn0-hit-approach-50.png",
+    "sha256": "cde20b96fe0699d6dc44cf6fcc3fe10bbdd4a62c393d6a565d81fbda19f14a53",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn1-hit-approach-50.png",
+    "sha256": "f4d4469737ffc8931f6d34fc30b3b53deabad4b09ce2df0c6e03386b67dcf3f5",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn1-hit-reaction-50.png",
+    "sha256": "d5ddf229bf2e9f25b3135f2d584f31cb9eace0ab0412415c614cea69e1e7d617",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn2-dodge-return-end.png",
+    "sha256": "e746aca5a2d0dacbcd22407bfd7b020ae88b258cb07a1c602fbe4b3ea7a32aed",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn1-hit-impact.png",
+    "sha256": "0489c620656b2b9ae3cce0d005a1c8304c394f30fe2e26b5a4c5afb16536fef8",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn0-hit-impact.png",
+    "sha256": "8d370bfbe41efabe9ff74006e86605970166104c1b2a4fa0738a453054aeddb1",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn1-hit-return-end.png",
+    "sha256": "cd508ba11671a68769822f552f93cbaa8f8ea47d6bd2cf7e9c078d377b663bd0",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn2-dodge-impact.png",
+    "sha256": "b61436081fa474c4d612f8598575d78ebef80276ba966bf3bb375664ee9510f9",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn2-dodge-approach-50.png",
+    "sha256": "cde20b96fe0699d6dc44cf6fcc3fe10bbdd4a62c393d6a565d81fbda19f14a53",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn3-hit-impact.png",
+    "sha256": "a6b0669b97d5fb464856415a653f453a986be7eeea68ca173b61b0ea8ef521c2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn3-hit-idle-90.png",
+    "sha256": "f746f7e5e08c162974f50684302a620569b666fd3f773b5fdd3eabf5d08c91ab",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral/turn3-hit-idle-50.png",
+    "sha256": "dfb3397d4f35005cc52ebed60b7a113d638cdb456ebccc314f81af88f89fb5e2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn2-dodge-reaction-50.png",
+    "sha256": "551fdc1abc60a0087aa1136094bd0ea15233082fd70cd222197e1035fb381428",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn0-hit-return-end.png",
+    "sha256": "947470e492630462f4a58254670925fd719a636d4f4737d3bc9fa8802b486a9f",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn3-hit-approach-50.png",
+    "sha256": "f3f3c260688594c5f92bbba72bb8d5dfe7162abaed0eaa3bd2e7e9c0d3bdc050",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn0-hit-approach-50.png",
+    "sha256": "f3f3c260688594c5f92bbba72bb8d5dfe7162abaed0eaa3bd2e7e9c0d3bdc050",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn1-hit-approach-50.png",
+    "sha256": "87519e0707a38da18da700fba03c2294fbbe291ff0df040837d34623c4286299",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn1-hit-reaction-50.png",
+    "sha256": "c8026bf21613ec76a14dd60b27764b659113f3a928f4808ae1cd326fd0db6d8b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn2-dodge-return-end.png",
+    "sha256": "947470e492630462f4a58254670925fd719a636d4f4737d3bc9fa8802b486a9f",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn1-hit-impact.png",
+    "sha256": "4720b53ca8fa7219032142f2cc76346082d1ffce58081e65c1b7201c46f12679",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn0-hit-impact.png",
+    "sha256": "293e54e9b804106a0365146acaecda389aa4aa79f11d8420367c2df3cbc61dd2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn1-hit-return-end.png",
+    "sha256": "84678bae2160aa3e83c68581d573ad2f823dad26399a1978fdcb66dd23ef61fb",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn2-dodge-impact.png",
+    "sha256": "dda15a93c34930c28ad5c1795ffc07abc1facdcbb42d03830b0997ba7f4dc982",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn2-dodge-approach-50.png",
+    "sha256": "f3f3c260688594c5f92bbba72bb8d5dfe7162abaed0eaa3bd2e7e9c0d3bdc050",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn3-hit-impact.png",
+    "sha256": "8571483f7a89fb2368603604f7cd8e3ac344c77fbd6fbb6659bb3f80f1eb3dab",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn3-hit-idle-90.png",
+    "sha256": "bd4d5ff91e28cc1f78d353f958380c013f9d17cc156a31b80f0f3e3c68e5275d",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/turn3-hit-idle-50.png",
+    "sha256": "269c34c279b440f276719f89056945854f4851a221ed07b86e6f611c9f85e805",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-fin-collar/battle-full.webm",
+    "sha256": "4d682e3f2aafcd39ff0654c057b1598042f02c8373508de9b39802f7a7f3c126",
+    "reason": "superseded diagnostic film; report and three review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn2-dodge-reaction-50.png",
+    "sha256": "896ccbc0143aeff152e3423385d6f8e77c40d09fdab3c0e54d509b325812ef0a",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn0-hit-return-end.png",
+    "sha256": "3858781d413ed04d8a68d47ef9e8db31efa1c6833e01d4bc0b2d482fa4d48ca5",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn3-hit-approach-50.png",
+    "sha256": "a711cd3cda7d6aa17f1475f3e29cb04afb3fa61c0b981d05aa0a0f936f69c1ca",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn0-hit-approach-50.png",
+    "sha256": "a711cd3cda7d6aa17f1475f3e29cb04afb3fa61c0b981d05aa0a0f936f69c1ca",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn1-hit-approach-50.png",
+    "sha256": "390655f2f8d6374b2efac1efc121bd8f78536711ba98684459a8354d27c98f01",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn1-hit-reaction-50.png",
+    "sha256": "32f8672cab9574d16e53e9c5c2c760782e77bc2dfa282887a44819b8fea440d9",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn2-dodge-return-end.png",
+    "sha256": "3858781d413ed04d8a68d47ef9e8db31efa1c6833e01d4bc0b2d482fa4d48ca5",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn1-hit-impact.png",
+    "sha256": "80f01f0ce547c2131ec9148a953d7cf97d2c4bc2ba6e0e125090bf9b1d11904b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn0-hit-impact.png",
+    "sha256": "3c42418a229a2b541d1ed6bafe19347280e0797a8deb2807ad29791bcaaca6ca",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn1-hit-return-end.png",
+    "sha256": "de9ed2ef5e3ab698788cd2d4c5e89f63aa10feee3705aaefa87c506f4157582d",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn2-dodge-impact.png",
+    "sha256": "3e64717816ce18c94eebe4a441d165c0ee5667e840232f7de9a9eabef84939ee",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn2-dodge-approach-50.png",
+    "sha256": "a711cd3cda7d6aa17f1475f3e29cb04afb3fa61c0b981d05aa0a0f936f69c1ca",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn3-hit-impact.png",
+    "sha256": "302003f5a030d52c600bdc1f29d246d6d23ba89b61143642f08c31b89068d1a2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn3-hit-idle-90.png",
+    "sha256": "3821a396066eced27147666808a74f8c69bca14cac3cfbf6df33381acd5b3ce6",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral/turn3-hit-idle-50.png",
+    "sha256": "b32e94027643fff2695527fe79c50710e7b7a1b291045833ef03baa3c564a36b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn2-dodge-reaction-50.png",
+    "sha256": "824f55c9519b52307a2bece0229671f9f50e7d25d088db7925ce3d50da8ec7d6",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn0-hit-return-end.png",
+    "sha256": "4775146900d0f8aeb9664fee01e9fa714b33d2066b66461e0110ae781453c592",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn3-hit-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn0-hit-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn1-hit-approach-50.png",
+    "sha256": "2c36e868068270b0cef2603ee2b4ddea55039d7fb57da4ad4152c79427e16b56",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn1-hit-reaction-50.png",
+    "sha256": "9051e6ca36e8d8937d96f738f0e65fac0b9323537a121b99e6ebca729a055920",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn2-dodge-return-end.png",
+    "sha256": "4775146900d0f8aeb9664fee01e9fa714b33d2066b66461e0110ae781453c592",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn1-hit-impact.png",
+    "sha256": "172f79135eced9ebfb5173965fb98827858578278f0dc68e6781860d662eec2c",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn0-hit-impact.png",
+    "sha256": "bc8b71de4d0f8cfb9ee4f3f97319e8eede396846aec06dc492e7c0219121aaab",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn1-hit-return-end.png",
+    "sha256": "69f40af0af7b41d8b045c8e855d311128623430bb3198fa93fe588258c4e2ab2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn2-dodge-impact.png",
+    "sha256": "9f180af1da5fc0e828e4cb042691664115333870c6ad119dd57f47fc3bb06eb6",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn2-dodge-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn3-hit-impact.png",
+    "sha256": "ba9e29afa729f772cfd0457233ff186737897ec7ca81602c4f00bb0839941d31",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn3-hit-idle-90.png",
+    "sha256": "e16437c279d264d5a2cb73d688b91d829812bf4b64ed629bc92e4ab98e9b7092",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/turn3-hit-idle-50.png",
+    "sha256": "37aa2ddc8406decc9ac21879cd52b577e8bf8e1f7abcd245be7f60f6ef2cea7d",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis/battle-full.webm",
+    "sha256": "eed99788f67fad132a4d5a4666618945f980aa09f38169203f5cdba60c8fe6d8",
+    "reason": "superseded diagnostic film; report and three review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn2-dodge-reaction-50.png",
+    "sha256": "824f55c9519b52307a2bece0229671f9f50e7d25d088db7925ce3d50da8ec7d6",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn0-hit-return-end.png",
+    "sha256": "4775146900d0f8aeb9664fee01e9fa714b33d2066b66461e0110ae781453c592",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn3-hit-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn0-hit-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn1-hit-approach-50.png",
+    "sha256": "2c36e868068270b0cef2603ee2b4ddea55039d7fb57da4ad4152c79427e16b56",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn1-hit-reaction-50.png",
+    "sha256": "9051e6ca36e8d8937d96f738f0e65fac0b9323537a121b99e6ebca729a055920",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn2-dodge-return-end.png",
+    "sha256": "4775146900d0f8aeb9664fee01e9fa714b33d2066b66461e0110ae781453c592",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn1-hit-impact.png",
+    "sha256": "172f79135eced9ebfb5173965fb98827858578278f0dc68e6781860d662eec2c",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn0-hit-impact.png",
+    "sha256": "bc8b71de4d0f8cfb9ee4f3f97319e8eede396846aec06dc492e7c0219121aaab",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn1-hit-return-end.png",
+    "sha256": "69f40af0af7b41d8b045c8e855d311128623430bb3198fa93fe588258c4e2ab2",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn2-dodge-impact.png",
+    "sha256": "9f180af1da5fc0e828e4cb042691664115333870c6ad119dd57f47fc3bb06eb6",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn2-dodge-approach-50.png",
+    "sha256": "e9ea23695527a5d3eb09a56c8439c9d15d6e0822b8edabca51a82a58cf8f0a4b",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn3-hit-impact.png",
+    "sha256": "ba9e29afa729f772cfd0457233ff186737897ec7ca81602c4f00bb0839941d31",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn3-hit-idle-90.png",
+    "sha256": "e16437c279d264d5a2cb73d688b91d829812bf4b64ed629bc92e4ab98e9b7092",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  },
+  {
+    "path": "audits/FISH_FOLD_C80_20260927/native-paddlefish-observed/turn3-hit-idle-50.png",
+    "sha256": "37aa2ddc8406decc9ac21879cd52b577e8bf8e1f7abcd245be7f60f6ef2cea7d",
+    "reason": "redundant still; final film and named full-size review stills retained"
+  }
+]

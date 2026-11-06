@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "qualityAccepted": false,
+  "acceptanceAuthority": "pending Dakk visual acceptance",
+  "groundLineNormalized": 0.78,
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6",
+      "qualityAccepted": false
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "dc13c467cdbfc86c411bba6824289fceac25fa6936ef90de58b71970c0704019",
+      "qualityAccepted": false
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "213df9cc1127e761c08e0ef01232c8f5b8558d3fd09b6447952ad20c28ace42c",
+      "qualityAccepted": false
+    }
+  ],
+  "status": "PENDING. D29 admits native canvas dimensions; mechanical checks and visual review do not confer acceptance."
+}

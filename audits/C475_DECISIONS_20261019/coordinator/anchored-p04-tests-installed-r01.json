@@ -1,0 +1,16 @@
+{
+  "status": "NEW_REGRESSION_TESTS_ONLY_BEFORE_IMPLEMENTATION",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/motion/anchored-material-attack.test.ts",
+      "sha256": "13cc0a104caee97ba2752b4d3cd2cda7baf57754b071bbbfbc8c310fd3dff070",
+      "source": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/port/v2/apps/game/src/motion/anchored-material-attack.test.ts"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anchored-material-source.test.mjs",
+      "sha256": "3f65e908054d109d4558d23cf38b46739e5a637e47246a8d52169c12ad91bce4",
+      "source": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/proposed-tests/port/v2/tools/creature-animation/anchored-material-source.test.mjs"
+    }
+  ],
+  "runtimeApplied": false
+}

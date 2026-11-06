@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Flounder",
+ "fitDir": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7d1be5eaf374ccdbb4a5575fdec4937df63e1c144a1b9b2cb6e991d638488203"
+}

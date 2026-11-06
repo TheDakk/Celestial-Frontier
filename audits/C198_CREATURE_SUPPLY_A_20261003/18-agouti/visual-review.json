@@ -1,0 +1,28 @@
+{
+  "name": "Agouti",
+  "masterSha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: golden-brown coarse coat, rounded high rump, small ears, short tail nub and four clearly separated long lower limbs/feet. Far upper roots and far-ear base remain partly occluded. Long legs and elevated posture need proportion/contact review; actual toe counts not all distinguishable.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 287,
+      "y0": 334,
+      "x1": 1025,
+      "y1": 886
+    },
+    "margins": {
+      "left": 287,
+      "right": 228,
+      "top": 334,
+      "bottom": 367
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

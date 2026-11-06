@@ -1,0 +1,78 @@
+{
+  "schema": "cf.painting-batch-review/v1",
+  "scope": "Items11\u201320: ten reviewed candidates, not ten admitted creatures; no measured coverage gain. Individual README/results control; failed paths must not be published.",
+  "sheet": "batch02-review-sheet.png",
+  "sheetSha256": "09cd23825b7f0de1a2291a027286827e94751d198cfc20a98f2e689ca01f9260",
+  "items": [
+    {
+      "packet": "11-wolf",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "b10104b97852f053dd73fb641cacd8fe00d7e363191fad07ef884e3382091167",
+      "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43",
+      "status": "static/native pass; stage/picker pending"
+    },
+    {
+      "packet": "12-gull",
+      "sheet": "review-sheet-final.png",
+      "sheetSha256": "a8cdede22861705198a65c029c2bad17a2dd21c8a0722e7f90b19d4e343d2481",
+      "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9",
+      "status": "static dodge blocked"
+    },
+    {
+      "packet": "13-river-otter",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "64e5b8b4be27adac4b851801f52bd7e4557bc1be06c1d27211633f2b227e0eee",
+      "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e",
+      "status": "static/native pass; overlapping heads"
+    },
+    {
+      "packet": "14-brown-bear",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "1905810b6535c889dfc885cb91da0eff6671a4827ddbe1288890e304dce0dce8",
+      "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf",
+      "status": "tame/native blocked; eye mask incomplete"
+    },
+    {
+      "packet": "15-goose",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "8da040086d9db8317136e1862e3b7610a3f273b47392e2be7bdfa6b0f3ae1005",
+      "masterSha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1",
+      "status": "static/native/shoulder blocked"
+    },
+    {
+      "packet": "16-heron",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "10b53d10fcd9289ec5b15eef03eca90249c0f8829779a81f0de8a0e61d0d0066",
+      "masterSha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c",
+      "status": "static dodge blocked"
+    },
+    {
+      "packet": "17-sparrow",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "8658323a4b602a3f574347f51fbcfecc77baab1a68f22aec5c873fec41db8849",
+      "masterSha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91",
+      "status": "static and wing skin blocked; welds rejected"
+    },
+    {
+      "packet": "18-ibex",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "938155081c6500e00597010e2870cdbb1b0781af89c7371b5827d2179ae2901c",
+      "masterSha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a",
+      "status": "static pass; native approach blocked"
+    },
+    {
+      "packet": "19-reef-shark",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "0d2bbcf6d9e6b16ce55e650c05c90475a7cf1285dc5fbc4ae83245cbc5da6cbe",
+      "masterSha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46",
+      "status": "static/native pass; spacing/water-band blocked"
+    },
+    {
+      "packet": "20-pike",
+      "sheet": "review-sheet.png",
+      "sheetSha256": "3946e3591091ba883651d0f7dd515f2af8a8d422535887b7644d88b5e5261c22",
+      "masterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468",
+      "status": "static/native pass; stage/picker pending"
+    }
+  ]
+}

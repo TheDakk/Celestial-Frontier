@@ -1,0 +1,19 @@
+{
+  "status": "CANDIDATE_FOR_INTAKE",
+  "visibleLegs": 4,
+  "visiblePadBearingExtremities": 4,
+  "nearHind": "Open visible thigh, knee, shin, hock, elongated foot; no high compressed coil",
+  "farHind": "Visible knee/hock/distal foot, proximal attachment partly covered",
+  "foreFar": "Shallow elbow contour is ambiguous; authoring retains explicit estimate",
+  "artDiscrepancies": [
+    "requested8percent margin not delivered",
+    "rest painting is a half-launch pose, not an all-feet coplanar stance"
+  ],
+  "declarationAuthor": "OpenAI/Codex parent",
+  "absent": [
+    "tail",
+    "external-ears"
+  ],
+  "hidden": [],
+  "folded": []
+}

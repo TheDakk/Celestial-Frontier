@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Water Beetle",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/rebound-01/c196creaturesupply-18-water-beetle/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3d6fa069112dce5f666285bdd51a39e68857013fa12b119bba575c005e8452dd"
+}

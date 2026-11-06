@@ -1,0 +1,20 @@
+{
+  "stage": "finish-caecilian-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-caecilian-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/caecilian"
+  ],
+  "startedUnix": 1792342704.783107,
+  "beforeGiB": 68.687744140625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.013,
+  "lowestGiB": 68.68773651123047,
+  "afterGiB": 69.68412017822266
+}

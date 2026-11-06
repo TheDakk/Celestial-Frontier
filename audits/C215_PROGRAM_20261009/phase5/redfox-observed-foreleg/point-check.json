@@ -1,0 +1,14 @@
+[
+  {
+    "joint": "foreNearKnee",
+    "alpha": 255
+  },
+  {
+    "joint": "foreNearAnkle",
+    "alpha": 255
+  },
+  {
+    "joint": "foreNearPaw",
+    "alpha": 255
+  }
+]

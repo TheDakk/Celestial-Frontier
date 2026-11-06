@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b06r1c2-10-chimpanzee",
+    "name": "Chimpanzee",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-10-chimpanzee",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-10-chimpanzee/master.png"
+  },
+  {
+    "id": "c243b06r1c2-11-gibbon",
+    "name": "Gibbon",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-11-gibbon",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-11-gibbon/master.png"
+  },
+  {
+    "id": "c243b06r1c2-12-lemur",
+    "name": "Lemur",
+    "family": "primate",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-12-lemur",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-12-lemur/master.png"
+  }
+]

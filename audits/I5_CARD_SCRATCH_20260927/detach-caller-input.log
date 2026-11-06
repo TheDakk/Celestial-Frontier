@@ -1,0 +1,64 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/morph/card-scratch.test.ts (3 tests | 3 failed) 183ms
+   × preserves every pre-repair raster byte and caller input in 120 real-fixture morphs 19ms
+   × releases actual completed scratch stores, preserves caller-owned masters/masks and published outputs, including refusal 101ms
+   × renders identical bytes when transfer is unavailable 62ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  15:29:48
+   Duration  786ms (transform 314ms, setup 0ms, import 492ms, tests 183ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/morph/card-scratch.test.ts > preserves every pre-repair raster byte and caller input in 120 real-fixture morphs
+AssertionError: expected 'e3b0c44298fc1c149afbf4c8996fb92427ae4…' to be 'bb25cb3f942b9cbd66c4573c075b49cdffd37…' // Object.is equality
+
+Expected: "bb25cb3f942b9cbd66c4573c075b49cdffd37b521fdf76cf1c4eef1095c4aee1"
+Received: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+ ❯ apps/game/src/morph/card-scratch.test.ts:23:87
+     21|  for (const row of baseline.rows) { const f = load(row.name), master =…
+     22|   const out = renderCardIndividualV1({...f,params:morphParamsV1(row.ge…
+     23|   expect(sha(out),JSON.stringify(row)).toBe(row.sha256); expect(sha(f.…
+       |                                                                                       ^
+     24|  }
+     25| }, 20000);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/game/src/morph/card-scratch.test.ts > releases actual completed scratch stores, preserves caller-owned masters/masks and published outputs, including refusal
+AssertionError: expected 'e3b0c44298fc1c149afbf4c8996fb92427ae4…' to be 'cd3082c2d7a539777eb7f73a607c7852793be…' // Object.is equality
+
+Expected: "cd3082c2d7a539777eb7f73a607c7852793be75324ed233becf18b3d37615f72"
+Received: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+ ❯ apps/game/src/morph/card-scratch.test.ts:34:94
+     32|   const out=renderCardIndividualV1({...f,params,size:132,markingMask:m…
+     33|   expect(out.byteLength).toBe(132*132*4);expect(released.filter(r=>r.b…
+     34|   expect(released.every(r=>r.buffer.byteLength===0)).toBe(true);expect…
+       |                                                                                              ^
+     35|   const composite=cardCompositeV1({...f,params});expect(composite.byte…
+     36|   expect(cardCompositeV1({...f,params:morphParamsV1({},f.recipe)})).to…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  apps/game/src/morph/card-scratch.test.ts > renders identical bytes when transfer is unavailable
+TypeError: Cannot perform Construct on a detached ArrayBuffer
+ ❯ pad apps/game/src/morph/morph-card.ts:122:119
+    120|   if (cardProportionV1(input.receipt, input.card, input.params).trees.…
+    121|   const { width: W, height: H } = input.master, p = Math.ceil(CARD_PRO…
+    122|   const pad = (src: Uint8Array) => { const out = new Uint8Array(W2 * H…
+       |                                                                                                                       ^
+    123|   const at = ([x, y]: readonly [number, number]) => [(x * W + p) / W2,…
+    124|   const map = (r: Readonly<Record<string, readonly [number, number]>>)…
+ ❯ padForProportionV1 apps/game/src/morph/morph-card.ts:126:63
+ ❯ renderCard apps/game/src/morph/morph-card.ts:139:17
+ ❯ renderCardIndividualV1 apps/game/src/morph/morph-card.ts:135:16
+ ❯ apps/game/src/morph/card-scratch.test.ts:43:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+

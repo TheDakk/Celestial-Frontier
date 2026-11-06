@@ -1,0 +1,23 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit",
+  "sourceBindingSha256": "872aa0a9b8ef19938c576091f1d56f048335f130abff7ed4515db635ecf50e57",
+  "candidateBindingSha256": "f9bde083abcafecb86143ab4a0b283f406e415029025b404aa9c2e6211513ab3",
+  "paintBoundaryPairs": [
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
+  "sourceAtlasSha256": "ce5bd7dba624cd5aa29b55f23037bf13d0b1845692c3596425e95a3026351f12",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

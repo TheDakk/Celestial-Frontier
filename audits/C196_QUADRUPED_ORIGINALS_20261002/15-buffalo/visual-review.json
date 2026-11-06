@@ -1,0 +1,28 @@
+{
+  "name": "Buffalo",
+  "masterSha256": "b2bfd6b1f3367812f21762ea7d06473d316c1e93469cf50f4065c98a7615e3de",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Massive dark buffalo, joined horn boss, both natural drooping ears, four hooves and complete tufted tail. Near/far lower legs separated with nearly level contacts; upper far foreleg still merges into chest silhouette. Head faces partly toward viewer, allowing ears but differing from strict side request. Coarse coat and muddy surface do not imply acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 246,
+      "y0": 385,
+      "x1": 1034,
+      "y1": 869
+    },
+    "margins": {
+      "left": 246,
+      "right": 219,
+      "top": 385,
+      "bottom": 384
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

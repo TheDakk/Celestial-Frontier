@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gaur",
+ "fitDir": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "09be30b5db3c97e8f8ff26e3468b04db44d6b7bad4959b03967c0cacfc3f2426"
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "84bd9e494baf802b85bea18a737429d52c05c36f",
+  "helperSha256": "c09ac19e9e7272deb219586926f3121d1be89cfa07e3f16abe87ec21df344328",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/master.png",
+      "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/authoring.json",
+      "sha256": "55be3aeca4b7fc2f5d8882df7a8792e1b8a4cff27095c6d773cea68ee6b461ec"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/subject-source.json",
+      "sha256": "d8ac1867571af0962c764def2b5909772bc4aa1b66ff15a09d7861cb0a9cdcbc"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/presence.json",
+      "sha256": "85d11b3a2396c316a070f7ece72979a6725dc84b4e0d7dd0acea369aadaabaa9"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+  "bindingHash": "cedf40082673177f7557bd5abe5f763b7be146598c4457a0c81468d11980f39f",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "spine1",
+    "head",
+    "caudal",
+    "spine5",
+    "spine4",
+    "spine3",
+    "spine2",
+    "spine0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/master.png",
+      "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/authoring.json",
+      "sha256": "55be3aeca4b7fc2f5d8882df7a8792e1b8a4cff27095c6d773cea68ee6b461ec",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/subject-source.json",
+      "sha256": "d8ac1867571af0962c764def2b5909772bc4aa1b66ff15a09d7861cb0a9cdcbc",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/presence.json",
+      "sha256": "85d11b3a2396c316a070f7ece72979a6725dc84b4e0d7dd0acea369aadaabaa9",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "schema": "cf.o1-manual-source-owner-authoring/v1",
+  "status": "PROPOSED_SOURCE_SPECIFIC_CANDIDATE_NOT_ACCEPTANCE",
+  "id": "o1-050-snowshoe-hare-owner-r02",
+  "sourceFit": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01",
+  "upstreamPacket": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet",
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/master.png",
+  "sourceSha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "landmarksPx": {
+    "root": [
+      648.8,
+      649.1
+    ],
+    "pelvis": [
+      560.3,
+      621
+    ],
+    "spine": [
+      653.4,
+      635.6
+    ],
+    "chest": [
+      726.2,
+      625.1
+    ],
+    "neck": [
+      758.8,
+      582.6
+    ],
+    "head": [
+      770.7,
+      498.5
+    ],
+    "jaw": [
+      823.2,
+      573.5
+    ],
+    "hindNearRoot": [
+      548.7,
+      623
+    ],
+    "hindNearKnee": [
+      517.1,
+      688.9
+    ],
+    "hindNearAnkle": [
+      441,
+      738
+    ],
+    "hindNearPaw": [
+      479.8,
+      808.1
+    ],
+    "hindFarRoot": [
+      573.8,
+      656.7
+    ],
+    "hindFarKnee": [
+      547,
+      724.5
+    ],
+    "hindFarAnkle": [
+      525,
+      755
+    ],
+    "hindFarPaw": [
+      608.1,
+      813.4
+    ],
+    "foreNearRoot": [
+      703,
+      654.6
+    ],
+    "foreNearKnee": [
+      680.3,
+      711.7
+    ],
+    "foreNearAnkle": [
+      671,
+      771
+    ],
+    "foreNearPaw": [
+      688.1,
+      807.6
+    ],
+    "foreFarRoot": [
+      752.2,
+      649.9
+    ],
+    "foreFarKnee": [
+      714.8,
+      713.8
+    ],
+    "foreFarAnkle": [
+      748,
+      782
+    ],
+    "foreFarPaw": [
+      793.9,
+      808.4
+    ],
+    "earNearRoot": [
+      740,
+      515
+    ],
+    "earNearTip": [
+      717.3,
+      415.9
+    ],
+    "earFarRoot": [
+      768,
+      494
+    ],
+    "earFarTip": [
+      756.5,
+      413.5
+    ],
+    "tail0": [
+      472,
+      651
+    ],
+    "tail1": [
+      411,
+      671
+    ]
+  },
+  "landmarkChanges": [
+    {
+      "joint": "hindNearAnkle",
+      "fromPx": [
+        441,
+        773.7
+      ],
+      "toPx": [
+        441,
+        738
+      ],
+      "sourceRGBA": [
+        168,
+        159,
+        148,
+        255
+      ],
+      "evidence": "Move from the straight descending course to the external rear hock bend visible around [441,738]."
+    },
+    {
+      "joint": "hindFarAnkle",
+      "fromPx": [
+        536.7,
+        787.7
+      ],
+      "toPx": [
+        525,
+        755
+      ],
+      "sourceRGBA": [
+        163,
+        158,
+        148,
+        255
+      ],
+      "evidence": "Move from the foot approach to the second external rear hock bend visible around [525,755]."
+    },
+    {
+      "joint": "foreNearAnkle",
+      "fromPx": [
+        670.2999999999998,
+        789.3
+      ],
+      "toPx": [
+        671,
+        771
+      ],
+      "sourceRGBA": [
+        182,
+        184,
+        169,
+        255
+      ],
+      "evidence": "Move from paw/heel material to the visible carpal bend between the vertical fore course and foot."
+    },
+    {
+      "joint": "foreFarAnkle",
+      "fromPx": [
+        765.3,
+        800
+      ],
+      "toPx": [
+        748,
+        782
+      ],
+      "sourceRGBA": [
+        226,
+        227,
+        214,
+        255
+      ],
+      "evidence": "Move from horizontal foot material to the visible carpal bend where the diagonal fore course turns into its paw."
+    },
+    {
+      "joint": "earNearRoot",
+      "fromPx": [
+        734.0999999999999,
+        492.5
+      ],
+      "toPx": [
+        740,
+        515
+      ],
+      "sourceRGBA": [
+        133,
+        114,
+        98,
+        255
+      ],
+      "evidence": "Move from the near-ear shaft to the visible furred base where its contour joins the cranium."
+    },
+    {
+      "joint": "earFarRoot",
+      "fromPx": [
+        758.2,
+        461.50000000000006
+      ],
+      "toPx": [
+        768,
+        494
+      ],
+      "sourceRGBA": [
+        99,
+        67,
+        48,
+        255
+      ],
+      "evidence": "Move from the middle of the far-ear shaft to the visible base immediately above the cranium; no hidden attachment inferred."
+    }
+  ],
+  "ownershipAuthority": "Original actual part readback plus exact proposal.json owner runs; old auto polygon declaration is historical input, not the new label authority.",
+  "compactTail": {
+    "representationReview": {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/representation-review.json",
+      "sha256": "7d6ecf2afead51e7dcf7af3d35b88acc6ac941ef2ccc1f0f20bda48e47500bd0",
+      "bytes": 3008
+    },
+    "landmarksPx": {
+      "tail0": [
+        472,
+        651
+      ],
+      "tail1": [
+        411,
+        671
+      ]
+    },
+    "unchanged": true,
+    "terminal": "tail1",
+    "noBiologicalAbsence": true
+  },
+  "unchangedGraph": true,
+  "unchangedLimits": true,
+  "hiddenInference": false
+}

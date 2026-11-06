@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cormorant",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/10-cormorant/fallback-2/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3bac582128c15595d909b0214c77c6642e9ac316fa998b470744701f65999166"
+}

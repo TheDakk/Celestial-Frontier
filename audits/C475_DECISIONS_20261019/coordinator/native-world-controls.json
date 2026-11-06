@@ -1,0 +1,19 @@
+{
+  "stage": "native-world-controls",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-native-world-controls",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/run-world-controls.mjs"
+  ],
+  "startedUnix": 1792459449.975418,
+  "beforeGiB": 55.89868927001953,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.014,
+  "lowestGiB": 55.898681640625,
+  "afterGiB": 55.898658752441406
+}

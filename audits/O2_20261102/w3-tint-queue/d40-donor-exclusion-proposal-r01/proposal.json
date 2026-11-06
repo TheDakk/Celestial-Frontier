@@ -1,0 +1,90 @@
+{
+  "schema": "cf.o2-d40-donor-exclusion-proposal/v1",
+  "status": "REVIEW_PROPOSAL_ONLY_UNAPPLIED",
+  "problem": "Current <=8-excess donor seeds can contain visible green/olive/cyan paint. Explicit despill target selection does not change these donors. R03 recovered [352,642] deterministically reuses [200,208,186].",
+  "approvalReference": {
+    "path": "audits/MAILBOX/DECISIONS.md",
+    "line": 46,
+    "decision": "D40",
+    "meaning": "Approved post-seal thin-stroke/despill mechanism and controls; root must review this concrete optional donor policy before any application."
+  },
+  "proposedProductionTouchPoints": [
+    "port/v2/tools/creature-animation/post-key-matte.mjs",
+    "port/v2/tools/creature-animation/derive-post-key-matte.mjs"
+  ],
+  "proposedAPI": {
+    "donorExclusionPixels": "Optional explicit original-source indices, default []; they remove donor seeds only, never source support or paint.",
+    "donorExclusionSource": "Required only for a nonempty exclusion list: {width,height,originalRgbaSha256}. Must exactly match decoded immutable raw. CLI still binds raw file SHA/canonical file+RGBA/seal independently.",
+    "despillPixels": "Existing explicit target indices remain the only consumers of a restricted donor pool. No blanket recolour.",
+    "protectedPixels": "Existing opaque/natural biological pigment protection remains; reject overlap with targets and reject protected donor exclusions."
+  },
+  "proposedSemantics": [
+    "With absent or empty donorExclusionPixels, execute current code path exactly. Return exact RGBA and current algorithm receipt with no new empty field. Same unchanged historical recipe must produce identical PNG bytes; wrapper implementation fingerprints must truthfully reflect any later code change and cannot be promised byte-identical. Never rewrite historical receipts.",
+    "Validate nonempty source-bound exclusions as finite unique integer indices within the unchanged dimensions and as actual connected, existing-criterion eligible source donor seeds. Reject wrong source/hash/dimensions, key-background, disconnected islands and protected pigment exclusions. A list cannot add a donor, make an ineligible source pixel eligible or change the <=8 donor criterion.",
+    "Compute the current default result and donor map unchanged. For a nonempty list plus explicit despill target list, construct a second deterministic map from the same connected source support and same <=8 seed criterion, omitting exactly the explicit excluded indices. Keep current row/neighbor ordering and 8-neighbor traversal.",
+    "Apply the second map only to despillPixels targets after the default result. Every channel outside the literal target set remains byte-identical to default D40, including every ordinary recovered pixel not selected and all excluded donor pixels that are not targets. Exclusion alone changes no RGB/alpha.",
+    "For each selected target with a valid alternate donor, reuse current actual-source donor RGB and exact current least-squares key unmix. Do not invent RGB, interpolate a palette, select by white/neutral Lab, alter the classifier, synthesize support, add a bridge, or change canonical source/seal bytes.",
+    "Conservatively clamp changed target alpha to the default-D40 alpha as well as the existing canonical/nonrestored ceiling. Thus exclusion can never introduce a new positive pixel or increase opacity relative to the preserved default derivative; if the default target alpha is zero it stays zero. Root must review the opacity tradeoff rather than infer material from lower key excess.",
+    "If a selected target has no reachable nonexcluded donor, retain its exact default RGBA and add its index to receipt.reviewedDonorExclusions.unresolvedTargets. Return status UNRESOLVED, never silently use an excluded/self/disconnected donor or raw full-alpha fallback. Root refuses production intake on unresolved targets; a diagnostic artifact may be retained with the HOLD.",
+    "Emit an optional receipt.reviewedDonorExclusions only when nonempty: exact source binding, sorted excluded indices, explicit target list, per-target donor index/RGB, changed targets and unresolved targets/status. Counts must describe actual final outcomes without double-counting baseline processing.",
+    "Actual material CLEAN is separate from these numerical controls. If a later R03 restricted donor remains tinted, too transparent or pigment-damaged, retain HOLD and first-attempt evidence; do not expand thresholds or iterate automatically."
+  ],
+  "scopeLimits": {
+    "classifierChange": false,
+    "sourceSupportChange": false,
+    "canonicalRebind": false,
+    "rulerOrThresholdChange": false,
+    "universalWhiteHeuristic": false,
+    "newPaintOrBridge": false,
+    "runtimeEditByWorker": false,
+    "productionExecutionByWorker": false
+  },
+  "R03TrialMeaning": "Source-specific two-target/one-exclusion data is an initial diagnostic proposal, not a full material recipe or proof of a clean next donor. Root must identify actual old/new donor provenance and independently inspect actual output before any broader selection.",
+  "historicalWarning": {
+    "freeze": {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/positive-fringe-r01/freeze-r01.json",
+      "sha256": "2ab60c15e1a89979a5f5119f8347d32f0403009ded415f85b45f653695aa4911",
+      "bytes": 74033
+    },
+    "status": "MATERIAL_HOLD_UNAPPLIED",
+    "observedBrownFailures": [
+      {
+        "xy": [
+          225,
+          709
+        ],
+        "sourceRGBA": [
+          152,
+          129,
+          94,
+          255
+        ],
+        "heldProposalRGBA": [
+          102,
+          88,
+          69,
+          221
+        ]
+      },
+      {
+        "xy": [
+          406,
+          708
+        ],
+        "sourceRGBA": [
+          118,
+          96,
+          69,
+          255
+        ],
+        "heldProposalRGBA": [
+          54,
+          41,
+          31,
+          202
+        ]
+      }
+    ],
+    "meaning": "The old donor-pool feature passed structural tests but damaged real opaque brown material. It is not reused or applied; opaque pigment outcome controls are mandatory."
+  }
+}

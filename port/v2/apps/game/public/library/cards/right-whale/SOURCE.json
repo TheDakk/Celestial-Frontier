@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Right Whale",
+ "fitDir": "audits/C234_PROGRAM_20261011/phase1/rebound-new/c215program-46-right-whale/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "be1f6e56137110a8ba78cc462648d0ae4391d1fd1d3816f99548f74744184562"
+}

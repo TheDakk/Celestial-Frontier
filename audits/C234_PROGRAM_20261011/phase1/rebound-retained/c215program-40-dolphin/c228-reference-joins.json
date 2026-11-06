@@ -1,0 +1,47 @@
+{
+  "sourceFit": "audits/C228_PROGRAM_20261011/phase1/sources/c215program-40-dolphin",
+  "sourceBindingSha256": "6d412d3da5b91ca847b3c03386c2f4a2a07faf5ba4d4c653648eab393bb29f09",
+  "candidateBindingSha256": "51e1b93df8230e683f63d30be763d19d42fb6dec5191edf72a3570f596237331",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "far-pectoral"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "dorsal",
+      "mid-body"
+    ],
+    [
+      "dorsal",
+      "pelvic-body"
+    ],
+    [
+      "far-pectoral",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ],
+    [
+      "front-body",
+      "pelvic-body"
+    ],
+    [
+      "front-body",
+      "root"
+    ],
+    [
+      "head",
+      "near-pectoral"
+    ]
+  ],
+  "sourceMasterSha256": "b8987ae848d58a5f0b30c37be7bee7994dc87d1574429e44e1598d3b388ca3da",
+  "sourceAtlasSha256": "666e55176918d933c1e9fc935e2c052562557027156aba5701a1f2aff1f8959c",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

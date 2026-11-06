@@ -1,0 +1,43 @@
+node:internal/child_process:1175
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+Error: spawnSync -- ENOENT
+    at Object.spawnSync (node:internal/child_process:1175:20)
+    at spawnSync (node:child_process:976:24)
+    at file://~/Projects/celestial-frontier-openai-mac/audits/DISK_RECOVERY_20261017/exclusive.mjs:2:176 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawnSync --',
+  path: '--',
+  spawnargs: [
+    'python3',
+    'audits/C475_DECISIONS_20261019/coordinator/freeze-triage.py',
+    'triage-anemone-native-r01',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/tube-worm-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/butterfly-d40-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/ice-worm-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/flatworm-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native',
+    'audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/native',
+    'audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native'
+  ]
+}
+
+Node.js v26.12.0

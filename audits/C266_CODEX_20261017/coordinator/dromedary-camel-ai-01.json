@@ -1,0 +1,21 @@
+{
+  "stage": "dromedary-camel-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-dromedary-camel-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792280039.088425,
+  "beforeGiB": 86.828857421875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 50.768,
+  "lowestGiB": 78.4334945678711,
+  "afterGiB": 84.78771591186523
+}

@@ -1,0 +1,10 @@
+apps/game/src/motion/dry-serpent-victory.test.ts(23,533): error TS2379: Argument of type '{ kind: 'body-card'; contactGeometry?: import('../creature-rig-types.js').CreatureRigRecordV1['geometry']; paintedContactSupports?: { readonly recipeHash: string; readonly bindingHash: string; readonly supports: Readonly<Record<string, import('../creature-rig-contact.js').WeightedContactSupport>>; }; ... 23 more ......' is not assignable to parameter of type 'BodyCard' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'amplitudeProfile' are incompatible.
+    Type '{ schema?: 'cf.motion-amplitude/v1'; scales: { head: number; jaw: number; }; }' is not assignable to type 'AmplitudeProfile'.
+      Property 'schema' is optional in type '{ schema?: "cf.motion-amplitude/v1"; scales: { head: number; jaw: number; }; }' but required in type 'AmplitudeProfile'.
+apps/game/src/motion/dry-serpent-victory.test.ts(23,543): error TS2379: Argument of type '{ kind: 'body-card'; contactGeometry?: import('../creature-rig-types.js').CreatureRigRecordV1['geometry']; paintedContactSupports?: { readonly recipeHash: string; readonly bindingHash: string; readonly supports: Readonly<Record<string, import('../creature-rig-contact.js').WeightedContactSupport>>; }; ... 23 more ......' is not assignable to parameter of type 'BodyCard' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'amplitudeProfile' are incompatible.
+    Type '{ schema?: 'cf.motion-amplitude/v1'; scales: { head: number; jaw: number; }; }' is not assignable to type 'AmplitudeProfile'.
+      Property 'schema' is optional in type '{ schema?: "cf.motion-amplitude/v1"; scales: { head: number; jaw: number; }; }' but required in type 'AmplitudeProfile'.
+apps/game/src/motion/dry-serpent-victory.test.ts(23,650): error TS2538: Type 'undefined' cannot be used as an index type.
+apps/game/src/motion/dry-serpent-victory.test.ts(23,658): error TS7006: Parameter 'k' implicitly has an 'any' type.

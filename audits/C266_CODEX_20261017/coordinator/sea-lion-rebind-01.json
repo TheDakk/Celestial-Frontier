@@ -1,0 +1,20 @@
+{
+  "stage": "sea-lion-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-sea-lion-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "sea-lion"
+  ],
+  "startedUnix": 1792280012.94653,
+  "beforeGiB": 85.88725662231445,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.006,
+  "lowestGiB": 85.88724899291992,
+  "afterGiB": 85.88324737548828
+}

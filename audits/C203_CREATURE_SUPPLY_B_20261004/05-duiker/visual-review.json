@@ -1,0 +1,28 @@
+{
+  "name": "Duiker",
+  "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four distinct hoof endpoints, arched back, short pale-tipped tail and paired short pointed horns are visible. Near ear is clear but far ear is not independently readable. Far foreleg and hindleg upper roots overlap body; no hidden anatomy claim. Fine tail/body fur fringe needs keyed inspection.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 281,
+      "y0": 293,
+      "x1": 1046,
+      "y1": 932
+    },
+    "margins": {
+      "left": 281,
+      "right": 207,
+      "top": 293,
+      "bottom": 321
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

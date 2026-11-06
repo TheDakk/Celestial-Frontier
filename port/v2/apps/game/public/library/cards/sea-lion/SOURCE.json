@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sea Lion",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/rebound/c266-09-sea-lion/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c5ffff64dde6956060991ca6585f5d2b6d3f97cac4e78a4201a8c74c6d5c791a"
+}

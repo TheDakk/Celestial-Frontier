@@ -1,0 +1,21 @@
+{
+  "stage": "finish-godwit-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-godwit-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275350.773327,
+  "beforeGiB": 92.75063705444336,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.635,
+  "lowestGiB": 82.34683227539062,
+  "afterGiB": 90.71156311035156
+}

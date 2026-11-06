@@ -1,0 +1,74 @@
+{
+  "name": "Capybara",
+  "family": "quadruped",
+  "species": {
+    "name": "Capybara",
+    "aspect": 2,
+    "headFrac": 0.28,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "blunt squared-off brick-shaped head",
+      "no visible tail",
+      "barrel body on short partly webbed legs"
+    ],
+    "note": "Eyes, ears and nostrils sit high on the head; the rump is higher than the shoulders."
+  },
+  "genome": {
+    "seed": 1491646007,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 3,
+    "body": 7,
+    "loco": 14,
+    "trait": 18,
+    "size": 3,
+    "diet": 3,
+    "head": 9,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 2,
+    "accent": 16,
+    "temper": 5,
+    "sense": 3,
+    "repro": 3,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Capybara"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Capybara\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1491646007\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 177,
+  "profile": {
+    "id": "aquatic-pawed-mammal",
+    "names": [
+      "River Otter",
+      "Otter",
+      "Giant Otter",
+      "Sea Otter",
+      "Beaver",
+      "Capybara",
+      "Water Vole",
+      "Marsh Rodent"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

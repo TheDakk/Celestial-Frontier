@@ -1,0 +1,68 @@
+[
+  {
+    "id": "c243b06r1c1-19-boa",
+    "packetId": "c243b06r1c1-19-boa",
+    "name": "Boa",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-19-boa",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-19-boa-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-19-boa"
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "packetId": "c243b06r1c1-22-mountain-viper",
+    "name": "Mountain Viper",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-22-mountain-viper",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-22-mountain-viper-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-22-mountain-viper"
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "packetId": "c243b06r1c1-23-rattlesnake",
+    "name": "Rattlesnake",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-23-rattlesnake",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-23-rattlesnake-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-23-rattlesnake"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "packetId": "c196quadrupedoriginals-20-monkey",
+    "name": "Monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c196quadrupedoriginals-20-monkey",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c196quadrupedoriginals-20-monkey-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/c196quadrupedoriginals-20-monkey/score.json",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/c196quadrupedoriginals-20-monkey/packet"
+  },
+  {
+    "id": "c243b06r1c2-11-gibbon",
+    "packetId": "c243b06r1c2-11-gibbon",
+    "name": "Gibbon",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-03/c243b06r1c2-11-gibbon",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/c2-native/c243b06r1c2-11-gibbon-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-11-gibbon",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-11-gibbon/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2c/c243b06r1c2-11-gibbon/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-11-gibbon"
+  },
+  {
+    "id": "c243b06r1c2-24-snake",
+    "packetId": "c243b06r1c2-24-snake",
+    "name": "Snake",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-03/c243b06r1c2-24-snake",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/c2-native/c243b06r1c2-24-snake-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-24-snake",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-24-snake/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2e/c243b06r1c2-24-snake/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c2-24-snake"
+  }
+]

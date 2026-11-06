@@ -1,0 +1,20 @@
+{
+  "stage": "finish-vole-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-r02-rebind",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02"
+  ],
+  "startedUnix": 1792380303.280221,
+  "beforeGiB": 55.084224700927734,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.004,
+  "lowestGiB": 55.08422088623047,
+  "afterGiB": 55.08021545410156
+}

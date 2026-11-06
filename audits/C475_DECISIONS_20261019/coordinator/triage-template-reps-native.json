@@ -1,0 +1,30 @@
+{
+  "stage": "triage-template-reps-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-representatives-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C475_DECISIONS_20261019/coordinator/freeze-triage.py",
+    "triage-template-reps-native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cricket-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native"
+  ],
+  "startedUnix": 1792460036.369088,
+  "beforeGiB": 55.68923568725586,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 48.171,
+  "lowestGiB": 55.66972732543945,
+  "afterGiB": 55.669498443603516
+}

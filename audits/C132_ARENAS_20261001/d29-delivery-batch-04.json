@@ -1,0 +1,61 @@
+{
+  "schema": "cf.c132-d29-delivery-batch/v1",
+  "date": "2026-10-02",
+  "newTriplets": 3,
+  "selectedPaintings": 9,
+  "mechanicalCandidateChecksPassed": 6,
+  "registrationCorrectlyRefused": 3,
+  "sourceAndInputHashesChecked": 60,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "nativeRun": false,
+  "rows": [
+    {
+      "id": "banded-v2",
+      "biome": "banded",
+      "manifest": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery-review.json",
+      "reviewSha256": "a845ecf17f61c2bc99a40857469c2c2d90589be27181b277b68a63e0cc6dd5ae",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native 1672\u00d7941 composite inspected full size. The edited FAR has no visible planets or moons and retains continuous cream-tan atmospheric cloud bands.",
+        "The MID produces conspicuous thin clipped wisps and hard step-like cloud edges on both sides. A flat brighter registration band spans the middle and the NEAR forms another bright horizontal seam at the bottom. Small pink/key-colored remnants remain along some cloud contours.",
+        "The layers are cloud AIR imagery, not solid ground; proper airborne creature anchoring and physical-medium compatibility are not proven by alpha checks.",
+        "Visual acceptance, parallax continuity, moving-rig occlusion and native performance remain held. qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "ammonia-v2",
+      "biome": "ammonia",
+      "manifest": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery-review.json",
+      "reviewSha256": "86a3f370cb6949f3c4718812f37fe38f5e19f5e428be4407e7f226834f50d096",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native 1672\u00d7941 composite inspected full size. The edited FAR removes the celestial bodies and the solid icy spires; FAR and MID now read primarily as lavender-gray and pale-cyan cloud banks.",
+        "The MID clouds have pale cyan and pink patches along side silhouettes. The keyed edge is visibly hard against the FAR cloud depth; the NEAR creates a pronounced separate pastel band along the bottom.",
+        "Cloud plane is an authoring registration surface for AIR, not solid floor. Atmospheric softness, magenta contamination, cloud color conservation, parallax seams and moving airborne-rig placement all need review.",
+        "No visual acceptance, medium admission, runtime registration or native performance claim is made. qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "magmasea-v2",
+      "biome": "magmasea",
+      "manifest": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery-review.json",
+      "reviewSha256": "9476e6443ade9e73294587402090120d37b117c956b81b85c397e0bb1c3eea38",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native 1672\u00d7941 composite inspected full size. The sun disk is removed from FAR; the cooled dark fighting shelf remains continuous and the lower NEAR no longer covers the fighting path.",
+        "The MID repeats an orange lava horizon across the central FAR lava sea; its hard contour is visible. Green/pink key-edge remnants remain on some side rock edges.",
+        "The NEAR makes a bright warm lower seam and a distinct change of ground texture. Some orange crack-like highlights remain in the cooled floor; staging review must confirm they read as harmless surface lighting rather than hazards across the runway.",
+        "The vivid molten background and warm lighting need full-size readability and actual creature contact review. Mechanics are green, while visual acceptance, physical-medium admission, parallax and native proof remain held."
+      ]
+    }
+  ],
+  "remainingHeldIntakeFamilies": [
+    "glass"
+  ],
+  "scope": "Glass original and bounded successor remain dimension-refused and unchanged; its separate final canvas-reference attempt is not part of this delivery. Every visual/physical-medium and native admission remains held."
+}

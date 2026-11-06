@@ -1,0 +1,9 @@
+{
+  "status": "CORRECTED_COPY_STRUCTURE_UNCHANGED_TEST",
+  "firstTargetedTest": "c436-guide-release-test.log",
+  "reason": "The existing bulletin guard requires121bullets; a standalone draft note made122. The eel fix is now included in the existing motion bug-fix bullet.",
+  "testOrInventoryRulerChanged": false,
+  "productionVersionChanged": false,
+  "newRuntimeInput": "port/v2/apps/game/src/release-content.ts",
+  "I5RecertificationRequired": true
+}

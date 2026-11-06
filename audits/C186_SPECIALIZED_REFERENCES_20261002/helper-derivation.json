@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c186-helper-derivation/v1",
+  "derivations": [
+    {
+      "source": "audits/C183_REFERENCE_SUCCESSORS_20261002/write-observed-packet.mjs",
+      "sourceSha256": "a4783e5c5d2ff99f9ccde8aba8428a73f8519c6bfb8ae21ff2b408c25acd738a",
+      "target": "audits/C186_SPECIALIZED_REFERENCES_20261002/write-observed-packet.mjs",
+      "targetSha256": "6ad09ee287c42221d9fd3aeb542b64ea632de9d1723959d0d0c23c67549e2ae3",
+      "change": "Audit output base only",
+      "checksChanged": false
+    },
+    {
+      "source": "audits/C183_REFERENCE_SUCCESSORS_20261002/verify-and-preview.mjs",
+      "sourceSha256": "a0b74974c174c1935cfb6fa095d30b9188d0bf75d2175f3a50dd106e99928cf9",
+      "target": "audits/C186_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "targetSha256": "5fb70eb9e7d911e33717b08123211f1a1e299526d61608e4a8df1b999eba5855",
+      "change": "Audit output base only",
+      "checksChanged": false
+    },
+    {
+      "source": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+      "sourceSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+      "target": "audits/C186_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs",
+      "targetSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+      "change": "Three sourceLandmarksReused flags true for declared retained prior geometry; no acceptance changes",
+      "checksChanged": false
+    }
+  ]
+}

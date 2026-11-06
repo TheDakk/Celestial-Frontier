@@ -1,0 +1,16 @@
+[
+  {
+    "name": "empty-selection",
+    "status": "FAILED_AS_EXPECTED",
+    "exitCode": 1,
+    "sourceSha256": "5af9f5d2457294af51c7fa2e4e7376c57c20367b62ee309f717f1948c986d343",
+    "reason": "AssertionError"
+  },
+  {
+    "name": "erase-observed-boundary-guard",
+    "status": "FAILED_AS_EXPECTED",
+    "exitCode": 1,
+    "sourceSha256": "4ab8a26a22dbba776f16c4b4d22ea8954d9f2ed2408297051097e75507c92de1",
+    "reason": "Missing expected exception"
+  }
+]

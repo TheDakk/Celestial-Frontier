@@ -1,0 +1,75 @@
+{
+  "schema": "cf.c198-hold-queue-pending/v1",
+  "status": "IN_PROGRESS",
+  "qualityAccepted": false,
+  "native": false,
+  "rows": [
+    {
+      "subject": "Hawk",
+      "status": "PRESERVE_ACCEPTED",
+      "reason": "C190 accepted; no newer actual selected-fit refusal was supplied. No source edited."
+    },
+    {
+      "subject": "Snowy Owl",
+      "status": "PRESERVE_ACCEPTED",
+      "reason": "C190 accepted; no newer actual selected-fit refusal was supplied. No source edited."
+    },
+    {
+      "subject": "Rhea",
+      "status": "SOURCE_ANATOMY_HOLD",
+      "evidence": "04-rhea-source-hold/source-review.json"
+    },
+    {
+      "subject": "Snow Petrel",
+      "status": "STATIC_PASS_VISUAL_RED",
+      "candidate": "03-snow-petrel-open/fit01",
+      "reason": "Initial independent new-source fit retains root-owned silhouette strips and a wide axial opening in full-size faint; unchanged D28/observed-boundary successor pending measurement release."
+    },
+    {
+      "subject": "Tiger Shark",
+      "status": "STATIC_PASS_VISUAL_RED",
+      "candidate": "02b-tiger-shark-habitat/fit01",
+      "reason": "Real upper-lobe notch retained in new source; detached silhouette strips and pectoral/body gap remain in actual-rig software review. Unchanged D28/source-boundary successor pending."
+    },
+    {
+      "subject": "Capuchin old-source seam",
+      "status": "STATIC_PASS_VISUAL_IMPROVEMENT_HELD",
+      "candidate": "01-capuchin-fringes/islands-01/fit",
+      "reason": "D28 moved 1469 remainder pixels; detached hindleg strip disappears at retained faint comparison. Native/full-stage neck seam remains unmeasured."
+    },
+    {
+      "subject": "Prawn",
+      "status": "RETAIN_CURRENT_SOURCE_HOLD",
+      "candidate": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+      "reason": "Current distal-contour source successor already removes earlier free-tip flecks. Pink source fringe persists. Attack/runtime owner is separate and unchanged in this lane."
+    },
+    {
+      "subject": "Shrimp",
+      "status": "SOURCE_OWNERSHIP_INVESTIGATION_PENDING",
+      "candidate": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01",
+      "reason": "Distal flecks improved; rear underside opening persists. Earlier widened proximal-mask candidate worsened notch and is not repeated."
+    },
+    {
+      "subject": "Capybara C248",
+      "status": "SOURCE_CORRECTION_PREPARED",
+      "candidate": "05-capybara-tail-absence",
+      "reason": "Old transferred packet invented external tail on rump. Canonical subject and full-size source require no visible tail. Only tail inventory/regions removed; intake pending CPU release."
+    },
+    {
+      "subject": "Fishing Cat C239",
+      "status": "BOUNDED_DIAGNOSIS_PENDING",
+      "reason": "Old static idle@1341.1793329101056ms and alert@122ms exceed unchanged scale compression bound."
+    },
+    {
+      "subject": "Water Beetle C248",
+      "status": "STATIC_RED_RETAINED",
+      "reason": "Old cast@340.5833333333333ms, hit@326.25ms, tame@90.66666666666667ms scale compression refusal; six-chain source visibility needs assessment."
+    },
+    {
+      "subject": "Carrion Beetle C248",
+      "status": "SOURCE_ANATOMY_HOLD",
+      "reason": "Full-size image has only four clearly complete root-to-tip walking paths. Missing exact landmark inventory cannot be repaired by inventing two limbs."
+    }
+  ],
+  "remainingC239C248": "Other recorded transferred-reference anatomy refusals remain unqualified. A transfer miss alone is not evidence the source anatomy is absent."
+}

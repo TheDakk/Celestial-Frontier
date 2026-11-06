@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-reference-visual-review/v1",
+  "name": "Cat",
+  "masterSha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8",
+  "method": "Full original visual inspection of the exact candidate-02 painting",
+  "observation": "Brown striped tabby with two upright triangular ears, short muzzle, visible slit pupil and whiskers, long complete tail and four pale paws. Far upper limb roots remain body-occluded; no all-visible anatomy claim. Both triangular ears, full whiskered head, long continuous tail and four white paw endpoints are visible. Far upper limbs remain torso-occluded; roots describe a candidate partition of observed paint, not a claim about hidden anatomy. Foreleg shafts are separated below the chest. Fur fringes, whiskers, ear/head seams and the lower tail curve require unchanged intake/static/native review.",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 283,
+      "y0": 424,
+      "x1": 942,
+      "y1": 808
+    },
+    "margins": {
+      "left": 283,
+      "right": 311,
+      "top": 424,
+      "bottom": 445
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "status": "CANDIDATE_UNMEASURED",
+  "scope": "Manual authoring reference only; no intake/static/native/default-pool/Dakk acceptance."
+}

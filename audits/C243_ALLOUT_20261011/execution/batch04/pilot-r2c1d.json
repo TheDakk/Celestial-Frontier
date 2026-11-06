@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b04r2c1-14-cockatoo",
+    "name": "Cockatoo",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-14-cockatoo",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-14-cockatoo/master.png"
+  },
+  {
+    "id": "c243b04r2c1-15-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-15-egret",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-15-egret/master.png"
+  },
+  {
+    "id": "c243b04r2c1-16-frigatebird",
+    "name": "Frigatebird",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-16-frigatebird",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-16-frigatebird/master.png"
+  },
+  {
+    "id": "c243b04r2c1-17-hoatzin",
+    "name": "Hoatzin",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-17-hoatzin",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-17-hoatzin/master.png"
+  }
+]

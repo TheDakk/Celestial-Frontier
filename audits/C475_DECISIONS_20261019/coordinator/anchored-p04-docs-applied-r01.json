@@ -1,0 +1,26 @@
+{
+  "status": "EXACT_SHA_VERIFIED_THREE_DOC_METADATA_PROPOSALS_APPLIED_VALIDATION_REFRESH_PENDING",
+  "rows": [
+    {
+      "path": "MOTION_KIT.md",
+      "beforeSha256": "0a58557c5ecb2fe0d719f96d5bc9fecfb88a692f89cb5bc7820274099dacb80e",
+      "copy": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/p04-docs-r01/MOTION_KIT.md",
+      "sha256": "b5d20752d6ba8d894559fe32d859462df042ad0adf702d360939bb678cb6766a",
+      "exactUniqueParagraphReplacement": true
+    },
+    {
+      "path": "port/v2/tools/painted-creature/README.md",
+      "beforeSha256": "cabc4fdd2f02df6341b73162d0307d7d67ca132446df7193a347fb40e129dcee",
+      "copy": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/p04-docs-r01/port/v2/tools/painted-creature/README.md",
+      "sha256": "1584e2430596ca9e8d35ce6bfa3bce03a4fc4c5b7d65c234f5184af25588a90b",
+      "exactUniqueParagraphReplacement": true
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/runtime-change-list.json",
+      "beforeSha256": "950e1f465ff7a4d0c7d566be4196ee957ac3af16898080382d5ec882753c4954",
+      "copy": "audits/C475_DECISIONS_20261019/w4-review/approved-six-scope-r01/p04-docs-r01/audits/C475_DECISIONS_20261019/coordinator/runtime-change-list.json",
+      "sha256": "1d6add4c433cd72b2301b1b3bb9bbe6fd3428e938045b5d6a882a5f14ee7dcff",
+      "scope": "Replace parent18 metadata with current23+historical18, types5/tests16 and currentvalidation-pending status."
+    }
+  ]
+}

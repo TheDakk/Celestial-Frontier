@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Frilled Lizard",
+  "slug": "24-frilled-lizard-a02",
+  "id": "c266-intake-frilled-lizard",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-27-frilled-lizard",
+  "masterSha256": "b8c4f038ceb023dbbe5f67c9a941c182b85ad43dc45d077c2ec6daa02cf4abfb",
+  "masterCopySha256": "b8c4f038ceb023dbbe5f67c9a941c182b85ad43dc45d077c2ec6daa02cf4abfb",
+  "subjectSourceSha256": "00dca4d080078fa1508a157abbc955c31794149eba399a23891ff5acd946254b",
+  "promptSha256": "6cc62e13bf36e4f4263fcd7a07baac01e5d815c3c7a7d8ca4c7946a6a9528106",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part tail3 (tail3) covers 5% paint (reference 20%); unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 8.3%)",
+  "observation": "Full-size review: frilled lizard standing right; huge circular frill fanned behind the head (x≈700-1010, y≈420-700), gaping pink mouth at the frill centre, very long banded whip tail curling up at the tip (x≈165-590), four separate clawed limbs (hind near x≈525-645, hind far x≈682-770, fore near x≈776-860, fore far x≈826-940). The frill is the canonical marker, owned here by the neck; the \"unexplained\" paint is the frill and the curled tail, not extra anatomy.",
+  "joints": 27,
+  "parts": 27,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/24-frilled-lizard-a02.mjs"
+}

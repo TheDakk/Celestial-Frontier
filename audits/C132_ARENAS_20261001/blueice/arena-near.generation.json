@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-214a04fc-0479-4076-bf41-d6b343b62073.png",
+  "sourceSha256": "ae09468de474ba9f96d0d327905af57b107534fe1589c60b7fd6d588ff19f2f4",
+  "retainedMaster": "audits/C132_ARENAS_20261001/blueice/arena-near.png",
+  "retainedSha256": "ae09468de474ba9f96d0d327905af57b107534fe1589c60b7fd6d588ff19f2f4",
+  "bytes": 1145317,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/blueice/arena-near.prompt.txt",
+    "sha256": "df87c345cd420e6d704f20cd9da9b92592574ee8da61c3d3ab712ae9c2ac54a6"
+  },
+  "status": "REVIEW_PENDING",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

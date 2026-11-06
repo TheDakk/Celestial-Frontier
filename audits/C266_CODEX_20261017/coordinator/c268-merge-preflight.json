@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "ownHead": "b0001622adb529f2213d067634f5482dbc30618e",
+  "peerHead": "b5a3e543bfaf7889d6df26b4c0564c09ccfc6e73",
+  "newCommits": [
+    "b5a3e543bfaf7889d6df26b4c0564c09ccfc6e73 G"
+  ],
+  "changedPaths": 437,
+  "scope": "C268 audits +peer mailbox only",
+  "independentVerifierAbsent": true,
+  "inferenceEligible": false,
+  "rootValidateLogSha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+}

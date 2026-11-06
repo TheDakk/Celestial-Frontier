@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Caiman",
+  "family": "quadruped",
+  "masterSha256": "c354ffbeb27e5b7bfa9c120e5685be5b780cda8f9baec704230e228a04ffe8ec",
+  "subjectSha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+  "promptSha256": "90c6b81e02e2f35f41a1a21a02a2a9de7177b3dffa8adf5bb39b05071b925b7d",
+  "profileId": "crocodilian",
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: complete connected side-on caiman, four visible foot endpoints, broad closed snout and rows of dorsal scutes. The far proximal limbs are partially occluded; no all-visible anatomy claim. Tail and snout are inside canvas but side margins appear below the requested 8 percent; retain framing hold if measured. Subject is larger than the requested half-canvas composition.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/01-caiman/visual-review.json",
+    "sha256": "02903c32150405a528a7c59f3ae3c9318d5cdee5e8427503c8ac7172b8519e24"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

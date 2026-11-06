@@ -1,0 +1,33 @@
+{
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    4407,
+    4829,
+    1787,
+    3396,
+    4001,
+    3540,
+    5110,
+    4217,
+    6330,
+    11607,
+    11819,
+    94188,
+    5826,
+    15413,
+    6539,
+    13848,
+    31888
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "body"
+}

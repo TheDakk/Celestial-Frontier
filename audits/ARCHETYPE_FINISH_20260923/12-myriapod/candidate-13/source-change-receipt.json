@@ -1,0 +1,55 @@
+{
+  "schema": "cf.centipede-local-source-sampling-amendment/v1",
+  "candidate": "candidate-13",
+  "sourceCandidate": "candidate-12",
+  "sourceAuthoringSha256": "227856f7ad2e1c7cf2a2f3c6a934b0a8685e87e97c24a53acb51602d84969485",
+  "authoringSha256": "c35625a9055561a7ba5e07c699466716916717321595b93ccda9ddd8a9aaf97d",
+  "samePaint": true,
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "e2a3c20aa01761a105f895586902105643612338d9257bddf98298251ac42323",
+    "request.json": "38c211721f20f43e020234f2f799d3292f7ab77247e9a35d31fa22b10d1da000",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "6778a1f3ca5cdf32b4732f32a78c971acc76a49f331f127df9f3d74004d82b0a",
+    "upper-shaft-proposal.json": "595bb48eae5f0e6522915c0dfb4269edf4c649ae068fc18d2fe283947f5777a5"
+  },
+  "change": {
+    "refinementIndex": 8,
+    "before": {
+      "x": 812,
+      "y": 570,
+      "width": 62,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    "after": {
+      "x": 812,
+      "y": 570,
+      "width": 62,
+      "height": 74,
+      "boundaryStep": 4,
+      "interiorStep": 32
+    }
+  },
+  "evidence": {
+    "path": "static-paint-diagnosis06/weld-stencil-fit10.json",
+    "sha256": "ada27ce27ca39ac546a42f6b68ef947f885368430442c00370c4d92a2a938515",
+    "finding": "Only two real gold supports1621[841,617] and1643[851,622] conflict with the soft upper-shaft region; all joining body/leg stencil coefficients at each support are exactly zero. Retained source geometry conservatively includes these triangle corners despite distances3.606\u20137.616px."
+  },
+  "preserved": {
+    "sourceRGBA": true,
+    "masks": 32,
+    "landmarks": 63,
+    "fixedSockets": 31,
+    "regionalInfluences": 32,
+    "otherRefinements": 15,
+    "interiorStep": 32,
+    "materials": true,
+    "contacts": true,
+    "inheritedPinPolicy": true,
+    "numericalLimits": true
+  },
+  "qualification": "Authoring only. No intake, field compiler, diffusion, solver, motion/static/native run or tests executed."
+}

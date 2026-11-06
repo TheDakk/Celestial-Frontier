@@ -1,0 +1,354 @@
+{
+  "kind": "anchored-skeleton-soft-polyps",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Deep-Water Coral\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1614108536\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"0\"]]]]",
+    "seed": 1614108536,
+    "ownerId": "authored:archetype-sprint/c475-deep-water-coral-r02",
+    "earthName": "Deep-Water Coral"
+  },
+  "template": {
+    "id": "anchored-skeleton-soft-polyps",
+    "version": 1
+  },
+  "clipSetId": "anchored-skeleton-soft-polyps-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "polypFields": 20
+    }
+  },
+  "genome": {
+    "seed": 1614108536,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 1,
+    "body": 4,
+    "loco": 4,
+    "trait": 0,
+    "size": 1,
+    "diet": 0,
+    "head": 9,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 4,
+    "habitat": 4,
+    "detail": 2,
+    "accent": 16,
+    "temper": 0,
+    "sense": 5,
+    "repro": 3,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Deep-Water Coral"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.740829346092504,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4784688995215311,
+      0.7272727272727273
+    ],
+    "skeleton": [
+      0.4944178628389155,
+      0.6379585326953748
+    ],
+    "polyp0Base": [
+      0.5175438596491229,
+      0.3197767145135566
+    ],
+    "polyp0Tip": [
+      0.5159489633173844,
+      0.3022328548644338
+    ],
+    "polyp1Base": [
+      0.5606060606060606,
+      0.3078149920255183
+    ],
+    "polyp1Tip": [
+      0.5614035087719298,
+      0.284688995215311
+    ],
+    "polyp2Base": [
+      0.6140350877192983,
+      0.36044657097288674
+    ],
+    "polyp2Tip": [
+      0.6108452950558214,
+      0.3437001594896332
+    ],
+    "polyp3Base": [
+      0.45773524720893144,
+      0.3660287081339713
+    ],
+    "polyp3Tip": [
+      0.45454545454545453,
+      0.3444976076555024
+    ],
+    "polyp4Base": [
+      0.42424242424242425,
+      0.39473684210526316
+    ],
+    "polyp4Tip": [
+      0.4194577352472089,
+      0.3803827751196172
+    ],
+    "polyp5Base": [
+      0.32854864433811803,
+      0.44019138755980863
+    ],
+    "polyp5Tip": [
+      0.32137161084529503,
+      0.4258373205741627
+    ],
+    "polyp6Base": [
+      0.37719298245614036,
+      0.4529505582137161
+    ],
+    "polyp6Tip": [
+      0.37559808612440193,
+      0.4393939393939394
+    ],
+    "polyp7Base": [
+      0.2783094098883573,
+      0.5422647527910686
+    ],
+    "polyp7Tip": [
+      0.2687400318979266,
+      0.5159489633173844
+    ],
+    "polyp8Base": [
+      0.31738437001594894,
+      0.5334928229665071
+    ],
+    "polyp8Tip": [
+      0.3118022328548644,
+      0.5167464114832536
+    ],
+    "polyp9Base": [
+      0.41068580542264754,
+      0.5207336523125997
+    ],
+    "polyp9Tip": [
+      0.40749601275917063,
+      0.5
+    ],
+    "polyp10Base": [
+      0.47208931419457734,
+      0.474481658692185
+    ],
+    "polyp10Tip": [
+      0.4649122807017544,
+      0.4585326953748006
+    ],
+    "polyp11Base": [
+      0.43859649122807015,
+      0.543859649122807
+    ],
+    "polyp11Tip": [
+      0.43221690590111644,
+      0.5263157894736842
+    ],
+    "polyp12Base": [
+      0.47208931419457734,
+      0.5342902711323764
+    ],
+    "polyp12Tip": [
+      0.4800637958532695,
+      0.5079744816586922
+    ],
+    "polyp13Base": [
+      0.5462519936204147,
+      0.5813397129186603
+    ],
+    "polyp13Tip": [
+      0.5462519936204147,
+      0.5677830940988836
+    ],
+    "polyp14Base": [
+      0.6945773524720893,
+      0.41706539074960125
+    ],
+    "polyp14Tip": [
+      0.6921850079744817,
+      0.39952153110047844
+    ],
+    "polyp15Base": [
+      0.6547049441786283,
+      0.4266347687400319
+    ],
+    "polyp15Tip": [
+      0.6555023923444976,
+      0.41148325358851673
+    ],
+    "polyp16Base": [
+      0.7256778309409888,
+      0.4665071770334928
+    ],
+    "polyp16Tip": [
+      0.7360446570972887,
+      0.4449760765550239
+    ],
+    "polyp17Base": [
+      0.5988835725677831,
+      0.47607655502392343
+    ],
+    "polyp17Tip": [
+      0.5964912280701754,
+      0.45773524720893144
+    ],
+    "polyp18Base": [
+      0.6626794258373205,
+      0.5996810207336523
+    ],
+    "polyp18Tip": [
+      0.6658692185007975,
+      0.5789473684210527
+    ],
+    "polyp19Base": [
+      0.6172248803827751,
+      0.6108452950558214
+    ],
+    "polyp19Tip": [
+      0.6140350877192983,
+      0.5925039872408293
+    ]
+  },
+  "materials": {
+    "surface": "plated",
+    "joints": {
+      "polyp0Tip": "slick",
+      "polyp1Tip": "slick",
+      "polyp2Tip": "slick",
+      "polyp3Tip": "slick",
+      "polyp4Tip": "slick",
+      "polyp5Tip": "slick",
+      "polyp6Tip": "slick",
+      "polyp7Tip": "slick",
+      "polyp8Tip": "slick",
+      "polyp9Tip": "slick",
+      "polyp10Tip": "slick",
+      "polyp11Tip": "slick",
+      "polyp12Tip": "slick",
+      "polyp13Tip": "slick",
+      "polyp14Tip": "slick",
+      "polyp15Tip": "slick",
+      "polyp16Tip": "slick",
+      "polyp17Tip": "slick",
+      "polyp18Tip": "slick",
+      "polyp19Tip": "slick"
+    }
+  },
+  "source": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/packets/deep-water-coral-r02/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "originalSource": {
+      "path": "audits/C243_ALLOUT_20261011/execution/batch05/c243b05r1c1-15-deep-water-coral/master.png",
+      "sha256": "d57c708417b1d1af1b8898a99d1a82b287fdc3fba44397ebf416aa1af228f081",
+      "bytes": 1502618,
+      "rgbaSha256": "4c296bce4654fcd66b23ff9730e287b8a0c1f4d9b41d18669b4ae76537c3a635"
+    },
+    "canonical": {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/sources/deep-water-coral/first-canonical-keyed.png",
+      "sha256": "4d7c6d6b8e9c9a6c431447d1c457680f25419427ad8d3c165da36a0ee36ae8ef",
+      "bytes": 1617183,
+      "rgbaSha256": "46031ae618f6113bc5210e6d95c258b97b67bbc800f55cd23b965ba603b19f96",
+      "origin": "First actual current unchanged intake freeze: no prior stored canonical fit located for this source. New receipt makes no historical canonical claim."
+    },
+    "derivative": {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/radial-materials-r01/sources/deep-water-coral/derivative-r01/master.png",
+      "sha256": "8ca7eb16ae872a80818245abb8034a79cc85966f979bae94e5a1e5fd8d3a8216",
+      "bytes": 1614070,
+      "rgbaSha256": "1b2a6815c4d32f5ca28d153d9864e33196ca4808a5d7beac72b5aa087db0633d"
+    },
+    "sourceLandmarksReused": false,
+    "sourceLabelsReused": false,
+    "sourceObservation": "Twenty directly exposed tentacle-bearing oral crown fields manually observed on this exact painting. This is a representation inventory, not an individual-polyp biological census. All cream granular branching skeleton, calyx/cup walls and apparently retracted empty stumps remain retained fixed source paint. Soft crown envelopes carry exposed oral discs/tentacle rings only; no hidden flesh or new layers.",
+    "representativeSelection": "ONE independently source-authored alternate mixed-colony reference after Cold r06 granular-branch/soft crossing HOLD, not propagation from a held source.",
+    "materialBoundaryCaveat": "Exact cream oral rim-to-calyx material boundaries require independent source review. Static or all-paint equality cannot clear a wrong source owner.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "fc7f8950d657297040c1eccaea1767baeb6a214e7461625a861073fdc6038a70",
+    "subjectSourceSha256": "5aea2e9256538a83cf66c523e2138249bceb0fb4f9d4f2a6c7a2fdf7b4d1f6ff",
+    "presenceSha256": "cdd5ad25a4e7b7901a1979a91a4337f8fbe55b4c8e593520cf13d3cb85b01fe3",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "skeleton": 0.09072703447099133,
+      "polyp0Base": 0.31902112962929796,
+      "polyp0Tip": 0.017616205769038697,
+      "polyp1Base": 0.3367129860425522,
+      "polyp1Tip": 0.023139741831813245,
+      "polyp2Base": 0.30219392678733265,
+      "polyp2Tip": 0.017047494678175373,
+      "polyp3Base": 0.274392863929536,
+      "polyp3Tip": 0.021766098985576052,
+      "polyp4Base": 0.2531430089015336,
+      "polyp4Tip": 0.015130515120422895,
+      "polyp5Base": 0.25811710780406905,
+      "polyp5Tip": 0.016048334766744936,
+      "polyp6Base": 0.2190196867922197,
+      "polyp6Tip": 0.013650113850577099,
+      "polyp7Base": 0.23634754694952395,
+      "polyp7Tip": 0.028001674427558906,
+      "polyp8Base": 0.20555763690569948,
+      "polyp8Tip": 0.017652267640493265,
+      "polyp9Base": 0.14405807863468514,
+      "polyp9Tip": 0.020977586025464002,
+      "polyp10Base": 0.16499470421324858,
+      "polyp10Tip": 0.017489403667831985,
+      "polyp11Base": 0.109410353340622,
+      "polyp11Tip": 0.01866778295170598,
+      "polyp12Base": 0.10604561537403062,
+      "polyp12Tip": 0.027497511402817625,
+      "polyp13Base": 0.07676241180930707,
+      "polyp13Tip": 0.013556618819776656,
+      "polyp14Base": 0.298089921749945,
+      "polyp14Tip": 0.01770622273618382,
+      "polyp15Base": 0.2652351440828632,
+      "polyp15Tip": 0.015172486116778712,
+      "polyp16Base": 0.28788320584026633,
+      "polyp16Tip": 0.023896848586557766,
+      "polyp17Base": 0.19266255267689236,
+      "polyp17Tip": 0.018496672256368717,
+      "polyp18Base": 0.17256048651022646,
+      "polyp18Tip": 0.0209775860254639,
+      "polyp19Base": 0.1257644274559255,
+      "polyp19Tip": 0.018616614880269215
+    },
+    "measures": {
+      "body": 0.09072703447099133,
+      "bone-min": 0.013556618819776656,
+      "bone-max": 0.3367129860425522
+    }
+  },
+  "recipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a"
+}

@@ -1,0 +1,15 @@
+✔ tailed target cannot inherit missing tail from cheaper tailless reference; contour judge stays unchanged (1.0505ms)
+✔ explicit admitted absence permits earless reference but never removes a required ear implicitly (0.104334ms)
+✔ no compatible reference stays empty; no joint is synthesized (0.057291ms)
+✔ undeclared extra joints refuse rather than silently discard (0.04825ms)
+✔ unchanged compatible order and legacy callers are preserved (0.062375ms)
+✔ contradictory and malformed inventories refuse (0.168792ms)
+✔ retained Gorilla counterexample demonstrates tail inventory mismatch without borrowing absence (0.154583ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.945041

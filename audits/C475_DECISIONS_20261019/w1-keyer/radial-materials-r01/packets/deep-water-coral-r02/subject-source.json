@@ -1,0 +1,69 @@
+{
+  "name": "Deep-Water Coral",
+  "family": "radial",
+  "species": {
+    "name": "Deep-Water Coral",
+    "aspect": 1,
+    "headFrac": 0,
+    "eyes": "hidden",
+    "posture": "sessile",
+    "mustRead": [
+      "pale branching thicket with no algal colour",
+      "cup polyps opening at the branch tips"
+    ],
+    "note": "generic name - drawn as a Lophelia-type white branching colony, not a tropical reef head"
+  },
+  "genome": {
+    "seed": 1614108536,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 1,
+    "body": 4,
+    "loco": 4,
+    "trait": 0,
+    "size": 1,
+    "diet": 0,
+    "head": 9,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 4,
+    "habitat": 4,
+    "detail": 2,
+    "accent": 16,
+    "temper": 0,
+    "sense": 5,
+    "repro": 3,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Deep-Water Coral"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Deep-Water Coral\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1614108536\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 520,
+  "profile": {
+    "id": "cnidarian",
+    "names": [
+      "Jellyfish",
+      "Portuguese Man-of-War",
+      "Sea Anemone",
+      "Coral",
+      "Cold-Water Coral",
+      "Deep-Water Coral"
+    ],
+    "candidateTemplates": [
+      "radial"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "sting-arms"
+    ],
+    "notes": "Colony/sessile forms need anchored topology, not swimming-bell motion."
+  }
+}

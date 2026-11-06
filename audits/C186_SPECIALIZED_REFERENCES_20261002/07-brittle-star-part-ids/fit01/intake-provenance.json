@@ -1,0 +1,83 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/master.png",
+      "sha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/authoring.json",
+      "sha256": "43a281a12e8f2eff8ffd2f10263d87606ae6f372bfe811409765710eeb62db70"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "0984a2b0e43cc3dc597fe6c4208b93646b6a4ef80ed829f6fac99d2777a98acb",
+  "bindingHash": "23c66c4dcd362052d94b4949af08d638ae9f142003543363307dfe8f6f58771e",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "arm0Seg2",
+    "arm0Seg1",
+    "arm0Seg0",
+    "arm1Seg2",
+    "arm1Seg1",
+    "arm1Seg0",
+    "arm2Seg2",
+    "arm2Seg1",
+    "arm2Seg0",
+    "arm3Seg2",
+    "arm3Seg1",
+    "arm3Seg0",
+    "arm4Seg2",
+    "arm4Seg1",
+    "arm4Seg0",
+    "bell",
+    "centre"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/master.png",
+      "sha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/authoring.json",
+      "sha256": "43a281a12e8f2eff8ffd2f10263d87606ae6f372bfe811409765710eeb62db70",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394",
+      "unchanged": true
+    }
+  ]
+}

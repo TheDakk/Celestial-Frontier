@@ -1,0 +1,230 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007134496218897898,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008034762719046041,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:crawl",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008172642874642784,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007474422457107722,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000857298842603675,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008456343683618003,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000724678414116408,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008172642874642784,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000724678414116408,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007606140475444933,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "4e2890514b9364b8469933dd5a9209c9086c816873bc870e9d03cde484043c3d",
+  "bindingHash": "3510a69c83211e6904f8471dbcc03d1566434adbd67754e2c535d4144708116d",
+  "family": "gastropod",
+  "contacts": [],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:crawl",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 750,
+    "attemptedSamples": 750,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00008572988419428838,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4500.806196331978
+      },
+      {
+        "id": "alert",
+        "startMs": 4500.806196331978,
+        "endMs": 5100.806196331978
+      },
+      {
+        "id": "approach:crawl",
+        "startMs": 5100.806196331978,
+        "endMs": 5800.806196331978
+      },
+      {
+        "id": "cast",
+        "startMs": 5800.806196331978,
+        "endMs": 6690.806196331978
+      },
+      {
+        "id": "hit",
+        "startMs": 6690.806196331978,
+        "endMs": 7420.806196331978
+      },
+      {
+        "id": "dodge",
+        "startMs": 7420.806196331978,
+        "endMs": 8020.806196331978
+      },
+      {
+        "id": "faint",
+        "startMs": 8020.806196331978,
+        "endMs": 8820.806196331978
+      },
+      {
+        "id": "victory",
+        "startMs": 8820.806196331978,
+        "endMs": 9700.806196331978
+      },
+      {
+        "id": "tame",
+        "startMs": 9700.806196331978,
+        "endMs": 10620.806196331978
+      },
+      {
+        "id": "feed",
+        "startMs": 10620.806196331978,
+        "endMs": 11480.806196331978
+      }
+    ],
+    "durationMs": 12480.806196331978
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01/record.json",
+      "sha256": "5b7e65a2c3d84629060110b8fc000501364619edc93669febbe74315348104c7",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01/binding.json",
+      "sha256": "9d322fe71e1b174474cfc60df2e6269ed2017f68ce01c4b57bf72dd48c844f60",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01/parts/manifest.json",
+      "sha256": "68ad46d8f52711de2a4ba0a048310eb22e4d29e112ab1e9dcbfe5e15420fd9d9",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01/parts/atlas/c186-independent-banana-slug.png",
+      "sha256": "3185ed6c88056e494e4ada94da684829ca336caa8997e588f31a4db26380aa1d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01/parts/keyed.png",
+      "sha256": "da5252ba529977f51c5473b61392a48d65704961f37baa03c847c3f5e738a52a",
+      "unchanged": true
+    }
+  ]
+}

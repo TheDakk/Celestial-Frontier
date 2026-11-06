@@ -1,0 +1,20 @@
+{
+  "stage": "soft-materials-independent-owners-r04",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-approved-six-independent-owners",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/run-independent-develop-owners.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-result-r04.json"
+  ],
+  "startedUnix": 1792498726.5690088,
+  "beforeGiB": 54.160404205322266,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.015,
+  "lowestGiB": 54.15753936767578,
+  "afterGiB": 54.15776062011719
+}

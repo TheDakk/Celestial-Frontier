@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Screamer",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep2/c206birdsourcerepaints-19-screamer/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "56d8e16dd6656141b9b2efad202a7f0734cc5d79a4bc4da250e070ecef65baa9"
+}

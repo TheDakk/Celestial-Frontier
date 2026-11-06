@@ -1,0 +1,7 @@
+{
+  "reason": "The first intake inherited an old coverage.repair sentence claiming other landmarks and polygons unchanged. Preserve that text explicitly as historical and describe current amendments truthfully before qualification.",
+  "priorFit": "../fit-01",
+  "geometryChanges": false,
+  "nativeOrStaticConsumedOnPriorFit": false,
+  "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.image-generation-receipt/v1",
+  "runId": "20260923-centipede-paint-03",
+  "tool": "built-in image_gen",
+  "toolOutputPath": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-58476f60-4ee6-4e8c-b302-691dfc848d6f.png",
+  "toolOutputSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "retainedMaster": "master.png",
+  "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "promptSha256": "e2a3c20aa01761a105f895586902105643612338d9257bddf98298251ac42323",
+  "requestSha256": "38c211721f20f43e020234f2f799d3292f7ab77247e9a35d31fa22b10d1da000",
+  "rgbaEdited": false,
+  "visualAcceptance": "pending independent actual count"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Yak",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-13-yak/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "939fd0a67ef3508ac1f690d9e1d7d366f226f85821687d3fe3a0996ecfa27b89"
+}

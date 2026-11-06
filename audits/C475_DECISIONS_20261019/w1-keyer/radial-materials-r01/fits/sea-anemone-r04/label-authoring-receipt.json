@@ -1,0 +1,75 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "pedal-disc",
+      "joint": "base",
+      "owner": "pedal-disc"
+    },
+    {
+      "region": "oral-disc",
+      "joint": "oral",
+      "owner": "oral-disc"
+    },
+    {
+      "region": "upper-crown-envelope",
+      "joint": "crownFar",
+      "owner": "upper-crown-envelope"
+    },
+    {
+      "region": "left-crown-envelope",
+      "joint": "crownLeft",
+      "owner": "left-crown-envelope"
+    },
+    {
+      "region": "right-crown-envelope",
+      "joint": "crownRight",
+      "owner": "right-crown-envelope"
+    },
+    {
+      "region": "near-crown-envelope",
+      "joint": "crownNear",
+      "owner": "near-crown-envelope"
+    },
+    {
+      "region": "left-observed-tip-cap",
+      "joint": "crownLeft",
+      "owner": "left-crown-envelope"
+    },
+    {
+      "region": "oral-observed-control-cut-sliver",
+      "joint": "oral",
+      "owner": "oral-disc"
+    },
+    {
+      "region": "pedal-observed-fold-edge",
+      "joint": "base",
+      "owner": "pedal-disc"
+    },
+    {
+      "region": "soft-column",
+      "joint": "column",
+      "owner": "soft-column"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    31394,
+    12374,
+    24024,
+    36800,
+    46765,
+    18650,
+    17117
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "soft-column"
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "g2c95-17-nilgai",
+    "class": "shoulder faint",
+    "predecessor": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/g2c95-17-nilgai/fit",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/fit",
+    "islands": 0,
+    "joins": 0,
+    "static": 0
+  },
+  {
+    "id": "c202creaturesupply-06-impala",
+    "class": "victory appendage",
+    "predecessor": "audits/C210_BACKLOG_UNLOCKS_20261004/joins01/c202creaturesupply-06-impala/fit",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/fit",
+    "islands": 0,
+    "joins": 0,
+    "static": 0
+  },
+  {
+    "id": "bee",
+    "class": "abdomen ribbon",
+    "predecessor": "audits/C210_CONTINUATION_20261004/inputs/g2c136targetededits-21-bee/fit",
+    "fit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/fit",
+    "islands": 0,
+    "joins": 0,
+    "static": 0
+  }
+]

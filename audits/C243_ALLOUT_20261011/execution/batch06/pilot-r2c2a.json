@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b06r2c2-02-deer-tick",
+    "name": "Deer Tick",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-02-deer-tick",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-02-deer-tick/master.png"
+  },
+  {
+    "id": "c243b06r2c2-03-harvestman",
+    "name": "Harvestman",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-03-harvestman",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-03-harvestman/master.png"
+  },
+  {
+    "id": "c243b06r2c2-04-mite",
+    "name": "Mite",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-04-mite",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-04-mite/master.png"
+  },
+  {
+    "id": "c243b06r2c2-05-pseudoscorpion",
+    "name": "Pseudoscorpion",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-05-pseudoscorpion",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-05-pseudoscorpion/master.png"
+  }
+]

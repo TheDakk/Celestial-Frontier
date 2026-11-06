@@ -1,0 +1,629 @@
+[
+  {
+    "name": "Chiton",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "wrong-family: sessile-filter matches clearly better (0.0101 < 0.0314); wrong-family: sessile-filter matches clearly better (0.0104 < 0.0301); wrong-family: sessile-filter matches clearly better (0.0092 < 0.0311)",
+    "attempts": [
+      {
+        "name": "Chiton",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b07r2c1-02-chiton",
+        "masterSha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+        "promptSha256": "b175a2e3dfeae8776be596540b2f05de5998f2d408a1a6d17c1ff9a58082136d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 240,
+            "y0": 456,
+            "x1": 1013,
+            "y1": 793
+          },
+          "margins": {
+            "left": 240,
+            "right": 240,
+            "top": 456,
+            "bottom": 460
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: sessile-filter matches clearly better (0.0101 < 0.0314)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1a/c243b07r2c1-02-chiton/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Chiton",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b07r2c2-02-chiton",
+        "masterSha256": "dda0a87c27b2ff779b072ae4c7aabc289ebd11b816397571a991a115d6d745f6",
+        "promptSha256": "07f9fc1b547b579f50c8d23062be6a74795802b738d9894e9197327c95e60b0d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 270,
+            "y0": 450,
+            "x1": 983,
+            "y1": 802
+          },
+          "margins": {
+            "left": 270,
+            "right": 270,
+            "top": 450,
+            "bottom": 451
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: sessile-filter matches clearly better (0.0104 < 0.0301)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-02-chiton/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Chiton",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b07r2c3-02-chiton",
+        "masterSha256": "fbfe437b5a09e9d1c3c2518997656eaff1fa4ad6bedad0695356d9dc0e0bcea6",
+        "promptSha256": "26c2c43dd3d77ff75fa31186fbc95e956d8e447dd6e0a477567849f994b64b91",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 236,
+            "y0": 469,
+            "x1": 1016,
+            "y1": 786
+          },
+          "margins": {
+            "left": 236,
+            "right": 237,
+            "top": 469,
+            "bottom": 467
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: sessile-filter matches clearly better (0.0092 < 0.0311)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-02-chiton/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "name": "Land Snail",
+    "family": "gastropod",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family gastropod"
+  },
+  {
+    "index": 6,
+    "name": "Crayfish",
+    "family": "crustacean-clawed",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+  },
+  {
+    "index": 7,
+    "name": "Hermit Crab",
+    "family": "crustacean-clawed",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+  },
+  {
+    "index": 8,
+    "name": "Lobster",
+    "family": "crustacean-clawed",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+  },
+  {
+    "index": 9,
+    "name": "Fruit Bat",
+    "family": "flyer-membrane",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family flyer-membrane"
+  },
+  {
+    "index": 10,
+    "name": "Insect-Eating Bat",
+    "family": "flyer-membrane",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+  },
+  {
+    "index": 11,
+    "name": "Vampire Bat",
+    "family": "flyer-membrane",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+  },
+  {
+    "index": 12,
+    "name": "Centipede",
+    "family": "myriapod",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family myriapod"
+  },
+  {
+    "index": 13,
+    "name": "Giant Centipede",
+    "family": "myriapod",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+  },
+  {
+    "index": 14,
+    "name": "Millipede",
+    "family": "myriapod",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+  },
+  {
+    "index": 15,
+    "name": "Pyrosome",
+    "family": "colonial-filter",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+  },
+  {
+    "index": 16,
+    "name": "Salp",
+    "family": "colonial-filter",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+  },
+  {
+    "index": 17,
+    "name": "Barnacle",
+    "family": "barnacle",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family barnacle"
+  },
+  {
+    "index": 18,
+    "name": "Fly Larvae",
+    "family": "larva",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family larva"
+  },
+  {
+    "index": 19,
+    "name": "Tardigrade",
+    "family": "lobopod",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family lobopod"
+  },
+  {
+    "index": 20,
+    "name": "Sea Squirt",
+    "family": "sessile-filter",
+    "batch": 7,
+    "status": "COMPILER_BLOCKED",
+    "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+  },
+  {
+    "index": 21,
+    "name": "Horseshoe Crab",
+    "family": "xiphosuran",
+    "batch": 7,
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family xiphosuran"
+  },
+  {
+    "name": "Goat",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on; missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 19%); missing-anatomy: part tail3 (tail3) covers 2% paint (reference 5%); missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 19%); missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)",
+    "attempts": [
+      {
+        "name": "Goat",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b07r2c1-27-goat",
+        "masterSha256": "7c36fce149f3af1e4e3cb847fc33f29367021b510f39d15881cd1034eb384b48",
+        "promptSha256": "95b2cced6a09675f7f140f167bfec2e7c6a01c3ac0c7d65d6e57a407f8a48ad4",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 342,
+            "y0": 330,
+            "x1": 910,
+            "y1": 889
+          },
+          "margins": {
+            "left": 342,
+            "right": 343,
+            "top": 330,
+            "bottom": 364
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on",
+          "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 19%)",
+          "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-27-goat/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Goat",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b07r2c2-27-goat",
+        "masterSha256": "4770e3ae6c086e9337076c61b67b17e979405d454ed12389fb54cead3eeb0112",
+        "promptSha256": "c847b1982603673f932ca6b96e003c8c91437658f91227a90b93f70643eb860d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 340,
+            "y0": 319,
+            "x1": 938,
+            "y1": 881
+          },
+          "margins": {
+            "left": 340,
+            "right": 315,
+            "top": 319,
+            "bottom": 372
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 19%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-27-goat/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Four cloven hooves, two swept horns, beard, short upright tail and long brown/white coat. Several thin vertical pink lines cross torso/upper legs at approximately x430/550/690, not normal coat pigment: source visual HOLD."
+      },
+      {
+        "name": "Goat",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b07r2c3-27-goat",
+        "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+        "promptSha256": "57877f3bcf1f965c45aa6b730ff866db9d0222a69e76c012cfd09df1be0d7a31",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 315,
+            "y0": 319,
+            "x1": 960,
+            "y1": 919
+          },
+          "margins": {
+            "left": 315,
+            "right": 293,
+            "top": 319,
+            "bottom": 334
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-27-goat/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ]
+  },
+  {
+    "name": "Shrew",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 50%); missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 21% paint (reference 66%); missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 52%); unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.7%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 16% paint (reference 50%); missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 66%); missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 25% paint (reference 76%); unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 1.7%)",
+    "attempts": [
+      {
+        "name": "Shrew",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b07r2c1-30-shrew",
+        "masterSha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+        "promptSha256": "349933930c8c4582356808c2dfe6a931c04d5da2d0e8dccecf0898b0272b692f",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 239,
+            "y0": 468,
+            "x1": 1007,
+            "y1": 788
+          },
+          "margins": {
+            "left": 239,
+            "right": 246,
+            "top": 468,
+            "bottom": 465
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-30-shrew/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Shrew",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b07r2c2-30-shrew",
+        "masterSha256": "a838e44b0ecba56706bddb9040b2c11594a4a6013fcd676de22398b1005dd8bc",
+        "promptSha256": "f546f423ec469c6ba59273a03901100853172da0bc3119d8c2545a425fc304b3",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 269,
+            "y0": 512,
+            "x1": 935,
+            "y1": 761
+          },
+          "margins": {
+            "left": 269,
+            "right": 318,
+            "top": 512,
+            "bottom": 492
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 50%)",
+          "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 21% paint (reference 66%)",
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 52%)",
+          "unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.7%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-30-shrew/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Shrew",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b07r2c3-30-shrew",
+        "masterSha256": "8b4aaeb0dbc9f6b4636e2f4f7638b9d0017bbffced74a44ae064645e5b50ac56",
+        "promptSha256": "a6166687aa652229112a9f134b40b782c75b082b5989f77b2fe9df0fe2383ce0",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 310,
+            "y0": 508,
+            "x1": 944,
+            "y1": 743
+          },
+          "margins": {
+            "left": 310,
+            "right": 309,
+            "top": 508,
+            "bottom": 510
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 16% paint (reference 50%)",
+          "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 66%)",
+          "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 25% paint (reference 76%)",
+          "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 1.7%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-30-shrew/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ]
+  },
+  {
+    "name": "Vole",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%); missing-anatomy: part fore-far-paw (foreFarPaw) covers 0% paint (reference 72%); missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 95%); missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 94%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%); unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.1%)",
+    "attempts": [
+      {
+        "name": "Vole",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b07r2c1-32-vole",
+        "masterSha256": "9cf16ff5ef891ceaef10e36948ab7c784cbcc46c62ccf5ab1485f10970d09323",
+        "promptSha256": "345dad7e8b564277be1805032114ec9a23fc9d2494dd3609897de20513acee32",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 341,
+            "y0": 479,
+            "x1": 898,
+            "y1": 790
+          },
+          "margins": {
+            "left": 341,
+            "right": 355,
+            "top": 479,
+            "bottom": 463
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 0% paint (reference 72%)",
+          "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 95%)",
+          "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 94%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1c/c243b07r2c1-32-vole/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Vole",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b07r2c2-32-vole",
+        "masterSha256": "87ddfad03e267602f299bfb4c57a215aafa34f7787e876159490ba981300b5bf",
+        "promptSha256": "468eb4338019c39593d2613decdeea441d7a4754fb37da75edbae466164f1639",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 279,
+            "y0": 429,
+            "x1": 969,
+            "y1": 811
+          },
+          "margins": {
+            "left": 279,
+            "right": 284,
+            "top": 429,
+            "bottom": 442
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+          "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.1%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-32-vole/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Vole",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b07r2c3-32-vole",
+        "masterSha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+        "promptSha256": "0bc36be55b1b29d42f8d091a5e070841fb49e92a07bbfea44bc6446264910647",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 299,
+            "y0": 459,
+            "x1": 937,
+            "y1": 798
+          },
+          "margins": {
+            "left": 299,
+            "right": 316,
+            "top": 459,
+            "bottom": 455
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-32-vole/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ]
+  },
+  {
+    "name": "Wall Lizard",
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "All five films show continuous body, four splayed limbs/toes and attached tapering tail, without a new seam. Source tail remains approximately1.3\u00d7 body, failing canonical roughly twice-body marker. Identity HOLD overrides raw static/native PASS.",
+    "id": "c243b07r2c2-33-wall-lizard"
+  }
+]

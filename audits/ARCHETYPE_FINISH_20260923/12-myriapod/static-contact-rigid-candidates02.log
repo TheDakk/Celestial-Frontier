@@ -1,0 +1,86 @@
+[
+  {
+    "action": "hit",
+    "ms": 356.25,
+    "chain": "leg13Far",
+    "endpointOnly": true,
+    "eligibilityUnchanged": true,
+    "scope": "Isolated chain candidate only; actual full LBS support predicted with other joints retaining attempted keys. No all-contact solve or publication.",
+    "hip": {
+      "x": 0.1711679738351135,
+      "y": 0.49996707991546424
+    },
+    "target": {
+      "x": 0.21736937561930594,
+      "y": 0.4235812890056083
+    },
+    "joints": [
+      {
+        "joint": "leg13FarKnee",
+        "deg": 51.4980757000676,
+        "limit": {
+          "min": -60,
+          "max": 60
+        },
+        "pass": true
+      },
+      {
+        "joint": "leg13FarFoot",
+        "deg": -52.72145309608057,
+        "limit": {
+          "min": -70,
+          "max": 70
+        },
+        "pass": true
+      }
+    ],
+    "paintResidualPx": 1.0441647546599597e-13,
+    "rigidResidualPx": 1.0441647546599597e-13,
+    "upperLengthError": 3.469446951953614e-18,
+    "lowerLengthError": -2.0816681711721685e-17,
+    "compression": 0,
+    "candidatePassesOriginalJointAndPaintChecks": true
+  },
+  {
+    "action": "dodge",
+    "ms": 46.666666666666664,
+    "chain": "leg0Far",
+    "endpointOnly": false,
+    "eligibilityUnchanged": true,
+    "scope": "Isolated chain candidate only; actual full LBS support predicted with other joints retaining attempted keys. No all-contact solve or publication.",
+    "hip": {
+      "x": 0.7989892701500283,
+      "y": 0.5095693779904307
+    },
+    "target": {
+      "x": 0.8460925039872407,
+      "y": 0.44912280701754387
+    },
+    "joints": [
+      {
+        "joint": "leg0FarKnee",
+        "deg": 43.74528040385587,
+        "limit": {
+          "min": -60,
+          "max": 60
+        },
+        "pass": true
+      },
+      {
+        "joint": "leg0FarFoot",
+        "deg": -47.26072324087063,
+        "limit": {
+          "min": -70,
+          "max": 70
+        },
+        "pass": true
+      }
+    ],
+    "paintResidualPx": 2.0883295093199195e-13,
+    "rigidResidualPx": 1.9688959431894542e-13,
+    "upperLengthError": 1.5265566588595902e-16,
+    "lowerLengthError": -1.5959455978986625e-16,
+    "compression": 0,
+    "candidatePassesOriginalJointAndPaintChecks": true
+  }
+]

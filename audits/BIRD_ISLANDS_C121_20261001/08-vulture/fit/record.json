@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Vulture\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1235245760\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"9\"]]]]",
+    "seed": 1235245760,
+    "ownerId": "authored:archetype-sprint/08-vulture",
+    "earthName": "Vulture"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1235245760,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 7,
+    "body": 2,
+    "loco": 8,
+    "trait": 9,
+    "size": 3,
+    "diet": 2,
+    "head": 6,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 5,
+    "accent": 5,
+    "temper": 6,
+    "sense": 8,
+    "repro": 5,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Vulture"
+  },
+  "geometry": {
+    "cutoutAssetHash": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7135798537907797,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.536762360446571,
+      0.4491228070175439
+    ],
+    "pelvis": [
+      0.49569377990430624,
+      0.530622009569378
+    ],
+    "spine": [
+      0.5868421052631578,
+      0.4417065390749601
+    ],
+    "chest": [
+      0.6640350877192983,
+      0.38588516746411483
+    ],
+    "neck0": [
+      0.6784688995215311,
+      0.34210526315789475
+    ],
+    "neck1": [
+      0.6914673046251993,
+      0.3187400318979266
+    ],
+    "head": [
+      0.7234449760765551,
+      0.2944976076555024
+    ],
+    "beak": [
+      0.7636363636363637,
+      0.3027910685805423
+    ],
+    "legNearKnee": [
+      0.4478468899521531,
+      0.618341307814992
+    ],
+    "legNearAnkle": [
+      0.43460925039872406,
+      0.6740829346092504
+    ],
+    "legNearFoot": [
+      0.4555821371610845,
+      0.687639553429027
+    ],
+    "legFarKnee": [
+      0.5629984051036683,
+      0.6194577352472089
+    ],
+    "legFarAnkle": [
+      0.6032695374800638,
+      0.69377990430622
+    ],
+    "legFarFoot": [
+      0.6282296650717702,
+      0.693939393939394
+    ],
+    "wingNearRoot": [
+      0.6299840510366826,
+      0.38325358851674646
+    ],
+    "wingNearTip": [
+      0.3956140350877193,
+      0.47041467304625195
+    ],
+    "wingFarRoot": [
+      0.5839712918660287,
+      0.33596491228070174
+    ],
+    "wingFarTip": [
+      0.47974481658692186,
+      0.37527910685805427
+    ],
+    "tailFan": [
+      0.34146730462519936,
+      0.5532695374800638
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/08-vulture/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 04-hawk-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "4042988d55d6dfc80953a0112b18e559d0c46f40f715932de61ab1029c719a7b",
+    "subjectSourceSha256": "d2c93a4fa28ec6c2ceaf9c417bffb975c979dba50b460452228c88ce7cc15562",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09126197633374683,
+      "spine": 0.12733411997169794,
+      "chest": 0.09526165056826431,
+      "neck0": 0.04609788437883091,
+      "neck1": 0.026737474956900115,
+      "head": 0.04012812734978458,
+      "beak": 0.04103814235681114,
+      "legFarKnee": 0.11145267484422898,
+      "legFarAnkle": 0.08453134872053922,
+      "legFarFoot": 0.02496063713804905,
+      "legNearKnee": 0.09991996878900847,
+      "legNearAnkle": 0.05729191966252221,
+      "legNearFoot": 0.024972863131237387,
+      "wingFarRoot": 0.09435169995294793,
+      "wingFarTip": 0.11139463202673727,
+      "wingNearRoot": 0.034152573942780214,
+      "wingNearTip": 0.250052712507337,
+      "tailFan": 0.1558804548283147
+    },
+    "measures": {
+      "body": 0.22200799395396956,
+      "bone-min": 0.02496063713804905,
+      "bone-max": 0.250052712507337,
+      "leg/torso:legFar": 0.9952103830487617,
+      "leg/torso:legNear": 0.8206224845243261,
+      "wing/torso": 0.926751907962125
+    }
+  },
+  "recipeHash": "3237065e08706e572fbd19cd8fdefcde5d39b6c041a9211f57e794454fb6fb07"
+}

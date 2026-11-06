@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tiger",
+ "fitDir": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5d8cc455c3b5e4a253b3006348c1d89bc0ecc7dc01b68abc0897004df9daca8c"
+}

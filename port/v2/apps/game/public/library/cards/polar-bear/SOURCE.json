@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Polar Bear",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/g2c114-07-polar-bear/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cc915335ec9e30f3ce80db63f1592054dd9d084448d713eae69cb31bf7541caa"
+}

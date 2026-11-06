@@ -1,0 +1,83 @@
+{
+  "name": "Avocet",
+  "family": "biped-bird",
+  "species": {
+    "name": "Avocet",
+    "aspect": 1.8,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "thin needle bill sweeping strongly upward",
+      "crisp black-and-white pied patterning",
+      "long blue-grey legs"
+    ],
+    "note": "The bill curves up, not down - the opposite of a curlew's."
+  },
+  "genome": {
+    "seed": 2348468699,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 17,
+    "body": 3,
+    "loco": 15,
+    "trait": 13,
+    "size": 2,
+    "diet": 1,
+    "head": 8,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 10,
+    "detail": 8,
+    "accent": 3,
+    "temper": 4,
+    "sense": 7,
+    "repro": 0,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Avocet"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Avocet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2348468699\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 423,
+  "profile": {
+    "id": "wading-bird",
+    "names": [
+      "Heron",
+      "Egret",
+      "Ibis",
+      "Stork",
+      "Crane",
+      "Spoonbill",
+      "Flamingo",
+      "Curlew",
+      "Snipe",
+      "Plover",
+      "Sandpiper",
+      "Rail",
+      "Bittern",
+      "Oystercatcher",
+      "Godwit",
+      "Avocet",
+      "Screamer"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "10-rat",
+  "name": "Rat",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "db1e02c8d04d0656dadb9ac7ede9f3026e5b6421b097c766deafba1bd6fb3fc5",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15927,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 155,
+      "y0": 148,
+      "x1": 312,
+      "y1": 231
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0097,
+        "pixels": 154,
+        "box": {
+          "x0": 197,
+          "y0": 142,
+          "x1": 242,
+          "y1": 147
+        },
+        "attach": {
+          "x": 219.5,
+          "y": 147,
+          "relX": 0.41,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.72,
+          "y": -0.7
+        },
+        "class": "top",
+        "length": 23
+      },
+      {
+        "k": 1,
+        "frac": 0.017,
+        "pixels": 270,
+        "box": {
+          "x0": 283,
+          "y0": 152,
+          "x1": 312,
+          "y1": 165
+        },
+        "attach": {
+          "x": 297.5,
+          "y": 165,
+          "relX": 0.91,
+          "relY": 0.2
+        },
+        "dir": {
+          "x": 0.35,
+          "y": -0.94
+        },
+        "class": "top",
+        "length": 19.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0717,
+        "pixels": 1142,
+        "box": {
+          "x0": 313,
+          "y0": 170,
+          "x1": 351,
+          "y1": 215
+        },
+        "attach": {
+          "x": 313,
+          "y": 191.5,
+          "relX": 1.01,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": 0.95,
+          "y": 0.33
+        },
+        "class": "front",
+        "length": 44.7
+      },
+      {
+        "k": 3,
+        "frac": 0.1138,
+        "pixels": 1813,
+        "box": {
+          "x0": 54,
+          "y0": 184,
+          "x1": 171,
+          "y1": 261
+        },
+        "attach": {
+          "x": 156.4,
+          "y": 212.6,
+          "relX": 0.01,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.26
+        },
+        "class": "rear",
+        "length": 113.3
+      },
+      {
+        "k": 4,
+        "frac": 0.0387,
+        "pixels": 616,
+        "box": {
+          "x0": 174,
+          "y0": 229,
+          "x1": 224,
+          "y1": 263
+        },
+        "attach": {
+          "x": 191,
+          "y": 229,
+          "relX": 0.23,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.31,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 47.4
+      },
+      {
+        "k": 5,
+        "frac": 0.0526,
+        "pixels": 838,
+        "box": {
+          "x0": 239,
+          "y0": 232,
+          "x1": 312,
+          "y1": 262
+        },
+        "attach": {
+          "x": 261.5,
+          "y": 232,
+          "relX": 0.68,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 58.7
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 76,
+        "x1": 94,
+        "cx": 85
+      },
+      {
+        "x0": 136,
+        "x1": 157,
+        "cx": 146.6
+      },
+      {
+        "x0": 193,
+        "x1": 224,
+        "cx": 209
+      },
+      {
+        "x0": 241,
+        "x1": 260,
+        "cx": 250.6
+      },
+      {
+        "x0": 289,
+        "x1": 312,
+        "cx": 300.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

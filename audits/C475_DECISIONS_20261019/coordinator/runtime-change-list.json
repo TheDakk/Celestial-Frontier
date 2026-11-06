@@ -1,0 +1,415 @@
+{
+  "status": "P04_APPLIED_6096_PASS_SOLE_STALE_I5_RED_ALL_SIX_INDEPENDENT_OWNERS_PASS",
+  "gameCodeAndImportedTools": [
+    "port/v2/apps/game/src/motion/cast-attack.ts",
+    "port/v2/apps/game/src/motion/serpent-victory.ts",
+    "port/v2/apps/game/src/release-content.ts",
+    "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+    "port/v2/tools/creature-animation/family-contracts.mjs",
+    "port/v2/tools/creature-animation/intake-authored.mjs",
+    "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+    "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+    "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+    "port/v2/tools/creature-animation/skeleton-pose.mjs",
+    "port/v2/tools/creature-animation/soft-axial-source.mjs",
+    "port/v2/tools/creature-animation/soft-material-source.mjs",
+    "port/v2/tools/creature-animation/source-representation.mjs",
+    "port/v2/tools/creature-animation/specialized-templates.mjs",
+    "port/v2/tools/painted-creature/reviewed-representation.mjs",
+    "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+    "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+    "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+    "port/v2/apps/game/src/motion/specialized-actions.ts",
+    "port/v2/apps/game/src/motion/family-actions.ts",
+    "port/v2/tools/creature-animation/pin-anchored-material-surfaces.mjs",
+    "port/v2/tools/creature-animation/anchored-material-source.mjs",
+    "port/v2/packages/art/src/painter-topology.ts"
+  ],
+  "testOnly": [
+    "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+    "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts",
+    "port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+    "port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+    "port/v2/tools/creature-animation/soft-material-source.test.mjs",
+    "port/v2/tools/painted-creature/compile-library-master.test.mjs",
+    "port/v2/tools/painted-creature/nautiloid-source-request.test.mjs",
+    "port/v2/tools/painted-creature/soft-material-source-request.test.mjs",
+    "port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+    "port/v2/apps/game/src/motion/anchored-material-attack.test.ts",
+    "port/v2/tools/creature-animation/anchored-material-source.test.mjs",
+    "port/v2/apps/game/src/battle2/cast-attack-d31.test.ts",
+    "port/v2/apps/game/src/motion/specialized-anatomy.test.ts"
+  ],
+  "guideAuthority": "port/v2/tools/slicesmoke.mjs",
+  "I5RecertificationRequired": true,
+  "selectedCertificate": "C464_UNCHANGED_STALE_AFTER_CURRENT_RUNTIME_PRODUCER_CHANGES",
+  "namedRowRebind": "D39synthetic:serpent/victoryheadjaw4de0b804\u219247620037",
+  "noOtherSealsRebound": true,
+  "typeOnlyDefinitions": [
+    "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+    "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+    "port/v2/tools/creature-animation/specialized-templates.d.mts",
+    "port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+    "port/v2/tools/creature-animation/repeated-anatomy.d.mts"
+  ],
+  "offlineAuthoringTools": [
+    "port/v2/tools/creature-animation/post-key-matte.mjs",
+    "port/v2/tools/creature-animation/derive-post-key-matte.mjs"
+  ],
+  "auditMeasurementCode": [
+    "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+    "audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts"
+  ],
+  "D42SourceAndPhoneProof": "HOLD: fourfreshsources8%fail;96onlymyriapod,others64; no87nativephone measurement",
+  "developEvidence": {
+    "historicalC491Profile": "audits/C475_DECISIONS_20261019/coordinator/develop-soft-materials-r03.json",
+    "approvedSixOwnersAfterC491": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-owners-result-r04.json",
+    "approvedSixStatus": "ALL6_PASS; this is not the current P04 profile",
+    "currentP04FirstProfile": "audits/C475_DECISIONS_20261019/coordinator/develop-anchored-p04-r01.json",
+    "currentP04FirstProfileResult": "RED:6093VitestPASS/4FAIL =3synthetic strict-count fixtures+unchanged staleI5. FirstRED preserved.",
+    "testOnlyRepair": "audits/C475_DECISIONS_20261019/coordinator/anchored-p04-existing-fixture-repair-r01.json",
+    "targetedRepairedResult": "19PASS in3gamefiles per anchored-p04-all-game-tests-green-r02.log",
+    "currentP04ProfileAfterRepair": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/develop-anchored-p04-r03.json",
+    "firstSixP04Failure": "anchored-p04-independent-owners-result-r05.json:firstrootTSC rejected2fixture anatomy:undefined properties; stopped beforeotherowners",
+    "exactOptionalRepair": "anchored-p04-exact-optional-fixture-repair-r02.json",
+    "currentP04ProfileResult": "Node tools796PASS; prepared-runner56PASS; Vitest6096PASS/sole stale-I5 bindingRED; unchanged C464, no certification",
+    "currentP04IndependentOwners": "~/Projects/celestial-frontier-openai-mac/audits/C475_DECISIONS_20261019/coordinator/anchored-p04-independent-owners-result-r06.json",
+    "currentP04IndependentOwnersResult": "ALL6_PASS; final exact current runtime and fixture bytes; not a green profile"
+  },
+  "softMaterialChanges": {
+    "newClasses": [
+      "ctenophore-body",
+      "errant-soft-worm"
+    ],
+    "oldTemplatesPreserved": 19,
+    "postKeySealsUnchanged": true,
+    "ordinaryJoinRulerUnchanged": true,
+    "newCtenophoreBoundaryCouplingOnly": false,
+    "canonicalSourceRequestTests": 3,
+    "targetedTests": 24,
+    "originalAxialDiagnosticReceiptAddsEmptyFieldsArray": true,
+    "boundaryCouplingScope": [
+      "ctenophore-body",
+      "anchored-soft-polyp"
+    ]
+  },
+  "historicC491Applied18": {
+    "producer": "acff88a884f1f9da6f018ef77b7af4432e079a6f",
+    "paths": [
+      "port/v2/apps/game/src/motion/cast-attack.ts",
+      "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "port/v2/apps/game/src/release-content.ts",
+      "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "port/v2/tools/creature-animation/family-contracts.mjs",
+      "port/v2/tools/creature-animation/intake-authored.mjs",
+      "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "port/v2/tools/creature-animation/soft-material-source.mjs",
+      "port/v2/tools/creature-animation/source-representation.mjs",
+      "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "port/v2/tools/quadruped-proof/source-join-continuity.mjs"
+    ],
+    "note": "Historical scope retained; P04 and release/GUIDE update intentionally change some bytes. Current pins are separate."
+  },
+  "guideBulletAuthoritySha256": "1f2a58f7641452c4626dbe7d6c810b5857ffd550a950446dd747e5f1c3e8550e",
+  "guide121Proof": "audits/C475_DECISIONS_20261019/coordinator/anchored-p04-guide-verification-r03.json",
+  "D43": "NOT_ACTIVATED_NO_C223_OR_CERTIFICATION",
+  "anchoredP04": {
+    "appliedPaths": 14,
+    "newGameAndPipelinePathsBeyondHistoric18": [
+      "port/v2/apps/game/src/motion/family-actions.ts",
+      "port/v2/apps/game/src/motion/specialized-actions.ts",
+      "port/v2/packages/art/src/painter-topology.ts",
+      "port/v2/tools/creature-animation/anchored-material-source.mjs",
+      "port/v2/tools/creature-animation/pin-anchored-material-surfaces.mjs"
+    ],
+    "preservedOldTemplates": 21,
+    "newClasses": [
+      "anchored-soft-polyp",
+      "anchored-skeleton-soft-polyps"
+    ],
+    "actualCompiledGameRegressionTests": 7,
+    "actualSourceGuardRegressionTests": 9,
+    "sourceObservedMixedCountRequired": true,
+    "prior13CastMetadataAndThreeSourcePulsesPreserved": true,
+    "measurementsAndSourceSealsUnchanged": true,
+    "sourceAndRepresentativeHolds": {
+      "Comb Jelly": "0fragments; unchangedC261pink134/132>=100; physicalclean but noAI/classprop",
+      "Sea Anemone": "READY_FOR_CLAUDE: signedC498preAI; original/finished all5 W2/W3CLEAN; C261453/906fragment0pink4/5; alpha/geometry/owners conserved; oldsource dab/FXocclusion disclosed. Packet: audits/C475_DECISIONS_20261019/ready/sea-anemone-p04-r01/packet.json",
+      "Cold-Water Coral": "one literal fixed upperbranch capture soft5 remainsHOLD",
+      "Deep-Water Coral": "four literal fixedbranch/calyx captures remainHOLD",
+      "Coral": "sourcecompatible; await first clean mixed source/native representative"
+    }
+  },
+  "gameCodeAndImportedToolsCurrentPins": [
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "8d45122ece264fe11f734888e5268209595e3fd1e8c0dca5af3ffeff5e0d88dc",
+      "bytes": 13609
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "sha256": "4c35b295da5826582860e29e3457419b8760d44af82294591e6ef93815467e80",
+      "bytes": 5009
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "9428549a0a3ab51b3276d30b74f3a272ef65f0a40743055a8337fbe6ee409307",
+      "bytes": 168829
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "37029e7ef02d8297c9173f12451fee961b302ce948f1f3cf4a887f1cd08794ca",
+      "bytes": 4861
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "afd8c760634b754dc473df55f4fe146d54fbf88450c27d2bdd9b8876cc6e7c3f",
+      "bytes": 74684
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "83ce8366d743dea46d7764f247ae519086fd421af2110fea487b773f53485c9b",
+      "bytes": 16406
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-tube-worm-fixed-surfaces.mjs",
+      "sha256": "bcf367dcf745cab40f4c6c8a5c69e05c1b994501beba25a25e68f01536ae4ecf",
+      "bytes": 2435
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "5f3d60ea0d80e2c55ec80bd64aac43949c4b1dab42163e51d97b4e2fa73c4952",
+      "bytes": 4930
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "c11449ad6ba5ed281bc77267601245437f13e3554eceecdc0110815d4c717808",
+      "bytes": 9426
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "4f1d7dbe33ada28314fe81e90c518e0cd50da8073e6519a3b5c3337465a8d726",
+      "bytes": 4715
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "877dde31a926360ab2f65489b2187a42149ee1c60d5bd058dadba4e828013e82",
+      "bytes": 2472
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.mjs",
+      "sha256": "f4f22724eab07df832a792bacde6f1164d03d3eb5a2d75dedfe8ae0b3ceb38f1",
+      "bytes": 1444
+    },
+    {
+      "path": "port/v2/tools/creature-animation/source-representation.mjs",
+      "sha256": "a97c35fec1375883f74d82f6832f833a0b7668692861741f774f8199ad6cec4b",
+      "bytes": 2816
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "ebfc86a25b07231ce96cb012da9cf2a5bd5a8c8f2718fdd7390c0df907a76f66",
+      "bytes": 11361
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-representation.mjs",
+      "sha256": "76e2435704e7b84a1af5826b8ab7e31d436d07395caf2557c7e902d5ce20c379",
+      "bytes": 11091
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "19929e645d82c38bdd9d042c027f701778bcdde89bee48be605c4ce766315a87",
+      "bytes": 15645
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.mjs",
+      "sha256": "55b413baf84786d933d5dde6bd4dc4410135fb20eb1932d79a6556f96955e852",
+      "bytes": 3721
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-actions.ts",
+      "sha256": "fae08d528fe7e45236041bf714ce7ec403d4d2e77680c6d18c5b27d95bfdc46b",
+      "bytes": 3715
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "0785207ef98db42e3542e343df511c0756e0f79758d5a7dd566451a052666019",
+      "bytes": 41769
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pin-anchored-material-surfaces.mjs",
+      "sha256": "53db17769564d93d9325e86ef9c9f32d973cfbf09659efeacfa704074c9daa6a",
+      "bytes": 2289
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anchored-material-source.mjs",
+      "sha256": "b0419872c4de30b1f4c38da76237d04a274e67e911cb27de15969aaa029ce92f",
+      "bytes": 2328
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "e7fcf5a0dbd3253d58972b2e9c3ca16da3233f42266e681baf72fa9fea3c5b74",
+      "bytes": 4433
+    }
+  ],
+  "typeOnlyDefinitionsCurrentPins": [
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "1f0b108b4b37cd93ae446ea71adcad2a1c978982bd69c1a833291cb4b53b65b6",
+      "bytes": 983
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "f5c151c19908d0bd2ca00c839c104877ed768dafa7d47977523e809fe85e012f",
+      "bytes": 1128
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "3eb70245c15e9ad8d2b351a69f163219dafc74f8a82314610d6cbd7b4fc88c54",
+      "bytes": 1035
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.d.mts",
+      "sha256": "9b955cacbcc8d56933f052c6ab3d89aa2a50251e0fb86232c823bcfceae0310b",
+      "bytes": 596
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+      "sha256": "53f7ecba5b6e2deae57a43645c3560f4bfe5dc440e17a5d37130a7d69ae09a9e",
+      "bytes": 435
+    }
+  ],
+  "testOnlyCurrentPins": [
+    {
+      "path": "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+      "sha256": "50f4971a34d35024b902bc0fb158a8ac55ab84af29f2f494366dc21b9c58d51b",
+      "bytes": 8061
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "ec687bae19aa340c2b2a381e1f286b852357992fd0de4ba1a77f478cab877349",
+      "bytes": 12966
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts",
+      "sha256": "5e0c8c4b004cce42ee1cddf6377034b49d0cbd4e138e6a96c1414b02daf8f69d",
+      "bytes": 7811
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+      "sha256": "47b9a525383169490a855d66d6c42a06c2ebf6acdf828300b2bb0db449509b9a",
+      "bytes": 6021
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts",
+      "sha256": "8e867d3fec5bbca5b71dcfae217a43d32fbe7651c7d0258ef16bf525f27464ab",
+      "bytes": 10709
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/source-observed-small-crustacean.test.ts",
+      "sha256": "459d3b9efbf802729fda8b66296689f46c76e6f502368ba3533996583549c522",
+      "bytes": 4751
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.test.mjs",
+      "sha256": "dfc263ddb760430bccadfc6aec0e05ba41376977b760194c6af636cb75de94ca",
+      "bytes": 1426
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.test.mjs",
+      "sha256": "6f2a72c7f191152c2fd4cc13a9cc9e12821cc28eeedf001df06e65709b82004d",
+      "bytes": 2132
+    },
+    {
+      "path": "port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "sha256": "6a0159c2ca0b954eb595e3c45b431ddd0818940338bf0fab931d37c95c5d9c41",
+      "bytes": 8128
+    },
+    {
+      "path": "port/v2/tools/painted-creature/nautiloid-source-request.test.mjs",
+      "sha256": "089d1e846b6c38ba9cbd1ddb90c3b4cfcb295e9908663c790995a10678d68766",
+      "bytes": 3729
+    },
+    {
+      "path": "port/v2/tools/painted-creature/soft-material-source-request.test.mjs",
+      "sha256": "2e172e13c0ff4a6894b7b4a632e82c5e2e790a6f109c6547155757bbdd280fbb",
+      "bytes": 2185
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/rigid-source-surface.test.mjs",
+      "sha256": "7248b542ef0cb096e24865aa549b47cf08431aee2999ff005c2cd07e16e59ff1",
+      "bytes": 3010
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/anchored-material-attack.test.ts",
+      "sha256": "13cc0a104caee97ba2752b4d3cd2cda7baf57754b071bbbfbc8c310fd3dff070",
+      "bytes": 5944
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anchored-material-source.test.mjs",
+      "sha256": "3f65e908054d109d4558d23cf38b46739e5a637e47246a8d52169c12ad91bce4",
+      "bytes": 4119
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/cast-attack-d31.test.ts",
+      "sha256": "2a1aba751d737b5c9f280e0c8533c5bacc3de2bd664d44feb68f829e5382da96",
+      "bytes": 19571
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "sha256": "ac8e88cabd19e3c01a523f8ded8649c4283b179555703eabc53bd765785ec51a",
+      "bytes": 7182
+    }
+  ],
+  "offlineAuthoringToolsCurrentPins": [
+    {
+      "path": "port/v2/tools/creature-animation/post-key-matte.mjs",
+      "sha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35",
+      "bytes": 4614
+    },
+    {
+      "path": "port/v2/tools/creature-animation/derive-post-key-matte.mjs",
+      "sha256": "b8b6feb0af06174ea4d91a4a248ce09c8b4955646e4682dfcf9e3df7392f1931",
+      "bytes": 3663
+    }
+  ],
+  "auditMeasurementCodeCurrentPins": [
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "sha256": "832bc6de935cc7187f585bcd39ab2352e53087178bbdce1b11152148338e5583",
+      "bytes": 12841
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w3-wave4/worstpose-r01/exact-retained-context.ts",
+      "sha256": "0559e518e9d7e8dc3bbd72f73f50b0897a87caf424489de36d4c989e5a79b993",
+      "bytes": 17150
+    }
+  ],
+  "guideAuthorityCurrentPin": {
+    "path": "port/v2/tools/slicesmoke.mjs",
+    "sha256": "75a8c7b01001c9c0be4cda7092360ff58f9ceeb62a75d1a829418b9e7a1e4d9a",
+    "bytes": 1892663
+  },
+  "selectedCertificateCurrentPin": {
+    "path": "port/v2/budgets/compendium-memory-active.json",
+    "sha256": "a6d1cf8ad6ca7d39955a4ff00d5a7359ddbbaee2ba0554425ec13fc14d192693",
+    "bytes": 1028
+  },
+  "profileStatusMustBeRefreshedByRootBeforeDelivery": false,
+  "finalDelivery": "audits/C475_DECISIONS_20261019/delivery/wave20-anemone-ready-final-dispositions"
+}

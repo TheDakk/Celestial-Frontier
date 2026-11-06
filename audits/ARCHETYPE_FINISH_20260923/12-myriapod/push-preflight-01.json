@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-push-preflight/v1",
+  "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "origin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "upstream": "origin/openai/mac",
+  "visibility": "public",
+  "budget": "UNFROZEN",
+  "privateFallbackCap": 3000,
+  "exactHostedAttemptsAuthorized": 0,
+  "workflows": [
+    {
+      "path": ".github/workflows/branch-flow-guard.yml",
+      "gitBlob": "ee05d90a402831cfda829d5d6a373050dfa5d538",
+      "remoteBlob": "ee05d90a402831cfda829d5d6a373050dfa5d538",
+      "sha256": "72770b57a4d4439c239813b7dcd279e63aba813c5cac97989b4fbdd5d65e73b6",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/dev-preview-package.yml",
+      "gitBlob": "7cf9203f4fe2115e9ced57249aa9a2a651e89acc",
+      "remoteBlob": "7cf9203f4fe2115e9ced57249aa9a2a651e89acc",
+      "sha256": "2b392ea1acf65a8b08e7a5eb368fa9f9cd456cc4869bdf7de958b77d416550f1",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/publish-branch-sites.yml",
+      "gitBlob": "c6560e64a4ee48089b9fcd5b325718dd0aa30171",
+      "remoteBlob": "c6560e64a4ee48089b9fcd5b325718dd0aa30171",
+      "sha256": "beea847251257299b63325b733d302b9e158cb954503d8dc09b89b42583be34c",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/sync-agent-branches.yml",
+      "gitBlob": "192e9cd8128c11a07a2acc2e59d9a611c806bcb0",
+      "remoteBlob": "192e9cd8128c11a07a2acc2e59d9a611c806bcb0",
+      "sha256": "98139432d61c4644983976b201cb15b06975487cb378ff8ad46fa05f91541278",
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/test.yml",
+      "gitBlob": "2bf56956cafaa8abf876d17d465328c2d6837b0a",
+      "remoteBlob": "2bf56956cafaa8abf876d17d465328c2d6837b0a",
+      "sha256": "3f204ff54f3ab735525838ce49ea9fb771f7fb7adfa5cdb64d3320174a258dde",
+      "trigger": "pull_request:labeled"
+    }
+  ],
+  "normalBranchPushStartsHostedRun": false,
+  "workflowReadTool": "bf6bf2",
+  "localComparisonTool": "3a6fa9",
+  "sshAuthentication": {
+    "status": "REFUSED",
+    "tool": "8dc3c3",
+    "exitCode": 255,
+    "error": "sign_and_send_pubkey: signing failed for ED25519 \"GitHub\" from agent: communication with agent failed\ngit@github.com: Permission denied (publickey)."
+  },
+  "repositoryRead": "separate existing probe still pending; not PASS",
+  "pushAttempted": false
+}

@@ -1,0 +1,1442 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "ce4037c86ab6af5946703b776685ddd42f8cacffa340851107f6a3bfc324ba1b",
+      "bytes": 7200
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/class-proofs/d41-isopod.json",
+      "sha256": "99438c53ace98d78bd0b53e7fc7c2d44aafeaf4aef3c2eacfe6b7d741288cbb8",
+      "bytes": 3846
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/class-proofs/d41-nautiloid.json",
+      "sha256": "83d7405ab6b9b992544622007d4de5440332ecd176d615aa8406548ac44fc620",
+      "bytes": 3812
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/build-progress-wave.py",
+      "sha256": "f0320940bea72d12e4e8db495077ecfd0b17e599e8f052da56a74ddb3f2e4fa4",
+      "bytes": 1603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c489-paths.txt",
+      "sha256": "b01ced61f1082c21af9ece1fdf453ce9f5a4e5c04d7559e12186115e02599fef",
+      "bytes": 214803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c489-staged-bytes.commit.log",
+      "sha256": "b1fadc3110258677f16bb00efe189b12fab357c3f62dba2b4dfdcac67704157f",
+      "bytes": 45713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c490-message.txt",
+      "sha256": "52c618307a844f0edc98ec804d583b24a2a1c364d99ee123dc0f49c0d79daa42",
+      "bytes": 81
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c490-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c490-unchanged-runtime-verification.json",
+      "sha256": "3f362da7e02fce24a0742f4f5e949b3957e333f67d1de31e29afd5908d0afddc",
+      "bytes": 3282
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-ai.json",
+      "sha256": "9d935b627eed7712114065c8726aaa316bd358708647ed519c6b8d3ea5b50c7b",
+      "bytes": 614
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-ai.log",
+      "sha256": "699e811182fe5a2a2e1bf9b1855ed20325e79ea5c07a831ec4cacbfce719b6e5",
+      "bytes": 1140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-native.json",
+      "sha256": "ffd3dcfb2f7ead1285284d17cc5dd2a3500bedfe239a666897358c43b38af651",
+      "bytes": 554
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-native.log",
+      "sha256": "c52de3ace31d05d4e411c1150aa9a58bad7daaaf17e21f9a414a514756adf042",
+      "bytes": 218
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-rebind.json",
+      "sha256": "8b5dec9d2a645886633393d3f8350d893b51ec7da5f2f293dc80a176ac27e6f4",
+      "bytes": 531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-giant-isopod-d41-rebind.log",
+      "sha256": "7747d943e988d0e0f52e872edb691a603d112ae455d6188835795e480717e5d8",
+      "bytes": 76
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-ai.json",
+      "sha256": "2bfd8f278eab5e06c83db104cf5768a51156495a87474ab7716b5ca1c38eaf0d",
+      "bytes": 600
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-ai.log",
+      "sha256": "aebeca2d5fe7233340951c9c167f4e1a448689241746ada696b1f3ccd07da54d",
+      "bytes": 931
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-native.json",
+      "sha256": "5d119c2aedf567e27d8e00def3a873743ec271b09e44edb9b1bb711a6058a31d",
+      "bytes": 540
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-native.log",
+      "sha256": "ae158920aea8dd66ef982fc33a47865a24fc8466f829e960acc231b6e2e1cac3",
+      "bytes": 210
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-rebind.json",
+      "sha256": "70a281355eb370a4800c6bb49e51030395d8fa4f61a0fb722c4e76984211fd54",
+      "bytes": 518
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-nautilus-d41-rebind.log",
+      "sha256": "af015df2ec08309ec569ccb50d988cc0555663711ce5c3382d90a090604e927b",
+      "bytes": 72
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-ai.json",
+      "sha256": "fd91287ead242704141a66088782fd25d8a75aa2c3f36c0b589a5cdd6514bc9e",
+      "bytes": 586
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-ai.log",
+      "sha256": "33ac629ff78ec03e7fc4e5c137e6a2aa7f8ad35cb90ebd6686c62fb89425f0d5",
+      "bytes": 1190
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-native.json",
+      "sha256": "122db3b88421ed8a387d717f0a6d5edb7431deab0a0dbe92ef0338742a18d9cd",
+      "bytes": 531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-native.log",
+      "sha256": "a8ba644ed96034e631d33c230e2e1e6b433d3256201ff41d92e0a902798d62ed",
+      "bytes": 204
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-rebind.json",
+      "sha256": "93d9f91320eebe159eef30ba9d84ee5776c8c8e62dfc502f44c03e0f2095f781",
+      "bytes": 512
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finish-snake-d40-rebind.log",
+      "sha256": "83e05d1eb433912b7cf74d8cd1460572444e0046b95ebf8b69f52e0af35d0617",
+      "bytes": 69
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/c475-giant-isopod-d41.log",
+      "sha256": "476c15f443bbd15d30c440cad5894e23377b8e9510eff47a39c9451ebf905a27",
+      "bytes": 422
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/chain-verification.json",
+      "sha256": "c33eac90f077c37ddbf94208ab300af37dd572fd0d846f881ee9ec82d79c2096",
+      "bytes": 123
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finish-subjects.json",
+      "sha256": "6f01a0737f968b6808e1d025af3d5ff3817788e1a9f8255daab4b24b91247311",
+      "bytes": 270
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished-plan.json",
+      "sha256": "9207eec2aada570ac52697e8fcfed002a49550155f6dda553ff67c1f5e11b714",
+      "bytes": 1877
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/c475-giant-isopod-d41-finished.png",
+      "sha256": "23c2e79a926c86b8470ef3008f27d4dcd321c5edf98acb5710c5c8dadf1857e4",
+      "bytes": 1544706
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/c475-giant-isopod-d41-receipt.json",
+      "sha256": "4b134943c1398f363e1cd47c3068971f1ea35af1d7046ef60117efafe117d8dc",
+      "bytes": 32519
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/c475-giant-isopod-d41-binding.json",
+      "sha256": "5884d18e03cbd68048b24a5dfce6526cbe0132858322d38ec99c6cce73209710",
+      "bytes": 4155981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/c475-giant-isopod-d41-labels.png",
+      "sha256": "dc938874c2788eebf4468a30e69f1d193e3f7241aea7034110f188d1ecb5c1c9",
+      "bytes": 44712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/c475-giant-isopod-d41-labels.rgba",
+      "sha256": "ed86ebdf653047954711bdd5cd49ba91f20dc3e0fe3d5e99e5b4ad75fda3ec2d",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/c475-giant-isopod-d41-master.rgba",
+      "sha256": "6d41a2ad69e6b2f36af3681e60a2fad5e8ec3520da32f132bb733825ea84d47d",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/c475-giant-isopod-d41-masterPng.png",
+      "sha256": "08fc1b90cc1c2fa491f0c7887be771066e8217d867adfa05844d8307211c8753",
+      "bytes": 1539592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/client.mjs",
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+      "bytes": 133185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/prepared/inputs.json",
+      "sha256": "5950fdcad1ac258af2d9ac9f3ec4df6c1e4d4bc0c633f075d8a6acaef69158ea",
+      "bytes": 1877
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/progress.json",
+      "sha256": "fdf66a03e4f63b0e8894b99d72af1a78c290a42a245c41ce7b33261442799b32",
+      "bytes": 166
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/finished/result.json",
+      "sha256": "23f92d3b7768e3b6dbfbc04f4a1a1d58907ca81b8c30b5389920749bb193de8d",
+      "bytes": 64683
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native-results.json",
+      "sha256": "40162a8211268948b203ca790da9f50ea254fa51807be9d26eb281a12327d415",
+      "bytes": 1879
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/battle-full.webm",
+      "sha256": "e43201d8c02de5e20fa68828615cdac0e088c526e666689f08be118e4b13f379",
+      "bytes": 7870616
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/report.json",
+      "sha256": "d424fedc640853e18422b3beecbaf17e474f23b8c440f17644104a5125fa0758",
+      "bytes": 357743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn0-hit-approach-50.png",
+      "sha256": "1876c796e8822b285d2e9da6beb276cea35187115df03517f7dc5c30f1526b9d",
+      "bytes": 1176841
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn0-hit-impact.png",
+      "sha256": "981f16dfd2f53bee7f0338efbcd6a0ef53e118d1811c043a7820138ad9daca64",
+      "bytes": 705828
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn0-hit-reaction-50.png",
+      "sha256": "58765a5b66269d88ad7f003a047d81a594e63d5af8598ec483809212b7df1d8e",
+      "bytes": 1239108
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn0-hit-return-end.png",
+      "sha256": "b69a1b6acee5c998ca24f66e7ae232763dc2431045dd7acfb823a3e7b19c0803",
+      "bytes": 1174826
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn1-hit-approach-50.png",
+      "sha256": "e7b423757299b1092508975a54d8e845116ab934daab5a099c465e263c7dbfe2",
+      "bytes": 1179130
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn1-hit-impact.png",
+      "sha256": "c37dab618563e91c5d98a44a642808c36e25911a3a51c903bb319661d7afbce7",
+      "bytes": 671443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn1-hit-reaction-50.png",
+      "sha256": "1b4fcf5f424c4759b25759cb59c00e41eb05f8c37058e2657cda0bb6f4344c7c",
+      "bytes": 1179452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn1-hit-return-end.png",
+      "sha256": "79cb8642670fd60c70ddf015c54355061c83ab0f1686a9421505dd82cef0a479",
+      "bytes": 1175313
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn2-dodge-approach-50.png",
+      "sha256": "1876c796e8822b285d2e9da6beb276cea35187115df03517f7dc5c30f1526b9d",
+      "bytes": 1176841
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn2-dodge-impact.png",
+      "sha256": "3536da21d46ec59796df734332797f18325077c1f2156e51a15b794913b75b36",
+      "bytes": 1220049
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn2-dodge-reaction-50.png",
+      "sha256": "a770b4a89b00e201210ffbc95098e0df4fb6c60573c9f24ef84b7569f3330e65",
+      "bytes": 1229082
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn2-dodge-return-end.png",
+      "sha256": "b69a1b6acee5c998ca24f66e7ae232763dc2431045dd7acfb823a3e7b19c0803",
+      "bytes": 1174826
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-approach-50.png",
+      "sha256": "1876c796e8822b285d2e9da6beb276cea35187115df03517f7dc5c30f1526b9d",
+      "bytes": 1176841
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-idle-50.png",
+      "sha256": "7ac12515a642363e3ece4fc3a33e5531a0b742c80e9f26dfc6e651e655d362ab",
+      "bytes": 1175762
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-idle-90.png",
+      "sha256": "15375e41973d5f1dc9c2ab72c5293318f573a3e202ac3d9d6e7086acb16dcced",
+      "bytes": 1174302
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-impact.png",
+      "sha256": "981f16dfd2f53bee7f0338efbcd6a0ef53e118d1811c043a7820138ad9daca64",
+      "bytes": 705828
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-reaction-50.png",
+      "sha256": "da9eb1c438bcf458f5b2e7338aa2fa9b9d7f8c276f8f7956dbbf1f754f647bb9",
+      "bytes": 1234481
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/native/turn3-hit-return-end.png",
+      "sha256": "cdb7674f5f94c1cb8bede6828511cc158fdfb2489acc31ff2c60b59c1aef353c",
+      "bytes": 1174582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebind-results.json",
+      "sha256": "672f8d9b6176a086ddfcbc7c0a9a678014a90041508ed2ac7ffd41e8d9e288cc",
+      "bytes": 16024
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/binding.json",
+      "sha256": "105108a9a717e0892ed68bd3721a4577676023cec14817c4047ae728bb275eab",
+      "bytes": 4155981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/declaration.json",
+      "sha256": "8a9871369bdb4a5cd5efdfea6cff1983a12625455270c6560fa32ed96a3324d7",
+      "bytes": 3647
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/finished-rebind.json",
+      "sha256": "c6a75969d897c36bc9118270c5eb47878d1689c2feb2f190bcf068e03601f26a",
+      "bytes": 15102
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/labels.png",
+      "sha256": "dc938874c2788eebf4468a30e69f1d193e3f7241aea7034110f188d1ecb5c1c9",
+      "bytes": 44712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/atlas/c475-giant-isopod-owner-r04.json",
+      "sha256": "5471e15bedee6d27313f5c906d7020ce38437de89fee53d32c25da0f7efe8297",
+      "bytes": 11833
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/atlas/c475-giant-isopod-owner-r04.png",
+      "sha256": "3ec8662ae2d611593047d0811452bd8f4aab57fb7ddfcaf3bbca98a5b6009cec",
+      "bytes": 597222
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/atlas/receipt.json",
+      "sha256": "e9f43ec52a03063067fab33597642c84008963f11e4bf3e5f77a40b148ee3b07",
+      "bytes": 4516
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/binding.json",
+      "sha256": "952151c05facafd6be1a365623d8cb3a5fadfd9f5ad5abac30bd20eb5f7122bb",
+      "bytes": 9731
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/keyed.png",
+      "sha256": "25c1b53d9c143c7b8273ca1dde2b9e57b57ad5b4f4be9402b86d6a8feaa705d8",
+      "bytes": 1543267
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/manifest.json",
+      "sha256": "9f6223f33a4f1c5b2bf67ad2a74b9933bdc147d5f0e26d47e44892379880d7d4",
+      "bytes": 4941
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/ownership.png",
+      "sha256": "31d460449a7db80b4024bbc82b500c220111db49f809b9cb84dfb2ffc637ce33",
+      "bytes": 35091
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/antenna-far.png",
+      "sha256": "5e8a5fc9584567e7c1ba9663724bd95d414c2fae781d19723c7907c25e80174e",
+      "bytes": 10180
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/antenna-near.png",
+      "sha256": "8734aa6dbd04a7176d242af7e7e64e328b5341d2e80b7a358e9b698053de6f7e",
+      "bytes": 5801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/head.png",
+      "sha256": "e6f19ebbf0ac11c9d292ce9122a02b80a4acebd9149de021f4655eee38279726",
+      "bytes": 51293
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg0far-foot.png",
+      "sha256": "5359ed313dd37b6ac48c2be3d5c93b95d677af6ca9ee5ba99695a338f1c432e0",
+      "bytes": 4059
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg0far-knee.png",
+      "sha256": "076d9f5fa560b554c9c5118567bcddfcbe58a6354b7c9517dbaa83020d9b66bc",
+      "bytes": 5664
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg0near-foot.png",
+      "sha256": "702c509e5b952a3a3c47a06ff453809b4880374f1866a556c1263ed9b103dd93",
+      "bytes": 5077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg0near-knee.png",
+      "sha256": "cfa01fc855b2badc08146cfab0854ddf397732d6b700b217b2a4db176a0dc1e3",
+      "bytes": 8099
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg1near-foot.png",
+      "sha256": "20fd808f59e8c0c2873cd112e3c212164ec1b072deaac6711909fe3a346289d9",
+      "bytes": 4006
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg1near-knee.png",
+      "sha256": "edd8524fb23ee9442d5d8d00504514435fde4ccd0e54e955ab10b19d52c05a21",
+      "bytes": 8415
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg2near-foot.png",
+      "sha256": "947bf4b24217c9b925428834ce89372435427af9b434fa2b067166969600c63a",
+      "bytes": 4081
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg2near-knee.png",
+      "sha256": "463fb30e5060219ef73f6f85178ae4011e5f077c3f45677f255c5dee08be69c0",
+      "bytes": 7646
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg3near-foot.png",
+      "sha256": "151743976b571aaad79dbf2e1b79acb29be2fbb46260a0c13c9dd1b48566972d",
+      "bytes": 4629
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg3near-knee.png",
+      "sha256": "c0b76b7d22af9c5eb2ba4b798a53e1ae4cdba229057dc4b26cf83e9a28ea5825",
+      "bytes": 8037
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg4near-foot.png",
+      "sha256": "ef2aa69423d76da09708e71f7b3f8ef793e5555f7c7b9974972866eea6ab6268",
+      "bytes": 4680
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg4near-knee.png",
+      "sha256": "c3539ecdbe7b11269ae27a9d1f74ce1d57ed4d444e3dde354cbb1a77265d71fa",
+      "bytes": 9206
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg5near-foot.png",
+      "sha256": "23b17650ae9c0921736b66f5d1c0a0aeaeb2676b9d5a32f0208a561f9ea0a48e",
+      "bytes": 4494
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg5near-knee.png",
+      "sha256": "1547967f966eacdaee7333cbb1215e453d374a74e45d15304d65ef6e95dd2331",
+      "bytes": 9503
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg6near-foot.png",
+      "sha256": "21a1662a4914bb6765a9eece6ef28d7072114e8a9354ff36de3d19daed53bf7b",
+      "bytes": 3639
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/leg6near-knee.png",
+      "sha256": "e35b63e14e31dd5c7f5450670ac5c95a93acbb60d3d861a3266280913e278c0a",
+      "bytes": 7234
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-0.png",
+      "sha256": "e888ea748afafa700962569bef5adb0ed09c03fad42af8b2051e682bd0760e7a",
+      "bytes": 46998
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-1.png",
+      "sha256": "bfb40352256040295fb00f3534581b1da92894724f52b7dceb6002af83003be4",
+      "bytes": 58142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-2.png",
+      "sha256": "5a03311b6d6ca33079d724d6642b53353c3bb38085652c7534809300090e9b67",
+      "bytes": 56880
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-3.png",
+      "sha256": "f804d187a359c0771b9633a68a8be16776fe4287044fb824cad92e5ce06c4076",
+      "bytes": 50908
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-4.png",
+      "sha256": "6b2912a6370265445964c6d38a51e5aa6c1956f522e8f7d6df219d1d89e5178f",
+      "bytes": 54567
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-5.png",
+      "sha256": "689e06edcda72466e92349f8933015be74e01e7fa04a62665cc56976132af775",
+      "bytes": 49197
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pereon-6.png",
+      "sha256": "5b8f78286c12a4968e6a3167d8d9047cf0e0b262862feadc19627e95486606d2",
+      "bytes": 52768
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/pleotelson.png",
+      "sha256": "ed5e279018749acfff73847efbe90154906b80c74d8f6f2558ad9590385cf2f5",
+      "bytes": 6192
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/uropod-far.png",
+      "sha256": "68fd81df18a3be4fec50cf832b9422dfab4e2501f7dafee59a91714b64a4be01",
+      "bytes": 16441
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/parts/uropod-near.png",
+      "sha256": "691e2b62729e5273e54a0be2466c54b23529d2407b150dee1fd4fd57e9531037",
+      "bytes": 6645
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/parts/receipt.json",
+      "sha256": "9941ba07ce2ec4418e1f9aa19c177a959799c63dfb4b58d50aa23fa71834e472",
+      "bytes": 7593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/pre-split-binding.json",
+      "sha256": "57fd183fad14fa60e3b5f4411fcdf7ba5bfe403b76e0cb9b1bbec8ed724b1324",
+      "bytes": 2457260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/record.json",
+      "sha256": "3802ff0b41737ade82913e9acba072c0a5d9554316fc4b0d51a59491bd23063b",
+      "bytes": 9521
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/c475-giant-isopod-d41/source-owner-correction.json",
+      "sha256": "a1eefc2e35ef16a6412685db8eef6685b33048dda62f708e28e8ac81c2666c9a",
+      "bytes": 37227
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/giant-isopod-d41/rebound/rebind-summary.json",
+      "sha256": "672f8d9b6176a086ddfcbc7c0a9a678014a90041508ed2ac7ffd41e8d9e288cc",
+      "bytes": 16024
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/c475-nautilus-d41.log",
+      "sha256": "43cc8b12d922d39c884e9f2a418cb7e6d7ff3cd0384de2408338f5c76bcbee8d",
+      "bytes": 423
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/chain-verification.json",
+      "sha256": "c33eac90f077c37ddbf94208ab300af37dd572fd0d846f881ee9ec82d79c2096",
+      "bytes": 123
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finish-subjects.json",
+      "sha256": "8bfd368126990fa3e33b090822ecd5aec4abec525027bd875f834dd620c6d550",
+      "bytes": 254
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished-plan.json",
+      "sha256": "cebf56f7c2d180987198151830ef39496ceddf0950b326e71864ed9ac97b1e25",
+      "bytes": 1809
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/c475-nautilus-d41-finished.png",
+      "sha256": "de2a209567a88484b2b407b99b36e112de15a267031f154ad3bcdfe7149f3b85",
+      "bytes": 1519680
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/c475-nautilus-d41-receipt.json",
+      "sha256": "32d09072f7ef5d308478f7dcadf62abd7bb4db5296a52fcfc8b37b310605f0db",
+      "bytes": 9404
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/c475-nautilus-d41-binding.json",
+      "sha256": "f7db0d0c97706623bff72bd906fa3f4d18bfa648a979c47a78ef41cc6fe27edf",
+      "bytes": 858077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/c475-nautilus-d41-labels.png",
+      "sha256": "2c842920edeaa46e37a9f0ef8d30d96dc971ae7278a95057916205f68f242417",
+      "bytes": 40251
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/c475-nautilus-d41-labels.rgba",
+      "sha256": "8c91456dd3ad6468c45f95f225cb161e931506c550b77936b2fed51722594aaf",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/c475-nautilus-d41-master.rgba",
+      "sha256": "0f29170e364cd5b59b860c42127d0d4abea340602b72728e85a66206e7229c88",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/c475-nautilus-d41-masterPng.png",
+      "sha256": "40a5acd0c7bf970c001c8482fc89af5fd364e063f7a330154cf0b09c129d8273",
+      "bytes": 1522372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/client.mjs",
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+      "bytes": 133185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/prepared/inputs.json",
+      "sha256": "8d226ef72cc86965706ea098979bce398f1cb2f8346390a4b9fb9a4e2ba7e3a5",
+      "bytes": 1855
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/progress.json",
+      "sha256": "a4f7b5202fe615e78b3d2f7a7d7a3c3a69685c878050c5d19e5ed86ff251c45f",
+      "bytes": 158
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished/result.json",
+      "sha256": "d3227c0eb64f1b4258b50f654adb05a4ac4b40e7872b4a2df70eb4c89ee05f1b",
+      "bytes": 38807
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native-results.json",
+      "sha256": "72a072ee61694651ccf17ca7d3147fbbb84acd76b21739c4edfb18c03b06f381",
+      "bytes": 1811
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/battle-full.webm",
+      "sha256": "c16e290595cd67aac0c6f57ad3bf0a4bb8ba6cec6340b4918eb6cb0dc71f52c2",
+      "bytes": 7504288
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/report.json",
+      "sha256": "a8ebe6a08db04e6e47f811927ced561a1c524e980ffbe31e9ad74e9e6fda8ccd",
+      "bytes": 357399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn0-hit-approach-50.png",
+      "sha256": "b70cb2a1096fdb42b101035267efe0f3a51296817cf85c3795f2b1c03cd51791",
+      "bytes": 1158457
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn0-hit-impact.png",
+      "sha256": "9d64281a6b92851b64867faa7a585b509ad63488e0b13c4184ae6f69aaca3ab7",
+      "bytes": 674225
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn0-hit-reaction-50.png",
+      "sha256": "8a912a2f528a63d0127c96f0d5c17ee7c90f2bcb4237cfd63e487697dde50c5b",
+      "bytes": 1188225
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn0-hit-return-end.png",
+      "sha256": "fca5e7704e7304916647a074dcebedf037c1914fa41b7af5e695eb32e3d76d78",
+      "bytes": 1144316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn1-hit-approach-50.png",
+      "sha256": "7f64376e4aab739a45bd11ee67bdf79f0c12f6bb6b3566c2918c1d15c96d3320",
+      "bytes": 1160049
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn1-hit-impact.png",
+      "sha256": "145fc195d087ffdc730e6219689fd1f1da77ba8002d6f3fad6541dc2f2ff08b1",
+      "bytes": 656836
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn1-hit-reaction-50.png",
+      "sha256": "60836d1fedb144b4c6557f7ab8acfb59fe565743af57a92684e31ec88f223f81",
+      "bytes": 1162454
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn1-hit-return-end.png",
+      "sha256": "f94ad98508a3c2009c7959e967fd9ebff5c04a5b6eed8b278528861880f6af5d",
+      "bytes": 1147734
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn2-dodge-approach-50.png",
+      "sha256": "b70cb2a1096fdb42b101035267efe0f3a51296817cf85c3795f2b1c03cd51791",
+      "bytes": 1158457
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn2-dodge-impact.png",
+      "sha256": "0a546910cb954e087f639c2f939e58dd47c289561c628958aa6d1ad4ed04bc32",
+      "bytes": 1180425
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn2-dodge-reaction-50.png",
+      "sha256": "9830a897aa3448cfb462420c856e88bbcca933d5e3784326af91e8151f815efc",
+      "bytes": 1185561
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn2-dodge-return-end.png",
+      "sha256": "fca5e7704e7304916647a074dcebedf037c1914fa41b7af5e695eb32e3d76d78",
+      "bytes": 1144316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-approach-50.png",
+      "sha256": "b70cb2a1096fdb42b101035267efe0f3a51296817cf85c3795f2b1c03cd51791",
+      "bytes": 1158457
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-idle-50.png",
+      "sha256": "2484996e6adeb2d91e77bee58b29ef8fd1d93f4346794e72c305c51ce940c8f9",
+      "bytes": 1150296
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-idle-90.png",
+      "sha256": "5b4b859b7bdb1c5bb1d40fca491c10fb23bcf31df60c79911cced3be41a14dfb",
+      "bytes": 1140227
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-impact.png",
+      "sha256": "9d64281a6b92851b64867faa7a585b509ad63488e0b13c4184ae6f69aaca3ab7",
+      "bytes": 674225
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-reaction-50.png",
+      "sha256": "d8fba3e7ab2998bb38aabaae6e2fca06ce027b321d59201ac9d8dd6d3b11bdad",
+      "bytes": 1186230
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/native/turn3-hit-return-end.png",
+      "sha256": "fca5e7704e7304916647a074dcebedf037c1914fa41b7af5e695eb32e3d76d78",
+      "bytes": 1144316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebind-results.json",
+      "sha256": "b652e0116035a214586ba5590024fd6946166044ff4c7e9bbd5ece3ea38ea002",
+      "bytes": 4120
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/binding.json",
+      "sha256": "a510f1f549d33bfe22aae3ee71c0432f5887b79256e250c8ccbc0ad37850bd86",
+      "bytes": 858077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/declaration.json",
+      "sha256": "932ac4b38b3fc1d3c337e7f1651d47b898a1704cd91f620f9a9faf172f0e1a33",
+      "bytes": 4575
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/finished-rebind.json",
+      "sha256": "31009b4901f8b92b6bff03572a55d72c7b6fbb48f084312b5663fa9db5c801d3",
+      "bytes": 3888
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/atlas/c475-nautilus-owner-r02-post-key.json",
+      "sha256": "ed63cec1b5d15a935867872741728336193aa35e5f744d358d108986ed1b3dfd",
+      "bytes": 2596
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/atlas/c475-nautilus-owner-r02-post-key.png",
+      "sha256": "449a075492ae88080b610c92b6068cfe60f93c5cedb71cc5acc98a74e816b403",
+      "bytes": 570805
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/atlas/receipt.json",
+      "sha256": "07f9f55b13792bb5ad07a2c07ba1739beac560898679d12035c1e699cc1c8882",
+      "bytes": 1534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/binding.json",
+      "sha256": "e9e1695e44574d19d1de1eb670e5d7175f41b035aa12e3ff23f1949eec72b6ab",
+      "bytes": 2277
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/keyed.png",
+      "sha256": "801a7033aad283736bf6a8faa29e48865d985919dc6addd9b9c51c571c3329db",
+      "bytes": 1518004
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/manifest.json",
+      "sha256": "7584efc4c8c0e4d6ad676f8ca5b4dcb527e674fa53f4c3f2fee5d48493ad75af",
+      "bytes": 1042
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/ownership.png",
+      "sha256": "fbd6cb10fbd7d4ee1c323f8e6511b7dc23df8de8742caccd4a3fd16f5bc64964",
+      "bytes": 25894
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/crown-base.png",
+      "sha256": "382ef143ff89d2299e327572ad8dd23b1c3135493cc58edbd21c18d0c12fe765",
+      "bytes": 28797
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/crown-distal.png",
+      "sha256": "756f67ede1d013406afef78e682747c4fe09d4c651d35e733faf115670c9ff03",
+      "bytes": 45084
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/crown-middle.png",
+      "sha256": "2b48aeafa1ed1125e5997323191dcd4440740839a8733a03499afcad8158f24f",
+      "bytes": 67510
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/head.png",
+      "sha256": "afaa97762a0bc553fc8128b73dc2ff21a635069501e38039c706a18facd6f8ff",
+      "bytes": 36170
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/hood.png",
+      "sha256": "c69d1964c54fc17e513c27d652ea629de4438aa12d29e06b103aac3835cefbcd",
+      "bytes": 63472
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/parts/shell.png",
+      "sha256": "ce6d3b68be3eeffff6bbb267187bbcb04557567927387709736d5a44fcf3b46f",
+      "bytes": 319453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/parts/receipt.json",
+      "sha256": "3f5f643fe51cb58e6a73aea32beffa993acb538a4d12a7fcd81f65b158c898d2",
+      "bytes": 2115
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/pre-split-binding.json",
+      "sha256": "3f9a83d88e31e502edcc1ebe42f7be252b6017e44782feca4b7433962790533a",
+      "bytes": 637349
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/receipt.json",
+      "sha256": "fb91fbafa985f3fbb646698426396c39b9c634f10b0009399029b97bfdc77fe0",
+      "bytes": 2189
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/c475-nautilus-d41/record.json",
+      "sha256": "249c2b705ed035c29e7118c36c7cc97fb10964cfef6a963a3e1ee2de2c839e67",
+      "bytes": 5379
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/rebound/rebind-summary.json",
+      "sha256": "b652e0116035a214586ba5590024fd6946166044ff4c7e9bbd5ece3ea38ea002",
+      "bytes": 4120
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/c475-snake-d40.log",
+      "sha256": "0d59ce63c50582625cc4326ccab95100d2b42c4a2ba70de0b10067cfaf184e64",
+      "bytes": 209
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/chain-verification.json",
+      "sha256": "c33eac90f077c37ddbf94208ab300af37dd572fd0d846f881ee9ec82d79c2096",
+      "bytes": 123
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finish-subjects.json",
+      "sha256": "01df30dd578e5d21355ac0cf603580892882623f939f423c1858934993220062",
+      "bytes": 242
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished-plan.json",
+      "sha256": "a094a3938d8620d8e396cb8f5d4a3e0d5ee3c87ebb1e180a1f3cec9457410304",
+      "bytes": 1756
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/c475-snake-d40-finished.png",
+      "sha256": "4c49e74e3191c4c3c79e2292cd844bde89320add30533087d3e21b4670930278",
+      "bytes": 1138686
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/c475-snake-d40-receipt.json",
+      "sha256": "00583a95d903a654d51d03b9ed8195d5636ca269c96a6af064bda556b5880020",
+      "bytes": 16434
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/c475-snake-d40-binding.json",
+      "sha256": "7525121c8b12e6cf7c1aecda5cd4104fbc86f8e15ed301de0330b70096697d4f",
+      "bytes": 1303405
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/c475-snake-d40-labels.png",
+      "sha256": "c04d95451339cd6f6c1f2e5b3c1e07fcd66be517320b32f5e26d3802ddf69315",
+      "bytes": 36360
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/c475-snake-d40-labels.rgba",
+      "sha256": "84f9e14a232e393c710a8dd6227ecab74604d1e8bf4b350ac1759dd80b54256a",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/c475-snake-d40-master.rgba",
+      "sha256": "ad717734e37c216044d7866889c1124382abac15f5361c75c96b4d4d50118171",
+      "bytes": 6290064
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/c475-snake-d40-masterPng.png",
+      "sha256": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+      "bytes": 1133759
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/client.mjs",
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+      "bytes": 133185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/prepared/inputs.json",
+      "sha256": "7f1a855bbb3dd34bade2b7ed90161a59c9af3552ece4e723970180403d4b63e1",
+      "bytes": 1832
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/progress.json",
+      "sha256": "e6de93c130b9a56bd15c764f7153bef1ce9446f63ad1bff918029122d5398410",
+      "bytes": 152
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/finished/result.json",
+      "sha256": "62c551be4fb5ab44a46b9e5a522e33231bd4ce2afc85e21e81f31a2a3ccf4d14",
+      "bytes": 46677
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native-results.json",
+      "sha256": "b27cdf93bdb6a0f393a0f2696f0f14fdbf3e477575f5bac0fcbd9094c97de38d",
+      "bytes": 1758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/battle-full.webm",
+      "sha256": "1d594bceb56637bd2bfe32ed6476f76cf404040005378751d95465d340baf50b",
+      "bytes": 9020132
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/report.json",
+      "sha256": "f59fc41c4d36a21ec3db4edaa21ba567c05b04553f98bab25565968d5e14ec0f",
+      "bytes": 366341
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn0-hit-approach-50.png",
+      "sha256": "d35a07bdf687a8d1bfe38982ce18ff2c47cc433c6d787c73657b4c9290ce0e6d",
+      "bytes": 1507004
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn0-hit-impact.png",
+      "sha256": "8d01f73c8c162645d32b1b849160b216bdb1fa0ec2b36ae6384fc4f77e631199",
+      "bytes": 959983
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn0-hit-reaction-50.png",
+      "sha256": "f4bf4fcff7df637b805f766ab1308da9a402ad233d8605fe6da122eddfd976ac",
+      "bytes": 1506967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn0-hit-return-end.png",
+      "sha256": "944e21b4b0e98ef423612dcc7f79d5e839f45f3475bf684ae787ff3b83962d05",
+      "bytes": 1507396
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn1-hit-approach-50.png",
+      "sha256": "d779ce50b0472355b486b87620e88392d5e5bad8f08a696d339d4fc8a7ac4666",
+      "bytes": 1506922
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn1-hit-impact.png",
+      "sha256": "95007f98ced4dd60a3e3b5f6e3ddd18b3a1b100639effa5ba6c9ac0f1f55ac24",
+      "bytes": 1506068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn1-hit-reaction-50.png",
+      "sha256": "570b7c0003340f915568872b1535255bfeb7f3bdaae29e1e385efebd64b63e78",
+      "bytes": 1506446
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn1-hit-return-end.png",
+      "sha256": "9c00d5d5317edd8eb3cec2f91ef9b376a3329cd50e14009dbb54f7535a485735",
+      "bytes": 1507319
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn2-dodge-approach-50.png",
+      "sha256": "d35a07bdf687a8d1bfe38982ce18ff2c47cc433c6d787c73657b4c9290ce0e6d",
+      "bytes": 1507004
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn2-dodge-impact.png",
+      "sha256": "e6821cd69c4a04e4c35da1e800671184e18e7e3e4df2f9dcd8059128217cfa3f",
+      "bytes": 1510342
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn2-dodge-reaction-50.png",
+      "sha256": "72693655ff156f1b79b93dcca6a1ae56d0933f6a44db375b88095f133b7d36d2",
+      "bytes": 1513223
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn2-dodge-return-end.png",
+      "sha256": "944e21b4b0e98ef423612dcc7f79d5e839f45f3475bf684ae787ff3b83962d05",
+      "bytes": 1507396
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-approach-50.png",
+      "sha256": "d35a07bdf687a8d1bfe38982ce18ff2c47cc433c6d787c73657b4c9290ce0e6d",
+      "bytes": 1507004
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-idle-50.png",
+      "sha256": "08590c69a45438db1d4be61ef8812463664279f28b74b366727d445e4a7a0efc",
+      "bytes": 1506803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-idle-90.png",
+      "sha256": "bef75748dee9962a31886f6c4aaa48c6af981eda0e7022122865c43aa9a2dea1",
+      "bytes": 1507296
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-impact.png",
+      "sha256": "c009aef298a3e12d5a8579dc8d845e3ada89af1a43fdda9784bd82daf361048f",
+      "bytes": 1506169
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-reaction-50.png",
+      "sha256": "572b5f5b07ad58776d08d6e116c7561731d20fcbb7b9df8b029d24ef0e657595",
+      "bytes": 1507412
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/native/turn3-hit-return-end.png",
+      "sha256": "1acc1da72188f5095b04a593ff0364c1f99b5207457ce39fcb65d7290f7f0f36",
+      "bytes": 1507414
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebind-results.json",
+      "sha256": "bc7e247345c7bfff91895b1191c545688f0c216b0da026d7d146302537193d96",
+      "bytes": 7711
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/binding.json",
+      "sha256": "92d05e9ae5288eb9328c4e7a7541ddc39da7bc21607865d6a6a5dfc465ad305e",
+      "bytes": 1303405
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/declaration.json",
+      "sha256": "4c30686e912b92d5c76b1ee5aca2ac681ed0e79cb650ee568fd88b9575715495",
+      "bytes": 1559
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/finished-rebind.json",
+      "sha256": "34fe8f90ab5fa511690283ccb63d76987bb6b839111416b5dc4204a71f602f2c",
+      "bytes": 7269
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/labels.png",
+      "sha256": "c04d95451339cd6f6c1f2e5b3c1e07fcd66be517320b32f5e26d3802ddf69315",
+      "bytes": 36360
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/atlas/c475-d40-snake.json",
+      "sha256": "547432ab60931d49d67951009700cd69aa92fdc3b10e52d0e7c94b9cd95676e0",
+      "bytes": 5381
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/atlas/c475-d40-snake.png",
+      "sha256": "cc098f72394a233d8a5889af23e2423bb23964cd1d1b76b5f6eed5b78aa5067c",
+      "bytes": 159896
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/atlas/receipt.json",
+      "sha256": "1047faf1bedb29aac4524595f4c89aa07288980d7ef2929977a80b50f8d9060f",
+      "bytes": 2451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/binding.json",
+      "sha256": "1e4c84139e8549d7791bac1f6b875b3c3e0d85f697d03ef0ddc55ff431a7d18d",
+      "bytes": 4478
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/keyed.png",
+      "sha256": "7a426b5803b0ffc42b02805aeaa7d06aeaa6315985532bc8b1dd5449d64e584c",
+      "bytes": 1135268
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/manifest.json",
+      "sha256": "aedf107f028254e497a683505346b90a30ada1a066bfdfb20f90bab2a80de9d5",
+      "bytes": 2264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/ownership.png",
+      "sha256": "6de9ab6277e6aff930106d36b4c3d11a4a41081ab91b2c1fa3ccfa252cc34af3",
+      "bytes": 14510
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-0.png",
+      "sha256": "3bf984524fffc081415bed3c3d5e114b0681d82215e2838335bae8cca455013d",
+      "bytes": 16847
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-1.png",
+      "sha256": "6e3e4e10bfa06e0d3baa557a0c2bbfb3e35f41b88952a79111bb1aed479ece1f",
+      "bytes": 16338
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-2.png",
+      "sha256": "86fe17b8696b643ea74425774d5c82450a941efb4b1f1282e175645b6b1a4d91",
+      "bytes": 16382
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-3.png",
+      "sha256": "c1944fcce3f608509a9b62683acc442f415050d9403409e7ba11fb793b23ed8a",
+      "bytes": 17587
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-4.png",
+      "sha256": "9851d2078314eead51545d7e78e61098a169e705a05d6b8b53d503294a9c274d",
+      "bytes": 17395
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-5.png",
+      "sha256": "d36358c3054554ee491a088e01449e8f670b6b9003b8c329d09df038e39306e4",
+      "bytes": 15490
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-6.png",
+      "sha256": "6cd21a3382c14b288780bd901794b2db37fb74bb192eb7cfc670a55525c280a9",
+      "bytes": 13593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-7.png",
+      "sha256": "47decf3a593e93966eaf6cab9479d6d59a328d1683dbabb346fce177882abf0e",
+      "bytes": 10374
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-8.png",
+      "sha256": "460475674596d3a3411dab80c9335394d2ee4786623ace0f750f7ebc76d49a47",
+      "bytes": 6834
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/body-segment-9.png",
+      "sha256": "feef2bfa7875d867e705839b079528bb0c575dc968c34d005ba7e60602b97349",
+      "bytes": 3232
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/head.png",
+      "sha256": "ba11c9dbfb3f04cdcbf894691baa00fcad38c75e41b40b2f6a9f7d1c385d8ea7",
+      "bytes": 14496
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/jaw.png",
+      "sha256": "19718eaf93d15bfd111556150110d46fad2f2ec086ac206be5462e7437bd144e",
+      "bytes": 5066
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/parts/neck-root.png",
+      "sha256": "197520a839047c8f10ffacc1a0725539298497e77e6f641380756d9c8a9860cf",
+      "bytes": 1770
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/parts/receipt.json",
+      "sha256": "96e3e746c1e22f9d2971886ae4c037f5ff9f5c9289c2bc8cc18c41257eb520fd",
+      "bytes": 3701
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/pre-split-binding.json",
+      "sha256": "819a8644439e38dcb7f7e2a617616d16c9a8facbf8bbf6453c4c7e63c9250e0f",
+      "bytes": 773681
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/record.json",
+      "sha256": "dce20c6ac1baa9496d87e73b9106308fc90aab432e036b375c86e952e446607f",
+      "bytes": 6698
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/c475-snake-d40/source-owner-reuse.json",
+      "sha256": "8735ef7102f94b764b223a328152305e5cb223668070f214632130a771c82431",
+      "bytes": 3421
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/snake-d40/rebound/rebind-summary.json",
+      "sha256": "bc7e247345c7bfff91895b1191c545688f0c216b0da026d7d146302537193d96",
+      "bytes": 7711
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/root-views/giant-isopod-d41-finished-worst.json",
+      "sha256": "68ea1547a0eff64d32702554d1f3497e6e7ed7176f00afcc6960f6716460164d",
+      "bytes": 912
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/root-views/nautilus-d41-finished-worst.json",
+      "sha256": "a41fa1f1a82fdb58526c754072d5305b1aa9d73f2d9dfbf7d474567b6e5d105a",
+      "bytes": 884
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/root-views/snake-d40-finished-worst.json",
+      "sha256": "4fe560a9964f6db2425be97e5d26613e067292ccb1d529cab25a224308939987",
+      "bytes": 891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished.json",
+      "sha256": "7763e8c6a2f8f25d2f4b577caee306790a7faf25376f42bbe81a43affe6e6f27",
+      "bytes": 2194
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished.log",
+      "sha256": "62983e798c2aae76e9d804afe62ff6b11b3fd30e1bcbc675f01de0260ab22097",
+      "bytes": 61
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/checker.log",
+      "sha256": "f33a381ff2c26065df722a548a9498655f70ce92568333e113937c2f77bdddbe",
+      "bytes": 1685
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/current-rows.json",
+      "sha256": "db8f940f723b070f9cbbe8ba1941dfecef0fcee923cf7fbd6b08b29bcf38fa68",
+      "bytes": 7915
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/fragment-triage.json",
+      "sha256": "039a94d0d3d115568d433bad33e5c08e5c81da42e05dc4561cadc344d7c32041",
+      "bytes": 183758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/freeze.json",
+      "sha256": "49411fb5d8fc7c947c3880fab25e2401ea09cfcab9bcb4e6409e358cf642249b",
+      "bytes": 233437
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/roots.json",
+      "sha256": "92a69c67eb7c11edd120b4cb1143dfb116b42e15cf287689b4df58fd188ece72",
+      "bytes": 14897
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-next3-finished/verification.json",
+      "sha256": "a554f4ddf24677e532373780b46a0d7bd367050b7ff7b70e2191adc3a3a89d04",
+      "bytes": 8861
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/water-flea-r02-root-retention-hold.json",
+      "sha256": "48362284670eb548933875825eff15f8a3318244a0648ebcd0e7e14a2966def9",
+      "bytes": 1029
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave13-three-more-ready/README.md",
+      "sha256": "7ea79a9189c36d26d04d6ee7ef03638847774c32b76bcfb3bb029b3e5d07ac47",
+      "bytes": 3244
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave13-three-more-ready/progress170.json",
+      "sha256": "2e893a83c0ab96ede6af00a1fcd67802e933a06f7be12db7d25d3c21e5b59b36",
+      "bytes": 699335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/giant-isopod-d41/manifest.json",
+      "sha256": "7b036d7bc28bbf9f4713d7ccfd3828660aa36709e4260dc3da90395fc8d5eaec",
+      "bytes": 15801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/giant-isopod-d41/packet.json",
+      "sha256": "2bd68823ba306655c87273f301f0bf6f899ecc8643b01467ee2c9b29a7b61546",
+      "bytes": 12549
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/giant-isopod-d41/verification.json",
+      "sha256": "6bf0c51f68c9bcf26dd3543961bc311404279b319d277e3789e84bf5c1c922bf",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/nautilus-d41/manifest.json",
+      "sha256": "c90fe822a2dca6418ff90e03ba14e49f1381d0d49490633c3888b4451f4bd7ea",
+      "bytes": 9301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/nautilus-d41/packet.json",
+      "sha256": "86d9d766fe50f4ba3888ddb50b42c8ffd05e588fe1903e54a526dfe7f9dd0473",
+      "bytes": 6908
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/nautilus-d41/verification.json",
+      "sha256": "1c066f117a9dd940c21953339af03c4a285ae27a704512b9e59b3fad5e1fae91",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/snake-d40/manifest.json",
+      "sha256": "1a13020b6a25ce378a91da634501d9a5b9040d7a78bb544ea6a00954d5448773",
+      "bytes": 11079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/snake-d40/packet.json",
+      "sha256": "71e5fb4b9bb47f72b7978322efe7e8dc9efad5bdcc83c2f2dbc94a9a9a27415b",
+      "bytes": 8391
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/ready/snake-d40/verification.json",
+      "sha256": "02a7c1d682bbfd093900bde060437387a64d9c2512c804d9a22463ac17dc90dc",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/freeze-r01.json",
+      "sha256": "352c9cde0888d4a4af8ef73fa0a8a41eeca36ade3af668f8eb6b60e3bc9c0e83",
+      "bytes": 8514
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-owner-review-r01.json",
+      "sha256": "7c92d4c099ad025efdf6efccba863a35181a8d7bca2671fcba10013fcaf164d6",
+      "bytes": 9022
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/antenna-far.png",
+      "sha256": "70cb1bf90880326ab2864543c7056bff390766a955b5f17235f3fb2539571636",
+      "bytes": 22147
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/antenna-near.png",
+      "sha256": "08e8796c54f3eda6b49c364a764f5c48b2fb8ff12fb441ecbfb372fa508d59b8",
+      "bytes": 23483
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/canonical-neutral.png",
+      "sha256": "180a648f1c4f5d9949ef79c9abb174d4a3c0a91a91309290a7d609512be50cd1",
+      "bytes": 333173
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/evidence.json",
+      "sha256": "093c0b788536acfbf0605e27875d0de90fdbe62e91c0247484c69dc4d352a7fb",
+      "bytes": 10441
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/keyed-neutral.png",
+      "sha256": "15dc2fea88d7bbf8779a026bd877ab506d7141769931ed65341c81907b1ed925",
+      "bytes": 358651
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/water-flea-owner-r02/source-prep-r01/rigid-carapace.png",
+      "sha256": "e8dac82de265e38d3392abfb8d124702cc844a5d75ee52c57bea5fdeda8151eb",
+      "bytes": 283783
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-giant/finished-r01/checkpoint-finished.json",
+      "sha256": "7790ca8ed2dcaf0fb21d2f50d1ea9445322aa8de6006714bb33f1845a7c3fd1b",
+      "bytes": 14467
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-giant/finished-r01/conservation-check.json",
+      "sha256": "6b4a22cafcfe1ed04ffa6fc1a2361829c18f2ec0254a602487c398570b13e3eb",
+      "bytes": 13421
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-giant/finished-r01/finished-freeze.json",
+      "sha256": "074ffc7938b6302ec186a72d563532ea961e99bd878155e5d768fc45a86661d6",
+      "bytes": 1900
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-giant/finished-r01/physical-freeze.json",
+      "sha256": "c5f0876723003a5bf33d5421f5a8a0ffe2140fdde7ee4ccb07a1b39f19925569",
+      "bytes": 13086
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-giant/finished-r01/physical-review.json",
+      "sha256": "fae2e7ef9c8a9d74b72c56b298721cc27f0a30be3404747ec0d409755bc2e814",
+      "bytes": 25752
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-nautilus/finished-r01/checkpoint-finished.json",
+      "sha256": "96f5839902b23625aab1b6ff01093827532c306a10a74dabd51e89b5c361e325",
+      "bytes": 8344
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-nautilus/finished-r01/conservation-check.json",
+      "sha256": "0b0b31b14cea9fd6a7c7021b836fe7fe63be5dba336086ce140292e3857ccc84",
+      "bytes": 4554
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-nautilus/finished-r01/finished-freeze.json",
+      "sha256": "55e3ef061f825610c1b28faee2a376c9a6a87cb6c539a5df9251d69cc3dc8f1e",
+      "bytes": 1914
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-nautilus/finished-r01/physical-freeze.json",
+      "sha256": "72e6ab67c1faccdcc2f7f610f067e08e4a161697a79e5ae37882911c0ec956d8",
+      "bytes": 6678
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-nautilus/finished-r01/physical-review.json",
+      "sha256": "838a80bf5a8f12abadb9cde6a0653a1bb249add0e6e70f59e6c07172a4102e54",
+      "bytes": 13216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-snake/finished-r01/checkpoint-finished.json",
+      "sha256": "136ff41cf58754a4b588c5f0c0f139393a69c45d9868c6c3634ef0da31af380b",
+      "bytes": 9971
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-snake/finished-r01/conservation-check.json",
+      "sha256": "d3cb8180a48f85af605b82bdaf15676d4bfa565208be7763b388eb2c74a6cf76",
+      "bytes": 7092
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-snake/finished-r01/finished-freeze.json",
+      "sha256": "21a96cff87d212133a1e0eb3bbf3731403da664b1cdb70d799c843ee2817ad50",
+      "bytes": 1443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-giant-isopod-finished-r01/freeze.json",
+      "sha256": "b220d5123965ab2609665d547723d25841a652cb485a778888b9a488fc2cc5cc",
+      "bytes": 11268
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-giant-isopod-finished-r01/review.json",
+      "sha256": "eb8734cf510ba6054b32cc9cb9d155c0aa93e5059e1fa961746e0b157418bc86",
+      "bytes": 28453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-nautilus-finished-r01/freeze.json",
+      "sha256": "5c97b7b81fed369e77bbef36a28300b884589c7c20752d4aa93cc53dacd55848",
+      "bytes": 5114
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-nautilus-finished-r01/review.json",
+      "sha256": "83a4ad242f36cfb60b31e09bf69cf870be0ba6807dc8031f201cb9bc1c85e4be",
+      "bytes": 12784
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-snake-finished-r01/freeze.json",
+      "sha256": "c96d739b9faf09219812e6d04a22d274a72ebd1deacdeb850f2a6f363ae06173",
+      "bytes": 6758
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-snake-finished-r01/review.json",
+      "sha256": "afa9aca546e7d1e537d9cbc1d4705caf25aa664a31e2781c03848f12f11f4347",
+      "bytes": 16633
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "476911f75526b2e3156d7e57d0eb0791ce830ac4e2fa47d312e9b4f289d6e55c",
+      "bytes": 570188
+    }
+  ],
+  "files": 287,
+  "remoteOperations": false
+}

@@ -1,0 +1,10 @@
+{
+  "id": "c266-07-sea-turtle",
+  "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/native/report.json",
+  "name": "Sea Turtle",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/sea-turtle01/visual-review.json",
+  "checkpointReviewSha256": "ef3f0e24ceaa24fcb739e84d652a6e8df4ffdfc478f8a572459711d4c6e93b91",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

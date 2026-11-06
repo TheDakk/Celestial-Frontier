@@ -1,0 +1,363 @@
+{
+ "schema": "cf.d50-admission/v1",
+ "note": "Delivered = certified + passes every existing per-archetype game gate unchanged (arena attack/target zero refusals, scale sweep, accent trim <=35%, body recolour, long-body card). Held rows keep their certification; they need family/morph work, not a looser gate.",
+ "admitted": 381,
+ "held": 71,
+ "holds": [
+  {
+   "name": "Abalone",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Banana Slug",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Chiton",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Clam",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Conch",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Cowrie",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Damselfish",
+   "gate": "library-arena",
+   "why": "refusals 2 ARAP skin: unresolved folded triangles: 2"
+  },
+  {
+   "name": "Donkey",
+   "gate": "library-arena",
+   "why": "refusals 86 ARAP skin: unresolved folded triangles: 8"
+  },
+  {
+   "name": "Earthworm",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Flatworm",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Flatworm"
+  },
+  {
+   "name": "Freshwater Snail",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Giant Isopod",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Giant Isopod"
+  },
+  {
+   "name": "Ice Worm",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Ice Worm"
+  },
+  {
+   "name": "Isopod",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Isopod"
+  },
+  {
+   "name": "Land Snail",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Leech",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Limpet",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Macaque",
+   "gate": "library-arena",
+   "why": "refusals 6 Contact: faint@585.333333333333 exceeds scale compression bound"
+  },
+  {
+   "name": "Mudskipper",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Mussel",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Nautilus",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Nautilus"
+  },
+  {
+   "name": "Nudibranch",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Oyster",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Oystercatcher",
+   "gate": "library-arena",
+   "why": "refusals 1 ARAP skin: unresolved folded triangles: 13"
+  },
+  {
+   "name": "Sand Dollar",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Sand Dollar"
+  },
+  {
+   "name": "Scallop",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Sea Anemone",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Sea Anemone"
+  },
+  {
+   "name": "Sea Snail",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Snail",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Sponge",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Tube Worm",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: species/template mismatch for Tube Worm"
+  },
+  {
+   "name": "Water Snail",
+   "gate": "library-arena",
+   "why": "attack REFUSED: Attack anatomy: no admitted move"
+  },
+  {
+   "name": "Bumblebee",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Butterfly",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Cardinalfish",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Cockatoo",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Cold-Adapted Insect",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Firefly",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Flying Fish",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Giant Water Bug",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Goby",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Goldfish",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Grayling",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Hornbill",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Hummingbird",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Knifefish",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Macaw",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Mahi-Mahi",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Parrot",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Pelican",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Puffin",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Sperm Whale",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Spider",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Stork",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Surgeonfish",
+   "gate": "morph-library",
+   "why": "accent share"
+  },
+  {
+   "name": "Mongoose",
+   "gate": "morph-library",
+   "why": ": the diagonal must make it larger"
+  },
+  {
+   "name": "Pond Turtle",
+   "gate": "morph-library",
+   "why": ": the diagonal must make it larger"
+  },
+  {
+   "name": "Arctic Hare",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Blenny",
+   "gate": "morph-library",
+   "why": "body barely recoloured"
+  },
+  {
+   "name": "Buffalo",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Chough",
+   "gate": "morph-library",
+   "why": "body barely recoloured"
+  },
+  {
+   "name": "Coot",
+   "gate": "morph-library",
+   "why": "body barely recoloured"
+  },
+  {
+   "name": "Great White Shark",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Mountain Tapir",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Orca",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Panda",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Tigerfish",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Water Buffalo",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Water Snake",
+   "gate": "morph-library",
+   "why": "root-patch barely recoloured"
+  },
+  {
+   "name": "Wildebeest",
+   "gate": "morph-library",
+   "why": "root barely recoloured"
+  },
+  {
+   "name": "Stick Insect",
+   "gate": "long-body card",
+   "why": "FINISH F3 2026-11-04: turns onto the diagonal but fill ratio 1.137 <= 1.15 (morph-library long-body outcome)"
+  }
+ ]
+}

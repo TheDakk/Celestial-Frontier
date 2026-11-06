@@ -1,0 +1,470 @@
+[
+ {
+  "id": "01-gorilla",
+  "name": "Gorilla",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy. Gorilla uses a naturally LOW knuckle-walking stance, all four contacts visibly separate from the body; no ground/shadow merged into knuckles.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "04-gorilla",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla"
+    }
+   ]
+  }
+ },
+ {
+  "id": "02-capuchin",
+  "name": "Capuchin",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/02-capuchin",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/02-capuchin/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy. Capuchin retains its natural long tail and arboreal anatomy, but no tree/scenery; both hands are resting visibly rather than raised.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "07-capuchin",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin"
+    }
+   ]
+  }
+ },
+ {
+  "id": "03-squid",
+  "name": "Squid",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "17-squid",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid"
+    }
+   ]
+  }
+ },
+ {
+  "id": "04-cuttlefish",
+  "name": "Cuttlefish",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "18-cuttlefish",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish"
+    }
+   ]
+  }
+ },
+ {
+  "id": "05-diving-beetle",
+  "name": "Diving Beetle",
+  "family": "insect",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: a modest elevated right-facing side-oblique view, only enough to honestly expose all SIX actual thoracic leg chains from visible roots through knees and tarsi to separate endpoints. This slight viewpoint is an explicit source-visibility override to strict side view; species anatomy and exact style remain unchanged. Keep real antennae and mouthparts distinct from legs, actual thorax/abdomen, and species-correct folded wings/closed elytra without adding exposed flight wings or fantasy mandibles. No shared/doubled leg segment or invented seventh appendage. Keep all fine tips far inside the border.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C118_20260927/pilot.json",
+     "id": "16-diving-beetle",
+     "master": "audits/G2_C118_20260927/16-diving-beetle/master.png",
+     "packet": "audits/G2_C118_20260927/16-diving-beetle"
+    },
+    {
+     "pilot": "audits/G2_C114_20260927/pilot.json",
+     "id": "24-diving-beetle",
+     "master": "audits/G2_C114_20260927/24-diving-beetle/master.png",
+     "packet": "audits/G2_C114_20260927/24-diving-beetle"
+    },
+    {
+     "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+     "id": "19-diving-beetle",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/19-diving-beetle/master.png",
+     "packet": "audits/C196_CREATURE_SUPPLY_20261003/19-diving-beetle"
+    }
+   ]
+  }
+ },
+ {
+  "id": "06-chimpanzee",
+  "name": "Chimpanzee",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/06-chimpanzee",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/06-chimpanzee/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "05-chimpanzee",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee"
+    }
+   ]
+  }
+ },
+ {
+  "id": "07-howler-monkey",
+  "name": "Howler Monkey",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/07-howler-monkey",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/07-howler-monkey/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "08-howler-monkey",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey"
+    }
+   ]
+  }
+ },
+ {
+  "id": "08-spider-monkey",
+  "name": "Spider Monkey",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/08-spider-monkey",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/08-spider-monkey/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "09-spider-monkey",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey"
+    }
+   ]
+  }
+ },
+ {
+  "id": "09-tamarin",
+  "name": "Tamarin",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/09-tamarin",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/09-tamarin/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+     "id": "18-tamarin",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/18-tamarin/master.png",
+     "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/18-tamarin"
+    }
+   ]
+  }
+ },
+ {
+  "id": "10-macaque",
+  "name": "Macaque",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/10-macaque",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/10-macaque/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "10-macaque",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque"
+    }
+   ]
+  }
+ },
+ {
+  "id": "11-langur",
+  "name": "Langur",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/11-langur",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/11-langur/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+     "id": "19-langur",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/19-langur/master.png",
+     "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/19-langur"
+    }
+   ]
+  }
+ },
+ {
+  "id": "12-baboon",
+  "name": "Baboon",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/12-baboon",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/12-baboon/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "11-baboon",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon"
+    }
+   ]
+  }
+ },
+ {
+  "id": "13-lemur",
+  "name": "Lemur",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "12-lemur",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur"
+    }
+   ]
+  }
+ },
+ {
+  "id": "14-mandrill",
+  "name": "Mandrill",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+     "id": "21-mandrill",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/21-mandrill/master.png",
+     "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/21-mandrill"
+    }
+   ]
+  }
+ },
+ {
+  "id": "15-marmoset",
+  "name": "Marmoset",
+  "family": "primate",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+     "id": "22-marmoset",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+     "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset"
+    }
+   ]
+  }
+ },
+ {
+  "id": "16-octopus",
+  "name": "Octopus",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "16-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus"
+    }
+   ]
+  }
+ },
+ {
+  "id": "17-giant-octopus",
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "19-giant-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus"
+    }
+   ]
+  }
+ },
+ {
+  "id": "18-centipede",
+  "name": "Centipede",
+  "family": "myriapod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/18-centipede",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/18-centipede/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: the actual biological segment and leg inventory remains intact, with a gently extended noncrossing body, real head/antennae and terminal anatomy; show near/far limb rows as visibly as a natural shallow elevated view permits. Do not reduce the actual leg count to a rig ceiling, delete a row, add an invented sting, or turn a millipede into a flattened centipede. Every original tip stays well inside the canvas; unsupported visible counts remain a later template hold.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "13-centipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede"
+    }
+   ]
+  }
+ },
+ {
+  "id": "19-giant-centipede",
+  "name": "Giant Centipede",
+  "family": "myriapod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/19-giant-centipede",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/19-giant-centipede/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: the actual biological segment and leg inventory remains intact, with a gently extended noncrossing body, real head/antennae and terminal anatomy; show near/far limb rows as visibly as a natural shallow elevated view permits. Do not reduce the actual leg count to a rig ceiling, delete a row, add an invented sting, or turn a millipede into a flattened centipede. Every original tip stays well inside the canvas; unsupported visible counts remain a later template hold.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "14-giant-centipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede"
+    }
+   ]
+  }
+ },
+ {
+  "id": "20-millipede",
+  "name": "Millipede",
+  "family": "myriapod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/20-millipede",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/20-millipede/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: the actual biological segment and leg inventory remains intact, with a gently extended noncrossing body, real head/antennae and terminal anatomy; show near/far limb rows as visibly as a natural shallow elevated view permits. Do not reduce the actual leg count to a rig ceiling, delete a row, add an invented sting, or turn a millipede into a flattened centipede. Every original tip stays well inside the canvas; unsupported visible counts remain a later template hold.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "15-millipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede"
+    }
+   ]
+  }
+ },
+ {
+  "id": "21-leafcutter-ant",
+  "name": "Leafcutter Ant",
+  "family": "insect",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: a modest elevated right-facing side-oblique view, only enough to honestly expose all SIX actual thoracic leg chains from visible roots through knees and tarsi to separate endpoints. This slight viewpoint is an explicit source-visibility override to strict side view; species anatomy and exact style remain unchanged. Keep real antennae and mouthparts distinct from legs, actual thorax/abdomen, and species-correct folded wings/closed elytra without adding exposed flight wings or fantasy mandibles. No shared/doubled leg segment or invented seventh appendage. Keep all fine tips far inside the border.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+     "id": "28-leafcutter-ant",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/28-leafcutter-ant/master.png",
+     "packet": "audits/G2_THROUGHPUT_C56_20260926/28-leafcutter-ant"
+    }
+   ]
+  }
+ },
+ {
+  "id": "22-locust",
+  "name": "Locust",
+  "family": "insect",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/22-locust",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/22-locust/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: a modest elevated right-facing side-oblique view, only enough to honestly expose all SIX actual thoracic leg chains from visible roots through knees and tarsi to separate endpoints. This slight viewpoint is an explicit source-visibility override to strict side view; species anatomy and exact style remain unchanged. Keep real antennae and mouthparts distinct from legs, actual thorax/abdomen, and species-correct folded wings/closed elytra without adding exposed flight wings or fantasy mandibles. No shared/doubled leg segment or invented seventh appendage. Keep all fine tips far inside the border.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+     "id": "22-locust",
+     "master": "audits/G2_THROUGHPUT_C54_20260926/22-locust/master.png",
+     "packet": "audits/G2_THROUGHPUT_C54_20260926/22-locust"
+    }
+   ]
+  }
+ },
+ {
+  "id": "23-grasshopper",
+  "name": "Grasshopper",
+  "family": "insect",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: a modest elevated right-facing side-oblique view, only enough to honestly expose all SIX actual thoracic leg chains from visible roots through knees and tarsi to separate endpoints. This slight viewpoint is an explicit source-visibility override to strict side view; species anatomy and exact style remain unchanged. Keep real antennae and mouthparts distinct from legs, actual thorax/abdomen, and species-correct folded wings/closed elytra without adding exposed flight wings or fantasy mandibles. No shared/doubled leg segment or invented seventh appendage. Keep all fine tips far inside the border.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_FAMILY_PILOT_20260926/pilot.json",
+     "id": "19-grasshopper",
+     "master": null,
+     "packet": "audits/G2_FAMILY_PILOT_20260926/19-grasshopper"
+    }
+   ]
+  }
+ },
+ {
+  "id": "24-dobsonfly",
+  "name": "Dobsonfly",
+  "family": "insect",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Source visibility correction: a modest elevated right-facing side-oblique view, only enough to honestly expose all SIX actual thoracic leg chains from visible roots through knees and tarsi to separate endpoints. This slight viewpoint is an explicit source-visibility override to strict side view; species anatomy and exact style remain unchanged. Keep real antennae and mouthparts distinct from legs, actual thorax/abdomen, and species-correct folded wings/closed elytra without adding exposed flight wings or fantasy mandibles. No shared/doubled leg segment or invented seventh appendage. Keep all fine tips far inside the border.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C92_20260927/pilot.json",
+     "id": "21-dobsonfly",
+     "master": "audits/G2_C92_20260927/21-dobsonfly/master.png",
+     "packet": "audits/G2_C92_20260927/21-dobsonfly"
+    }
+   ]
+  }
+ }
+]

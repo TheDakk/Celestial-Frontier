@@ -1,0 +1,494 @@
+{
+  "schema": "cf.o1-source-observed-owner-intake/v1",
+  "status": "FIT_COMPILED_FRESH_STATIC_PENDING",
+  "sourceHead": "cdecf0f7e690f6ab45e6a76f12df38a6e1776f15",
+  "helperSha256": "83ce8366d743dea46d7764f247ae519086fd421af2110fea487b773f53485c9b",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/record.json",
+      "sha256": "77fade4023106b25d43e4a7eb52db02b06b769a0905cbf87210a325b3fed945f",
+      "bytes": 7574
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/declaration.json",
+      "sha256": "c6725d401b29cdb1df30c34a014f30d46e3a3e8506449964612e1ff18022c11a",
+      "bytes": 16868
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/pre-split-binding.json",
+      "sha256": "934f333aa3f5074412d5ff06fd94a83f183fbe8f73130e7da1d9fd95b7d6e697",
+      "bytes": 736431
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/binding.json",
+      "sha256": "d785e1b56a0a8ee9ca56f83eb09250925d1a55e88ce0018ea45e90dd3515675c",
+      "bytes": 1251865
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/intake-provenance.json",
+      "sha256": "bd807724ab5a39280596c2882520e6fe23932f5b3bebaac85a97496213a7a8f5",
+      "bytes": 4882
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/receipt.json",
+      "sha256": "611887e359c38142118efa454ffba786e3c72e729eaa00ed4dde4bcffef31a1e",
+      "bytes": 2848
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/binding.json",
+      "sha256": "eb56c09619b27043a8d0975ff8d3d5281177a2e5d4a2eabef0b21675ffacf8b1",
+      "bytes": 9693
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/keyed.png",
+      "sha256": "cbecbd01d330435ad96fea6b972de3cedbda841149631b95b758d285f1ad0572",
+      "bytes": 1275486
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/reviewed-tail-0.png",
+      "sha256": "6429d1be5f78a7b27d0190832ce1c9e898811f6cab05cb23966ad9ae3c00587a",
+      "bytes": 7365
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/reviewed-tail-1.png",
+      "sha256": "016fbd0b0ff2b9111faadf3fcc9ff53fd19afee12f8084da009f69691402346e",
+      "bytes": 3379
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/root.png",
+      "sha256": "94fc4f5372367970bff22e5df6cc28c59eec9ed28545744bda9839da4f4fc05f",
+      "bytes": 273
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/ear-near-tip.png",
+      "sha256": "fdc19f08748daaf50472ec88252e55e3a8dad39ab89e71d4d7818404de028922",
+      "bytes": 5070
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/ear-near-root.png",
+      "sha256": "c62200d70df94d6ff228396c80bf8e7484006a9e493d0191713c0cc37ac518c9",
+      "bytes": 5676
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/ear-far-tip.png",
+      "sha256": "964ee19750472a8aae6e5fdd2058b65acb7b63d9a594776d490ea266383f41d7",
+      "bytes": 2311
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/ear-far-root.png",
+      "sha256": "0b63b6f73eda4ed48553a773b35c50f066daa99b48bfd3c536a72facdda2391f",
+      "bytes": 5650
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-near-paw.png",
+      "sha256": "db09d798f0d7ca05c9a20b9edc5902244ff81951dd8de0be1839edb1fab64057",
+      "bytes": 2291
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-near-ankle.png",
+      "sha256": "54918704b3252ea32b49a99339b84d311cb736436f8ea643621969d9abdf76fb",
+      "bytes": 2887
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-near-knee.png",
+      "sha256": "2d90b5ba923520dcc35bac383115d102acdc5a846a9c162a19575f4122325d7f",
+      "bytes": 20801
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-near-root.png",
+      "sha256": "b5e370a7a73f8296e8694d860065be95b67e37e99f0433b14cde6f4a058a0192",
+      "bytes": 29048
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-far-paw.png",
+      "sha256": "8bd3b2f9ef9c66d41fc64bf4beffddcf0dacb0f413ab92064228a1efccbf1ec6",
+      "bytes": 3891
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-far-ankle.png",
+      "sha256": "77bfb6eb8d5d5ac9017aa73ccc3d18c4ce4ee61803434cad67066599956d3b94",
+      "bytes": 11436
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-far-knee.png",
+      "sha256": "36e6778315f4602037ea129a0f5e6f6aaec537502f2c226b20df3bb89f7bb411",
+      "bytes": 5941
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/hind-far-root.png",
+      "sha256": "eddec8f4d77fec587fc8eb901fc36a2eb1d2993e8267dadcbe19e15b996a32d9",
+      "bytes": 3875
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-near-paw.png",
+      "sha256": "fdc410a8188bb9c321138ae30e2ff65670ecf6a7357598e9e29cc31cc2dc69c0",
+      "bytes": 3417
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-near-ankle.png",
+      "sha256": "200b965ded61a67c0f5cdb799a199b5461dfa84bc520a2af28fe8afc27b01a64",
+      "bytes": 3554
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-near-knee.png",
+      "sha256": "5fd21c57612a53151e4f16dca66b5b7c74c67272c95c400e39ad8813789d2328",
+      "bytes": 8057
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-near-root.png",
+      "sha256": "3662b7c1346b009b6491ae088441581d09ceac9affe1dd10452430acf6cb380a",
+      "bytes": 18370
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-far-paw.png",
+      "sha256": "8687c8d1a68b31fc5948bd9858bc1e824b82bbf6bdf0a5aff30ec6de04b34c5f",
+      "bytes": 2591
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-far-ankle.png",
+      "sha256": "1c88b4f0de9bf3afa2f4577bb68bd942d5a1b94de3b6b7721004e8bba3df38ef",
+      "bytes": 3085
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-far-knee.png",
+      "sha256": "c7302565539eb93a63f893137a6128eab841770d6b3bfcd1f42c488f9a9d792f",
+      "bytes": 8542
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/fore-far-root.png",
+      "sha256": "384292a3acd18c7da380db2c6cf0bb14ffaafb9078d1f3e936f0f80df4a212eb",
+      "bytes": 6751
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/jaw.png",
+      "sha256": "576d7d9a4bb297adbbf445c152a8016db81bf01428537861f087f39733fdfd83",
+      "bytes": 7544
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/head.png",
+      "sha256": "9626deee19c49f88354efd2eb33d7abd584aa18f074f08b7f78fbe6a4dbd3a04",
+      "bytes": 15560
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/neck.png",
+      "sha256": "24865ec979c696b6c4df7315248200bf1ad0a797b9e282c0f67fde99cc12ab82",
+      "bytes": 13292
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/chest.png",
+      "sha256": "fd921b037c3bdef0e2ba3c73d6c392792574a6ae8634b5fb0ce22a0833c998df",
+      "bytes": 5875
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/pelvis.png",
+      "sha256": "7f0ac185ae9e54c9053557d21da55e5e98a3ba48596418f299aada58c8dceb7b",
+      "bytes": 5777
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01/parts/parts/spine.png",
+      "sha256": "2302103e0503a78046c6822a55a853f032fc75a3d5b8d2d0d0b3b280a32a3c61",
+      "bytes": 54937
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/master.png",
+      "sha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99",
+      "bytes": 1355396
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/authoring.json",
+      "sha256": "9ee9a46cde81e108797f25f4d6a1cae0b103f434c73964d143b3f86a59ba1f76",
+      "bytes": 14841
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/presence.json",
+      "sha256": "b81ca879932e7eb8c49c1e44349ef54ef277e6678b6a4f00bfb6bced9bba936d",
+      "bytes": 302
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/subject-source.json",
+      "sha256": "e80b913179f521c6a1e6e21352237c8d4b89c22be355683deb1fd13bc15aa43f",
+      "bytes": 2173
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/representation-review.json",
+      "sha256": "7d6ecf2afead51e7dcf7af3d35b88acc6ac941ef2ccc1f0f20bda48e47500bd0",
+      "bytes": 3008
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/prompt.txt",
+      "sha256": "2cd48f4914448ca795a21c31e31bbb93ef8e5cb697e90a9f72b89fe69d14b536",
+      "bytes": 11490
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "dcacfdfb4920e359e049273dca982e73effe97b5618816e9fad22a335473b3aa",
+      "bytes": 13697
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-authored-parts.mjs",
+      "sha256": "b289d6c4025928c07d927ab4a562e402c6eff5279e532648b8a26a448337f075",
+      "bytes": 6403
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "4759217539b4d3d8a4ab2acfbd1084b7b1d3dff8fe8a77194e1a7dcfc1d38750",
+      "bytes": 10821
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d",
+      "bytes": 9773
+    },
+    {
+      "path": "port/v2/tools/creature-animation/authored-intake.mjs",
+      "sha256": "81d6f10dc16ac716b15acc6ca2485022e6c22503aaa1789441fc709968ffd81a",
+      "bytes": 1818
+    },
+    {
+      "path": "port/v2/tools/creature-animation/keyed-part-labels.mjs",
+      "sha256": "394258a342eb4c668a710c1c7d08f138536ccfe3c18d2237b178dda65c22edbe",
+      "bytes": 1926
+    },
+    {
+      "path": "port/v2/tools/creature-animation/portable-record-writer.mjs",
+      "sha256": "646e1ef8104def026d23407910fc81db43cf851b8e504dd15c176c981c32452c",
+      "bytes": 1711
+    },
+    {
+      "path": "port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "52250c55eedb50ae0ad757c4d5764ed357d2799ba275f2ffe4db24a633cebc3e",
+      "bytes": 6611
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "6127d7f9c18541ebfec411fc549942d1948a032d8297bcd708291094c4339943",
+      "bytes": 5557
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "aa7536aeaa06a51441de6ff8266f8d448fdb122b301cd20f8379b794cae98fcb",
+      "bytes": 11535
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/proposal.json",
+      "sha256": "1d7508a7d6dec840553437d0732f1753fc71f72bfd9acbf6c116c665cb943e9d",
+      "bytes": 40213
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/manual-source-authoring.json",
+      "sha256": "6f4e67d9acfe48b6dab1c3fb6b4ccd20fd5bf2832a52680186798326e3196d47",
+      "bytes": 5016
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/build-candidate.mjs",
+      "sha256": "b11f5f1b0d842cb5ce4049faac97384afaff8b980df359457fe4462746478a33",
+      "bytes": 9549
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "6756e6fe6c8d060216b00098ca0cb5bc1f355a69905f495dbe813e87e7dd8c00",
+  "bindingHash": "bd06a81493e9f1a4e8b821b926589b79ef1249eaf3f41e78927829ff74661d18",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail0",
+    "tail1",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/master.png",
+      "sha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/authoring.json",
+      "sha256": "9ee9a46cde81e108797f25f4d6a1cae0b103f434c73964d143b3f86a59ba1f76",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/subject-source.json",
+      "sha256": "e80b913179f521c6a1e6e21352237c8d4b89c22be355683deb1fd13bc15aa43f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/presence.json",
+      "sha256": "b81ca879932e7eb8c49c1e44349ef54ef277e6678b6a4f00bfb6bced9bba936d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/representation-review.json",
+      "sha256": "7d6ecf2afead51e7dcf7af3d35b88acc6ac941ef2ccc1f0f20bda48e47500bd0",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-o1-snowshoe-hare050-r01/o1-050-snowshoe-hare/packet/prompt.txt",
+      "sha256": "2cd48f4914448ca795a21c31e31bbb93ef8e5cb697e90a9f72b89fe69d14b536",
+      "unchanged": true
+    }
+  ],
+  "sourceFit": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01",
+  "proposal": {
+    "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/proposal.json",
+    "sha256": "1d7508a7d6dec840553437d0732f1753fc71f72bfd9acbf6c116c665cb943e9d"
+  },
+  "authoring": {
+    "path": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/manual-source-authoring.json",
+    "sha256": "6f4e67d9acfe48b6dab1c3fb6b4ccd20fd5bf2832a52680186798326e3196d47"
+  },
+  "changedOwnerPixels": 4152,
+  "changedLandmarks": [
+    {
+      "joint": "hindNearAnkle",
+      "fromPx": [
+        441,
+        773.7
+      ],
+      "toPx": [
+        441,
+        738
+      ],
+      "sourceRGBA": [
+        168,
+        159,
+        148,
+        255
+      ],
+      "evidence": "Move from the straight descending course to the external rear hock bend visible around [441,738]."
+    },
+    {
+      "joint": "hindFarAnkle",
+      "fromPx": [
+        536.7,
+        787.7
+      ],
+      "toPx": [
+        525,
+        755
+      ],
+      "sourceRGBA": [
+        163,
+        158,
+        148,
+        255
+      ],
+      "evidence": "Move from the foot approach to the second external rear hock bend visible around [525,755]."
+    },
+    {
+      "joint": "foreNearAnkle",
+      "fromPx": [
+        670.2999999999998,
+        789.3
+      ],
+      "toPx": [
+        671,
+        771
+      ],
+      "sourceRGBA": [
+        182,
+        184,
+        169,
+        255
+      ],
+      "evidence": "Move from paw/heel material to the visible carpal bend between the vertical fore course and foot."
+    },
+    {
+      "joint": "foreFarAnkle",
+      "fromPx": [
+        765.3,
+        800
+      ],
+      "toPx": [
+        748,
+        782
+      ],
+      "sourceRGBA": [
+        226,
+        227,
+        214,
+        255
+      ],
+      "evidence": "Move from horizontal foot material to the visible carpal bend where the diagonal fore course turns into its paw."
+    },
+    {
+      "joint": "earNearRoot",
+      "fromPx": [
+        734.0999999999999,
+        492.5
+      ],
+      "toPx": [
+        740,
+        515
+      ],
+      "sourceRGBA": [
+        133,
+        114,
+        98,
+        255
+      ],
+      "evidence": "Move from the near-ear shaft to the visible furred base where its contour joins the cranium."
+    },
+    {
+      "joint": "earFarRoot",
+      "fromPx": [
+        758.2,
+        461.50000000000006
+      ],
+      "toPx": [
+        768,
+        494
+      ],
+      "sourceRGBA": [
+        99,
+        67,
+        48,
+        255
+      ],
+      "evidence": "Move from the middle of the far-ear shaft to the visible base immediately above the cranium; no hidden attachment inferred."
+    }
+  ],
+  "sourceRGBAChangedChannels": 0
+}

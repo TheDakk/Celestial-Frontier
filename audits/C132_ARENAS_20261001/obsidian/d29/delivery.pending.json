@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "obsidian",
+  "biome": "obsidian",
+  "recipe": "audits/C132_ARENAS_20261001/obsidian/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/obsidian/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+      "runtimeSha256": "c28b96232ea566178b8ad6a57fab20b3f66e7ddd0663641a1feca3183e81a817"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.png",
+      "runtimeSha256": "cb6f82922c8ab007a118f8c53d1009600e1613c00b73cabb62c5fdbd22a7a00c"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.png",
+      "runtimeSha256": "4c31ca8bbe64da14507535aa83af6b9da4fabc452e5b1f762aec3fda62d3fee5"
+    }
+  }
+}

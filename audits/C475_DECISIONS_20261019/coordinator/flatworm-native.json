@@ -1,0 +1,20 @@
+{
+  "stage": "flatworm-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Flatworm-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native-plan-bound.json"
+  ],
+  "startedUnix": 1792461259.119329,
+  "beforeGiB": 54.171810150146484,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.053,
+  "lowestGiB": 53.77271270751953,
+  "afterGiB": 54.14242172241211
+}

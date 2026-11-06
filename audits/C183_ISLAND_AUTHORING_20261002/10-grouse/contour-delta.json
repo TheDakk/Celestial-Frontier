@@ -1,0 +1,89 @@
+{
+  "schema": "cf.c183-bird-contour-delta/v1",
+  "id": "10-grouse",
+  "originalAuthoringSha256": "7725cdaea0b76b3938dd57bf042d3e32cfea64f5dd34ca5dc22d532fea0ce176",
+  "candidateAuthoringSha256": "a4b814ffc412fd7d8cfc2760fec3ed0d84746bc68b26db15d25cf5df19e80790",
+  "sourcePlanSha256": "c3886c366c9894a3e3baaade8cf674527ef34df9af91d409bfcf287c4151793b",
+  "regions": [
+    {
+      "id": "reviewed-posterior-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          748,
+          324
+        ],
+        [
+          858,
+          324
+        ],
+        [
+          858,
+          390
+        ],
+        [
+          810,
+          410
+        ],
+        [
+          750,
+          426
+        ]
+      ],
+      "reason": "Posterior skull/crown edge above the visible nape transition."
+    },
+    {
+      "id": "reviewed-upper-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          748,
+          390
+        ],
+        [
+          857,
+          390
+        ],
+        [
+          852,
+          451
+        ],
+        [
+          752,
+          451
+        ]
+      ],
+      "reason": "Visible short nape between the skull and shoulder, below the crown contour."
+    },
+    {
+      "id": "reviewed-throat-edge",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          894,
+          402
+        ],
+        [
+          930,
+          402
+        ],
+        [
+          930,
+          437
+        ],
+        [
+          896,
+          439
+        ]
+      ],
+      "reason": "Small feather edge at the visible throat, separate from the hard bill."
+    }
+  ],
+  "scope": "Manual source-contour additions after all original anatomical owners and before the original remainder. Only previously remainder-owned paint may move; old landmarks, ground, presence, materials, part regions and prior anatomical ownership remain unchanged.",
+  "originalOrigin": "Automatic same-family reference transfer retained; only the additive contours are manually source-reviewed. This is not an independent family reference.",
+  "sourcePaintChanged": false,
+  "nativeAcceptance": false
+}

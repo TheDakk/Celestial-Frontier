@@ -1,0 +1,22 @@
+{
+ "08-wildebeest": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/08-wildebeest/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "13-saiga": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/13-saiga/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "16-lark": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/16-lark/fit",
+  "islands": "REFUSED"
+ },
+ "18-hawk": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fit",
+  "islands": "REFUSED"
+ }
+}

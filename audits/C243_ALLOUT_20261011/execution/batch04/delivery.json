@@ -1,0 +1,215 @@
+{
+  "status": "DELIVERED_FOR_CLAUDE_REVIEW_NOT_ADMISSION",
+  "batch": 4,
+  "species": 34,
+  "repaintCandidates": 60,
+  "staticYield": {
+    "scope": "Aggregate unchanged baseline scores, all60 newly generated-source scores and eleven existing bounded class-repair variants; diagnostic only, no native or visual admission claim. Eagle follow-up excluded from batch4 species yield.",
+    "baselineScored": 57,
+    "baselineStaticPassSpecies": 4,
+    "afterStaticPassSpecies": 13,
+    "before": [
+      "Cockatoo",
+      "Egret",
+      "Kookaburra",
+      "Osprey"
+    ],
+    "after": [
+      "Cockatoo",
+      "Egret",
+      "Frigatebird",
+      "Hoatzin",
+      "Kakapo",
+      "Kookaburra",
+      "Osprey",
+      "Ostrich",
+      "Owl",
+      "Pheasant",
+      "Snipe",
+      "Swift",
+      "Tern"
+    ],
+    "gained": [
+      "Frigatebird",
+      "Hoatzin",
+      "Kakapo",
+      "Ostrich",
+      "Owl",
+      "Pheasant",
+      "Snipe",
+      "Swift",
+      "Tern"
+    ],
+    "lost": [],
+    "repaintCandidates": 60,
+    "intakeRefusedSpecies": 26,
+    "newSourceEligibleStaticPassSpecies": [
+      "Ostrich",
+      "Pheasant",
+      "Snipe",
+      "Swift",
+      "Tern"
+    ],
+    "repairedStaticPassSpecies": [
+      "Cockatoo",
+      "Eagle",
+      "Frigatebird",
+      "Hoatzin",
+      "Kakapo",
+      "Kookaburra",
+      "Osprey",
+      "Owl",
+      "Swift"
+    ],
+    "repairRed": [
+      "Egret"
+    ],
+    "sourceBindingMissing": [
+      "Macaw"
+    ],
+    "heldNumericPass": [
+      "Swift candidate1: wrong species silhouette"
+    ],
+    "round2Species": [
+      "Kingfisher",
+      "Kiwi",
+      "Peacock",
+      "Pelican",
+      "Quetzal",
+      "Secretary Bird",
+      "Tropicbird",
+      "Macaw",
+      "Amphipod",
+      "Brine Shrimp",
+      "Cave Shrimp",
+      "Copepod",
+      "Fairy Shrimp",
+      "Freshwater Shrimp",
+      "Giant Isopod",
+      "Isopod",
+      "Krill",
+      "Shrimp",
+      "Tadpole Shrimp",
+      "Vent Shrimp",
+      "Water Flea"
+    ],
+    "controls": "Existing rulers, ownership guard and leave-one-species-out pool unchanged; no C223 fold fix, sealed gate change or certification."
+  },
+  "originalNative": {
+    "pass": 13,
+    "total": 14,
+    "failed": [
+      "Osprey: claw contact exceeds unchanged scale compression bound"
+    ]
+  },
+  "firstFinishRebindFinishedNative": {
+    "pass": 13,
+    "total": 13
+  },
+  "changedSourceJoinNative": {
+    "pass": 10,
+    "total": 10
+  },
+  "changedFinishRebindFinishedNative": {
+    "pass": 10,
+    "total": 10
+  },
+  "ready": [
+    "Snipe",
+    "Ostrich",
+    "Pheasant",
+    "Tern",
+    "Cockatoo",
+    "Kookaburra",
+    "Owl"
+  ],
+  "visualHolds": [
+    {
+      "name": "Frigatebird",
+      "visualObservation": "All five finished frames viewed. Former raised neck/back spike is gone. HOLD remains: enlarged turn1 crop shows lower folded wing/body paint separating into a long blade with background through the flank; solid master inspected for comparison. Do not call the neck fix whole.",
+      "followupObservation": null,
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/g2c107-08-frigatebird",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/g2c107-08-frigatebird/report.json"
+    },
+    {
+      "name": "Hoatzin",
+      "visualObservation": "Head crest stays rooted and no detached head fragment or open neck gap visible across five frames. Layered pale tail shafts remain continuous; natural bow retained.",
+      "followupObservation": "Enlarged original-size frame crop reveals an open background band through the lower folded-wing/body junction. Earlier tail-shaft interpretation is superseded; hold for body/wing ownership repair or round2 repaint.",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c106-18-hoatzin",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c106-18-hoatzin/report.json"
+    },
+    {
+      "name": "Kakapo",
+      "visualObservation": "All five finished frames viewed. Former head/shoulder wedge is closed. HOLD remains: background shows through a long lower-wing/flank seam in turn1 and other frames; 3x crop compared with the solid original master confirms it is not a painted source gap.",
+      "followupObservation": null,
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/g2c106-17-kakapo",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/g2c106-17-kakapo/report.json"
+    },
+    {
+      "name": "Eagle",
+      "visualObservation": "All five finished frames viewed. Former nape/shoulder gap is closed. HOLD remains: enlarged turn1 crop shows a background wedge between lower wing and flank, with a separated feather blade across the body; underlying wing/body ownership is unresolved.",
+      "followupObservation": null,
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/c243b03r1c2-31-eagle",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/c243b03r1c2-31-eagle/report.json"
+    },
+    {
+      "name": "Swift",
+      "visualObservation": "All five finished frames viewed. Former reaction head/shoulder wedge is closed. A thin background seam remains under the folded wing through the left flank in turn1 and other frames; HOLD wing/body ownership. Tiny feet and long folded wing tips remain correct.",
+      "followupObservation": null,
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/c243b04r1c3-11-swift",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/source-joins/ai-finish/native-01/c243b04r1c3-11-swift/report.json"
+    },
+    {
+      "name": "Egret",
+      "visualObservation": "Original baseline fit has detached white crown and back plume pieces floating in turn3 reaction and idle frames, plus a horizontal source-body seam. Island-only repaired variant remains static RED; try measured source joins on that changed variant.",
+      "followupObservation": null,
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret/report.json"
+    }
+  ],
+  "noPassingFitRound2": [
+    "Kingfisher",
+    "Kiwi",
+    "Peacock",
+    "Pelican",
+    "Quetzal",
+    "Secretary Bird",
+    "Tropicbird",
+    "Macaw",
+    "Amphipod",
+    "Brine Shrimp",
+    "Cave Shrimp",
+    "Copepod",
+    "Fairy Shrimp",
+    "Freshwater Shrimp",
+    "Giant Isopod",
+    "Isopod",
+    "Krill",
+    "Shrimp",
+    "Tadpole Shrimp",
+    "Vent Shrimp",
+    "Water Flea"
+  ],
+  "selectedFinishedFilms": 13,
+  "reviewedFullSizeStills": 115,
+  "finalSelectedStills": 65,
+  "triage": {
+    "films": 13,
+    "magentaFlagged": [],
+    "file": "audits/C243_ALLOUT_20261011/execution/batch04/triage/triage.json"
+  },
+  "classFix": "Existing D28 remainder ownership and C221 measured head/neck/shoulder source joins; ten changed static/native/finish/rebind/finished-native passes. Source pixels, record, landmarks and solver limits unchanged;18 join/split controls PASS. Egret changed fit RED retained; no unchanged retry.",
+  "sourceCommits": [
+    "6ce599f29",
+    "a658d8598"
+  ],
+  "finishProducers": [
+    "5fb2c0920",
+    "a658d8598"
+  ],
+  "allPairs": "HOLD",
+  "certificationRun": false,
+  "C223Run": false,
+  "storageDeviation": "Source checkpoint6ce599f29 retained all60 repaint masters rather than only selected generations. Extra committed evidence is retained without history rewrite; future batches commit only selected generation masters.",
+  "next": "Batch5 baseline then33 prepared intake-refused species plus admitted Snowshoe Hare; continue batches6/7, final round2/new4/full sweep under C351."
+}

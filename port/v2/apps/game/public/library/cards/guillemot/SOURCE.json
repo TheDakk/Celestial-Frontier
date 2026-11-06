@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Guillemot",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/rebound/c266-34-guillemot-c1/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8ed8739a03ad697fa3b593ad1d3f8d4d12ef61fa045963cf3baa5fdf7fbcb332"
+}

@@ -1,0 +1,19 @@
+{
+  "stage": "qualify-kookaburra-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-kook-owner-r02",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/w2-checkpoint/run-kookaburra-r02.mjs"
+  ],
+  "startedUnix": 1792377939.501827,
+  "beforeGiB": 59.77566146850586,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 6.022,
+  "lowestGiB": 59.77134704589844,
+  "afterGiB": 59.77157974243164
+}

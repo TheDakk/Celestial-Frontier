@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c243b01r1c3-01-sloth-bear",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c3s01/c243b01r1c3-01-sloth-bear/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c3-01-sloth-bear/report.json"
+  },
+  {
+    "id": "c243b01r1c1-06-guinea-pig",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-06-guinea-pig/report.json"
+  },
+  {
+    "id": "c243b01r1c1-13-yak",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g11to13/c243b01r1c1-13-yak/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-13-yak/report.json"
+  },
+  {
+    "id": "c243b01r1c1-18-african-elephant",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-18-african-elephant/report.json"
+  },
+  {
+    "id": "c243b01r1c1-23-crocodile",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-23-crocodile/report.json"
+  },
+  {
+    "id": "c243b01r1c1-37-axolotl",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g35to37/c243b01r1c1-37-axolotl/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-37-axolotl/report.json"
+  },
+  {
+    "id": "c243b01r1c2-08-marsh-rodent",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g05to08/c243b01r1c2-08-marsh-rodent/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-08-marsh-rodent/report.json"
+  },
+  {
+    "id": "c243b01r1c2-15-camel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-15-camel/report.json"
+  }
+]

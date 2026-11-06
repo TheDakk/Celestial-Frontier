@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bowfin",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep3-fishseams/g2c90-09-bowfin/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c12f7e1077ee26d6c2b31bd455191b93f6db25756fcbd0ef09ac1e4530fb65d6"
+}

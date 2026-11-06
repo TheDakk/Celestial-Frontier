@@ -1,0 +1,166 @@
+{
+  "kind": "hopper",
+  "identity": {
+    "speciesVisualKey": "synthetic:hopper",
+    "seed": 659712,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "hopper",
+    "version": 1
+  },
+  "family": "frog",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.85,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.45,
+      0.55
+    ],
+    "pelvis": [
+      0.32,
+      0.55
+    ],
+    "spine": [
+      0.45,
+      0.5
+    ],
+    "chest": [
+      0.58,
+      0.5
+    ],
+    "neck": [
+      0.66,
+      0.46
+    ],
+    "head": [
+      0.74,
+      0.42
+    ],
+    "jaw": [
+      0.8,
+      0.47
+    ],
+    "hindFarRoot": [
+      0.3,
+      0.6
+    ],
+    "hindFarKnee": [
+      0.22,
+      0.7
+    ],
+    "hindFarAnkle": [
+      0.3,
+      0.8
+    ],
+    "hindFarPaw": [
+      0.4,
+      0.85
+    ],
+    "foreFarRoot": [
+      0.6,
+      0.58
+    ],
+    "foreFarKnee": [
+      0.6,
+      0.68
+    ],
+    "foreFarAnkle": [
+      0.6,
+      0.78
+    ],
+    "foreFarPaw": [
+      0.66,
+      0.85
+    ],
+    "earFarRoot": [
+      0.72,
+      0.36
+    ],
+    "earFarTip": [
+      0.7,
+      0.28
+    ],
+    "hindNearRoot": [
+      0.32,
+      0.6
+    ],
+    "hindNearKnee": [
+      0.24,
+      0.7
+    ],
+    "hindNearAnkle": [
+      0.32,
+      0.8
+    ],
+    "hindNearPaw": [
+      0.42,
+      0.85
+    ],
+    "foreNearRoot": [
+      0.62,
+      0.58
+    ],
+    "foreNearKnee": [
+      0.62,
+      0.68
+    ],
+    "foreNearAnkle": [
+      0.62,
+      0.78
+    ],
+    "foreNearPaw": [
+      0.68,
+      0.85
+    ],
+    "earNearRoot": [
+      0.74,
+      0.36
+    ],
+    "earNearTip": [
+      0.72,
+      0.28
+    ],
+    "tail0": [
+      0.26,
+      0.58
+    ],
+    "tail1": [
+      0.2,
+      0.62
+    ],
+    "tail2": [
+      0.15,
+      0.66
+    ],
+    "tail3": [
+      0.11,
+      0.7
+    ]
+  },
+  "materials": {
+    "surface": "slick and wet",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "hopper-v1",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

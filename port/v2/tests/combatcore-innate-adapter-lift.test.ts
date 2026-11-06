@@ -13,7 +13,7 @@ const liftToolPath = path.join(v2Root, 'tools/lift.mjs');
 const committedPath = path.join(
   v2Root, 'packages/domain/combatcore/src/combatcore.verbatim.js',
 );
-const EXPECTED_BODY_SHA256_16 = '0b84ae593147bf62';
+const EXPECTED_BODY_SHA256_16 = 'a34c5cf45ce5454a';
 const MODULE_OPEN = 'const CombatCore=(()=>{';
 const MODULE_CLOSE = '})();\nconst {';
 const BODY_RETURN = 'return Object.freeze({';

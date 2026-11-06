@@ -1,0 +1,8 @@
+[
+  {
+    "index": 31,
+    "name": "Fiddler Crab",
+    "diagnosis": "Canonical compileLibraryMaster refuses: Unsupported controlled library family",
+    "status": "BLOCKED_COMPILER_NO_REPAINT"
+  }
+]

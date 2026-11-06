@@ -1,0 +1,21 @@
+{
+  "stage": "finish-grasshopper-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-finish-grasshopper",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792272986.49403,
+  "beforeGiB": 91.0265998840332,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 65.09,
+  "lowestGiB": 73.17467880249023,
+  "afterGiB": 77.50574493408203
+}

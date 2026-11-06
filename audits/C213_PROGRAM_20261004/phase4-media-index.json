@@ -1,0 +1,1922 @@
+[
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn2-dodge-reaction-50.png",
+    "sha256": "fa653edbd0eb5c850a9e524b51d6f6dbc2105d84fd9e8b3bda3f05375503a07f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn0-hit-return-end.png",
+    "sha256": "2826e3dedabe110158dcef33f8e8ec8b16c1696f52b5fc91844dc94af4e4b9ed",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-approach-50.png",
+    "sha256": "9f2e201b9e6ce8970934113dee780348c2655ef6f6c728c4abf80d7f15f05874",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn0-hit-approach-50.png",
+    "sha256": "9f2e201b9e6ce8970934113dee780348c2655ef6f6c728c4abf80d7f15f05874",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn1-hit-approach-50.png",
+    "sha256": "d720b70a426cbbe7aa3f1c9a8c60fa7bfb4657cf0a39121003da1b98503bf7e7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/battle-full.webm",
+    "sha256": "214b3990667f193c20291bbb8a8865d5740fa2dea9e1c7714084f28fa7eaf27f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-return-end.png",
+    "sha256": "aeee5f1dcae0c2fd131f808cd8148a4a143221e240a043f53c33f65f614f20f2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn1-hit-reaction-50.png",
+    "sha256": "69d31692a794164c9877ab1c29939949d19d39a2310facd31a27135b92904c2a",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn0-hit-reaction-50.png",
+    "sha256": "395038982739222139381ea6c0a5ba8c210e048de0f794b1a93d52961e7f07c1",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn2-dodge-return-end.png",
+    "sha256": "2826e3dedabe110158dcef33f8e8ec8b16c1696f52b5fc91844dc94af4e4b9ed",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-reaction-50.png",
+    "sha256": "89be216ca9162f4a280bf413390ad7051f383354f89a659778c11570907432a8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn1-hit-impact.png",
+    "sha256": "ebf1532e6b626928b9cc2f9a0a2058f2daa675a624467eefc99d11d2fb8b5288",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn0-hit-impact.png",
+    "sha256": "babde2f52d450e0b307f8647e4407af221542a1081d7e214a1e72bad8d34b5b8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn1-hit-return-end.png",
+    "sha256": "d9543c63024af698287c02c587ff41babf6d99818451e7311abc5f8a911afa36",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn2-dodge-impact.png",
+    "sha256": "65ff15bec1ad777b3910d1aa71b3eeb196e704503ddfc3f678ca4797b2fe24de",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn2-dodge-approach-50.png",
+    "sha256": "62d1abcacc92927f78c5ba5716782a338f80f8e1d59e97847e2f448745f41284",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-impact.png",
+    "sha256": "60c26edbcb1abff63b1a560dd5838cf4070a268005bc949191ae744ac3f961d3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-idle-90.png",
+    "sha256": "722c2aa201f54ff553f323aa253a17730021bfebd7950300f6f81acdfffb081c",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-02-elephant/turn3-hit-idle-50.png",
+    "sha256": "202232cdfe813c7e05690030c96602c22255cdd4aebe975e703c5df3fe9b4fcc",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn2-dodge-reaction-50.png",
+    "sha256": "168a1c854b6302cd901cd2a3d344387068dcac2290856b62461912535d4424d9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn0-hit-return-end.png",
+    "sha256": "c1809eeda5b52a208aefd013c84e0d3c836f0826d927370ec42125eca5030648",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-approach-50.png",
+    "sha256": "2a2255cfb955dc9f991de8b43cd38377bdd3cdb78e3fb2e275d92c9bf5761b4b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn0-hit-approach-50.png",
+    "sha256": "2a2255cfb955dc9f991de8b43cd38377bdd3cdb78e3fb2e275d92c9bf5761b4b",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn1-hit-approach-50.png",
+    "sha256": "a9a799e46b537e8aa4ae3cb146b6165ee3ed1482aca6b4e037753f8ff4768f40",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/battle-full.webm",
+    "sha256": "68f0584c1f71424b10dcf1e65a47013cc9cfb9d1c7c083826089efd6e2025869",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-return-end.png",
+    "sha256": "cbe56958eafde618ac75d272e6b07b50a9c71ce18c59e09c26644d6632556296",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn1-hit-reaction-50.png",
+    "sha256": "2df9166d38b2ac88dc446f3c3f5dcd2b7f31cab2950e7085671c667abb1a1f1b",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn0-hit-reaction-50.png",
+    "sha256": "afa355bf5968b17a6649982c554fd1121918cc1f00d2828c31e5ea1f1e759348",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn2-dodge-return-end.png",
+    "sha256": "c1809eeda5b52a208aefd013c84e0d3c836f0826d927370ec42125eca5030648",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-reaction-50.png",
+    "sha256": "f22ca8994f0ca44dc665a645e3f68f2a6c30d8ab81d5e83e8058d0f7e34814d1",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn1-hit-impact.png",
+    "sha256": "c4eda4dc8cc00ee9b505a49386b4e4c2263905e3533a56ba3aae5d98fffa7998",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn0-hit-impact.png",
+    "sha256": "e2484b58ce1e9ce26e7368d7677535a0631cfc5ae296d3fd41d455e318bd3113",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn1-hit-return-end.png",
+    "sha256": "106f41f7ddac27d07ed94d207198d65ca505a5eafd584d4c6d2dd89eafc6e2b5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn2-dodge-impact.png",
+    "sha256": "8897b525330225021c4b5c71cc59f61bb369f1c040e4fff8dbb0fbaa2feac256",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn2-dodge-approach-50.png",
+    "sha256": "088314bb005fba202890d1b5786b10b618526b54743e2ceee75399ba8f53e3e8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-impact.png",
+    "sha256": "9dcfee7d108ad2b6d8a0d69be6618b4998365ec5100197bc913da6088006bab6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-idle-90.png",
+    "sha256": "e932f79939171240200b7922644231c5840391d86eb655a340652ce7601595e9",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe-g2c114-17-tahr/turn3-hit-idle-50.png",
+    "sha256": "a40220205a7fe83ced2fee435f243927d511df366192e080182fe855a0f9afe1",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn2-dodge-reaction-50.png",
+    "sha256": "3528db026a0485626d872db418b7414cfdcce8c830fc7ac6f623cd8f0b8887e7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn0-hit-return-end.png",
+    "sha256": "8cb1896893bfc215247fbf7bcf9240b1b49b098792d8cd53ffc34108d2738048",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-approach-50.png",
+    "sha256": "c6869e247357f4ad5ea90a444c90405f2c00c63de9f29f1e220fc77c2c82429a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn0-hit-approach-50.png",
+    "sha256": "c6869e247357f4ad5ea90a444c90405f2c00c63de9f29f1e220fc77c2c82429a",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn1-hit-approach-50.png",
+    "sha256": "f27af84663f5db67928aaf19c4b3d7eb69b3749c3b597ef01717442a44cc3474",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/battle-full.webm",
+    "sha256": "51ac9232052bb1b40c58edca4e3dc7ec6516695576e1334d1e8f2d5ff3fa0e55",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-return-end.png",
+    "sha256": "5101e8a771df354c14754a665c7e02c5ae1e3ffe483ee585aed7683efc5325bf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn1-hit-reaction-50.png",
+    "sha256": "5b4395c1a679bf3c311cf34a5a404f5f63e910cf449f267983f710c40aaa55f9",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn0-hit-reaction-50.png",
+    "sha256": "853c8720d878ca179c327c64e4a174198cdb66e1bdc53469f6c780b122055763",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn2-dodge-return-end.png",
+    "sha256": "4b9b9f48e8188b4f0336b74da94a5ce77d9f39beb438d484ff1619d7c87db7c7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-reaction-50.png",
+    "sha256": "1e2cb93b07e770a7f2b1886496d1e94d9ff180440b7255e1961fdc41d8665bef",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn1-hit-impact.png",
+    "sha256": "a7830d2e6dc89d4c60d19cee8890cf968696675ebad7ea7f27f2f319aaa8bdd2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn0-hit-impact.png",
+    "sha256": "16d5293bf09118ec33f34297bbf228dd82e6ca71300ac6cc14c1fabb91166d55",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn1-hit-return-end.png",
+    "sha256": "daa9bf6a0a9df0326a3c1739566d158885fa5916645781d30cbd954b2c7f51b9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn2-dodge-impact.png",
+    "sha256": "0fc85f06a472ce0e1248a348ef77d78dd918bef393cf8a6b2467146d37900e7f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn2-dodge-approach-50.png",
+    "sha256": "05e24cdeeaff31c659644c1d0cb0a5c62b634fd0ee7395a3ac56cf68a0c84441",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-impact.png",
+    "sha256": "48d006f3a2772f45e266132b9bc06535083f2d0ab373acef9dbc7844ec5a5f01",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-idle-90.png",
+    "sha256": "e01bce94fc210f29b1b94f2010de5bb0795fe212fc47d9387cc11b346206a558",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-fringe03-tahr/turn3-hit-idle-50.png",
+    "sha256": "1e1932c61cf40002db21f2c9f46e3dbf64787bd262b0416a4efc627fe0b698e4",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn2-dodge-reaction-50.png",
+    "sha256": "e9426d6ea8fdf3dc4b9661b7a881d26e3dd0e7c6af05dd9793d72ebe1d6506f9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn0-hit-return-end.png",
+    "sha256": "e568dbc1499b121b92c26e131d4c89f6be21ffbdf547c0eb8ef2889d931c8dbb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-approach-50.png",
+    "sha256": "4a8e6940522a76e4baf80a6db821c2654ad9f6cd650ddc12c67f653fe8064ab6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn0-hit-approach-50.png",
+    "sha256": "4a8e6940522a76e4baf80a6db821c2654ad9f6cd650ddc12c67f653fe8064ab6",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn1-hit-approach-50.png",
+    "sha256": "70f12d1c7ffdf314c5db47ee6cc95d35f7172f490e90c546f0257120ca6d99bd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/battle-full.webm",
+    "sha256": "f1e36e7791d71706030bb1e8db98414d137423cfb022a24bca17c0dc086528ed",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-return-end.png",
+    "sha256": "ad5c7a93f4f01e82fa593d73e25a002c3acd289a8a5957f3c66f7d0dd41e7947",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn1-hit-reaction-50.png",
+    "sha256": "652e32225f0765783b1877ee317078b0e02067890510149964d05471e7213435",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn0-hit-reaction-50.png",
+    "sha256": "3568cab8b9de096c854756ef7750bebe625fb290ba4db11a46483e8c363a965f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn2-dodge-return-end.png",
+    "sha256": "ac20e50149558decb1c6f953496aa0f4f123f3d76ac7e1b91ddd2adc0f3dd9b4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-reaction-50.png",
+    "sha256": "56d6b37016f0832e952d73634c4663c69fa34a112fcc7e76aecff13d6a4469af",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn1-hit-impact.png",
+    "sha256": "5362efe1a0f73fcacc2795dbd1cbdb78671c009101e51900dd7deecf80ace70d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn0-hit-impact.png",
+    "sha256": "551df34de6aeb1863d17b4472245ba50a66710afde0aa8e1a0660c0845ca07ce",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn1-hit-return-end.png",
+    "sha256": "5918eb29987c941498ef2a6f7a60a827695d59d79205be02258bc6f6646ae641",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn2-dodge-impact.png",
+    "sha256": "9608ee263b681f8fc491b08027ed10727cfeadf0394d059a93689e86a80cf0df",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn2-dodge-approach-50.png",
+    "sha256": "4a8e6940522a76e4baf80a6db821c2654ad9f6cd650ddc12c67f653fe8064ab6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-impact.png",
+    "sha256": "eefd564765cee0ca4c1b2a1643d0d40e8ec8466f6cce2e9c92635f9e64395b93",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-idle-90.png",
+    "sha256": "53f4b891ecc1501db0ba357cae0f927b667f532b532e158299d7278c878eb81f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-bee/turn3-hit-idle-50.png",
+    "sha256": "a07f80392ba5326a52873312121edadce49262f4c51f8bb4a0d4063b91bbcf77",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn2-dodge-reaction-50.png",
+    "sha256": "eefc4ba2599e5addf9ac6994a56cf74d2d9fc5a914cf2253eea7a215c38105b7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn0-hit-return-end.png",
+    "sha256": "ca7a33947bcf4b8bb116b4ef560470ac4b678e70e7ea7ac0a929f492e66cd710",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-approach-50.png",
+    "sha256": "4f3c2b178f779776edab9b28b8c705f31a947e1b2784c378fe0a3d5ee1ab1df5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn0-hit-approach-50.png",
+    "sha256": "4f3c2b178f779776edab9b28b8c705f31a947e1b2784c378fe0a3d5ee1ab1df5",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn1-hit-approach-50.png",
+    "sha256": "15db5bcce195993166481b6d00f9fe6214b564d155a6b8b5dcdab629a4e6b431",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/battle-full.webm",
+    "sha256": "45e221d644d1165b05d282cf8647d973873dd4841b172c4b7e8cbf78d3500c9f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-return-end.png",
+    "sha256": "664ecfdfb6d09c0ac445790499b1483333d37af7f45754f30fc202e8a22dc09e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn1-hit-reaction-50.png",
+    "sha256": "a0082c7fc44b32bb964a05450c1705146935e2271445fc5c658492bba54260c8",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn0-hit-reaction-50.png",
+    "sha256": "0f84c01acd0926a0a5a007cd6fd63cb8a429ece9560c4ad3160779667f6f8fcf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn2-dodge-return-end.png",
+    "sha256": "9aab7c788b130ec2c4736031e8b14a101f38377ce970a798a30d3fa4dd7f674a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-reaction-50.png",
+    "sha256": "e589c4a49fcd48b27cdc2404d7b39a61bbf75f86844b2d59c633a52d8a30531d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn1-hit-impact.png",
+    "sha256": "bf901a7365a72ccbe07fc93a991366815b310866b27ca93effcf44ff4320f06c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn0-hit-impact.png",
+    "sha256": "40984cd92d1ddb579be62674870e198a207a9c065e919f258fdc6e65bc67545b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn1-hit-return-end.png",
+    "sha256": "2e54ccc5458e1801e2e527adae3a209123e2c2a4d95ea39d37acf5ac9dd0a060",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn2-dodge-impact.png",
+    "sha256": "08297c6fc529c522df58ef4073112f4c3c2d9aa345ffe2d846320aef75b7e6d9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn2-dodge-approach-50.png",
+    "sha256": "a963c21bd0045ada2f09a5f0bb44c0c4a3fef9f9d3779af87996fd2bab8ecf90",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-impact.png",
+    "sha256": "43f9fa7314d28300487a501fe8243468392d5091de1d19f87053953f52965a03",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-idle-90.png",
+    "sha256": "5eaa767b9c71a5c030494a56e03a8563a079021aed6a386efe64ca62e2c9d2b1",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-06-impala/turn3-hit-idle-50.png",
+    "sha256": "f1008cf3520a02ae811edbc041ca53c2ee6d8830e4a8775050f9fd6aea644cae",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn2-dodge-reaction-50.png",
+    "sha256": "7abb24d0673949c1427868f6e073631c208e52a91a89081788905de79a6f2c86",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-hit-return-end.png",
+    "sha256": "387c7b42fc9ea11f62b52f7101fa441f09fa5bf02228626aed2f205cd31b1d58",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-approach-50.png",
+    "sha256": "e955c6c31662f3d8d1f0494c21928298450e0fca8afa271fe4c35b696e0d4890",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-hit-approach-50.png",
+    "sha256": "e955c6c31662f3d8d1f0494c21928298450e0fca8afa271fe4c35b696e0d4890",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn1-hit-approach-50.png",
+    "sha256": "abdd27d1e75945ba86163afd4723678efcfe0a5e043f7ae5e72c1753d5a668d6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/battle-full.webm",
+    "sha256": "a47ebeb00e66b552480cac6012cdbe10ace67e9ae6dfb791441f2ba08fef5a96",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-return-end.png",
+    "sha256": "875511932e0ca7b596db273ab9671b0ad03f05209a6a68927fb4b952fafa463a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn1-hit-reaction-50.png",
+    "sha256": "0c9358c997f31c25db04fa8a8e79e4994fe97a0373390e10caef77ed025f151d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-hit-reaction-50.png",
+    "sha256": "43eca35b6149a08fa2672353bede81b0e5b8c1ded04b61c67103ba8c70f2a12b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn2-dodge-return-end.png",
+    "sha256": "387c7b42fc9ea11f62b52f7101fa441f09fa5bf02228626aed2f205cd31b1d58",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-reaction-50.png",
+    "sha256": "454e893c9d75462c54b33673d62eb2bacab659dad3025dd223258f9855229c9b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn1-hit-impact.png",
+    "sha256": "82a10119edb60197f5d3924d66da4c7e5ab4ebfc134f24a1dbd4ffcd39c6fde2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-hit-impact.png",
+    "sha256": "fcd185086bf23350e67e0c8d8b2046d1d975c893cb16807bad31a0abbfa67d41",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn1-hit-return-end.png",
+    "sha256": "6c27e7543954733c49b878544cb55056a44aabbf321618d5cf64012fc48b358b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-action85-extracted.png",
+    "sha256": "57c7602cc7824785dc598c897a791359886e55f1e5a0fc97fb5d5a27bf4da62f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn2-dodge-impact.png",
+    "sha256": "4ca835bca5d5f2d693345abe7b8167faf85fea58dd05df179a04b459cbd5619e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn2-dodge-approach-50.png",
+    "sha256": "2f52bab29bd6c2905e00ea188ad9227077564b57567cab2e95293345bcdbe79c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-impact.png",
+    "sha256": "62a6742a2b0a28dc326a3684b69a4f794fe09a0cf0fbba9b2e9f52e6eeb49f58",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-idle-90.png",
+    "sha256": "540e37e2335db8700dfd3d0354ec3cad1f946ddc4f6c7449509a31123913c4b8",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn3-hit-idle-50.png",
+    "sha256": "6cc00aac82f6460e94f954d866c7e4420be9465d36532452ed73e1609df282a4",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn2-dodge-reaction-50.png",
+    "sha256": "e58da524c5fd18b121da0630d32021d74b5e7a452c5af9005861f64e5b7120e3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn0-hit-return-end.png",
+    "sha256": "a0196c5fc400f0bbdeab8951e09dd9ccb811d9d6d8e4af092fec8f18a200a1e4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-approach-50.png",
+    "sha256": "f3abd168cba60dccb7b2a739893a587d15f4e935c7fd8ad456f4fa5a13650619",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn0-hit-approach-50.png",
+    "sha256": "f3abd168cba60dccb7b2a739893a587d15f4e935c7fd8ad456f4fa5a13650619",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn1-hit-approach-50.png",
+    "sha256": "6fb6aa52545f92a6973c069fb403b2b544c196e77154a0c7700d97c1a7c96207",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/battle-full.webm",
+    "sha256": "f3ccdd78c11b5359eb77047e3869e2fa3371feefa0548dd0be7fee5f702f5a0a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-return-end.png",
+    "sha256": "3e5cd664cc1588ab05e41df3fe4d158c5ec9a946ed786fdfe736603629228b94",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn1-hit-reaction-50.png",
+    "sha256": "f84fe746ef990ac7c115cc6cf7028f2ba8abb6bd1b338ee10fb09a2f97c247c4",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn0-hit-reaction-50.png",
+    "sha256": "36a494963324c7e1ddddcc162b6a4f543e621dbd3b2aafdfbcf736c570e9129f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn2-dodge-return-end.png",
+    "sha256": "8419fbf1b9e89ec0136582b7e8a0608f5b1f867f492559ab0e376cf771811c29",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-reaction-50.png",
+    "sha256": "f89680f093f3bc39b0f091909107a2f2d1e812da4f31dd51bead01efbfcdb2be",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn1-hit-impact.png",
+    "sha256": "b1798478f438f876f2e6f3401c513a14d5d0d00098d54e21e0859666394cd0a8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn0-hit-impact.png",
+    "sha256": "7629dafcec75294329e93d0061b0327a629a4edce2e3f2b9462ff62e1ea8ac61",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn1-hit-return-end.png",
+    "sha256": "933bb42a20cbbc65b9858e25484d9f9fe3474cb07a935b75317279b1cef0b66d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn2-dodge-impact.png",
+    "sha256": "934edcac6c13f75272ba49b86ec8869d568eb9d5e0d70bd976db95c7bf89eb11",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn2-dodge-approach-50.png",
+    "sha256": "364c19a43f28f119e042a22eaf5d5a5abfcfa3f349ebdd621650b62a9bc43662",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-impact.png",
+    "sha256": "bf8216367774f08e34de9cba1bd23f1abb63bd15ff98055652885c017c0d58a3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-idle-90.png",
+    "sha256": "5c4f4494a2dd769b7b99f247cb5cb0113bb427a2f19d47a6ef8ed7352eb2e142",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-16-spotted-hyena/turn3-hit-idle-50.png",
+    "sha256": "d9211381be2e655fc85a0c146c2748011e39372a3f6fef7d7c3f23e9838e6b46",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn2-dodge-reaction-50.png",
+    "sha256": "6eee1f57dbd6da7c81aaa8fb702d4b7ce3498798cfdda5e71a76c39dc4c1c936",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn0-hit-return-end.png",
+    "sha256": "46d3864221e501ed714ac9fbb838078a105c92372d714eb785f2714800675c98",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-approach-50.png",
+    "sha256": "9d22a7d5b76745fd92a24916a554a6964e433af0da3c9385c3f0e812f3a577cf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn0-hit-approach-50.png",
+    "sha256": "9d22a7d5b76745fd92a24916a554a6964e433af0da3c9385c3f0e812f3a577cf",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn1-hit-approach-50.png",
+    "sha256": "cdbc4455ec92ccd1c2ed48c9c3338eb89df255144712389c01ce369819b8531c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/battle-full.webm",
+    "sha256": "42d764b2ea87ae36ebe40da19f752ad5ad85e31a5e6ea224a4d3ddfbb516da14",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-return-end.png",
+    "sha256": "6039c5c83395384068964b76abe49d5804271ea696fbfa8276f0ac390def7545",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn1-hit-reaction-50.png",
+    "sha256": "7b789fe3f637bdb12c3622969d798049679e7aed4f1004a2875f3c9fe072c348",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn0-hit-reaction-50.png",
+    "sha256": "f9eaad36143d9e03d2ba81c3c6019e1672730cbc2f0793e7f479de0485756fa5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn2-dodge-return-end.png",
+    "sha256": "46d3864221e501ed714ac9fbb838078a105c92372d714eb785f2714800675c98",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-reaction-50.png",
+    "sha256": "12ac07a43755d9954fb10ffaeda1d2ae157b0606e926ac84aa5dd630fa157827",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn1-hit-impact.png",
+    "sha256": "f38f78bdac926fcfde57af1773aad23675b8771ce8ac259fca166a66c379db2e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn0-hit-impact.png",
+    "sha256": "641ad80199303827d989cae74efa6c7ebf7e6083e727e2c48cfdcbf44e2557f2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn1-hit-return-end.png",
+    "sha256": "92d469542c5fb915262f9492cb96958eb0a8d288613605393f1fb130ba693c15",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn2-dodge-impact.png",
+    "sha256": "8f12b7f2fd47b885d9fede282f22ad6e65da4e5c0f8d287322a8a3263befe95c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn2-dodge-approach-50.png",
+    "sha256": "9d22a7d5b76745fd92a24916a554a6964e433af0da3c9385c3f0e812f3a577cf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-impact.png",
+    "sha256": "c39b3eea894524926cbb2ba3611bf536fc5b7a78172676fac32c86f00936985c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-idle-90.png",
+    "sha256": "79fcf43b8b298484423e9c9f7c696a6ee56b74a09d4aefac0138ecbd3072a22d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-c203creaturesupplyb-23-swordfish/turn3-hit-idle-50.png",
+    "sha256": "47f54f2d493eede9b013ad24b27790f2bdb4a5d2691dc02643305e32e3aa4f29",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn2-dodge-reaction-50.png",
+    "sha256": "b6b825f0f6181dcf7a6ea9ad2c4db95f6a64ba6a764fd4cb7f433041afb42c89",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn0-hit-return-end.png",
+    "sha256": "a103770b456eb2fc8a0364446e9cf72642bd98f68755e1fd93ec107599b3f0bc",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-approach-50.png",
+    "sha256": "317954174d9030b8622d033a937bea46c4d16720fa2cb97b0ba29b855211fccd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn0-hit-approach-50.png",
+    "sha256": "317954174d9030b8622d033a937bea46c4d16720fa2cb97b0ba29b855211fccd",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn1-hit-approach-50.png",
+    "sha256": "6e885d7c4e321cb737bf8d20235e6eba9dff68e9756edd81062060f69641fb09",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/battle-full.webm",
+    "sha256": "4d10ad36b104390f85110d76a6a68c5e90a51894015870db84676d6151b9854f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-return-end.png",
+    "sha256": "b6a19347ce7690908be3e9d91f4c6bd7fec43fffa01c52b745d61071b1fe9252",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn1-hit-reaction-50.png",
+    "sha256": "dac648a6a6ec15cc9da3b643f02adad6cb21c0e1675642f84f0eb426888b8a18",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn0-hit-reaction-50.png",
+    "sha256": "a4d8d163e277d1fbf07f1498a02bad2f8e1883c110a980b30e0897abcca3baa3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn2-dodge-return-end.png",
+    "sha256": "e4a920e890a3fa4e91f4c773718c3848ae72b27d9f366bf5cce82ab941e4fe27",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-reaction-50.png",
+    "sha256": "dcf9d0a7dca91c0db1bae6f3458e55363a29e8643a2a22ea127ac2ae785bbe0b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn1-hit-impact.png",
+    "sha256": "85f6bd21c8fafa7f9ff6e85984a73c63f17dc4044e4c4168bc0b610a4e247b9b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn0-hit-impact.png",
+    "sha256": "bc28facc6d4a6f8a2ed89a9dcc679aaaeb66816b229cd3dc4e27a009f38eb448",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn1-hit-return-end.png",
+    "sha256": "a0ef32c167df679762456a31cc181a953739f0a041921bf45c89b5589f2774a2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn2-dodge-impact.png",
+    "sha256": "9cbfd024d1f0e64cbaf98262a4689d900e01a84066ddbaa940f4d19981d44122",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn2-dodge-approach-50.png",
+    "sha256": "bd7cf93fa760f520f84e3f9e4281b03215365b5d1ee1bfc0be17e19be4ed6310",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-impact.png",
+    "sha256": "d7262580c5d9544327e7ad5bb084acbbf8107b9ec9c43ee589c7091d30fd4dd5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-idle-90.png",
+    "sha256": "2910289c4c436c64ce7f42bc8bbcb7c4f59261a04fa22116e35ac835e03791f0",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-cow/turn3-hit-idle-50.png",
+    "sha256": "2630eed85a7974de98288e2f2fe013479246ad4876f43fbb7edd3d36d4acb65d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn2-dodge-reaction-50.png",
+    "sha256": "01e7d8baab09a2bf24c87bc88275ff98d0a918f9a2d2b26121b8a5cd2a8dc86f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn0-hit-return-end.png",
+    "sha256": "4dad35bdf499c0626789d5722ca9c7584a8cf6b1426aee55735d95c93221f84c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-approach-50.png",
+    "sha256": "53eff70d42249305c70be57aff5ea05c184d1f1e66752011ac019a5d22c01238",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn0-hit-approach-50.png",
+    "sha256": "53eff70d42249305c70be57aff5ea05c184d1f1e66752011ac019a5d22c01238",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn1-hit-approach-50.png",
+    "sha256": "a401f0d35a7af9bc33624138a068c0e539718aa1d44c22e038794d776dad2f3c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/battle-full.webm",
+    "sha256": "4f33247df0c6aa04a4e8d639aff46417fc65df53bc48563eea592263fccbcb40",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-return-end.png",
+    "sha256": "6c07086795687c44b7bf9e1259538547e5c0ec260111290d5e5e98181dd99bfb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn1-hit-reaction-50.png",
+    "sha256": "280a89b05d53a31cc38ed017972bfc28d04d7343ae81b99185f59b872719e78e",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn0-hit-reaction-50.png",
+    "sha256": "d10fd67a56a186460f436620ec02942406c085a5c93b89c7eea54ee4f480a113",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn2-dodge-return-end.png",
+    "sha256": "4dad35bdf499c0626789d5722ca9c7584a8cf6b1426aee55735d95c93221f84c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-reaction-50.png",
+    "sha256": "bf90aa3803ac1066b2e4bb809349dc4a4ca9c92971c964ceb67c9dbbc31f2ccc",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn1-hit-impact.png",
+    "sha256": "9c9edef42639cc1f4f4b38c0820812d49984f2e50bbb71a5142744acc831cb9a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn0-hit-impact.png",
+    "sha256": "e0a21715daba70b4ca2bc21729741987e7c0072569522fd0c73c754660632ce6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn1-hit-return-end.png",
+    "sha256": "01685697d16858ed3a324a2bfb7b7dac3d4bc2f9e5c262392d9219c690442b4e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn2-dodge-impact.png",
+    "sha256": "92f649a4fb613560e60315bda86306741cd6d7cc01910a755caa5a914bc87821",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn2-dodge-approach-50.png",
+    "sha256": "53eff70d42249305c70be57aff5ea05c184d1f1e66752011ac019a5d22c01238",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-impact.png",
+    "sha256": "9ddc8134f1b65d84b9774aec872779ba7631ea2a1b7437286fbdd9b4a0bb4360",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-idle-90.png",
+    "sha256": "7d898be5e6b00be3e46939b72887aa38bc60894c7576842fd4aec30ed76e4e43",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-falcon-c275/turn3-hit-idle-50.png",
+    "sha256": "97be589ae144d432ad67aced06bd6193e0956085e96c96b21f65bed143332dc6",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn2-dodge-reaction-50.png",
+    "sha256": "d41145ffe5e2258e2234294bdd6dc1b34da340b0a4e8f3c637e5523f5f2c96c9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn0-hit-return-end.png",
+    "sha256": "4a59ba3a2bb5dfb587a68296bedf563b3a73a104e604af55b2fa9a86fa6616a3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-approach-50.png",
+    "sha256": "f0ea101bd593538e7fee3eb57d6866bd12f54fb09551f215815453e5537c4eaf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn0-hit-approach-50.png",
+    "sha256": "f0ea101bd593538e7fee3eb57d6866bd12f54fb09551f215815453e5537c4eaf",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn1-hit-approach-50.png",
+    "sha256": "b3356386fc26bc731511d3d5f1565053a5a046ec44531c88aa9251c17ae6e196",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/battle-full.webm",
+    "sha256": "ec1e21a72ed858601fe0c59847bf69a869b87861fdd3371d7a29b5b3c0eaf475",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-return-end.png",
+    "sha256": "bd0b0e14271ec3aab4e7f7e3d5bf906661cb3f74a40b521385860842692a621d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn1-hit-reaction-50.png",
+    "sha256": "97b9859788b6e2925bc331aebca059a606f236726b87a455456bc3f5c307cd57",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn0-hit-reaction-50.png",
+    "sha256": "67b1521aba518150f3f4bc01f662780de04366aa452e395dc084cffccd56d170",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn2-dodge-return-end.png",
+    "sha256": "4a59ba3a2bb5dfb587a68296bedf563b3a73a104e604af55b2fa9a86fa6616a3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-reaction-50.png",
+    "sha256": "6e112a54df6c38b1e2e105f0c9265860c33d81b4b05c4ae8bc583a0cd0d3f119",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn1-hit-impact.png",
+    "sha256": "68815b3b24b904a41b9ed4bba13c12d06e67e580a37a964ee55aa152de191c83",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn0-hit-impact.png",
+    "sha256": "17462b042a80fefcc4e979b8711ba4d8a33e95f936cbe97d6b7e4575fcf50e51",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn1-hit-return-end.png",
+    "sha256": "4f21dec2b4c44aeba9755eee738c86f6d4a3f895558d1aebb12ec6beca9c5e7d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn2-dodge-impact.png",
+    "sha256": "21b9efa5e302ccf3fbecba8e7fa6786eb6d204957465553ff6cbd14a9793b1f5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn2-dodge-approach-50.png",
+    "sha256": "f0ea101bd593538e7fee3eb57d6866bd12f54fb09551f215815453e5537c4eaf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-impact.png",
+    "sha256": "916844db80246cec8415faa6f89795a7ff1b81f868d5ebdf1477bf025f1afbce",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-idle-90.png",
+    "sha256": "e133d61beb68c08229570bebc689b31ee9b96142f136dbf1e99672591ff2ccb2",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c101-20-snow-petrel/turn3-hit-idle-50.png",
+    "sha256": "106f48e57e8ee67f7af4a624e2c825346ee71b5b9c78267a01c18dda42d452f2",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn2-dodge-reaction-50.png",
+    "sha256": "39213c18e3342d7a76712b800533962ec2777493f8aa7e50140f195916070798",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-hit-return-end.png",
+    "sha256": "cf5caf99036f4f4a093b1ec9f9636cfe9b2bb6df7263805324ea8f24f5b9ba9e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-approach-50.png",
+    "sha256": "e08dd147b49305b0b93cbddf2d5cca09bf1f6473a0669c830179ac54d7e1ffbd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-hit-approach-50.png",
+    "sha256": "e08dd147b49305b0b93cbddf2d5cca09bf1f6473a0669c830179ac54d7e1ffbd",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn1-hit-approach-50.png",
+    "sha256": "d4186cb3cadffd3e15a3004947cfc412769f6c23206d2f3f92b80d2325668c5f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/battle-full.webm",
+    "sha256": "8661b64dd13c86ec5da251274e15532134d59ed4c9bb30bc76f90f0a52c3efee",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-return-end.png",
+    "sha256": "adc6ebebb9dd62a3f7619e83812236fff314a6b4d4ebf56e8d5f2313ae5cdbd2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn1-hit-reaction-50.png",
+    "sha256": "2dd0801cc97fd9bd0438481e15dcab774b21f5aa5f6286956731708a191c1f58",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-hit-reaction-50.png",
+    "sha256": "03aad041e65add95589844187117880198c71ef11bcb0bcc4db0b8bda19575f4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn2-dodge-return-end.png",
+    "sha256": "cf5caf99036f4f4a093b1ec9f9636cfe9b2bb6df7263805324ea8f24f5b9ba9e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-reaction-50.png",
+    "sha256": "767b99eaebac127be1d91fcb9f17749bfe909381e46936108709a8761a43b4d4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn1-hit-impact.png",
+    "sha256": "d8f4679cb33500a6d0b7eebc826bc1dfea8c1af52ac96e62965eb6227084d36e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-hit-impact.png",
+    "sha256": "352f72bcf56f6957effb6c5f8b1a6c3072e0271a1df10cdd66abdb0b703a56ad",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn1-hit-return-end.png",
+    "sha256": "4c812e3e4f3aebcec679d161359841907da2a56b7606976fda611aef2dcc9740",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-action85-extracted.png",
+    "sha256": "f0686527289084db2d322113ac140bb67be225c293bac0b59dd02887ce3bbbfa",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn2-dodge-impact.png",
+    "sha256": "7ba9ef1b2806efe7d41f7fc3cbed4a9e5fa4553d316a7c404aa8141b21422451",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn2-dodge-approach-50.png",
+    "sha256": "a89a0ebc8ed5fc129d2d8b2b1e174b62bfe76084aea25b8e71282acb53a0c8e7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-impact.png",
+    "sha256": "b6468d08934c5931d73ad0f3debf66154ce6ec2c815c9197bcc3937ed589be2b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-idle-90.png",
+    "sha256": "863feaad27f560156f36eaa2aff7a4309b0ed55887c1a228e7485f93164a526d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn3-hit-idle-50.png",
+    "sha256": "e2dfaf443b6b777679a6ee58e28ca702f6a2c4c1d03552aa0dc463bb6ecdc2ad",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn2-dodge-reaction-50.png",
+    "sha256": "6be737e789a88025ac64685ff23634b4998425270ef15264fbb3db4ae419b16d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-hit-return-end.png",
+    "sha256": "b61f61c442339f9fbbdc920ace47d1ae82de9dc891452ac30a274eeb2fb079f6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-approach-50.png",
+    "sha256": "73f19077504e1008b163aefabb64cea7850eb3dd340594152c67a151f7a216e4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-hit-approach-50.png",
+    "sha256": "73f19077504e1008b163aefabb64cea7850eb3dd340594152c67a151f7a216e4",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn1-hit-approach-50.png",
+    "sha256": "31c6cd80c5be4013de3a6e20aea0c60d197bded37763d2c5e3d76ad55b3e4709",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/battle-full.webm",
+    "sha256": "7651f6acd30ba7c1ab44aa6813c084880757957fa293b0b543978bac4757a63e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-return-end.png",
+    "sha256": "cfdd34b63ae198bb65529f7d1d0a924d83538fa908eb22b1305d5e08df1814eb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn1-hit-reaction-50.png",
+    "sha256": "ee112fe56f845520a2d1abd46189a597f769de75fe4dd06611cecbb30e1c8b7a",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-hit-reaction-50.png",
+    "sha256": "2f701c4e5a5b4c3b588e8e411c679fedd1687b1efe062bb6f4ca86c7b5037e58",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn2-dodge-return-end.png",
+    "sha256": "b61f61c442339f9fbbdc920ace47d1ae82de9dc891452ac30a274eeb2fb079f6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-reaction-50.png",
+    "sha256": "0dfd74f08c041529e827596b7ecdf4fbfd500db9a442d0c688fc1731ea71b44c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn1-hit-impact.png",
+    "sha256": "13874cb49a031f5400152086aa035a66eb0fb33e635af5075e0ca0d02e5ae13c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-hit-impact.png",
+    "sha256": "14d32942f8d7072b3ce9fa947b1e8e48d77d17a9bfc574699c6a1d544789e6b3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn1-hit-return-end.png",
+    "sha256": "50ac264efbac70fb5524cd7eb290bb6e4b72e186241419211dbfca742719caf9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-action85-extracted.png",
+    "sha256": "37bd8be86619ec58e91949057acde04cb52a646f4fae14df44cdc9c6c7f6dbf7",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn2-dodge-impact.png",
+    "sha256": "afaf85d8027c1239ebf31c54fdf44a7f0e3ef540a089681238c9f07f15541a1d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn2-dodge-approach-50.png",
+    "sha256": "9be3d053250a62bdb74ad153a6d4b29f8035949bb4b9bb71e6eccf845b92b717",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-impact.png",
+    "sha256": "f3ee5d7ddd2e4cf8eb6e38a418cc4cd9099b25be3c7f2d17b92a5c1360f9761d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-idle-90.png",
+    "sha256": "354af4597d136741625775d3c0d93c12e4ac172b73673c17665abbc7ce2f735f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn3-hit-idle-50.png",
+    "sha256": "c49cdbdb0a13babc18262fd4c2946d9d04a7d2c827d7ff6a4956cbbe01755161",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn2-dodge-reaction-50.png",
+    "sha256": "df1372d82c18ada134a28d3b6f5cbf18eb6e918cf700e38c3f88ed3bfc645ff5",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-hit-return-end.png",
+    "sha256": "f35ab9ba78573caf9a083b84846e8682d65cd42b6ccee5c601cb74043d4450bb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-approach-50.png",
+    "sha256": "f7d4d7994a569c4401c9edf48a8c9f2b592a78ae64613981e64858551fa88e40",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-hit-approach-50.png",
+    "sha256": "f7d4d7994a569c4401c9edf48a8c9f2b592a78ae64613981e64858551fa88e40",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn1-hit-approach-50.png",
+    "sha256": "35c8a6fb07178937efe9feda1ccc7854d20609492ebb99f4dc4340411c4ff343",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/battle-full.webm",
+    "sha256": "3a7ceca4b1722f6013c632c1093af16d83ae9687d89e80b4eb1fbb8a494383e7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-return-end.png",
+    "sha256": "b8ac94df4f48f0c2fa08d97e19ad7c62c3e46c3ee0d22ffada1d4ce86cd02113",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn1-hit-reaction-50.png",
+    "sha256": "0f441b00db4738c03ee64ad435a2a96e1c53cfba4bfffa3977d1cdd142e92aac",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-hit-reaction-50.png",
+    "sha256": "6d046b903ef8f1952b3867101daab9d9cacab79a8399f41f560de49403bb4215",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn2-dodge-return-end.png",
+    "sha256": "f35ab9ba78573caf9a083b84846e8682d65cd42b6ccee5c601cb74043d4450bb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-reaction-50.png",
+    "sha256": "2213ea95d4138b08b9de848fcea6097a090112c7182c390903ed8e6e63b31db0",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn1-hit-impact.png",
+    "sha256": "6d31e13670362b25278202b735bba474403a8b415c0fbc6cec5b007901b64f15",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-hit-impact.png",
+    "sha256": "37c724901fcd80a586e89b071e67595ee7445498e6d99efccc26c06d95145c4c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn1-hit-return-end.png",
+    "sha256": "c4b376f9819448da1eb8c862bee579569f1fdcd36b39a98b7b0bce18d194326f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-action85-extracted.png",
+    "sha256": "3ae1168f9d394d192cb90de472813ad79145d4b7304adac7a3c39501a6cf7a62",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn2-dodge-impact.png",
+    "sha256": "6d11260c307805c0383e93834499813f679f9f5e00217727a75283d884c344e8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn2-dodge-approach-50.png",
+    "sha256": "699626ae048272a7a838eacee2c37ed6b943e4b3225439300f9a56ec2558fd51",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-impact.png",
+    "sha256": "c0420d35b320e6f048910b8f70902e90461b1c139c22c5c3d40926026f8953c4",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-idle-90.png",
+    "sha256": "17a9becabe4adafe111de7a3d3371d522c567e2b22da7e6dafa1eda3a3772f5f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn3-hit-idle-50.png",
+    "sha256": "3189f7740a915eb1d64db85df5d6fcd885e52a5c28964e52b5768b8ccf49191f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn2-dodge-reaction-50.png",
+    "sha256": "9e9d85d2f0ebfe2812742019273c431361793920efc07820a3c9fcf1b1798054",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn0-hit-return-end.png",
+    "sha256": "30895cf51a15b74699cd99e90298ea0daccb3da91b95122708a842ee04e24c6b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-approach-50.png",
+    "sha256": "68b75abe5a1f1def1585351e953422473a6953027a74d0b4f319362afd72516d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn0-hit-approach-50.png",
+    "sha256": "68b75abe5a1f1def1585351e953422473a6953027a74d0b4f319362afd72516d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn1-hit-approach-50.png",
+    "sha256": "6ef7be3d1079789cb747fa029fcf790c97d465c7e258a34588ad21d09edcc992",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/battle-full.webm",
+    "sha256": "3611992da3ece187b3959a3ac6d4a4d11f038431f841235a6112e2cee37789a3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-return-end.png",
+    "sha256": "5bf75fbd1e317d71a2469ff7af2ee2a9a381ff0ab7823e07d8a6dd261cbbb38c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn1-hit-reaction-50.png",
+    "sha256": "b48e53858e30588e24e4c418fd7bb0b17086e360ff36064263424a50ba6f795f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn0-hit-reaction-50.png",
+    "sha256": "e2b4ae652457ceaef39d6f618bec9ab87cffda1bfd152eb31b2d289f1888f146",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn2-dodge-return-end.png",
+    "sha256": "ec7ccdb6225f64af4a10dfb02b7ebfb60c6aa732bfe63d9e5b7ece2f6c88123d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-reaction-50.png",
+    "sha256": "bc49110de79bb6e11481da2cc34634f08f17946991ffa8c11015358755b5c6dd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn1-hit-impact.png",
+    "sha256": "7e881cffe04d7666b7c147ae0f52775acff53351a9cafb0d607d5520fc3ec5b6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn0-hit-impact.png",
+    "sha256": "15e5bfca6dab17027f5b231e901794229b7ab7707b9d95357f0c245721a0c390",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn1-hit-return-end.png",
+    "sha256": "e8fda08c0f2325552a9aa82974296ae4c133f3802c4bab37820cc5216de85b98",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn2-dodge-impact.png",
+    "sha256": "d1401e1f7f0961246276330d378b54cab120388e959ce3c657036ab7eab62576",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn2-dodge-approach-50.png",
+    "sha256": "f6b2915cf2b6c651cc52ca297fbc87c3904741d3a72d7877a8d196fb009eafd3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-impact.png",
+    "sha256": "e811a849ae9bee661ee118a70f78e0c203785018aace64554a86d8491edeb13b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-idle-90.png",
+    "sha256": "c637350238c76ac8c1eab471327b9ecdeb40881150713ceab74bcda0b11266ee",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-17-nilgai/turn3-hit-idle-50.png",
+    "sha256": "e686aa23a14405d14defefbd0c9d98b90cb27674052797856d55d49f337c4116",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn2-dodge-reaction-50.png",
+    "sha256": "f5a88e9366c12bb35fc3cd6daec18679bf5a8358acbdb94abd1ba70fb9ffc0d3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn0-hit-return-end.png",
+    "sha256": "1c9d47484088ab8f55aa1d21ab579ea3c9a5b7597ceb0fc60dff3a3562cd3e97",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-approach-50.png",
+    "sha256": "3116650c28da434584a59fdf4a10ac04175d461937bb66e234e35da95448163e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn0-hit-approach-50.png",
+    "sha256": "3116650c28da434584a59fdf4a10ac04175d461937bb66e234e35da95448163e",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn1-hit-approach-50.png",
+    "sha256": "b0c6928ed999b2698c02b4ee40d1667a026445a91bcf1d4b47a05c3775688f2e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/battle-full.webm",
+    "sha256": "b2e7b5d8de7579f761f5b901c32c4bea500adff07e224781e1345c18e8b88279",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-return-end.png",
+    "sha256": "36919ae4f6232e0b34f23010237206ea4a9229b108ed449693210e94ddadb741",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn1-hit-reaction-50.png",
+    "sha256": "fc0df31da227634e5543399c92e3f55fba8070a4644c92dd348d2b9c4dc21955",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn0-hit-reaction-50.png",
+    "sha256": "be8aa031ca4b47d21fc570fc260e4c4c45180197fcff663739a29d2e94682ee7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn2-dodge-return-end.png",
+    "sha256": "821e712ceb44d29158700c8c5d99a4b371094b8acfb0799eb7e1dbe6e62eecf3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-reaction-50.png",
+    "sha256": "44fa6ca23f2f302a7d860ccae6e3d6a14ddf4ccd9569651281258af089f527ca",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn1-hit-impact.png",
+    "sha256": "3e0f472891714d042f5c85bca14a55788a2528f31eabb5978d6bb86d6eb8aa9c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn0-hit-impact.png",
+    "sha256": "3b2217ab13371814fada6509ef0753f773b1f819fe211d459fa03721acb30e64",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn1-hit-return-end.png",
+    "sha256": "22cd4888347dd7e60e7d507c4877900d13e6b23c2f22795edde457a13eff82ff",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn2-dodge-impact.png",
+    "sha256": "6c786ee969643f81ac560b5182bd9b68d331b415305d9f4f471dd09e0ff31940",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn2-dodge-approach-50.png",
+    "sha256": "3116650c28da434584a59fdf4a10ac04175d461937bb66e234e35da95448163e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-impact.png",
+    "sha256": "d580081894e5e497ccaa98ec4f954d0427fd6c336dcf034a3fba8ab8c001ad13",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-idle-90.png",
+    "sha256": "f2822893b0de6c66e6f15b7738d2d4fb12bd611bf86a7cb6f2d522e9ecf89137",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c95-23-springtail/turn3-hit-idle-50.png",
+    "sha256": "c62115deaf43beada9ccdaf03c9e2650ea21adf309fbee043c7531a37eafe3be",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn2-dodge-reaction-50.png",
+    "sha256": "22072ca4262f1d9508174a63bbb8b27e81e364ba70aa222ab9c48221e283b719",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn0-hit-return-end.png",
+    "sha256": "ab5b3c060c3d0eac489eee9811cb553d6e84da406dfc4074d619feab1133866f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-approach-50.png",
+    "sha256": "7683721d9fb68105544b7017b71379ce38ac9941b41455f97b463cc0d96b5f2f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn0-hit-approach-50.png",
+    "sha256": "7683721d9fb68105544b7017b71379ce38ac9941b41455f97b463cc0d96b5f2f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn1-hit-approach-50.png",
+    "sha256": "bf46f5102823c05f3f448c013455b2b8ab79523961b29461193b46f47457465a",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/battle-full.webm",
+    "sha256": "f65abab6d694bcba32a89936152663b0fc4336adc7c34dccf66fe643b153b3b7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-return-end.png",
+    "sha256": "178514fff49b785e06da73b7f88abdcfe44b3c0e36b0c9c6c25999e29ec00987",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn1-hit-reaction-50.png",
+    "sha256": "3ce8c59013ee590142fb2ec76373c59268f66bd3a5fb7444457d15fec0c325cc",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn0-hit-reaction-50.png",
+    "sha256": "af5ba3b95d51f6eb44c54fe850e36fbda193cdb99b35533dd2a8c566f962a2e8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn2-dodge-return-end.png",
+    "sha256": "ab5b3c060c3d0eac489eee9811cb553d6e84da406dfc4074d619feab1133866f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-reaction-50.png",
+    "sha256": "1d33b24da15f8125ab841dbbc967dc1433754538540eff6e35fb5dd30434519f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn1-hit-impact.png",
+    "sha256": "0a14a0d815ae3af05d53f409fa51954d86ca7d57a1faa27e547d96fe9fb0f7c1",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn0-hit-impact.png",
+    "sha256": "5786ae710f7d8a1a31c08f63d8986209a5bb470cc2e31ac80af5a141fd4877d6",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn1-hit-return-end.png",
+    "sha256": "da90354a924fa274c49ed565f09ae91f0f5dcada9bf10386d9b5bf945a75ad3f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn2-dodge-impact.png",
+    "sha256": "27fb65ed2267670ac608fa216537467ace868c195433f940299416d838d77098",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn2-dodge-approach-50.png",
+    "sha256": "3cbec5c3f26d92f77e585f2bd086d10ed0da77bdae6018a130d8c490a2347876",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-impact.png",
+    "sha256": "71a8c24d9dea8693d8834ba6cb22dda413562740cc6c69a6c21f3e3cb34943d0",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-idle-90.png",
+    "sha256": "4fad5ae2d2d0928c8b3705f48bcee990323c936e1c71cca5b666bc4763897abc",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c98-21-pig/turn3-hit-idle-50.png",
+    "sha256": "3f36cad8d3ce7717974fd31895ea7475e088a1d438131d25de815b458ec86d04",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn2-dodge-reaction-50.png",
+    "sha256": "8f9fb0ee0f96784ce7c7f5bd3f056a316353532d0e15b38041a6ae81b59c502e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn0-hit-return-end.png",
+    "sha256": "d8fdb912c6923653ed190eaa2d0e3fb9601a15caf7e6e7327cef820264fbcccd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-approach-50.png",
+    "sha256": "7226e0de3e3acf889478f60bc99dcc28ed37dff4693695ffaefa845b799a6e85",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn0-hit-approach-50.png",
+    "sha256": "7226e0de3e3acf889478f60bc99dcc28ed37dff4693695ffaefa845b799a6e85",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn1-hit-approach-50.png",
+    "sha256": "b1da96a83923b6e72110d4f3baf1a9173dec6aa88f64345a7a6f6ca012837f12",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/battle-full.webm",
+    "sha256": "5a9674df9d7d9b6497ff604f57b2e105eebec93d74a941506f232c17d2f13261",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-return-end.png",
+    "sha256": "d3c71eeeb03d11717656b4139a5a3ea7ee3b119348c8e4f3e15e4851041fccb1",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn1-hit-reaction-50.png",
+    "sha256": "cb883e39e544c7b7fd0e59da6a5a6fdbc783ddb031545144f0e8ba0f89a985ad",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn0-hit-reaction-50.png",
+    "sha256": "1957a1df9ea7c5e3b2b41055b45c824a72bb1d3f7de8ca98003531c7ff7af61d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn2-dodge-return-end.png",
+    "sha256": "d8fdb912c6923653ed190eaa2d0e3fb9601a15caf7e6e7327cef820264fbcccd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-reaction-50.png",
+    "sha256": "07b0f43efa0a57333fc362298f10d41da41333ea53589f4d858480124acc3889",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn1-hit-impact.png",
+    "sha256": "b49e002fb506abb0405f85030fb1d9b1a5158f1eeb5bb70aa9eac9972d46ee91",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn0-hit-impact.png",
+    "sha256": "3535b08e872ae04b3309d325eb1258be477da06c0f45b15ed9dd9b40f0d971f8",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn1-hit-return-end.png",
+    "sha256": "630cbdc9042a7879c9af7e6c61cb2e3b1ce8dcf7648c86b06019afb91bfd5c6f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn2-dodge-impact.png",
+    "sha256": "38818f4746691cde2f2b5f27ac07599616ade6f406ea104b26989244e8f8753e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn2-dodge-approach-50.png",
+    "sha256": "7226e0de3e3acf889478f60bc99dcc28ed37dff4693695ffaefa845b799a6e85",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-impact.png",
+    "sha256": "c4427581ea93b938602a9e4249b7d830bd7413bbe754afe443794db87f32cf4c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-idle-90.png",
+    "sha256": "9c04ae561af87bd423beb2975ae24c6cbf535da9141c36451025687f11d5da0e",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-stork/turn3-hit-idle-50.png",
+    "sha256": "eb6b3e369729100d62ecaf14ead7f28191675754b4fb7a07accb469399cba539",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn2-dodge-reaction-50.png",
+    "sha256": "a4264134f401d9105c529fec04ca8a1148107319c8c7c4cf80ac040e624390a0",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn0-hit-return-end.png",
+    "sha256": "702c5b453c617aea9cd559996e81034938d90cfe35cf933f0cf7a493e6321622",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-approach-50.png",
+    "sha256": "6b22f119fc67f3c31555ab4963ec87e96b40cbbad9dff76291389d8d86b8dd3b",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn0-hit-approach-50.png",
+    "sha256": "6b22f119fc67f3c31555ab4963ec87e96b40cbbad9dff76291389d8d86b8dd3b",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn1-hit-approach-50.png",
+    "sha256": "09573e84fbff6604134f16a248e416176b496fd0851a73e0c4a77bf335841f80",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/battle-full.webm",
+    "sha256": "15d5e20b07b9dfa3adf4a20581c2a1a0af2b4cdf26af6d8a12e8602c930d0a1f",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-return-end.png",
+    "sha256": "db330d8167059e7accfe631367737772b9a2479c5f437e4f446b0f4cc6df9e29",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn1-hit-reaction-50.png",
+    "sha256": "e427c3e03954c66215d3264f8d6eb9bc340c86088c315fd64b1a50de5589cac3",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn0-hit-reaction-50.png",
+    "sha256": "e64e0d31dd6bd5757ccb970dacdd517ee2634d2bb588d736bf1dfd1bdd9add03",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn2-dodge-return-end.png",
+    "sha256": "58bb74f51ab41217e5986097407d902389e529097b72a0800c32a66fdb59b5bc",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-reaction-50.png",
+    "sha256": "29dfb2102b9fb5b3e686d71fd89c62a339fa55e97307bb6ec2aa203aeee30300",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn1-hit-impact.png",
+    "sha256": "8fec637da000b3e1343d6a2939a8d15746f6b4c6b9d988ccc8054779c972fdbd",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn0-hit-impact.png",
+    "sha256": "87c3a705c491527f4b1b754090e4995cd3c822ce5d0dc40d9ffe608967a1b8fa",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn1-hit-return-end.png",
+    "sha256": "f371fc4dca6c22fc82a496884d37222c258341f4a780d6155278258defc9e4f7",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn2-dodge-impact.png",
+    "sha256": "35384be1181221f012979d572283d84ded1cfd943ac9fea3634b1041b095f06e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn2-dodge-approach-50.png",
+    "sha256": "2e710c8900b8d3380b2b7ff9b7f7ce7b6d141ff0db84aa7ba7d1a9f1c50ea324",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-impact.png",
+    "sha256": "5a88f0428e06ebc360de240d032d6c1156e78f1cbb7cf63ee437436f35d4f5a3",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-idle-90.png",
+    "sha256": "064565241deabdd5d4510b00b6344dc2095f0444c0c882ca55d470290935bf1f",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-source-wild-pig/turn3-hit-idle-50.png",
+    "sha256": "15ed331077f5d5869b95b4ebc289cd737dc307c0e9d22b6624ca01a1321f82fa",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn2-dodge-reaction-50.png",
+    "sha256": "cacc652a138133631338191776c47478c3ca5da1b18f56ad23acf4f82281e5d2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn0-hit-return-end.png",
+    "sha256": "3e25f206b5343153ed5ac1c1a90c555253e2712a1986844b30496c7d13c994c2",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-approach-50.png",
+    "sha256": "a1797ca2c8a5a4823cd01d9190dc2a265e2ce2b4f6ce4138fc4451abfc3620b0",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn0-hit-approach-50.png",
+    "sha256": "a1797ca2c8a5a4823cd01d9190dc2a265e2ce2b4f6ce4138fc4451abfc3620b0",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn1-hit-approach-50.png",
+    "sha256": "9f3d24707013d3b94d27e45a726a7539b5729dbd1ca403fc1653868b5c8e4102",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/battle-full.webm",
+    "sha256": "e090170f6e966570110da2da50ade4f2a0aab2f1af316ee26c3496db1f84513e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-return-end.png",
+    "sha256": "f1b05e0f877fb1ef0d72d469528af6e487c321df0e2759f59a7ce81537c4aa94",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn1-hit-reaction-50.png",
+    "sha256": "cba6afaccf8c601d690dd031aede3efacbdfdcc5b36aab3ce43f6b0525be4d4d",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn0-hit-reaction-50.png",
+    "sha256": "1619850a83315c124f03a0b5c0d48f279e169a48ecc6b2088fe443266b1e54bf",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn2-dodge-return-end.png",
+    "sha256": "0c75a54d2ccc404ec9a625d6bc858363cc3e73aeb0bb46615856912c6b292b6c",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-reaction-50.png",
+    "sha256": "5c67830b00c78e3947b7446a139c161dcba403bdc5586d2e4dfb52b6845e4fc9",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn1-hit-impact.png",
+    "sha256": "60dec6c82b5ce94d7f084cce73f33807d117c92259ccc0e231565201bf77cc56",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn0-hit-impact.png",
+    "sha256": "22fd704b566f18bd09b5681818fc3fee9f8a407db28910d8ef730761a4e9a9eb",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn1-hit-return-end.png",
+    "sha256": "9f43f6792d04a9ec16c0cabf70738ca0735b4c5a5afb48e760bf05fe7ba1158d",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn2-dodge-impact.png",
+    "sha256": "433f9dc8e8c163c30e380f8c479d82951c8e2d6b3eed33178335bd82abea8cb0",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn2-dodge-approach-50.png",
+    "sha256": "6de715fc75459ada4241c7ab9964b7897e214f1b594e1b5644f9f47eb125fa8e",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-impact.png",
+    "sha256": "fa5848e8fc37c7c98f19d0c9ed8fb179f544523050c36fbe5a4480db5da1b656",
+    "committed": false
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-idle-90.png",
+    "sha256": "c6737981d2883e455ed13d130018c8bccf78d4094c1bcde635785715b467fb33",
+    "committed": true
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/native-transparent-tahr02/turn3-hit-idle-50.png",
+    "sha256": "19642eeddf16f88df04f5784a7d2d575063de1110c083781abe7ada73a192277",
+    "committed": true
+  }
+]

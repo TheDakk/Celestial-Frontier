@@ -1,0 +1,81 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Badger",
+  "masterSha256": "9b16cceae9d904915a83fb538f7b0990559e54d6666e441be7ca141f8af93b68",
+  "subjectSha256": "0e58841c2155fad0a1d75101c79bc3340826759e2ee050812585cbb66f10f50a",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Observed broad low torso and back coat. Tail, head and all four existing limb owners retain priority.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-torso",
+      "kind": "torso",
+      "joint": "spine",
+      "canonicalFeature": "broad flattened low-slung body",
+      "polygonPx": [
+        [
+          274,
+          591
+        ],
+        [
+          328,
+          498
+        ],
+        [
+          429,
+          437
+        ],
+        [
+          530,
+          403
+        ],
+        [
+          625,
+          409
+        ],
+        [
+          708,
+          441
+        ],
+        [
+          801,
+          438
+        ],
+        [
+          847,
+          474
+        ],
+        [
+          828,
+          565
+        ],
+        [
+          788,
+          623
+        ],
+        [
+          739,
+          668
+        ],
+        [
+          648,
+          701
+        ],
+        [
+          551,
+          706
+        ],
+        [
+          447,
+          690
+        ],
+        [
+          337,
+          660
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "795cbb0c64b7153dbbe15116369fa34df3db0bd19868aa49d8661e276dd4a819"
+}

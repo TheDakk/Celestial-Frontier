@@ -1,0 +1,174 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+  "atlasSha256": "84d9f7dbf9c77e537bcd8f9aee0b103337618c07677dea6f63793c6ba97c412a",
+  "atlasSize": {
+    "width": 209,
+    "height": 498
+  },
+  "parts": [
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 262,
+        "width": 83,
+        "height": 116
+      },
+      "cutout": {
+        "x": 668,
+        "y": 557,
+        "width": 83,
+        "height": 116
+      }
+    },
+    {
+      "id": "oral-hood-cirri",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 388,
+        "width": 112,
+        "height": 105
+      },
+      "cutout": {
+        "x": 839,
+        "y": 575,
+        "width": 112,
+        "height": 105
+      }
+    },
+    {
+      "id": "caudal-whole-tip",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 101,
+        "y": 204,
+        "width": 60,
+        "height": 38
+      },
+      "cutout": {
+        "x": 301,
+        "y": 614,
+        "width": 60,
+        "height": 38
+      }
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 147,
+        "y": 115,
+        "width": 57,
+        "height": 67
+      },
+      "cutout": {
+        "x": 361,
+        "y": 596,
+        "width": 57,
+        "height": 67
+      }
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 98,
+        "y": 262,
+        "width": 78,
+        "height": 100
+      },
+      "cutout": {
+        "x": 418,
+        "y": 574,
+        "width": 78,
+        "height": 100
+      }
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 136,
+        "width": 86,
+        "height": 116
+      },
+      "cutout": {
+        "x": 496,
+        "y": 562,
+        "width": 86,
+        "height": 116
+      }
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 86,
+        "height": 121
+      },
+      "cutout": {
+        "x": 582,
+        "y": 557,
+        "width": 86,
+        "height": 121
+      }
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 101,
+        "y": 5,
+        "width": 52,
+        "height": 100
+      },
+      "cutout": {
+        "x": 751,
+        "y": 561,
+        "width": 52,
+        "height": 100
+      }
+    },
+    {
+      "id": "anterior-body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 101,
+        "y": 115,
+        "width": 36,
+        "height": 79
+      },
+      "cutout": {
+        "x": 803,
+        "y": 567,
+        "width": 36,
+        "height": 79
+      }
+    }
+  ],
+  "bindingHash": "4934b461c65c9f09eb163369e6667d95420a7fde22782bf61cc23b2cf38acc8d"
+}

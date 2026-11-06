@@ -1,0 +1,144 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "soft-crown-field-13",
+      "joint": "polyp13Tip",
+      "owner": "soft-crown-field-13"
+    },
+    {
+      "region": "soft-crown-field-8",
+      "joint": "polyp8Tip",
+      "owner": "soft-crown-field-8"
+    },
+    {
+      "region": "soft-crown-field-9",
+      "joint": "polyp9Tip",
+      "owner": "soft-crown-field-9"
+    },
+    {
+      "region": "soft-crown-field-10",
+      "joint": "polyp10Tip",
+      "owner": "soft-crown-field-10"
+    },
+    {
+      "region": "soft-crown-field-11",
+      "joint": "polyp11Tip",
+      "owner": "soft-crown-field-11"
+    },
+    {
+      "region": "soft-crown-field-12",
+      "joint": "polyp12Tip",
+      "owner": "soft-crown-field-12"
+    },
+    {
+      "region": "soft-crown-field-15",
+      "joint": "polyp15Tip",
+      "owner": "soft-crown-field-15"
+    },
+    {
+      "region": "soft-crown-field-17",
+      "joint": "polyp17Tip",
+      "owner": "soft-crown-field-17"
+    },
+    {
+      "region": "soft-crown-field-19",
+      "joint": "polyp19Tip",
+      "owner": "soft-crown-field-19"
+    },
+    {
+      "region": "soft-crown-field-0",
+      "joint": "polyp0Tip",
+      "owner": "soft-crown-field-0"
+    },
+    {
+      "region": "soft-crown-field-1",
+      "joint": "polyp1Tip",
+      "owner": "soft-crown-field-1"
+    },
+    {
+      "region": "soft-crown-field-2",
+      "joint": "polyp2Tip",
+      "owner": "soft-crown-field-2"
+    },
+    {
+      "region": "soft-crown-field-3",
+      "joint": "polyp3Tip",
+      "owner": "soft-crown-field-3"
+    },
+    {
+      "region": "soft-crown-field-4",
+      "joint": "polyp4Tip",
+      "owner": "soft-crown-field-4"
+    },
+    {
+      "region": "soft-crown-field-5",
+      "joint": "polyp5Tip",
+      "owner": "soft-crown-field-5"
+    },
+    {
+      "region": "soft-crown-field-6",
+      "joint": "polyp6Tip",
+      "owner": "soft-crown-field-6"
+    },
+    {
+      "region": "soft-crown-field-7",
+      "joint": "polyp7Tip",
+      "owner": "soft-crown-field-7"
+    },
+    {
+      "region": "soft-crown-field-14",
+      "joint": "polyp14Tip",
+      "owner": "soft-crown-field-14"
+    },
+    {
+      "region": "soft-crown-field-16",
+      "joint": "polyp16Tip",
+      "owner": "soft-crown-field-16"
+    },
+    {
+      "region": "soft-crown-field-18",
+      "joint": "polyp18Tip",
+      "owner": "soft-crown-field-18"
+    },
+    {
+      "region": "calcified-calyx-skeleton",
+      "joint": "skeleton",
+      "owner": "calcified-calyx-skeleton"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    3308,
+    1400,
+    2299,
+    3293,
+    2499,
+    2560,
+    1720,
+    2058,
+    3721,
+    3358,
+    2173,
+    2536,
+    2311,
+    1882,
+    1923,
+    2019,
+    3487,
+    2245,
+    2652,
+    2395,
+    120636
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "calcified-calyx-skeleton"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PHYSICAL_CLEAN",
+  "actualFullsizeFiveViewed": true,
+  "frames": [
+    {
+      "id": "turn1-hit-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/turn1-hit-reaction-50.png",
+      "sha256": "3fff5ad76b853f3e57c09dde6704ceb2f11607486a50757f6b3d6a487be2d2d2"
+    },
+    {
+      "id": "turn2-dodge-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/turn2-dodge-reaction-50.png",
+      "sha256": "94b4e6ae40ff39d4fced1a50cf22c13b2eb056754b74d74e10c31e9fcdbdeeca"
+    },
+    {
+      "id": "turn3-hit-reaction-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/turn3-hit-reaction-50.png",
+      "sha256": "7992d6cbc81f542eb61f219adbf1c7b5a2815383644899bc56977b0e47fc003a"
+    },
+    {
+      "id": "turn3-hit-idle-50",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/turn3-hit-idle-50.png",
+      "sha256": "d044911516aac7a243a77a88443b2d2edc0d1875b0381ae64349901ac1e90774"
+    },
+    {
+      "id": "turn3-hit-idle-90",
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native/turn3-hit-idle-90.png",
+      "sha256": "e6e159c35aa54d0a80d17e8a2689147ec5bebc0961c638cff1958a29d413d029"
+    }
+  ],
+  "finding": "Broad forward victory head and eye remain readable300/540ms; continuous head/hood/lowerneck/trunk and full uncrossed tails. Right hit/faint jaw remains attached. No new fringe or fragment visible. FX-hidden fields are not inferred; existing fork trim/AA caveat retained.",
+  "independentReviewsRequired": true
+}

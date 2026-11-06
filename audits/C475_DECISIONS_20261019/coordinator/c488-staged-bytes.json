@@ -1,0 +1,1897 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "676297780c0193bbea42b73299ac4c852458a3c9ceae531b7d93ca5283d3ba0a",
+      "bytes": 6217
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c487-paths.txt",
+      "sha256": "f01751a4e08260d0737be5379ecac0f1d85d3522ee6940e30ceb3c6c34bff8a2",
+      "bytes": 139114
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c487-staged-bytes.commit.log",
+      "sha256": "ac94443af7a7ffc8a91d38ccf4296e6e6d8df1911c7e8cdf24fa4c4af70d29b6",
+      "bytes": 32266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c488-extra-paths.txt",
+      "sha256": "5dd2560e2b4d8e0f9d6410009265f5111475f5d55f58e81edb0a7aab2179b86d",
+      "bytes": 1681
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c488-message.txt",
+      "sha256": "0532c8a74f53fa2d5fbb59dfb1e19c80883c8aac1e440f73c8048760e8fa9ea0",
+      "bytes": 80
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c488-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c488-unchanged-runtime-verification.json",
+      "sha256": "3f362da7e02fce24a0742f4f5e949b3957e333f67d1de31e29afd5908d0afddc",
+      "bytes": 3282
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/flatworm-d41-r02/checkpoint.json",
+      "sha256": "71a7942c052ba484830c742e47f9b327c9ef342bf6dde0d7634cb7e331dcd809",
+      "bytes": 1038
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/flatworm-d41-r02/subjects.json",
+      "sha256": "3f79aa50ebe632e4bbd518a9706ae8a83fe854d1c6f590245f909cfe9997efa1",
+      "bytes": 265
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02/checkpoint.json",
+      "sha256": "1440293168e953c8beded33d820d6607259b5e03c79b3b20d1fbb50224e44a8e",
+      "bytes": 1053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/sand-dollar-d41-r02/subjects.json",
+      "sha256": "a4293843fd4c06005de24e7aa36490bcb213d5fcb8ffbd91f62f946a6f642d6d",
+      "bytes": 268
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-native.json",
+      "sha256": "132b5cafd13cc6fc4e76422dc7b2dc188b8bcd7196748a21dcfa6348b6544aed",
+      "bytes": 532
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/flatworm-native.log",
+      "sha256": "0e3eef88a8ec87a86348bde38b1db51331076ce8d7bdcc007f078d5501ba3c84",
+      "bytes": 210
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/giant-isopod-d41-root-static.json",
+      "sha256": "2e56a421f1056620017337ae0abd080adfb6daa5a78542d891cc668cffae36de",
+      "bytes": 684
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/giant-isopod-d41-root-static.log",
+      "sha256": "d051a2b39180eec17883409a39f2185fe548ddd00724d8cffe296830ceffc6a7",
+      "bytes": 1447
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/nautilus-d41-root-static.json",
+      "sha256": "480efb8f4b5189c0fc8fd4e99f5376a2fbb00c4ab0cea2e5b66796acc222c29c",
+      "bytes": 676
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/nautilus-d41-root-static.log",
+      "sha256": "e33ccc364d152b3a61014b3cf937b962ab0cc0826bc28c5c1f09fd5ef7c74f11",
+      "bytes": 1450
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/c475-flatworm-d41-r02.log",
+      "sha256": "a1777d0e300e2f501e7bef52a33051ae2fe6bf7c9282e3fdd4c2c5fcd7abaa48",
+      "bytes": 521
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/finish-subjects.json",
+      "sha256": "3f79aa50ebe632e4bbd518a9706ae8a83fe854d1c6f590245f909cfe9997efa1",
+      "bytes": 265
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native-plan-bound.json",
+      "sha256": "c21017bff9fa5040e29d51bae78a4d4f72efa1891c5a3e98c719230b8e58ef6c",
+      "bytes": 1483
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native-results.json",
+      "sha256": "530ab7c917742b0f7160ef8b6c1798e29baa72ccc2b9f198f0de525c6ffafc39",
+      "bytes": 1485
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/battle-full.webm",
+      "sha256": "deffbf42074bba70e15ca75b77e3b45db35f83329d31aff714c211ae5101fc53",
+      "bytes": 7669020
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/report.json",
+      "sha256": "9d4893f43c55782da685f5b3a7c61dcfc72be2454fc42ab5aff126ed322f29cc",
+      "bytes": 356843
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn0-hit-approach-50.png",
+      "sha256": "752f6de01bf49a24eed156f81316a61a97704564630750e4d8c2f8caee1da7a1",
+      "bytes": 1141831
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn0-hit-impact.png",
+      "sha256": "9edf22ab44a56ab4257975a05f32e37d29987b6b0c2536130f963dab5fd0f885",
+      "bytes": 701472
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "a911d2850f18fc3a35edbce58a587e34c1e04ac9c30acbed0221bc4131b3c8f4",
+      "bytes": 1240925
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn0-hit-return-end.png",
+      "sha256": "1990453467cb146a1a8a089cdd7ccb91ca3f5407615365de280f50ae7a8ad950",
+      "bytes": 1139052
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn1-hit-approach-50.png",
+      "sha256": "cc86d4d488b4864ab73e8cee3674d4a7d85a0543ef6b0cf1ae0fc74dd661aecc",
+      "bytes": 1143715
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn1-hit-impact.png",
+      "sha256": "cf48e02e18f068c869ce8587f48c1ff9d7b3ba71d9e7dd192738e6284b46fbc4",
+      "bytes": 634367
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "c771aa52fe7819a3bfd26366a71a3d8b8f6ecd3bceeeec0407be2b860cf46d61",
+      "bytes": 1150114
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn1-hit-return-end.png",
+      "sha256": "463dc9c089b636e8562aa9720e816e1357c39f24c99986415ef7e491d260c81b",
+      "bytes": 1139071
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "752f6de01bf49a24eed156f81316a61a97704564630750e4d8c2f8caee1da7a1",
+      "bytes": 1141831
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn2-dodge-impact.png",
+      "sha256": "ed94760980b31886407a559a491ad8700ffa1197eee27775f5b4abbbdc0e0b62",
+      "bytes": 1217483
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "642030d5ea770cfde918acdf46251437ad4055e8da854187d92e0531c7e8dcfd",
+      "bytes": 1228134
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn2-dodge-return-end.png",
+      "sha256": "1990453467cb146a1a8a089cdd7ccb91ca3f5407615365de280f50ae7a8ad950",
+      "bytes": 1139052
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-approach-50.png",
+      "sha256": "752f6de01bf49a24eed156f81316a61a97704564630750e4d8c2f8caee1da7a1",
+      "bytes": 1141831
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-idle-50.png",
+      "sha256": "f94584e589b3718ff4a2adabd17ae8d6010c3fcebade5ced104d45bddafa27fc",
+      "bytes": 1142250
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-idle-90.png",
+      "sha256": "c57a5d9d0485d1ca740300d04e4d27634b0455b395d7d6212cdb053abd42132b",
+      "bytes": 1138981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-impact.png",
+      "sha256": "9edf22ab44a56ab4257975a05f32e37d29987b6b0c2536130f963dab5fd0f885",
+      "bytes": 701472
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "992303354ef44ec9c32f28f5a0aba34ad7fee6fd32d886be8704d39798cddb22",
+      "bytes": 1234504
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/flatworm-d41-r02/native/turn3-hit-return-end.png",
+      "sha256": "d566be70e6b813114121ca046f6181125f9e59ee7521321ae322f5e7458de4c0",
+      "bytes": 1138982
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/plan.json",
+      "sha256": "c44077f691a4d65118a74f4bbe795ed86353041f874c02e8394cd7c370d8c141",
+      "bytes": 1534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/realm-proof.json",
+      "sha256": "50107a32c12374ee1ee58048ef6d7f3cd68403e72712c27985eef0545a15f8cf",
+      "bytes": 551
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/script.json",
+      "sha256": "8355d0e8770d01852e3e0b46a426aa9153de4a38e1aeffc7bc8fa341af9618e8",
+      "bytes": 809
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/static.json",
+      "sha256": "50af1471fcc9bd278fe5bceeffa96f5689e4cbe33ca0155647880f4f145b5c0e",
+      "bytes": 6602
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/giant-isopod-d41/static.json.sources.json",
+      "sha256": "a0a6241f4a6b539729075277a7553bc310cc276e262da479586dbbbe4e2d1aa2",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/plan.json",
+      "sha256": "5ab73d2aa02810983d361e005294079b4cfa4572e526af7f964a9b0c122e5a8a",
+      "bytes": 1476
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/realm-proof.json",
+      "sha256": "b7d79e699ffb9ca7623a9bfff5fbaa1c3e5f158caed4d4549cfaea22561bf8d9",
+      "bytes": 543
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/script.json",
+      "sha256": "e19394f5f2c43e42852054dc76656fedc74fa8e2a8e5354e9915c94cdcd9187c",
+      "bytes": 777
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/static.json",
+      "sha256": "c4d4ec2a1d74fb7c1ebefc4e5121713066deda04219c2f4c048fe12e9bf45be8",
+      "bytes": 6457
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/nautilus-d41/static.json.sources.json",
+      "sha256": "236e35f948a20f84d2358be709ac06916d945345f6b0c0e4009256f78cd021a5",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/c475-sand-dollar-d41-r02.log",
+      "sha256": "df709ac3f0e13ce3e62eb36916c9bcfb5b9deed65d902bb0db04e00aed7ee25b",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/finish-subjects.json",
+      "sha256": "a4293843fd4c06005de24e7aa36490bcb213d5fcb8ffbd91f62f946a6f642d6d",
+      "bytes": 268
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native-plan-bound.json",
+      "sha256": "2408a9413a2925721a2dd043e6c547e050c34e847e0549eee02b1579f0096ae1",
+      "bytes": 1950
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native-results.json",
+      "sha256": "31ce84d31bf9baa8c352f38f10893a1058055c57c9556de9813217a91fe32ec9",
+      "bytes": 1952
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/battle-full.webm",
+      "sha256": "f0920f5e00dc99089e7af0d3c057578bdff07856678be151ca415250cc1d55b2",
+      "bytes": 6230334
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/report.json",
+      "sha256": "136b5813fa820d1ffaa86cd42c7dcd005420fd9c120543415f7ae1cb39e18c85",
+      "bytes": 357822
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn0-hit-approach-50.png",
+      "sha256": "a2d7c5974d70ce7ae25f1d1677ff6d459d8f0a210fcdb4abeca137ef5adc3f50",
+      "bytes": 1156616
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn0-hit-impact.png",
+      "sha256": "12a0ad1b7278cf1310888d4cad245027adb7535264813783c9a7f232c509c518",
+      "bytes": 696264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "86833f518581c632e84b3c4821f4f783d2a0e0556411cbafd995cedb1124c5bc",
+      "bytes": 1238138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn0-hit-return-end.png",
+      "sha256": "7bc86283181b50e663121da268e726d70b0e8aa6c597cd8daad98aadc2542149",
+      "bytes": 1149228
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn1-hit-approach-50.png",
+      "sha256": "89aaf365b615ff725ce394fac05d87ba039b4584daa61b51941fe842bd92e086",
+      "bytes": 1156402
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn1-hit-impact.png",
+      "sha256": "81d6b6d43d9dcd48c4c3f6dbee692cdfdcfa4fc24bb474df006f6b9b6dfb3d2d",
+      "bytes": 649842
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "3116098d0f7267e1a39c09258d74d8eb8c6ccf27d95fa6b9be83d13a96df1d51",
+      "bytes": 1159079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn1-hit-return-end.png",
+      "sha256": "48ce0bf1bfbb1dadbf8a6248c00872366d06526fc16dd8bbba30f07a86d23535",
+      "bytes": 1156315
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "a2d7c5974d70ce7ae25f1d1677ff6d459d8f0a210fcdb4abeca137ef5adc3f50",
+      "bytes": 1156616
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn2-dodge-impact.png",
+      "sha256": "f213803869bdc2447e73b9eb73efb82255fc288474ecd1cdc86d1ecb70c719ce",
+      "bytes": 1212257
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "f673572d237cf3fa4f150427a91437c1ef6ad70ca0843bf98f460d5de173b525",
+      "bytes": 1223946
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn2-dodge-return-end.png",
+      "sha256": "7bc86283181b50e663121da268e726d70b0e8aa6c597cd8daad98aadc2542149",
+      "bytes": 1149228
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-approach-50.png",
+      "sha256": "a2d7c5974d70ce7ae25f1d1677ff6d459d8f0a210fcdb4abeca137ef5adc3f50",
+      "bytes": 1156616
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-idle-50.png",
+      "sha256": "e4757836a14e601761126143c76c3533410348425cfdcae37d4f073942f4a09d",
+      "bytes": 1156560
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-idle-90.png",
+      "sha256": "598af15c18e535cfc12de06292e30ccaeea7a0cb741f5d3fd8fa33368772b8fe",
+      "bytes": 1135735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-impact.png",
+      "sha256": "12a0ad1b7278cf1310888d4cad245027adb7535264813783c9a7f232c509c518",
+      "bytes": 696264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "371d4d6ebcf6bb51c9247e3b2eb7c47efb2201555fd2897a60d55466ee1a4c59",
+      "bytes": 1231219
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native/turn3-hit-return-end.png",
+      "sha256": "7bc86283181b50e663121da268e726d70b0e8aa6c597cd8daad98aadc2542149",
+      "bytes": 1149228
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/plan.json",
+      "sha256": "c3fad9e4dc0ed0046086637541f3852d0d83392a0038ff14b4aa2fa072747e59",
+      "bytes": 1437
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/realm-proof.json",
+      "sha256": "ee80f525fba56c160d5d622abe331245329c52f6d724dca95733fe9a63894b81",
+      "bytes": 534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/script.json",
+      "sha256": "fcc38c626197532a7701ed541390f573863278c3336aaf08cb705c803bb36e5c",
+      "bytes": 642
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/static.json",
+      "sha256": "ce23b231ceb733dfa51d7a46631d0bbaa26698148bf537521338b7a0456d5f58",
+      "bytes": 7068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/static.json.sources.json",
+      "sha256": "8a862bdfdabc56ce1de4f7515c583270599eb374ef5c1d8c7ad3c5a7a30253ec",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/root-views/flatworm-d41-r02-original.json",
+      "sha256": "16820f01c529b9356d9121088a221f7f601162238839f5a97898522efdab396a",
+      "bytes": 2330
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/root-views/sand-dollar-d41-r02-original.json",
+      "sha256": "38179d398ec3e1a912293cf3e5c7f7e45d717c6e59e9262199f9c79439100a4b",
+      "bytes": 2240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-native.json",
+      "sha256": "625c24f01c79031de87ce0ea00d7332e4642305672a2d53432fa86fb82608192",
+      "bytes": 542
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/sand-dollar-native.log",
+      "sha256": "839c5f2db097cb8361404fdebb8c359538ad27b93bdc2346ae96e1ef0cba0b79",
+      "bytes": 216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/snake-d40-root-static.json",
+      "sha256": "9fa1ceed49d9d5af945b1d25e4d2604ce7544255c9b34724e5c5077a5a67d02c",
+      "bytes": 638
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/snake-d40-root-static.log",
+      "sha256": "75a3d420b22f0840262ad2ff1e691aa1b1cb9f866209960a3e22f345b042dc86",
+      "bytes": 1713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai.json",
+      "sha256": "7b9c5f324a046f285de22f58f9fd5c9a6be5c0c44e7b0d5214f15d47fc49bf4e",
+      "bytes": 1557
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai.log",
+      "sha256": "4ef36b9c19732b4fef6d3656784969d6f0ca34c38ef7cf7b408dab7607d6744d",
+      "bytes": 61
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/checker.log",
+      "sha256": "381234a33625d21d3db4ac9a1e11d60f771449f7d38d91a502426d0000df5b01",
+      "bytes": 1619
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/current-rows.json",
+      "sha256": "5d5bbef33fed23d3077fc10dca69fe761ce2bf7886a34b5a893db1d43689c77e",
+      "bytes": 4895
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/fragment-triage.json",
+      "sha256": "16adae1af231209a2fa3a4761334b16e245cad4aa5f23495606d2ce020c240c5",
+      "bytes": 180596
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/freeze.json",
+      "sha256": "e118f933b926ea5f3b29b8af8674abed9335b60d56f4fe081b0b9844e5a69ab1",
+      "bytes": 228845
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/roots.json",
+      "sha256": "90432ad1a8271195732698f08140fa26824844ba9363bebfc61b745b38ceca24",
+      "bytes": 14333
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-flat-sand-pre-ai/verification.json",
+      "sha256": "cd0b77959dfbbf97096a5d9877b4c17ae35574a0124e7df9c8bbb543610a1359",
+      "bytes": 5601
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave11-flat-sand-checkpoints-next-producers/README.md",
+      "sha256": "a08c1b2746fdc3ba6ec53b8b5f1b69f44bba610e23070025d1e3d085a8a3e9cd",
+      "bytes": 2116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave11-flat-sand-checkpoints-next-producers/checkpoints.json",
+      "sha256": "a9b9c621926a4b8afef8ca5e7de0b79171e41a2a34c8e57a73d2c8dec8f71f04",
+      "bytes": 453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave11-flat-sand-checkpoints-next-producers/producers.json",
+      "sha256": "37e49d0195bb3e2f219357e9155df16bd3c612724d9d8af7b5fa9513c9f5977e",
+      "bytes": 2128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/master.png",
+      "sha256": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+      "bytes": 1133759
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/post-key-derivative.json",
+      "sha256": "87ba7839179783ea3eaa1c0022cb635ddc74947e748d8570831c05b3f47c944a",
+      "bytes": 3145
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/request.json",
+      "sha256": "316d49c2687c0c7847a1571a9873220e0a255a6933f487d39de95fcd701abb70",
+      "bytes": 1528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/cpu-status.json",
+      "sha256": "cb951a00ca9428feddd3b7b7033822aa2eaada7f8796835d010c71024d0f4f0a",
+      "bytes": 3955
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/binding.json",
+      "sha256": "7525121c8b12e6cf7c1aecda5cd4104fbc86f8e15ed301de0330b70096697d4f",
+      "bytes": 1303405
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/declaration.json",
+      "sha256": "4c30686e912b92d5c76b1ee5aca2ac681ed0e79cb650ee568fd88b9575715495",
+      "bytes": 1559
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/labels.png",
+      "sha256": "c04d95451339cd6f6c1f2e5b3c1e07fcd66be517320b32f5e26d3802ddf69315",
+      "bytes": 36360
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/atlas/c475-d40-snake.json",
+      "sha256": "547432ab60931d49d67951009700cd69aa92fdc3b10e52d0e7c94b9cd95676e0",
+      "bytes": 5381
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/atlas/c475-d40-snake.png",
+      "sha256": "62c190df1e3dcf0d9ed535b93438f718725018f1a778985f667ad4ec5d176b3d",
+      "bytes": 137633
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/atlas/receipt.json",
+      "sha256": "1047faf1bedb29aac4524595f4c89aa07288980d7ef2929977a80b50f8d9060f",
+      "bytes": 2451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/binding.json",
+      "sha256": "8de7e8bfe8a883f795ba9f4ac17bdc0d7f8f969f3b22c03051b41d9f1dcc12ea",
+      "bytes": 4478
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/keyed.png",
+      "sha256": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+      "bytes": 1133759
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/manifest.json",
+      "sha256": "36ece9db3b45574535da69b6d1a18b68690316124cef87ac9b57fd20278e3615",
+      "bytes": 2264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/ownership.png",
+      "sha256": "6de9ab6277e6aff930106d36b4c3d11a4a41081ab91b2c1fa3ccfa252cc34af3",
+      "bytes": 14510
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-0.png",
+      "sha256": "59ac899b3be32d214f1ce35d4f4ee7f6902faad0e20f457f3bb9bc0aa40c4298",
+      "bytes": 16602
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-1.png",
+      "sha256": "7d23b212e3687bdb90b4695fdb849d304d88e54d9b4def09bec414a3e7788925",
+      "bytes": 16141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-2.png",
+      "sha256": "f96cfb07d167ada07dec29a0220ea7dbcc808d6b1891a1d4cf87983bd2a630d2",
+      "bytes": 16025
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-3.png",
+      "sha256": "800a2cd467b85dc438efbce20bca531090dbc90f87968d5e54176b188f8b225c",
+      "bytes": 17231
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-4.png",
+      "sha256": "1d061509bf3b18717341784fd32ce7dda426767e0eb6ea515da4caabc2867c47",
+      "bytes": 17077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-5.png",
+      "sha256": "f21ca63fb92f5e36eadc134960afae86e68d2c4c59cf9012dfa43f2b277bd7e7",
+      "bytes": 15214
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-6.png",
+      "sha256": "9ec2f0de0982ed95fa585d013bf7bdf9556cec767c148f2142a2d61de540e67a",
+      "bytes": 13409
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-7.png",
+      "sha256": "483ba1fdd91544b331e57a235aa9ccdcfcb6fea7bf89eefbc30aa9cb41e67a92",
+      "bytes": 10188
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-8.png",
+      "sha256": "ad689a8fe2af851b4fcac09251397200f034d1d0731aafa2296d5205107a7761",
+      "bytes": 6709
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/body-segment-9.png",
+      "sha256": "1908f8318b939abe801920b61fe00734d324bb5841658082c3db0d62461143f2",
+      "bytes": 3226
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/head.png",
+      "sha256": "55e24457e9d37191f432fdcf9f823ff6b993b4b0ce7134363df7a2790e33beb3",
+      "bytes": 14412
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/jaw.png",
+      "sha256": "f470ddc2c7c97583b780cbeaecf93058935c0ebd6cde44912c77a103a292d07c",
+      "bytes": 5065
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/parts/neck-root.png",
+      "sha256": "1e8f65f244131b88b2de671ce8bb43051834c8e94ba7486b36b16a8bae1de4ee",
+      "bytes": 1768
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/parts/receipt.json",
+      "sha256": "96e3e746c1e22f9d2971886ae4c037f5ff9f5c9289c2bc8cc18c41257eb520fd",
+      "bytes": 3701
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/pre-split-binding.json",
+      "sha256": "819a8644439e38dcb7f7e2a617616d16c9a8facbf8bbf6453c4c7e63c9250e0f",
+      "bytes": 773681
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/record.json",
+      "sha256": "dce20c6ac1baa9496d87e73b9106308fc90aab432e036b375c86e952e446607f",
+      "bytes": 6698
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-r01/source-owner-reuse.json",
+      "sha256": "8735ef7102f94b764b223a328152305e5cb223668070f214632130a771c82431",
+      "bytes": 3421
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/fit-status-r01.json",
+      "sha256": "588281378f98298f415f5fda573ad0e89dc593fa9254edd4eb091866c955b304",
+      "bytes": 901
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/request.json",
+      "sha256": "316d49c2687c0c7847a1571a9873220e0a255a6933f487d39de95fcd701abb70",
+      "bytes": 1528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/dodge50/command.log",
+      "sha256": "033b87c7f03cef789bdd0dc8d523afe1d0f6304f740e61e41c5d8ac0ef21b6d5",
+      "bytes": 132
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/dodge50/film50-film_dodge.png",
+      "sha256": "a050264db0d3eaea4e4af6f82b4a96b6c01cd28750e0a10fd655848113e34ee2",
+      "bytes": 128704
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/dodge50/pose-gap.json",
+      "sha256": "ce00f398398264616c6c6c5051d4ce5a8af51e64e2a1a16b715d07dd85bc99e7",
+      "bytes": 1399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/dodge50/worst-film_dodge.png",
+      "sha256": "a050264db0d3eaea4e4af6f82b4a96b6c01cd28750e0a10fd655848113e34ee2",
+      "bytes": 128704
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle50/command.log",
+      "sha256": "e0e9bcf1e671c14530c2463f0deddf0db4f59b14f95168bd11a9d554a3ea7d3e",
+      "bytes": 142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle50/film50-film_faint_hold.png",
+      "sha256": "a0079df0818de3fcf032f46643c563c1f27afba873ab4fb02d52c8117732ed00",
+      "bytes": 130743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle50/pose-gap.json",
+      "sha256": "5daf5bab1099f0583661f1dabfbcd24bd391105520e4802e4ac833670668cdba",
+      "bytes": 1444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle50/worst-film_faint_hold.png",
+      "sha256": "a0079df0818de3fcf032f46643c563c1f27afba873ab4fb02d52c8117732ed00",
+      "bytes": 130743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle90/command.log",
+      "sha256": "e0e9bcf1e671c14530c2463f0deddf0db4f59b14f95168bd11a9d554a3ea7d3e",
+      "bytes": 142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle90/pose-gap.json",
+      "sha256": "90aa44f0cbff9c4bdf3d69a3bb66c9e2c019bf18031b534da1147e81d8ce3be5",
+      "bytes": 1307
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/faint-idle90/worst-film_faint_hold.png",
+      "sha256": "f1a965b8759438b23bdb66c13a5279d35885e7b405f855d17bd35d5175722459",
+      "bytes": 130082
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/hit50/command.log",
+      "sha256": "216e36f8747c34637737b5cbc7b300daaa4c92652b75479cd811aba83aa777c7",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/hit50/film50-film_hit.png",
+      "sha256": "8e4cb785edd47dbee17080f5ccd6566121a9b98419c24a967cc8849ef85c0d38",
+      "bytes": 128883
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/hit50/pose-gap.json",
+      "sha256": "2b5b13d720a28e6b1480f5476f6790e1f58491827b8fe68cb8d12c4bdf712ed3",
+      "bytes": 1389
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/hit50/worst-film_hit.png",
+      "sha256": "8e4cb785edd47dbee17080f5ccd6566121a9b98419c24a967cc8849ef85c0d38",
+      "bytes": 128883
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/victory50/command.log",
+      "sha256": "a81fe7e54d62f86fe646863a85b57693f3968bbeca8ace9132ef98ac43f702e7",
+      "bytes": 126
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/victory50/pose-gap.json",
+      "sha256": "d86ae1afd2068cf98d83f678243995678d7927356ca38e528c7cf603f411f146",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/retained-r01/victory50/worst-victory.png",
+      "sha256": "832dd1d7c176e1a47280ed9cae73b9009c301231f82a0d0f553a8cf3f6dabc43",
+      "bytes": 129547
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/review-r01/canonical-neutral.png",
+      "sha256": "13ff0357848ce201afcb0bb920f3e813d6e64387caeb05e911fe48e851fb27c6",
+      "bytes": 135575
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/review-r01/derivative-neutral.png",
+      "sha256": "239400ade14ab6e0c869de6b632bc9c3b8c9fb285b714fac2e1870f936982c0b",
+      "bytes": 142218
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/review-r01/source-canonical-derivative2x.png",
+      "sha256": "772bc619c6d9114db26f4167aaf76a390dbe135f725a13793fd78344619bc07a",
+      "bytes": 23043
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/static-fit-r01.json",
+      "sha256": "25d9c1cde24c8085c07c4d3a1d2699f0ae2b3f68079f2166fc83d29c352c68d4",
+      "bytes": 7068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/static-fit-r01.json.sources.json",
+      "sha256": "2fb86e6c99ee2aac6728163ee41d77f9e265058c71e5700d44f3ba930f030fb8",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/static-fit-r01.log",
+      "sha256": "75a3d420b22f0840262ad2ff1e691aa1b1cb9f866209960a3e22f345b042dc86",
+      "bytes": 1713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/commands-current-r01.json",
+      "sha256": "da4f6fdaed4714916a705ea89be4f931ef51a353a3abca7c84a8e8a71aac1486",
+      "bytes": 2793
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/dodge50.log",
+      "sha256": "033b87c7f03cef789bdd0dc8d523afe1d0f6304f740e61e41c5d8ac0ef21b6d5",
+      "bytes": 132
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/faint-idle50.log",
+      "sha256": "e0e9bcf1e671c14530c2463f0deddf0db4f59b14f95168bd11a9d554a3ea7d3e",
+      "bytes": 142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/faint-idle90.log",
+      "sha256": "e0e9bcf1e671c14530c2463f0deddf0db4f59b14f95168bd11a9d554a3ea7d3e",
+      "bytes": 142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/forked-tongue-source10x.png",
+      "sha256": "47e7c83febbfd5f0dd64656685180cebd2a71d5537e138c44abdec11ca1a8aef",
+      "bytes": 14227
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/freeze-r01.json",
+      "sha256": "0646fa79b2bc2c95bf9330c560c4ae31ae0a454a138c42d36e54c2361764dc70",
+      "bytes": 23105
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/hit50.log",
+      "sha256": "216e36f8747c34637737b5cbc7b300daaa4c92652b75479cd811aba83aa777c7",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/parts-review.log",
+      "sha256": "744a0c281cedf4c2891596fb1278e2513136817f343d837f420325e30543b7fe",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/parts-review/parts-sheet.png",
+      "sha256": "80c242424dcbd4a1630c17644435be890ccb0105b9ab299789aed63b6a099d8c",
+      "bytes": 200074
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/parts-review/remainder-components.json",
+      "sha256": "0ef30ee04eacfb69fa6f2add72fa74accfd29847f7a24dc1f377dfa4a40fae91",
+      "bytes": 93
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/replay-current-stage-r01.mjs",
+      "sha256": "02fe761e1b644fa0165cb36d01c9f53354146ca323e71e6d32f4925083753e5b",
+      "bytes": 1178
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/dodge50/film50-film_dodge.png",
+      "sha256": "a050264db0d3eaea4e4af6f82b4a96b6c01cd28750e0a10fd655848113e34ee2",
+      "bytes": 128704
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/dodge50/pose-gap.json",
+      "sha256": "ce00f398398264616c6c6c5051d4ce5a8af51e64e2a1a16b715d07dd85bc99e7",
+      "bytes": 1399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/dodge50/worst-film_dodge.png",
+      "sha256": "a050264db0d3eaea4e4af6f82b4a96b6c01cd28750e0a10fd655848113e34ee2",
+      "bytes": 128704
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/faint-idle50/film50-film_faint_hold.png",
+      "sha256": "a0079df0818de3fcf032f46643c563c1f27afba873ab4fb02d52c8117732ed00",
+      "bytes": 130743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/faint-idle50/pose-gap.json",
+      "sha256": "5daf5bab1099f0583661f1dabfbcd24bd391105520e4802e4ac833670668cdba",
+      "bytes": 1444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/faint-idle50/worst-film_faint_hold.png",
+      "sha256": "a0079df0818de3fcf032f46643c563c1f27afba873ab4fb02d52c8117732ed00",
+      "bytes": 130743
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/faint-idle90/pose-gap.json",
+      "sha256": "90aa44f0cbff9c4bdf3d69a3bb66c9e2c019bf18031b534da1147e81d8ce3be5",
+      "bytes": 1307
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/faint-idle90/worst-film_faint_hold.png",
+      "sha256": "f1a965b8759438b23bdb66c13a5279d35885e7b405f855d17bd35d5175722459",
+      "bytes": 130082
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/hit50/film50-film_hit.png",
+      "sha256": "8e4cb785edd47dbee17080f5ccd6566121a9b98419c24a967cc8849ef85c0d38",
+      "bytes": 128883
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/hit50/pose-gap.json",
+      "sha256": "2b5b13d720a28e6b1480f5476f6790e1f58491827b8fe68cb8d12c4bdf712ed3",
+      "bytes": 1389
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/hit50/worst-film_hit.png",
+      "sha256": "8e4cb785edd47dbee17080f5ccd6566121a9b98419c24a967cc8849ef85c0d38",
+      "bytes": 128883
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/victory50/pose-gap.json",
+      "sha256": "d86ae1afd2068cf98d83f678243995678d7927356ca38e528c7cf603f411f146",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/retained-current-r01/victory50/worst-victory.png",
+      "sha256": "832dd1d7c176e1a47280ed9cae73b9009c301231f82a0d0f553a8cf3f6dabc43",
+      "bytes": 129547
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/source-fork-controls-r01.json",
+      "sha256": "5fdea0d56ec40625431df9496f79f2cbed6438c633dabe0d878e203ff98734b2",
+      "bytes": 2951
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/stage-watch-evidence-r01.json",
+      "sha256": "b9cd6426a24f8f55803e9cd02b0b60623802127f7864129c35e508a2a357ca41",
+      "bytes": 3803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/static-current-r01.json",
+      "sha256": "24349267116891858fb89475a5db8195d26c277656d944eb3ee97d28597e36fc",
+      "bytes": 7068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/static-current-r01.json.sources.json",
+      "sha256": "2361be0b7f1dd0effd599a35339bded04950f854eaf73f58e6aef88f9a768c9d",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/static.log",
+      "sha256": "75a3d420b22f0840262ad2ff1e691aa1b1cb9f866209960a3e22f345b042dc86",
+      "bytes": 1713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/task-report-r01.md",
+      "sha256": "0c20d5876edf1f5f8888990d8276da5fea617dbcd6e365bf43c1a5f1d13277b2",
+      "bytes": 2311
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/verification-r01.json",
+      "sha256": "d61d81581e45cb8f6ce940880e037885f8332bdb0183031c9db768ab7dd6e6c9",
+      "bytes": 198
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/snake-handoff-r01/victory50.log",
+      "sha256": "a81fe7e54d62f86fe646863a85b57693f3968bbeca8ace9132ef98ac43f702e7",
+      "bytes": 126
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/freeze-r01.json",
+      "sha256": "757a8e4f457504cb29c152ee6fd49b5321a1432d7cc136a5def412cded04f61a",
+      "bytes": 8858
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-owner-review-r01.json",
+      "sha256": "9c27586f17afb1f4883e3c8f6367e62145c24060ecfebba9ecc7489418294d20",
+      "bytes": 12686
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/antenna-far.png",
+      "sha256": "4b4958f968320485b0c51c4a07b0bfba35c6dca9c351a5185de8b1f25bdf048f",
+      "bytes": 9313
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/antenna-near.png",
+      "sha256": "85da4e7fcda1abe39033d4ee319feb206f18485e061f11ee636bd2ff3b8327e7",
+      "bytes": 5583
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/canonical-neutral.png",
+      "sha256": "73ff871bdf4e95867a28909777c9d30c65a1eedc3192ade95aab9c19de7c2203",
+      "bytes": 499862
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/evidence.json",
+      "sha256": "c602743975e953e9ee6248d0e2dab6c0e700ffe65f502fde437200dc416e4a49",
+      "bytes": 33261
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/head.png",
+      "sha256": "5c7e213f868816f566cf49429e54c62e9b42b43efb5fbb9e30210a694a34a9b8",
+      "bytes": 45511
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/keyed-neutral.png",
+      "sha256": "88930c9fb97d4100799f4e374d507448b9b720d3e8c147a838631d66ed2318f4",
+      "bytes": 519451
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg0far-foot.png",
+      "sha256": "9a4f8bd5f01860dfdb8bf38873fbc9474e8041dbad1f5a4358367dd5f51268d2",
+      "bytes": 3605
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg0far-knee.png",
+      "sha256": "9bf58a6e5660379fb50de2fb313bec318e6e185fa92b48c9a9fa5036db0590f0",
+      "bytes": 4960
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg0near-foot.png",
+      "sha256": "a00fcbe13beccb9b0a197b4bed8350b6d85cb30769b7f2e9e1baa3a43a1c8ac6",
+      "bytes": 4556
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg0near-knee.png",
+      "sha256": "0d54ab2e6a979e1e05da7e259473d445711c2675631542cc96c9cba6ceffb481",
+      "bytes": 7126
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg1near-foot.png",
+      "sha256": "f6934c7f65c8c5767f1139dcc537cc550ae8fc9bf0ad93c0c875eceb56ed0d8a",
+      "bytes": 3619
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg1near-knee.png",
+      "sha256": "875f739f93e2ef9bf490618db9abd029af01e5a2340e24dc0e5bb2ab0ee5285c",
+      "bytes": 7400
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg2near-foot.png",
+      "sha256": "cf3405d6cd99dae61ac7a6c7d78e0ccac6c53b9f12444ef29aaad3372bf52af4",
+      "bytes": 3668
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg2near-knee.png",
+      "sha256": "2242a169c471790fb964f446676be059cfa733b012b9f76f8e0a5639ec379003",
+      "bytes": 6768
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg3near-foot.png",
+      "sha256": "a6c92c695bcdd66608a4a3ae7c39982de4996628db832c99cc20a21dd1ba671b",
+      "bytes": 4140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg3near-knee.png",
+      "sha256": "db4014253a3806911ee47af0c1add87f905f24cdfd84316b0392d025ba10405c",
+      "bytes": 7067
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg4near-foot.png",
+      "sha256": "f5ac6cc1c1cad5dff2dbed597ad183873ad96cb8fb402323099188b5a62e11ed",
+      "bytes": 4161
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg4near-knee.png",
+      "sha256": "fc06fe761302fc214b5e859bc3f5dd8b51c3afcf02379ccd99e4e46609261045",
+      "bytes": 8020
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg5near-foot.png",
+      "sha256": "52b5c048df7bc9b2adccc1e9679e15c4050dd72120ad05484f22e01db830747b",
+      "bytes": 4000
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg5near-knee.png",
+      "sha256": "4ce8c6c30812b94a2f5472c18efb9d1857385942d3467517d8e5223637bf2bd8",
+      "bytes": 8374
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg6near-foot.png",
+      "sha256": "46ecda77cbd619791d069ba3718ffcee1a3b4329f38f6e49f91c8ae3e5df9f9c",
+      "bytes": 3246
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/leg6near-knee.png",
+      "sha256": "19a554d800ba8bf7628401fa7610255e393c5c9244ec72d77e5b56e226e1daf3",
+      "bytes": 6319
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-0.png",
+      "sha256": "ad0d788db4c6e7e965d5beb0f36c05895ef543c89af6b2be243f5e1a60292265",
+      "bytes": 41783
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-1.png",
+      "sha256": "9a2e11f15471cc7319f68c22a977c4135bafd4092cb59e58cafa2368e0564079",
+      "bytes": 50967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-2.png",
+      "sha256": "2646975bd8b3fdb4b1fbdbd954eb97944e6b57d825e14e9355eee48b55e4cdbb",
+      "bytes": 50176
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-3.png",
+      "sha256": "b594c12d9a4b94d749b0278562ee1f2e5cf1fe898fcf42cdd42585122cf1b8f9",
+      "bytes": 45256
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-4.png",
+      "sha256": "dab08cb65277e4335a985238fb2fc341ac2d05aac9fb0082a2c571d588712edc",
+      "bytes": 48226
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-5.png",
+      "sha256": "1536ca19acc849a016548d7f7cc41934ab101f9d0b4af08231c8301466a4dae9",
+      "bytes": 43718
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pereon-6.png",
+      "sha256": "b3ff7de12350ef88add02833692905e7345b3ee977f9933af8d356f34c7d5288",
+      "bytes": 46073
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/pleotelson.png",
+      "sha256": "65a1acecf47c953ccfd7f7dd061c93ebdc50feeaa323079f8cab64c46fd97182",
+      "bytes": 5445
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/uropod-far.png",
+      "sha256": "02b86f32d429489380e72c01b22b32765765d9dc6203758f9895302fa8a73601",
+      "bytes": 14571
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/giant-owner-r04/source-prep-r01/uropod-near.png",
+      "sha256": "2c9dbab2bc4d3f77c04437b61135b6bf882609fe293fd5010ac2914515df14df",
+      "bytes": 5906
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-owner-review-r01.json",
+      "sha256": "6cc15072ba284e2e08e1ddc439e64988b76fd6967e03163cd8fb2490ef644af8",
+      "bytes": 4534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/canonical-neutral.png",
+      "sha256": "3f060af12e98aa348315dae0f55f4750873d3d1079c4edb9b1ec58f37b43f294",
+      "bytes": 516073
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/crown-base.png",
+      "sha256": "e04b5edf736cd8f8b7d3910b708c726691e33a262216a7ceaa535b74e2ef97ab",
+      "bytes": 25551
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/crown-distal.png",
+      "sha256": "6bbb24a89d51ab2aaeed8f4e427039a973386557073b108280cdb30437d64a2b",
+      "bytes": 39967
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/crown-middle.png",
+      "sha256": "dff3408bec8755223761d57832ef90bcd788e6907da638063c66f939afd918c8",
+      "bytes": 59510
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/evidence.json",
+      "sha256": "ee9db6278b7132ded01bd4b17396812ba9f389828c36795b282a0939002dcefb",
+      "bytes": 13511
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/head.png",
+      "sha256": "112161edcfd7a8cf448107d61aceac2ab25716e030cdb174f8d0eddb8992bbfb",
+      "bytes": 32118
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/hood.png",
+      "sha256": "aad00dee5552f03262c85c7c62a29e5a3dd424a3f08670eae99c2671ae1cc3f3",
+      "bytes": 58155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/keyed-neutral.png",
+      "sha256": "8390e368107c00d8b7b2a30e0466d2fb33c2ad95eee2ac1d3b5366f7b6361f5d",
+      "bytes": 535504
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/nautilus-owner-r02/source-prep-r01/shell.png",
+      "sha256": "87ac74f22ffff5c638415b3bdd8e82b32ce76145735b919812faf578d16e2758",
+      "bytes": 290188
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/freeze-r01.json",
+      "sha256": "b26c29925e1f1ae70ac5b58b9df716534606aec1d4c31f0d7f584147e314e9e2",
+      "bytes": 11496
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/keyed-head-fork-6x.png",
+      "sha256": "f9a8f40f98da1f4c990f86d9d836b3493c109e5c90a577feeac38fcda48c4e27",
+      "bytes": 15603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-head-fork-6x.png",
+      "sha256": "d0da2755173029fd40a49b5d2e477b02c65e369881a1f82d52317f0c8a7a0242",
+      "bytes": 26712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-owner-review-r01.json",
+      "sha256": "5c6c80c4e1185bd7fbd76478345dd38270301af860c50754ef6715b3d5899b65",
+      "bytes": 7537
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-0.png",
+      "sha256": "b0b2c6e20b86c13c5fef59c1171f0890280c4edd2247be722486c1b1a69dbd24",
+      "bytes": 14755
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-1.png",
+      "sha256": "db20f2925d075a9efc54b6b0277fc62ef5478910c948e917969781d12999f43c",
+      "bytes": 14321
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-2.png",
+      "sha256": "76f1f0c69fd268bd2c6b683dc14833244c9b6a224a3ddd3eb80d151dff8b8bee",
+      "bytes": 14079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-3.png",
+      "sha256": "c4618642c50758b6459939005c39d0d0b2282b7de351b326420d93b7f9752c22",
+      "bytes": 15241
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-4.png",
+      "sha256": "c4fbb14f4819a5b46997f47fa21d0d7d192b07eb4a181008c73a8b84c693d23e",
+      "bytes": 15081
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-5.png",
+      "sha256": "a68454e727a69be4b1bbc8c49ba7576c2f72b59c9c6a3b2f85fa40bd4011d91b",
+      "bytes": 13353
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-6.png",
+      "sha256": "1bbbe3c020ebad40341dae5dd03c1be77667cc9f3db3c261bb5e5f15ddd877f9",
+      "bytes": 11831
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-7.png",
+      "sha256": "c1f0f41a55fc0f08f36856ec8ac3746bdd5bc225fd829a40398283bae48e13b7",
+      "bytes": 8916
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-8.png",
+      "sha256": "14d4265fbcc1feab7330298523eaf6b4ec350c4b4731dbe425eabd29a47cd4e9",
+      "bytes": 5823
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/body-segment-9.png",
+      "sha256": "da722c38340bde94b724e95065cc5391999eee2f9e86f2acd20d95d48478b373",
+      "bytes": 2843
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/canonical-neutral.png",
+      "sha256": "0930b78e7ed1e11509768cf0c92050ac08fc11999f5f5f5dfe75339990a875f4",
+      "bytes": 152505
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/evidence.json",
+      "sha256": "109116130545be70ee04f688f916dae5e1e1d6b5e9b3b3ee0d68ce02b66f2cbe",
+      "bytes": 17135
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/head.png",
+      "sha256": "82c969b444c7f2d9eb6370e616977df4f8c30523526e6c4dce7a943d0f756722",
+      "bytes": 12804
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/jaw.png",
+      "sha256": "2b21505ad70e39c2dfd5206b4b61180e946b5c6aaad77b1493983cfd2e9821bb",
+      "bytes": 4515
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/keyed-neutral.png",
+      "sha256": "04e6c13cbc3610a72c1724a6442a538d661c2ab0d9c84d418a30708e1421ef64",
+      "bytes": 158740
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/snake-source-r01/source-prep-r01/neck-root.png",
+      "sha256": "757e76c0807488964392a2927e8c05eda635ec78fbbde1572e42441c3acd7faf",
+      "bytes": 1606
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-flatworm/native-r02/checkpoint-final.json",
+      "sha256": "d6e6f0bcf1a6318206b691ddb67d17cfb940d2df56b12b524c3fcfeb30263c86",
+      "bytes": 7266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-flatworm/native-r02/checkpoint-freeze.json",
+      "sha256": "b0e0c1daf6abc4c72eec0a8b50b45bca210cc386577e2b609486341a70a15939",
+      "bytes": 1422
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-flatworm/native-r02/numeric-evidence.json",
+      "sha256": "cf239a22c0cc964b18e38babf3b9917d993284221de4caf7879b60ace3e997b3",
+      "bytes": 8835
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-sand-dollar/native-r02/checkpoint-final.json",
+      "sha256": "2d6f005a9445bb8afeae95d68a46d31fb32e531f99c9b3704818edecfc6cb380",
+      "bytes": 5250
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-sand-dollar/native-r02/checkpoint-freeze.json",
+      "sha256": "edd9faba71433b1ba3e3311239714b4a1a03b3efbc7bfd06fa2dd5462f9c9a76",
+      "bytes": 1434
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-sand-dollar/native-r02/numeric-evidence.json",
+      "sha256": "9b0183c0410835e883fc1e2b35c9cfc2c4f22a8f77a7f15a220a25c826fbf3c0",
+      "bytes": 6825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/propagation-cpu-r01/cpu-tests/giant-owner-r04.test.ts.source",
+      "sha256": "542b6d0191bd8c2c78737b6af130e3c57576c9bde698a1f7cf087e354fa1902f",
+      "bytes": 5506
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/propagation-cpu-r01/giant-owner-r04.log",
+      "sha256": "35b85c196db9eb4121d4d46538771cc957d4076bec0473f5514beb3d76374b04",
+      "bytes": 330
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/canonical-r01/keyed.png",
+      "sha256": "a79e09a87b77a94c66f7cb48d7f448d31f53737ebb3390b70e611b7c51e08806",
+      "bytes": 1541556
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/canonical-r01/receipt.json",
+      "sha256": "06fb0614ae2aafc14ec8ed47311b075c832c59caa21e749453f11ff999e5415d",
+      "bytes": 1463
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/canonical-r01/request.json",
+      "sha256": "7a728bc39c340bc0eb83f14265f33f050fe1588390f9d4da083dcb3254f7cec6",
+      "bytes": 2179
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/authoring.json",
+      "sha256": "16bc197d9b385651a091bd4e8ce59e0841420b0f790fd887c842cfb690906504",
+      "bytes": 12672
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/master.png",
+      "sha256": "1ff5d9bcfbd8e5440ca92d6813fff8cf70cb34805bb94ec41a95d2c1b97ce798",
+      "bytes": 1514301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/pattern-check.json",
+      "sha256": "5b0958d04ecaaaafb694b19320c834d417605d82d773ba4f329f7e02da85cfef",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/presence.json",
+      "sha256": "f6e71b75d77c9d47a4a66d3dcbb5abf8178e6dedaca8ff35119e0fe0baaca71c",
+      "bytes": 385
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/prompt.txt",
+      "sha256": "d61b392bd505b3d5e6792edaecc3108bac28c67603094244f954de5d080b3a15",
+      "bytes": 11321
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/representation-review.json",
+      "sha256": "beede39beb470512584d1bc56f42dbdb55d263fb8446a1e3b7caf95a22b3011d",
+      "bytes": 16066
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/source.json",
+      "sha256": "3f485bacabe31780e87f7753e6862d8e8aee0ba4786178ae10592892c9d497de",
+      "bytes": 394
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r02/subject-source.json",
+      "sha256": "c45779a0e40b2ec334256f48e49aa0e9d9a941919a08f11a83356d617d39e4a6",
+      "bytes": 2331
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/authoring.json",
+      "sha256": "227d7751be0f0697c406db6cff5f60c8bfd3c694b5fefc2c3c7d0ec5e0cc3f1c",
+      "bytes": 14085
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/master.png",
+      "sha256": "08fc1b90cc1c2fa491f0c7887be771066e8217d867adfa05844d8307211c8753",
+      "bytes": 1539592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/post-key-derivative.json",
+      "sha256": "364d22de9c81bbe38a1522e0a3a57cae1e896f71e10c413c9689158107cad880",
+      "bytes": 3790
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/presence.json",
+      "sha256": "e9f4871de859d0df2c56e046f20b77d684d490495c2172f32cb36bd14b9bf300",
+      "bytes": 385
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/prompt.txt",
+      "sha256": "d61b392bd505b3d5e6792edaecc3108bac28c67603094244f954de5d080b3a15",
+      "bytes": 11321
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/representation-review.json",
+      "sha256": "465d779b7114c35276087ed546a62085b4ba24a6defa763d346444a35400ee53",
+      "bytes": 16794
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/source.json",
+      "sha256": "770ba1e49287aa761cee234021e5bd1c4586b765c28e09d246313983edc927fc",
+      "bytes": 1219
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/observed-r03-post-key/subject-source.json",
+      "sha256": "c45779a0e40b2ec334256f48e49aa0e9d9a941919a08f11a83356d617d39e4a6",
+      "bytes": 2331
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r03/source-owner-review.json",
+      "sha256": "b0756aa9be65872b0e094462a3048544847b41eb6944922c0c95ca791f0dcb03",
+      "bytes": 20208
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/binding.json",
+      "sha256": "5884d18e03cbd68048b24a5dfce6526cbe0132858322d38ec99c6cce73209710",
+      "bytes": 4155981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/declaration.json",
+      "sha256": "8a9871369bdb4a5cd5efdfea6cff1983a12625455270c6560fa32ed96a3324d7",
+      "bytes": 3647
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/labels.png",
+      "sha256": "dc938874c2788eebf4468a30e69f1d193e3f7241aea7034110f188d1ecb5c1c9",
+      "bytes": 44712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/atlas/c475-giant-isopod-owner-r04.json",
+      "sha256": "5471e15bedee6d27313f5c906d7020ce38437de89fee53d32c25da0f7efe8297",
+      "bytes": 11833
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/atlas/c475-giant-isopod-owner-r04.png",
+      "sha256": "fd8f1f979c6fd915222e36a6955bc4635c80fa8cf4c9258f373a73d4c554df03",
+      "bytes": 490326
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/atlas/receipt.json",
+      "sha256": "e9f43ec52a03063067fab33597642c84008963f11e4bf3e5f77a40b148ee3b07",
+      "bytes": 4516
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/binding.json",
+      "sha256": "5875fd5cd6f6a7ac6ffe9f02eccb44125d9c06eadfdd09ea5da6ab7dc97b65d5",
+      "bytes": 9731
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/keyed.png",
+      "sha256": "08fc1b90cc1c2fa491f0c7887be771066e8217d867adfa05844d8307211c8753",
+      "bytes": 1539592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/manifest.json",
+      "sha256": "4b6bd7b2df0a93642db0a1c73132e144f5ea2ad30f1ad733b755dbc8a41e96fb",
+      "bytes": 4941
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/ownership.png",
+      "sha256": "31d460449a7db80b4024bbc82b500c220111db49f809b9cb84dfb2ffc637ce33",
+      "bytes": 35091
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/antenna-far.png",
+      "sha256": "4a543023cb4b42158787b8b9b61d60115a20cd8f8ddaf2c937c536053b94e5a0",
+      "bytes": 10172
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/antenna-near.png",
+      "sha256": "8734aa6dbd04a7176d242af7e7e64e328b5341d2e80b7a358e9b698053de6f7e",
+      "bytes": 5801
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/head.png",
+      "sha256": "9091afbc059b7c39fd280d5f440ad53234ab40993562d0cdaf1037c187379a01",
+      "bytes": 50832
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg0far-foot.png",
+      "sha256": "7a0589e84ed6e724fdef75b7b59f99c6fa07118490d4e13a28db0f507993760b",
+      "bytes": 4053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg0far-knee.png",
+      "sha256": "cfbe8a32defb5eb9957c6e86b58e6a3f59bd16de0d7ea20392de7f1c479d9633",
+      "bytes": 5622
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg0near-foot.png",
+      "sha256": "36cc59cac0964836720dd4ea1865f4b4e551daeacb663457148569f2af8a8b81",
+      "bytes": 5072
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg0near-knee.png",
+      "sha256": "7495771c9df89b3438e0b70cbd653f1f2654a75494d13c8592fc2121e1bc53f3",
+      "bytes": 8070
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg1near-foot.png",
+      "sha256": "83a2aa0dad2f51da7ab402f49cff8ccc92cfd1da4a9fa68447186d70b24bd164",
+      "bytes": 4014
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg1near-knee.png",
+      "sha256": "a885ec57068328bffd97b675f3f404713b4ee39fa658c054bc683c082e118388",
+      "bytes": 8343
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg2near-foot.png",
+      "sha256": "f4160e05ee4b1371773fafb280565f039c7c5efa6c084a1d9275cc1551f836be",
+      "bytes": 4079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg2near-knee.png",
+      "sha256": "48b22911df18d0a8c43a1c5a3d61d046a3316d80b59e80c3da321c677a191875",
+      "bytes": 7619
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg3near-foot.png",
+      "sha256": "7af121e284e40e979ae6220e2542aff6c172aea7b3ec45c8813324fb980895ea",
+      "bytes": 4630
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg3near-knee.png",
+      "sha256": "73b30578a3378a90240aa3e5b4fba9a14077996e88160e92518c73e0962fc2e3",
+      "bytes": 7995
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg4near-foot.png",
+      "sha256": "576c10f8c31e39aea0884aca5ba2bd5b900933c3c840ea447701d44bed70444b",
+      "bytes": 4672
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg4near-knee.png",
+      "sha256": "1aa573cffb424050e2176ca9a15e76fdc4a0f84ee972d74b2d7b87c16cf7a162",
+      "bytes": 9078
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg5near-foot.png",
+      "sha256": "b2832c3fe889a7d09487cafcc44aa0fcd957eddcde0200cefd8df79ae4969f20",
+      "bytes": 4487
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg5near-knee.png",
+      "sha256": "9d19c9ee4082931100cc33e0ce1938499a731e9acd95b843ccc46a763b4b2605",
+      "bytes": 9399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg6near-foot.png",
+      "sha256": "1c88bdc8dae92f03f8ec1aa6b058114c259ab7f20a4c96346eb884ebe9446a0d",
+      "bytes": 3634
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/leg6near-knee.png",
+      "sha256": "1163b93745ddf68b7672f2ae957a589876e59356cf3a8dd6c4cf0a3f218edc0a",
+      "bytes": 7139
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-0.png",
+      "sha256": "f4c09f2679e338c23a1481981d253d8c07d70ecd2ce82a4997c1769b16705d29",
+      "bytes": 46891
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-1.png",
+      "sha256": "26f6621210190bbffcbeac84e044a0f25331170be3ab4f36e0c15775259142c0",
+      "bytes": 57740
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-2.png",
+      "sha256": "9e55964628f96de11474f9c3d0f8c8a35c98738789451d5df99c347248f3233c",
+      "bytes": 56575
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-3.png",
+      "sha256": "7c49fe2aac4cf4ccc90b433298f55567932515c329e95ccb9218029794758d4a",
+      "bytes": 50349
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-4.png",
+      "sha256": "7d73eb0c49b057f29ff346f56ec933c0e2359ece535fbb3387ac00beafb7b313",
+      "bytes": 53606
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-5.png",
+      "sha256": "4a2d44b2b60ff91eae79cf976ef13b6473b02658a328b3b5d23f51ff469afdea",
+      "bytes": 48488
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pereon-6.png",
+      "sha256": "d50800064782c904fa79c8c891f592e6f66e6102355ca0f1633e6bfe2e6a25d7",
+      "bytes": 51651
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/pleotelson.png",
+      "sha256": "6f5101ed856da642dc8a50e59f3263459dffb9cf2e257eada9702b4266608cef",
+      "bytes": 6146
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/uropod-far.png",
+      "sha256": "c37413214e8d2c84b49a130bf61bf11ae83f5f58c2a0aad48c13af8ec3dc4490",
+      "bytes": 16431
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/parts/uropod-near.png",
+      "sha256": "3e652d21971f49090de52d8650a7fb31ea3acc2d110859130de6371a4a3bdfdc",
+      "bytes": 6649
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/parts/receipt.json",
+      "sha256": "9941ba07ce2ec4418e1f9aa19c177a959799c63dfb4b58d50aa23fa71834e472",
+      "bytes": 7593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/pre-split-binding.json",
+      "sha256": "57fd183fad14fa60e3b5f4411fcdf7ba5bfe403b76e0cb9b1bbec8ed724b1324",
+      "bytes": 2457260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/record.json",
+      "sha256": "3802ff0b41737ade82913e9acba072c0a5d9554316fc4b0d51a59491bd23063b",
+      "bytes": 9521
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/fit/source-owner-correction.json",
+      "sha256": "a1eefc2e35ef16a6412685db8eef6685b33048dda62f708e28e8ac81c2666c9a",
+      "bytes": 37227
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/freeze.json",
+      "sha256": "85ce5672b7ef8ceee8ce4ac3dc34458777ce9c057f0b6fd0846b066400d02890",
+      "bytes": 12256
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/owner-r04/source-owner-review.json",
+      "sha256": "b098cb70d15791f28e93186fb4de280e57119849923823afccfc3f754aa78e1b",
+      "bytes": 8011
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/post-key-r01/master.png",
+      "sha256": "08fc1b90cc1c2fa491f0c7887be771066e8217d867adfa05844d8307211c8753",
+      "bytes": 1539592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/post-key-r01/post-key-derivative.json",
+      "sha256": "364d22de9c81bbe38a1522e0a3a57cae1e896f71e10c413c9689158107cad880",
+      "bytes": 3790
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/isopod/post-key-r01/request.json",
+      "sha256": "7a728bc39c340bc0eb83f14265f33f050fe1588390f9d4da083dcb3254f7cec6",
+      "bytes": 2179
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/canonical/keyed.png",
+      "sha256": "4512099edf8c27c9a467189a90353ba88f947710608dfca69ad41ef8d7a118e9",
+      "bytes": 1524129
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/canonical/receipt.json",
+      "sha256": "5382a4014e30d1b7de2a77772653eefae36622e76c65ff3cca91e1a725e4c37b",
+      "bytes": 1518
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/canonical/request.json",
+      "sha256": "a4f556934fb17d4e72648f4ced705918524e5ec4650dc8dbae4f95d0fd65e932",
+      "bytes": 2460
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/authoring.json",
+      "sha256": "5ce410dadc29b2cd5d731be14c70f1c6b65c812a99795a55e65573badbea1de3",
+      "bytes": 5433
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/master.png",
+      "sha256": "40a5acd0c7bf970c001c8482fc89af5fd364e063f7a330154cf0b09c129d8273",
+      "bytes": 1522372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/post-key-derivative.json",
+      "sha256": "e9b845237af133e51386759cedfc80ce4a64f97ed5061fb950bf34cbe62f73c5",
+      "bytes": 4133
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/prompt.txt",
+      "sha256": "05345d060d190dbd9ff84f5f52e67776e6c2813899781ae4910e7c4b7759e304",
+      "bytes": 9925
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/source.json",
+      "sha256": "3d170892eaf06769e23a39990883e6acec895e6e6a7c11e6ecc5c76c7c16eb4e",
+      "bytes": 1287
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/derived/subject-source.json",
+      "sha256": "1abbb988b17b4e9dec921ba824fa5e8cef4bd887526a0e5201ac41d06524ea1e",
+      "bytes": 2398
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit.log",
+      "sha256": "ce38ad6c677a18b07d5b4fd2e9cee3db4e57761f8e842a3317c3c3d321251b6b",
+      "bytes": 330
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/binding.json",
+      "sha256": "f7db0d0c97706623bff72bd906fa3f4d18bfa648a979c47a78ef41cc6fe27edf",
+      "bytes": 858077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/declaration.json",
+      "sha256": "932ac4b38b3fc1d3c337e7f1651d47b898a1704cd91f620f9a9faf172f0e1a33",
+      "bytes": 4575
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/atlas/c475-nautilus-owner-r02-post-key.json",
+      "sha256": "ed63cec1b5d15a935867872741728336193aa35e5f744d358d108986ed1b3dfd",
+      "bytes": 2596
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/atlas/c475-nautilus-owner-r02-post-key.png",
+      "sha256": "c2dc2b1c4f2b263f4c8a4c2fea9adcd99fe0ea703397150cb8e31bc14dca47b2",
+      "bytes": 443376
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/atlas/receipt.json",
+      "sha256": "07f9f55b13792bb5ad07a2c07ba1739beac560898679d12035c1e699cc1c8882",
+      "bytes": 1534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/binding.json",
+      "sha256": "4735fc217f15c00c211905d299ba0a4b231046e56d7e07d46ac5998a1b95bdad",
+      "bytes": 2277
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/keyed.png",
+      "sha256": "40a5acd0c7bf970c001c8482fc89af5fd364e063f7a330154cf0b09c129d8273",
+      "bytes": 1522372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/manifest.json",
+      "sha256": "aefdd79e1ca99ecab6c54f1f907116d6f2ad7890b8f4b373148d7cfac331a528",
+      "bytes": 1042
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/ownership.png",
+      "sha256": "fbd6cb10fbd7d4ee1c323f8e6511b7dc23df8de8742caccd4a3fd16f5bc64964",
+      "bytes": 25894
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/crown-base.png",
+      "sha256": "cf98bcfd33b4fc5eda587738b12b4c14fb1989b000a65b045d14d039ece60ead",
+      "bytes": 28525
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/crown-distal.png",
+      "sha256": "24d6169551beac24f10457e78e8c86c54e9e14cd8702dfb589f327614b1db092",
+      "bytes": 45065
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/crown-middle.png",
+      "sha256": "8bf0772a7dfd74f5999a5dcbc11c044a9d4184f03b1e1af5925215e5f84365cb",
+      "bytes": 66755
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/head.png",
+      "sha256": "89e91c5a8b8985a757c81e10a771e13db7850453656bdf608e02d86835fa4046",
+      "bytes": 35974
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/hood.png",
+      "sha256": "f2a0a43bab685fde969c852240b5c3471184615264d9a990ef20d086c9e0ec74",
+      "bytes": 64790
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/parts/shell.png",
+      "sha256": "23a7af30946c194b783d9720f0148d1a8b1909b4aef90ca044826ef4db945cda",
+      "bytes": 319604
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/parts/receipt.json",
+      "sha256": "3f5f643fe51cb58e6a73aea32beffa993acb538a4d12a7fcd81f65b158c898d2",
+      "bytes": 2115
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/pre-split-binding.json",
+      "sha256": "3f9a83d88e31e502edcc1ebe42f7be252b6017e44782feca4b7433962790533a",
+      "bytes": 637349
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/receipt.json",
+      "sha256": "fb91fbafa985f3fbb646698426396c39b9c634f10b0009399029b97bfdc77fe0",
+      "bytes": 2189
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/fit/record.json",
+      "sha256": "249c2b705ed035c29e7118c36c7cc97fb10964cfef6a963a3e1ee2de2c839e67",
+      "bytes": 5379
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/freeze-stored-canonical.mjs",
+      "sha256": "9b60ca7087a57993b5dd8c799a358dac11f258affb28a82ec29b53ee009bf73e",
+      "bytes": 1831
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/freeze.json",
+      "sha256": "2a75219b8e6ff96ac17da15c04dd93153ac034d74178ff2b942008a48bfe0a3d",
+      "bytes": 11175
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/authoring.json",
+      "sha256": "f7be8ca3649d0756e5852146e19e6195f55a659427950f32c1d3060d1003b79b",
+      "bytes": 5008
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/master.png",
+      "sha256": "be1ba65fb0f1a3c80f50888bc121031f6b0a571529749b8bb60aabf1b29db2d2",
+      "bytes": 1464565
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/pattern-check.json",
+      "sha256": "d16153f48d0b9c9549f8eca06e594e564a239a98c50fc64b0f9e5f1e66e1bcc2",
+      "bytes": 570
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/prompt.txt",
+      "sha256": "05345d060d190dbd9ff84f5f52e67776e6c2813899781ae4910e7c4b7759e304",
+      "bytes": 9925
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/source.json",
+      "sha256": "4c5a1e81c6fae5e04f03d84942925b78608bf316f616a39bc5ccd0de4772cfcb",
+      "bytes": 850
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/original-observed/subject-source.json",
+      "sha256": "1abbb988b17b4e9dec921ba824fa5e8cef4bd887526a0e5201ac41d06524ea1e",
+      "bytes": 2398
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/post-key.log",
+      "sha256": "e9b845237af133e51386759cedfc80ce4a64f97ed5061fb950bf34cbe62f73c5",
+      "bytes": 4133
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/post-key/master.png",
+      "sha256": "40a5acd0c7bf970c001c8482fc89af5fd364e063f7a330154cf0b09c129d8273",
+      "bytes": 1522372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/post-key/post-key-derivative.json",
+      "sha256": "e9b845237af133e51386759cedfc80ce4a64f97ed5061fb950bf34cbe62f73c5",
+      "bytes": 4133
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/post-key/request.json",
+      "sha256": "a4f556934fb17d4e72648f4ced705918524e5ec4650dc8dbae4f95d0fd65e932",
+      "bytes": 2460
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/representatives/nautilus/owner-r02/source-owner-proof.json",
+      "sha256": "b2113ebed89e796483f92c40f1f3ecde285f319b6866dc932c968c37d0c72b65",
+      "bytes": 3856
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-flatworm-native-r02/freeze.json",
+      "sha256": "004b898cf490e61e89e29af93dd830df6819e85747c017a2974e88e062cfdd05",
+      "bytes": 4694
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-flatworm-native-r02/review.json",
+      "sha256": "35a431310d9ab534e30956a73f83207d0ecae7d9d51aae7f7d7e8d9ec421b6a0",
+      "bytes": 8824
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-sand-dollar-native-r02/freeze.json",
+      "sha256": "29a322a5243e65e641bfe6de4679b376922c3a78b25bd2e5a280726e43e92e52",
+      "bytes": 2685
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-sand-dollar-native-r02/review.json",
+      "sha256": "abc0392a6a49e217183310f0558e337ab3401976a17a540331b0b5ef4dfbe33d",
+      "bytes": 6186
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/verify-nautilus-owner-r02.mjs",
+      "sha256": "7aa3630c63a6c91a2cc5162433807848f430d06ebc09814bd57b91682d4cd646",
+      "bytes": 4466
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "13ba04b058bf8cf9a0636fc28999e36412150f5f20d92266a31480560cf2c230",
+      "bytes": 568369
+    }
+  ],
+  "files": 378,
+  "remoteOperations": false
+}

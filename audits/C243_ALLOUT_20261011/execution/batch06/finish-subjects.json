@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c243b06r1c1-19-boa",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-19-boa/report.json"
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-22-mountain-viper/report.json"
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-23-rattlesnake/report.json"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c196quadrupedoriginals-20-monkey/report.json"
+  }
+]

@@ -1,0 +1,130 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "synthetic:primate",
+    "seed": 659724,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "family": "primate",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.84,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.5
+    ],
+    "pelvis": [
+      0.46,
+      0.54
+    ],
+    "spine": [
+      0.48,
+      0.44
+    ],
+    "chest": [
+      0.5,
+      0.34
+    ],
+    "neck": [
+      0.52,
+      0.28
+    ],
+    "head": [
+      0.54,
+      0.22
+    ],
+    "jaw": [
+      0.59,
+      0.26
+    ],
+    "armFarShoulder": [
+      0.55,
+      0.36
+    ],
+    "armFarElbow": [
+      0.6,
+      0.48
+    ],
+    "armFarHand": [
+      0.62,
+      0.6
+    ],
+    "legFarHip": [
+      0.47,
+      0.57
+    ],
+    "legFarKnee": [
+      0.51,
+      0.68
+    ],
+    "legFarFoot": [
+      0.49,
+      0.82
+    ],
+    "armNearShoulder": [
+      0.57,
+      0.38
+    ],
+    "armNearElbow": [
+      0.62,
+      0.5
+    ],
+    "armNearHand": [
+      0.64,
+      0.62
+    ],
+    "legNearHip": [
+      0.49,
+      0.59
+    ],
+    "legNearKnee": [
+      0.53,
+      0.7
+    ],
+    "legNearFoot": [
+      0.51,
+      0.84
+    ],
+    "tail0": [
+      0.4,
+      0.56
+    ],
+    "tail1": [
+      0.34,
+      0.6
+    ],
+    "tail2": [
+      0.3,
+      0.66
+    ]
+  },
+  "materials": {
+    "surface": "furred",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "primate-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

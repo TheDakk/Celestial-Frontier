@@ -24,7 +24,15 @@
     "savefixtures": "node tools/savefixtures.js --check",
     "savefixtures:capture": "node tools/savefixtures.js --capture",
     "trainingcheckpoint": "node tools/training-restart-fixture.js --check",
-    "trainingcheckpoint:capture": "node tools/training-restart-fixture.js --capture"
+    "trainingcheckpoint:capture": "node tools/training-restart-fixture.js --capture",
+    "typesafe:rig": "node tools/rig-secondopinion.js",
+    "typesafe:reference": "node tools/reference-secondopinion.js",
+    "typesafe:judgetag": "node tools/judgetag.js",
+    "typesafe:reference2": "node tools/reference2-secondopinion.js",
+    "typesafe:biome": "node tools/biome-secondopinion.js",
+    "typesafe:text": "node tools/text-secondopinion.js",
+    "typesafe:procedural": "node tools/procedural-secondopinion.js",
+    "typesafe:universe": "node tools/universe-secondopinion.js"
   },
   "keywords": [],
   "author": "",
@@ -38,5 +46,8 @@
     "jsdom": "^29.1.1",
     "ws": "^8.18.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@typesafe-ai/sdk": "^0.6.0"
+  }
 }

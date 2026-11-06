@@ -1,0 +1,263 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Maned Wolf\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"307993994\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+    "seed": 307993994,
+    "ownerId": "authored:archetype-sprint/21-maned-wolf",
+    "earthName": "Maned Wolf"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 307993994,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 10,
+    "body": 7,
+    "loco": 12,
+    "trait": 19,
+    "size": 0,
+    "diet": 4,
+    "head": 2,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 0,
+    "detail": 5,
+    "accent": 13,
+    "temper": 5,
+    "sense": 0,
+    "repro": 2,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Maned Wolf"
+  },
+  "geometry": {
+    "cutoutAssetHash": "ad48fb7d33b66127c7bd96a4374c609072bc1222f6e2d54e089283ac9c5e5688",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7144834339821342,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.518341307814992,
+      0.43572567783094096
+    ],
+    "pelvis": [
+      0.4024720893141946,
+      0.4686602870813397
+    ],
+    "spine": [
+      0.50414673046252,
+      0.43413078149920253
+    ],
+    "chest": [
+      0.5874003189792664,
+      0.4466507177033493
+    ],
+    "neck": [
+      0.6460127591706539,
+      0.39210526315789473
+    ],
+    "head": [
+      0.7167464114832536,
+      0.378548644338118
+    ],
+    "jaw": [
+      0.7410685805422648,
+      0.38955342902711326
+    ],
+    "hindNearRoot": [
+      0.398006379585327,
+      0.49593301435406695
+    ],
+    "hindNearKnee": [
+      0.33476874003189794,
+      0.5703349282296651
+    ],
+    "hindNearAnkle": [
+      0.2812599681020734,
+      0.6669059011164274
+    ],
+    "hindNearPaw": [
+      0.27942583732057413,
+      0.7042264752791069
+    ],
+    "hindFarRoot": [
+      0.43149920255183416,
+      0.4980861244019139
+    ],
+    "hindFarKnee": [
+      0.4154704944178628,
+      0.5878787878787879
+    ],
+    "hindFarAnkle": [
+      0.4310207336523126,
+      0.6790271132376395
+    ],
+    "hindFarPaw": [
+      0.4508771929824561,
+      0.7012759170653907
+    ],
+    "foreNearRoot": [
+      0.5743221690590112,
+      0.4700956937799043
+    ],
+    "foreNearKnee": [
+      0.5358851674641149,
+      0.5708931419457735
+    ],
+    "foreNearAnkle": [
+      0.5143540669856459,
+      0.6774322169059012
+    ],
+    "foreNearPaw": [
+      0.5210526315789473,
+      0.7097288676236044
+    ],
+    "foreFarRoot": [
+      0.6052631578947368,
+      0.4874003189792664
+    ],
+    "foreFarKnee": [
+      0.6318979266347687,
+      0.592822966507177
+    ],
+    "foreFarAnkle": [
+      0.6795055821371611,
+      0.6906698564593302
+    ],
+    "foreFarPaw": [
+      0.7090111642743222,
+      0.7108452950558214
+    ],
+    "tail0": [
+      0.33987240829346094,
+      0.42735247208931415
+    ],
+    "tail1": [
+      0.30311004784689,
+      0.511323763955343
+    ],
+    "tail2": [
+      0.28253588516746414,
+      0.539712918660287
+    ],
+    "tail3": [
+      0.2640350877192983,
+      0.5590909090909091
+    ],
+    "earNearRoot": [
+      0.6921850079744817,
+      0.3362838915470494
+    ],
+    "earNearTip": [
+      0.710127591706539,
+      0.28987240829346095
+    ],
+    "earFarRoot": [
+      0.7185007974481659,
+      0.3254385964912281
+    ],
+    "earFarTip": [
+      0.7328548644338118,
+      0.2822966507177033
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/21-maned-wolf/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile canid media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from wild-horse. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "ff11d85019fbd644b22de8723030235d39b54ad10f072d374e91a0a4680eb641",
+    "subjectSourceSha256": "86d9edc4c523e22cf93d48a46fe57e1ecb077db6dd6dd0cde236193c0f9f4c3b",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.12045897344101011,
+      "spine": 0.10737792793860193,
+      "chest": 0.08418971910792686,
+      "neck": 0.08006637719267204,
+      "head": 0.0720210488906157,
+      "jaw": 0.026695939649809396,
+      "hindFarRoot": 0.04133343930678461,
+      "hindFarKnee": 0.09121207101428613,
+      "hindFarAnkle": 0.09246527540634754,
+      "hindFarPaw": 0.02982093641882158,
+      "foreFarRoot": 0.04449281985069355,
+      "foreFarKnee": 0.10873520827050023,
+      "foreFarAnkle": 0.10881407416204598,
+      "foreFarPaw": 0.035743918361219845,
+      "hindNearRoot": 0.027635922569638635,
+      "hindNearKnee": 0.09764550089298198,
+      "hindNearAnkle": 0.11040444500894771,
+      "hindNearPaw": 0.03736561643484151,
+      "foreNearRoot": 0.026845947712213575,
+      "foreNearKnee": 0.10787737783408136,
+      "foreNearAnkle": 0.10869297484738209,
+      "foreNearPaw": 0.03298400241316924,
+      "tail0": 0.07500037095450271,
+      "tail1": 0.09166596425747889,
+      "tail2": 0.035060523025487345,
+      "tail3": 0.02679152887289824,
+      "earFarRoot": 0.05313901629135432,
+      "earFarTip": 0.04546720493008296,
+      "earNearRoot": 0.04888324734314256,
+      "earNearTip": 0.049759040271894435
+    },
+    "measures": {
+      "torso": 0.18623337851003538,
+      "head": 0.0720210488906157,
+      "head/torso": 0.3867247078199506,
+      "bone-min": 0.026695939649809396,
+      "bone-max": 0.12045897344101011,
+      "leg/torso:hindFar": 1.146401813399689,
+      "leg/torso:foreFar": 1.3600848721117793,
+      "leg/torso:hindNear": 1.317785051746493,
+      "leg/torso:foreNear": 1.3400087411354416
+    }
+  },
+  "recipeHash": "19accb9a30e6b1045d3a30378e7d8218daeb539cc176d38a69b5f97a984f1fae"
+}

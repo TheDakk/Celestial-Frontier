@@ -1,0 +1,196 @@
+{
+  "status": "PASS",
+  "records": 37,
+  "uniqueMasters": 33,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b01r1c3-01-sloth-bear",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c3s01/c243b01r1c3-01-sloth-bear/packet/master.png",
+      "sha256": "d16da2001b0ddd33ec042ebca7cdd40a77bd9faf11e2fd578af4069d038ed0a4"
+    },
+    {
+      "id": "c243b01r1c1-06-guinea-pig",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/master.png",
+      "sha256": "7131b058c5cd4b9502a7fd7e6a8bcb2c1e4ed47236633c56155a079bf14ab6e1"
+    },
+    {
+      "id": "c243b01r1c1-13-yak",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g11to13/c243b01r1c1-13-yak/packet/master.png",
+      "sha256": "99cefd54c58e6633f6745236c8e53f89169fbb4def9ee8aba4d3f1224350390e"
+    },
+    {
+      "id": "c243b01r1c1-18-african-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/master.png",
+      "sha256": "b2ae4588d58cf4386dce819f734b7734ec0259db60196ccdf354220c0cb245a6"
+    },
+    {
+      "id": "c243b01r1c1-23-crocodile",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/master.png",
+      "sha256": "44949448367ba0ae3373dd44889c93e2f51dfc0aba0e86b207356ba7522fa74b"
+    },
+    {
+      "id": "c243b01r1c1-37-axolotl",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g35to37/c243b01r1c1-37-axolotl/packet/master.png",
+      "sha256": "f6a19f7d3ef1bfb6a5116c557c8f4d12f82362f51cc25c5b5426034b60b194de"
+    },
+    {
+      "id": "c243b01r1c2-08-marsh-rodent",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g05to08/c243b01r1c2-08-marsh-rodent/packet/master.png",
+      "sha256": "f32feedc45132801722202263b3813d7f24a40fe3e5102581be091afbcab9ed3"
+    },
+    {
+      "id": "c243b01r1c2-15-camel",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/packet/master.png",
+      "sha256": "13d5a2eabd7f2eca8fbe2ef6f66ccb9722ee2fccbabc0fa3a529b927f5c48193"
+    },
+    {
+      "id": "c243b02r1c1-01-anglerfish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g01to03/c243b02r1c1-01-anglerfish/packet/master.png",
+      "sha256": "9eb5077f0e18bf4b62ed060266e1a2f6501076893e2ba3013562dcafe303e0bb"
+    },
+    {
+      "id": "c243b02r1c1-05-deep-sea-fish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g04to06/c243b02r1c1-05-deep-sea-fish/packet/master.png",
+      "sha256": "b3d1e530b438591198ad10a60d4933e6a85b7779c9e2aff069cc9bd16cc384dd"
+    },
+    {
+      "id": "c243b02r1c1-09-flying-fish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g07to09/c243b02r1c1-09-flying-fish/packet/master.png",
+      "sha256": "26323c67d2d3dc8caa569c8fec69e84ff09ab60e93459b2567f1106d339642f1"
+    },
+    {
+      "id": "c243b02r1c1-20-marlin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g19to21/c243b02r1c1-20-marlin/packet/master.png",
+      "sha256": "7f0106058353f9f3183d85f0f778607f291d132d5eaf40f0e5221f046a3046aa"
+    },
+    {
+      "id": "c243b02r1c2-02-beaked-whale",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g02to04/c243b02r1c2-02-beaked-whale/packet/master.png",
+      "sha256": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d"
+    },
+    {
+      "id": "c243b02r1c2-10-flying-gurnard",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g10to12/c243b02r1c2-10-flying-gurnard/packet/master.png",
+      "sha256": "6ac4dcb87779ed6ee5d657082d7c9e3e880f6842c58045246fa5f85f64b2675f"
+    },
+    {
+      "id": "c243b02r1c2-14-lamprey",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g13to15/c243b02r1c2-14-lamprey/packet/master.png",
+      "sha256": "d4fe940eaa685783db5fb4feba36a1530ea282f4fe97a26d577160e695a55e03"
+    },
+    {
+      "id": "c243b02r1c3-13-humpback-whale",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g12to15/c243b02r1c3-13-humpback-whale/packet/master.png",
+      "sha256": "98644e5d36b44940772be4a97cf29839b5202c7220635c8fb4655d5f31064fcf"
+    },
+    {
+      "id": "c243b02r1c3-16-lionfish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g16to18/c243b02r1c3-16-lionfish/packet/master.png",
+      "sha256": "ddc52ae4cfc9358be8f3c171b448bd7351569fe5aabd8890d7ebe244cefea187"
+    },
+    {
+      "id": "c243b02r1c3-25-pipefish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g23to25/c243b02r1c3-25-pipefish/packet/master.png",
+      "sha256": "8b88add46758eee27426ff849116d23bc411ec72cc1d18573b8b70dc853c97de"
+    },
+    {
+      "id": "c243b02r1c3-35-black-fly",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g29to35/c243b02r1c3-35-black-fly/packet/master.png",
+      "sha256": "d623b2dfc0e8b2547a574e898e7533fd3a28489c446e3becb974ba3c85ea294b"
+    },
+    {
+      "id": "c243b02r1c1-33-wahoo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1s33/c243b02r1c1-33-wahoo/packet/master.png",
+      "sha256": "8576fc6fd1fec48a7062750a866ebac1f2ed45be31f0d2fb8c7b80ce507b68f9"
+    },
+    {
+      "id": "c243b03r1c1-23-carrion-beetle",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1h/c243b03r1c1-23-carrion-beetle/packet/master.png",
+      "sha256": "9258118b365c8e0a7a271125b6af21d4ccb888a919d95513c57314eb0125f929"
+    },
+    {
+      "id": "c243b03r1c1-26-moth",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-26-moth/packet/master.png",
+      "sha256": "b89f0a31235bb7bdbdc42746c3a47c74bdec6267f69e179dbdb597ed7a61c76d"
+    },
+    {
+      "id": "c243b03r1c1-27-springtail",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-27-springtail/packet/master.png",
+      "sha256": "397b127130f5a7868d1e70484b3e55c938b6af0b2a7e3e676bf29edec6cee0bf"
+    },
+    {
+      "id": "c243b03r1c1-28-thrips",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1j/c243b03r1c1-28-thrips/packet/master.png",
+      "sha256": "9c85a2261b142686e6c96d392d616f968f44a45661df5a1299bbefe713ea0483"
+    },
+    {
+      "id": "c243b03r1c2-12-honeybee",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2d/c243b03r1c2-12-honeybee/packet/master.png",
+      "sha256": "12f9977ca879b470514b23dc216b69e4e46987f2fddb9efc306ed70dcce5ea87"
+    },
+    {
+      "id": "c243b03r1c2-20-stonefly",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2g/c243b03r1c2-20-stonefly/packet/master.png",
+      "sha256": "b2568bff15546d5155e35cbd3ea80edb3b0435b52e8f6604797290fe8a172b29"
+    },
+    {
+      "id": "c243b03r1c2-31-eagle",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/packet/master.png",
+      "sha256": "a84567a2b55a810f9e21f2034de983e064c57803f0dbce29ddc3acfbfaf9d1a3"
+    },
+    {
+      "id": "c243b03r1c3-01-bumblebee",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3a/c243b03r1c3-01-bumblebee/packet/master.png",
+      "sha256": "f0df64ae308c51fa8429eada54aed9ea600670fe8d0cf4176ab7398640ded3ad"
+    },
+    {
+      "id": "c243b03r1c3-24-ladybug",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/packet/master.png",
+      "sha256": "c46506bcc25253cd607360162ba872a44207967cb2d26c608948f675c2c52b19"
+    },
+    {
+      "id": "c243b02r1c1-09-flying-fish",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c1g07to09/c243b02r1c1-09-flying-fish/packet/master.png",
+      "sha256": "26323c67d2d3dc8caa569c8fec69e84ff09ab60e93459b2567f1106d339642f1"
+    },
+    {
+      "id": "c243b02r1c2-02-beaked-whale",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g02to04/c243b02r1c2-02-beaked-whale/packet/master.png",
+      "sha256": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d"
+    },
+    {
+      "id": "c243b02r1c2-14-lamprey",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g13to15/c243b02r1c2-14-lamprey/packet/master.png",
+      "sha256": "d4fe940eaa685783db5fb4feba36a1530ea282f4fe97a26d577160e695a55e03"
+    },
+    {
+      "id": "c243b02r1c3-13-humpback-whale",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c3g12to15/c243b02r1c3-13-humpback-whale/packet/master.png",
+      "sha256": "98644e5d36b44940772be4a97cf29839b5202c7220635c8fb4655d5f31064fcf"
+    },
+    {
+      "id": "c196creaturesupply-18-water-beetle",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03before/c196creaturesupply-18-water-beetle/packet/master.png",
+      "sha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d"
+    },
+    {
+      "id": "g2c136targetededits-21-bee",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03before/g2c136targetededits-21-bee/packet/master.png",
+      "sha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa"
+    },
+    {
+      "id": "c198creaturesupplyb-22-locust",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03before/c198creaturesupplyb-22-locust/packet/master.png",
+      "sha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d"
+    },
+    {
+      "id": "c243b03r1c3-09-fly",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3c/c243b03r1c3-09-fly/packet/master.png",
+      "sha256": "cba50e731b14ee41cc1654666cf93f0417ff5758710c8b1944945a6a6bde755b"
+    }
+  ]
+}

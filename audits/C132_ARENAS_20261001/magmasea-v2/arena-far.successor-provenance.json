@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Original FAR paints an unbound visible sun disk.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.prompt.txt",
+    "sha256": "debaecc6640072bf231fe3b834b429d37975652c1ce59f15cea62cd356618c25"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.prompt.txt",
+    "sha256": "242eda7e72d67f88a1b156686db95b209929950adef443f63ee88902ba471c91"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.png",
+      "sha256": "3121c0e6c38e806279a9023ffa1eb681152a9f41a0f3ebeffd7806c71612054f"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.png",
+    "sha256": "3121c0e6c38e806279a9023ffa1eb681152a9f41a0f3ebeffd7806c71612054f"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b1a5c243-7b00-42b8-8e0d-1ea830d44a55.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

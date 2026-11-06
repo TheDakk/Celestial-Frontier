@@ -1,0 +1,1220 @@
+[
+ {
+  "id": "g2c114-23-water-beetle",
+  "name": "Water Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C114_20260927/23-water-beetle",
+  "master": "audits/G2_C114_20260927/23-water-beetle/master.png"
+ },
+ {
+  "id": "g2c114-24-diving-beetle",
+  "name": "Diving Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C114_20260927/24-diving-beetle",
+  "master": "audits/G2_C114_20260927/24-diving-beetle/master.png"
+ },
+ {
+  "id": "g2c118-04-sea-otter",
+  "name": "Sea Otter",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/04-sea-otter",
+  "master": "audits/G2_C118_20260927/04-sea-otter/master.png"
+ },
+ {
+  "id": "g2c118-05-water-vole",
+  "name": "Water Vole",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/05-water-vole",
+  "master": "audits/G2_C118_20260927/05-water-vole/master.png"
+ },
+ {
+  "id": "g2c118-06-marsh-rodent",
+  "name": "Marsh Rodent",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/06-marsh-rodent",
+  "master": "audits/G2_C118_20260927/06-marsh-rodent/master.png"
+ },
+ {
+  "id": "g2c118-07-flying-squirrel",
+  "name": "Flying Squirrel",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/07-flying-squirrel",
+  "master": "audits/G2_C118_20260927/07-flying-squirrel/master.png"
+ },
+ {
+  "id": "g2c118-09-colugo",
+  "name": "Colugo",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/09-colugo",
+  "master": "audits/G2_C118_20260927/09-colugo/master.png"
+ },
+ {
+  "id": "g2c118-10-echidna",
+  "name": "Echidna",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/10-echidna",
+  "master": "audits/G2_C118_20260927/10-echidna/master.png"
+ },
+ {
+  "id": "g2c118-12-platypus",
+  "name": "Platypus",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/12-platypus",
+  "master": "audits/G2_C118_20260927/12-platypus/master.png"
+ },
+ {
+  "id": "g2c118-13-snake",
+  "name": "Snake",
+  "family": "serpent",
+  "packet": "audits/G2_C118_20260927/13-snake",
+  "master": "audits/G2_C118_20260927/13-snake/master.png"
+ },
+ {
+  "id": "g2c118-14-penguin",
+  "name": "Penguin",
+  "family": "biped-bird",
+  "packet": "audits/G2_C118_20260927/14-penguin",
+  "master": "audits/G2_C118_20260927/14-penguin/master.png"
+ },
+ {
+  "id": "g2c118-15-water-beetle",
+  "name": "Water Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C118_20260927/15-water-beetle",
+  "master": "audits/G2_C118_20260927/15-water-beetle/master.png"
+ },
+ {
+  "id": "g2c118-16-diving-beetle",
+  "name": "Diving Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C118_20260927/16-diving-beetle",
+  "master": "audits/G2_C118_20260927/16-diving-beetle/master.png"
+ },
+ {
+  "id": "g2c118-17-dragonfly",
+  "name": "Dragonfly",
+  "family": "insect",
+  "packet": "audits/G2_C118_20260927/17-dragonfly",
+  "master": "audits/G2_C118_20260927/17-dragonfly/master.png"
+ },
+ {
+  "id": "g2c118-18-damselfly",
+  "name": "Damselfly",
+  "family": "insect",
+  "packet": "audits/G2_C118_20260927/18-damselfly",
+  "master": "audits/G2_C118_20260927/18-damselfly/master.png"
+ },
+ {
+  "id": "g2c118-19-mayfly",
+  "name": "Mayfly",
+  "family": "insect",
+  "packet": "audits/G2_C118_20260927/19-mayfly",
+  "master": "audits/G2_C118_20260927/19-mayfly/master.png"
+ },
+ {
+  "id": "g2c118-23-rhinoceros",
+  "name": "Rhinoceros",
+  "family": "quadruped",
+  "packet": "audits/G2_C118_20260927/23-rhinoceros",
+  "master": "audits/G2_C118_20260927/23-rhinoceros/master.png"
+ },
+ {
+  "id": "g2c121-02-egret",
+  "name": "Egret",
+  "family": "biped-bird",
+  "packet": "audits/G2_C121_20260927/02-egret",
+  "master": "audits/G2_C121_20260927/02-egret/master.png"
+ },
+ {
+  "id": "g2c121-03-stork",
+  "name": "Stork",
+  "family": "biped-bird",
+  "packet": "audits/G2_C121_20260927/03-stork",
+  "master": "audits/G2_C121_20260927/03-stork/master.png"
+ },
+ {
+  "id": "g2c121-11-sparrow",
+  "name": "Sparrow",
+  "family": "biped-bird",
+  "packet": "audits/G2_C121_20260927/11-sparrow",
+  "master": "audits/G2_C121_20260927/11-sparrow/master.png"
+ },
+ {
+  "id": "g2c121-15-peacock",
+  "name": "Peacock",
+  "family": "biped-bird",
+  "packet": "audits/G2_C121_20260927/15-peacock",
+  "master": "audits/G2_C121_20260927/15-peacock/master.png"
+ },
+ {
+  "id": "g2c121-17-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/G2_C121_20260927/17-bee",
+  "master": "audits/G2_C121_20260927/17-bee/master.png"
+ },
+ {
+  "id": "g2c121-19-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "packet": "audits/G2_C121_20260927/19-giant-water-bug",
+  "master": "audits/G2_C121_20260927/19-giant-water-bug/master.png"
+ },
+ {
+  "id": "g2c121-21-stick-insect",
+  "name": "Stick Insect",
+  "family": "insect",
+  "packet": "audits/G2_C121_20260927/21-stick-insect",
+  "master": "audits/G2_C121_20260927/21-stick-insect/master.png"
+ },
+ {
+  "id": "g2c121-22-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C121_20260927/22-carrion-beetle",
+  "master": "audits/G2_C121_20260927/22-carrion-beetle/master.png"
+ },
+ {
+  "id": "g2c121-23-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "packet": "audits/G2_C121_20260927/23-water-strider",
+  "master": "audits/G2_C121_20260927/23-water-strider/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-01-caiman",
+  "name": "Caiman",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/01-caiman",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/01-caiman/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-02-crocodile",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/02-crocodile",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/02-crocodile/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-05-monitor-lizard",
+  "name": "Monitor Lizard",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/05-monitor-lizard",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/05-monitor-lizard/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-06-anole",
+  "name": "Anole",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/06-anole",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/06-anole/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-08-skink",
+  "name": "Skink",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/08-skink",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/08-skink/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-10-mountain-lizard",
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/10-mountain-lizard",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/10-mountain-lizard/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-12-lizard",
+  "name": "Lizard",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/12-lizard",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/12-lizard/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-13-whiptail",
+  "name": "Whiptail",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/13-whiptail",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/13-whiptail/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-14-agama",
+  "name": "Agama",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/14-agama",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/14-agama/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-19-gila-monster",
+  "name": "Gila Monster",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/19-gila-monster",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/19-gila-monster/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-20-frilled-lizard",
+  "name": "Frilled Lizard",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/20-frilled-lizard",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/20-frilled-lizard/master.png"
+ },
+ {
+  "id": "g2c132quadrupeds-21-chameleon",
+  "name": "Chameleon",
+  "family": "quadruped",
+  "packet": "audits/G2_C132_QUADRUPEDS_20261001/21-chameleon",
+  "master": "audits/G2_C132_QUADRUPEDS_20261001/21-chameleon/master.png"
+ },
+ {
+  "id": "g2c136repairs-01-giant-salamander",
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander/master.png"
+ },
+ {
+  "id": "g2c136repairs-02-alpine-salamander",
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander/master.png"
+ },
+ {
+  "id": "g2c136repairs-03-olm",
+  "name": "Olm",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/03-olm",
+  "master": "audits/G2_C136_REPAIRS_20261002/03-olm/master.png"
+ },
+ {
+  "id": "g2c136repairs-04-blind-salamander",
+  "name": "Blind Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander/master.png"
+ },
+ {
+  "id": "g2c136repairs-05-axolotl",
+  "name": "Axolotl",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/05-axolotl",
+  "master": "audits/G2_C136_REPAIRS_20261002/05-axolotl/master.png"
+ },
+ {
+  "id": "g2c136repairs-07-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo",
+  "master": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png"
+ },
+ {
+  "id": "g2c136repairs-10-water-buffalo",
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo",
+  "master": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/master.png"
+ },
+ {
+  "id": "g2c136repairs-14-yak",
+  "name": "Yak",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/14-yak",
+  "master": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png"
+ },
+ {
+  "id": "g2c136repairs-21-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/21-bee",
+  "master": "audits/G2_C136_REPAIRS_20261002/21-bee/master.png"
+ },
+ {
+  "id": "g2c136repairs-22-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug",
+  "master": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug/master.png"
+ },
+ {
+  "id": "g2c136repairs-23-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle",
+  "master": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle/master.png"
+ },
+ {
+  "id": "g2c136repairs-24-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/24-water-strider",
+  "master": "audits/G2_C136_REPAIRS_20261002/24-water-strider/master.png"
+ },
+ {
+  "id": "g2c136targetededits-01-giant-salamander",
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_TARGETED_EDITS_20261002/01-giant-salamander",
+  "master": "audits/G2_C136_TARGETED_EDITS_20261002/01-giant-salamander/master.png"
+ },
+ {
+  "id": "g2c136targetededits-07-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo",
+  "master": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png"
+ },
+ {
+  "id": "g2c136targetededits-21-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/G2_C136_TARGETED_EDITS_20261002/21-bee",
+  "master": "audits/G2_C136_TARGETED_EDITS_20261002/21-bee/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-02-salamander",
+  "name": "Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-03-wall-lizard",
+  "name": "Wall Lizard",
+  "family": "quadruped",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-04-gorilla",
+  "name": "Gorilla",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-05-chimpanzee",
+  "name": "Chimpanzee",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-06-orangutan",
+  "name": "Orangutan",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-08-howler-monkey",
+  "name": "Howler Monkey",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-09-spider-monkey",
+  "name": "Spider Monkey",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-10-macaque",
+  "name": "Macaque",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-11-baboon",
+  "name": "Baboon",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-12-lemur",
+  "name": "Lemur",
+  "family": "primate",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-13-centipede",
+  "name": "Centipede",
+  "family": "myriapod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-14-giant-centipede",
+  "name": "Giant Centipede",
+  "family": "myriapod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-15-millipede",
+  "name": "Millipede",
+  "family": "myriapod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-16-octopus",
+  "name": "Octopus",
+  "family": "cephalopod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-17-squid",
+  "name": "Squid",
+  "family": "cephalopod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-18-cuttlefish",
+  "name": "Cuttlefish",
+  "family": "cephalopod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-19-giant-octopus",
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-20-deep-sea-octopus",
+  "name": "Deep-Sea Octopus",
+  "family": "cephalopod",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-21-fruit-bat",
+  "name": "Fruit Bat",
+  "family": "flyer-membrane",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-23-insect-eating-bat",
+  "name": "Insect-Eating Bat",
+  "family": "flyer-membrane",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat/master.png"
+ },
+ {
+  "id": "g2c163familyoriginals-24-vampire-bat",
+  "name": "Vampire Bat",
+  "family": "flyer-membrane",
+  "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat",
+  "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/master.png"
+ },
+ {
+  "id": "g2c59-02-moose",
+  "name": "Moose",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/02-moose",
+  "master": "audits/G2_C59_20260926/02-moose/master.png"
+ },
+ {
+  "id": "g2c59-03-bison",
+  "name": "Bison",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/03-bison",
+  "master": "audits/G2_C59_20260926/03-bison/master.png"
+ },
+ {
+  "id": "g2c59-05-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/05-badger",
+  "master": "audits/G2_C59_20260926/05-badger/master.png"
+ },
+ {
+  "id": "g2c59-06-wolverine",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/06-wolverine",
+  "master": "audits/G2_C59_20260926/06-wolverine/master.png"
+ },
+ {
+  "id": "g2c59-09-kingfisher",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/09-kingfisher",
+  "master": "audits/G2_C59_20260926/09-kingfisher/master.png"
+ },
+ {
+  "id": "g2c59-12-ladybug",
+  "name": "Ladybug",
+  "family": "insect",
+  "packet": "audits/G2_C59_20260926/12-ladybug",
+  "master": "audits/G2_C59_20260926/12-ladybug/master.png"
+ },
+ {
+  "id": "g2c72-12-egret",
+  "name": "Egret",
+  "family": "biped-bird",
+  "packet": "audits/G2_C72_20260927/12-egret",
+  "master": "audits/G2_C72_20260927/12-egret/master.png"
+ },
+ {
+  "id": "g2c72-14-stork",
+  "name": "Stork",
+  "family": "biped-bird",
+  "packet": "audits/G2_C72_20260927/14-stork",
+  "master": "audits/G2_C72_20260927/14-stork/master.png"
+ },
+ {
+  "id": "g2c72-17-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "packet": "audits/G2_C72_20260927/17-water-strider",
+  "master": "audits/G2_C72_20260927/17-water-strider/master.png"
+ },
+ {
+  "id": "g2c72-19-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C72_20260927/19-carrion-beetle",
+  "master": "audits/G2_C72_20260927/19-carrion-beetle/master.png"
+ },
+ {
+  "id": "g2c72-20-stick-insect",
+  "name": "Stick Insect",
+  "family": "insect",
+  "packet": "audits/G2_C72_20260927/20-stick-insect",
+  "master": "audits/G2_C72_20260927/20-stick-insect/master.png"
+ },
+ {
+  "id": "g2c76-06-arowana",
+  "name": "Arowana",
+  "family": "fish",
+  "packet": "audits/G2_C76_20260927/06-arowana",
+  "master": "audits/G2_C76_20260927/06-arowana/master.png"
+ },
+ {
+  "id": "g2c76-07-arapaima",
+  "name": "Arapaima",
+  "family": "fish",
+  "packet": "audits/G2_C76_20260927/07-arapaima",
+  "master": "audits/G2_C76_20260927/07-arapaima/master.png"
+ },
+ {
+  "id": "g2c76-09-swift",
+  "name": "Swift",
+  "family": "biped-bird",
+  "packet": "audits/G2_C76_20260927/09-swift",
+  "master": "audits/G2_C76_20260927/09-swift/master.png"
+ },
+ {
+  "id": "g2c76-12-crane",
+  "name": "Crane",
+  "family": "biped-bird",
+  "packet": "audits/G2_C76_20260927/12-crane",
+  "master": "audits/G2_C76_20260927/12-crane/master.png"
+ },
+ {
+  "id": "g2c76-16-pheasant",
+  "name": "Pheasant",
+  "family": "biped-bird",
+  "packet": "audits/G2_C76_20260927/16-pheasant",
+  "master": "audits/G2_C76_20260927/16-pheasant/master.png"
+ },
+ {
+  "id": "g2c76-18-agouti",
+  "name": "Agouti",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/18-agouti",
+  "master": "audits/G2_C76_20260927/18-agouti/master.png"
+ },
+ {
+  "id": "g2c76-19-alpaca",
+  "name": "Alpaca",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/19-alpaca",
+  "master": "audits/G2_C76_20260927/19-alpaca/master.png"
+ },
+ {
+  "id": "g2c76-20-llama",
+  "name": "Llama",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/20-llama",
+  "master": "audits/G2_C76_20260927/20-llama/master.png"
+ },
+ {
+  "id": "g2c76-22-pangolin",
+  "name": "Pangolin",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/22-pangolin",
+  "master": "audits/G2_C76_20260927/22-pangolin/master.png"
+ },
+ {
+  "id": "g2c76-23-peccary",
+  "name": "Peccary",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/23-peccary",
+  "master": "audits/G2_C76_20260927/23-peccary/master.png"
+ },
+ {
+  "id": "g2c76-24-okapi",
+  "name": "Okapi",
+  "family": "quadruped",
+  "packet": "audits/G2_C76_20260927/24-okapi",
+  "master": "audits/G2_C76_20260927/24-okapi/master.png"
+ },
+ {
+  "id": "g2c81-10-snipe",
+  "name": "Snipe",
+  "family": "biped-bird",
+  "packet": "audits/G2_C81_20260927/10-snipe",
+  "master": "audits/G2_C81_20260927/10-snipe/master.png"
+ },
+ {
+  "id": "g2c81-12-godwit",
+  "name": "Godwit",
+  "family": "biped-bird",
+  "packet": "audits/G2_C81_20260927/12-godwit",
+  "master": "audits/G2_C81_20260927/12-godwit/master.png"
+ },
+ {
+  "id": "g2c81-13-avocet",
+  "name": "Avocet",
+  "family": "biped-bird",
+  "packet": "audits/G2_C81_20260927/13-avocet",
+  "master": "audits/G2_C81_20260927/13-avocet/master.png"
+ },
+ {
+  "id": "g2c81-17-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/17-bee",
+  "master": "audits/G2_C81_20260927/17-bee/master.png"
+ },
+ {
+  "id": "g2c81-19-dragonfly",
+  "name": "Dragonfly",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/19-dragonfly",
+  "master": "audits/G2_C81_20260927/19-dragonfly/master.png"
+ },
+ {
+  "id": "g2c81-20-damselfly",
+  "name": "Damselfly",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/20-damselfly",
+  "master": "audits/G2_C81_20260927/20-damselfly/master.png"
+ },
+ {
+  "id": "g2c81-21-caddisfly",
+  "name": "Caddisfly",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/21-caddisfly",
+  "master": "audits/G2_C81_20260927/21-caddisfly/master.png"
+ },
+ {
+  "id": "g2c81-22-mayfly",
+  "name": "Mayfly",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/22-mayfly",
+  "master": "audits/G2_C81_20260927/22-mayfly/master.png"
+ },
+ {
+  "id": "g2c81-23-stonefly",
+  "name": "Stonefly",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/23-stonefly",
+  "master": "audits/G2_C81_20260927/23-stonefly/master.png"
+ },
+ {
+  "id": "g2c81-24-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "packet": "audits/G2_C81_20260927/24-giant-water-bug",
+  "master": "audits/G2_C81_20260927/24-giant-water-bug/master.png"
+ },
+ {
+  "id": "g2c83-04-marlin",
+  "name": "Marlin",
+  "family": "fish",
+  "packet": "audits/G2_C83_20260927/04-marlin",
+  "master": "audits/G2_C83_20260927/04-marlin/master.png"
+ },
+ {
+  "id": "g2c83-06-swordfish",
+  "name": "Swordfish",
+  "family": "fish",
+  "packet": "audits/G2_C83_20260927/06-swordfish",
+  "master": "audits/G2_C83_20260927/06-swordfish/master.png"
+ },
+ {
+  "id": "g2c83-08-wahoo",
+  "name": "Wahoo",
+  "family": "fish",
+  "packet": "audits/G2_C83_20260927/08-wahoo",
+  "master": "audits/G2_C83_20260927/08-wahoo/master.png"
+ },
+ {
+  "id": "g2c83-09-macaw",
+  "name": "Macaw",
+  "family": "biped-bird",
+  "packet": "audits/G2_C83_20260927/09-macaw",
+  "master": "audits/G2_C83_20260927/09-macaw/master.png"
+ },
+ {
+  "id": "g2c83-15-kookaburra",
+  "name": "Kookaburra",
+  "family": "biped-bird",
+  "packet": "audits/G2_C83_20260927/15-kookaburra",
+  "master": "audits/G2_C83_20260927/15-kookaburra/master.png"
+ },
+ {
+  "id": "g2c83-16-cockatoo",
+  "name": "Cockatoo",
+  "family": "biped-bird",
+  "packet": "audits/G2_C83_20260927/16-cockatoo",
+  "master": "audits/G2_C83_20260927/16-cockatoo/master.png"
+ },
+ {
+  "id": "g2c83-20-spotted-hyena",
+  "name": "Spotted Hyena",
+  "family": "quadruped",
+  "packet": "audits/G2_C83_20260927/20-spotted-hyena",
+  "master": "audits/G2_C83_20260927/20-spotted-hyena/master.png"
+ },
+ {
+  "id": "g2c83-24-aardvark",
+  "name": "Aardvark",
+  "family": "quadruped",
+  "packet": "audits/G2_C83_20260927/24-aardvark",
+  "master": "audits/G2_C83_20260927/24-aardvark/master.png"
+ },
+ {
+  "id": "g2c87-02-blenny",
+  "name": "Blenny",
+  "family": "fish",
+  "packet": "audits/G2_C87_20260927/02-blenny",
+  "master": "audits/G2_C87_20260927/02-blenny/master.png"
+ },
+ {
+  "id": "g2c87-25-angelfish-marine",
+  "name": "Angelfish",
+  "family": "fish",
+  "packet": "audits/G2_C87_20260927/25-angelfish-marine",
+  "master": "audits/G2_C87_20260927/25-angelfish-marine/master.png"
+ },
+ {
+  "id": "g2c87-09-owl",
+  "name": "Owl",
+  "family": "biped-bird",
+  "packet": "audits/G2_C87_20260927/09-owl",
+  "master": "audits/G2_C87_20260927/09-owl/master.png"
+ },
+ {
+  "id": "g2c87-15-guillemot",
+  "name": "Guillemot",
+  "family": "biped-bird",
+  "packet": "audits/G2_C87_20260927/15-guillemot",
+  "master": "audits/G2_C87_20260927/15-guillemot/master.png"
+ },
+ {
+  "id": "g2c87-17-coati",
+  "name": "Coati",
+  "family": "quadruped",
+  "packet": "audits/G2_C87_20260927/17-coati",
+  "master": "audits/G2_C87_20260927/17-coati/master.png"
+ },
+ {
+  "id": "g2c87-20-striped-hyena",
+  "name": "Striped Hyena",
+  "family": "quadruped",
+  "packet": "audits/G2_C87_20260927/20-striped-hyena",
+  "master": "audits/G2_C87_20260927/20-striped-hyena/master.png"
+ },
+ {
+  "id": "g2c87-22-black-bear",
+  "name": "Black Bear",
+  "family": "quadruped",
+  "packet": "audits/G2_C87_20260927/22-black-bear",
+  "master": "audits/G2_C87_20260927/22-black-bear/master.png"
+ },
+ {
+  "id": "g2c90-02-cobra",
+  "name": "Cobra",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/02-cobra",
+  "master": "audits/G2_C90_20260927/02-cobra/master.png"
+ },
+ {
+  "id": "g2c90-04-rattlesnake",
+  "name": "Rattlesnake",
+  "family": "serpent",
+  "packet": "audits/G2_C90_20260927/04-rattlesnake",
+  "master": "audits/G2_C90_20260927/04-rattlesnake/master.png"
+ },
+ {
+  "id": "g2c90-07-catfish",
+  "name": "Catfish",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/07-catfish",
+  "master": "audits/G2_C90_20260927/07-catfish/master.png"
+ },
+ {
+  "id": "g2c90-09-bowfin",
+  "name": "Bowfin",
+  "family": "fish",
+  "packet": "audits/G2_C90_20260927/09-bowfin",
+  "master": "audits/G2_C90_20260927/09-bowfin/master.png"
+ },
+ {
+  "id": "g2c90-15-squirrel",
+  "name": "Squirrel",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/15-squirrel",
+  "master": "audits/G2_C90_20260927/15-squirrel/master.png"
+ },
+ {
+  "id": "g2c90-17-rabbit",
+  "name": "Rabbit",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/17-rabbit",
+  "master": "audits/G2_C90_20260927/17-rabbit/master.png"
+ },
+ {
+  "id": "g2c90-20-hedgehog",
+  "name": "Hedgehog",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/20-hedgehog",
+  "master": "audits/G2_C90_20260927/20-hedgehog/master.png"
+ },
+ {
+  "id": "g2c90-22-kinkajou",
+  "name": "Kinkajou",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/22-kinkajou",
+  "master": "audits/G2_C90_20260927/22-kinkajou/master.png"
+ },
+ {
+  "id": "g2c90-23-sloth-bear",
+  "name": "Sloth Bear",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/23-sloth-bear",
+  "master": "audits/G2_C90_20260927/23-sloth-bear/master.png"
+ },
+ {
+  "id": "g2c90-24-river-otter",
+  "name": "River Otter",
+  "family": "quadruped",
+  "packet": "audits/G2_C90_20260927/24-river-otter",
+  "master": "audits/G2_C90_20260927/24-river-otter/master.png"
+ },
+ {
+  "id": "g2c92-05-lionfish",
+  "name": "Lionfish",
+  "family": "fish",
+  "packet": "audits/G2_C92_20260927/05-lionfish",
+  "master": "audits/G2_C92_20260927/05-lionfish/master.png"
+ },
+ {
+  "id": "g2c92-08-auk",
+  "name": "Auk",
+  "family": "biped-bird",
+  "packet": "audits/G2_C92_20260927/08-auk",
+  "master": "audits/G2_C92_20260927/08-auk/master.png"
+ },
+ {
+  "id": "g2c92-12-grebe",
+  "name": "Grebe",
+  "family": "biped-bird",
+  "packet": "audits/G2_C92_20260927/12-grebe",
+  "master": "audits/G2_C92_20260927/12-grebe/master.png"
+ },
+ {
+  "id": "g2c92-16-vole",
+  "name": "Vole",
+  "family": "quadruped",
+  "packet": "audits/G2_C92_20260927/16-vole",
+  "master": "audits/G2_C92_20260927/16-vole/master.png"
+ },
+ {
+  "id": "g2c92-19-moth",
+  "name": "Moth",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/19-moth",
+  "master": "audits/G2_C92_20260927/19-moth/master.png"
+ },
+ {
+  "id": "g2c92-20-aphid",
+  "name": "Aphid",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/20-aphid",
+  "master": "audits/G2_C92_20260927/20-aphid/master.png"
+ },
+ {
+  "id": "g2c92-21-dobsonfly",
+  "name": "Dobsonfly",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/21-dobsonfly",
+  "master": "audits/G2_C92_20260927/21-dobsonfly/master.png"
+ },
+ {
+  "id": "g2c92-22-scorpionfly",
+  "name": "Scorpionfly",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/22-scorpionfly",
+  "master": "audits/G2_C92_20260927/22-scorpionfly/master.png"
+ },
+ {
+  "id": "g2c92-23-thrips",
+  "name": "Thrips",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/23-thrips",
+  "master": "audits/G2_C92_20260927/23-thrips/master.png"
+ },
+ {
+  "id": "g2c92-24-orchid-bee",
+  "name": "Orchid Bee",
+  "family": "insect",
+  "packet": "audits/G2_C92_20260927/24-orchid-bee",
+  "master": "audits/G2_C92_20260927/24-orchid-bee/master.png"
+ },
+ {
+  "id": "g2c95-13-pronghorn",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "packet": "audits/G2_C95_20260927/13-pronghorn",
+  "master": "audits/G2_C95_20260927/13-pronghorn/master.png"
+ },
+ {
+  "id": "g2c95-14-springbok",
+  "name": "Springbok",
+  "family": "quadruped",
+  "packet": "audits/G2_C95_20260927/14-springbok",
+  "master": "audits/G2_C95_20260927/14-springbok/master.png"
+ },
+ {
+  "id": "g2c95-17-nilgai",
+  "name": "Nilgai",
+  "family": "quadruped",
+  "packet": "audits/G2_C95_20260927/17-nilgai",
+  "master": "audits/G2_C95_20260927/17-nilgai/master.png"
+ },
+ {
+  "id": "g2c95-19-butterfly",
+  "name": "Butterfly",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/19-butterfly",
+  "master": "audits/G2_C95_20260927/19-butterfly/master.png"
+ },
+ {
+  "id": "g2c95-20-mosquito",
+  "name": "Mosquito",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/20-mosquito",
+  "master": "audits/G2_C95_20260927/20-mosquito/master.png"
+ },
+ {
+  "id": "g2c95-21-black-fly",
+  "name": "Black Fly",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/21-black-fly",
+  "master": "audits/G2_C95_20260927/21-black-fly/master.png"
+ },
+ {
+  "id": "g2c95-22-fly",
+  "name": "Fly",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/22-fly",
+  "master": "audits/G2_C95_20260927/22-fly/master.png"
+ },
+ {
+  "id": "g2c95-23-springtail",
+  "name": "Springtail",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/23-springtail",
+  "master": "audits/G2_C95_20260927/23-springtail/master.png"
+ },
+ {
+  "id": "g2c95-24-cold-adapted-insect",
+  "name": "Cold-Adapted Insect",
+  "family": "insect",
+  "packet": "audits/G2_C95_20260927/24-cold-adapted-insect",
+  "master": "audits/G2_C95_20260927/24-cold-adapted-insect/master.png"
+ },
+ {
+  "id": "g2c98-11-osprey",
+  "name": "Osprey",
+  "family": "biped-bird",
+  "packet": "audits/G2_C98_20260927/11-osprey",
+  "master": "audits/G2_C98_20260927/11-osprey/master.png"
+ },
+ {
+  "id": "g2c98-14-screamer",
+  "name": "Screamer",
+  "family": "biped-bird",
+  "packet": "audits/G2_C98_20260927/14-screamer",
+  "master": "audits/G2_C98_20260927/14-screamer/master.png"
+ },
+ {
+  "id": "g2c98-15-secretary-bird",
+  "name": "Secretary Bird",
+  "family": "biped-bird",
+  "packet": "audits/G2_C98_20260927/15-secretary-bird",
+  "master": "audits/G2_C98_20260927/15-secretary-bird/master.png"
+ },
+ {
+  "id": "g2c98-16-tern",
+  "name": "Tern",
+  "family": "biped-bird",
+  "packet": "audits/G2_C98_20260927/16-tern",
+  "master": "audits/G2_C98_20260927/16-tern/master.png"
+ },
+ {
+  "id": "g2c98-19-shrew",
+  "name": "Shrew",
+  "family": "quadruped",
+  "packet": "audits/G2_C98_20260927/19-shrew",
+  "master": "audits/G2_C98_20260927/19-shrew/master.png"
+ },
+ {
+  "id": "g2c98-21-pig",
+  "name": "Pig",
+  "family": "quadruped",
+  "packet": "audits/G2_C98_20260927/21-pig",
+  "master": "audits/G2_C98_20260927/21-pig/master.png"
+ },
+ {
+  "id": "g2c98-22-warthog",
+  "name": "Warthog",
+  "family": "quadruped",
+  "packet": "audits/G2_C98_20260927/22-warthog",
+  "master": "audits/G2_C98_20260927/22-warthog/master.png"
+ },
+ {
+  "id": "g2c98-23-honeybee",
+  "name": "Honeybee",
+  "family": "insect",
+  "packet": "audits/G2_C98_20260927/23-honeybee",
+  "master": "audits/G2_C98_20260927/23-honeybee/master.png"
+ },
+ {
+  "id": "g2c98-24-bumblebee",
+  "name": "Bumblebee",
+  "family": "insect",
+  "packet": "audits/G2_C98_20260927/24-bumblebee",
+  "master": "audits/G2_C98_20260927/24-bumblebee/master.png"
+ },
+ {
+  "id": "g2referencesc62-02-pigeon",
+  "name": "Pigeon",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon",
+  "master": "audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png"
+ },
+ {
+  "id": "g2referencesc62-06-dog",
+  "name": "Dog",
+  "family": "quadruped",
+  "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin",
+  "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png"
+ },
+ {
+  "id": "g2referencesc62-08-ant",
+  "name": "Ant",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/08-ant",
+  "master": "audits/G2_REFERENCES_C62_20260927/08-ant/master.png"
+ },
+ {
+  "id": "g2referencesc62-09-cricket",
+  "name": "Cricket",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket",
+  "master": "audits/G2_REFERENCES_C62_20260927/09-cricket/master.png"
+ },
+ {
+  "id": "g2throughputc56-16-pigeon",
+  "name": "Pigeon",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon/master.png"
+ },
+ {
+  "id": "g2throughputc56-26-cicada",
+  "name": "Cicada",
+  "family": "insect",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/26-cicada",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/26-cicada/master.png"
+ },
+ {
+  "id": "g2throughputc56-28-leafcutter-ant",
+  "name": "Leafcutter Ant",
+  "family": "insect",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/28-leafcutter-ant",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/28-leafcutter-ant/master.png"
+ },
+ {
+  "id": "g2throughputc56-29-cave-cricket",
+  "name": "Cave Cricket",
+  "family": "insect",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/29-cave-cricket",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/29-cave-cricket/master.png"
+ },
+ {
+  "id": "g2throughputc56-31-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/31-carrion-beetle",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/31-carrion-beetle/master.png"
+ },
+ {
+  "id": "g2throughputc56-32-stick-insect",
+  "name": "Stick Insect",
+  "family": "insect",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/32-stick-insect",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/32-stick-insect/master.png"
+ },
+ {
+  "id": "insectreferencesc86-01-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/INSECT_REFERENCES_C86_20260927/01-bee",
+  "master": "audits/INSECT_REFERENCES_C86_20260927/01-bee/master.png"
+ },
+ {
+  "id": "insectreferencesc86-02-dragonfly",
+  "name": "Dragonfly",
+  "family": "insect",
+  "packet": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly",
+  "master": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly/master.png"
+ },
+ {
+  "id": "insectreferencesc86-03-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "packet": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug",
+  "master": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug/master.png"
+ },
+ {
+  "id": "insectreferencesc86-04-bee-six-legs",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs",
+  "master": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs/master.png"
+ },
+ {
+  "id": "insectreferencesc86-05-dragonfly-six-legs",
+  "name": "Dragonfly",
+  "family": "insect",
+  "packet": "audits/INSECT_REFERENCES_C86_20260927/05-dragonfly-six-legs",
+  "master": "audits/INSECT_REFERENCES_C86_20260927/05-dragonfly-six-legs/master.png"
+ }
+]

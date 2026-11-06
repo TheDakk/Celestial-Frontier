@@ -1,0 +1,175 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lancelet\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"235195156\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"23\"]]]]",
+    "seed": 235195156,
+    "ownerId": "authored:archetype-sprint/o3-lancelet-green-source-observed-r04",
+    "earthName": "Lancelet"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "jaw",
+      "paired-pectoral-fins"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 235195156,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 10,
+    "body": 11,
+    "loco": 15,
+    "trait": 23,
+    "size": 5,
+    "diet": 3,
+    "head": 3,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 5,
+    "detail": 6,
+    "accent": 0,
+    "temper": 9,
+    "sense": 7,
+    "repro": 7,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Lancelet"
+  },
+  "geometry": {
+    "cutoutAssetHash": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.55,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6626794258373205,
+      0.4880382775119617
+    ],
+    "head": [
+      0.6929824561403509,
+      0.49362041467304624
+    ],
+    "spine0": [
+      0.6291866028708134,
+      0.48484848484848486
+    ],
+    "spine1": [
+      0.5669856459330144,
+      0.4864433811802233
+    ],
+    "spine2": [
+      0.4984051036682616,
+      0.4920255183413078
+    ],
+    "spine3": [
+      0.430622009569378,
+      0.49681020733652315
+    ],
+    "spine4": [
+      0.36363636363636365,
+      0.5007974481658692
+    ],
+    "spine5": [
+      0.3054226475279107,
+      0.5031897926634769
+    ],
+    "caudal": [
+      0.26555023923444976,
+      0.5063795853269537
+    ],
+    "dorsal": [
+      0.5645933014354066,
+      0.4529505582137161
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin",
+    "paletteSource": "Same actual green-key RAW9091767b24557fadd4c628246ab89985373966b4706992f4a2149fbc7d79ca52 and original canonical seal/default D40; exact source-bound R04 reviewed-donor derivative97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf. Canonical named genome unchanged."
+  },
+  "source": "audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Existing jawless-fish Earth profile water; isolated swimming source"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "sourceObservation": "New actual native1254 source reviewed directly by coordinator. Its oral cirri, median fins and caudal tip are whole source courses. Re-observed anterior/axial controls lie in present painted body/fin; head is an anterior/oral-hood controller, not an anatomical vertebrate head. Jaw and paired pectoral fins absent under same explicit jawless named anatomy; no eyes or fins fabricated. Existing whole-cross-section partition strategy re-observed on this source; no source labels/masks/fit/geometry seal imported.",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "materialAcceptance": false,
+    "physicalAcceptance": false,
+    "nativeAcceptance": false,
+    "independentMaterialReviewRequiredBeforeIntake": true,
+    "r04Reobservation": {
+      "master": {
+        "path": "audits/O3_20261103/coordinator/lancelet-green-r04-fringe/derivative/master.png",
+        "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+        "bytes": 1145022
+      },
+      "independentSourceMaterialReview": {
+        "path": "audits/O3_20261103/w2-wave-a/lancelet-green-r04-material/review.json",
+        "sha256": "ae68348850c80e2445df56bc95125f2c9524a7fbb2b30c37df0e01fe2b172f76",
+        "bytes": 16268
+      },
+      "meaning": "Ten existing source-observed controls re-viewed on same actual RAW and exact R04 master; nine merged whole source owners re-projected at pixel centers. No old bound record, source labels or raster masks reused. Oral cirri remain whole under oral-hood controller, median folds remain with axial bands and full caudal tip remains. Existing optional jaw and paired pectoral fins remain source-observed absent; no donor absence inherited.",
+      "pending": "Root intake/full static, independent actual compiled part/pivot/source-join and later native/C261 review."
+    }
+  },
+  "provenance": {
+    "authoringSha256": "55be3aeca4b7fc2f5d8882df7a8792e1b8a4cff27095c6d773cea68ee6b461ec",
+    "subjectSourceSha256": "d8ac1867571af0962c764def2b5909772bc4aa1b66ff15a09d7861cb0a9cdcbc",
+    "presenceSha256": "85d11b3a2396c316a070f7ece72979a6725dc84b4e0d7dd0acea369aadaabaa9",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.030812885305202084,
+      "spine0": 0.033644374975644264,
+      "spine1": 0.06222140096692554,
+      "spine2": 0.06880734722842254,
+      "spine3": 0.06795175563882833,
+      "spine4": 0.06710420888807475,
+      "spine5": 0.058262853134315236,
+      "caudal": 0.039999796503937673,
+      "dorsal": 0.0335781551378426
+    },
+    "measures": {
+      "body": 0.32428305899575666,
+      "bone-min": 0.030812885305202084,
+      "bone-max": 0.06880734722842254,
+      "caudal/body": 0.12334840009160356,
+      "head/body": 0.09501848601226276
+    }
+  },
+  "recipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wolverine",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/c202creaturesupply-12-wolverine/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ef915dc1ab61ddea49e2202f52a9f8b1a57a67d9dfca33277634cee16c7ae94a"
+}

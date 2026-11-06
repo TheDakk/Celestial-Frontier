@@ -1,0 +1,137 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "4e2890514b9364b8469933dd5a9209c9086c816873bc870e9d03cde484043c3d",
+  "declarationHash": "586502ee004e4c31cea0141930b3375114acb6c4eaec33836415b778e7b5caaa",
+  "paintedPixels": 210672,
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 646,
+        "y": 796,
+        "width": 8,
+        "height": 8
+      },
+      "pixels": 64
+    },
+    {
+      "id": "eyefar",
+      "joint": "eyeFar",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 851,
+        "y": 333,
+        "width": 122,
+        "height": 224
+      },
+      "pixels": 6791
+    },
+    {
+      "id": "eyenear",
+      "joint": "eyeNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 993,
+        "y": 359,
+        "width": 185,
+        "height": 176
+      },
+      "pixels": 4572
+    },
+    {
+      "id": "mouth",
+      "joint": "mouth",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 976,
+        "y": 589,
+        "width": 64,
+        "height": 44
+      },
+      "pixels": 2004
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 900,
+        "y": 513,
+        "width": 196,
+        "height": 149
+      },
+      "pixels": 12224
+    },
+    {
+      "id": "foot0",
+      "joint": "foot0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 109,
+        "y": 715,
+        "width": 163,
+        "height": 138
+      },
+      "pixels": 12843
+    },
+    {
+      "id": "foot1",
+      "joint": "foot1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 272,
+        "y": 637,
+        "width": 252,
+        "height": 249
+      },
+      "pixels": 51798
+    },
+    {
+      "id": "foot2",
+      "joint": "foot2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 524,
+        "y": 550,
+        "width": 261,
+        "height": 346
+      },
+      "pixels": 76549
+    },
+    {
+      "id": "foot3",
+      "joint": "foot3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 785,
+        "y": 344,
+        "width": 351,
+        "height": 530
+      },
+      "pixels": 43827
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 3878,
+    "despilledPixels": 0,
+    "unresolvedEdgePixels": 0
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "21-goat",
+  "name": "Goat",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-0c8d91e5-f643-41bf-a517-6d26e07498e4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+  "bytes": 1295114,
+  "promptSha256": "9a54e6fdc371ef39a211d71ba0943d74fa8f0a9ca1823ff473a45ae204f6044c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

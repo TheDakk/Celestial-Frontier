@@ -1,0 +1,101 @@
+{
+ "schema": "cf.identity-card/v1",
+ "films": [
+  {
+   "id": "c243b01r2c3-15-camel",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-15-camel/subject-source.json",
+   "name": "Camel",
+   "markers": [
+    "hump on the back",
+    "long curving neck held high",
+    "very long knobbly-kneed legs"
+   ],
+   "note": "Generic name read as a representative dromedary. Taller than most people draw: the leg mass is roughly half the total height."
+  },
+  {
+   "id": "c243b02r2c1-24-pilot-whale",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c1-24-pilot-whale/subject-source.json",
+   "name": "Pilot Whale",
+   "markers": [
+    "bulbous melon forehead overhanging the mouth",
+    "long low swept-back dorsal fin set well forward on the back",
+    "black body with a pale anchor patch on the throat"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b02r2c2-18-manatee",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-18-manatee/subject-source.json",
+   "name": "Manatee",
+   "markers": [
+    "rounded spatula paddle tail",
+    "blunt bristly downturned muzzle with a split upper lip",
+    "barrel body with front flippers and no hind limbs"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b02r2c2-32-river-dolphin",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-32-river-dolphin/subject-source.json",
+   "name": "River Dolphin",
+   "markers": [
+    "very long narrow tweezer beak crowded with teeth",
+    "low ridge or hump instead of a tall dorsal fin",
+    "bulging flexible melon and a mobile neck"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b03r1c3-24-ladybug",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-24-ladybug/subject-source.json",
+   "name": "Ladybug",
+   "markers": [
+    "strongly domed hemispherical shell",
+    "spotted red wing cases split down the middle",
+    "tiny black head tucked under a shield"
+   ],
+   "note": "Almost always drawn from above; in true side profile it is a low dome and the spots barely read, so the silhouette must carry the arc of the shell."
+  },
+  {
+   "id": "c243b04r2c1-17-hoatzin",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-17-hoatzin/subject-source.json",
+   "name": "Hoatzin",
+   "markers": [
+    "spiky rufous punk crest",
+    "bare blue face with a staring red eye",
+    "long broad tail and heavy chest over a slim neck"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b04r2c1-18-kakapo",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-18-kakapo/subject-source.json",
+   "name": "Kakapo",
+   "markers": [
+    "moss-green plumage mottled with black and yellow",
+    "owl-like whiskered facial disc",
+    "heavy squat flightless parrot body"
+   ],
+   "note": null
+  },
+  {
+   "id": "c243b04r2c2-12-tern",
+   "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern",
+   "source": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c2-12-tern/subject-source.json",
+   "name": "Tern",
+   "markers": [
+    "deeply forked tail streamers",
+    "long narrow pointed wings",
+    "slim dagger bill and a black cap over the crown"
+   ],
+   "note": null
+  }
+ ]
+}

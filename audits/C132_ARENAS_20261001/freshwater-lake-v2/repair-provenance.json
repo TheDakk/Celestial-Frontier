@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-arena-repair/v1",
+  "scope": "NEAR painting replacement only; FAR/MID original bytes retained",
+  "editSource": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near.png",
+    "sha256": "7d50b8c24f8de29dbc59297301f1baf4fca5b0af5e87b9628a24c6acc8acd74e"
+  },
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "reason": "Original NEAR has a straight horizontal seam. Ask built-in imagegen for a naturally irregular low silhouette; no raster editing of source."
+}

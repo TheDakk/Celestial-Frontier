@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b04r2c3-18-kakapo",
+    "name": "Kakapo",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-18-kakapo",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-18-kakapo/master.png"
+  },
+  {
+    "id": "c243b04r2c3-19-kookaburra",
+    "name": "Kookaburra",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-19-kookaburra",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-19-kookaburra/master.png"
+  },
+  {
+    "id": "c243b04r2c3-20-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-20-macaw",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-20-macaw/master.png"
+  },
+  {
+    "id": "c243b04r2c3-21-osprey",
+    "name": "Osprey",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-21-osprey",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c3-21-osprey/master.png"
+  }
+]

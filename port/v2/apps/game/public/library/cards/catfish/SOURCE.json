@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Catfish",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c2-04-catfish/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c0d1cab656f095f6ad44c62c70a9f1dbab7804bcf75ae8307d095c89bdc45b95"
+}

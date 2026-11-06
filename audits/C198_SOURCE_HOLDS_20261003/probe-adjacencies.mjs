@@ -1,0 +1,7 @@
+/** Enumerate actual source-alpha adjacencies for a bounded source-recipe correction. */
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {createHash} from 'node:crypto';
+import {createSourceJoinProbe} from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+const [fit,out]=process.argv.slice(2);assert(fit?.startsWith('audits/C198_SOURCE_HOLDS_20261003/'));assert(out?.startsWith('audits/C198_SOURCE_HOLDS_20261003/'));assert(!fs.existsSync(out));
+const J=p=>JSON.parse(fs.readFileSync(p)),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex'),{PNG}=createRequire(new URL('../../port/v2/package.json',import.meta.url))('pngjs');
+const record=J(fit+'/record.json'),binding=J(fit+'/pre-split-binding.json'),m=J(fit+'/parts/manifest.json'),af=fit+'/parts/atlas/'+m.creatureId+'.png',a=PNG.sync.read(fs.readFileSync(af)),probe=createSourceJoinProbe({record,binding,atlas:{rgba:a.data,width:a.width,height:a.height}});
+fs.writeFileSync(out,JSON.stringify({schema:'cf.c198-observed-adjacency/v1',sourceFit:fit,inputs:[fit+'/record.json',fit+'/pre-split-binding.json',af].map(path=>({path,sha256:sha(path)})),joins:probe.joins.map(({samples,...x})=>({...x,samples:samples.length,sourceEdges:x.sourceEdges.length})),excluded:probe.excluded.map(({samples,...x})=>({...x,samples:samples.length})),native:false,qualityAccepted:false},null,2)+'\n',{flag:'wx'});console.log(out);

@@ -1,0 +1,77 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "dorsal-fold-support",
+      "joint": "spine1",
+      "owner": "spine1"
+    },
+    {
+      "region": "oral-hood-cirri",
+      "joint": "head",
+      "owner": "oral-hood-cirri"
+    },
+    {
+      "region": "caudal-whole-tip",
+      "joint": "caudal",
+      "owner": "caudal-whole-tip"
+    },
+    {
+      "region": "spine5",
+      "joint": "spine5",
+      "owner": "spine5"
+    },
+    {
+      "region": "spine4",
+      "joint": "spine4",
+      "owner": "spine4"
+    },
+    {
+      "region": "spine3",
+      "joint": "spine3",
+      "owner": "spine3"
+    },
+    {
+      "region": "spine2",
+      "joint": "spine2",
+      "owner": "spine2"
+    },
+    {
+      "region": "spine1",
+      "joint": "spine1",
+      "owner": "spine1"
+    },
+    {
+      "region": "spine0",
+      "joint": "spine0",
+      "owner": "spine0"
+    },
+    {
+      "region": "anterior-body",
+      "joint": "root",
+      "owner": "anterior-body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    9054,
+    5368,
+    1232,
+    3015,
+    6611,
+    9417,
+    10115,
+    4712,
+    2471
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "anterior-body"
+}

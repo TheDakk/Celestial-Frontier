@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pronghorn",
+  "masterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+  "required": [
+    "white throat bands and white rump patch"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white throat bands and white rump patch",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: four hooves and leg shafts, white rump and underside, throat bands, both upright ears and a small naturally short white tail protruding at the rump. Only one forked horn silhouette is independently clear; the far horn is hidden or merged and cannot be inferred as separately painted. Tail tip is distinct but close to the rump. Proximal roots and species proportions remain held."
+    }
+  ]
+}

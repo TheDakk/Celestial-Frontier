@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.028203004691909225,"gap":0.00006753199749634408,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.017141030071920662,"gap":0.00007081256038023272,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.24623530601890653,"gap":0.00006051080264035444,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"PASS","samples":121,"drift":0,"gap":0.00006615256359267193,"exactRest":true,"firstRefusal":null}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.015346607642685771,"gap":0.00006870831091279767,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.1479295976928132,"gap":0.00006561005967475947,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.2343894951020999,"gap":0.00007016692088691034,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.00003388774363193677,"gap":0.00006891513670834544,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0.21274623124698677,"gap":0.00006870831095387512,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":53,"drift":0.020215691514728223,"gap":0.00011341581265394552,"exactRest":true,"firstRefusal":{"ms":314.46666666666664,"sampleNumber":54,"error":"Error: Contact: joint limit legNearFoot faint@314.46666666666664: 45.27130025317366"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.01736466463630466,"gap":0.00006834199525054199,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.02715236983269762,"gap":0.0001243737947136803,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.02109796792831324,"gap":0.0000652326412593278,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00006805545212877794,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "15-sheep-observed-ears",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/master.png",
+  "sourceSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-tail/authoring.json",
+  "priorAuthoringSha256": "5b352c9689c2a0d3bc3a8434ee2846f78b2797dad6bd612508f27059d3b096c2",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [],
+  "findings": [
+    "Near pinna is the vertical brown-inner ear x950–1004/y215–313. The transferred near-ear point x1065/y242 sat on the forehead/far-side region; new points and contours bind actual ear tissue.",
+    "Far pinna is the short right-pointing exposed ear x1060–1102/y229–269; only this visible tissue is assigned. Tail correction remains exact."
+  ],
+  "originalPixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Inherited automatic limb regions still require full-size motion review."
+  ]
+}

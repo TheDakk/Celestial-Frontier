@@ -1,0 +1,20 @@
+{
+  "stage": "turtle-finished-native-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-turtle-finished-native-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792279780.038257,
+  "beforeGiB": 88.0911979675293,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.052,
+  "lowestGiB": 87.6695327758789,
+  "afterGiB": 88.05347442626953
+}

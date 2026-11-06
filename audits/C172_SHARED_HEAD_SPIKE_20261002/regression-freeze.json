@@ -1,0 +1,4600 @@
+{
+  "schema": "cf.c172-source-bound-regression/v1",
+  "units": "posed source-coordinate pixels; existing observation-only source joins, not native/screen distances or an admission gate",
+  "rows": [
+    {
+      "id": "hawk",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.22876280641886027,
+              "originalGapSourcePx": 13.496218861024637,
+              "candidateGapSourcePx": 13.724981667443497,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  653,
+                  548
+                ],
+                "ancestor": [
+                  692.5052890241146,
+                  656.5970423877238
+                ],
+                "descendant": [
+                  680.1870297253131,
+                  662.1114246189594
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  653,
+                  548
+                ],
+                "ancestor": [
+                  692.5052890241146,
+                  656.5970423877238
+                ],
+                "descendant": [
+                  680.0076323747635,
+                  662.2701103448868
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.16013608196842455,
+              "originalGapSourcePx": 16.699226726156386,
+              "candidateGapSourcePx": 16.85936280812481,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  690.2306320667267,
+                  662.7504655122757
+                ],
+                "descendant": [
+                  675.0449086597987,
+                  669.6972617421831
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  690.2306320667267,
+                  662.7504655122757
+                ],
+                "descendant": [
+                  674.9218251534871,
+                  669.812939950398
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.1486416334846652,
+              "originalGapSourcePx": 13.70397256471943,
+              "candidateGapSourcePx": 13.852614198204096,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  684,
+                  624
+                ],
+                "ancestor": [
+                  691.1696976542473,
+                  664.5764177441597
+                ],
+                "descendant": [
+                  700.4412234306335,
+                  674.6678831398488
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  687,
+                  622
+                ],
+                "ancestor": [
+                  694.5024434924125,
+                  663.2006236195564
+                ],
+                "descendant": [
+                  703.6395026385784,
+                  673.6125912666321
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.05510035063706731,
+              "originalGapSourcePx": 14.908791813631199,
+              "candidateGapSourcePx": 14.963892164268266,
+              "elapsedMs": 688.2666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  632
+                ],
+                "ancestor": [
+                  676.8579736948013,
+                  669.8826971054077
+                ],
+                "descendant": [
+                  688.084813611848,
+                  679.6923932688577
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  673,
+                  631
+                ],
+                "ancestor": [
+                  679.0147222280502,
+                  669.2924222946167
+                ],
+                "descendant": [
+                  690.1306484597069,
+                  679.3101192712784
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.035191127308007664,
+              "originalGapSourcePx": 0.6892137701771015,
+              "candidateGapSourcePx": 0.7244048974851092,
+              "elapsedMs": 700.1333333333333,
+              "sourceWorstOriginal": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  689.0556567907333,
+                  593.3678979277611
+                ],
+                "descendant": [
+                  688.5377933979034,
+                  592.9131088256836
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  689.0556567907333,
+                  593.3678979277611
+                ],
+                "descendant": [
+                  688.4263772964478,
+                  593.0090528726578
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.9324369586837095,
+              "candidateGapSourcePx": 0.9324369586837095,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  680,
+                  825
+                ],
+                "ancestor": [
+                  680.0000202655792,
+                  824.0581283569336
+                ],
+                "descendant": [
+                  680.0400115728378,
+                  824.989707326889
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  680,
+                  825
+                ],
+                "ancestor": [
+                  680.0000202655792,
+                  824.0581283569336
+                ],
+                "descendant": [
+                  680.0400115728378,
+                  824.989707326889
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.9028939777123897,
+              "candidateGapSourcePx": 0.9028939777123897,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  724,
+                  800
+                ],
+                "ancestor": [
+                  723.999990105629,
+                  799.0581403970718
+                ],
+                "descendant": [
+                  723.9963473081589,
+                  799.9610270261765
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  724,
+                  800
+                ],
+                "ancestor": [
+                  723.999990105629,
+                  799.0581403970718
+                ],
+                "descendant": [
+                  723.9963473081589,
+                  799.9610270261765
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.973318811249278,
+              "candidateGapSourcePx": 2.973318811249278,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  649,
+                  828
+                ],
+                "ancestor": [
+                  648.9999908208847,
+                  827.0581254959106
+                ],
+                "descendant": [
+                  646.8233898282051,
+                  829.0837199449539
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  649,
+                  828
+                ],
+                "ancestor": [
+                  648.9999908208847,
+                  827.0581254959106
+                ],
+                "descendant": [
+                  646.8233898282051,
+                  829.0837199449539
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.000014525193364534061,
+              "candidateGapSourcePx": 0.000014525193364534061,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  627,
+                  755
+                ],
+                "ancestor": [
+                  627,
+                  754.0581125020981
+                ],
+                "descendant": [
+                  627,
+                  754.0581270272914
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  627,
+                  755
+                ],
+                "ancestor": [
+                  627,
+                  754.0581125020981
+                ],
+                "descendant": [
+                  627,
+                  754.0581270272914
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.633600000211939,
+              "candidateGapSourcePx": 2.633600000211939,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  516
+                ],
+                "ancestor": [
+                  725.0523297786714,
+                  508.7949298024178
+                ],
+                "descendant": [
+                  722.4736382961272,
+                  509.32990568876266
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  516
+                ],
+                "ancestor": [
+                  725.0523297786714,
+                  508.7949298024178
+                ],
+                "descendant": [
+                  722.4736382961272,
+                  509.32990568876266
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 6.241892470493238,
+              "candidateGapSourcePx": 6.241892470493238,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  641,
+                  499
+                ],
+                "ancestor": [
+                  631.9454718487603,
+                  493.79759443657736
+                ],
+                "descendant": [
+                  628.5835685133934,
+                  499.05676048994064
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  641,
+                  499
+                ],
+                "ancestor": [
+                  631.9454718487603,
+                  493.79759443657736
+                ],
+                "descendant": [
+                  628.5835685133934,
+                  499.05676048994064
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 8.96000529608628,
+              "candidateGapSourcePx": 8.96000529608628,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  494,
+                  680
+                ],
+                "ancestor": [
+                  486.39109278338793,
+                  674.3266865961691
+                ],
+                "descendant": [
+                  493.9999960362911,
+                  679.0581014156342
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  494,
+                  680
+                ],
+                "ancestor": [
+                  486.39109278338793,
+                  674.3266865961691
+                ],
+                "descendant": [
+                  493.9999960362911,
+                  679.0581014156342
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.298037442154828,
+              "candidateGapSourcePx": 2.298037442154828,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  522
+                ],
+                "ancestor": [
+                  725.2139858007431,
+                  515.1573017835617
+                ],
+                "descendant": [
+                  722.9310572147369,
+                  515.4203857183456
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  522
+                ],
+                "ancestor": [
+                  725.2139858007431,
+                  515.1573017835617
+                ],
+                "descendant": [
+                  722.9310572147369,
+                  515.4203857183456
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        },
+        {
+          "side": "right",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.22886038565408917,
+              "originalGapSourcePx": 13.507488915924306,
+              "candidateGapSourcePx": 13.736349301578395,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  653,
+                  548
+                ],
+                "ancestor": [
+                  692.5629840910435,
+                  656.7123727262019
+                ],
+                "descendant": [
+                  680.2355760991574,
+                  662.2339005053043
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  653,
+                  548
+                ],
+                "ancestor": [
+                  692.5629840910435,
+                  656.7123727262019
+                ],
+                "descendant": [
+                  680.056051683426,
+                  662.3925077497959
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.1602122144671938,
+              "originalGapSourcePx": 16.713022523286206,
+              "candidateGapSourcePx": 16.8732347377534,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  690.2922095060349,
+                  662.8656817674637
+                ],
+                "descendant": [
+                  675.0954543011529,
+                  669.8215248584747
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  690.2922095060349,
+                  662.8656817674637
+                ],
+                "descendant": [
+                  674.9723027944565,
+                  669.9372098105293
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.1486416334846652,
+              "originalGapSourcePx": 13.70397256471943,
+              "candidateGapSourcePx": 13.852614198204096,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  684,
+                  624
+                ],
+                "ancestor": [
+                  691.1696976542473,
+                  664.5764177441597
+                ],
+                "descendant": [
+                  700.4412234306335,
+                  674.6678831398488
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  687,
+                  622
+                ],
+                "ancestor": [
+                  694.5024434924125,
+                  663.2006236195564
+                ],
+                "descendant": [
+                  703.6395026385784,
+                  673.6125912666321
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.05509081483912759,
+              "originalGapSourcePx": 14.910001224085997,
+              "candidateGapSourcePx": 14.965092038925125,
+              "elapsedMs": 688.2666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  632
+                ],
+                "ancestor": [
+                  676.8579736948013,
+                  669.8838576078415
+                ],
+                "descendant": [
+                  688.0855396986008,
+                  679.6945608513696
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  673,
+                  631
+                ],
+                "ancestor": [
+                  679.0147222280502,
+                  669.293586730957
+                ],
+                "descendant": [
+                  690.1313211577278,
+                  679.3123295647756
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.03519291038632344,
+              "originalGapSourcePx": 0.6892988464693468,
+              "candidateGapSourcePx": 0.7244917568556702,
+              "elapsedMs": 700.1333333333333,
+              "sourceWorstOriginal": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  689.0557354688644,
+                  593.3684270381927
+                ],
+                "descendant": [
+                  688.5377933979034,
+                  592.9135985970497
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  645,
+                  550
+                ],
+                "ancestor": [
+                  689.0557354688644,
+                  593.3684270381927
+                ],
+                "descendant": [
+                  688.4263772964478,
+                  593.0095446109772
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.9838017618199553,
+              "candidateGapSourcePx": 0.9838017618199553,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  680,
+                  825
+                ],
+                "ancestor": [
+                  680.0000202655792,
+                  824.006106376648
+                ],
+                "descendant": [
+                  680.023926615715,
+                  824.9896176338195
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  680,
+                  825
+                ],
+                "ancestor": [
+                  680.0000202655792,
+                  824.006106376648
+                ],
+                "descendant": [
+                  680.023926615715,
+                  824.9896176338195
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.955317102856518,
+              "candidateGapSourcePx": 0.955317102856518,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  724,
+                  800
+                ],
+                "ancestor": [
+                  723.999990105629,
+                  799.0061262845993
+                ],
+                "descendant": [
+                  723.981028676033,
+                  799.9612551927567
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  724,
+                  800
+                ],
+                "ancestor": [
+                  723.999990105629,
+                  799.0061262845993
+                ],
+                "descendant": [
+                  723.981028676033,
+                  799.9612551927567
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.5549504143398913,
+              "candidateGapSourcePx": 1.5549504143398913,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  649,
+                  828
+                ],
+                "ancestor": [
+                  648.9999908208847,
+                  827.006103515625
+                ],
+                "descendant": [
+                  648.3081264138223,
+                  828.3986531317234
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  649,
+                  828
+                ],
+                "ancestor": [
+                  648.9999908208847,
+                  827.006103515625
+                ],
+                "descendant": [
+                  648.3081264138223,
+                  828.3986531317234
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.000014525193478220899,
+              "candidateGapSourcePx": 0.000014525193478220899,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  627,
+                  755
+                ],
+                "ancestor": [
+                  627,
+                  754.0060905218124
+                ],
+                "descendant": [
+                  627,
+                  754.0061050470059
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  627,
+                  755
+                ],
+                "ancestor": [
+                  627,
+                  754.0060905218124
+                ],
+                "descendant": [
+                  627,
+                  754.0061050470059
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.0804547526658335,
+              "candidateGapSourcePx": 1.0804547526658335,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  516
+                ],
+                "ancestor": [
+                  731.2086338996887,
+                  512.7619480490685
+                ],
+                "descendant": [
+                  730.2282021045684,
+                  513.2159700393677
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  516
+                ],
+                "ancestor": [
+                  731.2086338996887,
+                  512.7619480490685
+                ],
+                "descendant": [
+                  730.2282021045684,
+                  513.2159700393677
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.7266354789986433,
+              "candidateGapSourcePx": 2.7266354789986433,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  641,
+                  499
+                ],
+                "ancestor": [
+                  638.3031919854028,
+                  496.0105771337237
+                ],
+                "descendant": [
+                  636.7609604001045,
+                  498.2591461837292
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  641,
+                  499
+                ],
+                "ancestor": [
+                  638.3031919854028,
+                  496.0105771337237
+                ],
+                "descendant": [
+                  636.7609604001045,
+                  498.2591461837292
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 10.46245355501799,
+              "candidateGapSourcePx": 10.46245355501799,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  441,
+                  649
+                ],
+                "ancestor": [
+                  437.6434673666954,
+                  643.7538431882858
+                ],
+                "descendant": [
+                  438.85579199450353,
+                  654.1458210263934
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  441,
+                  649
+                ],
+                "ancestor": [
+                  437.6434673666954,
+                  643.7538431882858
+                ],
+                "descendant": [
+                  438.85579199450353,
+                  654.1458210263934
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.8847119520498373,
+              "candidateGapSourcePx": 0.8847119520498373,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  522
+                ],
+                "ancestor": [
+                  731.2188620567322,
+                  518.9008849561214
+                ],
+                "descendant": [
+                  730.3862231969833,
+                  519.1999297142029
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  522
+                ],
+                "ancestor": [
+                  731.2188620567322,
+                  518.9008849561214
+                ],
+                "descendant": [
+                  730.3862231969833,
+                  519.1999297142029
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        }
+      ]
+    },
+    {
+      "id": "crow",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.3255805423270388,
+              "originalGapSourcePx": 11.721119535327663,
+              "candidateGapSourcePx": 12.046700077654702,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  679,
+                  517
+                ],
+                "ancestor": [
+                  716.6386369764805,
+                  638.5646506547928
+                ],
+                "descendant": [
+                  707.2707259654999,
+                  645.6092859506607
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  679,
+                  517
+                ],
+                "ancestor": [
+                  716.6386369764805,
+                  638.5646506547928
+                ],
+                "descendant": [
+                  707.0127954483032,
+                  645.8080033063889
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.24501050824081716,
+              "originalGapSourcePx": 18.793469674979786,
+              "candidateGapSourcePx": 19.038480183220603,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  717,
+                  582
+                ],
+                "ancestor": [
+                  726.2485629022121,
+                  636.4533849656582
+                ],
+                "descendant": [
+                  736.4744422137737,
+                  652.221260368824
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  717,
+                  582
+                ],
+                "ancestor": [
+                  726.2485629022121,
+                  636.4533849656582
+                ],
+                "descendant": [
+                  736.4276965856552,
+                  652.5421687960625
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.2322632049696729,
+              "originalGapSourcePx": 14.497904870982929,
+              "candidateGapSourcePx": 14.730168075952601,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  714.4704358577728,
+                  645.5926179885864
+                ],
+                "descendant": [
+                  702.8164383172989,
+                  654.2166302204132
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  714.4704358577728,
+                  645.5926179885864
+                ],
+                "descendant": [
+                  702.6393141746521,
+                  654.3677197694778
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.08440973842677835,
+              "originalGapSourcePx": 19.315476520045287,
+              "candidateGapSourcePx": 19.399886258472065,
+              "elapsedMs": 688.2666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  696,
+                  593
+                ],
+                "ancestor": [
+                  703.211195808649,
+                  642.0446258962154
+                ],
+                "descendant": [
+                  715.3069128990174,
+                  657.1038842201233
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  696,
+                  593
+                ],
+                "ancestor": [
+                  703.211195808649,
+                  642.0446258962154
+                ],
+                "descendant": [
+                  715.2813254594803,
+                  657.232369542122
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.015046120486361003,
+              "originalGapSourcePx": 0.32376903876060315,
+              "candidateGapSourcePx": 0.33881515924696415,
+              "elapsedMs": 706.0666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  720.8358035087585,
+                  579.7547224760056
+                ],
+                "descendant": [
+                  720.7003689408302,
+                  579.460641078651
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  720.8358035087585,
+                  579.7547224760056
+                ],
+                "descendant": [
+                  720.5484139323235,
+                  579.5752706900239
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.37197864757046195,
+              "candidateGapSourcePx": 0.37197864757046195,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  678,
+                  817
+                ],
+                "ancestor": [
+                  678.0000211894512,
+                  817.1575291156769
+                ],
+                "descendant": [
+                  678.322152780635,
+                  817.3435381267752
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  678,
+                  817
+                ],
+                "ancestor": [
+                  678.0000211894512,
+                  817.1575291156769
+                ],
+                "descendant": [
+                  678.322152780635,
+                  817.3435381267752
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.590708564831216,
+              "candidateGapSourcePx": 0.590708564831216,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  675,
+                  757
+                ],
+                "ancestor": [
+                  675.0000171661377,
+                  757.157523393631
+                ],
+                "descendant": [
+                  674.5320553779602,
+                  757.5180069208145
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  675,
+                  757
+                ],
+                "ancestor": [
+                  675.0000171661377,
+                  757.157523393631
+                ],
+                "descendant": [
+                  674.5320553779602,
+                  757.5180069208145
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.16192568785868414,
+              "candidateGapSourcePx": 0.16192568785868414,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  635,
+                  829
+                ],
+                "ancestor": [
+                  634.9999923706055,
+                  829.157537341118
+                ],
+                "descendant": [
+                  635.0038279294968,
+                  828.9956570863724
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  635,
+                  829
+                ],
+                "ancestor": [
+                  634.9999923706055,
+                  829.157537341118
+                ],
+                "descendant": [
+                  635.0038279294968,
+                  828.9956570863724
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 6.154019438908678,
+              "candidateGapSourcePx": 6.154019438908678,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  662,
+                  475
+                ],
+                "ancestor": [
+                  653.5668031454086,
+                  470.4711576962471
+                ],
+                "descendant": [
+                  650.4946432113647,
+                  475.80349195003515
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  662,
+                  475
+                ],
+                "ancestor": [
+                  653.5668031454086,
+                  470.4711576962471
+                ],
+                "descendant": [
+                  650.4946432113647,
+                  475.80349195003515
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.6718209749190405,
+              "candidateGapSourcePx": 2.6718209749190405,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  755,
+                  485
+                ],
+                "ancestor": [
+                  746.5396918875831,
+                  478.5828865681376
+                ],
+                "descendant": [
+                  743.8994439840317,
+                  478.9924208521843
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  755,
+                  485
+                ],
+                "ancestor": [
+                  746.5396918875831,
+                  478.5828865681376
+                ],
+                "descendant": [
+                  743.8994439840317,
+                  478.9924208521843
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 6.098935789698671,
+              "candidateGapSourcePx": 6.098935789698671,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  663,
+                  475
+                ],
+                "ancestor": [
+                  654.5644760727882,
+                  470.46621157867565
+                ],
+                "descendant": [
+                  651.4922821104527,
+                  475.7348586559296
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  663,
+                  475
+                ],
+                "ancestor": [
+                  654.5644760727882,
+                  470.46621157867565
+                ],
+                "descendant": [
+                  651.4922821104527,
+                  475.7348586559296
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 8.848949435032656,
+              "candidateGapSourcePx": 8.848949435032656,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  494,
+                  635
+                ],
+                "ancestor": [
+                  486.8039911463857,
+                  630.0076580777765
+                ],
+                "descendant": [
+                  493.9999960362911,
+                  635.1575531959534
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  494,
+                  635
+                ],
+                "ancestor": [
+                  486.8039911463857,
+                  630.0076580777765
+                ],
+                "descendant": [
+                  493.9999960362911,
+                  635.1575531959534
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.1428076508148686,
+              "candidateGapSourcePx": 2.1428076508148686,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  756,
+                  491
+                ],
+                "ancestor": [
+                  747.4887122958897,
+                  484.88820938766
+                ],
+                "descendant": [
+                  745.3493763640522,
+                  485.010137231648
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  756,
+                  491
+                ],
+                "ancestor": [
+                  747.4887122958897,
+                  484.88820938766
+                ],
+                "descendant": [
+                  745.3493763640522,
+                  485.010137231648
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        },
+        {
+          "side": "right",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.3255747605141579,
+              "originalGapSourcePx": 11.730538407824959,
+              "candidateGapSourcePx": 12.056113168339117,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  679,
+                  517
+                ],
+                "ancestor": [
+                  716.6813159286976,
+                  638.6858484148979
+                ],
+                "descendant": [
+                  707.3075355291367,
+                  645.7383495569229
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  679,
+                  517
+                ],
+                "ancestor": [
+                  716.6813159286976,
+                  638.6858484148979
+                ],
+                "descendant": [
+                  707.0494948625565,
+                  645.9369095563889
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.24501050824081716,
+              "originalGapSourcePx": 18.793469674979786,
+              "candidateGapSourcePx": 19.038480183220603,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  717,
+                  582
+                ],
+                "ancestor": [
+                  726.2485629022121,
+                  636.4533849656582
+                ],
+                "descendant": [
+                  736.4744422137737,
+                  652.221260368824
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  717,
+                  582
+                ],
+                "ancestor": [
+                  726.2485629022121,
+                  636.4533849656582
+                ],
+                "descendant": [
+                  736.4276965856552,
+                  652.5421687960625
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.23226585896619412,
+              "originalGapSourcePx": 14.509653793863162,
+              "candidateGapSourcePx": 14.741919652829356,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  714.517324090004,
+                  645.714116692543
+                ],
+                "descendant": [
+                  702.8558403253555,
+                  654.3477630615234
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  714.517324090004,
+                  645.714116692543
+                ],
+                "descendant": [
+                  702.6786414384842,
+                  654.4987503290176
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.0844458286192129,
+              "originalGapSourcePx": 19.316616180142006,
+              "candidateGapSourcePx": 19.40106200876122,
+              "elapsedMs": 688.2666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  696,
+                  593
+                ],
+                "ancestor": [
+                  703.211195808649,
+                  642.0458218038082
+                ],
+                "descendant": [
+                  715.3074610233308,
+                  657.1061016321182
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  696,
+                  593
+                ],
+                "ancestor": [
+                  703.211195808649,
+                  642.0458218038082
+                ],
+                "descendant": [
+                  715.2818984985353,
+                  657.2346118688585
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.015064821514095217,
+              "originalGapSourcePx": 0.32376410220658824,
+              "candidateGapSourcePx": 0.33882892372068346,
+              "elapsedMs": 706.0666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  720.8357917070389,
+                  579.7548345923424
+                ],
+                "descendant": [
+                  720.7003689408302,
+                  579.4607531949878
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  671,
+                  520
+                ],
+                "ancestor": [
+                  720.8357917070389,
+                  579.7548345923424
+                ],
+                "descendant": [
+                  720.5483859032393,
+                  579.5753828063607
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.37194674152372204,
+              "candidateGapSourcePx": 0.37194674152372204,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  678,
+                  817
+                ],
+                "ancestor": [
+                  678.0000211894512,
+                  817.1575291156769
+                ],
+                "descendant": [
+                  678.3221020613397,
+                  817.3435621517045
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  678,
+                  817
+                ],
+                "ancestor": [
+                  678.0000211894512,
+                  817.1575291156769
+                ],
+                "descendant": [
+                  678.3221020613397,
+                  817.3435621517045
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.5929147593790935,
+              "candidateGapSourcePx": 0.5929147593790935,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  675,
+                  757
+                ],
+                "ancestor": [
+                  675.0000171661377,
+                  757.157523393631
+                ],
+                "descendant": [
+                  674.529439330101,
+                  757.518223285675
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  675,
+                  757
+                ],
+                "ancestor": [
+                  675.0000171661377,
+                  757.157523393631
+                ],
+                "descendant": [
+                  674.529439330101,
+                  757.518223285675
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.16190995664799485,
+              "candidateGapSourcePx": 0.16190995664799485,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  635,
+                  829
+                ],
+                "ancestor": [
+                  634.9999923706055,
+                  829.157537341118
+                ],
+                "descendant": [
+                  635.0038279294968,
+                  828.9956728219986
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  635,
+                  829
+                ],
+                "ancestor": [
+                  634.9999923706055,
+                  829.157537341118
+                ],
+                "descendant": [
+                  635.0038279294968,
+                  828.9956728219986
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.699977668489556,
+              "candidateGapSourcePx": 2.699977668489556,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  662,
+                  475
+                ],
+                "ancestor": [
+                  659.4844977378846,
+                  472.9967276716232
+                ],
+                "descendant": [
+                  658.0723897218704,
+                  475.2979947924614
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  662,
+                  475
+                ],
+                "ancestor": [
+                  659.4844977378846,
+                  472.9967276716232
+                ],
+                "descendant": [
+                  658.0723897218704,
+                  475.2979947924614
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.0962970509710799,
+              "candidateGapSourcePx": 1.0962970509710799,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  755,
+                  485
+                ],
+                "ancestor": [
+                  752.3801991871425,
+                  482.8150070684297
+                ],
+                "descendant": [
+                  751.3857507705688,
+                  483.27646082639694
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  755,
+                  485
+                ],
+                "ancestor": [
+                  752.3801991871425,
+                  482.8150070684297
+                ],
+                "descendant": [
+                  751.3857507705688,
+                  483.27646082639694
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.6734611102343155,
+              "candidateGapSourcePx": 2.6734611102343155,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  663,
+                  475
+                ],
+                "ancestor": [
+                  660.4831927503859,
+                  473.00387649025237
+                ],
+                "descendant": [
+                  659.0721214592456,
+                  475.2746191263199
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  663,
+                  475
+                ],
+                "ancestor": [
+                  660.4831927503859,
+                  473.00387649025237
+                ],
+                "descendant": [
+                  659.0721214592456,
+                  475.2746191263199
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 11.437632374415422,
+              "candidateGapSourcePx": 11.437632374415422,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  438,
+                  609
+                ],
+                "ancestor": [
+                  434.866915628314,
+                  604.50338986516
+                ],
+                "descendant": [
+                  435.7107265368104,
+                  615.9098537117243
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  438,
+                  609
+                ],
+                "ancestor": [
+                  434.866915628314,
+                  604.50338986516
+                ],
+                "descendant": [
+                  435.7107265368104,
+                  615.9098537117243
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.8205364543803505,
+              "candidateGapSourcePx": 0.8205364543803505,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  756,
+                  491
+                ],
+                "ancestor": [
+                  753.313249915838,
+                  488.9413268342614
+                ],
+                "descendant": [
+                  752.543125846982,
+                  489.22450344264513
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  756,
+                  491
+                ],
+                "ancestor": [
+                  753.313249915838,
+                  488.9413268342614
+                ],
+                "descendant": [
+                  752.543125846982,
+                  489.22450344264513
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        }
+      ]
+    },
+    {
+      "id": "snowy-owl",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.11536835963863723,
+              "originalGapSourcePx": 28.317138503405893,
+              "candidateGapSourcePx": 28.43250686304453,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  753.5,
+                  617
+                ],
+                "ancestor": [
+                  768.6821622848511,
+                  695.8696274757385
+                ],
+                "descendant": [
+                  784.8175717592239,
+                  719.1399711370468
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  753.5,
+                  617
+                ],
+                "ancestor": [
+                  768.6821622848511,
+                  695.8696274757385
+                ],
+                "descendant": [
+                  784.8222806453705,
+                  719.2769773006439
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.02346183511996358,
+              "originalGapSourcePx": 17.2204099318463,
+              "candidateGapSourcePx": 17.243871766966265,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  675,
+                  531
+                ],
+                "ancestor": [
+                  740.5904339892523,
+                  704.8741369843483
+                ],
+                "descendant": [
+                  728.007891279459,
+                  716.630928093195
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  675,
+                  531
+                ],
+                "ancestor": [
+                  740.5904339892523,
+                  704.8741369843483
+                ],
+                "descendant": [
+                  727.9896031379701,
+                  716.6457203686238
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.014291773678191788,
+              "originalGapSourcePx": 22.840461100455382,
+              "candidateGapSourcePx": 22.854752874133574,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  665,
+                  534
+                ],
+                "ancestor": [
+                  738.4657556176185,
+                  711.9883689880371
+                ],
+                "descendant": [
+                  722.0755318701267,
+                  727.8958272635937
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  665,
+                  534
+                ],
+                "ancestor": [
+                  738.4657556176185,
+                  711.9883689880371
+                ],
+                "descendant": [
+                  722.0649555623531,
+                  727.9054505825043
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.006963926814357535,
+              "originalGapSourcePx": 36.06568341221715,
+              "candidateGapSourcePx": 36.072647339031505,
+              "elapsedMs": 326.3333333333333,
+              "sourceWorstOriginal": {
+                "source": [
+                  717,
+                  643
+                ],
+                "ancestor": [
+                  722.8629298210144,
+                  689.0807275772095
+                ],
+                "descendant": [
+                  744.7845330578939,
+                  717.7194571495056
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  717,
+                  643
+                ],
+                "ancestor": [
+                  722.8629298210144,
+                  689.0807275772095
+                ],
+                "descendant": [
+                  744.7842020477567,
+                  717.7284798451832
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.5603083311084913,
+              "candidateGapSourcePx": 2.5603083311084913,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  735,
+                  890
+                ],
+                "ancestor": [
+                  735.0000154137612,
+                  887.3245705783366
+                ],
+                "descendant": [
+                  734.9602197200061,
+                  889.8845696121455
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  735,
+                  890
+                ],
+                "ancestor": [
+                  735.0000154137612,
+                  887.3245705783366
+                ],
+                "descendant": [
+                  734.9602197200061,
+                  889.8845696121455
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.538902064059837,
+              "candidateGapSourcePx": 2.538902064059837,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  793,
+                  838
+                ],
+                "ancestor": [
+                  793.0000069141387,
+                  835.3245731592178
+                ],
+                "descendant": [
+                  792.9837769269944,
+                  837.8634233474733
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  793,
+                  838
+                ],
+                "ancestor": [
+                  793.0000069141387,
+                  835.3245731592178
+                ],
+                "descendant": [
+                  792.9837769269944,
+                  837.8634233474733
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.6238577342253238,
+              "candidateGapSourcePx": 2.6238577342253238,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  710,
+                  895
+                ],
+                "ancestor": [
+                  710.0000034570694,
+                  892.3245817422867
+                ],
+                "descendant": [
+                  709.7218998670578,
+                  894.9336597025394
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  710,
+                  895
+                ],
+                "ancestor": [
+                  710.0000034570694,
+                  892.3245817422867
+                ],
+                "descendant": [
+                  709.7218998670578,
+                  894.9336597025394
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.2488659089239293,
+              "candidateGapSourcePx": 2.2488659089239293,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  636,
+                  843
+                ],
+                "ancestor": [
+                  635.9999914169312,
+                  840.3245762586594
+                ],
+                "descendant": [
+                  636.4339264869691,
+                  842.5311795830726
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  636,
+                  843
+                ],
+                "ancestor": [
+                  635.9999914169312,
+                  840.3245762586594
+                ],
+                "descendant": [
+                  636.4339264869691,
+                  842.5311795830726
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.4535300368946982,
+              "candidateGapSourcePx": 1.4535300368946982,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  562,
+                  534
+                ],
+                "ancestor": [
+                  549.3667813539505,
+                  525.3854246020318
+                ],
+                "descendant": [
+                  550.6794020533562,
+                  524.7611037969589
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  562,
+                  534
+                ],
+                "ancestor": [
+                  549.3667813539505,
+                  525.3854246020318
+                ],
+                "descendant": [
+                  550.6794020533562,
+                  524.7611037969589
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 9.529838763320702,
+              "candidateGapSourcePx": 9.529838763320702,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  639,
+                  470
+                ],
+                "ancestor": [
+                  626.051045358181,
+                  461.99927616119385
+                ],
+                "descendant": [
+                  622.5543630123138,
+                  470.8644348978996
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  639,
+                  470
+                ],
+                "ancestor": [
+                  626.051045358181,
+                  461.99927616119385
+                ],
+                "descendant": [
+                  622.5543630123138,
+                  470.8644348978996
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 3.610676377973713,
+              "candidateGapSourcePx": 3.610676377973713,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  787,
+                  476
+                ],
+                "ancestor": [
+                  773.8638448034014,
+                  464.91297940696995
+                ],
+                "descendant": [
+                  770.4518065452576,
+                  466.0940716266632
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  787,
+                  476
+                ],
+                "ancestor": [
+                  773.8638448034014,
+                  464.91297940696995
+                ],
+                "descendant": [
+                  770.4518065452576,
+                  466.0940716266632
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 9.32805270271912,
+              "candidateGapSourcePx": 9.32805270271912,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  642,
+                  469
+                ],
+                "ancestor": [
+                  629.0073860183359,
+                  461.02603060528634
+                ],
+                "descendant": [
+                  625.4786592568669,
+                  469.66088177178585
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  642,
+                  469
+                ],
+                "ancestor": [
+                  629.0073860183359,
+                  461.02603060528634
+                ],
+                "descendant": [
+                  625.4786592568669,
+                  469.66088177178585
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 12.949339519941695,
+              "candidateGapSourcePx": 12.949339519941695,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  443,
+                  618
+                ],
+                "ancestor": [
+                  431.7658057808876,
+                  608.8834325671196
+                ],
+                "descendant": [
+                  442.9978363315264,
+                  615.3275681734085
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  443,
+                  618
+                ],
+                "ancestor": [
+                  431.7658057808876,
+                  608.8834325671196
+                ],
+                "descendant": [
+                  442.9978363315264,
+                  615.3275681734085
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 3.189088596238915,
+              "candidateGapSourcePx": 3.189088596238915,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  789,
+                  486
+                ],
+                "ancestor": [
+                  776.1104618035829,
+                  474.877581678904
+                ],
+                "descendant": [
+                  773.158954501152,
+                  476.08542716503143
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  789,
+                  486
+                ],
+                "ancestor": [
+                  776.1104618035829,
+                  474.877581678904
+                ],
+                "descendant": [
+                  773.158954501152,
+                  476.08542716503143
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        },
+        {
+          "side": "right",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "body",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.11536835963863723,
+              "originalGapSourcePx": 28.317138503405893,
+              "candidateGapSourcePx": 28.43250686304453,
+              "elapsedMs": 712,
+              "sourceWorstOriginal": {
+                "source": [
+                  753.5,
+                  617
+                ],
+                "ancestor": [
+                  768.6821622848511,
+                  695.8696274757385
+                ],
+                "descendant": [
+                  784.8175717592239,
+                  719.1399711370468
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  753.5,
+                  617
+                ],
+                "ancestor": [
+                  768.6821622848511,
+                  695.8696274757385
+                ],
+                "descendant": [
+                  784.8222806453705,
+                  719.2769773006439
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.02347644945288252,
+              "originalGapSourcePx": 17.234354911549296,
+              "candidateGapSourcePx": 17.25783136100218,
+              "elapsedMs": 581.4666666666667,
+              "sourceWorstOriginal": {
+                "source": [
+                  675,
+                  531
+                ],
+                "ancestor": [
+                  740.6626093728203,
+                  705.0456572771072
+                ],
+                "descendant": [
+                  728.0725078582765,
+                  716.8147835433483
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  675,
+                  531
+                ],
+                "ancestor": [
+                  740.6626093728203,
+                  705.0456572771072
+                ],
+                "descendant": [
+                  728.054195523262,
+                  716.8295718848706
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-root"
+              ],
+              "maximumIncreaseSourcePx": 0.014213709941532926,
+              "originalGapSourcePx": 22.653527257909037,
+              "candidateGapSourcePx": 22.66774096785057,
+              "elapsedMs": 575.5333333333333,
+              "sourceWorstOriginal": {
+                "source": [
+                  665,
+                  534
+                ],
+                "ancestor": [
+                  738.350533658266,
+                  712.2651879608632
+                ],
+                "descendant": [
+                  722.0514642298222,
+                  727.9980399906635
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  665,
+                  534
+                ],
+                "ancestor": [
+                  738.350533658266,
+                  712.2651879608632
+                ],
+                "descendant": [
+                  722.040943980217,
+                  728.0076072514057
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0.006924337770726652,
+              "originalGapSourcePx": 39.88574555832387,
+              "candidateGapSourcePx": 39.892669896094596,
+              "elapsedMs": 326.3333333333333,
+              "sourceWorstOriginal": {
+                "source": [
+                  717,
+                  643
+                ],
+                "ancestor": [
+                  722.8629298210144,
+                  689.6805342435838
+                ],
+                "descendant": [
+                  747.1069749253136,
+                  721.3522720507212
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  717,
+                  643
+                ],
+                "ancestor": [
+                  722.8629298210144,
+                  689.6805342435838
+                ],
+                "descendant": [
+                  747.1065371377127,
+                  721.3613267796379
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.3837179508836,
+              "candidateGapSourcePx": 1.3837179508836,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  735,
+                  890
+                ],
+                "ancestor": [
+                  735.0000154137612,
+                  888.5540308535099
+                ],
+                "descendant": [
+                  734.977643533051,
+                  889.9375679388643
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  735,
+                  890
+                ],
+                "ancestor": [
+                  735.0000154137612,
+                  888.5540308535099
+                ],
+                "descendant": [
+                  734.977643533051,
+                  889.9375679388643
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "far-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.3733143296272716,
+              "candidateGapSourcePx": 1.3733143296272716,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  793,
+                  838
+                ],
+                "ancestor": [
+                  793.0000069141387,
+                  836.5539661645889
+                ],
+                "descendant": [
+                  792.991625070572,
+                  837.9272549152375
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  793,
+                  838
+                ],
+                "ancestor": [
+                  793.0000069141387,
+                  836.5539661645889
+                ],
+                "descendant": [
+                  792.991625070572,
+                  837.9272549152375
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.4198704432976337,
+              "candidateGapSourcePx": 1.4198704432976337,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  708,
+                  901
+                ],
+                "ancestor": [
+                  708.000005364418,
+                  899.5539926290512
+                ],
+                "descendant": [
+                  707.8541164398193,
+                  900.9663482844828
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  708,
+                  901
+                ],
+                "ancestor": [
+                  708.000005364418,
+                  899.5539926290512
+                ],
+                "descendant": [
+                  707.8541164398193,
+                  900.9663482844828
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "near-shin"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.2158821011551524,
+              "candidateGapSourcePx": 1.2158821011551524,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  636,
+                  843
+                ],
+                "ancestor": [
+                  635.9999914169312,
+                  841.5539692640305
+                ],
+                "descendant": [
+                  636.2306631088258,
+                  842.7477698564528
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  636,
+                  843
+                ],
+                "ancestor": [
+                  635.9999914169312,
+                  841.5539692640305
+                ],
+                "descendant": [
+                  636.2306631088258,
+                  842.7477698564528
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "near-wing-flight"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.8606752854071149,
+              "candidateGapSourcePx": 0.8606752854071149,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  554,
+                  515
+                ],
+                "ancestor": [
+                  549.7450048327446,
+                  509.60118985176086
+                ],
+                "descendant": [
+                  550.5279189623319,
+                  509.24368822574615
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  554,
+                  515
+                ],
+                "ancestor": [
+                  549.7450048327446,
+                  509.60118985176086
+                ],
+                "descendant": [
+                  550.5279189623319,
+                  509.24368822574615
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-flight",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.167146597119597,
+              "candidateGapSourcePx": 4.167146597119597,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  639,
+                  470
+                ],
+                "ancestor": [
+                  635.0128680467606,
+                  465.81579887866974
+                ],
+                "descendant": [
+                  633.3673857450485,
+                  469.6443101763725
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  639,
+                  470
+                ],
+                "ancestor": [
+                  635.0128680467606,
+                  465.81579887866974
+                ],
+                "descendant": [
+                  633.3673857450485,
+                  469.6443101763725
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.5818155023855245,
+              "candidateGapSourcePx": 1.5818155023855245,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  787,
+                  476
+                ],
+                "ancestor": [
+                  782.8621453898294,
+                  471.47776820829944
+                ],
+                "descendant": [
+                  781.5601437091827,
+                  472.37606209516525
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  787,
+                  476
+                ],
+                "ancestor": [
+                  782.8621453898294,
+                  471.47776820829944
+                ],
+                "descendant": [
+                  781.5601437091827,
+                  472.37606209516525
+                ]
+              }
+            },
+            {
+              "parts": [
+                "far-wing-root",
+                "neck-upper"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.066791598186796,
+              "candidateGapSourcePx": 4.066791598186796,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  642,
+                  470
+                ],
+                "ancestor": [
+                  637.999808549881,
+                  465.84977012872696
+                ],
+                "descendant": [
+                  636.3665618215288,
+                  469.57418941599974
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  642,
+                  470
+                ],
+                "ancestor": [
+                  637.999808549881,
+                  465.84977012872696
+                ],
+                "descendant": [
+                  636.3665618215288,
+                  469.57418941599974
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-flight",
+                "tail"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 11.81993246043175,
+              "candidateGapSourcePx": 11.81993246043175,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  443,
+                  618
+                ],
+                "ancestor": [
+                  438.5578010082245,
+                  611.188257932663
+                ],
+                "descendant": [
+                  438.43755831321073,
+                  623.0075787703196
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  443,
+                  618
+                ],
+                "ancestor": [
+                  438.5578010082245,
+                  611.188257932663
+                ],
+                "descendant": [
+                  438.43755831321073,
+                  623.0075787703196
+                ]
+              }
+            },
+            {
+              "parts": [
+                "near-wing-root",
+                "neck-lower"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.358482528691671,
+              "candidateGapSourcePx": 1.358482528691671,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  789,
+                  486
+                ],
+                "ancestor": [
+                  784.909817631428,
+                  481.4750100236673
+                ],
+                "descendant": [
+                  783.807955622673,
+                  482.26960104703903
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  789,
+                  486
+                ],
+                "ancestor": [
+                  784.909817631428,
+                  481.4750100236673
+                ],
+                "descendant": [
+                  783.807955622673,
+                  482.26960104703903
+                ]
+              }
+            }
+          ],
+          "handComparisons": []
+        }
+      ]
+    },
+    {
+      "id": "capuchin",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "arm-far-elbow",
+                "arm-near-elbow"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.2601125950514118,
+              "candidateGapSourcePx": 1.2601125950514118,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  855,
+                  655
+                ],
+                "ancestor": [
+                  853.7873767835753,
+                  654.9698728987149
+                ],
+                "descendant": [
+                  854.1605076938868,
+                  653.7662711888552
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  855,
+                  655
+                ],
+                "ancestor": [
+                  853.7873767835753,
+                  654.9698728987149
+                ],
+                "descendant": [
+                  854.1605076938868,
+                  653.7662711888552
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-elbow",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.910278738247079,
+              "candidateGapSourcePx": 2.910278738247079,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.555113697052,
+                  696.6053049802781
+                ],
+                "descendant": [
+                  911.0000167250633,
+                  694.079047358036
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.555113697052,
+                  696.6053049802781
+                ],
+                "descendant": [
+                  911.0000167250633,
+                  694.079047358036
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-elbow",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 3.6328670766993407,
+              "candidateGapSourcePx": 3.6328670766993407,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.555113697052,
+                  696.6053049802781
+                ],
+                "descendant": [
+                  911.4051378965378,
+                  693.4787839651108
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.555113697052,
+                  696.6053049802781
+                ],
+                "descendant": [
+                  911.4051378965378,
+                  693.4787839651108
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-hand",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.8526572160718415,
+              "candidateGapSourcePx": 2.8526572160718415,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  893,
+                  827
+                ],
+                "ancestor": [
+                  892.7431556940078,
+                  827.9201213300228
+                ],
+                "descendant": [
+                  893.0000163853169,
+                  825.0790518522263
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  893,
+                  827
+                ],
+                "ancestor": [
+                  892.7431556940078,
+                  827.9201213300228
+                ],
+                "descendant": [
+                  893.0000163853169,
+                  825.0790518522263
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-elbow",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.234255216660256,
+              "candidateGapSourcePx": 1.234255216660256,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  716,
+                  699
+                ],
+                "ancestor": [
+                  715.5662031054496,
+                  698.2345459520816
+                ],
+                "descendant": [
+                  715.9999977350235,
+                  697.0790338754654
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  716,
+                  699
+                ],
+                "ancestor": [
+                  715.5662031054496,
+                  698.2345459520816
+                ],
+                "descendant": [
+                  715.9999977350235,
+                  697.0790338754654
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-elbow",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.24620929134581393,
+              "candidateGapSourcePx": 0.24620929134581393,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  835,
+                  633
+                ],
+                "ancestor": [
+                  834.1003453731537,
+                  631.6271749734879
+                ],
+                "descendant": [
+                  834.2883388996124,
+                  631.7861638069153
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  835,
+                  633
+                ],
+                "ancestor": [
+                  834.1003453731537,
+                  631.6271749734879
+                ],
+                "descendant": [
+                  834.2883388996124,
+                  631.7861638069153
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-hand",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.4396534684229345,
+              "candidateGapSourcePx": 1.4396534684229345,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  847
+                ],
+                "ancestor": [
+                  735.0108757495881,
+                  846.1040687799454
+                ],
+                "descendant": [
+                  734.0000049591065,
+                  845.0790115356447
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  847
+                ],
+                "ancestor": [
+                  735.0108757495881,
+                  846.1040687799454
+                ],
+                "descendant": [
+                  734.0000049591065,
+                  845.0790115356447
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "chest"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.254782507151832,
+              "candidateGapSourcePx": 1.254782507151832,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  806,
+                  582
+                ],
+                "ancestor": [
+                  806.0000102519989,
+                  580.079030880332
+                ],
+                "descendant": [
+                  805.1796101689339,
+                  581.0284637868405
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  806,
+                  582
+                ],
+                "ancestor": [
+                  806.0000102519989,
+                  580.079030880332
+                ],
+                "descendant": [
+                  805.1796101689339,
+                  581.0284637868405
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "head"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.5950235908785957,
+              "candidateGapSourcePx": 1.5950235908785957,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  842,
+                  548
+                ],
+                "ancestor": [
+                  841.9999680519104,
+                  546.0790248513221
+                ],
+                "descendant": [
+                  840.4503745257854,
+                  546.4569933146238
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  842,
+                  548
+                ],
+                "ancestor": [
+                  841.9999680519104,
+                  546.0790248513221
+                ],
+                "descendant": [
+                  840.4503745257854,
+                  546.4569933146238
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.070830891718235,
+              "candidateGapSourcePx": 4.070830891718235,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  515,
+                  760
+                ],
+                "ancestor": [
+                  514.9999966621399,
+                  758.0790331363678
+                ],
+                "descendant": [
+                  510.9873814880848,
+                  757.3930421641894
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  515,
+                  760
+                ],
+                "ancestor": [
+                  514.9999966621399,
+                  758.0790331363678
+                ],
+                "descendant": [
+                  510.9873814880848,
+                  757.3930421641894
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-far-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.089843270669638,
+              "candidateGapSourcePx": 4.089843270669638,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  519,
+                  754
+                ],
+                "ancestor": [
+                  519.0000125169754,
+                  752.0790388584137
+                ],
+                "descendant": [
+                  514.9493202292002,
+                  751.5144948225756
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  519,
+                  754
+                ],
+                "ancestor": [
+                  519.0000125169754,
+                  752.0790388584137
+                ],
+                "descendant": [
+                  514.9493202292002,
+                  751.5144948225756
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.4985418922354432,
+              "candidateGapSourcePx": 1.4985418922354432,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  658,
+                  881
+                ],
+                "ancestor": [
+                  657.9999765336513,
+                  879.0790082216263
+                ],
+                "descendant": [
+                  657.7204107105732,
+                  880.5512414753437
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  658,
+                  881
+                ],
+                "ancestor": [
+                  657.9999765336513,
+                  879.0790082216263
+                ],
+                "descendant": [
+                  657.7204107105732,
+                  880.5512414753437
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-near-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 3.2136875747812614,
+              "candidateGapSourcePx": 3.2136875747812614,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  656,
+                  717
+                ],
+                "ancestor": [
+                  656.000001847744,
+                  715.0789954662323
+                ],
+                "descendant": [
+                  654.1045517096153,
+                  717.6741942258982
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  656,
+                  717
+                ],
+                "ancestor": [
+                  656.000001847744,
+                  715.0789954662323
+                ],
+                "descendant": [
+                  654.1045517096153,
+                  717.6741942258982
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.5672631935739114,
+              "candidateGapSourcePx": 1.5672631935739114,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  832,
+                  558
+                ],
+                "ancestor": [
+                  831.999973654747,
+                  556.079015314579
+                ],
+                "descendant": [
+                  830.5402661561966,
+                  556.6496009230614
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  832,
+                  558
+                ],
+                "ancestor": [
+                  831.999973654747,
+                  556.079015314579
+                ],
+                "descendant": [
+                  830.5402661561966,
+                  556.6496009230614
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "tail1"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 3.2065373895131852,
+              "candidateGapSourcePx": 3.2065373895131852,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  235,
+                  479
+                ],
+                "ancestor": [
+                  235.00000897049904,
+                  477.079025861095
+                ],
+                "descendant": [
+                  233.69282099604607,
+                  480.00701862573624
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  235,
+                  479
+                ],
+                "ancestor": [
+                  235.00000897049904,
+                  477.079025861095
+                ],
+                "descendant": [
+                  233.69282099604607,
+                  480.00701862573624
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "tail2"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.4877343545006236,
+              "candidateGapSourcePx": 2.4877343545006236,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  424,
+                  385
+                ],
+                "ancestor": [
+                  424.0000303387642,
+                  383.0790249109268
+                ],
+                "descendant": [
+                  421.76484167575836,
+                  384.1711576223373
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  424,
+                  385
+                ],
+                "ancestor": [
+                  424.0000303387642,
+                  383.0790249109268
+                ],
+                "descendant": [
+                  421.76484167575836,
+                  384.1711576223373
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-far-knee",
+                "leg-near-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.6370154641771957,
+              "candidateGapSourcePx": 1.6370154641771957,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  526,
+                  687.1052631578947
+                ],
+                "ancestor": [
+                  524.5161893963814,
+                  685.8859037160873
+                ],
+                "descendant": [
+                  525.3261473178864,
+                  684.4633047580719
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  526,
+                  687.1052631578947
+                ],
+                "ancestor": [
+                  524.5161893963814,
+                  685.8859037160873
+                ],
+                "descendant": [
+                  525.3261473178864,
+                  684.4633047580719
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-far-knee",
+                "tail0"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.0565483058505856,
+              "candidateGapSourcePx": 2.0565483058505856,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  487,
+                  628
+                ],
+                "ancestor": [
+                  488.70671887257527,
+                  625.2287465404062
+                ],
+                "descendant": [
+                  487.0948143839836,
+                  626.5059132695199
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  487,
+                  628
+                ],
+                "ancestor": [
+                  488.70671887257527,
+                  625.2287465404062
+                ],
+                "descendant": [
+                  487.0948143839836,
+                  626.5059132695199
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-near-knee",
+                "tail0"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 2.457250677325706,
+              "candidateGapSourcePx": 2.457250677325706,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  496,
+                  597
+                ],
+                "ancestor": [
+                  497.7486805021763,
+                  593.7013919055462
+                ],
+                "descendant": [
+                  495.94246389269824,
+                  595.3674238532781
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  496,
+                  597
+                ],
+                "ancestor": [
+                  497.7486805021763,
+                  593.7013919055462
+                ],
+                "descendant": [
+                  495.94246389269824,
+                  595.3674238532781
+                ]
+              }
+            }
+          ],
+          "handComparisons": [
+            {
+              "part": "arm-near-hand",
+              "maximumDownwardIncreaseSourcePx": 0,
+              "originalMaxY": 938.8125743865967,
+              "candidateMaxY": 938.8125743865967,
+              "elapsedMs": 0,
+              "groundSourcePx": 946
+            },
+            {
+              "part": "arm-far-hand",
+              "maximumDownwardIncreaseSourcePx": 0,
+              "originalMaxY": 939.2670192718506,
+              "candidateMaxY": 939.2670192718506,
+              "elapsedMs": 0,
+              "groundSourcePx": 946
+            }
+          ]
+        },
+        {
+          "side": "right",
+          "samples": 122,
+          "sourceGapComparisons": [
+            {
+              "parts": [
+                "arm-far-elbow",
+                "arm-near-elbow"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.04608178243258475,
+              "candidateGapSourcePx": 0.04608178243258475,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  855,
+                  655
+                ],
+                "ancestor": [
+                  854.3736704809326,
+                  659.3536643794604
+                ],
+                "descendant": [
+                  854.3875526189804,
+                  659.3097233176231
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  855,
+                  655
+                ],
+                "ancestor": [
+                  854.3736704809326,
+                  659.3536643794604
+                ],
+                "descendant": [
+                  854.3875526189804,
+                  659.3097233176231
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-elbow",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 6.564555198684103,
+              "candidateGapSourcePx": 6.564555198684103,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  921,
+                  716
+                ],
+                "ancestor": [
+                  919.3356085002422,
+                  721.4771663904189
+                ],
+                "descendant": [
+                  920.9999792575836,
+                  715.1271069467068
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  921,
+                  716
+                ],
+                "ancestor": [
+                  919.3356085002422,
+                  721.4771663904189
+                ],
+                "descendant": [
+                  920.9999792575836,
+                  715.1271069467068
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-elbow",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.13295433162280554,
+              "candidateGapSourcePx": 0.13295433162280554,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.6678877830506,
+                  701.3128008842468
+                ],
+                "descendant": [
+                  909.7370710372925,
+                  701.1992644071579
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  911,
+                  696
+                ],
+                "ancestor": [
+                  909.6678877830506,
+                  701.3128008842468
+                ],
+                "descendant": [
+                  909.7370710372925,
+                  701.1992644071579
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-far-hand",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 8.924550742393548,
+              "candidateGapSourcePx": 8.924550742393548,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  1004.9999999999999,
+                  887
+                ],
+                "ancestor": [
+                  1000.5085501670836,
+                  893.8390566945076
+                ],
+                "descendant": [
+                  1005.000005364418,
+                  886.1270896196365
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  1004.9999999999999,
+                  887
+                ],
+                "ancestor": [
+                  1000.5085501670836,
+                  893.8390566945076
+                ],
+                "descendant": [
+                  1005.000005364418,
+                  886.1270896196365
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-elbow",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.818613501183634,
+              "candidateGapSourcePx": 4.818613501183634,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  813,
+                  726
+                ],
+                "ancestor": [
+                  811.215318417549,
+                  729.6030488848686
+                ],
+                "descendant": [
+                  812.9999974787236,
+                  725.1271180629731
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  813,
+                  726
+                ],
+                "ancestor": [
+                  811.215318417549,
+                  729.6030488848686
+                ],
+                "descendant": [
+                  812.9999974787236,
+                  725.1271180629731
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-elbow",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.009025799721690047,
+              "candidateGapSourcePx": 0.009025799721690047,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  835,
+                  633
+                ],
+                "ancestor": [
+                  834.7580001354218,
+                  636.9712886810303
+                ],
+                "descendant": [
+                  834.7650300264359,
+                  636.9769495725631
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  835,
+                  633
+                ],
+                "ancestor": [
+                  834.7580001354218,
+                  636.9712886810303
+                ],
+                "descendant": [
+                  834.7650300264359,
+                  636.9769495725631
+                ]
+              }
+            },
+            {
+              "parts": [
+                "arm-near-hand",
+                "body"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.89298993851537,
+              "candidateGapSourcePx": 4.89298993851537,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  734,
+                  847
+                ],
+                "ancestor": [
+                  730.2429715633393,
+                  849.2617730855942
+                ],
+                "descendant": [
+                  734.0000049591065,
+                  846.1271198987962
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  734,
+                  847
+                ],
+                "ancestor": [
+                  730.2429715633393,
+                  849.2617730855942
+                ],
+                "descendant": [
+                  734.0000049591065,
+                  846.1271198987962
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "chest"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.86211765800084,
+              "candidateGapSourcePx": 4.86211765800084,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  816,
+                  725
+                ],
+                "ancestor": [
+                  815.9999914705753,
+                  724.1271225571633
+                ],
+                "descendant": [
+                  814.2305919975042,
+                  728.6558545678854
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  816,
+                  725
+                ],
+                "ancestor": [
+                  815.9999914705753,
+                  724.1271225571633
+                ],
+                "descendant": [
+                  814.2305919975042,
+                  728.6558545678854
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "head"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 5.745574434707046,
+              "candidateGapSourcePx": 5.745574434707046,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  874,
+                  519
+                ],
+                "ancestor": [
+                  874.0000122785568,
+                  518.1271120905876
+                ],
+                "descendant": [
+                  875.653965854645,
+                  523.629480957985
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  874,
+                  519
+                ],
+                "ancestor": [
+                  874.0000122785568,
+                  518.1271120905876
+                ],
+                "descendant": [
+                  875.653965854645,
+                  523.629480957985
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-far-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.7625090827298648,
+              "candidateGapSourcePx": 1.7625090827298648,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  429,
+                  744
+                ],
+                "ancestor": [
+                  429.0000097364187,
+                  743.1271119117737
+                ],
+                "descendant": [
+                  427.23759324252603,
+                  743.1090462327004
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  429,
+                  744
+                ],
+                "ancestor": [
+                  429.0000097364187,
+                  743.1271119117737
+                ],
+                "descendant": [
+                  427.23759324252603,
+                  743.1090462327004
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-far-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.7583978991590126,
+              "candidateGapSourcePx": 1.7583978991590126,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  519,
+                  754
+                ],
+                "ancestor": [
+                  519.0000125169754,
+                  753.1271023750305
+                ],
+                "descendant": [
+                  517.255515905527,
+                  752.9064335181164
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  519,
+                  754
+                ],
+                "ancestor": [
+                  519.0000125169754,
+                  753.1271023750305
+                ],
+                "descendant": [
+                  517.255515905527,
+                  752.9064335181164
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-near-foot"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.6842308710514746,
+              "candidateGapSourcePx": 0.6842308710514746,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  658,
+                  881
+                ],
+                "ancestor": [
+                  657.9999765336513,
+                  880.1270717382431
+                ],
+                "descendant": [
+                  657.8765999794007,
+                  880.8000874221325
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  658,
+                  881
+                ],
+                "ancestor": [
+                  657.9999765336513,
+                  880.1270717382431
+                ],
+                "descendant": [
+                  657.8765999794007,
+                  880.8000874221325
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "leg-near-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 1.4379593543715077,
+              "candidateGapSourcePx": 1.4379593543715077,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  656,
+                  717
+                ],
+                "ancestor": [
+                  656.000001847744,
+                  716.1271337270737
+                ],
+                "descendant": [
+                  655.1622009460742,
+                  717.2958153577952
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  656,
+                  717
+                ],
+                "ancestor": [
+                  656.000001847744,
+                  716.1271337270737
+                ],
+                "descendant": [
+                  655.1622009460742,
+                  717.2958153577952
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "neck"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 6.313760475447484,
+              "candidateGapSourcePx": 6.313760475447484,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  921,
+                  674
+                ],
+                "ancestor": [
+                  920.9999792575836,
+                  673.1270960569382
+                ],
+                "descendant": [
+                  920.0760186910629,
+                  679.3728840947151
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  921,
+                  674
+                ],
+                "ancestor": [
+                  920.9999792575836,
+                  673.1270960569382
+                ],
+                "descendant": [
+                  920.0760186910629,
+                  679.3728840947151
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "tail1"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 37.41061185652088,
+              "candidateGapSourcePx": 37.41061185652088,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  235,
+                  479
+                ],
+                "ancestor": [
+                  235.00000897049904,
+                  478.1271091629477
+                ],
+                "descendant": [
+                  221.7173711657524,
+                  513.1003190875053
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  235,
+                  479
+                ],
+                "ancestor": [
+                  235.00000897049904,
+                  478.1271091629477
+                ],
+                "descendant": [
+                  221.7173711657524,
+                  513.1003190875053
+                ]
+              }
+            },
+            {
+              "parts": [
+                "body",
+                "tail2"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 32.698688872478975,
+              "candidateGapSourcePx": 32.698688872478975,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  424,
+                  385
+                ],
+                "ancestor": [
+                  424.0000303387642,
+                  384.1271257996559
+                ],
+                "descendant": [
+                  391.92847949266434,
+                  390.50049855709074
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  424,
+                  385
+                ],
+                "ancestor": [
+                  424.0000303387642,
+                  384.1271257996559
+                ],
+                "descendant": [
+                  391.92847949266434,
+                  390.50049855709074
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-far-knee",
+                "leg-near-knee"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 0.7113732237517431,
+              "candidateGapSourcePx": 0.7113732237517431,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  526,
+                  687.1052631578947
+                ],
+                "ancestor": [
+                  525.364982843399,
+                  686.5419141054153
+                ],
+                "descendant": [
+                  525.6957476735115,
+                  685.9121153354645
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  526,
+                  687.1052631578947
+                ],
+                "ancestor": [
+                  525.364982843399,
+                  686.5419141054153
+                ],
+                "descendant": [
+                  525.6957476735115,
+                  685.9121153354645
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-far-knee",
+                "tail0"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.530811623848429,
+              "candidateGapSourcePx": 4.530811623848429,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  487,
+                  628
+                ],
+                "ancestor": [
+                  487.7303020919071,
+                  626.7510665585013
+                ],
+                "descendant": [
+                  488.3533700942993,
+                  631.2388321757317
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  487,
+                  628
+                ],
+                "ancestor": [
+                  487.7303020919071,
+                  626.7510665585013
+                ],
+                "descendant": [
+                  488.3533700942993,
+                  631.2388321757317
+                ]
+              }
+            },
+            {
+              "parts": [
+                "leg-near-knee",
+                "tail0"
+              ],
+              "maximumIncreaseSourcePx": 0,
+              "originalGapSourcePx": 4.078373423837636,
+              "candidateGapSourcePx": 4.078373423837636,
+              "elapsedMs": 0,
+              "sourceWorstOriginal": {
+                "source": [
+                  496,
+                  597
+                ],
+                "ancestor": [
+                  496.69809436798096,
+                  595.6260556876659
+                ],
+                "descendant": [
+                  494.8685239255428,
+                  599.2710250675677
+                ]
+              },
+              "sourceWorstCandidate": {
+                "source": [
+                  496,
+                  597
+                ],
+                "ancestor": [
+                  496.69809436798096,
+                  595.6260556876659
+                ],
+                "descendant": [
+                  494.8685239255428,
+                  599.2710250675677
+                ]
+              }
+            }
+          ],
+          "handComparisons": [
+            {
+              "part": "arm-near-hand",
+              "maximumDownwardIncreaseSourcePx": 0,
+              "originalMaxY": 944.1907203197479,
+              "candidateMaxY": 944.1907203197479,
+              "elapsedMs": 0,
+              "groundSourcePx": 946
+            },
+            {
+              "part": "arm-far-hand",
+              "maximumDownwardIncreaseSourcePx": 0,
+              "originalMaxY": 946.5065953731537,
+              "candidateMaxY": 946.5065953731537,
+              "elapsedMs": 0,
+              "groundSourcePx": 946
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

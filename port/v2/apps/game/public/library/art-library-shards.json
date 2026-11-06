@@ -1,0 +1,389 @@
+{
+ "schema": "cf-art-library-shards/v1",
+ "shards": [
+  {
+   "group": "bucket-00",
+   "path": "library/shards/bucket-00.json",
+   "bytes": 10969,
+   "sha256": "29d81cee3d0abdc9891d88e41e32dfba3dacd7c219177dbdc75f7de2da485b30"
+  },
+  {
+   "group": "bucket-01",
+   "path": "library/shards/bucket-01.json",
+   "bytes": 8409,
+   "sha256": "56ba9e66298917bbb31626c6eb68e852d2984381ac01969187f3154fe34cbd49"
+  },
+  {
+   "group": "bucket-02",
+   "path": "library/shards/bucket-02.json",
+   "bytes": 8998,
+   "sha256": "9da0a357f453234ac4ffcf4c4d9a61291b9c2a8b0d4150a172462e08116a3dce"
+  },
+  {
+   "group": "bucket-03",
+   "path": "library/shards/bucket-03.json",
+   "bytes": 4846,
+   "sha256": "3b942eede37e797c4e6c12f46a9d8a73ebe29d4906fe763b06a9b0df85f20984"
+  },
+  {
+   "group": "bucket-04",
+   "path": "library/shards/bucket-04.json",
+   "bytes": 7065,
+   "sha256": "989d9277a066934253057f61301a213d192a9bcc7b18c0423552a1a15d47e3e2"
+  },
+  {
+   "group": "bucket-05",
+   "path": "library/shards/bucket-05.json",
+   "bytes": 5208,
+   "sha256": "5772818f1e8677c9249066d974ff91bbea7761ab102fbc5d74fb32b0d79cf95a"
+  },
+  {
+   "group": "bucket-06",
+   "path": "library/shards/bucket-06.json",
+   "bytes": 6436,
+   "sha256": "1b26a1c99fd00fcbe6175ea5bc79513e768083d58137eba49b63e890e9bb81e6"
+  },
+  {
+   "group": "bucket-07",
+   "path": "library/shards/bucket-07.json",
+   "bytes": 4015,
+   "sha256": "e82173d35044388e025b404f409f1c5931dce816bb362b9d1cb9f27ab90e5a9b"
+  },
+  {
+   "group": "bucket-08",
+   "path": "library/shards/bucket-08.json",
+   "bytes": 9062,
+   "sha256": "5aac06e4f42f43acd9c4649528da64fde7dba63ef62088b25b194a81a1ca6847"
+  },
+  {
+   "group": "bucket-09",
+   "path": "library/shards/bucket-09.json",
+   "bytes": 9821,
+   "sha256": "e70f2f20ee2c7c9a6ea6a66ac1c4720a73c8c6d1aa7974cfa8b16aba6ba8c430"
+  },
+  {
+   "group": "bucket-0a",
+   "path": "library/shards/bucket-0a.json",
+   "bytes": 12683,
+   "sha256": "43456d6306598c46ac74dd28172347e1300da5e94381b07e1c025bf5740813d1"
+  },
+  {
+   "group": "bucket-0b",
+   "path": "library/shards/bucket-0b.json",
+   "bytes": 6455,
+   "sha256": "93a0b1e789681e39bd3582cbe2dc87da8a17cc908346f552e0870b761bc53d20"
+  },
+  {
+   "group": "bucket-0c",
+   "path": "library/shards/bucket-0c.json",
+   "bytes": 497366,
+   "sha256": "5648db803d016dfb3211dcd08a589d8c65cb5321269eba38b7fc8f5d0adb00f6"
+  },
+  {
+   "group": "bucket-0d",
+   "path": "library/shards/bucket-0d.json",
+   "bytes": 9844,
+   "sha256": "4ed8ada48f7bf4e8a46119179e9701f6969d866c3eb2a63b1ab884e556b50d87"
+  },
+  {
+   "group": "bucket-0e",
+   "path": "library/shards/bucket-0e.json",
+   "bytes": 6318,
+   "sha256": "f368ad9d1e42306c6f8efbfb538588b03c093d675b4242cabee08fc2d1cdbbce"
+  },
+  {
+   "group": "bucket-0f",
+   "path": "library/shards/bucket-0f.json",
+   "bytes": 2399,
+   "sha256": "5cffe91b9b606bef3ec23a4a67dc7e4a3d3de2af48f4d68dfc6b2f0d450f4eb8"
+  },
+  {
+   "group": "bucket-10",
+   "path": "library/shards/bucket-10.json",
+   "bytes": 3876,
+   "sha256": "e036ce4129625d041c1a00627e4570f3058f6c4af55369c2ff88dec4723af6fe"
+  },
+  {
+   "group": "bucket-11",
+   "path": "library/shards/bucket-11.json",
+   "bytes": 8878,
+   "sha256": "949e0521137195f78c7a3671405a413f2236000e8e9c50bbfca442301df76da7"
+  },
+  {
+   "group": "bucket-12",
+   "path": "library/shards/bucket-12.json",
+   "bytes": 9074,
+   "sha256": "debedba5e2871437230a3af63010c49d1ff1829783d0435430a67246a66adc04"
+  },
+  {
+   "group": "bucket-13",
+   "path": "library/shards/bucket-13.json",
+   "bytes": 5505,
+   "sha256": "4f0f1f9a51eea0bc1648874990e42d29e919f95b25ac5faf221e00475b53a106"
+  },
+  {
+   "group": "bucket-14",
+   "path": "library/shards/bucket-14.json",
+   "bytes": 9160,
+   "sha256": "38507132f48de818b56e67f70deba95cd76ec3d932e5d9f4d6729cdb81f605ab"
+  },
+  {
+   "group": "bucket-15",
+   "path": "library/shards/bucket-15.json",
+   "bytes": 7164,
+   "sha256": "fb8f84fb49e063fe40bd6c350a5d7957af8ba6d25499a4d32e5cefd58f9154f7"
+  },
+  {
+   "group": "bucket-16",
+   "path": "library/shards/bucket-16.json",
+   "bytes": 4827,
+   "sha256": "9af45feffd605d3076120a03005e237d4f4b26903612061eb81071d5454f8118"
+  },
+  {
+   "group": "bucket-17",
+   "path": "library/shards/bucket-17.json",
+   "bytes": 9218,
+   "sha256": "5db2ceddaeea38d761d3d9bb02d185c2df2e8781d8589e13695a08e0dbd7c877"
+  },
+  {
+   "group": "bucket-18",
+   "path": "library/shards/bucket-18.json",
+   "bytes": 9440,
+   "sha256": "779eedf28f634910f4ae6312dac4f55214edfe12d1dcb51af5a495fd4d0ba9a9"
+  },
+  {
+   "group": "bucket-19",
+   "path": "library/shards/bucket-19.json",
+   "bytes": 2681,
+   "sha256": "cf07fd0ef0c655bc1ddffc047c03978b1d5db07ab86a74a45a6f1c0f81252022"
+  },
+  {
+   "group": "bucket-1a",
+   "path": "library/shards/bucket-1a.json",
+   "bytes": 4278,
+   "sha256": "7ea959948761a78b8122c978171b1cbe52dfdeec603aa52616c960f6147958a0"
+  },
+  {
+   "group": "bucket-1b",
+   "path": "library/shards/bucket-1b.json",
+   "bytes": 6769,
+   "sha256": "d6d09f34c516347f53e2334cf98eaffa5f71c27b19f12295eda344b92e9132ad"
+  },
+  {
+   "group": "bucket-1c",
+   "path": "library/shards/bucket-1c.json",
+   "bytes": 8334,
+   "sha256": "deb86b6a8673e3269721586eb86b66a3b3e6f271c70f9e0c244e498b3dcd679a"
+  },
+  {
+   "group": "bucket-1d",
+   "path": "library/shards/bucket-1d.json",
+   "bytes": 5520,
+   "sha256": "26e1ce4be98bba6d561ddebdaa366f7a37849431142a1a9eadbac74c18d2279b"
+  },
+  {
+   "group": "bucket-1e",
+   "path": "library/shards/bucket-1e.json",
+   "bytes": 8598,
+   "sha256": "8f3a960c2e92b37f8e188b27bb51f2988ce2a7999a040568a168d1e8015262b6"
+  },
+  {
+   "group": "bucket-1f",
+   "path": "library/shards/bucket-1f.json",
+   "bytes": 6443,
+   "sha256": "63324651721c8af0a43d0b3302c14051eccbafb697d08d11f506d537a0a3e4d8"
+  },
+  {
+   "group": "bucket-20",
+   "path": "library/shards/bucket-20.json",
+   "bytes": 11250,
+   "sha256": "030aab34531b4ee8ede0ae8c81ca084823ea8408777159470e4b5b1edb828825"
+  },
+  {
+   "group": "bucket-21",
+   "path": "library/shards/bucket-21.json",
+   "bytes": 7656,
+   "sha256": "beedf4c655fe6cb26450c2636f2f01999da407d0d2b87eb34810a9496f3a23a0"
+  },
+  {
+   "group": "bucket-22",
+   "path": "library/shards/bucket-22.json",
+   "bytes": 5568,
+   "sha256": "1f3d4d5a339935abec700f3f28150d43ca84f46b39a8406a41690be762e2e04f"
+  },
+  {
+   "group": "bucket-23",
+   "path": "library/shards/bucket-23.json",
+   "bytes": 5095,
+   "sha256": "7d44ad3efef3bb27017139fb4617659e1b7c2f53d1732a471e3b5caeaed6b142"
+  },
+  {
+   "group": "bucket-24",
+   "path": "library/shards/bucket-24.json",
+   "bytes": 9879,
+   "sha256": "3e4edb3ae7cbaa6cd13c403545993c3c9a1664ef508c8619a52b8890503ed82c"
+  },
+  {
+   "group": "bucket-25",
+   "path": "library/shards/bucket-25.json",
+   "bytes": 6022,
+   "sha256": "5d13d188bde9d28e435300ffaef676fce1d4f872af04dc0ecab6ca42b1e8da69"
+  },
+  {
+   "group": "bucket-26",
+   "path": "library/shards/bucket-26.json",
+   "bytes": 7004,
+   "sha256": "302e9a06608b0214c8708adf44cc630a5d5d69178f72e2b35f613af7ff31e04b"
+  },
+  {
+   "group": "bucket-27",
+   "path": "library/shards/bucket-27.json",
+   "bytes": 5249,
+   "sha256": "f352a6d88c112533f31d217fb9187af430f5775b66d1f309439f562bd3a6e01e"
+  },
+  {
+   "group": "bucket-28",
+   "path": "library/shards/bucket-28.json",
+   "bytes": 5578,
+   "sha256": "699d1f4359d0277facfb218e6d69d80aada2115e1b56196735b8067df6771d18"
+  },
+  {
+   "group": "bucket-29",
+   "path": "library/shards/bucket-29.json",
+   "bytes": 6629,
+   "sha256": "f79a4d193cedcd4d28f4c6df4e9e3c41e8a68b87d36cfec58b0313e1e3e09e28"
+  },
+  {
+   "group": "bucket-2a",
+   "path": "library/shards/bucket-2a.json",
+   "bytes": 8680,
+   "sha256": "b56d7f086b4955028e7dbb90a126983d9436f398245dc93684f684543f55dbd2"
+  },
+  {
+   "group": "bucket-2b",
+   "path": "library/shards/bucket-2b.json",
+   "bytes": 9215,
+   "sha256": "036774bf49373e4ad48392eac09dd2a89f27dd3f87a5a1bc47626d4fe6668a4c"
+  },
+  {
+   "group": "bucket-2c",
+   "path": "library/shards/bucket-2c.json",
+   "bytes": 2423,
+   "sha256": "fc1ae575517749848c5535f0cb8d75f5725635058206b51e7263f054402f8580"
+  },
+  {
+   "group": "bucket-2d",
+   "path": "library/shards/bucket-2d.json",
+   "bytes": 11963,
+   "sha256": "e7e2525bcfb395f0d81c7cfb472311297b55aefae83a8a4fc14e8051912d1150"
+  },
+  {
+   "group": "bucket-2e",
+   "path": "library/shards/bucket-2e.json",
+   "bytes": 3238,
+   "sha256": "bc0f3126f4755c81fbe9c7940ab8711b9a009b2a139e0d317850511d19e5813e"
+  },
+  {
+   "group": "bucket-2f",
+   "path": "library/shards/bucket-2f.json",
+   "bytes": 7217,
+   "sha256": "3cb8e36e86b8cc07c82b7527044795dc37f74ea83bf143ff63fd6163d58d8275"
+  },
+  {
+   "group": "bucket-30",
+   "path": "library/shards/bucket-30.json",
+   "bytes": 9150,
+   "sha256": "ac99e7c6b5f4869fdcfbdb82bc07488673aefacc3ddf58fa8d841ef95991a56f"
+  },
+  {
+   "group": "bucket-31",
+   "path": "library/shards/bucket-31.json",
+   "bytes": 7208,
+   "sha256": "4b249e595592e63ff0d1fafc4604ae10ec33d0d8d9bbe76dfb91fdbabd975155"
+  },
+  {
+   "group": "bucket-32",
+   "path": "library/shards/bucket-32.json",
+   "bytes": 8337,
+   "sha256": "52aab004f856597718e0fd1cdde0aae0b7793d8563d4a21d40c19b35e540b9d2"
+  },
+  {
+   "group": "bucket-33",
+   "path": "library/shards/bucket-33.json",
+   "bytes": 9335,
+   "sha256": "9b0923c772d434f69044f78800bc9e269bb444f94da3fe7d2c8426e8e6d545ae"
+  },
+  {
+   "group": "bucket-34",
+   "path": "library/shards/bucket-34.json",
+   "bytes": 8334,
+   "sha256": "a3c605cdc6bc2f1c049953d5938b5667a605b2fbb05e4486412098ba25283cd4"
+  },
+  {
+   "group": "bucket-35",
+   "path": "library/shards/bucket-35.json",
+   "bytes": 3988,
+   "sha256": "be7fbcad038f9354006971c68365699fb77881f25fdef9ff359b2aaeb56af44b"
+  },
+  {
+   "group": "bucket-36",
+   "path": "library/shards/bucket-36.json",
+   "bytes": 7178,
+   "sha256": "bdf5bba9f63fcd3f601dea862539d22ef44382d940289744e3905e0c4c618b0f"
+  },
+  {
+   "group": "bucket-37",
+   "path": "library/shards/bucket-37.json",
+   "bytes": 6332,
+   "sha256": "4a1de681814d6bb14c9868c576c4cc7de4b9a4542081493b9cf5f2d2a5ab798d"
+  },
+  {
+   "group": "bucket-38",
+   "path": "library/shards/bucket-38.json",
+   "bytes": 4698,
+   "sha256": "f8e04f368cdb1a3e7d90c57318e8597bf2f35272913ae7480f58336d1fe54ab3"
+  },
+  {
+   "group": "bucket-39",
+   "path": "library/shards/bucket-39.json",
+   "bytes": 11013,
+   "sha256": "7dc33adb0c1c4459b17ff437379ae48bf67cde4f362d7a91419d931ee12deea0"
+  },
+  {
+   "group": "bucket-3a",
+   "path": "library/shards/bucket-3a.json",
+   "bytes": 7575,
+   "sha256": "418a0d2831eb305bd299c693e1b532f7e721e62ae4b0a329478f6ab9203e4489"
+  },
+  {
+   "group": "bucket-3b",
+   "path": "library/shards/bucket-3b.json",
+   "bytes": 7238,
+   "sha256": "fbc9e1027242b69a234a8b9c36dd3313846d806973d7f22b786bac4e0cd87f24"
+  },
+  {
+   "group": "bucket-3c",
+   "path": "library/shards/bucket-3c.json",
+   "bytes": 5165,
+   "sha256": "1684d0a768732f7d3577d520e0794813fb1494eb5551e32cdb892649ef840643"
+  },
+  {
+   "group": "bucket-3d",
+   "path": "library/shards/bucket-3d.json",
+   "bytes": 5560,
+   "sha256": "49d1ec62d61974b85bf91506ba13995568c87db9b733de565ee7e7751381e414"
+  },
+  {
+   "group": "bucket-3e",
+   "path": "library/shards/bucket-3e.json",
+   "bytes": 8792,
+   "sha256": "12a60507e3e2e2ff012240ca005e30cd084d121416eea024bcb97fc6905c79e8"
+  },
+  {
+   "group": "bucket-3f",
+   "path": "library/shards/bucket-3f.json",
+   "bytes": 4307,
+   "sha256": "dad233cc5e6617c59eaf3fa78a42beb66a50665276b1cbab58f0e5f0f7699f2c"
+  }
+ ]
+}

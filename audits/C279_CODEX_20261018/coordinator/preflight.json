@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "identity": {
+    "agent": "OpenAI/Codex",
+    "host": "macOS",
+    "physicalRoot": "~/Projects/celestial-frontier-openai-mac",
+    "branch": "openai/mac",
+    "upstream": "origin/openai/mac"
+  },
+  "incomingHead": "321c7eb275cb0a505b77b41c372a6d1f68e072f2",
+  "merge": "32ca6505c27ddef18bb2ea6046314be331662497 G",
+  "incomingSignatures": [
+    "321c7eb275cb0a505b77b41c372a6d1f68e072f2 G",
+    "e1e4d08b59cf2ca47914ff170ac213e1f642469d G",
+    "382f27e3df59a99c237d92d45f3908fe225f3dc5 G",
+    "f33fe0edd3a14e5a096fe17a636a52a689cb8bb7 G"
+  ],
+  "startupOfficialMetadata": "2026-10-18T14:34:31.833Z",
+  "startupCapabilities": 7,
+  "toolUpdates": "None; approved versions current, REAPER suffix resolved by empty scoped outdated",
+  "C278Selection": "Imported only; no Codex certification/selector activation",
+  "budgetFileMode": "UNFROZEN; exact human no-hosted instruction governs this run",
+  "sourceRuleCorrection": "650/275 and flat-magenta QA only; canonical8%+actualintake unchanged"
+}

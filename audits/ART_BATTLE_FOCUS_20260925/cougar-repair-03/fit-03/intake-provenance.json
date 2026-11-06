@@ -1,0 +1,100 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "9e0549504d2d1a9f33618d5a1f6d941898b6eddf",
+  "helperSha256": "c638c6aec75f933ce646760844317d3f0629e6612477dc826d86cacf14b977aa",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+      "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/authoring.json",
+      "sha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/subject-source.json",
+      "sha256": "68fc59086ab5d5c9cd7176d7dcdf710e83eeb9b6c584f12e683d04e9b8a49f08"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
+  "bindingHash": "125aa19e7fa6169e30e8f0a009eb106900bca25c03783c6f95022e3815d7ab36",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearAnkle",
+    "hindNearPaw",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearAnkle",
+    "foreNearPaw",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarAnkle",
+    "hindFarPaw",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarAnkle",
+    "foreFarPaw",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "spine",
+    "pelvis",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+      "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/authoring.json",
+      "sha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/subject-source.json",
+      "sha256": "68fc59086ab5d5c9cd7176d7dcdf710e83eeb9b6c584f12e683d04e9b8a49f08",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

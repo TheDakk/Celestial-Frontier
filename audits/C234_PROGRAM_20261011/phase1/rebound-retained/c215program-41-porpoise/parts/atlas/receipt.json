@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c215program-41-porpoise",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "cad4ba75955d0a0e5393e3b65cf84ee30dd29bdadf471eefaf5dcf3ff0edfdca",
+    "pngSha256": "a7c2e0a76905eea7711891d0620201f599fdd912b364f0e975406a4c489fc5fc"
+  },
+  "parts": [
+    {
+      "name": "body-0.png",
+      "sha256": "6f49bdd87b86ca0a34b83722ece8da9de1997e60f978c5fa20c3889510205582"
+    },
+    {
+      "name": "body-1.png",
+      "sha256": "a94e73fa1f2e45d361ad629474687979dc3a11fccee8c59358bdcd107eb5ecc1"
+    },
+    {
+      "name": "body-2.png",
+      "sha256": "8df5d28ecc2b236b9c1bb9344d01f00bad3ff636016df38881853bcb9f10568e"
+    },
+    {
+      "name": "body-3.png",
+      "sha256": "93bf65119939718aa0ca134d40e2baff0ea6519664496858762c31e3c808ac09"
+    },
+    {
+      "name": "body-4.png",
+      "sha256": "caaa5115e63f75ff1d12b0ba1981fa4d398e8f85258d5e79acc1c4028662c73d"
+    },
+    {
+      "name": "body-5.png",
+      "sha256": "7e33ad70f23d17a1e2f8286cda1001063035e6f1f305bdd8c12ad80b1fa7bb97"
+    },
+    {
+      "name": "body.png",
+      "sha256": "7dd77638547112735e0c9381f96382f0b853ceba8c73d165acfecf29b617e393"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "4a8960607ee234d718783c44b1436121502d4bedbd80d952d9e8018117bcc8e1"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "899c059ad4f270cfe73756cacbaeda2792a3c482b3184df5e0d419406fd2a99a"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "7e47b9cafd66b0717697e03919704726ad6690a181b96a6d4e115b8fc23402b5"
+    },
+    {
+      "name": "head.png",
+      "sha256": "935945f924b6d31f3460e79e63d477918eb88257edac2879dad45343c661365c"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "36044c7032359c1db48bcbbea470833d9dee0f1db7dc1f4647d859260a8f4036"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "8892edeb37660ce87e9488a0dcc0bdb45ef9f35afe3de8e85a46403bea91e6c1"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Swordfish\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2648770919\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 2648770919,
+    "ownerId": "authored:archetype-sprint/c203creaturesupplyb-23-swordfish",
+    "earthName": "Swordfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2648770919,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 4,
+    "body": 5,
+    "loco": 6,
+    "trait": 16,
+    "size": 0,
+    "diet": 3,
+    "head": 2,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 7,
+    "accent": 6,
+    "temper": 9,
+    "sense": 6,
+    "repro": 0,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Swordfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7556608390599497,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.651993620414673,
+      0.5043062200956938
+    ],
+    "head": [
+      0.8076555023923445,
+      0.5054226475279107
+    ],
+    "jaw": [
+      0.8441786283891546,
+      0.5095693779904307
+    ],
+    "spine0": [
+      0.5788676236044656,
+      0.5
+    ],
+    "spine1": [
+      0.5185805422647528,
+      0.48867623604465704
+    ],
+    "spine2": [
+      0.4547846889952153,
+      0.4948165869218501
+    ],
+    "spine3": [
+      0.35757575757575755,
+      0.4995215311004785
+    ],
+    "spine4": [
+      0.23285486443381181,
+      0.5044657097288676
+    ],
+    "spine5": [
+      0.16028708133971292,
+      0.4923444976076555
+    ],
+    "caudal": [
+      0.11020733652312599,
+      0.46483253588516743
+    ],
+    "dorsal": [
+      0.5311004784688995,
+      0.3406698564593301
+    ],
+    "pectoralNear": [
+      0.5323763955342903,
+      0.5860446570972887
+    ],
+    "pectoralFar": [
+      0.6237639553429027,
+      0.5597288676236044
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from reef-shark. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "a4551e3a60e864e2c04373c81ed06f7a542d83c9e7c8c7b417d0b20ab2363d19",
+    "subjectSourceSha256": "00ae1e3379d7e28fbedab888532b6f09baa621dff0447df02e8c365b18b88b41",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.15566588550816757,
+      "jaw": 0.036757776131148834,
+      "spine0": 0.07325267872917014,
+      "spine1": 0.06134133848048538,
+      "spine2": 0.06409067641461905,
+      "spine3": 0.0973227252363848,
+      "spine4": 0.12481885309693429,
+      "spine5": 0.07357313997974808,
+      "caudal": 0.05713920614354134,
+      "dorsal": 0.14853496962167453,
+      "pectoralFar": 0.06219794087481788,
+      "pectoralNear": 0.14487737080561527
+    },
+    "measures": {
+      "body": 0.4186505429108311,
+      "bone-min": 0.036757776131148834,
+      "bone-max": 0.15566588550816757,
+      "caudal/body": 0.13648425186853633,
+      "head/body": 0.3718277406875907
+    }
+  },
+  "recipeHash": "ef41096c096a112533ebf4531b4bac75b4e351c475ef06c26a0b96ef67721a25"
+}

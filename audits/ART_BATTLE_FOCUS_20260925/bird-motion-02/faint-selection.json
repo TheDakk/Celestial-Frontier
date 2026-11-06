@@ -1,0 +1,24 @@
+[
+  {
+    "fit": "12-gull/fit-03",
+    "unchanged": true,
+    "notes": []
+  },
+  {
+    "fit": "15-goose/fit-02",
+    "unchanged": false,
+    "notes": [
+      "grounded-bird:planted-faint:0.8958251953125"
+    ]
+  },
+  {
+    "fit": "16-heron/fit-01",
+    "unchanged": true,
+    "notes": []
+  },
+  {
+    "fit": "17-sparrow/fit-01",
+    "unchanged": true,
+    "notes": []
+  }
+]

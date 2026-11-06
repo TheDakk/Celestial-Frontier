@@ -1,0 +1,110 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "f842663b379684f6f166b2d86bdccd789a977270cff075e81d584638f76262cd",
+  "declarationHash": "2dac44359d8064f840bce493221dad5decc3ef859bee9cd7214e120a08dbb27c",
+  "paintedPixels": 187124,
+  "parts": [
+    {
+      "id": "pedal-disc",
+      "joint": "base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 381,
+        "y": 790,
+        "width": 331,
+        "height": 116
+      },
+      "pixels": 31394
+    },
+    {
+      "id": "oral-disc",
+      "joint": "oral",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 550,
+        "y": 505,
+        "width": 146,
+        "height": 121
+      },
+      "pixels": 12374
+    },
+    {
+      "id": "upper-crown-envelope",
+      "joint": "crownFar",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 489,
+        "y": 312,
+        "width": 261,
+        "height": 214
+      },
+      "pixels": 24024
+    },
+    {
+      "id": "left-crown-envelope",
+      "joint": "crownLeft",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 347,
+        "y": 336,
+        "width": 229,
+        "height": 337
+      },
+      "pixels": 36800
+    },
+    {
+      "id": "right-crown-envelope",
+      "joint": "crownRight",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 657,
+        "y": 379,
+        "width": 307,
+        "height": 395
+      },
+      "pixels": 46765
+    },
+    {
+      "id": "near-crown-envelope",
+      "joint": "crownNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 506,
+        "y": 602,
+        "width": 215,
+        "height": 159
+      },
+      "pixels": 18650
+    },
+    {
+      "id": "soft-column",
+      "joint": "column",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 419,
+        "y": 661,
+        "width": 240,
+        "height": 134
+      },
+      "pixels": 17117
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "723e7cef2e69b97b1708798289d6eff15f09d9461c1d1713be1e6d0e042c54d5",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

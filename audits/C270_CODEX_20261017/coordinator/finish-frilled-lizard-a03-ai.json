@@ -1,0 +1,21 @@
+{
+  "stage": "finish-frilled-lizard-a03-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-frilled-lizard-a03-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/subjects.json"
+  ],
+  "startedUnix": 1792287334.5303092,
+  "beforeGiB": 83.13761901855469,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 53.045,
+  "lowestGiB": 71.74136734008789,
+  "afterGiB": 76.10796737670898
+}

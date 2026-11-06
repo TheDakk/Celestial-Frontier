@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "venom",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "venom",
+  "abilityName": "Venom Strike",
+  "material": "droplets, spatter, corroding film",
+  "accent": "#9fe06a",
+  "anchors": "venom/anchors.json",
+  "anchorsSha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7",
+  "reviewSheet": "venom/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "venom/registered/launch.png",
+      "imageSha256": "df5ed04a970f775995eb27a67ecc2ebf21ce38ddfcdb47935336366bdc9d93d9",
+      "master": "venom/launch-master.png",
+      "masterSha256": "8d998a1d02541b9f1be3a921cf9e44525b0a6d172518248ad9ce6d5e8256a6a6",
+      "prompt": "venom/launch.prompt.txt",
+      "promptSha256": "cca4541bfffae9687c8cf283bac035d9ef7b05b941ac076960b9d63c782ebe5c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 47,
+        "y": 469,
+        "width": 224,
+        "height": 181
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "venom/registered/travel.png",
+      "imageSha256": "f126eb3df3a998699c2e993cf74b1cc32c817a38c1d53d3e7164b17bfb1ac392",
+      "master": "venom/travel-master.png",
+      "masterSha256": "450ff8c0106cbd81b04c98893ab4fac4757d649f350dfcb2f679b4a137d5cb49",
+      "prompt": "venom/travel.prompt.txt",
+      "promptSha256": "def2593752b1d011e3fc42770b8850aaa851791996f19d26e281514942bb29b3",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 423,
+        "width": 706,
+        "height": 275
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "venom/registered/impact.png",
+      "imageSha256": "72de039576963f53c2ebcdff9c7ed012b7e6f04292263326a1d4f2159e1d5234",
+      "master": "venom/impact-master.png",
+      "masterSha256": "b12d0b655a39b5a0855d1c796eaaf0b9e3228c8ba3a010880347f3c8f441a5e3",
+      "prompt": "venom/impact.prompt.txt",
+      "promptSha256": "5a87bd39a22e49ac1c700541049b0845b8d86f02d49abab7d5c1f630b0ba4589",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 524,
+        "y": 406,
+        "width": 367,
+        "height": 308
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "venom",
+    "sequenceId": "venom-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 190,
+    "phases": {
+      "launch": {
+        "painted": 19467,
+        "edge": 6016,
+        "fringe": 8,
+        "fringeRatio": 0.0013297872340425532,
+        "accentShare": 0,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 47,
+          "y": 469,
+          "width": 224,
+          "height": 181
+        }
+      },
+      "travel": {
+        "painted": 52030,
+        "edge": 15911,
+        "fringe": 9,
+        "fringeRatio": 0.0005656464081453083,
+        "accentShare": 0.00534820996334632,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 119,
+          "y": 423,
+          "width": 706,
+          "height": 275
+        }
+      },
+      "impact": {
+        "painted": 30826,
+        "edge": 14040,
+        "fringe": 24,
+        "fringeRatio": 0.0017094017094017094,
+        "accentShare": 0.0001312163758037003,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 524,
+          "y": 406,
+          "width": 367,
+          "height": 308
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "venom",
+    "anchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+    "exitCode": 0,
+    "log": "tests/venom.txt"
+  },
+  "manifestRow": {
+    "theme": "venom",
+    "anchors": "../C132_EFFECTS_20261001/venom/anchors.json",
+    "contract": "v4.3"
+  }
+}

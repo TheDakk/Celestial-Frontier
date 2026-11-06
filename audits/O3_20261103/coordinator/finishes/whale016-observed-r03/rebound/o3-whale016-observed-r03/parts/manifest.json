@@ -1,0 +1,70 @@
+{
+  "creatureId": "o3-whale-observed-r03",
+  "parts": [
+    {
+      "name": "source-body-root-patch.png",
+      "path": "parts/source-body-root-patch.png",
+      "sha256": "66a205e41ea363f9bcf7569ee0b6f204c971bcc1b39afea72581c5a86b82402a"
+    },
+    {
+      "name": "whole-long-near-pectoral.png",
+      "path": "parts/whole-long-near-pectoral.png",
+      "sha256": "03df063ad3b43053ef7b79253113fc85b122d8e1cce27a9e0ba4dcd9bebb5a35"
+    },
+    {
+      "name": "whole-narrow-far-pectoral.png",
+      "path": "parts/whole-narrow-far-pectoral.png",
+      "sha256": "3f336a214632ba158079ab9993355c0bafea4187fb25f21bf3af05d0c698f133"
+    },
+    {
+      "name": "actual-small-dorsal.png",
+      "path": "parts/actual-small-dorsal.png",
+      "sha256": "411bf33060bf12756df1b6d30d579e8bf2f889d0b0c6ea1f2a652129e0c1d47f"
+    },
+    {
+      "name": "actual-pleated-lower-head-jaw.png",
+      "path": "parts/actual-pleated-lower-head-jaw.png",
+      "sha256": "05188ed77eb2355e5557c52013e323f6e91592075c7cb21f2de0b12283d09006"
+    },
+    {
+      "name": "actual-eye-upper-head.png",
+      "path": "parts/actual-eye-upper-head.png",
+      "sha256": "ac31fd37b10409484505414bd34f9e6fadf669b507552adea74d53072aec44a2"
+    },
+    {
+      "name": "whole-horizontal-notched-flukes.png",
+      "path": "parts/whole-horizontal-notched-flukes.png",
+      "sha256": "744b9244586ef4292487481ad2170317cf82ecdcb3775301b206a9c4775c4eaf"
+    },
+    {
+      "name": "actual-axial-body-spine5.png",
+      "path": "parts/actual-axial-body-spine5.png",
+      "sha256": "c9c5cca31e5ae56261aa60d8a71e5aaf06e2ac735e8eee8f161581c8783d9c07"
+    },
+    {
+      "name": "actual-axial-body-spine4.png",
+      "path": "parts/actual-axial-body-spine4.png",
+      "sha256": "46b09fd93628e9026e1008828c553eae5f62d98fad36e169cff75a6a3dfbf3d0"
+    },
+    {
+      "name": "actual-axial-body-spine3.png",
+      "path": "parts/actual-axial-body-spine3.png",
+      "sha256": "30ff8ce23c3b0d1ae56eb7da49d5639f6570d43faceab3b83015254ce72c45a1"
+    },
+    {
+      "name": "actual-axial-body-spine2.png",
+      "path": "parts/actual-axial-body-spine2.png",
+      "sha256": "43527392cea3c38200f23495b00b605efd603bb8e9cf605f79c50c8f8659d8ef"
+    },
+    {
+      "name": "actual-axial-body-spine1.png",
+      "path": "parts/actual-axial-body-spine1.png",
+      "sha256": "5183ba7a7533c88274874eec549e21674c66d68cd11da679282b39e00ce272f7"
+    },
+    {
+      "name": "whole-source-body-remainder.png",
+      "path": "parts/whole-source-body-remainder.png",
+      "sha256": "34ef2b4dac59d02dbde99090f7fec26c47ae02e5ef9dee58c091791a172710b9"
+    }
+  ]
+}

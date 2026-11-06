@@ -1,0 +1,20 @@
+{
+  "stage": "finish-cobra-d39-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-cobra-d39-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/finished-plan.json"
+  ],
+  "startedUnix": 1792455165.0033169,
+  "beforeGiB": 57.40874099731445,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.062,
+  "lowestGiB": 56.991092681884766,
+  "afterGiB": 57.36128616333008
+}

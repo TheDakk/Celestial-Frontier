@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c243b06r2c2-11-gibbon",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/fit"
+  },
+  {
+    "id": "c243b06r2c1-12-lemur",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/fit"
+  },
+  {
+    "id": "c243b06r2c2-13-mandrill",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-13-mandrill/fallback-1/fit"
+  },
+  {
+    "id": "c243b06r2c3-15-gorilla",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/fit"
+  },
+  {
+    "id": "c243b06r2c1-16-monkey",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/fit"
+  },
+  {
+    "id": "c243b06r2c3-17-orangutan",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-17-orangutan/fit"
+  },
+  {
+    "id": "c243b06r2c2-18-spider-monkey",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/fit"
+  },
+  {
+    "id": "c243b06r2c1-19-boa",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/fit"
+  },
+  {
+    "id": "c243b06r2c1-22-mountain-viper",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/fit"
+  }
+]

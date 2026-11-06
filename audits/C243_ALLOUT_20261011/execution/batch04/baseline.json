@@ -1,0 +1,250 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C243_ALLOUT_20261011/execution/batch04",
+ "tag": "c243b04before",
+ "pilot": 61,
+ "patternSkipped": [
+  {
+   "id": "c136birdinsectreferences-02-egret",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-03-pheasant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-05-kingfisher",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-05-pheasant",
+   "pattern": "MISSING"
+  }
+ ],
+ "scored": 57,
+ "admitPassStatic": [
+  "g2c72-12-egret",
+  "g2c83-16-cockatoo",
+  "c213originals-28-kookaburra",
+  "c213originals-29-osprey"
+ ],
+ "refused": [
+  {
+   "id": "c192creaturesupply-03-shrimp",
+   "reason": "extra-anatomy (unassigned): a front appendage of 9.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196invertebrateoriginals-01-shrimp",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 23.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyc-06-secretary-bird",
+   "reason": "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "c203creaturesupplyb-09-kingfisher",
+   "reason": "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "c203creaturesupplyb-10-macaw",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 28% paint (reference 84%)"
+  },
+  {
+   "id": "c203creaturesupplyb-12-pheasant",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 27% paint (reference 84%)"
+  },
+  {
+   "id": "c203creaturesupplyb-15-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-01-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-05-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 9% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-11-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 2% paint (reference 35%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-13-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 17% paint (reference 50%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-18-pelican",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c206birdsourcerepaints-23-tern",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 12% paint (reference 50%)"
+  },
+  {
+   "id": "g2c101-14-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 1% paint (reference 35%)"
+  },
+  {
+   "id": "g2c101-15-ostrich",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c101-17-pelican",
+   "reason": "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c106-16-kiwi",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0147 < 0.0218)"
+  },
+  {
+   "id": "g2c106-19-quetzal",
+   "reason": "unexplained-anatomy: 13.2% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c107-09-tropicbird",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 16% paint (reference 48%)"
+  },
+  {
+   "id": "g2c121-02-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+  },
+  {
+   "id": "g2c121-15-peacock",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)"
+  },
+  {
+   "id": "g2c59-09-kingfisher",
+   "reason": "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c76-09-swift",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c76-16-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)"
+  },
+  {
+   "id": "g2c81-10-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+  },
+  {
+   "id": "g2c83-09-macaw",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)"
+  },
+  {
+   "id": "g2c87-09-owl",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 2.2%)"
+  },
+  {
+   "id": "g2c98-15-secretary-bird",
+   "reason": "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c98-16-tern",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 15% paint (reference 49%)"
+  },
+  {
+   "id": "c213originals-30-owl",
+   "reason": "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "c213originals-31-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+  },
+  {
+   "id": "c213originals-32-tern-source02",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 10% paint (reference 50%)"
+  },
+  {
+   "id": "c213originals-32-tern",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 11% paint (reference 50%)"
+  },
+  {
+   "id": "c221program-03-brine-shrimp",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c221program-04-water-flea",
+   "reason": "wrong-family: quadruped matches clearly better (0.0521 < 0.0910)"
+  },
+  {
+   "id": "c221program-05-krill",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 8.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c221program-06-copepod",
+   "reason": "wrong-family: quadruped matches clearly better (0.0290 < 0.0734)"
+  },
+  {
+   "id": "c221program-07-amphipod",
+   "reason": "wrong-family: insect matches clearly better (0.0488 < 0.0829)"
+  },
+  {
+   "id": "c221program-10-cave-shrimp-v2",
+   "reason": "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 23%)"
+  },
+  {
+   "id": "c221program-12-freshwater-shrimp",
+   "reason": "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 8% paint (reference 29%)"
+  },
+  {
+   "id": "c221program-24-giant-isopod",
+   "reason": "wrong-family: fish matches clearly better (0.0366 < 0.0744)"
+  },
+  {
+   "id": "c221program-26-isopod",
+   "reason": "wrong-family: insect matches clearly better (0.0355 < 0.0730)"
+  },
+  {
+   "id": "c221program-29-vent-shrimp",
+   "reason": "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 3% paint (reference 29%)"
+  },
+  {
+   "id": "c221program-44-fairy-shrimp",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 12.9% of the paint; every same-family reference shows at least 21.3%"
+  },
+  {
+   "id": "c221program-45-tadpole-shrimp",
+   "reason": "wrong-family: fish matches clearly better (0.0257 < 0.0757)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "c203creaturesupply-20-kookaburra",
+   "static": "RED"
+  },
+  {
+   "id": "c206birdsourcerepaints-22-macaw",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c106-17-kakapo",
+   "static": "RED"
+  },
+  {
+   "id": "g2c106-18-hoatzin",
+   "static": "RED"
+  },
+  {
+   "id": "g2c107-08-frigatebird",
+   "static": "RED"
+  },
+  {
+   "id": "g2c83-15-kookaburra",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c98-11-osprey",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c213originals-23-cockatoo",
+   "static": "RED"
+  }
+ ],
+ "native": [],
+ "fishSeams": [],
+ "runnerExit": 0
+}

@@ -1,0 +1,71 @@
+{
+  "sourceFit": "audits/C228_PROGRAM_20261011/phase1/islands/c215program-46-right-whale/fit",
+  "sourceBindingSha256": "85083fa22aa24c50f6ede4cdc1b4850d9e4a85dfd40425df7cd191e44050ca6f",
+  "candidateBindingSha256": "8a595bfb434d4018192cb13eafae46f98d97bca337ab83b872ff1817cbb312e7",
+  "paintBoundaryPairs": [
+    [
+      "body-0",
+      "dorsal"
+    ],
+    [
+      "body-0",
+      "far-pectoral"
+    ],
+    [
+      "body-0",
+      "head"
+    ],
+    [
+      "body-0",
+      "near-pectoral"
+    ],
+    [
+      "body-1",
+      "near-pectoral"
+    ],
+    [
+      "body-2",
+      "dorsal"
+    ],
+    [
+      "body-2",
+      "near-pectoral"
+    ],
+    [
+      "body-3",
+      "dorsal"
+    ],
+    [
+      "body-4",
+      "dorsal"
+    ],
+    [
+      "body-5",
+      "dorsal"
+    ],
+    [
+      "caudal",
+      "dorsal"
+    ],
+    [
+      "dorsal",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ],
+    [
+      "head",
+      "near-pectoral"
+    ]
+  ],
+  "sourceMasterSha256": "d68e2933013fd5e887b8fb075c937746ec7f4a9b7d01e800e4090ec9e74003a3",
+  "sourceAtlasSha256": "7d61497560280e6b057cc2f34e5a2d8506553d8ab17936ab0a6ca588187f04f7",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

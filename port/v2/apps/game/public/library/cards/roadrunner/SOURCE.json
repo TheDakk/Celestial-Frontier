@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Roadrunner",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/11-roadrunner/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cb66c9d7c6710d29f0d36e85c91d8b4735aefe89c903ca2d5641e07e827e5259"
+}

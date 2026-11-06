@@ -1,0 +1,59 @@
+{
+  "schema": "cf.c444-best4-source-request/v1",
+  "id": "c444-11-cricket-a",
+  "species": "Cricket",
+  "family": "insect",
+  "ordinalWithinFamily": 1,
+  "variantIntent": "Fresh natural right-facing lateral-oblique specimen, with the named repair structures unobscured. Keep the whole animal SMALL at the exact canvas centre, including the longest appendages.",
+  "actualGeneratorSeed": null,
+  "seedBindingStatus": "UNAVAILABLE_NO_EXPOSED_NUMERIC_SEED_ARGUMENT",
+  "distinctFreshDrawRequired": true,
+  "prompt": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/prompt.txt",
+    "sha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747",
+    "bytes": 3484
+  },
+  "sourceSubject": {
+    "path": "audits/C275_CODEX_20261017/coordinator/paintings/c275-w1-23-c266-cricket/subject-source.json",
+    "sha256": "96a6895e4c9b327fa113731126107fe866eef8c5a485fc9b34effaf02b790a87",
+    "bytes": 2665
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+    "bytes": 2954509
+  },
+  "keyColor": "magenta",
+  "keyRgb": [
+    255,
+    0,
+    255
+  ],
+  "requestedDimensions": [
+    1254,
+    1254
+  ],
+  "transparentBackground": false,
+  "changedCorrection": "Use a materially smaller centered specimen with complete long antenna curves turned upward and inward inside the requested frame. Both antennae should naturally read longer than the whole body, with continuous opaque paint rather than faint erased ends. Six unbranched legs with enlarged cranked jumping hind pair; naturally offset near and far feet without adding any free terminal for a hidden leg. The existing issue is actual 8% framing, not the discarded650/275 QA.",
+  "originalEvidenceNeverOverwritten": true,
+  "sourceReviewed": false,
+  "generationPerformed": false,
+  "admissions": 0,
+  "referenceUsage": "TEXT_STYLE_AUTHORITY_REVIEWED_BY_COORDINATOR_NO_IMAGE_INPUT",
+  "sourceR03Request": {
+    "path": "audits/C444_CODEX_20261018/w1-source/requests/cricket/a/request.json",
+    "sha256": "e06ae8e8e8fb69948ad6f35d8db4c6aa73b30e2e5dbe8fe6e29fb121bf041b15",
+    "bytes": 1910
+  },
+  "sourceR03Prompt": {
+    "path": "audits/C444_CODEX_20261018/w1-source/requests/cricket/a/prompt.txt",
+    "sha256": "64c347e74634ed22e6698383eb41b3beec01b178e2a4f7cbed0f28e5f3485a66",
+    "bytes": 3442
+  },
+  "sourceR03Authority": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/effective-groups-r03.json",
+    "sha256": "e66646996f3f0fe5a499514941ef0d4c8fd651e21ab1d2dd3f17220e029bf4b1",
+    "bytes": 269924
+  },
+  "styleInputRevision": "C444_R04_TEXT_STYLE_NO_IMAGE_INPUT"
+}

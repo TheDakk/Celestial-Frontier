@@ -1,0 +1,26 @@
+{
+  "stage": "triage-d40-originals",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D40-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C475_DECISIONS_20261019/coordinator/freeze-triage.py",
+    "triage-d40-originals",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/cobra-d39/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40/native",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/cricket-d40/native"
+  ],
+  "startedUnix": 1792456071.899267,
+  "beforeGiB": 56.918609619140625,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 50.192,
+  "lowestGiB": 56.89853286743164,
+  "afterGiB": 56.89768981933594
+}

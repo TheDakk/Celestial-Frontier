@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sea Bass",
+ "fitDir": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cb24c182ba55dd257df8f39331eba4563194911926354d1c690b1a1a50c7bd0f"
+}

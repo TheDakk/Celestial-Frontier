@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c192-islands-02b-tiger-shark-habitat",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "9bada528879e76ae06bd54d3775cd143db522e7c9c84825af5dc6c9602d048fe",
+    "pngSha256": "a147616a35823a4ffec516127e39f3dc2b2de7c220ebab4cf6d8482b8894736e"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "3299d4f46d787fa8b32f9ecea39576a9b68386339e09b182333f76a0a6522726"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "71eabbe1ecdc9fd29cc8fe95fc2cf6174c61125c4e80aed70c65e0c0bdad9289"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "9bb11194e4f23620e609a65a80ab342bf0d0eaab38c90a9eb38ca1c7ffe21030"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "f586bf1f75997524d73ca12d1fbcd06560b72d87f7fb012ca803e467f39226f7"
+    },
+    {
+      "name": "head.png",
+      "sha256": "2307a97553d264e188494d7c61c7357c03548e23e06cfb86bd5e56404d8c0f8a"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "9f050d2a99d23cd15071f6ee7548435ce7051021ee89102fd1418ae6f370c58a"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "fde96dfdf77b15f1af97f14989fdaa9f25f057192f5753a741f25cf61ff1a08f"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "470121b59d5fe178282fa7fab10c6d96d61647190cc2dcd2e1c505a6c9ce65be"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "0c5219b17df9f9b2a79758b6fb8a88197cfffe85a772577442284ce2bfa4f6bc"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "1b24f69e2db7ae6a371dde2339b11e2a698db759e30eeed76e89577323547ded"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

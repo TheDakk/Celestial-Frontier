@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Turtle",
+  "slug": "04-turtle",
+  "id": "c266-intake-turtle",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-33-turtle",
+  "masterSha256": "29fefd93172a0f8def37010abb8c8ec48b206e20b65ce593f2afc470d54886de",
+  "masterCopySha256": "29fefd93172a0f8def37010abb8c8ec48b206e20b65ce593f2afc470d54886de",
+  "subjectSourceSha256": "eb9766c2b58c9a42f4c995f5c4f3944b5ed81f5d270b4a31d09508354a5ce990",
+  "promptSha256": "83632a5b672febbc811dcd23f13b4a340784aa7c5dcf6fb6ab216b1aa97d1527",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "observation": "Full-size review: domed shell covering the trunk; four separate stumpy clawed legs (hind near x≈280-424, hind far x≈466-555, fore near x≈778-862, fore far x≈837-937) each with its own foot; short pointed tail; striped neck and head poking out the front. The single-ground-contact and sprawl refusals are auto-author transfer failures.",
+  "joints": 27,
+  "parts": 25,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/04-turtle.mjs"
+}

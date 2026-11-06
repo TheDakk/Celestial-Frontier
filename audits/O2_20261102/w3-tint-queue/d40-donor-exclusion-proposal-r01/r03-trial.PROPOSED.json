@@ -1,0 +1,98 @@
+{
+  "schema": "cf.o2-proposed-donor-exclusion-trial/v1",
+  "original": {
+    "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/original.png",
+    "sha256": "12e399f1bc0dc84e8525c42c21602c5500a2ae4a937665393a3aaa98b7249411"
+  },
+  "canonical": {
+    "path": "audits/O2_20261102/coordinator/egret-green-observed-source-r03/keyed-canonical.png",
+    "sha256": "e1b5fb5bc296e3f62d8b23d21d4f42ee66412744dd5edc24ffd20b71aa3fd5eb",
+    "bytes": 1667097,
+    "rgbaSha256": "4c569ef1e946443e70d000e545e3ec46f92f2376c55b828efb481025f511374e"
+  },
+  "lineage": [
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-observed-source-r03/canonical-seal.json",
+      "sha256": "e7b9c90a7cf79fa4193a28d572078de2fd267ac466cfce781fb95af257c84a46",
+      "bytes": 1230
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/prompt.txt",
+      "sha256": "b7c80088e67a48e6e9f1fc1de0c0210a829059a8eaef534fad0ed7a442b21246",
+      "bytes": 13478
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/request.json",
+      "sha256": "9c445fbd90f09360b792f17c1b99450fa6de0784cb31f003ffe38c24ccb5ea0e",
+      "bytes": 1406
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/generation.json",
+      "sha256": "758abcd23b1f9a1875f506efacb2b4822665c74308461f50cbfa93a7094cfa11",
+      "bytes": 1154
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/subject-source.json",
+      "sha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/margin.json",
+      "sha256": "dccd6c28e916b80e901cc565ef75101aa0c97804c768b789813d8559aa4bb4ee",
+      "bytes": 1035
+    }
+  ],
+  "keyColor": "green",
+  "protectedPixels": [],
+  "despillPixels": [
+    801661,
+    805420
+  ],
+  "scope": "Proposal data only. Not executable by the current CLI; no derivative produced. Does not claim one exclusion clears this source. Exact source-material and connectivity/donor proof required.",
+  "productionDispatchAuthorized": false,
+  "proposedD40Schema": "cf.post-key-matte-request/v1",
+  "donorExclusionSource": {
+    "width": 1254,
+    "height": 1254,
+    "originalRgbaSha256": "35859946149cac66aa8565c7a2d3f61141a921f6d5de1b742e7e3c9d7505dcc1"
+  },
+  "donorExclusionPixels": [
+    801661
+  ],
+  "targetReview": [
+    {
+      "xy": [
+        355,
+        639
+      ],
+      "index": 801661,
+      "originalRGBA": [
+        200,
+        208,
+        186,
+        255
+      ],
+      "reason": "Locally observed eligible olive source seed matching the recovered fringe donor RGB. Candidate exclusion and target, pending root authoritative donor map."
+    },
+    {
+      "xy": [
+        352,
+        642
+      ],
+      "index": 805420,
+      "rawRGBA": [
+        136,
+        209,
+        116,
+        255
+      ],
+      "defaultD40RGBA": [
+        200,
+        208,
+        186,
+        169
+      ],
+      "reason": "Recovered olive fringe, existing source support only."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "stage": "finish-hoatzin-signed-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-hoatzin-signed-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/subjects.json"
+  ],
+  "startedUnix": 1792288490.6781492,
+  "beforeGiB": 79.91242599487305,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.861,
+  "lowestGiB": 70.53316497802734,
+  "afterGiB": 77.89499282836914
+}

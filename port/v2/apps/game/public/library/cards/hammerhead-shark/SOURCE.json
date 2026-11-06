@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hammerhead Shark",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/08-hammerhead-shark/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3b7de74b35383517aa27be50b11df6f1e9e0950c34f5d86c939960371acc3ccf"
+}

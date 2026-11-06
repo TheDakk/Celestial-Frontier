@@ -1,0 +1,72 @@
+{
+  "species": 24,
+  "generated": 72,
+  "exactNative1254": true,
+  "staticPassSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin"
+  ],
+  "admittedSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin"
+  ],
+  "sourceIdentityHolds": [
+    {
+      "name": "Tripod Fish",
+      "round": 2,
+      "candidate": 3,
+      "id": "c243b02r2c3-29-tripod-fish",
+      "masterSha256": "69615ae9cb20ef068328014aac1ab830b05f8b332793072cddbca88ac2dc42d9",
+      "promptSha256": "1ada789af6b774242d9529ea702a326cccee83c535117a1f51eb6c5a15d0fcc8",
+      "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+      "framing": {
+        "status": "PASS_FRAMING_ONLY",
+        "bounds": {
+          "x0": 224,
+          "y0": 424,
+          "x1": 965,
+          "y1": 845
+        },
+        "margins": {
+          "left": 224,
+          "right": 288,
+          "top": 424,
+          "bottom": 408
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      },
+      "verdict": "REFUSE",
+      "static": null,
+      "reasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 26% paint (reference 82%)",
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 5% paint (reference 97%)",
+        "missing-anatomy: part jaw (jaw) covers 5% paint (reference 93%)",
+        "missing-anatomy: part head (head) covers 11% paint (reference 48%)",
+        "missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 54%)",
+        "unexplained-anatomy: 20.6% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3f/c243b02r2c3-29-tripod-fish/score.json",
+      "selected": false,
+      "nativePending": false,
+      "visualHold": "Forward feelers emerge at snout/mouth instead of canonical pectoral roots; broad pectoral fin is separate."
+    }
+  ],
+  "classOnlyPreviousSources": [
+    "Lionfish",
+    "Pipefish"
+  ]
+}

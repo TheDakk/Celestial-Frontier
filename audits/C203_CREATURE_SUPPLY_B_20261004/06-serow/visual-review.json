@@ -1,0 +1,28 @@
+{
+  "name": "Serow",
+  "masterSha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four separate cloven hooves, two clearly visible ears, paired short horns and coarse gray-brown mane are visible. Far foreleg proximal root is body-occluded. Tail is conspicuously long with a pale tuft for this generic identity; retain species-proportion/style hold, plus spiky fur-fringe review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 246,
+      "y0": 259,
+      "x1": 1051,
+      "y1": 964
+    },
+    "margins": {
+      "left": 246,
+      "right": 202,
+      "top": 259,
+      "bottom": 289
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

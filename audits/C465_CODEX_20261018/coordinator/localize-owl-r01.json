@@ -1,0 +1,19 @@
+{
+  "stage": "localize-owl-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-owl-exact-localization",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/w2-checkpoint/run-owl-localization-r01.mjs"
+  ],
+  "startedUnix": 1792377825.550827,
+  "beforeGiB": 59.783180236816406,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.011,
+  "lowestGiB": 59.783172607421875,
+  "afterGiB": 59.78294372558594
+}

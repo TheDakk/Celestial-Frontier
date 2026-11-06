@@ -1,0 +1,14 @@
+{
+  "id": "20-wild-horse",
+  "name": "Wild Horse",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-f0b5f077-958c-41f8-aed9-956747e95792.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+  "bytes": 1405014,
+  "promptSha256": "fdfd3188cccfe17422a67436334709f178ce3746ec27b84c886220891c42e9ea",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

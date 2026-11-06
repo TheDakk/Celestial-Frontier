@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Chameleon",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/g2c132quadrupeds-21-chameleon/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5bdf995afa6d815010d2c2b57ac997c8134dce712f18feffc9168909dd6ed24f"
+}

@@ -1,0 +1,16 @@
+✔ real named chains retain four/six independent limb owners (0.595542ms)
+✔ split reference component can assign two distinct real limbs (0.358708ms)
+✔ one chain cannot pay for two limbs or a duplicated fifth leg (0.073ms)
+✔ new appendage cannot steal the only owner of an already assigned one (0.04575ms)
+✔ unknown owner/absent tail cannot supply any matching edge (0.044125ms)
+✔ inventory recovers four painted legs from two joined reference components (0.747166ms)
+✔ inventory rejects a fifth leg even with a full-body remainder covering it (0.244542ms)
+✔ inventory rejects shifted owners instead of stealing a previous assignment (0.454958ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.921958

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "obsidian",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/obsidian/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+    "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+    "audits/C132_ARENAS_20261001/obsidian/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. Dark fractured glass and open fighting band are readable as a distinct volcanic material; no invented celestial bodies or lettering observed.",
+    "The sky and highlights use stronger warm golden illumination than the near-neutral diffuse system card asks for. NEAR introduces a cooler foreground color band and texture discontinuity.",
+    "Fine green edge traces remain on side glass silhouettes, and dark-body/effect readability is untested. Independent scoring and native battle proof remain pending."
+  ]
+}

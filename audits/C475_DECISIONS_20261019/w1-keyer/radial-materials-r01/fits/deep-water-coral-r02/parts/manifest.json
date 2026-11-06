@@ -1,0 +1,110 @@
+{
+  "creatureId": "c475-deep-water-coral-r02",
+  "parts": [
+    {
+      "name": "soft-crown-field-13.png",
+      "path": "parts/soft-crown-field-13.png",
+      "sha256": "62a882d33964a5882735189117cb6af359b38b549c4800bd3aa2d31db359572c"
+    },
+    {
+      "name": "soft-crown-field-8.png",
+      "path": "parts/soft-crown-field-8.png",
+      "sha256": "e5c7bbedfc9aa7a977a7930b64978469148dd7e83429fc522cda7e9e040475a5"
+    },
+    {
+      "name": "soft-crown-field-9.png",
+      "path": "parts/soft-crown-field-9.png",
+      "sha256": "cf9dbf572c11600ef69ac04c99859582c7865aa131a50981ea5182fcd5f8b67c"
+    },
+    {
+      "name": "soft-crown-field-10.png",
+      "path": "parts/soft-crown-field-10.png",
+      "sha256": "434c987b934fa066cf27dcafa1c0322e4244d964719598d3ea8fa1fae927e55f"
+    },
+    {
+      "name": "soft-crown-field-11.png",
+      "path": "parts/soft-crown-field-11.png",
+      "sha256": "bf4307afa4c276d18c37c827738c27b8f202d1212cf98c5a6f834ff6451a4a9e"
+    },
+    {
+      "name": "soft-crown-field-12.png",
+      "path": "parts/soft-crown-field-12.png",
+      "sha256": "21b09321aa41f3d52739c44bcef588cee85cdf0d853db0e51f7e5ec052d70119"
+    },
+    {
+      "name": "soft-crown-field-15.png",
+      "path": "parts/soft-crown-field-15.png",
+      "sha256": "c09172c3b27bd66f276e3475d850a651f6046493f0c18564c52a02c718b02bb1"
+    },
+    {
+      "name": "soft-crown-field-17.png",
+      "path": "parts/soft-crown-field-17.png",
+      "sha256": "8f79b00f3c0fed1e30e8d4c2a57917fca55524bcf286e8d3ccb059c547fb7bc3"
+    },
+    {
+      "name": "soft-crown-field-19.png",
+      "path": "parts/soft-crown-field-19.png",
+      "sha256": "07944e7ba5138b156c5aea73e229f73c8936d780d13c743d2b7d55420f408830"
+    },
+    {
+      "name": "soft-crown-field-0.png",
+      "path": "parts/soft-crown-field-0.png",
+      "sha256": "6d448387cbc22a79e3174da18efdb8a444fa0823cbb56ba99c73c53073694f64"
+    },
+    {
+      "name": "soft-crown-field-1.png",
+      "path": "parts/soft-crown-field-1.png",
+      "sha256": "795cd84603253243ec51cec9d0edbbf7a9db1500708a5fa161eb45c244d40dc4"
+    },
+    {
+      "name": "soft-crown-field-2.png",
+      "path": "parts/soft-crown-field-2.png",
+      "sha256": "4d09d66c3f931207a64833d0538672b13cddd59ebe40b443d3bf961f0a0ae8e6"
+    },
+    {
+      "name": "soft-crown-field-3.png",
+      "path": "parts/soft-crown-field-3.png",
+      "sha256": "b2f24e25e8dbed8a5b91b83eb398085b30112de0b0ff816e01e90b60f0a67ed0"
+    },
+    {
+      "name": "soft-crown-field-4.png",
+      "path": "parts/soft-crown-field-4.png",
+      "sha256": "c427dd7827bc776c6803a9ba8c0307bf3bf71475ddfd07d131dd6682a721b427"
+    },
+    {
+      "name": "soft-crown-field-5.png",
+      "path": "parts/soft-crown-field-5.png",
+      "sha256": "65c2e8ef083a6f0cc8faa6422ddff20b5ce161f6af1244ba6b50bb6c201983b2"
+    },
+    {
+      "name": "soft-crown-field-6.png",
+      "path": "parts/soft-crown-field-6.png",
+      "sha256": "8ce435d2fc8d8230a24f7bff27730bcfdf8cdfa50ce111405aa6b87da331c679"
+    },
+    {
+      "name": "soft-crown-field-7.png",
+      "path": "parts/soft-crown-field-7.png",
+      "sha256": "e7b056d59a2dcf7938248a783e7a4ee3ca3db246b0fd28c391128ffc44636c08"
+    },
+    {
+      "name": "soft-crown-field-14.png",
+      "path": "parts/soft-crown-field-14.png",
+      "sha256": "0fa46f97d507c086f35b831de6aa44f21da60a7694eb972fda4715ece73e73bb"
+    },
+    {
+      "name": "soft-crown-field-16.png",
+      "path": "parts/soft-crown-field-16.png",
+      "sha256": "0b4aa852ce0200b0d816dfe52cb6481c84d02e73749c1de3aa542423f302623c"
+    },
+    {
+      "name": "soft-crown-field-18.png",
+      "path": "parts/soft-crown-field-18.png",
+      "sha256": "f8073d8a8ca5db592bd37478b3bf7a0567f7317c0bf8abbe5111228555c38917"
+    },
+    {
+      "name": "calcified-calyx-skeleton.png",
+      "path": "parts/calcified-calyx-skeleton.png",
+      "sha256": "7f6dd4ad97d3fe072ef652b89d5f651332a27da2052bf1abede3eb1c7d01988e"
+    }
+  ]
+}

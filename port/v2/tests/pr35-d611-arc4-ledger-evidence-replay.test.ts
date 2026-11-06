@@ -14,15 +14,15 @@ const carriers = Object.freeze({
     file: 'ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
     gzipBytes: 5_029,
     rawBytes: 106_976,
-    gzipSha256: 'bcf4c524187fda97c7b4cbef8c807b8ffc944965533ef6d6bd75baccf2959e31',
-    rawSha256: '37daf338ebf0cb9048e6caae245f8fe6e4cbff1fcfcab226a954485b487a5f98',
+    gzipSha256: '3f91ce6dda856038fe4bf64bed0191f31597fbef7bd062321e422bbeb39d3835',
+    rawSha256: '441829f416947ee0d0986a6b7789a2c2106d5edc897520215a49092f3b5a58b6',
   }),
   scene: Object.freeze({
     file: 'ARC1C_SCENEMEM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
-    gzipBytes: 44_965,
+    gzipBytes: 44_966,
     rawBytes: 786_975,
-    gzipSha256: '29d99750ce372e617f3276451209561f0593d5631f49518bbce8d430099880fb',
-    rawSha256: '3c7cea08d02dc533ac1ea8c5fbad953f6aef9ed436599763ff7d1da915e461c4',
+    gzipSha256: 'a05707e7a58a1cf2707599f1afd230ce5b4ea20b391a19f98c7fefea5d625695',
+    rawSha256: '2775811efa92a718c474575f1fcde985bd4fa3519cf081262397e3955ca554bf',
   }),
   compendium: Object.freeze({
     file: 'ARC1C_COMPENDIUM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
@@ -47,10 +47,10 @@ const carriers = Object.freeze({
   }),
   rightSizedScene: Object.freeze({
     file: 'ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz',
-    gzipBytes: 45_066,
+    gzipBytes: 45_067,
     rawBytes: 787_362,
-    gzipSha256: 'd0598401c43cf0d8d0b60f145de501c21ae86d3825d161b88b28f6d95ab2a778',
-    rawSha256: '2b825b7ba33152ef882f5601ef7dea2b032ef042903bb7e3824740741e495709',
+    gzipSha256: '4893ba69fd2133fdad56f9763b5cd13462abd3e174c77b9faa13edb10f3f1cf9',
+    rawSha256: '0737ac5c2d92b271a325825fd92ff2213d9b886782d10909500e62e59cd7afbe',
   }),
   rightSizedCompendium: Object.freeze({
     file: 'ARC1C_COMPENDIUM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz',
@@ -77,8 +77,8 @@ const carriers = Object.freeze({
     file: 'ARC1C_SCENEMEM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz',
     gzipBytes: 44_946,
     rawBytes: 786_692,
-    gzipSha256: '6c1e2180e6d3523bf5b07021c24ad8aa9f6e67c1e0fc72b2433691afad3144aa',
-    rawSha256: '77607fd1b824e12f973a85d82d45f7b09997523125f839a664ba7a42f224c648',
+    gzipSha256: 'd76622a715e716268b9136b68b629ee1bbe19edb2aa07d9c7b8e7aad0bf2913a',
+    rawSha256: '29997acb78013e3be6ce304f3103dc7ed65e64a9557dcef5d8bc74be5aac1a8c',
   }),
   storageCompendium: Object.freeze({
     file: 'ARC1C_COMPENDIUM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz',
@@ -105,8 +105,8 @@ const carriers = Object.freeze({
     file: 'ARC1C_SCENEMEM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz',
     gzipBytes: 44_966,
     rawBytes: 787_316,
-    gzipSha256: '5e65452247d0e61a86f7ef15ad7623cf2ce00a37123b34188cbb5fde6a997a10',
-    rawSha256: '7feb9b218af4339d35674cd7dcffb0288acb6be4e6d53b6036c60f97c6881cfb',
+    gzipSha256: '92e23a975deacc01a90427b596562073a4f2ea4729c39c7494aae44fbd37c27f',
+    rawSha256: '4ff663b0cb4958f878284d6e7554a1f61cf759fce87cb6fa47d94d24f8a5011d',
   }),
   preconditionCompendium: Object.freeze({
     file: 'ARC1C_COMPENDIUM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz',
@@ -133,8 +133,8 @@ const carriers = Object.freeze({
     file: 'ARC1C_SCENEMEM_PR35_CURRENT_HEAD_V8_BUDGET_RED_20260830_EBF172C.json.gz',
     gzipBytes: 45_097,
     rawBytes: 787_600,
-    gzipSha256: '8060c10871ac0a31ff0eef8183da8f91ec79c8dd09c69a277d1f9855a86a14ac',
-    rawSha256: 'a19654d003e04a947a0719150eb332a9bde038c02d41b16f00b2bbffa005ad46',
+    gzipSha256: '3cb1d0c5260edfdfdc2b49ed6ea768924dabca36b8137419ce3ceb8a4e458e4b',
+    rawSha256: '21e988070a4a881415a2bfb853fbf3b64d030a23371b268bcd7d3450eb34ebb6',
   }),
 });
 

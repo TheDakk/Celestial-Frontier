@@ -1,0 +1,337 @@
+{
+  "schema": "cf-pilot-refinement/v1",
+  "recordedUtc": "2026-09-06T03:05:55.260303+00:00",
+  "localWorkDate": "2026-09-05",
+  "sourceSha": "1b208c7fe5b47aefee811ad84b486d5ef7fa106a",
+  "branch": "openai/mac",
+  "develop": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "syncMerge": "bc211bef1f4def92a27933b7c79a090d8913fae4",
+  "profile": {
+    "status": "PASS",
+    "owner": "tracked-input-preflight --profile=develop",
+    "files": 308,
+    "testsPassed": 3239,
+    "testsSkipped": 1,
+    "rootMainJsAbsent": true,
+    "logSha256": "3aa4ebc24effdc12cf67611c33be595b3ad905bd3bd3d57502206b0ed8bff1f0"
+  },
+  "rootValidate": {
+    "pass": true,
+    "bootErrors": 0,
+    "earthRenders": 1010,
+    "determinismProbes": 50
+  },
+  "actionsPolicy": {
+    "pass": true,
+    "controls": 81,
+    "changed": false,
+    "hostedAttempts": 0
+  },
+  "localBrowserReview": {
+    "fullSource": "72d1be5c0c9bfa7e6fa9aa1e20601496b066ecd2",
+    "fullReport": "pilot-refinement-20260905/full-review.json",
+    "conditions": 48,
+    "nativePanelPaths": 9,
+    "expandedControlsViewports": 3,
+    "errors": 0,
+    "finalSpacingSource": "1b208c7fe5b47aefee811ad84b486d5ef7fa106a",
+    "finalSpacingReport": "pilot-refinement-20260905/final-atlas-review.json",
+    "liveZeroGapNegativeControl": true,
+    "monoAndMaxContrastVerified": true,
+    "browser": {
+      "protocolVersion": "1.3",
+      "product": "Edg/152.0.4191.62",
+      "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "jsVersion": "15.2.23.8"
+    },
+    "certification": false
+  },
+  "build": {
+    "completeRuntimePackBytes": 17004117,
+    "admissionCeilingBytes": 134217728,
+    "aggregate256MiBEnforcement": "OPEN",
+    "serviceWorkerSha256": "68ac4cbcfaaaa29e5315567481404df3010a8b675af50c3f55b4ead07caf7ebd",
+    "pilotAssetFiles": 15,
+    "pilotAssetBytes": 11363130,
+    "assets": [
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+        "bytes": 33644,
+        "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+        "bytes": 4608044,
+        "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+        "bytes": 230444,
+        "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+        "bytes": 134444,
+        "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+        "bytes": 4608044,
+        "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+        "bytes": 26924,
+        "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+        "bytes": 43244,
+        "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+        "bytes": 67244,
+        "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-landscape.webp",
+        "bytes": 765318,
+        "sha256": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-phone.webp",
+        "bytes": 343072,
+        "sha256": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/fonts/Inter-LICENSE.txt",
+        "bytes": 4380,
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/fonts/InterVariable.woff2",
+        "bytes": 352240,
+        "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-132.webp",
+        "bytes": 12532,
+        "sha256": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-300.webp",
+        "bytes": 40660,
+        "sha256": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752"
+      },
+      {
+        "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp",
+        "bytes": 92896,
+        "sha256": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343"
+      }
+    ],
+    "initialJavaScriptComparison": {
+      "candidate": {
+        "files": [
+          {
+            "file": "assets/CanvasPool-BewL5izq.js",
+            "bytes": 804,
+            "gzipBytes": 456
+          },
+          {
+            "file": "assets/CanvasRenderer-DXKJLlc8.js",
+            "bytes": 87438,
+            "gzipBytes": 27229
+          },
+          {
+            "file": "assets/canvasUtils-CWV5icuA.js",
+            "bytes": 6070,
+            "gzipBytes": 2069
+          },
+          {
+            "file": "assets/Geometry-C5FtorEc.js",
+            "bytes": 101664,
+            "gzipBytes": 30814
+          },
+          {
+            "file": "assets/getPo2TextureFromSource-0axNaDip.js",
+            "bytes": 25109,
+            "gzipBytes": 8605
+          },
+          {
+            "file": "assets/getTextureBatchBindGroup-DkbnCTGz.js",
+            "bytes": 404,
+            "gzipBytes": 316
+          },
+          {
+            "file": "assets/main-Ctnt-wDg.js",
+            "bytes": 1371458,
+            "gzipBytes": 353113
+          },
+          {
+            "file": "assets/release-identity-CIuedefi.js",
+            "bytes": 134,
+            "gzipBytes": 138
+          },
+          {
+            "file": "assets/RenderTargetSystem-DKTlyS8X.js",
+            "bytes": 71135,
+            "gzipBytes": 20083
+          },
+          {
+            "file": "assets/speciesidentity-DkdaK0o4.js",
+            "bytes": 2006,
+            "gzipBytes": 865
+          },
+          {
+            "file": "assets/src-D1xb2OX1.js",
+            "bytes": 134337,
+            "gzipBytes": 52589
+          },
+          {
+            "file": "assets/surface-polish-CBmmi-Kj.js",
+            "bytes": 4731,
+            "gzipBytes": 1687
+          },
+          {
+            "file": "assets/tame-greeting-audio-CXTlH-t_.js",
+            "bytes": 258703,
+            "gzipBytes": 71606
+          },
+          {
+            "file": "assets/visual-effect-policy-J6zn0ESZ.js",
+            "bytes": 123933,
+            "gzipBytes": 33158
+          }
+        ],
+        "bytes": 2187926,
+        "gzipBytes": 602728
+      },
+      "baseline": {
+        "files": [
+          {
+            "file": "assets/CanvasPool-BewL5izq.js",
+            "bytes": 804,
+            "gzipBytes": 456
+          },
+          {
+            "file": "assets/CanvasRenderer-DXKJLlc8.js",
+            "bytes": 87438,
+            "gzipBytes": 27229
+          },
+          {
+            "file": "assets/canvasUtils-CWV5icuA.js",
+            "bytes": 6070,
+            "gzipBytes": 2069
+          },
+          {
+            "file": "assets/Geometry-C5FtorEc.js",
+            "bytes": 101664,
+            "gzipBytes": 30814
+          },
+          {
+            "file": "assets/getPo2TextureFromSource-0axNaDip.js",
+            "bytes": 25109,
+            "gzipBytes": 8605
+          },
+          {
+            "file": "assets/getTextureBatchBindGroup-DkbnCTGz.js",
+            "bytes": 404,
+            "gzipBytes": 316
+          },
+          {
+            "file": "assets/main-FX5mqXNK.js",
+            "bytes": 1366021,
+            "gzipBytes": 351904
+          },
+          {
+            "file": "assets/release-identity-CIuedefi.js",
+            "bytes": 134,
+            "gzipBytes": 138
+          },
+          {
+            "file": "assets/RenderTargetSystem-DKTlyS8X.js",
+            "bytes": 71135,
+            "gzipBytes": 20083
+          },
+          {
+            "file": "assets/speciesidentity-DkdaK0o4.js",
+            "bytes": 2006,
+            "gzipBytes": 865
+          },
+          {
+            "file": "assets/src-D1xb2OX1.js",
+            "bytes": 134337,
+            "gzipBytes": 52589
+          },
+          {
+            "file": "assets/surface-polish-CBmmi-Kj.js",
+            "bytes": 4731,
+            "gzipBytes": 1687
+          },
+          {
+            "file": "assets/tame-greeting-audio-B3yk-J46.js",
+            "bytes": 223654,
+            "gzipBytes": 60974
+          },
+          {
+            "file": "assets/visual-effect-policy-DufeEEC0.js",
+            "bytes": 157782,
+            "gzipBytes": 43497
+          }
+        ],
+        "bytes": 2181289,
+        "gzipBytes": 601226
+      }
+    },
+    "fontAndLicenseShipped": true
+  },
+  "producer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "8e1f0101eb1fdb417c28db6a2770a8eba557a27e40c7614b135224056db872c6",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "656d416f2887e146e432e4bc8c5069ee40a080080f98e1c96e447599bf187f8a"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+        "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "d45315a99609f951ef4cba69017a34f6272fc041321b6d639069be628714cebd"
+      }
+    }
+  },
+  "measurementAuthorityUnchanged": true,
+  "sourceBackup": "AAA_PILOT_REFINEMENT_BACKUP_20260905.json",
+  "sourceInventories": {
+    "ship": "333aa8874fbfde12aba36ae36c9df189746ffe2c305170951481ae40b7bb7a60",
+    "ecosystem": "d8b028a68650dafd0e8064591f736bf2f78ba5852722e8796d29422e4cf81d2b"
+  },
+  "openLimits": [
+    "Human visual/listening approval",
+    "Procedural/simple Earth terrain and cloud finish; steep banks; sparse ecology",
+    "Scout strict base-bevel zero-overhang diagnostic RED at0.238px/512",
+    "Eight body plans retain protected static anatomy; all48 presentations do not close anatomical animation",
+    "Galaxy artwork unchanged in this pass",
+    "Physical iPhone/Safari/PWA/heat evidence and ITP decision",
+    "256MiB retained-update enforcement",
+    "Broader durable audio cue mapping and matched listening",
+    "Integrated-pilot stop; noPhase2 chrome migration"
+  ],
+  "delivery": {
+    "playable": "http://127.0.0.1:4183/?avpilot=1",
+    "study": "http://127.0.0.1:4183/audiovisual-pilot.html"
+  }
+}

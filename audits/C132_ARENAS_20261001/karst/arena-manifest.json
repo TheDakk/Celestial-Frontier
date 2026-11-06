@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/karst/arena-recipe.json",
+    "sha256": "cc07a807fc278ffb5263e3912a4e7a7e8318b7776359861dec068f2043ce00c4"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/karst/arena-far.png",
+        "sha256": "b716d4f597e05f395b70f2aa3e34719a3bbec75ce58580339c07bd52301c03d8"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/karst/arena-far.png",
+        "sha256": "b716d4f597e05f395b70f2aa3e34719a3bbec75ce58580339c07bd52301c03d8"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/karst/arena-mid.png",
+        "sha256": "1f389338471420c2367ce02f596a1860a61b1757045f1bfd5d8c723263151a86"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/karst/keyed/arena-mid.png",
+        "sha256": "85f5db68a2ebcb46352ae492478036958b3cf4f9e3a877f47e57025f162668c3"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/karst/arena-near.png",
+        "sha256": "32cdec2f47d4257765f41c523c2a98acd1d14c3f282edfdf6ca014160a1663b2"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/karst/keyed/arena-near.png",
+        "sha256": "00ab071fec577c069887b95294f131f7c077e47836cdbb40c917febc73116593"
+      }
+    }
+  ]
+}

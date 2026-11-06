@@ -1,0 +1,831 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "stormsea-v2",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 8318,
+        "despilledPixels": 382,
+        "unresolvedEdgePixels": 149
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 158,
+        "corrected": [
+          {
+            "index": 680375,
+            "sourceIndex": 680374
+          },
+          {
+            "index": 680558,
+            "sourceIndex": 680557
+          },
+          {
+            "index": 680559,
+            "sourceIndex": 680560
+          },
+          {
+            "index": 682047,
+            "sourceIndex": 682046
+          },
+          {
+            "index": 683725,
+            "sourceIndex": 683726
+          },
+          {
+            "index": 687071,
+            "sourceIndex": 685399
+          },
+          {
+            "index": 690401,
+            "sourceIndex": 688729
+          },
+          {
+            "index": 707139,
+            "sourceIndex": 707138
+          },
+          {
+            "index": 708811,
+            "sourceIndex": 708812
+          },
+          {
+            "index": 710483,
+            "sourceIndex": 710484
+          },
+          {
+            "index": 712155,
+            "sourceIndex": 712156
+          },
+          {
+            "index": 720634,
+            "sourceIndex": 720633
+          },
+          {
+            "index": 734012,
+            "sourceIndex": 732340
+          },
+          {
+            "index": 735553,
+            "sourceIndex": 733881
+          },
+          {
+            "index": 737223,
+            "sourceIndex": 735551
+          },
+          {
+            "index": 737224,
+            "sourceIndex": 735552
+          },
+          {
+            "index": 737225,
+            "sourceIndex": 735552
+          },
+          {
+            "index": 737226,
+            "sourceIndex": 735554
+          },
+          {
+            "index": 737354,
+            "sourceIndex": 735682
+          },
+          {
+            "index": 737396,
+            "sourceIndex": 735724
+          },
+          {
+            "index": 737397,
+            "sourceIndex": 739069
+          },
+          {
+            "index": 738894,
+            "sourceIndex": 737222
+          },
+          {
+            "index": 738895,
+            "sourceIndex": 737222
+          },
+          {
+            "index": 738896,
+            "sourceIndex": 735552
+          },
+          {
+            "index": 738897,
+            "sourceIndex": 735552
+          },
+          {
+            "index": 738898,
+            "sourceIndex": 737227
+          },
+          {
+            "index": 738899,
+            "sourceIndex": 737227
+          },
+          {
+            "index": 740556,
+            "sourceIndex": 738884
+          },
+          {
+            "index": 740568,
+            "sourceIndex": 737222
+          },
+          {
+            "index": 740569,
+            "sourceIndex": 737227
+          },
+          {
+            "index": 740570,
+            "sourceIndex": 740572
+          },
+          {
+            "index": 740571,
+            "sourceIndex": 740572
+          },
+          {
+            "index": 742227,
+            "sourceIndex": 740555
+          },
+          {
+            "index": 742242,
+            "sourceIndex": 742244
+          },
+          {
+            "index": 742243,
+            "sourceIndex": 742244
+          },
+          {
+            "index": 743918,
+            "sourceIndex": 742246
+          },
+          {
+            "index": 745588,
+            "sourceIndex": 743916
+          },
+          {
+            "index": 745589,
+            "sourceIndex": 743917
+          },
+          {
+            "index": 745590,
+            "sourceIndex": 747262
+          },
+          {
+            "index": 749100,
+            "sourceIndex": 749101
+          },
+          {
+            "index": 750770,
+            "sourceIndex": 750773
+          },
+          {
+            "index": 750771,
+            "sourceIndex": 750773
+          },
+          {
+            "index": 750772,
+            "sourceIndex": 750773
+          },
+          {
+            "index": 752442,
+            "sourceIndex": 755787
+          },
+          {
+            "index": 752443,
+            "sourceIndex": 752445
+          },
+          {
+            "index": 752444,
+            "sourceIndex": 752445
+          },
+          {
+            "index": 754113,
+            "sourceIndex": 757457
+          },
+          {
+            "index": 754114,
+            "sourceIndex": 755787
+          },
+          {
+            "index": 754115,
+            "sourceIndex": 755787
+          },
+          {
+            "index": 754116,
+            "sourceIndex": 752445
+          },
+          {
+            "index": 754117,
+            "sourceIndex": 752445
+          },
+          {
+            "index": 754118,
+            "sourceIndex": 752446
+          },
+          {
+            "index": 755784,
+            "sourceIndex": 757457
+          },
+          {
+            "index": 755785,
+            "sourceIndex": 757457
+          },
+          {
+            "index": 755786,
+            "sourceIndex": 755787
+          },
+          {
+            "index": 755788,
+            "sourceIndex": 755787
+          },
+          {
+            "index": 755789,
+            "sourceIndex": 757461
+          },
+          {
+            "index": 755790,
+            "sourceIndex": 755791
+          },
+          {
+            "index": 757417,
+            "sourceIndex": 759089
+          },
+          {
+            "index": 757456,
+            "sourceIndex": 757457
+          },
+          {
+            "index": 760796,
+            "sourceIndex": 760795
+          },
+          {
+            "index": 760807,
+            "sourceIndex": 759135
+          },
+          {
+            "index": 762479,
+            "sourceIndex": 762478
+          },
+          {
+            "index": 764158,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 764159,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 764160,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 764161,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 765830,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 765831,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 765832,
+            "sourceIndex": 762489
+          },
+          {
+            "index": 765833,
+            "sourceIndex": 764162
+          },
+          {
+            "index": 767502,
+            "sourceIndex": 770848
+          },
+          {
+            "index": 767503,
+            "sourceIndex": 770848
+          },
+          {
+            "index": 767504,
+            "sourceIndex": 770848
+          },
+          {
+            "index": 767505,
+            "sourceIndex": 770849
+          },
+          {
+            "index": 769176,
+            "sourceIndex": 770848
+          },
+          {
+            "index": 769177,
+            "sourceIndex": 770849
+          },
+          {
+            "index": 770661,
+            "sourceIndex": 770662
+          },
+          {
+            "index": 770664,
+            "sourceIndex": 768992
+          },
+          {
+            "index": 772333,
+            "sourceIndex": 772334
+          },
+          {
+            "index": 772336,
+            "sourceIndex": 772335
+          },
+          {
+            "index": 772506,
+            "sourceIndex": 772507
+          },
+          {
+            "index": 777353,
+            "sourceIndex": 777352
+          },
+          {
+            "index": 779020,
+            "sourceIndex": 779021
+          },
+          {
+            "index": 779024,
+            "sourceIndex": 777352
+          },
+          {
+            "index": 780692,
+            "sourceIndex": 780693
+          },
+          {
+            "index": 780695,
+            "sourceIndex": 779023
+          },
+          {
+            "index": 780696,
+            "sourceIndex": 779023
+          },
+          {
+            "index": 782364,
+            "sourceIndex": 782365
+          },
+          {
+            "index": 782366,
+            "sourceIndex": 780694
+          },
+          {
+            "index": 782367,
+            "sourceIndex": 780694
+          },
+          {
+            "index": 782368,
+            "sourceIndex": 779023
+          },
+          {
+            "index": 784036,
+            "sourceIndex": 784037
+          },
+          {
+            "index": 784039,
+            "sourceIndex": 784038
+          },
+          {
+            "index": 784040,
+            "sourceIndex": 784038
+          },
+          {
+            "index": 785711,
+            "sourceIndex": 785710
+          },
+          {
+            "index": 785712,
+            "sourceIndex": 785710
+          },
+          {
+            "index": 785713,
+            "sourceIndex": 789055
+          },
+          {
+            "index": 787382,
+            "sourceIndex": 785710
+          },
+          {
+            "index": 787383,
+            "sourceIndex": 789055
+          },
+          {
+            "index": 787384,
+            "sourceIndex": 789055
+          },
+          {
+            "index": 790724,
+            "sourceIndex": 789052
+          },
+          {
+            "index": 790832,
+            "sourceIndex": 789160
+          },
+          {
+            "index": 792318,
+            "sourceIndex": 793994
+          },
+          {
+            "index": 822442,
+            "sourceIndex": 809074
+          },
+          {
+            "index": 822559,
+            "sourceIndex": 820887
+          },
+          {
+            "index": 852558,
+            "sourceIndex": 850886
+          },
+          {
+            "index": 859518,
+            "sourceIndex": 857846
+          },
+          {
+            "index": 864260,
+            "sourceIndex": 864259
+          },
+          {
+            "index": 879631,
+            "sourceIndex": 877959
+          },
+          {
+            "index": 891308,
+            "sourceIndex": 891309
+          },
+          {
+            "index": 899338,
+            "sourceIndex": 901010
+          },
+          {
+            "index": 899339,
+            "sourceIndex": 899340
+          },
+          {
+            "index": 901369,
+            "sourceIndex": 899698
+          },
+          {
+            "index": 901370,
+            "sourceIndex": 899698
+          },
+          {
+            "index": 903038,
+            "sourceIndex": 903037
+          },
+          {
+            "index": 903043,
+            "sourceIndex": 901371
+          },
+          {
+            "index": 903044,
+            "sourceIndex": 901372
+          },
+          {
+            "index": 903045,
+            "sourceIndex": 901373
+          },
+          {
+            "index": 904716,
+            "sourceIndex": 901372
+          },
+          {
+            "index": 904717,
+            "sourceIndex": 901373
+          },
+          {
+            "index": 904718,
+            "sourceIndex": 908062
+          },
+          {
+            "index": 906388,
+            "sourceIndex": 908060
+          },
+          {
+            "index": 906389,
+            "sourceIndex": 908061
+          },
+          {
+            "index": 906390,
+            "sourceIndex": 908062
+          },
+          {
+            "index": 922699,
+            "sourceIndex": 921027
+          },
+          {
+            "index": 929434,
+            "sourceIndex": 927762
+          },
+          {
+            "index": 966131,
+            "sourceIndex": 966130
+          },
+          {
+            "index": 966132,
+            "sourceIndex": 967804
+          },
+          {
+            "index": 967805,
+            "sourceIndex": 967804
+          },
+          {
+            "index": 972837,
+            "sourceIndex": 971168
+          },
+          {
+            "index": 972838,
+            "sourceIndex": 971168
+          },
+          {
+            "index": 972839,
+            "sourceIndex": 971168
+          },
+          {
+            "index": 972840,
+            "sourceIndex": 971168
+          },
+          {
+            "index": 983420,
+            "sourceIndex": 981748
+          },
+          {
+            "index": 985092,
+            "sourceIndex": 985091
+          },
+          {
+            "index": 996232,
+            "sourceIndex": 996231
+          },
+          {
+            "index": 996233,
+            "sourceIndex": 996234
+          },
+          {
+            "index": 997904,
+            "sourceIndex": 997903
+          },
+          {
+            "index": 997905,
+            "sourceIndex": 997906
+          },
+          {
+            "index": 999576,
+            "sourceIndex": 999575
+          },
+          {
+            "index": 999577,
+            "sourceIndex": 999578
+          },
+          {
+            "index": 1002928,
+            "sourceIndex": 1001256
+          },
+          {
+            "index": 1010197,
+            "sourceIndex": 1008525
+          },
+          {
+            "index": 1010198,
+            "sourceIndex": 1008526
+          },
+          {
+            "index": 1011868,
+            "sourceIndex": 1010196
+          },
+          {
+            "index": 1011869,
+            "sourceIndex": 1010196
+          },
+          {
+            "index": 1011870,
+            "sourceIndex": 1010199
+          },
+          {
+            "index": 1011871,
+            "sourceIndex": 1010199
+          },
+          {
+            "index": 1013541,
+            "sourceIndex": 1016885
+          },
+          {
+            "index": 1013542,
+            "sourceIndex": 1013544
+          },
+          {
+            "index": 1013543,
+            "sourceIndex": 1013544
+          },
+          {
+            "index": 1013547,
+            "sourceIndex": 1011875
+          },
+          {
+            "index": 1013548,
+            "sourceIndex": 1015220
+          },
+          {
+            "index": 1015213,
+            "sourceIndex": 1016885
+          },
+          {
+            "index": 1015214,
+            "sourceIndex": 1016885
+          },
+          {
+            "index": 1015215,
+            "sourceIndex": 1013544
+          },
+          {
+            "index": 1015216,
+            "sourceIndex": 1013544
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 991247,
+      "visiblePixels": 582105,
+      "firstPaintedY": 394,
+      "firstPaintedYNormalized": 0.41870350690754515,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3980,
+        "despilledPixels": 3,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1361766,
+      "visiblePixels": 211586,
+      "firstPaintedY": 796,
+      "firstPaintedYNormalized": 0.8459086078639745,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "4dc59857407dc6c2c24e8d0d44e6d384c9f8be33b8e468eed843b20fe73e133f",
+    "seed": 3814033442,
+    "systemCardSourceSha256": "484f8fa948c3652c7b2dcd07f5f743e87e0fb002bc3ad206cdea09dc6b0cdbb0",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "faa204e44e764c73acadc7184f23db60f8e93cdabf1126349f16e3801288bce2",
+          "bytes": 2567369,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "faa204e44e764c73acadc7184f23db60f8e93cdabf1126349f16e3801288bce2",
+          "bytes": 2567369,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "9ff0f002c1f4e1fe838b9ef064a3aac5132cb97323083dc6751c97a5a717227d",
+          "bytes": 1898495,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "53a6a423ea593f3ab8e2b4d730bcec9084eb61cf7f425c4bebcf8faf5d454d6a",
+          "bytes": 2399809,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 991247,
+        "visiblePixels": 582105,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "b02026d96708a3d78e80a9453578b6d86d2cfe3ff0299c4aed07c25ec9318e1d",
+          "bytes": 1245056,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "b6189208911cdb449ff7c86070764b4a0de88d924c9ae05e55f13a53c583b6bd",
+          "bytes": 1479160,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1361766,
+        "visiblePixels": 211586,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-manifest.json",
+    "sha256": "3c528cb11ddc144cf9e72fdcfe4810bb3c7969a107cbae2f8e72e32cd0929b9f"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

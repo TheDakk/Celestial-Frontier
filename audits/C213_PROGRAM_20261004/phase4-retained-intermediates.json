@@ -1,0 +1,2498 @@
+[
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/record.json",
+    "sha256": "f28f2e1d41a377319ac95f2e637ce55e53821a0dd425fc9a49ecd0e11ef1e5fa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/binding.json",
+    "sha256": "2f3afd5f5fe9595c3d2bb1939a90d2c3dfab1e9df24469388920c708ddccc0c5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/pre-split-binding.json",
+    "sha256": "1173d61eae6acaf0a7cc5fdabe2fe66b618b83d8ae7cfa1af895fb7113c335f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/declaration.json",
+    "sha256": "4c9cfe7172de9773e7f608460f8b7b654f969f37a63a8fc3ae0c9481df2671c7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/labels.png",
+    "sha256": "5a10ef5a5c1f9897ba90d2106959e0406e7ec8a6cffd0b8fa778028ea6c54f41"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/binding.json",
+    "sha256": "35ac5d4319ebece469dd3bdd1a423e6cb346ce467c98f44e92920926f52e5655"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/keyed.png",
+    "sha256": "36b4ac7adcd846e54b32cf6181d3d19caa2ad025c54d01dec32e7bc0bc04cf00"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/ownership.png",
+    "sha256": "2a31f1330ad43ba122cd1e5a6c3d4c7e5efef1df1f102ae3b4869b27e6bfd04a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/manifest.json",
+    "sha256": "216139da6073e87abe878ffbf53446d5009d4d03383a0da8e6e050cfa74a49bc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/receipt.json",
+    "sha256": "e9baf97fe00cefc8bb7a4a8e4089eb37f4141fe1921ee1b70d0411eda45e23c0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/jaw.png",
+    "sha256": "a1dfd3c5847576450783bb208dfd7c6cf35d7a1bfa6c58c2a08b0a17e9b0d704"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "eb6b6a62f15884683605cd61817dcd4af914a71327c2515d594fdb005dcf86b4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "ca5a3b498f2784cc16fe983a4d8839283b9f17e57bee1846d529c434f171d3d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "31c04c904c9d19426511d445984262d0d76a1caa6ea29df25e834533cc7059db"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "c07936f20f3857d137b05724b8352972079622fa8f0b848cf0e9ef0c485a577d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "bfe4d6e6ffd2f51ae3001b3da0b8ccd5149d8c2de9ff28c13ac6fd7c86fc9b04"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "67d3d7e68b8fc2208bf7406873cf4ada8bc244875f82bd8d79bec1a5871643a9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "a1d27eedec79c7cc1cbe6dbc95d4f760532836cec536a8609365a240790f0f83"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "d687e8a4510a032034b5290bf1aedb41a44bbebe6a05d49df3d6d6ba22f3b634"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "1f6cca51ea7deefd99235dd78e11c16cc7d10f1ea3593ebdb9361ebfc252cb09"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/tail2.png",
+    "sha256": "ed640e047cebd85678ca0cb62b135e84c4416e935ab4027cdf656987a6717b2c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/chest.png",
+    "sha256": "555401e8a311c0815dcd3da532ea10ddee300240f2a14c314a17bd45ec59bac7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/tail3.png",
+    "sha256": "c28f732f8723e3beb7744e9258f52049b4c3205420df72aaf8e5f0f2ab174138"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/tail1.png",
+    "sha256": "eaca430f98458bbabc8863f85b2edb6aa9ffc86dc39b60f5c39027889cddb9a0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/tail0.png",
+    "sha256": "6810dddd205bee857030a60462454840d82060971c76dffb9b53b0a7364c51a6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "2b9d4d913c8c23aab0ee94874acfba25eca32894a067b8f673a50335f25ed79e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "d1d8df57b736b7191b1d333ccc5fdbf103ccf1efe3168c3bc7e85393e3481e80"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "3252b2e541ecadb08842c15353594fda26a534e4114e257129a17358ac13fb9b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "dea0e6adde3e2049f7aee8be8b2719596cdb2915888329802524ea012e976e79"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "8d0e393bab0c3b0587dcb39b74dafa59ede517d8c407b480d621a484a9e93ee4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "c796929618f403fb1c079c27264d7ed775f891e0e34d1add9ef3815749f897b9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/head.png",
+    "sha256": "19209f7d806b8713f505fbadf5e137aaa80a6e4b57e8141df732280380e4d9c6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "703ea7775498bf50e235da853726587c7c3982280cc8c463b8fac38c48b51b7d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "28e26bdd5f15e88b29099a4eab3a017908b06dd56ad0ef10b0841f04ffa596dc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "ed7ce90d0251330e425873151104821d83355e747dfaf695f645e46bf890f860"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/root.png",
+    "sha256": "00bbb4a24d89bd057ec24a1b33a3bef8b835eb4462fdaebc6acc2c95078c98b0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "e64a530463468c10fab2a2ddd0afaef63217f1afbc13ef16eb3834ae380096ad"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/spine.png",
+    "sha256": "2af57992ead25dec4fc1eefa783de38ba536a754d695fc6ab0e433df2f6e2ffa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/neck.png",
+    "sha256": "d32992eba5fae47b17d6659e3afea1ba6d3c752af969191d5fd3e6a757bda507"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/pelvis.png",
+    "sha256": "9bf3407f0cbe2510bb067e86d3bdd56fef2ad877e1ad2c2be04008e2abc551d3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "cf0848c336a6631cf7725bdba2f5e307cbf3d90598cacae75c85c7f6fdfce8c5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/atlas/c213-c202creaturesupply-10-river-otter.json",
+    "sha256": "942273c990a877a38a0885ae248f0444389370b39e9dcb4bf60e6ee92175067c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/atlas/c213-c202creaturesupply-10-river-otter.png",
+    "sha256": "017a04924e253aadc69a8280ef30a72301b7ee3c1ac4d3c9ce73f21eec65e9ce"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-10-river-otter/islands/fit/parts/atlas/receipt.json",
+    "sha256": "97c970b192a561df118879707c3d3a24457fa5bbe23dc7527b96eb10ce9b40b2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/record.json",
+    "sha256": "47b1160003159966f27cd2d23589ab7315e8ce8588adbc7c5764a81921d4b086"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/binding.json",
+    "sha256": "930449d8e6989f455d66a061341cfc99dcd30c2495fe1a44cfce8d385835cf31"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/pre-split-binding.json",
+    "sha256": "c5d59b17a0cb32255edbc221fea8ff8947c271d50918c9dbe3977d103fd37d21"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/declaration.json",
+    "sha256": "94ef5cfc846d3e0be5e4c266e811283a2ccadfe7481315b25a925765aa8712d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/labels.png",
+    "sha256": "08680dbb3542e828e720e7db878e1aef241f0e1dea31aa842e40d731d18e97d7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/binding.json",
+    "sha256": "b8031b5c9acdcc8c40255c939544806111f1b8159c461b65d82969739adfeb78"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/keyed.png",
+    "sha256": "1f1ab8ed01307d010c43c6c9b09955a7e4afba7cff6b44472e23b27ee381c156"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/ownership.png",
+    "sha256": "dfb06da325d87f4ea454d70673c353f152bf8a7b41e899af49d31201b453b192"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/manifest.json",
+    "sha256": "9b2226b00c4fa9b1f260496cd7f683c7f0c946f2d1456a7c270b47c5863e5860"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/receipt.json",
+    "sha256": "f893d944cd5da18db34bcfe93804e5457717a03a1e4e0cebf560f6a9e143dba1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/beak.png",
+    "sha256": "1fccaad265768720d2d8325e5e1a3c49cbbe896a318ee5984e68049ab5cfedb4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/far-shin.png",
+    "sha256": "a2cddab1baffb4e46423876d5b0a942edd99fcce00f224a98053d7a7a12cd8fa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/body.png",
+    "sha256": "74679f3ad05ea68f37b409aced0be3f14d13ff10b03cf0ad4869bb076bc39a9e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/near-wing-flight.png",
+    "sha256": "54b13ab514a7caedf5facba43ca1d1ea9098f0737f8413df5642b25e5e05a294"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/near-wing-root.png",
+    "sha256": "b0000fc250add2001400f364cd17600b1699190b2cf672a38960227756b3cb79"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/chest.png",
+    "sha256": "2c6aa5dd338c6da4c1638870dfcb1bcc5d4497a7c18f0716f274cb9ccd09c005"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/far-foot.png",
+    "sha256": "58ebe217822d79042aae60060799d6bf8d8f038f9758b083dab45c9f46e4e59a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/far-wing-root.png",
+    "sha256": "1fb0d93f18a7e20128130125d93e96326f64a159b546ca8655b6a2a85ca0eac4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/far-wing-flight.png",
+    "sha256": "3e2911b7318ce4a8a98be0d6dd051c2293b6e630559c520ee89cda54cdf92f4c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/neck-lower.png",
+    "sha256": "cd7213001f1b5f5ceb995c03a1a09c45a67439373b0ca020f383c60d9e7ccfd5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/near-foot.png",
+    "sha256": "f6eed48c8c554df40bc6ae6bb319b1db3e73f0e27b93b9eb6fe564579e81d6f1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/head.png",
+    "sha256": "b7ee4ae80a17bf977b32f7e7b0b25e280c7af4d0fcb73e6e5fa780f7c0aa25fd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/tail.png",
+    "sha256": "2eaf4160f50b3d96ed5a3b7be51d8675a0d73b43e49b5a08aa3d127ee71ab30a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/far-thigh.png",
+    "sha256": "1cfb18ab506ba87200269c68ab065ca8e7022d97684a440b4329c93db691d16d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/near-shin.png",
+    "sha256": "ba8610b42d3f3091c872ec6762b896a208b32c4aa721476830323a649d1b5ef1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/near-thigh.png",
+    "sha256": "1a1a1124134253352d657b0b43ef6fe64d6176bb561864097c7781731b7294a5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/parts/neck-upper.png",
+    "sha256": "bd702f6cbaa8aad4955699e08900c3796d61d984bea902810a1954f18b6fae63"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/atlas/c213-falcon-c275.json",
+    "sha256": "7e0311e24b5c81ad2ecf8be9cacd55b10656e33676883b4af3a373aadcc7874c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/atlas/c213-falcon-c275.png",
+    "sha256": "db15667abc18c111329c9f804d82bcd1df7c3b4ef0ce8998dda9991c99a6007a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/falcon-c275/islands/fit/parts/atlas/receipt.json",
+    "sha256": "d6bf75eed844f82304925e93bcb02706ab7753935a423f90a98b6953398de60e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/record.json",
+    "sha256": "0f1ec677a31c27bd5781f9383f7f6525a756b761e1a34e0230012765b1dfa06e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/binding.json",
+    "sha256": "3b58e652854e266eac717f5bcac89be41f2c21dc3dd6690af12392aeffb97cb4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/pre-split-binding.json",
+    "sha256": "fdf2bcfc6dba3a951a71b208727cdf46cdd9fd02cfc1eab57930028b358d864b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/declaration.json",
+    "sha256": "5e9d63b5ba0dcb81796a65e552ddca47c4f4c4aed291ef4aa3ff7c7ff3053f46"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/labels.png",
+    "sha256": "6b9b29097764ac9939a1347951e58ee4e5aaa9b188ac41d249424f00cc8c90de"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/binding.json",
+    "sha256": "9644c4f6a3fa7f349fac54824c9286ff007b1adf2754889d0dc108d4d2d6d20f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/keyed.png",
+    "sha256": "1c88646731b7bf8b3c1e1eedbade3b59be42e4ddb152d6a512fe57abf45b0e77"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/ownership.png",
+    "sha256": "1270bd8d476bb0e0f6fe6112fefd5cc7370ec24aed01a68632c94ed340ef6354"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/manifest.json",
+    "sha256": "ec1ede20229785a77690f122eadbb718201f6f5feb20f133438fbf2cd1b5f687"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/receipt.json",
+    "sha256": "6bb10355e1b9c23a715ead824d4b512bf5fed960cd4584da0ad8fb31c9b7fcbe"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/jaw.png",
+    "sha256": "899f40081c514696b662129ca42f8a4606a45652a7626b6bebfde38a9bffe311"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "396f34826ed18a4fc1e546f89bae5e0a8a0600b0fd69e6ceec409c40db5b618e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "2d5dd4126c2f3f25e8f2048a4078a1324c986f7be7881ba43a62c389b3f08b90"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "6c6d60169bdb0eb8668820d6e245ea90071f753146889c37432d167d56cba07d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "927b82fc960ebac04a369e69198a22b1f22f2b4c177e69e5af6a3c1a7a04fa20"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "b8acd82ae40370bbccb85a7f1317de0ca414d818d95e89ede107b37294056f29"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "9c3c75980ba32074d9d5db8234cd586f103b3774d2f540b9edaf51816b18688c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "42a6dbeda5a4fc3854d7f88cee8a9b5a92818e471113845fd14d81600d03432a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "84adaaa73131ca35779a01d11de4bf630b8edc7b47961428993cf0890cb780b3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "916ce3e40c0d16801ee8647a9a2a44116dc724c10c6cc91d5222f9ad8d69ee95"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/tail2.png",
+    "sha256": "eb9f2f8d994cee31ab6ff009d252def1e82dbc7ad660afad14827ed190c33ad2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/chest.png",
+    "sha256": "719b55130bc570a75760a1592c7f24d8251f4902918fffbd59e589a672bfe9d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/tail3.png",
+    "sha256": "e6dd69e30cbd430742de8ddf6f69cfe4ab491dd3468ea81f3c27205a3c470d3b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/tail1.png",
+    "sha256": "1198a0fe9407a6b479bc9ec88f59cbab11d143546fc6ba6f75a7de2839467c0d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/tail0.png",
+    "sha256": "0cba4e0e7f2c668dffdb5e4abc025e68daa0b6e4326f9fbc53112081bc0afcaa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "5d6bae534430cc252ee4606e0113899dae52fded51cad735dde9405a80aa617e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "2db8ccb1e276096ba24811ae3a0e3ea22d235968f4e76499d3c49cf9a3569945"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "2adaeac2ce2a91c82be38c9631ba34db65f62c56b76cf645e6cb1c7abb2edaab"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "1035ebb31dd4c6347279657f732484353dc3bc6f552325ab3efd37c865785fa4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "eb0ddae0cef427e61a27425f23c99a939c74f2987d9a09bb05cae8dbc4cf511a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "6026b40f2290bdb1eec54960efa1488233960df735e703eb3331514c8803d324"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/head.png",
+    "sha256": "7ec7f92ca295f9fa6fa9ffdf64de02cf40acf6363f9ade0121e09432e54186dd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "fe9ebf55bdb526bf89f7f02f0426b08bb8654caee02fdd358c4e0896d2ea1108"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "7de50b61b168dbfaa65cfa8f1b1376e358b715e3a2afe2ae40295302c770d53d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "e387f97c3e9879f79e7d7ce0a148cdec43a1f8cc278b799707c169791f258681"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/root.png",
+    "sha256": "949aa0bc47aa7a3a54b7e05941f6c66685e58630adf7cb4a908b5360a75f26fc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "7cd13b2316e85e4fdbd0f4b81f0ed5fa3269b719e5114d096216ddc4a5d6ca81"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/spine.png",
+    "sha256": "b752f351c1f9c4158c6f235f9fc355cc4e012a78e4a450f204db8d88ad9a0087"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/neck.png",
+    "sha256": "26440c92501b866ad047d086063ec2e003440d2dfa3c547d7ed7069616e972c3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/pelvis.png",
+    "sha256": "5a4de057a0313df7bd61470e62ee6646c1fe9bba8e9144bc2066f7866015d910"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "ca899cb95e11900f3df8d6870f52ec4f895be0168139bd13aba843c4a28b4e78"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/atlas/c213-wild-pig.json",
+    "sha256": "74a8c791a8afdfb3a56fc8829cd7d8b96c526a0d81692af06a7baf80c82dbf67"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/atlas/c213-wild-pig.png",
+    "sha256": "eba7143ebf956c775a59986549536f4fc379c46484a6479fdbdae049127ed661"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/wild-pig/islands/fit/parts/atlas/receipt.json",
+    "sha256": "8444a531ffe69aa0b4fdd9c925488deac8a496587d634a57df31de85f46349c7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/record.json",
+    "sha256": "36646fe2b8e8beb9a1134e94279fbd69d963f0ba12af5a73d7978bfd4063c163"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/binding.json",
+    "sha256": "7389086c612867f109e9e440c5749d8e8d0d0a8270f6cafc7a9a180a5971d441"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/pre-split-binding.json",
+    "sha256": "a682affbfe1b8965c2e960877ed53478b06555402532f7cbbf5eb9f059ac8f7f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/declaration.json",
+    "sha256": "4277c5aa0b86bef22ece375a4b263ec420be26b0104db7b8efe6b7aec85757ff"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/labels.png",
+    "sha256": "bc508bc0853f6494cce433cd5138bd5c2ab9c50bfe3549092aea8a2e976a8132"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/binding.json",
+    "sha256": "7f1a0cc9673fc76030fb551fc7bd50287f69bb9374cec8dc359e368f1e302e9c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/keyed.png",
+    "sha256": "99a72ef9d8b5ecf07f3dafb2ad23663833cb22d8a5d2a9a12a5530d9b4e3fdd3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/ownership.png",
+    "sha256": "70bd17a2e9e4a0678066bac471818e0b019abf1efa168403f453fffe8e7c64e7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/manifest.json",
+    "sha256": "dbdd50463a7eabaf4eb86b3ba1a513bf2d7101d164203d34c8be2135b1c608e5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/receipt.json",
+    "sha256": "14f61866e2038c123c07e4b8f0cd57a961ff40484951d74fbfdd62e4d4078226"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/jaw.png",
+    "sha256": "22489eb51918dc349a4f3d57692cf94575371b110249bb3dca6d3177827bc6fc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "a9bcb8eba652e826a2b3486dce5871101e498c994797f13c02c5144552fb8a65"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "cde358d99898f999b2ecec8cf41870110c54c65854fb0b177eb62399247dab9a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "c6b119969e9d2de64c0a26d046edf263098deebc41716e57897a69510a6c3d7a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "f3a1ef4928e5871af78de44b1bf76e34f1191baa74991b53e43972f3af1b0224"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "47214f3da1d9e135026e74fb85b6e2ce07874a0fb4fe56584dff946af1087026"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "c5e725321e454e7e522c8bb210c984516f1e5559b050d4ffe011796af5e833c5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "6dec24992c91987db107401c5e19617e46548d6bf6313302230e94e77080bb29"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "8a805a9257123ade6f02223907fecd41d78988c26813f7e7e7349716d228266a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "a47fff3c5bf120cb377b5c405069c44c62ae70ba24f3100ba0deb6a1e1abd379"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/tail2.png",
+    "sha256": "564b68f9eedb148175763cb7c71f918b29456b1edc7b55c9102867558716d1dc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/chest.png",
+    "sha256": "1269245cfb73f29bf1875b3917c9d3d15585beb7690d02722498ff6b80b29714"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/tail3.png",
+    "sha256": "94afd07932536ba79833ed8723a654d1a5f96d91a7a1e6c10549e7c49506f71c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/tail1.png",
+    "sha256": "2e36def5a0f443088096a8ddd1fb22dac54fd4c2a7c9fb35be78ac954baca17e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/tail0.png",
+    "sha256": "b820a2204849bc4271b12d83120fabfd10407e49d5fe9f3772bfb4129d5fb311"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "531d79d0030aa5b5dc0783129888b6ef4f14e51789b5a2818a5751e137cb0422"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "82dd72ab1087cf80cf06464c9f2f9a8bcb674218a1f9a6751e3a577c90a0ade6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "636e3a041a698331b8ef9d8c8795497081e885795900a53a17a70c57beb58ea4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "93dce84c80c66bbfd3d5df52ebcf37bc2764a7766af6113b2ecbff451d7ede98"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "c1efdab5d138d9a097d06c552133a277ca90149a965b05d78a36637e015f0246"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "14abdb5a224a1b35915e072f84b7184a33f5106bb37bfcb9b5cfea8e21552a2d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/head.png",
+    "sha256": "de17df83317623f02b968cb07285959d64b705bbd0160c744132efaa6a462418"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "3efb5d211b01bea6a056dda25a13588e021e28331ac74bbf836d1fd503fc9165"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "f8bfabfdeaece5173b3c15cf81801ae4bbf45b0e677e1b3333ccd1b12dc55e8c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "70ebde6f340197e9f80573226d35d44e4fc1646b3e0b627124c80c638d65f29f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/root.png",
+    "sha256": "af6717e7a35f1193345c6bcc27db3c2f0ed70da3d5cde893c9f4c9ce4755ab66"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "604415f3c2c36c68c74fd622da9d4d2f61463aa0746599cd3fc3720aefd19bad"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/spine.png",
+    "sha256": "b3637464bc93458b5956908cd46067f194d3dece9468f03637718de39c3d66b1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/neck.png",
+    "sha256": "bb202bf2af7342e5d3c390a8b10c80381b38a7a4ad9cf46c952b34f06d6eb131"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/pelvis.png",
+    "sha256": "66f2c8796f12366b63941886b0cc6b5c6d081230e943dfd6562c69c3a9b1d5ae"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "eaeb73af331de7be01e11bb25a17050134c8ea01bbd6100d27eeb561a8ebe74a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/atlas/c213-g2c118-09-colugo.png",
+    "sha256": "f4796cb3aae25f6d8ae5cd11f1a0638355509924fae939a75625166aa9e231fa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/atlas/c213-g2c118-09-colugo.json",
+    "sha256": "131d8667fd123880dd90466bdb23f2e2a19d3ab3bb97de60f455dd58799c39db"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit/parts/atlas/receipt.json",
+    "sha256": "2861f820248e6da1511ff3860e290d0874d98db15f981789b04926d3cf1730e3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/record.json",
+    "sha256": "04cb974e542292b40d823564d540dfa0b27f8483f823cb1bbffa9710b908f54c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/binding.json",
+    "sha256": "3ce47b0daa67e37219fa6d4ea30585da15c26788104ed280433b651eff8cc122"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/pre-split-binding.json",
+    "sha256": "29361929b1760c8167acb9a6dc00a5d2a528c972f6c4bcbcebb86c1ec51866e2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/declaration.json",
+    "sha256": "68d800afa2adc8e979879d4ecce55be1377e41fee0f79ae9c264ca3f8d2b84ea"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/labels.png",
+    "sha256": "7d38037f1f484b3a9fce7db66147a6133dbbf00082a4f7f888e7ccb7a1b29f1a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/binding.json",
+    "sha256": "db5d58962d39eb64a5fd1a6eedb9349ab6978bef9c8c79e8b6e88d8d37140568"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/keyed.png",
+    "sha256": "dfcdbcb9002b75e24192f91288c3b7e83db235027ce884b96145becb27893eb5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/ownership.png",
+    "sha256": "6f7e3eb6433e93c34726edaa54699211d8503397c16c31854e750bdd81daf627"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/manifest.json",
+    "sha256": "a6f227a6027aa01a3f4a61399be669cacf1c17f2b4d120a6c73cd4a47d921e25"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/receipt.json",
+    "sha256": "00b8b61b9af311d7265764e3cd29e2ebb453ec3dd24ee347b9c176ba53f6d824"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/jaw.png",
+    "sha256": "327493dbff457847b69fc43e83c19777f1e49b753ed5be14c2f2e70056d48f6a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "d6333737b906678c4ff0be42f5710d8bc340382ff0466893eff855194bb4e7c0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "6ff39928e67b3b3dbd79da6ece77bf5cb7399428a14a05a9d97e700c45afba6a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "34456c13a272271d3b1585bf05689d8f7ff6d836b5cc29cfad238feb6099fa9f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "cd720f26f4e9c30efefe0fa1b1a4c4c8f1c0771b2d62a315119f10d38711e48f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "a3a9699096bf097bac516e86f199246599544e4eef6eb76dac11bea7c085ab9c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "e83add0429a2bbcd8cffa140e67c86db4d1a11a1fd2ee4a2cf5eb14266f9bf97"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "bf7eb60355e0b07e4f38cb4dec3cec57e722553ee67ba539dbde4f6e5e565e24"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "1b896cc7cd74f91d4513e2a71e802b8566c71cf2665881f06a0717a8032a8a0a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "8678d7f4769a6add43aa7c598477c606a581044cecd7ff6df08e8ccd15c83615"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/tail2.png",
+    "sha256": "8985e0be11fba02539c7c8125b1bcf51bcfb328c0fc82ec6f106870617d52575"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/chest.png",
+    "sha256": "a79f5a025d88e32a231d669f2c934eff5073f90f5222a7b94a8e0fcff746fa1e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/tail3.png",
+    "sha256": "9878594cec1d7f84391a373f798ed307bfbd75c875bbf47585399e7992d99f1e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/tail1.png",
+    "sha256": "10e967214f96f6c1638ade18e089e8c860cb4a571316fcc34dd76cafb318c724"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/tail0.png",
+    "sha256": "e255716ff4b4d8fe158c0d30d3b10fa2fe8f0c5dc1140edcbe87f2c1309d7e95"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "31c778ef9bf7b04590ffd983fc3f7f526b50ce1886a33ea07ea2b13624e43143"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "4c942c5a5a85e57d6859b16e7346e056e1a9faf404f60336a0a532db3be20da4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "b79dd876a474aff93decc1481a3728244060c54753216070c215892525977c79"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "ace90face1e45915ee5c0f590481123c83e00a7a632ddaacf6067ea1ab24b8dc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "ee1c9debdbcc4080f60197a862e612d4c8cae16f44e2ac5121b833e9d99154d8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "216b50472048b0ce322f3090e12739446a6391f33e37add35a40792d22e88728"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/head.png",
+    "sha256": "41ececd2efbb4d308773208fe8447b120c230f6a020d41b4d2819cda5cd225e1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "a976876114e59ae1a85ba97c2d7c7264699839aec4c2e0a1082a145aa17b6eb0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "137b48edd1632208337d01b4a172ae26562ec5c9cc4a51c8927ab44d49c615d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "9556144e0d702d8856cb464bb21e46d11e425ed9262a3022e248042909a1ae82"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/root.png",
+    "sha256": "23bbb7182d1368afb5ffb791d782ab451521ab3aa8b97a246a421a3ca7860369"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "dd7e1a7511fef8e617177587349716c8e67cd7912baf1554bd49fecf5ae30688"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/spine.png",
+    "sha256": "3f4a7e3ea8af04411b1217a205633a01f31d8c83142186b85c88fef60f2ade52"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/neck.png",
+    "sha256": "19f39db0f18832134df7616eaa9b1767a7d91ed7cac3c521e96df3b3572c1550"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/pelvis.png",
+    "sha256": "533ef66da99b1e802feab3bdcae98be180dd5523431e91756e03246f060c5ea2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "e822e0e8585f46c063b471e7e287938924307233b0347373af67dae504a7b91c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/atlas/c213-g2c98-21-pig.json",
+    "sha256": "59486ad44697209d5fc6e8e564ede7c229a550d344ddc5cf400a14e4c9c67b89"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/atlas/c213-g2c98-21-pig.png",
+    "sha256": "dfc32b7e647052317ef0407cacfc7dcf69bf89226b3a21df3ced8179d5960ef0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/islands/fit/parts/atlas/receipt.json",
+    "sha256": "300d0df75879551c5e3797a2c2a9fa37e36a6be63313f974e76d53adf6e05e44"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/record.json",
+    "sha256": "44d6da43138f0bd97ceb7b0797faa42440a9543bd4e9c563b42ff275c1980415"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/binding.json",
+    "sha256": "d05498adfa90c7d62374aec1bc1401a3bb8a7e51ed73d509aefdc3b9f2a08be3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/pre-split-binding.json",
+    "sha256": "3f65aa6bd34d8cd40947427c4056cb8326ff9878cb6692f7f91b0ee9aa0134f5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/declaration.json",
+    "sha256": "aef5c5fbdad666e69be77eec2e86a057c694933f9cad6f77b74abdc2f8464b03"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/labels.png",
+    "sha256": "4b65e232dfa06ded6e3b1de34b3e15fad6567037c4b8c0251f0e0778a93cadcf"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/binding.json",
+    "sha256": "a15f3728abd8b728a84756e97e45bf03d66cb3331ddcda8a5df404c7d9a50b21"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/keyed.png",
+    "sha256": "3e96d0c698fcb65d4a864ff0ae2640036bbfb8f6b13d16fe531534179629f0c6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/ownership.png",
+    "sha256": "e157a5e892199c3ddfb09fe2d44eea9b90d95de381906925ef3903a5927c7e8e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/manifest.json",
+    "sha256": "605368d308ea13d59896f1a42830f3ab462321b20130ce1867b82095e13d71c2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/receipt.json",
+    "sha256": "f5b0e53e426788f0c3e625662cdaa9171f80d9b2e919da4b50d75436e4c8b983"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/jaw.png",
+    "sha256": "24b7bed3af93015898587f03bb5721da0d79e6ab4f0a8e88fa986b5dbb47fc96"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "93239dbf5d7f6b20affa53c722e34c516b5da0defa38f6406bfd04840eec828b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "cdccbb37737f440649e764782e7fde31d065ee9c70bbac30473e2bae643bb283"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "2711233f90b6ee9ba249f88c819929ad581658852f9aca7af6396fec5972f779"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "9075198d54b159c66b28a3c924fd863a37709a9ebbda5c03a11461a62ddc218d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "17ef370399bff47405983cacd181c56d08a4bef544e9f6ee097aabb5ee2ed444"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "bcf8d5a34f0db8e75624131bb1e281d331e6a63ab385c4d194b914f7dc6574c0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "a99312b8492921516a770539be4f790d8552663d6a450ffd6bbfdbc190c378dc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "97d17427c398ff27ca86dfb9b2e23b58111b5c1a2a329e8892e5d961618af1cc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "0ea995abeca091db7c4a347152a535534bd3afda3643919d40f6f81be288df9d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/tail2.png",
+    "sha256": "a5d8b612c0c5d37aec6d2a284b4d11a3a816e61ae42c6401c02ae4675b8f01c1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/chest.png",
+    "sha256": "53794d9e0d4181883629faf8ef1cb71b6087a7d0e9aa675d7ebfc668453519a3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/tail3.png",
+    "sha256": "564f896870c8d29e2d833870bd69dca6c2faba066fa1cd48327db74cdf5bd044"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/tail1.png",
+    "sha256": "cf897784caf60b39b7ddb0ab0f25be1c628247e5a1f6ac051b0bcb9f2e1e2177"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/tail0.png",
+    "sha256": "c48ad06b0a7bbad2e15c3a44f71cbfe96bc77f52d800c1d9494d11d4f12df34e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "83be98e1cd0993add79bd29bb047e2b022ff2e337a84da45bea275335535a381"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "510649e73c24c8afc9a77ee9df852f1c04cad43dce63fe91577578d4e9d1aab7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "0b5d3ab0d378c3942d88edd8171fe2657540c8a0da453a49ecb8f093aba21690"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "fd542c6f8eb1483bb7e0294864361380956d7e9f0d878a238e6d109b2a8eed56"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "803203101e566440282d74583115683439ae028ff3b8e0ec6592379457b9e15e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "24e7ea3029d139daa3a00f49d3e196eadd70a84f321857757669170280624838"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/head.png",
+    "sha256": "b06895a656325aebd3b1684e210d26f4f7a9f5f5db43b307d1a3498558e370bf"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "8bf99b4c95820553a1c9b90770c2b9b209fd4ca057f0d72eb0ad35d41486c1d3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "7c681a2b58d584e73706bdf1e19bc2c68f9fa02f8d9f3d416231d4b3e5c86b66"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "34b7b1062eb847fe9019ccad6a2ba3e3d9691076b1bfa52342d7884e61dde379"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/root.png",
+    "sha256": "5b48f84e41f6a81ee1a78ab6439b3758755399ec4bc38c52e95855aa833fc2c9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "8c109f677a5b11cd6052081796346edbd024ad67dccd20b23affc1a082edacb3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/spine.png",
+    "sha256": "39417c202450948ac01f0dcb5d228db2e7757552b8cb5c7eff4d7c49217b4582"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/neck.png",
+    "sha256": "5c5467b6a1cc7693e056996892ba3164eb2b5bf74563577ec00f3ba5e9ced977"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/pelvis.png",
+    "sha256": "1359948bb73d27e3dcb52ad8715c47183fc829e7bb8f42e6896ce5f58d2c954e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "730182a6e01bbae6d48a8e5d489cd34944af821e6e2321628fe984b1ce1a037d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/atlas/c213-g2c90-24-river-otter.json",
+    "sha256": "8b569e755cd69ce06bb8e944967f3d81efe8c87faebb53fb0b1b3fcc41ac94c2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/atlas/c213-g2c90-24-river-otter.png",
+    "sha256": "7b26b530b0ba10066d516788315bf1545e8c7408ee18442951fc374d3904b679"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c90-24-river-otter/islands/fit/parts/atlas/receipt.json",
+    "sha256": "03fcf10270edc269e394025ffba6d5fa95b9cdb94ae5cbfbe451d54079b6260e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/record.json",
+    "sha256": "145a316d9166149575a74366fc7cc7185b026f855a979d0a4d7295707698189c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/binding.json",
+    "sha256": "e1e721990fcf288f22f49c043f5834f2b59c4975cdabe427f2b56487f538736a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/pre-split-binding.json",
+    "sha256": "19fce77b649cf9cd9e145b50aab734589ae2fdedc129ae9eb30b80441d01efb5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/declaration.json",
+    "sha256": "8edd4f72f482f91ccee5ffe3842839618bb07ea668a6fb057c3bada7b7a66ef1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/labels.png",
+    "sha256": "acca57d7581004c2a0c75a7aee56848a5435e7bd32cd80867138b3e930373d33"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/binding.json",
+    "sha256": "bf87639bf294ddb0859c155fa651d421460368f42f391579acb906b1e551bb38"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/keyed.png",
+    "sha256": "d12c493c190af080d30197a1cbd9f7d598b37335807c4032b779c70bf519fa45"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/ownership.png",
+    "sha256": "ac4159e18f8ff8dcf5a01b8a171c262a751b23c02f7194d215b300bc8e908ce4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/manifest.json",
+    "sha256": "a49be08121db1ae8dd821ebee2bcdf0f49a456505fb89afdee6a25f0c9b7138a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/receipt.json",
+    "sha256": "3c910a503c0e7b331823499f184a750bf69dfbaac5ce6179cedccf495eb3bc6a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/jaw.png",
+    "sha256": "95893682a8c913e614e0bd2c5f7a6985579aa3451c89857cfb794e25e344a7f1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "336dd8ad5baab85d61c27f20518cfa0a628770b7bbc4f13730d31cba59e6e3c4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "694a3c003b4eaaf2fb03f231c638c0779483ee8035d3de726c1843ab42859d96"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "7c6f4d452ca7164280f1b8facd65aede0bdeea8dad079cf088253a08ef71f93c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "bd66f66fb92f435ab9835fef488b5e48a6b3ba6d6c5d7bbf72d44357ed0a2ef0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "5398f1d96aa883b2bb3d1608dfae652aac7c78f71c19245df3067ead3340a00b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "a37d5bb12136132737eb9748d21bb6f304d3fa4cb522149a7cb95c5b76720b10"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "4b1c1a3aa970718d1adad6167c81d8ab61e5d6f3a30436d050508f8897d5aff5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "f20eae3f053826cd66d569dc226189fd5890b57c41519fd4cf2f5c062e795347"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "9155dd9f162fcaf5136d876f6eeafa143de921baa66d7d7761a20f051f55f0f0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/tail2.png",
+    "sha256": "73f1795d6a512f7016c62a1eac29029b19e9b34123eb19626ab3babec1208e7d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/chest.png",
+    "sha256": "4f47d228b1ec561aa3194be80ee65494e398dd511196a09e99507117b346085b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/tail3.png",
+    "sha256": "99a428904910f6d75d526f71d66c37d3a8468dd22b778f745fea6c8f6404abb8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/tail1.png",
+    "sha256": "495a958b306f7058dcc78ddc7120745601f76fbb6f81edc0afa0df827acae2d7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/tail0.png",
+    "sha256": "9fd013cedebfec0d23faa5709d5d0f461c18a64d9d72f484f4f82674dc368e2d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "9a5a277841763e5a27fa386bcd757d2980665709162783d5045195c7739544ff"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "40d4311cf93a1e3e234bab8897ffd359487509d7c81e386a85ae9e19fd21ff6a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "bbee0265bf7527d48f5112944506fa9387aaec4ded67e8ef4bbabec76edb9d1b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "857d6b5ef1612bf80c993d9094182aad952c84e9cdec54a038be3c60306b93f8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "295ac714fd998e3d28f0737ff03f6d3b58834fe2d75e58b48013f352d11a6c71"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "48f6babf44f6cb634b62423a795529bb15b0c2d8b17d509566d1b9e7dc25ea32"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/head.png",
+    "sha256": "75c892755a23f7211c6f934106ee3878e69682eef6923d92e7d351bb85d5d370"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "b0944b8e7f0624511fae7bc94161a517234d21548bcb2c4389957041334c9661"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "728d5333325237310ff708037506dc0efba61866ea5d296c2ab815ade7a759f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "b84921410f0e145a0ba5a08b50a326878998d4b25d774fc6ed3166501070bec7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/root.png",
+    "sha256": "35c3cba1825b1902275878bb0be1337c62a8dba505e100e32c0c7dcd1d3701d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "4d2feb5ea4f29891a7126c2bb340cf6953001b71b5e95ae42ec8af58a59c56a0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/spine.png",
+    "sha256": "42463f6d0173dcc091c936cb396952e9fe629278e49bee1cc726690a1ebf7c89"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/neck.png",
+    "sha256": "ea1fe5da4bd524f5ff0cd8f03fd7fe533b307ada2e1cd4ee169fa27f66858116"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/pelvis.png",
+    "sha256": "5891fceca8e7db0d4df3e03a918c7a4c98fef9deb0ec0438e548c56d8e40898b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "4566806c4e774b60a8d987cf57f9a383d938e90dc1b568b44bcda5082f5cb1d0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/atlas/c213-c202creaturesupply-16-spotted-hyena.json",
+    "sha256": "4eeda4b42511aac174886f9832cf75d9926adff05a78eb99ff55a381c1977f50"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/atlas/c213-c202creaturesupply-16-spotted-hyena.png",
+    "sha256": "b21ee149b605f2888c2697c6fe80f5adaff268c84748c9ed9e99d9c20fd11389"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit/parts/atlas/receipt.json",
+    "sha256": "e1fd10e3f96eac71ebdd3f07946dec5e1d06ba367df3a71343ceb4efb2ae2ff4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/record.json",
+    "sha256": "bc1c1a11becf8c7458e61c203277ce8d23ba6c8d4c19ff2ec5f78cea0c2b29d3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/binding.json",
+    "sha256": "9f2ce2e11a737a47fcf6fc474c88b5b3116ce1dc43ee4b0950d898f2d38c1640"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/pre-split-binding.json",
+    "sha256": "8f941af1c16f4b42891fb8533c4659a058a1ac58c12d7315604ac1d4aa7261bc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/declaration.json",
+    "sha256": "950d0d019036880a4510d42e4dab0efaad9ec6745f77b3ebce60124dfe8de7f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/labels.png",
+    "sha256": "06d02c063e3665833bb54ee9205f53289df803bef1ce5693fbea183663dab90c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/binding.json",
+    "sha256": "df333c25228887fbc7e0790ac103a755f238db058f021e2384613af86b6e225f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/keyed.png",
+    "sha256": "e731b5f6e472dfea4644fc1caa42573e81c24d0a37e07d5f0d77de6c4c782780"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/ownership.png",
+    "sha256": "8b9ac29f5e74f93a3546b3bbdc9c309f00d727a7815a671c906f6d5bcea74f98"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/manifest.json",
+    "sha256": "b48d6bcb54d8fe7272dbf8fd06be02df20852ff0509b3a47ea29352040238758"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/receipt.json",
+    "sha256": "522661fac2573c327b2fbdd5eacf4ee49b844df7038c0e556f7cb45693b94910"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/beak.png",
+    "sha256": "187f12bdfdf6311f5e331f6df6df10324b2bd36ba4ed1fcbaa56ea7ebedcbb00"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/far-shin.png",
+    "sha256": "42b45b96cab2bf8c9100be567372f326cf9e50b831a8988a67436960d05c7604"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/body.png",
+    "sha256": "f376f5d32166b22a466ca2133eaab400756597ae375333477ffd71f61a93aaa8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/near-wing-flight.png",
+    "sha256": "27e4db892654e0e53753c96f9652fc5dcedea1e7dd1e300a0bb4b9fe388e3c9d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/near-wing-root.png",
+    "sha256": "5a6e68bdc61aafb41261d3656ee03deb0851b1bd7f93ae1aa0b7f915125a2df6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/chest.png",
+    "sha256": "a9c25bde0f485b619e9f4b7ac9e7ee10c56b90d99a7e221662a8b63e69fea9e3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/far-foot.png",
+    "sha256": "50e01afb78494ae3dcd669f3eb9d607ec8911332a9ec910a39d2d9274239bda6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/far-wing-root.png",
+    "sha256": "2ecfb3a24d8df5971096eca7df0aeee5873d80672e778b9f9e4d87c60c39c549"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/far-wing-flight.png",
+    "sha256": "27a6b61b16a8dfb71b5f5c4a9d61c924a9a10163afefb69cc6856f1ae869d4ce"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/neck-lower.png",
+    "sha256": "ca5e2a379b6de4a9580768d6ec26c07f9ba9c84010b3e59e43d58b77f704e25c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/near-foot.png",
+    "sha256": "a3e7a4ca29035db7a065f961aa07b9265db837b1d8f8de80d70b7de463ea8a6c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/head.png",
+    "sha256": "b38a4f4337e109bada4238f4e80328960a7ae0a9687fe3d50611b492493cc262"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/tail.png",
+    "sha256": "9eabee365a38e94b73909e6d6f98f7bef003ebd748dd45afb1afb52f36360f5f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/far-thigh.png",
+    "sha256": "a6e74c58964b4335dac6cded9211fa65852c87e8c40723efc66f39e717658d1c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/near-shin.png",
+    "sha256": "bc6adc0ddff95a15d872c0cee1e08c96590cc81dfa9e11235bf53f5e6bfa32b5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/near-thigh.png",
+    "sha256": "1436ae1533761ec322ff3953aa3d8e36dc74dac895ccdc25beae7a8c3338e786"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/parts/neck-upper.png",
+    "sha256": "e4926516179c35b63262da991a102e8ea4564f86607c6cabca247da286c0adeb"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/atlas/c213-g2c101-20-snow-petrel.png",
+    "sha256": "fe7ced9a1715c98ede9ee3b996ed10759a6fcb8802e1e30b2d8af0e9a6600549"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/atlas/c213-g2c101-20-snow-petrel.json",
+    "sha256": "b095d8fc9652b8ab76efa31458fed2f95f989dc4f0fd1934868cf0881abbc7fe"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c101-20-snow-petrel/islands/fit/parts/atlas/receipt.json",
+    "sha256": "d7bf6cde69ab20d87e87d7515fc1a8e2ed0f70d63a83fb241c6db8d4a012c87e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/record.json",
+    "sha256": "e38a9909689ebcec3b0d1fe2816fdaee8932e1da59f24365017b89351353942c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/binding.json",
+    "sha256": "c58053b907be1f6001613a7091b79d67e10135df20ea1d05b86fc35d12a66f25"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/pre-split-binding.json",
+    "sha256": "d66c00cee2b318362a74e97bd1acfa40b3fdd6286422d0e7a0b62e0de07382a3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/declaration.json",
+    "sha256": "2c245f09087c012dd24ae513c5072325d0cf79493c298c3c30e50b49fde5c56f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/labels.png",
+    "sha256": "269fb6bb9782223ca3113a980f26aab4f18ceca380e0f5582e18d1cbbcd30ed5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/binding.json",
+    "sha256": "a57e4e5fa0e8775464a4fa488ac9e297ac78c81e37d3e7dabb65c1c0f5b6a168"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/keyed.png",
+    "sha256": "4c1ba5e06cac7bbc6bf2f9e949c58890128ecdb31c0f3492b1d4f0232237fbb9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/ownership.png",
+    "sha256": "0c4ee94359cec1d9a36fd57a16d3a58bb74294b3a8250fbfb57c5b4a35bf0e1e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/manifest.json",
+    "sha256": "2d5822767c00b58e14990f6f92f1b2713f0df329287fe66aeb9256e955bf1010"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/receipt.json",
+    "sha256": "3222fdf65e2cb91a08f6e51c87f3dd881b335961714050db4579158597190ff3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/jaw.png",
+    "sha256": "917c97ebcd4117748acfaefed2030f575c346bc75e2517def62cf6e58594c571"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "03d2c0807a6eeb78f592834677ad407ad22edd53f4a9e73077b1697584676f94"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "be0031a0f982ff8aee4b40efe713bece9bea92fc8b7a3ae0c0b53cbbdd9ccb43"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "c1677c41a1f01cb51d76c553754fbe843f992da6109a71c2cce9f33bf56c42e7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "44b7c79c0e21c29f8577747a0e291aeff771d2d2b9097c673cc3793a8d0b29d2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "af7308e6444c0b10ae67090ca7c9e58586cd75ea8d4153e8e3070facdf98b6a3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "66c2240a485cbf9d376e4361342f3fe53536e86c92ba6de4de4c8b529f61f32e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "c9602e43f296b38c135fbe2129dc9e9ac0cd65fa906e4f1a8c7700aeda36ad39"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "ada42e6937b629d4e29fbb71472a47b491f1996af920a91e1bd90d649ca10f44"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "f1a5f7ad02049e8eed96168b2adbbeba5567aa6d54b9401008db1466c89eb1f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/tail2.png",
+    "sha256": "cef3fa47f22a897e986b6fc1ae287a386ffa216c7853c2098edbbe9f82ccd0f0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/chest.png",
+    "sha256": "89396bed6aeb920cab6b4145802f7b82c392a7e04b289c10c4de719f1bf3c011"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/tail3.png",
+    "sha256": "36c5a55aeb557fa907756f22442c0c750c14311556497906332784df64243ceb"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/tail1.png",
+    "sha256": "bb197b72e5f2cac2e55e39054be9e4b03e21607922b51c542f872658812a46a1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/tail0.png",
+    "sha256": "fdd2aabf08e27d136d4d5bb80125dc2ddfc0eb3f2fba17462447ddaf00201d04"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "b823579ee0978f134eab60db705d6847a4a71bd05415ec331575c117020cc876"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "8f24042a805e694699f36727b841a99ec4ba9821d6f0363c60100b33e5130ee9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "3679999850bc9f3f06a877dab083acd29b6705191b8bd6a995e315dadf86ae92"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "14bd710ff87fb7dcd4bd65858fc7a68a14184c0bc2de3338979dcc36898af52b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "a1bb1f36bb0d51f666fac2b0394c1d7af1b573b69effeef663616687620ea785"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "f22f8817897ca6f2e6d184f5bc1d3807801fb368c365c0ca7f173abd3ffb4751"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/head.png",
+    "sha256": "5734eef699e7669a5b3ea3a7035c29380d50b643b10cde4920d7a66a8d8f94a7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "55ada3e936743a6b7be75ccaa8f427696f746860bf24baa79cfb853c168b3740"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "1dc7987bded744db0537c66b5488e0b267b69e2623e03ab36d6ea45e2d873532"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "b0739038c205a5caaf9ca4e561a84deabe7e4562b782c8d70cb0ccf1f64609af"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/root.png",
+    "sha256": "41dc25f9e36d13c5bdf972f521e9a4f7f96d686b5b456b114e7a9ef626daae1c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "830ccee6d5e0ca290c0ad36b50dec5b9a824c7ac59a7f4b33a582502a924d210"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/spine.png",
+    "sha256": "7480f99ad9241f96a0bc00a61cd453b86ef51fa9daef9605457a94f351b60f63"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/neck.png",
+    "sha256": "bab555e9224753a514e4eb80d0cc316f8c10f5b77546834706d5211470b8da72"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/pelvis.png",
+    "sha256": "bdc42361df1ed83e887eeb668315d87153669d4d0a978d1e601a7c6b2eb787f3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "815dd87e71f39d7d05b8f7d220117e4f03e6dec78f49c1d54fc9be44be1a2c0e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/atlas/c213-g2c118-04-sea-otter.json",
+    "sha256": "d2f8502f2545b7a37280f0f57cd3ee0579cf326b17fcb3198cd31bf6d8531c6f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/atlas/c213-g2c118-04-sea-otter.png",
+    "sha256": "9dce7c85705c2732c36149e2c957f4b596e7f81af80b3dab28060e6ad62411dc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/islands/fit/parts/atlas/receipt.json",
+    "sha256": "fd4c53f95ce77d5bbde496204ed89773a41f16179cc29b0aec582980c1b46e8c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/record.json",
+    "sha256": "5bbfadea2012f09ea6beb661f6ca6098019e66da378c93509cd64508150539fe"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/binding.json",
+    "sha256": "80eefd484b693f76ba6a9d9c839ee5f04d27eb12340d46b834a8a2ab2f66361b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/pre-split-binding.json",
+    "sha256": "d28909db8885873e475a950e4f4f35c23069760d825db411277d9fdf17a76a85"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/declaration.json",
+    "sha256": "fd0a484914996e8a88e38f3310c7d5d0b4880482613c40d329b107edc2d4c9ac"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/labels.png",
+    "sha256": "ec2490e47dc7f1dcd89a4a924d854df865f8927c15bceb1a14c15f98e841afff"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/binding.json",
+    "sha256": "5616c14ee34e57b5abce4396f8ac7f9ccad83d0c31b2854ca868a522ba3df8bd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/keyed.png",
+    "sha256": "733fe68793d74673c808e8f270d004474d5a5b67ae865c8f49effa1097b6f911"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/ownership.png",
+    "sha256": "78285822317c172aec660fdfe550a130caebb5a751a48ffe58c154101169cfa9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/manifest.json",
+    "sha256": "c2dfa58977e90ba37c9ce50e090c1b1bcb5c3cd8a29866eedd909740c9302508"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/receipt.json",
+    "sha256": "ccdcc2756d27106048e53119eb793a22370b9191f431330d99a5eb4b7a16bf16"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/front-far-upper.png",
+    "sha256": "14e18a16bb4a1593fc41a160082ebd56cc0f2e3175825ce647c99ddab2d73065"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/thorax.png",
+    "sha256": "261bea126c55e063a1f2f0a0393e9b5cb887710d2aa5c2a8deb6d33baa367e89"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/wing-far.png",
+    "sha256": "4a2ba50f201839e83badae6b99dba82bd9eebee3ba6e7f2da34a486a3e96f225"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/antenna-near.png",
+    "sha256": "6c4317c5a83d8f58ff212a18632be336b7e73cb9e8a6956ff3c49c768df235b9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/mandible.png",
+    "sha256": "2f74b553aea22c24ad020d421d22ddbf8cc865fae33b58e1485b71e8450568ac"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/hind-near-upper.png",
+    "sha256": "cd7e37a086eaa5f88d36dddc5f69607a142d81a31cab1ce25c4573f50e374a44"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/hind-far-lower.png",
+    "sha256": "fda17ebf9f51bd7c4f9eba6a963f4b65a480edd20a347ddf25841bc0a1be5889"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/abdomen.png",
+    "sha256": "c50fb70e9daebdd6d97f9f575a692ff0a3d1e0905b133e45cabba0bb8798ab0d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/mid-near-upper.png",
+    "sha256": "5e9cf20a1bceb72a2a6fb275eab1e46f178eed9c2279cddc6bf363409ff30660"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/antenna-far.png",
+    "sha256": "b233f84a44e871f0956760c9dc9f923dd524811ecc6540c14f6af1e68e5a983c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/front-far-lower.png",
+    "sha256": "0baeb5602cec8976cb07168b435b1b3f224aedb26ae82ac18fca125c49adc84d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/body.png",
+    "sha256": "4b70d7f0bb783b4679792594231b6cb1a0dc65eed687a4859afc3f8fcf6d8777"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/mid-near-lower.png",
+    "sha256": "889e38b790fb818d567e3434d2790a5ba4907f60daa787e88a7940e19a446648"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/hind-near-lower.png",
+    "sha256": "66d54ed2783db15d3d28ab224f51b38c8cff14bcc923e2834ea4740077513642"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/hind-far-upper.png",
+    "sha256": "ec421410beafb6c19db8d06f6cd02c3a8161bb5104ba1bf60c9c72e94233f2f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/mid-far-lower.png",
+    "sha256": "5d235ceea4c90bd2b1c601f7f948553e45ed766bffe843018a96a7e4001fb576"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/wing-near.png",
+    "sha256": "6a197d747e42825f078a61b1470e9d3e26548aea1e26d2dfafc6913cee3251be"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/head.png",
+    "sha256": "e1bfed21b1318d999cef2078b4730ae01b01fb2612c3f86706f008f5d88f075b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/front-near-lower.png",
+    "sha256": "06d52359bf7bf2fa9032110ab5f16a5ba3f018a5625bab77286aa092fac9cfc1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/mid-far-upper.png",
+    "sha256": "7751c1e69c7190c46a35067b87add2c910a17f568f209f2f15a6545918072c26"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/parts/front-near-upper.png",
+    "sha256": "1f794cdd70c4e9e3e763d1429416b84452e806360c38ab50a4b5990237598cbc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/atlas/c213-g2c95-23-springtail.png",
+    "sha256": "df2993df39b3f8716af94064fa0bbb79a3e78ba4ba457f8c8c2ba5b813a16dd2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/atlas/c213-g2c95-23-springtail.json",
+    "sha256": "d495ae651cc173b685c38cc8657d58a7a539f16e4098943b0746a267c3404169"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/g2c95-23-springtail/islands/fit/parts/atlas/receipt.json",
+    "sha256": "bb47870bc5810468d13e07fda9ca8b3e8411c6882f7283860b70e4c13ef83d4c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/record.json",
+    "sha256": "565b7780152b7ce9fa84e093c6998f9a3915068c8d1a2208fd0a6931797e1477"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/binding.json",
+    "sha256": "6c35482378c8cfea9c8883b057f3269c446b9cf400db525d5aa4bba542a5af34"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/pre-split-binding.json",
+    "sha256": "fc223985151ac43fcaed814e1d668600c80240aac32f06c52ef059a9082ebb6e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/declaration.json",
+    "sha256": "105179ea75886a5dd60574d5c03e762a4114375ef3a13a42c90a7389be67082f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/labels.png",
+    "sha256": "ac2437f270fa25aa1304acf792ea1156292f2fc52d639864bc88f367c568bce1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/binding.json",
+    "sha256": "08667da907282efe9072ee740eaea8bacb54001dc6dbecd2203559a81c829b46"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/keyed.png",
+    "sha256": "747ab68501034188373c78da32b09183e0e3a9aa1e3839e790de52f97e49b1e2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/ownership.png",
+    "sha256": "e59b7e5627dc78edeeeb35078b5926f2b1da090b03b5425da87f964f767302b2"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/manifest.json",
+    "sha256": "f25bcca555b307807ce9f6f292a66b0670c8cd0796a4c818d3300e0ebb8d569e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/receipt.json",
+    "sha256": "6c6341eba66cd17b5c544e4f0b9a57383ea50ac24cdabbe3ec6f32cda0b33d6c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/jaw.png",
+    "sha256": "7ec1666b3e3eb07bfdcb9c316c9d229429694958372de8e6c6206181ef7e8b0a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "58cfc95fef3d85bc71348f0339f2e28d236bfbe40fed9acd21d7ceabc55d1304"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "9d3f6ece4f52e2eef29becf8630cdc9f8ea58ffb54afbc1c4249623814a25574"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "dc87dcfc1ff9e743c24f2a207178d07b6b2925438af72f3f6260e321d89b3f63"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "0daf163f14e911ce74dde8f33e98bd89153ada4d709a2d20daf45e715fc89c08"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "4b8d4fed4c031ec7a4da5ded0e53ed1a3ab03538a0c73ed9a490d86ce13dee79"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "e43f2d9a96cecc160ccf32cdf6949227d424e6b15ffe01b0a6731ec138030c84"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "da4945e668e6357430d2285aab6700c9c847854c1aed49eddf4ee8da8d5e8480"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "eb8f7226e83f9db8b44a5ecf1497c9ca38f58046acb31e7e455d13d2d85441c6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "6886979af033163038a339e399d90cbb49f1d3569458abe4d47da4eac3b0e793"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/tail2.png",
+    "sha256": "8147b9ca93d7257cf4f4b8949cc66e16b02d8514ce31afbeec51fae45f7462de"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/chest.png",
+    "sha256": "7accad53b3bc7262ab1d42321bd194d3ece5a06dbff70be84f3e2c6884dcc3bb"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/tail3.png",
+    "sha256": "5c78fd89428e8112c75524d6c68a03b03c769dc97bf841d090d0dfbb7882dde6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/tail1.png",
+    "sha256": "678dc5c141aab2b7e4874e2d24a8a151249d14696690c2998b24d4491b745887"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/tail0.png",
+    "sha256": "abad34d8b8e3129ccc4d124a9225c330a59c17b9e45c69fcf2473b155be7548f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "b9c82f1c0685f689587dea35b80dffd1a2b6298333bb28ccddceecf241462efd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "accd26e804fc5ee5f5f21f81d741081ac15bd2c965a538995757442054774e67"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "e053cc560d47a4d86a55e18333ec1a134c7cb9dbcba8f48323cca69bf9f4808c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "0622b567265a617aad5ec27d8d7351d579f977bbe383b471b8cb54197ed4f4b1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "758ec08874226d3e2f1a998a073108490a00955d801eb2e56cdf45d7b3d25b05"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "12c2e440f9a4e55daad608cb101ee6c11251e13e95dc8a4403fdbefac04ec777"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/head.png",
+    "sha256": "9d06cec34372f6a7836122f64c749cceb7813d19be4274085d4765d9c90ff81b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "f0bed9276a2f385a065fc2fc4519a8444f008a006e61c2b1d574e10b10748e91"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "626f2457bfeee884cc02e25740776b715a5ddfdffa4392a68fc521424a72c737"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "b992e50c64adad9743b98cb3bedca09c39b7e3630a68c98aab82ba8adebb34ba"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/root.png",
+    "sha256": "575ffbeae9e77ee4cd6aad2500f5165d1fe18263a01a0b29c3d7a7ff721e818b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "08be6874294a5f31f3f32848c79f8bd588ced5da5d99ab1012b473f0dcceb13a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/spine.png",
+    "sha256": "31c516af04578cc0261d4d9de1af66ae7ddce40776a73de965d0422a2d5061a6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/neck.png",
+    "sha256": "8bf29d3462bfe52cfd984129c3424df4acd06f03e0613f1507bfab5602fb8ade"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/pelvis.png",
+    "sha256": "4eed41090555a90a6e3c2590b77f301df3828d93c1cae9581b91263c32eb1b60"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "0faeb5b413438ec86b4579d2248ead599e71dcb8342a0cf2d4fcd2a87c14eb1a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/atlas/c213-cow.json",
+    "sha256": "8b6b286ed40d9f8c6497eb40d01d5556fa6c6474fd7102722850e475876ff190"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/atlas/c213-cow.png",
+    "sha256": "1c9606ccc3bd171182ca39bc1a6fcdb9e42714567b5e567f75783295f9884501"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/cow/islands/fit/parts/atlas/receipt.json",
+    "sha256": "d18588f8f66fb75d29210961d4f709849d76d43f5172f14d99d8da308399f460"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/record.json",
+    "sha256": "d15676d9e8528152940d99748777aed2918ee24d97b916cd78e6599314ba4065"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/binding.json",
+    "sha256": "f4fa7ecf7a9438f1dd9d8c183a2f615bf8516fac84cd9ce07a949d3259c9f806"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/pre-split-binding.json",
+    "sha256": "3ae38eb943313f6ff4e7d9b2e4a289bf62c7458ccc3c5e6b1af5a1452cd60baa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/declaration.json",
+    "sha256": "dea5a5884d613dd70aced729c58ffd714e69384bae65f9f14467d19d57d13b38"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/labels.png",
+    "sha256": "1343d65f281c3e232f8f563542a586e4871e7bfa9ffdebf74320de1eb6aae680"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/binding.json",
+    "sha256": "ba97c46eefdc2822045744aa6e2e4e4063c91689c63f5d543eab2bb5e5608618"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/keyed.png",
+    "sha256": "39ab35610e9885c9608c637184d279f1ef648895e4b9065e5dce688f4f26c359"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/ownership.png",
+    "sha256": "0f4664a72261e0919b92d694ae30a9f0b7670bc075c726aa83592f246c62d4de"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/manifest.json",
+    "sha256": "f68f2ad027ae4086481bb3d04c52eaab2e24f6ecda4802ab2e3e87872219a42e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/receipt.json",
+    "sha256": "bc718bca49c439101cd1b75065f0ff23907af7bdaf2aa4bd41c8e1c88936417a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/beak.png",
+    "sha256": "291f601b207f8882558c20a89908cf7cce44b7a36cc3a1d667e63c9ec17f2a0a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/far-shin.png",
+    "sha256": "4575023d3f45dd48437060cffa97dec6e8c8133cdce94cf486ffb9af630eebbb"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/body.png",
+    "sha256": "2898c36f541414732add55a2940ba882ff4914a22c2b5302e8684471bce33dcd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/near-wing-flight.png",
+    "sha256": "0b21425a0d6ecd0a10ebffc5265dce1fea792ff3bfa28f293eeb545204198cee"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/near-wing-root.png",
+    "sha256": "b2ad1536e8a28921c2485c0f767b133b4566b9c4558a984a754395436ddd02f9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/chest.png",
+    "sha256": "1fdc4ee6c67512308a7c8110ace134bf329808e60d19befa3e4c947641f7a402"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/far-foot.png",
+    "sha256": "81fc9cf5f6df5bbc0eb85eb70c8c7c9a23246d793924913c95550beabd43b82a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/far-wing-root.png",
+    "sha256": "a2fd256c1492618688f2474ee451562652d956e7d571ebdf8a1db94946557a4b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/far-wing-flight.png",
+    "sha256": "fd1fe23d05485b65cdf10f4109fad39ed03b71492b79b5107d0fee8dd0e05a5b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/neck-lower.png",
+    "sha256": "4b20e7c3286e47a372819a6053fcbb2786763d70a832d851c7742d8d2e9b6b9d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/near-foot.png",
+    "sha256": "41f26dc6b77e8fd718116af6707e305fbecdf5315b05f6c0f2ad9d14db350988"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/head.png",
+    "sha256": "6ff276fecef548903b11aa1893e9025a744b4d3b3eab64fcd21e8b5f0daa2e81"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/tail.png",
+    "sha256": "03cf101efc4d16c960ae567c211c46f04d9ea60ef5e481fe56a9dc49b7089aef"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/far-thigh.png",
+    "sha256": "3cc56625a69395ece7a26ce684c743e7a878d38be8e7cba163705b4b464ee4d3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/near-shin.png",
+    "sha256": "7d79615dd86e95aad6e9ed77e78e2e24c27a09dd442f2673fc42e26565517f4a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/near-thigh.png",
+    "sha256": "6b6c966763630e16c13b08ada75ae9d5a6cda734828a45cbf69c53115ea38d2f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/parts/neck-upper.png",
+    "sha256": "51a14efc44b75fd3088e8281b20aacddabd5c445f57dbd7b8f079bb1d982afc0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/atlas/c213-stork.png",
+    "sha256": "ac3ca1051e4c59984db368c2c33350556b7a7e0d889806a013430824c320878b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/atlas/c213-stork.json",
+    "sha256": "afc8c7c5271348a309b4db40864efb060b0f4e7571c4f5807f039ce05918dbde"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/stork/islands/fit/parts/atlas/receipt.json",
+    "sha256": "f802e3c227ade5b09bb3acf9269d44c308282bbd6697b258964396baaf5db14a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/record.json",
+    "sha256": "fe36b965fb557cc99998235ab209be7904e1e2a079d27ed8c2806ee51dcf898d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/binding.json",
+    "sha256": "952182704eb934c5061e36abbffd357ffb2eb85003cc2452e33b17cfc34e10d9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/pre-split-binding.json",
+    "sha256": "15810f69aaa73d17543a6cc536b74b3fedcef3597e1e9f2a1528c86360666c40"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/declaration.json",
+    "sha256": "0b7f1756e360d592f38e3995a3e73a2dc4208e462bda4a064237d24dc09fc338"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/labels.png",
+    "sha256": "2cfbfbb47670681d500be834168582bd2880b4e1874e9da6d3db343eb34a463d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/binding.json",
+    "sha256": "8b1ed910a47586d80457a92de907b2c4177b518a89b90c1735baf96aac0c20f4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/keyed.png",
+    "sha256": "f01cf22045840027f59edf5b0f641941e7b752a6468d4a1480732170dffed7f6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/ownership.png",
+    "sha256": "803754efd9924079fff8b78e798b87f0d870b54647f6e35dcee157508bae9b8f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/manifest.json",
+    "sha256": "da095f3908260ad4e77b7befef332fb3cec1915f677b4a7cfe7cd7908db18f14"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/receipt.json",
+    "sha256": "db4dcf19e62a92daecb34f53133898345e80be463dffbd35f13676e120aef69c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/rear-body.png",
+    "sha256": "07388bbd1877cd79c84343cf384d5ee6100b057b990c6a004a57d963d56249de"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/jaw.png",
+    "sha256": "8ab753a488ebf858408a7a61faa73b502137875d7fcfb4bfe181d4f16dafcc96"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/caudal.png",
+    "sha256": "815b7dc28a90bb0694c0b635d3aef0f4385c62d12636e4fc1de8d62685e6f6a1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/mid-body.png",
+    "sha256": "9fbe27a1137b3981ec48d971993148eef23ba10e1f930768410a80323abc1229"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/body.png",
+    "sha256": "dab9578b4c5003c90a7e17b3f7d3376d7df5bf8ada7f8fb59ce932cc6e1114b5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/front-body.png",
+    "sha256": "2057d33429d21ce3d0f93ece557617463a9f88aef2281d065d774fd70b54b356"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/near-pectoral.png",
+    "sha256": "e760ff63630fba3be274b597a7750519efe473808deca35acfec3694751c01da"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/head.png",
+    "sha256": "f8203cc985a32f2be178f5ef859b73ead902dfcd19c03d89309df7258e61e06f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/tail-peduncle.png",
+    "sha256": "9ac09083e34a5d2ed555501e64fdc27aa8b751963e536bd7607e9f401c098706"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/root.png",
+    "sha256": "18f9fae2d7beadef3ee90230606339552cddbdd171093fa987d23cc1f6636a35"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/dorsal.png",
+    "sha256": "4c809331ba67dfbbe0d5c7d292328a9b6a46f325be7c52fb23192fc9e197f6a8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/far-pectoral.png",
+    "sha256": "3b7b1f62932c83ecc3c32293dd8739955682d4727e8666399cf700c59b28d446"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/parts/pelvic-body.png",
+    "sha256": "08dc26106c9ad7c7a0e8e9ee56a862edab381d3074e95742c6f719e840c8a6f8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/atlas/c213-c203creaturesupplyb-23-swordfish.json",
+    "sha256": "3c41784ba76548926657da1de9def165f52d7565ae73fb41c1c6915f0a4f7aa6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/atlas/c213-c203creaturesupplyb-23-swordfish.png",
+    "sha256": "37e15fd7eae7a7edaefe7cd5b4ae13752a03a17950817f5ff8eada96baf479b4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-successors/c203creaturesupplyb-23-swordfish/islands/fit/parts/atlas/receipt.json",
+    "sha256": "3a1355772ebc8b5f872ff19bed342a355a401f75a30679e0ab97b3aca83aab32"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/record.json",
+    "sha256": "05428b78197db5f28c3a2b76815495d415330e1191f2b25b0abdd49e1de114fd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/binding.json",
+    "sha256": "61c8c263c11babf29ab554bb4e75f031b13b6b975e5b54fa02cc932c0f7e87e6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/pre-split-binding.json",
+    "sha256": "9cb69a8aeef657d1fcff711ea1f5ce2f05d2536622e0ae961c231b43fc7bb778"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/declaration.json",
+    "sha256": "11917e7c7992bd8428864a02786f7fff4c61f05c8d4ec4f2fefa4fa4b79af886"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/labels.png",
+    "sha256": "c96e26a22c06a328c33c298e69cf747d1b46e891693cd7cd19a2679ca0cd71ad"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/binding.json",
+    "sha256": "499ccdaf1c8e7b735808c9707810013ebc4b6346bbaf6ff366cbd3c269d92842"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/keyed.png",
+    "sha256": "5e6e93f50544ac12a134fa37cda3f0e673952e6a1e204b95e7c932d719639f20"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/ownership.png",
+    "sha256": "cd00a83b26a0ab6440ca7433de7e57c1dbaab1cd8f1d84d24d5a6ffb11461561"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/manifest.json",
+    "sha256": "b6efc14822fd1917a4b264f4231d787ddbbf4d880da2eb5678fe69cb4ab08950"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/receipt.json",
+    "sha256": "c536dc966cc7d3d6350a5d6ca43e93219ce6982d2a166179845e919a17f8ba11"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/front-far-upper.png",
+    "sha256": "4932f0a6ec31e1ae18b9dc23df7601afaa9b6c7b43096f68ec1b31718e6abd49"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/thorax.png",
+    "sha256": "7090b636bdb5451523178e221b853afd7571af62b7187c3f535c18a45e29d040"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/antenna-near.png",
+    "sha256": "d66240630c34ec3c77d64ad6a7e10da7c068beb67e3df43a3b2817843068de99"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/mandible.png",
+    "sha256": "dcd04b42fecd632e222aee410a353e11d3617f88bf339fab0cd22e6ce6ebf502"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/hind-near-upper.png",
+    "sha256": "5c446e8a7941d8b03711c426527434c5cf79d919f5ecb5a70bf8be6ed960d4ee"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/hind-far-lower.png",
+    "sha256": "590a5bbd1cdcb3808d40eb79022d487d6eebcb293362317e765a6d48c34959fc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/abdomen.png",
+    "sha256": "2465dd11f3e7fe874a965efc56553e947243b0778c9f45fd138519f77cd58e46"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/mid-near-upper.png",
+    "sha256": "9949d85e42f83e226da37b29d03e04ab6b47ac9cfcc1cac9f3b0bc71266bf3b0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/membrane-near.png",
+    "sha256": "7d4e812a7aa8b7b9795f4736fdc25b5446209e403107644dd26c15c5afb87797"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/antenna-far.png",
+    "sha256": "78674e2664dc0401c95ba1a8499610817623bf2a76e82fba483e3ae2d47006aa"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/front-far-lower.png",
+    "sha256": "ee631caae65206c9eb6088e3b4865b1fdb420f45a90cb47b1d60264cca99928e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/body.png",
+    "sha256": "d989b8d24fe3337abd57b8d3e626ae395c0abaff516185b68422bbc926d92192"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/mid-near-lower.png",
+    "sha256": "4c5ee2759d1e5c23af324d4ee0ace982f2eba96444c55ad2933fd3e6594dc63a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/hind-near-lower.png",
+    "sha256": "2679dbb56a0d85cfd01228a99de3baf415f35ccb5a7f14a8a81df552dae5c4ff"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/membrane-far.png",
+    "sha256": "4402000b03d0061c09aa600b1b9d6095d12956a52de9b71cc00b7d5b1921912c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/hind-far-upper.png",
+    "sha256": "93bdf406e5389bebd7d4cf7a44230f46bb4a4bb7270e0adce313381fa0df70b9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/mid-far-lower.png",
+    "sha256": "e5121775a04c16cbfc72ecfd808a223bc18ad5551f61809ceb2555f2682ae194"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/head.png",
+    "sha256": "759fca1013b32fa39a7a2f87ead5690bd1d589f0cf68a7e0346d784857ca621f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/front-near-lower.png",
+    "sha256": "872baecc333cbe16c583f7e70ecbc87fae22e34fd7394987161e84b1f4600c76"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/mid-far-upper.png",
+    "sha256": "eecd446cead79ee2b5ca7e5d448f67eb7cb53e88bdab97bf31eb593220c9a342"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/parts/front-near-upper.png",
+    "sha256": "bad78742f7fb9324d8bca3e9717a537b2028ff45ef88acef2e5c1161ef1d99c7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/atlas/c213-keyed-bee.png",
+    "sha256": "6249c6f7f5de02c73a70decd01f6664bf0bb1c1377ca7f6ff3f1ee06579d91e6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/atlas/c213-keyed-bee.json",
+    "sha256": "37a0f382bc5ad8e9bcdf35cc17b85c621a5c3518f0d696c096d5b7aa3e321dda"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/bee/islands/fit/parts/atlas/receipt.json",
+    "sha256": "3de7fe14ef3cda6d30ab31006438c13543f04da810fa8390fef97dca06ba6f62"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/record.json",
+    "sha256": "7e5b416a693cad1681dbc8443fb5b8c932c00f8cc35a0ea9224607882edbbc02"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/binding.json",
+    "sha256": "d1a31f7c979219dfd40797c50e919d9338bc1701fd218fcf6fafea4e234f4897"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/pre-split-binding.json",
+    "sha256": "f5fc4a882b22ef6fa15c8a25d0e21793e2443137c29cebc4ae19ad61490aa071"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/declaration.json",
+    "sha256": "7633309bbb8f1528f081d30d8ba7f7303fd082dc21a55b19a01c9d236e2d679c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/labels.png",
+    "sha256": "20a94aa3ebb346d53291ceab4d27941fe621ab6e92adda460ce24c49e2717300"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/binding.json",
+    "sha256": "8ca9ba1ffad0f361a18d4159b0921bf4117c3c92bb453692d8ae15b310bc7fad"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/keyed.png",
+    "sha256": "7e07124fb31d79124aac6f3f418316f54756e45db82e7e25186345fa8cfe20a3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/ownership.png",
+    "sha256": "f7bf8132e64fd5700109d9faf5c74f5de55f1cc4d563eca6c858e96da9ab0849"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/manifest.json",
+    "sha256": "b38a93b3e2968662d89e728e575f0def9fbc26fe9f089473c4177b29ea081dd7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/receipt.json",
+    "sha256": "609c1620b1b79825cdff9839b1c3263a621a85497d05aec87506308ccccac2a4"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/jaw.png",
+    "sha256": "b43658f1027abf052e2ef1171cf0b23e9dbbd8dc3e6678f72bcc4eeffc980b60"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "09a19b5771a2b2622f0522d3f81e8279ed23f13a2d3d6ee6eefa0631526e3b37"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "58deda27e0bcef6775bb2cfcda2b187c8142e8aa8b0376273468aeb67907cdb5"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "09577ae2635b0e727f92e23691901c1d85fa79342d344ccbec783fa175857579"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-near-paw.png",
+    "sha256": "2b8346fda1df2531a7e87adaf2f3d2db005444ab6ebfef7f1a1cc769c2a90a44"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "4f83c009a442260c293fc1eeb810513fd528868fc55384041dffb060ce8f863f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-near-paw.png",
+    "sha256": "78f46a2894deb7ac1232dbf249c2c603c97083553fc5a9b66527f98b213e1d63"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "24a195d0f656adb2c6369c52bf7469f3e1ee9de9a802c425336cad9bd96f5189"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "ac339e25d634b68e4f4e464f9e53e8372d6db43889e7914687d3eda646331c3f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-far-paw.png",
+    "sha256": "b589bbbc1c5f4b77e819eac5d92f997ab0d3080188dbe08c61acf96456833b80"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/tail2.png",
+    "sha256": "d925fcc5a4e6d1b77f9c4596e866ade709eb4d9ff57346f4c9b50a20a11bc0a9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/chest.png",
+    "sha256": "1615faffc91e2e48ae16876af16329cc55d5b27987af40768af51bd1755f72be"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/tail3.png",
+    "sha256": "dfa85f29dacf3eb1be1ccce2b140f9446c8aacd7ab6cefbc9ef2fbce24cb96be"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/tail1.png",
+    "sha256": "60608dd84e0ada658b87398326f1ee0659d695ffee73262b5ee4d3c1272add49"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/tail0.png",
+    "sha256": "dace14c19bd5b7c5c9c622dc701d3726649d30ba528e05f07f9f224b0df5e09c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "a8ae80dc045de17f1c16937e5e247a7e7aeda335678e4921cdb232c881ecdf00"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "04a3a9f0bf636eceeb36c751140f1a107ae533f171cd3a97287ccb903617745e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "b4e6e1bc10da65d94d6bd08e2cbb915f74a139a7fdd9e76b6783a6b04a36d0da"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "71c5fb6fb1f678ba44b717763a0fcc208cf0c973db81ff1d5cf4b6f7c2b7ec44"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "0c39e48b06f7d928f601c716a1d9e99efcb05f59570faeaabb6b5bb741cffe3f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "716fdcb9d65b4229317f1f6fb2f68168f63daec280589bcc31d899feb5f3e4c6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/head.png",
+    "sha256": "506030f1ea77caba4e373c2ff1dc0e98d19c9ad86ae923da623826af87b1b470"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "7630697459d138cb52ec753c326df7d03e5b8c900bd3d33397740c4922baf0cd"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "b020d4e3099ebe4988ae18a27e89327bf3a19b48856d73fc2c4f298f7784b623"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "70095511bb49a9b71966c7ab3657e73a9e72afd55d046013fa46be3c9231c0e3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/root.png",
+    "sha256": "904b907cbc4bdeb7736e11378e3805e25c18f510f002cc723bb2b5b6ad3b1e64"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-far-paw.png",
+    "sha256": "68ef695f0c433a80791c48602cbdef0ca32b51bd06e5a72fa245b64d1a37db97"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/spine.png",
+    "sha256": "a5f08fe6039f0888c9f0e2d108f34a0410b5c6432ed2531c3f19752b2c513675"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/neck.png",
+    "sha256": "de97b93971276c7cb8e67c04c309ff918a8de5548cbe43020781040cb26c902b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/pelvis.png",
+    "sha256": "eea1dbf474b1856a27548e653049e9a7921bba72c42b2f01fc2b7022cd5ee83c"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "6a18a0cfb650ad80006b0cc2be979e594ab70e88cb1e69a0cab56ac6502a9dc0"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/atlas/c213-keyed-c202creaturesupply-06-impala.json",
+    "sha256": "1e643439e69a3976f6a9c366dbc3786ee9be1f1918a7413135d5556c7f2ba01d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/atlas/c213-keyed-c202creaturesupply-06-impala.png",
+    "sha256": "17061ab065f6581f1868663a191d9eb21efb1a4dc49f141dc810cf98890f7ec3"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/c202creaturesupply-06-impala/islands/fit/parts/atlas/receipt.json",
+    "sha256": "d640a68a2dce3f83cacde8bf0c2c50ecd4d90ea602fdfc63a46addb431e9e429"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/record.json",
+    "sha256": "be79e417aedecfee00513cf0f728cb4598084b0b378bc8869241935948a719b7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/binding.json",
+    "sha256": "872aa0a9b8ef19938c576091f1d56f048335f130abff7ed4515db635ecf50e57"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/pre-split-binding.json",
+    "sha256": "fd5528c6cf26e9c3274affa3e598bd0a7d12ba3e019c370c8b1fad30d99e5b5f"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/declaration.json",
+    "sha256": "caa4c090436deca67fd515ccfe88c646072cb0b4b4e8b438a22a026f4d8f5f4a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/labels.png",
+    "sha256": "bd4b1187c1b75b8be05201a7409dd3168cd8e205abae3245920380d77257f80d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/binding.json",
+    "sha256": "5f26c6c79e0b8356b3d7892ba355f07b125bfa14a65477c5fb08e3db3c05f114"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/keyed.png",
+    "sha256": "9537c9a9520c6c6976f6452376666102a10db83cde03309066a111a03c44e234"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/ownership.png",
+    "sha256": "49fc6bd869482bd463c06f37c55ebf1e722e524e21df6f927dd4d71514407691"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/manifest.json",
+    "sha256": "61d2c63fe07d0106c802e7aedc1e98d5789d1925165efa0313203d33a3fd6719"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/receipt.json",
+    "sha256": "bf711fe7aa01dc0e459ffcf1e61cae99c9f922fe785de85839b566b21c95f5b9"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/jaw.png",
+    "sha256": "3048f79c922a149bced386f38046e06b9886f1c8f9b5aa04eb2d587ccd4809c6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-far-root.png",
+    "sha256": "8673884d78d83c713ed4c8987cf73710e5964b53fbdfaa34fa24550479c9e593"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/ear-far-root.png",
+    "sha256": "5c9b5bc41940334c3c86e744775b8166804229733ab8b6c0342483555668b0e7"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-near-root.png",
+    "sha256": "46d09f0159ec6a602b54765ec3aaed655e564e8028731e053db1e111f4a23229"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-near-hoof.png",
+    "sha256": "692a01e00438f0bc6d86d4ad2a9ad163f3f11fc3daafd1af0fec17810fd5738a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-far-hoof.png",
+    "sha256": "7f5d249d2293209c74ea27504ee09c64ac6ed4c3bf797a81e08a8551e23c9e8d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/ear-far-tip.png",
+    "sha256": "3bf5733b7bfbed3363c6e8148954ff046a6dfedb05cfdb879f06439422a29c68"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-far-hoof.png",
+    "sha256": "52de63f121432c6e156a6e3f45b2ca2ee09cb87e8dcb503ce81a07245b07468e"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-near-hoof.png",
+    "sha256": "e35692555b6c6dbeef811ce2c0ba20161d07f61a5bfcd4f9a3d5806068f0a1c8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-far-root.png",
+    "sha256": "f6f05db764ed00395d8723240f463ad2b29419a3eec00cf6bb2a055cb6604940"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-near-root.png",
+    "sha256": "fba764413b8480290c29d7c18dae8a526de8520046276f3feeedf4acf9a72aa6"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/tail-tuft.png",
+    "sha256": "cfdf0d1f195490baba7310f87e4f2fd3c915dcf24f4e682404090fa3395d9be8"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/chest.png",
+    "sha256": "4cc1ab4f64e88b8746106247ff68ba9ceafcb574f976a983d3bb7b28bd0605be"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-near-ankle.png",
+    "sha256": "b86da3d57c8d492021ea2f675338d8fd90d0565502f36ddd6370e4abbec3fc2a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/ear-near-tip.png",
+    "sha256": "c6ea4a90bcd4abb343573236cf2a6488abdd65a1170d3e375cc1d62475af9194"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-far-ankle.png",
+    "sha256": "b2e38ed08b6972a867f74ecebca0402fe5ea1e021294f77db334a45f4da90159"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/ear-near-root.png",
+    "sha256": "d21e138bbe17e998d6a43692c0f9e357b54d3fce4feec52ab49578d6424f9829"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-far-knee.png",
+    "sha256": "8eed106ffbd957e930c0b94faa334bd03ff8a346920b985c1c43445772fec76a"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-near-knee.png",
+    "sha256": "694eed5f69bef5841c4ce0cd8e7bcc3b047ada43e008645bcfcfab5ec990a169"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/head.png",
+    "sha256": "1103776dbc229affcf8e6f8d08d00a56291b239adebc3830d24051c5aaf88851"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-far-ankle.png",
+    "sha256": "452b9a2a4acfd7e36fcd684a059e6e0f8d0cbd1fe5a8e5d066d4a51b67d76b65"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-near-knee.png",
+    "sha256": "0950ada678b40e7e5f3cbe2b27c17ae64adf1388d9cafd54996c33f8c9db87bc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/fore-far-knee.png",
+    "sha256": "30235b66768479e39adad65cb4b4c0ec1d263de8dfa97373e1bd571c8d719ffc"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/root.png",
+    "sha256": "feaaece32108346d1a3b6f285b8d77db72fcfd5b7dc58dbc244d13db1943de2d"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/spine.png",
+    "sha256": "ecce8b56a1140e4dec82ff5cd4420f1c4b5b8affdf11acb2f41d8904745a5a38"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/neck.png",
+    "sha256": "ce644895bb80cc8cf60054c3791434fb02003e20bef61526dbb70b89c9f2f17b"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/pelvis.png",
+    "sha256": "eaa04d1e6a325c981763d7b9cd4cb6f0ad21fd6eed7329b4bd5bd12552368c57"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/tail-middle.png",
+    "sha256": "4ff3f9eb44036962040f1e973ac1e725c70f09fa9e4c1805ac7de37e3f3f4c78"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/hind-near-ankle.png",
+    "sha256": "45c238749859a3ac04d181565f9adfd42515d6dc12df929aa4a7f4845a677f82"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/tail-lower.png",
+    "sha256": "f774f8e589b6d7a67e7450d919e5c2ea83f051d3258397cb47bc34503ae84442"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/parts/tail-root.png",
+    "sha256": "80f65709458eec173c77ee96baa4ef0ee26f8c34efa782ca4114cc202cbd4187"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/atlas/c213-keyed-g2c95-17-nilgai.png",
+    "sha256": "ce5bd7dba624cd5aa29b55f23037bf13d0b1845692c3596425e95a3026351f12"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/atlas/c213-keyed-g2c95-17-nilgai.json",
+    "sha256": "aaf0320ba25844d6d93fee2982a7956922f9831903ad8503e73d652e73e4fdb1"
+  },
+  {
+    "file": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/islands/fit/parts/atlas/receipt.json",
+    "sha256": "d3f223a68cbeae555397fee6fb726bb1b429d3a513b55549137b2c2fdc0dff82"
+  }
+]

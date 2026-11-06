@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ibis\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4016608749\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 4016608749,
+    "ownerId": "authored:archetype-sprint/13-ibis",
+    "earthName": "Ibis"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4016608749,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 15,
+    "body": 15,
+    "loco": 3,
+    "trait": 10,
+    "size": 0,
+    "diet": 0,
+    "head": 1,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 4,
+    "repro": 1,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ibis"
+  },
+  "geometry": {
+    "cutoutAssetHash": "91679c42ef0c901d425dd74dc4f6ceced266426ac91475ea8f338a918f8be22e",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8741071118838619,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4944178628389155,
+      0.46802232854864434
+    ],
+    "pelvis": [
+      0.43851674641148325,
+      0.5380382775119618
+    ],
+    "spine": [
+      0.557177033492823,
+      0.4212918660287081
+    ],
+    "chest": [
+      0.6089314194577352,
+      0.40095693779904307
+    ],
+    "neck0": [
+      0.7013556618819776,
+      0.29314194577352476
+    ],
+    "neck1": [
+      0.6971291866028708,
+      0.1723285486443381
+    ],
+    "head": [
+      0.763317384370016,
+      0.13548644338118024
+    ],
+    "beak": [
+      0.9542264752791068,
+      0.3467304625199362
+    ],
+    "legNearKnee": [
+      0.36363636363636365,
+      0.6624401913875598
+    ],
+    "legNearAnkle": [
+      0.3253588516746411,
+      0.8328548644338118
+    ],
+    "legNearFoot": [
+      0.38955342902711326,
+      0.8512759170653907
+    ],
+    "legFarKnee": [
+      0.5247208931419458,
+      0.6012759170653907
+    ],
+    "legFarAnkle": [
+      0.6039074960127592,
+      0.8136363636363636
+    ],
+    "legFarFoot": [
+      0.687799043062201,
+      0.8536682615629984
+    ],
+    "wingNearRoot": [
+      0.5698564593301435,
+      0.37830940988835726
+    ],
+    "wingNearTip": [
+      0.3185805422647528,
+      0.34330143540669855
+    ],
+    "wingFarRoot": [
+      0.5885167464114832,
+      0.3562200956937799
+    ],
+    "wingFarTip": [
+      0.44976076555023925,
+      0.28779904306220094
+    ],
+    "tailFan": [
+      0.05526315789473684,
+      0.5558213716108453
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/13-ibis/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile wading-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from heron. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "03518be28a01cd1c8f9693532ddaed330e7d5847ee10cfa68ada32335760a194",
+    "subjectSourceSha256": "46435397a5cb65a4005d0afed8b9bc6943e53a4e9b77eee02dfd6ae06cb94ebe",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.08959446370768231,
+      "spine": 0.16646317407896302,
+      "chest": 0.05560598684234217,
+      "neck0": 0.14200814446065305,
+      "neck1": 0.12088730296925093,
+      "head": 0.0757510280054622,
+      "beak": 0.2847284963147008,
+      "legFarKnee": 0.1069118981676807,
+      "legFarAnkle": 0.22664394397830911,
+      "legFarFoot": 0.09295345350204698,
+      "legNearKnee": 0.1451995451110648,
+      "legNearAnkle": 0.17466061007405415,
+      "legNearFoot": 0.0667853198054627,
+      "wingFarRoot": 0.04917462676153848,
+      "wingFarTip": 0.15470831479910574,
+      "wingNearRoot": 0.045163735778145885,
+      "wingNearTip": 0.25370286709921425,
+      "tailFan": 0.383665937433457
+    },
+    "measures": {
+      "body": 0.2187063201806239,
+      "bone-min": 0.045163735778145885,
+      "bone-max": 0.383665937433457,
+      "leg/torso:legFar": 1.9501461836850156,
+      "leg/torso:legNear": 1.7678751792415563,
+      "wing/torso": 0.9322224496862394
+    }
+  },
+  "recipeHash": "58aa4cb14e70482e69043746358f9cf8247fd1bc1fa67de51ad5f4da0eb8ed7b"
+}

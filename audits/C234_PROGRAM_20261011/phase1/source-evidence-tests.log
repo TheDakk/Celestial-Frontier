@@ -1,0 +1,19 @@
+✔ exact native source: c215program-37-beluga (6.553083ms)
+✔ exact native source: c215program-39-orca (3.434708ms)
+✔ exact native source: c215program-40-dolphin (2.8755ms)
+✔ exact native source: c215program-41-porpoise (3.109583ms)
+✔ exact native source: c215program-48-sperm-whale (3.109458ms)
+✔ exact native source: c221program-13-river-dolphin-v2 (3.02925ms)
+✔ exact native source: c215program-43-dugong (3.013667ms)
+✔ exact native source: c215program-46-right-whale (2.996584ms)
+✔ wrong unjoined source rejected: c215program-43-dugong (2.954292ms)
+✔ wrong unjoined source rejected: c215program-46-right-whale (3.286458ms)
+✔ missing evidence refuses (0.112416ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 128.34075

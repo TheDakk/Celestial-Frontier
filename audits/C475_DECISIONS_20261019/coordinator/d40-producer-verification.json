@@ -1,0 +1,30 @@
+{
+  "status": "PASS_REPRESENTATIVE_PRODUCER_CPU_ONLY",
+  "controls": 15,
+  "static": {
+    "butterfly": "PASS_STATIC",
+    "cricket": "PASS_STATIC"
+  },
+  "canonicalKeyedSealChanged": false,
+  "runtime": {
+    "appliedGameCode": [
+      "serpent-victory.ts",
+      "release-content.ts"
+    ],
+    "newOfflineTools": [
+      "post-key-matte.mjs",
+      "derive-post-key-matte.mjs"
+    ],
+    "D40ExistingImportsChanged": false
+  },
+  "requiredDevelop": {
+    "attempt": "develop-d40-tools-r02",
+    "status": "RED_SOLE_STALE_I5_BINDING",
+    "passingTests": 6084,
+    "failedTests": 1,
+    "otherSixOwners": "Same inputs byte-unchanged from C478 six-owner PASS; not automatically rerun"
+  },
+  "native": false,
+  "AI": false,
+  "classPropagation": false
+}

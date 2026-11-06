@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "records": 1,
+  "uniqueMasters": 1,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b02r2c2-32-river-dolphin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/packet/master.png",
+      "sha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a"
+    }
+  ]
+}

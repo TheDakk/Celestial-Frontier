@@ -1,0 +1,121 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Beluga",
+ "recordRecipeHash": "71309a036e933ed80191888db4e50d2813ce83f13d0941c78ae9f84112f1d7ee",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/c215program-37-beluga/packet/master.png",
+  "masterSha256": "d489b86385257231040da602128de765ebc89427fbe4a8a1377d0b8b2a1b6f4b",
+  "keyedSha256": "838a511256e3b90ab629a147b51dfb5c745b7e1055e7715b73a67354d04f6b89",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "5bb7302b711badda2416a6bd137591aca4a41bf55a83fc6618f84619f0a2ba0a",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "dorsal",
+   "joint": "dorsal",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "caudal",
+   "joint": "caudal",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "axial-body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.726555023923445,
+   0.49242424242424243
+  ],
+  "head": [
+   0.7995215311004785,
+   0.49194577352472085
+  ],
+  "jaw": [
+   0.7730462519936204,
+   0.5164274322169059
+  ],
+  "spine0": [
+   0.6799043062200957,
+   0.4829346092503987
+  ],
+  "spine1": [
+   0.5972886762360446,
+   0.48022328548644344
+  ],
+  "spine2": [
+   0.5149920255183412,
+   0.48237639553429024
+  ],
+  "spine3": [
+   0.4358851674641149,
+   0.4874003189792664
+  ],
+  "spine4": [
+   0.35127591706539074,
+   0.49242424242424243
+  ],
+  "spine5": [
+   0.25709728867623605,
+   0.4944178628389155
+  ],
+  "caudal": [
+   0.22607655502392343,
+   0.4953748006379586
+  ],
+  "dorsal": [
+   0.5600478468899521,
+   0.4314194577352472
+  ],
+  "pectoralNear": [
+   0.6945773524720893,
+   0.5079744816586922
+  ],
+  "pectoralFar": [
+   0.6936204146730462,
+   0.5146730462519936
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "5fb71081aceaa65aaeb2bb6a65e5638a608453de8444e73e7c7bd00c45d84567",
+  "labelsSha256": "c663eee1b84bd0aa0fafb0919dc55a86a7fece081bdc4ccc78d9ea0815eaad06",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

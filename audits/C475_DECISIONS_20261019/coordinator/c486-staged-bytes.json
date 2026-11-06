@@ -1,0 +1,837 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "0f50d3023a0e968940c4827443d76f8b421a0bb9d139dd4703a9cc5fcf3bb05b",
+      "bytes": 5302
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-r02-native.json",
+      "sha256": "b26c9eef8bab1dd17342e469efcb10651b1979786d9ab6c1f96e3ba4fcd3e7f9",
+      "bytes": 543
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/butterfly-r02-native.log",
+      "sha256": "04347b2d7bf5cd243afb7515ff9605da2d33714535630a517cd90657d42f125f",
+      "bytes": 212
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c485-paths.txt",
+      "sha256": "57f339b3ef82221b067bfdc07c09be6fd71bb0fc1a87bbc1fe4d677dd00b28d7",
+      "bytes": 132882
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c485-staged-bytes.commit.log",
+      "sha256": "603b0a2a980733b109295fadabeedb5ccdd7cc530f5bdb5774ab29a3d74477a7",
+      "bytes": 39688
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c486-message.txt",
+      "sha256": "a9cb4e9b54544582642f6d19924152092dbf795c9f248b9a9128e038f2f6fd35",
+      "bytes": 268
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c486-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c486-unchanged-runtime-verification.json",
+      "sha256": "0242d6a3d65781f2f56f98e10bc1d3d9f757c769f50370a91f4c981546dfe14f",
+      "bytes": 3275
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/butterfly-d40-r02/checkpoint.json",
+      "sha256": "88ac6ceab2842d8616295d50b449cbbc172eb422e3ed6de0a23842ecc72a033d",
+      "bytes": 1066
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/butterfly-d40-r02/subjects.json",
+      "sha256": "472005706d7b461f5a800c2451ce91f7f90bb5fcf43029edc437bd3249ae9d12",
+      "bytes": 259
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/ice-worm-d41/checkpoint.json",
+      "sha256": "577a51742f06d9381f17d174f1092388bee9b0bfaf5ab95de4ada64f8fa4e648",
+      "bytes": 1020
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/ice-worm-d41/subjects.json",
+      "sha256": "8c05ff6c74eb0d6a16d9378088f557531acc490949972d0e786940e8945dbcee",
+      "bytes": 252
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/tube-worm-d41-r02/checkpoint.json",
+      "sha256": "6545e981bbc7ef154dd15648d195482e90e29c6fd7f0e6fb3e84dd886b36038e",
+      "bytes": 1037
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/finishes/tube-worm-d41-r02/subjects.json",
+      "sha256": "b3b0a1115a3183ea529cd9762ed22fcc10626bcc3e137d264268c9d59ae7e2c8",
+      "bytes": 253
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-native.json",
+      "sha256": "cdf4f1408e9634dd8ce6eae2efc8005335cc3fb4a237e5a53cff226b151396e2",
+      "bytes": 528
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/ice-worm-native.log",
+      "sha256": "94d714d5d261ce86d3afcb8812eaa06840528da87547a679f2e20d78395a40f6",
+      "bytes": 210
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/c475-butterfly-d40-r02.log",
+      "sha256": "09e580b7bc2918043de349b21040c42cba57bf62e4f86338cfdc4e0416de4428",
+      "bytes": 211
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/finish-subjects.json",
+      "sha256": "472005706d7b461f5a800c2451ce91f7f90bb5fcf43029edc437bd3249ae9d12",
+      "bytes": 259
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native-plan-bound.json",
+      "sha256": "025d348b60898e980f0691ac4ea144d7e957afde2d7f38cb5680594a1c8b59b2",
+      "bytes": 1516
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native-results.json",
+      "sha256": "943942d2c16855fb3afa2127d2d4f89e280bdcc81d7606bc86f50a1cd47cd2b6",
+      "bytes": 1518
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/battle-full.webm",
+      "sha256": "f3457db21035b6a459fbffa2d9efc878439e3e11b83615c34320bd98c386a53b",
+      "bytes": 8691256
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/report.json",
+      "sha256": "55db3e2342cd6186d782c60438019b1cc6b24b53394ed40aaf217f6aa94e7cbe",
+      "bytes": 359329
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn0-hit-approach-50.png",
+      "sha256": "f06f5996a33c4e79d03146dd1d723ebf3341496fde262e8e138710df438e4c20",
+      "bytes": 1542599
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn0-hit-impact.png",
+      "sha256": "f722e6ea3c27b3bc19fea0a759691a1c9d3030058844afc5a64d1d9f9ca5fa89",
+      "bytes": 992848
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "a0945a818cf3c79c9fe2838a682a79ad67ebca148944c695f0fd552d7b89d91b",
+      "bytes": 1561086
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn0-hit-return-end.png",
+      "sha256": "5999222053dcecc72d9731532ba13237afa4ac1a1fab5c26e141e17a45c032dd",
+      "bytes": 1542443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn1-hit-approach-50.png",
+      "sha256": "f50b57f464f615691a0cabcfcb00afa99ae3e45280a08a974ad5371f96fcf092",
+      "bytes": 1543565
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn1-hit-impact.png",
+      "sha256": "4706b9fd4f58e6b635a4d046d054b9f54e8d666fd8a177f08eb746aa2973c886",
+      "bytes": 1543068
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "7f7b0c67bf0cccc054777d32868c2c7d80e281c961435e64c9374c2db2c5785f",
+      "bytes": 1545394
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn1-hit-return-end.png",
+      "sha256": "25dfbfaa921cb8606e017dd4da8b3d69b74ce392928d1699ca0cfc33e00de3c6",
+      "bytes": 1542593
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "f06f5996a33c4e79d03146dd1d723ebf3341496fde262e8e138710df438e4c20",
+      "bytes": 1542599
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn2-dodge-impact.png",
+      "sha256": "64d3974884db517894cf78082e7c9e7d8c279eee42d4f9750a559b1e5a421b81",
+      "bytes": 1554928
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "cbc13fe8eb2afc68689f85027f5df5c5ae53d4b58e537246d23accf6376e6b74",
+      "bytes": 1564442
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn2-dodge-return-end.png",
+      "sha256": "5999222053dcecc72d9731532ba13237afa4ac1a1fab5c26e141e17a45c032dd",
+      "bytes": 1542443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-approach-50.png",
+      "sha256": "f06f5996a33c4e79d03146dd1d723ebf3341496fde262e8e138710df438e4c20",
+      "bytes": 1542599
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-idle-50.png",
+      "sha256": "6787daa84c1feb5923ebaddbb56fbdb01334c8e76142d90fbd7e60b6ae0eef91",
+      "bytes": 1538724
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-idle-90.png",
+      "sha256": "cd8d3f21cf37dd818104497e4796e7df0ed170a57eeebf0f245bdb12e6573ea1",
+      "bytes": 1540372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-impact.png",
+      "sha256": "8164d2cad5604576f2859a73f8dcafbe3d9fd18bde98313ce7d333711514d9c5",
+      "bytes": 1544278
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "42176dec7a2a724f62ed5b01227447d01b4dc76c60916a9fde9b3867cc20e287",
+      "bytes": 1556299
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/butterfly-d40-r02/native/turn3-hit-return-end.png",
+      "sha256": "707db07b3f27eb87e6f57f18c7a75ad73678dd33248f0016813dca47e535312a",
+      "bytes": 1540054
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/c475-ice-worm-d41.log",
+      "sha256": "f94bdcfb085bd5a316cc8b294ac8a661267a7f4add0d8f05968cf78a14e2a1ae",
+      "bytes": 537
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/finish-subjects.json",
+      "sha256": "8c05ff6c74eb0d6a16d9378088f557531acc490949972d0e786940e8945dbcee",
+      "bytes": 252
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native-plan-bound.json",
+      "sha256": "661a6af97a15e7f75b6ccf0713e9965752c6ca863cdb308150fc68514b02cb86",
+      "bytes": 1630
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native-results.json",
+      "sha256": "d6725d4030b104dbe4160751e8aaa24b3f5b8d50a24e98e8568142005b8ec681",
+      "bytes": 1632
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/battle-full.webm",
+      "sha256": "a82152e2990008e3dd5b1b84c16615339d36e2ae727124004addedee5cdc0681",
+      "bytes": 8727740
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/report.json",
+      "sha256": "1ac628a80148d16020405056a39548b94172ca16e29b1ffb4f3267b93bba1932",
+      "bytes": 357531
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn0-hit-approach-50.png",
+      "sha256": "84f1ac5a282eb8806a8381a577213e636919d986405935ce69a52b39622b5f9f",
+      "bytes": 1503420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn0-hit-impact.png",
+      "sha256": "063b00951b9a6aa78aadfcde07ff06720a8986715c020dc7de57fbcc2d9693f5",
+      "bytes": 983699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn0-hit-reaction-50.png",
+      "sha256": "80b4973696d5e2732d0c84575636c2f6dfde13762d464996a5532556dde44e55",
+      "bytes": 1562954
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn0-hit-return-end.png",
+      "sha256": "d384022c184a3e38666917b70c104eb77e29e8ab7a54e2754ec874a8d9f648e9",
+      "bytes": 1497511
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn1-hit-approach-50.png",
+      "sha256": "43c404b32976d485fd871bcd0c7e349438f7f3107584d0bd15a75c683c651b0a",
+      "bytes": 1502981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn1-hit-impact.png",
+      "sha256": "60ffae78b2f80bb017d1d983cd6eb80d97093d6ed1b857d5b9538ee08c923266",
+      "bytes": 942159
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn1-hit-reaction-50.png",
+      "sha256": "2f4c812cee21fa342feff4505363235309cb3a90fbf68cce82f9f9696e17861c",
+      "bytes": 1501418
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn1-hit-return-end.png",
+      "sha256": "d4949aeeee35815f4936b8397ded6cf958153b8c6c1c89c139d9c9642b5c1710",
+      "bytes": 1497842
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn2-dodge-approach-50.png",
+      "sha256": "84f1ac5a282eb8806a8381a577213e636919d986405935ce69a52b39622b5f9f",
+      "bytes": 1503420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn2-dodge-impact.png",
+      "sha256": "b3acc6b44de899589961f11d4e4b37d622c3d145762cc99eea313f89a07ccee8",
+      "bytes": 1546667
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn2-dodge-reaction-50.png",
+      "sha256": "3e48247a4daecfbb37a9dea0a64dc22f0182074d78342dca07e47a11ca21cebe",
+      "bytes": 1554090
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn2-dodge-return-end.png",
+      "sha256": "d384022c184a3e38666917b70c104eb77e29e8ab7a54e2754ec874a8d9f648e9",
+      "bytes": 1497511
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-approach-50.png",
+      "sha256": "84f1ac5a282eb8806a8381a577213e636919d986405935ce69a52b39622b5f9f",
+      "bytes": 1503420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-idle-50.png",
+      "sha256": "dca8ad62ad76718d0c944d85d23e10e8f20c1479182d0caf199fd9db94207604",
+      "bytes": 1503319
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-idle-90.png",
+      "sha256": "b9d84494dd3a7738d3723bd23b3ae15fdc7d0def58c7ea8808a67979d17d92d3",
+      "bytes": 1497600
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-impact.png",
+      "sha256": "063b00951b9a6aa78aadfcde07ff06720a8986715c020dc7de57fbcc2d9693f5",
+      "bytes": 983699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-reaction-50.png",
+      "sha256": "7479f59c78de230c04627d3b857c78f405ebc37a56ad4a1810ebd5d7db1a458e",
+      "bytes": 1553215
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/ice-worm-d41/native/turn3-hit-return-end.png",
+      "sha256": "2e45918af89c48ebb249b53e8bbc7eab36a0062ce45f32f115f95ef3696402a4",
+      "bytes": 1497930
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/c475-tube-worm-d41-r02.log",
+      "sha256": "f266f9f1df72591331b07f501a65e6cddb4d8e9184db4e441a0b94320ab85fb2",
+      "bytes": 547
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/finish-subjects.json",
+      "sha256": "b3b0a1115a3183ea529cd9762ed22fcc10626bcc3e137d264268c9d59ae7e2c8",
+      "bytes": 253
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native-plan-bound.json",
+      "sha256": "a7bc6e7768bcab63de85912557dc2a0f46996c47d6a62299dce040dbb85f153e",
+      "bytes": 1733
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native-results.json",
+      "sha256": "0caa1e91424a9b6607dc75e1ea304c758184fc5a065f804a37b38e1c6b504609",
+      "bytes": 1735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/battle-full.webm",
+      "sha256": "04ed2c49ac6e427e3353ad1158179c4e72e51072c51832de742ae5fab1e4599d",
+      "bytes": 6844595
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/report.json",
+      "sha256": "1ad26cabd44823dbc98b8b2a9f4880fc6028ccaaff1c65cadc0b8a147232a883",
+      "bytes": 357387
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn0-hit-approach-50.png",
+      "sha256": "f6ad29cc5d99c78a046a023dcd87fd0c5e8eb29225d742931c5fd9605825f022",
+      "bytes": 1108582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn0-hit-impact.png",
+      "sha256": "81e759181b184a6a5bc14c63f3b8c1e8fc454f3e64ca419f14a1442d0abdbf34",
+      "bytes": 683640
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "99fc1e779953b0ead5691fc0fed559836b71c2a42fc924cc1c6ff5fa00102154",
+      "bytes": 1226912
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn0-hit-return-end.png",
+      "sha256": "323a61ce1db2fff41ccb0d83a982fb9883dab6ff5ee299a9a4b1d59782c3dcdc",
+      "bytes": 1107240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn1-hit-approach-50.png",
+      "sha256": "2b8746bce102bdcedc54dd701f674c594b2ce03d65dfe601bf318b0a2ebd4151",
+      "bytes": 1108186
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn1-hit-impact.png",
+      "sha256": "81f57207b54c5b9d92ee3b6599a52ba3e5e0fde1bfe9585842d29c0e2bcbdba2",
+      "bytes": 612915
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "ade414da4b449740d296bfebcefb4a1fb72e779b9cad1569a9548a2bf0e77449",
+      "bytes": 1120591
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn1-hit-return-end.png",
+      "sha256": "6be5d1a56989a000cf73534c2cd58d91d05dd3ae370e670a66d2300a3a3af117",
+      "bytes": 1108255
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "f6ad29cc5d99c78a046a023dcd87fd0c5e8eb29225d742931c5fd9605825f022",
+      "bytes": 1108582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn2-dodge-impact.png",
+      "sha256": "73ebafef11fe449a477a0007f6c2d83df0288493cc11505c4759fd7859b679cf",
+      "bytes": 1197249
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "dd6ca47f3607e344378609cefe7a545d6eac5df99723044e1a299727e66617c5",
+      "bytes": 1211619
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn2-dodge-return-end.png",
+      "sha256": "323a61ce1db2fff41ccb0d83a982fb9883dab6ff5ee299a9a4b1d59782c3dcdc",
+      "bytes": 1107240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-approach-50.png",
+      "sha256": "f6ad29cc5d99c78a046a023dcd87fd0c5e8eb29225d742931c5fd9605825f022",
+      "bytes": 1108582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-idle-50.png",
+      "sha256": "88c0c422e60a1fc6cef78573b7fd6ad81be7cd6ede92c63b9d05ba42086a42d8",
+      "bytes": 1108464
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-idle-90.png",
+      "sha256": "fb52236c4881f34bcc2b0dd47a8ea6581da5831040502384ca3ea76237ae15a7",
+      "bytes": 1105691
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-impact.png",
+      "sha256": "81e759181b184a6a5bc14c63f3b8c1e8fc454f3e64ca419f14a1442d0abdbf34",
+      "bytes": 683640
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "b2496f1a12000aee46ea0b1a9ab3c0c506f7e7c74697c3ce35356329e117c076",
+      "bytes": 1219048
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/tube-worm-d41-r02/native/turn3-hit-return-end.png",
+      "sha256": "323a61ce1db2fff41ccb0d83a982fb9883dab6ff5ee299a9a4b1d59782c3dcdc",
+      "bytes": 1107240
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native.json",
+      "sha256": "5fab2af9d71b049e5a4fb7f3e0ca78527c017b61b8efa6592a23514879f99951",
+      "bytes": 1171
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native.log",
+      "sha256": "1f7783526687a65a55330f10bf67b0ee7a2003bb29c2d4a2fef4df6b9dd8f73c",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/checker.log",
+      "sha256": "2d3eca5b88d242c10e0df43e545071d2bf2c32da5e6a78ef4cce2418de08321d",
+      "bytes": 1619
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/current-rows.json",
+      "sha256": "120b71116095432a5bd85ecdc62646848460a35ee67d7f16a114e159c3e66d59",
+      "bytes": 3000
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/fragment-triage.json",
+      "sha256": "e3b10e5bafbac0dd4c829801438109a1eda38af7b2b6a5269a7a94720ee88cb3",
+      "bytes": 178586
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/freeze.json",
+      "sha256": "ccc2a9fb82a1519aafe79322dbf5763bac7b0b8231d9f222570e8aa65d3553a3",
+      "bytes": 225925
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/roots.json",
+      "sha256": "17bb4769ccde0b615e02f12ae5b6aae5da17c201c96efa2d7305e7233f47aaff",
+      "bytes": 13968
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-template-reps-native/verification.json",
+      "sha256": "0f0b8cd6089414dc606ce51560a3f2ab3cc0ad121706139f0c266241a6cc59e4",
+      "bytes": 3555
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native.json",
+      "sha256": "6dd1d82fd9d124619c944b2a0f0988918da816caee04435d77fbbd4d0330da2d",
+      "bytes": 998
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native.log",
+      "sha256": "e33495fa972311dae933cd0574aa1a989f3fac0732a5e1c72f1a1677648548ab",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/checker.log",
+      "sha256": "d4b32a0da9898830f46d8f25ef410650c8503706b5bb544e3e9499c8325238be",
+      "bytes": 1597
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/current-rows.json",
+      "sha256": "74a6837c7a82168bdec634261b4ff90c7a354e0ba436066fa3fa92be6e9b68c3",
+      "bytes": 2251
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/fragment-triage.json",
+      "sha256": "013b70818c0a244a6eeb3099b1eded320bbcd642f30376aafda84f9a43beb896",
+      "bytes": 177431
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/freeze.json",
+      "sha256": "de19e4d92fb8bddd382caf790198798ef696454a5a090ad3e1f2265d3a9a259b",
+      "bytes": 224785
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/roots.json",
+      "sha256": "224b5cb5b53f38fc73d5f9e5a0e7db7e0ea8b1c17aea367ea9315b73a2e1e9ad",
+      "bytes": 13829
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/triage-tube-r02-native/verification.json",
+      "sha256": "e4fc5a26e6167d5580967518f092ecfa010d04dfc1caeff898542f5093646e3a",
+      "bytes": 2746
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-r02-native.json",
+      "sha256": "34ca433a3d28e7af3b1ef4d724a4eea756d052b5e7562b20f1c279bf2471b2e0",
+      "bytes": 544
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/tube-worm-r02-native.log",
+      "sha256": "248ca97c80737dfce22b416b7aefbb1720d641239dac4a26648cd04d71fbdc18",
+      "bytes": 212
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave09-template-and-matte-checkpoints/README.md",
+      "sha256": "fd0e3ff815b2991232f2a5dc30083b0afe855da951669cc4959c6355b4525649",
+      "bytes": 2468
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave09-template-and-matte-checkpoints/checkpoints.json",
+      "sha256": "f100b76d64e4cad4dfd5417c0db20b2013713f79b464b1fc3a30b78a964b2b05",
+      "bytes": 2153
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/join-current-c261-r02.py",
+      "sha256": "8fcfd9356d0c6acf3d4ec79a4bbe396ddb568dad2b7bd8b1046ef42b2187168b",
+      "bytes": 2876
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/checkpoint-final.json",
+      "sha256": "5a092b5bfacf1fe76ced3048faf894e8e4d2e9daa8016cf7d3397e51076226bb",
+      "bytes": 9973
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/checkpoint-freeze.json",
+      "sha256": "7bfeb9e46e39a6e491a6a9605b7ac6a1f713c87639b6f80ace680e2819ba4a21",
+      "bytes": 1239
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/evidence.json",
+      "sha256": "79ac84315b21b9d41a9afa96caad11aa0ef5ecab97de19e82aba1b026463e829",
+      "bytes": 238846
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/physical-freeze.json",
+      "sha256": "0d08e737b203afbf33f4c8473959d422386b1f6b644383dcdad5e01b63cad54e",
+      "bytes": 2289
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/physical-review.json",
+      "sha256": "47dd98626720cab9bcc0ab9423badd7ec70a8f34fd0f5be4a6b1e337078fc595",
+      "bytes": 16431
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "08bdc9b7e15eac6993c5f3e8d72ca0ca4a61a2d7b0ee32b9f2997cee297b13b4",
+      "bytes": 1876098
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "ad1edca24a8be0d52204aa892fce23edecbdc3efea13a6bdb77824d3126bf0f0",
+      "bytes": 1886232
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "337ee30e1e6b2dc6f86feb229854c046b971e79b22905098ff5dd4284e9607b4",
+      "bytes": 1870108
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn3-hit-idle-50-left-nearest4x.png",
+      "sha256": "f81e6d846b6a7c246f338e7527cb218a286881e44a2fcf1ccb85eff0ae6a6369",
+      "bytes": 132278
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "64c322b5288d63bb2d0b4604e7109a97f6a41c92b7f0856171c85775ece8a448",
+      "bytes": 1869702
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn3-hit-idle-90-left-nearest4x.png",
+      "sha256": "0b19712202712b10fd3c744367b4661db9448d2b07dc51cbf26110db379f7b0b",
+      "bytes": 146480
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/native-r02/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "046e8c1a3361dcae17860466c70004f1adb660f6fd4dc3c0736209ead784fce2",
+      "bytes": 1884007
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/prepare-current-native-r02.mjs",
+      "sha256": "079418fd58b135933fe09b2dc11921d0004525bf6dd4a09f7619a899bc6d1be8",
+      "bytes": 3420
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/prepare-source-r01.mjs",
+      "sha256": "053a8c5821cb42aeb10546820101b3a04c8de4b1fa880c92bd5e023a2dd38c39",
+      "bytes": 3082
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-freeze-r01.json",
+      "sha256": "58da5ba5abac5df2f1aa33147ad22ae6acff81e6566ccc0ef19455ead4287d7e",
+      "bytes": 6155
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/abdomen.png",
+      "sha256": "b66a906ff01ba9d4226e35dba0bb23ace40c9ef9bc365434edfad25ecaeffede",
+      "bytes": 23427
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/antenna-far.png",
+      "sha256": "2453984a4b79e1592f8249d9f4aaf7b28301a843daf47426991afd3ebca09942",
+      "bytes": 4435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/antenna-near.png",
+      "sha256": "6a9b10c2a6b3da87ab315c58f8c2eea3ec1065877deb6a5e30b58e1b4d5dfaea",
+      "bytes": 3173
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/body.png",
+      "sha256": "a2b5eb139347ac32b686040fa363a52f76ef0a3ea693c17790e4392c3822ce16",
+      "bytes": 1142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/canonical-neutral.png",
+      "sha256": "8ca2c85c0822866abda558a3a298a7c1dead88b65de13a22cf8e010f8419ee90",
+      "bytes": 442366
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/evidence.json",
+      "sha256": "d80829ee3e5a6f54bcf5636d0f99b29aa6d8f4da07fbe96ddfc644d6bd0391b0",
+      "bytes": 25242
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/head.png",
+      "sha256": "061557b737467433101dd4e27a74d0bef78cddc4037ec908591d1f6fff93b862",
+      "bytes": 7812
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/keyed-neutral.png",
+      "sha256": "d8611d9921783e215a9364153962fcf22dbeb2132269af4cf8796359b4056893",
+      "bytes": 458171
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-frontfar-lower.png",
+      "sha256": "0e593c708c4575110f53a9403c6d1b0569c7f7b4dd066b649a336fa5f4122187",
+      "bytes": 2522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-frontfar-upper.png",
+      "sha256": "2e345c572d7e4906a8f7e57801f3104a7cd8b4f4266deff90dffda6ab27a79f6",
+      "bytes": 1955
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-frontnear-lower.png",
+      "sha256": "692a0d377fc6e2025956f1805b21994e245e749d6007f6b8d859cfa4a8ed08e9",
+      "bytes": 1732
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-frontnear-upper.png",
+      "sha256": "e83cce29ff588218673ff75bdde82b6f610f9c580087d6db705b08070dc8ddf8",
+      "bytes": 639
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-hindfar-lower.png",
+      "sha256": "8ad24f375f495ea766717079be42876464cd91339757c332ea4630aaaad7c6e9",
+      "bytes": 1655
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-hindfar-upper.png",
+      "sha256": "e316f255c5f2a674f2bc6acfcc1102ec3c537c5385024aa6bb43a73ba1c7affb",
+      "bytes": 961
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-hindnear-lower.png",
+      "sha256": "138d6019bee0caa4c6fa55eeba56e7d16552a09fb5a9477efe3f853e6a934101",
+      "bytes": 2872
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-hindnear-upper.png",
+      "sha256": "8fd4d7ceaf7b35dfcd5a86854c316d7ac02835900f9b4001a753b1c1cac81a9f",
+      "bytes": 2495
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-midfar-lower.png",
+      "sha256": "16041f0b5e16c3871a1dcc0322d64d66e8f4b95bd7045491b97058d7cf4fb758",
+      "bytes": 1524
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-midfar-upper.png",
+      "sha256": "770a80ecaf091619b05ca049127113162b6d57eaf833dd97cb2f282ba95ab6f8",
+      "bytes": 1066
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-midnear-lower.png",
+      "sha256": "23f34c32b6b96ae3046137befa28bb85b73ad9e5e15e6e076694d2e0da7f5e76",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/leg-midnear-upper.png",
+      "sha256": "f0e791c911065a88739657840f88f832ded6bb36d729d046c7353881028b4cb6",
+      "bytes": 759
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/proboscis.png",
+      "sha256": "eb544c7035108ae90557ee9ae9c50607b4524b37198327429dc7c9799c1297ee",
+      "bytes": 3633
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/thorax.png",
+      "sha256": "47e5c8b6aeccb110337c40a93283a8499aaa811a519e4b733eed167780021827",
+      "bytes": 17160
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-prep-r01/wings.png",
+      "sha256": "f3b6bfa701a6f000b21475fec2a5b6fad620b1eb27c9db3ba2a207d7c2e24878",
+      "bytes": 350365
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-butterfly-alternate/source-review-r01.json",
+      "sha256": "91e817159ad77b9a5643b03689ffe30ca07b8f71241c084417a2c9328837c38d",
+      "bytes": 11396
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-ice/join-physical-r01.py",
+      "sha256": "12d516675257f7696001dc86eefe5deaa0a90b6317cd2be49dc63ae75aeb4489",
+      "bytes": 2550
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-ice/native-r01/checkpoint-final.json",
+      "sha256": "e5c112f799f762d1722335c8ad18e5baa3a51ca69413b1422b872ac0ecd2870c",
+      "bytes": 7156
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-ice/native-r01/checkpoint-freeze.json",
+      "sha256": "b4d03b425784dec0f755d785630f159beedef21673d0e453b02920cfa815eb35",
+      "bytes": 1410
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-ice/native-r01/numeric-evidence.json",
+      "sha256": "16eea8a8ca69410bbb5be137f57c7b03e23868f6399c5580c16e8abd5d9099d9",
+      "bytes": 8719
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-ice/prepare-numeric-r01.mjs",
+      "sha256": "ee896e1a00f0b969ef66abe2c85d445545da3c379639da29f530ac7e4ad3d4b2",
+      "bytes": 3922
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-tube/join-physical-r02.py",
+      "sha256": "da05a37d2ee45ae2e9ec3e5542e0fe3badfeede98fb921db69f2d898cd96d86b",
+      "bytes": 2553
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-tube/native-r02/checkpoint-final.json",
+      "sha256": "1373d21805b864ea102352c86def82d02e0d3b9392da3766bf57e24f167bb36a",
+      "bytes": 5580
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-tube/native-r02/checkpoint-freeze.json",
+      "sha256": "3f8bef555857efbca379ff8ae4670c3cb0d91daf85e374bccb7ac279a01fcdb4",
+      "bytes": 1404
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-tube/native-r02/numeric-evidence.json",
+      "sha256": "aa4f8ae4d255f2592347e36bf2b7f80bd16e0852e88fcf5098b56a8ded079d1f",
+      "bytes": 7160
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/review-tube/prepare-numeric-r02.mjs",
+      "sha256": "fb399862e606d100707ae7a2755ca8720e641cf073a59c1c0b1228b89e73830b",
+      "bytes": 3929
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-ice-native-r01/freeze.json",
+      "sha256": "10a962690b646b4fe40c0d8de3321325fa8171b403e6b00624ef35df88b36f0a",
+      "bytes": 4132
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-ice-native-r01/review.json",
+      "sha256": "3118211c56d6c22eeae6c1e2a12c4c09aa886cdcff2db91c5facf8f653923530",
+      "bytes": 9473
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-tube-native-r02/freeze.json",
+      "sha256": "69cfee79fb0779707a791cbdf1baec8a793a6b20258c826bf7f2c332ad29bae4",
+      "bytes": 2629
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/review-tube-native-r02/review.json",
+      "sha256": "0dab18073bae22953b472fef9443c9dd95274d1a389eb87fce8c88201bf58be0",
+      "bytes": 7664
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "7565f84bcf93b580cd87b6e3e319e5e5c27d0cd879d5aa442562a7c5eb369254",
+      "bytes": 566641
+    }
+  ],
+  "files": 166,
+  "remoteOperations": false
+}

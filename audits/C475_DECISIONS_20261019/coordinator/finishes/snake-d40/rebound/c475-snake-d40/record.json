@@ -1,0 +1,196 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snake\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"145902767\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"0\"]]]]",
+    "seed": 145902767,
+    "ownerId": "authored:archetype-sprint/c266-snake-c1",
+    "earthName": "Snake"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 145902767,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 4,
+    "body": 8,
+    "loco": 13,
+    "trait": 0,
+    "size": 1,
+    "diet": 2,
+    "head": 3,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 4,
+    "habitat": 15,
+    "detail": 5,
+    "accent": 8,
+    "temper": 3,
+    "sense": 6,
+    "repro": 5,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snake"
+  },
+  "geometry": {
+    "cutoutAssetHash": "0e1823b2dadeaf40a21e7dc5b265b8e5e333e9e12fcd3881f3cc1022dd36c27c",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5646,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7296650717703349,
+      0.47368421052631576
+    ],
+    "head": [
+      0.7854864433811802,
+      0.4665071770334928
+    ],
+    "jaw": [
+      0.7974481658692185,
+      0.4880382775119617
+    ],
+    "seg0": [
+      0.7216905901116427,
+      0.4784688995215311
+    ],
+    "seg1": [
+      0.6738437001594896,
+      0.5175438596491229
+    ],
+    "seg2": [
+      0.6164274322169059,
+      0.5390749601275917
+    ],
+    "seg3": [
+      0.5558213716108453,
+      0.5318979266347688
+    ],
+    "seg4": [
+      0.5007974481658692,
+      0.5039872408293461
+    ],
+    "seg5": [
+      0.4433811802232855,
+      0.48165869218500795
+    ],
+    "seg6": [
+      0.3835725677830941,
+      0.49122807017543857
+    ],
+    "seg7": [
+      0.33014354066985646,
+      0.5215311004784688
+    ],
+    "seg8": [
+      0.2703349282296651,
+      0.5358851674641149
+    ],
+    "seg9": [
+      0.2113237639553429,
+      0.5223285486443381
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Pinned Earth fauna profile capability (ground); not a painted-pose claim."
+  },
+  "coverage": {
+    "scope": "C266 Claude manual observed-source annotation of one exact C243 original: landmarks placed by eye on full-size gridded crops, hand-drawn priority polygons and explicit local capsule/band partitions between those landmarks. No donor labels, no transferred reference coordinates, no auto-author output.",
+    "sourceFacing": "right",
+    "observed": {
+      "limbs": 0,
+      "tongue": "forked, extended (owned by jaw)",
+      "tail": "fine tip at x~198"
+    },
+    "limitations": [
+      "The forked tongue is owned by the jaw (no tongue joint in the serpent template).",
+      "Segment cuts are equal-arc-length cuts of a hand-traced centreline; tail-tip segment is very thin."
+    ],
+    "nativeAcceptance": false,
+    "visualAcceptance": "PENDING_NATIVE_AND_FULL_SIZE_REVIEW",
+    "postKeyDerivative": {
+      "receiptFile": "audits/C475_DECISIONS_20261019/w1-keyer/named28-cpu/snake/candidate-r01/post-key-derivative.json",
+      "receiptSha256": "87ba7839179783ea3eaa1c0022cb635ddc74947e748d8570831c05b3f47c944a",
+      "originalMaster": {
+        "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/master.png",
+        "sha256": "9c2a590bd5505f24a15d03573ce402465b2bd74ea23daf7cea464664de8d17ba",
+        "bytes": 1286544
+      },
+      "canonicalKeyed": {
+        "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit/parts/keyed.png",
+        "sha256": "8910c952ca7f5f1bd7cb7b66f1bbd2b27cf7864053894a59d76d3ba15d75051d",
+        "bytes": 1134122
+      },
+      "canonicalRgbaSha256": "3ddf6a3ea80a53484249d611d7f4f7d45cecc6bd7e3a56724f3670a7cd56b7cc",
+      "originalFit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/24-snake-c1/qual-r01/islands/fit",
+      "landmarks": "Exact same original source hash; unchanged observed coordinates",
+      "labels": "Existing source owners byte-exact; only newly recovered source-painted edge support inherits connected owner"
+    }
+  },
+  "provenance": {
+    "authoringSha256": "92422232658bcfe5651d11fd420e50bfadf3d90811690cde31f8885930386c81",
+    "subjectSourceSha256": "08f2dfcd276c0caab862b4c719c635269aa3415bd60698edce61e8bd9784d74b",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": true,
+    "sourceLandmarksReused": true,
+    "hiddenInference": false,
+    "sourceRecordSha256": "7db5dbdd60f092ee87b07ec5f9f98e3ff27f5af46cee971a3de9e017c2d60502",
+    "sourceLabelsSha256": "64c5bb088a0ff313aab71c8fa61a3764cd6a60f60b72ec2fc05b17eec2c4012c"
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.056280861207636035,
+      "jaw": 0.024630694117193784,
+      "seg0": 0.009299763787632075,
+      "seg1": 0.061775216608817636,
+      "seg2": 0.061320601042948744,
+      "seg3": 0.06102953704512748,
+      "seg4": 0.06169796214955249,
+      "seg5": 0.06160512891811156,
+      "seg6": 0.06056932488599119,
+      "seg7": 0.06142421821898473,
+      "seg8": 0.06150698627838488,
+      "seg9": 0.0605483230390055
+    },
+    "measures": {
+      "body": 0.5122479536923797,
+      "bone-min": 0.009299763787632075,
+      "bone-max": 0.061775216608817636,
+      "head/body": 0.10987034853326985
+    }
+  },
+  "recipeHash": "f04f334a0928d3295f32e812133ae9147a09377c121e0eeb5e9809c0fef847fb"
+}

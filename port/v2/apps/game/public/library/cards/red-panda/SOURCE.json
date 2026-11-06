@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Red Panda",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/18-red-panda/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1dd884808779d0f3f182ca12c0299a8a901d375b85f85b59474cfbf14b50f07e"
+}

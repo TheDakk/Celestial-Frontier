@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Juvenile Shark",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7abbaa8b9d63234a55bd2300015a4fa140c1d821d2b43f49be67d62be130e018"
+}

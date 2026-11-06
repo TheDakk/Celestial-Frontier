@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "volcisle",
+  "biome": "volcisle",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/volcisle/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/volcisle/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/arena-far.webp",
+      "runtimeSha256": "a91105db460fbbd3c684187816ecbb931f85a5148ef3e9b332e314fd1236193d",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+        "sha256": "fcb8a8f376e4c81a84f905d3a88fd9b0406efc0e132e16bcb29347777fc2950e"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.webp",
+      "runtimeSha256": "cd663e345db732e3922ca067660ddb6ce0ecf7f4598aa128eb8361880b0732ce",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.png",
+        "sha256": "50661c96bba037885e507818132b576a1ddcb27b82b88a373f8b53b87ba43236"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.webp",
+      "runtimeSha256": "9efee6c706d06c77a943fd385bf93d98cd0e0eb18159ca4850236297bc26e3e3",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.png",
+        "sha256": "2b382db41ca621c4cf612d4b8bc8655dde6499b7bd761e7f6ce8a1f72a2e7849"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

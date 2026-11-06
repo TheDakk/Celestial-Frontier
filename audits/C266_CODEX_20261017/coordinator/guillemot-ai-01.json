@@ -1,0 +1,21 @@
+{
+  "stage": "guillemot-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-guillemot-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792281015.932513,
+  "beforeGiB": 88.12294006347656,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.398,
+  "lowestGiB": 77.7530517578125,
+  "afterGiB": 87.10563659667969
+}

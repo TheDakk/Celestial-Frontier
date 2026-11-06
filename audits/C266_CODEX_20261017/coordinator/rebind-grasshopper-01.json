@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-grasshopper-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-rebind-grasshopper",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "grasshopper"
+  ],
+  "startedUnix": 1792273073.637077,
+  "beforeGiB": 83.5418701171875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.015,
+  "lowestGiB": 83.5418701171875,
+  "afterGiB": 83.5418701171875
+}

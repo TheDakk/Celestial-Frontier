@@ -1,0 +1,102 @@
+[
+  {
+    "id": "candidate01/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Hoatzin/fit"
+  },
+  {
+    "id": "candidate01/Ladybug/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Ladybug/fit"
+  },
+  {
+    "id": "candidate01/Camel/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Camel/fit"
+  },
+  {
+    "id": "candidate01/Pilot-Whale/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Pilot-Whale/fit"
+  },
+  {
+    "id": "candidate01/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Tern/fit"
+  },
+  {
+    "id": "candidate01/River-Dolphin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/River-Dolphin/fit"
+  },
+  {
+    "id": "candidate01/Manatee/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Manatee/fit"
+  },
+  {
+    "id": "candidate01/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Kakapo/fit"
+  },
+  {
+    "id": "rebound02/c243b03r1c3-24-ladybug",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b03r1c3-24-ladybug"
+  },
+  {
+    "id": "rebound02/c243b04r2c2-12-tern",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c2-12-tern"
+  },
+  {
+    "id": "rebound02/c243b04r2c1-17-hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c1-17-hoatzin"
+  },
+  {
+    "id": "rebound02/c243b04r2c1-18-kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c1-18-kakapo"
+  },
+  {
+    "id": "candidate03/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Hoatzin/fit"
+  },
+  {
+    "id": "candidate03/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Tern/fit"
+  },
+  {
+    "id": "candidate03/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Kakapo/fit"
+  },
+  {
+    "id": "bird-placement02/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/fit"
+  },
+  {
+    "id": "bird-placement02/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Tern/fit"
+  },
+  {
+    "id": "bird-placement02/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/fit"
+  },
+  {
+    "id": "candidate02/Pilot-Whale/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Pilot-Whale/fit"
+  },
+  {
+    "id": "candidate02/River-Dolphin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/River-Dolphin/fit"
+  },
+  {
+    "id": "candidate02/Manatee/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Manatee/fit"
+  },
+  {
+    "id": "rebound01/c243b02r2c1-24-pilot-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c1-24-pilot-whale"
+  },
+  {
+    "id": "rebound01/c243b01r2c3-15-camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b01r2c3-15-camel"
+  },
+  {
+    "id": "rebound01/c243b02r2c2-32-river-dolphin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c2-32-river-dolphin"
+  },
+  {
+    "id": "rebound01/c243b02r2c2-18-manatee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c2-18-manatee"
+  }
+]

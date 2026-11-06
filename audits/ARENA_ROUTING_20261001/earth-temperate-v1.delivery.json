@@ -1,0 +1,38 @@
+{
+ "schema": "cf.arena-delivery/v1",
+ "id": "earth-temperate-v1",
+ "biome": "temperate",
+ "recipe": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+ "acceptance": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
+ "plates": {
+  "far": {
+   "master": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+   "runtime": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+   "runtimeSha256": "8dd54cdcdf840ad1e419e637728f467a530ba9e92717e9b1872fdebf92d4046c",
+   "runtimeSource": {
+    "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+    "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+   }
+  },
+  "mid": {
+   "master": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png",
+   "runtime": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+   "runtimeSha256": "375f7286fdb0f507bf8037a3ee1de778602cdfa29702a3bac06390ba3d5813a7",
+   "runtimeSource": {
+    "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
+    "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e"
+   }
+  },
+  "near": {
+   "master": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png",
+   "runtime": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp",
+   "runtimeSha256": "7e3e215a81bd56cfa156ab2842d5ea1f3518447e86eb56338b684ef4e1d2814d",
+   "runtimeSource": {
+    "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+    "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+   }
+  }
+ },
+ "note": "Delivery manifest for the accepted Earth temperate arena template v1 (written by Claude 2026-10-01 from acceptance.json; Codex's future deliveries carry their own). MID runtime is the approved despilled intake copy (acceptance.json midIntakeCopy: 190 RGB edge pixels, alpha unchanged), as Codex's C132 mailbox row asks.",
+ "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

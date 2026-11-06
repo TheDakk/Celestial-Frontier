@@ -1,0 +1,21 @@
+{
+  "stage": "finish-nautilus-d41-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-nautilus-d41-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/finished",
+    "audits/C475_DECISIONS_20261019/coordinator/finishes/nautilus-d41/subjects.json"
+  ],
+  "startedUnix": 1792462819.638583,
+  "beforeGiB": 53.520206451416016,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 59.451,
+  "lowestGiB": 46.144874572753906,
+  "afterGiB": 52.499778747558594
+}

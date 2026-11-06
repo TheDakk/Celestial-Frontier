@@ -1,0 +1,236 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/09-turkey/fit",
+  "sourceMasterSha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616",
+  "keyedRgbaSha256": "01886c8fb1433b7c158faf835c65fb0e68a6039a19e120ff048cb9be2e2fdd43",
+  "remainder": "body",
+  "remainderPixels": 20551,
+  "movedPixels": 2699,
+  "islands": [
+    {
+      "pixels": 455,
+      "to": "head",
+      "border": {
+        "head": 62
+      }
+    },
+    {
+      "pixels": 969,
+      "to": "head",
+      "border": {
+        "head": 70,
+        "neck-upper": 46,
+        "far-wing-root": 33
+      }
+    },
+    {
+      "pixels": 58,
+      "to": "beak",
+      "border": {
+        "beak": 12
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "far-wing-root",
+      "border": {
+        "neck-upper": 5,
+        "neck-lower": 3,
+        "far-wing-root": 8
+      }
+    },
+    {
+      "pixels": 551,
+      "to": "far-wing-root",
+      "border": {
+        "far-wing-root": 132
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 13,
+        "chest": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 2,
+        "far-wing-root": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 3,
+        "far-wing-root": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-root",
+      "border": {
+        "neck-lower": 1,
+        "far-wing-root": 2,
+        "near-wing-root": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 11,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 14
+      }
+    },
+    {
+      "pixels": 58,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 40
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 19,
+      "to": "near-shin",
+      "border": {
+        "near-shin": 6
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-shin",
+      "border": {
+        "near-foot": 2,
+        "near-shin": 3
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 7
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 3,
+        "far-shin": 11,
+        "far-thigh": 6
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 3
+      }
+    },
+    {
+      "pixels": 39,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 13
+      }
+    },
+    {
+      "pixels": 210,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 42
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 2
+      }
+    },
+    {
+      "pixels": 254,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 43
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "09-turkey",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1342,
+      "height": 707
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 31,
+        "distancePx": 15.201315732527991,
+        "supports": [
+          68,
+          70
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 19,
+        "distancePx": 4.036087214122087,
+        "supports": [
+          9
+        ]
+      }
+    ],
+    "sourceBindingHash": "45d9545ad2c22c65cd355781f4d177c3746c3026e878bd6b99e35840bca1517c",
+    "sourceVertices": 1080,
+    "vertices": 1336,
+    "sharedSupports": 243,
+    "pins": 698,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

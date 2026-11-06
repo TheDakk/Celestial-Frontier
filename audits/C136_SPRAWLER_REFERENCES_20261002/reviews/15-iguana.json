@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Iguana",
+  "family": "quadruped",
+  "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3",
+  "subjectSha256": "b596d5228be477403f246a7a7d2402a680812ad2e4928cb31e758b1f374a2d88",
+  "promptSha256": "7d1e5598530421f23ab83c4ed4e84b0ecdb6d5bd01e94fd10e7a749c18b0b205",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: jowled green/brown iguana, hanging dewlap, prominent continuous dorsal crest, strongly banded tail and four feet. Crest tips contain warm reddish/pink-looking edges against magenta and need despill/key review. Tail appears insufficiently long for the canonical far-longer-than-body requirement; HOLD on proportion. Far proximal limbs remain occluded. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/15-iguana/visual-review.json",
+    "sha256": "9e2f1f2123c5b0bd4b04b41f3f680ad41323929699380afca7aca85f07435fb1"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

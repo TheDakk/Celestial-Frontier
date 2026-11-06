@@ -1,0 +1,98 @@
+[
+  {
+    "id": "c243b01r2c3-15-camel",
+    "name": "Camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b01r2c3-15-camel",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Camel/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Camel/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b01r2c3-15-camel/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "name": "Manatee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c2-18-manatee",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Manatee/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Manatee/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-18-manatee/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "name": "Pilot Whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c1-24-pilot-whale",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Pilot-Whale/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Pilot-Whale/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c1-24-pilot-whale/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "name": "River Dolphin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c2-32-river-dolphin",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/River-Dolphin/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/River-Dolphin/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-32-river-dolphin/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b03r1c3-24-ladybug",
+    "name": "Ladybug",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b03r1c3-24-ladybug",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Ladybug/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Ladybug/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b03r1c3-24-ladybug/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b04r2c1-17-hoatzin",
+    "name": "Hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c1-17-hoatzin",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b04r2c1-17-hoatzin/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin/report.json",
+    "status": "HOLD",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b04r2c1-18-kakapo",
+    "name": "Kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c1-18-kakapo",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b04r2c1-18-kakapo/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo/report.json",
+    "status": "HOLD",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  },
+  {
+    "id": "c243b04r2c2-12-tern",
+    "name": "Tern",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c2-12-tern",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Tern/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Tern/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native03/c243b04r2c2-12-tern/report.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern/report.json",
+    "status": "READY_FOR_CLAUDE",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/visual-review.json"
+  }
+]

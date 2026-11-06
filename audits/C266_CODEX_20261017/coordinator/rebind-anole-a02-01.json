@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-anole-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-anole-a02-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "anole-a02"
+  ],
+  "startedUnix": 1792276027.2781901,
+  "beforeGiB": 91.27703094482422,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 91.27701568603516,
+  "afterGiB": 91.27311325073242
+}

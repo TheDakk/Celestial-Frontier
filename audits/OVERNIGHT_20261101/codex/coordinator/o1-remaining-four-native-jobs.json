@@ -1,0 +1,74 @@
+{
+  "status": "AUTHORIZED_EXACT_SEQUENTIAL_JOBS_NOT_AUTOMATIC_RETRIES",
+  "startDependency": "o1-clam112-ai-finish-matte-owner-r03",
+  "jobs": [
+    {
+      "id": "o1-clam112-finish-rebind-matte-owner-r03",
+      "cwd": ".",
+      "argv": [
+        "node",
+        "audits/OVERNIGHT_20261101/codex/coordinator/rebind-one.mjs",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03"
+      ]
+    },
+    {
+      "id": "o1-clam112-finished-native-matte-owner-r03",
+      "cwd": ".",
+      "argv": [
+        "python3",
+        "-B",
+        "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/112-clam-matte-owner-r03/finished-plan.json"
+      ]
+    },
+    {
+      "id": "o1-egret-ai-finish-owner-r01",
+      "cwd": ".",
+      "argv": [
+        "node",
+        "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01/finished",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01/subjects.json"
+      ]
+    },
+    {
+      "id": "o1-egret-finish-rebind-owner-r01",
+      "cwd": ".",
+      "argv": [
+        "node",
+        "audits/OVERNIGHT_20261101/codex/coordinator/rebind-one.mjs",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01"
+      ]
+    },
+    {
+      "id": "o1-egret-finished-native-owner-r01",
+      "cwd": ".",
+      "argv": [
+        "python3",
+        "-B",
+        "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+        "audits/OVERNIGHT_20261101/codex/coordinator/finishes/egret-owner-r01/finished-plan.json"
+      ]
+    },
+    {
+      "id": "o1-starfish082-native-observed-r02",
+      "cwd": ".",
+      "argv": [
+        "python3",
+        "-B",
+        "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+        "audits/OVERNIGHT_20261101/codex/coordinator/plans/082-starfish-observed-r02/native-plan-bound.json"
+      ]
+    },
+    {
+      "id": "o1-monkey-native-owner-r02",
+      "cwd": ".",
+      "argv": [
+        "python3",
+        "-B",
+        "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+        "audits/OVERNIGHT_20261101/codex/coordinator/plans/monkey-owner-r02/native-plan-bound.json"
+      ]
+    }
+  ]
+}

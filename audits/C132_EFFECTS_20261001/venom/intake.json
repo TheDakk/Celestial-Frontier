@@ -1,0 +1,141 @@
+{
+  "schema": "cf.c132-effect-intake/v1",
+  "theme": "venom",
+  "status": "MECHANICAL_INTAKE_ONLY",
+  "originalsUnchanged": true,
+  "qualityAccepted": false,
+  "rows": [
+    {
+      "phase": "launch",
+      "master": "launch-master.png",
+      "masterSha256": "8d998a1d02541b9f1be3a921cf9e44525b0a6d172518248ad9ce6d5e8256a6a6",
+      "masterCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "keyedImage": "keyed/launch.png",
+      "keyedSha256": "1f636562bebdeeb976b85dc08b724429847624a0670549d96860553a8a2a2a7f",
+      "registeredImage": "registered/launch.png",
+      "registeredSha256": "df5ed04a970f775995eb27a67ecc2ebf21ce38ddfcdb47935336366bdc9d93d9",
+      "alphaBoundsPixels": {
+        "x": 47,
+        "y": 469,
+        "width": 224,
+        "height": 181
+      },
+      "alphaPositivePixels": 19467,
+      "keyer": {
+        "erodedPixels": 6343,
+        "despilledPixels": 112,
+        "unresolvedEdgePixels": 3
+      },
+      "registration": {
+        "sourceAnchor": [
+          0.38,
+          0.49
+        ],
+        "targetAnchor": [
+          0.2,
+          0.55
+        ],
+        "fullCanvasPixels": 492,
+        "uniformScale": 0.3923444976076555,
+        "left": 18,
+        "top": 322,
+        "residualPixels": [
+          0.1599999999999966,
+          -0.12000000000011823
+        ],
+        "method": "Measured from full-size master; uniform downscale and translation, no cropping, rotation or paint retouch"
+      }
+    },
+    {
+      "phase": "travel",
+      "master": "travel-master.png",
+      "masterSha256": "450ff8c0106cbd81b04c98893ab4fac4757d649f350dfcb2f679b4a137d5cb49",
+      "masterCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "keyedImage": "keyed/travel.png",
+      "keyedSha256": "082d105dadf340186a19f5ce5456a020a2ae36fb141c7c939e3d112631640872",
+      "registeredImage": "registered/travel.png",
+      "registeredSha256": "f126eb3df3a998699c2e993cf74b1cc32c817a38c1d53d3e7164b17bfb1ac392",
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 423,
+        "width": 706,
+        "height": 275
+      },
+      "alphaPositivePixels": 52030,
+      "keyer": {
+        "erodedPixels": 11257,
+        "despilledPixels": 76,
+        "unresolvedEdgePixels": 2
+      },
+      "registration": {
+        "sourceAnchor": [
+          0.14,
+          0.5
+        ],
+        "targetAnchor": [
+          0.2,
+          0.55
+        ],
+        "fullCanvasPixels": 737,
+        "uniformScale": 0.5877192982456141,
+        "left": 102,
+        "top": 195,
+        "residualPixels": [
+          0.37999999999999545,
+          0.2999999999999545
+        ],
+        "method": "Measured from full-size master; uniform downscale and translation, no cropping, rotation or paint retouch"
+      }
+    },
+    {
+      "phase": "impact",
+      "master": "impact-master.png",
+      "masterSha256": "b12d0b655a39b5a0855d1c796eaaf0b9e3228c8ba3a010880347f3c8f441a5e3",
+      "masterCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "keyedImage": "keyed/impact.png",
+      "keyedSha256": "ff86f34f5a6e7dfccc358f26c4b528fe57ca4f6d5276a925856691339b7b99ac",
+      "registeredImage": "registered/impact.png",
+      "registeredSha256": "72de039576963f53c2ebcdff9c7ed012b7e6f04292263326a1d4f2159e1d5234",
+      "alphaBoundsPixels": {
+        "x": 524,
+        "y": 406,
+        "width": 367,
+        "height": 308
+      },
+      "alphaPositivePixels": 30826,
+      "keyer": {
+        "erodedPixels": 19516,
+        "despilledPixels": 558,
+        "unresolvedEdgePixels": 74
+      },
+      "registration": {
+        "sourceAnchor": [
+          0.83,
+          0.5
+        ],
+        "targetAnchor": [
+          0.8,
+          0.55
+        ],
+        "fullCanvasPixels": 451,
+        "uniformScale": 0.35964912280701755,
+        "left": 445,
+        "top": 338,
+        "residualPixels": [
+          0.12999999999988177,
+          0.2999999999999545
+        ],
+        "method": "Measured from full-size master; uniform downscale and translation, no cropping, rotation or paint retouch"
+      }
+    }
+  ]
+}

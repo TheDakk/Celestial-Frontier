@@ -1,0 +1,9 @@
+{
+  "id": "c266-11-grasshopper",
+  "name": "Grasshopper",
+  "fit": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/grasshopper-01/native/report.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/grasshopper01/visual-review.json",
+  "checkpointReviewSha256": "f1878b58460662f36cf560df6e573aa2c3cb85d2adb8ec060728e990ab97603d",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

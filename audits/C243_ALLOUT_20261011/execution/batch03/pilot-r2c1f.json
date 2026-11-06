@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b03r2c1-24-ladybug",
+    "name": "Ladybug",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-24-ladybug",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-24-ladybug/master.png"
+  },
+  {
+    "id": "c243b03r2c1-26-moth",
+    "name": "Moth",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-26-moth",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-26-moth/master.png"
+  },
+  {
+    "id": "c243b03r2c1-28-thrips",
+    "name": "Thrips",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-28-thrips",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-28-thrips/master.png"
+  },
+  {
+    "id": "c243b03r2c1-30-cassowary",
+    "name": "Cassowary",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-30-cassowary",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-30-cassowary/master.png"
+  }
+]

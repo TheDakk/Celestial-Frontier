@@ -1,0 +1,17 @@
+[
+  {
+    "name": "grayling-tail-axial-01",
+    "compileExit": 0,
+    "staticExit": 1
+  },
+  {
+    "name": "walleye-tail-axial-01",
+    "compileExit": 0,
+    "staticExit": 0
+  },
+  {
+    "name": "pacu-tail-axial-01",
+    "compileExit": 0,
+    "staticExit": 0
+  }
+]

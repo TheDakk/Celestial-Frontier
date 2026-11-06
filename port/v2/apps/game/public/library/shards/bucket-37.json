@@ -1,0 +1,196 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-37",
+ "files": [
+  {
+   "path": "library/cards/aardvark/SOURCE.json",
+   "bytes": 294,
+   "sha256": "0184a5d9990a920f07a4b53f24fc85692395cf19aef23388dc2e028ca0e638d7"
+  },
+  {
+   "path": "library/cards/aardvark/card/card.json",
+   "bytes": 5884,
+   "sha256": "cb15fd191fb6e3e2356f949603121d80af9e970a31b23d530a02365a0c7f961e"
+  },
+  {
+   "path": "library/cards/aardvark/card/labels-512.png",
+   "bytes": 9113,
+   "sha256": "199a5253f22aa5c4adc17ce676fe82c1a4c532503b3604865ab68ee99adc5045"
+  },
+  {
+   "path": "library/cards/aardvark/card/master-512.png",
+   "bytes": 96444,
+   "sha256": "87cb5ac5e6e035c1d282ade4d431a21adc99c1da132a9f1d0ff8e474df0ea031"
+  },
+  {
+   "path": "library/cards/aardvark/record.json",
+   "bytes": 7535,
+   "sha256": "97bde5df92d283f10f243b5ae4d432943c27ae8a237aca7e85401c4c791b0919"
+  },
+  {
+   "path": "library/cards/coastal-lizard/SOURCE.json",
+   "bytes": 301,
+   "sha256": "9e4e8caee8828992408f6bbbaef298488a810a80a3acabf511ece062bd11b129"
+  },
+  {
+   "path": "library/cards/coastal-lizard/card/card.json",
+   "bytes": 5262,
+   "sha256": "daf1c12ae07a1c6b3a78a7a7acb5b6b521be3761932ea498c92f07fecb42c11d"
+  },
+  {
+   "path": "library/cards/coastal-lizard/card/labels-512.png",
+   "bytes": 2809,
+   "sha256": "4ee30e179ad0bac4af86f684c0f464c623f4ed502b99f7626690b8f8c844ddde"
+  },
+  {
+   "path": "library/cards/coastal-lizard/card/master-512.png",
+   "bytes": 17540,
+   "sha256": "89c047b204b4d2f8cfc9a7df31ce8c5e44626f815cc66539ffd46b22fad323ee"
+  },
+  {
+   "path": "library/cards/coastal-lizard/record.json",
+   "bytes": 7111,
+   "sha256": "d286809562f9a5000f915d29c7eab9142531d0e6c22909596a8b668d8f1eb2b6"
+  },
+  {
+   "path": "library/cards/pampas-fox/SOURCE.json",
+   "bytes": 291,
+   "sha256": "832ccfed81bf8dbfe3fcd57a454acbbca01052e19cd1882f70247df2a4342fc8"
+  },
+  {
+   "path": "library/cards/pampas-fox/card/card.json",
+   "bytes": 5912,
+   "sha256": "30d5c8fe92a69c80fd872c56abcdd88460b3726c6d5f557e8bcef7e9e1678218"
+  },
+  {
+   "path": "library/cards/pampas-fox/card/labels-512.png",
+   "bytes": 5764,
+   "sha256": "ecd9036286e614523c4caede7069603c014f55be20c4cab98d61c7b0cd265d25"
+  },
+  {
+   "path": "library/cards/pampas-fox/card/master-512.png",
+   "bytes": 80407,
+   "sha256": "73fbb121b0109ac62bb6f336fbf50d7050612eaa5b4c13b2f8588d2f25b445e7"
+  },
+  {
+   "path": "library/cards/pampas-fox/record.json",
+   "bytes": 7523,
+   "sha256": "2876b507e87299f1dbb92eeeb30c14357aa6c9efe06baf619600492398b12cd9"
+  },
+  {
+   "path": "library/cards/quail/SOURCE.json",
+   "bytes": 296,
+   "sha256": "50af48c87fd65166faa0940fa768bb971a4e44bbcd1bddf36e45b58ca89c814a"
+  },
+  {
+   "path": "library/cards/quail/card/card.json",
+   "bytes": 3834,
+   "sha256": "ad9d58d5cf9fff4dc93c10facbd1f6c8424c8f2e9d9f27eea0487a3605a04880"
+  },
+  {
+   "path": "library/cards/quail/card/labels-512.png",
+   "bytes": 12639,
+   "sha256": "c31dbb71ff7675bbf30cc7e887d46e2b6ac3ba8b4bf68643839402ca6d7d0b91"
+  },
+  {
+   "path": "library/cards/quail/card/master-512.png",
+   "bytes": 221687,
+   "sha256": "d6c5430d0147dabff83ec21c78015cbdf235d9aca9f09611547c2448f3812102"
+  },
+  {
+   "path": "library/cards/quail/record.json",
+   "bytes": 5937,
+   "sha256": "62ac80e293af432241c0d24fe49f5898f8b370c3615a70e6f74faecb96529299"
+  },
+  {
+   "path": "library/cards/robin/SOURCE.json",
+   "bytes": 306,
+   "sha256": "a91be3b2ccceaf5a0d36676a4762cd78dead718e98a6708b21b9f444bdda740b"
+  },
+  {
+   "path": "library/cards/robin/card/card.json",
+   "bytes": 3763,
+   "sha256": "7dbf652b0c7fbded2759b4030894178033cc61e01475b4529cbd95a20ce8f949"
+  },
+  {
+   "path": "library/cards/robin/card/labels-512.png",
+   "bytes": 12184,
+   "sha256": "f70d704e97edc95899df16c7a21dce2bc04e760543bbe0c8c70367cc9c6c1a34"
+  },
+  {
+   "path": "library/cards/robin/card/master-512.png",
+   "bytes": 193712,
+   "sha256": "024067e08de2a7dbdf2bc12028e605a3c5196430f68963639232c20f4bcb28ba"
+  },
+  {
+   "path": "library/cards/robin/record.json",
+   "bytes": 5963,
+   "sha256": "9ff3226c36181e9a4b5bfd0c3ec563a35c81871b932804e6b219491c2ae7a50f"
+  },
+  {
+   "path": "library/cards/tetra/SOURCE.json",
+   "bytes": 282,
+   "sha256": "f8c17c3a92d21c198006996a94e2b9058b9b8c9428147250d4e8c69511cbc1e5"
+  },
+  {
+   "path": "library/cards/tetra/card/card.json",
+   "bytes": 2918,
+   "sha256": "576b8680b1d79b36b34e8a2a316c62b0ff9790f986f25a108048bcea29a3a0e0"
+  },
+  {
+   "path": "library/cards/tetra/card/labels-512.png",
+   "bytes": 7368,
+   "sha256": "d0d59efa693a13d6763db4b5ee581b72a3b2478e96247de9a07cd675290a3be0"
+  },
+  {
+   "path": "library/cards/tetra/card/master-512.png",
+   "bytes": 175957,
+   "sha256": "71a67960638082ca702c502b82e355877ef18368f4c15deabec574a3ee964058"
+  },
+  {
+   "path": "library/cards/tetra/record.json",
+   "bytes": 5116,
+   "sha256": "05efbc427b1894dceeb733571467c909929b51303a004324f718145419c6c078"
+  },
+  {
+   "path": "library/creature-finish-source/11-chipmunk/labels.png",
+   "bytes": 45373,
+   "sha256": "38e152701767e6f6fefe94aaa1d31926d2200f4d5db246e296f19f30e7133d5e"
+  },
+  {
+   "path": "library/creature-finish-source/11-chipmunk/master.png",
+   "bytes": 1399352,
+   "sha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c"
+  },
+  {
+   "path": "library/creature-finish-source/c266-13-goat-a02/labels.png",
+   "bytes": 42191,
+   "sha256": "6e659d0569ccb0cb97a555efcdfdf40be73fd7c21aa5c0554206d300af26c12c"
+  },
+  {
+   "path": "library/creature-finish-source/c266-13-goat-a02/master.png",
+   "bytes": 1506636,
+   "sha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34"
+  },
+  {
+   "path": "library/creature-finish-source/g2c56-06-mink-side/labels.png",
+   "bytes": 51832,
+   "sha256": "405595e9fb5b2e21602a7712bcdf8ba6149f88bded89e554adf72385efaaf743"
+  },
+  {
+   "path": "library/creature-finish-source/g2c56-06-mink-side/master.png",
+   "bytes": 837543,
+   "sha256": "ca16447ae172ad9100642840cb51378a8f75a76b737f8dc3cff844773b181e10"
+  },
+  {
+   "path": "library/creature-finish-source/walleye-tail-axial-01/labels.png",
+   "bytes": 42758,
+   "sha256": "ee6d2f5b595c60c503d4c92338b0c73c0a01a83c4353279a2755be569bb423be"
+  },
+  {
+   "path": "library/creature-finish-source/walleye-tail-axial-01/master.png",
+   "bytes": 1551852,
+   "sha256": "d9af5e52a51e9dab8fad982dc4adf37f57719bf9847c70d7bb9b88848d3cb423"
+  }
+ ]
+}

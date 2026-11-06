@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "chem",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "acid",
+  "abilityName": "Acid Spray",
+  "material": "fizzing foam, reactive spray, etched surface",
+  "accent": "#c0ff5a",
+  "anchors": "chem/anchors.json",
+  "anchorsSha256": "bde174def1affb9cf35520d456cc076c3c14de3431b7209bfb6755506dbc79e4",
+  "reviewSheet": "chem/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "chem/registered/launch.png",
+      "imageSha256": "333ecfa8f9fc749430f83744e127314aa7e8722d2ee8926f354b5722f9ee45db",
+      "master": "chem/launch-master.png",
+      "masterSha256": "4118bd7288a4c0cc8b58daf24d1903390bbb6a712105fc241061f52bc57dabd4",
+      "prompt": "chem/launch.prompt.txt",
+      "promptSha256": "91975216eaef543a34032fcaf2b73c08a4921f9a61c14546ecc648de7174c2aa",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 139,
+        "y": 446,
+        "width": 317,
+        "height": 211
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "chem/registered/travel.png",
+      "imageSha256": "0167b8d4d433da139b9f1819815e2a880e9a2255b50ad003bf1e7289f197a985",
+      "master": "chem/travel-master.png",
+      "masterSha256": "fca0cd8ade5aded7d167825b91df1add43cafe68d8a10e551c4d8dc8598463a6",
+      "prompt": "chem/travel.prompt.txt",
+      "promptSha256": "f244830c9e85a7df9d72967e1bca4e6b4d7cae239ec517eb5e26e6c6303826e3",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 151,
+        "y": 425,
+        "width": 682,
+        "height": 267
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "chem/registered/impact.png",
+      "imageSha256": "52ed2bd4cab580905c296368a65e09258f9b7b1470d5855f4262be644fda6f64",
+      "master": "chem/impact-master.png",
+      "masterSha256": "3873992140b1540c243541869f53cfc2384ee38cb42442ce0c3701c74d1a909d",
+      "prompt": "chem/impact.prompt.txt",
+      "promptSha256": "b80169c2bfa693356e9ecff54e41056b5e6ef74f4be51327188f0e3f5161def4",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 568,
+        "y": 420,
+        "width": 329,
+        "height": 285
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "chem",
+    "sequenceId": "chem-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 29494,
+        "edge": 9895,
+        "fringe": 13,
+        "fringeRatio": 0.0013137948458817584,
+        "accentShare": 0.021699061662198392,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 139,
+          "y": 446,
+          "width": 317,
+          "height": 211
+        }
+      },
+      "travel": {
+        "painted": 75046,
+        "edge": 20552,
+        "fringe": 60,
+        "fringeRatio": 0.0029194239003503307,
+        "accentShare": 0.008362291934434553,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 151,
+          "y": 425,
+          "width": 682,
+          "height": 267
+        }
+      },
+      "impact": {
+        "painted": 33866,
+        "edge": 12562,
+        "fringe": 34,
+        "fringeRatio": 0.0027065753860850182,
+        "accentShare": 0.004255799939740886,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 568,
+          "y": 420,
+          "width": 329,
+          "height": 285
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "chem",
+    "anchors": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+    "exitCode": 0,
+    "log": "tests/chem.txt"
+  },
+  "manifestRow": {
+    "theme": "chem",
+    "anchors": "../C132_EFFECTS_20261001/chem/anchors.json",
+    "contract": "v4.3"
+  }
+}

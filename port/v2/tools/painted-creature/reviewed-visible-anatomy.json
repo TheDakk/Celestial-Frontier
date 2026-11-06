@@ -1,0 +1,1473 @@
+[
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Goat",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/21-goat",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Both external ears are visible on opposite sides of the forehead. Far tip rises behind the right horn base; near ear has a distinct dark inner pinna. Horns are not used as absence evidence.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            896,
+            336
+          ],
+          "earFarTip": [
+            914,
+            309
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                883,
+                333
+              ],
+              [
+                892,
+                327
+              ],
+              [
+                907,
+                328
+              ],
+              [
+                904,
+                341
+              ],
+              [
+                897,
+                349
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                892,
+                326
+              ],
+              [
+                903,
+                316
+              ],
+              [
+                916,
+                298
+              ],
+              [
+                918,
+                302
+              ],
+              [
+                915,
+                321
+              ],
+              [
+                905,
+                334
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "side": "near",
+        "landmarksPx": {
+          "earNearRoot": [
+            815,
+            378
+          ],
+          "earNearTip": [
+            813,
+            330
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earNearRoot",
+            "polygonPx": [
+              [
+                800,
+                346
+              ],
+              [
+                821,
+                344
+              ],
+              [
+                831,
+                358
+              ],
+              [
+                830,
+                380
+              ],
+              [
+                821,
+                394
+              ],
+              [
+                811,
+                395
+              ],
+              [
+                799,
+                380
+              ]
+            ]
+          },
+          {
+            "joint": "earNearTip",
+            "polygonPx": [
+              [
+                799,
+                349
+              ],
+              [
+                799,
+                338
+              ],
+              [
+                806,
+                318
+              ],
+              [
+                814,
+                314
+              ],
+              [
+                823,
+                329
+              ],
+              [
+                829,
+                350
+              ],
+              [
+                816,
+                359
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "97c47e287195edb03d5f9cc571c94bf72789a72daabb4f915f929cbfef1dfd1a",
+    "masterSha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+    "subjectSha256": "6363e979a98244309bde957ee5b455fc98089b1b1322e064f70e86510aa565d6",
+    "promptSha256": "9a54e6fdc371ef39a211d71ba0943d74fa8f0a9ca1823ff473a45ae204f6044c"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Hippopotamus",
+    "packet": "audits/G2_C114_20260927/06-hippopotamus",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Far external ear is the small painted rounded projection above the far brow. It is visibly present; no hidden landmark or absence is inferred.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            944,
+            451
+          ],
+          "earFarTip": [
+            946,
+            440
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                936,
+                445
+              ],
+              [
+                949,
+                444
+              ],
+              [
+                954,
+                455
+              ],
+              [
+                951,
+                461
+              ],
+              [
+                939,
+                456
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                938,
+                445
+              ],
+              [
+                942,
+                438
+              ],
+              [
+                947,
+                435
+              ],
+              [
+                950,
+                437
+              ],
+              [
+                951,
+                446
+              ],
+              [
+                946,
+                450
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "dff09ef9eb5d54547c066e6f6ed130a2579c1cc4df7cea503dfeabaf490bc883",
+    "masterSha256": "c23517d94c86583ebec9659d19c129f0e5d2c544e4aa4372811e4961681df420",
+    "subjectSha256": "f368aac51b05730062862b7a0f3fef288012f63fa8c9522bb33114ed8cb7f28d",
+    "promptSha256": "ee37fd57e90a1af8dc011a9f6cc349f4dc35530eaae5c28275b0058a3a290356"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Ibex",
+    "packet": "audits/G2_C107_20260927/15-ibex",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full-size original shows two separate external pinnae. The far ear has its own painted tip and exposed base above the forehead; these source points replace the misplaced transferred region. No hidden extent, absent part or horn substitution is inferred.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            824,
+            465
+          ],
+          "earFarTip": [
+            809,
+            435
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                809,
+                447
+              ],
+              [
+                820,
+                445
+              ],
+              [
+                834,
+                458
+              ],
+              [
+                835,
+                476
+              ],
+              [
+                824,
+                477
+              ],
+              [
+                817,
+                464
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                802,
+                424
+              ],
+              [
+                806,
+                422
+              ],
+              [
+                815,
+                431
+              ],
+              [
+                824,
+                444
+              ],
+              [
+                821,
+                454
+              ],
+              [
+                811,
+                450
+              ],
+              [
+                802,
+                438
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "a5b748b9128b8805c23298b47fdae86c923e12766c35c4c208cd851a159952fc",
+    "masterSha256": "bb4389651cc2da9f04448ea8ea67cc7fdfc69bceb8db60c3f579c6577275bc0e",
+    "subjectSha256": "aac4d0174240b5350ada4297d2dc78f923e5a97e175d6ed00eb875377a95d8d8",
+    "promptSha256": "4b878138e75a9a8090f317bccb997d9d20150e1bf63301c965481eed398c3d7b"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Okapi",
+    "packet": "audits/G2_C76_20260927/24-okapi",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full-size original shows two separate external pinnae. The far ear has its own painted tip and exposed base above the forehead; these source points replace the misplaced transferred region. No hidden extent, absent part or horn substitution is inferred.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            904,
+            356
+          ],
+          "earFarTip": [
+            903,
+            335
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                895,
+                347
+              ],
+              [
+                910,
+                346
+              ],
+              [
+                916,
+                361
+              ],
+              [
+                910,
+                370
+              ],
+              [
+                899,
+                365
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                897,
+                331
+              ],
+              [
+                903,
+                326
+              ],
+              [
+                910,
+                338
+              ],
+              [
+                914,
+                350
+              ],
+              [
+                906,
+                357
+              ],
+              [
+                895,
+                348
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "deda5fd7f8108994b653afe6803db1c8bb8d2e7c2995a3b2a423451f5afb3c2f",
+    "masterSha256": "20060058c0e89809749b376fc6405e972a724c0d3835b9be9a2ee73812b55679",
+    "subjectSha256": "a7df37fbd5cd59edeafbf735d8f19e01898e9010cea40ef64b458ab43ae4d976",
+    "promptSha256": "67e97ad820611e5c45c246a15e5e189ef3b99feae2e1d497d37ec17b67cb12a5"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Rat",
+    "packet": "audits/G2_C114_20260927/10-rat",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full-size original shows two separate external pinnae. The far ear has its own painted tip and exposed base above the forehead; these source points replace the misplaced transferred region. No hidden extent, absent part or horn substitution is inferred.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            914,
+            500
+          ],
+          "earFarTip": [
+            911,
+            470
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                899,
+                482
+              ],
+              [
+                924,
+                481
+              ],
+              [
+                933,
+                498
+              ],
+              [
+                936,
+                511
+              ],
+              [
+                921,
+                511
+              ],
+              [
+                906,
+                502
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                896,
+                464
+              ],
+              [
+                904,
+                456
+              ],
+              [
+                914,
+                456
+              ],
+              [
+                924,
+                465
+              ],
+              [
+                928,
+                480
+              ],
+              [
+                926,
+                490
+              ],
+              [
+                908,
+                492
+              ],
+              [
+                898,
+                480
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "655173308eef116e449d445d8d2f0668da7ee2421d34ccf6a1507e1eba6c7616",
+    "masterSha256": "db1e02c8d04d0656dadb9ac7ede9f3026e5b6421b097c766deafba1bd6fb3fc5",
+    "subjectSha256": "ac29789c19789f66bf4927d5786a5bcdc98d2a7cdb728841cc04e0f109651303",
+    "promptSha256": "0bae572405b4cfc1fc6a7eadca8349a5c04efbce34d5e76a5a47f3b526b02911"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Agouti",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/18-agouti",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full-size original shows two separate external pinnae. The far ear has its own painted tip and exposed base above the forehead; these source points replace the misplaced transferred region. No hidden extent, absent part or horn substitution is inferred.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            888,
+            374
+          ],
+          "earFarTip": [
+            894,
+            348
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                874,
+                354
+              ],
+              [
+                900,
+                351
+              ],
+              [
+                909,
+                370
+              ],
+              [
+                910,
+                389
+              ],
+              [
+                893,
+                384
+              ],
+              [
+                877,
+                376
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                879,
+                347
+              ],
+              [
+                886,
+                338
+              ],
+              [
+                894,
+                335
+              ],
+              [
+                903,
+                342
+              ],
+              [
+                907,
+                355
+              ],
+              [
+                901,
+                367
+              ],
+              [
+                878,
+                365
+              ],
+              [
+                870,
+                360
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "c7584b250deddf21810c7727147991d1836de269027fa08ad3328b590e4de741",
+    "masterSha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+    "subjectSha256": "81c5846a10133492adfd755d47fb9386e303e3b11a763f5d6c80b6b1c2a5272a",
+    "promptSha256": "0fe50ca2a51e55bd6ee627e579586d49b8179d1ad96c6e55bb53f7ed1e6fde3a"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Moose",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The far pinna is visibly painted behind the near ear and below the left antler base. Preserve both visible points and its own ear owner; no occlusion waiver.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            858,
+            449
+          ],
+          "earFarTip": [
+            851,
+            424
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                842,
+                434
+              ],
+              [
+                866,
+                430
+              ],
+              [
+                875,
+                459
+              ],
+              [
+                850,
+                464
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                842,
+                408
+              ],
+              [
+                862,
+                415
+              ],
+              [
+                868,
+                436
+              ],
+              [
+                845,
+                440
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "ae0f71f69725ddd2bc82575bfb51ad58dbccbc967609391ece7fc3d8efb227f5",
+    "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+    "subjectSha256": "ec5c33742830c8c74e417576b00af876174eef351bdc6b315190e6ed3f520cc0",
+    "promptSha256": "2dfd713aa15dcfc5e01589af103b7fbc824d6ecb0875e936ea0f595ea46acb05",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Beaver",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The small rounded far ear visibly projects above the head immediately behind the near ear; both root and tip are present.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            943,
+            440
+          ],
+          "earFarTip": [
+            938,
+            425
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                925,
+                431
+              ],
+              [
+                951,
+                430
+              ],
+              [
+                963,
+                448
+              ],
+              [
+                933,
+                451
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                925,
+                418
+              ],
+              [
+                943,
+                415
+              ],
+              [
+                954,
+                433
+              ],
+              [
+                929,
+                437
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "462fd54672e87220b2824e18b9b588e4f677febe125f1e653dc3c326c2a742b3",
+    "masterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+    "subjectSha256": "adaff50bc8cbab40e430a4bc7ee0bee0323855615b6f405fe2f9530a36235e2c",
+    "promptSha256": "bd23843b21f513dd8ddb1304d616999931d6f50964c47c499c82fdef1a908645",
+    "packet": "audits/G2_C101_20260927/24-beaver"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Buffalo",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The long visible hanging tail and terminal tuft require all four existing tail controls. Compact-tail evidence correctly rejects this long tufted silhouette.",
+    "anatomy": [
+      {
+        "kind": "tail",
+        "landmarksPx": {
+          "tail0": [
+            337,
+            493
+          ],
+          "tail1": [
+            308,
+            557
+          ],
+          "tail2": [
+            294,
+            616
+          ],
+          "tail3": [
+            270,
+            700
+          ]
+        },
+        "regions": [
+          {
+            "joint": "tail0",
+            "polygonPx": [
+              [
+                328,
+                478
+              ],
+              [
+                356,
+                469
+              ],
+              [
+                327,
+                521
+              ],
+              [
+                305,
+                535
+              ]
+            ]
+          },
+          {
+            "joint": "tail1",
+            "polygonPx": [
+              [
+                304,
+                518
+              ],
+              [
+                324,
+                520
+              ],
+              [
+                307,
+                585
+              ],
+              [
+                290,
+                585
+              ]
+            ]
+          },
+          {
+            "joint": "tail2",
+            "polygonPx": [
+              [
+                289,
+                576
+              ],
+              [
+                310,
+                576
+              ],
+              [
+                307,
+                634
+              ],
+              [
+                277,
+                656
+              ]
+            ]
+          },
+          {
+            "joint": "tail3",
+            "polygonPx": [
+              [
+                277,
+                617
+              ],
+              [
+                315,
+                618
+              ],
+              [
+                300,
+                690
+              ],
+              [
+                269,
+                740
+              ],
+              [
+                237,
+                737
+              ],
+              [
+                249,
+                677
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "e65f23be1d600712f870307302a0d6d605d945693d8d04708d7d615ac2831b7b",
+    "masterSha256": "b2bfd6b1f3367812f21762ea7d06473d316c1e93469cf50f4065c98a7615e3de",
+    "subjectSha256": "89046191530df4b861bb56a33e2b6a3d7afec68d146ba7755d5a88194ceb6638",
+    "promptSha256": "8638e0d51601cf7e1f6b8c167eee9f7f0be1b473a0bdc4598d7c7b3186f97384",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Wild Horse",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Both pinnae are visible above the mane; the far ear is the right-hand pinna. The full long mane-like tail remains a four-control tail, not a compact-tail exemption.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            989,
+            333
+          ],
+          "earFarTip": [
+            1000,
+            295
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                977,
+                318
+              ],
+              [
+                1005,
+                314
+              ],
+              [
+                1003,
+                344
+              ],
+              [
+                977,
+                344
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                983,
+                309
+              ],
+              [
+                1008,
+                279
+              ],
+              [
+                1006,
+                318
+              ],
+              [
+                980,
+                328
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "tail",
+        "landmarksPx": {
+          "tail0": [
+            328,
+            495
+          ],
+          "tail1": [
+            292,
+            586
+          ],
+          "tail2": [
+            267,
+            698
+          ],
+          "tail3": [
+            239,
+            821
+          ]
+        },
+        "regions": [
+          {
+            "joint": "tail0",
+            "polygonPx": [
+              [
+                313,
+                479
+              ],
+              [
+                345,
+                482
+              ],
+              [
+                325,
+                548
+              ],
+              [
+                294,
+                559
+              ]
+            ]
+          },
+          {
+            "joint": "tail1",
+            "polygonPx": [
+              [
+                293,
+                531
+              ],
+              [
+                328,
+                535
+              ],
+              [
+                314,
+                650
+              ],
+              [
+                261,
+                654
+              ]
+            ]
+          },
+          {
+            "joint": "tail2",
+            "polygonPx": [
+              [
+                267,
+                622
+              ],
+              [
+                320,
+                626
+              ],
+              [
+                296,
+                745
+              ],
+              [
+                232,
+                756
+              ]
+            ]
+          },
+          {
+            "joint": "tail3",
+            "polygonPx": [
+              [
+                233,
+                723
+              ],
+              [
+                301,
+                716
+              ],
+              [
+                282,
+                818
+              ],
+              [
+                235,
+                880
+              ],
+              [
+                204,
+                879
+              ],
+              [
+                207,
+                799
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "2237c40fd44a96dd9125fee3b53f4bf1e9498568f4d9d20c36b6db1d5c05f6f0",
+    "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+    "subjectSha256": "a56e9ed12b447e70d3a821d6cfb959a75fc0b78fa024264d34de0a492cb22931",
+    "promptSha256": "fdfd3188cccfe17422a67436334709f178ce3746ec27b84c886220891c42e9ea",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Bee",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Two dark curved mandible prongs are visible directly below the mouth; the distinct nearby foreleg remains outside this mandibular region.",
+    "anatomy": [
+      {
+        "kind": "mandible",
+        "landmarksPx": {
+          "mandible": [
+            864,
+            657
+          ]
+        },
+        "regions": [
+          {
+            "joint": "mandible",
+            "polygonPx": [
+              [
+                844,
+                631
+              ],
+              [
+                866,
+                634
+              ],
+              [
+                878,
+                629
+              ],
+              [
+                890,
+                630
+              ],
+              [
+                888,
+                661
+              ],
+              [
+                874,
+                700
+              ],
+              [
+                857,
+                697
+              ],
+              [
+                846,
+                676
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "056a04d2c3397a259772d72e6cd5c93dabab6e5e1483d9299508b7f59296f8a6",
+    "masterSha256": "90d94766ef43d77f393c5dd057432f3df990c010d518f130f49a8899bc06e413",
+    "subjectSha256": "e790c853eaf177557816a80c3559afda0a6b9410b2f1db4033aafa3010787fc2",
+    "promptSha256": "e0576c8e07c8ecc76bb02f5920a2e4cde4b684c9bb1354d60649a9f7dde4c38c",
+    "packet": "audits/C196_CREATURE_SUPPLY_20261003/13-bee"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Water Buffalo",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The far ear is a small visible horizontal tan pinna below the right horn and beside the head; both root and tip remain visible.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            972,
+            545
+          ],
+          "earFarTip": [
+            991,
+            547
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                958,
+                531
+              ],
+              [
+                978,
+                533
+              ],
+              [
+                982,
+                560
+              ],
+              [
+                964,
+                566
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                976,
+                533
+              ],
+              [
+                990,
+                535
+              ],
+              [
+                1004,
+                547
+              ],
+              [
+                993,
+                559
+              ],
+              [
+                978,
+                563
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "b01f3db8c246492f3369b999cd385ce4c3d264393dcda42c27a295a5d057ddea",
+    "masterSha256": "0ec1da34c61152637b0e102fd3a557289791ab4f97b726c06be0f41a7c9a5200",
+    "subjectSha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298",
+    "promptSha256": "5d43e8f6a889140ee91977879920e9ca03e6712a5391d0acb04f251e52a86f70",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/17-water-buffalo"
+  },
+  {
+    "schema": "cf.reviewed-visible-anatomy/v1",
+    "name": "Jackrabbit",
+    "scope": "visible-placement-only-no-inventory-exemption",
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The full far pinna is the narrower right-hand upright ear behind the broad near pinna. Its silhouette and root are visible; preserve the complete long ear rather than borrowing compact-rabbit ear coordinates. Phase6 intake diagnosis: the transferred head and jaw polygons lay on the long far ear and jaw had zero exclusive pixels. Place the visible face on the actual muzzle, and place the broad near pinna on its observed silhouette; no empty owner may pass.",
+    "anatomy": [
+      {
+        "side": "far",
+        "landmarksPx": {
+          "earFarRoot": [
+            894,
+            480
+          ],
+          "earFarTip": [
+            839,
+            257
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earFarRoot",
+            "polygonPx": [
+              [
+                858,
+                359
+              ],
+              [
+                889,
+                356
+              ],
+              [
+                906,
+                484
+              ],
+              [
+                890,
+                501
+              ],
+              [
+                870,
+                446
+              ]
+            ]
+          },
+          {
+            "joint": "earFarTip",
+            "polygonPx": [
+              [
+                820,
+                239
+              ],
+              [
+                841,
+                235
+              ],
+              [
+                882,
+                298
+              ],
+              [
+                895,
+                365
+              ],
+              [
+                859,
+                378
+              ],
+              [
+                833,
+                312
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "side": "near",
+        "landmarksPx": {
+          "earNearRoot": [
+            869,
+            503
+          ],
+          "earNearTip": [
+            742,
+            266
+          ]
+        },
+        "regions": [
+          {
+            "joint": "earNearRoot",
+            "polygonPx": [
+              [
+                821,
+                401
+              ],
+              [
+                854,
+                403
+              ],
+              [
+                883,
+                474
+              ],
+              [
+                892,
+                509
+              ],
+              [
+                868,
+                524
+              ],
+              [
+                844,
+                487
+              ]
+            ]
+          },
+          {
+            "joint": "earNearTip",
+            "polygonPx": [
+              [
+                725,
+                249
+              ],
+              [
+                747,
+                243
+              ],
+              [
+                778,
+                252
+              ],
+              [
+                822,
+                288
+              ],
+              [
+                858,
+                361
+              ],
+              [
+                874,
+                429
+              ],
+              [
+                850,
+                451
+              ],
+              [
+                815,
+                419
+              ],
+              [
+                771,
+                369
+              ],
+              [
+                738,
+                311
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "face",
+        "landmarksPx": {
+          "head": [
+            932,
+            539
+          ],
+          "jaw": [
+            972,
+            587
+          ]
+        },
+        "regions": [
+          {
+            "joint": "head",
+            "polygonPx": [
+              [
+                890,
+                484
+              ],
+              [
+                922,
+                488
+              ],
+              [
+                950,
+                510
+              ],
+              [
+                970,
+                543
+              ],
+              [
+                984,
+                573
+              ],
+              [
+                953,
+                589
+              ],
+              [
+                914,
+                578
+              ],
+              [
+                885,
+                548
+              ]
+            ]
+          },
+          {
+            "joint": "jaw",
+            "polygonPx": [
+              [
+                945,
+                572
+              ],
+              [
+                980,
+                564
+              ],
+              [
+                1002,
+                584
+              ],
+              [
+                997,
+                606
+              ],
+              [
+                967,
+                611
+              ],
+              [
+                936,
+                600
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "anatomySha256": "6ec8063d2d47bedea5f3ac963c9eaac15d2625456a43d22b5c920d44b9f6779e",
+    "masterSha256": "374cb7bd83ddf7bdce51c28f8d9c72c084ac4949ec1aa67c57a3b7c6016e589e",
+    "subjectSha256": "e41f96ae87ddce1ef8d8ac5dac0cc47d36ce3f6f2ecd18390ca03a7e8e59e5a1",
+    "promptSha256": "a1544d56c46661f7a7f209532a362063acc0e5367d7fbf206e3ba240f9fa4cf9",
+    "packet": "audits/G2_C107_20260927/18-jackrabbit"
+  }
+]

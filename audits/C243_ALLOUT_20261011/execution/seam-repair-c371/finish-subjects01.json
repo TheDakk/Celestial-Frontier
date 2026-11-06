@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c243b01r2c3-15-camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Camel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b01r2c3-15-camel/report.json"
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Manatee/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-18-manatee/report.json"
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Pilot-Whale/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c1-24-pilot-whale/report.json"
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/River-Dolphin/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-32-river-dolphin/report.json"
+  }
+]

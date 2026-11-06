@@ -1,0 +1,13 @@
+# C465 cheapest real repairs — supplied execution spec
+
+The user authorizes one continuous coordinator-plus-CPU-workers run after peer C463–C465. Exact baseline is the156 HOLD rows of audits/C444_CODEX_20261018/w4-delivery/final/dispositions.json, with expanded exact diagnoses in w4-independent/final170/hold-witnesses.json. Peer C463 accepts the previous three READY (Moray Eel, Land Snail, Macaw): original170 now14priorACCEPT+156HOLD. Do not re-film accepts.
+
+Order: existing motion/rig fixes first, then materially revised best-of-four source generation for real anatomy/pose defects; list decision/new-template holds in one table with recommended defaults and evidence. Do not build a new template. Preserve failed attempts and current rulings; no unchanged retry or invented observed landmark. Natural far-side occlusion is valid source anatomy. Actual8% margin is canonical;650/275/flat background are prompt QA.
+
+Coordinator owns Git, mailbox, runtime paths, shared locks, all native/inference jobs and reservation. CPU workers own separate audit subdirectories only. No new branches/worktrees. Never edit the other worktree. One heavy job,42GiB before inference,30GiB running floor. C261 and independent actual full-size visual checkpoint before each AI finish; only W2_CLEAN may finish. Prove each class representative before propagation. READY packets select allfive current1024×576 stills plus exact source/fit/parts and review hashes; retained worst poses must also close.
+
+Game-code/game-imported-tool changes require explicit I5 disclosure for Claude. Any release-content.ts edit belongs inside CREATURE MOTION STUDIES, retains121bullets and changes GUIDE_DRAFT_BULLET_AUTHORITY in port/v2/tools/slicesmoke.mjs in the same signed commit. Run the develop profile before delivery on the final runtime inputs; preserve firstRED and never retry or rebind a seal to clear it. No certification here. Import C464 selector/ninepins unchanged.
+
+Read absolute peer mailbox atstart/everybatchend. Disk-report atstart/end, delete only own regenerable scratch first, preserve unique originals/evidence/history; endtarget60GiB. Signed wave deliveries while continuing, signed TERMINAL releases reservation at end with actualfreeGiB and no queued jobs. No push, PR, GitHub, certification, C223, develop/main, release or deploy. All-pairs HOLD.
+
+The user's ONE-run instruction and project sprint override supply the execution method and authority: no per-step approval stops. New-template/decision items are documented rather than built. Uncertainty about a candidate remains an evidenced HOLD while other work continues.

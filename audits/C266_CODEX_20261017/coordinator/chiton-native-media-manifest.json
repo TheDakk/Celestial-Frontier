@@ -1,0 +1,114 @@
+{
+  "status": "COMPLETE_WITH_EXPLICIT_HOLDS",
+  "nativeAttempts": 2,
+  "priorDryAttempt": "FAIL_NO_FILM",
+  "waterAttempt": "DIAGNOSTIC_PASS_W2_HOLD",
+  "files": [
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-01/native/report.json",
+      "bytes": 216195,
+      "sha256": "c0e22e7863fe8e22fb75528fbdb493b49e5943fb3626454653b052f8e8eca333"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn2-dodge-reaction-50.png",
+      "bytes": 1201272,
+      "sha256": "01ca0df4a3e355aa86e909186113a5a4fc4a23c36ce9fd47ede349b5746c3ddf"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/report.json",
+      "bytes": 356192,
+      "sha256": "aeebb3e78363f9815c058f06c4d0bba0b644429ebb1a0d4bf636c7b2886865f0"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn0-hit-return-end.png",
+      "bytes": 1178587,
+      "sha256": "d3f91530e57552ebbee83c9cf44fe752a4d80417c3374139b6efa882daaf3339"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-approach-50.png",
+      "bytes": 1190506,
+      "sha256": "52096135db0b5931c28c983180fa38ff24fc607d4a23ba9bb030ca3879af2beb"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn0-hit-approach-50.png",
+      "bytes": 1190506,
+      "sha256": "52096135db0b5931c28c983180fa38ff24fc607d4a23ba9bb030ca3879af2beb"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn1-hit-approach-50.png",
+      "bytes": 1193191,
+      "sha256": "2ebf1012046972445b7d56c13d4ecf5b6ee785a6ade3efbf50d151777985899f"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/battle-full.webm",
+      "bytes": 7234333,
+      "sha256": "b05a9f7e448ef449cef30b14d5d517c37228c949adedb7afcd4b41e1d19263f6"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-return-end.png",
+      "bytes": 1179713,
+      "sha256": "3e2e48a2a68638dbc55a55333cc1ec5ffed692802b7181e77cc16b58dd9d122f"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn1-hit-reaction-50.png",
+      "bytes": 1189180,
+      "sha256": "65df743ba24fee98b997e474857475553fb83e967d2d8c3d5b4974ed87534a6a"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn0-hit-reaction-50.png",
+      "bytes": 1203555,
+      "sha256": "7443c3baad32bad0d6ac6cf127ae00f97598c8e6b0cf32b97ea19f7969fdd3d8"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn2-dodge-return-end.png",
+      "bytes": 1178587,
+      "sha256": "d3f91530e57552ebbee83c9cf44fe752a4d80417c3374139b6efa882daaf3339"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-reaction-50.png",
+      "bytes": 1201686,
+      "sha256": "ff64d33c26c1ab3cd22f12d9dece3bbc84bcc6e9583411ef885fddfb64051163"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn1-hit-impact.png",
+      "bytes": 673259,
+      "sha256": "8cb5fac783c1525f5ab418c51b4202fe11cfc96c6391d938dec5ac200f620926"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn0-hit-impact.png",
+      "bytes": 680917,
+      "sha256": "9974a75dac3e72134d209a0efecd8837b141135bbba12132c3af29822f166aa8"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn1-hit-return-end.png",
+      "bytes": 1178951,
+      "sha256": "44f6c71d86e194171e33c49265df9a195243f13b01a4191e0f28830ecd6fd7bf"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn2-dodge-impact.png",
+      "bytes": 1198014,
+      "sha256": "9960405b8b543d6c493b43ba9129e715ed08256313de31afb9aa5d538d171a0a"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn2-dodge-approach-50.png",
+      "bytes": 1190506,
+      "sha256": "52096135db0b5931c28c983180fa38ff24fc607d4a23ba9bb030ca3879af2beb"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-impact.png",
+      "bytes": 680917,
+      "sha256": "9974a75dac3e72134d209a0efecd8837b141135bbba12132c3af29822f166aa8"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-idle-90.png",
+      "bytes": 1177730,
+      "sha256": "c659d67d4d36ca287405d1dc66f154cd6d7ed5f7e803deca700c5943f9523fd6"
+    },
+    {
+      "file": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/turn3-hit-idle-50.png",
+      "bytes": 1186307,
+      "sha256": "113ba61840301b380efc89768ac67ed12ba67cadbcc64087ec8e8d765b9bd241"
+    }
+  ],
+  "retention": "Five required water-context stills/reports are committed; all remaining original media locally retained and hashed."
+}

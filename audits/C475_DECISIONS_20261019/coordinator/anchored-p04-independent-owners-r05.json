@@ -1,0 +1,20 @@
+{
+  "stage": "anchored-p04-independent-owners-r05",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-approved-six-P04-independent-owners",
+    "--",
+    "node",
+    "audits/C475_DECISIONS_20261019/coordinator/run-independent-develop-owners.mjs",
+    "audits/C475_DECISIONS_20261019/coordinator/anchored-p04-independent-owners-result-r05.json"
+  ],
+  "startedUnix": 1792500610.764717,
+  "beforeGiB": 54.03776931762695,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 6.012,
+  "lowestGiB": 54.03775405883789,
+  "afterGiB": 54.03848648071289
+}

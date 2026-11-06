@@ -1,0 +1,190 @@
+{
+  "id": "20-frilled-lizard",
+  "name": "Frilled Lizard",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7383537e8a389ca9963f5131850847deedf3593d196983e89194af43bd2a2147",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 5341,
+    "coreRadius": 14,
+    "bodyBox": {
+      "x0": 257,
+      "y0": 171,
+      "x1": 311,
+      "y1": 226
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.018,
+        "pixels": 96,
+        "box": {
+          "x0": 265,
+          "y0": 166,
+          "x1": 290,
+          "y1": 170
+        },
+        "attach": {
+          "x": 277.5,
+          "y": 170,
+          "relX": 0.38,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": 0.12,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 13.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0127,
+        "pixels": 68,
+        "box": {
+          "x0": 294,
+          "y0": 173,
+          "x1": 313,
+          "y1": 182
+        },
+        "attach": {
+          "x": 304.1,
+          "y": 176.9,
+          "relX": 0.87,
+          "relY": 0.11
+        },
+        "dir": {
+          "x": 0.66,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 11.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0109,
+        "pixels": 58,
+        "box": {
+          "x0": 253,
+          "y0": 179,
+          "x1": 256,
+          "y1": 202
+        },
+        "attach": {
+          "x": 256,
+          "y": 190.5,
+          "relX": -0.02,
+          "relY": 0.35
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.14
+        },
+        "class": "rear",
+        "length": 11.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0099,
+        "pixels": 53,
+        "box": {
+          "x0": 312,
+          "y0": 190,
+          "x1": 314,
+          "y1": 214
+        },
+        "attach": {
+          "x": 312,
+          "y": 202,
+          "relX": 1.02,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": 0.8,
+          "y": 0.6
+        },
+        "class": "limb-down",
+        "length": 12.2
+      },
+      {
+        "k": 4,
+        "frac": 0.4076,
+        "pixels": 2177,
+        "box": {
+          "x0": 84,
+          "y0": 205,
+          "x1": 300,
+          "y1": 254
+        },
+        "attach": {
+          "x": 264,
+          "y": 222,
+          "relX": 0.13,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.12
+        },
+        "class": "rear",
+        "length": 182.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0056,
+        "pixels": 30,
+        "box": {
+          "x0": 295,
+          "y0": 224,
+          "x1": 305,
+          "y1": 227
+        },
+        "attach": {
+          "x": 300,
+          "y": 224,
+          "relX": 0.8,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.38,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 5.8
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 210,
+        "x1": 222,
+        "cx": 215.4
+      },
+      {
+        "x0": 270,
+        "x1": 285,
+        "cx": 276.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

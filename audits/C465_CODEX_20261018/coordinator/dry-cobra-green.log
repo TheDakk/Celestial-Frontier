@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac
+
+ ❯ audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts [ audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts ]
+Error: ENOENT: no such file or directory, open '~/Projects/celestial-frontier-openai-mac/audits/C274_ALL170_20261017/w1-references/.shadow/audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c1-19-boa/record.json'
+ ❯ read audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts:10:89
+      8|  * is the parts rig's own (createSkeletonPoseProgram + transformPoint …
+      9|  * (buildTimeline). Outcome, not code path: every committed serpent re…
+     10| const root=new URL('../../../../../../',import.meta.url),read=(p:strin…
+       |                                                                                         ^
+     11| const fixtures=read('port/v2/tools/creature-animation/test-fixtures/fa…
+     12| const RECORDS=['audits/C243_ALLOUT_20261011/execution/batch06/round2/a…
+ ❯ audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts:24:201
+ ❯ records audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts:24:191
+ ❯ audits/C274_ALL170_20261017/w1-references/.shadow/port/v2/apps/game/src/motion/serpent-victory.test.ts:36:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  25 passed (25)
+   Start at  22:53:26
+   Duration  615ms (transform 888ms, setup 0ms, import 841ms, tests 440ms, environment 0ms)
+

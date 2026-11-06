@@ -1,0 +1,13 @@
+{
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [],
+  "folded": [],
+  "representation": {
+    "schema": "cf.source-representation/v1",
+    "reviewSha256": "5d42d38dae665ed6c98b451d77d03254ace8074615de9de7af8bbb9bd5370fa1",
+    "compactTail": {
+      "terminal": "tail1"
+    }
+  }
+}

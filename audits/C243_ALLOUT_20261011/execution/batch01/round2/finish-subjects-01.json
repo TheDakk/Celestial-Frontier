@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c243b01r2c3-05-mole",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-05-mole/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c3-05-mole/report.json"
+  },
+  {
+    "id": "c243b01r2c1-13-yak",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-13-yak/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c1-13-yak/report.json"
+  },
+  {
+    "id": "c243b01r2c1-14-wild-horse",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-14-wild-horse/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c1-14-wild-horse/report.json"
+  },
+  {
+    "id": "c243b01r2c3-15-camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-15-camel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c3-15-camel/report.json"
+  }
+]

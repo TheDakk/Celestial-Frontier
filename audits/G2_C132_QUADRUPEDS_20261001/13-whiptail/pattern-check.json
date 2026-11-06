@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whiptail",
+  "masterSha256": "3a4fe01bce3688e8c71e412adad6f38e85fc5da126c079e519b04b0143a1c383",
+  "required": [
+    "pale stripes running the length of the back"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripes running the length of the back",
+      "status": "PRESENT",
+      "observed": "Full original: pale longitudinal back stripes over dark flanks, slender pointed snout and very long thin continuous tail. Four foot endpoints are visible; far forelimb is small and its proximal attachment is body-occluded. Toe counts remain unconfirmed. Natural elongated proportions and broad margins preserved."
+    }
+  ]
+}

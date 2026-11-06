@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Chamois",
+ "fitDir": "audits/ISLANDS_SWEEP3_20261009/g2c107-16-chamois/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9fc84523d41e182d75ed77d244426a5c80b529b2dcf0221f9ef61774b8b79e4f"
+}

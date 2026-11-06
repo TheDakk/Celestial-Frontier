@@ -1,0 +1,28 @@
+{
+  "name": "Chameleon",
+  "masterSha256": "0fd53c8caa597c8edc05cee3423e30482e065e0dae62cc3e50a94c9b8720ba2f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: laterally flattened deep body, high casque, turret eye, compact attached spiral tail and four separate zygodactyl-looking limbs. Feet are grasping paired digit bundles rather than ordinary lizard paws; exact digit grouping remains unconfirmed. Body/feet are drawn in an unsupported walking pose with no branch, so ground contact needs explicit authoring. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 365,
+      "y0": 471,
+      "x1": 889,
+      "y1": 784
+    },
+    "margins": {
+      "left": 365,
+      "right": 364,
+      "top": 471,
+      "bottom": 469
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

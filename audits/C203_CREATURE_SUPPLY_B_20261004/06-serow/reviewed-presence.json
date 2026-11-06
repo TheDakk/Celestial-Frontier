@@ -1,0 +1,129 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Serow",
+  "family": "quadruped",
+  "masterSha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+  "subjectSha256": "252f2b5ba1529597beb3ca71673ac06fd958da77b22151bf5589e30786bb0202",
+  "promptSha256": "a1b301cd0303fbac9303d4148b91f2767d869eacb0b43f53724b91f7d202491c",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Independently inspected full 1254-square original; retain all other anatomy and existing limits."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail2",
+      "visibility": "entire-root-to-tip",
+      "observation": "Full original reviewed: continuous natural tail visible from rump attachment to terminal fur tip; no crop or hidden terminal. Polygon boundaries are source observations, not transferred long-tail subdivisions.",
+      "landmarksPx": {
+        "tail0": [
+          349,
+          531
+        ],
+        "tail1": [
+          302,
+          627
+        ],
+        "tail2": [
+          263,
+          711
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              363,
+              502
+            ],
+            [
+              337,
+              524
+            ],
+            [
+              315,
+              573
+            ],
+            [
+              332,
+              587
+            ],
+            [
+              355,
+              550
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              315,
+              573
+            ],
+            [
+              294,
+              609
+            ],
+            [
+              276,
+              650
+            ],
+            [
+              299,
+              669
+            ],
+            [
+              321,
+              628
+            ],
+            [
+              332,
+              587
+            ]
+          ]
+        },
+        {
+          "joint": "tail2",
+          "polygonPx": [
+            [
+              276,
+              650
+            ],
+            [
+              254,
+              678
+            ],
+            [
+              243,
+              706
+            ],
+            [
+              253,
+              749
+            ],
+            [
+              273,
+              734
+            ],
+            [
+              295,
+              699
+            ],
+            [
+              299,
+              669
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "b01a37231c68c5814639510cfb84a9efc19c75d788e86aefdd86b93960b2ad38"
+}

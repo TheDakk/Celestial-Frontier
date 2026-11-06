@@ -1,0 +1,942 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "23d745017c0fa71d0d39d4a57aa68e6418c1bc5485f617ab904eca80e3eea9cb",
+      "bytes": 6226
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/PLAN.md",
+      "sha256": "cf6006194eba1338a978d412db13872779c75d1e60c81bb0d718112a41d2e6d8",
+      "bytes": 4227
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/c471-staged-exact-bytes.commit.log",
+      "sha256": "320faf8f839bc012cb483408f8ce8b10e019308b81ee030df3d247ed98f3f39f",
+      "bytes": 50412
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/checkpoint.json",
+      "sha256": "3281eb1a88d0820d65af13e9f2f3aeff18539a8d310b6a45f58e4eef8cf786bf",
+      "bytes": 998
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/subjects.json",
+      "sha256": "e909a85b18759a842a1a2fc156316196e94d0cab593e82f8e7cb9f0e434b4e3b",
+      "bytes": 234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-chiton-c2-r02.json",
+      "sha256": "adc11dd8b36d0bff89af1180b758d60c3d7eca0892e44c7d3034e4f99052c933",
+      "bytes": 521
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-chiton-c2-r02.log",
+      "sha256": "f8dc07e400b6e9d0e058044258f33c9acccfac5fdd5cd1b1bd86847496aeb7c2",
+      "bytes": 206
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-c/generation.json",
+      "sha256": "67a257e655f3420faafdea409040a6deb30dd5abb7e546d6018f35e14b7b3ca5",
+      "bytes": 1256
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-c/lease.json",
+      "sha256": "a125641e795015c85f4f5d75e32679abd2f87304017ad8e5cb9b8d672be16b13",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-c/master.png",
+      "sha256": "f4dee0cc29a3e96d1d8f6eb028ceddf1ab0ac689a0cac9d11c70e0dd2630359b",
+      "bytes": 1576177
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-d/generation.json",
+      "sha256": "44cb9f490dc0fef2ff2c4473ddc6886c64a5b90a073d015c3f6e1f1ce8483e17",
+      "bytes": 1253
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-d/lease.json",
+      "sha256": "2f18d871fdd901f400835f40f86e590c91990a28e745469f1b505a6d9be433d7",
+      "bytes": 292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-diving-beetle-d/master.png",
+      "sha256": "15a2cb9a4aa520cf2cf0943f0217962c255e0fb1de4050d1a3c7aca4e1897382",
+      "bytes": 1531308
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/c465-chiton-c2-r02.log",
+      "sha256": "9ce5d0bd2d21740175389a234d871748ffb57583a514f34117d9d9765f36dddb",
+      "bytes": 363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/finish-subjects.json",
+      "sha256": "e909a85b18759a842a1a2fc156316196e94d0cab593e82f8e7cb9f0e434b4e3b",
+      "bytes": 234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native-results.json",
+      "sha256": "05b9f82c66d35dbe99fa0771a92e42c63884eec889742e4b1aee29e6a9d46f42",
+      "bytes": 731
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/battle-full.webm",
+      "sha256": "1f9611e470bfe55cf9f315973441e5c876dfe1e5ea408c2c0c51471dcc5ea2f5",
+      "bytes": 7198620
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/report.json",
+      "sha256": "e5d6858637f86b60695f0f28476ed24bd231977162fadb037971b9a80dbaaa81",
+      "bytes": 356575
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn0-hit-approach-50.png",
+      "sha256": "c9bc3a62c69b6234348fac257408593643fb1b9f2393fa813ce60a84b62a8a63",
+      "bytes": 1191638
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn0-hit-impact.png",
+      "sha256": "dfb8d262cda1099667a7daaf7c73025916006e1ae7a4957af8753fe51956ed8c",
+      "bytes": 681132
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "aca5c33fb806729d6012aee7fa9bc0265edea1d11d6b112b6022460b5b88abe0",
+      "bytes": 1203707
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn0-hit-return-end.png",
+      "sha256": "9fdd41d98265351f332c713c8681205e598cccfb9870234c4e73f4a814703866",
+      "bytes": 1178589
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn1-hit-approach-50.png",
+      "sha256": "8aedd31b283e713a79f7b0e86e97bcf191554a57b6837cf0b4e77c5cfe30c119",
+      "bytes": 1194397
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn1-hit-impact.png",
+      "sha256": "30f57552d73ef64e11315603c62d072be6cdd9c517427352f679804109df4bdf",
+      "bytes": 673101
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "b47b2fbc09eb68cde2da09cf9f98243b7505106c7cbb09b204c47e289673094e",
+      "bytes": 1189867
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn1-hit-return-end.png",
+      "sha256": "88d773c5bd30432a65474d15ff907f78ce0f76edc2e42a275dd4f6d48c596f78",
+      "bytes": 1179004
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "c9bc3a62c69b6234348fac257408593643fb1b9f2393fa813ce60a84b62a8a63",
+      "bytes": 1191638
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn2-dodge-impact.png",
+      "sha256": "11c570c5bd99ff22c0fb47443c3cd938b13005ed3475cf70d1b1ef247678ca25",
+      "bytes": 1198198
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "b229e56942332d1dd32af2d37ddf3d48870485c34ead85aa200ef70d55289991",
+      "bytes": 1201417
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn2-dodge-return-end.png",
+      "sha256": "9fdd41d98265351f332c713c8681205e598cccfb9870234c4e73f4a814703866",
+      "bytes": 1178589
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-approach-50.png",
+      "sha256": "c9bc3a62c69b6234348fac257408593643fb1b9f2393fa813ce60a84b62a8a63",
+      "bytes": 1191638
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-idle-50.png",
+      "sha256": "6273a4d5f0c99f707ecb58daae3faed79394e3b74dc087e7a22dd570e38c1598",
+      "bytes": 1186552
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-idle-90.png",
+      "sha256": "ed58e340005372a1414cc1b5796f9d1c35a44aa645eb0a0618488f06ffb664f8",
+      "bytes": 1178729
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-impact.png",
+      "sha256": "dfb8d262cda1099667a7daaf7c73025916006e1ae7a4957af8753fe51956ed8c",
+      "bytes": 681132
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "2f9d8cda7510aad2964168d16f3a692122806f6de1a5dc5e2597e974382d899c",
+      "bytes": 1201683
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/native/turn3-hit-return-end.png",
+      "sha256": "b313f0c2f912da38d3b0813b946dada612ac6e94d01bf18ba949b3006d1a28d6",
+      "bytes": 1179863
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/chiton-c2-r02/plan.json",
+      "sha256": "82e5c070c73d07d3a631d37a3e97f399c713ddd1d174f1f4ed99ee78aff8a230",
+      "bytes": 679
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02.json",
+      "sha256": "c314e47d0321cedf560f9661d94323096495337659d648fb72f2f43598cef919",
+      "bytes": 891
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02.log",
+      "sha256": "570a84d309f5b088714ae4d368843440acb69c9bb3ae8284b15e49faaf657637",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/checker.log",
+      "sha256": "d2cd57bbd196b42a55ae47776d0b8d0b8ad69571a2788ec4a94dabbebc08d914",
+      "bytes": 1619
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/current-rows.json",
+      "sha256": "1459c6f9163a4fdd3c2ce42271ea0f26d95f706c91f0d0de77a3c655ede10dda",
+      "bytes": 1855
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/fragment-triage.json",
+      "sha256": "cabd66227197aaf6ed12162d8123ae0de51ea2d3f9f49004d5dbd3b399319b10",
+      "bytes": 175063
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/freeze.json",
+      "sha256": "e90da64392d4712b9703f1a3710b9c0a89fc3673ce8edc344dba9840969a86f1",
+      "bytes": 221287
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/roots.json",
+      "sha256": "6a31c0fc94c2dc94de9c6229cc7abeec3693e659929d1aa57995652f30c050cc",
+      "bytes": 13356
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-c2-r02/verification.json",
+      "sha256": "f18bd5f5f52ea5a463c8cdf9f66f8b535d647f4108583475434430046d8e1f6e",
+      "bytes": 2320
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C3-SCOPE-r01.md",
+      "sha256": "81b55a5e29a8ba56ed8f7bb26eced757d10a0b287ae36ffa609cb39d40678f8d",
+      "bytes": 13440
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C3-SCOPE-r02.md",
+      "sha256": "c710f696bf2bdb40bfd5c8ac8b20dc60c52fc0870675f928f72afd2d624eeb8f",
+      "bytes": 13556
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C3-scope-review-r01.json",
+      "sha256": "b258301f9e5c958a3f5368d60da09442e83f087f8942f8bb0edd260e0eadb27a",
+      "bytes": 247204
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/C3-scope-review-r02.json",
+      "sha256": "3553c10c82528b72474a67296f97280a7179b3928f065b9a733bfa25753d6fbe",
+      "bytes": 247715
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/blue-whale/physical-closure-c2-r01-r01.json",
+      "sha256": "9fab9b5635151289e2b30783f10254a84b379094db18597d5f7990d30a3edaa3",
+      "bytes": 1788
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/build-c3-scope-r01.py",
+      "sha256": "5f5b99c4f23fbf2b2cae1535f6f2f9f3b967bba2c2ada29ef504d8b48e98f200",
+      "bytes": 16612
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/cockatoo/physical-closure-c2-r01-r01.json",
+      "sha256": "1a088878e1e45ffb7c0ff20dfce0eafda271f171d4bae8702fbeb3895984fa53",
+      "bytes": 2015
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/physical-closure-r01-r01.json",
+      "sha256": "227774def7d3e8a08366faab62b28eb74453c033b968d98d28a21e88ac930049",
+      "bytes": 2080
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/grebe/source-role-addendum-r01.json",
+      "sha256": "e3a1689b7403abefadf7e05883675444b849495c70489df637f90314b3155f4f",
+      "bytes": 1953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/monkey/physical-closure-r01-r01.json",
+      "sha256": "ef1410036532e6d64c9090ddc7138c4e58ae5bd0c4009b4c9de42c59c3cdc3e9",
+      "bytes": 1696
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/moth/c3-explicit-key-correction-r01.json",
+      "sha256": "05fb81ca25ab7afb5a3138748c1fce79cf07287cf701bd107c573ebb17984d47",
+      "bytes": 957
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/olm/physical-closure-c2-r01-r01.json",
+      "sha256": "c820e1d97d2e253e44f9277360e0433e60f54821cae4ae1089fb8c86071bc603",
+      "bytes": 2276
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_idle_90_left-hind-4x.png",
+      "sha256": "aac7ac45b1fd6802da2770ebe6a67701416db8c88d462d5326c6a24d03d5754a",
+      "bytes": 51769
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/candidate-c2-r03-turn3_reaction_50_right-hind-4x.png",
+      "sha256": "43cf133fc373bb8546c6e2d74f5aac2409aa66b33ee00b1116ea1af74b8c4cdb",
+      "bytes": 51887
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/conservation-c2-r03.json",
+      "sha256": "9aba2fb19aded5d94191964687879d50a2547077156fe50aa21eb4ffdb880642",
+      "bytes": 6976
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/physical-closure-c2-r03-r01.json",
+      "sha256": "b6b480b87b6dd172f5b4802651a4fc5d1d0577f9592dbf6cf6ec3fdde683f258",
+      "bytes": 3224
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/physical-closure-c2-r02-r01.json",
+      "sha256": "652572759bd8f7a1a660e907d8fd2209eb853175b04f9129e669fa688d24f779",
+      "bytes": 1818
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/join-current-c261.py",
+      "sha256": "c7a8013fb1b524e718e1e44672cb0ff6caef77d0fc3602d3f9d0ad4e3f7de1f3",
+      "bytes": 2367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/checkpoint-final.json",
+      "sha256": "cfe87bb460bd8b5045adeea41f5d18de7442682555a61ccc036f8f843d22234e",
+      "bytes": 5218
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/checkpoint-freeze.json",
+      "sha256": "d5bbabba4ced6a31705e2c52684047f633304ae397d09942446fb9df9bf9029b",
+      "bytes": 1273
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/evidence.json",
+      "sha256": "bbc5a6a5750ca86edd04822e3121ee89bab54001bb2b8ed42592255ccebba756",
+      "bytes": 225946
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/foot-back-neutral.png",
+      "sha256": "3c4c547672b18a4c6e111c0957be58c44f2d13bbf7b33b3f62d433c619beb9eb",
+      "bytes": 53472
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/foot-front-neutral.png",
+      "sha256": "6162c5d790c9ca7c7441c29d02f50b6c46d19dc3341cce5797babdc6d893eef5",
+      "bytes": 40751
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/foot-mid-neutral.png",
+      "sha256": "e73af32d49a30aaa4702ca093b4ae326dab2e5a8088035a6dbb1e04c6a87da1c",
+      "bytes": 52936
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/foot-tail-neutral.png",
+      "sha256": "62cd9cb337ccbca03b932de268f023827eca9132be91d98bebd3604cceb17701",
+      "bytes": 61002
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/freeze.json",
+      "sha256": "f0cf4b063670239c08af3f70765da0aab901f44a873817dd050bb9a645dbe806",
+      "bytes": 4072
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/head-neutral.png",
+      "sha256": "d65effec79f1e38226eb7f72709fb28a3bccf946b1908aba8e9c82b2aa01f842",
+      "bytes": 18023
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/keyed-neutral.png",
+      "sha256": "49c5dd7ea79cb6d3dd3d72ed8bf64811d9cf2660bde4748524793d6e84d182dc",
+      "bytes": 584069
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/review-config.json",
+      "sha256": "43a356767a56beb69c3ac5d778d2cdaf0daa71ff0d4d77d04c4a666f5054f796",
+      "bytes": 2754
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/review.json",
+      "sha256": "d7dc5c5143039be9153d329b2970a8a45f7e98d42797d805fbd3e037cd0a4e62",
+      "bytes": 13651
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/review.md",
+      "sha256": "1f50327a17951a49de8596f4da69c214813f343635ca61be46963e72ea044211",
+      "bytes": 1387
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/shell-neutral.png",
+      "sha256": "a9a3880dd965d7e7ed5b84e79e473c0f9a7d9bd7ca93455c39ce4a6f5fd206e7",
+      "bytes": 333860
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/source-owner-conservation.json",
+      "sha256": "453b7cbae5cff8e63b75117a9110fd4f75073c7e8d0f740c27d093978674a519",
+      "bytes": 10798
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "dbc147496b75d7abe4fc770d1c56f5f73471c455809e08cd0ceafac485354182",
+      "bytes": 1407196
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "64511737f622954c76f17b48a2df81ee176b1fbf76024a7b936c5f7c9b01b270",
+      "bytes": 1416340
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "a4bbd62a4933c759a3356b50d5092066a17bbbe1df4bbfdddc5a0ce38e6236a7",
+      "bytes": 1395423
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "952bb67ddd33872bbf286fecbcb78070419018883296b4c398090772475fce60",
+      "bytes": 1385622
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/native-c2-r02/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "5c27c79f7363bc3d83644c98b3d64f88d313bc267a80eef982bd08af4cbcb875",
+      "bytes": 1419817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/prepare-evidence.mjs",
+      "sha256": "9f798ad325e90d28e88b2cb15fdd123ce0b86e260edc8e268c03ff5d320dd46d",
+      "bytes": 3657
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/verify-review.mjs",
+      "sha256": "edc41dc1612e2ff14492822269aecf7c5f3526ca535132a34f8d3ec1fff20427",
+      "bytes": 4783
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-keyed-neutral-2x.png",
+      "sha256": "6faac9fc464493fa27b7a5e79b6a6bed8dbae6de893b32862d8a9e571ee49f08",
+      "bytes": 96621
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-keyed-neutral-native.png",
+      "sha256": "ac3227abcbe07f7b43e87e41ef1bffb057908d0cb7dfa02ee1fa1ee8251fe2a6",
+      "bytes": 80298
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-original-2x.png",
+      "sha256": "216a65df96e99a6b2c6a8c4ab94b431534e100592f818fd3b74bab4829ad4476",
+      "bytes": 210568
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-original-native.png",
+      "sha256": "67832f11bd5cd967f880fb8c3da63f25f090e8cfcdfa40609868b267e879ed85",
+      "bytes": 170997
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "ba9f653a0c0afd993e3566caa8092fb3e6aa502872866b372a3fab733a38ff0c",
+      "bytes": 104498
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "10cfc7dfbf0083dc3b5a9f8ba36bcf0e4cb1056f1c0265c70afcbcf5492b0502",
+      "bytes": 87637
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-keyed-neutral-2x.png",
+      "sha256": "b030b1d075fdccdb07d6ed6357e745b9470b1164b120923da6358a58c2e63caa",
+      "bytes": 360490
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-keyed-neutral-native.png",
+      "sha256": "06b5b06d4ae2fd68c7883a0ba9f037585a118b4243df0665d8e6a615784a5e9f",
+      "bytes": 309289
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-original-2x.png",
+      "sha256": "3e0df6d20d7af9df36eca4a17d7d84a0e8d0442ba3f281a3d8cbed078d62a752",
+      "bytes": 576201
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-original-native.png",
+      "sha256": "283e60a37de5954be5f36a745912fe96bb66be2c88badda9c3c3055c4a1cda84",
+      "bytes": 489528
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-raw-classifier-neutral-2x.png",
+      "sha256": "14c6567aa857f11bdb1e0d937b4f5f3586fbc9fe30535a871b567f52e3e9ecc3",
+      "bytes": 388049
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/hind-oars-air-bubble-raw-classifier-neutral-native.png",
+      "sha256": "725db8ecf41be424bab8bfc63efa845b1bc4af64a892503005da4476237636f2",
+      "bytes": 336162
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/keyed-on-neutral.png",
+      "sha256": "e4d5f4039b2e34da7a8114d71a5112aaca36f2f5f25ff234436ad66fc29194ac",
+      "bytes": 644282
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/keyed-preview.png",
+      "sha256": "bf4d1882bedb5ac1a59efbe3c15d54333bb93721ea670e03031646c20bd30302",
+      "bytes": 1649397
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/numeric.json",
+      "sha256": "9cf6b581f8536a198c451e2a8b09cd7ef54cde439df08570c5831f0d28be5972",
+      "bytes": 34779
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/raw-classifier-on-neutral.png",
+      "sha256": "aa9a397a64acc98e1533691e042a068c4537f1585b34d557a944950000bc8bed",
+      "bytes": 687130
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-keyed-neutral-2x.png",
+      "sha256": "f2a837cf8da0aef4ec5a50dd59e24a06285878a35e62cbbb078ddb9edfe361cb",
+      "bytes": 232765
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-keyed-neutral-native.png",
+      "sha256": "4120866c827d43f2f497621da3cc77efa7e37aeb00e623d07c322a7619751b86",
+      "bytes": 198120
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-original-2x.png",
+      "sha256": "683f30debf14f1b3e9f91458da3b2aecdc00965ce459e5a79c579c717d956075",
+      "bytes": 393759
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-original-native.png",
+      "sha256": "a4760674023f10a63fed98305d3a651242839fabe3e3fcb38724f1800156bfde",
+      "bytes": 326017
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-raw-classifier-neutral-2x.png",
+      "sha256": "405b05156e139517b6b2b587008ad98a09c46e05138eab7a41dee47a5b223d55",
+      "bytes": 246074
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/walking-legs-raw-classifier-neutral-native.png",
+      "sha256": "dbc0c1a2ed7a877bd950e0e04f8eda1a70ff3a2db725a7fa407ce044252191f2",
+      "bytes": 210908
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-keyed-neutral-2x.png",
+      "sha256": "d4e9fa7c21cb097426d8435dbca706eda2065993372f838103c93e44cfb20358",
+      "bytes": 77267
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-keyed-neutral-native.png",
+      "sha256": "69e27a3e267ca1522bf83d38ce6bc392eaceb40fbd0ad79ec8d8f884c7862a4f",
+      "bytes": 62553
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-original-2x.png",
+      "sha256": "57d2204409a1a13dab0c31afd989a3f02ab5c577288b055048bfd535344efeae",
+      "bytes": 193402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-original-native.png",
+      "sha256": "5b5cc31afb31241260f7030363e0370caabff57ae7c38abc40b33f36d3a69978",
+      "bytes": 154324
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "6918d8588ba0ca373da958483381d016a6625b09d75f331e75d2edcc8004c0b6",
+      "bytes": 85113
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "7cca8d43b890a142cbb6378f3087a9211ca761a0bf7424cecb38ed6295ad4c55",
+      "bytes": 69970
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-keyed-neutral-2x.png",
+      "sha256": "6e8abdef110be9e8e8f90b2c53fd47cdf08f5e28d6bc27b4df9a1601764a422f",
+      "bytes": 346520
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-keyed-neutral-native.png",
+      "sha256": "57ef40a8bc7261ce03e08153c7208668364d8cfe260d55ad7c322a6726bb7062",
+      "bytes": 301048
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-original-2x.png",
+      "sha256": "d75a1c51b9021141195fd776d25d90dc40001b3357a86272c885ef2eb1d1a408",
+      "bytes": 557841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-original-native.png",
+      "sha256": "ff88cb1333560aa6d9b99f0d851c6f5a2a23567bd5620fe54c6477fa14369e2f",
+      "bytes": 476053
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-raw-classifier-neutral-2x.png",
+      "sha256": "04a5394b4ce77c67f88f335019d1a3539ef76de2de57cffa3278beccd9bcc179",
+      "bytes": 370229
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/hind-oars-air-bubble-raw-classifier-neutral-native.png",
+      "sha256": "e19ac317184960c7e236e8cbd0a986bc45034acc867f4689d7987da2d6e3374c",
+      "bytes": 323406
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/keyed-on-neutral.png",
+      "sha256": "3df0501d16beb2ff9c310f97edc41edc9a7b2a191e120603e1d0d8c1ef03c63e",
+      "bytes": 634542
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/keyed-preview.png",
+      "sha256": "bcbe572192be123721e36ab099f34d3707232630aae721284c80bcce49787af3",
+      "bytes": 1640864
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/numeric.json",
+      "sha256": "46b1a73865e33aa4de47c19a66a58d5fb2b143f1b6c79ca3e06ae5cfa76a3862",
+      "bytes": 33659
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/raw-classifier-on-neutral.png",
+      "sha256": "e8c90d7e12ea1aab0cc91d5c5035ba01c3546136373e933703bedb01adbbddfd",
+      "bytes": 673543
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-keyed-neutral-2x.png",
+      "sha256": "8930ee86226a90f2a7e57238e8d28b1729c676d71da07a41a8454e7b9dd48356",
+      "bytes": 229953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-keyed-neutral-native.png",
+      "sha256": "b1bc3cdc7abe3bcf673c21210eefb5451622d8d4709bbaf90f2852ae43247350",
+      "bytes": 197039
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-original-2x.png",
+      "sha256": "e30bfb2f9f37643258669befa9abf602460feb184eb9da3128e3944713153904",
+      "bytes": 407359
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-original-native.png",
+      "sha256": "c4b58429957bcd93dc96ae0d4e4a0b7dffce7883faa7c4c3c36999f91305ddc1",
+      "bytes": 340153
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-raw-classifier-neutral-2x.png",
+      "sha256": "d15888ad96413462493a8ed0288d2584c2f6373bcb9f510627c4b04cfd17b065",
+      "bytes": 247019
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/walking-legs-raw-classifier-neutral-native.png",
+      "sha256": "754580113ef21aeb45620eb00259da188c01954bd81b03497161432390348a02",
+      "bytes": 213203
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-keyed-neutral-2x.png",
+      "sha256": "506666029f19754ed5c1c39dfc5cc83563c6364c08b2f79f63b0f92ce5b04d3c",
+      "bytes": 101569
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-keyed-neutral-native.png",
+      "sha256": "d1028a64d96c9b294e81e81692df78e0eb7262c95e39a909c9c5908a0bc42ba4",
+      "bytes": 85726
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-original-2x.png",
+      "sha256": "e0f1fae76d05c5584328338681b4c490d17234b772add7dd1b58098140a7c6b7",
+      "bytes": 219122
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-original-native.png",
+      "sha256": "9c60b747f264af8cc5a9e92d294d1484102a4c368fe90c5c8df2acc0622c6f58",
+      "bytes": 178896
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "376dc14beeb331773014b87258d821cdd4e7b250bcd185e4de818af843e4903d",
+      "bytes": 110442
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "282665779a5593916a3995fcba33ede151628cb8c66acc28985177717b6792f8",
+      "bytes": 94322
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-keyed-neutral-2x.png",
+      "sha256": "d485f872100ab77f927be8d86e9f332853fd4e5db2604a2b0adf2009809a928a",
+      "bytes": 342729
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-keyed-neutral-native.png",
+      "sha256": "199cd8528b51bb6f8f5ca9b55e43241077fbe0382f46e8ef066f455726563b76",
+      "bytes": 301488
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-original-2x.png",
+      "sha256": "f37557f73f3d60d52a757b7ecedc1c4744dd5a830c1aa6b9dd1ee067346f8f04",
+      "bytes": 528546
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-original-native.png",
+      "sha256": "c4c6c087d8c36749c245ddd3f3193980a913e63d63bf14cf172666a35b13c24d",
+      "bytes": 449539
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-raw-classifier-neutral-2x.png",
+      "sha256": "e8c20281bfa118469b773d2fb10c43c48ea0b2038302bf46bc33f7605545543f",
+      "bytes": 357834
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/hind-oars-air-bubble-raw-classifier-neutral-native.png",
+      "sha256": "060aece066b9a602c2553489a8d3c503a4723e9c23c73034831fd1fd4441a8a1",
+      "bytes": 315668
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/keyed-on-neutral.png",
+      "sha256": "801c80d4d3ae1411820476ab1df88f8506f353561f21ee9fe0cf3ad2ade5d329",
+      "bytes": 630994
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/keyed-preview.png",
+      "sha256": "0fc372787f77ec3188764b474b59b948efbee05f0070b9d12b8ffdc8ae9540f8",
+      "bytes": 1613194
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/numeric.json",
+      "sha256": "61e40b8a0efeb9c256c2c0e25d753488e29038bd4a6bf3408f6ec8f63a2d6a37",
+      "bytes": 31928
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/raw-classifier-on-neutral.png",
+      "sha256": "36550b833d3c06a66d75f3e6ef89cd80f7b6d0af74f37da86285c090cc3b164e",
+      "bytes": 662633
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-keyed-neutral-2x.png",
+      "sha256": "fea361c6f84ab718ea324b070a90e41ba116f0c49f133a8c79c28865fb0c7a24",
+      "bytes": 220711
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-keyed-neutral-native.png",
+      "sha256": "386f67dda99f0df4ce0bc41271861f5ee5cc58b7f7250ac07db6cdf7b6cff38c",
+      "bytes": 191877
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-original-2x.png",
+      "sha256": "85d869b2fcdbad1ae5500ea1d1ec86a1bad9dd269d57625338ccd4722b83e6e5",
+      "bytes": 385813
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-original-native.png",
+      "sha256": "c35c516943b755a649292f9d9a9512a15e9f468154c4cbc637103afeec52d64a",
+      "bytes": 322539
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-raw-classifier-neutral-2x.png",
+      "sha256": "04e60de6a84bd0f8fbc45efd7a0b04f3f2b05263b9f97cc3985c261dc8560475",
+      "bytes": 234174
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/walking-legs-raw-classifier-neutral-native.png",
+      "sha256": "5239d8ba1151ba11d131a1ea5d772a94cc1c93a727da3d32e9e176793e5bd3ce",
+      "bytes": 204381
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-keyed-neutral-2x.png",
+      "sha256": "f0b301e7fa7d720f997fd87e08e53d8684d61312a1aa4c93577ed0eb4efe516b",
+      "bytes": 108003
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-keyed-neutral-native.png",
+      "sha256": "811a85478e25c15f36497c72ee6550a3abddb35866e097e31ab44a7eead9e1e8",
+      "bytes": 90878
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-original-2x.png",
+      "sha256": "39d0e9e8949b77d49a60a8d30b403371efed529d001498f237ded7d4ad27b98a",
+      "bytes": 218565
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-original-native.png",
+      "sha256": "b1f0cc4f4a6f91df27537b518408fe21649fa137aecae5acd571a4d84ead10e1",
+      "bytes": 177913
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-raw-classifier-neutral-2x.png",
+      "sha256": "b69fccb1e10dad4e64cd325667b786b7e9b5c07eab36972f50c1fd8c75c486ef",
+      "bytes": 115706
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/head-antennae-raw-classifier-neutral-native.png",
+      "sha256": "11642dee1b8047466ae646fc7208e4cee9391dfb267993187148cba61e59c54b",
+      "bytes": 98014
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-keyed-neutral-2x.png",
+      "sha256": "3f2e87cfa1f7fdae780aed4eb81e2bdbde17cc6369d0e09fe58ea7dda09d58e0",
+      "bytes": 329030
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-keyed-neutral-native.png",
+      "sha256": "6286aac232361d155b15aee2753950dc723bc063ca13797da85d69d14379a1f9",
+      "bytes": 283284
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-original-2x.png",
+      "sha256": "6ed652c22fe3402392820523927a7c7df809ed4cc803ad410904f19499c8e321",
+      "bytes": 524874
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-original-native.png",
+      "sha256": "87a5aaa0f1f2bdebb941f6fc34029399d4a365274909ac9dac7ed9528c2738c2",
+      "bytes": 440570
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-raw-classifier-neutral-2x.png",
+      "sha256": "fa6f6bda2a14c7ad7bf7376f1ec421677b4cbe1b751c8ff45347cdb2fcaa7e28",
+      "bytes": 348134
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/hind-oars-air-bubble-raw-classifier-neutral-native.png",
+      "sha256": "4ee902efa85a9dbb4d406bf714af224159d8c525fd3b9ef392eaee73d1b4832d",
+      "bytes": 300967
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/keyed-on-neutral.png",
+      "sha256": "75dcbdc83fc51b4aa12601826775341af394e1226fc99979d4f1372617d2feef",
+      "bytes": 606119
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/keyed-preview.png",
+      "sha256": "86416628bfd7bb8aed8f0873d03b553f51d59398cbfe43f33b020c44052c3a85",
+      "bytes": 1593393
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/numeric.json",
+      "sha256": "f2cc84ce4abca60d85a462b6847e4fe8159b8e8afbb9c7572e3ba3cbe48505e0",
+      "bytes": 31379
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/raw-classifier-on-neutral.png",
+      "sha256": "a81bd660bf5f9441b3b8bb71da38f035ce96d3ebdbff786a862c006582240e42",
+      "bytes": 639529
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-keyed-neutral-2x.png",
+      "sha256": "6f5b74c5e928996c17ee45d1874be12525fc3c4bb358ec245706974131427f4d",
+      "bytes": 253542
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-keyed-neutral-native.png",
+      "sha256": "ca0492c8864ab8c8234fc2fb188ce8baee94beca770f93694b61051b21b762c8",
+      "bytes": 216241
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-original-2x.png",
+      "sha256": "966b1f717ea9b2f82483326c2a15af9e098945a925c28bfcc8793d50285c8559",
+      "bytes": 406673
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-original-native.png",
+      "sha256": "01e9a075016e51fa81f841d4c456e177646c30058699814420916e8c48d6bbb9",
+      "bytes": 337164
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-raw-classifier-neutral-2x.png",
+      "sha256": "160bcda7a4728b4eb0afc5f48e99be9c211c7ce174f1854510c6543601f5ef2c",
+      "bytes": 265756
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/walking-legs-raw-classifier-neutral-native.png",
+      "sha256": "e769a277ad1cb75327cf8bbba46518844fa1ad2a63b518764e9a281e07cff0c3",
+      "bytes": 227763
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-a/observations.json",
+      "sha256": "83c044013ef74ac389abbcb5394dddde509adaecb70c7c4f9216898bf81dbf0d",
+      "bytes": 28215
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-b/observations.json",
+      "sha256": "e225c7cf5ac20a4d610ffe2cf3ac8797dc26970270824a94e58e370e5a92ec0e",
+      "bytes": 34341
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-c/observations.json",
+      "sha256": "4d0c72551c6c0190e1c27403dc2d0bd5e6d5f0178688ebaf5b6a56146741e727",
+      "bytes": 30361
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-vent-shrimp-d/observations.json",
+      "sha256": "4723b4cb4c81182df2b8fac930c8a3556eacc1d07e6f492cb8321f78d114aaf7",
+      "bytes": 34867
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/critical-boxes-diving-beetle.json",
+      "sha256": "9ad99455f923441b6e949b7ab07fec6c0bdb0cfaf68150e0a5ace94a3bc336e9",
+      "bytes": 160
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/finalize-vent-shrimp-review.mjs",
+      "sha256": "f685845d1711b19a3f860d3c65587d8c6b5f6fe979db4d8164f29d9f4cebac52",
+      "bytes": 6674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/vent-shrimp/review.json",
+      "sha256": "1476ea29276eb762f562dbef558ac2294d08102ca54c561c4145eac42de6bb5a",
+      "bytes": 8462
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/vent-shrimp/verification.json",
+      "sha256": "dd0e40886a57f4f8c66fbb6fbe61b9876263da66b198c3f670555fba1f4c5e35",
+      "bytes": 493
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave06-chiton-checkpoint/README.md",
+      "sha256": "d18124c82f9abb49e463d661246a8e1517e64ef250ff6cbb597c714e743da027",
+      "bytes": 2025
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave06-chiton-checkpoint/manifest.json",
+      "sha256": "0254484364fdbf1646ed3c3b9f547369d16845c1798bdf0a515ef5a7276d5858",
+      "bytes": 879404
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "5a49718c7b384b3aafed8132dccd71ef19238690d86f64bbd1ae6927cc594bed",
+      "bytes": 556559
+    }
+  ],
+  "files": 187,
+  "remoteOperations": false
+}

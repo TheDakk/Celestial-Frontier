@@ -1,0 +1,2596 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "weather.mild",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.mild"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ambience-weather/weather.mild.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.mild.opus",
+      "opusSha256": "995c8343f0455b7989fa894116f5de50618a69471110a981ca1faffdc9fb6b0c",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.mild.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.dry-heat",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.dry-heat"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17,
+      "master": "masters/ambience-weather/weather.dry-heat.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.dry-heat.opus",
+      "opusSha256": "8616ffdef64fcb52ead34fba2a73ffc4a53fb52c644de53475794c044fbb881c",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.dry-heat.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.humid",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.humid"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 34,
+      "master": "masters/ambience-weather/weather.humid.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.humid.opus",
+      "opusSha256": "18339184cf15d4ebfab56f580beb58e7d97a0336bfefcef1b4cbb130c40b7958",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.humid.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.mist",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.mist"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 51,
+      "master": "masters/ambience-weather/weather.mist.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.mist.opus",
+      "opusSha256": "d8ab80045ca075bf3766782ecbee0011fc6bb9ff8db7de798975667bdcdeebf3",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.mist.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.wind-cold",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.wind-cold"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 68,
+      "master": "masters/ambience-weather/weather.wind-cold.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.wind-cold.opus",
+      "opusSha256": "93df5c58ad726c10ef1421b5a3e7973f84afc8aaf6d3a680c561d21c8329bc3e",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.wind-cold.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.still",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.still"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 85,
+      "master": "masters/ambience-weather/weather.still.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.still.opus",
+      "opusSha256": "31bc3ad9f61755ad89bd272c25bb9f09883bba448ede48ed2a9e78ca10050bb1",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.still.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.wind",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.wind"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 102,
+      "master": "masters/ambience-weather/weather.wind.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.wind.opus",
+      "opusSha256": "0fad5ae9f2584fd815f81f7b92cd07c268a3479b0c824e95f55cd7db8f189025",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.swell",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.swell"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 119,
+      "master": "masters/ambience-weather/weather.swell.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/weather.swell.opus",
+      "opusSha256": "378bc93e424af04c478edc85028bcd14430ae62c41cfc8f41aec77178bdd0f70",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.swell.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "weather.trade-wind",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.trade-wind"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 136,
+      "master": "masters/ambience-weather/weather.trade-wind.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.trade-wind.opus",
+      "opusSha256": "f40e9cf846d3b860175fa100c95462714c67e96c1bce6731096ce156f7a6025b",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.trade-wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.calm",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.calm"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 153,
+      "master": "masters/ambience-weather/weather.calm.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/weather.calm.opus",
+      "opusSha256": "acb3a066f3aa07693647891fd256b4b102a1fc1d964f960c7bff5c504d24dfab",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.calm.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "weather.squall",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/e5d88deaa66591b4-yell-Thunderandbirds140704.mp3",
+          "sha256": "e5d88deaa66591b41a7f0b7a0f6c84d0f688375227767db316906eff0b646032",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 172.99
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.squall"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 170,
+      "master": "masters/ambience-weather/weather.squall.wav",
+      "masterSha256": "aa31ac289889425a2b17df8a0288fc88113553a98126c54a1567142d67c6aa9e",
+      "opus": "masters/ambience-weather/weather.squall.opus",
+      "opusSha256": "f6fafdf3157424abab7e35cf19b7e669fde9a1cdbf4868dafa6e1aa3c4b8634c",
+      "previewSha256": "e0f1259fbd0ca8ef64b8ac2937c0b846efeb44773a87a92c3a3e652071d10cad",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.squall.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "weather.lightless",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.lightless"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 187,
+      "master": "masters/ambience-weather/weather.lightless.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.lightless.opus",
+      "opusSha256": "837b7482f187adea1bebd15623655afc469e4a5cc2c65b4030eb57a929d23ee7",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.lightless.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.glow-calm",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.glow-calm"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 204,
+      "master": "masters/ambience-weather/weather.glow-calm.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/weather.glow-calm.opus",
+      "opusSha256": "ae6849b75baed38d02a3cd625a5cb5f6326f158c4c615ed633480ad4c7e678d7",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.glow-calm.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "weather.steam-cold",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.steam-cold"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 221,
+      "master": "masters/ambience-weather/weather.steam-cold.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.steam-cold.opus",
+      "opusSha256": "9b3e1153f762d6f56e33ec0202e4852ff740aa65842a01458194c92459d52487",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.steam-cold.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.still-cold",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.still-cold"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 238,
+      "master": "masters/ambience-weather/weather.still-cold.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.still-cold.opus",
+      "opusSha256": "2a9ed6db0c48ba329646b888fd8087d1069f356c643e09935491a64c5e1ea0b0",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.still-cold.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.dry",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.dry"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 255,
+      "master": "masters/ambience-weather/weather.dry.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.dry.opus",
+      "opusSha256": "44c316b30a1c7b8d50eb82ce14e3c0701e19675926d6f851716e04ffd12b0491",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.dry.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.mirage-heat",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.mirage-heat"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 272,
+      "master": "masters/ambience-weather/weather.mirage-heat.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.mirage-heat.opus",
+      "opusSha256": "1181db261871d12eda805b5c2e8a462ef0dd9d88d694069dd3f11a640103fb88",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.mirage-heat.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.sulfur-storm",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/e5d88deaa66591b4-yell-Thunderandbirds140704.mp3",
+          "sha256": "e5d88deaa66591b41a7f0b7a0f6c84d0f688375227767db316906eff0b646032",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 172.99
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.sulfur-storm"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 289,
+      "master": "masters/ambience-weather/weather.sulfur-storm.wav",
+      "masterSha256": "aa31ac289889425a2b17df8a0288fc88113553a98126c54a1567142d67c6aa9e",
+      "opus": "masters/ambience-weather/weather.sulfur-storm.opus",
+      "opusSha256": "4320b18c22b9169397c0f8eddca35001dd76743f4a770e6416f94b54c43fac04",
+      "previewSha256": "e0f1259fbd0ca8ef64b8ac2937c0b846efeb44773a87a92c3a3e652071d10cad",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.sulfur-storm.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "weather.acid-haze",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.acid-haze"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 306,
+      "master": "masters/ambience-weather/weather.acid-haze.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.acid-haze.opus",
+      "opusSha256": "badbce9c33a57cc83572254fe79258b22e4446f6e8b295a6bbd45e05ebb7b0fd",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.acid-haze.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.greenhouse",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.greenhouse"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 323,
+      "master": "masters/ambience-weather/weather.greenhouse.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.greenhouse.opus",
+      "opusSha256": "788347cc27328aa6600a9364e1bffc3921f33a1c8470e49b72531b2dea268991",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.greenhouse.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.ash",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.ash"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 340,
+      "master": "masters/ambience-weather/weather.ash.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.ash.opus",
+      "opusSha256": "985f6fe4cc34e35f77f7296ed8686f4cf5fa3620e965cad5ab793df71f0ca766",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.ash.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.ember-wind",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.ember-wind"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 357,
+      "master": "masters/ambience-weather/weather.ember-wind.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.ember-wind.opus",
+      "opusSha256": "f371eda7b2712883d04f73646c2e0195168e903832dc3cf17030baf8165816dc",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.ember-wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.still-heat",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.still-heat"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 374,
+      "master": "masters/ambience-weather/weather.still-heat.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.still-heat.opus",
+      "opusSha256": "40213dfedabf1831464633b52d20be167fc827f3bfcdf81db4984def7e5c8169",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.still-heat.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.heat-shimmer",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.heat-shimmer"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 391,
+      "master": "masters/ambience-weather/weather.heat-shimmer.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.heat-shimmer.opus",
+      "opusSha256": "c2917db65221260bc316a045eaa0ea1551a3d90f34682a8d2a7873d34b026595",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.heat-shimmer.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "weather.band-wind",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.band-wind"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 408,
+      "master": "masters/ambience-weather/weather.band-wind.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.band-wind.opus",
+      "opusSha256": "148bdc900bc69b68f78e60d3eb810c82d17d07d852b31ca288b7c6b9a3c3125d",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.band-wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.pastel-cloud",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.pastel-cloud"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 425,
+      "master": "masters/ambience-weather/weather.pastel-cloud.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/weather.pastel-cloud.opus",
+      "opusSha256": "b6b163e076133c976b30d76e1210e0232dc1d3fa19d890219f5d23bb30188e17",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.pastel-cloud.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "weather.cyclone",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/e5d88deaa66591b4-yell-Thunderandbirds140704.mp3",
+          "sha256": "e5d88deaa66591b41a7f0b7a0f6c84d0f688375227767db316906eff0b646032",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 172.99
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.cyclone"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 442,
+      "master": "masters/ambience-weather/weather.cyclone.wav",
+      "masterSha256": "aa31ac289889425a2b17df8a0288fc88113553a98126c54a1567142d67c6aa9e",
+      "opus": "masters/ambience-weather/weather.cyclone.opus",
+      "opusSha256": "aa6b46085e757ac440a9c82d181547f58c5a4c4b5948049e99d06cb58d56b15f",
+      "previewSha256": "e0f1259fbd0ca8ef64b8ac2937c0b846efeb44773a87a92c3a3e652071d10cad",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.cyclone.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "weather.ember-cloud",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "weather.ember-cloud"
+      ],
+      "notes": "Finite design candidate, not a verified recording of alien weather. Atmospheric/card filtering and loop listening pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 459,
+      "master": "masters/ambience-weather/weather.ember-cloud.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/weather.ember-cloud.opus",
+      "opusSha256": "acfc95c6babbef302c6fbd2ebcc203db40f32e2e0f0c94d9f245f1f0de4a2f33",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/weather.ember-cloud.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.temperate",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.temperate"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 476,
+      "master": "masters/ambience-weather/biome.temperate.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.temperate.opus",
+      "opusSha256": "eee16d9cb47d720e4cfdd2257b40583bf70e1ef1a449cbd0805d679fc5102a85",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.temperate.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.savanna",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.savanna"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 493,
+      "master": "masters/ambience-weather/biome.savanna.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.savanna.opus",
+      "opusSha256": "0744ec548baf769a0c5d0970ab7fb6234559483e2f2c039809d9d32f4b6de66d",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.savanna.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.jungle",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.jungle"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 510,
+      "master": "masters/ambience-weather/biome.jungle.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.jungle.opus",
+      "opusSha256": "9ef2a41375e213f55a0d49cc284a55ac59a81aec50776d42e2255e2a69ed059b",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.jungle.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.marsh",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.marsh"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 527,
+      "master": "masters/ambience-weather/biome.marsh.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.marsh.opus",
+      "opusSha256": "f51208e003ccbc8620cc476b984bc51bd6b9fdb2f76ffb49af3b29be746c693c",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.marsh.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.swamp",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.swamp"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 544,
+      "master": "masters/ambience-weather/biome.swamp.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.swamp.opus",
+      "opusSha256": "5101e877fee14c2ab3db7fd7cd81a2adf5b91764a7e8e33e1770dd7f08a28b06",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.swamp.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.mangrove",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.mangrove"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 561,
+      "master": "masters/ambience-weather/biome.mangrove.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.mangrove.opus",
+      "opusSha256": "101568e5432542f86899feaaa9cbf88b78465b89ba0fb333b14594b718f62720",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.mangrove.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.tundra",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.tundra"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 578,
+      "master": "masters/ambience-weather/biome.tundra.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.tundra.opus",
+      "opusSha256": "f7aeae0ae7a4d27b0a5cf9e652e77cc3955b85bf82352e8b2f97f0ae3ec6e03c",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.tundra.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.karst",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.karst"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 595,
+      "master": "masters/ambience-weather/biome.karst.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.karst.opus",
+      "opusSha256": "ae0f541e402e0c8b4415833b989d3624d4ec7076595b4de4636c66f2e3d90c6f",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.karst.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.saltflat",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.saltflat"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 612,
+      "master": "masters/ambience-weather/biome.saltflat.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.saltflat.opus",
+      "opusSha256": "d9fe435019ccdd2b98c8852c1e3a3b21f5d8c097c4161f5331cfbf2cd3318d8f",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.saltflat.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.fungal",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.fungal"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 629,
+      "master": "masters/ambience-weather/biome.fungal.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.fungal.opus",
+      "opusSha256": "1ef73a127d579bbc784446c6e426fda6f39fd0ad5734b78daec28e063a78845c",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.fungal.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.crystalsteppe",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.crystalsteppe"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 646,
+      "master": "masters/ambience-weather/biome.crystalsteppe.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.crystalsteppe.opus",
+      "opusSha256": "47a29c51b4b6642242828e3a85888a66de21aeab1a560946bfb999776b8037f4",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.crystalsteppe.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.opensea",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.opensea"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 663,
+      "master": "masters/ambience-weather/biome.opensea.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.opensea.opus",
+      "opusSha256": "bc23c725924a89244303e277db92601494f563f09e9ed187d89fdc4d9fe18c1a",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.opensea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.archipelago",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.archipelago"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 680,
+      "master": "masters/ambience-weather/biome.archipelago.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.archipelago.opus",
+      "opusSha256": "7085f45dfd95c745b5626352446d80560f6292cff31c678e91e1b1f0e604e4dc",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.archipelago.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.coral",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.coral"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 697,
+      "master": "masters/ambience-weather/biome.coral.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.coral.opus",
+      "opusSha256": "20178b5dda8df3f0b9534bee618915cf0fd7672ba891daa7af32ebd152719aaf",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.coral.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.stormsea",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.stormsea"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 714,
+      "master": "masters/ambience-weather/biome.stormsea.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.stormsea.opus",
+      "opusSha256": "8b016e067803cd46d4bb884e37b843e5186fb2e4ee74bd1e3792a5f9317c1aba",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.stormsea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.volcisle",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.volcisle"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 731,
+      "master": "masters/ambience-weather/biome.volcisle.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.volcisle.opus",
+      "opusSha256": "fafe4f87a4c00ae94b0be27cdc78b9288c30c258c460ae11cb67e66ebd089be4",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.volcisle.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.abyssal",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.abyssal"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 748,
+      "master": "masters/ambience-weather/biome.abyssal.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.abyssal.opus",
+      "opusSha256": "f0b8f1d2c8458e05719b649145a86b1773e057a0b2df64c13d77838230148e3b",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.abyssal.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.milksea",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.milksea"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 765,
+      "master": "masters/ambience-weather/biome.milksea.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.milksea.opus",
+      "opusSha256": "7b19c766769e3636c84de78a9dccc48330b3ecde822f91201efdd8f93b314e60",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.milksea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.glacier",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.glacier"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 782,
+      "master": "masters/ambience-weather/biome.glacier.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.glacier.opus",
+      "opusSha256": "7db8c0eea37b56c366fbd370e6f21d7ef190d16929e6742bd1a328a2a9b969b7",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.glacier.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.packice",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.packice"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 799,
+      "master": "masters/ambience-weather/biome.packice.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.packice.opus",
+      "opusSha256": "6e09fb9f0a729cbaab22e1387e822b422761740d38e91d91ab0ee0de18359fe9",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.packice.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.cryogeyser",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.cryogeyser"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 816,
+      "master": "masters/ambience-weather/biome.cryogeyser.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.cryogeyser.opus",
+      "opusSha256": "97135bd8655c3823ef7c2c2a48e51073ea9478b1afd8c79d0b5d4b5ad76b67b3",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.cryogeyser.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.blueice",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.blueice"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 833,
+      "master": "masters/ambience-weather/biome.blueice.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.blueice.opus",
+      "opusSha256": "0196d7a2a91fc2000a9315651731431d0d5f031f5d8293714f02c8cf2719db46",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.blueice.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.dunesea",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.dunesea"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 850,
+      "master": "masters/ambience-weather/biome.dunesea.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.dunesea.opus",
+      "opusSha256": "f06955d928a3f89ff29aad74280bc560f58a5089f7d7f523b2bd43bedfe6a0e8",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.dunesea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.canyon",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.canyon"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 867,
+      "master": "masters/ambience-weather/biome.canyon.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.canyon.opus",
+      "opusSha256": "7341783a830375db386f04b40ed4d9bc20296c94bc78e6162df3ea45cd34ed95",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.canyon.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.saltpan",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.saltpan"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 884,
+      "master": "masters/ambience-weather/biome.saltpan.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.saltpan.opus",
+      "opusSha256": "a6622462fa24a807dd9ac30ace081fe52d400282cb0a1636e6b5326be287306c",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.saltpan.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.oxide",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.oxide"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 901,
+      "master": "masters/ambience-weather/biome.oxide.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.oxide.opus",
+      "opusSha256": "299775aee31bfbfa94ccc260be8f78654523b56b866f5cf69ad688d9fdbc97bc",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.oxide.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.glass",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.glass"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 918,
+      "master": "masters/ambience-weather/biome.glass.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.glass.opus",
+      "opusSha256": "c9d89b690c412af708a3caa90ef7dca64e9aac7d28300ed0bbbda99f3c781fcb",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.glass.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.boulder",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.boulder"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 935,
+      "master": "masters/ambience-weather/biome.boulder.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.boulder.opus",
+      "opusSha256": "206608890df6ccebfd90efcaec8d5c6774f24906428f098231e3543d33f219a7",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.boulder.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.graben",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.graben"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 952,
+      "master": "masters/ambience-weather/biome.graben.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.graben.opus",
+      "opusSha256": "678d4480b889078ffc308443f35148d4b05a7260a23223192f308d72d03d0661",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.graben.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.geode",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.geode"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 969,
+      "master": "masters/ambience-weather/biome.geode.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.geode.opus",
+      "opusSha256": "77dccd2c869a91ae012649ce2321b266eb87cd0a38f74d1ffd9603fbb48ef2e5",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.geode.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.carbon",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.carbon"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 986,
+      "master": "masters/ambience-weather/biome.carbon.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.carbon.opus",
+      "opusSha256": "ef3cccb37ba2255bcd99275b1c34e9c461ce6afcdbd157d16bac54bd9d567590",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.carbon.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.sulfurdeck",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.sulfurdeck"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1003,
+      "master": "masters/ambience-weather/biome.sulfurdeck.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.sulfurdeck.opus",
+      "opusSha256": "4c0e09f24d13e28149fcc3ff262a182a1d72b30aaa4abfdf22998284077f0817",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.sulfurdeck.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.acidhaze",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.acidhaze"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1020,
+      "master": "masters/ambience-weather/biome.acidhaze.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.acidhaze.opus",
+      "opusSha256": "0125b8196e26e5f50dd61b900af5c7ee3078d4c3ef8325ef175e7dfec7e70df5",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.acidhaze.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.abyssgreen",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.abyssgreen"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1037,
+      "master": "masters/ambience-weather/biome.abyssgreen.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.abyssgreen.opus",
+      "opusSha256": "5f7f56ca37ab35ff428b7a75b7a0b00c22640a3213277e9904cc926c6b3f9d07",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.abyssgreen.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.ashwaste",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.ashwaste"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1054,
+      "master": "masters/ambience-weather/biome.ashwaste.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.ashwaste.opus",
+      "opusSha256": "563c493993dad9fc8365a078afee146f4f29291c2c4ab5878f903b4ae2bf1e2b",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.ashwaste.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.emberfield",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.emberfield"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1071,
+      "master": "masters/ambience-weather/biome.emberfield.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.emberfield.opus",
+      "opusSha256": "ffd214eddef25db334007c7c19be7f690b87484b6461eb8b97f39eb85247609c",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.emberfield.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    },
+    {
+      "id": "biome.obsidian",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.obsidian"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1088,
+      "master": "masters/ambience-weather/biome.obsidian.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.obsidian.opus",
+      "opusSha256": "f5ef24f1fbb5ebe18c137b103ea5a9ea1e91a2927c1fb790ec310dcef9cd4683",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.obsidian.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.magmasea",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.magmasea"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1105,
+      "master": "masters/ambience-weather/biome.magmasea.wav",
+      "masterSha256": "c5379439708af96ac303aca2e7d0d9bf259b0a1b13cfc4d7610130018b1b40e4",
+      "opus": "masters/ambience-weather/biome.magmasea.opus",
+      "opusSha256": "974361a61422bd10ebc891a8e77b21819e2532fbb71ffaa13d1b267e69f82b02",
+      "previewSha256": "1e658730ef4b00b135e1e115fa0b87ba6cf9359881ae6900b8ac080f92175a60",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.magmasea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.3,
+      "opusDbTP": -5.2
+    },
+    {
+      "id": "biome.banded",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.banded"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1122,
+      "master": "masters/ambience-weather/biome.banded.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.banded.opus",
+      "opusSha256": "615851ea9ab88340e3bb0b1d031bae6680d46f2e7941e6af63314aee1fe12fc0",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.banded.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.ammonia",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.ammonia"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1139,
+      "master": "masters/ambience-weather/biome.ammonia.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.ammonia.opus",
+      "opusSha256": "3d3345f0d962a12b501c127dfca33ad03f11b13cbbed66d240e657c881134ea9",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.ammonia.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.stormeye",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.stormeye"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1156,
+      "master": "masters/ambience-weather/biome.stormeye.wav",
+      "masterSha256": "3efbb8885307b1a3aa12f0951722fd5e5064742b3135bf8116fd83fa5b922be6",
+      "opus": "masters/ambience-weather/biome.stormeye.opus",
+      "opusSha256": "f3d61f547bb39ad688ed4e3a5398cf83ae7ed16f0279b4d7318525861d5af283",
+      "previewSha256": "580213f66e3395fb7dad83cc86c5da76aacf5c4e647fcfec69c38625410c7a50",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.stormeye.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.4,
+      "opusDbTP": -4.4
+    },
+    {
+      "id": "biome.hotglow",
+      "group": "ambience-weather",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/91e3615e92c088e3-yell-NorrisBlackGrowler.mp3",
+          "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 31.84775
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "biome.hotglow"
+      ],
+      "notes": "Base environmental ingredient only. Local fauna, density and transitions are still unreviewed; not completed biome soundscape.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1173,
+      "master": "masters/ambience-weather/biome.hotglow.wav",
+      "masterSha256": "80dffc9647caeb12d63fc132247ec99ed9924c9c9769d16d0013a523c915833e",
+      "opus": "masters/ambience-weather/biome.hotglow.opus",
+      "opusSha256": "270a0263fa8535518e7b6ef9f85ae667555d30e440cee51d55f3e020f6000ad8",
+      "previewSha256": "54f31460f6a353de66dd12c93c41754bdf3184b8d101d6150e6ba8ca8cf3be70",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/biome.hotglow.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.5,
+      "opusDbTP": -9.5
+    }
+  ],
+  "listeningAccepted": false
+}

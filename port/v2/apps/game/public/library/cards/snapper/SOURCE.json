@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snapper",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/18-snapper/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8e113a3d4337a2ae00d0a0de54c7699a5b70cd5185e4202ab699750a18732f4f"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Original MID side formations read as solid ice spires instead of cloud air.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.prompt.txt",
+    "sha256": "5554b80da953643fba201e3224d7c28f1a56f492865b1e48315ddbbb6aae631c"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.prompt.txt",
+    "sha256": "45e7f9173be40783e5ade50dc2c64d242a2398670b54df9823658489889e35d2"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.png",
+      "sha256": "6868916ca7d1fe2638a278b364e993673d051d793b0ddcda92affb53639bfb04"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/ammonia/arena-mid.png",
+    "sha256": "6868916ca7d1fe2638a278b364e993673d051d793b0ddcda92affb53639bfb04"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-66e808ae-771b-4ce6-8707-16519f308b72.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

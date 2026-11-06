@@ -1,0 +1,23 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-successors/c202creaturesupply-16-spotted-hyena/islands/fit",
+  "sourceBindingSha256": "e1e721990fcf288f22f49c043f5834f2b59c4975cdabe427f2b56487f538736a",
+  "candidateBindingSha256": "4d355c3e822f6c5156551f8edbc6a46cbf68e6781b841e723f386c0fea8402b8",
+  "paintBoundaryPairs": [
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+  "sourceAtlasSha256": "b21ee149b605f2888c2697c6fe80f5adaff268c84748c9ed9e99d9c20fd11389",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

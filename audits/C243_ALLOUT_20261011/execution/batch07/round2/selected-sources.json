@@ -1,0 +1,343 @@
+[
+  {
+    "name": "Chiton",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-02-chiton",
+    "masterSha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+    "promptSha256": "b175a2e3dfeae8776be596540b2f05de5998f2d408a1a6d17c1ff9a58082136d",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 240,
+        "y0": 456,
+        "x1": 1013,
+        "y1": 793
+      },
+      "margins": {
+        "left": 240,
+        "right": 240,
+        "top": 456,
+        "bottom": 460
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0101 < 0.0314)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1a/c243b07r2c1-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-02-chiton",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-02-chiton/master.png"
+  },
+  {
+    "name": "Conch",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-03-conch",
+    "masterSha256": "b313071c72c98a6239254f8280d9f16a27f3cecaec797a7f1c507149d5028938",
+    "promptSha256": "f2d9133f7c3b196facaffc733e4599224c87357ade63966f1b5dc2b5c8b7dc77",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 269,
+        "y0": 350,
+        "x1": 983,
+        "y1": 877
+      },
+      "margins": {
+        "left": 269,
+        "right": 270,
+        "top": 350,
+        "bottom": 376
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/score.json",
+    "selected": true,
+    "nativePending": true,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-03-conch",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-03-conch/master.png"
+  },
+  {
+    "name": "Forest Elephant",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-25-forest-elephant",
+    "masterSha256": "cf7a829573a672e2f10eb7258abc248197b242e7ccabdbca775369774e0f65f9",
+    "promptSha256": "3379bfffd862cb494fa6b4cbeaf98d59711eadbd7acd8f6363f0420ec47ac7c4",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 307,
+        "y0": 391,
+        "x1": 947,
+        "y1": 860
+      },
+      "margins": {
+        "left": 307,
+        "right": 306,
+        "top": 391,
+        "bottom": 393
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/score.json",
+    "selected": true,
+    "nativePending": true,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-25-forest-elephant",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-25-forest-elephant/master.png"
+  },
+  {
+    "name": "Giant Salamander",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-26-giant-salamander",
+    "masterSha256": "d57d055a641549f6f08a88aeee77d572361259bfc3f83368075f02fadaee66a0",
+    "promptSha256": "528a69e76d0ce171b3fc469334b7a545afa3f0dddbf0c0c277942655736747f2",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 174,
+        "y0": 499,
+        "x1": 1079,
+        "y1": 754
+      },
+      "margins": {
+        "left": 174,
+        "right": 174,
+        "top": 499,
+        "bottom": 499
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/score.json",
+    "selected": true,
+    "nativePending": true,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-26-giant-salamander",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-26-giant-salamander/master.png"
+  },
+  {
+    "name": "Goat",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-27-goat",
+    "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+    "promptSha256": "57877f3bcf1f965c45aa6b730ff866db9d0222a69e76c012cfd09df1be0d7a31",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 315,
+        "y0": 319,
+        "x1": 960,
+        "y1": 919
+      },
+      "margins": {
+        "left": 315,
+        "right": 293,
+        "top": 319,
+        "bottom": 334
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-27-goat/score.json",
+    "selected": false,
+    "nativePending": false,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-27-goat",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-27-goat/master.png"
+  },
+  {
+    "name": "Shrew",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-30-shrew",
+    "masterSha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+    "promptSha256": "349933930c8c4582356808c2dfe6a931c04d5da2d0e8dccecf0898b0272b692f",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 239,
+        "y0": 468,
+        "x1": 1007,
+        "y1": 788
+      },
+      "margins": {
+        "left": 239,
+        "right": 246,
+        "top": 468,
+        "bottom": 465
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-30-shrew/score.json",
+    "selected": false,
+    "nativePending": false,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-30-shrew",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c1-30-shrew/master.png"
+  },
+  {
+    "name": "Takin",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-31-takin",
+    "masterSha256": "6660584d2d6fb266787451b78f75b4118b70f67555f111b17ad1bc57b1d7de21",
+    "promptSha256": "8ac4e73f053904548db5d74b4cea3d130214322914cb4a3514b80b11d796b5b2",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 320,
+        "y0": 372,
+        "x1": 968,
+        "y1": 870
+      },
+      "margins": {
+        "left": 320,
+        "right": 285,
+        "top": 372,
+        "bottom": 383
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/score.json",
+    "selected": true,
+    "nativePending": true,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-31-takin",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-31-takin/master.png"
+  },
+  {
+    "name": "Vole",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-32-vole",
+    "masterSha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+    "promptSha256": "0bc36be55b1b29d42f8d091a5e070841fb49e92a07bbfea44bc6446264910647",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 299,
+        "y0": 459,
+        "x1": 937,
+        "y1": 798
+      },
+      "margins": {
+        "left": 299,
+        "right": 316,
+        "top": 459,
+        "bottom": 455
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-32-vole/score.json",
+    "selected": false,
+    "nativePending": false,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-32-vole",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-32-vole/master.png"
+  },
+  {
+    "name": "Wall Lizard",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-33-wall-lizard",
+    "masterSha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98",
+    "promptSha256": "2dd0573cdba8602fd57be0ebb47dd530ead42acc2c0d563e9895b64eb93fd276",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 228,
+        "y0": 533,
+        "x1": 1029,
+        "y1": 721
+      },
+      "margins": {
+        "left": 228,
+        "right": 224,
+        "top": 533,
+        "bottom": 532
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/score.json",
+    "selected": true,
+    "nativePending": true,
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-33-wall-lizard",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c2-33-wall-lizard/master.png"
+  }
+]

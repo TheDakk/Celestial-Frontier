@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Catfish",
+    "packetId": "c243b02r2c2-04-catfish",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-04-catfish",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2a-fishseams/c243b02r2c2-04-catfish/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2a/c243b02r2c2-04-catfish/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "f23acb4d068deae4e974ef2d2da235825a5787a889308ec6ce42938ca0fac680",
+    "route": {
+      "id": "c243b02r2c2-04-catfish",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Catfish",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2a/c243b02r2c2-04-catfish/fit",
+      "sourceMasterSha256": "f23acb4d068deae4e974ef2d2da235825a5787a889308ec6ce42938ca0fac680",
+      "sourceStaticSha256": "e5ef90efff0da70d174000ae47d1089d61ddb5b4bb5fcb3b3ddce8221611dc1b",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2a-fishseams/c243b02r2c2-04-catfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Gray Whale",
+    "packetId": "c243b02r2c1-11-gray-whale",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c1-11-gray-whale",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c1b-fishseams/c243b02r2c1-11-gray-whale/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1b/c243b02r2c1-11-gray-whale/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "e08b64a4966af1c81556781240b929d3bcd2cfe0c2ac47640e5787798d76f3b7",
+    "route": {
+      "id": "c243b02r2c1-11-gray-whale",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Gray Whale",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1b/c243b02r2c1-11-gray-whale/fit",
+      "sourceMasterSha256": "e08b64a4966af1c81556781240b929d3bcd2cfe0c2ac47640e5787798d76f3b7",
+      "sourceStaticSha256": "53477caa43b5ce8656ea73a1f6d34c69d7dd2598897b5f993631caf93dea791d",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c1b-fishseams/c243b02r2c1-11-gray-whale/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Gulper Eel",
+    "packetId": "c243b02r2c2-12-gulper-eel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-12-gulper-eel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-12-gulper-eel/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-12-gulper-eel/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "d15d5144a1555d80ea8b6ea85f65c4d9ee59eff662cd11dfa52a3e337b380a77",
+    "route": null,
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Manatee",
+    "packetId": "c243b02r2c2-18-manatee",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-18-manatee",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2c-fishseams/c243b02r2c2-18-manatee/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a",
+    "route": {
+      "id": "c243b02r2c2-18-manatee",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Manatee",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/fit",
+      "sourceMasterSha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a",
+      "sourceStaticSha256": "26bf82f79c72f28af2bd7fa4441f899c9d653da0a5025882e3cf7fe4ac082df3",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2c-fishseams/c243b02r2c2-18-manatee/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Moray Eel",
+    "packetId": "c243b02r2c2-21-moray-eel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-21-moray-eel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-21-moray-eel/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-21-moray-eel/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "f3025c0f60aa004477c5e68c6c1ac665fd92843051c8c5ea3177b8dee268897a",
+    "route": null,
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Pilot Whale",
+    "packetId": "c243b02r2c1-24-pilot-whale",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c1-24-pilot-whale",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c1d-fishseams/c243b02r2c1-24-pilot-whale/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678",
+    "route": {
+      "id": "c243b02r2c1-24-pilot-whale",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Pilot Whale",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/fit",
+      "sourceMasterSha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678",
+      "sourceStaticSha256": "3c51b3e4a8dd1ade30493135060ca771117631e58286a4614a67df3dec3201af",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c1d-fishseams/c243b02r2c1-24-pilot-whale/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "River Dolphin",
+    "packetId": "c243b02r2c2-32-river-dolphin",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c2-32-river-dolphin",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2f-fishseams/c243b02r2c2-32-river-dolphin/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a",
+    "route": {
+      "id": "c243b02r2c2-32-river-dolphin",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "River Dolphin",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/fit",
+      "sourceMasterSha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a",
+      "sourceStaticSha256": "368dfee5bb6d658e1bd0f9ba1360595459b543adfdff100eb0f52043df16c436",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2c2f-fishseams/c243b02r2c2-32-river-dolphin/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "round2-new-original"
+  },
+  {
+    "name": "Lionfish",
+    "packetId": "c243b02r1c3-16-lionfish",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r1c3-16-lionfish",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-16-lionfish/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-16-lionfish/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "ddc52ae4cfc9358be8f3c171b448bd7351569fe5aabd8890d7ebe244cefea187",
+    "route": {
+      "id": "c243b02r1c3-16-lionfish",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Lionfish",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-16-lionfish/fit",
+      "sourceMasterSha256": "ddc52ae4cfc9358be8f3c171b448bd7351569fe5aabd8890d7ebe244cefea187",
+      "sourceStaticSha256": "6a7bc8a091c53e4c08354bb00e3b47f09a47186369022f8f02d9b43848e791c4",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-16-lionfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "prior-admitted-visual-HOLD-class-followup-only"
+  },
+  {
+    "name": "Pipefish",
+    "packetId": "c243b02r1c3-25-pipefish",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r1c3-25-pipefish",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-25-pipefish/fit",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-25-pipefish/score.json",
+    "static": "PASS_STATIC",
+    "masterSha256": "8b88add46758eee27426ff849116d23bc411ec72cc1d18573b8b70dc853c97de",
+    "route": {
+      "id": "c243b02r1c3-25-pipefish",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Pipefish",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-25-pipefish/fit",
+      "sourceMasterSha256": "8b88add46758eee27426ff849116d23bc411ec72cc1d18573b8b70dc853c97de",
+      "sourceStaticSha256": "b3d41edcfc7cb26c5b295b25c1151196ec0fdf8962d31b690692ff897b918e83",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-25-pipefish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    "origin": "prior-admitted-visual-HOLD-class-followup-only"
+  }
+]

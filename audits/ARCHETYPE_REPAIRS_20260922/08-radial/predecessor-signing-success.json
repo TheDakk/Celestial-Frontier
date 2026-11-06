@@ -1,0 +1,10 @@
+{
+  "signedCommit": "4f82025c490d39b80b78bfab81ac53232a780a74",
+  "item": "Chimpanzee",
+  "signingToolReceipt": "a09805",
+  "verificationToolReceipt": "1a997f",
+  "signature": "Good git signature; ED25519 SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+  "sourceHeadWas": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "userSteering": "No SSH request waiting; try again.",
+  "outcome": "Explicitly requested retry succeeded. Root cause of prior refusals remains unknown."
+}

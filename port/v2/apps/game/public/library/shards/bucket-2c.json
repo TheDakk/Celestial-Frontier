@@ -1,0 +1,76 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-2c",
+ "files": [
+  {
+   "path": "library/cards/bat/SOURCE.json",
+   "bytes": 291,
+   "sha256": "7c075d59d87daa0d62c828b80904e18dd96e35323f6661e69a8a740ae362da98"
+  },
+  {
+   "path": "library/cards/bat/card/card.json",
+   "bytes": 4417,
+   "sha256": "8d9b8dfdb2260ad66d316b9506beeb6f9d1c2948c6245f83850deb41bde9970f"
+  },
+  {
+   "path": "library/cards/bat/card/labels-512.png",
+   "bytes": 6538,
+   "sha256": "0aec890a85808000f98eb5d6ace53b6d7a6440994cbda0c2d404722409a66539"
+  },
+  {
+   "path": "library/cards/bat/card/master-512.png",
+   "bytes": 74472,
+   "sha256": "34658380e208df633a8f5e6f305386367d76b5a5e6ea5561966d18d469a08400"
+  },
+  {
+   "path": "library/cards/bat/record.json",
+   "bytes": 7044,
+   "sha256": "141a9c0709482e28aaf2d68dfb5ffcb5f26612dcabf6a4ff6960babf39cd9f86"
+  },
+  {
+   "path": "library/cards/monitor-lizard/SOURCE.json",
+   "bytes": 323,
+   "sha256": "a85cdaa04b10ccf30be3a0384e35237b2f9f1fd87339c561754a90214f54abb8"
+  },
+  {
+   "path": "library/cards/monitor-lizard/card/card.json",
+   "bytes": 5276,
+   "sha256": "4ced54e48977d99b2f59088e287cc6419ee428632f70e1da29fc278966b0b725"
+  },
+  {
+   "path": "library/cards/monitor-lizard/card/labels-512.png",
+   "bytes": 7015,
+   "sha256": "b02891914470ff591ed04199256c447e9fb2dcb05bcaacc8cf49092045d06495"
+  },
+  {
+   "path": "library/cards/monitor-lizard/card/master-512.png",
+   "bytes": 53378,
+   "sha256": "8792d01af67a60e5d3fbb1d31628b76b04a4a5a65c6905c74c46c179fba9c41d"
+  },
+  {
+   "path": "library/cards/monitor-lizard/record.json",
+   "bytes": 7168,
+   "sha256": "971da3510a0e4fb567120d16813b833fa92d57252fb1611edf424d6f3aa26c7b"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c1-05-deep-sea-fish/labels.png",
+   "bytes": 39394,
+   "sha256": "9caec2ddb40c2ca7043f940cfa3f9ea3bee7be5a4397daa404348fba52f917b1"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c1-05-deep-sea-fish/master.png",
+   "bytes": 1373706,
+   "sha256": "b3d1e530b438591198ad10a60d4933e6a85b7779c9e2aff069cc9bd16cc384dd"
+  },
+  {
+   "path": "library/creature-finish-source/river-otter/labels.png",
+   "bytes": 44374,
+   "sha256": "ea72693a20b3100eb285cb4713e2de667619986fcd71a97b94b4efe8146bb46d"
+  },
+  {
+   "path": "library/creature-finish-source/river-otter/master.png",
+   "bytes": 457140,
+   "sha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+  }
+ ]
+}

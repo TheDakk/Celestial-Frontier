@@ -1711,9 +1711,14 @@ const legacyWorldWhere = (address) => ({
   pseed: address?.planet?.seed,
 });
 
-const projectLegacyMirror = (mirror) => {
+/* FINISH F5 (2026-11-04): since D13 care-XP parity (107f01dcc6) a Feed's XP — like the friendly duel's and a combat settlement's — is
+   recorded on the v2 ownership creature and copied to its legacy Compendium row's `g.xp`; the Arc 4 mirror never sees it. When the
+   v2 target exists, a creature's `xp` therefore comes from its v2 row (same creatureId); every other field still comes from the
+   Arc 4 mirror. */
+const projectLegacyMirror = (mirror, v2Target = null) => {
   try {
     if (mirror?.mode !== 'current') return null;
+    const v2Creatures = new Map((Array.isArray(v2Target?.creatures) ? v2Target.creatures : []).map((row) => [row?.creatureId, row]));
     const discoveries = new Map(mirror.discoveries.map((row) => [row.recordId, row]));
     const creatures = new Map(mirror.creatures.map((row) => [row.acquisitionRecordId, row]));
     const projectionRows = mirror.catalogSpecies.map((species) => {
@@ -1760,6 +1765,8 @@ const projectLegacyMirror = (mirror) => {
         for (const key of ['xp', 'hurt', 'fed', 'brood', 'assignment', 'bond']) {
           if (creature[key] !== null) genome[key] = creature[key];
         }
+        const v2 = v2Creatures.get(creature.creatureId);
+        if (v2 !== undefined && v2?.xp !== null && v2?.xp !== undefined) genome.xp = v2.xp;
       }
       if (species.alias !== null) names.push([`c${legacyCodexId}`, species.alias]);
       const provenance = discovery.provenance;
@@ -1795,8 +1802,8 @@ const projectLegacyMirror = (mirror) => {
   }
 };
 
-const legacyMirrorMatches = (ownership, legacy) => {
-  const projected = projectLegacyMirror(ownership?.mirror);
+const legacyMirrorMatches = (ownership, legacy, v2Target = null) => {
+  const projected = projectLegacyMirror(ownership?.mirror, v2Target);
   if (projected === null || !record(legacy) || !Array.isArray(legacy.codex)
     || !Array.isArray(legacy.names) || !Array.isArray(legacy.bx)
     || (legacy.scout !== null && typeof legacy.scout !== 'string')) return false;
@@ -1813,6 +1820,26 @@ const legacyMirrorMatches = (ownership, legacy) => {
     && same(actualNames, projected.names)
     && same(legacy.bx, projected.bx)
     && legacy.scout === projected.scout;
+};
+
+/** FINISH F5 diagnosis: WHICH part of the legacy mirror comparison differs (never used to decide a pass). */
+export const legacyMirrorDiffV1 = (evidence) => {
+  const result = assessArc4DurableEvidence(evidence), ownership = result?.ownership ?? null, legacy = evidence?.legacy ?? null;
+  const projected = projectLegacyMirror(ownership?.mirror, result?.ownershipV2 ?? null);
+  if (projected === null || !record(legacy) || !Array.isArray(legacy.codex)) return { projected: projected !== null, legacy: record(legacy) };
+  const actualCodex = legacy.codex.map((entry) => ({ legacyCodexId: uint32(entry?.g?.seed) ? `s${entry.g.seed}` : null, g: entry?.g, f: entry?.f, w: entry?.w ?? null }));
+  const firstCodex = actualCodex.findIndex((row, i) => !same(row, projected.codex[i]));
+  const ownedNames = new Set(projected.codex.map(({ legacyCodexId }) => `c${legacyCodexId}`));
+  const actualNames = Array.isArray(legacy.names) ? legacy.names.filter((row) => Array.isArray(row) && typeof row[0] === 'string' && ownedNames.has(row[0])) : null;
+  return { codexLengths: [actualCodex.length, projected.codex.length], firstCodexDiff: firstCodex,
+    actualCodexRow: firstCodex >= 0 ? { ...actualCodex[firstCodex], g: undefined, gKeys: Object.keys(actualCodex[firstCodex]?.g ?? {}) } : null,
+    projectedCodexRow: firstCodex >= 0 && projected.codex[firstCodex] ? { ...projected.codex[firstCodex], g: undefined, gKeys: Object.keys(projected.codex[firstCodex]?.g ?? {}) } : null,
+    gDiffKeys: firstCodex >= 0 ? [...new Set([...Object.keys(actualCodex[firstCodex]?.g ?? {}), ...Object.keys(projected.codex[firstCodex]?.g ?? {})])].filter((k) => !same(actualCodex[firstCodex]?.g?.[k], projected.codex[firstCodex]?.g?.[k])).map((k) => [k, actualCodex[firstCodex]?.g?.[k], projected.codex[firstCodex]?.g?.[k]]) : [],
+    allCodexDiffs: actualCodex.map((row, i) => [i, row.legacyCodexId, projected.codex[i]?.legacyCodexId ?? null,
+      [...new Set([...Object.keys(row.g ?? {}), ...Object.keys(projected.codex[i]?.g ?? {})])].filter((k) => !same(row.g?.[k], projected.codex[i]?.g?.[k])).map((k) => [k, row.g?.[k] ?? null, projected.codex[i]?.g?.[k] ?? null])])
+      .filter(([, , , d]) => d.length > 0),
+    creatures: (ownership?.mirror?.creatures ?? []).map((c) => ({ id: String(c.creatureId).slice(-8), acq: String(c.acquisitionRecordId).slice(-8), seed: c.genome?.seed ?? null, xp: c.xp, fed: c.fed })),
+    namesEqual: same(actualNames, projected.names), bxEqual: same(legacy.bx, projected.bx), scoutEqual: legacy.scout === projected.scout };
 };
 
 const exactEverRecord = (value) => {
@@ -1903,7 +1930,7 @@ export const assessArc4DurableEvidence = (evidence = {}) => {
     f4Authority: v5RowsComplete && exactF4Authority(v5.rows, evidence),
     receiptRows: exactReceiptRows(evidence),
     v4Mirror: inspectedOwnership !== null
-      && legacyMirrorMatches(inspectedOwnership, evidence?.legacy),
+      && legacyMirrorMatches(inspectedOwnership, evidence?.legacy, inspectedArc5?.target ?? null),
     v4OwnedCounters: v4OwnedCounters !== null,
   };
   return assessment('Arc 4 durable evidence', checks, {

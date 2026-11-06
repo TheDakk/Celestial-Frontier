@@ -1,0 +1,331 @@
+{
+  "name": "Starfish",
+  "family": "radial",
+  "species": {
+    "name": "Starfish",
+    "aspect": 1,
+    "headFrac": 0,
+    "eyes": "hidden",
+    "posture": "crawling",
+    "mustRead": [
+      "five tapering arms radiating from a small central disc",
+      "rows of tube feet in grooves underneath",
+      "pebbled granular skin"
+    ],
+    "note": "Headless radial animal - always read face-on; it has no true profile."
+  },
+  "genome": {
+    "seed": 3930800215,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 11,
+    "body": 14,
+    "loco": 0,
+    "trait": 1,
+    "size": 1,
+    "diet": 1,
+    "head": 1,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 11,
+    "detail": 4,
+    "accent": 11,
+    "temper": 6,
+    "sense": 3,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Starfish"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Starfish\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3930800215\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 327,
+  "contract": {
+    "id": "radial",
+    "version": 1,
+    "clipSetId": "radial-v1",
+    "graph": [
+      [
+        "centre",
+        "root"
+      ],
+      [
+        "bell",
+        "centre"
+      ],
+      [
+        "arm0Seg0",
+        "centre"
+      ],
+      [
+        "arm0Seg1",
+        "arm0Seg0"
+      ],
+      [
+        "arm0Seg2",
+        "arm0Seg1"
+      ],
+      [
+        "arm1Seg0",
+        "centre"
+      ],
+      [
+        "arm1Seg1",
+        "arm1Seg0"
+      ],
+      [
+        "arm1Seg2",
+        "arm1Seg1"
+      ],
+      [
+        "arm2Seg0",
+        "centre"
+      ],
+      [
+        "arm2Seg1",
+        "arm2Seg0"
+      ],
+      [
+        "arm2Seg2",
+        "arm2Seg1"
+      ],
+      [
+        "arm3Seg0",
+        "centre"
+      ],
+      [
+        "arm3Seg1",
+        "arm3Seg0"
+      ],
+      [
+        "arm3Seg2",
+        "arm3Seg1"
+      ],
+      [
+        "arm4Seg0",
+        "centre"
+      ],
+      [
+        "arm4Seg1",
+        "arm4Seg0"
+      ],
+      [
+        "arm4Seg2",
+        "arm4Seg1"
+      ]
+    ],
+    "bodyAxis": [
+      "centre",
+      "bell"
+    ],
+    "joints": [
+      "root",
+      "centre",
+      "bell",
+      "arm0Seg0",
+      "arm0Seg1",
+      "arm0Seg2",
+      "arm1Seg0",
+      "arm1Seg1",
+      "arm1Seg2",
+      "arm2Seg0",
+      "arm2Seg1",
+      "arm2Seg2",
+      "arm3Seg0",
+      "arm3Seg1",
+      "arm3Seg2",
+      "arm4Seg0",
+      "arm4Seg1",
+      "arm4Seg2"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -35,
+        "max": 35
+      },
+      "centre": {
+        "min": -15,
+        "max": 15
+      },
+      "bell": {
+        "min": -25,
+        "max": 25
+      },
+      "arm0Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm0Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm0Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm1Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm1Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm1Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm2Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm2Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm2Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm3Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm3Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm3Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm4Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm4Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm4Seg2": {
+        "min": -55,
+        "max": 55
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.03,
+        "max": 0.6,
+        "kind": "distance",
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "arm/bell:arm0",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm0Seg0",
+          "arm0Seg1",
+          "arm0Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm1",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm1Seg0",
+          "arm1Seg1",
+          "arm1Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm2",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm2Seg0",
+          "arm2Seg1",
+          "arm2Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm3",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm3Seg0",
+          "arm3Seg1",
+          "arm3Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm4",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm4Seg0",
+          "arm4Seg1",
+          "arm4Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "arms": 5
+    }
+  }
+}

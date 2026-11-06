@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "fiveFramesAndCropsShaVerified": 10,
+  "identityMarkersSeen": 3,
+  "finishStatus": "PASS",
+  "rebindStatus": "PASS",
+  "nativeStatus": "DIAGNOSTIC_PASS",
+  "finishedReview": "READY_FOR_CLAUDE",
+  "fragmentFilmCount": 251,
+  "newFragments": 0,
+  "newPink": 0,
+  "rootValidate": "PASS1010renders,zero booterrors,50originalfingerprintmatch",
+  "lowestSampleGiB": 78.46561050415039,
+  "freeGiB": 86.5936279296875,
+  "peerReadThrough": "C263 CPU-only ACTIVE;no TERMINALqualifiedpackets",
+  "priorStoppedRedRetained": true,
+  "noAdmissionOrCertification": true
+}

@@ -1,0 +1,25 @@
+{"starting": "Abalone"}
+{"name": "Abalone", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Limpet"}
+{"name": "Limpet", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Buffalo"}
+{"name": "Buffalo", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Water Buffalo"}
+{"name": "Water Buffalo", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Goat"}
+{"name": "Goat", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Okapi"}
+{"name": "Okapi", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Takin"}
+{"name": "Takin", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Forest Elephant"}
+{"name": "Forest Elephant", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Bison"}
+{"name": "Bison", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Dog"}
+{"name": "Dog", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Kinkajou"}
+{"name": "Kinkajou", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"starting": "Camel"}
+{"name": "Camel", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"nativePass": 12, "nativeTotal": 12}

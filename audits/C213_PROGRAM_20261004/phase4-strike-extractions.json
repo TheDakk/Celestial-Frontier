@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c202creaturesupply-10-river-otter",
+    "file": "audits/C213_PROGRAM_20261004/native-source-c202creaturesupply-10-river-otter/turn0-action85-extracted.png",
+    "encodedSeconds": 2.0416666666666665,
+    "method": "Unscaled original encoded frame; no new native run",
+    "sha256": "57c7602cc7824785dc598c897a791359886e55f1e5a0fc97fb5d5a27bf4da62f"
+  },
+  {
+    "id": "g2c90-24-river-otter",
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c90-24-river-otter/turn0-action85-extracted.png",
+    "encodedSeconds": 2.0416666666666665,
+    "method": "Unscaled original encoded frame; no new native run",
+    "sha256": "3ae1168f9d394d192cb90de472813ad79145d4b7304adac7a3c39501a6cf7a62"
+  },
+  {
+    "id": "g2c118-04-sea-otter",
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-04-sea-otter/turn0-action85-extracted.png",
+    "encodedSeconds": 2.0275,
+    "method": "Unscaled original encoded frame; no new native run",
+    "sha256": "f0686527289084db2d322113ac140bb67be225c293bac0b59dd02887ce3bbbfa"
+  },
+  {
+    "id": "g2c118-09-colugo",
+    "file": "audits/C213_PROGRAM_20261004/native-source-g2c118-09-colugo/turn0-action85-extracted.png",
+    "encodedSeconds": 2.0416666666666665,
+    "method": "Unscaled original encoded frame; no new native run",
+    "sha256": "37bd8be86619ec58e91949057acde04cb52a646f4fae14df44cdc9c6c7f6dbf7"
+  }
+]

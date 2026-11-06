@@ -1,0 +1,209 @@
+{
+  "status": "THIRD_REPAINT_DEFERRED_REFERENCE_COVERAGE",
+  "species": [
+    "Amphipod",
+    "Brine Shrimp",
+    "Cave Shrimp",
+    "Copepod",
+    "Fairy Shrimp",
+    "Freshwater Shrimp",
+    "Giant Isopod",
+    "Isopod",
+    "Krill",
+    "Shrimp",
+    "Tadpole Shrimp",
+    "Vent Shrimp",
+    "Water Flea"
+  ],
+  "reason": "All thirteen natural small-crustacean sources refuse again after two candidates. Repeated reference part/family-floor/facing assignment failures require qualified morphology coverage; no third repaint will invent prawn-specific anatomy or relax the unchanged rulers. Retain both source attempts and revisit every still-unaccepted species in final round 2. This is a routine up-to-three allocation decision, not visual acceptance or a gate override.",
+  "refusals": [
+    {
+      "name": "Amphipod",
+      "id": "c243b04r1c2-22-amphipod",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2d/c243b04r1c2-22-amphipod/score.json",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0347 < 0.0807)",
+        "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 28%)",
+        "unexplained-anatomy: 23.4% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    },
+    {
+      "name": "Brine Shrimp",
+      "id": "c243b04r1c2-23-brine-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2d/c243b04r1c2-23-brine-shrimp/score.json",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 17.1% paint that no reference appendage lands on",
+        "missing-anatomy: part tailfan (tailFan) covers 1% paint (reference 3%)",
+        "missing-anatomy: part abdomen5 (abdomen5) covers 4% paint (reference 5%)",
+        "missing-anatomy: part abdomen4 (abdomen4) covers 4% paint (reference 6%)",
+        "missing-anatomy: part abdomen3 (abdomen3) covers 5% paint (reference 8%)",
+        "missing-anatomy: part abdomen2 (abdomen2) covers 7% paint (reference 9%)",
+        "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    },
+    {
+      "name": "Cave Shrimp",
+      "id": "c243b04r1c2-24-cave-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2d/c243b04r1c2-24-cave-shrimp/score.json",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 25.4% paint that no reference appendage lands on",
+        "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 14% paint (reference 44%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 4% paint (reference 28%)",
+        "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg3far-upper (leg3FarKnee) covers 11% paint (reference 48%)",
+        "missing-anatomy: part leg0near-foot (leg0NearFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg3near-foot (leg3NearFoot) covers 10% paint (reference 32%)",
+        "missing-anatomy: part antenna-far (antennaFarTip) covers 5% paint (reference 21%)",
+        "missing-anatomy: part abdomen1 (abdomen1) covers 3% paint (reference 11%)",
+        "missing-anatomy: part abdomen0 (abdomen0) covers 3% paint (reference 12%)",
+        "missing-anatomy: part head (head) covers 0% paint (reference 2%)"
+      ]
+    },
+    {
+      "name": "Copepod",
+      "id": "c243b04r1c2-25-copepod",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2d/c243b04r1c2-25-copepod/score.json",
+      "reasons": [
+        "wrong-family: fish matches clearly better (0.0360 < 0.0747)",
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 15% paint (reference 44%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part leg2far-upper (leg2FarKnee) covers 15% paint (reference 46%)",
+        "missing-anatomy: part leg0near-foot (leg0NearFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part tailfan (tailFan) covers 1% paint (reference 3%)",
+        "missing-anatomy: part abdomen5 (abdomen5) covers 4% paint (reference 5%)",
+        "missing-anatomy: part abdomen4 (abdomen4) covers 5% paint (reference 6%)",
+        "missing-anatomy: part abdomen3 (abdomen3) covers 6% paint (reference 8%)"
+      ]
+    },
+    {
+      "name": "Fairy Shrimp",
+      "id": "c243b04r1c2-26-fairy-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2e/c243b04r1c2-26-fairy-shrimp/score.json",
+      "reasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 13.7% of the paint; every same-family reference shows at least 21.3%",
+        "missing-anatomy: part tailfan (tailFan) covers 4% paint (reference 3%)",
+        "unexplained-anatomy: 14.3% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "id": "c243b04r1c2-27-freshwater-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2e/c243b04r1c2-27-freshwater-shrimp/score.json",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0361 < 0.0614)",
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 6% paint (reference 29%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 4% paint (reference 28%)",
+        "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part antenna-far (antennaFarTip) covers 2% paint (reference 21%)",
+        "missing-anatomy: part head (head) covers 2% paint (reference 2%)"
+      ]
+    },
+    {
+      "name": "Giant Isopod",
+      "id": "c243b04r1c2-28-giant-isopod",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2e/c243b04r1c2-28-giant-isopod/score.json",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0300 < 0.0620)",
+        "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 6% paint (reference 28%)",
+        "missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%)"
+      ]
+    },
+    {
+      "name": "Isopod",
+      "id": "c243b04r1c2-29-isopod",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2e/c243b04r1c2-29-isopod/score.json",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0256 < 0.0655)",
+        "extra-anatomy (unassigned): a rear appendage of 9.2% paint that no reference appendage lands on",
+        "missing-anatomy (family floor): the largest rear appendage is 9.2% of the paint; every same-family reference shows at least 21.3%",
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 8% paint (reference 29%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%)"
+      ]
+    },
+    {
+      "name": "Krill",
+      "id": "c243b04r1c2-30-krill",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2f/c243b04r1c2-30-krill/score.json",
+      "reasons": [
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 8% paint (reference 29%)",
+        "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 12% paint (reference 44%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 7% paint (reference 28%)",
+        "missing-anatomy: part leg1far-upper (leg1FarKnee) covers 11% paint (reference 43%)",
+        "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 7% paint (reference 28%)",
+        "missing-anatomy: part antenna-far (antennaFarTip) covers 1% paint (reference 21%)",
+        "missing-anatomy: part antenna-near (antennaNearTip) covers 8% paint (reference 10%)",
+        "missing-anatomy: part head (head) covers 3% paint (reference 2%)",
+        "unexplained-anatomy: 16.7% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    },
+    {
+      "name": "Shrimp",
+      "id": "c243b04r1c2-31-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2f/c243b04r1c2-31-shrimp/score.json",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 3% paint (reference 44%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 1% paint (reference 28%)",
+        "missing-anatomy: part leg1far-upper (leg1FarKnee) covers 6% paint (reference 43%)",
+        "missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%)",
+        "missing-anatomy: part leg4near-foot (leg4NearFoot) covers 0% paint (reference 26%)",
+        "missing-anatomy: part antenna-far (antennaFarTip) covers 5% paint (reference 21%)",
+        "missing-anatomy: part head (head) covers 1% paint (reference 2%)"
+      ]
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "id": "c243b04r1c2-32-tadpole-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2f/c243b04r1c2-32-tadpole-shrimp/score.json",
+      "reasons": [
+        "wrong-family: fish matches clearly better (0.0315 < 0.0761)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part leg3far-foot (leg3FarFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part leg4far-upper (leg4FarKnee) covers 16% paint (reference 48%)",
+        "missing-anatomy: part leg0near-foot (leg0NearFoot) covers 0% paint (reference 29%)",
+        "missing-anatomy: part tailfan (tailFan) covers 1% paint (reference 3%)",
+        "missing-anatomy: part abdomen5 (abdomen5) covers 4% paint (reference 5%)",
+        "missing-anatomy: part abdomen4 (abdomen4) covers 5% paint (reference 6%)"
+      ]
+    },
+    {
+      "name": "Vent Shrimp",
+      "id": "c243b04r1c2-33-vent-shrimp",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2f/c243b04r1c2-33-vent-shrimp/score.json",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0367 < 0.0551)",
+        "extra-anatomy (unassigned): a limb-down appendage of 21.3% paint that no reference appendage lands on",
+        "missing-anatomy: part leg0far-foot (leg0FarFoot) covers 4% paint (reference 29%)",
+        "missing-anatomy: part leg0far-upper (leg0FarKnee) covers 2% paint (reference 44%)",
+        "missing-anatomy: part leg1far-foot (leg1FarFoot) covers 3% paint (reference 28%)",
+        "missing-anatomy: part leg1far-upper (leg1FarKnee) covers 7% paint (reference 43%)",
+        "missing-anatomy: part leg2far-foot (leg2FarFoot) covers 0% paint (reference 28%)",
+        "missing-anatomy: part leg4far-foot (leg4FarFoot) covers 0% paint (reference 26%)",
+        "missing-anatomy: part head (head) covers 4% paint (reference 2%)"
+      ]
+    },
+    {
+      "name": "Water Flea",
+      "id": "c243b04r1c2-34-water-flea",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2f/c243b04r1c2-34-water-flea/score.json",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0560 < 0.0920)",
+        "missing-anatomy (family floor): the largest rear appendage is 1.2% of the paint; every same-family reference shows at least 21.3%",
+        "missing-anatomy: part leg1far-upper (leg1FarKnee) covers 11% paint (reference 43%)",
+        "missing-anatomy: part leg2far-upper (leg2FarKnee) covers 9% paint (reference 46%)",
+        "missing-anatomy: part leg1near-foot (leg1NearFoot) covers 0% paint (reference 25%)",
+        "missing-anatomy: part leg3near-foot (leg3NearFoot) covers 4% paint (reference 32%)",
+        "missing-anatomy: part abdomen0 (abdomen0) covers 5% paint (reference 12%)",
+        "missing-anatomy: part head (head) covers 0% paint (reference 2%)",
+        "unexplained-anatomy: 20.0% of the paint lies away from the body and in no part (reference 0.0%)"
+      ]
+    }
+  ]
+}

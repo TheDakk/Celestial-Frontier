@@ -1,0 +1,19 @@
+{
+  "agent": "OpenAI/Codex",
+  "os": "Darwin/macOS",
+  "physicalRoot": "~/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "origin": "https://github.com/TheDakk/Celestial-Frontier.git",
+  "incoming": [
+    "e1453a182a",
+    "0e55b50287",
+    "a77a829a07"
+  ],
+  "incomingSignatures": "G for every incoming commit",
+  "merge": "170746f0cf",
+  "mergeSignature": "G",
+  "GitHubWrite": false,
+  "AllPairs": "HOLD",
+  "runtimePatchesApplied": false
+}

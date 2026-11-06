@@ -1609,7 +1609,7 @@ describe('scene-memory terminal verifier', () => {
     expect(detached.errors).toContain(
       'contract input is detached from the collected profile evidence',
     );
-  });
+  }, 30_000); /* 3.6 s of a 5 s budget on the hosted runner (PR #46 run 2), over it under x64 emulation; the assertion is unchanged */
 
   it('negative control: a cross-profile initial snapshot cannot launder v6 growth', () => {
     const report = currentReportFixture();
@@ -1661,7 +1661,7 @@ describe('scene-memory terminal verifier', () => {
       'terminal certification requires the current source-normalized input contract',
     );
     expect(result.errors).toContain('verification requires the same tracked --budget');
-  });
+  }, 20_000); /* verifies the whole tracked source contract; ~3 s alone, past the 5 s default when the full suite runs in parallel */
 
   it('rejects a PASS-shaped report that does not score the fixed eighth snapshot pass', () => {
     const result = verifyReport({
@@ -1680,7 +1680,7 @@ describe('scene-memory terminal verifier', () => {
     }, 'tampered-fixed-eighth-policy', { budgetFile: null });
     expect(result.ok).toBe(false);
     expect(result.errors).toContain('one-attempt/warm-cycle/fixed-eighth phase policy drifted');
-  });
+  }, 20_000); /* verifies the whole tracked source contract; ~3 s alone, past the 5 s default when the full suite runs in parallel */
 
   it('binds every Arc 1C product source into exact budget authority', () => {
     expect(productAuthorityBindingErrors(collectorSource)).toEqual([]);

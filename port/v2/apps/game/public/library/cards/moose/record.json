@@ -1,0 +1,253 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Moose\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1499476446\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 1499476446,
+    "ownerId": "authored:archetype-sprint/c203creaturesupply-05-moose",
+    "earthName": "Moose"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "c2d3f10f938e06319bb3fb46a655081105f0f016ac8cb8db327b40d5c7395130",
+      "compactTail": {
+        "terminal": "tail1"
+      },
+      "occludedEars": [
+        "near"
+      ]
+    }
+  },
+  "genome": {
+    "seed": 1499476446,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 17,
+    "body": 13,
+    "loco": 13,
+    "trait": 16,
+    "size": 4,
+    "diet": 0,
+    "head": 8,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 9,
+    "detail": 9,
+    "accent": 15,
+    "temper": 3,
+    "sense": 5,
+    "repro": 3,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Moose"
+  },
+  "geometry": {
+    "cutoutAssetHash": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7793669152354594,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4348484848484848,
+      0.48979266347687406
+    ],
+    "pelvis": [
+      0.30980861244019137,
+      0.47432216905901115
+    ],
+    "spine": [
+      0.43907496012759173,
+      0.4359649122807018
+    ],
+    "chest": [
+      0.5934609250398725,
+      0.4220893141945773
+    ],
+    "neck": [
+      0.6432216905901117,
+      0.4015151515151515
+    ],
+    "head": [
+      0.6901116427432217,
+      0.38915470494417864
+    ],
+    "jaw": [
+      0.7635566188197768,
+      0.46220095693779906
+    ],
+    "hindNearRoot": [
+      0.2838915470494418,
+      0.5243221690590112
+    ],
+    "hindNearKnee": [
+      0.235725677830941,
+      0.6127591706539075
+    ],
+    "hindNearAnkle": [
+      0.21371610845295055,
+      0.7322169059011164
+    ],
+    "hindNearPaw": [
+      0.2324561403508772,
+      0.7692982456140351
+    ],
+    "hindFarRoot": [
+      0.3662679425837321,
+      0.5228867623604466
+    ],
+    "hindFarKnee": [
+      0.32615629984051037,
+      0.629585326953748
+    ],
+    "hindFarAnkle": [
+      0.3570175438596491,
+      0.7358054226475279
+    ],
+    "hindFarPaw": [
+      0.38349282296650716,
+      0.7641945773524721
+    ],
+    "foreNearRoot": [
+      0.5870813397129186,
+      0.49792663476874
+    ],
+    "foreNearKnee": [
+      0.5685805422647527,
+      0.6051834130781499
+    ],
+    "foreNearAnkle": [
+      0.60207336523126,
+      0.7442583732057416
+    ],
+    "foreNearPaw": [
+      0.6358851674641148,
+      0.7744019138755981
+    ],
+    "foreFarRoot": [
+      0.5450558213716108,
+      0.4988038277511962
+    ],
+    "foreFarKnee": [
+      0.5103668261562998,
+      0.5840510366826156
+    ],
+    "foreFarAnkle": [
+      0.4810207336523126,
+      0.7247208931419458
+    ],
+    "foreFarPaw": [
+      0.49824561403508766,
+      0.7640350877192983
+    ],
+    "earFarRoot": [
+      0.6842105263157895,
+      0.3580542264752791
+    ],
+    "earFarTip": [
+      0.6786283891547049,
+      0.33811802232854865
+    ],
+    "tail0": [
+      0.26156299840510366,
+      0.4298245614035088
+    ],
+    "tail1": [
+      0.24162679425837322,
+      0.46012759170653905
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c203creaturesupply-05-moose/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile hoofed-horned media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from c204-qualified-short-tail-reindeer. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "23f026d3ffd7eef913251bcf1046ac370076a76394810468a17a641c93e80ea9",
+    "subjectSourceSha256": "ec5c33742830c8c74e417576b00af876174eef351bdc6b315190e6ed3f520cc0",
+    "presenceSha256": "efa6cf9e17766487632b45b85dacbb6514d237707774729df194c5a044b5d226",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.12599327715959863,
+      "spine": 0.13483718994401,
+      "chest": 0.1550082526323797,
+      "neck": 0.05384635510510766,
+      "head": 0.048491733855934846,
+      "jaw": 0.10358532444898381,
+      "hindFarRoot": 0.07447265056912608,
+      "hindFarKnee": 0.1139891554922255,
+      "hindFarAnkle": 0.11061249979819,
+      "hindFarPaw": 0.038818610338950676,
+      "foreFarRoot": 0.09070926441860183,
+      "foreFarKnee": 0.09203484676819396,
+      "foreFarAnkle": 0.14369830083038954,
+      "foreFarPaw": 0.04292205027100689,
+      "hindNearRoot": 0.05631779717343704,
+      "hindNearKnee": 0.1007028013943476,
+      "hindNearAnkle": 0.12146839776088608,
+      "hindNearPaw": 0.041547738210884484,
+      "foreNearRoot": 0.07610517919834502,
+      "foreNearKnee": 0.10884069091811192,
+      "foreNearAnkle": 0.143051087813959,
+      "foreNearPaw": 0.045297582875347554,
+      "tail0": 0.06563289084510658,
+      "tail1": 0.036272935934750075,
+      "earFarRoot": 0.031655377680334065,
+      "earFarTip": 0.020702958509963613
+    },
+    "measures": {
+      "torso": 0.28842140276067624,
+      "head": 0.048491733855934846,
+      "head/torso": 0.16812807021874132,
+      "bone-min": 0.020702958509963613,
+      "bone-max": 0.1550082526323797,
+      "leg/torso:hindFar": 0.9133173305031898,
+      "leg/torso:foreFar": 0.966139111738564,
+      "leg/torso:hindNear": 0.9143528699392137,
+      "leg/torso:foreNear": 1.0303998204114473
+    }
+  },
+  "recipeHash": "438116a745c4b4a87c6e66f86cbc629298d77e98d4702d2e4aec0c357082cc58"
+}

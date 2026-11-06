@@ -1,0 +1,28 @@
+{
+  "status": "OWN_REGENERABLE_SCRATCH_REMOVED_UNIQUE_AND_FROZEN_EVIDENCE_PRESERVED",
+  "logicalDeletedBytes": 632038461,
+  "logicalDeletedMiB": 602.7588472366333,
+  "physicalSpaceClaim": "Volume free space reported separately; APFS sharing and concurrent activity prevent summing logical deletion into recovered GiB.",
+  "receipts": [
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/scratch-inventory-r01/cleanup-receipt.json",
+      "sha256": "0e95d873afee1dd14649cd331e75d3257eaa0ab4df3bbe3ba639de7d34cb241a",
+      "bytes": 297498
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/ignored-scratch-cleanup-r01/receipt.json",
+      "sha256": "d906bbf586196907a2b77902572b2f4c6e0a1e9315dfd6c9fd4a50a51619ea70",
+      "bytes": 930978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/scratch-preservation-r01/cleanup-receipt-r01.json",
+      "sha256": "86acd414e0c02c0de89d1629c4864c6238e9acafef8da2a6d509ce41c6817cab",
+      "bytes": 9262417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w3-crustacean-cephalopod/scratch-cleanup-receipt-r01/receipt.json",
+      "sha256": "cadcd4f9900ffe352cae4e3a5f12d2d5d832ae5503701d1309d8c9e90fafb521",
+      "bytes": 317873
+    }
+  ]
+}

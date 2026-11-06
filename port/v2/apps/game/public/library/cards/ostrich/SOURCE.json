@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ostrich",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/rebound/c266-03-ostrich-c1/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "78dd0f95dc50b1466acb03b44d0d854f98f96cadff055d6c994b212a75a25bda"
+}

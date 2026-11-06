@@ -1,0 +1,55 @@
+{
+  "schema": "cf.o2-frozen-filepins/v1",
+  "files": [
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/README.md",
+      "sha256": "7eaacb78076a3a802dc2d3b8eea351d9c24ee6489b62b3fc2cd55f7df64c4687",
+      "bytes": 2499
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/donor-exclusion.outcomes.test.mjs",
+      "sha256": "dfb85c1ef68e531cb40eaa8d50a5184fcf28f62091774160c5ff3e7a72ddca5c",
+      "bytes": 8103
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/historical-fixtures.json",
+      "sha256": "ce60b45e8cb6b9df7c714aa8d91c269e9d204af8e8abef7a8016d1f45c85219d",
+      "bytes": 4748
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/input-pins.json",
+      "sha256": "c37b0b71c87bcabc73d6825dc8da48a7b72b2ff1394c54b51e1b1f09a052ca47",
+      "bytes": 3281
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/outcome-controls.json",
+      "sha256": "a32ad09b4886008a2711766d39e9ff71782dcf0837eb2a4fd45e490247a6c644",
+      "bytes": 4186
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/proposal.json",
+      "sha256": "b579bd75a59983db9a1c09ef69d380ad2b7a6fc9a3551eb21afb2680c1b111d3",
+      "bytes": 6150
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/r03-local-donor-candidates.json",
+      "sha256": "8df3f02edcdb6849c852a804f0463793b6ab23d8e110946cb1efeacb31807359",
+      "bytes": 641
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/r03-trial.PROPOSED.json",
+      "sha256": "579725a8f26fb9c6020a4c1c67c4d57904765171e60fe145a45fdf83af404904",
+      "bytes": 3115
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/root-test-job.PROPOSED.json",
+      "sha256": "6b9bf10a68d3c5f6cf786040c26c2d52136bab7da26c6bc98160ffb8c6a61f36",
+      "bytes": 794
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/d40-donor-exclusion-proposal-r01/verification.json",
+      "sha256": "d4a1e51d758310416728c949c129221dfde995da9342ee3c3997ba1f71b56198",
+      "bytes": 536
+    }
+  ]
+}

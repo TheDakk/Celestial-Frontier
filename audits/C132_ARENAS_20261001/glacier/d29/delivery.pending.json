@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "glacier",
+  "biome": "glacier",
+  "recipe": "audits/C132_ARENAS_20261001/glacier/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/glacier/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/glacier/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/glacier/arena-far.png",
+      "runtimeSha256": "144835a0e43be1d7b07ca61097b1219a44b58f55f5e70f53285c5572a2f40506"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/glacier/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/glacier/keyed/arena-mid.png",
+      "runtimeSha256": "45525a1465d42afb24df8549f67356cde8bc845b5f5463262e3433612f71179e"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/glacier/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/glacier/keyed/arena-near.png",
+      "runtimeSha256": "5db4b92598fbfe6941f18904d39aa6f5c907b34acf3ac59563c2a041068a5072"
+    }
+  }
+}

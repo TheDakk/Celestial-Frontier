@@ -1,0 +1,8 @@
+[
+  {
+    mode: 'bodyMs',
+    status: 'REFUSED',
+    error: 'Error: Contact: approach:trot@516.3004730865359 exceeds scale compression bound'
+  },
+  { mode: 'durationMs', status: 'PASS', error: undefined }
+]

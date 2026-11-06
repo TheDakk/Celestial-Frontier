@@ -1,0 +1,44 @@
+{
+  "status": "PASS_EXACT_SIGNED_RUNTIME_RESTORED",
+  "sourceHead": "f09484007256f0e733b26442dde12e91cc53515b",
+  "gameCodeOrImportedToolChangesApplied": [],
+  "newCandidateTestInRuntimeTree": false,
+  "unappliedProposalDisposition": "audits/C465_CODEX_20261018/coordinator/runtime-proposal-unapplied/disposition.json",
+  "paths": [
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "4b856584a27e10a4ffb6d18d0ec2401b7ec52e39a3fa423f157c6a7625bdc29c",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+      "sha256": "1d69b2f2c0227d39f21850af7db2bc541472a117aba41939791d044aed06a789",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+      "sha256": "a255cb1bfffeb383d817b56500f818f4b2d1f51356d366c940e46b0c5c3667bd",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "sha256": "59f084c13052ab3831aabccb9463836c70230a55a9cb8a257e5786a68678a8e2",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "1310d90b76bf2994701ee1e25eaa415e1000a25c60ce0bc9d546a90659115f2e",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/tools/painted-creature/README.md",
+      "sha256": "3dc755b19e87f514563a0fea40169103017c7cc317c2a676aef24e11d951831c",
+      "byteIdenticalToSignedHead": true
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "ccea866608be77cee36809ffc8a0e00ee3559dfe6fa5e617586c94a6946ae555",
+      "byteIdenticalToSignedHead": true
+    }
+  ]
+}

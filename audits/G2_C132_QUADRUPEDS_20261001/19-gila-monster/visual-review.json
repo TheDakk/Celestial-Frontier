@@ -1,0 +1,28 @@
+{
+  "name": "Gila Monster",
+  "masterSha256": "48095a24652bf04d0bf062053003e07cea9eb410f73d7e100c3d9d80a5de1068",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: dense black-and-orange beadlike skin pattern, blunt heavy head, thick short neck, fat banded tail and four clawed feet. Distinct paired orange/black pigment pattern is visible. Far proximal limbs remain body-occluded; exact toe count unconfirmed. Broad margins and continuous tail.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 284,
+      "y0": 559,
+      "x1": 969,
+      "y1": 735
+    },
+    "margins": {
+      "left": 284,
+      "right": 284,
+      "top": 559,
+      "bottom": 518
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

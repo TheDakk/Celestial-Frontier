@@ -1,0 +1,21 @@
+{
+  "stage": "turtle-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-turtle-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792279720.51441,
+  "beforeGiB": 87.13994216918945,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.428,
+  "lowestGiB": 78.7439193725586,
+  "afterGiB": 88.09492111206055
+}

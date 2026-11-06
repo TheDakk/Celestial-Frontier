@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-sea-turtle-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-sea-turtle-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "sea-turtle"
+  ],
+  "startedUnix": 1792275686.417772,
+  "beforeGiB": 91.51986312866211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.013,
+  "lowestGiB": 91.51984405517578,
+  "afterGiB": 91.51557159423828
+}

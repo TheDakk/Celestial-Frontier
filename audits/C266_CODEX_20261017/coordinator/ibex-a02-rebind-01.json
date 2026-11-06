@@ -1,0 +1,20 @@
+{
+  "stage": "ibex-a02-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-ibex-a02-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "ibex-a02"
+  ],
+  "startedUnix": 1792280171.142905,
+  "beforeGiB": 85.69812774658203,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.004,
+  "lowestGiB": 85.69811248779297,
+  "afterGiB": 85.69368743896484
+}

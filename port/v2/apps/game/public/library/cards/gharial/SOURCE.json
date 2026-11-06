@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gharial",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "da8a4547660b4837218ab4c64b8accd797dd7196d22cb7b72edacca4034ced23"
+}

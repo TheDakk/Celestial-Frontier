@@ -1,0 +1,23 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/islands/fit",
+  "sourceBindingSha256": "7389086c612867f109e9e440c5749d8e8d0d0a8270f6cafc7a9a180a5971d441",
+  "candidateBindingSha256": "2f4b11182a5734dc001571cb53d0796da15a64e51ab6f419622c6737e590d46a",
+  "paintBoundaryPairs": [
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618",
+  "sourceAtlasSha256": "f4796cb3aae25f6d8ae5cd11f1a0638355509924fae939a75625166aa9e231fa",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

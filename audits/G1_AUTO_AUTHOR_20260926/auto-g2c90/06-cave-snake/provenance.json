@@ -1,0 +1,57 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-cave-snake",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2d45de388d3f51e5d02d041b0789f6267be66a4d018d7f7810944aaa23048d4c",
+ "subjectSourceSha256": "20cd534ed4fbd693cffb307a2bf777afb45e2d2cdcf7367ea45dcbbbc09a3174",
+ "identity": {
+  "name": "Cave Snake",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cave Snake\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2570290941\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 2570290941,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "racer",
+  "authoringSha256": "deb82b0a38d91def5297a4d2091c1ffb4a4c44bda9c81c0aad7b7935b1b690ba",
+  "masterSha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e"
+ },
+ "habitat": {
+  "profileId": "snake",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "79391ed84f3bf3de9b249a50f96cba52b142c09f2362a1dc4a604e85036973b0",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group snake (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity",
+  "geometric": {
+   "snoutRatio": 0.58,
+   "mainShare": 1,
+   "dominantShare": 1,
+   "gapFrac": 0,
+   "elongation": 16.54,
+   "headEnd": 46.3,
+   "tailEnd": 11.4,
+   "tailTip": 7,
+   "median": 61,
+   "xmin": 126,
+   "xmax": 1134,
+   "ext": 1009,
+   "paint": 57202
+  },
+  "semantic": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

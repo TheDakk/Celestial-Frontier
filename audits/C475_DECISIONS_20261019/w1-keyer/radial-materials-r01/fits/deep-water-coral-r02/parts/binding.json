@@ -1,0 +1,390 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "f20f65915d6617be218abe4c0630e079ceb7d3cb85574d9e5d0c3a5f114d240a",
+  "atlasSha256": "a9f92d9a8f9d20a02effc702d77f09a23d31747ab1084f20d10093ac35812421",
+  "atlasSize": {
+    "width": 1647,
+    "height": 566
+  },
+  "parts": [
+    {
+      "id": "soft-crown-field-13",
+      "joint": "polyp13Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1473,
+        "y": 5,
+        "width": 80,
+        "height": 55
+      },
+      "cutout": {
+        "x": 648,
+        "y": 675,
+        "width": 80,
+        "height": 55
+      }
+    },
+    {
+      "id": "soft-crown-field-8",
+      "joint": "polyp8Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1281,
+        "y": 77,
+        "width": 65,
+        "height": 55
+      },
+      "cutout": {
+        "x": 363,
+        "y": 612,
+        "width": 65,
+        "height": 55
+      }
+    },
+    {
+      "id": "soft-crown-field-9",
+      "joint": "polyp9Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1473,
+        "y": 70,
+        "width": 78,
+        "height": 64
+      },
+      "cutout": {
+        "x": 474,
+        "y": 588,
+        "width": 78,
+        "height": 64
+      }
+    },
+    {
+      "id": "soft-crown-field-10",
+      "joint": "polyp10Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1113,
+        "y": 5,
+        "width": 80,
+        "height": 63
+      },
+      "cutout": {
+        "x": 545,
+        "y": 528,
+        "width": 80,
+        "height": 63
+      }
+    },
+    {
+      "id": "soft-crown-field-11",
+      "joint": "polyp11Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 905,
+        "y": 5,
+        "width": 95,
+        "height": 54
+      },
+      "cutout": {
+        "x": 498,
+        "y": 627,
+        "width": 95,
+        "height": 54
+      }
+    },
+    {
+      "id": "soft-crown-field-12",
+      "joint": "polyp12Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 684,
+        "y": 151,
+        "width": 83,
+        "height": 55
+      },
+      "cutout": {
+        "x": 569,
+        "y": 600,
+        "width": 83,
+        "height": 55
+      }
+    },
+    {
+      "id": "soft-crown-field-15",
+      "joint": "polyp15Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1190,
+        "y": 141,
+        "width": 60,
+        "height": 48
+      },
+      "cutout": {
+        "x": 797,
+        "y": 486,
+        "width": 60,
+        "height": 48
+      }
+    },
+    {
+      "id": "soft-crown-field-17",
+      "joint": "polyp17Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1383,
+        "y": 5,
+        "width": 80,
+        "height": 60
+      },
+      "cutout": {
+        "x": 712,
+        "y": 534,
+        "width": 80,
+        "height": 60
+      }
+    },
+    {
+      "id": "soft-crown-field-19",
+      "joint": "polyp19Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 905,
+        "y": 69,
+        "width": 93,
+        "height": 62
+      },
+      "cutout": {
+        "x": 727,
+        "y": 704,
+        "width": 93,
+        "height": 62
+      }
+    },
+    {
+      "id": "soft-crown-field-0",
+      "joint": "polyp0Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 684,
+        "y": 5,
+        "width": 106,
+        "height": 68
+      },
+      "cutout": {
+        "x": 592,
+        "y": 326,
+        "width": 106,
+        "height": 68
+      }
+    },
+    {
+      "id": "soft-crown-field-1",
+      "joint": "polyp1Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1383,
+        "y": 75,
+        "width": 77,
+        "height": 65
+      },
+      "cutout": {
+        "x": 679,
+        "y": 315,
+        "width": 77,
+        "height": 65
+      }
+    },
+    {
+      "id": "soft-crown-field-2",
+      "joint": "polyp2Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 800,
+        "y": 5,
+        "width": 95,
+        "height": 67
+      },
+      "cutout": {
+        "x": 718,
+        "y": 380,
+        "width": 95,
+        "height": 67
+      }
+    },
+    {
+      "id": "soft-crown-field-3",
+      "joint": "polyp3Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1293,
+        "y": 5,
+        "width": 80,
+        "height": 62
+      },
+      "cutout": {
+        "x": 536,
+        "y": 390,
+        "width": 80,
+        "height": 62
+      }
+    },
+    {
+      "id": "soft-crown-field-4",
+      "joint": "polyp4Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1203,
+        "y": 77,
+        "width": 68,
+        "height": 54
+      },
+      "cutout": {
+        "x": 484,
+        "y": 437,
+        "width": 68,
+        "height": 54
+      }
+    },
+    {
+      "id": "soft-crown-field-5",
+      "joint": "polyp5Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 684,
+        "y": 83,
+        "width": 85,
+        "height": 58
+      },
+      "cutout": {
+        "x": 362,
+        "y": 491,
+        "width": 85,
+        "height": 58
+      }
+    },
+    {
+      "id": "soft-crown-field-6",
+      "joint": "polyp6Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1113,
+        "y": 78,
+        "width": 67,
+        "height": 62
+      },
+      "cutout": {
+        "x": 444,
+        "y": 508,
+        "width": 67,
+        "height": 62
+      }
+    },
+    {
+      "id": "soft-crown-field-7",
+      "joint": "polyp7Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 800,
+        "y": 82,
+        "width": 91,
+        "height": 81
+      },
+      "cutout": {
+        "x": 288,
+        "y": 594,
+        "width": 91,
+        "height": 81
+      }
+    },
+    {
+      "id": "soft-crown-field-14",
+      "joint": "polyp14Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1203,
+        "y": 5,
+        "width": 80,
+        "height": 62
+      },
+      "cutout": {
+        "x": 838,
+        "y": 460,
+        "width": 80,
+        "height": 62
+      }
+    },
+    {
+      "id": "soft-crown-field-16",
+      "joint": "polyp16Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1010,
+        "y": 5,
+        "width": 93,
+        "height": 68
+      },
+      "cutout": {
+        "x": 875,
+        "y": 513,
+        "width": 93,
+        "height": 68
+      }
+    },
+    {
+      "id": "soft-crown-field-18",
+      "joint": "polyp18Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1563,
+        "y": 5,
+        "width": 79,
+        "height": 67
+      },
+      "cutout": {
+        "x": 803,
+        "y": 684,
+        "width": 79,
+        "height": 67
+      }
+    },
+    {
+      "id": "calcified-calyx-skeleton",
+      "joint": "skeleton",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 669,
+        "height": 556
+      },
+      "cutout": {
+        "x": 286,
+        "y": 373,
+        "width": 669,
+        "height": 556
+      }
+    }
+  ],
+  "bindingHash": "b5f2635753f3b656fcd4c86ef809de59288272e4deec9f5045fd3f9e68984398"
+}

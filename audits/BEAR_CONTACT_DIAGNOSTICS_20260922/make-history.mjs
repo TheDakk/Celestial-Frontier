@@ -1,0 +1,4 @@
+import fs from'node:fs';import path from'node:path';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';
+const out='audits/BEAR_CONTACT_DIAGNOSTICS_20260922',source='port/v2/apps/game/src/creature-rig-contact.ts',refs=['a817ad64^','a817ad64','1ff30009'],receipts=[];
+for(const[version,ref]of refs.entries()){const bytes=execFileSync('git',['show',ref+':'+source]);receipts.push({ref,commit:execFileSync('git',['rev-parse',ref],{encoding:'utf8'}).trim(),source,sha256:createHash('sha256').update(bytes).digest('hex')});if(version===0){const s=bytes.toString().replace(/from '([^']+)'/g,(whole,p)=>p.startsWith('.')?"from '"+path.relative(out,path.resolve(path.dirname(source),p)).replaceAll(path.sep,'/')+"'":whole);fs.writeFileSync(out+'/solver-before.ts',s,{flag:'wx'});}}
+fs.writeFileSync(out+'/history-source-receipts.json',JSON.stringify(receipts,null,2)+'\n',{flag:'wx'});

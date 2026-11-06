@@ -1,0 +1,20 @@
+{
+  "stage": "develop-restored-runtime",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-restored-runtime-develop",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792379363.981385,
+  "beforeGiB": 59.569984436035156,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 148.473,
+  "lowestGiB": 59.446266174316406,
+  "afterGiB": 59.54244613647461
+}

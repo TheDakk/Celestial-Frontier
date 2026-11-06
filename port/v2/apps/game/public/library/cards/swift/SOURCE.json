@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Swift",
+ "fitDir": "audits/C279_CODEX_20261018/coordinator/finishes/swift/rebound/c275-w1-15-c266-swift/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b26e606f16ebe789b5ab5a6db08ad2f6bcd74133c5b8481e427250b7cc248723"
+}

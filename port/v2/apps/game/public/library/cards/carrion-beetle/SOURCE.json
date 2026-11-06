@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Carrion Beetle",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/rebound-01/c243b03r1c1-23-carrion-beetle/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "09894febd713841fa9f7c606224f78cfff25cb5e6d94780b47802f76351af08c"
+}

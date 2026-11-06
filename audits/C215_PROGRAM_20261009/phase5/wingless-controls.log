@@ -1,0 +1,16 @@
+✔ canonical wingless Springtail removes only wings, preserving every leg and mouthpart (3.691458ms)
+✔ source-bound review rejects changed master (1.924417ms)
+✔ source-bound review rejects changed subject (1.024792ms)
+✔ source-bound review rejects changed prompt (1.960958ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.name='Bee' (0.502709ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.profile.id='bee' (0.469083ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.species.note='Winged insect' (0.414583ms)
+✔ mismatched canonical source cannot receive wing absence s=>s.lifeStage='larva' (0.142333ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 175.217542

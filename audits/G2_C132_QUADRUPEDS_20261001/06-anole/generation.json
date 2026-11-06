@@ -1,0 +1,14 @@
+{
+  "id": "06-anole",
+  "name": "Anole",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-42e0e478-9bb3-41c2-bee6-ba289e7ebf89.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5e50f89d74593377dd2d9876a0e6a16ec9b1bfdb950b20f86dba280e22dcce43",
+  "bytes": 973198,
+  "promptSha256": "d2f301ca07cd279f0137700f7f58767974bc85733d2ddb0af4b15e4db0e2b576",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

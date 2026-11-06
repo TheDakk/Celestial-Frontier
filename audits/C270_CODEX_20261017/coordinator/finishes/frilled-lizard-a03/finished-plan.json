@@ -1,0 +1,72 @@
+[
+  {
+    "id": "c270-frilled-lizard-a03",
+    "name": "Frilled Lizard",
+    "family": "quadruped",
+    "packet": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/packet",
+    "fit": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/rebound/c270-frilled-lizard-a03",
+    "packetId": "frilled-lizard-a03-01",
+    "script": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/script.json",
+    "nativeDir": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/native",
+    "nativeReport": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/native/report.json",
+    "masterSha256": "b8c4f038ceb023dbbe5f67c9a941c182b85ad43dc45d077c2ec6daa02cf4abfb",
+    "status": "STATIC_READY_NATIVE_PENDING",
+    "staticReport": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/static.json",
+    "staticReportSha256": "a863a06d1b1b81ab1b93b09d13bf2204140f49201314450c9205975717425d8f",
+    "recordSha256": "1babb32eb35289ed65d056d19e06fd7f00c47378722f301caee2c5252bb63e62",
+    "bindingSha256": "ed6fac005ed109a76c5ba8ddac79e365cbe3fd232d3d93edcb862a0ea948c332",
+    "partsManifestSha256": "d35b482789fffdfd5ee911611c843ac83c7f17deae9ddc1e832ed99039e25528",
+    "recipeHash": "5861cde8bcc9a8a6d7705e241081bbca792c380abdfcae3a7fe4bc4b05115366",
+    "canonicalMarkers": [
+      "huge circular skin frill fanned out behind the head",
+      "very long whip tail over half the length",
+      "gaping pink mouth at the frill's centre"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+      "declarations": "External pinnae absent (lizard group fact). Four limbs, frill (neck-owned), head, open lower jaw and the curled tail hand-authored on the exact original. C270 hand-observed a03 jaw follows the painted open-mouth/lower-lip contour; the narrow surrounding head/throat cuff owns the jaw-facing attachment to the frill.",
+      "limitations": "The frill is one neck-owned sheet: it rotates with the neck, it is not separately animated. The open mouth interior is owned by the jaw. Interior root/spine/pelvis/chest are control frames. a01 static RED (idle: exceeds scale compression bound) because the hind-near and fore-far chains were drawn almost straight (path/chord 1.005 and 1.019); a02 places those knees on the visible bend (ratio ≈1.05/1.07), extends the tail-base cap to the rump and the tail-tip cap to the curl end. a03 changes only jaw/head priority polygons. The fixed neck-owned frill is unchanged. This removes the excluded non-nearest jaw/frill cut by routing its anatomical cuff through the existing head owner; no hidden pigment, paint addition, deletion or threshold change.",
+      "nativeAcceptance": false
+    },
+    "sourceOwnerCheck": {
+      "packet": "24-frilled-lizard-a02",
+      "family": "quadruped",
+      "status": "FAIL",
+      "short": [
+        "foreFarAnkle:115"
+      ],
+      "min": 115
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": true,
+    "verifierFilmCaveats": [
+      "Owner check FAIL retained: foreFarAnkle115 keyed px <150. Author/Verifier call thin-limb ownership visually correct. Frill is rigid neck-owned. Must remain explicit at native review; threshold unchanged."
+    ],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "retainedFailureControl": {
+      "priorNative": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-finish-01/native/turn3-hit-idle-50.png",
+      "priorNativeSha256": "0b86c2c43dac832aeab7c7c07bd02ea0749738ee2cf82a40a7962f992cee4268",
+      "box": [
+        375,
+        270,
+        20,
+        30
+      ],
+      "observation": "C269 native finished-image jaw/frill gap; original has no gap. Prior static PASS is retained false-green visual control.",
+      "staticControl": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/fold-control-static.json",
+      "staticControlStatus": "RED",
+      "controlObservedFailure": "Published jaw mapping vertex0/1 swap triggers source-join gap under unchanged runner; no fold result is claimed."
+    },
+    "finishedMaster": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/finished/c270-frilled-lizard-a03-finished.png",
+    "finishReceipt": "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03/finished/c270-frilled-lizard-a03-receipt.json",
+    "checkpointReview": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/frilled-lizard-a03-01/checkpoint.json"
+  }
+]

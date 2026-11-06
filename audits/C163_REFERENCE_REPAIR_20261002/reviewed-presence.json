@@ -1,0 +1,18 @@
+[
+  {
+    "id": "01-giant-salamander",
+    "review": "audits/C163_REFERENCE_REPAIR_20261002/presence/01-giant-salamander.json"
+  },
+  {
+    "id": "02-alpine-salamander",
+    "review": "audits/C163_REFERENCE_REPAIR_20261002/presence/02-alpine-salamander.json"
+  },
+  {
+    "id": "04-blind-salamander",
+    "review": "audits/C163_REFERENCE_REPAIR_20261002/presence/04-blind-salamander.json"
+  },
+  {
+    "id": "05-axolotl",
+    "review": "audits/C163_REFERENCE_REPAIR_20261002/presence/05-axolotl.json"
+  }
+]

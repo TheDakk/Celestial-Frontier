@@ -1,0 +1,55 @@
+[
+  {
+    "id": "c266-19-coati-a02",
+    "name": "Coati",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/19-coati-a02",
+    "fit": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/rebound/c266-19-coati-a02",
+    "packetId": "coati-a02-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/native/report.json",
+    "masterSha256": "24ddde4eec55e1efa6972ea91feefe836c750c4e188aed4e7c4c719a8ff9e870",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/static.json",
+    "staticReportSha256": "f3b38b0f6544d87afae5c369b5da8c5ac2a3023da5dc560e55ae8233f126b4f7",
+    "recordSha256": "a6044850a87bb3f6a3d8067c6f8d29e029dbb1f1a2fb94ec7166805332e355f0",
+    "bindingSha256": "0deb4b4b1d9ff4330329c4d02d752f278481b2732bda1b94d6e5b2f7ee6eb0a7",
+    "partsManifestSha256": "02f016cc27933a72d833343d0fbab74b5182a09661a1eb356519cccb6b4f2cd4",
+    "recipeHash": "c80b3ca27c9faaf865b08c204a6f949898b5fab2cf5e63efede6c31927baf035",
+    "canonicalMarkers": [
+      "long upturned flexible snout",
+      "faintly banded tail held straight up like a flagpole",
+      "long low body with plantigrade feet"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "declarations": "Four legs, both ears, head, snout jaw, neck and the upright banded tail (four vertical slices) hand-authored on the exact original.",
+      "limitations": "Near legs are the pair with the lower feet. Interior root/spine/pelvis/chest are control frames. a02 (after an a01 PASS_STATIC that the C266 owner check flagged: foreNearPaw owned 72 px because the paw landmark/box sat past the toe tip) re-reads the fore-near foot at full size: ankle above the heel, paw part = the whole flat foot."
+    },
+    "sourceOwnerCheck": {
+      "packet": "19-coati-a02",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 207
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [
+      "Upright tail rides its own tail chain; fore-near paw expanded in exact a02 source after owner-check defect."
+    ],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/finished/c266-19-coati-a02-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01/finished/c266-19-coati-a02-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/coati-a02-01/visual-review.json",
+    "exitCode": 0
+  }
+]

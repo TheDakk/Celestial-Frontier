@@ -1,0 +1,20 @@
+{
+  "stage": "develop-d40-tools-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D40-develop-r02",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedUnix": 1792455680.557311,
+  "beforeGiB": 57.23957443237305,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 150.503,
+  "lowestGiB": 57.0781135559082,
+  "afterGiB": 57.19597625732422
+}

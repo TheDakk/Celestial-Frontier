@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Moose",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/c203creaturesupply-05-moose/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "438116a745c4b4a87c6e66f86cbc629298d77e98d4702d2e4aec0c357082cc58"
+}

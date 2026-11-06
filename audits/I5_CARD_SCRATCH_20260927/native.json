@@ -1,0 +1,167 @@
+{
+  "scope": "Native renderer backing-store diagnosis, not calibration/certification",
+  "oldHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
+  "oldSha256": "f3ba551d8ec5897ae06c2a1b5b762b696623b887f4437e06c2781d09b4bad5e1",
+  "newSha256": "70de420bf0876e527aaaad42fa40ccecd8a707c8a8c9d9749b1d7940dea9d6e9",
+  "scratchSha256": "c1ee572fb0b337b6c6970ec57c4330ea3871a41f2aeae9a4de1ac5bb25cfd25b",
+  "rows": [
+    {
+      "name": "old",
+      "phase": "ready",
+      "heap": {
+        "usedSize": 1392468,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 309488,
+        "backingStorageSize": 2355716
+      }
+    },
+    {
+      "name": "old",
+      "phase": "render-1",
+      "heap": {
+        "usedSize": 2351016,
+        "totalSize": 4980736,
+        "embedderHeapUsedSize": 571496,
+        "backingStorageSize": 14221892
+      }
+    },
+    {
+      "name": "old",
+      "phase": "gc-1",
+      "heap": {
+        "usedSize": 1568172,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 309488,
+        "backingStorageSize": 2425412
+      }
+    },
+    {
+      "name": "old",
+      "phase": "render-2",
+      "heap": {
+        "usedSize": 1911888,
+        "totalSize": 4718592,
+        "embedderHeapUsedSize": 571496,
+        "backingStorageSize": 14291588
+      }
+    },
+    {
+      "name": "old",
+      "phase": "gc-2",
+      "heap": {
+        "usedSize": 1574268,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 309488,
+        "backingStorageSize": 2425412
+      }
+    },
+    {
+      "name": "old",
+      "phase": "render-3",
+      "heap": {
+        "usedSize": 2217844,
+        "totalSize": 5242880,
+        "embedderHeapUsedSize": 571496,
+        "backingStorageSize": 14291588
+      }
+    },
+    {
+      "name": "old",
+      "phase": "gc-3",
+      "heap": {
+        "usedSize": 1664032,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 309488,
+        "backingStorageSize": 9503300
+      }
+    },
+    {
+      "name": "old",
+      "phase": "output",
+      "sha256": "b63a90163ecd30dee83c1750eaa05549bea783e73db133d103668c430760af1c"
+    },
+    {
+      "name": "new",
+      "phase": "ready",
+      "heap": {
+        "usedSize": 1393884,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 307832,
+        "backingStorageSize": 2357052
+      }
+    },
+    {
+      "name": "new",
+      "phase": "render-1",
+      "heap": {
+        "usedSize": 2217928,
+        "totalSize": 4718592,
+        "embedderHeapUsedSize": 570120,
+        "backingStorageSize": 2426748
+      }
+    },
+    {
+      "name": "new",
+      "phase": "gc-1",
+      "heap": {
+        "usedSize": 1574048,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 307832,
+        "backingStorageSize": 2426748
+      }
+    },
+    {
+      "name": "new",
+      "phase": "render-2",
+      "heap": {
+        "usedSize": 1973844,
+        "totalSize": 5242880,
+        "embedderHeapUsedSize": 570120,
+        "backingStorageSize": 2496444
+      }
+    },
+    {
+      "name": "new",
+      "phase": "gc-2",
+      "heap": {
+        "usedSize": 1580768,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 307832,
+        "backingStorageSize": 2426748
+      }
+    },
+    {
+      "name": "new",
+      "phase": "render-3",
+      "heap": {
+        "usedSize": 2404904,
+        "totalSize": 5242880,
+        "embedderHeapUsedSize": 570120,
+        "backingStorageSize": 2496444
+      }
+    },
+    {
+      "name": "new",
+      "phase": "gc-3",
+      "heap": {
+        "usedSize": 1671288,
+        "totalSize": 2097152,
+        "embedderHeapUsedSize": 307832,
+        "backingStorageSize": 2426748
+      }
+    },
+    {
+      "name": "new",
+      "phase": "output",
+      "sha256": "b63a90163ecd30dee83c1750eaa05549bea783e73db133d103668c430760af1c"
+    }
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}

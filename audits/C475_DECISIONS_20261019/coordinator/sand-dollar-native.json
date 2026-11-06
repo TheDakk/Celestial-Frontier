@@ -1,0 +1,20 @@
+{
+  "stage": "sand-dollar-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-Sand-Dollar-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/sand-dollar-d41-r02/native-plan-bound.json"
+  ],
+  "startedUnix": 1792461386.8696609,
+  "beforeGiB": 54.13080978393555,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.083,
+  "lowestGiB": 53.739349365234375,
+  "afterGiB": 54.10477828979492
+}

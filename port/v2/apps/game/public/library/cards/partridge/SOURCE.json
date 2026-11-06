@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Partridge",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/04-partridge/fallback-2/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c96d45c8543e4409250c5a01dd92d9abd14c2f694444890966033ba38800a859"
+}

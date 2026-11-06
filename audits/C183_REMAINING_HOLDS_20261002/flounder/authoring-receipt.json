@@ -1,0 +1,115 @@
+{
+  "schema": "cf.c183-observed-axial-boundaries/v1",
+  "sourceFit": "audits/C183_REMAINING_HOLDS_20261002/flounder-input",
+  "sourceRecordSha256": "1c6d430cd74712a1ba61e294c2b87a9868396f5b2b377ab02c3266c579c483cc",
+  "sourceBindingSha256": "5dad3ae6bb51b7ac32f1969f7e6dd67bb0436588deeae973147d5ad8b729ca91",
+  "sourcePreSplitSha256": "2edf13b2a132bf077bd5d2b27720f3b751efd6802e8663c12e4bea15cbe5bf4c",
+  "candidateBindingSha256": "faa0b62bec1f0d25563da957fbd9c1446cd13722460b9698bb63e492d9e3bbf2",
+  "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe",
+  "addedObservedBoundaries": [
+    [
+      "body-0",
+      "head"
+    ],
+    [
+      "body-2",
+      "body-5"
+    ],
+    [
+      "body-3",
+      "body-5"
+    ],
+    [
+      "body",
+      "body-5"
+    ],
+    [
+      "body",
+      "caudal"
+    ]
+  ],
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "5257dcc009ea6fb4c1ed48b576233f3fb565f4d5f356a7e30be4666d46d9a2a0",
+    "sourceVertices": 1225,
+    "vertices": 1295,
+    "sharedSupports": 554,
+    "pins": 123,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 18,
+    "observedExcludedBoundaries": 18,
+    "weldedExcludedBoundaries": 14,
+    "independentExcludedBoundaries": 4,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body-0",
+        "dorsal"
+      ],
+      [
+        "body-0",
+        "far-pectoral"
+      ],
+      [
+        "body-0",
+        "near-pectoral"
+      ],
+      [
+        "body-1",
+        "near-pectoral"
+      ],
+      [
+        "body-2",
+        "dorsal"
+      ],
+      [
+        "body-2",
+        "near-pectoral"
+      ],
+      [
+        "body-3",
+        "dorsal"
+      ],
+      [
+        "body-4",
+        "dorsal"
+      ],
+      [
+        "body-5",
+        "dorsal"
+      ],
+      [
+        "body-0",
+        "head"
+      ],
+      [
+        "body-2",
+        "body-5"
+      ],
+      [
+        "body-3",
+        "body-5"
+      ],
+      [
+        "body",
+        "body-5"
+      ],
+      [
+        "body",
+        "caudal"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "reason": "These five boundaries divide the single continuous painted flank or caudal peduncle, not independent overlapping appendages. Exact positive-alpha adjacency is required. Existing fish fin collar recipe is inherited unchanged.",
+  "paintChanged": false,
+  "ownershipChanged": false,
+  "landmarksChanged": false,
+  "motionChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "remainingHold": "Automatic near-pectoral polygon overclaims flank paint; source anatomical ownership and full native motion still require review."
+}

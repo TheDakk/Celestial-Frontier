@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rabbitfish",
+ "fitDir": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3efd63a48350b59ad63d97f52fb07ab97859e81a411b3f1bd0ece234a5a262bd"
+}

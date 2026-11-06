@@ -1,0 +1,7 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c266-06-pelican-c1","rows":[{"id":"c266-06-pelican-c1","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c266-06-pelican-c1","rows":[{"id":"c266-06-pelican-c1","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c266-06-pelican-c1","rows":[{"id":"c266-06-pelican-c1","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c266-06-pelican-c1","rows":[{"id":"c266-06-pelican-c1","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"complete","subject":"c266-06-pelican-c1","rows":[{"id":"c266-06-pelican-c1","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C266_CODEX_20261017/coordinator/pelican-finish-01/finished"}

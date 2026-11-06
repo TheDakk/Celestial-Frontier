@@ -1,0 +1,271 @@
+{
+  "status": "FINAL_SCOPE_RETAINED_HOLDS",
+  "scope": "Coordinator accounting only; no claim that all peer CPU repairs succeeded",
+  "rows": [
+    {
+      "name": "Amphipod",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Bee",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Boa",
+      "disposition": "UNAPPLIED_RUNTIME_PATCH_HOLD",
+      "reason": "Pinned motion/test change awaits Dakk; Gulper also retains independent fragment hold.",
+      "evidence": "audits/C266_ALLOUT_20261017/motion/README.md",
+      "evidenceSha256": "8edefce404f6f7f65829a5cbbd6df13a50f3b9c388f430ab220840d6a3b99739"
+    },
+    {
+      "name": "Brine Shrimp",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Cave Cricket",
+      "disposition": "INTAKE_REFUSAL_RETAINED",
+      "reason": "Verified C266 source/landmark failures retained; C268 follow-up is audit-only without independent verifier and not consumed.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/README.md",
+      "evidenceSha256": "f59aec95a6d2d844059de7564b0bb405ece8020c0533cd7af5abc77cfe1b9233"
+    },
+    {
+      "name": "Echidna",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Fairy Shrimp",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Fiddler Crab",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Fly",
+      "disposition": "NO_ELIGIBLE_C266_PACKET_BASELINE_HOLD",
+      "reason": "No eligible changed independently verified C266 film packet or generation prompt is delivered for this baseline row; retain its exact existing hold and do not duplicate authoring.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/qualified-c383/w4-delivery/remaining-species.json"
+    },
+    {
+      "name": "Giant Isopod",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Gibbon",
+      "disposition": "VERIFIED_VISUAL_HOLD",
+      "reason": "Changed owners still have concrete chest/flank/hip defects; no unchanged film retry.",
+      "evidence": "audits/C266_ALLOUT_20261017/seams-mammals/README.md",
+      "evidenceSha256": "76636ba093c7812e056c22d336ded405593b22224e0defbd879d76570f4dba2d"
+    },
+    {
+      "name": "Gulper Eel",
+      "disposition": "UNAPPLIED_RUNTIME_PATCH_HOLD",
+      "reason": "Pinned motion/test change awaits Dakk; Gulper also retains independent fragment hold.",
+      "evidence": "audits/C266_ALLOUT_20261017/motion/README.md",
+      "evidenceSha256": "8edefce404f6f7f65829a5cbbd6df13a50f3b9c388f430ab220840d6a3b99739"
+    },
+    {
+      "name": "Harvestman",
+      "disposition": "INTAKE_REFUSAL_RETAINED",
+      "reason": "Verified C266 source/landmark failures retained; C268 follow-up is audit-only without independent verifier and not consumed.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/README.md",
+      "evidenceSha256": "f59aec95a6d2d844059de7564b0bb405ece8020c0533cd7af5abc77cfe1b9233"
+    },
+    {
+      "name": "Honeybee",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Isopod",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Kangaroo",
+      "disposition": "VERIFIED_VISUAL_HOLD",
+      "reason": "Changed owners still have concrete chest/flank/hip defects; no unchanged film retry.",
+      "evidence": "audits/C266_ALLOUT_20261017/seams-mammals/README.md",
+      "evidenceSha256": "76636ba093c7812e056c22d336ded405593b22224e0defbd879d76570f4dba2d"
+    },
+    {
+      "name": "Krill",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Lionfish",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Mandrill",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Moray Eel",
+      "disposition": "UNAPPLIED_RUNTIME_PATCH_HOLD",
+      "reason": "Pinned motion/test change awaits Dakk; Gulper also retains independent fragment hold.",
+      "evidence": "audits/C266_ALLOUT_20261017/motion/README.md",
+      "evidenceSha256": "8edefce404f6f7f65829a5cbbd6df13a50f3b9c388f430ab220840d6a3b99739"
+    },
+    {
+      "name": "Moth",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Mountain Viper",
+      "disposition": "UNAPPLIED_RUNTIME_PATCH_HOLD",
+      "reason": "Pinned motion/test change awaits Dakk; Gulper also retains independent fragment hold.",
+      "evidence": "audits/C266_ALLOUT_20261017/motion/README.md",
+      "evidenceSha256": "8edefce404f6f7f65829a5cbbd6df13a50f3b9c388f430ab220840d6a3b99739"
+    },
+    {
+      "name": "Orangutan",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Owl",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Oyster",
+      "disposition": "UNAPPLIED_VALVE_PATCH_CLASS_HOLD",
+      "reason": "Oyster opening-sign patch awaits Dakk; Razor Clam and Scallop wait on proven Oyster.",
+      "evidence": "audits/C266_ALLOUT_20261017/seams-birds-shells/README.md",
+      "evidenceSha256": "ab38310b6355c9fca0b1e2be5c747cb604b5e53c7cde8820107005cad00b534a"
+    },
+    {
+      "name": "Pipefish",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Pyrosome",
+      "disposition": "NO_ELIGIBLE_C266_PACKET_BASELINE_HOLD",
+      "reason": "No eligible changed independently verified C266 film packet or generation prompt is delivered for this baseline row; retain its exact existing hold and do not duplicate authoring.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/qualified-c383/w4-delivery/remaining-species.json"
+    },
+    {
+      "name": "Razor Clam",
+      "disposition": "UNAPPLIED_VALVE_PATCH_CLASS_HOLD",
+      "reason": "Oyster opening-sign patch awaits Dakk; Razor Clam and Scallop wait on proven Oyster.",
+      "evidence": "audits/C266_ALLOUT_20261017/seams-birds-shells/README.md",
+      "evidenceSha256": "ab38310b6355c9fca0b1e2be5c747cb604b5e53c7cde8820107005cad00b534a"
+    },
+    {
+      "name": "Scallop",
+      "disposition": "UNAPPLIED_VALVE_PATCH_CLASS_HOLD",
+      "reason": "Oyster opening-sign patch awaits Dakk; Razor Clam and Scallop wait on proven Oyster.",
+      "evidence": "audits/C266_ALLOUT_20261017/seams-birds-shells/README.md",
+      "evidenceSha256": "ab38310b6355c9fca0b1e2be5c747cb604b5e53c7cde8820107005cad00b534a"
+    },
+    {
+      "name": "Sea Squirt",
+      "disposition": "NO_ELIGIBLE_C266_PACKET_BASELINE_HOLD",
+      "reason": "No eligible changed independently verified C266 film packet or generation prompt is delivered for this baseline row; retain its exact existing hold and do not duplicate authoring.",
+      "evidence": "audits/C243_ALLOUT_20261011/execution/qualified-c383/w4-delivery/remaining-species.json"
+    },
+    {
+      "name": "Seal",
+      "disposition": "UNAPPLIED_CONTACT_TEMPLATE_HOLD",
+      "reason": "Prone pinniped/contact template decision remains; no runtime adoption.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-quadrupeds/README.md",
+      "evidenceSha256": "5af06d229ab80692577cf33d9a2acb0fa5010c86cdc503a1afb3730d67f1bef3"
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    },
+    {
+      "name": "Thrips",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Vampire Bat",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Vent Crab",
+      "disposition": "STATIC_OR_SOURCE_PLAN_HOLD",
+      "reason": "Diagnosed source/static/class stop remains; no eligible independently verified repair for this queue.",
+      "evidence": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "evidenceSha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "name": "Walrus",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Warthog",
+      "disposition": "SEALED_KEYING_HOLD",
+      "reason": "Verified despill candidate breaks keyed-RGBA seal; painted coral/wing pigment remains separately. No patch applied.",
+      "evidence": "audits/C266_ALLOUT_20261017/pink-fringe/README.md",
+      "evidenceSha256": "450468337740896c14b6edd9ac5964ba6d9da27944c7d62b9daf351bcf33afef"
+    },
+    {
+      "name": "Water Flea",
+      "disposition": "TEMPLATE_OR_OCCLUSION_DECISION_HOLD",
+      "reason": "No admissible changed template/occlusion contract adopted; production inputs remain unchanged.",
+      "evidence": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "evidenceSha256": "694952eacebc4f73c4596edcd73ea3302392d1df0b741a6a1cfde8ad0d0086c2"
+    }
+  ],
+  "accepted": 0,
+  "runtimeApplied": false
+}

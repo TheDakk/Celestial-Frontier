@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c266-02-box-turtle-a03",
+    "name": "Box Turtle",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/02-box-turtle-a03",
+    "fit": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/rebound/c266-02-box-turtle-a03",
+    "packetId": "box-turtle-a03-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/native/report.json",
+    "masterSha256": "336229429763c96e61b2f41ffea5f0430eba9b15c5fedba67e6f8569c1f52027",
+    "status": "STATIC_READY_NATIVE_PENDING",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/static.json",
+    "staticReportSha256": "ad06eb605b639eee60fa778e72a14735a71c14133f33ba011f5a855f410eba2b",
+    "recordSha256": "aa357fad755f1452d5736d5b95b560c055099a29de7b9e0f0ddf7360de864302",
+    "bindingSha256": "203e3f9b9c0c446310f2f9768ddb33bc8c7d97c25aeb0768833b0bd9cb0515aa",
+    "partsManifestSha256": "f377a550afa199ec06a94d7b6e3d973db7be771d9315a94b3bbe69cd442ac96e",
+    "recipeHash": "15d6632239169863c81c837b4d1c4502ab0e68fa4acd2db0c0fd40f3319cd064",
+    "canonicalMarkers": [
+      "high domed shell",
+      "hinged underside that shuts like a box",
+      "scaly clawed elephantine feet"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "declarations": "External pinnae are anatomically absent (chelonian). Four visible feet, exposed neck, head and tail are hand-authored on the exact original.",
+      "limitations": "Interior root/spine/pelvis/chest points are source-local control frames inside the shell, not seen bones. Far limb emergence under the shell is partly occluded; far hip/shoulder landmarks are interpretations under the shell rim. Each ankle part is the whole visible foot block with the ankle landmark in its interior (the C266 tortoise a02/a03 lesson). a01 static RED: melee:claw folded 23 triangles where root-owned plastron vertices abut the fore-near knee/ankle seam (fold-diag); a02 moves the fore-near knee and ankle pivots below the plastron edge so the plastron-adjacent upper leg is one emergence part. a03 (variant 1 of 2 after a02 static RED: claw folds inside the fore-near foot block): hippo convention, each fore-near pivot 17-22px inside its own part."
+    },
+    "sourceOwnerCheck": {
+      "packet": "02-box-turtle-a03",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 373
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/finished/c266-02-box-turtle-a03-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/finished/c266-02-box-turtle-a03-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/box-turtle-a03-01/visual-review.json"
+  }
+]

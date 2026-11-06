@@ -1,0 +1,54 @@
+{
+  "schema": "cf.c279-source-backed-author-repair/v1",
+  "firstRefusal": "~/Projects/celestial-frontier-openai-mac/audits/C279_CODEX_20261018/w3-intake/additional15/cpu01/caecilian/raw-fit/refusal.json",
+  "sourcePacket": "~/Projects/celestial-frontier-openai-mac/audits/C279_CODEX_20261018/w3-intake/additional15/observed01/c275-w1-03-c266-caecilian",
+  "newPacket": "~/Projects/celestial-frontier-openai-mac/audits/C279_CODEX_20261018/w3-intake/additional15/observed02/c275-w1-03-c266-caecilian",
+  "oldAuthorSha256": "7276c8d01388f137c2e5432214e2dd605ed43e36dbb8aff541307f6505080789",
+  "newAuthorSha256": "8df6351e74e8b7a03dfa7c73526f188dc77a3b2da43552952a6b872a8791bba7",
+  "originalSha256": "64ea849b4589fc77713b2709d206aa411ea9e652d4fde86eea12bb0b00fe7564",
+  "newOriginalSha256": "64ea849b4589fc77713b2709d206aa411ea9e652d4fde86eea12bb0b00fe7564",
+  "changes": [
+    {
+      "part": "body-seg0",
+      "before": [
+        [
+          907.0,
+          0
+        ],
+        [
+          1018,
+          0
+        ],
+        [
+          1018,
+          1254
+        ],
+        [
+          907.0,
+          1254
+        ]
+      ],
+      "after": [
+        [
+          907.0,
+          0
+        ],
+        [
+          975,
+          0
+        ],
+        [
+          975,
+          1254
+        ],
+        [
+          907.0,
+          1254
+        ]
+      ],
+      "why": "Actual anterior annular neck tissue x975..1018 is the root-owned source region; old exhaustive trunk strips left zero neck-root pixels. No source pixel or joint moved."
+    }
+  ],
+  "limitsChanged": false,
+  "nativeAcceptance": false
+}

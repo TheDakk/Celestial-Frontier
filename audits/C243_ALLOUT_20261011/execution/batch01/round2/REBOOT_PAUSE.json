@@ -1,0 +1,163 @@
+{
+  "status": "PAUSED_BY_DAKK_FOR_REBOOT",
+  "reservation": "C351 TERMINAL\u2014RELEASED via C358",
+  "generated": 16,
+  "candidate": 1,
+  "requiredCandidatesPerUnacceptedSpecies": 3,
+  "firstCandidateRemaining": 15,
+  "results": [
+    {
+      "id": "c243b01r2c1-02-coati",
+      "name": "Coati",
+      "generatorBytesIdentical": true,
+      "masterSha256": "0bdda04416b47ef180abc512a4e5416a267acc9926b92771a5cea5261b63185e",
+      "promptSha256": "7c775de3e9014b1fbdab963e7d115e8fae1310df9d21bef16c9c9ec754f28e71",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-03-porcupine",
+      "name": "Porcupine",
+      "generatorBytesIdentical": true,
+      "masterSha256": "346ef2b32627ff2c9258b2ffb9e5b5e833ed6487fff12c6e6282e8b9a7d34d78",
+      "promptSha256": "e6e7ed0c99483f9447cd8d0a0bff6842234b1a7e150f0f1f39c6b11337a16206",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-04-squirrel",
+      "name": "Squirrel",
+      "generatorBytesIdentical": true,
+      "masterSha256": "735c183e7713578160dc9cdf12ddda7aed67d12a3ac10c5b7f6bed2bdde8db80",
+      "promptSha256": "b36ebd4cb104514e8394492f6d57b1fb41c8f441df6d8ccb287a2757317912b9",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-05-mole",
+      "name": "Mole",
+      "generatorBytesIdentical": true,
+      "masterSha256": "a36f8714f07d8c636f3d21563e72a878fc6ad572dccde556c81e25cc6c84d3b8",
+      "promptSha256": "d6f2218962b8420e5706dc6c6f4e417e3cc1a5831b5d37b4952df0e6b0afe199",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-07-water-vole",
+      "name": "Water Vole",
+      "generatorBytesIdentical": true,
+      "masterSha256": "a8186faafd418ce56c3488d6b9dca5ee8f88182cc3a2107e7d576f0a39159ce7",
+      "promptSha256": "e7738190f2231c0772bcb9a3d21d0504c521466d4b54b3a29a2e3cf19f9407c5",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-09-giant-anteater",
+      "name": "Giant Anteater",
+      "generatorBytesIdentical": true,
+      "masterSha256": "b30c9a7c7f9300237cb53d23cf3ad60286c6696fcabb2cd85f6638b46fe0bcea",
+      "promptSha256": "c187fff8e25ab051813fe69d00c996c6184b80c68c26699693f0c2cfdb870159",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-10-pangolin",
+      "name": "Pangolin",
+      "generatorBytesIdentical": true,
+      "masterSha256": "bc77fa6ee7585a238910990f1ead916c35afaab080a8eb2e61dc8575e8886444",
+      "promptSha256": "a14f70687bc8c42754b216f46e0c6fd21d21038c5bace3371bc4ebf71d8f8862",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-11-echidna",
+      "name": "Echidna",
+      "generatorBytesIdentical": true,
+      "masterSha256": "f0e88ef1433b8986458cbaa07721885d3e868db85471e90aa148aa3170dfe1e4",
+      "promptSha256": "18ef89511e7a03316cb1d82f54912caa729aa2efa3b07cdfa10d80e29d7f367d",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-12-ibex",
+      "name": "Ibex",
+      "generatorBytesIdentical": true,
+      "masterSha256": "68319d65e19152488ff0426fe19d74223b3f00855a53b4b041af7594fced9f43",
+      "promptSha256": "5cd054f8a37dc22bb64fcc3b0abcefbd5c8530b1c3ac35c3668c463007f503ea",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-13-yak",
+      "name": "Yak",
+      "generatorBytesIdentical": true,
+      "masterSha256": "c09d6aa80ce3730e727ad2fb91db7d9fb4edd43c40aaf9fd65054a97369e8ff4",
+      "promptSha256": "d567bd23a5978935d467c18988a9339b03539ee8cb457d256af2193a6379d558",
+      "verdict": "ADMIT",
+      "static": "PASS_STATIC"
+    },
+    {
+      "id": "c243b01r2c1-14-wild-horse",
+      "name": "Wild Horse",
+      "generatorBytesIdentical": true,
+      "masterSha256": "6110240bf16bcd7b194f31488ae8557c842dac23adf77623cbef1683e4232414",
+      "promptSha256": "c97ec8c2338ddc8b5d1532e29b273b4b024512ca2bb05fd3780a781c2ba8d6e1",
+      "verdict": "ADMIT",
+      "static": "RED"
+    },
+    {
+      "id": "c243b01r2c1-15-camel",
+      "name": "Camel",
+      "generatorBytesIdentical": true,
+      "masterSha256": "362cd8072f73e65d6316dc6f61d71e7b95799ad887bb49d68c96d0df195d0c5c",
+      "promptSha256": "4f938b4beba43f049bc7ae536696ef7e6884c9badc430db40b201bc90fa0c6b3",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-16-dromedary-camel",
+      "name": "Dromedary Camel",
+      "generatorBytesIdentical": true,
+      "masterSha256": "07afcdc3daac6c05a695a9d3613e3606250e63addbd82ad7b27caf538b9cad9f",
+      "promptSha256": "5b6636e4ada97982f62c5d40cf27f80b4a38b7b6448ca7a3451a7a5abd370333",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-17-warthog",
+      "name": "Warthog",
+      "generatorBytesIdentical": true,
+      "masterSha256": "42908d99792cb8d8fcd952ef28f28d3d60deccaf2f35a6487540a5afc39a2736",
+      "promptSha256": "71d233df03df8c1467dc13081aaf030ee493bea56d190fe9bcf5d1996bdff7a9",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-19-walrus",
+      "name": "Walrus",
+      "generatorBytesIdentical": true,
+      "masterSha256": "c7ebf55da7e7a7f303b26fff81aeeba27b3a8647ad9051a9d137853f4df401a0",
+      "promptSha256": "9802917bf0ec26858510f00d5f52e1a542ec3e42793b7dfa8ab78d074b34bde9",
+      "verdict": "REFUSE",
+      "static": null
+    },
+    {
+      "id": "c243b01r2c1-20-seal",
+      "name": "Seal",
+      "generatorBytesIdentical": true,
+      "masterSha256": "12563a0e6ead809b66668995c386d7d83dd06c253a9bea7e24b1ee9e8f5716db",
+      "promptSha256": "aefcef9e1949e65204636eba769ce51a20f6105fb054f9543244a2d5e5c5ef6c",
+      "verdict": "REFUSE",
+      "static": null
+    }
+  ],
+  "nextNames": [
+    "Fur Seal",
+    "Sea Lion",
+    "Anole",
+    "Skink"
+  ],
+  "jobs": "All known native, AI, static and image jobs finished; idle image-lock session released without generating the next row.",
+  "claudeReview": "C257/C258: batch7 eight accepted pending certification; Camel held for source identity.385certified+32pending=417,214unaccepted. Signed peer head1abef60d6 available for local merge.",
+  "freeGiB": 77.4
+}

@@ -1,0 +1,23 @@
+# C210 backlog unlocks — 2026-10-04
+
+Dakk authorized policy activation, material completion, source repairs and continued original supply. C209–C210 read first; C288 reserved native/heavy work. Coverage starts and remains Claude-owned **283/631**. No all-pairs, epoch, develop gate, push, PR, label, hosted run, integration merge, release or deploy.
+
+## Delivered
+
+- Activated exact-source compact-tail / present-occluded-ear policy, with 23 focused controls and 6 existing exclusion controls. All biological/coverage/geometry limits remain. Review index covers five exact masters; it is not a species-wide whitelist. Pronghorn, Duiker and Serow now author/intake/static/native pass. Duiker/Serow have visible independent ear islands and remain HOLD. Brown Bear still unexplained6.1%; Moose still far-ear24% and tail3 9%: refusal preserved. Tahr and Elk have no new declaration in this batch.
+- Material table fills all22 missing-material records, explicit per-species resolution for mixed groups; unknowns refuse. See material-refusals.json and material-controls.json. Only Elephant g2c114-02 and Giant Anteater g2c107-10 lacked another recorded refusal; rerun the whole backlog to measure actual gain.
+- Grounded painted bird folded-victory candidate, five static/native diagnostics: Cardinal, Pigeon, Toucan, Duck, Sparrow. Full-size late-idle winner poses have no large neck/wing ribbon; faint remains unchanged. Cardinal crest, Toucan bill/crown and Duck head/tail islands remain HOLD. Falcon/Egret not validated on this candidate.
+- Eight source-join successors in joins01: River Otter twice, Sea Otter, Colugo, Spotted Hyena, Nilgai, Impala, Swordfish. Static and native numeric PASS. Full-size inspected approach frames retain otter/colugo chest/face continuity; flash-heavy impact stills cannot establish every strike frame. Hyena/Nilgai back outline improved in held faint, but Hyena detached thread and Nilgai folded near foreleg remain. Impala/Swordfish require explicit victory bill/horn review; no admission claimed. These are review candidates, not replacements for all named holds.
+- Six new originals and six retained framing successors: Macaque, Baboon, Cricket, Locust, Centipede, Millipede. All selected successors satisfy existing8% margin; no G1/reference qualification. Use ../C210_ORIGINALS_20261004/pilot-framing02.json.
+
+## Evidence and replay
+
+`native-integrity.json`: all16 diagnostics, zero native refusals/capture failures;909 sources each for final13,908 each for earlier3policy pilots. Earlier policy timeline is preserved as an exact hash-matching snapshot; final13 used the current motion source. Git source field alone refers to the base commit64dc6b649; the dirty-source SHA inventories establish the actual candidate. Release-note text was subsequently updated; it does not change motion. Reports retain all measurements with home prefixes abbreviated. Films and unselected stills are retained under `~/Projects/celestial-frontier-openai-mac/audits/C210_BACKLOG_UNLOCKS_20261004/retained-media/` (ignored) with hashes. Four full-size diagnostic stills per candidate are committed; the other still hashes are in retained-media-index.json.
+
+`native-policy.py`, `native-seams-birds.py`, `seam-batch.py`, `join-candidates.mjs`, `write-reviews.mjs` preserve the commands. Static:19actions/2299samples per compact-tail pilot; full action diagnostics for source joins/birds. 154 motion tests PASS,29 policy/exclusion tests PASS,18 legacy policy tests PASS, game TypeScript PASS, root validate PASS. A test-only TypeScript exact-optional-property error was corrected by omitting the field; original error log retained. Two old exact bird-victory oracles were replaced with the intended folded-victory outcomes, retaining every other action's exact comparison and unchanged solver/stage checks.
+
+## Remaining holds
+
+No limit weakening or retry of a failed native candidate. Tahr keying fringe, Falcon C275/Springtail folds, Loon/Petrel/Bee islands, deep-body Cow/Wild Pig faint and remaining author categories are unresolved. Six new originals do not establish a qualified zero-reference family. All-pairs HOLD. Dakk must authorize a fresh exact-head I5(3+1)+develop chain before this new product is certified/pushed. Claude can read the signed local candidate directly and re-score the whole backlog after reconciling the policy/material owner, preserving original verdicts and source-bound review index; do not count numerical passes as gallery admissions.
+
+Exact tool-output logs and hash-bound generation prompts retain their original trailing blank lines; diff whitespace warnings on those evidence files are intentional.

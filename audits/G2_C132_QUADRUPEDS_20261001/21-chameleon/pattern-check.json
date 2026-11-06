@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chameleon",
+  "masterSha256": "0fd53c8caa597c8edc05cee3423e30482e065e0dae62cc3e50a94c9b8720ba2f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

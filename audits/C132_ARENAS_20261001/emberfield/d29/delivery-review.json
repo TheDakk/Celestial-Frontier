@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "emberfield",
+  "biome": "emberfield",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "emberfield"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "emberfield"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "emberfield"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.generation.json",
+      "sha256": "50d64f09bc9cb873dae375e4520315951322a559d85be47b8149f4a074bf469a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-mid.generation.json",
+      "sha256": "4886f1e3dff922997fed23405fdc6ac76248e08d2dc2375a2e47c91822a91a82"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-near.generation.json",
+      "sha256": "361920bab2970f1a3d8710ffec17fbfea91355dbaf2c47c8d98c6b26e68bed9b"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-composed-review.png",
+      "sha256": "d43d9dfc0b77c1b94a7e711cdf34f2e1f7c615c861e973e8d0b46e83f293023d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-plates-review.png",
+      "sha256": "bb05e1c886eda74dab60fe4bb902a951748f847aa8c9a3b2f3762876f3baa3a2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+      "sha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+      "sha256": "8959dbe8d55122938dd7b4c52bdeda71d289b273bcc8d5ff71b7986f9900698e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-near.png",
+      "sha256": "7cd3110ce547adf1e3e632357b849fd4d1a38cdb3642e2acfc6b40e5a5b833de"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/visual-notes.d29.json",
+      "sha256": "b305b6883805689f231542d654b1d720bc8fc7b7347698fbec03658f09adf6ab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-manifest.json",
+      "sha256": "d2706f1b0d287287ab4bb8745841ce6c3a843817efa4bcad7c5155a3d6976ca4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-recipe.json",
+      "sha256": "8ff735f503a03f7942eeab22332e199418024748b9682c733d4c4eb0cadc10fc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.generation.json",
+      "sha256": "50d64f09bc9cb873dae375e4520315951322a559d85be47b8149f4a074bf469a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.prompt.txt",
+      "sha256": "751fd9dbbf4431a65b5f2de58e44b1fdba28704be549c293c7c7e0abfe2a2afe"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-mid.generation.json",
+      "sha256": "4886f1e3dff922997fed23405fdc6ac76248e08d2dc2375a2e47c91822a91a82"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-mid.prompt.txt",
+      "sha256": "87d44394841474a7998e0bf4a6dd43d23d4695ed71bb13ef6db191a99a7ef494"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.png",
+      "sha256": "4cb93b2fd53cd16a0f9447f6d6a3585d2adacb4d5578c33fb9e89ec421c2d8b5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-near.generation.json",
+      "sha256": "361920bab2970f1a3d8710ffec17fbfea91355dbaf2c47c8d98c6b26e68bed9b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/arena-near.prompt.txt",
+      "sha256": "861624ec1541d8e050c2381a836765219abc6b69f0800ecb8d557944bd8bc725"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.png",
+      "sha256": "64fdcafb8570f4a6da990281b7c1cdb081385adf2d52169e9cf1f095019b87b3"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/emberfield/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Orange ash ground, basalt towers and smoke are present; the flat fighting band remains clear.",
+      "MID repeats a distant geological ridge already in FAR. Its keyed outline cuts sharply across the background, including abrupt contour steps around the left arch and right distant rocks. NEAR introduces a paler horizontal earth band at the lower edge. These are concrete composition holds.",
+      "No visible sun disk or fauna occurs in the selected paintings, but the orange directional light is stronger than the near-neutral system card and needs review. No native motion, physical-medium admission or acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "c243b03r1c1-23-carrion-beetle",
+    "packetId": "c243b03r1c1-23-carrion-beetle",
+    "name": "Carrion Beetle",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1h/c243b03r1c1-23-carrion-beetle/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c1-23-carrion-beetle-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-23-carrion-beetle",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-23-carrion-beetle/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1h/c243b03r1c1-23-carrion-beetle/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-23-carrion-beetle"
+  },
+  {
+    "id": "c243b03r1c1-26-moth",
+    "packetId": "c243b03r1c1-26-moth",
+    "name": "Moth",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-26-moth/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c1-26-moth-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-26-moth/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-26-moth"
+  },
+  {
+    "id": "c243b03r1c1-27-springtail",
+    "packetId": "c243b03r1c1-27-springtail",
+    "name": "Springtail",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-27-springtail/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c1-27-springtail-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-27-springtail",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-27-springtail/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-27-springtail/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-27-springtail"
+  },
+  {
+    "id": "c243b03r1c1-28-thrips",
+    "packetId": "c243b03r1c1-28-thrips",
+    "name": "Thrips",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1j/c243b03r1c1-28-thrips/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c1-28-thrips-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-28-thrips",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-28-thrips/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1j/c243b03r1c1-28-thrips/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-28-thrips"
+  },
+  {
+    "id": "c243b03r1c2-12-honeybee",
+    "packetId": "c243b03r1c2-12-honeybee",
+    "name": "Honeybee",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2d/c243b03r1c2-12-honeybee/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c2-12-honeybee-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-12-honeybee",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-12-honeybee/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2d/c243b03r1c2-12-honeybee/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-12-honeybee"
+  },
+  {
+    "id": "c243b03r1c2-20-stonefly",
+    "packetId": "c243b03r1c2-20-stonefly",
+    "name": "Stonefly",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2g/c243b03r1c2-20-stonefly/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c2-20-stonefly-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2g/c243b03r1c2-20-stonefly/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-20-stonefly"
+  },
+  {
+    "id": "c243b03r1c2-31-eagle",
+    "packetId": "c243b03r1c2-31-eagle",
+    "name": "Eagle",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c2-31-eagle-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-31-eagle",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-31-eagle/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-31-eagle"
+  },
+  {
+    "id": "c243b03r1c3-01-bumblebee",
+    "packetId": "c243b03r1c3-01-bumblebee",
+    "name": "Bumblebee",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3a/c243b03r1c3-01-bumblebee/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c3-01-bumblebee-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-01-bumblebee",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-01-bumblebee/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3a/c243b03r1c3-01-bumblebee/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-01-bumblebee"
+  },
+  {
+    "id": "c243b03r1c3-24-ladybug",
+    "packetId": "c243b03r1c3-24-ladybug",
+    "name": "Ladybug",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch03/native-scripts/c243b03r1c3-24-ladybug-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-24-ladybug"
+  }
+]

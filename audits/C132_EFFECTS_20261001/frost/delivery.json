@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "frost",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "shatter",
+  "abilityName": "Shatterfrost",
+  "material": "ice shards, rime, frozen mist, crystal shatter",
+  "accent": "#8fd6ff",
+  "anchors": "frost/anchors.json",
+  "anchorsSha256": "31001930b095dfbef13591fd78b36285a04d4f85d421d25964ba6a18c59d87a8",
+  "reviewSheet": "frost/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "frost/registered/launch.png",
+      "imageSha256": "5917619501737c9318931369c59d8523b1980270b1c0b90f30b275927c3a441e",
+      "master": "frost/launch-master.png",
+      "masterSha256": "4d7f35b6d0ad08afa9e5ae93655f56df595b2f4796872c93ecc318284b145b10",
+      "prompt": "frost/launch.prompt.txt",
+      "promptSha256": "8ad873e846369d2c6dfff23cf6e1f2e0c9410e754f42992a05b6c2847becbfa3",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 107,
+        "y": 406,
+        "width": 190,
+        "height": 246
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "frost/registered/travel.png",
+      "imageSha256": "b00756664bf2c4a7781562d1395022f2bfdc0407ffece134fb1d2b1f73f37011",
+      "master": "frost/travel-master.png",
+      "masterSha256": "f33d18e61d635fca9af7e7dc48a54c3dd45c0f1a6233e055217fd0c52332265c",
+      "prompt": "frost/travel.prompt.txt",
+      "promptSha256": "1ed49f8146b3a4394e24e3ce9a0ccad526cfa66151ebd5e0de633c02c354cd65",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 145,
+        "y": 432,
+        "width": 675,
+        "height": 270
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "frost/registered/impact.png",
+      "imageSha256": "52b2f3630353c66165367c0ac4307ba898b0fec1cfe883b4f154206366accb5c",
+      "master": "frost/impact-master.png",
+      "masterSha256": "bbf1a4a72b3acd306b6dadc251a837b80e33a7e638ccf380b514f9d65b50e051",
+      "prompt": "frost/impact.prompt.txt",
+      "promptSha256": "c78c2c24ae19426e7922e4e3992896ca01979452823f50554dbfac4c70d060d4",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 519,
+        "y": 388,
+        "width": 314,
+        "height": 321
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "frost",
+    "sequenceId": "frost-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 20998,
+        "edge": 9797,
+        "fringe": 16,
+        "fringeRatio": 0.0016331530060222517,
+        "accentShare": 0.2031001842322597,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 107,
+          "y": 406,
+          "width": 190,
+          "height": 246
+        }
+      },
+      "travel": {
+        "painted": 65793,
+        "edge": 13677,
+        "fringe": 24,
+        "fringeRatio": 0.001754770783066462,
+        "accentShare": 0.07742067974124653,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 145,
+          "y": 432,
+          "width": 675,
+          "height": 270
+        }
+      },
+      "impact": {
+        "painted": 36233,
+        "edge": 13402,
+        "fringe": 28,
+        "fringeRatio": 0.002089240411878824,
+        "accentShare": 0.06746870991228374,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 519,
+          "y": 388,
+          "width": 314,
+          "height": 321
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "frost",
+    "anchors": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+    "exitCode": 0,
+    "log": "tests/frost.txt"
+  },
+  "manifestRow": {
+    "theme": "frost",
+    "anchors": "../C132_EFFECTS_20261001/frost/anchors.json",
+    "contract": "v4.3"
+  }
+}

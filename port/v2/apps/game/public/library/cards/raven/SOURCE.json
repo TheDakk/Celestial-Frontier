@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Raven",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0b86dd46a9c2a8aecda9831b3c9d45a6d3c7f605fe984381d5f3fc398891f4e7"
+}

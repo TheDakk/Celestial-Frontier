@@ -1,0 +1,10 @@
+{
+  "id": "c266-14-shrew",
+  "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/shrew-01/native/report.json",
+  "name": "Shrew",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/shrew-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/shrew-01/visual-review.json",
+  "checkpointReviewSha256": "8fe0f70333899e3f8ed98a061c9dfa24405ad1639a5cba623d4244794d5eb729",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

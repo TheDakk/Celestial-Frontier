@@ -1,0 +1,21 @@
+{"id":"idle","samples":2,"drift":0.06492338376067534,"gap":0.00004098172075549538,"error":"Error: Contact: painted support iteration residual 0.26350408495550587"}
+{"id":"approach","samples":1,"drift":0.0000435282073965761,"gap":0.000033634901001278195,"error":"Error: Contact: painted support iteration residual 0.26244944017027405"}
+{"id":"melee:bite","samples":26,"drift":0.24200035763216673,"gap":0.00006136295295359242,"error":"Error: Contact: painted support iteration residual 0.26405203880952455"}
+{"id":"alert","samples":1,"drift":0.0000435282073965761,"gap":0.000033634901001278195,"error":"Error: Contact: painted support iteration residual 0.26405203880955863"}
+{"id":"approach:walk","samples":1,"drift":0.0000435282073965761,"gap":0.000033634901001278195,"error":"Error: Contact: painted support iteration residual 0.26244944017027405"}
+{"id":"approach:trot","samples":1,"drift":0.0000435282073965761,"gap":0.000033634901001278195,"error":"Error: Contact: painted support iteration residual 0.26244944017023997"}
+{"id":"approach:gallop","samples":32,"drift":0.2306512756010533,"gap":0.00005715325620001,"error":"Error: Contact: approach:gallop@180.26666666666668 exceeds scale compression bound"}
+{"id":"approach:hop","samples":121,"drift":0,"gap":0.00006527351555241747}
+{"id":"melee:claw","samples":26,"drift":0.24200035763216673,"gap":0.00006136295295359242,"error":"Error: Contact: painted support iteration residual 0.26405203880952455"}
+{"id":"melee:gore","samples":26,"drift":0.24200035763216673,"gap":0.00006136295295359242,"error":"Error: Contact: painted support iteration residual 0.26405203880952455"}
+{"id":"melee:tail","samples":37,"drift":0.19881959211481556,"gap":0.00006615662478706725,"error":"Error: Contact: painted support iteration residual 0.26533573238346664"}
+{"id":"melee:headbutt","samples":26,"drift":0.24200035763216673,"gap":0.00006136295295359242,"error":"Error: Contact: painted support iteration residual 0.26405203880952455"}
+{"id":"cast","samples":2,"drift":0.08883456498735251,"gap":0.000038522291589711206,"error":"Error: Contact: painted support iteration residual 0.26478126253449386"}
+{"id":"hit","samples":74,"drift":0.24422874041838716,"gap":0.00006890655920921693,"error":"Error: Contact: painted support iteration residual 0.25398721456649787"}
+{"id":"dodge","samples":121,"drift":0,"gap":0.000057177135970865547}
+{"id":"faint","samples":121,"drift":0.05469558989077914,"gap":0.0000700204975499462}
+{"id":"victory","samples":1,"drift":0.000018012940090712998,"gap":0.000033634901001278195,"error":"Error: Contact: painted support iteration residual 0.26203736822184776"}
+{"id":"tame","samples":121,"drift":0.18879499999979957,"gap":0.0000652838873046673}
+{"id":"feed","samples":68,"drift":0.020608599415235882,"gap":0.00005940882744729936,"error":"Error: Contact: painted support iteration residual 0.26900245486470575"}
+{"id":"melee:kick","samples":121,"drift":0,"gap":0.000061007268409244673}
+{"id":"presentation","samples":7,"drift":0.11265499933424886,"gap":0.00004709405380437672,"error":"Error: Contact: painted support iteration residual 0.26372382657104315"}

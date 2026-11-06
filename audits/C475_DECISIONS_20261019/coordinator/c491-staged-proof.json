@@ -1,0 +1,2502 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "0a58557c5ecb2fe0d719f96d5bc9fecfb88a692f89cb5bc7820274099dacb80e",
+      "bytes": 31194
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "765f4103883905d915fc66bfe2b5d33b4791d80eb5a1c0ac4ed249e74d25915b",
+      "bytes": 7679
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c490-paths.txt",
+      "sha256": "cac385d49458f468fb234c4466f4a319029cdf665cb3b1d7d87b8a3a81b599a7",
+      "bytes": 201252
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c490-staged-bytes.commit.log",
+      "sha256": "8fb2135cfcc6882ce4e131888c94ae72344aa4509b78915ae844a699bc83701a",
+      "bytes": 34538
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c491-frozen-selection.json",
+      "sha256": "fe9e1589472601b68387018572bf07065efb99339e0bb23b0bc8bd5d3d711eba",
+      "bytes": 651
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c491-message.txt",
+      "sha256": "594e7824bfc9060c9c1536418163c2bb2a6c14517bcd89a10abaef5a16a347d5",
+      "bytes": 92
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/c491-peer-end-read.json",
+      "sha256": "97688472b6c831ab81409d77d6e480aa663dc0b1043ca41042d8c175856598c9",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/collect-c491-frozen.py",
+      "sha256": "9d676ec82dc2be38b11e539f6862aa67f3c9b8093e8c7b0d52b7abf2a095c5ca",
+      "bytes": 2113
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/collect-producer-wave.py",
+      "sha256": "c7c10b6cb5b248c869a21658e63b158df34042e71f38caa61d20c84ab713454d",
+      "bytes": 2040
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-jelly-d41-r02-root-static.json",
+      "sha256": "7cf96487939ad838657015c7846758f40ab91cd74c558f55aa9926b928eb5f65",
+      "bytes": 713
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/comb-jelly-d41-r02-root-static.log",
+      "sha256": "04f5c6774daded9f0c507e34b30a634875fde94fd455d2ec6fdcccf0887556c3",
+      "bytes": 1452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-soft-materials-r03.json",
+      "sha256": "8131cff8d6e2c9195aed53d9a375cdc83b95d8d4be1c2ec9a275157d9e9d5009",
+      "bytes": 450
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/develop-soft-materials-r03.log",
+      "sha256": "5945bd22cf0e5698469d3a5cb0d9a301838f338d3467b26403838de135a51ccb",
+      "bytes": 101271
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/plan.json",
+      "sha256": "a4d39b46accc1eb23da301dd1ab22b8c0dd6de7e7ccef66fa09ea496d254d046",
+      "bytes": 1685
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/realm-proof.json",
+      "sha256": "00b46ffd92d0bdcffb11e70fb67b08975eed17421e6c60b371078f8ff03e91a2",
+      "bytes": 555
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/script.json",
+      "sha256": "17ecaa5bb81731143d960e668e330064724b13517ff0ac1b703594562231b5d5",
+      "bytes": 793
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/static.json",
+      "sha256": "b601afbee59f5214d5766d1e889d66c431fd4dfb37d54f6eaafac09f22765330",
+      "bytes": 6487
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/plans/comb-jelly-d41-r02/static.json.sources.json",
+      "sha256": "b213d519773c22629a04739957a258cebb22f3c1eef98ecc4bd1bec7937cdcaf",
+      "bytes": 19286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/runtime-change-list.json",
+      "sha256": "950e1f465ff7a4d0c7d566be4196ee957ac3af16898080382d5ec882753c4954",
+      "bytes": 4103
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-applied-r03.json",
+      "sha256": "bf4d851806cef85fb204c1249f99e414217307899b67d532d377a27537a9cde4",
+      "bytes": 3144
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-canonical-request-tests-r03.json",
+      "sha256": "cab23d84a9ed48e83c4258029200319e23dea9b75fc2fd7262e2869cc7c1ba87",
+      "bytes": 499
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-canonical-request-tests-r03.log",
+      "sha256": "cd9eee9fb43c5f66d2076f842400a786ed71a283d14611b0b78f2257b41a7443",
+      "bytes": 452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-current-code-pins-r03.json",
+      "sha256": "2328b60a98413deb0e1dbf12be2ccc04e54fe1bc28fc27f52ea521f38a00252f",
+      "bytes": 3229
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-guide-pin-proof-r03.json",
+      "sha256": "b47497f64a32e153449cbcfd2a845dce688e9c6a5f064b74626c594344ead6ec",
+      "bytes": 478
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-guide-pin-r03.json",
+      "sha256": "a4021c524392bb4d95f0588c692bf2179a61740925565281beb29408d8543730",
+      "bytes": 468
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-guide-pin-r03.log",
+      "sha256": "717f4645cfd3ba732f38b1d1f0f161ce79363e97c34e988e9092a4cea6fc71a9",
+      "bytes": 106
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-independent-check-scope-evidence.json",
+      "sha256": "131e155c25fa0a0221e1e8707eebc148c1c66b5a88c5e7410c0867b246512254",
+      "bytes": 2391
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-other-owners-auto-review-rejection-r02.json",
+      "sha256": "e812acafcb4538cdf7a5b5875665cfff5f3c1863f28affe58f7245dc451b75d8",
+      "bytes": 712
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-other-owners-auto-review-rejection.json",
+      "sha256": "035f7f261f017270e56085808c34531c8dbd341af99dce48060371eaef0b97d9",
+      "bytes": 622
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-profile-path-correction.json",
+      "sha256": "0315c0b2110abd524d1ab8664fc1e28c9eef997d272ea95b01e82cb70c53c34f",
+      "bytes": 432
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-checks-r03.json",
+      "sha256": "a94408dc03b7454ec173e6f00b182ce616f82943807449d2aa8141667338b9a8",
+      "bytes": 477
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-checks-r03.log",
+      "sha256": "46ab24b8e25723134e9d360c22ac3442075d1c6d77e545ae37bc42283bf016cf",
+      "bytes": 98
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-controls-r03.json",
+      "sha256": "5581b9ca804329e494eefa739bd0a0dfbbdfc118a687555ace09af73d4b502e8",
+      "bytes": 4035
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-controls-r03.mjs",
+      "sha256": "eb6cbf165f764a8838ef6e201780352984048917aac015765d7a9e885b640331",
+      "bytes": 3105
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-disposition-r03.json",
+      "sha256": "277dc4017391520f9c03f75990f9c64f7dc5dcdf36eb3e84d0840762489d1cef",
+      "bytes": 1552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-source-tests-r03.json",
+      "sha256": "15f8b1782b05e224c400fdfd302cdfc7daaf4bffa838458f0f7e7ed10e8fc25a",
+      "bytes": 620
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/soft-materials-root-source-tests-r03.log",
+      "sha256": "253ed810ba9d35f409bcf8a679f3aa4e658db1a0734bdb1e8f2fa09be32612d1",
+      "bytes": 1846
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/coordinator/update-motion-draft-pin-r03.mjs",
+      "sha256": "cc952f4b26921e9daf2302dab5cf1dd72abfcf266cb853d2d91499663d186c20",
+      "bytes": 3007
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/delivery/wave14-soft-materials-producer-checks-blocked/README.md",
+      "sha256": "c0398d065a0efbc29520e8b061907776244b08f23d303e3cfd0ebc7a90c51f24",
+      "bytes": 3603
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/checks-r01.json",
+      "sha256": "d5d5af05ea200d5faa21c2efb5cf2617b2ad9951583df1d62b28116f0b8f57c7",
+      "bytes": 10318
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/finalize-review-r01.mjs",
+      "sha256": "81444590155b217b552ec03a8a41b3d29d3007feb7271f602fda8524a47ca2ef",
+      "bytes": 3160
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/freeze-r01.json",
+      "sha256": "6e312dff6e4b4d3c97e0277b365e706a7fdd03361ee0a9620a998496d178671b",
+      "bytes": 4454
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/proposed-source-tests-r01.log",
+      "sha256": "d0864797f1195475a1b3eb31ab44bad2b4cccea92d0a0a5a414f055d5f04550a",
+      "bytes": 823
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/review-checks-r01.mjs",
+      "sha256": "4b874bfa81e6c3458bff528b2660997c1492e51fc1ac1b64d10354d9804288c7",
+      "bytes": 7880
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/review-r01.json",
+      "sha256": "cba505bbfa2bafd1168238f710f2b3ee41d79e469e8f9319074312d06c14a401",
+      "bytes": 6071
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/review-comb-eightpaths-r01/task-report-r01.md",
+      "sha256": "bbd72da5473fb22ca2f941faccbec755d90af10d7c49fc031322f22a3de21f05",
+      "bytes": 1599
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/author-marine-c221-r01.mjs",
+      "sha256": "100639617565425f48297c09a43e34fa5487455971b6412b1bd3cd80396fa558",
+      "bytes": 4838
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "e7e5964675f8ad94e459138f586be1044226021a76ac47cb80ca8e74af987079",
+      "bytes": 12579
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "577a8d78b07f6327a1fe383e2e3834cccea420054ad87482b0284bf0ddbff861",
+      "bytes": 15089
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "18a808b5762cea081adacc49ab2a77a383866964f703c5018040647e6a1da0aa",
+      "bytes": 1656
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "b3004385c6181917ec12fccf2d188949914f1003fca0edd06147f607191bba20",
+      "bytes": 944
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "604f145bc44bd4b3571bc3a4a1b382b5bcda69382a1c2727e4780de6f541838c",
+      "bytes": 9763
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/baseline-after-route-r01/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "05217961a5416116a8ffdfc32092d8aae07a1c9cb341191a1dcfec96dc119992",
+      "bytes": 15055
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/boundary-controls-c221-r01/result.json",
+      "sha256": "34af4dc7d8bba4972040a2b34e1a6733c1db760d7c904ac0896f6a91aef5b460",
+      "bytes": 12411
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/boundary-controls-c221-r02/result.json",
+      "sha256": "eb413ba81d752c4ff55a5b3ceb96c9e3b117905abe0c438851cbfc673e1fe960",
+      "bytes": 12387
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/binding.json",
+      "sha256": "67ff06001bb02aa77352433581f29b24b8d348845548136ac6c1f0bb4336a309",
+      "bytes": 854572
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/declaration.json",
+      "sha256": "a0561c7abefd9af477111887ab6af123efde94384f113624d27f2fc50918844c",
+      "bytes": 2080
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/intake-provenance.json",
+      "sha256": "28a648aad229449fa1724502c219ef3657a2cb5f061a9cc93e0b9e1c4a5a9e99",
+      "bytes": 4248
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/atlas/c475-comb-jelly-c221-flexible-r01.json",
+      "sha256": "4b5fac0bf61d6b7afa80112039f5167d2fb95c641a25e215bb49c6eabcca8741",
+      "bytes": 2185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/atlas/c475-comb-jelly-c221-flexible-r01.png",
+      "sha256": "ce0449a31c9f91c98aa67005da298e5b07f2287810fa87632aa8c78546de736e",
+      "bytes": 469732
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/atlas/receipt.json",
+      "sha256": "c1954004255a04c4d8fa470bebe06c5bb75541bda56628e622be74e65df6050e",
+      "bytes": 1399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/binding.json",
+      "sha256": "7bc9750b56ab19c7449e9c90c0231b267645a54fc898f83a474d3c27c331b820",
+      "bytes": 1947
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/keyed.png",
+      "sha256": "a57c0950b338009310696072e50987e3e32036fffc97b5905f4c6c74f17fbbd7",
+      "bytes": 1554692
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/manifest.json",
+      "sha256": "fb10f062336d4e14fc0040a9cf164a0f54a85aeb8c26e47cbdcdbb132046520d",
+      "bytes": 861
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/ownership.png",
+      "sha256": "7c71dc1161a3686da4e501dcb78738c7c0c069a7146eea502249ea54ea50ba57",
+      "bytes": 13628
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/parts/aboral.png",
+      "sha256": "83fddd3ffdec5faf42741581697ec6a5959739f633e36a293423b2177188c8d0",
+      "bytes": 78636
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/parts/centre.png",
+      "sha256": "0e31200d3e978bf3cbafebf1880f7a7ad9718e3a6ec76d9eb4c241cde62798d3",
+      "bytes": 148734
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/parts/dorsal.png",
+      "sha256": "f18f7e8d67bc47b4cafcc600f967351a2977156b206171f4469a1889646c1756",
+      "bytes": 178530
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/parts/oral.png",
+      "sha256": "33d1b31acd745779fb68a512c8bd87e1f7a1c45a2603a5f40625a5110cbf824c",
+      "bytes": 62060
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/parts/ventral.png",
+      "sha256": "1aee8e834dcaca15e41cfe94bc553606c7cad135ec3a24794fac07245cdee1e7",
+      "bytes": 142803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/parts/receipt.json",
+      "sha256": "7a4465d3256cc74fc973e042d3905d96de7e83c131447384f5da5fc22b573a03",
+      "bytes": 1824
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/pre-split-binding.json",
+      "sha256": "18c8dac1c10d9ec0983e40c67812de6dbd048c08ba0e9baa9c2457c3a5a62718",
+      "bytes": 650306
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/receipt.json",
+      "sha256": "0cd5d3478b3b10d1a266b46381030e105a1cef739aaaa78afe2561fcfdabeab2",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/record.json",
+      "sha256": "04f0d8d74f3bbf6616694485595e13940a78a13776a7e904c143e90ac8367c61",
+      "bytes": 4526
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r01/soft-material-source.json",
+      "sha256": "a964b8353b5f41ecba4988f166771e6fd9256b94748c2bd32de01170ad6c55e5",
+      "bytes": 974
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/binding.json",
+      "sha256": "7f243467b7874b7a49ee466340c4e90bd4155935d96b923cd95ca88c87746a39",
+      "bytes": 870419
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/declaration.json",
+      "sha256": "a0561c7abefd9af477111887ab6af123efde94384f113624d27f2fc50918844c",
+      "bytes": 2080
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/intake-provenance.json",
+      "sha256": "7769a3266e3ba3d1a91d856a1314cc0c58ff8b85e548760f361fd3cdca69d10d",
+      "bytes": 4248
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/atlas/c475-comb-jelly-c221-flexible-r01.json",
+      "sha256": "4b5fac0bf61d6b7afa80112039f5167d2fb95c641a25e215bb49c6eabcca8741",
+      "bytes": 2185
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/atlas/c475-comb-jelly-c221-flexible-r01.png",
+      "sha256": "ce0449a31c9f91c98aa67005da298e5b07f2287810fa87632aa8c78546de736e",
+      "bytes": 469732
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/atlas/receipt.json",
+      "sha256": "c1954004255a04c4d8fa470bebe06c5bb75541bda56628e622be74e65df6050e",
+      "bytes": 1399
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/binding.json",
+      "sha256": "7bc9750b56ab19c7449e9c90c0231b267645a54fc898f83a474d3c27c331b820",
+      "bytes": 1947
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/keyed.png",
+      "sha256": "a57c0950b338009310696072e50987e3e32036fffc97b5905f4c6c74f17fbbd7",
+      "bytes": 1554692
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/manifest.json",
+      "sha256": "fb10f062336d4e14fc0040a9cf164a0f54a85aeb8c26e47cbdcdbb132046520d",
+      "bytes": 861
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/ownership.png",
+      "sha256": "7c71dc1161a3686da4e501dcb78738c7c0c069a7146eea502249ea54ea50ba57",
+      "bytes": 13628
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/parts/aboral.png",
+      "sha256": "83fddd3ffdec5faf42741581697ec6a5959739f633e36a293423b2177188c8d0",
+      "bytes": 78636
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/parts/centre.png",
+      "sha256": "0e31200d3e978bf3cbafebf1880f7a7ad9718e3a6ec76d9eb4c241cde62798d3",
+      "bytes": 148734
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/parts/dorsal.png",
+      "sha256": "f18f7e8d67bc47b4cafcc600f967351a2977156b206171f4469a1889646c1756",
+      "bytes": 178530
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/parts/oral.png",
+      "sha256": "33d1b31acd745779fb68a512c8bd87e1f7a1c45a2603a5f40625a5110cbf824c",
+      "bytes": 62060
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/parts/ventral.png",
+      "sha256": "1aee8e834dcaca15e41cfe94bc553606c7cad135ec3a24794fac07245cdee1e7",
+      "bytes": 142803
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/parts/receipt.json",
+      "sha256": "7a4465d3256cc74fc973e042d3905d96de7e83c131447384f5da5fc22b573a03",
+      "bytes": 1824
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/pre-split-binding.json",
+      "sha256": "18c8dac1c10d9ec0983e40c67812de6dbd048c08ba0e9baa9c2457c3a5a62718",
+      "bytes": 650306
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/receipt.json",
+      "sha256": "63ddaa75868642d189e14c4426df9a3f0a4becd66489d6ad599d94d890dc8677",
+      "bytes": 2056
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/record.json",
+      "sha256": "04f0d8d74f3bbf6616694485595e13940a78a13776a7e904c143e90ac8367c61",
+      "bytes": 4526
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/fit-c221-r02/soft-material-source.json",
+      "sha256": "a964b8353b5f41ecba4988f166771e6fd9256b94748c2bd32de01170ad6c55e5",
+      "bytes": 974
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/authoring.json",
+      "sha256": "b33841ec6136ba1dc8ea93333621a8718d61024378c4490c26573fcec7d5a9ad",
+      "bytes": 2855
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/master.png",
+      "sha256": "655b8f2888640e374b127e106b2721777991dab9f23901fa084901d28ed63b3e",
+      "bytes": 1462630
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/prompt.txt",
+      "sha256": "1d569022238b9dfb92e268608e66df577cac61286063223049a61f716176a7f0",
+      "bytes": 10369
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/source-observation.json",
+      "sha256": "6667b5d98a49db552962d8b7026fbd751c0f9447eee18b2931b1a5846c847142",
+      "bytes": 657
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/comb-jelly/observed-c221-r01/subject-source.json",
+      "sha256": "519eddbcd0954eb1ffbc2ed5b7de5c2b4fcccb269d345cebf03e0eb94f414915",
+      "bytes": 2157
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/composition-controls-r04.mjs",
+      "sha256": "2e32b96f14e7c4a2f1f54d7d96d44a09ebc29d373f1afe60f282a7e27ab893ec",
+      "bytes": 2948
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/ctenophore-boundary-outcome-r01.ts",
+      "sha256": "194bf8001f312e1e26b2eb2cf27e5dcbe26df5970e3e3e9ae40d74e215fee6ff",
+      "bytes": 6328
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/freeze-marine-c221-r01.mjs",
+      "sha256": "5754a84a3e2387658a1171c7448bde748c648c8ab43b73dc650757470e231436",
+      "bytes": 5027
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/freeze-materials-r03.py",
+      "sha256": "f1e3df1ee99127f2cfb255fba5a3a566a629db83d4ac11595bc231173c17c860",
+      "bytes": 6780
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/dense-r04.log",
+      "sha256": "704b118eec980a2bf2dca3511b9bed5445fbb67e000c7d134cf672254e67856e",
+      "bytes": 460
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-correction-freeze-r02.json",
+      "sha256": "578353d0f6a64a33a9fddf58d8d27213498ab72a88a1c1f1ab3c35732e1e1251",
+      "bytes": 1707
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-correction-r02.json",
+      "sha256": "54f76765667fb141d08399c73da3043bc6815e3a72015fbfdab6d2987d4e47f8",
+      "bytes": 4594
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-resolution-freeze-r03.json",
+      "sha256": "adf8f415b74adc82748176bc2d69b7c3f729b10c6f0447feab9a04f02e013558",
+      "bytes": 2692
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/field-diagnostic-resolution-r03.json",
+      "sha256": "8e53de13aa3116b725558729f77db1dfb30c5639110aeee1efad785b5c583662",
+      "bytes": 2557
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r01/intake-provenance.json",
+      "sha256": "030e40c414a5acae66cd3b7455c2ea05a669cc936f9336c2ffc1e8e8aeff163a",
+      "bytes": 4762
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r01/refusal.json",
+      "sha256": "079a5614860f58faa5b4134c6678584e94020f164ce73c2ffe58cf1d6ad819e0",
+      "bytes": 862
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r02/intake-provenance.json",
+      "sha256": "2380da43537e31a4fd1c51c975af3a642067e3b8bc09f0d6cc57a71d10588266",
+      "bytes": 5249
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r02/refusal.json",
+      "sha256": "d2f63541bd386414400e73d74f2fabc42f31fd36b926a86c449db26b0b26f5ec",
+      "bytes": 1349
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r02/soft-axial-source.json",
+      "sha256": "2f6cce38274eb35a6445f543c6d0b3710519797ec20103e9f72cc926259d285f",
+      "bytes": 3443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/binding.json",
+      "sha256": "98f9c125328424d166794c31b889b614183d25f2ac1c327120b1d920ae91c649",
+      "bytes": 1187592
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/declaration.json",
+      "sha256": "eab532075667459076ca6846ea8752749d46ecc57abee71fbfc4685adfc67e94",
+      "bytes": 11710
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/intake-provenance.json",
+      "sha256": "7a4e28d0f97cdad2f01fc3ad27cf58a558b5d5d0ebae26813ae17ad28bbaad21",
+      "bytes": 4665
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/atlas/c475-marine-c221-errant-r03.json",
+      "sha256": "28fbe64090ead94de2a536bab57ba3a6d08f87b31ea4cd4680c1c1d0c58c826d",
+      "bytes": 11009
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/atlas/c475-marine-c221-errant-r03.png",
+      "sha256": "534cf7ac5ccc8ae776a0aa5678266a53a13b5c50164cf2741d6d178cbc2345c6",
+      "bytes": 218058
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/atlas/receipt.json",
+      "sha256": "77973b46f84c73931085b6a216d3ff4d22be39679fb45fcb9190bee0d6fcb184",
+      "bytes": 4266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/binding.json",
+      "sha256": "5738c144c807b97da70948fdb3b213ff996de08b947eb508cfd06e420a16b9ab",
+      "bytes": 9063
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/keyed.png",
+      "sha256": "173dec90fb7af4f944a973e1026c01af5dd883c61cf503a070f30b464c84cfaa",
+      "bytes": 1317523
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/manifest.json",
+      "sha256": "2957d1150825feb716d31a3cdb1398c9718ed1fe981372472035870473436c7d",
+      "bytes": 4621
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/ownership.png",
+      "sha256": "25b8c82e65a4e4dcac857487eae7bd216821b149b0c1cf50ffb1fb6bd9f11af0",
+      "bytes": 14534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/anterior.png",
+      "sha256": "d58eafb7797fd4a81c8b5a3f975bdc6724299612669416a5e73668c905df3a56",
+      "bytes": 17216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial1.png",
+      "sha256": "1ce88b8518bec41e33540da6fd4d89cd741998d550667db790ad5ca9c0f8d2ba",
+      "bytes": 16216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial2.png",
+      "sha256": "c5decf4fa6312adc2ce89e57b24d11ca660c8afe9e37949f531a4230aece759b",
+      "bytes": 17525
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial3.png",
+      "sha256": "6c3904b5d4d3466ff017c8b51133db82246262a0b82fe2782f8f1bc7974b593e",
+      "bytes": 20175
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial4.png",
+      "sha256": "84cbd40680246ac872952461dfcf0a993aeb7a301da6aca025166751526dff8c",
+      "bytes": 21128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial5.png",
+      "sha256": "151f64a527796faa4c928d80aa2a9dcdb52b89bef9a7bccc3e5a622d5ce2856e",
+      "bytes": 19305
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial6.png",
+      "sha256": "036c7fc8bb4558420363012dde51e7860fa573c585c51299044430cbf4f55e66",
+      "bytes": 16978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/axial7.png",
+      "sha256": "c89e6bf44f1779b71e1ccd2b71cd154b5765be39e6ea7da53bff4349fcc1a945",
+      "bytes": 13053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-0.png",
+      "sha256": "43ad60c4451632f7754d44b9076b03eb29e84a4ebc6f54c86b38356fc93dbfed",
+      "bytes": 4813
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-1.png",
+      "sha256": "c1f268b074f456324b1b8be70490132fc86e3a6af805326fa9d7757ef252adac",
+      "bytes": 4260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-2.png",
+      "sha256": "6052e5cd5d0148af9bf0e3596e14089a6ea9670be7d06498c7b079c6286fea96",
+      "bytes": 2109
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-3.png",
+      "sha256": "9769dbc747ce42c8d40ceb590cee7f5b7a163d5accba07dbae9eaa5d30fafba3",
+      "bytes": 5375
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-4.png",
+      "sha256": "fc57455cd8e06d950c369a16f98ac420f727ec1294af8749ade7cfef15c98f65",
+      "bytes": 8520
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-5.png",
+      "sha256": "f345245ed53705062652aeaebfb033cd46df5ca110836f176f04fbe60fa71542",
+      "bytes": 7610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-far-6.png",
+      "sha256": "51e1933124b48c16f5b04d21404bcc4e4b80ab032203d153b68838884d2065e3",
+      "bytes": 4356
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-0.png",
+      "sha256": "0b8673f3700b954cb71e104e6273454132c480ae08051e68e71ca6f656101267",
+      "bytes": 720
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-1.png",
+      "sha256": "0392743a1ff254c4d22ad21693c51e8dcebe5c702adc4248375ef85bfe104eb0",
+      "bytes": 6700
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-2.png",
+      "sha256": "bea4263c469c25b4cea0532a0e1bcd728220e9f1b4ead3c6115f6ab0b7e59bbe",
+      "bytes": 12718
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-3.png",
+      "sha256": "107fa4cffb0642d3a4383c7b8e1ce0300cafedaa61977b3e305634592b8ee968",
+      "bytes": 15311
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-4.png",
+      "sha256": "3b91725c687483a17d031ae3b29117367a21702a4630cffbc2f2294538c0154e",
+      "bytes": 8456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-5.png",
+      "sha256": "e5fb44193a93411e0cfc84938badb54edb573b9fff242d08598a96bce4a3c395",
+      "bytes": 9726
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/bristle-near-6.png",
+      "sha256": "52d7c4120932d3c9dc31943cefb15803c54d275ffaa166ef07ab116076d6b7b4",
+      "bytes": 5992
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/palp-lower-base.png",
+      "sha256": "33c30f11bebdc9b139b4455612bba8208510d22c932deb99e11a10391b6516d9",
+      "bytes": 4097
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/palp-lower-tip.png",
+      "sha256": "43be2d92b2b4ff15116587d8e6e88c1027d13a76fbe10cd7d91e4ecad6bd02ae",
+      "bytes": 1601
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/palp-upper-base.png",
+      "sha256": "0a0ee94300384bce91fd61135a8cf014b32779fc245ae9823c3dd7199df1eecf",
+      "bytes": 2307
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/palp-upper-tip.png",
+      "sha256": "601c30271ffe562da834180e79d610de73f8f877565c551c5cffd3823a30431c",
+      "bytes": 2996
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/parts/posterior.png",
+      "sha256": "0b8c5350e9ea5feab9eaebe74ec564c19cb19788dbc4f47a1a1f038a1529facb",
+      "bytes": 4189
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/parts/receipt.json",
+      "sha256": "e85c85491eaa2c0aa7c8fc83e2c4669220c55b61d5442ab966d3eda8828e285d",
+      "bytes": 7141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/pre-split-binding.json",
+      "sha256": "991172bf5889282572d8fcd7ccd8c2b98928ee8eb32499dee34c46da7af2e8f2",
+      "bytes": 683017
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/receipt.json",
+      "sha256": "0a1e83f30396cc8da14b6f2410c775e763a853adb428a6440fb925fe1ddaadda",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/record.json",
+      "sha256": "bad9afb05963e1de6ef55e67bd37520e27afc091bee7a5697ed15e247f037966",
+      "bytes": 7261
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r03/soft-axial-source.json",
+      "sha256": "2f6cce38274eb35a6445f543c6d0b3710519797ec20103e9f72cc926259d285f",
+      "bytes": 3443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/binding.json",
+      "sha256": "f88da72836f4b5b740931007a76271cf93d7b4ad7f22a95e3447cb3c53d480c2",
+      "bytes": 2756650
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/declaration.json",
+      "sha256": "eab532075667459076ca6846ea8752749d46ecc57abee71fbfc4685adfc67e94",
+      "bytes": 11710
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/dense-refit.json",
+      "sha256": "b05ab7d3a31b4d6fbd25a27a656b7e2895aadcd866572fd684e6ea836f40d58f",
+      "bytes": 1914
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/intake-provenance.json",
+      "sha256": "7a4e28d0f97cdad2f01fc3ad27cf58a558b5d5d0ebae26813ae17ad28bbaad21",
+      "bytes": 4665
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/atlas/c475-marine-c221-errant-r03.json",
+      "sha256": "28fbe64090ead94de2a536bab57ba3a6d08f87b31ea4cd4680c1c1d0c58c826d",
+      "bytes": 11009
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/atlas/c475-marine-c221-errant-r03.png",
+      "sha256": "534cf7ac5ccc8ae776a0aa5678266a53a13b5c50164cf2741d6d178cbc2345c6",
+      "bytes": 218058
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/atlas/receipt.json",
+      "sha256": "77973b46f84c73931085b6a216d3ff4d22be39679fb45fcb9190bee0d6fcb184",
+      "bytes": 4266
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/binding.json",
+      "sha256": "5738c144c807b97da70948fdb3b213ff996de08b947eb508cfd06e420a16b9ab",
+      "bytes": 9063
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/keyed.png",
+      "sha256": "173dec90fb7af4f944a973e1026c01af5dd883c61cf503a070f30b464c84cfaa",
+      "bytes": 1317523
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/manifest.json",
+      "sha256": "2957d1150825feb716d31a3cdb1398c9718ed1fe981372472035870473436c7d",
+      "bytes": 4621
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/ownership.png",
+      "sha256": "25b8c82e65a4e4dcac857487eae7bd216821b149b0c1cf50ffb1fb6bd9f11af0",
+      "bytes": 14534
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/anterior.png",
+      "sha256": "d58eafb7797fd4a81c8b5a3f975bdc6724299612669416a5e73668c905df3a56",
+      "bytes": 17216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial1.png",
+      "sha256": "1ce88b8518bec41e33540da6fd4d89cd741998d550667db790ad5ca9c0f8d2ba",
+      "bytes": 16216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial2.png",
+      "sha256": "c5decf4fa6312adc2ce89e57b24d11ca660c8afe9e37949f531a4230aece759b",
+      "bytes": 17525
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial3.png",
+      "sha256": "6c3904b5d4d3466ff017c8b51133db82246262a0b82fe2782f8f1bc7974b593e",
+      "bytes": 20175
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial4.png",
+      "sha256": "84cbd40680246ac872952461dfcf0a993aeb7a301da6aca025166751526dff8c",
+      "bytes": 21128
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial5.png",
+      "sha256": "151f64a527796faa4c928d80aa2a9dcdb52b89bef9a7bccc3e5a622d5ce2856e",
+      "bytes": 19305
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial6.png",
+      "sha256": "036c7fc8bb4558420363012dde51e7860fa573c585c51299044430cbf4f55e66",
+      "bytes": 16978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/axial7.png",
+      "sha256": "c89e6bf44f1779b71e1ccd2b71cd154b5765be39e6ea7da53bff4349fcc1a945",
+      "bytes": 13053
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-0.png",
+      "sha256": "43ad60c4451632f7754d44b9076b03eb29e84a4ebc6f54c86b38356fc93dbfed",
+      "bytes": 4813
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-1.png",
+      "sha256": "c1f268b074f456324b1b8be70490132fc86e3a6af805326fa9d7757ef252adac",
+      "bytes": 4260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-2.png",
+      "sha256": "6052e5cd5d0148af9bf0e3596e14089a6ea9670be7d06498c7b079c6286fea96",
+      "bytes": 2109
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-3.png",
+      "sha256": "9769dbc747ce42c8d40ceb590cee7f5b7a163d5accba07dbae9eaa5d30fafba3",
+      "bytes": 5375
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-4.png",
+      "sha256": "fc57455cd8e06d950c369a16f98ac420f727ec1294af8749ade7cfef15c98f65",
+      "bytes": 8520
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-5.png",
+      "sha256": "f345245ed53705062652aeaebfb033cd46df5ca110836f176f04fbe60fa71542",
+      "bytes": 7610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-far-6.png",
+      "sha256": "51e1933124b48c16f5b04d21404bcc4e4b80ab032203d153b68838884d2065e3",
+      "bytes": 4356
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-0.png",
+      "sha256": "0b8673f3700b954cb71e104e6273454132c480ae08051e68e71ca6f656101267",
+      "bytes": 720
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-1.png",
+      "sha256": "0392743a1ff254c4d22ad21693c51e8dcebe5c702adc4248375ef85bfe104eb0",
+      "bytes": 6700
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-2.png",
+      "sha256": "bea4263c469c25b4cea0532a0e1bcd728220e9f1b4ead3c6115f6ab0b7e59bbe",
+      "bytes": 12718
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-3.png",
+      "sha256": "107fa4cffb0642d3a4383c7b8e1ce0300cafedaa61977b3e305634592b8ee968",
+      "bytes": 15311
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-4.png",
+      "sha256": "3b91725c687483a17d031ae3b29117367a21702a4630cffbc2f2294538c0154e",
+      "bytes": 8456
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-5.png",
+      "sha256": "e5fb44193a93411e0cfc84938badb54edb573b9fff242d08598a96bce4a3c395",
+      "bytes": 9726
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/bristle-near-6.png",
+      "sha256": "52d7c4120932d3c9dc31943cefb15803c54d275ffaa166ef07ab116076d6b7b4",
+      "bytes": 5992
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/palp-lower-base.png",
+      "sha256": "33c30f11bebdc9b139b4455612bba8208510d22c932deb99e11a10391b6516d9",
+      "bytes": 4097
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/palp-lower-tip.png",
+      "sha256": "43be2d92b2b4ff15116587d8e6e88c1027d13a76fbe10cd7d91e4ecad6bd02ae",
+      "bytes": 1601
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/palp-upper-base.png",
+      "sha256": "0a0ee94300384bce91fd61135a8cf014b32779fc245ae9823c3dd7199df1eecf",
+      "bytes": 2307
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/palp-upper-tip.png",
+      "sha256": "601c30271ffe562da834180e79d610de73f8f877565c551c5cffd3823a30431c",
+      "bytes": 2996
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/parts/posterior.png",
+      "sha256": "0b8c5350e9ea5feab9eaebe74ec564c19cb19788dbc4f47a1a1f038a1529facb",
+      "bytes": 4189
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/parts/receipt.json",
+      "sha256": "e85c85491eaa2c0aa7c8fc83e2c4669220c55b61d5442ab966d3eda8828e285d",
+      "bytes": 7141
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/pre-split-binding.json",
+      "sha256": "991172bf5889282572d8fcd7ccd8c2b98928ee8eb32499dee34c46da7af2e8f2",
+      "bytes": 683017
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/receipt.json",
+      "sha256": "0a1e83f30396cc8da14b6f2410c775e763a853adb428a6440fb925fe1ddaadda",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/record.json",
+      "sha256": "bad9afb05963e1de6ef55e67bd37520e27afc091bee7a5697ed15e247f037966",
+      "bytes": 7261
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/fit-r04/soft-axial-source.json",
+      "sha256": "2f6cce38274eb35a6445f543c6d0b3710519797ec20103e9f72cc926259d285f",
+      "bytes": 3443
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/freeze-r01.json",
+      "sha256": "8e6e495fd748f7232f6f825df8f1e21d31c2ce14f52f03cb8a7b517b4b10d36c",
+      "bytes": 55196
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/full-fringe-sweep-r01/actual-fringe-peak.png",
+      "sha256": "fb23a4740fb4419d848c04de02b9d901d721c4b90e05f49bca40464bde8d817e",
+      "bytes": 218428
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/full-fringe-sweep-r01/frozen-fringe-peak.png",
+      "sha256": "cb974b4c4bd9a28715b1dd05436bba525e4e82ef1126089ee048d499cd1ca207",
+      "bytes": 221539
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/full-fringe-sweep-r01/result.json",
+      "sha256": "8133cffdc5181637bb9112bb0768dea315073b3f0554fb3f8de5ff8fd1d9e33e",
+      "bytes": 435958
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/intake-r01.log",
+      "sha256": "063e26adab34a568001ae586ce2dedd46bad483d1e59cc3556cfc866e7ae904b",
+      "bytes": 1322
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/intake-r02.log",
+      "sha256": "b1be6630c3ad13878ba72a13f39734b7c4538939d8c0d79f281f1fa1c44d9a71",
+      "bytes": 1809
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/intake-r03.log",
+      "sha256": "1f5abf8e7ddcd9e7bf7cae5e7ca3d19ac3c48459444a6bdeafc4e7ef0cda3c1b",
+      "bytes": 654
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/keyed-chaeta-witness-2x.png",
+      "sha256": "489d6fd1ed3448a64f97461ac5673d4ed3fb304f9ca97d03c1c1bbfa1726c85b",
+      "bytes": 388138
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/authoring.json",
+      "sha256": "1ea7ec379e4b6d67d3d553cf4dd81fdce2391fc834c3717c000a661bde02aa53",
+      "bytes": 11264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/master.png",
+      "sha256": "0e14925186822d764b4448c7fdcc98380ee52fe44914f983fe0f7bdad2cfabc3",
+      "bytes": 1366067
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/prompt.txt",
+      "sha256": "9f6430ce076b8ff33f5b0e6864cc156f890affa875a8871416b9ec0243b3a58a",
+      "bytes": 10217
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/source-observation.json",
+      "sha256": "b511c701b38b0fe8d488f2450dfaa3c99a0ba8ebdd02453ab09674daed90f8d1",
+      "bytes": 4184
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r01/subject-source.json",
+      "sha256": "74d035c68f05b0d2602c41ce019dccf9cce635b0c069899bc9875bf13e1e76e2",
+      "bytes": 2328
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/authoring.json",
+      "sha256": "fc8faf181798e8e366233db94bdc48de14fbd12bea95d4f145fd5c00a4d46632",
+      "bytes": 11264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/master.png",
+      "sha256": "0e14925186822d764b4448c7fdcc98380ee52fe44914f983fe0f7bdad2cfabc3",
+      "bytes": 1366067
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/prompt.txt",
+      "sha256": "9f6430ce076b8ff33f5b0e6864cc156f890affa875a8871416b9ec0243b3a58a",
+      "bytes": 10217
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/source-observation.json",
+      "sha256": "8386b444e0b78fe6001dfd5147c09e75fa325ebef3c76939c484ab8824243839",
+      "bytes": 7300
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r02/subject-source.json",
+      "sha256": "74d035c68f05b0d2602c41ce019dccf9cce635b0c069899bc9875bf13e1e76e2",
+      "bytes": 2328
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/authoring.json",
+      "sha256": "22eb6d063f78161b35716efb3411abc6fdb7e6c8cb257a689479f3c1e59233b9",
+      "bytes": 11264
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/master.png",
+      "sha256": "0e14925186822d764b4448c7fdcc98380ee52fe44914f983fe0f7bdad2cfabc3",
+      "bytes": 1366067
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/prompt.txt",
+      "sha256": "9f6430ce076b8ff33f5b0e6864cc156f890affa875a8871416b9ec0243b3a58a",
+      "bytes": 10217
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/source-observation.json",
+      "sha256": "3b483fa73af0254883e622d08f69f3d50ae9d2e9585fcae2012efeed3ca24aaf",
+      "bytes": 7556
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-r03/subject-source.json",
+      "sha256": "74d035c68f05b0d2602c41ce019dccf9cce635b0c069899bc9875bf13e1e76e2",
+      "bytes": 2328
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/observed-source-grid-r01.png",
+      "sha256": "15d6d17c327a0371f489dc05946a3f4eea2e5e140bc658df3250720ec7a076ae",
+      "bytes": 672956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01.log",
+      "sha256": "a7c13d1df3c5b4397e91d06899f36436ad5136c113d634ff85869e1e96c788d0",
+      "bytes": 1667
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/cast-worst.png",
+      "sha256": "6a616145cca7c2d0191c586986ae662cfd1333f6bdb04e51645091a43dea9806",
+      "bytes": 221350
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/film-dodge-worst.png",
+      "sha256": "8bd6e67e2d093abd738444911765b49687f336157edac4b2ec57d309d855b64d",
+      "bytes": 215316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/film-faint-hold-worst.png",
+      "sha256": "8f5ba3bb088ec1ee9087ab5853a27fa1eb972b3b4bc991ba6dcc8de15ab30bef",
+      "bytes": 217207
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/film-faint-worst.png",
+      "sha256": "170d7c385adb2ae1781b8abd52e0ba951ab789749d911017e3cabb18abb524dc",
+      "bytes": 216417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/film-hit-worst.png",
+      "sha256": "953da3fc6255a4377d8b172993df2a9e6e6348507d00834252e898d7baa5f407",
+      "bytes": 214864
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r01/victory-worst.png",
+      "sha256": "0bba870e48f31de5763c7c9d2830e9bcbd31c27cae51bc5207d91866e74bb638",
+      "bytes": 214735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02.log",
+      "sha256": "8b27f86254f26d95fe22039dd090cb58317d40dc0a1eae3e7f3534f6d07bcfa5",
+      "bytes": 2025
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/cast-worst.png",
+      "sha256": "6a616145cca7c2d0191c586986ae662cfd1333f6bdb04e51645091a43dea9806",
+      "bytes": 221350
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/film-dodge-worst.png",
+      "sha256": "8bd6e67e2d093abd738444911765b49687f336157edac4b2ec57d309d855b64d",
+      "bytes": 215316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/film-faint-hold-worst.png",
+      "sha256": "8f5ba3bb088ec1ee9087ab5853a27fa1eb972b3b4bc991ba6dcc8de15ab30bef",
+      "bytes": 217207
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/film-faint-worst.png",
+      "sha256": "170d7c385adb2ae1781b8abd52e0ba951ab789749d911017e3cabb18abb524dc",
+      "bytes": 216417
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/film-hit-worst.png",
+      "sha256": "953da3fc6255a4377d8b172993df2a9e6e6348507d00834252e898d7baa5f407",
+      "bytes": 214864
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/result.json",
+      "sha256": "787e583a98485fd4227fd936191482b96e48c380ae6dbb4b80769c88e2bd6aab",
+      "bytes": 50818
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r03-diagnostic-r02/victory-worst.png",
+      "sha256": "0bba870e48f31de5763c7c9d2830e9bcbd31c27cae51bc5207d91866e74bb638",
+      "bytes": 214735
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02.log",
+      "sha256": "8b709a765c158e29b6e5d244f87248c04b673f5b8bc9aacb30f76ed8a7a46e19",
+      "bytes": 2075
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/cast-worst.png",
+      "sha256": "927b5bdd3e8a1ceeecd287aa1ba5039e508b448378e7d7700af3f502abc032fc",
+      "bytes": 220742
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/film-dodge-worst.png",
+      "sha256": "ff5d8be4e33140bb551e15cbbc4cf6e669d3b93b63a0ee7008b7826a3d1888f6",
+      "bytes": 214985
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/film-faint-hold-worst.png",
+      "sha256": "27df6b59242396e66534b3d56dd5de73b47838a59a66c9c8ee1f3c6925da80b8",
+      "bytes": 217260
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/film-faint-worst.png",
+      "sha256": "a9b71e6cb1d4a72fe53676bb9da0f493c0127d9ac4c14d0961924ec5d6d7d59e",
+      "bytes": 216657
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/film-hit-worst.png",
+      "sha256": "26662e47e2a18d40aaad6235c7689d94ff22c95b92575d2dcb1d7db26f7ce968",
+      "bytes": 214294
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/result.json",
+      "sha256": "a6e28015a5b43504a26074b3eef279d4f80746608b488fe5d110c5e8953be3a1",
+      "bytes": 50871
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/outcomes-r04-diagnostic-r02/victory-worst.png",
+      "sha256": "996af558cc12ee48ba679ff6955d77903fcf5e65761c123517efbceeba374638",
+      "bytes": 213582
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/source-chaeta-witness-2x.png",
+      "sha256": "fbccc3e0ef6e45d4f587aaf2d2554ab615ca4186c4a5b6bb00223949a73b7dea",
+      "bytes": 651455
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-c221-r01/source-outcome-review-r01.json",
+      "sha256": "71f1dc7b76da4dd2fabb7b4c622b77ccbec5c26f919425a057cb7022c9c07732",
+      "bytes": 12289
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-dense-refit-r01.mjs",
+      "sha256": "9d79e244aef1f3fe11a929bdcc1ef08edd82941a0ee9ba74e9be1ee35b5eaa0a",
+      "bytes": 2230
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-fringe-fullsweep-r01.ts",
+      "sha256": "b068de57a5a704e270967f5818dcc2abec7c6c38958a4bb09b650d1895cd3531",
+      "bytes": 10161
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/marine-outcome-diagnostics-r02.ts",
+      "sha256": "dee186ad4a4733823ff2466ddf73a9dbf58636cc046814a423cbef10eaf54869",
+      "bytes": 8359
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/material-outcome-r01.ts",
+      "sha256": "192f500d78b3930676efe1905bf6cf2bac6c780ed107400b0814e438ec8d8789",
+      "bytes": 8206
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/materials-proposal-freeze-r03.json",
+      "sha256": "71c15f6e7d09a7b660e85056743aed9b244bd6a71e95ca27dbfb29a41bb40f84",
+      "bytes": 65519
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/materials-runtime-r01.patch",
+      "sha256": "7cd91aeee709051ef681ac15ff40e88b4a35ce98348dbf00f64dac8d383b700f",
+      "bytes": 14476
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/materials-runtime-r03.patch",
+      "sha256": "f5686bd0160f724b03c22c6d85d75c1bfbbdf7f1e66c20674454d38806cd7c74",
+      "bytes": 15156
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/materials-task-report-r03.md",
+      "sha256": "cff284129ce5abfdc76e82dd8886fe1484a7afc8abe816266b51ff6dc839a767",
+      "bytes": 2747
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/cast-worst.png",
+      "sha256": "4c45a79570552f6c7d856ea0e6f60328c82db1659e50b41db92942ace81560a5",
+      "bytes": 473946
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/film-dodge-worst.png",
+      "sha256": "39af1b70e45cf047aeeebf35b525b91ec317a467dce1cfbf9b7bd8d2ee09b4ec",
+      "bytes": 470956
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/film-faint-hold-worst.png",
+      "sha256": "6cc9defe47637f59b0c2ab93eed62c89f75c33849d8d5e5a2bca5ac08089620c",
+      "bytes": 470904
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/film-faint-worst.png",
+      "sha256": "9b0300ccdf343ce82d905c62374659d5a5b27c84b09331db879a25ad1be2a9b1",
+      "bytes": 470745
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/film-hit-worst.png",
+      "sha256": "51c401104cfca9ca05a1baa77abe26b9803e8bae0ae5454fd4a088b31b424d4b",
+      "bytes": 471073
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/result.json",
+      "sha256": "c8253c89bff21a0452b1ca12cdfe46a4cec54934b3884aa6a33ba77379478685",
+      "bytes": 13107
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r01/victory-worst.png",
+      "sha256": "bbf596c09ac07126959036085260961bd002b6442359841a96d8fba88eabd448",
+      "bytes": 470093
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/cast-worst.png",
+      "sha256": "aeabf8357450aefe46c729749ba3a36d5afabdecaaf85aa042482762dc8c5135",
+      "bytes": 474883
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/film-dodge-worst.png",
+      "sha256": "a3557481687414a7c9baf3f852f91bb2dd0886bb0d8e520d29f6291f43008f29",
+      "bytes": 472497
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/film-faint-hold-worst.png",
+      "sha256": "13fa5d30052a849c66e67f582780f5c1535d7264b443d8fef88a3caaa2b286ce",
+      "bytes": 471613
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/film-faint-worst.png",
+      "sha256": "71ce40d0f24f4e9c5957e3563f7b0b3e871aec49db0b5197d65cd5452ec6db76",
+      "bytes": 472200
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/film-hit-worst.png",
+      "sha256": "d3ba64bb6c5d1f9de85566205b6e308fba55b20929bf91e9b278b0c2253f4e02",
+      "bytes": 472819
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/result.json",
+      "sha256": "b14914d95b699439591c396644bf289fff917922024db56f0c0c1b4f7dc869d6",
+      "bytes": 13104
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/comb-jelly-c221-r02/victory-worst.png",
+      "sha256": "4e10ebccaf421ed50af6e82a2f0e29c88bd42ccafe284af7c0bb5fd053ae6a33",
+      "bytes": 473063
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/cast-worst.png",
+      "sha256": "5c52981d633686a603e5bc6a18229c1b7929db4fdcf021364c97ab750b6bf5b2",
+      "bytes": 230626
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/film-dodge-worst.png",
+      "sha256": "a69e77589c03a7605150bfa96f8b5a69f1d290e226b8cb7390d7e6495f39a5dd",
+      "bytes": 227837
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/film-faint-hold-worst.png",
+      "sha256": "abaeafe6deda71f386345c72a094e72e22d113fe16ee8fdeac16f0e9e4b32f69",
+      "bytes": 223516
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/film-faint-worst.png",
+      "sha256": "e578ce76efbd89236fd4d1d01d7c8be40ffc3ab9558b39f9a3af939e8f86ce94",
+      "bytes": 227354
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/film-hit-worst.png",
+      "sha256": "eeca5e9a2822f311e895964ed76a03ebfde5b2f25ee0fce9acf2f138192b4c7e",
+      "bytes": 228936
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/result.json",
+      "sha256": "53ffdfbb9f6e0de29d1a88050c92aa55665b5f3bde98bb6c300b8817e5767e17",
+      "bytes": 50189
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/outcomes/polychaete-r02/victory-worst.png",
+      "sha256": "1270c95fd5ae2ed9cdadcbdbeb3b05c90dc62d2da8d815e9f4e23130f916399c",
+      "bytes": 230760
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/package-materials-r03.py",
+      "sha256": "fd06752df1fc24d47e75f8807c423b623f09610cace2a43ce2d32f67587c1537",
+      "bytes": 2768
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/binding.json",
+      "sha256": "34e6ed62e96f59105c6ee1726f14544b78bae026347b1ccd068c35cac5b3b8d9",
+      "bytes": 1195491
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/declaration.json",
+      "sha256": "45ca6b5003e6c9a264f284cbb6a18a2766dc470a478219622a1e44bf49a6b78d",
+      "bytes": 11677
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/intake-provenance.json",
+      "sha256": "f11a8c2f4c39420ca810e38e8cc26a356393efee2e47bc130ca20487b88c4a30",
+      "bytes": 4625
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/atlas/c475-polychaete-errant-r03.json",
+      "sha256": "2819e195f4a4078621961c300a723c02444c43f9abb357dff047e89f006c3ab4",
+      "bytes": 11040
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/atlas/c475-polychaete-errant-r03.png",
+      "sha256": "16b35911390a0bc9e12e54ec41e667ef6fd7b4665f16f54280df9dc0a0efb027",
+      "bytes": 225140
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/atlas/receipt.json",
+      "sha256": "329c83a5c10cff52cf19db9d14243dc9234f29127064698c3d766f2f633f1da3",
+      "bytes": 4265
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/binding.json",
+      "sha256": "eb40e5add23757ba427f3a8d89b4ec10917758dd9861bafa97e767d2443554fd",
+      "bytes": 9083
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/keyed.png",
+      "sha256": "4673c0af7c2afd948db579bdf2757d87bc43cb802c578855c9eaaef7450c4960",
+      "bytes": 1307142
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/manifest.json",
+      "sha256": "2e66527baef4faa25dd42713ae68042c543e402db3e4313fdb397485b2252b94",
+      "bytes": 4620
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/ownership.png",
+      "sha256": "adf4227f8979cb5f7ac9e5d13a50067ad4fcd6186a8a7036ff60de4278e36529",
+      "bytes": 14699
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/anterior.png",
+      "sha256": "35ca88550888954951ac6c72116d5ff5244aba12bf8bbb410bda20bd4a190f61",
+      "bytes": 16079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial1.png",
+      "sha256": "dff237c267d98db2eb1c9c7d37df8ccc45b931bef425523408e179d9bef293f2",
+      "bytes": 19054
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial2.png",
+      "sha256": "c003279fb534e541a5c304ddee15c9d25afd9eab3796c05bfd71cd33f3f9e437",
+      "bytes": 23362
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial3.png",
+      "sha256": "41dbfd5c2532cc56d3511af823fc5b5d7c85dc7f3a5778a6432327a1001ca529",
+      "bytes": 24751
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial4.png",
+      "sha256": "330e5845d05c4cce282ecba848ec7bd1e3b6e8f5f8c798a9bc8f0c5bb4fe7b31",
+      "bytes": 23320
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial5.png",
+      "sha256": "ed0c7251dcc6cb31d27cb4a485449cf6499f4bff50a330b2ba04fed495831e97",
+      "bytes": 20507
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial6.png",
+      "sha256": "9ac02df90c2f30910a0601ae321b91770e1b02e57c7730b9405ccb3b1b8e7d70",
+      "bytes": 16825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/axial7.png",
+      "sha256": "ad4a78545b81702dc7bef5ad7c3d6ad9bcdb74542c82175d4f9ecce217551f8e",
+      "bytes": 11313
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-0.png",
+      "sha256": "1308692c2c3aed6959f249204df9e82e8df64e41db2854d7b3fab4c97d3afd89",
+      "bytes": 3499
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-1.png",
+      "sha256": "21bf3524883490cfed0292f21804f91e2eeae3986cc2c567aefa13bfb01b13be",
+      "bytes": 6727
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-2.png",
+      "sha256": "6beb370418dad0501c063aafd100860bfb6b4c1617278814589221482e2eac2f",
+      "bytes": 7540
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-3.png",
+      "sha256": "792875277adc239b21c5b81d81efeab27527b8c2892bab8e4d8e0aedfbf9088c",
+      "bytes": 7126
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-4.png",
+      "sha256": "14fcb290024cb2a663e5ada7ab67de734dec257621014de9b455a01fa21dc27a",
+      "bytes": 8026
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-5.png",
+      "sha256": "4d1a2b60a6a2a211accea5bcc0c90aa04e87cedd6e36a5ea5454900019626367",
+      "bytes": 8589
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-far-6.png",
+      "sha256": "c6b35ff0830b77509e49ff1a844f24a5c5c791f7505a5ffdd6a3fc54e8df8364",
+      "bytes": 7561
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-0.png",
+      "sha256": "4936085c70d73d20e4985ec30f31fc254a6e36d94c04662f2f51857036eef9a5",
+      "bytes": 3345
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-1.png",
+      "sha256": "56ac35d9d5ab50225bb2708de88e7b81e2d2afbeeccccd28a0386a305b8aa07a",
+      "bytes": 2216
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-2.png",
+      "sha256": "3bd7b08d5189cdb32cce18382af253272479a3328c356d67e8082525d92c19a9",
+      "bytes": 1508
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-3.png",
+      "sha256": "a24adc8ab4d0f3c6127f15299bbf1020c2abd19ed5c7ca754d92fa4537631e3c",
+      "bytes": 2413
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-4.png",
+      "sha256": "2762040500151b0f1151403a475569dd14ea7a91592a01242096ade3407af9f5",
+      "bytes": 2874
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-5.png",
+      "sha256": "23b39889b01b7c6944a8020daa57e9b3100ee66f440adde5a71c250642ef477c",
+      "bytes": 2624
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/bristle-near-6.png",
+      "sha256": "40cb103f608fac454d4ff35322aec9ebc4c4252e60ff2b7038439ca2113a0cb6",
+      "bytes": 3552
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/palp-lower-base.png",
+      "sha256": "1a5ff9ccf608cd8aeb29aa44da55a30d52fb4c89a45daede825037f7c031fe1a",
+      "bytes": 10355
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/palp-lower-tip.png",
+      "sha256": "223cb6d7ffd05251c3bcb4997a84c4ea7f98d9c08a23875ee437ea650fb0e1a5",
+      "bytes": 2539
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/palp-upper-base.png",
+      "sha256": "2a038f670a2be8c882427b8568a2a948dde66d827ad3fbb718e7f891c581fde3",
+      "bytes": 3234
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/palp-upper-tip.png",
+      "sha256": "e4687a7a771ece13175a142ea09fc3840e84b4c9af61a7ea6c814a8f24101d51",
+      "bytes": 1887
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/parts/posterior.png",
+      "sha256": "2a2a02933835a418548f370e01e706c57cd3e48597eae3a33b5754b25a700660",
+      "bytes": 7886
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/parts/receipt.json",
+      "sha256": "c6e8dd1358a731a6459fe487128060aa49179550ae55c101cdde2f931d71d793",
+      "bytes": 7154
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/pre-split-binding.json",
+      "sha256": "1d43129f17c5f2e46b352030046cd8e5ec4b2e7d19ef5ae10bcbb0e42e02745f",
+      "bytes": 716210
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/receipt.json",
+      "sha256": "9819db362930d90bb61603c96d83d357e6c8f496e1cc8415cbdd40f98ac1bdbb",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/record.json",
+      "sha256": "49ed80ad13d829b51309c67bf508b3615835759556c3f2628d29f80224aa4801",
+      "bytes": 7302
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/fit-r02/soft-axial-source.json",
+      "sha256": "d2cefbf3687b71715759a764dba06cb9d5b9d76e27ec02780385791930721482",
+      "bytes": 3445
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/authoring.json",
+      "sha256": "b0faf23a3bc0446c2bd7cce13918f1dacb0b41fca50326e059e1281d103aa6d2",
+      "bytes": 11335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/master.png",
+      "sha256": "93e0ff85cd33c7c929d210be468b36f9ba5b2f9a784bd1d2517292a9fc2c06ef",
+      "bytes": 1399498
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/prompt.txt",
+      "sha256": "bae7f7d295ecf055c3c42c0c9b0fc7321783f0b447e6a47b6de13d695279a41f",
+      "bytes": 11434
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/source-observation.json",
+      "sha256": "dd5da83aaa66343958b25d759b23af0567f84de2d7c99d45220bc01b25ef895e",
+      "bytes": 2851
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/polychaete/observed-r03/subject-source.json",
+      "sha256": "160fb2c271b73917cf1ab3e2e860052125e3ef9b32c44f47eb8c6dca3a46d26a",
+      "bytes": 2280
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/prepare-repaired-source.mjs",
+      "sha256": "b4ae22a8dd9098b9f7de46ed2044250138f1a8b5a8a085b4e8d8b5ae28b07046",
+      "bytes": 3097
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal-manifest-r02.json",
+      "sha256": "4f63548eb23c0bec5a7d62dc3a270677dcdfafd9f435c32d3d30fa46d7c409ae",
+      "bytes": 2509
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal-manifest-r03.json",
+      "sha256": "0edf845acd6ce45a65ba925ca027c898129f49084c3be7c2995b6ae19c6cca78",
+      "bytes": 3063
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "5a4b045a619fa9ccf077305ab51ab219c2f11606d37b13860fa134f5d122775f",
+      "bytes": 12928
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "eef4243ed0d3f93f16816d16271fa5b43cf1dbbb2a90282dbf2247d0a8cb6107",
+      "bytes": 15580
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "877dde31a926360ab2f65489b2187a42149ee1c60d5bd058dadba4e828013e82",
+      "bytes": 2472
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/soft-material-source.mjs",
+      "sha256": "f4f22724eab07df832a792bacde6f1164d03d3eb5a2d75dedfe8ae0b3ceb38f1",
+      "bytes": 1444
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/soft-material-source.test.mjs",
+      "sha256": "6f2a72c7f191152c2fd4cc13a9cc9e12821cc28eeedf001df06e65709b82004d",
+      "bytes": 2132
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "be1ab29802900a4d32dcde66eced1a8dc88af4fd421ddfa4de16aa96620138d4",
+      "bytes": 981
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "fa5d8ff6288718d4db6b8c4ecc179902f29b8e2ed9cd0deefd48caf1906e1bcb",
+      "bytes": 10760
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/proposal/port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "6bf219c583f754a9162155c7ecdae8f952a279d387f6a90985407173ffe15d0f",
+      "bytes": 15379
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/refine-marine-c221-r02.mjs",
+      "sha256": "2d4242118497c3ffbddb0603b71bfdfd04712c475c9e7d5cb0ccadccd2742a7c",
+      "bytes": 2671
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/boundary-c221-r01.log",
+      "sha256": "9eba2a7170348aca97a00785ac7e5e57d02d6e392e99865d03aaf3b0b96af9ba",
+      "bytes": 303
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/boundary-c221-r02.log",
+      "sha256": "12afad87c0e1ab2de870326327f2ba0ad30dd73d607a17077c223efabce88b34",
+      "bytes": 246
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-baseline-r01.log",
+      "sha256": "0c3e4787cfb31ce8d7637cb217249d05d1f2cd36de6fea59b5cab2f071445be8",
+      "bytes": 1058
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-dorsal-refused-r01.log",
+      "sha256": "70b91e13bc857ce20a32cdc5d80543fdbfd93b219b137b67c9c2bc5277a59794",
+      "bytes": 1364
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-intake-r01.log",
+      "sha256": "8c86545c97a56f669670f8a411c0478cd9fd0d5804315bd05506278ac8a91329",
+      "bytes": 664
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-intake-r02.log",
+      "sha256": "9c794028357162570fae22a800e0a91f824dbb280a637cd4b2f6dd75bcbefb0f",
+      "bytes": 664
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-oral-refused-r01.log",
+      "sha256": "4f974beb3188f7bc58ed687109479b144bbb8885341d67aa826ffa8beb20357a",
+      "bytes": 1360
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r01-static-r01.json",
+      "sha256": "7eb0f02c968101af7c49da4aaeb12935ea721634c774ecdfd65d244c588b6463",
+      "bytes": 7042
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r01-static-r01.json.sources.json",
+      "sha256": "9cab28b37bccff6ec7881f35bc6fcfc4d254880ab0e5f628a6a079ee825af48d",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r01-static-r01.log",
+      "sha256": "898441dc99cba1524953999941c6565934fa307fcc2e6acd255c1a70906dc260",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r02-static-r01.json",
+      "sha256": "efc26c15083fd7adf94d7c331602df7c4d181602b7c6c4d3c9e97948ed7a361f",
+      "bytes": 7042
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r02-static-r01.json.sources.json",
+      "sha256": "25ca0b94be2f3fd292e907e0ecdc49f790375861d92b3aaabc8d0ec46140b254",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-c221-r02-static-r01.log",
+      "sha256": "04f5c6774daded9f0c507e34b30a634875fde94fd455d2ec6fdcccf0887556c3",
+      "bytes": 1452
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-dorsal-refused-r01.log",
+      "sha256": "dc38e0163bdecc650c4084dd884b035fca1256df25e8854cb4b80b84ccb58fbc",
+      "bytes": 1354
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-intake-r01.log",
+      "sha256": "957ba3a8aae94276d0a53eb372c702577afb74f3c88dd17afc146374663f449c",
+      "bytes": 658
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-oral-refused-r01.log",
+      "sha256": "89dfa62460b3db385503fc3a401730c82d1235ed85f4e573b6276919341d8689",
+      "bytes": 1350
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-r01-static-r01.json",
+      "sha256": "0df17bfd9ba2852b6761d2c2745602f1748c8c4830c6ad73f340b4949a083f19",
+      "bytes": 7010
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-r01-static-r01.json.sources.json",
+      "sha256": "143874587e13f6de0d298edba2a1b32f6af462b9931977088ec1724f19012f55",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/comb-jelly-r01-static-r01.log",
+      "sha256": "6da3725f0b0e7264897cf6a77e95c34884171563e07b9cbc3ee7c95de78eb0a1",
+      "bytes": 1450
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/composition-controls-r01.json",
+      "sha256": "6137392e2a7c708a7ab088c2bec184a108a115e02efc2cb6ca35f10abc5fdd4c",
+      "bytes": 245
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/composition-controls-r04.json",
+      "sha256": "5581b9ca804329e494eefa739bd0a0dfbbdfc118a687555ace09af73d4b502e8",
+      "bytes": 4035
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/marine-c221-r03-static-r01.json",
+      "sha256": "cdc836c0e4467d602083895c595e8cca853f0bc6897630dd6bfd82c91c310b34",
+      "bytes": 7037
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/marine-c221-r03-static-r01.json.sources.json",
+      "sha256": "79700b222ac4ae5f03ffcc9fde7852af3633804a2a2a2d0c9098c86bdb5f7f0f",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/marine-c221-r04-static-r01.json",
+      "sha256": "13815682b688399a9ff7d42ea252c6b291f73e7609626051ce5e6e65adbfd412",
+      "bytes": 7036
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/marine-c221-r04-static-r01.json.sources.json",
+      "sha256": "d2a494f6d502eb7338bb109f57c89e3455393163b468b6d06c11ee70b8fd7f7c",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/patch-replay-r01.json",
+      "sha256": "6498ae3a6791bbbe8151fc8503bf202d27aa9963e455fb14955e18b901c9d4f2",
+      "bytes": 1563
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/patch-replay-r01.log",
+      "sha256": "ff536d55a9ade87eb1f486c452eb8e1cd49220e814b5159006c7934eb3b710e5",
+      "bytes": 579
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/patch-replay-r03.json",
+      "sha256": "60d581f7f5df08dd6ad7cb0ff0554708e6e3875957f034c8dfb83be7a8bfa524",
+      "bytes": 1563
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/patch-replay-r03.log",
+      "sha256": "ff536d55a9ade87eb1f486c452eb8e1cd49220e814b5159006c7934eb3b710e5",
+      "bytes": 579
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-baseline-r01.log",
+      "sha256": "4f9663bd6970b1bc63df8ce1fcca0c0b0fcb9168315eea839a5ca8d9ae707f3c",
+      "bytes": 1278
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-baseline-r02.log",
+      "sha256": "5950a8dc932f26db05f4e0f3f78c478349c2e6407f86df4b7b7af57b0eda3e0f",
+      "bytes": 1059
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-intake-r01.log",
+      "sha256": "94e61bda0ed8b0b927cdea83b02347670a6ee295f470070f7ec966f474e26cb8",
+      "bytes": 659
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-intake-r02.log",
+      "sha256": "b0a635bee0699c320f0a4a81b4dd9cf4d58b4f4a5cae5cc9828fd7f9ef7a57d7",
+      "bytes": 659
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-palpLowerTip-refused-r01.log",
+      "sha256": "3763fd5af6ac12ca756c8b9eba11d04728f341e4f0874cd5c37a104090be89fa",
+      "bytes": 1352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-posterior-refused-r01.log",
+      "sha256": "782c6c1ff10fbdddc39b71d0ede5d6deda1a8a433f67e0655c9fb097117e9e6d",
+      "bytes": 1346
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r01-static-r01.json",
+      "sha256": "6a89b9762c242db9b2509a0131b797263f536d0655c3113936a9b36f1cd9d340",
+      "bytes": 4100
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r01-static-r01.json.sources.json",
+      "sha256": "e60e7585c58231e45fce9687fa79b79d4a9b17d57b77d47c7a05bbeb23616746",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r01-static-r01.log",
+      "sha256": "71f89c34254de3acb78a99944d7c3c5af6b6cb1eb0297f4c1036d898b6360642",
+      "bytes": 1285
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r02-static-r01.json",
+      "sha256": "7a9777f979ae7ced62e696003e5da941c5a960b9a0cd4f6754a9a41a8242a3fa",
+      "bytes": 7008
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r02-static-r01.json.sources.json",
+      "sha256": "952e0af8ed2ba206522ac7a0b4cc6e80f1e2295fb3b945e2eba568ed79122486",
+      "bytes": 27301
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/polychaete-r02-static-r01.log",
+      "sha256": "7e32d13dc999017806aab489044a2ec94e717516f925b5a70477d55cbc550890",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/source-controls-c221-r01.json",
+      "sha256": "3379cd28d3cc75307cee7dbe2540335faadd815d62901b9904ab9640c1d4c7a5",
+      "bytes": 2684
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/source-controls-r01.json",
+      "sha256": "f2a559826939c90981fa214625e4560f93c596d337f951b5b24d2ec64d877909",
+      "bytes": 10167
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/source-unit-r01.log",
+      "sha256": "601104ad0acf091f86d08bfbfcb09b4f550a03457268965ed6fa7ad4ee2df29c",
+      "bytes": 823
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reports/source-unit-r03.log",
+      "sha256": "5f0f8cd19b84e3a9c9a178dfb9a86db0658002aa148063b4a8aa4c2ad4976382",
+      "bytes": 825
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/aboral.png",
+      "sha256": "2854cd77bd9ec2fa940f635ef8825cf2cfdc062b1e6539a3bfa6bdbfd0805b7b",
+      "bytes": 70335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/centre.png",
+      "sha256": "7b569174c04235675dc246818fcf03a7279ffcb7a35dcbbf7e0359a5e8cbc090",
+      "bytes": 133572
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/dorsal.png",
+      "sha256": "73723533c57bd50abbedc62eb9ce8a6f39e2ebe5961c30b7fd815df661026e05",
+      "bytes": 159630
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/evidence.json",
+      "sha256": "795eca76d4463072ef780c9968db4d2b45c89cc4cabc59202c1e299488e42790",
+      "bytes": 9258
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/keyed-neutral.png",
+      "sha256": "f982f2fa0139f669c9cba2984b6e814975629a6de688a8346e33f034ba745549",
+      "bytes": 577865
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/oral.png",
+      "sha256": "5e7cb872faf609d23249829aaaff2ccce959c8ba128f345f4594475707873a5c",
+      "bytes": 55150
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r01/source-prep-r01/ventral.png",
+      "sha256": "a99ac3dafdc79b1ddb95d975966156955d8fbbf6eb8aafb5aeff6665db0c3be4",
+      "bytes": 127993
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/aboral.png",
+      "sha256": "2854cd77bd9ec2fa940f635ef8825cf2cfdc062b1e6539a3bfa6bdbfd0805b7b",
+      "bytes": 70335
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/centre.png",
+      "sha256": "7b569174c04235675dc246818fcf03a7279ffcb7a35dcbbf7e0359a5e8cbc090",
+      "bytes": 133572
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/dorsal.png",
+      "sha256": "73723533c57bd50abbedc62eb9ce8a6f39e2ebe5961c30b7fd815df661026e05",
+      "bytes": 159630
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/evidence.json",
+      "sha256": "22d3c9fb6ab62dbba0c90652044054c9bf1d761bc0738e8667f4d16670d4e26b",
+      "bytes": 9258
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/keyed-neutral.png",
+      "sha256": "f982f2fa0139f669c9cba2984b6e814975629a6de688a8346e33f034ba745549",
+      "bytes": 577865
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/oral.png",
+      "sha256": "5e7cb872faf609d23249829aaaff2ccce959c8ba128f345f4594475707873a5c",
+      "bytes": 55150
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/comb-jelly-c221-r02/source-prep-r01/ventral.png",
+      "sha256": "a99ac3dafdc79b1ddb95d975966156955d8fbbf6eb8aafb5aeff6665db0c3be4",
+      "bytes": 127993
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/anterior.png",
+      "sha256": "6fc2a34733fdf4ca16de91713b5cbfbf2477a1497482a51afc194b111635901e",
+      "bytes": 15345
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial1.png",
+      "sha256": "7dd635ababc5a4557a25af3e8cb415c8cf68cb1dc842242e6d1c6f47c45afcee",
+      "bytes": 14284
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial2.png",
+      "sha256": "d43b078578cec7bec8df1dd4c68ab67501905efe7d7dd6f51192dd9a06d20436",
+      "bytes": 15461
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial3.png",
+      "sha256": "c5aa620793d49dfdbcf39f450fe3c6e9531a3e81b77b2f251f4cacec0a082a08",
+      "bytes": 17757
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial4.png",
+      "sha256": "a97bfb6882029baf97f5dc4b3ac95398b6d7a8c9558ec68bd49c120b56397756",
+      "bytes": 18621
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial5.png",
+      "sha256": "d2f1012a47ae68692838c963baca6c03132e1f548eeb1a54f569330f758d4804",
+      "bytes": 17065
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial6.png",
+      "sha256": "ae19ee20dd84e03ac4b40842545464118654b7c6e275b09b582705bf88bae646",
+      "bytes": 15024
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/axial7.png",
+      "sha256": "b96bd8936333e2dbd51b3db25520dd56a52f2606a2a6b7d6a3ccdf4b96a9edcd",
+      "bytes": 11530
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-0.png",
+      "sha256": "e3236fb7a1b4cc44709c5623046a9049efe490f8a242dd3fe3bdcca955ab9ce3",
+      "bytes": 4319
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-1.png",
+      "sha256": "1a5d0cbd7fc137d75e37926832f07d3e1a005dd75bcc02a7572f3bcfd4ea0ec1",
+      "bytes": 3892
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-2.png",
+      "sha256": "7c6b867d56e51ddad477501f7a8934ef334bf8f549583e8fe547639f70a96097",
+      "bytes": 2079
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-3.png",
+      "sha256": "ae4429754c149473cd81641bb7365e89341bd08ff93b923ad90a1fe9f9efba04",
+      "bytes": 4939
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-4.png",
+      "sha256": "1b9cd71d5c68f32919b848136089b01b9dabc432ed1a5d4d6cf4a67fbc6f729d",
+      "bytes": 7610
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-5.png",
+      "sha256": "40ee35c8fc2806fae808dcdf13fe43af41d1e746a53a22224ba9985fdf141e9b",
+      "bytes": 6840
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-far-6.png",
+      "sha256": "c880cc667d82f75caee68ad2b779a80d574605a3255f7c48a84a42faaa507129",
+      "bytes": 3887
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-0.png",
+      "sha256": "824c350bb19e9342418f7aa8322859121639cbed83af8b130d7b4f52681554f0",
+      "bytes": 673
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-1.png",
+      "sha256": "18975111de236e18c5aae64e30d3a03be652eb235e3a9ca5ea7ae92d4e866d0b",
+      "bytes": 6012
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-2.png",
+      "sha256": "c058cb807fbab5dbfd3803796c30d4d155d3ec0ba9b95d1ca125170921cda6de",
+      "bytes": 11384
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-3.png",
+      "sha256": "bbbf44da359d46b4d688cb4b483f9127bd9f32e9fa82e5a4e783d110f74d1fdd",
+      "bytes": 13650
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-4.png",
+      "sha256": "2a3c14609ac4482050b9435bd41d1dd8accba4183e4a091a3c81d45b980cf4c2",
+      "bytes": 7573
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-5.png",
+      "sha256": "139ea850f474bb7ee74d81a20a0546f91571b4d9b1cf231f756d6808ebfb2a16",
+      "bytes": 8678
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/bristle-near-6.png",
+      "sha256": "410feb23fc581e50330913f0eded687bf84cdf849a16f3350b5993badb00bbff",
+      "bytes": 5407
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/evidence.json",
+      "sha256": "2915f007a01d9756095480f913536c9af189a9b642146c328911489f16d668ba",
+      "bytes": 28567
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/palp-lower-base.png",
+      "sha256": "54c4fedc03ff55ca8bbf3bdcc8cd7eb604d9875cad6a98d649e324319b4713f0",
+      "bytes": 3728
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/palp-lower-tip.png",
+      "sha256": "b51bc9fbac96e6a72dab9f60fe95632c182b3b53df089b612f4570194a7f41d1",
+      "bytes": 1556
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/palp-upper-base.png",
+      "sha256": "cde19062c662815247587c5e9c94d317501882fdd700fd3928129c4055ddeb7e",
+      "bytes": 2124
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/palp-upper-tip.png",
+      "sha256": "cf4b44ee6c69a29b8a197c5c12f051baafd3a9341e36d1236f8322053e11cc57",
+      "bytes": 2892
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/marine-c221-r03/source-prep-r01/posterior.png",
+      "sha256": "5d32d0cf24120c5dd647c1dac2e965bb2b1be804715b04d81ec9e9d71b902903",
+      "bytes": 3749
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/anterior.png",
+      "sha256": "5e518f63ff381626140640b7b8a2e156bdd861d6bd69fcca8c8ac98e7130a92d",
+      "bytes": 14239
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial1.png",
+      "sha256": "5a9abdf28fc145813e37cd5ea0d756d9ecb5934a192ca3e4ef9e7bbbc20b3903",
+      "bytes": 16853
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial2.png",
+      "sha256": "825209e17f8c4369d75b6fa5af6cc672673a044d605340143675722ebad7b2b4",
+      "bytes": 20725
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial3.png",
+      "sha256": "43afe29ed2992d58089310f8577acefec613d311beee8e4c21fc939170ea6b7d",
+      "bytes": 21988
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial4.png",
+      "sha256": "54c790108871acf3802140bf6b321d1b5dc5fc6d8b6c68635bcd04bd3dbcff22",
+      "bytes": 20740
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial5.png",
+      "sha256": "a8cba6b11db35c4688df8b2842c1ac7c809b4c0127eb3a3e6f4099698d61e877",
+      "bytes": 18190
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial6.png",
+      "sha256": "3968cdb8c50bdbc417e0875cd261d429610a71d31798c1157f56e9ef14027e3e",
+      "bytes": 14916
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/axial7.png",
+      "sha256": "d9f2af88d9c67da53b9b66b58c1a9f4275f6bde04c112a90ee410e9c7017722a",
+      "bytes": 10005
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-0.png",
+      "sha256": "14b47f0819e8c6be6a31ca8c9273867277eea45ec5879fc2abb8e8833eede62b",
+      "bytes": 3166
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-1.png",
+      "sha256": "6d9109d4f9961a7669d00a162a398cf742f5f969de09c4ec766dfabd02f332ef",
+      "bytes": 6030
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-2.png",
+      "sha256": "ab4e5eb91e1ae29483949006ad05d664112a16565289b5d0aaf2f2fbc07ee92d",
+      "bytes": 6791
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-3.png",
+      "sha256": "36966bae1a6193d3b0bcf3dffaa83112cd98afc10270ceeb41e1f3187bdc313f",
+      "bytes": 6395
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-4.png",
+      "sha256": "4c8127ada5c7eea371b2b2399e8bbba237638f8498fcf64f3cdb281774a23a31",
+      "bytes": 7229
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-5.png",
+      "sha256": "248fc643c5611b09ce93ee6d827606e5355f55edf9f1a923642dbccb7b30620f",
+      "bytes": 7654
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-far-6.png",
+      "sha256": "130ef7e56f95e2c37e83e5cd998a48f27275aacfba7133d3d298d3dc5aee2883",
+      "bytes": 6736
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-0.png",
+      "sha256": "9e5b89ffb003b731b9dd14f8c0f85024cea124a224ee1997cefbe5b4bed56b8f",
+      "bytes": 3113
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-1.png",
+      "sha256": "2bb584e37121096ad67ee110dd401c692bd696f932cc0ffe10f2ee569efcfd15",
+      "bytes": 2098
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-2.png",
+      "sha256": "3144b2af4f1d862292edbcd92ce9c72ce7ba2fe689400ab5de7121dd46b93748",
+      "bytes": 1493
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-3.png",
+      "sha256": "c956de1087526c9b29dc70f3ce488131cf0025e63ace8312db21ed3f93289362",
+      "bytes": 2316
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-4.png",
+      "sha256": "a5d8de7a4de5eb5d201cd4cd7688c510648a04dbddeb6a30f025043bdb678493",
+      "bytes": 2702
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-5.png",
+      "sha256": "a15111aba3917e06894ffb8e3d7cb7a3884081542e8a6df26e3841c7642f1600",
+      "bytes": 2477
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/bristle-near-6.png",
+      "sha256": "7ef668f9bf6f528541ebfcf87c109cccff36047eca484db98a5ff933be105378",
+      "bytes": 3269
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/evidence.json",
+      "sha256": "85796895a07e250b51e30bb17200743461622bf56fb446f0e692de73ef191137",
+      "bytes": 28243
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/keyed-neutral.png",
+      "sha256": "1ef7d3774c9e2f986f7ef3c390ef926450890daa1b81a2e527a7c32651b995d0",
+      "bytes": 242746
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/palp-lower-base.png",
+      "sha256": "40866fff4f81b9c5abf67b321bb5af4440f539971898b07cbaa4c96bd5c9fc42",
+      "bytes": 9286
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/palp-lower-tip.png",
+      "sha256": "5761b25419b5d97bccfa4145b262c5278b1fd756dfc1015a19322727872b325f",
+      "bytes": 2377
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/palp-upper-base.png",
+      "sha256": "5d70cb9863b094ac8e75b29f3ed5ebcb04fce5ec4545dc69d47a1b79f9442245",
+      "bytes": 2978
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/palp-upper-tip.png",
+      "sha256": "3f5acb5b2cdb9c8e6c2b9abead3fafc721b5b16654f7273e119b35b87841cd1a",
+      "bytes": 1946
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/reviews/polychaete-r02/source-prep-r01/posterior.png",
+      "sha256": "d68581eaad8c7e3aac1997d4e15087718f0673d4267b7c6c6a270bd9b10f6647",
+      "bytes": 7077
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/run-target-static.mjs",
+      "sha256": "e4eec1c02d30f1ab45fb662d9d72012e468a19cc5ee2f410ee76845e659de232",
+      "bytes": 1407
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-controls-c221-r02.mjs",
+      "sha256": "ec45d1e2567114fcf154bb4884614a920f8566f06b425cb861ae8db1e723cb86",
+      "bytes": 4835
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-controls-r01.mjs",
+      "sha256": "71d7abd8ab4d10fd96739f009e60d589e82d67542cf21c04961425cfd77a78a4",
+      "bytes": 4904
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal-refused-fit/intake-provenance.json",
+      "sha256": "60d743114d9c390402095a63952171bb109f6c3eaad7f390c34a18a0327b2547",
+      "bytes": 4805
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal-refused-fit/refusal.json",
+      "sha256": "2f9cc347b5f55afa9abc238f83042d31eb1aae97251ea853f21744b9a6663648",
+      "bytes": 873
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal/authoring.json",
+      "sha256": "413c6509729fed61344193af5da37027daffc01b2982e7193da56c1d2b099763",
+      "bytes": 2808
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal/master.png",
+      "sha256": "3014cf474a47514aba68c074d290d12d8e28b6f40956da852eff7dfcc8fa261b",
+      "bytes": 1404000
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-dorsal/subject-source.json",
+      "sha256": "519eddbcd0954eb1ffbc2ed5b7de5c2b4fcccb269d345cebf03e0eb94f414915",
+      "bytes": 2157
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral-refused-fit/intake-provenance.json",
+      "sha256": "5b704a5bf5e3e25b37e30b25e95ed795cd77e2681888293eaf2c8effcf0031be",
+      "bytes": 4787
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral-refused-fit/refusal.json",
+      "sha256": "7d4097bf312c77ce5a232c5f86d826f08057b8c40262c7bca19e88fabcfeb01d",
+      "bytes": 871
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral/authoring.json",
+      "sha256": "76fa299415f9a136599cba185850721b51c91aa60751173fa3acfa008eef77be",
+      "bytes": 2806
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral/master.png",
+      "sha256": "b7355b96d97cd361a24732462c37a00932286b188e4e760aa22a14ddc85c0532",
+      "bytes": 1403994
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/comb-jelly-oral/subject-source.json",
+      "sha256": "519eddbcd0954eb1ffbc2ed5b7de5c2b4fcccb269d345cebf03e0eb94f414915",
+      "bytes": 2157
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip-refused-fit/intake-provenance.json",
+      "sha256": "973cc38ac503326ee0c5273879f5b99d48aab2ea1c873aea2f3486de805d461b",
+      "bytes": 4845
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip-refused-fit/refusal.json",
+      "sha256": "61950884cc2671eb6102d9bb38c594f7efd05ebbe33b59f500b429b130fbdb4a",
+      "bytes": 865
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip/authoring.json",
+      "sha256": "91b92432b3a2bd4d3df6369773f527051b2e480552199272b4f2f8e1b11a88f5",
+      "bytes": 11355
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip/master.png",
+      "sha256": "6edfd879c60dad09eebf649d2662ed0dfadb3c05c5753790757420b68c51343b",
+      "bytes": 1306350
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-palplowertip/subject-source.json",
+      "sha256": "160fb2c271b73917cf1ab3e2e860052125e3ef9b32c44f47eb8c6dca3a46d26a",
+      "bytes": 2280
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior-refused-fit/intake-provenance.json",
+      "sha256": "951b2887ab6292ba9723e3f2141d6331502bac1c1a16cf8ea27bcbee9f16468c",
+      "bytes": 4818
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior-refused-fit/refusal.json",
+      "sha256": "079a5614860f58faa5b4134c6678584e94020f164ce73c2ffe58cf1d6ad819e0",
+      "bytes": 862
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior/authoring.json",
+      "sha256": "852d3e1c073106de16241f0d7927d027699214a150e0a5d31694ff776f18fc35",
+      "bytes": 11352
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior/master.png",
+      "sha256": "9cc73ced00f4062a12f97fe1cb486aef3de17daf1f356ee562306a6ea96448ed",
+      "bytes": 1306361
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w2-worm-radial/remaining-materials-cpu-r01/source-mutants/polychaete-posterior/subject-source.json",
+      "sha256": "160fb2c271b73917cf1ab3e2e860052125e3ef9b32c44f47eb8c6dca3a46d26a",
+      "bytes": 2280
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w4-review/comb-c221-root-source-r02.json",
+      "sha256": "0d69c3656569c0ec7072c34217ab204f84d34f667a94de275a8e886d307c20d4",
+      "bytes": 3216
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "6b3ab10a0612dc4c09d74820928422ae4d431281d00b9d1ee66379419673fbcc",
+      "bytes": 571064
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "5a4b045a619fa9ccf077305ab51ab219c2f11606d37b13860fa134f5d122775f",
+      "bytes": 12928
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "5d8ea39ede3066882335e168da82e8ee57b98c00b90293afe4180c7dffcb4eba",
+      "bytes": 168748
+    },
+    {
+      "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sha256": "eef4243ed0d3f93f16816d16271fa5b43cf1dbbb2a90282dbf2247d0a8cb6107",
+      "bytes": 15580
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-axial-source.mjs",
+      "sha256": "877dde31a926360ab2f65489b2187a42149ee1c60d5bd058dadba4e828013e82",
+      "bytes": 2472
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.mjs",
+      "sha256": "f4f22724eab07df832a792bacde6f1164d03d3eb5a2d75dedfe8ae0b3ceb38f1",
+      "bytes": 1444
+    },
+    {
+      "path": "port/v2/tools/creature-animation/soft-material-source.test.mjs",
+      "sha256": "6f2a72c7f191152c2fd4cc13a9cc9e12821cc28eeedf001df06e65709b82004d",
+      "bytes": 2132
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "be1ab29802900a4d32dcde66eced1a8dc88af4fd421ddfa4de16aa96620138d4",
+      "bytes": 981
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "fa5d8ff6288718d4db6b8c4ecc179902f29b8e2ed9cd0deefd48caf1906e1bcb",
+      "bytes": 10760
+    },
+    {
+      "path": "port/v2/tools/painted-creature/README.md",
+      "sha256": "cabc4fdd2f02df6341b73162d0307d7d67ca132446df7193a347fb40e129dcee",
+      "bytes": 14984
+    },
+    {
+      "path": "port/v2/tools/painted-creature/soft-material-source-request.test.mjs",
+      "sha256": "2e172e13c0ff4a6894b7b4a632e82c5e2e790a6f109c6547155757bbdd280fbb",
+      "bytes": 2185
+    },
+    {
+      "path": "port/v2/tools/painted-creature/source-profile-layouts.mjs",
+      "sha256": "6bf219c583f754a9162155c7ecdae8f952a279d387f6a90985407173ffe15d0f",
+      "bytes": 15379
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "a81dcaf52cd5c6037c81d28e612bcb061789a182cedc767f29652321bcc842b8",
+      "bytes": 1892663
+    }
+  ],
+  "files": 499,
+  "remoteOperations": false
+}

@@ -65,6 +65,31 @@ describe('portable npm build invocation', () => {
         expect(source).toContain("function candidateProducerAuthorityFromDist() {\n  assertBuiltGameMode(distDir, 'evidence');");
         expect(source).toContain("execFileSync(vite, ['build'], { cwd: baselineApp, stdio: 'inherit' });");
         expect(source).toContain("const builtProducer = candidateProducerAuthorityFromDist();");
+      } else if (owner === 'print-producer-authorities.mjs') {
+        expect(source).toContain("function distIdentity() {\n  assertBuiltGameMode(distDir, 'evidence');");
+        const start = source.indexOf('export function collectCurrentProducerAuthorities()');
+        const end = source.indexOf('\nfunction observeCurrentProducerAuthorities(', start);
+        const body = source.slice(start, end).replace('export function', 'function');
+        const run = (text: string, buildFails = false) => {
+          const events: string[] = [];
+          const invoke = () => runInNewContext(text + '\ncollectCurrentProducerAuthorities()', {
+            acquireWorkspaceLock: () => { events.push('lock'); return () => events.push('release'); },
+            authoritySourceDigest: () => { events.push('digest'); return 'same'; },
+            checkCommandInvocation: () => ({ executable: 'npm', args: ['run', 'build', '--', '--mode', 'evidence'] }),
+            appDir: '/tmp/owned game',
+            execFileSync: () => { events.push('build'); if (buildFails) throw Error('build refused'); },
+            observeCurrentProducerAuthorities: () => { events.push('observe'); return {}; },
+          });
+          if (buildFails) expect(invoke).toThrow('build refused'); else invoke();
+          return events;
+        };
+        const ordered = ['lock', 'digest', 'build', 'digest', 'observe', 'release'];
+        expect(run(body)).toEqual(ordered);
+        expect(run(body, true)).toEqual(['lock', 'digest', 'build', 'release']);
+        const missingBuild = body.replace(/    execFileSync\(buildInvocation\.executable,[^\n]+\n/u, '');
+        expect(missingBuild).not.toBe(body);
+        expect(run(missingBuild)).not.toEqual(ordered);
+        expect(source).toContain('const build = distIdentity();');
       } else if ((BUILD_OWNERS as readonly string[]).includes(owner)) {
         expect(source).toContain("function distIdentity() {\n  assertBuiltGameMode(distDir, 'evidence');");
         expect(source).toMatch(/execFileSync\(buildInvocation\.executable, buildInvocation\.args,[^\n]+\);\n\s*(?:const fixture = buildCompendiumFixture\(\);\s*)?(?:const )?build = distIdentity\(\);/u);

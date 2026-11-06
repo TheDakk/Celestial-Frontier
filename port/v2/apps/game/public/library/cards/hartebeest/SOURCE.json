@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hartebeest",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/06-hartebeest/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4bfa76e53227f1ef3a1d5dd5613131f06546cdbc61e9dfc52e65adfeef6d3c4f"
+}

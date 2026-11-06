@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Springbok",
+ "fitDir": "audits/ISLANDS_SWEEP3_20261009/c192creaturesupply-16-springbok/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "67fe50231be35e869043769233f4f289b2f8ffa06201f5bde00b6ffa15dc60cc"
+}

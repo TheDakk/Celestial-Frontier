@@ -1,0 +1,27 @@
+{
+  "stage": "c261-first5",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-C261-first5",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C279_CODEX_20261018/coordinator/freeze-triage.py",
+    "triage-first5",
+    "audits/C279_CODEX_20261018/coordinator/plans/moray-eel/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/frigatebird/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/osprey/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/swift/native"
+  ],
+  "startedUnix": 1792335730.7613811,
+  "beforeGiB": 76.76019287109375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 46.195,
+  "lowestGiB": 76.73628616333008,
+  "afterGiB": 76.7361946105957
+}

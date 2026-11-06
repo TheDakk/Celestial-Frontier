@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "King Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/21-king-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8490177cfe205ccafd406885f97691e0ca9603a44fdd693f81a09cf33767e544"
+}

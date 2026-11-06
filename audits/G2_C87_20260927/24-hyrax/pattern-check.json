@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hyrax",
+  "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

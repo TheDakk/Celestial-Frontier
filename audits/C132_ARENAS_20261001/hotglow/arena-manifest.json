@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/hotglow/arena-recipe.json",
+    "sha256": "2565bb68f6a675fdaeafc3c3bdc29cd9e11cef74dbc3a3de41039423d830b046"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+        "sha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+        "sha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+        "sha256": "11898aad8825da3ca9b78d01d706601736570493592182a4ce88074fe1ee1243"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.png",
+        "sha256": "530a0c1663875f59be735228bc938603596da8274be7a6949183e21b37ace0e6"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/arena-near.png",
+        "sha256": "38e4211c721682889db238cda25ecc7ff93351609a825f0c01108f840670af96"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.png",
+        "sha256": "9ef3436ef78096a29eaa50519e062863cd12359fa7f2a176736da4c854f3a27f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Before image generation, guarded prompt edit expected 1 or 3 occurrences of small claws but found 2 and stopped. Layout had already been corrected. Verified two prompt occurrences, replaced with long natural bear claws per mustPaint, refreshed prompt hash; no generation attempt consumed.
+Review-sheet helper first invocation omitted required packet argument and refused with ERR_INVALID_ARG_TYPE paths[0] undefined before output. Supplied packet argument on corrected invocation; no measurement rerun.

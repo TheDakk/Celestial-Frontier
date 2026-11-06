@@ -1,0 +1,146 @@
+{
+  "schema": "cf.c198-prawn-measurements/v1",
+  "scope": "Posed source-coordinate skeleton pixels at 1254 square, not native screen pixels or independently qualified paint contact.",
+  "points": [
+    {
+      "name": "rest",
+      "ms": 0,
+      "tips": {
+        "leg0NearFoot": {
+          "sourcePx": [
+            821,
+            674
+          ],
+          "posedPx": [
+            821,
+            674
+          ],
+          "forwardDisplacementPx": 0
+        },
+        "leg0FarFoot": {
+          "sourcePx": [
+            821,
+            588
+          ],
+          "posedPx": [
+            821,
+            588
+          ],
+          "forwardDisplacementPx": 0
+        }
+      }
+    },
+    {
+      "name": "anticipation",
+      "ms": 140,
+      "tips": {
+        "leg0NearFoot": {
+          "sourcePx": [
+            821,
+            674
+          ],
+          "posedPx": [
+            817.5610884494533,
+            675.9993701063287
+          ],
+          "forwardDisplacementPx": -3.4389115505466545
+        },
+        "leg0FarFoot": {
+          "sourcePx": [
+            821,
+            588
+          ],
+          "posedPx": [
+            815.7854747991685,
+            585.550284126372
+          ],
+          "forwardDisplacementPx": -5.214525200831518
+        }
+      }
+    },
+    {
+      "name": "strike",
+      "ms": 230,
+      "tips": {
+        "leg0NearFoot": {
+          "sourcePx": [
+            821,
+            674
+          ],
+          "posedPx": [
+            824.5367225612051,
+            670.4353457976979
+          ],
+          "forwardDisplacementPx": 3.5367225612051723
+        },
+        "leg0FarFoot": {
+          "sourcePx": [
+            821,
+            588
+          ],
+          "posedPx": [
+            827.3986114227063,
+            592.5393367483691
+          ],
+          "forwardDisplacementPx": 6.398611422706317
+        }
+      }
+    },
+    {
+      "name": "recovery",
+      "ms": 506.66666666666663,
+      "tips": {
+        "leg0NearFoot": {
+          "sourcePx": [
+            821,
+            674
+          ],
+          "posedPx": [
+            821,
+            674
+          ],
+          "forwardDisplacementPx": 0
+        },
+        "leg0FarFoot": {
+          "sourcePx": [
+            821,
+            588
+          ],
+          "posedPx": [
+            821,
+            588
+          ],
+          "forwardDisplacementPx": 0
+        }
+      }
+    }
+  ],
+  "timelineHash": "610254c1",
+  "contactJoint": "leg0NearFoot",
+  "contactMs": 230,
+  "phaseDurations": [
+    [
+      "anticipation",
+      140
+    ],
+    [
+      "strike",
+      90
+    ],
+    [
+      "smear",
+      16.666666666666668
+    ],
+    [
+      "recovery",
+      260
+    ]
+  ],
+  "zeroClamps": true,
+  "meleeRows": 34,
+  "meleeFamilies": 14,
+  "profiles": 87,
+  "unchangedFamilyRows": 17,
+  "unchangedTimelineCount": 200,
+  "unchangedPrawnNonMelee": 11
+}

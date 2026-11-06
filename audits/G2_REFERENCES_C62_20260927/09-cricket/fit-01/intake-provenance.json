@@ -1,0 +1,92 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "093f566d833ecf044db9b8a1c15f87d3541f801f",
+  "helperSha256": "851efe46637057a7de5b7fc2129a1db1ffdf064ceee66f3c0e721ded06df44be",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/master.png",
+      "sha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/authoring.json",
+      "sha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/subject-source.json",
+      "sha256": "96a6895e4c9b327fa113731126107fe866eef8c5a485fc9b34effaf02b790a87"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "bf099d50e3c97bdd525dd1e23f9d81c7a43bdf654c34f8fb7a1d7aa1e14bff99",
+  "bindingHash": "7483ac8f51ed5b4a9337a8dfd9483b60169769ac1c79985358988c0372b992f0",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "legHindNearFoot",
+    "legHindFarFoot",
+    "legMidNearFoot",
+    "legMidFarFoot",
+    "legFrontNearFoot",
+    "legFrontFarFoot",
+    "legHindNearKnee",
+    "legHindFarKnee",
+    "legMidNearKnee",
+    "legMidFarKnee",
+    "legFrontNearKnee",
+    "legFrontFarKnee",
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "head",
+    "wingFar",
+    "wingNear",
+    "thorax",
+    "abdomen"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/master.png",
+      "sha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/authoring.json",
+      "sha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/subject-source.json",
+      "sha256": "96a6895e4c9b327fa113731126107fe866eef8c5a485fc9b34effaf02b790a87",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+[
+  {
+    "name": "Anglerfish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c101-06-anglerfish"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "name": "Beaked Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c221program-21-beaked-whale-v2"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Blue Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-44-blue-whale"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on",
+      "unexplained-anatomy: 9.5% of the paint lies away from the body and in no part (reference 3.5%)"
+    ]
+  },
+  {
+    "name": "Catfish",
+    "family": "fish",
+    "priorPackets": [
+      "c198creaturesupplyc-13-catfish",
+      "c203creaturesupply-22-catfish",
+      "g2c90-07-catfish",
+      "c213originals-36-catfish-source02",
+      "c213originals-36-catfish"
+    ],
+    "reasons": [
+      "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)",
+      "missing-anatomy: part jaw (jaw) covers 4% paint (reference 16%)",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)",
+      "missing-anatomy: part far-pectoral (pectoralFar) covers 26% paint (reference 77%)",
+      "missing-anatomy: part jaw (jaw) covers 3% paint (reference 16%)",
+      "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)",
+      "missing-anatomy: part far-pectoral (pectoralFar) covers 23% paint (reference 77%)",
+      "missing-anatomy: part jaw (jaw) covers 6% paint (reference 16%)",
+      "missing-anatomy: part far-pectoral (pectoralFar) covers 24% paint (reference 82%)",
+      "missing-anatomy: part jaw (jaw) covers 11% paint (reference 56%)",
+      "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 86%)",
+      "missing-anatomy: part far-pectoral (pectoralFar) covers 12% paint (reference 77%)"
+    ]
+  },
+  {
+    "name": "Deep-Sea Fish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c101-11-deep-sea-fish"
+    ],
+    "reasons": [
+      "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+    ]
+  },
+  {
+    "name": "Dragonfish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c101-09-dragonfish"
+    ],
+    "reasons": [
+      "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)",
+      "unexplained-anatomy: 21.1% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Eagle Ray",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-15-eagle-ray"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 26%)",
+      "unexplained-anatomy: 13.3% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Fangtooth",
+    "family": "fish",
+    "priorPackets": [
+      "c198creaturesupplyc-23-fangtooth",
+      "c203creaturesupplyb-24-fangtooth",
+      "g2c101-08-fangtooth"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on",
+      "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.6%)",
+      "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 4.6%)",
+      "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on",
+      "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "name": "Flying Fish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c101-05-flying-fish"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Flying Gurnard",
+    "family": "fish",
+    "priorPackets": [
+      "g2c106-12-flying-gurnard"
+    ],
+    "reasons": [
+      "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+    ]
+  },
+  {
+    "name": "Gray Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-47-gray-whale"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Gulper Eel",
+    "family": "fish",
+    "priorPackets": [
+      "g2c107-05-gulper-eel"
+    ],
+    "reasons": [
+      "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)",
+      "missing-anatomy: part segment-8 owns 0.84 % of the paint (reference 6.60 %)",
+      "missing-anatomy: part segment-9 owns 0.67 % of the paint (reference 5.96 %)"
+    ]
+  },
+  {
+    "name": "Humpback Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-45-humpback-whale"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Lamprey",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-10-lamprey"
+    ],
+    "reasons": [
+      "wrong-family: annelid matches clearly better (0.0126 < 0.0191)"
+    ]
+  },
+  {
+    "name": "Lancelet",
+    "family": "fish",
+    "priorPackets": [
+      "c221program-42-lancelet"
+    ],
+    "reasons": [
+      "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 91%)",
+      "missing-anatomy: part jaw (jaw) covers 11% paint (reference 56%)"
+    ]
+  },
+  {
+    "name": "Lionfish",
+    "family": "fish",
+    "priorPackets": [
+      "c198creaturesupplyc-21-lionfish",
+      "g2c92-05-lionfish"
+    ],
+    "reasons": [
+      "wrong-family: crustacean-small matches clearly better (0.0556 < 0.0834)",
+      "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on",
+      "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 4.6%)",
+      "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "name": "Lungfish",
+    "family": "fish",
+    "priorPackets": [
+      "c198creaturesupplyc-17-lungfish",
+      "g2c101-02-lungfish",
+      "c213originals-38-lungfish-source02",
+      "c213originals-38-lungfish"
+    ],
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+      "missing-anatomy: part jaw (jaw) covers 17% paint (reference 64%)",
+      "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%",
+      "missing-anatomy: part jaw (jaw) covers 0% paint (reference 64%)",
+      "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.6%)",
+      "missing-anatomy (family floor): the largest rear appendage is 5.1% of the paint; every same-family reference shows at least 10.0%",
+      "missing-anatomy (family floor): the largest rear appendage is 4.7% of the paint; every same-family reference shows at least 10.0%",
+      "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 4.0%)"
+    ]
+  },
+  {
+    "name": "Manatee",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-42-manatee"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Manta Ray",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-14-manta-ray-02"
+    ],
+    "reasons": [
+      "missing-anatomy: part caudal (caudal) covers 14% paint (reference 63%)",
+      "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 3.9%)"
+    ]
+  },
+  {
+    "name": "Marlin",
+    "family": "fish",
+    "priorPackets": [
+      "c203creaturesupplyb-22-marlin-framing02",
+      "c203creaturesupplyb-22-marlin",
+      "g2c83-04-marlin",
+      "c213originals-39-marlin-source02",
+      "c213originals-39-marlin"
+    ],
+    "reasons": [
+      "missing-anatomy: part head (head) covers 14% paint (reference 48%)",
+      "missing-anatomy: part head (head) covers 12% paint (reference 48%)",
+      "missing-anatomy: part head (head) covers 10% paint (reference 48%)",
+      "missing-anatomy: part head (head) covers 13% paint (reference 48%)"
+    ]
+  },
+  {
+    "name": "Moray Eel",
+    "family": "fish",
+    "priorPackets": [
+      "g2c107-04-moray-eel"
+    ],
+    "reasons": [
+      "wrong family: length/thickness 7.96 < 8"
+    ]
+  },
+  {
+    "name": "Narwhal",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-38-narwhal"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Oarfish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c107-06-oarfish"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+    ]
+  },
+  {
+    "name": "Pilot Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c221program-20-pilot-whale-v2"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Pipefish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c101-04-pipefish"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+    ]
+  },
+  {
+    "name": "Ray",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-12-ray"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%)",
+      "unexplained-anatomy: 12.0% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Seahorse",
+    "family": "fish",
+    "priorPackets": [
+      "c186creaturesupply-21-seahorse"
+    ],
+    "reasons": [
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "unexplained-anatomy: 22.9% of the paint lies away from the body and in no part (reference 4.0%)"
+    ]
+  },
+  {
+    "name": "Stingray",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-13-stingray-02"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 17.9% of the paint lies away from the body and in no part (reference 6.9%)"
+    ]
+  },
+  {
+    "name": "Tripod Fish",
+    "family": "fish",
+    "priorPackets": [
+      "g2c114-20-tripod-fish"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)",
+      "missing-anatomy: part jaw (jaw) covers 1% paint (reference 93%)",
+      "missing-anatomy: part tail-peduncle (spine5) covers 18% paint (reference 54%)",
+      "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 4.0%)"
+    ]
+  },
+  {
+    "name": "Whale",
+    "family": "fish",
+    "priorPackets": [
+      "c221program-31-whale-v2"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Beluga",
+    "family": "fish",
+    "priorPackets": [
+      "c215program-37-beluga"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "River Dolphin",
+    "family": "fish",
+    "priorPackets": [
+      "c221program-13-river-dolphin-v2"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Wahoo",
+    "family": "fish",
+    "priorPackets": [
+      "c203creaturesupply-24-wahoo",
+      "g2c83-08-wahoo",
+      "c213originals-40-wahoo-source02",
+      "c213originals-40-wahoo"
+    ],
+    "reasons": [
+      "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+    ]
+  },
+  {
+    "name": "Ant",
+    "family": "insect",
+    "priorPackets": [
+      "g2familypilot-16-ant",
+      "g2layoutc47-07-ant",
+      "g2referencesc62-08-ant"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches insect better (0.0304 < 0.0383)",
+      "wrong-family: quadruped matches clearly better (0.0254 < 0.0383)",
+      "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 27% paint (reference 100%)",
+      "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 18% paint (reference 62%)"
+    ]
+  },
+  {
+    "name": "Black Fly",
+    "family": "insect",
+    "priorPackets": [
+      "g2c95-21-black-fly"
+    ],
+    "reasons": [
+      "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+    ]
+  }
+]

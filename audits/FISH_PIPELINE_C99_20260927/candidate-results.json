@@ -1,0 +1,52 @@
+[
+  {
+    "id": "08-gar",
+    "sourceFit": "audits/FISH_PIPELINE_C99_20260927/inputs/08-gar",
+    "candidate": "audits/FISH_PIPELINE_C99_20260927/08-gar-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "12-killifish",
+    "sourceFit": "audits/FISH_PIPELINE_C99_20260927/inputs/12-killifish",
+    "candidate": "audits/FISH_PIPELINE_C99_20260927/12-killifish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "02-parrotfish",
+    "sourceFit": "audits/FISH_PIPELINE_C99_20260927/inputs/02-parrotfish",
+    "candidate": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "02-rabbitfish",
+    "sourceFit": "audits/FISH_PIPELINE_C99_20260927/inputs/02-rabbitfish",
+    "candidate": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "03-sea-bass",
+    "sourceFit": "audits/FISH_PIPELINE_C99_20260927/inputs/03-sea-bass",
+    "candidate": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  }
+]

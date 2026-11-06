@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Vulture",
+ "fitDir": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3237065e08706e572fbd19cd8fdefcde5d39b6c041a9211f57e794454fb6fb07"
+}

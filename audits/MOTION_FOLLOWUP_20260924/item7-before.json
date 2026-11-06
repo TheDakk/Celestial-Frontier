@@ -1,0 +1,441 @@
+[
+  {
+    "name": "Sponge",
+    "profile": "sponge",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Sea Squirt",
+    "profile": "tunicate",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Salp",
+    "profile": "tunicate",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Pyrosome",
+    "profile": "tunicate",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Mussel",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Oyster",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Clam",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Razor Clam",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Giant Clam",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Scallop",
+    "profile": "bivalve",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Land Snail",
+    "profile": "land-gastropod",
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Banana Slug",
+    "profile": "land-gastropod",
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Snail",
+    "profile": "land-gastropod",
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Freshwater Snail",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Water Snail",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Sea Snail",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Limpet",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Chiton",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Nudibranch",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Cowrie",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Conch",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Abalone",
+    "profile": "water-gastropod",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Earthworm",
+    "profile": "annelid-land",
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Ice Worm",
+    "profile": "annelid-land",
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Leech",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Marine Worm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Tube Worm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Polychaete Worm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Giant Tube Worm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Scale Worm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Flatworm",
+    "profile": "annelid-water",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Crayfish",
+    "profile": "clawed-crustacean",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "pinch"
+    ]
+  },
+  {
+    "name": "Hermit Crab",
+    "profile": "clawed-crustacean",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "pinch"
+    ]
+  },
+  {
+    "name": "Fiddler Crab",
+    "profile": "clawed-crustacean",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "pinch"
+    ]
+  },
+  {
+    "name": "Lobster",
+    "profile": "clawed-crustacean",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "pinch"
+    ]
+  },
+  {
+    "name": "Brine Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Water Flea",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Krill",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Copepod",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Amphipod",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Cave Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Freshwater Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Prawn",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Giant Isopod",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Isopod",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Vent Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Fairy Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Tadpole Shrimp",
+    "profile": "small-crustacean",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Barnacle",
+    "profile": "barnacle",
+    "media": [
+      "water"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Horseshoe Crab",
+    "profile": "horseshoe-crab",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Fly Larvae",
+    "profile": "larva",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": []
+  },
+  {
+    "name": "Tardigrade",
+    "profile": "tardigrade",
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": []
+  }
+]

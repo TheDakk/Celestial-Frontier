@@ -1,0 +1,70 @@
+[
+  {
+    "id": "candidate01/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Hoatzin/fit"
+  },
+  {
+    "id": "candidate01/Ladybug/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Ladybug/fit"
+  },
+  {
+    "id": "candidate01/Camel/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Camel/fit"
+  },
+  {
+    "id": "candidate01/Pilot-Whale/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Pilot-Whale/fit"
+  },
+  {
+    "id": "candidate01/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Tern/fit"
+  },
+  {
+    "id": "candidate01/River-Dolphin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/River-Dolphin/fit"
+  },
+  {
+    "id": "candidate01/Manatee/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Manatee/fit"
+  },
+  {
+    "id": "candidate01/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate01/Kakapo/fit"
+  },
+  {
+    "id": "candidate03/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Hoatzin/fit"
+  },
+  {
+    "id": "candidate03/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Tern/fit"
+  },
+  {
+    "id": "candidate03/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Kakapo/fit"
+  },
+  {
+    "id": "bird-placement02/Hoatzin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/fit"
+  },
+  {
+    "id": "bird-placement02/Tern/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Tern/fit"
+  },
+  {
+    "id": "bird-placement02/Kakapo/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/fit"
+  },
+  {
+    "id": "candidate02/Pilot-Whale/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Pilot-Whale/fit"
+  },
+  {
+    "id": "candidate02/River-Dolphin/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/River-Dolphin/fit"
+  },
+  {
+    "id": "candidate02/Manatee/fit",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate02/Manatee/fit"
+  }
+]

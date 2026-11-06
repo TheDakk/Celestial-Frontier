@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "milksea-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/milksea-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/milksea-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/milksea-v2/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported planets and above-water vista; the selected arena is now wholly submerged cyan water with a clear static seabed runway.",
+    "Bright green/magenta remnants persist around side seaweed. NEAR makes a strong horizontal foreground seam that abruptly cuts MID plants, and its coarse texture differs from the band behind it.",
+    "The FAR still paints a visible overhead water texture and nearby seabed despite a distant-only request. Independent style/medium review, moving combatant occlusion and native battle proof remain pending."
+  ]
+}

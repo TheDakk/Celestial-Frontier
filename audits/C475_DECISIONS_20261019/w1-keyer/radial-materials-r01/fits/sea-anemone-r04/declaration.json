@@ -1,0 +1,45 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "f842663b379684f6f166b2d86bdccd789a977270cff075e81d584638f76262cd",
+  "cutoutSha256": "723e7cef2e69b97b1708798289d6eff15f09d9461c1d1713be1e6d0e042c54d5",
+  "labelsFile": "labels.png",
+  "labelsSha256": "e39d3dee14eca024e3e1c8d9bd0924a5420dff4d53c090e21f677d10106f3826",
+  "parts": [
+    {
+      "id": "pedal-disc",
+      "joint": "base",
+      "layer": "near"
+    },
+    {
+      "id": "oral-disc",
+      "joint": "oral",
+      "layer": "near"
+    },
+    {
+      "id": "upper-crown-envelope",
+      "joint": "crownFar",
+      "layer": "near"
+    },
+    {
+      "id": "left-crown-envelope",
+      "joint": "crownLeft",
+      "layer": "near"
+    },
+    {
+      "id": "right-crown-envelope",
+      "joint": "crownRight",
+      "layer": "near"
+    },
+    {
+      "id": "near-crown-envelope",
+      "joint": "crownNear",
+      "layer": "near"
+    },
+    {
+      "id": "soft-column",
+      "joint": "column",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "2dac44359d8064f840bce493221dad5decc3ef859bee9cd7214e120a08dbb27c"
+}

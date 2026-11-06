@@ -1,0 +1,1956 @@
+[
+  {
+    "id": "c132references-03-dog",
+    "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02",
+    "name": "Dog",
+    "family": "quadruped",
+    "body": {
+      "x0": 161,
+      "y0": 167,
+      "x1": 291,
+      "y1": 248
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.3488,
+        "pixels": 6363,
+        "box": {
+          "x0": 93,
+          "y0": 131,
+          "x1": 200,
+          "y1": 293
+        },
+        "attach": {
+          "x": 169.8,
+          "y": 211.8,
+          "relX": 0.07,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.18
+        },
+        "class": "rear",
+        "length": 111.8,
+        "ratio": 0.86
+      }
+    ]
+  },
+  {
+    "id": "c186creaturesupply-07-tortoise",
+    "packet": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise",
+    "name": "Tortoise",
+    "family": "quadruped",
+    "body": {
+      "x0": 88,
+      "y0": 116,
+      "x1": 291,
+      "y1": 255
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c186creaturesupply-09-pond-turtle",
+    "packet": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle",
+    "name": "Pond Turtle",
+    "family": "quadruped",
+    "body": {
+      "x0": 119,
+      "y0": 149,
+      "x1": 287,
+      "y1": 243
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c186creaturesupply-11-softshell-turtle",
+    "packet": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle",
+    "name": "Softshell Turtle",
+    "family": "quadruped",
+    "body": {
+      "x0": 107,
+      "y0": 143,
+      "x1": 291,
+      "y1": 230
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.1397,
+        "pixels": 3423,
+        "box": {
+          "x0": 43,
+          "y0": 169,
+          "x1": 118,
+          "y1": 276
+        },
+        "attach": {
+          "x": 107.2,
+          "y": 198.8,
+          "relX": 0,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": -0.63,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 100.5,
+        "ratio": 0.5461956521739131
+      }
+    ]
+  },
+  {
+    "id": "c186creaturesupply-18-wolverine",
+    "packet": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine",
+    "name": "Wolverine",
+    "family": "quadruped",
+    "body": {
+      "x0": 127,
+      "y0": 133,
+      "x1": 333,
+      "y1": 228
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c192creaturesupply-14-okapi",
+    "packet": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi",
+    "name": "Okapi",
+    "family": "quadruped",
+    "body": {
+      "x0": 115,
+      "y0": 133,
+      "x1": 277,
+      "y1": 224
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.022,
+        "pixels": 539,
+        "box": {
+          "x0": 88,
+          "y0": 168,
+          "x1": 114,
+          "y1": 231
+        },
+        "attach": {
+          "x": 114,
+          "y": 188,
+          "relX": -0.01,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": -0.62,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 50.2,
+        "ratio": 0.30987654320987656
+      }
+    ]
+  },
+  {
+    "id": "c192creaturesupply-15-pronghorn",
+    "packet": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped",
+    "body": {
+      "x0": 113,
+      "y0": 155,
+      "x1": 276,
+      "y1": 227
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0194,
+        "pixels": 407,
+        "box": {
+          "x0": 95,
+          "y0": 168,
+          "x1": 112,
+          "y1": 208
+        },
+        "attach": {
+          "x": 112,
+          "y": 188,
+          "relX": -0.01,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.95,
+          "y": -0.31
+        },
+        "class": "rear",
+        "length": 26.2,
+        "ratio": 0.1607361963190184
+      }
+    ]
+  },
+  {
+    "id": "c192creaturesupply-16-springbok",
+    "packet": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok",
+    "name": "Springbok",
+    "family": "quadruped",
+    "body": {
+      "x0": 117,
+      "y0": 155,
+      "x1": 273,
+      "y1": 234
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0287,
+        "pixels": 617,
+        "box": {
+          "x0": 91,
+          "y0": 170,
+          "x1": 116,
+          "y1": 215
+        },
+        "attach": {
+          "x": 116,
+          "y": 190,
+          "relX": -0.01,
+          "relY": 0.44
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.24
+        },
+        "class": "rear",
+        "length": 35.4,
+        "ratio": 0.22692307692307692
+      }
+    ]
+  },
+  {
+    "id": "c196creaturesupply-06-llama",
+    "packet": "audits/C196_CREATURE_SUPPLY_20261003/06-llama",
+    "name": "Llama",
+    "family": "quadruped",
+    "body": {
+      "x0": 124,
+      "y0": 161,
+      "x1": 290,
+      "y1": 246
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0047,
+        "pixels": 115,
+        "box": {
+          "x0": 147,
+          "y0": 157,
+          "x1": 194,
+          "y1": 160
+        },
+        "attach": {
+          "x": 170.5,
+          "y": 160,
+          "relX": 0.28,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.95,
+          "y": -0.31
+        },
+        "class": "rear",
+        "length": 23.7,
+        "ratio": 0.1427710843373494
+      },
+      {
+        "k": 2,
+        "frac": 0.0345,
+        "pixels": 841,
+        "box": {
+          "x0": 101,
+          "y0": 171,
+          "x1": 123,
+          "y1": 228
+        },
+        "attach": {
+          "x": 123,
+          "y": 193.5,
+          "relX": -0.01,
+          "relY": 0.38
+        },
+        "dir": {
+          "x": -0.9,
+          "y": 0.43
+        },
+        "class": "rear",
+        "length": 40.9,
+        "ratio": 0.2463855421686747
+      }
+    ]
+  },
+  {
+    "id": "c196creaturesupply-08-ibex",
+    "packet": "audits/C196_CREATURE_SUPPLY_20261003/08-ibex",
+    "name": "Ibex",
+    "family": "quadruped",
+    "body": {
+      "x0": 121,
+      "y0": 163,
+      "x1": 293,
+      "y1": 258
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0262,
+        "pixels": 729,
+        "box": {
+          "x0": 93,
+          "y0": 190,
+          "x1": 120,
+          "y1": 239
+        },
+        "attach": {
+          "x": 120,
+          "y": 214.5,
+          "relX": -0.01,
+          "relY": 0.54
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.07
+        },
+        "class": "rear",
+        "length": 36.5,
+        "ratio": 0.21220930232558138
+      }
+    ]
+  },
+  {
+    "id": "c196framingsuccessors-03-monitor-lizard-framing-v2",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2",
+    "name": "Monitor Lizard",
+    "family": "quadruped",
+    "body": {
+      "x0": 156,
+      "y0": 194,
+      "x1": 277,
+      "y1": 222
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c196framingsuccessors-04-anole-framing-v2",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2",
+    "name": "Anole",
+    "family": "quadruped",
+    "body": {
+      "x0": 240,
+      "y0": 181,
+      "x1": 307,
+      "y1": 218
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c196framingsuccessors-05-skink-framing-v2",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2",
+    "name": "Skink",
+    "family": "quadruped",
+    "body": {
+      "x0": 205,
+      "y0": 193,
+      "x1": 293,
+      "y1": 219
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.2485,
+        "pixels": 857,
+        "box": {
+          "x0": 99,
+          "y0": 196,
+          "x1": 204,
+          "y1": 221
+        },
+        "attach": {
+          "x": 204,
+          "y": 209.5,
+          "relX": -0.01,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.1
+        },
+        "class": "rear",
+        "length": 105.9,
+        "ratio": 1.2034090909090909
+      }
+    ]
+  },
+  {
+    "id": "c196framingsuccessors-08-whiptail-framing-v2",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "body": {
+      "x0": 229,
+      "y0": 196,
+      "x1": 285,
+      "y1": 211
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c196quadrupedoriginals-05-skink",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink",
+    "name": "Skink",
+    "family": "quadruped",
+    "body": {
+      "x0": 199,
+      "y0": 182,
+      "x1": 344,
+      "y1": 226
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c196quadrupedoriginals-08-whiptail",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "body": {
+      "x0": 238,
+      "y0": 188,
+      "x1": 338,
+      "y1": 215
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c196quadrupedoriginals-11-frilled-lizard",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/11-frilled-lizard",
+    "name": "Frilled Lizard",
+    "family": "quadruped",
+    "body": {
+      "x0": 238,
+      "y0": 135,
+      "x1": 354,
+      "y1": 248
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0176,
+        "pixels": 338,
+        "box": {
+          "x0": 227,
+          "y0": 152,
+          "x1": 237,
+          "y1": 201
+        },
+        "attach": {
+          "x": 237,
+          "y": 176.5,
+          "relX": -0.01,
+          "relY": 0.37
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.21
+        },
+        "class": "rear",
+        "length": 26.5,
+        "ratio": 0.22844827586206898
+      }
+    ]
+  },
+  {
+    "id": "c196quadrupedoriginals-15-buffalo",
+    "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo",
+    "name": "Buffalo",
+    "family": "quadruped",
+    "body": {
+      "x0": 113,
+      "y0": 138,
+      "x1": 295,
+      "y1": 232
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0347,
+        "pixels": 799,
+        "box": {
+          "x0": 82,
+          "y0": 163,
+          "x1": 112,
+          "y1": 247
+        },
+        "attach": {
+          "x": 112,
+          "y": 188,
+          "relX": -0.01,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": -0.57,
+          "y": 0.82
+        },
+        "class": "limb-down",
+        "length": 66.2,
+        "ratio": 0.3637362637362638
+      }
+    ]
+  },
+  {
+    "id": "c198creaturesupplya-03-sloth-bear",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/03-sloth-bear",
+    "name": "Sloth Bear",
+    "family": "quadruped",
+    "body": {
+      "x0": 90,
+      "y0": 122,
+      "x1": 341,
+      "y1": 251
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c198creaturesupplya-10-squirrel",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/10-squirrel",
+    "name": "Squirrel",
+    "family": "quadruped",
+    "body": {
+      "x0": 135,
+      "y0": 192,
+      "x1": 250,
+      "y1": 302
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0185,
+        "pixels": 512,
+        "box": {
+          "x0": 121,
+          "y0": 206,
+          "x1": 136,
+          "y1": 270
+        },
+        "attach": {
+          "x": 134,
+          "y": 238.8,
+          "relX": -0.01,
+          "relY": 0.43
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.1
+        },
+        "class": "rear",
+        "length": 35.3,
+        "ratio": 0.3069565217391304
+      }
+    ]
+  },
+  {
+    "id": "c198creaturesupplya-13-mole",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/13-mole",
+    "name": "Mole",
+    "family": "quadruped",
+    "body": {
+      "x0": 101,
+      "y0": 142,
+      "x1": 311,
+      "y1": 245
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c198creaturesupplya-20-rat",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/20-rat",
+    "name": "Rat",
+    "family": "quadruped",
+    "body": {
+      "x0": 157,
+      "y0": 151,
+      "x1": 298,
+      "y1": 238
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c198creaturesupplya-24-snowshoe-hare",
+    "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/24-snowshoe-hare",
+    "name": "Snowshoe Hare",
+    "family": "quadruped",
+    "body": {
+      "x0": 121,
+      "y0": 171,
+      "x1": 284,
+      "y1": 259
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0091,
+        "pixels": 201,
+        "box": {
+          "x0": 113,
+          "y0": 203,
+          "x1": 120,
+          "y1": 247
+        },
+        "attach": {
+          "x": 120,
+          "y": 225,
+          "relX": -0.01,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.27
+        },
+        "class": "rear",
+        "length": 23.1,
+        "ratio": 0.14171779141104296
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-02-wild-boar",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar",
+    "name": "Wild Boar",
+    "family": "quadruped",
+    "body": {
+      "x0": 102,
+      "y0": 117,
+      "x1": 320,
+      "y1": 237
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0228,
+        "pixels": 715,
+        "box": {
+          "x0": 67,
+          "y0": 167,
+          "x1": 101,
+          "y1": 230
+        },
+        "attach": {
+          "x": 101,
+          "y": 193.5,
+          "relX": 0,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": -0.91,
+          "y": 0.41
+        },
+        "class": "rear",
+        "length": 49.9,
+        "ratio": 0.22889908256880734
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-08-buffalo",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo",
+    "name": "Buffalo",
+    "family": "quadruped",
+    "body": {
+      "x0": 92,
+      "y0": 126,
+      "x1": 312,
+      "y1": 240
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0361,
+        "pixels": 1166,
+        "box": {
+          "x0": 59,
+          "y0": 158,
+          "x1": 91,
+          "y1": 259
+        },
+        "attach": {
+          "x": 91,
+          "y": 189,
+          "relX": 0,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 77,
+        "ratio": 0.35
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-13-ibex",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex",
+    "name": "Ibex",
+    "family": "quadruped",
+    "body": {
+      "x0": 128,
+      "y0": 163,
+      "x1": 288,
+      "y1": 251
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0043,
+        "pixels": 112,
+        "box": {
+          "x0": 151,
+          "y0": 168,
+          "x1": 199,
+          "y1": 171
+        },
+        "attach": {
+          "x": 175,
+          "y": 171,
+          "relX": 0.29,
+          "relY": 0.09
+        },
+        "dir": {
+          "x": -0.9,
+          "y": -0.43
+        },
+        "class": "rear",
+        "length": 24.2,
+        "ratio": 0.15125
+      },
+      {
+        "k": 2,
+        "frac": 0.0261,
+        "pixels": 687,
+        "box": {
+          "x0": 103,
+          "y0": 189,
+          "x1": 127,
+          "y1": 235
+        },
+        "attach": {
+          "x": 127,
+          "y": 212,
+          "relX": -0.01,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 33.2,
+        "ratio": 0.20750000000000002
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-14-chamois",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois",
+    "name": "Chamois",
+    "family": "quadruped",
+    "body": {
+      "x0": 129,
+      "y0": 155,
+      "x1": 284,
+      "y1": 234
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0058,
+        "pixels": 119,
+        "box": {
+          "x0": 149,
+          "y0": 154,
+          "x1": 192,
+          "y1": 157
+        },
+        "attach": {
+          "x": 170.5,
+          "y": 157,
+          "relX": 0.27,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": -0.91,
+          "y": -0.41
+        },
+        "class": "rear",
+        "length": 21.7,
+        "ratio": 0.13999999999999999
+      },
+      {
+        "k": 2,
+        "frac": 0.0264,
+        "pixels": 545,
+        "box": {
+          "x0": 110,
+          "y0": 172,
+          "x1": 128,
+          "y1": 217
+        },
+        "attach": {
+          "x": 128,
+          "y": 194.5,
+          "relX": -0.01,
+          "relY": 0.5
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.03
+        },
+        "class": "rear",
+        "length": 28.8,
+        "ratio": 0.18580645161290324
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-23-dog",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/23-dog",
+    "name": "Dog",
+    "family": "quadruped",
+    "body": {
+      "x0": 128,
+      "y0": 124,
+      "x1": 309,
+      "y1": 242
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.1281,
+        "pixels": 3362,
+        "box": {
+          "x0": 84,
+          "y0": 116,
+          "x1": 149,
+          "y1": 208
+        },
+        "attach": {
+          "x": 128.5,
+          "y": 181,
+          "relX": 0,
+          "relY": 0.48
+        },
+        "dir": {
+          "x": -0.55,
+          "y": -0.84
+        },
+        "class": "top",
+        "length": 78.8,
+        "ratio": 0.4353591160220994
+      }
+    ]
+  },
+  {
+    "id": "c202creaturesupply-24-llama",
+    "packet": "audits/C202_CREATURE_SUPPLY_20261004/24-llama",
+    "name": "Llama",
+    "family": "quadruped",
+    "body": {
+      "x0": 123,
+      "y0": 164,
+      "x1": 299,
+      "y1": 255
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0499,
+        "pixels": 1314,
+        "box": {
+          "x0": 95,
+          "y0": 168,
+          "x1": 131,
+          "y1": 241
+        },
+        "attach": {
+          "x": 122.6,
+          "y": 201.1,
+          "relX": 0,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.11
+        },
+        "class": "rear",
+        "length": 48.5,
+        "ratio": 0.2755681818181818
+      }
+    ]
+  },
+  {
+    "id": "c203creaturesupply-05-moose",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose",
+    "name": "Moose",
+    "family": "quadruped",
+    "body": {
+      "x0": 109,
+      "y0": 147,
+      "x1": 279,
+      "y1": 234
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0078,
+        "pixels": 205,
+        "box": {
+          "x0": 98,
+          "y0": 175,
+          "x1": 108,
+          "y1": 208
+        },
+        "attach": {
+          "x": 108,
+          "y": 191.5,
+          "relX": -0.01,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": -0.81,
+          "y": -0.59
+        },
+        "class": "rear",
+        "length": 19.3,
+        "ratio": 0.11352941176470589
+      }
+    ]
+  },
+  {
+    "id": "c203creaturesupply-12-alpaca",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca",
+    "name": "Alpaca",
+    "family": "quadruped",
+    "body": {
+      "x0": 113,
+      "y0": 156,
+      "x1": 295,
+      "y1": 261
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0321,
+        "pixels": 939,
+        "box": {
+          "x0": 90,
+          "y0": 172,
+          "x1": 112,
+          "y1": 227
+        },
+        "attach": {
+          "x": 112,
+          "y": 197,
+          "relX": -0.01,
+          "relY": 0.39
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.39
+        },
+        "class": "rear",
+        "length": 37.2,
+        "ratio": 0.20439560439560442
+      }
+    ]
+  },
+  {
+    "id": "c203creaturesupply-15-tahr",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr",
+    "name": "Tahr",
+    "family": "quadruped",
+    "body": {
+      "x0": 119,
+      "y0": 119,
+      "x1": 311,
+      "y1": 241
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c203creaturesupplyb-03-pronghorn",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped",
+    "body": {
+      "x0": 117,
+      "y0": 150,
+      "x1": 287,
+      "y1": 230
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.025,
+        "pixels": 542,
+        "box": {
+          "x0": 101,
+          "y0": 165,
+          "x1": 116,
+          "y1": 213
+        },
+        "attach": {
+          "x": 116,
+          "y": 186,
+          "relX": -0.01,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.51
+        },
+        "class": "limb-down",
+        "length": 30.9,
+        "ratio": 0.18176470588235294
+      }
+    ]
+  },
+  {
+    "id": "c203creaturesupplyb-07-brown-bear",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear",
+    "name": "Brown Bear",
+    "family": "quadruped",
+    "body": {
+      "x0": 95,
+      "y0": 128,
+      "x1": 311,
+      "y1": 251
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "c213creaturesupply-03-impala",
+    "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala",
+    "name": "Impala",
+    "family": "quadruped",
+    "body": {
+      "x0": 108,
+      "y0": 156,
+      "x1": 306,
+      "y1": 249
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0306,
+        "pixels": 901,
+        "box": {
+          "x0": 90,
+          "y0": 173,
+          "x1": 107,
+          "y1": 248
+        },
+        "attach": {
+          "x": 107,
+          "y": 195.5,
+          "relX": -0.01,
+          "relY": 0.42
+        },
+        "dir": {
+          "x": -0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 55.2,
+        "ratio": 0.2787878787878788
+      }
+    ]
+  },
+  {
+    "id": "c213creaturesupply-14-takin",
+    "packet": "audits/C213_CREATURE_SUPPLY_20261002/14-takin",
+    "name": "Takin",
+    "family": "quadruped",
+    "body": {
+      "x0": 71,
+      "y0": 99,
+      "x1": 391,
+      "y1": 255
+    },
+    "tailCandidates": [
+      {
+        "k": 4,
+        "frac": 0.0188,
+        "pixels": 961,
+        "box": {
+          "x0": 44,
+          "y0": 161,
+          "x1": 70,
+          "y1": 225
+        },
+        "attach": {
+          "x": 70,
+          "y": 191.5,
+          "relX": 0,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": -0.85,
+          "y": 0.52
+        },
+        "class": "limb-down",
+        "length": 42.4,
+        "ratio": 0.1325
+      }
+    ]
+  },
+  {
+    "id": "c213creaturesupply-17-dromedary-camel",
+    "packet": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel",
+    "name": "Dromedary Camel",
+    "family": "quadruped",
+    "body": {
+      "x0": 105,
+      "y0": 97,
+      "x1": 391,
+      "y1": 226
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0257,
+        "pixels": 959,
+        "box": {
+          "x0": 147,
+          "y0": 90,
+          "x1": 207,
+          "y1": 112
+        },
+        "attach": {
+          "x": 177,
+          "y": 112,
+          "relX": 0.25,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0.07,
+          "y": -1
+        },
+        "class": "top",
+        "length": 37.2,
+        "ratio": 0.1300699300699301
+      }
+    ]
+  },
+  {
+    "id": "g2c106-23-porcupine",
+    "packet": "audits/G2_C106_20260927/23-porcupine",
+    "name": "Porcupine",
+    "family": "quadruped",
+    "body": {
+      "x0": 125,
+      "y0": 142,
+      "x1": 291,
+      "y1": 254
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0665,
+        "pixels": 1687,
+        "box": {
+          "x0": 73,
+          "y0": 178,
+          "x1": 124,
+          "y1": 248
+        },
+        "attach": {
+          "x": 124,
+          "y": 208.4,
+          "relX": -0.01,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.58
+        },
+        "class": "limb-down",
+        "length": 64.5,
+        "ratio": 0.3885542168674699
+      }
+    ]
+  },
+  {
+    "id": "g2c107-15-ibex",
+    "packet": "audits/G2_C107_20260927/15-ibex",
+    "name": "Ibex",
+    "family": "quadruped",
+    "body": {
+      "x0": 128,
+      "y0": 185,
+      "x1": 273,
+      "y1": 259
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0235,
+        "pixels": 484,
+        "box": {
+          "x0": 100,
+          "y0": 205,
+          "x1": 127,
+          "y1": 238
+        },
+        "attach": {
+          "x": 127,
+          "y": 221.5,
+          "relX": -0.01,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.06
+        },
+        "class": "rear",
+        "length": 31.6,
+        "ratio": 0.21793103448275863
+      }
+    ]
+  },
+  {
+    "id": "g2c107-16-chamois",
+    "packet": "audits/G2_C107_20260927/16-chamois",
+    "name": "Chamois",
+    "family": "quadruped",
+    "body": {
+      "x0": 129,
+      "y0": 157,
+      "x1": 288,
+      "y1": 233
+    },
+    "tailCandidates": [
+      {
+        "k": 3,
+        "frac": 0.0141,
+        "pixels": 297,
+        "box": {
+          "x0": 109,
+          "y0": 177,
+          "x1": 128,
+          "y1": 205
+        },
+        "attach": {
+          "x": 128,
+          "y": 187,
+          "relX": -0.01,
+          "relY": 0.39
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.5
+        },
+        "class": "rear",
+        "length": 26.2,
+        "ratio": 0.16477987421383647
+      }
+    ]
+  },
+  {
+    "id": "g2c107-21-guinea-pig",
+    "packet": "audits/G2_C107_20260927/21-guinea-pig",
+    "name": "Guinea Pig",
+    "family": "quadruped",
+    "body": {
+      "x0": 95,
+      "y0": 141,
+      "x1": 322,
+      "y1": 259
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c110-04-impala",
+    "packet": "audits/G2_C110_20260927/04-impala",
+    "name": "Impala",
+    "family": "quadruped",
+    "body": {
+      "x0": 135,
+      "y0": 173,
+      "x1": 272,
+      "y1": 230
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0193,
+        "pixels": 268,
+        "box": {
+          "x0": 119,
+          "y0": 183,
+          "x1": 134,
+          "y1": 227
+        },
+        "attach": {
+          "x": 134,
+          "y": 197.5,
+          "relX": -0.01,
+          "relY": 0.43
+        },
+        "dir": {
+          "x": -0.54,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 33.1,
+        "ratio": 0.2416058394160584
+      }
+    ]
+  },
+  {
+    "id": "g2c110-05-buffalo",
+    "packet": "audits/G2_C110_20260927/05-buffalo",
+    "name": "Buffalo",
+    "family": "quadruped",
+    "body": {
+      "x0": 90,
+      "y0": 124,
+      "x1": 307,
+      "y1": 233
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c110-23-dromedary-camel",
+    "packet": "audits/G2_C110_20260927/23-dromedary-camel",
+    "name": "Dromedary Camel",
+    "family": "quadruped",
+    "body": {
+      "x0": 136,
+      "y0": 132,
+      "x1": 248,
+      "y1": 215
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.2249,
+        "pixels": 4565,
+        "box": {
+          "x0": 83,
+          "y0": 154,
+          "x1": 179,
+          "y1": 312
+        },
+        "attach": {
+          "x": 138.7,
+          "y": 184.3,
+          "relX": 0.02,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -0.22,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 139.3,
+        "ratio": 1.2437500000000001
+      }
+    ]
+  },
+  {
+    "id": "g2c110-24-bactrian-camel",
+    "packet": "audits/G2_C110_20260927/24-bactrian-camel",
+    "name": "Bactrian Camel",
+    "family": "quadruped",
+    "body": {
+      "x0": 112,
+      "y0": 139,
+      "x1": 310,
+      "y1": 238
+    },
+    "tailCandidates": [
+      {
+        "k": 0,
+        "frac": 0.0349,
+        "pixels": 1041,
+        "box": {
+          "x0": 132,
+          "y0": 108,
+          "x1": 187,
+          "y1": 138
+        },
+        "attach": {
+          "x": 160,
+          "y": 138,
+          "relX": 0.24,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.18,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 41,
+        "ratio": 0.20707070707070707
+      }
+    ]
+  },
+  {
+    "id": "g2c114-10-rat",
+    "packet": "audits/G2_C114_20260927/10-rat",
+    "name": "Rat",
+    "family": "quadruped",
+    "body": {
+      "x0": 155,
+      "y0": 148,
+      "x1": 312,
+      "y1": 231
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c114-11-cow",
+    "packet": "audits/G2_C114_20260927/11-cow",
+    "name": "Cow",
+    "family": "quadruped",
+    "body": {
+      "x0": 115,
+      "y0": 142,
+      "x1": 304,
+      "y1": 232
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.0311,
+        "pixels": 715,
+        "box": {
+          "x0": 79,
+          "y0": 156,
+          "x1": 114,
+          "y1": 237
+        },
+        "attach": {
+          "x": 114,
+          "y": 177.5,
+          "relX": -0.01,
+          "relY": 0.39
+        },
+        "dir": {
+          "x": -0.52,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 69,
+        "ratio": 0.36507936507936506
+      }
+    ]
+  },
+  {
+    "id": "g2c118-23-rhinoceros",
+    "packet": "audits/G2_C118_20260927/23-rhinoceros",
+    "name": "Rhinoceros",
+    "family": "quadruped",
+    "body": {
+      "x0": 88,
+      "y0": 128,
+      "x1": 326,
+      "y1": 235
+    },
+    "tailCandidates": [
+      {
+        "k": 3,
+        "frac": 0.0134,
+        "pixels": 445,
+        "box": {
+          "x0": 58,
+          "y0": 168,
+          "x1": 87,
+          "y1": 231
+        },
+        "attach": {
+          "x": 87,
+          "y": 194,
+          "relX": 0,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -0.85,
+          "y": 0.53
+        },
+        "class": "limb-down",
+        "length": 47,
+        "ratio": 0.19747899159663865
+      }
+    ]
+  },
+  {
+    "id": "g2c132quadrupeds-06-anole",
+    "packet": "audits/G2_C132_QUADRUPEDS_20261001/06-anole",
+    "name": "Anole",
+    "family": "quadruped",
+    "body": {
+      "x0": 216,
+      "y0": 186,
+      "x1": 297,
+      "y1": 220
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c132quadrupeds-13-whiptail",
+    "packet": "audits/G2_C132_QUADRUPEDS_20261001/13-whiptail",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "body": {
+      "x0": 242,
+      "y0": 197,
+      "x1": 298,
+      "y1": 212
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.2637,
+        "pixels": 523,
+        "box": {
+          "x0": 114,
+          "y0": 201,
+          "x1": 241,
+          "y1": 216
+        },
+        "attach": {
+          "x": 241,
+          "y": 205.5,
+          "relX": -0.02,
+          "relY": 0.57
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.11
+        },
+        "class": "rear",
+        "length": 127.4,
+        "ratio": 2.275
+      }
+    ]
+  },
+  {
+    "id": "g2c136repairs-07-buffalo",
+    "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo",
+    "name": "Buffalo",
+    "family": "quadruped",
+    "body": {
+      "x0": 127,
+      "y0": 146,
+      "x1": 293,
+      "y1": 227
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c59-02-moose",
+    "packet": "audits/G2_C59_20260926/02-moose",
+    "name": "Moose",
+    "family": "quadruped",
+    "body": {
+      "x0": 13,
+      "y0": 22,
+      "x1": 413,
+      "y1": 379
+    },
+    "tailCandidates": [
+      {
+        "k": 3,
+        "frac": 0.0069,
+        "pixels": 443,
+        "box": {
+          "x0": 32,
+          "y0": 157,
+          "x1": 43,
+          "y1": 218
+        },
+        "attach": {
+          "x": 39.8,
+          "y": 187.5,
+          "relX": 0.07,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.24,
+          "y": -0.97
+        },
+        "class": "top",
+        "length": 31.5,
+        "ratio": 0.07875
+      }
+    ]
+  },
+  {
+    "id": "g2c59-05-badger",
+    "packet": "audits/G2_C59_20260926/05-badger",
+    "name": "Badger",
+    "family": "quadruped",
+    "body": {
+      "x0": 17,
+      "y0": 124,
+      "x1": 404,
+      "y1": 274
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0612,
+        "pixels": 2744,
+        "box": {
+          "x0": 32,
+          "y0": 165,
+          "x1": 77,
+          "y1": 267
+        },
+        "attach": {
+          "x": 57.3,
+          "y": 216.7,
+          "relX": 0.1,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -0.37,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 57.5,
+        "ratio": 0.14857881136950904
+      }
+    ]
+  },
+  {
+    "id": "g2c76-19-alpaca",
+    "packet": "audits/G2_C76_20260927/19-alpaca",
+    "name": "Alpaca",
+    "family": "quadruped",
+    "body": {
+      "x0": 131,
+      "y0": 173,
+      "x1": 285,
+      "y1": 256
+    },
+    "tailCandidates": [
+      {
+        "k": 2,
+        "frac": 0.038,
+        "pixels": 708,
+        "box": {
+          "x0": 110,
+          "y0": 177,
+          "x1": 140,
+          "y1": 221
+        },
+        "attach": {
+          "x": 131.2,
+          "y": 194.7,
+          "relX": 0,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.4
+        },
+        "class": "rear",
+        "length": 33.8,
+        "ratio": 0.21948051948051947
+      }
+    ]
+  },
+  {
+    "id": "g2c76-20-llama",
+    "packet": "audits/G2_C76_20260927/20-llama",
+    "name": "Llama",
+    "family": "quadruped",
+    "body": {
+      "x0": 137,
+      "y0": 180,
+      "x1": 287,
+      "y1": 262
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0584,
+        "pixels": 1063,
+        "box": {
+          "x0": 112,
+          "y0": 178,
+          "x1": 151,
+          "y1": 235
+        },
+        "attach": {
+          "x": 138.8,
+          "y": 203.6,
+          "relX": 0.01,
+          "relY": 0.29
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.06
+        },
+        "class": "rear",
+        "length": 41.2,
+        "ratio": 0.27466666666666667
+      }
+    ]
+  },
+  {
+    "id": "g2c83-20-spotted-hyena",
+    "packet": "audits/G2_C83_20260927/20-spotted-hyena",
+    "name": "Spotted Hyena",
+    "family": "quadruped",
+    "body": {
+      "x0": 145,
+      "y0": 127,
+      "x1": 307,
+      "y1": 219
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c90-15-squirrel",
+    "packet": "audits/G2_C90_20260927/15-squirrel",
+    "name": "Squirrel",
+    "family": "quadruped",
+    "body": {
+      "x0": 148,
+      "y0": 186,
+      "x1": 299,
+      "y1": 262
+    },
+    "tailCandidates": [
+      {
+        "k": 0,
+        "frac": 0.3741,
+        "pixels": 10067,
+        "box": {
+          "x0": 48,
+          "y0": 93,
+          "x1": 170,
+          "y1": 243
+        },
+        "attach": {
+          "x": 148.8,
+          "y": 216.8,
+          "relX": 0.01,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": -0.48,
+          "y": -0.88
+        },
+        "class": "top",
+        "length": 159.7,
+        "ratio": 1.057615894039735
+      }
+    ]
+  },
+  {
+    "id": "g2c90-17-rabbit",
+    "packet": "audits/G2_C90_20260927/17-rabbit",
+    "name": "Rabbit",
+    "family": "quadruped",
+    "body": {
+      "x0": 132,
+      "y0": 176,
+      "x1": 287,
+      "y1": 255
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0409,
+        "pixels": 783,
+        "box": {
+          "x0": 106,
+          "y0": 197,
+          "x1": 131,
+          "y1": 237
+        },
+        "attach": {
+          "x": 131,
+          "y": 216.5,
+          "relX": -0.01,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.2
+        },
+        "class": "rear",
+        "length": 32.3,
+        "ratio": 0.20838709677419354
+      }
+    ]
+  },
+  {
+    "id": "g2c90-23-sloth-bear",
+    "packet": "audits/G2_C90_20260927/23-sloth-bear",
+    "name": "Sloth Bear",
+    "family": "quadruped",
+    "body": {
+      "x0": 105,
+      "y0": 126,
+      "x1": 299,
+      "y1": 228
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c92-16-vole",
+    "packet": "audits/G2_C92_20260927/16-vole",
+    "name": "Vole",
+    "family": "quadruped",
+    "body": {
+      "x0": 113,
+      "y0": 142,
+      "x1": 303,
+      "y1": 247
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c95-13-pronghorn",
+    "packet": "audits/G2_C95_20260927/13-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped",
+    "body": {
+      "x0": 128,
+      "y0": 158,
+      "x1": 278,
+      "y1": 227
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0144,
+        "pixels": 266,
+        "box": {
+          "x0": 117,
+          "y0": 171,
+          "x1": 127,
+          "y1": 208
+        },
+        "attach": {
+          "x": 127,
+          "y": 189.5,
+          "relX": -0.01,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.88,
+          "y": -0.47
+        },
+        "class": "rear",
+        "length": 21,
+        "ratio": 0.14
+      }
+    ]
+  },
+  {
+    "id": "g2c95-14-springbok",
+    "packet": "audits/G2_C95_20260927/14-springbok",
+    "name": "Springbok",
+    "family": "quadruped",
+    "body": {
+      "x0": 118,
+      "y0": 152,
+      "x1": 284,
+      "y1": 227
+    },
+    "tailCandidates": [
+      {
+        "k": 1,
+        "frac": 0.0208,
+        "pixels": 428,
+        "box": {
+          "x0": 88,
+          "y0": 169,
+          "x1": 117,
+          "y1": 215
+        },
+        "attach": {
+          "x": 117,
+          "y": 187,
+          "relX": -0.01,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": -0.87,
+          "y": 0.5
+        },
+        "class": "rear",
+        "length": 40.3,
+        "ratio": 0.24277108433734937
+      }
+    ]
+  },
+  {
+    "id": "g2c98-19-shrew",
+    "packet": "audits/G2_C98_20260927/19-shrew",
+    "name": "Shrew",
+    "family": "quadruped",
+    "body": {
+      "x0": 133,
+      "y0": 162,
+      "x1": 292,
+      "y1": 237
+    },
+    "tailCandidates": []
+  },
+  {
+    "id": "g2c98-22-warthog",
+    "packet": "audits/G2_C98_20260927/22-warthog",
+    "name": "Warthog",
+    "family": "quadruped",
+    "body": {
+      "x0": 129,
+      "y0": 149,
+      "x1": 302,
+      "y1": 233
+    },
+    "tailCandidates": [
+      {
+        "k": 0,
+        "frac": 0.015,
+        "pixels": 250,
+        "box": {
+          "x0": 117,
+          "y0": 122,
+          "x1": 132,
+          "y1": 189
+        },
+        "attach": {
+          "x": 129.8,
+          "y": 186.3,
+          "relX": 0,
+          "relY": 0.44
+        },
+        "dir": {
+          "x": -0.15,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 65.5,
+        "ratio": 0.3786127167630058
+      }
+    ]
+  }
+]

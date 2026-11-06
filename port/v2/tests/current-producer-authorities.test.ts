@@ -8,11 +8,13 @@ import {
   type CompendiumProducerAuthority,
 } from '../tools/compendiummem-contract.mjs';
 import { stableJson } from '../tools/compendiummem-fixture.mjs';
+import { readActiveCompendiumBudget } from '../tools/compendiummem-active.mjs';
 // @ts-expect-error The executable static-profile owner intentionally has no declaration shim.
 import { resolveCheckProfile } from '../tools/check-profile.mjs';
 import {
   authorityMismatchPaths,
-  collectCurrentProducerAuthorities,
+  readPreparedProducerAuthorities,
+  assertPreparedAuthorityBuild,
   producerAuthorityCheckProfileExitCode,
   producerAuthorityExitCode,
   type CurrentProducerAuthorities,
@@ -40,17 +42,28 @@ type CompendiumBudget = {
 const sceneBudget = readJson(path.join(
   v2Root, 'budgets', 'scene-memory-v2.json',
 )) as SceneBudget;
-const compendiumBudget = readJson(path.join(
-  v2Root, 'budgets', 'compendium-memory-v1.json',
-)) as CompendiumBudget;
+const compendiumBudget = readActiveCompendiumBudget() as CompendiumBudget;
 let current: CurrentProducerAuthorities;
 const activeCheckProfile = resolveCheckProfile();
 
 beforeAll(() => {
-  current = collectCurrentProducerAuthorities();
+  current = readPreparedProducerAuthorities(JSON.parse(process.env.CF_UNIT_AUTHORITY_BUILD ?? 'null'));
 }, 60_000);
 
 describe('current producer authorities', () => {
+  it('refuses missing, stale-source and stale-dist pre-test receipts without taking the checkout lock', () => {
+    const build = current.build;
+    expect(() => assertPreparedAuthorityBuild(build, build)).not.toThrow();
+    for (const prepared of [null, {...build, sourceSha256: '0'.repeat(64)},
+      {...build, sha256: '0'.repeat(64)}, {...build, fileCount: build.fileCount + 1}]) {
+      expect(() => assertPreparedAuthorityBuild(prepared, build)).toThrow(/receipt/);
+    }
+    const source = fs.readFileSync(path.join(v2Root, 'tools/print-producer-authorities.mjs'), 'utf8');
+    const reader = source.slice(source.indexOf('export function readPreparedProducerAuthorities('),
+      source.indexOf('\nif (process.argv[1]'));
+    expect(reader).not.toMatch(/acquireWorkspaceLock|execFileSync/);
+    expect(reader).toContain('assertPreparedAuthorityBuild(prepared, observed.build)');
+  });
   it('binds every live memory budget required by the active check profile', () => {
     expect(authorityMismatchPaths(
       compendiumBudget.measurementAuthority, current.compendium.measurement,
@@ -58,6 +71,7 @@ describe('current producer authorities', () => {
     expect(authorityMismatchPaths(
       compendiumBudget.producerAuthority, current.compendium.producer,
     )).toEqual([]);
+    expect(current.compendium.certificate.ok, current.compendium.certificate.errors.join('; ')).toBe(true);
     expect(current.compendium).toMatchObject({
       measurementBudgetMatches: true,
       measurementBudgetMismatches: [],
@@ -98,7 +112,8 @@ describe('current producer authorities', () => {
       },
     };
     expect(producerAuthorityExitCode(allAuthoritiesGreen)).toBe(0);
-    for (const stale of [staleScene, staleMeasurement, staleProducer]) {
+    const missingCertificate = {...allAuthoritiesGreen, compendium: {...allAuthoritiesGreen.compendium, certificate: {ok:false,errors:['missing'],epoch:null,source:null}}};
+    for (const stale of [staleScene, staleMeasurement, staleProducer, missingCertificate]) {
       expect(producerAuthorityExitCode(stale)).toBe(2);
     }
     expect(producerAuthorityExitCode(undefined)).toBe(2);
@@ -106,6 +121,7 @@ describe('current producer authorities', () => {
     expect(producerAuthorityCheckProfileExitCode(staleScene, 'develop')).toBe(0);
     expect(producerAuthorityCheckProfileExitCode(staleScene, 'production')).toBe(2);
     for (const profile of ['dev', 'develop', 'production']) {
+      expect(producerAuthorityCheckProfileExitCode(missingCertificate, profile)).toBe(2);
       expect(producerAuthorityCheckProfileExitCode(staleMeasurement, profile)).toBe(2);
       expect(producerAuthorityCheckProfileExitCode(staleProducer, profile)).toBe(2);
       expect(producerAuthorityCheckProfileExitCode(undefined, profile)).toBe(2);

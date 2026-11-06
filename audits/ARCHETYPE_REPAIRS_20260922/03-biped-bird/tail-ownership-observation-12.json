@@ -1,0 +1,31 @@
+{
+  "schema": "cf.manual-source-part-observation/v1",
+  "source": "fit-10/parts/parts/body.png",
+  "sourceCutoutOffset": [
+    0,
+    21
+  ],
+  "master": "master.png",
+  "correction": {
+    "fromPart": "body",
+    "toPart": "tail",
+    "boundsPxInclusive": [
+      39,
+      818,
+      170,
+      901
+    ],
+    "seedPx": [
+      169,
+      818
+    ],
+    "connectivity": 8,
+    "expectedPixels": 1788,
+    "basis": "Parent and independent reviewer inspected master/body/tail/near-wing source: isolated distal strip follows upper edge of lower tail fan, below near-wing primaries and far from torso. Explicit connected selection; all alpha including1..8 retained; adjacency is not the anatomical basis."
+  },
+  "observation": "The isolated long distal feather stripe belongs to the tail fan; root ownership creates conflicting shared body pins at the adjacent tail field. No other body fragment relabeled.",
+  "coarseCandidate": "fit-09",
+  "previousFineCandidate": "fit-10",
+  "rejectedNativeCandidate": "fit-11",
+  "newCandidate": "fit-12"
+}

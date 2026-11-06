@@ -1,0 +1,28 @@
+{
+  "name": "Perch-like fish",
+  "exemplar": "Bass",
+  "covers": [
+    "Bass",
+    "Tilapia",
+    "Carp",
+    "Cichlid",
+    "Goldfish",
+    "Snapper",
+    "Cardinalfish",
+    "Perch",
+    "Sea Bass",
+    "Grouper",
+    "Walleye",
+    "Tetra",
+    "Archerfish",
+    "Parrotfish"
+  ],
+  "bodyPlan": "fish",
+  "mustPaint": [
+    "deep laterally compressed body (aspect about 2.5-2.8; the Salmon is about 3.5)",
+    "spiny front dorsal fin joined to a soft rear one",
+    "big mouth on a sloping face; squared tail; no adipose fin, no kype jaw",
+    "plain olive-silver base with a full six-mask set (striped = perch bars, banded, spotted, mottled, marbled, eye-spotted)"
+  ],
+  "why": "7 misleading and 7 caveat. The salmon's trout body and hooked jaw are wrong for every spiny-rayed fish."
+}

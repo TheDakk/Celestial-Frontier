@@ -1,0 +1,62 @@
+{
+  "program": "C243 ALL-OUT",
+  "batch": 2,
+  "round": 2,
+  "species": 24,
+  "exactNative1254Originals": 72,
+  "staticBefore": 3,
+  "staticAfter": 9,
+  "gainedStaticSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale"
+  ],
+  "lostStaticSpecies": [],
+  "newOriginalStaticPassSpecies": 7,
+  "changedPriorSources": [
+    "Lionfish",
+    "Pipefish"
+  ],
+  "nativePass": 9,
+  "finishPass": 9,
+  "rebindPass": 9,
+  "finishedNativePass": 9,
+  "fullSizeFramesReviewed": 45,
+  "readyForClaude": [
+    "Catfish",
+    "Gray Whale"
+  ],
+  "visualHolds": [
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin",
+    "Lionfish",
+    "Pipefish"
+  ],
+  "sourceOnlyRefusals": 15,
+  "remaining": "remaining.json",
+  "triageMagenta": {
+    "Catfish": 0,
+    "Gray Whale": 0,
+    "Gulper Eel": 0,
+    "Manatee": 1,
+    "Moray Eel": 0,
+    "Pilot Whale": 0,
+    "River Dolphin": 0,
+    "Lionfish": 96,
+    "Pipefish": 14
+  },
+  "sourceCheckpoint": "2b3aa00ca",
+  "pathCorrection": "5cfa15f08",
+  "note": "One absolute home path in the checkpoint validation log was corrected in a separate signed commit; no history rewritten. Source images, bindings, records and geometry unchanged. Prior Lionfish/Pipefish were changed D28 candidates, not unchanged retries.",
+  "limitsChanged": false,
+  "referencePoolChanged": false,
+  "allPairs": "HOLD",
+  "reservation": "C359 ACTIVE; next round2batch3 immediately",
+  "noCertificationOrC223": true
+}

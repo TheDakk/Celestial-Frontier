@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-34-ant-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C398-c267-34-ant-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-34-ant-01/plan.json"
+  ],
+  "startedUnix": 1792276972.9558349,
+  "beforeGiB": 91.82588577270508,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.059,
+  "lowestGiB": 91.41857528686523,
+  "afterGiB": 91.79148483276367
+}

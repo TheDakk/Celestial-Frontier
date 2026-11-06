@@ -1,0 +1,211 @@
+{
+ "schema": "cf.derived-ownership-evidence/v1",
+ "kind": "DERIVED OWNERSHIP EVIDENCE: derived from the admitted binding; not a manual label source, not an anatomical admission",
+ "creatureId": "salamander",
+ "generatorSha256": "2c34c9ea65e397e53a2b94d262f9f287854ecf389ece81dedea43d78dbee30dc",
+ "derivation": "tools/morph/build-card-masters.mjs derived-from-binding branch (kind=part order, atlas alpha into native cut-out, far before near, R=label, A=255); malformed geometry refuses",
+ "pin": {
+  "creatureId": "salamander",
+  "masterPath": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/master.png",
+  "masterSha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235",
+  "masterWidth": 1254,
+  "masterHeight": 1254,
+  "recordPath": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/record.json",
+  "recordSha256": "85d54574c6c0308b8a1ce87eda755ce1106f652104b16fc15e4f9d2364c5a149",
+  "recipeHash": "712c584bdd51bc0c585f4f8ae059faa8d9b7f0fcdc531f7841c46c054ed1f2e2",
+  "alphaPath": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/parts/alpha.png",
+  "alphaSha256": "9006250470a767e555e220b93bf8490257bf4c0a522429d4152312c906bdc85d",
+  "bindingSha256": "db731fe504b30ed0ac48e127559ed2a28238c812ae13946a8ba15bed95758aff",
+  "atlasPath": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/parts/atlas/salamander.png",
+  "atlasSha256": "35a2660949a0dffb50d467105ba9d64d020c8c1f31fe2a78431cdb30732a3f70"
+ },
+ "sourceChecks": {
+  "record": true,
+  "master": true,
+  "alpha": true,
+  "binding": true,
+  "atlas": true,
+  "recipe": true
+ },
+ "dimensions": {
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": {
+  "pngSha256": "56052d9264e158d7c6080dc39310675ba07b30ff9c44890d9ea5f60352496520",
+  "rgbaSha256": "ed90461f3f5d6b47a3f9e7ebdc8a2349af77ce9ae5c40adc22d64fc7a34576de",
+  "map": [
+   {
+    "label": 1,
+    "id": "root",
+    "joint": "root",
+    "layer": "near"
+   },
+   {
+    "label": 2,
+    "id": "hind-near-paw",
+    "joint": "hindNearPaw",
+    "layer": "near"
+   },
+   {
+    "label": 3,
+    "id": "hind-near-ankle",
+    "joint": "hindNearAnkle",
+    "layer": "near"
+   },
+   {
+    "label": 4,
+    "id": "hind-near-knee",
+    "joint": "hindNearKnee",
+    "layer": "near"
+   },
+   {
+    "label": 5,
+    "id": "hind-near-root",
+    "joint": "hindNearRoot",
+    "layer": "near"
+   },
+   {
+    "label": 6,
+    "id": "fore-near-paw",
+    "joint": "foreNearPaw",
+    "layer": "near"
+   },
+   {
+    "label": 7,
+    "id": "fore-near-ankle",
+    "joint": "foreNearAnkle",
+    "layer": "near"
+   },
+   {
+    "label": 8,
+    "id": "fore-near-knee",
+    "joint": "foreNearKnee",
+    "layer": "near"
+   },
+   {
+    "label": 9,
+    "id": "fore-near-root",
+    "joint": "foreNearRoot",
+    "layer": "near"
+   },
+   {
+    "label": 10,
+    "id": "hind-far-paw",
+    "joint": "hindFarPaw",
+    "layer": "far"
+   },
+   {
+    "label": 11,
+    "id": "hind-far-ankle",
+    "joint": "hindFarAnkle",
+    "layer": "far"
+   },
+   {
+    "label": 12,
+    "id": "hind-far-knee",
+    "joint": "hindFarKnee",
+    "layer": "far"
+   },
+   {
+    "label": 13,
+    "id": "hind-far-root",
+    "joint": "hindFarRoot",
+    "layer": "far"
+   },
+   {
+    "label": 14,
+    "id": "fore-far-paw",
+    "joint": "foreFarPaw",
+    "layer": "far"
+   },
+   {
+    "label": 15,
+    "id": "fore-far-ankle",
+    "joint": "foreFarAnkle",
+    "layer": "far"
+   },
+   {
+    "label": 16,
+    "id": "fore-far-knee",
+    "joint": "foreFarKnee",
+    "layer": "far"
+   },
+   {
+    "label": 17,
+    "id": "fore-far-root",
+    "joint": "foreFarRoot",
+    "layer": "far"
+   },
+   {
+    "label": 18,
+    "id": "jaw",
+    "joint": "jaw",
+    "layer": "near"
+   },
+   {
+    "label": 19,
+    "id": "head",
+    "joint": "head",
+    "layer": "near"
+   },
+   {
+    "label": 20,
+    "id": "neck",
+    "joint": "neck",
+    "layer": "near"
+   },
+   {
+    "label": 21,
+    "id": "tail3",
+    "joint": "tail3",
+    "layer": "near"
+   },
+   {
+    "label": 22,
+    "id": "tail2",
+    "joint": "tail2",
+    "layer": "near"
+   },
+   {
+    "label": 23,
+    "id": "tail1",
+    "joint": "tail1",
+    "layer": "near"
+   },
+   {
+    "label": 24,
+    "id": "tail0",
+    "joint": "tail0",
+    "layer": "near"
+   },
+   {
+    "label": 25,
+    "id": "chest",
+    "joint": "chest",
+    "layer": "near"
+   },
+   {
+    "label": 26,
+    "id": "pelvis",
+    "joint": "pelvis",
+    "layer": "near"
+   },
+   {
+    "label": 27,
+    "id": "spine",
+    "joint": "spine",
+    "layer": "near"
+   }
+  ],
+  "overwrites": {},
+  "paintedPixels": 140137,
+  "unownedPaintedPixels": 0
+ },
+ "controls": {
+  "reproducesShippedCardLabels512": true,
+  "changedBindingBreaksReproduction": true,
+  "changedDimensionsRefuse": true,
+  "identityFinishConservation": "PASS"
+ }
+}

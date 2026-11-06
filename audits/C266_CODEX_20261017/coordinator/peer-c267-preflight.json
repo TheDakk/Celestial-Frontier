@@ -1,0 +1,2275 @@
+{
+  "status": "RECONCILE",
+  "peerCommit": "ace47592c",
+  "overlappingIncomingPaths": 452,
+  "different": [
+    {
+      "path": "audits/MAILBOX/TO_CODEX.md",
+      "trackedHere": true,
+      "sameIncomingBlob": false
+    }
+  ],
+  "rows": [
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/declaration.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/intake-provenance.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/receipt.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/keyed.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/manifest.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/ownership.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/body.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-far.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-near.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/head.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/jaw.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-foot.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-upper.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-foot.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-upper.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/tail.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-base.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-distal.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-elbow.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-wrist.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-base.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-distal.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-elbow.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-wrist.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/receipt.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/pre-split-binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/receipt.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/record.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/intake.log",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/authoring.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/master.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/presence.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/prompt.txt",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/subject-source.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json.sources.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.log",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/verify/README.md",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/authoring.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/master.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/presence.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/prompt.txt",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/declaration.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/labels.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/c266-01-chiton.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/keyed.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/manifest.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/ownership.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-back.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-front.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-mid.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/foot-tail.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/head.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/parts/shell.png",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/parts/receipt.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/pre-split-binding.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/qual-r03/islands/fit/record.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/source.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/01-chiton/subject-source.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/README.md",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/controls-chiton.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/owner-components.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/static-r03.json",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-crustaceans/verify/README.md",
+      "trackedHere": true,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/atlas/c266-03-blue-whale-c1.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/atlas/c266-03-blue-whale-c1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-2.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-3.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-4.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body-5.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/caudal.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/dorsal.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/far-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/jaw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/parts/near-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/result.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/static.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/qual-r01/static.json.sources.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/source-observations.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-blue-whale-c1/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/atlas/c266-06-dragonfish-c3.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/atlas/c266-06-dragonfish-c3.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-2.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-3.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-4.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body-5.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/caudal.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/dorsal.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/far-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/jaw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/parts/near-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/result.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/static.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/qual-r01/static.json.sources.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/source-observations.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-dragonfish-c3/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/atlas/c266-07-eagle-ray-c1-a4.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/atlas/c266-07-eagle-ray-c1-a4.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-2.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-3.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-4.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body-5.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/dorsal.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/far-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/jaw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/parts/near-pectoral.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/result.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/static.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/qual-r01/static.json.sources.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/source-observations.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/07-eagle-ray-c1-a4/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/verify/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/intake.log",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands.log",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/c266-11-grasshopper.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/c266-11-grasshopper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/abdomen.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/antenna-far-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/antenna-near-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-far-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-far-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-near-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-near-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-far-femur.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-far-tibia-b-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-near-femur.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-near-tibia-b-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mandible.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-far-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-far-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-near-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-near-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/thorax.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/wing-near.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/intake-provenance.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/label-authoring-receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/c266-insect-grasshopper.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/c266-insect-grasshopper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/abdomen.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/antenna-far-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/antenna-near-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-far-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-far-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-near-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-near-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-far-femur.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-far-tibia-b-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-near-femur.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-near-tibia-b-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mandible.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-far-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-far-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-near-lower-0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-near-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/thorax.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/wing-near.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.json.sources.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.log",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/summary.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/tools/qualify.mjs",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/verify/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/prompt.txt",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/selected.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/tools/qualify.mjs",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/intake-quadrupeds/verify/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/intake-provenance.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/c266-giant-clam-pairs.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/c266-giant-clam-pairs.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/hinge.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/mantle.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/valvefar.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/valvenear.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/c243b04r2c1-18-kakapo.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/c243b04r2c1-18-kakapo.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/beak.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/chest.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-foot.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-shin.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-thigh.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-wing-flight.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-wing-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-foot.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-shin.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-thigh.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-wing-flight.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-wing-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/neck-lower.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/neck-upper.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/tail.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-birds-shells/verify/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/c243b06r2c1-16-monkey.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/c243b06r2c1-16-monkey.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-far-elbow.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-far-hand.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-near-elbow.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-near-hand.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/body.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/chest.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/jaw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-far-foot.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-far-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-near-foot.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-near-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/neck.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/pelvis.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail2.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/verify/README.md",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/declaration.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/labels.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/c243b05r1c1-09-wallaby.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/c243b05r1c1-09-wallaby.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/keyed.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/manifest.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/ownership.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/chest.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-far-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-far-tip.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-near-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-near-tip.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-ankle.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-paw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-ankle.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-paw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/head.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-ankle.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-paw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-ankle.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-knee.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-paw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/jaw.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/neck.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/pelvis.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/root.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/spine.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail0.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail1.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail2.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail3.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/receipt.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/pre-split-binding.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/record.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/authoring.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/master.png",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/presence.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/subject-source.json",
+      "trackedHere": false,
+      "sameIncomingBlob": true
+    },
+    {
+      "path": "audits/MAILBOX/TO_CODEX.md",
+      "trackedHere": true,
+      "sameIncomingBlob": false
+    }
+  ],
+  "note": "No checkout, merge, force or file mutation; compares incoming Git blob to existing own-lane bytes"
+}

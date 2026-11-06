@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Sea Squirt",
+    "index": 20,
+    "status": "BLOCKED_CANONICAL_COMPILER",
+    "reason": "Unsupported controlled library family: canonical profile cannot resolve a supported controlled library family; no image generated and no substituted topology.",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c1-20-sea-squirt"
+  }
+]

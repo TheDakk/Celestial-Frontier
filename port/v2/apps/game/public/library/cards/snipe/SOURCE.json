@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snipe",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-01/c243b04r1c1-10-snipe/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "164f991f6fb3eecc1c9918a5e35d52da5a998c2e68f08b62b08d2f6f87acd795"
+}

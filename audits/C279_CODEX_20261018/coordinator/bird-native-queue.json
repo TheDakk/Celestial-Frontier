@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Frigatebird",
+    "slug": "frigatebird",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/frigatebird/plan.json",
+    "originalPlan": "audits/C279_CODEX_20261018/w3-intake/native-plans01/frigatebird/plan.json",
+    "originalPlanSha256": "377cf771411f11629f0f883d5da3ac00b0cfc93b170cd6f3f3290f4d46d2dac4",
+    "sameFit": true,
+    "sameScriptBytes": true,
+    "purpose": "Own output parent prevents failed/planned sibling from entering immutable C261 membership",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/static02/frigatebird.json"
+  },
+  {
+    "name": "Osprey",
+    "slug": "osprey",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/osprey/plan.json",
+    "originalPlan": "audits/C279_CODEX_20261018/w3-intake/native-plans01/osprey/plan.json",
+    "originalPlanSha256": "b7943678b8fe417b79921fde5cc66124092875c8ce6db9fdad5244f1f10bf6a1",
+    "sameFit": true,
+    "sameScriptBytes": true,
+    "purpose": "Own output parent prevents failed/planned sibling from entering immutable C261 membership",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/static02/osprey.json"
+  },
+  {
+    "name": "Swift",
+    "slug": "swift",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/swift/plan.json",
+    "originalPlan": "audits/C279_CODEX_20261018/w3-intake/native-plans01/swift/plan.json",
+    "originalPlanSha256": "9569ad12f19db2894ad237eaf91145cbe631ed614e137392b6ea222463d40e9e",
+    "sameFit": true,
+    "sameScriptBytes": true,
+    "purpose": "Own output parent prevents failed/planned sibling from entering immutable C261 membership",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/static02/swift.json"
+  }
+]

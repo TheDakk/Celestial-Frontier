@@ -1,0 +1,263 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tasmanian Devil\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"4041999108\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"9\"]]]]",
+    "seed": 4041999108,
+    "ownerId": "authored:archetype-sprint/21-tasmanian-devil",
+    "earthName": "Tasmanian Devil"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4041999108,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 14,
+    "body": 15,
+    "loco": 16,
+    "trait": 9,
+    "size": 4,
+    "diet": 0,
+    "head": 3,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 12,
+    "detail": 1,
+    "accent": 10,
+    "temper": 3,
+    "sense": 8,
+    "repro": 7,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tasmanian Devil"
+  },
+  "geometry": {
+    "cutoutAssetHash": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6918005352821481,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5267145135566188,
+      0.4482456140350877
+    ],
+    "pelvis": [
+      0.37822966507177036,
+      0.4546251993620415
+    ],
+    "spine": [
+      0.5297448165869219,
+      0.44250398724082934
+    ],
+    "chest": [
+      0.6197767145135566,
+      0.44976076555023925
+    ],
+    "neck": [
+      0.6741626794258373,
+      0.382615629984051
+    ],
+    "head": [
+      0.7411483253588517,
+      0.3672248803827751
+    ],
+    "jaw": [
+      0.790829346092504,
+      0.4196969696969697
+    ],
+    "hindNearRoot": [
+      0.36076555023923446,
+      0.49401913875598086
+    ],
+    "hindNearKnee": [
+      0.30933014354066984,
+      0.5973684210526315
+    ],
+    "hindNearAnkle": [
+      0.29066985645933013,
+      0.6838118022328549
+    ],
+    "hindNearPaw": [
+      0.3236044657097289,
+      0.6995215311004785
+    ],
+    "hindFarRoot": [
+      0.4253588516746411,
+      0.5036682615629984
+    ],
+    "hindFarKnee": [
+      0.41148325358851673,
+      0.5978468899521532
+    ],
+    "hindFarAnkle": [
+      0.42288676236044653,
+      0.6613237639553429
+    ],
+    "hindFarPaw": [
+      0.4598086124401914,
+      0.6736044657097289
+    ],
+    "foreNearRoot": [
+      0.5855661881977671,
+      0.47703349282296653
+    ],
+    "foreNearKnee": [
+      0.5550239234449761,
+      0.5846092503987241
+    ],
+    "foreNearAnkle": [
+      0.5741626794258373,
+      0.6870813397129186
+    ],
+    "foreNearPaw": [
+      0.6135566188197767,
+      0.7039074960127593
+    ],
+    "foreFarRoot": [
+      0.6559808612440191,
+      0.4937001594896332
+    ],
+    "foreFarKnee": [
+      0.6506379585326953,
+      0.5868421052631578
+    ],
+    "foreFarAnkle": [
+      0.6842902711323764,
+      0.6803030303030303
+    ],
+    "foreFarPaw": [
+      0.7199362041467304,
+      0.686762360446571
+    ],
+    "tail0": [
+      0.2977671451355662,
+      0.44114832535885173
+    ],
+    "tail1": [
+      0.24322169059011164,
+      0.536762360446571
+    ],
+    "tail2": [
+      0.2168261562998405,
+      0.5374003189792663
+    ],
+    "tail3": [
+      0.1759968102073365,
+      0.5433811802232855
+    ],
+    "earNearRoot": [
+      0.6709728867623604,
+      0.3206539074960128
+    ],
+    "earNearTip": [
+      0.6731259968102073,
+      0.2854066985645933
+    ],
+    "earFarRoot": [
+      0.7473684210526316,
+      0.3160287081339713
+    ],
+    "earFarTip": [
+      0.7639553429027113,
+      0.2801435406698565
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/21-tasmanian-devil/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile small-clawed-mammal media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 05-cat-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "e3a139566c84810c5bd62b547bd3cecff75f7849970438e43a527ebf67920958",
+    "subjectSourceSha256": "9066430ce97a8fa91d13dca423f3584e9821aab2121da23c60c0f9cd0b5c7671",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.14862183331702072,
+      "spine": 0.15199922671496305,
+      "chest": 0.09032388098229564,
+      "neck": 0.0864077682250943,
+      "head": 0.06873101144572469,
+      "jaw": 0.0722601133277163,
+      "hindFarRoot": 0.0680175137732565,
+      "hindFarKnee": 0.09519530591111189,
+      "hindFarAnkle": 0.06449305036613091,
+      "hindFarPaw": 0.03891064955627617,
+      "foreFarRoot": 0.05693338721911867,
+      "foreFarKnee": 0.09329506241951326,
+      "foreFarAnkle": 0.09933490148288926,
+      "foreFarPaw": 0.036226447332950946,
+      "hindNearRoot": 0.043091504590317666,
+      "hindNearKnee": 0.11544121973315918,
+      "hindNearAnkle": 0.08843452077004434,
+      "hindNearPaw": 0.036489506266469275,
+      "foreNearRoot": 0.04375113442753106,
+      "foreNearKnee": 0.11182742755794639,
+      "foreNearAnkle": 0.10424404572401823,
+      "foreNearPaw": 0.0428369232882106,
+      "tail0": 0.08158335153315231,
+      "tail1": 0.11007838260678551,
+      "tail2": 0.026403242633402404,
+      "tail3": 0.041265072441008535,
+      "earFarRoot": 0.05157264433174789,
+      "earFarTip": 0.03953316608100367,
+      "earNearRoot": 0.08422260799707797,
+      "earNearTip": 0.03531291010853226
+    },
+    "measures": {
+      "torso": 0.24159602606487998,
+      "head": 0.06873101144572469,
+      "head/torso": 0.2844873426323128,
+      "bone-min": 0.026403242633402404,
+      "bone-max": 0.15199922671496305,
+      "leg/torso:hindFar": 0.8220292736942028,
+      "leg/torso:foreFar": 0.947268938827225,
+      "leg/torso:hindNear": 0.9949056310434647,
+      "leg/torso:foreNear": 1.0716583413530405
+    }
+  },
+  "recipeHash": "d813631c1ed3d88201540469e941ec59ce5c64212b7c6371ab30d5534c28d22b"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lancelet",
+ "fitDir": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/rebound/o3-lancelet008-green-r05-atlas/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad"
+}

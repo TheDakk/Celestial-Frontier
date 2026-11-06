@@ -1,0 +1,21 @@
+{
+  "stage": "finish-ant-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-finish-ant-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/ant-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/ant-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792278834.695033,
+  "beforeGiB": 90.71072769165039,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 57.038,
+  "lowestGiB": 75.30280303955078,
+  "afterGiB": 84.6700668334961
+}

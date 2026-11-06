@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Box Turtle",
+  "slug": "02-box-turtle-a03",
+  "id": "c266-intake-box-turtle",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-29-box-turtle",
+  "masterSha256": "336229429763c96e61b2f41ffea5f0430eba9b15c5fedba67e6f8569c1f52027",
+  "masterCopySha256": "336229429763c96e61b2f41ffea5f0430eba9b15c5fedba67e6f8569c1f52027",
+  "subjectSourceSha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e",
+  "promptSha256": "93ace49499c3d86eb293ce8551f8cc7b90a5a439a6505174bb937fb5090e7402",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+  "observation": "Full-size review: high domed patterned shell; four separate scaly legs each ending in a clawed foot (hind near x≈253-349, hind far x≈455-565, fore near x≈700-790, fore far x≈816-960); short pointed tail, extended neck and beaked head. Nothing missing; the refusal is an auto-author transfer failure.",
+  "joints": 27,
+  "parts": 25,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/02-box-turtle-a03.mjs"
+}

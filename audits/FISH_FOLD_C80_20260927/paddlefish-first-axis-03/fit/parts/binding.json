@@ -1,0 +1,246 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "891d3f542e8a5112b33c7e1784f3ddef8e73b49f6241767fb0e11c4a97887f79",
+  "atlasSha256": "f9d5f627238c8b187b635e2d92493ddd326eef5643c0756d7fb2719f8c3c9cd4",
+  "atlasSize": {
+    "width": 1255,
+    "height": 480
+  },
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 245,
+        "y": 205,
+        "width": 84,
+        "height": 77
+      },
+      "cutout": {
+        "x": 748,
+        "y": 625,
+        "width": 84,
+        "height": 77
+      }
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 980,
+        "y": 57,
+        "width": 34,
+        "height": 73
+      },
+      "cutout": {
+        "x": 828,
+        "y": 634,
+        "width": 34,
+        "height": 73
+      }
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 391,
+        "width": 90,
+        "height": 84
+      },
+      "cutout": {
+        "x": 319,
+        "y": 476,
+        "width": 90,
+        "height": 84
+      }
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 803,
+        "y": 5,
+        "width": 249,
+        "height": 42
+      },
+      "cutout": {
+        "x": 931,
+        "y": 530,
+        "width": 249,
+        "height": 42
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 462,
+        "y": 5,
+        "width": 331,
+        "height": 123
+      },
+      "cutout": {
+        "x": 852,
+        "y": 521,
+        "width": 331,
+        "height": 123
+      }
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1062,
+        "y": 5,
+        "width": 188,
+        "height": 251
+      },
+      "cutout": {
+        "x": 99,
+        "y": 476,
+        "width": 188,
+        "height": 251
+      }
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1024,
+        "y": 57,
+        "width": 14,
+        "height": 13
+      },
+      "cutout": {
+        "x": 795,
+        "y": 583,
+        "width": 14,
+        "height": 13
+      }
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 205,
+        "width": 116,
+        "height": 176
+      },
+      "cutout": {
+        "x": 271,
+        "y": 548,
+        "width": 116,
+        "height": 176
+      }
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 131,
+        "y": 205,
+        "width": 104,
+        "height": 179
+      },
+      "cutout": {
+        "x": 356,
+        "y": 528,
+        "width": 104,
+        "height": 179
+      }
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 624,
+        "y": 138,
+        "width": 151,
+        "height": 231
+      },
+      "cutout": {
+        "x": 433,
+        "y": 532,
+        "width": 151,
+        "height": 231
+      }
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 803,
+        "y": 57,
+        "width": 167,
+        "height": 243
+      },
+      "cutout": {
+        "x": 542,
+        "y": 519,
+        "width": 167,
+        "height": 243
+      }
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 462,
+        "y": 138,
+        "width": 152,
+        "height": 227
+      },
+      "cutout": {
+        "x": 627,
+        "y": 516,
+        "width": 152,
+        "height": 227
+      }
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 447,
+        "height": 190
+      },
+      "cutout": {
+        "x": 739,
+        "y": 519,
+        "width": 447,
+        "height": 190
+      }
+    }
+  ],
+  "bindingHash": "da22564d098d1eda0c4e645651e7cce5b366c4bea0d5b1cd6500383fed19c7e4"
+}

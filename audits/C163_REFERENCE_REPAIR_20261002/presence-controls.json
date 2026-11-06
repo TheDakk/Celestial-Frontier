@@ -1,0 +1,104 @@
+{
+  "schema": "cf.c163-presence-controls/v1",
+  "controls": [
+    {
+      "id": "01-giant-salamander",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "01-giant-salamander",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "01-giant-salamander",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "01-giant-salamander",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    },
+    {
+      "id": "02-alpine-salamander",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "02-alpine-salamander",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "02-alpine-salamander",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "02-alpine-salamander",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    },
+    {
+      "id": "04-blind-salamander",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "04-blind-salamander",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "04-blind-salamander",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "04-blind-salamander",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    },
+    {
+      "id": "05-axolotl",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "05-axolotl",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "05-axolotl",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "05-axolotl",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    }
+  ],
+  "held": [
+    {
+      "id": "03-olm",
+      "reason": "The S-curved swimming-like source exposes only two clear limbs and does not establish the policy-required grounded sprawl context. No ear review is fabricated to bypass that context; source painting and author refusal stay unchanged."
+    }
+  ],
+  "qualityAccepted": false
+}

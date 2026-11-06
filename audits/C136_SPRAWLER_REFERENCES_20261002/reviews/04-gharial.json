@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Gharial",
+  "family": "quadruped",
+  "masterSha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1",
+  "subjectSha256": "1a1a87cad12fea98c939d889c24d24a211b6bede424ff5f867ef93acc434f2ea",
+  "promptSha256": "b5167398b68db4055643a93e14938f4609d678719298078c770472982d726638",
+  "profileId": "crocodilian",
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: narrow needle snout with male terminal knob, fine teeth, scuted trunk, four visible feet and tall flattened tail. The upturned tail tip is blunt and fin-like rather than a clearly tapering terminal; retain tail-shape review hold. Near and far foot heights differ, with far upper limbs partially occluded. Broad magenta margins now present after the explicit central-rectangle composition instruction.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/04-gharial/visual-review.json",
+    "sha256": "6216373ee257a8b4fca898dc1f0b9f54b593c839d7417e8a7b056906b64df2dd"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

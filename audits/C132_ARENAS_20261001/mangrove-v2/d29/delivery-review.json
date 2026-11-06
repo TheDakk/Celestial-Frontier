@@ -1,0 +1,173 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "mangrove-v2",
+  "biome": "mangrove",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "mangrove"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "mangrove"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "mangrove"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.generation.json",
+      "sha256": "79403dd43ca41c4363bb74c7cd8d4b33f9640f75f9acde03424b60db79734f15"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.generation.json",
+      "sha256": "bdbcd3889809b78af5c4d845affa4884aaf059f23281433f9666cad6fa3bfcb0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.generation.json",
+      "sha256": "86a5f9efe8c56c7f7f59c2d176c24845f040288a6d1e2041e9401d8a16c49726"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-composed-review.png",
+      "sha256": "568091856ccca40ed68b1b349db7363224e16624508aa048e1e2cd35b5929a55"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/visual-notes.d29.json",
+      "sha256": "18ee7ef6a65e16ab15f8c74a7096acc243dc80e8a06fd1fbb6c1123834b705dc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-manifest.json",
+      "sha256": "24994648cd188889ef83118304e3b1584bc513c97d65a891e16fa92aec535adb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-recipe.json",
+      "sha256": "1bc70ecaccea37c8d3fc4fa81618d25d831c1373ef8516a05c847e97247a6725"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.generation.json",
+      "sha256": "79403dd43ca41c4363bb74c7cd8d4b33f9640f75f9acde03424b60db79734f15"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.prompt.txt",
+      "sha256": "dd56e66c4c4991c6edf0b756303741d401317b3b2f56f212f097e222c7c8c13c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.png",
+      "sha256": "6936d209515eebff386ddba34920905f9166573d76666e4f5011e546aed92f34"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+      "sha256": "6936d209515eebff386ddba34920905f9166573d76666e4f5011e546aed92f34"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.generation.json",
+      "sha256": "bdbcd3889809b78af5c4d845affa4884aaf059f23281433f9666cad6fa3bfcb0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.prompt.txt",
+      "sha256": "75dafe575131eb0b91251c71d40baa10b18fbbe2b5490f6f6df60b2d51504263"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.png",
+      "sha256": "c60adeec8abe5a0f6b56ee4b78a771735b4ed57c9840922356451e08e3819ab2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.png",
+      "sha256": "c60adeec8abe5a0f6b56ee4b78a771735b4ed57c9840922356451e08e3819ab2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.png",
+      "sha256": "1be61a1a0c21df8d6f50f0540b595c33b9610f1ce4272977fd8e69fd4c765096"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.generation.json",
+      "sha256": "86a5f9efe8c56c7f7f59c2d176c24845f040288a6d1e2041e9401d8a16c49726"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.prompt.txt",
+      "sha256": "61174026bd388f9ee07ab8d4acd7a91e32650d3ab9c9ebd734388bd348c098e3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.png",
+      "sha256": "bb4b618fb9275e78ea25950178ce9d0083c2b36d62978e6ebd463f60a7d922d6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.png",
+      "sha256": "5fb2d7e6019f4622552477053c98a95445fa8b32d6afe724f395e76b336127a2"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/mangrove-v2/visual-notes.d29.json",
+    "findings": [
+      "Full-size 1672×941 composite inspected. Warm mangrove roots and tidal water identify the biome; a broad brown runway stays clear between the opposing stands.",
+      "The targeted NEAR successor removes the tall side foliage that caused the original fighting-path refusal. The original three masters and refusal remain in mangrove/.",
+      "Visible magenta flecks remain among the MID foliage on both sides and along the distant shrub line, despite zero unresolved pixels reported by intake. The FAR and MID repeat shoreline/root masses; the thin NEAR creates a horizontal texture transition near the bottom. These are visual holds.",
+      "The painting suggests depth through a receding shore and detailed outer canopy; native parallax, player silhouette occlusion and underwater-versus-ground habitat suitability remain untested. No quality acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

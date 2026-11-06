@@ -1,0 +1,20 @@
+{
+  "stage": "finish-osprey-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-osprey-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/osprey"
+  ],
+  "startedUnix": 1792339694.406987,
+  "beforeGiB": 69.76565551757812,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.023,
+  "lowestGiB": 69.7656478881836,
+  "afterGiB": 70.7595100402832
+}

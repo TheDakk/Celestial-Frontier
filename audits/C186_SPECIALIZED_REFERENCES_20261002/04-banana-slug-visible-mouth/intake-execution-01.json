@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "04-banana-slug-visible-mouth",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/intake-01.log",
+  "logSha256": "14ede536f6149dbfe90b197011406bfd3ad651b0c551fdd579e2caa944f54da6",
+  "nativeRuns": 0
+}

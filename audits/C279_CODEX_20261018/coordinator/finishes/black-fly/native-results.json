@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c275-w1-22-c266-black-fly",
+    "packetId": "c275-w1-22-c266-black-fly",
+    "name": "Black Fly",
+    "fit": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/rebound/c275-w1-22-c266-black-fly",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/additional-black-fly/script.json",
+    "masterSha256": "61db26522bce260f51403d3335f2190c2ba03912cb9a1d8b36461bb76e78b794",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/additional15/cpu01/black-fly/static.json",
+    "observedPacket": "audits/C279_CODEX_20261018/w3-intake/additional15/observed01/c275-w1-22-c266-black-fly",
+    "keyColor": "magenta",
+    "nativeAcceptance": false,
+    "finishedMaster": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/finished/c275-w1-22-c266-black-fly-finished.png",
+    "finishReceipt": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/finished/c275-w1-22-c266-black-fly-receipt.json",
+    "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/additional-black-fly/checkpoint-final.json",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

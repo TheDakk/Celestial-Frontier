@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "milksea-v2",
+  "biome": "milksea",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "milksea"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "milksea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "milksea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.generation.json",
+      "sha256": "6bd579d92ca86d44a0cf53859a408f36a57f7ae7e7ace414d3b91ddf05c40021"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.generation.json",
+      "sha256": "659408d554e3561a8ba12f3b18a8f562794d652546ab5f3f81d296d634f14f2f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.generation.json",
+      "sha256": "99a17db0133c8263d3f7857f004c1fbe7cdbc907838f5113b02593ec70b8609c"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-composed-review.png",
+      "sha256": "b569b10110d2b81cf32697776213780aaceec3b2bbcebf6e4b03660c87c4f337"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.png",
+      "sha256": "f25d207982fcb55dd221df56c642911031efcd3f7c024cdfaaae9fdbb586b5af"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.png",
+      "sha256": "20a099db50a4f202944e2d5c671b25aa6c44878a5f755b10e3a49b9887644d52"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.png",
+      "sha256": "e1e0d5ffaa33516f25f348ed9d286a13e134e803d39c3c337ccff45b8d3b259f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/visual-notes.d29.json",
+      "sha256": "5e6789d438c35e66c4c8c15724ad257e0fb1888a5d8f91b1363cea0dbe82abf5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-manifest.json",
+      "sha256": "61a739c20420b8e571ce75ab62ea0ba4ee3432c41d04e42d293290fd69cf349b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-recipe.json",
+      "sha256": "963982e4120a33902080ccc6f2ce274117a20f49c6376ea4a7ad3ea3141e0786"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.generation.json",
+      "sha256": "6bd579d92ca86d44a0cf53859a408f36a57f7ae7e7ace414d3b91ddf05c40021"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.prompt.txt",
+      "sha256": "efdffee13583d049360e9ed5b3c141e8a3af1788ae824c9d1a5d745880058fce"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.generation.json",
+      "sha256": "659408d554e3561a8ba12f3b18a8f562794d652546ab5f3f81d296d634f14f2f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea/arena-mid.prompt.txt",
+      "sha256": "9162e8e240c43d8fb4aaed6d1611a4948cb51c7e141d50312f4fc651d04c508b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea/arena-mid.png",
+      "sha256": "20a099db50a4f202944e2d5c671b25aa6c44878a5f755b10e3a49b9887644d52"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-mid.png",
+      "sha256": "1ba94e16ccc0b0acdcea5c35d81d4c6ff4252a4bb503448039afc9a89540972b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.generation.json",
+      "sha256": "99a17db0133c8263d3f7857f004c1fbe7cdbc907838f5113b02593ec70b8609c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.prompt.txt",
+      "sha256": "a089f84b0942fc74cc593d9e543fe279b134d7ed0af2909cd2fdf3af69ba56a2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-near.png",
+      "sha256": "ef2b089d7f86be2cb03fe968382362d9b5c0fbda5578d11eb1486dc38e9e418e"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/milksea-v2/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. The repaired FAR removes unsupported planets and above-water vista; the selected arena is now wholly submerged cyan water with a clear static seabed runway.",
+      "Bright green/magenta remnants persist around side seaweed. NEAR makes a strong horizontal foreground seam that abruptly cuts MID plants, and its coarse texture differs from the band behind it.",
+      "The FAR still paints a visible overhead water texture and nearby seabed despite a distant-only request. Independent style/medium review, moving combatant occlusion and native battle proof remain pending."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

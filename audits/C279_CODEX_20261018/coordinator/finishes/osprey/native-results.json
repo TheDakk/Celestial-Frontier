@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c279-osprey-owner-r03",
+    "packetId": "c279-osprey-owner-r03",
+    "name": "Osprey",
+    "fit": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/rebound/c279-osprey-owner-r03",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/osprey-owner-r03/script.json",
+    "masterSha256": "1f7e7cb24d4e18617ad672a6a755cbabf051ac9e45125d2c30d4e58a8e4261fc",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/primary-repair03/osprey/static.json",
+    "observedPacket": "audits/C279_CODEX_20261018/w3-intake/primary-repair03/osprey/packet",
+    "changedInputReceipt": "audits/C279_CODEX_20261018/w3-intake/primary-repair03/osprey/changed-input-receipt.json",
+    "firstNativeHold": "audits/C279_CODEX_20261018/coordinator/films/osprey/report.json",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "nativeAcceptance": false,
+    "finishedMaster": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/finished/c279-osprey-owner-r03-finished.png",
+    "finishReceipt": "audits/C279_CODEX_20261018/coordinator/finishes/osprey/finished/c279-osprey-owner-r03-receipt.json",
+    "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/osprey-owner-r03/checkpoint-final.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "status": "PRESERVED_EXACT_FROZEN_TEST_SOURCE_OUTSIDE_IGNORED_SCRATCH",
+  "original": "audits/C475_DECISIONS_20261019/w1-keyer/thin-support-r01/node_modules/c475-thin-tests/actual.test.mjs",
+  "archived": "audits/C475_DECISIONS_20261019/coordinator/retained-cpu-test-sources/w1-thin-actual.test.mjs",
+  "sha256": "f94ad61eec1b206c74a8cedc3114ab9a7d6869186a20ad3fbca029bbb32b8873",
+  "why": "Do not force-add ignored node_modules. Preserve the authored verification source as exact bytes in this lane audit before later regenerable scratch cleanup. Original namespace and existing source fixture setup are needed to reproduce its execution.",
+  "signingAttemptedBeforeThisCorrection": false,
+  "productionEdits": false
+}

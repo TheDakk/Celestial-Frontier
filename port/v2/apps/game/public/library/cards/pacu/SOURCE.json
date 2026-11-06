@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pacu",
+ "fitDir": "audits/FISH_SEAMS_C78_20260927/pacu-tail-axial-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1fc8975d28f86542bd4a751c8be337822d5c1b078c50e33aa3ff954137ae00b3"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Garter Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/20-garter-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "60f7736cb8746098d710c96d6ba93624fc91bd29dd7d4e9cde6d384b8dec404b"
+}

@@ -1,0 +1,19 @@
+{
+  "stage": "validate-post-d40",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-D40-root-validate",
+    "--",
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792457093.054786,
+  "beforeGiB": 55.34835433959961,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.059,
+  "lowestGiB": 55.34822082519531,
+  "afterGiB": 55.3576774597168
+}

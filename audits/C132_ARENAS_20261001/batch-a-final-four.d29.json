@@ -1,0 +1,116 @@
+{
+  "schema": "cf.c132-arena-batch-d29/v1",
+  "batch": "A final four",
+  "newFamilies": [
+    "carbon",
+    "sulfurdeck",
+    "obsidian",
+    "abyssgreen"
+  ],
+  "mechanicalCandidateSets": 4,
+  "acceptedSets": 0,
+  "registeredSets": 0,
+  "selectedNewOriginals": 12,
+  "newDistinctGeneratedOriginals": 12,
+  "newOriginalBytes": 20307594,
+  "nativeSelectedCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "generationRetries": 0,
+  "frozenPromptBlocksVerified": true,
+  "subjectAmendments": [
+    {
+      "path": "audits/C132_ARENAS_20261001/carbon/prompt-amendments.json",
+      "sha256": "5f44747a2da8a43f712ccb387f1d5a30468bb5757c320bdb202ca157075823cc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/prompt-amendments.json",
+      "sha256": "1a5c1529989017c87517656443ba7878c4595acb4368cae3f640c99d77e0b6ce"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/prompt-amendments.json",
+      "sha256": "e31cbfc32d7b2dd390ba472fa28a314b51922c2e872aa8159456ec698093b734"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/prompt-amendments.json",
+      "sha256": "7fb4a95e6b84ff4cf13d7a08aa589c27f58a191ca6907cc2eb1aad11d1f41ca1"
+    }
+  ],
+  "reports": [
+    {
+      "path": "audits/C132_ARENAS_20261001/carbon/d29/delivery-review.json",
+      "sha256": "3e08bf41c8cb2f98df6ed3e8957ecaf5583c76c91b6b832abdbf9dea6e6d5536"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/d29/delivery-review.json",
+      "sha256": "4cc5174841b2484d714e331a711f5a9fc59559676274c533e42677354949a636"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/d29/delivery-review.json",
+      "sha256": "0584d551ad47493e8b50ac8adf7e6b5dc656c0e4249a791a3dc59b1aa1ab729f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/d29/delivery-review.json",
+      "sha256": "5f50d32a6bdd7b83d0d122fa0d8fe76efcca1bc6e2aebda7ed2bc11f5cc52d72"
+    }
+  ],
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/carbon/arena-far.generation.json",
+      "sha256": "35db73779799deaa5e5acf98f44da8c92a78d0556a7b591fa8c46ad9979d0bc5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/carbon/arena-near.generation.json",
+      "sha256": "449c7e6d4db1ad2a83330fa45f50e8687d2fc3599f744e3ff2f58435df0bddd3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/carbon/arena-mid.generation.json",
+      "sha256": "0df41e571ef3396d5ce716fba9bcf2344c66149d1b3883138c258490546c1829"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.generation.json",
+      "sha256": "21d4d6ebe5a7dc81a22d14db39a675fe18c61f0a6e728456f5475f9ffb094129"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.generation.json",
+      "sha256": "fca390a5dab0cbf3186049009053d9d217c9f393551a624814ba07796c39db95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.generation.json",
+      "sha256": "826da28cee49f4755f62d692e4e9b67bcce46b048c730e432540b1a6f5221da0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.generation.json",
+      "sha256": "c59569a0c8a90a70f0c386cc213adc1d2ee78ea482873c63e341cbb56a402113"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.generation.json",
+      "sha256": "abfa3e601f227189e42aa3a84436c5256e257fb9a75e547ae0eb2121e046c31b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.generation.json",
+      "sha256": "046fe6bc0010d620f43b19ca9caa3b386490ad91ae1b1e17c2da748a307db690"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.generation.json",
+      "sha256": "b332e402722446a61bddec6739fd7480c6e81e25c57c35ff9501efa480be2762"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.generation.json",
+      "sha256": "12c23020479cef03112972cfe48aea4b90f3e33bb67022ea765e4184d7c41275"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.generation.json",
+      "sha256": "e0d188c7415026a6700e9f51b0981fba0b63c0e7e69f67a54fdf5b4a4f3b024a"
+    }
+  ],
+  "helper": {
+    "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+    "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+  },
+  "freeDiskGiB": 154.11,
+  "reviewStatus": "All four remain visual-review HELD; no runtime registration or acceptance. No more generation in this assigned batch."
+}

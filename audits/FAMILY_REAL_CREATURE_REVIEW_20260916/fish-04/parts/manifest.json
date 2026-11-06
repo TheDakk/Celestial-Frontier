@@ -1,0 +1,65 @@
+{
+  "creatureId": "fish",
+  "parts": [
+    {
+      "name": "pectoral-near.png",
+      "path": "parts/pectoral-near.png",
+      "sha256": "8d0ecac333aaab435db46ed0f9ea4ac87a871e637f0f938cbd741acc76723e24"
+    },
+    {
+      "name": "pectoral-far.png",
+      "path": "parts/pectoral-far.png",
+      "sha256": "57684f2652387b77d811f06cff58bfd74008706182db5a80433dcb528a1b41f2"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "39b807a425627967d7f54b85a1c6316f246535e222d09df426c08d88be03a129"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "45bd5a5744542a644461490496b6b832e8866b0c8674923daf47d9386cb30159"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "ba192323a1cad151c56f93ed13073110e38de11c8ac9276d52a06d105076c299"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "f553f2f3ea4a52bb112702b51c0721a010415915c924dbc88af1016a9dea8539"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "path": "parts/tail-peduncle.png",
+      "sha256": "8b571ef49fc4513507f0b676b46567258f7512de220e60024fede783d4a469bc"
+    },
+    {
+      "name": "body-rear.png",
+      "path": "parts/body-rear.png",
+      "sha256": "5971026b30d1aaea4be4bdf62db01ca3ab2136c903f9e95f55ad90c4e93e1e5b"
+    },
+    {
+      "name": "body-mid-rear.png",
+      "path": "parts/body-mid-rear.png",
+      "sha256": "ee232b57893eb6bc7e6d950e533831d4de9ec7603e0d1fb987118cd9c706bad3"
+    },
+    {
+      "name": "body-front.png",
+      "path": "parts/body-front.png",
+      "sha256": "1892f29eb63e1e2fd4e79a8ca817e6369be6682512fcdcc8c249f67a2adfa42a"
+    },
+    {
+      "name": "shoulder.png",
+      "path": "parts/shoulder.png",
+      "sha256": "4cfee4b74313e3cd1d3cb3af1a47331ea4fab3c11c79910a112a9466b5e88b68"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "1a336f4d835cc00f78bf983f0a3c6cd3afe97feea40654c2389ec4b834da6494"
+    }
+  ]
+}

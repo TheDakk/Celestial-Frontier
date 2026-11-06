@@ -1,0 +1,87 @@
+[
+  {
+    "id": "c243b03r1c1-23-carrion-beetle",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b03r1c1-23-carrion-beetle/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-23-carrion-beetle/report.json"
+  },
+  {
+    "id": "c243b03r1c1-26-moth",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-26-moth/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth/report.json"
+  },
+  {
+    "id": "c243b03r1c1-27-springtail",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b03r1c1-27-springtail/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-27-springtail/report.json"
+  },
+  {
+    "id": "c243b03r1c1-28-thrips",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1j/c243b03r1c1-28-thrips/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-28-thrips/report.json"
+  },
+  {
+    "id": "c243b03r1c2-12-honeybee",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2d/c243b03r1c2-12-honeybee/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-12-honeybee/report.json"
+  },
+  {
+    "id": "c243b03r1c2-20-stonefly",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2g/c243b03r1c2-20-stonefly/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly/report.json"
+  },
+  {
+    "id": "c243b03r1c2-31-eagle",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-31-eagle/report.json"
+  },
+  {
+    "id": "c243b03r1c3-01-bumblebee",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3a/c243b03r1c3-01-bumblebee/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-01-bumblebee/report.json"
+  },
+  {
+    "id": "c243b03r1c3-24-ladybug",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug/report.json"
+  },
+  {
+    "id": "c243b02r1c1-09-flying-fish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b02r1c1-09-flying-fish/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b02r1c1-09-flying-fish/report.json"
+  },
+  {
+    "id": "c243b02r1c2-02-beaked-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b02r1c2-02-beaked-whale/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b02r1c2-02-beaked-whale/report.json"
+  },
+  {
+    "id": "c243b02r1c2-14-lamprey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b02r1c2-14-lamprey/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b02r1c2-14-lamprey/report.json"
+  },
+  {
+    "id": "c243b02r1c3-13-humpback-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b02r1c3-13-humpback-whale-refined/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b02r1c3-13-humpback-whale/report.json"
+  },
+  {
+    "id": "c196creaturesupply-18-water-beetle",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c196creaturesupply-18-water-beetle/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c196creaturesupply-18-water-beetle/report.json"
+  },
+  {
+    "id": "g2c136targetededits-21-bee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/g2c136targetededits-21-bee/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/g2c136targetededits-21-bee/report.json"
+  },
+  {
+    "id": "c198creaturesupplyb-22-locust",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c198creaturesupplyb-22-locust/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c198creaturesupplyb-22-locust/report.json"
+  },
+  {
+    "id": "c243b03r1c3-09-fly",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch03/class-fixes/c243b03r1c3-09-fly/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-09-fly/report.json"
+  }
+]

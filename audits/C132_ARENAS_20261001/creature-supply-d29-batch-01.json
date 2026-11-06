@@ -1,0 +1,489 @@
+{
+  "schema": "cf.c132-arena-lane-batch/v1",
+  "agent": "creature-supply",
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "newOriginalTriplets": 4,
+  "targetedEditedPlates": 5,
+  "generatedOutputs": 17,
+  "totalGeneratedBytes": 32424639,
+  "selectedNewTriplets": 4,
+  "revalidatedExistingTriplets": 3,
+  "masterAndRuntimeCandidatePasses": 14,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "generation": [
+    {
+      "id": "mangrove",
+      "role": "far",
+      "bytes": 2742466,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.png",
+        "sha256": "6936d209515eebff386ddba34920905f9166573d76666e4f5011e546aed92f34"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.generation.json",
+        "sha256": "79403dd43ca41c4363bb74c7cd8d4b33f9640f75f9acde03424b60db79734f15"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-far.prompt.txt",
+        "sha256": "dd56e66c4c4991c6edf0b756303741d401317b3b2f56f212f097e222c7c8c13c"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "mangrove",
+      "role": "mid",
+      "bytes": 2198489,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.png",
+        "sha256": "c60adeec8abe5a0f6b56ee4b78a771735b4ed57c9840922356451e08e3819ab2"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.generation.json",
+        "sha256": "bdbcd3889809b78af5c4d845affa4884aaf059f23281433f9666cad6fa3bfcb0"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-mid.prompt.txt",
+        "sha256": "75dafe575131eb0b91251c71d40baa10b18fbbe2b5490f6f6df60b2d51504263"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "mangrove",
+      "role": "near",
+      "bytes": 1499795,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.png",
+        "sha256": "23632e666d36f769cd2e018eb94d880f432dcfb13b89c6b40c45757fbd279cfa"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.generation.json",
+        "sha256": "79b2a6dda6646e63107e1ad09ce2dcfa1412a4a0f7f35e23cb8ddc1c58f5a9d1"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.prompt.txt",
+        "sha256": "82760c7030b255d5569031d6dc6b61172fbccdb6d7d96d8e617a3c4629b7ae44"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "stormsea",
+      "role": "far",
+      "bytes": 2654415,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.png",
+        "sha256": "8f178a5e3fe84001bf871d2972bd70579411f410a7438cba3f7a202752f37d01"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.generation.json",
+        "sha256": "cafe0d06c5ff918e101ccbcddf2e8743a8481660349cf98e1fe8efad6e58fc44"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.prompt.txt",
+        "sha256": "484f8fa948c3652c7b2dcd07f5f743e87e0fb002bc3ad206cdea09dc6b0cdbb0"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "stormsea",
+      "role": "mid",
+      "bytes": 1898495,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-mid.png",
+        "sha256": "9ff0f002c1f4e1fe838b9ef064a3aac5132cb97323083dc6751c97a5a717227d"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-mid.generation.json",
+        "sha256": "17b440eee54cbb5b06ed90e27176285e32c94c26306ea1e7a1cea0aaadca17fe"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-mid.prompt.txt",
+        "sha256": "4b23a8553228acc81e42fa04055a9e54ecfe11ed134cc225d3670495669046a9"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "stormsea",
+      "role": "near",
+      "bytes": 1473656,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.png",
+        "sha256": "635a1f953e6f0cb1f499250104cd34b738418d4ad1f5918aebccc557e0f681ac"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.generation.json",
+        "sha256": "0ed7f483c32d1f73baacc962fec6a3f64192865670fd65328f455e72d59a0cfb"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.prompt.txt",
+        "sha256": "94f6febfbe787d6681b89291ca229c3b2a2ecb029a13d708b9a579ce0c477797"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glacier",
+      "role": "far",
+      "bytes": 2720162,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-far.png",
+        "sha256": "144835a0e43be1d7b07ca61097b1219a44b58f55f5e70f53285c5572a2f40506"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-far.generation.json",
+        "sha256": "77587ea521753fba4cb448ba7ea65d038d976291472d5a12320c913b834cdac5"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-far.prompt.txt",
+        "sha256": "59cd9e643ad78f17981ed0b03bed574245a1fd576d8f4353d5bf136d0791361d"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glacier",
+      "role": "mid",
+      "bytes": 1647321,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.png",
+        "sha256": "b46d3df0f038b5cb68949910fdce385e71ae6a1c590a22fbeb198a82874a57e1"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.generation.json",
+        "sha256": "40b7d5d5d2913aae61c4d30a29b3054f5fad5755b0f1da6d396d94b92c0b85ef"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.prompt.txt",
+        "sha256": "f71349737585f69bdaabd1e312f8cb55e828ad9295baab54c04130b0217972bf"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "glacier",
+      "role": "near",
+      "bytes": 1224360,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-near.png",
+        "sha256": "550eecb1256cb00922eee013f2fdbaca0fe3f191fa4840e08d2904aeabeb3c0a"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-near.generation.json",
+        "sha256": "c8a3eaf58bc462b3848aee1f56ef5006c01cf06478f71e1659a3ee919bdc667f"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/glacier/arena-near.prompt.txt",
+        "sha256": "72fe2a5c42bf61f66b2600ecd15d2617769e25892472de50680b3d5ea097ab00"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "cryogeyser",
+      "role": "far",
+      "bytes": 2247358,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.png",
+        "sha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.generation.json",
+        "sha256": "3d73421c1f02b4c1cb8c2bdc2a27780a0b06c7e111c66f68425f1f253485bccd"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.prompt.txt",
+        "sha256": "a48e4819285030f26a4c3b11bcc993dbc73d334b1f70b2891deb74dd9f60d5b8"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "cryogeyser",
+      "role": "mid",
+      "bytes": 1845783,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.png",
+        "sha256": "2198169740203896541169f6d36f1adc9880b71dd66f2ab371ec0bf61f3dd311"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.generation.json",
+        "sha256": "9f4c0fcacaeab37f299b72385be68c5cde1519cec2bca4aec0fde049fd94b8fb"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.prompt.txt",
+        "sha256": "d5a549af62a2c1015d3d62e06d27a6335a6f1a2e97fcdcf0d00b89148c595b7a"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "cryogeyser",
+      "role": "near",
+      "bytes": 1311835,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.png",
+        "sha256": "afdfdb4d08936af457794385ab033db03f4814233ac963df53cf669d697cea45"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.generation.json",
+        "sha256": "e7ff56baf317745f3490a7903f972db9f0d20fbbb19044d62219502ca49ffc00"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.prompt.txt",
+        "sha256": "ba7b150a4a0ff0fea72fe890b847184ba901ad5565fc299cac6604e911abb09b"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "mangrove-v2",
+      "role": "near",
+      "bytes": 1219251,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.png",
+        "sha256": "bb4b618fb9275e78ea25950178ce9d0083c2b36d62978e6ebd463f60a7d922d6"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.generation.json",
+        "sha256": "86a5f9efe8c56c7f7f59c2d176c24845f040288a6d1e2041e9401d8a16c49726"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.prompt.txt",
+        "sha256": "61174026bd388f9ee07ab8d4acd7a91e32650d3ab9c9ebd734388bd348c098e3"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "stormsea-v2",
+      "role": "far",
+      "bytes": 2567369,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.png",
+        "sha256": "faa204e44e764c73acadc7184f23db60f8e93cdabf1126349f16e3801288bce2"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.generation.json",
+        "sha256": "2dd79dbc0eeccfc7405bdc7be6e2de520894ec72a76ba6ebdbcd694690d051e8"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.prompt.txt",
+        "sha256": "0e75d10a99ecf619fedb019c1c51985a23f418fe1d3f4e88b4c418604cadbc19"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "stormsea-v2",
+      "role": "near",
+      "bytes": 1245056,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.png",
+        "sha256": "b02026d96708a3d78e80a9453578b6d86d2cfe3ff0299c4aed07c25ec9318e1d"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.generation.json",
+        "sha256": "f9ebd20b4a748438b6e91050afd2f504c3de013e318719d81c2b726a9d23ef1c"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.prompt.txt",
+        "sha256": "7f7dfc9e89d66f13b0bae03dd25094427490986662a3f219fd8ac1fcee861e3e"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "cryogeyser-v2",
+      "role": "far",
+      "bytes": 2167355,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.png",
+        "sha256": "55de22d80c94bf8e9e97daf1aa1cea61f3103a5e4fddf131311de514114dcdd2"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.generation.json",
+        "sha256": "38c154624b481426b8f1af2bf042ed60b09e9f08440335bbb3ddd25234016c35"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.prompt.txt",
+        "sha256": "04366b9116dd1e2cd9973224b80480deb986b840a08a8606e15eae0bb7f456e1"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "cryogeyser-v2",
+      "role": "mid",
+      "bytes": 1761473,
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.png",
+        "sha256": "64e73d3461e4be62ff3349fafcd328531c27ad3c1ff57262537c8dea676e4f3e"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.generation.json",
+        "sha256": "9d73aa705e7b14724d528d45fd336033a82a550cc0af1d8163595115b1dc5d85"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.prompt.txt",
+        "sha256": "acaf97b446b292eb2e33f7734b9d8fcbcce222c16d5a1313662ee4c98d4d534b"
+      },
+      "byteIdenticalToToolOutput": true
+    }
+  ],
+  "selected": [
+    {
+      "id": "mangrove-v2",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery-review.json",
+        "sha256": "3aabb87c3e89fd75e9abfe6606acf86cfcf7747ec53794e053d3bbf0e5f42fab"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery.pending.json",
+        "sha256": "7186e9da7bfcf26f7bf156dad3e3d75c455187a61dd5ca01241b1546fa5e3675"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/visual-notes.d29.json",
+        "sha256": "18ee7ef6a65e16ab15f8c74a7096acc243dc80e8a06fd1fbb6c1123834b705dc"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "stormsea-v2",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery-review.json",
+        "sha256": "e4b7bcd244038411a83c5e14a679f0221965f73094cfbc487dcfc36ddf8c01eb"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery.pending.json",
+        "sha256": "5610d38e475e34224bd7faf9da62b9d44378ff71370515762e65c9428abbfb71"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/visual-notes.d29.json",
+        "sha256": "cf70fdf034b228468ebe88c0a8a048d883d2dc7e3266bebcfc03658481a3d28a"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "glacier",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/glacier/d29/delivery-review.json",
+        "sha256": "c3f49e9a811957e846aca17a76ac0f2a884cf33b48ed2370bb3970df38c77e2a"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/glacier/d29/delivery.pending.json",
+        "sha256": "b65a79c5a8ad75a11b51321a22b413824ae80d686495da3aa2c5aa0ae321aa32"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/glacier/visual-notes.d29.json",
+        "sha256": "8c590f6bad9b2f2710e92562224fa2edb9fafea7461646b063b8a953a31041ec"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "cryogeyser-v2",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery-review.json",
+        "sha256": "4878e0785fff240a4dedd071196e5d6c9da54842517bc7319a63089ca03c0d0d"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery.pending.json",
+        "sha256": "567be6aeadd4f51435cae1ebf04237ffa141fecafab066ea6d395be7c43fb820"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/visual-notes.d29.json",
+        "sha256": "aba81d97f0db73113085169ff02c26597f1379e2220c5efb50bf3ffc38022ebb"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "marsh",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/marsh/d29/delivery-review.json",
+        "sha256": "de44d627dfb69aed96670671efd90e6cf9fcdd53c5e4a4005939ec59242ea85c"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/marsh/d29/delivery.pending.json",
+        "sha256": "3856e181129b5ccf11f5d359071fad016c6aba8d373e83502c46cac5e98308f8"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/marsh/visual-notes.d29.json",
+        "sha256": "fd486ff3c0bccffbe672ae5c080a328ba8d78d50a97530c34366b29a5466ffb4"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "jungle-v2",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/d29/delivery-review.json",
+        "sha256": "6341f0752a702bbf10616346c6ec82519b2d3f4a93209bacc9bb5345044b4bf9"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/d29/delivery.pending.json",
+        "sha256": "30f110d0204cd50ab9654189880543aff5518e000c6c1bcaa529ffc477c71da7"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/visual-notes.d29.json",
+        "sha256": "67297cc407fe4b83a3fab10339d5567c11b04c0b7cca1135074add8e2f301675"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "savanna-v2",
+      "report": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/d29/delivery-review.json",
+        "sha256": "3a1743c0aa30e54c16b263592fd3a8dfaf568a0c623b7c405a63f5be7e108a2e"
+      },
+      "delivery": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/d29/delivery.pending.json",
+        "sha256": "cacc3b5fe08d04a2429356145b8fa3ea1708bcde4799c67642c9e9accf79fb96"
+      },
+      "visual": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/visual-notes.d29.json",
+        "sha256": "b940fd161c5989c624a59464bf582c34c832aa692bb3f0c429d1d3e2f504f379"
+      },
+      "mechanicalCandidate": true,
+      "qualityAccepted": false
+    }
+  ],
+  "editProvenance": [
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.edit-provenance.json",
+      "sha256": "e63a2ddc831376bca10a53ac695d140d6a147e5b1569de5a80f189c4fecfcc92"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.edit-provenance.json",
+      "sha256": "4fe481e6ecda3bb48bc85d6ceaffcc5099ea7a84b0da919fa8384829b61731b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.edit-provenance.json",
+      "sha256": "3d3a5450cac0544dc99bde8a7e0176da22563fa2653458d211070c3b41586251"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.edit-provenance.json",
+      "sha256": "d35b44f78f560bd4dfb5764115629951530ee13f8a65c13640de8531fce67f7c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.edit-provenance.json",
+      "sha256": "de94b0a9c9009e4c89fc3671ea5302e95f691df9922bf37be316f39677abf71a"
+    }
+  ],
+  "refusedPredecessors": [
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/intake-held.json",
+      "sha256": "593e2b14d739adc907b044c984009166f35676edfbfc9625c1c981ee07bedac1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/stormsea/intake-held.json",
+      "sha256": "d817d6f79da7cb4410c6f133b230d47e2c43ec592cac62aa834fac8988b76c30"
+    }
+  ],
+  "nextQueue": [
+    "boulder",
+    "saltflat",
+    "graben",
+    "ashwaste",
+    "glass",
+    "banded",
+    "ammonia",
+    "magmasea"
+  ]
+}

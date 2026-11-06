@@ -1,0 +1,106 @@
+{
+  "scope": "All five original-size finished-native frames viewed per listed subject. Pending triage and Claude admission.",
+  "frames": [
+    "turn1-hit-reaction-50",
+    "turn2-dodge-reaction-50",
+    "turn3-hit-reaction-50",
+    "turn3-hit-idle-50",
+    "turn3-hit-idle-90"
+  ],
+  "rows": [
+    {
+      "name": "Snipe",
+      "id": "c243b04r1c1-10-snipe",
+      "framesViewed": 5,
+      "observation": "Continuous body, bill, wing, tail and leg silhouettes in all five frames. No visible neck ribbon, detached feather or background slit. Golden hit discs and blue-white dodge sweep are transient FX. Bowed right-side late idle retained.",
+      "visual": "READY_PENDING_TRIAGE"
+    },
+    {
+      "name": "Ostrich",
+      "id": "c243b04r1c2-03-ostrich",
+      "framesViewed": 5,
+      "observation": "Right creature has a detached small head/beak fragment above the bowed head and a floating white tail-plume fragment in turn3 reaction and both late idle frames. No transient FX at these positions; HOLD ownership-island class.",
+      "visual": "HOLD_FRAGMENTS",
+      "next": "Existing bounded remainder-island repair on this newly admitted fit; no ruler or source-pixel change."
+    },
+    {
+      "name": "Pheasant",
+      "id": "c243b04r1c2-07-pheasant",
+      "framesViewed": 5,
+      "observation": "Right creature has a detached red facial patch above the head, white collar fragment behind neck and a separate raised tail-feather piece in turn3 reaction and both idle frames. HOLD ownership-island class.",
+      "visual": "HOLD_FRAGMENTS",
+      "next": "Existing bounded remainder-island repair on this newly admitted fit; no ruler or source-pixel change."
+    },
+    {
+      "name": "Tern",
+      "id": "c243b04r1c2-12-tern",
+      "framesViewed": 5,
+      "observation": "Right creature shows a detached black crown/upper-neck wedge behind head and an open neck-to-wing seam in turn3 reaction and idle frames. HOLD ownership-island class; apply existing bounded repair to this new fit.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Cockatoo",
+      "id": "g2c83-16-cockatoo",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction opens a tall triangular background slit through right head/crest-to-neck junction, separating rear yellow crest feathers from the head. Confirmed at 3x diagnostic crop. Idle closes; reaction remains HOLD despite bounded repair.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Frigatebird",
+      "id": "g2c107-08-frigatebird",
+      "framesViewed": 5,
+      "observation": "Right creature develops a pointed raised black neck/back strip in turn3 reaction and late idle; source upper contour is smooth in turn1. Hold for observed source-join class.",
+      "visual": "HOLD_NECK_SPIKE"
+    },
+    {
+      "name": "Hoatzin",
+      "id": "g2c106-18-hoatzin",
+      "framesViewed": 5,
+      "observation": "Head crest stays rooted and no detached head fragment or open neck gap visible across five frames. Layered pale tail shafts remain continuous; natural bow retained.",
+      "visual": "HOLD_UNDER_WING_BODY_SEAM",
+      "followupObservation": "Enlarged original-size frame crop reveals an open background band through the lower folded-wing/body junction. Earlier tail-shaft interpretation is superseded; hold for body/wing ownership repair or round2 repaint."
+    },
+    {
+      "name": "Kakapo",
+      "id": "g2c106-17-kakapo",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction opens a wide triangular background slit between right head and shoulder, with a raised back point. Both idle frames close. Hold despite mechanical PASS.",
+      "visual": "HOLD_SEAM"
+    },
+    {
+      "name": "Kookaburra",
+      "id": "c213originals-28-kookaburra",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction has a wide triangular background slit behind the lowered head, separating raised neck feathers; idle closes.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Eagle",
+      "id": "c243b03r1c2-31-eagle",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction has an opened nape/shoulder junction with pointed raised neck feather strips behind bowed head. Idle closes; old detached-strip repair is insufficient.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Owl",
+      "id": "c243b04r1c3-04-owl",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction and both idle frames split head and rear crown with a large triangular background wedge; rear tuft remains raised on neck.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Swift",
+      "id": "c243b04r1c3-11-swift",
+      "framesViewed": 5,
+      "observation": "Turn3 reaction opens a triangular background wedge between head and shoulder; idle closes. Folded wing tips and tiny feet remain intact.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    },
+    {
+      "name": "Egret",
+      "id": "g2c72-12-egret",
+      "framesViewed": 5,
+      "observation": "Original baseline fit has detached white crown and back plume pieces floating in turn3 reaction and idle frames, plus a horizontal source-body seam. Island-only repaired variant remains static RED; try measured source joins on that changed variant.",
+      "visual": "HOLD_SEAM_OR_FRAGMENT"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PRE_EDIT_LOADER_CORRECTION",
+  "secondFailure": "Installed TypeScript is the native compiler shim exposing version only, not AST API. Second helper failed before editing any source.",
+  "actualProbe": "Installed Vite ssrLoadModule returned exactly121rows and5738bc24f3d8f1de2ea488b42169b83b0b625ccc14cf30135f3e44a1207ecc66; initial sandbox WebSocket refusal retained in tool output. No source edit.",
+  "selectedLoader": "Actual installed Vite module loader on transient127.0.0.1 ephemeral transport, closed in finally. Before-copy hash must equal existing Guide authority; onlyoneMotionStudies bullet changes; no new dependency or ruler."
+}

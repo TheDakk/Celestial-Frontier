@@ -1,0 +1,103 @@
+{
+  "status": "SKIPPED_BEFORE_REPAINT",
+  "species": [
+    {
+      "index": 1,
+      "name": "Tube Worm",
+      "family": "annelid",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Dakk/C259 worm reference packet required"
+    },
+    {
+      "index": 6,
+      "name": "Scorpion",
+      "family": "arachnid",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 25,
+      "name": "Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 26,
+      "name": "Giant Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 27,
+      "name": "Oyster",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 28,
+      "name": "Razor Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 29,
+      "name": "Scallop",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 30,
+      "name": "Coconut Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 31,
+      "name": "Fiddler Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+    },
+    {
+      "index": 32,
+      "name": "Freshwater Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 33,
+      "name": "Mud Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 34,
+      "name": "Vent Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    }
+  ],
+  "requestedIn": "C366",
+  "reason": "No qualified packet or supported compiler; do not burn further images."
+}

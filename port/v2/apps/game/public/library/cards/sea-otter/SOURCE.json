@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sea Otter",
+ "fitDir": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-04-sea-otter/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0bb522c3156090767eed219de8f53b0054e57cc5f619cacec0cf0e6ac9668da4"
+}

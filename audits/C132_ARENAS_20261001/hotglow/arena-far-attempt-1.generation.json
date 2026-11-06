@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-630193bb-5d3c-45c7-8384-9b2c6993845e.png",
+  "sourceSha256": "33d82ca6d1cc3fddc00f67ab50ac343a9bc5e2cb2891571e0019e4bc177cf5e3",
+  "retainedMaster": "audits/C132_ARENAS_20261001/hotglow/arena-far-attempt-1.png",
+  "retainedSha256": "33d82ca6d1cc3fddc00f67ab50ac343a9bc5e2cb2891571e0019e4bc177cf5e3",
+  "bytes": 1755654,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.prompt.txt",
+    "sha256": "ec2ba09e710610bbeed064caee32c19a6292ff317972ce5600e229db36a6960c"
+  },
+  "status": "REJECTED_INVENTED_CELESTIAL_BODIES",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

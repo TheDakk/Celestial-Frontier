@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c168-hand-authoring/v1",
+  "writerSha256": "2b166d306ad47a11708fc16c5d32a48eb346ac292475e5a5226189ac21721b0d",
+  "packets": [
+    {
+      "id": "spread-bat",
+      "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+      "observationSha256": "09c8187923c09cdec91c8c066c21975f33bbc7903cc180580bc056df0cd119e3",
+      "authoringSha256": "8eb5833b06d5e1885ca92a9df3fc6dc481dbeb692791a1493f448b4dabee027b"
+    },
+    {
+      "id": "standing-vampire",
+      "masterSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+      "observationSha256": "5177835d5774b7ddf3e00957fd4deb271a09c1baafae462387eb9313275b4aad"
+    }
+  ],
+  "policy": "Only independently inspected source-specific observations; no donor coordinate transfer, no global pool or runtime edits. Standing anatomy hold is delivered rather than fabricating a missing or malformed thumb.",
+  "qualityAccepted": false
+}

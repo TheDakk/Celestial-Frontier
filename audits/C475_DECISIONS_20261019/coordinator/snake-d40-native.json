@@ -1,0 +1,20 @@
+{
+  "stage": "snake-d40-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C475-snake-d40-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C475_DECISIONS_20261019/coordinator/plans/snake-d40/native-plan-bound.json"
+  ],
+  "startedUnix": 1792462270.555819,
+  "beforeGiB": 53.85710906982422,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.067,
+  "lowestGiB": 53.44757080078125,
+  "afterGiB": 53.815040588378906
+}

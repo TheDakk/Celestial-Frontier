@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-22-anole-a02",
+    "name": "Anole",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02",
+    "fit": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/rebound/c266-22-anole-a02",
+    "packetId": "anole-a02-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/native/report.json",
+    "masterSha256": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/finished/c266-22-anole-a02-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/finished/c266-22-anole-a02-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/anole-a02-01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

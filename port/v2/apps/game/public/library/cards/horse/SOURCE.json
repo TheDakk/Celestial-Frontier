@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Horse",
+ "fitDir": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/axial-joins-02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4bcbc6d07211ce0456effe22206de7942e408b62cc1bc876ae8141737a44a4bc"
+}

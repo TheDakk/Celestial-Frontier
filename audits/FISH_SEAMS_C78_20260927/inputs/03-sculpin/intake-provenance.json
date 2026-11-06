@@ -1,0 +1,78 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "a670690927ddcacbb95d4f477eb3de896ed9474f",
+  "helperSha256": "a77ac9896f3414c540cf5fbd9e55418f6dcd58d7658ec3bfa42983c4a8c6437d",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/master.png",
+      "sha256": "2cc3bf01dcfb7de2242ed45e70a04a1c52f51247749d6f88407f4132c39ab600"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/authoring.json",
+      "sha256": "d26afcc678cd95b0a27cf743acf05a4b48920eea428cc26ff79e50a71d4a7cee"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/subject-source.json",
+      "sha256": "c4fd61b7b33cd105013135d7304ac818e202185e113217fa9de6ae182ccba86a"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "7efdbda93df53fd6dc3e5480377a5d7b0b2385eb9bf81b9f3c2b41b798089b35",
+  "bindingHash": "306892ee10e2c5c752f7f696603b4d3f54e4a85ce01531a228720c5ff3e30dbb",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "pectoralNear",
+    "pectoralFar",
+    "jaw",
+    "head",
+    "dorsal",
+    "caudal",
+    "spine0",
+    "spine1",
+    "spine2",
+    "spine3",
+    "spine4",
+    "spine5"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/master.png",
+      "sha256": "2cc3bf01dcfb7de2242ed45e70a04a1c52f51247749d6f88407f4132c39ab600",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/authoring.json",
+      "sha256": "d26afcc678cd95b0a27cf743acf05a4b48920eea428cc26ff79e50a71d4a7cee",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/subject-source.json",
+      "sha256": "c4fd61b7b33cd105013135d7304ac818e202185e113217fa9de6ae182ccba86a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

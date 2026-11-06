@@ -1,0 +1,37 @@
+[
+  {
+    "id": "c243b06r1c1-25-clam",
+    "name": "Clam",
+    "family": "bivalve",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-25-clam",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-25-clam/master.png"
+  },
+  {
+    "id": "c243b06r1c1-26-giant-clam",
+    "name": "Giant Clam",
+    "family": "bivalve",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-26-giant-clam",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-26-giant-clam/master.png"
+  },
+  {
+    "id": "c243b06r1c1-27-oyster",
+    "name": "Oyster",
+    "family": "bivalve",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-27-oyster",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-27-oyster/master.png"
+  },
+  {
+    "id": "c243b06r1c1-28-razor-clam",
+    "name": "Razor Clam",
+    "family": "bivalve",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-28-razor-clam",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-28-razor-clam/master.png"
+  },
+  {
+    "id": "c243b06r1c1-29-scallop",
+    "name": "Scallop",
+    "family": "bivalve",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-29-scallop",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-29-scallop/master.png"
+  }
+]

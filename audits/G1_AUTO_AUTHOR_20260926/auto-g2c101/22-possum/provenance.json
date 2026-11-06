@@ -1,0 +1,165 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "22-possum",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "7a08e8d6fa150cfdba721907cfd0a50cb97e9aa042e032cebb2b6ca6e4d7284e",
+ "subjectSourceSha256": "f8939d9f80b8908d750469d883260dc85a5fb9bd95a3ec01fdd96c1033adb152",
+ "identity": {
+  "name": "Possum",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Possum\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2287097868\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "seed": 2287097868,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "rat",
+  "authoringSha256": "033b37d14089e19e2038c6bef89967d721bf07634a5e4039e47501a554f1955b",
+  "masterSha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.005,
+     "class": "top",
+     "attach": {
+      "x": 210,
+      "y": 150,
+      "relX": 0.37,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0188,
+     "class": "top",
+     "attach": {
+      "x": 297.5,
+      "y": 165,
+      "relX": 0.88,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.033,
+     "class": "limb-down",
+     "attach": {
+      "x": 318.9,
+      "y": 199.4,
+      "relX": 1.01,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0761,
+     "class": "rear",
+     "attach": {
+      "x": 146,
+      "y": 199.5,
+      "relX": -0.01,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0425,
+     "class": "limb-down",
+     "attach": {
+      "x": 160.4,
+      "y": 230.6,
+      "relX": 0.08,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0298,
+     "class": "limb-down",
+     "attach": {
+      "x": 189.5,
+      "y": 231,
+      "relX": 0.25,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.03,
+     "class": "limb-down",
+     "attach": {
+      "x": 242,
+      "y": 236,
+      "relX": 0.56,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0374,
+     "class": "limb-down",
+     "attach": {
+      "x": 267.5,
+      "y": 236,
+      "relX": 0.7,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5,
+    "rear": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "rat",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "limb-down": 5,
+    "rear": 1
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreNear+foreFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

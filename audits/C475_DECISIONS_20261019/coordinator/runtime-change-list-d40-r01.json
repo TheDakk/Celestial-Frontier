@@ -1,0 +1,24 @@
+{
+  "status": "D39_RUNTIME_APPLIED_D40_OFFLINE_POSTSEAL_TOOLS_ADDED",
+  "gameCodeAndImportedTools": [
+    "port/v2/apps/game/src/motion/serpent-victory.ts",
+    "port/v2/apps/game/src/release-content.ts"
+  ],
+  "testOnly": [
+    "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+    "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts"
+  ],
+  "guideAuthority": "port/v2/tools/slicesmoke.mjs",
+  "I5RecertificationRequired": true,
+  "selectedCertificate": "C464_UNCHANGED_STALE_PRODUCER_AFTER_D39",
+  "namedRowRebind": "D39synthetic:serpent/victoryheadjaw4de0b804\u219247620037",
+  "noOtherSealsRebound": true,
+  "offlineAuthoringTools": [
+    "port/v2/tools/creature-animation/post-key-matte.mjs",
+    "port/v2/tools/creature-animation/derive-post-key-matte.mjs"
+  ],
+  "D40ExistingGameImportsChanged": false,
+  "D40KeyedSealRebound": false
+}

@@ -1,0 +1,84 @@
+{
+  "scope": "Fresh author/static diagnostic on87 baseline packets plus66 changed originals; native/admission separate. Existing prior-round bounded Orangutan static pass is retained separately, not claimed as a new recovery.",
+  "baselinePilot": 87,
+  "baselineScored": 83,
+  "patternSkipped": [
+    {
+      "id": "c210originals-02-baboon",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2c59-11-mountain-viper",
+      "pattern": "REFUSE"
+    },
+    {
+      "id": "g2throughputc54-18-boa",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2throughputc56-22-mountain-viper",
+      "pattern": "REFUSE"
+    }
+  ],
+  "before": [
+    "Boa",
+    "Gibbon",
+    "Gorilla",
+    "Monkey",
+    "Mountain Viper",
+    "Rattlesnake",
+    "Snake"
+  ],
+  "after": [
+    "Boa",
+    "Gibbon",
+    "Gorilla",
+    "Lemur",
+    "Monkey",
+    "Mountain Viper",
+    "Rattlesnake",
+    "Snake",
+    "Spider Monkey"
+  ],
+  "staticBefore": 7,
+  "staticAfter": 9,
+  "gained": [
+    "Lemur",
+    "Spider Monkey"
+  ],
+  "lost": [],
+  "priorClassAwareBefore": 8,
+  "priorClassAwareAfter": 10,
+  "priorClassPassRetained": [
+    "Orangutan"
+  ],
+  "newEligiblePassSpecies": [
+    "Boa",
+    "Gibbon",
+    "Gorilla",
+    "Lemur",
+    "Monkey",
+    "Mountain Viper",
+    "Spider Monkey"
+  ],
+  "repairedPass": [
+    "Gibbon",
+    "Lemur",
+    "Monkey",
+    "Spider Monkey"
+  ],
+  "newOriginalGreenPreservedAfterRepairRed": [
+    "Gorilla"
+  ],
+  "repairRed": [
+    "Gorilla",
+    "Orangutan",
+    "Mandrill"
+  ],
+  "nativeQueue": 7,
+  "sourceIdentityOverridesRawStatic": [
+    "Lemur candidate3 extra limb",
+    "Spider Monkey candidates1/3 thumb-like digits"
+  ],
+  "referenceCompilerSkipped": 12
+}

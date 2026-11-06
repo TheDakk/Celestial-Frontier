@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Starling\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"615189842\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"23\"]]]]",
+    "seed": 615189842,
+    "ownerId": "authored:archetype-sprint/c59-07-starling",
+    "earthName": "Starling"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 615189842,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 17,
+    "body": 12,
+    "loco": 4,
+    "trait": 23,
+    "size": 5,
+    "diet": 3,
+    "head": 6,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 7,
+    "accent": 11,
+    "temper": 1,
+    "sense": 4,
+    "repro": 1,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Starling"
+  },
+  "geometry": {
+    "cutoutAssetHash": "2c2b4f7aa32f3708c5ad80a3984bb025314926092917e6e24e245bfb6eb1bbcb",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8858070432094278,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5362838915470495,
+      0.5725677830940988
+    ],
+    "pelvis": [
+      0.5144338118022329,
+      0.654066985645933
+    ],
+    "spine": [
+      0.6023125996810207,
+      0.5433811802232855
+    ],
+    "chest": [
+      0.7228867623604466,
+      0.4332535885167464
+    ],
+    "neck0": [
+      0.7525518341307815,
+      0.3436204146730462
+    ],
+    "neck1": [
+      0.7646730462519936,
+      0.2740829346092504
+    ],
+    "head": [
+      0.7780701754385966,
+      0.1975279106858054
+    ],
+    "beak": [
+      0.8817384370015949,
+      0.20917065390749603
+    ],
+    "legNearKnee": [
+      0.4342902711323764,
+      0.6797448165869219
+    ],
+    "legNearAnkle": [
+      0.3875598086124402,
+      0.8171451355661883
+    ],
+    "legNearFoot": [
+      0.4065390749601276,
+      0.8465709728867623
+    ],
+    "legFarKnee": [
+      0.613237639553429,
+      0.703030303030303
+    ],
+    "legFarAnkle": [
+      0.7066985645933015,
+      0.8342902711323764
+    ],
+    "legFarFoot": [
+      0.7433014354066986,
+      0.8518341307814993
+    ],
+    "wingNearRoot": [
+      0.6133971291866029,
+      0.40773524720893145
+    ],
+    "wingNearTip": [
+      0.3118022328548644,
+      0.5342105263157895
+    ],
+    "wingFarRoot": [
+      0.5944178628389154,
+      0.345933014354067
+    ],
+    "wingFarTip": [
+      0.46507177033492825,
+      0.38341307814992026
+    ],
+    "tailFan": [
+      0.20382775119617225,
+      0.6209728867623605
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-07-starling/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "b7129da3513cfa3854fb7e29f93c7cab2f821264af643fdcab50d2412da92884",
+    "subjectSourceSha256": "25802a6f2d24c18ac19a84abf3982d51be64a4bbb69ba4ffca2989b565b42aaa",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.08437740219655815,
+      "spine": 0.141329504637585,
+      "chest": 0.16329793373134532,
+      "neck0": 0.09441462988559612,
+      "neck1": 0.07058601077345443,
+      "head": 0.07771843255214145,
+      "beak": 0.10431999772440788,
+      "legFarKnee": 0.1102705891322368,
+      "legFarAnkle": 0.1611338689893158,
+      "legFarFoot": 0.0405901116427432,
+      "legNearKnee": 0.0841566284551309,
+      "legNearAnkle": 0.14512954138607106,
+      "legNearFoot": 0.03501560299514126,
+      "wingFarRoot": 0.1553355748577037,
+      "wingFarTip": 0.13466687353685475,
+      "wingNearRoot": 0.11242404331656541,
+      "wingNearTip": 0.327040483302159,
+      "tailFan": 0.3123641212849701
+    },
+    "measures": {
+      "body": 0.3036629528739997,
+      "bone-min": 0.03501560299514126,
+      "bone-max": 0.327040483302159,
+      "leg/torso:legFar": 1.0274370541794513,
+      "leg/torso:legNear": 0.8703787219839466,
+      "wing/torso": 0.9550142539610045
+    }
+  },
+  "recipeHash": "cdd010aa3e25188944758c117470d99c82dfa283705faf1d425a496a31215f6b"
+}

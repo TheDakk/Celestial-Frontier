@@ -1,0 +1,102 @@
+{
+  "intake": {
+    "id": "vent-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 587,
+      "height": 266
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 11,
+        "distancePx": 1.8419554826325346,
+        "supports": [
+          276
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 51,
+        "distancePx": 2.5402362094891657,
+        "supports": [
+          796
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 39,
+        "distancePx": 2.693834620016595,
+        "supports": [
+          395,
+          397
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 62,
+        "distancePx": 2.2957231888884593,
+        "supports": [
+          904
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 66,
+        "distancePx": 0.7740205682022002,
+        "supports": [
+          541
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 76,
+        "distancePx": 0.3057905165305371,
+        "supports": [
+          1032
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-lower",
+        "vertex": 72,
+        "distancePx": 2.1495787122131644,
+        "supports": [
+          688
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 73,
+        "distancePx": 2.3101274077418115,
+        "supports": [
+          1175
+        ]
+      }
+    ],
+    "sourceBindingHash": "30ba186a0837000d6eb3422f99d19517237d256fe8b2f14882267accd4908328",
+    "sourceVertices": 1427,
+    "vertices": 1532,
+    "sharedSupports": 171,
+    "pins": 731,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 0,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/vent-crab-finished.png",
+  "nativeAcceptance": false
+}

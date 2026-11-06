@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "01-wild-ass",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/24-wild-ass/fallback-1/packet/master.png",
+  "sourceSha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/24-wild-ass/fallback-1/packet/authoring.json",
+  "priorAuthoringSha256": "ee221b7227f05e4fe274c5842c4f4e0f452dc76ea1104296219b8403d49e39a5",
+  "changedJoints": [
+    "foreFarRoot",
+    "foreFarKnee",
+    "foreFarAnkle",
+    "foreFarPaw"
+  ],
+  "changedParts": [
+    "fore-far-paw",
+    "fore-far-ankle",
+    "fore-far-knee",
+    "fore-far-root"
+  ],
+  "addedParts": [],
+  "priorityChanges": [],
+  "findings": [
+    "The forward-slanting front limb is continuous painted tissue. Its carpal bend is at approximately x786/y754, below the transferred knee x760/y700.5. The distal fetlock is x825/y841 and the hoof is x850/y869.",
+    "The former root polygon reaches below the knee-owner cut and leaves a separate root-owned triangular piece near x746/y676. Root, knee, ankle and hoof envelopes are redrawn on the actual continuous limb; no pixel is removed.",
+    "Only the visible front chain is corrected. The layer/joint names are inherited and do not make unobserved anatomy claims. Other geometry remains automatic transfer."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

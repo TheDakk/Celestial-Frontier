@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "13c67872a056f6d47de77cd4cdd78a12eab9004dacb7ecf686aa4ddbcb76eef8",
+  "bindingHash": "e32bcfd9768cd8d38ae0c73ce2572e2361b495ac1578c44d719ee3f5924717a2",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "The manually authored 12x12 root label is an interior ownership patch inside the same continuous painted torso. The root/spine boundary is not an anatomical opening. No other excluded boundaries are declared continuous."
+}

@@ -1,0 +1,15 @@
+epoch-exit=0
+calibration-1: 0
+calibration-1-verify: 0
+calibration-2: 0
+calibration-2-verify: 0
+calibration-3: 0
+calibration-3-verify: 0
+certification: 0
+certification-verify: 0
+calibration-1 calibration {"used":11342760,"embedder":2914272,"backing":3811990,"aggregate":17717711}
+calibration-2 calibration {"used":11343300,"embedder":2934632,"backing":3811982,"aggregate":17731707}
+calibration-3 calibration {"used":11342168,"embedder":2930368,"backing":3836623,"aggregate":17718237}
+certification pass {"used":11344212,"embedder":2913408,"backing":3795855,"aggregate":17728961}
+
+[exited with code 0]

@@ -1,0 +1,116 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-35",
+ "files": [
+  {
+   "path": "library/cards/pilot-whale/SOURCE.json",
+   "bytes": 324,
+   "sha256": "bab591c316c5bad19a35425a52329343e94e2d8756c7033641acbc390b0adbed"
+  },
+  {
+   "path": "library/cards/pilot-whale/card/card.json",
+   "bytes": 2932,
+   "sha256": "7beeb8f8e740409f1d81ee17b8f7a98af28d8c09134c55f513cf6d490c345f11"
+  },
+  {
+   "path": "library/cards/pilot-whale/card/labels-512.png",
+   "bytes": 4926,
+   "sha256": "77fcef3ccaf3261471f50fab3adab5fb2b7f62590f31c77c8c2d7b918392a462"
+  },
+  {
+   "path": "library/cards/pilot-whale/card/master-512.png",
+   "bytes": 44353,
+   "sha256": "be41650b9320b4d794e7ac7240998e2c987386cb68bbbb527f22e129ac4d8780"
+  },
+  {
+   "path": "library/cards/pilot-whale/record.json",
+   "bytes": 5199,
+   "sha256": "ac94c376d176003db3f6b0a0adbcab3dd4976651763d6bea29d7203ce36fea80"
+  },
+  {
+   "path": "library/cards/sugar-glider/SOURCE.json",
+   "bytes": 296,
+   "sha256": "dca4fc42c7fd8c13effb610fd832cd2c6a4cb1fa3fba0dfb17799b691f5b361f"
+  },
+  {
+   "path": "library/cards/sugar-glider/card/card.json",
+   "bytes": 5914,
+   "sha256": "8896b6e3b8ae3cbf2c7b0b2ef3ccd19f858eb99c796d5e5bf03c0e8dd19e2c77"
+  },
+  {
+   "path": "library/cards/sugar-glider/card/labels-512.png",
+   "bytes": 5681,
+   "sha256": "c0903ce8ca3bce0fb5b73ed2f40636a8c7e3c36d394fbc78e9b00fa783711f16"
+  },
+  {
+   "path": "library/cards/sugar-glider/card/master-512.png",
+   "bytes": 74958,
+   "sha256": "5237f9d194d6d836d2c1b61983c514524b7ce23ce54de5ac10aa74ab5ed6c4dc"
+  },
+  {
+   "path": "library/cards/sugar-glider/record.json",
+   "bytes": 7546,
+   "sha256": "70a7707233947cad03d5929de749c4987ec37c829693aa4a363f797778d49c1b"
+  },
+  {
+   "path": "library/creature-finish-source/09-turkey/labels.png",
+   "bytes": 41444,
+   "sha256": "fe43275e8311f1274809e772c70654c6e68df444f0291af9c3635c7546feb81b"
+  },
+  {
+   "path": "library/creature-finish-source/09-turkey/master.png",
+   "bytes": 1310369,
+   "sha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c118-04-sea-otter/labels.png",
+   "bytes": 43350,
+   "sha256": "269fb6bb9782223ca3113a980f26aab4f18ceca380e0f5582e18d1cbbcd30ed5"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c118-04-sea-otter/master.png",
+   "bytes": 1344890,
+   "sha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c"
+  },
+  {
+   "path": "library/creature-finish-source/c213originals-09-kinkajou/labels.png",
+   "bytes": 45190,
+   "sha256": "391ebf8434830ec09bf74ee716136a1103182a71768ea026d19c656de46905b6"
+  },
+  {
+   "path": "library/creature-finish-source/c213originals-09-kinkajou/master.png",
+   "bytes": 1385656,
+   "sha256": "81db16a82a459aa8c3f24ca0aa93853cb56e076bef615a0fb0cf544ab7634017"
+  },
+  {
+   "path": "library/creature-finish-source/c56-11-robin/labels.png",
+   "bytes": 51624,
+   "sha256": "a41bbc4f2c17b236c5710cea8bc7d982a1e6d22808264aeed5677493a24b2cd0"
+  },
+  {
+   "path": "library/creature-finish-source/c56-11-robin/master.png",
+   "bytes": 1121473,
+   "sha256": "5d076e3e2e95ddfcc2fe2046d57f3ab8f1dfeb2d2a1a95f8a0bea65c7840f2ec"
+  },
+  {
+   "path": "library/creature-finish-source/freshwater-crab/labels.png",
+   "bytes": 24008,
+   "sha256": "286942e6b23d96b9307a6f3ce62f23dc2cc7548f1d480561ac1bbacd0884b48e"
+  },
+  {
+   "path": "library/creature-finish-source/freshwater-crab/master.png",
+   "bytes": 66259,
+   "sha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57"
+  },
+  {
+   "path": "library/creature-finish/99e072c05a6a4f10fe8f221d253fc28102afa8dcb958876805096f37dc251426/original.png",
+   "bytes": 42750,
+   "sha256": "749027a0bf3bdec34e631ec87fbc5470d055dcd2be811b9db67221c6038f3673"
+  },
+  {
+   "path": "library/creature-finish/99e072c05a6a4f10fe8f221d253fc28102afa8dcb958876805096f37dc251426/receipt.json",
+   "bytes": 10529,
+   "sha256": "029675ee5fa36d3ff286c408b2046c2cc3e0a8ee3d9525b7fdc9d1083baf21d9"
+  }
+ ]
+}

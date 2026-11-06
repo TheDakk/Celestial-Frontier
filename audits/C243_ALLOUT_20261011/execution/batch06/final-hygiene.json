@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "files": 124,
+  "scrubbed": [
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-24-snake/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-11-gibbon/report.json"
+  ],
+  "protectedUnchanged": 4,
+  "selectedOriginalMasters": 28,
+  "exactGeneratorCandidatesChecked": 43,
+  "reviewedFullSizeStills": 30,
+  "rootValidate": "PASS,zero boot errors,50-probe fingerprint match",
+  "promptHistoryControls": "3/3PASS",
+  "allPairs": "HOLD"
+}

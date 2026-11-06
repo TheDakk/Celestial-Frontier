@@ -1,0 +1,28 @@
+{
+  "name": "Wild Horse",
+  "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dun body, upright dark mane, pale muzzle, dark lower legs and long dark tail; four complete hooves. Ear tips and mane remain within frame; near/far upper legs partly overlap naturally.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 208,
+      "y0": 279,
+      "x1": 1071,
+      "y1": 942
+    },
+    "margins": {
+      "left": 208,
+      "right": 182,
+      "top": 279,
+      "bottom": 311
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "c243b01r2c1-26-whiptail",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-26-whiptail",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-26-whiptail/master.png"
+  }
+]

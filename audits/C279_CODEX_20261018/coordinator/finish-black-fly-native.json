@@ -1,0 +1,20 @@
+{
+  "stage": "finish-black-fly-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-black-fly-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/finished-plan.json"
+  ],
+  "startedUnix": 1792339772.059542,
+  "beforeGiB": 70.70405197143555,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.065,
+  "lowestGiB": 70.29750442504883,
+  "afterGiB": 70.68289566040039
+}

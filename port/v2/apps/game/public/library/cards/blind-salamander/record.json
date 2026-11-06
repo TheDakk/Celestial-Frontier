@@ -1,0 +1,245 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Blind Salamander\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1514633582\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"24\"]]]]",
+    "seed": 1514633582,
+    "ownerId": "authored:archetype-sprint/c243b01r2c1-36-blind-salamander",
+    "earthName": "Blind Salamander"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1514633582,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 6,
+    "body": 6,
+    "loco": 13,
+    "trait": 24,
+    "size": 2,
+    "diet": 2,
+    "head": 2,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 13,
+    "temper": 7,
+    "sense": 4,
+    "repro": 5,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Blind Salamander"
+  },
+  "geometry": {
+    "cutoutAssetHash": "0bfea63012d503706bf32bf771766c2861e391cb28b8389b9b2f6cf9e58e71b1",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5856407295578717,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.55,
+      0.4993620414673047
+    ],
+    "pelvis": [
+      0.44274322169059016,
+      0.4766347687400319
+    ],
+    "spine": [
+      0.5689792663476874,
+      0.4812599681020734
+    ],
+    "chest": [
+      0.6259170653907495,
+      0.4700159489633174
+    ],
+    "neck": [
+      0.6793460925039873,
+      0.4651515151515151
+    ],
+    "head": [
+      0.6862041467304625,
+      0.44696969696969696
+    ],
+    "jaw": [
+      0.7021531100478469,
+      0.45095693779904306
+    ],
+    "hindNearRoot": [
+      0.4314194577352472,
+      0.4909090909090909
+    ],
+    "hindNearKnee": [
+      0.3937799043062201,
+      0.5127591706539075
+    ],
+    "hindNearAnkle": [
+      0.3661881977671451,
+      0.5429027113237639
+    ],
+    "hindNearPaw": [
+      0.3645135566188198,
+      0.5668261562998405
+    ],
+    "hindFarRoot": [
+      0.45095693779904306,
+      0.5126794258373205
+    ],
+    "hindFarKnee": [
+      0.44178628389154706,
+      0.532695374800638
+    ],
+    "hindFarAnkle": [
+      0.4603668261562998,
+      0.5576555023923445
+    ],
+    "hindFarPaw": [
+      0.4828548644338118,
+      0.5594098883572568
+    ],
+    "foreNearRoot": [
+      0.6185805422647528,
+      0.49704944178628385
+    ],
+    "foreNearKnee": [
+      0.5853269537480064,
+      0.5143540669856459
+    ],
+    "foreNearAnkle": [
+      0.5719298245614035,
+      0.5540669856459329
+    ],
+    "foreNearPaw": [
+      0.5755980861244019,
+      0.5780701754385965
+    ],
+    "foreFarRoot": [
+      0.6535087719298246,
+      0.5075757575757576
+    ],
+    "foreFarKnee": [
+      0.6400318979266348,
+      0.527591706539075
+    ],
+    "foreFarAnkle": [
+      0.6613237639553429,
+      0.556060606060606
+    ],
+    "foreFarPaw": [
+      0.6868421052631578,
+      0.5630781499202552
+    ],
+    "tail0": [
+      0.4279904306220096,
+      0.47137161084529505
+    ],
+    "tail1": [
+      0.3548644338118022,
+      0.48094098883572567
+    ],
+    "tail2": [
+      0.3083732057416268,
+      0.4988038277511962
+    ],
+    "tail3": [
+      0.22480063795853267,
+      0.500956937799043
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r2c1h/c243b01r2c1-36-blind-salamander/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile salamander media water+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from c136-sprawler-24-newt. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "e577d348dbb5f0fad3cc6ea3dae53cb0d64538cdcc6d105626f5d42bd2aa357f",
+    "subjectSourceSha256": "1820b6a52b3d421df88af48e5ff8e0667b1b7a9a2a0dc78ca7773fde78a77e29",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.10963824797457197,
+      "spine": 0.12632074825541237,
+      "chest": 0.05803740971357046,
+      "neck": 0.0536500107602645,
+      "head": 0.019432226330762185,
+      "jaw": 0.01643981509416931,
+      "hindFarRoot": 0.03696866832293768,
+      "hindFarKnee": 0.022016791455459667,
+      "hindFarAnkle": 0.031116627713274652,
+      "hindFarPaw": 0.02255636796305483,
+      "foreFarRoot": 0.04660516594479171,
+      "foreFarKnee": 0.024130154284628554,
+      "foreFarAnkle": 0.035550271432880566,
+      "foreFarPaw": 0.02646566955367337,
+      "hindNearRoot": 0.01822042544789812,
+      "hindNearKnee": 0.043521971085779536,
+      "hindNearAnkle": 0.0408648420265357,
+      "hindNearPaw": 0.023981985791402424,
+      "foreNearRoot": 0.02801132459894863,
+      "foreNearKnee": 0.03748668033490677,
+      "foreNearAnkle": 0.04191179999667277,
+      "foreNearPaw": 0.02428187107941232,
+      "tail0": 0.015663514143962765,
+      "tail1": 0.07374947053782961,
+      "tail2": 0.04980477187572607,
+      "tail3": 0.08360029885555435
+    },
+    "measures": {
+      "torso": 0.18329338719966698,
+      "head": 0.019432226330762185,
+      "head/torso": 0.10601706164987872,
+      "bone-min": 0.015663514143962765,
+      "bone-max": 0.12632074825541237,
+      "leg/torso:hindFar": 0.4129433597587347,
+      "leg/torso:foreFar": 0.4699901976132994,
+      "leg/torso:hindNear": 0.5912313616948346,
+      "leg/torso:foreNear": 0.5656524383940253
+    }
+  },
+  "recipeHash": "ba2424982f6742c387a9d5f43291f7295e9e4fbdfa1d9d3c2db7ec5c2b6542ed"
+}

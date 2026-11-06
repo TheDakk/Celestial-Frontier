@@ -1,0 +1,9 @@
+{
+  "toolReceipt": "5d9cbc",
+  "exitCode": 128,
+  "signer": "/usr/bin/ssh-keygen via explicit 1Password SSH_AUTH_SOCK",
+  "error": "Couldn't sign message (signer): agent refused operation?; fatal: failed to write commit object",
+  "sourceHeadUnchanged": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "interpretation": "This individual signing request was refused. It does not establish that 1Password was locked; predecessor Tree Frog signed and verified in this session.",
+  "nextAction": "Already authorized retry through configured op-ssh-sign in a terminal; no unsigned fallback or security-setting change."
+}

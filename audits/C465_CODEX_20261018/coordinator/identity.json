@@ -1,0 +1,9 @@
+{
+  "agent": "OpenAI/Codex",
+  "OS": "Darwin",
+  "physicalRoot": "~/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "startHead": "fe3659f8262b82255747558867e03e1120fd485f",
+  "peerHead": "4e2d83613cbf22c36271af435ed21b79e263b9da",
+  "freeGiB": 60.6536865234375
+}

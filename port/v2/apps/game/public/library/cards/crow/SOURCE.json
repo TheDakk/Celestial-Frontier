@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Crow",
+ "fitDir": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "11077ceddced70eb92601939e1bb0977d19e030cdd17aca2be8ee3be3e830f1a"
+}

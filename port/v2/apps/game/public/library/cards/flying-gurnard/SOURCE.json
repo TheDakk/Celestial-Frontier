@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Flying Gurnard",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/rebound-01/c243b02r1c2-10-flying-gurnard/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "681caad2832e048cd8d0920d8d02563787ecff391ba70fbb5777ac96c2a5dc79"
+}

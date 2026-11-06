@@ -1,0 +1,124 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Alpaca",
+  "family": "quadruped",
+  "masterSha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+  "subjectSha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd",
+  "promptSha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          334,
+          588
+        ],
+        "tail1": [
+          303,
+          678
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              268.20714285714286,
+              608.5785714285714
+            ],
+            [
+              271.1928571428571,
+              581.7071428571429
+            ],
+            [
+              283.1357142857143,
+              557.8214285714286
+            ],
+            [
+              298.06428571428575,
+              533.9357142857143
+            ],
+            [
+              315.97857142857146,
+              519.0071428571429
+            ],
+            [
+              327.9214285714286,
+              513.0357142857143
+            ],
+            [
+              337.89285714285717,
+              513.0357142857143
+            ],
+            [
+              337.89285714285717,
+              639.6797619047619
+            ],
+            [
+              268.20714285714286,
+              615.6769047619048
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              337.89285714285717,
+              639.6797619047619
+            ],
+            [
+              337.89285714285717,
+              666.3214285714286
+            ],
+            [
+              311.0214285714286,
+              681.25
+            ],
+            [
+              301.05,
+              681.25
+            ],
+            [
+              292.09285714285716,
+              672.2928571428572
+            ],
+            [
+              286.12142857142857,
+              666.3214285714286
+            ],
+            [
+              274.17857142857144,
+              651.3928571428571
+            ],
+            [
+              271.1928571428571,
+              642.4357142857143
+            ],
+            [
+              268.20714285714286,
+              633.4785714285714
+            ],
+            [
+              268.20714285714286,
+              615.6769047619048
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "6db84b4429383e1dfed4c074fae4cdf120bffa8582db7df49dc76a6349da5287"
+}

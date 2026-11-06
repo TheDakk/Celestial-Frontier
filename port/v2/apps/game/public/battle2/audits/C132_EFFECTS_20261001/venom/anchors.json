@@ -1,0 +1,99 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "venom-c132-v43",
+  "theme": "venom",
+  "abilityId": "venom",
+  "abilityName": "Venom Strike",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/launch.png",
+      "keyedImage": "registered/launch.png",
+      "imageSha256": "df5ed04a970f775995eb27a67ecc2ebf21ce38ddfcdb47935336366bdc9d93d9",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 47,
+        "y": 469,
+        "width": 224,
+        "height": 181
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "registered/travel.png",
+      "keyedImage": "registered/travel.png",
+      "imageSha256": "f126eb3df3a998699c2e993cf74b1cc32c817a38c1d53d3e7164b17bfb1ac392",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 423,
+        "width": 706,
+        "height": 275
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "registered/impact.png",
+      "keyedImage": "registered/impact.png",
+      "imageSha256": "72de039576963f53c2ebcdff9c7ed012b7e6f04292263326a1d4f2159e1d5234",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 524,
+        "y": 406,
+        "width": 367,
+        "height": 308
+      }
+    }
+  ],
+  "qualityAccepted": false
+}

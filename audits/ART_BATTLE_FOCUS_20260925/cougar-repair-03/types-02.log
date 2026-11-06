@@ -1,0 +1,5 @@
+apps/game/src/motion/stance-envelope.ts(30,42): error TS2379: Argument of type '{ fixedPivots?: import("../../../../tools/creature-animation/fixed-attachments.mjs").FixedPivotMap; bodyAxis: readonly [string, string]; id: string; version: number; clipSetId: string; joints: readonly string[]; anatomyModel?: 'myriapod-rigid-trunk-v1'; ... 7 more ...; graph: string[][]; }' is not assignable to parameter of type 'SkeletonDefinition' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'graph' are incompatible.
+    Type 'string[][]' is not assignable to type 'readonly (readonly [string, string])[]'.
+      Type 'string[]' is not assignable to type 'readonly [string, string]'.
+        Target requires 2 element(s) but source may have fewer.

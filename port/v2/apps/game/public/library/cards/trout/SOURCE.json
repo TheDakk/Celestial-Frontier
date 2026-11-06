@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Trout",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-labels-final/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4920c17850cc069a173aee70f9448e1776d297a4259bf322f0410974eaa432eb"
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "finished-native-freshwater-crab-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finished-native-freshwater-crab-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/freshwater-crab-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792275519.6995652,
+  "beforeGiB": 90.6285514831543,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.076,
+  "lowestGiB": 90.52240753173828,
+  "afterGiB": 90.5923843383789
+}

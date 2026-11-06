@@ -1,0 +1,21 @@
+{
+  "stage": "finish-fur-seal-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-fur-seal-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275716.2435358,
+  "beforeGiB": 91.47926330566406,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 51.171,
+  "lowestGiB": 81.10403823852539,
+  "afterGiB": 89.46247482299805
+}

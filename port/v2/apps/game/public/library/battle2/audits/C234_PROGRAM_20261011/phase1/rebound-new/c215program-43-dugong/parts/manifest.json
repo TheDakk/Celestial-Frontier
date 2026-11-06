@@ -1,0 +1,70 @@
+{
+  "creatureId": "c215program-43-dugong",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "2d2e005d7b2b58eecdd4d921ba3ba70e139cfac1cfe450ee356e20c444ecccf3"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "7b2c604ba9c990f9add1c9922bbba75ccdc8686a89dcf75248c82aae7020bb48"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "9736344386c5a2bd5c1a9f17234595dba52640c940d574a1e082a4708db1f4c3"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "2554341d6bada4f7f5ecdf2b35b708399faeb15e9c02e0d31b79275397054e3b"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "089155c72fda2920e87f4d171ea9a42f1ba78f73091edf998739120e433ec472"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "fa28bb8282297987c38ade532be58432eace02e7e8c5d34d7386d9a84e738877"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "74e2a5e6df8b5af1d56fcad2153ca12387f52891fd472ed753c76187739b3df7"
+    },
+    {
+      "name": "body-0.png",
+      "path": "parts/body-0.png",
+      "sha256": "d11794e3e030d9efeb2d4cea64f3aff7a55915c1f8c1814f43a670f07f2a95bb"
+    },
+    {
+      "name": "body-1.png",
+      "path": "parts/body-1.png",
+      "sha256": "60b38896197d24dea7f42b51dfb23a21d3bf3455573c72a2359e09fa94f5e6e7"
+    },
+    {
+      "name": "body-2.png",
+      "path": "parts/body-2.png",
+      "sha256": "b97125836a50a835e9e2c6c2df65aa73d5ad65f8b93f9505df787feb164146c2"
+    },
+    {
+      "name": "body-3.png",
+      "path": "parts/body-3.png",
+      "sha256": "a536aa90f70a11a2d71a75532d2159191116adc1f3520f1362110b45d95b0b36"
+    },
+    {
+      "name": "body-4.png",
+      "path": "parts/body-4.png",
+      "sha256": "38ea82d3bb4d9949f5d39ca21deb81047d965e32e66db09a7525a43825b447e2"
+    },
+    {
+      "name": "body-5.png",
+      "path": "parts/body-5.png",
+      "sha256": "9418ef57979383a52972d0f6ef65370cfdaee455f5efaaae0b40953af3c20aab"
+    }
+  ]
+}

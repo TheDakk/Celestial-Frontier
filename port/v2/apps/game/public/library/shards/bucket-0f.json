@@ -1,0 +1,71 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-0f",
+ "files": [
+  {
+   "path": "library/cards/parrotfish/SOURCE.json",
+   "bytes": 292,
+   "sha256": "c64ef8f3e86dd8530ea3ad7d4d0a4aa545cc3d11f514747d9d2b3e3601085517"
+  },
+  {
+   "path": "library/cards/parrotfish/card/card.json",
+   "bytes": 2912,
+   "sha256": "0a3bd0cb679f372a96abf977afa3f5100dc833e78b97cd6c379be9075c2aae1e"
+  },
+  {
+   "path": "library/cards/parrotfish/card/labels-512.png",
+   "bytes": 6525,
+   "sha256": "1404b7e0126f5a178bc99bcac07a5fb04ea1eb0a835d894825e55a2dc01d820a"
+  },
+  {
+   "path": "library/cards/parrotfish/card/master-512.png",
+   "bytes": 134401,
+   "sha256": "7cfd24094ebdf072e1ad6114872345aae896fa6489a8f5abae1081d7f1fc89c9"
+  },
+  {
+   "path": "library/cards/parrotfish/record.json",
+   "bytes": 5151,
+   "sha256": "b215a08918e637d1d1e41c2411a4bfe33ef4d0626054e9f728f4863bf0f07ed0"
+  },
+  {
+   "path": "library/creature-finish-source/c192creaturesupply-15-pronghorn/labels.png",
+   "bytes": 44878,
+   "sha256": "3957014b5ba73baa2fc40a169a3e343d92f1ad70efdf8840302b4da2826339e6"
+  },
+  {
+   "path": "library/creature-finish-source/c192creaturesupply-15-pronghorn/master.png",
+   "bytes": 1297746,
+   "sha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46"
+  },
+  {
+   "path": "library/creature-finish-source/c475-d40-cricket-selected/labels.png",
+   "bytes": 46538,
+   "sha256": "2373db62cdd8473327e9832a461f7fbef6ca6541374c923874cee76f5b086d65"
+  },
+  {
+   "path": "library/creature-finish-source/c475-d40-cricket-selected/master.png",
+   "bytes": 1460602,
+   "sha256": "feea93a5f3c3463f879abf1ae7041f3f0f351a22d286699f946b36354451b696"
+  },
+  {
+   "path": "library/creature-finish-source/g2c59-03-bison/labels.png",
+   "bytes": 61782,
+   "sha256": "eb583df685d2c9d9520764f56f79c5e072a97ea211f9eae71d199295eba89fac"
+  },
+  {
+   "path": "library/creature-finish-source/g2c59-03-bison/master.png",
+   "bytes": 1646279,
+   "sha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5"
+  },
+  {
+   "path": "library/creature-finish-source/mako-shark-framing-v2/labels.png",
+   "bytes": 37354,
+   "sha256": "b123d69e03d7b771bac93f02bc29263f0d6ddc5c4d36f3139aebf648c990d516"
+  },
+  {
+   "path": "library/creature-finish-source/mako-shark-framing-v2/master.png",
+   "bytes": 1010890,
+   "sha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8"
+  }
+ ]
+}

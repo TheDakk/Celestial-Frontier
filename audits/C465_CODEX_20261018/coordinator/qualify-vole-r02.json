@@ -1,0 +1,21 @@
+{
+  "stage": "qualify-vole-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-vole-ear-boundary",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "node",
+    "audits/C465_CODEX_20261018/w1-motion/other-holds/vole/run-r02.mjs"
+  ],
+  "startedUnix": 1792379205.349053,
+  "beforeGiB": 59.65065002441406,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.039,
+  "lowestGiB": 59.62739181518555,
+  "afterGiB": 59.625160217285156
+}

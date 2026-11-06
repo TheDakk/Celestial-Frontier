@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-shrew-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-shrew-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "shrew"
+  ],
+  "startedUnix": 1792275939.432946,
+  "beforeGiB": 90.3331413269043,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 90.33312225341797,
+  "afterGiB": 90.32935333251953
+}

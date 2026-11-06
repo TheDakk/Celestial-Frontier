@@ -1,0 +1,75 @@
+{
+  "status": "ROOT_ALL_FIVE_ACTUAL_FULLSIZE_VIEWED_PHYSICAL_CLEAN_VISIBLE_SURFACES",
+  "film": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native",
+  "source": "3ae6719aa29725a92c79bfcb00d50810122179e3",
+  "frames": [
+    {
+      "frame": "turn1-hit-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native/turn1-hit-reaction-50.png",
+        "sha256": "1c20807e97198567db3182766eff098dc922212ed8da9dc1ae326b9d2efefb58"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ],
+      "finding": "Visible column/crowns/base continuous; no detached rig piece."
+    },
+    {
+      "frame": "turn2-dodge-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native/turn2-dodge-reaction-50.png",
+        "sha256": "72e9cd95d3b9a501e5c52fb109da584a51012f5f77be4c07a364b3ee8e3c98eb"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ],
+      "finding": "Visible column/crowns/base continuous; no detached rig piece. Right target partly effect-occluded in dodge and turn3-hit reaction; no claim for hidden pixels."
+    },
+    {
+      "frame": "turn3-hit-reaction-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native/turn3-hit-reaction-50.png",
+        "sha256": "634e1a9a628660a0b97a44e481773d834a908f2bb374d0cfb1c039d46de4401f"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ],
+      "finding": "Visible column/crowns/base continuous; no detached rig piece. Right target partly effect-occluded in dodge and turn3-hit reaction; no claim for hidden pixels."
+    },
+    {
+      "frame": "turn3-hit-idle-50",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native/turn3-hit-idle-50.png",
+        "sha256": "d31933e49cbfa932234b69e3d4a0f21728bbe95bb8717d63acb9828b9e277a39"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ],
+      "finding": "Visible column/crowns/base continuous; no detached rig piece."
+    },
+    {
+      "frame": "turn3-hit-idle-90",
+      "file": {
+        "path": "audits/C475_DECISIONS_20261019/coordinator/plans/sea-anemone-p04-r01/native/turn3-hit-idle-90.png",
+        "sha256": "5d6262db497bd30ae75b52bd8b30f73cef19587241ca2663269d770bdab8a618"
+      },
+      "actualFullFrameViewed": true,
+      "dimensions": [
+        1024,
+        576
+      ],
+      "finding": "Visible column/crowns/base continuous; no detached rig piece."
+    }
+  ],
+  "AIStarted": false,
+  "independentW2Pending": true,
+  "C261Pending": true
+}

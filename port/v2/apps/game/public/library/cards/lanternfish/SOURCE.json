@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lanternfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/07-lanternfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1d6d21fedca6949468e780bf438759272288efdca3940dedab463986aa887f79"
+}

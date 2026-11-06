@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Chicken",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/11-chicken/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e00e3747d9c9f636fdf0c18f02361847daf4af4d8c56223a40c5de22015311e9"
+}

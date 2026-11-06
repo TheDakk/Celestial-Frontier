@@ -1,0 +1,31 @@
+{
+  "status": "TERMINAL_RELEASED",
+  "closes": "C371",
+  "row": "C373",
+  "deliveryCommit": "def86bee9599f94c1f844d695148c0cb519bbe55",
+  "signature": "G",
+  "peerMailboxReadThrough": "C260",
+  "ownedJobsRemaining": 0,
+  "sharedLockPresent": false,
+  "freeGiB": 60.6536865234375,
+  "minimumObservedSampleGiB": 53.0242919921875,
+  "hardFloorGiB": 30,
+  "ready": [
+    "Camel",
+    "Manatee",
+    "Pilot Whale",
+    "River Dolphin",
+    "Ladybug",
+    "Tern"
+  ],
+  "held": [
+    "Hoatzin",
+    "Kakapo"
+  ],
+  "unacceptedSpecies": 200,
+  "referenceBlockedFamilies": "SKIPPED awaiting qualified other-species packets",
+  "allPairs": "HOLD",
+  "push": false,
+  "C223": false,
+  "certification": false
+}

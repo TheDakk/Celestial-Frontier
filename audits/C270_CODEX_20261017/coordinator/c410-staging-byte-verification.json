@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "at": "2026-10-18T02:19:33.983679+00:00",
+  "selectedPaths": 1989,
+  "rawGitBlobEqualsWorktreeBytes": true,
+  "scopeCsvOriginalCRLFPreserved": true,
+  "gitattributesException": "Exact C270 frozen scope CSV only; binary, no normalization",
+  "runtimeDiffFrom69d625ed7": "EMPTY",
+  "stagedByteChecksExcludeThisReceipt": true
+}

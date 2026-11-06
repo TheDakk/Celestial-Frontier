@@ -1,0 +1,104 @@
+{
+  "schema": "cf.c202-tortoise-source-repair/v1",
+  "status": "STATIC_AND_NATIVE_PASS_FOR_CLAUDE_REVIEW",
+  "scope": "One observed near-front paw/ankle boundary correction. No product or solver limit change. Gallery acceptance remains Claude full-size finish/film review.",
+  "selectedFit": "audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/fit02",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "materialsChanged": false,
+  "changedPolygons": [
+    [
+      "near-front-paw",
+      [
+        [
+          714,
+          860
+        ],
+        [
+          766,
+          842
+        ],
+        [
+          824,
+          850
+        ],
+        [
+          865,
+          880
+        ],
+        [
+          866,
+          922
+        ],
+        [
+          715,
+          922
+        ],
+        [
+          701,
+          890
+        ]
+      ],
+      [
+        [
+          714,
+          869
+        ],
+        [
+          766,
+          861
+        ],
+        [
+          824,
+          860
+        ],
+        [
+          865,
+          880
+        ],
+        [
+          866,
+          922
+        ],
+        [
+          715,
+          922
+        ],
+        [
+          701,
+          890
+        ]
+      ]
+    ]
+  ],
+  "diagnosis": "Exact C261 walk context only reproduces when using native sampleClip/addPose with seed1 and local idle clock. Four folded triangles lie at the near paw/ankle boundary. Previous replay01/02 omits or mis-samples the actual layered pose and is not evidence of a repair; replay03 reproduces, replay04 on corrected source passes.",
+  "native": {
+    "report": "audits/C202_NATIVE_HOLDS_20261004/tortoise-native-01/report.json",
+    "reportSha256": "4140706ed451c4dbe9a692a63db0bdc6d2421da78d9bf3ba81ed238d56485e3c",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 841,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    }
+  },
+  "reviewedStills": [
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/tortoise-native-01/turn3-hit-approach-50.png",
+      "sha256": "d375f72a90f39612fba9fb8e1eea6cf44b332d0819217faa8ad5e7d302b1cc2a"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/tortoise-native-01/turn3-hit-idle-90.png",
+      "sha256": "cf0429744c713ea1bd1df4e0fbd8ae4eccdaadd59b1505f3de668348d45cde46"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/tortoise-native-01/turn1-hit-impact.png",
+      "sha256": "afd3b3014070b676c8e0e1af67f874c8058a2c2391d2c0f775d56bec4551af1c"
+    }
+  ],
+  "visualFinding": "Reviewed approach/late-idle/impact stage stills show continuous near-front ankle and no detached strip. This is not a claim to have listened to sound or watched the complete film.",
+  "qualityAccepted": false,
+  "masterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "recordSha256": "fb7a5228b34e9022ca6ddbcfc621ae29ba80666f127950f5afcbb9d1b2c07659",
+  "bindingSha256": "a17b07e162dafe3452f31d46e4232c1de2464a3ae716a787a950262a8b2070fe"
+}

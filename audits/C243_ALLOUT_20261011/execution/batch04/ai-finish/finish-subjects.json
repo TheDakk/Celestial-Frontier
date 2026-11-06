@@ -1,0 +1,67 @@
+[
+  {
+    "id": "c243b04r1c1-10-snipe",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-01/c243b04r1c1-10-snipe",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c1-10-snipe/report.json"
+  },
+  {
+    "id": "c243b04r1c2-03-ostrich",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-01/c243b04r1c2-03-ostrich",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-03-ostrich/report.json"
+  },
+  {
+    "id": "c243b04r1c2-07-pheasant",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-01/c243b04r1c2-07-pheasant",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-07-pheasant/report.json"
+  },
+  {
+    "id": "c243b04r1c2-12-tern",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-01/c243b04r1c2-12-tern",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c2-12-tern/report.json"
+  },
+  {
+    "id": "g2c83-16-cockatoo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-02/g2c83-16-cockatoo",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c83-16-cockatoo/report.json"
+  },
+  {
+    "id": "g2c107-08-frigatebird",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-02/g2c107-08-frigatebird",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c107-08-frigatebird/report.json"
+  },
+  {
+    "id": "g2c106-18-hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-02/g2c106-18-hoatzin",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c106-18-hoatzin/report.json"
+  },
+  {
+    "id": "g2c106-17-kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-02/g2c106-17-kakapo",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c106-17-kakapo/report.json"
+  },
+  {
+    "id": "c213originals-28-kookaburra",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-03/c213originals-28-kookaburra",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c213originals-28-kookaburra/report.json"
+  },
+  {
+    "id": "c243b03r1c2-31-eagle",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-03/c243b03r1c2-31-eagle",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b03r1c2-31-eagle/report.json"
+  },
+  {
+    "id": "c243b04r1c3-04-owl",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-03/c243b04r1c3-04-owl",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c3-04-owl/report.json"
+  },
+  {
+    "id": "c243b04r1c3-11-swift",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-03/c243b04r1c3-11-swift",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/c243b04r1c3-11-swift/report.json"
+  },
+  {
+    "id": "g2c72-12-egret",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/rebound-04/g2c72-12-egret",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/native-01/g2c72-12-egret/report.json"
+  }
+]

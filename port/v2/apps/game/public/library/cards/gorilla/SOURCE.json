@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gorilla",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c3-15-gorilla/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "119187ac7d500aef50b61d9a89489fe75c4d329a347d165cdf1c4984205b1584"
+}

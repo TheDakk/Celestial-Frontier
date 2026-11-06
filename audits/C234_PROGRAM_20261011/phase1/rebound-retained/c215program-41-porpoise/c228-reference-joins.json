@@ -1,0 +1,75 @@
+{
+  "sourceFit": "audits/C228_PROGRAM_20261011/phase1/sources/c215program-41-porpoise",
+  "sourceBindingSha256": "239e37a87eb309b613abf914aa3476795eea0876a6c1d54b33907c17b7f455ab",
+  "candidateBindingSha256": "f715dea546d62e7e2caa844c7ee9471c82c963567b014d4b4c8f8c8bec090af9",
+  "paintBoundaryPairs": [
+    [
+      "body-0",
+      "dorsal"
+    ],
+    [
+      "body-0",
+      "far-pectoral"
+    ],
+    [
+      "body-0",
+      "head"
+    ],
+    [
+      "body-0",
+      "near-pectoral"
+    ],
+    [
+      "body-1",
+      "head"
+    ],
+    [
+      "body-1",
+      "near-pectoral"
+    ],
+    [
+      "body-2",
+      "dorsal"
+    ],
+    [
+      "body-2",
+      "near-pectoral"
+    ],
+    [
+      "body-3",
+      "dorsal"
+    ],
+    [
+      "body-4",
+      "dorsal"
+    ],
+    [
+      "body-5",
+      "dorsal"
+    ],
+    [
+      "caudal",
+      "dorsal"
+    ],
+    [
+      "dorsal",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ],
+    [
+      "head",
+      "near-pectoral"
+    ]
+  ],
+  "sourceMasterSha256": "1f048e044b57230111c8d4b104eb228b75436023fb538e7aae934d7a2ceaabb8",
+  "sourceAtlasSha256": "a7c2e0a76905eea7711891d0620201f599fdd912b364f0e975406a4c489fc5fc",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

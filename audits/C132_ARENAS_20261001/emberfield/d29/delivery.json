@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "emberfield",
+  "biome": "emberfield",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/emberfield/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/emberfield/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/arena-far.webp",
+      "runtimeSha256": "a260774796dbecf0ebf781126d632dd5597a22ec6d6773efbde48372325c4a8d",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+        "sha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.webp",
+      "runtimeSha256": "c3ca51b5d4717daaa1c7e4cb27a2de93ad52ba534e86d4f4874671ed6936eb7c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.png",
+        "sha256": "4cb93b2fd53cd16a0f9447f6d6a3585d2adacb4d5578c33fb9e89ec421c2d8b5"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.webp",
+      "runtimeSha256": "0081c22283489cdaf85fbf2ddb9ac0d66683d0c8cc0c800d444c873d0154921e",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.png",
+        "sha256": "64fdcafb8570f4a6da990281b7c1cdb081385adf2d52169e9cf1f095019b87b3"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

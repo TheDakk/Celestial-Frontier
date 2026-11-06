@@ -1,0 +1,73 @@
+{
+  "schema": "cf.anchored-material-source/v1",
+  "status": "PASS",
+  "family": "anchored-soft-polyp",
+  "sourceRgbaSha256": "f56d6370b426e86fb8fd5731f65644c96a4eba3bba4df5eafcae4595047eb6ba",
+  "fields": [
+    {
+      "joint": "base",
+      "pixel": [
+        544,
+        866
+      ],
+      "owner": "pedal-disc",
+      "alpha": 255
+    },
+    {
+      "joint": "column",
+      "pixel": [
+        553,
+        745
+      ],
+      "owner": "soft-column",
+      "alpha": 255
+    },
+    {
+      "joint": "oral",
+      "pixel": [
+        628,
+        555
+      ],
+      "owner": "oral-disc",
+      "alpha": 255
+    },
+    {
+      "joint": "crownFar",
+      "pixel": [
+        565,
+        407
+      ],
+      "owner": "upper-crown-envelope",
+      "alpha": 255
+    },
+    {
+      "joint": "crownLeft",
+      "pixel": [
+        422,
+        527
+      ],
+      "owner": "left-crown-envelope",
+      "alpha": 255
+    },
+    {
+      "joint": "crownRight",
+      "pixel": [
+        805,
+        578
+      ],
+      "owner": "right-crown-envelope",
+      "alpha": 255
+    },
+    {
+      "joint": "crownNear",
+      "pixel": [
+        608,
+        680
+      ],
+      "owner": "near-crown-envelope",
+      "alpha": 255
+    }
+  ],
+  "scope": "Hash-bound observed source field ownership only; aggregate controls are not an individual tentacle/polyp biological census. No hidden paint or native acceptance.",
+  "nativeAcceptance": false
+}

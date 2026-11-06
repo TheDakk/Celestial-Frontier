@@ -1,0 +1,91 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "b163758aa0c8b271eefab69f9c03dc675e9f45c8b9200eda57de08e04e613121",
+  "cutoutSha256": "4e79f78c6322ade07a0881f5491930c1b002d1c4e85e50471cf2d30822b2a30e",
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower-pouch",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-shoulder",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-shoulder",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "far"
+    },
+    {
+      "id": "body",
+      "joint": "pelvis",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "b4d12e67f89e3767c5e3a72ca8d392b22730c296ae308d04a979f3b96a58c781",
+  "keyedRgbaSha256": "ca467b791b632505c5bdcb5eb24fe7ffce7eff95a3d97bc4514bd84bd71ffb83",
+  "declarationHash": "15f51d0108ec8706cbc78befcd484bf1736b8807281eeab1f24eb5a9cc74fcb7"
+}

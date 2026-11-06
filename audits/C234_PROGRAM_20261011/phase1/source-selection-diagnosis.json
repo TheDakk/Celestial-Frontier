@@ -1,0 +1,8 @@
+{
+  "cause": "Sweep6 subjects manifest chose pre-join fit for Dugong and Right Whale; C228 native sources bind joined-fit instead.",
+  "wrongManifest": "audits/AI_FINISH_SWEEP6_20261011/subjects.json",
+  "qualifiedManifest": "audits/C234_PROGRAM_20261011/phase1/subjects.json",
+  "Beluga": "Dotted source seams also visible in prefinish aquatic-native idle90; not an alpha change introduced by finish.",
+  "RiverDolphin": "Held melon contour remains source/mesh continuity issue; retained finish and binding byte identical.",
+  "limitsChanged": false
+}

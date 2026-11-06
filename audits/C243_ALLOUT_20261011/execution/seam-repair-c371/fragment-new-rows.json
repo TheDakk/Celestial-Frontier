@@ -1,0 +1,302 @@
+[
+  {
+    "id": "c243b01r2c3-15-camel",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b01r2c3-15-camel",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b01r2c3-15-camel",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b01r2c3-15-camel",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b02r2c1-24-pilot-whale",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c1-24-pilot-whale",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c1-24-pilot-whale",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b02r2c2-18-manatee",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-18-manatee",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-18-manatee",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b02r2c2-32-river-dolphin",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b02r2c2-32-river-dolphin",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b02r2c2-32-river-dolphin",
+    "key": "earth-temperate-v1|water|water",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b03r1c3-24-ladybug",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native01/c243b03r1c3-24-ladybug",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 6,
+      "turn3-hit-idle-90": 6
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b03r1c3-24-ladybug",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b03r1c3-24-ladybug",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 51,
+      "turn3-hit-idle-90": 46
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c1-17-hoatzin",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b04r2c1-17-hoatzin",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 2,
+      "turn3-hit-idle-90": 2
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c1-17-hoatzin",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-17-hoatzin",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 3,
+      "turn3-hit-idle-90": 4
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c1-18-kakapo",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b04r2c1-18-kakapo",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c1-18-kakapo",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c1-18-kakapo",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 2,
+      "turn3-hit-idle-90": 3
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native02/c243b04r2c2-12-tern",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/native03/c243b04r2c2-12-tern",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 0
+    },
+    "fragmentTotal": 0
+  },
+  {
+    "id": "c243b04r2c2-12-tern",
+    "film": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/finished-native/c243b04r2c2-12-tern",
+    "key": "earth-temperate-v1|ground|ground",
+    "status": "CHECKED",
+    "fragments": {
+      "turn3-hit-idle-50": [],
+      "turn3-hit-idle-90": []
+    },
+    "pink": {
+      "turn3-hit-idle-50": 0,
+      "turn3-hit-idle-90": 1
+    },
+    "fragmentTotal": 0
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "name": "Osprey",
+  "family": "biped-bird",
+  "species": {
+    "name": "Osprey",
+    "aspect": 2.2,
+    "headFrac": 0.18,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "white underside with a dark mask stripe through the eye",
+      "crooked M-shaped gull-like wings",
+      "hooked bill and outsized barbed talons"
+    ]
+  },
+  "genome": {
+    "seed": 1081382268,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 5,
+    "body": 5,
+    "loco": 11,
+    "trait": 18,
+    "size": 1,
+    "diet": 1,
+    "head": 3,
+    "limbs": 3,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 17,
+    "detail": 9,
+    "accent": 15,
+    "temper": 4,
+    "sense": 6,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Osprey"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Osprey\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1081382268\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 372,
+  "profile": {
+    "id": "raptor",
+    "names": [
+      "Eagle",
+      "Owl",
+      "Hawk",
+      "Falcon",
+      "Snowy Owl",
+      "Osprey",
+      "Kestrel",
+      "Desert Owl",
+      "Harpy Eagle"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "peck"
+    ],
+    "notes": ""
+  }
+}

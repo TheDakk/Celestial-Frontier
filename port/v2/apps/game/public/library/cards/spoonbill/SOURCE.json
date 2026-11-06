@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Spoonbill",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/13-spoonbill/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b3b01d21a5da53377e6f39b0fe68f0a3fa75ff113e2109494ad02caec9f80537"
+}

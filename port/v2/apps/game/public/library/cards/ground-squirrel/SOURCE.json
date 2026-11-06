@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ground Squirrel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/18-ground-squirrel/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "944f71b8541c7963e1692d81b1bcdd28eaff559b590a8ca9b9966e82ee660df6"
+}

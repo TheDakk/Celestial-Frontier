@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Original NEAR is native 1983×793 instead of 1672×941.",
+  "mode": "fresh-generation-from-locked-style",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/banded/arena-near.prompt.txt",
+    "sha256": "b9a16fd0bcdb39a7bd2882a79ff40472959fba106c8ae2c7c4e568ca1b047e23"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.prompt.txt",
+    "sha256": "5a2aed037815ffcfc772b5283b4cb0c4cf7375eb62da2387544c85192269208a"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Actual sole image input is the locked Living Worlds reference."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/banded/arena-near.png",
+    "sha256": "60a75157d73549de0a1d1b432f57d38f2c35e8c92e7b690b5688ee23933188e2"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-005e8c97-215b-4959-896e-7003c7d7db17.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

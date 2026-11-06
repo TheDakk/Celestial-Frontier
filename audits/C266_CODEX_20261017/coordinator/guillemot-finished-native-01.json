@@ -1,0 +1,20 @@
+{
+  "stage": "guillemot-finished-native-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-guillemot-finished-native-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792281075.436954,
+  "beforeGiB": 87.1019172668457,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.062,
+  "lowestGiB": 86.68412780761719,
+  "afterGiB": 87.06600570678711
+}

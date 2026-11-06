@@ -1,0 +1,339 @@
+[
+  {
+    "name": "Tube Worm",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 7.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a front appendage of 23.5% paint that no reference appendage lands on",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 2%)",
+      "missing-anatomy: part segment1 (segment1) covers 0% paint (reference 7%)",
+      "missing-anatomy: part segment2 (segment2) covers 3% paint (reference 11%)",
+      "missing-anatomy: part segment3 (segment3) covers 4% paint (reference 17%)",
+      "missing-anatomy: part segment4 (segment4) covers 4% paint (reference 18%)",
+      "missing-anatomy: part segment5 (segment5) covers 6% paint (reference 15%)",
+      "missing-anatomy: part segment7 (segment7) covers 8% paint (reference 23%)"
+    ]
+  },
+  {
+    "name": "Deer Tick",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 20.5% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 2.1% of the paint; every same-family reference shows at least 5.9%",
+      "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 4.2%)"
+    ]
+  },
+  {
+    "name": "Harvestman",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 10.1% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a top appendage of 10.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a top appendage of 8.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a front appendage of 14.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+      "missing-anatomy: part chelicera-near (cheliceraNear) covers 17% paint (reference 95%)",
+      "missing-anatomy: part chelicera-far (cheliceraFar) covers 0% paint (reference 94%)",
+      "missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 3% paint (reference 58%)",
+      "missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 8% paint (reference 99%)",
+      "missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 3% paint (reference 66%)",
+      "missing-anatomy: part leg2-near-upper (leg2NearKnee) covers 26% paint (reference 86%)",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 7% paint (reference 73%)",
+      "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 5% paint (reference 62%)",
+      "missing-anatomy: part leg4-near-upper (leg4NearKnee) covers 27% paint (reference 86%)",
+      "missing-anatomy: part abdomen (abdomen) covers 20% paint (reference 93%)",
+      "missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 2% paint (reference 69%)",
+      "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 0% paint (reference 84%)",
+      "missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 7% paint (reference 87%)",
+      "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 2% paint (reference 80%)",
+      "missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 27% paint (reference 95%)",
+      "missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 5% paint (reference 88%)",
+      "missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 6% paint (reference 88%)",
+      "source-identity: Only seven independently traceable long leg tips; eighth leg not resolved, so eight-leg source identity unverified."
+    ]
+  },
+  {
+    "name": "Mite",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0182 < 0.0298)",
+      "extra-anatomy (unassigned): a front appendage of 12.2% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 3.3% of the paint; every same-family reference shows at least 5.9%",
+      "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.2%)",
+      "source-identity: Only six independently traceable walking leg tips, not the requested eight; mouth cone is not a leg."
+    ]
+  },
+  {
+    "name": "Pseudoscorpion",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 1.8% of the paint; every same-family reference shows at least 5.9%",
+      "missing-anatomy: part chelicera-far (cheliceraFar) covers 17% paint (reference 94%)",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 5% paint (reference 73%)",
+      "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 6% paint (reference 84%)"
+    ]
+  },
+  {
+    "name": "Scorpion",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sea Spider",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 10.6% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 11.1% paint that no reference appendage lands on",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "missing-anatomy: part observed-left-palp-continuity (cephalothorax) covers 23% paint (reference 75%)",
+      "missing-anatomy: part observed-right-palp-continuity (cephalothorax) covers 20% paint (reference 78%)",
+      "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 18% paint (reference 53%)",
+      "missing-anatomy: part leg2nearknee (leg2NearKnee) covers 17% paint (reference 93%)",
+      "missing-anatomy: part leg3farfoot (leg3FarFoot) covers 12% paint (reference 53%)",
+      "missing-anatomy: part leg3farknee (leg3FarKnee) covers 22% paint (reference 80%)",
+      "missing-anatomy: part leg3nearfoot (leg3NearFoot) covers 18% paint (reference 56%)",
+      "missing-anatomy: part leg3nearknee (leg3NearKnee) covers 27% paint (reference 99%)",
+      "missing-anatomy: part abdomen (abdomen) covers 21% paint (reference 94%)",
+      "unexplained-anatomy: 12.1% of the paint lies away from the body and in no part (reference 0.8%)",
+      "source-identity: Only six long walking legs independently traceable; smaller anterior appendages are not substitutes for the missing walking pair."
+    ]
+  },
+  {
+    "name": "Camel Spider",
+    "status": "STATIC_RED",
+    "candidates": 0,
+    "reasons": [
+      "Error: Contact: approach:scuttle@325.5 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: melee:sting@109.77777777777777 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: melee:bite@92.88888888888889 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: cast@350.75 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: hit@326.25 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: faint@134.33333333333334 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: tame@106.66666666666667 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+      "Error: Contact: feed@19.333333333333332 leg3Far outside accommodatable reach\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:12359:59)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28050:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-xovmuA/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)"
+    ]
+  },
+  {
+    "name": "Baboon",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on",
+      "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "name": "Chimpanzee",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0135 < 0.0216)",
+      "missing-anatomy: part foot-far (legFarFoot) covers 16% paint (reference 74%)",
+      "unexplained-anatomy: 26.6% of the paint lies away from the body and in no part (reference 10.3%)"
+    ]
+  },
+  {
+    "name": "Gibbon",
+    "status": "VISUAL_HOLD",
+    "candidates": 2,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Right defeated Gibbon remains upright on long arms and hind feet in both late-idle frames; slight hunch is not a visible collapse. HOLD faint readability."
+    ]
+  },
+  {
+    "name": "Lemur",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 7.1% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Mandrill",
+    "status": "STATIC_RED",
+    "candidates": 2,
+    "reasons": [
+      "Error: Contact: joint limit legNearFoot approach:walk@692.4991303409142: -54.45148463326674\n    at measure (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:12402:59)\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:12419:16)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:28126:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:28126:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-e17brE/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26"
+    ]
+  },
+  {
+    "name": "Marmoset",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+      "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 72%)"
+    ]
+  },
+  {
+    "name": "Gorilla",
+    "status": "NATIVE_FAIL",
+    "candidates": 0,
+    "reasons": [
+      "Error: Error: Layered stance reach: zero-displacement composite refuses {\"ms\":297.5,\"idleFraction\":0.4375,\"displacement\":0,\"error\":\"Error: Contact: approach:walk@297.5 exceeds scale compression bound\"}\n    at measureLayeredStanceReach (http://127.0.0.1:51623/bundle.js:26668:19)\n    at http://127.0.0.1:51623/bundle.js:26944:136\n    at layeredReachCached (http://127.0.0.1:51623/bundle.js:27108:16)\n    at createPartsRig (http://127.0.0.1:51623/bundle.js:26944:28)\n    at loadSide (http://127.0.0.1:51623/bundle.js:40259:9)\n    at async Promise.all (index 0)\n    at async http://127.0.0.1:51623/bundle.js:40271:24\n    at file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:58:148"
+    ]
+  },
+  {
+    "name": "Monkey",
+    "status": "VISUAL_HOLD",
+    "candidates": 0,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Right defeated Monkey remains upright on hands/feet with raised tail in turn3 reaction and both late-idle frames. No visible collapse; visual HOLD despite mechanics/triage PASS."
+    ]
+  },
+  {
+    "name": "Orangutan",
+    "status": "NATIVE_FAIL",
+    "candidates": 0,
+    "reasons": [
+      "Error: rig: Battle capture: rig refusals in play: {\"left\":1,\"right\":1} {\"left\":\"ARAP skin: unresolved folded triangles: 11\",\"right\":\"ARAP skin: unresolved folded triangles: 12\"}\n    at file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:106:39"
+    ]
+  },
+  {
+    "name": "Spider Monkey",
+    "status": "STATIC_RED",
+    "candidates": 0,
+    "reasons": [
+      "Error: Contact: joint limit legNearFoot approach:walk@692.0641698539257: 53.394624157374814\n    at measure (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:12402:59)\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:12419:16)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:27949:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:28126:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:18128:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:28126:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-t7vrBH/run.mjs:28167:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26"
+    ]
+  },
+  {
+    "name": "Boa",
+    "status": "VISUAL_HOLD",
+    "candidates": 1,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    ]
+  },
+  {
+    "name": "Caecilian",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "wrong family: length/thickness 7.97 < 8",
+      "facing: the right (head) end is not thicker than the left (tail) end (49.3 vs 63.4)"
+    ]
+  },
+  {
+    "name": "Cobra",
+    "status": "INTAKE_REFUSED",
+    "candidates": 2,
+    "reasons": [
+      "not x-monotone: the dominant column run holds 82.4 % (coil or overlap; vertical strips cannot separate it)",
+      "wrong family: length/thickness 5.33 < 8"
+    ]
+  },
+  {
+    "name": "Mountain Viper",
+    "status": "VISUAL_HOLD",
+    "candidates": 1,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    ]
+  },
+  {
+    "name": "Rattlesnake",
+    "status": "VISUAL_HOLD",
+    "candidates": 1,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    ]
+  },
+  {
+    "name": "Snake",
+    "status": "VISUAL_HOLD",
+    "candidates": 2,
+    "reasons": [
+      "All five finished stills viewed at original1024x576. Left winning Snake raises head in idle50 while most trunk/tail drops below the foreground and returns at idle90. HOLD axial victory pose/ground intersection."
+    ]
+  },
+  {
+    "name": "Clam",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Giant Clam",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Oyster",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Razor Clam",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Scallop",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Coconut Crab",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Fiddler Crab",
+    "status": "COMPILER_BLOCKED",
+    "candidates": 0,
+    "reasons": [
+      "Canonical compileLibraryMaster: Unsupported controlled library family"
+    ]
+  },
+  {
+    "name": "Freshwater Crab",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Mud Crab",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Vent Crab",
+    "status": "INTAKE_REFUSED",
+    "candidates": 1,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  }
+]

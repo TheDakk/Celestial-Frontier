@@ -1,0 +1,85 @@
+{
+  "Camel": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "head/jaw/ears to neck",
+      "neck/chest/spine and rear hump",
+      "root/spine belly",
+      "proximal and distal fore/hind limbs",
+      "tail-root/tail"
+    ],
+    "observation": "Both creatures continuous at visible seams in all five finished frames. Right hump wedge at original x735\u2013745,y262\u2013276 is closed in both late idle frames. Dodge FX occludes middle body;other frames show those junctions. One hump,long curved high neck,and very long knobbly legs seen. No fragment or identity clearance inferred from numeric PASS."
+  },
+  "Manatee": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "head/jaw to trunk",
+      "serial axial/back boundaries",
+      "both pectoral/flank roots",
+      "caudal/paddle tail"
+    ],
+    "observation": "Long diagonal slit and back grid closed in both poses and both creatures. All visible shoulder/fin and caudal junctions continuous across five finished frames;dodge/strike FX-covered regions checked in clear idle frames. Rounded paddle,split downturned blunt muzzle and paired front flippers,no rear limbs seen."
+  },
+  "Pilot Whale": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "melon/head/body",
+      "serial axial back and dorsal",
+      "pectoral/flank roots",
+      "tail-stock/caudal"
+    ],
+    "observation": "Both diagonal melon/neck and pectoral/flank slits closed. Visible seams continuous across five frames and both creatures;FX-covered joints checked in clear victory frames. Bulbous overhanging melon,forward swept low dorsal,black body and pale throat anchor patch seen."
+  },
+  "River Dolphin": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "melon/mobile neck",
+      "beak/jaw attachment",
+      "axial back/dorsal ridge",
+      "pectoral/throat",
+      "caudal peduncle"
+    ],
+    "observation": "Back slit and throat/pectoral openings closed in both creatures across all clear seams in five frames. Long toothed tweezer beak,low ridge and bulging melon/mobile neck seen;small tooth row visible in reaction50 and left idle90. QA: left idle50 upper beak pitches sharply upward while mouth is wide open;not a detached seam. Retain for Claude motion-design review."
+  },
+  "Ladybug": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "elytra/thorax/abdomen and membrane source masks",
+      "pronotum/head",
+      "antenna/head",
+      "all visible leg root and knee chains"
+    ],
+    "observation": "Red elytron continuous in both creatures across all five finished frames;the prior grey-blue line is replaced by uninterrupted red shell paint. No see-through shell junction seen. Dome,red spotted cases with faint longitudinal painted split,and small black head beneath shield seen. Natural thin antennae/legs remain independent."
+  },
+  "Tern": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "head/cap/beak to neck",
+      "throat/body and proximal near-wing root",
+      "folded wing/body",
+      "tail/streamers",
+      "near/far legs/feet"
+    ],
+    "observation": "Tiny throat/shoulder notch closed across visible seams in five frames and both creatures. Head/cap stays attached in right turn3 reaction and victory. Two deep-fork streamers,long pointed folded wings,slim red/black dagger bill and black crown seen. Streamers rise in right victory but retain narrow pointed forms;not detached ribbons."
+  },
+  "Hoatzin": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "crest/head/face",
+      "neck/shoulder and wing root",
+      "wing-flight/torso/tail edge",
+      "legs/feet"
+    ],
+    "observation": "HOLD: long background-coloured horizontal/diagonal tear remains from folded wing to tail;clear on left in turn1/turn2 and right victory90. Corrected source islands clean up small pieces but do not close the main seam. Reviewed closure candidate03 is staticRED and was not filmed. Rufous spiky crest,blue face/red eye,long broad tail and heavy chest/slim neck all seen."
+  },
+  "Kakapo": {
+    "fiveFinishedFramesAt2x": true,
+    "seamJunctions": [
+      "head/facial disc/nape",
+      "upper back/wing root",
+      "wing/body/tail junction",
+      "legs/feet"
+    ],
+    "observation": "HOLD: wing-to-tail/body opening persists;right turn3-hit-reaction50 also has a large V-shaped head/nape-to-upper-back opening. D28 upper remainder patch assigned to far-wing-root does not produce coherent head/back anatomy in that pose. StaticRED candidate03 refused and was not filmed. Moss-green black/yellow mottling,owl-like whiskered face and squat heavy parrot body all seen."
+  }
+}
