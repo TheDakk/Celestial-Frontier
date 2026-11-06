@@ -11659,9 +11659,11 @@ async function main() {
           }
           recordControls('orbital-row-containment-restore');
         }
-        await evalIn(`document.querySelector('#survey [data-row="Mineral veins"]')?.scrollIntoView({block:'nearest',inline:'nearest'})`);
-        await sleep(40);
-        const orbitalSurveyObservation = await evalIn(ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION);
+        /* Scroll and measure in ONE synchronous evaluation. A separate scroll, a 40 ms sleep and a second evaluation let a
+           notice toast that arrives in between lower the card floor after the scroll (PR #46 hosted run 6: row 636-692 under
+           card bottom 595 on the slower runner; run 5 passed the same step). Same containment rule; no gap to race. */
+        const orbitalSurveyObservation = await evalIn(`(()=>{document.querySelector('#survey [data-row="Mineral veins"]')
+          ?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});return ${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION};})()`);
         const orbitalSurvey = assessArc3OrbitalSurveyGlass(orbitalSurveyObservation);
         addOutcome(vp.label, 'orbital-mineral-survey', 'ORBITAL_MINERAL_SURVEY_DISCLOSURE', '#survey [data-row="Mineral veins"]',
           orbitalSurvey,
