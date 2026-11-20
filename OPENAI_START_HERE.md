@@ -1,0 +1,134 @@
+> **RETIRED (Dakk, 2026-09-26): development is Mac-only.** The `openai/windows` branch and the `C:\Projects\celestial-frontier-openai-windows` folder are no longer used; the branch is deleted on GitHub. Work only in `/Users/dakk/Projects/celestial-frontier-openai-mac` on branch `openai/mac`, and follow `PARALLEL_GIT_PROTOCOL.md` (including its Disk-space law). The Windows instructions below are kept only as history.
+
+# OpenAI / Codex — Start Here
+
+This is the **only folder OpenAI/Codex should edit on this Windows PC**:
+
+```text
+C:\Projects\celestial-frontier-openai-windows
+```
+
+Its branch is:
+
+```text
+openai/windows
+```
+
+The other folders are deliberately separate:
+
+| Folder | Purpose | Do not edit from OpenAI/Codex |
+| --- | --- | --- |
+| `C:\Projects\celestial-frontier-openai-windows` | OpenAI/Codex development | No — this is the correct folder |
+| `C:\Projects\celestial-frontier-anthropic-windows` | Anthropic/Claude Code development | Yes |
+| `C:\Projects\Celestial-Frontier` | `develop` integration branch | Yes |
+| `C:\Projects\celestialfrontier.github.io` | Published live-site repository | Yes — deploy only when Dakk approves |
+
+## Every time you start an OpenAI/Codex coding task
+
+1. Open this folder as the local project in Codex.
+2. Use **Local** mode — not Codex's extra **Worktree** mode.
+3. Ask Codex to verify the folder and branch before editing.
+4. Ask Codex to read `AGENTS.md`, `ROADMAP.md`, and `PROCESS_LAWS.md` before work begins.
+
+Paste this at the beginning of a coding task:
+
+```text
+Before editing, verify that the repository root is
+C:/Projects/celestial-frontier-openai-windows
+and that the current branch is openai/windows.
+
+If either is different, stop and report it; do not edit anything.
+
+Then read AGENTS.md, ROADMAP.md, and PROCESS_LAWS.md. Work only in this
+OpenAI worktree. Never edit the Anthropic worktree, develop, main, or the
+celestialfrontier.github.io repository.
+```
+
+The expected verification result is:
+
+```powershell
+git rev-parse --show-toplevel   # C:/Projects/celestial-frontier-openai-windows
+git branch --show-current       # openai/windows
+git status --short --branch     # ## openai/windows...origin/openai/windows
+```
+
+If the last command lists changed files, they are unfinished work. Ask Codex
+to explain them; do not discard them.
+
+## When a task is complete
+
+Paste this:
+
+```text
+Run the required checks for this change. Review the diff, then commit only
+the completed task's changes with a descriptive message and push to
+origin/openai/windows. Verify that the local branch and GitHub are in sync.
+Report the commit hash, tests run, and push result. Do not merge into develop
+or main, and do not deploy the live site. End with the required paired handoff
+reminder from PARALLEL_GIT_PROTOCOL.md: tell me the exact next steps for this
+OpenAI/Codex side, GitHub, and the Anthropic/Claude Code side, including
+whether I need to open Claude now. If a pull request is needed, include the
+exact base branch, source branch, and copy-ready PR title and description.
+```
+
+Success means `git status --short --branch` shows only:
+
+```text
+## openai/windows...origin/openai/windows
+```
+
+with no changed-file lines below it. The work is then safely stored both on
+this computer and on GitHub.
+
+## Picking up after the other agent (cold start / new PR merged)
+
+The two agents (OpenAI/Codex and Anthropic/Claude Code) hand work to each other
+**only through Git**, and the state of the project is always readable from the
+repository itself. When you (or the other agent) pick the project up cold —
+including right after any PR merges into `develop` — the required sequence is:
+
+1. **Synchronize first, from a clean worktree only:** `git fetch origin`, inspect
+   `git status --short --branch`, then merge the latest `origin/develop` into this
+   agent's own branch per the startup procedure in `PARALLEL_GIT_PROTOCOL.md`.
+   Never copy files between worktrees.
+2. **Read, in this order:**
+   1. `ROADMAP.md` — the live session handoff: what just happened, what is next,
+      and the current five-field parallel-Git state.
+   2. `PROCESS_LAWS.md` — before touching UI, tests, or instruments.
+   3. `PARALLEL_GIT_PROTOCOL.md` — branch ownership, preflight report, completion
+      procedure, the paired handoff format, and the standing merge authorization.
+   4. `AGENTS.md` (this side) / `CLAUDE.md` (Claude side) — the agent's own rules.
+   5. The **current plan**: `port/V2_FULL_SWEEP_2026-08-13.md` (findings register +
+      batch ladder) and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` (the approved
+      product contract and arc table).
+   6. Whatever task-relevant system docs the ROADMAP handoff points at — never
+      every historical file indiscriminately.
+3. **Give Dakk the preflight report** (agent, folder, branch, sync state, docs
+   read, objective, integration path) before editing anything.
+4. **On completion:** run the required checks, update the owning Markdown in the
+   same batch, commit, push, refresh the ROADMAP handoff, and end with the exact
+   five-field paired handoff so the other agent can resume without this chat.
+
+Every batch must leave `ROADMAP.md` accurate enough that the OTHER agent could
+continue from it alone. If the handoff you find there contradicts live Git state,
+trust Git, say so, and fix the handoff in your batch.
+
+## How work reaches the game
+
+```text
+OpenAI/Codex: openai/windows
+        ↓ pull request + review
+develop: integration and shared testing
+        ↓ approved release only
+main: production source
+        ↓ approved deployment only
+celestialfrontier.github.io: live game
+```
+
+Do not merge or deploy casually. A completed OpenAI task is normally ready
+for a pull request from `openai/windows` into `develop`.
+
+## Important safety rule
+
+Never use `git reset --hard`, `git clean -fd`, force-push, or delete a branch
+or worktree unless Dakk explicitly approves it.

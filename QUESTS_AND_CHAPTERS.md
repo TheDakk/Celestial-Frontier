@@ -1,0 +1,789 @@
+# Celestial Frontier — Quests & Chapters
+
+**Weekly Charter lifecycle — matches code 2026-09-25.** `packages/persistence/src/weekly-charters.ts` owns the shared pure lifecycle; `apps/game/src/weekly-charters.ts` re-exports it and renders the board. After all five trades, three deterministic rows appear per four hours of persisted active play. Device-clock changes cannot roll the board. Landfall, Mine, Discover Life, Fabricate and Conquest have event owners. Acceptance and post-acceptance deeds share the existing F4 transaction and three-slot cap; a completed row cannot be accepted again in the same cycle. Conquest's `wk-conq` pays 30 current Stardust and one honored Charter in Arc 6's CAS, with no extra RNG or writer. Expired, duplicate, completed-and-accepted, counter-overflow, stale and failed-write cases pay no new Charter reward. The combat verifier checks the exact saved cycle/acceptance/progress/reward projection. Historical wall-week descriptions below apply only to legacy v1. Evidence: audits/WEEKLY_CONQUEST_20260925/README.md.
+
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
+
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
+Weekly Charters now use the active-play lifecycle below (2026-09-25); the older Arc 4 state in this paragraph predates that owner. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated quest/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
+> head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no
+> quest, Chapter, Charter, reward or save behavior and closes no quest/Chapter criterion. See
+> `ROADMAP.md` for the live handoff and `port/v2/README.md` for the canonical battery commands.
+
+> **2026-09-01 current Charter-notice green evidence overlay (matches exact signed code;
+> supersedes older “current” labels while preserving every dated block):** exact SSH-signed source
+> `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings/instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact retained
+> carriers under `audits/` bind the Compendium report, Slice report/log and Glass report.
+>
+> Saturated multi-chapter recovery now proves the Landing/Charter aggregate keeps its adjacent
+> outcome surface while an older Share ceremony remains queued before shift and resumes exactly
+> once only after `productActionInFlight` and toast ownership clear. The same certificate covers the
+> dynamically observed, deadline-clipped Guide tail and D-TRAIN's stable
+> raw/live/focus/pending-cleared bulletin fixed point. Ceremony presentation ordering is the only
+> product behavior change. The legacy game, Charter chains, eligibility, progress, rewards, loot,
+> receipt/CAS and exact-once rules, save schema, deterministic generation,
+> creatures/plants/biomes/Guardians,
+> audio, CSS, numeric rulers, browser pin/version policy and no-retry policy are unchanged. Hosted run
+> `33572309149` remains immutable red and its ninth authorization consumed; no new hosted attempt,
+> push, merge, release, version bump, publication or deployment is authorized.
+
+> **2026-09-01 current Charter-notice ownership correction (matches local code as of 2026-09-01;
+> supersedes older “current” labels while preserving dated evidence):** PR #35 hosted run
+> `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic
+> merge `778d3cf58937476a65c550e875b946290c0967b4`. Saturated multi-chapter recovery durably recorded
+> the exact Chapter 1–3 aggregate, but a previously queued Share-achievement ceremony was allowed
+> to consume the adjacent toast while the newer Landing owner was still in flight.
+>
+> The ceremony drain now yields before queue consumption to any active receipt-bearing product
+> owner, preserving and rescheduling the older notice until that owner settles. A Landing/Charter
+> action therefore owns its aggregate completion notice without discarding the deferred ceremony.
+> Charter eligibility, chapter selection, progress, rewards, receipt/CAS, exact-once and no-retry
+> rules are unchanged. The hosted red remains historical evidence; the changed source awaits a new
+> exact-source browser chain.
+
+> **2026-08-29 current local Charter fixed-point correction (supersedes narrower same-date
+> descriptions below where they differ):** Starter Charter acceptance and staged deed successors now
+> use the deterministic transaction owner's `canonicalizeState`, bound to the same detached registry
+> and one validated commit clock as the persisted write. Landing's joined Charter successor follows
+> the same owner-minted canonical proof. This does not alter chain visibility, deed eligibility,
+> counters, rewards, gear, capacity, schema, exact-once receipt ownership or the no-retry rule; it
+> prevents a raw or separately clocked expected state from disagreeing with the committed codec
+> fixed point. Historical exact-source evidence below remains scoped to its named source.
+
+> **2026-08-29 current local Starter Charter board and writers (matches code):** v2 now owns the
+> bounded two-chain Starter board, not merely imported Charter bytes. `trades` remains
+> `st-land → st-mine → st-scan → st-scout → st-conq`; `tour` remains
+> `st-mercury → st-mars → st-giants → st-ice → st-comp`. The board shows every accepted row plus
+> only the first incomplete link in each chain, so accepting a link activates it but never reveals
+> the following link until completion. At most three Charters may be active. Completed ids are
+> permanent; malformed, duplicate, completed-and-accepted, over-cap or unrevealed input is
+> protected rather than normalized into a new outcome. The later Bioscan owner admits `st-scan`;
+> the 2026-09-25 active-play lifecycle below now owns weekly rows. `st-conq` remains
+> the existing verified combat owner's event, including its stage-0 Jump Drive reveal lock.
+>
+> Acceptance is one deterministic F4 product action: one immutable receipt, one lease/revision CAS,
+> no random draw, retry or optimistic publication. A newly accepted state-style deed completes in
+> that same acceptance transaction only when existing durable evidence proves it exactly:
+> non-canonical-Earth landfall (`st-land`), `stats.mines > 0`, an existing legacy Scout id, a
+> parseable legacy `conquered` row whose seed is not 133, exact Mercury/Mars/ice-world landing, or
+> ownership of one canonical T2 component. `st-giants` and unavailable `st-scan` remain count-from-
+> accept deeds. Current
+> landfall and Mine events carry the complete registered `CanonicalCF1WorldAddress`: canonical
+> Earth can never prove `st-land`, and Sol-tour credit requires the exact Sol hierarchy and source
+> ordinal, so a matching leaf seed beneath another galaxy/star cannot impersonate Mercury, Mars,
+> Jupiter, Saturn, Uranus or Neptune. The seed-only `surfSeen` checks survive only as explicit
+> already-proven compatibility evidence for imported v1 saves.
+>
+> Live event writers join Charter state to the transaction that proves the deed: permanent
+> non-Training Landing owns `st-land`, `st-mercury`, `st-mars` and `st-ice`; successful Mine owns
+> `st-mine` and one press toward `st-giants`; eligible fixed Fabrication owns `st-comp` only from
+> the canonical catalogue category `comp`; assigning or switching to a non-null exact Field Scout
+> owns `st-scout`, while unchanged selection and stand-down do not emit its event; verified combat
+> alone owns `st-conq`. No writer opens a second progression transaction. Refusal, stale/lost
+> authority, failed storage and postcommit convergence cannot bank, pay or replay a Charter.
+>
+> Exact completion rewards are unchanged: `st-land` +10 Stardust; `st-mine` +15; `st-scan` +15 and
+> Comms Earpiece (currently unavailable); `st-scout` +15; `st-conq` +25; `st-mercury` +10 plus
+> Miner’s Headlamp; `st-mars` +10 plus Mag-Boots; `st-giants` +15 plus Meteorite Pendant;
+> `st-ice` +10 plus Field Leggings; and `st-comp` +15. Completion removes the active id, appends
+> `chDone`, caps its `chProg`, raises current/lifetime Stardust and `stats.charters`, then refreshes
+> aggregate achievements/best rank inside that same save. Gear is one deterministic Arc 2 instance
+> bound to the Charter id and receipt ordinal. It auto-equips only when it reached inventory and its
+> slot is empty; full inventory routes it to the 500-entry pending-reward carrier and never replaces
+> worn gear. Arc 2/future/corrupt authority, revision exhaustion, reward-capacity or numeric overflow
+> refuses the complete candidate—Stardust is never paid without its promised gear.
+>
+> After exact durable publication, newly appended known achievement ids receive their manifest
+> notification plus the established rarity sting at tier 3; a newly promoted saved best rank gets
+> the unambiguous Rank Up toast, tier-5 sting and the existing four-color gold burst semantic. The
+> burst is capped at 40 and further reduced by the current motion/device effects budget, and obtains
+> only player-chip geometry through AppChrome rather than taking over its DOM. Boot catch-up,
+> Training, replay, already-durable observation, refusal and read-only convergence are silent; these
+> ceremonies grant no additional reward. If a newer receipt-bearing action is still settling, its
+> outcome notice keeps presentation ownership: an older queued ceremony remains intact and resumes
+> only after the product owner and current toast release it.
+
+> **Historical earlier 2026-08-29 Charter-writer overlay (superseded by the current board above):** the live projection then had exact outcome
+> writers for canonical first landfalls, successful Mine actions, eligible fixed Fabricator
+> outputs, one first successful alien-world biosphere observation, successful companion Breed,
+> and verified conquest. Chapter 2 therefore presents its real `c2-conq` milestone instead of
+> hiding it.
+> `bankBredSuccess` preserves the mature `{ok:true}` filter and forward-banking rule: a successful
+> Arc 5 offspring result banks Chapter 3 `c3-breed` / **Breed a hybrid bloodline** inside the same
+> complete save that carries the child and both parents' Recovery. Both success and failure saves
+> are capacity-certified before the one draw. Failure leaves Charter bytes unchanged; refusal,
+> stale authority, duplicate receipt and storage failure bank nothing. Main publishes `ascCh` and
+> `ascProg` only after the exact durable result is verified, then refreshes the objective.
+>
+> Combat banks conquest and reconciles only after the registered battle/conquest fixed point is
+> durable. If the exact one-time starter conquest Charter `st-conq` is accepted, that same combat
+> CAS completes and removes it, awards **25 Stardust** to current and lifetime totals, and raises
+> the honored-Charter count once. Capacity, malformed/stale acceptance, loss, refusal and failed
+> write pay nothing. Weekly `wk-conq` now joins that transaction using the shared active-play
+> lifecycle: one post-acceptance conquest pays 30 current Stardust and one honored Charter once
+> per cycle. The verifier binds the final Charter projection and reward delta to the saved receipt.
+> Other unimplemented chains and mature reward ceremonies remain open systems. The current v2 Field
+> Training graduation names live Feed, Breed/Recovery and Rename without claiming its six-step
+> navigation drill performs them. Older dated landfall-only/pre-Arc overlays below remain history.
+
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no quest/chapter product, persistence, art, save, version, ruler or
+> browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
+> authority; physical-device heat/GPU evidence remains open. The seven evidence carriers and
+> synchronized references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
+> Keep temporary full caffeinate active while authorized local work continues, then restore it when
+> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
+> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
+> Final10 wording below is historical where superseded.
+
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery ran once and stopped instrument-only at `offline-reopened` after fixture, burn-down,
+> exhausted suppression, close/checkpoint and true closed-target proof. The read-only reopened
+> Pertar surface correctly used `unavailable`; the phase-blind poll expected the active surface's
+> `empty`/`depleted` vocabulary. The 20-minute observation, recovery boundary and recovered-state
+> judgment did not run, so no quest/chapter, Recovery, HUMAN, Gate or release claim follows.
+>
+> Signed implementation/evidence repair `3fbfcd5…` changes only this phase-specific evidence contract and its negative
+> controls; chapter, Training, Charter and reward behavior are unchanged. A candidate PASS retains
+> the original active-exhausted, offline-reopened and reactivated active-exhausted Pertar receipts;
+> terminal finalization and named verification independently replay and cross-bind their phase,
+> document, cycle, facts, SessionRNG, state/UI and first-active-sample evidence. Missing, swapped,
+> coherently retokened, reversed or coherently recomputed route/card/runtime/pending receipts are
+> red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
+> Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
+> Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only and never a rebaseline trigger.
+
+> **Historical 2026-08-27 evidence overlay:** current-input Slice had six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran for
+> 397,101 ms and retained 23 findings across 16 scopes without Arc 4 success evidence. Required was
+> false, `ok`/ledger were null, and no success marker or ledger line exists. Glass and recovery
+> correctly did not run.
+>
+> The chapter/Training-owned root was a negative control that replaced Survey after bypassing the
+> document Escape path, leaving lesson locks bound to the old DOM before Land. Product now exports
+> `refreshTrainingScope()`; Survey invokes it once after the replacement card is visible and
+> aria/dock state is published. It rebuilds allowed roots, locks and spotlight, and only restores
+> focus when existing focus is no longer lesson-owned. Dynamic tests cover Survey-tour, Atlas-add
+> and Land; structural controls reject a missing, duplicate or pre-visibility call. The existing
+> **A LESSON OWNS ITS ESCAPE KEY** release-note bullet now covers this rebuild, so **A New
+> Foundation** remains exactly 55 bullets.
+>
+> The other four sixth-red roots were Guide/Glass count, ecology diagnostic comparison, contextless
+> blocked audio and committed-only epoch timing. Focused repairs and their negative controls were
+> exercised before the later signed campaigns.
+>
+> Browser evidence has three separate version-tolerant authorities. The root browser authority
+> accepts a compatible Chromium-family executable only when CDP `1.3` and the capability inventory
+> derived from the root layout/boot sources pass; every run retains executable, product, revision,
+> user agent, JavaScript version and protocol version as provenance. Compendium and SceneMemory keep
+> their own separately derived capability contracts, producer bindings and fixed rulers. A browser
+> point update alone does not rebaseline any of the three or move its thresholds. At that historical
+> boundary no Slice PASS, Glass result or recovery certificate existed; Final10 supersedes that
+> browser chronology as recorded above. Final13 now supplies the exact-source local Recovery
+> certificate, but no hosted, integration, HUMAN, whole-Gate, preview, release/version or deployment
+> authority.
+>
+> Charter landfall scope is classified from the registered canonical CF1 planet address, never from
+> a globally non-unique leaf seed. Sol credit requires the exact home-galaxy seed and coordinates,
+> the exact Sol-star seed and coordinates, and the planet seed's expected source ordinal. A matching
+> seed under any other hierarchy cannot impersonate Sol, and an unregistered lookalike cannot bank
+> at all. A committed first landing may increment only scope-matching landfall goals from the current
+> chapter onward, with every goal capped at its authored target; intent, refusal or repeat landing
+> grants nothing.
+>
+> Chapter 1 mining credit is equally hierarchy-exact. A committed Mine result counts only when its
+> registered source address has the exact home-galaxy seed and coordinates, exact Sol-star seed and
+> coordinates, the authored dead-world leaf seed, and the expected source ordinal. The same leaf
+> seed under a different galaxy/star coordinate or ordinal cannot impersonate the Sol objective;
+> an intent, refusal, stale write or unrelated committed mine grants no Charter progress.
+
+> **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
+> Survey-card action over the production full roster and current epoch. It presents a source-bound
+> uniform random eligible pool, truthful preview/full counts and odds, one shared hit-or-miss
+> Biosphere Yield, active-play recovery and committed-only ownership/reward outcomes. It can create
+> the first durable Compendium fact, fauna individual or specimen lot, but it does not add a Charter
+> bioscan goal or a targeted species preview. The Guide remains 41 topics—24 partial/17
+> unavailable—and **A New Foundation** has 54 draft bullets. Field Training deliberately remains
+> six lessons plus graduation with no Capture lesson. Historical exact-input Slice/Glass prove the native
+> hit/miss, refusal, stale/publication, Close/reopen and reload paths, while ordinary Slice correctly
+> records `recoveryClaimed:false`. Exact signed Final13 source `7cb0969…` separately passed the
+> uninterrupted real 20-minute next-cycle Recovery observation; the combined HUMAN first-journey/
+> ownership review remains open. No hosted, release/version, `rnSeen` or preview/publication
+> authority follows.
+
+> **Historical 2026-08-24 Arc 3 Charter/current-capability overlay (superseded by the live Starter board above):** mining and eligible fixed Fabrication are
+> real receipt-backed Engineering actions. The panel displays six research rows but only Deep
+> Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
+> orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
+> exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. `bankMinedAction` and `bankFixedFabrication` advance a
+> matching live Charter goal only from the committed result; a press, refusal or stale/storage
+> failure banks nothing. The six-lesson v2 Field Training remains a minimal navigation drill, not
+> the legacy 21-step curriculum. Commit `4e0a976` aligns its guidance, the Guide and the development
+> release bulletin with the live Engineering panel without pretending the missing capture/companion/
+> combat lessons exist. The broader chapter/reward ladder remains unported.
+
+> **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** v1.8.9 Training's reversible checkpoint is the exact eleven-field
+> `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` record, not a whole expedition.
+> Completion restores only the progress surfaces that record owned—selected
+> stats, player stats, achievements, Stardust, Compendium, cargo, exceptional
+> counts, items, equipment, affixes, and Earth Atlas/home history—while the
+> surrounding v4 save retains every other field. The old synthetic
+> `{codex,essence,marker}` fixture remains an unknown/refusal control. A genuine
+> checkpoint paired with the historical erroneous `tut:1` is rescued as
+> incomplete; unknown checkpoints never become practice progress.
+> The legacy checkpoint has no `view`: Skip from Welcome remains in Sol and a
+> full completion after Land remains at Earth. Exact pre-Training route restore
+> belongs only to the current-v2 one-key `{view}` checkpoint.
+>
+> Loaded unfinished Training is write-held before ordinary persistence. A
+> recognized checkpoint restores atomically before it is cleared. A loaded
+> `tut:0` save with no checkpoint is also held and may use proven Sol only as a
+> runtime seat until the one completion write; it does not gain a fabricated
+> checkpoint. Fresh empty onboarding remains ordinary. Unknown checkpoint or
+> unavailable route enters the persistent nonclosable recovery modal, with
+> trusted complete import and reload/retry as the only exits. Finish/Skip stays
+> visibly busy and focus-locked while its one primary replacement write is in
+> flight; a pre-durable failure keeps the lesson and checkpoint retryable, and
+> a post-durable publication failure reloads from that one committed write.
+> Neither path banks a chapter, Charter goal, landing, conquest, achievement,
+> reward, reach tier, or any other state the checkpoint did not own.
+>
+> This restores compatibility for the implemented six-lesson v2 drill only.
+> **D-TRAIN-2 remains open** for the other fifteen lessons and the complete
+> legacy 21-step curriculum. The compatible optional outer-v4 `ever.v:1`
+> record carrier is persistence bookkeeping, not a new progression writer or
+> Guide capability; outer `v` stays 4 and no game/release version changes.
+>
+> Local ignored reports are terminal PASS on Edge `151.0.4129.86` at commit
+> `b091f010011fa16bec457599b41274b7f92bb5e6`, branch `openai/mac`.
+> Slice Smoke run `20260816195736683-4852-27b5c876410a` took 154,788 ms with
+> 0 findings, 0 automatic retries and 10 screenshots; its raw outcome explicitly covers
+> genuine Training Skip + full Finish, rescue/quarantine/retry/races, and
+> canonical Earth. Full-certifying Glass took 57,476 ms across 12/12 viewports
+> with 57/57 negative controls, 0 blocked/omitted, 0 findings, 0 instrument
+> failures, and 0 automatic retries. The reports bind different dirty diagnostic tree
+> hashes—Slice Smoke
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`,
+> Glass `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`—so
+> they are local outcome evidence for those recorded inputs, not this later
+> documentation state, exact-head CI, integration, Gate C, human, or release authority.
+
+> **2026-08-14 v2 Charter overlay — historical pre-Arc-3 boundary:** The then-current
+> v2 Charter facade preserves the canonical legacy `ASC_CHAPTERS_DATA` and imported
+> `ascCh` / `ascProg` bytes for parity and reach, but never renders that raw chapter
+> copy as a player instruction. `projectV2Charter` and `currentV2Objective` expose
+> only a landfall goal that the derived saved reach stage can actually reach and the
+> slice can actually bank. A fresh stage-0 expedition sees the two-Sol-landfall
+> milestone; completing it reaches an explicit development-slice boundary, not a
+> mining, fabrication, Shipyard, reward, chapter or reach promise. Non-Sol landfall
+> remains hidden unless an existing saved drive supplies that reach. Mining, combat,
+> crafting, breeding and companion dispatch are not live.
+> Existing legacy **Expedition Charters** remain their own quest-board concept;
+> the planned companion mission loop below must not silently inherit weekly expiry,
+> wall-clock or static-reward semantics from them.
+>
+> **PLANNED, not implemented:** a companion mission is an explicit player-owned
+> state machine, `away → ready → claimed` or `away → recalled`, with canonical
+> target `{galaxy:{seed,x,y},star:{seed,x,y},planet:{seed}}`, stable companion ids,
+> `dispatchedAtActivePlayMs`, `readyAtActivePlayMs` and an immutable dispatch-time
+> reward receipt. `activePlayMs` is a dedicated persisted monotonic clock, not the
+> capped ecology/legacy-harvest `COSMIC_EPOCH`: exactly one cross-tab lease owner
+> advances it while its session is visible and answerable, then persists and
+> rebases a fresh runtime segment on reload or ownership handoff. Wall time and
+> overlapping tabs never advance it. Recall before readiness is a terminal safe
+> transition that pays nothing and releases only that mission's assignments;
+> ready rewards never expire and wait until inventory can accept them.
+> There is no dispatch permadeath, daily streak, countdown pressure, push nag,
+> paid reroll or empty-return roulette. Every mission discloses duration, reachable
+> reward family/range and a useful floor. A single quiet ready notification is
+> enough.
+>
+> Mission/Charter/Chapter progress listens to the **claimed receipt outcome**, not
+> a button press or mutable aggregate counter. Capability-aware objectives skip
+> mechanics whose writers are absent. Guide, Training and Charter copy must continue
+> to call companion expeditions **Unavailable** until dispatch, reload, readiness,
+> recall and exact-once claim are all reachable through their real controls and
+> verified outcomes.
+
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
+above matches the current local `port/v2` boundary as of 2026-08-29. Carries v1.8.6 and v1.8.7
+(external rounds 8 and 9) updates — see the ⚠ notes inline.
+**Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+sections, and `port/v2/apps/game/src/training.ts` plus its `main.ts` wiring
+implement the dated port overlay.
+
+> **2026-08-11 v2 Field Training overlay (historical pre-D-TRAIN-1 boundary):** The playable slice owns
+> six real lesson cards—welcome, find Earth, read the survey, chart Earth, open
+> the Atlas, and Land—followed by an honest **Finish for now** graduation. It
+> advances only from the real survey/Atlas/landfall events and must not be
+> described as the full legacy 21-step curriculum. Cache/specimen handling,
+> feeding, breeding, duels, hazards, healing, tray/search/sheet, forging,
+> horizon/Charter lessons and the finale remain OPEN until their live systems
+> exist in v2.
+>
+> Veteran restart in **Settings** stores a bounded `{view}` snapshot, moves the
+> drill to Sol, and commits before reload; a failed write cancels the restart and
+> restores the current expedition in memory. A normal Finish or Skip freshly
+> source-proves and restores that current-v2 view before persisting. If source
+> verification pauses, the drill stays incomplete and retains the exact
+> one-key snapshot. When Sol itself can still be proven and authorized, the app
+> returns there before persistence so reload can reopen Welcome and retry; it
+> neither forges Sol nor discards the snapshot if that fallback also cannot be
+> proven. The complete restored local `smoke:ci` journey and its one-shot failure
+> control are terminal-green, and the complete 12-viewport Glass Matrix is
+> separately terminal-green; both reports bind Edge `151.0.4129.86` and working-
+> tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> This remains working-tree outcome evidence, not exact-head CI, integration or
+> Gate authority. At that boundary, imported legacy mid-training saves carried
+> an unimplemented richer `tsnap`; typed restore-before-clear behavior and
+> injected write-failure proof remained OPEN. Repeating the Earth
+> Land action during an explicit training replay may emit the lesson event, but
+> it does not mint a second landfall/progression reward.
+> While a lesson is active, Field Training owns Escape before the global
+> card/ascent handler. Escape therefore retains the current lesson navigation,
+> keeps any required survey card reachable, and restores the lesson's logical
+> focus target instead of stranding welcome or survey-tour.
+>
+> The v2 Guide no longer invents a parallel tutorial summary. It preserves the
+> mature Guide's 9-category /43-authored-id /41-legacy-live inventory and marks
+> Training as only partly available, with capability-aware copy that names the
+> six-lesson boundary above. Guide search and cross-links therefore cannot make
+> an unported feeding, breeding, duel, healing, forge, horizon or Charter lesson
+> look playable. Completing the real 21-step v2 curriculum remains OPEN; the
+> unversioned v2 release draft does not claim it complete. D-TRAIN-1 compatibility
+> is described by the newer source-truth overlay above.
+
+> **Historical 2026-08-14 v2 Charter overlay (superseded by the current Starter board above):** `@cf/scene/charter.ts` keeps
+> `ASC_CHAPTERS_DATA`, `chapterGoalsDone` and forward `bankLandfall` semantics intact
+> for imported progression. The current app instead gives `fillCharters` one
+> `projectV2Charter(save.ascCh, save.ascProg, ascStage())` record and gives the top
+> chip `currentV2Objective` from that same projection. Its only surfaced goals have
+> `ev === 'landfall'`; its `actionable → boundary` transition never synthesizes a
+> canonical chapter completion, new drive, reward or reach tier. A **nonterminal** chapter
+> number by itself is not reach: a malformed imported `ascCh` without the relevant saved drive
+> cannot expose a non-Sol goal. The explicit terminal legacy/veteran fallback
+> (`ascCh >= ASC_CHAPTER_COUNT`) deliberately remains stage 3 even when drive items are absent.
+> `bankLandfall` fails closed without changing progress for malformed chapter positions,
+> and the canonical chapter array, chapters, goal arrays and goal objects—including
+> aliases projected to the UI—are recursively frozen. A genuine first landing alone banks
+> new progress. After any successful Land action, `reconcileV2Chapters` uses one stable saved
+> reach stage to advance every consecutive canonically complete imported chapter, even when
+> its landfall counters were already saturated; it stops at the first incomplete or
+> incompatible chapter and creates no drive, reward, missing goal or reach tier. Blocked routes
+> use the same honest development-slice boundary rather than naming an absent build path. The v1.8.9
+> chapter and weekly-charter mechanics below remain historical/legacy behavior, not
+> current v2 controls.
+
+## 0. First complete journey gate (approved product definition, not live)
+
+The first 30–60 minute journey is the first proof that Celestial Frontier is more
+than a polished survey slice. It is a **human play window**, not a session-length,
+retention or notification target. Current v2 ends honestly after its six real
+lessons; this sequence must not be added to Field Training, Charters, the Guide or
+release content until every numbered outcome is executable, persistent and
+negative-controlled.
+
+The intended fresh-save path is:
+
+1. **Survey** a reachable world and understand one truthful opportunity signal.
+2. **Gather** finite, visible materials through a real landing/extraction action.
+3. **Craft** one useful component or tool with a clear source/cost/result.
+4. **Tame** or otherwise earn one real owned Companion through the acquisition
+   writer—not through survey, a static roster or a catalogue row.
+5. **Upgrade the ship** through the Shipyard so the owned build visibly changes
+   both reach and `ShipVisualState`.
+6. **Reach somewhere new** that the starter vessel genuinely could not access and
+   encounter a different legible opportunity.
+7. **Return** with a meaningful, receipt-backed material, item, story, Companion
+   memory or blueprint that explains the next choice.
+
+The order is intentional: every verb should answer the previous question rather
+than opening a parallel grind bar. Friendly/field combat or a Guardian lead may be
+an optional, clearly prepared branch in this first journey, but no new player is
+forced into an opaque high-stakes conquest to complete it.
+
+### Acceptance before calling the journey complete
+
+- A clean fresh save completes the ordinary route with no console action, hidden
+  prerequisite, weekly rollover, wall-clock wait, paid/random reroll or out-of-doc
+  knowledge. A failed finite/capture attempt has a visible recovery path and does
+  not permanently strand the expedition.
+- Each transition crosses a real ownership boundary: canonical world opportunity →
+  landing/extraction receipt → Cargo/Inventory → craft receipt → owned Companion
+  identity → ship capability/visual projection → newly reachable world → return
+  receipt. Reload, inventory-full, double-press and stale-tab controls prove each
+  outcome is exactly once.
+- The player can state what they discovered, why the chosen craft/Companion/ship
+  mattered, what changed visually and mechanically, and what a return reward is
+  for. Human tests assess comprehension, agency, delight, fatigue and accessibility;
+  they do not optimize time-on-task.
+- Scenario simulations in `ECONOMY_LOOT_CRAFTING.md` cover expected/minimum/
+  maximum resources and finite-world depletion, while a human playtest proves the
+  actual 30–60 minute route. Neither substitute for the other.
+
+### Later constructive world projects
+
+Once that journey is complete, optional **world projects** can extend the
+Minecraft-like build fantasy without creating chores. A scanner relay, field lab,
+shelter, cargo beacon or observatory is a finite, player-chosen construction tied to
+a canonical world and an explicit receipt. It has a visible completed state and a
+specific reach/access/efficiency/expression purpose, but no unattended production,
+decay, fuel tax, daily task, raid pressure or penalty for leaving. Project objectives
+appear only when their construction action and result are genuinely available; they
+are never used as filler Charter goals.
+
+## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
+
+**The banked-landfall law is now STARTER-ONLY.** `chAccept` replays the persisted `landed` set
+through a charter's filter so "First footfall: Mercury", accepted while standing on Mercury,
+completes on the spot. That is right for the starter chain (a one-time story) and wrong for
+**weeklies**, which re-roll: stepping the clock forward a week, opening the board and accepting
+paid out from worlds visited long ago — measured at ~20.8 ☄ per clock step against a designed
+78 ☄ per real week. Weeklies (`id[0]==='w'`) now count only landings made while they are held.
+
+**`_chRoll` no longer runs on the boot tick.** CF1720-06 moved the `chWeek` repair out of
+`loadSave`, but `_chBadge()` → `_chAccepted()` → `_chRoll()` still fired during load for every
+`tutDone` save — evaluating the clamp against exactly the pre-NTP `Date.now()` the fix calls
+untrustworthy. The roll is now **armed** by the first real gesture (or 8 s), by which time the
+clock has settled.
+
+**The objective chip renders for a player with NO objective.** `renderChip` returned at
+`if(!g)` — no accepted charter and no outstanding Ascent goal — *above* the stall branch, so the
+one player who most needed a suggestion (50% of an external 1,000-session fleet, and 100% of its
+rage quits) was the only one who could never be given one. The stall suggestion now stands in for
+a missing goal rather than being gated behind one.
+
+**The quest log is live.** `renderQuestLog` had two call sites (the chip click, and `ascEvent`),
+so per-charter progress — the only thing the log adds over the chip — never refreshed. It now
+rides `_chBadge`, closes on Escape, and cannot strand on screen after the chip hides.
+
+## ⚠ v1.8.6 — the two fixes above each grew a tail
+
+**The chip lost the quest log exactly when a stalled player wanted it (CF1805-04).** The chip is
+the log's *only* handle, and it toggles the log only when `dataset.go` is falsy. CF1802-04 replaced
+`_nextBest()`'s last `go:null` return with `go:'cosmos'` — so **every** path now returns a truthy
+destination, and while the stall suggestion is showing the chip can only ever navigate.
+
+The mechanism is narrower than it first looks, and that narrowed the fix. The click handler
+*already* clears the stall (`_stall=0`), which would return the chip to its objective state where
+`dataset.go` is `''` and the handle works — but **nothing repainted the chip**, so it kept the
+suggestion's markup and kept routing forever. For a stalled player, progress events are precisely
+what is not happening, so nothing else was going to repaint it either. The fix is a deferred
+`_chBadge()` after the click settles. One-tap routing — CF1802-03's measured win — survives intact.
+
+**A forward clock still re-rolled the weekly slate (CF1805-07).** `_chArmed` correctly defers the
+roll past the boot tick, but nothing limited how *often* it can run afterward, and **any board
+render triggers it**. `_chRoll` clears every weekly `chProg` key and every weekly `chacc` entry
+when `wk > chWeek`, and `_chDoneOf` for a weekly is `(chProg[c.id]||0) >= c.n` — so deleting those
+keys makes **every already-completed weekly claimable again**, and `_chWeekly()` reseeds a fresh
+slate. Measured over 200 forward week-steps: every pool id recurs in 33–42% of weeks, at an average
+**77.5 ☄ per step** — the value the design intends per *real* week, arriving every one to three
+minutes.
+
+`_chRoll` now allows ~~one roll per 10 monotonic minutes~~ **one roll per page load** (plus one per
+10 monotonic minutes within a load — ⚠ **corrected in v1.8.7, see below;** the original wording here
+overstated what the code delivers). It is a rate limit, not a fix. The root cause is that an offline
+game cannot verify a wall clock; the same limit is why the harvest version of this exploit is open
+by decision. See ECONOMY_LOOT_CRAFTING.md — it is the one place this reasoning is written out.
+
+**Current v2 Starter refinement (2026-09-05):** `st-scan` must be accepted before a later
+explicit Discover Life Bioscan. That Bioscan's one receipt/CAS completes it, awards the authored
+15 current/lifetime Stardust and exact Earpiece, and honors one Charter. Earlier Surveys and
+Capture never backfill it. `bioscan-action.ts` and `starter-charters.ts` own the join; weekly
+lifecycle authority remains protected. The dated unavailable-st-scan records keep their
+historical meaning.
+
+## 1. Overview
+Three layers of directed play sit on one event bus:
+
+- **Chapters (mainline)** — `ASC_CHAPTERS`, an ordered 3-chapter campaign whose capstone in each chapter is a **ship system whose existence IS the ring unlock** (Jump Drive → Long-Range Array → Intergalactic Drive). Rides *pinned above* the charter board. New saves start **locked to Sol** (travel is gated, curiosity/looking never is). Internally still called "the Ascent" (`asc*` names, save fields `asc`/`ascp`); it is *presented* as "Chapters".
+- **Expedition Charters (side board)** — a hunt board on the left rail. **Starter charters** (5 core-trade chain + 5 Sol-tour chain) teach the trades and tour the home system; then a **weekly board** of 3 rotating charters, seeded identically for every explorer. Progressive reveal + accept-to-activate + gear rewards (below).
+- **Field Training tutorial** — `TUT_STEPS`, **21 entries, all of them counted**, with a focus-lockdown gate. The counter is rendered from the array itself (`(_tutStep+1) + ' / ' + TUT_STEPS.length`), so it cannot drift from the real length.
+
+  > ⚠ **Corrected 2026-07-30.** This line previously read "20 array entries, presented as **18 counted steps**, UI renders a literal `/18`, 2 non-counted intro/conditional cards — CLAUDE.md's '18-step' is correct." **Every clause of that was false**, and the last one vouched for a number CLAUDE.md does not contain (it says 21). There is no literal `/18` in the source; the ids are `welcome · find-earth · survey-tour · atlas-add · atlas-open · land · cache · specimen · card-tour · feed · breed · duel · hazard · heal · tray · search · sheet · forge · horizon · charter-first · finale` — twenty-one, none conditional. External round 8's own screenshots read *"Field Training 8 / 21"*, and its §3.1 argues from "twenty-one steps is a lot to ask", so the real number was sitting in evidence we had already read.
+  >
+  > Worth keeping as a caution: a doc that **cross-certifies another doc** ("CLAUDE.md's 18-step is correct") manufactures false confidence. Re-derive counts from the source, and prefer citing the expression that produces them over the number itself.
+
+One funnel: `gameEvent(type, detail)` (main.js ~L15309) fans every system event to the tutorial hook, `charterEvent`, and `ascEvent`.
+
+## 2. Rules & mechanics (flows + gating)
+
+### Chapters (`ascEvent`, ~L15270)
+- `ascStage()` (~L15235) reads the **built ship systems**, not a counter: `igdrive`⇒3, `array`⇒2, `jumpdrive`⇒1, else 0. `ascCh>=length`⇒3.
+- `ascAllows(w)` (~L15258) gates STAR/SYSTEM dives only — galaxy-scale sightseeing and browsing any galaxy is always free. Stage 0 = Sol only; stage 1 = Sol + Neighborhood slice (`ASC_RING_R = GR*0.25` around Sol); stage 2 = whole home galaxy; stage 3 = universe. Foreign-galaxy stars wait for the IG drive. Blocked travel calls `ascBlock()` → throttled toast with `ascHint()`.
+- **Progress banks forward:** `ascEvent` credits the current chapter *and all future chapters* (so out-of-order building, e.g. Array before the Ch2 conquest, isn't lost), but only the **current** chapter narrates. On completion, `while` loop closes every chapter the banked progress now covers, fires `cinematic()` + `playFanfare()` per chapter, emits `gameEvent('ascent-chapter', …)`.
+- Goals use `{id, ev, filt, n, t}`; a goal ticks when `ev===type` and `filt(detail)` passes. Mining ticks **once per pull** (auto-pulls included).
+
+### Charters — progressive reveal (`_chAvailable`, ~L14994)
+- Two chains in `CH_CHAINS`: `trades` and `tour`. `_chainNext(chain)` finds the first not-yet-`chDone` link and returns it **only if reachable** — the `_far0` law (`_far0Ids`, ~L14983) locks `st-conq` while `ascStage()===0` (conquest needs the stars). A locked chain shows `_chLockedNote()` ("⬆ build the ⚡ Jump Drive") instead of the link.
+- The board shows **only the next available link per chain** — completing one reveals the next.
+- **Weeklies gate behind the trades chain:** `_chWeekly()` charters only appear once `_tradesDone()` (all 5 `trades` links `chDone`). The Sol tour gates nothing (optional side income).
+
+### Charters — accept-to-activate (`chAccept`, ~L15035)
+- **`if(!tutDone) return;`** — the board is fully inert (accepts included) until Field Training ends.
+- A charter tracks **only once accepted** (`chacc` set, save field `chacc`). Cap enforced: `_chAccepted().length >= CH_CAP` ⇒ refused with a toast.
+- `chk` is the "already proven" test: a STATE charter whose deed is already done `_chComplete`s **on the spot at accept** (`proven=true`) — no lost credit, no silent banking. COUNT charters (no `chk`, or `n>1`) count from the moment of accept.
+- `charterEvent(type, detail)` (~L15047) increments `chProg[id]` for each accepted charter matching `ev`+`filt`; at `>=c.n` it calls `_chComplete`.
+- `_chComplete` (~L15022): starter ids (`s…`) go to `chDone` (permanent); others set `chProg[id]=c.n`. Awards `c.sd` stardust, bumps `stats.charters`, grants gear, toasts (and announces the weekly board opening the first time the trades finish).
+
+### Charter gear rewards (`_chGrant`, ~L15015 — the "S5 static phase")
+- A charter with an `item` field pays a **crafted piece by existing id** — deterministic, the same for every explorer (no loot roll yet). `_chGrant` adds one to `items`, auto-equips if the slot is empty, refreshes the cargo button.
+- Design intent (comment): the **quiet early pieces** outfit the early game (headlamp, magboots, meteor pendant, fieldlegs, earpiece); rigs/gloves/suits stay the Fabricator's moment. "Static/deterministic early → deeper loot later" is the stated trajectory; only the static phase is implemented.
+
+### Nudges (`nextStepGoal`/`_questNudge`, ~L15066)
+- Names the player's single next goal. Priority: **active Chapter goal → accepted charter → available (accept-me) charter → Prime Codex** (if `primeCount()<9`).
+- Silent during training (`!tutDone`) and while any listed modal is open. Never fires twice for the same goal key in a session (`_nudged` set). Login nudge at **14 s** after boot; idle nudge after **5 quiet minutes** (`5*6e4`), polled each 60 s.
+
+### Field Training (`TUT_STEPS`, ~L15315)
+- 21 steps (see §7). Each step: `{id, text(), spot?, allow?, acts?, btn?, when?, enter?, rev?, pick?}`.
+- **Focus lockdown** (`_tutGate`, ~L15391): only `TUT_ALWAYS` surfaces + the current step's `allow` list accept pointer/click/touch/wheel; everything else is `preventDefault`'d with a "nudge" flash. `_tutPanelSweep` closes panels the new step doesn't own, with a one-beat grace so the completing click's own panel still paints.
+- **Landing lesson** (`land`→`cache`, steps 6–7): press Land on Earth; a training cache grants 3 Earth beasts + 3 Earth flora on loan (`_tutGrant`); the Planetside vista *holds* until tapped (no auto-close), then yields to the Compendium.
+- **Forge lesson** (`forge`, step 18): the order loans ore (`cargo` gets Fe/Al/Si), player crafts an Iron Plate at the Shipyard. `finale` (`_tutCleanup`) returns the loaned cache/ore/plate and heals wounds — "nothing you lose in training follows you out".
+- Rigged rolls during training (`_tutRig`): feed `0.99`, breed `-1`, heal `0.95` — training never loses a roll.
+
+## 3. Key tables & numbers (REAL values)
+
+**`CH_CAP = 3`** (a full slate). Weekly rotation window = `Math.floor(Date.now()/6048e5)` (604 800 000 ms = 7 days).
+
+**Chapters** (`ASC_CHAPTERS`, ~L15203):
+| id | name | capstone item | unlock |
+|----|------|---------------|--------|
+| ch1 | Off the Rock | `jumpdrive` | Neighborhood stars |
+| ch2 | The Neighborhood | `array` | whole home galaxy |
+| ch3 | Beyond the Rim | `igdrive` | intergalactic frontier |
+
+`ASC_RING_R = GR*0.25`. Sol worlds `_SOL_SEEDS = {131..138}` (Mercury..Neptune; Earth=133).
+
+**Starter charters** (`CHARTER_STARTERS`, ~L14909) — `sd` = stardust reward:
+| id | ev / filt | n | sd | gear | proof (`chk`) |
+|----|-----------|---|----|----|----|
+| st-land | landfall | 1 | 10 | — | any surfSeen ≠133 |
+| st-mine | mined | 1 | 15 | — | `stats.mines>0` |
+| st-scan | bioscan | 1 | 15 | `earpiece` | count-only |
+| st-scout | scout-set | 1 | 15 | — | `scoutId` set |
+| st-conq | conquest | 1 | 25 | — | any conquered ≠133 |
+| st-mercury | landfall seed131 | 1 | 10 | `headlamp` | surfSeen 131 |
+| st-mars | landfall seed134 | 1 | 10 | `magboots` | surfSeen 134 |
+| st-giants | mined seed135/136 | 5 | 15 | `meteor` | count-only |
+| st-ice | landfall seed137/138 | 1 | 10 | `fieldlegs` | surfSeen 137/138 |
+| st-comp | crafted cat=comp | 1 | 15 | — | any comp owned |
+
+**Chains** (`CH_CHAINS`, ~L14938): `trades = [st-land, st-mine, st-scan, st-scout, st-conq]`; `tour = [st-mercury, st-mars, st-giants, st-ice, st-comp]`.
+
+**Weekly pool** (`CHARTER_POOL`, ~L14944) — 8 entries, 3 drawn/week:
+| id | ev / filt | n | sd |
+|----|-----------|---|----|
+| wk-land | landfall | 3 | 20 |
+| wk-mine | mined (first) | 3 | 25 |
+| wk-scan | bioscan | 3 | 25 |
+| wk-sp | species | 5 | 25 |
+| wk-conq | conquest | 1 | 30 |
+| wk-feed | fed (ok) | 3 | 20 |
+| wk-breed | bred (ok) | 1 | 30 |
+| wk-hostile | landfall venus/lava/gas | 1 | 35 |
+
+Weekly draw: `mulberry32(hashInt(0xC4A7, chWeek, 7))` splices 3 from the pool (deterministic per calendar week — same board universe-wide).
+
+## 4. Data / save fields
+- **`chacc`** — array of accepted incomplete charter ids (`Set`). Loaded ids validated against both decks and skipped if already `chDone`. Absent ⇒ nothing accepted.
+- `chs` — completed starter ids (`chDone`, permanent; validated against `CHARTER_STARTERS`).
+- `chw` — rotation week (`chWeek`; default −1). On a new week `_chRoll` clears weekly `chProg` keys and expires last week's accepted weeklies.
+- `chp` — `chProg` map (id→count; keys <24 chars, clamped 0..999; weekly keys reset on rollover).
+- `charters` — lifetime honored count (`stats.charters`).
+- **Chapters:** `asc` = `ascCh` chapter index (clamped 0..`ASC_CHAPTERS.length`); `ascp` = `ascProg` goal map.
+- **Tutorial:** `tut` = `tutDone` (save ~L10095/10270). **Absent ⇒ treated as done** ("never force training on a held/edited save"). Fresh start sets `tutDone=false`, `ascCh=0`, clears charters.
+- **Current v2 Training compatibility:** optional `tsnap` while incomplete is
+  either exact current `{view}`, exact legacy
+  `{st,ps,ac,es,c,ca,cx,it,eq,ea,e}`, or protected bounded unknown evidence.
+  Optional nested-version `ever.v:1` carries checkpoint-owned cumulative
+  records without changing outer `v:4`; neither field grants a quest outcome.
+
+## 5. Determinism
+Quests are mostly app-layer, but the parts that must be identical cross-device are:
+- **Weekly board** — `mulberry32(hashInt(0xC4A7, chWeek, 7))`, keyed on the *calendar week*, not per-device state. Every explorer in the universe sees the same 3 charters. `Date.now()` is used **only** to derive the week bucket (`_chNow`), an app-layer clock like mining cooldowns — the pure domain modules stay clean (no `Math.random`/`Date.now` in generation).
+- **Chapter goals & charter filters** derive from world seeds (`planetSeed`, `x.cat`, `x.id`), which are themselves seed-generated, so "conquer a gas giant" etc. resolves identically everywhere.
+- Cinematics/toasts are cosmetic and don't feed generation.
+
+## 6. Code anchors (functions + ~line numbers)
+- `CHARTER_STARTERS` L14909 · `CH_CHAINS` L14938 · `CH_CAP` L14942 · `chacc` L14943 · `CHARTER_POOL` L14944 · `chDone/chWeek/chProg` L14957–14959
+- `_chRoll` L14962 · `_chWeekly` L14970 · `_chById` L14976 · `_chDoneOf` L14977 · `_far0Ids` L14983 · `_tradesDone` L14984 · `_chainNext` L14985 · `_chLockedNote` L14990 · `_chAvailable` L14994 · `_chAccepted` L15004
+- `_chGrant` (gear) L15015 · `_chComplete` L15022 · `chAccept` L15035 · `charterEvent` L15047 · `renderCharters` L15122
+- `nextStepGoal` L15066 · `_questNudge` L15099 (login 14 s L15113, idle 5 min L15114)
+- `ASC_CHAPTERS` L15203 · `ascStage` L15235 · `ascHint`/`ascBlock` L15243/15250 · `ascAllows` L15258 · `_ascActive` L15269 · `ascEvent` L15270 · `gameEvent` L15309
+- `TUT_STEPS` L15315 · focus gate `_tutGate` L15391 · `_tutShow` L15413 · `_tutAdvance` L15470 · `_tutPanelSweep` L15490
+- Save write `chs/chw/chp/chacc` L10067, `asc/ascp` L10083, `tut` L10095 · load L10230–10238, L10178–10179, L10270
+
+## 7. Open questions / pending
+- ~~**Step-count discrepancy (real):**~~ **RESOLVED 2026-07-30.** `TUT_STEPS` contains **21** steps; the header renders `N / TUT_STEPS.length`, so the displayed count is always the real one and there is nothing to reconcile in code. Every stale label has been corrected (this doc, `celestial-frontier-codebase-reference.md`, `README.md`, `UI_PRESENTATION.md`). CLAUDE.md and the smoke harness already said 21. **The discrepancy this entry described was between two documents, never between a document and the code** — which is why it sat open long enough to be restated as "18", then "20", then cross-certified by a sibling doc. Counts belong in exactly one place: the expression that computes them.
+- **Gear rewards are static-only:** `_chGrant` pays fixed existing item ids. The "deeper loot later" phase (rolled/tiered charter loot) is described in comments but not implemented.
+- **Sol-tour gear:** `earpiece`, `headlamp`, `magboots`, `meteor`, `fieldlegs` must exist in `ITEM_BY`/`ITEMS` for `_chGrant` to pay out; verify none were renamed in a later item pass.
+- **Weekly expiry UX:** accepted weeklies silently expire at rollover (`_chRoll`); no in-progress warning. Intentional but worth noting for players mid-charter at week's end.
+
+## 2026-07-25 addition — TRAINING GRADUATION = THE FIRST ACCEPT (Dakk's order of operations)
+Field training is now **21 steps** and ends exactly as specified: zoom → find Earth → add to
+Atlas → land → catalogue/tame → feed → breed → duel → heal → tray → search → sheet → forge →
+Prime Codex/Guardians teach → **`charter-first`** → finale.
+
+**`charter-first` (step 20)**: the recruit opens the 📜 Charters board and presses **Accept** on
+their first contract THEMSELVES. Nothing is ever auto-accepted. Mechanics:
+- `chAccept` is inert during training EXCEPT this step (checked against the live step id);
+- the "already proven" instant-complete path is disabled until `tutDone` — a deed can never
+  complete off sandbox training stats;
+- accepting fires `gameEvent('chaccept')`, which is the step's advance gate;
+- the accepted charter **persists through `_tutCleanup`** (cleanup restores stats/codex/cargo but
+  never touches `chacc`) — the quest line carries the graduate out of school.
+
+**Finale (step 21)**: cleanup runs, and the card closes on: *"If you ever need help, tap the
+? Guide button — and the 🎓 briefings inside it walk every advanced system."*
+
+Smoke drives the full 21 steps and asserts: board-open alone does NOT advance; nothing
+auto-accepted (chacc empty before the click); the recruit's accept advances; exactly ONE
+charter accepted at graduation. (419 checks total.)
+
+**2026-07-25 review hardening**: (1) *Restart self-heal* — `chacc` deliberately survives both the
+save and `_tutCleanup`, so a recruit who accepted at the graduation lesson but quit before the
+finale restarts training already holding a contract while `_chAvailable` hides accepted heads;
+the `charter-first` step's `enter` now detects `chacc.size` and re-emits `chaccept` — the deed
+already done is honored and the step advances instead of deadlocking. (2) *No forced double-accept* —
+`_tutFinish`'s v1.5.2 `chacc.add('st-land')` now runs ONLY when `chacc` is empty (the Skip path,
+which never saw the lesson); a graduate keeps exactly the contract they chose, and the closing
+notification matches whichever path ran.
+
+---
+
+## ⚠ v1.8.7 — round 9: the repaint had a hole, and the rate-limit note was overstated
+
+**CF1806-04 — the chip vanished for the one player it exists for.** v1.8.6's repaint fixed the
+stuck-router bug but ran with `_stall` already cleared to `0`, and the suggestion was still gated
+behind `_stall >= 10`:
+
+```js
+const _nbEarly = (!g && _stall>=10) ? _nextBest() : null;   /* v1.8.6 */
+if(!g && !_nbEarly){ /* hides the chip */ }
+```
+
+So for a player with **no objective at all**, the repaint landed in the early-out and the chip
+*disappeared*, where before it had at least stayed on screen. It returned only after ten more
+pointer events. That is precisely the population CF1802-03 identified as most likely to quit.
+
+An objective-less player now gets a suggestion **unconditionally** (`const _nbEarly = (!g) ?
+_nextBest() : null`). This is what CF1802-03 said it did — *"the stall suggestion stands in for a
+missing goal rather than being gated behind one"* — it was still half-gated. There is nothing to
+nag over: `g` is null only when no charter is accepted **and** no chapter goal is outstanding,
+which is genuinely adrift rather than merely idle.
+
+**CF1806-03 — the weekly rate-limit costs a reload, not ten minutes.** `_chRollMono` is a plain
+module `let`, so it resets on every page load and the first roll of each load always passes. The
+real bound is **one roll per page load** (plus one per 10 monotonic minutes *within* a load).
+Round 8's comment claimed "one roll per 10 monotonic minutes", which overstated it; the comment
+now states the true bound.
+
+It is not fixable by persisting the stamp: any wall-clock minimum written to the save is satisfied
+by the same forward wind that triggers the roll, and a monotonic stamp is meaningless across a
+reload because `perfTime()` restarts at zero. **A per-session limit cannot bind an attacker who
+controls the session** — whoever can wind the device clock can also press F5. Same root cause as
+CF1805-05 (harvest), open by decision. See ECONOMY_LOOT_CRAFTING.md.

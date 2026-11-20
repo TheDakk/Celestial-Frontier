@@ -1,0 +1,430 @@
+# Celestial Frontier — World & Universe Generation
+
+## On-demand landfall requirement — clarified 2026-09-08
+
+Dakk requires the final cohesive landfall image to be produced on demand as a player visits
+worlds. The possible space may contain millions of worlds; it does not imply installing a
+separate prepainted image for each. Existing seeded world/roster generation and the one prepared
+Earth still do not yet implement that approved-quality scene generator.
+
+Dakk asks to investigate generation locally as part of the game and requires no separate AI
+software installation for players. Local generation could manage model files within the game;
+an online image API could also provide a seamless player flow without a model download. These
+are different runtime choices. No model, browser/native integration or paid service is selected.
+The built-in Codex tool created the current artwork during authoring; it is not an embedded game
+generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
+generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Dakk now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
+capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
+All build/model/save/update bytes still count toward the total footprint. No cache manager, model
+budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md). The next bounded proof should create one scene on demand from an existing canonical
+world and full roster before adding a larger prepainted catalogue. Preserve generation draw order,
+biome mapping, complete organism identities, saves, clocks and current CF1/CFB formats.
+
+## Requested time-aware art and sharing — source reviewed 2026-09-08
+
+Dakk approves the full landfall painting direction and requests procedural coverage, planetary
+rotation/daylight and seasons, plus shareable discoveries. Current source still chooses a fixed
+seeded day/dusk/night appearance; cosmetic orbital motion is not a physical year/season authority.
+CF1 native Share/Follow carries a location, not the sender's exact time/roster/art snapshot.
+CFB/CFB2 remain domain codecs without native V2 creature share/import wiring. Nothing here changes
+those formats, world/genome generation, current biome authority, saves or gameplay clock rules.
+
+[TIME_AND_SHARING.md](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md) records actual
+owners and the proposed versioned appearance recipe: exact world/place, full organism identities,
+art catalogue, explicit clock coordinate, supported rotation/axis/orbit/light/season conditions
+and camera. A view snapshot would be separate from a CF1 location or ownership transfer. Keep
+visual conditions separate from the protected active-play economy and committed ecology epoch;
+wall-clock manipulation must not award yield/recovery or rewrite organisms. Seasons require an
+explicit approximation of tilt, latitude and orbital phase; not all worlds have four Earth seasons.
+This is a recorded design requirement, not implemented climate/physics or all-world painted output.
+
+
+**STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
+match the current local candidate boundary as of 2026-08-29.
+**Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
+generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
+own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+
+> **2026-08-28 canonical presentation-envelope correction:** `@cf/domain-biome-profile` owns the
+> dependency-neutral exact 43-key `BiomeProfileV1` authority. Schema
+> `cf.domain.biome-profile.v1` and digest `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind every
+> authored signature, fauna/flora-family, hazard and weather record. `world-roster.ts` selects that
+> profile once from the already-generated world and publishes schema/digest/key plus one environment
+> fingerprint over world, ecology epoch, biosphere and climate. Vista requests/workers and the pure
+> current-world distant-ecology plan consume that same presentation identity. One strict app join
+> now permits an explicit generic ecology signal only after the exact inhabited world's visible
+> biosphere lead agrees; it reveals no species, spends no Yield, grants nothing and writes no save.
+> This changes no generation, RNG, biome selection, capture candidate or roster row. The
+> gameplay-affecting D-9e
+> biome→fauna filter remains decision-gated and unfixed.
+>
+> **D-LOC:** generated non-Earth civilization labels use pure ASCII comma grouping through the
+> hand-owned Ecology facade. The lifted generator, numeric year, exact RNG chronology and all other
+> fields remain unchanged; Earth retains authored `Year 2026 CE`.
+
+> **2026-08-29 Arc 6 canonical-world consumer:** landed combat does not add a generator or alter a
+> world record. It reuses the registered full-CF1 galaxy/star/planet identity, complete roster and
+> ecology epoch to select the already-deterministic strongest fauna, Apex Guardian or eligible
+> Elemental Titan. One verified settlement may then persist conquest, Guardian/Titan acquisition
+> and Prime Signature provenance against that exact world. Structural lookalikes, same-seed leaves
+> under a different parent, stale epochs and unregistered encounters refuse; generation output,
+> encounter identity, biome selection and RNG chronology remain unchanged.
+
+> **2026-08-26 D-HAZE ownership correction — current local candidate:** the exact
+> `galaxyHaze(seed, profile)` canvas generator and its cache now belong to the `GalaxyArt [app]`
+> render module, not the `WorldGen [domain]` generator. The root source/HTML, generated verbatim
+> lifts, declarations, `@cf/art` export and app import all agree; the domain lift/declaration contains
+> neither the DOM-dependent painter nor its cache. The lifter now derives `[app]` versus `[domain]`
+> from one exact source module banner and fails closed on missing, wrong or duplicate ownership.
+>
+> This is an ownership correction, not a universe redesign. The complete haze generator/cache block
+> remains byte-identical across source, built HTML and the art lift, so its seeded draws, canvas
+> output, keys and call sites are unchanged; world generation output and the determinism fingerprint
+> are not re-pinned. The source condition deletes the oldest key only when the pre-insert size is
+> already greater than three, so `hazeCache` is an effective FIFO of **four** canvases—not three.
+> Focused source/parity/mutation gates cover this relocation; final real-browser evidence for the
+> current combined candidate remains pending.
+
+> **2026-08-26 Arc 3/4 current-world overlay (2026-08-25 foundation):**
+> `@cf/domain-opportunity` now projects exact
+> source-proven CF1 world and star opportunities, preserves raw tiers 0–14 separately from the
+> display rarity ladder, and exposes finite world deposits, stellar skim material/hazard and
+> worked-out/active-play cursor facts. The player can Mine and Skim; the Engineering panel displays
+> six research rows but only Deep Scanners is purchasable. Aligned current ownership drives a pure
+> read-only projector that adds one **Mineral veins** row to an eligible exact proven lifeless
+> non-Earth orbital Survey card without mutating generation. It preserves ordinary-deposit order
+> and marks the separate biome vein with ✦. Living worlds, Earth, cosmic/exceptional veins, grades,
+> reserves, progress and mining
+> remain grounded. All 62 fixed recipes are listed; only connected-effect outputs
+> with exact costs/preconditions and capacity/revision headroom are actionable. A supported slotted
+> recipe paid entirely from exceptional direct materials receives one deterministic exact-item
+> Pureforged modifier; disconnected-effect rows remain unavailable. Eligible Engineering
+> actions use one receipt-bearing F3/F4 transaction.
+>
+> Arc 4 separately consumes the full epoch-bound canonical roster—never the eight-row Planetside
+> preview—to build a source-proven acquisition snapshot and pure capture plan. Ownership-v1 codecs,
+> 18 namespaces, boot/replacement coherence and canonical owner identities feed the native Survey
+> Tame/Scavenge/Sample actions. Presentation and settlement bind the same CF1 address, planet
+> ordinal, epoch and full-roster fingerprint; the player sees preview/full counts and an explicit
+> uniform eligible-pool policy rather than a targeted species promise. Hit/miss spending and
+> storage/stale/publication/reload convergence are locally browser-proven. This does not change any
+> world-generation value or make the broader anomaly/blueprint/lore/project manifest live. Arc 6
+> now consumes the same registered world for bounded combat/Guardian/Prime settlement as described
+> above; fresh exact-source browser evidence for the later local changes and HUMAN capture/combat
+> review remain open.
+
+> **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the 2026-08-25
+> overlay does not supersede it):** Public and
+> persisted galaxy/star/planet coordinates are candidates, not generated-world
+> identity. The scene resolver searches the production galaxy cells, then both
+> coarse and fine star layers beneath the proven galaxy, then the exact
+> `systemFor(star).planets` source list. Every tier must have one unambiguous
+> source match before it becomes a deeply frozen `ProvenGalaxy`, `ProvenStar`
+> or `ProvenPlanet`; structural copies are not trusted. Coordinates are bounded
+> to ±10,000,000 at both strict-CF1 parsing and the public resolver boundary.
+>
+> Planet identity includes its zero-based ordinal in the unsorted source list.
+> `systemScene` captures that ordinal **before** sorting planets by orbit, so a
+> presentation reorder cannot retarget Survey, Land, Atlas, Share, diagnostics
+> or a canonical world key. The compatibility CF1/save payload still carries a
+> planet seed only; resolution therefore rejects a missing or duplicate-seed
+> leaf rather than guessing an ordinal. These rules change no generator output,
+> RNG draw order or generator cache key.
+>
+> Scene composition is also a copy boundary over those generator caches.
+> `universeGalaxies()` copies each galaxy's scalar fields and clones its nested
+> collision `bridge` into a fresh frozen `{x2,y2}` value; presentation mutation
+> therefore cannot rewrite the memoized `galaxiesInCell()` record or a later
+> composition. The focused mutation control proves distinct identity, rejected
+> mutation, unchanged source and unchanged subsequent output. This closes the
+> bounded SCN-7 alias without changing or freezing the lifted generator cache.
+> By contrast, `systemScene.P` deliberately preserves the generator's exact
+> memoized planet-parameter identity as read-only presentation data. Planet
+> actions never promote that alias: they copy `{seed,ordinal}` and re-prove the
+> canonical parent hierarchy before authority or mutation.
+>
+> This is a runtime navigation-provenance seam, not a persisted ownership
+> theorem. It does not authorize a mission, loot, Guardian, project or discovery
+> writer, migrate a local ledger, implement the World Opportunity Manifest, or
+> close a rubric Gate. Future receipts still need their own versioned canonical
+> target/identity and exact-once persistence contract.
+
+> **2026-08-11 v2 executable-contract correction:** This batch changes no
+> generated values. It makes the hand-written declarations tell the truth:
+> `PlanetGen.surfaceColor` requires the fBm callback and returns an RGB tuple;
+> `WorldGen.starsInCell` returns `{stars, deco}` rather than an array; and the
+> SurveyPhrases atmosphere/climate/water parameter lists match the lifted
+> functions. Parity tests execute those real result shapes. The complete CF1
+> galaxy-at-cell and star-at-coordinate canonical hierarchy is still OPEN; a
+> type correction is not proof of that routing theorem.
+
+> **2026-08-15 v2 WorldGen contract correction:** This batch changes no
+> generated value, cache key, call order, or lifted function body.
+> `galaxiesInCell(cx, cy)` is now typed as the mutable galaxy array the runtime
+> actually returns, including required own numeric `web` density metadata.
+> `supernovaSites(galaxySeed, epoch)` names its second argument as the
+> deterministic cosmic-time key—not a requested site count—and exposes the
+> exact remnant and protostar-birth result used by the app. TypeScript still
+> accepts any `number`; at that boundary nominal epoch ownership remained future F4 work. The
+> current app now supplies the explicit epoch owner recorded in the 2026-08-25 Arc 3/4 overlay.
+>
+> Importing `@cf/domain-worldgen` is safe, but its transitional lifted seam is
+> not standalone for a first uncached branch that generates an ordinary galaxy,
+> merger, or dwarf: `GAL_SPRITES` must already be installed through the current
+> descriptors capture hook or a future real art owner. Empty, special-only, and
+> cached calls may not read that binding. The current app installs the hook
+> before WorldGen use. This documents the dependency; it does not remove it.
+
+> **2026-08-13 cross-system review (historical pre-F2/Arc-3 boundary):** The approved ship/loot/companion/audio arc in
+> `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` changes no generated world values.
+> Companion missions, loot provenance and Guardian receipts must reference the eventual
+> canonical galaxy → star → planet identity rather than a display name or partial seed.
+> Until that hierarchy proof closes, they remain unavailable in v2. Biome/hazard tags may
+> select transparent reward and audio palettes, but may not consume or reorder world RNG.
+
+## 0. v2 world-opportunity contract (resource subset implemented; broader manifest planned)
+
+The universe should give a player a reason to wonder about a destination before it
+becomes a checklist. Arc 3 implements the finite resource/star-skimming subset as pure,
+versioned projections of canonical galaxy → star → planet identity. The broader
+**World Opportunity Manifest** remains the contract for other families. It is not a
+replacement for `planetParams`, `biomeFor`, the live survey, or a new promise that
+every world contains every reward type.
+
+For each reachable world, the manifest may truthfully advertise one or more of these
+opportunity families when the owning systems exist: finite **resources**; a
+**creature**/biosphere lead; an **anomaly**; a **blueprint** lead; a **lore** or
+Chronicle discovery; a readable **hazard**; or a **Guardian** lead. A meaningful
+world normally offers at least one legible reason to investigate, while rarity,
+hazards, access gates and player ownership determine which opportunities are actually
+actionable. A barren world may be valuable for a finite deposit, a route, a view or
+a story; it must not be padded with seven unrelated rewards merely to satisfy a
+template.
+
+The projection has four non-negotiable boundaries:
+
+1. **Canonical identity:** a receipt, project, mission target or discovery uses
+   the full galaxy coordinates/seed, star coordinates/seed and source-resolved
+   planet identity—not a display name, raw biome key or partial seed. F2 now
+   proves that hierarchy for runtime navigation, including the planet's source
+   ordinal, but it does not persist receipt authority. No new ownership writer
+   may treat a compatibility route or runtime navigation object as its migration,
+   transaction or exact-once receipt contract.
+2. **Independent determinism:** any future roll forks from a new named salt and
+   manifest version; it cannot consume an existing planet/system/biome stream,
+   change selection order, or reroll because a card is reopened, a cache evicts or
+   a result is claimed.
+3. **Honest knowledge:** a survey may show broad, equipment-appropriate signals
+   and visible preparation requirements, but cannot leak an unrevealed exact
+   creature, item roll, capture outcome, post-landing rarity, hidden reward or
+   Guardian result. A lead is a lead, not a false guarantee.
+4. **One owner per outcome:** the manifest points toward an action; it does not
+   grant Cargo, a catalogue discovery, a companion, a blueprint, loot or conquest
+   settlement. The corresponding landing/capture/craft/combat receipt owns that
+   mutation exactly once.
+
+`BIOME_ATLAS.md` supplies compatibility/presentation vocabulary, and
+`ECONOMY_LOOT_CRAFTING.md` owns sources, sinks and optional world projects. A later
+project site may be an opportunity, but a scanner relay, lab, shelter, cargo beacon
+or observatory must retain the no-idle-income/no-maintenance boundary there. The
+first 30–60 minute journey gate in `QUESTS_AND_CHAPTERS.md` must traverse real
+manifest → action → receipt links before this model is called playable.
+
+## 1. Overview
+
+The universe is **procedural, infinite, and cell-based**. Nothing is stored — every galaxy, star, planet and biome is *recomputed from a seed* the instant it scrolls into view, then FIFO-cached. Two players on two devices who fly to the same coordinates see the byte-identical world, because every roll flows through the same three seeded primitives (`mulberry32`, `hashInt`, `cellRng`) and never through `Math.random()` / `Date.now()`.
+
+The world is built in nested layers, each addressed by an integer grid cell and seeded so a cell can be generated in isolation:
+
+- **Intergalactic space** — `UCELL`-sized (400 u) cells hold galaxies, placed on a cosmic-web density field.
+- **A galaxy** — a spiral profile (arms, wind, hue) with its own `GCELL`-sized (42 u) star cells and a finer `FCELL` (14 u) layer that resolves as you zoom.
+- **A star system** — generated on entry from the star's seed: a stellar class, 0–N planets on widening orbits, plus belts, comets, dwarfs, moons, a habitable zone.
+- **A planet** — an archetype (`planetParams`) that fixes type, size, moons, rings, hue.
+- **The survey layer** — `climateBand` + `biomeFor` read the planet against its orbit/star to attach a climate band and a biome, driving the card text, the wildlife roster, and the landing vista.
+
+One region is hand-anchored: the **home galaxy** (Milky Way, seed `999`) always contains **Sol** (seed `424242`), a hand-authored 8-planet system with **Earth** (seed `133`) as the settled cradle.
+
+## 2. Generation hierarchy & rules (galaxy → system → planet → biome/climate)
+
+### 2.1 Galaxies — `galaxiesInCell(cx,cy)` (~928)
+- Cell RNG: `cellRng(1, cx, cy)`. Density comes from a shared cosmic-web noise field `UNOISE = makeNoise(8181)`: `web = clamp((UNOISE(cx·0.11, cy·0.11, 4) − 0.34)/0.42, 0, 1)`. Galaxies cluster on filaments; voids stay dark.
+- The returned value is the memoized mutable galaxy array with an own finite `web` property clamped to `[0,1]`; empty and special-only cells carry that metadata too. It is density/presentation data, not canonical identity.
+- Population: `n=1` if `r() < 0.05 + web·0.85`; +1 more if `r()<web·0.45`; +1 more if `r()<web·0.18` (0–3 primaries per cell).
+- Each galaxy gets a random position inside the cell, `size 26–96`, a sprite index, tilt, rotation, and `seed = hashInt(2, cx·7+i, cy·13−i)`.
+- Extras (all seeded rolls): interacting merger pairs (`r()<0.045`), satellite dwarfs for big galaxies (`size>62 && r()<0.7`), rare quasars/blazars (`~0.012·web`), radio galaxies (`~0.010·web`).
+- **Home injection:** the cell containing `HOME_POS {x:90,y:-60}` always appends the fixed home galaxy `{size:78, seed:999, home:true}` — this is deterministic placement, not a roll.
+
+### 2.2 Inside a galaxy — profile, stars, deep-sky — `galaxyProfile` / `starsInCell` / `fineStarsInCell` (~992, ~1148, ~1118)
+- `galaxyProfile(seed)`: `arms = 2 or 3` (`r()<0.35` ⇒ 3), `wind = 0.22–0.29`, `hue` picked from `[215,195,45,355,265]`.
+- `starsInCell(gseed, prof, cx, cy)` (GCELL=42): a logarithmic-spiral density model. For a cell at radius `rad` from the galactic center it computes an arm-phase, an `armBoost` gaussian, and `dens = e^(−rad/130)·3.2 + 0.22 + armBoost·1.25·e^(−rad/850)`, then places `floor(dens · r() · 4.1)` stars. Each star's `seed = hashInt(gseed^0xabc, cx·31+i, cy·17+i·3)` and its color/size come from `starClass(seed)`.
+- **Core void:** a supermassive black hole clears the center — stars with `cd<34` are dropped, and `cd<85` thins probabilistically. Same math in the fine layer (`fineStarsInCell`, FCELL=14, `gseed^0x9d2c`), so zooming in resolves haze into the *same* stars.
+- Deep-sky deco (nebulae along arms, globular clusters in the `GR<rad<GR·1.7` halo, rogue planets, remnants) are seeded rolls off the same cell RNG. `GR = 1200` is the galactic disk radius.
+- **Sol injection:** the home galaxy's cell containing `SOL_POS {x:560,y:170}` always appends the Sol star (`seed 424242`, `sol:true`).
+- Two epoch-anchored systems layer on top: `galaxyWormhole(seed)` (a wormhole hides in ~6% of galaxies) and `supernovaSites(gseed, epoch)` (1–3 fresh remnants + newborn protostars per cosmic epoch — deterministic per epoch, so the galaxy *ages* identically for everyone).
+- `supernovaSites` cache-keys the epoch and returns 1–3 sites, each with remnant kind `NS`, `shell`, or `BH` and 1–3 deterministic protostar births. The argument is never a requested output count. This type contract neither installs the live epoch bridge nor proves CF1 hierarchy canonicalization.
+
+### 2.3 Star class — `starClass(seed)` (~866)
+A single roll `r()` off `mulberry32(seed ^ 0x9e37)` maps to a stellar type (Sol is forced to class G). Governs color, drawn radius `r`, planet count, and habitable-zone distance:
+
+| roll < | kind | meaning | drawn r |
+|---|---|---|---|
+| 0.08 | BD | brown dwarf | 9 |
+| 0.50 | M | red dwarf (most common) | 16 |
+| 0.63 | K | orange dwarf | 22 |
+| 0.76 | G | sun-like yellow | 26 |
+| 0.84 | A | white | 34 |
+| 0.875 | B | blue giant | 46 |
+| 0.90 | PROTO | protostar (disk, no planets) | 18 |
+| 0.935 | RG | red giant | 62 |
+| 0.95 | SG | red supergiant | 80 |
+| 0.968 | WD | white dwarf | 7 |
+| 0.982 | NS | neutron star / pulsar | 5 |
+| 0.989 | MAG | magnetar | 5 |
+| else | BH | stellar-mass black hole | 10 |
+
+### 2.4 Star system — `systemFor(starSeed)` → `_systemFor` (~1216)
+Cached (`_sysCache`, cap 240). Sol short-circuits to the hand-authored system. Otherwise, from `r = mulberry32(starSeed)`:
+- **Companions:** main-sequence stars (`MKGAB`) are binary with `r()<0.24`, and those trinary with a further `r()<0.22`.
+- **Planet count & first orbit** depend on class: compact remnants (BH/NS/MAG) get `floor(r()·2)`, WD `floor(r()·3)`, PROTO `0` (disk), BD `floor(r()·3)`, giants (RG/SG) `1+floor(r()·4)`, ordinary stars `floor(r()·7) + (M?0:1)`.
+- **Orbits widen outward:** each planet adds `26 + r()·32` to `orb`; generation stops at `orb > SYS_R−14` (`SYS_R = 320`). Each planet: `name = properName(seed,2)`, `seed = hashInt(starSeed, i·101+7, i·53+3)`, `P = planetParams(seed)`.
+- **System furniture** (seeded rolls, in order — order matters for determinism): asteroid belt between two orbits (`r()<0.4`), comets on stretched ellipses (`r()<0.55`), a Kuiper ring (`r()<0.5`), dwarf planets (`r()<0.45`), a rare 'Oumuamua-style interstellar visitor (`r()<0.16`).
+- **Habitable zone:** `HZB` table keyed by class `{BD:24,M:42,K:72,G:108,A:158,B:225,RG:235,SG:255}`; if it fits, `sys.hz = [HZB·0.82, min(HZB·1.32, SYS_R−6)]`. This is what `climateBand` reads.
+
+### 2.5 Planet archetype — `planetParams(seed)` (~187)
+From `r = mulberry32(seed)`, one roll picks the **type** by fixed weights:
+
+| roll < | type | share |
+|---|---|---|
+| 0.30 | gas | 30% |
+| 0.45 | rocky | 15% |
+| 0.60 | desert | 15% |
+| 0.72 | ice | 12% |
+| 0.82 | terran | 10% |
+| 0.90 | ocean | 8% |
+| 0.95 | venus | 5% |
+| else | lava | 5% |
+
+Then rings (`r()<0.16`, re-rolled for gas to `r()<0.35`), moons, and per-family color params. Gas giants get a banded `hue` family, an optional Great-Red-Spot (`spot`), `sizeMul 1.7–2.5`. Solid worlds get `hue 0–360`, `sizeMul 0.7–1.3`, `seaHue`, `landHue`, `iceAmt`. **Moon count is re-derived** from size (see §6). `surfaceColor` (~238) later synthesizes the actual pixel surface from `type`, `hue`, fBm noise, and the card facts.
+
+### 2.6 Climate band — `climateBand(P, sys, orb)` (~1356)
+Attaches one of `temperate | hot | cold | frozen`, in priority order:
+1. **Earth (`P.seed===133`) is always `temperate`** (hard anchor).
+2. If the star has an HZ: `orb < hz[0]·0.92` ⇒ `hot`; `orb > hz[1]·1.12` ⇒ `cold`; else `temperate`.
+3. No HZ + dead/exotic star (BH/NS/WD/MAG/PROTO) ⇒ `frozen`; giant (RG/SG) ⇒ `hot`.
+4. Type fallback: lava/venus ⇒ `hot`; ice ⇒ `frozen`; else `cold`.
+
+The band drives every survey phrase (`atmosphereText`, `climateText`, `waterText`, ~1317–1349) and, crucially, filters the biome pool.
+
+### 2.7 Biome — `biomeFor(P, band)` (~10824)
+A pure layer *inside* each of the 8 types, seeded from its **own** hash stream so it can never change a world's type or perturb the determinism fingerprint:
+- **Earth returns `null`** — home is never re-labeled.
+- Candidates = `BIOME_SETS[P.type]` filtered to those whose `bands` include the current band (`frozen` reads as `cold`); if none qualify, the full set is used.
+- Weighted pick via `r = mulberry32(hashInt(P.seed, 0xB10E, 7))`. Rare biomes (`rare:1`) carry tiny weights, so wonders stay wonders.
+- The chosen biome supplies the card's Biome flavor line, its `land` % (feeds the landing/descent ladder, `descentTierFromPct` ~10899), and the vista's scene key.
+
+### 2.7a The landing roll — `biomeForLanding(P, band, salt)`
+Distinct from the anchor biome above, this rolls the **touch-down region** you actually descend into, `%`-weighted by the world's `biomeComposition`, and is now **re-rolled PER LANDING** via a salt of `epoch*997 + stats.landings` (was per-20-min-epoch only, so repeat descents in the same epoch always looked identical).
+- **EARTH (seed 133)** was previously special-cased OUT of this roll (always the same vista); it now rolls its OWN real-surface composition `_EARTH_LANDING` (keys resolved from `BIOME_SETS`): **~71% water** (opensea 58 / coral 4 / archipelago 5 / stormsea 3 / volcisle 1) and **~29% land** (temperate 7 / jungle 4.5 / savanna 4.5 / tundra 4 / saltflat 2 / karst 2 / marsh 1.5 / swamp 1.5 / mangrove 1.5). Histogram over 200 rolls verified opensea ~55%, savanna ~7.5%, temperate ~7%, jungle ~5%, tundra ~4%.
+- **CRITICAL — presentation only.** This picks the landing *scene/region*; the world's ANCHOR biome (`biomeFor`, which drives veins, deposits, capture odds, and all generation) is untouched, so determinism / fingerprint hold (**fp MATCH 50/50**).
+- **Caveat:** training's first Earth landing now also rolls, so it has a ~55% chance of an ocean splash-down rather than the old fixed land vista.
+- The vista then picks fauna to match the rolled region (see ART_DIRECTION.md "THE LANDING ROLL (vista side)").
+
+### 2.8 World → vista (reference only; detail in ART_DIRECTION.md)
+On planetfall the descriptor's facts (band, biome, water state, life, civ era, star color, moons, rings) are passed to `hdVista(opts)` (~6260) to paint a 960×430 surface scene, or to `_hdDeckScene` (~7120, gas giants) / `_hdAbyssScene` (~6118, ocean/abyssal). The vista re-seeds its own presentation-only streams (`seed^0x9d7`, `^0x1A70`, `^0x0B0E`) so two same-type worlds are different paintings while staying per-seed deterministic. **These are art layers, not world generation** — art rules live in ART_DIRECTION.md.
+
+## 3. Planet types & key tables (real values)
+
+**`TYPE_LABEL`** (~1305) — the 8 frozen types and their card sub-titles:
+
+| type | label |
+|---|---|
+| rocky | Rocky world |
+| terran | Terran (Earth-like) world |
+| ocean | Ocean world |
+| ice | Ice world |
+| desert | Desert world |
+| gas | Gas giant |
+| venus | Venusian hothouse |
+| lava | Molten world |
+
+**`BIOME_SETS`** (**~10763** — corrected 2026-07-31 from a stale `~7477`, which dated from when the html was the source of truth) — biome catalog per type (name · weight `w` · `land%` · band gate · `rare` · flavor `f`). ⚠ `land` **doubles as the descent-success base** in `descentFor`, so it is not a purely cosmetic figure. Full flavor text lives in the source and is now also enumerated per biome in `BIOME_ATLAS.md` §1.1; the design shape:
+
+- **terran** (11): temperate·24, savanna·12 (temp/hot), jungle·10, marsh·8, swamp·7, mangrove·5, tundra·12 (cold), karst·5, saltflat·8 (hot), **fungal·1.6 rare**, **crystalsteppe·1.4 rare**.
+- **ocean** (7): opensea·20, archipelago·14, coral·10 (temp), stormsea·8, volcisle·5, abyssal·7, **milksea·1.4 rare**.
+- **ice** (4): glacier·18, packice·12, cryogeyser·8, **blueice·2 rare**.
+- **desert** (5): dunesea·18, canyon·10, saltpan·8 (hot), oxide·10, **glass·1.6 rare**.
+- **rocky** (5): cratered·18, boulder·10, graben·8, **geode·2.4 rare**, **carbon·1.6 rare**.
+- **venus** (3): sulfurdeck·10, acidhaze·12, abyssgreen·4.
+- **lava** (4): ashwaste·10, emberfield·10, obsidian·7, magmasea·4.
+- **gas** (4): banded·16, ammonia·8, stormeye·4, **hotglow·3 rare**.
+
+**`COMP`** (~1307) gives each type a one-line composition string (e.g. terran = "Iron–nickel core, silicate mantle, liquid-water oceans, continental crust").
+
+## 4. Anchor seeds & constants (real values)
+
+From **`WorldConfig`** (~843) and **`StarCatalog`** (~864):
+
+| constant | value | meaning |
+|---|---|---|
+| `UCELL` | 400 | intergalactic cell size |
+| `OBS_R` | 5200 | observable-universe radius |
+| `HOME_GAL_SEED` | **999** | the Milky Way |
+| `HOME_POS` | **{x:90, y:-60}** | home-galaxy world position |
+| `GR` | 1200 | galactic disk radius |
+| `GCELL` | 42 | star cell size (main layer) |
+| `FCELL` | 14 | fine star cell size (zoom layer) |
+| `SOL_SEED` | **424242** | our Sun |
+| `SOL_POS` | **{x:560, y:170}** | Sol's position inside the home galaxy |
+| `SYS_R` | 320 | star-system radius (orbit ceiling) |
+| `UNOISE` | `makeNoise(8181)` | cosmic-web density field |
+| `PLAYER_SEED` | **0x50A1E5** | stable seed for the player's own combatant/avatar (CombatCore ~11187) — not world gen, but a fixed anchor |
+| Earth seed | **133** | the settled cradle (`P.seed===133` special-cased in `climateBand`, `biomeFor`, `planetDescriptor`) |
+
+**Hidden salts** (XORed into seeds to fork independent streams): galaxy placement `hashInt(2,…)`, star placement `gseed^0xabc`, fine layer `gseed^0x9d2c` / `gseed^0x77aa`, star class `seed^0x9e37`, name RNG `seed^0x5f3759df`, wormhole `seed^0x7777`, biome `hashInt(P.seed,0xB10E,7)`, descriptor `P.seed^0x1234567`, planet thumb & vista streams `seed^0x9d7 / ^0x1A70 / ^0x0B0E`.
+
+**`SOL_PLANETS`** (~899) — hand-authored, not generated by `planetParams`. Seeds 131–138 = Mercury…Neptune (Earth=133), each with fixed type/orb/size/moons. `_SOL_SEEDS = {131…138}` (~15202) gates the early charter objectives.
+
+**`starClass` HZ table** `{BD:24,M:42,K:72,G:108,A:158,B:225,RG:235,SG:255}` (~1289).
+
+## 5. Data / save fields
+
+**None.** The universe is *never* persisted — it is regenerated from seeds on demand and held only in bounded FIFO caches (`ugCache` 3000, `starCache` 4000, `fineCache` 8000, `_sysCache` 240, `_wormCache` 600, `_snovaCache` 200, `CARD_FACTS` 6000). The render-owned `GalaxyArt.hazeCache` separately retains an effective FIFO of **4** generated canvases. What the save *does* hold is the player's relationship to worlds (settled/conquered flags, per-world logs, tutorial/charter progress) keyed by planet/star seed — those live in the SaveSystem spec, not here. Save key: `cfcc_save_v2`.
+
+`CARD_FACTS` (~357) is a side map (`P.seed → {band, lush, civLights}`) written by `planetDescriptor`/vista code and read by the sprite/thumb art. It is deliberately **off** the `P`/`sys`/`pl` objects so it cannot leak into the determinism fingerprint.
+
+## 6. Determinism
+
+**Everything world-facing is seeded** through three primitives in the `Rand` module (~140): `mulberry32(a)` (the PRNG), `hashInt(seed,x,y)` (a 3-input integer hash for coordinate→seed), and `cellRng(seed,x,y) = mulberry32(hashInt(...))` (per-cell streams). No `Math.random()` / `Date.now()` touches generation — Hard Rule #1. The same seed always yields the same galaxy, star, system, planet, biome, and wildlife on every device.
+
+**The 50-probe fingerprint:** `node tools/validate.js` reassembles the build and runs a determinism fingerprint that must match the v1.0 baseline byte-for-byte (release notes call it a "50-probe fingerprint"; the CLAUDE.md build note still says 49 — the release-notes number is current). The fingerprint **serializes the `P`/`sys`/`pl` objects**, which is *why* presentation facts are quarantined in `CARD_FACTS` and why the biome layer runs on its own `^0xB10E` hash stream: adding fields to those objects, or changing an existing roll's order, would shift the baseline and fail the build. New procedural layers must fork a fresh salt rather than consume from an existing stream.
+
+**Re-pin history — there is one, inside `planetParams` (~187):** two properties are rolled and then *overwritten* while intentionally preserving the RNG advance so older worlds don't shift:
+- `ring` is first set at `r()<0.16` (line ~199); for gas giants it is **re-pinned** to `r()<0.35` (~206).
+- `moons` is first set to `Math.floor(r()*3)` (~199), then **re-pinned entirely** by the size-scaled block (~214–221): `base = max(0, round((sizeMul−0.85)·3.1))`, `+4` for gas, `+1` for ice/ocean/terran, plus `floor(r()·max(1, round(sizeMul·2.2)))`, capped at 16.
+
+The first `moons`/`ring` rolls are discarded values but their RNG consumption is deliberately kept, so the re-pin is determinism-safe. Similarly `systemFor`'s binary/trinary separations are clamped **after** generation "post-adjustment — no RNG consumed" (~1255) so the universe layout is unchanged. `planetDescriptor` (~2192) runs on its own stream `mulberry32(P.seed^0x1234567)`, keeping biosphere/civilization rolls independent of the archetype and orbit streams.
+
+## 7. Code anchors (functions + ~line numbers)
+
+- **`@module Rand`** (~140): `mulberry32` (143), `hashInt` (144), `cellRng` (151), `makeNoise` (154), `mix`/`clamp`.
+- **`@module PlanetGen`** (~185): `planetParams` (187), `surfaceColor` (238), `gasPalette` (230).
+- **`@module Naming`** (~822): `properName` (825), `starName` (832), `galaxyName` (831).
+- **`@module WorldConfig`** (~843): all anchor constants (845–853).
+- **`@module StarCatalog`** (~864): `starClass` (866), `KIND_DESC` (884), `SOL_PLANETS` (899).
+- **`@module GalaxyArt [app]`** (~952): the render-owned `galaxyHaze` canvas generator/cache (~1107), alongside galaxy sprite art.
+- **`@module WorldGen [domain]`** (~1318): `genRocks` (1319), `galaxiesInCell` (1328), `galaxyProfile` (1392), `galaxyWormhole` (1398), `supernovaSites` (1417), `fineStarsInCell` (1444), `starsInCell` (1474), `systemFor`/`_systemFor` (1542/1550). It has no DOM or haze painter/cache.
+- **`@module SurveyPhrases`** (~1303): `TYPE_LABEL` (1305), `COMP` (1307), `atmosphereText` (1317), `climateText` (1331), `waterText` (1343), `gravityText` (1350), `climateBand` (1356).
+- **`planetDescriptor`** (2192) and `starDescriptor` (2297) — assemble the survey cards; `CARD_FACTS`/`_cardFactsSet` (357–363).
+- **`@section biomes`** (~10750): `BIOME_SETS` (10763), `biomeFor` (10824), `biomeComposition` (10836), `biomeForLanding` (10886), `descentTierFromPct` (10899), `descentFor` (10963). *(All corrected 2026-07-31; the previous ~7464/7477/7538/7550 dated from when the html was the source of truth and were stale by ~3,300 lines.)*
+- **Vista (art, reference only):** `@section` around 4328; `_hdAbyssScene` (6118), `hdVista` (6260), `_hdDeckScene` (7120); `planetThumb` (472).
+
+## 8. Open questions / pending
+
+- **v1.6 Phase 4 biome→color is planned** — biome will drive the planet's surface/thumb palette (not just the vista scene). See ART_DIRECTION.md. Today `biomeFor` feeds card text, the descent ladder, and the vista scene key, but `surfaceColor` still keys mainly off `type` + `hue` + `CARD_FACTS.band`.
+- **Eyeball World deferred** — the tidally-locked red-dwarf terran biome is noted in the source but held back; an honest tidal lock needs a Seasons-row domain change (a Dakk decision) that would touch the survey card, so it is intentionally absent from `BIOME_SETS.terran`.
+- **Probe-count wording drift:** release notes say "50-probe fingerprint"; the CLAUDE.md build note still reads "49-probe". Same test, stale number in the build note — worth reconciling.
