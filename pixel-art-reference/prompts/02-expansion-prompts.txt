@@ -1,0 +1,110 @@
+CELESTIAL FRONTIER V2
+Pixel-art expansion references
+
+These ten generated concept boards extend the earlier reference pack. All are flat visual references. The style prompts describe visual density. For game assets, author native-grid sprites and separate environment layers.
+
+DOCUMENT REFERENCES
+- Mars: port/v2/apps/game/src/assets/painted/mars-dunesea-v1.webp
+- Fungal Highlands: audits/MIDGAME_ART_DIRECTION_20260908/README.md. This is an illustrative alien biome.
+- Exploration UI: port/v2/README.md and the existing Sol and Universe reference screenshots. Survey Rings is an illustrative control.
+- Named Earth flora: SPECIES_AND_GENOME.md and the bound reference set in audits/AI_SPECIES_MOBILE_20260909/references/. Earth plants keep the real growth habit, leaf shape, attached fruit, and stems.
+- Procedural flora: PROCEDURAL_CHARACTERISTICS.md section 7, whose form-pool inventory is legacy v1 documentation, and SPECIES_AND_GENOME.md's Earth organisms and alien flora section. The sheets illustrate forms and variations, without implying that the current game generates these particular plants.
+- Items and gear: MATERIALS_AND_GEAR.md sections 3 and 22, ECONOMY_LOOT_CRAFTING.md, and port/v2/packages/domain/loot/src/catalogue.ts. The depicted Jump Drive bill is 2 Drive Coils, 1 Nav Core, 1 Fuel Cell, and 30 Stardust.
+
+EXTENDING THE FLORA SET
+For an Earth species, start from its botanical reference and preserve its whole shape and identifying organs. For a procedural species, start with a resolved form and use versioned style rules to vary height, branch spread, leaf shape, seed or fruit placement, and palette within a compatible family. Build visibly attached organs. Draw a small inventory or Compendium icon from the same plant identity, and keep any light confined to the tissue that emits it. Use the existing genome and resolved form as the authority for in-game variants.
+
+GENERATION PROMPTS
+Each caption below gives the exact ImageGen text used for that reference. Attach a subject reference from the game plus one or more style references in the order specified. You can substitute a shipped game painting and the most relevant PNG from this pack for subsequent work.
+
+01-mars-dune-sea.png
+Inputs in order
+1. port/v2/apps/game/src/assets/painted/mars-dunesea-v1.webp
+2. celestial-frontier-pixel-art/01-earth-rainwood-biome.png
+3. Earlier Mars Approach concept
+
+Use the established Celestial Frontier concept style, redrawing shapes as genuine late-16-bit pixel art. Clearly resolved square pixel clusters on a fixed apparent 400x225 grid enlarged for display, deliberate stair-step contours, clean hard edges, flat hue-shifted ramps, sparse controlled dither, restrained saturated accents, no diffusion or gradients, no photorealism, no brush-stroke blur, no pixelation filter look, no perspective mockup, no watermark. One single full-bleed image only.
+
+Full 16:9 surface biome, with absolutely no UI and no ship, text, creatures or split panels. First reference is the exact existing Mars landfall painting for visual identity. Second is the Rainwood biome as pixel craft reference, third is the Mars orbital view as color continuity. Camera at human height, contrasting dark angular basalt crags frame a broad open dune saddle in lower center, then rhythmic gold and burnt-orange dune crests lead to tawny violet mountains, with two very small irregular moons in a hazy rose-khaki sky. Light on the windward faces, crisp shadows on the lee slopes, a few areas of stylized sand ripple with deliberate spaced pixel lines. A soft breeze implied in a few little grains trailing off a ridge. Hand-redraw the scene like an actual playable biome plate so level foreground has enough room for grounded sprites. Native Mars terrain, no plants, buildings, crystal forests or fantasy props.
+
+02-fungal-highlands.png
+Inputs in order
+1. audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png
+2. celestial-frontier-pixel-art/01-earth-rainwood-biome.png
+
+Use the established Celestial Frontier concept style, redrawing shapes as genuine late-16-bit pixel art. Clearly resolved square pixel clusters on a fixed apparent 400x225 grid enlarged for display, deliberate stair-step contours, clean hard edges, flat hue-shifted ramps, sparse controlled dither, restrained saturated accents, no diffusion or gradients, no photorealism, no brush-stroke blur, no pixelation filter look, no perspective mockup, no watermark. One single full-bleed image only.
+
+Full 16:9 alien surface biome environment plate with no UI, text, creatures, or inset panels. First image supplies the giant fungal forest design. Second image is the approved pixel art style direction. Cream and warm copper shelf caps rise above blue-gray karst spires, mossy stone, winding teal shallows, dark ferns and a few small amber mushrooms. Change the composition to a playable open terrace: tall fungal trunks and skirt gills form a shaded arch at the sides, layered distant stone needles stand in silver morning mist, and the lower central third is a broad, relatively even wet shale shelf with a small off-center pool and an unobstructed floor. Cool green shadows, quiet afternoon warmth through the caps, a few angular shafts of light in carefully separated stepped clusters, terrestrial natural-history feeling at alien scale. Carefully draw the underside gills in chunky ribs and the ferns as legible overlapping shapes. No neon lighting. Match the Rainwood level of pixel detail, mood, lighting logic, and sense of depth while clearly giving this world its own colors and silhouettes.
+
+03-saturn-ring-passage.png
+Inputs in order
+1. celestial-frontier-pixel-art/03-sol-space-exploration.png
+2. Earlier Mars Approach concept
+3. port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp
+
+Use the established Celestial Frontier concept style, redrawing shapes as genuine late-16-bit pixel art. Clearly resolved square pixel clusters on a fixed apparent 400x225 grid enlarged for display, deliberate stair-step contours, clean hard edges, flat hue-shifted ramps, sparse controlled dither, restrained saturated accents, no diffusion or gradients, no photorealism, no brush-stroke blur, no pixelation filter look, no perspective mockup, no watermark. One single full-bleed image only.
+
+One 16:9 Celestial Frontier exploration concept named "SATURN". Reference 1 is for Saturn's gold bands and pale rings as well as interface styling. Reference 2 is for continuity with the Mars approach. Reference 3 is the actual Scout design. Close flyby of the northern hemisphere with one huge pale ochre banded Saturn occupying the left center, ring planes slashing across the frame from lower left to upper right. Rings should be a single coherent disc with distinct broad alternating ice bands, a clean dark division, soft purple shadow represented as solid color bands, and forward portion visibly crossing in front of the planet. Make placement readable even in a thumbnail. Space toward the right is deep indigo with sparse stars. Tiny original silver and sage green delta-wing Scout on the dark right side, overhead view with the pointed nose and cyan canopy and two lower dark vent panels preserved. A pair of subtle cyan brackets trace the near ring edge, and a compact navy "SURVEY RINGS" concept action sits bottom right. Only exact labels "SATURN" and "SURVEY RINGS". Emphasize scale through large simple ring silhouettes and an intentionally small player craft. No terrain on Saturn, no other huge world, no atmospheric scenery or collage.
+
+04-deep-space-galaxy-atlas.png
+Inputs in order
+1. audits/UI_U1_PRODUCTION_LAYOUT_9c869c3_20260906/slice-20260906152547550-11463-bba745f6935b-universe.png
+2. Earlier Milky Way concept
+
+Use the established Celestial Frontier concept style, redrawing shapes as genuine late-16-bit pixel art. Clearly resolved square pixel clusters on a fixed apparent 400x225 grid enlarged for display, deliberate stair-step contours, clean hard edges, flat hue-shifted ramps, sparse controlled dither, restrained saturated accents, no diffusion or gradients, no photorealism, no brush-stroke blur, no pixelation filter look, no perspective mockup, no watermark. One single full-bleed image only.
+
+One full-width 16:9 universe-scale map for Celestial Frontier. First image shows the actual game's zoomed-out universe-map spirit and empty black space. Second gives the earlier pixel-art Milky Way identity and interface. A visible loose cluster of five or six clearly distinct whole galaxies separated by deep navy voids, not a dense starfield. Make the central selected galaxy the familiar blue-white Milky Way spiral with a warm core and occasional pink knots, at modest scale. Its neighboring galaxies have different scale, inclination and silhouette: one slender edge-on silver galaxy, one distant warm elliptical, one smaller lilac asymmetrical spiral, with only a few tiny distant galaxies. Dim disconnected stretches of cosmic-web dust in the background with long areas of near-black emptiness. Cyan corner reticle around Milky Way and small right-hand card with exactly "MILKY WAY" and "ENTER GALAXY", upper-left short heading "UNIVERSE MAP". Use thin navy and cyan instrument UI with tiny brass marks, legible bitmap lettering. This is the zoom level above the prior single-galaxy view, show no individual worlds or ship. No extra text, arrows, mythology or decorative orbit lines.
+
+05-earth-flora.png
+Inputs in order
+1. audits/AI_SPECIES_MOBILE_20260909/references/persimmon-v1.png
+2. audits/AI_SPECIES_MOBILE_20260909/references/devils-club-v1.png
+3. audits/AI_SPECIES_MOBILE_20260909/references/cranberry-v1.png
+4. celestial-frontier-pixel-art/01-earth-rainwood-biome.png
+5. celestial-frontier-pixel-art/02-procedural-creature-reference.png
+
+Create a single Celestial Frontier art reference in precisely the visual style of the attached pixel-art reference. Redraw on an apparent low-resolution square pixel grid, with crisp deliberate square clusters, staircase contours, limited hue-shifted flat ramps, sparse dithering, readable pixel silhouettes at phone size, navy fields and thin cyan or brass edge accents where present in reference. Match the ivory bitmap text, contrast, proportions and restraint. No vector smoothness, painterly detail, anti-aliasing, photo texture, glow haze, or pixelation filters. No extraneous details or filler, no 3D mockup, no watermark.
+
+A single landscape 16:9 "EARTH FLORA" field guide, three spacious columns with navy backgrounds, top-left light and the same brass/cyan framing as the pixel creature sheet. Inputs one through three are exact botanical identity references, input four is the plant color and pixel treatment reference, five is UI and plate styling. Left "PERSIMMON", a distinctly tall branching deciduous tree and clearly attached orange fruit with four green calyx lobes and simple oval leaves; mid "DEVIL'S CLUB", a much smaller upright shrub with spiny clustered canes, deeply palmately lobed leaves and upright cones of small red fruit; right "CRANBERRY", a low creeping mat with horizontal woody runners, tiny leathery oval leaves and scattered red berries, no upright tree-like trunk. Draw each whole plant with a ground line and small clear gaps in its wider silhouette. Include a single unobtrusive inset below each showing a representative attached leaf and fruit detail enlarged for the artist. Whole form more important than close-up. No additional text. Do not substitute generic plants.
+
+06-procedural-flora.png
+Inputs in order
+1. audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/alien-flora-reference.png
+2. celestial-frontier-pixel-art/02-procedural-creature-reference.png
+
+Create a single Celestial Frontier art reference in precisely the visual style of the attached pixel-art reference. Redraw on an apparent low-resolution square pixel grid, with crisp deliberate square clusters, staircase contours, limited hue-shifted flat ramps, sparse dithering, readable pixel silhouettes at phone size, navy fields and thin cyan or brass edge accents where present in reference. Match the ivory bitmap text, contrast, proportions and restraint. No vector smoothness, painterly detail, anti-aliasing, photo texture, glow haze, or pixelation filters. No extraneous details or filler, no 3D mockup, no watermark.
+
+Landscape 16:9 of six original Celestial Frontier procedural flora silhouettes titled "PROCEDURAL FLORA". Image 1 gives organic structures and colors, image 2 gives the exact 3×2 field-guide style. Six equally sized navy cells, consistent light and pixel density. Exact labels and order: "FAN" (upright ribbed copper fronds arising continuously from one sturdy root crown), "ROSETTE" (low radial gray-blue succulent blades with cream edges and a central cone), "POD SHRUB" (branched stem with amber closed seed pods and dark oval leaves), "SEAWEED" (flexible long bent teal ribbons emerging from a holdfast on a small submerged rock), "TRAP" (ribbed pale leaves arranged as two open hinged cups with muted brick interiors on a rooted stem), "ROOT CROP" (a low narrow blue-green leaf crown shown in a little soil cross-section with ochre swollen branching tubers). Distinct botanical whole forms and visible attachment, plus clearly readable fruit or organ for each applicable plant. Avoid magical stardust and uniform glow. Treat the forms as representative art concepts, with no trait percentages, roll claims, or invented lore.
+
+07-materials-and-parts.png
+Inputs in order
+1. celestial-frontier-pixel-art/05-compendium-gallery.png
+2. port/baseline-v1.8.9/screens/ui-inv-materials-phone.png
+
+Create a single Celestial Frontier art reference in precisely the visual style of the attached pixel-art reference. Redraw on an apparent low-resolution square pixel grid, with crisp deliberate square clusters, staircase contours, limited hue-shifted flat ramps, sparse dithering, readable pixel silhouettes at phone size, navy fields and thin cyan or brass edge accents where present in reference. Match the ivory bitmap text, contrast, proportions and restraint. No vector smoothness, painterly detail, anti-aliasing, photo texture, glow haze, or pixelation filters. No extraneous details or filler, no 3D mockup, no watermark.
+
+Landscape 16:9 sprite reference with exact title "MATERIALS & PARTS". Image 1 is exact color and frame styling. Image 2 supplies actual game inventory icon design language. A clean 4-column × 2-row dark navy grid, square stepped thin cyan cell borders with plenty of interior negative space, one isolated icon per cell, isometric three-quarter angle where applicable, same consistent low-res pixel density as the approved creatures. Eight exact labels, in order. Top row "IRON" as dull riveted iron stock with rust flecks, "COPPER" as a warm orange wire spool with a small teal patina on an edge, "WATER ICE" as cold blue translucent crystalline spears, "VOIDGLASS" as one dark purple fractured glass shard with sparse pale edges. Bottom row "IRON PLATE" as tidy rolled rectangular hull stock with beveled corners, "SILICON CHIP" as a blue-green etched logic wafer with gold contacts, "OPTIC LENS" as a clearly round pale blue mounted glass lens with rim, "DRIVE COIL" as a copper-gold toroidal winding around a navy core. Iron and Iron Plate must be distinctly readable by silhouette. Focus on native inventory icon readability and believable material highlights, no sample stats or redundant rarity frames.
+
+08-engineering-and-shipyard.png
+Inputs in order
+1. celestial-frontier-pixel-art/03-sol-space-exploration.png
+2. port/baseline-v1.8.9/screens/ui-shipyard-desktop.png
+3. port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp
+
+Create a single Celestial Frontier art reference in precisely the visual style of the attached pixel-art reference. Redraw on an apparent low-resolution square pixel grid, with crisp deliberate square clusters, staircase contours, limited hue-shifted flat ramps, sparse dithering, readable pixel silhouettes at phone size, navy fields and thin cyan or brass edge accents where present in reference. Match the ivory bitmap text, contrast, proportions and restraint. No vector smoothness, painterly detail, anti-aliasing, photo texture, glow haze, or pixelation filters. No extraneous details or filler, no 3D mockup, no watermark.
+
+Landscape 16:9 believable game interface. Reference 1 provides the exact navy, brass, cyan pixel treatment and original UI language. Reference 2 provides the actual Shipyard and Fabricator structure as a layout reference. Reference 3 is the exact Scout silhouette and livery. Header "ENGINEERING & SHIPYARD". Left half a large, exact original silver and sage delta-wing Scout on a quiet dark inspection grid, dark teal canopy and two obvious dark inset vent panels near the aft wings. Small caption "SCOUT". Right half compact "FABRICATOR" view with an enlarged isolated icon of the "JUMP DRIVE", a legible exact four-row bill "DRIVE COIL ×2", "NAV CORE ×1", "FUEL CELL ×1", "STARDUST ×30", and one large "FABRICATE" button. Use a clear little icon for each component, copper toroidal winding, violet logic core, cyan fuel magazine and a gold stardust cluster, respectively. Exact words only. Original game imagery has precedence for the ship. Tidy compact readable functional layout and actual materials hierarchy, no invented cost, labels or upgrade stages. Hardware art with controlled cool metallic highlights and occasional warm accents.
+
+09-flora-family-variation.png
+Inputs in order
+1. 06-procedural-flora.png
+2. audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/alien-flora-reference.png
+
+Create a wide 16:9 continuation reference for the user's Celestial Frontier, exactly match the attached pixel-art Procedural Flora sheet's deliberate native pixel scale, sharp staircase clusters, navy background, brass and cyan stepped rules, ivory font and natural-history lighting. Title "POD SHRUB VARIATION". Use second reference for plant architecture. Three full specimen columns on a common baseline and common relative scale. All three are variations on the same pod shrub, with clearly joined root crown, a leaf-bearing branch structure and distinctly related ribbed closed pods. Left "COMPACT": short sturdy stem with several spreading low branches, broad olive leaves, three ochre oval pods nestled close to the crown. Middle "UPRIGHT": tall narrow woody stalk, two pairs of sparse upward branches, blue-green narrow leaves, three copper sharply pointed seed pods at differing heights. Right "SPREADING": two main stems splayed wide and an open creeping root base, leaf pairs widely spread, four pendulous muted crimson pods on short curved stems. Repeat the recognizable family leaf and pod joint design, show clear changes to stature, branching, and organ placement. In each cell a tiny separate bottom mini-strip with one small isolated closed pod icon matching the plant above, no additional text. Bounded ochre light along the closed pods, no neon glow. Generated art-direction study of seeded variation, not software output. Strong limited 4-6 color materials, no blur, antialiasing, texture noise or gradients. Keep all plants entirely on screen.
+
+10-explorer-gear.png
+Inputs in order
+1. 07-materials-and-parts.png
+2. port/baseline-v1.8.9/screens/ui-inv-gear-phone.png
+
+Create a landscape 16:9 Celestial Frontier field reference titled "EXPLORER GEAR", a direct counterpart to the first attached materials sheet with exactly the same deep navy, cyan/brass framing, warm ivory bitmap lettering, consistent native-looking crisp square pixel clusters, sparse ramps, and detailed chunky highlights. Input two is the existing game's gear interface for the kinds of equipment only. One isolated large gear sprite per cell in a 3×2 grid, same apparent pixel density but silhouette and color distinct. Exact labels in order top row "MINING RIG I", a small two-hand powered pick with a servo, broad iron pick head, copper housing and squared handle; "FIELD SUIT", an empty practical sealed blue-gray exploration suit with reinforced seams, cropped only at ankles if needed, no head or face; "LANDING STRUTS", a matched pair of silver articulated dampers with wide landing feet. Bottom row "SCOUT VISOR", transparent cyan curved faceguard with silver instrument band, a clearly recognizable visor rather than full helmet; "STAR COMPASS", a circular octagonal-framed silver navigation instrument with a blue needle and brass mount; "PLASMA GAUNTLETS", matched armored gloves with controlled amber/gold heating slots. Display as practical exploration hardware, no weapons, no stats or rarity names, no extra subtitles. Keep the pixel-art palette and icon spacing tightly consistent with the existing pack. No gradients, blur, photorealism, soft halo or smoothing.

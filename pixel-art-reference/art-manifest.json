@@ -1,0 +1,264 @@
+{
+  "game": "Celestial Frontier",
+  "visualReferences": [
+    {
+      "file": "01-style-and-worlds/00-celestial-frontier-style-board.png",
+      "sourceFilename": "exec-929693c4-95a4-4129-9a66-3e88b8755ded.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "37e7c9d4333060d0db42576fbd04ab089b4071b0f93fb3c406c3f2b215d25488"
+    },
+    {
+      "file": "01-style-and-worlds/01-earth-rainwood-biome.png",
+      "sourceFilename": "01-earth-rainwood-biome.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "d754df28cf3114d1f95c83726a01886abc618fbe15d41d86ddb94dc1c9fd8ca0"
+    },
+    {
+      "file": "01-style-and-worlds/02-mars-dune-sea.png",
+      "sourceFilename": "01-mars-dune-sea.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "4d5ed12a6331006b9eb0308ab12dec3c2538e10bb2e36e05c4085285e5330eba"
+    },
+    {
+      "file": "01-style-and-worlds/03-fungal-highlands.png",
+      "sourceFilename": "02-fungal-highlands.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "1427e21923df3cf7f96424812ca97882c554d0042c39d3347bbd1d90a5f02e2d"
+    },
+    {
+      "file": "01-style-and-worlds/04-planetary-operations.png",
+      "sourceFilename": "exec-8f2ebe59-4a58-4436-b45d-3c375cd33db0.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "13227834999326b6f8c26acc9f8cb4914613d3fdfefd755f4e989c400d62a01c"
+    },
+    {
+      "file": "02-space-and-ships/01-universe-map.png",
+      "sourceFilename": "04-deep-space-galaxy-atlas.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "861106cd2a325b478299eb94e4ac06c3269a0538285a9407030d064721a06c08"
+    },
+    {
+      "file": "02-space-and-ships/02-milky-way.png",
+      "sourceFilename": "exec-57cc2158-0d23-4c29-a7d5-1eb53872cf79.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "8ba704987d8469df5843d27f2faeaf749744db405f0396aa4e722bb83e889078"
+    },
+    {
+      "file": "02-space-and-ships/03-sol-earth.png",
+      "sourceFilename": "exec-77e7536e-39ce-4867-afab-65de344a6f20.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "0ad8121344b4d3e47a5673c9c4a1652d9e4183ddd556f83f9e8da2216f8a2d2a"
+    },
+    {
+      "file": "02-space-and-ships/04-sol-mars.png",
+      "sourceFilename": "03-sol-space-exploration.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "2091ab051495433c0c7dec83c4ecc193977d6faf405eb6401e593b9c96ce6f99"
+    },
+    {
+      "file": "02-space-and-ships/05-mars-approach.png",
+      "sourceFilename": "exec-3aa69f58-2712-429a-93f0-766344758653.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "e0beb84f71a0a81fabfe37d9943804e09d40fb6a62255b9b50f5e3bfcecc69ec"
+    },
+    {
+      "file": "02-space-and-ships/06-saturn-rings.png",
+      "sourceFilename": "03-saturn-ring-passage.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "ad6a5f00970ff56649fb5c391722e4eaf0185b95665fa05380c9ae041e3daa53"
+    },
+    {
+      "file": "02-space-and-ships/07-stellar-phenomena.png",
+      "sourceFilename": "exec-29b148e9-7205-4954-acb7-13ee284ac39f.png",
+      "width": 1671,
+      "height": 941,
+      "sha256": "d154639a7713b92fa0635bac5865cc3edc0c5b8814b2dc00ae1fcb2ca487451f"
+    },
+    {
+      "file": "02-space-and-ships/08-ship-progression.png",
+      "sourceFilename": "exec-d5db6a41-b64b-49ac-8eb5-734dbeb0f31d.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "cc5644cad2b2c939a05361db1f227340a2d1b8d035ea626479b3cc3363b4e6f5"
+    },
+    {
+      "file": "02-space-and-ships/09-atlas-sharing-and-backup.png",
+      "sourceFilename": "exec-bf4f4a92-128c-4026-a509-47538fd06de6.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "cec3526e30c9b26db91972bfc99b0958442982877596c30d75784c1bd7567d2b"
+    },
+    {
+      "file": "03-life-and-lineage/01-procedural-fauna-concept.png",
+      "sourceFilename": "exec-ba15a32d-71bf-436d-85bf-60ea0a10ce9c.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "26590d647a0f37c56cc3f3ea5fb1e59df3120f44ac9c3608bae3116322a012c7"
+    },
+    {
+      "file": "03-life-and-lineage/02-creature-reference.png",
+      "sourceFilename": "02-procedural-creature-reference.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "3f80e0db0ce085ff4c9cc20a52051f62678ec118809988760759b8a65db4990c"
+    },
+    {
+      "file": "03-life-and-lineage/03-seeded-fauna-variants.png",
+      "sourceFilename": "01-seeded-alien-variants.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "57001c90d6924f54dbebe36f49d4ef43d4de844b203f7971af203c443c5009a9"
+    },
+    {
+      "file": "03-life-and-lineage/04-breeding-lineage-variants.png",
+      "sourceFilename": "02-breeding-earth-lineage.png",
+      "width": 1671,
+      "height": 941,
+      "sha256": "421b75b5c38bbef123ca1f3d35d2c33a412ed36ede2192b7b254d537dd021ab4"
+    },
+    {
+      "file": "03-life-and-lineage/05-companion-care.png",
+      "sourceFilename": "exec-28159f3f-b4b7-4e90-aec5-57ece25c3cea.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "3ac406fb451e05c6ea3ffa2519057b419a2a394c48d861b9c114c3b1e64635e7"
+    },
+    {
+      "file": "03-life-and-lineage/06-earth-flora.png",
+      "sourceFilename": "05-earth-flora.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "d870be4f2f83d45f786d456cacdac4795b6c681ffb55756a974f290420dfcf3b"
+    },
+    {
+      "file": "03-life-and-lineage/07-procedural-flora.png",
+      "sourceFilename": "06-procedural-flora.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "7010743cb68eb3373b830f15bd44a119fe50fd679b1f6ddc57b49b601949c024"
+    },
+    {
+      "file": "03-life-and-lineage/08-pod-shrub-variants.png",
+      "sourceFilename": "09-flora-family-variation.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "ea86bef11b4f5b58e94fe0e36f4f47dc8c6542273a6cb28917e623f4b5fc1a9f"
+    },
+    {
+      "file": "03-life-and-lineage/09-fungi-and-microbes.png",
+      "sourceFilename": "exec-8bd32b78-14d9-48be-937f-0c69f20a086f.png",
+      "width": 1671,
+      "height": 941,
+      "sha256": "ebd0d1d282607d6700598c4eac95a8521da12feb4f1066e99cb2be20fe1e3ce7"
+    },
+    {
+      "file": "03-life-and-lineage/10-biosphere-survey.png",
+      "sourceFilename": "exec-754afda3-40c0-4395-ab1a-c9e7d8f21205.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "7d179ba29dd5b7e940dc5e29c6980717870633614ddb78167abaea8a1286fdd6"
+    },
+    {
+      "file": "03-life-and-lineage/11-compendium-gallery.png",
+      "sourceFilename": "05-compendium-gallery.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "6dc9ed693a212dd1eaac4ccce570451713561186d8da4f40762d8bb619629cd1"
+    },
+    {
+      "file": "04-combat-and-guardians/01-rainwood-atmosphere.png",
+      "sourceFilename": "exec-0d27b77d-747c-41d0-bb9a-9407319bd75c.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "a8bdad43ba605c7ebbb2b3c78ede841fdddc12d5a4f11abc5eed34c8094aa018"
+    },
+    {
+      "file": "04-combat-and-guardians/02-rainwood-iphone-battle.png",
+      "sourceFilename": "04-rainwood-battle-iphone.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "f467d54c071c2b56e5153c21658fdb392d7038a5bb6d47ee9bd90d56f26890db"
+    },
+    {
+      "file": "04-combat-and-guardians/03-guardian-silhouettes.png",
+      "sourceFilename": "03-guardian-silhouettes.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "d9a78a207baa2db16483923f0d607a2e162eb0b7945076edbfa013018e627321"
+    },
+    {
+      "file": "04-combat-and-guardians/04-guardian-command-iphone.png",
+      "sourceFilename": "04-guardian-command-iphone.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "26b080a3263c7cce7bcc57f692f0533132dae22f0d56a00220f1f0e77a55df2e"
+    },
+    {
+      "file": "04-combat-and-guardians/05-threat-dossier-and-chronicle.png",
+      "sourceFilename": "exec-fa371db4-83f9-4678-abaf-eceea0a9b0fd.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "412752c6b61242592dbe56b2f170af352d1d38d2811131bd07d9ca77f89375f0"
+    },
+    {
+      "file": "05-economy-and-progression/01-materials-and-parts.png",
+      "sourceFilename": "07-materials-and-parts.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "86c9207055f3aa5fc641c3862fdd04b7fe61a9aa428f806da5b567d96df6e5a8"
+    },
+    {
+      "file": "05-economy-and-progression/02-explorer-gear.png",
+      "sourceFilename": "10-explorer-gear.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "04bee4287e8335dc009b2d6c49286e10476c0e6598b1afe19412aec0c7fc5c4d"
+    },
+    {
+      "file": "05-economy-and-progression/03-inventory-and-loadout.png",
+      "sourceFilename": "exec-53eac4b5-8100-4fb8-a72b-8786bd1bd6a1.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "e3a505bc2995f99de4f3a61384fb533ed5f58ef7710e01590145362b0b6d0009"
+    },
+    {
+      "file": "05-economy-and-progression/04-engineering-and-fabrication.png",
+      "sourceFilename": "08-engineering-and-shipyard.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "fc42ad96bd0ffc4a44400872683468dd14f2be96c28b68db4de79aaf677355fa"
+    },
+    {
+      "file": "05-economy-and-progression/05-charters-and-field-training.png",
+      "sourceFilename": "exec-29e82a65-0799-426e-b69d-3252ead2c94c.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "09c3d490e7ddae493926c73e724e87794df722d8f0338c72a5c5f6aa72cf86b2"
+    },
+    {
+      "file": "05-economy-and-progression/06-records-codices-and-binder.png",
+      "sourceFilename": "exec-1594067d-5086-46cc-8492-63b2d2e0b72e.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "2b83c092b7bc212f67e91148b5e9d50db92e9b7256b210ca42ac985954f15f40"
+    },
+    {
+      "file": "05-economy-and-progression/07-guide-settings-and-audio.png",
+      "sourceFilename": "exec-01168d96-dd71-4a2f-a5ca-0f3ac0ded266.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "960b9f4bc1e84d1db4f877e338aa446159feb27997470e7cc0b4f56cdac1161f"
+    }
+  ]
+}

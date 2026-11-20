@@ -1,0 +1,65 @@
+CELESTIAL FRONTIER V2
+Procedural fauna, breeding, and Guardian art references
+
+DESIGN NOTES
+
+Seeded fauna. The three silhouettes share a body family. Leg proportions, body depth, tail shape, armor profile, markings and palette can alter the read while compatible attachment and motion rules keep the family coherent. Choose representative extremes before producing a full set of parts. The sheet is illustrative.
+
+Breeding. LINEAGE_AND_BREEDING.md describes the three origins, the dominant Earth scaffold and mate-driven changes to Earth anchor strength across generations. On success, v2 keeps the parents, enters them into Recovery and produces a deterministic child. Use the existing inherited genome and set-qualified lineage to select compatible visual traits. In the illustrative Wolf and Ridgeback sheet, the descendants retain a canid muzzle, torso and leg structure while changing plate coverage, ear profile, flank markings and tail bands. The Earth Cross tile is an illustrative Earth-heavy comparison. The crosses on the board are authored examples rather than outputs of known seeds.
+
+Guardians. The Earth Guardian art follows the existing Brown Bear painting. Reef and Sky Guardians are speculative body-family treatments. The pale silhouettes in the study are staging cues rather than a size chart. A separate Guardian presentation can use pose, framing and impacts to convey weight, while keeping the anatomy readable. The iPhone screen illustrates the Command break at a phase change, with one active companion, two reserves, and Hold, Swap or Withdraw. The full HP bar in the art is placeholder UI. Actual health and phase values come from the game.
+
+IMPLEMENTATION DIRECTION
+
+1. Resolve the existing body family and owner from the complete genome and lineage. Authored native-grid assemblies provide silhouettes, visible inherited detail and matching motion poses.
+2. Select morphology, palette, markings and compatible attachments through a deterministic, versioned ruleset that accepts the resolved traits. Reuse the same appearance recipe for battle, Compendium and Lineage. Draw per-family idle, approach, hit and recovery poses so anatomy and markings hold between frames.
+3. Constrain what a given family can accept. Review extreme proportions, tail and armor joins, visibility at phone scale, reproducibility, and attribution of visible inherited traits.
+4. Treat Guardian roles and encounter effects as a presentation layer of the applicable anatomy and gameplay identity. Use the actual relay, phase and health state for the controls and bars.
+
+GAME REFERENCES
+- LINEAGE_AND_BREEDING.md, Three creature origins and Breeding model.
+- SPECIES_AND_GENOME.md, living companion writers and Guardian/Titan conquest.
+- PROCEDURAL_CHARACTERISTICS.md, resolved anatomy and family scope.
+- port/DECISIONS.md, Guardian parties, Auto or Command.
+
+IMAGEGEN PROMPTS
+
+01-seeded-alien-variants.png
+Inputs in order
+1. celestial-frontier-pixel-art/02-procedural-creature-reference.png
+2. celestial-frontier-pixel-art-expansion/09-flora-family-variation.png
+
+One professional Celestial Frontier pixel-art reference at the exact visual direction of previous attached game concepts. Rebuild shapes with deliberate square-pixel clusters on a consistent apparent low-resolution native grid, crisp stair-stepped contours, sharp edges, restrained hue-shifted flat palettes and sparse dither. Mature naturalistic anatomy and readable shapes. Deep navy, thin cyan and brass borders, ivory bitmap type. No blur, vector smoothness, filter, photorealism, gradients, watermarks or text other than the requested labels.
+
+Landscape 16:9 native sprite reference titled "SEEDED FAUNA". Reference 1 provides Ridgeback as the source body plan and proportions. Reference 2 is a useful layout model for within-family variations only, no plant content. Exactly three full side-view adult alien quadrupeds facing right with fully visible four paws, heads, and tails, planted on the same ground line and consistent comparative scale. Use the shared low earthbound heavy torso, big forelimbs, connected line of dorsal plates and muscular tail from Ridgeback. Left "LOW & WIDE": the familiar dusky-violet plated ridgeback, low slung with a thick cream chest and dark rosettes, small triangular ear and short blunt tail. Middle "LONG & LIGHT": structurally lighter, longer legs, narrower chest, swept long tail with strong warm bands, and small dark teal triangular dorsal plates. Right "HEAVY & TALL": thick shoulders and more upright near stance, roughly overlapping pale sandstone plates, dark rust and ochre palette with few heavy flank patches, muscular tapering tail and blunt ears. Same underlying skeleton, silhouette changes readable from across the room. Show differences in proportions, plate profile, markings and tails, without changing body-plan topology. Exact labels only, no fake genome numbers. One spacious 3-column sheet with no arrows or parts floating.
+
+02-breeding-earth-lineage.png
+Inputs in order
+1. celestial-frontier-pixel-art/02-procedural-creature-reference.png
+2. audits/VISION_P1_QUADRUPED_20260921/generation-01/wolf-master.png
+3. celestial-frontier-pixel-art/05-compendium-gallery.png
+
+One professional Celestial Frontier pixel-art reference at the exact visual direction of previous attached game concepts. Rebuild shapes with deliberate square-pixel clusters on a consistent apparent low-resolution native grid, crisp stair-stepped contours, sharp edges, restrained hue-shifted flat palettes and sparse dither. Mature naturalistic anatomy and readable shapes. Deep navy, thin cyan and brass borders, ivory bitmap type. No blur, vector smoothness, filter, photorealism, gradients, watermarks or text other than the requested labels.
+
+Landscape 16:9 art direction sheet "BREEDING & LINEAGE", 3 columns and 2 rows with six equal panels. Input 1 gives the actual illustrative slate violet RIDGEBACK quadruped and style. Input 2 is exact gray Wolf anatomy, input 3 is the game frame style. Design a coherent example of a recognizable Wolf lineage gradually picking up alien traits. Top row exactly "WOLF" (a fully natural gray and cream wolf, long muzzle, pointed ears, wolf paws, bushy lowered tail and strong neck), "RIDGEBACK" (dusky slate-violet alien, stout, long banded tail, overlapping pale dorsal plates and dark pelt marks), "FIRST CROSS" (the Wolf head, body and paws still evident, low slate markings on shoulders, faint rings on the wolf tail and a few subtle short plates above shoulders). Bottom row exactly "LATER CROSS" (still wolf skeleton, longer ears with forward tips, bolder stripes, larger continuous ridge and visibly banded long tail), "DEEP LINEAGE" (same basic canid anatomy, pronounced violet plates along a low ridge, warmer plated tail bands and clearer alien brow, face still long and canid), "EARTH CROSS" (comparison with mostly gray wolf shape and color, lightly patterned amber flank and one violet crest accent, instead of strongly drifting). Every animal distinct and fully visible, moderate direction changes in anatomy not random new limbs. Keep images large and crisp. Exact text only, no trait percentages or invented genetics stats. Coat markings use broad pixel patches. These are art studies of trait visibility, with ancestors and offspring legible as family members.
+
+03-guardian-silhouettes.png
+Inputs in order
+1. audits/O2_20261102/w1-guardian/guardian-owner-r03/packet/master.png
+2. audits/VISION_D2_GUARDIAN_20260921/G7_SHEET/brown-bear-review-sheet.png
+3. celestial-frontier-pixel-art/02-procedural-creature-reference.png
+
+One professional Celestial Frontier pixel-art reference at the exact visual direction of previous attached game concepts. Rebuild shapes with deliberate square-pixel clusters on a consistent apparent low-resolution native grid, crisp stair-stepped contours, sharp edges, restrained hue-shifted flat palettes and sparse dither. Mature naturalistic anatomy and readable shapes. Deep navy, thin cyan and brass borders, ivory bitmap type. No blur, vector smoothness, filter, photorealism, gradients, watermarks or text other than the requested labels.
+
+Landscape 16:9 comparative board titled "GUARDIAN STUDIES", three distinct Guardian-scale beasts, full bodies and ground/contact on navy, clean cyan rules, exact labels. Input 1 is actual Earth Guardian bear anatomy and input 2 gives its scale and stance, input 3 gives desired sprite style and useful alien silhouettes. Left "EARTH GUARDIAN": one grounded huge Brown Bear; anatomically natural rounded ears, pronounced shoulder hump and heavy strong plantigrade paws, layered russet-brown dense coat, tan head, short tail, focused eyes. No armor, horns or glowing bits on the Earth bear, power comes from natural anatomy. Center "REEF GUARDIAN": a hypothetical giant bottom-walking ocean crustacean with a low blue-green and copper shell, broad visible jointed walking limbs, support on sand and two big asymmetrically posed natural pinchers. Reinforce mass with overlapping shell plates, no electronics. Right "SKY GUARDIAN": a hypothetical huge side-view teal glider, sweeping wing membranes with hard pale edges and a forked tail, enormous wingspan, whole wings visible, quiet glide pose. In each box optionally add a very small muted ivory shape of a typical creature clearly separated from main subject at the very bottom to carry scale, no numbers or annotations. Three full separate concept silhouettes, imposing and ecologically plausible. Crab and glider illustrative, no title like Titan or implication of official roster.
+
+04-guardian-command-iphone.png
+Inputs in order
+1. celestial-frontier-pixel-art/04-rainwood-battle-iphone.png
+2. audits/O2_20261102/w1-guardian/guardian-owner-r03/packet/master.png
+3. audits/VISION_D2_GUARDIAN_20260921/G7_SHEET/brown-bear-review-sheet.png
+4. celestial-frontier-pixel-art/01-earth-rainwood-biome.png
+
+One professional Celestial Frontier pixel-art reference at the exact visual direction of previous attached game concepts. Rebuild shapes with deliberate square-pixel clusters on a consistent apparent low-resolution native grid, crisp stair-stepped contours, sharp edges, restrained hue-shifted flat palettes and sparse dither. Mature naturalistic anatomy and readable shapes. Deep navy, thin cyan and brass borders, ivory bitmap type. No blur, vector smoothness, filter, photorealism, gradients, watermarks or text other than the requested labels.
+
+Portrait 9:16 Celestial Frontier Guardian command-break gameplay concept. Use input 1 for exact UI and creature art direction, input 2 for the intact Brown Bear visual identity, input 3 for imposing body scale, input 4 for the Rainwood arena treatment. Header text "EARTH GUARDIAN". One massive brown bear on right and further back with broad planted forepaws and pronounced shoulder hump, rounded brown ears and short tail, chest raised in a clear phase telegraph, no magical form change, no accessories. One active mint spotted Rosette fully-bodied on left foreground, camera view showing paws and ringed tail. River and misted rainwood in the back, spray breaks away from the bear's planted paw. Two reserve creatures are small discrete portrait icons in a 3-slot strip below the arena (three total including active), never show reserves as additional battle participants. One persistent segmented amber HP bar above the boss. Small "PHASE CHANGE" in a dark, separated info stripe. Command deck anchored at bottom with three clearly readable exact actions "HOLD", "SWAP", "WITHDRAW", each a large touch target. No timer, fake statistics or other words. Build an arresting imposing scale difference with natural creatures and compositional breathing room, tiny chunky sparkles of rain and modest warm effect accent. One still, not a collage and no device frame.

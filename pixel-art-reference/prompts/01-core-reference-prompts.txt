@@ -1,0 +1,59 @@
+CELESTIAL FRONTIER V2
+Pixel art reference pack and generation prompts
+
+HOW TO GENERATE ANOTHER CONCEPT
+
+In ImageGen or an image generator with reference-image input, attach an existing game painting or screenshot for subject accuracy and a PNG from this pack for the pixel-art direction. State which image is the anatomy, environment, or layout reference and which image defines the style. Use the master prompt below and add one brief per generation. Keep approved silhouettes, markings, palette roles, exact labels, and camera views explicit.
+
+For revisions, attach your accepted reference plus the latest draft. Ask for one change at a time and name the details that should stay fixed. Reuse the same creature sheet for the battle screen and the Compendium so a species remains recognizable across both views.
+
+MASTER PROMPT
+
+Create an original Celestial Frontier v2 visual-development reference in the attached approved pixel-art direction. Treat the existing game paintings as source reference for anatomy, landscape and object identity, and the approved pixel-art concepts as the style reference. Redraw the forms with deliberate square pixel clusters, short stepped diagonals, selective dithering, a limited set of hue-shifted flat colors per surface, crisp nearest-neighbor-style edges, and enough large shapes to read on iPhone. Aim for the apparent density of a detailed late-16-bit game, about a 400×225 logical image for landscape or 225×400 for portrait, with modular, sparse navy interfaces, cyan selection accents, brass marks and readable warm-ivory bitmap letters where requested. Keep species-specific silhouettes, functional anatomy and signature markings. Avoid smooth gradients, painterly or photo texture, blur, anti-aliasing, pixelation filters, excessive detail, watermarks and extra labels. Deliver one standalone full-bleed concept image.
+
+REUSABLE BRIEF
+
+Subject: [Game name or exact species, world, biome, or screen]
+Inputs: [1: game artwork for identity], [2: reference-pack PNG for pixel-art style]
+View and size: [portrait for iPhone, wide for desktop, or isolated sprite with transparent background]
+Preserve: [silhouette, anatomy, appendage count, markings, palette roles, camera, signature objects]
+Scene or motion: [what is visible and which foreground, middle ground, and background elements matter]
+Exact visible text: [use an explicit list, or request no text]
+Outputs: [one concept per call, or one requested panel per call for tighter identity control]
+
+FIVE GENERATION BRIEFS FROM THIS PACK
+
+01-EARTH-RAINWOOD-BIOME
+References: Painted Earth riverbank, painted Rainwood encounter, and the original pixel-art concept board. For a new biome, attach the painted source and use 01-earth-rainwood-biome.png as your style anchor.
+
+Landscape 16:9. Reference 1 is the source Earth riverbank composition and cooler palette. Reference 2 supplies the Rainwood fruit trees and ground cover. Reference 3 supplies pixel-art treatment. A complete environment art plate with no UI, text, characters or embedded panels. Rebuild the place as layered scenery with a low natural horizon: blue-gray cloud ceiling, ragged pale mist and receding mountain ridges, midground spruce forest, steel-teal river curving into depth, a broad clean pebbled encounter bank spanning the lower center, mossy boulders, tiny amber fruit caught in branches over the sides, red botanical accents near the corners and unobtrusive short rain strokes. Near rocks and foliage frame the composition without blocking the stage. Give water puddles distinct flat horizontal reflectance, and make every terrain material distinguishable. Visibly coarse enough for actual low-res pixel artwork. The biome itself is the hero.
+
+02-PROCEDURAL-CREATURE-REFERENCE
+References: Prior procedural fauna sheet, painted Rainwood encounter, and the original pixel-art concept board. For a new creature family, attach its painted anatomy references and use 02-procedural-creature-reference.png as your style anchor.
+
+Landscape 16:9 studio sheet. Reference 1 gives exact proportions, silhouettes and palettes for the six illustrative species. Reference 2 is Rosette's original identity. Reference 3 defines the UI accents. Header "CREATURE REFERENCE". Six equal panels in a restrained 3×2 grid, clean spacing, one large right-facing body sprite in each, subtle 1px baselines, quiet flat dark navy behind all subjects. Row 1 in order: ROSETTE, stocky round-eared mint spotted quadruped with cream chest and heavy ringed tail; LONGLEGS, long-legged amber narrow runner with pointed ears and rust markings; RIDGEBACK, squat slate-violet quadruped with layered slate plates along its back and ringed tapering tail. Row 2: SWIMMER, blue-gray fish with strong forked tail and broad fins; CRAWLER, low rust-and-brass arthropod with six jointed legs; GLIDER, broad teal ray-like alien with two big gliding membranes and narrow forked tail. Each distinct on silhouette alone. No other text except the six names. Use a shared apparent sprite grid and consistent top-left light, separated color clusters. Preserve actual relative leg proportions and paint clearly drawn feet and contacts. Stay faithful to the prior design sheet while giving every silhouette breathing room and making it practical as a future sprite authoring reference.
+
+03-SOL-SPACE-EXPLORATION
+References: Prior Sol mockup, prior Mars Approach mockup, and the original silver-and-sage Scout asset. For a new system, attach the game map and ship reference and use 03-sol-space-exploration.png as your style anchor.
+
+Landscape 16:9 actual-feeling orbital navigation game concept. Reference 1 is the exact Sol planet palette and UI. Reference 2 is the orbital direction and reference 3 gives the Scout silhouette. One view "SOL SYSTEM" with the central sun, eight individually distinguishable small planets across wide stepped dotted tracks, selected MARS marked by four cyan corners, and the small original silver-and-sage top-down scout with its blue narrow canopy near Mars, at clear icon size. Place the planet sprites across different parts of the frame with room to see the orbital relationships. In orbital order: Mercury, Venus, Earth, Mars, a thin asteroid belt, Jupiter, Saturn, Uranus, Neptune. Large but contained right-side survey card with ruddy Mars portrait, exact text "MARS", "SURVEY", "LAND". Sparse outer background shows a crop of the Milky Way dust band. Small "MILKY WAY" breadcrumb, "SOL SYSTEM" heading. If including planet captions, spell the eight names exactly and correctly. Mars on the map should be smaller than Earth and Jupiter should be the largest planet. Stylized spacing and diameter for playability. Keep orbits discernible in low contrast behind crisp readable visible graphics. No additional fake buttons, ship redesign, or poster montage.
+
+04-RAINWOOD-BATTLE-IPHONE
+References: Prior portrait Rainwood mockup, painted Rainwood encounter, and the original pixel-art concept board. For another encounter, attach its creature and environment references and use 04-rainwood-battle-iphone.png as your style anchor.
+
+Portrait 9:16 iPhone gameplay screen without a phone frame. Reference 1 is the pixel-art style and scene identity. Reference 2 is the painted battle composition and anatomy. Reference 3 gives the shared UI accent style. Show the Earth Rainwood Clearing encounter during a choice of action. Compact "RAINWOOD CLEARING" header, distant misted peaks and steel-blue river in top half, a rocky shore below with clear separation of sprites and environment. Keep the stout mint spotted Rosette with its ringed tail at lower left closest to player, spare the lower-left tail room; the small narrow Glasshorn with crystal brow and oversized tapered ears beside and just behind it; the crouching olive spotted Thicket Prowler with a long curled ringed tail further ahead facing them. Subtle cyan corner target cue near the prowler. Compact readable HP bars next to names or in a solid strip below the stage. A small dark action dock at the bottom with two large legible touch targets, exact labels "ATTACK" and "SWAP". Exact name spellings "ROSETTE", "GLASSHORN", "THICKET PROWLER" if displayed. No stats to invent. Favor uncluttered phone composition, comfortable touch targets, and keep their paws and silhouettes readable even in the rain. The scene is playable-looking, not a poster.
+
+05-COMPENDIUM-GALLERY
+References: Prior procedural fauna sheet, original pixel-art concept board, and a current v2 Compendium screenshot. For the next gallery, attach the updated species sheet and use 05-compendium-gallery.png as your style anchor.
+
+Landscape 16:9 fullscreen game interface. Reference 1 gives the exact illustrative species sprites. Reference 2 gives the pixel style and original Compendium panel. Reference 3 gives the real v2 dark-blue game UI identity only. Design a browsable creature gallery screen titled "COMPENDIUM" where the left 58 percent has six portrait tiles in a readable 3×2 grid arranged ROSETTE, LONGLEGS, RIDGEBACK, SWIMMER, CRAWLER, GLIDER. Each tile should visibly resemble its counterpart in input 1, with a simple baseline and minimal flat dark background. Right 42 percent is a larger pixel portrait of the selected "ROSETTE" in a very subtle Rainwood background with pale mist and quiet pine silhouettes. Match its round ears, mint coat, big dark rosettes, cream belly and thick ringed tail. Thin bright cyan frame around selected tile. Add a restrained navigation or category text "FAUNA" and little else, exact titles and names, no fabricated rarity metrics, molecule diagrams or stats. Treat the display as a usable field guide, with polish and focus on the wonderful artwork. No museum walls, no physical device frame, no fancy background behind the UI.
+
+FROM CONCEPT TO GAME ASSETS
+
+The five PNGs are generated visual references. The grid targets in the prompts describe visual density. For game assets, author the art at native size on a real square grid, limit colors with a working palette, and preview at integer zoom as well as actual phone display size.
+
+For a biome, prepare separate background ridges, trees, water, encounter ground, foreground plants, and weather elements. Anchor the playable ground so creature contacts and shadows agree with the scenery.
+
+For a procedural creature, start from the game's resolved body plan and full immutable genome. Record the silhouette, compatible limb and tail parts, attachment and contact points, markings, and palette roles for that family. Draw the parts and key poses on the same pixel grid. Version the rules and sprite sets so the same supported genome and art version reproduce the same creature. Use shared trait and identity data for icon, portrait, and battle sprite. Generate reference images in the authoring workflow, then use deterministic assembly during play.
+
+Check a small set of contrasting genomes in idle, approach, attack, hit, and recovery at phone scale. Look for unrecognizable silhouettes, missing or doubled parts, sliding feet, visible seams, and markings that jump between frames. Compare repeat renders of the same genome and check that the inherited traits intended to be visible are legible in both battle and the gallery.

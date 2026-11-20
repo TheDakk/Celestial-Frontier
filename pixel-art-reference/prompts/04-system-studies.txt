@@ -1,0 +1,167 @@
+CELESTIAL FRONTIER V2 — GAME SYSTEM REFERENCE PROMPTS
+
+Attach current game art for identity and the closest approved reference image for style. Keep familiar silhouettes and details. Give the generator only the visible labels you need. Reuse accepted sprite sheets for related scenes.
+
+MASTER STYLE PROMPT
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+SYSTEM BRIEFS
+
+Survey and biosphere
+Archived: 03-life-and-lineage/10-biosphere-survey.png
+Reference images:
+1. 01-style-and-worlds/01-earth-rainwood-biome.png
+2. 03-life-and-lineage/11-compendium-gallery.png
+3. 03-life-and-lineage/06-earth-flora.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Portrait 9:16 planside game screen. Rainwood horizon and river visible in the upper half, a clear lower navy "EARTH SURVEY" panel with a biosphere meter labeled exactly "BIOSPHERE YIELD", a simple small "DISCOVER LIFE" control, and three short stacked specimen rows with pixel icons: Rosette "TAME", orange persimmon fruit "SCAVENGE", and an abstract microscope droplet "SAMPLE". Exact text also "LISTEN TO BIOSPHERE" on a subtle button. No numerical health odds or claims about example life being canonical Earth residents. Big clean touch controls, grounded naturalist mood.
+
+Companion care and lineage
+Archived: 03-life-and-lineage/05-companion-care.png
+Reference images:
+1. 03-life-and-lineage/11-compendium-gallery.png
+2. 03-life-and-lineage/04-breeding-lineage-variants.png
+3. 04-combat-and-guardians/02-rainwood-iphone-battle.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 one believable "COMPANION" screen. Left selected "WOLF" specimen portrait in quiet muted pine habitat, artwork faithful to lineage reference. Place four discrete clean button labels "FEED", "BREED", "RENAME", "FIELD SCOUT". Right a tidy "LINEAGE" dossier with one thumbnail of Wolf, one of Ridgeback and their first cross, connected by small clear stepped lines. A lower "RECOVERY" status refers to the two parents using grouped icons. Two quiet interface regions, no numeric success rates, no assignment or timer claims, no other words. Distinguish owned companion actions and lineage visually.
+
+Outposts and extraction
+Archived: 01-style-and-worlds/04-planetary-operations.png
+Reference images:
+1. 01-style-and-worlds/02-mars-dune-sea.png
+2. 05-economy-and-progression/04-engineering-and-fabrication.png
+3. 05-economy-and-progression/01-materials-and-parts.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 single concept reference board, title "PLANETARY OPERATIONS". Stretch Mars dunes across upper half with a small field shelter station and silver sage scout parked at one side, with open Mars sands and volcanic blocks clearly recognizable. Lower half four clean aligned cards: "SURVEY RELAY" (cyan sensing dish), "FIELD SHELTER" (protective domed cabin), "COMPANION SANCTUARY" (open green-rated habitat footprint), and "EXTRACTION" (mining rig alongside distinct rock resource). These architecture icons are proposed visual designs. Add only a single "MINE" button in last card. No costs, counts or meters required; gameplay cannot be inferred from decorative art.
+
+Ship progression and research
+Archived: 02-space-and-ships/08-ship-progression.png
+Reference images:
+1. 05-economy-and-progression/04-engineering-and-fabrication.png
+2. Game repo: port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp
+3. Game repo: port/baseline-v1.8.9/screens/ui-shipyard-desktop.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 art sheet titled "SHIP PROGRESSION", four different top-down craft arranged from left to right on common construction baselines, native consistent viewing. Exact labels "SCOUT", "JUMP", "SURVEY CRUISER", "FRONTIER". Preserve the precise original compact silver/sage delta Scout with twin vents at left. Jump has stronger spine and protected prow plus larger drive bell, Survey Cruiser adds asymmetric nav dish and lab bay with a clearly broader outline, Frontier has a longer hull and paired luminous drive units and visibly greater reach. Keep credible family resemblance, hard edges and restrained light, no giant weapons. Small bottom row with two research/system icon studies labeled "DEEP SCANNERS" and "LONG-RANGE ARRAY". Layout like the gear sheet, no unlocked-state claims, exact text only.
+
+Charters and Field Training
+Archived: 05-economy-and-progression/05-charters-and-field-training.png
+Reference images:
+1. 05-economy-and-progression/04-engineering-and-fabrication.png
+2. Game repo: port/baseline-v1.8.9/screens/ui-charters-phone.png
+3. 02-space-and-ships/04-sol-mars.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape game UI reference, 16:9 screen showing two related interface states as two clear panels. Left "FIELD TRAINING" with a small orbital Earth image and a crisp target bracket indicating the first practice, one short practice action "SURVEY" with dish icon, and "CONTINUE". Right "STARTER CHARTERS" with three parchment-like rows on navy, titled exactly "MAKE PLANETFALL", "MINE MATERIALS", "DISCOVER LIFE" and a simple "ACCEPT" button. Use silhouettes and quiet controls to clearly separate a tutorial step from a mission board; no invented reward values, tutorial lesson numbers, or new objective hierarchy. Navy and cyan from prior reference, compact ivory typography.
+
+Records, Codices, and Binder
+Archived: 05-economy-and-progression/06-records-codices-and-binder.png
+Reference images:
+1. 03-life-and-lineage/11-compendium-gallery.png
+2. Game repo: port/baseline-v1.8.9/screens/ui-records-desktop.png
+3. Game repo: port/baseline-v1.8.9/screens/ui-prime-desktop.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+A 16:9 collection and progression concept board. Header "RECORDS". Four aligned clean sections named exactly "RANK & ACHIEVEMENTS", "BINDER", "PRIME CODEX", "COSMIC CODEX". First use a large brass explorer rank insignia and a few simple accomplishment medals. Binder shows fauna, flora, fungi and microbe specimen-like small silhouettes with dark missing slots. Prime Codex uses a grid of distinct warm planetary signature tokens including Earth as a tiny blue-green sphere, no exact count claim. Cosmic Codex uses distinct deep-space object symbols, ringed star, cluster and nebula. Design intentional negative space and clearly distinguish these four game collections. No fictitious scores, named rewards, or other terminology. Maintain the pixel Compendium look and scale.
+
+Atlas, sharing, and save tools
+Archived: 02-space-and-ships/09-atlas-sharing-and-backup.png
+Reference images:
+1. 02-space-and-ships/04-sol-mars.png
+2. 01-style-and-worlds/01-earth-rainwood-biome.png
+3. Game repo: port/baseline-v1.8.9/screens/ui-atlas-desktop.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+16:9 visual reference titled "STAR ATLAS", merged as three intentional columns of coordinated in-game concepts. Left large saved route with stack of icon and labels "MILKY WAY", "SOL", "EARTH" and a button "TRAVEL". Middle a real-looking pixel vista postcard with the same rainy Riverbank art, caption exactly "EARTH" and "CF1" underneath (symbolic code label only, no fabricated actual code) and small "POSTCARD" header. Right a simple tool card labeled "SAVE & SHARE" with a tiny file icon, small rows "FOLLOW", "EXPORT SAVE", "IMPORT SAVE". Show the relationship between route, share postcard and standalone backup. No QR codes, fictional strings, dialog risk text or other labels. Keep it legible and convincingly game-native.
+
+Combat threats and Chronicle
+Archived: 04-combat-and-guardians/05-threat-dossier-and-chronicle.png
+Reference images:
+1. 04-combat-and-guardians/04-guardian-command-iphone.png
+2. 04-combat-and-guardians/03-guardian-silhouettes.png
+3. 03-life-and-lineage/11-compendium-gallery.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 Celestial Frontier combat UI treatment on a navy frame and pixel Rainwood stage. Left rail "THREAT DOSSIER" with natural Earth brown bear badge and neat meaningful plan buttons "AUTO", "COMMAND". Center stage shows one active Rosette facing one massive brown bear with standard segmented health, no other active fighters. Right "COMBAT CHRONICLE" with short exact illustrated event labels "DODGE", "IMPACT", "RECOVERY". Below three distinct low-key nav chips "FRIENDLY DUEL", "CONQUEST", "GUARDIAN & TITAN" establishing different modes outside the arena. No numeric odds or invented battle results. This is an art reference sheet for preparation and recap, not a proposed new exact runtime screen. Design modest animation cues with hard pixel shapes and keep creature silhouettes clear.
+
+Stellar phenomena and skimming
+Archived: 02-space-and-ships/07-stellar-phenomena.png
+Reference images:
+1. 02-space-and-ships/04-sol-mars.png
+2. Game repo: audits/AV_PROTOSTAR_DISK_20260908/native-first/proto-desktop-1440x1000-dpr1.png
+3. Game repo: audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/mag-desktop-1440x1000-dpr1.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 celestial pixel concept board with three visual fields, title "STELLAR PHENOMENA". Left "PROTOSTAR" warm white embryonic core within a chunky burnt-orange and brass birth disk and minimal dust. Center "MAGNETAR" small white hot body and two thin strong stair-step blue magnetic field ellipses tilted around it, a restrained pair of opposed blue beams. Right a normal hot bright sun with clear golden corona and very small original silver-and-sage Scout with blue canopy skirting its outer edge, labeled "SKIM STAR". No visible ship near the other phenomena, no invented science readouts or dense star background. Separate the three silhouettes decisively while matching the earlier space views.
+
+Guide, settings, and audio cues
+Archived: 05-economy-and-progression/07-guide-settings-and-audio.png
+Reference images:
+1. 02-space-and-ships/04-sol-mars.png
+2. Game repo: port/baseline-v1.8.9/screens/ui-guide-desktop.png
+3. Game repo: port/baseline-v1.8.9/screens/ui-settings-phone.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape 16:9 interface concept board for utility screens in the same game pixel UI. Two readable well spaced panels. Left "GUIDE" with large tiny field guide illustrations for "EXPLORE", "COMPANIONS", "ENGINEERING", and "BATTLE", diagram icons only. Right "SETTINGS" with five horizontal simple switches and clear states shown graphically with contrast. Exact labels "SOUND", "CREATURE VOICES", "MONO AUDIO", "REDUCED MOTION", "FOLDED SURVEY CARD". Lower minimal illustration strip under settings presents tiny creature voice waveform, orbit radar chirp and battle hit icon as examples of accessible visual cues. No extra visible words, percentages or placeholders. Same cyan focus and ivory text as all previous mockups, sparse and realistic.
+
+Fungi and microbes
+Archived: 03-life-and-lineage/09-fungi-and-microbes.png
+Reference images:
+1. 01-style-and-worlds/03-fungal-highlands.png
+2. 03-life-and-lineage/07-procedural-flora.png
+3. 03-life-and-lineage/11-compendium-gallery.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+Landscape field guide named exactly "FUNGI & MICROBES". Four isolated square specimens, groups of two. Illustrative first two: "SHELF FUNGI" ochre overlapping bands attached to dead wood, "SPORE CLUSTER" upright clusters of distinct rounded caps growing from one mossy root zone, natural ecology shown. Second two inside quiet glass microscope circles: "COLONY" a shallow teal branching microbial biofilm made of deliberate pixel clusters and "MOTILE CELL" a pale blue oval single-cell form with a crisp membrane and one track of short flagella. Highlight the difference between landscape-scale fungi and microscope-scale microbes through baselines versus scope frames. The four forms are illustrative, no actual species or scientific data claims. Clear pixel silhouettes, no imagined animal anatomy or vocal cues. Exact four labels only besides header.
+
+Inventory and exact-item loadout
+Archived: 05-economy-and-progression/03-inventory-and-loadout.png
+Reference images:
+1. 05-economy-and-progression/02-explorer-gear.png
+2. 05-economy-and-progression/01-materials-and-parts.png
+3. Game repo: port/baseline-v1.8.9/screens/ui-inv-gear-desktop.png
+
+One self-contained Celestial Frontier full-screen pixel art concept. Precisely match the prior attached pixel concept boards: clear square pixel clusters on an apparent low-resolution grid, hard stair-step silhouettes, flat hue-shifted ramps, selective dithering, and deliberate highlight patches. Deep navy interface, thin cyan selection borders, restrained brass edges, warm ivory legible bitmap text. In UI concepts use consistent spacing and obvious action hierarchy. Actual game screenshots inform subjects and terminology. Do not carry their smooth rendering into the new work. No blur, photographic texture, noisy detail, hardware mockups, extra text, watermarks, invented numbers or placeholder gibberish. Only the stated visible labels.
+
+One spacious full desktop screen titled "INVENTORY". Three exact tabs "MATERIALS", "CRAFTABLES", "GEAR", with Gear selected. At left there is a compact grid with matching familiar inventory item icons, Mining Rig, Field Suit, Landing Struts, Star Compass and visor among them. At center show an unoccupied blue-gray exploration suit with the Scout Visor on a portrait stand and four selected modular item slot outlines. At right detail card with enlarged existing teal and silver visor, exact name "SCOUT VISOR", and one small side-by-side UI comparison strip with precise headers "EQUIPPED" and "SELECTED". Show a standard visor shape and one alternate outline as comparison, no fake stats. Buttons "EQUIP" and "SALVAGE" clearly separated. Same pixel clusters, hardware shape language and palette as the earlier gear atlas. This is a UI reference concept for the exact-item inventory system. No other labels, bogus quantities, health meters or wearable requirements.
+
+TARGETED REVISIONS
+
+Corrected companion care and lineage
+Archived: 03-life-and-lineage/05-companion-care.png
+Reference images:
+1. Earlier working draft: exec-b2abf3e2-7f53-4d20-906c-1f03a8cf1f25.png
+2. 03-life-and-lineage/06-earth-flora.png
+
+Edit the first provided Celestial Frontier pixel art concept directly. Make exactly one change: replace the meat drumstick icon on the bottom-left FEED button with a small orange Persimmon berry fruit icon with green leaf cap, matching the stylized persimmon on the second reference. The fruit should be approximately the same pixel size and exactly in the old icon's location. Preserve the prior button wording FEED and retain the Wolf picture, Lineage family tree, Recovery rows, other buttons, border, overall layout, exact interface labels, palette, character designs and the whole screen. There must be no meat icon anywhere in the result. Same 16:9 composition.
+
+Guide with creature combat
+Archived: 05-economy-and-progression/07-guide-settings-and-audio.png
+Reference images:
+1. Earlier working draft: exec-fb1bcfe0-f97b-4b07-a48d-fa0de0a024b0.png
+2. 04-combat-and-guardians/02-rainwood-iphone-battle.png
+
+Make a narrowly scoped correction to the first 16:9 pixel-art reference. Preserve its exact split layout, words, all five settings, the four Guide tile frames, and the other art. In the lower-right Guide artwork tile labeled BATTLE, replace the ship firing lasers with two small recognizable biological creatures facing each other, mint spotted Rosette and olive Thicket Prowler based on the second image, with one tiny pixel impact between them. Nothing else changes. Native chunky pixel art matching the tile art and same proportions. Keep the word BATTLE. There must be no spaceship or lasers in that specific tile. The ship in EXPLORE stays.
+
+Gear-only inventory selection
+Archived: 05-economy-and-progression/03-inventory-and-loadout.png
+Reference images:
+1. Earlier working draft: exec-c96a0013-9173-46a5-8f5b-58aedaf71af2.png
+2. 05-economy-and-progression/02-explorer-gear.png
+
+Make a focused correction to this Celestial Frontier screenshot. In first reference keep the dimensions, labels, selection, and all art and layout except the lower six inventory cells on the far left. Keep the top two rows of six gear icons. Replace the lower two rows that currently contain materials and crafting components with six dark navy EMPTY inventory slots with faint pixel borders. The GEAR tab stays selected. Leave the suit, selected Scout Visor detail, EQUIPPED and SELECTED comparisons, EQUIP and SALVAGE and all other visuals alone. The eight or more cell borders stay and the empty ones contain no symbol. Match outer borders, pixel style and colors exactly.
