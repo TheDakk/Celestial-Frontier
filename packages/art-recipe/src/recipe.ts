@@ -1,8 +1,9 @@
 import { IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
-import type { Catalogue, SizeTier, SlotName } from '@cf/art-format';
+import type { Catalogue, SizeTier, SlotName, ThemeName } from '@cf/art-format';
 import { planBodyParts, planParts, planSpeciesParts, torsoKindOf } from './requests';
 import { resolveAnatomy } from './resolve';
 import { resolveBody } from './route';
+import { IRIS_BY_THEME } from './states';
 import type { Body } from './route';
 import { artStream, identityKey, pick } from './streams';
 
@@ -26,7 +27,7 @@ export interface Recipe {
   // Drawn only by the routed builder; buildRecipe and buildSpeciesRecipe set the neutral values 100, false, null, 0, null.
   opacity: 100 | 82 | 66; // percent: a jelly 82, a translucent skin 66
   airborne: boolean;
-  theme: null;            // the creature's theme; null until the theme is drawn
+  theme: ThemeName | null; // the creature's theme (routed builder, fauna); null otherwise
   rim: 0 | 50 | 75;       // 0 until the rim is drawn
   skin: number | null;    // the skin layer; null until the skin is drawn
 }
@@ -136,11 +137,12 @@ export function buildRoutedRecipe(
     scaffoldId: `${b.family}/${torsoKindOf(b)}/${b.tier}`,
     legs: b.limbs,
     parts,
-    ramps: { primary: `c${b.colour}`, accent: `c${b.accent}`, underside: `c${b.colour}-under`, iris: `iris${d.iris}` },
+    // The iris is the theme's; the `iris` stream is still drawn (drawStreams), its result dropped.
+    ramps: { primary: `c${b.colour}`, accent: `c${b.accent}`, underside: `c${b.colour}-under`, iris: `iris${b.theme === null ? 0 : IRIS_BY_THEME[b.theme]}` },
     marking: { pattern: b.pattern, strength: 2, phase: d.phase },
     shift: { head: d.headShift, tail: d.tailShift },
     glow: b.glow, gaps,
-    ...NEUTRAL, opacity: b.opacity, airborne: b.airborne,
+    ...NEUTRAL, opacity: b.opacity, airborne: b.airborne, theme: b.theme,
   });
 }
 

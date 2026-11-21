@@ -18,6 +18,10 @@ export const PIXEL_IRIS = 17;
 /** Iris ramps iris0..iris7, fixed for renderer version 1 so adding a ramp can never change an existing eye. */
 export const IRIS_RAMP_COUNT = 8;
 
+/** The game's ability themes (ABILITY_THEMES in the combat package); a cross test holds the two together. */
+export const THEME_NAMES = Object.freeze(['fire', 'frost', 'storm', 'tide', 'stone', 'venom', 'void', 'sand', 'chem', 'psionic', 'wild'] as const);
+export type ThemeName = (typeof THEME_NAMES)[number];
+
 /**
  * Colour numbers (0xRRGGBB) for pixel values 0-20: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
  * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp.

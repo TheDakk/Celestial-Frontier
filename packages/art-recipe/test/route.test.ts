@@ -151,11 +151,15 @@ describe('routeBody and resolveBody', () => {
     const b = resolveBody({ ...land, body: 0, pattern: 7, skin: 3, color: 13, accent: 2, lumin: true }, first);
     expect([b.kingdom, b.pattern, b.skin, b.colour, b.accent, b.glow, b.form, b.floraTable]).toEqual(['fauna', 7, 3, 13, 2, true, 0, 'land']);
   });
+  it('carries the game\'s theme of a fauna body', () => {
+    expect(resolveBody({ ...land, body: 0, habitat: 9, loco: 0 }, first).theme).toBe('fire');
+    expect(resolveBody({ ...land, body: 9, habitat: 9, loco: 4 }, first).theme).toBe('tide');
+  });
 });
 
 describe('the other kingdoms', () => {
   const base = { kingdom: 'fauna', body: 0, loco: 4, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
-  const neutral = { head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100 };
+  const neutral = { head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100, theme: null };
   it.each([['flora', 18], ['fungi', 9], ['microbe', 12]] as const)('%s resolves as today, with the neutral fields', (kingdom, length) => {
     const genome = { ...base, kingdom, form: length + 2 };
     const a = resolveAnatomy(genome);

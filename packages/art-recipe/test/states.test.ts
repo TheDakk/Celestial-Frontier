@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { tierForSize } from '@cf/art-format';
+import { IRIS_RAMP_COUNT, THEME_NAMES, tierForSize } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
-import { EX_HABITAT_STATE, EX_LOCO_STATE, HABITAT_STATE, LOCO_STATE, SIZE_TIER_BY_GENE, stateOf, type StateRow } from '../src/states';
+import { EX_HABITAT_STATE, EX_LOCO_STATE, HABITAT_STATE, IRIS_BY_THEME, LOCO_STATE, SIZE_TIER_BY_GENE, stateOf, themeOf, THEME_BY_HABITAT, type StateRow } from '../src/states';
 
 // The original's two name tests, verbatim: a movement name and a habitat name each make a creature aquatic or airborne.
 const MOVE_AQUA = /swim|filter|jet|brine-crawl/;
@@ -80,5 +80,42 @@ describe('size tiers', () => {
     expect([...SIZE_TIER_BY_GENE]).toEqual(['medium', 'small', 'medium', 'medium', 'large', 'large']);
     expect(SIZE_TIER_BY_GENE[0]).toBe(SIZE_TIER_BY_GENE[2]);
     for (let gene = 1; gene <= 5; gene++) expect(SIZE_TIER_BY_GENE[gene], String(gene)).toBe(tierForSize(gene));
+  });
+});
+
+describe('the theme and its iris', () => {
+  /** What is wrong with an iris table: a theme without a whole-number ramp 0-7, a key that is no theme, an unused ramp. */
+  const irisProblems = (table: Readonly<Record<string, number>>): string[] => {
+    const problems: string[] = [];
+    for (const theme of THEME_NAMES) {
+      const ramp = table[theme];
+      if (ramp === undefined || !Number.isInteger(ramp) || ramp < 0 || ramp >= IRIS_RAMP_COUNT) problems.push(`ramp:${theme}`);
+    }
+    for (const key of Object.keys(table)) if (!(THEME_NAMES as readonly string[]).includes(key)) problems.push(`key:${key}`);
+    for (let ramp = 0; ramp < IRIS_RAMP_COUNT; ramp++) if (!Object.values(table).includes(ramp)) problems.push(`unused:${ramp}`);
+    return problems;
+  };
+
+  it('IRIS_BY_THEME gives every theme a ramp 0-7 and uses all eight', () => {
+    expect(irisProblems(IRIS_BY_THEME)).toEqual([]);
+    expect(IRIS_BY_THEME).toEqual({ fire: 0, frost: 1, wild: 1, storm: 2, tide: 3, stone: 4, sand: 4, venom: 5, chem: 5, void: 6, psionic: 7 });
+    expect(Object.isFrozen(IRIS_BY_THEME)).toBe(true);
+  });
+
+  it('the iris check catches a missing theme, a ramp out of range and an unused ramp (planted faults)', () => {
+    const { void: _dropped, ...noVoid } = IRIS_BY_THEME;
+    expect(irisProblems(noVoid)).toEqual(['ramp:void', 'unused:6']);
+    expect(irisProblems({ ...IRIS_BY_THEME, fire: 8 })).toEqual(['ramp:fire', 'unused:0']);
+  });
+
+  it('themeOf reads the habitat table, then the movement overrides, and wraps both genes', () => {
+    expect(THEME_BY_HABITAT.length).toBe(19);
+    expect(Object.isFrozen(THEME_BY_HABITAT)).toBe(true);
+    expect(themeOf({ habitat: 9, loco: 0 })).toBe('fire');
+    expect(themeOf({ habitat: 9, loco: 4 })).toBe('tide');
+    expect(themeOf({ habitat: 9 + 19, loco: 3 + 18 })).toBe('storm');
+    expect(themeOf({ habitat: -10, loco: -17 })).toBe('stone'); // habitat 9, movement 1
+    expect(themeOf({})).toBe('venom');
+    expect(themeOf({ habitat: 8, loco: 0, x: 1 })).toBe('psionic'); // the marker is not read
   });
 });

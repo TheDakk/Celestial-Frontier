@@ -1,10 +1,11 @@
-import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, PIXEL_ACCENT, PIXEL_IRIS, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
 
 // The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-20 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
+// So are a jelly's (family `gelatinous`) torso values 5-8, its organelles, before any mark is painted, so no mark covers one.
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 
 export interface Assembly {
@@ -20,6 +21,19 @@ interface Placed {
   x: number;
   y: number;
   gaps: string[];
+}
+
+/** The family whose torso draws its organelles in the accent values 5-8, shown in the iris ramp (the original paints them in the eye colour). */
+const ORGANELLE_FAMILY = 'gelatinous';
+
+/** A copy of a frame's pixels with the accent values 5-8 written as the iris values 17-20. */
+function organellesInIris(pixels: Uint8Array): Uint8Array {
+  const out = Uint8Array.from(pixels);
+  for (let i = 0; i < out.length; i++) {
+    const v = out[i] ?? 0;
+    if (v >= PIXEL_ACCENT && v < PIXEL_ACCENT + 4) out[i] = v + PIXEL_IRIS - PIXEL_ACCENT;
+  }
+  return out;
 }
 
 /**
@@ -134,6 +148,8 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     gaps.push(...p.gaps);
     if (p.frame === undefined) continue;
     let frame = p.frame;
+    // A new frame object, so the catalogue's frame is never changed.
+    if (rp.slot === 'torso' && recipe.family === ORGANELLE_FAMILY) frame = { ...frame, pixels: organellesInIris(frame.pixels) };
     // Only the mark slots take marks: an eye, back part, head feature or glow is never painted and never gets a marks gap.
     if (rp.mark !== undefined && recipe.marking.pattern !== 0 && pattern !== undefined && MARK_SLOTS.includes(rp.slot)) {
       const phase = (recipe.marking.phase + rp.mark.offset % PHASE_SPREAD) % 15;

@@ -1,7 +1,7 @@
 import { EYE_COUNTS, LIMB_COUNTS, tierForSize } from '@cf/art-format';
-import type { SizeTier } from '@cf/art-format';
+import type { SizeTier, ThemeName } from '@cf/art-format';
 import { EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, marked, wrap } from './resolve';
-import { SIZE_TIER_BY_GENE, stateOf } from './states';
+import { SIZE_TIER_BY_GENE, stateOf, themeOf } from './states';
 import { pick } from './streams';
 
 /** The animal the original draws for a genome, and only the genes that animal reads. Built beside resolveAnatomy; not yet read by buildRecipe. */
@@ -18,6 +18,7 @@ export interface Body {
   keeps: 'shell' | 'crystals' | 'tusks' | 'horn' | null; // what a fish keeps of its body plan
   aquatic: boolean; airborne: boolean;
   opacity: 100 | 82 | 66;
+  theme: ThemeName | null; // the game's ability theme (themeOf); null outside fauna
   pattern: number; skin: number; colour: number; accent: number; glow: boolean;
   form: number; floraTable: 'land' | 'aquatic' | 'aerial';
 }
@@ -88,7 +89,7 @@ export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStre
   if (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe') {
     const neutral = {
       ...shared, family: kingdom, torso: '', tier: guardian ? 'guardian' as const : tierForSize(g('size', L.size)),
-      head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100 as const,
+      head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100 as const, theme: null,
       pattern: 0, skin: 0,
     };
     if (kingdom === 'fungi') return { ...neutral, kingdom, form: g('form', L.fungiForm), floraTable: 'land' };
@@ -136,7 +137,7 @@ export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStre
     head: readsHead ? headGene : null, tail, limbs, eyes,
     horn: quadruped && (HORN_HEADS.includes(headGene) || g('trait', L.trait) === HORN_TRAIT),
     keeps: family === 'fish' ? FISH_KEEPS_BY_BODY[body] ?? null : null,
-    aquatic, airborne, opacity,
+    aquatic, airborne, opacity, theme: themeOf(genome),
     pattern: g('pattern', L.pattern), skin, form: 0, floraTable: 'land',
   };
 }

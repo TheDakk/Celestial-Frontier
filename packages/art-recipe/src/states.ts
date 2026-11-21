@@ -1,4 +1,4 @@
-import type { SizeTier } from '@cf/art-format';
+import type { SizeTier, ThemeName } from '@cf/art-format';
 import { GENE_LENGTHS, marked, wrap } from './resolve';
 
 /** A row of a game name table: the game's name, and whether the original's name tests make it aquatic and airborne. */
@@ -63,3 +63,27 @@ export function stateOf(genome: Readonly<Record<string, unknown>>): { aquatic: b
  * so gene 0 takes the medium tier; genes 1 to 5 equal `tierForSize`. Not yet read by the live recipe.
  */
 export const SIZE_TIER_BY_GENE: readonly Exclude<SizeTier, 'guardian'>[] = Object.freeze(['medium', 'small', 'medium', 'medium', 'large', 'large']);
+
+/** The game's theme by habitat gene (HAB_THEME in the combat package), in its order. A cross test holds it to the game's rule. */
+export const THEME_BY_HABITAT: readonly ThemeName[] = Object.freeze([
+  'venom', 'wild', 'stone', 'tide', 'tide', 'stone', 'frost', 'void', 'psionic', 'fire',
+  'tide', 'sand', 'chem', 'chem', 'storm', 'fire', 'sand', 'venom', 'frost',
+]);
+
+/** The movement genes that set the theme whatever the habitat, as the game's abilityTheme overrides it. */
+const THEME_BY_LOCO: Readonly<Record<number, ThemeName>> = Object.freeze({ 1: 'stone', 3: 'storm', 4: 'tide', 5: 'psionic', 11: 'psionic', 13: 'tide', 17: 'psionic' });
+
+/**
+ * A fauna genome's theme, as the game's abilityTheme gives it: the habitat's theme, unless the movement gene sets
+ * one. As in the game, the extremophile marker is not read (both genes index the normal tables); out-of-range genes
+ * wrap, as every gene does in the renderer.
+ */
+export function themeOf(genome: Readonly<Record<string, unknown>>): ThemeName {
+  const L = GENE_LENGTHS;
+  return THEME_BY_LOCO[wrap(genome['loco'], L.loco)] ?? THEME_BY_HABITAT[wrap(genome['habitat'], L.habitat)]!;
+}
+
+/** The iris ramp each theme's eyes take: eleven themes share the eight ramps (IRIS_RAMP_COUNT). */
+export const IRIS_BY_THEME: Readonly<Record<ThemeName, number>> = Object.freeze({
+  fire: 0, frost: 1, wild: 1, storm: 2, tide: 3, stone: 4, sand: 4, venom: 5, chem: 5, void: 6, psionic: 7,
+});

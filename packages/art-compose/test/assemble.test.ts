@@ -439,6 +439,10 @@ part quadruped/eyes/iris/small/v0
 frame rest anchor=0,0
 5d8
 
+part quadruped/eyes/pit/small/v0
+frame rest anchor=0,0
+6
+
 scaffold quadruped/sturdy/small origin=10,10
 pose rest
 entry torso 0 rest 0 0
@@ -446,6 +450,10 @@ entry torso 0 rest 0 0
   it('an eye part drawn 5 d 8 lands as 17 13 20', () => {
     const r = assemble(recipeOf([['torso', 0, 'quadruped/torso/sturdy/small/v0'], ['head', 0, 'quadruped/head/h5/small/v0'], ['eyes', 0, 'quadruped/eyes/iris/small/v0']]), 'rest', irisCatalogue);
     expect([at(r.buffer, 15, 10), at(r.buffer, 16, 10), at(r.buffer, 17, 10)]).toEqual([17, 13, 20]);
+  });
+  it('a sensory pit is an eye part: drawn 6, it lands as 18', () => {
+    const r = assemble(recipeOf([['torso', 0, 'quadruped/torso/sturdy/small/v0'], ['head', 0, 'quadruped/head/h5/small/v0'], ['eyes', 0, 'quadruped/eyes/pit/small/v0']]), 'rest', irisCatalogue);
+    expect(at(r.buffer, 15, 10)).toBe(18);
   });
   it('a head drawn with 5 stays 5', () => {
     const r = assemble(recipeOf([['torso', 0, 'quadruped/torso/sturdy/small/v0'], ['head', 0, 'quadruped/head/h6/small/v0']]), 'rest', irisCatalogue);
@@ -536,6 +544,68 @@ entry torso 0 rest 0 0
       expect(drawn(r.buffer), `legs ${legs}`).toEqual(plain);
       expect(r.gaps).toEqual([]);
     }
+  });
+});
+
+describe('assemble: a jelly\'s organelles', () => {
+  // The torso's top row holds the accent ramp 5 6 7 8 (organelles), its bottom row the body 2; a flow line covers both.
+  const jellyCatalogue = parseCatalogueText(HEADER + `
+part gelatinous/torso/body/small/v0
+frame rest anchor=0,0
+5678
+2222
+layer flow
+1111
+1111
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`);
+  const row = (b: PixelBuffer, y: number): number[] => [at(b, 10, y), at(b, 11, y), at(b, 12, y), at(b, 13, y)];
+  const torso = (family: string, pattern: number): Recipe => recipeOf([], {
+    family,
+    parts: [{ slot: 'torso', index: 0, partId: 'gelatinous/torso/body/small/v0', source: 'own', mark: { offset: 0, rolls: new Array<number>(15).fill(0) } }],
+    marking: { pattern, strength: 2, phase: 0 },
+  });
+
+  it('a jelly\'s torso drawn 5 6 7 8 lands as 17 18 19 20 and a striped mark never covers it', () => {
+    const plain = assemble(torso('gelatinous', 0), 'rest', jellyCatalogue);
+    expect(row(plain.buffer, 10)).toEqual([17, 18, 19, 20]);
+    expect(row(plain.buffer, 11)).toEqual([2, 2, 2, 2]);
+    const striped = assemble(torso('gelatinous', 1), 'rest', jellyCatalogue);
+    expect(row(striped.buffer, 10)).toEqual([17, 18, 19, 20]);
+    // The mark is painted on the body row, so the stripe did reach the frame.
+    expect(row(striped.buffer, 11)).toEqual([5, 5, 5, 5]);
+    expect(striped.gaps).toEqual([]);
+    // The catalogue's frame is never changed.
+    expect([...jellyCatalogue.parts.get('gelatinous/torso/body/small/v0')!.frames['rest']!.pixels]).toEqual([5, 6, 7, 8, 2, 2, 2, 2]);
+  });
+
+  it('a quadruped torso drawn 5 stays 5', () => {
+    const plain = assemble(torso('quadruped', 0), 'rest', jellyCatalogue);
+    expect(row(plain.buffer, 10)).toEqual([5, 6, 7, 8]);
+    // Without the rewrite, the same stripe paints over the organelle row (the jelly test's planted-fault twin).
+    const striped = assemble(torso('quadruped', 1), 'rest', jellyCatalogue);
+    expect(row(striped.buffer, 10)).not.toEqual([5, 6, 7, 8]);
+  });
+
+  it('only the torso of a jelly is rewritten: its other parts keep 5 to 8', () => {
+    const cat = parseCatalogueText(HEADER + `
+part gelatinous/torso/body/small/v0
+frame rest anchor=0,0 attach=tail:-1,0
+2222
+
+part gelatinous/tail/t2/small/v0
+frame rest anchor=0,0
+5
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`);
+    const r = assemble(recipeOf([['torso', 0, 'gelatinous/torso/body/small/v0'], ['tail', 0, 'gelatinous/tail/t2/small/v0']], { family: 'gelatinous' }), 'rest', cat);
+    expect(at(r.buffer, 9, 10)).toBe(5);
   });
 });
 

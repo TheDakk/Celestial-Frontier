@@ -302,9 +302,9 @@ describe('buildRoutedRecipe', () => {
     }
   });
 
-  it('carries the body\'s opacity and airborne state, and the neutral theme, rim and skin', () => {
+  it('carries the body\'s opacity, airborne state and theme, and the neutral rim and skin', () => {
     const jelly = buildRoutedRecipe({ ...base, body: 9 }, [], every);
-    expect([jelly.opacity, jelly.airborne, jelly.theme, jelly.rim, jelly.skin]).toEqual([82, false, null, 0, null]);
+    expect([jelly.opacity, jelly.airborne, jelly.theme, jelly.rim, jelly.skin]).toEqual([82, false, 'venom', 0, null]);
     const glider = buildRoutedRecipe({ ...base, loco: 3, skin: 7 }, [], every);
     expect([glider.opacity, glider.airborne]).toEqual([66, true]);
   });
@@ -325,7 +325,8 @@ describe('buildRoutedRecipe', () => {
       const g = makeGenome(seed, 'fauna', 1) as unknown as Record<string, unknown>;
       const old = buildRecipe(g, [], every);
       const routed = buildRoutedRecipe(g, [], every);
-      expect([routed.shift, routed.marking, routed.ramps], `seed ${seed}`).toEqual([old.shift, old.marking, old.ramps]);
+      // The iris is the theme's (Task 8); the other ramps are the same.
+      expect([routed.shift, routed.marking, { ...routed.ramps, iris: '' }], `seed ${seed}`).toEqual([old.shift, old.marking, { ...old.ramps, iris: '' }]);
       for (const p of routed.parts) {
         if (p.slot !== 'head' && p.slot !== 'tail' && !p.slot.endsWith('Limbs')) continue;
         const o = old.parts.find((x) => x.slot === p.slot && x.index === p.index);
@@ -337,6 +338,34 @@ describe('buildRoutedRecipe', () => {
       }
     }
     expect(compared).toBeGreaterThan(500);
+  });
+
+  it('the routed iris follows the theme, not the stream', () => {
+    const streamIris = new Set<string>();
+    for (let seed = 1; seed <= 50; seed++) {
+      const fire = buildRoutedRecipe({ ...base, habitat: 9, seed }, [], every);
+      expect([fire.theme, fire.ramps.iris], `seed ${seed}`).toEqual(['fire', 'iris0']);
+      const swimmer = buildRoutedRecipe({ ...base, habitat: 9, loco: 4, seed }, [], every);
+      expect([swimmer.theme, swimmer.ramps.iris], `seed ${seed}`).toEqual(['tide', 'iris3']);
+      streamIris.add(`iris${pick(artStream(identityKey({ ...base, habitat: 9, seed }, []), 'iris', RENDERER_VERSION), 8)}`);
+    }
+    // The stream would have given other ramps for these seeds, so the theme and not the stream decides.
+    expect(streamIris.size).toBeGreaterThan(4);
+    for (const kingdom of ['flora', 'fungi', 'microbe']) {
+      const r = buildRoutedRecipe({ kingdom, size: 2, habitat: 9, seed: 7 }, [], every);
+      expect([r.theme, r.ramps.iris], kingdom).toEqual([null, 'iris0']);
+    }
+  });
+
+  it('buildRecipe keeps its stream iris', () => {
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 50; seed++) {
+      const g = { ...base, habitat: 9, seed };
+      const r = buildRecipe(g, [], full);
+      expect([r.theme, r.ramps.iris], `seed ${seed}`).toEqual([null, `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}`]);
+      seen.add(r.ramps.iris);
+    }
+    expect(seen.size).toBeGreaterThan(4);
   });
 
   it('the old builders carry the neutral new fields', () => {
