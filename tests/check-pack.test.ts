@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { assemble } from '@cf/art-compose';
-import { bodyOf, buildRoutedRecipe, EYELESS_HEAD, WING_KINDS } from '@cf/art-recipe';
+import { bodyOf, buildRoutedRecipe, EYELESS_HEAD, resolveAnatomy, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
 import { checkPack, detachedSlots, formatReport, gapIsInfo, generatedTorsos, routeStates, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
@@ -1089,9 +1089,31 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     expect(missingLast('fish/torso/shark/small/v0', ['head', 'tail', 'back'])).toEqual(['part fish/torso/shark/small/v0 frame rest: missing attach point back']);
     expect(missingLast('insect/torso/mantis/small/v0', ['head', 'back', 'far0', 'far1', 'far2', 'near0', 'near1', 'near2'])).toEqual(['part insect/torso/mantis/small/v0 frame rest: missing attach point near2']);
     expect(missingLast('tentacled/torso/squid/small/v0', ['tail', 'back'])).toEqual(['part tentacled/torso/squid/small/v0 frame rest: missing attach point back']);
-    expect(missingLast('gelatinous/torso/body/small/v0', ['back'])).toEqual(['part gelatinous/torso/body/small/v0 frame rest: missing attach point back']);
+    expect(missingLast('crustacean/torso/crab/small/v0', ['head', 'tail', 'back'])).toEqual(['part crustacean/torso/crab/small/v0 frame rest: missing attach point back']);
     // A family no genome routes to keeps the four-legged set.
     expect(missingLast('myriapod/torso/body/small/v0', ['head'])[0]).toMatch(/^part myriapod\/torso\/body\/small\/v0 frame rest: missing attach point head, tail, back, far0/);
+  });
+
+  it('until Task 17 a torso id the live builder draws keeps the four-legged set; only a routed-only id takes its family\'s', () => {
+    const full = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
+    const structureOf = (id: string, points: readonly string[]): string[] =>
+      partLines(checkPack(GOOD + part(id, points.map((p) => `${p}:0,0`).join(','))).structure);
+    const missing = (id: string, points: readonly string[]): string[] => [`part ${id} frame rest: missing attach point ${points.join(', ')}`];
+    // As at base: the live builder asks these for a head, a tail and legs.
+    expect(structureOf('tentacled/torso/body/small/v0', ['tail', 'back'])).toEqual(missing('tentacled/torso/body/small/v0', full.filter((p) => p !== 'tail' && p !== 'back')));
+    expect(structureOf('insect/torso/body/small/v0', ['head', 'back', 'far0', 'far1', 'far2', 'near0', 'near1', 'near2'])).toEqual(missing('insect/torso/body/small/v0', ['tail', 'far3', 'near3']));
+    expect(structureOf('fish/torso/body/small/v0', ['head', 'tail', 'back'])).toEqual(missing('fish/torso/body/small/v0', full.slice(3)));
+    expect(structureOf('serpent/torso/body/small/v0', full)).toEqual([]);
+    expect(structureOf('gelatinous/torso/body/small/v0', ['back'])).toEqual(missing('gelatinous/torso/body/small/v0', full.filter((p) => p !== 'back')));
+    // Routed-only ids take their family's set.
+    expect(structureOf('fish/torso/shark/small/v0', ['head', 'tail', 'back'])).toEqual([]);
+    expect(structureOf('serpent/torso/snake/small/v0', ['back'])).toEqual(missing('serpent/torso/snake/small/v0', ['eye0']));
+    // The ids both builders reach, today: the five shared quadruped types (whose family set is the four-legged set) and gelatinous/body.
+    const live = new Set([0, 4].flatMap((loco) => Array.from({ length: 16 }, (_, body) => {
+      const a = resolveAnatomy({ kingdom: 'fauna', body, loco });
+      return `${a.family}/${torsoKindOf(a)}`;
+    })));
+    expect([...generatedTorsos()].filter((id) => live.has(id)).sort()).toEqual(['gelatinous/body', 'quadruped/horned', 'quadruped/squat', 'quadruped/stilt', 'quadruped/sturdy', 'quadruped/tusked']);
   });
 
   it('wing-membranous is accepted only with a membranous scaffold; wing-sturdy, wing-armored and bodyFeature/plates-sturdy are errors', () => {

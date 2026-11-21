@@ -77,7 +77,7 @@ export interface PackReport {
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;
 export const HIDDEN_MIN: number;
-/** The attach points a generated torso needs, by family; a family not listed needs the quadruped's. Plus `wing` and `wing1` once the pack holds the torso type's wings. */
+/** The attach points a routed-only torso needs, by family (until Task 17, a torso id the live builder draws, or a family not listed, needs the quadruped's). Plus `wing` and `wing1` once the pack holds the torso type's wings. */
 export const TORSO_POINTS_BY_FAMILY: Readonly<Record<string, readonly string[]>>;
 /** Whether a gap is information rather than an error (see PackReport.gaps). */
 export function gapIsInfo(gap: string): boolean;

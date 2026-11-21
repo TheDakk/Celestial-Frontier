@@ -33,7 +33,7 @@ const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await impo
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 /**
  * The attach points a generated torso needs, by family: the points the parts of planBodyParts hang from on the torso
- * (attachFor in the composer). A family no fauna genome routes to keeps the four-legged set. A torso also needs `wing`
+ * (attachFor in the composer). Until Task 17 they apply only to torso ids the live builder never draws; the others keep the four-legged set. A torso also needs `wing`
  * once the pack holds a `wing-<its torso type>` of its family and tier, and `wing1` once it holds a `hindwing-<torso type>`.
  */
 export const TORSO_POINTS_BY_FAMILY = Object.freeze({
@@ -153,6 +153,9 @@ const STATE_GENES = { land: { loco: 0, habitat: 0 }, airborne: { loco: 3, habita
 const OWN_FAMILIES = new Set(Object.values(OWN_FAMILY_BY_BODY));
 /** The seeds shapedGenome tries, from 1. */
 const SHAPE_SEEDS = 64;
+
+/** Every `<family>/<torso>` the routed planner reaches (generatedTorsos), for the torso attach-point rule. */
+const ROUTED_TORSOS = generatedTorsos();
 
 /** Whether a part is in the wing slots or the body feature slot, or is a flipper: the parts NEW_KINDS names. */
 const isNewPart = (part) => part.slot === 'farWings' || part.slot === 'nearWings' || part.slot === 'bodyFeature' || ((part.slot === 'farLimbs' || part.slot === 'nearLimbs') && isFlipper(part.kind));
@@ -594,9 +597,15 @@ function structureProblems(catalogue) {
   const fallbackParts = new Set(catalogue.fallbacks.values());
   const featured = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'headFeature' && p.kind.includes('-')).map((p) => `${p.family}/${p.tier}/${p.kind.slice(p.kind.lastIndexOf('-') + 1)}`));
   const wingParts = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'farWings' || p.slot === 'nearWings').map((p) => `${p.family}/${p.tier}/${p.kind}`));
-  /** The points a generated torso needs: its family's (TORSO_POINTS_BY_FAMILY), `wing` and `wing1` once the pack holds its wings. */
+  /**
+   * The points a generated torso needs: the four-legged set for a torso id the live builder draws (GENERATED_TORSOS) or
+   * that no builder reaches; its family's (TORSO_POINTS_BY_FAMILY) for an id only the routed planner asks for; then
+   * `wing` and `wing1` once the pack holds its wings.
+   */
+  const routedOnly = (part) => !GENERATED_TORSOS.has(`${part.family}/${part.kind}`) && ROUTED_TORSOS.has(`${part.family}/${part.kind}`);
   const torsoPoints = (part) => [
-    ...(TORSO_POINTS_BY_FAMILY[part.family] ?? TORSO_POINTS_BY_FAMILY.quadruped),
+    // An id both builders reach (gelatinous/body, and the quadruped types, whose family set is the same) keeps the live rule; flips at Task 17.
+    ...(routedOnly(part) ? TORSO_POINTS_BY_FAMILY[part.family] : TORSO_POINTS_BY_FAMILY.quadruped),
     ...(wingParts.has(`${part.family}/${part.tier}/wing-${part.kind}`) ? ['wing'] : []),
     ...(wingParts.has(`${part.family}/${part.tier}/hindwing-${part.kind}`) ? ['wing1'] : []),
   ];
