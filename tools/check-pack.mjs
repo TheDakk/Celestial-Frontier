@@ -73,7 +73,8 @@ export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind, all plain with skin ' + BASE_SKIN + ' (no back part); every pose the scaffold defines. ' +
   'For each head kind with the last tail and eight eyes: one creature at eight legs for each pattern gene ' + PATTERN_GENES.join(', ') +
-  ' at full strength, and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + ') at eight legs and again at every leg count ' +
+  ' at full strength, composed for its gaps only (marks never change which pixels are drawn, so it is not checked for the edge, ' +
+  'detachment or hidden parts, and its own seeded variants and shifts are not sampled for them), and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + ') at eight legs and again at every leg count ' +
   'a legs= entry or a torso leg-count attach point of the scaffold is written for, in every pose at its own shift. ' +
   'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs) and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for: ' +
   'every head kind with no tail at its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
@@ -621,18 +622,26 @@ export function checkPack(text) {
     const poses = Object.keys(scaffold.poses);
     const genomeOf = (head, tail, limbs, eyes, pattern = 0, skin = BASE_SKIN) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern, skin, color: 0, accent: 0, lumin: false });
 
+    /** Composes one recipe in one pose, counting its gaps; a compose error is recorded and gives undefined. */
+    const composeOnce = (recipe, pose) => {
+      let out;
+      try {
+        out = compose(recipe, pose, catalogue);
+      } catch (error) {
+        failed.add(`${error instanceof Error ? error.message : String(error)} (needed by ${scaffold.id})`);
+        return undefined;
+      }
+      composed++;
+      for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+      return out;
+    };
+    /** Composes one recipe in every pose for its gaps and compose failures only. */
+    const gapsOnly = (recipe) => { for (const pose of poses) composeOnce(recipe, pose); };
     /** Composes one recipe in every pose: gaps, edge and connectivity at its own shift, then at each extra shift pair. */
     const check = (genome, recipe, shiftPairs, variant) => {
       for (const pose of poses) {
-        let out;
-        try {
-          out = compose(recipe, pose, catalogue);
-        } catch (error) {
-          failed.add(`${error instanceof Error ? error.message : String(error)} (needed by ${scaffold.id})`);
-          continue;
-        }
-        composed++;
-        for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+        const out = composeOnce(recipe, pose);
+        if (out === undefined) continue;
         const where = variant === undefined ? { scaffold: scaffold.id, genome, pose } : { scaffold: scaffold.id, genome, pose, variant };
         if (touchesEdge(out.buffer)) edge.push(where);
         const own = detachedSlots(assemble(recipe, pose, labels).buffer);
@@ -676,13 +685,14 @@ export function checkPack(text) {
 
     // Marks, back parts and head features: for each head kind with the last tail and eight eyes, one creature at eight
     // legs for each pattern gene but plain (on the base skin), and one for each skin gene that has a back part (plain) at
-    // eight legs and again at each of those leg counts (a legs= entry can move or swap the back part).
+    // eight legs and again at each of those leg counts (a legs= entry can move or swap the back part). A patterned
+    // creature is composed for its gaps only: marks never change which pixels are drawn, so its edge, connectivity and
+    // hidden parts are those of the same parts unpainted.
     const backLimbs = [FULL_LIMBS, ...[...legCounts].sort((a, b) => a - b).map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== FULL_LIMBS)];
     for (const head of someHeads) {
       const tail = tails[tails.length - 1];
       for (const pattern of PATTERN_GENES) {
-        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern);
-        check(genome, buildRecipe(genome, [], catalogue), []);
+        gapsOnly(buildRecipe(genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern), [], catalogue));
       }
       for (const skin of BACK_SKINS) {
         for (const limbs of backLimbs) {
