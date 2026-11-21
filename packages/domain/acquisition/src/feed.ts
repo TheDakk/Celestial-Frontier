@@ -101,6 +101,7 @@ interface Arc5FeedPreflightAuthorityV1 {
 }
 
 const PREFLIGHTS = new WeakMap<object, Arc5FeedPreflightAuthorityV1>();
+const MISSING_CLOCK = 'Arc 5 feed needs the active-play clock (activePlayMs)';
 
 function refused(reason: Arc5FeedRefusalReasonV1): Arc5FeedPreflightOutcomeV1 {
   return Object.freeze({ kind: 'refused', reason });
@@ -133,9 +134,10 @@ function exactTarget(value: unknown): Arc5FeedTargetV1 | null {
 export function preflightArc5FeedV1(
   parent: OwnershipStateV2,
   target: Arc5FeedTargetV1,
-  /** The current active-play clock: a finished Rest no longer blocks a meal. Absent = the stored assignment as-is. */
-  activePlayMs?: number,
+  /** The current active-play clock: a finished Rest no longer blocks a meal. Required: a call without it throws. */
+  activePlayMs: number,
 ): Arc5FeedPreflightOutcomeV1 {
+  if (activePlayMs === undefined) throw new TypeError(MISSING_CLOCK);
   if (!isOwnershipStateV2(parent)) return refused('ownership-invalid');
   if (parent.mode !== 'current') return refused('ownership-protected');
   if (parent.revision === MAX_OWNERSHIP_REVISION) {
@@ -148,7 +150,7 @@ export function preflightArc5FeedV1(
   /* Only a companion AWAY on a mission cannot be fed. Recovery locks breed, combat and dispatch only
      (BREEDING_AND_SHARING.md; COMPANION_LOCKED_COMMANDS_V1), so a recovering or recovered parent eats, and the meal
      keeps its Recovery assignment unchanged. */
-  const projected = activePlayMs === undefined ? creature.assignment : projectCompanionAvailabilityV1(creature, activePlayMs).assignment;
+  const projected = projectCompanionAvailabilityV1(creature, activePlayMs).assignment;
   if (projected !== null && projected.kind === 'mission') return refused('creature-assigned');
   const fedBefore = creature.fed ?? 0;
   if (fedBefore >= ARC5_FED_MAX_V1) return refused('creature-fed-cap');
@@ -215,9 +217,10 @@ function feedWitness(
 export function settleArc5FeedV1(
   preflight: Arc5FeedPreflightV1,
   receiptOrdinal: number,
-  /** The exact active-play snapshot this transaction commits (bond memories are stamped with it). */
-  activePlayMs = 0,
+  /** The exact active-play snapshot this transaction commits (bond memories are stamped with it). Required. */
+  activePlayMs: number,
 ): Arc5FeedSettlementV1 {
+  if (activePlayMs === undefined) throw new TypeError(MISSING_CLOCK);
   const authority = preflight && typeof preflight === 'object'
     ? PREFLIGHTS.get(preflight)
     : undefined;

@@ -164,11 +164,13 @@ function contents(state: OwnershipStateV2): OwnershipStateContentsV2 {
   };
 }
 
+const NO_CLOCK = 'Arc 5 feed needs the active-play clock (activePlayMs)';
+
 function ready(f: Fixture, creatureId = f.leftId) {
   const outcome = preflightArc5FeedV1(f.state, {
     creatureId,
     foodLotId: f.floraLotId,
-  });
+  }, 0);
   if (outcome.kind !== 'ready') throw new Error(`feed fixture refused: ${outcome.reason}`);
   return outcome.preflight;
 }
@@ -179,7 +181,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const parentSource = ownershipSourceStateV1(f.state);
     const before = f.state.creatures.find((row) => row.creatureId === f.leftId)!;
     const twinBefore = f.state.creatures.find((row) => row.creatureId === f.twinId)!;
-    const pre = ready(f), settlement = settleArc5FeedV1(pre, 9);
+    const pre = ready(f), settlement = settleArc5FeedV1(pre, 9, 0);
 
     expect(settlement.successor.revision).toBe(f.state.revision + 1);
     expect(ownershipSourceStateV1(settlement.successor)).toBe(parentSource);
@@ -208,7 +210,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
 
   it('tombstones the exact last specimen when the meal exhausts its lot', () => {
     const f = fixture({ quantity: 1 });
-    const settlement = settleArc5FeedV1(ready(f), 12);
+    const settlement = settleArc5FeedV1(ready(f), 12, 0);
     expect(settlement.foodAfter).toBeNull();
     expect(settlement.successor.specimenLots.some((row) => row.lotId === f.floraLotId)).toBe(false);
     expect(settlement.foodTombstone).toMatchObject({
@@ -223,8 +225,8 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
   it('is deterministic for equivalent plans and advances no random or temporal authority', () => {
     const first = fixture();
     const second = fixture();
-    const left = settleArc5FeedV1(ready(first), 31);
-    const right = settleArc5FeedV1(ready(second), 31);
+    const left = settleArc5FeedV1(ready(first), 31, 0);
+    const right = settleArc5FeedV1(ready(second), 31, 0);
     expect(left.witness).toBe(right.witness);
     expect(left.receiptEvidence).toEqual(right.receiptEvidence);
     expect(ownershipStateDigestV2(left.successor)).toBe(ownershipStateDigestV2(right.successor));
@@ -269,9 +271,9 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const preflight = preflightArc5FeedV1(bred, {
       creatureId: inherited.creatureId,
       foodLotId: food.lotId,
-    });
+    }, 0);
     if (preflight.kind !== 'ready') throw new Error(preflight.reason);
-    const fed = settleArc5FeedV1(preflight.preflight, 41);
+    const fed = settleArc5FeedV1(preflight.preflight, 41, 0);
     expect(fed.creatureAfter.fed).toBe(15 + policyGain(preflight.preflight.taste));
     expect(fed.successor.creatures.find((row) => row.creatureId === f.leftId)?.fed).toBe(80);
     expect(fed.successor.creatures.find((row) => row.creatureId === f.rightId)?.fed).toBe(30);
@@ -281,33 +283,33 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const capped = fixture({ fed: 200 });
     expect(preflightArc5FeedV1(capped.state, {
       creatureId: capped.leftId, foodLotId: capped.floraLotId,
-    })).toEqual({ kind: 'refused', reason: 'creature-fed-cap' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'creature-fed-cap' });
     const assigned = fixture({ assignment: { kind: 'mission', missionId: 'away-1' } });
     expect(preflightArc5FeedV1(assigned.state, {
       creatureId: assigned.leftId, foodLotId: assigned.floraLotId,
-    })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
     // Recovery locks breed/combat/dispatch only: a recovering (or recovered) parent eats and keeps its Recovery
     for (const readyAtActivePlayMs of [0, 480_000]) {
       const recovering = fixture({ assignment: { kind: 'recovery', readyAtActivePlayMs } });
       const meal = preflightArc5FeedV1(recovering.state, {
         creatureId: recovering.leftId, foodLotId: recovering.floraLotId,
-      });
+      }, 0);
       if (meal.kind !== 'ready') throw new Error(`recovery refused a meal: ${meal.reason}`);
-      expect(settleArc5FeedV1(meal.preflight, 41).creatureAfter.assignment)
+      expect(settleArc5FeedV1(meal.preflight, 41, 0).creatureAfter.assignment)
         .toEqual({ kind: 'recovery', readyAtActivePlayMs });
     }
     const ordinary = fixture();
     expect(preflightArc5FeedV1(ordinary.state, {
       creatureId: ownershipContentId('creature', 'absent') as CreatureInstanceId,
       foodLotId: ordinary.floraLotId,
-    })).toEqual({ kind: 'refused', reason: 'creature-not-found' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'creature-not-found' });
     expect(preflightArc5FeedV1(ordinary.state, {
       creatureId: ordinary.leftId,
       foodLotId: ownershipContentId('specimen', 'absent') as SpecimenLotId,
-    })).toEqual({ kind: 'refused', reason: 'food-not-found' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'food-not-found' });
     expect(preflightArc5FeedV1(ordinary.state, {
       creatureId: ordinary.leftId, foodLotId: ordinary.fungiLotId,
-    })).toEqual({ kind: 'refused', reason: 'food-not-flora' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'food-not-flora' });
 
     const protectedV1 = createLegacyProtectedOwnershipStateV1({
       schema: 'cf-v1.8.9-ownership-source/v1',
@@ -321,7 +323,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const protectedV2 = migrateOwnershipStateV1ToV2(protectedV1);
     expect(preflightArc5FeedV1(protectedV2, {
       creatureId: ordinary.leftId, foodLotId: ordinary.floraLotId,
-    })).toEqual({ kind: 'refused', reason: 'ownership-protected' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'ownership-protected' });
 
     const exhausted = registerOwnershipStateMirrorV2({
       ...ownershipStateMirrorV2(ordinary.state),
@@ -329,7 +331,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     }, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
     expect(preflightArc5FeedV1(exhausted, {
       creatureId: ordinary.leftId, foodLotId: ordinary.floraLotId,
-    })).toEqual({ kind: 'refused', reason: 'ownership-revision-exhausted' });
+    }, 0)).toEqual({ kind: 'refused', reason: 'ownership-revision-exhausted' });
   });
 
   it('rejects forged/accessor inputs and forged or exhausted settlement authority', () => {
@@ -343,11 +345,38 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(preflightArc5FeedV1(
       f.state,
       hostile as unknown as { creatureId: CreatureInstanceId; foodLotId: SpecimenLotId },
+      0,
     )).toEqual({ kind: 'refused', reason: 'input-invalid' });
     expect(touched).toBe(false);
-    expect(() => settleArc5FeedV1({ ...ready(f) }, 1)).toThrow(/owner-minted/u);
-    expect(() => settleArc5FeedV1(ready(f), LAST_USABLE_F4_RECEIPT_ORDINAL_V2 + 1))
+    expect(() => settleArc5FeedV1({ ...ready(f) }, 1, 0)).toThrow(/owner-minted/u);
+    expect(() => settleArc5FeedV1(ready(f), LAST_USABLE_F4_RECEIPT_ORDINAL_V2 + 1, 0))
       .toThrow(/exhausted/u);
+  });
+
+  it('refuses a preflight or settlement without the active-play clock', () => {
+    const f = fixture();
+    const target = { creatureId: f.leftId, foodLotId: f.floraLotId };
+    const preflightAny = preflightArc5FeedV1 as (...args: unknown[]) => unknown;
+    const settleAny = settleArc5FeedV1 as (...args: unknown[]) => unknown;
+    expect(() => preflightAny(f.state, target)).toThrow(NO_CLOCK);
+    expect(() => preflightAny(f.state, target, undefined)).toThrow(NO_CLOCK);
+    expect(() => settleAny(ready(f), 9)).toThrow(NO_CLOCK);
+    expect(() => settleAny(ready(f), 9, undefined)).toThrow(NO_CLOCK);
+  });
+
+  it('two clocks give two different settlements of the same preflight; the same clock repeats', () => {
+    const pre = ready(fixture());
+    const early = settleArc5FeedV1(pre, 9, 0);
+    const late = settleArc5FeedV1(pre, 9, 42_000);
+    const lateAgain = settleArc5FeedV1(pre, 9, 42_000);
+    expect(early.witness).toContain('"activePlayMs":0');
+    expect(late.witness).toContain('"activePlayMs":42000');
+    expect(early.receiptEvidence.witnessDigest).not.toBe(late.receiptEvidence.witnessDigest);
+    expect(early.creatureAfter.bond?.memories.map((m) => m.atActivePlayMs)).toEqual([0, 0]);
+    expect(late.creatureAfter.bond?.memories.map((m) => m.atActivePlayMs)).toEqual([42_000, 42_000]);
+    expect(ownershipStateDigestV2(early.successor)).not.toBe(ownershipStateDigestV2(late.successor));
+    expect(lateAgain.witness).toBe(late.witness);
+    expect(ownershipStateDigestV2(lateAgain.successor)).toBe(ownershipStateDigestV2(late.successor));
   });
 
   it('contains no ambient entropy, clock, or mutable-global dependency', () => {
@@ -365,14 +394,14 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(first.creatureAfter.bond?.memories.map((m) => [m.id, m.atActivePlayMs])).toEqual([['meal:first', 42_000], [`taste:${pre.taste.flavour}`, 42_000]]);
     expect(first.witness).toContain('"activePlayMs":42000');
     // the same flavour again: no XP, no new memory, bond unchanged
-    const again = preflightArc5FeedV1(first.successor, { creatureId: f.leftId, foodLotId: f.floraLotId });
+    const again = preflightArc5FeedV1(first.successor, { creatureId: f.leftId, foodLotId: f.floraLotId }, 99_000);
     if (again.kind !== 'ready') throw new Error(again.reason);
     const second = settleArc5FeedV1(again.preflight, 10, 99_000);
     expect(second.creatureAfter.xp).toBe(first.creatureAfter.xp);
     expect(second.creatureAfter.bond).toEqual(first.creatureAfter.bond);
     // control: a companion AWAY on a mission is still refused
     const away = fixture({ assignment: { kind: 'mission', missionId: 'm-1' } });
-    expect(preflightArc5FeedV1(away.state, { creatureId: away.leftId, foodLotId: away.floraLotId })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(preflightArc5FeedV1(away.state, { creatureId: away.leftId, foodLotId: away.floraLotId }, 0)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
   });
 });
 
@@ -389,11 +418,11 @@ describe('D13 Rest — heals on the active-play clock (sealed heal, locked until
     const row = rest.successor.creatures.find((c) => c.creatureId === f.leftId)!;
     expect(projectCompanionAvailabilityV1(row, 480_999)).toMatchObject({ rested: false, restRemainingActivePlayMs: 1, blocks: { breed: true, combat: true, dispatch: true } });
     expect(projectCompanionAvailabilityV1(row, 481_000)).toMatchObject({ rested: true, assignment: null, blocks: { breed: false, combat: false, dispatch: false } });
-    // Feed obeys the same boundary: refused one ms early, eaten at the boundary; without a clock the stored lock holds
+    // Feed obeys the same boundary: refused one ms early, eaten at the boundary; without a clock it is refused
     const food = { creatureId: f.leftId, foodLotId: f.floraLotId };
     expect(preflightArc5FeedV1(rest.successor, food, 480_999)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
     expect(preflightArc5FeedV1(rest.successor, food, 481_000).kind).toBe('ready');
-    expect(preflightArc5FeedV1(rest.successor, food)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(() => (preflightArc5FeedV1 as (...args: unknown[]) => unknown)(rest.successor, food)).toThrow(NO_CLOCK);
     // resting again while resting is refused; once rested and healthy there is nothing to rest
     expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 2_000)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
     expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 481_000)).toEqual({ kind: 'refused', reason: 'creature-healthy' });
