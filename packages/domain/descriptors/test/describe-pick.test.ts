@@ -47,9 +47,9 @@ const WHERE: Record<string, string | null> = {
   kuiper: 'current star', oort: 'current star', visitor: 'current star',
   planet: 'picked planet', moon: "moon's planet", worm: null,
 };
-/** The logId prefix of each kind's card: which composer answered. */
+/** The logId prefix of each kind's card: which composer answered. A quasar card with no galaxy is logged as 'q'. */
 const LOG_ID: Record<string, RegExp> = {
-  galaxy: /^g\d/, quasar: /^q\d/, radio: /^r\d/, deco: /^d[a-z0-9]+_/, snova: /^sn\d/, protostar: /^ps\d/, cmb: /^cmb$/,
+  galaxy: /^g\d/, quasar: /^q(\d|$)/, radio: /^r\d/, deco: /^d[a-z0-9]+_/, snova: /^sn\d/, protostar: /^ps\d/, cmb: /^cmb$/,
   star: /^s\d/, starsys: /^s\d/, comet: /^c\d/, belt: /^b\d/, dwarf: /^dw\d/, kuiper: /^k\d/, oort: /^o\d/, visitor: /^v\d/,
   planet: /^p\d/, moon: /^m\d/, worm: /^wh$/,
 };

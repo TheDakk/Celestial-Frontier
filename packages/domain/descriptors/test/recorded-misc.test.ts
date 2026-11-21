@@ -48,7 +48,7 @@ const kinds = (rows: Row[]): string[] => [...new Set(rows.map(({ input }) => inp
 describe('@cf/domain-descriptors — describePickWithState pinned against the current game', () => {
   it('has the recorded sections, every pick kind the router routes, and no ambient epoch or st', () => {
     expect(Object.keys(fixture.sections)).toEqual(SECTIONS);
-    expect(SECTIONS.map((s) => fixture.sections[s].length)).toEqual([6, 5, 6, 17, 7, 11, 10, 15, 10, 15]);
+    expect(SECTIONS.map((s) => fixture.sections[s].length)).toEqual([8, 5, 6, 17, 7, 11, 10, 15, 10, 15]);
     expect(kinds(fixture.sections.routing)).toEqual(['galaxy', 'star', 'starsys', 'planet', 'moon', 'belt', 'worm', 'kuiper', 'oort', 'visitor', 'cmb']);
     expect(fixture.sections.nullCards.every(({ output }) => output === null)).toBe(true);
     expect(Object.keys(fixture.freeGlobals)).toEqual(['installCaptureHooks', 'COSMIC_EPOCH', 'st', 'customNames']);
@@ -56,6 +56,15 @@ describe('@cf/domain-descriptors — describePickWithState pinned against the cu
       .every(({ input }) => input.pick.kind === 'planet' && input.epoch !== OTHER_EPOCH)).toBe(true);
     expect('COSMIC_EPOCH' in globalThis).toBe(false);
     expect('st' in globalThis).toBe(false);
+  });
+  it('quasar: a pick with no galaxy is pinned (no thumb, logId q, no name key, no lookup)', () => {
+    const noGalaxy = fixture.sections.quasar.filter(({ input }) => input.pick.data === null);
+    expect(noGalaxy.length).toBe(2);
+    expect(noGalaxy.some(({ input }) => input.names !== undefined)).toBe(true);
+    for (const row of noGalaxy) {
+      expect(row.output).toMatchObject({ title: 'Quasar', thumb: null, logId: 'q', where: { type: 'galaxy', gal: null }, _nameKey: null });
+      expect(row.lookups).toEqual([]);
+    }
   });
   for (const s of SECTIONS) {
     it(`${s}: the recorded cards and lookups`, () => {

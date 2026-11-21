@@ -414,6 +414,108 @@
     "lookups": [
      "g2337985196"
     ]
+   },
+   {
+    "input": {
+     "pick": {
+      "kind": "quasar",
+      "data": null
+     },
+     "nav": {
+      "gal": null,
+      "star": null
+     }
+    },
+    "output": {
+     "title": "Quasar",
+     "sub": "Active galactic nucleus",
+     "thumb": null,
+     "thumbSq": true,
+     "rows": [
+      [
+       "What it is",
+       "A supermassive black hole gorging on gas and dust"
+      ],
+      [
+       "Brightness",
+       "Outshines its entire host galaxy of billions of stars"
+      ],
+      [
+       "Jets",
+       "Twin beams of plasma fired out near the speed of light"
+      ],
+      [
+       "Made of",
+       "A superheated accretion disk of infalling matter"
+      ]
+     ],
+     "logId": "q",
+     "notable": true,
+     "badge": "Rare",
+     "where": {
+      "type": "galaxy",
+      "gal": null
+     },
+     "_nameKey": null
+    },
+    "lookups": []
+   },
+   {
+    "input": {
+     "pick": {
+      "kind": "quasar",
+      "data": null
+     },
+     "nav": {
+      "gal": {
+       "x": 90,
+       "y": -60,
+       "size": 78,
+       "sp": 0,
+       "tilt": 0.62,
+       "rot": 0.5,
+       "seed": 999,
+       "home": true
+      },
+      "star": null
+     },
+     "names": {
+      "g999": "Unused"
+     }
+    },
+    "output": {
+     "title": "Quasar",
+     "sub": "Active galactic nucleus",
+     "thumb": null,
+     "thumbSq": true,
+     "rows": [
+      [
+       "What it is",
+       "A supermassive black hole gorging on gas and dust"
+      ],
+      [
+       "Brightness",
+       "Outshines its entire host galaxy of billions of stars"
+      ],
+      [
+       "Jets",
+       "Twin beams of plasma fired out near the speed of light"
+      ],
+      [
+       "Made of",
+       "A superheated accretion disk of infalling matter"
+      ]
+     ],
+     "logId": "q",
+     "notable": true,
+     "badge": "Rare",
+     "where": {
+      "type": "galaxy",
+      "gal": null
+     },
+     "_nameKey": null
+    },
+    "lookups": []
    }
   ],
   "radio": [

@@ -434,8 +434,14 @@ const recorders = {
 
     const galaxyNav = (g) => ({ gal: g, star: null });
     const starNav = (g, star) => ({ gal: g, star });
+    // A quasar pick with no galaxy (no thumb, logId 'q', no name key) closes the quasar section, without
+    // and with a custom-name table, after the rows recorded before it.
     const sections = {
-      quasar: [...take(blazars, 3), ...take(quasars, 3)].map((g) => ({ pick: { kind: 'quasar', data: g }, nav: galaxyNav(null) })),
+      quasar: [
+        ...[...take(blazars, 3), ...take(quasars, 3)].map((g) => ({ pick: { kind: 'quasar', data: g }, nav: galaxyNav(null) })),
+        { pick: { kind: 'quasar', data: null }, nav: galaxyNav(null) },
+        { pick: { kind: 'quasar', data: null }, nav: galaxyNav(home), names: { [`g${HOME_GAL_SEED}`]: 'Unused' } },
+      ],
       radio: take(radios, 5).map((g) => ({ pick: { kind: 'radio', data: g }, nav: galaxyNav(null) })),
       comet: cometStars.flatMap((star) => w.systemFor(star.seed).comets.map((cm, ci) => ({ pick: { kind: 'comet', data: { ci, cm } }, nav: starNav(home, star) }))),
       deco: DECO_KINDS.flatMap((k) => decoByKind.get(k)).map((dc, i) => ({ pick: { kind: 'deco', data: dc }, nav: i % 2 ? galaxyNav(home) : starNav(home, starRef(stars[i])) })),
