@@ -160,10 +160,15 @@ describe('@cf/domain-worldgen — galaxy sprite constant', () => {
     expect(GALAXY_SPRITE_COUNT).toBe(16);
     expect(recordGalaxies()).toEqual(galaxies);
   });
+  it('generates cell (-6, 4) with the web value the current game gives', () => {
+    const cell = galaxiesInCell(-6, 4);
+    expect(cell.web).toBe(0.18673954586404728);
+    expect(cellWebContract(cell)).toEqual({ ok: true, diagnostic: '' });
+  });
   it('notices a changed sprite pick (negative control)', () => {
     const mutated = structuredClone(galaxies);
     const cell = mutated.find((c) => c.galaxies.length > 0)!;
-    cell.galaxies[0]!.sp = (cell.galaxies[0]!.sp + 1) % 16;
+    cell.galaxies[0]!.sp = (cell.galaxies[0]!.sp + 1) % GALAXY_SPRITE_COUNT;
     expect(recordGalaxies()).not.toEqual(mutated);
   });
 });
