@@ -10,9 +10,10 @@ const rampOf = (v: number): number => (v - 1) >> 2;
 
 /**
  * Paints the creature's skin texture into a copy of `pixels`, one part frame's pixels with its marks already painted
- * (the original draws the skin over the patterned hide). A hand-drawn layer named for the skin wins: each value it
- * holds replaces the pixel. Otherwise the skin's rule (skins.ts) steps texture pixels one shade inside their ramp.
- * Only a pixel drawn 1 to 12 is ever written, and only to another shade of its own ramp, so marks keep their ramp.
+ * (the original draws the skin over the patterned hide). A hand-drawn layer named for the skin wins, exactly as a
+ * hand-drawn marks layer does: each value 1 to 12 it holds replaces the pixel, in any ramp. Otherwise the skin's rule
+ * (skins.ts) steps texture pixels one shade inside their own ramp, so the rule never moves a mark out of its ramp.
+ * Only a pixel drawn 1 to 12 is ever written, and only with a value 1 to 12.
  * Returns a new array, or `null` when the rule is `none` and the frame has no layer named for the skin.
  * Never changes its inputs.
  */
@@ -26,8 +27,9 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName):
     for (let i = 0; i < out.length; i++) {
       const host = pixels[i] ?? 0;
       const v = hand[i] ?? 0;
-      // A frame built in code could hold any value in its hand layer: only a shade of the pixel's own ramp is written.
-      if (skinnable(host) && skinnable(v) && rampOf(v) === rampOf(host)) out[i] = v;
+      // As a hand-drawn marks layer: any ramp value 1 to 12 replaces a drawn pixel. A frame built in code could hold
+      // any value in its hand layer, so a reserved value is never written.
+      if (skinnable(host) && skinnable(v)) out[i] = v;
     }
     return out;
   }

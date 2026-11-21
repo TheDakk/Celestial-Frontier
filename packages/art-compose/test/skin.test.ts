@@ -64,17 +64,12 @@ describe('paintSkin', () => {
     expect(rowsOf(holed, paintSkin(holed, holed.pixels, 'slick'))).toEqual(['3333', '2.d2', '2322']);
   });
 
-  it("never leaves a pixel's ramp", () => {
+  it("the rule never leaves a pixel's ramp", () => {
     const hosts = frameOf(['14589c', '14589c', '14589c', '14589c', '14589c', '14589c', '14589c', '14589c']);
     const ramp = (v: number): number => (v - 1) >> 2;
-    for (const skin of SKIN_NAMES) {
-      // The rule, then a hand-drawn layer holding a value of every ramp.
-      const handed = frameOf(block(6, 8, '1'), { [skin]: ['159c15', '26a26a', '37b37b', '48c48c', '159c15', '26a26a', '37b37b', '48c48c'] });
-      for (const frame of [hosts, { ...handed, pixels: hosts.pixels }]) {
-        const out = paintSkin(frame, frame.pixels, skin);
-        if (out === null) continue;
-        for (let i = 0; i < out.length; i++) expect(ramp(out[i]!), `${skin} ${i}`).toBe(ramp(frame.pixels[i]!));
-      }
+    for (const skin of RULED) {
+      const out = paintSkin(hosts, hosts.pixels, skin)!;
+      for (let i = 0; i < out.length; i++) expect(ramp(out[i]!), `${skin} ${i}`).toBe(ramp(hosts.pixels[i]!));
     }
     const ones = frameOf(block(12, 8, '1'));
     const fours = frameOf(block(12, 8, '4'));
@@ -86,15 +81,18 @@ describe('paintSkin', () => {
     expect(RULED.some((s) => SKIN_TABLE[s].step === -1) && RULED.some((s) => SKIN_TABLE[s].step === 1)).toBe(true);
   });
 
-  it('never writes where the frame is 0, 13, 14, 15 or 17 to 20', () => {
-    const rows = ['.def', 'hijk', '.def', 'hijk', '.def', 'hijk', '.def', 'hijk'];
+  it('never writes where the frame is 0, 13, 14, 15, 16 or 17 to 20, nor writes those values', () => {
+    const rows = ['.defg', 'hijk.', '.defg', 'hijk.', '.defg', 'hijk.', '.defg', 'hijk.'];
     for (const skin of SKIN_NAMES) {
       // A frame built in code may hold any value in a layer, an eye or iris value among them.
-      const layered = ['c', '1', 'd', 'h'].map((c) => frameOf(rows, { [skin]: block(4, 8, c) }));
+      const layered = ['c', '1', 'd', 'g', 'h'].map((c) => frameOf(rows, { [skin]: block(5, 8, c) }));
       for (const frame of [frameOf(rows), ...layered]) {
         const out = paintSkin(frame, frame.pixels, skin);
         if (out !== null) expect(Array.from(out), skin).toEqual(Array.from(frame.pixels));
       }
+      // Nor writes a reserved value over a drawn pixel, though a hand layer built in code holds one.
+      const drawn = frameOf(block(9, 2, '2'), { [skin]: ['defghijk.', 'defghijk.'] });
+      expect(Array.from(paintSkin(drawn, drawn.pixels, skin)!), skin).toEqual(Array.from(drawn.pixels));
     }
   });
 
@@ -103,6 +101,14 @@ describe('paintSkin', () => {
     expect(rowsOf(f, paintSkin(f, f.pixels, 'scaled'))).toEqual(['3212', '2222', '2422']);
     const t = frameOf(['2222', '2.22', '6666'], { translucent: ['1...', '.3..', '...7'] });
     expect(rowsOf(t, paintSkin(t, t.pixels, 'translucent'))).toEqual(['1222', '2.22', '6667']);
+  });
+
+  it('a hand-drawn value from another ramp replaces the pixel, as a hand-drawn marks layer does', () => {
+    // Organs drawn in contrasting ramps over a primary-ramp body: accent and underside values replace the pixel.
+    const t = frameOf(['2222', '6666', 'aaaa'], { translucent: ['5.9.', '.1.c', '8..4'] });
+    expect(rowsOf(t, paintSkin(t, t.pixels, 'translucent'))).toEqual(['5292', '616c', '8aa4']);
+    const f = frameOf(['14589c', '14589c'], { scaled: ['c95841', '......'] });
+    expect(rowsOf(f, paintSkin(f, f.pixels, 'scaled'))).toEqual(['c95841', '14589c']);
   });
 
   it('a layer for another skin is ignored', () => {
