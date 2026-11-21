@@ -4,7 +4,6 @@ import { loadFixture, checkGenerator, canon } from '../../../../tests/support/pa
 import galaxies from '../../../../fixtures/current/galaxies.json' with { type: 'json' };
 import { probeRaw } from '../../../../tests/support/baseline.js';
 import { GALAXY_SPRITE_COUNT, galaxiesInCell, galaxyProfile, galaxyWormhole, starsInCell, fineStarsInCell, systemFor, supernovaSites } from '@cf/domain-worldgen';
-import { slimGal } from '@cf/domain-descriptors';
 
 const declarationSource = readFileSync(
   new URL('../src/worldgen.verbatim.d.ts', import.meta.url),
@@ -60,9 +59,10 @@ describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () =>
     expect(r.rollupOk).toBe(true);
     expect(r.cases).toBe(1000);
   });
-  it('galaxiesInCell + slimGal probe', () => {
+  /* The slimGal half of this probe (it needs @cf/domain-descriptors, which imports this package)
+     lives in tests/cross/galaxies-in-cell-slimgal.test.ts. */
+  it('galaxiesInCell probe cells carry their web metadata', () => {
     const cells = [galaxiesInCell(0, 0), galaxiesInCell(1, -2), galaxiesInCell(-3, 5)];
-    expect(canon(cells.map((arr) => arr.map((g) => slimGal(g))))).toBe(probeRaw('galaxiesInCell'));
     for (const cell of cells) {
       const web: number = cell.web;
       expect(web).toBe(cell.web);

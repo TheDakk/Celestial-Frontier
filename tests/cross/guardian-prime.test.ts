@@ -283,10 +283,12 @@ describe('Titan eligibility, resonance, and priority', () => {
 
 describe('encounter identity, suppression, and settlement-safe projections', () => {
   it('keeps canonical minting above combatcore without recreating the scene dependency cycle', () => {
-    const here = path.dirname(fileURLToPath(import.meta.url));
-    const combatRoot = path.resolve(here, '..');
-    const domainRoot = path.resolve(combatRoot, '..');
-    const workspacePackages = path.resolve(domainRoot, '..');
+    // This file lives in tests/cross/; package tests now also live outside packages/, so the
+    // mint-consumer walk covers every folder that holds code: packages/, apps/ and tests/.
+    const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+    const workspacePackages = path.join(repoRoot, 'packages');
+    const domainRoot = path.join(workspacePackages, 'domain');
+    const combatRoot = path.join(domainRoot, 'combatcore');
     const readPackage = (file: string) => JSON.parse(fs.readFileSync(file, 'utf8')) as {
       dependencies?: Record<string, string>;
       exports?: Record<string, string>;
@@ -305,11 +307,11 @@ describe('encounter identity, suppression, and settlement-safe projections', () 
         if (entry.isDirectory()) visit(file);
         else if (/\.(?:ts|js|mjs)$/u.test(entry.name)
           && fs.readFileSync(file, 'utf8').includes(mintSpecifier)) {
-          mintConsumers.push(path.relative(workspacePackages, file));
+          mintConsumers.push(path.relative(repoRoot, file));
         }
       }
     };
-    visit(workspacePackages);
+    for (const root of ['packages', 'apps', 'tests']) visit(path.join(repoRoot, root));
 
     expect(scenePackage.dependencies).toHaveProperty('@cf/domain-strays');
     expect(straysPackage.dependencies).toHaveProperty('@cf/domain-combatcore');
@@ -319,7 +321,7 @@ describe('encounter identity, suppression, and settlement-safe projections', () 
     expect(source).not.toContain(mintSpecifier);
     // The privileged mint negative controls are the only test consumer; scene owns production minting.
     expect(mintConsumers).toEqual([
-      'domain/worldidentity/test/authority.test.ts', 'scene/src/address.ts',
+      'packages/domain/worldidentity/test/authority.test.ts', 'packages/scene/src/address.ts',
     ]);
     expect(identityPackage.exports?.['.']).toBe('./src/index.ts');
     expect(identityPackage.exports?.['./mint-internal']).toBe('./src/mint-internal.ts');

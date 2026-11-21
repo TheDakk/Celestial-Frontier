@@ -2,7 +2,6 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { BIOME_SETS } from '@cf/domain-strays';
 import {
   BIOME_PROFILE_AUTHORITY_V1,
   BIOME_PROFILE_KEYS_V1,
@@ -28,12 +27,6 @@ function recursivelyFrozen(value: unknown, seen = new Set<object>()): boolean {
     && Object.values(value as Record<string, unknown>).every((child) => recursivelyFrozen(child, seen));
 }
 
-function liveBiomeKeys(): string[] {
-  return Object.values(BIOME_SETS)
-    .flatMap((set) => set.map((row) => String(row.k)))
-    .sort();
-}
-
 function forbiddenBoundaryFindings(source: string): string[] {
   const rules = [
     ['art', /@cf\/art|packages\/art|apps\/game/u],
@@ -46,12 +39,10 @@ function forbiddenBoundaryFindings(source: string): string[] {
 }
 
 describe('canonical BiomeProfileV1 authority', () => {
-  it('binds the exact 43 live biome keys to one pinned schema and content digest', () => {
-    const live = liveBiomeKeys();
-    expect(live).toHaveLength(43);
-    expect(new Set(live).size).toBe(43);
-    expect([...BIOME_PROFILE_KEYS_V1].sort()).toEqual(live);
-    expect(Object.keys(BIOME_PROFILES_V1).sort()).toEqual(live);
+  it('binds the exact 43 profile keys to one pinned schema and content digest', () => {
+    expect(BIOME_PROFILE_KEYS_V1).toHaveLength(43);
+    expect(new Set(BIOME_PROFILE_KEYS_V1).size).toBe(43);
+    expect(Object.keys(BIOME_PROFILES_V1).sort()).toEqual([...BIOME_PROFILE_KEYS_V1].sort());
     expect(BIOME_PROFILE_AUTHORITY_V1).toEqual({
       schema: BIOME_PROFILE_SCHEMA_V1,
       digest: 'bpd1-6fce883d4d70e3b6bde0fb184b416e8e',

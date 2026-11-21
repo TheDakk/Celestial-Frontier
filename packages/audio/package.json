@@ -9,4 +9,7 @@
     "@cf/domain-combatcore": "*",
     "@cf/domain-descriptors": "*",
     "@cf/domain-genome": "*"
+  },
+  "devDependencies": {
+    "@cf/scene": "*"
   } }
