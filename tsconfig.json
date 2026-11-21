@@ -23,7 +23,6 @@
     "apps/diagnostics/src/main.ts",
     "packages/audio",
     "packages/persistence",
-    "tests/cross/opportunity-economy-source-model.test.ts",
-    "tests/cross/opportunity-planner-persistence.test.ts"
+    "tests/cross/persistence"
   ]
 }
