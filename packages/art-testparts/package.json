@@ -1,0 +1,14 @@
+{
+  "name": "@cf/art-testparts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@cf/art-format": "*"
+  },
+  "devDependencies": {
+    "@cf/art-compose": "*",
+    "@cf/art-recipe": "*"
+  }
+}
