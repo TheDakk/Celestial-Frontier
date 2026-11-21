@@ -1,0 +1,9469 @@
+{
+ "freeGlobals": {
+  "_earthArt": "not supplied: undefined, as in every running context of the current game"
+ },
+ "earthRoster": [
+  {
+   "genome": {
+    "seed": 2058951517,
+    "kingdom": "flora",
+    "color": 2,
+    "form": 17,
+    "body": 4,
+    "loco": 0,
+    "trait": 9,
+    "size": 3,
+    "diet": 2,
+    "head": 7,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 10,
+    "habitat": 5,
+    "detail": 9,
+    "accent": 2,
+    "temper": 4,
+    "sense": 3,
+    "repro": 5,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Persimmon",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.91625,
+    "len": 1.0899999999999999,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     172,
+     128,
+     198
+    ],
+    "base2": [
+     128,
+     128,
+     198
+    ],
+    "pat": [
+     124,
+     112,
+     130
+    ],
+    "irid": [
+     128,
+     198,
+     160
+    ],
+    "irid2": [
+     198,
+     160,
+     128
+    ],
+    "dark": [
+     72,
+     53,
+     83
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 4,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 5,
+    "headK": 7,
+    "eyeN": 4,
+    "tailK": 1,
+    "limbN": 4,
+    "skinK": 7,
+    "dietK": 2,
+    "_earthName": "Persimmon"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1714376717,
+    "kingdom": "flora",
+    "color": 14,
+    "form": 12,
+    "body": 2,
+    "loco": 0,
+    "trait": 11,
+    "size": 1,
+    "diet": 4,
+    "head": 8,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 6,
+    "detail": 9,
+    "accent": 15,
+    "temper": 5,
+    "sense": 5,
+    "repro": 6,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Devil's Club",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.80375,
+    "len": 1.01,
+    "neck": 0.69,
+    "horn": 0.7994354459457099,
+    "tail": 0.43999999999999995,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     113,
+     200,
+     182
+    ],
+    "base2": [
+     113,
+     180,
+     200
+    ],
+    "pat": [
+     99,
+     154,
+     176
+    ],
+    "irid": [
+     197,
+     113,
+     200
+    ],
+    "irid2": [
+     200,
+     197,
+     113
+    ],
+    "dark": [
+     47,
+     84,
+     76
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 6,
+    "headK": 8,
+    "eyeN": 6,
+    "tailK": 1,
+    "limbN": 0,
+    "skinK": 6,
+    "dietK": 4,
+    "_earthName": "Devil's Club"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1741924755,
+    "kingdom": "flora",
+    "color": 4,
+    "form": 4,
+    "body": 9,
+    "loco": 0,
+    "trait": 9,
+    "size": 3,
+    "diet": 1,
+    "head": 9,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 0,
+    "detail": 4,
+    "accent": 10,
+    "temper": 7,
+    "sense": 9,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cranberry",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.90875,
+    "len": 1.14,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     94,
+     209,
+     161
+    ],
+    "base2": [
+     94,
+     209,
+     111
+    ],
+    "pat": [
+     94,
+     171,
+     87
+    ],
+    "irid": [
+     209,
+     142,
+     94
+    ],
+    "irid2": [
+     142,
+     94,
+     209
+    ],
+    "dark": [
+     39,
+     87,
+     67
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 0,
+    "headK": 9,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 8,
+    "skinK": 0,
+    "dietK": 1,
+    "_earthName": "Cranberry"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3293061876,
+    "kingdom": "flora",
+    "color": 2,
+    "form": 0,
+    "body": 1,
+    "loco": 2,
+    "trait": 12,
+    "size": 2,
+    "diet": 2,
+    "head": 1,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 5,
+    "detail": 4,
+    "accent": 6,
+    "temper": 0,
+    "sense": 6,
+    "repro": 2,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rambutan",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.8615,
+    "len": 1.05,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     172,
+     128,
+     198
+    ],
+    "base2": [
+     135,
+     128,
+     198
+    ],
+    "pat": [
+     128,
+     112,
+     130
+    ],
+    "irid": [
+     128,
+     198,
+     160
+    ],
+    "irid2": [
+     198,
+     160,
+     128
+    ],
+    "dark": [
+     72,
+     53,
+     83
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 1,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 5,
+    "headK": 1,
+    "eyeN": 6,
+    "tailK": 3,
+    "limbN": 6,
+    "skinK": 1,
+    "dietK": 2,
+    "_earthName": "Rambutan"
+   }
+  },
+  {
+   "genome": {
+    "seed": 358709633,
+    "kingdom": "flora",
+    "color": 6,
+    "form": 15,
+    "body": 12,
+    "loco": 17,
+    "trait": 2,
+    "size": 4,
+    "diet": 2,
+    "head": 5,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 3,
+    "detail": 4,
+    "accent": 15,
+    "temper": 7,
+    "sense": 9,
+    "repro": 2,
+    "life": 3,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wild Guava",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.986,
+    "len": 1.18,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     236,
+     146,
+     122
+    ],
+    "base2": [
+     236,
+     195,
+     122
+    ],
+    "pat": [
+     194,
+     145,
+     128
+    ],
+    "irid": [
+     122,
+     236,
+     165
+    ],
+    "irid2": [
+     165,
+     122,
+     236
+    ],
+    "dark": [
+     99,
+     61,
+     51
+    ],
+    "finish": 0,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 12,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 3,
+    "headK": 5,
+    "eyeN": 6,
+    "tailK": 5,
+    "limbN": 2,
+    "skinK": 5,
+    "dietK": 2,
+    "_earthName": "Wild Guava"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2837464762,
+    "kingdom": "flora",
+    "color": 13,
+    "form": 17,
+    "body": 3,
+    "loco": 5,
+    "trait": 22,
+    "size": 0,
+    "diet": 2,
+    "head": 8,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 3,
+    "detail": 3,
+    "accent": 0,
+    "temper": 7,
+    "sense": 2,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Barrel Cactus Fruit",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.84875,
+    "len": 1.15,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     222,
+     146,
+     122
+    ],
+    "base2": [
+     222,
+     122,
+     141
+    ],
+    "pat": [
+     187,
+     108,
+     137
+    ],
+    "irid": [
+     129,
+     122,
+     222
+    ],
+    "irid2": [
+     122,
+     222,
+     129
+    ],
+    "dark": [
+     93,
+     61,
+     51
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 3,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 3,
+    "headK": 8,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 4,
+    "skinK": 6,
+    "dietK": 2,
+    "_earthName": "Barrel Cactus Fruit"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2328743221,
+    "kingdom": "fungi",
+    "color": 0,
+    "form": 5,
+    "body": 2,
+    "loco": 0,
+    "trait": 11,
+    "size": 4,
+    "diet": 3,
+    "head": 0,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 0,
+    "habitat": 12,
+    "detail": 4,
+    "accent": 14,
+    "temper": 0,
+    "sense": 2,
+    "repro": 2,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mildew",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.97625,
+    "len": 1.28,
+    "neck": 0.3,
+    "horn": 0.9075098353438079,
+    "tail": 0.53,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     102,
+     215,
+     101
+    ],
+    "base2": [
+     197,
+     215,
+     101
+    ],
+    "pat": [
+     156,
+     184,
+     77
+    ],
+    "irid": [
+     215,
+     101,
+     121
+    ],
+    "irid2": [
+     101,
+     121,
+     215
+    ],
+    "dark": [
+     42,
+     90,
+     42
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#c0ff5a",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 12,
+    "headK": 0,
+    "eyeN": 2,
+    "tailK": 2,
+    "limbN": 3,
+    "skinK": 7,
+    "dietK": 3,
+    "_earthName": "Mildew"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1635973906,
+    "kingdom": "fungi",
+    "color": 14,
+    "form": 4,
+    "body": 13,
+    "loco": 5,
+    "trait": 23,
+    "size": 1,
+    "diet": 0,
+    "head": 9,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 18,
+    "detail": 2,
+    "accent": 12,
+    "temper": 0,
+    "sense": 4,
+    "repro": 6,
+    "life": 2,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Puffball",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.8015,
+    "len": 0.96,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     156,
+     179,
+     171
+    ],
+    "base2": [
+     156,
+     179,
+     156
+    ],
+    "pat": [
+     154,
+     137,
+     145
+    ],
+    "irid": [
+     179,
+     167,
+     156
+    ],
+    "irid2": [
+     167,
+     156,
+     179
+    ],
+    "dark": [
+     65,
+     75,
+     71
+    ],
+    "finish": 0,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 13,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 18,
+    "headK": 9,
+    "eyeN": 6,
+    "tailK": 0,
+    "limbN": 6,
+    "skinK": 4,
+    "dietK": 0,
+    "_earthName": "Giant Puffball"
+   }
+  },
+  {
+   "genome": {
+    "seed": 653352398,
+    "kingdom": "microbe",
+    "color": 0,
+    "form": 1,
+    "body": 12,
+    "loco": 7,
+    "trait": 9,
+    "size": 0,
+    "diet": 0,
+    "head": 2,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 6,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 13,
+    "detail": 9,
+    "accent": 1,
+    "temper": 9,
+    "sense": 6,
+    "repro": 2,
+    "life": 3,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Red-Tide Algae",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.82025,
+    "len": 1,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.9,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     102,
+     215,
+     101
+    ],
+    "base2": [
+     101,
+     215,
+     161
+    ],
+    "pat": [
+     108,
+     184,
+     107
+    ],
+    "irid": [
+     119,
+     101,
+     215
+    ],
+    "irid2": [
+     215,
+     119,
+     101
+    ],
+    "dark": [
+     42,
+     90,
+     42
+    ],
+    "finish": 0,
+    "rim": "#c0ff5a",
+    "eye": "#c0ff5a",
+    "plan": 12,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 13,
+    "headK": 2,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 6,
+    "skinK": 6,
+    "dietK": 0,
+    "_earthName": "Red-Tide Algae"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1093271452,
+    "kingdom": "microbe",
+    "color": 16,
+    "form": 13,
+    "body": 7,
+    "loco": 13,
+    "trait": 9,
+    "size": 2,
+    "diet": 0,
+    "head": 2,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 15,
+    "detail": 8,
+    "accent": 0,
+    "temper": 9,
+    "sense": 0,
+    "repro": 4,
+    "life": 0,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Halophile",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.8300000000000001,
+    "len": 1.15,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     153,
+     212,
+     219
+    ],
+    "base2": [
+     153,
+     219,
+     197
+    ],
+    "pat": [
+     105,
+     171,
+     158
+    ],
+    "irid": [
+     219,
+     215,
+     153
+    ],
+    "irid2": [
+     215,
+     153,
+     219
+    ],
+    "dark": [
+     64,
+     89,
+     91
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 7,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 15,
+    "headK": 2,
+    "eyeN": 6,
+    "tailK": 0,
+    "limbN": 8,
+    "skinK": 2,
+    "dietK": 0,
+    "_earthName": "Halophile"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1367420842,
+    "kingdom": "microbe",
+    "color": 2,
+    "form": 7,
+    "body": 3,
+    "loco": 9,
+    "trait": 9,
+    "size": 5,
+    "diet": 3,
+    "head": 7,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 0,
+    "detail": 1,
+    "accent": 3,
+    "temper": 0,
+    "sense": 4,
+    "repro": 3,
+    "life": 5,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Euglena",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 1.043,
+    "len": 0.97,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     156,
+     152,
+     198
+    ],
+    "base2": [
+     190,
+     152,
+     198
+    ],
+    "pat": [
+     142,
+     143,
+     130
+    ],
+    "irid": [
+     198,
+     164,
+     152
+    ],
+    "irid2": [
+     152,
+     198,
+     164
+    ],
+    "dark": [
+     65,
+     63,
+     83
+    ],
+    "finish": 0,
+    "rim": "#9fe06a",
+    "eye": "#9fe06a",
+    "plan": 3,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 0,
+    "headK": 7,
+    "eyeN": 0,
+    "tailK": 2,
+    "limbN": 3,
+    "skinK": 2,
+    "dietK": 3,
+    "_earthName": "Euglena"
+   }
+  },
+  {
+   "genome": {
+    "seed": 4049771185,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 14,
+    "body": 12,
+    "loco": 1,
+    "trait": 15,
+    "size": 2,
+    "diet": 4,
+    "head": 0,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 9,
+    "detail": 8,
+    "accent": 16,
+    "temper": 7,
+    "sense": 4,
+    "repro": 6,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Platypus",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.83975,
+    "len": 1,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     201,
+     146,
+     77
+    ],
+    "base2": [
+     201,
+     80,
+     77
+    ],
+    "pat": [
+     161,
+     88,
+     70
+    ],
+    "irid": [
+     125,
+     77,
+     201
+    ],
+    "irid2": [
+     77,
+     201,
+     125
+    ],
+    "dark": [
+     84,
+     61,
+     32
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 12,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 9,
+    "headK": 0,
+    "eyeN": 2,
+    "tailK": 4,
+    "limbN": 2,
+    "skinK": 6,
+    "dietK": 4,
+    "_earthName": "Platypus"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3212817920,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 12,
+    "body": 13,
+    "loco": 6,
+    "trait": 14,
+    "size": 4,
+    "diet": 5,
+    "head": 5,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 5,
+    "detail": 4,
+    "accent": 3,
+    "temper": 1,
+    "sense": 7,
+    "repro": 7,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Civet",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.9747499999999999,
+    "len": 1.23,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     136,
+     179,
+     126
+    ],
+    "base2": [
+     126,
+     179,
+     155
+    ],
+    "pat": [
+     123,
+     137,
+     109
+    ],
+    "irid": [
+     126,
+     127,
+     179
+    ],
+    "irid2": [
+     179,
+     126,
+     127
+    ],
+    "dark": [
+     57,
+     75,
+     52
+    ],
+    "finish": 0,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 13,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 5,
+    "headK": 5,
+    "eyeN": 0,
+    "tailK": 1,
+    "limbN": 8,
+    "skinK": 8,
+    "dietK": 5,
+    "_earthName": "Civet"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3983378525,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 12,
+    "body": 8,
+    "loco": 7,
+    "trait": 14,
+    "size": 4,
+    "diet": 0,
+    "head": 6,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 13,
+    "detail": 9,
+    "accent": 13,
+    "temper": 8,
+    "sense": 5,
+    "repro": 3,
+    "life": 4,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Brittle Star",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.9664999999999999,
+    "len": 1.18,
+    "neck": 0.43,
+    "horn": 0.8807970648631454,
+    "tail": 0.35,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     172,
+     210,
+     167
+    ],
+    "base2": [
+     167,
+     210,
+     194
+    ],
+    "pat": [
+     141,
+     181,
+     124
+    ],
+    "irid": [
+     169,
+     167,
+     210
+    ],
+    "irid2": [
+     210,
+     169,
+     167
+    ],
+    "dark": [
+     72,
+     88,
+     70
+    ],
+    "finish": 0,
+    "rim": "#c0ff5a",
+    "eye": "#c0ff5a",
+    "plan": 8,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 13,
+    "headK": 6,
+    "eyeN": 4,
+    "tailK": 0,
+    "limbN": 4,
+    "skinK": 5,
+    "dietK": 0,
+    "_earthName": "Brittle Star"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1193089256,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 12,
+    "body": 10,
+    "loco": 11,
+    "trait": 19,
+    "size": 0,
+    "diet": 5,
+    "head": 9,
+    "limbs": 4,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 17,
+    "detail": 7,
+    "accent": 4,
+    "temper": 8,
+    "sense": 5,
+    "repro": 5,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Frog",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.8360000000000001,
+    "len": 1.1,
+    "neck": 0.8200000000000001,
+    "horn": 0.5,
+    "tail": 0.43999999999999995,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     126,
+     179,
+     151
+    ],
+    "base2": [
+     145,
+     179,
+     126
+    ],
+    "pat": [
+     149,
+     137,
+     130
+    ],
+    "irid": [
+     179,
+     142,
+     126
+    ],
+    "irid2": [
+     142,
+     126,
+     179
+    ],
+    "dark": [
+     52,
+     75,
+     63
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 10,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 17,
+    "headK": 9,
+    "eyeN": 4,
+    "tailK": 1,
+    "limbN": 3,
+    "skinK": 3,
+    "dietK": 5,
+    "_earthName": "Frog"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2492583870,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 6,
+    "body": 14,
+    "loco": 5,
+    "trait": 16,
+    "size": 5,
+    "diet": 2,
+    "head": 9,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 16,
+    "temper": 5,
+    "sense": 4,
+    "repro": 5,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pheasant",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 1.043,
+    "len": 0.9199999999999999,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.6599999999999999,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     240,
+     175,
+     131
+    ],
+    "base2": [
+     240,
+     131,
+     145
+    ],
+    "pat": [
+     196,
+     113,
+     139
+    ],
+    "irid": [
+     157,
+     131,
+     240
+    ],
+    "irid2": [
+     131,
+     240,
+     157
+    ],
+    "dark": [
+     100,
+     73,
+     55
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 14,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 3,
+    "headK": 9,
+    "eyeN": 2,
+    "tailK": 6,
+    "limbN": 3,
+    "skinK": 2,
+    "dietK": 2,
+    "_earthName": "Pheasant"
+   }
+  },
+  {
+   "genome": {
+    "seed": 4076641958,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 7,
+    "body": 1,
+    "loco": 13,
+    "trait": 13,
+    "size": 3,
+    "diet": 4,
+    "head": 3,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 9,
+    "detail": 7,
+    "accent": 6,
+    "temper": 8,
+    "sense": 5,
+    "repro": 6,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Oryx",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.92,
+    "len": 1.14,
+    "neck": 0.69,
+    "horn": 0.7800447858870029,
+    "tail": 0.71,
+    "leg": 0.6599999999999999,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     179,
+     218,
+     204
+    ],
+    "base2": [
+     179,
+     218,
+     183
+    ],
+    "pat": [
+     118,
+     171,
+     151
+    ],
+    "irid": [
+     218,
+     198,
+     179
+    ],
+    "irid2": [
+     198,
+     179,
+     218
+    ],
+    "dark": [
+     75,
+     91,
+     85
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 1,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 9,
+    "headK": 3,
+    "eyeN": 2,
+    "tailK": 4,
+    "limbN": 3,
+    "skinK": 7,
+    "dietK": 4,
+    "_earthName": "Oryx"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2598368726,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 9,
+    "body": 9,
+    "loco": 15,
+    "trait": 12,
+    "size": 2,
+    "diet": 2,
+    "head": 9,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 14,
+    "temper": 7,
+    "sense": 1,
+    "repro": 3,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Urchin",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.8540000000000001,
+    "len": 1.05,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     153,
+     113,
+     177
+    ],
+    "base2": [
+     113,
+     126,
+     177
+    ],
+    "pat": [
+     133,
+     99,
+     110
+    ],
+    "irid": [
+     113,
+     177,
+     142
+    ],
+    "irid2": [
+     177,
+     142,
+     113
+    ],
+    "dark": [
+     64,
+     47,
+     74
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff7a4a",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 9,
+    "headK": 9,
+    "eyeN": 0,
+    "tailK": 2,
+    "limbN": 4,
+    "skinK": 1,
+    "dietK": 2,
+    "_earthName": "Sea Urchin"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3879755030,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 2,
+    "body": 8,
+    "loco": 1,
+    "trait": 13,
+    "size": 4,
+    "diet": 1,
+    "head": 1,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 15,
+    "detail": 9,
+    "accent": 6,
+    "temper": 1,
+    "sense": 8,
+    "repro": 4,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Prawn",
+    "_cradle": 1
+   },
+   "hdGenes": {
+    "bulk": 0.9567499999999999,
+    "len": 1.18,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     216,
+     146,
+     77
+    ],
+    "base2": [
+     216,
+     77,
+     82
+    ],
+    "pat": [
+     168,
+     86,
+     72
+    ],
+    "irid": [
+     123,
+     77,
+     216
+    ],
+    "irid2": [
+     77,
+     216,
+     123
+    ],
+    "dark": [
+     90,
+     61,
+     32
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 8,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 15,
+    "headK": 1,
+    "eyeN": 8,
+    "tailK": 6,
+    "limbN": 4,
+    "skinK": 7,
+    "dietK": 1,
+    "_earthName": "Prawn"
+   }
+  }
+ ],
+ "earthNamed": [
+  {
+   "genome": {
+    "seed": 2654435664,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 0,
+    "body": 11,
+    "loco": 8,
+    "trait": 14,
+    "size": 4,
+    "diet": 2,
+    "head": 4,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 10,
+    "detail": 9,
+    "accent": 9,
+    "temper": 4,
+    "sense": 2,
+    "repro": 6,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0,
+    "_earthName": "Jaguar"
+   },
+   "hdGenes": {
+    "bulk": 0.9949999999999999,
+    "len": 1.33,
+    "neck": 0.8200000000000001,
+    "horn": 1,
+    "tail": 0.62,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     63,
+     107,
+     112
+    ],
+    "base2": [
+     63,
+     66,
+     112
+    ],
+    "pat": [
+     60,
+     95,
+     116
+    ],
+    "irid": [
+     112,
+     63,
+     99
+    ],
+    "irid2": [
+     99,
+     112,
+     63
+    ],
+    "dark": [
+     26,
+     44,
+     47
+    ],
+    "finish": 2,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 11,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 7,
+    "heat": 10,
+    "headK": 4,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 8,
+    "skinK": 3,
+    "dietK": 2,
+    "_earthName": "Jaguar"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1013904259,
+    "kingdom": "flora",
+    "color": 16,
+    "form": 13,
+    "body": 0,
+    "loco": 1,
+    "trait": 15,
+    "size": 1,
+    "diet": 4,
+    "head": 0,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 4,
+    "habitat": 5,
+    "detail": 5,
+    "accent": 14,
+    "temper": 0,
+    "sense": 7,
+    "repro": 7,
+    "life": 4,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.1,
+    "_earthName": "Curry Leaf"
+   },
+   "hdGenes": {
+    "bulk": 0.815,
+    "len": 0.9099999999999999,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     193,
+     193,
+     183
+    ],
+    "base2": [
+     193,
+     185,
+     183
+    ],
+    "pat": [
+     157,
+     140,
+     123
+    ],
+    "irid": [
+     191,
+     183,
+     193
+    ],
+    "irid2": [
+     183,
+     193,
+     191
+    ],
+    "dark": [
+     81,
+     81,
+     76
+    ],
+    "finish": 1,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 0,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 5,
+    "headK": 0,
+    "eyeN": 0,
+    "tailK": 2,
+    "limbN": 8,
+    "skinK": 2,
+    "dietK": 4,
+    "_earthName": "Curry Leaf"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3668340210,
+    "kingdom": "fungi",
+    "color": 16,
+    "form": 0,
+    "body": 9,
+    "loco": 14,
+    "trait": 4,
+    "size": 2,
+    "diet": 5,
+    "head": 9,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 5,
+    "detail": 3,
+    "accent": 1,
+    "temper": 5,
+    "sense": 0,
+    "repro": 3,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.2,
+    "_earthName": "Coral Fungus"
+   },
+   "hdGenes": {
+    "bulk": 0.8390000000000001,
+    "len": 1.05,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     193,
+     193,
+     183
+    ],
+    "base2": [
+     188,
+     193,
+     183
+    ],
+    "pat": [
+     154,
+     144,
+     123
+    ],
+    "irid": [
+     183,
+     191,
+     193
+    ],
+    "irid2": [
+     193,
+     183,
+     191
+    ],
+    "dark": [
+     81,
+     81,
+     76
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 5,
+    "headK": 9,
+    "eyeN": 0,
+    "tailK": 2,
+    "limbN": 4,
+    "skinK": 8,
+    "dietK": 5,
+    "_earthName": "Coral Fungus"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2027808293,
+    "kingdom": "microbe",
+    "color": 4,
+    "form": 11,
+    "body": 3,
+    "loco": 11,
+    "trait": 21,
+    "size": 0,
+    "diet": 5,
+    "head": 6,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 15,
+    "detail": 1,
+    "accent": 1,
+    "temper": 1,
+    "sense": 3,
+    "repro": 6,
+    "life": 2,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.3,
+    "_earthName": "Nitrogen-Fixing Bacteria"
+   },
+   "hdGenes": {
+    "bulk": 0.83225,
+    "len": 1.15,
+    "neck": 0.43,
+    "horn": 0.8586607513017952,
+    "tail": 0.62,
+    "leg": 0.6599999999999999,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     130,
+     184,
+     205
+    ],
+    "base2": [
+     130,
+     144,
+     205
+    ],
+    "pat": [
+     141,
+     119,
+     169
+    ],
+    "irid": [
+     205,
+     130,
+     172
+    ],
+    "irid2": [
+     172,
+     205,
+     130
+    ],
+    "dark": [
+     54,
+     77,
+     86
+    ],
+    "finish": 0,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 3,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 15,
+    "headK": 6,
+    "eyeN": 8,
+    "tailK": 3,
+    "limbN": 3,
+    "skinK": 7,
+    "dietK": 5,
+    "_earthName": "Nitrogen-Fixing Bacteria"
+   }
+  },
+  {
+   "genome": {
+    "seed": 387276948,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 13,
+    "loco": 4,
+    "trait": 20,
+    "size": 1,
+    "diet": 1,
+    "head": 1,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 0,
+    "habitat": 5,
+    "detail": 0,
+    "accent": 15,
+    "temper": 7,
+    "sense": 1,
+    "repro": 2,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.4,
+    "_earthName": "Lamprey"
+   },
+   "hdGenes": {
+    "bulk": 0.78725,
+    "len": 0.96,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     65,
+     183,
+     171
+    ],
+    "base2": [
+     65,
+     144,
+     183
+    ],
+    "pat": [
+     61,
+     134,
+     151
+    ],
+    "irid": [
+     183,
+     65,
+     175
+    ],
+    "irid2": [
+     175,
+     183,
+     65
+    ],
+    "dark": [
+     27,
+     76,
+     71
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 13,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 5,
+    "headK": 1,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 6,
+    "skinK": 3,
+    "dietK": 1,
+    "_earthName": "Lamprey"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3041712839,
+    "kingdom": "flora",
+    "color": 0,
+    "form": 15,
+    "body": 12,
+    "loco": 3,
+    "trait": 4,
+    "size": 0,
+    "diet": 5,
+    "head": 0,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 10,
+    "detail": 0,
+    "accent": 10,
+    "temper": 8,
+    "sense": 6,
+    "repro": 3,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.5,
+    "_earthName": "Sagebrush"
+   },
+   "hdGenes": {
+    "bulk": 0.8712500000000001,
+    "len": 1,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     126,
+     204,
+     107
+    ],
+    "base2": [
+     168,
+     204,
+     107
+    ],
+    "pat": [
+     160,
+     169,
+     85
+    ],
+    "irid": [
+     204,
+     107,
+     142
+    ],
+    "irid2": [
+     107,
+     142,
+     204
+    ],
+    "dark": [
+     52,
+     85,
+     44
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ffe06a",
+    "plan": 12,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 10,
+    "headK": 0,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 3,
+    "skinK": 4,
+    "dietK": 5,
+    "_earthName": "Sagebrush"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1401180982,
+    "kingdom": "fungi",
+    "color": 3,
+    "form": 7,
+    "body": 15,
+    "loco": 13,
+    "trait": 10,
+    "size": 1,
+    "diet": 5,
+    "head": 9,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 4,
+    "detail": 0,
+    "accent": 8,
+    "temper": 8,
+    "sense": 0,
+    "repro": 6,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.6,
+    "_earthName": "Stinkhorn"
+   },
+   "hdGenes": {
+    "bulk": 0.79925,
+    "len": 1.06,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     179,
+     194,
+     122
+    ],
+    "base2": [
+     194,
+     156,
+     122
+    ],
+    "pat": [
+     125,
+     140,
+     121
+    ],
+    "irid": [
+     194,
+     122,
+     191
+    ],
+    "irid2": [
+     122,
+     191,
+     194
+    ],
+    "dark": [
+     75,
+     81,
+     51
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 15,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 4,
+    "headK": 9,
+    "eyeN": 6,
+    "tailK": 3,
+    "limbN": 3,
+    "skinK": 1,
+    "dietK": 5,
+    "_earthName": "Stinkhorn"
+   }
+  },
+  {
+   "genome": {
+    "seed": 4055616873,
+    "kingdom": "microbe",
+    "color": 4,
+    "form": 9,
+    "body": 9,
+    "loco": 13,
+    "trait": 17,
+    "size": 3,
+    "diet": 5,
+    "head": 3,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 4,
+    "habitat": 7,
+    "detail": 7,
+    "accent": 14,
+    "temper": 5,
+    "sense": 5,
+    "repro": 0,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.7,
+    "_earthName": "Snow Algae"
+   },
+   "hdGenes": {
+    "bulk": 0.89825,
+    "len": 1.14,
+    "neck": 0.69,
+    "horn": 0.9638127280399202,
+    "tail": 0.71,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     70,
+     202,
+     196
+    ],
+    "base2": [
+     70,
+     202,
+     86
+    ],
+    "pat": [
+     63,
+     163,
+     103
+    ],
+    "irid": [
+     202,
+     174,
+     70
+    ],
+    "irid2": [
+     174,
+     70,
+     202
+    ],
+    "dark": [
+     29,
+     84,
+     82
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 7,
+    "headK": 3,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 6,
+    "skinK": 1,
+    "dietK": 5,
+    "_earthName": "Snow Algae"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2415085528,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 0,
+    "body": 10,
+    "loco": 12,
+    "trait": 21,
+    "size": 2,
+    "diet": 1,
+    "head": 9,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 9,
+    "detail": 5,
+    "accent": 12,
+    "temper": 0,
+    "sense": 1,
+    "repro": 1,
+    "life": 4,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.8,
+    "_earthName": "Polar Bear"
+   },
+   "hdGenes": {
+    "bulk": 0.8442500000000001,
+    "len": 1.1,
+    "neck": 0.8200000000000001,
+    "horn": 0.5,
+    "tail": 0.53,
+    "leg": 0.75,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     126,
+     151,
+     124
+    ],
+    "base2": [
+     143,
+     151,
+     124
+    ],
+    "pat": [
+     148,
+     112,
+     84
+    ],
+    "irid": [
+     151,
+     124,
+     131
+    ],
+    "irid2": [
+     124,
+     131,
+     151
+    ],
+    "dark": [
+     52,
+     63,
+     52
+    ],
+    "finish": 0,
+    "rim": "#ff7a4a",
+    "eye": "#ff7a4a",
+    "plan": 10,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 9,
+    "headK": 9,
+    "eyeN": 8,
+    "tailK": 2,
+    "limbN": 0,
+    "skinK": 4,
+    "dietK": 1,
+    "_earthName": "Polar Bear"
+   }
+  },
+  {
+   "genome": {
+    "seed": 774553611,
+    "kingdom": "flora",
+    "color": 4,
+    "form": 7,
+    "body": 0,
+    "loco": 1,
+    "trait": 8,
+    "size": 1,
+    "diet": 4,
+    "head": 9,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 5,
+    "accent": 0,
+    "temper": 4,
+    "sense": 3,
+    "repro": 5,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.9,
+    "_earthName": "Plantain"
+   },
+   "hdGenes": {
+    "bulk": 0.79625,
+    "len": 0.9099999999999999,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     110,
+     184,
+     161
+    ],
+    "base2": [
+     110,
+     184,
+     129
+    ],
+    "pat": [
+     115,
+     140,
+     96
+    ],
+    "irid": [
+     184,
+     149,
+     110
+    ],
+    "irid2": [
+     149,
+     110,
+     184
+    ],
+    "dark": [
+     46,
+     77,
+     67
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 0,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 13,
+    "headK": 9,
+    "eyeN": 4,
+    "tailK": 1,
+    "limbN": 8,
+    "skinK": 6,
+    "dietK": 4,
+    "_earthName": "Plantain"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3428989562,
+    "kingdom": "fungi",
+    "color": 13,
+    "form": 3,
+    "body": 12,
+    "loco": 12,
+    "trait": 10,
+    "size": 1,
+    "diet": 1,
+    "head": 1,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 3,
+    "accent": 16,
+    "temper": 4,
+    "sense": 6,
+    "repro": 7,
+    "life": 1,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bioluminescent Mushroom"
+   },
+   "hdGenes": {
+    "bulk": 0.80225,
+    "len": 0.9099999999999999,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     179,
+     167,
+     134
+    ],
+    "base2": [
+     179,
+     143,
+     134
+    ],
+    "pat": [
+     132,
+     135,
+     143
+    ],
+    "irid": [
+     160,
+     134,
+     179
+    ],
+    "irid2": [
+     134,
+     179,
+     160
+    ],
+    "dark": [
+     75,
+     70,
+     56
+    ],
+    "finish": 0,
+    "rim": "#8fd6ff",
+    "eye": "#8fd6ff",
+    "plan": 12,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 6,
+    "headK": 1,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 3,
+    "skinK": 8,
+    "dietK": 1,
+    "_earthName": "Bioluminescent Mushroom"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1788458157,
+    "kingdom": "microbe",
+    "color": 13,
+    "form": 15,
+    "body": 5,
+    "loco": 2,
+    "trait": 9,
+    "size": 0,
+    "diet": 2,
+    "head": 6,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 8,
+    "accent": 9,
+    "temper": 8,
+    "sense": 3,
+    "repro": 5,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0,
+    "_earthName": "Cyanobacteria"
+   },
+   "hdGenes": {
+    "bulk": 0.8405,
+    "len": 1.05,
+    "neck": 0.43,
+    "horn": 1.0433819056488574,
+    "tail": 0.89,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     179,
+     167,
+     134
+    ],
+    "base2": [
+     154,
+     179,
+     134
+    ],
+    "pat": [
+     119,
+     153,
+     143
+    ],
+    "irid": [
+     134,
+     179,
+     175
+    ],
+    "irid2": [
+     175,
+     134,
+     179
+    ],
+    "dark": [
+     75,
+     70,
+     56
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 18,
+    "headK": 6,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 2,
+    "skinK": 8,
+    "dietK": 2,
+    "_earthName": "Cyanobacteria"
+   }
+  },
+  {
+   "genome": {
+    "seed": 147926300,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 9,
+    "body": 15,
+    "loco": 9,
+    "trait": 23,
+    "size": 3,
+    "diet": 0,
+    "head": 7,
+    "limbs": 3,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 4,
+    "habitat": 2,
+    "detail": 7,
+    "accent": 5,
+    "temper": 4,
+    "sense": 3,
+    "repro": 1,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.1,
+    "_earthName": "Eagle Ray"
+   },
+   "hdGenes": {
+    "bulk": 0.9185,
+    "len": 1.2399999999999998,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.5700000000000001,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     189,
+     110,
+     76
+    ],
+    "base2": [
+     189,
+     159,
+     76
+    ],
+    "pat": [
+     155,
+     127,
+     69
+    ],
+    "irid": [
+     76,
+     189,
+     129
+    ],
+    "irid2": [
+     129,
+     76,
+     189
+    ],
+    "dark": [
+     79,
+     46,
+     31
+    ],
+    "finish": 0,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 15,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 2,
+    "headK": 7,
+    "eyeN": 0,
+    "tailK": 3,
+    "limbN": 8,
+    "skinK": 4,
+    "dietK": 0,
+    "_earthName": "Eagle Ray"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2802362191,
+    "kingdom": "flora",
+    "color": 13,
+    "form": 4,
+    "body": 14,
+    "loco": 0,
+    "trait": 15,
+    "size": 0,
+    "diet": 5,
+    "head": 3,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 7,
+    "detail": 0,
+    "accent": 8,
+    "temper": 3,
+    "sense": 7,
+    "repro": 4,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.2,
+    "_earthName": "Ephedra"
+   },
+   "hdGenes": {
+    "bulk": 0.8570000000000001,
+    "len": 1.1,
+    "neck": 0.69,
+    "horn": 0.8558524782769381,
+    "tail": 0.71,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     193,
+     139,
+     134
+    ],
+    "base2": [
+     193,
+     134,
+     172
+    ],
+    "pat": [
+     150,
+     109,
+     162
+    ],
+    "irid": [
+     134,
+     139,
+     193
+    ],
+    "irid2": [
+     139,
+     193,
+     134
+    ],
+    "dark": [
+     81,
+     58,
+     56
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#b58cff",
+    "plan": 14,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 7,
+    "headK": 3,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 2,
+    "skinK": 0,
+    "dietK": 5,
+    "_earthName": "Ephedra"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1161830846,
+    "kingdom": "fungi",
+    "color": 10,
+    "form": 12,
+    "body": 7,
+    "loco": 0,
+    "trait": 2,
+    "size": 0,
+    "diet": 4,
+    "head": 2,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 13,
+    "detail": 2,
+    "accent": 15,
+    "temper": 7,
+    "sense": 6,
+    "repro": 1,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.3,
+    "_earthName": "Bracket Fungus"
+   },
+   "hdGenes": {
+    "bulk": 0.8375,
+    "len": 1.15,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     216,
+     236,
+     163
+    ],
+    "base2": [
+     184,
+     236,
+     163
+    ],
+    "pat": [
+     149,
+     194,
+     108
+    ],
+    "irid": [
+     163,
+     204,
+     236
+    ],
+    "irid2": [
+     236,
+     163,
+     204
+    ],
+    "dark": [
+     90,
+     99,
+     68
+    ],
+    "finish": 0,
+    "rim": "#c0ff5a",
+    "eye": "#c0ff5a",
+    "plan": 7,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 13,
+    "headK": 2,
+    "eyeN": 1,
+    "tailK": 6,
+    "limbN": 6,
+    "skinK": 5,
+    "dietK": 4,
+    "_earthName": "Bracket Fungus"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3816266737,
+    "kingdom": "microbe",
+    "color": 12,
+    "form": 5,
+    "body": 5,
+    "loco": 8,
+    "trait": 2,
+    "size": 0,
+    "diet": 4,
+    "head": 0,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 4,
+    "detail": 8,
+    "accent": 5,
+    "temper": 6,
+    "sense": 7,
+    "repro": 0,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.4,
+    "_earthName": "Cryophile"
+   },
+   "hdGenes": {
+    "bulk": 0.8307500000000001,
+    "len": 1.05,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     65,
+     183,
+     171
+    ],
+    "base2": [
+     65,
+     144,
+     183
+    ],
+    "pat": [
+     61,
+     134,
+     151
+    ],
+    "irid": [
+     183,
+     65,
+     175
+    ],
+    "irid2": [
+     175,
+     183,
+     65
+    ],
+    "dark": [
+     27,
+     76,
+     71
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 4,
+    "headK": 0,
+    "eyeN": 4,
+    "tailK": 6,
+    "limbN": 8,
+    "skinK": 0,
+    "dietK": 4,
+    "_earthName": "Cryophile"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2175734816,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 6,
+    "body": 1,
+    "loco": 4,
+    "trait": 10,
+    "size": 0,
+    "diet": 2,
+    "head": 5,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 10,
+    "detail": 2,
+    "accent": 6,
+    "temper": 7,
+    "sense": 6,
+    "repro": 6,
+    "life": 4,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.5,
+    "_earthName": "Firefly"
+   },
+   "hdGenes": {
+    "bulk": 0.8270000000000001,
+    "len": 1.05,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     179,
+     218,
+     204
+    ],
+    "base2": [
+     179,
+     218,
+     183
+    ],
+    "pat": [
+     118,
+     171,
+     151
+    ],
+    "irid": [
+     218,
+     198,
+     179
+    ],
+    "irid2": [
+     198,
+     179,
+     218
+    ],
+    "dark": [
+     75,
+     91,
+     85
+    ],
+    "finish": 0,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 1,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 10,
+    "headK": 5,
+    "eyeN": 8,
+    "tailK": 1,
+    "limbN": 2,
+    "skinK": 6,
+    "dietK": 2,
+    "_earthName": "Firefly"
+   }
+  },
+  {
+   "genome": {
+    "seed": 535203475,
+    "kingdom": "flora",
+    "color": 14,
+    "form": 8,
+    "body": 2,
+    "loco": 7,
+    "trait": 8,
+    "size": 4,
+    "diet": 0,
+    "head": 0,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 10,
+    "temper": 9,
+    "sense": 7,
+    "repro": 6,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.6,
+    "_earthName": "Cabbage"
+   },
+   "hdGenes": {
+    "bulk": 0.986,
+    "len": 1.28,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     136,
+     179,
+     126
+    ],
+    "base2": [
+     159,
+     179,
+     126
+    ],
+    "pat": [
+     140,
+     137,
+     94
+    ],
+    "irid": [
+     179,
+     126,
+     145
+    ],
+    "irid2": [
+     126,
+     145,
+     179
+    ],
+    "dark": [
+     57,
+     75,
+     52
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 2,
+    "headK": 0,
+    "eyeN": 8,
+    "tailK": 3,
+    "limbN": 6,
+    "skinK": 0,
+    "dietK": 0,
+    "_earthName": "Cabbage"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3189639362,
+    "kingdom": "fungi",
+    "color": 15,
+    "form": 13,
+    "body": 7,
+    "loco": 17,
+    "trait": 11,
+    "size": 5,
+    "diet": 5,
+    "head": 4,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 10,
+    "detail": 8,
+    "accent": 9,
+    "temper": 8,
+    "sense": 8,
+    "repro": 5,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.7,
+    "_earthName": "Cordyceps"
+   },
+   "hdGenes": {
+    "bulk": 1.08575,
+    "len": 0.97,
+    "neck": 0.8200000000000001,
+    "horn": 0.7314906030893326,
+    "tail": 0.7999999999999999,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     173,
+     108,
+     171
+    ],
+    "base2": [
+     173,
+     108,
+     117
+    ],
+    "pat": [
+     163,
+     101,
+     125
+    ],
+    "irid": [
+     160,
+     173,
+     108
+    ],
+    "irid2": [
+     108,
+     160,
+     173
+    ],
+    "dark": [
+     72,
+     45,
+     71
+    ],
+    "finish": 1,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 7,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 10,
+    "headK": 4,
+    "eyeN": 6,
+    "tailK": 5,
+    "limbN": 6,
+    "skinK": 7,
+    "dietK": 5,
+    "_earthName": "Cordyceps"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1549107509,
+    "kingdom": "microbe",
+    "color": 7,
+    "form": 13,
+    "body": 1,
+    "loco": 0,
+    "trait": 18,
+    "size": 1,
+    "diet": 0,
+    "head": 7,
+    "limbs": 4,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 3,
+    "habitat": 17,
+    "detail": 0,
+    "accent": 6,
+    "temper": 8,
+    "sense": 0,
+    "repro": 7,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.8,
+    "_earthName": "Diatom"
+   },
+   "hdGenes": {
+    "bulk": 0.7827500000000001,
+    "len": 0.96,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.6599999999999999,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     173,
+     135,
+     76
+    ],
+    "base2": [
+     173,
+     83,
+     76
+    ],
+    "pat": [
+     134,
+     108,
+     69
+    ],
+    "irid": [
+     119,
+     76,
+     173
+    ],
+    "irid2": [
+     76,
+     173,
+     119
+    ],
+    "dark": [
+     72,
+     56,
+     31
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 1,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 17,
+    "headK": 7,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 3,
+    "skinK": 5,
+    "dietK": 0,
+    "_earthName": "Diatom"
+   }
+  },
+  {
+   "genome": {
+    "seed": 4203543396,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 17,
+    "body": 5,
+    "loco": 4,
+    "trait": 0,
+    "size": 3,
+    "diet": 5,
+    "head": 6,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 11,
+    "habitat": 8,
+    "detail": 5,
+    "accent": 6,
+    "temper": 8,
+    "sense": 2,
+    "repro": 0,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.9,
+    "_earthName": "Elk"
+   },
+   "hdGenes": {
+    "bulk": 0.917,
+    "len": 1.14,
+    "neck": 0.43,
+    "horn": 1.0815084612928332,
+    "tail": 0.7999999999999999,
+    "leg": 0.3,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     70,
+     202,
+     196
+    ],
+    "base2": [
+     70,
+     202,
+     126
+    ],
+    "pat": [
+     63,
+     163,
+     123
+    ],
+    "irid": [
+     202,
+     174,
+     70
+    ],
+    "irid2": [
+     174,
+     70,
+     202
+    ],
+    "dark": [
+     29,
+     84,
+     82
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 8,
+    "headK": 6,
+    "eyeN": 1,
+    "tailK": 5,
+    "limbN": 2,
+    "skinK": 8,
+    "dietK": 5,
+    "_earthName": "Elk"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2563012055,
+    "kingdom": "flora",
+    "color": 6,
+    "form": 9,
+    "body": 3,
+    "loco": 2,
+    "trait": 15,
+    "size": 4,
+    "diet": 3,
+    "head": 0,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 15,
+    "detail": 6,
+    "accent": 10,
+    "temper": 0,
+    "sense": 7,
+    "repro": 1,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gooseberry"
+   },
+   "hdGenes": {
+    "bulk": 0.9949999999999999,
+    "len": 1.33,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     236,
+     132,
+     65
+    ],
+    "base2": [
+     236,
+     65,
+     72
+    ],
+    "pat": [
+     194,
+     69,
+     58
+    ],
+    "irid": [
+     104,
+     65,
+     236
+    ],
+    "irid2": [
+     65,
+     236,
+     103
+    ],
+    "dark": [
+     99,
+     55,
+     27
+    ],
+    "finish": 0,
+    "rim": "#ff7a4a",
+    "eye": "#ff7a4a",
+    "plan": 3,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 15,
+    "headK": 0,
+    "eyeN": 1,
+    "tailK": 4,
+    "limbN": 3,
+    "skinK": 0,
+    "dietK": 3,
+    "_earthName": "Gooseberry"
+   }
+  },
+  {
+   "genome": {
+    "seed": 922480134,
+    "kingdom": "fungi",
+    "color": 10,
+    "form": 8,
+    "body": 6,
+    "loco": 14,
+    "trait": 11,
+    "size": 1,
+    "diet": 0,
+    "head": 7,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 15,
+    "temper": 2,
+    "sense": 1,
+    "repro": 6,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0,
+    "_earthName": "Giant Puffball"
+   },
+   "hdGenes": {
+    "bulk": 0.7887500000000001,
+    "len": 1.01,
+    "neck": 0.56,
+    "horn": 1.0819740219973029,
+    "tail": 0.53,
+    "leg": 0.48,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     216,
+     236,
+     163
+    ],
+    "base2": [
+     184,
+     236,
+     163
+    ],
+    "pat": [
+     149,
+     194,
+     108
+    ],
+    "irid": [
+     163,
+     204,
+     236
+    ],
+    "irid2": [
+     236,
+     163,
+     204
+    ],
+    "dark": [
+     90,
+     99,
+     68
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#c0ff5a",
+    "plan": 6,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 13,
+    "headK": 7,
+    "eyeN": 2,
+    "tailK": 2,
+    "limbN": 6,
+    "skinK": 6,
+    "dietK": 0,
+    "_earthName": "Giant Puffball"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3576916089,
+    "kingdom": "microbe",
+    "color": 1,
+    "form": 0,
+    "body": 2,
+    "loco": 17,
+    "trait": 14,
+    "size": 1,
+    "diet": 5,
+    "head": 8,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 9,
+    "habitat": 5,
+    "detail": 3,
+    "accent": 2,
+    "temper": 3,
+    "sense": 8,
+    "repro": 0,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.1,
+    "_earthName": "Nitrogen-Fixing Bacteria"
+   },
+   "hdGenes": {
+    "bulk": 0.791,
+    "len": 1.01,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     228,
+     97,
+     129
+    ],
+    "base2": [
+     228,
+     97,
+     212
+    ],
+    "pat": [
+     190,
+     96,
+     173
+    ],
+    "irid": [
+     97,
+     151,
+     228
+    ],
+    "irid2": [
+     151,
+     228,
+     97
+    ],
+    "dark": [
+     95,
+     40,
+     54
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 5,
+    "headK": 8,
+    "eyeN": 6,
+    "tailK": 0,
+    "limbN": 6,
+    "skinK": 0,
+    "dietK": 5,
+    "_earthName": "Nitrogen-Fixing Bacteria"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1936384680,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 9,
+    "body": 10,
+    "loco": 13,
+    "trait": 17,
+    "size": 0,
+    "diet": 2,
+    "head": 1,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 13,
+    "detail": 6,
+    "accent": 7,
+    "temper": 4,
+    "sense": 2,
+    "repro": 7,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.2,
+    "_earthName": "Ladybug"
+   },
+   "hdGenes": {
+    "bulk": 0.8525,
+    "len": 1.1,
+    "neck": 0.43,
+    "horn": 0.5,
+    "tail": 0.43999999999999995,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     148,
+     129,
+     112
+    ],
+    "base2": [
+     144,
+     148,
+     112
+    ],
+    "pat": [
+     100,
+     136,
+     116
+    ],
+    "irid": [
+     112,
+     148,
+     135
+    ],
+    "irid2": [
+     135,
+     112,
+     148
+    ],
+    "dark": [
+     62,
+     54,
+     47
+    ],
+    "finish": 0,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 10,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 13,
+    "headK": 1,
+    "eyeN": 6,
+    "tailK": 1,
+    "limbN": 2,
+    "skinK": 5,
+    "dietK": 2,
+    "_earthName": "Ladybug"
+   }
+  },
+  {
+   "genome": {
+    "seed": 295852827,
+    "kingdom": "flora",
+    "color": 15,
+    "form": 14,
+    "body": 1,
+    "loco": 15,
+    "trait": 17,
+    "size": 0,
+    "diet": 2,
+    "head": 1,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 5,
+    "habitat": 6,
+    "detail": 0,
+    "accent": 14,
+    "temper": 8,
+    "sense": 5,
+    "repro": 4,
+    "life": 3,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.3,
+    "_earthName": "Nipa Palm Fruit"
+   },
+   "hdGenes": {
+    "bulk": 0.8532500000000001,
+    "len": 1.05,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     130,
+     129,
+     182
+    ],
+    "base2": [
+     129,
+     172,
+     182
+    ],
+    "pat": [
+     107,
+     150,
+     167
+    ],
+    "irid": [
+     137,
+     182,
+     129
+    ],
+    "irid2": [
+     182,
+     129,
+     137
+    ],
+    "dark": [
+     54,
+     54,
+     76
+    ],
+    "finish": 0,
+    "rim": "#8fd6ff",
+    "eye": "#8fd6ff",
+    "plan": 1,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 6,
+    "headK": 1,
+    "eyeN": 6,
+    "tailK": 2,
+    "limbN": 4,
+    "skinK": 5,
+    "dietK": 2,
+    "_earthName": "Nipa Palm Fruit"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2950288714,
+    "kingdom": "fungi",
+    "color": 7,
+    "form": 2,
+    "body": 4,
+    "loco": 14,
+    "trait": 16,
+    "size": 3,
+    "diet": 4,
+    "head": 1,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 2,
+    "habitat": 18,
+    "detail": 6,
+    "accent": 8,
+    "temper": 2,
+    "sense": 9,
+    "repro": 6,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.4,
+    "_earthName": "Chicken-of-the-Woods"
+   },
+   "hdGenes": {
+    "bulk": 0.9027499999999999,
+    "len": 1.0899999999999999,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.48,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     167,
+     131,
+     133
+    ],
+    "base2": [
+     167,
+     131,
+     159
+    ],
+    "pat": [
+     126,
+     129,
+     156
+    ],
+    "irid": [
+     131,
+     139,
+     167
+    ],
+    "irid2": [
+     139,
+     167,
+     131
+    ],
+    "dark": [
+     70,
+     55,
+     55
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 4,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 18,
+    "headK": 1,
+    "eyeN": 4,
+    "tailK": 2,
+    "limbN": 6,
+    "skinK": 2,
+    "dietK": 4,
+    "_earthName": "Chicken-of-the-Woods"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1309757373,
+    "kingdom": "microbe",
+    "color": 14,
+    "form": 10,
+    "body": 8,
+    "loco": 11,
+    "trait": 13,
+    "size": 1,
+    "diet": 4,
+    "head": 5,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 12,
+    "detail": 9,
+    "accent": 9,
+    "temper": 3,
+    "sense": 7,
+    "repro": 5,
+    "life": 4,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.5,
+    "_earthName": "Snow Algae"
+   },
+   "hdGenes": {
+    "bulk": 0.7925,
+    "len": 0.9099999999999999,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     156,
+     179,
+     171
+    ],
+    "base2": [
+     156,
+     168,
+     179
+    ],
+    "pat": [
+     154,
+     131,
+     156
+    ],
+    "irid": [
+     175,
+     156,
+     179
+    ],
+    "irid2": [
+     179,
+     175,
+     156
+    ],
+    "dark": [
+     65,
+     75,
+     71
+    ],
+    "finish": 0,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 8,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 12,
+    "headK": 5,
+    "eyeN": 0,
+    "tailK": 0,
+    "limbN": 4,
+    "skinK": 2,
+    "dietK": 4,
+    "_earthName": "Snow Algae"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3964193260,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 1,
+    "body": 12,
+    "loco": 0,
+    "trait": 23,
+    "size": 3,
+    "diet": 5,
+    "head": 7,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 11,
+    "detail": 4,
+    "accent": 2,
+    "temper": 9,
+    "sense": 0,
+    "repro": 2,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.6,
+    "_earthName": "Razor Clam"
+   },
+   "hdGenes": {
+    "bulk": 0.9095,
+    "len": 1.0899999999999999,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     184,
+     143,
+     204
+    ],
+    "base2": [
+     145,
+     143,
+     204
+    ],
+    "pat": [
+     142,
+     131,
+     138
+    ],
+    "irid": [
+     143,
+     204,
+     174
+    ],
+    "irid2": [
+     204,
+     174,
+     143
+    ],
+    "dark": [
+     77,
+     60,
+     85
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#e8c878",
+    "plan": 12,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 11,
+    "headK": 7,
+    "eyeN": 1,
+    "tailK": 5,
+    "limbN": 6,
+    "skinK": 2,
+    "dietK": 5,
+    "_earthName": "Razor Clam"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2323661407,
+    "kingdom": "flora",
+    "color": 14,
+    "form": 7,
+    "body": 3,
+    "loco": 17,
+    "trait": 7,
+    "size": 2,
+    "diet": 5,
+    "head": 7,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 6,
+    "habitat": 12,
+    "detail": 6,
+    "accent": 16,
+    "temper": 3,
+    "sense": 6,
+    "repro": 2,
+    "life": 5,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.7,
+    "_earthName": "Elderberry"
+   },
+   "hdGenes": {
+    "bulk": 0.85775,
+    "len": 1.15,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     156,
+     179,
+     171
+    ],
+    "base2": [
+     156,
+     179,
+     159
+    ],
+    "pat": [
+     154,
+     137,
+     146
+    ],
+    "irid": [
+     179,
+     167,
+     156
+    ],
+    "irid2": [
+     167,
+     156,
+     179
+    ],
+    "dark": [
+     65,
+     75,
+     71
+    ],
+    "finish": 0,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 3,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 12,
+    "headK": 7,
+    "eyeN": 2,
+    "tailK": 5,
+    "limbN": 6,
+    "skinK": 4,
+    "dietK": 5,
+    "_earthName": "Elderberry"
+   }
+  },
+  {
+   "genome": {
+    "seed": 683129998,
+    "kingdom": "fungi",
+    "color": 1,
+    "form": 10,
+    "body": 6,
+    "loco": 1,
+    "trait": 12,
+    "size": 5,
+    "diet": 1,
+    "head": 5,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 10,
+    "detail": 5,
+    "accent": 6,
+    "temper": 7,
+    "sense": 1,
+    "repro": 4,
+    "life": 1,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.8,
+    "_earthName": "Oyster Mushroom"
+   },
+   "hdGenes": {
+    "bulk": 1.05575,
+    "len": 0.9199999999999999,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     208,
+     97,
+     84
+    ],
+    "base2": [
+     208,
+     84,
+     137
+    ],
+    "pat": [
+     164,
+     90,
+     100
+    ],
+    "irid": [
+     84,
+     92,
+     208
+    ],
+    "irid2": [
+     92,
+     208,
+     84
+    ],
+    "dark": [
+     87,
+     40,
+     35
+    ],
+    "finish": 0,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 6,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 10,
+    "headK": 5,
+    "eyeN": 1,
+    "tailK": 1,
+    "limbN": 2,
+    "skinK": 6,
+    "dietK": 1,
+    "_earthName": "Oyster Mushroom"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3337565889,
+    "kingdom": "microbe",
+    "color": 16,
+    "form": 2,
+    "body": 10,
+    "loco": 5,
+    "trait": 23,
+    "size": 4,
+    "diet": 1,
+    "head": 8,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 6,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 8,
+    "accent": 14,
+    "temper": 5,
+    "sense": 8,
+    "repro": 1,
+    "life": 0,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.9,
+    "_earthName": "Cyanobacteria"
+   },
+   "hdGenes": {
+    "bulk": 0.9672499999999999,
+    "len": 1.28,
+    "neck": 0.69,
+    "horn": 0.5,
+    "tail": 0.89,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     213,
+     193,
+     228
+    ],
+    "base2": [
+     193,
+     202,
+     228
+    ],
+    "pat": [
+     173,
+     148,
+     181
+    ],
+    "irid": [
+     193,
+     228,
+     207
+    ],
+    "irid2": [
+     228,
+     207,
+     193
+    ],
+    "dark": [
+     89,
+     81,
+     95
+    ],
+    "finish": 1,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 10,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 5,
+    "heat": 12,
+    "headK": 8,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 0,
+    "skinK": 3,
+    "dietK": 1,
+    "_earthName": "Cyanobacteria"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1697034032,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 0,
+    "body": 3,
+    "loco": 5,
+    "trait": 23,
+    "size": 3,
+    "diet": 1,
+    "head": 2,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 9,
+    "detail": 2,
+    "accent": 7,
+    "temper": 1,
+    "sense": 4,
+    "repro": 0,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Moth"
+   },
+   "hdGenes": {
+    "bulk": 0.9057499999999999,
+    "len": 1.2399999999999998,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.39,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     195,
+     173,
+     218
+    ],
+    "base2": [
+     218,
+     173,
+     213
+    ],
+    "pat": [
+     185,
+     134,
+     173
+    ],
+    "irid": [
+     218,
+     202,
+     173
+    ],
+    "irid2": [
+     173,
+     218,
+     202
+    ],
+    "dark": [
+     81,
+     72,
+     91
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 3,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 9,
+    "headK": 2,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 4,
+    "skinK": 8,
+    "dietK": 1,
+    "_earthName": "Moth"
+   }
+  },
+  {
+   "genome": {
+    "seed": 56502627,
+    "kingdom": "flora",
+    "color": 5,
+    "form": 6,
+    "body": 4,
+    "loco": 1,
+    "trait": 21,
+    "size": 0,
+    "diet": 0,
+    "head": 5,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 3,
+    "detail": 3,
+    "accent": 15,
+    "temper": 6,
+    "sense": 4,
+    "repro": 2,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0,
+    "_earthName": "Scurvy Grass"
+   },
+   "hdGenes": {
+    "bulk": 0.8540000000000001,
+    "len": 1,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     133,
+     128,
+     189
+    ],
+    "base2": [
+     159,
+     128,
+     189
+    ],
+    "pat": [
+     140,
+     112,
+     126
+    ],
+    "irid": [
+     189,
+     143,
+     128
+    ],
+    "irid2": [
+     128,
+     189,
+     143
+    ],
+    "dark": [
+     55,
+     53,
+     79
+    ],
+    "finish": 0,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 4,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 3,
+    "headK": 5,
+    "eyeN": 1,
+    "tailK": 5,
+    "limbN": 6,
+    "skinK": 7,
+    "dietK": 0,
+    "_earthName": "Scurvy Grass"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2710938578,
+    "kingdom": "fungi",
+    "color": 15,
+    "form": 6,
+    "body": 9,
+    "loco": 12,
+    "trait": 18,
+    "size": 0,
+    "diet": 1,
+    "head": 7,
+    "limbs": 0,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 5,
+    "detail": 1,
+    "accent": 2,
+    "temper": 6,
+    "sense": 9,
+    "repro": 5,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.1,
+    "_earthName": "Turkey Tail"
+   },
+   "hdGenes": {
+    "bulk": 0.8270000000000001,
+    "len": 1.05,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     152,
+     109,
+     126
+    ],
+    "base2": [
+     151,
+     109,
+     152
+    ],
+    "pat": [
+     136,
+     102,
+     107
+    ],
+    "irid": [
+     109,
+     133,
+     152
+    ],
+    "irid2": [
+     133,
+     152,
+     109
+    ],
+    "dark": [
+     63,
+     45,
+     52
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 5,
+    "headK": 7,
+    "eyeN": 4,
+    "tailK": 3,
+    "limbN": 2,
+    "skinK": 4,
+    "dietK": 1,
+    "_earthName": "Turkey Tail"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1070406661,
+    "kingdom": "microbe",
+    "color": 15,
+    "form": 16,
+    "body": 12,
+    "loco": 10,
+    "trait": 2,
+    "size": 3,
+    "diet": 4,
+    "head": 0,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 9,
+    "habitat": 7,
+    "detail": 1,
+    "accent": 13,
+    "temper": 2,
+    "sense": 8,
+    "repro": 7,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.2,
+    "_earthName": "Cryophile"
+   },
+   "hdGenes": {
+    "bulk": 0.89975,
+    "len": 1.0899999999999999,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     144,
+     101,
+     182
+    ],
+    "base2": [
+     182,
+     101,
+     161
+    ],
+    "pat": [
+     145,
+     92,
+     157
+    ],
+    "irid": [
+     182,
+     158,
+     101
+    ],
+    "irid2": [
+     101,
+     182,
+     158
+    ],
+    "dark": [
+     60,
+     42,
+     76
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#b58cff",
+    "plan": 12,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 7,
+    "headK": 0,
+    "eyeN": 6,
+    "tailK": 4,
+    "limbN": 6,
+    "skinK": 6,
+    "dietK": 4,
+    "_earthName": "Cryophile"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3724842612,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 14,
+    "body": 5,
+    "loco": 10,
+    "trait": 2,
+    "size": 5,
+    "diet": 3,
+    "head": 3,
+    "limbs": 4,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 2,
+    "detail": 3,
+    "accent": 11,
+    "temper": 4,
+    "sense": 9,
+    "repro": 5,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.3,
+    "_earthName": "Buffalo"
+   },
+   "hdGenes": {
+    "bulk": 1.05425,
+    "len": 0.87,
+    "neck": 0.69,
+    "horn": 0.8786163606680929,
+    "tail": 0.43999999999999995,
+    "leg": 0.6599999999999999,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     133,
+     128,
+     189
+    ],
+    "base2": [
+     166,
+     128,
+     189
+    ],
+    "pat": [
+     143,
+     112,
+     126
+    ],
+    "irid": [
+     189,
+     143,
+     128
+    ],
+    "irid2": [
+     128,
+     189,
+     143
+    ],
+    "dark": [
+     55,
+     53,
+     79
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 2,
+    "headK": 3,
+    "eyeN": 6,
+    "tailK": 1,
+    "limbN": 3,
+    "skinK": 3,
+    "dietK": 3,
+    "_earthName": "Buffalo"
+   }
+  },
+  {
+   "genome": {
+    "seed": 2084311207,
+    "kingdom": "flora",
+    "color": 16,
+    "form": 3,
+    "body": 8,
+    "loco": 13,
+    "trait": 14,
+    "size": 4,
+    "diet": 2,
+    "head": 9,
+    "limbs": 5,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 3,
+    "temper": 3,
+    "sense": 2,
+    "repro": 0,
+    "life": 2,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.4,
+    "_earthName": "Wild Yam"
+   },
+   "hdGenes": {
+    "bulk": 0.9889999999999999,
+    "len": 1.18,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     153,
+     212,
+     219
+    ],
+    "base2": [
+     153,
+     164,
+     219
+    ],
+    "pat": [
+     105,
+     144,
+     169
+    ],
+    "irid": [
+     219,
+     153,
+     201
+    ],
+    "irid2": [
+     201,
+     219,
+     153
+    ],
+    "dark": [
+     64,
+     89,
+     91
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 8,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 4,
+    "headK": 9,
+    "eyeN": 1,
+    "tailK": 4,
+    "limbN": 0,
+    "skinK": 1,
+    "dietK": 2,
+    "_earthName": "Wild Yam"
+   }
+  },
+  {
+   "genome": {
+    "seed": 443779350,
+    "kingdom": "fungi",
+    "color": 14,
+    "form": 1,
+    "body": 8,
+    "loco": 15,
+    "trait": 18,
+    "size": 4,
+    "diet": 1,
+    "head": 6,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 8,
+    "detail": 8,
+    "accent": 15,
+    "temper": 4,
+    "sense": 9,
+    "repro": 5,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.5,
+    "_earthName": "Black Truffle"
+   },
+   "hdGenes": {
+    "bulk": 0.9672499999999999,
+    "len": 1.18,
+    "neck": 0.43,
+    "horn": 0.9865121887996793,
+    "tail": 0.43999999999999995,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     156,
+     179,
+     171
+    ],
+    "base2": [
+     156,
+     177,
+     179
+    ],
+    "pat": [
+     154,
+     136,
+     156
+    ],
+    "irid": [
+     175,
+     156,
+     179
+    ],
+    "irid2": [
+     179,
+     175,
+     156
+    ],
+    "dark": [
+     65,
+     75,
+     71
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 8,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 8,
+    "headK": 6,
+    "eyeN": 4,
+    "tailK": 1,
+    "limbN": 4,
+    "skinK": 2,
+    "dietK": 1,
+    "_earthName": "Black Truffle"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3098215241,
+    "kingdom": "microbe",
+    "color": 7,
+    "form": 4,
+    "body": 8,
+    "loco": 0,
+    "trait": 17,
+    "size": 4,
+    "diet": 4,
+    "head": 6,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 4,
+    "detail": 8,
+    "accent": 7,
+    "temper": 1,
+    "sense": 6,
+    "repro": 5,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.6,
+    "_earthName": "Diatom"
+   },
+   "hdGenes": {
+    "bulk": 0.9522499999999999,
+    "len": 1.18,
+    "neck": 0.43,
+    "horn": 0.7706324769183993,
+    "tail": 0.7999999999999999,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     148,
+     129,
+     112
+    ],
+    "base2": [
+     144,
+     148,
+     112
+    ],
+    "pat": [
+     100,
+     136,
+     116
+    ],
+    "irid": [
+     112,
+     148,
+     135
+    ],
+    "irid2": [
+     135,
+     112,
+     148
+    ],
+    "dark": [
+     62,
+     54,
+     47
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 8,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 4,
+    "headK": 6,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 8,
+    "skinK": 0,
+    "dietK": 4,
+    "_earthName": "Diatom"
+   }
+  }
+ ],
+ "blends": [
+  {
+   "genome": {
+    "seed": 2654435584,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 13,
+    "body": 3,
+    "loco": 15,
+    "trait": 22,
+    "size": 0,
+    "diet": 2,
+    "head": 7,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 0,
+    "detail": 4,
+    "accent": 0,
+    "temper": 5,
+    "sense": 0,
+    "repro": 7,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 1,
+    "heat": 0,
+    "_earthBlend": "Banana",
+    "_anchorVal": 0
+   },
+   "hdGenes": {
+    "bulk": 0.8300000000000001,
+    "len": 1.15,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     177,
+     218,
+     183
+    ],
+    "base2": [
+     189,
+     218,
+     177
+    ],
+    "pat": [
+     142,
+     176,
+     120
+    ],
+    "irid": [
+     218,
+     177,
+     178
+    ],
+    "irid2": [
+     177,
+     178,
+     218
+    ],
+    "dark": [
+     74,
+     91,
+     76
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 3,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 0,
+    "headK": 7,
+    "eyeN": 6,
+    "tailK": 5,
+    "limbN": 2,
+    "skinK": 0,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 1013904339,
+    "kingdom": "flora",
+    "color": 7,
+    "form": 6,
+    "body": 4,
+    "loco": 2,
+    "trait": 18,
+    "size": 1,
+    "diet": 0,
+    "head": 2,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 3,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 14,
+    "temper": 8,
+    "sense": 9,
+    "repro": 4,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.1,
+    "_earthBlend": "Destroying Angel"
+   },
+   "hdGenes": {
+    "bulk": 0.79025,
+    "len": 0.9099999999999999,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     148,
+     129,
+     112
+    ],
+    "base2": [
+     148,
+     112,
+     125
+    ],
+    "pat": [
+     102,
+     118,
+     122
+    ],
+    "irid": [
+     123,
+     112,
+     148
+    ],
+    "irid2": [
+     112,
+     148,
+     123
+    ],
+    "dark": [
+     62,
+     54,
+     47
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 4,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 4,
+    "headK": 2,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 8,
+    "skinK": 7,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 3668340130,
+    "kingdom": "fungi",
+    "color": 6,
+    "form": 5,
+    "body": 12,
+    "loco": 4,
+    "trait": 23,
+    "size": 5,
+    "diet": 2,
+    "head": 5,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 7,
+    "detail": 0,
+    "accent": 15,
+    "temper": 1,
+    "sense": 1,
+    "repro": 7,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 3,
+    "heat": 0.2,
+    "_earthBlend": "Acidophile",
+    "_anchorVal": 0.2
+   },
+   "hdGenes": {
+    "bulk": 1.09175,
+    "len": 0.82,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     175,
+     165,
+     113
+    ],
+    "base2": [
+     158,
+     175,
+     113
+    ],
+    "pat": [
+     107,
+     149,
+     116
+    ],
+    "irid": [
+     113,
+     175,
+     175
+    ],
+    "irid2": [
+     175,
+     113,
+     175
+    ],
+    "dark": [
+     73,
+     69,
+     47
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 12,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 5,
+    "heat": 7,
+    "headK": 5,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 3,
+    "skinK": 4,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 2027808373,
+    "kingdom": "microbe",
+    "color": 0,
+    "form": 1,
+    "body": 6,
+    "loco": 6,
+    "trait": 9,
+    "size": 3,
+    "diet": 4,
+    "head": 8,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 4,
+    "habitat": 11,
+    "detail": 7,
+    "accent": 0,
+    "temper": 1,
+    "sense": 8,
+    "repro": 6,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 4,
+    "heat": 0.3,
+    "_earthBlend": "Raccoon"
+   },
+   "hdGenes": {
+    "bulk": 0.90425,
+    "len": 1.19,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     117,
+     194,
+     112
+    ],
+    "base2": [
+     153,
+     194,
+     112
+    ],
+    "pat": [
+     146,
+     157,
+     92
+    ],
+    "irid": [
+     194,
+     112,
+     131
+    ],
+    "irid2": [
+     112,
+     131,
+     194
+    ],
+    "dark": [
+     49,
+     81,
+     47
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#e8c878",
+    "plan": 6,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 11,
+    "headK": 8,
+    "eyeN": 8,
+    "tailK": 0,
+    "limbN": 6,
+    "skinK": 8,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 387276996,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 3,
+    "body": 5,
+    "loco": 3,
+    "trait": 14,
+    "size": 2,
+    "diet": 3,
+    "head": 3,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 11,
+    "detail": 3,
+    "accent": 7,
+    "temper": 8,
+    "sense": 4,
+    "repro": 3,
+    "life": 0,
+    "metab": 5,
+    "lumin": true,
+    "gen": 5,
+    "heat": 0.4,
+    "_earthBlend": "Sea Buckthorn",
+    "_anchorVal": 0.4,
+    "_earthBlendKingdom": "flora"
+   },
+   "hdGenes": {
+    "bulk": 0.8735,
+    "len": 1.05,
+    "neck": 0.69,
+    "horn": 1.0412289137952029,
+    "tail": 0.71,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     126,
+     204,
+     107
+    ],
+    "base2": [
+     107,
+     204,
+     149
+    ],
+    "pat": [
+     130,
+     169,
+     106
+    ],
+    "irid": [
+     107,
+     110,
+     204
+    ],
+    "irid2": [
+     204,
+     107,
+     110
+    ],
+    "dark": [
+     52,
+     85,
+     44
+    ],
+    "finish": 1,
+    "rim": "#ffe06a",
+    "eye": "#ffe06a",
+    "plan": 5,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 11,
+    "headK": 3,
+    "eyeN": 6,
+    "tailK": 4,
+    "limbN": 6,
+    "skinK": 2,
+    "dietK": 3
+   }
+  },
+  {
+   "genome": {
+    "seed": 3041712791,
+    "kingdom": "flora",
+    "color": 1,
+    "form": 1,
+    "body": 11,
+    "loco": 10,
+    "trait": 23,
+    "size": 4,
+    "diet": 1,
+    "head": 8,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 0,
+    "detail": 2,
+    "accent": 5,
+    "temper": 9,
+    "sense": 0,
+    "repro": 3,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 6,
+    "heat": 0.5,
+    "_earthBlend": "Reindeer Lichen"
+   },
+   "hdGenes": {
+    "bulk": 0.9837499999999999,
+    "len": 1.33,
+    "neck": 0.69,
+    "horn": 1,
+    "tail": 0.7999999999999999,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     191,
+     122,
+     84
+    ],
+    "base2": [
+     191,
+     168,
+     84
+    ],
+    "pat": [
+     143,
+     151,
+     73
+    ],
+    "irid": [
+     84,
+     191,
+     140
+    ],
+    "irid2": [
+     140,
+     84,
+     191
+    ],
+    "dark": [
+     80,
+     51,
+     35
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 11,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 0,
+    "headK": 8,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 6,
+    "skinK": 3,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 1401181030,
+    "kingdom": "fungi",
+    "color": 4,
+    "form": 3,
+    "body": 11,
+    "loco": 15,
+    "trait": 24,
+    "size": 1,
+    "diet": 0,
+    "head": 3,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 8,
+    "habitat": 9,
+    "detail": 9,
+    "accent": 5,
+    "temper": 3,
+    "sense": 7,
+    "repro": 1,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 1,
+    "heat": 0.6,
+    "_earthBlend": "Euglena",
+    "_anchorVal": 0.6
+   },
+   "hdGenes": {
+    "bulk": 0.79325,
+    "len": 1.06,
+    "neck": 0.69,
+    "horn": 0.9889220889657735,
+    "tail": 0.7999999999999999,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     130,
+     170,
+     148
+    ],
+    "base2": [
+     130,
+     170,
+     165
+    ],
+    "pat": [
+     141,
+     121,
+     104
+    ],
+    "irid": [
+     155,
+     130,
+     170
+    ],
+    "irid2": [
+     170,
+     155,
+     130
+    ],
+    "dark": [
+     54,
+     71,
+     62
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff7a4a",
+    "plan": 11,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 9,
+    "headK": 3,
+    "eyeN": 2,
+    "tailK": 5,
+    "limbN": 0,
+    "skinK": 7,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 4055616825,
+    "kingdom": "microbe",
+    "color": 3,
+    "form": 11,
+    "body": 5,
+    "loco": 3,
+    "trait": 19,
+    "size": 1,
+    "diet": 1,
+    "head": 4,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 3,
+    "detail": 3,
+    "accent": 2,
+    "temper": 0,
+    "sense": 8,
+    "repro": 0,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.7,
+    "_earthBlend": "Alpine Salamander"
+   },
+   "hdGenes": {
+    "bulk": 0.77825,
+    "len": 0.96,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     240,
+     200,
+     86
+    ],
+    "base2": [
+     240,
+     102,
+     86
+    ],
+    "pat": [
+     196,
+     118,
+     74
+    ],
+    "irid": [
+     174,
+     86,
+     240
+    ],
+    "irid2": [
+     86,
+     240,
+     174
+    ],
+    "dark": [
+     100,
+     84,
+     36
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ffe06a",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 3,
+    "headK": 4,
+    "eyeN": 2,
+    "tailK": 1,
+    "limbN": 0,
+    "skinK": 7,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 2415085448,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 15,
+    "body": 2,
+    "loco": 17,
+    "trait": 15,
+    "size": 1,
+    "diet": 0,
+    "head": 5,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 14,
+    "temper": 5,
+    "sense": 6,
+    "repro": 1,
+    "life": 0,
+    "metab": 3,
+    "lumin": false,
+    "gen": 3,
+    "heat": 0.8,
+    "_earthBlend": "Black Grape",
+    "_anchorVal": 0.8
+   },
+   "hdGenes": {
+    "bulk": 0.80225,
+    "len": 1.01,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     213,
+     193,
+     228
+    ],
+    "base2": [
+     193,
+     202,
+     228
+    ],
+    "pat": [
+     173,
+     148,
+     181
+    ],
+    "irid": [
+     193,
+     228,
+     207
+    ],
+    "irid2": [
+     228,
+     207,
+     193
+    ],
+    "dark": [
+     89,
+     81,
+     95
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 16,
+    "headK": 5,
+    "eyeN": 8,
+    "tailK": 1,
+    "limbN": 3,
+    "skinK": 8,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 774553691,
+    "kingdom": "flora",
+    "color": 14,
+    "form": 17,
+    "body": 3,
+    "loco": 3,
+    "trait": 24,
+    "size": 0,
+    "diet": 0,
+    "head": 3,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 1,
+    "detail": 9,
+    "accent": 16,
+    "temper": 2,
+    "sense": 0,
+    "repro": 3,
+    "life": 2,
+    "metab": 3,
+    "lumin": false,
+    "gen": 4,
+    "heat": 0.9,
+    "_earthBlend": "Death Cap"
+   },
+   "hdGenes": {
+    "bulk": 0.8420000000000001,
+    "len": 1.15,
+    "neck": 0.69,
+    "horn": 0.8733326617628335,
+    "tail": 0.89,
+    "leg": 0.75,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     156,
+     204,
+     126
+    ],
+    "base2": [
+     198,
+     204,
+     126
+    ],
+    "pat": [
+     175,
+     169,
+     94
+    ],
+    "irid": [
+     204,
+     126,
+     169
+    ],
+    "irid2": [
+     126,
+     169,
+     204
+    ],
+    "dark": [
+     65,
+     85,
+     52
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ffe06a",
+    "plan": 3,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 1,
+    "headK": 3,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 0,
+    "skinK": 0,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 3428989482,
+    "kingdom": "fungi",
+    "color": 7,
+    "form": 12,
+    "body": 14,
+    "loco": 1,
+    "trait": 1,
+    "size": 3,
+    "diet": 5,
+    "head": 5,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 8,
+    "accent": 3,
+    "temper": 9,
+    "sense": 4,
+    "repro": 4,
+    "life": 4,
+    "metab": 1,
+    "lumin": true,
+    "gen": 5,
+    "heat": 1,
+    "_earthBlend": "Iron-Oxidizing Bacteria",
+    "_anchorVal": 0
+   },
+   "hdGenes": {
+    "bulk": 0.92225,
+    "len": 1.19,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     189,
+     110,
+     76
+    ],
+    "base2": [
+     185,
+     189,
+     76
+    ],
+    "pat": [
+     153,
+     142,
+     69
+    ],
+    "irid": [
+     76,
+     189,
+     129
+    ],
+    "irid2": [
+     129,
+     76,
+     189
+    ],
+    "dark": [
+     79,
+     46,
+     31
+    ],
+    "finish": 0,
+    "rim": "#caa06a",
+    "eye": "#caa06a",
+    "plan": 14,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 18,
+    "headK": 5,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 6,
+    "skinK": 3,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 1788458237,
+    "kingdom": "microbe",
+    "color": 0,
+    "form": 8,
+    "body": 2,
+    "loco": 16,
+    "trait": 24,
+    "size": 1,
+    "diet": 5,
+    "head": 9,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 16,
+    "detail": 2,
+    "accent": 6,
+    "temper": 8,
+    "sense": 0,
+    "repro": 2,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 6,
+    "heat": 0,
+    "_earthBlend": "Sand Dollar"
+   },
+   "hdGenes": {
+    "bulk": 0.80525,
+    "len": 1.01,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     117,
+     194,
+     112
+    ],
+    "base2": [
+     161,
+     194,
+     112
+    ],
+    "pat": [
+     150,
+     157,
+     92
+    ],
+    "irid": [
+     194,
+     112,
+     131
+    ],
+    "irid2": [
+     112,
+     131,
+     194
+    ],
+    "dark": [
+     49,
+     81,
+     47
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#e8c878",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 16,
+    "headK": 9,
+    "eyeN": 8,
+    "tailK": 6,
+    "limbN": 0,
+    "skinK": 0,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 147926348,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 13,
+    "body": 11,
+    "loco": 12,
+    "trait": 14,
+    "size": 3,
+    "diet": 3,
+    "head": 4,
+    "limbs": 5,
+    "skin": 5,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 17,
+    "detail": 6,
+    "accent": 4,
+    "temper": 0,
+    "sense": 3,
+    "repro": 7,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 1,
+    "heat": 0.1,
+    "_earthBlend": "Currant",
+    "_anchorVal": 0.2,
+    "_earthBlendKingdom": "flora"
+   },
+   "hdGenes": {
+    "bulk": 0.9185,
+    "len": 1.2399999999999998,
+    "neck": 0.8200000000000001,
+    "horn": 1,
+    "tail": 0.62,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     173,
+     135,
+     76
+    ],
+    "base2": [
+     173,
+     76,
+     98
+    ],
+    "pat": [
+     134,
+     105,
+     80
+    ],
+    "irid": [
+     119,
+     76,
+     173
+    ],
+    "irid2": [
+     76,
+     173,
+     119
+    ],
+    "dark": [
+     72,
+     56,
+     31
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 11,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 17,
+    "headK": 4,
+    "eyeN": 8,
+    "tailK": 3,
+    "limbN": 0,
+    "skinK": 5,
+    "dietK": 3
+   }
+  },
+  {
+   "genome": {
+    "seed": 2802362143,
+    "kingdom": "flora",
+    "color": 3,
+    "form": 17,
+    "body": 8,
+    "loco": 8,
+    "trait": 1,
+    "size": 4,
+    "diet": 4,
+    "head": 7,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 10,
+    "habitat": 10,
+    "detail": 7,
+    "accent": 12,
+    "temper": 2,
+    "sense": 5,
+    "repro": 7,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.2,
+    "_earthBlend": "Shelf Fungus"
+   },
+   "hdGenes": {
+    "bulk": 0.9829999999999999,
+    "len": 1.18,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     179,
+     194,
+     122
+    ],
+    "base2": [
+     194,
+     163,
+     122
+    ],
+    "pat": [
+     125,
+     143,
+     121
+    ],
+    "irid": [
+     194,
+     122,
+     191
+    ],
+    "irid2": [
+     122,
+     191,
+     194
+    ],
+    "dark": [
+     75,
+     81,
+     51
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 8,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 10,
+    "headK": 7,
+    "eyeN": 8,
+    "tailK": 4,
+    "limbN": 3,
+    "skinK": 4,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 1161830894,
+    "kingdom": "fungi",
+    "color": 10,
+    "form": 17,
+    "body": 12,
+    "loco": 17,
+    "trait": 17,
+    "size": 3,
+    "diet": 4,
+    "head": 9,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 6,
+    "habitat": 7,
+    "detail": 8,
+    "accent": 2,
+    "temper": 6,
+    "sense": 6,
+    "repro": 7,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 3,
+    "heat": 0.3,
+    "_earthBlend": "Red-Tide Algae",
+    "_anchorVal": 0.4
+   },
+   "hdGenes": {
+    "bulk": 0.9455,
+    "len": 1.0899999999999999,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     240,
+     199,
+     213
+    ],
+    "base2": [
+     240,
+     199,
+     239
+    ],
+    "pat": [
+     196,
+     147,
+     186
+    ],
+    "irid": [
+     199,
+     220,
+     240
+    ],
+    "irid2": [
+     220,
+     240,
+     199
+    ],
+    "dark": [
+     100,
+     83,
+     89
+    ],
+    "finish": 1,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 12,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 5,
+    "heat": 7,
+    "headK": 9,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 6,
+    "skinK": 1,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 3816266657,
+    "kingdom": "microbe",
+    "color": 11,
+    "form": 7,
+    "body": 1,
+    "loco": 2,
+    "trait": 10,
+    "size": 3,
+    "diet": 2,
+    "head": 9,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 11,
+    "detail": 3,
+    "accent": 14,
+    "temper": 4,
+    "sense": 5,
+    "repro": 5,
+    "life": 4,
+    "metab": 5,
+    "lumin": true,
+    "gen": 4,
+    "heat": 0.4,
+    "_earthBlend": "Aphid"
+   },
+   "hdGenes": {
+    "bulk": 0.90125,
+    "len": 1.14,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     221,
+     132,
+     160
+    ],
+    "base2": [
+     208,
+     132,
+     221
+    ],
+    "pat": [
+     173,
+     126,
+     146
+    ],
+    "irid": [
+     132,
+     175,
+     221
+    ],
+    "irid2": [
+     175,
+     221,
+     132
+    ],
+    "dark": [
+     92,
+     55,
+     67
+    ],
+    "finish": 0,
+    "rim": "#e8c878",
+    "eye": "#e8c878",
+    "plan": 1,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 11,
+    "headK": 9,
+    "eyeN": 8,
+    "tailK": 2,
+    "limbN": 2,
+    "skinK": 0,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 2175734896,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 2,
+    "body": 8,
+    "loco": 9,
+    "trait": 6,
+    "size": 0,
+    "diet": 2,
+    "head": 9,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 10,
+    "detail": 2,
+    "accent": 2,
+    "temper": 5,
+    "sense": 4,
+    "repro": 3,
+    "life": 2,
+    "metab": 5,
+    "lumin": true,
+    "gen": 5,
+    "heat": 0.5,
+    "_earthBlend": "Marsh Rosemary",
+    "_anchorVal": 0.6
+   },
+   "hdGenes": {
+    "bulk": 0.8495,
+    "len": 1,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     167,
+     116,
+     119
+    ],
+    "base2": [
+     167,
+     116,
+     151
+    ],
+    "pat": [
+     112,
+     120,
+     135
+    ],
+    "irid": [
+     116,
+     127,
+     167
+    ],
+    "irid2": [
+     127,
+     167,
+     116
+    ],
+    "dark": [
+     70,
+     48,
+     49
+    ],
+    "finish": 1,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 8,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 10,
+    "headK": 9,
+    "eyeN": 2,
+    "tailK": 5,
+    "limbN": 4,
+    "skinK": 5,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 535203523,
+    "kingdom": "flora",
+    "color": 4,
+    "form": 9,
+    "body": 15,
+    "loco": 14,
+    "trait": 16,
+    "size": 4,
+    "diet": 5,
+    "head": 9,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 0,
+    "detail": 1,
+    "accent": 2,
+    "temper": 0,
+    "sense": 0,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 6,
+    "heat": 0.6,
+    "_earthBlend": "Fly Agaric"
+   },
+   "hdGenes": {
+    "bulk": 0.9934999999999999,
+    "len": 1.33,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     94,
+     209,
+     161
+    ],
+    "base2": [
+     100,
+     209,
+     94
+    ],
+    "pat": [
+     97,
+     171,
+     78
+    ],
+    "irid": [
+     209,
+     142,
+     94
+    ],
+    "irid2": [
+     142,
+     94,
+     209
+    ],
+    "dark": [
+     39,
+     87,
+     67
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 15,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 0,
+    "headK": 9,
+    "eyeN": 2,
+    "tailK": 5,
+    "limbN": 2,
+    "skinK": 5,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 3189639314,
+    "kingdom": "fungi",
+    "color": 13,
+    "form": 13,
+    "body": 0,
+    "loco": 6,
+    "trait": 7,
+    "size": 5,
+    "diet": 4,
+    "head": 1,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 14,
+    "detail": 2,
+    "accent": 3,
+    "temper": 2,
+    "sense": 4,
+    "repro": 2,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 1,
+    "heat": 0.7,
+    "_earthBlend": "Foraminiferan",
+    "_anchorVal": 0.8
+   },
+   "hdGenes": {
+    "bulk": 1.05275,
+    "len": 0.82,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     222,
+     171,
+     77
+    ],
+    "base2": [
+     167,
+     222,
+     77
+    ],
+    "pat": [
+     160,
+     178,
+     70
+    ],
+    "irid": [
+     77,
+     222,
+     195
+    ],
+    "irid2": [
+     195,
+     77,
+     222
+    ],
+    "dark": [
+     93,
+     71,
+     32
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ffe06a",
+    "plan": 0,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 14,
+    "headK": 1,
+    "eyeN": 8,
+    "tailK": 3,
+    "limbN": 6,
+    "skinK": 4,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 1549107557,
+    "kingdom": "microbe",
+    "color": 13,
+    "form": 13,
+    "body": 9,
+    "loco": 8,
+    "trait": 13,
+    "size": 0,
+    "diet": 1,
+    "head": 9,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 3,
+    "eyes": 2,
+    "behavior": 4,
+    "habitat": 0,
+    "detail": 4,
+    "accent": 7,
+    "temper": 4,
+    "sense": 5,
+    "repro": 6,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.8,
+    "_earthBlend": "Baboon"
+   },
+   "hdGenes": {
+    "bulk": 0.84875,
+    "len": 1.05,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.7999999999999999,
+    "leg": 0.75,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     185,
+     171,
+     77
+    ],
+    "base2": [
+     131,
+     185,
+     77
+    ],
+    "pat": [
+     113,
+     159,
+     70
+    ],
+    "irid": [
+     77,
+     181,
+     185
+    ],
+    "irid2": [
+     185,
+     77,
+     181
+    ],
+    "dark": [
+     77,
+     71,
+     32
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fe06a",
+    "plan": 9,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 0,
+    "headK": 9,
+    "eyeN": 6,
+    "tailK": 5,
+    "limbN": 0,
+    "skinK": 0,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 4203543348,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 12,
+    "body": 15,
+    "loco": 13,
+    "trait": 14,
+    "size": 1,
+    "diet": 4,
+    "head": 3,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 4,
+    "temper": 5,
+    "sense": 3,
+    "repro": 6,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 3,
+    "heat": 0.9,
+    "_earthBlend": "Blueberry",
+    "_anchorVal": 0,
+    "_earthBlendKingdom": "flora"
+   },
+   "hdGenes": {
+    "bulk": 0.7865,
+    "len": 1.06,
+    "neck": 0.69,
+    "horn": 0.8317950653843581,
+    "tail": 0.35,
+    "leg": 0.48,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     93,
+     146,
+     225
+    ],
+    "base2": [
+     93,
+     225,
+     194
+    ],
+    "pat": [
+     75,
+     174,
+     157
+    ],
+    "irid": [
+     168,
+     225,
+     93
+    ],
+    "irid2": [
+     225,
+     93,
+     168
+    ],
+    "dark": [
+     39,
+     61,
+     94
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 15,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 3,
+    "headK": 3,
+    "eyeN": 0,
+    "tailK": 0,
+    "limbN": 6,
+    "skinK": 7,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 2563011975,
+    "kingdom": "flora",
+    "color": 9,
+    "form": 7,
+    "body": 0,
+    "loco": 16,
+    "trait": 10,
+    "size": 0,
+    "diet": 1,
+    "head": 8,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 5,
+    "detail": 4,
+    "accent": 3,
+    "temper": 3,
+    "sense": 4,
+    "repro": 3,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 4,
+    "heat": 1,
+    "_earthBlend": "Jelly Fungus"
+   },
+   "hdGenes": {
+    "bulk": 0.8495,
+    "len": 1,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     103,
+     89,
+     76
+    ],
+    "base2": [
+     97,
+     103,
+     76
+    ],
+    "pat": [
+     109,
+     99,
+     69
+    ],
+    "irid": [
+     76,
+     103,
+     94
+    ],
+    "irid2": [
+     94,
+     76,
+     103
+    ],
+    "dark": [
+     43,
+     37,
+     31
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 0,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 5,
+    "headK": 8,
+    "eyeN": 8,
+    "tailK": 2,
+    "limbN": 4,
+    "skinK": 0,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 922480214,
+    "kingdom": "fungi",
+    "color": 3,
+    "form": 7,
+    "body": 1,
+    "loco": 10,
+    "trait": 23,
+    "size": 2,
+    "diet": 1,
+    "head": 9,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 4,
+    "detail": 0,
+    "accent": 10,
+    "temper": 7,
+    "sense": 2,
+    "repro": 7,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 5,
+    "heat": 0,
+    "_earthBlend": "Acidophile",
+    "_anchorVal": 0.2
+   },
+   "hdGenes": {
+    "bulk": 0.84575,
+    "len": 1.05,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     179,
+     194,
+     122
+    ],
+    "base2": [
+     194,
+     178,
+     122
+    ],
+    "pat": [
+     125,
+     151,
+     121
+    ],
+    "irid": [
+     194,
+     122,
+     191
+    ],
+    "irid2": [
+     122,
+     191,
+     194
+    ],
+    "dark": [
+     75,
+     81,
+     51
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 1,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 4,
+    "headK": 9,
+    "eyeN": 8,
+    "tailK": 3,
+    "limbN": 4,
+    "skinK": 6,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 3576916009,
+    "kingdom": "microbe",
+    "color": 16,
+    "form": 14,
+    "body": 10,
+    "loco": 13,
+    "trait": 6,
+    "size": 4,
+    "diet": 4,
+    "head": 0,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 11,
+    "temper": 2,
+    "sense": 2,
+    "repro": 6,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 6,
+    "heat": 0.1,
+    "_earthBlend": "Gopher"
+   },
+   "hdGenes": {
+    "bulk": 0.9717499999999999,
+    "len": 1.28,
+    "neck": 0.3,
+    "horn": 0.5,
+    "tail": 0.35,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     153,
+     212,
+     219
+    ],
+    "base2": [
+     153,
+     177,
+     219
+    ],
+    "pat": [
+     105,
+     150,
+     169
+    ],
+    "irid": [
+     219,
+     153,
+     201
+    ],
+    "irid2": [
+     201,
+     219,
+     153
+    ],
+    "dark": [
+     64,
+     89,
+     91
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 10,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 5,
+    "headK": 0,
+    "eyeN": 1,
+    "tailK": 0,
+    "limbN": 3,
+    "skinK": 8,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 1936384760,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 4,
+    "body": 10,
+    "loco": 11,
+    "trait": 10,
+    "size": 0,
+    "diet": 2,
+    "head": 6,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 4,
+    "habitat": 15,
+    "detail": 1,
+    "accent": 5,
+    "temper": 7,
+    "sense": 0,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 1,
+    "heat": 0.2,
+    "_earthBlend": "Sea Kale",
+    "_anchorVal": 0.4
+   },
+   "hdGenes": {
+    "bulk": 0.84275,
+    "len": 1.1,
+    "neck": 0.43,
+    "horn": 1.035240769200027,
+    "tail": 0.71,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     240,
+     175,
+     131
+    ],
+    "base2": [
+     240,
+     222,
+     131
+    ],
+    "pat": [
+     196,
+     158,
+     132
+    ],
+    "irid": [
+     131,
+     240,
+     193
+    ],
+    "irid2": [
+     193,
+     131,
+     240
+    ],
+    "dark": [
+     100,
+     73,
+     55
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ff9fe0",
+    "plan": 10,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 0,
+    "heat": 15,
+    "headK": 6,
+    "eyeN": 6,
+    "tailK": 4,
+    "limbN": 8,
+    "skinK": 6,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 295852875,
+    "kingdom": "flora",
+    "color": 10,
+    "form": 5,
+    "body": 6,
+    "loco": 8,
+    "trait": 6,
+    "size": 1,
+    "diet": 0,
+    "head": 8,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 8,
+    "accent": 5,
+    "temper": 3,
+    "sense": 5,
+    "repro": 2,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.3,
+    "_earthBlend": "Earthstar"
+   },
+   "hdGenes": {
+    "bulk": 0.8075,
+    "len": 1.01,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.75,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     197,
+     220,
+     225
+    ],
+    "base2": [
+     197,
+     208,
+     225
+    ],
+    "pat": [
+     141,
+     168,
+     189
+    ],
+    "irid": [
+     225,
+     197,
+     215
+    ],
+    "irid2": [
+     215,
+     225,
+     197
+    ],
+    "dark": [
+     82,
+     92,
+     94
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 6,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 6,
+    "headK": 8,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 0,
+    "skinK": 4,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 2950288666,
+    "kingdom": "fungi",
+    "color": 12,
+    "form": 17,
+    "body": 0,
+    "loco": 8,
+    "trait": 21,
+    "size": 5,
+    "diet": 5,
+    "head": 5,
+    "limbs": 0,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 2,
+    "eyes": 4,
+    "behavior": 8,
+    "habitat": 1,
+    "detail": 6,
+    "accent": 7,
+    "temper": 1,
+    "sense": 9,
+    "repro": 7,
+    "life": 2,
+    "metab": 3,
+    "lumin": false,
+    "gen": 3,
+    "heat": 0.4,
+    "_earthBlend": "Euglena",
+    "_anchorVal": 0.6
+   },
+   "hdGenes": {
+    "bulk": 1.0865,
+    "len": 0.82,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     90,
+     173,
+     177
+    ],
+    "base2": [
+     90,
+     118,
+     177
+    ],
+    "pat": [
+     92,
+     113,
+     152
+    ],
+    "irid": [
+     177,
+     90,
+     159
+    ],
+    "irid2": [
+     159,
+     177,
+     90
+    ],
+    "dark": [
+     37,
+     72,
+     74
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#9fb6d6",
+    "plan": 0,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 5,
+    "heat": 1,
+    "headK": 5,
+    "eyeN": 1,
+    "tailK": 3,
+    "limbN": 2,
+    "skinK": 2,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 1309757421,
+    "kingdom": "microbe",
+    "color": 14,
+    "form": 3,
+    "body": 8,
+    "loco": 14,
+    "trait": 2,
+    "size": 3,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 15,
+    "detail": 5,
+    "accent": 4,
+    "temper": 0,
+    "sense": 8,
+    "repro": 1,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 4,
+    "heat": 0.5,
+    "_earthBlend": "Loon"
+   },
+   "hdGenes": {
+    "bulk": 0.914,
+    "len": 1.0899999999999999,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     156,
+     165,
+     114
+    ],
+    "base2": [
+     165,
+     132,
+     114
+    ],
+    "pat": [
+     159,
+     102,
+     79
+    ],
+    "irid": [
+     165,
+     114,
+     164
+    ],
+    "irid2": [
+     114,
+     164,
+     165
+    ],
+    "dark": [
+     65,
+     69,
+     47
+    ],
+    "finish": 0,
+    "rim": "#ff7a4a",
+    "eye": "#ff7a4a",
+    "plan": 8,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 15,
+    "headK": 4,
+    "eyeN": 0,
+    "tailK": 3,
+    "limbN": 2,
+    "skinK": 5,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 3964193212,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 0,
+    "body": 2,
+    "loco": 13,
+    "trait": 13,
+    "size": 1,
+    "diet": 2,
+    "head": 3,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 0,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 14,
+    "detail": 0,
+    "accent": 12,
+    "temper": 5,
+    "sense": 0,
+    "repro": 3,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 5,
+    "heat": 0.6,
+    "_earthBlend": "Pigeon Pea",
+    "_anchorVal": 0.8,
+    "_earthBlendKingdom": "flora"
+   },
+   "hdGenes": {
+    "bulk": 0.791,
+    "len": 1.01,
+    "neck": 0.69,
+    "horn": 1.048383594211191,
+    "tail": 0.35,
+    "leg": 0.9,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": true,
+    "base": [
+     93,
+     146,
+     225
+    ],
+    "base2": [
+     93,
+     225,
+     220
+    ],
+    "pat": [
+     75,
+     174,
+     170
+    ],
+    "irid": [
+     168,
+     225,
+     93
+    ],
+    "irid2": [
+     225,
+     93,
+     168
+    ],
+    "dark": [
+     39,
+     61,
+     94
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 14,
+    "headK": 3,
+    "eyeN": 1,
+    "tailK": 0,
+    "limbN": 4,
+    "skinK": 1,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 2323661327,
+    "kingdom": "flora",
+    "color": 10,
+    "form": 0,
+    "body": 14,
+    "loco": 10,
+    "trait": 4,
+    "size": 3,
+    "diet": 4,
+    "head": 2,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 5,
+    "detail": 2,
+    "accent": 10,
+    "temper": 1,
+    "sense": 3,
+    "repro": 1,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 6,
+    "heat": 0.7,
+    "_earthBlend": "Coral Fungus"
+   },
+   "hdGenes": {
+    "bulk": 0.9305,
+    "len": 1.19,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.62,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     219,
+     200,
+     169
+    ],
+    "base2": [
+     219,
+     178,
+     169
+    ],
+    "pat": [
+     170,
+     137,
+     116
+    ],
+    "irid": [
+     192,
+     169,
+     219
+    ],
+    "irid2": [
+     169,
+     219,
+     192
+    ],
+    "dark": [
+     91,
+     84,
+     70
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#caa06a",
+    "plan": 14,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 5,
+    "headK": 2,
+    "eyeN": 0,
+    "tailK": 3,
+    "limbN": 8,
+    "skinK": 7,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 683130078,
+    "kingdom": "fungi",
+    "color": 3,
+    "form": 6,
+    "body": 15,
+    "loco": 7,
+    "trait": 22,
+    "size": 3,
+    "diet": 5,
+    "head": 9,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 5,
+    "habitat": 18,
+    "detail": 9,
+    "accent": 15,
+    "temper": 7,
+    "sense": 7,
+    "repro": 1,
+    "life": 3,
+    "metab": 2,
+    "lumin": true,
+    "gen": 1,
+    "heat": 0.8,
+    "_earthBlend": "Iron-Oxidizing Bacteria",
+    "_anchorVal": 0
+   },
+   "hdGenes": {
+    "bulk": 0.9035,
+    "len": 1.2399999999999998,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.39,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     198,
+     196,
+     143
+    ],
+    "base2": [
+     176,
+     198,
+     143
+    ],
+    "pat": [
+     130,
+     163,
+     148
+    ],
+    "irid": [
+     143,
+     191,
+     198
+    ],
+    "irid2": [
+     198,
+     143,
+     191
+    ],
+    "dark": [
+     83,
+     82,
+     60
+    ],
+    "finish": 0,
+    "rim": "#8fd6ff",
+    "eye": "#8fd6ff",
+    "plan": 15,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 18,
+    "headK": 9,
+    "eyeN": 6,
+    "tailK": 6,
+    "limbN": 4,
+    "skinK": 8,
+    "dietK": 5
+   }
+  },
+  {
+   "genome": {
+    "seed": 3337565841,
+    "kingdom": "microbe",
+    "color": 0,
+    "form": 0,
+    "body": 7,
+    "loco": 15,
+    "trait": 7,
+    "size": 2,
+    "diet": 3,
+    "head": 1,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 16,
+    "detail": 8,
+    "accent": 16,
+    "temper": 3,
+    "sense": 5,
+    "repro": 7,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 2,
+    "heat": 0.9,
+    "_earthBlend": "Scale Worm"
+   },
+   "hdGenes": {
+    "bulk": 0.8495,
+    "len": 1.15,
+    "neck": 0.43,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     117,
+     194,
+     112
+    ],
+    "base2": [
+     161,
+     194,
+     112
+    ],
+    "pat": [
+     150,
+     157,
+     92
+    ],
+    "irid": [
+     194,
+     112,
+     131
+    ],
+    "irid2": [
+     112,
+     131,
+     194
+    ],
+    "dark": [
+     49,
+     81,
+     47
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#e8c878",
+    "plan": 7,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 16,
+    "headK": 1,
+    "eyeN": 8,
+    "tailK": 2,
+    "limbN": 8,
+    "skinK": 5,
+    "dietK": 3
+   }
+  },
+  {
+   "genome": {
+    "seed": 1697034080,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 7,
+    "body": 2,
+    "loco": 2,
+    "trait": 0,
+    "size": 1,
+    "diet": 1,
+    "head": 5,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 5,
+    "habitat": 14,
+    "detail": 7,
+    "accent": 14,
+    "temper": 3,
+    "sense": 7,
+    "repro": 1,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 3,
+    "heat": 1,
+    "_earthBlend": "Rabbitbrush",
+    "_anchorVal": 0.2
+   },
+   "hdGenes": {
+    "bulk": 0.821,
+    "len": 1.01,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     173,
+     133,
+     126
+    ],
+    "base2": [
+     173,
+     126,
+     158
+    ],
+    "pat": [
+     163,
+     130,
+     110
+    ],
+    "irid": [
+     126,
+     127,
+     173
+    ],
+    "irid2": [
+     127,
+     173,
+     126
+    ],
+    "dark": [
+     72,
+     55,
+     52
+    ],
+    "finish": 1,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#ffe06a",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 14,
+    "headK": 5,
+    "eyeN": 0,
+    "tailK": 0,
+    "limbN": 3,
+    "skinK": 7,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 56502579,
+    "kingdom": "flora",
+    "color": 11,
+    "form": 0,
+    "body": 0,
+    "loco": 14,
+    "trait": 6,
+    "size": 3,
+    "diet": 1,
+    "head": 7,
+    "limbs": 3,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 6,
+    "detail": 9,
+    "accent": 6,
+    "temper": 2,
+    "sense": 5,
+    "repro": 0,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 4,
+    "heat": 0,
+    "_earthBlend": "Stinkhorn"
+   },
+   "hdGenes": {
+    "bulk": 0.91925,
+    "len": 1.0899999999999999,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     187,
+     138,
+     211
+    ],
+    "base2": [
+     148,
+     138,
+     211
+    ],
+    "pat": [
+     116,
+     133,
+     182
+    ],
+    "irid": [
+     138,
+     211,
+     175
+    ],
+    "irid2": [
+     211,
+     175,
+     138
+    ],
+    "dark": [
+     78,
+     57,
+     88
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 0,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 6,
+    "headK": 7,
+    "eyeN": 0,
+    "tailK": 6,
+    "limbN": 8,
+    "skinK": 4,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 2710938498,
+    "kingdom": "fungi",
+    "color": 9,
+    "form": 17,
+    "body": 3,
+    "loco": 14,
+    "trait": 2,
+    "size": 4,
+    "diet": 0,
+    "head": 0,
+    "limbs": 5,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 18,
+    "detail": 2,
+    "accent": 14,
+    "temper": 3,
+    "sense": 1,
+    "repro": 2,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 5,
+    "heat": 0.1,
+    "_earthBlend": "Red-Tide Algae",
+    "_anchorVal": 0.4
+   },
+   "hdGenes": {
+    "bulk": 0.9829999999999999,
+    "len": 1.33,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.75,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     81,
+     109,
+     133
+    ],
+    "base2": [
+     81,
+     133,
+     114
+    ],
+    "pat": [
+     83,
+     130,
+     133
+    ],
+    "irid": [
+     118,
+     133,
+     81
+    ],
+    "irid2": [
+     133,
+     81,
+     118
+    ],
+    "dark": [
+     34,
+     45,
+     55
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#8fd6ff",
+    "plan": 3,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 18,
+    "headK": 0,
+    "eyeN": 6,
+    "tailK": 2,
+    "limbN": 0,
+    "skinK": 5,
+    "dietK": 0
+   }
+  },
+  {
+   "genome": {
+    "seed": 1070406741,
+    "kingdom": "microbe",
+    "color": 14,
+    "form": 17,
+    "body": 14,
+    "loco": 3,
+    "trait": 20,
+    "size": 1,
+    "diet": 4,
+    "head": 2,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 6,
+    "detail": 8,
+    "accent": 1,
+    "temper": 3,
+    "sense": 0,
+    "repro": 7,
+    "life": 5,
+    "metab": 3,
+    "lumin": true,
+    "gen": 6,
+    "heat": 0.2,
+    "_earthBlend": "Boa"
+   },
+   "hdGenes": {
+    "bulk": 0.80375,
+    "len": 1.01,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.5700000000000001,
+    "stripes": 0.75,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     156,
+     204,
+     126
+    ],
+    "base2": [
+     126,
+     204,
+     138
+    ],
+    "pat": [
+     139,
+     169,
+     100
+    ],
+    "irid": [
+     126,
+     143,
+     204
+    ],
+    "irid2": [
+     204,
+     126,
+     143
+    ],
+    "dark": [
+     65,
+     85,
+     52
+    ],
+    "finish": 1,
+    "rim": "#ffe06a",
+    "eye": "#ffe06a",
+    "plan": 14,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 6,
+    "headK": 2,
+    "eyeN": 1,
+    "tailK": 4,
+    "limbN": 8,
+    "skinK": 1,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 3724842532,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 2,
+    "body": 5,
+    "loco": 0,
+    "trait": 1,
+    "size": 5,
+    "diet": 2,
+    "head": 7,
+    "limbs": 0,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 14,
+    "temper": 2,
+    "sense": 0,
+    "repro": 1,
+    "life": 4,
+    "metab": 3,
+    "lumin": true,
+    "gen": 1,
+    "heat": 0.3,
+    "_earthBlend": "Guava",
+    "_anchorVal": 0.6,
+    "_earthBlendKingdom": "flora"
+   },
+   "hdGenes": {
+    "bulk": 1.04075,
+    "len": 0.87,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     63,
+     107,
+     112
+    ],
+    "base2": [
+     63,
+     112,
+     76
+    ],
+    "pat": [
+     60,
+     118,
+     98
+    ],
+    "irid": [
+     112,
+     109,
+     63
+    ],
+    "irid2": [
+     109,
+     63,
+     112
+    ],
+    "dark": [
+     26,
+     44,
+     47
+    ],
+    "finish": 0,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 5,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 3,
+    "headK": 7,
+    "eyeN": 6,
+    "tailK": 1,
+    "limbN": 2,
+    "skinK": 4,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 2084311287,
+    "kingdom": "flora",
+    "color": 2,
+    "form": 8,
+    "body": 2,
+    "loco": 8,
+    "trait": 4,
+    "size": 2,
+    "diet": 2,
+    "head": 0,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 0,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 0,
+    "habitat": 0,
+    "detail": 1,
+    "accent": 7,
+    "temper": 8,
+    "sense": 9,
+    "repro": 1,
+    "life": 3,
+    "metab": 5,
+    "lumin": true,
+    "gen": 2,
+    "heat": 0.4,
+    "_earthBlend": "Bioluminescent Mushroom"
+   },
+   "hdGenes": {
+    "bulk": 0.8660000000000001,
+    "len": 1.1,
+    "neck": 0.3,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     156,
+     152,
+     198
+    ],
+    "base2": [
+     185,
+     152,
+     198
+    ],
+    "pat": [
+     140,
+     143,
+     130
+    ],
+    "irid": [
+     198,
+     164,
+     152
+    ],
+    "irid2": [
+     152,
+     198,
+     164
+    ],
+    "dark": [
+     65,
+     63,
+     83
+    ],
+    "finish": 1,
+    "rim": "#9fe06a",
+    "eye": "#9fe06a",
+    "plan": 2,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 4,
+    "heat": 0,
+    "headK": 0,
+    "eyeN": 2,
+    "tailK": 0,
+    "limbN": 0,
+    "skinK": 3,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 443779398,
+    "kingdom": "fungi",
+    "color": 5,
+    "form": 8,
+    "body": 6,
+    "loco": 6,
+    "trait": 23,
+    "size": 0,
+    "diet": 4,
+    "head": 8,
+    "limbs": 4,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 11,
+    "habitat": 10,
+    "detail": 2,
+    "accent": 14,
+    "temper": 4,
+    "sense": 5,
+    "repro": 5,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 3,
+    "heat": 0.5,
+    "_earthBlend": "Foraminiferan",
+    "_anchorVal": 0.8
+   },
+   "hdGenes": {
+    "bulk": 0.8465,
+    "len": 1.1,
+    "neck": 0.69,
+    "horn": 0,
+    "tail": 0.35,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     93,
+     146,
+     225
+    ],
+    "base2": [
+     93,
+     225,
+     194
+    ],
+    "pat": [
+     75,
+     174,
+     157
+    ],
+    "irid": [
+     168,
+     225,
+     93
+    ],
+    "irid2": [
+     225,
+     93,
+     168
+    ],
+    "dark": [
+     39,
+     61,
+     94
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 6,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 10,
+    "headK": 8,
+    "eyeN": 1,
+    "tailK": 0,
+    "limbN": 3,
+    "skinK": 5,
+    "dietK": 4
+   }
+  },
+  {
+   "genome": {
+    "seed": 3098215193,
+    "kingdom": "microbe",
+    "color": 0,
+    "form": 3,
+    "body": 3,
+    "loco": 4,
+    "trait": 19,
+    "size": 4,
+    "diet": 2,
+    "head": 7,
+    "limbs": 4,
+    "skin": 3,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 1,
+    "detail": 3,
+    "accent": 8,
+    "temper": 0,
+    "sense": 9,
+    "repro": 0,
+    "life": 0,
+    "metab": 0,
+    "lumin": true,
+    "gen": 4,
+    "heat": 0.6,
+    "_earthBlend": "Stork"
+   },
+   "hdGenes": {
+    "bulk": 0.9597499999999999,
+    "len": 1.33,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.71,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     65,
+     197,
+     142
+    ],
+    "base2": [
+     85,
+     197,
+     65
+    ],
+    "pat": [
+     71,
+     160,
+     92
+    ],
+    "irid": [
+     197,
+     120,
+     65
+    ],
+    "irid2": [
+     120,
+     65,
+     197
+    ],
+    "dark": [
+     27,
+     82,
+     59
+    ],
+    "finish": 0,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 3,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 3,
+    "heat": 1,
+    "headK": 7,
+    "eyeN": 0,
+    "tailK": 4,
+    "limbN": 3,
+    "skinK": 3,
+    "dietK": 2
+   }
+  }
+ ],
+ "edges": [
+  {
+   "genome": {
+    "seed": 2654435676,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 16,
+    "body": 1,
+    "loco": 16,
+    "trait": 23,
+    "size": 4,
+    "diet": 2,
+    "head": 4,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 6,
+    "detail": 1,
+    "accent": 11,
+    "temper": 6,
+    "sense": 0,
+    "repro": 7,
+    "life": 0,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0,
+    "_earthName": "Jaguar",
+    "_earthBlend": "Tree Frog"
+   },
+   "hdGenes": {
+    "bulk": 0.986,
+    "len": 1.23,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.43999999999999995,
+    "leg": 0.48,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     83,
+     200,
+     163
+    ],
+    "base2": [
+     83,
+     175,
+     200
+    ],
+    "pat": [
+     84,
+     151,
+     176
+    ],
+    "irid": [
+     183,
+     83,
+     200
+    ],
+    "irid2": [
+     200,
+     183,
+     83
+    ],
+    "dark": [
+     34,
+     84,
+     68
+    ],
+    "finish": 0,
+    "rim": "#8fd6ff",
+    "eye": "#8fd6ff",
+    "plan": 1,
+    "glow": true,
+    "apex": false,
+    "par": false,
+    "tier": 2,
+    "heat": 6,
+    "headK": 4,
+    "eyeN": 8,
+    "tailK": 1,
+    "limbN": 6,
+    "skinK": 2,
+    "dietK": 2,
+    "_earthName": "Jaguar"
+   }
+  },
+  {
+   "genome": {
+    "seed": 1013904271,
+    "kingdom": "flora",
+    "color": 13,
+    "form": 1,
+    "body": 6,
+    "loco": 15,
+    "trait": 2,
+    "size": 4,
+    "diet": 3,
+    "head": 4,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 3,
+    "detail": 9,
+    "accent": 12,
+    "temper": 5,
+    "sense": 7,
+    "repro": 0,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.1,
+    "_earthName": "",
+    "_earthBlend": "Tree Frog",
+    "_anchorVal": 0
+   },
+   "hdGenes": {
+    "bulk": 0.97925,
+    "len": 1.28,
+    "neck": 0.8200000000000001,
+    "horn": 0,
+    "tail": 0.89,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     161,
+     165,
+     113
+    ],
+    "base2": [
+     165,
+     136,
+     113
+    ],
+    "pat": [
+     111,
+     130,
+     116
+    ],
+    "irid": [
+     160,
+     113,
+     165
+    ],
+    "irid2": [
+     113,
+     165,
+     160
+    ],
+    "dark": [
+     67,
+     69,
+     47
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 6,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 3,
+    "headK": 4,
+    "eyeN": 8,
+    "tailK": 6,
+    "limbN": 8,
+    "skinK": 8,
+    "dietK": 3
+   }
+  },
+  {
+   "genome": {
+    "seed": 3668340222,
+    "kingdom": "fungi",
+    "color": 5,
+    "form": 9,
+    "body": 2,
+    "loco": 6,
+    "trait": 15,
+    "size": 4,
+    "diet": 1,
+    "head": 3,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 6,
+    "eyes": 4,
+    "behavior": 11,
+    "habitat": 3,
+    "detail": 4,
+    "accent": 14,
+    "temper": 0,
+    "sense": 6,
+    "repro": 7,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.2,
+    "_earthBlend": "Tree Frog"
+   },
+   "hdGenes": {
+    "bulk": 0.965,
+    "len": 1.28,
+    "neck": 0.69,
+    "horn": 1.0142044640146195,
+    "tail": 0.71,
+    "leg": 0.9,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     93,
+     146,
+     225
+    ],
+    "base2": [
+     93,
+     225,
+     194
+    ],
+    "pat": [
+     75,
+     174,
+     157
+    ],
+    "irid": [
+     168,
+     225,
+     93
+    ],
+    "irid2": [
+     225,
+     93,
+     168
+    ],
+    "dark": [
+     39,
+     61,
+     94
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#5fd0c8",
+    "plan": 2,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 3,
+    "headK": 3,
+    "eyeN": 1,
+    "tailK": 4,
+    "limbN": 2,
+    "skinK": 8,
+    "dietK": 1
+   }
+  },
+  {
+   "genome": {
+    "seed": 2027808297,
+    "kingdom": "microbe",
+    "color": 7,
+    "form": 11,
+    "body": 5,
+    "loco": 10,
+    "trait": 11,
+    "size": 0,
+    "diet": 2,
+    "head": 5,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 3,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 16,
+    "detail": 3,
+    "accent": 2,
+    "temper": 4,
+    "sense": 2,
+    "repro": 7,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 0.3,
+    "_earthBlend": "Tree Frog",
+    "_anchorVal": null
+   },
+   "hdGenes": {
+    "bulk": 0.82625,
+    "len": 1.05,
+    "neck": 0.3,
+    "horn": 0.7986979478038847,
+    "tail": 0.62,
+    "leg": 0.3,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": false,
+    "airb": false,
+    "base": [
+     200,
+     126,
+     82
+    ],
+    "base2": [
+     200,
+     82,
+     113
+    ],
+    "pat": [
+     169,
+     101,
+     92
+    ],
+    "irid": [
+     106,
+     82,
+     200
+    ],
+    "irid2": [
+     82,
+     200,
+     106
+    ],
+    "dark": [
+     84,
+     52,
+     34
+    ],
+    "finish": 0,
+    "rim": "rgba(255,220,170,1)",
+    "eye": "#e8c878",
+    "plan": 5,
+    "glow": false,
+    "apex": false,
+    "par": false,
+    "tier": 1,
+    "heat": 16,
+    "headK": 5,
+    "eyeN": 2,
+    "tailK": 3,
+    "limbN": 2,
+    "skinK": 8,
+    "dietK": 2
+   }
+  },
+  {
+   "genome": {
+    "seed": 387276952,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 11,
+    "body": 9,
+    "loco": 7,
+    "trait": 22,
+    "size": 9,
+    "diet": 5,
+    "head": 7,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 13,
+    "temper": 9,
+    "sense": 0,
+    "repro": 6,
+    "life": 2,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.4,
+    "_earthName": "Jaguar",
+    "apex": 13
+   },
+   "hdGenes": {
+    "bulk": 0.97925,
+    "len": 1.23,
+    "neck": 0.56,
+    "horn": 0,
+    "tail": 0.53,
+    "leg": 0.5700000000000001,
+    "stripes": 0,
+    "mottle": 0.95,
+    "aqua": true,
+    "airb": false,
+    "base": [
+     93,
+     146,
+     225
+    ],
+    "base2": [
+     137,
+     93,
+     225
+    ],
+    "pat": [
+     97,
+     108,
+     172
+    ],
+    "irid": [
+     225,
+     93,
+     124
+    ],
+    "irid2": [
+     124,
+     225,
+     93
+    ],
+    "dark": [
+     39,
+     61,
+     94
+    ],
+    "finish": 3,
+    "rim": "#5fd0c8",
+    "eye": "#5fd0c8",
+    "plan": 9,
+    "glow": true,
+    "apex": true,
+    "par": false,
+    "tier": 13,
+    "heat": 3,
+    "headK": 7,
+    "eyeN": 1,
+    "tailK": 2,
+    "limbN": 8,
+    "skinK": 2,
+    "dietK": 5,
+    "_earthName": "Jaguar"
+   }
+  },
+  {
+   "genome": {
+    "seed": 3041712843,
+    "kingdom": "flora",
+    "color": 2,
+    "form": 3,
+    "body": 5,
+    "loco": 5,
+    "trait": 11,
+    "size": 5,
+    "diet": 0,
+    "head": 1,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 1,
+    "detail": 7,
+    "accent": 3,
+    "temper": 2,
+    "sense": 3,
+    "repro": 6,
+    "life": 4,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 0.5,
+    "_earthBlend": "Jaguar",
+    "par": 8
+   },
+   "hdGenes": {
+    "bulk": 1.08125,
+    "len": 0.87,
+    "neck": 0.43,
+    "horn": 0.7984352687373757,
+    "tail": 0.7999999999999999,
+    "leg": 0.6599999999999999,
+    "stripes": 0,
+    "mottle": 0.62,
+    "aqua": false,
+    "airb": true,
+    "base": [
+     192,
+     127,
+     243
+    ],
+    "base2": [
+     243,
+     127,
+     209
+    ],
+    "pat": [
+     198,
+     111,
+     171
+    ],
+    "irid": [
+     243,
+     211,
+     127
+    ],
+    "irid2": [
+     127,
+     243,
+     211
+    ],
+    "dark": [
+     80,
+     53,
+     102
+    ],
+    "finish": 3,
+    "rim": "#ff9fe0",
+    "eye": "#ff9fe0",
+    "plan": 5,
+    "glow": true,
+    "apex": false,
+    "par": true,
+    "tier": 8,
+    "heat": 1,
+    "headK": 1,
+    "eyeN": 0,
+    "tailK": 5,
+    "limbN": 3,
+    "skinK": 2,
+    "dietK": 0
+   }
+  }
+ ]
+}

@@ -220,6 +220,62 @@ const recorders = {
       titans: { mirrored, real },
     };
   },
+  // hdGenesFor on genomes carrying an Earth name or an Earth breed blend: the branches that call the
+  // art lookup `_earthArt`. That name is a free global the file reads and nothing in the current game
+  // defines, so the recorder supplies NO value: each call throws and the file's own try/catch swallows it.
+  strays: async (source) => {
+    if ('_earthArt' in globalThis) throw new Error('strays: _earthArt must not be defined while recording');
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const { hdGenesFor } = await load('packages/domain/strays/src/index.ts');
+    const { makeGenome } = await load('packages/domain/genome/src/index.ts');
+    const { systemFor } = await load('packages/domain/worldgen/src/index.ts');
+    const { climateBand } = await load('packages/domain/surveyphrases/src/index.ts');
+    const { planetSpeciesAtEcologyEpoch } = await load('packages/domain/ecology/src/explicit-epoch.ts');
+    const { _earthNamePass, _EARTH_NAMES } = await load('packages/domain/descriptors/src/apphooks.ts');
+    // Each genome is cloned through JSON before the call, so the recorded genome is exactly the input.
+    const row = (genome) => {
+      const input = JSON.parse(JSON.stringify(genome));
+      return { genome: input, hdGenes: hdGenesFor(structuredClone(input)) };
+    };
+
+    // Earth's roster at epoch 0, named as planetDescriptor names it (descriptors.verbatim.js:85-86, 100).
+    const sys = systemFor(424242);
+    const found = sys.planets.find((entry) => entry.P.seed === 133);
+    if (!found) throw new Error('earth: planet 133 not found in system 424242');
+    const band = climateBand(found.P, sys, found.orb);
+    const roster = JSON.parse(JSON.stringify(planetSpeciesAtEcologyEpoch(found.P, sys, band, 'complex', 0)));
+    _earthNamePass(roster);
+    for (const g of roster) g._cradle = 1;
+    const earthRoster = roster.map(row);
+
+    // Earth names and breed blends over procedural genomes of every kingdom.
+    const nameAt = (kingdom, i) => _EARTH_NAMES[kingdom][(i * 37) % _EARTH_NAMES[kingdom].length];
+    const genomeAt = (i, salt) => makeGenome(seedAt(i, salt), KINGDOMS[i % 4], (i % 11) / 10);
+    const earthNamed = Array.from({ length: 40 }, (_, i) => row(Object.assign(genomeAt(i, 0xe1), { _earthName: nameAt(KINGDOMS[i % 4], i) })));
+    const blends = Array.from({ length: 40 }, (_, i) => {
+      const extra = { _earthBlend: nameAt(KINGDOMS[(i + 1) % 4], i), gen: 1 + (i % 6) };
+      if (i % 2 === 0) extra._anchorVal = (i % 10) / 10;
+      if (i % 8 === 4) extra._earthBlendKingdom = KINGDOMS[(i + 1) % 4];
+      return row(Object.assign(genomeAt(i, 0xb1), extra));
+    });
+    const [wolf, cat] = [nameAt('fauna', 0), nameAt('fauna', 1)];
+    const edges = [
+      { _earthName: wolf, _earthBlend: cat },
+      { _earthName: '', _earthBlend: cat, _anchorVal: 0 },
+      { _earthBlend: cat, gen: 0 },
+      { _earthBlend: cat, _anchorVal: null },
+      { _earthName: wolf, lumin: true, apex: 13, size: 9 },
+      { _earthBlend: wolf, lumin: true, par: 8, accent: 3 },
+    ].map((extra, i) => row(Object.assign(genomeAt(i, 0xed), extra)));
+
+    return {
+      freeGlobals: { _earthArt: 'not supplied: undefined, as in every running context of the current game' },
+      earthRoster,
+      earthNamed,
+      blends,
+      edges,
+    };
+  },
 };
 
 function parseArgs(argv) {
