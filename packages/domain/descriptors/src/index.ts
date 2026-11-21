@@ -1,7 +1,8 @@
 /* @cf/domain-descriptors — MODULE 13 of 14 (typed facade over the auto-lift).
    ⚠ Descriptor functions call app hooks as free identifiers — call
    installCaptureHooks() (or install real app implementations) BEFORE use.
-   The ecology epoch is not a hook: pass it to planetDescriptorAtEcologyEpoch.
+   The ecology epoch is not a hook: pass it to planetDescriptorAtEcologyEpoch
+   or describePickWithState.
    The verbatim describePick (it reads the app's `st` and `customNames`) is not
    exported; describePickWithState takes both as parameters. */
 export {

@@ -3,7 +3,12 @@
    The lifted describePick remains the v1.8.9 parity oracle and still reads the
    legacy `st` / `customNames` globals. Production callers use this adapter:
    navigation and custom-name authority enter as parameters, while every card
-   body continues to come from the unchanged verbatim composer. */
+   body continues to come from the unchanged verbatim composer.
+
+   The ecology epoch is a parameter too: a planet pick goes through
+   planetDescriptorAtEcologyEpoch, never the ambient COSMIC_EPOCH global.
+   No other card reads the epoch. */
+import { checkedEcologyEpoch } from '@cf/domain-ecology';
 import { HOME_GAL_SEED, HOME_POS } from '@cf/domain-worldconfig';
 import {
   beltDescriptor,
@@ -14,7 +19,6 @@ import {
   galaxyDescriptor,
   moonDescriptor,
   oortDescriptor,
-  planetDescriptor,
   protostarDescriptor,
   quasarDescriptor,
   radioDescriptor,
@@ -26,6 +30,7 @@ import {
   kuiperDescriptor,
   type Descriptor,
 } from './descriptors.verbatim.js';
+import { planetDescriptorAtEcologyEpoch } from './explicit-epoch.js';
 
 type Raw = Record<string, unknown>;
 
@@ -73,13 +78,17 @@ const starSnapshot = (value: DescriptorStarState | null): StarWhere | null => {
  *
  * Valid v1.8.9 inputs preserve the lifted router's result byte-for-byte. A
  * star-dependent pick without a current star, or a planet/moon pick without
- * its picked planet, fails closed with a null-card outcome.
+ * its picked planet, fails closed with a null-card outcome. The ecology epoch
+ * (an integer from 0 through 10000) is checked for every pick and read only by
+ * a planet card.
  */
 export function describePickWithState(
   pick: DescriptorPick,
   nav: DescriptorNavigationState,
   customNameFor: CustomNameLookup,
+  ecologyEpoch: number,
 ): Descriptor | null {
+  const epoch = checkedEcologyEpoch(ecologyEpoch);
   const kind = pick.kind;
   const data = pick.data as Raw;
   const currentStar = starSnapshot(nav.star);
@@ -110,7 +119,7 @@ export function describePickWithState(
     descriptor = starDescriptor(data.seed as number);
     where = { type: 'star', gal: currentGalaxy, star: currentStar! };
   } else if (kind === 'planet') {
-    descriptor = planetDescriptor(pickedPlanet!, data.sys as Raw, data.pl as Raw);
+    descriptor = planetDescriptorAtEcologyEpoch(pickedPlanet!, data.sys as Raw, data.pl as Raw, epoch);
     where = { type: 'planet', gal: currentGalaxy, star: currentStar!, pseed: pickedPlanet!.seed };
   } else if (kind === 'moon') {
     descriptor = moonDescriptor(pickedMoonParent!, data.m as never);

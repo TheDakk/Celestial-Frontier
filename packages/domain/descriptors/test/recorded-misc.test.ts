@@ -6,7 +6,9 @@ import { describePickWithState, installCaptureHooks, type DescriptorNavigationSt
    tools/record-fixtures.mjs (the descriptors-misc recorder), through describePickWithState with the
    hooks installed the way the game installs them. Each row holds the pick, the navigation state, the
    custom names the lookup answers from and, for a planet pick, the epoch the recorder set as the
-   COSMIC_EPOCH global. This file makes the same calls in the same order and records the same lookups. */
+   COSMIC_EPOCH global. This file makes the same calls in the same order and records the same lookups,
+   passing the epoch as an argument instead: the recorded epoch for a planet pick, and for every other
+   pick an epoch the recorder never set (OTHER_EPOCH), since no other card reads it. */
 interface Input {
   pick: DescriptorPick;
   nav: DescriptorNavigationState;
@@ -24,17 +26,13 @@ const fixture = JSON.parse(
 
 /** The fixture is JSON, which cannot hold undefined: compare both sides through the same round trip. */
 const plain = (value: unknown): unknown => JSON.parse(JSON.stringify(value) ?? 'null');
+const OTHER_EPOCH = 7;
 
 function run(input: Input): Omit<Row, 'input'> {
   const lookups: string[] = [];
   const lookup = (key: string): string | null | undefined => { lookups.push(key); return input.names?.[key]; };
-  const scope = globalThis as Record<string, unknown>;
-  if (input.epoch !== undefined) scope.COSMIC_EPOCH = input.epoch;
-  try {
-    return { output: plain(describePickWithState(input.pick, input.nav, lookup) ?? null), lookups };
-  } finally {
-    delete scope.COSMIC_EPOCH;
-  }
+  const card = describePickWithState(input.pick, input.nav, lookup, input.epoch ?? OTHER_EPOCH);
+  return { output: plain(card ?? null), lookups };
 }
 
 let actual = {} as Record<Section, Row[]>;
@@ -54,6 +52,8 @@ describe('@cf/domain-descriptors — describePickWithState pinned against the cu
     expect(kinds(fixture.sections.routing)).toEqual(['galaxy', 'star', 'starsys', 'planet', 'moon', 'belt', 'worm', 'kuiper', 'oort', 'visitor', 'cmb']);
     expect(fixture.sections.nullCards.every(({ output }) => output === null)).toBe(true);
     expect(Object.keys(fixture.freeGlobals)).toEqual(['installCaptureHooks', 'COSMIC_EPOCH', 'st', 'customNames']);
+    expect(SECTIONS.flatMap((s) => fixture.sections[s]).filter(({ input }) => input.epoch !== undefined)
+      .every(({ input }) => input.pick.kind === 'planet' && input.epoch !== OTHER_EPOCH)).toBe(true);
     expect('COSMIC_EPOCH' in globalThis).toBe(false);
     expect('st' in globalThis).toBe(false);
   });
