@@ -43,8 +43,21 @@ import {
   type Arc5BreedScenarioV1,
 } from '../src/breed.js';
 import { projectCompanionAvailabilityV1 } from '../src/companion-availability.js';
+import { withCompanionBondMemoriesV1 } from '../src/companion-care.js';
+import { preflightArc5ExplorerMealV1, settleArc5ExplorerMealV1 } from '../src/explorer-meal.js';
+import { createSpecimenLotV1, type SpecimenLotId } from '../src/model.js';
+import { AMBIENT_READS, withoutAmbientSources } from '../../../../tests/support/ambient.js';
 import { preflightArc5RestV1, settleArc5RestV1 } from '../src/rest.js';
-import { COMPANION_MISSION_LENGTHS_V1, companionMissionDispatchRefusalV1 } from '../src/companion-missions.js';
+import {
+  COMPANION_MISSION_DOMAIN_V1,
+  COMPANION_MISSION_LENGTHS_V1,
+  companionMissionClaimSuccessorV1,
+  companionMissionDispatchRefusalV1,
+  sealCompanionMissionV1,
+  type CompanionMissionLengthV1,
+  type CompanionMissionSealedV1,
+  type CompanionMissionTypeV1,
+} from '../src/companion-missions.js';
 
 /* fixtures/current/acquisition.json was recorded from the unmodified current game by
    tools/record-fixtures.mjs (the acquisition recorder): taming (capture) and breeding outcomes. Every
@@ -61,6 +74,8 @@ interface ChainStep { input: { verb: AcquisitionVerbV1; activePlayMs: number; se
 interface Parent { genome: Json; xp: number; hurt: number | null; fed: number | null; brood: number | null; assignment: CreatureAssignmentV1 | null }
 interface BreedInput { parents: [Parent, Parent]; activePlayMs: number; earnedStardust: number; sessionRng: SessionRngInput; speciesPairFirst: boolean; fixedDraws: number[] }
 interface BreedCase { input: BreedInput; preflight: Json; plan: Json | null; draw: Json | null; settled: Json[] | null; recovery: Json[] | null }
+interface SealCase { input: { type: CompanionMissionTypeV1; length: CompanionMissionLengthV1; bondMemories: number; deposits: string[]; sessionRng: SessionRngInput }; draws: number[]; sealed: Json }
+interface ClaimCase { input: { length: CompanionMissionLengthV1; type: CompanionMissionTypeV1; worldKey: string; missionId: string; activePlayMs: number; sessionRng: SessionRngInput }; sealed: Json; creatureAfter: Json; memento: string | null; successorDigest: string }
 interface AcquisitionFixture {
   freeGlobals: Record<string, string>;
   injected: Record<string, string>;
@@ -74,12 +89,13 @@ interface AcquisitionFixture {
     chains: { world: string; gear: string; steps: ChainStep[] }[];
   };
   breeding: { world: string; epoch: number; cases: BreedCase[]; injectedOnly: BreedCase[] };
+  missions: { deposits: string[]; seals: SealCase[]; claims: ClaimCase[] };
 }
 
 const fixture = JSON.parse(
   readFileSync(new URL('../../../../fixtures/current/acquisition.json', import.meta.url), 'utf8'),
 ) as AcquisitionFixture;
-const { taming, breeding } = fixture;
+const { taming, breeding, missions } = fixture;
 
 /** The fixture is JSON: compare both sides through the same round trip. */
 const plain = (value: unknown): unknown => JSON.parse(JSON.stringify(value) ?? 'null');
@@ -223,22 +239,27 @@ function breedAnswer(input: BreedInput) {
   };
 }
 
-/** Run `fn` with every ambient clock and random source replaced by one that throws. */
-function withoutAmbientSources<T>(fn: () => T): T {
-  const RealDate = globalThis.Date;
-  const refuse = (name: string) => () => { throw new Error(`ambient ${name} was read`); };
-  const spies = [
-    vi.spyOn(Math, 'random').mockImplementation(refuse('Math.random')),
-    vi.spyOn(RealDate, 'now').mockImplementation(refuse('Date.now')),
-    vi.spyOn(performance, 'now').mockImplementation(refuse('performance.now')),
-  ];
-  globalThis.Date = new Proxy(RealDate, { construct: refuse('new Date') }) as DateConstructor;
-  try {
-    return fn();
-  } finally {
-    globalThis.Date = RealDate;
-    for (const spy of spies) spy.mockRestore();
-  }
+/* ---- companion missions ---- */
+
+const bondOf = (memories: number) => withCompanionBondMemoriesV1(null, Array.from({ length: memories }, (_, i) => ({ id: `taste:m${i}`, kind: 'taste' })), 0);
+const missionDraws = (sessionRng: SessionRngInput): [number, number, number] => planSessionRNGDraws(
+  createSessionRNG(sessionRng.seed, { ...sessionRng.draws }, sessionRng.ordinal).state(),
+  [COMPANION_MISSION_DOMAIN_V1, COMPANION_MISSION_DOMAIN_V1, COMPANION_MISSION_DOMAIN_V1],
+).draws.map((d) => d.value) as [number, number, number];
+
+function sealAnswer(input: SealCase['input']) {
+  const c = structuredClone(input);
+  const draws = missionDraws(c.sessionRng);
+  return { input, draws, sealed: plain(sealCompanionMissionV1({ type: c.type, length: c.length, bond: bondOf(c.bondMemories), deposits: c.deposits, draws })) };
+}
+
+function claimAnswer(input: ClaimCase['input']) {
+  const c = structuredClone(input);
+  const sealed = sealCompanionMissionV1({ type: c.type, length: c.length, bond: null, deposits: missions.deposits, draws: missionDraws(c.sessionRng) });
+  const [first, second] = breeding.injectedOnly[0]!.input.parents;
+  const { state, ids } = ownershipOf([{ ...first, assignment: { kind: 'mission', missionId: c.missionId } }, second]);
+  const out = companionMissionClaimSuccessorV1(state, { creatureId: ids[0]!, missionId: c.missionId, type: c.type, length: c.length, worldKey: c.worldKey, sealed, activePlayMs: c.activePlayMs });
+  return { input, sealed: plain(sealed), creatureAfter: plain(out.creatureAfter), memento: out.memento, successorDigest: ownershipStateDigestV2(out.successor) };
 }
 
 afterEach(() => { vi.restoreAllMocks(); });
@@ -256,8 +277,10 @@ describe('@cf/domain-acquisition — recorded taming outcomes', () => {
     expect(taming.hitEdges.map(({ successDraw, chance }) => ({ successDraw, chance, hit: captureHitV1(successDraw, chance) }))).toEqual(taming.hitEdges);
   });
 
-  it('every capture case on four worlds, both gear sets, three verbs, three SessionRNG seeds and two clocks', () => {
-    expect(taming.captures).toHaveLength(144);
+  it('every capture case on six worlds (Kaum and Osum among them), both gear sets, three verbs, three SessionRNG seeds and two clocks', () => {
+    expect(taming.captures).toHaveLength(216);
+    expect(Object.keys(taming.worlds)).toEqual(['earth', 'ring3', 'ring4', 'deepLiving', 'kaum', 'osum']);
+    for (const world of ['kaum', 'osum']) expect(taming.captures.filter((c) => c.input.world === world && c.plan !== null)).toHaveLength(36);
     const outcomes = new Set(taming.captures.map((c) => (c.plan ? (c.plan.hit ? 'hit' : 'miss') : String(c.preflight.reason))));
     expect([...outcomes].sort()).toEqual(['empty', 'hit', 'miss']);
     expect(plain(taming.captures.map(captureAnswer))).toEqual(taming.captures);
@@ -319,11 +342,11 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
       for (const chain of taming.chains) expect(plain(chainAnswer(chain))).toEqual(chain.steps);
       expect(plain([...breeding.cases, ...breeding.injectedOnly].map((c) => breedAnswer(c.input))))
         .toEqual([...breeding.cases, ...breeding.injectedOnly]);
+      expect(missions.seals.map((c) => sealAnswer(c.input))).toEqual(missions.seals);
+      expect(missions.claims.map((c) => claimAnswer(c.input))).toEqual(missions.claims);
     });
     // The guard itself works: each ambient source throws inside it.
-    for (const read of [() => Math.random(), () => Date.now(), () => performance.now(), (): unknown => new Date()]) {
-      expect(() => withoutAmbientSources(read)).toThrow(/ambient/u);
-    }
+    for (const read of AMBIENT_READS) expect(() => withoutAmbientSources(read)).toThrow(/^ambient /u);
   });
 
   it('refuses or throws when the clock or random source is missing', () => {
@@ -336,12 +359,13 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
       f4Authority: f4Authority as never,
     });
     expect(() => mint({ sessionRng: c.input.sessionRng })).toThrow(/activePlayMs/u);
-    expect(() => mint({ activePlayMs: 0 })).toThrow();
+    expect(() => mint({ activePlayMs: 0 })).toThrow(/reading 'seed'/u);
     const snapshot = mint({ activePlayMs: 0, sessionRng: c.input.sessionRng });
     const preflight = preflightCaptureV1(snapshot, 'tame');
     expect(preflight.kind).toBe('ready');
     expect(planCaptureV1(preflight, undefined)).toEqual({ kind: 'refused', reason: 'draw-bundle-unregistered' });
-    expect(() => registerCaptureDrawBundleV1({ snapshot, plan: { currentAuthority: { activePlayMs: 0, sessionRng: c.input.sessionRng } } as never })).toThrow();
+    expect(() => registerCaptureDrawBundleV1({ snapshot, plan: { currentAuthority: { activePlayMs: 0, sessionRng: c.input.sessionRng } } as never }))
+      .toThrow(/capture draws do not match the canonical ordered F4 plan/u);
 
     const breedInput = breeding.injectedOnly[0]!.input;
     const { state, ids } = ownershipOf(breedInput.parents);
@@ -353,7 +377,7 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
     if (planned.kind !== 'planned') throw new Error(planned.reason);
     expect(() => settleArc5BreedScenariosV1(planned.plan, undefined as never)).toThrow(/outcome draw/u);
     const parent = state.creatures[0]!;
-    expect(() => projectCompanionAvailabilityV1(parent, undefined as never)).toThrow();
+    expect(() => projectCompanionAvailabilityV1(parent, undefined as never)).toThrow(/companion activePlayMs must be an integer/u);
   });
 
   it('Rest and mission dispatch refuse or throw without a clock, and the clock alone sets the Rest ready time', () => {
@@ -368,6 +392,69 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
     expect(settled.map((x) => x.readyAtActivePlayMs)).toEqual([1000 + rest.preflight.durationActivePlayMs, 1000 + rest.preflight.durationActivePlayMs, 90000 + rest.preflight.durationActivePlayMs]);
     expect(settled[0]!.witness).toBe(settled[1]!.witness);
     expect(settled[0]!.witness).not.toBe(settled[2]!.witness);
-    expect(() => companionMissionDispatchRefusalV1(state, ids[1]!, COMPANION_MISSION_LENGTHS_V1[0], undefined as never)).toThrow();
+    expect(() => companionMissionDispatchRefusalV1(state, ids[1]!, COMPANION_MISSION_LENGTHS_V1[0], undefined as never)).toThrow(/companion activePlayMs must be an integer/u);
+  });
+
+  it('mission seals: the injected companion-mission draws alone decide the sealed result, and a missing draw throws', () => {
+    expect(missions.seals).toHaveLength(48);
+    expect(missions.seals.map((c) => sealAnswer(c.input))).toEqual(missions.seals);
+    // One offer, four SessionRNG seeds: four different draw triples, at least two different sealed results.
+    const bySeed = missions.seals.filter((c) => c.input.type === 'survey' && c.input.length === 'long' && c.input.bondMemories === 0);
+    expect(bySeed.map((c) => c.input.sessionRng.seed)).toEqual([5, 6, 7, 3735928559]);
+    expect(new Set(bySeed.map((c) => JSON.stringify(c.draws))).size).toBe(4);
+    expect(new Set(bySeed.map((c) => JSON.stringify(c.sealed))).size).toBeGreaterThan(1);
+    const prospect = missions.seals.filter((c) => c.input.type === 'prospect' && c.input.length === 'long' && c.input.bondMemories === 0);
+    expect(new Set(prospect.map((c) => JSON.stringify(c.sealed))).size).toBeGreaterThan(1);
+    for (const c of [...bySeed, ...prospect]) expect(sealAnswer(c.input)).toEqual(sealAnswer(c.input));
+    const base = { type: 'survey' as const, length: 'long' as const, bond: null, deposits: missions.deposits };
+    expect(() => sealCompanionMissionV1({ ...base, draws: [0.5, 0.5] as never })).toThrow(/companion mission draw must be in \[0, 1\)/u);
+    expect(() => sealCompanionMissionV1({ ...base, draws: undefined as never })).toThrow(/reading '0'/u);
+  });
+
+  it('mission claims: the injected clock alone stamps the new bond memories, and a missing clock throws', () => {
+    expect(missions.claims).toHaveLength(4);
+    expect(missions.claims.map((c) => claimAnswer(c.input))).toEqual(missions.claims);
+    for (const length of ['short', 'long']) {
+      const [early, late] = missions.claims.filter((c) => c.input.length === length);
+      expect([early!.input.activePlayMs, late!.input.activePlayMs]).toEqual([1000, 90000]);
+      expect(early!.sealed).toEqual(late!.sealed);
+      const stamps = (c: ClaimCase) => (c.creatureAfter.bond as { memories: { atActivePlayMs: number }[] }).memories.map((m) => m.atActivePlayMs);
+      expect(new Set(stamps(early!))).toEqual(new Set([1000]));
+      expect(new Set(stamps(late!))).toEqual(new Set([90000]));
+      expect(early!.successorDigest).not.toBe(late!.successorDigest);
+    }
+    const input = missions.claims[0]!.input;
+    const sealed = sealCompanionMissionV1({ type: input.type, length: input.length, bond: null, deposits: missions.deposits, draws: missionDraws(input.sessionRng) });
+    const [first, second] = breeding.injectedOnly[0]!.input.parents;
+    const { state, ids } = ownershipOf([{ ...first, assignment: { kind: 'mission', missionId: input.missionId } }, second]);
+    expect(() => companionMissionClaimSuccessorV1(state, { creatureId: ids[0]!, missionId: input.missionId, type: input.type, length: input.length, worldKey: input.worldKey, sealed: sealed as CompanionMissionSealedV1 } as never))
+      .toThrow(/bond memory active-play time is invalid/u);
+  });
+
+  it('explorer meal: the outcome draw alone decides poisoning, and a missing draw throws', () => {
+    const genome = breeding.injectedOnly[0]!.input.parents[0]!.genome;
+    const flora = { ...genome, kingdom: 'flora' };
+    const identity = canonicalGenomeIdentityV1(flora);
+    const discovery = createLegacyDiscoveryRecordV1({
+      recordId: ownershipContentId('discovery', 'meal-0') as DiscoveryRecordId, speciesId: identity.speciesId,
+      legacyCodexId: 'meal-0', legacySourceIndex: 0, from: 'Legacy', legacyLocation: null, firstForSpecies: true,
+    });
+    const lotId = ownershipContentId('specimen', 'meal-0') as SpecimenLotId;
+    const state = migrateOwnershipStateV1ToV2(createInitialOwnershipStateV1({
+      catalogSpecies: [createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discovery.recordId })],
+      discoveries: [discovery], creatures: [],
+      specimenLots: [createSpecimenLotV1({ lotId, speciesId: identity.speciesId, kind: 'flora', quantity: 2, origin: 'legacy', acquisitionRecordId: discovery.recordId })],
+      biosphereProgress: [], legacyBioX: [], scoutCreatureId: null,
+    }));
+    const ready = preflightArc5ExplorerMealV1(state, { foodLotId: lotId });
+    if (ready.kind !== 'ready') throw new Error(ready.reason);
+    const physiology = { hp: 40, hpMax: 100, stats: { vit: 50, fer: 50, res: 50, agi: 50, ins: 50 } };
+    const settle = (draw: unknown) => settleArc5ExplorerMealV1(ready.preflight, physiology, 0, false, draw as number, 3);
+    expect(() => settle(undefined)).toThrow(/explorer meal outcome draw must be in \[0, 1\)/u);
+    const poisoned = settle(0);
+    const fine = settle(0.999999);
+    expect(plain(settle(0))).toEqual(plain(poisoned));
+    expect([poisoned.consequence.poisoned, fine.consequence.poisoned]).toEqual([true, false]);
+    expect(poisoned.witness).not.toBe(fine.witness);
   });
 });
