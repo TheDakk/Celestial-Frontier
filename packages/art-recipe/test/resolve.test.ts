@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
 import { guardianFor } from '@cf/domain-genome';
-import { EXTREMOPHILE_MOVEMENT, EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
+import { EXTREMOPHILE_MOVEMENT, EYELESS_HEAD, GENE_LENGTHS, GUARDIAN_APEX, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
 
@@ -108,15 +108,41 @@ describe('isGuardianScale', () => {
     expect(isGuardianScale({ ...base, par: 9 })).toBe(false);
     expect(isGuardianScale({ ...base, size: 5, wild: 1 })).toBe(false);
   });
-  it('reads the marker as the game does (truthy), and gives the same answer after a save round trip', () => {
-    const values: unknown[] = [12, 13, 14, 1, -3, 0.5, 0, -0, NaN, Infinity, -Infinity, true, false, null, undefined, '', '12', [], {}];
+  it('keeps exactly the apex values the game keeps on loading a save or importing a share code', () => {
+    const values: unknown[] = ['12', 12.7, 'x', [], [13], {}, true, NaN, 1e21, 12, 13, 14, 15, 11, 1, 0.5, -3, 0, -0, null, undefined, Infinity, -Infinity, false, '', ' 13 ', '0x0c', 14.999, -12, 4294967308, ['14'], [12, 13]];
     expect(values.map((apex) => isGuardianScale({ ...base, apex }))).toEqual([
-      true, true, true, true, true, true, false, false, false, false, false, true, false, false, false, false, true, true, true,
+      true, true, false, false, true, false, false, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, false, true, true, false,
     ]);
     for (const apex of values) {
       const g = { ...base, apex };
       expect(isGuardianScale(JSON.parse(JSON.stringify(g))), String(apex)).toBe(isGuardianScale(g));
     }
+    expect(isGuardianScale({ ...base, apex: Symbol('apex') })).toBe(false);
+  });
+  it('agrees with the game\'s sanitizer for every sample value', () => {
+    // The game's two lines, re-implemented. SOURCE packages/domain/strays/src/strays.verbatim.js:264
+    // (_sanitizeSavedGenome, on loading a save) and packages/domain/combatcore/src/combatcore.verbatim.js:726
+    // (normGenome, on importing a share code), identical in both:
+    //   if(g.apex!=null){ const a=(+g.apex)|0; if(a>=12 && a<=TIER_MAX) g.apex=a; else delete g.apex; }
+    // TIER_MAX = GRADE_TIERS.length-1 (speciestraits.verbatim.js:72). A Guardian is a genome whose apex survives.
+    const gameKeeps = (apex: unknown): boolean => {
+      if (apex == null) return false;
+      const a = (+(apex as number)) | 0;
+      return a >= 12 && a <= traits.TIER_MAX;
+    };
+    const samples: unknown[] = [
+      '12', 12.7, 'x', [], [13], {}, true, NaN, 1e21, 12, 13, 14, 15, 11, 1, 0.5, -3, 0, -0, null, undefined,
+      Infinity, -Infinity, false, '', ' 13 ', '0x0c', 14.999, 15.5, 11.999, -12, 4294967308, -4294967284, ['14'], [12, 13],
+      '1e1', '14abc', 2 ** 31 + 13, -(2 ** 31), Number.MAX_SAFE_INTEGER, 'Infinity',
+    ];
+    expect(samples.length).toBeGreaterThanOrEqual(25);
+    for (const apex of samples) expect(isGuardianScale({ ...base, apex }), String(apex)).toBe(gameKeeps(apex));
+  });
+  it('tops the band at the game\'s top grade tier', () => {
+    expect(GUARDIAN_APEX).toEqual({ lowest: 12, top: 14 });
+    expect(GUARDIAN_APEX.top).toBe(traits.TIER_MAX);
+    expect(GUARDIAN_APEX.top).toBe(traits.GRADE_TIERS.length - 1);
+    expect(traits.GRADE_TIERS).toHaveLength(15);
   });
 });
 

@@ -42,8 +42,8 @@ export const EXTREMOPHILE_MOVEMENT: readonly (readonly [name: string, swims: boo
 const SWIMMING_LOCO: readonly number[] = [4, 13];
 
 /**
- * Whether a marker the game reads as truthy (`if(g.apex)`, `g.x`, `g.aq`, `g.af`) is set. The same, except that a
- * non-finite number counts as unset, because a save writes it as null: the answer survives a save round trip.
+ * Whether a marker the game reads as truthy (`g.x`, `g.aq`, `g.af`) is set. The same, except that a non-finite
+ * number counts as unset, because a save writes it as null: the answer survives a save round trip.
  */
 function marked(value: unknown): boolean {
   if (typeof value === 'number') return Number.isFinite(value) && value !== 0;
@@ -62,13 +62,24 @@ const BODY_FAMILY: readonly (readonly [string, string])[] = [
 ];
 
 /**
+ * The Guardian band of `apex` the game keeps: 12 (Empyrean) to the top grade tier (TIER_MAX =
+ * GRADE_TIERS.length - 1 = 14 in @cf/domain-speciestraits; a test holds `top` to it). Part of renderer version 1.
+ */
+export const GUARDIAN_APEX = Object.freeze({ lowest: 12, top: 14 });
+
+/**
  * Whether the genome is a Guardian or a Titan, drawn at the 'guardian' tier. The game marks both with `apex`
- * (guardianFor sets it to the Guardian's tier, 12-14; a Titan's battle genome gets 14) and reads the marker as
- * truthy (`if(g.apex)`). This reads it the same way, except that a non-finite number counts as unmarked, because
- * a save writes it as null: the answer is the same before and after a save round trip. Part of renderer version 1.
+ * (guardianFor sets it to the Guardian's tier, 12-14; a Titan's battle genome gets 14). On loading a save
+ * (`_sanitizeSavedGenome`) and on importing a share code (`normGenome`) the game keeps `apex` only when
+ * `apex != null` and `(+apex)|0` lies in 12..TIER_MAX, and deletes it otherwise. This is exactly that rule, so a
+ * creature is drawn at the same size before and after a save or a share. Part of renderer version 1.
  */
 export function isGuardianScale(genome: Readonly<Record<string, unknown>>): boolean {
-  return marked(genome['apex']);
+  const apex = genome['apex'];
+  // A symbol cannot become a number (the game would throw); it is never kept.
+  if (apex === null || apex === undefined || typeof apex === 'symbol') return false;
+  const a = Number(apex) | 0;
+  return a >= GUARDIAN_APEX.lowest && a <= GUARDIAN_APEX.top;
 }
 
 export function resolveAnatomy(genome: Readonly<Record<string, unknown>>): Anatomy {
