@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-worldgen", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 6/14: cell-based universe generation. AUTO-LIFTED from main.js @module WorldGen (v1.8.9).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-worldconfig": "*", "@cf/domain-naming": "*", "@cf/domain-starcatalog": "*", "@cf/domain-planetgen": "*" } }
