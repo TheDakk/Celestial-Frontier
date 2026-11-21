@@ -20,6 +20,11 @@ frame hop anchor=0,0 attach=head:4,1
 2222
 2222
 
+part quadruped/torso/legged/small/v0
+frame rest anchor=0,0 attach=near0:1,5,near0_2:4,5,far0:0,5
+2222
+2222
+
 part quadruped/farLimbs/leg/small/v0
 frame rest anchor=0,0
 5
@@ -92,6 +97,15 @@ entry nearLimbs 1 rest 0 1
 pose eyes
 entry eyes 1 rest 0 1
 
+scaffold quadruped/legged/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+pose both
+entry nearLimbs 0 rest 0 0
+entry nearLimbs 0 rest 3 0 legs=2
+pose other
+entry nearLimbs 0 brace 3 0 legs=4
+
 scaffold quadruped/edge/small origin=45,20
 pose rest
 entry torso 0 rest 0 0
@@ -134,7 +148,7 @@ function recipeOf(parts: readonly Spec[], over: Partial<Recipe> = {}): Recipe {
     ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
     marking: { pattern: 0, flip: false, dx: 0, dy: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
-    glow: false, gaps: [],
+    legs: 4, glow: false, gaps: [],
     ...over,
   };
 }
@@ -419,5 +433,52 @@ entry torso 0 rest 0 0
     expect([at(r.buffer, 14, 10)]).toEqual([5]);
     expect(count(r.buffer, 17) + count(r.buffer, 20)).toBe(2);
     expect(r.buffer.pixels.filter((p) => p === 6 || p === 7 || p === 8).length).toBe(0);
+  });
+});
+
+describe('assemble: stance by leg count', () => {
+  const stance = (legs: number, pose: string, extra: readonly Spec[] = []): { x: number; gaps: readonly string[]; frameOffset: number } => {
+    const r = assemble(recipeOf([['torso', 0, 'legged'], ['nearLimbs', 0, 'near'], ...extra], { scaffoldId: 'quadruped/legged/small', legs }), pose, catalogue);
+    const row = 15;
+    let x = -1;
+    for (let i = 0; i < r.buffer.w; i++) if (at(r.buffer, i, row) === 6) { x = i; break; }
+    return { x, gaps: r.gaps, frameOffset: 0 };
+  };
+  ID['legged'] = 'quadruped/torso/legged/small/v0';
+
+  it('a two-legged creature hangs its near leg from near0_2', () => {
+    expect(stance(2, 'rest').x).toBe(14);
+  });
+  it('a four-legged creature uses near0', () => {
+    expect(stance(4, 'rest').x).toBe(11);
+  });
+  it('the most specific entry wins', () => {
+    expect(stance(2, 'both').x).toBe(14 + 3);
+    expect(stance(4, 'both').x).toBe(11);
+  });
+  it('an entry for another leg count alone does not apply', () => {
+    const r = stance(2, 'other');
+    expect(r.x).toBe(14);
+    expect(r.gaps).toEqual([]);
+  });
+  it('an attach name for another leg count alone is not used', () => {
+    const only = parseCatalogueText(HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=near0:1,1,near0_4:3,1
+2222
+2222
+
+part quadruped/nearLimbs/leg/small/v0
+frame rest anchor=0,0
+6
+6
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`);
+    const r = assemble(recipeOf([['torso', 0, 'torso'], ['nearLimbs', 0, 'near']], { legs: 2 }), 'rest', only);
+    expect(at(r.buffer, 11, 11)).toBe(6);
+    expect(r.gaps).toEqual([]);
   });
 });

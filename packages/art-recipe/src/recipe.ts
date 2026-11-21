@@ -8,6 +8,7 @@ export const RENDERER_VERSION = 1;
 export interface RecipePart { slot: SlotName; index: number; partId: string; source: 'own'; }
 export interface Recipe {
   version: number; identity: string; family: string; tier: SizeTier; scaffoldId: string;
+  legs: number; // the anatomy's limb count, 0 outside fauna
   parts: readonly RecipePart[]; // in DRAW_ORDER, then by index
   ramps: { primary: string; accent: string; underside: string; iris: string };
   marking: { pattern: number; flip: boolean; dx: number; dy: number };
@@ -93,6 +94,7 @@ function buildRecipeAt(
   return deepFreeze({
     version, identity, family: a.family, tier: a.tier,
     scaffoldId: `${a.family}/${torsoKind}/${a.tier}`,
+    legs: a.limbs,
     parts,
     ramps: { primary: `c${a.colour}`, accent: `c${a.accent}`, underside: `c${a.colour}-under`, iris: `iris${iris}` },
     marking: { pattern: a.pattern, flip, dx, dy },

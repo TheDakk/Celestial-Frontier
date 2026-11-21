@@ -59,6 +59,13 @@ describe('buildRecipe', () => {
     }
   });
 
+  it('carries the leg count', () => {
+    expect(buildRecipe({ ...base, limbs: 0 }, [], full).legs).toBe(2);
+    expect(buildRecipe({ ...base, limbs: 3 }, [], full).legs).toBe(8);
+    expect(buildRecipe({ ...base, limbs: 5 }, [], full).legs).toBe(0);
+    expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full).legs).toBe(0);
+  });
+
   it('three limbs give one far and two near; none give no limb parts', () => {
     const three = buildRecipe({ ...base, limbs: 4 }, [], full);
     expect(three.parts.filter((p) => p.slot === 'farLimbs').map((p) => p.index)).toEqual([0]);

@@ -156,7 +156,7 @@ function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over:
     ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
     marking: { pattern: 0, flip: false, dx: 0, dy: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
-    glow: false, gaps: [],
+    legs: 4, glow: false, gaps: [],
     ...over,
   };
 }

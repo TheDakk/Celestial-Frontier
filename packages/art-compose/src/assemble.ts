@@ -19,13 +19,13 @@ interface Placed {
 }
 
 /** The attach point a slot hangs from, and whether that point belongs to the head (otherwise the torso). */
-function attachFor(slot: SlotName, index: number): { name: string; onHead: boolean } {
+function attachFor(slot: SlotName, index: number, legs: number): { names: string[]; onHead: boolean } {
   switch (slot) {
-    case 'farLimbs': return { name: `far${index}`, onHead: false };
-    case 'nearLimbs': return { name: `near${index}`, onHead: false };
-    case 'headFeature': return { name: 'feature', onHead: true };
-    case 'eyes': return { name: `eye${index}`, onHead: true };
-    default: return { name: slot, onHead: false }; // head, tail, back, glow
+    case 'farLimbs': return { names: [`far${index}_${legs}`, `far${index}`], onHead: false };
+    case 'nearLimbs': return { names: [`near${index}_${legs}`, `near${index}`], onHead: false };
+    case 'headFeature': return { names: ['feature'], onHead: true };
+    case 'eyes': return { names: [`eye${index}`], onHead: true };
+    default: return { names: [slot], onHead: false }; // head, tail, back, glow
   }
 }
 
@@ -71,7 +71,9 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     const part = catalogue.parts.get(rp.partId);
     if (part === undefined) return skipped(`missing:${rp.partId}`);
 
-    const entry = entries.find((e) => e.slot === rp.slot && e.index === rp.index);
+    // The entry for this leg count wins; else the one with no leg count; else none.
+    const entry = entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === recipe.legs)
+      ?? entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === undefined);
     const frameName = entry === undefined ? 'rest' : entry.frame;
     const own: string[] = [];
     let frame = Object.hasOwn(part.frames, frameName) ? part.frames[frameName] : undefined;
@@ -85,10 +87,13 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
 
     if (rp.slot === 'torso') return { frame, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
 
-    const { name, onHead } = attachFor(rp.slot, rp.index);
+    const { names, onHead } = attachFor(rp.slot, rp.index, recipe.legs);
     const hostPart = findPart(onHead ? 'head' : 'torso');
     const host = hostPart === undefined ? undefined : place(hostPart);
-    const point = host?.frame !== undefined && Object.hasOwn(host.frame.attach, name) ? host.frame.attach[name] : undefined;
+    const hostAttach = host?.frame?.attach;
+    const found = hostAttach === undefined ? undefined : names.find((nm) => Object.hasOwn(hostAttach, nm));
+    const point = hostAttach !== undefined && found !== undefined ? hostAttach[found] : undefined;
+    const name = names[names.length - 1] as string; // the plain name is the one a gap reports
     if (host === undefined || host.frame === undefined || point === undefined) {
       own.push(`attach:${name}`);
       return { frame: undefined, x: 0, y: 0, gaps: own };
