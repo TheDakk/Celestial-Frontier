@@ -3,6 +3,7 @@ import { EYE_COUNTS } from '@cf/art-format';
 import { buildRecipe } from '@cf/art-recipe';
 import { compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
+import { makeGenome } from '@cf/domain-genome';
 
 const cat = testCatalogue();
 const POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -99,6 +100,42 @@ describe('quadruped test catalogue', () => {
   it('holds no part with the outline value 16', () => {
     for (const part of cat.parts.values()) {
       for (const frame of Object.values(part.frames)) expect(frame.pixels.includes(16), part.id).toBe(false);
+    }
+  });
+});
+
+describe('every kingdom composes', () => {
+  it('composes a non-empty picture for all four kingdoms, seeds 1-50, every size gene, guardian on and off', () => {
+    let count = 0;
+    for (const kingdom of ['fauna', 'flora', 'fungi', 'microbe']) {
+      for (let seed = 1; seed <= 50; seed++) {
+        for (let size = 0; size < 6; size++) {
+          for (const guardian of [false, true]) {
+            const g = { ...makeGenome(seed, kingdom, 1), size };
+            const recipe = buildRecipe(g, [], cat, { guardian });
+            const out = compose(recipe, 'rest', cat);
+            count++;
+            const where = `${kingdom} seed ${seed} size ${size} guardian ${guardian}`;
+            if (!out.buffer.pixels.some((p) => p !== 0)) expect.fail(`empty buffer for ${where}`);
+            if (kingdom !== 'fauna') {
+              if (recipe.parts.length !== 0) expect.fail(`parts requested for ${where}`);
+              if (!out.gaps.includes(`fallback:${recipe.family}`)) expect.fail(`no fallback gap for ${where}: ${out.gaps.join(' ')}`);
+              if (out.gaps.some((gap) => gap.startsWith('missing:'))) expect.fail(`missing gap for ${where}: ${out.gaps.join(' ')}`);
+            }
+          }
+        }
+      }
+    }
+    expect(count).toBe(2400);
+  });
+
+  it('names, in every fallback line, a part that exists and has a rest frame', () => {
+    expect(cat.fallbacks.size).toBeGreaterThanOrEqual(15);
+    for (const family of ['flora', 'fungi', 'microbe']) expect(cat.fallbacks.has(family), family).toBe(true);
+    for (const [family, id] of cat.fallbacks) {
+      const part = cat.parts.get(id);
+      expect(part, `${family} -> ${id}`).toBeDefined();
+      expect(Object.hasOwn(part!.frames, 'rest'), `${family} -> ${id}`).toBe(true);
     }
   });
 });

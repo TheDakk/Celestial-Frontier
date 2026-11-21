@@ -50,14 +50,17 @@ export function buildRecipe(
 
   const torsoKind = a.torso === '' ? 'body' : a.torso;
   const wanted: { slot: SlotName; index: number; kind: string; variant: number }[] = [];
-  const far = a.limbs >> 1;
-  const near = a.limbs - far;
-  for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: 'leg', variant: limbVariant });
-  if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: tailVariant });
-  wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: torsoVariant });
-  for (let i = 0; i < near; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: 'leg', variant: limbVariant });
-  wanted.push({ slot: 'head', index: 0, kind: `h${a.head}`, variant: headVariant });
-  for (let i = 0; i < a.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0 });
+  // Only fauna is built from parts in this milestone; flora, fungi and microbe ask for none and draw their family fallback.
+  if (a.kingdom === 'fauna') {
+    const far = a.limbs >> 1;
+    const near = a.limbs - far;
+    for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: 'leg', variant: limbVariant });
+    if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: tailVariant });
+    wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: torsoVariant });
+    for (let i = 0; i < near; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: 'leg', variant: limbVariant });
+    wanted.push({ slot: 'head', index: 0, kind: `h${a.head}`, variant: headVariant });
+    for (let i = 0; i < a.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0 });
+  }
   wanted.sort((x, y) => DRAW_ORDER.indexOf(x.slot) - DRAW_ORDER.indexOf(y.slot) || x.index - y.index);
 
   const parts: RecipePart[] = [];
