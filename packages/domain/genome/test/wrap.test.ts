@@ -11,22 +11,27 @@ it('keeps the frozen table lengths', () => {
 
 const base = makeGenome(12345, 'fauna', 1);
 // Upward drift is the real case: each value is well above its table length and not a multiple of it.
-const drifted = { ...base, body: 83, head: 73, tail: 65, size: 70, limbs: 55, eyes: 53, pattern: 59, skin: 58, color: 91 };
-const wrapped = { ...base, body: 3, head: 3, tail: 2, size: 4, limbs: 1, eyes: 5, pattern: 3, skin: 4, color: 6 };
+// limbs is left out: none of these readers reads it, so it cannot show equivalence or a difference.
+const drifted = { ...base, body: 83, head: 73, tail: 65, size: 70, eyes: 53, pattern: 59, skin: 58, color: 91 };
+const wrapped = { ...base, body: 3, head: 3, tail: 2, size: 4, eyes: 5, pattern: 3, skin: 4, color: 6 };
 const readers = { describeSpecies, faunaDesc, speciesGrade };
+const tableLength = {
+  body: T.FA_BODY.length, head: T.FA_HEAD.length, tail: T.FA_TAIL.length, size: T.FA_SIZE.length,
+  eyes: T.FA_EYES.length, pattern: T.FA_PATTERN.length, skin: T.FA_SKIN.length, color: T.SP_COLOR.length,
+};
+const readAll = (g: Genome): string => JSON.stringify(Object.values(readers).map((read) => read(g)));
 
 it('reads a genome whose genes have drifted upward exactly as its wrapped equivalent', () => {
   for (const [name, read] of Object.entries(readers)) {
     expect(read(drifted), name).toEqual(read(wrapped));
   }
 });
-it('tells genomes apart when a gene differs by one', () => {
-  const mods = { body: 16, head: 10, tail: 7, size: 6, limbs: 6, eyes: 6, pattern: 8, skin: 9, color: 17 };
-  const differing = (Object.keys(mods) as (keyof typeof mods)[]).filter((k) => {
-    const other = { ...wrapped, [k]: (wrapped[k] + 1) % mods[k] };
-    return JSON.stringify(describeSpecies(other)) !== JSON.stringify(describeSpecies(wrapped));
+it('makes every gene in the equivalence visible: changing only that gene by one changes what the readers say', () => {
+  const visible = (Object.keys(tableLength) as (keyof typeof tableLength)[]).filter((k) => {
+    const other = { ...wrapped, [k]: (wrapped[k] + 1) % tableLength[k] };
+    return readAll(other) !== readAll(wrapped);
   });
-  expect(differing.length).toBeGreaterThan(0);
+  expect(visible).toEqual(['body', 'head', 'tail', 'size', 'eyes', 'pattern', 'skin', 'color']);
 });
 
 const GENES = ['body', 'head', 'tail', 'pattern', 'skin', 'limbs', 'eyes', 'size', 'color', 'accent', 'loco'] as const;
@@ -51,22 +56,36 @@ it('the gene checker flags a planted negative or fractional gene', () => {
   expect(badGenes({ ...base, eyes: 2.5 })).toEqual(['eyes']);
 });
 
-// The new renderer's own gene reads wrap negatives; this pins the old readers' latent gap.
-it('negative genes are outside the contract: body, tail, pattern and color readers do not wrap them', () => {
+it('negative genes are outside the contract: describeSpecies and faunaDesc do not wrap them', () => {
   const ok = { ...base, body: 13, head: 7, tail: 6, size: 0, limbs: 5, eyes: 1, pattern: 7, skin: 1, color: 16 };
-  const at = (genes: Partial<Genome>, twin: Partial<Genome>) => [describeSpecies({ ...ok, ...genes }), describeSpecies({ ...ok, ...twin })] as const;
-  const [body, bodyOk] = at({ body: -3 }, { body: 13 });
-  expect(body.desc).toBe('tiny, glass-clear undefined grazers bearing crystal antlers, glowing');
-  expect(bodyOk.desc).toBe('tiny, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
-  const [tail, tailOk] = at({ tail: -1 }, { tail: 6 });
-  expect(tail.anatomy).toBe('domed and bulbous, furred-skinned, with 4 eyes and a undefined tail');
-  expect(tailOk.anatomy).toBe('domed and bulbous, furred-skinned, with 4 eyes and a stinger-tipped tail');
-  const [pattern, patternOk] = at({ pattern: -9 }, { pattern: 7 });
-  expect(pattern.pattern).toBeUndefined();
-  expect(patternOk.pattern).toBe('eye-spotted');
-  const [color, colorOk] = at({ color: -18 }, { color: 16 });
-  expect(color.desc).toBe('tiny, undefined squat heavy-boned grazers bearing crystal antlers, glowing');
-  expect(colorOk.desc).toBe('tiny, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
+  // Each field read from both readers, which must agree, for the negative gene and for its wrapped twin.
+  const field = (genes: Partial<Genome>, f: 'desc' | 'anatomy' | 'pattern') => {
+    const g = { ...ok, ...genes };
+    const fromDescribe = describeSpecies(g)[f];
+    expect(faunaDesc(g)[f]).toEqual(fromDescribe);
+    return fromDescribe;
+  };
+  expect(field({ body: -3 }, 'desc')).toBe('tiny, glass-clear undefined grazers bearing crystal antlers, glowing');
+  expect(field({ body: 13 }, 'desc')).toBe('tiny, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
+  expect(field({ head: -3 }, 'anatomy')).toBe('undefined, furred-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ head: 7 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ tail: -1 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with 4 eyes and a undefined tail');
+  expect(field({ tail: 6 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ size: -1 }, 'desc')).toBe('undefined, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
+  expect(field({ size: 5 }, 'desc')).toBe('titanic, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
+  expect(field({ eyes: -5 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with undefined eyes and a stinger-tipped tail');
+  expect(field({ eyes: 1 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ pattern: -9 }, 'pattern')).toBeUndefined();
+  expect(field({ pattern: 7 }, 'pattern')).toBe('eye-spotted');
+  expect(field({ skin: -8 }, 'anatomy')).toBe('domed and bulbous, undefined-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ skin: 1 }, 'anatomy')).toBe('domed and bulbous, furred-skinned, with 4 eyes and a stinger-tipped tail');
+  expect(field({ color: -18 }, 'desc')).toBe('tiny, undefined squat heavy-boned grazers bearing crystal antlers, glowing');
+  expect(field({ color: 16 }, 'desc')).toBe('tiny, glass-clear squat heavy-boned grazers bearing crystal antlers, glowing');
+});
+it('speciesGrade, which reads only size of these genes, does wrap a negative size', () => {
+  const ok = { ...base, size: 0 };
+  expect(speciesGrade({ ...ok, size: -1 })).toEqual(speciesGrade({ ...ok, size: 5 }));
+  expect(speciesGrade({ ...ok, size: -1 })).not.toEqual(speciesGrade(ok));
 });
 
 it('gives no Guardian to the Sol planets', () => {
