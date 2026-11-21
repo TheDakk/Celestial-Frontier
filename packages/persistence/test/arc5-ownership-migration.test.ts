@@ -424,64 +424,38 @@ describe('@cf/persistence — Arc 5 compact ownership delta', () => {
     if (fixed.kind === 'already-loaded') expect(fixed.extensions).toEqual(result.extensions);
   });
 
-  it('reads aligned v1 evidence distinctly and upgrades it without revision or receipt authority', () => {
+  it('refuses an aligned version-1 certificate as corrupt and prepares no write', () => {
     const arc4 = withArc4(baseExtensions(), fixture().source);
     const legacy = withLegacyCertificate(arc4);
-    const before = readArc5OwnershipMigration(legacy, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
-    expect(before.kind).toBe('loaded');
-    if (before.kind !== 'loaded') return;
-    expect(before.evidence).toEqual({
-      representationVersion: 1,
-      sourceDigest: ownershipStateDigestV1(ownershipSourceStateV1(before.state)),
-      targetDigest: ownershipStateDigestV2(before.state),
-    });
-    expect('deltaDigest' in before.evidence).toBe(false);
+    const legacyBytes = canonicalJson(legacy);
+    expect(readArc5OwnershipMigration(legacy, SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'corrupt' });
+    expect(prepareArc5OwnershipMigration({
+      extensions: legacy,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+    expect(canonicalJson(legacy)).toBe(legacyBytes);
 
-    const upgrade = prepared(legacy);
-    expect(upgrade.representationUpgrade).toBe('legacy-v1');
-    expect(upgrade.writes).toHaveLength(5);
-    expect(upgrade.state.revision).toBe(before.state.revision);
-    expect(ownershipStateDigestV2(upgrade.state)).toBe(ownershipStateDigestV2(before.state));
-    expect(upgrade.evidence).toMatchObject({ representationVersion: 2, deltaRowCount: 0 });
-    const manifest = JSON.parse(upgrade.writes[0].carrier.json) as Record<string, unknown>;
-    expect(manifest).not.toHaveProperty('receipt');
-    expect(manifest).not.toHaveProperty('ordinal');
-    expect(Object.keys(manifest)).toEqual([
-      'deltaDigest', 'deltaRowCount', 'deltaSchema', 'deltaVersion', 'fixedShardCount',
-      'schema', 'shardDigests', 'sourceDigest', 'sourceMode', 'sourceRevision',
-      'sourceSchema', 'sourceVersion', 'targetDigest', 'targetMode', 'targetRevision',
-      'targetSchema', 'targetVersion', 'version',
-    ]);
-    expect(manifest).toMatchObject({
-      schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
-      version: ARC5_OWNERSHIP_MIGRATION_VERSION,
-      sourceRevision: before.state.revision,
-      targetRevision: before.state.revision,
+    // Whatever version its JSON claims, a version-1 carrier is refused as corrupt.
+    for (const claimed of [2, 3]) {
+      const relabelled = mutateCarrierJson(
+        legacy,
+        'player',
+        ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+        (certificate) => { certificate.version = claimed; },
+      );
+      expect(readArc5OwnershipMigration(
+        relabelled,
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      ), `claimed ${claimed}`).toEqual({ kind: 'corrupt' });
+    }
+    // A lone manifest carrier from a future version stays future, not corrupt.
+    const certificate = legacy.player![ARC5_OWNERSHIP_MIGRATION_NAMESPACE]!;
+    const futureManifest = replace(legacy, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
+      version: 3,
+      json: certificate.json,
     });
-    const read = readArc5OwnershipMigration(
-      upgrade.extensions,
-      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    );
-    expect(read.kind === 'loaded' ? read.evidence.representationVersion : null).toBe(2);
-
-    const partialV2 = mutateCarrierJson(
-      legacy,
-      'player',
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      (certificate) => { certificate.version = 2; },
-    );
     expect(readArc5OwnershipMigration(
-      partialV2,
-      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    )).toEqual({ kind: 'corrupt' });
-    const futureLegacy = mutateCarrierJson(
-      legacy,
-      'player',
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      (certificate) => { certificate.version = 3; },
-    );
-    expect(readArc5OwnershipMigration(
-      futureLegacy,
+      futureManifest,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     )).toEqual({ kind: 'future-version', version: 3 });
   });
