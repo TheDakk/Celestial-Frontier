@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
+const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, OWN_FAMILY_BY_BODY } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -124,6 +124,62 @@ const GENERATED_TORSOS = new Set([0, 4].flatMap((loco) => Array.from({ length: 1
   const a = resolveAnatomy({ kingdom: 'fauna', body, loco });
   return `${a.family}/${torsoKindOf(a)}`;
 })));
+
+// Routed scaffolds (body routing). Built beside genomeFor and GENERATED_TORSOS, which checkPack still uses; not wired.
+/** The tier genes of the routed path: size gene 0 draws medium there (SIZE_TIER_BY_GENE), so small is size gene 1. */
+const ROUTE_GENES_FOR_TIER = { ...GENES_FOR_TIER, small: { size: 1 } };
+/** The movement and habitat genes of each state: grazers, gliders (airborne), swimmers (aquatic), all in the deep forest canopy. */
+const STATE_GENES = { land: { loco: 0, habitat: 0 }, airborne: { loco: 3, habitat: 0 }, aquatic: { loco: 4, habitat: 0 } };
+const OWN_FAMILIES = new Set(Object.values(OWN_FAMILY_BY_BODY));
+/** The seeds shapedGenome tries, from 1. */
+const SHAPE_SEEDS = 64;
+
+/**
+ * The states a routed scaffold `<family>/<torso>/<tier>` is sampled in, each with the first body gene (in gene order) that
+ * routes to that family and shape there. A four-legged torso type on land and airborne, and aquatic where the body stays
+ * four-legged (membranous, fourwinged); a fish shape aquatic only; an own-animal family on land only (its parts are the
+ * same in every state). An id no genome reaches gives [].
+ */
+export function routeStates(scaffoldId) {
+  const [family, torso, tier] = scaffoldId.split('/');
+  const tierGenes = ROUTE_GENES_FOR_TIER[tier];
+  if (tierGenes === undefined) return [];
+  const states = [];
+  for (const [state, stateGenes] of Object.entries(STATE_GENES)) {
+    for (let body = 0; body < 16; body++) {
+      const r = routeBody({ ...tierGenes, body, ...stateGenes });
+      if (r.family !== family || !r.shapes.includes(torso)) continue;
+      states.push({ state, genes: { ...tierGenes, body, ...stateGenes } });
+      break;
+    }
+  }
+  return OWN_FAMILIES.has(family) ? states.slice(0, 1) : states;
+}
+
+/**
+ * The genome with the smallest seed from 1 to SHAPE_SEEDS for which bodyOf gives this family and torso, every other gene
+ * kept; undefined when none does. The shape follows the whole identity, so every sampled genome is shaped by this.
+ */
+export function shapedGenome(genome, family, torso) {
+  for (let seed = 1; seed <= SHAPE_SEEDS; seed++) {
+    const shaped = { ...genome, seed };
+    const b = bodyOf(shaped);
+    if (b.family === family && b.torso === torso) return shaped;
+  }
+  return undefined;
+}
+
+/** Every `<family>/<torso>` a fauna genome reaches on the routed path: every shape of every family a body gene routes to, in any state. */
+export function generatedTorsos() {
+  const out = new Set();
+  for (const stateGenes of Object.values(STATE_GENES)) {
+    for (let body = 0; body < 16; body++) {
+      const r = routeBody({ body, ...stateGenes });
+      for (const shape of r.shapes) out.add(`${r.family}/${shape}`);
+    }
+  }
+  return out;
+}
 
 /** Whether a part is a named species' own torso, head or tail: kind `<key>` in the species' family and tier. */
 function isSpeciesPart(catalogue, part) {

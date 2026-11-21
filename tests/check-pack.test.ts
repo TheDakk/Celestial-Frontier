@@ -5,7 +5,8 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LIMB_COUNTS, VARIANTS } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
-import { checkPack, formatReport, type PackReport } from '../tools/check-pack.mjs';
+import { bodyOf } from '@cf/art-recipe';
+import { checkPack, formatReport, generatedTorsos, routeStates, shapedGenome, type PackReport } from '../tools/check-pack.mjs';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 
@@ -948,5 +949,82 @@ describe('checkPack on a named species', () => {
     const r = checkPack(`${WITH_CIVET}\nspecies stilt quadruped small legs=4 eyes=2 iris=0 tail=1\n`);
     expect(r.structure).toContain('species stilt: key is a torso type of quadruped');
     expect(checkPack(WITH_CIVET).structure).toEqual([]);
+  });
+});
+
+describe('routing helpers', () => {
+  const ALL_TORSOS = [
+    'quadruped/sturdy', 'quadruped/stilt', 'quadruped/shelled', 'quadruped/membranous', 'quadruped/crystalline',
+    'quadruped/tusked', 'quadruped/horned', 'quadruped/spindly', 'quadruped/squat', 'quadruped/fourwinged',
+    'fish/fusiform', 'fish/shark', 'fish/flat', 'fish/angler', 'fish/sturgeon',
+    'serpent/snake', 'serpent/viper', 'gelatinous/body',
+    'radial/anemone', 'radial/urchin', 'radial/coral', 'radial/cucumber',
+    'tentacled/octopus', 'tentacled/squid', 'tentacled/cuttlefish',
+    'insect/beetle', 'insect/generic', 'insect/mantis',
+    'crustacean/crab', 'crustacean/lobster',
+  ];
+
+  it('finds a genome for every shape of every family', () => {
+    const all = generatedTorsos();
+    expect(all.size).toBe(30);
+    expect([...all].sort()).toEqual([...ALL_TORSOS].sort());
+    for (const id of all) {
+      const [family, torso] = id.split('/') as [string, string];
+      const states = routeStates(`${id}/medium`);
+      expect(states.length, id).toBeGreaterThan(0);
+      for (const { state, genes } of states) {
+        const shaped = shapedGenome({ ...genes, head: 0 }, family, torso);
+        expect(shaped, `${id} ${state}`).toBeDefined();
+        const b = bodyOf(shaped!);
+        expect(`${b.family}/${b.torso}`, `${id} ${state}`).toBe(id);
+        expect(b.tier, `${id} ${state}`).toBe('medium');
+      }
+    }
+  });
+
+  it('samples airborne and aquatic only where they change the parts', () => {
+    const statesOf = (id: string) => routeStates(id).map((s) => s.state);
+    expect(statesOf('quadruped/membranous/medium')).toEqual(['land', 'airborne', 'aquatic']);
+    expect(statesOf('quadruped/fourwinged/medium')).toEqual(['land', 'airborne', 'aquatic']);
+    expect(statesOf('quadruped/sturdy/medium')).toEqual(['land', 'airborne']);
+    expect(routeStates('fish/sturgeon/medium')).toEqual([{ state: 'aquatic', genes: { size: 2, body: 6, loco: 4, habitat: 0 } }]);
+    expect(routeStates('crustacean/crab/medium')).toEqual([{ state: 'land', genes: { size: 2, body: 1, loco: 0, habitat: 0 } }]);
+    const membranous = routeStates('quadruped/membranous/medium');
+    expect(membranous.map((s) => s.genes)).toEqual([
+      { size: 2, body: 7, loco: 0, habitat: 0 }, { size: 2, body: 7, loco: 3, habitat: 0 }, { size: 2, body: 7, loco: 4, habitat: 0 },
+    ]);
+    for (const { state, genes } of membranous) {
+      const b = bodyOf(shapedGenome(genes, 'quadruped', 'membranous')!);
+      expect([b.airborne, b.aquatic], state).toEqual([state === 'airborne', state === 'aquatic']);
+    }
+    // The tier genes: small is size gene 1 (gene 0 draws medium), guardian carries the Guardian marker.
+    expect(routeStates('quadruped/sturdy/small')[0]!.genes).toEqual({ size: 1, body: 0, loco: 0, habitat: 0 });
+    expect(bodyOf(routeStates('quadruped/sturdy/small')[0]!.genes).tier).toBe('small');
+    expect(routeStates('quadruped/sturdy/large')[0]!.genes).toEqual({ size: 4, body: 0, loco: 0, habitat: 0 });
+    expect(bodyOf(routeStates('quadruped/sturdy/guardian')[0]!.genes).tier).toBe('guardian');
+  });
+
+  it('an id no genome reaches gives nothing', () => {
+    expect(routeStates('quadruped/armored/medium')).toEqual([]);
+    expect(routeStates('crustacean/shrimp/medium')).toEqual([]);
+    expect(routeStates('fish/body/medium')).toEqual([]);
+    expect(routeStates('quadruped/sturdy/huge')).toEqual([]);
+    expect(shapedGenome({ body: 0, loco: 0, habitat: 0, size: 2 }, 'quadruped', 'armored')).toBeUndefined();
+  });
+
+  it('shapedGenome changes only the seed', () => {
+    const genome = { kingdom: 'fauna', size: 2, body: 15, loco: 0, habitat: 0, head: 3, tail: 2, limbs: 4, eyes: 1, color: 5, seed: 999 };
+    for (const torso of ['anemone', 'urchin', 'coral', 'cucumber']) {
+      const shaped = shapedGenome(genome, 'radial', torso)!;
+      expect(shaped, torso).toBeDefined();
+      const { seed, ...rest } = shaped;
+      const { seed: _old, ...before } = genome;
+      expect(rest, torso).toEqual(before);
+      expect(Number.isInteger(seed) && (seed as number) >= 1 && (seed as number) <= 64, torso).toBe(true);
+      // the smallest seed: no smaller one gives the shape
+      for (let s = 1; s < (seed as number); s++) expect(bodyOf({ ...genome, seed: s }).torso, `${torso} seed ${s}`).not.toBe(torso);
+      expect(bodyOf(shaped).torso, torso).toBe(torso);
+    }
+    expect(genome.seed).toBe(999); // the input is not changed
   });
 });

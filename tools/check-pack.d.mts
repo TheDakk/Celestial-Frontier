@@ -79,4 +79,10 @@ export const HIDDEN_MIN: number;
 /** For a picture assembled from the label catalogue (pixel value = slot label); null when it is one 4-connected region. */
 export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array }): string[] | null;
 export function checkPack(text: string): PackReport;
+/** The states a routed scaffold `<family>/<torso>/<tier>` is sampled in, each with its tier, body and state genes; [] when no genome reaches it. Not yet used by checkPack. */
+export function routeStates(scaffoldId: string): { state: 'land' | 'airborne' | 'aquatic'; genes: Record<string, unknown> }[];
+/** The genome with the smallest seed from 1 to 64 for which bodyOf gives this family and torso, every other gene kept; else undefined. */
+export function shapedGenome(genome: Record<string, unknown>, family: string, torso: string): Record<string, unknown> | undefined;
+/** Every `<family>/<torso>` a fauna genome reaches on the routed path. */
+export function generatedTorsos(): Set<string>;
 export function formatReport(report: PackReport): string;
