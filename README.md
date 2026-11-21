@@ -12,5 +12,14 @@ Reference documents from version 1 live on the `celestial-frontier-v1-reference`
 - Test: `npm test`
 - Typecheck: `npm run typecheck`
 - Gate (clean-branch check, purity check, typecheck, tests; must pass before merging): `npm run gate`
+- Renderer diagnostics page (recomposes the recorded creatures and reports whether every hash matches; `--host` makes it reachable from a phone on the same network): `npm run dev -w @cf/diagnostics -- --host`
+- Check an art pack (one or more art text files, joined in order; reads only those files, writes nothing; exit code 0 only when there is no error): `node tools/check-pack.mjs <file> [more files...]`
+
+### Recorders
+
+These rewrite files under `fixtures/`. Fixtures are protected: re-record only when Dakk says so.
+
+- Gameplay fixtures, from the current game: `node tools/record-fixtures.mjs --source <path to the current game's v2 folder> --only <name>`
+- Art golden hashes (`fixtures/art/quadruped-v1.json`), from the placeholder catalogue: `node tools/record-art-hashes.mjs`
 
 Working rules for contributors and agents are in `CLAUDE.md` and `AGENTS.md` at the repository root.
