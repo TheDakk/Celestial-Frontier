@@ -531,6 +531,266 @@ const recorders = {
       sections: out,
     };
   },
+  // Taming (Tame / Scavenge / Sample capture) and breeding outcomes of the acquisition package. Every
+  // random value comes from an injected SessionRNG state (seed, per-domain counters, ordinal) planned with
+  // the current game's own planner, and every clock value is an injected active-play time in ms. Each
+  // case records its full input beside its output, so a test rebuilds the case from the input alone.
+  acquisition: async (source) => {
+    const NAMES = ['_cardFactsSet', '_earthNamePass', 'GAL_KIND', 'planetThumb', 'starThumb', 'galaxyThumb',
+      'moonThumb', 'cometThumb', 'beltThumb', 'GAL_SPRITES', 'COSMIC_EPOCH', 'st', 'customNames'];
+    for (const name of NAMES) if (name in globalThis) throw new Error(`acquisition: ${name} must not be defined before recording`);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const acq = await load('packages/domain/acquisition/src/index.ts');
+    const model = await load('packages/domain/acquisition/src/model.ts');
+    const v2 = await load('packages/domain/acquisition/src/model-v2.ts');
+    const breed = await load('packages/domain/acquisition/src/breed.ts');
+    const availability = await load('packages/domain/acquisition/src/companion-availability.ts');
+    const { registerAcquisitionSnapshotV1, registerCaptureDrawBundleV1 } = await load('packages/domain/acquisition/src/snapshot-internal.ts');
+    const loot = await load('packages/domain/loot/src/index.ts');
+    const { registerArc2EngineeringLoadout } = await load('packages/domain/loot/src/engineering-loadout-internal.ts');
+    const { createSessionRNG, planSessionRNGDraws, DOMAINS } = await load('packages/domain/sessionrng/src/index.ts');
+    const { resolveCF1WorldAddress } = await load('packages/scene/src/index.ts');
+    const { installCaptureHooks } = await load('packages/domain/descriptors/src/index.ts');
+    const { systemFor } = await load('packages/domain/worldgen/src/index.ts');
+    const { climateBand } = await load('packages/domain/surveyphrases/src/index.ts');
+    const { mulberry32 } = await load('packages/domain/rand/src/index.ts');
+    const { biosphere } = await load('packages/domain/ecology/src/ecology.verbatim.js');
+    const { planetSpeciesAtEcologyEpoch } = await load('packages/domain/ecology/src/explicit-epoch.ts');
+    // The address resolver walks the current game's worldgen, which reads GAL_SPRITES: install the hooks
+    // the way the game and the current game's acquisition tests do.
+    installCaptureHooks();
+    const plain = (value) => JSON.parse(JSON.stringify(value));
+
+    // Every roster row of a world at an epoch, generated as the rosters recorder generates it.
+    const rosterOf = (star, planet, epoch) => {
+      const sys = systemFor(star);
+      const found = sys.planets.find((entry) => entry.P.seed === planet);
+      if (!found) throw new Error(`acquisition: planet ${planet} not found in system ${star}`);
+      const band = climateBand(found.P, sys, found.orb);
+      const key = biosphere(found.P, sys, band, mulberry32((found.P.seed ^ 0x1234567) >>> 0)).key;
+      return { biosphereKey: key, rows: plain(planetSpeciesAtEcologyEpoch(found.P, sys, band, key === 'earth' ? 'complex' : key, epoch)) };
+    };
+
+    // Taming odds: the whole chance table and the hit rule.
+    const VERBS = ['tame', 'scavenge', 'sample'];
+    const CONTACTS = [0, 1, 7, 16, 17, 37, 1000];
+    const chance = VERBS.flatMap((verb) => CONTACTS.map((contactCapturePoints) => ({
+      verb,
+      contactCapturePoints,
+      byTierThenRing: Array.from({ length: 15 }, (_, tier) => Array.from({ length: 6 }, (_, ring) => acq.captureChanceV1({ verb, tier, ring, contactCapturePoints }))),
+    })));
+    const hitEdges = [[0, 0.02], [0.0199999, 0.02], [0.02, 0.02], [0.5, 0.95], [0.9499999, 0.95], [0.95, 0.95], [0.999999, 1]]
+      .map(([successDraw, ch]) => ({ successDraw, chance: ch, hit: acq.captureHitV1(successDraw, ch) }));
+
+    // Capture end to end on worlds whose canonical addresses the current game's acquisition tests use:
+    // Earth (home ring), a ring-3, a ring-4 and a deep living world.
+    const WORLDS = {
+      earth: { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 }, planetSeed: 133 },
+      ring3: { galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 }, star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 }, planetSeed: 2525295284 },
+      ring4: { galaxy: { seed: 742431365, x: 357.33832279220223, y: 1882.66924303025 }, star: { seed: 134687484, x: 219.1186681254767, y: -157.20003835111856 }, planetSeed: 2525295284 },
+      deepLiving: { galaxy: { seed: 1012779741, x: -599.7658047693408, y: -6073.942273357868 }, star: { seed: 3589953231, x: -138.81464905291796, y: -21.96363354055211 }, planetSeed: 3533877330 },
+    };
+    const gearSource = loot.makeGearSourceActionId({ kind: 'legacy-migration', ownerId: 'acquisition-recorder', actionKey: 'items-v1', receiptId: 'migration:v4-v5' });
+    const GEAR = {
+      none: { itemCounts: [], equipped: {}, equippedAffixes: {}, revision: 1, capacity: 6 },
+      contact: { itemCounts: [['earpiece', 1], ['diplobeacon', 1], ['prismpendant', 1]], equipped: { ears: 'earpiece', necklace: 'diplobeacon' }, equippedAffixes: { ears: { k: 'contact', v: 7, forId: 'earpiece' } }, revision: 11, capacity: 6 },
+    };
+    const capabilitiesOf = (gear) => {
+      const migrated = loot.migrateLegacyGear({ sourceActionId: gearSource, itemCounts: gear.itemCounts, equipped: gear.equipped, equippedAffixes: gear.equippedAffixes });
+      const inventory = loot.decodeGearInventory(JSON.stringify({
+        schema: loot.GEAR_INVENTORY_SCHEMA, revision: gear.revision, capacity: gear.capacity,
+        entries: migrated.instances.map((instance) => ({ instance, favorite: false, locked: false })),
+        equipped: migrated.equipped, pendingRewards: [],
+      }));
+      return loot.projectAcquisitionCapabilities(registerArc2EngineeringLoadout(inventory, []));
+    };
+    const CAPTURE_DOMAINS = [DOMAINS.captureCandidate, DOMAINS.captureSuccess];
+    const attemptCapture = (address, roster, gearName, verb, ownership, sessionRng, activePlayMs) => {
+      const snapshot = registerAcquisitionSnapshotV1({
+        address, worldKey: address.key, ecologyEpoch: 0,
+        fullRosterFingerprint: `recorded-roster:${address.key}:0:${roster.rows.length}`,
+        biosphereKey: roster.biosphereKey, rosterRows: roster.rows,
+        capabilities: capabilitiesOf(GEAR[gearName]), ownership,
+        f4Authority: { activePlayMs, sessionRng },
+      });
+      const snapshotOut = {
+        fingerprint: snapshot.fingerprint, captureRing: snapshot.captureRing, biosphereYield: snapshot.biosphereYield,
+        cycle: snapshot.cycle, contactCapturePoints: snapshot.contactCapturePoints, candidates: snapshot.candidates.length,
+      };
+      const preflight = acq.preflightCaptureV1(snapshot, verb);
+      if (preflight.kind !== 'ready') return { snapshot: snapshotOut, preflight: plain(preflight), plan: null, next: null };
+      const sessionPlan = planSessionRNGDraws(createSessionRNG(sessionRng.seed, { ...sessionRng.draws }, sessionRng.ordinal).state(), CAPTURE_DOMAINS);
+      const bundle = registerCaptureDrawBundleV1({
+        snapshot,
+        plan: {
+          draws: sessionPlan.draws.map(({ domain, value }) => ({ domain, value })),
+          receiptOrdinal: sessionPlan.receiptOrdinal,
+          currentAuthority: { activePlayMs, sessionRng },
+          nextSessionRng: sessionPlan.nextState,
+          sessionPlan,
+        },
+      });
+      const planned = acq.planCaptureV1(preflight, bundle);
+      if (planned.kind !== 'planned') return { snapshot: snapshotOut, preflight: { kind: 'ready' }, plan: plain(planned), next: null };
+      const { successor, ...rest } = planned.plan;
+      return {
+        snapshot: snapshotOut,
+        preflight: {
+          kind: 'ready', pool: preflight.pool.map((c) => c.sourceOrdinal), used: preflight.used,
+          remainingBefore: preflight.remainingBefore, requiredHitHeadroom: preflight.requiredHitHeadroom,
+        },
+        plan: { ...plain(rest), successorDigest: model.ownershipStateDigestV1(successor) },
+        next: { ownership: successor, sessionRng: plain(bundle.nextSessionRng) },
+      };
+    };
+    // The inputs every capture case shares: each world's address and epoch-0 roster, and the gear.
+    const worlds = Object.fromEntries(Object.entries(WORLDS).map(([name, w]) => [name, { ...w, ...rosterOf(w.star.seed, w.planetSeed, 0) }]));
+    const captures = [];
+    const SESSION_SEEDS = [12345, 777, 3735928559];
+    const CLOCKS = [0, 1250000];
+    for (const [world, w] of Object.entries(WORLDS)) {
+      const resolved = resolveCF1WorldAddress({ galaxy: w.galaxy, star: w.star, planet: { seed: w.planetSeed } });
+      if (!resolved.ok) throw new Error(`acquisition: ${world} address did not resolve: ${resolved.reason}`);
+      const roster = worlds[world];
+      for (const gear of Object.keys(GEAR)) {
+        for (const verb of VERBS) {
+          for (const seed of SESSION_SEEDS) {
+            for (const activePlayMs of CLOCKS) {
+              const input = { world, gear, verb, activePlayMs, sessionRng: { seed, ordinal: 0, draws: {} } };
+              const c = structuredClone(input);
+              const out = attemptCapture(resolved.address, roster, c.gear, c.verb, model.createEmptyOwnershipStateV1(), c.sessionRng, c.activePlayMs);
+              captures.push({ input, snapshot: out.snapshot, preflight: out.preflight, plan: out.plan });
+            }
+          }
+        }
+      }
+    }
+    // Repeated tames on one world: each attempt starts from the previous successor and next SessionRNG
+    // state; the clock crosses the 20-minute cycle once, so spent species and the yield reset.
+    const chains = [];
+    for (const [world, seed] of [['deepLiving', 12345], ['earth', 777]]) {
+      const w = WORLDS[world];
+      const address = resolveCF1WorldAddress({ galaxy: w.galaxy, star: w.star, planet: { seed: w.planetSeed } }).address;
+      const roster = worlds[world];
+      let ownership = model.createEmptyOwnershipStateV1();
+      let sessionRng = { seed, ordinal: 0, draws: {} };
+      const steps = [];
+      for (const [verb, activePlayMs] of [['tame', 0], ['tame', 1000], ['scavenge', 2000], ['tame', 3000], ['sample', 4000], ['tame', 5000], ['tame', 1200000], ['tame', 1201000]]) {
+        const out = attemptCapture(address, roster, 'contact', verb, ownership, structuredClone(sessionRng), activePlayMs);
+        steps.push({ input: { verb, activePlayMs, sessionRng: plain(sessionRng) }, snapshot: out.snapshot, preflight: out.preflight, plan: out.plan });
+        if (out.next) ({ ownership, sessionRng } = out.next);
+      }
+      chains.push({ world, gear: 'contact', steps });
+    }
+
+    // Breeding: every ordered pair of Kaum's fauna (both parent orders), with varied care state, clock,
+    // receipt, earned Stardust and first-pair flag. The outcome draw is the injected SessionRNG's
+    // care.breed draw, as the game plans it; three fixed draws are settled as well.
+    const KAUM = { star: 2737406570, planet: 1757105165 };
+    const kaumFauna = rosterOf(KAUM.star, KAUM.planet, 0).rows.filter((g) => g.kingdom === 'fauna');
+    const ownershipOf = (parents) => {
+      const identities = parents.map((p) => model.canonicalGenomeIdentityV1(p.genome));
+      const discoveries = identities.map((identity, index) => model.createLegacyDiscoveryRecordV1({
+        recordId: model.ownershipContentId('discovery', `breed-${index}`), speciesId: identity.speciesId,
+        legacyCodexId: `breed-${index}`, legacySourceIndex: index, from: 'Legacy', legacyLocation: null, firstForSpecies: true,
+      }));
+      const ids = parents.map((_, index) => model.ownershipContentId('creature', `breed-${index}`));
+      const creatures = parents.map((p, index) => model.createCreatureInstanceV1({
+        creatureId: ids[index], speciesId: identities[index].speciesId, genomeIdentity: identities[index].genomeIdentity,
+        genome: identities[index].genome, nickname: `Parent ${index}`, origin: 'legacy', acquisitionRecordId: discoveries[index].recordId,
+        lineage: { kind: 'none', generation: identities[index].genome.gen }, xp: p.xp, hurt: p.hurt, fed: p.fed, brood: p.brood,
+        assignment: p.assignment, bond: null,
+      }));
+      const source = model.createInitialOwnershipStateV1({
+        catalogSpecies: identities.map((identity, index) => model.createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discoveries[index].recordId })),
+        discoveries, creatures, specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: ids[0],
+      });
+      return { state: v2.migrateOwnershipStateV1ToV2(source), ids };
+    };
+    const scenarioOut = (s) => {
+      const { successor, preflight, parentsBefore, parentsAfter, ...rest } = s;
+      return { ...plain(rest), parentAssignmentsAfter: plain(parentsAfter.map((p) => p.assignment)), successorDigest: v2.ownershipStateDigestV2(successor) };
+    };
+    const CARE = [
+      { hurt: null, fed: 80, brood: 3 }, { hurt: 0, fed: 30, brood: 4 }, { hurt: 0.1, fed: 0, brood: 0 },
+      { hurt: 0.29, fed: 120, brood: 14 }, { hurt: null, fed: null, brood: null },
+    ];
+    const breedCase = (input) => {
+      const c = structuredClone(input);
+      const { state, ids } = ownershipOf(c.parents);
+      const preflight = breed.preflightArc5BreedV1(state, {
+        parentCreatureIds: [ids[0], ids[1]], activePlayMs: c.activePlayMs, earnedStardustBonus: breed.earnedStardustBonusV1(c.earnedStardust),
+      });
+      const row = { input, preflight: plain(preflight), plan: null, draw: null, settled: null, recovery: null };
+      if (preflight.kind !== 'ready') return row;
+      const sessionPlan = planSessionRNGDraws(createSessionRNG(c.sessionRng.seed, { ...c.sessionRng.draws }, c.sessionRng.ordinal).state(), [DOMAINS.breedOutcome]);
+      const planned = breed.planArc5BreedScenariosV1(preflight.preflight, sessionPlan.receiptOrdinal, c.speciesPairFirst);
+      if (planned.kind !== 'planned') return { ...row, plan: plain(planned) };
+      const { plan } = planned;
+      return {
+        ...row,
+        plan: { kind: 'planned', receiptOrdinal: plan.receiptOrdinal, success: scenarioOut(plan.success), failure: scenarioOut(plan.failure) },
+        draw: { value: sessionPlan.draws[0].value, nextSessionRng: plain(sessionPlan.nextState) },
+        settled: [sessionPlan.draws[0].value, ...c.fixedDraws].map((d) => ({ draw: d, result: breed.settleArc5BreedScenariosV1(plan, d).scenario.result })),
+        // Recovery: both parents just before and exactly at their ready time, after each outcome.
+        recovery: ['success', 'failure'].map((result) => {
+          const s = plan[result];
+          return { result, at: [s.recoveryReadyAtActivePlayMs - 1, s.recoveryReadyAtActivePlayMs].map((t) => ({
+            activePlayMs: t,
+            parents: s.parentsAfter.map((p) => plain(availability.projectCompanionAvailabilityV1(p, t))),
+          })) };
+        }),
+      };
+    };
+    const breeding = [];
+    let k = 0;
+    for (let a = 0; a < kaumFauna.length; a++) {
+      for (let b = 0; b < kaumFauna.length; b++) {
+        if (a === b) continue;
+        breeding.push(breedCase({
+          parents: [
+            { genome: kaumFauna[a], xp: (k * 13) % 300, ...CARE[k % CARE.length], assignment: k % 11 === 5 ? { kind: 'recovery', readyAtActivePlayMs: 40000 } : null },
+            { genome: kaumFauna[b], xp: (k * 29) % 300, ...CARE[(k + 2) % CARE.length], assignment: null },
+          ],
+          activePlayMs: [0, 1000, 40000, 50000, 1200000, 86400000][k % 6],
+          earnedStardust: [0, 49, 50, 750, 50000][k % 5],
+          sessionRng: { seed: (Math.imul(k + 1, 2654435761) ^ 0xb7ed) >>> 0, ordinal: k % 4, draws: k % 3 ? { 'care.breed': k % 7 } : {} },
+          speciesPairFirst: k % 4 !== 3,
+          fixedDraws: [0, 0.5, 0.999999],
+        }));
+        k++;
+      }
+    }
+    // One cross, where only the injected clock or only the injected SessionRNG seed differs.
+    const injectedOnly = [];
+    for (const activePlayMs of [1000, 90000]) {
+      for (const seed of [1, 4, 10]) {
+        injectedOnly.push(breedCase({
+          parents: [
+            { genome: kaumFauna[0], xp: 7, hurt: null, fed: 80, brood: 3, assignment: null },
+            { genome: kaumFauna[1], xp: 7, hurt: 0, fed: 30, brood: 4, assignment: null },
+          ],
+          activePlayMs, earnedStardust: 750, sessionRng: { seed, ordinal: 0, draws: {} }, speciesPairFirst: true, fixedDraws: [],
+        }));
+      }
+    }
+    for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`acquisition: ${name} was left defined`);
+
+    return {
+      freeGlobals: {
+        installCaptureHooks: 'called once before the first case, as the current game\'s acquisition tests do: the address resolver reaches worldgen, which reads GAL_SPRITES',
+        COSMIC_EPOCH: 'not supplied: rosters are generated through the explicit-epoch entry at epoch 0',
+        st: 'not supplied: undefined',
+        customNames: 'not supplied: undefined',
+      },
+      injected: {
+        clock: 'activePlayMs, an integer of active-play milliseconds, given in every case input; no case reads a device clock',
+        random: 'a SessionRNG state { seed, ordinal, draws } given in every case input; capture draws capture.candidate then capture.success, breeding draws care.breed, each planned with planSessionRNGDraws; fixedDraws are settled directly',
+      },
+      taming: { tameOdds: acq.TAME_ODDS_V1, chance, hitEdges, worlds, gear: GEAR, captures, chains },
+      breeding: { world: 'kaum', star: KAUM.star, planet: KAUM.planet, epoch: 0, cases: breeding, injectedOnly },
+    };
+  },
 };
 
 function parseArgs(argv) {
