@@ -91,10 +91,11 @@ describe('@cf/domain-descriptors — survey cards pinned against the current gam
     expect(SECTIONS.map((s) => section(fixture.cases, s).length)).toEqual([25, 12, 254, 1]);
     expect(Object.keys(fixture.freeGlobals)).toEqual(FREE_GLOBALS);
   });
-  it('leaves no epoch and no sprite pool on the global object', () => {
+  it('leaves no epoch, no sprite pool and no st on the global object', () => {
     expect(actual).toHaveLength(fixture.cases.length);
     expect('COSMIC_EPOCH' in globalThis).toBe(false);
     expect('GAL_SPRITES' in globalThis).toBe(false);
+    expect('st' in globalThis).toBe(false);
   });
   it('the contract worlds give the recorded cards: home galaxy, Sol, every Sol planet, Earth at seven epochs', () => {
     expect(section(actual, 'contract')).toEqual(section(fixture.cases, 'contract'));
