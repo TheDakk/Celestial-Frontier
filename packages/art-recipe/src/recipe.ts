@@ -29,7 +29,7 @@ export interface Recipe {
   airborne: boolean;
   theme: ThemeName | null; // the creature's theme (routed builder, fauna); null otherwise
   rim: 0 | 50 | 75;       // 0 until the rim is drawn
-  skin: number | null;    // the skin layer; null until the skin is drawn
+  skin: number | null;    // the skin gene 0-8 (SKIN_NAMES) the composer paints on every part in a mark slot; null paints none
 }
 
 /**
@@ -154,6 +154,8 @@ export function buildRoutedRecipe(
     shift: { head: d.headShift, tail: d.tailShift },
     glow: b.glow, gaps,
     ...NEUTRAL, opacity: b.opacity, airborne: b.airborne, theme: b.theme,
+    // The skin gene, painted on every part in a mark slot; a radial has none, and outside fauna there is no skin gene.
+    skin: b.kingdom === 'fauna' && b.family !== 'radial' ? b.skin : null,
   });
 }
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
-import type { SlotName } from '@cf/art-format';
+import type { Catalogue, PartFrame, SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
@@ -915,5 +915,170 @@ entry torso 0 rest 0 0
     // A point the host lacks is reported by its own name.
     const lost = assemble(wingRecipe([['torso', 0, 'torso'], ['eyes', 0, 'eye', { host: 'torso', point: 'nowhere' }]]), 'rest', wingCat);
     expect(lost.gaps).toEqual(['attach:nowhere']);
+  });
+});
+
+describe('assemble: skin', () => {
+  // A torso 6x2 drawn 3 (ramp 0, shade 2) at origin (10,10): it covers x 10-15, y 10-11. Every other part lands with
+  // its anchor at its top-left pixel: the head (16,10) to (18,11), the eye (18,10), the tail (9,10), the back part
+  // (12,9), the far leg (10,12) to (10,13), the near leg (14,12) to (14,13). Each part's row 0 is a texture row of
+  // every grid, rows or dots rule (its cell row 0), so the first row of each painted part changes shade.
+  const SKIN_TEXT = HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
+333333
+333333
+layer flow
+111333
+111333
+
+frame hop anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
+333333
+333333
+
+part quadruped/torso/clear/small/v0
+frame rest anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
+333333
+333333
+layer translucent
+1....c
+.9...5
+
+part quadruped/torso/big/small/v0
+frame rest anchor=0,0
+666666666666
+666666666666
+666666666666
+666666666666
+666666666666
+666666666666
+666666666666
+666666666666
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=eye0:2,0
+777
+777
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+
+part quadruped/tail/t1/small/v0
+frame rest anchor=0,0
+3
+
+part quadruped/back/fin/small/v0
+frame rest anchor=0,0
+3
+layer scaled
+2
+
+part quadruped/farLimbs/leg/small/v0
+frame rest anchor=0,0
+3
+3
+
+part quadruped/nearLimbs/leg/small/v0
+frame rest anchor=0,0
+b
+b
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+pose hop
+entry torso 0 hop 0 0
+`;
+  const skinCat = parseCatalogueText(SKIN_TEXT);
+  const P = {
+    torso: 'quadruped/torso/sturdy/small/v0', clear: 'quadruped/torso/clear/small/v0', big: 'quadruped/torso/big/small/v0',
+    head: 'quadruped/head/h1/small/v0', eye: 'quadruped/eyes/eye/small/v0', tail: 'quadruped/tail/t1/small/v0',
+    fin: 'quadruped/back/fin/small/v0', far: 'quadruped/farLimbs/leg/small/v0', near: 'quadruped/nearLimbs/leg/small/v0',
+  };
+  const NONE = new Array<number>(15).fill(0);
+  /** A whole creature in draw order, every part in a mark slot carrying a mark (as buildRecipe gives a patterned one). */
+  const creature = (torso: string, skin: number | null, pattern = 0): Recipe => recipeOf([], {
+    parts: ([['farLimbs', 0, P.far], ['tail', 0, P.tail], ['torso', 0, torso], ['back', 0, P.fin], ['nearLimbs', 0, P.near], ['head', 0, P.head], ['eyes', 0, P.eye]] as const)
+      .map(([slot, index, partId]) => ({ slot, index, partId, source: 'own' as const, mark: { offset: 0, rolls: NONE } })),
+    marking: { pattern, strength: 2, phase: 0 }, legs: 2, skin,
+  });
+  const row = (b: PixelBuffer, y: number, x0: number, x1: number): number[] => Array.from({ length: x1 - x0 + 1 }, (_, i) => at(b, x0 + i, y));
+
+  it('a scaled creature\'s torso, head and legs show the texture, its eyes and back part do not', () => {
+    const plain = assemble(creature(P.torso, null), 'rest', skinCat);
+    const scaled = assemble(creature(P.torso, 0), 'rest', skinCat);
+    expect(scaled.gaps).toEqual([]);
+    // Torso row 0 is a cell row: every pixel steps 3 -> 2; row 1 only on cell columns 0 and 3 (scaled: 3 across).
+    expect(row(plain.buffer, 10, 10, 15)).toEqual([3, 3, 3, 3, 3, 3]);
+    expect(row(scaled.buffer, 10, 10, 15)).toEqual([2, 2, 2, 2, 2, 2]);
+    expect(row(scaled.buffer, 11, 10, 15)).toEqual([2, 3, 3, 2, 3, 3]);
+    // Head (two pixels showing beside the eye), tail and both legs change; the eye and the back part do not.
+    expect(row(scaled.buffer, 10, 16, 17)).toEqual([6, 6]);
+    expect([at(scaled.buffer, 9, 10), at(scaled.buffer, 10, 12), at(scaled.buffer, 14, 12)]).toEqual([2, 2, 10]);
+    expect([at(plain.buffer, 9, 10), at(plain.buffer, 10, 12), at(plain.buffer, 14, 12)]).toEqual([3, 3, 11]);
+    expect(at(scaled.buffer, 18, 10)).toBe(13);
+    // The back part keeps its drawn 3, though its frame carries a scaled layer that would write 2.
+    expect([at(plain.buffer, 12, 9), at(scaled.buffer, 12, 9)]).toEqual([3, 3]);
+    // Nothing outside the mark-slot parts changes.
+    const changed = drawn(plain.buffer).filter((s, i) => s !== drawn(scaled.buffer)[i]).map((s) => s.split('=')[0]);
+    expect(changed).not.toContain('18,10');
+    expect(changed).not.toContain('12,9');
+    // Torso 6 + 2, head 2 + 1 (its row 1 on cell column 0), tail 1, each one-pixel-wide leg 2 (column 0 is a cell column).
+    expect(changed).toHaveLength(8 + 3 + 1 + 2 + 2);
+  });
+
+  it('skin null draws today\'s picture', () => {
+    // Inert proof: with skin null the picture is the parts as drawn (marks aside), whatever skin layers the frames carry.
+    const bare = ({ layers: _layers, ...f }: PartFrame): PartFrame => f;
+    const stripped: Catalogue = { ...skinCat, parts: new Map([...skinCat.parts].map(([id, part]) => [id, {
+      ...part, frames: Object.fromEntries(Object.entries(part.frames).map(([name, f]) => [name, bare(f)])),
+    }])) };
+    for (const torso of [P.torso, P.clear]) {
+      const r = creature(torso, null);
+      expect(compose(r, 'rest', skinCat).hash).toBe(compose(r, 'rest', stripped).hash);
+      expect(row(assemble(r, 'rest', skinCat).buffer, 10, 9, 17)).toEqual([3, 3, 3, 3, 3, 3, 3, 7, 7]);
+      expect(at(assemble(r, 'rest', skinCat).buffer, 12, 9)).toBe(3);
+    }
+  });
+
+  it('the texture goes over the marks, in their ramp', () => {
+    // Striped on flow 1-2 at phase 0 marks flow 1 (x 10-12) with 5; crystalline (grid 4x4, step +1) then steps
+    // row 0 and column 0 of its cell up one shade: the mark 5 -> 6 (still ramp 1), the bare 3 -> 4 (still ramp 0).
+    const marked = assemble(creature(P.torso, null, 1), 'rest', skinCat);
+    expect(row(marked.buffer, 10, 10, 15)).toEqual([5, 5, 5, 3, 3, 3]);
+    const both = assemble(creature(P.torso, 8, 1), 'rest', skinCat);
+    // Only the torso has a flow layer: the other parts' marks: gaps, and no skin: gap.
+    expect(both.gaps).toEqual(marked.gaps);
+    expect(row(both.buffer, 10, 10, 15)).toEqual([6, 6, 6, 4, 4, 4]);
+    expect(row(both.buffer, 11, 10, 15)).toEqual([6, 5, 5, 3, 4, 3]);
+  });
+
+  it('a translucent torso frame with its layer is drawn from it; without it the gap skin:<id>:<frame> is counted and nothing else changes', () => {
+    // The clear torso's translucent layer writes 1, 12, 9 and 5 where it holds them; the rule paints nothing.
+    const clear = assemble(creature(P.clear, 7), 'rest', skinCat);
+    expect(clear.gaps).toEqual([]);
+    expect(row(clear.buffer, 10, 10, 15)).toEqual([1, 3, 3, 3, 3, 12]);
+    expect(row(clear.buffer, 11, 10, 15)).toEqual([3, 9, 3, 3, 3, 5]);
+    // The sturdy torso has no translucent layer: one gap for the torso frame drawn, none for the legs, head or tail,
+    // and the picture is the unskinned one.
+    for (const pose of ['rest', 'hop']) {
+      const bare = assemble(creature(P.torso, 7), pose, skinCat);
+      expect(bare.gaps).toEqual([`skin:${P.torso}:${pose}`]);
+      expect(drawn(bare.buffer)).toEqual(drawn(assemble(creature(P.torso, null), pose, skinCat).buffer));
+    }
+  });
+
+  it('the picture hash changes with the skin and depends only on the recipe, the pose and the catalogue', () => {
+    const big = (skin: number | null): Recipe => recipeOf([['torso', 0, P.big]], { skin });
+    const hashes = [null, 0, 1, 2, 3, 4, 5, 6, 8].map((s) => compose(big(s), 'rest', skinCat).hash);
+    expect(new Set(hashes).size).toBe(hashes.length);
+    // A translucent torso without its layer is the unskinned picture.
+    expect(compose(big(7), 'rest', skinCat).hash).toBe(hashes[0]);
+    // The same inputs give the same hash whatever was composed before, and a deep copy of the recipe gives it too.
+    const first = compose(big(4), 'rest', skinCat).hash;
+    compose(creature(P.torso, 2, 1), 'rest', skinCat);
+    expect(compose(JSON.parse(JSON.stringify(big(4))) as Recipe, 'rest', skinCat).hash).toBe(first);
+    expect(compose(big(4), 'rest', parseCatalogueText(SKIN_TEXT)).hash).toBe(first);
   });
 });

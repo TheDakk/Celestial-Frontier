@@ -110,12 +110,13 @@ const isFlipper = (kind) => kind === 'flipper' || kind.startsWith('flipper-');
 
 /**
  * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
- * creature's pattern (`marks:`), a leg role drawn with the shared leg (`role:`), a missing back part, head feature, wing,
+ * creature's pattern (`marks:`), a translucent creature's torso frame with no `translucent` layer (`skin:`), a leg
+ * role drawn with the shared leg (`role:`), a missing back part, head feature, wing,
  * sails or body feature (`missing:` of a part in slot back, headFeature, farWings, nearWings or bodyFeature), or a
  * missing flipper. Every other gap is an error, a missing `t0` tail or `pit` eye included.
  */
 export function gapIsInfo(gap) {
-  if (/^(variant|marks|role):/.test(gap)) return true;
+  if (/^(variant|marks|skin|role):/.test(gap)) return true;
   const m = /^missing:[^/]*\/([^/]*)\/([^/]*)\//.exec(gap);
   return m !== null && (INFO_SLOTS.includes(m[1]) || isFlipper(m[2]));
 }

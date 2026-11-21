@@ -1,12 +1,14 @@
-import { MARK_SLOTS, PATTERN_NAMES, PIXEL_ACCENT, PIXEL_IRIS, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, PIXEL_ACCENT, PIXEL_IRIS, SKIN_NAMES, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
+import { paintSkin } from './skin';
 
 // The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-20 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
 // So are a jelly's (family `gelatinous`) torso values 5-8, its organelles, before any mark is painted, so no mark covers one.
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
+// Then, on a creature whose recipe names a skin, every part in a mark slot takes the skin texture (skin.ts), over its marks.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -143,6 +145,8 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
 
   // A gene outside PATTERN_NAMES would leave every part unpainted with no gap; it cannot occur, as buildRecipe yields genes 0 to 7 only.
   const pattern = PATTERN_NAMES[recipe.marking.pattern];
+  // Skin null (buildRecipe, buildSpeciesRecipe, a radial) paints nothing. A gene outside SKIN_NAMES cannot occur (resolveBody wraps it to 0-8).
+  const skin = recipe.skin === null ? undefined : SKIN_NAMES[recipe.skin];
   for (const rp of recipe.parts) {
     const p = place(rp);
     gaps.push(...p.gaps);
@@ -157,6 +161,14 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
       // Painted pixels go on a new frame object: the catalogue's frame is never changed.
       if (painted === null) gaps.push(`marks:${rp.partId}:${p.frameName}`);
       else frame = { ...frame, pixels: painted };
+    }
+    // The skin goes over the marks on every part in a mark slot, whether or not the part carries a mark. The frame's
+    // own layers are read, the marked pixels painted. Only a torso frame with nothing to paint (a translucent skin
+    // without its layer) is a gap; another part with nothing to paint is drawn as it is, silently.
+    if (skin !== undefined && MARK_SLOTS.includes(rp.slot)) {
+      const skinned = paintSkin(frame, frame.pixels, skin);
+      if (skinned !== null) frame = { ...frame, pixels: skinned };
+      else if (rp.slot === 'torso') gaps.push(`skin:${rp.partId}:${p.frameName}`);
     }
     blit(buffer, frame, p.x, p.y, false, rp.slot === 'eyes');
   }

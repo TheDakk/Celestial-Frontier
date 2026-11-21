@@ -388,6 +388,19 @@ describe('checkPack on planted faults: layers, iris ramps, leg-count names, the 
     expect(r.ok).toBe(false);
   });
 
+  it('a skin layer on a back part is an error', () => {
+    // The slot rule, now for skin layers: a back part takes no marks and no skin, so a layer named for a skin is an error.
+    const line = 'error: part quadruped/back/plates/small/v0: layers on a slot that takes no marks';
+    const back = 'part quadruped/back/plates/small/v0\nframe rest anchor=0,0\n2\n';
+    const bare = checkPack(planted('\npart quadruped/torso/fallback/small/v0', `\n${back}\npart quadruped/torso/fallback/small/v0`));
+    expect(bare.parseError).toBeNull();
+    expect(errorsOf(bare)).not.toContain(line);
+    const r = checkPack(planted('\npart quadruped/torso/fallback/small/v0', `\n${back}layer scaled\n1\n\npart quadruped/torso/fallback/small/v0`));
+    expect(r.parseError).toBeNull();
+    expect(errorsOf(r)).toContain(line);
+    expect(r.ok).toBe(false);
+  });
+
   it('a layer of the wrong size is a parse error', () => {
     const r = checkPack(planted('layer flow\n..3456789abc', 'layer flow\n..3456789ab', layered));
     expect(r.parseError).toMatch(/layer flow row width 11 differs from 12$/);
@@ -1177,6 +1190,14 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     // The torso, a limb and the head stay errors.
     expect(winged.filter((g) => g.startsWith('missing:quadruped/torso/') || g.startsWith('missing:quadruped/head/')).map(gapIsInfo)).toEqual([false, false]);
     expect(gapIsInfo('missing:quadruped/nearLimbs/leg/medium/v0')).toBe(false);
+  });
+
+  it('a skin: gap is information', () => {
+    expect(gapIsInfo('skin:quadruped/torso/sturdy/medium/v0:rest')).toBe(true);
+    expect(gapIsInfo('skin:fish/torso/shark/medium/v1:swim')).toBe(true);
+    // Only the skin: prefix: a gap that merely contains it stays an error.
+    expect(gapIsInfo('frame:skin:rest')).toBe(false);
+    expect(gapIsInfo('skins:quadruped/torso/sturdy/medium/v0:rest')).toBe(false);
   });
 
   it('a missing t0 and a missing pit are errors', () => {

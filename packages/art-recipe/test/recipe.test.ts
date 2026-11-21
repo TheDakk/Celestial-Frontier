@@ -302,11 +302,25 @@ describe('buildRoutedRecipe', () => {
     }
   });
 
-  it('carries the body\'s opacity, airborne state and theme, and the neutral rim and skin', () => {
+  it('carries the body\'s opacity, airborne state, theme and skin, and the neutral rim', () => {
     const jelly = buildRoutedRecipe({ ...base, body: 9 }, [], every);
-    expect([jelly.opacity, jelly.airborne, jelly.theme, jelly.rim, jelly.skin]).toEqual([82, false, 'venom', 0, null]);
+    expect([jelly.opacity, jelly.airborne, jelly.theme, jelly.rim, jelly.skin]).toEqual([82, false, 'venom', 0, 3]);
     const glider = buildRoutedRecipe({ ...base, loco: 3, skin: 7 }, [], every);
     expect([glider.opacity, glider.airborne]).toEqual([66, true]);
+  });
+
+  it('the routed skin is the gene, and null on a radial and on a species', () => {
+    // Body 0 a four-legged creature, 1 a crustacean, 4 a serpent, 9 a jelly, 15 a radial; skin genes 0 to 8, and 9 wraps to 0.
+    for (let skin = 0; skin <= 9; skin++) {
+      for (const body of [0, 1, 4, 9]) expect(buildRoutedRecipe({ ...base, body, skin }, [], every).skin, `body ${body} skin ${skin}`).toBe(skin % 9);
+      expect(buildRoutedRecipe({ ...base, body: 15, skin }, [], every).skin, `radial skin ${skin}`).toBeNull();
+      expect(buildRoutedRecipe({ ...base, body: 15, skin }, [], every).family).toBe('radial');
+      expect(buildRecipe({ ...base, skin }, [], full).skin).toBeNull();
+    }
+    // Outside fauna there is no skin gene to draw.
+    for (const kingdom of ['flora', 'fungi', 'microbe']) expect(buildRoutedRecipe({ kingdom, size: 2, skin: 2 }, [], every).skin, kingdom).toBeNull();
+    const species = parseCatalogueText(`${HEADER}${partText(q('torso', 'civet', 0))}\n${SCAFFOLD}\nscaffold quadruped/civet/medium origin=0,0\npose rest\nentry torso 0 rest 0 0\n\nspecies civet quadruped medium legs=0 eyes=0 iris=0 tail=0\n`);
+    expect(buildSpeciesRecipe('civet', species).skin).toBeNull();
   });
 
   it('is deeply equal on repeat calls, JSON-plain and frozen', () => {
