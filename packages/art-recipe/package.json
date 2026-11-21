@@ -8,5 +8,9 @@
     "@cf/art-format": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-speciestraits": "*"
+  },
+  "devDependencies": {
+    "@cf/art-testparts": "*",
+    "@cf/domain-genome": "*"
   }
 }
