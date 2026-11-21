@@ -791,6 +791,57 @@ const recorders = {
       breeding: { world: 'kaum', star: KAUM.star, planet: KAUM.planet, epoch: 0, cases: breeding, injectedOnly },
     };
   },
+  // Fixed fabrication plans of the opportunity package: the one planner that needs no Arc 2 capability.
+  // Its only clock is the injected active-play time; the receipt ordinal seeds generated-gear metadata.
+  // There is no random source: no case reads Math.random or a device clock.
+  opportunity: async (source) => {
+    const NAMES = ['_cardFactsSet', '_earthNamePass', 'GAL_KIND', 'planetThumb', 'starThumb', 'galaxyThumb',
+      'moonThumb', 'cometThumb', 'beltThumb', 'GAL_SPRITES', 'COSMIC_EPOCH', 'st', 'customNames'];
+    for (const name of NAMES) if (name in globalThis) throw new Error(`opportunity: ${name} must not be defined before recording`);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const o = await load('packages/domain/opportunity/src/index.ts');
+    const { resolveCF1WorldAddress } = await load('packages/scene/src/index.ts');
+    const { installCaptureHooks } = await load('packages/domain/descriptors/src/index.ts');
+    // The address resolver walks the current game's worldgen, which reads GAL_SPRITES.
+    installCaptureHooks();
+    const plain = (value) => JSON.parse(JSON.stringify(value));
+
+    // A world the current game's planner tests mine (its biome-vein world), for a state with extractions.
+    const world = { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3037235558, x: -897.1608293121681, y: -86.20030916528776 }, planet: { seed: 171668249 } };
+    const resolved = resolveCF1WorldAddress(world);
+    if (!resolved.ok) throw new Error(`opportunity: world did not resolve: ${resolved.reason}`);
+    const stateOf = (name) => (name === 'fresh' ? o.createEngineeringState() : o.migrateLegacyEngineeringState({
+      schema: o.LEGACY_ENGINEERING_SEED_MIRROR_SCHEMA, revision: 2, worlds: [{ seed: world.planet.seed, extractionsTaken: 3 }], stars: [], research: [],
+    }, o.createLegacyEngineeringSeedResolver({ worlds: [resolved.address], stars: [] })));
+    const ASSETS = {
+      plenty: { materials: { C: 4, Ni: 4 }, exceptionalMaterials: {}, itemCounts: { cell: 1, navcore: 1, servo: 2, chip: 1, wire: 1 }, stardust: 100, signatureIds: [] },
+      exceptional: { materials: { C: 4, Ni: 4 }, exceptionalMaterials: { C: 1, Ni: 2 }, itemCounts: {}, stardust: 0, signatureIds: [] },
+    };
+    const cases = [];
+    for (const [baseId, assets] of [['meteor', 'plenty'], ['meteor', 'exceptional'], ['earpiece', 'plenty'], ['autoext', 'plenty']]) {
+      for (const state of ['fresh', 'mined']) {
+        for (const activePlayMs of [0, 90000]) {
+          for (const receiptOrdinal of [4, 5]) {
+            const input = { baseId, assets, state, activePlayMs, receiptOrdinal };
+            const c = structuredClone(input);
+            const out = o.planFixedFabrication({ state: stateOf(c.state), baseId: c.baseId, assets: structuredClone(ASSETS[c.assets]), activePlay: { activePlayMs: c.activePlayMs }, receiptOrdinal: c.receiptOrdinal });
+            cases.push({ input, output: plain(out) });
+          }
+        }
+      }
+    }
+    for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`opportunity: ${name} was left defined`);
+    return {
+      freeGlobals: {
+        installCaptureHooks: 'called once before the first case: the address resolver reaches worldgen, which reads GAL_SPRITES',
+        COSMIC_EPOCH: 'not supplied', st: 'not supplied', customNames: 'not supplied',
+      },
+      injected: { clock: 'activePlayMs, given in every case input as activePlay.activePlayMs', random: 'none: the receipt ordinal, given in every input, seeds generated-gear metadata' },
+      world,
+      assets: ASSETS,
+      fabrication: cases,
+    };
+  },
 };
 
 function parseArgs(argv) {

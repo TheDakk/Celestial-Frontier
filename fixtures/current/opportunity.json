@@ -1,0 +1,3432 @@
+{
+ "freeGlobals": {
+  "installCaptureHooks": "called once before the first case: the address resolver reaches worldgen, which reads GAL_SPRITES",
+  "COSMIC_EPOCH": "not supplied",
+  "st": "not supplied",
+  "customNames": "not supplied"
+ },
+ "injected": {
+  "clock": "activePlayMs, given in every case input as activePlay.activePlayMs",
+  "random": "none: the receipt ordinal, given in every input, seeds generated-gear metadata"
+ },
+ "world": {
+  "galaxy": {
+   "seed": 999,
+   "x": 90,
+   "y": -60
+  },
+  "star": {
+   "seed": 3037235558,
+   "x": -897.1608293121681,
+   "y": -86.20030916528776
+  },
+  "planet": {
+   "seed": 171668249
+  }
+ },
+ "assets": {
+  "plenty": {
+   "materials": {
+    "C": 4,
+    "Ni": 4
+   },
+   "exceptionalMaterials": {},
+   "itemCounts": {
+    "cell": 1,
+    "navcore": 1,
+    "servo": 2,
+    "chip": 1,
+    "wire": 1
+   },
+   "stardust": 100,
+   "signatureIds": []
+  },
+  "exceptional": {
+   "materials": {
+    "C": 4,
+    "Ni": 4
+   },
+   "exceptionalMaterials": {
+    "C": 1,
+    "Ni": 2
+   },
+   "itemCounts": {},
+   "stardust": 0,
+   "signatureIds": []
+  }
+ },
+ "fabrication": [
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 4230393710
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":4230393710},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 802520216
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":802520216},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 4230393710
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":4230393710},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 802520216
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":802520216},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 2692248361
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":2692248361},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3490053362
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3490053362},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 2692248361
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":2692248361},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3490053362
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3490053362},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 4230393710
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":4230393710},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 802520216
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":802520216},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 4230393710
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":4230393710},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 802520216
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":802520216},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 2692248361
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":2692248361},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:strike",
+        "tier": 1,
+        "value": 0.05
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3490053362
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:strike\",\"tier\":1,\"value\":0.05},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3490053362},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:contact",
+        "tier": 1,
+        "value": 9
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 2692248361
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:contact\",\"tier\":1,\"value\":9},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":2692248361},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "meteor",
+    "assets": "exceptional",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "meteor",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "meteor",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "exceptionalMaterials": [
+        {
+         "id": "C",
+         "quantity": 1
+        },
+        {
+         "id": "Ni",
+         "quantity": 2
+        }
+       ],
+       "itemCounts": [],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "meteor",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": {
+        "affixId": "exceptional-v1:strike",
+        "tier": 1,
+        "value": 0.05
+       },
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3490053362
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:meteor\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:113:5d13c1cb\",\"recipe\":\"fixed-recipe-v1:358:dbd4fc4f\",\"result\":{\"baseId\":\"meteor\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"meteor\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"exceptionalMaterials\":[{\"id\":\"C\",\"quantity\":1},{\"id\":\"Ni\",\"quantity\":2}],\"itemCounts\":[],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"meteor\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":{\"affixId\":\"exceptional-v1:strike\",\"tier\":1,\"value\":0.05},\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3490053362},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 1734042765
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":1734042765},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3218634696
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3218634696},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 1734042765
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":1734042765},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3218634696
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3218634696},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3301916557
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3301916557},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 677750696
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":677750696},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 3301916557
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":3301916557},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "earpiece",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "earpiece",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "earpiece",
+      "outputKind": "gear-instance",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "chip",
+         "quantity": 1
+        },
+        {
+         "id": "wire",
+         "quantity": 1
+        }
+       ],
+       "stardust": 0
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": []
+      },
+      "gearGenerationPlan": {
+       "baseId": "earpiece",
+       "itemLevel": 1,
+       "quality": 0,
+       "rarityTier": 1,
+       "naturalAffixes": [],
+       "craftedModifier": null,
+       "drawback": null,
+       "upgrade": 0,
+       "sockets": [],
+       "generationSeed": 677750696
+      },
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:578:9698c37b\",\"sourceKey\":\"recipe:earpiece\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:367:ae46d199\",\"result\":{\"baseId\":\"earpiece\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"earpiece\",\"outputKind\":\"gear-instance\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"chip\",\"quantity\":1},{\"id\":\"wire\",\"quantity\":1}],\"stardust\":0},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[]},\"gearGenerationPlan\":{\"baseId\":\"earpiece\",\"itemLevel\":1,\"quality\":0,\"rarityTier\":1,\"naturalAffixes\":[],\"craftedModifier\":null,\"drawback\":null,\"upgrade\":0,\"sockets\":[],\"generationSeed\":677750696},\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "fresh",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 0
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:89:3332aba4\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":0}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 0
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 1
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:653:f10887f8\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":1}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 0,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 0
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 1
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:653:f10887f8\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":0,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":1}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 4,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 90000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 1
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":4,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:657:44ddc1fd\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":1}}}"
+   }
+  },
+  {
+   "input": {
+    "baseId": "autoext",
+    "assets": "plenty",
+    "state": "mined",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "output": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "fabricate-fixed",
+    "receiptOrdinal": 5,
+    "previousRevision": 2,
+    "nextRevision": 3,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 3,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3037235558,
+         "x": -897.16,
+         "y": -86.2,
+         "layer": "coarse",
+         "parentCell": {
+          "x": -22,
+          "y": -3
+         }
+        },
+        "planet": {
+         "seed": 171668249,
+         "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3037235558@-897.16,-86.2|p:171668249#0"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 90000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "baseId": "autoext",
+     "quote": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "craftable": true,
+      "alreadyBuilt": false,
+      "missingMaterials": [],
+      "missingParts": [],
+      "missingStardust": 0,
+      "missingPrerequisiteId": null,
+      "missingSignatureId": null
+     },
+     "arc2": {
+      "authority": "legacy-v1.8.9-items",
+      "baseId": "autoext",
+      "outputKind": "permanent-system",
+      "consume": {
+       "materials": [],
+       "exceptionalMaterials": [],
+       "itemCounts": [
+        {
+         "id": "cell",
+         "quantity": 1
+        },
+        {
+         "id": "navcore",
+         "quantity": 1
+        },
+        {
+         "id": "servo",
+         "quantity": 2
+        }
+       ],
+       "stardust": 40
+      },
+      "preservePrerequisiteId": null,
+      "preserveSignatureId": null,
+      "grantCount": 1,
+      "gearAxes": null,
+      "gearGenerationPlan": null,
+      "autoExtractorReanchoredWorlds": 1
+     }
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:657:44ddc1fd\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":1}}}"
+   }
+  }
+ ]
+}
