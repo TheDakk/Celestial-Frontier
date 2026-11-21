@@ -2,6 +2,10 @@
 # Quadruped parts: medium tier only, variant 0 only. Each head overlaps the torso's front by five columns and each tail
 # its back by five, so neither comes loose under any head or tail shift and any pose offset.
 # Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight; the composer writes 17-20 (iris) from an eye part's 5-8.
+# Format 2: every torso, head, tail and limb part has flow (one value per pixel of length) and spots (2x2 blobs) layers;
+# tail t1 also has a hand-drawn striped layer. Leg roles fore, hind and mid on both sides beside the shared leg; a back
+# part of each kind for each torso type, sitting on the torso's back point; tusks and horns for each head kind, both
+# hung from the head's feature point (horns above the head's front, tusks below it).
 palette
 colour 0 101010
 colour 1 5a4632
@@ -82,6 +86,36 @@ frame rest anchor=0,0 attach=head:32,3,tail:2,3,back:18,-1,far0:4,14,near0:2,14,
 222222222222222222222222222222222222
 222222222222222222222222222222222222
 abababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+layer spots
+....................................
+11.....22.....33.....44.....55......
+11.....22.....33.....44.....55......
+....................................
+....................................
+...66.....77.....88.....99.....aa...
+...66.....77.....88.....99.....aa...
+....................................
+....................................
+bb.....cc.....dd.....ee.....ff......
+bb.....cc.....dd.....ee.....ff......
+....................................
+....................................
+....................................
 
 part quadruped/torso/armored/medium/v0
 frame rest anchor=0,0 attach=head:34,3,tail:2,3,back:19,-1,far0:4,16,near0:2,16,far1:14,16,near1:12,16,far2:25,16,near2:23,16,far3:34,16,near3:32,16
@@ -101,6 +135,40 @@ frame rest anchor=0,0 attach=head:34,3,tail:2,3,back:19,-1,far0:4,16,near0:2,16,
 22222222222222222222222222222222222222
 22222222222222222222222222222222222222
 ababababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+123456789abcdef123456789abcdef12345678
+layer spots
+......................................
+11..........22..........33..........44
+11..........22..........33..........44
+......................................
+......................................
+...55..........66..........77.........
+...55..........66..........77.........
+......................................
+......................................
+88..........99..........aa..........bb
+88..........99..........aa..........bb
+......................................
+......................................
+...cc..........dd..........ee.........
+...cc..........dd..........ee.........
+......................................
 
 part quadruped/torso/stilt/medium/v0
 frame rest anchor=0,0 attach=head:26,3,tail:2,3,back:15,-1,far0:4,12,near0:2,12,far1:12,12,near1:10,12,far2:20,12,near2:18,12,far3:26,12,near3:24,12
@@ -116,6 +184,32 @@ frame rest anchor=0,0 attach=head:26,3,tail:2,3,back:15,-1,far0:4,12,near0:2,12,
 222222222222222222222222222222
 222222222222222222222222222222
 ababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+layer spots
+..............................
+11....22....33....44....55....
+11....22....33....44....55....
+..............................
+..............................
+...66....77....88....99....aa.
+...66....77....88....99....aa.
+..............................
+..............................
+bb....cc....dd....ee....ff....
+bb....cc....dd....ee....ff....
+..............................
 
 part quadruped/torso/tusked/medium/v0
 frame rest anchor=0,0 attach=head:30,3,tail:2,3,back:17,-1,far0:4,15,near0:2,15,far1:13,15,near1:11,15,far2:22,15,near2:20,15,far3:30,15,near3:28,15
@@ -134,6 +228,38 @@ frame rest anchor=0,0 attach=head:30,3,tail:2,3,back:17,-1,far0:4,15,near0:2,15,
 2222222222222222222222222222222222
 2222222222222222222222222222222222
 ababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+layer spots
+..................................
+11........22........33........44..
+11........22........33........44..
+..................................
+..................................
+...55........66........77.........
+...55........66........77.........
+..................................
+..................................
+88........99........aa........bb..
+88........99........aa........bb..
+..................................
+..................................
+...cc........dd........ee.........
+...cc........dd........ee.........
 
 part quadruped/torso/horned/medium/v0
 frame rest anchor=0,0 attach=head:28,3,tail:2,3,back:16,-1,far0:4,17,near0:2,17,far1:12,17,near1:10,17,far2:21,17,near2:19,17,far3:28,17,near3:26,17
@@ -154,6 +280,42 @@ frame rest anchor=0,0 attach=head:28,3,tail:2,3,back:16,-1,far0:4,17,near0:2,17,
 22222222222222222222222222222222
 22222222222222222222222222222222
 abababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+layer spots
+................................
+11........22........33........44
+11........22........33........44
+................................
+................................
+...55........66........77.......
+...55........66........77.......
+................................
+................................
+88........99........aa........bb
+88........99........aa........bb
+................................
+................................
+...cc........dd........ee.......
+...cc........dd........ee.......
+................................
+................................
 
 part quadruped/torso/squat/medium/v0
 frame rest anchor=0,0 attach=head:36,3,tail:2,3,back:20,-1,far0:4,18,near0:2,18,far1:15,18,near1:13,18,far2:26,18,near2:24,18,far3:36,18,near3:34,18
@@ -175,9 +337,47 @@ frame rest anchor=0,0 attach=head:36,3,tail:2,3,back:20,-1,far0:4,18,near0:2,18,
 2222222222222222222222222222222222222222
 2222222222222222222222222222222222222222
 abababababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+layer spots
+........................................
+11..........22..........33..........44..
+11..........22..........33..........44..
+........................................
+........................................
+...55..........66..........77...........
+...55..........66..........77...........
+........................................
+........................................
+88..........99..........aa..........bb..
+88..........99..........aa..........bb..
+........................................
+........................................
+...cc..........dd..........ee...........
+...cc..........dd..........ee...........
+........................................
+........................................
+........................................
 
 part quadruped/head/h0/medium/v0
-frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
 3333333333
 2552222222
 2222222222
@@ -186,9 +386,27 @@ frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6
 2222222222
 2222222222
 1111111111
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11...22...
+11...22...
+..........
+..........
+...33...44
+...33...44
+..........
 
 part quadruped/head/h1/medium/v0
-frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
 333333333333
 266622222222
 266622222222
@@ -197,9 +415,27 @@ frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye
 222222222222
 222222222222
 111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11...22...33
+11...22...33
+............
+............
+...44...55..
+...44...55..
+............
 
 part quadruped/head/h2/medium/v0
-frame rest anchor=0,4 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7
+frame rest anchor=0,4 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
 33333333333333
 27777222222222
 22222222222222
@@ -208,9 +444,27 @@ frame rest anchor=0,4 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,e
 22222222222222
 22222222222222
 11111111111111
+layer flow
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+layer spots
+..............
+11...22...33..
+11...22...33..
+..............
+..............
+...44...55....
+...44...55....
+..............
 
 part quadruped/head/h3/medium/v0
-frame rest anchor=0,5 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7
+frame rest anchor=0,5 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
 3333333333
 2882222222
 2882222222
@@ -221,9 +475,31 @@ frame rest anchor=0,5 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6
 2222222222
 2222222222
 1111111111
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11...22...
+11...22...
+..........
+..........
+...33...44
+...33...44
+..........
+..........
+..........
 
 part quadruped/head/h4/medium/v0
-frame rest anchor=0,5 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7
+frame rest anchor=0,5 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
 333333333333
 255522222222
 222222222222
@@ -234,9 +510,31 @@ frame rest anchor=0,5 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye
 222222222222
 222222222222
 111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11...22...33
+11...22...33
+............
+............
+...44...55..
+...44...55..
+............
+............
+............
 
 part quadruped/head/h5/medium/v0
-frame rest anchor=0,5 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7
+frame rest anchor=0,5 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
 33333333333333
 26666222222222
 26666222222222
@@ -247,9 +545,31 @@ frame rest anchor=0,5 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,e
 22222222222222
 22222222222222
 11111111111111
+layer flow
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+layer spots
+..............
+11...22...33..
+11...22...33..
+..............
+..............
+...44...55....
+...44...55....
+..............
+..............
+..............
 
 part quadruped/head/h6/medium/v0
-frame rest anchor=0,6 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7
+frame rest anchor=0,6 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
 3333333333
 2772222222
 2222222222
@@ -262,9 +582,35 @@ frame rest anchor=0,6 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6
 2222222222
 2222222222
 1111111111
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11...22...
+11...22...
+..........
+..........
+...33...44
+...33...44
+..........
+..........
+55...66...
+55...66...
+..........
 
 part quadruped/head/h7/medium/v0
-frame rest anchor=0,6 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7
+frame rest anchor=0,6 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
 333333333333
 288822222222
 288822222222
@@ -277,9 +623,35 @@ frame rest anchor=0,6 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye
 222222222222
 222222222222
 111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11...22...33
+11...22...33
+............
+............
+...44...55..
+...44...55..
+............
+............
+66...77...88
+66...77...88
+............
 
 part quadruped/head/h8/medium/v0
-frame rest anchor=0,6 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7
+frame rest anchor=0,6 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
 33333333333333
 25555222222222
 22222222222222
@@ -292,9 +664,35 @@ frame rest anchor=0,6 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,e
 22222222222222
 22222222222222
 11111111111111
+layer flow
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+123456789abcde
+layer spots
+..............
+11...22...33..
+11...22...33..
+..............
+..............
+...44...55....
+...44...55....
+..............
+..............
+66...77...88..
+66...77...88..
+..............
 
 part quadruped/head/h9/medium/v0
-frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
 33333333333
 26622222222
 26622222222
@@ -304,22 +702,65 @@ frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7
 22222222222
 22222222222
 11111111111
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11...22....
+11...22....
+...........
+...........
+...33...44.
+...33...44.
+...........
+...........
 
 part quadruped/tail/t1/medium/v0
 frame rest anchor=8,1
 222222222
 111111111
+layer flow
+123456789
+123456789
+layer spots
+11...22..
+11...22..
+layer striped
+c..c..c..
+.c..c..c.
 
 part quadruped/tail/t2/medium/v0
 frame rest anchor=10,1
 22222222222
 22222222222
 11111111111
+layer flow
+123456789ab
+123456789ab
+123456789ab
+layer spots
+11...22....
+11...22....
+...........
 
 part quadruped/tail/t3/medium/v0
 frame rest anchor=12,1
 2222222222222
 1111111111111
+layer flow
+123456789abcd
+123456789abcd
+layer spots
+11...22...33.
+11...22...33.
 
 part quadruped/tail/t4/medium/v0
 frame rest anchor=14,2
@@ -327,12 +768,30 @@ frame rest anchor=14,2
 232323232323232
 323232323232323
 121212121212121
+layer flow
+123456789abcdef
+123456789abcdef
+123456789abcdef
+123456789abcdef
+layer spots
+...............
+11...22...33...
+11...22...33...
+...............
 
 part quadruped/tail/t5/medium/v0
 frame rest anchor=16,1
 32323232323232323
 23232323232323232
 21212121212121212
+layer flow
+123456789abcdef12
+123456789abcdef12
+123456789abcdef12
+layer spots
+11...22...33...44
+11...22...33...44
+.................
 
 part quadruped/tail/t6/medium/v0
 frame rest anchor=11,2
@@ -341,6 +800,18 @@ frame rest anchor=11,2
 323232323232
 232323232323
 212121212121
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11...22...33
+11...22...33
+............
+............
 
 part quadruped/farLimbs/leg/medium/v0
 frame rest anchor=0,0
@@ -358,6 +829,36 @@ frame rest anchor=0,0
 2222
 1111
 1111
+layer flow
+1111
+2222
+3333
+4444
+5555
+6666
+7777
+8888
+9999
+aaaa
+bbbb
+cccc
+dddd
+eeee
+layer spots
+....
+11..
+11..
+....
+....
+22..
+22..
+....
+....
+33..
+33..
+....
+....
+....
 
 part quadruped/nearLimbs/leg/medium/v0
 frame rest anchor=0,0
@@ -375,6 +876,729 @@ frame rest anchor=0,0
 3333
 1111
 1111
+layer flow
+1111
+2222
+3333
+4444
+5555
+6666
+7777
+8888
+9999
+aaaa
+bbbb
+cccc
+dddd
+eeee
+layer spots
+....
+11..
+11..
+....
+....
+22..
+22..
+....
+....
+33..
+33..
+....
+....
+....
+
+part quadruped/farLimbs/fore/medium/v0
+frame rest anchor=0,0
+222.
+222.
+222.
+222.
+222.
+222.
+222.
+222.
+222.
+222.
+222.
+1111
+1111
+layer flow
+111.
+222.
+333.
+444.
+555.
+666.
+777.
+888.
+999.
+aaa.
+bbb.
+cccc
+dddd
+layer spots
+....
+11..
+11..
+....
+....
+22..
+22..
+....
+....
+33..
+33..
+....
+....
+
+part quadruped/farLimbs/hind/medium/v0
+frame rest anchor=0,0
+22222
+22222
+22222
+.222.
+.222.
+.222.
+.222.
+.222.
+.222.
+.222.
+.222.
+.222.
+1111.
+1111.
+layer flow
+11111
+22222
+33333
+.444.
+.555.
+.666.
+.777.
+.888.
+.999.
+.aaa.
+.bbb.
+.ccc.
+dddd.
+eeee.
+layer spots
+.....
+11...
+11...
+.....
+.....
+.22..
+.22..
+.....
+.....
+.33..
+.33..
+.....
+.....
+.....
+
+part quadruped/farLimbs/mid/medium/v0
+frame rest anchor=0,0
+222
+222
+222
+222
+222
+222
+222
+222
+222
+111
+111
+layer flow
+111
+222
+333
+444
+555
+666
+777
+888
+999
+aaa
+bbb
+layer spots
+...
+11.
+11.
+...
+...
+22.
+22.
+...
+...
+33.
+33.
+
+part quadruped/nearLimbs/fore/medium/v0
+frame rest anchor=0,0
+3333
+3333
+.333
+.333
+.333
+.333
+.333
+.333
+.333
+.333
+.333
+1111
+1111
+layer flow
+1111
+2222
+.333
+.444
+.555
+.666
+.777
+.888
+.999
+.aaa
+.bbb
+cccc
+dddd
+layer spots
+....
+.11.
+.11.
+....
+....
+.22.
+.22.
+....
+....
+.33.
+.33.
+....
+....
+
+part quadruped/nearLimbs/hind/medium/v0
+frame rest anchor=0,0
+3333
+3333
+3333
+3333
+.33.
+.33.
+.33.
+.33.
+.33.
+.33.
+.33.
+.33.
+.111
+.111
+layer flow
+1111
+2222
+3333
+4444
+.55.
+.66.
+.77.
+.88.
+.99.
+.aa.
+.bb.
+.cc.
+.ddd
+.eee
+layer spots
+....
+11..
+11..
+....
+....
+.22.
+.22.
+....
+....
+.33.
+.33.
+....
+....
+....
+
+part quadruped/nearLimbs/mid/medium/v0
+frame rest anchor=0,0
+333
+333
+333
+333
+333
+333
+333
+333
+333
+333
+111
+11.
+layer flow
+111
+222
+333
+444
+555
+666
+777
+888
+999
+aaa
+bbb
+cc.
+layer spots
+...
+11.
+11.
+...
+...
+22.
+22.
+...
+...
+33.
+33.
+...
+
+part quadruped/back/ridge-sturdy/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/ridge-armored/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/ridge-stilt/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/ridge-tusked/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/ridge-horned/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/ridge-squat/medium/v0
+frame rest anchor=4,2
+..6...6..
+.666.666.
+666666666
+
+part quadruped/back/mane-sturdy/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/mane-armored/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/mane-stilt/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/mane-tusked/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/mane-horned/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/mane-squat/medium/v0
+frame rest anchor=5,3
+2.2.2.2.2.2
+22222222222
+21212121212
+11111111111
+
+part quadruped/back/carapace-sturdy/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/carapace-armored/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/carapace-stilt/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/carapace-tusked/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/carapace-horned/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/carapace-squat/medium/v0
+frame rest anchor=6,2
+...7777777...
+.77777777777.
+8888888888888
+
+part quadruped/back/plates-sturdy/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/plates-armored/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/plates-stilt/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/plates-tusked/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/plates-horned/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/plates-squat/medium/v0
+frame rest anchor=5,2
+55.55.55.55
+55.55.55.55
+55555555555
+
+part quadruped/back/knobs-sturdy/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/knobs-armored/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/knobs-stilt/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/knobs-tusked/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/knobs-horned/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/knobs-squat/medium/v0
+frame rest anchor=4,1
+.3..3..3.
+333333333
+
+part quadruped/back/plume-sturdy/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/plume-armored/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/plume-stilt/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/plume-tusked/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/plume-horned/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/plume-squat/medium/v0
+frame rest anchor=2,5
+....6
+...66
+..66.
+.66..
+666..
+66666
+
+part quadruped/back/crystals-sturdy/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/back/crystals-armored/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/back/crystals-stilt/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/back/crystals-tusked/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/back/crystals-horned/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/back/crystals-squat/medium/v0
+frame rest anchor=3,4
+...c...
+..ccc.c
+c.ccccc
+ccccccc
+ccccccc
+
+part quadruped/headFeature/horns-h0/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h0/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h1/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h1/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h2/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h2/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h3/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h3/medium/v0
+frame rest anchor=0,-11
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h4/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h4/medium/v0
+frame rest anchor=0,-11
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h5/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h5/medium/v0
+frame rest anchor=0,-11
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h6/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h6/medium/v0
+frame rest anchor=0,-13
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h7/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h7/medium/v0
+frame rest anchor=0,-13
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h8/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h8/medium/v0
+frame rest anchor=0,-13
+cc.
+.c.
+.cc
+..c
+
+part quadruped/headFeature/horns-h9/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part quadruped/headFeature/tusks-h9/medium/v0
+frame rest anchor=0,-10
+cc.
+.c.
+.cc
+..c
 
 part quadruped/eyes/eye/medium/v0
 frame rest anchor=0,0
