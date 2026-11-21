@@ -44,8 +44,20 @@ describe('purity check', () => {
   it('examines files in nested folders under a domain src', () => {
     expect(run('Math.random()', 'packages/domain/x/src/sub/a.ts')).toEqual(['packages/domain/x/src/sub/a.ts: uses Math.random']);
   });
-  it('does not strip string literals', () => {
-    expect(run("const s = 'Date.now';")).toEqual([`${P}: uses Date.now`]);
+  it.each([
+    ['single-quoted', "const s = 'Date.now';", 'Date.now;'],
+    ['double-quoted', 'const s = "x = Math.random() * 3";', 'x = Math.random() * 3;'],
+    ['template', 'const s = `performance.now()`;', 'performance.now();'],
+    ['quoted', "const rows = [{ sourceLine: 'const d = new Date(0);' }];", 'const d = new Date(0);'],
+  ])('passes a forbidden name inside a %s string but fails the same text as code: %s', (_kind, inString, asCode) => {
+    expect(run(inString)).toEqual([]);
+    expect(run(asCode)).toHaveLength(1);
+  });
+  it('still flags a forbidden use inside a template substitution', () => {
+    expect(run('const s = `${Date.now()}`;')).toEqual([`${P}: uses Date.now`]);
+  });
+  it('still finds imports, whose specifiers are string literals', () => {
+    expect(run("const s = 'Math.random'; import { a } from '@cf/art-compose';")).toEqual([`${P}: imports an art package`]);
   });
   it('reports one message per reason per file', () => {
     expect(run('Math.random(); Math.random(); Date.now();')).toEqual([`${P}: uses Math.random`, `${P}: uses Date.now`]);

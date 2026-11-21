@@ -3,7 +3,7 @@ const REGEX_AFTER_WORD = new Set(['return', 'typeof', 'case', 'in', 'of', 'delet
 const WORD_CHAR = /[A-Za-z0-9_$]/;
 
 /**
- * A small tokenizer for the art packages. Returns `kept` (comments removed, regular-expression literals
+ * A small tokenizer for the purity check. Returns `kept` (comments removed, regular-expression literals
  * replaced by `RE`, string literals kept for import detection), `bare` (the same with the contents of
  * string and template text blanked, so only real code is left) and whether a `/` division operator occurs.
  * A `/` is a division when the previous significant token is an operand (identifier, number, `)` or `]`);

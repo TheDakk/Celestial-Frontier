@@ -93,9 +93,11 @@ export function checkPurity(files) {
       continue;
     }
     if (!DOMAIN_SRC.test(path)) continue;
-    const code = stripComments(text);
-    for (const [re, reason] of FORBIDDEN_USES) if (re.test(code)) problems.push(`${path}: ${reason}`);
-    const specs = importedSpecifiers(code);
+    // Forbidden uses are matched against code with comments and string text blanked (a table of quoted v1 lines
+    // is not a use); imports are found as before, in the comment-free text that keeps string literals.
+    const { bare } = scanCode(text);
+    for (const [re, reason] of FORBIDDEN_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
+    const specs = importedSpecifiers(stripComments(text));
     if (specs.some((s) => s.startsWith('@cf/art'))) problems.push(`${path}: imports an art package`);
     if (specs.some((s) => s === 'pixi.js')) problems.push(`${path}: imports pixi.js`);
   }
