@@ -167,23 +167,23 @@ function drawnCount(part) {
 }
 
 /**
- * A copy of the catalogue and recipe in which the recipe's part number k (from 0) has its own part id, drawn by
- * `paint(k, part)`: a function from a pixel value to the value drawn (a blank part keeps its place, so the parts that
- * hang from it still land where they do). Frames are made once per id, part number and kind of painting.
+ * A copy of the catalogue and recipe in which the recipe's part number k (from 0) has its own part id and is drawn
+ * as `mode(k)` says: 'label' draws every pixel as k + 1, 'blank' draws nothing (the part keeps its place, so the
+ * parts that hang from it still land where they do), 'real' draws the part as it is. Frames are made once per id.
  */
-function numberedCopy(recipe, catalogue, cache, kind, paint) {
+function numberedCopy(recipe, catalogue, cache, mode) {
   const parts = new Map();
   const numbered = recipe.parts.map((rp, k) => {
+    const how = mode(k);
+    const id = `${rp.partId}#${k}#${how}`;
     const part = catalogue.parts.get(rp.partId);
-    const map = part === undefined ? undefined : paint(k, part);
-    const id = `${rp.partId}#${k}#${map === undefined ? 'real' : kind}`;
     if (part !== undefined) {
       let made = cache.get(id);
       if (made === undefined) {
         const frames = Object.create(null);
         for (const name of Object.keys(part.frames)) {
           const f = part.frames[name];
-          frames[name] = map === undefined ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 ? 0 : map(v))) };
+          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 || how === 'blank' ? 0 : k + 1)) };
         }
         made = { ...part, id, frames };
         cache.set(id, made);
@@ -208,8 +208,7 @@ function numberedCopy(recipe, catalogue, cache, kind, paint) {
 function hiddenParts(recipe, pose, catalogue, cache) {
   const n = recipe.parts.length;
   const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.min(HIDDEN_MIN, drawnCount(part)); });
-  const label = (k) => () => k + 1;
-  const all = numberedCopy(recipe, catalogue, cache, 'n', (k) => label(k));
+  const all = numberedCopy(recipe, catalogue, cache, () => 'label');
   const top = assemble(all.recipe, pose, all.catalogue).buffer.pixels;
   const bottom = assemble({ ...all.recipe, parts: [...all.recipe.parts].reverse() }, pose, all.catalogue).buffer.pixels;
   const onTop = new Int32Array(n + 1);
@@ -228,10 +227,9 @@ function hiddenParts(recipe, pose, catalogue, cache) {
   let full;
   if (doubts > 0) {
     full = assemble(recipe, pose, catalogue).buffer.pixels;
-    const blank = () => 0;
-    const under = numberedCopy(recipe, catalogue, cache, 'b', (k) => (doubt[k + 1] === 1 ? blank : undefined));
+    const under = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + 1] === 1 ? 'blank' : 'real'));
     const beneath = assemble(under.recipe, pose, under.catalogue).buffer.pixels;
-    const onlyDoubt = numberedCopy(recipe, catalogue, cache, 'd', (k) => (doubt[k + 1] === 1 ? label(k) : blank));
+    const onlyDoubt = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + 1] === 1 ? 'label' : 'blank'));
     const lowestDoubt = assemble({ ...onlyDoubt.recipe, parts: [...onlyDoubt.recipe.parts].reverse() }, pose, onlyDoubt.catalogue).buffer.pixels;
     for (let i = 0; i < top.length; i++) {
       const t = top[i];
