@@ -1,8 +1,10 @@
-import { PIXEL_CHARS, PIXEL_TRANSPARENT, TIER_SIZE, type PartFrame, type SizeTier } from '@cf/art-format';
+import { PIXEL_ACCENT, PIXEL_CHARS, PIXEL_IRIS, PIXEL_TRANSPARENT, TIER_SIZE, type PartFrame, type SizeTier } from '@cf/art-format';
 
 // Copied once into plain locals: the per-pixel loops below then read no module binding (a large cost under the test runner).
 const TRANSPARENT = PIXEL_TRANSPARENT;
 const GLYPHS = PIXEL_CHARS;
+const ACCENT = PIXEL_ACCENT;
+const IRIS_SHIFT = PIXEL_IRIS - PIXEL_ACCENT;
 
 export interface PixelBuffer {
   w: number;
@@ -19,16 +21,18 @@ export function createBuffer(tier: SizeTier): PixelBuffer {
 /**
  * Copies a frame onto the target so the frame's anchor pixel lands on (x, y).
  * With mirror the frame is flipped left-to-right about the anchor column.
+ * With iris, source values 5-8 (the accent ramp) are written as 17-20 (the iris ramp); every other value is copied as is.
  * Source pixels of 0 never overwrite; destinations outside the canvas are dropped (never wrapped).
  */
-export function blit(target: PixelBuffer, frame: PartFrame, x: number, y: number, mirror = false): void {
+export function blit(target: PixelBuffer, frame: PartFrame, x: number, y: number, mirror = false, iris = false): void {
   const [ax, ay] = frame.anchor;
   for (let fy = 0; fy < frame.h; fy++) {
     const ty = y + fy - ay;
     if (ty < 0 || ty >= target.h) continue;
     for (let fx = 0; fx < frame.w; fx++) {
-      const value = frame.pixels[fy * frame.w + fx] ?? 0;
+      let value = frame.pixels[fy * frame.w + fx] ?? 0;
       if (value === TRANSPARENT) continue;
+      if (iris && value >= ACCENT && value < ACCENT + 4) value += IRIS_SHIFT;
       const tx = mirror ? x - (fx - ax) : x + fx - ax;
       if (tx < 0 || tx >= target.w) continue;
       target.pixels[ty * target.w + tx] = value;
@@ -58,7 +62,7 @@ export function hashBuffer(buffer: PixelBuffer): string {
   return (hash >>> 0).toString(16).padStart(8, '0');
 }
 
-/** The text pixel form, one line per row, no trailing newline; values above 16 are '?'. */
+/** The text pixel form, one line per row, no trailing newline; values above 20 are '?'. */
 export function toAscii(buffer: PixelBuffer): string {
   const lines: string[] = [];
   for (let y = 0; y < buffer.h; y++) {

@@ -122,10 +122,22 @@ describe('buildRecipe', () => {
     ]);
   });
 
+  it('picks an iris ramp from its own stream', () => {
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = { ...base, seed };
+      const r = buildRecipe(g, [], catalogueOf(fullIds()));
+      expect(r.ramps.iris).toBe('iris' + pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8));
+      seen.add(r.ramps.iris);
+    }
+    expect([...seen].sort()).toEqual(['iris0', 'iris1', 'iris2', 'iris3', 'iris4', 'iris5', 'iris6', 'iris7']);
+  });
+
   it('names scaffold, ramps, marking and glow', () => {
-    const r = buildRecipe({ ...base, lumin: true }, [], full);
+    const g = { ...base, lumin: true };
+    const r = buildRecipe(g, [], full);
     expect(r.scaffoldId).toBe('quadruped/sturdy/medium');
-    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under' });
+    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under', iris: `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}` });
     expect(r.marking.pattern).toBe(2);
     expect(r.glow).toBe(true);
     for (const n of [r.marking.dx, r.marking.dy, ...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);

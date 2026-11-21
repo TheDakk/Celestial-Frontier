@@ -2,7 +2,7 @@ import type { Catalogue, PartFrame, Pose, Scaffold, SlotName } from '@cf/art-for
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 
-// The recipe's ramps, marking and glow flag are not applied here: the buffer holds slot values 0-16 for a later display step.
+// The recipe's ramps, marking and glow flag are not applied here: the buffer holds slot values 0-20 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -104,7 +104,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   for (const rp of recipe.parts) {
     const p = place(rp);
     gaps.push(...p.gaps);
-    if (p.frame !== undefined) blit(buffer, p.frame, p.x, p.y);
+    if (p.frame !== undefined) blit(buffer, p.frame, p.x, p.y, false, rp.slot === 'eyes');
   }
   return { buffer, contact: pose?.contact ?? null, gaps, scaffold };
 }

@@ -1,7 +1,7 @@
 # Placeholder quadruped parts: plain blocks and bars, test inputs only, not game art.
 # Quadruped parts: medium tier only, variant 0 only. Each head overlaps the torso's front by five columns and each tail
 # its back by five, so neither comes loose under any head or tail shift and any pose offset.
-# Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight.
+# Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight; the composer writes 17-20 (iris) from an eye part's 5-8.
 palette
 colour 0 101010
 colour 1 5a4632
@@ -53,6 +53,14 @@ ramp c15 1 2 3 4
 ramp c15-under 1 2 3 4
 ramp c16 2 3 4 5
 ramp c16-under 2 3 4 5
+ramp iris0 5 6 7 8
+ramp iris1 6 7 8 9
+ramp iris2 7 8 9 10
+ramp iris3 8 9 10 11
+ramp iris4 9 10 11 12
+ramp iris5 3 4 5 6
+ramp iris6 11 12 13 14
+ramp iris7 12 13 14 15
 outline 0
 eye 13
 eyeHighlight 14

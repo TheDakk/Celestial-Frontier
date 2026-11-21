@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { colourTable } from '@cf/art-format';
 import { buildRecipe, RENDERER_VERSION } from '@cf/art-recipe';
 import { testCatalogue } from '@cf/art-testparts';
 import { buildReport, verdict, type ArtFixture, type Report } from '../src/report';
@@ -16,6 +17,21 @@ describe('diagnostics report', () => {
     expect(report.mismatches).toEqual([]);
     expect(report.rendererVersion).toBe(RENDERER_VERSION);
     expect(report.fixtureVersion).toBe(fixture.rendererVersion);
+  });
+
+  it("every recorded entry's four ramps are in the placeholder palette", () => {
+    expect(fixture.entries).toHaveLength(621);
+    for (const e of fixture.entries) {
+      const recipe = buildRecipe(e.genome, [], catalogue);
+      expect(colourTable(catalogue.palette, recipe.ramps).unknown).toEqual([]);
+    }
+  });
+
+  it('names the recipe iris ramp when the palette has no iris ramps', () => {
+    const ramps = Object.fromEntries(Object.entries(catalogue.palette.ramps).filter(([k]) => !k.startsWith('iris')));
+    const bare = { ...catalogue.palette, ramps };
+    const recipe = buildRecipe(fixture.entries[0]!.genome, [], catalogue);
+    expect(colourTable(bare, recipe.ramps).unknown).toEqual([recipe.ramps.iris]);
   });
 
   it('reports exactly one mismatch, with the same gaps, when one hash is altered', () => {

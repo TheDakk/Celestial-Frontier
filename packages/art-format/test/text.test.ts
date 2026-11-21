@@ -201,6 +201,9 @@ describe('parseCatalogueText: stricter checks', () => {
   it('rejects the outline value g in a part frame', () => {
     expect(thrown(`part ${ID}\nframe rest anchor=0,0\n11\n1g\n`)).toBe(`part ${ID} frame rest line 4: outline value is written by the composer`);
   });
+  it.each(['h', 'i', 'j', 'k'])('rejects %s in a part row', (c) => {
+    expect(thrown(`part ${ID}\nframe rest anchor=0,0\n11\n1${c}\n`)).toBe(`part ${ID} frame rest line 4: iris value is written by the composer`);
+  });
   it('rejects a second entry for the same slot and index in one pose, but not in another pose', () => {
     expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\nentry head 1 rest 0 0\nentry head 0 bite 1 1\n`))
       .toBe('scaffold quadruped/sturdy/small pose rest line 5: duplicate entry head 0');
@@ -293,6 +296,14 @@ describe('formatPart', () => {
     const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
       frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from([1, 16]), anchor: [0, 0], attach: {} } } };
     expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds the outline value, which only the composer writes');
+  });
+});
+
+describe('iris values', () => {
+  it('formatPart refuses a frame holding 17', () => {
+    const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
+      frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from([1, 17]), anchor: [0, 0], attach: {} } } };
+    expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds an iris value, which only the composer writes');
   });
 });
 

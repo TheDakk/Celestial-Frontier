@@ -1,4 +1,4 @@
-import { DRAW_ORDER, VARIANTS, partId } from '@cf/art-format';
+import { DRAW_ORDER, IRIS_RAMP_COUNT, VARIANTS, partId } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName } from '@cf/art-format';
 import { resolveAnatomy } from './resolve';
 import { artStream, identityKey, pick } from './streams';
@@ -9,7 +9,7 @@ export interface RecipePart { slot: SlotName; index: number; partId: string; sou
 export interface Recipe {
   version: number; identity: string; family: string; tier: SizeTier; scaffoldId: string;
   parts: readonly RecipePart[]; // in DRAW_ORDER, then by index
-  ramps: { primary: string; accent: string; underside: string };
+  ramps: { primary: string; accent: string; underside: string; iris: string };
   marking: { pattern: number; flip: boolean; dx: number; dy: number };
   shift: { head: readonly [number, number]; tail: readonly [number, number] }; // each component -1, 0 or 1
   glow: boolean; gaps: readonly string[];
@@ -56,6 +56,7 @@ function buildRecipeAt(
   const tailShift: [number, number] = [pick(stream('shift-tail-x'), 3) - 1, pick(stream('shift-tail-y'), 3) - 1];
   // ramp-warmth is drawn only to reserve the stream; it is not stored in the recipe in this milestone.
   pick(stream('ramp-warmth'), 3);
+  const iris = pick(stream('iris'), IRIS_RAMP_COUNT);
 
   const torsoKind = a.torso === '' ? 'body' : a.torso;
   const wanted: { slot: SlotName; index: number; kind: string; variant: number }[] = [];
@@ -93,7 +94,7 @@ function buildRecipeAt(
     version, identity, family: a.family, tier: a.tier,
     scaffoldId: `${a.family}/${torsoKind}/${a.tier}`,
     parts,
-    ramps: { primary: `c${a.colour}`, accent: `c${a.accent}`, underside: `c${a.colour}-under` },
+    ramps: { primary: `c${a.colour}`, accent: `c${a.accent}`, underside: `c${a.colour}-under`, iris: `iris${iris}` },
     marking: { pattern: a.pattern, flip, dx, dy },
     shift: { head: headShift, tail: tailShift },
     glow: a.glow, gaps,

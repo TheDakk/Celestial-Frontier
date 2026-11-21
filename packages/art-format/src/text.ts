@@ -1,4 +1,4 @@
-import { PIXEL_CHARS, PIXEL_OUTLINE } from './pixels';
+import { PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
 import { DRAW_ORDER, LAYER_NAMES } from './types';
 import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
 
@@ -166,6 +166,7 @@ export function parseCatalogueText(text: string): Catalogue {
         const v = PIXEL_CHARS.indexOf(c);
         if (v < 0) throw new Error(`${where}: unknown pixel character '${c}'`);
         if (v === PIXEL_OUTLINE) throw new Error(`${where}: outline value is written by the composer`);
+        if (v >= PIXEL_IRIS) throw new Error(`${where}: iris value is written by the composer`);
         row.push(v);
       }
       if (frame.w < 0) frame.w = row.length;
@@ -325,6 +326,7 @@ export function formatPart(part: Part): string {
     if (!nameOk(name)) fail(`frame name ${name} is not a valid name`);
     if (f.w <= 0 || f.h <= 0) fail(`frame ${name} is ${f.w}x${f.h}, which has no pixels`);
     if (f.pixels.includes(PIXEL_OUTLINE)) fail(`frame ${name} holds the outline value, which only the composer writes`);
+    if (f.pixels.some((v) => v >= PIXEL_IRIS)) fail(`frame ${name} holds an iris value, which only the composer writes`);
     if (f.pixels.length !== f.w * f.h) fail(`frame ${name} has ${f.pixels.length} pixels, expected ${f.w * f.h}`);
     for (const k of Object.keys(f.attach)) if (!nameOk(k)) fail(`attach name ${k} is not a valid name`);
     const attach = Object.entries(f.attach).map(([k, [x, y]]) => `${k}:${x},${y}`).join(',');
