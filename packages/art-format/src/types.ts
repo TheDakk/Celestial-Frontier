@@ -20,7 +20,7 @@ export function partId(family: string, slot: SlotName, kind: string, tier: SizeT
 }
 
 export function tierForSize(sizeGene: number): Exclude<SizeTier, 'guardian'> {
-  const g = Math.floor(sizeGene);
+  const g = Number.isFinite(sizeGene) ? Math.floor(sizeGene) : 0; // NaN and the infinities count as gene 0
   const wrapped = ((g % 6) + 6) % 6;
   if (wrapped < 2) return 'small';
   if (wrapped < 4) return 'medium';
