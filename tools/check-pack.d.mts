@@ -1,5 +1,6 @@
 export interface CheckedCreature {
   scaffold: string;
+  /** The genome sampled, or `{ species: <key> }` for a named species. */
   genome: Record<string, unknown>;
   pose: string;
   /** Set when the creature was composed with a forced variant: that variant's part id. */
@@ -28,6 +29,8 @@ export interface PackSummary {
   byTier: Record<string, number>;
   scaffolds: number;
   fallbacks: number;
+  /** Named species (catalogue `species` lines). */
+  species: number;
   colours: number;
   ramps: number;
 }

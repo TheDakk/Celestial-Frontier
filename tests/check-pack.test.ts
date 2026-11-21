@@ -807,3 +807,129 @@ describe('check-pack command line', () => {
     }
   });
 });
+
+// A named species beside the good pack: its own torso, head and tail (kind civet), the shared legs and eye, its own
+// scaffold and ramps. The torso and head are primary shades 2 and 3, so the species' own neck join is quiet, while
+// its head sits two shade steps from the sturdy torso (shades 1 and 0): a sign if it were ever paired with it.
+const CIVET_RAMPS = 'ramp civet 0 1 1 1\nramp civet-accent 0 1 1 1\nramp civet-under 0 1 1 1\n';
+const CIVET_PARTS = `
+species civet quadruped small legs=4 eyes=2 iris=0 tail=1
+
+part quadruped/torso/civet/small/v0
+frame rest anchor=0,0 attach=head:10,1,tail:1,1,far0:0,5,far1:3,5,near0:1,5,near1:4,5
+333333333333
+333333333333
+333333333333
+333333333333
+333333333333
+444444444444
+
+part quadruped/head/civet/small/v0
+frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1
+444444
+444444
+444444
+444444
+444444
+
+part quadruped/tail/civet/small/v0
+frame rest anchor=4,0
+33333
+44444
+`;
+const CIVET_SCAFFOLD = SCAFFOLD.replace('quadruped/sturdy/small', 'quadruped/civet/small').replace(/fallback .*\n/, '');
+const WITH_CIVET = planted('outline 0\n', `${CIVET_RAMPS}outline 0\n`, PALETTE) + PARTS + SCAFFOLD + CIVET_PARTS + CIVET_SCAFFOLD;
+const CIVET_ID = 'quadruped/civet/small';
+
+describe('checkPack on a named species', () => {
+  it('a good pack plus a complete small species checks OK and counts it', () => {
+    const base = checkPack(GOOD);
+    const r = checkPack(WITH_CIVET);
+    expect(errorsOf(r)).toEqual([]);
+    expect(r.ok).toBe(true);
+    expect(r.summary).toMatchObject({ species: 1, scaffolds: 2 });
+    expect(base.summary).toMatchObject({ species: 0 });
+    expect(formatReport(r).split('\n')[2]).toBe('scaffolds: 2, fallbacks: 1, species: 1, palette colours: 2, ramps: 11');
+    // Composed once in every pose the scaffold defines, and its own neck join is quiet.
+    expect(r.composed).toBe(base.composed + 7);
+    expect(r.neck).toEqual([]);
+  });
+
+  it('a species line with no scaffold is an error', () => {
+    expect(checkPack(WITH_CIVET).unreachable).toEqual([]);
+    const r = checkPack(WITH_CIVET.replace(CIVET_SCAFFOLD, ''));
+    expect(r.unreachable).toEqual([`species civet: no scaffold ${CIVET_ID}`]);
+    expect(errorsOf(r)).toContain(`error: species civet: no scaffold ${CIVET_ID}`);
+    expect(r.ok).toBe(false);
+  });
+
+  it('a species ramp the palette lacks is an error', () => {
+    expect(checkPack(WITH_CIVET).structure).toEqual([]);
+    const r = checkPack(planted('ramp civet-under 0 1 1 1\n', '', WITH_CIVET));
+    expect(r.structure).toEqual(['species civet: palette has no ramp civet-under']);
+    expect(r.ok).toBe(false);
+    const iris = checkPack(planted('iris=0', 'iris=7', planted('ramp iris7 0 1 0 1\n', 'ramp iris7x 0 1 0 1\n', WITH_CIVET)));
+    expect(iris.structure).toContain('species civet: palette has no ramp iris7');
+  });
+
+  it('a missing species head is an error gap', () => {
+    const r = checkPack(planted('part quadruped/head/civet/small/v0', 'part quadruped/head/civet/small/v1', WITH_CIVET));
+    expect(r.gaps.find((g) => g.gap === 'missing:quadruped/head/civet/small/v0')).toMatchObject({ count: 7, error: true });
+    expect(r.ok).toBe(false);
+    expect(checkPack(WITH_CIVET).gaps.some((g) => g.gap.includes('civet'))).toBe(false);
+  });
+
+  it('a species touching the canvas edge is an error, reported by its key', () => {
+    expect(checkPack(WITH_CIVET).edge).toEqual([]);
+    const r = checkPack(planted(`scaffold ${CIVET_ID} origin=16,12`, `scaffold ${CIVET_ID} origin=2,12`, WITH_CIVET));
+    expect(r.edge.length).toBeGreaterThan(0);
+    expect(r.edge.every((e) => e.scaffold === CIVET_ID && e.genome['species'] === 'civet')).toBe(true);
+    expect(errorsOf(r).find((l) => l.startsWith(`error: touches the canvas edge on ${CIVET_ID}`))).toContain('e.g. species civet pose rest');
+    expect(r.ok).toBe(false);
+  });
+
+  it('a species head is not sampled as a generated head: the generated counts are the same with and without it', () => {
+    const without = checkPack(planted('outline 0\n', `${CIVET_RAMPS}outline 0\n`, PALETTE) + PARTS + SCAFFOLD);
+    const r = checkPack(WITH_CIVET);
+    expect(r.variants).toBe(without.variants);
+    expect(r.composed).toBe(without.composed + 7);
+    expect(r.gaps.map((g) => g.gap).sort()).toEqual(without.gaps.map((g) => g.gap).sort());
+    expect(r.neck).toEqual(without.neck);
+    // With two variants of each species part, none is forced into a generated creature either.
+    const twice = (text: string): string => text.replace(/part quadruped\/(torso|head|tail)\/civet\/small\/v0\n[^]*?\n\n/g, (block) => `${block}${block.replace('/v0\n', '/v1\n')}`);
+    const v1 = checkPack(twice(WITH_CIVET));
+    expect(v1.summary?.parts).toBe(r.summary!.parts + 3);
+    expect(v1.variants).toBe(without.variants);
+  });
+
+  it('a species head is checked at the neck against its own torso only, at its own leg count and no shift', () => {
+    // The species torso drawn as the sturdy one (shades 1 and 0): two steps from its head.
+    const r = checkPack(planted('333333333333\n333333333333\n333333333333\n333333333333\n333333333333\n444444444444\n', TORSO_ROWS, WITH_CIVET));
+    expect(r.neck.map((n) => `${n.head} on ${n.torso} x${n.cases}`)).toEqual(['quadruped/head/civet/small/v0 on quadruped/torso/civet/small/v0 x7']);
+  });
+
+  it('accepts fore-<key> legs once the species scaffold exists', () => {
+    const legs = (text: string): string => `${text}\npart quadruped/farLimbs/fore-civet/small/v0\nframe rest anchor=0,0\n33\n33\n33\n33\n33\n44\n\npart quadruped/nearLimbs/fore-civet/small/v0\nframe rest anchor=0,0\n33\n33\n33\n33\n33\n44\n`;
+    const r = checkPack(legs(WITH_CIVET));
+    expect(r.unreachable).toEqual([]);
+    expect(r.ok).toBe(true);
+    const lost = checkPack(legs(WITH_CIVET.replace(CIVET_SCAFFOLD, '')));
+    expect(lost.unreachable.filter((u) => u.includes("a leg named 'fore-civet'"))).toHaveLength(2);
+  });
+
+  it('a species torso and head need only the attach points the species uses', () => {
+    // The complete species above has no back, far2, far3, near2, near3 or eye2-eye7 points and checks OK; dropping one it uses is an error.
+    const r = checkPack(planted(',near1:4,5\n', '\n', WITH_CIVET));
+    expect(r.structure).toContain('part quadruped/torso/civet/small/v0 frame rest: missing attach point near1');
+    const eye = checkPack(planted('attach=eye0:1,1,eye1:2,1\n444444', 'attach=eye0:1,1\n444444', WITH_CIVET));
+    expect(eye.structure).toContain('part quadruped/head/civet/small/v0 frame rest: missing attach point eye1');
+    const tail = checkPack(planted(',tail:1,1,far0', ',far0', planted('tail=1', 'tail=0', WITH_CIVET)));
+    expect(tail.structure).toEqual([]);
+  });
+
+  it('a species key that is a torso type of its family is an error', () => {
+    const r = checkPack(`${WITH_CIVET}\nspecies stilt quadruped small legs=4 eyes=2 iris=0 tail=1\n`);
+    expect(r.structure).toContain('species stilt: key is a torso type of quadruped');
+    expect(checkPack(WITH_CIVET).structure).toEqual([]);
+  });
+});

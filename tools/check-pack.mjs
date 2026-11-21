@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
+const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -46,6 +46,8 @@ const LEG_COUNT_POINTS = new Map(LIMB_COUNTS.filter((n) => n > 0).flatMap((n) =>
 const GENES_FOR_TIER = { small: { size: 0 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 5, apex: 12 } };
 const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y]));
 const HEAD_SHIFTS = SHIFTS.map((s) => ({ head: s, tail: [0, 0] }));
+/** A named species has no seeded shift. */
+const NO_SHIFT = [{ head: [0, 0], tail: [0, 0] }];
 const TAIL_SHIFTS = SHIFTS.map((s) => ({ head: [0, 0], tail: s }));
 const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail })));
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
@@ -83,7 +85,9 @@ export const SAMPLED =
   'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
   'also at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for. ' +
   'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures. ' +
-  'A marks: gap is also listed, as x0, for every frame a pose can show at any leg count that no sampled creature drew.';
+  'A marks: gap is also listed, as x0, for every frame a pose can show at any leg count that no sampled creature drew. ' +
+  'A named species is composed on its own scaffold in every pose it defines, once (no seeded choices), and its head is checked at the neck against its own torso only; ' +
+  'its parts take no part in the sampling above.';
 
 /**
  * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
@@ -115,11 +119,31 @@ function genomeFor(scaffold) {
   return undefined;
 }
 
-/** Gene values whose kind (`h3`, `t2`) has a part at this family and tier. */
+/** Every `<family>/<torso type>` the gene table gives (`body` for a family with none): a species key may not be one of them. */
+const GENERATED_TORSOS = new Set([0, 4].flatMap((loco) => Array.from({ length: 16 }, (_, body) => {
+  const a = resolveAnatomy({ kingdom: 'fauna', body, loco });
+  return `${a.family}/${torsoKindOf(a)}`;
+})));
+
+/**
+ * Whether a part belongs to a named species of its family and tier: a torso, head or tail of kind `<key>`, or a leg of
+ * kind `<role>-<key>`. Such a part is never drawn by a generated creature.
+ */
+function isSpeciesPart(catalogue, part) {
+  const own = (key) => { const s = catalogue.species.get(key); return s !== undefined && s.family === part.family && s.tier === part.tier; };
+  if (part.slot === 'torso' || part.slot === 'head' || part.slot === 'tail') return own(part.kind);
+  if (part.slot === 'farLimbs' || part.slot === 'nearLimbs') {
+    const dash = part.kind.indexOf('-');
+    return dash > 0 && ['fore', 'hind', 'mid'].includes(part.kind.slice(0, dash)) && own(part.kind.slice(dash + 1));
+  }
+  return false;
+}
+
+/** Gene values whose kind (`h3`, `t2`) has a part at this family and tier; a species part is not a generated kind. */
 function kindsFor(catalogue, scaffold, slot, letter, length) {
   const genes = new Set();
   for (const part of catalogue.parts.values()) {
-    if (part.family !== scaffold.family || part.slot !== slot || part.tier !== scaffold.tier) continue;
+    if (part.family !== scaffold.family || part.slot !== slot || part.tier !== scaffold.tier || isSpeciesPart(catalogue, part)) continue;
     const m = new RegExp(`^${letter}(\\d+)$`).exec(part.kind);
     if (m && Number(m[1]) < length) genes.add(Number(m[1]));
   }
@@ -395,17 +419,20 @@ function layerProblems(where, frame) {
 
 /** The limbs a creature with `legs` legs draws on each side: far n >> 1, near the rest (as buildRecipe splits them). */
 const sideCount = (slot, legs) => (slot === 'farLimbs' ? legs >> 1 : legs - (legs >> 1));
+/** The plain leg attach points a creature with `legs` legs hangs its legs from. */
+const speciesLegPoints = (legs) => [...Array.from({ length: sideCount('farLimbs', legs) }, (_, i) => `far${i}`), ...Array.from({ length: sideCount('nearLimbs', legs) }, (_, i) => `near${i}`)];
 
 /**
  * Every `marks:<part id>:<frame>` gap a scaffold's creatures can meet, read from the catalogue without composing: for
  * each mark slot, leg count, index the slot has at that count and pose, the frame each part the composer could ask
  * for there would show (poseEntryFor, frameNameFor), when that frame has no layer serving some pattern. The parts are
  * those of the scaffold's family, tier and slot: the torso of its own kind, heads h0 to h9, tails t1 to t6, and limbs
- * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side.
+ * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side. Species parts are left out:
+ * a species is plain.
  */
 function marksGapsOf(catalogue, scaffold, torsoKind) {
   const found = new Set();
-  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier);
+  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier && !isSpeciesPart(catalogue, p));
   const roleHeld = (slot, kind) => own.some((p) => p.slot === slot && p.kind === kind && p.variant === 0);
   const unserved = new Map();
   const lacksLayer = (frame) => {
@@ -446,8 +473,9 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
 /**
  * Problems a reader can see without composing: attach points (head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
- * can ask for), layers, the palette's iris ramps (some but not all), poses and their leg-count entries, contact points,
- * fallbacks.
+ * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
+ * but not all), species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
+ * contact points, fallbacks.
  */
 function structureProblems(catalogue) {
   const problems = [];
@@ -467,8 +495,12 @@ function structureProblems(catalogue) {
       }
     }
     // The eyeless head never carries eyes, so it needs no eye points. Only the plain leg points are required: they are the fallback.
+    // A species torso and head need only the points the species uses: head, tail when it has one, its legs; its eyes.
+    const species = isSpeciesPart(catalogue, part) ? catalogue.species.get(part.kind) : undefined;
     const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}/${part.kind}`) ? ['feature'] : [];
-    const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
+    const required = species !== undefined
+      ? (part.slot === 'torso' ? ['head', ...(species.tail ? ['tail'] : []), ...speciesLegPoints(species.legs)] : part.slot === 'head' ? HEAD_POINTS.slice(0, species.eyes) : [])
+      : part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
     if (required.length === 0) continue;
     for (const name of frames) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));
@@ -478,6 +510,12 @@ function structureProblems(catalogue) {
   // A palette with none of the iris ramps is today's format (information, see checkPack); with some, every one must be there.
   if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
     for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
+  }
+  for (const species of catalogue.species.values()) {
+    if (GENERATED_TORSOS.has(`${species.family}/${species.key}`)) problems.push(`species ${species.key}: key is a torso type of ${species.family}`);
+    for (const ramp of [species.key, `${species.key}-accent`, `${species.key}-under`, `iris${species.iris}`]) {
+      if (!Object.hasOwn(catalogue.palette.ramps, ramp)) problems.push(`species ${species.key}: palette has no ramp ${ramp}`);
+    }
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
@@ -519,11 +557,11 @@ function frameOrigin(recipe, k, pose, catalogue, cache) {
  * are assembled at their real places (the head is placed on the torso, then the torso is left undrawn). A join pair is a
  * head pixel and a 4-adjacent torso pixel the head does not cover, both ramp values (1-12); it breaks the rule when their
  * shade steps (position in the ramp, so pixels of different ramps compare by position) differ by more than one.
- * Returns, per head id with a breach: { pixels: distinct offending head pixels, counted in the head frame's own
- * coordinates (frame, x, y); cases: the (pose, shift, leg count) cases with a breach; example: the first breaching pair,
- * each pixel in its own part's frame coordinates }.
+ * `shifts` are the head shifts tried (a named species has none). Returns, per head id with a breach: { pixels: distinct
+ * offending head pixels, counted in the head frame's own coordinates (frame, x, y); cases: the (pose, shift, leg count)
+ * cases with a breach; example: the first breaching pair, each pixel in its own part's frame coordinates }.
  */
-function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, cache) {
+function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, cache, shifts = HEAD_SHIFTS) {
   const found = new Map();
   const torsoPart = catalogue.parts.get(torsoId);
   for (const legs of legCounts) {
@@ -540,7 +578,7 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
       for (const headId of headIds) {
         const headPart = catalogue.parts.get(headId);
         const two = pairOf(headId);
-        for (const shift of HEAD_SHIFTS) {
+        for (const shift of shifts) {
           const headOnly = numberedCopy({ ...two, shift }, catalogue, cache, (k) => (k === 0 ? 'blank' : 'real'));
           const { w, pixels: hp } = assemble(headOnly.recipe, pose, headOnly.catalogue).buffer;
           let headAt;
@@ -595,6 +633,7 @@ export function checkPack(text) {
     byTier: countBy(parts, (p) => p.tier),
     scaffolds: catalogue.scaffolds.size,
     fallbacks: catalogue.fallbacks.size,
+    species: catalogue.species.size,
     colours: catalogue.palette.colours.length,
     ramps: Object.keys(catalogue.palette.ramps).length,
   };
@@ -619,20 +658,20 @@ export function checkPack(text) {
     if (!named) unreachable.push(`part ${part.id}: no creature asks for a leg named '${part.kind}' (leg, fore, hind, mid, or one of those with -<torso type> for a torso type that has a scaffold at this tier)`);
   }
 
+  // A species is drawn on scaffold <family>/<key>/<tier>; without it the species is never drawn.
+  const speciesByScaffold = new Map();
+  for (const species of catalogue.species.values()) {
+    const id = `${species.family}/${species.key}/${species.tier}`;
+    if (catalogue.scaffolds.has(id)) speciesByScaffold.set(id, species);
+    else unreachable.push(`species ${species.key}: no scaffold ${id}`);
+  }
+
+  // A species part type with more than one variant is never forced: no generated creature draws it (the forced pass skips
+  // a type its creature does not reach), and a species draws v0 only.
   const variantGroups = variantsByType(catalogue);
   let variants = 0;
   for (const scaffold of catalogue.scaffolds.values()) {
-    const genes = genomeFor(scaffold);
-    if (genes === undefined) {
-      unreachable.push(`scaffold ${scaffold.id}: no fauna genome resolves to it, so the renderer never uses it`);
-      continue;
-    }
-    const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
-    const someHeads = heads.length > 0 ? heads : [0];
-    const realTails = kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0);
-    const tails = [0, ...realTails];
     const poses = Object.keys(scaffold.poses);
-    const genomeOf = (head, tail, limbs, eyes, pattern = 0, skin = BASE_SKIN) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern, skin, color: 0, accent: 0, lumin: false });
 
     /** Composes one recipe in one pose, counting its gaps; a compose error is recorded and gives undefined. */
     const composeOnce = (recipe, pose) => {
@@ -671,6 +710,32 @@ export function checkPack(text) {
         }
       }
     };
+
+    const genes = genomeFor(scaffold);
+    if (genes === undefined) {
+      // A named species: its one recipe in every pose (gaps, edge, detached and hidden parts, compose failures; it has no
+      // shift), and its head at the neck against its own torso, at its own leg count.
+      const species = speciesByScaffold.get(scaffold.id);
+      if (species === undefined) {
+        unreachable.push(`scaffold ${scaffold.id}: no fauna genome resolves to it, so the renderer never uses it`);
+        continue;
+      }
+      const recipe = buildSpeciesRecipe(species.key, catalogue);
+      check({ species: species.key }, recipe, []);
+      const torso = recipe.parts.find((p) => p.slot === 'torso');
+      const head = recipe.parts.find((p) => p.slot === 'head');
+      if (torso !== undefined && head !== undefined) {
+        for (const n of neckJoins(catalogue, scaffold, torso.partId, [head.partId], [species.legs], () => recipe, numberedFrames, NO_SHIFT)) {
+          neck.push({ head: n.head, torso: torso.partId, pixels: n.pixels, cases: n.cases, example: n.example });
+        }
+      }
+      continue;
+    }
+    const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
+    const someHeads = heads.length > 0 ? heads : [0];
+    const realTails = kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0);
+    const tails = [0, ...realTails];
+    const genomeOf = (head, tail, limbs, eyes, pattern = 0, skin = BASE_SKIN) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern, skin, color: 0, accent: 0, lumin: false });
 
     // Gaps, edge and own-shift connectivity: every head x every tail and no tail x limbs genes 0-5 at eight eyes,
     // plus every eyes gene for each head.
@@ -761,7 +826,7 @@ export function checkPack(text) {
     // The neck join: every head of this family and tier with every variant of this scaffold's torso, at four legs and at
     // every leg count a legs= entry for the torso or the head names.
     const neckLegs = [4, ...new Set(Object.values(scaffold.poses).flatMap((pose) => pose.entries.filter((e) => e.legs !== undefined && e.legs !== 4 && (e.slot === 'torso' || e.slot === 'head')).map((e) => e.legs)))];
-    const ofScaffold = (slot) => parts.filter((p) => p.family === scaffold.family && p.slot === slot && p.tier === scaffold.tier && (slot !== 'torso' || p.kind === torsoKind));
+    const ofScaffold = (slot) => parts.filter((p) => p.family === scaffold.family && p.slot === slot && p.tier === scaffold.tier && (slot !== 'torso' || p.kind === torsoKind) && !isSpeciesPart(catalogue, p));
     const neckHeads = ofScaffold('head').map((p) => p.id);
     for (const torso of ofScaffold('torso')) {
       if (neckHeads.length === 0) break;
@@ -786,7 +851,7 @@ const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).
 const genes = (g) => `body ${g.body} loco ${g.loco} size ${g.size}${g.apex === undefined ? '' : ` apex ${g.apex}`} head ${g.head} tail ${g.tail} limbs ${g.limbs} eyes ${g.eyes}`;
 const pair = ([x, y]) => `${x},${y}`;
 const shiftText = (s) => `head ${pair(s.head)} tail ${pair(s.tail)}`;
-const example = (e) => `${genes(e.genome)} pose ${e.pose}${e.shift === undefined ? '' : ` shift ${shiftText(e.shift)}`}${e.variant === undefined ? '' : ` with variant ${e.variant}`}`;
+const example = (e) => `${e.genome.species !== undefined ? `species ${e.genome.species}` : genes(e.genome)} pose ${e.pose}${e.shift === undefined ? '' : ` shift ${shiftText(e.shift)}`}${e.variant === undefined ? '' : ` with variant ${e.variant}`}`;
 const unique = (values) => [...new Set(values)];
 
 /** Items grouped by key, in first-seen order. */
@@ -808,7 +873,7 @@ export function formatReport(report) {
   const s = report.summary;
   const lines = [
     `parts: ${s.parts} (by family: ${compact(s.byFamily)}; by slot: ${compact(s.bySlot)}; by tier: ${compact(s.byTier)})`,
-    `scaffolds: ${s.scaffolds}, fallbacks: ${s.fallbacks}, palette colours: ${s.colours}, ramps: ${s.ramps}`,
+    `scaffolds: ${s.scaffolds}, fallbacks: ${s.fallbacks}, species: ${s.species}, palette colours: ${s.colours}, ramps: ${s.ramps}`,
     `composed: ${report.composed} creature poses (${report.variants} forced variants). Sampled: ${report.sampled}`,
   ];
   for (const g of report.gaps) lines.push(`${g.error ? 'error' : 'info'}: gap ${g.gap} (x${g.count})`);
