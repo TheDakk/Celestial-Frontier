@@ -23,6 +23,8 @@
 import { surfaceColor } from '@cf/domain-planetgen';
 import { _cardFactsSet, GAL_KIND, _EARTH_NAMES as _EARTH_NAMES_V1 } from './apphooks.verbatim.js';
 
+export { _cardFactsSet, GAL_KIND };
+
 /* ★ D-CAT-1 — THE DEDUPED v2 ROSTER (approved deviation, 2026-08-02).
 
    Four organisms appeared in TWO kingdoms each, so the catalogue carried 1,014
@@ -91,17 +93,17 @@ export const CAPTURE_THUMB = 'data:image/png;base64,';
 
 const flatNoise = (() => 0.5) as unknown as Parameters<typeof surfaceColor>[3];
 
-function planetThumb(P: { type?: string; _pal?: unknown }): string {
+export function planetThumb(P: { type?: string; _pal?: unknown }): string {
   /* replay the capture's one observable side effect (gas palette cache);
      surfaceColor itself guards `if(!P._pal)`, so this is idempotent */
   if (P && P.type === 'gas' && !P._pal) surfaceColor(P as never, 0, 0, flatNoise);
   return CAPTURE_THUMB;
 }
-const starThumb = (): string => CAPTURE_THUMB;
-const galaxyThumb = (): string => CAPTURE_THUMB;
-const moonThumb = (): string => CAPTURE_THUMB;
-const cometThumb = (): string => CAPTURE_THUMB;
-const beltThumb = (): string => CAPTURE_THUMB;
+export const starThumb = (): string => CAPTURE_THUMB;
+export const galaxyThumb = (): string => CAPTURE_THUMB;
+export const moonThumb = (): string => CAPTURE_THUMB;
+export const cometThumb = (): string => CAPTURE_THUMB;
+export const beltThumb = (): string => CAPTURE_THUMB;
 
 /** Install the capture-environment hooks on globalThis (idempotent; never
     overwrites an existing binding, so a future app layer wins by default). */
