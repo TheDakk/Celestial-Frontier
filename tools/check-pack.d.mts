@@ -2,6 +2,10 @@ export interface CheckedCreature {
   scaffold: string;
   genome: Record<string, unknown>;
   pose: string;
+  /** Set when the creature was composed with a forced variant: that variant's part id. */
+  variant?: string;
+  /** Set when the finding came from the shift sweep. */
+  shift?: { head: readonly [number, number]; tail: readonly [number, number] };
 }
 export interface DetachedCreature extends CheckedCreature {
   shift: { head: readonly [number, number]; tail: readonly [number, number] };
@@ -24,6 +28,8 @@ export interface PackReport {
   summary: PackSummary | null;
   sampled: string;
   composed: number;
+  /** Forced variants composed (one creature each, in every pose): part types with more than one variant. */
+  variants: number;
   gaps: { gap: string; count: number; error: boolean }[];
   edge: CheckedCreature[];
   detached: DetachedCreature[];

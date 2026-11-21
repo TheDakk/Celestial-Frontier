@@ -207,55 +207,63 @@ describe('checkPack on planted faults', () => {
 });
 
 describe('checkPack on the placeholder catalogue (the real result, pinned)', () => {
+  let text: string;
   let r: PackReport;
-  beforeAll(() => { r = checkPack(readFileSync(PLACEHOLDER, 'utf8')); });
-  const QUADRUPEDS = ['sturdy', 'armored', 'stilt', 'tusked', 'horned', 'squat'].map((t) => `quadruped/${t}/medium`);
+  beforeAll(() => { text = readFileSync(PLACEHOLDER, 'utf8'); r = checkPack(text); });
 
-  it('parses, sums up, has every attach point and pose, never touches the edge and has no gap but variant:', () => {
+  it('passes clean: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
     expect(r.parseError).toBeNull();
     expect(r.summary).toMatchObject({ parts: 85, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 34, byTier: { medium: 40, small: 15, large: 15, guardian: 15 } });
     expect(r.structure).toEqual([]);
     expect(r.unreachable).toEqual([]);
+    expect(r.failures).toEqual([]);
     expect(r.edge).toEqual([]);
+    expect(r.detached).toEqual([]);
     expect(r.gaps.filter((g) => g.error)).toEqual([]);
-    expect(r.composed).toBe(19740);
+    expect(errorsOf(r)).toEqual([]);
+    expect(r.ok).toBe(true);
+    expect(r.composed).toBe(20580);
   });
 
-  it('reports the tail detaching under a shift away from the body, and attached at shift 0 in rest', () => {
-    const tailRest = r.detached.filter((d) => d.off.includes('tail') && d.pose === 'rest');
-    expect(tailRest.length).toBeGreaterThan(0);
-    expect(new Set(tailRest.map((d) => d.shift.tail.join(',')))).toEqual(new Set(['-1,-1', '-1,0', '-1,1']));
+  it('still reports a head drawn flush against the torso again, on that scaffold only, at the shifts that open the gap', () => {
+    const flush = text.replace('part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:31,3,', 'part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:36,3,');
+    expect(flush).not.toBe(text);
+    const bad = checkPack(flush);
+    expect(bad.ok).toBe(false);
+    expect(new Set(bad.detached.map((d) => `${d.scaffold} ${d.off.filter((slot) => slot !== 'eyes').join(',')}`))).toEqual(new Set(['quadruped/sturdy/medium head']));
+    expect(errorsOf(bad).filter((l) => l.startsWith('error: detached head on quadruped/sturdy/medium '))).toHaveLength(1);
+    // Rest has no head offset: only a +1 head shift opens the gap there.
+    expect(new Set(bad.detached.filter((d) => d.pose === 'rest').map((d) => d.shift.head[0]))).toEqual(new Set([1]));
   });
+});
 
-  it('reports, on every quadruped scaffold, the head and tail detached in exactly these poses and shifts', () => {
-    const seen = (slot: 'head' | 'tail', scaffold: string): Record<string, string> => {
-      const out: Record<string, Set<string>> = {};
-      for (const d of r.detached) if (d.scaffold === scaffold && d.off.includes(slot)) (out[d.pose] ??= new Set()).add(d.shift[slot].join(','));
-      return Object.fromEntries(Object.entries(out).map(([pose, s]) => [pose, [...s].sort().join(' ')]));
-    };
-    const ALL = '-1,-1 -1,0 -1,1 0,-1 0,0 0,1 1,-1 1,0 1,1';
-    const RIGHT = '1,-1 1,0 1,1';
-    const NOT_LEFT = '0,-1 0,0 0,1 1,-1 1,0 1,1';
-    const LEFT = '-1,-1 -1,0 -1,1';
-    const NOT_RIGHT = '-1,-1 -1,0 -1,1 0,-1 0,0 0,1';
-    for (const scaffold of QUADRUPEDS) {
-      // The placeholder head sits flush on the torso: a +1 head shift opens a gap; approach and recover move it +1, strike +2.
-      expect(seen('head', scaffold), scaffold).toEqual({ rest: RIGHT, approach: NOT_LEFT, strike: ALL, recover: NOT_LEFT, faint: RIGHT });
-      // The tail mirrors it: a -1 tail shift opens a gap; approach and strike move it -1.
-      expect(seen('tail', scaffold), scaffold).toEqual({ rest: LEFT, approach: NOT_RIGHT, windup: LEFT, strike: NOT_RIGHT, hit: LEFT, faint: LEFT });
-    }
-    // Only heads, their eyes and tails come loose; legs never do.
-    expect(new Set(r.detached.flatMap((d) => d.off))).toEqual(new Set(['head', 'eyes', 'tail']));
+describe('checkPack sweeps head and tail shifts independently', () => {
+  it('reports a tail that hangs from the head alone when head and tail shift in opposite directions', () => {
+    // The tail is attached past the head's front, touching only the head: moving together they stay joined.
+    const r = checkPack(planted('attach=head:10,1,tail:1,1,', 'attach=head:10,1,tail:20,2,'));
+    // It comes loose exactly when the tail ends up right of where the head moved: every such pair of the 81 is composed.
+    const apart = new Set(r.detached.filter((d) => d.off.includes('tail')).map((d) => `${d.shift.head} ${d.shift.tail}`));
+    const expected = new Set<string>();
+    for (const hy of [-1, 0, 1]) for (const ty of [-1, 0, 1]) for (const [hx, tx] of [[-1, 0], [-1, 1], [0, 1]]) expected.add(`${hx},${hy} ${tx},${ty}`);
+    expect(apart).toEqual(expected);
     expect(r.ok).toBe(false);
   });
+});
 
-  it('prints one line per detached slot and scaffold', () => {
-    const errors = errorsOf(r);
-    expect(errors).toHaveLength(12);
-    for (const scaffold of QUADRUPEDS) {
-      expect(errors.filter((l) => l.startsWith(`error: detached head on ${scaffold} `))).toHaveLength(1);
-      expect(errors.filter((l) => l.startsWith(`error: detached tail on ${scaffold} `))).toHaveLength(1);
-    }
+describe('checkPack composes every variant', () => {
+  const FLUSH = 'frame rest anchor=-2,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n666666\n666666\n666666\n666666\n555555\n';
+  const GOOD_HEAD = 'frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n666666\n666666\n666666\n666666\n555555\n';
+  it('forces each head variant into a creature, at its nine shifts, and reports the one drawn flush against the torso', () => {
+    const r = checkPack(`${GOOD}\npart quadruped/head/h0/small/v1\n${GOOD_HEAD}\npart quadruped/head/h0/small/v2\n${FLUSH}`);
+    expect(r.variants).toBe(3);
+    const forced = r.detached.filter((d) => d.variant !== undefined);
+    expect(new Set(forced.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h0/small/v2']));
+    expect(new Set(forced.map((d) => d.shift.head[0]))).toEqual(new Set([1]));
+    expect(errorsOf(r).some((l) => l.startsWith('error: detached head on quadruped/sturdy/small '))).toBe(true);
+    expect(r.ok).toBe(false);
+  });
+  it('composes nothing extra for a pack with one variant per part type', () => {
+    expect(checkPack(GOOD).variants).toBe(0);
   });
 });
 

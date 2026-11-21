@@ -36,6 +36,9 @@ const HEAD_POINTS = ['eye0', 'eye1', 'eye2', 'eye3', 'eye4', 'eye5', 'eye6', 'ey
 // The genes that give each tier: a size gene, and for the guardian tier the Guardian marker the game sets (apex).
 const GENES_FOR_TIER = { small: { size: 0 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 5, apex: 12 } };
 const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y]));
+const HEAD_SHIFTS = SHIFTS.map((s) => ({ head: s, tail: [0, 0] }));
+const TAIL_SHIFTS = SHIFTS.map((s) => ({ head: [0, 0], tail: s }));
+const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail })));
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
 const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 6, back: 7, headFeature: 8, glow: 9 };
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
@@ -46,8 +49,9 @@ const NO_LIMBS = LIMB_COUNTS.indexOf(0);
 export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind; every pose the scaffold defines. ' +
-  'Detachment also at the nine head and tail shift values (applied together) for limbs genes ' +
-  FULL_LIMBS + ' (eight legs) and ' + NO_LIMBS + ' (none).';
+  'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs): every head kind with no tail at its nine shifts, ' +
+  'and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
+  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts).';
 
 const countBy = (items, key) => {
   const out = {};
@@ -77,6 +81,18 @@ function kindsFor(catalogue, scaffold, slot, letter, length) {
     if (m && Number(m[1]) < length) genes.add(Number(m[1]));
   }
   return [...genes].sort((a, b) => a - b);
+}
+
+/** Part types (family, slot, kind, tier) with more than one variant in the pack, each with its part ids in variant order. */
+function variantsByType(catalogue) {
+  const groups = new Map();
+  for (const part of catalogue.parts.values()) {
+    const key = `${part.family}/${part.slot}/${part.kind}/${part.tier}`;
+    const known = groups.get(key);
+    if (known) known.parts.push(part);
+    else groups.set(key, { family: part.family, slot: part.slot, kind: part.kind, tier: part.tier, parts: [part] });
+  }
+  return [...groups.values()].filter((g) => g.parts.length > 1).map((g) => ({ ...g, ids: g.parts.sort((a, b) => a.variant - b.variant).map((p) => p.id) }));
 }
 
 /** The same catalogue with every drawn pixel replaced by its slot's label: same geometry, pixels say who drew them. */
@@ -139,6 +155,13 @@ export function detachedSlots(buffer) {
   const off = new Set();
   for (let i = 0; i < pixels.length; i++) if (region[i] !== -1 && region[i] !== main) off.add(LABEL_SLOT[pixels[i]] ?? String(pixels[i]));
   return Object.keys(SLOT_LABEL).filter((slot) => off.has(slot));
+}
+
+/** For an unfinished picture: a drawn pixel on the border or next to it, where the finished picture's outline would touch the edge. */
+function nearEdge({ w, h, pixels }) {
+  for (let x = 0; x < w; x++) for (const y of [0, 1, h - 2, h - 1]) if (pixels[y * w + x] !== 0) return true;
+  for (let y = 0; y < h; y++) for (const x of [0, 1, w - 2, w - 1]) if (pixels[y * w + x] !== 0) return true;
+  return false;
 }
 
 function touchesEdge({ w, h, pixels }) {
@@ -223,7 +246,7 @@ export function checkPack(text) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, gaps: [], edge: [], detached: [], structure: [], unreachable: [], failures: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], structure: [], unreachable: [], failures: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -244,6 +267,8 @@ export function checkPack(text) {
   const failed = new Set();
   let composed = 0;
 
+  const variantGroups = variantsByType(catalogue);
+  let variants = 0;
   for (const scaffold of catalogue.scaffolds.values()) {
     const genes = genomeFor(scaffold);
     if (genes === undefined) {
@@ -251,23 +276,14 @@ export function checkPack(text) {
       continue;
     }
     const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
-    const tails = [0, ...kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0)];
+    const someHeads = heads.length > 0 ? heads : [0];
+    const realTails = kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0);
+    const tails = [0, ...realTails];
     const poses = Object.keys(scaffold.poses);
-    const creatures = new Map();
-    const add = (head, tail, limbs, eyes, shifts) => {
-      const key = `${head} ${tail} ${limbs} ${eyes}`;
-      const known = creatures.get(key);
-      if (known) known.shifts ||= shifts;
-      else creatures.set(key, { head, tail, limbs, eyes, shifts });
-    };
-    for (const head of heads.length > 0 ? heads : [0]) {
-      for (const tail of tails) for (let limbs = 0; limbs < 6; limbs++) add(head, tail, limbs, FULL_EYES, limbs === FULL_LIMBS || limbs === NO_LIMBS);
-      for (let eyes = 0; eyes < 6; eyes++) add(head, tails[tails.length - 1], FULL_LIMBS, eyes, false);
-    }
+    const genomeOf = (head, tail, limbs, eyes) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern: 0, skin: 0, color: 0, accent: 0, lumin: false });
 
-    for (const c of creatures.values()) {
-      const genome = { kingdom: 'fauna', seed: 1, ...genes, head: c.head, tail: c.tail, limbs: c.limbs, eyes: c.eyes, pattern: 0, skin: 0, color: 0, accent: 0, lumin: false };
-      const recipe = buildRecipe(genome, [], catalogue);
+    /** Composes one recipe in every pose: gaps, edge and connectivity at its own shift, then at each extra shift pair. */
+    const check = (genome, recipe, shiftPairs, variant) => {
       for (const pose of poses) {
         let out;
         try {
@@ -278,16 +294,59 @@ export function checkPack(text) {
         }
         composed++;
         for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
-        const where = { scaffold: scaffold.id, genome, pose };
+        const where = variant === undefined ? { scaffold: scaffold.id, genome, pose } : { scaffold: scaffold.id, genome, pose, variant };
         if (touchesEdge(out.buffer)) edge.push(where);
         const own = detachedSlots(assemble(recipe, pose, labels).buffer);
         if (own) detached.push({ ...where, shift: recipe.shift, off: own });
-        if (!c.shifts) continue;
-        for (const s of SHIFTS) {
-          const shift = { head: s, tail: s };
-          const off = detachedSlots(assemble({ ...recipe, shift }, pose, labels).buffer);
+        for (const shift of shiftPairs) {
+          const picture = assemble({ ...recipe, shift }, pose, labels).buffer;
+          if (nearEdge(picture)) edge.push({ ...where, shift });
+          const off = detachedSlots(picture);
           if (off) detached.push({ ...where, shift, off });
         }
+      }
+    };
+
+    // Gaps, edge and own-shift connectivity: every head x every tail and no tail x limbs genes 0-5 at eight eyes,
+    // plus every eyes gene for each head.
+    const creatures = new Map();
+    const add = (head, tail, limbs, eyes) => creatures.set(`${head} ${tail} ${limbs} ${eyes}`, [head, tail, limbs, eyes]);
+    for (const head of someHeads) {
+      for (const tail of tails) for (let limbs = 0; limbs < 6; limbs++) add(head, tail, limbs, FULL_EYES);
+      for (let eyes = 0; eyes < 6; eyes++) add(head, tails[tails.length - 1], FULL_LIMBS, eyes);
+    }
+    for (const [head, tail, limbs, eyes] of creatures.values()) {
+      const genome = genomeOf(head, tail, limbs, eyes);
+      check(genome, buildRecipe(genome, [], catalogue), []);
+    }
+
+    // Shift sweep, with no legs (more parts only add pixels, so none is the strictest case): every head alone at its nine
+    // shifts, then head and tail kinds paired in turn (every head and every tail kind at least once) at all 81 combinations
+    // of the nine head shifts and nine tail shifts, so a head and tail moving in opposite directions are composed.
+    for (const head of someHeads) {
+      const genome = genomeOf(head, 0, NO_LIMBS, FULL_EYES);
+      check(genome, buildRecipe(genome, [], catalogue), HEAD_SHIFTS);
+    }
+    for (let i = 0; i < Math.max(someHeads.length, realTails.length) && realTails.length > 0; i++) {
+      const genome = genomeOf(someHeads[i % someHeads.length], realTails[i % realTails.length], NO_LIMBS, FULL_EYES);
+      check(genome, buildRecipe(genome, [], catalogue), SHIFT_PAIRS);
+    }
+
+    // Every variant of every part type with more than one: build a creature that uses the type, then compose a copy
+    // of its recipe with that slot's part id replaced by the variant's. A head or tail variant also at its nine shifts.
+    for (const group of variantGroups) {
+      if (group.family !== scaffold.family || group.tier !== scaffold.tier) continue;
+      if (group.slot === 'torso' && scaffold.id !== `${group.family}/${group.kind}/${group.tier}`) continue;
+      const head = group.slot === 'head' ? Number(group.kind.slice(1)) : someHeads[0];
+      const tail = group.slot === 'tail' ? Number(group.kind.slice(1)) : tails[tails.length - 1];
+      const genome = genomeOf(head, tail, group.slot === 'farLimbs' || group.slot === 'nearLimbs' ? FULL_LIMBS : NO_LIMBS, FULL_EYES);
+      const recipe = buildRecipe(genome, [], catalogue);
+      const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
+      for (const id of group.ids) {
+        const parts = recipe.parts.map((p) => (p.slot === group.slot && group.ids.includes(p.partId) ? { ...p, partId: id } : p));
+        if (!parts.some((p) => p.partId === id)) continue; // the creature does not reach this type (e.g. a head kind beyond the gene range)
+        variants++;
+        check(genome, { ...recipe, parts }, shiftPairs, id);
       }
     }
   }
@@ -296,13 +355,14 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, gaps, edge, detached, structure, unreachable, failures };
+  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, structure, unreachable, failures };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
 const genes = (g) => `body ${g.body} loco ${g.loco} size ${g.size}${g.apex === undefined ? '' : ` apex ${g.apex}`} head ${g.head} tail ${g.tail} limbs ${g.limbs} eyes ${g.eyes}`;
 const pair = ([x, y]) => `${x},${y}`;
 const shiftText = (s) => `head ${pair(s.head)} tail ${pair(s.tail)}`;
+const example = (e) => `${genes(e.genome)} pose ${e.pose}${e.shift === undefined ? '' : ` shift ${shiftText(e.shift)}`}${e.variant === undefined ? '' : ` with variant ${e.variant}`}`;
 const unique = (values) => [...new Set(values)];
 
 /** Items grouped by key, in first-seen order. */
@@ -325,12 +385,12 @@ export function formatReport(report) {
   const lines = [
     `parts: ${s.parts} (by family: ${compact(s.byFamily)}; by slot: ${compact(s.bySlot)}; by tier: ${compact(s.byTier)})`,
     `scaffolds: ${s.scaffolds}, fallbacks: ${s.fallbacks}, palette colours: ${s.colours}, ramps: ${s.ramps}`,
-    `composed: ${report.composed} creature poses. Sampled: ${report.sampled}`,
+    `composed: ${report.composed} creature poses (${report.variants} forced variants). Sampled: ${report.sampled}`,
   ];
   for (const g of report.gaps) lines.push(`${g.error ? 'error' : 'info'}: gap ${g.gap} (x${g.count})`);
   for (const [scaffold, items] of group(report.edge, (e) => [e.scaffold])) {
     const first = items[0];
-    lines.push(`error: touches the canvas edge on ${scaffold} in ${items.length} creature poses (poses: ${unique(items.map((e) => e.pose)).join(', ')}), e.g. ${genes(first.genome)} pose ${first.pose}`);
+    lines.push(`error: touches the canvas edge on ${scaffold} in ${items.length} creature poses (poses: ${unique(items.map((e) => e.pose)).join(', ')}), e.g. ${example(first)}`);
   }
   // Eyes sit on the head: when the head is off the body its eyes go with it and are not reported again.
   const offSlots = (d) => d.off.filter((slot) => !(slot === 'eyes' && d.off.includes('head')));
@@ -343,7 +403,7 @@ export function formatReport(report) {
     });
     const label = slot === 'head' || slot === 'tail' ? `poses with ${slot} shifts` : 'poses';
     const first = items[0];
-    lines.push(`error: detached ${key} in ${items.length} creature poses (${label}: ${perPose.join('; ')}), e.g. ${genes(first.genome)} pose ${first.pose} shift ${shiftText(first.shift)}`);
+    lines.push(`error: detached ${key} in ${items.length} creature poses (${label}: ${perPose.join('; ')}), e.g. ${example(first)}`);
   }
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);

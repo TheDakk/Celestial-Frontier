@@ -1,5 +1,7 @@
 # Placeholder quadruped parts: plain blocks and bars, test inputs only, not game art.
-# Quadruped parts: medium tier only, variant 0 only. Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight.
+# Quadruped parts: medium tier only, variant 0 only. Each head overlaps the torso's front by five columns and each tail
+# its back by five, so neither comes loose under any head or tail shift and any pose offset.
+# Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight.
 palette
 colour 0 101010
 colour 1 5a4632
@@ -57,7 +59,7 @@ eyeHighlight 14
 glow 15
 
 part quadruped/torso/sturdy/medium/v0
-frame rest anchor=0,0 attach=head:36,3,tail:-1,3,back:18,-1,far0:4,14,near0:2,14,far1:14,14,near1:12,14,far2:24,14,near2:22,14,far3:32,14,near3:30,14
+frame rest anchor=0,0 attach=head:31,3,tail:4,3,back:18,-1,far0:4,14,near0:2,14,far1:14,14,near1:12,14,far2:24,14,near2:22,14,far3:32,14,near3:30,14
 133133133133133133133133133133133133
 333333333333333333333333333333333333
 333333333333333333333333333333333333
@@ -74,7 +76,7 @@ frame rest anchor=0,0 attach=head:36,3,tail:-1,3,back:18,-1,far0:4,14,near0:2,14
 abababababababababababababababababab
 
 part quadruped/torso/armored/medium/v0
-frame rest anchor=0,0 attach=head:38,3,tail:-1,3,back:19,-1,far0:4,16,near0:2,16,far1:14,16,near1:12,16,far2:25,16,near2:23,16,far3:34,16,near3:32,16
+frame rest anchor=0,0 attach=head:33,3,tail:4,3,back:19,-1,far0:4,16,near0:2,16,far1:14,16,near1:12,16,far2:25,16,near2:23,16,far3:34,16,near3:32,16
 33313331333133313331333133313331333133
 33333333333333333333333333333333333333
 33333333333333333333333333333333333333
@@ -93,7 +95,7 @@ frame rest anchor=0,0 attach=head:38,3,tail:-1,3,back:19,-1,far0:4,16,near0:2,16
 ababababababababababababababababababab
 
 part quadruped/torso/stilt/medium/v0
-frame rest anchor=0,0 attach=head:30,3,tail:-1,3,back:15,-1,far0:4,12,near0:2,12,far1:12,12,near1:10,12,far2:20,12,near2:18,12,far3:26,12,near3:24,12
+frame rest anchor=0,0 attach=head:25,3,tail:4,3,back:15,-1,far0:4,12,near0:2,12,far1:12,12,near1:10,12,far2:20,12,near2:18,12,far3:26,12,near3:24,12
 333133331333313333133331333313
 333333333333333333333333333333
 333333333333333333333333333333
@@ -108,7 +110,7 @@ frame rest anchor=0,0 attach=head:30,3,tail:-1,3,back:15,-1,far0:4,12,near0:2,12
 ababababababababababababababab
 
 part quadruped/torso/tusked/medium/v0
-frame rest anchor=0,0 attach=head:34,3,tail:-1,3,back:17,-1,far0:4,15,near0:2,15,far1:13,15,near1:11,15,far2:22,15,near2:20,15,far3:30,15,near3:28,15
+frame rest anchor=0,0 attach=head:29,3,tail:4,3,back:17,-1,far0:4,15,near0:2,15,far1:13,15,near1:11,15,far2:22,15,near2:20,15,far3:30,15,near3:28,15
 3331333331333331333331333331333331
 3333333333333333333333333333333333
 3333333333333333333333333333333333
@@ -126,7 +128,7 @@ frame rest anchor=0,0 attach=head:34,3,tail:-1,3,back:17,-1,far0:4,15,near0:2,15
 ababababababababababababababababab
 
 part quadruped/torso/horned/medium/v0
-frame rest anchor=0,0 attach=head:32,3,tail:-1,3,back:16,-1,far0:4,17,near0:2,17,far1:12,17,near1:10,17,far2:21,17,near2:19,17,far3:28,17,near3:26,17
+frame rest anchor=0,0 attach=head:27,3,tail:4,3,back:16,-1,far0:4,17,near0:2,17,far1:12,17,near1:10,17,far2:21,17,near2:19,17,far3:28,17,near3:26,17
 33313333331333333133333313333331
 33333333333333333333333333333333
 33333333333333333333333333333333
@@ -146,7 +148,7 @@ frame rest anchor=0,0 attach=head:32,3,tail:-1,3,back:16,-1,far0:4,17,near0:2,17
 abababababababababababababababab
 
 part quadruped/torso/squat/medium/v0
-frame rest anchor=0,0 attach=head:40,3,tail:-1,3,back:20,-1,far0:4,18,near0:2,18,far1:15,18,near1:13,18,far2:26,18,near2:24,18,far3:36,18,near3:34,18
+frame rest anchor=0,0 attach=head:35,3,tail:4,3,back:20,-1,far0:4,18,near0:2,18,far1:15,18,near1:13,18,far2:26,18,near2:24,18,far3:36,18,near3:34,18
 3331333333313333333133333331333333313333
 3333333333333333333333333333333333333333
 3333333333333333333333333333333333333333
@@ -381,7 +383,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=84,25
+pose strike contact=79,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1
@@ -409,7 +411,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=86,25
+pose strike contact=81,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1
@@ -437,7 +439,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=78,25
+pose strike contact=73,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1
@@ -465,7 +467,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=82,25
+pose strike contact=77,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1
@@ -493,7 +495,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=80,25
+pose strike contact=75,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1
@@ -521,7 +523,7 @@ pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1
 entry tail 0 rest 0 -1
-pose strike contact=88,25
+pose strike contact=83,25
 entry torso 0 rest 1 0
 entry head 0 rest 2 0
 entry tail 0 rest -1 1

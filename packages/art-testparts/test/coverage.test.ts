@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, TIER_SIZE, fallbackKey, type SizeTier } from '@cf/art-format';
-import { buildRecipe, EYELESS_HEAD } from '@cf/art-recipe';
-import { compose } from '@cf/art-compose';
+import { buildRecipe, EYELESS_HEAD, type Recipe } from '@cf/art-recipe';
+import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { makeGenome } from '@cf/domain-genome';
 
@@ -179,6 +179,49 @@ describe('fallback silhouettes', () => {
     for (const tier of TIERS) {
       const pictures = FAMILIES.map((family) => { const f = frameOf(family, tier); return `${f.w}x${f.h}:${f.pixels.map((v) => (v === 0 ? 0 : 1)).join('')}`; });
       expect(new Set(pictures).size, tier).toBe(FAMILIES.length);
+    }
+  });
+});
+
+/** How many 4-connected regions the drawn (non-zero) pixels of an unfinished picture form. */
+function regions({ w, h, pixels }: PixelBuffer): number {
+  const seen = new Uint8Array(w * h);
+  const stack: number[] = [];
+  let count = 0;
+  for (let start = 0; start < pixels.length; start++) {
+    if (pixels[start] === 0 || seen[start] === 1) continue;
+    count++;
+    seen[start] = 1;
+    stack.push(start);
+    while (stack.length > 0) {
+      const i = stack.pop()!;
+      const x = i % w;
+      for (const j of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w]) {
+        if (j >= 0 && j < pixels.length && seen[j] === 0 && pixels[j] !== 0) { seen[j] = 1; stack.push(j); }
+      }
+    }
+  }
+  return count;
+}
+
+describe('placeholder joins hold under every head and tail shift', () => {
+  const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y] as const));
+  const NO_LIMBS = 5;
+  const attached = (recipe: Recipe, head: readonly [number, number], tail: readonly [number, number], pose: string): boolean =>
+    regions(assemble({ ...recipe, shift: { head, tail } }, pose, cat).buffer) === 1;
+
+  it('keeps every head on its torso at each of its nine shifts, with no tail and no legs, in all seven poses, on every torso type', () => {
+    for (const body of QUADRUPED_BODIES) for (let head = 0; head < 10; head++) for (const pose of POSES) for (const s of SHIFTS) {
+      if (!attached(buildRecipe(genome(body, head, 0, NO_LIMBS, 3), [], cat), s, [0, 0], pose)) expect.fail(`body ${body} head ${head} ${pose} head shift ${s}`);
+    }
+  });
+
+  it('keeps every tail on its torso at each of its nine shifts with the head at each of its nine, independently and in opposite directions', () => {
+    for (const body of QUADRUPED_BODIES) for (let tail = 1; tail < 7; tail++) for (const head of [tail - 1, tail + 3]) for (const pose of POSES) {
+      const recipe = buildRecipe(genome(body, head, tail, NO_LIMBS, 3), [], cat);
+      for (const hs of SHIFTS) for (const ts of SHIFTS) {
+        if (!attached(recipe, hs, ts, pose)) expect.fail(`body ${body} head ${head} tail ${tail} ${pose} head shift ${hs} tail shift ${ts}`);
+      }
     }
   });
 });
