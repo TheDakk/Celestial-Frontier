@@ -589,6 +589,24 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
     expect(lost.ok).toBe(false);
   });
 
+  it('a back part or a head feature whose attach point is moved off the body is reported detached, by slot', () => {
+    const onBack = checkPack(GOOD + BACK);
+    expect(errorsOf(onBack)).toEqual([]);
+    // The back point raised from 6,-1 to 6,-4: the part's lower row ends two rows above the torso.
+    const looseBack = checkPack(planted('back:6,-1,', 'back:6,-4,') + BACK);
+    expect(errorsOf(looseBack).filter((l) => l.startsWith('error: detached back on quadruped/sturdy/small ')).length).toBe(1);
+    expect(new Set(looseBack.detached.flatMap((d) => d.off))).toEqual(new Set(['back']));
+    expect(looseBack.ok).toBe(false);
+    const feature = '\npart quadruped/headFeature/horns-h0/small/v0\nframe rest anchor=0,2\n7777\n7777\n';
+    const horned = (point: string): string => planted(',eye7:4,3', `,eye7:4,3,feature:${point}`).replaceAll('sturdy', 'horned') + feature;
+    expect(errorsOf(checkPack(horned('3,1')))).toEqual([]);
+    // The feature point raised from 3,1 to 3,-4: the feature's lower row ends two rows above the head.
+    const looseFeature = checkPack(horned('3,-4'));
+    expect(errorsOf(looseFeature).filter((l) => l.startsWith('error: detached headFeature on quadruped/horned/small ')).length).toBe(1);
+    expect(new Set(looseFeature.detached.flatMap((d) => d.off))).toEqual(new Set(['headFeature']));
+    expect(looseFeature.ok).toBe(false);
+  });
+
   it('a painted mark is never read as a detached or hidden slot', () => {
     const layered = withLayers(GOOD);
     expect(layered).not.toBe(GOOD);

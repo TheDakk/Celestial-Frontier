@@ -382,6 +382,28 @@ describe('layers', () => {
     expect(err(`${F}layer flow\n123\n456\n789\n`)).toBe(`${w} 5: layer flow has 3 rows, frame has 2`);
   });
 
+  it('a layer followed at once by another has no rows', () => {
+    const w = 'part quadruped/torso/t1/medium/v0 frame rest line';
+    expect(err(`${F}layer flow\nlayer spots\n...\n.1.\n`)).toBe(`${w} 5: layer flow has 0 rows, frame has 2`);
+  });
+
+  it('a layer line with no name or with two names is a bad layer', () => {
+    expect(err(`${F}layer\n123\n456\n`)).toBe('line 5: bad layer');
+    expect(err(`${F}layer flow spots\n123\n456\n`)).toBe('line 5: bad layer');
+  });
+
+  it('layers written out of order parse and format in LAYER_NAMES order', () => {
+    const p = parse(`${F}layer striped\n1.2\n..c\nlayer spots\n...\n.1.\nlayer flow\n123\n45.\n`);
+    expect(Object.keys(p.frames.rest!.layers!)).toEqual(['flow', 'spots', 'striped']);
+    const text = formatPart(p);
+    expect(text.split('\n').filter((l) => l.startsWith('layer '))).toEqual(['layer flow', 'layer spots', 'layer striped']);
+    expect(parseCatalogueText(text).parts.get(PID)).toEqual(p);
+    // A part built in code with its layer keys out of order is written in LAYER_NAMES order too.
+    const built: Part = { ...p, frames: { rest: { ...p.frames.rest!, layers: { striped: p.frames.rest!.layers!.striped!, spots: p.frames.rest!.layers!.spots!, flow: p.frames.rest!.layers!.flow! } } } };
+    expect(Object.keys(built.frames.rest!.layers!)).toEqual(['striped', 'spots', 'flow']);
+    expect(formatPart(built)).toBe(text);
+  });
+
   const base: Part = { id: PID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0, frames: {} };
   const withLayers = (layers: Record<string, Uint8Array>): Part => ({
     ...base,

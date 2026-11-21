@@ -32,10 +32,13 @@ describe('marks survive a save, a load and a change of life state', () => {
   });
 
   it('a saved and reloaded patterned creature has the same marks', () => {
-    const reloaded = JSON.parse(JSON.stringify(genome)) as Record<string, unknown>;
-    expect(buildRecipe(reloaded, lineage, layered)).toEqual(buildRecipe(genome, lineage, layered));
-    expect(marksOf(reloaded)).toEqual(marksOf(genome));
-    expect(hashes(reloaded)).toEqual(hashes(genome));
+    // Keys a save drops or changes: an undefined value (dropped), NaN (null), -0 (0), an undefined array item (null).
+    const lossy: Readonly<Record<string, unknown>> = { ...genome, extra: undefined, n: Number.NaN, z: -0, nested: [1, [undefined, 2]] };
+    const reloaded = JSON.parse(JSON.stringify(lossy)) as Record<string, unknown>;
+    expect(reloaded).not.toEqual(lossy);
+    expect(buildRecipe(reloaded, lineage, layered)).toEqual(buildRecipe(lossy, lineage, layered));
+    expect(marksOf(reloaded)).toEqual(marksOf(lossy));
+    expect(hashes(reloaded)).toEqual(hashes(lossy));
     // Planted fault: a genome differing in its seed (part of the identity) gives different rolls and a different picture.
     const other = { ...genome, seed: (genome['seed'] as number) + 1 };
     expect(marksOf(other)).not.toEqual(marksOf(genome));

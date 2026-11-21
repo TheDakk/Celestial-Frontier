@@ -502,6 +502,39 @@ entry torso 0 rest 0 0
     expect(at(r.buffer, 11, 11)).toBe(6);
     expect(r.gaps).toEqual([]);
   });
+  it('only a limb takes a leg-count attach name: at two legs the head, an eye and the head feature land on their plain points', () => {
+    // head_2, eye0_2 and feature_2 each sit somewhere else; none of them is ever used.
+    const named = parseCatalogueText(HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=head:4,0,head_2:4,3
+2222
+2222
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=eye0:1,0,eye0_2:2,0,feature:0,-1,feature_2:2,-1
+333
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+
+part quadruped/headFeature/horn/small/v0
+frame rest anchor=0,0
+c
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`);
+    const parts: Spec[] = [['torso', 0, 'torso'], ['head', 0, 'head'], ['headFeature', 0, 'horn'], ['eyes', 0, 'eye']];
+    // The head at the plain head point (14,10), the eye at its eye0 (15,10), the feature at its plain feature point (14,9).
+    const plain = ['14,9=12', ...TORSO.slice(0, 4), '14,10=3', '15,10=13', '16,10=3', ...TORSO.slice(4)];
+    for (const legs of [2, 4]) {
+      const r = assemble(recipeOf(parts, { legs }), 'rest', named);
+      expect(drawn(r.buffer), `legs ${legs}`).toEqual(plain);
+      expect(r.gaps).toEqual([]);
+    }
+  });
 });
 
 describe('assemble: marks', () => {
