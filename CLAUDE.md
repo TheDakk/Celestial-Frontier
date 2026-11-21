@@ -23,6 +23,7 @@ Fifth goal: a small change to the game must be small to ship.
 - Hosted runs only on Dakk's label.
 - Refer to the owner only as Dakk.
 - No real name, email address or home path in any file.
+- Old branches stay untouched. `main` keeps serving the live v1 site until Dakk says otherwise.
 
 ## How to work
 - One short task branch per task, off the code branch.
@@ -38,4 +39,4 @@ Fifth goal: a small change to the game must be small to ship.
 - A disagreement between a document and the code is a finding.
 
 ## Never on this branch
-- Images, designs, plans, notes, evidence.
+- Images, designs, plans, notes, references, evidence.

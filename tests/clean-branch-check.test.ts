@@ -60,6 +60,22 @@ describe('clean-branch check', () => {
       expect(text.trimEnd().split('\n').length).toBeLessThanOrEqual(60);
       expect(text).toContain('Dakk');
     });
+    it.each([
+      'Old branches stay untouched. `main` keeps serving the live v1 site until Dakk says otherwise.',
+      "No push, pull request, branch deletion, force operation, release or deploy without Dakk's explicit word for that exact action.",
+      'Signed commits only.',
+      'Assert the outcome, not the code path.',
+      'Prove every new check both ways.',
+      'Suspect the instrument first.',
+      'Judge visuals on stills at real size.',
+      'Find every reader and writer of a field before changing it.',
+      'A disagreement between a document and the code is a finding.',
+    ])('states the rule: %s', (rule) => {
+      expect(read()).toContain(rule);
+    });
+    it('lists references among the things never on this branch', () => {
+      expect(read()).toMatch(/## Never on this branch\n- [^\n]*\breferences\b/);
+    });
   });
   it('keeps the two agent files identical after the first line', () => {
     const rest = (name: string) => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8').split('\n').slice(1).join('\n');
