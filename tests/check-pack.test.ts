@@ -272,6 +272,13 @@ describe('checkPack on planted faults', () => {
     expect(r.failures).toEqual(['no fallback for family quadruped at guardian (needed by quadruped/sturdy/guardian)']);
   });
 
+  it('an eye named for no species is an error', () => {
+    const lost = checkPack(`${GOOD}\npart quadruped/eyes/otter/small/v0\nframe rest anchor=0,0\n11\n`);
+    expect(lost.unreachable).toEqual(["part quadruped/eyes/otter/small/v0: no creature asks for an eye named 'otter' (eye, or the key of a species of this family and tier)"]);
+    expect(lost.ok).toBe(false);
+    expect(checkPack(GOOD).unreachable).toEqual([]);
+  });
+
   it('a leg named for a torso type with no scaffold is an error; one named for the torso type of a scaffold is not', () => {
     const leg = (kind: string): string => `${GOOD}\npart quadruped/farLimbs/${kind}/small/v0\nframe rest anchor=0,0\n22\n22\n22\n22\n22\n11\n`;
     const own = checkPack(leg('fore-sturdy'));

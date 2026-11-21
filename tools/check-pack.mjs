@@ -643,6 +643,12 @@ export function checkPack(text) {
 
   // A leg part is asked for as `leg`, as a role, or as a role on a torso type that has a scaffold at its tier. Any other
   // name is never drawn: most likely a misspelt build.
+  // An eye part is asked for as `eye`, or by the named species whose key it carries (same family and tier).
+  for (const part of catalogue.parts.values()) {
+    if (part.slot !== 'eyes' || part.kind === 'eye') continue;
+    const s = catalogue.species.get(part.kind);
+    if (s === undefined || s.family !== part.family || s.tier !== part.tier) unreachable.push(`part ${part.id}: no creature asks for an eye named '${part.kind}' (eye, or the key of a species of this family and tier)`);
+  }
   for (const part of catalogue.parts.values()) {
     if (part.slot !== 'farLimbs' && part.slot !== 'nearLimbs') continue;
     const [role, ...rest] = part.kind.split('-');

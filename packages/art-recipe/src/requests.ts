@@ -115,7 +115,7 @@ export function planParts(
 /**
  * The parts a named species asks for, in DRAW_ORDER then index, and the gaps met on the way: its own torso, head and
  * (with a tail) tail, kind `key`; legs by role, its own (`<role>-<key>`) before the shared role and the shared leg; the
- * family's shared eye, `eyes` times. Every part at v0, none marked. A missing part is a `missing:` gap and is left out.
+ * its own eye (kind `key`) where the pack holds one, else the family's shared eye, `eyes` times. Every part at v0, none marked. A missing part is a `missing:` gap and is left out.
  */
 export function planSpeciesParts(species: Species, catalogue: Catalogue): { parts: RecipePart[]; gaps: string[] } {
   const parts: RecipePart[] = [];
@@ -124,7 +124,9 @@ export function planSpeciesParts(species: Species, catalogue: Catalogue): { part
   const wanted: Wanted[] = legsWanted(species.legs, 0);
   if (species.tail) wanted.push(own('tail'));
   wanted.push(own('torso'), own('head'));
-  for (let i = 0; i < species.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0, limb: false });
+  // The species' own eye where the pack holds one; it is optional, so the shared eye is no gap.
+  const eyeKind = catalogue.parts.has(partId(species.family, 'eyes', species.key, species.tier, 0)) ? species.key : 'eye';
+  for (let i = 0; i < species.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: eyeKind, variant: 0, limb: false });
   wanted.sort(byDrawOrder);
   for (const w of wanted) {
     const found = lookUp(catalogue, species.family, species.tier, species.key, w, gaps);

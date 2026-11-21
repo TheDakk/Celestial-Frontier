@@ -87,6 +87,18 @@ describe('buildSpeciesRecipe', () => {
     expect(none.gaps).toEqual([`missing:${q('farLimbs', 'leg')}`, `missing:${q('nearLimbs', 'leg')}`]);
   });
 
+  it('draws its own eye where the pack holds one, at every eye, with no gap; another species keeps the shared eye', () => {
+    const OTTER = 'species otter quadruped medium legs=4 eyes=2 iris=1 tail=1';
+    const cat = catalogueOf([...ownParts('civet'), ...ownParts('otter'), ...SHARED, q('eyes', 'civet')], [CIVET, OTTER]);
+    const eyesOf = (key: string): string[] => buildSpeciesRecipe(key, cat).parts.filter((p) => p.slot === 'eyes').map((p) => p.partId);
+    expect(eyesOf('civet')).toEqual([q('eyes', 'civet'), q('eyes', 'civet')]);
+    expect(eyesOf('otter')).toEqual([q('eyes', 'eye'), q('eyes', 'eye')]);
+    expect(buildSpeciesRecipe('civet', cat).gaps).toEqual([]);
+    // with its own eye, the shared eye is not needed
+    const alone = catalogueOf([...ownParts('civet'), ...SHARED.filter((id) => id !== q('eyes', 'eye')), q('eyes', 'civet')], [CIVET]);
+    expect(buildSpeciesRecipe('civet', alone).gaps).toEqual([]);
+  });
+
   it('a missing torso, head, tail or eye gives missing: and leaves the rest unchanged', () => {
     const whole = ids(buildSpeciesRecipe('civet', full()));
     for (const lost of [q('torso', 'civet'), q('head', 'civet'), q('tail', 'civet'), q('eyes', 'eye')]) {
