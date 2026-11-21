@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
-import { resolveAnatomy, wrap } from '../src/resolve';
+import * as traits from '@cf/domain-speciestraits';
+import { GENE_LENGTHS, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
 
@@ -57,5 +58,26 @@ describe('resolveAnatomy', () => {
       expect(LIMB_COUNTS as readonly number[]).toContain(a.limbs);
       expect(EYE_COUNTS as readonly number[]).toContain(a.eyes);
     }
+  });
+});
+
+describe('the resolver is tied to the game tables', () => {
+  // Gene -> the @cf/domain-speciestraits table it indexes (accent indexes the colour table, as makeGenome draws it).
+  const TABLES: Record<keyof typeof GENE_LENGTHS, readonly unknown[]> = {
+    body: traits.FA_BODY, loco: traits.FA_LOCO, head: traits.FA_HEAD, tail: traits.FA_TAIL, pattern: traits.FA_PATTERN,
+    skin: traits.FA_SKIN, limbs: traits.FA_LIMBS, eyes: traits.FA_EYES, size: traits.FA_SIZE, color: traits.SP_COLOR,
+    accent: traits.SP_COLOR, floraForm: traits.FLORA_FORM, fungiForm: traits.FUNGI_FORM, microbeForm: traits.MICROBE_FORM,
+  };
+  it('wraps each gene by the fixed length, and that length is the game table\'s', () => {
+    expect(GENE_LENGTHS).toEqual({ body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17, floraForm: 18, fungiForm: 9, microbeForm: 12 });
+    for (const gene of Object.keys(GENE_LENGTHS) as (keyof typeof GENE_LENGTHS)[]) expect(TABLES[gene].length, gene).toBe(GENE_LENGTHS[gene]);
+  });
+  it('reads LIMB_COUNTS and EYE_COUNTS from the same numbers as the game tables', () => {
+    expect([...LIMB_COUNTS]).toEqual(traits.FA_LIMBS.map(Number));
+    expect([...EYE_COUNTS]).toEqual(traits.FA_EYES.map(Number));
+  });
+  it('wraps the size gene like every other gene', () => {
+    const tiers = [-1, 6, 2.9, '3', NaN, undefined].map((size) => resolveAnatomy({ ...base, size }).tier);
+    expect(tiers).toEqual(['large', 'small', 'medium', 'small', 'small', 'small']);
   });
 });
