@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type Part, type Scaffold } from '@cf/art-format';
 import { __buildRecipeAtVersionForTests, buildRecipe, GENE_LENGTHS, identityKey, RENDERER_VERSION, resolveAnatomy, type Recipe } from '@cf/art-recipe';
-import { compose, toAscii } from '@cf/art-compose';
+import { compose, PATTERN_TABLE, toAscii } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { mulberry32 } from '@cf/domain-rand';
 
@@ -168,6 +168,25 @@ describe('art golden format 2', () => {
     }
     expect(changed).toBeGreaterThanOrEqual(1);
     expect(marksGaps).toBeGreaterThanOrEqual(1);
+  });
+
+  it('the recorded eye-spotted pictures pin the eye-spot centre: any other centre value changes a recorded hash', () => {
+    const eyeSpotted = real.filter((e) => resolveAnatomy(e.genome).pattern === 7);
+    expect(eyeSpotted.length).toBeGreaterThan(0);
+    const rule = PATTERN_TABLE['eye-spotted'] as { centre: number };
+    const centre = rule.centre;
+    try {
+      for (let planted = 1; planted <= 12; planted++) {
+        if (planted === centre) continue;
+        rule.centre = planted;
+        // An entry the true table reproduces (the recomputing test above) that draws differently with the planted centre.
+        const moved = eyeSpotted.filter((e) => run(e).hash !== e.hash);
+        expect(moved.length, `centre ${planted}`).toBeGreaterThan(0);
+      }
+    } finally {
+      rule.centre = centre;
+    }
+    expect(eyeSpotted.filter((e) => run(e).hash !== e.hash)).toEqual([]);
   });
 
   it('a recorded real picture holds an iris value 17-20, and none holds 5-8 where an eye part was stacked', () => {
