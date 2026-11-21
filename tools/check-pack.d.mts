@@ -30,6 +30,8 @@ export interface PackReport {
   detached: DetachedCreature[];
   structure: string[];
   unreachable: string[];
+  /** Distinct compose errors (a missing fallback), each naming the family, tier and the scaffold that needed it. */
+  failures: string[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS } from '@cf/art-format';
+import { EYE_COUNTS, TIER_SIZE, fallbackKey, type SizeTier } from '@cf/art-format';
 import { buildRecipe } from '@cf/art-recipe';
 import { compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
@@ -130,12 +130,53 @@ describe('every kingdom composes', () => {
   });
 
   it('names, in every fallback line, a part that exists and has a rest frame', () => {
-    expect(cat.fallbacks.size).toBeGreaterThanOrEqual(15);
-    for (const family of ['flora', 'fungi', 'microbe']) expect(cat.fallbacks.has(family), family).toBe(true);
-    for (const [family, id] of cat.fallbacks) {
+    for (const [key, id] of cat.fallbacks) {
       const part = cat.parts.get(id);
-      expect(part, `${family} -> ${id}`).toBeDefined();
-      expect(Object.hasOwn(part!.frames, 'rest'), `${family} -> ${id}`).toBe(true);
+      expect(part, `${key} -> ${id}`).toBeDefined();
+      expect(Object.hasOwn(part!.frames, 'rest'), `${key} -> ${id}`).toBe(true);
+      expect(key, id).toBe(`${part!.family}/${part!.tier}`);
+    }
+  });
+});
+
+describe('fallback silhouettes', () => {
+  const FAMILIES = ['quadruped', 'tentacled', 'serpent', 'myriapod', 'gastropod', 'membranous', 'crystalline', 'gelatinous', 'arachnid', 'insect', 'radial', 'fish', 'flora', 'fungi', 'microbe'];
+  const TIERS = ['small', 'medium', 'large', 'guardian'] as const;
+  const frameOf = (family: string, tier: SizeTier) => cat.parts.get(cat.fallbacks.get(fallbackKey(family, tier))!)!.frames['rest']!;
+
+  it('has one for each of the fifteen families at all four tiers, and no other', () => {
+    expect([...cat.fallbacks.keys()].sort()).toEqual(FAMILIES.flatMap((f) => TIERS.map((t) => fallbackKey(f, t))).sort());
+  });
+
+  it('spans about half its tier canvas each way and fits inside it, with room for the outline, when centred', () => {
+    for (const family of FAMILIES) {
+      for (const tier of TIERS) {
+        const [cw, ch] = TIER_SIZE[tier];
+        const f = frameOf(family, tier);
+        let [x0, y0, x1, y1] = [f.w, f.h, -1, -1];
+        for (let i = 0; i < f.pixels.length; i++) {
+          if (f.pixels[i] === 0) continue;
+          const x = i % f.w;
+          const y = (i - x) / f.w;
+          x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+        }
+        const where = `${family} ${tier}`;
+        // Drawn extent between a third and two thirds of the canvas on each axis.
+        expect((x1 - x0 + 1) * 3, where).toBeGreaterThanOrEqual(cw);
+        expect((x1 - x0 + 1) * 3, where).toBeLessThanOrEqual(cw * 2);
+        expect((y1 - y0 + 1) * 3, where).toBeGreaterThanOrEqual(ch);
+        expect((y1 - y0 + 1) * 3, where).toBeLessThanOrEqual(ch * 2);
+        const left = (cw >> 1) - f.anchor[0];
+        const top = (ch >> 1) - f.anchor[1];
+        expect(left + x0 >= 1 && left + x1 <= cw - 2 && top + y0 >= 1 && top + y1 <= ch - 2, where).toBe(true);
+      }
+    }
+  });
+
+  it('gives every family a different silhouette at each tier', () => {
+    for (const tier of TIERS) {
+      const pictures = FAMILIES.map((family) => { const f = frameOf(family, tier); return `${f.w}x${f.h}:${f.pixels.map((v) => (v === 0 ? 0 : 1)).join('')}`; });
+      expect(new Set(pictures).size, tier).toBe(FAMILIES.length);
     }
   });
 });

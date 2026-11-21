@@ -156,6 +156,31 @@ describe('checkPack on planted faults', () => {
     expect(contact.ok).toBe(false);
   });
 
+  it('a fallback that does not fit its canvas when centred, or at the origin of its scaffold', () => {
+    const r = checkPack(planted('frame rest anchor=1,1\n222\n222', 'frame rest anchor=30,1\n222\n222'));
+    expect(r.structure).toEqual([
+      'fallback quadruped small: part quadruped/torso/fallback/small/v0 does not fit the 48x32 canvas when centred',
+      'fallback quadruped small: part quadruped/torso/fallback/small/v0 does not fit the 48x32 canvas at the origin of scaffold quadruped/sturdy/small',
+    ]);
+    expect(r.ok).toBe(false);
+  });
+
+  it('a family present in the pack with no fallback at a tier the pack has parts for', () => {
+    const r = checkPack(`${GOOD}\npart serpent/tail/t1/large/v0\nframe rest anchor=0,0\n1\n`);
+    expect(r.structure).toEqual(['family quadruped has no fallback at large', 'family serpent has no fallback at small', 'family serpent has no fallback at large']);
+    expect(errorsOf(r)).toContain('error: family serpent has no fallback at small');
+    expect(r.ok).toBe(false);
+  });
+
+  it('a creature that needs a fallback the pack lacks is an error line, not a crash', () => {
+    const text = planted('fallback quadruped quadruped/torso/fallback/small/v0\n', '').replace('part quadruped/torso/sturdy/small/v0', 'part quadruped/torso/gone/small/v0');
+    let r: PackReport | undefined;
+    expect(() => { r = checkPack(text); }).not.toThrow();
+    expect(r!.failures).toEqual(['no fallback for family quadruped at small (needed by quadruped/sturdy/small)']);
+    expect(errorsOf(r!)).toContain('error: compose failed: no fallback for family quadruped at small (needed by quadruped/sturdy/small)');
+    expect(r!.ok).toBe(false);
+  });
+
   it('a gap other than variant: is an error; a scaffold no genome reaches is an error', () => {
     const r = checkPack(planted('part quadruped/eyes/eye/small/v0', 'part quadruped/eyes/dot/small/v0'));
     expect(r.gaps.find((g) => g.gap === 'missing:quadruped/eyes/eye/small/v0')).toMatchObject({ error: true });
@@ -173,7 +198,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
 
   it('parses, sums up, has every attach point and pose, never touches the edge and has no gap but variant:', () => {
     expect(r.parseError).toBeNull();
-    expect(r.summary).toMatchObject({ parts: 40, scaffolds: 6, fallbacks: 15, colours: 16, ramps: 34, byTier: { medium: 40 } });
+    expect(r.summary).toMatchObject({ parts: 85, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 34, byTier: { medium: 40, small: 15, large: 15, guardian: 15 } });
     expect(r.structure).toEqual([]);
     expect(r.unreachable).toEqual([]);
     expect(r.edge).toEqual([]);

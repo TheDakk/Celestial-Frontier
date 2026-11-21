@@ -26,7 +26,7 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, EYE_COUNTS, LIMB_COUNTS } = await import('@cf/art-format');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } = await import('@cf/art-format');
 const { buildRecipe, resolveAnatomy } = await import('@cf/art-recipe');
 const { assemble, compose } = await import('@cf/art-compose');
 
@@ -146,7 +146,48 @@ function touchesEdge({ w, h, pixels }) {
   return false;
 }
 
-/** Problems a reader can see without composing: attach points, poses, contact points. */
+/** The drawn (non-zero) extent of a frame, relative to its anchor: [left, top, right, bottom], or null when it draws nothing. */
+function drawnExtent(frame) {
+  let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < frame.pixels.length; i++) {
+    if (frame.pixels[i] === 0) continue;
+    const x = i % frame.w;
+    const y = (i - x) / frame.w;
+    x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+  }
+  if (x1 < 0) return null;
+  return [x0 - frame.anchor[0], y0 - frame.anchor[1], x1 - frame.anchor[0], y1 - frame.anchor[1]];
+}
+
+/**
+ * Fallback problems: a fallback whose frame, anchored at the canvas centre or at the origin of a scaffold of its family
+ * and tier (where compose draws it), does not fit its tier's canvas with a pixel to spare for the outline; and each
+ * family present in the pack that has no fallback at a tier the pack has parts or scaffolds for.
+ */
+function fallbackProblems(catalogue) {
+  const problems = [];
+  for (const [key, id] of catalogue.fallbacks) {
+    const [family, tier] = key.split('/');
+    const [w, h] = TIER_SIZE[tier];
+    const extent = drawnExtent(catalogue.parts.get(id).frames['rest']);
+    const fits = ([x, y]) => extent === null || (x + extent[0] >= 1 && y + extent[1] >= 1 && x + extent[2] <= w - 2 && y + extent[3] <= h - 2);
+    if (!fits([w >> 1, h >> 1])) problems.push(`fallback ${family} ${tier}: part ${id} does not fit the ${w}x${h} canvas when centred`);
+    for (const scaffold of catalogue.scaffolds.values()) {
+      if (scaffold.family === family && scaffold.tier === tier && !fits(scaffold.origin)) {
+        problems.push(`fallback ${family} ${tier}: part ${id} does not fit the ${w}x${h} canvas at the origin of scaffold ${scaffold.id}`);
+      }
+    }
+  }
+  const things = [...catalogue.parts.values(), ...catalogue.scaffolds.values()];
+  const tiers = Object.keys(TIER_SIZE).filter((t) => things.some((x) => x.tier === t));
+  const families = [...new Set([...things.map((x) => x.family), ...[...catalogue.fallbacks.keys()].map((k) => k.split('/')[0])])];
+  for (const family of families) {
+    for (const tier of tiers) if (!catalogue.fallbacks.has(fallbackKey(family, tier))) problems.push(`family ${family} has no fallback at ${tier}`);
+  }
+  return problems;
+}
+
+/** Problems a reader can see without composing: attach points, poses, contact points, fallbacks. */
 function structureProblems(catalogue) {
   const problems = [];
   const fallbackParts = new Set(catalogue.fallbacks.values());
@@ -165,6 +206,7 @@ function structureProblems(catalogue) {
       problems.push(`scaffold ${scaffold.id}: pose strike has no contact point`);
     }
   }
+  problems.push(...fallbackProblems(catalogue));
   return problems;
 }
 
@@ -179,7 +221,7 @@ export function checkPack(text) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, gaps: [], edge: [], detached: [], structure: [], unreachable: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, gaps: [], edge: [], detached: [], structure: [], unreachable: [], failures: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -197,6 +239,7 @@ export function checkPack(text) {
   const edge = [];
   const detached = [];
   const unreachable = [];
+  const failed = new Set();
   let composed = 0;
 
   for (const scaffold of catalogue.scaffolds.values()) {
@@ -225,7 +268,13 @@ export function checkPack(text) {
       const genome = { kingdom: 'fauna', seed: 1, ...genes, head: c.head, tail: c.tail, limbs: c.limbs, eyes: c.eyes, pattern: 0, skin: 0, color: 0, accent: 0, lumin: false };
       const recipe = buildRecipe(genome, [], catalogue, { guardian });
       for (const pose of poses) {
-        const out = compose(recipe, pose, catalogue);
+        let out;
+        try {
+          out = compose(recipe, pose, catalogue);
+        } catch (error) {
+          failed.add(`${error instanceof Error ? error.message : String(error)} (needed by ${scaffold.id})`);
+          continue;
+        }
         composed++;
         for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
         const where = { scaffold: scaffold.id, genome, guardian, pose };
@@ -244,8 +293,9 @@ export function checkPack(text) {
 
   const gaps = [...gapCounts].map(([gap, count]) => ({ gap, count, error: !gap.startsWith('variant:') }));
   const structure = structureProblems(catalogue);
-  const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && structure.length === 0 && unreachable.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, gaps, edge, detached, structure, unreachable };
+  const failures = [...failed];
+  const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
+  return { ok, parseError: null, summary, sampled: SAMPLED, composed, gaps, edge, detached, structure, unreachable, failures };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -296,6 +346,7 @@ export function formatReport(report) {
   }
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);
+  for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
   return `check-pack: ${report.ok ? 'OK' : `FAIL (${errors} distinct errors)`}\n${lines.join('\n')}\n`;
 }

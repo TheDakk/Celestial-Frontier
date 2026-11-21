@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { RENDERER_VERSION } from '@cf/art-recipe';
+import { buildRecipe, RENDERER_VERSION } from '@cf/art-recipe';
 import { testCatalogue } from '@cf/art-testparts';
 import { buildReport, verdict, type ArtFixture, type Report } from '../src/report';
 
@@ -65,14 +65,15 @@ describe('diagnostics report', () => {
     sub.entries = [sub.entries[0]!, ...plain];
     expect(sub.entries[0]!.gaps).toContain('fallback:quadruped');
     expect(sub.entries[1]!.gaps.some((g) => g.startsWith('fallback:'))).toBe(false);
-    const without = { ...catalogue, fallbacks: new Map([...catalogue.fallbacks].filter(([family]) => family !== 'quadruped')) };
+    const tier = buildRecipe(sub.entries[0]!.genome, [], catalogue).tier;
+    const without = { ...catalogue, fallbacks: new Map([...catalogue.fallbacks].filter(([key]) => key !== `quadruped/${tier}`)) };
     const report = buildReport(without, sub);
     expect(report.total).toBe(3);
     expect(report.matched).toBe(2);
     expect(report.mismatches).toEqual([
-      { index: 0, label: sub.entries[0]!.label, expected: sub.entries[0]!.hash, actual: 'error: no fallback for family quadruped', gapsDiffer: false },
+      { index: 0, label: sub.entries[0]!.label, expected: sub.entries[0]!.hash, actual: `error: no fallback for family quadruped at ${tier}`, gapsDiffer: false },
     ]);
-    expect(catalogue.fallbacks.has('quadruped')).toBe(true);
+    expect(catalogue.fallbacks.has(`quadruped/${tier}`)).toBe(true);
   });
 });
 

@@ -67,7 +67,7 @@ describe('parseCatalogueText', () => {
       { slot: 'torso', index: 0, frame: 'rest', dx: 0, dy: 0 },
       { slot: 'head', index: 0, frame: 'rest', dx: 0, dy: 0 },
     ]);
-    expect(c.fallbacks.get('quadruped')).toBe('quadruped/head/h3/medium/v0');
+    expect([...c.fallbacks]).toEqual([['quadruped/medium', 'quadruped/head/h3/medium/v0']]);
     expect(c.palette).toEqual({ colours: [0x0b1020, 0xffffff, 0xeeeeee, 0x00ff00, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4], ramps: { emerald: [12, 13, 14, 15] }, outline: 0, eye: 1, eyeHighlight: 2, glow: 3 });
   });
 
@@ -158,7 +158,7 @@ describe('parseCatalogueText: structure checks', () => {
   });
   it('rejects duplicate attach names and fallbacks', () => {
     expect(thrown(`part ${ID}\nframe rest anchor=0,0 attach=a:1,1,a:2,2\n1\n`)).toBe('line 2: duplicate attach a');
-    expect(thrown('fallback quadruped a/b\nfallback quadruped c/d')).toBe('line 2: duplicate fallback quadruped');
+    expect(thrown('fallback quadruped a/b\nfallback quadruped c/d')).toBe('line 1: bad fallback part id a/b');
   });
   it('rejects variants with a leading zero', () => {
     expect(thrown('part quadruped/head/h3/medium/v01')).toBe('part quadruped/head/h3/medium/v01: bad id');
@@ -207,10 +207,25 @@ describe('parseCatalogueText: stricter checks', () => {
     expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\npose strike\nentry head 0 rest 1 0\n`)).toBe('did not throw');
   });
   it('rejects a fallback naming a part that is missing by the end, or that has no rest frame', () => {
-    expect(thrown(`${PART}\nfallback quadruped quadruped/torso/none/medium/v0\n`)).toBe('fallback quadruped: part quadruped/torso/none/medium/v0 missing or has no rest frame');
-    expect(thrown(`part ${ID}\nframe wave anchor=0,0\n1\n\nfallback quadruped ${ID}\n`)).toBe(`fallback quadruped: part ${ID} missing or has no rest frame`);
+    expect(thrown(`${PART}\nfallback quadruped quadruped/torso/none/medium/v0\n`)).toBe('fallback quadruped medium: part quadruped/torso/none/medium/v0 missing or has no rest frame');
+    expect(thrown(`part ${ID}\nframe wave anchor=0,0\n1\n\nfallback quadruped ${ID}\n`)).toBe(`fallback quadruped medium: part ${ID} missing or has no rest frame`);
     // The part may come after the fallback line: the check runs once parsing is done.
     expect(thrown(`fallback quadruped ${ID}\n${PART}`)).toBe('did not throw');
+  });
+});
+
+describe('parseCatalogueText: one fallback per family and tier', () => {
+  const part = (tier: string): string => `part quadruped/torso/fb/${tier}/v0\nframe rest anchor=0,0\n1\n\n`;
+  it('keys each fallback by its family and the tier segment of its part id', () => {
+    const c = parseCatalogueText(`${part('small')}${part('large')}fallback quadruped quadruped/torso/fb/small/v0\nfallback quadruped quadruped/torso/fb/large/v0\nfallback fish quadruped/torso/fb/small/v0\n`);
+    expect([...c.fallbacks]).toEqual([
+      ['quadruped/small', 'quadruped/torso/fb/small/v0'], ['quadruped/large', 'quadruped/torso/fb/large/v0'], ['fish/small', 'quadruped/torso/fb/small/v0'],
+    ]);
+  });
+  it('rejects a second fallback for the same family and tier, and a part id with no tier', () => {
+    expect(thrown(`${part('small')}${part('large')}fallback quadruped quadruped/torso/fb/small/v0\nfallback quadruped quadruped/torso/fb/large/v0\nfallback quadruped quadruped/torso/fb/small/v0\n`))
+      .toBe('line 11: duplicate fallback quadruped small');
+    expect(thrown('fallback quadruped quadruped/torso/fb/huge/v0')).toBe('line 1: bad fallback part id quadruped/torso/fb/huge/v0');
   });
 });
 

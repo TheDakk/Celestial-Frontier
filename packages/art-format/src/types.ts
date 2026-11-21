@@ -13,7 +13,13 @@ export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: n
 export interface Pose { id: string; entries: readonly PoseEntry[]; contact?: readonly [number, number]; }
 export interface Scaffold { id: string; family: string; tier: SizeTier; origin: readonly [number, number]; poses: Readonly<Record<string, Pose>>; }
 export interface Palette { colours: readonly number[]; ramps: Readonly<Record<string, readonly [number, number, number, number]>>; outline: number; eye: number; eyeHighlight: number; glow: number; }
+/** `fallbacks` maps `<family>/<tier>` to the id of the part drawn alone when a creature of that family and tier has nothing else to draw. */
 export interface Catalogue { parts: ReadonlyMap<string, Part>; scaffolds: ReadonlyMap<string, Scaffold>; palette: Palette; fallbacks: ReadonlyMap<string, string>; }
+
+/** The key of `Catalogue.fallbacks` for a family and tier. */
+export function fallbackKey(family: string, tier: SizeTier): string {
+  return `${family}/${tier}`;
+}
 
 export function partId(family: string, slot: SlotName, kind: string, tier: SizeTier, variant: number): string {
   return `${family}/${slot}/${kind}/${tier}/v${variant}`;

@@ -250,17 +250,21 @@ export function parseCatalogueText(text: string): Catalogue {
         need(2);
         {
           const family = checkName(args[0] as string, n);
-          if (fallbacks.has(family)) throw new Error(`line ${n}: duplicate fallback ${family}`);
-          fallbacks.set(family, args[1] as string);
+          const id = args[1] as string;
+          const target = parsePartId(id);
+          if (!target) throw new Error(`line ${n}: bad fallback part id ${id}`);
+          const key = `${family}/${target.tier}`;
+          if (fallbacks.has(key)) throw new Error(`line ${n}: duplicate fallback ${family} ${target.tier}`);
+          fallbacks.set(key, id);
         }
         break;
     }
   }
   closeAll();
 
-  for (const [family, id] of fallbacks) {
+  for (const [key, id] of fallbacks) {
     const target = parts.get(id);
-    if (target === undefined || !Object.hasOwn(target.frames, 'rest')) throw new Error(`fallback ${family}: part ${id} missing or has no rest frame`);
+    if (target === undefined || !Object.hasOwn(target.frames, 'rest')) throw new Error(`fallback ${key.replace('/', ' ')}: part ${id} missing or has no rest frame`);
   }
   if (sawPalette) {
     for (const i of usedColours) if (!definedColours.has(i)) throw new Error(`palette: colour ${i} used but not defined`);

@@ -117,6 +117,10 @@ frame rest anchor=1,0
 a6
 66
 
+part quadruped/torso/blob/medium/v0
+frame rest anchor=0,0
+a
+
 part serpent/torso/coil/small/v0
 frame wave anchor=0,0
 6
@@ -130,10 +134,11 @@ entry torso 0 rest 0 0
 pose strike contact=20,12
 
 fallback quadruped quadruped/torso/blob/small/v0
+fallback quadruped quadruped/torso/blob/medium/v0
 `);
 // The parser refuses a fallback to a missing part or one without a rest frame; compose still guards against a
 // catalogue built in code, so these two are added after parsing.
-const catalogue = { ...parsed, fallbacks: new Map([...parsed.fallbacks, ['serpent', 'serpent/torso/coil/small/v0'], ['ghost', 'ghost/torso/none/small/v0']]) };
+const catalogue = { ...parsed, fallbacks: new Map([...parsed.fallbacks, ['serpent/medium', 'serpent/torso/coil/small/v0'], ['ghost/small', 'ghost/torso/none/small/v0']]) };
 
 function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over: Partial<Recipe> = {}): Recipe {
   return {
@@ -192,23 +197,31 @@ describe('compose', () => {
     expect(fallback.gaps).toEqual(['pose:nope', 'fallback:quadruped']);
   });
 
-  it('a missing scaffold composes the fallback at the canvas centre', () => {
+  it('a missing scaffold composes the fallback for the family and tier at the canvas centre', () => {
     const r = compose(recipeOf([['torso', 0, TORSO]], { tier: 'medium', scaffoldId: 'quadruped/sturdy/medium' }), 'rest', catalogue);
     expect([r.buffer.w, r.buffer.h]).toEqual([96, 64]);
-    // The quadruped fallback (anchor at its top-right pixel) at (48,32): x 47-48, y 32-33, finished.
-    expect(crop(r.buffer, 46, 31, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
+    // The medium quadruped fallback (one pixel, its anchor) at (48,32), finished: not the small one.
+    expect(crop(r.buffer, 47, 31, 3, 3)).toBe(['.g.', 'gag', '.g.'].join('\n'));
+    expect(count(r.buffer)).toBe(5);
     expect(r.contact).toBeNull();
     expect(r.gaps).toEqual(['scaffold:quadruped/sturdy/medium', 'fallback:quadruped']);
   });
 
   it('throws when the fallback part has no rest frame, like a missing entry or part', () => {
     expect(() => compose(recipeOf([['torso', 0, 'serpent/torso/coil/small/v0']], { family: 'serpent', tier: 'medium', scaffoldId: 'serpent/body/medium' }), 'rest', catalogue))
-      .toThrow(new Error('no fallback for family serpent'));
+      .toThrow(new Error('no fallback for family serpent at medium'));
   });
 
   it('throws the exact message when the family has no fallback, or its fallback part is not in the catalogue', () => {
-    expect(() => compose(recipeOf([], { family: 'radial' }), 'rest', catalogue)).toThrow(new Error('no fallback for family radial'));
-    expect(() => compose(recipeOf([], { family: 'ghost' }), 'rest', catalogue)).toThrow(new Error('no fallback for family ghost'));
+    expect(() => compose(recipeOf([], { family: 'radial' }), 'rest', catalogue)).toThrow(new Error('no fallback for family radial at small'));
+    expect(() => compose(recipeOf([], { family: 'ghost' }), 'rest', catalogue)).toThrow(new Error('no fallback for family ghost at small'));
+  });
+
+  it('uses only the fallback for the recipe\'s own tier: a family with a fallback at one tier throws at another', () => {
+    expect(() => compose(recipeOf([], { tier: 'large', scaffoldId: 'quadruped/sturdy/large' }), 'rest', catalogue))
+      .toThrow(new Error('no fallback for family quadruped at large'));
+    expect(() => compose(recipeOf([], { family: 'serpent', scaffoldId: 'serpent/body/small' }), 'rest', catalogue))
+      .toThrow(new Error('no fallback for family serpent at small'));
   });
 
   it('gives the same hash twice and leaves the recipe unchanged', () => {
