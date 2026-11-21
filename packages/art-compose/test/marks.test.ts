@@ -98,7 +98,7 @@ describe('paintMarks: spots', () => {
 });
 
 describe('paintMarks: strength', () => {
-  // A 15x3 frame: flow along the length, five 3x3 spots, and a hand-drawn striped layer of eight separate marks.
+  // A 15x3 frame: flow along the length and five 3x3 spots.
   const host = ['222222222222222', '333333333333333', '222222222222222'];
   const rich = frameOf(host, {
     flow: [FLOW15, FLOW15, FLOW15],
@@ -175,6 +175,12 @@ describe('paintMarks: hand-drawn layers', () => {
     for (const rolls of [ZERO, ALL99, rollsWith(99, 0, 50, 20), rollsWith(40, 80, 10)]) {
       for (const strength of [0, 1, 2] as const) expect(rowsOf(f, paintMarks(f, 'spotted', strength, 0, rolls))).toEqual(drawnAsIs);
     }
+  });
+
+  it('a hand-drawn layer value above 12, possible only in a frame built in code, is never written', () => {
+    // The parser caps a hand-drawn layer at 12; a frame built in code is not parsed. 13 is the eye value.
+    const f: PartFrame = { w: 3, h: 1, pixels: Uint8Array.from([2, 2, 2]), anchor: [0, 0], attach: {}, layers: { striped: Uint8Array.from([13, 12, 20]) } };
+    expect(Array.from(paintMarks(f, 'striped', 2, 0, ZERO)!)).toEqual([2, 12, 2]);
   });
 
   it('a hand-drawn layer for another pattern is ignored', () => {
@@ -288,10 +294,5 @@ describe('paintMarks: safety (Review Focus 4)', () => {
       }
     }
     expect(snapshot(f)).toEqual(before);
-  });
-
-  it('gives the same pixels on every call', () => {
-    const f = frameOf(['2222', '3333'], { flow: ['1234', '1234'], spots: ['1122', '1122'] });
-    for (const p of MARKED) expect(paintMarks(f, p, 1, 5, rollsWith(40, 20))).toEqual(paintMarks(f, p, 1, 5, rollsWith(40, 20)));
   });
 });

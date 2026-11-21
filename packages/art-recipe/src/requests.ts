@@ -15,12 +15,17 @@ export const BACK_KIND_BY_SKIN: readonly (string | null)[] = Object.freeze(
 /** The head feature a torso type asks for; other torso types ask for none. Part of renderer version 1. */
 export const HEAD_FEATURE_BY_TORSO: Readonly<Record<string, string>> = Object.freeze({ tusked: 'tusks', horned: 'horns' });
 
-/** The limb kind at a limb index: index 0 is the front pair, 1 the hind pair, 2 and 3 the middle pairs; a pair is hind. */
+/** The limb kind at a limb index: index 0 is the front pair, 1 the hind pair, 2 and 3 the middle pairs; both legs of a two-legged creature are hind. */
 export function limbKind(index: number, legs: number): 'fore' | 'hind' | 'mid' {
   if (legs === 2) return 'hind';
   if (index === 0) return 'fore';
   if (index === 1) return 'hind';
   return 'mid';
+}
+
+/** The torso type a scaffold and its parts are named for: the anatomy's torso, or `body` for a family with none. */
+export function torsoKindOf(a: Anatomy): string {
+  return a.torso === '' ? 'body' : a.torso;
 }
 
 interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean }
@@ -45,7 +50,7 @@ export function planParts(
   const gaps: string[] = [];
   if (a.kingdom !== 'fauna') return { parts, gaps };
 
-  const torsoKind = a.torso === '' ? 'body' : a.torso;
+  const torsoKind = torsoKindOf(a);
   const wanted: Wanted[] = [];
   const far = a.limbs >> 1;
   const near = a.limbs - far;

@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
+const { buildRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -53,6 +53,8 @@ const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes
 /** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
 const LABEL_BASE = 21;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
+/** The palette's iris ramp names, iris0 to iris7. */
+const IRIS_RAMPS = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
 const NO_LIMBS = LIMB_COUNTS.indexOf(0);
@@ -107,7 +109,7 @@ function genomeFor(scaffold) {
   for (const loco of [0, 4]) {
     for (let body = 0; body < 16; body++) {
       const a = resolveAnatomy({ kingdom: 'fauna', body, loco, ...tierGenes });
-      if (a.family === family && (a.torso === '' ? 'body' : a.torso) === torsoKind) return { body, loco, ...tierGenes };
+      if (a.family === family && torsoKindOf(a) === torsoKind) return { body, loco, ...tierGenes };
     }
   }
   return undefined;
@@ -473,9 +475,8 @@ function structureProblems(catalogue) {
     }
   }
   // A palette with none of the iris ramps is today's format (information, see checkPack); with some, every one must be there.
-  const iris = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
-  if (iris.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
-    for (const name of iris) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
+  if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+    for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
@@ -763,7 +764,7 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const info = [];
-  if (!Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`).some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+  if (!IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
     info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;

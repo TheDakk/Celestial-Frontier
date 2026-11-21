@@ -138,6 +138,7 @@ const ID: Record<string, string> = {
   fin: 'quadruped/back/fin/small/v0',
   norest: 'quadruped/back/norest/small/v0',
   orb: 'quadruped/glow/orb/small/v0',
+  legged: 'quadruped/torso/legged/small/v0',
 };
 
 type Spec = readonly [SlotName, number, string];
@@ -458,14 +459,14 @@ entry torso 0 rest 0 0
 });
 
 describe('assemble: stance by leg count', () => {
-  const stance = (legs: number, pose: string, extra: readonly Spec[] = []): { x: number; gaps: readonly string[]; frameOffset: number } => {
+  // The legged torso (origin 10,10) hangs its near legs from y 5 of the frame: each leg's top pixel lands on canvas row 15.
+  const LEG_ROW = 15;
+  const stance = (legs: number, pose: string, extra: readonly Spec[] = []): { x: number; gaps: readonly string[] } => {
     const r = assemble(recipeOf([['torso', 0, 'legged'], ['nearLimbs', 0, 'near'], ...extra], { scaffoldId: 'quadruped/legged/small', legs }), pose, catalogue);
-    const row = 15;
     let x = -1;
-    for (let i = 0; i < r.buffer.w; i++) if (at(r.buffer, i, row) === 6) { x = i; break; }
-    return { x, gaps: r.gaps, frameOffset: 0 };
+    for (let i = 0; i < r.buffer.w; i++) if (at(r.buffer, i, LEG_ROW) === 6) { x = i; break; }
+    return { x, gaps: r.gaps };
   };
-  ID['legged'] = 'quadruped/torso/legged/small/v0';
 
   it('a two-legged creature hangs its near leg from near0_2', () => {
     expect(stance(2, 'rest').x).toBe(14);
@@ -697,7 +698,7 @@ entry torso 0 hop 0 0
       ['head', 0, 'quadruped/head/h1/small/v0', undefined],
       ['eyes', 0, 'quadruped/eyes/eye/small/v0', { offset: 0, rolls: ZERO }],
     ], 1), 'rest', marked);
-    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 5, shown as 17.
+    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 6, shown as 18.
     expect([at(r.buffer, 15, 10), at(r.buffer, 16, 10), at(r.buffer, 17, 10)]).toEqual([17, 13, 20]);
     expect(r.gaps).toEqual([]);
   });
