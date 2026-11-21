@@ -583,12 +583,15 @@ const recorders = {
       .map(([successDraw, ch]) => ({ successDraw, chance: ch, hit: acq.captureHitV1(successDraw, ch) }));
 
     // Capture end to end on worlds whose canonical addresses the current game's acquisition tests use:
-    // Earth (home ring), a ring-3, a ring-4 and a deep living world.
+    // Earth (home ring), a ring-3, a ring-4 and a deep living world; then Kaum and Osum, two home-galaxy
+    // worlds whose star positions come from the current game's galaxyScene(999).stars.
     const WORLDS = {
       earth: { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 }, planetSeed: 133 },
       ring3: { galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 }, star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 }, planetSeed: 2525295284 },
       ring4: { galaxy: { seed: 742431365, x: 357.33832279220223, y: 1882.66924303025 }, star: { seed: 134687484, x: 219.1186681254767, y: -157.20003835111856 }, planetSeed: 2525295284 },
       deepLiving: { galaxy: { seed: 1012779741, x: -599.7658047693408, y: -6073.942273357868 }, star: { seed: 3589953231, x: -138.81464905291796, y: -21.96363354055211 }, planetSeed: 3533877330 },
+      kaum: { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 2737406570, x: 160.5956227169372, y: -89.13221201486886 }, planetSeed: 1757105165 },
+      osum: { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 1074947061, x: 114.26536275492981, y: 446.9253231128678 }, planetSeed: 51464061 },
     };
     const gearSource = loot.makeGearSourceActionId({ kind: 'legacy-migration', ownerId: 'acquisition-recorder', actionKey: 'items-v1', receiptId: 'migration:v4-v5' });
     const GEAR = {
@@ -774,6 +777,40 @@ const recorders = {
         }));
       }
     }
+    // Companion missions. The sealed result comes from exactly three companion-mission draws, planned
+    // from the injected SessionRNG state; the claim stamps the companion's new bond memories with the
+    // injected active-play clock.
+    const missions = await load('packages/domain/acquisition/src/companion-missions.ts');
+    const care = await load('packages/domain/acquisition/src/companion-care.ts');
+    const bondOf = (memories) => care.withCompanionBondMemoriesV1(null, Array.from({ length: memories }, (_, i) => ({ id: `taste:m${i}`, kind: 'taste' })), 0);
+    const missionDraws = (sessionRng) => planSessionRNGDraws(createSessionRNG(sessionRng.seed, { ...sessionRng.draws }, sessionRng.ordinal).state(),
+      [missions.COMPANION_MISSION_DOMAIN_V1, missions.COMPANION_MISSION_DOMAIN_V1, missions.COMPANION_MISSION_DOMAIN_V1]).draws.map((d) => d.value);
+    const DEPOSITS = ['Fe', 'Si', 'Ni', 'Cu'];
+    const seals = [];
+    for (const type of missions.COMPANION_MISSION_TYPES_V1) {
+      for (const length of missions.COMPANION_MISSION_LENGTHS_V1) {
+        for (const bondMemories of [0, 15]) {
+          for (const seed of [5, 6, 7, 3735928559]) {
+            const input = { type, length, bondMemories, deposits: DEPOSITS, sessionRng: { seed, ordinal: 0, draws: {} } };
+            const c = structuredClone(input);
+            const draws = missionDraws(c.sessionRng);
+            seals.push({ input, draws, sealed: plain(missions.sealCompanionMissionV1({ type: c.type, length: c.length, bond: bondOf(c.bondMemories), deposits: c.deposits, draws })) });
+          }
+        }
+      }
+    }
+    const claims = [];
+    for (const length of ['short', 'long']) {
+      for (const activePlayMs of [1000, 90000]) {
+        const input = { length, type: 'survey', worldKey: 'CF1|recorded-world', missionId: 'mission:7', activePlayMs, sessionRng: { seed: 6, ordinal: 0, draws: {} } };
+        const c = structuredClone(input);
+        const sealed = missions.sealCompanionMissionV1({ type: c.type, length: c.length, bond: null, deposits: DEPOSITS, draws: missionDraws(c.sessionRng) });
+        const [first, second] = injectedOnly[0].input.parents;
+        const { state, ids } = ownershipOf([{ ...first, assignment: { kind: 'mission', missionId: c.missionId } }, second]);
+        const out = missions.companionMissionClaimSuccessorV1(state, { creatureId: ids[0], missionId: c.missionId, type: c.type, length: c.length, worldKey: c.worldKey, sealed, activePlayMs: c.activePlayMs });
+        claims.push({ input, sealed: plain(sealed), creatureAfter: plain(out.creatureAfter), memento: out.memento, successorDigest: v2.ownershipStateDigestV2(out.successor) });
+      }
+    }
     for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`acquisition: ${name} was left defined`);
 
     return {
@@ -785,10 +822,11 @@ const recorders = {
       },
       injected: {
         clock: 'activePlayMs, an integer of active-play milliseconds, given in every case input; no case reads a device clock',
-        random: 'a SessionRNG state { seed, ordinal, draws } given in every case input; capture draws capture.candidate then capture.success, breeding draws care.breed, each planned with planSessionRNGDraws; fixedDraws are settled directly',
+        random: 'a SessionRNG state { seed, ordinal, draws } given in every case input; capture draws capture.candidate then capture.success, breeding draws care.breed, a mission seal draws companion-mission three times, each planned with planSessionRNGDraws; fixedDraws are settled directly',
       },
       taming: { tameOdds: acq.TAME_ODDS_V1, chance, hitEdges, worlds, gear: GEAR, captures, chains },
       breeding: { world: 'kaum', star: KAUM.star, planet: KAUM.planet, epoch: 0, cases: breeding, injectedOnly },
+      missions: { deposits: DEPOSITS, seals, claims },
     };
   },
   // Fixed fabrication plans of the opportunity package: the one planner that needs no Arc 2 capability.
@@ -800,7 +838,9 @@ const recorders = {
     for (const name of NAMES) if (name in globalThis) throw new Error(`opportunity: ${name} must not be defined before recording`);
     const load = (rel) => import(pathToFileURL(join(source, rel)).href);
     const o = await load('packages/domain/opportunity/src/index.ts');
-    const { resolveCF1WorldAddress } = await load('packages/scene/src/index.ts');
+    const { resolveCF1WorldAddress, resolveCF1StarAddress, navFromCanonicalCF1Address } = await load('packages/scene/src/index.ts');
+    const loot = await load('packages/domain/loot/src/index.ts');
+    const { registerArc2EngineeringLoadout } = await load('packages/domain/loot/src/engineering-loadout-internal.ts');
     const { installCaptureHooks } = await load('packages/domain/descriptors/src/index.ts');
     // The address resolver walks the current game's worldgen, which reads GAL_SPRITES.
     installCaptureHooks();
@@ -830,16 +870,82 @@ const recorders = {
         }
       }
     }
+
+    // Mining and stellar skimming need an Arc 2 engineering capability. It is built from the loot
+    // package directly (a registered loadout of legacy gear plus system counts), as inventory 5 #3
+    // proposes, instead of through persistence. Each economy receipt is taken from its plan with the
+    // same injected clock the plan was made at.
+    const gearSource = loot.makeGearSourceActionId({ kind: 'legacy-migration', ownerId: 'opportunity-recorder', actionKey: 'items-v1', receiptId: 'migration:v4-v5' });
+    const LOADOUTS = {
+      none: { itemCounts: [], equipped: {}, equippedAffixes: {}, systems: [] },
+      mining: { itemCounts: [['rig3', 1], ['headlamp', 1]], equipped: { tool: 'rig3', helmet: 'headlamp' }, equippedAffixes: { tool: { k: 'yield', v: 0.25, forId: 'rig3' } }, systems: [{ baseId: 'autoext', count: 1 }] },
+      jumpdrive: { itemCounts: [], equipped: {}, equippedAffixes: {}, systems: [{ baseId: 'jumpdrive', count: 1 }] },
+    };
+    const capabilitiesOf = (l) => {
+      const migrated = loot.migrateLegacyGear({ sourceActionId: gearSource, itemCounts: l.itemCounts, equipped: l.equipped, equippedAffixes: l.equippedAffixes });
+      const inventory = loot.decodeGearInventory(JSON.stringify({
+        schema: loot.GEAR_INVENTORY_SCHEMA, revision: 1, capacity: 8,
+        entries: migrated.instances.map((instance) => ({ instance, favorite: false, locked: false })),
+        equipped: migrated.equipped, pendingRewards: [],
+      }));
+      return loot.projectEngineeringCapabilities(registerArc2EngineeringLoadout(inventory, l.systems));
+    };
+    const attempt = (fn) => { try { return fn(); } catch (error) { return { throws: String(error.message) }; } };
+    const mars = { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 }, planet: { seed: 134 } };
+    const marsAddress = resolveCF1WorldAddress(mars).address;
+    const marsSurface = navFromCanonicalCF1Address(marsAddress).state;
+    const mine = (state, loadout, activePlayMs, receiptOrdinal) => o.planWorldMining({
+      state, opportunity: o.projectWorldOpportunity(marsAddress), currentSurface: marsSurface,
+      capabilities: capabilitiesOf(LOADOUTS[loadout]), activePlay: { activePlayMs }, receiptOrdinal,
+    });
+    const receipt = (fn, plan, activePlayMs) => attempt(() => fn(plan, { receiptId: `receipt-${plan.receiptOrdinal}`, activePlayMs }));
+    const mining = [];
+    for (const loadout of ['none', 'mining']) {
+      for (const activePlayMs of [1000, 90000]) {
+        for (const receiptOrdinal of [3, 4]) {
+          const input = { loadout, activePlayMs, receiptOrdinal };
+          const plan = mine(o.createEngineeringState(), loadout, activePlayMs, receiptOrdinal);
+          mining.push({ input, plan: plain(plan), receipt: plan.status === 'planned' ? plain(receipt(o.economyReceiptFromWorldMiningV1, plan, activePlayMs)) : null,
+            receiptAtOtherClock: plan.status === 'planned' ? plain(receipt(o.economyReceiptFromWorldMiningV1, plan, activePlayMs + 1)) : null });
+        }
+      }
+    }
+    // The Auto-Extractor: a first load at 1000 starts its cursor; a second load from that state, later on
+    // the injected clock, collects the loads matured in between.
+    const autoExtractor = [];
+    for (const later of [1000 + 600000, 1000 + 3600000]) {
+      const first = mine(o.createEngineeringState(), 'mining', 1000, 3);
+      const second = mine(first.nextState, 'mining', later, 4);
+      autoExtractor.push({ input: { loadout: 'mining', first: { activePlayMs: 1000, receiptOrdinal: 3 }, second: { activePlayMs: later, receiptOrdinal: 4 } }, plan: plain(second) });
+    }
+    const remnant = { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3363971653, x: -386.2348864697851, y: 453.95830733468756 } };
+    const remnantAddress = resolveCF1StarAddress(remnant).address;
+    const remnantSystem = navFromCanonicalCF1Address(remnantAddress).state;
+    const skimming = [];
+    for (const loadout of ['none', 'jumpdrive']) {
+      for (const activePlayMs of [2000, 90000]) {
+        for (const receiptOrdinal of [4, 5]) {
+          const input = { loadout, playerHp: 100, activePlayMs, receiptOrdinal };
+          const plan = o.planStellarSkim({ state: o.createEngineeringState(), opportunity: o.projectStarOpportunity(remnantAddress), currentSystem: remnantSystem,
+            capabilities: capabilitiesOf(LOADOUTS[loadout]), playerHp: 100, activePlay: { activePlayMs }, receiptOrdinal });
+          skimming.push({ input, plan: plain(plan), receipt: plan.status === 'planned' ? plain(receipt(o.economyReceiptFromStellarSkimV1, plan, activePlayMs)) : null,
+            receiptAtOtherClock: plan.status === 'planned' ? plain(receipt(o.economyReceiptFromStellarSkimV1, plan, activePlayMs + 1)) : null });
+        }
+      }
+    }
+    const samples = o.projectFieldSamples({ address: marsAddress, opportunity: o.projectWorldOpportunity(marsAddress), landing: 'first', training: false });
+    const fieldSamples = [500, 90000].map((activePlayMs) => ({ input: { landing: 'first', training: false, activePlayMs }, receipt: plain(attempt(() => o.economyReceiptFromFieldSamplesV1(samples, { receiptId: 'land-receipt-1', activePlayMs }))) }));
     for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`opportunity: ${name} was left defined`);
     return {
       freeGlobals: {
         installCaptureHooks: 'called once before the first case: the address resolver reaches worldgen, which reads GAL_SPRITES',
         COSMIC_EPOCH: 'not supplied', st: 'not supplied', customNames: 'not supplied',
       },
-      injected: { clock: 'activePlayMs, given in every case input as activePlay.activePlayMs', random: 'none: the receipt ordinal, given in every input, seeds generated-gear metadata' },
+      injected: { clock: 'activePlayMs, given in every case input as activePlay.activePlayMs', random: 'none: the receipt ordinal, given in every input, seeds generated-gear metadata; mining and skimming draw from mulberry32 seeded by the planet or star seed and the extraction count' },
       world,
       assets: ASSETS,
       fabrication: cases,
+      mars, remnant, loadouts: LOADOUTS, mining, autoExtractor, skimming, fieldSamples,
     };
   },
 };

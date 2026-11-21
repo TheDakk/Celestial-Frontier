@@ -7,7 +7,7 @@
  },
  "injected": {
   "clock": "activePlayMs, given in every case input as activePlay.activePlayMs",
-  "random": "none: the receipt ordinal, given in every input, seeds generated-gear metadata"
+  "random": "none: the receipt ordinal, given in every input, seeds generated-gear metadata; mining and skimming draw from mulberry32 seeded by the planet or star seed and the extraction count"
  },
  "world": {
   "galaxy": {
@@ -3426,6 +3426,1737 @@
      }
     },
     "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"fabricate-fixed\",\"receiptOrdinal\":5,\"previousRevision\":2,\"previousState\":\"es2:578:239c86fe\",\"nextRevision\":3,\"nextState\":\"es2:657:44ddc1fd\",\"sourceKey\":\"recipe:autoext\",\"activePlayMs\":90000,\"assets\":\"fabrication-assets-v1:151:1212700d\",\"recipe\":\"fixed-recipe-v1:240:a0ff6434\",\"result\":{\"baseId\":\"autoext\",\"quote\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"craftable\":true,\"alreadyBuilt\":false,\"missingMaterials\":[],\"missingParts\":[],\"missingStardust\":0,\"missingPrerequisiteId\":null,\"missingSignatureId\":null},\"arc2\":{\"authority\":\"legacy-v1.8.9-items\",\"baseId\":\"autoext\",\"outputKind\":\"permanent-system\",\"consume\":{\"materials\":[],\"exceptionalMaterials\":[],\"itemCounts\":[{\"id\":\"cell\",\"quantity\":1},{\"id\":\"navcore\",\"quantity\":1},{\"id\":\"servo\",\"quantity\":2}],\"stardust\":40},\"preservePrerequisiteId\":null,\"preserveSignatureId\":null,\"grantCount\":1,\"gearAxes\":null,\"gearGenerationPlan\":null,\"autoExtractorReanchoredWorlds\":1}}}"
+   }
+  }
+ ],
+ "mars": {
+  "galaxy": {
+   "seed": 999,
+   "x": 90,
+   "y": -60
+  },
+  "star": {
+   "seed": 424242,
+   "x": 560,
+   "y": 170
+  },
+  "planet": {
+   "seed": 134
+  }
+ },
+ "remnant": {
+  "galaxy": {
+   "seed": 999,
+   "x": 90,
+   "y": -60
+  },
+  "star": {
+   "seed": 3363971653,
+   "x": -386.2348864697851,
+   "y": 453.95830733468756
+  }
+ },
+ "loadouts": {
+  "none": {
+   "itemCounts": [],
+   "equipped": {},
+   "equippedAffixes": {},
+   "systems": []
+  },
+  "mining": {
+   "itemCounts": [
+    [
+     "rig3",
+     1
+    ],
+    [
+     "headlamp",
+     1
+    ]
+   ],
+   "equipped": {
+    "tool": "rig3",
+    "helmet": "headlamp"
+   },
+   "equippedAffixes": {
+    "tool": {
+     "k": "yield",
+     "v": 0.25,
+     "forId": "rig3"
+    }
+   },
+   "systems": [
+    {
+     "baseId": "autoext",
+     "count": 1
+    }
+   ]
+  },
+  "jumpdrive": {
+   "itemCounts": [],
+   "equipped": {},
+   "equippedAffixes": {},
+   "systems": [
+    {
+     "baseId": "jumpdrive",
+     "count": 1
+    }
+   ]
+  }
+ },
+ "mining": [
+  {
+   "input": {
+    "loadout": "none",
+    "activePlayMs": 1000,
+    "receiptOrdinal": 3
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 3,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": false,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": null,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 2
+      },
+      {
+       "id": "Cl",
+       "quantity": 3
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1def9917",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":3,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:528:f5e66d12\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:44:5ee669a4\",\"activePlayMs\":1000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":0,\"richStrikeChanceBonus\":0},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":false,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":null,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":2},{\"id\":\"Cl\",\"quantity\":3}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1def9917\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-3",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 1000,
+    "materials": {
+     "Ca": 2,
+     "Cl": 3
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "activePlayMs": 1000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": false,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": null,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 2
+      },
+      {
+       "id": "Cl",
+       "quantity": 3
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1def9917",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:528:f5e66d12\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:44:5ee669a4\",\"activePlayMs\":1000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":0,\"richStrikeChanceBonus\":0},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":false,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":null,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":2},{\"id\":\"Cl\",\"quantity\":3}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1def9917\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 1000,
+    "materials": {
+     "Ca": 2,
+     "Cl": 3
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 3
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 3,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": false,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": null,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 2
+      },
+      {
+       "id": "Cl",
+       "quantity": 3
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1def9917",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":3,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:528:f5e66d12\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:44:5ee669a4\",\"activePlayMs\":90000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":0,\"richStrikeChanceBonus\":0},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":false,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":null,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":2},{\"id\":\"Cl\",\"quantity\":3}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1def9917\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-3",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 90000,
+    "materials": {
+     "Ca": 2,
+     "Cl": 3
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": null
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": false,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": null,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 2
+      },
+      {
+       "id": "Cl",
+       "quantity": 3
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1def9917",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:528:f5e66d12\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:44:5ee669a4\",\"activePlayMs\":90000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":0,\"richStrikeChanceBonus\":0},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":false,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":null,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":2},{\"id\":\"Cl\",\"quantity\":3}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1def9917\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 90000,
+    "materials": {
+     "Ca": 2,
+     "Cl": 3
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "mining",
+    "activePlayMs": 1000,
+    "receiptOrdinal": 3
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 3,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 1000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": true,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": 1000,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 5
+      },
+      {
+       "id": "Cl",
+       "quantity": 9
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1a3aa8e8",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":3,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:606:dcdc9186\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":1000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":true,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":1000,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":5},{\"id\":\"Cl\",\"quantity\":9}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1a3aa8e8\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-3",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 1000,
+    "materials": {
+     "Ca": 5,
+     "Cl": 9
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "mining",
+    "activePlayMs": 1000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 1000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": true,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": 1000,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 5
+      },
+      {
+       "id": "Cl",
+       "quantity": 9
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1a3aa8e8",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:606:dcdc9186\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":1000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":true,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":1000,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":5},{\"id\":\"Cl\",\"quantity\":9}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1a3aa8e8\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 1000,
+    "materials": {
+     "Ca": 5,
+     "Cl": 9
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "mining",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 3
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 3,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 90000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": true,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": 90000,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 5
+      },
+      {
+       "id": "Cl",
+       "quantity": 9
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1a3aa8e8",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":3,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:607:e0a01c96\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":90000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":true,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":90000,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":5},{\"id\":\"Cl\",\"quantity\":9}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1a3aa8e8\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-3",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 90000,
+    "materials": {
+     "Ca": 5,
+     "Cl": 9
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "mining",
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 1,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 90000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 1,
+     "loads": 1,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": true,
+      "priorCollectedThroughActivePlayMs": null,
+      "nextCollectedThroughActivePlayMs": 90000,
+      "matured": 0,
+      "due": 0,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 0
+     },
+     "materials": [
+      {
+       "id": "Ca",
+       "quantity": 5
+      },
+      {
+       "id": "Cl",
+       "quantity": 9
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:26:1a3aa8e8",
+     "extractionsTaken": 1,
+     "pullsRemaining": 569,
+     "firstMine": true,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:607:e0a01c96\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":90000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":1,\"loads\":1,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":true,\"priorCollectedThroughActivePlayMs\":null,\"nextCollectedThroughActivePlayMs\":90000,\"matured\":0,\"due\":0,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":0},\"materials\":[{\"id\":\"Ca\",\"quantity\":5},{\"id\":\"Cl\",\"quantity\":9}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:26:1a3aa8e8\",\"extractionsTaken\":1,\"pullsRemaining\":569,\"firstMine\":true,\"minedOut\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-world-mining",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 90000,
+    "materials": {
+     "Ca": 5,
+     "Cl": 9
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Mine receipt does not match its registered action witness"
+   }
+  }
+ ],
+ "autoExtractor": [
+  {
+   "input": {
+    "loadout": "mining",
+    "first": {
+     "activePlayMs": 1000,
+     "receiptOrdinal": 3
+    },
+    "second": {
+     "activePlayMs": 601000,
+     "receiptOrdinal": 4
+    }
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 1,
+    "nextRevision": 2,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 2,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 3,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 601000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 2,
+     "loads": 2,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": 1000,
+      "nextCollectedThroughActivePlayMs": 601000,
+      "matured": 1,
+      "due": 1,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 1
+     },
+     "materials": [
+      {
+       "id": "Cl",
+       "quantity": 8
+      },
+      {
+       "id": "Si",
+       "quantity": 25
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 0,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:55:9b2abec2",
+     "extractionsTaken": 3,
+     "pullsRemaining": 567,
+     "firstMine": false,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":1,\"previousState\":\"es2:606:dcdc9186\",\"nextRevision\":2,\"nextState\":\"es2:608:f8fc39f5\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":601000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":2,\"loads\":2,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":1000,\"nextCollectedThroughActivePlayMs\":601000,\"matured\":1,\"due\":1,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":1},\"materials\":[{\"id\":\"Cl\",\"quantity\":8},{\"id\":\"Si\",\"quantity\":25}],\"exceptionalMaterials\":[],\"richStrikes\":0,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:55:9b2abec2\",\"extractionsTaken\":3,\"pullsRemaining\":567,\"firstMine\":false,\"minedOut\":false}}"
+   }
+  },
+  {
+   "input": {
+    "loadout": "mining",
+    "first": {
+     "activePlayMs": 1000,
+     "receiptOrdinal": 3
+    },
+    "second": {
+     "activePlayMs": 3601000,
+     "receiptOrdinal": 4
+    }
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "mine-world",
+    "receiptOrdinal": 4,
+    "previousRevision": 1,
+    "nextRevision": 2,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 2,
+     "worlds": [
+      {
+       "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 424242,
+         "x": 560,
+         "y": 170,
+         "layer": "coarse",
+         "parentCell": {
+          "x": 13,
+          "y": 4
+         }
+        },
+        "planet": {
+         "seed": 134,
+         "ordinal": 3
+        },
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+       },
+       "extractionsTaken": 8,
+       "autoExtractorCursor": {
+        "schema": "cf-v2-recurring-accrual-cursor/v1",
+        "collectedThroughActivePlayMs": 3601000
+       }
+      }
+     ],
+     "stars": [],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+     "rawTier": 0,
+     "effectiveTier": 0,
+     "reservePulls": 570,
+     "firstExtractionIndex": 2,
+     "loads": 7,
+     "manualLoads": 1,
+     "autoExtractor": {
+      "online": true,
+      "initialized": false,
+      "priorCollectedThroughActivePlayMs": 1000,
+      "nextCollectedThroughActivePlayMs": 3601000,
+      "matured": 6,
+      "due": 6,
+      "discardedByBatchCap": 0,
+      "discardedByReserve": 0,
+      "capped": false,
+      "grantedLoads": 6
+     },
+     "materials": [
+      {
+       "id": "Ag",
+       "quantity": 3
+      },
+      {
+       "id": "Ca",
+       "quantity": 12
+      },
+      {
+       "id": "Cl",
+       "quantity": 22
+      },
+      {
+       "id": "Si",
+       "quantity": 80
+      }
+     ],
+     "exceptionalMaterials": [],
+     "richStrikes": 1,
+     "cosmicFinds": 0,
+     "exceptionalFinds": 0,
+     "traceFingerprint": "mine-trace-v1:203:9aae9d9a",
+     "extractionsTaken": 8,
+     "pullsRemaining": 562,
+     "firstMine": false,
+     "minedOut": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"mine-world\",\"receiptOrdinal\":4,\"previousRevision\":1,\"previousState\":\"es2:606:dcdc9186\",\"nextRevision\":2,\"nextState\":\"es2:609:f3db3f17\",\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"opportunity\":\"wo3:360:1e3b65b4\",\"capabilities\":\"ec1:287:07f4a3fe\",\"activePlayMs\":3601000,\"factors\":{\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"deposits\":[\"Cl\",\"Si\",\"Ca\"],\"biomeVein\":null,\"cosmicVein\":null,\"exceptionalVein\":null,\"miningYieldBonus\":2.25,\"richStrikeChanceBonus\":0.06},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:134#3\",\"rawTier\":0,\"effectiveTier\":0,\"reservePulls\":570,\"firstExtractionIndex\":2,\"loads\":7,\"manualLoads\":1,\"autoExtractor\":{\"online\":true,\"initialized\":false,\"priorCollectedThroughActivePlayMs\":1000,\"nextCollectedThroughActivePlayMs\":3601000,\"matured\":6,\"due\":6,\"discardedByBatchCap\":0,\"discardedByReserve\":0,\"capped\":false,\"grantedLoads\":6},\"materials\":[{\"id\":\"Ag\",\"quantity\":3},{\"id\":\"Ca\",\"quantity\":12},{\"id\":\"Cl\",\"quantity\":22},{\"id\":\"Si\",\"quantity\":80}],\"exceptionalMaterials\":[],\"richStrikes\":1,\"cosmicFinds\":0,\"exceptionalFinds\":0,\"traceFingerprint\":\"mine-trace-v1:203:9aae9d9a\",\"extractionsTaken\":8,\"pullsRemaining\":562,\"firstMine\":false,\"minedOut\":false}}"
+   }
+  }
+ ],
+ "skimming": [
+  {
+   "input": {
+    "loadout": "none",
+    "playerHp": 100,
+    "activePlayMs": 2000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "status": "refused",
+    "reason": "jump-drive-required"
+   },
+   "receipt": null,
+   "receiptAtOtherClock": null
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "playerHp": 100,
+    "activePlayMs": 2000,
+    "receiptOrdinal": 5
+   },
+   "plan": {
+    "status": "refused",
+    "reason": "jump-drive-required"
+   },
+   "receipt": null,
+   "receiptAtOtherClock": null
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "playerHp": 100,
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "status": "refused",
+    "reason": "jump-drive-required"
+   },
+   "receipt": null,
+   "receiptAtOtherClock": null
+  },
+  {
+   "input": {
+    "loadout": "none",
+    "playerHp": 100,
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "plan": {
+    "status": "refused",
+    "reason": "jump-drive-required"
+   },
+   "receipt": null,
+   "receiptAtOtherClock": null
+  },
+  {
+   "input": {
+    "loadout": "jumpdrive",
+    "playerHp": 100,
+    "activePlayMs": 2000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "skim-star",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [
+      {
+       "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3363971653,
+         "x": -386.23,
+         "y": 453.96,
+         "layer": "fine",
+         "parentCell": {
+          "x": -28,
+          "y": 32
+         }
+        },
+        "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96"
+       },
+       "extractionsTaken": 1
+      }
+     ],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+     "material": "Crn",
+     "quantity": 1,
+     "rawTier": 1,
+     "reservePasses": 36,
+     "extractionIndex": 1,
+     "extractionsTaken": 1,
+     "passesRemaining": 35,
+     "priorHp": 100,
+     "damage": 3,
+     "nextHp": 97,
+     "remnantHazard": true,
+     "guarded": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"skim-star\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:484:cbb5527b\",\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"opportunity\":\"so2:201:4931eb1b\",\"capabilities\":\"ec1:67:835ee221\",\"activePlayMs\":2000,\"factors\":{\"stellarSkimBonus\":0,\"stellarSkimGuard\":false,\"jumpDrive\":true,\"priorHp\":100},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"material\":\"Crn\",\"quantity\":1,\"rawTier\":1,\"reservePasses\":36,\"extractionIndex\":1,\"extractionsTaken\":1,\"passesRemaining\":35,\"priorHp\":100,\"damage\":3,\"nextHp\":97,\"remnantHazard\":true,\"guarded\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-stellar-skimming",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+    "activePlayMs": 2000,
+    "materials": {
+     "Crn": 1
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Skim receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "jumpdrive",
+    "playerHp": 100,
+    "activePlayMs": 2000,
+    "receiptOrdinal": 5
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "skim-star",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [
+      {
+       "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3363971653,
+         "x": -386.23,
+         "y": 453.96,
+         "layer": "fine",
+         "parentCell": {
+          "x": -28,
+          "y": 32
+         }
+        },
+        "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96"
+       },
+       "extractionsTaken": 1
+      }
+     ],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+     "material": "Crn",
+     "quantity": 1,
+     "rawTier": 1,
+     "reservePasses": 36,
+     "extractionIndex": 1,
+     "extractionsTaken": 1,
+     "passesRemaining": 35,
+     "priorHp": 100,
+     "damage": 3,
+     "nextHp": 97,
+     "remnantHazard": true,
+     "guarded": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"skim-star\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:484:cbb5527b\",\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"opportunity\":\"so2:201:4931eb1b\",\"capabilities\":\"ec1:67:835ee221\",\"activePlayMs\":2000,\"factors\":{\"stellarSkimBonus\":0,\"stellarSkimGuard\":false,\"jumpDrive\":true,\"priorHp\":100},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"material\":\"Crn\",\"quantity\":1,\"rawTier\":1,\"reservePasses\":36,\"extractionIndex\":1,\"extractionsTaken\":1,\"passesRemaining\":35,\"priorHp\":100,\"damage\":3,\"nextHp\":97,\"remnantHazard\":true,\"guarded\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-5",
+    "sourceOwnerId": "arc3-stellar-skimming",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+    "activePlayMs": 2000,
+    "materials": {
+     "Crn": 1
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Skim receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "jumpdrive",
+    "playerHp": 100,
+    "activePlayMs": 90000,
+    "receiptOrdinal": 4
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "skim-star",
+    "receiptOrdinal": 4,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [
+      {
+       "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3363971653,
+         "x": -386.23,
+         "y": 453.96,
+         "layer": "fine",
+         "parentCell": {
+          "x": -28,
+          "y": 32
+         }
+        },
+        "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96"
+       },
+       "extractionsTaken": 1
+      }
+     ],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+     "material": "Crn",
+     "quantity": 1,
+     "rawTier": 1,
+     "reservePasses": 36,
+     "extractionIndex": 1,
+     "extractionsTaken": 1,
+     "passesRemaining": 35,
+     "priorHp": 100,
+     "damage": 3,
+     "nextHp": 97,
+     "remnantHazard": true,
+     "guarded": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"skim-star\",\"receiptOrdinal\":4,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:484:cbb5527b\",\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"opportunity\":\"so2:201:4931eb1b\",\"capabilities\":\"ec1:67:835ee221\",\"activePlayMs\":90000,\"factors\":{\"stellarSkimBonus\":0,\"stellarSkimGuard\":false,\"jumpDrive\":true,\"priorHp\":100},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"material\":\"Crn\",\"quantity\":1,\"rawTier\":1,\"reservePasses\":36,\"extractionIndex\":1,\"extractionsTaken\":1,\"passesRemaining\":35,\"priorHp\":100,\"damage\":3,\"nextHp\":97,\"remnantHazard\":true,\"guarded\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-4",
+    "sourceOwnerId": "arc3-stellar-skimming",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+    "activePlayMs": 90000,
+    "materials": {
+     "Crn": 1
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Skim receipt does not match its registered action witness"
+   }
+  },
+  {
+   "input": {
+    "loadout": "jumpdrive",
+    "playerHp": 100,
+    "activePlayMs": 90000,
+    "receiptOrdinal": 5
+   },
+   "plan": {
+    "schema": "cf-v2-engineering-plan/v1",
+    "status": "planned",
+    "operation": "skim-star",
+    "receiptOrdinal": 5,
+    "previousRevision": 0,
+    "nextRevision": 1,
+    "nextState": {
+     "schema": "cf-v2-engineering-state/v2",
+     "revision": 1,
+     "worlds": [],
+     "stars": [
+      {
+       "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+       "address": {
+        "format": "CF1",
+        "galaxy": {
+         "seed": 999,
+         "x": 90,
+         "y": -60,
+         "size": 78,
+         "sp": 0,
+         "tilt": 0.62,
+         "rot": 0.5,
+         "home": true,
+         "quasar": false,
+         "dwarf": false,
+         "parentCell": {
+          "x": 0,
+          "y": -1
+         }
+        },
+        "star": {
+         "seed": 3363971653,
+         "x": -386.23,
+         "y": 453.96,
+         "layer": "fine",
+         "parentCell": {
+          "x": -28,
+          "y": 32
+         }
+        },
+        "key": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96"
+       },
+       "extractionsTaken": 1
+      }
+     ],
+     "research": []
+    },
+    "result": {
+     "sourceKey": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+     "material": "Crn",
+     "quantity": 1,
+     "rawTier": 1,
+     "reservePasses": 36,
+     "extractionIndex": 1,
+     "extractionsTaken": 1,
+     "passesRemaining": 35,
+     "priorHp": 100,
+     "damage": 3,
+     "nextHp": 97,
+     "remnantHazard": true,
+     "guarded": false
+    },
+    "witness": "{\"schema\":\"cf-v2-engineering-witness/v1\",\"operation\":\"skim-star\",\"receiptOrdinal\":5,\"previousRevision\":0,\"previousState\":\"es2:89:c0d1051b\",\"nextRevision\":1,\"nextState\":\"es2:484:cbb5527b\",\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"opportunity\":\"so2:201:4931eb1b\",\"capabilities\":\"ec1:67:835ee221\",\"activePlayMs\":90000,\"factors\":{\"stellarSkimBonus\":0,\"stellarSkimGuard\":false,\"jumpDrive\":true,\"priorHp\":100},\"result\":{\"sourceKey\":\"CF1|g:999@90,-60|s:3363971653@-386.23,453.96\",\"material\":\"Crn\",\"quantity\":1,\"rawTier\":1,\"reservePasses\":36,\"extractionIndex\":1,\"extractionsTaken\":1,\"passesRemaining\":35,\"priorHp\":100,\"damage\":3,\"nextHp\":97,\"remnantHazard\":true,\"guarded\":false}}"
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "receipt-5",
+    "sourceOwnerId": "arc3-stellar-skimming",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:3363971653@-386.23,453.96",
+    "activePlayMs": 90000,
+    "materials": {
+     "Crn": 1
+    },
+    "stardust": 0
+   },
+   "receiptAtOtherClock": {
+    "throws": "Skim receipt does not match its registered action witness"
+   }
+  }
+ ],
+ "fieldSamples": [
+  {
+   "input": {
+    "landing": "first",
+    "training": false,
+    "activePlayMs": 500
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "land-receipt-1",
+    "sourceOwnerId": "arc0-field-samples",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 500,
+    "materials": {
+     "Cl": 1,
+     "Si": 1
+    },
+    "stardust": 3
+   }
+  },
+  {
+   "input": {
+    "landing": "first",
+    "training": false,
+    "activePlayMs": 90000
+   },
+   "receipt": {
+    "kind": "source-receipt",
+    "receiptId": "land-receipt-1",
+    "sourceOwnerId": "arc0-field-samples",
+    "sourceVersion": 1,
+    "sourceId": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "activePlayMs": 90000,
+    "materials": {
+     "Cl": 1,
+     "Si": 1
+    },
+    "stardust": 3
    }
   }
  ]
