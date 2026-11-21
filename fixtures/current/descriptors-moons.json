@@ -1,0 +1,742 @@
+{
+ "freeGlobals": {
+  "installCaptureHooks": "called once before the first case: moonThumb returns \"data:image/png;base64,\"; the address-free generators read GAL_SPRITES",
+  "COSMIC_EPOCH": "not supplied",
+  "st": "not supplied",
+  "customNames": "not supplied"
+ },
+ "moons": [
+  {
+   "input": {
+    "star": 424242,
+    "planet": 133,
+    "moon": 0
+   },
+   "output": {
+    "title": "The Moon",
+    "sub": "Earth’s moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Basalt “seas” (maria) and ancient highland rock"
+     ],
+     [
+      "Formed",
+      "~4.5 billion years ago, from debris of a giant impact"
+     ],
+     [
+      "Influence",
+      "Its gravity drives Earth’s ocean tides"
+     ],
+     [
+      "Note",
+      "The only world humans have walked on besides Earth"
+     ]
+    ],
+    "logId": "m751153500",
+    "badge": "Home"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 134,
+    "moon": 0
+   },
+   "output": {
+    "title": "Phobos",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Mars"
+     ]
+    ],
+    "logId": "m4137443622",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 134,
+    "moon": 1
+   },
+   "output": {
+    "title": "Deimos",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Mars"
+     ]
+    ],
+    "logId": "m429065914",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 0
+   },
+   "output": {
+    "title": "Io",
+    "sub": "Volcanic moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Sulfur and molten silicate rock"
+     ],
+     [
+      "Surface",
+      "Tidal squeezing from its planet keeps volcanoes erupting"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m299048224",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 1
+   },
+   "output": {
+    "title": "Europa",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m1546504233",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 2
+   },
+   "output": {
+    "title": "Jupiter III",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m3137683168",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 3
+   },
+   "output": {
+    "title": "Jupiter IV",
+    "sub": "Rocky moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Cratered silicate rock and dust"
+     ],
+     [
+      "Surface",
+      "Airless and still, scarred by eons of impacts"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m483995182",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 4
+   },
+   "output": {
+    "title": "Jupiter V",
+    "sub": "Rocky moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Cratered silicate rock and dust"
+     ],
+     [
+      "Surface",
+      "Airless and still, scarred by eons of impacts"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m3425650432",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 5
+   },
+   "output": {
+    "title": "Jupiter VI",
+    "sub": "Volcanic moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Sulfur and molten silicate rock"
+     ],
+     [
+      "Surface",
+      "Tidal squeezing from its planet keeps volcanoes erupting"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m794524475",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 6
+   },
+   "output": {
+    "title": "Jupiter VII",
+    "sub": "Volcanic moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Sulfur and molten silicate rock"
+     ],
+     [
+      "Surface",
+      "Tidal squeezing from its planet keeps volcanoes erupting"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m370318344",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 135,
+    "moon": 7
+   },
+   "output": {
+    "title": "Jupiter VIII",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Jupiter"
+     ]
+    ],
+    "logId": "m3008412127",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 0
+   },
+   "output": {
+    "title": "Titan",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "Thick nitrogen–methane atmosphere with lakes of liquid methane"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m60332772",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 1
+   },
+   "output": {
+    "title": "Saturn II",
+    "sub": "Rocky moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Cratered silicate rock and dust"
+     ],
+     [
+      "Surface",
+      "Airless and still, scarred by eons of impacts"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m3098722688",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 2
+   },
+   "output": {
+    "title": "Saturn III",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m3256419287",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 3
+   },
+   "output": {
+    "title": "Saturn IV",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m1074012600",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 4
+   },
+   "output": {
+    "title": "Saturn V",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m4118160321",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 5
+   },
+   "output": {
+    "title": "Saturn VI",
+    "sub": "Volcanic moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Sulfur and molten silicate rock"
+     ],
+     [
+      "Surface",
+      "Tidal squeezing from its planet keeps volcanoes erupting"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m232451251",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 136,
+    "moon": 6
+   },
+   "output": {
+    "title": "Saturn VII",
+    "sub": "Volcanic moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Sulfur and molten silicate rock"
+     ],
+     [
+      "Surface",
+      "Tidal squeezing from its planet keeps volcanoes erupting"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Saturn"
+     ]
+    ],
+    "logId": "m1216820460",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 137,
+    "moon": 0
+   },
+   "output": {
+    "title": "Uranus I",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Uranus"
+     ]
+    ],
+    "logId": "m2222347681",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 137,
+    "moon": 1
+   },
+   "output": {
+    "title": "Uranus II",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Uranus"
+     ]
+    ],
+    "logId": "m354719349",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 137,
+    "moon": 2
+   },
+   "output": {
+    "title": "Uranus III",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Uranus"
+     ]
+    ],
+    "logId": "m395463711",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 137,
+    "moon": 3
+   },
+   "output": {
+    "title": "Uranus IV",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Uranus"
+     ]
+    ],
+    "logId": "m3531387798",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 138,
+    "moon": 0
+   },
+   "output": {
+    "title": "Triton",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "Orbits backwards — likely captured, venting nitrogen geysers"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Neptune"
+     ]
+    ],
+    "logId": "m4134917995",
+    "badge": "Ocean?"
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 138,
+    "moon": 1
+   },
+   "output": {
+    "title": "Neptune II",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Neptune"
+     ]
+    ],
+    "logId": "m2335771270",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 138,
+    "moon": 2
+   },
+   "output": {
+    "title": "Neptune III",
+    "sub": "Captured asteroid",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Loose rock and metal rubble"
+     ],
+     [
+      "Surface",
+      "An irregular lump snared by the planet’s gravity"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Neptune"
+     ]
+    ],
+    "logId": "m1974814483",
+    "badge": null
+   }
+  },
+  {
+   "input": {
+    "star": 424242,
+    "planet": 138,
+    "moon": 3
+   },
+   "output": {
+    "title": "Neptune IV",
+    "sub": "Icy moon",
+    "thumb": "data:image/png;base64,",
+    "rows": [
+     [
+      "Made of",
+      "Water ice wrapped around a rocky core"
+     ],
+     [
+      "Surface",
+      "A hidden ocean may slosh beneath the ice — a candidate for microbial life"
+     ],
+     [
+      "Orbit",
+      "Tidally locked — one face always toward Neptune"
+     ]
+    ],
+    "logId": "m1815675725",
+    "badge": "Ocean?"
+   }
+  }
+ ]
+}

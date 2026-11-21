@@ -954,6 +954,145 @@ const recorders = {
       mars, remnant, loadouts: LOADOUTS, mining, autoExtractor, skimming, fieldSamples,
     };
   },
+  // The exported tables of the strays package and the functions that read them: BIOME_SETS (through
+  // biomeFor), REGIONS (through regionAt), RING_SPECTRUM and ASC_RING_R (through gradeCapAt and ringGrade),
+  // and the where-code codec. None of these reads a free global, a clock or Math.random. Every input is
+  // a plain value recorded beside its answer; each call gets a clone.
+  'strays-tables': async (source) => {
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const s = await load('packages/domain/strays/src/index.ts');
+    const { UCELL, HOME_POS, SOL_POS, HOME_GAL_SEED } = await load('packages/domain/worldconfig/src/index.ts');
+    const { makeGenome } = await load('packages/domain/genome/src/index.ts');
+    const { colorGrade } = await load('packages/domain/speciestraits/src/index.ts');
+    const { b64encUtf8 } = await load('packages/domain/encutil/src/index.ts');
+    const plain = (value) => JSON.parse(JSON.stringify(value) ?? 'null');
+    const call = (fn, ...args) => plain(fn(...structuredClone(args)));
+
+    // regionAt: six rays from the home position out to 21 x UCELL in steps of UCELL / 20, and a square
+    // grid of 29 x 29 points 1.5 x UCELL apart around it.
+    const RAYS = [[1, 0], [0, 1], [-1, 0], [0, -1], [0.6, 0.8], [-0.8, 0.6]];
+    const points = [];
+    for (const [ux, uy] of RAYS) for (let i = 0; i <= 420; i++) points.push({ x: HOME_POS.x + (i / 20) * UCELL * ux, y: HOME_POS.y + (i / 20) * UCELL * uy });
+    for (let gy = -14; gy <= 14; gy++) for (let gx = -14; gx <= 14; gx++) points.push({ x: HOME_POS.x + gx * 1.5 * UCELL, y: HOME_POS.y + gy * 1.5 * UCELL });
+    const regionAt = points.map((p) => ({ ...p, region: call(s.regionAt, p.x, p.y) }));
+
+    // gradeCapAt: no place, the home galaxy with no star and with a star along two rays from Sol out to
+    // twice ASC_RING_R, other galaxies along two rays from home out to 21 x UCELL, and unreadable values.
+    const wheres = [null, {}, { gal: null }, { gal: { seed: HOME_GAL_SEED } }, { gal: { seed: HOME_GAL_SEED, x: 0, y: 0 }, star: { x: 'far', y: 0 } }];
+    for (const [ux, uy] of [[1, 0], [-0.6, 0.8]]) {
+      for (let i = 0; i <= 40; i++) wheres.push({ gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y }, star: { x: SOL_POS.x + (i / 20) * s.ASC_RING_R * ux, y: SOL_POS.y + (i / 20) * s.ASC_RING_R * uy, seed: 7 } });
+    }
+    for (const [ux, uy] of [[0, -1], [0.8, 0.6]]) {
+      for (let i = 0; i <= 84; i++) wheres.push({ gal: { seed: 1000 + i, x: HOME_POS.x + (i / 4) * UCELL * ux, y: HOME_POS.y + (i / 4) * UCELL * uy } });
+    }
+    wheres.push({ gal: { seed: 5, x: 'abc', y: 0 } }, { gal: { seed: 5, x: null, y: null } });
+    const gradeCapAt = wheres.map((where) => ({ where, cap: call(s.gradeCapAt, where) }));
+
+    // ringGrade: genomes of every kingdom, some crowned (apex or par) and some from the cradle, with a
+    // forced grade of every tier, at one place for each cap and at no place; plus a missing grade.
+    const KINGDOM_LIST = ['fauna', 'flora', 'fungi', 'microbe'];
+    const capPlaces = [
+      null,
+      { gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y }, star: { x: SOL_POS.x, y: SOL_POS.y, seed: 424242 } },
+      { gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y }, star: { x: SOL_POS.x + 3 * s.ASC_RING_R, y: SOL_POS.y, seed: 9 } },
+      ...[1, 3, 6, 9, 12, 20].map((d, i) => ({ gal: { seed: 2000 + i, x: HOME_POS.x + d * UCELL, y: HOME_POS.y } })),
+    ];
+    const ringGrade = [];
+    for (let i = 0; i < 240; i++) {
+      const kingdom = KINGDOM_LIST[i % 4];
+      const genome = makeGenome(seedAt(i, 0x26), kingdom, (i % 11) / 10);
+      if (i % 13 === 4) genome.apex = 12 + (i % 3);
+      if (i % 17 === 6) genome.par = 1 + (i % 5);
+      if (i % 5 === 2) genome._cradle = 1;
+      const grade = i % 37 === 11 ? null : colorGrade(['life', 'forest', 'fungal', 'mineral'][i % 4], genome.seed, { force: i % 15 });
+      const where = capPlaces[i % capPlaces.length];
+      ringGrade.push({ genome: plain(genome), grade: plain(grade), where, graded: call(s.ringGrade, genome, grade, where) });
+    }
+
+    // biomeFor: 160 planet seeds for every world type with a biome set and one without, in five bands,
+    // plus Earth (seed 133). Only the chosen key is recorded; the whole table is recorded above it.
+    const TYPES = [...Object.keys(s.BIOME_SETS), 'airless'];
+    const BANDS = ['temperate', 'hot', 'cold', 'frozen', 'warm'];
+    const SEEDS = [133, ...Array.from({ length: 160 }, (_, i) => seedAt(i, 0xb10e))];
+    const biomeFor = {
+      seeds: SEEDS,
+      rows: TYPES.flatMap((type) => BANDS.map((band) => ({
+        type, band, keys: SEEDS.map((seed) => { const b = s.biomeFor({ seed, type }, band); return b === null ? null : b.k; }),
+      }))),
+    };
+
+    // Where codes. Encoding: every flag combination, every place type, with and without a star, a planet
+    // seed and a name. Decoding: codes built by hand around each number the decoder clamps, below, above
+    // and unreadable, plus malformed codes; and each encoded code decoded again.
+    const gal = (i, flags) => ({ x: 123.456 + i, y: -98.7654 - i, size: 61.239, sp: i % 3, tilt: 0.4567, rot: -1.2345, seed: 4000000000 + i, home: !!(flags & 1), quasar: !!(flags & 2), dwarf: !!(flags & 4) });
+    const encodeInputs = [];
+    for (let flags = 0; flags < 8; flags++) {
+      for (const type of ['galaxy', 'star', 'planet']) {
+        const w = { type, gal: gal(flags, flags) };
+        if (type !== 'galaxy') w.star = { x: 10.005 + flags, y: -20.555, seed: 3000000000 + flags };
+        if (type === 'planet') w.pseed = flags === 3 ? 0 : 2000000000 + flags;
+        encodeInputs.push({ w, name: [undefined, 'Home', 'Ünïcødé — ωορλδ', 'x'.repeat(40), 5, ''][flags % 6] });
+      }
+    }
+    const encode = encodeInputs.map(({ w, name }) => {
+      const code = call(s.encodeWhere, w, name);
+      return { w, ...(name === undefined ? {} : { name }), code, decoded: call(s.decodeWhere, code) };
+    });
+    const codeOf = (o) => 'CF1-' + b64encUtf8(JSON.stringify(o)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const G = [1, 2, 60, 1, 0.5, 0, 77, 0];
+    const withG = (index, value) => { const g = G.slice(); g[index] = value; return { t: 'g', g }; };
+    const GALAXY_EDGES = [[0, [-2e7, 2e7, 'x']], [1, [-2e7, 2e7, 'x']], [2, [1, 7, 8, 4000, 4001, 9000, 'x']], [3, [-1, 3e5, 4e5, 'x']],
+      [4, [-8, 8, 'x']], [5, [-8, 8, 'x']], [6, [-5, 0, 4294967295, 4294967296, 5e9, 3.7, 'x']], [7, [0, 1, 2, 3, 4, 5, 6, 7, 8, 15]]];
+    const hand = [];
+    for (const [index, values] of GALAXY_EDGES) for (const value of values) hand.push(codeOf(withG(index, value)));
+    for (const sv of [[-2e7, 2e7, -5], [1, 2, 4294967296], [1, 2, 5e9], ['x', 'y', 'z'], [1, 2, 3.7]]) hand.push(codeOf({ t: 's', g: G, s: sv }));
+    for (const p of [-1, 0, 1e12, 4294967295, 4294967296, 3.7, 'x', null, '42']) hand.push(codeOf({ t: 'p', g: G, p }));
+    for (const t of ['p', 's', 'g', 'x']) hand.push(codeOf({ t, g: G }));
+    for (const n of ['<b>Bold</b> name', '   ', 'A'.repeat(30)]) hand.push(codeOf({ t: 'g', g: G, n }));
+    hand.push(codeOf({ t: 'g', g: G.slice(0, 7) }), codeOf({ t: 'g' }), 'see ' + codeOf({ t: 'g', g: G }) + '  ', 'no code here', '', 'CF1-!!!!', 'CF1-' + 'A'.repeat(8200));
+    const decode = hand.map((code) => ({ code, decoded: call(s.decodeWhere, code) }));
+
+    return {
+      freeGlobals: { none: 'these functions read no free global; hdGenesFor (which reads _earthArt) is not called' },
+      tables: plain({ BIOME_SETS: s.BIOME_SETS, REGIONS: s.REGIONS, RING_SPECTRUM: s.RING_SPECTRUM, ASC_RING_R: s.ASC_RING_R }),
+      regionAt,
+      gradeCapAt,
+      ringGrade,
+      biomeFor,
+      encode,
+      decode,
+    };
+  },
+  // Every moon card of every Sol planet, with the hooks installed the way the current game installs
+  // them (moonDescriptor calls the moonThumb hook). The Sol moons with their own table rows (Earth,
+  // Mars, Jupiter, Saturn, Neptune) and the procedural ones are all here.
+  'descriptors-moons': async (source) => {
+    const NAMES = ['_cardFactsSet', '_earthNamePass', 'GAL_KIND', 'planetThumb', 'starThumb', 'galaxyThumb',
+      'moonThumb', 'cometThumb', 'beltThumb', 'GAL_SPRITES', 'COSMIC_EPOCH', 'st', 'customNames'];
+    for (const name of NAMES) if (name in globalThis) throw new Error(`descriptors-moons: ${name} must not be defined before recording`);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const d = await load('packages/domain/descriptors/src/index.ts');
+    const { systemFor } = await load('packages/domain/worldgen/src/index.ts');
+    d.installCaptureHooks();
+    const SOL = 424242;
+    const moons = [];
+    for (const { P } of systemFor(SOL).planets) {
+      for (let moon = 0; moon < P.moons; moon++) {
+        const input = { star: SOL, planet: P.seed, moon };
+        const c = structuredClone(input);
+        const pl = systemFor(c.star).planets.find((entry) => entry.P.seed === c.planet);
+        moons.push({ input, output: JSON.parse(JSON.stringify(d.moonDescriptor(pl, c.moon))) });
+      }
+    }
+    for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`descriptors-moons: ${name} was left defined`);
+    return {
+      freeGlobals: {
+        installCaptureHooks: 'called once before the first case: moonThumb returns "data:image/png;base64,"; the address-free generators read GAL_SPRITES',
+        COSMIC_EPOCH: 'not supplied', st: 'not supplied', customNames: 'not supplied',
+      },
+      moons,
+    };
+  },
 };
 
 function parseArgs(argv) {
