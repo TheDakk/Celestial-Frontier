@@ -124,6 +124,72 @@ describe('purity check: renderer packages', () => {
   it('flags a division after a regular expression literal but not the regular expression', () => {
     expect(art('const a = /x/.source; const b = c / d;')).toEqual([`${A}: uses division`]);
   });
+  it.each([
+    ['const p = 2 ** 3;', 'uses exponentiation'],
+    ['x **= 2;', 'uses exponentiation'],
+    ['const l = navigator.language;', 'uses navigator'],
+    ["const s = localStorage.getItem('a');", 'uses localStorage'],
+    ['const s = sessionStorage;', 'uses sessionStorage'],
+    ['setTimeout(f, 0);', 'uses setTimeout'],
+    ['const t = setInterval(f, 1);', 'uses setInterval'],
+    ['const u = crypto.getRandomValues(b);', 'uses crypto'],
+    ['const f = new Intl.NumberFormat();', 'uses Intl'],
+    ['keys.sort((a, b) => a.localeCompare(b));', 'uses localeCompare'],
+    ['const s = n.toLocaleString();', 'uses toLocale'],
+    ['const s = d.toLocaleUpperCase();', 'uses toLocale'],
+    ["const t = Date.parse('2026');", 'uses Date.parse'],
+    ['const e = process.env;', 'uses process'],
+    ['const r = Math.round(x);', 'uses Math.round'],
+    ['const r = Math.sqrt(x);', 'uses Math.sqrt'],
+    ['const r = Math.pow(x, 2);', 'uses Math.pow'],
+    ['const r = Math.PI;', 'uses Math.PI'],
+    ['const r = Math . ceil(x);', 'uses Math.ceil'],
+    ["import { readFileSync } from 'node:fs';", 'imports outside the renderer'],
+    ["import fs from 'fs';", 'imports outside the renderer'],
+    ["import { Sprite } from 'pixi.js';", 'imports outside the renderer'],
+    ["import { t } from '@cf/art-testparts';", 'imports outside the renderer'],
+    ["import { g } from '@cf/game';", 'imports outside the renderer'],
+    ["import { a } from '../../../other/src/a';", 'imports outside the renderer'],
+    ["import { a } from '../../test/helper';", 'imports outside the renderer'],
+    ["export * from '../../../domain/genome/src/index';", 'imports outside the renderer'],
+    ["const m = await import('node:path');", 'imports outside the renderer'],
+  ])('flags %s in each renderer package (stricter rules)', (text, reason) => {
+    for (const pkg of ['art-format', 'art-recipe', 'art-compose']) {
+      const path = `packages/${pkg}/src/sub/a.ts`;
+      expect(art(text, path)).toEqual([`${path}: ${reason}`]);
+    }
+  });
+  it.each([
+    'const a = Math.floor(x) + Math.imul(a, b) + Math.max(a, b) + Math.min(a, b) + Math.abs(a) + Math.trunc(a);',
+    "import a from './a'; import b from './sub/b'; export * from './types';",
+    "import { a } from '@cf/art-recipe'; import { b } from '@cf/art-compose'; import type { C } from '@cf/art-format';",
+    'const s = a * b; /* x ** 2 */ const t = `2 ** 3`;',
+    'const proc = processed.x; const n = myIntl; const k = toLocal;',
+  ])('passes %s', (text) => {
+    expect(art(text)).toEqual([]);
+  });
+  it('reports both an allowed-list miss and a gameplay import, each once, and Math.random once', () => {
+    expect(art("import { g } from '@cf/domain-genome'; import 'node:fs'; Math.random(); Math.random();")).toEqual([
+      `${A}: uses Math.random`,
+      `${A}: imports a gameplay package`,
+      `${A}: imports outside the renderer`,
+    ]);
+  });
+  it('reports each distinct disallowed Math name', () => {
+    expect(art('Math.round(a); Math.ceil(b); Math.round(c);')).toEqual([`${A}: uses Math.round`, `${A}: uses Math.ceil`]);
+  });
+  it('covers every packages/art-*/src folder at any depth, except art-testparts', () => {
+    for (const path of ['packages/art-pack/src/a.ts', 'packages/art-scene/src/deep/er/a.ts', 'packages/art-format/src/a.ts']) {
+      expect(art('Math.sqrt(2)', path)).toEqual([`${path}: uses Math.sqrt`]);
+    }
+    expect(art('Math.sqrt(2)', 'packages/art-testparts/src/a.ts')).toEqual([]);
+    expect(art('Math.sqrt(2)', 'packages/art-pack/test/a.ts')).toEqual([]);
+  });
+  it('allows a ../ import only while it resolves inside the same package src', () => {
+    expect(art("import a from '../a';", 'packages/art-compose/src/sub/b.ts')).toEqual([]);
+    expect(art("import a from '../a';", 'packages/art-compose/src/b.ts')).toEqual(['packages/art-compose/src/b.ts: imports outside the renderer']);
+    expect(art("import a from './../a';", 'packages/art-compose/src/b.ts')).toEqual(['packages/art-compose/src/b.ts: imports outside the renderer']);
+  });
   it('does not examine art-testparts or files outside the renderer src folders', () => {
     expect(art('Date.now(); const f = 1.5; const h = a / b;', 'packages/art-testparts/src/a.ts')).toEqual([]);
     expect(art('Date.now()', 'packages/art-compose/test/a.test.ts')).toEqual([]);
