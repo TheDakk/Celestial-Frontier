@@ -43,10 +43,6 @@ export function levelOf(g: { xp?: unknown }): number;
 export function projectCreatureInnateArts(
   g: Genome | Record<string, unknown>,
 ): CreatureInnateArtsProjection;
-export function playerCombatant(): Combatant;            /* app-coupled */
-export function playerAvatar(): unknown;                 /* app-coupled (document) */
-export function paperdollAvatar(): unknown;              /* app-coupled (document) */
-export function statBlockHTML(): string;                 /* app-coupled */
 export const _statOpen: Set<unknown>;                    /* app-coupled */
 export const STAT_NAMES: readonly string[];
 export const STAT_HUES: readonly string[];
