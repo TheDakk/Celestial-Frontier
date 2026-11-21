@@ -1,11 +1,14 @@
-import { PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
-import { DRAW_ORDER, LAYER_NAMES, LIMB_COUNTS } from './types';
-import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
+import { IRIS_RAMP_COUNT, PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
+import { DRAW_ORDER, EYE_COUNTS, LAYER_NAMES, LIMB_COUNTS } from './types';
+import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName, Species } from './types';
 
-const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback', 'layer']);
+const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback', 'layer', 'species']);
 const TIERS: readonly string[] = ['small', 'medium', 'large', 'guardian'];
 
 const NAME = /^[A-Za-z0-9_-]+$/;
+const SPECIES_KEY = /^[a-z][a-z0-9-]*$/;
+/** The fields of a species line, each required once. */
+const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
 const RESERVED_NAMES: readonly string[] = ['__proto__', 'constructor', 'prototype'];
 const nameOk = (name: string): boolean => NAME.test(name) && !RESERVED_NAMES.includes(name);
 function checkName(name: string, line: number): string {
@@ -82,6 +85,7 @@ export function parseCatalogueText(text: string): Catalogue {
   const parts = new Map<string, Part>();
   const scaffolds = new Map<string, Scaffold>();
   const fallbacks = new Map<string, string>();
+  const species = new Map<string, Species>();
   const colours: number[] = [];
   const ramps = record<readonly [number, number, number, number]>();
   const palette = { outline: 0, eye: 0, eyeHighlight: 0, glow: 0 };
@@ -308,6 +312,33 @@ export function parseCatalogueText(text: string): Catalogue {
           fallbacks.set(key, id);
         }
         break;
+      case 'species': {
+        closeAll();
+        if (args.length < 3) throw new Error(`line ${n}: bad species`);
+        const key = args[0] as string;
+        if (!SPECIES_KEY.test(key)) throw new Error(`line ${n}: bad species key '${key}'`);
+        // The torso type of every family that has none: a species of that name would share its scaffold.
+        if (key === 'body') throw new Error(`line ${n}: species key '${key}' is a torso type`);
+        const family = checkName(args[1] as string, n);
+        const tier = args[2] as string;
+        if (!TIERS.includes(tier)) throw new Error(`line ${n}: bad tier '${tier}'`);
+        const opts = options(args.slice(3), n, SPECIES_FIELDS);
+        for (const field of SPECIES_FIELDS) if (!opts.has(field)) throw new Error(`species ${key} line ${n}: missing ${field}`);
+        const field = (name: string, allowed: readonly number[]): number => {
+          const value = opts.get(name) as string;
+          const parsed = /^\d+$/.test(value) ? parseInt(value, 10) : -1;
+          if (!allowed.includes(parsed)) throw new Error(`line ${n}: bad ${name} '${value}'`);
+          return parsed;
+        };
+        const entry: Species = {
+          key, family, tier: tier as SizeTier,
+          legs: field('legs', LIMB_COUNTS), eyes: field('eyes', EYE_COUNTS),
+          iris: field('iris', Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => i)), tail: field('tail', [0, 1]) === 1,
+        };
+        if (species.has(key)) throw new Error(`line ${n}: duplicate species ${key}`);
+        species.set(key, entry);
+        break;
+      }
     }
   }
   closeAll();
@@ -320,7 +351,7 @@ export function parseCatalogueText(text: string): Catalogue {
     for (const i of usedColours) if (!definedColours.has(i)) throw new Error(`palette: colour ${i} used but not defined`);
   }
   const finished: Palette = { colours, ramps, ...palette };
-  return { parts, scaffolds, palette: finished, fallbacks };
+  return { parts, scaffolds, palette: finished, fallbacks, species };
 }
 
 function pixelChar(v: number): string {

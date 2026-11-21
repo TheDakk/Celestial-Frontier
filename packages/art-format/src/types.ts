@@ -23,8 +23,13 @@ export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: n
 export interface Pose { id: string; entries: readonly PoseEntry[]; contact?: readonly [number, number]; }
 export interface Scaffold { id: string; family: string; tier: SizeTier; origin: readonly [number, number]; poses: Readonly<Record<string, Pose>>; }
 export interface Palette { colours: readonly number[]; ramps: Readonly<Record<string, readonly [number, number, number, number]>>; outline: number; eye: number; eyeHighlight: number; glow: number; }
-/** `fallbacks` maps `<family>/<tier>` to the id of the part drawn alone when a creature of that family and tier has nothing else to draw. */
-export interface Catalogue { parts: ReadonlyMap<string, Part>; scaffolds: ReadonlyMap<string, Scaffold>; palette: Palette; fallbacks: ReadonlyMap<string, string>; }
+/** A named species: one fixed look, drawn from its own parts (kind `key`) on scaffold `<family>/<key>/<tier>`. `legs` is from LIMB_COUNTS, `eyes` from EYE_COUNTS, `iris` an iris ramp number. */
+export interface Species { key: string; family: string; tier: SizeTier; legs: number; eyes: number; iris: number; tail: boolean }
+/**
+ * `fallbacks` maps `<family>/<tier>` to the id of the part drawn alone when a creature of that family and tier has nothing else to draw.
+ * `species` maps each species key to its entry.
+ */
+export interface Catalogue { parts: ReadonlyMap<string, Part>; scaffolds: ReadonlyMap<string, Scaffold>; palette: Palette; fallbacks: ReadonlyMap<string, string>; species: ReadonlyMap<string, Species>; }
 
 /** The key of `Catalogue.fallbacks` for a family and tier. */
 export function fallbackKey(family: string, tier: SizeTier): string {

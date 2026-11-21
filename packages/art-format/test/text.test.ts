@@ -426,3 +426,62 @@ describe('layers', () => {
     expect(() => formatPart(withLayers({ glow: new Uint8Array(6) }))).toThrow('has an unknown layer glow');
   });
 });
+
+describe('parseCatalogueText: species lines', () => {
+  const LINE = 'species civet quadruped medium legs=4 eyes=2 iris=3 tail=1';
+
+  it('parses a species line to its entry, its fields in any order', () => {
+    const c = parseCatalogueText(`${LINE}\nspecies mole-rat serpent small tail=0 iris=7 eyes=0 legs=0\n`);
+    expect([...c.species]).toEqual([
+      ['civet', { key: 'civet', family: 'quadruped', tier: 'medium', legs: 4, eyes: 2, iris: 3, tail: true }],
+      ['mole-rat', { key: 'mole-rat', family: 'serpent', tier: 'small', legs: 0, eyes: 0, iris: 7, tail: false }],
+    ]);
+  });
+
+  it('a catalogue with no species line has an empty map', () => {
+    expect(parseCatalogueText(SAMPLE).species.size).toBe(0);
+  });
+
+  it('a species line ends the part before it', () => {
+    const c = parseCatalogueText(`${PART}${LINE}\n`);
+    expect(c.parts.get(ID)!.frames['rest']!.h).toBe(1);
+    expect(c.species.has('civet')).toBe(true);
+  });
+
+  it('rejects a bad key, the key body, a bad family and a bad tier', () => {
+    expect(thrown(LINE.replace('civet', 'Civet'))).toBe("line 1: bad species key 'Civet'");
+    expect(thrown(LINE.replace('civet', '2civet'))).toBe("line 1: bad species key '2civet'");
+    expect(thrown(LINE.replace('civet', 'civet_x'))).toBe("line 1: bad species key 'civet_x'");
+    expect(thrown(LINE.replace('civet', 'body'))).toBe("line 1: species key 'body' is a torso type");
+    expect(thrown(LINE.replace('quadruped', 'quad/ruped'))).toBe('line 1: bad name quad/ruped');
+    expect(thrown(LINE.replace('medium', 'huge'))).toBe("line 1: bad tier 'huge'");
+    expect(thrown('species civet quadruped')).toBe('line 1: bad species');
+  });
+
+  it('rejects an unknown field, a repeated one and a missing one', () => {
+    expect(thrown(`${LINE} wings=2`)).toBe('line 1: bad option wings');
+    expect(thrown(`${LINE} legs=4`)).toBe('line 1: bad option legs');
+    expect(thrown(`${LINE} tail`)).toBe("line 1: bad option 'tail'");
+    for (const field of ['legs=4', 'eyes=2', 'iris=3', 'tail=1']) {
+      expect(thrown(LINE.replace(` ${field}`, '')), field).toBe(`species civet line 1: missing ${field.slice(0, field.indexOf('='))}`);
+    }
+  });
+
+  it('rejects a bad value in each field', () => {
+    expect(thrown(LINE.replace('legs=4', 'legs=5'))).toBe("line 1: bad legs '5'");
+    expect(thrown(LINE.replace('legs=4', 'legs=x'))).toBe("line 1: bad legs 'x'");
+    expect(thrown(LINE.replace('eyes=2', 'eyes=3'))).toBe("line 1: bad eyes '3'");
+    expect(thrown(LINE.replace('iris=3', 'iris=8'))).toBe("line 1: bad iris '8'");
+    expect(thrown(LINE.replace('iris=3', 'iris=-1'))).toBe("line 1: bad iris '-1'");
+    expect(thrown(LINE.replace('tail=1', 'tail=2'))).toBe("line 1: bad tail '2'");
+    expect(thrown(LINE.replace('tail=1', 'tail=yes'))).toBe("line 1: bad tail 'yes'");
+    // Every leg count, eye count and iris ramp number is accepted.
+    for (const legs of [0, 2, 3, 4, 6, 8]) expect(thrown(LINE.replace('legs=4', `legs=${legs}`))).toBe('did not throw');
+    for (const eyes of [0, 1, 2, 4, 6, 8]) expect(thrown(LINE.replace('eyes=2', `eyes=${eyes}`))).toBe('did not throw');
+    for (let iris = 0; iris < 8; iris++) expect(thrown(LINE.replace('iris=3', `iris=${iris}`))).toBe('did not throw');
+  });
+
+  it('rejects a second line for the same key', () => {
+    expect(thrown(`${LINE}\n\n${LINE.replace('medium', 'small')}`)).toBe('line 3: duplicate species civet');
+  });
+});
