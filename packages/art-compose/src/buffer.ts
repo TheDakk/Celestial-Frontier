@@ -1,4 +1,4 @@
-import { TIER_SIZE, type PartFrame, type SizeTier } from '@cf/art-format';
+import { PIXEL_CHARS, PIXEL_TRANSPARENT, TIER_SIZE, type PartFrame, type SizeTier } from '@cf/art-format';
 
 export interface PixelBuffer {
   w: number;
@@ -24,7 +24,7 @@ export function blit(target: PixelBuffer, frame: PartFrame, x: number, y: number
     if (ty < 0 || ty >= target.h) continue;
     for (let fx = 0; fx < frame.w; fx++) {
       const value = frame.pixels[fy * frame.w + fx] ?? 0;
-      if (value === 0) continue;
+      if (value === PIXEL_TRANSPARENT) continue;
       const tx = mirror ? x - (fx - ax) : x + fx - ax;
       if (tx < 0 || tx >= target.w) continue;
       target.pixels[ty * target.w + tx] = value;
@@ -54,14 +54,12 @@ export function hashBuffer(buffer: PixelBuffer): string {
   return (hash >>> 0).toString(16).padStart(8, '0');
 }
 
-const GLYPHS = '.123456789abcdefg';
-
 /** The text pixel form, one line per row, no trailing newline; values above 16 are '?'. */
 export function toAscii(buffer: PixelBuffer): string {
   const lines: string[] = [];
   for (let y = 0; y < buffer.h; y++) {
     let line = '';
-    for (let x = 0; x < buffer.w; x++) line += GLYPHS[buffer.pixels[y * buffer.w + x] ?? 0] ?? '?';
+    for (let x = 0; x < buffer.w; x++) line += PIXEL_CHARS[buffer.pixels[y * buffer.w + x] ?? 0] ?? '?';
     lines.push(line);
   }
   return lines.join('\n');

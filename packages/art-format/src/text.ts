@@ -1,9 +1,9 @@
+import { PIXEL_CHARS } from './pixels';
 import { DRAW_ORDER } from './types';
 import type { Catalogue, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
 
 const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback']);
 const TIERS: readonly string[] = ['small', 'medium', 'large', 'guardian'];
-const PIXEL_CHARS = '.123456789abcdefg';
 
 const NAME = /^[A-Za-z0-9_-]+$/;
 const RESERVED_NAMES: readonly string[] = ['__proto__', 'constructor', 'prototype'];

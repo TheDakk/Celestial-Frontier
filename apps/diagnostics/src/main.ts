@@ -1,4 +1,4 @@
-import { parseCatalogueText, type Catalogue } from '@cf/art-format';
+import { colourTable, parseCatalogueText } from '@cf/art-format';
 import type { PixelBuffer } from '@cf/art-compose';
 import { buildRecipe } from '@cf/art-recipe';
 import text from '../../../packages/art-testparts/src/quadruped.txt?raw';
@@ -18,24 +18,6 @@ function addHeading(parent: HTMLElement, content: string): void {
   const h = document.createElement('h2');
   h.textContent = content;
   parent.appendChild(h);
-}
-
-/** Pixel values 1-16 to RGB, using the entry's three ramps and the palette's fixed colours. Ramp names the palette lacks are returned in `unknown`. */
-function colourTable(cat: Catalogue, ramps: { primary: string; accent: string; underside: string }): { table: number[]; unknown: string[] } {
-  const p = cat.palette;
-  const unknown: string[] = [];
-  const rgb = (index: number | undefined): number => p.colours[index ?? 0] ?? 0;
-  const ramp = (name: string): number[] => {
-    const indices = p.ramps[name];
-    if (indices === undefined) {
-      unknown.push(name);
-      return [0, 0, 0, 0];
-    }
-    return indices.map(rgb);
-  };
-  const table = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
-    rgb(p.eye), rgb(p.eyeHighlight), rgb(p.glow), rgb(p.outline)];
-  return { table, unknown };
 }
 
 const PAGE_PADDING = 12; // matches body padding in index.html, each side
@@ -116,7 +98,7 @@ function run(): void {
     const result = results[index];
     if (result === undefined || 'error' in result) continue;
     const recipe = buildRecipe(entry.genome, [], catalogue, { guardian: entry.guardian });
-    const { table, unknown } = colourTable(catalogue, recipe.ramps);
+    const { table, unknown } = colourTable(catalogue.palette, recipe.ramps);
     const figure = document.createElement('figure');
     figure.appendChild(drawBuffer(result.composed.buffer, table, available));
     const caption = document.createElement('figcaption');
