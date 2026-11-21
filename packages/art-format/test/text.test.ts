@@ -295,3 +295,79 @@ describe('formatPart', () => {
     expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds the outline value, which only the composer writes');
   });
 });
+
+describe('layers', () => {
+  const PID = 'quadruped/torso/t1/medium/v0';
+  const head = `part ${PID}\n`;
+  const parse = (body: string) => parseCatalogueText(head + body).parts.get(PID)!;
+  const err = (body: string): string => {
+    try { parseCatalogueText(head + body); } catch (e) { return (e as Error).message; }
+    return 'no error';
+  };
+  const F = 'frame rest anchor=0,0\n123\n45.\n';
+
+  it("parses flow, spots and a pattern layer after a frame's rows", () => {
+    const f = parse(`${F}layer flow\n123\n45.\nlayer spots\n...\n.1.\nlayer striped\n1.2\n..c\n`).frames.rest!;
+    expect(f.layers!.flow).toEqual(Uint8Array.from([1, 2, 3, 4, 5, 0]));
+    expect(Object.keys(f.layers!)).toEqual(['flow', 'spots', 'striped']);
+    expect(f.pixels).toEqual(Uint8Array.from([1, 2, 3, 4, 5, 0]));
+  });
+
+  it('reads f as 15 in a guide layer and c as 12 in a pattern layer', () => {
+    const f = parse(`${F}layer spots\nf..\n...\nlayer banded\nc..\n...\n`).frames.rest!;
+    expect(f.layers!.spots![0]).toBe(15);
+    expect(f.layers!.banded![0]).toBe(12);
+  });
+
+  it('a frame without layers has no layers key', () => {
+    expect(Object.hasOwn(parse(F).frames.rest!, 'layers')).toBe(false);
+  });
+
+  it('a second frame may follow a layered frame after an empty line', () => {
+    const p = parse(`${F}layer flow\n123\n456\n\nframe bite anchor=0,0\n12\n`);
+    expect(Object.keys(p.frames)).toEqual(['rest', 'bite']);
+    expect(p.frames.rest!.layers!.flow).toBeDefined();
+    expect(Object.hasOwn(p.frames.bite!, 'layers')).toBe(false);
+    expect(p.frames.bite!.pixels).toEqual(Uint8Array.from([1, 2]));
+  });
+
+  it('a directive ends the layer and the next frame', () => {
+    const p = parse(`${F}layer flow\n123\n456\nframe bite anchor=0,0\n12\n`);
+    expect(Object.keys(p.frames)).toEqual(['rest', 'bite']);
+  });
+
+  it('rejects bad layers with exact messages', () => {
+    const w = 'part quadruped/torso/t1/medium/v0 frame rest line';
+    expect(err('layer flow\n123\n')).toBe('line 2: layer outside a frame');
+    expect(err('frame rest anchor=0,0\nlayer flow\n')).toBe('line 3: layer outside a frame');
+    expect(err(`${F}layer glow\n123\n456\n`)).toBe(`${w} 5: unknown layer 'glow'`);
+    expect(err(`${F}layer flow\n123\n456\nlayer flow\n`)).toBe(`${w} 8: duplicate layer flow`);
+    expect(err(`${F}layer striped\n1d3\n456\n`)).toBe(`${w} 6: bad layer value 'd'`);
+    expect(err(`${F}layer flow\n12g\n456\n`)).toBe(`${w} 6: bad layer value 'g'`);
+    expect(err(`${F}layer flow\n12\n456\n`)).toBe(`${w} 6: layer flow row width 2 differs from 3`);
+    expect(err(`${F}layer flow\n123\n`)).toBe(`${w} 5: layer flow has 1 rows, frame has 2`);
+    expect(err(`${F}layer flow\n123\n456\n789\n`)).toBe(`${w} 5: layer flow has 3 rows, frame has 2`);
+  });
+
+  const base: Part = { id: PID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0, frames: {} };
+  const withLayers = (layers: Record<string, Uint8Array>): Part => ({
+    ...base,
+    frames: { rest: { w: 3, h: 2, pixels: Uint8Array.from([1, 2, 3, 4, 5, 0]), anchor: [0, 0], attach: {}, layers } },
+  });
+
+  it('formatPart round-trips a part with layers', () => {
+    const p = withLayers({ flow: Uint8Array.from([1, 2, 3, 4, 5, 0]), spots: Uint8Array.from([0, 15, 0, 0, 0, 0]), 'eye-spotted': Uint8Array.from([12, 0, 0, 0, 0, 1]) });
+    const text = formatPart(p);
+    expect(text.indexOf('layer flow')).toBeLessThan(text.indexOf('layer spots'));
+    expect(text.indexOf('layer spots')).toBeLessThan(text.indexOf('layer eye-spotted'));
+    expect(parseCatalogueText(text).parts.get(PID)).toEqual(p);
+  });
+
+  it('formatPart refuses a layer of the wrong length or with a value out of range', () => {
+    const pre = `part ${PID}: cannot format: frame rest layer`;
+    expect(() => formatPart(withLayers({ flow: Uint8Array.from([1, 2]) }))).toThrow(`${pre} flow has 2 pixels, expected 6`);
+    expect(() => formatPart(withLayers({ striped: Uint8Array.from([0, 0, 13, 0, 0, 0]) }))).toThrow(`${pre} striped holds a value above 12`);
+    expect(() => formatPart(withLayers({ flow: Uint8Array.from([0, 0, 16, 0, 0, 0]) }))).toThrow(`${pre} flow holds a value above 15`);
+    expect(() => formatPart(withLayers({ glow: new Uint8Array(6) }))).toThrow('has an unknown layer glow');
+  });
+});

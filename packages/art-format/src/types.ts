@@ -7,7 +7,17 @@ export const VARIANTS = { torso: 3, head: 3, tail: 2, limb: 2 } as const;
 export const LIMB_COUNTS = [2, 4, 6, 8, 3, 0] as const; // FA_LIMBS, by gene value
 export const EYE_COUNTS = [2, 4, 6, 8, 1, 0] as const; // FA_EYES, by gene value
 
-export interface PartFrame { w: number; h: number; pixels: Uint8Array; anchor: readonly [number, number]; attach: Readonly<Record<string, readonly [number, number]>>; }
+/** The game's pattern table by gene value. */
+export const PATTERN_NAMES = ['plain', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted'] as const;
+export type PatternName = (typeof PATTERN_NAMES)[number];
+/** Layers a frame may carry: two guide layers, then a hand-drawn layer for every pattern but plain. */
+export const LAYER_NAMES = ['flow', 'spots', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted'] as const;
+export type LayerName = (typeof LAYER_NAMES)[number];
+/** The slots whose parts take marks. */
+export const MARK_SLOTS: readonly SlotName[] = ['farLimbs', 'tail', 'torso', 'nearLimbs', 'head'];
+
+/** `layers`: each grid is exactly w*h; the key is absent when the frame has none. */
+export interface PartFrame { w: number; h: number; pixels: Uint8Array; anchor: readonly [number, number]; attach: Readonly<Record<string, readonly [number, number]>>; layers?: Readonly<Partial<Record<LayerName, Uint8Array>>>; }
 export interface Part { id: string; family: string; slot: SlotName; tier: SizeTier; kind: string; variant: number; frames: Readonly<Record<string, PartFrame>>; }
 export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: number; dy: number; }
 export interface Pose { id: string; entries: readonly PoseEntry[]; contact?: readonly [number, number]; }

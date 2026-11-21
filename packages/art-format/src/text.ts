@@ -1,8 +1,8 @@
 import { PIXEL_CHARS, PIXEL_OUTLINE } from './pixels';
-import { DRAW_ORDER } from './types';
-import type { Catalogue, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
+import { DRAW_ORDER, LAYER_NAMES } from './types';
+import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
 
-const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback']);
+const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback', 'layer']);
 const TIERS: readonly string[] = ['small', 'medium', 'large', 'guardian'];
 
 const NAME = /^[A-Za-z0-9_-]+$/;
@@ -72,7 +72,9 @@ function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
   return { id, family, slot: slot as SlotName, tier: tier as SizeTier, kind, variant: parseInt(v.slice(1), 10) };
 }
 
-interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; }
+interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; layers: Map<LayerName, OpenLayer>; layer?: OpenLayer; }
+interface OpenLayer { name: LayerName; line: number; rows: number; data: number[]; }
+const GUIDE_LAYERS: readonly string[] = ['flow', 'spots'];
 
 export function parseCatalogueText(text: string): Catalogue {
   const parts = new Map<string, Part>();
@@ -94,7 +96,18 @@ export function parseCatalogueText(text: string): Catalogue {
   const closeFrame = (): void => {
     if (part && frame) {
       if (frame.h === 0) throw new Error(`part ${part.id} frame ${frame.name} line ${frame.line}: frame has no rows`);
-      part.frames[frame.name] = { w: frame.w, h: frame.h, pixels: Uint8Array.from(frame.data), anchor: frame.anchor, attach: frame.attach };
+      const done: PartFrame = { w: frame.w, h: frame.h, pixels: Uint8Array.from(frame.data), anchor: frame.anchor, attach: frame.attach };
+      if (frame.layers.size > 0) {
+        const layers: Partial<Record<LayerName, Uint8Array>> = {};
+        for (const name of LAYER_NAMES) {
+          const l = frame.layers.get(name);
+          if (!l) continue;
+          if (l.rows !== frame.h) throw new Error(`part ${part.id} frame ${frame.name} line ${l.line}: layer ${name} has ${l.rows} rows, frame has ${frame.h}`);
+          layers[name] = Uint8Array.from(l.data);
+        }
+        (done as { layers?: unknown }).layers = layers;
+      }
+      part.frames[frame.name] = done;
     }
     frame = undefined;
   };
@@ -136,6 +149,19 @@ export function parseCatalogueText(text: string): Catalogue {
       }
       const where = `part ${part.id} frame ${frame.name} line ${n}`;
       const row: number[] = [];
+      if (frame.layer) {
+        const layer = frame.layer;
+        const top = GUIDE_LAYERS.includes(layer.name) ? 15 : 12;
+        for (const c of trimmed) {
+          const v = PIXEL_CHARS.indexOf(c);
+          if (v < 0 || v > top) throw new Error(`${where}: bad layer value '${c}'`);
+          row.push(v);
+        }
+        if (row.length !== frame.w) throw new Error(`${where}: layer ${layer.name} row width ${row.length} differs from ${frame.w}`);
+        layer.data.push(...row);
+        layer.rows++;
+        continue;
+      }
       for (const c of trimmed) {
         const v = PIXEL_CHARS.indexOf(c);
         if (v < 0) throw new Error(`${where}: unknown pixel character '${c}'`);
@@ -149,6 +175,17 @@ export function parseCatalogueText(text: string): Catalogue {
       continue;
     }
 
+    if (word === 'layer') {
+      if (!frame || !part || frame.h === 0) throw new Error(`line ${n}: layer outside a frame`);
+      const name = args[0];
+      const where = `part ${part.id} frame ${frame.name} line ${n}`;
+      if (args.length !== 1) throw new Error(`line ${n}: bad layer`);
+      if (!(LAYER_NAMES as readonly string[]).includes(name as string)) throw new Error(`${where}: unknown layer '${name}'`);
+      if (frame.layers.has(name as LayerName)) throw new Error(`${where}: duplicate layer ${name}`);
+      frame.layer = { name: name as LayerName, line: n, rows: 0, data: [] };
+      frame.layers.set(name as LayerName, frame.layer);
+      continue;
+    }
     closeFrame();
     const need = (count: number): void => {
       if (args.length !== count) throw new Error(`line ${n}: bad ${word}`);
@@ -205,7 +242,7 @@ export function parseCatalogueText(text: string): Catalogue {
         if (anchor === undefined) throw new Error(`part ${part.id} frame ${name} line ${n}: missing anchor`);
         if (name in part.frames) throw new Error(`part ${part.id} frame ${name} line ${n}: duplicate frame`);
         // Anchor and attach points are not bounds-checked: an attach point may legitimately sit just outside a small part.
-        frame = { name, line: n, anchor: pair(anchor, n), attach: attachPoints(opts.get('attach') ?? '', n), w: -1, h: 0, data: [] };
+        frame = { name, line: n, anchor: pair(anchor, n), attach: attachPoints(opts.get('attach') ?? '', n), w: -1, h: 0, data: [], layers: new Map() };
         break;
       }
       case 'scaffold': {
@@ -296,6 +333,21 @@ export function formatPart(part: Part): string {
       let row = '';
       for (let x = 0; x < f.w; x++) row += pixelChar(f.pixels[y * f.w + x] as number);
       out.push(row);
+    }
+    const layers = f.layers ?? {};
+    for (const key of Object.keys(layers)) if (!(LAYER_NAMES as readonly string[]).includes(key)) fail(`frame ${name} has an unknown layer ${key}`);
+    for (const layerName of LAYER_NAMES) {
+      const grid = layers[layerName];
+      if (grid === undefined) continue;
+      if (grid.length !== f.w * f.h) fail(`frame ${name} layer ${layerName} has ${grid.length} pixels, expected ${f.w * f.h}`);
+      const top = GUIDE_LAYERS.includes(layerName) ? 15 : 12;
+      if (grid.some((v) => v > top)) fail(`frame ${name} layer ${layerName} holds a value above ${top}`);
+      out.push(`layer ${layerName}`);
+      for (let y = 0; y < f.h; y++) {
+        let row = '';
+        for (let x = 0; x < f.w; x++) row += pixelChar(grid[y * f.w + x] as number);
+        out.push(row);
+      }
     }
     out.push('');
   }
