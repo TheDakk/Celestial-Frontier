@@ -39,6 +39,20 @@ function forbiddenBoundaryFindings(source: string): string[] {
 }
 
 describe('canonical BiomeProfileV1 authority', () => {
+  it('binds the exact 43 profile keys to one pinned schema and content digest', () => {
+    expect(BIOME_PROFILE_KEYS_V1).toHaveLength(43);
+    expect(new Set(BIOME_PROFILE_KEYS_V1).size).toBe(43);
+    expect(Object.keys(BIOME_PROFILES_V1).sort()).toEqual([...BIOME_PROFILE_KEYS_V1].sort());
+    expect(BIOME_PROFILE_AUTHORITY_V1).toEqual({
+      schema: BIOME_PROFILE_SCHEMA_V1,
+      digest: 'bpd1-6fce883d4d70e3b6bde0fb184b416e8e',
+      keys: BIOME_PROFILE_KEYS_V1,
+      profiles: BIOME_PROFILES_V1,
+    });
+    expect(biomeProfileDigestV1(BIOME_PROFILES_V1))
+      .toBe(BIOME_PROFILE_AUTHORITY_V1.digest);
+  });
+
   it('changes the digest for a same-key/same-count content substitution and detects stale binding', () => {
     const changedEntries = entries().map(([key, profile]) => key === 'temperate'
       ? [key, { ...profile, sig: '#6f9a53' as const }] as const
