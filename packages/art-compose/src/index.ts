@@ -7,3 +7,4 @@ export * from './patterns';
 export * from './marks';
 export * from './skins';
 export * from './skin';
+export * from './show';

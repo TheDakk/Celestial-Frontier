@@ -22,6 +22,12 @@ export const IRIS_RAMP_COUNT = 8;
 export const THEME_NAMES = Object.freeze(['fire', 'frost', 'storm', 'tide', 'stone', 'venom', 'void', 'sand', 'chem', 'psionic', 'wild'] as const);
 export type ThemeName = (typeof THEME_NAMES)[number];
 
+/** Each theme's colour (0xRRGGBB), as the game's ability table gives it; a cross test holds the two together. */
+export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze({
+  fire: 0xff7a4a, frost: 0x8fd6ff, storm: 0xffe06a, tide: 0x5fd0c8, stone: 0xcaa06a, venom: 0x9fe06a,
+  void: 0xb58cff, sand: 0xe8c878, chem: 0xc0ff5a, psionic: 0xff9fe0, wild: 0x9fb6d6,
+});
+
 /**
  * Colour numbers (0xRRGGBB) for pixel values 0-20: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
  * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp.

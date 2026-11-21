@@ -28,7 +28,7 @@ export interface Recipe {
   opacity: 100 | 82 | 66; // percent: a jelly 82, a translucent skin 66
   airborne: boolean;
   theme: ThemeName | null; // the creature's theme (routed builder, fauna); null otherwise
-  rim: 0 | 50 | 75;       // 0 until the rim is drawn
+  rim: 0 | 50 | 75;       // percent of the theme colour the rim adds when shown (rimOf); 0 draws none
   skin: number | null;    // the skin gene 0-8 (SKIN_NAMES) the composer paints on every part in a mark slot; null paints none
 }
 
@@ -153,10 +153,20 @@ export function buildRoutedRecipe(
     marking: { pattern: b.pattern, strength: 2, phase: d.phase },
     shift: { head: d.headShift, tail: d.tailShift },
     glow: b.glow, gaps,
-    ...NEUTRAL, opacity: b.opacity, airborne: b.airborne, theme: b.theme,
+    ...NEUTRAL, opacity: b.opacity, airborne: b.airborne, theme: b.theme, rim: rimOf(b),
     // The skin gene, painted on every part in a mark slot; a radial has none, and outside fauna there is no skin gene.
     skin: b.kingdom === 'fauna' && b.family !== 'radial' ? b.skin : null,
   });
+}
+
+/**
+ * The luminous rim's strength, in percent of the theme colour (hdart.verbatim.js:245, 1998-2001): none unless the body
+ * glows; 75 on a crystalline body (a crystalline torso, or a fish that keeps crystals), else 50. Outside fauna there is
+ * no theme to light it with, so none.
+ */
+function rimOf(b: Body): 0 | 50 | 75 {
+  if (!b.glow || b.theme === null) return 0;
+  return b.torso === 'crystalline' || b.keeps === 'crystals' ? 75 : 50;
 }
 
 /**

@@ -1,7 +1,7 @@
 /* The renderer holds its own copy of the game's ability-theme rule (the art packages may not import the domain
    combat package); these tests hold the copy to the game's own table and rule. */
 import { describe, expect, it } from 'vitest';
-import { THEME_NAMES } from '@cf/art-format';
+import { THEME_COLOURS, THEME_NAMES } from '@cf/art-format';
 import { THEME_BY_HABITAT, themeOf, wrap } from '@cf/art-recipe';
 import { ABILITY_THEMES, abilityTheme } from '@cf/domain-combatcore';
 
@@ -20,6 +20,11 @@ describe('the theme', () => {
   it('THEME_NAMES are the game\'s ability themes', () => {
     expect(new Set(THEME_NAMES)).toEqual(new Set(Object.keys(ABILITY_THEMES)));
     expect(THEME_NAMES.length).toBe(Object.keys(ABILITY_THEMES).length);
+  });
+
+  it('THEME_COLOURS are the game\'s theme colours', () => {
+    expect(Object.keys(THEME_COLOURS)).toEqual([...THEME_NAMES]);
+    for (const name of THEME_NAMES) expect(THEME_COLOURS[name], name).toBe(parseInt((ABILITY_THEMES[name] as { col: string }).col.slice(1), 16));
   });
 
   it('themeOf equals abilityTheme for every habitat and movement gene, marked or not', () => {

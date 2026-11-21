@@ -309,6 +309,26 @@ describe('buildRoutedRecipe', () => {
     expect([glider.opacity, glider.airborne]).toEqual([66, true]);
   });
 
+  it('rim is 0 without glow, 75 on a glowing crystalline body or a fish keeping crystals, else 50', () => {
+    const rim = (g: Record<string, unknown>): number => buildRoutedRecipe({ ...base, ...g }, [], every).rim;
+    // Body 8 on land is the crystalline torso; with movement 4 (swimmers) it is a fish that keeps crystals.
+    expect(bodyOf({ ...base, body: 8 }).torso).toBe('crystalline');
+    expect(bodyOf({ ...base, body: 8, loco: 4 }).keeps).toBe('crystals');
+    for (const g of [{ body: 8 }, { body: 8, loco: 4 }]) {
+      expect(rim({ ...g, lumin: true }), JSON.stringify(g)).toBe(75);
+      expect(rim({ ...g, lumin: false }), JSON.stringify(g)).toBe(0);
+    }
+    // Every other body: a four-legged body, a fish keeping a shell, a crustacean, a serpent, a jelly, a radial, a winged body.
+    for (const g of [{ body: 0 }, { body: 6, loco: 4 }, { body: 1 }, { body: 4 }, { body: 9 }, { body: 15 }, { body: 7 }, { body: 6 }]) {
+      expect(rim({ ...g, lumin: true }), JSON.stringify(g)).toBe(50);
+      expect(rim({ ...g, lumin: false }), JSON.stringify(g)).toBe(0);
+    }
+    // Outside fauna there is no theme to light the rim with, so a glowing plant has none.
+    for (const kingdom of ['flora', 'fungi', 'microbe']) expect(buildRoutedRecipe({ kingdom, size: 2, lumin: true }, [], every).rim, kingdom).toBe(0);
+    // The old builders keep the neutral rim on a glowing creature.
+    expect(buildRecipe({ ...base, body: 8, lumin: true }, [], full).rim).toBe(0);
+  });
+
   it('the routed skin is the gene, and null on a radial and on a species', () => {
     // Body 0 a four-legged creature, 1 a crustacean, 4 a serpent, 9 a jelly, 15 a radial; skin genes 0 to 8, and 9 wraps to 0.
     for (let skin = 0; skin <= 9; skin++) {
