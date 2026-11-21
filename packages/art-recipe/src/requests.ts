@@ -29,7 +29,31 @@ export function torsoKindOf(a: { torso: string }): string {
   return a.torso === '' ? 'body' : a.torso;
 }
 
-interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean; at?: RecipePart['at'] }
+/** The wing kinds of a winged torso type, by wing index: a pair at index 0, a hindwing pair at index 1. Part of renderer version 1. */
+export const WING_KINDS: Readonly<Record<string, readonly string[]>> = Object.freeze({
+  membranous: Object.freeze(['wing']),
+  fourwinged: Object.freeze(['wing', 'hindwing']),
+});
+
+/**
+ * The body feature a body carries: `shell-<torso>` on the shelled build, `crystals-<torso>` on the crystalline build,
+ * `shell-<shape>` or `crystals-<shape>` on a fish keeping it, `fins-<torso>` on a winged body that is aquatic; else null.
+ */
+export function bodyFeatureKind(b: Body): string | null {
+  if (b.family === 'quadruped') {
+    if (b.torso === 'shelled') return 'shell-shelled';
+    if (b.torso === 'crystalline') return 'crystals-crystalline';
+    if (b.aquatic && Object.hasOwn(WING_KINDS, b.torso)) return `fins-${b.torso}`;
+  }
+  if (b.family === 'fish') {
+    if (b.keeps === 'shell') return `shell-${b.torso}`;
+    if (b.keeps === 'crystals') return `crystals-${b.torso}`;
+  }
+  return null;
+}
+
+/** A wanted part; `shared` is the kind tried at v0 when `kind` is not held (no gap on the way; a miss names `shared`). */
+interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean; at?: RecipePart['at']; shared?: string }
 
 /** The first of `ids` the catalogue holds, with its index, or -1. */
 function firstHeld(catalogue: Catalogue, ids: readonly string[]): number {
@@ -64,6 +88,13 @@ function lookUp(catalogue: Catalogue, family: string, tier: SizeTier, build: str
     if (hit < 0) { gaps.push(`missing:${shared[3]}`); return undefined; }
     gaps.push(...steps[hit]!);
     return shared[hit];
+  }
+  if (w.shared !== undefined) {
+    // An optional own kind, then the shared kind, both at v0: going on to the shared kind is no gap.
+    const tries = [id(w.kind, 0), id(w.shared, 0)];
+    const hit = firstHeld(catalogue, tries);
+    if (hit < 0) { gaps.push(`missing:${tries[1]}`); return undefined; }
+    return tries[hit];
   }
   const tries = [id(w.kind, w.variant), id(w.kind, 0)];
   const hit = firstHeld(catalogue, tries);
@@ -122,6 +153,9 @@ const NO_BACK_FAMILY = 'radial';
  * skin's back part on the torso kind (none on a radial), the torso type's head feature and the marks. Head `h<head>`
  * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null, `eye`
  * at 0 to `eyes - 1`, two `pit` parts when `eyes` is 0; a body without a head part places them on its torso (`at`).
+ * A winged build asks for its WING_KINDS at each wing index in both wing slots, and, aquatic, for two `flipper-<torso>`
+ * near limbs (falling back to `flipper`); any other airborne quadruped for `sails-<torso>` (falling back to `sails`) in
+ * nearWings, hung from the torso's `back`; a body feature (bodyFeatureKind) in bodyFeature. All at v0.
  * Not live: only the routed builder calls it.
  */
 export function planBodyParts(
@@ -146,6 +180,19 @@ export function planBodyParts(
       wanted.push({ slot: 'headFeature', index: 0, kind: `${HEAD_FEATURE_BY_TORSO[b.torso]}-h${b.head}`, variant: 0, limb: false });
     }
   }
+  const wings = WING_KINDS[b.torso];
+  if (b.family === 'quadruped' && wings !== undefined) {
+    wings.forEach((wing, i) => {
+      for (const slot of ['farWings', 'nearWings'] as const) wanted.push({ slot, index: i, kind: `${wing}-${b.torso}`, variant: 0, limb: false });
+    });
+    if (b.aquatic) {
+      for (let i = 0; i < 2; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: `flipper-${b.torso}`, shared: 'flipper', variant: 0, limb: false });
+    }
+  } else if (b.family === 'quadruped' && b.airborne) {
+    wanted.push({ slot: 'nearWings', index: 0, kind: `sails-${b.torso}`, shared: 'sails', variant: 0, limb: false, at: { host: 'torso', point: 'back' } });
+  }
+  const feature = bodyFeatureKind(b);
+  if (feature !== null) wanted.push({ slot: 'bodyFeature', index: 0, kind: feature, variant: 0, limb: false });
   if (b.eyes !== null) {
     const [kind, count] = b.eyes === 0 ? ['pit', 2] : ['eye', b.eyes];
     for (let i = 0; i < count; i++) {

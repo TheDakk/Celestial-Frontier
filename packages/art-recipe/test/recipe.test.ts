@@ -330,7 +330,9 @@ describe('buildRoutedRecipe', () => {
         if (p.slot !== 'head' && p.slot !== 'tail' && !p.slot.endsWith('Limbs')) continue;
         const o = old.parts.find((x) => x.slot === p.slot && x.index === p.index);
         if (o === undefined) continue;
-        expect([variantOf(p.partId), p.mark], `seed ${seed} ${p.slot}${p.index}`).toEqual([variantOf(o.partId), o.mark]);
+        // A flipper is asked for at v0 whatever the limb-variant draw, so only its mark is compared.
+        const flipper = p.partId.includes('/flipper');
+        expect([flipper ? '' : variantOf(p.partId), p.mark], `seed ${seed} ${p.slot}${p.index}`).toEqual([flipper ? '' : variantOf(o.partId), o.mark]);
         compared++;
       }
     }

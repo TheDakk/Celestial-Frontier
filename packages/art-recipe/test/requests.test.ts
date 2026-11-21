@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { BACK_KIND_BY_SKIN, HEAD_FEATURE_BY_TORSO, limbKind, planBodyParts, planParts } from '../src/requests';
+import { BACK_KIND_BY_SKIN, bodyFeatureKind, HEAD_FEATURE_BY_TORSO, limbKind, planBodyParts, planParts, WING_KINDS } from '../src/requests';
 import { resolveAnatomy } from '../src/resolve';
 import { resolveBody, type Body } from '../src/route';
 import { RENDERER_VERSION } from '../src/recipe';
@@ -334,5 +334,126 @@ describe('planBodyParts', () => {
     for (const kingdom of ['flora', 'fungi', 'microbe']) {
       expect(planBodyParts(body({ kingdom, skin: 4, pattern: 2 }), V0, stream, shared()), kingdom).toEqual({ parts: [], gaps: [] });
     }
+  });
+
+  describe('wings and body features', () => {
+    /** A catalogue that holds every part id except those `skip` matches. */
+    const holding = (skip: RegExp = /^$/): Catalogue => ({ ...catalogueOf([]), parts: { has: (x: string) => !skip.test(x) } as unknown as Catalogue['parts'] });
+    const plan = (b: Body, cat: Catalogue = holding()): ReturnType<typeof planBodyParts> => planBodyParts(b, V0, stream, cat);
+    /** `<slot><index> <part id>` for every part in the given slots. */
+    const inSlots = (r: ReturnType<typeof planBodyParts>, slots: readonly SlotName[]): string[] =>
+      r.parts.filter((p) => slots.includes(p.slot)).map((p) => `${p.slot}${p.index} ${p.partId}`);
+    const WINGS: readonly SlotName[] = ['farWings', 'nearWings'];
+    const LIMBS: readonly SlotName[] = ['farLimbs', 'nearLimbs'];
+    const legRole = /\/(fore|hind|mid|leg)(-[a-z]+)?\//;
+
+    it('a membranous body on land has one pair of wings and its legs', () => {
+      const b = body({ body: 7, limbs: 1 });
+      const r = plan(b);
+      expect(r.gaps).toEqual([]);
+      expect(inSlots(r, WINGS)).toEqual(['farWings0 quadruped/farWings/wing-membranous/medium/v0', 'nearWings0 quadruped/nearWings/wing-membranous/medium/v0']);
+      expect(inSlots(r, LIMBS).map((s) => s.split('/')[2])).toEqual(['fore-membranous', 'hind-membranous', 'fore-membranous', 'hind-membranous']);
+      expect(plan(b, catalogueOf([])).gaps).toEqual(expect.arrayContaining(
+        ['missing:quadruped/farWings/wing-membranous/medium/v0', 'missing:quadruped/nearWings/wing-membranous/medium/v0']));
+    });
+
+    it('a four-winged body has a wing and a hindwing on each side', () => {
+      expect(inSlots(plan(body({ body: 14 })), WINGS)).toEqual([
+        'farWings0 quadruped/farWings/wing-fourwinged/medium/v0', 'farWings1 quadruped/farWings/hindwing-fourwinged/medium/v0',
+        'nearWings0 quadruped/nearWings/wing-fourwinged/medium/v0', 'nearWings1 quadruped/nearWings/hindwing-fourwinged/medium/v0',
+      ]);
+    });
+
+    it('airborne, a winged body stands on two legs and keeps its wings', () => {
+      const r = plan(body({ body: 7, loco: 3, limbs: 3 }));
+      expect(inSlots(r, LIMBS)).toEqual(['farLimbs0 quadruped/farLimbs/hind-membranous/medium/v0', 'nearLimbs0 quadruped/nearLimbs/hind-membranous/medium/v0']);
+      expect(inSlots(r, WINGS)).toHaveLength(2);
+    });
+
+    it('aquatic, a winged body has flippers, fins and its wings, and no legs', () => {
+      const b = body({ body: 14, loco: 4 });
+      expect([b.family, b.aquatic, b.limbs]).toEqual(['quadruped', true, 0]);
+      const own = plan(b);
+      expect(own.gaps).toEqual([]);
+      expect(inSlots(own, LIMBS)).toEqual(['nearLimbs0 quadruped/nearLimbs/flipper-fourwinged/medium/v0', 'nearLimbs1 quadruped/nearLimbs/flipper-fourwinged/medium/v0']);
+      expect(inSlots(own, ['bodyFeature'])).toEqual(['bodyFeature0 quadruped/bodyFeature/fins-fourwinged/medium/v0']);
+      expect(inSlots(own, WINGS)).toHaveLength(4);
+      expect(own.parts.filter((p) => legRole.test(p.partId))).toEqual([]);
+      const sharedFlipper = plan(b, holding(/flipper-/));
+      expect(sharedFlipper.gaps).toEqual([]);
+      expect(inSlots(sharedFlipper, LIMBS)).toEqual(['nearLimbs0 quadruped/nearLimbs/flipper/medium/v0', 'nearLimbs1 quadruped/nearLimbs/flipper/medium/v0']);
+      const none = plan(b, holding(/flipper/));
+      expect(none.gaps).toEqual(['missing:quadruped/nearLimbs/flipper/medium/v0', 'missing:quadruped/nearLimbs/flipper/medium/v0']);
+      expect(inSlots(none, LIMBS)).toEqual([]);
+    });
+
+    it('an airborne sturdy body has sails on its back and its legs', () => {
+      const b = body({ body: 0, loco: 3, limbs: 1 });
+      expect([b.family, b.torso, b.airborne]).toEqual(['quadruped', 'sturdy', true]);
+      const own = plan(b);
+      expect(own.gaps).toEqual([]);
+      expect(inSlots(own, WINGS)).toEqual(['nearWings0 quadruped/nearWings/sails-sturdy/medium/v0']);
+      expect(own.parts.find((p) => p.slot === 'nearWings')!.at).toEqual({ host: 'torso', point: 'back' });
+      expect(inSlots(own, LIMBS)).toHaveLength(4);
+      const sharedSails = plan(b, holding(/sails-/));
+      expect(sharedSails.gaps).toEqual([]);
+      expect(inSlots(sharedSails, WINGS)).toEqual(['nearWings0 quadruped/nearWings/sails/medium/v0']);
+      expect(sharedSails.parts.find((p) => p.slot === 'nearWings')!.at).toEqual({ host: 'torso', point: 'back' });
+      const none = plan(b, holding(/sails/));
+      expect(none.gaps).toEqual(['missing:quadruped/nearWings/sails/medium/v0']);
+      expect(inSlots(none, WINGS)).toEqual([]);
+      // On land no sails.
+      expect(inSlots(plan(body({ body: 0 })), WINGS)).toEqual([]);
+    });
+
+    it('an aquatic sturdy body is a fish and has no sails', () => {
+      const b = body({ body: 0, loco: 3, habitat: 10 });
+      expect([b.family, b.aquatic, b.airborne]).toEqual(['fish', true, true]);
+      expect(inSlots(plan(b), [...WINGS, 'bodyFeature'])).toEqual([]);
+    });
+
+    it('shelled and crystalline bodies carry their feature on land', () => {
+      expect(inSlots(plan(body({ body: 6 })), ['bodyFeature'])).toEqual(['bodyFeature0 quadruped/bodyFeature/shell-shelled/medium/v0']);
+      expect(inSlots(plan(body({ body: 8 })), ['bodyFeature'])).toEqual(['bodyFeature0 quadruped/bodyFeature/crystals-crystalline/medium/v0']);
+      expect(plan(body({ body: 6 }), catalogueOf([])).gaps).toContain('missing:quadruped/bodyFeature/shell-shelled/medium/v0');
+      for (const plain of [0, 2, 10, 11, 12, 13]) expect(inSlots(plan(body({ body: plain })), ['bodyFeature']), `body ${plain}`).toEqual([]);
+    });
+
+    it('a fish keeps its shell or crystals', () => {
+      expect(inSlots(plan(body({ body: 6, loco: 4 }, 0, 2)), ['bodyFeature'])).toEqual(['bodyFeature0 fish/bodyFeature/shell-fusiform/medium/v0']);
+      expect(inSlots(plan(body({ body: 8, loco: 4 }, 1, 2)), ['bodyFeature'])).toEqual(['bodyFeature0 fish/bodyFeature/crystals-sturgeon/medium/v0']);
+      for (const other of [0, 10, 11, 13]) expect(inSlots(plan(body({ body: other, loco: 4 })), ['bodyFeature']), `body ${other}`).toEqual([]);
+    });
+
+    it('bodyFeatureKind names the feature, or null', () => {
+      expect(bodyFeatureKind(body({ body: 6 }))).toBe('shell-shelled');
+      expect(bodyFeatureKind(body({ body: 8 }))).toBe('crystals-crystalline');
+      expect(bodyFeatureKind(body({ body: 6, loco: 4 }, 1, 2))).toBe('shell-sturgeon');
+      expect(bodyFeatureKind(body({ body: 8, loco: 4 }, 0, 2))).toBe('crystals-fusiform');
+      expect(bodyFeatureKind(body({ body: 7, loco: 4 }))).toBe('fins-membranous');
+      expect(bodyFeatureKind(body({ body: 7 }))).toBeNull();
+      expect(bodyFeatureKind(body({ body: 10, loco: 4 }, 0, 2))).toBeNull();
+      expect(bodyFeatureKind(body({ body: 1 }, 0, 2))).toBeNull();
+      expect(WING_KINDS).toEqual({ membranous: ['wing'], fourwinged: ['wing', 'hindwing'] });
+    });
+
+    it('an insect never has wings, airborne or not', () => {
+      for (const loco of [0, 3]) {
+        const b = body({ body: 5, loco }, 0, 3);
+        expect(b.family).toBe('insect');
+        expect(inSlots(plan(b), [...WINGS, 'bodyFeature']), `loco ${loco}`).toEqual([]);
+      }
+      expect(body({ body: 5, loco: 3 }, 0, 3).airborne).toBe(true);
+    });
+
+    it('wings and flippers are marked on a patterned creature; the body feature is not', () => {
+      const marked = (genes: Record<string, unknown>): string[] => plan(body({ ...genes, pattern: 3 })).parts.filter((p) => p.mark !== undefined).map((p) => `${p.slot}${p.index}`);
+      expect(marked({ body: 14, loco: 4 })).toEqual(['farWings0', 'farWings1', 'tail0', 'torso0', 'nearWings0', 'nearWings1', 'nearLimbs0', 'nearLimbs1', 'head0']);
+      expect(marked({ body: 0, loco: 3, limbs: 0 })).toContain('nearWings0');
+      expect(marked({ body: 6, limbs: 0 })).toEqual(['farLimbs0', 'tail0', 'torso0', 'nearLimbs0', 'head0']);
+      expect(plan(body({ body: 14, loco: 4, pattern: 3 })).parts.find((p) => p.slot === 'bodyFeature')!.mark).toBeUndefined();
+      // Unpatterned, nothing is marked.
+      expect(plan(body({ body: 14, loco: 4 })).parts.filter((p) => p.mark !== undefined)).toEqual([]);
+    });
   });
 });
