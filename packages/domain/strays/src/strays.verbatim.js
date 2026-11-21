@@ -2,6 +2,7 @@
    living OUTSIDE the 14 [domain] modules that fixtures pin or domain code
    calls: _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201) · _sanitizeView (14604-14614) · REGIONS (21951-21958) · RING_SPECTRUM (12219-12226) · ASC_RING_R (22757-22757) · regionAt (21963-21963) · gradeCapAt (12227-12237) · ringGrade (12238-12246).
    body sha256/16 13ba6dbe726f35da. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+/* EDITED 2026-11-21 (task m3a-6b, Dakk's word): hdGenesFor's two _earthArt branches (source lines 188-216) cut to one closing brace; no running context defines _earthArt. */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
 import { HOME_GAL_SEED, UCELL, HOME_POS, GR, SOL_POS } from '@cf/domain-worldconfig';
 import { cleanName } from '@cf/domain-naming';
@@ -185,35 +186,7 @@ function hdGenesFor(g){
   R.dietK=(g.diet||0)%FA_DIET.length;
   /* v1.6 EARTH BESTIARY: a named cradle creature reads as itself (art-only) */
   if(g._earthName){ R._earthName=g._earthName;   /* v1.6: mark Earth genes so hdBeastBare never routes them to a procedural family (fingerprint-safe: the probe only passes procedural genomes) */
-    try{ const rec=_earthArt(g._earthName); if(rec){
-    /* the recipe fully owns flight & water — a wolf never sprouts wings from a
-       stray random loco gene (Dakk's toad-with-wings catch) */
-    R.airb=!!rec.airb; R.aqua=!!rec.aqua;
-    Object.assign(R, rec);
-    R.dark=[R.base[0]*0.42|0, R.base[1]*0.42|0, R.base[2]*0.42|0];
-    if(!('pat' in rec)) R.pat=[R.base[0]*0.5|0,R.base[1]*0.5|0,R.base[2]*0.5|0];   /* recipes may set a hard pattern tone (tiger/zebra) */
-    /* catalog polish 2026-07-24: the RECIPE owns the pelt. Only species whose
-       recipe declares stripes/rosettes wear them (tiger/zebra/leopard…);
-       stray striped/mottled PATTERN GENES are muted — a real orangutan is
-       not striped. Procedural aliens keep their gene-driven hides. */
-    R._recPelt=('stripes' in rec)||('mottle' in rec);
-    if(!('stripes' in rec)) R.stripes=0;
-    if(!('mottle' in rec)) R.mottle=Math.min(R.mottle||0.62, 0.4);
-  } }catch(_){ } }
-  else if(g._earthBlend){   /* v1.6 BREED BLEND: Earth STRUCTURE (rig+anatomy) but keep the child's ALIEN palette */
-    try{ const rec=_earthArt(g._earthBlend); if(rec){
-      const kB=R.base,kB2=R.base2,kP=R.pat,kI=R.irid,kI2=R.irid2,kE=R.eye,kR=R.rim,kG=R.glow;
-      R.airb=!!rec.airb; R.aqua=!!rec.aqua; Object.assign(R, rec);
-      R.base=kB; R.base2=kB2; R.pat=kP; R.irid=kI; R.irid2=kI2; R.eye=kE; R.rim=kR; R.glow=kG;   /* restore procedural colour/finish */
-      R.dark=[R.base[0]*0.42|0,R.base[1]*0.42|0,R.base[2]*0.42|0];
-      R._recPelt=('stripes' in rec)||('mottle' in rec);   /* a tiger-child keeps tiger stripes — in ITS OWN colors (breeding cohesion) */
-      R._earthBlend=g._earthBlend; delete R._earthName;   /* NOT a pure Earth gene — no name lock */
-      /* v1.6 Pass 8 LINEAGE DRIFT: Earth-anchor strength (organic — set at breeding by the
-         mate's alienness, accumulating over generations). hdBeastBare grafts alien phenotype
-         onto the Earth rig in proportion to (1-anchor). */
-      R._anchor=(g._anchorVal!=null)?g._anchorVal:0.85;
-      R._gen=g.gen||1;
-    } }catch(_){ } }
+  }
   return R;
 }
 function _sanitizeSavedGenome(g){
