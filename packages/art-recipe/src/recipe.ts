@@ -30,9 +30,20 @@ export function buildRecipe(
   catalogue: Catalogue,
   options?: { guardian?: boolean },
 ): Recipe {
+  return buildRecipeAt(RENDERER_VERSION, genome, lineage, catalogue, options);
+}
+
+/** `buildRecipe` with the renderer version given; internal, for the version negative control in tests only. */
+function buildRecipeAt(
+  version: number,
+  genome: Readonly<Record<string, unknown>>,
+  lineage: readonly string[],
+  catalogue: Catalogue,
+  options?: { guardian?: boolean },
+): Recipe {
   const a = resolveAnatomy(genome, options);
   const identity = identityKey(genome, lineage);
-  const stream = (name: string): (() => number) => artStream(identity, name, RENDERER_VERSION);
+  const stream = (name: string): (() => number) => artStream(identity, name, version);
 
   // Every stream is drawn exactly once, in this fixed order, whether or not the result is used.
   // That keeps each choice independent of every other gene.
@@ -81,7 +92,7 @@ export function buildRecipe(
   }
 
   return deepFreeze({
-    version: RENDERER_VERSION, identity, family: a.family, tier: a.tier,
+    version, identity, family: a.family, tier: a.tier,
     scaffoldId: `${a.family}/${torsoKind}/${a.tier}`,
     parts,
     ramps: { primary: `c${a.colour}`, accent: `c${a.accent}`, underside: `c${a.colour}-under` },
@@ -90,3 +101,6 @@ export function buildRecipe(
     glow: a.glow, gaps,
   });
 }
+
+/** Internal: not part of the renderer's interface. Tests use it to prove a different version changes pictures. */
+export { buildRecipeAt as __buildRecipeAtVersionForTests };

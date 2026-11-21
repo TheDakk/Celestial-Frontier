@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { Catalogue, Part } from '@cf/art-format';
-import { artStream, buildRecipe, identityKey, RENDERER_VERSION } from '@cf/art-recipe';
+import { __buildRecipeAtVersionForTests, buildRecipe, RENDERER_VERSION } from '@cf/art-recipe';
 import { compose, toAscii } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { mulberry32 } from '@cf/domain-rand';
@@ -88,13 +88,11 @@ describe('art golden negative controls', () => {
     }
   });
 
-  it('draws different art stream values under renderer version 1 and 2 for the same identity and name', () => {
-    const identity = identityKey(fixture.entries[0]!.genome, []);
-    const draw = (version: number) => {
-      const stream = artStream(identity, 'torso-build', version);
-      return [stream(), stream(), stream(), stream()];
-    };
-    expect(draw(1)).not.toEqual(draw(2));
-    expect(draw(1)).toEqual(draw(1));
+  it('composes the recorded entries at renderer version 2 with at least one different hash, and at version 1 with none', () => {
+    const at = (version: number, entry: Entry) =>
+      compose(__buildRecipeAtVersionForTests(version, entry.genome, [], catalogue, { guardian: entry.guardian }), entry.pose, catalogue).hash;
+    const differAt = (version: number) => fixture.entries.filter((entry) => at(version, entry) !== entry.hash).length;
+    expect(differAt(1)).toBe(0);
+    expect(differAt(2)).toBeGreaterThanOrEqual(1);
   });
 });
