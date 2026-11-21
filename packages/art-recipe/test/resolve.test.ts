@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS, LIMB_COUNTS, PATTERN_NAMES, TIER_SIZE } from '@cf/art-format';
+import { EYE_COUNTS, LIMB_COUNTS, PATTERN_NAMES, SKIN_NAMES, TIER_SIZE } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
 import { guardianFor } from '@cf/domain-genome';
 import { BACK_KIND_BY_SKIN } from '../src/requests';
@@ -90,6 +90,10 @@ describe('the resolver is tied to the game tables', () => {
   it('reads LIMB_COUNTS and EYE_COUNTS from the same numbers as the game tables', () => {
     expect([...LIMB_COUNTS]).toEqual(traits.FA_LIMBS.map(Number));
     expect([...EYE_COUNTS]).toEqual(traits.FA_EYES.map(Number));
+  });
+  it('SKIN_NAMES follow the game\'s skin table', () => {
+    expect(SKIN_NAMES.length).toBe(traits.FA_SKIN.length);
+    for (let i = 0; i < traits.FA_SKIN.length; i++) expect(SKIN_NAMES[i], String(i)).toBe((traits.FA_SKIN[i] as string).split(' ')[0]);
   });
   it('PATTERN_NAMES is the game\'s pattern table', () => {
     expect([...PATTERN_NAMES]).toEqual(traits.FA_PATTERN);

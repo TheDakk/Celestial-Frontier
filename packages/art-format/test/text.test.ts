@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatPart, parseCatalogueText } from '@cf/art-format';
+import { LAYER_NAMES, SKIN_NAMES, formatPart, parseCatalogueText } from '@cf/art-format';
 import type { Part } from '@cf/art-format';
 
 const SAMPLE = `# sample catalogue
@@ -389,6 +389,27 @@ describe('layers', () => {
     expect(err(`${F}layer flow\n12\n456\n`)).toBe(`${w} 6: layer flow row width 2 differs from 3`);
     expect(err(`${F}layer flow\n123\n`)).toBe(`${w} 5: layer flow has 1 rows, frame has 2`);
     expect(err(`${F}layer flow\n123\n456\n789\n`)).toBe(`${w} 5: layer flow has 3 rows, frame has 2`);
+  });
+
+  it('parses a scaled and a translucent layer', () => {
+    const p = parse(`${F}layer translucent\n.3.\n4..\nlayer scaled\n1.2\n..c\n`);
+    const f = p.frames.rest!;
+    expect(Object.keys(f.layers!)).toEqual(['scaled', 'translucent']);
+    expect(f.layers!.scaled).toEqual(Uint8Array.from([1, 0, 2, 0, 0, 12]));
+    expect(f.layers!.translucent).toEqual(Uint8Array.from([0, 3, 0, 4, 0, 0]));
+    expect(parseCatalogueText(formatPart(p)).parts.get(PID)).toEqual(p);
+  });
+
+  it('rejects d in a skin layer', () => {
+    const w = 'part quadruped/torso/t1/medium/v0 frame rest line';
+    expect(err(`${F}layer furred\n1d3\n456\n`)).toBe(`${w} 6: bad layer value 'd'`);
+    expect(err(`${F}layer crystalline\n123\n45f\n`)).toBe(`${w} 7: bad layer value 'f'`);
+  });
+
+  it('LAYER_NAMES ends with the nine skin names', () => {
+    expect(SKIN_NAMES).toEqual(['scaled', 'furred', 'chitinous', 'slick', 'plated', 'warty', 'feathered', 'translucent', 'crystalline']);
+    expect(LAYER_NAMES.slice(-9)).toEqual([...SKIN_NAMES]);
+    expect(LAYER_NAMES.length).toBe(18);
   });
 
   it('a layer followed at once by another has no rows', () => {

@@ -4,3 +4,5 @@ export * from './finish';
 export * from './compose';
 export * from './patterns';
 export * from './marks';
+export * from './skins';
+export * from './skin';

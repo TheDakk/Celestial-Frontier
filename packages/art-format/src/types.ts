@@ -10,8 +10,12 @@ export const EYE_COUNTS = [2, 4, 6, 8, 1, 0] as const; // FA_EYES, by gene value
 /** The game's pattern table by gene value. */
 export const PATTERN_NAMES = ['plain', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted'] as const;
 export type PatternName = (typeof PATTERN_NAMES)[number];
-/** Layers a frame may carry: two guide layers, then a hand-drawn layer for every pattern but plain. */
-export const LAYER_NAMES = ['flow', 'spots', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted'] as const;
+/** The game's skin table by gene value (FA_SKIN, first word: 'slick and wet' is slick). */
+export const SKIN_NAMES = ['scaled', 'furred', 'chitinous', 'slick', 'plated', 'warty', 'feathered', 'translucent', 'crystalline'] as const;
+export type SkinName = (typeof SKIN_NAMES)[number];
+/** Layers a frame may carry: two guide layers, a hand-drawn layer for every pattern but plain, then one for every skin. */
+export const LAYER_NAMES = ['flow', 'spots', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted',
+  'scaled', 'furred', 'chitinous', 'slick', 'plated', 'warty', 'feathered', 'translucent', 'crystalline'] as const;
 export type LayerName = (typeof LAYER_NAMES)[number];
 /** The slots whose parts take marks. */
 export const MARK_SLOTS: readonly SlotName[] = ['farWings', 'farLimbs', 'tail', 'torso', 'nearWings', 'nearLimbs', 'head'];

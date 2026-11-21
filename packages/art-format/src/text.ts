@@ -85,7 +85,7 @@ function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
 interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; layers: Map<LayerName, OpenLayer>; layer?: OpenLayer; }
 interface OpenLayer { name: LayerName; line: number; rows: number; data: number[]; }
 const GUIDE_LAYERS: readonly string[] = ['flow', 'spots'];
-/** The highest value a layer may hold: 15 in a guide layer (flow, spots), 12 (the last ramp value) in a hand-drawn one. */
+/** The highest value a layer may hold: 15 in a guide layer (flow, spots), 12 (the last ramp value) in a hand-drawn pattern or skin layer. */
 const layerTop = (name: string): number => (GUIDE_LAYERS.includes(name) ? 15 : 12);
 
 export function parseCatalogueText(text: string): Catalogue {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DRAW_ORDER, LAYER_NAMES, MARK_SLOTS, PATTERN_NAMES, partId, tierForSize } from '@cf/art-format';
+import { DRAW_ORDER, LAYER_NAMES, MARK_SLOTS, PATTERN_NAMES, SKIN_NAMES, partId, tierForSize } from '@cf/art-format';
 
 describe('art-format types', () => {
   it('maps size genes to tiers in pairs and wraps', () => {
@@ -22,8 +22,8 @@ describe('art-format types', () => {
     expect(MARK_SLOTS).toEqual(['farWings', 'farLimbs', 'tail', 'torso', 'nearWings', 'nearLimbs', 'head']);
     expect(MARK_SLOTS).not.toContain('bodyFeature');
   });
-  it('LAYER_NAMES is flow, spots, then every pattern but plain', () => {
-    expect(LAYER_NAMES).toEqual(['flow', 'spots', ...PATTERN_NAMES.filter((p) => p !== 'plain')]);
+  it('LAYER_NAMES is flow, spots, every pattern but plain, then every skin', () => {
+    expect(LAYER_NAMES).toEqual(['flow', 'spots', ...PATTERN_NAMES.filter((p) => p !== 'plain'), ...SKIN_NAMES]);
     expect(PATTERN_NAMES[0]).toBe('plain');
   });
 });
