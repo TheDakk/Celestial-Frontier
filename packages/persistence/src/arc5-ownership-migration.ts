@@ -4,9 +4,8 @@
    and legacy compatibility truth. Arc 5 persists only a strict manifest and
    four fixed generic delta shards. Every current write replaces all five
    namespaces, including canonical empty tails, so shrinkage cannot retain
-   stale rows. A valid legacy v1 digest certificate is read losslessly and is
-   upgraded to the zero-delta v2 representation without advancing ownership,
-   consuming an F4 ordinal, or inventing a receipt. */
+   stale rows. A version-1 certificate is refused as corrupt: only the v2
+   representation is read. */
 import {
   MAX_OWNERSHIP_REVISION,
   OWNERSHIP_DATA_BUDGET,
@@ -63,9 +62,6 @@ import {
   type V5Segment,
 } from './migration-v5.js';
 
-const LEGACY_ARC5_OWNERSHIP_MIGRATION_VERSION = 1 as const;
-const LEGACY_ARC5_OWNERSHIP_MIGRATION_SCHEMA = 'cf-v2-ownership-v1-to-v2/v1' as const;
-
 export const ARC5_OWNERSHIP_MIGRATION_VERSION = 2 as const;
 export const ARC5_OWNERSHIP_FIXED_SHARDS = 4 as const;
 export const ARC5_OWNERSHIP_MIGRATION_PREFIX = 'arc5.ownership.' as const;
@@ -101,21 +97,6 @@ const TARGET_IDENTITIES = new Set(ARC5_OWNERSHIP_EXTENSION_TARGETS.map(
   ({ segment, namespace }) => `${segment}\u0000${namespace}`,
 ));
 
-interface Arc5OwnershipMigrationCertificateV1 {
-  readonly schema: typeof LEGACY_ARC5_OWNERSHIP_MIGRATION_SCHEMA;
-  readonly version: typeof LEGACY_ARC5_OWNERSHIP_MIGRATION_VERSION;
-  readonly sourceSchema: typeof OWNERSHIP_STATE_SCHEMA;
-  readonly sourceVersion: typeof OWNERSHIP_STATE_VERSION;
-  readonly sourceRevision: number;
-  readonly sourceMode: OwnershipStateV1['mode'];
-  readonly sourceDigest: string;
-  readonly targetSchema: typeof OWNERSHIP_STATE_SCHEMA_V2;
-  readonly targetVersion: typeof OWNERSHIP_STATE_VERSION_V2;
-  readonly targetRevision: number;
-  readonly targetMode: OwnershipStateV2['mode'];
-  readonly targetDigest: string;
-}
-
 export interface Arc5OwnershipMigrationManifestV2 {
   readonly schema: typeof ARC5_OWNERSHIP_MIGRATION_SCHEMA;
   readonly version: typeof ARC5_OWNERSHIP_MIGRATION_VERSION;
@@ -137,12 +118,6 @@ export interface Arc5OwnershipMigrationManifestV2 {
   readonly shardDigests: readonly [string, string, string, string];
 }
 
-export interface Arc5OwnershipMigrationEvidenceV1 {
-  readonly representationVersion: 1;
-  readonly sourceDigest: string;
-  readonly targetDigest: string;
-}
-
 export interface Arc5OwnershipMigrationEvidenceV2 {
   readonly representationVersion: typeof ARC5_OWNERSHIP_MIGRATION_VERSION;
   readonly sourceDigest: string;
@@ -153,9 +128,9 @@ export interface Arc5OwnershipMigrationEvidenceV2 {
   readonly shardDigests: readonly [string, string, string, string];
 }
 
-export type Arc5OwnershipMigrationEvidence =
-  | Arc5OwnershipMigrationEvidenceV1
-  | Arc5OwnershipMigrationEvidenceV2;
+/** Historical type name retained for source compatibility; only the v2
+ * representation is read. */
+export type Arc5OwnershipMigrationEvidence = Arc5OwnershipMigrationEvidenceV2;
 
 export type Arc5OwnershipMigrationReadOutcome =
   | { readonly kind: 'absent' }
@@ -191,7 +166,6 @@ export interface PreparedArc5OwnershipMigrationV2 {
   readonly evidence: Arc5OwnershipMigrationEvidenceV2;
   readonly writes: Arc5OwnershipWriteTupleV2;
   readonly extensions: V5Extensions;
-  readonly representationUpgrade?: 'legacy-v1';
 }
 
 /** Historical type name retained for source compatibility; its shape is now
@@ -280,13 +254,7 @@ const EMPTY_WRITES = Object.freeze([]) as readonly [];
 
 type Inventory =
   | { readonly kind: 'absent' }
-  | { readonly kind: 'legacy'; readonly manifest: V5ExtensionCarrier }
   | { readonly kind: 'current' }
-  | { readonly kind: 'future'; readonly version: number }
-  | { readonly kind: 'corrupt' };
-
-type CertificateParse =
-  | { readonly kind: 'current'; readonly certificate: Arc5OwnershipMigrationCertificateV1 }
   | { readonly kind: 'future'; readonly version: number }
   | { readonly kind: 'corrupt' };
 
@@ -495,9 +463,6 @@ function locateInventory(extensions: V5Extensions): Inventory {
   if (owned.length === 0) return Object.freeze({ kind: 'absent' });
   const manifest = extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE];
   if (owned.length === 1 && manifest !== undefined) {
-    if (manifest.version === LEGACY_ARC5_OWNERSHIP_MIGRATION_VERSION) {
-      return Object.freeze({ kind: 'legacy', manifest });
-    }
     if (manifest.version > ARC5_OWNERSHIP_MIGRATION_VERSION) {
       return Object.freeze({ kind: 'future', version: manifest.version });
     }
@@ -575,104 +540,6 @@ function readSource(extensions: V5Extensions, resolver: OwnershipAddressResolver
     return Object.freeze({ kind: 'future', version: source.version });
   }
   return Object.freeze({ kind: source.kind });
-}
-
-function parseLegacyCertificate(raw: string): CertificateParse {
-  let certificate: Readonly<Record<string, CanonicalJson>>;
-  try { certificate = parsedCanonicalJson(raw, 'Arc 5 legacy certificate'); }
-  catch { return Object.freeze({ kind: 'corrupt' }); }
-  try {
-    exactKeys(certificate, [
-      'schema', 'version', 'sourceSchema', 'sourceVersion', 'sourceRevision',
-      'sourceMode', 'sourceDigest', 'targetSchema', 'targetVersion',
-      'targetRevision', 'targetMode', 'targetDigest',
-    ], 'Arc 5 legacy certificate');
-    const version = integer(certificate.version, Number.MAX_SAFE_INTEGER, 'legacy certificate version');
-    if (version < 1) return Object.freeze({ kind: 'corrupt' });
-    if (version > ARC5_OWNERSHIP_MIGRATION_VERSION) {
-      return Object.freeze({ kind: 'future', version });
-    }
-    const sourceRevision = integer(
-      certificate.sourceRevision, MAX_OWNERSHIP_REVISION, 'legacy source revision',
-    );
-    const targetRevision = integer(
-      certificate.targetRevision, MAX_OWNERSHIP_REVISION, 'legacy target revision',
-    );
-    const sourceDigest = digest(certificate.sourceDigest, 'legacy source digest');
-    const targetDigest = digest(certificate.targetDigest, 'legacy target digest');
-    if (certificate.schema !== LEGACY_ARC5_OWNERSHIP_MIGRATION_SCHEMA
-      || version !== LEGACY_ARC5_OWNERSHIP_MIGRATION_VERSION
-      || certificate.sourceSchema !== OWNERSHIP_STATE_SCHEMA
-      || certificate.sourceVersion !== OWNERSHIP_STATE_VERSION
-      || (certificate.sourceMode !== 'current' && certificate.sourceMode !== 'legacy-protected')
-      || certificate.targetSchema !== OWNERSHIP_STATE_SCHEMA_V2
-      || certificate.targetVersion !== OWNERSHIP_STATE_VERSION_V2
-      || targetRevision !== sourceRevision
-      || (certificate.targetMode !== 'current' && certificate.targetMode !== 'legacy-protected')) {
-      return Object.freeze({ kind: 'corrupt' });
-    }
-    return Object.freeze({
-      kind: 'current',
-      certificate: Object.freeze({
-        schema: LEGACY_ARC5_OWNERSHIP_MIGRATION_SCHEMA,
-        version: LEGACY_ARC5_OWNERSHIP_MIGRATION_VERSION,
-        sourceSchema: OWNERSHIP_STATE_SCHEMA,
-        sourceVersion: OWNERSHIP_STATE_VERSION,
-        sourceRevision,
-        sourceMode: certificate.sourceMode,
-        sourceDigest,
-        targetSchema: OWNERSHIP_STATE_SCHEMA_V2,
-        targetVersion: OWNERSHIP_STATE_VERSION_V2,
-        targetRevision,
-        targetMode: certificate.targetMode,
-        targetDigest,
-      }),
-    });
-  } catch {
-    return Object.freeze({ kind: 'corrupt' });
-  }
-}
-
-function inspectLegacy(
-  extensions: V5Extensions,
-  carrier: V5ExtensionCarrier,
-  resolver: OwnershipAddressResolver,
-): PresentInspection {
-  const parsed = parseLegacyCertificate(carrier.json);
-  if (parsed.kind === 'future') {
-    return Object.freeze({ kind: 'target-future', version: parsed.version });
-  }
-  if (parsed.kind === 'corrupt') return Object.freeze({ kind: 'target-corrupt' });
-  const source = readSource(extensions, resolver);
-  if (source.kind === 'absent') return Object.freeze({ kind: 'source-absent' });
-  if (source.kind === 'future') return Object.freeze({ kind: 'source-future', version: source.version });
-  if (source.kind === 'corrupt') return Object.freeze({ kind: 'source-corrupt' });
-  let state: OwnershipStateV2;
-  let sourceDigest: string;
-  let targetDigest: string;
-  try {
-    state = migrateOwnershipStateV1ToV2(source.state);
-    sourceDigest = ownershipStateDigestV1(source.state);
-    targetDigest = ownershipStateDigestV2(state);
-  } catch {
-    return Object.freeze({ kind: 'target-corrupt' });
-  }
-  const certificate = parsed.certificate;
-  if (certificate.sourceRevision !== source.state.revision
-    || certificate.sourceMode !== source.state.mode
-    || certificate.sourceDigest !== sourceDigest) return Object.freeze({ kind: 'source-drift' });
-  if (certificate.targetRevision !== state.revision
-    || certificate.targetMode !== state.mode
-    || certificate.targetDigest !== targetDigest) return Object.freeze({ kind: 'target-corrupt' });
-  return Object.freeze({
-    kind: 'loaded',
-    state,
-    evidence: Object.freeze({
-      representationVersion: 1,
-      sourceDigest,
-      targetDigest,
-    }),
-  });
 }
 
 function carrierJson(value: unknown): string {
@@ -1037,7 +904,6 @@ function inspectInventory(
   inventory: Inventory,
   resolver: OwnershipAddressResolver,
 ): PresentInspection {
-  if (inventory.kind === 'legacy') return inspectLegacy(extensions, inventory.manifest, resolver);
   if (inventory.kind === 'current') return inspectCurrent(extensions, resolver);
   if (inventory.kind === 'future') {
     return Object.freeze({ kind: 'target-future', version: inventory.version });
@@ -1045,7 +911,7 @@ function inspectInventory(
   return Object.freeze({ kind: 'target-corrupt' });
 }
 
-/** Read an aligned legacy certificate or the complete compact v2 carrier.
+/** Read the complete compact v2 carrier.
  * V2 is always reconstructed from the exact current Arc 4 source plus the
  * canonical delta; no second full ownership mirror is stored. */
 export function readArc5OwnershipMigration(
@@ -1472,27 +1338,14 @@ export function prepareArc5OwnershipMigration(input: Readonly<{
     return protectedOutcome(inspected.kind);
   }
 
-  let source: OwnershipStateV1;
+  const sourceRead = readSource(base, captured.resolver);
+  if (sourceRead.kind === 'absent') return protectedOutcome('source-absent');
+  if (sourceRead.kind === 'future') return protectedOutcome('source-future', sourceRead.version);
+  if (sourceRead.kind === 'corrupt') return protectedOutcome('source-corrupt');
+  const source: OwnershipStateV1 = sourceRead.state;
   let state: OwnershipStateV2;
-  let representationUpgrade: 'legacy-v1' | undefined;
-  if (inventory.kind === 'legacy') {
-    const inspected = inspectLegacy(base, inventory.manifest, captured.resolver);
-    if (inspected.kind === 'target-future' || inspected.kind === 'source-future') {
-      return protectedOutcome(inspected.kind, inspected.version);
-    }
-    if (inspected.kind !== 'loaded') return protectedOutcome(inspected.kind);
-    state = inspected.state;
-    source = ownershipSourceStateV1(state);
-    representationUpgrade = 'legacy-v1';
-  } else {
-    const sourceRead = readSource(base, captured.resolver);
-    if (sourceRead.kind === 'absent') return protectedOutcome('source-absent');
-    if (sourceRead.kind === 'future') return protectedOutcome('source-future', sourceRead.version);
-    if (sourceRead.kind === 'corrupt') return protectedOutcome('source-corrupt');
-    source = sourceRead.state;
-    try { state = migrateOwnershipStateV1ToV2(source); }
-    catch { return protectedOutcome('target-corrupt'); }
-  }
+  try { state = migrateOwnershipStateV1ToV2(source); }
+  catch { return protectedOutcome('target-corrupt'); }
 
   let encoded: EncodedCurrentV2;
   let applied: ReturnType<typeof applyEncoded>;
@@ -1516,13 +1369,11 @@ export function prepareArc5OwnershipMigration(input: Readonly<{
     evidence: verified.evidence,
     writes: applied.writes,
     extensions: applied.extensions,
-    ...(representationUpgrade === undefined ? {} : { representationUpgrade }),
   });
 }
 
 /** Verify postcommit bytes against one prepared exact five-target replacement
- * and return only a strict current-v2 fixed point. This rejects a still-valid
- * legacy certificate even though it reconstructs the same ownership state. */
+ * and return only a strict current-v2 fixed point. */
 export function committedArc5OwnershipState(
   prepared: Readonly<{
     state: OwnershipStateV2;

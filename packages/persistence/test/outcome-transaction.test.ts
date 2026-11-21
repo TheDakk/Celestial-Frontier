@@ -6,7 +6,6 @@ import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
   F3_REVISION_KEY,
   F4_AUTHORITY_NAMESPACE,
-  V4_PRIMARY_KEY,
   createActivePlayPersistenceOwner,
   createF4DeterministicProductTransactionOwner,
   createF4MultiOutcomePreDrawTransactionOwner,
@@ -17,7 +16,8 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   createTabLeaseClient,
-  migrateStoredV4ToV5,
+  classifyV4Save,
+  initializeFreshV5,
   isF4MultiOutcomePreDrawSettlementAuthorizerForCodec,
   planF4DeterministicProductReceipt,
   planF4MultiOutcomeDraws,
@@ -49,6 +49,15 @@ const fixtures = JSON.parse(fs.readFileSync(path.join(baseline, 'save-fixtures.j
 };
 const REGISTRY = JSON.parse(fs.readFileSync(path.join(baseline, 'content-registry.json'), 'utf8')) as ContentRegistry;
 const NOW = 1_753_900_060_000;
+
+/** The save a v2 store starts with. The seed helper below writes it through initializeFreshV5
+ * and then sets the revision row to '0', the revision these tests count from (they were
+ * written against a migrated store, which started at '0'; v2 itself starts at '1'). */
+function seedWritable(raw: string): V5WritableState {
+  const classified = classifyV4Save(raw, REGISTRY, NOW);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  return { state: classified.state, extensions: {} };
+}
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
 const OUTCOME_TRANSACTION_SOURCE = fs.readFileSync(
   path.join(here, '..', 'src', 'outcome-transaction.ts'),
@@ -113,8 +122,8 @@ async function seededHarness(
   extensions: V5Extensions = {},
   legacyRaw = VETERAN_RAW,
 ): Promise<SeededHarness> {
-  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: legacyRaw }]);
-  expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+  expect((await initializeFreshV5(backend, seedWritable(legacyRaw), REGISTRY, NOW)).kind).toBe('initialized');
+  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
   const initial = await readSaveV5(backend, REGISTRY, NOW);
   if (initial.kind !== 'loaded') throw new Error(`expected loaded v5, received ${initial.kind}`);
   const clock = controlledClock();

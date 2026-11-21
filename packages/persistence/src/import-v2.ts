@@ -154,36 +154,13 @@ export function sanitizeImportedGenomeV2(value: unknown): Record<string, unknown
   return sanitized;
 }
 
-/** A genuine v1.8.9 Field Training checkpoint written immediately before
- * its sandbox starts. It owns only the eleven fields below; the surrounding
- * full save owns every other expedition field. The classifier returns a
- * bounded recursive clone, so these are evidence rather than parsed aliases. */
-export interface LegacyTrainingCheckpointV1 {
-  readonly st: Readonly<Record<string, unknown>>;
-  readonly ps: Readonly<Record<string, unknown>>;
-  readonly ac: readonly unknown[];
-  readonly es: number;
-  readonly c: readonly unknown[];
-  readonly ca: readonly unknown[];
-  readonly cx: readonly unknown[];
-  readonly it: readonly unknown[];
-  readonly eq: Readonly<Record<string, unknown>>;
-  readonly ea: Readonly<Record<string, unknown>>;
-  readonly e: Readonly<Record<string, unknown>> | null;
-}
-
 /** The importer must retain pre-sanitizer Training evidence without making it
  * part of the save schema. `current-view` is deliberately the exact one-key
- * snapshot written by the v2 Training restart. A genuine legacy checkpoint
- * is separately recognizable; every other richer shape remains refusal-only. */
+ * snapshot written by the v2 Training restart; every other richer shape
+ * remains refusal-only. */
 export type ImportTrainingSnapshotIngressV2 =
   | { readonly kind: 'none' }
   | { readonly kind: 'current-view'; readonly view: unknown }
-  | {
-      readonly kind: 'legacy-v1';
-      readonly snapshot: LegacyTrainingCheckpointV1;
-      readonly rescuedCompleted: boolean;
-    }
   | {
       readonly kind: 'legacy-or-unknown';
       readonly snapshot?: unknown;
@@ -293,18 +270,6 @@ function projectRawRoute(value: unknown): unknown {
   return Object.freeze(route);
 }
 
-const LEGACY_TRAINING_CHECKPOINT_V1_KEYS = Object.freeze([
-  'st', 'ps', 'ac', 'es', 'c', 'ca', 'cx', 'it', 'eq', 'ea', 'e',
-] as const);
-
-const LEGACY_TRAINING_ARRAY_CAPS = Object.freeze({
-  ac: 500,
-  c: 1500,
-  ca: 200,
-  cx: 200,
-  it: 300,
-} as const);
-
 const BOUNDED_TRAINING_EVIDENCE = Object.freeze({
   maxDepth: 12,
   maxArrayLength: 1500,
@@ -394,36 +359,6 @@ function cloneBoundedTrainingEvidence(
     return Object.freeze(clone);
   } finally {
     budget.active.delete(value);
-  }
-}
-
-/** Recognize only the genuine v1.8.9 checkpoint envelope. Key order is not
- * semantic, but the set and outer container kinds are exact. `e.where` is
- * carried as inert checkpoint data; it is never projected as route authority. */
-export function classifyLegacyTrainingCheckpointV1(value: unknown): LegacyTrainingCheckpointV1 | null {
-  try {
-    if (!isPlainRecord(value)
-      || Object.getOwnPropertySymbols(value).length !== 0
-      || Object.getOwnPropertyNames(value).length !== LEGACY_TRAINING_CHECKPOINT_V1_KEYS.length) return null;
-    const keys = Object.keys(value);
-    if (keys.length !== LEGACY_TRAINING_CHECKPOINT_V1_KEYS.length
-      || !LEGACY_TRAINING_CHECKPOINT_V1_KEYS.every((key) => Object.prototype.hasOwnProperty.call(value, key))) return null;
-    const clone = cloneBoundedTrainingEvidence(value);
-    if (clone === TRAINING_EVIDENCE_REJECTED || !isPlainRecord(clone)) return null;
-    if (!isPlainRecord(clone.st) || !isPlainRecord(clone.ps)
-      || typeof clone.es !== 'number' || !Number.isFinite(clone.es)
-      || !isPlainRecord(clone.eq) || !isPlainRecord(clone.ea)
-      || !(clone.e === null || isPlainRecord(clone.e))) return null;
-    for (const [key, cap] of Object.entries(LEGACY_TRAINING_ARRAY_CAPS) as Array<[
-      keyof typeof LEGACY_TRAINING_ARRAY_CAPS,
-      number,
-    ]>) {
-      const container = clone[key];
-      if (!Array.isArray(container) || container.length > cap) return null;
-    }
-    return clone as unknown as LegacyTrainingCheckpointV1;
-  } catch {
-    return null;
   }
 }
 
@@ -800,7 +735,6 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const voiceOn = data.vce != null ? !!data.vce : true;
     const combatSfxOn = data.cbx != null ? !!data.cbx : true;
     let tutSnapPending: unknown = null;
-    let rescuedLegacyTrainingCompleted = false;
     const trainingSnapshot: ImportTrainingSnapshotIngressV2 = (() => {
       const rawSnapshot = data.tsnap;
       if (!rawSnapshot || typeof rawSnapshot !== 'object') {
@@ -822,16 +756,6 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
         return Object.freeze({
           kind: 'current-view' as const,
           view,
-        });
-      }
-      const legacyCheckpoint = classifyLegacyTrainingCheckpointV1(rawSnapshot);
-      if (legacyCheckpoint && (data.tut === 0 || data.tut === 1)) {
-        rescuedLegacyTrainingCompleted = data.tut === 1;
-        tutSnapPending = legacyCheckpoint;
-        return Object.freeze({
-          kind: 'legacy-v1' as const,
-          snapshot: legacyCheckpoint,
-          rescuedCompleted: rescuedLegacyTrainingCompleted,
         });
       }
       const boundedSnapshot = cloneBoundedTrainingEvidence(rawSnapshot);
@@ -954,12 +878,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       && /^[a-z][a-z0-9-]{0,31}$/.test(data.ending)
       ? data.ending : null;
     const seenGuide = !!data.guide;
-    /* The shipped legacy restart bug could persist `tut:1` beside its exact
-       pre-Training checkpoint. Normalize that proven pair back to pending so
-       an ordinary export cannot cement completed+pending or erase the rescue. */
-    const tutDone = rescuedLegacyTrainingCompleted
-      ? false
-      : data.tut === undefined ? true : !!data.tut;   /* absent ⇒ done — never force training on a held run */
+    const tutDone = data.tut === undefined ? true : !!data.tut;   /* absent ⇒ done — never force training on a held run */
     const rnSeen = typeof data.rn === 'string' ? data.rn.slice(0, 12) : '0';
 
     return {

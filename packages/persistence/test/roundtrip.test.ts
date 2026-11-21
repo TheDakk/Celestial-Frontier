@@ -4,8 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canon } from '../../../tests/support/parity.js';
 import {
-  importSaveV2, exportSaveV2, isPlausibleSaveEnvelope,
-  createSaveRepository, createMemoryBackend, type ContentRegistry, type SaveStateV2,
+  importSaveV2, exportSaveV2, isPlausibleSaveEnvelope, type ContentRegistry, type SaveStateV2,
 } from '@cf/persistence';
 
 /* ═══ THE ROUND-TRIP INVARIANT: import → export → import reaches a FIXED
@@ -160,25 +159,5 @@ describe('import → export → import: the fixed point', () => {
     expect(output.log).toHaveLength(120);
     expect(output.log.some((row) => row.id === 'p-new')).toBe(true);
     expect(output.log.some((row) => row.id === 'p0')).toBe(false);
-  });
-});
-
-describe('the repository flow, end to end (Phase 2 wiring)', () => {
-  it('boot → import → promote → corrupt write → recover → import: the veteran survives', async () => {
-    const repo = createSaveRepository(createMemoryBackend());
-    /* a device writes the save; boot imports it; a PROVEN load promotes */
-    await repo.write(JSON.stringify(FX.inputs.veteran_rich));
-    const raw1 = await repo.readPrimary();
-    const s1 = importOk(raw1!);
-    await repo.promoteLastKnownGood(raw1!);
-    /* a later write corrupts (quota, crash mid-write) */
-    await repo.write('{"epoch": CORRUPT');
-    expect(importSaveV2(await repo.readPrimary(), REGISTRY, NOW).ok).toBe(false);
-    /* CF-RR-002: recovery restores the last payload that PROVED it loads */
-    const recovered = await repo.recover((raw) => importSaveV2(raw, REGISTRY, NOW).ok);
-    expect(recovered).toBeDefined();
-    const s2 = importOk(recovered!);
-    expect(canon(s2)).toBe(canon(s1));
-    expect(s2.essence).toBe(5000);
   });
 });

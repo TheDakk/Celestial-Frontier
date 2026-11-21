@@ -1,4 +1,4 @@
-/* F3 v4 -> v5 compatibility migration.
+/* F3 v5 save topology over the v4 compatibility codec.
 
    v4 remains the compatibility codec: importSaveV2 owns sanitization and
    exportSaveV2 owns the canonical legacy writer. v5 changes persistence
@@ -6,10 +6,10 @@
    into owner-named records and can always be reassembled through that same
    supported codec.
 
-   Migration is one compare-and-apply transaction. It checks the exact v4
-   primary and the absence of a v5 schema marker, then writes the split rows,
-   the exact pre-migration bytes, the journal, and the schema marker together.
-   It never deletes or overwrites the v4 primary. */
+   A stored v4 primary is never migrated. v2 writes the primary and the v5
+   schema marker in one transaction, so a primary without a schema marker
+   was not written by this game: boot classifies it as corrupt and protects
+   it, leaving every byte in place. */
 import { exportSaveV2 } from './export-v2.js';
 import {
   importSaveV2,
@@ -24,7 +24,7 @@ import {
   type StorageOperation,
   type StoreName,
 } from './repository.js';
-import { F3_REVISION_KEY, createRevisionedRepository } from './revisioned.js';
+import { createRevisionedRepository } from './revisioned.js';
 
 export const V5_SCHEMA_VERSION = 5;
 export const V5_CODEC = 'legacy-v4-split-v1';
@@ -151,11 +151,6 @@ export type V4SaveClassification =
   | { readonly kind: 'future-version' }
   | { readonly kind: 'corrupt' };
 
-export interface PreparedV5Migration {
-  readonly normalizedV4Raw: string;
-  readonly operations: readonly StorageOperation[];
-}
-
 export interface V5WritableState {
   readonly state: SaveStateV2;
   /** Required even when empty: callers must deliberately pass through the
@@ -226,10 +221,8 @@ export type RevisionedV5ReadOutcome =
 
 export type V5MigrationOutcome =
   | { readonly kind: 'fresh' }
-  | { readonly kind: 'migrated'; readonly normalizedV4Raw: string }
   | { readonly kind: 'already-current'; readonly legacyV4Raw: string }
   | { readonly kind: 'protected'; readonly reason: 'future-version' | 'corrupt' }
-  | { readonly kind: 'stale-source' }
   | { readonly kind: 'storage-error'; readonly message: string };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -689,46 +682,6 @@ export async function initializeFreshV5(
   }
 }
 
-export function prepareV4ToV5Migration(
-  raw: string,
-  registry: ContentRegistry,
-  now: number,
-): PreparedV5Migration | Exclude<V4SaveClassification, { kind: 'supported' }> {
-  const classified = classifyV4Save(raw, registry, now);
-  if (classified.kind !== 'supported') return classified;
-  const schema: V5SchemaRow = {
-    schema: V5_SCHEMA_VERSION,
-    codec: V5_CODEC,
-    sourceSchema: 4,
-    segments: V5_SEGMENTS,
-  };
-  const snapshot: V5SnapshotRow = { schema: V5_SCHEMA_VERSION, sourceSchema: 4, raw };
-  const operations = segmentOperations(classified.normalizedRaw, EMPTY_EXTENSIONS);
-  operations.push(
-    { store: 'journal', key: V5_SNAPSHOT_KEY, value: JSON.stringify(snapshot) },
-    {
-      store: 'journal',
-      key: V5_JOURNAL_KEY,
-      value: JSON.stringify({
-        schema: V5_SCHEMA_VERSION,
-        kind: 'v4-to-v5',
-        phase: 'complete',
-        snapshotKey: V5_SNAPSHOT_KEY,
-        codec: V5_CODEC,
-      }),
-    },
-    /* A migrated repository starts from an explicit revision rather than
-       absence. Deleting a once-used revision can therefore never recreate
-       the pre-migration compare-and-apply parent (ABA). */
-    { store: 'meta', key: F3_REVISION_KEY, value: '0' },
-    /* The schema marker is intentionally last in the operation list. The
-       backend contract is atomic, but this also keeps intent obvious in raw
-       transaction traces and fault-injection diagnostics. */
-    { store: 'meta', key: V5_SCHEMA_KEY, value: JSON.stringify(schema) },
-  );
-  return { normalizedV4Raw: classified.normalizedRaw, operations: Object.freeze(operations) };
-}
-
 function decodeSchema(raw: string): 'current' | 'future' | 'corrupt' {
   const row = parseRecord(raw);
   if (row === null) return 'corrupt';
@@ -974,8 +927,11 @@ export async function readRevisionedSaveV5WithRecovery(
   }
 }
 
-/** One exact stored-source migration. The v4 primary remains byte-identical
- * on success, stale races, validation refusal, and backend failure. */
+/** The boot classification of the stored save. The name is historical: it
+ * migrates nothing and writes nothing. It answers `fresh` (no save),
+ * `already-current` (a v5 save that reads), or `protected` (a future or
+ * corrupt v5 save, or a v4 primary without a v5 schema marker, which this
+ * game never writes). Every stored byte is left unchanged. */
 export async function migrateStoredV4ToV5(
   backend: StorageBackend,
   registry: ContentRegistry,
@@ -993,22 +949,7 @@ export async function migrateStoredV4ToV5(
 
     const sourceRaw = await backend.get('meta', V4_PRIMARY_KEY);
     if (sourceRaw === undefined) return { kind: 'fresh' };
-    const revisionRaw = await backend.get('meta', F3_REVISION_KEY);
-    if (revisionRaw !== undefined) return { kind: 'protected', reason: 'corrupt' };
-    const prepared = prepareV4ToV5Migration(sourceRaw, registry, now);
-    if ('kind' in prepared) {
-      return { kind: 'protected', reason: prepared.kind === 'future-version' ? 'future-version' : 'corrupt' };
-    }
-    const committed = await backend.compareAndApply([
-      { store: 'meta', key: V4_PRIMARY_KEY, value: sourceRaw },
-      { store: 'meta', key: V5_SCHEMA_KEY, value: undefined },
-      { store: 'meta', key: F3_REVISION_KEY, value: undefined },
-    ], prepared.operations);
-    if (committed) return { kind: 'migrated', normalizedV4Raw: prepared.normalizedV4Raw };
-
-    const raced = await readSaveV5(backend, registry, now);
-    if (raced.kind === 'loaded') return { kind: 'already-current', legacyV4Raw: raced.legacyV4Raw };
-    return { kind: 'stale-source' };
+    return { kind: 'protected', reason: 'corrupt' };
   } catch (error) {
     return { kind: 'storage-error', message: error instanceof Error ? error.message : String(error) };
   }

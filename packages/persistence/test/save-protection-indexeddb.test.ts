@@ -3,18 +3,32 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
+  SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  canonicalJson,
+  createEmptyOwnershipStateV1,
+  migrateOwnershipStateV1ToV2,
+  ownershipStateDigestV1,
+  ownershipStateDigestV2,
+} from '@cf/domain-acquisition';
+import {
+  ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
   F3_REVISION_KEY,
   V4_PRIMARY_KEY,
   V5_SCHEMA_KEY,
+  applyV5ExtensionWrites,
   classifyV4Save,
   createIndexedDBBackend,
   createRevisionedRepository,
+  encodeArc4Ownership,
   initializeFreshV5,
   migrateStoredV4ToV5,
+  prepareArc5OwnershipMigration,
   prepareV5SaveWrite,
+  readArc5OwnershipMigration,
   readRevisionedSaveV5WithRecovery,
   type ContentRegistry,
   type StorageBackend,
+  type V5Extensions,
 } from '@cf/persistence';
 
 /* A save from a future version, or a corrupt one, is never overwritten: every package entry the
@@ -248,6 +262,90 @@ describe('@cf/persistence — a future-version or corrupt save in cf-v2-pixel is
       expect(await initializeFreshV5(backend, writable(), REGISTRY, NOW)).toEqual({
         kind: 'storage-error', message: 'stored F3 revision is corrupt',
       });
+
+      expect(fake.bytes(DATABASE)).toEqual(before);
+    });
+  });
+});
+
+/** Arc 4 ownership plus the version-1 Arc 5 certificate the old game wrote, aligned with it. */
+function arc5VersionOneCertificate(): V5Extensions {
+  const source = createEmptyOwnershipStateV1();
+  const target = migrateOwnershipStateV1ToV2(source);
+  const arc4 = applyV5ExtensionWrites({}, encodeArc4Ownership(source).writes).extensions;
+  return applyV5ExtensionWrites(arc4, [{
+    segment: 'player',
+    namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+    carrier: {
+      version: 1,
+      json: canonicalJson({
+        schema: 'cf-v2-ownership-v1-to-v2/v1',
+        version: 1,
+        sourceSchema: source.schema,
+        sourceVersion: source.version,
+        sourceRevision: source.revision,
+        sourceMode: source.mode,
+        sourceDigest: ownershipStateDigestV1(source),
+        targetSchema: target.schema,
+        targetVersion: target.version,
+        targetRevision: target.revision,
+        targetMode: target.mode,
+        targetDigest: ownershipStateDigestV2(target),
+      }),
+    },
+  }]).extensions;
+}
+
+describe('@cf/persistence — a save shape only the old game wrote is refused in cf-v2-pixel and never overwritten', () => {
+  it('a store holding only a v4 primary, with no v5 schema row, is protected as corrupt and never migrated; the stored bytes are unchanged', async () => {
+    await withFakeIndexedDB(async (fake) => {
+      await createIndexedDBBackend().apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
+      const before = fake.bytes(DATABASE);
+      expect(before.meta).toEqual({ [V4_PRIMARY_KEY]: VETERAN_RAW });
+
+      const backend = createIndexedDBBackend();
+      expect(await readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW)).toEqual({ kind: 'not-migrated' });
+      expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({ kind: 'protected', reason: 'corrupt' });
+      expect(await initializeFreshV5(backend, writable(), REGISTRY, NOW)).toEqual({ kind: 'not-fresh' });
+
+      expect(fake.bytes(DATABASE)).toEqual(before);
+    });
+  });
+
+  it('the boot classification still answers fresh for an empty store and already-current for a v2 save, and writes nothing', async () => {
+    await withFakeIndexedDB(async (fake) => {
+      const empty = createIndexedDBBackend();
+      expect(await migrateStoredV4ToV5(empty, REGISTRY, NOW)).toEqual({ kind: 'fresh' });
+      expect(Object.values(fake.bytes(DATABASE)).every((rows) => Object.keys(rows).length === 0)).toBe(true);
+
+      await storedSave(empty, null);
+      const before = fake.bytes(DATABASE);
+      const backend = createIndexedDBBackend();
+      expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({
+        kind: 'already-current', legacyV4Raw: before.meta?.[V4_PRIMARY_KEY],
+      });
+      expect(fake.bytes(DATABASE)).toEqual(before);
+    });
+  });
+
+  it('an Arc 5 version-1 ownership certificate is refused as corrupt, no write is prepared, and the stored bytes are unchanged', async () => {
+    await withFakeIndexedDB(async (fake) => {
+      expect(await initializeFreshV5(
+        createIndexedDBBackend(),
+        { state: writable().state, extensions: arc5VersionOneCertificate() },
+        REGISTRY,
+        NOW,
+      )).toMatchObject({ kind: 'initialized', revision: 1 });
+      const before = fake.bytes(DATABASE);
+
+      const backend = createIndexedDBBackend();
+      const loaded = await readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW);
+      if (loaded.kind !== 'loaded') throw new Error(`expected the save itself to load, received ${loaded.kind}`);
+      expect(readArc5OwnershipMigration(loaded.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'corrupt' });
+      expect(prepareArc5OwnershipMigration({
+        extensions: loaded.extensions,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
 
       expect(fake.bytes(DATABASE)).toEqual(before);
     });

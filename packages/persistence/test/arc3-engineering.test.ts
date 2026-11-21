@@ -22,7 +22,6 @@ import {
   ARC3_ENGINEERING_SEGMENT,
   ARC3_ENGINEERING_VERSION,
   F3_REVISION_KEY,
-  V4_PRIMARY_KEY,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
   canonicalizeV5Extensions,
@@ -32,7 +31,8 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   encodeArc3EngineeringCarrier,
-  migrateStoredV4ToV5,
+  classifyV4Save,
+  initializeFreshV5,
   prepareArc3EngineeringLegacyBootstrap,
   prepareArc3EngineeringWrite,
   readArc3Engineering,
@@ -43,6 +43,7 @@ import {
   type StorageCheck,
   type StorageOperation,
   type V5Extensions,
+  type V5WritableState,
 } from '@cf/persistence';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -55,6 +56,15 @@ const REGISTRY = JSON.parse(
 ) as ContentRegistry;
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
 const NOW = 1_753_900_060_000;
+
+/** The save a v2 store starts with. The seed helper below writes it through initializeFreshV5
+ * and then sets the revision row to '0', the revision these tests count from (they were
+ * written against a migrated store, which started at '0'; v2 itself starts at '1'). */
+function seedWritable(raw: string): V5WritableState {
+  const classified = classifyV4Save(raw, REGISTRY, NOW);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  return { state: classified.state, extensions: {} };
+}
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },
@@ -363,8 +373,8 @@ describe('@cf/persistence — Arc 3 deterministic action join', () => {
         return baseBackend.compareAndApply(checks, operations, clearStores);
       },
     };
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    expect((await initializeFreshV5(backend, seedWritable(VETERAN_RAW), REGISTRY, NOW)).kind).toBe('initialized');
+    await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
     const initial = await readSaveV5(backend, REGISTRY, NOW);
     if (initial.kind !== 'loaded') throw new Error(`expected loaded v5, received ${initial.kind}`);
 

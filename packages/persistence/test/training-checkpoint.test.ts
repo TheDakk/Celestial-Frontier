@@ -4,9 +4,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
-  classifyLegacyTrainingCheckpointV1,
   exportSaveV2,
   importSaveV2,
+  prepareV5Replacement,
   type ContentRegistry,
 } from '@cf/persistence';
 import { loadRecorded } from '../../../tests/support/v1-recorded.js';
@@ -69,7 +69,7 @@ function expectDeepFrozen(value: unknown, seen = new WeakSet<object>()): void {
   for (const child of Object.values(value)) expectDeepFrozen(child, seen);
 }
 
-describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () => {
+describe('v1.8.9 Field Training checkpoint fixture and Training snapshot ingress', () => {
   it('seals the action-derived capture and every provenance hash', () => {
     const serialized = JSON.stringify(fixture.snapshot);
     expect(fixture.captureSchema).toBe('cf-v1.8.9-training-restart-capture/v1');
@@ -134,22 +134,6 @@ describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () =
     ]);
   });
 
-  it('returns a detached, recursively frozen checkpoint and never promotes e.where to a view', () => {
-    const source = structuredClone(fixture.snapshot);
-    const checkpoint = classifyLegacyTrainingCheckpointV1(source);
-    expect(checkpoint).not.toBeNull();
-    if (!checkpoint) return;
-    expect(checkpoint).not.toBe(source);
-    expectDeepFrozen(checkpoint);
-    (source.st as Record<string, unknown>).surveys = 999;
-    expect(checkpoint.st.surveys).toBe(2);
-    expect(checkpoint.e).toMatchObject({
-      id: 'p133',
-      where: { star: { x: 0, y: 0, seed: 424242 }, pseed: 133 },
-    });
-    expect(Object.prototype.hasOwnProperty.call(checkpoint, 'view')).toBe(false);
-  });
-
   it('sanitizes a nonempty Atlas star-history label at 24 characters and preserves it through export', () => {
     const earth = structuredClone(fixture.snapshot.e) as Record<string, unknown>;
     earth.star = '  G2 V <b>"home"&\'prime\' beyond cap  ';
@@ -174,75 +158,6 @@ describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () =
     expect(second.state.logMap[0]![1].star).toBe('G2 V bhomeprime beyond c');
   });
 
-  it('recognizes the exact key set in either order and rejects every missing or extra field', () => {
-    const reversed = Object.fromEntries(Object.entries(fixture.snapshot).reverse());
-    expect(classifyLegacyTrainingCheckpointV1(reversed)).not.toBeNull();
-    expect(importTraining(0, reversed).ingress.trainingSnapshot.kind).toBe('legacy-v1');
-    for (const key of Object.keys(fixture.snapshot)) {
-      const missing = structuredClone(fixture.snapshot);
-      delete missing[key];
-      expect(classifyLegacyTrainingCheckpointV1(missing), `missing ${key}`).toBeNull();
-    }
-    const missing = structuredClone(fixture.snapshot);
-    delete missing.st;
-    expect(importTraining(0, missing).ingress.trainingSnapshot.kind).toBe('legacy-or-unknown');
-    const extra = { ...fixture.snapshot, extra: true };
-    expect(classifyLegacyTrainingCheckpointV1(extra)).toBeNull();
-    expect(importTraining(0, extra).ingress.trainingSnapshot.kind).toBe('legacy-or-unknown');
-  });
-
-  it('rejects every wrong outer container and every over-cap array', () => {
-    const wrong: Record<string, unknown> = {
-      st: [], ps: [], ac: {}, es: {}, c: {}, ca: {}, cx: {}, it: {}, eq: [], ea: [], e: [],
-    };
-    for (const [key, value] of Object.entries(wrong)) {
-      const candidate = structuredClone(fixture.snapshot);
-      candidate[key] = value;
-      expect(classifyLegacyTrainingCheckpointV1(candidate), `wrong ${key}`).toBeNull();
-    }
-    const caps = { ac: 500, c: 1500, ca: 200, cx: 200, it: 300 } as const;
-    for (const [key, cap] of Object.entries(caps)) {
-      const candidate = structuredClone(fixture.snapshot);
-      candidate[key] = Array.from({ length: cap + 1 }, () => null);
-      expect(classifyLegacyTrainingCheckpointV1(candidate), `over-cap ${key}`).toBeNull();
-    }
-    const wrongContainer = structuredClone(fixture.snapshot);
-    wrongContainer.ac = {};
-    expect(importTraining(0, wrongContainer).ingress.trainingSnapshot.kind).toBe('legacy-or-unknown');
-    const overCap = structuredClone(fixture.snapshot);
-    overCap.ca = Array.from({ length: 201 }, () => null);
-    expect(importTraining(0, overCap).ingress.trainingSnapshot.kind).toBe('legacy-or-unknown');
-  });
-
-  it('classifies tut=0 as pending and round-trips the checkpoint byte-for-byte', () => {
-    const result = importTraining(0, fixture.snapshot);
-    expect(result.ingress.trainingSnapshot).toMatchObject({
-      kind: 'legacy-v1',
-      rescuedCompleted: false,
-      snapshot: fixture.snapshot,
-    });
-    expect(result.state.tutDone).toBe(false);
-    expect(result.state.tutSnapPending).toEqual(fixture.snapshot);
-    expectDeepFrozen(result.state.tutSnapPending);
-    const exported = JSON.parse(exportSaveV2(result.state, NOW)) as Record<string, unknown>;
-    expect(exported.tut).toBe(0);
-    expect(sha256(JSON.stringify(exported.tsnap))).toBe(fixture.snapshotSha256);
-  });
-
-  it('rescues the known tut=1 bug by retaining the exact checkpoint and normalizing incomplete', () => {
-    const result = importTraining(1, fixture.snapshot);
-    expect(result.ingress.trainingSnapshot).toMatchObject({
-      kind: 'legacy-v1',
-      rescuedCompleted: true,
-      snapshot: fixture.snapshot,
-    });
-    expect(result.state.tutDone).toBe(false);
-    expect(result.state.tutSnapPending).toEqual(fixture.snapshot);
-    const exported = JSON.parse(exportSaveV2(result.state, NOW)) as Record<string, unknown>;
-    expect(exported.tut).toBe(0);
-    expect(sha256(JSON.stringify(exported.tsnap))).toBe(fixture.snapshotSha256);
-  });
-
   it('leaves the exact current {view} contract unchanged in both tut directions', () => {
     const view = { type: 'galaxy', gal: { x: 90, y: -60, seed: 999 } };
     const pending = importTraining(0, { view });
@@ -257,7 +172,6 @@ describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () =
   it('keeps the old synthetic fixture explicitly unknown while preserving its bounded bytes', () => {
     const bogus = saves.inputs.tut_midtraining!.tsnap;
     expect(bogus).toEqual({ codex: [], essence: 10, marker: 'pre-training-expedition' });
-    expect(classifyLegacyTrainingCheckpointV1(bogus)).toBeNull();
     const pending = importTraining(0, bogus);
     expect(pending.ingress.trainingSnapshot).toEqual({ kind: 'legacy-or-unknown', snapshot: bogus });
     expect(pending.state.tutSnapPending).toEqual(bogus);
@@ -292,15 +206,22 @@ describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () =
     });
     expect(completed.state.tutDone).toBe(true);
     expect(completed.state.tutSnapPending).toBeNull();
+  });
 
-    const deep = structuredClone(fixture.snapshot);
-    let cursor: Record<string, unknown> = {};
-    deep.st = cursor;
-    for (let index = 0; index < 13; index++) {
-      const next: Record<string, unknown> = {};
-      cursor.next = next;
-      cursor = next;
-    }
-    expect(classifyLegacyTrainingCheckpointV1(deep)).toBeNull();
+  it('reads a v1.8.9 checkpoint as an ordinary unknown snapshot, with no legacy rescue', () => {
+    const pending = importTraining(0, fixture.snapshot);
+    expect(pending.ingress.trainingSnapshot).toEqual({ kind: 'legacy-or-unknown', snapshot: fixture.snapshot });
+    expect(pending.state.tutDone).toBe(false);
+    expect(pending.state.tutSnapPending).toEqual(fixture.snapshot);
+
+    // The old tut=1 rescue is gone: completed stays completed, so the pair cannot be written back.
+    const completed = importTraining(1, fixture.snapshot);
+    expect(completed.ingress.trainingSnapshot).toEqual({ kind: 'legacy-or-unknown', snapshot: fixture.snapshot });
+    expect(completed.state.tutDone).toBe(true);
+    expect(() => exportSaveV2(completed.state, NOW)).toThrow(
+      'completed Field Training cannot retain a pending snapshot',
+    );
+    const pasted = JSON.stringify({ ...saves.inputs[fixture.source.fixtureName], tut: 1, tsnap: fixture.snapshot });
+    expect(prepareV5Replacement(pasted, registry, NOW)).toEqual({ kind: 'corrupt' });
   });
 });

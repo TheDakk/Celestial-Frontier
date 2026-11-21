@@ -20,7 +20,7 @@ import {
   exportSaveV2,
   exportPortableV5Save,
   importSaveV2,
-  migrateStoredV4ToV5,
+  initializeFreshV5,
   prepareLegacyXpFirstClaim,
   prepareV5Replacement,
   prepareV5SaveWrite,
@@ -32,6 +32,8 @@ import {
   type StorageBackend,
   type V5ExtensionCarrier,
   type V5Extensions,
+  classifyV4Save,
+  F3_REVISION_KEY,
 } from '@cf/persistence';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -153,11 +155,15 @@ function paddingExtensions(totalJsonBytes: number): V5Extensions {
   return canonicalizeV5Extensions({ settings: carriers });
 }
 
+/** A v2 store started through initializeFreshV5, with its revision row set to '0', the
+ * revision these tests count from (they were written against a migrated store). */
 async function migratedBackend(keys = firstFourThousand()): Promise<StorageBackend> {
   const backend = createMemoryBackend();
-  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: rawWithXp(keys) }]);
-  const migrated = await migrateStoredV4ToV5(backend, REGISTRY, NOW);
-  if (migrated.kind !== 'migrated') throw new Error(`expected migration, received ${migrated.kind}`);
+  const classified = classifyV4Save(rawWithXp(keys), REGISTRY, NOW);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  const initialized = await initializeFreshV5(backend, { state: classified.state, extensions: {} }, REGISTRY, NOW);
+  if (initialized.kind !== 'initialized') throw new Error(`expected a fresh store, received ${initialized.kind}`);
+  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
   return backend;
 }
 
