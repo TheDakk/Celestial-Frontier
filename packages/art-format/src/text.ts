@@ -1,4 +1,4 @@
-import { PIXEL_CHARS } from './pixels';
+import { PIXEL_CHARS, PIXEL_OUTLINE } from './pixels';
 import { DRAW_ORDER } from './types';
 import type { Catalogue, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
 
@@ -94,7 +94,7 @@ export function parseCatalogueText(text: string): Catalogue {
   const closeFrame = (): void => {
     if (part && frame) {
       if (frame.h === 0) throw new Error(`part ${part.id} frame ${frame.name} line ${frame.line}: frame has no rows`);
-      part.frames[frame.name] = { w: frame.w < 0 ? 0 : frame.w, h: frame.h, pixels: Uint8Array.from(frame.data), anchor: frame.anchor, attach: frame.attach };
+      part.frames[frame.name] = { w: frame.w, h: frame.h, pixels: Uint8Array.from(frame.data), anchor: frame.anchor, attach: frame.attach };
     }
     frame = undefined;
   };
@@ -139,6 +139,7 @@ export function parseCatalogueText(text: string): Catalogue {
       for (const c of trimmed) {
         const v = PIXEL_CHARS.indexOf(c);
         if (v < 0) throw new Error(`${where}: unknown pixel character '${c}'`);
+        if (v === PIXEL_OUTLINE) throw new Error(`${where}: outline value is written by the composer`);
         row.push(v);
       }
       if (frame.w < 0) frame.w = row.length;
@@ -231,13 +232,16 @@ export function parseCatalogueText(text: string): Catalogue {
         break;
       }
       case 'entry': {
-        if (!pose) throw new Error(`line ${n}: entry outside a pose`);
+        if (!pose || !scaffold) throw new Error(`line ${n}: entry outside a pose`);
         need(5);
         const slot = args[0] as string;
         if (!(DRAW_ORDER as readonly string[]).includes(slot)) throw new Error(`line ${n}: unknown slot '${slot}'`);
         const rawIndex = args[1] as string;
         const index = /^-?\d+$/.test(rawIndex) ? parseInt(rawIndex, 10) : -1;
         if (index < 0 || index > 7) throw new Error(`line ${n}: bad entry index ${rawIndex}`);
+        if (pose.entries.some((e) => e.slot === slot && e.index === index)) {
+          throw new Error(`scaffold ${scaffold.id} pose ${pose.id} line ${n}: duplicate entry ${slot} ${index}`);
+        }
         pose.entries.push({ slot: slot as SlotName, index, frame: args[2] as string, dx: int(args[3], n), dy: int(args[4], n) });
         break;
       }
@@ -254,6 +258,10 @@ export function parseCatalogueText(text: string): Catalogue {
   }
   closeAll();
 
+  for (const [family, id] of fallbacks) {
+    const target = parts.get(id);
+    if (target === undefined || !Object.hasOwn(target.frames, 'rest')) throw new Error(`fallback ${family}: part ${id} missing or has no rest frame`);
+  }
   if (sawPalette) {
     for (const i of usedColours) if (!definedColours.has(i)) throw new Error(`palette: colour ${i} used but not defined`);
   }
@@ -271,8 +279,11 @@ function pixelChar(v: number): string {
 export function formatPart(part: Part): string {
   const fail = (why: string): never => { throw new Error(`part ${part.id}: cannot format: ${why}`); };
   const out: string[] = [`part ${part.id}`];
+  if (Object.keys(part.frames).length === 0) fail('it has no frames');
   for (const [name, f] of Object.entries(part.frames)) {
     if (!nameOk(name)) fail(`frame name ${name} is not a valid name`);
+    if (f.w <= 0 || f.h <= 0) fail(`frame ${name} is ${f.w}x${f.h}, which has no pixels`);
+    if (f.pixels.includes(PIXEL_OUTLINE)) fail(`frame ${name} holds the outline value, which only the composer writes`);
     if (f.pixels.length !== f.w * f.h) fail(`frame ${name} has ${f.pixels.length} pixels, expected ${f.w * f.h}`);
     for (const k of Object.keys(f.attach)) if (!nameOk(k)) fail(`attach name ${k} is not a valid name`);
     const attach = Object.entries(f.attach).map(([k, [x, y]]) => `${k}:${x},${y}`).join(',');

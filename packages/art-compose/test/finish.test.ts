@@ -102,7 +102,7 @@ describe('finish', () => {
 });
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
-const catalogue = parseCatalogueText(`${HEADER}
+const parsed = parseCatalogueText(`${HEADER}
 part quadruped/torso/sturdy/small/v0
 frame rest anchor=0,0 attach=head:2,0
 22
@@ -130,9 +130,10 @@ entry torso 0 rest 0 0
 pose strike contact=20,12
 
 fallback quadruped quadruped/torso/blob/small/v0
-fallback serpent serpent/torso/coil/small/v0
-fallback ghost ghost/torso/none/small/v0
 `);
+// The parser refuses a fallback to a missing part or one without a rest frame; compose still guards against a
+// catalogue built in code, so these two are added after parsing.
+const catalogue = { ...parsed, fallbacks: new Map([...parsed.fallbacks, ['serpent', 'serpent/torso/coil/small/v0'], ['ghost', 'ghost/torso/none/small/v0']]) };
 
 function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over: Partial<Recipe> = {}): Recipe {
   return {

@@ -32,7 +32,7 @@ entry head 0 rest 0 0
 pose strike contact=88,30
 entry torso 0 rest 1 0
 
-fallback quadruped quadruped/torso/sturdy/medium/v0
+fallback quadruped quadruped/head/h3/medium/v0
 `;
 
 const thrown = (text: string): string => {
@@ -67,14 +67,14 @@ describe('parseCatalogueText', () => {
       { slot: 'torso', index: 0, frame: 'rest', dx: 0, dy: 0 },
       { slot: 'head', index: 0, frame: 'rest', dx: 0, dy: 0 },
     ]);
-    expect(c.fallbacks.get('quadruped')).toBe('quadruped/torso/sturdy/medium/v0');
+    expect(c.fallbacks.get('quadruped')).toBe('quadruped/head/h3/medium/v0');
     expect(c.palette).toEqual({ colours: [0x0b1020, 0xffffff, 0xeeeeee, 0x00ff00, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4], ramps: { emerald: [12, 13, 14, 15] }, outline: 0, eye: 1, eyeHighlight: 2, glow: 3 });
   });
 
-  it('reads letters a-g as 10-16 and negative entry offsets', () => {
-    const c = parseCatalogueText('part quadruped/tail/t0/small/v1\nframe rest anchor=0,0 attach=a:1,2,b:3,4\nag\n\nscaffold quadruped/sturdy/small origin=0,0\npose rest\nentry tail 0 rest -3 -4\n');
+  it('reads letters a-f as 10-15 and negative entry offsets', () => {
+    const c = parseCatalogueText('part quadruped/tail/t0/small/v1\nframe rest anchor=0,0 attach=a:1,2,b:3,4\naf\n\nscaffold quadruped/sturdy/small origin=0,0\npose rest\nentry tail 0 rest -3 -4\n');
     const f = c.parts.get('quadruped/tail/t0/small/v1')!.frames['rest']!;
-    expect(Array.from(f.pixels)).toEqual([10, 16]);
+    expect(Array.from(f.pixels)).toEqual([10, 15]);
     expect(f.attach).toEqual({ a: [1, 2], b: [3, 4] });
     expect(c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries[0]).toMatchObject({ dx: -3, dy: -4 });
   });
@@ -197,6 +197,23 @@ describe('parseCatalogueText: structure checks', () => {
   });
 });
 
+describe('parseCatalogueText: stricter checks', () => {
+  it('rejects the outline value g in a part frame', () => {
+    expect(thrown(`part ${ID}\nframe rest anchor=0,0\n11\n1g\n`)).toBe(`part ${ID} frame rest line 4: outline value is written by the composer`);
+  });
+  it('rejects a second entry for the same slot and index in one pose, but not in another pose', () => {
+    expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\nentry head 1 rest 0 0\nentry head 0 bite 1 1\n`))
+      .toBe('scaffold quadruped/sturdy/small pose rest line 5: duplicate entry head 0');
+    expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\npose strike\nentry head 0 rest 1 0\n`)).toBe('did not throw');
+  });
+  it('rejects a fallback naming a part that is missing by the end, or that has no rest frame', () => {
+    expect(thrown(`${PART}\nfallback quadruped quadruped/torso/none/medium/v0\n`)).toBe('fallback quadruped: part quadruped/torso/none/medium/v0 missing or has no rest frame');
+    expect(thrown(`part ${ID}\nframe wave anchor=0,0\n1\n\nfallback quadruped ${ID}\n`)).toBe(`fallback quadruped: part ${ID} missing or has no rest frame`);
+    // The part may come after the fallback line: the check runs once parsing is done.
+    expect(thrown(`fallback quadruped ${ID}\n${PART}`)).toBe('did not throw');
+  });
+});
+
 describe('parseCatalogueText: errors from the first version', () => {
   it('rejects directives out of place', () => {
     expect(thrown('frame rest anchor=0,0')).toBe('line 1: frame outside a part');
@@ -231,7 +248,7 @@ describe('formatPart', () => {
     const p: Part = {
       id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
       frames: {
-        rest: { w: 3, h: 2, pixels: Uint8Array.from([0, 1, 16, 10, 9, 0]), anchor: [1, 1], attach: { eye0: [2, 0], eye1: [0, 1] } },
+        rest: { w: 3, h: 2, pixels: Uint8Array.from([0, 1, 15, 10, 9, 0]), anchor: [1, 1], attach: { eye0: [2, 0], eye1: [0, 1] } },
         bite: { w: 2, h: 1, pixels: Uint8Array.from([5, 6]), anchor: [0, 0], attach: {} },
       },
     };
@@ -246,5 +263,20 @@ describe('formatPart', () => {
     expect(() => formatPart({ ...base, frames: { rest: { ...f, pixels: Uint8Array.from([1]) } } })).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest has 1 pixels, expected 2');
     expect(() => formatPart({ ...base, frames: { 'a b': f } })).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame name a b is not a valid name');
     expect(() => formatPart({ ...base, frames: { rest: { ...f, attach: { 'x:y': [0, 0] } } } })).toThrow('part quadruped/head/h3/medium/v0: cannot format: attach name x:y is not a valid name');
+  });
+
+  it('refuses a part with no frames or a zero-size frame', () => {
+    const f = { w: 2, h: 1, pixels: Uint8Array.from([1, 1]), anchor: [0, 0] as const, attach: {} };
+    const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0, frames: { rest: f } };
+    expect(formatPart(base)).toContain('frame rest');
+    expect(() => formatPart({ ...base, frames: {} })).toThrow('part quadruped/head/h3/medium/v0: cannot format: it has no frames');
+    expect(() => formatPart({ ...base, frames: { rest: { ...f, w: 0, pixels: new Uint8Array(0) } } })).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest is 0x1, which has no pixels');
+    expect(() => formatPart({ ...base, frames: { rest: { ...f, h: 0, pixels: new Uint8Array(0) } } })).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest is 2x0, which has no pixels');
+  });
+
+  it('refuses a frame holding the outline value, which the parser would reject', () => {
+    const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
+      frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from([1, 16]), anchor: [0, 0], attach: {} } } };
+    expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds the outline value, which only the composer writes');
   });
 });
