@@ -888,6 +888,16 @@ describe('checkPack on a named species', () => {
     expect(r.ok).toBe(false);
   });
 
+  it('a species part off the body is an error, reported by its key', () => {
+    expect(checkPack(WITH_CIVET).detached).toEqual([]);
+    // The species tail hangs eight columns left of the torso's end: it no longer touches the torso.
+    const r = checkPack(planted('attach=head:10,1,tail:1,1,far0', 'attach=head:10,1,tail:-8,1,far0', WITH_CIVET));
+    expect(r.detached).toHaveLength(7);
+    expect(r.detached.every((d) => d.scaffold === CIVET_ID && d.genome['species'] === 'civet' && d.off.join() === 'tail')).toBe(true);
+    expect(errorsOf(r).find((l) => l.startsWith(`error: detached tail on ${CIVET_ID} in 7 creature poses`))).toContain('e.g. species civet pose rest');
+    expect(r.ok).toBe(false);
+  });
+
   it('a species head is not sampled as a generated head: the generated counts are the same with and without it', () => {
     const without = checkPack(planted('outline 0\n', `${CIVET_RAMPS}outline 0\n`, PALETTE) + PARTS + SCAFFOLD);
     const r = checkPack(WITH_CIVET);

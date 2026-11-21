@@ -431,10 +431,10 @@ describe('parseCatalogueText: species lines', () => {
   const LINE = 'species civet quadruped medium legs=4 eyes=2 iris=3 tail=1';
 
   it('parses a species line to its entry, its fields in any order', () => {
-    const c = parseCatalogueText(`${LINE}\nspecies mole-rat serpent small tail=0 iris=7 eyes=0 legs=0\n`);
+    const c = parseCatalogueText(`${LINE}\nspecies molerat2 serpent small tail=0 iris=7 eyes=0 legs=0\n`);
     expect([...c.species]).toEqual([
       ['civet', { key: 'civet', family: 'quadruped', tier: 'medium', legs: 4, eyes: 2, iris: 3, tail: true }],
-      ['mole-rat', { key: 'mole-rat', family: 'serpent', tier: 'small', legs: 0, eyes: 0, iris: 7, tail: false }],
+      ['molerat2', { key: 'molerat2', family: 'serpent', tier: 'small', legs: 0, eyes: 0, iris: 7, tail: false }],
     ]);
   });
 
@@ -452,10 +452,18 @@ describe('parseCatalogueText: species lines', () => {
     expect(thrown(LINE.replace('civet', 'Civet'))).toBe("line 1: bad species key 'Civet'");
     expect(thrown(LINE.replace('civet', '2civet'))).toBe("line 1: bad species key '2civet'");
     expect(thrown(LINE.replace('civet', 'civet_x'))).toBe("line 1: bad species key 'civet_x'");
-    expect(thrown(LINE.replace('civet', 'body'))).toBe("line 1: species key 'body' is a torso type");
+    // Letters and digits only, starting with a letter: no hyphen anywhere.
+    for (const key of ['civet-cat', 'civet-', 'civet-accent', 'a--b']) expect(thrown(LINE.replace('civet', key)), key).toBe(`line 1: bad species key '${key}'`);
+    for (const key of ['civet', 'civet2', 'c', 'h', 'iris', 'legs', 'eyes']) expect(thrown(LINE.replace('civet', key)), key).toBe('did not throw');
     expect(thrown(LINE.replace('quadruped', 'quad/ruped'))).toBe('line 1: bad name quad/ruped');
     expect(thrown(LINE.replace('medium', 'huge'))).toBe("line 1: bad tier 'huge'");
     expect(thrown('species civet quadruped')).toBe('line 1: bad species');
+  });
+
+  it('rejects a key that is a name the generated creatures use: a kind, a torso type or a ramp', () => {
+    for (const key of ['body', 'leg', 'fore', 'hind', 'mid', 'eye', 'h0', 'h3', 'h12', 't0', 't6', 't10', 'c0', 'c16', 'c123', 'iris0', 'iris7', 'iris12']) {
+      expect(thrown(LINE.replace('civet', key)), key).toBe(`line 1: species key '${key}' is a name the generated creatures use`);
+    }
   });
 
   it('rejects an unknown field, a repeated one and a missing one', () => {

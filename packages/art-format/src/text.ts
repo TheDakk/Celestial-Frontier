@@ -6,7 +6,14 @@ const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeH
 const TIERS: readonly string[] = ['small', 'medium', 'large', 'guardian'];
 
 const NAME = /^[A-Za-z0-9_-]+$/;
-const SPECIES_KEY = /^[a-z][a-z0-9-]*$/;
+const SPECIES_KEY = /^[a-z][a-z0-9]*$/;
+/**
+ * Names the generated creatures use, which a species key may not take: its parts and ramps are named from the key.
+ * The torso type of a family with none (`body`), the leg and eye kinds, head and tail kinds (`h<n>`, `t<n>`), and the
+ * colour and iris ramps (`c<n>`, `iris<n>`). A torso type of a family is refused by the checker, which knows the gene table.
+ */
+const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid', 'eye'];
+const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
 /** The fields of a species line, each required once. */
 const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
 const RESERVED_NAMES: readonly string[] = ['__proto__', 'constructor', 'prototype'];
@@ -317,8 +324,7 @@ export function parseCatalogueText(text: string): Catalogue {
         if (args.length < 3) throw new Error(`line ${n}: bad species`);
         const key = args[0] as string;
         if (!SPECIES_KEY.test(key)) throw new Error(`line ${n}: bad species key '${key}'`);
-        // The torso type of every family that has none: a species of that name would share its scaffold.
-        if (key === 'body') throw new Error(`line ${n}: species key '${key}' is a torso type`);
+        if (GENERATED_NAMES.includes(key) || GENERATED_NAME.test(key)) throw new Error(`line ${n}: species key '${key}' is a name the generated creatures use`);
         const family = checkName(args[1] as string, n);
         const tier = args[2] as string;
         if (!TIERS.includes(tier)) throw new Error(`line ${n}: bad tier '${tier}'`);

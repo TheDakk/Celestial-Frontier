@@ -125,25 +125,18 @@ const GENERATED_TORSOS = new Set([0, 4].flatMap((loco) => Array.from({ length: 1
   return `${a.family}/${torsoKindOf(a)}`;
 })));
 
-/**
- * Whether a part belongs to a named species of its family and tier: a torso, head or tail of kind `<key>`, or a leg of
- * kind `<role>-<key>`. Such a part is never drawn by a generated creature.
- */
+/** Whether a part is a named species' own torso, head or tail: kind `<key>` in the species' family and tier. */
 function isSpeciesPart(catalogue, part) {
-  const own = (key) => { const s = catalogue.species.get(key); return s !== undefined && s.family === part.family && s.tier === part.tier; };
-  if (part.slot === 'torso' || part.slot === 'head' || part.slot === 'tail') return own(part.kind);
-  if (part.slot === 'farLimbs' || part.slot === 'nearLimbs') {
-    const dash = part.kind.indexOf('-');
-    return dash > 0 && ['fore', 'hind', 'mid'].includes(part.kind.slice(0, dash)) && own(part.kind.slice(dash + 1));
-  }
-  return false;
+  if (part.slot !== 'torso' && part.slot !== 'head' && part.slot !== 'tail') return false;
+  const s = catalogue.species.get(part.kind);
+  return s !== undefined && s.family === part.family && s.tier === part.tier;
 }
 
-/** Gene values whose kind (`h3`, `t2`) has a part at this family and tier; a species part is not a generated kind. */
+/** Gene values whose kind (`h3`, `t2`) has a part at this family and tier. (A species key is never such a kind: the parser refuses it.) */
 function kindsFor(catalogue, scaffold, slot, letter, length) {
   const genes = new Set();
   for (const part of catalogue.parts.values()) {
-    if (part.family !== scaffold.family || part.slot !== slot || part.tier !== scaffold.tier || isSpeciesPart(catalogue, part)) continue;
+    if (part.family !== scaffold.family || part.slot !== slot || part.tier !== scaffold.tier) continue;
     const m = new RegExp(`^${letter}(\\d+)$`).exec(part.kind);
     if (m && Number(m[1]) < length) genes.add(Number(m[1]));
   }
@@ -427,12 +420,12 @@ const speciesLegPoints = (legs) => [...Array.from({ length: sideCount('farLimbs'
  * each mark slot, leg count, index the slot has at that count and pose, the frame each part the composer could ask
  * for there would show (poseEntryFor, frameNameFor), when that frame has no layer serving some pattern. The parts are
  * those of the scaffold's family, tier and slot: the torso of its own kind, heads h0 to h9, tails t1 to t6, and limbs
- * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side. Species parts are left out:
- * a species is plain.
+ * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side. No species part is
+ * among them: a species key is never a head or tail kind (the parser refuses it) nor a torso type (a structure error).
  */
 function marksGapsOf(catalogue, scaffold, torsoKind) {
   const found = new Set();
-  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier && !isSpeciesPart(catalogue, p));
+  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier);
   const roleHeld = (slot, kind) => own.some((p) => p.slot === slot && p.kind === kind && p.variant === 0);
   const unserved = new Map();
   const lacksLayer = (frame) => {
