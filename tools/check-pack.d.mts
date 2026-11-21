@@ -1,7 +1,6 @@
 export interface CheckedCreature {
   scaffold: string;
   genome: Record<string, unknown>;
-  guardian: boolean;
   pose: string;
 }
 export interface DetachedCreature extends CheckedCreature {

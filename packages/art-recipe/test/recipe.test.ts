@@ -137,8 +137,10 @@ describe('buildRecipe', () => {
     expect(r.gaps).toContain(`missing:${partId('tentacled', 'torso', 'body', 'medium', 0)}`);
   });
 
-  it('honours the guardian option', () => {
-    expect(buildRecipe(base, [], full, { guardian: true }).tier).toBe('guardian');
+  it('builds a Guardian or Titan (marked by apex) at the guardian tier, with a guardian scaffold', () => {
+    const r = buildRecipe({ ...base, apex: 12 }, [], full);
+    expect([r.tier, r.scaffoldId]).toEqual(['guardian', 'quadruped/sturdy/guardian']);
+    expect(buildRecipe(base, [], full).tier).toBe('medium');
   });
 
   it('returns a frozen recipe; mutation cannot reach the next build', () => {

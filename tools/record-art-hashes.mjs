@@ -51,7 +51,7 @@ for (let seed = 1; seed <= 60; seed++) specs.push([`medium quadruped ${seed}`, f
 const catalogue = testCatalogue();
 const entries = [];
 for (const [label, guardian, genome] of specs) {
-  const recipe = buildRecipe(genome, [], catalogue, { guardian });
+  const recipe = buildRecipe(genome, [], catalogue);
   for (const pose of POSES) {
     const { hash, gaps } = compose(recipe, pose, catalogue);
     entries.push({ label, genome, guardian, pose, hash, gaps: [...gaps] });

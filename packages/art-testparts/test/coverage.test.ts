@@ -106,14 +106,15 @@ describe('quadruped test catalogue', () => {
 });
 
 describe('every kingdom composes', () => {
-  it('composes a non-empty picture for all four kingdoms, seeds 1-50, every size gene, guardian on and off', () => {
+  it('composes a non-empty picture for all four kingdoms, seeds 1-50, every size gene, with and without the Guardian marker', () => {
     let count = 0;
     for (const kingdom of ['fauna', 'flora', 'fungi', 'microbe']) {
       for (let seed = 1; seed <= 50; seed++) {
         for (let size = 0; size < 6; size++) {
           for (const guardian of [false, true]) {
-            const g = { ...makeGenome(seed, kingdom, 1), size };
-            const recipe = buildRecipe(g, [], cat, { guardian });
+            const g = { ...makeGenome(seed, kingdom, 1), size, ...(guardian ? { apex: 12 } : {}) };
+            const recipe = buildRecipe(g, [], cat);
+            if ((recipe.tier === 'guardian') !== guardian) expect.fail(`tier ${recipe.tier} for ${kingdom} seed ${seed} size ${size} guardian ${guardian}`);
             const out = compose(recipe, 'rest', cat);
             count++;
             const where = `${kingdom} seed ${seed} size ${size} guardian ${guardian}`;

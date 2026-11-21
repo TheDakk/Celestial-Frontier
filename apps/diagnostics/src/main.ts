@@ -97,7 +97,7 @@ function run(): void {
     const entry = fixture.entries[index] as ArtFixture['entries'][number];
     const result = results[index];
     if (result === undefined || 'error' in result) continue;
-    const recipe = buildRecipe(entry.genome, [], catalogue, { guardian: entry.guardian });
+    const recipe = buildRecipe(entry.genome, [], catalogue);
     const { table, unknown } = colourTable(catalogue.palette, recipe.ramps);
     const figure = document.createElement('figure');
     figure.appendChild(drawBuffer(result.composed.buffer, table, available));

@@ -33,7 +33,8 @@ const { assemble, compose } = await import('@cf/art-compose');
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
 const HEAD_POINTS = ['eye0', 'eye1', 'eye2', 'eye3', 'eye4', 'eye5', 'eye6', 'eye7'];
-const SIZE_FOR_TIER = { small: 0, medium: 2, large: 4, guardian: 0 };
+// The genes that give each tier: a size gene, and for the guardian tier the Guardian marker the game sets (apex).
+const GENES_FOR_TIER = { small: { size: 0 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 5, apex: 12 } };
 const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y]));
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
 const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 6, back: 7, headFeature: 8, glow: 9 };
@@ -57,11 +58,11 @@ const countBy = (items, key) => {
 /** The genome a scaffold is drawn for: a fauna body and movement gene that resolve to its family and torso type. */
 function genomeFor(scaffold) {
   const [family, torsoKind] = scaffold.id.split('/');
-  const size = SIZE_FOR_TIER[scaffold.tier];
+  const tierGenes = GENES_FOR_TIER[scaffold.tier];
   for (const loco of [0, 4]) {
     for (let body = 0; body < 16; body++) {
-      const a = resolveAnatomy({ kingdom: 'fauna', body, loco, size });
-      if (a.family === family && (a.torso === '' ? 'body' : a.torso) === torsoKind) return { body, loco, size };
+      const a = resolveAnatomy({ kingdom: 'fauna', body, loco, ...tierGenes });
+      if (a.family === family && (a.torso === '' ? 'body' : a.torso) === torsoKind) return { body, loco, ...tierGenes };
     }
   }
   return undefined;
@@ -249,7 +250,6 @@ export function checkPack(text) {
       unreachable.push(`scaffold ${scaffold.id}: no fauna genome resolves to it, so the renderer never uses it`);
       continue;
     }
-    const guardian = scaffold.tier === 'guardian';
     const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
     const tails = [0, ...kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0)];
     const poses = Object.keys(scaffold.poses);
@@ -267,7 +267,7 @@ export function checkPack(text) {
 
     for (const c of creatures.values()) {
       const genome = { kingdom: 'fauna', seed: 1, ...genes, head: c.head, tail: c.tail, limbs: c.limbs, eyes: c.eyes, pattern: 0, skin: 0, color: 0, accent: 0, lumin: false };
-      const recipe = buildRecipe(genome, [], catalogue, { guardian });
+      const recipe = buildRecipe(genome, [], catalogue);
       for (const pose of poses) {
         let out;
         try {
@@ -278,7 +278,7 @@ export function checkPack(text) {
         }
         composed++;
         for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
-        const where = { scaffold: scaffold.id, genome, guardian, pose };
+        const where = { scaffold: scaffold.id, genome, pose };
         if (touchesEdge(out.buffer)) edge.push(where);
         const own = detachedSlots(assemble(recipe, pose, labels).buffer);
         if (own) detached.push({ ...where, shift: recipe.shift, off: own });
@@ -300,7 +300,7 @@ export function checkPack(text) {
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
-const genes = (g, guardian) => `body ${g.body} loco ${g.loco} size ${g.size} head ${g.head} tail ${g.tail} limbs ${g.limbs} eyes ${g.eyes}${guardian ? ' guardian' : ''}`;
+const genes = (g) => `body ${g.body} loco ${g.loco} size ${g.size}${g.apex === undefined ? '' : ` apex ${g.apex}`} head ${g.head} tail ${g.tail} limbs ${g.limbs} eyes ${g.eyes}`;
 const pair = ([x, y]) => `${x},${y}`;
 const shiftText = (s) => `head ${pair(s.head)} tail ${pair(s.tail)}`;
 const unique = (values) => [...new Set(values)];
@@ -330,7 +330,7 @@ export function formatReport(report) {
   for (const g of report.gaps) lines.push(`${g.error ? 'error' : 'info'}: gap ${g.gap} (x${g.count})`);
   for (const [scaffold, items] of group(report.edge, (e) => [e.scaffold])) {
     const first = items[0];
-    lines.push(`error: touches the canvas edge on ${scaffold} in ${items.length} creature poses (poses: ${unique(items.map((e) => e.pose)).join(', ')}), e.g. ${genes(first.genome, first.guardian)} pose ${first.pose}`);
+    lines.push(`error: touches the canvas edge on ${scaffold} in ${items.length} creature poses (poses: ${unique(items.map((e) => e.pose)).join(', ')}), e.g. ${genes(first.genome)} pose ${first.pose}`);
   }
   // Eyes sit on the head: when the head is off the body its eyes go with it and are not reported again.
   const offSlots = (d) => d.off.filter((slot) => !(slot === 'eyes' && d.off.includes('head')));
@@ -343,7 +343,7 @@ export function formatReport(report) {
     });
     const label = slot === 'head' || slot === 'tail' ? `poses with ${slot} shifts` : 'poses';
     const first = items[0];
-    lines.push(`error: detached ${key} in ${items.length} creature poses (${label}: ${perPose.join('; ')}), e.g. ${genes(first.genome, first.guardian)} pose ${first.pose} shift ${shiftText(first.shift)}`);
+    lines.push(`error: detached ${key} in ${items.length} creature poses (${label}: ${perPose.join('; ')}), e.g. ${genes(first.genome)} pose ${first.pose} shift ${shiftText(first.shift)}`);
   }
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);

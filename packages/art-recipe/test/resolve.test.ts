@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
+import { EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
-import { EYELESS_HEAD, GENE_LENGTHS, resolveAnatomy, wrap } from '../src/resolve';
+import { guardianFor } from '@cf/domain-genome';
+import { EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
 
 describe('resolveAnatomy', () => {
-  it('resolves a full fauna genome at Guardian size', () => {
-    expect(resolveAnatomy(base, { guardian: true })).toEqual({ kingdom: 'fauna', family: 'quadruped', torso: 'sturdy', tier: 'guardian', head: 3, tail: 6, pattern: 7, skin: 7, limbs: 8, eyes: 4, colour: 13, accent: 2, glow: true, swimmer: false, form: 0 });
+  it('resolves a full fauna genome at Guardian size when it carries the Guardian marker', () => {
+    expect(resolveAnatomy({ ...base, apex: 12 })).toEqual({ kingdom: 'fauna', family: 'quadruped', torso: 'sturdy', tier: 'guardian', head: 3, tail: 6, pattern: 7, skin: 7, limbs: 8, eyes: 4, colour: 13, accent: 2, glow: true, swimmer: false, form: 0 });
   });
   it.each([[0, 'quadruped', 'sturdy'], [1, 'quadruped', 'armored'], [2, 'quadruped', 'stilt'], [3, 'tentacled', ''], [4, 'serpent', ''], [5, 'myriapod', ''], [6, 'gastropod', ''], [7, 'membranous', ''], [8, 'crystalline', ''], [9, 'gelatinous', ''], [10, 'quadruped', 'tusked'], [11, 'quadruped', 'horned'], [12, 'arachnid', ''], [13, 'quadruped', 'squat'], [14, 'insect', ''], [15, 'radial', '']])('body %i is %s %s', (body, family, torso) => {
     const a = resolveAnatomy({ ...base, body }); expect([a.family, a.torso]).toEqual([family, torso]);
@@ -18,8 +19,9 @@ describe('resolveAnatomy', () => {
   it('reads limb and eye counts from their tables', () => {
     expect([0, 1, 2, 3, 4, 5].map((v) => resolveAnatomy({ ...base, limbs: v, eyes: v })).map((a) => [a.limbs, a.eyes])).toEqual([[2, 2], [4, 4], [6, 6], [8, 8], [3, 1], [0, 0]]);
   });
-  it('maps size genes to tiers unless Guardian is asked for', () => {
+  it('maps size genes to tiers unless the genome is a Guardian or Titan', () => {
     expect([0, 2, 4].map((size) => resolveAnatomy({ ...base, size }).tier)).toEqual(['small', 'medium', 'large']);
+    expect([0, 2, 4].map((size) => resolveAnatomy({ ...base, size, apex: 13 }).tier)).toEqual(['guardian', 'guardian', 'guardian']);
   });
   it('gives the eyeless head no eyes whatever the eyes gene, drifted head genes included', () => {
     expect(traits.FA_HEAD[EYELESS_HEAD]).toBe('eyeless and smooth');
@@ -54,7 +56,8 @@ describe('resolveAnatomy', () => {
       const genome: Record<string, unknown> = {};
       genes.forEach((gene, i) => { genome[gene] = wild[(n * 7 + i * 11 + (n >> 3)) % wild.length]; });
       genome['kingdom'] = kingdoms[n % kingdoms.length];
-      const a = resolveAnatomy(genome, { guardian: n % 5 === 0 });
+      if (n % 5 === 0) genome['apex'] = 12;
+      const a = resolveAnatomy(genome);
       const inRange = (v: number, length: number): boolean => Number.isInteger(v) && v >= 0 && v < length;
       expect(['fauna', 'flora', 'fungi', 'microbe']).toContain(a.kingdom);
       expect(['small', 'medium', 'large', 'guardian']).toContain(a.tier);
@@ -88,5 +91,41 @@ describe('the resolver is tied to the game tables', () => {
   it('wraps the size gene like every other gene', () => {
     const tiers = [-1, 6, 2.9, '3', NaN, undefined].map((size) => resolveAnatomy({ ...base, size }).tier);
     expect(tiers).toEqual(['large', 'small', 'medium', 'small', 'small', 'small']);
+  });
+});
+
+describe('isGuardianScale', () => {
+  it('is true for both real Guardians the game makes and for a Titan, false for an ordinary or Paragon creature', () => {
+    for (const planetSeed of [1757105165, 51464061]) {
+      const guardian = guardianFor(planetSeed)!.genome as unknown as Record<string, unknown>;
+      expect(isGuardianScale(guardian), String(planetSeed)).toBe(true);
+      expect(resolveAnatomy(guardian).tier).toBe('guardian');
+      expect(isGuardianScale({ ...guardian, apex: undefined }), String(planetSeed)).toBe(false);
+    }
+    // A Titan's battle genome, as the game builds it: apex 14 and the Titan's signature id.
+    expect(isGuardianScale({ ...base, size: 5, lumin: true, wild: 1, apex: 14, _titan: 'void' })).toBe(true);
+    expect(isGuardianScale({ ...base, par: 9 })).toBe(false);
+    expect(isGuardianScale({ ...base, size: 5, wild: 1 })).toBe(false);
+  });
+  it('reads the marker as the game does (truthy), and gives the same answer after a save round trip', () => {
+    const values: unknown[] = [12, 13, 14, 1, -3, 0.5, 0, -0, NaN, Infinity, -Infinity, true, false, null, undefined, '', '12', [], {}];
+    expect(values.map((apex) => isGuardianScale({ ...base, apex }))).toEqual([
+      true, true, true, true, true, true, false, false, false, false, false, true, false, false, false, false, true, true, true,
+    ]);
+    for (const apex of values) {
+      const g = { ...base, apex };
+      expect(isGuardianScale(JSON.parse(JSON.stringify(g))), String(apex)).toBe(isGuardianScale(g));
+    }
+  });
+});
+
+describe('the Guardian tier canvas', () => {
+  it('fits both battle stages with at least 16 pixels to spare on each axis', () => {
+    const [w, h] = TIER_SIZE.guardian;
+    expect([w, h]).toEqual([240, 160]);
+    for (const [stageW, stageH] of [[292, 400], [480, 270]] as const) {
+      expect(stageW - w, `${stageW}x${stageH}`).toBeGreaterThanOrEqual(16);
+      expect(stageH - h, `${stageW}x${stageH}`).toBeGreaterThanOrEqual(16);
+    }
   });
 });

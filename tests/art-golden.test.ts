@@ -13,7 +13,7 @@ const fixture: Fixture = JSON.parse(readFileSync(new URL('../fixtures/art/quadru
 const catalogue = testCatalogue();
 
 const run = (entry: Entry, cat: Catalogue = catalogue) =>
-  compose(buildRecipe(entry.genome, [], cat, { guardian: entry.guardian }), entry.pose, cat);
+  compose(buildRecipe(entry.genome, [], cat), entry.pose, cat);
 const isReal = (entry: Entry) => !entry.gaps.some((gap) => gap.startsWith('fallback:'));
 
 describe('art golden hashes', () => {
@@ -90,7 +90,7 @@ describe('art golden negative controls', () => {
 
   it('composes the recorded entries at renderer version 2 with at least one different hash, and at version 1 with none', () => {
     const at = (version: number, entry: Entry) =>
-      compose(__buildRecipeAtVersionForTests(version, entry.genome, [], catalogue, { guardian: entry.guardian }), entry.pose, catalogue).hash;
+      compose(__buildRecipeAtVersionForTests(version, entry.genome, [], catalogue), entry.pose, catalogue).hash;
     const differAt = (version: number) => fixture.entries.filter((entry) => at(version, entry) !== entry.hash).length;
     expect(differAt(1)).toBe(0);
     expect(differAt(2)).toBeGreaterThanOrEqual(1);

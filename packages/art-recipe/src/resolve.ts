@@ -35,10 +35,22 @@ const BODY_FAMILY: readonly (readonly [string, string])[] = [
   ['arachnid', ''], ['quadruped', 'squat'], ['insect', ''], ['radial', ''],
 ];
 
-export function resolveAnatomy(genome: Readonly<Record<string, unknown>>, options?: { guardian?: boolean }): Anatomy {
+/**
+ * Whether the genome is a Guardian or a Titan, drawn at the 'guardian' tier. The game marks both with `apex`
+ * (guardianFor sets it to the Guardian's tier, 12-14; a Titan's battle genome gets 14) and reads the marker as
+ * truthy (`if(g.apex)`). This reads it the same way, except that a non-finite number counts as unmarked, because
+ * a save writes it as null: the answer is the same before and after a save round trip. Part of renderer version 1.
+ */
+export function isGuardianScale(genome: Readonly<Record<string, unknown>>): boolean {
+  const apex = genome['apex'];
+  if (typeof apex === 'number') return Number.isFinite(apex) && apex !== 0;
+  return Boolean(apex);
+}
+
+export function resolveAnatomy(genome: Readonly<Record<string, unknown>>): Anatomy {
   const g = (name: string, length: number): number => wrap(genome[name], length);
   const L = GENE_LENGTHS;
-  const tier: SizeTier = options?.guardian === true ? 'guardian' : tierForSize(g('size', L.size));
+  const tier: SizeTier = isGuardianScale(genome) ? 'guardian' : tierForSize(g('size', L.size));
   const shared = { tier, colour: g('color', L.color), accent: g('accent', L.accent), glow: genome['lumin'] === true, swimmer: false };
   const none = { head: 0, tail: 0, pattern: 0, skin: 0, limbs: 0, eyes: 0 };
   switch (genome['kingdom']) {

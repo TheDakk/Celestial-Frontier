@@ -1,6 +1,6 @@
 export type SizeTier = 'small' | 'medium' | 'large' | 'guardian';
 export const TIER_SIZE = { small: [48, 32], medium: [96, 64], large: [144, 96], guardian: [240, 160] } as const;
-// Size gene (wrapped to 0..5) to tier: 0,1 small · 2,3 medium · 4,5 large. 'guardian' only when the caller asks for it.
+// Size gene (wrapped to 0..5) to tier: 0,1 small · 2,3 medium · 4,5 large. 'guardian' when the genome is a Guardian or Titan (isGuardianScale).
 export type SlotName = 'farLimbs' | 'tail' | 'torso' | 'back' | 'nearLimbs' | 'head' | 'headFeature' | 'eyes' | 'glow';
 export const DRAW_ORDER: readonly SlotName[] = ['farLimbs', 'tail', 'torso', 'back', 'nearLimbs', 'head', 'headFeature', 'eyes', 'glow'];
 export const VARIANTS = { torso: 3, head: 3, tail: 2, limb: 2 } as const;

@@ -189,6 +189,13 @@ describe('checkPack on planted faults', () => {
     expect(r!.ok).toBe(false);
   });
 
+  it('reaches a guardian-tier scaffold through the Guardian marker', () => {
+    const r = checkPack(`${GOOD}\nscaffold quadruped/sturdy/guardian origin=100,60\npose rest\n`);
+    expect(r.unreachable).toEqual([]);
+    // It is composed: with no guardian parts and no guardian fallback, compose reports the missing fallback.
+    expect(r.failures).toEqual(['no fallback for family quadruped at guardian (needed by quadruped/sturdy/guardian)']);
+  });
+
   it('a gap other than variant: is an error; a scaffold no genome reaches is an error', () => {
     const r = checkPack(planted('part quadruped/eyes/eye/small/v0', 'part quadruped/eyes/dot/small/v0'));
     expect(r.gaps.find((g) => g.gap === 'missing:quadruped/eyes/eye/small/v0')).toMatchObject({ error: true });

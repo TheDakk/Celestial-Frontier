@@ -20,7 +20,7 @@ export type EntryResult = { composed: Composed } | { error: string };
 
 /** Recomposes one fixture entry exactly as the golden test does. */
 export function composeEntry(catalogue: Catalogue, entry: ArtFixtureEntry): Composed {
-  const recipe = buildRecipe(entry.genome, [], catalogue, { guardian: entry.guardian });
+  const recipe = buildRecipe(entry.genome, [], catalogue);
   return compose(recipe, entry.pose, catalogue);
 }
 

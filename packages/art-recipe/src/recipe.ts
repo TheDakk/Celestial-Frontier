@@ -28,9 +28,8 @@ export function buildRecipe(
   genome: Readonly<Record<string, unknown>>,
   lineage: readonly string[],
   catalogue: Catalogue,
-  options?: { guardian?: boolean },
 ): Recipe {
-  return buildRecipeAt(RENDERER_VERSION, genome, lineage, catalogue, options);
+  return buildRecipeAt(RENDERER_VERSION, genome, lineage, catalogue);
 }
 
 /** `buildRecipe` with the renderer version given; internal, for the version negative control in tests only. */
@@ -39,9 +38,8 @@ function buildRecipeAt(
   genome: Readonly<Record<string, unknown>>,
   lineage: readonly string[],
   catalogue: Catalogue,
-  options?: { guardian?: boolean },
 ): Recipe {
-  const a = resolveAnatomy(genome, options);
+  const a = resolveAnatomy(genome);
   const identity = identityKey(genome, lineage);
   const stream = (name: string): (() => number) => artStream(identity, name, version);
 
