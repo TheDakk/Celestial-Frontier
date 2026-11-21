@@ -30,6 +30,20 @@ describe('purity check', () => {
     expect(run('// never call Math.random() here\n/* Date.now()\n new Date( */\nexport const a = 1;')).toEqual([]);
     expect(run('export const a = Math.random();')).toEqual([`${P}: uses Math.random`]);
   });
+  it.each([
+    ['single-quoted', "const u = 'http://x'; Math.random()", 'uses Math.random'],
+    ['double-quoted', 'const u = "http://x"; Math.random()', 'uses Math.random'],
+    ['template', 'const u = `http://${host}`; Math.random()', 'uses Math.random'],
+    ['single-quoted', "const g = '/* not a comment'; Date.now(); const h = '*/';", 'uses Date.now'],
+  ])('does not treat a comment marker inside a %s string as a comment: %s', (_kind, text, reason) => {
+    expect(run(text)).toEqual([`${P}: ${reason}`]);
+  });
+  it('still strips a comment that contains a quote or follows a string', () => {
+    expect(run("const s = 'a'; // don't call Math.random()\n/* it's Date.now() */ export const a = s;")).toEqual([]);
+  });
+  it('examines files in nested folders under a domain src', () => {
+    expect(run('Math.random()', 'packages/domain/x/src/sub/a.ts')).toEqual(['packages/domain/x/src/sub/a.ts: uses Math.random']);
+  });
   it('does not strip string literals', () => {
     expect(run("const s = 'Date.now';")).toEqual([`${P}: uses Date.now`]);
   });

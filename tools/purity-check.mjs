@@ -2,7 +2,14 @@ import { fileURLToPath } from 'node:url';
 import { readRepoFiles } from './tracked-files.mjs';
 
 const DOMAIN_SRC = /^packages\/domain\/[^/]+\/src\//;
-const COMMENTS = /\/\*[\s\S]*?\*\/|\/\/[^\n]*/g;
+// String and template literals are matched first and kept, so `//` or `/*` inside a string
+// does not start a comment; only the comment matches are removed.
+const LITERALS_OR_COMMENTS = /'(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*"|`(?:[^`\\]|\\.)*`|\/\*[\s\S]*?\*\/|\/\/[^\n]*/g;
+
+function stripComments(text) {
+  return text.replace(LITERALS_OR_COMMENTS, (m) => (m[0] === '/' ? '' : m));
+}
+
 const FORBIDDEN_USES = [
   [/\bMath\.random\b/, 'uses Math.random'],
   [/\bDate\.now\b/, 'uses Date.now'],
@@ -21,7 +28,7 @@ export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {
     if (!DOMAIN_SRC.test(path) || text === null) continue;
-    const code = text.replace(COMMENTS, '');
+    const code = stripComments(text);
     for (const [re, reason] of FORBIDDEN_USES) if (re.test(code)) problems.push(`${path}: ${reason}`);
     const specs = importedSpecifiers(code);
     if (specs.some((s) => s.startsWith('@cf/art'))) problems.push(`${path}: imports an art package`);
