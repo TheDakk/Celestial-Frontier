@@ -286,7 +286,10 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
     const draws = tames.map((c) => [c.plan!.candidateDraw, c.plan!.successDraw]);
     expect(new Set(draws.map((d) => JSON.stringify(d))).size).toBe(3);
     expect(tames.map((c) => c.plan!.hit)).toEqual([false, true, true]);
-    for (const c of tames) expect(plain(captureAnswer(c))).toEqual(plain(captureAnswer(c)));
+    for (const c of tames) {
+      expect(plain(captureAnswer(c))).toEqual(plain(captureAnswer(c)));
+      expect(plain(captureAnswer(c))).toEqual(c);
+    }
 
     const bySeed = breeding.injectedOnly.filter((c) => c.input.activePlayMs === 1000);
     expect(bySeed.map((c) => c.input.sessionRng.seed)).toEqual([1, 4, 10]);
@@ -300,6 +303,7 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
     expect([early!.snapshot.cycle, late!.snapshot.cycle]).toEqual([0, 1]);
     expect(early!.snapshot.fingerprint).not.toBe(late!.snapshot.fingerprint);
     expect(early!.plan!.witness).not.toBe(late!.plan!.witness);
+    for (const c of [early!, late!]) expect(plain(captureAnswer(c))).toEqual(c);
 
     const byClock = breeding.injectedOnly.filter((c) => c.input.sessionRng.seed === 4);
     expect(byClock.map((c) => c.input.activePlayMs)).toEqual([1000, 90000]);
