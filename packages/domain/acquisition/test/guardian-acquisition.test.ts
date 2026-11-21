@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import {
   PRIME_SIGNATURE_IDS_V1,
@@ -32,7 +31,6 @@ import {
   prepareGuardianAcquisitionV1,
 } from '../src/guardian-acquisition.js';
 
-beforeAll(() => installCaptureHooks());
 
 const CANDIDATES = Object.freeze({
   titan: Object.freeze({

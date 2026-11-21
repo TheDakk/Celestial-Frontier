@@ -1,8 +1,7 @@
-import { afterEach, beforeAll, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import {
   describePickWithState,
-  installCaptureHooks,
   type DescriptorNavigationState,
   type DescriptorPick,
 } from '@cf/domain-descriptors';
@@ -36,7 +35,6 @@ function lookupFrom(names: Record<string, string | null> = {}): { asked: string[
 const card = (input: Input, epoch = input.epoch ?? 0): Card | null =>
   plain(describePickWithState(structuredClone(input.pick), structuredClone(input.nav), lookupFrom(input.names).lookup, epoch)) as Card | null;
 
-beforeAll(() => installCaptureHooks());
 afterEach(() => { Reflect.deleteProperty(globalThis, KEY); });
 
 /** Where each kind's card points: the picked galaxy, the current galaxy, the current star or the picked planet. */

@@ -26,12 +26,10 @@ import {
   type CF1WorldKey,
   type CF1WorldAddressSourceOverrides,
 } from '@cf/scene';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { fineStarsInCell, galaxiesInCell, galaxyProfile, systemFor } from '@cf/domain-worldgen';
 import { FCELL } from '@cf/domain-worldgen';
 import { GCELL, HOME_GAL_SEED, HOME_POS, SOL_POS, SOL_SEED, UCELL } from '@cf/domain-worldconfig';
 
-beforeAll(() => installCaptureHooks());
 
 const HOME_CANDIDATE = {
   galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },

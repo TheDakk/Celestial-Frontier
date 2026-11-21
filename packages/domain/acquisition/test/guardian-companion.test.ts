@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
@@ -34,7 +33,6 @@ import {
   projectGuardianCompanionsV1,
 } from '../src/guardian-companion.js';
 
-beforeAll(() => installCaptureHooks());
 
 const GUARDIAN_INPUT = Object.freeze({
   galaxy: Object.freeze({ seed: 999, x: 90, y: -60 }),

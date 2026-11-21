@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   resolveCF1StarAddress,
   resolveCF1WorldAddress,
@@ -29,7 +28,6 @@ import {
   type LegacyEngineeringSeedResolver,
 } from '../src/index.js';
 
-beforeAll(() => installCaptureHooks());
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },

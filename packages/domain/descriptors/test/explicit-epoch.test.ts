@@ -1,7 +1,7 @@
-import { afterEach, beforeAll, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { systemFor } from '@cf/domain-worldgen';
-import { installCaptureHooks, planetDescriptorAtEcologyEpoch } from '@cf/domain-descriptors';
+import { planetDescriptorAtEcologyEpoch } from '@cf/domain-descriptors';
 
 /* planetDescriptorAtEcologyEpoch sets the COSMIC_EPOCH global only around the verbatim call. These
    tests check the answers against fixtures/current/descriptors.json (recorded from the current game
@@ -25,7 +25,6 @@ function card(world: keyof typeof WORLDS, epoch: number): unknown {
   return plain(planetDescriptorAtEcologyEpoch(pl.P, sys as unknown as Raw, pl, epoch));
 }
 
-beforeAll(() => installCaptureHooks());
 afterEach(() => { Reflect.deleteProperty(globalThis, KEY); });
 
 describe('@cf/domain-descriptors — planet card at an explicit ecology epoch', () => {

@@ -2,7 +2,6 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { guardianFor, makeGenome, type Genome } from '@cf/domain-genome';
 import {
   isCanonicalCF1Address,
@@ -23,7 +22,6 @@ import {
   type PrimeSignatureIdV1,
 } from '@cf/domain-combatcore';
 
-beforeAll(() => installCaptureHooks());
 
 const WORLD_CANDIDATES = Object.freeze({
   multi: Object.freeze({

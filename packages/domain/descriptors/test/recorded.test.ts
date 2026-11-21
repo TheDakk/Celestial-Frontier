@@ -5,7 +5,6 @@ import {
   beltDescriptor,
   galaxyDescriptor,
   galaxyStats,
-  installCaptureHooks,
   moonDescriptor,
   planetDescriptorAtEcologyEpoch,
   starDescriptor,
@@ -76,7 +75,6 @@ const section = (rows: Row[], s: Section): Row[] => rows.filter((row) => section
 
 let actual: Row[] = [];
 beforeAll(() => {
-  installCaptureHooks();
   actual = fixture.cases.map(({ input }) => ({ input, output: plain(run(structuredClone(input))) }));
 });
 

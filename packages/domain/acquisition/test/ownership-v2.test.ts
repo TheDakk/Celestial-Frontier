@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalGenomeIdentityV1,
@@ -52,7 +51,6 @@ import {
   createOwnershipSourceProjectionSuccessorV2,
 } from '../src/ownership-v2-internal.js';
 
-beforeAll(() => installCaptureHooks());
 
 interface Fixture {
   readonly source: OwnershipStateV1;

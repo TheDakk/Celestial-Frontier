@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
   OWNERSHIP_PROVENANCE_CAPABILITIES_V1,
@@ -30,7 +29,6 @@ import {
   type SpecimenLotId,
 } from '../src/index.js';
 
-beforeAll(() => installCaptureHooks());
 
 function input(): LegacyOwnershipInputV1 {
   const bond = {

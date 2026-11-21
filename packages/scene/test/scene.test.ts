@@ -30,9 +30,7 @@ import {
   type ProvenPlanet,
   type ProvenStar,
 } from '@cf/scene';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 
-beforeAll(() => installCaptureHooks());
 
 const HOME_WORLD_CANDIDATE = {
   galaxy: { seed: 999, x: 90, y: -60 },

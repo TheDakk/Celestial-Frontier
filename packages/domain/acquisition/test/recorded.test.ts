@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   GEAR_INVENTORY_SCHEMA,
   decodeGearInventory,
@@ -62,8 +61,8 @@ import {
 /* fixtures/current/acquisition.json was recorded from the unmodified current game by
    tools/record-fixtures.mjs (the acquisition recorder): taming (capture) and breeding outcomes. Every
    case holds its whole input beside the answer. The only clock is the injected active-play time and
-   the only random source is the injected SessionRNG state, both given in each input. As the recorder
-   did, this file installs the capture hooks before the first case. */
+   the only random source is the injected SessionRNG state, both given in each input. The recorder
+   installed the current game's capture hooks first; here the descriptors package imports them. */
 
 type Json = Record<string, unknown>;
 interface World { galaxy: { seed: number; x: number; y: number }; star: { seed: number; x: number; y: number }; planetSeed: number; biosphereKey: string; rows: Json[] }
@@ -100,7 +99,6 @@ const { taming, breeding, missions } = fixture;
 /** The fixture is JSON: compare both sides through the same round trip. */
 const plain = (value: unknown): unknown => JSON.parse(JSON.stringify(value) ?? 'null');
 
-beforeAll(() => installCaptureHooks());
 
 /* ---- taming: rebuild each case from its recorded input, exactly as the recorder did ---- */
 

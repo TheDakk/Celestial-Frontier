@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { describePickWithState, installCaptureHooks, type DescriptorNavigationState, type DescriptorPick } from '@cf/domain-descriptors';
+import { describePickWithState, type DescriptorNavigationState, type DescriptorPick } from '@cf/domain-descriptors';
 
 /* fixtures/current/descriptors-misc.json was recorded from the unmodified current game by
    tools/record-fixtures.mjs (the descriptors-misc recorder), through describePickWithState with the
@@ -37,7 +37,6 @@ function run(input: Input): Omit<Row, 'input'> {
 
 let actual = {} as Record<Section, Row[]>;
 beforeAll(() => {
-  installCaptureHooks();
   for (const s of Object.keys(fixture.sections) as Section[]) {
     actual[s] = fixture.sections[s].map(({ input }) => ({ input, ...run(structuredClone(input)) }));
   }

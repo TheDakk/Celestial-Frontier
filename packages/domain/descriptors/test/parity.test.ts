@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/support/parity.js';
 import { probeRaw } from '../../../../tests/support/baseline.js';
 import {
-  installCaptureHooks, roman, starDescriptor, planetDescriptor, moonDescriptor,
+  roman, starDescriptor, planetDescriptor, moonDescriptor,
   galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor,
   kuiperDescriptor, visitorDescriptor, beltDescriptor,
 } from '@cf/domain-descriptors';
@@ -14,7 +14,6 @@ import { systemFor, galaxiesInCell } from '@cf/domain-worldgen';
 import { GAL_KIND, _EARTH_NAMES as _EARTH_NAMES_V1 } from '../src/apphooks.verbatim.js';
 import { _EARTH_NAMES, _earthNamePass } from '../src/apphooks.js';
 
-beforeAll(() => installCaptureHooks());
 const fx = loadFixture();
 
 type Pl = { P: Record<string, unknown> & { seed: number }; orb?: number; moons?: unknown[]; name?: string };

@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -16,7 +15,6 @@ import {
 import { createOwnershipSourceProjectionSuccessorV2 } from '../src/model-v2.js';
 import { paragonGenomeV1, settleParagonCatalogueSourceV1 } from '../src/paragon.js';
 
-beforeAll(() => installCaptureHooks());
 
 function emptyOwnership() {
   return createInitialOwnershipStateV1({

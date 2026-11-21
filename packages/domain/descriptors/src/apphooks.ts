@@ -1,8 +1,8 @@
 /* Capture-environment hooks for the Descriptors domain module.
 
-   The verbatim body calls five app-layer names as FREE identifiers. In ESM
-   they resolve through the global scope, so consumers install faithful
-   stand-ins BEFORE calling any descriptor. Two kinds live here:
+   The verbatim body calls nine app-layer names. With Dakk's word
+   (2026-11-21) descriptors.verbatim.js imports all nine from this module;
+   none is a global. Two kinds live here:
 
    1. VERBATIM CARRIES (apphooks.verbatim.js, machine-extracted): the side
       cache _cardFactsSet, Dakk's cradle roster _EARTH_NAMES/_earthNamePass
@@ -18,8 +18,8 @@
       planet object — the systemSol fingerprint encodes exactly that
       mutation, so the stub replays it with a single surfaceColor call.
 
-   Phase 2+ replaces these with the real app implementations; the domain
-   body never changes either way. */
+   Phase 2+ replaces these with the real app implementations, here; the
+   verbatim body does not change for that. */
 import { surfaceColor } from '@cf/domain-planetgen';
 import { _cardFactsSet, GAL_KIND, _EARTH_NAMES as _EARTH_NAMES_V1 } from './apphooks.verbatim.js';
 
@@ -104,14 +104,3 @@ export const galaxyThumb = (): string => CAPTURE_THUMB;
 export const moonThumb = (): string => CAPTURE_THUMB;
 export const cometThumb = (): string => CAPTURE_THUMB;
 export const beltThumb = (): string => CAPTURE_THUMB;
-
-/** Install the capture-environment hooks on globalThis (idempotent; never
-    overwrites an existing binding, so a future app layer wins by default). */
-export function installCaptureHooks(): void {
-  const g = globalThis as Record<string, unknown>;
-  const hooks: Record<string, unknown> = {
-    _cardFactsSet, _earthNamePass, GAL_KIND,
-    planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb,
-  };
-  for (const [k, v] of Object.entries(hooks)) if (g[k] === undefined) g[k] = v;
-}

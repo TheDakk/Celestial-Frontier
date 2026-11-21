@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
+import { describe, expect, it } from 'vitest';
 import {
   GEAR_INVENTORY_SCHEMA,
   decodeGearInventory,
@@ -33,7 +32,8 @@ import { AMBIENT_READS, withoutAmbientSources } from '../../../../tests/support/
    (with an Auto-Extractor second load later on the clock); stellar skimming at a remnant star; and the
    economy receipts taken from them. The only clock is the injected active-play time; the receipt
    ordinal seeds generated-gear metadata. Mining and skimming capabilities are built from the loot
-   package, as the recorder built them. As the recorder did, this file installs the capture hooks first. */
+   package, as the recorder built them. The recorder installed the current game's capture hooks first;
+   here the descriptors package imports them. */
 
 type Json = Record<string, unknown>;
 interface Input { baseId: string; assets: string; state: 'fresh' | 'mined'; activePlayMs: number; receiptOrdinal: number }
@@ -59,7 +59,6 @@ const fixture = JSON.parse(
 
 const plain = (value: unknown): unknown => JSON.parse(JSON.stringify(value) ?? 'null');
 
-beforeAll(() => installCaptureHooks());
 
 function stateOf(name: 'fresh' | 'mined') {
   if (name === 'fresh') return createEngineeringState();

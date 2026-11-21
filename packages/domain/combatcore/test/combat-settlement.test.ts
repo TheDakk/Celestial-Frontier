@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
@@ -22,7 +21,6 @@ import {
   type PrimeSignatureIdV1,
 } from '@cf/domain-combatcore';
 
-beforeAll(() => installCaptureHooks());
 
 const CANDIDATES = Object.freeze({
   flame: Object.freeze({

@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   navFromCanonicalCF1Address,
   resolveCF1StarAddress,
@@ -24,7 +23,6 @@ import {
   type EngineeringStateV2,
 } from '../src/index.js';
 
-beforeAll(() => installCaptureHooks());
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },

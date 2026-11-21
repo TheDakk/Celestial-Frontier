@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
@@ -23,7 +22,6 @@ import {
   runDuel,
 } from '@cf/domain-combatcore';
 
-installCaptureHooks();
 
 const resolved = resolveCF1WorldAddress({
   galaxy: { seed: 1594395733, x: -5501.81, y: -11753.64 },
