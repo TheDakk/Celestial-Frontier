@@ -146,7 +146,7 @@ function recipeOf(parts: readonly Spec[], over: Partial<Recipe> = {}): Recipe {
     version: 1, identity: 'test', family: 'quadruped', tier: 'small', scaffoldId: 'quadruped/sturdy/small',
     parts: parts.map(([slot, index, key]) => ({ slot, index, partId: ID[key] ?? key, source: 'own' as const })),
     ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
-    marking: { pattern: 0, flip: false, dx: 0, dy: 0 },
+    marking: { pattern: 0, strength: 2, phase: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
     legs: 4, glow: false, gaps: [],
     ...over,

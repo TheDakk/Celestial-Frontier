@@ -5,13 +5,16 @@ import { artStream, identityKey, pick } from './streams';
 
 export const RENDERER_VERSION = 1;
 
-export interface RecipePart { slot: SlotName; index: number; partId: string; source: 'own'; }
+/** A part's mark data: the stripe offset (0-14) and 15 spot rolls (each 0-99), from streams keyed by slot and index. */
+export interface PartMark { offset: number; rolls: readonly number[]; }
+/** `mark`: only on a part in a mark slot of a patterned creature. */
+export interface RecipePart { slot: SlotName; index: number; partId: string; source: 'own'; mark?: PartMark; }
 export interface Recipe {
   version: number; identity: string; family: string; tier: SizeTier; scaffoldId: string;
   legs: number; // the anatomy's limb count, 0 outside fauna
   parts: readonly RecipePart[]; // in DRAW_ORDER, then by index
   ramps: { primary: string; accent: string; underside: string; iris: string };
-  marking: { pattern: number; flip: boolean; dx: number; dy: number };
+  marking: { pattern: number; strength: 0 | 1 | 2; phase: number }; // strength 0 hint, 1 clear, 2 full; phase 0-14
   shift: { head: readonly [number, number]; tail: readonly [number, number] }; // each component -1, 0 or 1
   glow: boolean; gaps: readonly string[];
 }
@@ -50,14 +53,18 @@ function buildRecipeAt(
   const headVariant = pick(stream('head-variant'), VARIANTS.head);
   const tailVariant = pick(stream('tail-variant'), VARIANTS.tail);
   const limbVariant = pick(stream('limb-style'), VARIANTS.limb);
-  const flip = pick(stream('mark-flip'), 2) === 1;
-  const dx = pick(stream('mark-dx'), 3) - 1;
-  const dy = pick(stream('mark-dy'), 3) - 1;
+  // mark-flip, mark-dx and mark-dy stay reserved: drawn, their results dropped.
+  pick(stream('mark-flip'), 2);
+  pick(stream('mark-dx'), 3);
+  pick(stream('mark-dy'), 3);
   const headShift: [number, number] = [pick(stream('shift-head-x'), 3) - 1, pick(stream('shift-head-y'), 3) - 1];
   const tailShift: [number, number] = [pick(stream('shift-tail-x'), 3) - 1, pick(stream('shift-tail-y'), 3) - 1];
   // ramp-warmth is drawn only to reserve the stream; it is not stored in the recipe in this milestone.
   pick(stream('ramp-warmth'), 3);
   const iris = pick(stream('iris'), IRIS_RAMP_COUNT);
+  const phase = pick(stream('mark-phase'), 15);
+  // mark-strength is drawn only to reserve the stream: every fully generated creature is drawn at full strength.
+  pick(stream('mark-strength'), 3);
 
   const torsoKind = a.torso === '' ? 'body' : a.torso;
   const wanted: { slot: SlotName; index: number; kind: string; variant: number }[] = [];
@@ -97,7 +104,7 @@ function buildRecipeAt(
     legs: a.limbs,
     parts,
     ramps: { primary: `c${a.colour}`, accent: `c${a.accent}`, underside: `c${a.colour}-under`, iris: `iris${iris}` },
-    marking: { pattern: a.pattern, flip, dx, dy },
+    marking: { pattern: a.pattern, strength: 2, phase },
     shift: { head: headShift, tail: tailShift },
     glow: a.glow, gaps,
   });

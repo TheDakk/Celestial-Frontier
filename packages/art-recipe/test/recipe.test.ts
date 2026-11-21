@@ -147,7 +147,19 @@ describe('buildRecipe', () => {
     expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under', iris: `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}` });
     expect(r.marking.pattern).toBe(2);
     expect(r.glow).toBe(true);
-    for (const n of [r.marking.dx, r.marking.dy, ...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);
+    for (const n of [...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);
+  });
+
+  it('marking is pattern, full strength and a phase from its own stream', () => {
+    const seen = new Set<number>();
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = { ...base, seed };
+      const r = buildRecipe(g, [], full);
+      expect(Object.keys(r.marking)).toEqual(['pattern', 'strength', 'phase']);
+      expect(r.marking).toEqual({ pattern: 2, strength: 2, phase: pick(artStream(identityKey(g, []), 'mark-phase', RENDERER_VERSION), 15) });
+      seen.add(r.marking.phase);
+    }
+    expect(seen.size).toBe(15);
   });
 
   it('uses the kind body and a body scaffold for a family with no torso type', () => {
