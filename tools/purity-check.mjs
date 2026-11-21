@@ -6,6 +6,7 @@ import { scanCode } from './scan-code.mjs';
 const DOMAIN_SRC = /^packages\/domain\/[^/]+\/src\//;
 const SCENE_SRC = /^packages\/scene\/src\//;
 const PERSISTENCE_SRC = /^packages\/persistence\/src\//;
+const AUDIO_SRC = /^packages\/audio\/src\//;
 // Every packages/art-<name>/src/ folder, at any depth below it, except the placeholder parts in art-testparts.
 const ART_SRC = /^packages\/art-(?!testparts\/)[^/]+\/src\//;
 // String and template literals are matched first and kept, so `//` or `/*` inside a string
@@ -33,12 +34,13 @@ const DOMAIN_USES = [
   [/\bOffscreenCanvas\b/, 'uses a canvas'],
 ];
 // Gameplay folders and the rules each gets: the domain packages and scene the full gameplay rules;
-// persistence (which owns the browser save, so it may touch the page) the clock and random rules.
-// All three get the art-import rules.
+// persistence (which owns the browser save, so it may touch the page) and audio (which owns the
+// browser's sound) the clock and random rules. All four get the art-import rules.
 const GAMEPLAY_RULES = [
   [DOMAIN_SRC, DOMAIN_USES],
   [SCENE_SRC, DOMAIN_USES],
   [PERSISTENCE_SRC, FORBIDDEN_USES],
+  [AUDIO_SRC, FORBIDDEN_USES],
 ];
 // `from '<spec>'`, bare `import '<spec>'`, and `import('<spec>')`.
 const IMPORT_SPEC = /(?:\bfrom\s*|\bimport\s*\(?\s*)(['"])([^'"\n]+)\1/g;
@@ -106,9 +108,9 @@ function checkArt(path, text) {
 const isChecked = (path) => ART_SRC.test(path) || GAMEPLAY_RULES.some(([folder]) => folder.test(path));
 
 /** One message per reason per file; files under packages/domain/<name>/src/ and packages/scene/src/ get the
- *  gameplay rules, under packages/persistence/src/ the clock, random and art-import rules, and under
- *  packages/art-<name>/src/ (except art-testparts) the renderer rules; everything else is ignored. A NUL
- *  byte in any examined file is reported. */
+ *  gameplay rules, under packages/persistence/src/ and packages/audio/src/ the clock, random and art-import
+ *  rules, and under packages/art-<name>/src/ (except art-testparts) the renderer rules; everything else is
+ *  ignored. A NUL byte in any examined file is reported. */
 export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {

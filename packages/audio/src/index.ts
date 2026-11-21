@@ -215,9 +215,14 @@ export function playSurveyPing(): void {
   playSurveyPingRaw();
 }
 
-export function playWhoosh(): void {
+/** Play the travel and planetfall whoosh with noise from `random`, a function returning a number in
+    [0, 1). The caller supplies it; a call without one throws, whether or not audio is initialized. */
+export function playWhoosh(random: () => number): void {
+  if (typeof random !== 'function') {
+    throw new TypeError('playWhoosh needs a random source: a function returning a number in [0, 1)');
+  }
   if (!initialized) return;
-  playWhooshRaw();
+  playWhooshRaw(random);
 }
 
 /** Prepare the compatibility-sting singleton inside a trusted player gesture

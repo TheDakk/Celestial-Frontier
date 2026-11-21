@@ -1,6 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { withoutAmbientSources } from '../../../tests/support/ambient.js';
 
 const GLOBAL_KEYS = ['AudioContext', 'webkitAudioContext', 'ac', 'sfxVol'] as const;
+/** A fixed random source for calls whose noise values the test does not inspect. */
+const MIDPOINT = (): number => 0.5;
 let originalGlobals = new Map<string, PropertyDescriptor | undefined>();
 
 function setGlobal(key: string, value: unknown): void {
@@ -66,6 +69,7 @@ interface AudioLog {
   oscillatorStops: number;
   bufferStarts: number;
   bufferStops: number;
+  buffers: Float32Array[];
   filters: number;
   destinations: unknown[];
   oscillators: unknown[];
@@ -86,6 +90,7 @@ function audioLog(): AudioLog {
     oscillatorStops: 0,
     bufferStarts: 0,
     bufferStops: 0,
+    buffers: [],
     filters: 0,
     destinations: [],
     oscillators: [],
@@ -212,6 +217,7 @@ function contextConstructor(
 
     createBuffer(_channels: number, length: number): AudioBuffer {
       const data = new Float32Array(length);
+      log.buffers.push(data);
       return { getChannelData: () => data } as unknown as AudioBuffer;
     }
 
@@ -302,7 +308,7 @@ describe('@cf/audio — bounded sting facade', () => {
     expect(() => {
       api.playRaritySting(3);
       api.playSurveyPing();
-      api.playWhoosh();
+      api.playWhoosh(MIDPOINT);
       api.applySfxGain();
       api.prepareStingAudioForGesture();
     }).not.toThrow();
@@ -337,7 +343,7 @@ describe('@cf/audio — bounded sting facade', () => {
     const disconnected = log.connections.filter(([from]) => from !== surveyGain);
     expect(graphReaches(surveyOscillator, destination, disconnected),
       'audio graph negative control stayed green after removing the gain-to-SFX edge').toBe(false);
-    api.playWhoosh();
+    api.playWhoosh(MIDPOINT);
     expect(log.bufferStarts, 'whoosh wrapper did not start its noise source').toBe(1);
     expect(log.filters, 'whoosh wrapper did not create its bandpass').toBe(1);
     expect(log.contexts, 'the three stings did not reuse the singleton context').toBe(1);
@@ -363,7 +369,7 @@ describe('@cf/audio — bounded sting facade', () => {
     const mutedBuffers = log.bufferStarts;
     api.playRaritySting(2);
     api.playSurveyPing();
-    api.playWhoosh();
+    api.playWhoosh(MIDPOINT);
     expect(log.oscillatorStarts).toBe(mutedStarts);
     expect(log.bufferStarts).toBe(mutedBuffers);
 
@@ -399,7 +405,7 @@ describe('@cf/audio — bounded sting facade', () => {
     api.prepareStingAudioForGesture();
     api.playRaritySting(1);
     api.playSurveyPing();
-    api.playWhoosh();
+    api.playWhoosh(MIDPOINT);
     expect(log.contexts).toBe(0);
     expect(log.oscillatorStarts).toBe(0);
     expect(log.bufferStarts).toBe(0);
@@ -672,7 +678,7 @@ describe('@cf/audio — bounded sting facade', () => {
     expect(() => {
       api.playRaritySting(1);
       api.playSurveyPing();
-      api.playWhoosh();
+      api.playWhoosh(MIDPOINT);
     }).not.toThrow();
 
     const standardAttempts = { count: 0 };
@@ -683,7 +689,7 @@ describe('@cf/audio — bounded sting facade', () => {
     const webkitAttempts = { count: 0 };
     setGlobal('AudioContext', undefined);
     setGlobal('webkitAudioContext', throwingConstructor(webkitAttempts));
-    expect(() => api.playWhoosh()).not.toThrow();
+    expect(() => api.playWhoosh(MIDPOINT)).not.toThrow();
     expect(webkitAttempts.count).toBe(1);
   });
 
@@ -701,7 +707,7 @@ describe('@cf/audio — bounded sting facade', () => {
     expect(log.resumeCalls).toBe(1);
     expect(log.oscillatorStarts).toBe(0);
 
-    expect(() => api.playWhoosh()).not.toThrow();
+    expect(() => api.playWhoosh(MIDPOINT)).not.toThrow();
     await Promise.resolve();
     expect(log.contexts).toBe(1);
     expect(log.resumeCalls).toBe(2);
@@ -759,10 +765,63 @@ describe('@cf/audio — bounded sting facade', () => {
     api.initAudio({ sndOn: () => true, sfxVol: () => 1 });
 
     expect(() => api.playSurveyPing()).not.toThrow();
-    expect(() => api.playWhoosh()).not.toThrow();
+    expect(() => api.playWhoosh(MIDPOINT)).not.toThrow();
     expect(log.contexts).toBe(1);
     expect(log.resumeCalls).toBe(2);
     expect(log.oscillatorStarts).toBe(0);
     expect(log.bufferStarts).toBe(0);
+  });
+});
+
+describe('@cf/audio — whoosh noise comes from the caller', () => {
+  /* The fake context runs at 8 samples a second, so the 0.55 s whoosh buffer holds ceil(4.4) = 5 samples. */
+  const NO_SOURCE = 'playWhoosh needs a random source: a function returning a number in [0, 1)';
+  /** A fresh repeating source 0, 0.25, 0.5, 0.75, 0, ... */
+  const ladder = () => { let i = 0; return (): number => (i++ % 4) / 4; };
+
+  async function whooshBuffer(random: () => number): Promise<number[]> {
+    vi.resetModules();
+    const log = audioLog();
+    setGlobal('AudioContext', contextConstructor(log));
+    const api = await import('../src/index.js');
+    api.initAudio({ sndOn: () => true, sfxVol: () => 1 });
+    api.playWhoosh(random);
+    expect(log.bufferStarts, 'the whoosh did not start its noise source').toBe(1);
+    expect(log.buffers).toHaveLength(1);
+    return [...log.buffers[0]!];
+  }
+
+  it('fills the noise buffer from the injected source: two sources differ, the same source repeats', async () => {
+    const quarter = await whooshBuffer(() => 0.25);
+    const threeQuarters = await whooshBuffer(() => 0.75);
+    expect(quarter).toEqual([-0.5, -0.5, -0.5, -0.5, -0.5]);
+    expect(threeQuarters).toEqual([0.5, 0.5, 0.5, 0.5, 0.5]);
+    const first = await whooshBuffer(ladder());
+    const second = await whooshBuffer(ladder());
+    expect(first).toEqual([-1, -0.5, 0, 0.5, -1]);
+    expect(second).toEqual(first);
+  });
+
+  it('refuses a call without a random source, through the facade and the verbatim function', async () => {
+    const log = audioLog();
+    setGlobal('AudioContext', contextConstructor(log));
+    const api = await import('../src/index.js');
+    expect(() => api.playWhoosh(undefined as unknown as () => number), 'before initAudio').toThrow(NO_SOURCE);
+    api.initAudio({ sndOn: () => true, sfxVol: () => 1 });
+    expect(() => api.playWhoosh(undefined as unknown as () => number), 'after initAudio').toThrow(NO_SOURCE);
+    const raw = await import('../src/stings.verbatim.js');
+    expect(() => raw.playWhoosh(undefined as unknown as () => number)).toThrow(NO_SOURCE);
+    expect(log.bufferStarts).toBe(0);
+  });
+
+  it('plays without reading Math.random or any ambient clock', async () => {
+    const log = audioLog();
+    setGlobal('AudioContext', contextConstructor(log));
+    const api = await import('../src/index.js');
+    api.initAudio({ sndOn: () => true, sfxVol: () => 1 });
+    withoutAmbientSources(() => api.playWhoosh(ladder()));
+    /* The verbatim body swallows errors, so an ambient read would show as a missing or unfilled source. */
+    expect(log.bufferStarts).toBe(1);
+    expect([...log.buffers[0]!]).toEqual([-1, -0.5, 0, 0.5, -1]);
   });
 });

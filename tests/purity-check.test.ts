@@ -271,9 +271,10 @@ describe('purity check: renderer packages', () => {
   });
 });
 
-describe('purity check: scene and persistence', () => {
+describe('purity check: scene, persistence and audio', () => {
   const SCENE = 'packages/scene/src/sub/a.ts';
   const SAVE = 'packages/persistence/src/a.ts';
+  const AUDIO = 'packages/audio/src/a.js';
   it.each([
     ['Math.random()', 'uses Math.random'],
     ['Date.now()', 'uses Date.now'],
@@ -281,28 +282,30 @@ describe('purity check: scene and persistence', () => {
     ['const d = new Date(0);', 'uses new Date'],
     ["import { a } from '@cf/art-compose';", 'imports an art package'],
     ["const p = await import('pixi.js');", 'imports pixi.js'],
-  ])('flags %s in scene and in persistence', (text, reason) => {
+  ])('flags %s in scene, in persistence and in audio', (text, reason) => {
     expect(run(text, SCENE)).toEqual([`${SCENE}: ${reason}`]);
     expect(run(text, SAVE)).toEqual([`${SAVE}: ${reason}`]);
+    expect(run(text, AUDIO)).toEqual([`${AUDIO}: ${reason}`]);
   });
   it.each([
     ["const cv = document.createElement('canvas');", 'uses document'],
     ['const w = window.innerWidth;', 'uses window'],
     ["const c2 = cv.getContext('2d');", 'uses a canvas'],
     ['const cv = new OffscreenCanvas(8, 8);', 'uses a canvas'],
-  ])('flags the host use %s in scene only: persistence owns the browser save', (text, reason) => {
+  ])('flags the host use %s in scene only: persistence owns the browser save, audio the browser sound', (text, reason) => {
     expect(run(text, SCENE)).toEqual([`${SCENE}: ${reason}`]);
     expect(run(text, SAVE)).toEqual([]);
+    expect(run(text, AUDIO)).toEqual([]);
   });
   it('passes the same text in comments and strings', () => {
-    for (const path of [SCENE, SAVE]) expect(run("// Date.now() and document.x\nconst s = 'Math.random()';", path)).toEqual([]);
+    for (const path of [SCENE, SAVE, AUDIO]) expect(run("// Date.now() and document.x\nconst s = 'Math.random()';", path)).toEqual([]);
   });
   it('reports a NUL byte in any examined src file, and not outside them', () => {
-    for (const path of [SCENE, SAVE, P, 'packages/art-compose/src/a.ts']) expect(run('const a = 1;\0', path)).toEqual([`${path}: contains a NUL byte`]);
+    for (const path of [SCENE, SAVE, AUDIO, P, 'packages/art-compose/src/a.ts']) expect(run('const a = 1;\0', path)).toEqual([`${path}: contains a NUL byte`]);
     expect(run('const a = 1;\0', 'packages/scene/test/a.test.ts')).toEqual([]);
   });
-  it('leaves audio, and the scene and persistence tests, outside the check', () => {
-    for (const path of ['packages/audio/src/a.ts', 'packages/scene/test/a.test.ts', 'packages/persistence/test/a.test.ts']) {
+  it('leaves the scene, persistence and audio tests outside the check', () => {
+    for (const path of ['packages/scene/test/a.test.ts', 'packages/persistence/test/a.test.ts', 'packages/audio/test/a.test.ts']) {
       expect(run('Math.random(); Date.now(); window.x;', path)).toEqual([]);
     }
   });

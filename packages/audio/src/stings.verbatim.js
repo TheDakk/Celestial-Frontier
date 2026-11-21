@@ -3,6 +3,7 @@
    body sha256/16 fdfa901072e3cfb8. ⚠ DO NOT EDIT. Regenerate: node tools/lift-audio.mjs
    Browser-only (Web Audio). Free identifiers ac/sndOn/sfxVol are the app
    seam — installed by index.ts initAudio(). */
+/* EDITED 2026-11-21 (task m3a-14, Dakk's word): playWhoosh takes its random source from the caller (no default; a call without one throws) and uses it in place of Math.random. */
 let _sfxBus=null;
 function sfxOut(a){
   /* every synth exits through one shared gain so a single slider rules them all */
@@ -86,7 +87,8 @@ function playSurveyPing(){
     o.start(t); o.stop(t+0.3);
   }catch(_){}
 }
-function playWhoosh(){
+function playWhoosh(random){
+  if(typeof random!=='function') throw new TypeError('playWhoosh needs a random source: a function returning a number in [0, 1)');
   /* travel & planetfall: a breath of filtered noise falling through a bandpass.
      Presentation-only, so Math.random here is fine (the domain ban guards
      GENERATION, not sound) — and no assets, per the single-file rule. */
@@ -96,7 +98,7 @@ function playWhoosh(){
     const n=a.createBufferSource();
     const buf=a.createBuffer(1, Math.ceil(a.sampleRate*dur), a.sampleRate);
     const ch=buf.getChannelData(0);
-    for(let i=0;i<ch.length;i++) ch[i]=Math.random()*2-1;
+    for(let i=0;i<ch.length;i++) ch[i]=random()*2-1;
     n.buffer=buf;
     const f=a.createBiquadFilter(); f.type='bandpass'; f.Q.value=0.9;
     f.frequency.setValueAtTime(2200, t);
