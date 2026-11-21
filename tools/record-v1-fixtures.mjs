@@ -1,9 +1,7 @@
 // Records answers from the v1 game file for the tests that read that file live in the current game.
-// Usage: node tools/record-v1-fixtures.mjs --ref <folder holding celestial-frontier.html>
-//          [--source <path to the current game's v2 folder>] [--only <name>]
-// Writes fixtures/v1/recorded/<name>.json, one per test, named after the test. Neither path is
-// written to any output. --source is accepted for recorders that compare v1 text with a file in the
-// current game; none of the present recorders does, so it is not read.
+// Usage: node tools/record-v1-fixtures.mjs --ref <folder holding celestial-frontier.html> [--only <name>]
+// Writes fixtures/v1/recorded/<name>.json, one per test, named after the test. The path is not
+// written to any output.
 // Each recorder takes from v1 exactly what its test takes, located the way its test locates it, and
 // evaluates v1 code the way its test does. This tool is run by hand; no test imports it.
 import { createHash } from 'node:crypto';
@@ -264,7 +262,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const { ref, only } = parseArgs(process.argv.slice(2));
   const names = only === undefined ? Object.keys(recorders) : [only];
   if (!ref || names.some((name) => !recorders[name])) {
-    console.error(`usage: node tools/record-v1-fixtures.mjs --ref <path> [--source <path>] [--only <${Object.keys(recorders).join('|')}>]`);
+    console.error(`usage: node tools/record-v1-fixtures.mjs --ref <path> [--only <${Object.keys(recorders).join('|')}>]`);
     process.exit(2);
   }
   const root = resolve(ref);
