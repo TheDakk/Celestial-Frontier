@@ -437,11 +437,11 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     });
   });
 
-  it('keeps current one-key and genuine legacy eleven-key Training ingress distinct across v5 read and snapshot recovery', async () => {
+  it('keeps current one-key Training ingress and an eleven-key v1 checkpoint (an unknown snapshot) distinct across v5 read and snapshot recovery', async () => {
     const veteran = FIXTURES.inputs.veteran_rich as Record<string, unknown>;
     for (const fixture of [
       { name: 'current', snapshot: { view: veteran.view }, expected: 'current-view' },
-      { name: 'legacy', snapshot: TRAINING_CAPTURE.snapshot, expected: 'legacy-v1' },
+      { name: 'legacy', snapshot: TRAINING_CAPTURE.snapshot, expected: 'legacy-or-unknown' },
     ] as const) {
       const raw = JSON.stringify({ ...veteran, tut: 0, tsnap: fixture.snapshot });
       const backend = createMemoryBackend();
