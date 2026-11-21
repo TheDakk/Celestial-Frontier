@@ -1,8 +1,12 @@
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 
+/**
+ * Encodes what JSON carries, so a genome and its saved-and-reloaded copy give the same key: an object key
+ * whose value is undefined is left out; an undefined array item, NaN and the infinities are encoded as null;
+ * -0 is encoded as 0.
+ */
 function stableNode(value: unknown, ancestors: Set<object>): unknown {
-  if (value === null) return ['null'];
-  if (value === undefined) return ['undefined'];
+  if (value === null || value === undefined) return ['null']; // undefined reaches here only as an array item
   if (Array.isArray(value)) {
     if (ancestors.has(value)) throw new TypeError('cyclic genome value');
     ancestors.add(value);
@@ -14,16 +18,14 @@ function stableNode(value: unknown, ancestors: Set<object>): unknown {
     if (ancestors.has(value)) throw new TypeError('cyclic genome value');
     ancestors.add(value);
     const object = value as Record<string, unknown>;
-    const result = ['object', Object.keys(object).sort().map((key) => [key, stableNode(object[key], ancestors)])];
+    const keys = Object.keys(object).filter((key) => object[key] !== undefined).sort();
+    const result = ['object', keys.map((key) => [key, stableNode(object[key], ancestors)])];
     ancestors.delete(value);
     return result;
   }
   if (typeof value === 'number') {
-    const exact = Number.isNaN(value) ? 'NaN'
-      : value === Infinity ? 'Infinity'
-        : value === -Infinity ? '-Infinity'
-          : Object.is(value, -0) ? '-0' : String(value);
-    return ['number', exact];
+    if (!Number.isFinite(value)) return ['null'];
+    return ['number', String(value)]; // String(-0) is '0'
   }
   if (typeof value === 'string') return ['string', value];
   if (typeof value === 'boolean') return ['boolean', value];
@@ -43,8 +45,9 @@ export const LIFE_STATE_KEYS: readonly string[] = Object.freeze(
 
 /**
  * The genome without its top-level LIFE_STATE_KEYS (sorted keys, type-tagged values; nested values
- * are kept whole), '|', then the ordered lineage as a JSON array. JSON keeps the lineage unambiguous
- * ([] vs [''], ['a>b'] vs ['a','b']); permanent.
+ * are kept whole), '|', then the ordered lineage as a JSON array. The key equals what JSON carries:
+ * a genome saved with JSON.stringify and loaded with JSON.parse has the same key (see stableNode).
+ * JSON keeps the lineage unambiguous ([] vs [''], ['a>b'] vs ['a','b']); permanent.
  */
 export function identityKey(genome: Readonly<Record<string, unknown>>, lineage: readonly string[]): string {
   const identity: Record<string, unknown> = Object.create(null); // no prototype: an own '__proto__' key is copied as data
