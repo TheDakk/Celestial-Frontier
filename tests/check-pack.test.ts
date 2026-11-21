@@ -7,7 +7,9 @@ import { LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { assemble } from '@cf/art-compose';
 import { bodyOf, buildRoutedRecipe, EYELESS_HEAD, resolveAnatomy, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
-import { checkPack, detachedSlots, formatReport, gapIsInfo, generatedTorsos, routeStates, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
+import { checkPack, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
+import type { Recipe } from '@cf/art-recipe';
+import type { Part } from '@cf/art-format';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 
@@ -1243,5 +1245,86 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
       seen.add(family);
     }
     expect([...seen].sort()).toEqual(Object.keys(TORSO_POINTS_BY_FAMILY).sort());
+  });
+});
+
+describe('checkPack: coded and label copies are never skinned', () => {
+  // A torso 8x4 drawn 1 with its head point at (8,1); a head 3x2 drawn 2; a tail and a near leg drawn 2 and 4 (label
+  // values, as labelCatalogue draws a tail and a near leg). Crystalline (gene 8, step +1) and scaled (gene 0, step -1)
+  // step row 0 of every part, so a skin left on would move each coded value 1 to 12 by one.
+  const CODED = PALETTE + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=head:8,1,tail:-1,0,near0:2,4
+11111111
+11111111
+11111111
+11111111
+
+part quadruped/head/h0/small/v0
+frame rest anchor=0,0
+222
+222
+
+part quadruped/tail/t1/small/v0
+frame rest anchor=0,0
+2
+
+part quadruped/nearLimbs/leg/small/v0
+frame rest anchor=0,0
+4
+4
+
+part quadruped/torso/fallback/small/v0
+frame rest anchor=0,0
+1
+` + SCAFFOLD;
+  const cat = parseCatalogueText(CODED);
+  const scaffold = cat.scaffolds.get('quadruped/sturdy/small')!;
+  const TORSO = 'quadruped/torso/sturdy/small/v0';
+  const HEAD = 'quadruped/head/h0/small/v0';
+  const recipeOf = (skin: number | null): Recipe => ({
+    version: 1, identity: 'coded', family: 'quadruped', tier: 'small', scaffoldId: scaffold.id, legs: 1,
+    parts: [
+      { slot: 'tail', index: 0, partId: 'quadruped/tail/t1/small/v0', source: 'own' },
+      { slot: 'torso', index: 0, partId: TORSO, source: 'own' },
+      { slot: 'nearLimbs', index: 0, partId: 'quadruped/nearLimbs/leg/small/v0', source: 'own' },
+      { slot: 'head', index: 0, partId: HEAD, source: 'own' },
+    ],
+    ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
+    marking: { pattern: 0, strength: 2, phase: 0 }, shift: { head: [0, 0], tail: [0, 0] }, glow: false, gaps: [],
+    opacity: 100, airborne: false, theme: null, rim: 0, skin,
+  });
+  const pixels = (r: Recipe, catalogue = cat): number[] => Array.from(assemble(r, 'rest', catalogue).buffer.pixels);
+
+  it('the cases are sensitive: the real picture of each skinned recipe differs from the unskinned one', () => {
+    for (const skin of [0, 8]) expect(pixels(recipeOf(skin)), `skin ${skin}`).not.toEqual(pixels(recipeOf(null)));
+  });
+
+  it('a coded copy draws its codes, and frameOrigin finds the frame, as with skin null', () => {
+    for (const skin of [0, 8]) {
+      for (const k of [0, 1, 2, 3]) {
+        for (const axis of ['x', 'y'] as const) {
+          const coded = (r: Recipe): number[] => { const c = numberedCopy(r, cat, new Map<string, Part>(), (i) => (i === k ? axis : 'blank')); return pixels(c.recipe, c.catalogue); };
+          expect(coded(recipeOf(skin)), `skin ${skin} part ${k} ${axis}`).toEqual(coded(recipeOf(null)));
+        }
+        expect(frameOrigin(recipeOf(skin), k, 'rest', cat, new Map()), `skin ${skin} part ${k}`).toEqual(frameOrigin(recipeOf(null), k, 'rest', cat, new Map()));
+      }
+      // The torso's pixel 0,0 is at the scaffold origin, the head's at the torso's head point.
+      expect(frameOrigin(recipeOf(skin), 1, 'rest', cat, new Map())).toEqual([16, 12]);
+      expect(frameOrigin(recipeOf(skin), 3, 'rest', cat, new Map())).toEqual([24, 13]);
+      // A copy with a real part keeps the skin, so its real parts are drawn as in the real picture.
+      expect(numberedCopy(recipeOf(skin), cat, new Map(), (i) => (i === 1 ? 'real' : 'blank')).recipe.skin).toBe(skin);
+    }
+  });
+
+  it('a label picture is drawn with skin null', () => {
+    for (const skin of [0, 8]) expect(Array.from(labelPicture(recipeOf(skin), 'rest', cat).pixels), `skin ${skin}`).toEqual(pixels(recipeOf(null)));
+  });
+
+  it('the neck rule reads the parts as drawn, without skin', () => {
+    const joins = (skin: number | null): unknown => neckJoins(cat, scaffold, TORSO, [HEAD], [1], () => recipeOf(skin), new Map());
+    // Head 2 beside torso 1 is one shade step: no breach. Crystalline would draw the head's row 0 as 3, two steps from the torso.
+    expect(joins(null)).toEqual([]);
+    for (const skin of [0, 8]) expect(joins(skin), `skin ${skin}`).toEqual([]);
   });
 });

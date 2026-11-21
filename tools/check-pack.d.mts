@@ -1,3 +1,6 @@
+import type { Catalogue, Part, Scaffold } from '@cf/art-format';
+import type { Recipe } from '@cf/art-recipe';
+
 export interface CheckedCreature {
   scaffold: string;
   /** The genome sampled, or `{ species: <key> }` for a named species. */
@@ -55,7 +58,7 @@ export interface PackReport {
   variants: number;
   /**
    * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information
-   * (gapIsInfo): `variant:`, `marks:`, `role:`, and `missing:` of a part in slot back, headFeature, farWings, nearWings or
+   * (gapIsInfo): `variant:`, `marks:`, `skin:` (a translucent creature's torso frame with no `translucent` layer), `role:`, and `missing:` of a part in slot back, headFeature, farWings, nearWings or
    * bodyFeature, or of a flipper (`flipper`, `flipper-<torso type>`); every other gap is an error, a missing `t0` or `pit` included.
    * A `marks:` gap with count 0 (printed x0) was met by no sampled creature: it is read from the catalogue, for a frame
    * some pose can show at some leg count with no layer serving some pattern.
@@ -84,6 +87,16 @@ export function gapIsInfo(gap: string): boolean;
 /** For a picture assembled from the label catalogue (pixel value = slot label); null when it is one 4-connected region. */
 export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array }): string[] | null;
 export function checkPack(text: string): PackReport;
+/** How numberedCopy draws a part: by its slot label, not at all, as it is, or each pixel as its frame column or row plus one. */
+export type NumberedMode = 'label' | 'blank' | 'real' | 'x' | 'y';
+/** A copy of the recipe and catalogue with part k drawn as `mode(k)` says; skin null unless some part is drawn 'real'. */
+export function numberedCopy(recipe: Recipe, catalogue: Catalogue, cache: Map<string, Part>, mode: (k: number) => NumberedMode): { recipe: Recipe; catalogue: Catalogue };
+/** The canvas position of part k's frame pixel 0,0 in a pose, read from coded pictures. */
+export function frameOrigin(recipe: Recipe, k: number, pose: string, catalogue: Catalogue, cache: Map<string, Part>): [number, number];
+/** The unfinished picture of a recipe drawn from the label catalogue, with skin null. */
+export function labelPicture(recipe: Recipe, pose: string, labels: Catalogue): { w: number; h: number; pixels: Uint8Array };
+/** Neck join breaches of each head on a torso (see NeckJoin), with marks and skin left off. */
+export function neckJoins(catalogue: Catalogue, scaffold: Scaffold, torsoId: string, headIds: readonly string[], legCounts: readonly number[], recipeFor: (limbs: number) => Recipe, cache: Map<string, Part>, shifts?: readonly { head: readonly [number, number]; tail: readonly [number, number] }[]): NeckJoin[];
 /** The states a routed scaffold `<family>/<torso>/<tier>` is sampled in, each with its tier, body and state genes; [] when no genome reaches it. Not yet used by checkPack. */
 export function routeStates(scaffoldId: string): { state: 'land' | 'airborne' | 'aquatic'; genes: Record<string, unknown> }[];
 /** The genome with the smallest seed from 1 to 64 for which bodyOf gives this family and torso, every other gene kept; else undefined. */

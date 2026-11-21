@@ -347,12 +347,17 @@ function drawnCount(part) {
  * as `mode(k)` says: 'label' draws every pixel as k + LABEL_BASE, 'blank' draws nothing (the part keeps its place, so the
  * parts that hang from it still land where they do), 'real' draws the part as it is, 'x' and 'y' draw each pixel as its
  * own column or row in the frame plus one (so a picture says which frame pixel landed where; frames up to 254 pixels).
- * Every mode but 'real' drops the frame's layers, so no mark is painted over a code. Frames are made once per id.
+ * Every mode but 'real' drops the frame's layers, so no mark is painted over a code. The skin rule needs no layer, so
+ * a copy with no 'real' part also has skin null: no code is stepped by a shade. A copy with a 'real' part keeps the
+ * recipe's skin, so its real parts are drawn as in the real picture (hiddenParts compares the two); such a copy mixes
+ * 'real' only with 'blank', which draws nothing. Frames are made once per id.
  */
-function numberedCopy(recipe, catalogue, cache, mode) {
+export function numberedCopy(recipe, catalogue, cache, mode) {
   const parts = new Map();
+  let real = false;
   const numbered = recipe.parts.map((rp, k) => {
     const how = mode(k);
+    if (how === 'real') real = true;
     const id = `${rp.partId}#${k}#${how}`;
     const part = catalogue.parts.get(rp.partId);
     if (part !== undefined) {
@@ -371,7 +376,12 @@ function numberedCopy(recipe, catalogue, cache, mode) {
     }
     return { ...rp, partId: id };
   });
-  return { recipe: { ...recipe, parts: numbered }, catalogue: { ...catalogue, parts } };
+  return { recipe: { ...recipe, parts: numbered, skin: real ? recipe.skin : null }, catalogue: { ...catalogue, parts } };
+}
+
+/** The unfinished picture of a recipe drawn from labelCatalogue: skin null, so no slot label 1 to 12 is stepped by the skin rule. */
+export function labelPicture(recipe, pose, labels) {
+  return assemble({ ...recipe, skin: null }, pose, labels).buffer;
 }
 
 /**
@@ -669,7 +679,7 @@ function frameShown(scaffold, poseId, slot, index, legs, part) {
 }
 
 /** Where part k of a recipe lands: the canvas position of its frame's pixel 0,0, read from its 'x' and 'y' coded pictures. */
-function frameOrigin(recipe, k, pose, catalogue, cache) {
+export function frameOrigin(recipe, k, pose, catalogue, cache) {
   const at = (axis) => {
     const coded = numberedCopy(recipe, catalogue, cache, (i) => (i === k ? axis : 'blank'));
     const { w, pixels } = assemble(coded.recipe, pose, coded.catalogue).buffer;
@@ -681,7 +691,7 @@ function frameOrigin(recipe, k, pose, catalogue, cache) {
 
 /**
  * The neck rule (spec, section 5): where a head meets a torso, the pixels on each side of the join are within one shade
- * step of each other. Checked on the parts as drawn: before marks, before the outline and shading. For each leg count,
+ * step of each other. Checked on the parts as drawn: before marks and skin, before the outline and shading. For each leg count,
  * each pose, each head and each of the nine head shifts, the torso alone (once per leg count and pose) and the head alone
  * are assembled at their real places (the head is placed on the torso, then the torso is left undrawn). A join pair is a
  * head pixel and a 4-adjacent torso pixel the head does not cover, both ramp values (1-12); it breaks the rule when their
@@ -690,7 +700,7 @@ function frameOrigin(recipe, k, pose, catalogue, cache) {
  * offending head pixels, counted in the head frame's own coordinates (frame, x, y); cases: the (pose, shift, leg count)
  * cases with a breach; example: the first breaching pair, each pixel in its own part's frame coordinates }.
  */
-function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, cache, shifts = HEAD_SHIFTS) {
+export function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, cache, shifts = HEAD_SHIFTS) {
   const found = new Map();
   const torsoPart = catalogue.parts.get(torsoId);
   for (const legs of legCounts) {
@@ -699,6 +709,7 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
       ...base,
       parts: [{ slot: 'torso', index: 0, partId: torsoId, source: 'own' }, { slot: 'head', index: 0, partId: headId, source: 'own' }],
       marking: { ...base.marking, pattern: 0 },
+      skin: null,
     });
     for (const pose of Object.keys(scaffold.poses)) {
       const torsoOnly = numberedCopy(pairOf(headIds[0]), catalogue, cache, (k) => (k === 0 ? 'real' : 'blank'));
@@ -838,14 +849,14 @@ export function checkPack(text) {
         if (out === undefined) continue;
         const where = variant === undefined ? { scaffold: scaffold.id, genome, pose } : { scaffold: scaffold.id, genome, pose, variant };
         if (touchesEdge(out.buffer)) edge.push(where);
-        const own = detachedSlots(assemble(recipe, pose, labels).buffer);
+        const own = detachedSlots(labelPicture(recipe, pose, labels));
         if (own) detached.push({ ...where, shift: recipe.shift, off: own });
         const showing = (shifted) => {
           for (const h of hiddenParts(shifted, pose, catalogue, numberedFrames)) hidden.push({ ...where, shift: shifted.shift, ...h });
         };
         showing(recipe);
         for (const shift of shiftPairs) {
-          const picture = assemble({ ...recipe, shift }, pose, labels).buffer;
+          const picture = labelPicture({ ...recipe, shift }, pose, labels);
           if (nearEdge(picture)) edge.push({ ...where, shift });
           const off = detachedSlots(picture);
           if (off) detached.push({ ...where, shift, off });
