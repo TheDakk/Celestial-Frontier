@@ -1,0 +1,229 @@
+import { DRAW_ORDER } from './types';
+import type { Catalogue, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName } from './types';
+
+const DIRECTIVES = new Set(['palette', 'colour', 'ramp', 'outline', 'eye', 'eyeHighlight', 'glow', 'part', 'frame', 'scaffold', 'pose', 'entry', 'fallback']);
+const TIERS: readonly string[] = ['small', 'medium', 'large', 'guardian'];
+const PIXEL_CHARS = '.123456789abcdefg';
+
+function int(s: string | undefined, line: number): number {
+  if (s === undefined || !/^-?\d+$/.test(s)) throw new Error(`line ${line}: expected an integer`);
+  return parseInt(s, 10);
+}
+
+function pair(s: string, line: number): [number, number] {
+  const bits = s.split(',');
+  if (bits.length !== 2) throw new Error(`line ${line}: expected x,y`);
+  return [int(bits[0], line), int(bits[1], line)];
+}
+
+/** `name:x,y,name:x,y` -> record; names never contain a colon or comma. */
+function attachPoints(s: string, line: number): Record<string, readonly [number, number]> {
+  const out: Record<string, readonly [number, number]> = {};
+  if (s === '') return out;
+  const bits = s.split(',');
+  if (bits.length % 2 !== 0) throw new Error(`line ${line}: bad attach list`);
+  for (let i = 0; i < bits.length; i += 2) {
+    const head = bits[i] as string;
+    const colon = head.indexOf(':');
+    if (colon <= 0 || head.indexOf(':', colon + 1) >= 0) throw new Error(`line ${line}: bad attach list`);
+    out[head.slice(0, colon)] = [int(head.slice(colon + 1), line), int(bits[i + 1], line)];
+  }
+  return out;
+}
+
+/** Splits `key=value` tokens into a map. */
+function options(tokens: readonly string[], line: number): Map<string, string> {
+  const m = new Map<string, string>();
+  for (const t of tokens) {
+    const eq = t.indexOf('=');
+    if (eq <= 0) throw new Error(`line ${line}: bad option '${t}'`);
+    m.set(t.slice(0, eq), t.slice(eq + 1));
+  }
+  return m;
+}
+
+function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
+  const seg = id.split('/');
+  if (seg.length !== 5) return undefined;
+  const [family, slot, kind, tier, v] = seg as [string, string, string, string, string];
+  if (family === '' || kind === '' || !(DRAW_ORDER as readonly string[]).includes(slot) || !TIERS.includes(tier) || !/^v\d+$/.test(v)) return undefined;
+  return { id, family, slot: slot as SlotName, tier: tier as SizeTier, kind, variant: parseInt(v.slice(1), 10) };
+}
+
+interface OpenFrame { name: string; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; }
+
+export function parseCatalogueText(text: string): Catalogue {
+  const parts = new Map<string, Part>();
+  const scaffolds = new Map<string, Scaffold>();
+  const fallbacks = new Map<string, string>();
+  const colours: number[] = [];
+  const ramps: Record<string, readonly [number, number, number, number]> = {};
+  const palette = { outline: 0, eye: 0, eyeHighlight: 0, glow: 0 };
+
+  let part: { id: string; head: Omit<Part, 'frames'>; frames: Record<string, PartFrame> } | undefined;
+  let frame: OpenFrame | undefined;
+  let scaffold: { id: string; family: string; tier: SizeTier; origin: readonly [number, number]; poses: Record<string, Pose> } | undefined;
+  let pose: { id: string; entries: PoseEntry[]; contact?: readonly [number, number] } | undefined;
+  let inPalette = false;
+
+  const closeFrame = (): void => {
+    if (part && frame) {
+      part.frames[frame.name] = { w: frame.w < 0 ? 0 : frame.w, h: frame.h, pixels: Uint8Array.from(frame.data), anchor: frame.anchor, attach: frame.attach };
+    }
+    frame = undefined;
+  };
+  const closePart = (): void => {
+    closeFrame();
+    if (part) parts.set(part.id, { ...part.head, frames: part.frames });
+    part = undefined;
+  };
+  const closePose = (): void => {
+    if (scaffold && pose) {
+      const done: Pose = pose.contact ? { id: pose.id, entries: pose.entries, contact: pose.contact } : { id: pose.id, entries: pose.entries };
+      scaffold.poses[pose.id] = done;
+    }
+    pose = undefined;
+  };
+  const closeScaffold = (): void => {
+    closePose();
+    if (scaffold) scaffolds.set(scaffold.id, { ...scaffold });
+    scaffold = undefined;
+  };
+  const closeAll = (): void => { closePart(); closeScaffold(); inPalette = false; };
+
+  const lines = text.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    const n = i + 1;
+    const trimmed = (lines[i] as string).trim();
+    if (trimmed.startsWith('#')) continue;
+    if (trimmed === '') { closeFrame(); continue; }
+    const tok = trimmed.split(/\s+/);
+    const word = tok[0] as string;
+    const args = tok.slice(1);
+
+    if (!DIRECTIVES.has(word)) {
+      if (!frame || !part) throw new Error(`line ${n}: unknown directive '${word}'`);
+      const where = `part ${part.id} frame ${frame.name} line ${n}`;
+      const row: number[] = [];
+      for (const c of trimmed) {
+        const v = PIXEL_CHARS.indexOf(c);
+        if (v < 0) throw new Error(`${where}: unknown pixel character '${c}'`);
+        row.push(v);
+      }
+      if (frame.w < 0) frame.w = row.length;
+      else if (row.length !== frame.w) throw new Error(`${where}: row width ${row.length} differs from ${frame.w}`);
+      frame.data.push(...row);
+      frame.h++;
+      continue;
+    }
+
+    closeFrame();
+    const need = (count: number): void => {
+      if (args.length !== count) throw new Error(`line ${n}: bad ${word}`);
+    };
+
+    switch (word) {
+      case 'palette':
+        closeAll();
+        inPalette = true;
+        break;
+      case 'colour': case 'ramp': case 'outline': case 'eye': case 'eyeHighlight': case 'glow':
+        if (!inPalette) throw new Error(`line ${n}: ${word} outside a palette`);
+        if (word === 'colour') {
+          need(2);
+          const index = int(args[0], n);
+          if (index < 0 || index > 95) throw new Error('palette: more than 96 colours');
+          if (!/^[0-9a-fA-F]{6}$/.test(args[1] as string)) throw new Error(`line ${n}: bad colour`);
+          while (colours.length <= index) colours.push(0);
+          colours[index] = parseInt(args[1] as string, 16);
+        } else if (word === 'ramp') {
+          need(5);
+          ramps[args[0] as string] = [int(args[1], n), int(args[2], n), int(args[3], n), int(args[4], n)];
+        } else {
+          need(1);
+          palette[word] = int(args[0], n);
+        }
+        break;
+      case 'part': {
+        closeAll();
+        need(1);
+        const id = args[0] as string;
+        const head = parsePartId(id);
+        if (!head) throw new Error(`part ${id}: bad id`);
+        if (parts.has(id)) throw new Error(`line ${n}: duplicate id ${id}`);
+        part = { id, head, frames: {} };
+        break;
+      }
+      case 'frame': {
+        if (!part) throw new Error(`line ${n}: frame outside a part`);
+        if (args.length < 1) throw new Error(`line ${n}: bad frame`);
+        const name = args[0] as string;
+        const opts = options(args.slice(1), n);
+        const anchor = opts.get('anchor');
+        if (anchor === undefined) throw new Error(`part ${part.id} frame ${name} line ${n}: missing anchor`);
+        frame = { name, anchor: pair(anchor, n), attach: attachPoints(opts.get('attach') ?? '', n), w: -1, h: 0, data: [] };
+        break;
+      }
+      case 'scaffold': {
+        closeAll();
+        if (args.length < 1) throw new Error(`line ${n}: bad scaffold`);
+        const id = args[0] as string;
+        const seg = id.split('/');
+        if (seg.length !== 3 || seg[0] === '' || seg[1] === '' || !TIERS.includes(seg[2] as string)) throw new Error(`scaffold ${id}: bad id`);
+        const origin = options(args.slice(1), n).get('origin');
+        if (origin === undefined) throw new Error(`scaffold ${id} line ${n}: missing origin`);
+        if (scaffolds.has(id)) throw new Error(`line ${n}: duplicate id ${id}`);
+        scaffold = { id, family: seg[0] as string, tier: seg[2] as SizeTier, origin: pair(origin, n), poses: {} };
+        break;
+      }
+      case 'pose': {
+        if (!scaffold) throw new Error(`line ${n}: pose outside a scaffold`);
+        closePose();
+        if (args.length < 1) throw new Error(`line ${n}: bad pose`);
+        const contact = options(args.slice(1), n).get('contact');
+        pose = { id: args[0] as string, entries: [] };
+        if (contact !== undefined) pose.contact = pair(contact, n);
+        break;
+      }
+      case 'entry': {
+        if (!pose) throw new Error(`line ${n}: entry outside a pose`);
+        need(5);
+        const slot = args[0] as string;
+        if (!(DRAW_ORDER as readonly string[]).includes(slot)) throw new Error(`line ${n}: unknown slot '${slot}'`);
+        pose.entries.push({ slot: slot as SlotName, index: int(args[1], n), frame: args[2] as string, dx: int(args[3], n), dy: int(args[4], n) });
+        break;
+      }
+      case 'fallback':
+        closeAll();
+        need(2);
+        fallbacks.set(args[0] as string, args[1] as string);
+        break;
+    }
+  }
+  closeAll();
+
+  const finished: Palette = { colours, ramps, ...palette };
+  return { parts, scaffolds, palette: finished, fallbacks };
+}
+
+function pixelChar(v: number): string {
+  const c = PIXEL_CHARS[v];
+  if (v < 0 || c === undefined) throw new Error(`pixel value ${v} out of range`);
+  return c;
+}
+
+/** Writes one part in the text form that parseCatalogueText reads. */
+export function formatPart(part: Part): string {
+  const out: string[] = [`part ${part.id}`];
+  for (const [name, f] of Object.entries(part.frames)) {
+    const attach = Object.entries(f.attach).map(([k, [x, y]]) => `${k}:${x},${y}`).join(',');
+    out.push(`frame ${name} anchor=${f.anchor[0]},${f.anchor[1]}${attach === '' ? '' : ` attach=${attach}`}`);
+    for (let y = 0; y < f.h; y++) {
+      let row = '';
+      for (let x = 0; x < f.w; x++) row += pixelChar(f.pixels[y * f.w + x] as number);
+      out.push(row);
+    }
+    out.push('');
+  }
+  return `${out.join('\n')}\n`;
+}
