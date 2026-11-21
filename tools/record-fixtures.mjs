@@ -276,6 +276,89 @@ const recorders = {
       edges,
     };
   },
+  // Survey cards (descriptors) with the hooks installed the way the current game installs them: the app
+  // calls installCaptureHooks() at boot and publishes globalThis.COSMIC_EPOCH. Each case is an input of
+  // plain numbers; the cases run in the recorded order, because the generators memoise and the
+  // planet-thumb hook caches a gas giant's palette onto the shared planet object.
+  descriptors: async (source) => {
+    const NAMES = ['_cardFactsSet', '_earthNamePass', 'GAL_KIND', 'planetThumb', 'starThumb', 'galaxyThumb',
+      'moonThumb', 'cometThumb', 'beltThumb', 'GAL_SPRITES', 'COSMIC_EPOCH', 'st', 'customNames'];
+    for (const name of NAMES) if (name in globalThis) throw new Error(`descriptors: ${name} must not be defined before recording`);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const d = await load('packages/domain/descriptors/src/index.ts');
+    const { systemFor, galaxiesInCell } = await load('packages/domain/worldgen/src/index.ts');
+    d.installCaptureHooks();
+
+    const SOL = 424242;
+    const KAUM = { star: 2737406570, planet: 1757105165 };
+    const OSUM = { star: 1074947061, planet: 51464061 };
+    const planetOf = (star, planet) => {
+      const pl = systemFor(star).planets.find((entry) => entry.P.seed === planet);
+      if (!pl) throw new Error(`planet ${planet} not found in system ${star}`);
+      return pl;
+    };
+    const cases = [];
+    // The three contract seeds: the home galaxy (999, alone in cell 0,-1), Sol (424242) and Earth (133).
+    cases.push({ kind: 'galaxy', cx: 0, cy: -1, index: 0 }, { kind: 'star', seed: SOL });
+    for (const epoch of [0, 12]) for (const pl of systemFor(SOL).planets) cases.push({ kind: 'planet', star: SOL, planet: pl.P.seed, epoch });
+    for (const epoch of [1, 2, 3, 6, 10000]) cases.push({ kind: 'planet', star: SOL, planet: 133, epoch });
+    cases.push({ kind: 'moon', star: SOL, planet: 133, moon: 0 }, { kind: 'belt', star: SOL });
+    // Kaum and Osum.
+    for (const { star, planet } of [KAUM, OSUM]) {
+      cases.push({ kind: 'star', seed: star });
+      for (const epoch of [0, 12]) cases.push({ kind: 'planet', star, planet, epoch });
+      cases.push({ kind: 'moon', star, planet, moon: 0 }, { kind: 'moon', star, planet, moon: 1 }, { kind: 'belt', star });
+    }
+    // Every galaxy in cells -8..8: the kind label comes from GAL_KIND.
+    for (let cy = -RANGE; cy <= RANGE; cy++) {
+      for (let cx = -RANGE; cx <= RANGE; cx++) {
+        galaxiesInCell(cx, cy).forEach((_, index) => { if (!(cx === 0 && cy === -1)) cases.push({ kind: 'galaxy', cx, cy, index }); });
+      }
+    }
+    // Sol's system after its planets were described: the gas giants carry the palette the hook cached.
+    cases.push({ kind: 'system', star: SOL });
+
+    const run = (input) => {
+      switch (input.kind) {
+        case 'galaxy': {
+          const g = galaxiesInCell(input.cx, input.cy)[input.index];
+          return { stats: d.galaxyStats(g), card: d.galaxyDescriptor(g) };
+        }
+        case 'star': return d.starDescriptor(input.seed);
+        case 'planet': {
+          const sys = systemFor(input.star);
+          const pl = planetOf(input.star, input.planet);
+          globalThis.COSMIC_EPOCH = input.epoch;
+          try { return d.planetDescriptor(pl.P, sys, pl); } finally { delete globalThis.COSMIC_EPOCH; }
+        }
+        case 'moon': return d.moonDescriptor(planetOf(input.star, input.planet), input.moon);
+        case 'belt': return d.beltDescriptor(systemFor(input.star), input.star);
+        case 'system': return systemFor(input.star);
+        default: throw new Error(`unknown case ${input.kind}`);
+      }
+    };
+    const rows = cases.map((input) => ({ input, output: JSON.parse(JSON.stringify(run(structuredClone(input)))) }));
+    for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`descriptors: ${name} was left defined`);
+
+    return {
+      freeGlobals: {
+        _cardFactsSet: 'installCaptureHooks(): the card-facts side cache of apphooks.verbatim.js',
+        _earthNamePass: 'installCaptureHooks(): the deduped Earth name pass of apphooks.ts',
+        GAL_KIND: 'installCaptureHooks(): the 16 sprite kinds of apphooks.verbatim.js',
+        planetThumb: 'installCaptureHooks(): returns "data:image/png;base64,"; for a gas planet it first caches its palette on the planet',
+        starThumb: 'installCaptureHooks(): returns "data:image/png;base64,"',
+        galaxyThumb: 'installCaptureHooks(): returns "data:image/png;base64,"',
+        moonThumb: 'installCaptureHooks(): returns "data:image/png;base64,"',
+        cometThumb: 'installCaptureHooks(): returns "data:image/png;base64," (no case calls it)',
+        beltThumb: 'installCaptureHooks(): returns "data:image/png;base64,"',
+        GAL_SPRITES: 'installCaptureHooks(): an array of length 16, read by the current game\'s worldgen',
+        COSMIC_EPOCH: 'set to the case\'s epoch around each planet case, as the app sets it; deleted after',
+        st: 'not supplied: undefined, as in the app (the guarded read gives region boost 0)',
+        customNames: 'not supplied: read only by the verbatim describePick, which no case calls',
+      },
+      cases: rows,
+    };
+  },
 };
 
 function parseArgs(argv) {
