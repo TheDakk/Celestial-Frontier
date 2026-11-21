@@ -15,10 +15,10 @@ describe('tracked-files entry builder', () => {
     };
     expect(buildEntries(['gone.ts', 'kept.ts'], read)).toEqual([{ path: 'kept.ts', text: 'text of kept.ts' }]);
   });
-  it('keeps the text of a file with a NUL byte, one character per byte, and marks it binary', () => {
+  it('keeps the utf8 text of a file with a NUL byte, NUL bytes included, and marks it binary', () => {
     const home = ['', 'Users', 'someone', ''].join('/');
     const bytes = Buffer.concat([Buffer.from([0x61, 0, 0xc3, 0xa9]), Buffer.from(home)]);
-    expect(buildEntries(['a.bin'], () => bytes)).toEqual([{ path: 'a.bin', text: `a\0\u00c3\u00a9${home}`, binary: true }]);
+    expect(buildEntries(['a.bin'], () => bytes)).toEqual([{ path: 'a.bin', text: `a\0é${home}`, binary: true }]);
     expect(buildEntries(['t.ts'], () => Buffer.from('é'))).toEqual([{ path: 't.ts', text: 'é' }]);
   });
   it('gives the scanners a NUL file with a home path, and they report it', () => {
@@ -26,6 +26,11 @@ describe('tracked-files entry builder', () => {
     const entries = buildEntries(['packages/domain/x/src/a.ts'], () => Buffer.from(`const p = '${home}';\0`));
     expect(checkTrackedFiles(entries)).toEqual(['packages/domain/x/src/a.ts: home-directory path']);
     expect(checkPurity(entries)).toEqual(['packages/domain/x/src/a.ts: contains a NUL byte']);
+  });
+  it('gives the clean-branch check a NUL file holding a denied word with a non-ASCII letter, and it reports it', () => {
+    const entries = buildEntries(['n.ts'], () => Buffer.from('const who = "Zoë Quux";\0'));
+    expect(checkTrackedFiles(entries, ['zoë'])).toEqual(['n.ts: denied word']);
+    expect(checkTrackedFiles(entries, ['zoe'])).toEqual([]);
   });
   it('rethrows any other read error', () => {
     const denied = () => {

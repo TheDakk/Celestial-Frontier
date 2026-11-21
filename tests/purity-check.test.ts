@@ -95,6 +95,22 @@ describe('purity check', () => {
   ])('flags the host use %s, through optional chaining, brackets or a canvas constructor', (text, reason) => {
     expect(run(text)).toEqual([`${P}: ${reason}`]);
   });
+  it.each([
+    'const x = globalThis.window.x;',
+    'const x = self.window.x;',
+    'const x = globalThis?.window;',
+    'const w = globalThis.window',
+  ])('flags the page window reached through the global object: %s, in domain and scene src', (text) => {
+    for (const path of [P, 'packages/scene/src/a.ts']) expect(run(text, path)).toEqual([`${path}: uses window`]);
+  });
+  it.each([
+    'const x = state.window.x;',
+    'const x = this.window[0];',
+    'const x = myself.window.x;',
+    'const x = globalThis.windowSize;',
+  ])('passes %s, which is not the page window', (text) => {
+    for (const path of [P, 'packages/scene/src/a.ts']) expect(run(text, path)).toEqual([]);
+  });
   it('passes a field that is merely named window', () => {
     expect(run('const w = state.window.start; const v = row?.window; const u = this.window[0];')).toEqual([]);
     expect(run('const w = window.start;')).toEqual([`${P}: uses window`]);

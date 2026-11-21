@@ -1,5 +1,5 @@
 { "name": "@cf/persistence", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Phase 2 (plan §19/§20): storage repository with transaction recovery, the v1.8.9 localStorage importer seam, and save DTOs. App-side package — may touch storage APIs; the domain no-DOM lint does not cover it by design.",
+  "description": "Phase 2 (plan §19/§20): storage repository with transaction recovery, the v1.8.9 localStorage importer seam, and save DTOs. App-side package — may touch storage APIs; the page rules of the purity check do not cover it by design (its clock, random and art-import rules do).",
   "exports": { ".": "./src/index.ts" },
   "dependencies": { "@cf/domain-acquisition": "*", "@cf/domain-combatcore": "*", "@cf/domain-genome": "*", "@cf/domain-loot": "*", "@cf/domain-opportunity": "*", "@cf/domain-progression": "*", "@cf/domain-sessionrng": "*", "@cf/domain-strays": "*", "@cf/scene": "*" },
   "devDependencies": { "@cf/domain-worldconfig": "*", "@cf/domain-worldgen": "*" } }

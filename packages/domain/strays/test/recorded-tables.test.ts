@@ -29,7 +29,6 @@ interface TablesFixture {
   decode: Array<{ code: string; decoded: unknown }>;
 }
 type Section = Exclude<keyof TablesFixture, 'freeGlobals'>;
-const SECTIONS: Section[] = ['tables', 'regionAt', 'gradeCapAt', 'ringGrade', 'biomeFor', 'encode', 'decode'];
 
 const fixture = JSON.parse(
   readFileSync(new URL('../../../../fixtures/current/strays-tables.json', import.meta.url), 'utf8'),

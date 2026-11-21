@@ -28,6 +28,7 @@ const DOMAIN_USES = [
   ...FORBIDDEN_USES,
   [/\bdocument\s*(?:\?\.|\.|\[)/, 'uses document'],
   [/(?<![.\w$])window\s*(?:\?\.|\.|\[)/, 'uses window'],
+  [/\b(?:globalThis|self)\s*(?:\?\.|\.)\s*window\b/, 'uses window'],
   [/\bgetContext\s*(?:\?\.)?\(/, 'uses a canvas'],
   [/\bOffscreenCanvas\b/, 'uses a canvas'],
 ];
