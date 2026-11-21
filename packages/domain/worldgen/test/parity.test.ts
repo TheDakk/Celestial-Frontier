@@ -4,6 +4,7 @@ import { loadFixture, checkGenerator, canon } from '../../../../tests/support/pa
 import galaxies from '../../../../fixtures/current/galaxies.json' with { type: 'json' };
 import { probeRaw } from '../../../../tests/support/baseline.js';
 import { GALAXY_SPRITE_COUNT, galaxiesInCell, galaxyProfile, galaxyWormhole, starsInCell, fineStarsInCell, systemFor, supernovaSites } from '@cf/domain-worldgen';
+import { slimGal } from '@cf/domain-descriptors';
 
 const declarationSource = readFileSync(
   new URL('../src/worldgen.verbatim.d.ts', import.meta.url),
@@ -58,6 +59,29 @@ describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () =>
     expect(r.mismatches, r.mismatches.map((m) => `seed[${m.i}]=${m.seed}`).join(', ')).toEqual([]);
     expect(r.rollupOk).toBe(true);
     expect(r.cases).toBe(1000);
+  });
+  it('galaxiesInCell + slimGal probe', () => {
+    const cells = [galaxiesInCell(0, 0), galaxiesInCell(1, -2), galaxiesInCell(-3, 5)];
+    expect(canon(cells.map((arr) => arr.map((g) => slimGal(g))))).toBe(probeRaw('galaxiesInCell'));
+    for (const cell of cells) {
+      const web: number = cell.web;
+      expect(web).toBe(cell.web);
+      expect(cellWebContract(cell)).toEqual({ ok: true, diagnostic: '' });
+    }
+    expect(galaxiesInCell(0, 0)).toBe(cells[0]);
+    expect(cellWebContract(galaxiesInCell(0, 0))).toEqual({ ok: true, diagnostic: '' });
+
+    /* Permanent instrument controls: array spread drops the custom property,
+       and a non-finite clone proves the validator is not merely checking for
+       property presence. Never mutate the memoized real arrays. */
+    expect(cellWebContract([...cells[0]!])).toEqual({ ok: false, diagnostic: 'missing own web metadata' });
+    const nonFinite = [...cells[0]!] as unknown[] & { web: number };
+    nonFinite.web = Number.NaN;
+    expect(cellWebContract(nonFinite)).toEqual({ ok: false, diagnostic: 'web is not finite' });
+    const outOfRange = [...cells[0]!] as unknown[] & { web: number };
+    outOfRange.web = 2;
+    expect(cellWebContract(outOfRange)).toEqual({ ok: false, diagnostic: 'web is outside [0,1]' });
+    expect(cellWebContract({ web: 0.5 })).toEqual({ ok: false, diagnostic: 'not an array' });
   });
   it('galaxyProfile probe', () => {
     expect(canon([999, 31337, 12].map((s) => galaxyProfile(s)))).toBe(probeRaw('galaxyProfile'));
