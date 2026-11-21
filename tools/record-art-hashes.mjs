@@ -66,7 +66,9 @@ for (const [[i, a], [j, b]] of [[kaumFauna[0], kaumFauna[1]], [kaumFauna[2], kau
 // Extremophiles: a medium quadruped with the marker set, movement genes reaching both swimming entries (1, 2; 10.6 and
 // 10 drift to 1) and land entries (0, 4; -1 wraps to 8).
 const extremeBase = { ...makeGenome(61, 'fauna', 1), size: 2, body: 0, x: 1 };
-for (const loco of [0, 1, 2, 4, 10.6, -1]) specs.push([`extremophile loco ${loco}`, { ...extremeBase, loco }, REST]);
+for (const loco of [0, 1, 2, 4, 10.6, -1]) specs.push([`extremophile loco ${loco}`, { ...extremeBase, loco }, BOTH]);
+// Aerial flora: a flora genome with the game's air-flora marker (af), whose form reads the aerial table.
+specs.push(['aerial flora', { ...makeGenome(62, 'flora', 1), af: 1 }, REST]);
 
 const catalogue = testCatalogue();
 const entries = [];

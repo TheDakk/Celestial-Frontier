@@ -45,13 +45,16 @@ const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v])
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
 const NO_LIMBS = LIMB_COUNTS.indexOf(0);
+/** The fewest pixels a requested part must show; a part that draws fewer (a one-pixel eye) must show all of them. */
+export const HIDDEN_MIN = 4;
 
 export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind; every pose the scaffold defines. ' +
   'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs): every head kind with no tail at its nine shifts, ' +
   'and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
-  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts).';
+  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts). ' +
+  'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures.';
 
 const countBy = (items, key) => {
   const out = {};
@@ -157,6 +160,99 @@ export function detachedSlots(buffer) {
   return Object.keys(SLOT_LABEL).filter((slot) => off.has(slot));
 }
 
+/** The drawn (non-zero) pixel count of a part's rest frame (else its first frame); 0 when it has none. */
+function drawnCount(part) {
+  const frame = Object.hasOwn(part.frames, 'rest') ? part.frames['rest'] : part.frames[Object.keys(part.frames)[0]];
+  return frame === undefined ? 0 : frame.pixels.reduce((n, v) => (v === 0 ? n : n + 1), 0);
+}
+
+/**
+ * A copy of the catalogue and recipe in which the recipe's part number k (from 0) has its own part id, drawn by
+ * `paint(k, part)`: a function from a pixel value to the value drawn (a blank part keeps its place, so the parts that
+ * hang from it still land where they do). Frames are made once per id, part number and kind of painting.
+ */
+function numberedCopy(recipe, catalogue, cache, kind, paint) {
+  const parts = new Map();
+  const numbered = recipe.parts.map((rp, k) => {
+    const part = catalogue.parts.get(rp.partId);
+    const map = part === undefined ? undefined : paint(k, part);
+    const id = `${rp.partId}#${k}#${map === undefined ? 'real' : kind}`;
+    if (part !== undefined) {
+      let made = cache.get(id);
+      if (made === undefined) {
+        const frames = Object.create(null);
+        for (const name of Object.keys(part.frames)) {
+          const f = part.frames[name];
+          frames[name] = map === undefined ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 ? 0 : map(v))) };
+        }
+        made = { ...part, id, frames };
+        cache.set(id, made);
+      }
+      parts.set(id, made);
+    }
+    return { ...rp, partId: id };
+  });
+  return { recipe: { ...recipe, parts: numbered }, catalogue: { ...catalogue, parts } };
+}
+
+/**
+ * Parts the recipe requests that show fewer than HIDDEN_MIN visible pixels (or fewer than they draw, when that is
+ * less) in the unfinished picture: the picture compared with the same recipe minus that part, pixel by pixel. The
+ * unfinished picture is used so that the outline a part adds is not counted. Returns [{ partId, visible, needed }].
+ *
+ * The same answer, with fewer pictures: removing part k changes only pixels where k is drawn last, so a part on top
+ * at fewer than `needed` pixels is hidden. A pixel where k is on top and is the only part drawn there always changes.
+ * For the other parts still in doubt (set D), one picture with every part of D blanked gives what lies under k
+ * wherever no other part of D lies under it; only a part still short of `needed` after that is assembled without it.
+ */
+function hiddenParts(recipe, pose, catalogue, cache) {
+  const n = recipe.parts.length;
+  const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.min(HIDDEN_MIN, drawnCount(part)); });
+  const label = (k) => () => k + 1;
+  const all = numberedCopy(recipe, catalogue, cache, 'n', (k) => label(k));
+  const top = assemble(all.recipe, pose, all.catalogue).buffer.pixels;
+  const bottom = assemble({ ...all.recipe, parts: [...all.recipe.parts].reverse() }, pose, all.catalogue).buffer.pixels;
+  const onTop = new Int32Array(n + 1);
+  const alone = new Int32Array(n + 1);
+  for (let i = 0; i < top.length; i++) {
+    const t = top[i];
+    if (t === 0) continue;
+    onTop[t]++;
+    if (t === bottom[i]) alone[t]++;
+  }
+  const doubt = new Uint8Array(n + 1);
+  let doubts = 0;
+  for (let k = 0; k < n; k++) if (needed[k] > 0 && alone[k + 1] < needed[k] && onTop[k + 1] >= needed[k]) { doubt[k + 1] = 1; doubts++; }
+
+  const sure = new Int32Array(n + 1);
+  let full;
+  if (doubts > 0) {
+    full = assemble(recipe, pose, catalogue).buffer.pixels;
+    const blank = () => 0;
+    const under = numberedCopy(recipe, catalogue, cache, 'b', (k) => (doubt[k + 1] === 1 ? blank : undefined));
+    const beneath = assemble(under.recipe, pose, under.catalogue).buffer.pixels;
+    const onlyDoubt = numberedCopy(recipe, catalogue, cache, 'd', (k) => (doubt[k + 1] === 1 ? label(k) : blank));
+    const lowestDoubt = assemble({ ...onlyDoubt.recipe, parts: [...onlyDoubt.recipe.parts].reverse() }, pose, onlyDoubt.catalogue).buffer.pixels;
+    for (let i = 0; i < top.length; i++) {
+      const t = top[i];
+      if (t !== 0 && doubt[t] === 1 && lowestDoubt[i] === t && full[i] !== beneath[i]) sure[t]++;
+    }
+  }
+
+  const hidden = [];
+  for (let k = 0; k < n; k++) {
+    if (needed[k] === 0 || alone[k + 1] >= needed[k] || sure[k + 1] >= needed[k]) continue;
+    let visible = 0;
+    if (onTop[k + 1] > 0) {
+      full ??= assemble(recipe, pose, catalogue).buffer.pixels;
+      const without = assemble({ ...recipe, parts: recipe.parts.filter((_, i) => i !== k) }, pose, catalogue).buffer.pixels;
+      for (let i = 0; i < full.length && visible < needed[k]; i++) if (full[i] !== without[i]) visible++;
+    }
+    if (visible < needed[k]) hidden.push({ partId: recipe.parts[k].partId, visible, needed: needed[k] });
+  }
+  return hidden;
+}
+
 /** For an unfinished picture: a drawn pixel on the border or next to it, where the finished picture's outline would touch the edge. */
 function nearEdge({ w, h, pixels }) {
   for (let x = 0; x < w; x++) for (const y of [0, 1, h - 2, h - 1]) if (pixels[y * w + x] !== 0) return true;
@@ -246,7 +342,7 @@ export function checkPack(text) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], structure: [], unreachable: [], failures: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -263,6 +359,8 @@ export function checkPack(text) {
   const gapCounts = new Map();
   const edge = [];
   const detached = [];
+  const hidden = [];
+  const numberedFrames = new Map();
   const unreachable = [];
   const failed = new Set();
   let composed = 0;
@@ -298,11 +396,16 @@ export function checkPack(text) {
         if (touchesEdge(out.buffer)) edge.push(where);
         const own = detachedSlots(assemble(recipe, pose, labels).buffer);
         if (own) detached.push({ ...where, shift: recipe.shift, off: own });
+        const showing = (shifted) => {
+          for (const h of hiddenParts(shifted, pose, catalogue, numberedFrames)) hidden.push({ ...where, shift: shifted.shift, ...h });
+        };
+        showing(recipe);
         for (const shift of shiftPairs) {
           const picture = assemble({ ...recipe, shift }, pose, labels).buffer;
           if (nearEdge(picture)) edge.push({ ...where, shift });
           const off = detachedSlots(picture);
           if (off) detached.push({ ...where, shift, off });
+          showing({ ...recipe, shift });
         }
       }
     };
@@ -354,8 +457,8 @@ export function checkPack(text) {
   const gaps = [...gapCounts].map(([gap, count]) => ({ gap, count, error: !gap.startsWith('variant:') }));
   const structure = structureProblems(catalogue);
   const failures = [...failed];
-  const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, structure, unreachable, failures };
+  const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
+  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -404,6 +507,11 @@ export function formatReport(report) {
     const label = slot === 'head' || slot === 'tail' ? `poses with ${slot} shifts` : 'poses';
     const first = items[0];
     lines.push(`error: detached ${key} in ${items.length} creature poses (${label}: ${perPose.join('; ')}), e.g. ${example(first)}`);
+  }
+  for (const [key, items] of group(report.hidden, (d) => [`${d.partId} on ${d.scaffold}`])) {
+    const perPose = [...group(items, (d) => [d.pose])].map(([pose, cases]) => `${pose} [${unique(cases.map((d) => shiftText(d.shift))).length} shifts]`);
+    const first = items[0];
+    lines.push(`error: hidden part ${key} in ${items.length} creature poses (${perPose.join('; ')}), e.g. ${example(first)}: shows ${first.visible} of ${first.needed} pixels`);
   }
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);

@@ -10,7 +10,8 @@ const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 const PLACEHOLDER = new URL('../packages/art-testparts/src/quadruped.txt', import.meta.url);
 
 // A small pack that is right in every way the tool checks: the head and tail overlap the torso by two columns,
-// so a shift of one pixel never opens a gap; legs overlap its bottom row; eyes sit inside the head.
+// so a shift of one pixel never opens a gap; legs overlap its bottom row and are long enough that each shows at least
+// four pixels beside its neighbours; eyes sit inside the head.
 const PALETTE = `palette
 colour 0 000000
 colour 1 445566
@@ -21,7 +22,7 @@ glow 1
 `;
 const PARTS = `
 part quadruped/torso/sturdy/small/v0
-frame rest anchor=0,0 attach=head:10,1,tail:1,1,back:6,-1,far0:1,5,far1:4,5,far2:7,5,far3:10,5,near0:2,5,near1:5,5,near2:8,5,near3:9,5
+frame rest anchor=0,0 attach=head:10,1,tail:1,1,back:6,-1,far0:0,5,far1:3,5,far2:6,5,far3:9,5,near0:1,5,near1:4,5,near2:7,5,near3:10,5
 222222222222
 222222222222
 222222222222
@@ -46,10 +47,16 @@ part quadruped/farLimbs/leg/small/v0
 frame rest anchor=0,0
 22
 22
+22
+22
+22
 11
 
 part quadruped/nearLimbs/leg/small/v0
 frame rest anchor=0,0
+33
+33
+33
 33
 33
 11
@@ -115,7 +122,7 @@ describe('checkPack on planted faults', () => {
   });
 
   it('a missing attach point on a torso frame or a head frame', () => {
-    const torso = checkPack(planted(',far3:10,5', ''));
+    const torso = checkPack(planted(',far3:9,5', ''));
     expect(torso.structure).toEqual(['part quadruped/torso/sturdy/small/v0 frame rest: missing attach point far3']);
     expect(torso.gaps.filter((g) => g.error).map((g) => g.gap)).toEqual(['attach:far3']);
     expect(torso.ok).toBe(false);
@@ -153,6 +160,20 @@ describe('checkPack on planted faults', () => {
     const r = checkPack(planted('attach=head:10,1,', 'attach=head:12,1,'));
     const shifts = new Set(r.detached.map((d) => d.shift.head.join(',')));
     expect(shifts).toEqual(new Set(['1,-1', '1,0', '1,1']));
+  });
+
+  it('a tail drawn wholly behind the torso is a hidden part, named with its genome, pose and shift', () => {
+    // The tail (5 wide, 2 high) hangs from x 5 of a 12-wide, 6-high torso: drawn first, it is covered in every pose.
+    const r = checkPack(planted('attach=head:10,1,tail:1,1,', 'attach=head:10,1,tail:5,1,'));
+    expect(r.detached).toEqual([]);
+    expect(r.hidden.length).toBeGreaterThan(0);
+    expect(new Set(r.hidden.map((d) => `${d.scaffold} ${d.partId} ${d.visible}`))).toEqual(new Set(['quadruped/sturdy/small quadruped/tail/t1/small/v0 0']));
+    expect(new Set(r.hidden.map((d) => d.pose))).toEqual(new Set(['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint']));
+    expect(r.hidden.every((d) => d.genome['tail'] === 1 && d.needed === 4)).toBe(true);
+    const lines = errorsOf(r);
+    expect(lines).toHaveLength(1);
+    expect(lines[0]).toMatch(/^error: hidden part quadruped\/tail\/t1\/small\/v0 on quadruped\/sturdy\/small in \d+ creature poses \(.*\), e\.g\. body 0 loco 0 size 0 head 0 tail 1 limbs \d eyes \d pose \w+ shift head -?\d,-?\d tail -?\d,-?\d: shows 0 of 4 pixels$/);
+    expect(r.ok).toBe(false);
   });
 
   it('a missing pose and a strike pose with no contact point', () => {
@@ -219,6 +240,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
     expect(r.failures).toEqual([]);
     expect(r.edge).toEqual([]);
     expect(r.detached).toEqual([]);
+    expect(r.hidden).toEqual([]);
     expect(r.gaps.filter((g) => g.error)).toEqual([]);
     expect(errorsOf(r)).toEqual([]);
     expect(r.ok).toBe(true);
@@ -226,7 +248,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
   });
 
   it('still reports a head drawn flush against the torso again, on that scaffold only, at the shifts that open the gap', () => {
-    const flush = text.replace('part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:31,3,', 'part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:36,3,');
+    const flush = text.replace('part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:32,3,', 'part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:36,3,');
     expect(flush).not.toBe(text);
     const bad = checkPack(flush);
     expect(bad.ok).toBe(false);

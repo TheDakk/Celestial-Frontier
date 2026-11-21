@@ -20,7 +20,7 @@ describe('art golden hashes', () => {
   it('records the current renderer version, the test catalogue and the expected entry count', () => {
     expect(fixture.rendererVersion).toBe(RENDERER_VERSION);
     expect(fixture.catalogue).toBe('art-testparts');
-    expect(fixture.entries).toHaveLength(614);
+    expect(fixture.entries).toHaveLength(621);
   });
 
   it('has at least 150 entries that compose a real quadruped', () => {
@@ -33,6 +33,17 @@ describe('art golden hashes', () => {
       expect(entries.map((e) => e.pose)).toEqual(['rest', 'strike']);
       for (const e of entries) expect(buildRecipe(e.genome, [], catalogue).tier).toBe('guardian');
     }
+  });
+
+  it('records the six extremophiles at rest and strike, and an aerial flora at rest', () => {
+    const extremophiles = fixture.entries.filter((e) => e.label.startsWith('extremophile '));
+    expect(extremophiles).toHaveLength(12);
+    expect(extremophiles.map((e) => e.pose)).toEqual(Array.from({ length: 6 }, () => ['rest', 'strike']).flat());
+    expect(extremophiles.every((e) => e.genome['x'] === 1)).toBe(true);
+    const aerial = byLabel('aerial flora');
+    expect(aerial.map((e) => e.pose)).toEqual(['rest']);
+    expect(aerial[0]!.genome['af']).toBe(1);
+    expect(aerial[0]!.genome['kingdom']).toBe('flora');
   });
 
   it('holds a gene value outside its table, a non-integer number and a bred genome with parents', () => {

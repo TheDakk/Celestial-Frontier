@@ -225,3 +225,39 @@ describe('placeholder joins hold under every head and tail shift', () => {
     }
   });
 });
+
+describe('placeholder heads and tails can be seen', () => {
+  const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y] as const));
+  const FULL_LIMBS = 3; // eight legs: the most parts that could cover a tail
+  /** Pixels of the composed picture that change when the recipe's `slot` part is removed, at that slot's shift. */
+  const showing = (recipe: Recipe, slot: 'head' | 'tail', s: readonly [number, number], pose: string): number => {
+    const shifted = { ...recipe, shift: { ...recipe.shift, [slot]: s } };
+    const a = compose(shifted, pose, cat).buffer.pixels;
+    const b = compose({ ...shifted, parts: shifted.parts.filter((p) => p.slot !== slot) }, pose, cat).buffer.pixels;
+    let d = 0;
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) d++;
+    return d;
+  };
+
+  it('shows every tail kind by at least 6 pixels in every pose at each of its nine shifts, on every torso type', () => {
+    for (const body of QUADRUPED_BODIES) for (let tail = 1; tail < 7; tail++) {
+      const recipe = buildRecipe(genome(body, 3, tail, FULL_LIMBS, 3), [], cat);
+      expect(recipe.parts.filter((p) => p.slot === 'tail')).toHaveLength(1);
+      for (const pose of POSES) for (const s of SHIFTS) {
+        const d = showing(recipe, 'tail', s, pose);
+        if (d < 6) expect.fail(`body ${body} tail ${tail} ${pose} tail shift ${s}: ${d} pixels`);
+      }
+    }
+  });
+
+  it('shows every head kind by at least 6 pixels in every pose at each of its nine shifts, on every torso type', () => {
+    for (const body of QUADRUPED_BODIES) for (let head = 0; head < 10; head++) {
+      const recipe = buildRecipe(genome(body, head, 4, FULL_LIMBS, 3), [], cat);
+      expect(recipe.parts.filter((p) => p.slot === 'head')).toHaveLength(1);
+      for (const pose of POSES) for (const s of SHIFTS) {
+        const d = showing(recipe, 'head', s, pose);
+        if (d < 6) expect.fail(`body ${body} head ${head} ${pose} head shift ${s}: ${d} pixels`);
+      }
+    }
+  });
+});
