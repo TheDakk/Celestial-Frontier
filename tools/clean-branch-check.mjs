@@ -1,11 +1,20 @@
-import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { readRepoFiles } from './tracked-files.mjs';
 
-const MEDIA = /\.(png|jpe?g|gif|webp|mp4|mov|psd)$/i;
+const MEDIA = /\.(png|jpe?g|gif|webp|mp4|mov|psd|svg|bmp|ico|tiff?|avif|heic|webm|pdf|zip)$/i;
+const DOCUMENT = /\.(md|markdown|mdx|rst|docx)$/i;
 const ALLOWED_DOCS = new Set(['README.md', 'CLAUDE.md', 'AGENTS.md']);
 // Character classes keep this source free of the literal text it forbids.
-const HOME_PATTERNS = [/[/]Users[/]/, /[/]home[/][^/\s]+[/]/, /C:[\\]Users[\\]/];
+const HOME_PATTERNS = [
+  /[/]Users[/]/,
+  // a name character must follow, so the bare word "home" and "/home/" alone stay allowed
+  /[/]home[/][\w.-]/,
+  // one or more backslashes between segments also catches the escaped form in JS/JSON source
+  /\b[a-z]:[\\]+users[\\]+/i,
+];
+// A local part, "@", then dotted labels ending in a letters-only top-level label. Scoped
+// package names (@scope/name) and version specifiers (name@1.2.3) never match.
+const EMAIL = /[\w.%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}\b/i;
 
 function escapeRegExp(word) {
   return word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -33,23 +42,16 @@ export function checkTrackedFiles(files, denyWords = []) {
   const problems = [];
   for (const { path, text } of files) {
     if (MEDIA.test(path)) problems.push(`${path}: image or media file on the code branch`);
-    if (/\.md$/i.test(path) && !ALLOWED_DOCS.has(path)) problems.push(`${path}: document on the code branch`);
+    if (DOCUMENT.test(path) && !ALLOWED_DOCS.has(path)) problems.push(`${path}: document on the code branch`);
     if (text !== null && HOME_PATTERNS.some((re) => re.test(text))) problems.push(`${path}: home-directory path`);
+    if (text !== null && EMAIL.test(text)) problems.push(`${path}: email address`);
     if (text !== null && deny.some((re) => re.test(text))) problems.push(`${path}: denied word`);
   }
   return problems;
 }
 
-function readTracked() {
-  const paths = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
-  return paths.map((path) => {
-    const buf = readFileSync(path);
-    return { path, text: buf.includes(0) ? null : buf.toString('utf8') };
-  });
-}
-
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const problems = checkTrackedFiles(readTracked(), parseDenyWords(process.env.CF_DENY_WORDS));
+  const problems = checkTrackedFiles(readRepoFiles(), parseDenyWords(process.env.CF_DENY_WORDS));
   for (const p of problems) console.error(p);
   if (problems.length > 0) process.exit(1);
   console.log('clean-branch check: ok');

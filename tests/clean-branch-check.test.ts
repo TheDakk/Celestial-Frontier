@@ -36,6 +36,63 @@ describe('clean-branch check', () => {
       'pkg/README.md: document on the code branch',
     ]);
   });
+  it.each(['svg', 'bmp', 'ico', 'tif', 'tiff', 'avif', 'heic', 'webm', 'pdf', 'zip', 'PNG', 'psd'])(
+    'names a .%s file as media',
+    (ext) => {
+      expect(checkTrackedFiles([{ path: `a/b.${ext}`, text: null }])).toEqual([`a/b.${ext}: image or media file on the code branch`]);
+    },
+  );
+  it('passes code files whose names merely contain a media word', () => {
+    expect(checkTrackedFiles([{ path: 'tools/zip.ts', text: 'x' }, { path: 'a/svg-path.ts', text: 'x' }])).toEqual([]);
+  });
+  it.each(['notes.markdown', 'docs/page.mdx', 'guide.rst', 'plan.docx', 'docs/plan.MD'])('names %s as a document', (path) => {
+    expect(checkTrackedFiles([{ path, text: null }])).toEqual([`${path}: document on the code branch`]);
+  });
+  it('passes the root documents and code files that only mention document extensions', () => {
+    expect(checkTrackedFiles([
+      { path: 'README.md', text: 'x' },
+      { path: 'CLAUDE.md', text: 'x' },
+      { path: 'AGENTS.md', text: 'x' },
+      { path: 'tools/rst.ts', text: 'const ext = ".mdx";' },
+    ])).toEqual([]);
+  });
+  it('names a linux home path with no trailing slash', () => {
+    const home = ['', 'home', 'someone'].join('/');
+    expect(checkTrackedFiles([{ path: 'a.ts', text: `cd ${home}` }, { path: 'b.ts', text: `'${home}'` }])).toEqual([
+      'a.ts: home-directory path',
+      'b.ts: home-directory path',
+    ]);
+  });
+  it('passes the bare home directory itself', () => {
+    const bare = ['', 'home', ''].join('/');
+    expect(checkTrackedFiles([{ path: 'a.ts', text: `ls ${bare}; '${bare}'; homes and home` }])).toEqual([]);
+  });
+  it('names a windows home path with escaped or repeated backslashes, any case', () => {
+    const escaped = ['C:', 'Users', 'someone'].join('\\\\');
+    const lower = ['c:', 'users', 'someone'].join('\\');
+    expect(checkTrackedFiles([{ path: 'e.json', text: `{"p":"${escaped}"}` }, { path: 'l.ts', text: lower }])).toEqual([
+      'e.json: home-directory path',
+      'l.ts: home-directory path',
+    ]);
+  });
+  it('passes windows text that is not a home path', () => {
+    const notHome = ['C:', 'Program Files', 'x'].join('\\\\');
+    expect(checkTrackedFiles([{ path: 'w.ts', text: `${notHome} and C: Users` }])).toEqual([]);
+  });
+  it('names an email address', () => {
+    const address = ['some.one', 'example.com'].join('@');
+    expect(checkTrackedFiles([{ path: 'a.ts', text: `// contact ${address}` }])).toEqual(['a.ts: email address']);
+  });
+  it('passes scoped package names and version specifiers', () => {
+    const lock = JSON.stringify({
+      packages: { 'node_modules/@types/node': { version: '26.1.2' }, 'packages/domain/rand': { name: '@cf/domain-rand' } },
+      note: 'install name@1.2.3 or @scope/pkg@4.5.6-beta.1',
+    });
+    expect(checkTrackedFiles([
+      { path: 'package-lock.json', text: lock },
+      { path: 'package.json', text: '{"devDependencies":{"@types/node":"26.1.2"}}' },
+    ])).toEqual([]);
+  });
   it('names a denied word as a whole word, case-insensitively', () => {
     const files = [
       { path: 'a.json', text: '{"note":"approved per Zorblat\'s review"}' },
