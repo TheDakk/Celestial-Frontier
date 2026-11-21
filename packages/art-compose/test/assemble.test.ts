@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
 import type { SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe } from '@cf/art-recipe';
-import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
+import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 
@@ -138,6 +138,7 @@ const ID: Record<string, string> = {
   fin: 'quadruped/back/fin/small/v0',
   norest: 'quadruped/back/norest/small/v0',
   orb: 'quadruped/glow/orb/small/v0',
+  legged: 'quadruped/torso/legged/small/v0',
 };
 
 type Spec = readonly [SlotName, number, string];
@@ -397,6 +398,27 @@ describe('assemble: gaps (i)', () => {
   });
 });
 
+describe('the frame-choice rule the composer and the checker share', () => {
+  const legged = catalogue.scaffolds.get('quadruped/legged/small')!;
+  const near = catalogue.parts.get(ID['near']!)!;
+  const torso = catalogue.parts.get(ID['torso']!)!;
+
+  it('poseEntryFor: the entry for this leg count wins, then the one with no leg count, then none', () => {
+    const both = legged.poses['both']!.entries;
+    // both: `entry nearLimbs 0 rest 0 0`, then `entry nearLimbs 0 rest 3 0 legs=2`.
+    expect(poseEntryFor(both, 'nearLimbs', 0, 2)).toBe(both[1]);
+    expect(poseEntryFor(both, 'nearLimbs', 0, 4)).toBe(both[0]);
+    expect(poseEntryFor(both, 'nearLimbs', 1, 2)).toBeUndefined();
+    expect(poseEntryFor(legged.poses['other']!.entries, 'nearLimbs', 0, 2)).toBeUndefined();
+  });
+
+  it('frameNameFor: the entry\'s frame when the part has it, else rest; rest with no entry', () => {
+    expect(frameNameFor(torso, { slot: 'torso', index: 0, frame: 'hop', dx: 0, dy: 0 })).toBe('hop');
+    expect(frameNameFor(near, { slot: 'nearLimbs', index: 0, frame: 'brace', dx: 3, dy: 0, legs: 4 })).toBe('rest');
+    expect(frameNameFor(near, undefined)).toBe('rest');
+  });
+});
+
 describe('assemble: iris', () => {
   const irisCatalogue = parseCatalogueText(HEADER + `
 part quadruped/torso/sturdy/small/v0
@@ -437,14 +459,14 @@ entry torso 0 rest 0 0
 });
 
 describe('assemble: stance by leg count', () => {
-  const stance = (legs: number, pose: string, extra: readonly Spec[] = []): { x: number; gaps: readonly string[]; frameOffset: number } => {
+  // The legged torso (origin 10,10) hangs its near legs from y 5 of the frame: each leg's top pixel lands on canvas row 15.
+  const LEG_ROW = 15;
+  const stance = (legs: number, pose: string, extra: readonly Spec[] = []): { x: number; gaps: readonly string[] } => {
     const r = assemble(recipeOf([['torso', 0, 'legged'], ['nearLimbs', 0, 'near'], ...extra], { scaffoldId: 'quadruped/legged/small', legs }), pose, catalogue);
-    const row = 15;
     let x = -1;
-    for (let i = 0; i < r.buffer.w; i++) if (at(r.buffer, i, row) === 6) { x = i; break; }
-    return { x, gaps: r.gaps, frameOffset: 0 };
+    for (let i = 0; i < r.buffer.w; i++) if (at(r.buffer, i, LEG_ROW) === 6) { x = i; break; }
+    return { x, gaps: r.gaps };
   };
-  ID['legged'] = 'quadruped/torso/legged/small/v0';
 
   it('a two-legged creature hangs its near leg from near0_2', () => {
     expect(stance(2, 'rest').x).toBe(14);
@@ -480,6 +502,39 @@ entry torso 0 rest 0 0
     const r = assemble(recipeOf([['torso', 0, 'torso'], ['nearLimbs', 0, 'near']], { legs: 2 }), 'rest', only);
     expect(at(r.buffer, 11, 11)).toBe(6);
     expect(r.gaps).toEqual([]);
+  });
+  it('only a limb takes a leg-count attach name: at two legs the head, an eye and the head feature land on their plain points', () => {
+    // head_2, eye0_2 and feature_2 each sit somewhere else; none of them is ever used.
+    const named = parseCatalogueText(HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=head:4,0,head_2:4,3
+2222
+2222
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=eye0:1,0,eye0_2:2,0,feature:0,-1,feature_2:2,-1
+333
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+
+part quadruped/headFeature/horn/small/v0
+frame rest anchor=0,0
+c
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`);
+    const parts: Spec[] = [['torso', 0, 'torso'], ['head', 0, 'head'], ['headFeature', 0, 'horn'], ['eyes', 0, 'eye']];
+    // The head at the plain head point (14,10), the eye at its eye0 (15,10), the feature at its plain feature point (14,9).
+    const plain = ['14,9=12', ...TORSO.slice(0, 4), '14,10=3', '15,10=13', '16,10=3', ...TORSO.slice(4)];
+    for (const legs of [2, 4]) {
+      const r = assemble(recipeOf(parts, { legs }), 'rest', named);
+      expect(drawn(r.buffer), `legs ${legs}`).toEqual(plain);
+      expect(r.gaps).toEqual([]);
+    }
   });
 });
 
@@ -643,7 +698,7 @@ entry torso 0 hop 0 0
       ['head', 0, 'quadruped/head/h1/small/v0', undefined],
       ['eyes', 0, 'quadruped/eyes/eye/small/v0', { offset: 0, rolls: ZERO }],
     ], 1), 'rest', marked);
-    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 5, shown as 17.
+    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 6, shown as 18.
     expect([at(r.buffer, 15, 10), at(r.buffer, 16, 10), at(r.buffer, 17, 10)]).toEqual([17, 13, 20]);
     expect(r.gaps).toEqual([]);
   });

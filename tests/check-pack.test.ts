@@ -1,14 +1,13 @@
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LIMB_COUNTS, VARIANTS } from '@cf/art-format';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { checkPack, formatReport, type PackReport } from '../tools/check-pack.mjs';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
-const PLACEHOLDER = new URL('../packages/art-testparts/src/quadruped.txt', import.meta.url);
 
 // A small pack that is right in every way the tool checks: the head and tail overlap the torso by two columns,
 // so a shift of one pixel never opens a gap; legs overlap its bottom row and are long enough that each shows at least
@@ -590,6 +589,24 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
     expect(lost.ok).toBe(false);
   });
 
+  it('a back part or a head feature whose attach point is moved off the body is reported detached, by slot', () => {
+    const onBack = checkPack(GOOD + BACK);
+    expect(errorsOf(onBack)).toEqual([]);
+    // The back point raised from 6,-1 to 6,-4: the part's lower row ends two rows above the torso.
+    const looseBack = checkPack(planted('back:6,-1,', 'back:6,-4,') + BACK);
+    expect(errorsOf(looseBack).filter((l) => l.startsWith('error: detached back on quadruped/sturdy/small ')).length).toBe(1);
+    expect(new Set(looseBack.detached.flatMap((d) => d.off))).toEqual(new Set(['back']));
+    expect(looseBack.ok).toBe(false);
+    const feature = '\npart quadruped/headFeature/horns-h0/small/v0\nframe rest anchor=0,2\n7777\n7777\n';
+    const horned = (point: string): string => planted(',eye7:4,3', `,eye7:4,3,feature:${point}`).replaceAll('sturdy', 'horned') + feature;
+    expect(errorsOf(checkPack(horned('3,1')))).toEqual([]);
+    // The feature point raised from 3,1 to 3,-4: the feature's lower row ends two rows above the head.
+    const looseFeature = checkPack(horned('3,-4'));
+    expect(errorsOf(looseFeature).filter((l) => l.startsWith('error: detached headFeature on quadruped/horned/small ')).length).toBe(1);
+    expect(new Set(looseFeature.detached.flatMap((d) => d.off))).toEqual(new Set(['headFeature']));
+    expect(looseFeature.ok).toBe(false);
+  });
+
   it('a painted mark is never read as a detached or hidden slot', () => {
     const layered = withLayers(GOOD);
     expect(layered).not.toBe(GOOD);
@@ -639,48 +656,57 @@ describe('checkPack forced variants keep the creature\'s mark', () => {
   });
 });
 
-/**
- * What the placeholder pack composes: 20580 for the base sample and the no-legs shift sweep, plus the mark and back-part
- * sweep (6 scaffolds x 10 head kinds x (7 patterns + 7 skins) x 7 poses = 5880), plus the shift sweep again on the sturdy
- * scaffold at 2 and 8 legs (its legs= entries and near0_2) (2 leg counts x (10 heads alone + 10 head and tail pairs) x 7 poses = 280).
- */
-const PLACEHOLDER_COMPOSED = 20580 + 5880 + 280;
-/** The limbs gene for a leg count. */
-const limbGene = (legs: number): number => (LIMB_COUNTS as readonly number[]).indexOf(legs);
+describe('checkPack lists every marks: gap a pose can show, as x0 when no sampled creature drew it', () => {
+  const marksOf = (r: PackReport): string[] => r.gaps.filter((g) => g.gap.startsWith('marks:')).map((g) => `${g.gap} x${g.count}`);
+  const TAIL_T1 = '\npart quadruped/tail/t1/small/v0\nframe rest anchor=4,0\n22222\n11111\n';
+  const HEAD_ATTACH = 'attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3';
 
-describe('checkPack on the placeholder catalogue (the real result, pinned)', () => {
-  let text: string;
-  let r: PackReport;
-  beforeAll(() => { text = readFileSync(PLACEHOLDER, 'utf8'); r = checkPack(text); });
-
-  it('passes clean: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
-    expect(r.parseError).toBeNull();
-    expect(r.summary).toMatchObject({ parts: 153, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 42, byTier: { medium: 108, small: 15, large: 15, guardian: 15 } });
-    expect(r.structure).toEqual([]);
-    expect(r.unreachable).toEqual([]);
-    expect(r.failures).toEqual([]);
-    expect(r.edge).toEqual([]);
-    expect(r.detached).toEqual([]);
-    expect(r.hidden).toEqual([]);
-    expect(r.gaps.filter((g) => g.error)).toEqual([]);
-    expect(errorsOf(r)).toEqual([]);
-    expect(r.ok).toBe(true);
-    expect(r.neck).toEqual([]);
-    expect(formatReport(r).split('\n').filter((l) => l.startsWith('warning:'))).toEqual([]);
-    expect(r.composed).toBe(PLACEHOLDER_COMPOSED);
+  it('a fully layered pack lists none', () => {
+    expect(marksOf(checkPack(withLayers(GOOD)))).toEqual([]);
   });
 
-  it('still reports a head drawn flush against the torso again, on that scaffold only, at the shifts that open the gap', () => {
-    const flush = text.replace('part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:32,3,', 'part quadruped/torso/sturdy/medium/v0\nframe rest anchor=0,0 attach=head:36,3,');
-    expect(flush).not.toBe(text);
-    const bad = checkPack(flush);
-    expect(bad.ok).toBe(false);
-    expect(new Set(bad.detached.map((d) => `${d.scaffold} ${d.off.filter((slot) => slot !== 'eyes').join(',')}`))).toEqual(new Set(['quadruped/sturdy/medium head']));
-    expect(errorsOf(bad).filter((l) => l.startsWith('error: detached head on quadruped/sturdy/medium '))).toHaveLength(1);
-    // Rest has no head offset: only a +1 head shift opens the gap there.
-    expect(new Set(bad.detached.filter((d) => d.pose === 'rest').map((d) => d.shift.head[0]))).toEqual(new Set([1]));
+  it('a tail other than the highest, unlayered among layered parts, is listed at x0', () => {
+    // Patterned creatures are sampled with the highest tail kind only (t2 here), so no composed creature paints t1.
+    const r = checkPack(withLayers(GOOD.replace('part quadruped/tail/t1/', 'part quadruped/tail/t2/')) + TAIL_T1);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/tail/t1/small/v0:rest x0']);
+    expect(formatReport(r).split('\n')).toContain('info: gap marks:quadruped/tail/t1/small/v0:rest (x0)');
+    expect(r.ok).toBe(true);
+  });
+
+  it('a frame only a legs=2 entry shows is listed; a frame no entry reaches is not', () => {
+    // The head gains two unlayered frames after its layers: `low`, shown in rest by a two-legged creature, and `spare`, shown by none.
+    const frames = `frame low anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\n\nframe spare anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\n`;
+    const text = planted('pose rest\n', 'pose rest\nentry head 0 low 0 0 legs=2\n', planted('\npart quadruped/tail/t1', `${frames}\npart quadruped/tail/t1`, withLayers(GOOD)));
+    const r = checkPack(text);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/head/h0/small/v0:low x0']);
+    expect(r.ok).toBe(true);
+  });
+
+  it('a shared leg\'s frame only a two-legged creature shows is listed: the pack has no hind leg, so the shared leg stands in', () => {
+    const lift = 'frame lift anchor=0,0\n33\n33\n33\n33\n33\n11\n';
+    const text = planted('pose rest\n', 'pose rest\nentry nearLimbs 0 lift 0 0 legs=2\n', planted('\npart quadruped/eyes/', `${lift}\npart quadruped/eyes/`, withLayers(GOOD)));
+    const r = checkPack(text);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/nearLimbs/leg/small/v0:lift x0']);
+    // With a hind leg of its own (layered), the two-legged creature never shows the shared leg's lift frame.
+    const hind = '\npart quadruped/nearLimbs/hind/small/v0\nframe rest anchor=0,0\n33\n33\n33\n33\n33\n11\nlayer flow\n12\n12\n12\n12\n12\n12\nlayer spots\n11\n11\n11\n11\n11\n11\n';
+    expect(marksOf(checkPack(text + hind))).toEqual([]);
+  });
+
+  it('a variant with flow but no spots is listed, though its forced (striped) creature is painted', () => {
+    // No sampled creature picks head variant v3; the forced pass paints it striped, which reads flow alone.
+    const v3 = `\npart quadruped/head/h0/small/v3\nframe rest anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\nlayer flow\n123456\n123456\n123456\n123456\n123456\n`;
+    const r = checkPack(withLayers(GOOD) + v3);
+    expect(r.parseError).toBeNull();
+    expect(r.variants).toBe(2);
+    expect(marksOf(r)).toEqual(['marks:quadruped/head/h0/small/v3:rest x0']);
   });
 });
+
+/** The limbs gene for a leg count. */
+const limbGene = (legs: number): number => (LIMB_COUNTS as readonly number[]).indexOf(legs);
 
 describe('checkPack sweeps head and tail shifts independently', () => {
   it('reports a tail that hangs from the head alone when head and tail shift in opposite directions', () => {

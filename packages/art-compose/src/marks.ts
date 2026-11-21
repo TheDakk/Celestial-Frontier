@@ -29,7 +29,8 @@ export function paintMarks(frame: PartFrame, pattern: PatternName, strength: 0 |
   if (hand !== undefined) {
     for (let i = 0; i < out.length; i++) {
       const v = hand[i] ?? 0;
-      if (v !== 0 && markable(frame.pixels[i] ?? 0)) out[i] = v;
+      // Only a ramp value 1 to 12 is written: a frame built in code could hold any value in its hand layer.
+      if (markable(v) && markable(frame.pixels[i] ?? 0)) out[i] = v;
     }
     return out;
   }

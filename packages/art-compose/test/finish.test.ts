@@ -18,6 +18,20 @@ describe('finish: iris values', () => {
     finish(b);
     expect(crop(b, 9, 9, 6, 3)).toBe(['.gggg.', 'ghijkg', '.gggg.'].join('\n'));
   });
+
+  it('a ramp pixel with an iris pixel above it and to its left is not lit, as beside any solid pixel', () => {
+    // The ramp pixel 2 at (11,11) has `beside` above it and to its left, and a ramp pixel 3 below it, so it is never shaded.
+    const litWith = (beside: number): number => {
+      const b = createBuffer('small');
+      blit(b, frameOf(2, 3, [0, beside, beside, 2, 0, 3]), 10, 10);
+      finish(b);
+      return at(b, 11, 11);
+    };
+    expect(litWith(17)).toBe(2);
+    expect(litWith(20)).toBe(2);
+    expect(litWith(4)).toBe(2); // beside ramp pixels: the same
+    expect(litWith(0)).toBe(3); // with nothing there it is lit
+  });
 });
 
 describe('finish', () => {

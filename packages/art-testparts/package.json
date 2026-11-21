@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@cf/art-compose": "*",
-    "@cf/art-recipe": "*"
+    "@cf/art-recipe": "*",
+    "@cf/domain-genome": "*"
   }
 }

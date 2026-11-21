@@ -1,6 +1,6 @@
 import { IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName } from '@cf/art-format';
-import { planParts } from './requests';
+import { planParts, torsoKindOf } from './requests';
 import { resolveAnatomy } from './resolve';
 import { artStream, identityKey, pick } from './streams';
 
@@ -48,8 +48,9 @@ function buildRecipeAt(
   const identity = identityKey(genome, lineage);
   const stream = (name: string): (() => number) => artStream(identity, name, version);
 
-  // Every stream is drawn exactly once, in this fixed order, whether or not the result is used.
-  // That keeps each choice independent of every other gene.
+  // Each creature-wide stream below is drawn exactly once, in this fixed order, whether or not the result is used.
+  // That keeps each choice independent of every other gene. The per-part mark streams (requests.ts) are drawn only
+  // for a marked part; each is its own named stream, so drawing it or not changes no other draw.
   const torsoVariant = pick(stream('torso-build'), VARIANTS.torso);
   const headVariant = pick(stream('head-variant'), VARIANTS.head);
   const tailVariant = pick(stream('tail-variant'), VARIANTS.tail);
@@ -67,7 +68,7 @@ function buildRecipeAt(
   // mark-strength is drawn only to reserve the stream: every fully generated creature is drawn at full strength.
   pick(stream('mark-strength'), 3);
 
-  const torsoKind = a.torso === '' ? 'body' : a.torso;
+  const torsoKind = torsoKindOf(a);
   // Leg roles, the skin's back part, the torso type's head feature and each marked part's mark (requests.ts).
   const { parts, gaps } = planParts(a, { torso: torsoVariant, head: headVariant, tail: tailVariant, limb: limbVariant }, stream, catalogue);
 

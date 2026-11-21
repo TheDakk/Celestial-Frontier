@@ -26,9 +26,9 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
-const { assemble, compose } = await import('@cf/art-compose');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
+const { buildRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
+const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
@@ -53,6 +53,8 @@ const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes
 /** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
 const LABEL_BASE = 21;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
+/** The palette's iris ramp names, iris0 to iris7. */
+const IRIS_RAMPS = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
 const NO_LIMBS = LIMB_COUNTS.indexOf(0);
@@ -72,13 +74,16 @@ export const HIDDEN_MIN = 4;
 export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind, all plain with skin ' + BASE_SKIN + ' (no back part); every pose the scaffold defines. ' +
-  'For each head kind with the last tail, eight legs and eight eyes: one creature for each pattern gene ' + PATTERN_GENES.join(', ') +
-  ' at full strength, and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + '), in every pose at its own shift. ' +
+  'For each head kind with the last tail and eight eyes: one creature at eight legs for each pattern gene ' + PATTERN_GENES.join(', ') +
+  ' at full strength, composed for its gaps only (marks never change which pixels are drawn, so it is not checked for the edge, ' +
+  'detachment or hidden parts, and its own seeded variants and shifts are not sampled for them), and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + ') at eight legs and again at every leg count ' +
+  'a legs= entry or a torso leg-count attach point of the scaffold is written for, in every pose at its own shift. ' +
   'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs) and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for: ' +
   'every head kind with no tail at its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
   'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
   'also at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for. ' +
-  'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures.';
+  'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures. ' +
+  'A marks: gap is also listed, as x0, for every frame a pose can show at any leg count that no sampled creature drew.';
 
 /**
  * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
@@ -104,7 +109,7 @@ function genomeFor(scaffold) {
   for (const loco of [0, 4]) {
     for (let body = 0; body < 16; body++) {
       const a = resolveAnatomy({ kingdom: 'fauna', body, loco, ...tierGenes });
-      if (a.family === family && (a.torso === '' ? 'body' : a.torso) === torsoKind) return { body, loco, ...tierGenes };
+      if (a.family === family && torsoKindOf(a) === torsoKind) return { body, loco, ...tierGenes };
     }
   }
   return undefined;
@@ -392,6 +397,52 @@ function layerProblems(where, frame) {
 const sideCount = (slot, legs) => (slot === 'farLimbs' ? legs >> 1 : legs - (legs >> 1));
 
 /**
+ * Every `marks:<part id>:<frame>` gap a scaffold's creatures can meet, read from the catalogue without composing: for
+ * each mark slot, leg count, index the slot has at that count and pose, the frame each part the composer could ask
+ * for there would show (poseEntryFor, frameNameFor), when that frame has no layer serving some pattern. The parts are
+ * those of the scaffold's family, tier and slot: the torso of its own kind, heads h0 to h9, tails t1 to t6, and limbs
+ * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side.
+ */
+function marksGapsOf(catalogue, scaffold, torsoKind) {
+  const found = new Set();
+  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier);
+  const roleHeld = (slot, kind) => own.some((p) => p.slot === slot && p.kind === kind && p.variant === 0);
+  const unserved = new Map();
+  const lacksLayer = (frame) => {
+    let lacks = unserved.get(frame);
+    if (lacks === undefined) {
+      lacks = PATTERN_NAMES.slice(1).some((pattern) => paintMarks(frame, pattern, 2, 0, []) === null);
+      unserved.set(frame, lacks);
+    }
+    return lacks;
+  };
+  for (const slot of MARK_SLOTS) {
+    const limb = slot === 'farLimbs' || slot === 'nearLimbs';
+    for (const legs of LIMB_COUNTS) {
+      const indexes = limb ? sideCount(slot, legs) : 1;
+      for (let index = 0; index < indexes; index++) {
+        const role = limb ? limbKind(index, legs) : '';
+        const kinds = !limb ? null : roleHeld(slot, role) ? [role] : [role, 'leg'];
+        const parts = own.filter((p) => p.slot === slot && (
+          slot === 'torso' ? p.kind === torsoKind
+            : slot === 'head' ? /^h\d$/.test(p.kind)
+              : slot === 'tail' ? /^t[1-6]$/.test(p.kind)
+                : kinds.includes(p.kind)));
+        if (parts.length === 0) continue;
+        for (const pose of Object.values(scaffold.poses)) {
+          const entry = poseEntryFor(pose.entries, slot, index, legs);
+          for (const part of parts) {
+            const name = frameNameFor(part, entry);
+            if (Object.hasOwn(part.frames, name) && lacksLayer(part.frames[name])) found.add(`marks:${part.id}:${name}`);
+          }
+        }
+      }
+    }
+  }
+  return found;
+}
+
+/**
  * Problems a reader can see without composing: attach points (head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
  * can ask for), layers, the palette's iris ramps (some but not all), poses and their leg-count entries, contact points,
@@ -424,9 +475,8 @@ function structureProblems(catalogue) {
     }
   }
   // A palette with none of the iris ramps is today's format (information, see checkPack); with some, every one must be there.
-  const iris = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
-  if (iris.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
-    for (const name of iris) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
+  if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+    for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
@@ -445,12 +495,9 @@ function structureProblems(catalogue) {
   return problems;
 }
 
-/** The frame a part shows in a pose, chosen as assemble chooses it: the entry for this leg count, else the plain entry, else rest; a frame the part lacks falls back to rest. */
-function frameShown(scaffold, poseId, slot, legs, part) {
-  const entries = scaffold.poses[poseId].entries;
-  const entry = entries.find((e) => e.slot === slot && e.index === 0 && e.legs === legs) ?? entries.find((e) => e.slot === slot && e.index === 0 && e.legs === undefined);
-  const name = entry === undefined ? 'rest' : entry.frame;
-  return Object.hasOwn(part.frames, name) ? name : 'rest';
+/** The frame a part shows in a pose, chosen by the composer's own rule (poseEntryFor, frameNameFor). */
+function frameShown(scaffold, poseId, slot, index, legs, part) {
+  return frameNameFor(part, poseEntryFor(scaffold.poses[poseId].entries, slot, index, legs));
 }
 
 /** Where part k of a recipe lands: the canvas position of its frame's pixel 0,0, read from its 'x' and 'y' coded pictures. */
@@ -508,10 +555,10 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
               headAt ??= frameOrigin({ ...two, shift }, 1, pose, catalogue, cache);
               torsoAt ??= frameOrigin(two, 0, pose, catalogue, cache);
               const local = (k, [ox, oy]) => `${(k % w) - ox},${(k - (k % w)) / w - oy}`;
-              const headFrame = frameShown(scaffold, pose, 'head', legs, headPart);
+              const headFrame = frameShown(scaffold, pose, 'head', 0, legs, headPart);
               let entry = found.get(headId);
               if (entry === undefined) {
-                entry = { pixels: new Set(), cases: 0, example: `head ${headFrame} ${local(i, headAt)} value ${hv} beside torso ${frameShown(scaffold, pose, 'torso', legs, torsoPart)} ${local(j, torsoAt)} value ${tp[j]}` };
+                entry = { pixels: new Set(), cases: 0, example: `head ${headFrame} ${local(i, headAt)} value ${hv} beside torso ${frameShown(scaffold, pose, 'torso', 0, legs, torsoPart)} ${local(j, torsoAt)} value ${tp[j]}` };
                 found.set(headId, entry);
               }
               entry.pixels.add(`${headFrame} ${local(i, headAt)}`);
@@ -576,18 +623,26 @@ export function checkPack(text) {
     const poses = Object.keys(scaffold.poses);
     const genomeOf = (head, tail, limbs, eyes, pattern = 0, skin = BASE_SKIN) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern, skin, color: 0, accent: 0, lumin: false });
 
+    /** Composes one recipe in one pose, counting its gaps; a compose error is recorded and gives undefined. */
+    const composeOnce = (recipe, pose) => {
+      let out;
+      try {
+        out = compose(recipe, pose, catalogue);
+      } catch (error) {
+        failed.add(`${error instanceof Error ? error.message : String(error)} (needed by ${scaffold.id})`);
+        return undefined;
+      }
+      composed++;
+      for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+      return out;
+    };
+    /** Composes one recipe in every pose for its gaps and compose failures only. */
+    const gapsOnly = (recipe) => { for (const pose of poses) composeOnce(recipe, pose); };
     /** Composes one recipe in every pose: gaps, edge and connectivity at its own shift, then at each extra shift pair. */
     const check = (genome, recipe, shiftPairs, variant) => {
       for (const pose of poses) {
-        let out;
-        try {
-          out = compose(recipe, pose, catalogue);
-        } catch (error) {
-          failed.add(`${error instanceof Error ? error.message : String(error)} (needed by ${scaffold.id})`);
-          continue;
-        }
-        composed++;
-        for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+        const out = composeOnce(recipe, pose);
+        if (out === undefined) continue;
         const where = variant === undefined ? { scaffold: scaffold.id, genome, pose } : { scaffold: scaffold.id, genome, pose, variant };
         if (touchesEdge(out.buffer)) edge.push(where);
         const own = detachedSlots(assemble(recipe, pose, labels).buffer);
@@ -619,20 +674,6 @@ export function checkPack(text) {
       check(genome, buildRecipe(genome, [], catalogue), []);
     }
 
-    // Marks, back parts and head features: for each head kind with the last tail, eight legs and eight eyes, one creature
-    // for each pattern gene but plain (on the base skin) and one for each skin gene that has a back part (plain).
-    for (const head of someHeads) {
-      const tail = tails[tails.length - 1];
-      for (const pattern of PATTERN_GENES) {
-        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern);
-        check(genome, buildRecipe(genome, [], catalogue), []);
-      }
-      for (const skin of BACK_SKINS) {
-        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, 0, skin);
-        check(genome, buildRecipe(genome, [], catalogue), []);
-      }
-    }
-
     // The leg counts this scaffold draws differently: each a legs= entry of one of its poses or a leg-count attach name
     // on one of its torsos is written for.
     const torsoKind = scaffold.id.split('/')[1];
@@ -641,6 +682,25 @@ export function checkPack(text) {
     for (const part of catalogue.parts.values()) {
       if (part.family !== scaffold.family || part.slot !== 'torso' || part.kind !== torsoKind || part.tier !== scaffold.tier) continue;
       for (const frame of Object.values(part.frames)) for (const point of Object.keys(frame.attach)) if (LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
+    }
+
+    // Marks, back parts and head features: for each head kind with the last tail and eight eyes, one creature at eight
+    // legs for each pattern gene but plain (on the base skin), and one for each skin gene that has a back part (plain) at
+    // eight legs and again at each of those leg counts (a legs= entry can move or swap the back part). A patterned
+    // creature is composed for its gaps only: marks never change which pixels are drawn, so its edge, connectivity and
+    // hidden parts are those of the same parts unpainted.
+    const backLimbs = [FULL_LIMBS, ...[...legCounts].sort((a, b) => a - b).map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== FULL_LIMBS)];
+    for (const head of someHeads) {
+      const tail = tails[tails.length - 1];
+      for (const pattern of PATTERN_GENES) {
+        gapsOnly(buildRecipe(genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern), [], catalogue));
+      }
+      for (const skin of BACK_SKINS) {
+        for (const limbs of backLimbs) {
+          const genome = genomeOf(head, tail, limbs, FULL_EYES, 0, skin);
+          check(genome, buildRecipe(genome, [], catalogue), []);
+        }
+      }
     }
 
     // Shift sweep, with no legs (more parts only add pixels, so none is the strictest case), then again at each of those
@@ -684,6 +744,9 @@ export function checkPack(text) {
       }
     }
 
+    // marks: gaps no sampled creature met, listed with count 0 (printed x0): every frame a pose can show at any leg count.
+    for (const gap of marksGapsOf(catalogue, scaffold, torsoKind)) if (!gapCounts.has(gap)) gapCounts.set(gap, 0);
+
     // The neck join: every head of this family and tier with every variant of this scaffold's torso, at four legs and at
     // every leg count a legs= entry for the torso or the head names.
     const neckLegs = [4, ...new Set(Object.values(scaffold.poses).flatMap((pose) => pose.entries.filter((e) => e.legs !== undefined && e.legs !== 4 && (e.slot === 'torso' || e.slot === 'head')).map((e) => e.legs)))];
@@ -701,7 +764,7 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const info = [];
-  if (!Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`).some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+  if (!IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
     info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;

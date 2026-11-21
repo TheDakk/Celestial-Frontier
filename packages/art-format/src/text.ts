@@ -75,6 +75,8 @@ function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
 interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; layers: Map<LayerName, OpenLayer>; layer?: OpenLayer; }
 interface OpenLayer { name: LayerName; line: number; rows: number; data: number[]; }
 const GUIDE_LAYERS: readonly string[] = ['flow', 'spots'];
+/** The highest value a layer may hold: 15 in a guide layer (flow, spots), 12 (the last ramp value) in a hand-drawn one. */
+const layerTop = (name: string): number => (GUIDE_LAYERS.includes(name) ? 15 : 12);
 
 export function parseCatalogueText(text: string): Catalogue {
   const parts = new Map<string, Part>();
@@ -151,7 +153,7 @@ export function parseCatalogueText(text: string): Catalogue {
       const row: number[] = [];
       if (frame.layer) {
         const layer = frame.layer;
-        const top = GUIDE_LAYERS.includes(layer.name) ? 15 : 12;
+        const top = layerTop(layer.name);
         for (const c of trimmed) {
           const v = PIXEL_CHARS.indexOf(c);
           if (v < 0 || v > top) throw new Error(`${where}: bad layer value '${c}'`);
@@ -352,7 +354,7 @@ export function formatPart(part: Part): string {
       const grid = layers[layerName];
       if (grid === undefined) continue;
       if (grid.length !== f.w * f.h) fail(`frame ${name} layer ${layerName} has ${grid.length} pixels, expected ${f.w * f.h}`);
-      const top = GUIDE_LAYERS.includes(layerName) ? 15 : 12;
+      const top = layerTop(layerName);
       if (grid.some((v) => v > top)) fail(`frame ${name} layer ${layerName} holds a value above ${top}`);
       out.push(`layer ${layerName}`);
       for (let y = 0; y < f.h; y++) {
