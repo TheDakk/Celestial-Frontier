@@ -1,5 +1,5 @@
 import { DRAW_ORDER, MARK_SLOTS, partId } from '@cf/art-format';
-import type { Catalogue, SlotName } from '@cf/art-format';
+import type { Catalogue, SizeTier, SlotName, Species } from '@cf/art-format';
 import type { Anatomy } from './resolve';
 import type { PartMark, RecipePart } from './recipe';
 import { pick } from './streams';
@@ -35,6 +35,44 @@ function firstHeld(catalogue: Catalogue, ids: readonly string[]): number {
   return ids.findIndex((id) => catalogue.parts.has(id));
 }
 
+/** The legs of a creature with `legs` legs, each asking for its role: the far side has legs >> 1, the near side the rest. */
+function legsWanted(legs: number, variant: number): Wanted[] {
+  const wanted: Wanted[] = [];
+  const far = legs >> 1;
+  for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: limbKind(i, legs), variant, limb: true });
+  for (let i = 0; i < legs - far; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: limbKind(i, legs), variant, limb: true });
+  return wanted;
+}
+
+/**
+ * The part id the catalogue holds for one wanted part, pushing the gaps met on the way; undefined when it holds none.
+ * `build` is the torso type whose own legs (`<role>-<build>`) come first, or '' for none.
+ */
+function lookUp(catalogue: Catalogue, family: string, tier: SizeTier, build: string, w: Wanted, gaps: string[]): string | undefined {
+  const id = (kind: string, variant: number): string => partId(family, w.slot, kind, tier, variant);
+  if (w.limb) {
+    // A build's own legs come first, where there is a build: the role on this torso type at the chosen variant, then
+    // at v0. A pack need not hold them, so going on to the shared role is no gap. Then the role at the chosen variant,
+    // the role at v0, the shared leg at the chosen variant, the shared leg at v0.
+    const own = build === '' ? [] : [id(`${w.kind}-${build}`, w.variant), id(`${w.kind}-${build}`, 0)];
+    const shared = [id(w.kind, w.variant), id(w.kind, 0), id('leg', w.variant), id('leg', 0)];
+    const steps = [[], [`variant:${shared[0]}`], [`role:${shared[1]}`], [`role:${shared[1]}`, `variant:${shared[2]}`]];
+    const ownHit = firstHeld(catalogue, own);
+    if (ownHit >= 0) { if (ownHit === 1) gaps.push(`variant:${own[0]}`); return own[ownHit]; }
+    const hit = firstHeld(catalogue, shared);
+    if (hit < 0) { gaps.push(`missing:${shared[3]}`); return undefined; }
+    gaps.push(...steps[hit]!);
+    return shared[hit];
+  }
+  const tries = [id(w.kind, w.variant), id(w.kind, 0)];
+  const hit = firstHeld(catalogue, tries);
+  if (hit < 0) { gaps.push(`missing:${tries[1]}`); return undefined; }
+  if (hit === 1) gaps.push(`variant:${tries[0]}`);
+  return tries[hit];
+}
+
+const byDrawOrder = (x: Wanted, y: Wanted): number => DRAW_ORDER.indexOf(x.slot) - DRAW_ORDER.indexOf(y.slot) || x.index - y.index;
+
 /**
  * The parts a fauna creature asks for, in DRAW_ORDER then index, and the gaps met on the way. Leg roles (a build's own
  * legs, `<role>-<torso type>`, before the shared ones), the skin's
@@ -52,47 +90,45 @@ export function planParts(
   if (a.kingdom !== 'fauna') return { parts, gaps };
 
   const torsoKind = torsoKindOf(a);
-  const wanted: Wanted[] = [];
-  const far = a.limbs >> 1;
-  const near = a.limbs - far;
-  for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: limbKind(i, a.limbs), variant: variants.limb, limb: true });
+  const wanted: Wanted[] = legsWanted(a.limbs, variants.limb);
   if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: variants.tail, limb: false });
   wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: variants.torso, limb: false });
   const back = BACK_KIND_BY_SKIN[a.skin] ?? null;
   if (back !== null) wanted.push({ slot: 'back', index: 0, kind: `${back}-${torsoKind}`, variant: 0, limb: false });
-  for (let i = 0; i < near; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: limbKind(i, a.limbs), variant: variants.limb, limb: true });
   wanted.push({ slot: 'head', index: 0, kind: `h${a.head}`, variant: variants.head, limb: false });
   if (Object.hasOwn(HEAD_FEATURE_BY_TORSO, a.torso)) {
     wanted.push({ slot: 'headFeature', index: 0, kind: `${HEAD_FEATURE_BY_TORSO[a.torso]}-h${a.head}`, variant: 0, limb: false });
   }
   for (let i = 0; i < a.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0, limb: false });
-  wanted.sort((x, y) => DRAW_ORDER.indexOf(x.slot) - DRAW_ORDER.indexOf(y.slot) || x.index - y.index);
+  wanted.sort(byDrawOrder);
 
   for (const w of wanted) {
-    const id = (kind: string, variant: number): string => partId(a.family, w.slot, kind, a.tier, variant);
-    let found: string | undefined;
-    if (w.limb) {
-      // A build's own legs come first, where the family has torso types: the role on this torso type at the chosen
-      // variant, then at v0. A pack need not hold them, so going on to the shared role is no gap. Then the role at the
-      // chosen variant, the role at v0, the shared leg at the chosen variant, the shared leg at v0.
-      const own = a.torso === '' ? [] : [id(`${w.kind}-${a.torso}`, w.variant), id(`${w.kind}-${a.torso}`, 0)];
-      const shared = [id(w.kind, w.variant), id(w.kind, 0), id('leg', w.variant), id('leg', 0)];
-      const steps = [[], [`variant:${shared[0]}`], [`role:${shared[1]}`], [`role:${shared[1]}`, `variant:${shared[2]}`]];
-      const ownHit = firstHeld(catalogue, own);
-      const hit = firstHeld(catalogue, shared);
-      if (ownHit >= 0) { found = own[ownHit]; if (ownHit === 1) gaps.push(`variant:${own[0]}`); }
-      else if (hit < 0) gaps.push(`missing:${shared[3]}`);
-      else { found = shared[hit]; gaps.push(...steps[hit]!); }
-    } else {
-      const tries = [id(w.kind, w.variant), id(w.kind, 0)];
-      const hit = firstHeld(catalogue, tries);
-      if (hit < 0) gaps.push(`missing:${tries[1]}`);
-      else { found = tries[hit]; if (hit === 1) gaps.push(`variant:${tries[0]}`); }
-    }
+    const found = lookUp(catalogue, a.family, a.tier, a.torso, w, gaps);
     if (found === undefined) continue;
     const part: RecipePart = { slot: w.slot, index: w.index, partId: found, source: 'own' };
     if (a.pattern !== 0 && MARK_SLOTS.includes(w.slot)) part.mark = markFor(w.slot, w.index, stream);
     parts.push(part);
+  }
+  return { parts, gaps };
+}
+
+/**
+ * The parts a named species asks for, in DRAW_ORDER then index, and the gaps met on the way: its own torso, head and
+ * (with a tail) tail, kind `key`; legs by role, its own (`<role>-<key>`) before the shared role and the shared leg; the
+ * family's shared eye, `eyes` times. Every part at v0, none marked. A missing part is a `missing:` gap and is left out.
+ */
+export function planSpeciesParts(species: Species, catalogue: Catalogue): { parts: RecipePart[]; gaps: string[] } {
+  const parts: RecipePart[] = [];
+  const gaps: string[] = [];
+  const own = (slot: SlotName): Wanted => ({ slot, index: 0, kind: species.key, variant: 0, limb: false });
+  const wanted: Wanted[] = legsWanted(species.legs, 0);
+  if (species.tail) wanted.push(own('tail'));
+  wanted.push(own('torso'), own('head'));
+  for (let i = 0; i < species.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0, limb: false });
+  wanted.sort(byDrawOrder);
+  for (const w of wanted) {
+    const found = lookUp(catalogue, species.family, species.tier, species.key, w, gaps);
+    if (found !== undefined) parts.push({ slot: w.slot, index: w.index, partId: found, source: 'own' });
   }
   return { parts, gaps };
 }

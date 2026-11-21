@@ -1,6 +1,6 @@
 import { IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName } from '@cf/art-format';
-import { planParts, torsoKindOf } from './requests';
+import { planParts, planSpeciesParts, torsoKindOf } from './requests';
 import { resolveAnatomy } from './resolve';
 import { artStream, identityKey, pick } from './streams';
 
@@ -81,6 +81,27 @@ function buildRecipeAt(
     marking: { pattern: a.pattern, strength: 2, phase },
     shift: { head: headShift, tail: tailShift },
     glow: a.glow, gaps,
+  });
+}
+
+/**
+ * The recipe of a named species (catalogue line `species`): one fixed look, the same picture everywhere. Its own parts
+ * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps, plain, no shift, no glow. No stream is drawn.
+ * An unknown key throws. Frozen like buildRecipe's result.
+ */
+export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
+  const species = catalogue.species.get(key);
+  if (species === undefined) throw new Error(`unknown species '${key}'`);
+  const { parts, gaps } = planSpeciesParts(species, catalogue);
+  return deepFreeze({
+    version: RENDERER_VERSION, identity: `species:${key}`, family: species.family, tier: species.tier,
+    scaffoldId: `${species.family}/${key}/${species.tier}`,
+    legs: species.legs,
+    parts,
+    ramps: { primary: key, accent: `${key}-accent`, underside: `${key}-under`, iris: `iris${species.iris}` },
+    marking: { pattern: 0, strength: 2, phase: 0 },
+    shift: { head: [0, 0], tail: [0, 0] },
+    glow: false, gaps,
   });
 }
 
