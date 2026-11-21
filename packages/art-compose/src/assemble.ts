@@ -1,4 +1,4 @@
-import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type PartFrame, type Pose, type Scaffold, type SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
@@ -31,6 +31,18 @@ function attachFor(slot: SlotName, index: number, legs: number): { names: string
     case 'eyes': return { names: [`eye${index}`], onHead: true };
     default: return { names: [slot], onHead: false }; // head, tail, back, glow
   }
+}
+
+/** The pose entry a part takes: the entry for this leg count wins; else the one with no leg count; else none. */
+export function poseEntryFor(entries: readonly PoseEntry[], slot: SlotName, index: number, legs: number): PoseEntry | undefined {
+  return entries.find((e) => e.slot === slot && e.index === index && e.legs === legs)
+    ?? entries.find((e) => e.slot === slot && e.index === index && e.legs === undefined);
+}
+
+/** The frame a part shows for its pose entry: the entry's frame when the part has it, else `rest` (also when there is no entry). */
+export function frameNameFor(part: Part, entry: PoseEntry | undefined): string {
+  const wanted = entry === undefined ? 'rest' : entry.frame;
+  return Object.hasOwn(part.frames, wanted) ? wanted : 'rest';
 }
 
 /**
@@ -75,18 +87,14 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     const part = catalogue.parts.get(rp.partId);
     if (part === undefined) return skipped(`missing:${rp.partId}`);
 
-    // The entry for this leg count wins; else the one with no leg count; else none.
-    const entry = entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === recipe.legs)
-      ?? entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === undefined);
-    let frameName = entry === undefined ? 'rest' : entry.frame;
+    const entry = poseEntryFor(entries, rp.slot, rp.index, recipe.legs);
+    const wanted = entry === undefined ? 'rest' : entry.frame;
     const own: string[] = [];
-    let frame = Object.hasOwn(part.frames, frameName) ? part.frames[frameName] : undefined;
-    if (frame === undefined) {
-      own.push(`frame:${rp.partId}:${frameName}`);
-      frameName = 'rest';
-      frame = Object.hasOwn(part.frames, 'rest') ? part.frames['rest'] : undefined;
-      if (frame === undefined) return { frame: undefined, frameName, x: 0, y: 0, gaps: own };
-    }
+    // A frame the part lacks is a gap; the part then shows rest, or is skipped when it has no rest frame either.
+    if (!Object.hasOwn(part.frames, wanted)) own.push(`frame:${rp.partId}:${wanted}`);
+    const frameName = frameNameFor(part, entry);
+    const frame = Object.hasOwn(part.frames, frameName) ? part.frames[frameName] : undefined;
+    if (frame === undefined) return { frame: undefined, frameName, x: 0, y: 0, gaps: own };
     const dx = entry === undefined ? 0 : entry.dx;
     const dy = entry === undefined ? 0 : entry.dy;
 

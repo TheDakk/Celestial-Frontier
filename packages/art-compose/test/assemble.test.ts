@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
 import type { SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe } from '@cf/art-recipe';
-import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
+import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 
@@ -394,6 +394,27 @@ describe('assemble: gaps (i)', () => {
     const r = assemble(recipeOf([['tail', 0, 'tail'], ['head', 0, 'head']]), 'rest', catalogue);
     expect(r.gaps).toEqual(['attach:tail', 'attach:head']);
     expect(count(r.buffer)).toBe(0);
+  });
+});
+
+describe('the frame-choice rule the composer and the checker share', () => {
+  const legged = catalogue.scaffolds.get('quadruped/legged/small')!;
+  const near = catalogue.parts.get(ID['near']!)!;
+  const torso = catalogue.parts.get(ID['torso']!)!;
+
+  it('poseEntryFor: the entry for this leg count wins, then the one with no leg count, then none', () => {
+    const both = legged.poses['both']!.entries;
+    // both: `entry nearLimbs 0 rest 0 0`, then `entry nearLimbs 0 rest 3 0 legs=2`.
+    expect(poseEntryFor(both, 'nearLimbs', 0, 2)).toBe(both[1]);
+    expect(poseEntryFor(both, 'nearLimbs', 0, 4)).toBe(both[0]);
+    expect(poseEntryFor(both, 'nearLimbs', 1, 2)).toBeUndefined();
+    expect(poseEntryFor(legged.poses['other']!.entries, 'nearLimbs', 0, 2)).toBeUndefined();
+  });
+
+  it('frameNameFor: the entry\'s frame when the part has it, else rest; rest with no entry', () => {
+    expect(frameNameFor(torso, { slot: 'torso', index: 0, frame: 'hop', dx: 0, dy: 0 })).toBe('hop');
+    expect(frameNameFor(near, { slot: 'nearLimbs', index: 0, frame: 'brace', dx: 3, dy: 0, legs: 4 })).toBe('rest');
+    expect(frameNameFor(near, undefined)).toBe('rest');
   });
 });
 

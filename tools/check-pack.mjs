@@ -28,7 +28,7 @@ registerHooks({
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT } = await import('@cf/art-format');
 const { buildRecipe, resolveAnatomy, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
-const { assemble, compose } = await import('@cf/art-compose');
+const { assemble, compose, frameNameFor, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
@@ -445,12 +445,9 @@ function structureProblems(catalogue) {
   return problems;
 }
 
-/** The frame a part shows in a pose, chosen as assemble chooses it: the entry for this leg count, else the plain entry, else rest; a frame the part lacks falls back to rest. */
-function frameShown(scaffold, poseId, slot, legs, part) {
-  const entries = scaffold.poses[poseId].entries;
-  const entry = entries.find((e) => e.slot === slot && e.index === 0 && e.legs === legs) ?? entries.find((e) => e.slot === slot && e.index === 0 && e.legs === undefined);
-  const name = entry === undefined ? 'rest' : entry.frame;
-  return Object.hasOwn(part.frames, name) ? name : 'rest';
+/** The frame a part shows in a pose, chosen by the composer's own rule (poseEntryFor, frameNameFor). */
+function frameShown(scaffold, poseId, slot, index, legs, part) {
+  return frameNameFor(part, poseEntryFor(scaffold.poses[poseId].entries, slot, index, legs));
 }
 
 /** Where part k of a recipe lands: the canvas position of its frame's pixel 0,0, read from its 'x' and 'y' coded pictures. */
@@ -508,10 +505,10 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
               headAt ??= frameOrigin({ ...two, shift }, 1, pose, catalogue, cache);
               torsoAt ??= frameOrigin(two, 0, pose, catalogue, cache);
               const local = (k, [ox, oy]) => `${(k % w) - ox},${(k - (k % w)) / w - oy}`;
-              const headFrame = frameShown(scaffold, pose, 'head', legs, headPart);
+              const headFrame = frameShown(scaffold, pose, 'head', 0, legs, headPart);
               let entry = found.get(headId);
               if (entry === undefined) {
-                entry = { pixels: new Set(), cases: 0, example: `head ${headFrame} ${local(i, headAt)} value ${hv} beside torso ${frameShown(scaffold, pose, 'torso', legs, torsoPart)} ${local(j, torsoAt)} value ${tp[j]}` };
+                entry = { pixels: new Set(), cases: 0, example: `head ${headFrame} ${local(i, headAt)} value ${hv} beside torso ${frameShown(scaffold, pose, 'torso', 0, legs, torsoPart)} ${local(j, torsoAt)} value ${tp[j]}` };
                 found.set(headId, entry);
               }
               entry.pixels.add(`${headFrame} ${local(i, headAt)}`);
