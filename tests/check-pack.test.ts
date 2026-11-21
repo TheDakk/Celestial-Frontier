@@ -639,6 +639,55 @@ describe('checkPack forced variants keep the creature\'s mark', () => {
   });
 });
 
+describe('checkPack lists every marks: gap a pose can show, as x0 when no sampled creature drew it', () => {
+  const marksOf = (r: PackReport): string[] => r.gaps.filter((g) => g.gap.startsWith('marks:')).map((g) => `${g.gap} x${g.count}`);
+  const TAIL_T1 = '\npart quadruped/tail/t1/small/v0\nframe rest anchor=4,0\n22222\n11111\n';
+  const HEAD_ATTACH = 'attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3';
+
+  it('a fully layered pack lists none', () => {
+    expect(marksOf(checkPack(withLayers(GOOD)))).toEqual([]);
+  });
+
+  it('a tail other than the highest, unlayered among layered parts, is listed at x0', () => {
+    // Patterned creatures are sampled with the highest tail kind only (t2 here), so no composed creature paints t1.
+    const r = checkPack(withLayers(GOOD.replace('part quadruped/tail/t1/', 'part quadruped/tail/t2/')) + TAIL_T1);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/tail/t1/small/v0:rest x0']);
+    expect(formatReport(r).split('\n')).toContain('info: gap marks:quadruped/tail/t1/small/v0:rest (x0)');
+    expect(r.ok).toBe(true);
+  });
+
+  it('a frame only a legs=2 entry shows is listed; a frame no entry reaches is not', () => {
+    // The head gains two unlayered frames after its layers: `low`, shown in rest by a two-legged creature, and `spare`, shown by none.
+    const frames = `frame low anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\n\nframe spare anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\n`;
+    const text = planted('pose rest\n', 'pose rest\nentry head 0 low 0 0 legs=2\n', planted('\npart quadruped/tail/t1', `${frames}\npart quadruped/tail/t1`, withLayers(GOOD)));
+    const r = checkPack(text);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/head/h0/small/v0:low x0']);
+    expect(r.ok).toBe(true);
+  });
+
+  it('a shared leg\'s frame only a two-legged creature shows is listed: the pack has no hind leg, so the shared leg stands in', () => {
+    const lift = 'frame lift anchor=0,0\n33\n33\n33\n33\n33\n11\n';
+    const text = planted('pose rest\n', 'pose rest\nentry nearLimbs 0 lift 0 0 legs=2\n', planted('\npart quadruped/eyes/', `${lift}\npart quadruped/eyes/`, withLayers(GOOD)));
+    const r = checkPack(text);
+    expect(r.parseError).toBeNull();
+    expect(marksOf(r)).toEqual(['marks:quadruped/nearLimbs/leg/small/v0:lift x0']);
+    // With a hind leg of its own (layered), the two-legged creature never shows the shared leg's lift frame.
+    const hind = '\npart quadruped/nearLimbs/hind/small/v0\nframe rest anchor=0,0\n33\n33\n33\n33\n33\n11\nlayer flow\n12\n12\n12\n12\n12\n12\nlayer spots\n11\n11\n11\n11\n11\n11\n';
+    expect(marksOf(checkPack(text + hind))).toEqual([]);
+  });
+
+  it('a variant with flow but no spots is listed, though its forced (striped) creature is painted', () => {
+    // No sampled creature picks head variant v3; the forced pass paints it striped, which reads flow alone.
+    const v3 = `\npart quadruped/head/h0/small/v3\nframe rest anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\nlayer flow\n123456\n123456\n123456\n123456\n123456\n`;
+    const r = checkPack(withLayers(GOOD) + v3);
+    expect(r.parseError).toBeNull();
+    expect(r.variants).toBe(2);
+    expect(marksOf(r)).toEqual(['marks:quadruped/head/h0/small/v3:rest x0']);
+  });
+});
+
 /**
  * What the placeholder pack composes: 20580 for the base sample and the no-legs shift sweep, plus the mark and back-part
  * sweep (6 scaffolds x 10 head kinds x (7 patterns + 7 skins) x 7 poses = 5880), plus the shift sweep again on the sturdy

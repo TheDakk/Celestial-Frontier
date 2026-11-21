@@ -26,9 +26,9 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
-const { assemble, compose, frameNameFor, poseEntryFor } = await import('@cf/art-compose');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
+const { buildRecipe, resolveAnatomy, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
+const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
@@ -78,7 +78,8 @@ export const SAMPLED =
   'every head kind with no tail at its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
   'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
   'also at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for. ' +
-  'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures.';
+  'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures. ' +
+  'A marks: gap is also listed, as x0, for every frame a pose can show at any leg count that no sampled creature drew.';
 
 /**
  * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
@@ -392,6 +393,52 @@ function layerProblems(where, frame) {
 const sideCount = (slot, legs) => (slot === 'farLimbs' ? legs >> 1 : legs - (legs >> 1));
 
 /**
+ * Every `marks:<part id>:<frame>` gap a scaffold's creatures can meet, read from the catalogue without composing: for
+ * each mark slot, leg count, index the slot has at that count and pose, the frame each part the composer could ask
+ * for there would show (poseEntryFor, frameNameFor), when that frame has no layer serving some pattern. The parts are
+ * those of the scaffold's family, tier and slot: the torso of its own kind, heads h0 to h9, tails t1 to t6, and limbs
+ * of the leg role at that index, or the shared leg when the pack has no v0 of that role on that side.
+ */
+function marksGapsOf(catalogue, scaffold, torsoKind) {
+  const found = new Set();
+  const own = [...catalogue.parts.values()].filter((p) => p.family === scaffold.family && p.tier === scaffold.tier);
+  const roleHeld = (slot, kind) => own.some((p) => p.slot === slot && p.kind === kind && p.variant === 0);
+  const unserved = new Map();
+  const lacksLayer = (frame) => {
+    let lacks = unserved.get(frame);
+    if (lacks === undefined) {
+      lacks = PATTERN_NAMES.slice(1).some((pattern) => paintMarks(frame, pattern, 2, 0, []) === null);
+      unserved.set(frame, lacks);
+    }
+    return lacks;
+  };
+  for (const slot of MARK_SLOTS) {
+    const limb = slot === 'farLimbs' || slot === 'nearLimbs';
+    for (const legs of LIMB_COUNTS) {
+      const indexes = limb ? sideCount(slot, legs) : 1;
+      for (let index = 0; index < indexes; index++) {
+        const role = limb ? limbKind(index, legs) : '';
+        const kinds = !limb ? null : roleHeld(slot, role) ? [role] : [role, 'leg'];
+        const parts = own.filter((p) => p.slot === slot && (
+          slot === 'torso' ? p.kind === torsoKind
+            : slot === 'head' ? /^h\d$/.test(p.kind)
+              : slot === 'tail' ? /^t[1-6]$/.test(p.kind)
+                : kinds.includes(p.kind)));
+        if (parts.length === 0) continue;
+        for (const pose of Object.values(scaffold.poses)) {
+          const entry = poseEntryFor(pose.entries, slot, index, legs);
+          for (const part of parts) {
+            const name = frameNameFor(part, entry);
+            if (Object.hasOwn(part.frames, name) && lacksLayer(part.frames[name])) found.add(`marks:${part.id}:${name}`);
+          }
+        }
+      }
+    }
+  }
+  return found;
+}
+
+/**
  * Problems a reader can see without composing: attach points (head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
  * can ask for), layers, the palette's iris ramps (some but not all), poses and their leg-count entries, contact points,
@@ -680,6 +727,9 @@ export function checkPack(text) {
         }
       }
     }
+
+    // marks: gaps no sampled creature met, listed with count 0 (printed x0): every frame a pose can show at any leg count.
+    for (const gap of marksGapsOf(catalogue, scaffold, torsoKind)) if (!gapCounts.has(gap)) gapCounts.set(gap, 0);
 
     // The neck join: every head of this family and tier with every variant of this scaffold's torso, at four legs and at
     // every leg count a legs= entry for the torso or the head names.

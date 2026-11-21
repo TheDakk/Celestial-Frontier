@@ -53,6 +53,8 @@ export interface PackReport {
   /**
    * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information:
    * `variant:`, `marks:`, `role:`, and `missing:` of a part in slot back or headFeature; every other gap is an error.
+   * A `marks:` gap with count 0 (printed x0) was met by no sampled creature: it is read from the catalogue, for a frame
+   * some pose can show at some leg count with no layer serving some pattern.
    */
   gaps: { gap: string; count: number; error: boolean }[];
   edge: CheckedCreature[];
