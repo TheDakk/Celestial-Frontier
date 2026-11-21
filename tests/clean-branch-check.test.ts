@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { checkTrackedFiles } from '../tools/clean-branch-check.mjs';
 describe('clean-branch check', () => {
   it('passes a clean tree', () => {
@@ -34,5 +35,17 @@ describe('clean-branch check', () => {
     expect(checkTrackedFiles([{ path: 'pkg/README.md', text: 'x' }, { path: 'x.bin', text: null }])).toEqual([
       'pkg/README.md: document on the code branch',
     ]);
+  });
+  describe.each(['CLAUDE.md', 'AGENTS.md'])('agent file %s', (name) => {
+    const read = () => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8');
+    it('exists, fits one page and names Dakk', () => {
+      const text = read();
+      expect(text.trimEnd().split('\n').length).toBeLessThanOrEqual(60);
+      expect(text).toContain('Dakk');
+    });
+  });
+  it('keeps the two agent files identical after the first line', () => {
+    const rest = (name: string) => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8').split('\n').slice(1).join('\n');
+    expect(rest('CLAUDE.md')).toBe(rest('AGENTS.md'));
   });
 });
