@@ -7,13 +7,10 @@
    The authoritative save must never contain Pixi objects, DOM state, decoded
    audio buffers, render textures, or generated image bytes.
 
-   RECOVERY SEMANTICS carried from v1.8.9 (CF-RR-002, SaveSystem):
-   - a backup is promoted ONLY from a payload that has PROVEN it loads —
-     v1.8.9 stashes the raw string as last-known-good at the END of a
-     successful loadSave, never at write time;
-   - if the primary is corrupt, the backup takes its place ONCE, loudly;
-   - a RESET removes primary AND backup — "a reset must not resurrect via
-     the backup" (CF-RR-002's reset law). */
+   RECOVERY SEMANTICS: a corrupt current v5 row is recovered read-only from
+   the save's own recovery snapshot (readSaveV5WithRecovery); a future or
+   corrupt save is protected, never overwritten. A RESET removes every store
+   — "a reset must not resurrect" (CF-RR-002's reset law). */
 export * from './repository.js';
 export * from './revisioned.js';
 export * from './migration-v5.js';

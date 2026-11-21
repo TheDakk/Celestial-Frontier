@@ -1,7 +1,7 @@
 import { ownIdbCallbacks } from './idb-callbacks.js';
 /* Storage repository — Phase 2 deliverable 2 ("IndexedDB repository and
    transaction recovery"). The seam is StorageBackend: the repository logic
-   (generations, recovery, reset law) is backend-agnostic and fully tested
+   (primary write and read, reset law) is backend-agnostic and fully tested
    against the in-memory backend; IndexedDBBackend implements the same
    contract for the browser and gets its end-to-end proof in Phase 3's
    vertical slice (a jsdom/node test proving IDB semantics would prove the
@@ -55,61 +55,18 @@ export interface StorageBackend {
 }
 
 const PRIMARY = 'save';
-export const V4_BACKUP_KEY = 'save_bak';    /* last-known-good — the SAVE_KEY_bak pattern */
-/* This legacy v4 repository must never mutate backup/primary state after any
-   v5 authority exists. Keep these storage-schema pins local rather than making
-   this base repository import its dependent revision/lease authority layers;
-   revisioned.ts also consumes STORES here and would form an init cycle. */
-const F3_REVISION_KEY = 'f3:revision';
-const F3_ACTIVE_PLAY_LEASE_KEY = 'f3:lease:active-play';
+/* The old game's last-known-good backup key. v2 never writes it; a
+   save replacement still deletes it in the same transaction. */
+export const V4_BACKUP_KEY = 'save_bak';
 
 export interface SaveRepository {
   /** Write the authoritative save payload (one atomic transaction). */
   write(payload: string): Promise<void>;
   /** Read the primary payload; undefined = genuinely fresh. */
   readPrimary(): Promise<string | undefined>;
-  /** Call ONLY after a payload has proven it loads. Returns true only when
-      those bytes are still the legacy primary and no v5 authority exists. */
-  promoteLastKnownGood(payload: string): Promise<boolean>;
-  /** CF-RR-002 recovery: read and classify the backup, then restore it ONCE
-      only when the supplied predicate proves those exact bytes supported.
-      Returns the recovered payload, or undefined when no safe legacy recovery
-      exists or a competing/v5 authority wins. */
-  recover(isSupported: (payload: string) => boolean): Promise<string | undefined>;
   /** The reset law: primary AND backup die together — a reset must not
       resurrect via the backup. Disposable caches go too. */
   reset(): Promise<void>;
-}
-
-export type StoredPayloadStatus = 'supported' | 'future-version' | 'invalid';
-export type SaveReadOutcome =
-  | { kind: 'fresh' }
-  | { kind: 'loaded'; raw: string; recovered: boolean }
-  | { kind: 'protected'; raw: string; reason: 'future-version' | 'invalid' }
-  | { kind: 'transient-read' };
-
-/** Read/classify/recover orchestration shared by boot and a later storage
- * retry. A thrown primary read is UNKNOWN, never evidence of corruption: it
- * must not invoke recover(), which would re-read a valid newer primary and
- * replace it with a stale backup. */
-export async function readSaveWithRecovery(
-  repository: Pick<SaveRepository, 'readPrimary' | 'recover'>,
-  classify: (raw: string) => StoredPayloadStatus,
-): Promise<SaveReadOutcome> {
-  let raw: string | undefined;
-  try { raw = await repository.readPrimary(); }
-  catch { return { kind: 'transient-read' }; }
-  if (raw === undefined) return { kind: 'fresh' };
-  const status = classify(raw);
-  if (status === 'supported') return { kind: 'loaded', raw, recovered: false };
-  if (status === 'future-version') return { kind: 'protected', raw, reason: status };
-  try {
-    const recovered = await repository.recover((candidate) => classify(candidate) === 'supported');
-    if (recovered !== undefined) {
-      return { kind: 'loaded', raw: recovered, recovered: true };
-    }
-  } catch { /* the known-invalid primary remains protected */ }
-  return { kind: 'protected', raw, reason: 'invalid' };
 }
 
 export function createSaveRepository(backend: StorageBackend): SaveRepository {
@@ -119,37 +76,6 @@ export function createSaveRepository(backend: StorageBackend): SaveRepository {
     },
     async readPrimary(): Promise<string | undefined> {
       return backend.get('meta', PRIMARY);
-    },
-    async promoteLastKnownGood(payload: string): Promise<boolean> {
-      /* Promotion belongs only to the legacy v4 authority. Bind the exact
-         primary bytes that proved loadable and require the revisioned v5
-         authority to be absent in the SAME transaction. A delayed legacy tab
-         therefore cannot reinsert a predecessor after v5 replacement. */
-      return backend.compareAndApply([
-        { store: 'meta', key: PRIMARY, value: payload },
-        { store: 'meta', key: F3_REVISION_KEY, value: undefined },
-        { store: 'meta', key: F3_ACTIVE_PLAY_LEASE_KEY, value: undefined },
-      ], [{ store: 'meta', key: V4_BACKUP_KEY, value: payload }]);
-    },
-    async recover(isSupported): Promise<string | undefined> {
-      const primary = await backend.get('meta', PRIMARY);
-      if (primary === undefined) return undefined;        /* genuinely fresh — nothing to recover */
-      const bak = await backend.get('meta', V4_BACKUP_KEY);
-      if (bak === undefined) return undefined;
-      /* The backup is untrusted storage input too. Classify the exact bytes
-         before any write: corrupt/future backup data must never destroy the
-         invalid primary whose evidence the caller is protecting. */
-      if (!isSupported(bak)) return undefined;
-      /* Bind every byte observed above and exclude the revisioned v5 authority
-         atomically. A newer primary, changed backup, or completed v5
-         replacement makes recovery lose cleanly instead of rolling it back. */
-      const recovered = await backend.compareAndApply([
-        { store: 'meta', key: PRIMARY, value: primary },
-        { store: 'meta', key: V4_BACKUP_KEY, value: bak },
-        { store: 'meta', key: F3_REVISION_KEY, value: undefined },
-        { store: 'meta', key: F3_ACTIVE_PLAY_LEASE_KEY, value: undefined },
-      ], [{ store: 'meta', key: PRIMARY, value: bak }]);
-      return recovered ? bak : undefined;
     },
     async reset(): Promise<void> {
       /* One canonical list owns both schema creation and wipe coverage. A
