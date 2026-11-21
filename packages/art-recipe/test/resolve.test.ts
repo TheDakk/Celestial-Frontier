@@ -2,13 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
 import { guardianFor } from '@cf/domain-genome';
-import { EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
+import { EXTREMOPHILE_MOVEMENT, EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
 
 describe('resolveAnatomy', () => {
   it('resolves a full fauna genome at Guardian size when it carries the Guardian marker', () => {
-    expect(resolveAnatomy({ ...base, apex: 12 })).toEqual({ kingdom: 'fauna', family: 'quadruped', torso: 'sturdy', tier: 'guardian', head: 3, tail: 6, pattern: 7, skin: 7, limbs: 8, eyes: 4, colour: 13, accent: 2, glow: true, swimmer: false, form: 0 });
+    expect(resolveAnatomy({ ...base, apex: 12 })).toEqual({ kingdom: 'fauna', family: 'quadruped', torso: 'sturdy', tier: 'guardian', head: 3, tail: 6, pattern: 7, skin: 7, limbs: 8, eyes: 4, colour: 13, accent: 2, glow: true, swimmer: false, form: 0, floraTable: 'land' });
   });
   it.each([[0, 'quadruped', 'sturdy'], [1, 'quadruped', 'armored'], [2, 'quadruped', 'stilt'], [3, 'tentacled', ''], [4, 'serpent', ''], [5, 'myriapod', ''], [6, 'gastropod', ''], [7, 'membranous', ''], [8, 'crystalline', ''], [9, 'gelatinous', ''], [10, 'quadruped', 'tusked'], [11, 'quadruped', 'horned'], [12, 'arachnid', ''], [13, 'quadruped', 'squat'], [14, 'insect', ''], [15, 'radial', '']])('body %i is %s %s', (body, family, torso) => {
     const a = resolveAnatomy({ ...base, body }); expect([a.family, a.torso]).toEqual([family, torso]);
@@ -46,7 +46,7 @@ describe('resolveAnatomy', () => {
   });
   it.each([['flora', 18], ['fungi', 9], ['microbe', 12]])('%s resolves its own family with form wrapped to %i', (kingdom, size) => {
     const a = resolveAnatomy({ ...base, kingdom, form: size + 2, loco: 4 });
-    expect(a).toEqual({ kingdom, family: kingdom, torso: '', tier: 'large', head: 0, tail: 0, pattern: 0, skin: 0, limbs: 0, eyes: 0, colour: 13, accent: 2, glow: true, swimmer: false, form: 2 });
+    expect(a).toEqual({ kingdom, family: kingdom, torso: '', tier: 'large', head: 0, tail: 0, pattern: 0, skin: 0, limbs: 0, eyes: 0, colour: 13, accent: 2, glow: true, swimmer: false, form: 2, floraTable: 'land' });
   });
   it('wraps wild genes into range and never throws', () => {
     const wild: unknown[] = [0, 1, 17, 1000003, -1, -999, 2, -7, 3, 2 ** 40, -(2 ** 40), 1e300, -1e300, 2.5, -2.5, 7.9, 'x', '3', undefined, null, NaN, Infinity, -Infinity, true, {}, []];
@@ -79,9 +79,10 @@ describe('the resolver is tied to the game tables', () => {
     body: traits.FA_BODY, loco: traits.FA_LOCO, head: traits.FA_HEAD, tail: traits.FA_TAIL, pattern: traits.FA_PATTERN,
     skin: traits.FA_SKIN, limbs: traits.FA_LIMBS, eyes: traits.FA_EYES, size: traits.FA_SIZE, color: traits.SP_COLOR,
     accent: traits.SP_COLOR, floraForm: traits.FLORA_FORM, fungiForm: traits.FUNGI_FORM, microbeForm: traits.MICROBE_FORM,
+    extremophileLoco: traits.EX_LOCO, aquaticFloraForm: traits.AQ_FLORA_FORM, aerialFloraForm: traits.AIR_FLORA_FORM,
   };
   it('wraps each gene by the fixed length, and that length is the game table\'s', () => {
-    expect(GENE_LENGTHS).toEqual({ body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17, floraForm: 18, fungiForm: 9, microbeForm: 12 });
+    expect(GENE_LENGTHS).toEqual({ body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17, floraForm: 18, fungiForm: 9, microbeForm: 12, extremophileLoco: 9, aquaticFloraForm: 6, aerialFloraForm: 3 });
     for (const gene of Object.keys(GENE_LENGTHS) as (keyof typeof GENE_LENGTHS)[]) expect(TABLES[gene].length, gene).toBe(GENE_LENGTHS[gene]);
   });
   it('reads LIMB_COUNTS and EYE_COUNTS from the same numbers as the game tables', () => {
@@ -127,5 +128,48 @@ describe('the Guardian tier canvas', () => {
       expect(stageW - w, `${stageW}x${stageH}`).toBeGreaterThanOrEqual(16);
       expect(stageH - h, `${stageW}x${stageH}`).toBeGreaterThanOrEqual(16);
     }
+  });
+});
+
+describe('extremophiles', () => {
+  it('classifies every row of the game\'s extremophile movement table, in its order', () => {
+    expect(EXTREMOPHILE_MOVEMENT).toHaveLength(traits.EX_LOCO.length);
+    EXTREMOPHILE_MOVEMENT.forEach(([name], i) => expect(name, `row ${i}`).toBe(traits.EX_LOCO[i]));
+    expect(EXTREMOPHILE_MOVEMENT.map(([, swims]) => swims)).toEqual([false, true, true, false, false, false, false, false, false]);
+  });
+  it('routes a marked genome by the extremophile table: swimmers to the swimming body, the rest to the body table', () => {
+    const x = { ...base, body: 1, x: 1 };
+    for (let loco = 0; loco < 9; loco++) {
+      const a = resolveAnatomy({ ...x, loco });
+      const swims = loco === 1 || loco === 2;
+      expect([a.family, a.torso, a.swimmer], `loco ${loco}`).toEqual(swims ? ['fish', '', true] : ['quadruped', 'armored', false]);
+    }
+  });
+  it('wraps a drifted or negative movement gene by the extremophile table\'s length', () => {
+    const swims = (loco: unknown, marker: unknown = 1): boolean => resolveAnatomy({ ...base, x: marker, loco }).swimmer;
+    expect([10, 10.6, 11, -8, -7].map((loco) => swims(loco))).toEqual([true, true, true, true, true]); // 1, 1, 2, 1, 2
+    expect([4, 13, 17, -1, 9, NaN, undefined].map((loco) => swims(loco))).toEqual([false, false, false, false, false, false, false]); // 4, 4, 8, 8, 0, 0, 0
+    expect([true, 'yes', 2].map((marker) => swims(1, marker))).toEqual([true, true, true]);
+  });
+  it('keeps the normal rule without the marker: movement 4 and 13 swim, 1 and 2 do not', () => {
+    for (const marker of [undefined, 0, false, '', null, Infinity]) {
+      expect([1, 2, 4, 13].map((loco) => resolveAnatomy({ ...base, x: marker, loco }).swimmer), String(marker)).toEqual([false, false, true, true]);
+    }
+  });
+});
+
+describe('flora form tables', () => {
+  const flora = { ...base, kingdom: 'flora' };
+  it('wraps the form by the sea table for aq, else the air table for af, else the land table', () => {
+    const at = (extra: Record<string, unknown>, form: number) => { const a = resolveAnatomy({ ...flora, ...extra, form }); return [a.floraTable, a.form]; };
+    const [land, sea, air] = [traits.FLORA_FORM.length, traits.AQ_FLORA_FORM.length, traits.AIR_FLORA_FORM.length];
+    expect(at({}, land + 2)).toEqual(['land', 2]);
+    expect(at({ aq: 1 }, sea + 2)).toEqual(['aquatic', 2]);
+    expect(at({ af: 1 }, air + 2)).toEqual(['aerial', 2]);
+    expect(at({ aq: 1, af: 1 }, sea + 4)).toEqual(['aquatic', 4]); // the sea marker is checked first
+    expect(at({ aq: 0, af: true }, -1)).toEqual(['aerial', air - 1]);
+  });
+  it('is land for every other kingdom, markers or not', () => {
+    for (const kingdom of ['fauna', 'fungi', 'microbe']) expect(resolveAnatomy({ ...base, kingdom, aq: 1, af: 1 }).floraTable, kingdom).toBe('land');
   });
 });
