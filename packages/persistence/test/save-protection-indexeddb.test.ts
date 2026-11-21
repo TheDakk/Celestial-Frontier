@@ -297,6 +297,37 @@ function arc5VersionOneCertificate(): V5Extensions {
 }
 
 describe('@cf/persistence — a save shape only the old game wrote is refused in cf-v2-pixel and never overwritten', () => {
+  it('a store holding only a v4 primary, with no v5 schema row, is protected as corrupt and never migrated; the stored bytes are unchanged', async () => {
+    await withFakeIndexedDB(async (fake) => {
+      await createIndexedDBBackend().apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
+      const before = fake.bytes(DATABASE);
+      expect(before.meta).toEqual({ [V4_PRIMARY_KEY]: VETERAN_RAW });
+
+      const backend = createIndexedDBBackend();
+      expect(await readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW)).toEqual({ kind: 'not-migrated' });
+      expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({ kind: 'protected', reason: 'corrupt' });
+      expect(await initializeFreshV5(backend, writable(), REGISTRY, NOW)).toEqual({ kind: 'not-fresh' });
+
+      expect(fake.bytes(DATABASE)).toEqual(before);
+    });
+  });
+
+  it('the boot classification still answers fresh for an empty store and already-current for a v2 save, and writes nothing', async () => {
+    await withFakeIndexedDB(async (fake) => {
+      const empty = createIndexedDBBackend();
+      expect(await migrateStoredV4ToV5(empty, REGISTRY, NOW)).toEqual({ kind: 'fresh' });
+      expect(Object.values(fake.bytes(DATABASE)).every((rows) => Object.keys(rows).length === 0)).toBe(true);
+
+      await storedSave(empty, null);
+      const before = fake.bytes(DATABASE);
+      const backend = createIndexedDBBackend();
+      expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({
+        kind: 'already-current', legacyV4Raw: before.meta?.[V4_PRIMARY_KEY],
+      });
+      expect(fake.bytes(DATABASE)).toEqual(before);
+    });
+  });
+
   it('an Arc 5 version-1 ownership certificate is refused as corrupt, no write is prepared, and the stored bytes are unchanged', async () => {
     await withFakeIndexedDB(async (fake) => {
       expect(await initializeFreshV5(

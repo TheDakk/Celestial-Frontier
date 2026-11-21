@@ -22,7 +22,8 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   exportPortableV5Save,
-  migrateStoredV4ToV5,
+  F3_REVISION_KEY,
+  initializeFreshV5,
   prepareV5Replacement,
   readSaveV5,
   readSaveV5WithRecovery,
@@ -61,6 +62,15 @@ function veteranState() {
   const classified = classifyV4Save(VETERAN_RAW, REGISTRY, NOW);
   if (classified.kind !== 'supported') throw new Error('veteran fixture must be supported');
   return classified.state;
+}
+
+/** The store a v2 save starts with: written through initializeFreshV5, then its revision row
+ * set to '0', the revision these tests count from (they were written against a migrated store,
+ * which started at '0'; v2 itself starts at '1'). */
+async function seedV5(backend: StorageBackend): Promise<void> {
+  expect((await initializeFreshV5(backend, { state: veteranState(), extensions: {} }, REGISTRY, NOW)).kind)
+    .toBe('initialized');
+  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
 }
 
 function extensionFixture(): V5Extensions {
@@ -116,11 +126,8 @@ describe('@cf/persistence — portable v5 backup/import authority', () => {
 
   it('replaces rows, mirror, snapshot, backup, receipts, and revision atomically while retaining portable extensions', async () => {
     const backend = createMemoryBackend();
-    await backend.apply([
-      { store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW },
-      { store: 'meta', key: V4_BACKUP_KEY, value: 'old-expedition-backup' },
-    ]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    await seedV5(backend);
+    await backend.apply([{ store: 'meta', key: V4_BACKUP_KEY, value: 'old-expedition-backup' }]);
     await backend.apply([{
       store: 'receipts', key: 'receipt:99',
       value: '{"ordinal":99,"kind":"old","witness":"old-expedition"}',
@@ -289,8 +296,7 @@ describe('@cf/persistence — portable v5 backup/import authority', () => {
   it('fails closed when individually valid split rows exceed global extension bounds', async () => {
     const initializedBackend = async (): Promise<StorageBackend> => {
       const backend = createMemoryBackend();
-      await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-      expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+      await seedV5(backend);
       return backend;
     };
     const rewriteExtensions = async (
@@ -345,11 +351,8 @@ describe('@cf/persistence — portable v5 backup/import authority', () => {
         return base.compareAndApply(checks, operations, clearStores);
       },
     };
-    await backend.apply([
-      { store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW },
-      { store: 'meta', key: V4_BACKUP_KEY, value: 'old-backup' },
-    ]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    await seedV5(backend);
+    await backend.apply([{ store: 'meta', key: V4_BACKUP_KEY, value: 'old-backup' }]);
     await backend.apply([{
       store: 'receipts', key: 'receipt:5',
       value: '{"ordinal":5,"kind":"old","witness":"old"}',

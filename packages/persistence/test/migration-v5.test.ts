@@ -61,7 +61,31 @@ async function dump(backend: StorageBackend): Promise<Record<string, Record<stri
   return result;
 }
 
-describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', () => {
+/** The store a v2 save starts with: written through initializeFreshV5, then its revision row
+ * set to '0', the revision these tests count from (they were written against a migrated store,
+ * which started at '0'; v2 itself starts at '1'). */
+async function seededBackend(raw = VETERAN_RAW, registry = REGISTRY, now = NOW): Promise<StorageBackend> {
+  const backend = createMemoryBackend();
+  const classified = classifyV4Save(raw, registry, now);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  expect((await initializeFreshV5(backend, { state: classified.state, extensions: {} }, registry, now)).kind)
+    .toBe('initialized');
+  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
+  return backend;
+}
+
+/** A seeded store whose save was then replaced by `raw` through the import sheet's legacy-v4
+ * path, which keeps the exact `raw` as the sourceSchema-4 recovery snapshot. */
+async function replacedBackend(raw: string): Promise<StorageBackend> {
+  const backend = await seededBackend();
+  const replacement = prepareV5Replacement(raw, REGISTRY, NOW);
+  if (replacement.kind !== 'prepared') throw new Error(`replacement was ${replacement.kind}`);
+  expect(await createRevisionedRepository(backend).replace({ expectedRevision: 0, writes: replacement.operations }))
+    .toMatchObject({ kind: 'committed' });
+  return backend;
+}
+
+describe('@cf/persistence — F3 v5 save topology and compatibility codec', () => {
   it('accepts a coherent v4 envelope with retained Training evidence but does not promote partial loader fixtures', () => {
     const training = FIXTURES.inputs.tut_midtraining as { tut: unknown; tsnap: unknown };
     const coherent = {
@@ -108,7 +132,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
         reason: 'corrupt',
       },
       { raw: '{"nav":', reason: 'corrupt' },
-      { raw: JSON.stringify({ ...LEGACY_SLICE_VALUE, v: 9 }), reason: 'future-version' },
+      { raw: JSON.stringify({ ...LEGACY_SLICE_VALUE, v: 9 }), reason: 'corrupt' },
     ] as const;
 
     for (const { raw, reason } of nearMisses) {
@@ -126,47 +150,6 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     }
   });
 
-  it('atomically writes every split store plus exact snapshot/journal while retaining the v4 primary', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-
-    const migrated = await migrateStoredV4ToV5(backend, REGISTRY, NOW);
-    expect(migrated.kind).toBe('migrated');
-    if (migrated.kind !== 'migrated') return;
-
-    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(VETERAN_RAW);
-    expect(await backend.get('meta', V5_SCHEMA_KEY)).toBeDefined();
-    for (const [store, segment] of [
-      ['player', 'player'], ['creatures', 'creatures'], ['catalog', 'catalog'],
-      ['inventory', 'inventory'], ['settings', 'settings'],
-    ] as const) {
-      const row = JSON.parse((await backend.get(store, `v5:${segment}`))!) as {
-        schema: number; segment: string; data: Record<string, unknown>;
-      };
-      expect(row.schema, segment).toBe(5);
-      expect(row.segment, segment).toBe(segment);
-      expect(Array.isArray(row.data), segment).toBe(false);
-    }
-    const snapshot = JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string };
-    expect(snapshot.raw).toBe(VETERAN_RAW);
-    expect(JSON.parse((await backend.get('journal', V5_JOURNAL_KEY))!)).toMatchObject({
-      schema: 5, kind: 'v4-to-v5', phase: 'complete', snapshotKey: V5_SNAPSHOT_KEY,
-    });
-
-    const loaded = await readSaveV5(backend, REGISTRY, NOW);
-    expect(loaded.kind).toBe('loaded');
-    if (loaded.kind !== 'loaded') return;
-    expect(loaded.legacyV4Raw).toBe(migrated.normalizedV4Raw);
-
-    /* Fixed point: a second migration neither rewrites rows nor advances a
-       journal. The first migration's exact bytes remain the only snapshot. */
-    const before = await dump(backend);
-    expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({
-      kind: 'already-current', legacyV4Raw: migrated.normalizedV4Raw,
-    });
-    expect(await dump(backend)).toEqual(before);
-  });
-
   it('anchors notification normalization to the split export clock across later v5 reads', async () => {
     const migrationNow = NOW + 10_000;
     const laterNow = NOW + 600_000;
@@ -179,13 +162,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
       { id: 3, tt: 'future', ms: '', t: future, read: true },
     ];
     const raw = JSON.stringify(source);
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: raw }]);
-
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, migrationNow)).kind).toBe('migrated');
-    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(raw);
-    const snapshot = JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string };
-    expect(snapshot.raw).toBe(raw);
+    const backend = await seededBackend(raw, REGISTRY, migrationNow);
     const player = JSON.parse((await backend.get('player', 'v5:player'))!) as {
       data: { at: number; notifs: Array<{ t: number }> };
     };
@@ -198,12 +175,9 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(loaded.state.notifications.map(({ t }) => t)).toEqual([
       migrationNow, migrationNow, future,
     ]);
-    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(raw);
-    expect((JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string }).raw)
-      .toBe(raw);
   });
 
-  it('carries corrected genome, Map, Set, and record semantics through migration and the v5 read fixed point', async () => {
+  it('carries corrected genome, Map, Set, and record semantics through a fresh v5 write and the v5 read fixed point', async () => {
     const numericSignatureRegistry: ContentRegistry = {
       ...REGISTRY,
       sigIds: [...REGISTRY.sigIds, '0'],
@@ -237,11 +211,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     }];
     const exactRaw = JSON.stringify(source);
 
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: exactRaw }]);
-    const migrated = await migrateStoredV4ToV5(backend, numericSignatureRegistry, NOW);
-    expect(migrated.kind).toBe('migrated');
-    if (migrated.kind !== 'migrated') return;
+    const backend = await seededBackend(exactRaw, numericSignatureRegistry);
 
     const loaded = await readSaveV5(backend, numericSignatureRegistry, NOW);
     expect(loaded.kind).toBe('loaded');
@@ -291,7 +261,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     }
 
     for (const [raw, reason] of [
-      ['{"v":9,"epoch":1}', 'future-version'],
+      ['{"v":9,"epoch":1}', 'corrupt'],
       ['{"v":4,"epoch":1,"codex":[],"land":[]}', 'corrupt'],
     ] as const) {
       const backend = createMemoryBackend();
@@ -303,49 +273,8 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     }
   });
 
-  it('leaves the exact v4 source and every v5 row untouched when the atomic backend fails', async () => {
-    const memory = createMemoryBackend();
-    await memory.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    const failing: StorageBackend = {
-      ...memory,
-      async compareAndApply() { throw new Error('injected transaction abort'); },
-    };
-
-    expect(await migrateStoredV4ToV5(failing, REGISTRY, NOW)).toEqual({
-      kind: 'storage-error', message: 'injected transaction abort',
-    });
-    expect(await memory.get('meta', V4_PRIMARY_KEY)).toBe(VETERAN_RAW);
-    expect(await memory.get('meta', V5_SCHEMA_KEY)).toBeUndefined();
-    expect(await memory.get('journal', V5_SNAPSHOT_KEY)).toBeUndefined();
-    for (const [store, segment] of [
-      ['player', 'player'], ['creatures', 'creatures'], ['catalog', 'catalog'],
-      ['inventory', 'inventory'], ['settings', 'settings'],
-    ] as const) expect(await memory.get(store, `v5:${segment}`), segment).toBeUndefined();
-  });
-
-  it('fails a changed-source CAS without snapshotting or splitting the wrong parent', async () => {
-    const memory = createMemoryBackend();
-    await memory.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    const changed = VETERAN_RAW.replace('"me":"Dakk"', '"me":"Concurrent Writer"');
-    expect(changed).not.toBe(VETERAN_RAW);
-    const racing: StorageBackend = {
-      ...memory,
-      async compareAndApply(checks, operations, clearStores) {
-        await memory.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: changed }]);
-        return memory.compareAndApply(checks, operations, clearStores);
-      },
-    };
-
-    expect(await migrateStoredV4ToV5(racing, REGISTRY, NOW)).toEqual({ kind: 'stale-source' });
-    expect(await memory.get('meta', V4_PRIMARY_KEY)).toBe(changed);
-    expect(await memory.get('meta', V5_SCHEMA_KEY)).toBeUndefined();
-    expect(await memory.get('journal', V5_SNAPSHOT_KEY)).toBeUndefined();
-  });
-
   it('accepts v5 state and F3 revision only from one stable bracketed snapshot', async () => {
-    const base = createMemoryBackend();
-    await base.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(base, REGISTRY, NOW)).kind).toBe('migrated');
+    const base = await seededBackend();
     const initial = await readSaveV5(base, REGISTRY, NOW);
     if (initial.kind !== 'loaded') throw new Error(`expected loaded v5, received ${initial.kind}`);
     const nextState = { ...initial.state, explorerName: 'Concurrent Winner' };
@@ -391,9 +320,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
   });
 
   it('protects a current v5 topology whose explicit revision was deleted', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const backend = await seededBackend();
     await backend.apply([{ store: 'meta', key: F3_REVISION_KEY }]);
     await expect(readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW)).resolves.toEqual({
       kind: 'storage-error', message: 'current v5 revision authority is absent',
@@ -402,10 +329,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
   });
 
   it('recovers a corrupt current row only from the validated exact snapshot, without modifying storage', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    const migration = await migrateStoredV4ToV5(backend, REGISTRY, NOW);
-    expect(migration.kind).toBe('migrated');
+    const backend = await replacedBackend(VETERAN_RAW);
 
     const corruptPlayer = '{"schema":5,"segment":"player","data":[]}';
     await backend.apply([{ store: 'player', key: 'v5:player', value: corruptPlayer }]);
@@ -444,9 +368,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
       { name: 'legacy', snapshot: TRAINING_CAPTURE.snapshot, expected: 'legacy-or-unknown' },
     ] as const) {
       const raw = JSON.stringify({ ...veteran, tut: 0, tsnap: fixture.snapshot });
-      const backend = createMemoryBackend();
-      await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: raw }]);
-      expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind, fixture.name).toBe('migrated');
+      const backend = await replacedBackend(raw);
 
       const loaded = await readSaveV5(backend, REGISTRY, NOW);
       expect(loaded.kind, fixture.name).toBe('loaded');
@@ -471,9 +393,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
   });
 
   it('rejects a current-schema row that moves an owned field into the wrong store', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const backend = await seededBackend();
     await backend.apply([{
       store: 'settings', key: 'v5:settings',
       value: '{"schema":5,"segment":"settings","data":{"essence":999}}',
@@ -482,9 +402,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
   });
 
   it('prepares one fixed-point ordinary write whose split rows, v4 mirror, and v5-only extension commit under one revision CAS', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const backend = await seededBackend();
     const before = await readSaveV5(backend, REGISTRY, NOW);
     expect(before.kind).toBe('loaded');
     if (before.kind !== 'loaded') return;
@@ -546,9 +464,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
   });
 
   it('does not change any split row, extension, or compatibility mirror for a stale ordinary writer', async () => {
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const backend = await seededBackend();
     const loaded = await readSaveV5(backend, REGISTRY, NOW);
     expect(loaded.kind).toBe('loaded');
     if (loaded.kind !== 'loaded') return;
@@ -588,9 +504,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(prepareV5Replacement('{"v":9,"epoch":1}', REGISTRY, NOW)).toEqual({ kind: 'future-version' });
     expect(prepareV5Replacement('{}', REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
 
-    const backend = createMemoryBackend();
-    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const backend = await seededBackend();
     const oldSnapshot = await backend.get('journal', V5_SNAPSHOT_KEY);
     const veteran = FIXTURES.inputs.veteran_rich as Record<string, unknown>;
     const replacementRaw = JSON.stringify({

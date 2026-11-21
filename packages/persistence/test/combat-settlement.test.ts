@@ -41,7 +41,6 @@ import {
   COMBAT_STARTER_CONQUEST_CHARTER_STARDUST_V1,
   GUARDIAN_ACQUISITION_NAMESPACE_V1,
   GUARDIAN_COMPANION_NAMESPACE_V1,
-  V4_PRIMARY_KEY,
   applyV5ExtensionWrites,
   createActivePlayPersistenceOwner,
   createCombatSettlementPersistenceOwnerV1,
@@ -49,7 +48,8 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   encodeArc4Ownership,
-  migrateStoredV4ToV5,
+  classifyV4Save,
+  initializeFreshV5,
   prepareArc5OwnershipMigration,
   projectGuardianCombatLossXpAuthorityV1,
   readArc5OwnershipMigration,
@@ -65,6 +65,7 @@ import {
   type StorageBackend,
   type TabLeaseGrant,
   type V5WritableState,
+  F3_REVISION_KEY,
 } from '@cf/persistence';
 
 
@@ -77,6 +78,15 @@ const REGISTRY = JSON.parse(fs.readFileSync(
   path.join(baseline, 'content-registry.json'), 'utf8',
 )) as ContentRegistry;
 const NOW = 1_753_900_060_000;
+
+/** The save a v2 store starts with. The seed helper below writes it through initializeFreshV5
+ * and then sets the revision row to '0', the revision these tests count from (they were
+ * written against a migrated store, which started at '0'; v2 itself starts at '1'). */
+function seedWritable(raw: string): V5WritableState {
+  const classified = classifyV4Save(raw, REGISTRY, NOW);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  return { state: classified.state, extensions: {} };
+}
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
 const WORLD_INPUT = Object.freeze({
   galaxy: Object.freeze({ seed: 1594395733, x: -5501.81, y: -11753.64 }),
@@ -135,8 +145,8 @@ async function harness(
   claimedPrimeSignatureIds: readonly (typeof PRIME_SIGNATURE_IDS_V1)[number][] = [],
   configureState: ((state: SaveStateV2) => void) | null = null,
 ): Promise<Harness> {
-  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
-  expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+  expect((await initializeFreshV5(backend, seedWritable(VETERAN_RAW), REGISTRY, NOW)).kind).toBe('initialized');
+  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
   const loaded = await readSaveV5(backend, REGISTRY, NOW);
   if (loaded.kind !== 'loaded') throw new Error(`expected base v5, received ${loaded.kind}`);
 

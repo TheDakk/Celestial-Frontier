@@ -18,7 +18,6 @@ import {
 import {
   ARC2_LOOT_LEGACY_SOURCE_ACTION_ID,
   ARC2_LOOT_NAMESPACE,
-  V4_PRIMARY_KEY,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
   canonicalizeV5Extensions,
@@ -29,7 +28,8 @@ import {
   createTabLeaseClient,
   encodeArc2LootCarrier,
   arc2LootLegacyMirrorMatches,
-  migrateStoredV4ToV5,
+  classifyV4Save,
+  initializeFreshV5,
   projectArc2LootLegacyMirror,
   prepareArc2LootInventoryWrite,
   prepareArc2LootLegacyMigration,
@@ -39,6 +39,8 @@ import {
   type ContentRegistry,
   type SaveStateV2,
   type V5Extensions,
+  type V5WritableState,
+  F3_REVISION_KEY,
 } from '@cf/persistence';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -50,6 +52,15 @@ const REGISTRY = JSON.parse(
   fs.readFileSync(path.join(baseline, 'content-registry.json'), 'utf8'),
 ) as ContentRegistry;
 const NOW = 1_753_900_060_000;
+
+/** The save a v2 store starts with. The seed helper below writes it through initializeFreshV5
+ * and then sets the revision row to '0', the revision these tests count from (they were
+ * written against a migrated store, which started at '0'; v2 itself starts at '1'). */
+function seedWritable(raw: string): V5WritableState {
+  const classified = classifyV4Save(raw, REGISTRY, NOW);
+  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
+  return { state: classified.state, extensions: {} };
+}
 
 type LegacyLootFields = Pick<SaveStateV2, 'items' | 'equip' | 'equipAff'>;
 
@@ -459,10 +470,8 @@ describe('@cf/persistence — Arc 2 loot extension carrier', () => {
 
   it('lands the exact prepared namespace through the real lease-fenced no-RNG F4 writer', async () => {
     const backend = createMemoryBackend();
-    await backend.apply([{
-      store: 'meta', key: V4_PRIMARY_KEY, value: JSON.stringify(fixtures.inputs.veteran_rich),
-    }]);
-    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    expect((await initializeFreshV5(backend, seedWritable(JSON.stringify(fixtures.inputs.veteran_rich)), REGISTRY, NOW)).kind).toBe('initialized');
+    await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
     const initial = await readSaveV5(backend, REGISTRY, NOW);
     if (initial.kind !== 'loaded') throw new Error('expected migrated v5 state');
     const repository = createRevisionedRepository(backend);
