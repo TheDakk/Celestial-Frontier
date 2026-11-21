@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { guardianFor, makeGenome, type Genome } from '@cf/domain-genome';
+import { hashInt } from '@cf/domain-rand';
 import {
   isCanonicalCF1Address,
   resolveCF1WorldAddress,
@@ -104,6 +105,34 @@ function input(options: Readonly<{
   });
 }
 
+const TITAN_WORLDS = [
+  ['stone', 'multi', 'rocky', 0, 'Terrakoth, the Mountain’s Fist', 3071781101],
+  ['flame', 'flame', 'lava', 0, 'Pyraxis, the Ember Tyrant', 3201506615],
+  ['sky', 'multi', 'gas', 0, 'Sylphrend, the Gale Sovereign', 3071781101],
+  ['star', 'multi', 'desert', 0, 'Zephyrmaw, the Stellar Squall', 3071781101],
+  ['ocean', 'oceanMind', 'ocean', 0, 'Abyssleth, the Tide Devout', 3358924494],
+  ['mind', 'oceanMind', 'ice', 1, 'Voltmaw, the Living Current', 3358924494],
+  ['life', 'lifeGuardian', 'venus', 1, 'Venomroyne, the Blight Mother', 2655388432],
+  ['void', 'void', 'airless', 2, 'Nullreth, the Devourer', 3386171257],
+  ['prism', 'prism', 'terran', 2, 'Iridax, the Spectral Paragon', 2068897778],
+] as const;
+
+/** The Titan defender's genomes and power, built step by step as tools/record-fixtures.mjs `titanBuild`
+ *  builds them from the current game's rule (its recorded rows were checked against the real defender). */
+function titanBuild(planetSeed: number, signatureId: PrimeSignatureIdV1, regionIndex: number) {
+  const definition = PRIME_SIGNATURES_V1.find((row) => row.id === signatureId)!;
+  const heat = signatureId === 'flame' ? 2 : (signatureId === 'mind' || signatureId === 'void') ? 0 : 1;
+  const g = makeGenome(hashInt(planetSeed >>> 0, 0x7174, 0x99) >>> 0, 'fauna', heat) as Genome & Record<string, unknown>;
+  Object.assign(g, { size: 5, lumin: true, wild: 1, apex: 14, _titan: signatureId, color: definition.titanColorIndex });
+  if (definition.battlefieldWorldField !== null) g._wf = definition.battlefieldWorldField;
+  g._mult = 1.15 + regionIndex * 0.03;
+  const battleGenome = JSON.parse(JSON.stringify(g)) as Genome;
+  const capturableGenome = JSON.parse(JSON.stringify(g)) as Genome & Record<string, unknown>;
+  delete capturableGenome._mult;
+  delete capturableGenome._wf;
+  return { battleGenome, capturableGenome, power: battleStats(battleGenome).total };
+}
+
 describe('Arc 6 Guardian / Prime Codex legacy definitions', () => {
   it('pins all nine ordered ids, elements, tiers, region bands, worlds, and Titan names', () => {
     expect(PRIME_SIGNATURE_IDS_V1).toEqual([
@@ -135,18 +164,7 @@ describe('Arc 6 Guardian / Prime Codex legacy definitions', () => {
   });
 
   it('pins all nine deterministic world mappings with fixed legacy seeds', () => {
-    const fixtures = [
-      ['stone', 'multi', 'rocky', 0, 'Terrakoth, the Mountain’s Fist', 3071781101],
-      ['flame', 'flame', 'lava', 0, 'Pyraxis, the Ember Tyrant', 3201506615],
-      ['sky', 'multi', 'gas', 0, 'Sylphrend, the Gale Sovereign', 3071781101],
-      ['star', 'multi', 'desert', 0, 'Zephyrmaw, the Stellar Squall', 3071781101],
-      ['ocean', 'oceanMind', 'ocean', 0, 'Abyssleth, the Tide Devout', 3358924494],
-      ['mind', 'oceanMind', 'ice', 1, 'Voltmaw, the Living Current', 3358924494],
-      ['life', 'lifeGuardian', 'venus', 1, 'Venomroyne, the Blight Mother', 2655388432],
-      ['void', 'void', 'airless', 2, 'Nullreth, the Devourer', 3386171257],
-      ['prism', 'prism', 'terran', 2, 'Iridax, the Spectral Paragon', 2068897778],
-    ] as const;
-    for (const [signatureId, worldFixture, worldType, regionIndex, guardianName, genomeSeed] of fixtures) {
+    for (const [signatureId, worldFixture, worldType, regionIndex, guardianName, genomeSeed] of TITAN_WORLDS) {
       const encounter = projectGuardianPrimeEncounterV1(input({ world: worldFixture, worldType, regionIndex }));
       expect(encounter?.defender.kind, signatureId).toBe('titan');
       expect(encounter?.defender.signatureId, signatureId).toBe(signatureId);
@@ -155,6 +173,28 @@ describe('Arc 6 Guardian / Prime Codex legacy definitions', () => {
       expect(encounter?.defender.battleGenome.seed, signatureId).toBe(genomeSeed);
       expect(encounter?.defender.battleGenome._titan, signatureId).toBe(signatureId);
     }
+  });
+
+  it('builds every Titan defender genome and power as the current game does, at every region it can appear', () => {
+    let checked = 0;
+    for (const [signatureId, worldFixture, worldType] of TITAN_WORLDS) {
+      const definition = PRIME_SIGNATURES_V1.find((row) => row.id === signatureId)!;
+      // The other eight are claimed so this signature stays selected at every region.
+      const others = PRIME_SIGNATURE_IDS_V1.filter((id) => id !== signatureId);
+      for (let regionIndex = definition.minimumRegionIndex; regionIndex <= 5; regionIndex++) {
+        const label = `${signatureId} region ${regionIndex}`;
+        const defender = projectGuardianPrimeEncounterV1(input({
+          world: worldFixture, worldType, regionIndex, claimedSignatureIds: others,
+        }))?.defender;
+        expect(defender?.signatureId, label).toBe(signatureId);
+        const expected = titanBuild(world(worldFixture).planet.seed, signatureId, regionIndex);
+        expect(defender?.battleGenome, label).toEqual(expected.battleGenome);
+        expect(defender?.capturableGenome, label).toEqual(expected.capturableGenome);
+        expect(defender?.power, label).toBe(expected.power);
+        checked++;
+      }
+    }
+    expect(checked).toBe(5 * 6 + 2 * 5 + 2 * 4);
   });
 });
 
@@ -283,13 +323,14 @@ describe('Titan eligibility, resonance, and priority', () => {
 describe('encounter identity, suppression, and settlement-safe projections', () => {
   it('keeps canonical minting above combatcore without recreating the scene dependency cycle', () => {
     // This file lives in tests/cross/; package tests now also live outside packages/, so the
-    // mint-consumer walk covers every folder that holds code: packages/, apps/ and tests/.
+    // mint-consumer walk covers every folder that holds code: packages/, apps/, tests/ and tools/.
     const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
     const workspacePackages = path.join(repoRoot, 'packages');
     const domainRoot = path.join(workspacePackages, 'domain');
     const combatRoot = path.join(domainRoot, 'combatcore');
     const readPackage = (file: string) => JSON.parse(fs.readFileSync(file, 'utf8')) as {
       dependencies?: Record<string, string>;
+      devDependencies?: Record<string, string>;
       exports?: Record<string, string>;
     };
     const combatPackage = readPackage(path.join(combatRoot, 'package.json'));
@@ -310,11 +351,12 @@ describe('encounter identity, suppression, and settlement-safe projections', () 
         }
       }
     };
-    for (const root of ['packages', 'apps', 'tests']) visit(path.join(repoRoot, root));
+    for (const root of ['packages', 'apps', 'tests', 'tools']) visit(path.join(repoRoot, root));
 
     expect(scenePackage.dependencies).toHaveProperty('@cf/domain-strays');
     expect(straysPackage.dependencies).toHaveProperty('@cf/domain-combatcore');
     expect(combatPackage.dependencies).not.toHaveProperty('@cf/scene');
+    expect(combatPackage.devDependencies ?? {}).not.toHaveProperty('@cf/scene');
     expect(combatPackage.dependencies).toHaveProperty('@cf/domain-worldidentity');
     expect(source).not.toContain("from '@cf/scene'");
     expect(source).not.toContain(mintSpecifier);

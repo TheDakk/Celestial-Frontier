@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { makeGenome } from '@cf/domain-genome';
+import { hashInt } from '@cf/domain-rand';
 import {
   ABILITY_THEMES,
   PLAYER_SEED,
+  PRIME_SIGNATURES_V1,
   STAT_HUES,
   STAT_NAMES,
   abilityOf,
@@ -32,9 +34,10 @@ interface CombatFixture {
   codes: Array<{ input: GenomeInput; name: string; champ: boolean } & Record<string, unknown>>;
   badCodes: Array<{ code: string; decoded: unknown }>;
   guardians: Record<string, { planetSeed: number; worldType: string } & Record<string, unknown>>;
-  titans: { mirrored: TitanBuild[]; real: Array<{ planetSeed: number; worldType: string; regionIndex: number; signatureId: string; defender: TitanBuild & { kind: string; signatureId: string } }> };
+  titans: { mirrored: Array<TitanBuild & TitanAt>; real: Array<{ planetSeed: number; worldType: string; regionIndex: number; signatureId: string; defender: TitanBuild & { kind: string; signatureId: string } }> };
 }
 interface TitanBuild { battleGenome: Record<string, unknown>; capturableGenome: Record<string, unknown>; power: number }
+interface TitanAt { planetSeed: number; signatureId: string; regionIndex: number }
 
 const fixture = JSON.parse(
   readFileSync(new URL('../../../../fixtures/current/combat.json', import.meta.url), 'utf8'),
@@ -128,6 +131,34 @@ function titanMismatches(f: CombatFixture): string[] {
   return out;
 }
 
+/* The Titan build, step by step as the recorder's `titanBuild` (tools/record-fixtures.mjs) makes it: every
+   recorded row, mirrored and real, must equal this build from its own (planetSeed, signature, region). */
+function titanBuild(planetSeed: number, signatureId: string, regionIndex: number): TitanBuild {
+  const definition = PRIME_SIGNATURES_V1.find((row) => row.id === signatureId)!;
+  const heat = signatureId === 'flame' ? 2 : (signatureId === 'mind' || signatureId === 'void') ? 0 : 1;
+  const g: Record<string, unknown> = makeGenome(hashInt(planetSeed >>> 0, 0x7174, 0x99) >>> 0, 'fauna', heat);
+  Object.assign(g, { size: 5, lumin: true, wild: 1, apex: 14, _titan: signatureId, color: definition.titanColorIndex });
+  if (definition.battlefieldWorldField !== null) g._wf = definition.battlefieldWorldField;
+  g._mult = 1.15 + regionIndex * 0.03;
+  const battleGenome = JSON.parse(JSON.stringify(g)) as Record<string, unknown>;
+  const capturableGenome = JSON.parse(JSON.stringify(g)) as Record<string, unknown>;
+  delete capturableGenome._mult;
+  delete capturableGenome._wf;
+  return { battleGenome, capturableGenome, power: battleStats(battleGenome).total };
+}
+
+/** Rows whose recorded genomes or power differ from the build. */
+function titanBuildMismatches(f: CombatFixture): string[] {
+  const out: string[] = [];
+  const same = (label: string, at: TitanAt, recorded: TitanBuild) => {
+    const { battleGenome, capturableGenome, power } = recorded;
+    if (JSON.stringify(titanBuild(at.planetSeed, at.signatureId, at.regionIndex)) !== JSON.stringify({ battleGenome, capturableGenome, power })) out.push(label);
+  };
+  f.titans.mirrored.forEach((row, i) => same(`mirrored ${i}`, row, row));
+  f.titans.real.forEach((row, i) => same(`real ${i}`, row, row.defender));
+  return out;
+}
+
 describe('@cf/domain-combatcore — pinned against the current game', () => {
   it('has the recorded input counts', () => {
     expect([fixture.stats.length, fixture.duels.length, fixture.codes.length, fixture.levels.length])
@@ -166,6 +197,10 @@ describe('@cf/domain-combatcore — pinned against the current game', () => {
   it('every recorded Titan defender has the recorded power, capturable genome and placement', () => {
     expect(titanMismatches(fixture)).toEqual([]);
   });
+  it('every recorded Titan defender, mirrored and real, equals the Titan build from its planet, signature and region', () => {
+    expect(fixture.titans.real.length).toBeGreaterThan(9);
+    expect(titanBuildMismatches(fixture)).toEqual([]);
+  });
   it('notices one changed recorded value in each section (negative control)', () => {
     const changes: Array<[string, (f: CombatFixture) => void]> = [
       ['constants', (f) => { (f.constants.STAT_NAMES as string[])[0] += '!'; }],
@@ -188,6 +223,10 @@ describe('@cf/domain-combatcore — pinned against the current game', () => {
     titan.titans.real[0]!.defender.power += 1;
     titan.titans.mirrored[0]!.capturableGenome._wf = 'lava';
     expect(titanMismatches(titan)).toEqual(['mirrored 0: capturable', 'real 0: power']);
+    const build = structuredClone(fixture);
+    build.titans.mirrored[1]!.battleGenome.apex = 15;
+    build.titans.real[2]!.regionIndex += 1;
+    expect(titanBuildMismatches(build)).toEqual(['mirrored 1', 'real 2']);
     const mirror = structuredClone(fixture);
     mirror.duels[20]!.b.extra._wf = 'ice';
     expect(mirrorMismatches(mirror)).toEqual([20]);
