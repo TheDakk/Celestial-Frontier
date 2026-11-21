@@ -284,6 +284,23 @@ describe('checkPack composes every variant', () => {
     expect(errorsOf(r).some((l) => l.startsWith('error: detached head on quadruped/sturdy/small '))).toBe(true);
     expect(r.ok).toBe(false);
   });
+  it('finds a defective variant that no sampled creature picks, through the forced pass alone', () => {
+    // At the large tier with head kind h9, the art streams of every creature the tool samples pick head variant v0 or
+    // v1, never v2. v2 is drawn far off the torso, so it is loose at every shift: had any sampled creature picked it,
+    // a finding without a forced variant would name it. Only forcing v2 into a creature finds it.
+    const large = GOOD.replaceAll('/small', '/large').replace('part quadruped/head/h0/large/v0', 'part quadruped/head/h9/large/v0');
+    const FAR = FLUSH.replace('anchor=-2,0', 'anchor=-10,0');
+    const r = checkPack(`${large}\npart quadruped/head/h9/large/v1\n${GOOD_HEAD}\npart quadruped/head/h9/large/v2\n${FAR}`);
+    expect(r.parseError).toBeNull();
+    expect(r.unreachable).toEqual([]);
+    expect(r.variants).toBe(3);
+    expect(r.detached.length).toBeGreaterThan(0);
+    expect(r.detached.filter((d) => d.variant === undefined)).toEqual([]);
+    expect(new Set(r.detached.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h9/large/v2']));
+    expect(new Set(r.detached.map((d) => d.shift.head.join(',')))).toHaveProperty('size', 9);
+    expect(errorsOf(r).some((l) => l.startsWith('error: detached head on quadruped/sturdy/large ') && l.endsWith('with variant quadruped/head/h9/large/v2'))).toBe(true);
+    expect(r.ok).toBe(false);
+  });
   it('composes nothing extra for a pack with one variant per part type', () => {
     expect(checkPack(GOOD).variants).toBe(0);
   });
