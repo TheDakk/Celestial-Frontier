@@ -25,6 +25,19 @@
 <div id="details"></div>
 <h2>Composed creatures</h2>
 <div id="grid"></div>
+<script>
+  // Watchdog, deliberately not a module: if the module script never ran (failed to load, or the tab stayed hidden
+  // so it never got a frame), the page must not keep saying "Running" forever.
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var line = document.getElementById('verdict');
+      if (line && line.textContent.indexOf('Running') === 0) {
+        line.textContent = 'FAIL: the page did not finish (script failed to load or the tab was hidden)';
+        line.className = 'fail';
+      }
+    }, 10000);
+  });
+</script>
 <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
