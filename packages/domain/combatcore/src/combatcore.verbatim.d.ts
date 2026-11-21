@@ -1,5 +1,6 @@
 /* Hand-written types for the auto-lifted CombatCore body (verbatim v1.8.9).
    The .js must not be edited; THIS file is where the typing lives. */
+/* EDITED 2026-11-21 (task m3a-14, Dakk's word): removed the declarations of _statOpen and DOLL_ANCHORS. */
 import type { Genome } from '@cf/domain-genome';
 
 export interface BattleStats {
@@ -43,9 +44,7 @@ export function levelOf(g: { xp?: unknown }): number;
 export function projectCreatureInnateArts(
   g: Genome | Record<string, unknown>,
 ): CreatureInnateArtsProjection;
-export const _statOpen: Set<unknown>;                    /* app-coupled */
 export const STAT_NAMES: readonly string[];
 export const STAT_HUES: readonly string[];
-export const DOLL_ANCHORS: Readonly<Record<string, unknown>>;
 export const ABILITY_THEMES: Readonly<Record<string, unknown>>;
 export const PLAYER_SEED: number;

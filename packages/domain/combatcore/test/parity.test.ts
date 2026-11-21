@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/support/parity.js';
 import { probeRaw } from '../../../../tests/support/baseline.js';
-import { _statOpen, battleStats, abilityOf, abilityTheme, runDuel, encodeCreature, decodeCreature, levelOf, normGenome } from '@cf/domain-combatcore';
+import { battleStats, abilityOf, abilityTheme, runDuel, encodeCreature, decodeCreature, levelOf, normGenome } from '@cf/domain-combatcore';
 import { cleanName } from '@cf/domain-naming';
 import { makeGenome } from '@cf/domain-genome';
 
@@ -28,9 +28,8 @@ describe('baseline probes (recipes mirror tools/probe.js exactly)', () => {
     expect(canon([G1(), G2()].map((g) => abilityTheme(g)))).toBe(probeRaw('abilityTheme'));
     expect(typeof abilityTheme(G1())).toBe('string');
   });
-  it('levelOf and _statOpen expose their real runtime contracts', () => {
+  it('levelOf and battleStats expose their real runtime contracts', () => {
     expect(levelOf({ xp: 54 })).toBe(3);
-    expect(_statOpen).toBeInstanceOf(Set);
     const stats = battleStats(G1());
     expect(stats.total).toBe(stats.vit + stats.fer + stats.res + stats.agi + stats.ins);
     expect(stats.ab).toMatchObject({ theme: abilityTheme(G1()) });

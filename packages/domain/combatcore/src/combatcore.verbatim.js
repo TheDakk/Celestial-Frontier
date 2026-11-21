@@ -4,6 +4,7 @@
    The typed surface lives in index.ts / the sibling .d.ts. Bodies here are the
    determinism contract — parity fixtures depend on them byte-for-byte. */
 /* EDITED 2026-11-21 (task m3a-5): removed playerAvatar, paperdollAvatar, playerBattleStats, statBlockHTML and playerCombatant (canvas drawing and app-coupled player code). */
+/* EDITED 2026-11-21 (task m3a-14, Dakk's word): removed the unused DOLL_ANCHORS (with its comment) and _statOpen, and their names from the export list. */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
 import { cleanName } from '@cf/domain-naming';
 import { FA_SIZE, TIER_MAX, STAT_KEYS } from '@cf/domain-speciestraits';
@@ -306,22 +307,7 @@ function abilityOf(g){
   }
   return Object.assign(ab, {theme:tk, themeLabel:T.label, col:T.col});
 }
-/* where each socket pins to the figure (fractions of the doll canvas).
-   The Module docks beside the figure on the pad — its anchor is the
-   Shipyard thumbnail, not the body. */
-const DOLL_ANCHORS={
-  helmet:  [0.500,0.148],   /* centered ON the helmet (Dakk's line-up pass) */
-  ears:    [0.690,0.148],   /* beside the head at true ear height, an even gap off the helmet socket */
-  necklace:[0.500,0.262],   /* spaced down off the ring seal (Dakk) */
-  suit:    [0.500,0.375],
-  gloves:  [0.318,0.528],
-  tool:    [0.682,0.528],
-  legs:    [0.500,0.615],
-  boots:   [0.500,0.875],
-  module:  [0.200,0.310],   /* the PACK rides the shoulder — worn, not parked (Dakk) */
-};
 const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are deterministic */
-const _statOpen=new Set();
 function battleStats(g){
   const d=describeSpecies(g);
   /* THE CRADLE LAW (v1.5.2c, Dakk): Earth's starters fight at starter
@@ -523,4 +509,4 @@ function runDuel(mine, theirs){
   return {A, B, log, winner, hpA, hpB, maxA, maxB, turnA0:_turnA0};   /* CF1715-20: the log renders initiative from the RESOLVED coin, not a >= re-guess (contradicted the fight 49.4% of equal-AGI duels) */
 }
 
-export { abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, DOLL_ANCHORS, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES, projectCreatureInnateArts };
+export { abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES, projectCreatureInnateArts };
