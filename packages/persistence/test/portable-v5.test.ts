@@ -22,8 +22,6 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   exportPortableV5Save,
-  F3_REVISION_KEY,
-  initializeFreshV5,
   prepareV5Replacement,
   readSaveV5,
   readSaveV5WithRecovery,
@@ -32,6 +30,7 @@ import {
   type StorageBackend,
   type V5Extensions,
 } from '@cf/persistence';
+import { seedV5Store } from './seed-v5.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const baseline = path.join(here, '..', '..', '..', 'fixtures', 'v1');
@@ -64,13 +63,9 @@ function veteranState() {
   return classified.state;
 }
 
-/** The store a v2 save starts with: written through initializeFreshV5, then its revision row
- * set to '0', the revision these tests count from (they were written against a migrated store,
- * which started at '0'; v2 itself starts at '1'). */
+/** Seed `backend` with the veteran save by seedV5Store. */
 async function seedV5(backend: StorageBackend): Promise<void> {
-  expect((await initializeFreshV5(backend, { state: veteranState(), extensions: {} }, REGISTRY, NOW)).kind)
-    .toBe('initialized');
-  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
+  await seedV5Store(backend, { state: veteranState(), extensions: {} }, REGISTRY, NOW);
 }
 
 function extensionFixture(): V5Extensions {

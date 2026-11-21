@@ -64,8 +64,8 @@ export interface SaveRepository {
   write(payload: string): Promise<void>;
   /** Read the primary payload; undefined = genuinely fresh. */
   readPrimary(): Promise<string | undefined>;
-  /** The reset law: primary AND backup die together — a reset must not
-      resurrect via the backup. Disposable caches go too. */
+  /** The reset law: every store is cleared together — no row of the old
+      expedition, its recovery snapshot included, survives. Caches go too. */
   reset(): Promise<void>;
 }
 

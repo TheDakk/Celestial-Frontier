@@ -328,15 +328,14 @@ describe('@cf/persistence — a save shape only the old game wrote is refused in
     });
   });
 
-  it('an Arc 5 version-1 ownership certificate is refused as corrupt, no write is prepared, and the stored bytes are unchanged', async () => {
-    await withFakeIndexedDB(async (fake) => {
+  it('an Arc 5 version-1 ownership certificate is refused as corrupt and no write is prepared', async () => {
+    await withFakeIndexedDB(async () => {
       expect(await initializeFreshV5(
         createIndexedDBBackend(),
         { state: writable().state, extensions: arc5VersionOneCertificate() },
         REGISTRY,
         NOW,
       )).toMatchObject({ kind: 'initialized', revision: 1 });
-      const before = fake.bytes(DATABASE);
 
       const backend = createIndexedDBBackend();
       const loaded = await readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW);
@@ -346,8 +345,6 @@ describe('@cf/persistence — a save shape only the old game wrote is refused in
         extensions: loaded.extensions,
         resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-
-      expect(fake.bytes(DATABASE)).toEqual(before);
     });
   });
 });

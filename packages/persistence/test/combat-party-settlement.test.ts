@@ -42,8 +42,6 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   encodeArc4Ownership,
-  classifyV4Save,
-  initializeFreshV5,
   prepareArc5OwnershipMigration,
   readArc5OwnershipMigration,
   readCombatSettlementAuthorityV1,
@@ -55,8 +53,8 @@ import {
   type StorageBackend,
   type TabLeaseGrant,
   type V5WritableState,
-  F3_REVISION_KEY,
 } from '@cf/persistence';
+import { seedV5Store } from './seed-v5.js';
 
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -69,14 +67,6 @@ const REGISTRY = JSON.parse(fs.readFileSync(
 )) as ContentRegistry;
 const NOW = 1_753_900_060_000;
 
-/** The save a v2 store starts with. The seed helper below writes it through initializeFreshV5
- * and then sets the revision row to '0', the revision these tests count from (they were
- * written against a migrated store, which started at '0'; v2 itself starts at '1'). */
-function seedWritable(raw: string): V5WritableState {
-  const classified = classifyV4Save(raw, REGISTRY, NOW);
-  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
-  return { state: classified.state, extensions: {} };
-}
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
 const resolved = resolveCF1WorldAddress({
   galaxy: { seed: 1594395733, x: -5501.81, y: -11753.64 },
@@ -191,8 +181,7 @@ async function partyHarness(
   options: Readonly<Record<number, MemberOptions>> = {},
   backend: StorageBackend = createMemoryBackend(),
 ): Promise<PartyHarness> {
-  expect((await initializeFreshV5(backend, seedWritable(VETERAN_RAW), REGISTRY, NOW)).kind).toBe('initialized');
-  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
+  await seedV5Store(backend, VETERAN_RAW, REGISTRY, NOW);
   const loaded = await readSaveV5(backend, REGISTRY, NOW);
   if (loaded.kind !== 'loaded') throw new Error(`expected base v5, received ${loaded.kind}`);
 

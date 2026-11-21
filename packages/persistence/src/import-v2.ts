@@ -403,7 +403,7 @@ export function isPlausibleSaveEnvelope(value: unknown): value is Record<string,
      truncation cannot merely retain the first dozen obvious sentinels. */
   /* Completeness is key PRESENCE, deliberately not pre-sanitizer types.
      Addendum B/CF-RR-002 requires one malformed field to lose that field,
-     never roll the otherwise complete expedition back to an older backup. */
+     never refuse the otherwise complete expedition as a whole. */
   return signature.every((key) => Object.prototype.hasOwnProperty.call(data, key));
 }
 

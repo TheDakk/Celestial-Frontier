@@ -13,6 +13,8 @@ import {
   classifyV4Save,
   createMemoryBackend,
   createRevisionedRepository,
+  exportSaveV2,
+  importSaveV2,
   initializeFreshV5,
   migrateStoredV4ToV5,
   prepareV5Replacement,
@@ -23,6 +25,7 @@ import {
   type ContentRegistry,
   type StorageBackend,
 } from '@cf/persistence';
+import { seedV5Store } from './seed-v5.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const baseline = path.join(here, '..', '..', '..', 'fixtures', 'v1');
@@ -61,16 +64,10 @@ async function dump(backend: StorageBackend): Promise<Record<string, Record<stri
   return result;
 }
 
-/** The store a v2 save starts with: written through initializeFreshV5, then its revision row
- * set to '0', the revision these tests count from (they were written against a migrated store,
- * which started at '0'; v2 itself starts at '1'). */
+/** A memory store seeded with `raw` by seedV5Store. */
 async function seededBackend(raw = VETERAN_RAW, registry = REGISTRY, now = NOW): Promise<StorageBackend> {
   const backend = createMemoryBackend();
-  const classified = classifyV4Save(raw, registry, now);
-  if (classified.kind !== 'supported') throw new Error(`seed save was ${classified.kind}`);
-  expect((await initializeFreshV5(backend, { state: classified.state, extensions: {} }, registry, now)).kind)
-    .toBe('initialized');
-  await backend.apply([{ store: 'meta', key: F3_REVISION_KEY, value: '0' }]);
+  await seedV5Store(backend, raw, registry, now);
   return backend;
 }
 
@@ -619,5 +616,54 @@ describe('@cf/persistence — F3 v5 save topology and compatibility codec', () =
       expect(authority.writer).toBe(winner.state.essence === 111 ? 'a' : 'b');
       expect(await racing.get('meta', V4_PRIMARY_KEY)).toBe(winner.legacyV4Raw);
     }
+  });
+});
+
+describe('@cf/persistence — the Reset expedition replacement keeps its older-format path', () => {
+  /* Why prepareV5Replacement's legacy-v4 branch and the sourceSchema-4 snapshot recovery are kept:
+     the game's Reset expedition (SOURCE apps/game/src/expedition-reset.ts) replaces the save with the
+     plain legacy export of a brand-new explorer, so both paths carry every reset expedition. */
+  function resetPayload(): string {
+    const fresh = importSaveV2('{}', REGISTRY, NOW);
+    if (!fresh.ok) throw new Error('fresh expedition construction failed');
+    fresh.state.tutDone = false;
+    return exportSaveV2(fresh.state, NOW);
+  }
+
+  it('prepares the reset payload as legacy-v4, keeps its snapshot through a later write, and recovers a corrupt row from it', async () => {
+    const payload = resetPayload();
+    const backend = createMemoryBackend();
+    const veteran = classifyV4Save(VETERAN_RAW, REGISTRY, NOW);
+    if (veteran.kind !== 'supported') throw new Error(`seed save was ${veteran.kind}`);
+    expect((await initializeFreshV5(backend, { state: veteran.state, extensions: {} }, REGISTRY, NOW)).kind)
+      .toBe('initialized');
+    const repository = createRevisionedRepository(backend);
+    const start = (await repository.revisionSnapshot()).revision;
+
+    const replacement = prepareV5Replacement(payload, REGISTRY, NOW);
+    expect(replacement).toMatchObject({ kind: 'prepared', source: 'legacy-v4' });
+    if (replacement.kind !== 'prepared') return;
+    expect(await repository.replace({ expectedRevision: start, writes: replacement.operations }))
+      .toMatchObject({ kind: 'committed', revision: start + 1 });
+    const snapshot = await backend.get('journal', V5_SNAPSHOT_KEY);
+    expect(JSON.parse(snapshot!)).toEqual({ schema: 5, sourceSchema: 4, raw: payload });
+
+    const loaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (loaded.kind !== 'loaded') throw new Error(`expected the reset save to load, received ${loaded.kind}`);
+    expect(loaded.state.tutDone).toBe(false);
+    const state = structuredClone(loaded.state);
+    state.essence += 5;
+    const write = prepareV5SaveWrite({ state, extensions: loaded.extensions }, REGISTRY, NOW);
+    expect(await repository.mutate({ expectedRevision: start + 1, writes: write.operations }))
+      .toMatchObject({ kind: 'committed', revision: start + 2 });
+    expect(await backend.get('journal', V5_SNAPSHOT_KEY)).toBe(snapshot);
+
+    await backend.apply([{ store: 'player', key: 'v5:player', value: '{"schema":5,"segment":"player","data":[]}' }]);
+    expect(await readSaveV5(backend, REGISTRY, NOW)).toEqual({ kind: 'corrupt', scope: 'player' });
+    const recovered = await readSaveV5WithRecovery(backend, REGISTRY, NOW);
+    expect(recovered.kind).toBe('recovered-v4');
+    if (recovered.kind !== 'recovered-v4') return;
+    expect(recovered.raw).toBe(payload);
+    expect(recovered.state.tutDone).toBe(false);
   });
 });

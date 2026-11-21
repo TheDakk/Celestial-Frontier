@@ -27,8 +27,8 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
   /* A completed drill may not retain hidden pre-Training authority. The
      legacy synchronous completion path could write `tut:1` while leaving
      `tsnap` present; the next import then ignored the only surviving copy of
-     the veteran checkpoint. Recovery normalizes that known historical shape
-     back to incomplete before it reaches this boundary. */
+     the veteran checkpoint. Import drops a one-key `{view}` checkpoint under
+     `tut:1`; any other pending snapshot on a completed drill is refused here. */
   if (s.tutDone && s.tutSnapPending != null) {
     throw new Error('completed Field Training cannot retain a pending snapshot');
   }

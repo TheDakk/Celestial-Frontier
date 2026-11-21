@@ -164,7 +164,7 @@ export interface PreparedV5SaveWrite {
   readonly extensions: V5Extensions;
   readonly legacyV4Raw: string;
   /** Suitable directly as `RevisionedMutation.writes`. These operations do
-   * not touch schema, migration journal/snapshot, revision, or receipts. */
+   * not touch schema, the journal or recovery snapshot, revision, or receipts. */
   readonly operations: readonly StorageOperation[];
 }
 
@@ -436,7 +436,7 @@ function segmentOperations(raw: string, extensions: V5Extensions): StorageOperat
   });
 }
 
-/** Prepare an ordinary post-migration save for the revision/CAS boundary.
+/** Prepare an ordinary save write of a v5 store for the revision/CAS boundary.
  * Every compatibility-owned segment and `meta/save` mirror is refreshed in
  * the caller's one RevisionedRepository transaction. Schema, snapshot,
  * journal, revision and receipt rows are deliberately absent. */
@@ -859,7 +859,7 @@ function decodeSnapshot(raw: string):
 }
 
 /** Recovery is read-only. Only a corrupt current v5 topology may consult the
- * pre-migration snapshot; a future schema/row never yields to older bytes. */
+ * last replacement's snapshot; a future schema/row never yields to older bytes. */
 export async function readSaveV5WithRecovery(
   backend: StorageBackend,
   registry: ContentRegistry,
