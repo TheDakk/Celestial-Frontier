@@ -20,6 +20,13 @@ const FORBIDDEN_USES = [
   [/\bperformance\.now\b/, 'uses performance.now'],
   [/\bnew\s+Date\s*\(/, 'uses new Date'],
 ];
+// Gameplay code never touches the page or draws: drawing belongs to the renderer.
+const DOMAIN_USES = [
+  ...FORBIDDEN_USES,
+  [/\bdocument\./, 'uses document'],
+  [/\bwindow\./, 'uses window'],
+  [/\bgetContext\s*\(/, 'uses a canvas'],
+];
 // `from '<spec>'`, bare `import '<spec>'`, and `import('<spec>')`.
 const IMPORT_SPEC = /(?:\bfrom\s*|\bimport\s*\(?\s*)(['"])([^'"\n]+)\1/g;
 
@@ -96,7 +103,7 @@ export function checkPurity(files) {
     // Forbidden uses are matched against code with comments and string text blanked (a table of quoted v1 lines
     // is not a use); imports are found as before, in the comment-free text that keeps string literals.
     const { bare } = scanCode(text);
-    for (const [re, reason] of FORBIDDEN_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
+    for (const [re, reason] of DOMAIN_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
     const specs = importedSpecifiers(stripComments(text));
     if (specs.some((s) => s.startsWith('@cf/art'))) problems.push(`${path}: imports an art package`);
     if (specs.some((s) => s === 'pixi.js')) problems.push(`${path}: imports pixi.js`);

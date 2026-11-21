@@ -65,6 +65,28 @@ describe('purity check', () => {
   it('allows other imports', () => {
     expect(run("import { a } from '@cf/genome'; import b from './b.js';")).toEqual([]);
   });
+  it.each([
+    ["const cv = document.createElement('canvas');", 'uses document'],
+    ['const w = window.innerWidth;', 'uses window'],
+    ["const c2 = cv.getContext('2d');", 'uses a canvas'],
+    ["const c2 = cv.getContext ('2d');", 'uses a canvas'],
+  ])('flags the host use %s', (text, reason) => {
+    expect(run(text)).toEqual([`${P}: ${reason}`]);
+  });
+  it.each([
+    ['a comment', "// document.title, window.x and cv.getContext('2d')\nexport const a = 1;"],
+    ['a block comment', "/* document.body; window.open(); cv.getContext('2d') */ export const a = 1;"],
+    ['a string', "const s = \"document.x window.y getContext(\";"],
+    ['a template', 'const t = `document.x window.y getContext(`;'],
+    ['another name', 'const a = mydocument.x + subwindow.y + getContextual(1);'],
+  ])('passes a host name inside %s', (_kind, text) => {
+    expect(run(text)).toEqual([]);
+  });
+  it('reports each host use once alongside the other rules', () => {
+    expect(run("document.a; document.b; window.c; x.getContext('2d'); Date.now();")).toEqual([
+      `${P}: uses Date.now`, `${P}: uses document`, `${P}: uses window`, `${P}: uses a canvas`,
+    ]);
+  });
 });
 
 describe('purity check: renderer packages', () => {
