@@ -184,7 +184,9 @@ function drawnCount(part) {
 /**
  * A copy of the catalogue and recipe in which the recipe's part number k (from 0) has its own part id and is drawn
  * as `mode(k)` says: 'label' draws every pixel as k + LABEL_BASE, 'blank' draws nothing (the part keeps its place, so the
- * parts that hang from it still land where they do), 'real' draws the part as it is. Frames are made once per id.
+ * parts that hang from it still land where they do), 'real' draws the part as it is, 'x' and 'y' draw each pixel as its
+ * own column or row in the frame plus one (so a picture says which frame pixel landed where; frames up to 254 pixels).
+ * Frames are made once per id.
  */
 function numberedCopy(recipe, catalogue, cache, mode) {
   const parts = new Map();
@@ -198,7 +200,8 @@ function numberedCopy(recipe, catalogue, cache, mode) {
         const frames = Object.create(null);
         for (const name of Object.keys(part.frames)) {
           const f = part.frames[name];
-          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 || how === 'blank' ? 0 : k + LABEL_BASE)) };
+          const value = how === 'x' ? (i) => (i % f.w) + 1 : how === 'y' ? (i) => (i - (i % f.w)) / f.w + 1 : () => k + LABEL_BASE;
+          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v, i) => (v === 0 || how === 'blank' ? 0 : value(i))) };
         }
         made = { ...part, id, frames };
         cache.set(id, made);
@@ -359,15 +362,19 @@ function layerProblems(where, frame) {
   return problems;
 }
 
+/** The limbs a creature with `legs` legs draws on each side: far n >> 1, near the rest (as buildRecipe splits them). */
+const sideCount = (slot, legs) => (slot === 'farLimbs' ? legs >> 1 : legs - (legs >> 1));
+
 /**
- * Problems a reader can see without composing: attach points (a head needs `feature` once the pack has a head feature of
- * its family and tier; a torso's leg-count names must be ones the composer can ask for), layers, the palette's iris
- * ramps, poses, contact points, fallbacks.
+ * Problems a reader can see without composing: attach points (head kind hN needs `feature` once the pack has a head
+ * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
+ * can ask for), layers, the palette's iris ramps (some but not all), poses and their leg-count entries, contact points,
+ * fallbacks.
  */
 function structureProblems(catalogue) {
   const problems = [];
   const fallbackParts = new Set(catalogue.fallbacks.values());
-  const featured = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'headFeature').map((p) => `${p.family}/${p.tier}`));
+  const featured = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'headFeature' && p.kind.includes('-')).map((p) => `${p.family}/${p.tier}/${p.kind.slice(p.kind.lastIndexOf('-') + 1)}`));
   for (const part of catalogue.parts.values()) {
     const frames = Object.keys(part.frames);
     if (!MARK_SLOTS.includes(part.slot) && frames.some((name) => part.frames[name].layers !== undefined)) problems.push(`part ${part.id}: layers on a slot that takes no marks`);
@@ -375,12 +382,14 @@ function structureProblems(catalogue) {
     if (part.slot === 'torso') {
       for (const name of frames) {
         for (const point of Object.keys(part.frames[name].attach)) {
-          if (/_\d+$/.test(point) && !LEG_COUNT_POINTS.has(point)) problems.push(`part ${part.id} frame ${name}: attach point ${point} is for a leg count that never uses it`);
+          if (!/_\d+$/.test(point) || LEG_COUNT_POINTS.has(point)) continue;
+          if (/^(far|near)\d+_\d+$/.test(point)) problems.push(`part ${part.id} frame ${name}: attach point ${point} is for a leg count that never uses it`);
+          else problems.push(`part ${part.id} frame ${name}: attach point ${point} is never used: only far<i>_<n> and near<i>_<n> take a leg count`);
         }
       }
     }
     // The eyeless head never carries eyes, so it needs no eye points. Only the plain leg points are required: they are the fallback.
-    const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}`) ? ['feature'] : [];
+    const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}/${part.kind}`) ? ['feature'] : [];
     const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
     if (required.length === 0) continue;
     for (const name of frames) {
@@ -388,12 +397,20 @@ function structureProblems(catalogue) {
       if (missing.length > 0) problems.push(`part ${part.id} frame ${name}: missing attach point ${missing.join(', ')}`);
     }
   }
-  if (Object.keys(catalogue.palette.ramps).length > 0) {
-    for (let i = 0; i < IRIS_RAMP_COUNT; i++) if (!Object.hasOwn(catalogue.palette.ramps, `iris${i}`)) problems.push(`palette: missing iris ramp iris${i}`);
+  // A palette with none of the iris ramps is today's format (information, see checkPack); with some, every one must be there.
+  const iris = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
+  if (iris.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+    for (const name of iris) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
     if (missing.length > 0) problems.push(`scaffold ${scaffold.id}: missing pose ${missing.join(', ')}`);
+    for (const [poseId, pose] of Object.entries(scaffold.poses)) {
+      for (const e of pose.entries) {
+        if (e.legs === undefined || (e.slot !== 'farLimbs' && e.slot !== 'nearLimbs') || e.index < sideCount(e.slot, e.legs)) continue;
+        problems.push(`scaffold ${scaffold.id} pose ${poseId}: entry ${e.slot} ${e.index} legs=${e.legs} is for a leg that count never draws`);
+      }
+    }
     if (Object.hasOwn(scaffold.poses, 'strike') && scaffold.poses['strike'].contact === undefined) {
       problems.push(`scaffold ${scaffold.id}: pose strike has no contact point`);
     }
@@ -402,53 +419,84 @@ function structureProblems(catalogue) {
   return problems;
 }
 
+/** The frame a part shows in a pose, chosen as assemble chooses it: the entry for this leg count, else the plain entry, else rest; a frame the part lacks falls back to rest. */
+function frameShown(scaffold, poseId, slot, legs, part) {
+  const entries = scaffold.poses[poseId].entries;
+  const entry = entries.find((e) => e.slot === slot && e.index === 0 && e.legs === legs) ?? entries.find((e) => e.slot === slot && e.index === 0 && e.legs === undefined);
+  const name = entry === undefined ? 'rest' : entry.frame;
+  return Object.hasOwn(part.frames, name) ? name : 'rest';
+}
+
+/** Where part k of a recipe lands: the canvas position of its frame's pixel 0,0, read from its 'x' and 'y' coded pictures. */
+function frameOrigin(recipe, k, pose, catalogue, cache) {
+  const at = (axis) => {
+    const coded = numberedCopy(recipe, catalogue, cache, (i) => (i === k ? axis : 'blank'));
+    const { w, pixels } = assemble(coded.recipe, pose, coded.catalogue).buffer;
+    for (let i = 0; i < pixels.length; i++) if (pixels[i] !== 0) return (axis === 'x' ? i % w : (i - (i % w)) / w) - (pixels[i] - 1);
+    return 0;
+  };
+  return [at('x'), at('y')];
+}
+
 /**
  * The neck rule (spec, section 5): where a head meets a torso, the pixels on each side of the join are within one shade
- * step of each other. Checked on the parts as drawn: before marks, before the outline and shading. For each pose, each of
- * the nine head shifts and each leg count, the torso alone and the head alone are assembled at their real places (the
- * head is placed on the torso, then the torso is left undrawn). A join pair is a head pixel and a 4-adjacent torso pixel
- * the head does not cover, both ramp values (1-12); it breaks the rule when their shade steps (position in the ramp,
- * so pixels of different ramps compare by position) differ by more than one. Returns null when no pair breaks it, else
- * { pairs: breaking pairs summed over every case, cases: the (pose, shift, leg count) cases with at least one, example }.
+ * step of each other. Checked on the parts as drawn: before marks, before the outline and shading. For each leg count,
+ * each pose, each head and each of the nine head shifts, the torso alone (once per leg count and pose) and the head alone
+ * are assembled at their real places (the head is placed on the torso, then the torso is left undrawn). A join pair is a
+ * head pixel and a 4-adjacent torso pixel the head does not cover, both ramp values (1-12); it breaks the rule when their
+ * shade steps (position in the ramp, so pixels of different ramps compare by position) differ by more than one.
+ * Returns, per head id with a breach: { pixels: distinct offending head pixels, counted in the head frame's own
+ * coordinates (frame, x, y); cases: the (pose, shift, leg count) cases with a breach; example: the first breaching pair,
+ * each pixel in its own part's frame coordinates }.
  */
-function neckJoin(catalogue, scaffold, torsoId, headId, legCounts, recipeFor, cache) {
-  let pairs = 0;
-  let cases = 0;
-  let example = '';
+function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, cache) {
+  const found = new Map();
+  const torsoPart = catalogue.parts.get(torsoId);
   for (const legs of legCounts) {
     const base = recipeFor(LIMB_COUNTS.indexOf(legs));
-    const two = {
+    const pairOf = (headId) => ({
       ...base,
       parts: [{ slot: 'torso', index: 0, partId: torsoId, source: 'own' }, { slot: 'head', index: 0, partId: headId, source: 'own' }],
       marking: { ...base.marking, pattern: 0 },
-    };
+    });
     for (const pose of Object.keys(scaffold.poses)) {
-      const torsoOnly = numberedCopy(two, catalogue, cache, (k) => (k === 0 ? 'real' : 'blank'));
-      const t = assemble(torsoOnly.recipe, pose, torsoOnly.catalogue).buffer;
-      for (const shift of HEAD_SHIFTS) {
-        const headOnly = numberedCopy({ ...two, shift }, catalogue, cache, (k) => (k === 0 ? 'blank' : 'real'));
-        const { w, pixels: hp } = assemble(headOnly.recipe, pose, headOnly.catalogue).buffer;
-        const tp = t.pixels;
-        let here = 0;
-        for (let i = 0; i < hp.length; i++) {
-          const hv = hp[i];
-          if (!inRamp(hv)) continue;
-          const x = i % w;
-          for (const j of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w]) {
-            if (j < 0 || j >= hp.length || hp[j] !== 0 || !inRamp(tp[j])) continue;
-            if (Math.abs(shadeOf(hv) - shadeOf(tp[j])) <= 1) continue;
-            here++;
-            if (example === '') {
-              const at = (k) => `${k % w},${(k - (k % w)) / w}`;
-              example = `pose ${pose} head shift ${pair(shift.head)} legs ${legs}: head ${at(i)} value ${hv} shade ${shadeOf(hv)} beside torso ${at(j)} value ${tp[j]} shade ${shadeOf(tp[j])}`;
+      const torsoOnly = numberedCopy(pairOf(headIds[0]), catalogue, cache, (k) => (k === 0 ? 'real' : 'blank'));
+      const tp = assemble(torsoOnly.recipe, pose, torsoOnly.catalogue).buffer.pixels;
+      let torsoAt;
+      for (const headId of headIds) {
+        const headPart = catalogue.parts.get(headId);
+        const two = pairOf(headId);
+        for (const shift of HEAD_SHIFTS) {
+          const headOnly = numberedCopy({ ...two, shift }, catalogue, cache, (k) => (k === 0 ? 'blank' : 'real'));
+          const { w, pixels: hp } = assemble(headOnly.recipe, pose, headOnly.catalogue).buffer;
+          let headAt;
+          let breach = false;
+          for (let i = 0; i < hp.length; i++) {
+            const hv = hp[i];
+            if (!inRamp(hv)) continue;
+            const x = i % w;
+            for (const j of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w]) {
+              if (j < 0 || j >= hp.length || hp[j] !== 0 || !inRamp(tp[j])) continue;
+              if (Math.abs(shadeOf(hv) - shadeOf(tp[j])) <= 1) continue;
+              breach = true;
+              headAt ??= frameOrigin({ ...two, shift }, 1, pose, catalogue, cache);
+              torsoAt ??= frameOrigin(two, 0, pose, catalogue, cache);
+              const local = (k, [ox, oy]) => `${(k % w) - ox},${(k - (k % w)) / w - oy}`;
+              const headFrame = frameShown(scaffold, pose, 'head', legs, headPart);
+              let entry = found.get(headId);
+              if (entry === undefined) {
+                entry = { pixels: new Set(), cases: 0, example: `head ${headFrame} ${local(i, headAt)} value ${hv} beside torso ${frameShown(scaffold, pose, 'torso', legs, torsoPart)} ${local(j, torsoAt)} value ${tp[j]}` };
+                found.set(headId, entry);
+              }
+              entry.pixels.add(`${headFrame} ${local(i, headAt)}`);
             }
           }
+          if (breach) found.get(headId).cases++;
         }
-        if (here > 0) { pairs += here; cases++; }
       }
     }
   }
-  return cases === 0 ? null : { pairs, cases, example };
+  return headIds.filter((id) => found.has(id)).map((id) => { const f = found.get(id); return { head: id, pixels: f.pixels.size, cases: f.cases, example: f.example }; });
 }
 
 /**
@@ -462,7 +510,7 @@ export function checkPack(text) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [], info: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -591,10 +639,11 @@ export function checkPack(text) {
     // every leg count a legs= entry for the torso or the head names.
     const neckLegs = [4, ...new Set(Object.values(scaffold.poses).flatMap((pose) => pose.entries.filter((e) => e.legs !== undefined && e.legs !== 4 && (e.slot === 'torso' || e.slot === 'head')).map((e) => e.legs)))];
     const ofScaffold = (slot) => parts.filter((p) => p.family === scaffold.family && p.slot === slot && p.tier === scaffold.tier && (slot !== 'torso' || p.kind === torsoKind));
+    const neckHeads = ofScaffold('head').map((p) => p.id);
     for (const torso of ofScaffold('torso')) {
-      for (const head of ofScaffold('head')) {
-        const found = neckJoin(catalogue, scaffold, torso.id, head.id, neckLegs, (limbs) => buildRecipe(genomeOf(someHeads[0], 0, limbs, FULL_EYES), [], catalogue), numberedFrames);
-        if (found !== null) neck.push({ head: head.id, torso: torso.id, ...found });
+      if (neckHeads.length === 0) break;
+      for (const n of neckJoins(catalogue, scaffold, torso.id, neckHeads, neckLegs, (limbs) => buildRecipe(genomeOf(someHeads[0], 0, limbs, FULL_EYES), [], catalogue), numberedFrames)) {
+        neck.push({ head: n.head, torso: torso.id, pixels: n.pixels, cases: n.cases, example: n.example });
       }
     }
   }
@@ -602,8 +651,12 @@ export function checkPack(text) {
   const gaps = [...gapCounts].map(([gap, count]) => ({ gap, count, error: !gap.startsWith('variant:') }));
   const structure = structureProblems(catalogue);
   const failures = [...failed];
+  const info = [];
+  if (!Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`).some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+    info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
+  }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck };
+  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -636,6 +689,7 @@ export function formatReport(report) {
     `composed: ${report.composed} creature poses (${report.variants} forced variants). Sampled: ${report.sampled}`,
   ];
   for (const g of report.gaps) lines.push(`${g.error ? 'error' : 'info'}: gap ${g.gap} (x${g.count})`);
+  for (const p of report.info) lines.push(`info: ${p}`);
   for (const [scaffold, items] of group(report.edge, (e) => [e.scaffold])) {
     const first = items[0];
     lines.push(`error: touches the canvas edge on ${scaffold} in ${items.length} creature poses (poses: ${unique(items.map((e) => e.pose)).join(', ')}), e.g. ${example(first)}`);
@@ -661,7 +715,7 @@ export function formatReport(report) {
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
-  for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pairs} pixel pairs more than one shade step apart in ${n.cases} pose shifts, e.g. ${n.example}`);
+  for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pixels} head pixels more than one shade step from the torso beside them, in ${n.cases} pose shifts, e.g. ${n.example}`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
   return `check-pack: ${report.ok ? 'OK' : `FAIL (${errors} distinct errors)`}\n${lines.join('\n')}\n`;
 }

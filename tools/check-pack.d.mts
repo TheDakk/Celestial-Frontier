@@ -35,11 +35,11 @@ export interface PackSummary {
 export interface NeckJoin {
   head: string;
   torso: string;
-  /** Head and torso pixel pairs across the join more than one shade step apart, summed over every case. */
-  pairs: number;
-  /** Cases (pose, head shift, leg count) with at least one such pair. */
+  /** Distinct head pixels, in the head frame's own coordinates (frame, x, y), more than one shade step from a torso pixel beside them in some case. */
+  pixels: number;
+  /** Cases (pose, head shift, leg count) with at least one such pixel. */
   cases: number;
-  /** The first such pair: pose, head shift, leg count, both pixels with their values and shade steps. */
+  /** The first breaching pair, each pixel in its own part's frame coordinates: `head <frame> x,y value v beside torso <frame> x,y value v`. */
   example: string;
 }
 export interface PackReport {
@@ -48,7 +48,7 @@ export interface PackReport {
   summary: PackSummary | null;
   sampled: string;
   composed: number;
-  /** Forced variants composed (one creature each, in every pose): part types with more than one variant. */
+  /** Forced variants composed, in every pose: one creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points). */
   variants: number;
   gaps: { gap: string; count: number; error: boolean }[];
   edge: CheckedCreature[];
@@ -61,6 +61,8 @@ export interface PackReport {
   failures: string[];
   /** Neck join warnings, one per head and torso pairing that breaks the rule. */
   neck: NeckJoin[];
+  /** Information about the pack that is not a fault, each printed as an `info:` line (for example a palette with no iris ramps). */
+  info: string[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;

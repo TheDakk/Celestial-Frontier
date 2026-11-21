@@ -281,6 +281,9 @@ layer spots
 ....33......
 `;
 const TORSO_ID = 'quadruped/torso/sturdy/small/v0';
+// A pack in the art agent's present format: ramps but no iris ramp, no layers, only the shared leg, no back parts.
+const OLD_FORMAT = GOOD.replace(/ramp iris\d [0-9 ]+\n/g, '').replace('colour 1 445566\n', 'colour 1 445566\nramp c0 0 1 1 1\n');
+const NO_IRIS = 'info: palette has no iris ramps (iris0 to iris7): eyes show no iris colour';
 
 describe('checkPack on planted faults: layers, iris ramps, leg-count names, the feature point', () => {
   const layered = planted(TORSO_ROWS, LAYERED_ROWS);
@@ -325,15 +328,26 @@ describe('checkPack on planted faults: layers, iris ramps, leg-count names, the 
     expect(r.ok).toBe(false);
   });
 
-  it('a palette with ramps must hold every iris ramp; a palette with none needs none', () => {
+  it('a palette with some iris ramps must hold all eight: one error per missing ramp', () => {
     const r = checkPack(planted('ramp iris3 1 1 1 1\n', ''));
     expect(r.structure).toEqual(['palette: missing iris ramp iris3']);
     expect(errorsOf(r)).toEqual(['error: palette: missing iris ramp iris3']);
+    expect(formatReport(r)).not.toContain(NO_IRIS);
     expect(r.ok).toBe(false);
-    expect(checkPack(GOOD).structure).toEqual([]);
-    const noRamps = GOOD.replace(/ramp iris\d [0-9 ]+\n/g, '');
-    expect(noRamps).not.toContain('ramp');
-    expect(checkPack(noRamps).structure).toEqual([]);
+  });
+
+  it('a palette with no iris ramp at all is information, not an error, and the pack is OK', () => {
+    const r = checkPack(OLD_FORMAT);
+    expect(r.structure).toEqual([]);
+    expect(r.info).toEqual([NO_IRIS.slice('info: '.length)]);
+    expect(formatReport(r).split('\n')).toContain(NO_IRIS);
+    expect(r.ok).toBe(true);
+  });
+
+  it('the full set of iris ramps prints neither the error nor the information line', () => {
+    const r = checkPack(GOOD);
+    expect(r.info).toEqual([]);
+    expect(formatReport(r)).not.toContain('iris ramp');
   });
 
   it('a correct near0_2 is accepted; near0_5 and near3_2 are errors', () => {
@@ -348,28 +362,41 @@ describe('checkPack on planted faults: layers, iris ramps, leg-count names, the 
     expect(bad.ok).toBe(false);
   });
 
-  it('a leg-count suffix on a name that is not a leg point, a zero leg count, or a leg index beyond the side is an error', () => {
-    const bad = checkPack(planted('near3:10,5', 'near3:10,5,head_2:10,1,near0_0:1,5,far1_3:3,5'));
+  it('a leg-count suffix on a name that is not a leg point has its own line; a zero leg count or a leg index beyond the side is an error', () => {
+    const bad = checkPack(planted('near3:10,5', 'near3:10,5,head_2:10,1,tail_3:1,1,back_2:6,-1,near0_0:1,5,far1_3:3,5'));
     expect(bad.structure).toEqual([
-      `part ${TORSO_ID} frame rest: attach point head_2 is for a leg count that never uses it`,
+      `part ${TORSO_ID} frame rest: attach point head_2 is never used: only far<i>_<n> and near<i>_<n> take a leg count`,
+      `part ${TORSO_ID} frame rest: attach point tail_3 is never used: only far<i>_<n> and near<i>_<n> take a leg count`,
+      `part ${TORSO_ID} frame rest: attach point back_2 is never used: only far<i>_<n> and near<i>_<n> take a leg count`,
       `part ${TORSO_ID} frame rest: attach point near0_0 is for a leg count that never uses it`,
       `part ${TORSO_ID} frame rest: attach point far1_3 is for a leg count that never uses it`,
     ]);
+    expect(checkPack(GOOD).structure).toEqual([]);
   });
 
   it('heads need no feature point in a pack without head features', () => {
     expect(checkPack(GOOD).structure).toEqual([]);
   });
 
-  it('every head frame needs a feature point once the pack has a head feature of its family and tier', () => {
+  it('a head kind needs a feature point once the pack has a head feature drawn for that kind', () => {
     const line = 'part quadruped/head/h0/small/v0 frame rest: missing attach point feature';
-    const feature = '\npart quadruped/headFeature/horns/small/v0\nframe rest anchor=0,0\n1\n';
-    const r = checkPack(GOOD + feature);
+    const feature = (kind: string): string => `\npart quadruped/headFeature/${kind}/small/v0\nframe rest anchor=0,0\n1\n`;
+    const r = checkPack(GOOD + feature('horns-h0'));
     expect(r.structure).toEqual([line]);
     expect(r.ok).toBe(false);
-    expect(checkPack(planted(',eye7:4,3', ',eye7:4,3,feature:3,0') + feature).structure).toEqual([]);
-    // A head feature at another tier asks nothing of a small head.
-    expect(checkPack(GOOD + feature.replaceAll('/small/', '/large/')).structure).not.toContain(line);
+    expect(checkPack(planted(',eye7:4,3', ',eye7:4,3,feature:3,0') + feature('horns-h0')).structure).toEqual([]);
+    // A head feature for another head kind, or at another tier, asks nothing of this head.
+    expect(checkPack(GOOD + feature('horns-h3')).structure).toEqual([]);
+    expect(checkPack(GOOD + feature('horns-h0').replaceAll('/small/', '/large/')).structure).not.toContain(line);
+  });
+
+  it('a repeated value in a flow layer is not a split spot; the same shape in the spots layer is', () => {
+    const shape = '..3416789abc\n123456789abc\n123456789abc\n123456789abc\n123456789abc\n123456789abc\n';
+    const spotsRows = '............\n.11.....22..\n.11.....22..\n............\n....33......\n....33......\n';
+    const flow = checkPack(planted('layer flow\n..3456789abc\n', 'layer flow\n..3416789abc\n', layered));
+    expect(flow.structure).toEqual([]);
+    const spots = checkPack(planted(`layer spots\n${spotsRows}`, `layer spots\n${shape}`, layered));
+    expect(spots.structure).toEqual([`part ${TORSO_ID} frame rest: spot value 1 is in 2 blobs`]);
   });
 });
 
@@ -391,6 +418,19 @@ describe('checkPack reaches every leg count a leg-count entry names', () => {
     const r = checkPack(planted('near3:10,5', 'near3:10,5,near0_2:1,40') + secondLeg);
     expect(r.structure).toEqual([]);
     expect(r.hidden.some((d) => d.variant === V1 && d.genome['limbs'] === limbGene(2))).toBe(true);
+  });
+
+  it('a legs= entry for a limb that leg count never draws is an error', () => {
+    const fine = checkPack(planted('pose rest\n', 'pose rest\nentry nearLimbs 0 rest 0 0 legs=2\nentry farLimbs 0 rest 0 0 legs=2\nentry nearLimbs 1 rest 0 0 legs=3\nentry head 0 rest 0 0 legs=0\n'));
+    expect(fine.structure).toEqual([]);
+    expect(fine.ok).toBe(true);
+    const r = checkPack(planted('pose rest\n', 'pose rest\nentry nearLimbs 3 rest 0 0 legs=2\nentry farLimbs 0 rest 0 0 legs=0\nentry farLimbs 1 rest 0 0 legs=3\n'));
+    expect(r.structure).toEqual([
+      'scaffold quadruped/sturdy/small pose rest: entry nearLimbs 3 legs=2 is for a leg that count never draws',
+      'scaffold quadruped/sturdy/small pose rest: entry farLimbs 0 legs=0 is for a leg that count never draws',
+      'scaffold quadruped/sturdy/small pose rest: entry farLimbs 1 legs=3 is for a leg that count never draws',
+    ]);
+    expect(r.ok).toBe(false);
   });
 
   it('a legs= entry naming a frame the part lacks is an error gap', () => {
@@ -415,16 +455,15 @@ describe('checkPack neck join', () => {
     const twoSteps = planted(HEAD_ROWS, '888888\n888888\n888888\n888888\n888888\n', planted(TORSO_ROWS, TORSO_ROWS.replace('111111111111', '222222222222')));
     const r = checkPack(twoSteps);
     expect(r.neck).toHaveLength(1);
-    expect(r.neck[0]).toMatchObject({ head: 'quadruped/head/h0/small/v0', torso: TORSO_ID });
-    expect(r.neck[0]!.pairs).toBeGreaterThan(0);
-    // Seven poses at nine head shifts, four legs: every case has the head beside the torso.
-    expect(r.neck[0]!.cases).toBe(63);
+    // Head pixels ever beside open torso, over the nine shifts (head frame 6x5 at torso 10,1; torso 12x6): the left column
+    // (5), and the second and third pixels of the top and bottom rows (2 + 2). Seven poses at nine shifts, four legs: 63 cases.
+    expect(r.neck[0]).toEqual({ head: 'quadruped/head/h0/small/v0', torso: TORSO_ID, pixels: 9, cases: 63, example: 'head rest 0,0 value 8 beside torso rest 8,0 value 2' });
     expect(r.ok).toBe(true);
     const text = formatReport(r);
     expect(text.split('\n')[0]).toBe('check-pack: OK');
     const warnings = text.split('\n').filter((l) => l.startsWith('warning: neck join'));
     expect(warnings).toHaveLength(1);
-    expect(warnings[0]).toMatch(/^warning: neck join quadruped\/head\/h0\/small\/v0 on quadruped\/torso\/sturdy\/small\/v0: \d+ pixel pairs more than one shade step apart in 63 pose shifts, e\.g\. pose rest head shift -1,-1 legs 4: head \d+,\d+ value 8 shade 3 beside torso \d+,\d+ value 2 shade 1$/);
+    expect(warnings[0]).toBe('warning: neck join quadruped/head/h0/small/v0 on quadruped/torso/sturdy/small/v0: 9 head pixels more than one shade step from the torso beside them, in 63 pose shifts, e.g. head rest 0,0 value 8 beside torso rest 8,0 value 2');
   });
 
   it('counts only head pixels beside torso pixels the head does not cover, both ramp values', () => {
@@ -441,9 +480,30 @@ describe('checkPack neck join', () => {
     expect(checkPack(withLow).neck).toEqual([]);
     const r = checkPack(planted('pose rest\n', 'pose rest\nentry head 0 low 0 0 legs=2\n', withLow));
     expect(r.neck).toHaveLength(1);
-    expect(r.neck[0]).toMatchObject({ head: 'quadruped/head/h0/small/v0', torso: TORSO_ID, cases: 9 });
-    expect(r.neck[0]!.example).toMatch(/^pose rest head shift -1,-1 legs 2: /);
+    expect(r.neck[0]).toEqual({ head: 'quadruped/head/h0/small/v0', torso: TORSO_ID, pixels: 9, cases: 9, example: 'head low 0,0 value 8 beside torso rest 8,0 value 2' });
     expect(r.ok).toBe(true);
+  });
+});
+
+describe('checkPack neck join pairings', () => {
+  const head = (kind: string, rows: string): string => `\npart quadruped/head/${kind}/small/v0\nframe rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n${rows}`;
+  const torsoBlock = PARTS.slice(PARTS.indexOf(`part ${TORSO_ID}`), PARTS.indexOf('part quadruped/head/'));
+  const torsoV1 = '\n' + torsoBlock.replace(TORSO_ID, 'quadruped/torso/sturdy/small/v1');
+  const BAD = '888888\n888888\n888888\n888888\n888888\n';
+
+  it('checks every head kind with every variant of the scaffold torso', () => {
+    const oneBad = checkPack(GOOD + torsoV1 + head('h1', BAD));
+    expect(oneBad.neck.map((n) => `${n.head} on ${n.torso}`)).toEqual([
+      'quadruped/head/h1/small/v0 on quadruped/torso/sturdy/small/v0',
+      'quadruped/head/h1/small/v0 on quadruped/torso/sturdy/small/v1',
+    ]);
+    const allBad = checkPack(planted('666666\n666666\n666666\n666666\n555555\n', BAD) + torsoV1 + head('h1', BAD));
+    expect(allBad.neck.map((n) => `${n.head} on ${n.torso}`)).toEqual([
+      'quadruped/head/h0/small/v0 on quadruped/torso/sturdy/small/v0',
+      'quadruped/head/h1/small/v0 on quadruped/torso/sturdy/small/v0',
+      'quadruped/head/h0/small/v0 on quadruped/torso/sturdy/small/v1',
+      'quadruped/head/h1/small/v0 on quadruped/torso/sturdy/small/v1',
+    ]);
   });
 });
 
@@ -551,6 +611,12 @@ describe('check-pack command line', () => {
       const bad = run([join(dir, 'palette.txt'), join(dir, 'parts.txt')]);
       expect(bad.stdout).toContain('error: scaffold quadruped/sturdy/small: pose strike has no contact point');
       expect(bad.status).toBe(1);
+      // A pack in the art agent's present format (no iris ramps) checks OK, exit 0.
+      writeFileSync(join(dir, 'old.txt'), OLD_FORMAT);
+      const old = run([join(dir, 'old.txt')]);
+      expect(old.stdout.split('\n')[0]).toBe('check-pack: OK');
+      expect(old.stdout.split('\n')).toContain(NO_IRIS);
+      expect(old.status).toBe(0);
       // A neck two shade steps apart is a warning only: the command still exits 0.
       writeFileSync(join(dir, 'parts.txt'), (PARTS.trimStart() + SCAFFOLD).replace('666666\n666666\n666666\n666666\n555555\n', '888888\n888888\n888888\n888888\n888888\n'));
       const warned = run([join(dir, 'palette.txt'), join(dir, 'parts.txt')]);
