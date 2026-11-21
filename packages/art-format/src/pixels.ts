@@ -32,8 +32,14 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
  * Colour numbers (0xRRGGBB) for pixel values 0-20: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
  * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp.
  * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws.
+ * With a `tint` (a theme colour, 0xRRGGBB), entries 1-12 take each channel as tintChannel(a, t), the original's hide mix
+ * (62 parts colour, 38 parts theme); 0 and 13-20 are unchanged. Without one, the table is untouched.
  */
-export function colourTable(palette: Palette, ramps: { primary: string; accent: string; underside: string; iris: string }): { table: number[]; unknown: string[] } {
+export function colourTable(
+  palette: Palette,
+  ramps: { primary: string; accent: string; underside: string; iris: string },
+  tint?: number,
+): { table: number[]; unknown: string[] } {
   const unknown: string[] = [];
   const rgb = (index: number): number => palette.colours[index] ?? 0;
   const ramp = (name: string): number[] => {
@@ -46,5 +52,22 @@ export function colourTable(palette: Palette, ramps: { primary: string; accent: 
   };
   const table = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
     rgb(palette.eye), rgb(palette.eyeHighlight), rgb(palette.glow), rgb(palette.outline), ...ramp(ramps.iris)];
+  if (tint !== undefined) {
+    for (let v = 1; v <= 12; v++) {
+      const c = table[v] ?? 0;
+      table[v] = (tintChannel((c >>> 16) & 255, (tint >>> 16) & 255) << 16) | (tintChannel((c >>> 8) & 255, (tint >>> 8) & 255) << 8)
+        | tintChannel(c & 255, tint & 255);
+    }
+  }
   return { table, unknown };
+}
+
+/**
+ * The original's hide mix of one channel, round(a x 0.62 + t x 0.38), in whole numbers: (62a + 38t) hundredths,
+ * halves rounded up. 62 + 38 = 100, so it never passes 255. Dividing by 100 is a multiply and shift: 5243 / 2^19 is
+ * 1/100 to within 1 part in 400000, exact for every sum up to 25550. Two channel pairs, (192, 17) and (228, 3), give
+ * one step more than the original's floats, whose value there is a half less float noise.
+ */
+function tintChannel(a: number, t: number): number {
+  return ((62 * a + 38 * t + 50) * 5243) >>> 19;
 }

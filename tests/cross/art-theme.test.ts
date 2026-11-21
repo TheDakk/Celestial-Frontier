@@ -1,7 +1,8 @@
 /* The renderer holds its own copy of the game's ability-theme rule (the art packages may not import the domain
    combat package); these tests hold the copy to the game's own table and rule. */
 import { describe, expect, it } from 'vitest';
-import { THEME_COLOURS, THEME_NAMES } from '@cf/art-format';
+import { colourTable, THEME_COLOURS, THEME_NAMES } from '@cf/art-format';
+import { testCatalogue } from '@cf/art-testparts';
 import { THEME_BY_HABITAT, themeOf, wrap } from '@cf/art-recipe';
 import { ABILITY_THEMES, abilityTheme } from '@cf/domain-combatcore';
 
@@ -40,5 +41,21 @@ describe('the theme', () => {
     expect(mismatches(faulty).length).toBe(2 * 11);
     // The same rule over the true table passes, so the fault and nothing else is what fails.
     expect(mismatches((g) => LOCO_OVERRIDE[wrap(g['loco'], 18)] ?? THEME_BY_HABITAT[wrap(g['habitat'], 19)]!)).toEqual([]);
+  });
+
+  it('on the placeholder palette, a table without a tint is today\'s, and every theme tints only 1 to 12', () => {
+    const { palette } = testCatalogue();
+    const names = [...Object.keys(palette.ramps), 'no-such-ramp'];
+    expect(names.length).toBeGreaterThan(40);
+    for (let i = 0; i < names.length; i++) {
+      const ramps = { primary: names[i]!, accent: names[(i + 1) % names.length]!, underside: names[(i + 2) % names.length]!, iris: names[(i + 3) % names.length]! };
+      const today = colourTable(palette, ramps);
+      expect(colourTable(palette, ramps, undefined), JSON.stringify(ramps)).toEqual(today);
+      for (const theme of THEME_NAMES) {
+        const tinted = colourTable(palette, ramps, THEME_COLOURS[theme]);
+        expect([tinted.table[0], ...tinted.table.slice(13)], theme).toEqual([today.table[0], ...today.table.slice(13)]);
+        expect(tinted.unknown).toEqual(today.unknown);
+      }
+    }
   });
 });
