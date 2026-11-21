@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 const start = process.hrtime.bigint();
 const steps = [
   ['node', ['tools/clean-branch-check.mjs']],
+  ['node', ['tools/purity-check.mjs']],
   ['npm', ['run', 'typecheck']],
   ['npm', ['test']],
 ];
