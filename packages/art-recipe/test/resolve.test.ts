@@ -81,9 +81,10 @@ describe('the resolver is tied to the game tables', () => {
     skin: traits.FA_SKIN, limbs: traits.FA_LIMBS, eyes: traits.FA_EYES, size: traits.FA_SIZE, color: traits.SP_COLOR,
     accent: traits.SP_COLOR, floraForm: traits.FLORA_FORM, fungiForm: traits.FUNGI_FORM, microbeForm: traits.MICROBE_FORM,
     extremophileLoco: traits.EX_LOCO, aquaticFloraForm: traits.AQ_FLORA_FORM, aerialFloraForm: traits.AIR_FLORA_FORM,
+    habitat: traits.FA_HABITAT, extremophileHabitat: traits.EX_HABITAT, trait: traits.FA_TRAIT,
   };
   it('wraps each gene by the fixed length, and that length is the game table\'s', () => {
-    expect(GENE_LENGTHS).toEqual({ body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17, floraForm: 18, fungiForm: 9, microbeForm: 12, extremophileLoco: 9, aquaticFloraForm: 6, aerialFloraForm: 3 });
+    expect(GENE_LENGTHS).toEqual({ body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17, floraForm: 18, fungiForm: 9, microbeForm: 12, extremophileLoco: 9, aquaticFloraForm: 6, aerialFloraForm: 3, habitat: 19, extremophileHabitat: 9, trait: 25 });
     for (const gene of Object.keys(GENE_LENGTHS) as (keyof typeof GENE_LENGTHS)[]) expect(TABLES[gene].length, gene).toBe(GENE_LENGTHS[gene]);
   });
   it('reads LIMB_COUNTS and EYE_COUNTS from the same numbers as the game tables', () => {

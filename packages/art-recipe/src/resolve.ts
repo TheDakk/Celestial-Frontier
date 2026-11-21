@@ -24,6 +24,7 @@ export function wrap(value: unknown, length: number): number {
 export const GENE_LENGTHS = Object.freeze({
   body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17,
   floraForm: 18, fungiForm: 9, microbeForm: 12, extremophileLoco: 9, aquaticFloraForm: 6, aerialFloraForm: 3,
+  habitat: 19, extremophileHabitat: 9, trait: 25,
 });
 
 /**
@@ -45,7 +46,7 @@ const SWIMMING_LOCO: readonly number[] = [4, 13];
  * Whether a marker the game reads as truthy (`g.x`, `g.aq`, `g.af`) is set. The same, except that a non-finite
  * number counts as unset, because a save writes it as null: the answer survives a save round trip.
  */
-function marked(value: unknown): boolean {
+export function marked(value: unknown): boolean {
   if (typeof value === 'number') return Number.isFinite(value) && value !== 0;
   return Boolean(value);
 }
