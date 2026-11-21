@@ -7,6 +7,7 @@ import { probeRaw, probeParsed } from '../../../../tests/support/baseline.js';
 import {
   UCELL, OBS_R, GR, GCELL, SYS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS,
 } from '@cf/domain-worldconfig';
+import { properName, galaxyName, starName } from '@cf/domain-naming';
 import { starClass, SOL_PLANETS } from '@cf/domain-starcatalog';
 
 describe('@cf/domain-worldconfig — baseline `constants` probe', () => {
@@ -18,6 +19,22 @@ describe('@cf/domain-worldconfig — baseline `constants` probe', () => {
     expect(GCELL).toBe(42);
     expect(SOL_POS).toEqual({ x: 560, y: 170 });
     expect([HOME_POS, SOL_POS].every(Object.isFrozen)).toBe(true);
+  });
+});
+
+describe('@cf/domain-naming — baseline `names` probe', () => {
+  it('properName/galaxyName/starName match all 7 fingerprint seed groups (speciesName slot deferred to Genome)', () => {
+    const stored = probeParsed('names') as string[];
+    const seeds = [1, 7, 133, 999, 424242, 31337, 270549077];
+    seeds.forEach((s, g) => {
+      expect(properName(s, 3), `properName(${s},3)`).toBe(stored[g * 4]);
+      expect(galaxyName(s), `galaxyName(${s})`).toBe(stored[g * 4 + 1]);
+      expect(starName(s), `starName(${s})`).toBe(stored[g * 4 + 2]);
+    });
+  });
+  it('home anchors resolve to their canonical names', () => {
+    expect(galaxyName(999)).toBe('Milky Way');
+    expect(starName(424242)).toBe('Sun (Sol)');
   });
 });
 
