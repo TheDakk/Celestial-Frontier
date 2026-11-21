@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { LIMB_COUNTS, VARIANTS } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { bodyOf } from '@cf/art-recipe';
-import { checkPack, formatReport, generatedTorsos, routeStates, shapedGenome, type PackReport } from '../tools/check-pack.mjs';
+import { checkPack, detachedSlots, formatReport, generatedTorsos, routeStates, shapedGenome, type PackReport } from '../tools/check-pack.mjs';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 
@@ -230,6 +230,24 @@ describe('checkPack on planted faults', () => {
     expect(r.detached.every((d) => d.off.includes('eyes') && d.off.every((o) => Number.isNaN(Number(o))))).toBe(true);
     expect(errorsOf(r).some((l) => l.startsWith('error: detached eyes on quadruped/sturdy/small'))).toBe(true);
     expect(r.ok).toBe(false);
+  });
+
+  it('a pack holding parts in the new slots, which no creature asks for yet, checks as the same pack without them', () => {
+    const extra = ['farWings', 'nearWings', 'bodyFeature'].map((slot) => `\npart quadruped/${slot}/w/small/v0\nframe rest anchor=0,0\n2\n`).join('');
+    const r = checkPack(GOOD + extra);
+    const base = checkPack(GOOD);
+    expect(r.summary!.bySlot).toMatchObject({ farWings: 1, nearWings: 1, bodyFeature: 1 });
+    expect({ ...r, summary: null }).toEqual({ ...base, summary: null });
+  });
+
+  it('a detached wing is reported as farWings', () => {
+    // A label picture: the torso (label 1) and, two columns away, one pixel of another slot's label.
+    const off = (label: number): string[] | null => detachedSlots({ w: 4, h: 1, pixels: Uint8Array.from([1, 1, 0, label]) });
+    expect(off(11)).toEqual(['farWings']);
+    expect(off(12)).toEqual(['nearWings']);
+    expect(off(6)).toEqual(['bodyFeature']);
+    // Every slot that was labelled before keeps its label.
+    expect([2, 3, 4, 5, 7, 8, 9, 10].map((v) => off(v))).toEqual([['tail'], ['farLimbs'], ['nearLimbs'], ['head'], ['back'], ['headFeature'], ['glow'], ['eyes']]);
   });
 
   it('a missing pose and a strike pose with no contact point', () => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
+import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
 import type { SlotName } from '@cf/art-format';
-import { buildRecipe, type Recipe } from '@cf/art-recipe';
+import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
@@ -730,5 +730,120 @@ entry torso 0 hop 0 0
     }
     assemble({ ...recipe, marking: { pattern: 2, strength: 2, phase: 0 } }, 'rest', fresh);
     expect(snapshot()).toEqual(before);
+  });
+});
+
+describe('assemble: wings and body features', () => {
+  // Small tier, torso 4x2 of value 2 at origin (10,10): x 10-13, y 10-11. Its points land on the canvas at:
+  // wing (11,9), wing1 (13,9), back (11,10), far0 and near0 (11,12), eye0 (13,10), head (14,10).
+  // Each wing is a column of four pixels from its anchor down; far wing 4, near wing 9, far leg 3, near leg 6,
+  // back part 8, body feature 5 (two pixels wide), eye 13.
+  const WING_PARTS = `
+part quadruped/torso/winged/small/v0
+frame rest anchor=0,0 attach=wing:1,-1,wing1:3,-1,back:1,0,far0:1,2,near0:1,2,eye0:3,0,head:4,0
+2222
+2222
+
+part quadruped/farWings/w/small/v0
+frame rest anchor=0,0
+4
+4
+4
+4
+
+part quadruped/nearWings/w/small/v0
+frame rest anchor=0,0
+9
+9
+9
+9
+
+part quadruped/farLimbs/leg/small/v0
+frame rest anchor=0,0
+3
+
+part quadruped/nearLimbs/leg/small/v0
+frame rest anchor=0,0
+6
+
+part quadruped/back/fin/small/v0
+frame rest anchor=0,0
+8
+
+part quadruped/bodyFeature/plate/small/v0
+frame rest anchor=0,0
+55
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+
+scaffold quadruped/winged/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+`;
+  const wingCat = parseCatalogueText(HEADER + WING_PARTS);
+  const W: Record<string, string> = {
+    torso: 'quadruped/torso/winged/small/v0', farWing: 'quadruped/farWings/w/small/v0', nearWing: 'quadruped/nearWings/w/small/v0',
+    far: 'quadruped/farLimbs/leg/small/v0', near: 'quadruped/nearLimbs/leg/small/v0', fin: 'quadruped/back/fin/small/v0',
+    plate: 'quadruped/bodyFeature/plate/small/v0', eye: 'quadruped/eyes/eye/small/v0',
+  };
+  type WingSpec = readonly [SlotName, number, string, RecipePart['at']?];
+  /** A recipe with its parts in DRAW_ORDER then index, as the recipe builders give them, so the picture follows DRAW_ORDER. */
+  const wingRecipe = (specs: readonly WingSpec[]): Recipe => {
+    const sorted = [...specs].sort((a, b) => DRAW_ORDER.indexOf(a[0]) - DRAW_ORDER.indexOf(b[0]) || a[1] - b[1]);
+    const base = recipeOf([], { scaffoldId: 'quadruped/winged/small' });
+    return { ...base, parts: sorted.map(([slot, index, key, at]) => ({ slot, index, partId: W[key] ?? key, source: 'own' as const, ...(at === undefined ? {} : { at }) })) };
+  };
+  const column = (b: PixelBuffer, x: number, y0: number, y1: number): number[] => Array.from({ length: y1 - y0 + 1 }, (_, i) => at(b, x, y0 + i));
+
+  it('wing index 0 hangs from wing and index 1 from wing1', () => {
+    for (const [slot, key, v] of [['farWings', 'farWing', 4], ['nearWings', 'nearWing', 9]] as const) {
+      const r = assemble(wingRecipe([['torso', 0, 'torso'], [slot, 0, key], [slot, 1, key]]), 'rest', wingCat);
+      expect(r.gaps).toEqual([]);
+      // Above the torso only the wings show: index 0 at x 11, index 1 at x 13, both from y 9.
+      expect([at(r.buffer, 11, 9), at(r.buffer, 12, 9), at(r.buffer, 13, 9)]).toEqual([v, 0, v]);
+      expect(count(r.buffer, v)).toBe(slot === 'farWings' ? 4 : 8); // a far wing is under the torso; a near wing over it
+    }
+  });
+
+  it('a body feature hangs from back, over the torso and under the back part', () => {
+    const r = assemble(wingRecipe([['torso', 0, 'torso'], ['bodyFeature', 0, 'plate'], ['back', 0, 'fin']]), 'rest', wingCat);
+    expect(r.gaps).toEqual([]);
+    // The plate covers (11,10) and (12,10) on the torso; the fin covers (11,10).
+    expect([at(r.buffer, 10, 10), at(r.buffer, 11, 10), at(r.buffer, 12, 10), at(r.buffer, 13, 10)]).toEqual([2, 8, 5, 2]);
+  });
+
+  it('a near wing is drawn over the back part and under a near leg', () => {
+    const r = assemble(wingRecipe([['torso', 0, 'torso'], ['back', 0, 'fin'], ['nearWings', 0, 'nearWing'], ['nearLimbs', 0, 'near']]), 'rest', wingCat);
+    expect(r.gaps).toEqual([]);
+    // The wing column x 11, y 9-12: wing, wing over the fin, wing over the torso, the near leg over the wing.
+    expect(column(r.buffer, 11, 9, 12)).toEqual([9, 9, 9, 6]);
+  });
+
+  it('a far wing is drawn under the far legs', () => {
+    const r = assemble(wingRecipe([['torso', 0, 'torso'], ['farWings', 0, 'farWing'], ['farLimbs', 0, 'far']]), 'rest', wingCat);
+    expect(r.gaps).toEqual([]);
+    // x 11, y 9-12: wing, torso over the wing twice, the far leg over the wing.
+    expect(column(r.buffer, 11, 9, 12)).toEqual([4, 2, 2, 3]);
+  });
+
+  it('a part with at hangs from that point', () => {
+    // An eye hung from the torso's eye0, with no head part: it lands at (13,10) with no attach gap.
+    const hung = assemble(wingRecipe([['torso', 0, 'torso'], ['eyes', 0, 'eye', { host: 'torso', point: 'eye0' }]]), 'rest', wingCat);
+    expect(hung.gaps).toEqual([]);
+    expect(at(hung.buffer, 13, 10)).toBe(13);
+    expect(count(hung.buffer, 13)).toBe(1);
+    // Without at the same eye looks for a head and is skipped.
+    const plain = assemble(wingRecipe([['torso', 0, 'torso'], ['eyes', 0, 'eye']]), 'rest', wingCat);
+    expect(plain.gaps).toEqual(['attach:eye0']);
+    expect(count(plain.buffer, 13)).toBe(0);
+    // Whatever its slot: a far wing at index 0 sent to wing1 lands at x 13, not x 11.
+    const moved = assemble(wingRecipe([['torso', 0, 'torso'], ['farWings', 0, 'farWing', { host: 'torso', point: 'wing1' }]]), 'rest', wingCat);
+    expect(moved.gaps).toEqual([]);
+    expect([at(moved.buffer, 11, 9), at(moved.buffer, 13, 9)]).toEqual([0, 4]);
+    // A point the host lacks is reported by its own name.
+    const lost = assemble(wingRecipe([['torso', 0, 'torso'], ['eyes', 0, 'eye', { host: 'torso', point: 'nowhere' }]]), 'rest', wingCat);
+    expect(lost.gaps).toEqual(['attach:nowhere']);
   });
 });

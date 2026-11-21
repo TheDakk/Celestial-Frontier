@@ -265,6 +265,15 @@ describe('parseCatalogueText: errors from the first version', () => {
   it('rejects an unknown slot', () => {
     expect(thrown(`${SCAF}pose rest\nentry wing 0 rest 0 0`)).toBe("line 3: unknown slot 'wing'");
   });
+  it('parses parts and pose entries in the three new slots', () => {
+    const slots = ['farWings', 'bodyFeature', 'nearWings'] as const;
+    const c = parseCatalogueText(
+      slots.map((slot) => `part quadruped/${slot}/k/small/v0\nframe rest anchor=0,0\n1\n`).join('\n')
+      + `\n${SCAF}pose rest\n${slots.map((slot) => `entry ${slot} 1 rest 2 -1`).join('\n')}\n`,
+    );
+    for (const slot of slots) expect(c.parts.get(`quadruped/${slot}/k/small/v0`)).toMatchObject({ family: 'quadruped', slot, kind: 'k', tier: 'small', variant: 0 });
+    expect(c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries).toEqual(slots.map((slot) => ({ slot, index: 1, frame: 'rest', dx: 2, dy: -1 })));
+  });
   it('rejects a bad colour hex', () => {
     expect(thrown('palette\ncolour 0 12345')).toBe('line 2: bad colour');
     expect(thrown('palette\ncolour 0 zzzzzz')).toBe('line 2: bad colour');

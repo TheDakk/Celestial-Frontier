@@ -1,8 +1,8 @@
 export type SizeTier = 'small' | 'medium' | 'large' | 'guardian';
 export const TIER_SIZE = { small: [48, 32], medium: [96, 64], large: [144, 96], guardian: [240, 160] } as const;
 // Size gene (wrapped to 0..5) to tier: 0,1 small · 2,3 medium · 4,5 large. 'guardian' when the genome is a Guardian or Titan (isGuardianScale).
-export type SlotName = 'farLimbs' | 'tail' | 'torso' | 'back' | 'nearLimbs' | 'head' | 'headFeature' | 'eyes' | 'glow';
-export const DRAW_ORDER: readonly SlotName[] = ['farLimbs', 'tail', 'torso', 'back', 'nearLimbs', 'head', 'headFeature', 'eyes', 'glow'];
+export type SlotName = 'farWings' | 'farLimbs' | 'tail' | 'torso' | 'bodyFeature' | 'back' | 'nearWings' | 'nearLimbs' | 'head' | 'headFeature' | 'eyes' | 'glow';
+export const DRAW_ORDER: readonly SlotName[] = ['farWings', 'farLimbs', 'tail', 'torso', 'bodyFeature', 'back', 'nearWings', 'nearLimbs', 'head', 'headFeature', 'eyes', 'glow'];
 export const VARIANTS = { torso: 3, head: 3, tail: 2, limb: 2 } as const;
 export const LIMB_COUNTS = [2, 4, 6, 8, 3, 0] as const; // FA_LIMBS, by gene value
 export const EYE_COUNTS = [2, 4, 6, 8, 1, 0] as const; // FA_EYES, by gene value
@@ -14,7 +14,7 @@ export type PatternName = (typeof PATTERN_NAMES)[number];
 export const LAYER_NAMES = ['flow', 'spots', 'striped', 'spotted', 'banded', 'mottled', 'iridescent', 'marbled', 'eye-spotted'] as const;
 export type LayerName = (typeof LAYER_NAMES)[number];
 /** The slots whose parts take marks. */
-export const MARK_SLOTS: readonly SlotName[] = ['farLimbs', 'tail', 'torso', 'nearLimbs', 'head'];
+export const MARK_SLOTS: readonly SlotName[] = ['farWings', 'farLimbs', 'tail', 'torso', 'nearWings', 'nearLimbs', 'head'];
 
 /** `layers`: each grid is exactly w*h; the key is absent when the frame has none. */
 export interface PartFrame { w: number; h: number; pixels: Uint8Array; anchor: readonly [number, number]; attach: Readonly<Record<string, readonly [number, number]>>; layers?: Readonly<Partial<Record<LayerName, Uint8Array>>>; }

@@ -22,9 +22,17 @@ interface Placed {
   gaps: string[];
 }
 
-/** The attach point a slot hangs from, and whether that point belongs to the head (otherwise the torso). */
-function attachFor(slot: SlotName, index: number, legs: number): { names: string[]; onHead: boolean } {
+/**
+ * The attach point a part hangs from, and whether that point belongs to the head (otherwise the torso).
+ * A part with `at` hangs from that point on that host, whatever its slot. A wing at index 0 hangs from `wing`, at index i from `wing<i>`.
+ */
+function attachFor(rp: RecipePart, legs: number): { names: string[]; onHead: boolean } {
+  if (rp.at !== undefined) return { names: [rp.at.point], onHead: rp.at.host === 'head' };
+  const { slot, index } = rp;
   switch (slot) {
+    case 'farWings':
+    case 'nearWings': return { names: [index === 0 ? 'wing' : `wing${index}`], onHead: false };
+    case 'bodyFeature': return { names: ['back'], onHead: false };
     case 'farLimbs': return { names: [`far${index}_${legs}`, `far${index}`], onHead: false };
     case 'nearLimbs': return { names: [`near${index}_${legs}`, `near${index}`], onHead: false };
     case 'headFeature': return { names: ['feature'], onHead: true };
@@ -100,7 +108,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
 
     if (rp.slot === 'torso') return { frame, frameName, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
 
-    const { names, onHead } = attachFor(rp.slot, rp.index, recipe.legs);
+    const { names, onHead } = attachFor(rp, recipe.legs);
     const hostPart = findPart(onHead ? 'head' : 'torso');
     const host = hostPart === undefined ? undefined : place(hostPart);
     const hostAttach = host?.frame?.attach;

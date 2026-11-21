@@ -51,7 +51,7 @@ const NO_SHIFT = [{ head: [0, 0], tail: [0, 0] }];
 const TAIL_SHIFTS = SHIFTS.map((s) => ({ head: [0, 0], tail: s }));
 const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail })));
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
-const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 10, back: 7, headFeature: 8, glow: 9 };
+const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 10, back: 7, headFeature: 8, glow: 9, bodyFeature: 6, farWings: 11, nearWings: 12 };
 /** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
 const LABEL_BASE = 21;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
@@ -504,7 +504,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
           slot === 'torso' ? p.kind === torsoKind
             : slot === 'head' ? /^h\d$/.test(p.kind)
               : slot === 'tail' ? /^t[1-6]$/.test(p.kind)
-                : kinds.includes(p.kind)));
+                : kinds !== null && kinds.includes(p.kind))); // a wing: no creature asks for one yet
         if (parts.length === 0) continue;
         for (const pose of Object.values(scaffold.poses)) {
           const entry = poseEntryFor(pose.entries, slot, index, legs);
