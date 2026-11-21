@@ -1,45 +1,71 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { Catalogue, Part } from '@cf/art-format';
-import { __buildRecipeAtVersionForTests, buildRecipe, RENDERER_VERSION } from '@cf/art-recipe';
+import { __buildRecipeAtVersionForTests, buildRecipe, GENE_LENGTHS, identityKey, RENDERER_VERSION } from '@cf/art-recipe';
 import { compose, toAscii } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { mulberry32 } from '@cf/domain-rand';
 
-interface Entry { label: string; genome: Record<string, unknown>; guardian: boolean; pose: string; hash: string; gaps: string[]; }
+interface Entry { label: string; genome: Record<string, unknown>; pose: string; hash: string; gaps: string[]; contact: [number, number] | null; }
 interface Fixture { rendererVersion: number; catalogue: string; entries: Entry[]; }
 
 const fixture: Fixture = JSON.parse(readFileSync(new URL('../fixtures/art/quadruped-v1.json', import.meta.url), 'utf8'));
 const catalogue = testCatalogue();
 
-const run = (entry: Entry, cat: Catalogue = catalogue) =>
-  compose(buildRecipe(entry.genome, [], cat), entry.pose, cat);
+const run = (entry: Entry, cat: Catalogue = catalogue) => compose(buildRecipe(entry.genome, [], cat), entry.pose, cat);
 const isReal = (entry: Entry) => !entry.gaps.some((gap) => gap.startsWith('fallback:'));
+const byLabel = (label: string): Entry[] => fixture.entries.filter((e) => e.label === label);
 
 describe('art golden hashes', () => {
   it('records the current renderer version, the test catalogue and the expected entry count', () => {
     expect(fixture.rendererVersion).toBe(RENDERER_VERSION);
     expect(fixture.catalogue).toBe('art-testparts');
-    expect(fixture.entries).toHaveLength(528);
+    expect(fixture.entries).toHaveLength(614);
   });
 
-  it('has at least 100 entries that compose a real quadruped', () => {
-    expect(fixture.entries.filter(isReal).length).toBeGreaterThanOrEqual(100);
+  it('has at least 150 entries that compose a real quadruped', () => {
+    expect(fixture.entries.filter(isReal).length).toBeGreaterThanOrEqual(150);
   });
 
-  it('records the Guardian stand-in as a fallback', () => {
-    const guardian = fixture.entries.filter((e) => e.guardian);
-    expect(guardian).toHaveLength(2);
-    for (const e of guardian) expect(e.gaps).toContain('fallback:quadruped');
+  it('records both real Guardians at the guardian tier', () => {
+    for (const world of ['kaum', 'osum']) {
+      const entries = byLabel(`guardian ${world}`);
+      expect(entries.map((e) => e.pose)).toEqual(['rest', 'strike']);
+      for (const e of entries) expect(buildRecipe(e.genome, [], catalogue).tier).toBe('guardian');
+    }
   });
 
-  it('recomputes every entry to its recorded hash and gaps', () => {
+  it('holds a gene value outside its table, a non-integer number and a bred genome with parents', () => {
+    const outside = fixture.entries.some((e) => (Object.keys(GENE_LENGTHS) as (keyof typeof GENE_LENGTHS)[]).some((gene) => {
+      const v = e.genome[gene];
+      return typeof v === 'number' && Number.isInteger(v) && (v < 0 || v >= GENE_LENGTHS[gene]);
+    }));
+    expect(outside).toBe(true);
+    expect(fixture.entries.some((e) => Object.values(e.genome).some((v) => typeof v === 'number' && !Number.isInteger(v)))).toBe(true);
+    expect(fixture.entries.some((e) => Array.isArray(e.genome['parents']))).toBe(true);
+  });
+
+  it('gives a bred pair with its parents swapped a different picture', () => {
+    const bred = fixture.entries.filter((e) => e.label.startsWith('bred '));
+    expect(bred).toHaveLength(4);
+    const differs = [0, 2].map((i) => {
+      const [a, b] = [bred[i]!, bred[i + 1]!];
+      expect(a.genome['parents']).toEqual([...(b.genome['parents'] as unknown[])].reverse());
+      // Swapping the parents always changes the identity; the recorded pictures differ too.
+      expect(identityKey(a.genome, [])).not.toBe(identityKey(b.genome, []));
+      return a.hash !== b.hash;
+    });
+    expect(differs.some((d) => d)).toBe(true);
+  });
+
+  it('recomputes every entry to its recorded hash, gaps and contact', () => {
     for (const entry of fixture.entries) {
       const actual = run(entry);
-      if (actual.hash !== entry.hash || JSON.stringify(actual.gaps) !== JSON.stringify(entry.gaps)) {
+      if (actual.hash !== entry.hash || JSON.stringify(actual.gaps) !== JSON.stringify(entry.gaps) || JSON.stringify(actual.contact) !== JSON.stringify(entry.contact)) {
         expect.fail(
           `${entry.label} (${entry.pose}): expected hash ${entry.hash}, actual ${actual.hash}\n` +
-          `expected gaps ${JSON.stringify(entry.gaps)}\nactual gaps   ${JSON.stringify(actual.gaps)}\n${toAscii(actual.buffer)}`,
+          `expected gaps ${JSON.stringify(entry.gaps)}\nactual gaps   ${JSON.stringify(actual.gaps)}\n` +
+          `expected contact ${JSON.stringify(entry.contact)}, actual ${JSON.stringify(actual.contact)}\n${toAscii(actual.buffer)}`,
         );
       }
     }

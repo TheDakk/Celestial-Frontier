@@ -5,10 +5,10 @@ import { compose, type Composed } from '@cf/art-compose';
 export interface ArtFixtureEntry {
   label: string;
   genome: Record<string, unknown>;
-  guardian: boolean;
   pose: string;
   hash: string;
   gaps: string[];
+  contact: [number, number] | null;
 }
 export interface ArtFixture { rendererVersion: number; catalogue: string; entries: ArtFixtureEntry[]; }
 

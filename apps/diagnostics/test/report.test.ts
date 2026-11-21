@@ -9,10 +9,10 @@ const catalogue = testCatalogue();
 const copy = (): ArtFixture => structuredClone(fixture);
 
 describe('diagnostics report', () => {
-  it('matches every one of the 528 recorded entries', () => {
+  it('matches every one of the 614 recorded entries', () => {
     const report = buildReport(catalogue, fixture);
-    expect(report.total).toBe(528);
-    expect(report.matched).toBe(528);
+    expect(report.total).toBe(614);
+    expect(report.matched).toBe(614);
     expect(report.mismatches).toEqual([]);
     expect(report.rendererVersion).toBe(RENDERER_VERSION);
     expect(report.fixtureVersion).toBe(fixture.rendererVersion);
@@ -23,7 +23,7 @@ describe('diagnostics report', () => {
     const original = altered.entries[7]!.hash;
     altered.entries[7]!.hash = original === '00000000' ? '00000001' : '00000000';
     const report = buildReport(catalogue, altered);
-    expect(report.matched).toBe(527);
+    expect(report.matched).toBe(613);
     expect(report.mismatches).toEqual([
       { index: 7, label: altered.entries[7]!.label, expected: altered.entries[7]!.hash, actual: original, gapsDiffer: false },
     ]);
@@ -33,7 +33,7 @@ describe('diagnostics report', () => {
     const altered = copy();
     altered.entries[11]!.gaps = [...altered.entries[11]!.gaps, 'invented-gap'];
     const report = buildReport(catalogue, altered);
-    expect(report.matched).toBe(527);
+    expect(report.matched).toBe(613);
     expect(report.mismatches).toHaveLength(1);
     expect(report.mismatches[0]!.index).toBe(11);
     expect(report.mismatches[0]!.gapsDiffer).toBe(true);
@@ -97,6 +97,6 @@ describe('diagnostics verdict', () => {
   });
 
   it('judges the real report as a pass', () => {
-    expect(verdict(buildReport(catalogue, fixture))).toEqual({ ok: true, text: 'PASS 528 / 528' });
+    expect(verdict(buildReport(catalogue, fixture))).toEqual({ ok: true, text: 'PASS 614 / 614' });
   });
 });
