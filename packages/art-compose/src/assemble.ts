@@ -1,4 +1,4 @@
-import { PATTERN_NAMES, type Catalogue, type PartFrame, type Pose, type Scaffold, type SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type PartFrame, type Pose, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
@@ -111,13 +111,15 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     return { frame, frameName, x, y, gaps: own };
   };
 
+  // A gene outside PATTERN_NAMES would leave every part unpainted with no gap; it cannot occur, as buildRecipe yields genes 0 to 7 only.
   const pattern = PATTERN_NAMES[recipe.marking.pattern];
   for (const rp of recipe.parts) {
     const p = place(rp);
     gaps.push(...p.gaps);
     if (p.frame === undefined) continue;
     let frame = p.frame;
-    if (rp.mark !== undefined && recipe.marking.pattern !== 0 && pattern !== undefined) {
+    // Only the mark slots take marks: an eye, back part, head feature or glow is never painted and never gets a marks gap.
+    if (rp.mark !== undefined && recipe.marking.pattern !== 0 && pattern !== undefined && MARK_SLOTS.includes(rp.slot)) {
       const phase = (recipe.marking.phase + rp.mark.offset % PHASE_SPREAD) % 15;
       const painted = paintMarks(frame, pattern, recipe.marking.strength, phase, rp.mark.rolls);
       // Painted pixels go on a new frame object: the catalogue's frame is never changed.

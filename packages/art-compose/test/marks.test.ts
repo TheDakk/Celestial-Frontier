@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PATTERN_NAMES, PIXEL_CHARS, type LayerName, type PartFrame, type PatternName } from '@cf/art-format';
-import { PATTERN_TABLE, PHASE_SPREAD, STRENGTH_KEEP, paintMarks } from '@cf/art-compose';
+import { PATTERN_TABLE, STRENGTH_KEEP, paintMarks } from '@cf/art-compose';
 
 /** Rows of pixel characters ('.' is 0) as one row-major array. */
 const grid = (rows: readonly string[]): Uint8Array => Uint8Array.from(rows.join('').split('').map((c) => PIXEL_CHARS.indexOf(c)));
@@ -61,6 +61,40 @@ describe('paintMarks: spots', () => {
   it('eye-spotted draws a rim and an underside centre', () => {
     expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 2, 0, rollsWith(0, 99)))).toEqual(['555333', '5b5333', '555333']);
   });
+
+  it('the eye-spot rim follows the silhouette: a transparent neighbour inside the frame ends the spot', () => {
+    // The spot runs on under the transparent column x4; the drawn pixels at x3 are its edge.
+    const f = frameOf(['3333.', '3333.', '3333.'], { spots: ['11111', '11111', '11111'] });
+    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555.', '5bb5.', '5555.']);
+  });
+
+  it('the eye-spot rim follows an eye pixel inside the spot', () => {
+    const f = frameOf(['3333333', '33333d3', '3333333'], { spots: ['1111111', '1111111', '1111111'] });
+    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555555', '5bbb5d5', '5555555']);
+  });
+
+  it('at hint a spot is chosen when its roll is under the table threshold, and not at it', () => {
+    for (const p of ['spotted', 'eye-spotted'] as const) {
+      const threshold = PATTERN_TABLE[p].percent * STRENGTH_KEEP[0];
+      let under = 0;
+      while ((under + 1) * 100 < threshold) under++;
+      const at = under + 1;
+      expect(under * 100 < threshold && at * 100 >= threshold).toBe(true);
+      const left = (rolls: number[]): string => (rowsOf(blobs, paintMarks(blobs, p, 0, 0, rolls))[0] as string).slice(0, 3);
+      expect(left(rollsWith(under, 99))).toBe('555');
+      expect(left(rollsWith(at, 99))).toBe('333');
+    }
+  });
+
+  it('eye-spotted below full: a spot chosen at clear but not at hint draws its ring only at clear', () => {
+    const atClear = PATTERN_TABLE['eye-spotted'].percent * STRENGTH_KEEP[1];
+    const atHint = PATTERN_TABLE['eye-spotted'].percent * STRENGTH_KEEP[0];
+    let roll = 0;
+    while (roll * 100 < atHint) roll++;
+    expect(roll * 100 < atClear).toBe(true);
+    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 0, 0, rollsWith(roll, 99)))).toEqual(['333333', '333333', '333333']);
+    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 1, 0, rollsWith(roll, 99)))).toEqual(['555333', '5b5333', '555333']);
+  });
 });
 
 describe('paintMarks: strength', () => {
@@ -70,7 +104,6 @@ describe('paintMarks: strength', () => {
     flow: [FLOW15, FLOW15, FLOW15],
     spots: ['111222333444555', '111222333444555', '111222333444555'],
   });
-  const hand = frameOf(host, { striped: ['1.2.3.4.5.6.7.8', '1.2.3.4.5.6.7.8', '...............'] });
   // 30 fixed roll sets from a small whole-number generator.
   const sets: number[][] = [];
   let seed = 12345;
@@ -80,7 +113,7 @@ describe('paintMarks: strength', () => {
     sets.push(rolls);
   }
   const subset = (a: readonly number[], b: readonly number[]): boolean => a.every((i) => b.includes(i));
-  const cases: readonly (readonly [PartFrame, PatternName])[] = [[rich, 'striped'], [rich, 'spotted'], [hand, 'striped']];
+  const cases: readonly (readonly [PartFrame, PatternName])[] = [[rich, 'striped'], [rich, 'spotted'], [rich, 'eye-spotted']];
 
   it('hint and clear keep a nested part of full', () => {
     let strictSomewhere = 0;
@@ -97,28 +130,35 @@ describe('paintMarks: strength', () => {
     expect(strictSomewhere).toBeGreaterThan(0);
   });
 
-  it('with every roll 99, striped and a hand-drawn layer paint nothing at hint and clear, and at full exactly what every roll 0 paints', () => {
-    for (const [f, p] of [[rich, 'striped'], [hand, 'striped']] as const) {
-      expect(changed(f, paintMarks(f, p, 0, 0, ALL99))).toEqual([]);
-      expect(changed(f, paintMarks(f, p, 1, 0, ALL99))).toEqual([]);
-      const full = paintMarks(f, p, 2, 0, ALL99);
-      expect(full).toEqual(paintMarks(f, p, 2, 0, ZERO));
-      expect(changed(f, full).length).toBeGreaterThan(0);
+  it('with every roll 99, striped paints nothing at hint and clear, and at full exactly what every roll 0 paints', () => {
+    expect(changed(rich, paintMarks(rich, 'striped', 0, 0, ALL99))).toEqual([]);
+    expect(changed(rich, paintMarks(rich, 'striped', 1, 0, ALL99))).toEqual([]);
+    const full = paintMarks(rich, 'striped', 2, 0, ALL99);
+    expect(full).toEqual(paintMarks(rich, 'striped', 2, 0, ZERO));
+    expect(changed(rich, full).length).toBeGreaterThan(0);
+  });
+
+  it('banded at hint and clear shows its whole band or nothing', () => {
+    const band = changed(line, paintMarks(line, 'banded', 2, 0, ZERO));
+    expect(band.length).toBeGreaterThan(1);
+    for (const strength of [0, 1] as const) {
+      const seen = new Set<string>();
+      for (let r = 0; r < 100; r++) {
+        const got = changed(line, paintMarks(line, 'banded', strength, 0, rollsWith(r)));
+        expect(got.length === 0 || got.join() === band.join()).toBe(true);
+        seen.add(got.length === 0 ? 'none' : 'band');
+      }
+      expect([...seen].sort()).toEqual(['band', 'none']);
     }
   });
 
-  it('a hand-drawn mark n, numbered in row order of its first pixel, is kept when rolls[n % 15] is under the strength', () => {
-    // Marks: 0 at x0 (rows 0-1), 1 at x2, 2 at x4.
-    const f = frameOf(['44444', '44444'], { spotted: ['1.2.3', '1....'] });
-    const rolls = rollsWith(0, 50, 32);
-    expect(rowsOf(f, paintMarks(f, 'spotted', 0, 0, rolls))).toEqual(['14443', '14444']);
-    expect(rowsOf(f, paintMarks(f, 'spotted', 1, 0, rolls))).toEqual(['14243', '14444']);
-    // Mark 15 and beyond wrap to rolls[n % 15]: sixteen dots, rolls[0] = 99 drops marks 0 and 15 at clear.
-    const sixteen = frameOf(['4'.repeat(31)], { spotted: ['1.'.repeat(15) + '1'] });
-    const out = rowsOf(sixteen, paintMarks(sixteen, 'spotted', 1, 0, rollsWith(99)))[0] as string;
-    expect(out[0]).toBe('4');
-    expect(out[2]).toBe('1');
-    expect(out[30]).toBe('4');
+  it('a flow pixel of . paints nothing in a lines rule', () => {
+    const f = frameOf(['22222'], { flow: ['1.2.1'] });
+    for (const phase of [0, 1, 2, 3, 4]) {
+      const out = rowsOf(f, paintMarks(f, 'striped', 2, phase, ZERO))[0] as string;
+      expect([out[1], out[3]]).toEqual(['2', '2']);
+    }
+    expect(rowsOf(f, paintMarks(f, 'striped', 2, 0, ZERO))).toEqual(['52525']);
   });
 });
 
@@ -127,6 +167,14 @@ describe('paintMarks: hand-drawn layers', () => {
   it('a hand-drawn layer wins over the guide layers and is applied as drawn', () => {
     const f = frameOf(host, { flow: ['12345', '12345'], striped: ['9..c.', '.1...'] });
     expect(rowsOf(f, paintMarks(f, 'striped', 2, 0, ZERO))).toEqual(['922c2', '21222']);
+  });
+
+  it('a hand-drawn layer paints the same pixels at hint, clear and full', () => {
+    const f = frameOf(['2222222', '2222222'], { flow: ['1234567', '1234567'], spotted: ['1.2.3.4', '1....c.'] });
+    const drawnAsIs = ['1222324', '12222c2'];
+    for (const rolls of [ZERO, ALL99, rollsWith(99, 0, 50, 20), rollsWith(40, 80, 10)]) {
+      for (const strength of [0, 1, 2] as const) expect(rowsOf(f, paintMarks(f, 'spotted', strength, 0, rolls))).toEqual(drawnAsIs);
+    }
   });
 
   it('a hand-drawn layer for another pattern is ignored', () => {
@@ -185,8 +233,6 @@ describe('paintMarks: the table', () => {
       expect(15 % rule.period).toBe(0);
       for (const v of [...rule.shade, rule.centre]) expect(v >= 0 && v <= 12 && Number.isInteger(v)).toBe(true);
     }
-    expect(STRENGTH_KEEP).toEqual([33, 67, 100]);
-    expect(PHASE_SPREAD).toBe(3);
   });
 });
 

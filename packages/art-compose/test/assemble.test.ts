@@ -488,7 +488,7 @@ describe('assemble: marks', () => {
   // Its spots-only twin serves spotted but not striped. Each leg is a 1x2 spot.
   const MARK_TEXT = HEADER + `
 part quadruped/torso/sturdy/small/v0
-frame rest anchor=0,0 attach=near0:1,1,near1:2,1
+frame rest anchor=0,0 attach=near0:1,1,near1:2,1,head:4,0,back:1,-1
 2222
 2222
 layer flow
@@ -515,9 +515,25 @@ layer spots
 1
 1
 
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=eye0:1,0
+333
+
 part quadruped/eyes/eye/small/v0
 frame rest anchor=0,0
-d
+5d8
+layer flow
+111
+
+part quadruped/back/fin/small/v0
+frame rest anchor=0,0
+2
+layer flow
+1
+
+part quadruped/back/bare/small/v0
+frame rest anchor=0,0
+2
 
 scaffold quadruped/sturdy/small origin=10,10
 pose rest
@@ -617,6 +633,32 @@ entry torso 0 hop 0 0
     expect(drawn(r.buffer)).toEqual(TORSO);
     // rest, on the same recipe, does paint: the lunge result is not a painter that never paints.
     expect(torsoRow(assemble(recipe, 'rest', marked).buffer, 10)).toEqual([5, 5, 2, 2]);
+  });
+
+  it('an eye part carrying a mark is never painted and gets no gap', () => {
+    const r = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['head', 0, 'quadruped/head/h1/small/v0', undefined],
+      ['eyes', 0, 'quadruped/eyes/eye/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 5, shown as 17.
+    expect([at(r.buffer, 15, 10), at(r.buffer, 16, 10), at(r.buffer, 17, 10)]).toEqual([17, 13, 20]);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('a back part carrying a mark is never painted and gets no gap', () => {
+    const r = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['back', 0, 'quadruped/back/fin/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    expect(at(r.buffer, 11, 9)).toBe(2);
+    expect(r.gaps).toEqual([]);
+    const bare = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['back', 0, 'quadruped/back/bare/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    expect(at(bare.buffer, 11, 9)).toBe(2);
+    expect(bare.gaps).toEqual([]);
   });
 
   it('the catalogue\'s frames are unchanged by composing a marked creature', () => {

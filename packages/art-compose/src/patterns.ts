@@ -1,6 +1,7 @@
 import type { PatternName } from '@cf/art-format';
 
 // Every tunable number of the mark painter, fixed per renderer version. Tuning changes numbers here only.
+// Strength for hand-drawn layers is not designed yet: a hand-drawn layer is applied as drawn at every strength.
 
 export interface PatternRule {
   untuned: boolean;                                   // true: a first attempt Dakk has not seen on stills
@@ -17,7 +18,7 @@ export const PATTERN_TABLE: Readonly<Record<Exclude<PatternName, 'plain'>, Patte
   banded:        { untuned: false, mode: 'lines',  period: 15, on: 6, percent: 0,  shade: MARK, centre: 0,  jog: 0 },
   spotted:       { untuned: false, mode: 'spots',  period: 15, on: 0, percent: 55, shade: MARK, centre: 0,  jog: 0 },
   'eye-spotted': { untuned: false, mode: 'rings',  period: 15, on: 0, percent: 55, shade: MARK, centre: 11, jog: 0 },
-  mottled:       { untuned: true,  mode: 'mottle', period: 5,  on: 2, percent: 80, shade: MARK, centre: 0,  jog: 0 },
+  mottled:       { untuned: true,  mode: 'mottle', period: 5,  on: 2, percent: 80, shade: MARK, centre: 0,  jog: 0 }, // not nested by strength: hint gives more dashes, not fewer marks
   marbled:       { untuned: true,  mode: 'veins',  period: 15, on: 4, percent: 50, shade: MARK, centre: 0,  jog: 5 },
   iridescent:    { untuned: true,  mode: 'lines',  period: 3,  on: 1, percent: 0,  shade: [0, 0, 7, 8], centre: 0, jog: 0 },
 };
