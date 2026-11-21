@@ -3,10 +3,9 @@ import type { PixelBuffer } from '@cf/art-compose';
 import { buildRecipe } from '@cf/art-recipe';
 import text from '../../../packages/art-testparts/src/quadruped.txt?raw';
 import fixtureJson from '../../../fixtures/art/quadruped-v1.json';
-import { buildReport, composeEntry, type ArtFixture } from './report';
+import { reportFromResults, tryComposeEntry, verdict, type ArtFixture, type EntryResult } from './report';
 
 const fixture = fixtureJson as unknown as ArtFixture;
-const catalogue = parseCatalogueText(text);
 const $ = (id: string): HTMLElement => document.getElementById(id) as HTMLElement;
 
 function addLine(parent: HTMLElement, content: string): void {
@@ -21,21 +20,31 @@ function addHeading(parent: HTMLElement, content: string): void {
   parent.appendChild(h);
 }
 
-/** Pixel values 1-16 to CSS-independent RGB, using the entry's three ramps and the palette's fixed colours. */
-function colourTable(cat: Catalogue, ramps: { primary: string; accent: string; underside: string }): number[] {
+/** Pixel values 1-16 to RGB, using the entry's three ramps and the palette's fixed colours. Ramp names the palette lacks are returned in `unknown`. */
+function colourTable(cat: Catalogue, ramps: { primary: string; accent: string; underside: string }): { table: number[]; unknown: string[] } {
   const p = cat.palette;
+  const unknown: string[] = [];
   const rgb = (index: number | undefined): number => p.colours[index ?? 0] ?? 0;
-  const ramp = (name: string): number[] => (p.ramps[name] ?? [0, 0, 0, 0]).map(rgb);
-  return [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
+  const ramp = (name: string): number[] => {
+    const indices = p.ramps[name];
+    if (indices === undefined) {
+      unknown.push(name);
+      return [0, 0, 0, 0];
+    }
+    return indices.map(rgb);
+  };
+  const table = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
     rgb(p.eye), rgb(p.eyeHighlight), rgb(p.glow), rgb(p.outline)];
+  return { table, unknown };
 }
 
-/** The largest whole-number scale (at most 4) that keeps the canvas within a phone's width. */
-const scaleFor = (w: number): number => Math.max(1, Math.min(4, Math.floor(340 / w)));
+const PAGE_PADDING = 12; // matches body padding in index.html, each side
+/** The largest whole-number scale (at most 4) that keeps a canvas of this width within the page. */
+const scaleFor = (w: number, available: number): number => Math.max(1, Math.min(4, Math.floor(available / w)));
 
-function drawBuffer(buffer: PixelBuffer, table: number[]): HTMLCanvasElement {
+function drawBuffer(buffer: PixelBuffer, table: number[], available: number): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
-  const scale = scaleFor(buffer.w);
+  const scale = scaleFor(buffer.w, available);
   canvas.width = buffer.w;
   canvas.height = buffer.h;
   canvas.style.width = `${buffer.w * scale}px`;
@@ -58,14 +67,25 @@ function drawBuffer(buffer: PixelBuffer, table: number[]): HTMLCanvasElement {
 }
 
 function run(): void {
-  const report = buildReport(catalogue, fixture);
-  const verdict = $('verdict');
-  const pass = report.matched === report.total;
-  verdict.textContent = `${pass ? 'PASS' : 'FAIL'} ${pass ? report.total : report.matched} / ${report.total}`;
-  verdict.className = pass ? 'pass' : 'fail';
+  const catalogue = parseCatalogueText(text);
+  const available = document.documentElement.clientWidth - 2 * PAGE_PADDING;
+
+  // Each entry is composed once; the timing, the report and the grid all use this one pass.
+  const times: number[] = [];
+  const results: EntryResult[] = fixture.entries.map((entry) => {
+    const t0 = performance.now();
+    const result = tryComposeEntry(catalogue, entry);
+    times.push(performance.now() - t0);
+    return result;
+  });
+  const report = reportFromResults(fixture, results);
+  const outcome = verdict(report);
+  const verdictLine = $('verdict');
+  verdictLine.textContent = outcome.text;
+  verdictLine.className = outcome.ok ? 'pass' : 'fail';
 
   const details = $('details');
-  addLine(details, `Renderer version: ${report.rendererVersion}`);
+  addLine(details, `Renderer version: code ${report.rendererVersion}, fixture ${report.fixtureVersion}`);
 
   if (report.mismatches.length > 0) {
     addHeading(details, 'First mismatches');
@@ -75,11 +95,7 @@ function run(): void {
   }
 
   // Timing: display only.
-  const times = fixture.entries.map((entry) => {
-    const t0 = performance.now();
-    composeEntry(catalogue, entry);
-    return performance.now() - t0;
-  }).sort((a, b) => a - b);
+  times.sort((a, b) => a - b);
   const mid = times.length >> 1;
   const median = times.length === 0 ? 0 : times.length % 2 === 1 ? times[mid] ?? 0 : ((times[mid - 1] ?? 0) + (times[mid] ?? 0)) / 2;
   const worst = times[times.length - 1] ?? 0;
@@ -90,20 +106,43 @@ function run(): void {
   addLine(details, `User agent: ${navigator.userAgent}`);
 
   // About 40 real (no fallback) creatures, spread across the fixture.
-  const real = fixture.entries.filter((e) => !e.gaps.some((g) => g.startsWith('fallback:')));
+  const real: number[] = [];
+  fixture.entries.forEach((e, i) => { if (!e.gaps.some((g) => g.startsWith('fallback:'))) real.push(i); });
   const step = Math.max(1, Math.floor(real.length / 40));
   const grid = $('grid');
   for (let i = 0, shown = 0; i < real.length && shown < 40; i += step, shown++) {
-    const entry = real[i] as ArtFixture['entries'][number];
-    const composed = composeEntry(catalogue, entry);
+    const index = real[i] as number;
+    const entry = fixture.entries[index] as ArtFixture['entries'][number];
+    const result = results[index];
+    if (result === undefined || 'error' in result) continue;
     const recipe = buildRecipe(entry.genome, [], catalogue, { guardian: entry.guardian });
+    const { table, unknown } = colourTable(catalogue, recipe.ramps);
     const figure = document.createElement('figure');
-    figure.appendChild(drawBuffer(composed.buffer, colourTable(catalogue, recipe.ramps)));
+    figure.appendChild(drawBuffer(result.composed.buffer, table, available));
     const caption = document.createElement('figcaption');
-    caption.textContent = `${entry.label} (${entry.pose})`;
+    caption.textContent = [`${entry.label} (${entry.pose})`, ...unknown.map((name) => `unknown ramp: ${name}`)].join('\n');
     figure.appendChild(caption);
     grid.appendChild(figure);
   }
 }
 
-run();
+/** Any error ends up on the page, never a blank screen. */
+function showError(error: unknown): void {
+  const verdictLine = $('verdict');
+  verdictLine.textContent = 'FAIL: error';
+  verdictLine.className = 'fail';
+  const message = error instanceof Error ? error.message : String(error);
+  const stack = error instanceof Error && error.stack !== undefined ? error.stack : '';
+  addLine($('details'), stack.includes(message) ? stack : `${message}\n${stack}`);
+}
+
+// Let the browser paint the "Running" line before the heavy work starts.
+requestAnimationFrame(() => {
+  setTimeout(() => {
+    try {
+      run();
+    } catch (error) {
+      showError(error);
+    }
+  }, 0);
+});
