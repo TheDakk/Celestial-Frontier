@@ -691,9 +691,15 @@ describe('checkPack lists every marks: gap a pose can show, as x0 when no sample
 /**
  * What the placeholder pack composes: 20580 for the base sample and the no-legs shift sweep, plus the mark and back-part
  * sweep (6 scaffolds x 10 head kinds x (7 patterns + 7 skins) x 7 poses = 5880), plus the shift sweep again on the sturdy
- * scaffold at 2 and 8 legs (its legs= entries and near0_2) (2 leg counts x (10 heads alone + 10 head and tail pairs) x 7 poses = 280).
+ * scaffold at 2 and 8 legs (its legs= entries and near0_2) (2 leg counts x (10 heads alone + 10 head and tail pairs) x 7 poses = 280),
+ * plus the back-part skins again on the sturdy scaffold at two legs (10 heads x 7 skins x 7 poses = 490).
  */
-const PLACEHOLDER_COMPOSED = 20580 + 5880 + 280;
+const PLACEHOLDER_COMPOSED = 20580 + 5880 + 280 + 490;
+/** The pack text with only the named scaffolds kept; every part and fallback stays. */
+const onlyScaffolds = (text: string, keep: readonly string[]): string =>
+  text.split('\n\n').filter((block) => { const m = /^scaffold (\S+)/.exec(block.trimStart()); return m === null || keep.includes(m[1]!); }).join('\n\n');
+/** The sturdy scaffold's rest pose in the placeholder pack (its only pose with this text). */
+const STURDY_REST = 'pose rest\nentry torso 0 rest 0 0\nentry nearLimbs 0 rest -1 0 legs=8\n';
 /** The limbs gene for a leg count. */
 const limbGene = (legs: number): number => (LIMB_COUNTS as readonly number[]).indexOf(legs);
 
@@ -728,6 +734,25 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
     expect(errorsOf(bad).filter((l) => l.startsWith('error: detached head on quadruped/sturdy/medium '))).toHaveLength(1);
     // Rest has no head offset: only a +1 head shift opens the gap there.
     expect(new Set(bad.detached.filter((d) => d.pose === 'rest').map((d) => d.shift.head[0]))).toEqual(new Set([1]));
+  });
+
+  it('composes the back parts at two legs: an entry moving them off the body or naming a missing frame there is an error', () => {
+    const sturdy = onlyScaffolds(text, ['quadruped/sturdy/medium']);
+    expect(sturdy.match(/^scaffold /gm)).toHaveLength(1);
+    const backFinding = (l: string): boolean => /^error: (hidden part quadruped\/back\/\S+|detached back) on quadruped\/sturdy\/medium /.test(l);
+    // The whole pack, unplanted, has neither (pinned above too).
+    expect(errorsOf(r).filter(backFinding)).toEqual([]);
+    expect(errorsOf(r).filter((l) => l.startsWith('error: gap frame:'))).toEqual([]);
+    const moved = checkPack(planted(STURDY_REST, `${STURDY_REST}entry back 0 rest 0 -40 legs=2\n`, sturdy));
+    expect(moved.ok).toBe(false);
+    expect(errorsOf(moved).filter(backFinding).length).toBeGreaterThan(0);
+    const twoLegs = limbGene(2);
+    expect([...moved.hidden, ...moved.detached].every((d) => d.genome['limbs'] === twoLegs && d.pose === 'rest')).toBe(true);
+    const nosuch = checkPack(planted(STURDY_REST, `${STURDY_REST}entry back 0 nosuch 0 0 legs=2\n`, sturdy));
+    expect(nosuch.ok).toBe(false);
+    const frameGaps = errorsOf(nosuch).filter((l) => l.startsWith('error: gap frame:'));
+    expect(frameGaps.length).toBeGreaterThan(0);
+    expect(frameGaps.every((l) => /^error: gap frame:quadruped\/back\/[a-z]+-sturdy\/medium\/v0:nosuch \(x\d+\)$/.test(l))).toBe(true);
   });
 });
 

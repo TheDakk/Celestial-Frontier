@@ -72,8 +72,9 @@ export const HIDDEN_MIN = 4;
 export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind, all plain with skin ' + BASE_SKIN + ' (no back part); every pose the scaffold defines. ' +
-  'For each head kind with the last tail, eight legs and eight eyes: one creature for each pattern gene ' + PATTERN_GENES.join(', ') +
-  ' at full strength, and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + '), in every pose at its own shift. ' +
+  'For each head kind with the last tail and eight eyes: one creature at eight legs for each pattern gene ' + PATTERN_GENES.join(', ') +
+  ' at full strength, and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + ') at eight legs and again at every leg count ' +
+  'a legs= entry or a torso leg-count attach point of the scaffold is written for, in every pose at its own shift. ' +
   'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs) and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for: ' +
   'every head kind with no tail at its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
   'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
@@ -663,20 +664,6 @@ export function checkPack(text) {
       check(genome, buildRecipe(genome, [], catalogue), []);
     }
 
-    // Marks, back parts and head features: for each head kind with the last tail, eight legs and eight eyes, one creature
-    // for each pattern gene but plain (on the base skin) and one for each skin gene that has a back part (plain).
-    for (const head of someHeads) {
-      const tail = tails[tails.length - 1];
-      for (const pattern of PATTERN_GENES) {
-        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern);
-        check(genome, buildRecipe(genome, [], catalogue), []);
-      }
-      for (const skin of BACK_SKINS) {
-        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, 0, skin);
-        check(genome, buildRecipe(genome, [], catalogue), []);
-      }
-    }
-
     // The leg counts this scaffold draws differently: each a legs= entry of one of its poses or a leg-count attach name
     // on one of its torsos is written for.
     const torsoKind = scaffold.id.split('/')[1];
@@ -685,6 +672,24 @@ export function checkPack(text) {
     for (const part of catalogue.parts.values()) {
       if (part.family !== scaffold.family || part.slot !== 'torso' || part.kind !== torsoKind || part.tier !== scaffold.tier) continue;
       for (const frame of Object.values(part.frames)) for (const point of Object.keys(frame.attach)) if (LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
+    }
+
+    // Marks, back parts and head features: for each head kind with the last tail and eight eyes, one creature at eight
+    // legs for each pattern gene but plain (on the base skin), and one for each skin gene that has a back part (plain) at
+    // eight legs and again at each of those leg counts (a legs= entry can move or swap the back part).
+    const backLimbs = [FULL_LIMBS, ...[...legCounts].sort((a, b) => a - b).map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== FULL_LIMBS)];
+    for (const head of someHeads) {
+      const tail = tails[tails.length - 1];
+      for (const pattern of PATTERN_GENES) {
+        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern);
+        check(genome, buildRecipe(genome, [], catalogue), []);
+      }
+      for (const skin of BACK_SKINS) {
+        for (const limbs of backLimbs) {
+          const genome = genomeOf(head, tail, limbs, FULL_EYES, 0, skin);
+          check(genome, buildRecipe(genome, [], catalogue), []);
+        }
+      }
     }
 
     // Shift sweep, with no legs (more parts only add pixels, so none is the strictest case), then again at each of those
