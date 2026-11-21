@@ -45,12 +45,14 @@ const WHERE: Record<string, string | null> = {
   kuiper: 'current star', oort: 'current star', visitor: 'current star',
   planet: 'picked planet', moon: "moon's planet", worm: null,
 };
-/** The logId prefix of each kind's card: which composer answered. A quasar card with no galaxy is logged as 'q'. */
+/** The logId prefix of each kind's card: which composer answered. */
 const LOG_ID: Record<string, RegExp> = {
-  galaxy: /^g\d/, quasar: /^q(\d|$)/, radio: /^r\d/, deco: /^d[a-z0-9]+_/, snova: /^sn\d/, protostar: /^ps\d/, cmb: /^cmb$/,
+  galaxy: /^g\d/, quasar: /^q\d/, radio: /^r\d/, deco: /^d[a-z0-9]+_/, snova: /^sn\d/, protostar: /^ps\d/, cmb: /^cmb$/,
   star: /^s\d/, starsys: /^s\d/, comet: /^c\d/, belt: /^b\d/, dwarf: /^dw\d/, kuiper: /^k\d/, oort: /^o\d/, visitor: /^v\d/,
   planet: /^p\d/, moon: /^m\d/, worm: /^wh$/,
 };
+/** A quasar pick with no galaxy is logged as exactly 'q'; every other pick by its kind's prefix and a number. */
+const logIdOf = (input: Input): RegExp => (input.pick.kind === 'quasar' && input.pick.data === null ? /^q$/ : LOG_ID[input.pick.kind]!);
 
 type Where = { type: string; gal: number | null; star?: number | undefined; pseed?: number | undefined } | null;
 function expectedWhere(input: Input): Where {
@@ -76,7 +78,8 @@ const whereOf = (c: Card): Where => c.where && {
 describe('@cf/domain-descriptors — describePickWithState', () => {
   it('routes every pick kind to its own composer', () => {
     expect(new Set(CARD_ROWS.map(({ input }) => input.pick.kind))).toEqual(new Set(Object.keys(LOG_ID)));
-    const wrong = CARD_ROWS.filter(({ input }) => !LOG_ID[input.pick.kind]!.test(card(input)!.logId));
+    expect(CARD_ROWS.filter(({ input }) => input.pick.kind === 'quasar' && input.pick.data === null).length).toBeGreaterThan(0);
+    const wrong = CARD_ROWS.filter(({ input }) => !logIdOf(input).test(card(input)!.logId));
     expect(wrong.map(({ input }) => input.pick.kind)).toEqual([]);
   });
 

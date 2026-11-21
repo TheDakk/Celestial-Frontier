@@ -56,4 +56,15 @@ describe('@cf/domain-descriptors — no app hook is a global', () => {
 
     expect(definedGlobals()).toEqual([]);
   });
+  it('notices each hook name when it is put on globalThis (control)', () => {
+    for (const name of GLOBALS) {
+      try {
+        Reflect.set(globalThis, name, undefined);
+        expect(definedGlobals(), name).toEqual([name]);
+      } finally {
+        Reflect.deleteProperty(globalThis, name);
+      }
+    }
+    expect(definedGlobals()).toEqual([]);
+  });
 });
