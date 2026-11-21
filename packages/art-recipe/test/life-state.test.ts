@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { bodyOf, buildRecipe } from '../src/recipe';
+import { bodyOf, buildRecipe, buildRoutedRecipe } from '../src/recipe';
 import { identityKey, LIFE_STATE_KEYS } from '../src/streams';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
@@ -93,6 +93,32 @@ describe('every other key is part of the identity', () => {
       expect(identityKey(withKey(key, value), lineage)).not.toBe(identityKey(genome, lineage));
     });
   }
+});
+
+describe('the bulk step', () => {
+  const nonTorso = (r: ReturnType<typeof buildRoutedRecipe>): unknown => r.parts.filter((p) => p.slot !== 'torso');
+
+  it('the bulk step changes only the torso', () => {
+    for (let seed = 1; seed <= 30; seed++) {
+      const g = { ...genome, seed, pattern: 2 };
+      const [lean, normal, heavy] = ([0, 1, 2] as const).map((bulk) => buildRoutedRecipe(g, lineage, catalogue, { bulk }));
+      for (const r of [lean!, heavy!]) {
+        expect([r.marking, r.shift, r.ramps, nonTorso(r)], `seed ${seed}`).toEqual([normal!.marking, normal!.shift, normal!.ramps, nonTorso(normal!)]);
+      }
+      expect([lean!, normal!, heavy!].map((r) => r.parts.find((p) => p.slot === 'torso')!.partId), `seed ${seed}`)
+        .toEqual([0, 1, 2].map((v) => q('torso', 'sturdy', v)));
+    }
+  });
+
+  it('fed and hurt in the genome do not change the bulk (only the caller does)', () => {
+    for (const bulk of [0, 1, 2] as const) {
+      const plain = buildRoutedRecipe(genome, lineage, catalogue, { bulk });
+      for (const [fed, hurt] of [[0, 0], [120, 0], [0, 0.35], [120, 0.35]] as const) {
+        expect(buildRoutedRecipe({ ...genome, fed, hurt }, lineage, catalogue, { bulk }), `bulk ${bulk} fed ${fed} hurt ${hurt}`).toEqual(plain);
+      }
+    }
+    expect(buildRoutedRecipe({ ...genome, fed: 120, hurt: 0.35 }, lineage, catalogue)).toEqual(buildRoutedRecipe(genome, lineage, catalogue, { bulk: 1 }));
+  });
 });
 
 describe('the shape of a body with more than one', () => {

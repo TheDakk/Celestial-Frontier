@@ -32,6 +32,12 @@ export interface Recipe {
   skin: number | null;    // the skin layer; null until the skin is drawn
 }
 
+/**
+ * What the caller knows of the creature now, beside its identity. `bulk`: lean 0, normal 1, heavy 2, the torso variant
+ * the routed builder asks for (the game computes it from vitality). Legs do not thicken with bulk.
+ */
+export interface Condition { bulk: 0 | 1 | 2 }
+
 /** The neutral values of the routed builder's fields: they draw nothing. */
 const NEUTRAL = Object.freeze({ opacity: 100, airborne: false, theme: null, rim: 0, skin: null } as const);
 
@@ -120,18 +126,23 @@ export function bodyOf(genome: Readonly<Record<string, unknown>>, lineage: reado
 /**
  * The recipe of a generated creature drawn as the animal the original draws (bodyOf, planBodyParts). The creature-wide
  * streams exactly as buildRecipe draws them, in the same order, then the body from `sub-shape`. Not live: buildRecipe
- * does not call it. Named species keep buildSpeciesRecipe. Frozen like buildRecipe's result.
+ * does not call it. Named species keep buildSpeciesRecipe. Frozen like buildRecipe's result. The torso variant is the
+ * caller's bulk step (default normal); the `torso-build` stream is still drawn (drawStreams), its result dropped.
+ * A bulk step outside 0 to 2 throws.
  */
 export function buildRoutedRecipe(
   genome: Readonly<Record<string, unknown>>,
   lineage: readonly string[],
   catalogue: Catalogue,
+  condition: Condition = { bulk: 1 },
 ): Recipe {
+  const bulk: number = condition.bulk;
+  if (bulk !== 0 && bulk !== 1 && bulk !== 2) throw new Error(`bad bulk step ${String(bulk)}`);
   const identity = identityKey(genome, lineage);
   const stream = (name: string): (() => number) => artStream(identity, name, RENDERER_VERSION);
   const d = drawStreams(stream);
   const b = bodyOf(genome, lineage);
-  const { parts, gaps } = planBodyParts(b, d.variants, stream, catalogue);
+  const { parts, gaps } = planBodyParts(b, { ...d.variants, torso: bulk }, stream, catalogue);
   return deepFreeze({
     version: RENDERER_VERSION, identity, family: b.family, tier: b.tier,
     scaffoldId: `${b.family}/${torsoKindOf(b)}/${b.tier}`,

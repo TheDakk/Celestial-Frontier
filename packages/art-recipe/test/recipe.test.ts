@@ -368,6 +368,68 @@ describe('buildRoutedRecipe', () => {
     expect(seen.size).toBeGreaterThan(4);
   });
 
+  it('the bulk step chooses the torso variant', () => {
+    // `full` holds torso v0 to v2 and every leg part at v0 and v1.
+    for (let seed = 1; seed <= 30; seed++) {
+      const g = { ...base, limbs: 4, seed };
+      const steps = ([0, 1, 2] as const).map((bulk) => buildRoutedRecipe(g, [], full, { bulk }));
+      expect(steps.map((r) => r.parts.find((p) => p.slot === 'torso')!.partId), `seed ${seed}`)
+        .toEqual([q('torso', 'sturdy', 0), q('torso', 'sturdy', 1), q('torso', 'sturdy', 2)]);
+      const limbs = steps.map((r) => r.parts.filter((p) => LIMB_SLOTS.includes(p.slot)));
+      expect(limbs[0]!.length, `seed ${seed}`).toBeGreaterThan(0);
+      expect(limbs[1], `seed ${seed}`).toEqual(limbs[0]);
+      expect(limbs[2], `seed ${seed}`).toEqual(limbs[0]);
+    }
+  });
+
+  it('the default is normal', () => {
+    for (let seed = 1; seed <= 20; seed++) {
+      const g = { ...base, limbs: 4, seed };
+      const r = buildRoutedRecipe(g, [], full);
+      expect(r, `seed ${seed}`).toEqual(buildRoutedRecipe(g, [], full, { bulk: 1 }));
+      expect(r.parts.find((p) => p.slot === 'torso')!.partId).toBe(q('torso', 'sturdy', 1));
+    }
+  });
+
+  it('bulk 3 and -1 throw', () => {
+    for (const bulk of [3, -1, 1.5]) {
+      expect(() => buildRoutedRecipe(base, [], full, { bulk } as unknown as { bulk: 0 }), `${bulk}`).toThrow(`bad bulk step ${bulk}`);
+    }
+  });
+
+  it('the torso-build stream is still drawn; every other stream-derived value is the same with and without a bulk step', () => {
+    // Whatever the seeded torso variant would have been, only the torso part follows the bulk step.
+    const withoutTorso = (r: ReturnType<typeof buildRoutedRecipe>): unknown => ({ ...r, parts: r.parts.filter((p) => p.slot !== 'torso') });
+    const torsoMark = (r: ReturnType<typeof buildRoutedRecipe>): unknown => r.parts.find((p) => p.slot === 'torso')?.mark;
+    let seededDiffers = 0;
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = makeGenome(seed, 'fauna', 1) as unknown as Record<string, unknown>;
+      const plain = buildRoutedRecipe(g, [], every);
+      for (const bulk of [0, 1, 2] as const) {
+        const r = buildRoutedRecipe(g, [], every, { bulk });
+        expect(withoutTorso(r), `seed ${seed} bulk ${bulk}`).toEqual(withoutTorso(plain));
+        expect(torsoMark(r), `seed ${seed} bulk ${bulk}`).toEqual(torsoMark(plain));
+        const torso = r.parts.find((p) => p.slot === 'torso');
+        if (torso !== undefined) expect(torso.partId.endsWith(`/v${bulk}`), `seed ${seed} bulk ${bulk}`).toBe(true);
+      }
+      const seeded = pick(artStream(identityKey(g, []), 'torso-build', RENDERER_VERSION), 3);
+      if (seeded !== 1) seededDiffers++;
+    }
+    // The seeded draw would have chosen another variant for many of these creatures, so the bulk step decides.
+    expect(seededDiffers).toBeGreaterThan(50);
+  });
+
+  it('a pack with only torso v0 draws v0 at every bulk step, with a variant gap', () => {
+    const ids = fullIds().filter((id) => !id.startsWith(q('torso', 'sturdy', 1).slice(0, -2)) || id.endsWith('/v0'));
+    const onlyV0 = catalogueOf(ids);
+    expect(buildRoutedRecipe(base, [], onlyV0, { bulk: 0 }).gaps.filter((x) => x.startsWith('variant:'))).toEqual([]);
+    for (const bulk of [1, 2] as const) {
+      const r = buildRoutedRecipe(base, [], onlyV0, { bulk });
+      expect(r.parts.find((p) => p.slot === 'torso')!.partId, `bulk ${bulk}`).toBe(q('torso', 'sturdy', 0));
+      expect(r.gaps, `bulk ${bulk}`).toContain(`variant:${q('torso', 'sturdy', bulk)}`);
+    }
+  });
+
   it('the old builders carry the neutral new fields', () => {
     const neutral = { opacity: 100, airborne: false, theme: null, rim: 0, skin: null };
     expect(buildRecipe({ ...base, body: 9, skin: 7, loco: 3 }, [], full)).toMatchObject(neutral);
