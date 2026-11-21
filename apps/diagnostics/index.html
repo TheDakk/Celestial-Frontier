@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renderer diagnostics</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 12px; font: 16px/1.4 system-ui, sans-serif; background: #fff; color: #111; overflow-wrap: anywhere; }
+  #note { margin: 0 0 8px; }
+  #verdict { margin: 0 0 8px; font-size: 2rem; font-weight: 700; }
+  #verdict.pass { color: #0a7a2f; }
+  #verdict.fail { color: #b3261e; }
+  h2 { font-size: 1.1rem; margin: 16px 0 4px; }
+  pre { margin: 0; white-space: pre-wrap; font: 14px/1.4 ui-monospace, monospace; }
+  #grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  #grid figure { margin: 0; max-width: 100%; }
+  #grid canvas { display: block; background: #3a3f4a; image-rendering: pixelated; }
+  #grid figcaption { font-size: 12px; max-width: 144px; }
+</style>
+</head>
+<body>
+<p id="note">Renderer diagnostics. Placeholder shapes, not game art.</p>
+<p id="verdict">Running...</p>
+<div id="details"></div>
+<h2>Composed creatures</h2>
+<div id="grid"></div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

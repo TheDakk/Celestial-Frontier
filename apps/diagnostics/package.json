@@ -1,0 +1,20 @@
+{
+  "name": "@cf/diagnostics",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@cf/art-compose": "*",
+    "@cf/art-format": "*",
+    "@cf/art-recipe": "*",
+    "@cf/art-testparts": "*"
+  },
+  "devDependencies": {
+    "vite": "8.2.0"
+  }
+}
