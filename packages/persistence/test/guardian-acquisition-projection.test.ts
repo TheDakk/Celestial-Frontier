@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import {
   planCombatSettlementV1,
@@ -57,7 +57,6 @@ import {
   type SaveStateV2,
   type V5Extensions,
 } from '../src/index.js';
-
 
 const CAPTURE_WORLDS = Object.freeze({
   guardian: Object.freeze({

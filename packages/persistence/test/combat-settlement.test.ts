@@ -32,7 +32,6 @@ import {
   type CombatSettlementPlanV1,
 } from '@cf/domain-combatcore';
 import { projectWorldOpportunity } from '@cf/domain-opportunity';
-import { MAX_UNLOCKED_ACHIEVEMENT_IDS } from '@cf/domain-progression';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   COMBAT_SETTLEMENT_AUTHORITY_NAMESPACE_V1,
@@ -40,8 +39,6 @@ import {
   COMBAT_SETTLEMENT_AUTHORITY_VERSION_V1,
   COMBAT_STARTER_CONQUEST_CHARTER_ID_V1,
   COMBAT_STARTER_CONQUEST_CHARTER_STARDUST_V1,
-  COMBAT_BRINK_ACHIEVEMENT_ID_V1,
-  COMBAT_BRINK_ACHIEVEMENT_OWNER_V1,
   GUARDIAN_ACQUISITION_NAMESPACE_V1,
   GUARDIAN_COMPANION_NAMESPACE_V1,
   V4_PRIMARY_KEY,
@@ -54,7 +51,6 @@ import {
   encodeArc4Ownership,
   migrateStoredV4ToV5,
   prepareArc5OwnershipMigration,
-  projectLegacyPlayerSettlementChampionV1,
   projectGuardianCombatLossXpAuthorityV1,
   readArc5OwnershipMigration,
   readCombatSettlementAuthorityV1,
@@ -64,12 +60,10 @@ import {
   readSaveV5,
   verifyCommittedCombatSettlementV1,
   type CombatSettlementAuthorityV1,
-  type CombatSettlementBrinkAchievementJoinV1,
   type ContentRegistry,
   type SaveStateV2,
   type StorageBackend,
   type TabLeaseGrant,
-  type V5Extensions,
   type V5WritableState,
 } from '@cf/persistence';
 

@@ -4,6 +4,8 @@ import { readRepoFiles } from './tracked-files.mjs';
 import { scanCode } from './scan-code.mjs';
 
 const DOMAIN_SRC = /^packages\/domain\/[^/]+\/src\//;
+const SCENE_SRC = /^packages\/scene\/src\//;
+const PERSISTENCE_SRC = /^packages\/persistence\/src\//;
 // Every packages/art-<name>/src/ folder, at any depth below it, except the placeholder parts in art-testparts.
 const ART_SRC = /^packages\/art-(?!testparts\/)[^/]+\/src\//;
 // String and template literals are matched first and kept, so `//` or `/*` inside a string
@@ -20,12 +22,23 @@ const FORBIDDEN_USES = [
   [/\bperformance\.now\b/, 'uses performance.now'],
   [/\bnew\s+Date\s*\(/, 'uses new Date'],
 ];
-// Gameplay code never touches the page or draws: drawing belongs to the renderer.
+// Gameplay code never touches the page or draws: drawing belongs to the renderer. The page objects are
+// caught through `.`, `?.` or `[`; a property merely named window (`state.window`) is not the page's.
 const DOMAIN_USES = [
   ...FORBIDDEN_USES,
-  [/\bdocument\./, 'uses document'],
-  [/\bwindow\./, 'uses window'],
-  [/\bgetContext\s*\(/, 'uses a canvas'],
+  [/\bdocument\s*(?:\?\.|\.|\[)/, 'uses document'],
+  [/(?<![.\w$])window\s*(?:\?\.|\.|\[)/, 'uses window'],
+  [/\b(?:globalThis|self)\s*(?:\?\.|\.)\s*window\b/, 'uses window'],
+  [/\bgetContext\s*(?:\?\.)?\(/, 'uses a canvas'],
+  [/\bOffscreenCanvas\b/, 'uses a canvas'],
+];
+// Gameplay folders and the rules each gets: the domain packages and scene the full gameplay rules;
+// persistence (which owns the browser save, so it may touch the page) the clock and random rules.
+// All three get the art-import rules.
+const GAMEPLAY_RULES = [
+  [DOMAIN_SRC, DOMAIN_USES],
+  [SCENE_SRC, DOMAIN_USES],
+  [PERSISTENCE_SRC, FORBIDDEN_USES],
 ];
 // `from '<spec>'`, bare `import '<spec>'`, and `import('<spec>')`.
 const IMPORT_SPEC = /(?:\bfrom\s*|\bimport\s*\(?\s*)(['"])([^'"\n]+)\1/g;
@@ -89,21 +102,27 @@ function checkArt(path, text) {
   return [...problems];
 }
 
-/** One message per reason per file; text files under packages/domain/<name>/src/ get the gameplay rules and under
- *  packages/art-<name>/src/ (except art-testparts) the renderer rules; everything else is ignored. */
+/** True for a path the purity check examines. */
+const isChecked = (path) => ART_SRC.test(path) || GAMEPLAY_RULES.some(([folder]) => folder.test(path));
+
+/** One message per reason per file; files under packages/domain/<name>/src/ and packages/scene/src/ get the
+ *  gameplay rules, under packages/persistence/src/ the clock, random and art-import rules, and under
+ *  packages/art-<name>/src/ (except art-testparts) the renderer rules; everything else is ignored. A NUL
+ *  byte in any examined file is reported. */
 export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {
-    if (text === null) continue;
+    if (isChecked(path) && text.includes('\0')) problems.push(`${path}: contains a NUL byte`);
     if (ART_SRC.test(path)) {
       problems.push(...checkArt(path, text));
       continue;
     }
-    if (!DOMAIN_SRC.test(path)) continue;
+    const rules = GAMEPLAY_RULES.find(([folder]) => folder.test(path))?.[1];
+    if (rules === undefined) continue;
     // Forbidden uses are matched against code with comments and string text blanked (a table of quoted v1 lines
     // is not a use); imports are found as before, in the comment-free text that keeps string literals.
     const { bare } = scanCode(text);
-    for (const [re, reason] of DOMAIN_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
+    for (const [re, reason] of rules) if (re.test(bare)) problems.push(`${path}: ${reason}`);
     const specs = importedSpecifiers(stripComments(text));
     if (specs.some((s) => s.startsWith('@cf/art'))) problems.push(`${path}: imports an art package`);
     if (specs.some((s) => s === 'pixi.js')) problems.push(`${path}: imports pixi.js`);
@@ -112,7 +131,7 @@ export function checkPurity(files) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const problems = checkPurity(readRepoFiles((path) => DOMAIN_SRC.test(path) || ART_SRC.test(path)));
+  const problems = checkPurity(readRepoFiles(isChecked));
   for (const p of problems) console.error(p);
   if (problems.length > 0) process.exit(1);
   console.log('purity check: ok');

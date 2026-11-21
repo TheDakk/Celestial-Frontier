@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import * as acquisitionRoot from '@cf/domain-acquisition';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -61,7 +61,6 @@ import {
 } from '../src/index.js';
 
 const LEGACY_SCHEMA = 'cf-v2-ownership-v1-to-v2/v1';
-
 
 interface Fixture {
   readonly source: OwnershipStateV1;

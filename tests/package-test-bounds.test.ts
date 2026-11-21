@@ -1,8 +1,7 @@
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { scanCode } from '../tools/scan-code.mjs';
-import { REPO_ROOT, readRepoFiles } from '../tools/tracked-files.mjs';
+import { readRepoFiles } from '../tools/tracked-files.mjs';
 
 /*
  * Package tests stay inside their bounds: no file in a test/ folder under packages/ imports from apps/ or
@@ -107,12 +106,8 @@ function findOutOfBounds(files: ReadonlyArray<Entry>, appNames: ReadonlyArray<st
 }
 
 function repoState(): { files: Entry[]; appNames: string[] } {
-  const entries = readRepoFiles((p) => PACKAGE_TEST.test(p) || /^apps\/[^/]+\/package\.json$/.test(p));
-  // A file with a NUL byte comes back with null text; read it as text anyway so no test file is skipped.
-  const files = entries.map(({ path: p, text }) => ({
-    path: p,
-    text: text ?? readFileSync(path.join(REPO_ROOT, p), 'utf8'),
-  }));
+  // A file with a NUL byte comes back with its text too (decoded as latin1), so no test file is skipped.
+  const files = readRepoFiles((p) => PACKAGE_TEST.test(p) || /^apps\/[^/]+\/package\.json$/.test(p));
   const appNames = files
     .filter((f) => /^apps\/[^/]+\/package\.json$/.test(f.path))
     .map((f) => (JSON.parse(f.text) as { name: string }).name);

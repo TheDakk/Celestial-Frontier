@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
@@ -20,7 +20,6 @@ import {
   type GuardianPrimeEncounterV1,
   type PrimeSignatureIdV1,
 } from '@cf/domain-combatcore';
-
 
 const CANDIDATES = Object.freeze({
   flame: Object.freeze({

@@ -16,9 +16,7 @@ export interface GalaxyNode {
 /** Focused composition seam. Production callers use the lifted source. */
 export type UniverseCellSource = (cellX: number, cellY: number) => readonly Record<string, unknown>[];
 
-/** Galaxy nodes for the (2r+1)² cells centered on world position (cx,cy).
-    ⚠ requires the capture hooks (GAL_SPRITES) until GalaxyArt ports —
-    callers run installCaptureHooks() first, same as the descriptor tests. */
+/** Galaxy nodes for the (2r+1)² cells centered on world position (cx,cy). */
 export function universeGalaxies(
   cx: number,
   cy: number,

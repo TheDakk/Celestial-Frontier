@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   prepareArc2LootLegacyMigration,
   readArc2EngineeringLoadout,
@@ -13,16 +13,13 @@ import {
   type SystemNav,
 } from '@cf/scene';
 import {
-  ENGINEERING_RESEARCH_CATALOGUE,
   LEGACY_ENGINEERING_SEED_MIRROR_SCHEMA,
   createEngineeringState,
   createLegacyEngineeringSeedResolver,
-  encodeEngineeringState,
   isEngineeringActionPlan,
   isWorldMineralRevealProjection,
   migrateLegacyEngineeringState,
   planFixedFabrication,
-  planResearchPurchase,
   planStellarSkim,
   planWorldMining,
   projectStarOpportunity,
@@ -64,24 +61,6 @@ const REMNANT_STAR = {
   galaxy: { seed: 999, x: 90, y: -60 },
   star: { seed: 3363971653, x: -386.2348864697851, y: 453.95830733468756 },
 };
-
-const RAW_TIER_WORLD_FIXTURES = Object.freeze([
-  { expectedRawTier: 0, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3906170621, x: -148.41015493869781, y: -101.48448746139184 }, planet: { seed: 945353644 } },
-  { expectedRawTier: 1, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3906170621, x: -148.41015493869781, y: -101.48448746139184 }, planet: { seed: 2566368282 } },
-  { expectedRawTier: 2, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3906170621, x: -148.41015493869781, y: -101.48448746139184 }, planet: { seed: 1976618830 } },
-  { expectedRawTier: 3, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 2552159536, x: -155.4304008563049, y: -110.68640578491613 }, planet: { seed: 2111361750 } },
-  { expectedRawTier: 4, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 4010450807, x: -49.65674504311755, y: -24.91359581053257 }, planet: { seed: 1339394965 } },
-  { expectedRawTier: 5, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 2732166106, x: -154.71280121896416, y: 32.401062158402056 }, planet: { seed: 101846103 } },
-  { expectedRawTier: 6, galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3906170621, x: -148.41015493869781, y: -101.48448746139184 }, planet: { seed: 501525795 } },
-  { expectedRawTier: 7, galaxy: { seed: 334683355, x: -353.9256348274648, y: 76.0142870247364 }, star: { seed: 3424050282, x: 20.93190941400826, y: 152.28525090264156 }, planet: { seed: 3500238393 } },
-  { expectedRawTier: 8, galaxy: { seed: 4217927457, x: 1221.7045278288424, y: -1174.5391761884093 }, star: { seed: 1659036639, x: -81.62780654523522, y: 17.59287801431492 }, planet: { seed: 1799295138 } },
-  { expectedRawTier: 9, galaxy: { seed: 687322852, x: 1903.3002374693751, y: -1027.60314848274 }, star: { seed: 2705956153, x: -145.89387523569167, y: 32.628345876932144 }, planet: { seed: 3685298290 } },
-  { expectedRawTier: 10, galaxy: { seed: 121725964, x: -2839.856471773237, y: 3305.7031123898923 }, star: { seed: 4090947280, x: -94.33730058884248, y: -12.052213123999536 }, planet: { seed: 3386214749 } },
-  { expectedRawTier: 11, galaxy: { seed: 76716534, x: 3285.340159293264, y: -2484.577433858067 }, star: { seed: 2464948777, x: -95.48481664387509, y: -110.73938757972792 }, planet: { seed: 2593759182 } },
-  { expectedRawTier: 12, galaxy: { seed: 1502115353, x: 2673.646874818951, y: 6279.057256598026 }, star: { seed: 2745422516, x: 41.44531502015889, y: 68.61616784986109 }, planet: { seed: 3296700423 } },
-  { expectedRawTier: 13, galaxy: { seed: 886004438, x: 4055.9559776447713, y: 5288.8648284599185 }, star: { seed: 3171751942, x: 158.4241830362007, y: 93.03661185130477 }, planet: { seed: 3380914553 } },
-  { expectedRawTier: 14, galaxy: { seed: 2575626770, x: 5344.4051948376, y: 12925.356413424015 }, star: { seed: 881246414, x: -31.68546670395881, y: 67.76457142550498 }, planet: { seed: 2926988765 } },
-] as const);
 
 function world(candidate: unknown): CanonicalCF1WorldAddress {
   const result = resolveCF1WorldAddress(candidate);

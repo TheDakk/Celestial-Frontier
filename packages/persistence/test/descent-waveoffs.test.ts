@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   createEmptyDescentWaveOffStateV1,
   decodeDescentWaveOffStateV1,
@@ -19,7 +19,6 @@ import {
   type V5ExtensionCarrier,
   type V5Extensions,
 } from '@cf/persistence';
-
 
 const COLLISION_SEED = 488_332_735;
 const COLLIDING_CANDIDATES = Object.freeze([

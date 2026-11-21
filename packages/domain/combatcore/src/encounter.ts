@@ -9,7 +9,7 @@
    PARITY LAW: one fighter + Balanced + Auto reproduces the verbatim v1.8.9 `runDuel` exactly (winner, HP, the whole log): the same
    seeds, the same RNG draws in the same order, the same 26 half-turn cap and tie coins. A leg is `runDuel`'s loop with two additions
    that draw no randomness: a carried defender HP and the Break hook. Balanced adds no ability fields, so it draws nothing extra.
-   `test/encounter.test.ts` holds that control over the golden fixture pairs. `combatcore.verbatim.js` is never edited.
+   `test/encounter.test.ts` holds that control over the golden fixture pairs. `combatcore.verbatim.js` keeps runDuel byte for byte.
 
    Stance numbers are PLACEHOLDERS for Codex's S4 balance instrument (one right stance per threat, none best everywhere, and
    Command's best swap only a small edge over Auto's own swap). */

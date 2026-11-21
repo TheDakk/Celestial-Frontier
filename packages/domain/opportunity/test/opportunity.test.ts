@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   resolveCF1StarAddress,
   resolveCF1WorldAddress,
@@ -27,7 +27,6 @@ import {
   type EngineeringAddressResolver,
   type LegacyEngineeringSeedResolver,
 } from '../src/index.js';
-
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },

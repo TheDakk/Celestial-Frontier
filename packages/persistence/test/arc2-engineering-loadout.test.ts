@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import * as lootRoot from '@cf/domain-loot';
 import {
   isAcquisitionCapabilitySnapshot,
@@ -22,7 +22,6 @@ import {
   readArc2AcquisitionCapabilities,
   readArc2EngineeringLoadout,
 } from '@cf/persistence';
-
 
 const V2_ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 const INTERNAL_ENGINEERING_IMPORT = '@cf/domain-loot/engineering-internal';

@@ -6,8 +6,7 @@
   "include": [
     "src/**/*.ts",
     "test/**/*.ts",
-    "../../tests/cross/opportunity-economy-source-model.test.ts",
-    "../../tests/cross/opportunity-planner-persistence.test.ts"
+    "../../tests/cross/persistence/**/*.ts"
   ],
   "exclude": []
 }

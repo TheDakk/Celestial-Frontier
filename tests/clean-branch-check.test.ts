@@ -6,7 +6,7 @@ describe('clean-branch check', () => {
     expect(checkTrackedFiles([{ path: 'README.md', text: 'hi' }, { path: 'packages/a/src/i.ts', text: 'export {}' }])).toEqual([]);
   });
   it('names an image file', () => {
-    expect(checkTrackedFiles([{ path: 'a/b.png', text: null }])).toEqual(['a/b.png: image or media file on the code branch']);
+    expect(checkTrackedFiles([{ path: 'a/b.png', text: '' }])).toEqual(['a/b.png: image or media file on the code branch']);
   });
   it('names a stray document', () => {
     expect(checkTrackedFiles([{ path: 'docs/plan.md', text: 'x' }])).toEqual(['docs/plan.md: document on the code branch']);
@@ -31,22 +31,32 @@ describe('clean-branch check', () => {
       { path: 'AGENTS.md', text: 'x' },
     ])).toEqual([]);
   });
-  it('treats nested README.md as a stray document and skips binary text checks', () => {
-    expect(checkTrackedFiles([{ path: 'pkg/README.md', text: 'x' }, { path: 'x.bin', text: null }])).toEqual([
+  it('treats nested README.md as a stray document', () => {
+    expect(checkTrackedFiles([{ path: 'pkg/README.md', text: 'x' }, { path: 'x.bin', text: 'a\0b' }])).toEqual([
       'pkg/README.md: document on the code branch',
     ]);
+  });
+  it('scans the text of a file with NUL bytes like any other file', () => {
+    const home = ['', 'Users', 'someone', 'x'].join('/');
+    const address = ['some.one', 'example.com'].join('@');
+    expect(checkTrackedFiles([
+      { path: 'h.ts', text: `a\0b '${home}'` },
+      { path: 'e.ts', text: `\0 ${address}` },
+      { path: 'd.ts', text: '\0 Zorblat' },
+      { path: 'clean.ts', text: 'a\0b' },
+    ], ['zorblat'])).toEqual(['h.ts: home-directory path', 'e.ts: email address', 'd.ts: denied word']);
   });
   it.each(['svg', 'bmp', 'ico', 'tif', 'tiff', 'avif', 'heic', 'webm', 'pdf', 'zip', 'PNG', 'psd'])(
     'names a .%s file as media',
     (ext) => {
-      expect(checkTrackedFiles([{ path: `a/b.${ext}`, text: null }])).toEqual([`a/b.${ext}: image or media file on the code branch`]);
+      expect(checkTrackedFiles([{ path: `a/b.${ext}`, text: '' }])).toEqual([`a/b.${ext}: image or media file on the code branch`]);
     },
   );
   it('passes code files whose names merely contain a media word', () => {
     expect(checkTrackedFiles([{ path: 'tools/zip.ts', text: 'x' }, { path: 'a/svg-path.ts', text: 'x' }])).toEqual([]);
   });
   it.each(['notes.markdown', 'docs/page.mdx', 'guide.rst', 'plan.docx', 'docs/plan.MD'])('names %s as a document', (path) => {
-    expect(checkTrackedFiles([{ path, text: null }])).toEqual([`${path}: document on the code branch`]);
+    expect(checkTrackedFiles([{ path, text: '' }])).toEqual([`${path}: document on the code branch`]);
   });
   it('passes the root documents and code files that only mention document extensions', () => {
     expect(checkTrackedFiles([
@@ -98,7 +108,7 @@ describe('clean-branch check', () => {
       { path: 'a.json', text: '{"note":"approved per Zorblat\'s review"}' },
       { path: 'b.ts', text: 'const who = "ZORBLAT";' },
       { path: 'c.ts', text: 'const z = "Zorblatty"; // longer word, not the denied one' },
-      { path: 'd.bin', text: null },
+      { path: 'd.bin', text: '\0' },
     ];
     expect(checkTrackedFiles(files, ['zorblat'])).toEqual(['a.json: denied word', 'b.ts: denied word']);
     expect(checkTrackedFiles(files)).toEqual([]);

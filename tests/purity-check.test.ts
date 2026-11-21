@@ -82,6 +82,39 @@ describe('purity check', () => {
   ])('passes a host name inside %s', (_kind, text) => {
     expect(run(text)).toEqual([]);
   });
+  it.each([
+    ['const x = window?.innerWidth;', 'uses window'],
+    ["const x = window['innerWidth'];", 'uses window'],
+    ['const x = window .innerWidth;', 'uses window'],
+    ['const t = document?.title;', 'uses document'],
+    ["const t = document['title'];", 'uses document'],
+    ['const t = globalThis.document.title;', 'uses document'],
+    ["const c2 = cv.getContext?.('2d');", 'uses a canvas'],
+    ['const cv = new OffscreenCanvas(8, 8);', 'uses a canvas'],
+    ['const ok = typeof OffscreenCanvas;', 'uses a canvas'],
+  ])('flags the host use %s, through optional chaining, brackets or a canvas constructor', (text, reason) => {
+    expect(run(text)).toEqual([`${P}: ${reason}`]);
+  });
+  it.each([
+    'const x = globalThis.window.x;',
+    'const x = self.window.x;',
+    'const x = globalThis?.window;',
+    'const w = globalThis.window',
+  ])('flags the page window reached through the global object: %s, in domain and scene src', (text) => {
+    for (const path of [P, 'packages/scene/src/a.ts']) expect(run(text, path)).toEqual([`${path}: uses window`]);
+  });
+  it.each([
+    'const x = state.window.x;',
+    'const x = this.window[0];',
+    'const x = myself.window.x;',
+    'const x = globalThis.windowSize;',
+  ])('passes %s, which is not the page window', (text) => {
+    for (const path of [P, 'packages/scene/src/a.ts']) expect(run(text, path)).toEqual([]);
+  });
+  it('passes a field that is merely named window', () => {
+    expect(run('const w = state.window.start; const v = row?.window; const u = this.window[0];')).toEqual([]);
+    expect(run('const w = window.start;')).toEqual([`${P}: uses window`]);
+  });
   it('reports each host use once alongside the other rules', () => {
     expect(run("document.a; document.b; window.c; x.getContext('2d'); Date.now();")).toEqual([
       `${P}: uses Date.now`, `${P}: uses document`, `${P}: uses window`, `${P}: uses a canvas`,
@@ -235,5 +268,42 @@ describe('purity check: renderer packages', () => {
       `${A}: uses a floating-point literal`,
       `${A}: uses division`,
     ]);
+  });
+});
+
+describe('purity check: scene and persistence', () => {
+  const SCENE = 'packages/scene/src/sub/a.ts';
+  const SAVE = 'packages/persistence/src/a.ts';
+  it.each([
+    ['Math.random()', 'uses Math.random'],
+    ['Date.now()', 'uses Date.now'],
+    ['performance.now()', 'uses performance.now'],
+    ['const d = new Date(0);', 'uses new Date'],
+    ["import { a } from '@cf/art-compose';", 'imports an art package'],
+    ["const p = await import('pixi.js');", 'imports pixi.js'],
+  ])('flags %s in scene and in persistence', (text, reason) => {
+    expect(run(text, SCENE)).toEqual([`${SCENE}: ${reason}`]);
+    expect(run(text, SAVE)).toEqual([`${SAVE}: ${reason}`]);
+  });
+  it.each([
+    ["const cv = document.createElement('canvas');", 'uses document'],
+    ['const w = window.innerWidth;', 'uses window'],
+    ["const c2 = cv.getContext('2d');", 'uses a canvas'],
+    ['const cv = new OffscreenCanvas(8, 8);', 'uses a canvas'],
+  ])('flags the host use %s in scene only: persistence owns the browser save', (text, reason) => {
+    expect(run(text, SCENE)).toEqual([`${SCENE}: ${reason}`]);
+    expect(run(text, SAVE)).toEqual([]);
+  });
+  it('passes the same text in comments and strings', () => {
+    for (const path of [SCENE, SAVE]) expect(run("// Date.now() and document.x\nconst s = 'Math.random()';", path)).toEqual([]);
+  });
+  it('reports a NUL byte in any examined src file, and not outside them', () => {
+    for (const path of [SCENE, SAVE, P, 'packages/art-compose/src/a.ts']) expect(run('const a = 1;\0', path)).toEqual([`${path}: contains a NUL byte`]);
+    expect(run('const a = 1;\0', 'packages/scene/test/a.test.ts')).toEqual([]);
+  });
+  it('leaves audio, and the scene and persistence tests, outside the check', () => {
+    for (const path of ['packages/audio/src/a.ts', 'packages/scene/test/a.test.ts', 'packages/persistence/test/a.test.ts']) {
+      expect(run('Math.random(); Date.now(); window.x;', path)).toEqual([]);
+    }
   });
 });

@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -14,7 +14,6 @@ import {
 } from '../src/index.js';
 import { createOwnershipSourceProjectionSuccessorV2 } from '../src/model-v2.js';
 import { paragonGenomeV1, settleParagonCatalogueSourceV1 } from '../src/paragon.js';
-
 
 function emptyOwnership() {
   return createInitialOwnershipStateV1({
