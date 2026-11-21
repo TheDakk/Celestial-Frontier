@@ -33,8 +33,9 @@ function attachFor(slot: SlotName, index: number): { name: string; onHead: boole
  * Places each recipe part for one pose on a fresh canvas of the recipe's tier, in recipe order.
  * The torso anchor goes at the scaffold origin; every other part's anchor goes at its attach point
  * on the torso (or, for eyes and the head feature, on the head as it actually landed), plus its
- * pose offset, plus the recipe shift for the head or tail. Problems become gaps, never throws,
- * except a pose the scaffold does not hold.
+ * pose offset, plus the recipe shift for the head or tail. Problems become gaps, never throws.
+ * A pose the scaffold does not hold adds the gap `pose:<poseId>` and uses the scaffold's `rest` pose
+ * instead, or no pose offsets at all when the scaffold has no `rest` pose either.
  */
 export function assemble(recipe: Recipe, poseId: string, catalogue: Catalogue): Assembly {
   const { buffer, contact, gaps } = assembleWithScaffold(recipe, poseId, catalogue);
@@ -47,8 +48,12 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   const gaps: string[] = [...recipe.gaps];
   const scaffold = catalogue.scaffolds.get(recipe.scaffoldId);
   if (scaffold === undefined) return { buffer, contact: null, gaps: [...gaps, `scaffold:${recipe.scaffoldId}`], scaffold };
-  if (!Object.hasOwn(scaffold.poses, poseId)) throw new Error(`scaffold ${scaffold.id} has no pose ${poseId}`);
-  const pose = scaffold.poses[poseId] as Pose;
+  let pose: Pose | undefined = Object.hasOwn(scaffold.poses, poseId) ? scaffold.poses[poseId] : undefined;
+  if (pose === undefined) {
+    gaps.push(`pose:${poseId}`);
+    pose = Object.hasOwn(scaffold.poses, 'rest') ? scaffold.poses['rest'] : undefined;
+  }
+  const entries = pose === undefined ? [] : pose.entries;
 
   const placed = new Map<RecipePart, Placed>();
   const findPart = (slot: SlotName): RecipePart | undefined => recipe.parts.find((p) => p.slot === slot);
@@ -66,7 +71,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     const part = catalogue.parts.get(rp.partId);
     if (part === undefined) return skipped(`missing:${rp.partId}`);
 
-    const entry = pose.entries.find((e) => e.slot === rp.slot && e.index === rp.index);
+    const entry = entries.find((e) => e.slot === rp.slot && e.index === rp.index);
     const frameName = entry === undefined ? 'rest' : entry.frame;
     const own: string[] = [];
     let frame = Object.hasOwn(part.frames, frameName) ? part.frames[frameName] : undefined;
@@ -101,5 +106,5 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     gaps.push(...p.gaps);
     if (p.frame !== undefined) blit(buffer, p.frame, p.x, p.y);
   }
-  return { buffer, contact: pose.contact ?? null, gaps, scaffold };
+  return { buffer, contact: pose?.contact ?? null, gaps, scaffold };
 }

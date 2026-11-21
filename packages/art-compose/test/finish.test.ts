@@ -182,6 +182,15 @@ describe('compose', () => {
     expect(r.gaps).toEqual(['attach:head', 'fallback:quadruped']);
   });
 
+  it('a pose the scaffold lacks composes like rest with pose:<poseId>, whether or not the fallback is drawn', () => {
+    const drawnParts = compose(recipeOf([['torso', 0, TORSO]]), 'nope', catalogue);
+    expect(drawnParts.hash).toBe(compose(recipeOf([['torso', 0, TORSO]]), 'rest', catalogue).hash);
+    expect(drawnParts.gaps).toEqual(['pose:nope']);
+    const fallback = compose(recipeOf([]), 'nope', catalogue);
+    expect(crop(fallback.buffer, 8, 9, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
+    expect(fallback.gaps).toEqual(['pose:nope', 'fallback:quadruped']);
+  });
+
   it('a missing scaffold composes the fallback at the canvas centre', () => {
     const r = compose(recipeOf([['torso', 0, TORSO]], { tier: 'medium', scaffoldId: 'quadruped/sturdy/medium' }), 'rest', catalogue);
     expect([r.buffer.w, r.buffer.h]).toEqual([96, 64]);

@@ -99,6 +99,14 @@ entry torso 0 rest 0 0
 scaffold quadruped/bottom/small origin=-2,31
 pose rest
 entry torso 0 rest 0 0
+
+scaffold quadruped/norest/small origin=10,10
+pose step
+entry torso 0 rest 3 0
+
+scaffold quadruped/movedrest/small origin=10,10
+pose rest
+entry torso 0 rest 2 1
 `;
 
 const catalogue = parseCatalogueText(HEADER + PARTS + SCAFFOLDS);
@@ -286,10 +294,31 @@ describe('assemble: canvas edge, contact, pose', () => {
     expect(assemble(recipe, 'rest', catalogue).contact).toBeNull();
   });
 
-  it('(j) an unknown pose throws the exact message, including names an object would inherit', () => {
-    const recipe = recipeOf([['torso', 0, 'torso']]);
-    expect(() => assemble(recipe, 'nope', catalogue)).toThrow(new Error('scaffold quadruped/sturdy/small has no pose nope'));
-    expect(() => assemble(recipe, 'toString', catalogue)).toThrow(new Error('scaffold quadruped/sturdy/small has no pose toString'));
+  it('(j) a pose the scaffold lacks, including names an object would inherit, uses the rest pose and records pose:<poseId>', () => {
+    const recipe = recipeOf([['torso', 0, 'torso']], { gaps: ['variant:a'] });
+    const rest = assemble(recipe, 'rest', catalogue);
+    for (const poseId of ['nope', 'toString', '__proto__']) {
+      const r = assemble(recipe, poseId, catalogue);
+      expect(r.buffer.pixels).toEqual(rest.buffer.pixels);
+      expect(r.contact).toBeNull();
+      expect(r.gaps).toEqual(['variant:a', `pose:${poseId}`]);
+    }
+  });
+
+  it('(j) a lacking pose takes the rest pose offsets', () => {
+    const recipe = recipeOf([['torso', 0, 'torso']], { scaffoldId: 'quadruped/movedrest/small' });
+    const r = assemble(recipe, 'strike', catalogue);
+    expect(drawn(r.buffer)).toEqual(['12,11=2', '13,11=2', '14,11=2', '15,11=2', '12,12=2', '13,12=2', '14,12=2', '15,12=2']);
+    expect(r.gaps).toEqual(['pose:strike']);
+  });
+
+  it('(j) a lacking pose on a scaffold with no rest pose uses no offsets and records the same gap', () => {
+    const recipe = recipeOf([['torso', 0, 'torso']], { scaffoldId: 'quadruped/norest/small' });
+    const r = assemble(recipe, 'strike', catalogue);
+    expect(drawn(r.buffer)).toEqual(TORSO);
+    expect(r.contact).toBeNull();
+    expect(r.gaps).toEqual(['pose:strike']);
+    expect(assemble(recipe, 'rest', catalogue).gaps).toEqual(['pose:rest']);
   });
 
   it('a part with no pose entry uses its rest frame with no offset', () => {
