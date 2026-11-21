@@ -50,7 +50,7 @@ export function buildRecipe(
 
   const torsoKind = a.torso === '' ? 'body' : a.torso;
   const wanted: { slot: SlotName; index: number; kind: string; variant: number }[] = [];
-  const far = Math.floor(a.limbs / 2);
+  const far = a.limbs >> 1;
   const near = a.limbs - far;
   for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: 'leg', variant: limbVariant });
   if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: tailVariant });
