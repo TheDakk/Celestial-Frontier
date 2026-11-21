@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { buildRecipe } from '../src/recipe';
+import { bodyOf, buildRecipe } from '../src/recipe';
 import { identityKey, LIFE_STATE_KEYS } from '../src/streams';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
@@ -93,4 +93,25 @@ describe('every other key is part of the identity', () => {
       expect(identityKey(withKey(key, value), lineage)).not.toBe(identityKey(genome, lineage));
     });
   }
+});
+
+describe('the shape of a body with more than one', () => {
+  it('the shape survives a save, a load and every life-state key', () => {
+    for (const body of [1, 3, 4, 5, 15]) {
+      const shapes = new Set<string>();
+      let moved = 0;
+      for (let seed = 1; seed <= 50; seed++) {
+        const g: Record<string, unknown> = { ...genome, body, seed };
+        const b = bodyOf(g);
+        expect(bodyOf(JSON.parse(JSON.stringify(g)) as Record<string, unknown>), `body ${body} seed ${seed} saved`).toEqual(b);
+        expect(bodyOf({ ...g, xp: 9, hurt: 3, fed: 2, brood: 1, bond: 4 }), `body ${body} seed ${seed} life state`).toEqual(b);
+        shapes.add(b.torso);
+        if (bodyOf({ ...g, seed: seed + 1 }).torso !== b.torso) moved++;
+      }
+      // Planted fault: a shape that does not follow the identity would pass the two checks above; across these seeds
+      // a change of seed changes at least one shape.
+      expect(moved, `body ${body}`).toBeGreaterThan(0);
+      expect(shapes.size, `body ${body}`).toBeGreaterThan(1);
+    }
+  });
 });

@@ -171,6 +171,7 @@ function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over:
     marking: { pattern: 0, strength: 2, phase: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
     legs: 4, glow: false, gaps: [],
+    opacity: 100, airborne: false, theme: null, rim: 0, skin: null,
     ...over,
   };
 }

@@ -1,6 +1,7 @@
 import { DRAW_ORDER, MARK_SLOTS, partId } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName, Species } from '@cf/art-format';
 import type { Anatomy } from './resolve';
+import type { Body } from './route';
 import type { PartMark, RecipePart } from './recipe';
 import { pick } from './streams';
 
@@ -23,12 +24,12 @@ export function limbKind(index: number, legs: number): 'fore' | 'hind' | 'mid' {
   return 'mid';
 }
 
-/** The torso type a scaffold and its parts are named for: the anatomy's torso, or `body` for a family with none. */
-export function torsoKindOf(a: Anatomy): string {
+/** The torso type a scaffold and its parts are named for: the anatomy's or body's torso, or `body` for a family with none. */
+export function torsoKindOf(a: { torso: string }): string {
   return a.torso === '' ? 'body' : a.torso;
 }
 
-interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean }
+interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean; at?: RecipePart['at'] }
 
 /** The first of `ids` the catalogue holds, with its index, or -1. */
 function firstHeld(catalogue: Catalogue, ids: readonly string[]): number {
@@ -107,6 +108,60 @@ export function planParts(
     if (found === undefined) continue;
     const part: RecipePart = { slot: w.slot, index: w.index, partId: found, source: 'own' };
     if (a.pattern !== 0 && MARK_SLOTS.includes(w.slot)) part.mark = markFor(w.slot, w.index, stream);
+    parts.push(part);
+  }
+  return { parts, gaps };
+}
+
+/** The family whose body carries no back part. */
+const NO_BACK_FAMILY = 'radial';
+
+/**
+ * The parts a fauna body asks for (resolveBody), in DRAW_ORDER then index, and the gaps met on the way; every other
+ * kingdom asks for none. As planParts for the leg roles (`limbs` legs, the shape's own legs first), the torso, the
+ * skin's back part on the torso kind (none on a radial), the torso type's head feature and the marks. Head `h<head>`
+ * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null, `eye`
+ * at 0 to `eyes - 1`, two `pit` parts when `eyes` is 0; a body without a head part places them on its torso (`at`).
+ * Not live: only the routed builder calls it.
+ */
+export function planBodyParts(
+  b: Body,
+  variants: { torso: number; head: number; tail: number; limb: number },
+  stream: (name: string) => () => number,
+  catalogue: Catalogue,
+): { parts: RecipePart[]; gaps: string[] } {
+  const parts: RecipePart[] = [];
+  const gaps: string[] = [];
+  if (b.kingdom !== 'fauna') return { parts, gaps };
+
+  const torsoKind = torsoKindOf(b);
+  const wanted: Wanted[] = legsWanted(b.limbs, variants.limb);
+  if (b.tail !== null) wanted.push({ slot: 'tail', index: 0, kind: `t${b.tail}`, variant: variants.tail, limb: false });
+  wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: variants.torso, limb: false });
+  const back = BACK_KIND_BY_SKIN[b.skin] ?? null;
+  if (back !== null && b.family !== NO_BACK_FAMILY) wanted.push({ slot: 'back', index: 0, kind: `${back}-${torsoKind}`, variant: 0, limb: false });
+  if (b.head !== null) {
+    wanted.push({ slot: 'head', index: 0, kind: `h${b.head}`, variant: variants.head, limb: false });
+    if (Object.hasOwn(HEAD_FEATURE_BY_TORSO, b.torso)) {
+      wanted.push({ slot: 'headFeature', index: 0, kind: `${HEAD_FEATURE_BY_TORSO[b.torso]}-h${b.head}`, variant: 0, limb: false });
+    }
+  }
+  if (b.eyes !== null) {
+    const [kind, count] = b.eyes === 0 ? ['pit', 2] : ['eye', b.eyes];
+    for (let i = 0; i < count; i++) {
+      const eye: Wanted = { slot: 'eyes', index: i, kind, variant: 0, limb: false };
+      if (b.head === null) eye.at = { host: 'torso', point: `eye${i}` };
+      wanted.push(eye);
+    }
+  }
+  wanted.sort(byDrawOrder);
+
+  for (const w of wanted) {
+    const found = lookUp(catalogue, b.family, b.tier, b.torso, w, gaps);
+    if (found === undefined) continue;
+    const part: RecipePart = { slot: w.slot, index: w.index, partId: found, source: 'own' };
+    if (w.at !== undefined) part.at = w.at;
+    if (b.pattern !== 0 && MARK_SLOTS.includes(w.slot)) part.mark = markFor(w.slot, w.index, stream);
     parts.push(part);
   }
   return { parts, gaps };

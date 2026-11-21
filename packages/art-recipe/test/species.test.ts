@@ -39,6 +39,7 @@ describe('buildSpeciesRecipe', () => {
       shift: { head: [0, 0], tail: [0, 0] },
       glow: false,
       gaps: [],
+      opacity: 100, airborne: false, theme: null, rim: 0, skin: null,
     });
     for (const p of r.parts) expect('mark' in p).toBe(false);
   });

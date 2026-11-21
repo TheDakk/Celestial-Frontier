@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { buildRecipe, RENDERER_VERSION } from '../src/recipe';
+import { makeGenome } from '@cf/domain-genome';
+import { bodyOf, buildRecipe, buildRoutedRecipe, buildSpeciesRecipe, RENDERER_VERSION } from '../src/recipe';
+import { resolveBody } from '../src/route';
 import { artStream, identityKey, pick } from '../src/streams';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
@@ -268,5 +270,78 @@ describe('buildRecipe', () => {
     expect(() => { (r.shift.head as unknown as number[])[0] = 9; }).toThrow();
     expect(Object.isFrozen(r) && Object.isFrozen(r.parts) && Object.isFrozen(r.gaps)).toBe(true);
     expect(buildRecipe(base, [], full)).toEqual(r);
+  });
+});
+
+describe('buildRoutedRecipe', () => {
+  /** Holds every part id, so each part comes back at the variant asked for. */
+  const every: Catalogue = { ...catalogueOf([]), parts: { has: () => true } as unknown as Catalogue['parts'] };
+
+  it('buildRoutedRecipe draws a creature by its animal', () => {
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 40; seed++) {
+      const g = { ...base, body: 1, seed };
+      const r = buildRoutedRecipe(g, [], every);
+      const b = bodyOf(g);
+      expect(['crustacean/crab/medium', 'crustacean/lobster/medium']).toContain(r.scaffoldId);
+      expect(r.scaffoldId, `seed ${seed}`).toBe(`crustacean/${b.torso}/medium`);
+      expect([r.family, r.tier, r.legs], `seed ${seed}`).toEqual(['crustacean', 'medium', 0]);
+      expect(r.parts.find((p) => p.slot === 'torso')!.partId.split('/')[2]).toBe(b.torso);
+      seen.add(r.scaffoldId);
+    }
+    expect(seen.size).toBe(2);
+    expect(buildRoutedRecipe({ ...base, body: 4 }, [], every).scaffoldId).toMatch(/^serpent\/(snake|viper)\/medium$/);
+    expect(buildRoutedRecipe({ ...base, body: 9 }, [], every).scaffoldId).toBe('gelatinous/body/medium');
+    expect(buildRoutedRecipe({ kingdom: 'flora', size: 2 }, [], every).scaffoldId).toBe('flora/body/medium');
+  });
+
+  it('bodyOf picks the shape from the sub-shape stream of the creature\'s identity', () => {
+    for (let seed = 1; seed <= 20; seed++) {
+      const g = { ...base, body: 15, seed };
+      expect(bodyOf(g, ['a'])).toEqual(resolveBody(g, artStream(identityKey(g, ['a']), 'sub-shape', RENDERER_VERSION)));
+    }
+  });
+
+  it('carries the body\'s opacity and airborne state, and the neutral theme, rim and skin', () => {
+    const jelly = buildRoutedRecipe({ ...base, body: 9 }, [], every);
+    expect([jelly.opacity, jelly.airborne, jelly.theme, jelly.rim, jelly.skin]).toEqual([82, false, null, 0, null]);
+    const glider = buildRoutedRecipe({ ...base, loco: 3, skin: 7 }, [], every);
+    expect([glider.opacity, glider.airborne]).toEqual([66, true]);
+  });
+
+  it('is deeply equal on repeat calls, JSON-plain and frozen', () => {
+    const g = { ...base, body: 5, seed: 3 };
+    const r = buildRoutedRecipe(g, ['x'], every);
+    expect(buildRoutedRecipe(g, ['x'], every)).toEqual(r);
+    expect(JSON.parse(JSON.stringify(r))).toEqual(r);
+    expect(Object.isFrozen(r) && Object.isFrozen(r.parts) && Object.isFrozen(r.parts[0])).toBe(true);
+    expect(r.identity).toBe(identityKey(g, ['x']));
+  });
+
+  it('every existing stream draws what buildRecipe draws', () => {
+    const variantOf = (id: string): string => id.slice(id.lastIndexOf('/') + 1);
+    let compared = 0;
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = makeGenome(seed, 'fauna', 1) as unknown as Record<string, unknown>;
+      const old = buildRecipe(g, [], every);
+      const routed = buildRoutedRecipe(g, [], every);
+      expect([routed.shift, routed.marking, routed.ramps], `seed ${seed}`).toEqual([old.shift, old.marking, old.ramps]);
+      for (const p of routed.parts) {
+        if (p.slot !== 'head' && p.slot !== 'tail' && !p.slot.endsWith('Limbs')) continue;
+        const o = old.parts.find((x) => x.slot === p.slot && x.index === p.index);
+        if (o === undefined) continue;
+        expect([variantOf(p.partId), p.mark], `seed ${seed} ${p.slot}${p.index}`).toEqual([variantOf(o.partId), o.mark]);
+        compared++;
+      }
+    }
+    expect(compared).toBeGreaterThan(500);
+  });
+
+  it('the old builders carry the neutral new fields', () => {
+    const neutral = { opacity: 100, airborne: false, theme: null, rim: 0, skin: null };
+    expect(buildRecipe({ ...base, body: 9, skin: 7, loco: 3 }, [], full)).toMatchObject(neutral);
+    expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full)).toMatchObject(neutral);
+    const species = parseCatalogueText(`${HEADER}${partText(q('torso', 'civet', 0))}\n${SCAFFOLD}\nscaffold quadruped/civet/medium origin=0,0\npose rest\nentry torso 0 rest 0 0\n\nspecies civet quadruped medium legs=0 eyes=0 iris=0 tail=0\n`);
+    expect(buildSpeciesRecipe('civet', species)).toMatchObject(neutral);
   });
 });

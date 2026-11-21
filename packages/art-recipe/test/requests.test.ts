@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { BACK_KIND_BY_SKIN, HEAD_FEATURE_BY_TORSO, limbKind, planParts } from '../src/requests';
+import { BACK_KIND_BY_SKIN, HEAD_FEATURE_BY_TORSO, limbKind, planBodyParts, planParts } from '../src/requests';
 import { resolveAnatomy } from '../src/resolve';
+import { resolveBody, type Body } from '../src/route';
 import { RENDERER_VERSION } from '../src/recipe';
 import { artStream, pick } from '../src/streams';
 
@@ -239,5 +240,99 @@ describe('planParts: order', () => {
     expect(keys).toEqual([...keys].sort((x, y) => x - y));
     expect([...new Set(r.parts.map((p) => p.slot))]).toEqual(['farLimbs', 'tail', 'torso', 'back', 'nearLimbs', 'head', 'headFeature', 'eyes']);
     expect(r.parts.every((p) => p.source === 'own')).toBe(true);
+  });
+});
+
+describe('planBodyParts', () => {
+  /** A fixed stream that picks shape `i` of `n`. */
+  const at = (i: number, n: number) => (): number => (2 * i + 1) / (2 * n);
+  /** Land, medium, head 5, tail 3, limbs gene 3 (8 legs), eyes gene 1 (4 eyes), skin 3 (no back part), plain. */
+  const land = { kingdom: 'fauna', loco: 0, habitat: 0, size: 2, head: 5, tail: 3, limbs: 3, eyes: 1, skin: 3, color: 3, accent: 5, pattern: 0 };
+  const body = (genes: Record<string, unknown>, shape = 0, of = 1): Body => resolveBody({ ...land, ...genes }, at(shape, of));
+  /** A catalogue that holds every part id except a build's own legs, so each part comes back exactly as asked for. */
+  const shared = (): Catalogue => ({ ...catalogueOf([]), parts: { has: (id: string) => !/Limbs\/[a-z]+-/.test(id) } as unknown as Catalogue['parts'] });
+  const asked = (b: Body, v = V0): string[] => {
+    const r = planBodyParts(b, v, stream, shared());
+    expect(r.gaps).toEqual([]);
+    return r.parts.map((p) => p.partId);
+  };
+  const id = (family: string, slot: SlotName, kind: string): string => partId(family, slot, kind, 'medium', 0);
+  const legs = (family: string, kinds: readonly string[]): string[][] =>
+    [kinds.map((k) => id(family, 'farLimbs', k)), kinds.map((k) => id(family, 'nearLimbs', k))];
+  const eyes = (family: string, n: number, kind = 'eye'): string[] => Array.from({ length: n }, () => id(family, 'eyes', kind));
+
+  it('asks for exactly the genes table\'s parts, family by family', () => {
+    const [far8, near8] = legs('quadruped', ['fore', 'hind', 'mid', 'mid']);
+    const [far6, near6] = legs('insect', ['fore', 'hind', 'mid']);
+    const rows: readonly (readonly [string, Body, readonly string[]])[] = [
+      ['quadruped sturdy', body({ body: 0 }), [...far8!, id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'sturdy'), ...near8!, id('quadruped', 'head', 'h5'), ...eyes('quadruped', 4)]],
+      ['quadruped tusked', body({ body: 10, limbs: 5 }), [id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'tusked'), id('quadruped', 'head', 'h5'), id('quadruped', 'headFeature', 'tusks-h5'), ...eyes('quadruped', 4)]],
+      ...['fusiform', 'shark', 'flat', 'angler'].map((shape, i) => [`fish ${shape}`, body({ body: 0, loco: 4 }, i, 4),
+        [id('fish', 'tail', 't3'), id('fish', 'torso', shape), id('fish', 'head', 'h5'), ...eyes('fish', 4)]] as const),
+      ['crustacean crab', body({ body: 1 }, 0, 2), [id('crustacean', 'tail', 't3'), id('crustacean', 'torso', 'crab'), id('crustacean', 'head', 'h5')]],
+      ['crustacean lobster', body({ body: 1 }, 1, 2), [id('crustacean', 'tail', 't3'), id('crustacean', 'torso', 'lobster'), id('crustacean', 'head', 'h5'), ...eyes('crustacean', 4)]],
+      ...['octopus', 'squid', 'cuttlefish'].map((shape, i) => [`tentacled ${shape} tail 1`, body({ body: 3, tail: 1 }, i, 3), [id('tentacled', 'torso', shape)]] as const),
+      ['tentacled octopus tail 3', body({ body: 3 }, 0, 3), [id('tentacled', 'tail', 't3'), id('tentacled', 'torso', 'octopus')]],
+      ...['snake', 'viper'].map((shape, i) => [`serpent ${shape}`, body({ body: 4 }, i, 2), [id('serpent', 'torso', shape), id('serpent', 'eyes', 'eye')]] as const),
+      ...['beetle', 'generic', 'mantis'].map((shape, i) => [`insect ${shape}`, body({ body: 5 }, i, 3),
+        [...far6!, id('insect', 'torso', shape), ...near6!, id('insect', 'head', 'h5'), ...eyes('insect', 4)]] as const),
+      ['gelatinous body', body({ body: 9 }), [id('gelatinous', 'torso', 'body')]],
+      ...['anemone', 'urchin', 'coral', 'cucumber'].map((shape, i) => [`radial ${shape} skin 4`, body({ body: 15, skin: 4 }, i, 4), [id('radial', 'torso', shape)]] as const),
+      ['fish skin 4', body({ body: 0, loco: 4, skin: 4 }, 0, 4), [id('fish', 'tail', 't3'), id('fish', 'torso', 'fusiform'), id('fish', 'back', 'plates-fusiform'), id('fish', 'head', 'h5'), ...eyes('fish', 4)]],
+      ['quadruped skin 4', body({ body: 0, limbs: 5, skin: 4 }), [id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'sturdy'), id('quadruped', 'back', 'plates-sturdy'), id('quadruped', 'head', 'h5'), ...eyes('quadruped', 4)]],
+    ];
+    for (const [label, b, ids] of rows) expect(asked(b), label).toEqual(ids);
+    expect(body({ body: 4 }, 0, 2).torso).toBe('snake');
+  });
+
+  it('a serpent\'s eye is placed on its torso; every other eye on the head', () => {
+    const serpent = planBodyParts(body({ body: 4 }, 0, 2), V0, stream, shared()).parts.filter((p) => p.slot === 'eyes');
+    expect(serpent.map((p) => [p.index, p.at])).toEqual([[0, { host: 'torso', point: 'eye0' }]]);
+    for (const genes of [{ body: 0 }, { body: 0, eyes: 5 }, { body: 5 }, { body: 0, loco: 4 }]) {
+      const r = planBodyParts(body(genes), V0, stream, shared());
+      expect(r.parts.filter((p) => p.slot === 'eyes').length, JSON.stringify(genes)).toBeGreaterThan(0);
+      expect(r.parts.filter((p) => 'at' in p), JSON.stringify(genes)).toEqual([]);
+    }
+  });
+
+  it('a quadruped with tail gene 0 asks for t0', () => {
+    expect(asked(body({ body: 0, tail: 0 }))).toContain(id('quadruped', 'tail', 't0'));
+  });
+
+  it('a fish with tail gene 0 or 1 asks for no tail', () => {
+    for (const tail of [0, 1]) expect(asked(body({ body: 0, loco: 4, tail })).filter((p) => p.includes('/tail/')), `tail ${tail}`).toEqual([]);
+  });
+
+  it('no eyes or the eyeless head asks for two pits', () => {
+    const pits = (b: Body): string[] => planBodyParts(b, V0, stream, shared()).parts.filter((p) => p.slot === 'eyes').map((p) => `${p.index} ${p.partId}`);
+    const two = ['0 quadruped/eyes/pit/medium/v0', '1 quadruped/eyes/pit/medium/v0'];
+    expect(pits(body({ body: 0, eyes: 5 }))).toEqual(two);
+    expect(pits(body({ body: 0, head: 2, eyes: 1 }))).toEqual(two);
+    expect(pits(body({ body: 1, eyes: 5 }, 0, 2))).toEqual([]);
+    expect(planBodyParts(body({ body: 0, eyes: 5 }), V0, stream, catalogueOf([])).gaps)
+      .toEqual(expect.arrayContaining(['missing:quadruped/eyes/pit/medium/v0']));
+  });
+
+  it('asks for the torso, head, tail and legs at the chosen variants and marks the mark slots', () => {
+    const b = body({ body: 5, pattern: 3 }, 1, 3);
+    const r = planBodyParts(b, { torso: 2, head: 1, tail: 1, limb: 1 }, stream, shared());
+    expect(r.parts.filter((p) => p.slot === 'torso' || p.slot === 'head' || p.slot.endsWith('Limbs')).map((p) => p.partId.slice(-2)))
+      .toEqual(['v1', 'v1', 'v1', 'v2', 'v1', 'v1', 'v1', 'v1']);
+    expect(new Set(r.parts.filter((p) => p.mark !== undefined).map((p) => p.slot))).toEqual(new Set(['farLimbs', 'torso', 'nearLimbs', 'head']));
+    expect(r.parts.filter((p) => p.slot === 'eyes').every((p) => !('mark' in p))).toBe(true);
+    const keys = r.parts.map((p) => DRAW_ORDER.indexOf(p.slot) * 100 + p.index);
+    expect(keys).toEqual([...keys].sort((x, y) => x - y));
+  });
+
+  it('a build\'s own legs come first', () => {
+    const cat = catalogueOf([partId('insect', 'farLimbs', 'fore-mantis', 'medium', 0)]);
+    const r = planBodyParts(body({ body: 5 }, 2, 3), V0, stream, cat);
+    expect(r.parts.map((p) => p.partId)).toEqual([partId('insect', 'farLimbs', 'fore-mantis', 'medium', 0)]);
+  });
+
+  it('asks for nothing outside fauna', () => {
+    for (const kingdom of ['flora', 'fungi', 'microbe']) {
+      expect(planBodyParts(body({ kingdom, skin: 4, pattern: 2 }), V0, stream, shared()), kingdom).toEqual({ parts: [], gaps: [] });
+    }
   });
 });
