@@ -121,6 +121,7 @@ describe('clean-branch check', () => {
       'Old branches stay untouched. `main` keeps serving the live v1 site until Dakk says otherwise.',
       "No push, pull request, branch deletion, force operation, release or deploy without Dakk's explicit word for that exact action.",
       'Signed commits only.',
+      "Files named `*.verbatim.js` and everything under `fixtures/` are never edited without Dakk's word.",
       'Assert the outcome, not the code path.',
       'Prove every new check both ways.',
       'Suspect the instrument first.',

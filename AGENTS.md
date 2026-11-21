@@ -23,6 +23,7 @@ Fifth goal: a small change to the game must be small to ship.
 - Hosted runs only on Dakk's label.
 - Refer to the owner only as Dakk.
 - No real name, email address or home path in any file.
+- Files named `*.verbatim.js` and everything under `fixtures/` are never edited without Dakk's word.
 - Old branches stay untouched. `main` keeps serving the live v1 site until Dakk says otherwise.
 
 ## How to work
