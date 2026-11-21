@@ -34,7 +34,7 @@ export function parseDenyWords(value) {
 }
 
 /**
- * One message per violation; empty when the tree is clean. `text` is null for binary files.
+ * One message per violation; empty when the tree is clean. Every file's text is scanned, binary files too.
  * `denyWords` are private words (e.g. from CF_DENY_WORDS) matched case-insensitively as whole words.
  */
 export function checkTrackedFiles(files, denyWords = []) {
@@ -43,9 +43,9 @@ export function checkTrackedFiles(files, denyWords = []) {
   for (const { path, text } of files) {
     if (MEDIA.test(path)) problems.push(`${path}: image or media file on the code branch`);
     if (DOCUMENT.test(path) && !ALLOWED_DOCS.has(path)) problems.push(`${path}: document on the code branch`);
-    if (text !== null && HOME_PATTERNS.some((re) => re.test(text))) problems.push(`${path}: home-directory path`);
-    if (text !== null && EMAIL.test(text)) problems.push(`${path}: email address`);
-    if (text !== null && deny.some((re) => re.test(text))) problems.push(`${path}: denied word`);
+    if (HOME_PATTERNS.some((re) => re.test(text))) problems.push(`${path}: home-directory path`);
+    if (EMAIL.test(text)) problems.push(`${path}: email address`);
+    if (deny.some((re) => re.test(text))) problems.push(`${path}: denied word`);
   }
   return problems;
 }

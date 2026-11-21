@@ -94,7 +94,7 @@ function checkArt(path, text) {
 export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {
-    if (text === null) continue;
+    if ((ART_SRC.test(path) || DOMAIN_SRC.test(path)) && text.includes('\0')) problems.push(`${path}: contains a NUL byte`);
     if (ART_SRC.test(path)) {
       problems.push(...checkArt(path, text));
       continue;

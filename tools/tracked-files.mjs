@@ -7,7 +7,8 @@ import { fileURLToPath } from 'node:url';
 export const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 
 /**
- * `{ path, text }` for each path; `text` is null for binary files (any NUL byte).
+ * `{ path, text }` for each path. A file with any NUL byte also gets `binary: true` and its text decoded
+ * as latin1 (one character per byte), so every check still reads it.
  * A path whose read fails with ENOENT (deleted since git listed it) is skipped; other errors throw.
  */
 export function buildEntries(paths, read) {
@@ -20,7 +21,7 @@ export function buildEntries(paths, read) {
       if (error && error.code === 'ENOENT') continue;
       throw error;
     }
-    entries.push({ path, text: buf.includes(0) ? null : buf.toString('utf8') });
+    entries.push(buf.includes(0) ? { path, text: buf.toString('latin1'), binary: true } : { path, text: buf.toString('utf8') });
   }
   return entries;
 }
