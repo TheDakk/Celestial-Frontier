@@ -1,8 +1,9 @@
 /* AUTO-LIFTED VERBATIM domain-pure strays from main.js (v1.8.9) — functions
    living OUTSIDE the 14 [domain] modules that fixtures pin or domain code
    calls: _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201) · _sanitizeView (14604-14614) · REGIONS (21951-21958) · RING_SPECTRUM (12219-12226) · ASC_RING_R (22757-22757) · regionAt (21963-21963) · gradeCapAt (12227-12237) · ringGrade (12238-12246).
-   body sha256/16 13ba6dbe726f35da. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+   The current game's lift with hdGenesFor's _earthArt branches cut (see the EDITED line). Edited only with Dakk's word; there is no regenerate step. */
 /* EDITED 2026-11-21 (task m3a-6b, Dakk's word): hdGenesFor's two _earthArt branches (source lines 188-216) cut to one closing brace; no running context defines _earthArt. */
+/* EDITED 2026-11-21 (task m3a-14, Dakk's word): line 4's body hash and regenerate instruction, stale after the cut, replaced with what is true; comment text only. */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
 import { HOME_GAL_SEED, UCELL, HOME_POS, GR, SOL_POS } from '@cf/domain-worldconfig';
 import { cleanName } from '@cf/domain-naming';

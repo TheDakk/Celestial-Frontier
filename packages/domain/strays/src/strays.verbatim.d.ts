@@ -1,9 +1,10 @@
 /* Hand-written types for the auto-lifted strays.
-   ⚠ hdGenesFor: the Earth-bestiary branch calls _earthArt (SpeciesArt app
-   module, Phase 4 art port) as a free identifier inside try/catch. No fixture
-   genome carries _earthName/_earthBlend, so parity is unaffected; an
-   Earth-NAMED portrait through THIS lift would silently skip its recipe.
-   Recorded gap — closes with the SpeciesArt port, not Gate B. */
+   hdGenesFor: the current game's two Earth-bestiary branches, which called
+   _earthArt (a free identifier) inside try/catch, are cut from this lift.
+   hdGenesFor applies no Earth recipe: an Earth-named or Earth-blended genome
+   gets its procedural genes, and an Earth-named one also its _earthName mark.
+   No fixture genome's result depended on those branches. */
+/* EDITED 2026-11-21 (task m3a-14, Dakk's word): the comment above described the cut _earthArt call; corrected, comment text only. */
 import type { Genome } from '@cf/domain-genome';
 import type { BattleStats, Combatant } from '@cf/domain-combatcore';
 
