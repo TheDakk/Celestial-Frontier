@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { EYE_COUNTS } from '@cf/art-format';
 import { buildRecipe } from '@cf/art-recipe';
 import { compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
@@ -26,6 +27,8 @@ describe('quadruped test catalogue', () => {
               count++;
               if (!out.buffer.pixels.some((p) => p !== 0)) expect.fail(`empty buffer for ${JSON.stringify(g)}`);
               if (recipe.family === 'quadruped') {
+                if (EYE_COUNTS[eyes] !== 0 && !out.buffer.pixels.includes(13)) expect.fail(`no eye pixel for ${JSON.stringify(g)}`);
+                if (!out.buffer.pixels.includes(16)) expect.fail(`no outline pixel for ${JSON.stringify(g)}`);
                 const bad = out.gaps.filter((gap) => BAD_GAP.test(gap));
                 if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
               } else {
@@ -71,14 +74,21 @@ describe('quadruped test catalogue', () => {
     }
   });
 
-  it('makes different heads, tails and torso types look different', () => {
-    const differing = (make: (v: number) => ReturnType<typeof genome>, values: number[]): number => {
-      const base = hashOf(make(values[0] as number));
-      return values.slice(1).filter((v) => hashOf(make(v)) !== base).length;
-    };
-    expect(differing((v) => genome(0, v, 3, 1, 1), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])).toBeGreaterThanOrEqual(9);
-    expect(differing((v) => genome(0, 3, v, 1, 1), [1, 2, 3, 4, 5, 6])).toBeGreaterThanOrEqual(5);
-    expect(differing((v) => genome(v, 3, 3, 1, 1), QUADRUPED_BODIES)).toBeGreaterThanOrEqual(5);
+  it('makes different heads, tails and torso types give pairwise different hashes', () => {
+    const allDifferent = (make: (v: number) => ReturnType<typeof genome>, values: number[]) =>
+      expect(new Set(values.map((v) => hashOf(make(v)))).size).toBe(values.length);
+    allDifferent((v) => genome(0, v, 3, 1, 1), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    allDifferent((v) => genome(0, 3, v, 1, 1), [1, 2, 3, 4, 5, 6]);
+    allDifferent((v) => genome(v, 3, 3, 1, 1), QUADRUPED_BODIES);
+  });
+
+  it('composes movement genes 4 and 13 as a fish fallback', () => {
+    for (const loco of [4, 13]) {
+      const g = { ...genome(0, 3, 3, 1, 1), loco };
+      const recipe = buildRecipe(g, [], cat);
+      expect(recipe.family, `loco ${loco}`).toBe('fish');
+      expect(compose(recipe, 'rest', cat).gaps, `loco ${loco}`).toContain('fallback:fish');
+    }
   });
 
   it('makes different poses look different', () => {
