@@ -2,7 +2,8 @@
 // Usage: node tools/record-fixtures.mjs --source <path to the current game's v2 folder> --only <name>
 // The source path is used only to import modules; it is never written to any output.
 import { registerHooks } from 'node:module';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -953,6 +954,46 @@ const recorders = {
       fabrication: cases,
       mars, remnant, loadouts: LOADOUTS, mining, autoExtractor, skimming, fieldSamples,
     };
+  },
+  // The eight pilot sound files and the two rights proof files stay in the current game: only what
+  // the audio rights audit observes of them is recorded (each file's sha256, and each sound's PCM
+  // format and length read from its RIFF header). Loudness and loop points come from the proof file.
+  'audio-pilot': async (source) => {
+    const { PILOT_AUDIO_RIGHTS_ROWS, PILOT_AUDIO_RIGHTS_EVIDENCE } = await import(pathToFileURL(join(source, 'packages/audio/src/pilot-rights-data.ts')).href);
+    const read = (file) => readFileSync(join(source, file));
+    const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
+    const proof = JSON.parse(read('audio-rights/CF_PILOT_C_20260905.json').toString('utf8'));
+    const observations = PILOT_AUDIO_RIGHTS_ROWS.map((row) => {
+      const bytes = read(row.file);
+      if (bytes.length < 44 || bytes.toString('ascii', 0, 4) !== 'RIFF' || bytes.toString('ascii', 8, 12) !== 'WAVE'
+        || bytes.readUInt32LE(4) !== bytes.length - 8) throw new Error(`${row.id}: invalid RIFF length or signature`);
+      let fmt; let data;
+      for (let at = 12; at + 8 <= bytes.length;) {
+        const size = bytes.readUInt32LE(at + 4);
+        const end = at + 8 + size;
+        if (end > bytes.length) throw new Error(`${row.id}: truncated RIFF chunk`);
+        const name = bytes.toString('ascii', at, at + 4);
+        if (name === 'fmt ') fmt = bytes.subarray(at + 8, end);
+        if (name === 'data') data = bytes.subarray(at + 8, end);
+        at = end + (size % 2);
+      }
+      if (!fmt || fmt.length < 16 || !data || fmt.readUInt16LE(0) !== 1 || fmt.readUInt16LE(14) !== 16) throw new Error(`${row.id}: not PCM16`);
+      const channels = fmt.readUInt16LE(2);
+      const sampleRate = fmt.readUInt32LE(4);
+      const blockAlign = fmt.readUInt16LE(12);
+      if ((channels !== 1 && channels !== 2) || blockAlign !== channels * 2 || fmt.readUInt32LE(8) !== sampleRate * blockAlign
+        || data.length % blockAlign !== 0) throw new Error(`${row.id}: PCM16 alignment mismatch`);
+      const measured = proof.assets.find((asset) => asset.id === row.id);
+      if (!measured) throw new Error(`${row.id}: missing from the proof file`);
+      return {
+        id: row.id, file: row.file, originalSha256: measured.originalSha256, derivativeSha256: sha(bytes), codec: 'pcm-s16le-wav',
+        durationMs: data.length / blockAlign / sampleRate * 1_000, sampleRate, channels,
+        loopStartMs: measured.loopStartMs, loopEndMs: measured.loopEndMs,
+        integratedLufs: measured.integratedLufs, truePeakDb: measured.truePeakDb,
+      };
+    });
+    const evidence = PILOT_AUDIO_RIGHTS_EVIDENCE.map(({ file }) => ({ file, sha256: sha(read(file)) }));
+    return { observations, evidence };
   },
 };
 
