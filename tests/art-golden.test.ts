@@ -55,7 +55,8 @@ function withOnePixelChanged(source: Catalogue, partId: string): Catalogue {
   }
   const frame = (parts.get(partId) as Part).frames['rest']!;
   const { w, pixels } = frame;
-  // An interior pixel (all four neighbours drawn), so the outline pass does not overwrite the change.
+  // An interior pixel (all four neighbours drawn). The light and shade step moves an edge pixel by one shade and
+  // clamps it within its ramp, so a one-shade edit on an edge can be masked; an interior pixel is safer to edit.
   const at = pixels.findIndex((p, i) => p !== 0 && i % w > 0 && i % w < w - 1 && i >= w && i < pixels.length - w && pixels[i - 1] !== 0 && pixels[i + 1] !== 0 && pixels[i - w] !== 0 && pixels[i + w] !== 0);
   expect(at).toBeGreaterThan(0);
   frame.pixels[at] = (frame.pixels[at] as number) % 4 + 1; // a different body value, 1-4
