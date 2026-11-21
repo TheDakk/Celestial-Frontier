@@ -462,7 +462,7 @@ describe('planBodyParts', () => {
     const holding = (skip: RegExp = /^$/): Catalogue => ({ ...catalogueOf([]), parts: { has: (x: string) => !skip.test(x) } as unknown as Catalogue['parts'] });
     /** `headFeature<index> <part id>` for every head feature asked for; every other part is held, so there is no gap. */
     const features = (genes: Record<string, unknown>, shape = 0, of = 1): string[] => {
-      const r = planBodyParts(body(genes), V0, stream, holding());
+      const r = planBodyParts(body(genes, shape, of), V0, stream, holding());
       expect(r.gaps, JSON.stringify(genes)).toEqual([]);
       return r.parts.filter((p) => p.slot === 'headFeature').map((p) => `headFeature${p.index} ${p.partId}`);
     };
