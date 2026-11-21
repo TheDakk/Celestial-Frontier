@@ -53,24 +53,40 @@ describe('paintMarks: lines', () => {
 });
 
 describe('paintMarks: spots', () => {
+  /** The eye-spot centre as a pixel character, read from the table. */
+  const C = PIXEL_CHARS[PATTERN_TABLE['eye-spotted'].centre] as string;
+
   it('spotted fills the chosen blobs', () => {
     expect(rowsOf(blobs, paintMarks(blobs, 'spotted', 2, 0, rollsWith(54, 55)))).toEqual(['555333', '555333', '555333']);
     expect(rowsOf(blobs, paintMarks(blobs, 'spotted', 2, 0, rollsWith(55, 54)))).toEqual(['333355', '333355', '333355']);
   });
 
-  it('eye-spotted draws a rim and an underside centre', () => {
-    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 2, 0, rollsWith(0, 99)))).toEqual(['555333', '5b5333', '555333']);
+  it('eye-spotted draws a rim of the mark shade and the table\'s centre value inside it', () => {
+    const rule = PATTERN_TABLE['eye-spotted'];
+    // Host 3 is shade 2 of its ramp; host 4 is the lightest shade.
+    const rim3 = PIXEL_CHARS[rule.shade[2]] as string;
+    const rim4 = PIXEL_CHARS[rule.shade[3]] as string;
+    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 2, 0, rollsWith(0, 99)))).toEqual([`${rim3}${rim3}${rim3}333`, `${rim3}${C}${rim3}333`, `${rim3}${rim3}${rim3}333`]);
+    const light = frameOf(['444', '444', '444'], { spots: ['111', '111', '111'] });
+    expect(rowsOf(light, paintMarks(light, 'eye-spotted', 2, 0, ZERO))).toEqual([`${rim4}${rim4}${rim4}`, `${rim4}${C}${rim4}`, `${rim4}${rim4}${rim4}`]);
+  });
+
+  it('the eye-spot centre is a pale accent value: the accent ramp\'s second-lightest shade, unlike the rim', () => {
+    const rule = PATTERN_TABLE['eye-spotted'];
+    // Values 5-8 are the accent ramp, dark to light: ramp index 1, shade index 2.
+    expect([(rule.centre - 1) >> 2, (rule.centre - 1) % 4]).toEqual([1, 2]);
+    expect(rule.shade).not.toContain(rule.centre);
   });
 
   it('the eye-spot rim follows the silhouette: a transparent neighbour inside the frame ends the spot', () => {
     // The spot runs on under the transparent column x4; the drawn pixels at x3 are its edge.
     const f = frameOf(['3333.', '3333.', '3333.'], { spots: ['11111', '11111', '11111'] });
-    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555.', '5bb5.', '5555.']);
+    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555.', `5${C}${C}5.`, '5555.']);
   });
 
   it('the eye-spot rim follows an eye pixel inside the spot', () => {
     const f = frameOf(['3333333', '33333d3', '3333333'], { spots: ['1111111', '1111111', '1111111'] });
-    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555555', '5bbb5d5', '5555555']);
+    expect(rowsOf(f, paintMarks(f, 'eye-spotted', 2, 0, ZERO))).toEqual(['5555555', `5${C}${C}${C}5d5`, '5555555']);
   });
 
   it('at hint a spot is chosen when its roll is under the table threshold, and not at it', () => {
@@ -93,7 +109,7 @@ describe('paintMarks: spots', () => {
     while (roll * 100 < atHint) roll++;
     expect(roll * 100 < atClear).toBe(true);
     expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 0, 0, rollsWith(roll, 99)))).toEqual(['333333', '333333', '333333']);
-    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 1, 0, rollsWith(roll, 99)))).toEqual(['555333', '5b5333', '555333']);
+    expect(rowsOf(blobs, paintMarks(blobs, 'eye-spotted', 1, 0, rollsWith(roll, 99)))).toEqual(['555333', `5${C}5333`, '555333']);
   });
 });
 
@@ -223,6 +239,130 @@ describe('paintMarks: untuned patterns', () => {
         expect([2, 3]).toContain(((f.pixels[i] as number) - 1) % 4);
       }
     }
+  });
+});
+
+describe('paintMarks: mottled', () => {
+  // 15 wide: flow along the length; four spot blobs, each crossing every flow line, and a band with no spot.
+  const FLOWS = [FLOW15, FLOW15, FLOW15, FLOW15, FLOW15];
+  const SPOTS = ['111111111111111', '222222222222222', '...............', '333333333333333', '444444444444444'];
+  const field = frameOf(['222222222222222', '333333333333333', '222222222222222', '444444444444444', '111111111111111'], { flow: FLOWS, spots: SPOTS });
+  // 40 fixed roll sets from a small whole-number generator (its high bits: its low bits repeat after a few steps).
+  const sets: number[][] = [];
+  let seed = 777;
+  for (let s = 0; s < 40; s++) {
+    const rolls: number[] = [];
+    for (let i = 0; i < 15; i++) { seed = (seed * 1103515245 + 12345) % 2147483648; rolls.push((seed >> 16) % 100); }
+    sets.push(rolls);
+  }
+  const markable = (v: number): boolean => v >= 1 && v <= 12;
+
+  it('paints only drawn pixels 1 to 12 inside a spot blob and on a flow line, never anything else', () => {
+    // Every value 0 to 20 as a host; a spot hole and a flow hole cross the drawn pixels.
+    const f = frameOf(['123456789abcdefghijk1', '123456789abcdefghijk1', '123456789abcdefghijk1'], {
+      flow: ['123456789abcdef123456', '123.56789abc.ef123456', '123456789abcdef12345.'],
+      spots: ['111111111111111111111', '11111.111111111111111', '.11111111111111111111'],
+    });
+    const spots = f.layers!.spots!;
+    const flow = f.layers!.flow!;
+    const shade = PATTERN_TABLE.mottled.shade;
+    const allowed: number[] = [];
+    const everyCell: number[] = [];
+    for (let i = 0; i < f.pixels.length; i++) {
+      const host = f.pixels[i]!;
+      const ok = markable(host) && spots[i] !== 0 && flow[i] !== 0;
+      if (ok) allowed.push(i);
+      everyCell.push(ok ? shade[(host - 1) % 4]! : host);
+    }
+    expect(allowed.length).toBeGreaterThan(30);
+    for (const strength of [0, 1, 2] as const) {
+      for (const phase of [0, 5, 14]) {
+        // Every roll 0 chooses every cell at every strength: each allowed pixel takes its mark, every other pixel is kept.
+        expect(Array.from(paintMarks(f, 'mottled', strength, phase, ZERO)!)).toEqual(everyCell);
+        for (const rolls of sets.slice(0, 10)) {
+          for (const i of changed(f, paintMarks(f, 'mottled', strength, phase, rolls))) expect(allowed).toContain(i);
+        }
+      }
+    }
+  });
+
+  it('with every roll 99 it paints nothing at any strength', () => {
+    for (const strength of [0, 1, 2] as const) expect(changed(field, paintMarks(field, 'mottled', strength, 3, ALL99))).toEqual([]);
+  });
+
+  it('two different roll sets give different pixels; the same roll set gives the same pixels', () => {
+    const pictures = new Set<string>();
+    for (const rolls of sets) {
+      const once = paintMarks(field, 'mottled', 2, 0, rolls);
+      expect(paintMarks(field, 'mottled', 2, 0, [...rolls])).toEqual(once);
+      pictures.add((once as Uint8Array).join());
+    }
+    expect(pictures.size).toBe(sets.length);
+  });
+
+  it('is nested by strength: hint paints a part of clear, and clear a part of full', () => {
+    const subset = (a: readonly number[], b: readonly number[]): boolean => a.every((i) => b.includes(i));
+    let strictSomewhere = 0;
+    for (const rolls of sets) {
+      for (const phase of [0, 4, 11]) {
+        const hint = changed(field, paintMarks(field, 'mottled', 0, phase, rolls));
+        const clear = changed(field, paintMarks(field, 'mottled', 1, phase, rolls));
+        const full = changed(field, paintMarks(field, 'mottled', 2, phase, rolls));
+        expect(subset(hint, clear)).toBe(true);
+        expect(subset(clear, full)).toBe(true);
+        if (hint.length < clear.length && clear.length < full.length) strictSomewhere++;
+      }
+    }
+    expect(strictSomewhere).toBeGreaterThan(0);
+  });
+
+  it('decides per spot and flow pair: the same spot and flow values give the same decision in frames of other shapes', () => {
+    // The field above, and a frame of another size and shape holding the same spot and flow values elsewhere.
+    const other = frameOf(['.3333333', '3333333.', '33333333', '..333333'], {
+      flow: ['.fedcba9', '8765432.', '1f2e3d4c', '..5b6a79'],
+      spots: ['.4321432', '1432143.', '24133142', '..412341'],
+    });
+    const decisions = (f: PartFrame, rolls: readonly number[], phase: number): Map<string, boolean> => {
+      const out = paintMarks(f, 'mottled', 2, phase, rolls) as Uint8Array;
+      const seen = new Map<string, boolean>();
+      for (let i = 0; i < out.length; i++) {
+        const s = f.layers!.spots![i]!;
+        const fl = f.layers!.flow![i]!;
+        if (s === 0 || fl === 0 || !markable(f.pixels[i]!)) continue;
+        const key = `${s}/${fl}`;
+        const on = out[i] !== f.pixels[i];
+        // One decision per spot and flow value inside one frame.
+        expect(seen.get(key) ?? on, key).toBe(on);
+        seen.set(key, on);
+      }
+      return seen;
+    };
+    let compared = 0;
+    let pairedOn = 0;
+    let pairedOff = 0;
+    for (const rolls of sets) {
+      for (const phase of [0, 6]) {
+        const a = decisions(field, rolls, phase);
+        const b = decisions(other, rolls, phase);
+        for (const [key, on] of b) {
+          expect(a.get(key), key).toBe(on);
+          compared++;
+        }
+        // At phase 0, flow values 2k+1 and 2k+2 are one pair of neighbouring lines: one decision per spot and pair.
+        if (phase === 0) {
+          for (let s = 1; s <= 4; s++) {
+            for (let k = 1; k <= 13; k += 2) {
+              const first = a.get(`${s}/${k}`) as boolean;
+              expect(a.get(`${s}/${k + 1}`), `${s}/${k}`).toBe(first);
+              if (first) pairedOn++; else pairedOff++;
+            }
+          }
+        }
+      }
+    }
+    expect(compared).toBeGreaterThan(1000);
+    expect(pairedOn).toBeGreaterThan(0);
+    expect(pairedOff).toBeGreaterThan(0);
   });
 });
 

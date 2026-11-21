@@ -1,5 +1,5 @@
 import type { PartFrame, PatternName } from '@cf/art-format';
-import { PATTERN_TABLE, STRENGTH_KEEP, type PatternRule } from './patterns';
+import { MOTTLE_LINE_STEP, MOTTLE_PAIR_SHIFT, MOTTLE_SPOT_STEP, PATTERN_TABLE, STRENGTH_KEEP, type PatternRule } from './patterns';
 
 // Flow values and spot values cycle at 15; a colour ramp holds 4 shades (values 1-4, 5-8, 9-12).
 const CYCLE = 15;
@@ -85,9 +85,10 @@ export function paintMarks(frame: PartFrame, pattern: PatternName, strength: 0 |
           }
           break;
         case 'mottle': {
-          if (s === 0) break;
-          const pos = place(f, base);
-          if (chosen(s) ? !onLine(pos) : onLine(pos) && lineKept(pos)) value = mark;
+          // Inside a spot blob and on a flow line only; the cell is the blob crossed with a pair of neighbouring lines.
+          if (s === 0 || f === 0) break;
+          const cell = (s * MOTTLE_SPOT_STEP + (place(f, base) >> MOTTLE_PAIR_SHIFT) * MOTTLE_LINE_STEP) % CYCLE;
+          if (roll(cell) * 100 < rule.percent * keep) value = mark;
           break;
         }
         case 'veins': {
