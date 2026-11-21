@@ -26,13 +26,20 @@ const ACCENT = 5;
 /** One shade up inside the value's own ramp, held at the ramp's top shade. */
 const up = (v: number): number => (((v - 1) & 3) === 3 ? v : v + 1);
 
+/** Throws `RangeError('bad finish level <level>')` for anything but the numbers 0, 1, 2 and 3: a bad level is refused, never drawn. */
+export function checkFinishLevel(level: unknown): asserts level is 0 | 1 | 2 | 3 {
+  if (level !== 0 && level !== 1 && level !== 2 && level !== 3) throw new RangeError(`bad finish level ${String(level)}`);
+}
+
 /**
  * The rarity finish, in place, on a finished picture. Level 0 changes nothing. Each pixel is decided by its own
  * coordinates and value and the picture's drawn rows only, and only a ramp pixel (1 to 12) is ever written, with a ramp value: 0, the eye,
  * highlight, glow, outline and iris (13 to 20) are never touched. In order, each on the value the step before left:
- * level 1 and up, the sheen; level 2 and up, the swirl; level 3, the pearl (FINISH).
+ * level 1 and up, the sheen; level 2 and up, the swirl; level 3, the pearl (FINISH). Any other level throws
+ * (checkFinishLevel) before the buffer is read.
  */
 export function applyFinish(buffer: PixelBuffer, level: 0 | 1 | 2 | 3): void {
+  checkFinishLevel(level);
   if (level === 0) return;
   const { w, h, pixels } = buffer;
   // The drawn height: the rows from the first to the last that hold any pixel.

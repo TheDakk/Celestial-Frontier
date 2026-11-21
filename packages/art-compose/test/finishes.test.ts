@@ -178,6 +178,47 @@ describe('the rarity finish: levels 1 to 3', () => {
   });
 });
 
+describe('the rarity finish: a bad level is refused', () => {
+  const BAD: readonly unknown[] = [4, -1, 1.5, NaN, '2', null];
+  const real = buildRecipe(genome(0, 3, 3), [], cat);
+  const fallback = buildRecipe(genome(3, 3, 3), [], cat);
+  // A family with no fallback: compose would throw its own error, so the level must be refused before anything is read.
+  const nothing = { ...real, parts: [], family: 'ghost' };
+
+  it('compose throws the RangeError for every bad level, on the parts path and the fallback path, before anything is read', () => {
+    expect(compose(fallback, 'rest', cat).gaps.some((g) => g.startsWith('fallback:'))).toBe(true);
+    for (const level of BAD) {
+      for (const recipe of [real, fallback, nothing]) {
+        expect(() => compose(recipe, 'rest', cat, level as Level), `${String(level)} ${recipe.family}`)
+          .toThrow(new RangeError(`bad finish level ${String(level)}`));
+      }
+      expect(() => compose(real, 'rest', cat, level as Level)).toThrow(RangeError);
+    }
+  });
+
+  it('applyFinish throws the RangeError for every bad level and leaves the buffer as it was', () => {
+    for (const level of BAD) {
+      const b = bufferOf((x, y) => (x + y * 5) % 21);
+      const before = Uint8Array.from(b.pixels);
+      expect(() => applyFinish(b, level as Level), String(level)).toThrow(new RangeError(`bad finish level ${String(level)}`));
+      expect(b.pixels).toEqual(before);
+    }
+  });
+
+  it('0 and an omitted level give today\'s picture; 1, 2 and 3 still draw', () => {
+    for (const recipe of [real, fallback]) {
+      const today = compose(recipe, 'rest', cat);
+      expect(compose(recipe, 'rest', cat, 0).hash).toBe(today.hash);
+      const { buffer } = assemble(recipe, 'rest', cat);
+      if (recipe === real) {
+        finish(buffer);
+        expect(hashBuffer(buffer)).toBe(today.hash);
+      }
+      for (const level of [1, 2, 3] as const) expect(compose(recipe, 'rest', cat, level).hash).not.toBe(today.hash);
+    }
+  });
+});
+
 describe('the rarity finish: tables', () => {
   it('finishLevelFor follows the original\'s thresholds', () => {
     expect(Array.from({ length: 15 }, (_, tier) => finishLevelFor(tier))).toEqual([0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3]);
