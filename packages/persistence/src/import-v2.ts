@@ -443,47 +443,6 @@ function frozenAtlasWhereLookup(
   });
 }
 
-/** Exact compatibility classifier for the one pre-full-save development
- * envelope written to `cf-v2-slice` by commit e960e21. This is deliberately
- * separate from the mature v4 classifier: only the historical two-field
- * shape, an exact four-field nav record, matching route copies, and finite
- * mode-required identity are accepted. Parsed content still passes through
- * the ordinary bounded importer; this predicate grants no broader authority. */
-export function isLegacySliceEnvelope(value: unknown): boolean {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
-  const data = value as Record<string, unknown>;
-  if (Object.keys(data).sort().join('|') !== 'nav|view') return false;
-  if (!data.nav || typeof data.nav !== 'object' || Array.isArray(data.nav)) return false;
-  const rawNav = data.nav as Record<string, unknown>;
-  if (Object.keys(rawNav).sort().join('|') !== 'gal|mode|planet|star') return false;
-  const mode = rawNav.mode;
-  if (!['universe', 'galaxy', 'system', 'surface'].includes(String(mode))) return false;
-  if (mode === 'universe') {
-    return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
-  }
-  if (!data.view || typeof data.view !== 'object' || Array.isArray(data.view)) return false;
-  const rawView = data.view as Record<string, unknown>;
-  const expectedType = mode === 'galaxy' ? 'galaxy' : mode === 'system' ? 'star' : 'planet';
-  if (rawView.type !== expectedType) return false;
-  const samePoint = (a: unknown, b: unknown): boolean => {
-    if (!a || typeof a !== 'object' || Array.isArray(a)
-      || !b || typeof b !== 'object' || Array.isArray(b)) return false;
-    const left = a as Record<string, unknown>, right = b as Record<string, unknown>;
-    return typeof left.seed === 'number' && Number.isFinite(left.seed)
-      && typeof left.x === 'number' && Number.isFinite(left.x)
-      && typeof left.y === 'number' && Number.isFinite(left.y)
-      && left.seed === right.seed && left.x === right.x && left.y === right.y;
-  };
-  if (!samePoint(rawNav.gal, rawView.gal)) return false;
-  if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
-  if (!samePoint(rawNav.star, rawView.star)) return false;
-  if (mode === 'system') return rawNav.planet === null;
-  if (!rawNav.planet || typeof rawNav.planet !== 'object' || Array.isArray(rawNav.planet)) return false;
-  const rawPlanet = rawNav.planet as Record<string, unknown>;
-  return typeof rawPlanet.seed === 'number' && Number.isFinite(rawPlanet.seed)
-    && rawPlanet.seed === rawView.pseed;
-}
-
 /** Import-sheet guard. Boot loading deliberately accepts sparse legacy data
  * and hardens it into defaults; an explicit destructive import must prove it
  * is a whole save envelope before replacing the stored expedition. */

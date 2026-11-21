@@ -73,65 +73,19 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(classifyV4Save(JSON.stringify(FIXTURES.inputs.hostile_shapes), REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
   });
 
-  it('migrates the exact historical development-slice envelope while retaining its bytes and route ingress', async () => {
-    /* The compatibility bridge is deliberately storage-only. A two-field
-       development envelope must never become a trusted complete-import
-       replacement merely because boot migration knows its exact format. */
+  it('refuses the historical development-slice envelope without creating v5 authority or changing its bytes', async () => {
+    /* The bridge that read the old development app's two-field save (`cf-v2-slice`) is not
+       ported: that shape is now an ordinary corrupt source, protected and never migrated. */
     expect(classifyV4Save(LEGACY_SLICE_RAW, REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
     expect(prepareV5Replacement(LEGACY_SLICE_RAW, REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
 
     const backend = createMemoryBackend();
     await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: LEGACY_SLICE_RAW }]);
-    const migrated = await migrateStoredV4ToV5(backend, REGISTRY, NOW);
-    expect(migrated.kind).toBe('migrated');
-    if (migrated.kind !== 'migrated') return;
-
+    const before = await dump(backend);
+    expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({ kind: 'protected', reason: 'corrupt' });
+    expect(await dump(backend)).toEqual(before);
     expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(LEGACY_SLICE_RAW);
-    expect(await backend.get('meta', F3_REVISION_KEY)).toBe('0');
-    const snapshot = JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string };
-    expect(snapshot.raw).toBe(LEGACY_SLICE_RAW);
-
-    const expectedRoute = {
-      type: 'planet',
-      gal: { x: 90, y: -60, seed: 999 },
-      star: { x: 560, y: 170, seed: 424242 },
-      pseed: 133,
-    };
-    const loaded = await readSaveV5(backend, REGISTRY, NOW);
-    expect(loaded.kind).toBe('loaded');
-    if (loaded.kind !== 'loaded') return;
-    expect(loaded.state.savedView).toMatchObject(expectedRoute);
-    expect(loaded.ingress.savedView).toEqual(expectedRoute);
-    expect(Object.isFrozen(loaded.ingress.savedView)).toBe(true);
-    expect(Object.isFrozen((loaded.ingress.savedView as { gal: object }).gal)).toBe(true);
-    expect(loaded.legacyV4Raw).toBe(migrated.normalizedV4Raw);
-    expect(loaded.legacyV4Raw).not.toBe(LEGACY_SLICE_RAW);
-    expect(classifyV4Save(loaded.legacyV4Raw, REGISTRY, NOW).kind).toBe('supported');
-
-    const fixedPoint = await dump(backend);
-    expect(await migrateStoredV4ToV5(backend, REGISTRY, NOW)).toEqual({
-      kind: 'already-current', legacyV4Raw: loaded.legacyV4Raw,
-    });
-    const loadedAgain = await readSaveV5(backend, REGISTRY, NOW);
-    expect(loadedAgain.kind).toBe('loaded');
-    if (loadedAgain.kind === 'loaded') {
-      expect(loadedAgain.state).toEqual(loaded.state);
-      expect(loadedAgain.ingress.savedView).toEqual(expectedRoute);
-      expect(loadedAgain.legacyV4Raw).toBe(loaded.legacyV4Raw);
-    }
-    expect(await dump(backend)).toEqual(fixedPoint);
-
-    await backend.apply([{
-      store: 'player', key: 'v5:player', value: '{"schema":5,"segment":"player","data":[]}',
-    }]);
-    const recovered = await readSaveV5WithRecovery(backend, REGISTRY, NOW);
-    expect(recovered.kind).toBe('recovered-v4');
-    if (recovered.kind === 'recovered-v4') {
-      expect(recovered.raw).toBe(LEGACY_SLICE_RAW);
-      expect(recovered.normalizedV4Raw).toBe(loaded.legacyV4Raw);
-      expect(recovered.state.savedView).toMatchObject(expectedRoute);
-      expect(recovered.ingress.savedView).toEqual(expectedRoute);
-    }
+    expect(await readSaveV5(backend, REGISTRY, NOW)).toEqual({ kind: 'not-migrated' });
   });
 
   it('protects sparse, near-miss, corrupt, and future lookalikes without creating v5 authority', async () => {

@@ -7,7 +7,7 @@ import { battleStats } from '@cf/domain-combatcore';
 import { describeSpecies } from '@cf/domain-genome';
 import { harvestReady } from '@cf/domain-progression';
 import {
-  exportSaveV2, importSaveV2, isLegacySliceEnvelope, isPlausibleSaveEnvelope,
+  exportSaveV2, importSaveV2, isPlausibleSaveEnvelope,
   isKnownFrontierEndingId, sanitizeImportedGenomeV2,
   type ContentRegistry, type SaveStateV2,
 } from '@cf/persistence';
@@ -670,60 +670,6 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
       expect(completed.ingress.trainingSnapshot).toEqual({ kind: 'none' });
       expect(completed.state.tutSnapPending).toBeNull();
     }
-  });
-  it('recognizes only the exact historical two-field development-slice envelopes for all four nav modes', () => {
-    const gal = Object.freeze({ x: 90, y: -60, seed: 999, size: 78 });
-    const star = Object.freeze({ x: 560, y: 170, seed: 424242, kind: 'G' });
-    const cases = [
-      {
-        nav: { mode: 'universe', gal: null, star: null, planet: null },
-        view: null,
-      },
-      {
-        nav: { mode: 'galaxy', gal, star: null, planet: null },
-        view: { type: 'galaxy', gal: { ...gal }, harmlessLegacyField: true },
-      },
-      {
-        nav: { mode: 'system', gal, star, planet: null },
-        view: { type: 'star', gal: { ...gal }, star: { ...star } },
-      },
-      {
-        nav: { mode: 'surface', gal, star, planet: { seed: 133, name: 'Earth' } },
-        view: { type: 'planet', gal: { ...gal }, star: { ...star }, pseed: 133 },
-      },
-    ];
-    for (const value of cases) {
-      expect(isLegacySliceEnvelope(value), JSON.stringify(value)).toBe(true);
-      expect(isPlausibleSaveEnvelope(value), 'slice bridge must stay distinct from whole-v4 proof').toBe(false);
-      expect(importSaveV2(JSON.stringify(value), REGISTRY, NOW).ok).toBe(true);
-    }
-  });
-  it('rejects sparse lookalikes, extra authority fields, and mismatched/non-finite slice identity', () => {
-    const gal = { x: 90, y: -60, seed: 999 };
-    const star = { x: 560, y: 170, seed: 424242 };
-    const surface = {
-      nav: { mode: 'surface', gal, star, planet: { seed: 133 } },
-      view: { type: 'planet', gal: { ...gal }, star: { ...star }, pseed: 133 },
-    };
-    const bad: unknown[] = [
-      null, [], {}, { view: null }, { nav: surface.nav },
-      { ...surface, extra: true },
-      { nav: { ...surface.nav, extra: true }, view: surface.view },
-      { nav: { ...surface.nav, mode: 'planet' }, view: surface.view },
-      { nav: { mode: 'universe', gal: null, star: null, planet: null }, view: {} },
-      { nav: { mode: 'universe', gal, star: null, planet: null }, view: null },
-      { nav: { mode: 'galaxy', gal, star: null, planet: null }, view: { type: 'star', gal } },
-      { nav: { mode: 'galaxy', gal, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, x: 91 } } },
-      { nav: { mode: 'galaxy', gal: { ...gal, seed: '999' }, star: null, planet: null }, view: { type: 'galaxy', gal } },
-      { nav: { mode: 'galaxy', gal: { ...gal, x: Number.NaN }, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, x: Number.NaN } } },
-      { nav: { mode: 'galaxy', gal: { ...gal, y: Number.POSITIVE_INFINITY }, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, y: Number.POSITIVE_INFINITY } } },
-      { nav: { mode: 'system', gal, star, planet: null }, view: { type: 'star', gal, star: { ...star, seed: 1 } } },
-      { nav: { mode: 'system', gal, star, planet: { seed: 133 } }, view: { type: 'star', gal, star } },
-      { nav: { ...surface.nav, planet: null }, view: surface.view },
-      { nav: { ...surface.nav, planet: { seed: 134 } }, view: surface.view },
-      { nav: surface.nav, view: { ...surface.view, pseed: '133' } },
-    ];
-    for (const value of bad) expect(isLegacySliceEnvelope(value), JSON.stringify(value)).toBe(false);
   });
   it('destructive-import envelope rejects sparse lookalikes but accepts real current and veteran saves', () => {
     for (const bad of [null, [], 1, 'x', true, {}, { view: null }, { codex: {} }, { epoch: 0 }, { epoch: 0, codex: [], land: {} }]) {
