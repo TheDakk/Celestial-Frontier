@@ -1,0 +1,208 @@
+import { describe, expect, it } from 'vitest';
+import { parseCatalogueText, type PartFrame, type SlotName } from '@cf/art-format';
+import type { Recipe } from '@cf/art-recipe';
+import { blit, compose, createBuffer, finish, hashBuffer, toAscii, type PixelBuffer } from '@cf/art-compose';
+
+const frameOf = (w: number, h: number, values: number[]): PartFrame => ({ w, h, pixels: Uint8Array.from(values), anchor: [0, 0], attach: {} });
+const solid = (w: number, h: number, v: number): PartFrame => frameOf(w, h, new Array<number>(w * h).fill(v));
+const at = (b: PixelBuffer, x: number, y: number): number => b.pixels[y * b.w + x] ?? -1;
+const count = (b: PixelBuffer, v?: number): number => b.pixels.filter((p) => (v === undefined ? p !== 0 : p === v)).length;
+/** The w x h window of the text form whose top-left corner is (x, y). */
+const crop = (b: PixelBuffer, x: number, y: number, w: number, h: number): string =>
+  toAscii(b).split('\n').slice(y, y + h).map((line) => line.slice(x, x + w)).join('\n');
+
+describe('finish', () => {
+  it('outlines a 3x3 block of 2 on four sides, lights its top-left pixel and shades its bottom row', () => {
+    const b = createBuffer('medium');
+    blit(b, solid(3, 3, 2), 10, 10);
+    finish(b);
+    expect(crop(b, 8, 8, 7, 7)).toBe([
+      '.......',
+      '..ggg..',
+      '.g322g.',
+      '.g222g.',
+      '.g111g.',
+      '..ggg..',
+      '.......',
+    ].join('\n'));
+    expect(count(b)).toBe(9 + 12);
+  });
+
+  it('lights only a ramp pixel whose up and left neighbours were both transparent, staying inside its ramp', () => {
+    // Each column is two pixels tall: the top pixel qualifies for light only, the bottom pixel (value 1) for shade only.
+    const b = createBuffer('small');
+    const tops = [1, 2, 3, 4, 5, 7, 8, 9, 11, 12];
+    tops.forEach((v, i) => blit(b, frameOf(1, 2, [v, 1]), 2 + 3 * i, 5));
+    finish(b);
+    expect(tops.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual([2, 3, 4, 4, 6, 8, 8, 10, 12, 12]);
+  });
+
+  it('shades only a ramp pixel whose down neighbour was transparent, staying inside its ramp', () => {
+    // The top pixel of each column (value 3) shields the bottom one from light.
+    const b = createBuffer('small');
+    const bottoms = [1, 2, 4, 5, 6, 8, 9, 10, 12];
+    bottoms.forEach((v, i) => blit(b, frameOf(1, 2, [3, v]), 2 + 3 * i, 5));
+    finish(b);
+    expect(bottoms.map((_, i) => at(b, 2 + 3 * i, 6))).toEqual([1, 1, 3, 5, 5, 7, 9, 9, 11]);
+  });
+
+  it('a pixel that qualifies for both gets light then shade', () => {
+    const b = createBuffer('small');
+    const singles = [1, 2, 3, 4, 5, 8, 9, 12];
+    singles.forEach((v, i) => blit(b, frameOf(1, 1, [v]), 2 + 3 * i, 5));
+    finish(b);
+    // 1 -> 2 -> 1, 2 -> 3 -> 2, 3 -> 4 -> 3; a top-of-ramp 4 cannot rise, so it only falls: 4 -> 4 -> 3.
+    expect(singles.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual([1, 2, 3, 3, 5, 7, 9, 11]);
+  });
+
+  it('never changes 13, 14 or 15, but outlines them', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(1, 1, [13]), 2, 2);
+    blit(b, frameOf(1, 1, [14]), 6, 2);
+    blit(b, frameOf(1, 1, [15]), 10, 2);
+    blit(b, frameOf(3, 1, [13, 14, 15]), 2, 8);
+    finish(b);
+    expect([at(b, 2, 2), at(b, 6, 2), at(b, 10, 2), at(b, 2, 8), at(b, 3, 8), at(b, 4, 8)]).toEqual([13, 14, 15, 13, 14, 15]);
+    expect([at(b, 1, 2), at(b, 3, 2), at(b, 2, 1), at(b, 2, 3)]).toEqual([16, 16, 16, 16]);
+  });
+
+  it('decides from the buffer as it was before the outline: the outline is one pixel thick', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(1, 1, [2]), 5, 5);
+    finish(b);
+    expect(crop(b, 3, 3, 5, 5)).toBe(['.....', '..g..', '.g2g.', '..g..', '.....'].join('\n'));
+  });
+
+  it('treats neighbours outside the canvas as transparent and never writes outside it', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(1, 2, [2, 2]), 0, 0);
+    blit(b, frameOf(1, 2, [2, 2]), 47, 30);
+    finish(b);
+    expect(crop(b, 0, 0, 2, 3)).toBe(['3g', '1g', 'g.'].join('\n'));
+    expect(crop(b, 46, 29, 2, 3)).toBe(['.g', 'g3', 'g1'].join('\n'));
+    expect(count(b)).toBe(10);
+  });
+
+  it('leaves a 16 already in the input alone and treats it as non-transparent', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(1, 2, [16, 2]), 5, 5);
+    finish(b);
+    expect(at(b, 5, 5)).toBe(16);
+    expect(at(b, 5, 6)).toBe(1); // up was 16 (not transparent): no light; down transparent: shade
+    expect(at(b, 5, 4)).toBe(16);
+    expect(at(b, 4, 5)).toBe(16);
+  });
+
+  it('two separately drawn adjacent parts get no outline between them', () => {
+    const b = createBuffer('small');
+    blit(b, solid(2, 2, 2), 10, 10);
+    blit(b, solid(2, 2, 6), 12, 10);
+    finish(b);
+    expect(crop(b, 9, 9, 6, 4)).toBe(['.gggg.', 'g3266g', 'g1155g', '.gggg.'].join('\n'));
+  });
+});
+
+const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
+const catalogue = parseCatalogueText(`${HEADER}
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=head:2,0
+22
+22
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0
+6
+
+part quadruped/torso/blob/small/v0
+frame rest anchor=1,0
+a6
+66
+
+part serpent/torso/coil/small/v0
+frame wave anchor=0,0
+6
+
+frame wiggle anchor=0,0
+a
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+pose strike contact=20,12
+
+fallback quadruped quadruped/torso/blob/small/v0
+fallback serpent serpent/torso/coil/small/v0
+fallback ghost ghost/torso/none/small/v0
+`);
+
+function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over: Partial<Recipe> = {}): Recipe {
+  return {
+    version: 1, identity: 'test', family: 'quadruped', tier: 'small', scaffoldId: 'quadruped/sturdy/small',
+    parts: parts.map(([slot, index, partId]) => ({ slot, index, partId, source: 'own' as const })),
+    ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under' },
+    marking: { pattern: 0, flip: false, dx: 0, dy: 0 },
+    shift: { head: [0, 0], tail: [0, 0] },
+    glow: false, gaps: [],
+    ...over,
+  };
+}
+const TORSO = 'quadruped/torso/sturdy/small/v0';
+// The quadruped fallback (anchor at its top-right pixel) placed at (10,10), finished: x 9-10, y 10-11.
+const FALLBACK_AT_ORIGIN = ['.gg.', 'gb6g', 'g55g', '.gg.'].join('\n');
+
+describe('compose', () => {
+  it('assembles, finishes and hashes a recipe with parts', () => {
+    const r = compose(recipeOf([['torso', 0, TORSO], ['head', 0, 'quadruped/head/h1/small/v0']]), 'strike', catalogue);
+    expect(crop(r.buffer, 9, 9, 5, 4)).toBe(['.ggg.', 'g325g', 'g11g.', '.gg..'].join('\n'));
+    expect(r.contact).toEqual([20, 12]);
+    expect(r.gaps).toEqual([]);
+    expect(r.hash).toBe(hashBuffer(r.buffer));
+  });
+
+  it('an empty recipe composes the family fallback at the scaffold origin, finished, with fallback:<family>', () => {
+    const r = compose(recipeOf([], { gaps: ['missing:x'] }), 'rest', catalogue);
+    expect(crop(r.buffer, 8, 9, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
+    expect(count(r.buffer)).toBe(12);
+    expect(r.gaps).toEqual(['missing:x', 'fallback:quadruped']);
+    expect(r.hash).toBe(hashBuffer(r.buffer));
+  });
+
+  it('a recipe naming a part the catalogue does not hold never throws and is never empty when a fallback exists', () => {
+    const only = compose(recipeOf([['torso', 0, 'quadruped/torso/gone/small/v0']]), 'rest', catalogue);
+    expect(crop(only.buffer, 8, 9, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
+    expect(only.gaps).toEqual(['missing:quadruped/torso/gone/small/v0', 'fallback:quadruped']);
+    // With the torso present, the missing head is just a gap: the torso is drawn and no fallback is used.
+    const some = compose(recipeOf([['torso', 0, TORSO], ['head', 0, 'quadruped/head/gone/small/v0']]), 'rest', catalogue);
+    expect(crop(some.buffer, 9, 9, 4, 4)).toBe(['.gg.', 'g32g', 'g11g', '.gg.'].join('\n'));
+    expect(some.gaps).toEqual(['missing:quadruped/head/gone/small/v0']);
+  });
+
+  it('a recipe whose parts all fail to place composes the fallback', () => {
+    const r = compose(recipeOf([['head', 0, 'quadruped/head/h1/small/v0']]), 'rest', catalogue);
+    expect(crop(r.buffer, 8, 9, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
+    expect(r.gaps).toEqual(['attach:head', 'fallback:quadruped']);
+  });
+
+  it('a missing scaffold composes the fallback at the canvas centre, using the first frame when there is no rest', () => {
+    const r = compose(recipeOf([['torso', 0, 'serpent/torso/coil/small/v0']], { family: 'serpent', tier: 'medium', scaffoldId: 'serpent/body/medium' }), 'rest', catalogue);
+    expect([r.buffer.w, r.buffer.h]).toEqual([96, 64]);
+    expect(at(r.buffer, 48, 32)).toBe(6); // the wave frame (6, lit then shaded back); the wiggle frame would give 10
+    expect(count(r.buffer)).toBe(5);
+    expect(r.contact).toBeNull();
+    expect(r.gaps).toEqual(['scaffold:serpent/body/medium', 'fallback:serpent']);
+  });
+
+  it('throws the exact message when the family has no fallback, or its fallback part is not in the catalogue', () => {
+    expect(() => compose(recipeOf([], { family: 'radial' }), 'rest', catalogue)).toThrow(new Error('no fallback for family radial'));
+    expect(() => compose(recipeOf([], { family: 'ghost' }), 'rest', catalogue)).toThrow(new Error('no fallback for family ghost'));
+  });
+
+  it('gives the same hash twice and leaves the recipe unchanged', () => {
+    const recipe = Object.freeze(recipeOf([['torso', 0, TORSO]]));
+    const a = compose(recipe, 'rest', catalogue);
+    const b = compose(recipe, 'rest', catalogue);
+    expect(a.hash).toBe(b.hash);
+    expect(a.hash).toMatch(/^[0-9a-f]{8}$/);
+    expect(a.buffer.pixels).toEqual(b.buffer.pixels);
+  });
+});
