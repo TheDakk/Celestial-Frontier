@@ -31,9 +31,12 @@ function stableNode(value: unknown, ancestors: Set<object>): unknown {
   throw new TypeError(`unsupported genome value: ${typeof value}`);
 }
 
-/** The whole genome (sorted keys, type-tagged values, nothing excluded) followed by the ordered lineage. */
+/**
+ * The whole genome (sorted keys, type-tagged values, nothing excluded), '|', then the ordered lineage
+ * as a JSON array. JSON keeps the lineage unambiguous ([] vs [''], ['a>b'] vs ['a','b']); permanent.
+ */
 export function identityKey(genome: Readonly<Record<string, unknown>>, lineage: readonly string[]): string {
-  return JSON.stringify(stableNode(genome, new Set())) + '|' + lineage.join('>');
+  return JSON.stringify(stableNode(genome, new Set())) + '|' + JSON.stringify(lineage);
 }
 
 /*
