@@ -59,6 +59,13 @@ describe('buildRecipe', () => {
     }
   });
 
+  it('carries the leg count', () => {
+    expect(buildRecipe({ ...base, limbs: 0 }, [], full).legs).toBe(2);
+    expect(buildRecipe({ ...base, limbs: 3 }, [], full).legs).toBe(8);
+    expect(buildRecipe({ ...base, limbs: 5 }, [], full).legs).toBe(0);
+    expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full).legs).toBe(0);
+  });
+
   it('three limbs give one far and two near; none give no limb parts', () => {
     const three = buildRecipe({ ...base, limbs: 4 }, [], full);
     expect(three.parts.filter((p) => p.slot === 'farLimbs').map((p) => p.index)).toEqual([0]);
@@ -122,13 +129,37 @@ describe('buildRecipe', () => {
     ]);
   });
 
+  it('picks an iris ramp from its own stream', () => {
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = { ...base, seed };
+      const r = buildRecipe(g, [], catalogueOf(fullIds()));
+      expect(r.ramps.iris).toBe('iris' + pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8));
+      seen.add(r.ramps.iris);
+    }
+    expect([...seen].sort()).toEqual(['iris0', 'iris1', 'iris2', 'iris3', 'iris4', 'iris5', 'iris6', 'iris7']);
+  });
+
   it('names scaffold, ramps, marking and glow', () => {
-    const r = buildRecipe({ ...base, lumin: true }, [], full);
+    const g = { ...base, lumin: true };
+    const r = buildRecipe(g, [], full);
     expect(r.scaffoldId).toBe('quadruped/sturdy/medium');
-    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under' });
+    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under', iris: `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}` });
     expect(r.marking.pattern).toBe(2);
     expect(r.glow).toBe(true);
-    for (const n of [r.marking.dx, r.marking.dy, ...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);
+    for (const n of [...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);
+  });
+
+  it('marking is pattern, full strength and a phase from its own stream', () => {
+    const seen = new Set<number>();
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = { ...base, seed };
+      const r = buildRecipe(g, [], full);
+      expect(Object.keys(r.marking)).toEqual(['pattern', 'strength', 'phase']);
+      expect(r.marking).toEqual({ pattern: 2, strength: 2, phase: pick(artStream(identityKey(g, []), 'mark-phase', RENDERER_VERSION), 15) });
+      seen.add(r.marking.phase);
+    }
+    expect(seen.size).toBe(15);
   });
 
   it('uses the kind body and a body scaffold for a family with no torso type', () => {

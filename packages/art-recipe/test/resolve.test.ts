@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } from '@cf/art-format';
+import { EYE_COUNTS, LIMB_COUNTS, PATTERN_NAMES, TIER_SIZE } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
 import { guardianFor } from '@cf/domain-genome';
+import { BACK_KIND_BY_SKIN } from '../src/requests';
 import { EXTREMOPHILE_MOVEMENT, EYELESS_HEAD, GENE_LENGTHS, GUARDIAN_APEX, isGuardianScale, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
@@ -88,6 +89,16 @@ describe('the resolver is tied to the game tables', () => {
   it('reads LIMB_COUNTS and EYE_COUNTS from the same numbers as the game tables', () => {
     expect([...LIMB_COUNTS]).toEqual(traits.FA_LIMBS.map(Number));
     expect([...EYE_COUNTS]).toEqual(traits.FA_EYES.map(Number));
+  });
+  it('PATTERN_NAMES is the game\'s pattern table', () => {
+    expect([...PATTERN_NAMES]).toEqual(traits.FA_PATTERN);
+  });
+  it('the back-part table follows the game\'s skin table', () => {
+    expect(traits.FA_SKIN.map((skin, i) => [skin, BACK_KIND_BY_SKIN[i]])).toEqual([
+      ['scaled', 'ridge'], ['furred', 'mane'], ['chitinous', 'carapace'], ['slick and wet', null], ['plated', 'plates'],
+      ['warty', 'knobs'], ['feathered', 'plume'], ['translucent', null], ['crystalline', 'crystals'],
+    ]);
+    expect(BACK_KIND_BY_SKIN).toHaveLength(traits.FA_SKIN.length);
   });
   it('wraps the size gene like every other gene', () => {
     const tiers = [-1, 6, 2.9, '3', NaN, undefined].map((size) => resolveAnatomy({ ...base, size }).tier);

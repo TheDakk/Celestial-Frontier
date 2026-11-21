@@ -201,10 +201,35 @@ describe('parseCatalogueText: stricter checks', () => {
   it('rejects the outline value g in a part frame', () => {
     expect(thrown(`part ${ID}\nframe rest anchor=0,0\n11\n1g\n`)).toBe(`part ${ID} frame rest line 4: outline value is written by the composer`);
   });
+  it.each(['h', 'i', 'j', 'k'])('rejects %s in a part row', (c) => {
+    expect(thrown(`part ${ID}\nframe rest anchor=0,0\n11\n1${c}\n`)).toBe(`part ${ID} frame rest line 4: iris value is written by the composer`);
+  });
   it('rejects a second entry for the same slot and index in one pose, but not in another pose', () => {
     expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\nentry head 1 rest 0 0\nentry head 0 bite 1 1\n`))
       .toBe('scaffold quadruped/sturdy/small pose rest line 5: duplicate entry head 0');
     expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0\npose strike\nentry head 0 rest 1 0\n`)).toBe('did not throw');
+  });
+  it('reads legs=2 on an entry', () => {
+    const c = parseCatalogueText(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=2\n`);
+    expect(c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries).toEqual([{ slot: 'torso', index: 0, frame: 'rest', dx: 0, dy: 0, legs: 2 }]);
+  });
+  it('an entry without legs has no legs key', () => {
+    const c = parseCatalogueText(`${SCAF}pose rest\nentry torso 0 rest 0 0\n`);
+    expect('legs' in c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries[0]!).toBe(false);
+  });
+  it('accepts the same slot and index at two leg counts and with none', () => {
+    const c = parseCatalogueText(`${SCAF}pose rest\nentry torso 0 rest 0 0\nentry torso 0 rest 1 0 legs=2\nentry torso 0 rest 2 0 legs=4\n`);
+    expect(c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries.map((e) => e.legs)).toEqual([undefined, 2, 4]);
+  });
+  it('rejects the same slot, index and legs twice', () => {
+    expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=2\nentry torso 0 rest 1 0 legs=2\n`))
+      .toBe('scaffold quadruped/sturdy/small pose rest line 4: duplicate entry torso 0');
+  });
+  it('rejects legs=5, legs=x and a seventh field', () => {
+    expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=5\n`)).toBe("line 3: bad legs '5'");
+    expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=x\n`)).toBe("line 3: bad legs 'x'");
+    expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=2 more\n`)).toBe('line 3: bad entry');
+    expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 foo=2\n`)).toBe('line 3: bad entry');
   });
   it('rejects a fallback naming a part that is missing by the end, or that has no rest frame', () => {
     expect(thrown(`${PART}\nfallback quadruped quadruped/torso/none/medium/v0\n`)).toBe('fallback quadruped medium: part quadruped/torso/none/medium/v0 missing or has no rest frame');
@@ -293,6 +318,14 @@ describe('formatPart', () => {
     const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
       frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from([1, 16]), anchor: [0, 0], attach: {} } } };
     expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds the outline value, which only the composer writes');
+  });
+});
+
+describe('iris values', () => {
+  it('formatPart refuses a frame holding 17', () => {
+    const base: Part = { id: 'quadruped/head/h3/medium/v0', family: 'quadruped', slot: 'head', tier: 'medium', kind: 'h3', variant: 0,
+      frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from([1, 17]), anchor: [0, 0], attach: {} } } };
+    expect(() => formatPart(base)).toThrow('part quadruped/head/h3/medium/v0: cannot format: frame rest holds an iris value, which only the composer writes');
   });
 });
 

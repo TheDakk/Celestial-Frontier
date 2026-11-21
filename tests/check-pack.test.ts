@@ -176,6 +176,26 @@ describe('checkPack on planted faults', () => {
     expect(r.ok).toBe(false);
   });
 
+  it('an eye drawn wholly off the canvas is a hidden part, and the eye part is named', () => {
+    const r = checkPack(planted('part quadruped/eyes/eye/small/v0\nframe rest anchor=0,0', 'part quadruped/eyes/eye/small/v0\nframe rest anchor=-100,0'));
+    expect(r.hidden.length).toBeGreaterThan(0);
+    expect(new Set(r.hidden.map((d) => d.partId))).toEqual(new Set(['quadruped/eyes/eye/small/v0']));
+    expect(errorsOf(r).some((l) => l.startsWith('error: hidden part quadruped/eyes/eye/small/v0 on quadruped/sturdy/small'))).toBe(true);
+    expect(r.ok).toBe(false);
+  });
+
+  it('an eye that is drawn is not reported hidden, whatever its place in the recipe', () => {
+    expect(checkPack(GOOD).hidden).toEqual([]);
+  });
+
+  it('a detached eye is reported with the slot named eyes, never as a bare number', () => {
+    const r = checkPack(planted('part quadruped/eyes/eye/small/v0\nframe rest anchor=0,0', 'part quadruped/eyes/eye/small/v0\nframe rest anchor=-8,0'));
+    expect(r.detached.length).toBeGreaterThan(0);
+    expect(r.detached.every((d) => d.off.includes('eyes') && d.off.every((o) => Number.isNaN(Number(o))))).toBe(true);
+    expect(errorsOf(r).some((l) => l.startsWith('error: detached eyes on quadruped/sturdy/small'))).toBe(true);
+    expect(r.ok).toBe(false);
+  });
+
   it('a missing pose and a strike pose with no contact point', () => {
     const missing = checkPack(planted('pose faint\nentry torso 0 rest 0 2\n', ''));
     expect(missing.structure).toEqual(['scaffold quadruped/sturdy/small: missing pose faint']);
@@ -234,7 +254,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
 
   it('passes clean: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
     expect(r.parseError).toBeNull();
-    expect(r.summary).toMatchObject({ parts: 85, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 34, byTier: { medium: 40, small: 15, large: 15, guardian: 15 } });
+    expect(r.summary).toMatchObject({ parts: 85, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 42, byTier: { medium: 40, small: 15, large: 15, guardian: 15 } });
     expect(r.structure).toEqual([]);
     expect(r.unreachable).toEqual([]);
     expect(r.failures).toEqual([]);

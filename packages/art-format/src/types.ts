@@ -19,7 +19,7 @@ export const MARK_SLOTS: readonly SlotName[] = ['farLimbs', 'tail', 'torso', 'ne
 /** `layers`: each grid is exactly w*h; the key is absent when the frame has none. */
 export interface PartFrame { w: number; h: number; pixels: Uint8Array; anchor: readonly [number, number]; attach: Readonly<Record<string, readonly [number, number]>>; layers?: Readonly<Partial<Record<LayerName, Uint8Array>>>; }
 export interface Part { id: string; family: string; slot: SlotName; tier: SizeTier; kind: string; variant: number; frames: Readonly<Record<string, PartFrame>>; }
-export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: number; dy: number; }
+export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: number; dy: number; legs?: number; }
 export interface Pose { id: string; entries: readonly PoseEntry[]; contact?: readonly [number, number]; }
 export interface Scaffold { id: string; family: string; tier: SizeTier; origin: readonly [number, number]; poses: Readonly<Record<string, Pose>>; }
 export interface Palette { colours: readonly number[]; ramps: Readonly<Record<string, readonly [number, number, number, number]>>; outline: number; eye: number; eyeHighlight: number; glow: number; }

@@ -116,9 +116,28 @@ describe('hashBuffer', () => {
   });
 });
 
+describe('blit with iris', () => {
+  const all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  it('writes 5-8 as 17-20 and leaves 1-4 and 9-15 alone', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(15, 1, all, [0, 0]), 0, 0, false, true);
+    expect([...b.pixels.slice(0, 15)]).toEqual([1, 2, 3, 4, 17, 18, 19, 20, 9, 10, 11, 12, 13, 14, 15]);
+  });
+  it('without iris leaves 5-8 alone', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(15, 1, all, [0, 0]), 0, 0);
+    expect([...b.pixels.slice(0, 15)]).toEqual(all);
+  });
+  it('writes the same values when mirrored', () => {
+    const b = createBuffer('small');
+    blit(b, frameOf(2, 1, [5, 8], [0, 0]), 5, 0, true, true);
+    expect([b.pixels[5], b.pixels[4]]).toEqual([17, 20]);
+  });
+});
+
 describe('toAscii', () => {
   it('writes one line per row with the part-text characters', () => {
-    const b: PixelBuffer = { w: 4, h: 2, pixels: Uint8Array.from([0, 1, 9, 10, 16, 15, 17, 255]) };
-    expect(toAscii(b)).toBe('.19a\ngf??');
+    const b: PixelBuffer = { w: 4, h: 1, pixels: Uint8Array.from([17, 20, 21, 255]) };
+    expect(toAscii(b)).toBe('hk??');
   });
 });

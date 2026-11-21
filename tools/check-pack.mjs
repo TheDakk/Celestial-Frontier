@@ -40,7 +40,9 @@ const HEAD_SHIFTS = SHIFTS.map((s) => ({ head: s, tail: [0, 0] }));
 const TAIL_SHIFTS = SHIFTS.map((s) => ({ head: [0, 0], tail: s }));
 const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail })));
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
-const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 6, back: 7, headFeature: 8, glow: 9 };
+const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 10, back: 7, headFeature: 8, glow: 9 };
+/** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
+const LABEL_BASE = 21;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
@@ -168,7 +170,7 @@ function drawnCount(part) {
 
 /**
  * A copy of the catalogue and recipe in which the recipe's part number k (from 0) has its own part id and is drawn
- * as `mode(k)` says: 'label' draws every pixel as k + 1, 'blank' draws nothing (the part keeps its place, so the
+ * as `mode(k)` says: 'label' draws every pixel as k + LABEL_BASE, 'blank' draws nothing (the part keeps its place, so the
  * parts that hang from it still land where they do), 'real' draws the part as it is. Frames are made once per id.
  */
 function numberedCopy(recipe, catalogue, cache, mode) {
@@ -183,7 +185,7 @@ function numberedCopy(recipe, catalogue, cache, mode) {
         const frames = Object.create(null);
         for (const name of Object.keys(part.frames)) {
           const f = part.frames[name];
-          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 || how === 'blank' ? 0 : k + 1)) };
+          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v) => (v === 0 || how === 'blank' ? 0 : k + LABEL_BASE)) };
         }
         made = { ...part, id, frames };
         cache.set(id, made);
@@ -211,25 +213,25 @@ function hiddenParts(recipe, pose, catalogue, cache) {
   const all = numberedCopy(recipe, catalogue, cache, () => 'label');
   const top = assemble(all.recipe, pose, all.catalogue).buffer.pixels;
   const bottom = assemble({ ...all.recipe, parts: [...all.recipe.parts].reverse() }, pose, all.catalogue).buffer.pixels;
-  const onTop = new Int32Array(n + 1);
-  const alone = new Int32Array(n + 1);
+  const onTop = new Int32Array(n + LABEL_BASE);
+  const alone = new Int32Array(n + LABEL_BASE);
   for (let i = 0; i < top.length; i++) {
     const t = top[i];
     if (t === 0) continue;
     onTop[t]++;
     if (t === bottom[i]) alone[t]++;
   }
-  const doubt = new Uint8Array(n + 1);
+  const doubt = new Uint8Array(n + LABEL_BASE);
   let doubts = 0;
-  for (let k = 0; k < n; k++) if (needed[k] > 0 && alone[k + 1] < needed[k] && onTop[k + 1] >= needed[k]) { doubt[k + 1] = 1; doubts++; }
+  for (let k = 0; k < n; k++) if (needed[k] > 0 && alone[k + LABEL_BASE] < needed[k] && onTop[k + LABEL_BASE] >= needed[k]) { doubt[k + LABEL_BASE] = 1; doubts++; }
 
-  const sure = new Int32Array(n + 1);
+  const sure = new Int32Array(n + LABEL_BASE);
   let full;
   if (doubts > 0) {
     full = assemble(recipe, pose, catalogue).buffer.pixels;
-    const under = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + 1] === 1 ? 'blank' : 'real'));
+    const under = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + LABEL_BASE] === 1 ? 'blank' : 'real'));
     const beneath = assemble(under.recipe, pose, under.catalogue).buffer.pixels;
-    const onlyDoubt = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + 1] === 1 ? 'label' : 'blank'));
+    const onlyDoubt = numberedCopy(recipe, catalogue, cache, (k) => (doubt[k + LABEL_BASE] === 1 ? 'label' : 'blank'));
     const lowestDoubt = assemble({ ...onlyDoubt.recipe, parts: [...onlyDoubt.recipe.parts].reverse() }, pose, onlyDoubt.catalogue).buffer.pixels;
     for (let i = 0; i < top.length; i++) {
       const t = top[i];
@@ -239,9 +241,9 @@ function hiddenParts(recipe, pose, catalogue, cache) {
 
   const hidden = [];
   for (let k = 0; k < n; k++) {
-    if (needed[k] === 0 || alone[k + 1] >= needed[k] || sure[k + 1] >= needed[k]) continue;
+    if (needed[k] === 0 || alone[k + LABEL_BASE] >= needed[k] || sure[k + LABEL_BASE] >= needed[k]) continue;
     let visible = 0;
-    if (onTop[k + 1] > 0) {
+    if (onTop[k + LABEL_BASE] > 0) {
       full ??= assemble(recipe, pose, catalogue).buffer.pixels;
       const without = assemble({ ...recipe, parts: recipe.parts.filter((_, i) => i !== k) }, pose, catalogue).buffer.pixels;
       for (let i = 0; i < full.length && visible < needed[k]; i++) if (full[i] !== without[i]) visible++;

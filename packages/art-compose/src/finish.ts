@@ -25,7 +25,7 @@ export function finish(buffer: PixelBuffer): void {
         if (!clear(x - 1, y) || !clear(x + 1, y) || !clear(x, y - 1) || !clear(x, y + 1)) pixels[i] = OUTLINE;
         continue;
       }
-      if (v >= EYE) continue; // 13 eye, 14 highlight, 15 glow, 16 outline: never changed
+      if (v >= EYE) continue; // 13 eye, 14 highlight, 15 glow, 16 outline, 17-20 iris: never changed
       // Ramps are 1-4, 5-8 and 9-12: shade is the position 0-3 inside the ramp.
       const base = v - ((v - 1) & 3);
       const lit = clear(x, y - 1) && clear(x - 1, y);

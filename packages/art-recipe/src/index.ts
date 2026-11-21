@@ -1,3 +1,4 @@
 export * from './streams';
 export * from './resolve';
 export * from './recipe';
+export * from './requests';

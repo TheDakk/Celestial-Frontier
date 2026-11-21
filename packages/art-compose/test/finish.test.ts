@@ -11,6 +11,15 @@ const count = (b: PixelBuffer, v?: number): number => b.pixels.filter((p) => (v 
 const crop = (b: PixelBuffer, x: number, y: number, w: number, h: number): string =>
   toAscii(b).split('\n').slice(y, y + h).map((line) => line.slice(x, x + w)).join('\n');
 
+describe('finish: iris values', () => {
+  it('never changes 17 to 20, but outlines them', () => {
+    const b = createBuffer('medium');
+    blit(b, frameOf(4, 1, [17, 18, 19, 20]), 10, 10);
+    finish(b);
+    expect(crop(b, 9, 9, 6, 3)).toBe(['.gggg.', 'ghijkg', '.gggg.'].join('\n'));
+  });
+});
+
 describe('finish', () => {
   it('outlines a 3x3 block of 2 on four sides, lights its top-left pixel and shades its bottom row', () => {
     const b = createBuffer('medium');
@@ -144,10 +153,10 @@ function recipeOf(parts: readonly (readonly [SlotName, number, string])[], over:
   return {
     version: 1, identity: 'test', family: 'quadruped', tier: 'small', scaffoldId: 'quadruped/sturdy/small',
     parts: parts.map(([slot, index, partId]) => ({ slot, index, partId, source: 'own' as const })),
-    ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under' },
-    marking: { pattern: 0, flip: false, dx: 0, dy: 0 },
+    ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
+    marking: { pattern: 0, strength: 2, phase: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
-    glow: false, gaps: [],
+    legs: 4, glow: false, gaps: [],
     ...over,
   };
 }
