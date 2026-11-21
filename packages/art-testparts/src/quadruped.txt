@@ -2,6 +2,9 @@
 # Quadruped parts: medium tier only, variant 0 only. Each head overlaps the torso's front by five columns and each tail
 # its back by five, so neither comes loose under any head or tail shift and any pose offset.
 # Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight; the composer writes 17-20 (iris) from an eye part's 5-8.
+# Each head's top and bottom rows are drawn at shade 1, within one shade step of every torso pixel beside them (the neck rule).
+# The eye has an iris row (5-8) above its eye and highlight. The sturdy torso has near0_2 and far0_2, where a two-legged
+# creature stands; the sturdy scaffold spreads eight legs at rest (legs=8) and steps a two-legged creature forward on approach (legs=2).
 # Format 2: every torso, head, tail and limb part has flow (one value per pixel of length) and spots (2x2 blobs) layers;
 # tail t1 also has a hand-drawn striped layer. Leg roles fore, hind and mid on both sides beside the shared leg; a back
 # part of each kind for each torso type, sitting on the torso's back point; tusks and horns for each head kind, both
@@ -71,7 +74,7 @@ eyeHighlight 14
 glow 15
 
 part quadruped/torso/sturdy/medium/v0
-frame rest anchor=0,0 attach=head:32,3,tail:2,3,back:18,-1,far0:4,14,near0:2,14,far1:14,14,near1:12,14,far2:24,14,near2:22,14,far3:32,14,near3:30,14
+frame rest anchor=0,0 attach=head:32,3,tail:2,3,back:18,-1,far0:4,14,near0:2,14,far1:14,14,near1:12,14,far2:24,14,near2:22,14,far3:32,14,near3:30,14,far0_2:18,14,near0_2:16,14
 133133133133133133133133133133133133
 333333333333333333333333333333333333
 333333333333333333333333333333333333
@@ -378,14 +381,14 @@ layer spots
 
 part quadruped/head/h0/medium/v0
 frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
-3333333333
+2222222222
 2552222222
 2222222222
 2222222222
 2222222222
 2222222222
 2222222222
-1111111111
+2222222222
 layer flow
 123456789a
 123456789a
@@ -407,14 +410,14 @@ layer spots
 
 part quadruped/head/h1/medium/v0
 frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
-333333333333
+222222222222
 266622222222
 266622222222
 222222222222
 222222222222
 222222222222
 222222222222
-111111111111
+222222222222
 layer flow
 123456789abc
 123456789abc
@@ -436,14 +439,14 @@ layer spots
 
 part quadruped/head/h2/medium/v0
 frame rest anchor=0,4 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
-33333333333333
+22222222222222
 27777222222222
 22222222222222
 22222222222222
 22222222222222
 22222222222222
 22222222222222
-11111111111111
+22222222222222
 layer flow
 123456789abcde
 123456789abcde
@@ -465,7 +468,7 @@ layer spots
 
 part quadruped/head/h3/medium/v0
 frame rest anchor=0,5 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
-3333333333
+2222222222
 2882222222
 2882222222
 2222222222
@@ -474,7 +477,7 @@ frame rest anchor=0,5 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6
 2222222222
 2222222222
 2222222222
-1111111111
+2222222222
 layer flow
 123456789a
 123456789a
@@ -500,7 +503,7 @@ layer spots
 
 part quadruped/head/h4/medium/v0
 frame rest anchor=0,5 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
-333333333333
+222222222222
 255522222222
 222222222222
 222222222222
@@ -509,7 +512,7 @@ frame rest anchor=0,5 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye
 222222222222
 222222222222
 222222222222
-111111111111
+222222222222
 layer flow
 123456789abc
 123456789abc
@@ -535,7 +538,7 @@ layer spots
 
 part quadruped/head/h5/medium/v0
 frame rest anchor=0,5 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
-33333333333333
+22222222222222
 26666222222222
 26666222222222
 22222222222222
@@ -544,7 +547,7 @@ frame rest anchor=0,5 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,e
 22222222222222
 22222222222222
 22222222222222
-11111111111111
+22222222222222
 layer flow
 123456789abcde
 123456789abcde
@@ -570,7 +573,7 @@ layer spots
 
 part quadruped/head/h6/medium/v0
 frame rest anchor=0,6 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
-3333333333
+2222222222
 2772222222
 2222222222
 2222222222
@@ -581,7 +584,7 @@ frame rest anchor=0,6 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6
 2222222222
 2222222222
 2222222222
-1111111111
+2222222222
 layer flow
 123456789a
 123456789a
@@ -611,7 +614,7 @@ layer spots
 
 part quadruped/head/h7/medium/v0
 frame rest anchor=0,6 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
-333333333333
+222222222222
 288822222222
 288822222222
 222222222222
@@ -622,7 +625,7 @@ frame rest anchor=0,6 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye
 222222222222
 222222222222
 222222222222
-111111111111
+222222222222
 layer flow
 123456789abc
 123456789abc
@@ -652,7 +655,7 @@ layer spots
 
 part quadruped/head/h8/medium/v0
 frame rest anchor=0,6 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,eye5:10,5,eye6:12,7,eye7:10,7,feature:11,-1
-33333333333333
+22222222222222
 25555222222222
 22222222222222
 22222222222222
@@ -663,7 +666,7 @@ frame rest anchor=0,6 attach=eye0:12,1,eye1:10,1,eye2:12,3,eye3:10,3,eye4:12,5,e
 22222222222222
 22222222222222
 22222222222222
-11111111111111
+22222222222222
 layer flow
 123456789abcde
 123456789abcde
@@ -693,7 +696,7 @@ layer spots
 
 part quadruped/head/h9/medium/v0
 frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
-33333333333
+22222222222
 26622222222
 26622222222
 22222222222
@@ -701,7 +704,7 @@ frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7
 22222222222
 22222222222
 22222222222
-11111111111
+22222222222
 layer flow
 123456789ab
 123456789ab
@@ -1601,16 +1604,21 @@ cc.
 ..c
 
 part quadruped/eyes/eye/medium/v0
-frame rest anchor=0,0
+frame rest anchor=0,1
+76
 de
 
 scaffold quadruped/sturdy/medium origin=28,22
 pose rest
 entry torso 0 rest 0 0
+entry nearLimbs 0 rest -1 0 legs=8
+entry farLimbs 3 rest 1 0 legs=8
 pose approach
 entry torso 0 rest 1 0
 entry head 0 rest 1 0
 entry tail 0 rest -1 0
+entry nearLimbs 0 rest 1 0 legs=2
+entry farLimbs 0 rest 1 0 legs=2
 pose windup
 entry torso 0 rest -1 0
 entry head 0 rest -2 1

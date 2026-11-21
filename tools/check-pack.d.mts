@@ -48,8 +48,12 @@ export interface PackReport {
   summary: PackSummary | null;
   sampled: string;
   composed: number;
-  /** Forced variants composed, in every pose: one creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points). */
+  /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points). */
   variants: number;
+  /**
+   * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information:
+   * `variant:`, `marks:`, `role:`, and `missing:` of a part in slot back or headFeature; every other gap is an error.
+   */
   gaps: { gap: string; count: number; error: boolean }[];
   edge: CheckedCreature[];
   detached: DetachedCreature[];

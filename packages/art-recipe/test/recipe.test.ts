@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DRAW_ORDER, parseCatalogueText, partId } from '@cf/art-format';
+import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
 import { buildRecipe, RENDERER_VERSION } from '../src/recipe';
 import { artStream, identityKey, pick } from '../src/streams';
@@ -12,18 +12,22 @@ const catalogueOf = (ids: readonly string[]): Catalogue =>
   parseCatalogueText(HEADER + ids.map(partText).join('\n') + '\n' + SCAFFOLD);
 
 const q = (slot: SlotName, kind: string, variant: number): string => partId('quadruped', slot, kind, 'medium', variant);
-// A genome that resolves to quadruped/sturdy, medium, head 3, tail 2.
-const base = { kingdom: 'fauna', body: 0, loco: 0, size: 2, head: 3, tail: 2, limbs: 0, eyes: 0, color: 3, accent: 5, pattern: 2, lumin: false };
+// A genome that resolves to quadruped/sturdy, medium, head 3, tail 2, skin slick and wet (no back part).
+const base = { kingdom: 'fauna', body: 0, loco: 0, size: 2, head: 3, tail: 2, limbs: 0, eyes: 0, skin: 3, color: 3, accent: 5, pattern: 2, lumin: false };
+const LIMB_SLOTS: readonly SlotName[] = ['farLimbs', 'nearLimbs'];
 
-// Every id the base family can need, all variants, up to 8 limbs and 8 eyes.
+// Every id the base family can need, all variants, every leg role, up to 8 limbs and 8 eyes.
 const fullIds = (): string[] => {
   const ids: string[] = [];
   for (let v = 0; v < 3; v++) { ids.push(q('torso', 'sturdy', v), q('head', 'h3', v)); }
   for (let v = 0; v < 2; v++) { ids.push(q('tail', 't2', v)); }
-  for (let v = 0; v < 2; v++) for (let i = 0; i < 1; i++) { ids.push(q('farLimbs', 'leg', v), q('nearLimbs', 'leg', v)); }
+  for (let v = 0; v < 2; v++) for (const slot of LIMB_SLOTS) for (const kind of ['fore', 'hind', 'mid']) ids.push(q(slot, kind, v));
   ids.push(q('eyes', 'eye', 0));
   return ids;
 };
+/** Each limb part as `<slot><index> <kind>`, in recipe order. */
+const limbKinds = (r: { parts: readonly { slot: SlotName; index: number; partId: string }[] }): string[] =>
+  r.parts.filter((p) => LIMB_SLOTS.includes(p.slot)).map((p) => `${p.slot}${p.index} ${p.partId.split('/')[2]}`);
 const full = catalogueOf(fullIds());
 const slots = (r: { parts: readonly { slot: SlotName }[] }): SlotName[] => r.parts.map((p) => p.slot);
 
@@ -66,18 +70,102 @@ describe('buildRecipe', () => {
     expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full).legs).toBe(0);
   });
 
-  it('three limbs give one far and two near; none give no limb parts', () => {
+  it('three limbs give one far and two near (far0 fore, near0 fore, near1 hind); none give no limb parts', () => {
     const three = buildRecipe({ ...base, limbs: 4 }, [], full);
-    expect(three.parts.filter((p) => p.slot === 'farLimbs').map((p) => p.index)).toEqual([0]);
-    expect(three.parts.filter((p) => p.slot === 'nearLimbs').map((p) => p.index)).toEqual([0, 1]);
+    expect(limbKinds(three)).toEqual(['farLimbs0 fore', 'nearLimbs0 fore', 'nearLimbs1 hind']);
     const none = buildRecipe({ ...base, limbs: 5 }, [], full);
     expect(slots(none).filter((s) => s === 'farLimbs' || s === 'nearLimbs')).toEqual([]);
   });
 
-  it('shares one limb style across all limbs', () => {
+  it('asks for the leg roles by index at 2, 4 and 6 legs, end to end', () => {
+    expect(limbKinds(buildRecipe({ ...base, limbs: 0 }, [], full))).toEqual(['farLimbs0 hind', 'nearLimbs0 hind']);
+    expect(limbKinds(buildRecipe({ ...base, limbs: 1 }, [], full))).toEqual(['farLimbs0 fore', 'farLimbs1 hind', 'nearLimbs0 fore', 'nearLimbs1 hind']);
+    expect(limbKinds(buildRecipe({ ...base, limbs: 2 }, [], full))).toEqual([
+      'farLimbs0 fore', 'farLimbs1 hind', 'farLimbs2 mid', 'nearLimbs0 fore', 'nearLimbs1 hind', 'nearLimbs2 mid',
+    ]);
+    for (const limbs of [0, 1, 2, 4, 5]) expect(buildRecipe({ ...base, limbs }, [], full).gaps.filter((g) => !g.startsWith('variant:')), `limbs ${limbs}`).toEqual([]);
+  });
+
+  it('shares one limb style across all limbs, whatever their role', () => {
     const r = buildRecipe({ ...base, limbs: 3 }, [], full);
     const variants = new Set(r.parts.filter((p) => p.slot.endsWith('Limbs')).map((p) => p.partId.slice(-2)));
     expect(variants.size).toBe(1);
+    expect(new Set(r.parts.filter((p) => p.slot.endsWith('Limbs')).map((p) => p.partId.split('/')[2]))).toEqual(new Set(['fore', 'hind', 'mid']));
+  });
+
+  it('asks for fore, hind and mid legs, the skin\'s back part and the torso\'s head feature', () => {
+    // A tusked torso (body 10) with plated skin (4) and eight legs.
+    const g = { ...base, body: 10, skin: 4, limbs: 3, eyes: 4 };
+    const ids = [q('torso', 'tusked', 0), q('head', 'h3', 0), q('tail', 't2', 0), q('eyes', 'eye', 0), q('back', 'plates-tusked', 0), q('headFeature', 'tusks-h3', 0)];
+    for (const slot of LIMB_SLOTS) for (const kind of ['fore', 'hind', 'mid']) ids.push(q(slot, kind, 0));
+    const r = buildRecipe(g, [], catalogueOf(ids));
+    expect(limbKinds(r)).toEqual([
+      'farLimbs0 fore', 'farLimbs1 hind', 'farLimbs2 mid', 'farLimbs3 mid', 'nearLimbs0 fore', 'nearLimbs1 hind', 'nearLimbs2 mid', 'nearLimbs3 mid',
+    ]);
+    expect(r.parts.filter((p) => p.slot === 'back').map((p) => p.partId)).toEqual(['quadruped/back/plates-tusked/medium/v0']);
+    expect(r.parts.filter((p) => p.slot === 'headFeature').map((p) => p.partId)).toEqual(['quadruped/headFeature/tusks-h3/medium/v0']);
+    expect([...new Set(slots(r))]).toEqual(['farLimbs', 'tail', 'torso', 'back', 'nearLimbs', 'head', 'headFeature', 'eyes']);
+    // The same creature on an empty catalogue: each missing back part and head feature is one missing: gap at v0.
+    const bare = buildRecipe(g, [], catalogueOf([]));
+    expect(bare.gaps).toContain('missing:quadruped/back/plates-tusked/medium/v0');
+    expect(bare.gaps).toContain('missing:quadruped/headFeature/tusks-h3/medium/v0');
+  });
+
+  it('a missing role falls back to the shared leg with a role: gap', () => {
+    const ids = fullIds().filter((id) => !id.includes('Limbs/')).concat([q('farLimbs', 'leg', 0), q('nearLimbs', 'leg', 0), q('farLimbs', 'leg', 1), q('nearLimbs', 'leg', 1)]);
+    const r = buildRecipe({ ...base, limbs: 0 }, [], catalogueOf(ids));
+    expect(limbKinds(r)).toEqual(['farLimbs0 leg', 'nearLimbs0 leg']);
+    expect(r.gaps).toEqual([`role:${q('farLimbs', 'hind', 0)}`, `role:${q('nearLimbs', 'hind', 0)}`]);
+  });
+
+  it('a family with no torso type asks for its back part as <back>-body', () => {
+    const r = buildRecipe({ ...base, body: 3, skin: 1 }, [], full);
+    expect(r.gaps).toContain(`missing:${partId('tentacled', 'back', 'mane-body', 'medium', 0)}`);
+  });
+
+  it('falls back to variant 0 with a variant: gap when the picked torso or tail variant is missing', () => {
+    const ids = fullIds().filter((id) => !(id.includes('/torso/') || id.includes('/tail/')) || id.endsWith('/v0'));
+    const cat = catalogueOf(ids);
+    const seen = new Set<string>();
+    for (let seed = 0; seed < 40; seed++) {
+      const g = { ...base, seed };
+      const r = buildRecipe(g, [], cat);
+      const torso = pick(artStream(identityKey(g, []), 'torso-build', RENDERER_VERSION), 3);
+      const tail = pick(artStream(identityKey(g, []), 'tail-variant', RENDERER_VERSION), 2);
+      expect(r.parts.find((p) => p.slot === 'torso')!.partId).toBe(q('torso', 'sturdy', 0));
+      expect(r.parts.find((p) => p.slot === 'tail')!.partId).toBe(q('tail', 't2', 0));
+      const expected = [...(tail === 0 ? [] : [`variant:${q('tail', 't2', tail)}`]), ...(torso === 0 ? [] : [`variant:${q('torso', 'sturdy', torso)}`])];
+      expect(r.gaps.filter((g2) => !g2.includes('Limbs/') && !g2.includes('/head/')), `seed ${seed}`).toEqual(expected);
+      for (const gap of expected) seen.add(gap.split('/')[1]!);
+    }
+    expect([...seen].sort()).toEqual(['tail', 'torso']);
+  });
+
+  it('gives every marked part its own offset and rolls, and a plain creature none', () => {
+    const g = { ...base, limbs: 3, eyes: 4, seed: 7 };
+    const r = buildRecipe(g, [], full);
+    const stream = (name: string): (() => number) => artStream(identityKey(g, []), name, RENDERER_VERSION);
+    const marked = r.parts.filter((p) => MARK_SLOTS.includes(p.slot));
+    expect(marked.length).toBe(11); // 4 far, tail, torso, 4 near, head
+    for (const p of marked) {
+      const spots = stream(`mark-spots-${p.slot}-${p.index}`);
+      expect(p.mark, `${p.slot}${p.index}`).toEqual({ offset: pick(stream(`mark-offset-${p.slot}-${p.index}`), 15), rolls: Array.from({ length: 15 }, () => pick(spots, 100)) });
+    }
+    expect(r.parts.filter((p) => p.slot === 'eyes').every((p) => !('mark' in p))).toBe(true);
+    // A fallback-found part still gets its mark: the head is found at v0 after its picked variant is missing.
+    const v0Heads = catalogueOf(fullIds().filter((id) => !id.includes('/head/') || id.endsWith('/v0')));
+    let fellBack = 0;
+    for (let seed = 0; seed < 20; seed++) {
+      const h = buildRecipe({ ...g, seed }, [], v0Heads);
+      if (!h.gaps.some((gap) => gap.startsWith(`variant:${q('head', 'h3', 0).slice(0, -3)}`))) continue;
+      fellBack++;
+      expect(h.parts.find((p) => p.slot === 'head')!.mark).toBeDefined();
+    }
+    expect(fellBack).toBeGreaterThan(0);
+    // Plain: no part carries a mark key at all.
+    const plain = buildRecipe({ ...g, pattern: 0 }, [], full);
+    expect(plain.parts.length).toBe(r.parts.length);
+    expect(plain.parts.filter((p) => 'mark' in p)).toEqual([]);
   });
 
   it('asks for no eye part and records no eye gap for the eyeless head, whatever the eyes gene', () => {

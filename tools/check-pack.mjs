@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy, EYELESS_HEAD } = await import('@cf/art-recipe');
+const { buildRecipe, resolveAnatomy, EYELESS_HEAD, BACK_KIND_BY_SKIN } = await import('@cf/art-recipe');
 const { assemble, compose } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -56,6 +56,13 @@ const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v])
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
 const NO_LIMBS = LIMB_COUNTS.indexOf(0);
+/** The base sample's skin: slick and wet, which asks for no back part, so the base pictures hold no back part. */
+const BASE_SKIN = 3;
+/** The pattern genes swept (every pattern but plain) and the skin genes that ask for a back part. */
+const PATTERN_GENES = [1, 2, 3, 4, 5, 6, 7];
+const BACK_SKINS = BACK_KIND_BY_SKIN.flatMap((kind, skin) => (kind === null ? [] : [skin]));
+/** The pattern of a creature with a forced variant: patterned, so a forced part is painted and a variant with no layers is counted. */
+const FORCED_PATTERN = 1;
 /** Ramp values are 1-12 (three ramps of four); a value's shade step is its position in its ramp, 0 darkest to 3 lightest. */
 const inRamp = (v) => v >= 1 && v <= 12;
 const shadeOf = (v) => (v - 1) & 3;
@@ -64,12 +71,25 @@ export const HIDDEN_MIN = 4;
 
 export const SAMPLED =
   'every head kind x every tail kind and no tail x limbs genes 0-5, at eyes gene ' + FULL_EYES +
-  ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind; every pose the scaffold defines. ' +
-  'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs): every head kind with no tail at its nine shifts, ' +
-  'and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
-  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts), ' +
+  ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind, all plain with skin ' + BASE_SKIN + ' (no back part); every pose the scaffold defines. ' +
+  'For each head kind with the last tail, eight legs and eight eyes: one creature for each pattern gene ' + PATTERN_GENES.join(', ') +
+  ' at full strength, and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + '), in every pose at its own shift. ' +
+  'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs) and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for: ' +
+  'every head kind with no tail at its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
+  'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
   'also at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for. ' +
   'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures.';
+
+/**
+ * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
+ * creature's pattern (`marks:`), a leg role drawn with the shared leg (`role:`), or a missing back part or head feature
+ * (`missing:` of a part in slot back or headFeature). Every other gap is an error.
+ */
+function gapIsInfo(gap) {
+  if (/^(variant|marks|role):/.test(gap)) return true;
+  const slot = /^missing:[^/]*\/([^/]*)\//.exec(gap)?.[1];
+  return slot === 'back' || slot === 'headFeature';
+}
 
 const countBy = (items, key) => {
   const out = {};
@@ -113,7 +133,13 @@ function variantsByType(catalogue) {
   return [...groups.values()].filter((g) => g.parts.length > 1).map((g) => ({ ...g, ids: g.parts.sort((a, b) => a.variant - b.variant).map((p) => p.id) }));
 }
 
-/** The same catalogue with every drawn pixel replaced by its slot's label: same geometry, pixels say who drew them. */
+/** A frame without its layers: a copy whose pixels are coded must never be painted, or a mark would read as a code. */
+const unlayered = ({ layers: _layers, ...frame }) => frame;
+
+/**
+ * The same catalogue with every drawn pixel replaced by its slot's label: same geometry, pixels say who drew them.
+ * Layers are dropped, so a patterned creature's marks are never painted over a label.
+ */
 function labelCatalogue(catalogue) {
   const parts = new Map();
   for (const [id, part] of catalogue.parts) {
@@ -121,7 +147,7 @@ function labelCatalogue(catalogue) {
     const frames = Object.create(null);
     for (const name of Object.keys(part.frames)) {
       const f = part.frames[name];
-      frames[name] = { ...f, pixels: f.pixels.map((v) => (v === 0 ? 0 : label)) };
+      frames[name] = { ...unlayered(f), pixels: f.pixels.map((v) => (v === 0 ? 0 : label)) };
     }
     parts.set(id, { ...part, frames });
   }
@@ -186,7 +212,7 @@ function drawnCount(part) {
  * as `mode(k)` says: 'label' draws every pixel as k + LABEL_BASE, 'blank' draws nothing (the part keeps its place, so the
  * parts that hang from it still land where they do), 'real' draws the part as it is, 'x' and 'y' draw each pixel as its
  * own column or row in the frame plus one (so a picture says which frame pixel landed where; frames up to 254 pixels).
- * Frames are made once per id.
+ * Every mode but 'real' drops the frame's layers, so no mark is painted over a code. Frames are made once per id.
  */
 function numberedCopy(recipe, catalogue, cache, mode) {
   const parts = new Map();
@@ -201,7 +227,7 @@ function numberedCopy(recipe, catalogue, cache, mode) {
         for (const name of Object.keys(part.frames)) {
           const f = part.frames[name];
           const value = how === 'x' ? (i) => (i % f.w) + 1 : how === 'y' ? (i) => (i - (i % f.w)) / f.w + 1 : () => k + LABEL_BASE;
-          frames[name] = how === 'real' ? f : { ...f, pixels: f.pixels.map((v, i) => (v === 0 || how === 'blank' ? 0 : value(i))) };
+          frames[name] = how === 'real' ? f : { ...unlayered(f), pixels: f.pixels.map((v, i) => (v === 0 || how === 'blank' ? 0 : value(i))) };
         }
         made = { ...part, id, frames };
         cache.set(id, made);
@@ -502,7 +528,8 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
 /**
  * Checks one pack text. Pure: reads nothing, writes nothing.
  * A parser error ends the check. Otherwise: a summary, the distinct gaps met while composing the sampled
- * creatures of every scaffold (variant: gaps are information), creatures touching the canvas edge, creatures
+ * creatures of every scaffold (variant:, marks:, role: and a missing back part or head feature are information, see
+ * gapIsInfo), creatures touching the canvas edge, creatures
  * whose picture is not one 4-connected region (outline ignored), and structural problems.
  */
 export function checkPack(text) {
@@ -547,7 +574,7 @@ export function checkPack(text) {
     const realTails = kindsFor(catalogue, scaffold, 'tail', 't', 7).filter((t) => t !== 0);
     const tails = [0, ...realTails];
     const poses = Object.keys(scaffold.poses);
-    const genomeOf = (head, tail, limbs, eyes) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern: 0, skin: 0, color: 0, accent: 0, lumin: false });
+    const genomeOf = (head, tail, limbs, eyes, pattern = 0, skin = BASE_SKIN) => ({ kingdom: 'fauna', seed: 1, ...genes, head, tail, limbs, eyes, pattern, skin, color: 0, accent: 0, lumin: false });
 
     /** Composes one recipe in every pose: gaps, edge and connectivity at its own shift, then at each extra shift pair. */
     const check = (genome, recipe, shiftPairs, variant) => {
@@ -592,22 +619,22 @@ export function checkPack(text) {
       check(genome, buildRecipe(genome, [], catalogue), []);
     }
 
-    // Shift sweep, with no legs (more parts only add pixels, so none is the strictest case): every head alone at its nine
-    // shifts, then head and tail kinds paired in turn (every head and every tail kind at least once) at all 81 combinations
-    // of the nine head shifts and nine tail shifts, so a head and tail moving in opposite directions are composed.
+    // Marks, back parts and head features: for each head kind with the last tail, eight legs and eight eyes, one creature
+    // for each pattern gene but plain (on the base skin) and one for each skin gene that has a back part (plain).
     for (const head of someHeads) {
-      const genome = genomeOf(head, 0, NO_LIMBS, FULL_EYES);
-      check(genome, buildRecipe(genome, [], catalogue), HEAD_SHIFTS);
-    }
-    for (let i = 0; i < Math.max(someHeads.length, realTails.length) && realTails.length > 0; i++) {
-      const genome = genomeOf(someHeads[i % someHeads.length], realTails[i % realTails.length], NO_LIMBS, FULL_EYES);
-      check(genome, buildRecipe(genome, [], catalogue), SHIFT_PAIRS);
+      const tail = tails[tails.length - 1];
+      for (const pattern of PATTERN_GENES) {
+        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, pattern);
+        check(genome, buildRecipe(genome, [], catalogue), []);
+      }
+      for (const skin of BACK_SKINS) {
+        const genome = genomeOf(head, tail, FULL_LIMBS, FULL_EYES, 0, skin);
+        check(genome, buildRecipe(genome, [], catalogue), []);
+      }
     }
 
-    // Every variant of every part type with more than one: build a creature that uses the type, then compose a copy
-    // of its recipe with that slot's part id replaced by the variant's. A head or tail variant also at its nine shifts.
-    // Limb variants at eight legs, the others with none; each also at every leg count the scaffold writes a legs= entry
-    // or a torso leg-count attach name for, since those draw the creature differently.
+    // The leg counts this scaffold draws differently: each a legs= entry of one of its poses or a leg-count attach name
+    // on one of its torsos is written for.
     const torsoKind = scaffold.id.split('/')[1];
     const legCounts = new Set();
     for (const pose of Object.values(scaffold.poses)) for (const e of pose.entries) if (e.legs !== undefined) legCounts.add(e.legs);
@@ -615,6 +642,28 @@ export function checkPack(text) {
       if (part.family !== scaffold.family || part.slot !== 'torso' || part.kind !== torsoKind || part.tier !== scaffold.tier) continue;
       for (const frame of Object.values(part.frames)) for (const point of Object.keys(frame.attach)) if (LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
     }
+
+    // Shift sweep, with no legs (more parts only add pixels, so none is the strictest case), then again at each of those
+    // leg counts (a legs= entry can move a head or tail): every head alone at its nine shifts, then head and tail kinds
+    // paired in turn (every head and every tail kind at least once) at all 81 combinations of the nine head shifts and
+    // nine tail shifts, so a head and tail moving in opposite directions are composed.
+    const sweepLimbs = [NO_LIMBS, ...[...legCounts].sort((a, b) => a - b).map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== NO_LIMBS)];
+    for (const limbs of sweepLimbs) {
+      for (const head of someHeads) {
+        const genome = genomeOf(head, 0, limbs, FULL_EYES);
+        check(genome, buildRecipe(genome, [], catalogue), HEAD_SHIFTS);
+      }
+      for (let i = 0; i < Math.max(someHeads.length, realTails.length) && realTails.length > 0; i++) {
+        const genome = genomeOf(someHeads[i % someHeads.length], realTails[i % realTails.length], limbs, FULL_EYES);
+        check(genome, buildRecipe(genome, [], catalogue), SHIFT_PAIRS);
+      }
+    }
+
+    // Every variant of every part type with more than one: build a patterned creature that uses the type, then compose
+    // a copy of its recipe with that slot's part id replaced by the variant's. The swapped part keeps its mark: a mark is
+    // keyed by slot and index, never by part id, so it is the mark buildRecipe gives a creature that picked that variant.
+    // A head or tail variant also at its nine shifts. Limb variants at eight legs, the others with none; each also at
+    // every leg count in legCounts, since those draw the creature differently.
     for (const group of variantGroups) {
       if (group.family !== scaffold.family || group.tier !== scaffold.tier) continue;
       if (group.slot === 'torso' && scaffold.id !== `${group.family}/${group.kind}/${group.tier}`) continue;
@@ -623,7 +672,7 @@ export function checkPack(text) {
       const first = group.slot === 'farLimbs' || group.slot === 'nearLimbs' ? FULL_LIMBS : NO_LIMBS;
       const limbGenes = [first, ...[...legCounts].map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== first)];
       for (const limbs of limbGenes) {
-        const genome = genomeOf(head, tail, limbs, FULL_EYES);
+        const genome = genomeOf(head, tail, limbs, FULL_EYES, FORCED_PATTERN);
         const recipe = buildRecipe(genome, [], catalogue);
         const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
         for (const id of group.ids) {
@@ -648,7 +697,7 @@ export function checkPack(text) {
     }
   }
 
-  const gaps = [...gapCounts].map(([gap, count]) => ({ gap, count, error: !gap.startsWith('variant:') }));
+  const gaps = [...gapCounts].map(([gap, count]) => ({ gap, count, error: !gapIsInfo(gap) }));
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const info = [];

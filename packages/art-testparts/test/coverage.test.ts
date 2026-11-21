@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS, MARK_SLOTS, TIER_SIZE, VARIANTS, fallbackKey, type Catalogue, type Part, type SizeTier } from '@cf/art-format';
-import { artStream, buildRecipe, identityKey, pick, planParts, resolveAnatomy, EYELESS_HEAD, RENDERER_VERSION, type Recipe } from '@cf/art-recipe';
+import { EYE_COUNTS, LIMB_COUNTS, MARK_SLOTS, TIER_SIZE, fallbackKey, type Catalogue, type Part, type Scaffold, type SizeTier } from '@cf/art-format';
+import { buildRecipe, EYELESS_HEAD, type Recipe } from '@cf/art-recipe';
 import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { makeGenome } from '@cf/domain-genome';
@@ -266,16 +266,6 @@ describe('format 2 placeholder parts', () => {
   type G = ReturnType<typeof genome> & { pattern: number; skin: number };
   const full = (body: number, head: number, tail: number, limbs: number, skin: number, pattern: number): G =>
     ({ ...genome(body, head, tail, limbs, 3), skin, pattern });
-  /** The recipe buildRecipe makes, with the parts and part gaps planParts asks for (what the next task switches on). */
-  const planned = (g: G, catalogue: Catalogue = cat): { recipe: Recipe; gaps: string[] } => {
-    const stream = (name: string): (() => number) => artStream(identityKey(g, []), name, RENDERER_VERSION);
-    const variants = {
-      torso: pick(stream('torso-build'), VARIANTS.torso), head: pick(stream('head-variant'), VARIANTS.head),
-      tail: pick(stream('tail-variant'), VARIANTS.tail), limb: pick(stream('limb-style'), VARIANTS.limb),
-    };
-    const plan = planParts(resolveAnatomy(g), variants, stream, catalogue);
-    return { recipe: { ...buildRecipe(g, [], catalogue), parts: plan.parts, gaps: plan.gaps }, gaps: plan.gaps };
-  };
   const fallbackIds = new Set(cat.fallbacks.values());
   const markParts = [...cat.parts.values()].filter((p) => p.family === 'quadruped' && MARK_SLOTS.includes(p.slot) && !fallbackIds.has(p.id));
   /** The catalogue with `edit` applied to every part: a copy, the shared catalogue is never changed. */
@@ -295,25 +285,25 @@ describe('format 2 placeholder parts', () => {
     }
   });
 
-  it('planParts finds every part with no gap but variant:', () => {
+  it('buildRecipe finds every part with no gap but variant:', () => {
     let count = 0;
     for (const body of QUADRUPED_BODIES) for (let skin = 0; skin < 9; skin++) for (let limbs = 0; limbs < 6; limbs++) for (const pattern of [0, 1]) for (let head = 0; head < 10; head++) {
       const g = full(body, head, 1 + (head % 6), limbs, skin, pattern);
-      const bad = planned(g).gaps.filter((gap) => !gap.startsWith('variant:'));
+      const bad = buildRecipe(g, [], cat).gaps.filter((gap) => !gap.startsWith('variant:'));
       count++;
       if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
     }
     expect(count).toBe(6480);
   });
 
-  it('a creature assembled from planParts composes every pattern with no marks: gap, and each of the seven differs from plain', () => {
+  it('a creature built by buildRecipe composes every pattern with no marks: gap, and each of the seven differs from plain', () => {
     for (const body of QUADRUPED_BODIES) for (const limbs of [0, 3, 4]) {
-      const plain = planned(full(body, 3, 1, limbs, 4, 0)).recipe;
+      const plain = buildRecipe(full(body, 3, 1, limbs, 4, 0), [], cat);
       for (const pose of POSES) {
         const plainHash = compose(plain, pose, cat).hash;
         const hashes = new Set<string>();
         for (let pattern = 1; pattern < 8; pattern++) {
-          const { recipe } = planned(full(body, 3, 1, limbs, 4, pattern));
+          const recipe = buildRecipe(full(body, 3, 1, limbs, 4, pattern), [], cat);
           const where = `body ${body} limbs ${limbs} pattern ${pattern} ${pose}`;
           expect(recipe.parts.filter((p) => p.mark !== undefined).length, where).toBeGreaterThan(0);
           const out = compose(recipe, pose, cat);
@@ -342,11 +332,11 @@ describe('format 2 placeholder parts', () => {
     });
     expect(guided.parts.get(T1)!.frames['rest']!.layers?.striped).toBeUndefined();
     for (const body of QUADRUPED_BODIES) {
-      const striped = planned(full(body, 3, 1, 3, 4, 1)).recipe;
+      const striped = buildRecipe(full(body, 3, 1, 3, 4, 1), [], cat);
       expect(striped.parts.some((p) => p.partId === T1)).toBe(true);
       for (const pose of POSES) expect(compose(striped, pose, guided).hash, `body ${body} ${pose}`).not.toBe(compose(striped, pose, cat).hash);
       // Control: a banded tail reads only the guide layers, so removing the striped layer changes nothing.
-      const banded = planned(full(body, 3, 1, 3, 4, 3)).recipe;
+      const banded = buildRecipe(full(body, 3, 1, 3, 4, 3), [], cat);
       expect(compose(banded, 'rest', guided).hash, `body ${body}`).toBe(compose(banded, 'rest', cat).hash);
     }
   });
@@ -362,15 +352,94 @@ describe('format 2 placeholder parts', () => {
     const slots = new Set<string>();
     for (const body of QUADRUPED_BODIES) {
       for (let skin = 0; skin < 9; skin++) for (const head of [6, 7, 8]) {
-        const { recipe } = planned(full(body, head, 6, 3, skin, 0));
+        const recipe = buildRecipe(full(body, head, 6, 3, skin, 0), [], cat);
         for (const p of recipe.parts) slots.add(p.slot);
         inside(recipe, `body ${body} skin ${skin} head ${head}`);
       }
       for (let head = 0; head < 10; head++) for (let limbs = 0; limbs < 6; limbs++) {
-        const { recipe } = planned(full(body, head, 4, limbs, 0, 0));
+        const recipe = buildRecipe(full(body, head, 4, limbs, 0, 0), [], cat);
         inside(recipe, `body ${body} head ${head} limbs ${limbs}`);
       }
     }
     expect([...slots].sort()).toEqual(['back', 'eyes', 'farLimbs', 'head', 'headFeature', 'nearLimbs', 'tail', 'torso']);
+  });
+});
+
+describe('format 2 placeholder stance and iris', () => {
+  const STURDY = 'quadruped/torso/sturdy/medium/v0';
+  const twoLegs = LIMB_COUNTS.indexOf(2);
+  const eightLegs = LIMB_COUNTS.indexOf(8);
+  const g = (limbs: number, eyes = 3) => ({ ...genome(0, 3, 4, limbs, eyes), skin: 3 });
+  /** The catalogue with the sturdy torso's leg-count attach points removed: a copy. */
+  const noLegCountPoints = (): Catalogue => {
+    const parts = new Map(cat.parts);
+    const torso = cat.parts.get(STURDY)!;
+    const frames = Object.fromEntries(Object.entries(torso.frames).map(([n, f]) =>
+      [n, { ...f, attach: Object.fromEntries(Object.entries(f.attach).filter(([name]) => !/_\d+$/.test(name))) }]));
+    parts.set(STURDY, { ...torso, frames });
+    return { ...cat, parts };
+  };
+  /** The catalogue with every legs= entry removed from every scaffold: a copy. */
+  const noLegCountEntries = (): Catalogue => ({
+    ...cat,
+    scaffolds: new Map([...cat.scaffolds].map(([id, sc]): [string, Scaffold] => [id, {
+      ...sc,
+      poses: Object.fromEntries(Object.entries(sc.poses).map(([name, pose]) => [name, { ...pose, entries: pose.entries.filter((e) => e.legs === undefined) }])),
+    }])),
+  });
+
+  it('a two-legged sturdy creature stands on near0_2', () => {
+    const torso = cat.parts.get(STURDY)!;
+    for (const frame of Object.values(torso.frames)) {
+      expect(frame.attach['near0_2']).toBeDefined();
+      expect(frame.attach['far0_2']).toBeDefined();
+    }
+    const without = noLegCountPoints();
+    expect(without.parts.get(STURDY)!.frames['rest']!.attach['near0_2']).toBeUndefined();
+    const recipe = buildRecipe(g(twoLegs), [], cat);
+    expect(recipe.legs).toBe(2);
+    for (const pose of POSES) {
+      expect(compose(recipe, pose, cat).hash, pose).not.toBe(compose(recipe, pose, without).hash);
+      // Control: a four-legged creature never reads a _2 point.
+      const four = buildRecipe(g(LIMB_COUNTS.indexOf(4)), [], cat);
+      expect(compose(four, pose, cat).hash, pose).toBe(compose(four, pose, without).hash);
+    }
+  });
+
+  it('the sturdy scaffold has a legs=2 and a legs=8 entry, and each changes its creature\'s picture', () => {
+    const entries = Object.values(cat.scaffolds.get('quadruped/sturdy/medium')!.poses).flatMap((p) => p.entries);
+    expect(entries.some((e) => e.legs === 2)).toBe(true);
+    expect(entries.some((e) => e.legs === 8)).toBe(true);
+    const bare = noLegCountEntries();
+    for (const [limbs, legs] of [[twoLegs, 2], [eightLegs, 8]] as const) {
+      const recipe = buildRecipe(g(limbs), [], cat);
+      const poses = new Set(Object.entries(cat.scaffolds.get('quadruped/sturdy/medium')!.poses).filter(([, p]) => p.entries.some((e) => e.legs === legs)).map(([name]) => name));
+      expect(poses.size, `legs ${legs}`).toBeGreaterThan(0);
+      for (const pose of POSES) {
+        const same = compose(recipe, pose, cat).hash === compose(recipe, pose, bare).hash;
+        expect(same, `legs ${legs} ${pose}`).toBe(!poses.has(pose));
+      }
+    }
+    // Control: a four-legged creature is drawn the same with or without the entries.
+    const four = buildRecipe(g(LIMB_COUNTS.indexOf(4)), [], cat);
+    for (const pose of POSES) expect(compose(four, pose, cat).hash, pose).toBe(compose(four, pose, bare).hash);
+  });
+
+  it('every eye shows an iris pixel 17-20', () => {
+    const eye = cat.parts.get('quadruped/eyes/eye/medium/v0')!.frames['rest']!;
+    expect([...eye.pixels].some((v) => v >= 5 && v <= 8)).toBe(true);
+    for (const body of QUADRUPED_BODIES) for (let head = 0; head < 10; head++) for (let eyes = 0; eyes < 6; eyes++) {
+      const recipe = buildRecipe({ ...genome(body, head, 3, 1, eyes) }, [], cat);
+      const count = recipe.parts.filter((p) => p.slot === 'eyes').length;
+      const { pixels } = compose(recipe, 'rest', cat).buffer;
+      const iris = pixels.filter((v) => v >= 17 && v <= 20).length;
+      const where = `body ${body} head ${head} eyes ${eyes}`;
+      if (count === 0 ? iris !== 0 : iris < count) expect.fail(`${where}: ${count} eyes, ${iris} iris pixels`);
+    }
+    // Control: with the eye's iris pixels made plain body pixels, no picture holds 17-20.
+    const plainEye = { ...cat, parts: new Map(cat.parts) };
+    plainEye.parts.set('quadruped/eyes/eye/medium/v0', { ...cat.parts.get('quadruped/eyes/eye/medium/v0')!, frames: { rest: { ...eye, pixels: eye.pixels.map((v) => (v >= 5 && v <= 8 ? 2 : v)) } } });
+    const recipe = buildRecipe(genome(0, 3, 3, 1, 3), [], plainEye);
+    expect(compose(recipe, 'rest', plainEye).buffer.pixels.some((v) => v >= 17 && v <= 20)).toBe(false);
   });
 });

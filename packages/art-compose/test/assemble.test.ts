@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseCatalogueText } from '@cf/art-format';
+import { MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
 import type { SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe } from '@cf/art-recipe';
 import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
@@ -585,12 +585,14 @@ entry torso 0 hop 0 0
     }
   });
 
-  it('today\'s recipes carry no mark, for every pattern gene', () => {
+  it('buildRecipe gives a mark to every part in a mark slot of a patterned creature, and none to a plain one', () => {
     const base = { kingdom: 'fauna', body: 0, loco: 0, size: 0, head: 1, tail: 0, eyes: 0, limbs: 1, color: 0, accent: 0, lumin: false };
     for (let pattern = 0; pattern < 8; pattern++) {
       const recipe = buildRecipe({ ...base, pattern }, [], catalogue);
       expect(recipe.parts.length).toBeGreaterThan(0);
-      expect(recipe.parts.filter((p) => p.mark !== undefined)).toEqual([]);
+      const marked = recipe.parts.filter((p) => p.mark !== undefined);
+      if (pattern === 0) expect(marked).toEqual([]);
+      else expect(marked.map((p) => p.slot)).toEqual(recipe.parts.filter((p) => MARK_SLOTS.includes(p.slot)).map((p) => p.slot));
     }
   });
 

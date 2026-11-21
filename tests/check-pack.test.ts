@@ -3,7 +3,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LIMB_COUNTS } from '@cf/art-format';
+import { LIMB_COUNTS, VARIANTS } from '@cf/art-format';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { checkPack, formatReport, type PackReport } from '../tools/check-pack.mjs';
 
@@ -105,15 +105,42 @@ function planted(from: string, to: string, base = GOOD): string {
 }
 const errorsOf = (report: PackReport): string[] => formatReport(report).split('\n').filter((l) => l.startsWith('error:'));
 
+/** The gaps of a report that are not variant: lines, as `<class> <error>`, one per class. */
+const gapClasses = (r: PackReport): string[] =>
+  [...new Set(r.gaps.filter((g) => !g.gap.startsWith('variant:')).map((g) => `${g.gap.slice(0, g.gap.indexOf(':') + 1)}${g.gap.includes('/back/') ? ' back' : g.gap.includes('/headFeature/') ? ' headFeature' : ''} ${g.error}`))].sort();
+
 describe('checkPack on a known-good pack', () => {
-  it('reports no error, only variant information', () => {
+  // Review Focus 2: the good pack is in today's format (no layers, only the shared leg, no back parts).
+  it('a pack in the old format still checks OK', () => {
     const r = checkPack(GOOD);
     expect(errorsOf(r)).toEqual([]);
     expect(r.ok).toBe(true);
-    expect(r.gaps.every((g) => g.gap.startsWith('variant:') && !g.error)).toBe(true);
-    expect(r.composed).toBeGreaterThan(100);
+    expect(r.failures).toEqual([]);
     expect(r.summary).toMatchObject({ parts: 7, scaffolds: 1, fallbacks: 1, colours: 2, ramps: 8, bySlot: { torso: 2, head: 1, tail: 1, farLimbs: 1, nearLimbs: 1, eyes: 1 } });
     expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK');
+    // Its new gaps are information, each printed as an info: line.
+    for (const prefix of ['marks:', 'role:', 'missing:quadruped/back/']) {
+      const found = r.gaps.filter((g) => g.gap.startsWith(prefix));
+      expect(found.length, prefix).toBeGreaterThan(0);
+      expect(found.every((g) => !g.error), prefix).toBe(true);
+      expect(formatReport(r).split('\n').some((l) => l.startsWith(`info: gap ${prefix}`)), prefix).toBe(true);
+    }
+    expect(gapClasses(r)).toEqual(['marks: false', 'missing: back false', 'role: false']);
+    // With no iris ramps either, it is still OK.
+    const old = checkPack(OLD_FORMAT);
+    expect(old.ok).toBe(true);
+    expect(gapClasses(old)).toEqual(['marks: false', 'missing: back false', 'role: false']);
+    // A horned torso asks for horns: a missing head feature is information too.
+    const horned = checkPack(GOOD.replaceAll('sturdy', 'horned'));
+    expect(horned.ok).toBe(true);
+    expect(gapClasses(horned)).toEqual(['marks: false', 'missing: back false', 'missing: headFeature false', 'role: false']);
+  });
+
+  it('a missing torso is still an error', () => {
+    const r = checkPack(planted('part quadruped/torso/sturdy/small/v0', 'part quadruped/torso/sturdy/small/v1'));
+    expect(r.gaps.find((g) => g.gap === 'missing:quadruped/torso/sturdy/small/v0')).toMatchObject({ error: true });
+    expect(errorsOf(r)).toContain(`error: gap missing:quadruped/torso/sturdy/small/v0 (x${r.gaps.find((g) => g.gap === 'missing:quadruped/torso/sturdy/small/v0')!.count})`);
+    expect(r.ok).toBe(false);
   });
 });
 
@@ -507,6 +534,117 @@ describe('checkPack neck join pairings', () => {
   });
 });
 
+/**
+ * The text with a flow and a spots layer added after the rows of every frame of every torso, head, tail and limb part
+ * (fallbacks left alone): flow numbers each drawn pixel by its column, cycling 1 to f; spots is the whole drawn area as
+ * one blob. Every frame here is one rectangle of ramp values, so both layers are valid.
+ */
+function withLayers(text: string): string {
+  const blocks = text.split('\n\n');
+  return blocks.map((block) => {
+    const lines = block.split('\n');
+    const head = lines.findIndex((l) => l.startsWith('part '));
+    if (head < 0 || !/^part quadruped\/(torso|head|tail|farLimbs|nearLimbs)\//.test(lines[head]!) || lines[head]!.includes('/fallback/')) return block;
+    const rows = lines.slice(head + 2).filter((l) => l !== '');
+    const flow = rows.map((row) => [...row].map((c, x) => (/[1-9abc]/.test(c) ? '123456789abcdef'[x % 15] : '.')).join(''));
+    const spots = rows.map((row) => [...row].map((c) => (/[1-9abc]/.test(c) ? '1' : '.')).join(''));
+    return [...lines.slice(0, head + 2), ...rows, 'layer flow', ...flow, 'layer spots', ...spots].join('\n') + '\n';
+  }).join('\n\n');
+}
+
+describe('checkPack sweeps every pattern and every skin with a back part', () => {
+  // A back part sitting on the torso's back point (6,-1): two rows above the torso, the lower one touching it.
+  const BACK = '\npart quadruped/back/ridge-sturdy/small/v0\nframe rest anchor=0,1\n4444\n2222\n';
+
+  it('composes 7 poses x (7 patterns + 7 skins) more creatures for one scaffold and one head kind than before', () => {
+    // 133 before this sweep (the base sample, the shift sweep and nothing forced).
+    expect(checkPack(GOOD).composed).toBe(133 + 98);
+  });
+
+  it('a back part on top of the torso is silent; one drawn wholly inside the torso is a hidden part naming its id', () => {
+    const fine = checkPack(GOOD + BACK);
+    expect(fine.hidden).toEqual([]);
+    expect(fine.detached).toEqual([]);
+    expect(errorsOf(fine)).toEqual([]);
+    expect(fine.gaps.some((g) => g.gap.startsWith('missing:quadruped/back/ridge-'))).toBe(false);
+    const inside = checkPack(GOOD + BACK.replace('anchor=0,1\n4444\n2222', 'anchor=0,-3\n22\n22'));
+    expect(inside.hidden.length).toBeGreaterThan(0);
+    expect(new Set(inside.hidden.map((d) => d.partId))).toEqual(new Set(['quadruped/back/ridge-sturdy/small/v0']));
+    // Only the creature with skin 0 (scaled, ridge) carries it: the skin sweep reached it.
+    expect(new Set(inside.hidden.map((d) => d.genome['skin']))).toEqual(new Set([0]));
+    expect(errorsOf(inside).some((l) => l.startsWith('error: hidden part quadruped/back/ridge-sturdy/small/v0 on quadruped/sturdy/small'))).toBe(true);
+    expect(inside.ok).toBe(false);
+  });
+
+  it('a head feature drawn wholly inside the head and a role leg drawn off the canvas are hidden parts', () => {
+    const horned = planted(',eye7:4,3', ',eye7:4,3,feature:3,1').replaceAll('sturdy', 'horned');
+    const feature = (rows: string): string => `\npart quadruped/headFeature/horns-h0/small/v0\nframe rest anchor=0,${rows === '66' ? 0 : 2}\n${rows}\n`;
+    expect(checkPack(horned + feature('7777\n7777')).hidden).toEqual([]);
+    const hiddenHorns = checkPack(horned + feature('66'));
+    expect(new Set(hiddenHorns.hidden.map((d) => d.partId))).toEqual(new Set(['quadruped/headFeature/horns-h0/small/v0']));
+    expect(hiddenHorns.ok).toBe(false);
+    const mid = (anchor: string): string => `\npart quadruped/nearLimbs/mid/small/v0\nframe rest anchor=${anchor}\n33\n33\n33\n33\n33\n11\n`;
+    expect(checkPack(GOOD + mid('0,0')).hidden).toEqual([]);
+    const lost = checkPack(GOOD + mid('-100,0'));
+    expect(new Set(lost.hidden.map((d) => d.partId))).toEqual(new Set(['quadruped/nearLimbs/mid/small/v0']));
+    expect(lost.ok).toBe(false);
+  });
+
+  it('a painted mark is never read as a detached or hidden slot', () => {
+    const layered = withLayers(GOOD);
+    expect(layered).not.toBe(GOOD);
+    const marked = checkPack(layered);
+    expect(marked.parseError).toBeNull();
+    expect(marked.structure).toEqual([]);
+    // With layers on every part the patterned creatures are painted: no marks: gap is left.
+    expect(marked.gaps.filter((g) => g.gap.startsWith('marks:'))).toEqual([]);
+    expect(marked.detached).toEqual(checkPack(GOOD).detached);
+    expect(marked.hidden).toEqual(checkPack(GOOD).hidden);
+    expect(marked.ok).toBe(true);
+    // The same with a near leg that really is detached (hung two columns left of the torso): the slots named are the same
+    // with and without marks. A mark painted on its label (4, the lightest shade) would read as 8, the head feature's label.
+    const loose = planted('near0:1,5,', 'near0:-4,5,');
+    const plainLoose = checkPack(loose);
+    expect(plainLoose.detached.length).toBeGreaterThan(0);
+    expect(new Set(plainLoose.detached.flatMap((d) => d.off))).toEqual(new Set(['nearLimbs']));
+    const markedLoose = checkPack(withLayers(loose));
+    expect(markedLoose.gaps.filter((g) => g.gap.startsWith('marks:'))).toEqual([]);
+    expect(markedLoose.detached).toEqual(plainLoose.detached);
+  });
+});
+
+describe('checkPack shift sweep at each leg count', () => {
+  it('sweeps the head shifts at a leg count a legs= entry is written for', () => {
+    // At two legs the rest pose moves the head two columns right: flush against the torso, so a +1 shift opens a gap.
+    const r = checkPack(planted('pose rest\n', 'pose rest\nentry head 0 rest 2 0 legs=2\n'));
+    const twoLegs = r.detached.filter((d) => d.genome['limbs'] === limbGene(2) && d.pose === 'rest' && d.variant === undefined);
+    expect(new Set(twoLegs.map((d) => d.shift.head.join(',')))).toEqual(new Set(['1,-1', '1,0', '1,1']));
+    expect(r.ok).toBe(false);
+  });
+});
+
+describe('checkPack forced variants keep the creature\'s mark', () => {
+  it('a forced head variant with no layers on a patterned creature counts its marks: gap', () => {
+    // No sampled creature picks head variant v3 (buildRecipe picks v0 to v2): its marks: gap comes from the forced pass
+    // alone, one per pose, and only because the swapped part keeps the creature's mark (a part with no mark is never painted).
+    const large = withLayers(GOOD).replaceAll('/small', '/large').replace('part quadruped/head/h0/large/v0', 'part quadruped/head/h9/large/v0');
+    const HEAD_ROWS = 'frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n666666\n666666\n666666\n666666\n555555\n';
+    const r = checkPack(`${large}\npart quadruped/head/h9/large/v3\n${HEAD_ROWS}`);
+    expect(r.parseError).toBeNull();
+    expect(r.variants).toBe(2);
+    expect(r.gaps.find((g) => g.gap === 'marks:quadruped/head/h9/large/v3:rest')).toEqual({ gap: 'marks:quadruped/head/h9/large/v3:rest', count: 7, error: false });
+    // The head that sampled creatures do pick has layers: it is painted and has no marks: gap.
+    expect(r.gaps.some((g) => g.gap.startsWith('marks:quadruped/head/h9/large/v0'))).toBe(false);
+    expect(r.ok).toBe(true);
+  });
+});
+
+/**
+ * What the placeholder pack composes: 20580 for the base sample and the no-legs shift sweep, plus the mark and back-part
+ * sweep (6 scaffolds x 10 head kinds x (7 patterns + 7 skins) x 7 poses = 5880), plus the shift sweep again on the sturdy
+ * scaffold at 2 and 8 legs (its legs= entries and near0_2) (2 leg counts x (10 heads alone + 10 head and tail pairs) x 7 poses = 280).
+ */
+const PLACEHOLDER_COMPOSED = 20580 + 5880 + 280;
 /** The limbs gene for a leg count. */
 const limbGene = (legs: number): number => (LIMB_COUNTS as readonly number[]).indexOf(legs);
 
@@ -527,7 +665,9 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
     expect(r.gaps.filter((g) => g.error)).toEqual([]);
     expect(errorsOf(r)).toEqual([]);
     expect(r.ok).toBe(true);
-    expect(r.composed).toBe(20580);
+    expect(r.neck).toEqual([]);
+    expect(formatReport(r).split('\n').filter((l) => l.startsWith('warning:'))).toEqual([]);
+    expect(r.composed).toBe(PLACEHOLDER_COMPOSED);
   });
 
   it('still reports a head drawn flush against the torso again, on that scaffold only, at the shifts that open the gap', () => {
@@ -568,20 +708,21 @@ describe('checkPack composes every variant', () => {
     expect(r.ok).toBe(false);
   });
   it('finds a defective variant that no sampled creature picks, through the forced pass alone', () => {
-    // At the large tier with head kind h9, the art streams of every creature the tool samples pick head variant v0 or
-    // v1, never v2. v2 is drawn far off the torso, so it is loose at every shift: had any sampled creature picked it,
-    // a finding without a forced variant would name it. Only forcing v2 into a creature finds it.
+    // buildRecipe picks a head variant from 0 to VARIANTS.head - 1 (v0 to v2), so no sampled creature ever picks v3.
+    // v3 is drawn far off the torso, so it is loose at every shift: had any sampled creature picked it, a finding
+    // without a forced variant would name it. Only forcing v3 into a creature finds it.
     const large = GOOD.replaceAll('/small', '/large').replace('part quadruped/head/h0/large/v0', 'part quadruped/head/h9/large/v0');
     const FAR = FLUSH.replace('anchor=-2,0', 'anchor=-10,0');
-    const r = checkPack(`${large}\npart quadruped/head/h9/large/v1\n${GOOD_HEAD}\npart quadruped/head/h9/large/v2\n${FAR}`);
+    expect(VARIANTS.head).toBe(3);
+    const r = checkPack(`${large}\npart quadruped/head/h9/large/v1\n${GOOD_HEAD}\npart quadruped/head/h9/large/v3\n${FAR}`);
     expect(r.parseError).toBeNull();
     expect(r.unreachable).toEqual([]);
     expect(r.variants).toBe(3);
     expect(r.detached.length).toBeGreaterThan(0);
     expect(r.detached.filter((d) => d.variant === undefined)).toEqual([]);
-    expect(new Set(r.detached.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h9/large/v2']));
+    expect(new Set(r.detached.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h9/large/v3']));
     expect(new Set(r.detached.map((d) => d.shift.head.join(',')))).toHaveProperty('size', 9);
-    expect(errorsOf(r).some((l) => l.startsWith('error: detached head on quadruped/sturdy/large ') && l.endsWith('with variant quadruped/head/h9/large/v2'))).toBe(true);
+    expect(errorsOf(r).some((l) => l.startsWith('error: detached head on quadruped/sturdy/large ') && l.endsWith('with variant quadruped/head/h9/large/v3'))).toBe(true);
     expect(r.ok).toBe(false);
   });
   it('composes nothing extra for a pack with one variant per part type', () => {

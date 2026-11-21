@@ -1,5 +1,6 @@
-import { DRAW_ORDER, IRIS_RAMP_COUNT, VARIANTS, partId } from '@cf/art-format';
+import { IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName } from '@cf/art-format';
+import { planParts } from './requests';
 import { resolveAnatomy } from './resolve';
 import { artStream, identityKey, pick } from './streams';
 
@@ -67,36 +68,8 @@ function buildRecipeAt(
   pick(stream('mark-strength'), 3);
 
   const torsoKind = a.torso === '' ? 'body' : a.torso;
-  const wanted: { slot: SlotName; index: number; kind: string; variant: number }[] = [];
-  // Only fauna is built from parts in this milestone; flora, fungi and microbe ask for none and draw their family fallback.
-  if (a.kingdom === 'fauna') {
-    const far = a.limbs >> 1;
-    const near = a.limbs - far;
-    for (let i = 0; i < far; i++) wanted.push({ slot: 'farLimbs', index: i, kind: 'leg', variant: limbVariant });
-    if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: tailVariant });
-    wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: torsoVariant });
-    for (let i = 0; i < near; i++) wanted.push({ slot: 'nearLimbs', index: i, kind: 'leg', variant: limbVariant });
-    wanted.push({ slot: 'head', index: 0, kind: `h${a.head}`, variant: headVariant });
-    for (let i = 0; i < a.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0 });
-  }
-  wanted.sort((x, y) => DRAW_ORDER.indexOf(x.slot) - DRAW_ORDER.indexOf(y.slot) || x.index - y.index);
-
-  const parts: RecipePart[] = [];
-  const gaps: string[] = [];
-  for (const w of wanted) {
-    const picked = partId(a.family, w.slot, w.kind, a.tier, w.variant);
-    if (catalogue.parts.has(picked)) {
-      parts.push({ slot: w.slot, index: w.index, partId: picked, source: 'own' });
-      continue;
-    }
-    const base = partId(a.family, w.slot, w.kind, a.tier, 0);
-    if (catalogue.parts.has(base)) {
-      parts.push({ slot: w.slot, index: w.index, partId: base, source: 'own' });
-      gaps.push(`variant:${picked}`);
-    } else {
-      gaps.push(`missing:${base}`);
-    }
-  }
+  // Leg roles, the skin's back part, the torso type's head feature and each marked part's mark (requests.ts).
+  const { parts, gaps } = planParts(a, { torso: torsoVariant, head: headVariant, tail: tailVariant, limb: limbVariant }, stream, catalogue);
 
   return deepFreeze({
     version, identity, family: a.family, tier: a.tier,
