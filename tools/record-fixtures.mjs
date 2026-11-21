@@ -19,6 +19,7 @@ registerHooks({
 });
 
 const RANGE = 8;
+const EPOCHS = [0, 1, 2, 3, 6, 12];
 
 const recorders = {
   galaxies: async (source) => {
@@ -34,6 +35,31 @@ const recorders = {
       }
     }
     return cells;
+  },
+  rosters: async (source) => {
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const { systemFor } = await load('packages/domain/worldgen/src/index.ts');
+    const { climateBand } = await load('packages/domain/surveyphrases/src/index.ts');
+    const { mulberry32 } = await load('packages/domain/rand/src/index.ts');
+    const { biosphere } = await load('packages/domain/ecology/src/ecology.verbatim.js');
+    const { planetSpeciesAtEcologyEpoch } = await load('packages/domain/ecology/src/explicit-epoch.ts');
+    const worlds = {
+      earth: { planet: 133, star: 424242 },
+      kaum: { planet: 1757105165, star: 2737406570 },
+      osum: { planet: 51464061, star: 1074947061 },
+    };
+    const out = {};
+    for (const [name, { planet, star }] of Object.entries(worlds)) {
+      const sys = systemFor(star);
+      const found = sys.planets.find((entry) => entry.P.seed === planet);
+      if (!found) throw new Error(`${name}: planet ${planet} not found in system ${star}`);
+      const { P, orb } = found;
+      const band = climateBand(P, sys, orb);
+      const key = biosphere(P, sys, band, mulberry32((P.seed ^ 0x1234567) >>> 0)).key;
+      const level = key === 'earth' ? 'complex' : key;
+      out[name] = EPOCHS.map((epoch) => JSON.parse(JSON.stringify(planetSpeciesAtEcologyEpoch(P, sys, band, level, epoch))));
+    }
+    return out;
   },
 };
 
@@ -52,4 +78,4 @@ const outDir = fileURLToPath(new URL('../fixtures/current/', import.meta.url));
 mkdirSync(outDir, { recursive: true });
 const data = await recorders[only](resolve(source));
 writeFileSync(join(outDir, `${only}.json`), JSON.stringify(data, null, 1) + '\n');
-console.log(`recorded ${only}: ${data.length} cells`);
+console.log(`recorded ${only}: ${Array.isArray(data) ? data.length : Object.keys(data).length} entries`);
