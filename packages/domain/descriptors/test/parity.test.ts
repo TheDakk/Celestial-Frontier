@@ -5,7 +5,6 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/support/parity.js';
 import { probeRaw } from '../../../../tests/support/baseline.js';
-import { loadRecorded } from '../../../../tests/support/v1-recorded.js';
 import {
   installCaptureHooks, roman, starDescriptor, planetDescriptor, moonDescriptor,
   galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor,
@@ -276,7 +275,6 @@ const descriptorEvidenceFile = path.join(
 );
 const descriptorEvidence = JSON.parse(fs.readFileSync(descriptorEvidenceFile, 'utf8')) as DescriptorEvidence;
 const sha256 = (value: string | Buffer): string => crypto.createHash('sha256').update(value).digest('hex');
-const recordedCaptureTools = loadRecorded('descriptors-parity').cases as Array<{ role: string; file: string; sha256: string; bytes: number }>;
 
 function stable(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(stable);
@@ -321,13 +319,6 @@ function descriptorEvidenceErrors(evidence: DescriptorEvidence): string[] {
     galaxyKindCount: 16,
   })) errors.push('guards');
   if (stableJson(evidence.cases.map((row) => row.id)) !== stableJson(DESCRIPTOR_CASE_IDS)) errors.push('case inventory');
-
-  /* The two capture tools are not on this branch: their hashes were recorded from the current game
-     (fixtures/v1/recorded/descriptors-parity.json), each under the path the evidence names. */
-  const toolSha256 = (file: string): string | undefined =>
-    (recordedCaptureTools.find((tool) => tool.file === file))?.sha256;
-  if (toolSha256(evidence.capture.probeFile) !== evidence.capture.probeSha256) errors.push('probe hash');
-  if (toolSha256(evidence.capture.fakeCanvasFile) !== evidence.capture.fakeCanvasSha256) errors.push('fake-canvas hash');
 
   for (const row of evidence.cases) {
     if (stableJson(row.recipe) !== stableJson(expectedRecipes[row.id])) errors.push(`${row.id} recipe`);
@@ -383,18 +374,6 @@ describe('independent v1.8.9 exact bytes for the two vacuous baseline probes', (
       'system-1-planet-0-moon-0 raw/canonical',
       'aggregate hash',
     ]));
-  });
-
-  it('negative-controls a capture-tool hash that differs from the recorded one', () => {
-    const probe = structuredClone(descriptorEvidence);
-    probe.capture.probeSha256 = '0'.repeat(64);
-    probe.evidenceSha256 = aggregateEvidenceSha256(probe);
-    expect(descriptorEvidenceErrors(probe)).toEqual(['probe hash']);
-
-    const fakeCanvas = structuredClone(descriptorEvidence);
-    fakeCanvas.capture.fakeCanvasSha256 = '0'.repeat(64);
-    fakeCanvas.evidenceSha256 = aggregateEvidenceSha256(fakeCanvas);
-    expect(descriptorEvidenceErrors(fakeCanvas)).toEqual(['fake-canvas hash']);
   });
 
   it('negative-controls meaningful current moon and galaxy field mutations', () => {

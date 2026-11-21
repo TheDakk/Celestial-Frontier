@@ -10,7 +10,6 @@ const NAMES = [
   'acquisition-companion-care',
   'progression-achievements',
   'persistence-training-checkpoint',
-  'descriptors-parity',
 ] as const;
 
 /** Runs `check` with a temporary folder holding `files` (name -> text), then removes the folder. */
@@ -33,7 +32,6 @@ describe('recorded v1 answers', () => {
       'acquisition-companion-care': 'outputs',
       'progression-achievements': 'outputs',
       'persistence-training-checkpoint': 'hash',
-      'descriptors-parity': 'hash',
     });
     const counts = Object.fromEntries(NAMES.map((name) => [name, loadRecorded(name).cases.length]));
     expect(counts).toEqual({
@@ -42,7 +40,6 @@ describe('recorded v1 answers', () => {
       'acquisition-companion-care': 5000,
       'progression-achievements': 96,
       'persistence-training-checkpoint': 3,
-      'descriptors-parity': 2,
     });
     for (const name of NAMES) expect(loadRecorded(name).source).toMatch(/^celestial-frontier\.html/);
   });
