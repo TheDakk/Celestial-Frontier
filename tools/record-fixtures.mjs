@@ -85,7 +85,11 @@ const recorders = {
     const combat = await load('packages/domain/combatcore/src/index.ts');
     const { makeGenome } = await load('packages/domain/genome/src/index.ts');
     const { systemFor } = await load('packages/domain/worldgen/src/index.ts');
-    const genomeOf = (input) => Object.assign(makeGenome(input.seed, input.kingdom, input.heat), { xp: input.xp }, input.extra);
+    const { hashInt } = await load('packages/domain/rand/src/index.ts');
+    // The current game's own address mint, used here only so the real Titan defender can be reached.
+    // Tests never mint: they check the recorded defenders through the package's public functions.
+    const { registerCF1WorldAddressAuthority } = await load('packages/domain/worldidentity/src/mint-internal.ts');
+    const genomeOf = (input) => Object.assign(makeGenome(input.seed, input.kingdom, input.heat), { xp: input.xp }, structuredClone(input.extra));
     const attempt = (fn) => { try { return fn(); } catch (error) { return { throws: String(error.message) }; } };
 
     const stats = Array.from({ length: 200 }, (_, i) => {
@@ -103,9 +107,10 @@ const recorders = {
 
     const duels = Array.from({ length: 200 }, (_, i) => {
       const a = genomeInput(i, 0xa, KINGDOMS[i % 4]);
-      const b = i % 20 === 0 ? { ...a, extra: { ...a.extra } } : genomeInput(i + 1, 0xb, KINGDOMS[(i >> 2) % 4]);
-      if (i % 3 === 0) b.extra._mult = 1 + (i % 6) * 0.14;
-      if (i % 5 === 0) b.extra._wf = WORLD_FIELDS[(i / 5) % 5];
+      const mirror = i % 20 === 0;
+      const b = mirror ? structuredClone(a) : genomeInput(i + 1, 0xb, KINGDOMS[(i >> 2) % 4]);
+      if (!mirror && i % 3 === 0) b.extra._mult = 1 + (i % 6) * 0.14;
+      if (!mirror && i % 5 === 0) b.extra._wf = WORLD_FIELDS[(i / 5) % 5];
       const withStats = i % 2 === 0;
       const ga = genomeOf(a);
       const gb = genomeOf(b);
@@ -148,14 +153,71 @@ const recorders = {
       };
     }
 
+    // Titan defenders. `mirrored` builds the battle genome exactly as guardian-prime.ts titanDefender does,
+    // for every signature and region on Kaum and Osum (neither world has a Titan of its own). `real` holds
+    // SOURCE's own titanDefender output, reached through projectGuardianPrimeEncounterV1 on the first
+    // planet seed where each signature is selected; every real row is checked against the mirror.
+    const titanBuild = (planetSeed, definition, regionIndex) => {
+      const id = definition.id;
+      const heat = id === 'flame' ? 2 : (id === 'mind' || id === 'void') ? 0 : 1;
+      const g = makeGenome(hashInt(planetSeed >>> 0, 0x7174, 0x99) >>> 0, 'fauna', heat);
+      Object.assign(g, { size: 5, lumin: true, wild: 1, apex: 14, _titan: id, color: definition.titanColorIndex });
+      if (definition.battlefieldWorldField !== null) g._wf = definition.battlefieldWorldField;
+      g._mult = 1.15 + regionIndex * 0.03;
+      const battleGenome = JSON.parse(JSON.stringify(g));
+      const capturableGenome = JSON.parse(JSON.stringify(g));
+      delete capturableGenome._mult;
+      delete capturableGenome._wf;
+      return { battleGenome, capturableGenome, power: combat.battleStats(battleGenome).total };
+    };
+    const regionsAll = [0, 1, 2, 3, 4, 5];
+    const mirrored = [];
+    for (const planetSeed of [1757105165, 51464061]) {
+      for (const definition of combat.PRIME_SIGNATURES_V1) {
+        for (const regionIndex of regionsAll) mirrored.push({ planetSeed, signatureId: definition.id, regionIndex, ...titanBuild(planetSeed, definition, regionIndex) });
+      }
+    }
+    const real = [];
+    for (const definition of combat.PRIME_SIGNATURES_V1) {
+      const worldType = definition.eligibleWorldTypes[0] ?? 'rocky';
+      let planetSeed = 1;
+      const selectedAt = (seed) => combat.projectTitanPlacementFactsV1({ planetSeed: seed, worldType, regionIndex: 5, claimedSignatureIds: [] })
+        .find((fact) => fact.signatureId === definition.id).selected;
+      while (!selectedAt(planetSeed)) planetSeed++;
+      const freeze = (o) => Object.freeze(o);
+      const world = registerCF1WorldAddressAuthority(freeze({
+        format: 'CF1', key: `CF1:recorded:${planetSeed}`,
+        galaxy: freeze({ seed: 0, x: 0, y: 0 }), star: freeze({ seed: 0, x: 0, y: 0 }), planet: freeze({ seed: planetSeed, ordinal: 0 }),
+      }));
+      for (const regionIndex of regionsAll.filter((r) => r >= definition.minimumRegionIndex)) {
+        const encounter = combat.projectGuardianPrimeEncounterV1({
+          world, descriptor: { worldType }, regionIndex, faunaRoster: [], claimedSignatureIds: [], conquered: false,
+        });
+        if (encounter?.defender.kind !== 'titan' || encounter.defender.signatureId !== definition.id) {
+          throw new Error(`titan ${definition.id} not selected at planet ${planetSeed} region ${regionIndex}`);
+        }
+        const defender = JSON.parse(JSON.stringify(encounter.defender));
+        const { battleGenome, capturableGenome, power } = titanBuild(planetSeed, definition, regionIndex);
+        if (JSON.stringify([battleGenome, capturableGenome, power]) !== JSON.stringify([defender.battleGenome, defender.capturableGenome, defender.power])) {
+          throw new Error(`titan ${definition.id}: the mirrored build differs from the real defender`);
+        }
+        real.push({ planetSeed, worldType, regionIndex, signatureId: definition.id, defender });
+      }
+    }
+
+    const levelEdges = [{ xp: 487 }, { xp: 600 }, { xp: 4200 }, { xp: -5 }, { nan: true }, { xp: '54' }, {}, { xp: 5.9 }, { xp: null }, { xp: 'abc' }]
+      .map((input) => ({ input, level: combat.levelOf(input.nan ? { xp: NaN } : 'xp' in input ? { xp: input.xp } : {}) }));
+
     return {
       constants: { STAT_NAMES: combat.STAT_NAMES, STAT_HUES: combat.STAT_HUES, ABILITY_THEMES: combat.ABILITY_THEMES, PLAYER_SEED: combat.PLAYER_SEED },
       levels: Array.from({ length: 487 }, (_, xp) => combat.levelOf({ xp })),
+      levelEdges,
       stats,
       duels,
       codes,
       badCodes,
       guardians,
+      titans: { mirrored, real },
     };
   },
 };
