@@ -27,11 +27,25 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, OWN_FAMILY_BY_BODY } = await import('@cf/art-recipe');
+const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
-const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
+/**
+ * The attach points a generated torso needs, by family: the points the parts of planBodyParts hang from on the torso
+ * (attachFor in the composer). A family no fauna genome routes to keeps the four-legged set. A torso also needs `wing`
+ * once the pack holds a `wing-<its torso type>` of its family and tier, and `wing1` once it holds a `hindwing-<torso type>`.
+ */
+export const TORSO_POINTS_BY_FAMILY = Object.freeze({
+  quadruped: ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'],
+  fish: ['head', 'tail', 'back'],
+  crustacean: ['head', 'tail', 'back'],
+  insect: ['head', 'back', 'far0', 'far1', 'far2', 'near0', 'near1', 'near2'],
+  tentacled: ['tail', 'back'],
+  serpent: ['eye0', 'back'],
+  gelatinous: ['back'],
+  radial: [],
+});
 const HEAD_POINTS = ['eye0', 'eye1', 'eye2', 'eye3', 'eye4', 'eye5', 'eye6', 'eye7'];
 /**
  * Every leg-count attach name the composer can ask a torso for, with its leg count: `far<i>_<n>` and `near<i>_<n>`
@@ -89,15 +103,21 @@ export const SAMPLED =
   'A named species is composed on its own scaffold in every pose it defines, once (no seeded choices), and its head is checked at the neck against its own torso only; ' +
   'its parts take no part in the sampling above.';
 
+/** The slots whose missing part is information: a back part, a head feature, a wing (or sails), a body feature. */
+const INFO_SLOTS = ['back', 'headFeature', 'farWings', 'nearWings', 'bodyFeature'];
+/** Whether a limb kind is a flipper: the shared `flipper` or a build's own `flipper-<torso type>`. */
+const isFlipper = (kind) => kind === 'flipper' || kind.startsWith('flipper-');
+
 /**
  * Whether a gap is information rather than an error: a missing variant (`variant:`), a frame with no layer for the
- * creature's pattern (`marks:`), a leg role drawn with the shared leg (`role:`), or a missing back part or head feature
- * (`missing:` of a part in slot back or headFeature). Every other gap is an error.
+ * creature's pattern (`marks:`), a leg role drawn with the shared leg (`role:`), a missing back part, head feature, wing,
+ * sails or body feature (`missing:` of a part in slot back, headFeature, farWings, nearWings or bodyFeature), or a
+ * missing flipper. Every other gap is an error, a missing `t0` tail or `pit` eye included.
  */
-function gapIsInfo(gap) {
+export function gapIsInfo(gap) {
   if (/^(variant|marks|role):/.test(gap)) return true;
-  const slot = /^missing:[^/]*\/([^/]*)\//.exec(gap)?.[1];
-  return slot === 'back' || slot === 'headFeature';
+  const m = /^missing:[^/]*\/([^/]*)\/([^/]*)\//.exec(gap);
+  return m !== null && (INFO_SLOTS.includes(m[1]) || isFlipper(m[2]));
 }
 
 const countBy = (items, key) => {
@@ -133,6 +153,39 @@ const STATE_GENES = { land: { loco: 0, habitat: 0 }, airborne: { loco: 3, habita
 const OWN_FAMILIES = new Set(Object.values(OWN_FAMILY_BY_BODY));
 /** The seeds shapedGenome tries, from 1. */
 const SHAPE_SEEDS = 64;
+
+/** Whether a part is in the wing slots or the body feature slot, or is a flipper: the parts NEW_KINDS names. */
+const isNewPart = (part) => part.slot === 'farWings' || part.slot === 'nearWings' || part.slot === 'bodyFeature' || ((part.slot === 'farLimbs' || part.slot === 'nearLimbs') && isFlipper(part.kind));
+
+/**
+ * The kinds a creature asks for in the wing slots and the body feature slot, and as flippers, each as
+ * `<family>/<slot>/<kind>`: read from planBodyParts over every route (state, body gene, shape), once with a pack that
+ * holds every part (the own kinds, `sails-<torso type>`) and once with a pack that holds none (the shared kinds a miss
+ * names, `sails`, `flipper`). The other genes change none of these parts.
+ */
+const NEW_KINDS = (() => {
+  const kinds = new Set();
+  const holdsAll = { parts: { has: () => true } };
+  const holdsNone = { parts: new Map() };
+  const variants = { torso: 0, head: 0, tail: 0, limb: 0 };
+  for (const stateGenes of Object.values(STATE_GENES)) {
+    for (let body = 0; body < 16; body++) {
+      const { shapes } = routeBody({ body, ...stateGenes });
+      for (let i = 0; i < shapes.length; i++) {
+        const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes }, () => (i + 0.5) / shapes.length);
+        const asked = [
+          ...planBodyParts(b, variants, () => () => 0, holdsAll).parts.map((p) => p.partId),
+          ...planBodyParts(b, variants, () => () => 0, holdsNone).gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)),
+        ];
+        for (const id of asked) {
+          const [family, slot, kind] = id.split('/');
+          if (isNewPart({ slot, kind })) kinds.add(`${family}/${slot}/${kind}`);
+        }
+      }
+    }
+  }
+  return kinds;
+})();
 
 /**
  * The states a routed scaffold `<family>/<torso>/<tier>` is sampled in, each with the first body gene (in gene order) that
@@ -492,10 +545,18 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
     }
     return lacks;
   };
+  // A wing slot's kinds by index: a winged torso type's WING_KINDS (`<wing>-<torso type>`); any other four-legged torso
+  // type's sails in nearWings at index 0 (its own `sails-<torso type>` when the pack holds it at v0, else the shared `sails`).
+  const winged = scaffold.family === 'quadruped' ? WING_KINDS[torsoKind] : undefined;
+  const wingKinds = (slot) => scaffold.family !== 'quadruped' ? []
+    : winged !== undefined ? winged.map((wing) => `${wing}-${torsoKind}`)
+      : slot === 'nearWings' ? [roleHeld(slot, `sails-${torsoKind}`) ? `sails-${torsoKind}` : 'sails'] : [];
   for (const slot of MARK_SLOTS) {
     const limb = slot === 'farLimbs' || slot === 'nearLimbs';
+    const wing = slot === 'farWings' || slot === 'nearWings';
+    const wings = wing ? wingKinds(slot) : [];
     for (const legs of LIMB_COUNTS) {
-      const indexes = limb ? sideCount(slot, legs) : 1;
+      const indexes = limb ? sideCount(slot, legs) : wing ? wings.length : 1;
       for (let index = 0; index < indexes; index++) {
         const role = limb ? limbKind(index, legs) : '';
         // a build's own legs (`<role>-<torso type>`) are drawn in place of the shared role
@@ -504,7 +565,8 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
           slot === 'torso' ? p.kind === torsoKind
             : slot === 'head' ? /^h\d$/.test(p.kind)
               : slot === 'tail' ? /^t[1-6]$/.test(p.kind)
-                : kinds !== null && kinds.includes(p.kind))); // a wing: no creature asks for one yet
+                : wing ? p.kind === wings[index]
+                  : kinds !== null && kinds.includes(p.kind)));
         if (parts.length === 0) continue;
         for (const pose of Object.values(scaffold.poses)) {
           const entry = poseEntryFor(pose.entries, slot, index, legs);
@@ -520,7 +582,8 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
 }
 
 /**
- * Problems a reader can see without composing: attach points (head kind hN needs `feature` once the pack has a head
+ * Problems a reader can see without composing: attach points (a generated torso needs its family's points and its wing
+ * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
  * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
  * but not all), species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
@@ -530,6 +593,13 @@ function structureProblems(catalogue) {
   const problems = [];
   const fallbackParts = new Set(catalogue.fallbacks.values());
   const featured = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'headFeature' && p.kind.includes('-')).map((p) => `${p.family}/${p.tier}/${p.kind.slice(p.kind.lastIndexOf('-') + 1)}`));
+  const wingParts = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'farWings' || p.slot === 'nearWings').map((p) => `${p.family}/${p.tier}/${p.kind}`));
+  /** The points a generated torso needs: its family's (TORSO_POINTS_BY_FAMILY), `wing` and `wing1` once the pack holds its wings. */
+  const torsoPoints = (part) => [
+    ...(TORSO_POINTS_BY_FAMILY[part.family] ?? TORSO_POINTS_BY_FAMILY.quadruped),
+    ...(wingParts.has(`${part.family}/${part.tier}/wing-${part.kind}`) ? ['wing'] : []),
+    ...(wingParts.has(`${part.family}/${part.tier}/hindwing-${part.kind}`) ? ['wing1'] : []),
+  ];
   for (const part of catalogue.parts.values()) {
     const frames = Object.keys(part.frames);
     if (!MARK_SLOTS.includes(part.slot) && frames.some((name) => part.frames[name].layers !== undefined)) problems.push(`part ${part.id}: layers on a slot that takes no marks`);
@@ -549,7 +619,7 @@ function structureProblems(catalogue) {
     const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}/${part.kind}`) ? ['feature'] : [];
     const required = species !== undefined
       ? (part.slot === 'torso' ? ['head', ...(species.tail ? ['tail'] : []), ...speciesLegPoints(species.legs)] : part.slot === 'head' ? HEAD_POINTS.slice(0, species.eyes) : [])
-      : part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
+      : part.slot === 'torso' && !fallbackParts.has(part.id) ? torsoPoints(part) : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
     if (required.length === 0) continue;
     for (const name of frames) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));
@@ -663,8 +733,8 @@ function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, recipeFor, 
 /**
  * Checks one pack text. Pure: reads nothing, writes nothing.
  * A parser error ends the check. Otherwise: a summary, the distinct gaps met while composing the sampled
- * creatures of every scaffold (variant:, marks:, role: and a missing back part or head feature are information, see
- * gapIsInfo), creatures touching the canvas edge, creatures
+ * creatures of every scaffold (variant:, marks:, role: and a missing back part, head feature, wing, sails, body feature
+ * or flipper are information, see gapIsInfo), creatures touching the canvas edge, creatures
  * whose picture is not one 4-connected region (outline ignored), and structural problems.
  */
 export function checkPack(text) {
@@ -706,11 +776,19 @@ export function checkPack(text) {
     if (s === undefined || s.family !== part.family || s.tier !== part.tier) unreachable.push(`part ${part.id}: no creature asks for an eye named '${part.kind}' (eye, or the key of a species of this family and tier)`);
   }
   for (const part of catalogue.parts.values()) {
-    if (part.slot !== 'farLimbs' && part.slot !== 'nearLimbs') continue;
+    if ((part.slot !== 'farLimbs' && part.slot !== 'nearLimbs') || isFlipper(part.kind)) continue;
     const [role, ...rest] = part.kind.split('-');
     const type = rest.join('-');
     const named = part.kind === 'leg' || ((role === 'fore' || role === 'hind' || role === 'mid') && (rest.length === 0 || catalogue.scaffolds.has(`${part.family}/${type}/${part.tier}`)));
     if (!named) unreachable.push(`part ${part.id}: no creature asks for a leg named '${part.kind}' (leg, fore, hind, mid, or one of those with -<torso type> for a torso type that has a scaffold at this tier)`);
+  }
+  // A wing, sails, body feature or flipper is asked for by the kind planBodyParts names (NEW_KINDS); one named for a torso
+  // type or fish shape (`<kind>-<type>`) only where that type has a scaffold at its tier.
+  for (const part of catalogue.parts.values()) {
+    if (!isNewPart(part)) continue;
+    const type = part.kind.includes('-') ? part.kind.slice(part.kind.indexOf('-') + 1) : null;
+    const named = NEW_KINDS.has(`${part.family}/${part.slot}/${part.kind}`) && (type === null || catalogue.scaffolds.has(`${part.family}/${type}/${part.tier}`));
+    if (!named) unreachable.push(`part ${part.id}: no creature asks for a ${part.slot} part named '${part.kind}'`);
   }
 
   // A species is drawn on scaffold <family>/<key>/<tier>; without it the species is never drawn.

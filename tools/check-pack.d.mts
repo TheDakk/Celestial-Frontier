@@ -10,7 +10,7 @@ export interface CheckedCreature {
 }
 export interface DetachedCreature extends CheckedCreature {
   shift: { head: readonly [number, number]; tail: readonly [number, number] };
-  /** Slots drawn outside the body's 4-connected region (torso, tail, farLimbs, nearLimbs, head, eyes, back, headFeature, glow). */
+  /** Slots drawn outside the body's 4-connected region (farWings, farLimbs, tail, torso, bodyFeature, back, nearWings, nearLimbs, head, headFeature, eyes, glow). */
   off: string[];
 }
 export interface HiddenPart extends CheckedCreature {
@@ -54,8 +54,9 @@ export interface PackReport {
   /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points). */
   variants: number;
   /**
-   * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information:
-   * `variant:`, `marks:`, `role:`, and `missing:` of a part in slot back or headFeature; every other gap is an error.
+   * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information
+   * (gapIsInfo): `variant:`, `marks:`, `role:`, and `missing:` of a part in slot back, headFeature, farWings, nearWings or
+   * bodyFeature, or of a flipper (`flipper`, `flipper-<torso type>`); every other gap is an error, a missing `t0` or `pit` included.
    * A `marks:` gap with count 0 (printed x0) was met by no sampled creature: it is read from the catalogue, for a frame
    * some pose can show at some leg count with no layer serving some pattern.
    */
@@ -76,6 +77,10 @@ export interface PackReport {
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;
 export const HIDDEN_MIN: number;
+/** The attach points a generated torso needs, by family; a family not listed needs the quadruped's. Plus `wing` and `wing1` once the pack holds the torso type's wings. */
+export const TORSO_POINTS_BY_FAMILY: Readonly<Record<string, readonly string[]>>;
+/** Whether a gap is information rather than an error (see PackReport.gaps). */
+export function gapIsInfo(gap: string): boolean;
 /** For a picture assembled from the label catalogue (pixel value = slot label); null when it is one 4-connected region. */
 export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array }): string[] | null;
 export function checkPack(text: string): PackReport;
