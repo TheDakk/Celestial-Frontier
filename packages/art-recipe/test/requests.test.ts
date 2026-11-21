@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { BACK_KIND_BY_SKIN, bodyFeatureKind, HEAD_FEATURE_BY_TORSO, limbKind, planBodyParts, planParts, WING_KINDS } from '../src/requests';
+import { BACK_KIND_BY_SKIN, bodyFeatureKind, HEAD_FEATURE_BY_TORSO, headFeatureKinds, limbKind, planBodyParts, planParts, WING_KINDS } from '../src/requests';
 import { resolveAnatomy } from '../src/resolve';
 import { resolveBody, type Body } from '../src/route';
 import { RENDERER_VERSION } from '../src/recipe';
@@ -266,7 +266,7 @@ describe('planBodyParts', () => {
     const [far6, near6] = legs('insect', ['fore', 'hind', 'mid']);
     const rows: readonly (readonly [string, Body, readonly string[]])[] = [
       ['quadruped sturdy', body({ body: 0 }), [...far8!, id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'sturdy'), ...near8!, id('quadruped', 'head', 'h5'), ...eyes('quadruped', 4)]],
-      ['quadruped tusked', body({ body: 10, limbs: 5 }), [id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'tusked'), id('quadruped', 'head', 'h5'), id('quadruped', 'headFeature', 'tusks-h5'), ...eyes('quadruped', 4)]],
+      ['quadruped tusked', body({ body: 10, limbs: 5 }), [id('quadruped', 'tail', 't3'), id('quadruped', 'torso', 'tusked'), id('quadruped', 'head', 'h5'), id('quadruped', 'headFeature', 'tusks-h5'), id('quadruped', 'headFeature', 'hornlet-h5'), ...eyes('quadruped', 4)]],
       ...['fusiform', 'shark', 'flat', 'angler'].map((shape, i) => [`fish ${shape}`, body({ body: 0, loco: 4 }, i, 4),
         [id('fish', 'tail', 't3'), id('fish', 'torso', shape), id('fish', 'head', 'h5'), ...eyes('fish', 4)]] as const),
       ['crustacean crab', body({ body: 1 }, 0, 2), [id('crustacean', 'tail', 't3'), id('crustacean', 'torso', 'crab'), id('crustacean', 'head', 'h5')]],
@@ -454,6 +454,85 @@ describe('planBodyParts', () => {
       expect(plan(body({ body: 14, loco: 4, pattern: 3 })).parts.find((p) => p.slot === 'bodyFeature')!.mark).toBeUndefined();
       // Unpatterned, nothing is marked.
       expect(plan(body({ body: 14, loco: 4 })).parts.filter((p) => p.mark !== undefined)).toEqual([]);
+    });
+  });
+
+  describe('head features', () => {
+    /** A catalogue that holds every part id except those `skip` matches. */
+    const holding = (skip: RegExp = /^$/): Catalogue => ({ ...catalogueOf([]), parts: { has: (x: string) => !skip.test(x) } as unknown as Catalogue['parts'] });
+    /** `headFeature<index> <part id>` for every head feature asked for; every other part is held, so there is no gap. */
+    const features = (genes: Record<string, unknown>, shape = 0, of = 1): string[] => {
+      const r = planBodyParts(body(genes), V0, stream, holding());
+      expect(r.gaps, JSON.stringify(genes)).toEqual([]);
+      return r.parts.filter((p) => p.slot === 'headFeature').map((p) => `headFeature${p.index} ${p.partId}`);
+    };
+    const hf = (family: string, index: number, kind: string): string => `headFeature${index} ${partId(family, 'headFeature', kind, 'medium', 0)}`;
+
+    it('a tusked land body asks for tusks and a hornlet', () => {
+      expect(features({ body: 10, head: 8 })).toEqual([hf('quadruped', 0, 'tusks-h8'), hf('quadruped', 1, 'hornlet-h8')]);
+    });
+
+    it('a tusked body with a crested head, a horned head or crystal antlers asks for a full horn', () => {
+      for (const [head, trait] of [[3, 0], [6, 0], [8, 11]] as const) {
+        expect(features({ body: 10, head, trait }), `head ${head} trait ${trait}`).toEqual([hf('quadruped', 0, `tusks-h${head}`), hf('quadruped', 1, `horns-h${head}`)]);
+      }
+    });
+
+    it('a horned body asks for one horn whatever its head', () => {
+      for (const head of [3, 8]) expect(features({ body: 11, head }), `head ${head}`).toEqual([hf('quadruped', 0, `horns-h${head}`)]);
+      expect(features({ body: 11, head: 6, trait: 11 })).toEqual([hf('quadruped', 0, 'horns-h6')]);
+    });
+
+    it('heads 3 and 6 and trait 11 give any other quadruped a horn', () => {
+      for (const b of [0, 2, 6, 7, 8, 12, 13, 14]) {
+        for (const [head, trait] of [[3, 0], [6, 0], [0, 11]] as const) {
+          expect(features({ body: b, head, trait }), `body ${b} head ${head} trait ${trait}`).toEqual([hf('quadruped', 0, `horns-h${head}`)]);
+        }
+      }
+      // A winged body in water is still four-legged, and the original still draws its horn.
+      expect(features({ body: 7, loco: 4, head: 6 })).toEqual([hf('quadruped', 0, 'horns-h6')]);
+    });
+
+    it('head 0 without trait 11 gives none', () => {
+      for (const b of [0, 2, 7, 14]) {
+        for (const trait of [0, 4, 15, 24]) expect(features({ body: b, head: 0, trait }), `body ${b} trait ${trait}`).toEqual([]);
+      }
+    });
+
+    it('a fish keeps its tusks or its horn', () => {
+      for (const shape of [0, 1]) {
+        expect(features({ body: 10, loco: 4, head: 8 }, shape, 2), `tusks, shape ${shape}`).toEqual([hf('fish', 0, 'tusks-h8')]);
+        expect(features({ body: 11, loco: 4, head: 8 }, shape, 2), `horn, shape ${shape}`).toEqual([hf('fish', 0, 'horns-h8')]);
+      }
+      // A fish draws no head-kind or trait horn (the original draws it on the four-legged body only), and only one kept horn.
+      expect(features({ body: 10, loco: 4, head: 6, trait: 11 }, 0, 2)).toEqual([hf('fish', 0, 'tusks-h6')]);
+      expect(features({ body: 11, loco: 4, head: 3, trait: 11 }, 0, 2)).toEqual([hf('fish', 0, 'horns-h3')]);
+      for (const shape of [0, 1, 2, 3]) expect(features({ body: 0, loco: 4, head: 3, trait: 11 }, shape, 4), `shape ${shape}`).toEqual([]);
+    });
+
+    it('an insect or a crab with head 6 has no head feature', () => {
+      for (const trait of [0, 11]) {
+        for (const shape of [0, 1, 2]) expect(features({ body: 5, head: 6, trait }, shape, 3), `insect ${shape} trait ${trait}`).toEqual([]);
+        for (const shape of [0, 1]) expect(features({ body: 1, head: 6, trait }, shape, 2), `crustacean ${shape} trait ${trait}`).toEqual([]);
+      }
+    });
+
+    it('a missing second feature is one missing: gap and changes no other part', () => {
+      const b = body({ body: 10, head: 8 });
+      const full = planBodyParts(b, V0, stream, holding());
+      const lacking = planBodyParts(b, V0, stream, holding(/hornlet/));
+      expect(lacking.gaps).toEqual([`missing:${partId('quadruped', 'headFeature', 'hornlet-h8', 'medium', 0)}`]);
+      expect(lacking.parts).toEqual(full.parts.filter((p) => !(p.slot === 'headFeature' && p.index === 1)));
+      expect(full.parts.length - lacking.parts.length).toBe(1);
+    });
+
+    it('headFeatureKinds names the kinds in head-feature index order', () => {
+      expect(headFeatureKinds(body({ body: 10, head: 8 }))).toEqual(['tusks-h8', 'hornlet-h8']);
+      expect(headFeatureKinds(body({ body: 10, head: 3 }))).toEqual(['tusks-h3', 'horns-h3']);
+      expect(headFeatureKinds(body({ body: 11, head: 5 }))).toEqual(['horns-h5']);
+      expect(headFeatureKinds(body({ body: 0, head: 5 }))).toEqual([]);
+      expect(headFeatureKinds(body({ body: 9 }))).toEqual([]);
+      expect(headFeatureKinds(body({ kingdom: 'flora' }))).toEqual([]);
     });
   });
 });

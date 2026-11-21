@@ -52,6 +52,26 @@ export function bodyFeatureKind(b: Body): string | null {
   return null;
 }
 
+/**
+ * The head features a body carries, as kinds in head-feature index order (hdart.verbatim.js:207-208, 1774-1777,
+ * 1825-1832, 2146-2158). A tusked quadruped: `tusks-h<n>`, then `horns-h<n>` when its head kind or trait carries a
+ * horn, else `hornlet-h<n>` (the original's one horn per creature, at its smallest). A horned quadruped, or any other
+ * quadruped with `horn`: `horns-h<n>`. A fish keeping its tusks or its horn: `tusks-h<n>` or `horns-h<n>`. Else none.
+ */
+export function headFeatureKinds(b: Body): string[] {
+  if (b.head === null) return [];
+  const h = `h${b.head}`;
+  if (b.family === 'quadruped') {
+    if (b.torso === 'tusked') return [`tusks-${h}`, b.horn ? `horns-${h}` : `hornlet-${h}`];
+    if (b.torso === 'horned' || b.horn) return [`horns-${h}`];
+  }
+  if (b.family === 'fish') {
+    if (b.keeps === 'tusks') return [`tusks-${h}`];
+    if (b.keeps === 'horn') return [`horns-${h}`];
+  }
+  return [];
+}
+
 /** A wanted part; `shared` is the kind tried at v0 when `kind` is not held (no gap on the way; a miss names `shared`). */
 interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean; at?: RecipePart['at']; shared?: string }
 
@@ -150,7 +170,8 @@ const NO_BACK_FAMILY = 'radial';
 /**
  * The parts a fauna body asks for (resolveBody), in DRAW_ORDER then index, and the gaps met on the way; every other
  * kingdom asks for none. As planParts for the leg roles (`limbs` legs, the shape's own legs first), the torso, the
- * skin's back part on the torso kind (none on a radial), the torso type's head feature and the marks. Head `h<head>`
+ * skin's back part on the torso kind (none on a radial), the head features (headFeatureKinds, at index 0 and 1, all
+ * hung from the head's `feature` point) and the marks. Head `h<head>`
  * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null, `eye`
  * at 0 to `eyes - 1`, two `pit` parts when `eyes` is 0; a body without a head part places them on its torso (`at`).
  * A winged build asks for its WING_KINDS at each wing index in both wing slots, and, aquatic, for two `flipper-<torso>`
@@ -176,10 +197,8 @@ export function planBodyParts(
   if (back !== null && b.family !== NO_BACK_FAMILY) wanted.push({ slot: 'back', index: 0, kind: `${back}-${torsoKind}`, variant: 0, limb: false });
   if (b.head !== null) {
     wanted.push({ slot: 'head', index: 0, kind: `h${b.head}`, variant: variants.head, limb: false });
-    if (Object.hasOwn(HEAD_FEATURE_BY_TORSO, b.torso)) {
-      wanted.push({ slot: 'headFeature', index: 0, kind: `${HEAD_FEATURE_BY_TORSO[b.torso]}-h${b.head}`, variant: 0, limb: false });
-    }
   }
+  headFeatureKinds(b).forEach((kind, i) => wanted.push({ slot: 'headFeature', index: i, kind, variant: 0, limb: false }));
   const wings = WING_KINDS[b.torso];
   if (b.family === 'quadruped' && wings !== undefined) {
     wings.forEach((wing, i) => {
