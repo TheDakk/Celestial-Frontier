@@ -1,4 +1,4 @@
-import type { Catalogue, PartFrame, Pose, SlotName } from '@cf/art-format';
+import type { Catalogue, PartFrame, Pose, Scaffold, SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
 
@@ -37,10 +37,16 @@ function attachFor(slot: SlotName, index: number): { name: string; onHead: boole
  * except a pose the scaffold does not hold.
  */
 export function assemble(recipe: Recipe, poseId: string, catalogue: Catalogue): Assembly {
+  const { buffer, contact, gaps } = assembleWithScaffold(recipe, poseId, catalogue);
+  return { buffer, contact, gaps };
+}
+
+/** `assemble`, plus the scaffold it looked up (undefined when the catalogue has none), for `compose`. Internal: not re-exported. */
+export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: Catalogue): Assembly & { scaffold: Scaffold | undefined } {
   const buffer = createBuffer(recipe.tier);
   const gaps: string[] = [...recipe.gaps];
   const scaffold = catalogue.scaffolds.get(recipe.scaffoldId);
-  if (scaffold === undefined) return { buffer, contact: null, gaps: [...gaps, `scaffold:${recipe.scaffoldId}`] };
+  if (scaffold === undefined) return { buffer, contact: null, gaps: [...gaps, `scaffold:${recipe.scaffoldId}`], scaffold };
   if (!Object.hasOwn(scaffold.poses, poseId)) throw new Error(`scaffold ${scaffold.id} has no pose ${poseId}`);
   const pose = scaffold.poses[poseId] as Pose;
 
@@ -95,5 +101,5 @@ export function assemble(recipe: Recipe, poseId: string, catalogue: Catalogue): 
     gaps.push(...p.gaps);
     if (p.frame !== undefined) blit(buffer, p.frame, p.x, p.y);
   }
-  return { buffer, contact: pose.contact ?? null, gaps };
+  return { buffer, contact: pose.contact ?? null, gaps, scaffold };
 }

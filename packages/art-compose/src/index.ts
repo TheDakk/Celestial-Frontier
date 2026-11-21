@@ -1,3 +1,4 @@
 export * from './buffer';
-export * from './assemble';
+export { assemble, type Assembly } from './assemble';
 export * from './finish';
+export * from './compose';

@@ -31,28 +31,27 @@ describe('finish', () => {
   it('lights only a ramp pixel whose up and left neighbours were both transparent, staying inside its ramp', () => {
     // Each column is two pixels tall: the top pixel qualifies for light only, the bottom pixel (value 1) for shade only.
     const b = createBuffer('small');
-    const tops = [1, 2, 3, 4, 5, 7, 8, 9, 11, 12];
+    const tops = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     tops.forEach((v, i) => blit(b, frameOf(1, 2, [v, 1]), 2 + 3 * i, 5));
     finish(b);
-    expect(tops.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual([2, 3, 4, 4, 6, 8, 8, 10, 12, 12]);
+    expect(tops.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual([2, 3, 4, 4, 6, 7, 8, 8, 10, 11, 12, 12]);
   });
 
   it('shades only a ramp pixel whose down neighbour was transparent, staying inside its ramp', () => {
     // The top pixel of each column (value 3) shields the bottom one from light.
     const b = createBuffer('small');
-    const bottoms = [1, 2, 4, 5, 6, 8, 9, 10, 12];
+    const bottoms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     bottoms.forEach((v, i) => blit(b, frameOf(1, 2, [3, v]), 2 + 3 * i, 5));
     finish(b);
-    expect(bottoms.map((_, i) => at(b, 2 + 3 * i, 6))).toEqual([1, 1, 3, 5, 5, 7, 9, 9, 11]);
+    expect(bottoms.map((_, i) => at(b, 2 + 3 * i, 6))).toEqual([1, 1, 2, 3, 5, 5, 6, 7, 9, 9, 10, 11]);
   });
 
-  it('a pixel that qualifies for both gets light then shade', () => {
+  it('a pixel that qualifies for both never changes, whatever its starting shade', () => {
     const b = createBuffer('small');
     const singles = [1, 2, 3, 4, 5, 8, 9, 12];
     singles.forEach((v, i) => blit(b, frameOf(1, 1, [v]), 2 + 3 * i, 5));
     finish(b);
-    // 1 -> 2 -> 1, 2 -> 3 -> 2, 3 -> 4 -> 3; a top-of-ramp 4 cannot rise, so it only falls: 4 -> 4 -> 3.
-    expect(singles.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual([1, 2, 3, 3, 5, 7, 9, 11]);
+    expect(singles.map((_, i) => at(b, 2 + 3 * i, 5))).toEqual(singles);
   });
 
   it('never changes 13, 14 or 15, but outlines them', () => {
@@ -183,13 +182,18 @@ describe('compose', () => {
     expect(r.gaps).toEqual(['attach:head', 'fallback:quadruped']);
   });
 
-  it('a missing scaffold composes the fallback at the canvas centre, using the first frame when there is no rest', () => {
-    const r = compose(recipeOf([['torso', 0, 'serpent/torso/coil/small/v0']], { family: 'serpent', tier: 'medium', scaffoldId: 'serpent/body/medium' }), 'rest', catalogue);
+  it('a missing scaffold composes the fallback at the canvas centre', () => {
+    const r = compose(recipeOf([['torso', 0, TORSO]], { tier: 'medium', scaffoldId: 'quadruped/sturdy/medium' }), 'rest', catalogue);
     expect([r.buffer.w, r.buffer.h]).toEqual([96, 64]);
-    expect(at(r.buffer, 48, 32)).toBe(6); // the wave frame (6, lit then shaded back); the wiggle frame would give 10
-    expect(count(r.buffer)).toBe(5);
+    // The quadruped fallback (anchor at its top-right pixel) at (48,32): x 47-48, y 32-33, finished.
+    expect(crop(r.buffer, 46, 31, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
     expect(r.contact).toBeNull();
-    expect(r.gaps).toEqual(['scaffold:serpent/body/medium', 'fallback:serpent']);
+    expect(r.gaps).toEqual(['scaffold:quadruped/sturdy/medium', 'fallback:quadruped']);
+  });
+
+  it('throws when the fallback part has no rest frame, like a missing entry or part', () => {
+    expect(() => compose(recipeOf([['torso', 0, 'serpent/torso/coil/small/v0']], { family: 'serpent', tier: 'medium', scaffoldId: 'serpent/body/medium' }), 'rest', catalogue))
+      .toThrow(new Error('no fallback for family serpent'));
   });
 
   it('throws the exact message when the family has no fallback, or its fallback part is not in the catalogue', () => {
