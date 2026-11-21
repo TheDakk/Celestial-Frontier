@@ -517,7 +517,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
 
   it('passes clean: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
     expect(r.parseError).toBeNull();
-    expect(r.summary).toMatchObject({ parts: 85, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 42, byTier: { medium: 40, small: 15, large: 15, guardian: 15 } });
+    expect(r.summary).toMatchObject({ parts: 153, scaffolds: 6, fallbacks: 60, colours: 16, ramps: 42, byTier: { medium: 108, small: 15, large: 15, guardian: 15 } });
     expect(r.structure).toEqual([]);
     expect(r.unreachable).toEqual([]);
     expect(r.failures).toEqual([]);

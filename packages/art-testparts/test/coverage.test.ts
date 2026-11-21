@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { EYE_COUNTS, TIER_SIZE, fallbackKey, type SizeTier } from '@cf/art-format';
-import { buildRecipe, EYELESS_HEAD, type Recipe } from '@cf/art-recipe';
+import { EYE_COUNTS, MARK_SLOTS, TIER_SIZE, VARIANTS, fallbackKey, type Catalogue, type Part, type SizeTier } from '@cf/art-format';
+import { artStream, buildRecipe, identityKey, pick, planParts, resolveAnatomy, EYELESS_HEAD, RENDERER_VERSION, type Recipe } from '@cf/art-recipe';
 import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { makeGenome } from '@cf/domain-genome';
@@ -259,5 +259,118 @@ describe('placeholder heads and tails can be seen', () => {
         if (d < 6) expect.fail(`body ${body} head ${head} ${pose} head shift ${s}: ${d} pixels`);
       }
     }
+  });
+});
+
+describe('format 2 placeholder parts', () => {
+  type G = ReturnType<typeof genome> & { pattern: number; skin: number };
+  const full = (body: number, head: number, tail: number, limbs: number, skin: number, pattern: number): G =>
+    ({ ...genome(body, head, tail, limbs, 3), skin, pattern });
+  /** The recipe buildRecipe makes, with the parts and part gaps planParts asks for (what the next task switches on). */
+  const planned = (g: G, catalogue: Catalogue = cat): { recipe: Recipe; gaps: string[] } => {
+    const stream = (name: string): (() => number) => artStream(identityKey(g, []), name, RENDERER_VERSION);
+    const variants = {
+      torso: pick(stream('torso-build'), VARIANTS.torso), head: pick(stream('head-variant'), VARIANTS.head),
+      tail: pick(stream('tail-variant'), VARIANTS.tail), limb: pick(stream('limb-style'), VARIANTS.limb),
+    };
+    const plan = planParts(resolveAnatomy(g), variants, stream, catalogue);
+    return { recipe: { ...buildRecipe(g, [], catalogue), parts: plan.parts, gaps: plan.gaps }, gaps: plan.gaps };
+  };
+  const fallbackIds = new Set(cat.fallbacks.values());
+  const markParts = [...cat.parts.values()].filter((p) => p.family === 'quadruped' && MARK_SLOTS.includes(p.slot) && !fallbackIds.has(p.id));
+  /** The catalogue with `edit` applied to every part: a copy, the shared catalogue is never changed. */
+  const editParts = (edit: (part: Part) => Part): Catalogue => ({ ...cat, parts: new Map([...cat.parts].map(([id, p]) => [id, edit(p)])) });
+  const withoutLayers = editParts((p) => ({ ...p, frames: Object.fromEntries(Object.entries(p.frames).map(([n, { layers: _drop, ...f }]) => [n, f])) }));
+
+  it('every frame of every torso, head, tail and limb part has flow and spots layers', () => {
+    // 6 torsos, 10 heads, 6 tails, the shared leg and three roles on each side.
+    expect(markParts.length).toBe(30);
+    for (const part of markParts) {
+      for (const [name, frame] of Object.entries(part.frames)) {
+        for (const layer of ['flow', 'spots'] as const) {
+          const grid = frame.layers?.[layer];
+          expect(grid?.some((v) => v !== 0), `${part.id} ${name} ${layer}`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it('planParts finds every part with no gap but variant:', () => {
+    let count = 0;
+    for (const body of QUADRUPED_BODIES) for (let skin = 0; skin < 9; skin++) for (let limbs = 0; limbs < 6; limbs++) for (const pattern of [0, 1]) for (let head = 0; head < 10; head++) {
+      const g = full(body, head, 1 + (head % 6), limbs, skin, pattern);
+      const bad = planned(g).gaps.filter((gap) => !gap.startsWith('variant:'));
+      count++;
+      if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
+    }
+    expect(count).toBe(6480);
+  });
+
+  it('a creature assembled from planParts composes every pattern with no marks: gap, and each of the seven differs from plain', () => {
+    for (const body of QUADRUPED_BODIES) for (const limbs of [0, 3, 4]) {
+      const plain = planned(full(body, 3, 1, limbs, 4, 0)).recipe;
+      for (const pose of POSES) {
+        const plainHash = compose(plain, pose, cat).hash;
+        const hashes = new Set<string>();
+        for (let pattern = 1; pattern < 8; pattern++) {
+          const { recipe } = planned(full(body, 3, 1, limbs, 4, pattern));
+          const where = `body ${body} limbs ${limbs} pattern ${pattern} ${pose}`;
+          expect(recipe.parts.filter((p) => p.mark !== undefined).length, where).toBeGreaterThan(0);
+          const out = compose(recipe, pose, cat);
+          expect(out.gaps.filter((gap) => gap.startsWith('marks:')), where).toEqual([]);
+          hashes.add(out.hash);
+          // The same creature unpainted: the marks themselves change the picture, not only the pattern gene's other streams.
+          expect(out.hash, where).not.toBe(compose({ ...recipe, marking: { ...recipe.marking, pattern: 0 } }, pose, cat).hash);
+          // Negative control: with every layer removed the painter has nothing to paint, says so, and draws the unpainted picture.
+          const bare = compose(recipe, pose, withoutLayers);
+          expect(bare.gaps.some((gap) => gap.startsWith('marks:')), where).toBe(true);
+          expect(bare.hash, where).toBe(compose({ ...recipe, marking: { ...recipe.marking, pattern: 0 } }, pose, withoutLayers).hash);
+        }
+        expect(hashes.has(plainHash), `body ${body} limbs ${limbs} ${pose}`).toBe(false);
+        expect(hashes.size, `body ${body} limbs ${limbs} ${pose}`).toBe(7);
+      }
+    }
+  });
+
+  it('the hand-drawn striped tail differs from the same tail painted from its guide layers', () => {
+    const T1 = 'quadruped/tail/t1/medium/v0';
+    expect(cat.parts.get(T1)!.frames['rest']!.layers?.striped).toBeDefined();
+    const guided = editParts((p) => {
+      if (p.id !== T1) return p;
+      const { striped: _drop, ...guides } = p.frames['rest']!.layers ?? {};
+      return { ...p, frames: { rest: { ...p.frames['rest']!, layers: guides } } };
+    });
+    expect(guided.parts.get(T1)!.frames['rest']!.layers?.striped).toBeUndefined();
+    for (const body of QUADRUPED_BODIES) {
+      const striped = planned(full(body, 3, 1, 3, 4, 1)).recipe;
+      expect(striped.parts.some((p) => p.partId === T1)).toBe(true);
+      for (const pose of POSES) expect(compose(striped, pose, guided).hash, `body ${body} ${pose}`).not.toBe(compose(striped, pose, cat).hash);
+      // Control: a banded tail reads only the guide layers, so removing the striped layer changes nothing.
+      const banded = planned(full(body, 3, 1, 3, 4, 3)).recipe;
+      expect(compose(banded, 'rest', guided).hash, `body ${body}`).toBe(compose(banded, 'rest', cat).hash);
+    }
+  });
+
+  it('back parts, head features and role legs stay inside the canvas in every pose', () => {
+    const inside = (recipe: Recipe, where: string): void => {
+      for (const pose of POSES) {
+        const { w, h, pixels } = compose(recipe, pose, cat).buffer;
+        for (let x = 0; x < w; x++) if (pixels[x] !== 0 || pixels[(h - 1) * w + x] !== 0) expect.fail(`edge touched ${where} ${pose}`);
+        for (let y = 0; y < h; y++) if (pixels[y * w] !== 0 || pixels[y * w + w - 1] !== 0) expect.fail(`edge touched ${where} ${pose}`);
+      }
+    };
+    const slots = new Set<string>();
+    for (const body of QUADRUPED_BODIES) {
+      for (let skin = 0; skin < 9; skin++) for (const head of [6, 7, 8]) {
+        const { recipe } = planned(full(body, head, 6, 3, skin, 0));
+        for (const p of recipe.parts) slots.add(p.slot);
+        inside(recipe, `body ${body} skin ${skin} head ${head}`);
+      }
+      for (let head = 0; head < 10; head++) for (let limbs = 0; limbs < 6; limbs++) {
+        const { recipe } = planned(full(body, head, 4, limbs, 0, 0));
+        inside(recipe, `body ${body} head ${head} limbs ${limbs}`);
+      }
+    }
+    expect([...slots].sort()).toEqual(['back', 'eyes', 'farLimbs', 'head', 'headFeature', 'nearLimbs', 'tail', 'torso']);
   });
 });
