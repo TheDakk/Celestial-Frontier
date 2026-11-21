@@ -12,13 +12,25 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const DEFAULT_BASELINE = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'fixtures', 'v1', 'baseline.json');
+
+/** The fixture's `fingerprint` object; errors name the file when it is missing, truncated or has no fingerprint. */
+export function loadBaseline(p: string = DEFAULT_BASELINE): Record<string, unknown> {
+  let raw: { fingerprint?: unknown } | null;
+  try {
+    raw = JSON.parse(fs.readFileSync(p, 'utf8')) as { fingerprint?: unknown } | null;
+  } catch (e) {
+    throw new Error('cannot load fixture ' + path.basename(p) + ': ' + (e as Error).message);
+  }
+  if (!raw || typeof raw.fingerprint !== 'object' || raw.fingerprint === null) {
+    throw new Error('fixture ' + path.basename(p) + ' has no fingerprint');
+  }
+  return raw.fingerprint as Record<string, unknown>;
+}
+
 let _fp: Record<string, unknown> | null = null;
 function fp(): Record<string, unknown> {
-  if (!_fp) {
-    const here = path.dirname(fileURLToPath(import.meta.url));
-    const p = path.join(here, '..', '..', 'fixtures', 'v1', 'baseline.json');
-    _fp = (JSON.parse(fs.readFileSync(p, 'utf8')) as { fingerprint: Record<string, unknown> }).fingerprint;
-  }
+  if (!_fp) _fp = loadBaseline();
   return _fp;
 }
 /** The stored form: a JSON string of the sanitized value (probe.js stringifies). */

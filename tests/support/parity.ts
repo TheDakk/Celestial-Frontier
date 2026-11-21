@@ -71,6 +71,13 @@ export interface ParityResult { name: string; cases: number; mismatches: Array<{
 export function checkGenerator(fx: GoldenFixture, name: string, fn: (seed: number) => unknown): ParityResult {
   const g = fx.generators[name];
   if (!g) throw new Error('fixture has no generator ' + name);
+  if (!(g.cases >= 1)) throw new Error('fixture generator ' + name + ' records no cases');
+  if (!Array.isArray(g.perSeed) || g.perSeed.length !== g.cases) {
+    throw new Error('fixture generator ' + name + ' has ' + (g.perSeed?.length ?? 0) + ' per-seed hashes for ' + g.cases + ' cases');
+  }
+  if (fx.seeds.length < g.cases) {
+    throw new Error('fixture has ' + fx.seeds.length + ' seeds, fewer than the ' + g.cases + ' cases of generator ' + name);
+  }
   const mismatches: ParityResult['mismatches'] = [];
   let roll = '';
   for (let i = 0; i < g.cases; i++) {
