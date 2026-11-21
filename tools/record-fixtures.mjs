@@ -359,6 +359,178 @@ const recorders = {
       cases: rows,
     };
   },
+  // Survey cards through describePickWithState, the card router the app calls, with the hooks installed
+  // the way the game installs them. Sections in order: the pick kinds nothing else pins (quasar, radio,
+  // comet, deco, dwarf, snova, protostar), one pick of every other kind (routing), the custom-name
+  // lookup, and the null-card branches. Each input is a pick, a navigation state, optionally a table of
+  // custom names and, for planet picks, the epoch set as COSMIC_EPOCH around the call, as the app sets
+  // it. Inputs are built from the current game's own generators, cloned through JSON, then recorded
+  // beside the card and the keys the router looked up.
+  'descriptors-misc': async (source) => {
+    const NAMES = ['_cardFactsSet', '_earthNamePass', 'GAL_KIND', 'planetThumb', 'starThumb', 'galaxyThumb',
+      'moonThumb', 'cometThumb', 'beltThumb', 'GAL_SPRITES', 'COSMIC_EPOCH', 'st', 'customNames'];
+    for (const name of NAMES) if (name in globalThis) throw new Error(`descriptors-misc: ${name} must not be defined before recording`);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const d = await load('packages/domain/descriptors/src/index.ts');
+    const w = await load('packages/domain/worldgen/src/index.ts');
+    const { GCELL, GR, HOME_GAL_SEED } = await load('packages/domain/worldconfig/src/index.ts');
+    d.installCaptureHooks();
+    const plain = (value) => JSON.parse(JSON.stringify(value));
+    const take = (list, n) => list.slice(0, n);
+
+    const home = plain(w.galaxiesInCell(0, -1).find((g) => g.seed === HOME_GAL_SEED));
+    const merging = plain(w.galaxiesInCell(-6, 4)[0]);
+
+    // Quasars (with and without a blazar jet) and radio galaxies, scanning cells in a fixed order.
+    const blazars = [], quasars = [], radios = [];
+    for (let cy = -30; cy <= 30; cy++) {
+      for (let cx = -30; cx <= 30; cx++) {
+        for (const g of w.galaxiesInCell(cx, cy)) {
+          if (g.quasar) (g.blazar ? blazars : quasars).push(plain(g));
+          if (g.radio) radios.push(plain(g));
+        }
+      }
+    }
+
+    // The home galaxy's stars and deep-sky objects, disk and halo, every kind of deco.
+    const prof = w.galaxyProfile(HOME_GAL_SEED);
+    const reach = Math.ceil((GR * 1.7) / GCELL);
+    const decoByKind = new Map();
+    const stars = [];
+    let solStar = null;
+    for (let cy = -reach; cy <= reach; cy++) {
+      for (let cx = -reach; cx <= reach; cx++) {
+        const cell = w.starsInCell(HOME_GAL_SEED, prof, cx, cy);
+        for (const dc of cell.deco) {
+          const list = decoByKind.get(dc.k) ?? [];
+          if (list.length < 2) list.push(plain(dc));
+          decoByKind.set(dc.k, list);
+        }
+        for (const s of cell.stars) {
+          if (s.sol) solStar = { x: s.x, y: s.y, seed: s.seed };
+          else if (stars.length < 400) stars.push(plain(s));
+        }
+      }
+    }
+    const DECO_KINDS = ['h2', 'neb', 'mol', 'open', 'plan', 'rem', 'rogue', 'fbd', 'glob'];
+    for (const k of DECO_KINDS) if (!decoByKind.has(k)) throw new Error(`descriptors-misc: no ${k} deco found`);
+    if (!solStar || solStar.seed !== 424242) throw new Error('descriptors-misc: Sol not found in the home galaxy');
+    const starRef = (s) => ({ x: s.x, y: s.y, seed: s.seed });
+
+    // Star systems with comets and dwarf planets: Sol, then the first home-galaxy stars that have them.
+    const withComets = stars.filter((s) => w.systemFor(s.seed).comets);
+    const withDwarfs = stars.filter((s) => w.systemFor(s.seed).dwarfs);
+    const twoComets = withComets.find((s) => w.systemFor(s.seed).comets.length === 2);
+    const twoDwarfs = withDwarfs.find((s) => w.systemFor(s.seed).dwarfs.length === 2);
+    if (!twoComets || !twoDwarfs) throw new Error('descriptors-misc: no system with two comets or two dwarfs');
+    const cometStars = [solStar, ...take(withComets.filter((s) => s !== twoComets), 3).map(starRef), starRef(twoComets)];
+    const dwarfStars = [solStar, ...take(withDwarfs.filter((s) => s !== twoDwarfs), 3).map(starRef), starRef(twoDwarfs)];
+
+    // Supernova sites and their newborn protostars, for two galaxies at three epochs.
+    const sites = [];
+    for (const g of [home, merging]) for (const epoch of [0, 1, 12]) sites.push(...plain(w.supernovaSites(g.seed, epoch)).map((site) => ({ g, site })));
+    for (const remnant of ['NS', 'shell', 'BH']) if (!sites.some(({ site }) => site.remnant === remnant)) throw new Error(`descriptors-misc: no ${remnant} site`);
+    const births = sites.flatMap(({ g, site }) => site.births.map((b) => ({ g, b })));
+
+    const galaxyNav = (g) => ({ gal: g, star: null });
+    const starNav = (g, star) => ({ gal: g, star });
+    const sections = {
+      quasar: [...take(blazars, 3), ...take(quasars, 3)].map((g) => ({ pick: { kind: 'quasar', data: g }, nav: galaxyNav(null) })),
+      radio: take(radios, 5).map((g) => ({ pick: { kind: 'radio', data: g }, nav: galaxyNav(null) })),
+      comet: cometStars.flatMap((star) => w.systemFor(star.seed).comets.map((cm, ci) => ({ pick: { kind: 'comet', data: { ci, cm } }, nav: starNav(home, star) }))),
+      deco: DECO_KINDS.flatMap((k) => decoByKind.get(k)).map((dc, i) => ({ pick: { kind: 'deco', data: dc }, nav: i % 2 ? galaxyNav(home) : starNav(home, starRef(stars[i])) })),
+      dwarf: dwarfStars.flatMap((star) => w.systemFor(star.seed).dwarfs.map((dw) => ({ pick: { kind: 'dwarf', data: { dw } }, nav: starNav(home, star) }))),
+      snova: sites.map(({ g, site }) => ({ pick: { kind: 'snova', data: site }, nav: galaxyNav(g) })),
+      protostar: take(births, 10).map(({ g, b }) => ({ pick: { kind: 'protostar', data: b }, nav: galaxyNav(g) })),
+    };
+
+    // One pick of every other kind, through the router, so its `where` and `_nameKey` are pinned too.
+    const sol = plain(w.systemFor(424242));
+    const earth = sol.planets.find((pl) => pl.P.seed === 133);
+    const mars = sol.planets.find((pl) => pl.P.seed === 134);
+    const planetPick = (pl) => ({ kind: 'planet', data: { P: pl.P, sys: sol, pl } });
+    const star0 = stars[0];
+    const solNav = starNav(home, solStar);
+    sections.routing = [
+      { pick: { kind: 'galaxy', data: merging }, nav: galaxyNav(null) },
+      { pick: { kind: 'galaxy', data: home }, nav: galaxyNav(home) },
+      { pick: { kind: 'star', data: star0 }, nav: galaxyNav(home) },
+      { pick: { kind: 'starsys', data: { seed: 424242 } }, nav: solNav },
+      ...[0, 12].map((epoch) => ({ pick: planetPick(earth), nav: solNav, epoch })),
+      { pick: planetPick(mars), nav: solNav, epoch: 0 },
+      { pick: { kind: 'moon', data: { pl: earth, m: 0 } }, nav: solNav },
+      { pick: { kind: 'belt', data: { sys: sol } }, nav: solNav },
+      { pick: { kind: 'belt', data: { sys: plain(w.systemFor(star0.seed)) } }, nav: starNav(home, starRef(star0)) },
+      { pick: { kind: 'worm', data: { x: 1, y: 2 } }, nav: galaxyNav(home) },
+      { pick: { kind: 'kuiper', data: { sys: sol } }, nav: solNav },
+      { pick: { kind: 'oort', data: {} }, nav: starNav(home, starRef(star0)) },
+      { pick: { kind: 'visitor', data: {} }, nav: starNav(merging, starRef(star0)) },
+      { pick: { kind: 'cmb', data: {} }, nav: galaxyNav(null) },
+    ];
+
+    // The custom-name lookup: a hit renames the card; null, a missing key, or no key at all do not.
+    const dwarf0 = w.systemFor(424242).dwarfs[0];
+    sections.customNames = [
+      { pick: { kind: 'galaxy', data: merging }, nav: galaxyNav(null), names: { [`g${merging.seed}`]: 'Bright Harbour' } },
+      { pick: { kind: 'star', data: star0 }, nav: galaxyNav(home), names: { [`s${star0.seed}`]: 'Lantern' } },
+      { pick: { kind: 'planet', data: { P: earth.P, sys: sol, pl: earth } }, nav: solNav, names: { p133: 'Home' }, epoch: 0 },
+      { pick: { kind: 'moon', data: { pl: earth, m: 0 } }, nav: solNav, names: { p133: 'Home' } },
+      { pick: { kind: 'dwarf', data: { dw: plain(dwarf0) } }, nav: solNav, names: { s424242: '' } },
+      { pick: { kind: 'deco', data: decoByKind.get('h2')[0] }, nav: galaxyNav(home), names: { [`g${HOME_GAL_SEED}`]: null } },
+      { pick: { kind: 'deco', data: decoByKind.get('neb')[0] }, nav: galaxyNav(null), names: { [`g${HOME_GAL_SEED}`]: 'Unused' } },
+      { pick: { kind: 'protostar', data: births[0].b }, nav: galaxyNav(home), names: { [`g${HOME_GAL_SEED}`]: 'Cradle' } },
+      { pick: { kind: 'cmb', data: {} }, nav: galaxyNav(null), names: { [`g${HOME_GAL_SEED}`]: 'Everything' } },
+      { pick: { kind: 'worm', data: {} }, nav: galaxyNav(home), names: { [`g${HOME_GAL_SEED}`]: 'Unused' } },
+    ];
+
+    // The null cards: a star-bound pick with no current star, a planet or moon pick without its planet,
+    // a bad star, an unknown deco, an unknown kind. These use a small system (planets, no rock rings).
+    const smallStar = stars.find((s) => { const sys = w.systemFor(s.seed); return sys.planets.length && !sys.belt && !sys.kuiper; });
+    const small = plain(w.systemFor(smallStar.seed));
+    const smallPlanet = { P: small.planets[0].P, sys: small, pl: small.planets[0] };
+    sections.nullCards = [
+      ...['starsys', 'comet', 'belt', 'dwarf', 'kuiper', 'oort', 'visitor'].map((kind) => ({
+        pick: { kind, data: { seed: smallStar.seed, ci: 0, cm: sol.comets[0], sys: small, dw: plain(dwarf0) } }, nav: galaxyNav(home),
+      })),
+      { pick: { kind: 'planet', data: smallPlanet }, nav: galaxyNav(home), epoch: 0 },
+      { pick: { kind: 'moon', data: { pl: small.planets[0], m: 0 } }, nav: { gal: home, star: { x: 1, y: 2, seed: 4.5 } } },
+      { pick: { kind: 'oort', data: {} }, nav: { gal: home, star: { x: null, y: 2, seed: 7 } } },
+      { pick: { kind: 'planet', data: { sys: small, pl: small.planets[0] } }, nav: starNav(home, starRef(smallStar)), epoch: 0 },
+      { pick: { kind: 'moon', data: { pl: { orb: 1 }, m: 0 } }, nav: solNav },
+      { pick: { kind: 'star', data: { x: 1, y: 2, seed: 1.5 } }, nav: galaxyNav(home) },
+      { pick: { kind: 'deco', data: { k: 'nothing', x: 1, y: 2 } }, nav: galaxyNav(home) },
+      { pick: { kind: 'nothing', data: {} }, nav: solNav },
+    ];
+
+    const run = (input) => {
+      const lookups = [];
+      const lookup = (key) => { lookups.push(key); return input.names ? input.names[key] : undefined; };
+      if (input.epoch !== undefined) globalThis.COSMIC_EPOCH = input.epoch;
+      try {
+        return { output: plain(d.describePickWithState(input.pick, input.nav, lookup) ?? null), lookups };
+      } finally {
+        delete globalThis.COSMIC_EPOCH;
+      }
+    };
+    const out = {};
+    for (const [name, inputs] of Object.entries(sections)) {
+      out[name] = inputs.map((raw) => {
+        const input = plain(raw);
+        return { input, ...run(structuredClone(input)) };
+      });
+    }
+    for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`descriptors-misc: ${name} was left defined`);
+
+    return {
+      freeGlobals: {
+        installCaptureHooks: 'called once before the first case: _cardFactsSet, _earthNamePass, GAL_KIND, the six thumb hooks (each returns "data:image/png;base64,") and GAL_SPRITES',
+        COSMIC_EPOCH: 'set to the case\'s epoch around each case that has one (planet picks), as the app sets it; deleted after',
+        st: 'not supplied: undefined, as in the app (the guarded read gives region boost 0)',
+        customNames: 'not supplied: the router takes a lookup instead, which returns names[key] from the case (undefined when the case has no names)',
+      },
+      sections: out,
+    };
+  },
 };
 
 function parseArgs(argv) {
