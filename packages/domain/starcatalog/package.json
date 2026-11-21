@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-starcatalog", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 4/14: stellar classification & the hand-authored Sol system. main.js @module StarCatalog (v1.8.9).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-worldconfig": "*" } }
