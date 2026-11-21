@@ -11,5 +11,6 @@ Reference documents from version 1 live on the `celestial-frontier-v1-reference`
 - Install: `npm install`
 - Test: `npm test`
 - Typecheck: `npm run typecheck`
+- Gate (clean-branch check, purity check, typecheck, tests; must pass before merging): `npm run gate`
 
 Working rules for contributors and agents are in `CLAUDE.md` and `AGENTS.md` at the repository root.

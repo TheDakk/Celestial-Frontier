@@ -1,5 +1,5 @@
 /* Shared parity machinery for checking ported modules against
-   port/baseline-v1.8.9/golden-seeds.json.
+   fixtures/v1/golden-seeds.json.
 
    ⚠ This file implements the fixture's OWN documented spec (its _comment block):
      canon: numbers -> non-finite String(v), else Math.round(v*1e9)/1e9;
@@ -7,9 +7,10 @@
      hash:  FNV-1a-32 run twice (bases 0x811c9dc5, 0x9e3779b9), 8 hex chars
             each, concatenated
      rollup: fold hash(roll + perSeed[i]) from ''
-   If this file and tools/goldenseeds-probe.js ever disagree, THE FIXTURE WINS —
-   the whole point is that the port reproduces recorded numbers, not that two
-   implementations agree with each other. */
+   If this file and the v1 game's golden-seed probe script (not on this
+   branch) ever disagree, THE FIXTURE WINS — the whole point is that the port
+   reproduces recorded numbers, not that two implementations agree with each
+   other. */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -1,12 +1,13 @@
-/* Second fixture source: tools/baseline.json — the 50-probe determinism
+/* Second fixture source: fixtures/v1/baseline.json — the 50-probe determinism
    fingerprint captured from v1.0 and held ever since. Where golden-seeds.json
    gives volume on sampled generators, baseline.json gives BREADTH: names,
    constants, descriptors, codecs.
 
-   Values in the fingerprint are SANITIZED (tools/probe.js san(): numbers
-   rounded to 1e-9, object keys sorted) and then JSON round-tripped. So parity
+   Values in the fingerprint are SANITIZED (san() in the v1 game's probe
+   script, not on this branch: numbers rounded to 1e-9, object keys sorted)
+   and then JSON round-tripped. So parity
    here is: san(ours) deep-equals stored — compared via canon() JSON strings.
-   ⚠ The recipes in each test MUST mirror tools/probe.js exactly; they are part
+   ⚠ The recipes in each test MUST mirror that probe script exactly; they are part
    of the fixture contract, same rule as the golden generator wrappers. */
 import fs from 'node:fs';
 import path from 'node:path';
