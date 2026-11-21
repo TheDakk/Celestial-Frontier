@@ -2,8 +2,8 @@
 // Usage: node tools/record-v1-fixtures.mjs --ref <folder holding celestial-frontier.html>
 //          [--source <path to the current game's v2 folder>] [--only <name>]
 // Writes fixtures/v1/recorded/<name>.json, one per test, named after the test. Neither path is
-// written to any output. --source is accepted for recorders that compare v1 text with a file in the
-// current game; none of the present recorders does, so it is not read.
+// written to any output. --source is read only by recorders that take a file from the current game
+// (descriptors-parity); the others ignore it.
 // Each recorder takes from v1 exactly what its test takes, located the way its test locates it, and
 // evaluates v1 code the way its test does. This tool is run by hand; no test imports it.
 import { createHash } from 'node:crypto';
@@ -221,16 +221,29 @@ export const recorders = {
       return { role, file, sha256: sha256(bytes), bytes: bytes.length };
     }),
   },
+  'descriptors-parity': {
+    test: 'packages/domain/descriptors/test/parity.test.ts',
+    kind: 'hash',
+    taken: 'SHA-256 and byte length of the two capture tools descriptor-fixtures.json names (capture.probeFile and capture.fakeCanvasFile), read from the current game and resolved from its baseline-v1.8.9 folder, as the test resolves them. Each case is named by that path and by the role whose <role>Sha256 field the fixture stores.',
+    record: ({ readSourceFile }) => [
+      ['probe', '../v2/tools/v189-descriptor-probe.js'],
+      ['fakeCanvas', '../../tools/fake2d.js'],
+    ].map(([role, file]) => {
+      const bytes = readSourceFile(join('..', 'baseline-v1.8.9', file));
+      return { role, file, sha256: sha256(bytes), bytes: bytes.length };
+    }),
+  },
 };
 
-/** Builds one fixture object from the v1 folder's files. `readV1File(relativePath)` returns a Buffer. */
-export function recordV1Fixture(name, readV1File) {
+/** Builds one fixture object from the v1 folder's files. `readV1File(relativePath)` returns a Buffer;
+    `readSourceFile(relativePath)` returns a Buffer from the current game's v2 folder. */
+export function recordV1Fixture(name, readV1File, readSourceFile = () => { throw new Error(`${name} needs --source`); }) {
   const recorder = recorders[name];
   if (!recorder) throw new Error(`no recorder named ${name}`);
   const htmlBytes = readV1File(GAME_HTML);
   const html = htmlBytes.toString('utf8');
   const script = extractTrackedV1Script(html);
-  const cases = recorder.record({ html, script, readV1File });
+  const cases = recorder.record({ html, script, readV1File, readSourceFile });
   return {
     kind: recorder.kind,
     source: `${GAME_HTML} sha256:${sha256(htmlBytes)} bytes:${htmlBytes.length}`,
@@ -261,7 +274,7 @@ function parseArgs(argv) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const { ref, only } = parseArgs(process.argv.slice(2));
+  const { ref, source, only } = parseArgs(process.argv.slice(2));
   const names = only === undefined ? Object.keys(recorders) : [only];
   if (!ref || names.some((name) => !recorders[name])) {
     console.error(`usage: node tools/record-v1-fixtures.mjs --ref <path> [--source <path>] [--only <${Object.keys(recorders).join('|')}>]`);
@@ -269,10 +282,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   const root = resolve(ref);
   const readV1File = (file) => readFileSync(join(root, file));
+  const readSourceFile = source === undefined ? undefined : (file) => readFileSync(join(resolve(source), file));
   const outDir = fileURLToPath(new URL('../fixtures/v1/recorded/', import.meta.url));
   mkdirSync(outDir, { recursive: true });
   for (const name of names) {
-    const fixture = recordV1Fixture(name, readV1File);
+    const fixture = recordV1Fixture(name, readV1File, readSourceFile);
     writeFileSync(join(outDir, `${name}.json`), serializeFixture(fixture));
     console.log(`recorded ${name}: ${fixture.kind}, ${fixture.cases.length} cases`);
   }

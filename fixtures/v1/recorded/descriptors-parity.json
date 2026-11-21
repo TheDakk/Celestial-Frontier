@@ -1,0 +1,11 @@
+{
+ "kind": "hash",
+ "source": "celestial-frontier.html sha256:ea1365a03ecbde83cbc02031fc14f0d1924b9c5733e06252cfd36234dbe5a7bc bytes:1964559",
+ "test": "packages/domain/descriptors/test/parity.test.ts",
+ "provenance": {"htmlSha256":"ea1365a03ecbde83cbc02031fc14f0d1924b9c5733e06252cfd36234dbe5a7bc","htmlBytes":1964559,"scriptSha256":"d6005549cb0645b520ac98d520183b1430c29878be45b0b481e98ad2f279aa73","scriptBytes":1679271},
+ "taken": "SHA-256 and byte length of the two capture tools descriptor-fixtures.json names (capture.probeFile and capture.fakeCanvasFile), read from the current game and resolved from its baseline-v1.8.9 folder, as the test resolves them. Each case is named by that path and by the role whose <role>Sha256 field the fixture stores.",
+ "cases": [
+  {"role":"probe","file":"../v2/tools/v189-descriptor-probe.js","sha256":"a7212fedda9e643467aec932cfcb03dbc4d04b9a8394b14e102ec5d4206d9503","bytes":3337},
+  {"role":"fakeCanvas","file":"../../tools/fake2d.js","sha256":"24a3155535d8f06b69e55e734d05fb2368743c94b1973dd4776f514f050fc662","bytes":2179}
+ ]
+}
