@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   navFromCanonicalCF1Address,
   resolveCF1StarAddress,
@@ -22,7 +22,6 @@ import {
   projectWorldOpportunity,
   type EngineeringStateV2,
 } from '../src/index.js';
-
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },

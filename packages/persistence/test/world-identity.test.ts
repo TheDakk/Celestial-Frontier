@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { galaxyProfile, starsInCell, systemFor } from '@cf/domain-worldgen';
 import { GCELL, GR, HOME_GAL_SEED, HOME_POS } from '@cf/domain-worldconfig';
 import { encodeWhere } from '@cf/domain-strays';
@@ -66,7 +66,6 @@ const COLLIDING_CANDIDATES = Object.freeze([
   }),
 ] as const);
 let sourceWorldFixture: readonly CanonicalCF1WorldAddress[] | null = null;
-
 
 function world(index: 0 | 1): CanonicalCF1WorldAddress {
   const resolved = resolveCF1WorldAddress(COLLIDING_CANDIDATES[index]);

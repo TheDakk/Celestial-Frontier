@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   MAX_OWNERSHIP_REVISION,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -43,7 +43,6 @@ import {
 } from '../src/index.js';
 
 type Legacy = Pick<SaveStateV2, 'EPOCH_BASE' | 'codex' | 'customNames' | 'bioX' | 'scoutId'>;
-
 
 function entry(
   id: string,

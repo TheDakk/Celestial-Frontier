@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { replayEconomyTrace } from '@cf/domain-loot';
 import {
   prepareArc2LootLegacyMigration,
@@ -25,7 +25,6 @@ import {
   projectStarOpportunity,
   projectWorldOpportunity,
 } from '@cf/domain-opportunity';
-
 
 const SOL = Object.freeze({
   galaxy: { seed: 999, x: 90, y: -60 },

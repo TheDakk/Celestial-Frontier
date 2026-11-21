@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   ENGINEERING_STATE_SCHEMA,
   SCENE_ENGINEERING_ADDRESS_RESOLVER,
@@ -21,7 +21,6 @@ import {
   type Arc3LegacyEngineeringPriorV4,
   type Arc3LegacyMinedTimestampIntent,
 } from '../src/index.js';
-
 
 const NOW = 1_753_900_060_000;
 const SOL = {

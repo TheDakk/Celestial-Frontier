@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   canonicalCF1WorldAtlasId,
   getCanonicalCF1AddressKey,
@@ -29,7 +29,6 @@ import {
 import { fineStarsInCell, galaxiesInCell, galaxyProfile, systemFor } from '@cf/domain-worldgen';
 import { FCELL } from '@cf/domain-worldgen';
 import { GCELL, HOME_GAL_SEED, HOME_POS, SOL_POS, SOL_SEED, UCELL } from '@cf/domain-worldconfig';
-
 
 const HOME_CANDIDATE = {
   galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },

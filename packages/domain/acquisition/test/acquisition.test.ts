@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
   OWNERSHIP_PROVENANCE_CAPABILITIES_V1,
@@ -28,7 +28,6 @@ import {
   type LegacyOwnershipInputV1,
   type SpecimenLotId,
 } from '../src/index.js';
-
 
 function input(): LegacyOwnershipInputV1 {
   const bond = {

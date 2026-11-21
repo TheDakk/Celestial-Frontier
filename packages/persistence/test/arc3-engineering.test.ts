@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   LEGACY_ENGINEERING_SEED_MIRROR_SCHEMA,
   MAX_ENGINEERING_REVISION,
@@ -55,7 +55,6 @@ const REGISTRY = JSON.parse(
 ) as ContentRegistry;
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
 const NOW = 1_753_900_060_000;
-
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },

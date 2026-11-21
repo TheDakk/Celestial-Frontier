@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalGenomeIdentityV1,
@@ -50,7 +50,6 @@ import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   createOwnershipSourceProjectionSuccessorV2,
 } from '../src/ownership-v2-internal.js';
-
 
 interface Fixture {
   readonly source: OwnershipStateV1;

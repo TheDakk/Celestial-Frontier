@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import {
   NAV_HOME,
   ascend,
@@ -30,7 +30,6 @@ import {
   type ProvenPlanet,
   type ProvenStar,
 } from '@cf/scene';
-
 
 const HOME_WORLD_CANDIDATE = {
   galaxy: { seed: 999, x: 90, y: -60 },

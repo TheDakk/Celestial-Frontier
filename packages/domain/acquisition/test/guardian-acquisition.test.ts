@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import {
   PRIME_SIGNATURE_IDS_V1,
@@ -30,7 +30,6 @@ import {
   isGuardianAcquisitionStateV1,
   prepareGuardianAcquisitionV1,
 } from '../src/guardian-acquisition.js';
-
 
 const CANDIDATES = Object.freeze({
   titan: Object.freeze({
