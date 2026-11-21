@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { parseCatalogueText } from '@cf/art-format';
 import type { SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe } from '@cf/art-recipe';
-import { assemble, type PixelBuffer } from '@cf/art-compose';
+import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 
@@ -480,5 +480,197 @@ entry torso 0 rest 0 0
     const r = assemble(recipeOf([['torso', 0, 'torso'], ['nearLimbs', 0, 'near']], { legs: 2 }), 'rest', only);
     expect(at(r.buffer, 11, 11)).toBe(6);
     expect(r.gaps).toEqual([]);
+  });
+});
+
+describe('assemble: marks', () => {
+  // The torso's rest frame has flow lines 1-4 along its length; its lunge frame has none.
+  // Its spots-only twin serves spotted but not striped. Each leg is a 1x2 spot.
+  const MARK_TEXT = HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=near0:1,1,near1:2,1,head:4,0,back:1,-1
+2222
+2222
+layer flow
+1234
+1234
+
+frame lunge anchor=0,0 attach=near0:1,1,near1:2,1
+2222
+2222
+
+part quadruped/torso/spotty/small/v0
+frame rest anchor=0,0
+2222
+2222
+layer spots
+11..
+11..
+
+part quadruped/nearLimbs/leg/small/v0
+frame rest anchor=0,0
+6
+6
+layer spots
+1
+1
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=eye0:1,0
+333
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+5d8
+layer flow
+111
+
+part quadruped/back/fin/small/v0
+frame rest anchor=0,0
+2
+layer flow
+1
+
+part quadruped/back/bare/small/v0
+frame rest anchor=0,0
+2
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+pose lunge
+entry torso 0 lunge 0 0
+pose hop
+entry torso 0 hop 0 0
+`;
+  const marked = parseCatalogueText(MARK_TEXT);
+  const TORSO_ID = 'quadruped/torso/sturdy/small/v0';
+  const SPOTTY_ID = 'quadruped/torso/spotty/small/v0';
+  const LEG_ID = 'quadruped/nearLimbs/leg/small/v0';
+  const ZERO = new Array<number>(15).fill(0);
+  type MarkedSpec = readonly [SlotName, number, string, { offset: number; rolls: readonly number[] } | undefined];
+  const markedRecipe = (parts: readonly MarkedSpec[], pattern: number, phase = 0): Recipe => recipeOf([], {
+    parts: parts.map(([slot, index, partId, mark]) => (mark === undefined ? { slot, index, partId, source: 'own' as const } : { slot, index, partId, source: 'own' as const, mark })),
+    marking: { pattern, strength: 2, phase },
+  });
+  const torsoRow = (b: PixelBuffer, y: number): number[] => [at(b, 10, y), at(b, 11, y), at(b, 12, y), at(b, 13, y)];
+
+  it('paints a part that carries a mark before stacking it', () => {
+    const r = assemble(markedRecipe([['torso', 0, TORSO_ID, { offset: 0, rolls: ZERO }]], 1), 'rest', marked);
+    expect(torsoRow(r.buffer, 10)).toEqual([5, 5, 2, 2]);
+    expect(torsoRow(r.buffer, 11)).toEqual([5, 5, 2, 2]);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('moves the stripes by the creature phase plus the part offset modulo the spread', () => {
+    // phase 13 + (4 % 3) = 14: flow 1 -> 14 % 5 = 4 (off), flow 2 -> 0 (on), flow 3 -> 1 (on), flow 4 -> 2 (off).
+    const r = assemble(markedRecipe([['torso', 0, TORSO_ID, { offset: 4, rolls: ZERO }]], 1, 13), 'rest', marked);
+    expect(torsoRow(r.buffer, 10)).toEqual([2, 5, 5, 2]);
+    // phase 14 + (2 % 3) = 16, which wraps to 1: flow 1 -> 1 (on), flow 2 -> 2 (off), flow 4 -> 4 (off).
+    const w = assemble(markedRecipe([['torso', 0, TORSO_ID, { offset: 2, rolls: ZERO }]], 1, 14), 'rest', marked);
+    expect(torsoRow(w.buffer, 10)).toEqual([5, 2, 2, 2]);
+  });
+
+  it('the same recipe with pattern 0 is unpainted', () => {
+    const r = assemble(markedRecipe([['torso', 0, TORSO_ID, { offset: 0, rolls: ZERO }]], 0), 'rest', marked);
+    expect(drawn(r.buffer)).toEqual(TORSO);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('a part without a mark is unpainted whatever the pattern', () => {
+    for (let pattern = 0; pattern < 8; pattern++) {
+      const r = assemble(markedRecipe([['torso', 0, TORSO_ID, undefined]], pattern), 'rest', marked);
+      expect(drawn(r.buffer)).toEqual(TORSO);
+      expect(r.gaps).toEqual([]);
+    }
+  });
+
+  it('today\'s recipes carry no mark, for every pattern gene', () => {
+    const base = { kingdom: 'fauna', body: 0, loco: 0, size: 0, head: 1, tail: 0, eyes: 0, limbs: 1, color: 0, accent: 0, lumin: false };
+    for (let pattern = 0; pattern < 8; pattern++) {
+      const recipe = buildRecipe({ ...base, pattern }, [], catalogue);
+      expect(recipe.parts.length).toBeGreaterThan(0);
+      expect(recipe.parts.filter((p) => p.mark !== undefined)).toEqual([]);
+    }
+  });
+
+  it('marks are covered by whatever covers the part', () => {
+    const r = assemble(markedRecipe([['torso', 0, TORSO_ID, { offset: 0, rolls: ZERO }], ['nearLimbs', 0, LEG_ID, undefined]], 1), 'rest', marked);
+    expect(at(r.buffer, 10, 11)).toBe(5);
+    expect(at(r.buffer, 11, 11)).toBe(6); // the leg over a stripe pixel
+    expect(at(r.buffer, 11, 12)).toBe(6);
+  });
+
+  it('two parts sharing one part id are painted from their own marks', () => {
+    const r = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['nearLimbs', 0, LEG_ID, { offset: 0, rolls: [0, ...ZERO.slice(1)] }],
+      ['nearLimbs', 1, LEG_ID, { offset: 0, rolls: [99, ...ZERO.slice(1)] }],
+    ], 2), 'rest', marked);
+    expect([at(r.buffer, 11, 11), at(r.buffer, 11, 12)]).toEqual([5, 5]);
+    expect([at(r.buffer, 12, 11), at(r.buffer, 12, 12)]).toEqual([6, 6]);
+  });
+
+  it('a frame with no serving layer adds marks:<part id>:<frame> and is drawn unpainted', () => {
+    const r = assemble(markedRecipe([['torso', 0, SPOTTY_ID, { offset: 0, rolls: ZERO }]], 1), 'rest', marked);
+    expect(drawn(r.buffer)).toEqual(TORSO);
+    expect(r.gaps).toEqual([`marks:${SPOTTY_ID}:rest`]);
+    // the same part serves spotted
+    const s = assemble(markedRecipe([['torso', 0, SPOTTY_ID, { offset: 0, rolls: ZERO }]], 2), 'rest', marked);
+    expect(torsoRow(s.buffer, 10)).toEqual([5, 5, 2, 2]);
+    expect(s.gaps).toEqual([]);
+  });
+
+  it('the gap names the frame actually drawn when a pose frame falls back to rest', () => {
+    const r = assemble(markedRecipe([['torso', 0, SPOTTY_ID, { offset: 0, rolls: ZERO }]], 1), 'hop', marked);
+    expect(r.gaps).toEqual([`frame:${SPOTTY_ID}:hop`, `marks:${SPOTTY_ID}:rest`]);
+  });
+
+  it('a pose frame without layers gets the gap and no marks from another frame (Review Focus 1)', () => {
+    const recipe = markedRecipe([['torso', 0, TORSO_ID, { offset: 0, rolls: ZERO }]], 1);
+    const r = assemble(recipe, 'lunge', marked);
+    expect(r.gaps).toEqual([`marks:${TORSO_ID}:lunge`]);
+    expect(drawn(r.buffer)).toEqual(TORSO);
+    // rest, on the same recipe, does paint: the lunge result is not a painter that never paints.
+    expect(torsoRow(assemble(recipe, 'rest', marked).buffer, 10)).toEqual([5, 5, 2, 2]);
+  });
+
+  it('an eye part carrying a mark is never painted and gets no gap', () => {
+    const r = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['head', 0, 'quadruped/head/h1/small/v0', undefined],
+      ['eyes', 0, 'quadruped/eyes/eye/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    // the eye's own 5 d 8, with 5 and 8 written as iris 17 and 20; a painted eye would turn its 8 into a stripe 5, shown as 17.
+    expect([at(r.buffer, 15, 10), at(r.buffer, 16, 10), at(r.buffer, 17, 10)]).toEqual([17, 13, 20]);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('a back part carrying a mark is never painted and gets no gap', () => {
+    const r = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['back', 0, 'quadruped/back/fin/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    expect(at(r.buffer, 11, 9)).toBe(2);
+    expect(r.gaps).toEqual([]);
+    const bare = assemble(markedRecipe([
+      ['torso', 0, TORSO_ID, undefined],
+      ['back', 0, 'quadruped/back/bare/small/v0', { offset: 0, rolls: ZERO }],
+    ], 1), 'rest', marked);
+    expect(at(bare.buffer, 11, 9)).toBe(2);
+    expect(bare.gaps).toEqual([]);
+  });
+
+  it('the catalogue\'s frames are unchanged by composing a marked creature', () => {
+    const fresh = parseCatalogueText(MARK_TEXT); // its own catalogue: no earlier test can have touched it
+    const snapshot = (): unknown => [...fresh.parts.values()].map((p) => Object.entries(p.frames).map(([n, f]) => [n, Array.from(f.pixels), Object.entries(f.layers ?? {}).map(([k, v]) => [k, Array.from(v)])]));
+    const before = snapshot();
+    const recipe = markedRecipe([['torso', 0, TORSO_ID, { offset: 1, rolls: ZERO }], ['nearLimbs', 0, LEG_ID, { offset: 0, rolls: ZERO }]], 1);
+    for (const pose of ['rest', 'lunge', 'hop']) {
+      assemble(recipe, pose, fresh);
+      compose(recipe, pose, fresh);
+    }
+    assemble({ ...recipe, marking: { pattern: 2, strength: 2, phase: 0 } }, 'rest', fresh);
+    expect(snapshot()).toEqual(before);
   });
 });

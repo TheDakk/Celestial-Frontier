@@ -1,8 +1,11 @@
-import type { Catalogue, PartFrame, Pose, Scaffold, SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type PartFrame, type Pose, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { blit, createBuffer, type PixelBuffer } from './buffer';
+import { paintMarks } from './marks';
+import { PHASE_SPREAD } from './patterns';
 
-// The recipe's ramps, marking and glow flag are not applied here: the buffer holds slot values 0-20 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
+// The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-20 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
+// A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -13,6 +16,7 @@ export interface Assembly {
 /** Where a part lands: the canvas point its frame's anchor is placed on, or the gaps that stopped it. */
 interface Placed {
   frame: PartFrame | undefined;
+  frameName: string; // the frame actually used (`rest` after a fallback)
   x: number;
   y: number;
   gaps: string[];
@@ -67,25 +71,26 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   };
 
   const placeOnce = (rp: RecipePart): Placed => {
-    const skipped = (gap: string): Placed => ({ frame: undefined, x: 0, y: 0, gaps: [gap] });
+    const skipped = (gap: string): Placed => ({ frame: undefined, frameName: '', x: 0, y: 0, gaps: [gap] });
     const part = catalogue.parts.get(rp.partId);
     if (part === undefined) return skipped(`missing:${rp.partId}`);
 
     // The entry for this leg count wins; else the one with no leg count; else none.
     const entry = entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === recipe.legs)
       ?? entries.find((e) => e.slot === rp.slot && e.index === rp.index && e.legs === undefined);
-    const frameName = entry === undefined ? 'rest' : entry.frame;
+    let frameName = entry === undefined ? 'rest' : entry.frame;
     const own: string[] = [];
     let frame = Object.hasOwn(part.frames, frameName) ? part.frames[frameName] : undefined;
     if (frame === undefined) {
       own.push(`frame:${rp.partId}:${frameName}`);
+      frameName = 'rest';
       frame = Object.hasOwn(part.frames, 'rest') ? part.frames['rest'] : undefined;
-      if (frame === undefined) return { frame: undefined, x: 0, y: 0, gaps: own };
+      if (frame === undefined) return { frame: undefined, frameName, x: 0, y: 0, gaps: own };
     }
     const dx = entry === undefined ? 0 : entry.dx;
     const dy = entry === undefined ? 0 : entry.dy;
 
-    if (rp.slot === 'torso') return { frame, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
+    if (rp.slot === 'torso') return { frame, frameName, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
 
     const { names, onHead } = attachFor(rp.slot, rp.index, recipe.legs);
     const hostPart = findPart(onHead ? 'head' : 'torso');
@@ -96,20 +101,32 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     const name = names[names.length - 1] as string; // the plain name is the one a gap reports
     if (host === undefined || host.frame === undefined || point === undefined) {
       own.push(`attach:${name}`);
-      return { frame: undefined, x: 0, y: 0, gaps: own };
+      return { frame: undefined, frameName, x: 0, y: 0, gaps: own };
     }
     // The attach point is in the host frame's own coordinates; the host's anchor sits at (host.x, host.y).
     let x = host.x + point[0] - host.frame.anchor[0] + dx;
     let y = host.y + point[1] - host.frame.anchor[1] + dy;
     if (rp.slot === 'head') { x += recipe.shift.head[0]; y += recipe.shift.head[1]; }
     if (rp.slot === 'tail') { x += recipe.shift.tail[0]; y += recipe.shift.tail[1]; }
-    return { frame, x, y, gaps: own };
+    return { frame, frameName, x, y, gaps: own };
   };
 
+  // A gene outside PATTERN_NAMES would leave every part unpainted with no gap; it cannot occur, as buildRecipe yields genes 0 to 7 only.
+  const pattern = PATTERN_NAMES[recipe.marking.pattern];
   for (const rp of recipe.parts) {
     const p = place(rp);
     gaps.push(...p.gaps);
-    if (p.frame !== undefined) blit(buffer, p.frame, p.x, p.y, false, rp.slot === 'eyes');
+    if (p.frame === undefined) continue;
+    let frame = p.frame;
+    // Only the mark slots take marks: an eye, back part, head feature or glow is never painted and never gets a marks gap.
+    if (rp.mark !== undefined && recipe.marking.pattern !== 0 && pattern !== undefined && MARK_SLOTS.includes(rp.slot)) {
+      const phase = (recipe.marking.phase + rp.mark.offset % PHASE_SPREAD) % 15;
+      const painted = paintMarks(frame, pattern, recipe.marking.strength, phase, rp.mark.rolls);
+      // Painted pixels go on a new frame object: the catalogue's frame is never changed.
+      if (painted === null) gaps.push(`marks:${rp.partId}:${p.frameName}`);
+      else frame = { ...frame, pixels: painted };
+    }
+    blit(buffer, frame, p.x, p.y, false, rp.slot === 'eyes');
   }
   return { buffer, contact: pose?.contact ?? null, gaps, scaffold };
 }
