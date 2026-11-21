@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, TIER_SIZE, fallbackKey, type SizeTier } from '@cf/art-format';
-import { buildRecipe } from '@cf/art-recipe';
+import { buildRecipe, EYELESS_HEAD } from '@cf/art-recipe';
 import { compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { makeGenome } from '@cf/domain-genome';
@@ -28,7 +28,8 @@ describe('quadruped test catalogue', () => {
               count++;
               if (!out.buffer.pixels.some((p) => p !== 0)) expect.fail(`empty buffer for ${JSON.stringify(g)}`);
               if (recipe.family === 'quadruped') {
-                if (EYE_COUNTS[eyes] !== 0 && !out.buffer.pixels.includes(13)) expect.fail(`no eye pixel for ${JSON.stringify(g)}`);
+                const eyePixel = out.buffer.pixels.includes(13);
+                if (head === EYELESS_HEAD ? eyePixel : EYE_COUNTS[eyes] !== 0 && !eyePixel) expect.fail(`eye pixel wrong for ${JSON.stringify(g)}`);
                 if (!out.buffer.pixels.includes(16)) expect.fail(`no outline pixel for ${JSON.stringify(g)}`);
                 const bad = out.gaps.filter((gap) => BAD_GAP.test(gap));
                 if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);

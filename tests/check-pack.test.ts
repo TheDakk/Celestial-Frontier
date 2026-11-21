@@ -124,6 +124,14 @@ describe('checkPack on planted faults', () => {
     expect(head.ok).toBe(false);
   });
 
+  it('requires no eye points on the eyeless head (h2), and still requires them on any other head', () => {
+    const noEyes = planted('part quadruped/head/h0/small/v0\nframe rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3', 'part quadruped/head/h2/small/v0\nframe rest anchor=0,0');
+    expect(checkPack(noEyes).structure).toEqual([]);
+    expect(checkPack(noEyes).ok).toBe(true);
+    const other = checkPack(planted('frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3', 'frame rest anchor=0,0'));
+    expect(other.structure).toEqual(['part quadruped/head/h0/small/v0 frame rest: missing attach point eye0, eye1, eye2, eye3, eye4, eye5, eye6, eye7']);
+  });
+
   it('a part touching the canvas edge', () => {
     const r = checkPack(planted('origin=16,12', 'origin=1,12'));
     expect(r.edge.length).toBeGreaterThan(0);

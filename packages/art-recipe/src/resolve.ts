@@ -5,7 +5,7 @@ export interface Anatomy {
   kingdom: 'fauna' | 'flora' | 'fungi' | 'microbe';
   family: string; torso: string; // torso type, '' when the family has none
   tier: SizeTier; head: number; tail: number; pattern: number; skin: number;
-  limbs: number; eyes: number; // counts, from LIMB_COUNTS and EYE_COUNTS
+  limbs: number; eyes: number; // counts, from LIMB_COUNTS and EYE_COUNTS; eyes is 0 for the eyeless head
   colour: number; accent: number; glow: boolean; swimmer: boolean; form: number;
 }
 
@@ -23,6 +23,9 @@ export const GENE_LENGTHS = Object.freeze({
   body: 16, loco: 18, head: 10, tail: 7, pattern: 8, skin: 9, limbs: 6, eyes: 6, size: 6, color: 17, accent: 17,
   floraForm: 18, fungiForm: 9, microbeForm: 12,
 });
+
+/** The head gene value the game's head table (FA_HEAD) names 'eyeless and smooth': that head has no eyes, whatever the eyes gene. */
+export const EYELESS_HEAD = 2;
 
 // Body gene (0..15) to [family, torso type]. Only quadruped has torso types.
 const BODY_FAMILY: readonly (readonly [string, string])[] = [
@@ -46,10 +49,11 @@ export function resolveAnatomy(genome: Readonly<Record<string, unknown>>, option
       const loco = g('loco', L.loco);
       const swimmer = loco === 4 || loco === 13;
       const [family, torso] = swimmer ? ['fish', ''] : BODY_FAMILY[g('body', L.body)]!;
+      const head = g('head', L.head);
       return {
         ...shared, kingdom: 'fauna', family, torso, swimmer, form: 0,
-        head: g('head', L.head), tail: g('tail', L.tail), pattern: g('pattern', L.pattern), skin: g('skin', L.skin),
-        limbs: LIMB_COUNTS[g('limbs', L.limbs)]!, eyes: EYE_COUNTS[g('eyes', L.eyes)]!,
+        head, tail: g('tail', L.tail), pattern: g('pattern', L.pattern), skin: g('skin', L.skin),
+        limbs: LIMB_COUNTS[g('limbs', L.limbs)]!, eyes: head === EYELESS_HEAD ? 0 : EYE_COUNTS[g('eyes', L.eyes)]!,
       };
     }
   }

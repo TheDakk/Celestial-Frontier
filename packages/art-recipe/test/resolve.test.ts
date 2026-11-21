@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
-import { GENE_LENGTHS, resolveAnatomy, wrap } from '../src/resolve';
+import { EYELESS_HEAD, GENE_LENGTHS, resolveAnatomy, wrap } from '../src/resolve';
 
 const base = { kingdom: 'fauna', body: 0, loco: 0, head: 3, tail: 6, pattern: 7, skin: 7, limbs: 3, eyes: 1, size: 5, color: 13, accent: 2, lumin: true };
 
@@ -20,6 +20,15 @@ describe('resolveAnatomy', () => {
   });
   it('maps size genes to tiers unless Guardian is asked for', () => {
     expect([0, 2, 4].map((size) => resolveAnatomy({ ...base, size }).tier)).toEqual(['small', 'medium', 'large']);
+  });
+  it('gives the eyeless head no eyes whatever the eyes gene, drifted head genes included', () => {
+    expect(traits.FA_HEAD[EYELESS_HEAD]).toBe('eyeless and smooth');
+    expect(traits.FA_HEAD.indexOf('eyeless and smooth')).toBe(EYELESS_HEAD);
+    for (const head of [2, 12, -8, 2.7]) {
+      expect([0, 1, 2, 3, 4, 5, 9].map((eyes) => resolveAnatomy({ ...base, head, eyes }).eyes), String(head)).toEqual([0, 0, 0, 0, 0, 0, 0]);
+      expect(resolveAnatomy({ ...base, head, eyes: 3 }).head).toBe(2);
+    }
+    for (const head of [0, 1, 3, 9]) expect(resolveAnatomy({ ...base, head, eyes: 3 }).eyes, String(head)).toBe(8);
   });
   it('glow is true only for lumin true', () => {
     expect([true, 1, 'true', undefined].map((lumin) => resolveAnatomy({ ...base, lumin }).glow)).toEqual([true, false, false, false]);

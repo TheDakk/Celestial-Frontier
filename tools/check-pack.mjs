@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } = await import('@cf/art-format');
-const { buildRecipe, resolveAnatomy } = await import('@cf/art-recipe');
+const { buildRecipe, resolveAnatomy, EYELESS_HEAD } = await import('@cf/art-recipe');
 const { assemble, compose } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -192,7 +192,8 @@ function structureProblems(catalogue) {
   const problems = [];
   const fallbackParts = new Set(catalogue.fallbacks.values());
   for (const part of catalogue.parts.values()) {
-    const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? HEAD_POINTS : [];
+    // The eyeless head never carries eyes, so it needs no eye points.
+    const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' && part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : [];
     if (required.length === 0) continue;
     for (const name of Object.keys(part.frames)) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));

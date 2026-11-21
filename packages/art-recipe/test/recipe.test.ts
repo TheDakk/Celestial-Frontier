@@ -73,6 +73,15 @@ describe('buildRecipe', () => {
     expect(variants.size).toBe(1);
   });
 
+  it('asks for no eye part and records no eye gap for the eyeless head, whatever the eyes gene', () => {
+    for (const eyes of [0, 1, 2, 3, 4]) {
+      const r = buildRecipe({ ...base, head: 2, eyes }, [], catalogueOf([]));
+      expect(r.gaps.filter((gap) => gap.includes('/eyes/')), `eyes ${eyes}`).toEqual([]);
+      expect(slots(buildRecipe({ ...base, head: 2, eyes }, [], full)), `eyes ${eyes}`).not.toContain('eyes');
+    }
+    expect(slots(buildRecipe({ ...base, head: 3, eyes: 3 }, [], full)).filter((s) => s === 'eyes')).toHaveLength(8);
+  });
+
   it('adds no tail for tail gene 0', () => {
     expect(slots(buildRecipe({ ...base, tail: 0 }, [], full))).not.toContain('tail');
     expect(slots(buildRecipe({ ...base, tail: 7 }, [], full))).not.toContain('tail');
