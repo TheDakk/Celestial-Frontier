@@ -1,0 +1,12 @@
+{
+ "kind": "hash",
+ "source": "celestial-frontier.html sha256:ea1365a03ecbde83cbc02031fc14f0d1924b9c5733e06252cfd36234dbe5a7bc bytes:1964559",
+ "test": "packages/persistence/test/training-checkpoint.test.ts",
+ "provenance": {"htmlSha256":"ea1365a03ecbde83cbc02031fc14f0d1924b9c5733e06252cfd36234dbe5a7bc","htmlBytes":1964559,"scriptSha256":"d6005549cb0645b520ac98d520183b1430c29878be45b0b481e98ad2f279aa73","scriptBytes":1679271},
+ "taken": "SHA-256 and byte length of the three whole files the test hashes, each named by its path from the v1 folder and by the role whose <role>Sha256 field training-restart-fixture.json stores.",
+ "cases": [
+  {"role":"gameHtml","file":"celestial-frontier.html","sha256":"ea1365a03ecbde83cbc02031fc14f0d1924b9c5733e06252cfd36234dbe5a7bc","bytes":1964559},
+  {"role":"probeHarness","file":"tools/_probeboot.js","sha256":"e20159437486c376e1b41424c3fd125e0d011299553646e859d46795770f7c06","bytes":4361},
+  {"role":"captureDriver","file":"tools/training-restart-fixture.js","sha256":"c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a","bytes":7971}
+ ]
+}

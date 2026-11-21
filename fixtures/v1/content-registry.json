@@ -1,0 +1,323 @@
+{
+ "_comment": "Load-path VALIDATION SURFACE for importSaveV2 (id sets / maps / clamp bounds loadSave consumes). Changes legitimately with shipped content — re-capture in the same batch as a content change; never to hide an unintended diff.",
+ "capturedAgainst": "v1.8.9",
+ "materials": [
+  "Ag",
+  "Al",
+  "Au",
+  "C",
+  "CH4",
+  "CO2",
+  "Ca",
+  "Chr",
+  "Cl",
+  "Co",
+  "Cr",
+  "Crn",
+  "Cu",
+  "Dkm",
+  "Fe",
+  "H",
+  "H2O",
+  "He",
+  "He3",
+  "Ir",
+  "Li",
+  "Mg",
+  "Mn",
+  "N",
+  "NH3",
+  "Na",
+  "Nd",
+  "Ni",
+  "O",
+  "P",
+  "Pb",
+  "Pls",
+  "Pm",
+  "Pri",
+  "Pro",
+  "Pt",
+  "Pz",
+  "S",
+  "Si",
+  "Sn",
+  "Th",
+  "Ti",
+  "U",
+  "Vg",
+  "Voe",
+  "W",
+  "Zn"
+ ],
+ "items": {
+  "plate": {
+   "slot": null
+  },
+  "wire": {
+   "slot": null
+  },
+  "chip": {
+   "slot": null
+  },
+  "frame": {
+   "slot": null
+  },
+  "lens": {
+   "slot": null
+  },
+  "pellet": {
+   "slot": null
+  },
+  "weave": {
+   "slot": null
+  },
+  "cell": {
+   "slot": null
+  },
+  "cryogel": {
+   "slot": null
+  },
+  "coil": {
+   "slot": null
+  },
+  "navcore": {
+   "slot": null
+  },
+  "hullseg": {
+   "slot": null
+  },
+  "fuelcell": {
+   "slot": null
+  },
+  "servo": {
+   "slot": null
+  },
+  "cryocap": {
+   "slot": null
+  },
+  "jumpdrive": {
+   "slot": null
+  },
+  "array": {
+   "slot": null
+  },
+  "igdrive": {
+   "slot": null
+  },
+  "autoext": {
+   "slot": null
+  },
+  "cscoop": {
+   "slot": null
+  },
+  "rig1": {
+   "slot": "tool"
+  },
+  "rig2": {
+   "slot": "tool"
+  },
+  "rig3": {
+   "slot": "tool"
+  },
+  "fieldsuit": {
+   "slot": "suit"
+  },
+  "hazmat": {
+   "slot": "suit"
+  },
+  "thermal": {
+   "slot": "suit"
+  },
+  "presshull": {
+   "slot": "suit"
+  },
+  "cryoline": {
+   "slot": "suit"
+  },
+  "struts": {
+   "slot": "module"
+  },
+  "stabil": {
+   "slot": "module"
+  },
+  "anchor": {
+   "slot": "module"
+  },
+  "headlamp": {
+   "slot": "helmet"
+  },
+  "visor": {
+   "slot": "helmet"
+  },
+  "voidhelm": {
+   "slot": "helmet"
+  },
+  "earpiece": {
+   "slot": "ears"
+  },
+  "resonator": {
+   "slot": "ears"
+  },
+  "meteor": {
+   "slot": "necklace"
+  },
+  "compass": {
+   "slot": "necklace"
+  },
+  "diplobeacon": {
+   "slot": "necklace"
+  },
+  "prismpendant": {
+   "slot": "necklace"
+  },
+  "gripgloves": {
+   "slot": "gloves"
+  },
+  "surgeon": {
+   "slot": "gloves"
+  },
+  "fieldlegs": {
+   "slot": "legs"
+  },
+  "greaves": {
+   "slot": "legs"
+  },
+  "magboots": {
+   "slot": "boots"
+  },
+  "gravboots": {
+   "slot": "boots"
+  },
+  "rl-stone": {
+   "slot": "suit"
+  },
+  "rl-ocean": {
+   "slot": "boots"
+  },
+  "rl-flame": {
+   "slot": "gloves"
+  },
+  "rl-sky": {
+   "slot": "module"
+  },
+  "rl-life": {
+   "slot": "necklace"
+  },
+  "rl-mind": {
+   "slot": "ears"
+  },
+  "rl-star": {
+   "slot": "helmet"
+  },
+  "rl-void": {
+   "slot": "legs"
+  },
+  "rl-prism": {
+   "slot": "tool"
+  },
+  "cg-proto": {
+   "slot": "suit"
+  },
+  "cg-genesis": {
+   "slot": "necklace"
+  },
+  "cg-void": {
+   "slot": "legs"
+  },
+  "cg-chron": {
+   "slot": "module"
+  },
+  "cg-dark": {
+   "slot": "tool"
+  },
+  "cg-plasma": {
+   "slot": "gloves"
+  },
+  "cg-corona": {
+   "slot": "suit"
+  }
+ },
+ "affixHi": {
+  "yield": 0.35,
+  "strike": 0.06,
+  "scut": 0.25,
+  "contact": 12,
+  "land": 12,
+  "heal": 0.2
+ },
+ "eqSlots": [
+  "helmet",
+  "ears",
+  "necklace",
+  "suit",
+  "gloves",
+  "legs",
+  "boots",
+  "tool",
+  "module"
+ ],
+ "techs": [
+  "scan1",
+  "hull1",
+  "lab1",
+  "drive1",
+  "drive2",
+  "drive3"
+ ],
+ "binderSets": [
+  "kingdoms",
+  "flavors",
+  "themes",
+  "bodies",
+  "realms",
+  "xeno",
+  "court",
+  "para10"
+ ],
+ "charterStarters": [
+  "st-land",
+  "st-mine",
+  "st-scan",
+  "st-scout",
+  "st-conq",
+  "st-mercury",
+  "st-mars",
+  "st-giants",
+  "st-ice",
+  "st-comp"
+ ],
+ "charterPool": [
+  "wk-land",
+  "wk-mine",
+  "wk-scan",
+  "wk-sp",
+  "wk-conq",
+  "wk-feed",
+  "wk-breed",
+  "wk-hostile"
+ ],
+ "sigIds": [
+  "stone",
+  "flame",
+  "sky",
+  "star",
+  "ocean",
+  "mind",
+  "life",
+  "void",
+  "prism"
+ ],
+ "statKeys": [
+  "vit",
+  "fer",
+  "res",
+  "agi",
+  "ins"
+ ],
+ "achLen": 96,
+ "rankHuesLen": 10,
+ "ascChaptersLen": 3,
+ "tierMax": 14,
+ "gameVersion": "1.8.9"
+}
