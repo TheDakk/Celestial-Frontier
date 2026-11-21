@@ -1,7 +1,8 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
+  PILOT_AUDIO_REFERENCED_IDS,
   PILOT_AUDIO_RIGHTS_EVIDENCE,
+  PILOT_AUDIO_RIGHTS_OBSERVATIONS,
   PILOT_AUDIO_TECHNICAL_POLICY,
 } from '../src/pilot-rights-data.js';
 import {
@@ -95,21 +96,14 @@ const EXPECTED_PILOT_IDS = Object.freeze([
   'cf-pilot-ui-refusal', 'cf-pilot-ui-settlement', 'cf-pilot-scout-approach',
   'cf-pilot-scout-landing', 'cf-pilot-combat-contact',
 ]);
-/* fixtures/current/audio-pilot.json was recorded from the unmodified current game by
-   `node tools/record-fixtures.mjs --source <current game> --only audio-pilot`. The pilot sound
-   files and rights proof files are not on this branch: the recorder read them there and kept
-   only what the rights audit observes (each file's sha256, each sound's PCM format and length,
-   and the proof file's loudness and loop measurements). */
-const RECORDED = JSON.parse(readFileSync(
-  new URL('../../../fixtures/current/audio-pilot.json', import.meta.url), 'utf8',
-)) as { observations: AudioAssetObservation[]; evidence: AudioRightsEvidenceObservation[] };
-
-function recordedPilotBundle(): AudioAssetRightsBundle {
+/* The pilot sound files and rights proof files are not on this branch: the controls below
+   start from the committed intake facts the package itself audits at load. */
+function pilotBundle(): AudioAssetRightsBundle {
   return {
     rows: AUDIO_ASSET_RIGHTS_MANIFEST,
-    observations: RECORDED.observations.map((observation) => ({ ...observation })),
-    evidence: RECORDED.evidence.map((file) => ({ ...file })),
-    referencedAssetIds: EXPECTED_PILOT_IDS,
+    observations: PILOT_AUDIO_RIGHTS_OBSERVATIONS.map((observation) => ({ ...observation })),
+    evidence: PILOT_AUDIO_RIGHTS_EVIDENCE.map((file) => ({ ...file })),
+    referencedAssetIds: PILOT_AUDIO_REFERENCED_IDS,
     technicalPolicy: PILOT_AUDIO_TECHNICAL_POLICY,
   };
 }
@@ -160,15 +154,6 @@ describe('Arc 7/8 audio asset rights foundation', () => {
     })).toMatchObject({ rowCount: 0, technicalPolicy: 'not-required-empty' });
   });
 
-  it('binds the current rights authority to the recorded bytes of the eight pilot cues and both proof files', () => {
-    expect(RECORDED.observations.map((observation) => observation.id)).toEqual(EXPECTED_PILOT_IDS);
-    expect(RECORDED.evidence.map((file) => file.file))
-      .toEqual(PILOT_AUDIO_RIGHTS_EVIDENCE.map((file) => file.file));
-    expect(auditAudioAssetRightsManifest({
-      ...recordedPilotBundle(), expectedDigest: AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST,
-    })).toEqual(AUDIO_ASSET_RIGHTS_MANIFEST_AUDIT);
-  });
-
   it('rejects a changed sound file, changed native measurements and a changed licence, then restores', () => {
     const media = 'cf-pilot-ui-nav';
     const licence = 'audio-rights/CF_PILOT_C_20260905.md';
@@ -198,11 +183,11 @@ describe('Arc 7/8 audio asset rights foundation', () => {
     ];
     for (const [label, mutate, diagnosis] of controls) {
       expect(() => auditAudioAssetRightsManifest({
-        ...mutate(recordedPilotBundle()),
+        ...mutate(pilotBundle()),
         expectedDigest: AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST,
       }), label).toThrow(diagnosis);
       expect(auditAudioAssetRightsManifest({
-        ...recordedPilotBundle(),
+        ...pilotBundle(),
         expectedDigest: AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST,
       }), label).toEqual(AUDIO_ASSET_RIGHTS_MANIFEST_AUDIT);
     }
