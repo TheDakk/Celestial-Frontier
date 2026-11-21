@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { checkTrackedFiles } from '../tools/clean-branch-check.mjs';
+import { checkTrackedFiles, parseDenyWords } from '../tools/clean-branch-check.mjs';
 describe('clean-branch check', () => {
   it('passes a clean tree', () => {
     expect(checkTrackedFiles([{ path: 'README.md', text: 'hi' }, { path: 'packages/a/src/i.ts', text: 'export {}' }])).toEqual([]);
@@ -35,6 +35,23 @@ describe('clean-branch check', () => {
     expect(checkTrackedFiles([{ path: 'pkg/README.md', text: 'x' }, { path: 'x.bin', text: null }])).toEqual([
       'pkg/README.md: document on the code branch',
     ]);
+  });
+  it('names a denied word as a whole word, case-insensitively', () => {
+    const files = [
+      { path: 'a.json', text: '{"note":"approved per Zorblat\'s review"}' },
+      { path: 'b.ts', text: 'const who = "ZORBLAT";' },
+      { path: 'c.ts', text: 'const z = "Zorblatty"; // longer word, not the denied one' },
+      { path: 'd.bin', text: null },
+    ];
+    expect(checkTrackedFiles(files, ['zorblat'])).toEqual(['a.json: denied word', 'b.ts: denied word']);
+    expect(checkTrackedFiles(files)).toEqual([]);
+    expect(checkTrackedFiles(files, [])).toEqual([]);
+  });
+  it('reads deny words from a comma-separated value and ignores empty entries', () => {
+    expect(parseDenyWords(undefined)).toEqual(['']);
+    const words = parseDenyWords(' zorblat, ,quux ');
+    expect(checkTrackedFiles([{ path: 'q.ts', text: 'Quux here' }], words)).toEqual(['q.ts: denied word']);
+    expect(checkTrackedFiles([{ path: 'q.ts', text: 'nothing here' }], parseDenyWords(''))).toEqual([]);
   });
   describe.each(['CLAUDE.md', 'AGENTS.md'])('agent file %s', (name) => {
     const read = () => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8');

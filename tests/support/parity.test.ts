@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -15,6 +16,15 @@ describe('parity helpers', () => {
   });
   it('throws naming the generator when it is absent', () => {
     expect(() => checkGenerator(loadFixture(), 'no_such_generator', () => 0)).toThrow('fixture has no generator no_such_generator');
+  });
+  it('keeps the baseline fingerprint: exactly 50 probes with unchanged content', () => {
+    const baseline = JSON.parse(fs.readFileSync(new URL('../../fixtures/v1/baseline.json', import.meta.url), 'utf8')) as {
+      fingerprint: Record<string, unknown>;
+    };
+    expect(Object.keys(baseline.fingerprint)).toHaveLength(50);
+    expect(createHash('sha256').update(JSON.stringify(baseline.fingerprint)).digest('hex')).toBe(
+      'c4bac0bc7815d6a64e096708b653e965f08db637993f177e636ef74698362afb',
+    );
   });
   it('throws naming the probe when it is absent', () => {
     expect(() => probeRaw('no_such_probe')).toThrow('baseline.json has no probe no_such_probe');
