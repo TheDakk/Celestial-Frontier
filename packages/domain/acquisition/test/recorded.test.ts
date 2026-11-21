@@ -43,6 +43,8 @@ import {
   type Arc5BreedScenarioV1,
 } from '../src/breed.js';
 import { projectCompanionAvailabilityV1 } from '../src/companion-availability.js';
+import { preflightArc5RestV1, settleArc5RestV1 } from '../src/rest.js';
+import { COMPANION_MISSION_LENGTHS_V1, companionMissionDispatchRefusalV1 } from '../src/companion-missions.js';
 
 /* fixtures/current/acquisition.json was recorded from the unmodified current game by
    tools/record-fixtures.mjs (the acquisition recorder): taming (capture) and breeding outcomes. Every
@@ -352,5 +354,20 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
     expect(() => settleArc5BreedScenariosV1(planned.plan, undefined as never)).toThrow(/outcome draw/u);
     const parent = state.creatures[0]!;
     expect(() => projectCompanionAvailabilityV1(parent, undefined as never)).toThrow();
+  });
+
+  it('Rest and mission dispatch refuse or throw without a clock, and the clock alone sets the Rest ready time', () => {
+    const [first, second] = breeding.injectedOnly[0]!.input.parents;
+    const { state, ids } = ownershipOf([{ ...first, hurt: 0.5 }, second]);
+    const target = { creatureId: ids[0]! };
+    expect(preflightArc5RestV1(state, target, undefined as never)).toEqual({ kind: 'refused', reason: 'input-invalid' });
+    const rest = preflightArc5RestV1(state, target, 1000);
+    if (rest.kind !== 'ready') throw new Error(rest.reason);
+    expect(() => settleArc5RestV1(rest.preflight, 1, undefined as never)).toThrow(/active-play time/u);
+    const settled = [1000, 1000, 90000].map((t) => settleArc5RestV1(rest.preflight, 1, t));
+    expect(settled.map((x) => x.readyAtActivePlayMs)).toEqual([1000 + rest.preflight.durationActivePlayMs, 1000 + rest.preflight.durationActivePlayMs, 90000 + rest.preflight.durationActivePlayMs]);
+    expect(settled[0]!.witness).toBe(settled[1]!.witness);
+    expect(settled[0]!.witness).not.toBe(settled[2]!.witness);
+    expect(() => companionMissionDispatchRefusalV1(state, ids[1]!, COMPANION_MISSION_LENGTHS_V1[0], undefined as never)).toThrow();
   });
 });
