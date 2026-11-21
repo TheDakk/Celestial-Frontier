@@ -422,7 +422,8 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
       const indexes = limb ? sideCount(slot, legs) : 1;
       for (let index = 0; index < indexes; index++) {
         const role = limb ? limbKind(index, legs) : '';
-        const kinds = !limb ? null : roleHeld(slot, role) ? [role] : [role, 'leg'];
+        // a build's own legs (`<role>-<torso type>`) are drawn in place of the shared role
+        const kinds = !limb ? null : roleHeld(slot, `${role}-${torsoKind}`) ? [`${role}-${torsoKind}`] : roleHeld(slot, role) ? [role] : [role, 'leg'];
         const parts = own.filter((p) => p.slot === slot && (
           slot === 'torso' ? p.kind === torsoKind
             : slot === 'head' ? /^h\d$/.test(p.kind)
@@ -607,6 +608,16 @@ export function checkPack(text) {
   const neck = [];
   const failed = new Set();
   let composed = 0;
+
+  // A leg part is asked for as `leg`, as a role, or as a role on a torso type that has a scaffold at its tier. Any other
+  // name is never drawn: most likely a misspelt build.
+  for (const part of catalogue.parts.values()) {
+    if (part.slot !== 'farLimbs' && part.slot !== 'nearLimbs') continue;
+    const [role, ...rest] = part.kind.split('-');
+    const type = rest.join('-');
+    const named = part.kind === 'leg' || ((role === 'fore' || role === 'hind' || role === 'mid') && (rest.length === 0 || catalogue.scaffolds.has(`${part.family}/${type}/${part.tier}`)));
+    if (!named) unreachable.push(`part ${part.id}: no creature asks for a leg named '${part.kind}' (leg, fore, hind, mid, or one of those with -<torso type> for a torso type that has a scaffold at this tier)`);
+  }
 
   const variantGroups = variantsByType(catalogue);
   let variants = 0;

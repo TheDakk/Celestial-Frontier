@@ -36,7 +36,8 @@ function firstHeld(catalogue: Catalogue, ids: readonly string[]): number {
 }
 
 /**
- * The parts a fauna creature asks for, in DRAW_ORDER then index, and the gaps met on the way. Leg roles, the skin's
+ * The parts a fauna creature asks for, in DRAW_ORDER then index, and the gaps met on the way. Leg roles (a build's own
+ * legs, `<role>-<torso type>`, before the shared ones), the skin's
  * back part, the torso type's head feature, and a mark for every part in a mark slot when the creature is patterned.
  * Every other kingdom asks for no parts.
  */
@@ -71,12 +72,17 @@ export function planParts(
     const id = (kind: string, variant: number): string => partId(a.family, w.slot, kind, a.tier, variant);
     let found: string | undefined;
     if (w.limb) {
-      // The role at the chosen variant, the role at v0, the shared leg at the chosen variant, the shared leg at v0.
-      const tries = [id(w.kind, w.variant), id(w.kind, 0), id('leg', w.variant), id('leg', 0)];
-      const steps = [[], [`variant:${tries[0]}`], [`role:${tries[1]}`], [`role:${tries[1]}`, `variant:${tries[2]}`]];
-      const hit = firstHeld(catalogue, tries);
-      if (hit < 0) gaps.push(`missing:${tries[3]}`);
-      else { found = tries[hit]; gaps.push(...steps[hit]!); }
+      // A build's own legs come first, where the family has torso types: the role on this torso type at the chosen
+      // variant, then at v0. A pack need not hold them, so going on to the shared role is no gap. Then the role at the
+      // chosen variant, the role at v0, the shared leg at the chosen variant, the shared leg at v0.
+      const own = a.torso === '' ? [] : [id(`${w.kind}-${a.torso}`, w.variant), id(`${w.kind}-${a.torso}`, 0)];
+      const shared = [id(w.kind, w.variant), id(w.kind, 0), id('leg', w.variant), id('leg', 0)];
+      const steps = [[], [`variant:${shared[0]}`], [`role:${shared[1]}`], [`role:${shared[1]}`, `variant:${shared[2]}`]];
+      const ownHit = firstHeld(catalogue, own);
+      const hit = firstHeld(catalogue, shared);
+      if (ownHit >= 0) { found = own[ownHit]; if (ownHit === 1) gaps.push(`variant:${own[0]}`); }
+      else if (hit < 0) gaps.push(`missing:${shared[3]}`);
+      else { found = shared[hit]; gaps.push(...steps[hit]!); }
     } else {
       const tries = [id(w.kind, w.variant), id(w.kind, 0)];
       const hit = firstHeld(catalogue, tries);

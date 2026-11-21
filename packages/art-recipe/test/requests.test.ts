@@ -84,6 +84,48 @@ describe('planParts: leg roles', () => {
   });
 });
 
+describe('planParts: the legs of a build', () => {
+  // body 2 is quadruped/stilt; six legs ask for fore, hind and mid on each side.
+  const stilt = resolveAnatomy({ ...base, body: 2, limbs: 2 });
+  const stiltCore = (ids: readonly string[]): Catalogue =>
+    catalogueOf([q('torso', 'stilt', 0), q('head', 'h3', 0), q('tail', 't2', 0), q('eyes', 'eye', 0), ...allLimbs(), ...ids]);
+
+  it('a build with its own legs draws them in place of the shared role, with no gap', () => {
+    const own = LIMB_SLOTS.flatMap((slot) => ['fore', 'hind', 'mid'].map((kind) => q(slot, `${kind}-stilt`, 0)));
+    const r = planParts(stilt, V0, stream, stiltCore(own));
+    expect(limbIds(r)).toEqual([
+      `farLimbs0 ${q('farLimbs', 'fore-stilt', 0)}`, `farLimbs1 ${q('farLimbs', 'hind-stilt', 0)}`, `farLimbs2 ${q('farLimbs', 'mid-stilt', 0)}`,
+      `nearLimbs0 ${q('nearLimbs', 'fore-stilt', 0)}`, `nearLimbs1 ${q('nearLimbs', 'hind-stilt', 0)}`, `nearLimbs2 ${q('nearLimbs', 'mid-stilt', 0)}`,
+    ]);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('a build without its own legs draws the shared role, with no gap', () => {
+    const r = planParts(stilt, V1, stream, stiltCore([]));
+    expect(limbIds(r)[0]).toBe(`farLimbs0 ${q('farLimbs', 'fore', 1)}`);
+    expect(r.gaps).toEqual([]);
+  });
+
+  it('one role of its own leaves the other roles shared', () => {
+    const r = planParts(stilt, V0, stream, stiltCore([q('farLimbs', 'hind-stilt', 0)]));
+    expect(limbIds(r).slice(0, 4)).toEqual([
+      `farLimbs0 ${q('farLimbs', 'fore', 0)}`, `farLimbs1 ${q('farLimbs', 'hind-stilt', 0)}`, `farLimbs2 ${q('farLimbs', 'mid', 0)}`,
+      `nearLimbs0 ${q('nearLimbs', 'fore', 0)}`,
+    ]);
+  });
+
+  it('its own leg at v0 stands in for a chosen variant it lacks, with the variant gap', () => {
+    const r = planParts(stilt, V1, stream, stiltCore([q('farLimbs', 'fore-stilt', 0)]));
+    expect(limbIds(r)[0]).toBe(`farLimbs0 ${q('farLimbs', 'fore-stilt', 0)}`);
+    expect(r.gaps).toEqual([`variant:${q('farLimbs', 'fore-stilt', 1)}`]);
+  });
+
+  it('another build never draws them', () => {
+    const r = planParts(resolveAnatomy({ ...base, limbs: 2 }), V0, stream, withCore([...allLimbs(), q('farLimbs', 'fore-stilt', 0)]));
+    expect(limbIds(r)[0]).toBe(`farLimbs0 ${q('farLimbs', 'fore', 0)}`);
+  });
+});
+
 describe('planParts: back parts and head features', () => {
   it('asks for the skin\'s back part on the creature\'s torso type', () => {
     const r = planParts(resolveAnatomy({ ...base, skin: 4 }), V0, stream, withCore([...allLimbs(), q('back', 'plates-sturdy', 0)]));

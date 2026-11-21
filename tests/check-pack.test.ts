@@ -272,6 +272,18 @@ describe('checkPack on planted faults', () => {
     expect(r.failures).toEqual(['no fallback for family quadruped at guardian (needed by quadruped/sturdy/guardian)']);
   });
 
+  it('a leg named for a torso type with no scaffold is an error; one named for the torso type of a scaffold is not', () => {
+    const leg = (kind: string): string => `${GOOD}\npart quadruped/farLimbs/${kind}/small/v0\nframe rest anchor=0,0\n22\n22\n22\n22\n22\n11\n`;
+    const own = checkPack(leg('fore-sturdy'));
+    expect(own.unreachable).toEqual([]);
+    for (const kind of ['fore-winged', 'paw', 'paw-sturdy']) {
+      const lost = checkPack(leg(kind));
+      expect(lost.unreachable, kind).toHaveLength(1);
+      expect(lost.unreachable[0], kind).toContain(`part quadruped/farLimbs/${kind}/small/v0: no creature asks for a leg named '${kind}'`);
+      expect(lost.ok, kind).toBe(false);
+    }
+  });
+
   it('a gap other than variant: is an error; a scaffold no genome reaches is an error', () => {
     const r = checkPack(planted('part quadruped/eyes/eye/small/v0', 'part quadruped/eyes/dot/small/v0'));
     expect(r.gaps.find((g) => g.gap === 'missing:quadruped/eyes/eye/small/v0')).toMatchObject({ error: true });
