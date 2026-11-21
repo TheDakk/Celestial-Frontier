@@ -26,13 +26,22 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE } = await import('@cf/art-format');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT } = await import('@cf/art-format');
 const { buildRecipe, resolveAnatomy, EYELESS_HEAD } = await import('@cf/art-recipe');
 const { assemble, compose } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 const TORSO_POINTS = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
 const HEAD_POINTS = ['eye0', 'eye1', 'eye2', 'eye3', 'eye4', 'eye5', 'eye6', 'eye7'];
+/**
+ * Every leg-count attach name the composer can ask a torso for, with its leg count: `far<i>_<n>` and `near<i>_<n>`
+ * for each non-zero leg count n, where the far side has n >> 1 legs and the near side the rest (as buildRecipe splits them).
+ * Such a name is optional (the plain name is the fallback); a torso name ending in `_<digits>` that is not here is never used.
+ */
+const LEG_COUNT_POINTS = new Map(LIMB_COUNTS.filter((n) => n > 0).flatMap((n) => [
+  ...Array.from({ length: n >> 1 }, (_, i) => [`far${i}_${n}`, n]),
+  ...Array.from({ length: n - (n >> 1) }, (_, i) => [`near${i}_${n}`, n]),
+]));
 // The genes that give each tier: a size gene, and for the guardian tier the Guardian marker the game sets (apex).
 const GENES_FOR_TIER = { small: { size: 0 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 5, apex: 12 } };
 const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y]));
@@ -47,6 +56,9 @@ const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v])
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
 const NO_LIMBS = LIMB_COUNTS.indexOf(0);
+/** Ramp values are 1-12 (three ramps of four); a value's shade step is its position in its ramp, 0 darkest to 3 lightest. */
+const inRamp = (v) => v >= 1 && v <= 12;
+const shadeOf = (v) => (v - 1) & 3;
 /** The fewest pixels a requested part must show; a part that draws fewer (a one-pixel eye) must show all of them. */
 export const HIDDEN_MIN = 4;
 
@@ -55,7 +67,8 @@ export const SAMPLED =
   ' (eight eyes: every eye point), plus eyes genes 0-5 for each head kind; every pose the scaffold defines. ' +
   'Shift sweep (edge and detachment), limbs gene ' + NO_LIMBS + ' (no legs): every head kind with no tail at its nine shifts, ' +
   'and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations. ' +
-  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts). ' +
+  'Every variant of a part type with more than one, forced into a creature, in every pose (a head or tail variant also at its nine shifts), ' +
+  'also at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for. ' +
   'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures.';
 
 const countBy = (items, key) => {
@@ -307,18 +320,76 @@ function fallbackProblems(catalogue) {
   return problems;
 }
 
-/** Problems a reader can see without composing: attach points, poses, contact points, fallbacks. */
+/** Per spot value (1-15) in a `spots` layer, the number of 4-connected blobs of that value; [value, blobs] for each value in more than one. */
+function splitSpots(layer, w) {
+  const seen = new Uint8Array(layer.length);
+  const blobs = new Array(16).fill(0);
+  const stack = [];
+  for (let start = 0; start < layer.length; start++) {
+    const v = layer[start];
+    if (v === 0 || seen[start] === 1) continue;
+    blobs[v]++;
+    seen[start] = 1;
+    stack.push(start);
+    while (stack.length > 0) {
+      const i = stack.pop();
+      const x = i % w;
+      for (const j of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w]) {
+        if (j < 0 || j >= layer.length || seen[j] === 1 || layer[j] !== v) continue;
+        seen[j] = 1;
+        stack.push(j);
+      }
+    }
+  }
+  return blobs.flatMap((n, v) => (n > 1 ? [[v, n]] : []));
+}
+
+/** Layer problems of one frame: layer pixels where the frame draws no ramp value (1-12), and spot values split into several blobs. */
+function layerProblems(where, frame) {
+  const problems = [];
+  const layers = frame.layers ?? {};
+  for (const name of LAYER_NAMES) {
+    if (!Object.hasOwn(layers, name)) continue;
+    const layer = layers[name];
+    let outside = 0;
+    for (let i = 0; i < layer.length; i++) if (layer[i] !== 0 && !inRamp(frame.pixels[i])) outside++;
+    if (outside > 0) problems.push(`${where}: layer ${name} has ${outside} pixels outside the drawn area`);
+    if (name === 'spots') for (const [v, n] of splitSpots(layer, frame.w)) problems.push(`${where}: spot value ${v} is in ${n} blobs`);
+  }
+  return problems;
+}
+
+/**
+ * Problems a reader can see without composing: attach points (a head needs `feature` once the pack has a head feature of
+ * its family and tier; a torso's leg-count names must be ones the composer can ask for), layers, the palette's iris
+ * ramps, poses, contact points, fallbacks.
+ */
 function structureProblems(catalogue) {
   const problems = [];
   const fallbackParts = new Set(catalogue.fallbacks.values());
+  const featured = new Set([...catalogue.parts.values()].filter((p) => p.slot === 'headFeature').map((p) => `${p.family}/${p.tier}`));
   for (const part of catalogue.parts.values()) {
-    // The eyeless head never carries eyes, so it needs no eye points.
-    const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' && part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : [];
+    const frames = Object.keys(part.frames);
+    if (!MARK_SLOTS.includes(part.slot) && frames.some((name) => part.frames[name].layers !== undefined)) problems.push(`part ${part.id}: layers on a slot that takes no marks`);
+    for (const name of frames) problems.push(...layerProblems(`part ${part.id} frame ${name}`, part.frames[name]));
+    if (part.slot === 'torso') {
+      for (const name of frames) {
+        for (const point of Object.keys(part.frames[name].attach)) {
+          if (/_\d+$/.test(point) && !LEG_COUNT_POINTS.has(point)) problems.push(`part ${part.id} frame ${name}: attach point ${point} is for a leg count that never uses it`);
+        }
+      }
+    }
+    // The eyeless head never carries eyes, so it needs no eye points. Only the plain leg points are required: they are the fallback.
+    const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}`) ? ['feature'] : [];
+    const required = part.slot === 'torso' && !fallbackParts.has(part.id) ? TORSO_POINTS : part.slot === 'head' ? [...(part.kind !== `h${EYELESS_HEAD}` ? HEAD_POINTS : []), ...feature] : [];
     if (required.length === 0) continue;
-    for (const name of Object.keys(part.frames)) {
+    for (const name of frames) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));
       if (missing.length > 0) problems.push(`part ${part.id} frame ${name}: missing attach point ${missing.join(', ')}`);
     }
+  }
+  if (Object.keys(catalogue.palette.ramps).length > 0) {
+    for (let i = 0; i < IRIS_RAMP_COUNT; i++) if (!Object.hasOwn(catalogue.palette.ramps, `iris${i}`)) problems.push(`palette: missing iris ramp iris${i}`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
@@ -332,6 +403,55 @@ function structureProblems(catalogue) {
 }
 
 /**
+ * The neck rule (spec, section 5): where a head meets a torso, the pixels on each side of the join are within one shade
+ * step of each other. Checked on the parts as drawn: before marks, before the outline and shading. For each pose, each of
+ * the nine head shifts and each leg count, the torso alone and the head alone are assembled at their real places (the
+ * head is placed on the torso, then the torso is left undrawn). A join pair is a head pixel and a 4-adjacent torso pixel
+ * the head does not cover, both ramp values (1-12); it breaks the rule when their shade steps (position in the ramp,
+ * so pixels of different ramps compare by position) differ by more than one. Returns null when no pair breaks it, else
+ * { pairs: breaking pairs summed over every case, cases: the (pose, shift, leg count) cases with at least one, example }.
+ */
+function neckJoin(catalogue, scaffold, torsoId, headId, legCounts, recipeFor, cache) {
+  let pairs = 0;
+  let cases = 0;
+  let example = '';
+  for (const legs of legCounts) {
+    const base = recipeFor(LIMB_COUNTS.indexOf(legs));
+    const two = {
+      ...base,
+      parts: [{ slot: 'torso', index: 0, partId: torsoId, source: 'own' }, { slot: 'head', index: 0, partId: headId, source: 'own' }],
+      marking: { ...base.marking, pattern: 0 },
+    };
+    for (const pose of Object.keys(scaffold.poses)) {
+      const torsoOnly = numberedCopy(two, catalogue, cache, (k) => (k === 0 ? 'real' : 'blank'));
+      const t = assemble(torsoOnly.recipe, pose, torsoOnly.catalogue).buffer;
+      for (const shift of HEAD_SHIFTS) {
+        const headOnly = numberedCopy({ ...two, shift }, catalogue, cache, (k) => (k === 0 ? 'blank' : 'real'));
+        const { w, pixels: hp } = assemble(headOnly.recipe, pose, headOnly.catalogue).buffer;
+        const tp = t.pixels;
+        let here = 0;
+        for (let i = 0; i < hp.length; i++) {
+          const hv = hp[i];
+          if (!inRamp(hv)) continue;
+          const x = i % w;
+          for (const j of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w]) {
+            if (j < 0 || j >= hp.length || hp[j] !== 0 || !inRamp(tp[j])) continue;
+            if (Math.abs(shadeOf(hv) - shadeOf(tp[j])) <= 1) continue;
+            here++;
+            if (example === '') {
+              const at = (k) => `${k % w},${(k - (k % w)) / w}`;
+              example = `pose ${pose} head shift ${pair(shift.head)} legs ${legs}: head ${at(i)} value ${hv} shade ${shadeOf(hv)} beside torso ${at(j)} value ${tp[j]} shade ${shadeOf(tp[j])}`;
+            }
+          }
+        }
+        if (here > 0) { pairs += here; cases++; }
+      }
+    }
+  }
+  return cases === 0 ? null : { pairs, cases, example };
+}
+
+/**
  * Checks one pack text. Pure: reads nothing, writes nothing.
  * A parser error ends the check. Otherwise: a summary, the distinct gaps met while composing the sampled
  * creatures of every scaffold (variant: gaps are information), creatures touching the canvas edge, creatures
@@ -342,7 +462,7 @@ export function checkPack(text) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -362,6 +482,7 @@ export function checkPack(text) {
   const hidden = [];
   const numberedFrames = new Map();
   const unreachable = [];
+  const neck = [];
   const failed = new Set();
   let composed = 0;
 
@@ -437,19 +558,43 @@ export function checkPack(text) {
 
     // Every variant of every part type with more than one: build a creature that uses the type, then compose a copy
     // of its recipe with that slot's part id replaced by the variant's. A head or tail variant also at its nine shifts.
+    // Limb variants at eight legs, the others with none; each also at every leg count the scaffold writes a legs= entry
+    // or a torso leg-count attach name for, since those draw the creature differently.
+    const torsoKind = scaffold.id.split('/')[1];
+    const legCounts = new Set();
+    for (const pose of Object.values(scaffold.poses)) for (const e of pose.entries) if (e.legs !== undefined) legCounts.add(e.legs);
+    for (const part of catalogue.parts.values()) {
+      if (part.family !== scaffold.family || part.slot !== 'torso' || part.kind !== torsoKind || part.tier !== scaffold.tier) continue;
+      for (const frame of Object.values(part.frames)) for (const point of Object.keys(frame.attach)) if (LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
+    }
     for (const group of variantGroups) {
       if (group.family !== scaffold.family || group.tier !== scaffold.tier) continue;
       if (group.slot === 'torso' && scaffold.id !== `${group.family}/${group.kind}/${group.tier}`) continue;
       const head = group.slot === 'head' ? Number(group.kind.slice(1)) : someHeads[0];
       const tail = group.slot === 'tail' ? Number(group.kind.slice(1)) : tails[tails.length - 1];
-      const genome = genomeOf(head, tail, group.slot === 'farLimbs' || group.slot === 'nearLimbs' ? FULL_LIMBS : NO_LIMBS, FULL_EYES);
-      const recipe = buildRecipe(genome, [], catalogue);
-      const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
-      for (const id of group.ids) {
-        const parts = recipe.parts.map((p) => (p.slot === group.slot && group.ids.includes(p.partId) ? { ...p, partId: id } : p));
-        if (!parts.some((p) => p.partId === id)) continue; // the creature does not reach this type (e.g. a head kind beyond the gene range)
-        variants++;
-        check(genome, { ...recipe, parts }, shiftPairs, id);
+      const first = group.slot === 'farLimbs' || group.slot === 'nearLimbs' ? FULL_LIMBS : NO_LIMBS;
+      const limbGenes = [first, ...[...legCounts].map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== first)];
+      for (const limbs of limbGenes) {
+        const genome = genomeOf(head, tail, limbs, FULL_EYES);
+        const recipe = buildRecipe(genome, [], catalogue);
+        const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
+        for (const id of group.ids) {
+          const parts = recipe.parts.map((p) => (p.slot === group.slot && group.ids.includes(p.partId) ? { ...p, partId: id } : p));
+          if (!parts.some((p) => p.partId === id)) continue; // the creature does not reach this type (e.g. a head kind beyond the gene range)
+          variants++;
+          check(genome, { ...recipe, parts }, shiftPairs, id);
+        }
+      }
+    }
+
+    // The neck join: every head of this family and tier with every variant of this scaffold's torso, at four legs and at
+    // every leg count a legs= entry for the torso or the head names.
+    const neckLegs = [4, ...new Set(Object.values(scaffold.poses).flatMap((pose) => pose.entries.filter((e) => e.legs !== undefined && e.legs !== 4 && (e.slot === 'torso' || e.slot === 'head')).map((e) => e.legs)))];
+    const ofScaffold = (slot) => parts.filter((p) => p.family === scaffold.family && p.slot === slot && p.tier === scaffold.tier && (slot !== 'torso' || p.kind === torsoKind));
+    for (const torso of ofScaffold('torso')) {
+      for (const head of ofScaffold('head')) {
+        const found = neckJoin(catalogue, scaffold, torso.id, head.id, neckLegs, (limbs) => buildRecipe(genomeOf(someHeads[0], 0, limbs, FULL_EYES), [], catalogue), numberedFrames);
+        if (found !== null) neck.push({ head: head.id, torso: torso.id, ...found });
       }
     }
   }
@@ -458,7 +603,7 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures };
+  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -516,6 +661,7 @@ export function formatReport(report) {
   for (const p of report.structure) lines.push(`error: ${p}`);
   for (const p of report.unreachable) lines.push(`error: ${p}`);
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
+  for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pairs} pixel pairs more than one shade step apart in ${n.cases} pose shifts, e.g. ${n.example}`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
   return `check-pack: ${report.ok ? 'OK' : `FAIL (${errors} distinct errors)`}\n${lines.join('\n')}\n`;
 }

@@ -31,6 +31,17 @@ export interface PackSummary {
   colours: number;
   ramps: number;
 }
+/** A head and torso pairing whose neck join breaks the one-shade-step rule in at least one pose, head shift and leg count. A warning: never changes `ok`. */
+export interface NeckJoin {
+  head: string;
+  torso: string;
+  /** Head and torso pixel pairs across the join more than one shade step apart, summed over every case. */
+  pairs: number;
+  /** Cases (pose, head shift, leg count) with at least one such pair. */
+  cases: number;
+  /** The first such pair: pose, head shift, leg count, both pixels with their values and shade steps. */
+  example: string;
+}
 export interface PackReport {
   ok: boolean;
   parseError: string | null;
@@ -48,6 +59,8 @@ export interface PackReport {
   unreachable: string[];
   /** Distinct compose errors (a missing fallback), each naming the family, tier and the scaffold that needed it. */
   failures: string[];
+  /** Neck join warnings, one per head and torso pairing that breaks the rule. */
+  neck: NeckJoin[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;
