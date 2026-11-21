@@ -38,7 +38,7 @@ describe('buildRecipe', () => {
   });
 
   it('changing the eyes gene changes only the number of eye parts, never the slots filled elsewhere', () => {
-    // The identity covers the whole genome, so a changed gene reseeds every stream: variant picks may differ.
+    // The identity covers every gene, so a changed gene reseeds every stream: variant picks may differ.
     // What must hold is that the eye count follows the gene and nothing else about the layout moves.
     const one = buildRecipe({ ...base, eyes: 4 }, [], full);
     const two = buildRecipe({ ...base, eyes: 0 }, [], full);

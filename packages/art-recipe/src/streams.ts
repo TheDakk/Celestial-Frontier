@@ -32,11 +32,24 @@ function stableNode(value: unknown, ancestors: Set<object>): unknown {
 }
 
 /**
- * The whole genome (sorted keys, type-tagged values, nothing excluded), '|', then the ordered lineage
- * as a JSON array. JSON keeps the lineage unambiguous ([] vs [''], ['a>b'] vs ['a','b']); permanent.
+ * Top-level genome keys that hold a creature's life state, not what it is: experience, wounds, meals,
+ * brood count, mission or recovery assignment, bond, and the per-battle modifiers. The game copies
+ * these onto genome objects, so they are left out of the art identity; a creature that levels up,
+ * is fed or fights keeps its look. This list is part of renderer version 1: changing it changes looks.
+ */
+export const LIFE_STATE_KEYS: readonly string[] = Object.freeze(
+  ['_mult', '_wf', 'assignment', 'bond', 'brood', 'fed', 'hurt', 'xp'],
+);
+
+/**
+ * The genome without its top-level LIFE_STATE_KEYS (sorted keys, type-tagged values; nested values
+ * are kept whole), '|', then the ordered lineage as a JSON array. JSON keeps the lineage unambiguous
+ * ([] vs [''], ['a>b'] vs ['a','b']); permanent.
  */
 export function identityKey(genome: Readonly<Record<string, unknown>>, lineage: readonly string[]): string {
-  return JSON.stringify(stableNode(genome, new Set())) + '|' + JSON.stringify(lineage);
+  const identity: Record<string, unknown> = Object.create(null); // no prototype: an own '__proto__' key is copied as data
+  for (const key of Object.keys(genome)) if (!LIFE_STATE_KEYS.includes(key)) identity[key] = genome[key];
+  return JSON.stringify(stableNode(identity, new Set())) + '|' + JSON.stringify(lineage);
 }
 
 /*

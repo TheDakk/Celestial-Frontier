@@ -25,9 +25,10 @@ describe('art streams', () => {
   });
   it('serialises a fixed genome to the key the source function produces', () => {
     const genome = { seed: 1, body: 0, kingdom: 'fauna', lumin: true, name: 'a|b', nothing: null, list: [1, 'x'], neg: -3, zero: -0 };
-    expect(identityKey(genome, ['p1', 'p2'])).toBe(
-      '["object",[["body",["number","0"]],["kingdom",["string","fauna"]],["list",["array",[["number","1"],["string","x"]]]],["lumin",["boolean",true]],["name",["string","a|b"]],["neg",["number","-3"]],["nothing",["null"]],["seed",["number","1"]],["zero",["number","-0"]]]]|["p1","p2"]',
-    );
+    const literal = '["object",[["body",["number","0"]],["kingdom",["string","fauna"]],["list",["array",[["number","1"],["string","x"]]]],["lumin",["boolean",true]],["name",["string","a|b"]],["neg",["number","-3"]],["nothing",["null"]],["seed",["number","1"]],["zero",["number","-0"]]]]|["p1","p2"]';
+    expect(identityKey(genome, ['p1', 'p2'])).toBe(literal);
+    // Top-level life-state keys leave no trace in the key.
+    expect(identityKey({ ...genome, xp: 40, hurt: 0.5, bond: { level: 2 }, _wf: 'ice' }, ['p1', 'p2'])).toBe(literal);
   });
   it('pins the seed fold for renderer version 1', () => {
     const s = artStream('k', 'head', 1);
