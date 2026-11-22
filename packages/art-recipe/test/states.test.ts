@@ -3,11 +3,8 @@ import { IRIS_RAMP_COUNT, THEME_NAMES, tierForSize } from '@cf/art-format';
 import * as traits from '@cf/domain-speciestraits';
 import { EX_HABITAT_STATE, EX_LOCO_STATE, HABITAT_STATE, IRIS_BY_THEME, LOCO_STATE, SIZE_TIER_BY_GENE, stateOf, themeOf, THEME_BY_HABITAT, type StateRow } from '../src/states';
 
-// The original's two name tests, verbatim: a movement name and a habitat name each make a creature aquatic or airborne.
-const MOVE_AQUA = /swim|filter|jet|brine-crawl/;
-const HAB_AQUA = /ocean|shallows|reef|vent|trench|lakeshore|sea/;
-const MOVE_AIR = /glider|floater|drifter|soarer|storm-rider|winged/;
-const HAB_AIR = /cloud deck|updraft/;
+// The original's two name tests, verbatim (shared with the coverage walk).
+import { HAB_AIR, HAB_AQUA, MOVE_AIR, MOVE_AQUA } from './name-tests';
 
 const TABLES = [
   ['LOCO_STATE', LOCO_STATE, traits.FA_LOCO, MOVE_AQUA, MOVE_AIR],

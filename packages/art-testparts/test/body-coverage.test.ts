@@ -1,13 +1,14 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import type { Catalogue, SizeTier } from '@cf/art-format';
+import { VARIANTS, type Catalogue, type SizeTier } from '@cf/art-format';
 import {
-  buildRecipe, buildRoutedRecipe, fishShapes, planBodyParts, resolveBody, routeBody, SHAPES, stateOf, torsoKindOf,
-  type Recipe, type RecipePart,
+  artStream, buildRecipe, buildRoutedRecipe, fishShapes, identityKey, pick, planBodyParts, RENDERER_VERSION, resolveBody, routeBody,
+  SHAPES, torsoKindOf, type Recipe, type RecipePart,
 } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
 import { routedTestCatalogue, testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, REQUIRED_POSES, shapedGenome } from '../../../tools/check-pack.mjs';
+import { nameState } from '../../art-recipe/test/name-tests';
 
 // The coverage walk (body routing, Task 16): every route a genome can take, every shape of it, and every part gene the
 // planner reads, drawn on the placeholder parts; and the proof that a recorded creature whose animal does not change
@@ -56,11 +57,14 @@ function routingGenomes(): Genome[] {
   return out;
 }
 
+/** Aquatic and airborne by the original's name tests on the game's names (not by stateOf, the code under test). */
+const named = (g: Genome): { aquatic: boolean; airborne: boolean } => nameState(g['loco'] as number, g['habitat'] as number, g['x'] === 1);
+
 /** The first routing genome (in walk order) for each body gene, aquatic and airborne state: what resolveBody reads of the routing genes. */
 function stateGenomes(): Genome[] {
   const first = new Map<string, Genome>();
   for (const g of routingGenomes()) {
-    const { aquatic, airborne } = stateOf(g);
+    const { aquatic, airborne } = named(g);
     const key = `${String(g['body'])} ${aquatic} ${airborne}`;
     if (!first.has(key)) first.set(key, g);
   }
@@ -96,11 +100,14 @@ interface Walked {
  * the tail gene and the skin gene stepping through all their values inside each limbs gene (the planner asks for the
  * tail and back parts from those genes alone, and they hang from the torso, so they meet every head, eye and trait part
  * only through the leg count, which each limbs gene holds fixed). Each recipe is planned with every variant 0, and every
- * distinct set of parts is drawn in every required pose; an error gap (gapIsInfo false) is reported, a missing
- * information part is listed. Pattern and shift are not walked: they change only marks: gaps and where a part lands.
- * `keep` limits the walk to some body and state genomes (the planted faults).
+ * distinct set of parts is drawn in every required pose; an error gap (gapIsInfo false) is reported. A missing
+ * information part is listed from the planner's gaps of every planned recipe, before the distinct sets are chosen, so
+ * the list does not depend on the walk's order. Pattern and shift are not walked: they change only marks: gaps and
+ * where a part lands. `keep` limits the walk to some body and state genomes (the planted faults); `reverse` walks
+ * every level in the opposite order.
  */
-function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => true): Walked {
+function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => true, reverse = false): Walked {
+  const inOrder = <T>(items: readonly T[]): T[] => (reverse ? [...items].reverse() : [...items]);
   for (const part of catalogue.parts.values()) {
     // A held variant other than v0 would make the variant streams choose parts: the walk would have to walk them.
     if (part.variant !== 0) throw new Error(`the walk plans every variant 0, but the pack holds ${part.id}`);
@@ -111,11 +118,11 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
   const seen = new Set<string>();
   let planned = 0;
   let poses = 0;
-  for (const state of stateGenomes()) {
+  for (const state of inOrder(stateGenomes())) {
     if (!keep(state)) continue;
     const { family, shapes } = routeBody(state);
-    shapes.forEach((shape, i) => {
-      for (const tier of TIERS) {
+    for (const [shape, i] of inOrder(shapes.map((sh, k) => [sh, k] as const))) {
+      for (const tier of inOrder(TIERS)) {
         const scaffoldId = `${family}/${shape}/${tier}`;
         if (!catalogue.scaffolds.has(scaffoldId)) {
           const byTier = noScaffold.get(family) ?? new Map<SizeTier, Set<string>>();
@@ -138,38 +145,42 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
         expect(mine.parts.map(partKey)).toEqual(template.parts.map(partKey));
         expect(mine.gaps.filter((gap) => !gapIsInfo(gap))).toEqual(template.gaps.filter((gap) => !gapIsInfo(gap)));
 
+        const geneSets: Genome[] = [];
         for (let limbs = 0; limbs < 6; limbs++) {
           let step = 0;
           for (let head = 0; head < 10; head++) for (let eyes = 0; eyes < 6; eyes++) for (const trait of [0, 11]) {
-            const genes = { ...state, ...TIER_GENES[tier], ...BASE, limbs, head, eyes, trait, tail: step % 7, skin: step % 9 };
+            geneSets.push({ ...state, ...TIER_GENES[tier], ...BASE, limbs, head, eyes, trait, tail: step % 7, skin: step % 9 });
             step++;
-            const { b, parts, gaps } = plan(genes);
-            planned++;
-            const key = JSON.stringify([b.limbs, parts.map(partKey), gaps.filter((gap) => !gapIsInfo(gap))]) + scaffoldId;
-            if (seen.has(key)) continue;
-            seen.add(key);
-            const recipe: Recipe = { ...template, legs: b.limbs, parts, gaps, skin: null, shift: { head: [0, 0], tail: [0, 0] } };
-            for (const pose of REQUIRED_POSES) {
-              poses++;
-              // compose's gaps are assemble's, plus `fallback:` when there are no parts or the picture draws nothing
-              // (compose.ts): those recipes are composed, the rest assembled.
-              const assembled = assemble(recipe, pose, catalogue);
-              const found = recipe.parts.length === 0 || assembled.buffer.pixels.every((p) => p === 0) ? compose(recipe, pose, catalogue).gaps : assembled.gaps;
-              for (const gap of found) {
-                if (!gapIsInfo(gap)) errors.set(scaffoldId, (errors.get(scaffoldId) ?? new Set()).add(short(gap)));
-                else if (gap.startsWith('missing:')) without.set(scaffoldId, (without.get(scaffoldId) ?? new Set()).add(short(gap).slice('missing '.length)));
-              }
-            }
+          }
+        }
+        for (const genes of inOrder(geneSets)) {
+          const { b, parts, gaps } = plan(genes);
+          planned++;
+          for (const gap of gaps) {
+            if (gap.startsWith('missing:') && gapIsInfo(gap)) without.set(scaffoldId, (without.get(scaffoldId) ?? new Set()).add(short(gap).slice('missing '.length)));
+          }
+          const key = JSON.stringify([b.limbs, parts.map(partKey), gaps.filter((gap) => !gapIsInfo(gap))]) + scaffoldId;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const recipe: Recipe = { ...template, legs: b.limbs, parts, gaps, skin: null, shift: { head: [0, 0], tail: [0, 0] } };
+          for (const pose of REQUIRED_POSES) {
+            poses++;
+            // compose's gaps are assemble's, plus `fallback:` when there are no parts or the picture draws nothing
+            // (compose.ts): those recipes are composed, the rest assembled.
+            const assembled = assemble(recipe, pose, catalogue);
+            const found = recipe.parts.length === 0 || assembled.buffer.pixels.every((p) => p === 0) ? compose(recipe, pose, catalogue).gaps : assembled.gaps;
+            for (const gap of found) if (!gapIsInfo(gap)) errors.set(scaffoldId, (errors.get(scaffoldId) ?? new Set()).add(short(gap)));
           }
         }
       }
-    });
+    }
   }
   const cannot = [...errors].map(([id, gaps]) => `${id}: ${[...gaps].sort().join(', ')}`);
   for (const [family, byTier] of noScaffold) {
     // One line per family when every tier misses the same shapes, else one per tier.
     const groups = new Map<string, SizeTier[]>();
-    for (const [tier, shapes] of byTier) {
+    for (const tier of TIERS.filter((t) => byTier.has(t))) {
+      const shapes = byTier.get(tier)!;
       const names = [...shapes].sort().join(' ');
       groups.set(names, [...(groups.get(names) ?? []), tier]);
     }
@@ -194,7 +205,7 @@ describe('the routing walk', () => {
     for (const g of genomes) {
       const r = routeBody(g);
       const body = g['body'] as number;
-      const { aquatic, airborne } = stateOf(g);
+      const { aquatic, airborne } = named(g);
       // The route is the design's for the body gene in the state the game's names give.
       expect([r.family, r.shapes, r.aquatic, r.airborne], JSON.stringify(g)).toEqual([...designRoute(body, aquatic), aquatic, airborne]);
       routes.add(routeLine(r));
@@ -240,26 +251,12 @@ describe('the coverage walk on the placeholder parts', () => {
       'serpent small large guardian: no scaffold for snake viper',
       'tentacled small large guardian: no scaffold for cuttlefish octopus squid',
     ]);
-    // Drawn, but without the skin's back part (information, not an error): the placeholder pack draws a back part
-    // for every skin on the four-legged bodies only.
-    expect(w.without).toEqual([
-      'crustacean/crab/medium: back/carapace-crab back/crystals-crab back/knobs-crab back/mane-crab back/plates-crab back/plume-crab back/ridge-crab',
-      'crustacean/lobster/medium: back/carapace-lobster back/crystals-lobster back/knobs-lobster back/mane-lobster back/plates-lobster back/plume-lobster back/ridge-lobster',
-      'fish/angler/medium: back/carapace-angler back/crystals-angler back/knobs-angler back/mane-angler back/plates-angler back/plume-angler back/ridge-angler',
-      'fish/flat/medium: back/carapace-flat back/crystals-flat back/knobs-flat back/mane-flat back/plates-flat back/plume-flat back/ridge-flat',
-      'fish/fusiform/medium: back/carapace-fusiform back/crystals-fusiform back/knobs-fusiform back/mane-fusiform back/plates-fusiform back/plume-fusiform back/ridge-fusiform',
-      'fish/shark/medium: back/carapace-shark back/crystals-shark back/knobs-shark back/mane-shark back/plates-shark back/plume-shark back/ridge-shark',
-      'fish/sturgeon/medium: back/carapace-sturgeon back/crystals-sturgeon back/knobs-sturgeon back/mane-sturgeon back/plates-sturgeon back/plume-sturgeon back/ridge-sturgeon',
-      'gelatinous/body/medium: back/ridge-body',
-      'insect/beetle/medium: back/carapace-beetle back/crystals-beetle back/knobs-beetle back/mane-beetle back/plates-beetle back/plume-beetle back/ridge-beetle',
-      'insect/generic/medium: back/carapace-generic back/crystals-generic back/knobs-generic back/mane-generic back/plates-generic back/plume-generic back/ridge-generic',
-      'insect/mantis/medium: back/carapace-mantis back/crystals-mantis back/knobs-mantis back/mane-mantis back/plates-mantis back/plume-mantis back/ridge-mantis',
-      'serpent/snake/medium: back/ridge-snake',
-      'serpent/viper/medium: back/ridge-viper',
-      'tentacled/cuttlefish/medium: back/carapace-cuttlefish back/knobs-cuttlefish back/plume-cuttlefish back/ridge-cuttlefish',
-      'tentacled/octopus/medium: back/carapace-octopus back/knobs-octopus back/plume-octopus back/ridge-octopus',
-      'tentacled/squid/medium: back/carapace-squid back/knobs-squid back/plume-squid back/ridge-squid',
-    ]);
+    // Drawn, but without the skin's back part (information, not an error): the placeholder pack holds back parts on
+    // the four-legged bodies only, so every other scaffold lacks all seven back kinds.
+    const backKinds = ['carapace', 'crystals', 'knobs', 'mane', 'plates', 'plume', 'ridge'];
+    const others = ['crustacean/crab', 'crustacean/lobster', 'fish/angler', 'fish/flat', 'fish/fusiform', 'fish/shark', 'fish/sturgeon', 'gelatinous/body',
+      'insect/beetle', 'insect/generic', 'insect/mantis', 'serpent/snake', 'serpent/viper', 'tentacled/cuttlefish', 'tentacled/octopus', 'tentacled/squid'];
+    expect(w.without).toEqual(others.map((id) => `${id}/medium: ${backKinds.map((kind) => `back/${kind}-${id.split('/')[1]}`).join(' ')}`));
     // 126 body, state and shape cases have a medium scaffold, each walked over 720 gene sets; the distinct part sets
     // among them are drawn in all seven poses.
     expect([w.planned, w.drawn, w.poses]).toEqual([126 * 720, 14802, 14802 * 7]);
@@ -270,7 +267,7 @@ describe('the coverage walk on the placeholder parts', () => {
     const parts = new Map(cat.parts);
     expect(parts.delete('quadruped/tail/t0/medium/v0')).toBe(true);
     // The sturdy body on land only.
-    const sturdy = (g: Genome): boolean => g['body'] === 0 && !stateOf(g).aquatic && !stateOf(g).airborne;
+    const sturdy = (g: Genome): boolean => g['body'] === 0 && !named(g).aquatic && !named(g).airborne;
     const lines = (c: Catalogue): string[] => walk(c, sturdy).cannot.filter((line) => !line.includes('no scaffold'));
     expect(lines({ ...cat, parts })).toEqual(['quadruped/sturdy/medium: missing tail/t0']);
     // A creature whose every part draws nothing is drawn as the fallback: reported too.
@@ -280,6 +277,21 @@ describe('the coverage walk on the placeholder parts', () => {
     expect(lines({ ...cat, parts: blank })).toEqual(['quadruped/sturdy/medium: fallback:quadruped']);
     // Without a fault the same walk reports nothing at medium.
     expect(lines(cat)).toEqual([]);
+  });
+
+  it('a missing information part is listed, and the list does not depend on the walk\'s order', () => {
+    const cat = routedTestCatalogue();
+    // Planted: the shelled body's shell (a body feature, information when missing) taken out of a copy of the pack.
+    const parts = new Map(cat.parts);
+    expect(parts.delete('quadruped/bodyFeature/shell-shelled/medium/v0')).toBe(true);
+    const shelled = (g: Genome): boolean => g['body'] === 6;
+    const clean = walk(cat, shelled).without;
+    expect(walk({ ...cat, parts }, shelled).without).toEqual([...clean, 'quadruped/shelled/medium: bodyFeature/shell-shelled'].sort());
+    expect(clean.some((line) => line.startsWith('quadruped/'))).toBe(false);
+    // The whole walk in the opposite order (states, shapes, tiers and gene sets) reports the same.
+    const reversed = walk(cat, () => true, true);
+    const w = theWalk();
+    expect([reversed.cannot, reversed.without, reversed.planned]).toEqual([w.cannot, w.without, w.planned]);
   });
 });
 
@@ -310,10 +322,10 @@ describe('unchanged animals keep their pictures', () => {
       if (buildRoutedRecipe(e.genome, [], cat).scaffoldId !== liveRecipe.scaffoldId) continue;
       compared++;
       const where = `${e.label} ${e.pose}`;
-      // Held back: the bulk step (the live builder's seeded torso variant is passed as the step), the skin, and each
+      // Held back: the bulk step (the live builder's seeded torso variant, its `torso-build` stream, is passed as the step), the skin, and each
       // part the design adds. The iris ramp comes from the theme on the routed path, but no hash reads a ramp.
-      const variant = /\/v(\d)$/.exec(liveRecipe.parts.find((p) => p.slot === 'torso')!.partId)![1];
-      const routed = buildRoutedRecipe(e.genome, [], cat, { bulk: Number(variant) as 0 | 1 | 2 });
+      const seeded = pick(artStream(identityKey(e.genome, []), 'torso-build', RENDERER_VERSION), VARIANTS.torso) as 0 | 1 | 2;
+      const routed = buildRoutedRecipe(e.genome, [], cat, { bulk: seeded });
       const asked = new Set(liveRecipe.parts.map(sameAs));
       const kept = routed.parts.filter((p) => asked.has(sameAs(p)));
       // Every part the live builder draws, the routed builder draws, with the same marks, in the same order...
@@ -323,9 +335,12 @@ describe('unchanged animals keep their pictures', () => {
         expect(ADDED.some((re) => re.test(p.partId)), `${where}: ${p.partId}`).toBe(true);
         added.add(p.partId.split('/').slice(1, 3).join('/').replace(/-h\d$/, '-h<n>'));
       }
-      const held = { ...routed, skin: null, parts: kept };
+      // The gaps the added parts met (a variant the pack lacks) are held back with them.
+      const partType = (id: string): string => id.replace(/^[a-z]+:/, '').replace(/\/v\d+$/, '');
+      const addedTypes = new Set(routed.parts.filter((q) => !asked.has(sameAs(q))).map((q) => partType(q.partId)));
+      const held = { ...routed, skin: null, parts: kept, gaps: routed.gaps.filter((gap) => !addedTypes.has(partType(gap))) };
       const out = compose(held, e.pose, cat);
-      expect([out.hash, out.contact], where).toEqual([e.hash, e.contact]);
+      expect([out.hash, out.contact, out.gaps], where).toEqual([e.hash, e.contact, e.gaps]);
       // Planted fault: with the skin kept, the same comparison fails.
       if (compose({ ...held, skin: routed.skin }, e.pose, cat).hash !== e.hash) skinned++;
     }
