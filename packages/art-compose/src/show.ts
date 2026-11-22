@@ -32,8 +32,11 @@ const hundredths = (n: number): number => ((n + 50) * 5243) >>> 19;
 /**
  * The colours (0xRRGGBB) a finished picture is shown in: each pixel's table colour; on a rim pixel (rimPixels) each
  * channel is min(255, c + round(r x percent / 100)), r the rim colour's channel. Percent 0 is the plain table lookup.
+ * Any percent but 0, 50 and 75 throws a RangeError naming it.
  */
 export function showColours(buffer: PixelBuffer, table: readonly number[], rim: { colour: number; percent: 0 | 50 | 75 }): Uint32Array {
+  const percent: unknown = rim.percent;
+  if (percent !== 0 && percent !== 50 && percent !== 75) throw new RangeError(`bad rim percent ${String(percent)}`);
   const { pixels } = buffer;
   const out = new Uint32Array(pixels.length);
   for (let i = 0; i < pixels.length; i++) out[i] = table[pixels[i] ?? 0] ?? 0;

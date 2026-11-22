@@ -33,13 +33,15 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
  * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp.
  * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws.
  * With a `tint` (a theme colour, 0xRRGGBB), entries 1-12 take each channel as tintChannel(a, t), the original's hide mix
- * (62 parts colour, 38 parts theme); 0 and 13-20 are unchanged. Without one, the table is untouched.
+ * (62 parts colour, 38 parts theme); 0, 13-20 and the four zeros of an unknown ramp are unchanged. Without one, the
+ * table is untouched. A tint that is not a whole number 0 to 0xffffff throws a RangeError naming it.
  */
 export function colourTable(
   palette: Palette,
   ramps: { primary: string; accent: string; underside: string; iris: string },
   tint?: number,
 ): { table: number[]; unknown: string[] } {
+  if (tint !== undefined && !(Number.isInteger(tint) && tint >= 0 && tint <= 0xffffff)) throw new RangeError(`bad tint ${String(tint)}`);
   const unknown: string[] = [];
   const rgb = (index: number): number => palette.colours[index] ?? 0;
   const ramp = (name: string): number[] => {
@@ -53,7 +55,10 @@ export function colourTable(
   const table = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
     rgb(palette.eye), rgb(palette.eyeHighlight), rgb(palette.glow), rgb(palette.outline), ...ramp(ramps.iris)];
   if (tint !== undefined) {
+    // An unknown ramp stays as it is (black): only the entries of the ramps the palette holds are tinted.
+    const held = [ramps.primary, ramps.accent, ramps.underside].map((name) => Object.hasOwn(palette.ramps, name));
     for (let v = 1; v <= 12; v++) {
+      if (held[(v - 1) >> 2] !== true) continue;
       const c = table[v] ?? 0;
       table[v] = (tintChannel((c >>> 16) & 255, (tint >>> 16) & 255) << 16) | (tintChannel((c >>> 8) & 255, (tint >>> 8) & 255) << 8)
         | tintChannel(c & 255, tint & 255);

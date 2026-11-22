@@ -86,3 +86,13 @@ describe('showColours', () => {
     }
   });
 });
+
+describe('showColours: a bad rim percent is refused', () => {
+  it('throws a RangeError naming any percent but 0, 50 and 75', () => {
+    const b = bufferOf(['.11', '.11']);
+    for (const percent of [25, 100, -50, 50.5, NaN, '50', null]) {
+      expect(() => showColours(b, TABLE, { colour: 0xffffff, percent: percent as 50 }), String(percent)).toThrow(new RangeError(`bad rim percent ${String(percent)}`));
+    }
+    for (const percent of [0, 50, 75] as const) expect(() => showColours(b, TABLE, { colour: 0xffffff, percent })).not.toThrow();
+  });
+});

@@ -137,6 +137,23 @@ describe('colourTable: the theme tint', () => {
     expect(colourTable(palette, RAMPS, undefined)).toEqual(today);
   });
 
+  it('refuses a tint that is not a whole number 0 to 0xffffff, naming it', () => {
+    for (const bad of [-1, 0x1000000, 1.5, NaN, Infinity, '0xff7a4a', null]) {
+      expect(() => colourTable(palette, RAMPS, bad as number), String(bad)).toThrow(new RangeError(`bad tint ${String(bad)}`));
+    }
+    for (const good of [0, 0xffffff, 0x8fd6ff]) expect(() => colourTable(palette, RAMPS, good)).not.toThrow();
+  });
+
+  it('an unknown ramp stays black (four zeros), tinted or not; the known ramps are tinted', () => {
+    const plain = colourTable(palette, { ...RAMPS, accent: 'nosuch' });
+    const tinted = colourTable(palette, { ...RAMPS, accent: 'nosuch' }, 0xff7a4a);
+    expect(tinted.unknown).toEqual(['nosuch']);
+    expect(plain.table.slice(5, 9)).toEqual([0, 0, 0, 0]);
+    expect(tinted.table.slice(5, 9)).toEqual([0, 0, 0, 0]);
+    expect(tinted.table.slice(1, 5)).toEqual(colourTable(palette, RAMPS, 0xff7a4a).table.slice(1, 5));
+    expect(tinted.table.slice(1, 5)).not.toEqual(plain.table.slice(1, 5));
+  });
+
   it('the tint leaves 0 and 13 to 20', () => {
     const plain = colourTable(palette, RAMPS).table;
     for (const t of [0, 0xffffff, 0xff7a4a]) {
