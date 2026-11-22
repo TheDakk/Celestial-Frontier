@@ -1,6 +1,5 @@
 import { DRAW_ORDER, MARK_SLOTS, partId } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName, Species } from '@cf/art-format';
-import type { Anatomy } from './resolve';
 import type { Body } from './route';
 import type { PartMark, RecipePart } from './recipe';
 import { pick } from './streams';
@@ -13,9 +12,6 @@ export const BACK_KIND_BY_SKIN: readonly (string | null)[] = Object.freeze(
   ['ridge', 'mane', 'carapace', null, 'plates', 'knobs', 'plume', null, 'crystals'],
 );
 
-/** The head feature a torso type asks for; other torso types ask for none. Part of renderer version 1. */
-export const HEAD_FEATURE_BY_TORSO: Readonly<Record<string, string>> = Object.freeze({ tusked: 'tusks', horned: 'horns' });
-
 /** The limb kind at a limb index: index 0 is the front pair, 1 the hind pair, 2 and 3 the middle pairs; both legs of a two-legged creature are hind. */
 export function limbKind(index: number, legs: number): 'fore' | 'hind' | 'mid' {
   if (legs === 2) return 'hind';
@@ -24,7 +20,7 @@ export function limbKind(index: number, legs: number): 'fore' | 'hind' | 'mid' {
   return 'mid';
 }
 
-/** The torso type a scaffold and its parts are named for: the anatomy's or body's torso, or `body` for a family with none. */
+/** The torso type a scaffold and its parts are named for: the body's torso (its torso type or shape), or `body` when it has none. */
 export function torsoKindOf(a: { torso: string }): string {
   return a.torso === '' ? 'body' : a.torso;
 }
@@ -125,59 +121,20 @@ function lookUp(catalogue: Catalogue, family: string, tier: SizeTier, build: str
 
 const byDrawOrder = (x: Wanted, y: Wanted): number => DRAW_ORDER.indexOf(x.slot) - DRAW_ORDER.indexOf(y.slot) || x.index - y.index;
 
-/**
- * The parts a fauna creature asks for, in DRAW_ORDER then index, and the gaps met on the way. Leg roles (a build's own
- * legs, `<role>-<torso type>`, before the shared ones), the skin's
- * back part, the torso type's head feature, and a mark for every part in a mark slot when the creature is patterned.
- * Every other kingdom asks for no parts.
- */
-export function planParts(
-  a: Anatomy,
-  variants: { torso: number; head: number; tail: number; limb: number },
-  stream: (name: string) => () => number,
-  catalogue: Catalogue,
-): { parts: RecipePart[]; gaps: string[] } {
-  const parts: RecipePart[] = [];
-  const gaps: string[] = [];
-  if (a.kingdom !== 'fauna') return { parts, gaps };
-
-  const torsoKind = torsoKindOf(a);
-  const wanted: Wanted[] = legsWanted(a.limbs, variants.limb);
-  if (a.tail !== 0) wanted.push({ slot: 'tail', index: 0, kind: `t${a.tail}`, variant: variants.tail, limb: false });
-  wanted.push({ slot: 'torso', index: 0, kind: torsoKind, variant: variants.torso, limb: false });
-  const back = BACK_KIND_BY_SKIN[a.skin] ?? null;
-  if (back !== null) wanted.push({ slot: 'back', index: 0, kind: `${back}-${torsoKind}`, variant: 0, limb: false });
-  wanted.push({ slot: 'head', index: 0, kind: `h${a.head}`, variant: variants.head, limb: false });
-  if (Object.hasOwn(HEAD_FEATURE_BY_TORSO, a.torso)) {
-    wanted.push({ slot: 'headFeature', index: 0, kind: `${HEAD_FEATURE_BY_TORSO[a.torso]}-h${a.head}`, variant: 0, limb: false });
-  }
-  for (let i = 0; i < a.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: 'eye', variant: 0, limb: false });
-  wanted.sort(byDrawOrder);
-
-  for (const w of wanted) {
-    const found = lookUp(catalogue, a.family, a.tier, a.torso, w, gaps);
-    if (found === undefined) continue;
-    const part: RecipePart = { slot: w.slot, index: w.index, partId: found, source: 'own' };
-    if (a.pattern !== 0 && MARK_SLOTS.includes(w.slot)) part.mark = markFor(w.slot, w.index, stream);
-    parts.push(part);
-  }
-  return { parts, gaps };
-}
-
 /** The family whose body carries no back part. */
 const NO_BACK_FAMILY = 'radial';
 
 /**
  * The parts a fauna body asks for (resolveBody), in DRAW_ORDER then index, and the gaps met on the way; every other
- * kingdom asks for none. As planParts for the leg roles (`limbs` legs, the shape's own legs first), the torso, the
- * skin's back part on the torso kind (none on a radial), the head features (headFeatureKinds, at index 0 and 1, all
- * hung from the head's `feature` point) and the marks. Head `h<head>`
+ * kingdom asks for none. Leg roles (`limbs` legs; a build's own legs, `<role>-<torso>`, before the shared ones), the
+ * torso, the skin's back part on the torso kind (none on a radial), the head features (headFeatureKinds, at index 0
+ * and 1, all hung from the head's `feature` point), and a mark for every part in a mark slot when the creature is
+ * patterned. Head `h<head>`
  * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null, `eye`
  * at 0 to `eyes - 1`, two `pit` parts when `eyes` is 0; a body without a head part places them on its torso (`at`).
  * A winged build asks for its WING_KINDS at each wing index in both wing slots, and, aquatic, for two `flipper-<torso>`
  * near limbs (falling back to `flipper`); any other airborne quadruped for `sails-<torso>` (falling back to `sails`) in
  * nearWings, hung from the torso's `back`; a body feature (bodyFeatureKind) in bodyFeature. All at v0.
- * Not live: only the routed builder calls it.
  */
 export function planBodyParts(
   b: Body,

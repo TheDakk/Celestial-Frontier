@@ -1,18 +1,15 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { VARIANTS, type Catalogue, type SizeTier } from '@cf/art-format';
+import type { Catalogue, SizeTier } from '@cf/art-format';
 import {
-  artStream, buildRecipe, buildRoutedRecipe, fishShapes, identityKey, pick, planBodyParts, RENDERER_VERSION, resolveBody, routeBody,
-  SHAPES, torsoKindOf, type Recipe, type RecipePart,
+  buildRecipe, fishShapes, planBodyParts, resolveBody, routeBody, SHAPES, torsoKindOf, type Recipe, type RecipePart,
 } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
-import { routedTestCatalogue, testCatalogue } from '@cf/art-testparts';
+import { routedTestCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, REQUIRED_POSES, shapedGenome } from '../../../tools/check-pack.mjs';
 import { nameState } from '../../art-recipe/test/name-tests';
 
-// The coverage walk (body routing, Task 16): every route a genome can take, every shape of it, and every part gene the
-// planner reads, drawn on the placeholder parts; and the proof that a recorded creature whose animal does not change
-// keeps its picture on the routed path. The routed builder is not live: buildRecipe still draws every recorded creature.
+// The coverage walk (body routing): every route a genome can take, every shape of it, and every part gene the planner
+// reads, drawn on the placeholder parts.
 
 type Genome = Record<string, unknown>;
 type Route = ReturnType<typeof routeBody>;
@@ -132,7 +129,7 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
         // The recipe the routed builder makes for one genome of this shape: the walk draws its recipes on it.
         const shaped = shapedGenome({ kingdom: 'fauna', ...state, ...TIER_GENES[tier], ...BASE }, family, shape);
         if (shaped === undefined) throw new Error(`no seed shapes ${scaffoldId}`);
-        const template = buildRoutedRecipe(shaped, [], catalogue);
+        const template = buildRecipe(shaped, [], catalogue);
         const plan = (g: Genome) => {
           const b = resolveBody(g, shapeAt(i, shapes.length));
           return { b, ...planBodyParts(b, V0, () => () => 0, catalogue) };
@@ -292,62 +289,5 @@ describe('the coverage walk on the placeholder parts', () => {
     const reversed = walk(cat, () => true, true);
     const w = theWalk();
     expect([reversed.cannot, reversed.without, reversed.planned]).toEqual([w.cannot, w.without, w.planned]);
-  });
-});
-
-interface Entry { label: string; genome: Genome; pose: string; hash: string; gaps: string[]; contact: [number, number] | null }
-const FIXTURE: { entries: Entry[] } = JSON.parse(readFileSync(new URL('../../../fixtures/art/quadruped-v1.json', import.meta.url), 'utf8'));
-
-/**
- * The parts the design adds to a four-legged animal whose routing does not change: the stub tail where the tail gene
- * is 0, two sensory pits where there are no eyes, a horn by head kind or trait (the hornlet on a tusked body), and
- * sails on an airborne body.
- */
-const ADDED: readonly RegExp[] = [
-  /^quadruped\/tail\/t0\//, /^quadruped\/eyes\/pit\//, /^quadruped\/headFeature\/(horns|hornlet)-h\d\//, /^quadruped\/nearWings\/sails(-[a-z]+)?\//,
-];
-const sameAs = (p: RecipePart): string => `${p.slot} ${p.index} ${p.partId}`;
-
-describe('unchanged animals keep their pictures', () => {
-  it('every recorded creature whose animal is unchanged composes its recorded hash on the routed path, with the design\'s additions held back', () => {
-    const live = testCatalogue();
-    const cat = routedTestCatalogue();
-    let compared = 0;
-    let skinned = 0;
-    const added = new Set<string>();
-    for (const e of FIXTURE.entries) {
-      if (e.gaps.some((gap) => gap.startsWith('fallback:'))) continue;
-      const liveRecipe = buildRecipe(e.genome, [], live);
-      // The same family, torso type and tier on both paths.
-      if (buildRoutedRecipe(e.genome, [], cat).scaffoldId !== liveRecipe.scaffoldId) continue;
-      compared++;
-      const where = `${e.label} ${e.pose}`;
-      // Held back: the bulk step (the live builder's seeded torso variant, its `torso-build` stream, is passed as the step), the skin, and each
-      // part the design adds. The iris ramp comes from the theme on the routed path, but no hash reads a ramp.
-      const seeded = pick(artStream(identityKey(e.genome, []), 'torso-build', RENDERER_VERSION), VARIANTS.torso) as 0 | 1 | 2;
-      const routed = buildRoutedRecipe(e.genome, [], cat, { bulk: seeded });
-      const asked = new Set(liveRecipe.parts.map(sameAs));
-      const kept = routed.parts.filter((p) => asked.has(sameAs(p)));
-      // Every part the live builder draws, the routed builder draws, with the same marks, in the same order...
-      expect(kept, where).toEqual(liveRecipe.parts);
-      // ...and every other part it draws is one the design adds.
-      for (const p of routed.parts.filter((q) => !asked.has(sameAs(q)))) {
-        expect(ADDED.some((re) => re.test(p.partId)), `${where}: ${p.partId}`).toBe(true);
-        added.add(p.partId.split('/').slice(1, 3).join('/').replace(/-h\d$/, '-h<n>'));
-      }
-      // The gaps the added parts met (a variant the pack lacks) are held back with them.
-      const partType = (id: string): string => id.replace(/^[a-z]+:/, '').replace(/\/v\d+$/, '');
-      const addedTypes = new Set(routed.parts.filter((q) => !asked.has(sameAs(q))).map((q) => partType(q.partId)));
-      const held = { ...routed, skin: null, parts: kept, gaps: routed.gaps.filter((gap) => !addedTypes.has(partType(gap))) };
-      const out = compose(held, e.pose, cat);
-      expect([out.hash, out.contact, out.gaps], where).toEqual([e.hash, e.contact, e.gaps]);
-      // Planted fault: with the skin kept, the same comparison fails.
-      if (compose({ ...held, skin: routed.skin }, e.pose, cat).hash !== e.hash) skinned++;
-    }
-    // 173 recorded entries compose a real creature; 94 of them change animal (the armored body is now a crustacean,
-    // and an aquatic habitat makes a fish), so 79 are compared.
-    expect(compared).toBe(79);
-    expect(skinned).toBeGreaterThan(0);
-    expect([...added].sort()).toEqual(['eyes/pit', 'headFeature/hornlet-h<n>', 'headFeature/horns-h<n>', 'nearWings/sails', 'nearWings/sails-stilt', 'tail/t0']);
   });
 });

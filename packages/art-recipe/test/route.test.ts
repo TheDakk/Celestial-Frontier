@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
-import { resolveAnatomy } from '../src/resolve';
 import {
   FISH_KEEPS_BY_BODY, HORN_HEADS, HORN_TRAIT, OWN_FAMILY_BY_BODY, SHAPES, TAIL_PART_KINDS, TORSO_BY_BODY,
   fishShapes, resolveBody, routeBody,
@@ -145,6 +144,8 @@ describe('routeBody and resolveBody', () => {
     expect([tier({ size: 0 }), tier({ size: undefined }), tier({ size: NaN })]).toEqual(['small', 'small', 'small']);
     expect([tier({ size: 1 }), tier({ size: 2 }), tier({ size: 3 }), tier({ size: 4 }), tier({ size: 5 })]).toEqual(['small', 'medium', 'medium', 'large', 'large']);
     expect([tier({ size: 0, apex: 12 }), tier({ size: 1, apex: 12 })]).toEqual(['guardian', 'guardian']);
+    // The size gene wraps and floors as every gene does (tierForSize's cases, moved here when it was deleted).
+    expect([6, -1, 1.5, -0.5, Infinity, -Infinity].map((size) => tier({ size }))).toEqual(['small', 'large', 'small', 'large', 'small', 'small']);
   });
 
   it('carries the shared genes of a fauna body', () => {
@@ -162,15 +163,17 @@ describe('the other kingdoms', () => {
   const neutral = { head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100, theme: null };
   it.each([['flora', 18], ['fungi', 9], ['microbe', 12]] as const)('%s resolves as today, with the neutral fields', (kingdom, length) => {
     const genome = { ...base, kingdom, form: length + 2 };
-    const a = resolveAnatomy(genome);
-    expect(resolveBody(genome, first)).toEqual({ ...neutral, kingdom, family: kingdom, torso: '', tier: a.tier, pattern: 0, skin: 0, colour: 13, accent: 2, glow: true, form: 2, floraTable: 'land' });
+    expect(resolveBody(genome, first)).toEqual({ ...neutral, kingdom, family: kingdom, torso: '', tier: 'large', pattern: 0, skin: 0, colour: 13, accent: 2, glow: true, form: 2, floraTable: 'land' });
   });
-  it('flora reads the sea table for aq, else the air table for af, and keeps today\'s size tier', () => {
+  it('flora reads the sea table for aq, else the air table for af, and takes the size table\'s tier', () => {
     const flora = { ...base, kingdom: 'flora' };
-    for (const extra of [{ aq: 1, form: 8 }, { af: 1, form: 4 }, { aq: 1, af: 1, form: 10 }, { form: 20 }, { size: 0 }, { size: 1 }]) {
-      const a = resolveAnatomy({ ...flora, ...extra });
+    const cases: [Record<string, unknown>, [string, number, string]][] = [
+      [{ aq: 1, form: 8 }, ['aquatic', 2, 'large']], [{ af: 1, form: 4 }, ['aerial', 1, 'large']], [{ aq: 1, af: 1, form: 10 }, ['aquatic', 4, 'large']],
+      [{ form: 20 }, ['land', 2, 'large']], [{ size: 0 }, ['land', 0, 'small']], [{ size: 1 }, ['land', 0, 'small']], [{ size: 2 }, ['land', 0, 'medium']],
+    ];
+    for (const [extra, expected] of cases) {
       const b = resolveBody({ ...flora, ...extra }, first);
-      expect([b.floraTable, b.form, b.tier], JSON.stringify(extra)).toEqual([a.floraTable, a.form, a.tier]);
+      expect([b.floraTable, b.form, b.tier], JSON.stringify(extra)).toEqual(expected);
     }
   });
   it('does not read the stream outside fauna', () => {

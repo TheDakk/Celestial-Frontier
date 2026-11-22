@@ -1,10 +1,10 @@
-import { EYE_COUNTS, LIMB_COUNTS, tierForSize } from '@cf/art-format';
+import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
 import type { SizeTier, ThemeName } from '@cf/art-format';
 import { EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, marked, wrap } from './resolve';
 import { SIZE_TIER_BY_GENE, stateOf, themeOf } from './states';
 import { pick } from './streams';
 
-/** The animal the original draws for a genome, and only the genes that animal reads. Built beside resolveAnatomy; not yet read by buildRecipe. */
+/** The animal the original draws for a genome, and only the genes that animal reads (buildRecipe draws it). */
 export interface Body {
   kingdom: 'fauna' | 'flora' | 'fungi' | 'microbe';
   family: string;        // quadruped, fish, insect, serpent, tentacled, gelatinous, radial, crustacean; the kingdom outside fauna
@@ -85,10 +85,11 @@ export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStre
   const L = GENE_LENGTHS;
   const guardian = isGuardianScale(genome);
   const shared = { colour: g('color', L.color), accent: g('accent', L.accent), glow: genome['lumin'] === true };
+  const tier = guardian ? 'guardian' as const : SIZE_TIER_BY_GENE[g('size', L.size)]!;
   const kingdom = genome['kingdom'];
   if (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe') {
     const neutral = {
-      ...shared, family: kingdom, torso: '', tier: guardian ? 'guardian' as const : tierForSize(g('size', L.size)),
+      ...shared, family: kingdom, torso: '', tier,
       head: null, tail: null, eyes: null, keeps: null, limbs: 0, horn: false, aquatic: false, airborne: false, opacity: 100 as const, theme: null,
       pattern: 0, skin: 0,
     };
@@ -133,7 +134,7 @@ export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStre
 
   return {
     ...shared, kingdom: 'fauna', family, torso: shape,
-    tier: guardian ? 'guardian' : SIZE_TIER_BY_GENE[g('size', L.size)]!,
+    tier,
     head: readsHead ? headGene : null, tail, limbs, eyes,
     horn: quadruped && (HORN_HEADS.includes(headGene) || g('trait', L.trait) === HORN_TRAIT),
     keeps: family === 'fish' ? FISH_KEEPS_BY_BODY[body] ?? null : null,
