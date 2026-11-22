@@ -27,7 +27,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, buildSpeciesRecipe, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
+const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -631,7 +631,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
  * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
  * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
- * but not all eleven), species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
+ * but not all eleven), species (a key that is a torso type, a ramp the palette lacks; its iris is `<key>-iris` when present, else `iris<n>`), poses and their leg-count entries,
  * contact points, fallbacks.
  */
 function structureProblems(catalogue) {
@@ -688,7 +688,8 @@ function structureProblems(catalogue) {
   }
   for (const species of catalogue.species.values()) {
     if (GENERATED_TORSOS.has(`${species.family}/${species.key}`)) problems.push(`species ${species.key}: key is a torso type of ${species.family}`);
-    for (const ramp of [species.key, `${species.key}-accent`, `${species.key}-under`, `iris${species.iris}`]) {
+    // The iris: the species' own `<key>-iris` when the palette holds it, else `iris<n>` (speciesIrisRamp).
+    for (const ramp of [species.key, `${species.key}-accent`, `${species.key}-under`, speciesIrisRamp(species.key, species.iris, catalogue)]) {
       if (!Object.hasOwn(catalogue.palette.ramps, ramp)) problems.push(`species ${species.key}: palette has no ramp ${ramp}`);
     }
   }

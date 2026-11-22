@@ -960,6 +960,22 @@ describe('checkPack on a named species', () => {
     expect(iris.structure).toContain('species civet: palette has no ramp iris7');
   });
 
+  it('a species with its own iris ramp <key>-iris needs no iris<n> ramp for itself; without either it is an error', () => {
+    // iris=7 with no iris7 ramp: the species error, and the palette's own partial-iris error
+    const noIris7 = planted('iris=0', 'iris=7', planted('ramp iris7 0 1 0 1\n', '', WITH_CIVET));
+    expect(checkPack(noIris7).structure).toEqual(['palette: missing iris ramp iris7', 'species civet: palette has no ramp iris7']);
+    // the same pack with a civet-iris ramp: the species is satisfied, the palette's own rule still stands
+    const own = checkPack(planted(CIVET_RAMPS, `${CIVET_RAMPS}ramp civet-iris 0 1 0 1\n`, noIris7));
+    expect(own.structure).toEqual(['palette: missing iris ramp iris7']);
+    // another species' own iris ramp does not satisfy this one
+    const other = checkPack(planted(CIVET_RAMPS, `${CIVET_RAMPS}ramp otter-iris 0 1 0 1\n`, noIris7));
+    expect(other.structure).toEqual(['palette: missing iris ramp iris7', 'species civet: palette has no ramp iris7']);
+    // a full palette plus civet-iris checks OK and draws the species with it
+    const good = checkPack(planted(CIVET_RAMPS, `${CIVET_RAMPS}ramp civet-iris 0 1 0 1\n`, WITH_CIVET));
+    expect(errorsOf(good)).toEqual([]);
+    expect(good.ok).toBe(true);
+  });
+
   it('a missing species head is an error gap', () => {
     const r = checkPack(planted('part quadruped/head/civet/small/v0', 'part quadruped/head/civet/small/v1', WITH_CIVET));
     expect(r.gaps.find((g) => g.gap === 'missing:quadruped/head/civet/small/v0')).toMatchObject({ count: 7, error: true });

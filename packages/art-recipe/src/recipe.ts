@@ -144,8 +144,18 @@ function rimOf(b: Body): 0 | 50 | 75 {
 }
 
 /**
+ * A named species' iris ramp: its own `<key>-iris` when the palette holds one, else `iris<n>` from its `iris=` field.
+ * The `iris<n>` ramps are the theme colours, so a species that must keep its eye colour whatever the themes become
+ * gets its own ramp.
+ */
+export function speciesIrisRamp(key: string, iris: number, catalogue: Catalogue): string {
+  const own = `${key}-iris`;
+  return Object.hasOwn(catalogue.palette.ramps, own) ? own : `iris${iris}`;
+}
+
+/**
  * The recipe of a named species (catalogue line `species`): one fixed look, the same picture everywhere. Its own parts
- * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps, plain, no shift, no glow. No stream is drawn.
+ * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps (speciesIrisRamp), plain, no shift, no glow. No stream is drawn.
  * An unknown key throws. Frozen like buildRecipe's result.
  */
 export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
@@ -157,7 +167,7 @@ export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
     scaffoldId: `${species.family}/${key}/${species.tier}`,
     legs: species.legs,
     parts,
-    ramps: { primary: key, accent: `${key}-accent`, underside: `${key}-under`, iris: `iris${species.iris}` },
+    ramps: { primary: key, accent: `${key}-accent`, underside: `${key}-under`, iris: speciesIrisRamp(key, species.iris, catalogue) },
     marking: { pattern: 0, strength: 2, phase: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
     glow: false, gaps,

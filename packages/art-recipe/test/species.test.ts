@@ -44,6 +44,20 @@ describe('buildSpeciesRecipe', () => {
     for (const p of r.parts) expect('mark' in p).toBe(false);
   });
 
+  it('takes its own iris ramp <key>-iris when the palette holds one, else iris<n> (a theme colour)', () => {
+    const withOwn = (ramps: string): Catalogue =>
+      parseCatalogueText(HEADER + ramps + [...ownParts('civet'), ...SHARED].map(partText).join('\n') + '\n' + SCAFFOLDS + '\n' + CIVET + '\n');
+    expect(buildSpeciesRecipe('civet', full()).ramps.iris).toBe('iris3');
+    expect(buildSpeciesRecipe('civet', withOwn('ramp civet-iris 1 2 3 4\n')).ramps.iris).toBe('civet-iris');
+    // another species' own iris ramp is not this one's
+    expect(buildSpeciesRecipe('civet', withOwn('ramp otter-iris 1 2 3 4\n')).ramps.iris).toBe('iris3');
+    // everything else is the same recipe
+    const { ramps: a, ...restA } = buildSpeciesRecipe('civet', withOwn('ramp civet-iris 1 2 3 4\n'));
+    const { ramps: b, ...restB } = buildSpeciesRecipe('civet', full());
+    expect(restA).toEqual(restB);
+    expect({ ...a, iris: '' }).toEqual({ ...b, iris: '' });
+  });
+
   it('tail=0 asks for no tail and gives no gap', () => {
     const r = buildSpeciesRecipe('civet', catalogueOf([...ownParts('civet'), ...SHARED], [CIVET.replace('tail=1', 'tail=0')]));
     expect(r.parts.some((p) => p.slot === 'tail')).toBe(false);

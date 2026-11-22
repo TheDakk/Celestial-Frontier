@@ -11,6 +11,9 @@ const SPECIES_KEY = /^[a-z][a-z0-9]*$/;
  * Names the generated creatures use, which a species key may not take: its parts and ramps are named from the key.
  * The torso type of a family with none (`body`), the leg and eye kinds, head and tail kinds (`h<n>`, `t<n>`), and the
  * colour and iris ramps (`c<n>`, `iris<n>`). A torso type of a family is refused by the checker, which knows the gene table.
+ * A species' ramps are `<key>`, `<key>-accent`, `<key>-under` and, when present, `<key>-iris`. A key has no hyphen, so
+ * none of these can equal a generated ramp (`c<n>`, `c<n>-under`, `iris<n>`: `c<n>` and `iris<n>` are refused as keys)
+ * or another species' ramp.
  */
 const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid', 'eye'];
 const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
