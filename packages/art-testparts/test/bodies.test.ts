@@ -1,15 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { MARK_SLOTS, parseCatalogueText, type Catalogue, type PartFrame } from '@cf/art-format';
-import { buildRoutedRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
+import { MARK_SLOTS, type Catalogue, type PartFrame } from '@cf/art-format';
+import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
-import { joinBodies, REPLACED_PART, routedTestCatalogue, testCatalogue } from '@cf/art-testparts';
+import { testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, generatedTorsos, routeStates, shapedGenome } from '../../../tools/check-pack.mjs';
 
-// The placeholder parts for the routed builder (bodies.txt), read through routedTestCatalogue. buildRecipe never
-// reaches them: these tests draw every creature through buildRoutedRecipe.
-const QUADRUPED_TEXT = readFileSync(new URL('../src/quadruped.txt', import.meta.url), 'utf8');
-const BODIES_TEXT = readFileSync(new URL('../src/bodies.txt', import.meta.url), 'utf8');
+// The placeholder parts of every routed body (quadruped.txt, read through testCatalogue), drawn through buildRecipe.
+const TEXT = readFileSync(new URL('../src/quadruped.txt', import.meta.url), 'utf8');
 const POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 /** Grazers, gliders (airborne) and swimmers (aquatic), all in the deep forest canopy. */
 const STATE = { land: { loco: 0, habitat: 0 }, airborne: { loco: 3, habitat: 0 }, aquatic: { loco: 4, habitat: 0 } } as const;
@@ -17,7 +15,7 @@ type State = keyof typeof STATE;
 /** The new four-legged torso types by body gene; the two winged ones stay four-legged in water too. */
 const NEW_TYPES = { shelled: 6, membranous: 7, crystalline: 8, spindly: 12, fourwinged: 14 } as const;
 const WINGED = ['membranous', 'fourwinged'];
-const STURDY_TORSO = REPLACED_PART;
+const STURDY_TORSO = 'quadruped/torso/sturdy/medium/v0';
 /** The tail kinds a fish, a tentacled body or a crustacean draws. */
 const OWN_TAILS = [2, 3, 5, 6];
 
@@ -32,8 +30,7 @@ const fusiform = (genes: Record<string, unknown>): Record<string, unknown> => {
   if (g === undefined) expect.fail(`no fusiform seed for ${JSON.stringify(genes)}`);
   return g;
 };
-const routed = (g: Record<string, unknown>): Recipe => buildRoutedRecipe(g, [], routedTestCatalogue());
-const ids = (text: string): string[] => [...parseCatalogueText(text).parts.keys()];
+const routed = (g: Record<string, unknown>): Recipe => buildRecipe(g, [], testCatalogue());
 /** The recipe without its part at position i. */
 const without = (r: Recipe, i: number): Recipe => ({ ...r, parts: r.parts.filter((_, k) => k !== i) });
 /** The pixels that differ between two buffers. */
@@ -99,59 +96,19 @@ function landedBox(recipe: Recipe, cat: Catalogue, i: number): [number, number, 
   return diffBox(a.pixels, assemble(without(recipe, i), 'rest', cat).buffer.pixels, a.w);
 }
 
-describe('routedTestCatalogue', () => {
-  it('routedTestCatalogue parses and holds every part of both files', () => {
-    const cat = routedTestCatalogue();
-    const quadruped = parseCatalogueText(QUADRUPED_TEXT);
-    const bodies = parseCatalogueText(BODIES_TEXT);
-    for (const id of [...quadruped.parts.keys(), ...bodies.parts.keys()]) expect(cat.parts.has(id), id).toBe(true);
-    // Every part of bodies.txt is drawn as bodies.txt draws it; the one id both files hold is the sturdy torso.
-    for (const [id, part] of bodies.parts) expect(cat.parts.get(id), id).toEqual(part);
-    expect([...bodies.parts.keys()].filter((id) => quadruped.parts.has(id))).toEqual([STURDY_TORSO]);
-    expect(cat.parts.size).toBe(quadruped.parts.size + bodies.parts.size - 1);
-    expect([...cat.scaffolds.keys()].sort()).toEqual([...quadruped.scaffolds.keys(), ...bodies.scaffolds.keys()].sort());
-    expect(cat.scaffolds.size).toBe(quadruped.scaffolds.size + bodies.scaffolds.size);
-    expect([...cat.fallbacks]).toEqual([...quadruped.fallbacks, ...bodies.fallbacks]);
-    expect(cat.palette).toEqual(quadruped.palette);
-    expect(cat.species.size).toBe(0);
+describe('the merged placeholder file', () => {
+  it('the sturdy torso carries a translucent layer on its rest frame, beside flow and spots', () => {
+    const torso = testCatalogue().parts.get(STURDY_TORSO)!;
+    expect(Object.keys(torso.frames)).toEqual(['rest']);
+    const layers = torso.frames['rest']!.layers!;
+    expect(Object.keys(layers).sort()).toEqual(['flow', 'spots', 'translucent']);
+    expect(layers.translucent!.some((v) => v !== 0)).toBe(true);
   });
 
-  it('throws on a part id both files hold, except the one sturdy torso bodies.txt replaces', () => {
-    const base = parseCatalogueText(QUADRUPED_TEXT);
-    const bodies = parseCatalogueText(BODIES_TEXT);
-    expect(() => joinBodies(base, bodies)).not.toThrow();
-    const ridge = 'quadruped/back/ridge-sturdy/medium/v0';
-    const repeated = new Map(bodies.parts).set(ridge, base.parts.get(ridge)!);
-    expect(() => joinBodies(base, { ...bodies, parts: repeated })).toThrow(`bodies.txt: duplicate part ${ridge}`);
-    const scaffold = new Map(bodies.scaffolds).set('quadruped/sturdy/medium', base.scaffolds.get('quadruped/sturdy/medium')!);
-    expect(() => joinBodies(base, { ...bodies, scaffolds: scaffold })).toThrow('bodies.txt: duplicate scaffold quadruped/sturdy/medium');
-  });
-
-  it('keeps the sturdy torso drawing, adding only a translucent layer on its rest frame', () => {
-    const live = testCatalogue().parts.get(STURDY_TORSO)!;
-    const routedTorso = routedTestCatalogue().parts.get(STURDY_TORSO)!;
-    expect(Object.keys(routedTorso.frames)).toEqual(['rest']);
-    const { layers, ...frame } = routedTorso.frames['rest']!;
-    const { layers: liveLayers, ...liveFrame } = live.frames['rest']!;
-    expect(frame).toEqual(liveFrame);
-    expect(Object.keys(layers!).sort()).toEqual(['flow', 'spots', 'translucent']);
-    expect(layers!.flow).toEqual(liveLayers!.flow);
-    expect(layers!.spots).toEqual(liveLayers!.spots);
-    expect(layers!.translucent!.some((v) => v !== 0)).toBe(true);
-  });
-
-  it('leaves testCatalogue as quadruped.txt alone draws it', () => {
-    const live = testCatalogue();
-    expect(live).toEqual(parseCatalogueText(QUADRUPED_TEXT));
-    for (const id of ids(BODIES_TEXT)) if (id !== STURDY_TORSO) expect(live.parts.has(id), id).toBe(false);
-  });
-
-  it('bodies.txt holds no palette, medium v0 parts with flow and spots on every mark-slot frame, and crustacean fallbacks at every tier', () => {
-    expect(BODIES_TEXT).not.toMatch(/^palette/m);
-    const bodies = parseCatalogueText(BODIES_TEXT);
-    const fallbackIds = new Set(bodies.fallbacks.values());
-    expect([...bodies.fallbacks.keys()]).toEqual(['crustacean/small', 'crustacean/medium', 'crustacean/large', 'crustacean/guardian']);
-    for (const part of bodies.parts.values()) {
+  it('holds medium v0 parts with flow and spots on every mark-slot frame, and no armored part, scaffold or back part', () => {
+    const cat = testCatalogue();
+    const fallbackIds = new Set(cat.fallbacks.values());
+    for (const part of cat.parts.values()) {
       expect(part.variant, part.id).toBe(0);
       if (fallbackIds.has(part.id)) continue;
       expect(part.tier, part.id).toBe('medium');
@@ -160,14 +117,14 @@ describe('routedTestCatalogue', () => {
         expect(Object.keys(frame.layers ?? {}), `${part.id} ${name}`).toEqual(expect.arrayContaining(['flow', 'spots']));
       }
     }
-    // Before the switch the live file may not hold a jelly torso (controller note, Task 8); bodies.txt is its place.
-    expect(testCatalogue().parts.has('gelatinous/torso/body/medium/v0')).toBe(false);
+    expect([...cat.parts.keys(), ...cat.scaffolds.keys()].filter((id) => id.includes('armored'))).toEqual([]);
+    expect(TEXT).not.toContain('armored');
   });
 });
 
 describe('the routed bodies on the placeholder parts', () => {
   it('every family and shape the routed resolver produces draws on its own medium scaffold with no error gap and no missing part but a back part', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     const torsos = [...generatedTorsos()].sort();
     expect(torsos).toHaveLength(30);
     for (const torso of torsos) {
@@ -192,7 +149,7 @@ describe('the routed bodies on the placeholder parts', () => {
   });
 
   it('a fish of every shape composes every head kind 0 to 9 and every tail kind 2, 3, 5, 6 with no missing head or tail, and a fish keeping a feature finds it at every head kind', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     for (const shape of ['fusiform', 'shark', 'flat', 'angler', 'sturgeon']) {
       const { genes } = routeStates(`fish/${shape}/medium`)[0]!;
       for (let head = 0; head < 10; head++) {
@@ -222,7 +179,7 @@ describe('the routed bodies on the placeholder parts', () => {
   });
 
   it('every new quadruped torso type composes all seven poses with no gap but variant: and information', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     let composed = 0;
     for (const [type, body] of Object.entries(NEW_TYPES)) {
       const states: State[] = WINGED.includes(type) ? ['land', 'airborne', 'aquatic'] : ['land', 'airborne'];
@@ -237,7 +194,7 @@ describe('the routed bodies on the placeholder parts', () => {
               composed++;
               const where = `${type} ${state} skin ${skin} head ${head} ${pose}`;
               expect(out.gaps.filter((gap) => !gapIsInfo(gap)), where).toEqual([]);
-              // bodies.txt draws every part these creatures ask for: no information gap names a missing part either.
+              // The file draws every part these creatures ask for: no information gap names a missing part either.
               expect(out.gaps.filter((gap) => gap.startsWith('missing:')), where).toEqual([]);
             }
             expect(compose(recipe, 'strike', cat).contact).not.toBeNull();
@@ -249,7 +206,7 @@ describe('the routed bodies on the placeholder parts', () => {
   });
 
   it('a fusiform fish keeping each of its four features composes with no error gap', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     const featureOf = { 6: 'bodyFeature/shell-fusiform', 8: 'bodyFeature/crystals-fusiform', 10: 'headFeature/tusks-h', 11: 'headFeature/horns-h' } as const;
     for (const body of [6, 8, 10, 11] as const) {
       for (const head of [0, 2]) {
@@ -271,9 +228,10 @@ describe('the routed bodies on the placeholder parts', () => {
     }
   });
 
-  it('every part in bodies.txt shows at least 4 pixels in some routed creature, and none touches the canvas edge in any pose', () => {
-    const cat = routedTestCatalogue();
-    const wanted = new Set(ids(BODIES_TEXT));
+  it('every part shows at least 4 pixels in some creature, and none touches the canvas edge in any pose', () => {
+    const cat = testCatalogue();
+    // Every part but the quadruped's shared leg, which a pack holding every leg role never draws.
+    const wanted = new Set([...cat.parts.keys()].filter((id) => !/^quadruped\/(far|near)Limbs\/leg\//.test(id)));
     const creatures: Record<string, unknown>[] = [];
     for (const [type, body] of Object.entries(NEW_TYPES)) {
       for (const skin of [0, 1, 2, 3, 4, 5, 6, 8]) creatures.push(fauna({ body, skin }));
@@ -335,7 +293,7 @@ describe('the routed bodies on the placeholder parts', () => {
   });
 
   it('the sturdy translucent creature has no skin: gap, the stilt one has one', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     const skinGaps = (body: number) => compose(routed(fauna({ body, skin: 7 })), 'rest', cat).gaps.filter((gap) => gap.startsWith('skin:'));
     expect(skinGaps(0)).toEqual([]);
     expect(skinGaps(2)).toEqual(['skin:quadruped/torso/stilt/medium/v0:rest']);
@@ -343,7 +301,7 @@ describe('the routed bodies on the placeholder parts', () => {
 });
 
 describe('the composer places the new parts from a catalogue', () => {
-  const cat = routedTestCatalogue();
+  const cat = testCatalogue();
   /** The recipe's part with this id and its position; fails when it holds none. */
   const partOf = (recipe: Recipe, id: string): [RecipePart, number] => {
     const i = recipe.parts.findIndex((p) => p.partId === id);

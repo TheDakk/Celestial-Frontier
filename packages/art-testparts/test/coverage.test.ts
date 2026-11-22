@@ -3,15 +3,18 @@ import { EYE_COUNTS, LIMB_COUNTS, MARK_SLOTS, TIER_SIZE, fallbackKey, type Catal
 import { buildRecipe, EYELESS_HEAD, type Recipe } from '@cf/art-recipe';
 import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
+import { gapIsInfo } from '../../../tools/check-pack.mjs';
 import { makeGenome } from '@cf/domain-genome';
 
 const cat = testCatalogue();
 const POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
-const QUADRUPED_BODIES = [0, 1, 2, 10, 11, 13]; // sturdy, armored, stilt, tusked, horned, squat
+// The ten four-legged torso types, by body gene: sturdy, stilt, shelled, membranous, crystalline, tusked, horned, spindly,
+// squat, fourwinged (on land: grazers in the deep forest canopy).
+const QUADRUPED_BODIES = [0, 2, 6, 7, 8, 10, 11, 12, 13, 14];
 const BAD_GAP = /^(missing|attach|frame|scaffold|fallback):/;
 
 const genome = (body: number, head: number, tail: number, limbs: number, eyes: number) =>
-  ({ kingdom: 'fauna', body, head, tail, limbs, eyes, size: 2, loco: 0, color: 3, accent: 5, pattern: 0, skin: 0 });
+  ({ kingdom: 'fauna', body, head, tail, limbs, eyes, size: 2, loco: 0, habitat: 0, color: 3, accent: 5, pattern: 0, skin: 0 });
 const hashOf = (g: ReturnType<typeof genome>, pose = 'rest') => compose(buildRecipe(g, [], cat), pose, cat).hash;
 
 describe('quadruped test catalogue', () => {
@@ -27,14 +30,14 @@ describe('quadruped test catalogue', () => {
               const out = compose(recipe, 'rest', cat);
               count++;
               if (!out.buffer.pixels.some((p) => p !== 0)) expect.fail(`empty buffer for ${JSON.stringify(g)}`);
+              if (!out.buffer.pixels.includes(16)) expect.fail(`no outline pixel for ${JSON.stringify(g)}`);
+              // Every family draws on its own medium scaffold: no error gap (a missing back part is information).
+              const bad = out.gaps.filter((gap) => BAD_GAP.test(gap) && !gapIsInfo(gap));
+              if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
               if (recipe.family === 'quadruped') {
-                const eyePixel = out.buffer.pixels.includes(13);
-                if (head === EYELESS_HEAD ? eyePixel : EYE_COUNTS[eyes] !== 0 && !eyePixel) expect.fail(`eye pixel wrong for ${JSON.stringify(g)}`);
-                if (!out.buffer.pixels.includes(16)) expect.fail(`no outline pixel for ${JSON.stringify(g)}`);
-                const bad = out.gaps.filter((gap) => BAD_GAP.test(gap));
-                if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
-              } else {
-                if (!out.gaps.includes(`fallback:${recipe.family}`)) expect.fail(`no fallback gap for ${JSON.stringify(g)}`);
+                // An eye shows its highlight (14); the eyeless head and no eyes show two pits (13, no highlight).
+                const pits = head === EYELESS_HEAD || EYE_COUNTS[eyes] === 0;
+                if (!out.buffer.pixels.includes(13) || out.buffer.pixels.includes(14) === pits) expect.fail(`eye pixel wrong for ${JSON.stringify(g)}`);
               }
             }
           }
@@ -47,6 +50,7 @@ describe('quadruped test catalogue', () => {
   it('composes all seven poses for each torso type with no gaps but variant', () => {
     for (const body of QUADRUPED_BODIES) {
       const recipe = buildRecipe(genome(body, 3, 4, 1, 1), [], cat);
+      expect(recipe.family, `body ${body}`).toBe('quadruped');
       for (const pose of POSES) {
         const out = compose(recipe, pose, cat);
         expect(out.gaps.filter((gap) => !gap.startsWith('variant:')), `${recipe.scaffoldId} ${pose}`).toEqual([]);
@@ -80,16 +84,17 @@ describe('quadruped test catalogue', () => {
     const allDifferent = (make: (v: number) => ReturnType<typeof genome>, values: number[]) =>
       expect(new Set(values.map((v) => hashOf(make(v)))).size).toBe(values.length);
     allDifferent((v) => genome(0, v, 3, 1, 1), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    allDifferent((v) => genome(0, 3, v, 1, 1), [1, 2, 3, 4, 5, 6]);
+    allDifferent((v) => genome(0, 3, v, 1, 1), [0, 1, 2, 3, 4, 5, 6]);
     allDifferent((v) => genome(v, 3, 3, 1, 1), QUADRUPED_BODIES);
   });
 
-  it('composes movement genes 4 and 13 as a fish fallback', () => {
+  it('composes movement genes 4 and 13 (swimmers) as a fish on its own scaffold, not a fallback', () => {
     for (const loco of [4, 13]) {
       const g = { ...genome(0, 3, 3, 1, 1), loco };
       const recipe = buildRecipe(g, [], cat);
       expect(recipe.family, `loco ${loco}`).toBe('fish');
-      expect(compose(recipe, 'rest', cat).gaps, `loco ${loco}`).toContain('fallback:fish');
+      expect(cat.scaffolds.has(recipe.scaffoldId), `loco ${loco}`).toBe(true);
+      expect(compose(recipe, 'rest', cat).gaps.filter((gap) => !gapIsInfo(gap)), `loco ${loco}`).toEqual([]);
     }
   });
 
@@ -142,11 +147,12 @@ describe('every kingdom composes', () => {
 });
 
 describe('fallback silhouettes', () => {
-  const FAMILIES = ['quadruped', 'tentacled', 'serpent', 'myriapod', 'gastropod', 'membranous', 'crystalline', 'gelatinous', 'arachnid', 'insect', 'radial', 'fish', 'flora', 'fungi', 'microbe'];
+  // The eight fauna families a generated creature can be, then the other three kingdoms.
+  const FAMILIES = ['quadruped', 'fish', 'insect', 'serpent', 'tentacled', 'gelatinous', 'radial', 'crustacean', 'flora', 'fungi', 'microbe'];
   const TIERS = ['small', 'medium', 'large', 'guardian'] as const;
   const frameOf = (family: string, tier: SizeTier) => cat.parts.get(cat.fallbacks.get(fallbackKey(family, tier))!)!.frames['rest']!;
 
-  it('has one for each of the fifteen families at all four tiers, and no other', () => {
+  it('has one for each of the eleven families at all four tiers, and no other', () => {
     expect([...cat.fallbacks.keys()].sort()).toEqual(FAMILIES.flatMap((f) => TIERS.map((t) => fallbackKey(f, t))).sort());
   });
 
@@ -272,9 +278,10 @@ describe('format 2 placeholder parts', () => {
   const editParts = (edit: (part: Part) => Part): Catalogue => ({ ...cat, parts: new Map([...cat.parts].map(([id, p]) => [id, edit(p)])) });
   const withoutLayers = editParts((p) => ({ ...p, frames: Object.fromEntries(Object.entries(p.frames).map(([n, { layers: _drop, ...f }]) => [n, f])) }));
 
-  it('every frame of every torso, head, tail and limb part has flow and spots layers', () => {
-    // 6 torsos, 10 heads, 6 tails, the shared leg and three roles on each side.
-    expect(markParts.length).toBe(30);
+  it('every frame of every four-legged part in a mark slot has flow and spots layers', () => {
+    // 10 torsos, 10 heads, 7 tails (t0 to t6), the shared leg and three roles on each side, the flippers of membranous
+    // and the shared flipper, 2 x 3 wings (wing-membranous, wing-fourwinged, hindwing-fourwinged), the shared sails and sails-stilt.
+    expect(markParts.length).toBe(10 + 10 + 7 + 8 + 2 + 6 + 2);
     for (const part of markParts) {
       for (const [name, frame] of Object.entries(part.frames)) {
         for (const layer of ['flow', 'spots'] as const) {
@@ -289,11 +296,12 @@ describe('format 2 placeholder parts', () => {
     let count = 0;
     for (const body of QUADRUPED_BODIES) for (let skin = 0; skin < 9; skin++) for (let limbs = 0; limbs < 6; limbs++) for (const pattern of [0, 1]) for (let head = 0; head < 10; head++) {
       const g = full(body, head, 1 + (head % 6), limbs, skin, pattern);
+      // A translucent creature on a torso without a translucent layer meets a skin: gap only when composed.
       const bad = buildRecipe(g, [], cat).gaps.filter((gap) => !gap.startsWith('variant:'));
       count++;
       if (bad.length > 0) expect.fail(`gaps ${bad.join(' ')} for ${JSON.stringify(g)}`);
     }
-    expect(count).toBe(6480);
+    expect(count).toBe(10 * 9 * 6 * 2 * 10);
   });
 
   it('a creature built by buildRecipe composes every pattern with no marks: gap, and each of the seven differs from plain', () => {
@@ -361,7 +369,7 @@ describe('format 2 placeholder parts', () => {
         inside(recipe, `body ${body} head ${head} limbs ${limbs}`);
       }
     }
-    expect([...slots].sort()).toEqual(['back', 'eyes', 'farLimbs', 'head', 'headFeature', 'nearLimbs', 'tail', 'torso']);
+    expect([...slots].sort()).toEqual(['back', 'bodyFeature', 'eyes', 'farLimbs', 'farWings', 'head', 'headFeature', 'nearLimbs', 'nearWings', 'tail', 'torso']);
   });
 });
 

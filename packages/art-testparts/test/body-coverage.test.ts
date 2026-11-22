@@ -4,7 +4,7 @@ import {
   buildRecipe, fishShapes, planBodyParts, resolveBody, routeBody, SHAPES, torsoKindOf, type Recipe, type RecipePart,
 } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
-import { routedTestCatalogue } from '@cf/art-testparts';
+import { testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, REQUIRED_POSES, shapedGenome } from '../../../tools/check-pack.mjs';
 import { nameState } from '../../art-recipe/test/name-tests';
 
@@ -191,7 +191,7 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
 }
 
 let walked: Walked | undefined;
-const theWalk = (): Walked => (walked ??= walk(routedTestCatalogue()));
+const theWalk = (): Walked => (walked ??= walk(testCatalogue()));
 
 describe('the routing walk', () => {
   it('reaches every route the design names', () => {
@@ -260,7 +260,7 @@ describe('the coverage walk on the placeholder parts', () => {
   });
 
   it('a missing t0 tail is reported on the creature that asks for it', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     const parts = new Map(cat.parts);
     expect(parts.delete('quadruped/tail/t0/medium/v0')).toBe(true);
     // The sturdy body on land only.
@@ -277,7 +277,7 @@ describe('the coverage walk on the placeholder parts', () => {
   });
 
   it('a missing information part is listed, and the list does not depend on the walk\'s order', () => {
-    const cat = routedTestCatalogue();
+    const cat = testCatalogue();
     // Planted: the shelled body's shell (a body feature, information when missing) taken out of a copy of the pack.
     const parts = new Map(cat.parts);
     expect(parts.delete('quadruped/bodyFeature/shell-shelled/medium/v0')).toBe(true);
