@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import { MARK_SLOTS, parseCatalogueText, type Catalogue, type PartFrame } from '@cf/art-format';
 import { buildRoutedRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
-import { routedTestCatalogue, testCatalogue } from '@cf/art-testparts';
-import { gapIsInfo, shapedGenome } from '../../../tools/check-pack.mjs';
+import { joinBodies, REPLACED_PART, routedTestCatalogue, testCatalogue } from '@cf/art-testparts';
+import { gapIsInfo, generatedTorsos, routeStates, shapedGenome } from '../../../tools/check-pack.mjs';
 
 // The placeholder parts for the routed builder (bodies.txt), read through routedTestCatalogue. buildRecipe never
 // reaches them: these tests draw every creature through buildRoutedRecipe.
@@ -17,7 +17,9 @@ type State = keyof typeof STATE;
 /** The new four-legged torso types by body gene; the two winged ones stay four-legged in water too. */
 const NEW_TYPES = { shelled: 6, membranous: 7, crystalline: 8, spindly: 12, fourwinged: 14 } as const;
 const WINGED = ['membranous', 'fourwinged'];
-const STURDY_TORSO = 'quadruped/torso/sturdy/medium/v0';
+const STURDY_TORSO = REPLACED_PART;
+/** The tail kinds a fish, a tentacled body or a crustacean draws. */
+const OWN_TAILS = [2, 3, 5, 6];
 
 /** A medium fauna genome: four legs, four eyes, plain, slick skin (no back part), on land, unless `genes` say otherwise. */
 const fauna = (genes: Record<string, unknown>, state: State = 'land'): Record<string, unknown> => ({
@@ -114,6 +116,17 @@ describe('routedTestCatalogue', () => {
     expect(cat.species.size).toBe(0);
   });
 
+  it('throws on a part id both files hold, except the one sturdy torso bodies.txt replaces', () => {
+    const base = parseCatalogueText(QUADRUPED_TEXT);
+    const bodies = parseCatalogueText(BODIES_TEXT);
+    expect(() => joinBodies(base, bodies)).not.toThrow();
+    const ridge = 'quadruped/back/ridge-sturdy/medium/v0';
+    const repeated = new Map(bodies.parts).set(ridge, base.parts.get(ridge)!);
+    expect(() => joinBodies(base, { ...bodies, parts: repeated })).toThrow(`bodies.txt: duplicate part ${ridge}`);
+    const scaffold = new Map(bodies.scaffolds).set('quadruped/sturdy/medium', base.scaffolds.get('quadruped/sturdy/medium')!);
+    expect(() => joinBodies(base, { ...bodies, scaffolds: scaffold })).toThrow('bodies.txt: duplicate scaffold quadruped/sturdy/medium');
+  });
+
   it('keeps the sturdy torso drawing, adding only a translucent layer on its rest frame', () => {
     const live = testCatalogue().parts.get(STURDY_TORSO)!;
     const routedTorso = routedTestCatalogue().parts.get(STURDY_TORSO)!;
@@ -147,12 +160,67 @@ describe('routedTestCatalogue', () => {
         expect(Object.keys(frame.layers ?? {}), `${part.id} ${name}`).toEqual(expect.arrayContaining(['flow', 'spots']));
       }
     }
-    // Before the switch no pack may add a jelly torso (controller note, Task 8).
-    expect(routedTestCatalogue().parts.has('gelatinous/torso/body/medium/v0')).toBe(false);
+    // Before the switch the live file may not hold a jelly torso (controller note, Task 8); bodies.txt is its place.
+    expect(testCatalogue().parts.has('gelatinous/torso/body/medium/v0')).toBe(false);
   });
 });
 
 describe('the routed bodies on the placeholder parts', () => {
+  it('every family and shape the routed resolver produces draws on its own medium scaffold with no error gap and no missing part but a back part', () => {
+    const cat = routedTestCatalogue();
+    const torsos = [...generatedTorsos()].sort();
+    expect(torsos).toHaveLength(30);
+    for (const torso of torsos) {
+      const [family, shape] = torso.split('/') as [string, string];
+      const states = routeStates(`${torso}/medium`);
+      expect(states.length, torso).toBeGreaterThan(0);
+      for (const { state, genes } of states) {
+        for (let head = 0; head < 10; head++) {
+          const g = shapedGenome({ kingdom: 'fauna', ...genes, head, tail: head % 7, limbs: 1, eyes: head % 6, skin: head % 9, pattern: head % 8, trait: 0, color: 3, accent: 5 }, family, shape);
+          if (g === undefined) expect.fail(`no seed shapes ${torso} ${state}`);
+          const recipe = routed(g);
+          expect(recipe.scaffoldId).toBe(`${torso}/medium`);
+          for (const pose of POSES) {
+            const where = `${torso} ${state} head ${head} ${pose}`;
+            const out = compose(recipe, pose, cat);
+            expect(out.gaps.filter((gap) => !gapIsInfo(gap) || gap.startsWith('fallback:')), where).toEqual([]);
+            expect(out.gaps.filter((gap) => gap.startsWith('missing:') && !/^missing:[^/]+\/back\//.test(gap)), where).toEqual([]);
+          }
+        }
+      }
+    }
+  });
+
+  it('a fish of every shape composes every head kind 0 to 9 and every tail kind 2, 3, 5, 6 with no missing head or tail, and a fish keeping a feature finds it at every head kind', () => {
+    const cat = routedTestCatalogue();
+    for (const shape of ['fusiform', 'shark', 'flat', 'angler', 'sturgeon']) {
+      const { genes } = routeStates(`fish/${shape}/medium`)[0]!;
+      for (let head = 0; head < 10; head++) {
+        for (const tail of OWN_TAILS) {
+          const g = shapedGenome({ kingdom: 'fauna', ...genes, head, tail, skin: 3 }, 'fish', shape);
+          if (g === undefined) expect.fail(`no seed shapes fish ${shape}`);
+          const recipe = routed(g);
+          const ids = recipe.parts.map((p) => p.partId);
+          expect(ids).toContain(`fish/head/h${head}/medium/v0`);
+          expect(ids).toContain(`fish/tail/t${tail}/medium/v0`);
+          const gaps = compose(recipe, 'rest', cat).gaps;
+          expect(gaps.filter((gap) => /^missing:fish\/(head|tail)\//.test(gap)), `${shape} h${head} t${tail}`).toEqual([]);
+        }
+      }
+    }
+    // A fish keeping its tusks, horn, shell or crystals finds that part at every head kind, on both shapes that keep one.
+    for (const shape of ['fusiform', 'sturgeon']) {
+      for (const body of [6, 8, 10, 11]) {
+        for (let head = 0; head < 10; head++) {
+          const g = shapedGenome(fauna({ body, head, tail: 2 }, 'aquatic'), 'fish', shape);
+          if (g === undefined) expect.fail(`no seed shapes fish ${shape} body ${body}`);
+          const gaps = compose(routed(g), 'rest', cat).gaps;
+          expect(gaps.filter((gap) => gap.startsWith('missing:')), `${shape} body ${body} h${head}`).toEqual([]);
+        }
+      }
+    }
+  });
+
   it('every new quadruped torso type composes all seven poses with no gap but variant: and information', () => {
     const cat = routedTestCatalogue();
     let composed = 0;
@@ -215,12 +283,33 @@ describe('the routed bodies on the placeholder parts', () => {
     creatures.push(fauna({ body: 0, skin: 7, tail: 0, eyes: 5 }), fauna({ body: 0 }, 'airborne'), fauna({ body: 2 }, 'airborne'));
     for (const head of [0, 1, 2, 4, 5, 7, 8, 9]) creatures.push(fauna({ body: 10, head }));
     for (const body of [6, 8, 10, 11]) for (const head of [0, 2]) creatures.push(fusiform({ body, head, tail: 2 }));
+    // Every family and shape outside the four-legged bodies, at every head kind, each own tail kind and eye count.
+    for (const torso of generatedTorsos()) {
+      const [family, shape] = torso.split('/') as [string, string];
+      if (family === 'quadruped') continue;
+      for (const { genes } of routeStates(`${torso}/medium`)) {
+        for (let head = 0; head < 10; head++) {
+          const g = shapedGenome({ ...fauna({}), ...genes, head, tail: OWN_TAILS[head % 4], eyes: head % 6 }, family, shape);
+          if (g !== undefined) creatures.push(g);
+        }
+      }
+    }
+    // A fish keeping each feature, on both shapes that keep one, at every head kind.
+    for (const shape of ['fusiform', 'sturgeon']) {
+      for (const body of [6, 8, 10, 11]) {
+        for (let head = 0; head < 10; head++) {
+          const g = shapedGenome(fauna({ body, head, tail: 2 }, 'aquatic'), 'fish', shape);
+          if (g !== undefined) creatures.push(g);
+        }
+      }
+    }
     for (const size of [{ size: 1 }, { size: 2 }, { size: 4 }, { size: 5, apex: 12 }]) creatures.push(fauna({ body: 1, ...size }));
 
     const shown = new Set<string>();
     for (const g of creatures) {
-      const recipe = routed(g);
-      for (const pose of POSES) {
+      const routedRecipe = routed(g);
+      // A fallback is drawn when nothing else is: each creature is drawn as it is and, once, with no parts.
+      for (const recipe of [routedRecipe, { ...routedRecipe, parts: [] }]) for (const pose of recipe.parts.length === 0 ? ['rest'] : POSES) {
         const out = compose(recipe, pose, cat);
         if (touchesEdge(out.buffer)) expect.fail(`${recipe.scaffoldId} ${JSON.stringify(g)} touches the edge in ${pose}`);
         if (out.gaps.includes(`fallback:${recipe.family}`)) {

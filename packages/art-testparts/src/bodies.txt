@@ -8,9 +8,18 @@
 # The sturdy torso is quadruped.txt's, plus a translucent layer (its outer ring at the lightest shade of its ramp).
 # Wings rise from their point (near wing anchored 2 in, far wing 4 further back and 2 rows taller, so both show);
 # sails rise from the back point; fins lie on the torso's side under the back point; flippers hang from near0 and near1.
-# Fish: the fusiform torso and scaffold, heads h0 and h2 with every eye point and a feature point, tail t2, eye, pit,
-# shell and crystals on the back, tusks and horns as the four-legged ones. hornlet-h<n>: a small horn on the head's
-# feature point, for every head kind but 3 and 6 (those carry a horn, so a tusked body asks for horns-h<n> instead).
+# hornlet-h<n>: a small horn on the head's feature point, for every head kind but 3 and 6 (those carry a horn, so a
+# tusked body asks for horns-h<n> instead).
+# Every other family and shape the routed resolver produces has a torso and scaffold here (rows as above; points from
+# its family's list: head (w-4,3), tail (2,3), back (w/2,-1), a serpent's eye0 (w-4,2), an insect's legs at row h).
+# fish fusiform 30x12, shark 34x12, flat 32x8, angler 26x14, sturgeon 36x10; crustacean crab 30x10, lobster 34x9;
+# insect beetle 28x10, generic 26x8, mantis 30x7; tentacled octopus 24x14, squid 30x10, cuttlefish 28x11; serpent
+# snake 40x6, viper 36x8; gelatinous body 24x16; radial anemone 20x14, urchin 18x18, coral 22x16, cucumber 30x8.
+# Heads h0-h9 (fish, crustacean, insect): (9 + n mod 4) x 8, every eye point and a feature point. Tails t2 t3 t5 t6
+# (fish, crustacean, tentacled): (6 + n) x 6. eye as the four-legged eye; pit (not serpent). Insect legs: the shared
+# leg, 2x6, near legs 2 columns ahead of far ones. Fish: tusks and horns for every head as the four-legged h0 ones,
+# shell and crystals on the back of fusiform and sturgeon. Back parts are left out: a missing one is information.
+# Non-medium tiers draw the family fallback.
 # Crustacean fallbacks: a body a quarter of the canvas each way, two claws above its ends.
 
 part quadruped/torso/shelled/medium/v0
@@ -1133,6 +1142,270 @@ entry torso 0 rest 0 2
 entry head 0 rest 0 3
 entry tail 0 rest 0 2
 
+part fish/torso/shark/medium/v0
+frame rest anchor=0,0 attach=head:30,3,tail:2,3,back:17,-1
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+ababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+layer spots
+..................................
+11.......22.......33.......44.....
+11.......22.......33.......44.....
+..................................
+..................................
+...55.......66.......77.......88..
+...55.......66.......77.......88..
+..................................
+..................................
+99.......aa.......bb.......cc.....
+99.......aa.......bb.......cc.....
+..................................
+
+scaffold fish/shark/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=78,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part fish/torso/flat/medium/v0
+frame rest anchor=0,0 attach=head:28,3,tail:2,3,back:16,-1
+33333333333333333333333333333333
+33333333333333333333333333333333
+33333333333333333333333333333333
+33333333333333333333333333333333
+22222222222222222222222222222222
+22222222222222222222222222222222
+22222222222222222222222222222222
+abababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+123456789abcdef123456789abcdef12
+layer spots
+................................
+11.......22.......33.......44...
+11.......22.......33.......44...
+................................
+................................
+...55.......66.......77.......88
+...55.......66.......77.......88
+................................
+
+scaffold fish/flat/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=76,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part fish/torso/angler/medium/v0
+frame rest anchor=0,0 attach=head:22,3,tail:2,3,back:13,-1
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+22222222222222222222222222
+22222222222222222222222222
+22222222222222222222222222
+22222222222222222222222222
+22222222222222222222222222
+22222222222222222222222222
+ababababababababababababab
+layer flow
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+layer spots
+..........................
+11.......22.......33......
+11.......22.......33......
+..........................
+..........................
+...44.......55.......66...
+...44.......55.......66...
+..........................
+..........................
+77.......88.......99......
+77.......88.......99......
+..........................
+..........................
+..........................
+
+scaffold fish/angler/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=70,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part fish/torso/sturgeon/medium/v0
+frame rest anchor=0,0 attach=head:32,3,tail:2,3,back:18,-1
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+222222222222222222222222222222222222
+222222222222222222222222222222222222
+222222222222222222222222222222222222
+222222222222222222222222222222222222
+abababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+layer spots
+....................................
+11.......22.......33.......44.......
+11.......22.......33.......44.......
+....................................
+....................................
+...55.......66.......77.......88....
+...55.......66.......77.......88....
+....................................
+....................................
+....................................
+
+scaffold fish/sturgeon/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=80,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
 part fish/head/h0/medium/v0
 frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
 222222222
@@ -1170,6 +1443,50 @@ cc.
 ..c
 
 part fish/headFeature/horns-h0/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h1/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part fish/headFeature/tusks-h1/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h1/medium/v0
 frame rest anchor=0,4
 ...4
 ..44
@@ -1221,6 +1538,314 @@ frame rest anchor=0,4
 44..
 44..
 
+part fish/head/h3/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part fish/headFeature/tusks-h3/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h3/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h4/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part fish/headFeature/tusks-h4/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h4/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h5/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part fish/headFeature/tusks-h5/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h5/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h6/medium/v0
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
+22222222222
+22222222222
+22222222222
+25222222222
+22222222222
+22222222222
+22222222222
+22222222222
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...33......
+...33......
+...........
+
+part fish/headFeature/tusks-h6/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h6/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h7/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part fish/headFeature/tusks-h7/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h7/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h8/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part fish/headFeature/tusks-h8/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h8/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
+part fish/head/h9/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part fish/headFeature/tusks-h9/medium/v0
+frame rest anchor=0,-9
+cc.
+.c.
+.cc
+..c
+
+part fish/headFeature/horns-h9/medium/v0
+frame rest anchor=0,4
+...4
+..44
+.44.
+44..
+44..
+
 part fish/tail/t2/medium/v0
 frame rest anchor=7,3
 22222222
@@ -1244,6 +1869,75 @@ layer spots
 ........
 ........
 
+part fish/tail/t3/medium/v0
+frame rest anchor=8,3
+222222222
+222222222
+222222222
+111111111
+111111111
+111111111
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+.........
+
+part fish/tail/t5/medium/v0
+frame rest anchor=10,3
+22222222222
+22222222222
+22222222222
+11111111111
+11111111111
+11111111111
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...........
+
+part fish/tail/t6/medium/v0
+frame rest anchor=11,3
+222222222222
+222222222222
+222222222222
+111111111111
+111111111111
+111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+............
+
 part fish/eyes/eye/medium/v0
 frame rest anchor=0,1
 76
@@ -1254,6 +1948,1831 @@ frame rest anchor=0,1
 77
 dd
 
+part crustacean/torso/crab/medium/v0
+frame rest anchor=0,0 attach=head:26,3,tail:2,3,back:15,-1
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+ababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+layer spots
+..............................
+11.......22.......33.......44.
+11.......22.......33.......44.
+..............................
+..............................
+...55.......66.......77.......
+...55.......66.......77.......
+..............................
+..............................
+..............................
+
+scaffold crustacean/crab/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=74,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part crustacean/torso/lobster/medium/v0
+frame rest anchor=0,0 attach=head:30,3,tail:2,3,back:17,-1
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+3333333333333333333333333333333333
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+2222222222222222222222222222222222
+ababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+123456789abcdef123456789abcdef1234
+layer spots
+..................................
+11.......22.......33.......44.....
+11.......22.......33.......44.....
+..................................
+..................................
+...55.......66.......77.......88..
+...55.......66.......77.......88..
+..................................
+..................................
+
+scaffold crustacean/lobster/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=78,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part crustacean/head/h0/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part crustacean/head/h1/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part crustacean/head/h2/medium/v0
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
+22222222222
+22222222222
+22222222222
+25222222222
+22222222222
+22222222222
+22222222222
+22222222222
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...33......
+...33......
+...........
+
+part crustacean/head/h3/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part crustacean/head/h4/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part crustacean/head/h5/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part crustacean/head/h6/medium/v0
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
+22222222222
+22222222222
+22222222222
+25222222222
+22222222222
+22222222222
+22222222222
+22222222222
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...33......
+...33......
+...........
+
+part crustacean/head/h7/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part crustacean/head/h8/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part crustacean/head/h9/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part crustacean/tail/t2/medium/v0
+frame rest anchor=7,3
+22222222
+22222222
+22222222
+11111111
+11111111
+11111111
+layer flow
+12345678
+12345678
+12345678
+12345678
+12345678
+12345678
+layer spots
+........
+11......
+11......
+........
+........
+........
+
+part crustacean/tail/t3/medium/v0
+frame rest anchor=8,3
+222222222
+222222222
+222222222
+111111111
+111111111
+111111111
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+.........
+
+part crustacean/tail/t5/medium/v0
+frame rest anchor=10,3
+22222222222
+22222222222
+22222222222
+11111111111
+11111111111
+11111111111
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...........
+
+part crustacean/tail/t6/medium/v0
+frame rest anchor=11,3
+222222222222
+222222222222
+222222222222
+111111111111
+111111111111
+111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+............
+
+part crustacean/eyes/eye/medium/v0
+frame rest anchor=0,1
+76
+de
+
+part crustacean/eyes/pit/medium/v0
+frame rest anchor=0,1
+77
+dd
+
+part insect/torso/beetle/medium/v0
+frame rest anchor=0,0 attach=head:24,3,back:14,-1,far0:4,10,near0:2,10,far1:14,10,near1:12,10,far2:22,10,near2:20,10
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+2222222222222222222222222222
+2222222222222222222222222222
+2222222222222222222222222222
+2222222222222222222222222222
+abababababababababababababab
+layer flow
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+layer spots
+............................
+11.......22.......33........
+11.......22.......33........
+............................
+............................
+...44.......55.......66.....
+...44.......55.......66.....
+............................
+............................
+............................
+
+scaffold insect/beetle/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=72,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part insect/torso/generic/medium/v0
+frame rest anchor=0,0 attach=head:22,3,back:13,-1,far0:4,8,near0:2,8,far1:13,8,near1:11,8,far2:20,8,near2:18,8
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+33333333333333333333333333
+22222222222222222222222222
+22222222222222222222222222
+22222222222222222222222222
+ababababababababababababab
+layer flow
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+123456789abcdef123456789ab
+layer spots
+..........................
+11.......22.......33......
+11.......22.......33......
+..........................
+..........................
+...44.......55.......66...
+...44.......55.......66...
+..........................
+
+scaffold insect/generic/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=70,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part insect/torso/mantis/medium/v0
+frame rest anchor=0,0 attach=head:26,3,back:15,-1,far0:4,7,near0:2,7,far1:15,7,near1:13,7,far2:24,7,near2:22,7
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+ababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+layer spots
+..............................
+11.......22.......33.......44.
+11.......22.......33.......44.
+..............................
+..............................
+...55.......66.......77.......
+...55.......66.......77.......
+
+scaffold insect/mantis/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=74,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part insect/head/h0/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part insect/head/h1/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part insect/head/h2/medium/v0
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
+22222222222
+22222222222
+22222222222
+25222222222
+22222222222
+22222222222
+22222222222
+22222222222
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...33......
+...33......
+...........
+
+part insect/head/h3/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part insect/head/h4/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part insect/head/h5/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part insect/head/h6/medium/v0
+frame rest anchor=0,4 attach=eye0:9,1,eye1:7,1,eye2:9,3,eye3:7,3,eye4:9,5,eye5:7,5,eye6:9,7,eye7:7,7,feature:8,-1
+22222222222
+22222222222
+22222222222
+25222222222
+22222222222
+22222222222
+22222222222
+22222222222
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...33......
+...33......
+...........
+
+part insect/head/h7/medium/v0
+frame rest anchor=0,4 attach=eye0:10,1,eye1:8,1,eye2:10,3,eye3:8,3,eye4:10,5,eye5:8,5,eye6:10,7,eye7:8,7,feature:9,-1
+222222222222
+222222222222
+222222222222
+252222222222
+222222222222
+222222222222
+222222222222
+222222222222
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+...33.......
+...33.......
+............
+
+part insect/head/h8/medium/v0
+frame rest anchor=0,4 attach=eye0:7,1,eye1:5,1,eye2:7,3,eye3:5,3,eye4:7,5,eye5:5,5,eye6:7,7,eye7:5,7,feature:6,-1
+222222222
+222222222
+222222222
+252222222
+222222222
+222222222
+222222222
+222222222
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+...22....
+...22....
+.........
+
+part insect/head/h9/medium/v0
+frame rest anchor=0,4 attach=eye0:8,1,eye1:6,1,eye2:8,3,eye3:6,3,eye4:8,5,eye5:6,5,eye6:8,7,eye7:6,7,feature:7,-1
+2222222222
+2222222222
+2222222222
+2522222222
+2222222222
+2222222222
+2222222222
+2222222222
+layer flow
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+123456789a
+layer spots
+..........
+11........
+11........
+..........
+..........
+...22.....
+...22.....
+..........
+
+part insect/farLimbs/leg/medium/v0
+frame rest anchor=0,0
+22
+22
+22
+22
+22
+11
+layer flow
+12
+12
+12
+12
+12
+12
+layer spots
+..
+11
+11
+..
+..
+..
+
+part insect/nearLimbs/leg/medium/v0
+frame rest anchor=0,0
+22
+22
+22
+22
+22
+11
+layer flow
+12
+12
+12
+12
+12
+12
+layer spots
+..
+11
+11
+..
+..
+..
+
+part insect/eyes/eye/medium/v0
+frame rest anchor=0,1
+76
+de
+
+part insect/eyes/pit/medium/v0
+frame rest anchor=0,1
+77
+dd
+
+part tentacled/torso/octopus/medium/v0
+frame rest anchor=0,0 attach=tail:2,3,back:12,-1
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+abababababababababababab
+layer flow
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+layer spots
+........................
+11.......22.......33....
+11.......22.......33....
+........................
+........................
+...44.......55.......66.
+...44.......55.......66.
+........................
+........................
+77.......88.......99....
+77.......88.......99....
+........................
+........................
+........................
+
+scaffold tentacled/octopus/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=68,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part tentacled/torso/squid/medium/v0
+frame rest anchor=0,0 attach=tail:2,3,back:15,-1
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+ababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+layer spots
+..............................
+11.......22.......33.......44.
+11.......22.......33.......44.
+..............................
+..............................
+...55.......66.......77.......
+...55.......66.......77.......
+..............................
+..............................
+..............................
+
+scaffold tentacled/squid/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=74,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part tentacled/torso/cuttlefish/medium/v0
+frame rest anchor=0,0 attach=tail:2,3,back:14,-1
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+3333333333333333333333333333
+2222222222222222222222222222
+2222222222222222222222222222
+2222222222222222222222222222
+2222222222222222222222222222
+2222222222222222222222222222
+abababababababababababababab
+layer flow
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+123456789abcdef123456789abcd
+layer spots
+............................
+11.......22.......33........
+11.......22.......33........
+............................
+............................
+...44.......55.......66.....
+...44.......55.......66.....
+............................
+............................
+77.......88.......99........
+77.......88.......99........
+
+scaffold tentacled/cuttlefish/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=72,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part tentacled/tail/t2/medium/v0
+frame rest anchor=7,3
+22222222
+22222222
+22222222
+11111111
+11111111
+11111111
+layer flow
+12345678
+12345678
+12345678
+12345678
+12345678
+12345678
+layer spots
+........
+11......
+11......
+........
+........
+........
+
+part tentacled/tail/t3/medium/v0
+frame rest anchor=8,3
+222222222
+222222222
+222222222
+111111111
+111111111
+111111111
+layer flow
+123456789
+123456789
+123456789
+123456789
+123456789
+123456789
+layer spots
+.........
+11.......
+11.......
+.........
+.........
+.........
+
+part tentacled/tail/t5/medium/v0
+frame rest anchor=10,3
+22222222222
+22222222222
+22222222222
+11111111111
+11111111111
+11111111111
+layer flow
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+123456789ab
+layer spots
+...........
+11.......22
+11.......22
+...........
+...........
+...........
+
+part tentacled/tail/t6/medium/v0
+frame rest anchor=11,3
+222222222222
+222222222222
+222222222222
+111111111111
+111111111111
+111111111111
+layer flow
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+123456789abc
+layer spots
+............
+11.......22.
+11.......22.
+............
+............
+............
+
+part serpent/torso/snake/medium/v0
+frame rest anchor=0,0 attach=eye0:36,2,back:20,-1
+3333333333333333333333333333333333333333
+3333333333333333333333333333333333333333
+3333333333333333333333333333333333333333
+2222222222222222222222222222222222222222
+2222222222222222222222222222222222222222
+abababababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+123456789abcdef123456789abcdef123456789a
+layer spots
+........................................
+11.......22.......33.......44.......55..
+11.......22.......33.......44.......55..
+........................................
+........................................
+........................................
+
+scaffold serpent/snake/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=84,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part serpent/torso/viper/medium/v0
+frame rest anchor=0,0 attach=eye0:32,2,back:18,-1
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+333333333333333333333333333333333333
+222222222222222222222222222222222222
+222222222222222222222222222222222222
+222222222222222222222222222222222222
+abababababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+123456789abcdef123456789abcdef123456
+layer spots
+....................................
+11.......22.......33.......44.......
+11.......22.......33.......44.......
+....................................
+....................................
+...55.......66.......77.......88....
+...55.......66.......77.......88....
+....................................
+
+scaffold serpent/viper/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=80,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part serpent/eyes/eye/medium/v0
+frame rest anchor=0,1
+76
+de
+
+part gelatinous/torso/body/medium/v0
+frame rest anchor=0,0 attach=back:12,-1
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+333333333333333333333333
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+222222222222222222222222
+abababababababababababab
+layer flow
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+123456789abcdef123456789
+layer spots
+........................
+11.......22.......33....
+11.......22.......33....
+........................
+........................
+...44.......55.......66.
+...44.......55.......66.
+........................
+........................
+77.......88.......99....
+77.......88.......99....
+........................
+........................
+...aa.......bb.......cc.
+...aa.......bb.......cc.
+........................
+
+scaffold gelatinous/body/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=68,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part radial/torso/anemone/medium/v0
+frame rest anchor=0,0 attach=
+33333333333333333333
+33333333333333333333
+33333333333333333333
+33333333333333333333
+33333333333333333333
+33333333333333333333
+33333333333333333333
+22222222222222222222
+22222222222222222222
+22222222222222222222
+22222222222222222222
+22222222222222222222
+22222222222222222222
+abababababababababab
+layer flow
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+123456789abcdef12345
+layer spots
+....................
+11.......22.......33
+11.......22.......33
+....................
+....................
+...44.......55......
+...44.......55......
+....................
+....................
+66.......77.......88
+66.......77.......88
+....................
+....................
+....................
+
+scaffold radial/anemone/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=64,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part radial/torso/urchin/medium/v0
+frame rest anchor=0,0 attach=
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+333333333333333333
+222222222222222222
+222222222222222222
+222222222222222222
+222222222222222222
+222222222222222222
+222222222222222222
+222222222222222222
+222222222222222222
+ababababababababab
+layer flow
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+123456789abcdef123
+layer spots
+..................
+11.......22.......
+11.......22.......
+..................
+..................
+...33.......44....
+...33.......44....
+..................
+..................
+55.......66.......
+55.......66.......
+..................
+..................
+...77.......88....
+...77.......88....
+..................
+..................
+..................
+
+scaffold radial/urchin/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=62,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part radial/torso/coral/medium/v0
+frame rest anchor=0,0 attach=
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+3333333333333333333333
+2222222222222222222222
+2222222222222222222222
+2222222222222222222222
+2222222222222222222222
+2222222222222222222222
+2222222222222222222222
+2222222222222222222222
+ababababababababababab
+layer flow
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+123456789abcdef1234567
+layer spots
+......................
+11.......22.......33..
+11.......22.......33..
+......................
+......................
+...44.......55........
+...44.......55........
+......................
+......................
+66.......77.......88..
+66.......77.......88..
+......................
+......................
+...99.......aa........
+...99.......aa........
+......................
+
+scaffold radial/coral/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=66,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
+part radial/torso/cucumber/medium/v0
+frame rest anchor=0,0 attach=
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+333333333333333333333333333333
+222222222222222222222222222222
+222222222222222222222222222222
+222222222222222222222222222222
+ababababababababababababababab
+layer flow
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+123456789abcdef123456789abcdef
+layer spots
+..............................
+11.......22.......33.......44.
+11.......22.......33.......44.
+..............................
+..............................
+...55.......66.......77.......
+...55.......66.......77.......
+..............................
+
+scaffold radial/cucumber/medium origin=28,22
+pose rest
+entry torso 0 rest 0 0
+pose approach
+entry torso 0 rest 1 0
+entry head 0 rest 1 0
+entry tail 0 rest -1 0
+pose windup
+entry torso 0 rest -1 0
+entry head 0 rest -2 1
+entry tail 0 rest 0 -1
+pose strike contact=74,25
+entry torso 0 rest 1 0
+entry head 0 rest 2 0
+entry tail 0 rest -1 1
+pose recover
+entry torso 0 rest 0 0
+entry head 0 rest 1 -1
+entry tail 0 rest 1 1
+pose hit
+entry torso 0 rest 0 1
+entry head 0 rest -1 1
+entry tail 0 rest 0 1
+pose faint
+entry torso 0 rest 0 2
+entry head 0 rest 0 3
+entry tail 0 rest 0 2
+
 part fish/bodyFeature/shell-fusiform/medium/v0
 frame rest anchor=10,2
 cccccccccccccccccccc
@@ -1261,6 +3780,18 @@ cccccccccccccccccccc
 cccccccccccccccccccc
 
 part fish/bodyFeature/crystals-fusiform/medium/v0
+frame rest anchor=8,2
+5..5..5..5..5..5
+5..5..5..5..5..5
+5555555555555555
+
+part fish/bodyFeature/shell-sturgeon/medium/v0
+frame rest anchor=10,2
+cccccccccccccccccccc
+cccccccccccccccccccc
+cccccccccccccccccccc
+
+part fish/bodyFeature/crystals-sturgeon/medium/v0
 frame rest anchor=8,2
 5..5..5..5..5..5
 5..5..5..5..5..5
