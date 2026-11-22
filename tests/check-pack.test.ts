@@ -119,6 +119,10 @@ function planted(from: string, to: string, base = GOOD): string {
   expect(base.split(from)).toHaveLength(2);
   return base.replace(from, to);
 }
+/** A pack with the good pack's torso part and scaffold moved to another torso type: those two ids only, each exactly once. */
+function onTorso(text: string, torso: string): string {
+  return planted('scaffold quadruped/sturdy/small', `scaffold quadruped/${torso}/small`, planted('part quadruped/torso/sturdy/small/v0', `part quadruped/torso/${torso}/small/v0`, text));
+}
 const errorsOf = (report: PackReport): string[] => formatReport(report).split('\n').filter((l) => l.startsWith('error:'));
 /**
  * The checker with no scaffold's creatures sampled: for a test that reads only the whole-pack fields (structure,
@@ -153,7 +157,7 @@ describe('checkPack on a known-good pack', () => {
     expect(old.ok).toBe(true);
     expect(gapClasses(old)).toEqual(['marks: false', 'missing: back false', 'missing: false', 'role: false', 'skin: false']);
     // A horned torso asks for horns: a missing head feature is information too.
-    const horned = checkPack(GOOD.replaceAll('sturdy', 'horned'));
+    const horned = checkPack(onTorso(GOOD, 'horned'));
     expect(horned.ok).toBe(true);
     expect(gapClasses(horned)).toEqual(['marks: false', 'missing: back false', 'missing: false', 'missing: headFeature false', 'role: false', 'skin: false']);
   });
@@ -676,7 +680,7 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
   });
 
   it('a head feature drawn wholly inside the head and a role leg drawn off the canvas are hidden parts', () => {
-    const horned = planted(',eye7:4,3', ',eye7:4,3,feature:3,1').replaceAll('sturdy', 'horned');
+    const horned = onTorso(planted(',eye7:4,3', ',eye7:4,3,feature:3,1'), 'horned');
     const feature = (rows: string): string => `\npart quadruped/headFeature/horns-h0/small/v0\nframe rest anchor=0,${rows === '66' ? 0 : 2}\n${rows}\n`;
     expect(checkPack(horned + feature('7777\n7777')).hidden).toEqual([]);
     const hiddenHorns = checkPack(horned + feature('66'));
@@ -698,7 +702,7 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
     expect(new Set(looseBack.detached.flatMap((d) => d.off))).toEqual(new Set(['back']));
     expect(looseBack.ok).toBe(false);
     const feature = '\npart quadruped/headFeature/horns-h0/small/v0\nframe rest anchor=0,2\n7777\n7777\n';
-    const horned = (point: string): string => planted(',eye7:4,3', `,eye7:4,3,feature:${point}`).replaceAll('sturdy', 'horned') + feature;
+    const horned = (point: string): string => onTorso(planted(',eye7:4,3', `,eye7:4,3,feature:${point}`), 'horned') + feature;
     expect(errorsOf(checkPack(horned('3,1')))).toEqual([]);
     // The feature point raised from 3,1 to 3,-4: the feature's lower row ends two rows above the head.
     const looseFeature = checkPack(horned('3,-4'));
@@ -1130,7 +1134,7 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
   const TORSO_ATTACH = 'attach=head:10,1,';
   const part = (id: string, attach = ''): string => `\npart ${id}\nframe rest anchor=0,0${attach === '' ? '' : ` attach=${attach}`}\n22\n`;
   /** The good pack on another torso type. */
-  const on = (torso: string, wingPoints = ''): string => GOOD.replaceAll('sturdy', torso).replace(TORSO_ATTACH, `attach=${wingPoints}head:10,1,`);
+  const on = (torso: string, wingPoints = ''): string => onTorso(GOOD, torso).replace(TORSO_ATTACH, `attach=${wingPoints}head:10,1,`);
   const partLines = (lines: readonly string[]): string[] => lines.filter((l) => l.startsWith('part '));
 
   it('a membranous torso without wing is an error once the pack holds wing-membranous', () => {
@@ -1263,6 +1267,8 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
       expect(gapIsInfo(`missing:quadruped/${slot}/flipper/medium/v0`), slot).toBe(false);
       expect(gapIsInfo(`missing:quadruped/${slot}/flipper-membranous/medium/v0`), slot).toBe(false);
     }
+    // A wing index the composer has no point for is an error.
+    expect(gapIsInfo('index:nearWings:2')).toBe(false);
   });
 
   it('a skin: gap is information', () => {
@@ -1479,7 +1485,7 @@ describe('checkPack samples every scaffold through the routed builder (the switc
   });
 
   it('a winged body in water is sampled with its flippers, and an unlayered flipper frame is a marks: line', () => {
-    const membranous = withLayers(GOOD.replaceAll('sturdy', 'membranous'));
+    const membranous = withLayers(onTorso(GOOD, 'membranous'));
     const flipper = (layered: boolean): string => `\npart quadruped/nearLimbs/flipper/small/v0\nframe rest anchor=0,0\n33\n33\n11\n${layered ? 'layer flow\n12\n12\n12\nlayer spots\n11\n11\n..\n' : ''}`;
     const without = checkPack(membranous);
     expect(without.gaps.find((g) => g.gap === 'missing:quadruped/nearLimbs/flipper/small/v0')).toMatchObject({ error: false });
@@ -1488,6 +1494,16 @@ describe('checkPack samples every scaffold through the routed builder (the switc
     // The patterned creatures in water (7 patterns x 7 poses) paint both flippers and find no layer.
     expect(r.gaps.filter((g) => g.gap.startsWith('marks:quadruped/nearLimbs/flipper')).map((g) => `${g.gap} x${g.count}`)).toEqual(['marks:quadruped/nearLimbs/flipper/small/v0:rest x98']);
     expect(checkPack(membranous + flipper(true)).gaps.filter((g) => g.gap.startsWith('marks:quadruped/nearLimbs/flipper'))).toEqual([]);
+  });
+
+  it('an unlayered flipper frame no sampled creature draws is listed at x0 (the flipper branch of the x0 list)', () => {
+    // A flipper held only at v1: the planner asks for v0 (missing, information), a single variant is never forced, so no
+    // sampled creature draws it, and only the x0 list's flipper branch (a winged body's two flippers at no legs) finds it.
+    const membranous = withLayers(onTorso(GOOD, 'membranous'));
+    const v1 = (layered: boolean): string => `\npart quadruped/nearLimbs/flipper/small/v1\nframe rest anchor=0,0\n33\n33\n11\n${layered ? 'layer flow\n12\n12\n12\nlayer spots\n11\n11\n..\n' : ''}`;
+    const marks = (text: string): string[] => checkPack(text).gaps.filter((g) => g.gap.startsWith('marks:')).map((g) => `${g.gap} x${g.count}`);
+    expect(marks(membranous + v1(false))).toEqual(['marks:quadruped/nearLimbs/flipper/small/v1:rest x0']);
+    expect(marks(membranous + v1(true))).toEqual([]);
   });
 
   it('a head needs the eye points its family hangs from a head: all eight on a crustacean (the lobster), none on a serpent', () => {

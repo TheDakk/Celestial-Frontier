@@ -20,6 +20,8 @@ const byLabel = (label: string): Entry[] => fixture.entries.filter((e) => e.labe
 const RECORDED = 621;
 /** The specs appended for body routing (tools/record-art-hashes.mjs), each at rest and strike. */
 const APPENDED = 20;
+/** See 'the colour fields of every entry's recipe are pinned'. */
+const COLOUR_FIELDS_SHA256 = '55840aa5f56da33f21be72db3e41018c269487797ed25d4e32a190cea242eb26';
 
 describe('art golden hashes', () => {
   it('records the current renderer version, the test catalogue and the expected entry count', () => {
@@ -34,6 +36,17 @@ describe('art golden hashes', () => {
     const kept = JSON.stringify(fixture.entries.slice(0, RECORDED).map((e) => [e.label, e.genome, e.pose]));
     expect(createHash('sha256').update(kept).digest('hex')).toBe('ed9b39563c39d5ab55726959119ed70b025f33ad5726ffb050298e269c7ee7b8');
     expect(fixture.entries.slice(RECORDED).every((e) => e.label.startsWith('routed '))).toBe(true);
+  });
+
+  it('the colour fields of every entry\'s recipe are pinned: ramps, theme, rim, opacity, airborne and skin', () => {
+    // The picture hash is taken on pixel values, so it cannot see these. The SHA-256 of [ramps, theme, rim, opacity,
+    // airborne, skin] of the recipe of each of the fixture's entries, in order, taken at the commit that added it: a
+    // change to themeOf, irisOf, rimOf, the opacity or the skin a genome gets shows here.
+    const colours = JSON.stringify(fixture.entries.map((e) => {
+      const r = buildRecipe(e.genome, [], catalogue);
+      return [r.ramps, r.theme, r.rim, r.opacity, r.airborne, r.skin];
+    }));
+    expect(createHash('sha256').update(colours).digest('hex')).toBe(COLOUR_FIELDS_SHA256);
   });
 
   it('has at least 300 entries that compose a real creature', () => {

@@ -37,14 +37,15 @@ function organellesInIris(pixels: Uint8Array): Uint8Array {
 
 /**
  * The attach point a part hangs from, and whether that point belongs to the head (otherwise the torso).
- * A part with `at` hangs from that point on that host, whatever its slot. A wing at index 0 hangs from `wing`, at index i from `wing<i>`.
+ * A part with `at` hangs from that point on that host, whatever its slot. A wing at index 0 hangs from `wing`, at index 1
+ * from `wing1`; a creature has at most two wing pairs, so any other wing index has no point (no names: an `index:` gap).
  */
 function attachFor(rp: RecipePart, legs: number): { names: string[]; onHead: boolean } {
   if (rp.at !== undefined) return { names: [rp.at.point], onHead: rp.at.host === 'head' };
   const { slot, index } = rp;
   switch (slot) {
     case 'farWings':
-    case 'nearWings': return { names: [index === 0 ? 'wing' : `wing${index}`], onHead: false };
+    case 'nearWings': return { names: index === 0 ? ['wing'] : index === 1 ? ['wing1'] : [], onHead: false };
     case 'bodyFeature': return { names: ['back'], onHead: false };
     case 'farLimbs': return { names: [`far${index}_${legs}`, `far${index}`], onHead: false };
     case 'nearLimbs': return { names: [`near${index}_${legs}`, `near${index}`], onHead: false };
@@ -72,7 +73,8 @@ export function frameNameFor(part: Part, entry: PoseEntry | undefined): string {
  * on the torso (or, for eyes and the head feature, on the head as it actually landed), plus its
  * pose offset, plus the recipe shift for the head or tail. Problems become gaps, never throws.
  * A pose the scaffold does not hold adds the gap `pose:<poseId>` and uses the scaffold's `rest` pose
- * instead, or no pose offsets at all when the scaffold has no `rest` pose either.
+ * instead, or no pose offsets at all when the scaffold has no `rest` pose either. A wing at an index other than 0 and 1
+ * (and no `at`) is not drawn and adds the gap `index:<slot>:<index>`.
  */
 export function assemble(recipe: Recipe, poseId: string, catalogue: Catalogue): Assembly {
   const { buffer, contact, gaps } = assembleWithScaffold(recipe, poseId, catalogue);
@@ -122,6 +124,11 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     if (rp.slot === 'torso') return { frame, frameName, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
 
     const { names, onHead } = attachFor(rp, recipe.legs);
+    // A slot index the composer has no attach point for (a wing index other than 0 and 1): never drawn, an error gap.
+    if (names.length === 0) {
+      own.push(`index:${rp.slot}:${rp.index}`);
+      return { frame: undefined, frameName, x: 0, y: 0, gaps: own };
+    }
     const hostPart = findPart(onHead ? 'head' : 'torso');
     const host = hostPart === undefined ? undefined : place(hostPart);
     const hostAttach = host?.frame?.attach;

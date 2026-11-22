@@ -87,8 +87,8 @@ interface Walked {
   cannot: string[];
   /** Scaffolds drawn without an information part: `<scaffold>: <slot>/<kind> ...`. */
   without: string[];
-  /** Recipes planned, distinct part sets drawn, poses drawn. */
-  planned: number; drawn: number; poses: number;
+  /** Recipes planned, distinct part sets drawn, poses drawn, part sets drawn once more with their genome's skin. */
+  planned: number; drawn: number; poses: number; skins: number;
 }
 
 /**
@@ -115,6 +115,7 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
   const seen = new Set<string>();
   let planned = 0;
   let poses = 0;
+  let skins = 0;
   for (const state of inOrder(stateGenomes())) {
     if (!keep(state)) continue;
     const { family, shapes } = routeBody(state);
@@ -168,6 +169,11 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
             const found = recipe.parts.length === 0 || assembled.buffer.pixels.every((p) => p === 0) ? compose(recipe, pose, catalogue).gaps : assembled.gaps;
             for (const gap of found) if (!gapIsInfo(gap)) errors.set(scaffoldId, (errors.get(scaffoldId) ?? new Set()).add(short(gap)));
           }
+          // Once more at rest with the skin its genome gets (buildRecipe: none on a radial), so the skin painter runs on
+          // every drawn part set: a painter throw fails the walk, and an error gap is reported as above.
+          const skinned = compose({ ...recipe, skin: b.family === 'radial' ? null : b.skin }, 'rest', catalogue);
+          skins++;
+          for (const gap of skinned.gaps) if (!gapIsInfo(gap)) errors.set(scaffoldId, (errors.get(scaffoldId) ?? new Set()).add(short(gap)));
         }
       }
     }
@@ -186,7 +192,7 @@ function walk(catalogue: Catalogue, keep: (state: Genome) => boolean = () => tru
   return {
     cannot: cannot.sort(),
     without: [...without].map(([id, kinds]) => `${id}: ${[...kinds].sort().join(' ')}`).sort(),
-    planned, drawn: seen.size, poses,
+    planned, drawn: seen.size, poses, skins,
   };
 }
 
@@ -256,7 +262,7 @@ describe('the coverage walk on the placeholder parts', () => {
     expect(w.without).toEqual(others.map((id) => `${id}/medium: ${backKinds.map((kind) => `back/${kind}-${id.split('/')[1]}`).join(' ')}`));
     // 126 body, state and shape cases have a medium scaffold, each walked over 720 gene sets; the distinct part sets
     // among them are drawn in all seven poses.
-    expect([w.planned, w.drawn, w.poses]).toEqual([126 * 720, 14802, 14802 * 7]);
+    expect([w.planned, w.drawn, w.poses, w.skins]).toEqual([126 * 720, 14802, 14802 * 7, 14802]);
   });
 
   it('a missing t0 tail is reported on the creature that asks for it', () => {

@@ -879,6 +879,21 @@ entry torso 0 rest 0 0
     }
   });
 
+  it('a wing index of 2 or more is never drawn, even on a torso with a wing2 point: a gap names the slot and index', () => {
+    const withWing2 = parseCatalogueText(HEADER + WING_PARTS.replace('attach=wing:1,-1,wing1:3,-1,', 'attach=wing:1,-1,wing1:3,-1,wing2:5,-1,'));
+    for (const [slot, key, v] of [['farWings', 'farWing', 4], ['nearWings', 'nearWing', 9]] as const) {
+      for (const cat of [wingCat, withWing2]) {
+        const r = assemble(wingRecipe([['torso', 0, 'torso'], [slot, 0, key], [slot, 2, key]]), 'rest', cat);
+        expect(r.gaps).toEqual([`index:${slot}:2`]);
+        expect(count(r.buffer, v)).toBe(slot === 'farWings' ? 2 : 4); // index 0 only
+      }
+      // With at, the part hangs where at says, whatever its index.
+      const hung = assemble(wingRecipe([['torso', 0, 'torso'], [slot, 2, key, { host: 'torso', point: 'wing1' }]]), 'rest', wingCat);
+      expect(hung.gaps).toEqual([]);
+      expect(at(hung.buffer, 13, 9)).toBe(v);
+    }
+  });
+
   it('a body feature hangs from back, over the torso and under the back part', () => {
     const r = assemble(wingRecipe([['torso', 0, 'torso'], ['bodyFeature', 0, 'plate'], ['back', 0, 'fin']]), 'rest', wingCat);
     expect(r.gaps).toEqual([]);
@@ -891,6 +906,14 @@ entry torso 0 rest 0 0
     expect(r.gaps).toEqual([]);
     // The wing column x 11, y 9-12: wing, wing over the fin, wing over the torso, the near leg over the wing.
     expect(column(r.buffer, 11, 9, 12)).toEqual([9, 9, 9, 6]);
+  });
+
+  it('a near wing is drawn over the body feature', () => {
+    const r = assemble(wingRecipe([['torso', 0, 'torso'], ['bodyFeature', 0, 'plate'], ['nearWings', 0, 'nearWing']]), 'rest', wingCat);
+    expect(r.gaps).toEqual([]);
+    // The plate covers (11,10) and (12,10); the wing column x 11, y 9-12 covers the plate's (11,10), not its (12,10).
+    expect(column(r.buffer, 11, 9, 12)).toEqual([9, 9, 9, 9]);
+    expect(at(r.buffer, 12, 10)).toBe(5);
   });
 
   it('a far wing is drawn under the far legs', () => {
