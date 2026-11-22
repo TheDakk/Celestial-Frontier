@@ -6,14 +6,15 @@ import { fileURLToPath } from 'node:url';
 import { LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { assemble } from '@cf/art-compose';
-import { bodyOf, buildRoutedRecipe, EYELESS_HEAD, resolveAnatomy, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
-import { checkPack, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
+import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
+import { checkPack, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
 import type { Recipe } from '@cf/art-recipe';
 import type { Part } from '@cf/art-format';
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 
-// A small pack that is right in every way the tool checks: the head and tail overlap the torso by two columns,
+// A small pack that is right in every way the tool checks (the stub tail t0 and the sensory pit included, which every
+// four-legged creature can ask for): the head and tail overlap the torso by two columns,
 // so a shift of one pixel never opens a gap; legs overlap its bottom row and are long enough that each shows at least
 // four pixels beside its neighbours; eyes sit inside the head.
 const PALETTE = `palette
@@ -58,6 +59,11 @@ frame rest anchor=4,0
 22222
 11111
 
+part quadruped/tail/t0/small/v0
+frame rest anchor=4,0
+222222
+111111
+
 part quadruped/farLimbs/leg/small/v0
 frame rest anchor=0,0
 22
@@ -77,6 +83,10 @@ frame rest anchor=0,0
 11
 
 part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+
+part quadruped/eyes/pit/small/v0
 frame rest anchor=0,0
 d
 
@@ -122,28 +132,30 @@ describe('checkPack on a known-good pack', () => {
     expect(errorsOf(r)).toEqual([]);
     expect(r.ok).toBe(true);
     expect(r.failures).toEqual([]);
-    expect(r.summary).toMatchObject({ parts: 7, scaffolds: 1, fallbacks: 1, colours: 2, ramps: 11, bySlot: { torso: 2, head: 1, tail: 1, farLimbs: 1, nearLimbs: 1, eyes: 1 } });
+    expect(r.summary).toMatchObject({ parts: 9, scaffolds: 1, fallbacks: 1, colours: 2, ramps: 11, bySlot: { torso: 2, head: 1, tail: 2, farLimbs: 1, nearLimbs: 1, eyes: 2 } });
     expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK');
-    // Its new gaps are information, each printed as an info: line.
-    for (const prefix of ['marks:', 'role:', 'missing:quadruped/back/']) {
+    // Its new gaps are information, each printed as an info: line: no layer for a pattern, the shared leg for a role,
+    // a missing back part, missing sails (an airborne creature), and no translucent layer (a translucent creature).
+    for (const prefix of ['marks:', 'role:', 'missing:quadruped/back/', 'missing:quadruped/nearWings/sails/', 'skin:']) {
       const found = r.gaps.filter((g) => g.gap.startsWith(prefix));
       expect(found.length, prefix).toBeGreaterThan(0);
       expect(found.every((g) => !g.error), prefix).toBe(true);
       expect(formatReport(r).split('\n').some((l) => l.startsWith(`info: gap ${prefix}`)), prefix).toBe(true);
     }
-    expect(gapClasses(r)).toEqual(['marks: false', 'missing: back false', 'role: false']);
+    expect(gapClasses(r)).toEqual(['marks: false', 'missing: back false', 'missing: false', 'role: false', 'skin: false']);
     // With no iris ramps either, it is still OK.
     const old = checkPack(OLD_FORMAT);
     expect(old.ok).toBe(true);
-    expect(gapClasses(old)).toEqual(['marks: false', 'missing: back false', 'role: false']);
+    expect(gapClasses(old)).toEqual(['marks: false', 'missing: back false', 'missing: false', 'role: false', 'skin: false']);
     // A horned torso asks for horns: a missing head feature is information too.
     const horned = checkPack(GOOD.replaceAll('sturdy', 'horned'));
     expect(horned.ok).toBe(true);
-    expect(gapClasses(horned)).toEqual(['marks: false', 'missing: back false', 'missing: headFeature false', 'role: false']);
+    expect(gapClasses(horned)).toEqual(['marks: false', 'missing: back false', 'missing: false', 'missing: headFeature false', 'role: false', 'skin: false']);
   });
 
   it('a missing torso is still an error', () => {
-    const r = checkPack(planted('part quadruped/torso/sturdy/small/v0', 'part quadruped/torso/sturdy/small/v1'));
+    // The torso is asked for at the bulk step (normal, v1), then at v0: a pack holding only v2 has neither.
+    const r = checkPack(planted('part quadruped/torso/sturdy/small/v0', 'part quadruped/torso/sturdy/small/v2'));
     expect(r.gaps.find((g) => g.gap === 'missing:quadruped/torso/sturdy/small/v0')).toMatchObject({ error: true });
     expect(errorsOf(r)).toContain(`error: gap missing:quadruped/torso/sturdy/small/v0 (x${r.gaps.find((g) => g.gap === 'missing:quadruped/torso/sturdy/small/v0')!.count})`);
     expect(r.ok).toBe(false);
@@ -173,10 +185,12 @@ describe('checkPack on planted faults', () => {
     expect(head.ok).toBe(false);
   });
 
-  it('requires no eye points on the eyeless head (h2), and still requires them on any other head', () => {
+  it('requires only eye0 and eye1 (its two sensory pits) on the eyeless head (h2), and all eight eye points on any other head', () => {
+    const pitsOnly = planted('part quadruped/head/h0/small/v0\nframe rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3', 'part quadruped/head/h2/small/v0\nframe rest anchor=0,0 attach=eye0:1,1,eye1:2,1');
+    expect(checkPack(pitsOnly).structure).toEqual([]);
+    expect(checkPack(pitsOnly).ok).toBe(true);
     const noEyes = planted('part quadruped/head/h0/small/v0\nframe rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3', 'part quadruped/head/h2/small/v0\nframe rest anchor=0,0');
-    expect(checkPack(noEyes).structure).toEqual([]);
-    expect(checkPack(noEyes).ok).toBe(true);
+    expect(checkPack(noEyes).structure).toEqual(['part quadruped/head/h2/small/v0 frame rest: missing attach point eye0, eye1']);
     const other = checkPack(planted('frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3', 'frame rest anchor=0,0'));
     expect(other.structure).toEqual(['part quadruped/head/h0/small/v0 frame rest: missing attach point eye0, eye1, eye2, eye3, eye4, eye5, eye6, eye7']);
   });
@@ -209,12 +223,13 @@ describe('checkPack on planted faults', () => {
     const r = checkPack(planted('attach=head:10,1,tail:1,1,', 'attach=head:10,1,tail:5,1,'));
     expect(r.detached).toEqual([]);
     expect(r.hidden.length).toBeGreaterThan(0);
-    expect(new Set(r.hidden.map((d) => `${d.scaffold} ${d.partId} ${d.visible}`))).toEqual(new Set(['quadruped/sturdy/small quadruped/tail/t1/small/v0 0']));
+    // Both tails hang from the moved point: the stub tail t0 (tail gene 0) and t1.
+    expect(new Set(r.hidden.map((d) => `${d.scaffold} ${d.partId} ${d.visible}`))).toEqual(new Set(['quadruped/sturdy/small quadruped/tail/t0/small/v0 0', 'quadruped/sturdy/small quadruped/tail/t1/small/v0 0']));
     expect(new Set(r.hidden.map((d) => d.pose))).toEqual(new Set(['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint']));
-    expect(r.hidden.every((d) => d.genome['tail'] === 1 && d.needed === 4)).toBe(true);
+    expect(r.hidden.every((d) => d.genome['tail'] === Number(d.partId.split('/')[2]!.slice(1)) && d.needed === 4)).toBe(true);
     const lines = errorsOf(r);
-    expect(lines).toHaveLength(1);
-    expect(lines[0]).toMatch(/^error: hidden part quadruped\/tail\/t1\/small\/v0 on quadruped\/sturdy\/small in \d+ creature poses \(.*\), e\.g\. body 0 loco 0 size 0 head 0 tail 1 limbs \d eyes \d pose \w+ shift head -?\d,-?\d tail -?\d,-?\d: shows 0 of 4 pixels$/);
+    expect(lines).toHaveLength(2);
+    expect(lines[1]).toMatch(/^error: hidden part quadruped\/tail\/t1\/small\/v0 on quadruped\/sturdy\/small in \d+ creature poses \(.*\), e\.g\. body 0 loco 0 habitat 0 size 0 head 0 tail 1 limbs \d eyes \d skin 3 seed \d+ pose \w+ shift head -?\d,-?\d tail -?\d,-?\d: shows 0 of 4 pixels$/);
     expect(r.ok).toBe(false);
   });
 
@@ -238,13 +253,18 @@ describe('checkPack on planted faults', () => {
     expect(r.ok).toBe(false);
   });
 
-  it('a pack holding sails, which no creature on today\'s path asks for, checks as the same pack without them, but for their marks: lines', () => {
-    const extra = ['sails', 'sails-sturdy'].map((kind) => `\npart quadruped/nearWings/${kind}/small/v0\nframe rest anchor=0,0\n2\n`).join('');
-    const r = checkPack(GOOD + extra);
+  it('an airborne sturdy creature is sampled with its sails: missing ones are information, held ones are drawn, its own kind before the shared one', () => {
+    const sailsOf = (text: string): string[] => checkPack(text).gaps.filter((g) => g.gap.includes('/nearWings/')).map((g) => `${g.gap} x${g.count}`);
+    // The good pack holds no sails: each airborne creature (35 recipes x 7 poses, but for the tail pairs' extra shifts) meets one missing: line.
     const base = checkPack(GOOD);
-    expect(r.summary!.bySlot).toMatchObject({ nearWings: 2 });
-    const notSails = r.gaps.filter((g) => !g.gap.startsWith('marks:quadruped/nearWings/'));
-    expect({ ...r, gaps: notSails, summary: null }).toEqual({ ...base, summary: null });
+    expect(base.ok).toBe(true);
+    expect(base.gaps.filter((g) => g.gap.includes('/nearWings/'))).toEqual([{ gap: 'missing:quadruped/nearWings/sails/small/v0', count: 30 * 7, error: false }]);
+    const sail = (kind: string): string => `\npart quadruped/nearWings/${kind}/small/v0\nframe rest anchor=0,0\n2\n`;
+    // Held, the shared sails are drawn (an unlayered part on a patterned creature: a marks: line per patterned pose), and
+    // the sturdy body's own sails are drawn in their place.
+    expect(sailsOf(GOOD + sail('sails'))).toEqual(['marks:quadruped/nearWings/sails/small/v0:rest x49']);
+    expect(sailsOf(GOOD + sail('sails') + sail('sails-sturdy'))).toEqual(['marks:quadruped/nearWings/sails-sturdy/small/v0:rest x49']);
+    expect(checkPack(GOOD + sail('sails')).ok).toBe(true);
   });
 
   it('a detached wing is reported as farWings', () => {
@@ -300,9 +320,18 @@ describe('checkPack on planted faults', () => {
 
   it('an eye named for no species is an error', () => {
     const lost = checkPack(`${GOOD}\npart quadruped/eyes/otter/small/v0\nframe rest anchor=0,0\n11\n`);
-    expect(lost.unreachable).toEqual(["part quadruped/eyes/otter/small/v0: no creature asks for an eye named 'otter' (eye, or the key of a species of this family and tier)"]);
+    expect(lost.unreachable).toEqual(["part quadruped/eyes/otter/small/v0: no creature asks for an eye named 'otter' (eye, pit where the family has sensory pits, or the key of a species of this family and tier)"]);
     expect(lost.ok).toBe(false);
     expect(checkPack(GOOD).unreachable).toEqual([]);
+  });
+
+  it('a pit is asked for in a family whose bodies have sensory pits, and in no other: a serpent has one eye always', () => {
+    const pit = (family: string): string => `\npart ${family}/eyes/pit/small/v0\nframe rest anchor=0,0\nd\n`;
+    // The good pack's quadruped pit is reachable (pinned above: no unreachable line).
+    for (const family of ['fish', 'insect', 'crustacean']) expect(checkPack(GOOD + pit(family)).unreachable, family).toEqual([]);
+    for (const family of ['serpent', 'tentacled', 'gelatinous', 'radial']) {
+      expect(checkPack(GOOD + pit(family)).unreachable, family).toEqual([`part ${family}/eyes/pit/small/v0: no creature asks for an eye named 'pit' (eye, pit where the family has sensory pits, or the key of a species of this family and tier)`]);
+    }
   });
 
   it('a leg named for a torso type with no scaffold is an error; one named for the torso type of a scaffold is not', () => {
@@ -502,7 +531,7 @@ describe('checkPack reaches every leg count a leg-count entry names', () => {
     // Without the entry the variant is forced at eight legs only.
     const plain = checkPack(GOOD + secondLeg);
     expect(plain.hidden).toEqual([]);
-    expect(plain.variants).toBe(2);
+    expect(plain.variants).toBe(4); // two limb variants, on land and airborne
   });
 
   it('forces a limb variant at each leg count a leg-count attach name is written for', () => {
@@ -620,9 +649,11 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
   // A back part sitting on the torso's back point (6,-1): two rows above the torso, the lower one touching it.
   const BACK = '\npart quadruped/back/ridge-sturdy/small/v0\nframe rest anchor=0,1\n4444\n2222\n';
 
-  it('composes 7 poses x (7 patterns + 7 skins) more creatures for one scaffold and one head kind than before', () => {
-    // 133 before this sweep (the base sample, the shift sweep and nothing forced).
-    expect(checkPack(GOOD).composed).toBe(133 + 98);
+  it('composes 7 poses x the recipes SAMPLED names for one scaffold, one head kind and tails t0 and t1, on land and airborne', () => {
+    // Land: 1 head x 2 tails x 6 leg counts + 5 more eye counts = 17, then 7 patterns + 1 translucent + 7 back skins = 15,
+    // then the shift sweep: the head alone and 2 head and tail pairs = 3; 35 recipes. Airborne: 2 head and tail pairs x 6
+    // leg counts = 12, then 15 and 3 as on land; 30 recipes. Each in 7 poses.
+    expect(checkPack(GOOD).composed).toBe((35 + 30) * 7);
   });
 
   it('a back part on top of the torso is silent; one drawn wholly inside the torso is a hidden part naming its id', () => {
@@ -713,8 +744,8 @@ describe('checkPack forced variants keep the creature\'s mark', () => {
     const HEAD_ROWS = 'frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n666666\n666666\n666666\n666666\n555555\n';
     const r = checkPack(`${large}\npart quadruped/head/h9/large/v3\n${HEAD_ROWS}`);
     expect(r.parseError).toBeNull();
-    expect(r.variants).toBe(2);
-    expect(r.gaps.find((g) => g.gap === 'marks:quadruped/head/h9/large/v3:rest')).toEqual({ gap: 'marks:quadruped/head/h9/large/v3:rest', count: 7, error: false });
+    expect(r.variants).toBe(4); // v0 and v3, on land and airborne
+    expect(r.gaps.find((g) => g.gap === 'marks:quadruped/head/h9/large/v3:rest')).toEqual({ gap: 'marks:quadruped/head/h9/large/v3:rest', count: 14, error: false });
     // The head that sampled creatures do pick has layers: it is painted and has no marks: gap.
     expect(r.gaps.some((g) => g.gap.startsWith('marks:quadruped/head/h9/large/v0'))).toBe(false);
     expect(r.ok).toBe(true);
@@ -751,7 +782,7 @@ describe('checkPack lists every marks: gap a pose can show, as x0 when no sample
 
   it('a shared leg\'s frame only a two-legged creature shows is listed: the pack has no hind leg, so the shared leg stands in', () => {
     const lift = 'frame lift anchor=0,0\n33\n33\n33\n33\n33\n11\n';
-    const text = planted('pose rest\n', 'pose rest\nentry nearLimbs 0 lift 0 0 legs=2\n', planted('\npart quadruped/eyes/', `${lift}\npart quadruped/eyes/`, withLayers(GOOD)));
+    const text = planted('pose rest\n', 'pose rest\nentry nearLimbs 0 lift 0 0 legs=2\n', planted('\npart quadruped/eyes/eye/', `${lift}\npart quadruped/eyes/eye/`, withLayers(GOOD)));
     const r = checkPack(text);
     expect(r.parseError).toBeNull();
     expect(marksOf(r)).toEqual(['marks:quadruped/nearLimbs/leg/small/v0:lift x0']);
@@ -765,7 +796,7 @@ describe('checkPack lists every marks: gap a pose can show, as x0 when no sample
     const v3 = `\npart quadruped/head/h0/small/v3\nframe rest anchor=0,0 ${HEAD_ATTACH}\n666666\n666666\n666666\n666666\n555555\nlayer flow\n123456\n123456\n123456\n123456\n123456\n`;
     const r = checkPack(withLayers(GOOD) + v3);
     expect(r.parseError).toBeNull();
-    expect(r.variants).toBe(2);
+    expect(r.variants).toBe(4); // v0 and v3, on land and airborne
     expect(marksOf(r)).toEqual(['marks:quadruped/head/h0/small/v3:rest x0']);
   });
 });
@@ -791,7 +822,7 @@ describe('checkPack composes every variant', () => {
   const GOOD_HEAD = 'frame rest anchor=0,0 attach=eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3\n666666\n666666\n666666\n666666\n555555\n';
   it('forces each head variant into a creature, at its nine shifts, and reports the one drawn flush against the torso', () => {
     const r = checkPack(`${GOOD}\npart quadruped/head/h0/small/v1\n${GOOD_HEAD}\npart quadruped/head/h0/small/v2\n${FLUSH}`);
-    expect(r.variants).toBe(3);
+    expect(r.variants).toBe(6); // three head variants, on land and airborne
     const forced = r.detached.filter((d) => d.variant !== undefined);
     expect(new Set(forced.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h0/small/v2']));
     expect(new Set(forced.map((d) => d.shift.head[0]))).toEqual(new Set([1]));
@@ -808,7 +839,7 @@ describe('checkPack composes every variant', () => {
     const r = checkPack(`${large}\npart quadruped/head/h9/large/v1\n${GOOD_HEAD}\npart quadruped/head/h9/large/v3\n${FAR}`);
     expect(r.parseError).toBeNull();
     expect(r.unreachable).toEqual([]);
-    expect(r.variants).toBe(3);
+    expect(r.variants).toBe(6); // three head variants, on land and airborne
     expect(r.detached.length).toBeGreaterThan(0);
     expect(r.detached.filter((d) => d.variant === undefined)).toEqual([]);
     expect(new Set(r.detached.map((d) => d.variant))).toEqual(new Set(['quadruped/head/h9/large/v3']));
@@ -1078,7 +1109,7 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
   /** The good pack's torso attach list, to plant points into. */
   const TORSO_ATTACH = 'attach=head:10,1,';
   const part = (id: string, attach = ''): string => `\npart ${id}\nframe rest anchor=0,0${attach === '' ? '' : ` attach=${attach}`}\n22\n`;
-  /** The good pack on another torso type (a scaffold the old path never reaches, so nothing is composed on it). */
+  /** The good pack on another torso type. */
   const on = (torso: string, wingPoints = ''): string => GOOD.replaceAll('sturdy', torso).replace(TORSO_ATTACH, `attach=${wingPoints}head:10,1,`);
   const partLines = (lines: readonly string[]): string[] => lines.filter((l) => l.startsWith('part '));
 
@@ -1119,26 +1150,24 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     expect(missingLast('myriapod/torso/body/small/v0', ['head'])[0]).toMatch(/^part myriapod\/torso\/body\/small\/v0 frame rest: missing attach point head, tail, back, far0/);
   });
 
-  it('until Task 17 a torso id the live builder draws keeps the four-legged set; only a routed-only id takes its family\'s', () => {
+  it('every torso takes its family\'s set, whatever its kind; a family no genome reaches takes the four-legged set', () => {
     const full = ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'];
     const structureOf = (id: string, points: readonly string[]): string[] =>
       partLines(checkPack(GOOD + part(id, points.map((p) => `${p}:0,0`).join(','))).structure);
     const missing = (id: string, points: readonly string[]): string[] => [`part ${id} frame rest: missing attach point ${points.join(', ')}`];
-    // As at base: the live builder asks these for a head, a tail and legs.
-    expect(structureOf('tentacled/torso/body/small/v0', ['tail', 'back'])).toEqual(missing('tentacled/torso/body/small/v0', full.filter((p) => p !== 'tail' && p !== 'back')));
-    expect(structureOf('insect/torso/body/small/v0', ['head', 'back', 'far0', 'far1', 'far2', 'near0', 'near1', 'near2'])).toEqual(missing('insect/torso/body/small/v0', ['tail', 'far3', 'near3']));
-    expect(structureOf('fish/torso/body/small/v0', ['head', 'tail', 'back'])).toEqual(missing('fish/torso/body/small/v0', full.slice(3)));
-    expect(structureOf('serpent/torso/body/small/v0', full)).toEqual([]);
-    expect(structureOf('gelatinous/torso/body/small/v0', ['back'])).toEqual(missing('gelatinous/torso/body/small/v0', full.filter((p) => p !== 'back')));
-    // Routed-only ids take their family's set.
+    // The old builder's `body` torsos now take their family's set, as every routed shape does (the flip at the switch).
+    expect(structureOf('tentacled/torso/body/small/v0', ['tail', 'back'])).toEqual([]);
+    expect(structureOf('insect/torso/body/small/v0', ['head', 'back', 'far0', 'far1', 'far2', 'near0', 'near1', 'near2'])).toEqual([]);
+    expect(structureOf('fish/torso/body/small/v0', ['head', 'tail', 'back'])).toEqual([]);
+    expect(structureOf('serpent/torso/body/small/v0', full)).toEqual(missing('serpent/torso/body/small/v0', ['eye0']));
+    expect(structureOf('gelatinous/torso/body/small/v0', ['back'])).toEqual([]);
     expect(structureOf('fish/torso/shark/small/v0', ['head', 'tail', 'back'])).toEqual([]);
     expect(structureOf('serpent/torso/snake/small/v0', ['back'])).toEqual(missing('serpent/torso/snake/small/v0', ['eye0']));
-    // The ids both builders reach, today: the five shared quadruped types (whose family set is the four-legged set) and gelatinous/body.
-    const live = new Set([0, 4].flatMap((loco) => Array.from({ length: 16 }, (_, body) => {
-      const a = resolveAnatomy({ kingdom: 'fauna', body, loco });
-      return `${a.family}/${torsoKindOf(a)}`;
-    })));
-    expect([...generatedTorsos()].filter((id) => live.has(id)).sort()).toEqual(['gelatinous/body', 'quadruped/horned', 'quadruped/squat', 'quadruped/stilt', 'quadruped/sturdy', 'quadruped/tusked']);
+    // A family no genome reaches (the old myriapod) takes the four-legged set.
+    expect(structureOf('myriapod/torso/body/small/v0', ['back'])).toEqual(missing('myriapod/torso/body/small/v0', full.filter((p) => p !== 'back')));
+    // The torso ids every routed genome reaches: 10 four-legged types and 20 shapes of the other families.
+    expect(generatedTorsos().size).toBe(30);
+    expect([...generatedTorsos()].filter((id) => id.endsWith('/body'))).toEqual(['gelatinous/body']);
   });
 
   it('wing-membranous is accepted only with a membranous scaffold; wing-sturdy, wing-armored and bodyFeature/plates-sturdy are errors', () => {
@@ -1172,8 +1201,9 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
 
   it('a wing slot part is in the marks check by its own kind rule: sails on a sturdy scaffold, the own kind before the shared one', () => {
     const sailsGaps = (text: string): string[] => checkPack(text).gaps.filter((g) => g.gap.startsWith('marks:quadruped/nearWings/')).map((g) => `${g.gap} x${g.count}`);
-    expect(sailsGaps(GOOD + part('quadruped/nearWings/sails/small/v0'))).toEqual(['marks:quadruped/nearWings/sails/small/v0:rest x0']);
-    expect(sailsGaps(GOOD + part('quadruped/nearWings/sails/small/v0') + part('quadruped/nearWings/sails-sturdy/small/v0'))).toEqual(['marks:quadruped/nearWings/sails-sturdy/small/v0:rest x0']);
+    // The airborne creatures draw them: 7 patterned recipes x 7 poses meet the unlayered rest frame.
+    expect(sailsGaps(GOOD + part('quadruped/nearWings/sails/small/v0'))).toEqual(['marks:quadruped/nearWings/sails/small/v0:rest x49']);
+    expect(sailsGaps(GOOD + part('quadruped/nearWings/sails/small/v0') + part('quadruped/nearWings/sails-sturdy/small/v0'))).toEqual(['marks:quadruped/nearWings/sails-sturdy/small/v0:rest x49']);
     const layered = '\npart quadruped/nearWings/sails/small/v0\nframe rest anchor=0,0\n22\nlayer flow\n12\nlayer spots\n1.\n';
     expect(sailsGaps(GOOD + layered)).toEqual([]);
   });
@@ -1183,7 +1213,7 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     const [family, torso] = id.split('/') as [string, string];
     const { genes: route } = routeStates(`${id}/medium`).find((s) => s.state === state)!;
     const genome = shapedGenome({ kingdom: 'fauna', head: 0, tail: 2, limbs: 1, eyes: 0, skin: 3, pattern: 0, ...route, ...genes }, family, torso)!;
-    return [...buildRoutedRecipe(genome, [], parseCatalogueText(GOOD)).gaps];
+    return [...buildRecipe(genome, [], parseCatalogueText(GOOD)).gaps];
   };
 
   it('missing wings, sails, flippers and body features are information', () => {
@@ -1227,7 +1257,7 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     const candidates = [...new Set([...TORSO_POINTS_BY_FAMILY['quadruped']!, ...Array.from({ length: 8 }, (_, i) => `eye${i}`), 'wing', 'wing1', 'wing2', 'feature'])];
     const headPoints = [...Array.from({ length: 8 }, (_, i) => `eye${i}:0,0`), 'feature:0,0'].join(',');
     const pointsAskedFor = (genome: Record<string, unknown>, scaffoldId: string): string[] => {
-      const ids = [...new Set(buildRoutedRecipe(genome, [], parseCatalogueText(PALETTE)).gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)))];
+      const ids = [...new Set(buildRecipe(genome, [], parseCatalogueText(PALETTE)).gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)))];
       const pack = (omit: string): string => PALETTE + ids.map((id) => {
         const slot = id.split('/')[1];
         const attach = slot === 'torso' ? candidates.filter((p) => p !== omit).map((p) => `${p}:0,0`).join(',') : slot === 'head' ? headPoints : '';
@@ -1235,7 +1265,7 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
       }).join('') + `\nscaffold ${scaffoldId} origin=16,12\npose rest\n`;
       return candidates.filter((p) => {
         const catalogue = parseCatalogueText(pack(p));
-        return assemble(buildRoutedRecipe(genome, [], catalogue), 'rest', catalogue).gaps.includes(`attach:${p}`);
+        return assemble(buildRecipe(genome, [], catalogue), 'rest', catalogue).gaps.includes(`attach:${p}`);
       });
     };
     const seen = new Set<string>();
@@ -1338,3 +1368,98 @@ frame rest anchor=0,0
     for (const skin of [0, 8]) expect(joins(skin), `skin ${skin}`).toEqual([]);
   });
 });
+
+describe('checkPack samples every scaffold through the routed builder (the switch)', () => {
+  /** A scaffold of the good pack's shape for another family and torso, its torso attached at head, tail and back. */
+  const scaffoldFor = (id: string): string => SCAFFOLD.replace('quadruped/sturdy/small', id).replace(/fallback .*\n/, '');
+  const torsoFor = (id: string, attach: string): string => `\npart ${id}\nframe rest anchor=0,0 attach=${attach}\n222222222222\n222222222222\n111111111111\n`;
+
+  it('a crab scaffold in a planted pack is sampled, not unreachable', () => {
+    const crab = GOOD + torsoFor('crustacean/torso/crab/small/v0', 'head:10,1,tail:1,1,back:6,-1') + scaffoldFor('crustacean/crab/small') + '\nfallback crustacean quadruped/torso/fallback/small/v0\n';
+    const base = checkPack(GOOD);
+    const r = checkPack(crab);
+    expect(r.parseError).toBeNull();
+    expect(r.unreachable).toEqual([]);
+    // Its creatures are composed: more poses, and each asks for the crustacean head the pack lacks (an error gap).
+    expect(r.composed).toBeGreaterThan(base.composed);
+    expect(r.gaps.find((g) => g.gap === 'missing:crustacean/head/h0/small/v0')).toMatchObject({ error: true });
+    // A crab draws no gene eyes and no legs: no crustacean eye or leg is asked for.
+    expect(r.gaps.filter((g) => /^missing:crustacean\/(eyes|farLimbs|nearLimbs)\//.test(g.gap))).toEqual([]);
+  });
+
+  it('an armored scaffold in a planted pack is unreachable: body 1 is the crustacean now', () => {
+    const armored = GOOD + torsoFor('quadruped/torso/armored/small/v0', 'head:10,1,tail:1,1,back:6,-1,far0:0,2,far1:3,2,far2:6,2,far3:9,2,near0:1,2,near1:4,2,near2:7,2,near3:10,2') + scaffoldFor('quadruped/armored/small');
+    const r = checkPack(armored);
+    expect(r.unreachable).toEqual(['scaffold quadruped/armored/small: no fauna genome resolves to it, so the renderer never uses it']);
+    expect(errorsOf(r)).toContain('error: scaffold quadruped/armored/small: no fauna genome resolves to it, so the renderer never uses it');
+    expect(r.ok).toBe(false);
+    expect(routeStates('quadruped/armored/small')).toEqual([]);
+  });
+
+  it('sails are never sampled on a fish', () => {
+    // Every fish shape is sampled in water only, and no body there asks for sails.
+    for (const shape of ['fusiform', 'shark', 'flat', 'angler', 'sturgeon']) {
+      const states = routeStates(`fish/${shape}/small`);
+      expect(states.map((x) => x.state), shape).toEqual(['aquatic']);
+      for (const { genes } of states) {
+        const shaped = shapedGenome({ kingdom: 'fauna', ...genes }, 'fish', shape)!;
+        expect(buildRecipe(shaped, [], parseCatalogueText(GOOD)).gaps.filter((g) => g.includes('/nearWings/')), shape).toEqual([]);
+      }
+    }
+    // A fish pack holding sails: they are named unreachable, and no composed fish meets a sails gap.
+    const fish = GOOD + torsoFor('fish/torso/fusiform/small/v0', 'head:10,1,tail:1,1,back:6,-1') + scaffoldFor('fish/fusiform/small') + '\nfallback fish quadruped/torso/fallback/small/v0\n' +
+      '\npart fish/nearWings/sails/small/v0\nframe rest anchor=0,0\n2\n';
+    const r = checkPack(fish);
+    expect(r.unreachable).toEqual(["part fish/nearWings/sails/small/v0: no creature asks for a nearWings part named 'sails'"]);
+    expect(r.gaps.filter((g) => g.gap.includes('fish/nearWings/'))).toEqual([]);
+    expect(r.gaps.some((g) => g.gap.startsWith('missing:fish/'))).toBe(true); // the fish is composed
+  });
+
+  it('a genome no seed shapes, or one drawn at another tier, is a failure line naming it, not a crash', () => {
+    const genes = { kingdom: 'fauna', body: 1, loco: 0, habitat: 0, size: 2 };
+    expect(shapedFor(genes, 'crustacean', 'crab', 'medium').genome).toEqual(shapedGenome(genes, 'crustacean', 'crab'));
+    expect(shapedFor(genes, 'crustacean', 'shrimp', 'medium')).toEqual({ failure: 'no seed from 1 to 64 gives body 1 loco 0 habitat 0 size 2 head undefined tail undefined limbs undefined eyes undefined skin undefined seed undefined the shape crustacean/shrimp' });
+    const crab = shapedGenome(genes, 'crustacean', 'crab')!;
+    expect(shapedFor(genes, 'crustacean', 'crab', 'small')).toEqual({ failure: `body 1 loco 0 habitat 0 size 2 head undefined tail undefined limbs undefined eyes undefined skin undefined seed ${String(crab['seed'])} draws at tier medium, not small` });
+  });
+
+  it('a skinned sampled creature: the detached check and the shift sweep find a loose head, and nothing in the good pack', () => {
+    // Every generated four-legged creature now carries its skin (gene 3 here, slick): the composer paints it.
+    const catalogue = parseCatalogueText(GOOD);
+    const clean = checkPack(GOOD);
+    expect([clean.detached, clean.edge, clean.hidden]).toEqual([[], [], []]);
+    const loose = planted('attach=head:10,1,', 'attach=head:14,1,');
+    const r = checkPack(loose);
+    expect(r.detached.length).toBeGreaterThan(0);
+    // Found at the creatures' own shifts (a creature with legs: the good pack sweeps shifts at no legs only) and in the
+    // shift sweep (a shift other than the creature's own), every one of them a skinned creature.
+    const own = r.detached.filter((d) => d.genome['limbs'] !== limbGene(0));
+    const swept = r.detached.filter((d) => d.shift.head.join() !== buildRecipe(d.genome, [], catalogue).shift.head.join());
+    expect(own.length).toBeGreaterThan(0);
+    expect(swept.length).toBeGreaterThan(0);
+    expect(r.detached.every((d) => buildRecipe(d.genome, [], catalogue).skin !== null)).toBe(true);
+    expect(new Set(r.detached.flatMap((d) => d.off.filter((slot) => slot !== 'eyes' && slot !== 'headFeature')))).toEqual(new Set(['head']));
+    expect(r.ok).toBe(false);
+  });
+
+  it('a winged body in water is sampled with its flippers, and an unlayered flipper frame is a marks: line', () => {
+    const membranous = withLayers(GOOD.replaceAll('sturdy', 'membranous'));
+    const flipper = (layered: boolean): string => `\npart quadruped/nearLimbs/flipper/small/v0\nframe rest anchor=0,0\n33\n33\n11\n${layered ? 'layer flow\n12\n12\n12\nlayer spots\n11\n11\n..\n' : ''}`;
+    const without = checkPack(membranous);
+    expect(without.gaps.find((g) => g.gap === 'missing:quadruped/nearLimbs/flipper/small/v0')).toMatchObject({ error: false });
+    const r = checkPack(membranous + flipper(false));
+    expect(r.gaps.find((g) => g.gap.startsWith('missing:quadruped/nearLimbs/flipper'))).toBeUndefined();
+    // The patterned creatures in water (7 patterns x 7 poses) paint both flippers and find no layer.
+    expect(r.gaps.filter((g) => g.gap.startsWith('marks:quadruped/nearLimbs/flipper')).map((g) => `${g.gap} x${g.count}`)).toEqual(['marks:quadruped/nearLimbs/flipper/small/v0:rest x98']);
+    expect(checkPack(membranous + flipper(true)).gaps.filter((g) => g.gap.startsWith('marks:quadruped/nearLimbs/flipper'))).toEqual([]);
+  });
+
+  it('a head needs the eye points its family hangs from a head: all eight on a crustacean (the lobster), none on a serpent', () => {
+    const bare = (family: string): string => `${GOOD}\npart ${family}/head/h0/small/v0\nframe rest anchor=0,0\n22\n`;
+    const heads = (text: string): string[] => checkPack(text).structure.filter((l) => l.includes('/head/'));
+    expect(heads(bare('crustacean'))).toEqual(['part crustacean/head/h0/small/v0 frame rest: missing attach point eye0, eye1, eye2, eye3, eye4, eye5, eye6, eye7']);
+    expect(heads(bare('fish'))).toHaveLength(1);
+    for (const family of ['serpent', 'tentacled', 'gelatinous', 'radial']) expect(heads(bare(family)), family).toEqual([]);
+  });
+});
+

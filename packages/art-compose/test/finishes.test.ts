@@ -181,7 +181,8 @@ describe('the rarity finish: levels 1 to 3', () => {
 describe('the rarity finish: a bad level is refused', () => {
   const BAD: readonly unknown[] = [4, -1, 1.5, NaN, '2', null];
   const real = buildRecipe(genome(0, 3, 3), [], cat);
-  const fallback = buildRecipe(genome(3, 3, 3), [], cat);
+  // A large creature: the placeholder pack draws every body at medium only, so this one is drawn as its family's fallback.
+  const fallback = buildRecipe({ ...genome(3, 3, 3), size: 4 }, [], cat);
   // A family with no fallback: compose would throw its own error, so the level must be refused before anything is read.
   const nothing = { ...real, parts: [], family: 'ghost' };
 

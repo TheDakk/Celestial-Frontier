@@ -53,8 +53,9 @@ export interface PackReport {
   parseError: string | null;
   summary: PackSummary | null;
   sampled: string;
+  /** Creature poses composed (SAMPLED says which); a shift is drawn as a label picture and not counted. */
   composed: number;
-  /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points). */
+  /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points), in each state the scaffold is sampled in. */
   variants: number;
   /**
    * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information
@@ -70,17 +71,17 @@ export interface PackReport {
   hidden: HiddenPart[];
   structure: string[];
   unreachable: string[];
-  /** Distinct compose errors (a missing fallback), each naming the family, tier and the scaffold that needed it. */
+  /** Distinct compose errors (a missing fallback) and sampling failures (shapedFor), each naming the scaffold that needed it. */
   failures: string[];
   /** Neck join warnings, one per head and torso pairing that breaks the rule. */
   neck: NeckJoin[];
-  /** Information about the pack that is not a fault, each printed as an `info:` line (for example a palette with no iris ramps). */
+  /** Information about the pack that is not a fault, each printed as an `info:` line (a palette with no iris ramps, or without some of the eleven). */
   info: string[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;
 export const HIDDEN_MIN: number;
-/** The attach points a routed-only torso needs, by family (until Task 17, a torso id the live builder draws, or a family not listed, needs the quadruped's). Plus `wing` and `wing1` once the pack holds the torso type's wings. */
+/** The attach points a generated torso needs, by family (a family not listed needs the quadruped's). Plus `wing` and `wing1` once the pack holds the torso type's wings. */
 export const TORSO_POINTS_BY_FAMILY: Readonly<Record<string, readonly string[]>>;
 /** Whether a gap is information rather than an error (see PackReport.gaps). */
 export function gapIsInfo(gap: string): boolean;
@@ -97,10 +98,12 @@ export function frameOrigin(recipe: Recipe, k: number, pose: string, catalogue: 
 export function labelPicture(recipe: Recipe, pose: string, labels: Catalogue): { w: number; h: number; pixels: Uint8Array };
 /** Neck join breaches of each head on a torso (see NeckJoin), with marks and skin left off. */
 export function neckJoins(catalogue: Catalogue, scaffold: Scaffold, torsoId: string, headIds: readonly string[], legCounts: readonly number[], recipeFor: (limbs: number) => Recipe, cache: Map<string, Part>, shifts?: readonly { head: readonly [number, number]; tail: readonly [number, number] }[]): NeckJoin[];
-/** The states a routed scaffold `<family>/<torso>/<tier>` is sampled in, each with its tier, body and state genes; [] when no genome reaches it. Not yet used by checkPack. */
+/** The states a generated scaffold `<family>/<torso>/<tier>` is sampled in, each with its tier, body and state genes; [] when no genome reaches it (a species scaffold, or an unreachable one). */
 export function routeStates(scaffoldId: string): { state: 'land' | 'airborne' | 'aquatic'; genes: Record<string, unknown> }[];
 /** The genome with the smallest seed from 1 to 64 for which bodyOf gives this family and torso, every other gene kept; else undefined. */
 export function shapedGenome(genome: Record<string, unknown>, family: string, torso: string): Record<string, unknown> | undefined;
+/** The genome checkPack samples: shaped (shapedGenome) and drawn at `tier`; else the failure line checkPack reports. */
+export function shapedFor(genome: Record<string, unknown>, family: string, torso: string, tier: string): { genome: Record<string, unknown>; failure?: undefined } | { genome?: undefined; failure: string };
 /** Every `<family>/<torso>` a fauna genome reaches on the routed path. */
 export function generatedTorsos(): Set<string>;
 export function formatReport(report: PackReport): string;

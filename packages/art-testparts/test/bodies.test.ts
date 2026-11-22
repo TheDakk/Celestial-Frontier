@@ -118,7 +118,7 @@ describe('the merged placeholder file', () => {
       }
     }
     expect([...cat.parts.keys(), ...cat.scaffolds.keys()].filter((id) => id.includes('armored'))).toEqual([]);
-    expect(TEXT).not.toContain('armored');
+    expect(TEXT).not.toMatch(/^(part|scaffold) \S*armored/m);
   });
 });
 
@@ -230,8 +230,10 @@ describe('the routed bodies on the placeholder parts', () => {
 
   it('every part shows at least 4 pixels in some creature, and none touches the canvas edge in any pose', () => {
     const cat = testCatalogue();
-    // Every part but the quadruped's shared leg, which a pack holding every leg role never draws.
-    const wanted = new Set([...cat.parts.keys()].filter((id) => !/^quadruped\/(far|near)Limbs\/leg\//.test(id)));
+    // Every part but the quadruped's shared leg, which a pack holding every leg role never draws, and the fallbacks, whose
+    // size and fit coverage.test.ts checks (each spans at least a third of its canvas each way).
+    const fallbacks = new Set(cat.fallbacks.values());
+    const wanted = new Set([...cat.parts.keys()].filter((id) => !/^quadruped\/(far|near)Limbs\/leg\//.test(id) && !fallbacks.has(id)));
     const creatures: Record<string, unknown>[] = [];
     for (const [type, body] of Object.entries(NEW_TYPES)) {
       for (const skin of [0, 1, 2, 3, 4, 5, 6, 8]) creatures.push(fauna({ body, skin }));
@@ -240,6 +242,12 @@ describe('the routed bodies on the placeholder parts', () => {
     }
     creatures.push(fauna({ body: 0, skin: 7, tail: 0, eyes: 5 }), fauna({ body: 0 }, 'airborne'), fauna({ body: 2 }, 'airborne'));
     for (const head of [0, 1, 2, 4, 5, 7, 8, 9]) creatures.push(fauna({ body: 10, head }));
+    // Every four-legged torso type, at every head kind (a horned body: its horns), every tail kind and eight legs (every
+    // leg role), and with every back skin; a tusked body at every head kind (its tusks, and the horn on heads 3 and 6).
+    for (const body of [0, 2, 6, 7, 8, 10, 11, 12, 13, 14]) {
+      for (let head = 0; head < 10; head++) creatures.push(fauna({ body, head, tail: head % 7, limbs: 3, eyes: 3 }));
+      for (const skin of [0, 1, 2, 4, 5, 6, 8]) creatures.push(fauna({ body, skin }));
+    }
     for (const body of [6, 8, 10, 11]) for (const head of [0, 2]) creatures.push(fusiform({ body, head, tail: 2 }));
     // Every family and shape outside the four-legged bodies, at every head kind, each own tail kind and eye count.
     for (const torso of generatedTorsos()) {

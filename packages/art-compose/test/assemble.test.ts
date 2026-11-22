@@ -271,13 +271,15 @@ describe('assemble: placement', () => {
 });
 
 describe('assemble: limb counts from a genome', () => {
-  // Genome: quadruped/sturdy (body 0), small (size 0), no tail, head h1, no eyes (eyes gene 5).
+  // Genome: quadruped/sturdy (body 0), small (size 0), tail gene 0 (the stub tail, which this catalogue lacks), head h1,
+  // no eyes (eyes gene 5: two pits, which it lacks too).
   const base = { kingdom: 'fauna', body: 0, loco: 0, size: 0, head: 1, tail: 0, eyes: 5, color: 0, accent: 0, pattern: 0, lumin: false };
 
   it('(e) three limbs compose as one far at far0 and two near at near0 and near1', () => {
     const recipe = buildRecipe({ ...base, limbs: 4 }, [], catalogue);
     expect(recipe.parts.map((p) => `${p.slot}${p.index}`)).toEqual(['farLimbs0', 'torso0', 'nearLimbs0', 'nearLimbs1', 'head0']);
-    const r = assemble(recipe, 'rest', catalogue);
+    // The skin left off: this counts the limbs' own pixel values.
+    const r = assemble({ ...recipe, skin: null }, 'rest', catalogue);
     expect(at(r.buffer, 10, 12)).toBe(5);
     expect(count(r.buffer, 5)).toBe(1);
     expect([at(r.buffer, 11, 11), at(r.buffer, 11, 12), at(r.buffer, 12, 11), at(r.buffer, 12, 12)]).toEqual([6, 6, 6, 6]);
@@ -286,7 +288,7 @@ describe('assemble: limb counts from a genome', () => {
 
   it('(f) zero limbs compose a torso with no limb slots filled', () => {
     const recipe = buildRecipe({ ...base, limbs: 5 }, [], catalogue);
-    const r = assemble(recipe, 'rest', catalogue);
+    const r = assemble({ ...recipe, skin: null }, 'rest', catalogue);
     expect(recipe.parts.map((p) => p.slot)).toEqual(['torso', 'head']);
     expect(at(r.buffer, 10, 10)).toBe(2);
     expect(count(r.buffer, 5) + count(r.buffer, 6)).toBe(0);
