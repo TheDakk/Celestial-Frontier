@@ -112,10 +112,12 @@ function lookUp(catalogue: Catalogue, family: string, tier: SizeTier, build: str
     if (hit < 0) { gaps.push(`missing:${tries[1]}`); return undefined; }
     return tries[hit];
   }
-  const tries = [id(w.kind, w.variant), id(w.kind, 0)];
+  // The torso variant is the bulk step (lean 0, normal 1, heavy 2): a heavy torso the pack lacks falls back to normal
+  // before lean. Every other part goes from its variant straight to v0. Either way one variant: gap names the id asked for.
+  const tries = w.slot === 'torso' && w.variant === 2 ? [id(w.kind, 2), id(w.kind, 1), id(w.kind, 0)] : [id(w.kind, w.variant), id(w.kind, 0)];
   const hit = firstHeld(catalogue, tries);
-  if (hit < 0) { gaps.push(`missing:${tries[1]}`); return undefined; }
-  if (hit === 1) gaps.push(`variant:${tries[0]}`);
+  if (hit < 0) { gaps.push(`missing:${tries[tries.length - 1]}`); return undefined; }
+  if (hit > 0) gaps.push(`variant:${tries[0]}`);
   return tries[hit];
 }
 

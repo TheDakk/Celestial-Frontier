@@ -399,6 +399,27 @@ describe('buildRecipe: the animal and the routed fields', () => {
     }
   });
 
+  it('a heavy torso the pack lacks falls back to normal, then to lean, with one variant: gap for the heavy id', () => {
+    const torsoGaps = (r: Recipe): string[] => r.gaps.filter((gap) => gap.includes('/torso/'));
+    const without = (...variants: number[]): Catalogue => catalogueOf(fullIds().filter((id) => !variants.some((v) => id === q('torso', 'sturdy', v))));
+    for (let seed = 1; seed <= 10; seed++) {
+      const g = { ...base, limbs: 4, seed };
+      // v0 and v1 held: heavy draws normal
+      const normal = buildRecipe(g, [], without(2), { bulk: 2 });
+      expect(normal.parts.find((p) => p.slot === 'torso')!.partId, `seed ${seed}`).toBe(q('torso', 'sturdy', 1));
+      expect(torsoGaps(normal), `seed ${seed}`).toEqual([`variant:${q('torso', 'sturdy', 2)}`]);
+      // v0 only: heavy draws lean, still one gap naming v2
+      const lean = buildRecipe(g, [], without(1, 2), { bulk: 2 });
+      expect(lean.parts.find((p) => p.slot === 'torso')!.partId, `seed ${seed}`).toBe(q('torso', 'sturdy', 0));
+      expect(torsoGaps(lean), `seed ${seed}`).toEqual([`variant:${q('torso', 'sturdy', 2)}`]);
+      // normal and lean are as before: normal falls back to lean; lean has no fallback
+      expect(buildRecipe(g, [], without(1), { bulk: 1 }).parts.find((p) => p.slot === 'torso')!.partId).toBe(q('torso', 'sturdy', 0));
+      expect(torsoGaps(buildRecipe(g, [], without(1), { bulk: 1 }))).toEqual([`variant:${q('torso', 'sturdy', 1)}`]);
+      expect(torsoGaps(buildRecipe(g, [], without(0, 1, 2), { bulk: 0 }))).toEqual([`missing:${q('torso', 'sturdy', 0)}`]);
+      expect(torsoGaps(buildRecipe(g, [], without(0, 1, 2), { bulk: 2 }))).toEqual([`missing:${q('torso', 'sturdy', 0)}`]);
+    }
+  });
+
   it('the default is normal', () => {
     for (let seed = 1; seed <= 20; seed++) {
       const g = { ...base, limbs: 4, seed };
