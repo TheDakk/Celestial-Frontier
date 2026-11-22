@@ -118,4 +118,4 @@ const out = new URL('../fixtures/art/quadruped-v1.json', import.meta.url);
 mkdirSync(fileURLToPath(new URL('./', out)), { recursive: true });
 writeFileSync(out, text);
 const real = entries.filter((e) => !e.gaps.some((g) => g.startsWith('fallback:'))).length;
-console.log(`recorded ${entries.length} entries, ${real} compose a real quadruped, ${entries.length - real} record a stand-in`);
+console.log(`recorded ${entries.length} entries, ${real} compose a real creature (any family), ${entries.length - real} record a stand-in`);

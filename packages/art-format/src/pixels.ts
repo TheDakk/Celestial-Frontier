@@ -70,7 +70,7 @@ export function colourTable(
 /**
  * The original's hide mix of one channel, round(a x 0.62 + t x 0.38), in whole numbers: (62a + 38t) hundredths,
  * halves rounded up. 62 + 38 = 100, so it never passes 255. Dividing by 100 is a multiply and shift: 5243 / 2^19 is
- * 1/100 to within 1 part in 400000, exact for every sum up to 25550. Two channel pairs, (192, 17) and (228, 3), give
+ * 1/100 to within about 1 part in 43700, exact for every sum up to 25550. Two channel pairs, (192, 17) and (228, 3), give
  * one step more than the original's floats, whose value there is a half less float noise.
  */
 function tintChannel(a: number, t: number): number {

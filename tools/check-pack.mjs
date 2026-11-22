@@ -799,7 +799,8 @@ export function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, reci
  * are not composed (no gaps, edge, detachment, hidden parts, marks: x0 lines or neck joins of theirs). Everything about
  * the pack as a whole is checked as without it: the summary, structure, names, palette, fallbacks, unreachable parts and
  * scaffolds, and every named species. Without it every scaffold is sampled, as the command line does. It lets a test
- * check a large pack in parts that together sample every scaffold once.
+ * check a large pack in parts that together sample every scaffold once. A report that left a scaffold out lists the
+ * ids left out in `partial` (null when none was), and formatReport says so on its first line.
  */
 export function checkPack(text, options = {}) {
   const sampled = options.sample ?? (() => true);
@@ -807,7 +808,7 @@ export function checkPack(text, options = {}) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [], info: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, partial: null, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [], info: [] };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -830,6 +831,8 @@ export function checkPack(text, options = {}) {
   const unreachable = [];
   const neck = [];
   const failed = new Set();
+  /** Generated scaffolds the `sample` option left out, in catalogue order. */
+  const skipped = [];
   let composed = 0;
 
   // A leg part is asked for as `leg`, as a role, or as a role on a torso type that has a scaffold at its tier. Any other
@@ -930,7 +933,10 @@ export function checkPack(text, options = {}) {
       }
       continue;
     }
-    if (!sampled(scaffold.id)) continue;
+    if (!sampled(scaffold.id)) {
+      skipped.push(scaffold.id);
+      continue;
+    }
     const torsoKind = scaffold.id.split('/')[1];
     const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
     const someHeads = heads.length > 0 ? heads : [0];
@@ -1096,7 +1102,8 @@ export function checkPack(text, options = {}) {
     info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
-  return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };
+  const partial = skipped.length === 0 ? null : skipped;
+  return { ok, parseError: null, summary, sampled: SAMPLED, partial, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -1157,7 +1164,9 @@ export function formatReport(report) {
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
   for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pixels} head pixels more than one shade step from the torso beside them, in ${n.cases} pose shifts, e.g. ${n.example}`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
-  return `check-pack: ${report.ok ? 'OK' : `FAIL (${errors} distinct errors)`}\n${lines.join('\n')}\n`;
+  const n = report.partial?.length ?? 0;
+  const partial = n === 0 ? '' : ` (partial: ${n} scaffold${n === 1 ? '' : 's'} not sampled)`;
+  return `check-pack: ${report.ok ? 'OK' : `FAIL (${errors} distinct errors)`}${partial}\n${lines.join('\n')}\n`;
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

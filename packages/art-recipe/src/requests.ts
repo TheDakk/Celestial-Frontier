@@ -51,8 +51,8 @@ export function bodyFeatureKind(b: Body): string | null {
 /**
  * The head features a body carries, as kinds in head-feature index order (hdart.verbatim.js:207-208, 1774-1777,
  * 1825-1832, 2146-2158). A tusked quadruped: `tusks-h<n>`, then `horns-h<n>` when its head kind or trait carries a
- * horn, else `hornlet-h<n>` (the original's one horn per creature, at its smallest). A horned quadruped, or any other
- * quadruped with `horn`: `horns-h<n>`. A fish keeping its tusks or its horn: `tusks-h<n>` or `horns-h<n>`. Else none.
+ * horn, else `hornlet-h<n>` (the original's one horn per creature, at the size it falls back to, 0.5, when no head horn
+ * gives one). A horned quadruped, or any other quadruped with `horn`: `horns-h<n>`. A fish keeping its tusks or its horn: `tusks-h<n>` or `horns-h<n>`. Else none.
  */
 export function headFeatureKinds(b: Body): string[] {
   if (b.head === null) return [];

@@ -87,6 +87,7 @@ export function checkGroup(group: readonly string[]): PackReport {
   expect(formatReport(r).split('\n').filter((l) => l.startsWith('warning:'))).toEqual([]);
   expect(r.info).toEqual([]);
   expect(r.composed).toBe(group.reduce((n, id) => n + composedOf(id), 0));
+  expect([...(r.partial ?? [])].sort()).toEqual(Object.values(GROUPS).flat().filter((id) => !group.includes(id)).sort());
   const skinGaps = r.gaps.filter((g) => g.gap.startsWith('skin:'));
   expect(skinGaps.every((g) => !g.error)).toBe(true);
   const torsos = skinGaps.map((g) => g.gap.replace(/^skin:/, '').replace(/\/medium\/v0:rest$/, '')).sort();

@@ -27,6 +27,8 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
     expect(r.neck).toEqual([]);
     expect(formatReport(r).split('\n').filter((l) => l.startsWith('warning:'))).toEqual([]);
     expect(r.composed).toBe(0);
+    expect(r.partial).toHaveLength(30);
+    expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK (partial: 30 scaffolds not sampled)');
   });
 
   it('the scaffold groups sample every scaffold exactly once, and their shares add up to the whole pack\'s composed count', () => {

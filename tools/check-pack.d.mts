@@ -53,6 +53,8 @@ export interface PackReport {
   parseError: string | null;
   summary: PackSummary | null;
   sampled: string;
+  /** The generated scaffolds (by id, in catalogue order) the `sample` option left out, so `sampled` does not hold for them; null when every scaffold was sampled (and on a parse failure). formatReport adds `(partial: N scaffolds not sampled)` to its first line. */
+  partial: string[] | null;
   /** Creature poses composed (SAMPLED says which); a shift is drawn as a label picture and not counted. */
   composed: number;
   /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points), in each state the scaffold is sampled in. */

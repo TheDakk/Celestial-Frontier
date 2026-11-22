@@ -312,7 +312,8 @@ describe('buildRecipe: the animal and the routed fields', () => {
       expect(rim({ ...g, lumin: true }), JSON.stringify(g)).toBe(75);
       expect(rim({ ...g, lumin: false }), JSON.stringify(g)).toBe(0);
     }
-    // Every other body: a four-legged body, a fish keeping a shell, a crustacean, a serpent, a jelly, a radial, a winged body.
+    // Every other body (eight): a four-legged body, a fish keeping a shell, a crustacean, a serpent, a jelly, a radial, a winged
+    // body, a shelled four-legged body.
     for (const g of [{ body: 0 }, { body: 6, loco: 4 }, { body: 1 }, { body: 4 }, { body: 9 }, { body: 15 }, { body: 7 }, { body: 6 }]) {
       expect(rim({ ...g, lumin: true }), JSON.stringify(g)).toBe(50);
       expect(rim({ ...g, lumin: false }), JSON.stringify(g)).toBe(0);

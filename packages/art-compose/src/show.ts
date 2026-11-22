@@ -26,7 +26,7 @@ export function rimPixels(buffer: PixelBuffer): Uint8Array {
   return out;
 }
 
-/** round(n / 100), halves up, for 0 <= n <= 25550, in whole numbers: 5243 / 2^19 is 1/100 to within 1 part in 400000. */
+/** round(n / 100), halves up, for 0 <= n <= 25550, in whole numbers: 5243 / 2^19 is 1/100 to within about 1 part in 43700. */
 const hundredths = (n: number): number => ((n + 50) * 5243) >>> 19;
 
 /**

@@ -1489,6 +1489,22 @@ describe('checkPack: the sample option', () => {
     expect(checkPack(GOOD, {})).toEqual(plain);
     expect(checkPack(GOOD, { sample: () => true })).toEqual(plain);
     expect(plain.composed).toBe((35 + 30) * 7);
+    expect(plain.partial).toBeNull();
+    expect(formatReport(plain).split('\n')[0]).toBe('check-pack: OK');
+  });
+
+  it('a report that left a scaffold out is marked partial, with the ids left out, and says so on its first line', () => {
+    const none = checkPack(GOOD, { sample: () => false });
+    expect(none.partial).toEqual(['quadruped/sturdy/small']);
+    expect(formatReport(none).split('\n')[0]).toBe('check-pack: OK (partial: 1 scaffold not sampled)');
+    // two left out, one of them failing a whole-pack check: the count is plural and the failure stays a failure
+    const two = GOOD + SCAFFOLD.replace('quadruped/sturdy/small', 'quadruped/squat/small').replace(/fallback .*\n/, '');
+    const both = checkPack(two, { sample: () => false });
+    expect(both.partial).toEqual(['quadruped/sturdy/small', 'quadruped/squat/small']);
+    expect(formatReport(both).split('\n')[0]).toMatch(/^check-pack: (OK|FAIL \(\d+ distinct errors\)) \(partial: 2 scaffolds not sampled\)$/);
+    // a species scaffold is always composed, so never in the list; a parse failure samples nothing and is no partial report
+    expect(checkPack(WITH_CIVET, { sample: () => false }).partial).toEqual(['quadruped/sturdy/small']);
+    expect(checkPack('palette\nbad line\n').partial).toBeNull();
   });
 
   it('a scaffold left out is not composed, but the whole-pack checks and the species still run', () => {

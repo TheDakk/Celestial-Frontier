@@ -20,7 +20,8 @@
 # sitting on the torso's back point; tusks and horns for each head kind, hung from the head's feature point (horns
 # above the head's front, tusks below it); hornlet-h<n> for every head kind but 3 and 6 (those carry a horn, so a
 # tusked body asks for horns-h<n> instead); the stub tail t0. The eye has an iris row (5-8) above its eye and
-# highlight; pit, a sensory pit, wherever eyes are asked for (not on a serpent).
+# highlight; pit, a sensory pit, wherever eyes are asked for in a family with sensory pits (the checker's EYES_BY_FAMILY:
+# not on a serpent, tentacled, gelatinous or radial body).
 # Wings rise from their point (near wing anchored 2 in, far wing 4 further back and 2 rows taller, so both show);
 # sails rise from the back point, behind the back part (their right edge 6 columns behind it, so a back part shows);
 # fins lie on the torso's side under the back point; flippers hang from near0 and near1. The crystalline torso's top-row
