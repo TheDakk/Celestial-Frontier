@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildRecipe } from '@cf/art-recipe';
-import { FINISH, applyFinish, assemble, blit, compose, createBuffer, finish, finishLevelFor, hashBuffer, type PixelBuffer } from '@cf/art-compose';
+import { FINISH, FINISH_TIERS, applyFinish, assemble, blit, compose, createBuffer, finish, finishLevelFor, hashBuffer, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 
 type Level = 0 | 1 | 2 | 3;
@@ -102,6 +102,15 @@ describe('the rarity finish: levels 1 to 3', () => {
       today.forEach((v, i) => {
         if (v === 0 || v >= 13 || now[i] === 0 || now[i]! >= 13) expect(now[i], `level ${level} pixel ${i}`).toBe(v);
       });
+    }
+  });
+
+  it('draws the same pixels at every level: the drawn mask (non-zero pixels) is the level 0 mask, in every pose', () => {
+    const mask = (pixels: Uint8Array): string => Array.from(pixels, (v) => (v === 0 ? '0' : '1')).join('');
+    for (const pose of ['rest', 'strike']) {
+      const zero = mask(creature(0, pose).buffer.pixels);
+      expect(zero.includes('1')).toBe(true);
+      for (const level of [1, 2, 3] as const) expect(mask(creature(level, pose).buffer.pixels) === zero, `level ${level} ${pose}`).toBe(true);
     }
   });
 
@@ -231,5 +240,11 @@ describe('the rarity finish: tables', () => {
   it('FINISH is marked untuned', () => {
     expect(FINISH.untuned).toBe(true);
     expect(FINISH).toEqual({ untuned: true, sheen: { from: 15, to: 45 }, swirl: { period: 7, on: 2 }, pearl: { period: 9, on: 2 } });
+  });
+
+  it('FINISH, each of its rules and FINISH_TIERS are frozen', () => {
+    expect(Object.isFrozen(FINISH)).toBe(true);
+    for (const rule of [FINISH.sheen, FINISH.swirl, FINISH.pearl]) expect(Object.isFrozen(rule)).toBe(true);
+    expect(Object.isFrozen(FINISH_TIERS)).toBe(true);
   });
 });

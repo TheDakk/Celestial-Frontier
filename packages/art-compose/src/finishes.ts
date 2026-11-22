@@ -3,15 +3,16 @@ import type { PixelBuffer } from './buffer';
 // Every tunable number of the rarity finish, fixed per renderer version. Tuning changes numbers here only.
 // The original blends smooth gradients (hdart.verbatim.js:1963-1984); these whole-number rules give the same idea at
 // this size. A first version: Dakk has not seen it on stills.
-export const FINISH = {
+// Frozen, each rule too: a picture changes only through a change to this file.
+export const FINISH = Object.freeze({
   untuned: true,
-  sheen: { from: 15, to: 45 },   // level 1+: ramp pixels in these percent rows of the drawn height, from its top, move up one shade
-  swirl: { period: 7, on: 2 },   // level 2+: ramp pixels on shades 2-3 with (x + y) % period < on become accent 7 or 8 (same shade)
-  pearl: { period: 9, on: 2 },   // level 3: ramp pixels with (x - y) mod period < on move up one shade
-} as const;
+  sheen: Object.freeze({ from: 15, to: 45 }),   // level 1+: ramp pixels in these percent rows of the drawn height, from its top, move up one shade
+  swirl: Object.freeze({ period: 7, on: 2 }),   // level 2+: ramp pixels on shades 2-3 with (x + y) % period < on become accent 7 or 8 (same shade)
+  pearl: Object.freeze({ period: 9, on: 2 }),   // level 3: ramp pixels with (x - y) mod period < on move up one shade
+} as const);
 
 /** The lowest grade tier of each finish level 1, 2 and 3: the original's rule (hdart.verbatim.js:244). */
-export const FINISH_TIERS = [4, 6, 8] as const;
+export const FINISH_TIERS = Object.freeze([4, 6, 8] as const);
 
 /** The finish level of a grade tier: how many of FINISH_TIERS it reaches. The game chooses the tier; the renderer only draws the level. */
 export function finishLevelFor(gradeTier: number): 0 | 1 | 2 | 3 {

@@ -96,6 +96,15 @@ describe('paintSkin', () => {
     }
   });
 
+  it('refuses pixels that are not the frame\'s size, by rule and by hand layer', () => {
+    const f = frameOf(block(4, 3, '2'), { scaled: block(4, 3, '3') });
+    for (const skin of ['plated', 'scaled'] as const) {
+      expect(() => paintSkin(f, new Uint8Array(11), skin), skin).toThrow(RangeError);
+      expect(() => paintSkin(f, new Uint8Array(13), skin), skin).toThrow('13 pixels for a 4x3 frame');
+      expect(paintSkin(f, f.pixels, skin), skin).not.toBeNull();
+    }
+  });
+
   it('a hand-drawn skin layer wins and is applied as drawn', () => {
     const f = frameOf(['2222', '2222', '2222'], { scaled: ['3.1.', '....', '.4..'] });
     expect(rowsOf(f, paintSkin(f, f.pixels, 'scaled'))).toEqual(['3212', '2222', '2422']);
@@ -154,5 +163,10 @@ describe('the table', () => {
       expect(rule.across >= 1 && rule.across <= 6, skin).toBe(true);
       expect(rule.down >= 1 && rule.down <= 6, skin).toBe(true);
     }
+  });
+
+  it('is frozen, and so is each rule: a picture changes only through a change to this file', () => {
+    expect(Object.isFrozen(SKIN_TABLE)).toBe(true);
+    for (const skin of SKIN_NAMES) expect(Object.isFrozen(SKIN_TABLE[skin]), skin).toBe(true);
   });
 });

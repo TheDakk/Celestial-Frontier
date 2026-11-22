@@ -96,3 +96,19 @@ describe('showColours: a bad rim percent is refused', () => {
     for (const percent of [0, 50, 75] as const) expect(() => showColours(b, TABLE, { colour: 0xffffff, percent })).not.toThrow();
   });
 });
+
+describe('rimPixels and showColours on an empty picture', () => {
+  it('an all-transparent buffer has no rim and shows the transparent colour everywhere, at every percent', () => {
+    const empty: PixelBuffer = { w: 5, h: 4, pixels: new Uint8Array(20) };
+    expect(Array.from(rimPixels(empty))).toEqual(new Array<number>(20).fill(0));
+    for (const percent of [0, 50, 75] as const) {
+      expect(Array.from(showColours(empty, TABLE, { colour: 0xffffff, percent })), `percent ${percent}`).toEqual(new Array<number>(20).fill(TABLE[0]!));
+    }
+  });
+
+  it('a 0x0 buffer gives empty arrays and does not throw', () => {
+    const none: PixelBuffer = { w: 0, h: 0, pixels: new Uint8Array(0) };
+    expect(rimPixels(none)).toEqual(new Uint8Array(0));
+    for (const percent of [0, 50, 75] as const) expect(showColours(none, TABLE, { colour: 0xffffff, percent }), `percent ${percent}`).toEqual(new Uint32Array(0));
+  });
+});

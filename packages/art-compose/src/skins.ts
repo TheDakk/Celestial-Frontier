@@ -9,7 +9,12 @@ export interface SkinRule {
   stagger: number;                          // columns every other row of cells moves by
   step: -1 | 1;                             // shade change on a texture pixel, clamped inside its own ramp
 }
-export const SKIN_TABLE: Readonly<Record<SkinName, SkinRule>> = {
+/** The table and each of its rules, frozen: a picture changes only through a change to this file. */
+function frozenRules(table: Record<SkinName, SkinRule>): Readonly<Record<SkinName, Readonly<SkinRule>>> {
+  for (const rule of Object.values(table)) Object.freeze(rule);
+  return Object.freeze(table);
+}
+export const SKIN_TABLE: Readonly<Record<SkinName, Readonly<SkinRule>>> = frozenRules({
   scaled:      { untuned: true, mode: 'grid', across: 3, down: 2, stagger: 1, step: -1 },
   furred:      { untuned: true, mode: 'dots', across: 2, down: 3, stagger: 1, step: -1 },
   chitinous:   { untuned: true, mode: 'rows', across: 1, down: 3, stagger: 0, step: -1 },
@@ -19,4 +24,4 @@ export const SKIN_TABLE: Readonly<Record<SkinName, SkinRule>> = {
   feathered:   { untuned: true, mode: 'grid', across: 4, down: 3, stagger: 2, step: -1 },
   translucent: { untuned: true, mode: 'none', across: 1, down: 1, stagger: 0, step: 1 },
   crystalline: { untuned: true, mode: 'grid', across: 4, down: 4, stagger: 2, step: 1 },
-};
+});

@@ -36,7 +36,7 @@ export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover'
  * (attachFor in the composer); a torso of a family not listed here takes the four-legged set. A torso also needs `wing`
  * once the pack holds a `wing-<its torso type>` of its family and tier, and `wing1` once it holds a `hindwing-<torso type>`.
  */
-export const TORSO_POINTS_BY_FAMILY = Object.freeze({
+export const TORSO_POINTS_BY_FAMILY = Object.freeze(Object.fromEntries(Object.entries({
   quadruped: ['head', 'tail', 'back', 'far0', 'far1', 'far2', 'far3', 'near0', 'near1', 'near2', 'near3'],
   fish: ['head', 'tail', 'back'],
   crustacean: ['head', 'tail', 'back'],
@@ -45,7 +45,7 @@ export const TORSO_POINTS_BY_FAMILY = Object.freeze({
   serpent: ['eye0', 'back'],
   gelatinous: ['back'],
   radial: [],
-});
+}).map(([family, points]) => [family, Object.freeze(points)])));
 const HEAD_POINTS = ['eye0', 'eye1', 'eye2', 'eye3', 'eye4', 'eye5', 'eye6', 'eye7'];
 /**
  * Every leg-count attach name the composer can ask a torso for, with its leg count: `far<i>_<n>` and `near<i>_<n>`
@@ -123,12 +123,12 @@ const isFlipper = (kind) => kind === 'flipper' || kind.startsWith('flipper-');
  * creature's pattern (`marks:`), a translucent creature's torso frame with no `translucent` layer (`skin:`), a leg
  * role drawn with the shared leg (`role:`), a missing back part, head feature, wing,
  * sails or body feature (`missing:` of a part in slot back, headFeature, farWings, nearWings or bodyFeature), or a
- * missing flipper. Every other gap is an error, a missing `t0` tail or `pit` eye included.
+ * missing flipper (in slot farLimbs or nearLimbs). Every other gap is an error, a missing `t0` tail or `pit` eye included.
  */
 export function gapIsInfo(gap) {
   if (/^(variant|marks|skin|role):/.test(gap)) return true;
   const m = /^missing:[^/]*\/([^/]*)\/([^/]*)\//.exec(gap);
-  return m !== null && (INFO_SLOTS.includes(m[1]) || isFlipper(m[2]));
+  return m !== null && (INFO_SLOTS.includes(m[1]) || ((m[1] === 'farLimbs' || m[1] === 'nearLimbs') && isFlipper(m[2])));
 }
 
 /** A sampled genome's genes, as the report prints them. */
@@ -588,7 +588,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
   };
   // A wing slot's kinds by index: a winged torso type's WING_KINDS (`<wing>-<torso type>`); any other four-legged torso
   // type's sails in nearWings at index 0 (its own `sails-<torso type>` when the pack holds it at v0, else the shared `sails`).
-  const winged = scaffold.family === 'quadruped' ? WING_KINDS[torsoKind] : undefined;
+  const winged = scaffold.family === 'quadruped' && Object.hasOwn(WING_KINDS, torsoKind) ? WING_KINDS[torsoKind] : undefined;
   const wingKinds = (slot) => scaffold.family !== 'quadruped' ? []
     : winged !== undefined ? winged.map((wing) => `${wing}-${torsoKind}`)
       : slot === 'nearWings' ? [roleHeld(slot, `sails-${torsoKind}`) ? `sails-${torsoKind}` : 'sails'] : [];

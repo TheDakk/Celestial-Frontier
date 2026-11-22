@@ -6,6 +6,11 @@ const GLYPHS = PIXEL_CHARS;
 const ACCENT = PIXEL_ACCENT;
 const IRIS_SHIFT = PIXEL_IRIS - PIXEL_ACCENT;
 
+/** A pixel value as an iris part shows it: the accent values 5-8 become the iris values 17-20; any other value is kept. */
+export function accentAsIris(value: number): number {
+  return value >= ACCENT && value < ACCENT + 4 ? value + IRIS_SHIFT : value;
+}
+
 export interface PixelBuffer {
   w: number;
   h: number;
@@ -32,7 +37,7 @@ export function blit(target: PixelBuffer, frame: PartFrame, x: number, y: number
     for (let fx = 0; fx < frame.w; fx++) {
       let value = frame.pixels[fy * frame.w + fx] ?? 0;
       if (value === TRANSPARENT) continue;
-      if (iris && value >= ACCENT && value < ACCENT + 4) value += IRIS_SHIFT;
+      if (iris) value = accentAsIris(value);
       const tx = mirror ? x - (fx - ax) : x + fx - ax;
       if (tx < 0 || tx >= target.w) continue;
       target.pixels[ty * target.w + tx] = value;

@@ -1254,6 +1254,17 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     expect(gapIsInfo('missing:quadruped/nearLimbs/leg/medium/v0')).toBe(false);
   });
 
+  it('a missing flipper is information only in a limb slot', () => {
+    for (const slot of ['farLimbs', 'nearLimbs']) {
+      expect(gapIsInfo(`missing:quadruped/${slot}/flipper/medium/v0`), slot).toBe(true);
+      expect(gapIsInfo(`missing:quadruped/${slot}/flipper-membranous/medium/v0`), slot).toBe(true);
+    }
+    for (const slot of ['torso', 'head', 'tail', 'eyes', 'glow']) {
+      expect(gapIsInfo(`missing:quadruped/${slot}/flipper/medium/v0`), slot).toBe(false);
+      expect(gapIsInfo(`missing:quadruped/${slot}/flipper-membranous/medium/v0`), slot).toBe(false);
+    }
+  });
+
   it('a skin: gap is information', () => {
     expect(gapIsInfo('skin:quadruped/torso/sturdy/medium/v0:rest')).toBe(true);
     expect(gapIsInfo('skin:fish/torso/shark/medium/v1:swim')).toBe(true);
@@ -1269,6 +1280,11 @@ describe('checkPack: attach points, names and gaps for wings, body features and 
     expect(routedGaps('fish/shark', 'aquatic', { head: EYELESS_HEAD })).toContain(pit);
     expect(gapIsInfo(t0)).toBe(false);
     expect(gapIsInfo(pit)).toBe(false);
+  });
+
+  it('the family point table is frozen, each family\'s list too', () => {
+    expect(Object.isFrozen(TORSO_POINTS_BY_FAMILY)).toBe(true);
+    for (const [family, points] of Object.entries(TORSO_POINTS_BY_FAMILY)) expect(Object.isFrozen(points), family).toBe(true);
   });
 
   it('the family point table equals what planBodyParts can ask for', () => {

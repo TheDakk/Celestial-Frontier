@@ -15,9 +15,11 @@ const rampOf = (v: number): number => (v - 1) >> 2;
  * (skins.ts) steps texture pixels one shade inside their own ramp, so the rule never moves a mark out of its ramp.
  * Only a pixel drawn 1 to 12 is ever written, and only with a value 1 to 12.
  * Returns a new array, or `null` when the rule is `none` and the frame has no layer named for the skin.
- * Never changes its inputs.
+ * Never changes its inputs. Pixels of any length but the frame's w x h throw a RangeError: a wrong array is refused,
+ * never painted truncated or misaligned.
  */
 export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName): Uint8Array | null {
+  if (pixels.length !== frame.w * frame.h) throw new RangeError(`paintSkin: ${pixels.length} pixels for a ${frame.w}x${frame.h} frame`);
   const hand = frame.layers?.[skin];
   const rule = SKIN_TABLE[skin];
   if (hand === undefined && rule.mode === 'none') return null;

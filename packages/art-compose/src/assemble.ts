@@ -1,6 +1,6 @@
-import { MARK_SLOTS, PATTERN_NAMES, PIXEL_ACCENT, PIXEL_IRIS, SKIN_NAMES, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
+import { MARK_SLOTS, PATTERN_NAMES, SKIN_NAMES, type Catalogue, type Part, type PartFrame, type Pose, type PoseEntry, type Scaffold, type SlotName } from '@cf/art-format';
 import type { Recipe, RecipePart } from '@cf/art-recipe';
-import { blit, createBuffer, type PixelBuffer } from './buffer';
+import { accentAsIris, blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
 import { paintSkin } from './skin';
@@ -31,10 +31,7 @@ const ORGANELLE_FAMILY = 'gelatinous';
 /** A copy of a frame's pixels with the accent values 5-8 written as the iris values 17-20. */
 function organellesInIris(pixels: Uint8Array): Uint8Array {
   const out = Uint8Array.from(pixels);
-  for (let i = 0; i < out.length; i++) {
-    const v = out[i] ?? 0;
-    if (v >= PIXEL_ACCENT && v < PIXEL_ACCENT + 4) out[i] = v + PIXEL_IRIS - PIXEL_ACCENT;
-  }
+  for (let i = 0; i < out.length; i++) out[i] = accentAsIris(out[i] ?? 0);
   return out;
 }
 

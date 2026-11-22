@@ -437,6 +437,13 @@ describe('planBodyParts', () => {
       expect(WING_KINDS).toEqual({ membranous: ['wing'], fourwinged: ['wing', 'hindwing'] });
     });
 
+    it('a torso named like an inherited property (constructor, toString) is not a winged build', () => {
+      for (const torso of ['constructor', 'toString', '__proto__']) {
+        const b = { ...body({ body: 0 }), torso };
+        expect(inSlots(plan(b), WINGS), torso).toEqual([]);
+      }
+    });
+
     it('an insect never has wings, airborne or not', () => {
       for (const loco of [0, 3]) {
         const b = body({ body: 5, loco }, 0, 3);
@@ -449,7 +456,8 @@ describe('planBodyParts', () => {
     it('wings and flippers are marked on a patterned creature; the body feature is not', () => {
       const marked = (genes: Record<string, unknown>): string[] => plan(body({ ...genes, pattern: 3 })).parts.filter((p) => p.mark !== undefined).map((p) => `${p.slot}${p.index}`);
       expect(marked({ body: 14, loco: 4 })).toEqual(['farWings0', 'farWings1', 'tail0', 'torso0', 'nearWings0', 'nearWings1', 'nearLimbs0', 'nearLimbs1', 'head0']);
-      expect(marked({ body: 0, loco: 3, limbs: 0 })).toContain('nearWings0');
+      // An airborne sturdy body with two legs: its sails (nearWings 0) are marked with the legs, tail, torso and head.
+      expect(marked({ body: 0, loco: 3, limbs: 0 })).toEqual(['farLimbs0', 'tail0', 'torso0', 'nearWings0', 'nearLimbs0', 'head0']);
       expect(marked({ body: 6, limbs: 0 })).toEqual(['farLimbs0', 'tail0', 'torso0', 'nearLimbs0', 'head0']);
       expect(plan(body({ body: 14, loco: 4, pattern: 3 })).parts.find((p) => p.slot === 'bodyFeature')!.mark).toBeUndefined();
       // Unpatterned, nothing is marked.

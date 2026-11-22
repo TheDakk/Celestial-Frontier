@@ -62,7 +62,7 @@ export interface PackReport {
   /**
    * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information
    * (gapIsInfo): `variant:`, `marks:`, `skin:` (a translucent creature's torso frame with no `translucent` layer), `role:`, and `missing:` of a part in slot back, headFeature, farWings, nearWings or
-   * bodyFeature, or of a flipper (`flipper`, `flipper-<torso type>`); every other gap is an error, a missing `t0` or `pit` included.
+   * bodyFeature, or of a flipper (`flipper`, `flipper-<torso type>`) in slot farLimbs or nearLimbs; every other gap is an error, a missing `t0` or `pit` included.
    * A `marks:` gap with count 0 (printed x0) was met by no sampled creature: it is read from the catalogue, for a frame
    * some pose can show at some leg count with no layer serving some pattern.
    */

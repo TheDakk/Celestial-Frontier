@@ -156,7 +156,7 @@ export function planBodyParts(
     wanted.push({ slot: 'head', index: 0, kind: `h${b.head}`, variant: variants.head, limb: false });
   }
   headFeatureKinds(b).forEach((kind, i) => wanted.push({ slot: 'headFeature', index: i, kind, variant: 0, limb: false }));
-  const wings = WING_KINDS[b.torso];
+  const wings = Object.hasOwn(WING_KINDS, b.torso) ? WING_KINDS[b.torso] : undefined;
   if (b.family === 'quadruped' && wings !== undefined) {
     wings.forEach((wing, i) => {
       for (const slot of ['farWings', 'nearWings'] as const) wanted.push({ slot, index: i, kind: `${wing}-${b.torso}`, variant: 0, limb: false });
