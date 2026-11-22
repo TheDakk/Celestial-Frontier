@@ -1,7 +1,7 @@
 import type { Palette } from './types';
 
-/** The text character for each pixel value 0-20: index = value. Used by the part text format and the text pixel form. */
-export const PIXEL_CHARS = '.123456789abcdefghijk';
+/** The text character for each pixel value 0-24: index = value. Used by the part text format and the text pixel form. */
+export const PIXEL_CHARS = '.123456789abcdefghijklmno';
 
 /** Pixel values. Each ramp is four values, dark to light, starting at its base. */
 export const PIXEL_TRANSPARENT = 0;
@@ -15,6 +15,14 @@ export const PIXEL_GLOW = 15;
 export const PIXEL_OUTLINE = 16;
 /** 17-20: the iris ramp, dark to light. Written only by the composer (from an eye part's 5-8), never by a part. */
 export const PIXEL_IRIS = 17;
+/**
+ * 21-24: the bone ramp, dark to light: hard pale material (shell, horn, ivory), drawn by a part wherever it may draw 1-12.
+ * A named improvement on the original, which paints only ivory apart from the hide. Lit and shaded like a hide ramp;
+ * never marked, skinned or given the rarity finish.
+ */
+export const PIXEL_BONE = 21;
+/** The palette ramp bone is drawn in when the caller names no other. */
+export const BONE_RAMP = 'bone';
 /** Iris ramps iris0..iris10: one per theme, in THEME_NAMES order (a generated creature's iris is its theme's). */
 export const IRIS_RAMP_COUNT = 11;
 
@@ -29,16 +37,20 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
 });
 
 /**
- * Colour numbers (0xRRGGBB) for pixel values 0-20: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
- * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp.
- * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws.
+ * Colour numbers (0xRRGGBB) for pixel values 0-24: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
+ * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp;
+ * 21-24 are the bone ramp.
+ * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws. So does a `bone` name.
+ * With no `bone` name, bone is the palette's ramp `bone` (BONE_RAMP), and a palette without one gives four zeros and
+ * lists nothing: no ramp was named.
  * With a `tint` (a theme colour, 0xRRGGBB), entries 1-12 take each channel as tintChannel(a, t), the original's hide mix
- * (62 parts colour, 38 parts theme); 0, 13-20 and the four zeros of an unknown ramp are unchanged. Without one, the
- * table is untouched. A tint that is not a whole number 0 to 0xffffff throws a RangeError naming it.
+ * (62 parts colour, 38 parts theme), and entries 21-24 as boneTintChannel(a, t), a weak mix (85 parts bone, 15 parts
+ * theme) that keeps bone pale under every theme; 0, 13-20 and the four zeros of a ramp the palette lacks are unchanged.
+ * Without one, the table is untouched. A tint that is not a whole number 0 to 0xffffff throws a RangeError naming it.
  */
 export function colourTable(
   palette: Palette,
-  ramps: { primary: string; accent: string; underside: string; iris: string },
+  ramps: { primary: string; accent: string; underside: string; iris: string; bone?: string },
   tint?: number,
 ): { table: number[]; unknown: string[] } {
   if (tint !== undefined && !(Number.isInteger(tint) && tint >= 0 && tint <= 0xffffff)) throw new RangeError(`bad tint ${String(tint)}`);
@@ -52,27 +64,46 @@ export function colourTable(
     }
     return indices.map(rgb);
   };
-  const table = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
+  const hide = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
     rgb(palette.eye), rgb(palette.eyeHighlight), rgb(palette.glow), rgb(palette.outline), ...ramp(ramps.iris)];
+  const boneName = ramps.bone ?? BONE_RAMP;
+  const boneHeld = Object.hasOwn(palette.ramps, boneName);
+  const table = [...hide, ...(boneHeld || ramps.bone !== undefined ? ramp(boneName) : [0, 0, 0, 0])];
   if (tint !== undefined) {
+    const mixed = (v: number, channel: (a: number, t: number) => number): void => {
+      const c = table[v] ?? 0;
+      table[v] = (channel((c >>> 16) & 255, (tint >>> 16) & 255) << 16) | (channel((c >>> 8) & 255, (tint >>> 8) & 255) << 8)
+        | channel(c & 255, tint & 255);
+    };
     // An unknown ramp stays as it is (black): only the entries of the ramps the palette holds are tinted.
     const held = [ramps.primary, ramps.accent, ramps.underside].map((name) => Object.hasOwn(palette.ramps, name));
-    for (let v = 1; v <= 12; v++) {
-      if (held[(v - 1) >> 2] !== true) continue;
-      const c = table[v] ?? 0;
-      table[v] = (tintChannel((c >>> 16) & 255, (tint >>> 16) & 255) << 16) | (tintChannel((c >>> 8) & 255, (tint >>> 8) & 255) << 8)
-        | tintChannel(c & 255, tint & 255);
-    }
+    for (let v = 1; v <= 12; v++) if (held[(v - 1) >> 2] === true) mixed(v, tintChannel);
+    if (boneHeld) for (let v = PIXEL_BONE; v < PIXEL_BONE + 4; v++) mixed(v, boneTintChannel);
   }
   return { table, unknown };
 }
 
 /**
+ * round(n / 100), halves up, in whole numbers, for the sums below (0 to 25500): 5243 / 2^19 is 1/100 to within about
+ * 1 part in 43700, exact for every n + 50 up to 25550.
+ */
+const hundredths = (n: number): number => ((n + 50) * 5243) >>> 19;
+
+/**
  * The original's hide mix of one channel, round(a x 0.62 + t x 0.38), in whole numbers: (62a + 38t) hundredths,
- * halves rounded up. 62 + 38 = 100, so it never passes 255. Dividing by 100 is a multiply and shift: 5243 / 2^19 is
- * 1/100 to within about 1 part in 43700, exact for every sum up to 25550. Two channel pairs, (192, 17) and (228, 3), give
- * one step more than the original's floats, whose value there is a half less float noise.
+ * halves rounded up. 62 + 38 = 100, so it never passes 255. Dividing by 100 is a multiply and shift (hundredths). Two
+ * channel pairs, (192, 17) and (228, 3), give one step more than the original's floats, whose value there is a half
+ * less float noise.
  */
 function tintChannel(a: number, t: number): number {
-  return ((62 * a + 38 * t + 50) * 5243) >>> 19;
+  return hundredths(62 * a + 38 * t);
+}
+
+/**
+ * The bone mix of one channel, round(a x 0.85 + t x 0.15), in whole numbers: (85a + 15t) hundredths, halves rounded
+ * up. 85 + 15 = 100, so it never passes 255. The same multiply and shift as the hide mix (hundredths), so the same
+ * result on every device.
+ */
+function boneTintChannel(a: number, t: number): number {
+  return hundredths(85 * a + 15 * t);
 }

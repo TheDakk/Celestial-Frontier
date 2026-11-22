@@ -1,4 +1,4 @@
-import { IRIS_RAMP_COUNT, PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
+import { BONE_RAMP, IRIS_RAMP_COUNT, PIXEL_BONE, PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
 import { DRAW_ORDER, EYE_COUNTS, LAYER_NAMES, LIMB_COUNTS } from './types';
 import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName, Species } from './types';
 
@@ -10,12 +10,12 @@ const SPECIES_KEY = /^[a-z][a-z0-9]*$/;
 /**
  * Names the generated creatures use, which a species key may not take: its parts and ramps are named from the key.
  * The torso type of a family with none (`body`), the leg and eye kinds, head and tail kinds (`h<n>`, `t<n>`), and the
- * colour and iris ramps (`c<n>`, `iris<n>`). A torso type of a family is refused by the checker, which knows the gene table.
- * A species' ramps are `<key>`, `<key>-accent`, `<key>-under` and, when present, `<key>-iris`. A key has no hyphen, so
- * none of these can equal a generated ramp (`c<n>`, `c<n>-under`, `iris<n>`: `c<n>` and `iris<n>` are refused as keys)
+ * colour, iris and bone ramps (`c<n>`, `iris<n>`, `bone`). A torso type of a family is refused by the checker, which knows the gene table.
+ * A species' ramps are `<key>`, `<key>-accent`, `<key>-under` and, when present, `<key>-iris` and `<key>-bone`. A key has no hyphen, so
+ * none of these can equal a generated ramp (`c<n>`, `c<n>-under`, `iris<n>`, `bone`: `c<n>`, `iris<n>` and `bone` are refused as keys)
  * or another species' ramp.
  */
-const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid', 'eye'];
+const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid', 'eye', BONE_RAMP];
 const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
 /** The fields of a species line, each required once. */
 const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
@@ -88,8 +88,13 @@ function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
 interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; layers: Map<LayerName, OpenLayer>; layer?: OpenLayer; }
 interface OpenLayer { name: LayerName; line: number; rows: number; data: number[]; }
 const GUIDE_LAYERS: readonly string[] = ['flow', 'spots'];
-/** The highest value a layer may hold: 15 in a guide layer (flow, spots), 12 (the last ramp value) in a hand-drawn pattern or skin layer. */
-const layerTop = (name: string): number => (GUIDE_LAYERS.includes(name) ? 15 : 12);
+/** The iris ramp (17-20), which the composer alone writes; the bone ramp above it (21-24) is a part's to draw. */
+const isIris = (v: number): boolean => v >= PIXEL_IRIS && v < PIXEL_BONE;
+/**
+ * Whether a layer may hold the value: 0 to 15 in a guide layer (flow, spots: counters, not colours); in a hand-drawn
+ * pattern or skin layer the colours a part may draw there, 0 to 12 (the hide ramps) and 21 to 24 (bone).
+ */
+const layerValueOk = (name: string, v: number): boolean => (GUIDE_LAYERS.includes(name) ? v <= 15 : v <= 12 || (v >= PIXEL_BONE && v < PIXEL_BONE + 4));
 
 export function parseCatalogueText(text: string): Catalogue {
   const parts = new Map<string, Part>();
@@ -167,10 +172,9 @@ export function parseCatalogueText(text: string): Catalogue {
       const row: number[] = [];
       if (frame.layer) {
         const layer = frame.layer;
-        const top = layerTop(layer.name);
         for (const c of trimmed) {
           const v = PIXEL_CHARS.indexOf(c);
-          if (v < 0 || v > top) throw new Error(`${where}: bad layer value '${c}'`);
+          if (v < 0 || !layerValueOk(layer.name, v)) throw new Error(`${where}: bad layer value '${c}'`);
           row.push(v);
         }
         if (row.length !== frame.w) throw new Error(`${where}: layer ${layer.name} row width ${row.length} differs from ${frame.w}`);
@@ -182,7 +186,7 @@ export function parseCatalogueText(text: string): Catalogue {
         const v = PIXEL_CHARS.indexOf(c);
         if (v < 0) throw new Error(`${where}: unknown pixel character '${c}'`);
         if (v === PIXEL_OUTLINE) throw new Error(`${where}: outline value is written by the composer`);
-        if (v >= PIXEL_IRIS) throw new Error(`${where}: iris value is written by the composer`);
+        if (isIris(v)) throw new Error(`${where}: iris value is written by the composer`);
         row.push(v);
       }
       if (frame.w < 0) frame.w = row.length;
@@ -383,7 +387,7 @@ export function formatPart(part: Part): string {
     if (!nameOk(name)) fail(`frame name ${name} is not a valid name`);
     if (f.w <= 0 || f.h <= 0) fail(`frame ${name} is ${f.w}x${f.h}, which has no pixels`);
     if (f.pixels.includes(PIXEL_OUTLINE)) fail(`frame ${name} holds the outline value, which only the composer writes`);
-    if (f.pixels.some((v) => v >= PIXEL_IRIS)) fail(`frame ${name} holds an iris value, which only the composer writes`);
+    if (f.pixels.some(isIris)) fail(`frame ${name} holds an iris value, which only the composer writes`);
     if (f.pixels.length !== f.w * f.h) fail(`frame ${name} has ${f.pixels.length} pixels, expected ${f.w * f.h}`);
     for (const k of Object.keys(f.attach)) if (!nameOk(k)) fail(`attach name ${k} is not a valid name`);
     const attach = Object.entries(f.attach).map(([k, [x, y]]) => `${k}:${x},${y}`).join(',');
@@ -399,8 +403,7 @@ export function formatPart(part: Part): string {
       const grid = layers[layerName];
       if (grid === undefined) continue;
       if (grid.length !== f.w * f.h) fail(`frame ${name} layer ${layerName} has ${grid.length} pixels, expected ${f.w * f.h}`);
-      const top = layerTop(layerName);
-      if (grid.some((v) => v > top)) fail(`frame ${name} layer ${layerName} holds a value above ${top}`);
+      if (grid.some((v) => !layerValueOk(layerName, v))) fail(`frame ${name} layer ${layerName} holds a value above ${GUIDE_LAYERS.includes(layerName) ? '15' : '12 that is not bone (21 to 24)'}`);
       out.push(`layer ${layerName}`);
       for (let y = 0; y < f.h; y++) {
         let row = '';

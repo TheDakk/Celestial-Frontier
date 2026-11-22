@@ -507,14 +507,14 @@ describe('parseCatalogueText: species lines', () => {
     expect(thrown(LINE.replace('civet', 'civet_x'))).toBe("line 1: bad species key 'civet_x'");
     // Letters and digits only, starting with a letter: no hyphen anywhere.
     for (const key of ['civet-cat', 'civet-', 'civet-accent', 'a--b']) expect(thrown(LINE.replace('civet', key)), key).toBe(`line 1: bad species key '${key}'`);
-    for (const key of ['civet', 'civet2', 'c', 'h', 'iris', 'legs', 'eyes']) expect(thrown(LINE.replace('civet', key)), key).toBe('did not throw');
+    for (const key of ['civet', 'civet2', 'c', 'h', 'iris', 'legs', 'eyes', 'bones']) expect(thrown(LINE.replace('civet', key)), key).toBe('did not throw');
     expect(thrown(LINE.replace('quadruped', 'quad/ruped'))).toBe('line 1: bad name quad/ruped');
     expect(thrown(LINE.replace('medium', 'huge'))).toBe("line 1: bad tier 'huge'");
     expect(thrown('species civet quadruped')).toBe('line 1: bad species');
   });
 
   it('rejects a key that is a name the generated creatures use: a kind, a torso type or a ramp', () => {
-    for (const key of ['body', 'leg', 'fore', 'hind', 'mid', 'eye', 'h0', 'h3', 'h12', 't0', 't6', 't10', 'c0', 'c16', 'c123', 'iris0', 'iris7', 'iris12']) {
+    for (const key of ['body', 'leg', 'fore', 'hind', 'mid', 'eye', 'bone', 'h0', 'h3', 'h12', 't0', 't6', 't10', 'c0', 'c16', 'c123', 'iris0', 'iris7', 'iris12']) {
       expect(thrown(LINE.replace('civet', key)), key).toBe(`line 1: species key '${key}' is a name the generated creatures use`);
     }
   });
@@ -544,5 +544,58 @@ describe('parseCatalogueText: species lines', () => {
 
   it('rejects a second line for the same key', () => {
     expect(thrown(`${LINE}\n\n${LINE.replace('medium', 'small')}`)).toBe('line 3: duplicate species civet');
+  });
+});
+
+describe('bone values 21 to 24 (l to o)', () => {
+  const BID = 'quadruped/torso/t1/medium/v0';
+  const HEAD = `part ${BID}\nframe rest anchor=0,0\n`;
+  const message = (text: string): string => {
+    try {
+      parseCatalogueText(text);
+      return 'did not throw';
+    } catch (e) {
+      return (e as Error).message;
+    }
+  };
+  const rest = (text: string) => parseCatalogueText(text).parts.get(BID)!.frames.rest!;
+
+  it('a part row may hold l, m, n and o, read as 21 to 24', () => {
+    expect(rest(`${HEAD}lmno\n1c.d\n`).pixels).toEqual(Uint8Array.from([21, 22, 23, 24, 1, 12, 0, 13]));
+  });
+
+  it('a part row still refuses the outline g and the iris h to k, and any character after o', () => {
+    expect(message(`${HEAD}lmno\n1g..\n`)).toBe(`part ${BID} frame rest line 4: outline value is written by the composer`);
+    for (const c of 'hijk') expect(message(`${HEAD}lmno\n1${c}..\n`), c).toBe(`part ${BID} frame rest line 4: iris value is written by the composer`);
+    expect(message(`${HEAD}lmno\n1p..\n`)).toBe(`part ${BID} frame rest line 4: unknown pixel character 'p'`);
+  });
+
+  it('a hand-drawn pattern or skin layer may hold l to o; a guide layer may not, and no layer holds d to k', () => {
+    const f = rest(`${HEAD}1234\nlayer striped\nlmno\nlayer scaled\n.o1c\n`);
+    expect(f.layers!.striped).toEqual(Uint8Array.from([21, 22, 23, 24]));
+    expect(f.layers!.scaled).toEqual(Uint8Array.from([0, 24, 1, 12]));
+    for (const guide of ['flow', 'spots']) expect(message(`${HEAD}1234\nlayer ${guide}\n123l\n`), guide).toBe(`part ${BID} frame rest line 5: bad layer value 'l'`);
+    for (const c of 'defghijk') {
+      for (const layer of ['striped', 'furred']) expect(message(`${HEAD}1234\nlayer ${layer}\n123${c}\n`), `${layer} ${c}`).toBe(`part ${BID} frame rest line 5: bad layer value '${c}'`);
+    }
+    // A guide layer keeps its own range: d, e and f (13 to 15) are spot and flow counters there.
+    expect(rest(`${HEAD}1234\nlayer flow\ndef.\n`).layers!.flow).toEqual(Uint8Array.from([13, 14, 15, 0]));
+  });
+
+  it('formatPart writes bone and the parser reads it back the same, rows and layers', () => {
+    const part: Part = { id: BID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0,
+      frames: { rest: { w: 4, h: 1, pixels: Uint8Array.from([21, 22, 23, 24]), anchor: [0, 0], attach: {}, layers: { banded: Uint8Array.from([24, 0, 5, 21]), slick: Uint8Array.from([0, 22, 0, 0]) } } } };
+    const text = formatPart(part);
+    expect(text).toBe(`part ${BID}\nframe rest anchor=0,0\nlmno\nlayer banded\no.5l\nlayer slick\n.m..\n\n`);
+    expect(parseCatalogueText(text).parts.get(BID)).toEqual(part);
+  });
+
+  it('formatPart still refuses what the parser refuses: an iris value in a row, 13 to 20 and 25 in a hand-drawn layer, bone in a guide layer', () => {
+    const framed = (pixels: number[], layers?: Record<string, Uint8Array>): Part => ({ id: BID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0,
+      frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from(pixels), anchor: [0, 0], attach: {}, ...(layers === undefined ? {} : { layers }) } } });
+    for (const v of [17, 20]) expect(() => formatPart(framed([1, v])), String(v)).toThrow('frame rest holds an iris value, which only the composer writes');
+    expect(() => formatPart(framed([1, 24]))).not.toThrow();
+    for (const v of [13, 16, 17, 20, 25]) expect(() => formatPart(framed([1, 1], { striped: Uint8Array.from([0, v]) })), String(v)).toThrow('layer striped holds a value above 12 that is not bone (21 to 24)');
+    expect(() => formatPart(framed([1, 1], { flow: Uint8Array.from([0, 21]) }))).toThrow('layer flow holds a value above 15');
   });
 });

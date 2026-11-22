@@ -67,7 +67,7 @@ export function hashBuffer(buffer: PixelBuffer): string {
   return (hash >>> 0).toString(16).padStart(8, '0');
 }
 
-/** The text pixel form, one line per row, no trailing newline; values above 20 are '?'. */
+/** The text pixel form, one line per row, no trailing newline; values above 24 are '?'. */
 export function toAscii(buffer: PixelBuffer): string {
   const lines: string[] = [];
   for (let y = 0; y < buffer.h; y++) {
