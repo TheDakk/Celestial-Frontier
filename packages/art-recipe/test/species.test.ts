@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { buildRecipe, buildSpeciesRecipe, RENDERER_VERSION } from '../src/recipe';
+import { boneRampOf, buildRecipe, buildSpeciesRecipe, RENDERER_VERSION, speciesBoneRamp } from '../src/recipe';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 const partText = (id: string): string => `part ${id}\nframe rest anchor=0,0\n1\n`;
@@ -162,5 +162,39 @@ describe('a species line and parts beside generated creatures', () => {
       expect(r).toEqual(buildRecipe(genome, [], without));
       expect(r.parts.some((p) => p.partId.includes('civet'))).toBe(false);
     }
+  });
+});
+
+describe('the bone ramp of a recipe', () => {
+  const PACK = `palette
+colour 0 000000
+ramp bone 0 0 0 0
+RAMPS
+species civet quadruped small legs=4 eyes=2 iris=3 tail=1
+`;
+  const withRamps = (ramps: string): Catalogue => parseCatalogueText(PACK.replace('RAMPS\n', ramps));
+
+  it('a species takes its own <key>-bone when the palette holds it, else bone; another species\' ramp is not its own', () => {
+    expect(speciesBoneRamp('civet', withRamps(''))).toBe('bone');
+    expect(speciesBoneRamp('civet', withRamps('ramp civet-bone 0 0 0 0\n'))).toBe('civet-bone');
+    expect(speciesBoneRamp('civet', withRamps('ramp otter-bone 0 0 0 0\n'))).toBe('bone');
+    // The name is `bone` whether or not the palette holds that ramp: a missing ramp is the palette's fault to report.
+    expect(speciesBoneRamp('civet', parseCatalogueText('palette\ncolour 0 000000\n'))).toBe('bone');
+  });
+
+  it('boneRampOf reads the species from the recipe; a generated creature always takes bone', () => {
+    const own = withRamps('ramp civet-bone 0 0 0 0\n');
+    expect(boneRampOf(buildSpeciesRecipe('civet', own), own)).toBe('civet-bone');
+    expect(boneRampOf(buildSpeciesRecipe('civet', withRamps('')), withRamps(''))).toBe('bone');
+    // A generated creature, in a palette that holds ramps named after every part of its identity and its colours.
+    const generated = buildRecipe({ kingdom: 'fauna', seed: 1, color: 3 }, [], own);
+    const tempting = withRamps(`ramp civet-bone 0 0 0 0\nramp ${generated.ramps.primary}-bone 0 0 0 0\n`);
+    expect(boneRampOf(generated, tempting)).toBe('bone');
+    expect(generated.identity.startsWith('species:')).toBe(false);
+  });
+
+  it('the bone ramp is no field of a recipe\'s ramps', () => {
+    const own = withRamps('ramp civet-bone 0 0 0 0\n');
+    expect(Object.keys(buildSpeciesRecipe('civet', own).ramps)).toEqual(['primary', 'accent', 'underside', 'iris']);
   });
 });

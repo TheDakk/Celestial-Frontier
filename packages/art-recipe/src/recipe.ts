@@ -1,4 +1,4 @@
-import { IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
+import { BONE_RAMP, IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName, ThemeName } from '@cf/art-format';
 import { planBodyParts, planSpeciesParts, torsoKindOf } from './requests';
 import { resolveBody } from './route';
@@ -155,6 +155,24 @@ export function speciesIrisRamp(key: string, iris: number, catalogue: Catalogue)
   return Object.hasOwn(catalogue.palette.ramps, own) ? own : `iris${iris}`;
 }
 
+/** The start of a named species' identity; a generated creature's identity starts with `{` (identityKey). */
+const SPECIES_IDENTITY = 'species:';
+
+/** A named species' bone ramp: its own `<key>-bone` when the palette holds one, else `bone`, as every generated creature's. */
+export function speciesBoneRamp(key: string, catalogue: Catalogue): string {
+  const own = `${key}-bone`;
+  return Object.hasOwn(catalogue.palette.ramps, own) ? own : BONE_RAMP;
+}
+
+/**
+ * The palette ramp a recipe's bone values (21-24) are shown in, for colourTable's `bone`: `bone` for a generated
+ * creature, speciesBoneRamp for a named species. Not a field of `Recipe.ramps`: every recipe would carry the same
+ * word, and the recorded colour fields of the generated creatures stay as they are.
+ */
+export function boneRampOf(recipe: Pick<Recipe, 'identity'>, catalogue: Catalogue): string {
+  return recipe.identity.startsWith(SPECIES_IDENTITY) ? speciesBoneRamp(recipe.identity.slice(SPECIES_IDENTITY.length), catalogue) : BONE_RAMP;
+}
+
 /**
  * The recipe of a named species (catalogue line `species`): one fixed look, the same picture everywhere. Its own parts
  * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps (speciesIrisRamp), plain, no shift, no glow. No stream is drawn.
@@ -165,7 +183,7 @@ export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
   if (species === undefined) throw new Error(`unknown species '${key}'`);
   const { parts, gaps } = planSpeciesParts(species, catalogue);
   return deepFreeze({
-    version: RENDERER_VERSION, identity: `species:${key}`, family: species.family, tier: species.tier,
+    version: RENDERER_VERSION, identity: `${SPECIES_IDENTITY}${key}`, family: species.family, tier: species.tier,
     scaffoldId: `${species.family}/${key}/${species.tier}`,
     legs: species.legs,
     eyes: species.eyes,
