@@ -26,8 +26,8 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES } = await import('@cf/art-format');
-const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, PIXEL_BONE, PIXEL_CHARS, BONE_RAMP } = await import('@cf/art-format');
+const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -78,8 +78,8 @@ const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail 
 const HEAD_OR_TAIL_SHIFTS = [...HEAD_SHIFTS, ...TAIL_SHIFTS.filter((s) => s.tail[0] !== 0 || s.tail[1] !== 0)];
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
 const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 10, back: 7, headFeature: 8, glow: 9, bodyFeature: 6, farWings: 11, nearWings: 12 };
-/** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
-const LABEL_BASE = 21;
+/** The first per-part label of the hidden-part pictures: above every pixel value (0-24), so the composer's iris rewrite of 5-8 can never touch a label. */
+const LABEL_BASE = 25;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
 /** The palette's iris ramp names, iris0 to iris10: one per theme, in THEME_NAMES order. */
 const IRIS_RAMPS = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
@@ -92,8 +92,16 @@ const BACK_SKINS = BACK_KIND_BY_SKIN.flatMap((kind, skin) => (kind === null ? []
 const TRANSLUCENT_SKIN = SKIN_NAMES.indexOf('translucent');
 /** The pattern of a creature with a forced variant: patterned, so a forced part is painted and a variant with no layers is counted. */
 const FORCED_PATTERN = 1;
-/** Ramp values are 1-12 (three ramps of four); a value's shade step is its position in its ramp, 0 darkest to 3 lightest. */
+/**
+ * Hide ramp values are 1-12 (three ramps of four); a value's shade step is its position in its ramp, 0 darkest to 3 lightest.
+ * Bone (21-24) is not hide: no mark or skin is painted on it, so a layer pixel over it is outside the drawn area, and the neck rule does not read it.
+ */
 const inRamp = (v) => v >= 1 && v <= 12;
+const isBone = (v) => v >= PIXEL_BONE && v < PIXEL_BONE + 4;
+/** The bone values as an artist writes them: `l to o`. */
+const BONE_CHARS = `${PIXEL_CHARS[PIXEL_BONE]} to ${PIXEL_CHARS[PIXEL_BONE + 3]}`;
+/** Whether any frame of the part draws a bone value, in its pixels or in a layer. */
+const drawsBone = (part) => Object.values(part.frames).some((f) => f.pixels.some(isBone) || Object.values(f.layers ?? {}).some((layer) => layer.some(isBone)));
 const shadeOf = (v) => (v - 1) & 3;
 /** The fewest pixels a requested part must show; a part that draws fewer (a one-pixel eye) must show all of them. */
 export const HIDDEN_MIN = 4;
@@ -644,7 +652,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
  * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names and a head's or torso's
  * eye-count names must be ones the composer can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
- * but not all eleven), species (a key that is a torso type, a ramp the palette lacks; its iris is `<key>-iris` when present, else `iris<n>`), poses and their leg-count
+ * but not all eleven), species (a key that is a torso type, a ramp the palette lacks; its iris is `<key>-iris` when present, else `iris<n>`), the bone ramp (`bone`, or a species' `<key>-bone`) when a part draws bone values, poses and their leg-count
  * and eye-count entries, contact points, fallbacks.
  */
 function structureProblems(catalogue) {
@@ -703,12 +711,27 @@ function structureProblems(catalogue) {
   if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
     for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
+  // Bone: a ramp the palette needs only when a part draws bone values. A species' own parts (kind `<key>` or
+  // `<role>-<key>`) are shown in `<key>-bone` when the palette holds it (speciesBoneRamp); every other part in `bone`.
+  const hasRamp = (name) => Object.hasOwn(catalogue.palette.ramps, name);
+  const speciesOwn = new Set();
   for (const species of catalogue.species.values()) {
     if (GENERATED_TORSOS.has(`${species.family}/${species.key}`)) problems.push(`species ${species.key}: key is a torso type of ${species.family}`);
     // The iris: the species' own `<key>-iris` when the palette holds it, else `iris<n>` (speciesIrisRamp).
     for (const ramp of [species.key, `${species.key}-accent`, `${species.key}-under`, speciesIrisRamp(species.key, species.iris, catalogue)]) {
-      if (!Object.hasOwn(catalogue.palette.ramps, ramp)) problems.push(`species ${species.key}: palette has no ramp ${ramp}`);
+      if (!hasRamp(ramp)) problems.push(`species ${species.key}: palette has no ramp ${ramp}`);
     }
+    const drawn = planSpeciesParts(species, catalogue).parts.map((rp) => catalogue.parts.get(rp.partId));
+    for (const part of drawn) if (part.kind === species.key || part.kind.endsWith(`-${species.key}`)) speciesOwn.add(part.id);
+    const boned = drawn.find(drawsBone);
+    const ramp = speciesBoneRamp(species.key, catalogue);
+    if (boned !== undefined && !hasRamp(ramp)) {
+      problems.push(`species ${species.key}: palette has no ramp ${ramp}: part ${boned.id} draws bone values (${BONE_CHARS}), which would show black; add 'ramp ${BONE_RAMP} <four colour numbers, dark to light>' or 'ramp ${species.key}-bone ...'`);
+    }
+  }
+  const boned = [...catalogue.parts.values()].filter((part) => !speciesOwn.has(part.id) && drawsBone(part));
+  if (boned.length > 0 && !hasRamp(BONE_RAMP)) {
+    problems.push(`palette: no ramp ${BONE_RAMP}: ${boned.length === 1 ? '1 part draws' : `${boned.length} parts draw`} bone values (${BONE_CHARS}), which would show black, e.g. part ${boned[0].id}; add 'ramp ${BONE_RAMP} <four colour numbers, dark to light>'`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
     const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));

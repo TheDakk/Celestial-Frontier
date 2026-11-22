@@ -1670,3 +1670,74 @@ describe('checkPack: the sample option', () => {
   });
 });
 
+
+describe('checkPack: the bone ramp, needed only when a part draws bone values', () => {
+  const HEAD_ROWS = '666666\n666666\n666666\n666666\n555555\n';
+  const BONE_HEAD = 'mmmmmm\n666666\n666666\n666666\n555555\n';
+  const HEAD_ID = 'quadruped/head/h0/small/v0';
+  const WITH_BONE_RAMP = (base: string): string => planted('outline 0\n', 'ramp bone 0 1 1 1\noutline 0\n', base);
+  const NO_BONE = `palette: no ramp bone: 1 part draws bone values (l to o), which would show black, e.g. part ${HEAD_ID}; add 'ramp bone <four colour numbers, dark to light>'`;
+  const boneLines = (r: PackReport): string[] => formatReport(r).split('\n').filter((l) => l.includes('bone'));
+
+  it('a pack that draws no bone says nothing of bone, with the ramp or without', () => {
+    for (const text of [GOOD, WITH_BONE_RAMP(GOOD), WITH_CIVET]) {
+      const r = wholePack(text);
+      expect(r.structure).toEqual([]);
+      expect(boneLines(r)).toEqual([]);
+    }
+  });
+
+  it('a part drawing bone in a palette with no bone ramp is an error naming the part and the line to add; with the ramp it is OK', () => {
+    const boned = planted(HEAD_ROWS, BONE_HEAD);
+    const r = checkPack(boned);
+    expect(r.structure).toEqual([NO_BONE]);
+    expect(errorsOf(r)).toEqual([`error: ${NO_BONE}`]);
+    expect(r.ok).toBe(false);
+    const fixed = checkPack(WITH_BONE_RAMP(boned));
+    expect(fixed.structure).toEqual([]);
+    expect(errorsOf(fixed)).toEqual([]);
+    expect(boneLines(fixed)).toEqual([]);
+    expect(fixed.ok).toBe(true);
+    // The same error from the command, exit 1; with the ramp, OK and exit 0.
+    const dir = mkdtempSync(join(tmpdir(), 'check-pack-bone-'));
+    try {
+      const run = (text: string) => {
+        writeFileSync(join(dir, 'pack.txt'), text);
+        return spawnSync(process.execPath, [TOOL, join(dir, 'pack.txt')], { encoding: 'utf8' });
+      };
+      const bad = run(boned);
+      expect(bad.stdout.split('\n')[0]).toBe('check-pack: FAIL (1 distinct errors)');
+      expect(bad.stdout.split('\n')).toContain(`error: ${NO_BONE}`);
+      expect(bad.status).toBe(1);
+      const good = run(WITH_BONE_RAMP(boned));
+      expect(good.stdout.split('\n')[0]).toBe('check-pack: OK');
+      expect(good.stdout).not.toContain('bone');
+      expect(good.status).toBe(0);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('bone drawn only in a hand-drawn layer needs the ramp too, and the parts are counted', () => {
+    const layered = planted(HEAD_ROWS, `${HEAD_ROWS}layer striped\n.o....\n......\n......\n......\n......\n`);
+    expect(wholePack(layered).structure).toEqual([NO_BONE]);
+    expect(wholePack(WITH_BONE_RAMP(layered)).structure).toEqual([]);
+    const two = planted(TORSO_ROWS, TORSO_ROWS.replace('111111111111', 'llllllllllll'), planted(HEAD_ROWS, BONE_HEAD));
+    expect(wholePack(two).structure).toEqual([NO_BONE.replace('1 part draws', '2 parts draw').replace(HEAD_ID, TORSO_ID)]);
+  });
+
+  it('a species\' own part drawing bone needs <key>-bone or bone: neither is an error, either is enough', () => {
+    const CIVET_TORSO = 'quadruped/torso/civet/small/v0';
+    const civet = planted('333333333333\n444444444444\n', 'mmmmmmmmmmmm\n444444444444\n', WITH_CIVET);
+    const missing = `species civet: palette has no ramp bone: part ${CIVET_TORSO} draws bone values (l to o), which would show black; add 'ramp bone <four colour numbers, dark to light>' or 'ramp civet-bone ...'`;
+    expect(wholePack(civet).structure).toEqual([missing]);
+    expect(wholePack(civet).ok).toBe(false);
+    expect(wholePack(WITH_BONE_RAMP(civet)).structure).toEqual([]);
+    const own = planted(CIVET_RAMPS, `${CIVET_RAMPS}ramp civet-bone 0 1 1 1\n`, civet);
+    expect(wholePack(own).structure).toEqual([]);
+    // Another species' bone ramp is not this one's.
+    expect(wholePack(planted(CIVET_RAMPS, `${CIVET_RAMPS}ramp otter-bone 0 1 1 1\n`, civet)).structure).toEqual([missing]);
+    // A species' own ramp does not serve a generated creature's part: that still needs bone.
+    expect(wholePack(planted(HEAD_ROWS, BONE_HEAD, own)).structure).toEqual([NO_BONE]);
+  });
+});
