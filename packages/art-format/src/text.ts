@@ -288,25 +288,30 @@ export function parseCatalogueText(text: string): Catalogue {
       case 'entry': {
         if (!pose || !scaffold) throw new Error(`line ${n}: entry outside a pose`);
         if (args.length < 5 || args.length > 6) throw new Error(`line ${n}: bad entry`);
+        // The one optional field: `legs=<n>` (any slot) or `eyes=<n>` (an eyes entry only).
         let legs: number | undefined;
+        let eyes: number | undefined;
         if (args.length === 6) {
           const field = args[5] as string;
-          if (!field.startsWith('legs=')) throw new Error(`line ${n}: bad entry`);
+          const name = field.startsWith('legs=') ? 'legs' : field.startsWith('eyes=') ? 'eyes' : undefined;
+          if (name === undefined) throw new Error(`line ${n}: bad entry`);
           const value = field.slice(5);
           const parsed = /^\d+$/.test(value) ? parseInt(value, 10) : -1;
-          if (!(LIMB_COUNTS as readonly number[]).includes(parsed)) throw new Error(`line ${n}: bad legs '${value}'`);
-          legs = parsed;
+          if (!((name === 'legs' ? LIMB_COUNTS : EYE_COUNTS) as readonly number[]).includes(parsed)) throw new Error(`line ${n}: bad ${name} '${value}'`);
+          if (name === 'legs') legs = parsed;
+          else eyes = parsed;
         }
         const slot = args[0] as string;
         if (!(DRAW_ORDER as readonly string[]).includes(slot)) throw new Error(`line ${n}: unknown slot '${slot}'`);
+        if (eyes !== undefined && slot !== 'eyes') throw new Error(`line ${n}: eyes= on slot '${slot}': only an eyes entry takes an eye count`);
         const rawIndex = args[1] as string;
         const index = /^-?\d+$/.test(rawIndex) ? parseInt(rawIndex, 10) : -1;
         if (index < 0 || index > 7) throw new Error(`line ${n}: bad entry index ${rawIndex}`);
-        if (pose.entries.some((e) => e.slot === slot && e.index === index && e.legs === legs)) {
+        if (pose.entries.some((e) => e.slot === slot && e.index === index && e.legs === legs && e.eyes === eyes)) {
           throw new Error(`scaffold ${scaffold.id} pose ${pose.id} line ${n}: duplicate entry ${slot} ${index}`);
         }
         const entry: PoseEntry = { slot: slot as SlotName, index, frame: args[2] as string, dx: int(args[3], n), dy: int(args[4], n) };
-        pose.entries.push(legs === undefined ? entry : { ...entry, legs });
+        pose.entries.push(legs !== undefined ? { ...entry, legs } : eyes !== undefined ? { ...entry, eyes } : entry);
         break;
       }
       case 'fallback':

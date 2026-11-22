@@ -231,6 +231,29 @@ describe('parseCatalogueText: stricter checks', () => {
     expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 legs=2 more\n`)).toBe('line 3: bad entry');
     expect(thrown(`${SCAF}pose rest\nentry torso 0 rest 0 0 foo=2\n`)).toBe('line 3: bad entry');
   });
+  it('reads eyes=4 on an eyes entry; an entry without it has no eyes key', () => {
+    const c = parseCatalogueText(`${SCAF}pose rest\nentry eyes 0 small 1 -1 eyes=4\nentry eyes 1 rest 0 0\n`);
+    const entries = c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries;
+    expect(entries).toEqual([{ slot: 'eyes', index: 0, frame: 'small', dx: 1, dy: -1, eyes: 4 }, { slot: 'eyes', index: 1, frame: 'rest', dx: 0, dy: 0 }]);
+    expect('eyes' in entries[1]!).toBe(false);
+  });
+  it('accepts the same eye index at every eye count, at a leg count and with neither', () => {
+    const c = parseCatalogueText(`${SCAF}pose rest\nentry eyes 0 rest 0 0\n${[0, 1, 2, 4, 6, 8].map((n) => `entry eyes 0 rest 0 0 eyes=${n}\n`).join('')}entry eyes 0 rest 0 0 legs=2\n`);
+    expect(c.scaffolds.get('quadruped/sturdy/small')!.poses['rest']!.entries.map((e) => [e.eyes, e.legs]))
+      .toEqual([[undefined, undefined], [0, undefined], [1, undefined], [2, undefined], [4, undefined], [6, undefined], [8, undefined], [undefined, 2]]);
+  });
+  it('rejects the same eye index and eye count twice', () => {
+    expect(thrown(`${SCAF}pose rest\nentry eyes 0 rest 0 0 eyes=4\nentry eyes 0 small 1 0 eyes=4\n`))
+      .toBe('scaffold quadruped/sturdy/small pose rest line 4: duplicate entry eyes 0');
+  });
+  it('rejects eyes=3, eyes=x, eyes= beside legs=, and eyes= on an entry of another slot', () => {
+    expect(thrown(`${SCAF}pose rest\nentry eyes 0 rest 0 0 eyes=3\n`)).toBe("line 3: bad eyes '3'");
+    expect(thrown(`${SCAF}pose rest\nentry eyes 0 rest 0 0 eyes=x\n`)).toBe("line 3: bad eyes 'x'");
+    expect(thrown(`${SCAF}pose rest\nentry eyes 0 rest 0 0 eyes=4 legs=2\n`)).toBe('line 3: bad entry');
+    expect(thrown(`${SCAF}pose rest\nentry head 0 rest 0 0 eyes=4\n`)).toBe("line 3: eyes= on slot 'head': only an eyes entry takes an eye count");
+    expect(thrown(`${SCAF}pose rest\nentry nose 0 rest 0 0 eyes=4\n`)).toBe("line 3: unknown slot 'nose'");
+    expect(thrown(`${SCAF}pose rest\nentry eyes 0 rest 0 0 eyes=4\nentry head 0 rest 0 0 legs=2\n`)).toBe('did not throw');
+  });
   it('rejects a fallback naming a part that is missing by the end, or that has no rest frame', () => {
     expect(thrown(`${PART}\nfallback quadruped quadruped/torso/none/medium/v0\n`)).toBe('fallback quadruped medium: part quadruped/torso/none/medium/v0 missing or has no rest frame');
     expect(thrown(`part ${ID}\nframe wave anchor=0,0\n1\n\nfallback quadruped ${ID}\n`)).toBe(`fallback quadruped medium: part ${ID} missing or has no rest frame`);
