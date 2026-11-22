@@ -18,6 +18,7 @@ export interface RecipePart { slot: SlotName; index: number; partId: string; sou
 export interface Recipe {
   version: number; identity: string; family: string; tier: SizeTier; scaffoldId: string;
   legs: number; // the anatomy's limb count, 0 outside fauna
+  eyes: number; // the eye count drawn; 0 when the body draws its two pits or asks for no eye
   parts: readonly RecipePart[]; // in DRAW_ORDER, then by index
   ramps: { primary: string; accent: string; underside: string; iris: string };
   marking: { pattern: number; strength: 0 | 1 | 2; phase: number }; // strength 0 hint, 1 clear, 2 full; phase 0-14
@@ -90,6 +91,7 @@ function buildRecipeAt(
     version, identity, family: b.family, tier: b.tier,
     scaffoldId: `${b.family}/${torsoKindOf(b)}/${b.tier}`,
     legs: b.limbs,
+    eyes: b.eyes ?? 0,
     parts,
     // The iris is the theme's (irisOf); the `iris` stream is still drawn (drawStreams), its result dropped.
     ramps: { primary: `c${b.colour}`, accent: `c${b.accent}`, underside: `c${b.colour}-under`, iris: irisOf(b.theme) },
@@ -166,6 +168,7 @@ export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
     version: RENDERER_VERSION, identity: `species:${key}`, family: species.family, tier: species.tier,
     scaffoldId: `${species.family}/${key}/${species.tier}`,
     legs: species.legs,
+    eyes: species.eyes,
     parts,
     ramps: { primary: key, accent: `${key}-accent`, underside: `${key}-under`, iris: speciesIrisRamp(key, species.iris, catalogue) },
     marking: { pattern: 0, strength: 2, phase: 0 },

@@ -22,7 +22,7 @@ describe('buildSpeciesRecipe', () => {
   it('builds the whole recipe of a four-legged, two-eyed species with a tail', () => {
     const r = buildSpeciesRecipe('civet', full());
     expect(r).toEqual({
-      version: RENDERER_VERSION, identity: 'species:civet', family: 'quadruped', tier: 'medium', scaffoldId: 'quadruped/civet/medium', legs: 4,
+      version: RENDERER_VERSION, identity: 'species:civet', family: 'quadruped', tier: 'medium', scaffoldId: 'quadruped/civet/medium', legs: 4, eyes: 2,
       parts: [
         { slot: 'farLimbs', index: 0, partId: q('farLimbs', 'fore'), source: 'own' },
         { slot: 'farLimbs', index: 1, partId: q('farLimbs', 'hind'), source: 'own' },
@@ -62,6 +62,14 @@ describe('buildSpeciesRecipe', () => {
     const r = buildSpeciesRecipe('civet', catalogueOf([...ownParts('civet'), ...SHARED], [CIVET.replace('tail=1', 'tail=0')]));
     expect(r.parts.some((p) => p.slot === 'tail')).toBe(false);
     expect(r.gaps).toEqual([]);
+  });
+
+  it('carries the eye count of its species line and asks for that many eyes', () => {
+    for (const eyes of [0, 1, 2, 4, 6, 8]) {
+      const r = buildSpeciesRecipe('civet', catalogueOf([...ownParts('civet'), ...SHARED], [CIVET.replace('eyes=2', `eyes=${eyes}`)]));
+      expect(r.eyes, `eyes=${eyes}`).toBe(eyes);
+      expect(r.parts.filter((p) => p.slot === 'eyes'), `eyes=${eyes}`).toHaveLength(eyes);
+    }
   });
 
   it('asks for the leg roles of 0, 2, 3 and 6 legs; both legs of two are hind', () => {

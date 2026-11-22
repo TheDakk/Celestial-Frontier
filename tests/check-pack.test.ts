@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
+import { EYE_COUNTS, LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { assemble } from '@cf/art-compose';
 import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
@@ -734,6 +734,122 @@ describe('checkPack sweeps every pattern and every skin with a back part', () =>
   });
 });
 
+describe('checkPack: eye-count attach points and eyes= entries', () => {
+  const HEAD_ID = 'quadruped/head/h0/small/v0';
+  /** The good pack with more attach points on its head. */
+  const headPoints = (more: string, base = GOOD): string => planted(',eye7:4,3', `,eye7:4,3,${more}`, base);
+  /** The good pack with entries added to its rest pose. */
+  const restEntries = (entries: string, base = GOOD): string => planted('pose rest\n', `pose rest\n${entries}`, base);
+  /** The eyes gene for an eye count. */
+  const eyeGene = (eyes: number): number => (EYE_COUNTS as readonly number[]).indexOf(eyes);
+
+  it('an eye<i>_<n> point on a head or a torso is accepted for an eye that count draws: i below n, 0 and 1 for the two pits', () => {
+    const good = checkPack(headPoints('eye0_1:1,1,eye1_2:2,1,eye3_4:4,1,eye5_6:2,3,eye7_8:4,3,eye0_0:1,1,eye1_0:2,1'));
+    expect(good.structure).toEqual([]);
+    expect(errorsOf(good)).toEqual([]);
+    expect(good.ok).toBe(true);
+    expect(wholePack(planted('near3:10,5', 'near3:10,5,eye0_1:1,1')).structure).toEqual([]);
+  });
+
+  it('an eye<i>_<n> point for an eye that count never draws, or for a number that is no eye count, is an error', () => {
+    const bad = wholePack(headPoints('eye1_1:1,1,eye4_4:1,3,eye2_0:3,1,eye0_3:1,1,eye8_8:1,1'));
+    expect(bad.structure).toEqual(['eye1_1', 'eye4_4', 'eye2_0', 'eye0_3', 'eye8_8'].map((point) => `part ${HEAD_ID} frame rest: attach point ${point} is for an eye count that never uses it`));
+    expect(bad.ok).toBe(false);
+    expect(wholePack(planted('near3:10,5', 'near3:10,5,eye2_2:1,1')).structure).toEqual([`part ${TORSO_ID} frame rest: attach point eye2_2 is for an eye count that never uses it`]);
+    expect(wholePack(GOOD).structure).toEqual([]);
+  });
+
+  it('the plain eye points stay required beside the eye-count ones', () => {
+    const r = wholePack(planted('eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,', 'eye0:1,1,eye1:2,1,eye2:3,1,eye3_4:4,1,'));
+    expect(r.structure).toEqual([`part ${HEAD_ID} frame rest: missing attach point eye3`]);
+  });
+
+  it('an eyes= entry for an eye that count never draws is an error', () => {
+    const fine = checkPack(restEntries('entry eyes 0 rest 0 0 eyes=1\nentry eyes 3 rest 0 0 eyes=4\nentry eyes 7 rest 0 0 eyes=8\nentry eyes 1 rest 0 0 eyes=0\nentry eyes 7 rest 0 0 legs=2\n'));
+    expect(fine.structure).toEqual([]);
+    expect(fine.ok).toBe(true);
+    const r = checkPack(restEntries('entry eyes 1 rest 0 0 eyes=1\nentry eyes 4 rest 0 0 eyes=4\nentry eyes 2 rest 0 0 eyes=0\n'));
+    expect(r.structure).toEqual([
+      'scaffold quadruped/sturdy/small pose rest: entry eyes 1 eyes=1 is for an eye that count never draws',
+      'scaffold quadruped/sturdy/small pose rest: entry eyes 4 eyes=4 is for an eye that count never draws',
+      'scaffold quadruped/sturdy/small pose rest: entry eyes 2 eyes=0 is for an eye that count never draws',
+    ]);
+    expect(r.ok).toBe(false);
+  });
+
+  it('an eyes= entry naming a frame the eye lacks is an error gap, met only at that eye count', () => {
+    const r = checkPack(restEntries('entry eyes 0 wide 0 0 eyes=6\n'));
+    // Six eyes in the rest pose: one creature of the eye-count sweep, then one for each of the 7 back skins on land and airborne.
+    expect(r.gaps.find((g) => g.gap === 'frame:quadruped/eyes/eye/small/v0:wide')).toEqual({ gap: 'frame:quadruped/eyes/eye/small/v0:wide', count: 15, error: true });
+    expect(checkPack(GOOD).gaps.some((g) => g.gap.startsWith('frame:'))).toBe(false);
+  });
+
+  it('finds an eye an eye-count point puts off the head, at that eye count only', () => {
+    // Eye 3 of four eyes one pixel right of the head (6 wide) and one row above the tail side: touching nothing.
+    const r = checkPack(headPoints('eye3_4:7,1'));
+    expect(r.structure).toEqual([]);
+    expect(r.detached.length).toBeGreaterThan(0);
+    expect(r.detached.every((d) => d.genome['eyes'] === eyeGene(4) && d.off.includes('eyes'))).toBe(true);
+    expect(new Set(r.detached.map((d) => d.pose))).toEqual(new Set(['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint']));
+    expect(r.ok).toBe(false);
+    // The same point inside the head is silent.
+    expect(checkPack(headPoints('eye3_4:4,2')).ok).toBe(true);
+  });
+
+  it('finds an eye an eyes= entry moves off the head, at that eye count only', () => {
+    const r = checkPack(restEntries('entry eyes 0 rest 9 0 eyes=6\n'));
+    expect(r.detached.length).toBeGreaterThan(0);
+    expect(r.detached.every((d) => d.genome['eyes'] === eyeGene(6) && d.pose === 'rest' && d.off.includes('eyes'))).toBe(true);
+    expect(checkPack(restEntries('entry eyes 0 rest 0 1 eyes=6\n')).ok).toBe(true);
+  });
+
+  it('finds an eye an eye-count point hides under another, at that eye count only', () => {
+    // Eye 1 of two eyes on eye 0's own pixel: a one-pixel eye must show its one pixel.
+    const r = checkPack(headPoints('eye1_2:1,1'));
+    expect(r.hidden.length).toBeGreaterThan(0);
+    expect(r.hidden.every((d) => d.genome['eyes'] === eyeGene(2) && d.partId === 'quadruped/eyes/eye/small/v0')).toBe(true);
+    expect(r.ok).toBe(false);
+  });
+
+  it('draws an eye count with a point or entry of its own at every leg count a legs= entry is written for', () => {
+    // Eye 0 of four sits left of the head, on the torso. At two legs the rest pose lifts the head four rows (it still
+    // overlaps the torso), and that eye with it: two rows above the torso, touching nothing.
+    const moved = restEntries('entry head 0 rest 0 -4 legs=2\nentry eyes 0 rest -4 0 eyes=4\n');
+    const r = checkPack(moved);
+    const twoLegsFourEyes = r.detached.filter((d) => d.genome['limbs'] === limbGene(2) && d.genome['eyes'] === eyeGene(4));
+    expect(twoLegsFourEyes.length).toBeGreaterThan(0);
+    expect(twoLegsFourEyes.every((d) => d.off.includes('eyes'))).toBe(true);
+    expect(r.detached).toEqual(twoLegsFourEyes);
+    // Without the eyes=4 entry no four-eyed creature is drawn at two legs, and the lifted head alone is fine.
+    expect(checkPack(restEntries('entry head 0 rest 0 -4 legs=2\n')).ok).toBe(true);
+  });
+
+  it('forces a head variant at each eye count a point or entry is written for', () => {
+    const V1 = 'quadruped/head/h0/small/v1';
+    const HEAD_ROWS = '666666\n666666\n666666\n666666\n555555\n';
+    const points = 'eye0:1,1,eye1:2,1,eye2:3,1,eye3:4,1,eye4:1,3,eye5:2,3,eye6:3,3,eye7:4,3';
+    const second = (more: string): string => `\npart ${V1}\nframe rest anchor=0,0 attach=${points}${more}\n${HEAD_ROWS}`;
+    const plain = checkPack(GOOD + second(''));
+    expect(plain.ok).toBe(true);
+    expect(plain.variants).toBe(4); // two head variants, on land and airborne
+    // The second variant alone puts eye 5 of six off the head: only the forced pass at six eyes is sure to draw it.
+    const r = checkPack(GOOD + second(',eye5_6:8,1'));
+    expect(r.variants).toBe(8); // each again at six eyes
+    const forced = r.detached.filter((d) => d.variant === V1);
+    expect(forced.length).toBeGreaterThan(0);
+    expect(forced.every((d) => d.genome['eyes'] === eyeGene(6) && d.off.includes('eyes'))).toBe(true);
+    expect(r.detached.some((d) => d.variant === 'quadruped/head/h0/small/v0')).toBe(false);
+  });
+
+  it('draws each back skin at an eye count with a point or entry of its own', () => {
+    const plain = checkPack(GOOD).composed;
+    // Four eyes with an entry of their own: 7 back skins more on land and 7 airborne, each in 7 poses.
+    expect(checkPack(restEntries('entry eyes 0 rest 0 0 eyes=4\n')).composed).toBe(plain + 14 * 7);
+    // Eight eyes are drawn everywhere already.
+    expect(checkPack(restEntries('entry eyes 0 rest 0 0 eyes=8\n')).composed).toBe(plain);
+  });
+});
+
 describe('checkPack shift sweep at each leg count', () => {
   it('sweeps the head shifts at a leg count a legs= entry is written for', () => {
     // At two legs the rest pose moves the head two columns right: flush against the torso, so a +1 shift opens a gap.
@@ -1365,7 +1481,7 @@ frame rest anchor=0,0
   const TORSO = 'quadruped/torso/sturdy/small/v0';
   const HEAD = 'quadruped/head/h0/small/v0';
   const recipeOf = (skin: number | null): Recipe => ({
-    version: 1, identity: 'coded', family: 'quadruped', tier: 'small', scaffoldId: scaffold.id, legs: 1,
+    version: 1, identity: 'coded', family: 'quadruped', tier: 'small', scaffoldId: scaffold.id, legs: 1, eyes: 0,
     parts: [
       { slot: 'tail', index: 0, partId: 'quadruped/tail/t1/small/v0', source: 'own' },
       { slot: 'torso', index: 0, partId: TORSO, source: 'own' },

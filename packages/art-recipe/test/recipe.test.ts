@@ -72,6 +72,15 @@ describe('buildRecipe', () => {
     expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full).legs).toBe(0);
   });
 
+  it('carries the eye count: the eyes gene\'s count, 0 for the two pits and for a body that asks for no eye', () => {
+    expect([0, 1, 2, 3, 4, 5].map((eyes) => buildRecipe({ ...base, eyes }, [], full).eyes)).toEqual([2, 4, 6, 8, 1, 0]);
+    // The eyeless head draws the two pits, whatever the eyes gene.
+    expect(buildRecipe({ ...base, head: 2, eyes: 3 }, [], full).eyes).toBe(0);
+    expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], full).eyes).toBe(0);
+    // The count is the body's, not the number of eye parts the pack happened to hold.
+    expect(buildRecipe({ ...base, eyes: 3 }, [], catalogueOf([])).eyes).toBe(8);
+  });
+
   it('three limbs give one far and two near (far0 fore, near0 fore, near1 hind); none give no limb parts', () => {
     const three = buildRecipe({ ...base, limbs: 4 }, [], full);
     expect(limbKinds(three)).toEqual(['farLimbs0 fore', 'nearLimbs0 fore', 'nearLimbs1 hind']);

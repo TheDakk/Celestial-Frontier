@@ -57,7 +57,7 @@ export interface PackReport {
   partial: string[] | null;
   /** Creature poses composed (SAMPLED says which); a shift is drawn as a label picture and not counted. */
   composed: number;
-  /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points), in each state the scaffold is sampled in. */
+  /** Forced variants composed, in every pose: one patterned creature per variant of a part type with more than one, plus one more per extra leg count the scaffold names (legs= entries, torso leg-count attach points) and, for a head or torso variant, per extra eye count it names (eyes= entries, eye-count attach points), in each state the scaffold is sampled in. */
   variants: number;
   /**
    * Distinct gaps met while composing, each with how many creature poses met it. `error` is false for information

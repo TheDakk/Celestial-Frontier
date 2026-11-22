@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
-import type { Catalogue, PartFrame, SlotName } from '@cf/art-format';
+import type { Catalogue, PartFrame, PoseEntry, SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
@@ -149,7 +149,7 @@ function recipeOf(parts: readonly Spec[], over: Partial<Recipe> = {}): Recipe {
     ramps: { primary: 'c0', accent: 'c1', underside: 'c0-under', iris: 'iris0' },
     marking: { pattern: 0, strength: 2, phase: 0 },
     shift: { head: [0, 0], tail: [0, 0] },
-    legs: 4, glow: false, gaps: [],
+    legs: 4, eyes: 2, glow: false, gaps: [],
     opacity: 100, airborne: false, theme: null, rim: 0, skin: null,
     ...over,
   };
@@ -409,16 +409,119 @@ describe('the frame-choice rule the composer and the checker share', () => {
   it('poseEntryFor: the entry for this leg count wins, then the one with no leg count, then none', () => {
     const both = legged.poses['both']!.entries;
     // both: `entry nearLimbs 0 rest 0 0`, then `entry nearLimbs 0 rest 3 0 legs=2`.
-    expect(poseEntryFor(both, 'nearLimbs', 0, 2)).toBe(both[1]);
-    expect(poseEntryFor(both, 'nearLimbs', 0, 4)).toBe(both[0]);
-    expect(poseEntryFor(both, 'nearLimbs', 1, 2)).toBeUndefined();
-    expect(poseEntryFor(legged.poses['other']!.entries, 'nearLimbs', 0, 2)).toBeUndefined();
+    expect(poseEntryFor(both, 'nearLimbs', 0, 2, 2)).toBe(both[1]);
+    expect(poseEntryFor(both, 'nearLimbs', 0, 4, 2)).toBe(both[0]);
+    expect(poseEntryFor(both, 'nearLimbs', 1, 2, 2)).toBeUndefined();
+    expect(poseEntryFor(legged.poses['other']!.entries, 'nearLimbs', 0, 2, 2)).toBeUndefined();
+  });
+
+  it('poseEntryFor: an eye\'s entry for this eye count wins, then the one for this leg count, then the plain one; one for another eye count never applies', () => {
+    const plain: PoseEntry = { slot: 'eyes', index: 0, frame: 'rest', dx: 0, dy: 0 };
+    const four: PoseEntry = { slot: 'eyes', index: 0, frame: 'small', dx: 1, dy: 0, eyes: 4 };
+    const twoLegs: PoseEntry = { slot: 'eyes', index: 0, frame: 'low', dx: 0, dy: 1, legs: 2 };
+    for (const entries of [[plain, twoLegs, four], [four, twoLegs, plain]]) {
+      expect(poseEntryFor(entries, 'eyes', 0, 2, 4)).toBe(four);
+      expect(poseEntryFor(entries, 'eyes', 0, 4, 4)).toBe(four);
+      expect(poseEntryFor(entries, 'eyes', 0, 2, 6)).toBe(twoLegs);
+      expect(poseEntryFor(entries, 'eyes', 0, 4, 6)).toBe(plain);
+      expect(poseEntryFor(entries, 'eyes', 1, 2, 4)).toBeUndefined();
+    }
+    expect(poseEntryFor([four], 'eyes', 0, 4, 2)).toBeUndefined();
   });
 
   it('frameNameFor: the entry\'s frame when the part has it, else rest; rest with no entry', () => {
     expect(frameNameFor(torso, { slot: 'torso', index: 0, frame: 'hop', dx: 0, dy: 0 })).toBe('hop');
     expect(frameNameFor(near, { slot: 'nearLimbs', index: 0, frame: 'brace', dx: 3, dy: 0, legs: 4 })).toBe('rest');
     expect(frameNameFor(near, undefined)).toBe('rest');
+  });
+});
+
+describe('assemble: eyes by eye count', () => {
+  // The torso at 10,10; the head on its head point, at 14,10; the eye values: rest d (13), small e (14).
+  const eyed = (headAttach: string, entries = '', torsoAttach = 'head:4,0'): Catalogue => parseCatalogueText(HEADER + `
+part quadruped/torso/sturdy/small/v0
+frame rest anchor=0,0 attach=${torsoAttach}
+2222
+2222
+
+part quadruped/head/h1/small/v0
+frame rest anchor=0,0 attach=${headAttach}
+3333
+3333
+
+part quadruped/eyes/eye/small/v0
+frame rest anchor=0,0
+d
+frame small anchor=0,0
+e
+
+scaffold quadruped/sturdy/small origin=10,10
+pose rest
+entry torso 0 rest 0 0
+${entries}`);
+  const PARTS_OF: Spec[] = [['torso', 0, 'torso'], ['head', 0, 'head']];
+  const eyesOf = (n: number): Spec[] => Array.from({ length: n }, (_, i): Spec => ['eyes', i, 'eye']);
+  /** Where the eye values 13 and 14 land, as "x,y=v", for a creature drawing `eyes` eyes (`n` eye parts, `eyes` by default). */
+  const eyesAt = (c: Catalogue, eyes: number, over: Partial<Recipe> = {}, n = eyes): string[] => {
+    const r = assemble(recipeOf([...PARTS_OF, ...eyesOf(n)], { eyes, ...over }), 'rest', c);
+    expect(r.gaps).toEqual([]);
+    return drawn(r.buffer).filter((p) => p.endsWith('=13') || p.endsWith('=14'));
+  };
+
+  it('eye i of a creature drawing n eyes hangs from eye<i>_<n> where the head has it, else from eye<i>', () => {
+    const c = eyed('eye0:0,0,eye1:1,0,eye2:2,0,eye3:3,0,eye0_4:0,1,eye1_4:1,1,eye3_4:3,1');
+    expect(eyesAt(c, 2)).toEqual(['14,10=13', '15,10=13']);
+    // At four eyes: eyes 0, 1 and 3 on the lower row, eye 2 (no eye2_4) on its plain point.
+    expect(eyesAt(c, 4)).toEqual(['16,10=13', '14,11=13', '15,11=13', '17,11=13']);
+  });
+  it('a point for another eye count alone is not used, and a leg count never picks an eye point', () => {
+    const c = eyed('eye0:0,0,eye1:1,0,eye0_4:0,1,eye1_4:1,1');
+    for (const legs of [2, 4]) expect(eyesAt(c, 2, { legs }), `legs ${legs}`).toEqual(['14,10=13', '15,10=13']);
+  });
+  it('an eye with neither point is an attach gap naming the plain point', () => {
+    const c = eyed('eye0:0,0,eye0_4:0,1');
+    const r = assemble(recipeOf([...PARTS_OF, ...eyesOf(2)], { eyes: 2 }), 'rest', c);
+    expect(r.gaps).toEqual(['attach:eye1']);
+  });
+  it('an eyes=<n> entry gives that eye its frame and offset at n eyes only; the plain entry stays the fallback', () => {
+    const c = eyed('eye0:0,0,eye1:1,0,eye2:2,0,eye3:3,0', 'entry eyes 0 rest 0 1\nentry eyes 0 small 1 0 eyes=4\nentry eyes 3 small 0 1 eyes=4\n');
+    // Two eyes: eye 0 by its plain entry (rest, one row down), eye 1 with no entry.
+    expect(eyesAt(c, 2)).toEqual(['15,10=13', '14,11=13']);
+    // Four eyes: eye 0 by its eyes=4 entry (small, one column right) under eye 1; eye 3 small, one row down.
+    expect(eyesAt(c, 4)).toEqual(['15,10=13', '16,10=13', '17,11=14']);
+    expect(eyesAt(c, 4, {}, 1)).toEqual(['15,10=14']);
+    // Six eyes: no eyes=6 entry, so the plain ones again.
+    expect(eyesAt(c, 6, {}, 4)).toEqual(['15,10=13', '16,10=13', '17,10=13', '14,11=13']);
+  });
+  it('an eyes=<n> entry naming a frame the eye lacks is a frame gap, and the eye shows rest', () => {
+    const c = eyed('eye0:0,0', 'entry eyes 0 wide 0 0 eyes=1\n');
+    const r = assemble(recipeOf([...PARTS_OF, ...eyesOf(1)], { eyes: 1 }), 'rest', c);
+    expect(r.gaps).toEqual(['frame:quadruped/eyes/eye/small/v0:wide']);
+    expect(at(r.buffer, 14, 10)).toBe(13);
+  });
+  it('an eye hung from the torso (`at`) takes the torso\'s eye<i>_<n> the same way', () => {
+    const c = eyed('eye0:0,0', '', 'head:4,0,eye0:0,0,eye0_1:2,1');
+    const onTorso = (eyes: number): string[] => {
+      const r = assemble(recipeOf([['torso', 0, 'torso']], { eyes, parts: [
+        { slot: 'torso', index: 0, partId: ID['torso']!, source: 'own' },
+        { slot: 'eyes', index: 0, partId: ID['eye']!, source: 'own', at: { host: 'torso', point: 'eye0' } },
+      ] }), 'rest', c);
+      expect(r.gaps).toEqual([]);
+      return drawn(r.buffer).filter((p) => p.endsWith('=13'));
+    };
+    expect(onTorso(1)).toEqual(['12,11=13']);
+    expect(onTorso(2)).toEqual(['10,10=13']);
+  });
+  it('the two pits of a creature with no eyes take eye<i>_0 and eyes=0 entries', () => {
+    const c = eyed('eye0:0,0,eye1:1,0,eye0_0:2,1', 'entry eyes 1 small 2 1 eyes=0\n');
+    expect(eyesAt(c, 0, {}, 2)).toEqual(['16,11=13', '17,11=14']);
+    expect(eyesAt(c, 2)).toEqual(['14,10=13', '15,10=13']);
+  });
+  it('a pack with no eye-count point or entry draws the same picture whatever eye count the recipe carries', () => {
+    const c = eyed('eye0:0,0,eye1:1,0', 'entry eyes 0 small 0 1\n');
+    const pictures = [0, 1, 2, 4, 6, 8].map((eyes) => drawn(assemble(recipeOf([...PARTS_OF, ...eyesOf(2)], { eyes }), 'rest', c).buffer));
+    for (const picture of pictures) expect(picture).toEqual(pictures[0]);
+    expect(pictures[0]!.filter((p) => p.endsWith('=13') || p.endsWith('=14'))).toEqual(['15,10=13', '14,11=14']);
   });
 });
 
@@ -515,7 +618,8 @@ entry torso 0 rest 0 0
     expect(r.gaps).toEqual([]);
   });
   it('only a limb takes a leg-count attach name: at two legs the head, an eye and the head feature land on their plain points', () => {
-    // head_2, eye0_2 and feature_2 each sit somewhere else; none of them is ever used.
+    // head_2, eye0_2 and feature_2 each sit somewhere else; none of them is ever used (the creature draws four eyes: eye0_2
+    // is the name for two eyes, whatever the leg count).
     const named = parseCatalogueText(HEADER + `
 part quadruped/torso/sturdy/small/v0
 frame rest anchor=0,0 attach=head:4,0,head_2:4,3
@@ -542,7 +646,7 @@ entry torso 0 rest 0 0
     // The head at the plain head point (14,10), the eye at its eye0 (15,10), the feature at its plain feature point (14,9).
     const plain = ['14,9=12', ...TORSO.slice(0, 4), '14,10=3', '15,10=13', '16,10=3', ...TORSO.slice(4)];
     for (const legs of [2, 4]) {
-      const r = assemble(recipeOf(parts, { legs }), 'rest', named);
+      const r = assemble(recipeOf(parts, { legs, eyes: 4 }), 'rest', named);
       expect(drawn(r.buffer), `legs ${legs}`).toEqual(plain);
       expect(r.gaps).toEqual([]);
     }

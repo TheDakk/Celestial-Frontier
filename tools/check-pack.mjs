@@ -56,6 +56,16 @@ const LEG_COUNT_POINTS = new Map(LIMB_COUNTS.filter((n) => n > 0).flatMap((n) =>
   ...Array.from({ length: n >> 1 }, (_, i) => [`far${i}_${n}`, n]),
   ...Array.from({ length: n - (n >> 1) }, (_, i) => [`near${i}_${n}`, n]),
 ]));
+/** The eye indexes a creature drawing `eyes` eyes fills: one per eye, or 0 and 1 for the two pits of a creature with none. */
+const eyesDrawn = (eyes) => (eyes === 0 ? 2 : eyes);
+/** Every name with an eye count: `eye<i>_<n>`, on a head or a torso, checked against EYE_COUNT_POINTS. */
+const EYE_COUNT_NAME = /^eye\d+_\d+$/;
+/**
+ * Every eye-count attach name the composer can ask a head (or a torso that carries the eyes) for, with its eye count:
+ * `eye<i>_<n>` for each eye count n and each eye index i that count fills (eyesDrawn). Such a name is optional (the
+ * plain name is the fallback); any other name of that form is never used.
+ */
+const EYE_COUNT_POINTS = new Map(EYE_COUNTS.flatMap((n) => Array.from({ length: eyesDrawn(n) }, (_, i) => [`eye${i}_${n}`, n])));
 // The genes that give each tier: a size gene, and for the guardian tier the Guardian marker the game sets (apex).
 const GENES_FOR_TIER = { small: { size: 0 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 5, apex: 12 } };
 const SHIFTS = [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((x) => [x, y]));
@@ -102,12 +112,13 @@ export const SAMPLED =
   'for each pattern gene ' + PATTERN_GENES.join(', ') + ' at full strength and one with translucent skin (' + TRANSLUCENT_SKIN + '), composed for ' +
   'their gaps only (marks and skin never change which pixels are drawn, so they are not checked for the edge, detachment or hidden parts, and their own ' +
   'seeded variants and shifts are not sampled for them), and one for each skin gene with a back part (' + BACK_SKINS.join(', ') + ') at the most ' +
-  'legs and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for, in every pose at its own shift. ' +
+  'legs and again at every leg count a legs= entry or a torso leg-count attach point of the scaffold is written for, and all of those again at every ' +
+  'eye count but eight an eyes= entry of the scaffold or an eye-count attach point (eye<i>_<n>) of its heads or torsos is written for, in every pose at its own shift. ' +
   'Shift sweep (edge and detachment), at the fewest legs the body draws and again at every such leg count: every head kind alone (the tail part taken out) at ' +
   'its nine shifts, and head and tail kinds paired in turn (each kind at least once) at all 81 head x tail shift combinations in the first state, ' +
   'at the nine head shifts and then the nine tail shifts in a later one (it adds only parts hung from the torso). ' +
   'Every variant of a part type with more than one, forced into a patterned creature (pattern gene ' + FORCED_PATTERN + '), in every pose (a head or tail variant also at its nine shifts), ' +
-  'also at every such leg count. ' +
+  'also at every such leg count; a head or torso variant at each of those also at every such eye count. ' +
   'Every requested part must show ' + HIDDEN_MIN + ' pixels (all of its pixels if it draws fewer) in every one of these pictures. ' +
   'A marks: gap is also listed, as x0, for every frame a pose can show at any leg count that no sampled creature drew. ' +
   'A named species is composed on its own scaffold in every pose it defines, once (no seeded choices), and its head is checked at the neck against its own torso only; ' +
@@ -559,6 +570,8 @@ function layerProblems(where, frame) {
   return problems;
 }
 
+/** The eye count given where the entry of a slot other than `eyes` is looked up: only an eyes entry carries one, so it is never read. */
+const NO_EYE_COUNT = 0;
 /** The limbs a creature with `legs` legs draws on each side: far n >> 1, near the rest (as buildRecipe splits them). */
 const sideCount = (slot, legs) => (slot === 'farLimbs' ? legs >> 1 : legs - (legs >> 1));
 /** The plain leg attach points a creature with `legs` legs hangs its legs from. */
@@ -614,7 +627,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
                   : kinds !== null && kinds.includes(p.kind)));
         if (parts.length === 0) continue;
         for (const pose of Object.values(scaffold.poses)) {
-          const entry = poseEntryFor(pose.entries, slot, index, legs);
+          const entry = poseEntryFor(pose.entries, slot, index, legs, NO_EYE_COUNT);
           for (const part of parts) {
             const name = frameNameFor(part, entry);
             if (Object.hasOwn(part.frames, name) && lacksLayer(part.frames[name])) found.add(`marks:${part.id}:${name}`);
@@ -629,10 +642,10 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
 /**
  * Problems a reader can see without composing: attach points (a generated torso needs its family's points and its wing
  * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
- * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
- * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
- * but not all eleven), species (a key that is a torso type, a ramp the palette lacks; its iris is `<key>-iris` when present, else `iris<n>`), poses and their leg-count entries,
- * contact points, fallbacks.
+ * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names and a head's or torso's
+ * eye-count names must be ones the composer can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
+ * but not all eleven), species (a key that is a torso type, a ramp the palette lacks; its iris is `<key>-iris` when present, else `iris<n>`), poses and their leg-count
+ * and eye-count entries, contact points, fallbacks.
  */
 function structureProblems(catalogue) {
   const problems = [];
@@ -657,10 +670,14 @@ function structureProblems(catalogue) {
     const frames = Object.keys(part.frames);
     if (!MARK_SLOTS.includes(part.slot) && frames.some((name) => part.frames[name].layers !== undefined)) problems.push(`part ${part.id}: layers on a slot that takes no marks`);
     for (const name of frames) problems.push(...layerProblems(`part ${part.id} frame ${name}`, part.frames[name]));
-    if (part.slot === 'torso') {
+    if (part.slot === 'torso' || part.slot === 'head') {
       for (const name of frames) {
         for (const point of Object.keys(part.frames[name].attach)) {
-          if (!/_\d+$/.test(point) || LEG_COUNT_POINTS.has(point)) continue;
+          if (EYE_COUNT_NAME.test(point)) {
+            if (!EYE_COUNT_POINTS.has(point)) problems.push(`part ${part.id} frame ${name}: attach point ${point} is for an eye count that never uses it`);
+            continue;
+          }
+          if (part.slot !== 'torso' || !/_\d+$/.test(point) || LEG_COUNT_POINTS.has(point)) continue;
           if (/^(far|near)\d+_\d+$/.test(point)) problems.push(`part ${part.id} frame ${name}: attach point ${point} is for a leg count that never uses it`);
           else problems.push(`part ${part.id} frame ${name}: attach point ${point} is never used: only far<i>_<n> and near<i>_<n> take a leg count`);
         }
@@ -668,7 +685,7 @@ function structureProblems(catalogue) {
     }
     // A head needs the eye points its family hangs from a head (EYES_BY_FAMILY; all eight for a family not listed there),
     // and the eyeless head none: it carries two pits on eye0 and eye1 where its family has eye points.
-    // Only the plain leg points are required: they are the fallback.
+    // Only the plain leg and eye points are required: they are the fallback.
     // A species torso and head need only the points the species uses: head, tail when it has one, its legs; its eyes.
     const species = isSpeciesPart(catalogue, part) ? catalogue.species.get(part.kind) : undefined;
     const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}/${part.kind}`) ? ['feature'] : [];
@@ -698,6 +715,8 @@ function structureProblems(catalogue) {
     if (missing.length > 0) problems.push(`scaffold ${scaffold.id}: missing pose ${missing.join(', ')}`);
     for (const [poseId, pose] of Object.entries(scaffold.poses)) {
       for (const e of pose.entries) {
+        // Only an eyes entry carries an eye count (the parser's rule).
+        if (e.eyes !== undefined && e.index >= eyesDrawn(e.eyes)) problems.push(`scaffold ${scaffold.id} pose ${poseId}: entry eyes ${e.index} eyes=${e.eyes} is for an eye that count never draws`);
         if (e.legs === undefined || (e.slot !== 'farLimbs' && e.slot !== 'nearLimbs') || e.index < sideCount(e.slot, e.legs)) continue;
         problems.push(`scaffold ${scaffold.id} pose ${poseId}: entry ${e.slot} ${e.index} legs=${e.legs} is for a leg that count never draws`);
       }
@@ -710,9 +729,9 @@ function structureProblems(catalogue) {
   return problems;
 }
 
-/** The frame a part shows in a pose, chosen by the composer's own rule (poseEntryFor, frameNameFor). */
+/** The frame a part of a slot other than `eyes` shows in a pose, chosen by the composer's own rule (poseEntryFor, frameNameFor). */
 function frameShown(scaffold, poseId, slot, index, legs, part) {
-  return frameNameFor(part, poseEntryFor(scaffold.poses[poseId].entries, slot, index, legs));
+  return frameNameFor(part, poseEntryFor(scaffold.poses[poseId].entries, slot, index, legs, NO_EYE_COUNT));
 }
 
 /** Where part k of a recipe lands: the canvas position of its frame's pixel 0,0, read from its 'x' and 'y' coded pictures. */
@@ -943,11 +962,26 @@ export function checkPack(text, options = {}) {
 
     // The leg counts this scaffold draws differently: each a legs= entry of one of its poses or a leg-count attach name
     // on one of its torsos is written for.
+    // The eye counts it draws differently, likewise: each an eyes= entry of one of its poses, or an eye-count attach name
+    // on one of its torsos or on a head of its family and tier (a species' own head aside), is written for.
     const legCounts = new Set();
-    for (const pose of Object.values(scaffold.poses)) for (const e of pose.entries) if (e.legs !== undefined) legCounts.add(e.legs);
+    const eyeCounts = new Set();
+    for (const pose of Object.values(scaffold.poses)) {
+      for (const e of pose.entries) {
+        if (e.legs !== undefined) legCounts.add(e.legs);
+        if (e.eyes !== undefined) eyeCounts.add(e.eyes);
+      }
+    }
     for (const part of catalogue.parts.values()) {
-      if (part.family !== scaffold.family || part.slot !== 'torso' || part.kind !== torsoKind || part.tier !== scaffold.tier) continue;
-      for (const frame of Object.values(part.frames)) for (const point of Object.keys(frame.attach)) if (LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
+      if (part.family !== scaffold.family || part.tier !== scaffold.tier) continue;
+      const torso = part.slot === 'torso' && part.kind === torsoKind;
+      if (!torso && (part.slot !== 'head' || isSpeciesPart(catalogue, part))) continue;
+      for (const frame of Object.values(part.frames)) {
+        for (const point of Object.keys(frame.attach)) {
+          if (torso && LEG_COUNT_POINTS.has(point)) legCounts.add(LEG_COUNT_POINTS.get(point));
+          if (EYE_COUNT_POINTS.has(point)) eyeCounts.add(EYE_COUNT_POINTS.get(point));
+        }
+      }
     }
 
     /** The recipe the neck join reads its marking and shift from, at a limbs gene: the first state's (set below). */
@@ -976,7 +1010,13 @@ export function checkPack(text, options = {}) {
       const limbGenes = [...limbBy.values()];
       const fullLimbs = limbBy.get(Math.max(...limbBy.keys()));
       const noLimbs = limbBy.get(Math.min(...limbBy.keys()));
-      const eyeGenes = [...firstGenes('eyes', EYE_COUNTS.length, 'eyes').values()];
+      const eyeBy = firstGenes('eyes', EYE_COUNTS.length, 'eyes');
+      const eyeGenes = [...eyeBy.values()];
+      /**
+       * The eyes genes a creature is drawn at wherever its eyes can meet a part the eye-count sweep below does not vary:
+       * the full count (every plain eye point), then each other eye count in eyeCounts this body draws.
+       */
+      const eyeSet = [FULL_EYES, ...[...eyeBy].filter(([count, gene]) => eyeCounts.has(count) && count !== bodyWith({ eyes: FULL_EYES }).eyes).map(([, gene]) => gene)];
       /** The limbs gene of each leg count in legCounts this body draws, beside `first`. */
       const countGenes = (first) => [first, ...[...legCounts].sort((x, y) => x - y).map((n) => LIMB_COUNTS.indexOf(n)).filter((g) => g !== first && bodyWith({ limbs: g }).limbs === LIMB_COUNTS[g])];
 
@@ -1020,7 +1060,9 @@ export function checkPack(text, options = {}) {
       // Marks, skins, back parts and head features: for each head kind with the last tail and eight eyes, one creature at
       // the most legs for each pattern gene but plain and one with translucent skin (on the base skin otherwise), and one
       // for each skin gene that has a back part (plain) at the most legs and again at each of those leg counts (a legs=
-      // entry can move or swap the back part). A patterned or translucent creature is composed for its gaps only: marks
+      // entry can move or swap the back part), and each of those again at each eye count in eyeSet (eyes laid out for
+      // their count are drawn over the head and its features, and over the back part; and this is where such an eye
+      // count meets a leg count drawn differently). A patterned or translucent creature is composed for its gaps only: marks
       // and skin never change which pixels are drawn, so its edge, connectivity and hidden parts are those of the same
       // parts unpainted. A later state's added parts hang from the torso, away from the head, so it takes the first head
       // kind only.
@@ -1031,7 +1073,7 @@ export function checkPack(text, options = {}) {
         }
         const translucent = sample(head, lastTail, fullLimbs, FULL_EYES, 0, TRANSLUCENT_SKIN);
         if (translucent !== undefined) gapsOnly(translucent.recipe);
-        for (const skin of BACK_SKINS) for (const limbs of countGenes(fullLimbs)) checkSample(head, lastTail, limbs, FULL_EYES, 0, skin);
+        for (const skin of BACK_SKINS) for (const limbs of countGenes(fullLimbs)) for (const eyes of eyeSet) checkSample(head, lastTail, limbs, eyes, 0, skin);
       }
 
       // Shift sweep, with the fewest legs (more parts only add pixels, so none is the strictest case), then again at each
@@ -1057,21 +1099,24 @@ export function checkPack(text, options = {}) {
       // a copy of its recipe with that slot's part id replaced by the variant's. The swapped part keeps its mark: a mark is
       // keyed by slot and index, never by part id, so it is the mark buildRecipe gives a creature that picked that variant.
       // A head or tail variant also at its nine shifts. Limb variants at the most legs, the others with the fewest; each
-      // also at every leg count in legCounts, since those draw the creature differently.
+      // also at every leg count in legCounts, since those draw the creature differently; a head or torso variant (the
+      // parts that carry eye points) at each of those also at every eye count in eyeSet.
       for (const group of variantGroups) {
         if (group.family !== scaffold.family || group.tier !== scaffold.tier) continue;
         if (group.slot === 'torso' && scaffold.id !== `${group.family}/${group.kind}/${group.tier}`) continue;
         const head = group.slot === 'head' ? Number(group.kind.slice(1)) : someHeads[0];
         const tail = group.slot === 'tail' ? Number(group.kind.slice(1)) : lastTail;
         for (const limbs of countGenes(group.slot === 'farLimbs' || group.slot === 'nearLimbs' ? fullLimbs : noLimbs)) {
-          const one = sample(head, tail, limbs, FULL_EYES, FORCED_PATTERN);
-          if (one === undefined) continue;
-          const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
-          for (const id of group.ids) {
-            const parts = one.recipe.parts.map((p) => (p.slot === group.slot && group.ids.includes(p.partId) ? { ...p, partId: id } : p));
-            if (!parts.some((p) => p.partId === id)) continue; // the creature does not reach this type (e.g. a head kind beyond the gene range)
-            variants++;
-            check(one.genome, { ...one.recipe, parts }, shiftPairs, id);
+          for (const eyes of group.slot === 'head' || group.slot === 'torso' ? eyeSet : [FULL_EYES]) {
+            const one = sample(head, tail, limbs, eyes, FORCED_PATTERN);
+            if (one === undefined) continue;
+            const shiftPairs = group.slot === 'head' ? HEAD_SHIFTS : group.slot === 'tail' ? TAIL_SHIFTS : [];
+            for (const id of group.ids) {
+              const parts = one.recipe.parts.map((p) => (p.slot === group.slot && group.ids.includes(p.partId) ? { ...p, partId: id } : p));
+              if (!parts.some((p) => p.partId === id)) continue; // the creature does not reach this type (e.g. a head kind beyond the gene range)
+              variants++;
+              check(one.genome, { ...one.recipe, parts }, shiftPairs, id);
+            }
           }
         }
       }

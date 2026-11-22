@@ -39,10 +39,12 @@ function organellesInIris(pixels: Uint8Array): Uint8Array {
  * The attach point a part hangs from, and whether that point belongs to the head (otherwise the torso).
  * A part with `at` hangs from that point on that host, whatever its slot. A wing at index 0 hangs from `wing`, at index 1
  * from `wing1`; a creature has at most two wing pairs, so any other wing index has no point (no names: an `index:` gap).
+ * The names are tried in order: a leg's point for this leg count (`far0_6`) before the plain one, and an eye's point for
+ * this eye count (`eye0_4`; `eye0_0` for a pit) before the plain one, on whichever host the eye hangs from.
  */
-function attachFor(rp: RecipePart, legs: number): { names: string[]; onHead: boolean } {
-  if (rp.at !== undefined) return { names: [rp.at.point], onHead: rp.at.host === 'head' };
+function attachFor(rp: RecipePart, legs: number, eyes: number): { names: string[]; onHead: boolean } {
   const { slot, index } = rp;
+  if (rp.at !== undefined) return { names: slot === 'eyes' ? [`${rp.at.point}_${eyes}`, rp.at.point] : [rp.at.point], onHead: rp.at.host === 'head' };
   switch (slot) {
     case 'farWings':
     case 'nearWings': return { names: index === 0 ? ['wing'] : index === 1 ? ['wing1'] : [], onHead: false };
@@ -50,15 +52,20 @@ function attachFor(rp: RecipePart, legs: number): { names: string[]; onHead: boo
     case 'farLimbs': return { names: [`far${index}_${legs}`, `far${index}`], onHead: false };
     case 'nearLimbs': return { names: [`near${index}_${legs}`, `near${index}`], onHead: false };
     case 'headFeature': return { names: ['feature'], onHead: true };
-    case 'eyes': return { names: [`eye${index}`], onHead: true };
+    case 'eyes': return { names: [`eye${index}_${eyes}`, `eye${index}`], onHead: true };
     default: return { names: [slot], onHead: false }; // head, tail, back, glow
   }
 }
 
-/** The pose entry a part takes: the entry for this leg count wins; else the one with no leg count; else none. */
-export function poseEntryFor(entries: readonly PoseEntry[], slot: SlotName, index: number, legs: number): PoseEntry | undefined {
-  return entries.find((e) => e.slot === slot && e.index === index && e.legs === legs)
-    ?? entries.find((e) => e.slot === slot && e.index === index && e.legs === undefined);
+/**
+ * The pose entry a part takes: the entry for this eye count wins (only an eyes entry carries one); else the one for this
+ * leg count; else the one with neither; else none. An entry for another eye count or leg count never applies.
+ */
+export function poseEntryFor(entries: readonly PoseEntry[], slot: SlotName, index: number, legs: number, eyes: number): PoseEntry | undefined {
+  const mine = entries.filter((e) => e.slot === slot && e.index === index);
+  return mine.find((e) => e.eyes === eyes)
+    ?? mine.find((e) => e.eyes === undefined && e.legs === legs)
+    ?? mine.find((e) => e.eyes === undefined && e.legs === undefined);
 }
 
 /** The frame a part shows for its pose entry: the entry's frame when the part has it, else `rest` (also when there is no entry). */
@@ -110,7 +117,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     const part = catalogue.parts.get(rp.partId);
     if (part === undefined) return skipped(`missing:${rp.partId}`);
 
-    const entry = poseEntryFor(entries, rp.slot, rp.index, recipe.legs);
+    const entry = poseEntryFor(entries, rp.slot, rp.index, recipe.legs, recipe.eyes);
     const wanted = entry === undefined ? 'rest' : entry.frame;
     const own: string[] = [];
     // A frame the part lacks is a gap; the part then shows rest, or is skipped when it has no rest frame either.
@@ -123,7 +130,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
 
     if (rp.slot === 'torso') return { frame, frameName, x: scaffold.origin[0] + dx, y: scaffold.origin[1] + dy, gaps: own };
 
-    const { names, onHead } = attachFor(rp, recipe.legs);
+    const { names, onHead } = attachFor(rp, recipe.legs, recipe.eyes);
     // A slot index the composer has no attach point for (a wing index other than 0 and 1): never drawn, an error gap.
     if (names.length === 0) {
       own.push(`index:${rp.slot}:${rp.index}`);
