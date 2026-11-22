@@ -75,7 +75,7 @@ export interface PackReport {
   failures: string[];
   /** Neck join warnings, one per head and torso pairing that breaks the rule. */
   neck: NeckJoin[];
-  /** Information about the pack that is not a fault, each printed as an `info:` line (a palette with no iris ramps, or without some of the eleven). */
+  /** Information about the pack that is not a fault, each printed as an `info:` line (a palette with no iris ramps). */
   info: string[];
 }
 export const REQUIRED_POSES: readonly string[];
@@ -87,7 +87,9 @@ export const TORSO_POINTS_BY_FAMILY: Readonly<Record<string, readonly string[]>>
 export function gapIsInfo(gap: string): boolean;
 /** For a picture assembled from the label catalogue (pixel value = slot label); null when it is one 4-connected region. */
 export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array }): string[] | null;
-export function checkPack(text: string): PackReport;
+/** Options of checkPack. `sample`: the generated scaffolds (by id) whose creatures are sampled; every one when absent. Whole-pack checks run either way. */
+export interface CheckOptions { sample?: (scaffoldId: string) => boolean }
+export function checkPack(text: string, options?: CheckOptions): PackReport;
 /** How numberedCopy draws a part: by its slot label, not at all, as it is, or each pixel as its frame column or row plus one. */
 export type NumberedMode = 'label' | 'blank' | 'real' | 'x' | 'y';
 /** A copy of the recipe and catalogue with part k drawn as `mode(k)` says; skin null unless some part is drawn 'real'. */

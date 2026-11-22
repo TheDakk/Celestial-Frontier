@@ -26,7 +26,7 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, THEME_NAMES } = await import('@cf/art-format');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES } = await import('@cf/art-format');
 const { buildRecipe, buildSpeciesRecipe, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
@@ -630,7 +630,8 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
  * Problems a reader can see without composing: attach points (a generated torso needs its family's points and its wing
  * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
- * can ask for; a species torso and head need only the points the species uses), layers, species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
+ * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
+ * but not all eleven), species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
  * contact points, fallbacks.
  */
 function structureProblems(catalogue) {
@@ -679,6 +680,11 @@ function structureProblems(catalogue) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));
       if (missing.length > 0) problems.push(`part ${part.id} frame ${name}: missing attach point ${missing.join(', ')}`);
     }
+  }
+  // A palette with none of the iris ramps is the old format (information, see checkPack). With some, every one of the
+  // eleven must be there: a missing one would draw every creature of its theme with a black iris.
+  if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+    for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
   for (const species of catalogue.species.values()) {
     if (GENERATED_TORSOS.has(`${species.family}/${species.key}`)) problems.push(`species ${species.key}: key is a torso type of ${species.family}`);
@@ -787,8 +793,15 @@ export function neckJoins(catalogue, scaffold, torsoId, headIds, legCounts, reci
  * creatures of every scaffold (variant:, marks:, role: and a missing back part, head feature, wing, sails, body feature
  * or flipper are information, see gapIsInfo), creatures touching the canvas edge, creatures
  * whose picture is not one 4-connected region (outline ignored), and structural problems.
+ *
+ * `options.sample`, when given, chooses the generated scaffolds whose creatures are sampled (by scaffold id); the others
+ * are not composed (no gaps, edge, detachment, hidden parts, marks: x0 lines or neck joins of theirs). Everything about
+ * the pack as a whole is checked as without it: the summary, structure, names, palette, fallbacks, unreachable parts and
+ * scaffolds, and every named species. Without it every scaffold is sampled, as the command line does. It lets a test
+ * check a large pack in parts that together sample every scaffold once.
  */
-export function checkPack(text) {
+export function checkPack(text, options = {}) {
+  const sampled = options.sample ?? (() => true);
   let catalogue;
   try {
     catalogue = parseCatalogueText(text);
@@ -916,6 +929,7 @@ export function checkPack(text) {
       }
       continue;
     }
+    if (!sampled(scaffold.id)) continue;
     const torsoKind = scaffold.id.split('/')[1];
     const heads = kindsFor(catalogue, scaffold, 'head', 'h', 10);
     const someHeads = heads.length > 0 ? heads : [0];
@@ -1076,13 +1090,9 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const info = [];
-  // A missing iris ramp is information: the eyes of its theme show no iris colour (an older pack has eight, or none).
-  const noIris = IRIS_RAMPS.filter((name) => !Object.hasOwn(catalogue.palette.ramps, name));
-  if (noIris.length === IRIS_RAMPS.length) {
+  // A palette with no iris ramp is the old format: information. With some, every one must be there (structureProblems).
+  if (!IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
     info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
-  } else if (noIris.length > 0) {
-    const themes = noIris.map((name) => THEME_NAMES[Number(name.slice('iris'.length))]);
-    info.push(`palette has no iris ramp ${noIris.join(', ')} (one per theme: ${themes.join(', ')}): those themes' eyes show no iris colour`);
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
   return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };
