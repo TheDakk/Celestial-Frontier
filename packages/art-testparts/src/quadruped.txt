@@ -29,11 +29,12 @@
 # tail (2,3), back (w/2,-1), a serpent's eye0 (w-4,2), an insect's legs at row h). fish fusiform 30x12, shark 34x12,
 # flat 32x8, angler 26x14, sturgeon 36x10; crustacean crab 30x10, lobster 34x9; insect beetle 28x10, generic 26x8,
 # mantis 30x7; tentacled octopus 24x14, squid 30x10, cuttlefish 28x11; serpent snake 40x6, viper 36x8; gelatinous body
-# 24x16; radial anemone 20x14, urchin 18x18, coral 22x16, cucumber 30x8. Heads h0-h9 (fish, crustacean, insect):
-# (9 + n mod 4) x 8, every eye point and a feature point. Tails t2 t3 t5 t6 (fish, crustacean, tentacled): (6 + n) x 6.
-# Insect legs: the shared leg, 2x6, near legs 2 columns ahead of far ones. Fish: tusks and horns for every head as the
-# four-legged h0 ones, shell and crystals on the back of fusiform and sturgeon. Back parts only on the four-legged
-# torso types: a missing one is information.
+# 24x16 (three 2x2 organelles in accent values 6 and 7, which the composer shows in the iris ramp); radial anemone
+# 20x14, urchin 18x18, coral 22x16, cucumber 30x8. Heads h0-h9 (fish, crustacean, insect): (9 + n mod 4) x 8, every eye
+# point and a feature point. Tails t2 t3 t5 t6 (fish, crustacean, tentacled): (6 + n) x 6. Insect legs: the shared leg,
+# 2x6, near legs 2 columns ahead of far ones. Fish: tusks and horns for every head as the four-legged h0 ones, shell and
+# crystals on the back of fusiform and sturgeon. Back parts only on the four-legged torso types: a missing one is
+# information.
 palette
 colour 0 101010
 colour 1 5a4632
@@ -6973,15 +6974,15 @@ frame rest anchor=0,0 attach=back:12,-1
 333333333333333333333333
 333333333333333333333333
 333333333333333333333333
+333337733333333333333333
+333336633333333333333333
 333333333333333333333333
-333333333333333333333333
-333333333333333333333333
-333333333333333333333333
-333333333333333333333333
+333333333333333773333333
+333333333333333663333333
 222222222222222222222222
 222222222222222222222222
-222222222222222222222222
-222222222222222222222222
+222222222772222222222222
+222222222662222222222222
 222222222222222222222222
 222222222222222222222222
 222222222222222222222222

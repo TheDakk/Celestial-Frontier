@@ -1,7 +1,8 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { MARK_SLOTS, PATTERN_NAMES, type Catalogue, type Part, type Scaffold } from '@cf/art-format';
-import { __buildRecipeAtVersionForTests, buildRecipe, GENE_LENGTHS, identityKey, RENDERER_VERSION, resolveAnatomy, type Recipe } from '@cf/art-recipe';
+import { __buildRecipeAtVersionForTests, bodyOf, buildRecipe, GENE_LENGTHS, identityKey, RENDERER_VERSION, type Recipe } from '@cf/art-recipe';
 import { compose, PATTERN_TABLE, toAscii } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { mulberry32 } from '@cf/domain-rand';
@@ -15,16 +16,28 @@ const catalogue = testCatalogue();
 const run = (entry: Entry, cat: Catalogue = catalogue) => compose(buildRecipe(entry.genome, [], cat), entry.pose, cat);
 const isReal = (entry: Entry) => !entry.gaps.some((gap) => gap.startsWith('fallback:'));
 const byLabel = (label: string): Entry[] => fixture.entries.filter((e) => e.label === label);
+/** The entries recorded before body routing: their label, genome and pose are kept, in order. */
+const RECORDED = 621;
+/** The specs appended for body routing (tools/record-art-hashes.mjs), each at rest and strike. */
+const APPENDED = 20;
 
 describe('art golden hashes', () => {
   it('records the current renderer version, the test catalogue and the expected entry count', () => {
     expect(fixture.rendererVersion).toBe(RENDERER_VERSION);
     expect(fixture.catalogue).toBe('art-testparts');
-    expect(fixture.entries).toHaveLength(621);
+    expect(fixture.entries).toHaveLength(RECORDED + 2 * APPENDED);
   });
 
-  it('has at least 150 entries that compose a real quadruped', () => {
-    expect(fixture.entries.filter(isReal).length).toBeGreaterThanOrEqual(150);
+  it('the first 621 entries keep their label, genome and pose', () => {
+    // The SHA-256 of [label, genome, pose] of each of the 621 entries recorded before body routing, taken from that
+    // fixture: the re-record changed what each draws, never which creature it is.
+    const kept = JSON.stringify(fixture.entries.slice(0, RECORDED).map((e) => [e.label, e.genome, e.pose]));
+    expect(createHash('sha256').update(kept).digest('hex')).toBe('ed9b39563c39d5ab55726959119ed70b025f33ad5726ffb050298e269c7ee7b8');
+    expect(fixture.entries.slice(RECORDED).every((e) => e.label.startsWith('routed '))).toBe(true);
+  });
+
+  it('has at least 300 entries that compose a real creature', () => {
+    expect(fixture.entries.filter(isReal).length).toBeGreaterThanOrEqual(300);
   });
 
   it('records both real Guardians at the guardian tier', () => {
@@ -145,14 +158,23 @@ describe('art golden format 2', () => {
   const real = fixture.entries.filter(isReal);
 
   it('the recorded real entries cover every pattern gene, every skin gene, 2, 3, 4, 6 and 8 legs, and the tusked and horned torsos', () => {
-    const anatomies = real.map((e) => resolveAnatomy(e.genome));
-    expect(real).toHaveLength(173);
-    expect([...new Set(anatomies.map((a) => a.pattern))].sort()).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
+    const bodies = real.map((e) => bodyOf(e.genome));
+    expect(real).toHaveLength(322);
+    expect([...new Set(bodies.map((b) => b.pattern))].sort()).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
     expect(PATTERN_NAMES).toHaveLength(8);
-    expect([...new Set(anatomies.map((a) => a.skin))].sort()).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
-    expect([...new Set(anatomies.map((a) => a.limbs))].filter((n) => n > 0).sort()).toEqual([2, 3, 4, 6, 8]);
-    const torsos = new Set(anatomies.map((a) => a.torso));
+    expect([...new Set(bodies.map((b) => b.skin))].sort()).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+    expect([...new Set(bodies.map((b) => b.limbs))].filter((n) => n > 0).sort()).toEqual([2, 3, 4, 6, 8]);
+    const torsos = new Set(bodies.map((b) => b.torso));
     expect(torsos.has('tusked') && torsos.has('horned')).toBe(true);
+  });
+
+  it('the recorded real entries cover every quadruped torso type, and every other family the routed builder draws', () => {
+    const scaffolds = new Set(real.map((e) => buildRecipe(e.genome, [], catalogue).scaffoldId.split('/').slice(0, 2).join('/')));
+    expect([...scaffolds].filter((id) => id.startsWith('quadruped/')).sort()).toEqual([
+      'quadruped/crystalline', 'quadruped/fourwinged', 'quadruped/horned', 'quadruped/membranous', 'quadruped/shelled',
+      'quadruped/spindly', 'quadruped/squat', 'quadruped/stilt', 'quadruped/sturdy', 'quadruped/tusked',
+    ]);
+    expect([...new Set([...scaffolds].map((id) => id.split('/')[0]))].sort()).toEqual(['crustacean', 'fish', 'gelatinous', 'insect', 'quadruped', 'radial', 'serpent', 'tentacled']);
   });
 
   it('removing every layer from the catalogue changes at least one recorded hash and adds a marks: gap', () => {
@@ -171,7 +193,7 @@ describe('art golden format 2', () => {
   });
 
   it('the recorded eye-spotted pictures pin the eye-spot centre: any other centre value changes a recorded hash', () => {
-    const eyeSpotted = real.filter((e) => resolveAnatomy(e.genome).pattern === 7);
+    const eyeSpotted = real.filter((e) => bodyOf(e.genome).pattern === 7);
     expect(eyeSpotted.length).toBeGreaterThan(0);
     const rule = PATTERN_TABLE['eye-spotted'] as { centre: number };
     const centre = rule.centre;
@@ -192,8 +214,10 @@ describe('art golden format 2', () => {
   it('a recorded real picture holds an iris value 17-20, and none holds 5-8 where an eye part was stacked', () => {
     const eyeFrame = catalogue.parts.get(EYE)!.frames['rest']!;
     expect([...eyeFrame.pixels].some((v) => v >= 5 && v <= 8)).toBe(true);
-    // The eye part's iris pixels moved to 13 (the eye value): the pixels that change are exactly where an iris landed.
-    const noIris = editParts(catalogue, (p) => (p.id !== EYE ? p : { ...p, frames: { rest: { ...eyeFrame, pixels: eyeFrame.pixels.map((v) => (v >= 5 && v <= 8 ? 13 : v)) } } }));
+    // Every eye-slot part's iris pixels (an eye's or a pit's, any family) and the jelly's organelles moved to 13 (the eye
+    // value): the pixels that change are exactly where an iris landed.
+    const irisless = (p: Part): Part => ({ ...p, frames: Object.fromEntries(Object.entries(p.frames).map(([n, f]) => [n, { ...f, pixels: f.pixels.map((v) => (v >= 5 && v <= 8 ? 13 : v)) }])) });
+    const noIris = editParts(catalogue, (p) => (p.slot === 'eyes' || (p.family === 'gelatinous' && p.slot === 'torso') ? irisless(p) : p));
     let withIris = 0;
     for (const entry of real) {
       const recipe = buildRecipe(entry.genome, [], catalogue);
@@ -205,9 +229,9 @@ describe('art golden format 2', () => {
         if (!(shown[i]! >= 17 && shown[i]! <= 20)) expect.fail(`${entry.label} ${entry.pose}: pixel ${i} is ${shown[i]} where the eye's iris landed`);
       }
       if (shown.some((v) => v >= 17 && v <= 20)) withIris++;
-      else expect(recipe.parts.some((p) => p.slot === 'eyes'), entry.label).toBe(false);
+      else expect(recipe.parts.some((p) => p.slot === 'eyes') || recipe.family === 'gelatinous', `${entry.label}: an eye or organelle with no iris`).toBe(false);
     }
-    expect(withIris).toBeGreaterThan(100);
+    expect(withIris).toBeGreaterThan(200);
   });
 
   it('the recorded real pictures show back parts, role legs, marks and the stance entries, and each vanishes under a planted fault', () => {
@@ -248,9 +272,10 @@ describe('art golden format 2', () => {
         counts.patterned++;
         expect(recipe.parts.some((p) => p.mark !== undefined && MARK_SLOTS.includes(p.slot))).toBe(true);
         const plain = { ...recipe, marking: { ...recipe.marking, pattern: 0 } };
-        // The marks are in the recorded picture; planted fault: with no layers the picture is the plain one.
+        // The marks are in the recorded picture; planted fault: with no layers the picture is the plain one. The skin is
+        // held back on both sides: a hand-drawn skin layer (translucent) goes with the layers too.
         if (compose(plain, entry.pose, catalogue).hash !== now) counts.marked++;
-        expect(compose(recipe, entry.pose, bare).hash, entry.label).toBe(compose(plain, entry.pose, catalogue).hash);
+        expect(compose({ ...recipe, skin: null }, entry.pose, bare).hash, entry.label).toBe(compose({ ...plain, skin: null }, entry.pose, catalogue).hash);
       }
       if (run(entry, noStance).hash !== now) counts.stance++;
     }
@@ -264,3 +289,70 @@ describe('art golden format 2', () => {
     expect(counts.stance).toBeGreaterThan(0);
   });
 });
+
+describe('art golden: the body routing entries', () => {
+  const appended = fixture.entries.slice(RECORDED);
+  const ids = (e: Entry): string[] => buildRecipe(e.genome, [], catalogue).parts.map((p) => p.partId);
+  const without = (drop: (id: string) => boolean): Catalogue => ({ ...catalogue, parts: new Map([...catalogue.parts].filter(([id]) => !drop(id))) });
+  /** What each appended spec shows: the part ids the design adds, by label (each at medium, v0). */
+  const SHOWS: Readonly<Record<string, readonly string[]>> = {
+    'routed membranous land': ['quadruped/farWings/wing-membranous', 'quadruped/nearWings/wing-membranous'],
+    'routed membranous airborne': ['quadruped/farWings/wing-membranous', 'quadruped/nearWings/wing-membranous'],
+    'routed membranous aquatic': ['quadruped/nearLimbs/flipper-membranous', 'quadruped/bodyFeature/fins-membranous', 'quadruped/nearWings/wing-membranous'],
+    'routed fourwinged aquatic': ['quadruped/nearLimbs/flipper', 'quadruped/bodyFeature/fins-fourwinged', 'quadruped/nearWings/wing-fourwinged', 'quadruped/nearWings/hindwing-fourwinged'],
+    'routed sturdy airborne (sails)': ['quadruped/nearWings/sails'],
+    'routed shelled land': ['quadruped/bodyFeature/shell-shelled', 'quadruped/torso/shelled'],
+    'routed crystalline land': ['quadruped/bodyFeature/crystals-crystalline', 'quadruped/torso/crystalline'],
+    'routed spindly land': ['quadruped/torso/spindly'],
+    'routed fusiform fish keeping its shell': ['fish/bodyFeature/shell-fusiform', 'fish/torso/fusiform'],
+    'routed fusiform fish keeping its crystals': ['fish/bodyFeature/crystals-fusiform'],
+    'routed fusiform fish keeping its tusks': ['fish/headFeature/tusks-h0'],
+    'routed fusiform fish keeping its horn': ['fish/headFeature/horns-h0'],
+    'routed sturdy with tail 0 (t0)': ['quadruped/tail/t0'],
+    'routed sturdy with eyes gene 5 (pits)': ['quadruped/eyes/pit'],
+    'routed sturdy with the eyeless head (pits)': ['quadruped/eyes/pit'],
+    'routed translucent sturdy': [],
+    'routed luminous crystalline': ['quadruped/bodyFeature/crystals-crystalline'],
+    'routed tusked with head 8 (hornlet)': ['quadruped/headFeature/tusks-h8', 'quadruped/headFeature/hornlet-h8'],
+    'routed sturdy with head 3 (horn)': ['quadruped/headFeature/horns-h3'],
+    'routed sturdy with trait 11 (horn)': ['quadruped/headFeature/horns-h0'],
+  };
+
+  it('the appended entries show wings, sails, flippers, fins, a shell, crystals, a kept tusk and horn, t0, pits, a hornlet, a translucent layer, and each vanishes under a planted fault', () => {
+    expect(appended).toHaveLength(2 * APPENDED);
+    expect([...new Set(appended.map((e) => e.label))]).toEqual(Object.keys(SHOWS));
+    for (const e of appended) {
+      expect(e.pose === 'rest' || e.pose === 'strike').toBe(true);
+      expect(isReal(e), e.label).toBe(true);
+      // No error gap: every part these creatures ask for is in the placeholder pack (a missing back part is information).
+      expect(e.gaps.filter((g) => !g.startsWith('variant:') && !/^missing:[^/]+\/back\//.test(g)), e.label).toEqual([]);
+      const asked = ids(e);
+      for (const part of SHOWS[e.label]!) {
+        const id = `${part}/medium/v0`;
+        expect(asked, `${e.label} ${part}`).toContain(id);
+        // Planted fault: the part taken out of a catalogue copy changes the recorded picture.
+        expect(run(e, without((x) => x === id)).hash, `${e.label} ${e.pose} without ${part}`).not.toBe(e.hash);
+      }
+    }
+    // The translucent sturdy: its torso's translucent layer is drawn; without it the picture changes and a skin: gap appears.
+    const torso = 'quadruped/torso/sturdy/medium/v0';
+    const noLayer = editParts(catalogue, (p) => (p.id !== torso ? p : { ...p, frames: Object.fromEntries(Object.entries(p.frames).map(([n, f]) => {
+      const { translucent: _drop, ...layers } = f.layers ?? {};
+      return [n, { ...f, layers }];
+    })) }));
+    for (const e of byLabel('routed translucent sturdy')) {
+      expect(buildRecipe(e.genome, [], catalogue).opacity).toBe(66);
+      expect(e.gaps.some((g) => g.startsWith('skin:'))).toBe(false);
+      const out = run(e, noLayer);
+      expect(out.hash, e.pose).not.toBe(e.hash);
+      expect(out.gaps).toContain(`skin:${torso}:rest`);
+    }
+    // The luminous crystalline body carries the strong rim (75), the plain one none; the picture itself is the same.
+    expect(byLabel('routed luminous crystalline').map((e) => buildRecipe(e.genome, [], catalogue).rim)).toEqual([75, 75]);
+    expect(byLabel('routed crystalline land').map((e) => buildRecipe(e.genome, [], catalogue).rim)).toEqual([0, 0]);
+    // The airborne membranous body has two legs; in water none.
+    expect(byLabel('routed membranous airborne').map((e) => buildRecipe(e.genome, [], catalogue).legs)).toEqual([2, 2]);
+    expect(byLabel('routed membranous aquatic').map((e) => buildRecipe(e.genome, [], catalogue).legs)).toEqual([0, 0]);
+  });
+});
+

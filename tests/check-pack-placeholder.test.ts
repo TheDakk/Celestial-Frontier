@@ -57,7 +57,7 @@ describe('checkPack on the placeholder catalogue (the real result, pinned)', () 
   // A hang guard only, as testTimeout is: the whole placeholder check composes every routed body (about 16 s alone).
   beforeAll(() => { text = readFileSync(PLACEHOLDER, 'utf8'); r = checkPack(text); }, 60_000);
 
-  it('passes clean: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
+  it('the placeholder pack checks OK with no unreachable line: parses, sums up, has every attach point, pose and fallback, never touches the edge, nothing comes loose', () => {
     expect(r.parseError).toBeNull();
     expect(r.summary).toMatchObject({ parts: 288, scaffolds: 30, fallbacks: 44, colours: 60, ramps: 45, byTier: { medium: 255, small: 11, large: 11, guardian: 11 } });
     expect(r.structure).toEqual([]);

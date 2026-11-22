@@ -144,7 +144,7 @@ describe('routeBody and resolveBody', () => {
     expect([tier({ size: 0 }), tier({ size: undefined }), tier({ size: NaN })]).toEqual(['small', 'small', 'small']);
     expect([tier({ size: 1 }), tier({ size: 2 }), tier({ size: 3 }), tier({ size: 4 }), tier({ size: 5 })]).toEqual(['small', 'medium', 'medium', 'large', 'large']);
     expect([tier({ size: 0, apex: 12 }), tier({ size: 1, apex: 12 })]).toEqual(['guardian', 'guardian']);
-    // The size gene wraps and floors as every gene does (tierForSize's cases, moved here when it was deleted).
+    // The size gene wraps and floors as every gene does.
     expect([6, -1, 1.5, -0.5, Infinity, -Infinity].map((size) => tier({ size }))).toEqual(['small', 'large', 'small', 'large', 'small', 'small']);
   });
 
