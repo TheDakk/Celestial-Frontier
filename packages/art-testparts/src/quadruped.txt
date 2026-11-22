@@ -2,6 +2,8 @@
 # Quadruped parts: medium tier only, variant 0 only. Each head overlaps the torso's front by five columns and each tail
 # its back by five, so neither comes loose under any head or tail shift and any pose offset.
 # Fallbacks: every family at every tier. Pixel values: 1-4 body, 5-8 head accent, 9-12 torso underside, 13 eye, 14 eye highlight; the composer writes 17-20 (iris) from an eye part's 5-8.
+# Iris ramps iris0 to iris10: one per theme, in the theme order (fire, frost, storm, tide, stone, venom, void, sand, chem,
+# psionic, wild), each the theme colour shaded dark to light (colours 16-59).
 # Each head's top and bottom rows are drawn at shade 1, within one shade step of every torso pixel beside them (the neck rule).
 # The eye has an iris row (5-8) above its eye and highlight. The sturdy torso has near0_2 and far0_2, where a two-legged
 # creature stands; the sturdy scaffold spreads eight legs at rest (legs=8) and steps a two-legged creature forward on approach (legs=2).
@@ -27,6 +29,50 @@ colour 12 9999cc
 colour 13 101018
 colour 14 ffffff
 colour 15 80ffe0
+colour 16 723621
+colour 17 b25533
+colour 18 ff7a4a
+colour 19 ffbca4
+colour 20 406072
+colour 21 6495b2
+colour 22 8fd6ff
+colour 23 c7eaff
+colour 24 72642f
+colour 25 b29c4a
+colour 26 ffe06a
+colour 27 ffefb4
+colour 28 2a5d5a
+colour 29 42918c
+colour 30 5fd0c8
+colour 31 afe7e3
+colour 32 5a482f
+colour 33 8d704a
+colour 34 caa06a
+colour 35 e4cfb4
+colour 36 47642f
+colour 37 6f9c4a
+colour 38 9fe06a
+colour 39 cfefb4
+colour 40 513f72
+colour 41 7e62b2
+colour 42 b58cff
+colour 43 dac5ff
+colour 44 685a36
+colour 45 a28c54
+colour 46 e8c878
+colour 47 f3e3bb
+colour 48 567228
+colour 49 86b23f
+colour 50 c0ff5a
+colour 51 dfffac
+colour 52 724764
+colour 53 b26f9c
+colour 54 ff9fe0
+colour 55 ffcfef
+colour 56 475160
+colour 57 6f7f95
+colour 58 9fb6d6
+colour 59 cfdaea
 ramp c0 1 2 3 4
 ramp c0-under 1 2 3 4
 ramp c1 2 3 4 5
@@ -61,14 +107,17 @@ ramp c15 1 2 3 4
 ramp c15-under 1 2 3 4
 ramp c16 2 3 4 5
 ramp c16-under 2 3 4 5
-ramp iris0 5 6 7 8
-ramp iris1 6 7 8 9
-ramp iris2 7 8 9 10
-ramp iris3 8 9 10 11
-ramp iris4 9 10 11 12
-ramp iris5 3 4 5 6
-ramp iris6 11 12 13 14
-ramp iris7 12 13 14 15
+ramp iris0 16 17 18 19
+ramp iris1 20 21 22 23
+ramp iris2 24 25 26 27
+ramp iris3 28 29 30 31
+ramp iris4 32 33 34 35
+ramp iris5 36 37 38 39
+ramp iris6 40 41 42 43
+ramp iris7 44 45 46 47
+ramp iris8 48 49 50 51
+ramp iris9 52 53 54 55
+ramp iris10 56 57 58 59
 outline 0
 eye 13
 eyeHighlight 14

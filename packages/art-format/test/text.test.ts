@@ -509,14 +509,14 @@ describe('parseCatalogueText: species lines', () => {
     expect(thrown(LINE.replace('legs=4', 'legs=5'))).toBe("line 1: bad legs '5'");
     expect(thrown(LINE.replace('legs=4', 'legs=x'))).toBe("line 1: bad legs 'x'");
     expect(thrown(LINE.replace('eyes=2', 'eyes=3'))).toBe("line 1: bad eyes '3'");
-    expect(thrown(LINE.replace('iris=3', 'iris=8'))).toBe("line 1: bad iris '8'");
+    expect(thrown(LINE.replace('iris=3', 'iris=11'))).toBe("line 1: bad iris '11'");
     expect(thrown(LINE.replace('iris=3', 'iris=-1'))).toBe("line 1: bad iris '-1'");
     expect(thrown(LINE.replace('tail=1', 'tail=2'))).toBe("line 1: bad tail '2'");
     expect(thrown(LINE.replace('tail=1', 'tail=yes'))).toBe("line 1: bad tail 'yes'");
     // Every leg count, eye count and iris ramp number is accepted.
     for (const legs of [0, 2, 3, 4, 6, 8]) expect(thrown(LINE.replace('legs=4', `legs=${legs}`))).toBe('did not throw');
     for (const eyes of [0, 1, 2, 4, 6, 8]) expect(thrown(LINE.replace('eyes=2', `eyes=${eyes}`))).toBe('did not throw');
-    for (let iris = 0; iris < 8; iris++) expect(thrown(LINE.replace('iris=3', `iris=${iris}`))).toBe('did not throw');
+    for (let iris = 0; iris < 11; iris++) expect(thrown(LINE.replace('iris=3', `iris=${iris}`))).toBe('did not throw');
   });
 
   it('rejects a second line for the same key', () => {

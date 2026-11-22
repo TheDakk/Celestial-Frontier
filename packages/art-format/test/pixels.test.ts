@@ -45,7 +45,7 @@ describe('pixel values', () => {
   });
   it('fixes the iris value and the ramp count', () => {
     expect(PIXEL_IRIS).toBe(17);
-    expect(IRIS_RAMP_COUNT).toBe(8);
+    expect(IRIS_RAMP_COUNT).toBe(11);
   });
 });
 

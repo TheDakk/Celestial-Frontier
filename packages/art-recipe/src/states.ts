@@ -1,3 +1,4 @@
+import { THEME_NAMES } from '@cf/art-format';
 import type { SizeTier, ThemeName } from '@cf/art-format';
 import { GENE_LENGTHS, marked, wrap } from './resolve';
 
@@ -59,10 +60,11 @@ export function stateOf(genome: Readonly<Record<string, unknown>>): { aquatic: b
 }
 
 /**
- * The size tier by size gene. The original draws size gene 0 (and a missing size) as size 2, by its `(g.size||2)`,
- * so gene 0 takes the medium tier; genes 1 to 5 equal `tierForSize`. Not yet read by the live recipe.
+ * The size tier by size gene: 0 and 1 small, 2 and 3 medium, 4 and 5 large. A named improvement over the original
+ * (Dakk, 2026-11-21: tiny creatures stay small): the original draws size gene 0 (and a missing size) at size 2's
+ * proportions, because its code reads `(g.size||2)` and so takes size 0 for no size; here gene 0 is small.
  */
-export const SIZE_TIER_BY_GENE: readonly Exclude<SizeTier, 'guardian'>[] = Object.freeze(['medium', 'small', 'medium', 'medium', 'large', 'large']);
+export const SIZE_TIER_BY_GENE: readonly Exclude<SizeTier, 'guardian'>[] = Object.freeze(['small', 'small', 'medium', 'medium', 'large', 'large']);
 
 /** The game's theme by habitat gene (HAB_THEME in the combat package), in its order. A cross test holds it to the game's rule. */
 export const THEME_BY_HABITAT: readonly ThemeName[] = Object.freeze([
@@ -83,7 +85,10 @@ export function themeOf(genome: Readonly<Record<string, unknown>>): ThemeName {
   return THEME_BY_LOCO[wrap(genome['loco'], L.loco)] ?? THEME_BY_HABITAT[wrap(genome['habitat'], L.habitat)]!;
 }
 
-/** The iris ramp each theme's eyes take: eleven themes share the eight ramps (IRIS_RAMP_COUNT). */
-export const IRIS_BY_THEME: Readonly<Record<ThemeName, number>> = Object.freeze({
-  fire: 0, frost: 1, wild: 1, storm: 2, tide: 3, stone: 4, sand: 4, venom: 5, chem: 5, void: 6, psionic: 7,
-});
+/**
+ * The iris ramp a theme's eyes take: one ramp per theme, `iris<n>` for the theme's place n in THEME_NAMES (the
+ * original's pupil is the theme colour). No theme (outside fauna) takes iris0.
+ */
+export function irisOf(theme: ThemeName | null): string {
+  return `iris${theme === null ? 0 : THEME_NAMES.indexOf(theme)}`;
+}

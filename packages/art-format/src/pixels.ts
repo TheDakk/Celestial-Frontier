@@ -15,8 +15,8 @@ export const PIXEL_GLOW = 15;
 export const PIXEL_OUTLINE = 16;
 /** 17-20: the iris ramp, dark to light. Written only by the composer (from an eye part's 5-8), never by a part. */
 export const PIXEL_IRIS = 17;
-/** Iris ramps iris0..iris7, fixed for renderer version 1 so adding a ramp can never change an existing eye. */
-export const IRIS_RAMP_COUNT = 8;
+/** Iris ramps iris0..iris10: one per theme, in THEME_NAMES order (a generated creature's iris is its theme's). */
+export const IRIS_RAMP_COUNT = 11;
 
 /** The game's ability themes (ABILITY_THEMES in the combat package); a cross test holds the two together. */
 export const THEME_NAMES = Object.freeze(['fire', 'frost', 'storm', 'tide', 'stone', 'venom', 'void', 'sand', 'chem', 'psionic', 'wild'] as const);

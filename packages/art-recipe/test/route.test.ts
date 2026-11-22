@@ -140,9 +140,9 @@ describe('routeBody and resolveBody', () => {
     expect([op(0, 6), op(1, 6), op(15, 6)]).toEqual([100, 100, 100]);
   });
 
-  it('size gene 0, a missing size and NaN draw at medium; 1 at small; 4 and 5 at large; apex 12 at guardian', () => {
+  it('size gene 0, a missing size and NaN draw at small (tiny creatures stay small), as 1; 2 and 3 at medium; 4 and 5 at large; apex 12 at guardian', () => {
     const tier = (extra: Record<string, unknown>) => resolveBody({ ...land, body: 0, ...extra }, first).tier;
-    expect([tier({ size: 0 }), tier({ size: undefined }), tier({ size: NaN })]).toEqual(['medium', 'medium', 'medium']);
+    expect([tier({ size: 0 }), tier({ size: undefined }), tier({ size: NaN })]).toEqual(['small', 'small', 'small']);
     expect([tier({ size: 1 }), tier({ size: 2 }), tier({ size: 3 }), tier({ size: 4 }), tier({ size: 5 })]).toEqual(['small', 'medium', 'medium', 'large', 'large']);
     expect([tier({ size: 0, apex: 12 }), tier({ size: 1, apex: 12 })]).toEqual(['guardian', 'guardian']);
   });

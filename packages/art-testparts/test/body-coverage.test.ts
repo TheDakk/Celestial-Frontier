@@ -71,7 +71,7 @@ function stateGenomes(): Genome[] {
   return [...first.values()];
 }
 
-/** The tier genes walked: size 1 small (not size 0, whose tier Task 17 settles), 2 medium, 4 large, apex 12 guardian. */
+/** The tier genes walked: size 1 small (size 0 is small too), 2 medium, 4 large, apex 12 guardian. */
 const TIER_GENES: Readonly<Record<SizeTier, Genome>> = { small: { size: 1 }, medium: { size: 2 }, large: { size: 4 }, guardian: { size: 2, apex: 12 } };
 const TIERS: readonly SizeTier[] = ['small', 'medium', 'large', 'guardian'];
 /** Every variant 0: the walk asserts the pack holds no other, so no variant can change a part id (see walk). */

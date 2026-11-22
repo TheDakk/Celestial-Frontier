@@ -26,7 +26,7 @@ registerHooks({
   },
 });
 
-const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES } = await import('@cf/art-format');
+const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, THEME_NAMES } = await import('@cf/art-format');
 const { buildRecipe, buildSpeciesRecipe, resolveAnatomy, limbKind, torsoKindOf, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 
@@ -69,7 +69,7 @@ const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes
 /** The first per-part label of the hidden-part pictures: above every pixel value (0-20), so the composer's iris rewrite of 5-8 can never touch a label. */
 const LABEL_BASE = 21;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
-/** The palette's iris ramp names, iris0 to iris7. */
+/** The palette's iris ramp names, iris0 to iris10: one per theme, in THEME_NAMES order. */
 const IRIS_RAMPS = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
 const FULL_EYES = EYE_COUNTS.indexOf(8); // eight eyes: every eye attach point
 const FULL_LIMBS = LIMB_COUNTS.indexOf(8); // eight legs: every leg attach point
@@ -147,8 +147,6 @@ const GENERATED_TORSOS = new Set([0, 4].flatMap((loco) => Array.from({ length: 1
 })));
 
 // Routed scaffolds (body routing). Built beside genomeFor and GENERATED_TORSOS, which checkPack still uses; not wired.
-/** The tier genes of the routed path: size gene 0 draws medium there (SIZE_TIER_BY_GENE), so small is size gene 1. */
-const ROUTE_GENES_FOR_TIER = { ...GENES_FOR_TIER, small: { size: 1 } };
 /** The movement and habitat genes of each state: grazers, gliders (airborne), swimmers (aquatic), all in the deep forest canopy. */
 const STATE_GENES = { land: { loco: 0, habitat: 0 }, airborne: { loco: 3, habitat: 0 }, aquatic: { loco: 4, habitat: 0 } };
 const OWN_FAMILIES = new Set(Object.values(OWN_FAMILY_BY_BODY));
@@ -199,7 +197,7 @@ const NEW_KINDS = (() => {
  */
 export function routeStates(scaffoldId) {
   const [family, torso, tier] = scaffoldId.split('/');
-  const tierGenes = ROUTE_GENES_FOR_TIER[tier];
+  const tierGenes = GENES_FOR_TIER[tier];
   if (tierGenes === undefined) return [];
   const states = [];
   for (const [state, stateGenes] of Object.entries(STATE_GENES)) {
@@ -599,8 +597,7 @@ function marksGapsOf(catalogue, scaffold, torsoKind) {
  * Problems a reader can see without composing: attach points (a generated torso needs its family's points and its wing
  * points, see TORSO_POINTS_BY_FAMILY; head kind hN needs `feature` once the pack has a head
  * feature drawn for it, kind `<feature>-hN`, of its family and tier; a torso's leg-count names must be ones the composer
- * can ask for; a species torso and head need only the points the species uses), layers, the palette's iris ramps (some
- * but not all), species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
+ * can ask for; a species torso and head need only the points the species uses), layers, species (a key that is a torso type, a ramp the palette lacks), poses and their leg-count entries,
  * contact points, fallbacks.
  */
 function structureProblems(catalogue) {
@@ -645,10 +642,6 @@ function structureProblems(catalogue) {
       const missing = required.filter((p) => !Object.hasOwn(part.frames[name].attach, p));
       if (missing.length > 0) problems.push(`part ${part.id} frame ${name}: missing attach point ${missing.join(', ')}`);
     }
-  }
-  // A palette with none of the iris ramps is today's format (information, see checkPack); with some, every one must be there.
-  if (IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
-    for (const name of IRIS_RAMPS) if (!Object.hasOwn(catalogue.palette.ramps, name)) problems.push(`palette: missing iris ramp ${name}`);
   }
   for (const species of catalogue.species.values()) {
     if (GENERATED_TORSOS.has(`${species.family}/${species.key}`)) problems.push(`species ${species.key}: key is a torso type of ${species.family}`);
@@ -994,8 +987,13 @@ export function checkPack(text) {
   const structure = structureProblems(catalogue);
   const failures = [...failed];
   const info = [];
-  if (!IRIS_RAMPS.some((name) => Object.hasOwn(catalogue.palette.ramps, name))) {
+  // A missing iris ramp is information: the eyes of its theme show no iris colour (an older pack has eight, or none).
+  const noIris = IRIS_RAMPS.filter((name) => !Object.hasOwn(catalogue.palette.ramps, name));
+  if (noIris.length === IRIS_RAMPS.length) {
     info.push(`palette has no iris ramps (iris0 to iris${IRIS_RAMP_COUNT - 1}): eyes show no iris colour`);
+  } else if (noIris.length > 0) {
+    const themes = noIris.map((name) => THEME_NAMES[Number(name.slice('iris'.length))]);
+    info.push(`palette has no iris ramp ${noIris.join(', ')} (one per theme: ${themes.join(', ')}): those themes' eyes show no iris colour`);
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
   return { ok, parseError: null, summary, sampled: SAMPLED, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };

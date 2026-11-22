@@ -27,6 +27,9 @@ ramp iris4 1 0 0 0
 ramp iris5 1 1 0 0
 ramp iris6 1 1 1 0
 ramp iris7 0 1 0 1
+ramp iris8 1 0 1 0
+ramp iris9 0 1 1 0
+ramp iris10 1 0 0 1
 outline 0
 eye 1
 eyeHighlight 1
@@ -119,7 +122,7 @@ describe('checkPack on a known-good pack', () => {
     expect(errorsOf(r)).toEqual([]);
     expect(r.ok).toBe(true);
     expect(r.failures).toEqual([]);
-    expect(r.summary).toMatchObject({ parts: 7, scaffolds: 1, fallbacks: 1, colours: 2, ramps: 8, bySlot: { torso: 2, head: 1, tail: 1, farLimbs: 1, nearLimbs: 1, eyes: 1 } });
+    expect(r.summary).toMatchObject({ parts: 7, scaffolds: 1, fallbacks: 1, colours: 2, ramps: 11, bySlot: { torso: 2, head: 1, tail: 1, farLimbs: 1, nearLimbs: 1, eyes: 1 } });
     expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK');
     // Its new gaps are information, each printed as an info: line.
     for (const prefix of ['marks:', 'role:', 'missing:quadruped/back/']) {
@@ -350,8 +353,10 @@ layer spots
 `;
 const TORSO_ID = 'quadruped/torso/sturdy/small/v0';
 // A pack in the art agent's present format: ramps but no iris ramp, no layers, only the shared leg, no back parts.
-const OLD_FORMAT = GOOD.replace(/ramp iris\d [0-9 ]+\n/g, '').replace('colour 1 445566\n', 'colour 1 445566\nramp c0 0 1 1 1\n');
-const NO_IRIS = 'info: palette has no iris ramps (iris0 to iris7): eyes show no iris colour';
+const OLD_FORMAT = GOOD.replace(/ramp iris\d+ [0-9 ]+\n/g, '').replace('colour 1 445566\n', 'colour 1 445566\nramp c0 0 1 1 1\n');
+const NO_IRIS = 'info: palette has no iris ramps (iris0 to iris10): eyes show no iris colour';
+/** The line for a palette with the eight iris ramps of the art agent's present pack, before one per theme. */
+const NO_NEW_IRIS = 'info: palette has no iris ramp iris8, iris9, iris10 (one per theme: chem, psionic, wild): those themes\' eyes show no iris colour';
 
 describe('checkPack on planted faults: layers, iris ramps, leg-count names, the feature point', () => {
   const layered = planted(TORSO_ROWS, LAYERED_ROWS);
@@ -409,12 +414,17 @@ describe('checkPack on planted faults: layers, iris ramps, leg-count names, the 
     expect(r.ok).toBe(false);
   });
 
-  it('a palette with some iris ramps must hold all eight: one error per missing ramp', () => {
+  it('a palette with some iris ramps is information: one line naming each missing ramp and its theme, and the pack is OK', () => {
     const r = checkPack(planted('ramp iris3 1 1 1 1\n', ''));
-    expect(r.structure).toEqual(['palette: missing iris ramp iris3']);
-    expect(errorsOf(r)).toEqual(['error: palette: missing iris ramp iris3']);
+    expect(r.structure).toEqual([]);
+    expect(r.info).toEqual(["palette has no iris ramp iris3 (one per theme: tide): those themes' eyes show no iris colour"]);
     expect(formatReport(r)).not.toContain(NO_IRIS);
-    expect(r.ok).toBe(false);
+    expect(r.ok).toBe(true);
+    // The eight ramps of a pack made before one ramp per theme: the three new ones are named.
+    const eight = checkPack(GOOD.replace(/ramp iris(8|9|10) [0-9 ]+\n/g, ''));
+    expect(eight.info).toEqual([NO_NEW_IRIS.slice('info: '.length)]);
+    expect(formatReport(eight).split('\n')).toContain(NO_NEW_IRIS);
+    expect(eight.ok).toBe(true);
   });
 
   it('a palette with no iris ramp at all is information, not an error, and the pack is OK', () => {
@@ -892,7 +902,7 @@ describe('checkPack on a named species', () => {
     expect(r.ok).toBe(true);
     expect(r.summary).toMatchObject({ species: 1, scaffolds: 2 });
     expect(base.summary).toMatchObject({ species: 0 });
-    expect(formatReport(r).split('\n')[2]).toBe('scaffolds: 2, fallbacks: 1, species: 1, palette colours: 2, ramps: 11');
+    expect(formatReport(r).split('\n')[2]).toBe('scaffolds: 2, fallbacks: 1, species: 1, palette colours: 2, ramps: 14');
     // Composed once in every pose the scaffold defines, and its own neck join is quiet.
     expect(r.composed).toBe(base.composed + 7);
     expect(r.neck).toEqual([]);
@@ -1032,8 +1042,8 @@ describe('routing helpers', () => {
       const b = bodyOf(shapedGenome(genes, 'quadruped', 'membranous')!);
       expect([b.airborne, b.aquatic], state).toEqual([state === 'airborne', state === 'aquatic']);
     }
-    // The tier genes: small is size gene 1 (gene 0 draws medium), guardian carries the Guardian marker.
-    expect(routeStates('quadruped/sturdy/small')[0]!.genes).toEqual({ size: 1, body: 0, loco: 0, habitat: 0 });
+    // The tier genes: small is size gene 0 (tiny creatures stay small), guardian carries the Guardian marker.
+    expect(routeStates('quadruped/sturdy/small')[0]!.genes).toEqual({ size: 0, body: 0, loco: 0, habitat: 0 });
     expect(bodyOf(routeStates('quadruped/sturdy/small')[0]!.genes).tier).toBe('small');
     expect(routeStates('quadruped/sturdy/large')[0]!.genes).toEqual({ size: 4, body: 0, loco: 0, habitat: 0 });
     expect(bodyOf(routeStates('quadruped/sturdy/guardian')[0]!.genes).tier).toBe('guardian');

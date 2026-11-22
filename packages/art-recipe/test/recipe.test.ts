@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText, partId } from '@cf/art-format';
+import { DRAW_ORDER, IRIS_RAMP_COUNT, MARK_SLOTS, parseCatalogueText, partId } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
 import { makeGenome } from '@cf/domain-genome';
 import { bodyOf, buildRecipe, buildRoutedRecipe, buildSpeciesRecipe, RENDERER_VERSION } from '../src/recipe';
@@ -224,17 +224,17 @@ describe('buildRecipe', () => {
     for (let seed = 1; seed <= 200; seed++) {
       const g = { ...base, seed };
       const r = buildRecipe(g, [], catalogueOf(fullIds()));
-      expect(r.ramps.iris).toBe('iris' + pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8));
+      expect(r.ramps.iris).toBe('iris' + pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), IRIS_RAMP_COUNT));
       seen.add(r.ramps.iris);
     }
-    expect([...seen].sort()).toEqual(['iris0', 'iris1', 'iris2', 'iris3', 'iris4', 'iris5', 'iris6', 'iris7']);
+    expect([...seen].sort()).toEqual(Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`).sort());
   });
 
   it('names scaffold, ramps, marking and glow', () => {
     const g = { ...base, lumin: true };
     const r = buildRecipe(g, [], full);
     expect(r.scaffoldId).toBe('quadruped/sturdy/medium');
-    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under', iris: `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}` });
+    expect(r.ramps).toEqual({ primary: 'c3', accent: 'c5', underside: 'c3-under', iris: `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), IRIS_RAMP_COUNT)}` });
     expect(r.marking.pattern).toBe(2);
     expect(r.glow).toBe(true);
     for (const n of [...r.shift.head, ...r.shift.tail]) expect([-1, 0, 1]).toContain(n);
@@ -381,7 +381,7 @@ describe('buildRoutedRecipe', () => {
       expect([fire.theme, fire.ramps.iris], `seed ${seed}`).toEqual(['fire', 'iris0']);
       const swimmer = buildRoutedRecipe({ ...base, habitat: 9, loco: 4, seed }, [], every);
       expect([swimmer.theme, swimmer.ramps.iris], `seed ${seed}`).toEqual(['tide', 'iris3']);
-      streamIris.add(`iris${pick(artStream(identityKey({ ...base, habitat: 9, seed }, []), 'iris', RENDERER_VERSION), 8)}`);
+      streamIris.add(`iris${pick(artStream(identityKey({ ...base, habitat: 9, seed }, []), 'iris', RENDERER_VERSION), IRIS_RAMP_COUNT)}`);
     }
     // The stream would have given other ramps for these seeds, so the theme and not the stream decides.
     expect(streamIris.size).toBeGreaterThan(4);
@@ -396,7 +396,7 @@ describe('buildRoutedRecipe', () => {
     for (let seed = 1; seed <= 50; seed++) {
       const g = { ...base, habitat: 9, seed };
       const r = buildRecipe(g, [], full);
-      expect([r.theme, r.ramps.iris], `seed ${seed}`).toEqual([null, `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), 8)}`]);
+      expect([r.theme, r.ramps.iris], `seed ${seed}`).toEqual([null, `iris${pick(artStream(identityKey(g, []), 'iris', RENDERER_VERSION), IRIS_RAMP_COUNT)}`]);
       seen.add(r.ramps.iris);
     }
     expect(seen.size).toBeGreaterThan(4);

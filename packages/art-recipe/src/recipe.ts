@@ -3,7 +3,7 @@ import type { Catalogue, SizeTier, SlotName, ThemeName } from '@cf/art-format';
 import { planBodyParts, planParts, planSpeciesParts, torsoKindOf } from './requests';
 import { resolveAnatomy } from './resolve';
 import { resolveBody } from './route';
-import { IRIS_BY_THEME } from './states';
+import { irisOf } from './states';
 import type { Body } from './route';
 import { artStream, identityKey, pick } from './streams';
 
@@ -149,7 +149,7 @@ export function buildRoutedRecipe(
     legs: b.limbs,
     parts,
     // The iris is the theme's; the `iris` stream is still drawn (drawStreams), its result dropped.
-    ramps: { primary: `c${b.colour}`, accent: `c${b.accent}`, underside: `c${b.colour}-under`, iris: `iris${b.theme === null ? 0 : IRIS_BY_THEME[b.theme]}` },
+    ramps: { primary: `c${b.colour}`, accent: `c${b.accent}`, underside: `c${b.colour}-under`, iris: irisOf(b.theme) },
     marking: { pattern: b.pattern, strength: 2, phase: d.phase },
     shift: { head: d.headShift, tail: d.tailShift },
     glow: b.glow, gaps,
