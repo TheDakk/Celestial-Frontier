@@ -4,7 +4,7 @@ import { createMemoryBackend } from '@cf/persistence';
 import type { GameEvents } from '../src/events';
 import { backupFileName, readLastBackupAt } from '../src/protect/index';
 import { REGISTRY, bootSave } from '../src/save/index';
-import { localDateTime } from '../src/screens';
+import { localDateTime } from '../src/screens/protect';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, settled } from './shell-support';
 import { recordCanvasPainting } from './support/fake-canvas';
@@ -27,10 +27,11 @@ describe('save protection in Settings', () => {
 
     page.time.advance(90_000);
     const at = NOW + page.time.now();
+    // A change the page has not stored yet: the file holds it all the same.
+    page.live.toneMode = 'tone-max';
     page.control('backup').click();
-    // The file is handed over inside the press itself.
-    expect(page.files.map((file) => file.name)).toEqual([backupFileName(at)]);
     await settled();
+    expect(page.files.map((file) => file.name)).toEqual([backupFileName(at)]);
     expect(backups).toEqual([{ at }]);
     expect(text(page, 'last-backup')).toBe(localDateTime(at));
     expect(text(page, 'backup-note')).toBe('Backup file made.');
@@ -50,7 +51,8 @@ describe('save protection in Settings', () => {
     other.control('restore-yes').click();
     await settled();
     expect(other.reloads).toBe(1);
-    expect((await reboot(other.backend)).state.fsMode).toBe('fs-lg');
+    const restored = (await reboot(other.backend)).state;
+    expect([restored.fsMode, restored.toneMode]).toEqual(['fs-lg', 'tone-max']);
   });
 
   it('the local date and time are written year first, to the minute', () => {

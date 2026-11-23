@@ -13,7 +13,8 @@ import {
   type StorageBackend,
 } from '@cf/persistence';
 import { withFakeIndexedDB } from '../../../tests/support/fake-indexeddb';
-import { SAVE_DATABASE, bootSave, createWriteGate, openSaveBackend, retryHeldRead, REGISTRY } from '../src/save/index';
+import { SAVE_DATABASE } from '../src/save/boot';
+import { bootSave, createWriteGate, openSaveBackend, retryHeldRead, REGISTRY } from '../src/save/index';
 import { NOW, SOL_ROUTE, dump, namedState, seedCurrentSave } from './save-support';
 
 const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });
@@ -254,7 +255,12 @@ describe('the write hold', () => {
     open.protect('the save moved');
     expect(open.hold).toBe('protected-payload');
     expect(open.mayWrite()).toBe(false);
-    expect(Object.keys(gate).sort()).toEqual(['detail', 'hold', 'mayWrite', 'protect']); // no way to loosen
+    expect(Object.keys(gate).sort()).toEqual(['detail', 'hold', 'holdTransient', 'mayWrite', 'protect']); // no way to loosen
+    gate.holdTransient('storage failed');
+    expect([gate.hold, gate.detail]).toEqual(['protected-payload', 'a newer build wrote this save']);
+    const writable = createWriteGate(false);
+    writable.holdTransient('storage failed');
+    expect([writable.hold, writable.detail, writable.mayWrite()]).toEqual(['transient-read', 'storage failed', false]);
     expect(() => { (gate as { hold: unknown }).hold = false; }).toThrow();
     expect(gate.mayWrite()).toBe(false);
   });

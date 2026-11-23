@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PACK_CACHE_NAME } from '../src/packs';
+import { PACK_CACHE_NAME } from '../src/packs/cache';
 import { BUILD_CACHE_PREFIX, PACKS_FOLDER, SHELL_SCHEMA } from '../offline/worker-source';
 import { at, build, get, navigate, page, serve, text, worker, world } from './offline-support';
 
@@ -33,6 +33,9 @@ async function waiting(files: Readonly<Record<string, string>> = B) {
 const state = async (w: ReturnType<typeof world>): Promise<unknown> =>
   JSON.parse(await [...w.caches.stores.get('cf-v2-pixel-shell-control')!.entries()].find(([url]) => url.endsWith('/state'))![1].clone().text());
 
+const pins = (w: ReturnType<typeof world>): string[] => [...w.caches.stores.get('cf-v2-pixel-shell-control')!.keys()]
+  .filter((url) => url.includes('/client/')).map((url) => decodeURIComponent(url.split('/client/')[1]!)).sort();
+
 describe('the offline shell worker', () => {
   it('after install, every listed file is answered from the cache with the network failing', async () => {
     const { w, a, tableA } = await installed();
@@ -59,8 +62,51 @@ describe('the offline shell worker', () => {
     expect((await a.respond(get('layout.html', 'page-1'))).status).toBe(503);
     expect((await a.respond({ ...get('assets/app.js', 'page-1'), method: 'POST' })).status).toBe(405);
     expect((await a.respond({ ...get('assets/app.js', 'page-1'), url: 'https://elsewhere.test/font.woff2' })).status).toBe(403);
-    expect((await a.respond(get('assets/app.js', 'a-stranger'))).status).toBe(503);
     expect(w.fetched).toEqual([]);
+  });
+
+  it('a page the browser named no pin for is answered from the active build and pinned to it, so a later build does not change its files', async () => {
+    const { w, a } = await installed();
+    // The browser gave the page being loaded no identity: nothing could be pinned.
+    expect(await text(a.respond({ ...navigate('', ''), clientId: '' }))).toBe('200:<p>one</p>');
+    const late = page('page-9');
+    w.pages.push(late);
+    w.server.clear();
+    expect(await text(a.respond(get('assets/app.js', 'page-9')))).toBe('200:one()');
+    expect(await text(a.respond(get('manifest.webmanifest', 'page-9')))).toBe('200:{}');
+    expect(pins(w)).toEqual(['page-1', 'page-9']);
+
+    serve(w, B);
+    const b = worker(w, build(B));
+    await b.install();
+    await b.activate();
+    expect(await text(b.respond(get('assets/app.js', 'page-9')))).toBe('200:one()');
+    // A request with no page behind it at all is answered from the active build, and nothing is pinned for it.
+    expect(await text(b.respond(get('assets/app.js', '')))).toBe('200:two()');
+    expect(pins(w)).toEqual(['page-1', 'page-9']);
+  });
+
+  it('a pin that cannot be written does not cost the page its files', async () => {
+    const { w, a } = await installed();
+    const control = w.caches.stores.get('cf-v2-pixel-shell-control')!;
+    const put = control.set.bind(control);
+    control.set = (url, response) => {
+      if (url.includes('/client/')) throw new Error('the quota is used up');
+      return put(url, response);
+    };
+    w.server.clear();
+    expect(await text(a.respond(navigate('', 'page-2')))).toBe('200:<p>one</p>');
+    expect(await text(a.respond(get('assets/app.js', 'page-2')))).toBe('200:one()');
+    expect(pins(w)).toEqual(['page-1']);
+  });
+
+  it('installing a build forgets the pins of pages that have closed', async () => {
+    const { w, a } = await installed();
+    await a.respond(navigate('', 'page-2'));
+    expect(pins(w)).toEqual(['page-1', 'page-2']);
+    serve(w, B);
+    await worker(w, build(B)).install();
+    expect(pins(w)).toEqual(['page-1']);
   });
 
   it('leaves art packs to their loader: a pack request is not the worker\'s to answer', async () => {
@@ -101,7 +147,7 @@ describe('the offline shell worker', () => {
     expect(w.fetched).toEqual([]);
   });
 
-  it('a new build waits; it serves only after activation is asked', async () => {
+  it('a new build waits while a page is open; it serves after activation is asked', async () => {
     const { w, a, b, tableA, tableB, first } = await waiting();
     // Installed beside the running build, and silent.
     expect(await state(w)).toEqual({ schema: SHELL_SCHEMA, activeBuildId: tableA.buildId, priorBuildId: null });
@@ -205,11 +251,10 @@ describe('the offline shell worker', () => {
     await a.message({ type: 'CF_PWA_GET_STATUS', target: 'active' }, first);
     expect(first.messages.at(-1)).toMatchObject({ workerBuildId: tableA.buildId, phase: 'active' });
 
-    const pins = (): string[] => [...w.caches.stores.get('cf-v2-pixel-shell-control')!.keys()].filter((url) => url.includes('/client/')).map((url) => decodeURIComponent(url.split('/client/')[1]!));
     await a.respond(navigate('', 'page-2'));
-    expect(pins().sort()).toEqual(['page-1', 'page-2']);
+    expect(pins(w)).toEqual(['page-1', 'page-2']);
     // page-2 was never opened here: its pin goes at the next activation.
     await b.activate();
-    expect(pins()).toEqual(['page-1']);
+    expect(pins(w)).toEqual(['page-1']);
   });
 });

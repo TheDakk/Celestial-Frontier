@@ -2,7 +2,8 @@
 import { describe, expect, it } from 'vitest';
 import type { Gaps } from '@cf/art-interface';
 import { NAV_HOME } from '@cf/scene';
-import { mapItems, mapPicture, showSpace, type MapFrame } from '../src/space';
+import { mapItems } from '../src/space/project';
+import { mapPicture, showSpace, type MapFrame } from '../src/space';
 import { placeholderSheet } from '../src/ui/sheet-source';
 import { galaxyNav, systemNav } from './space-support';
 import { paintedBy, recordCanvasPainting } from './support/fake-canvas';

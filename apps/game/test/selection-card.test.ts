@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Descriptor } from '@cf/domain-descriptors';
-import { createSearchBox, createSelectionCard } from '../src/screens';
+import { createSearchBox } from '../src/screens/search-box';
+import { createSelectionCard } from '../src/screens/selection-card';
 import { recordCanvasPainting } from './support/fake-canvas';
 
 recordCanvasPainting();

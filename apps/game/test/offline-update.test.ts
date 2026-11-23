@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { SHELL_SCHEMA } from '../offline/worker-source';
 import { UPDATE_WORDS, createReloadCoordinator, createUpdateControl, reloadRefusalWords, type UpdateControl } from '../src/offline';
 import { REGISTRY, bootSave } from '../src/save/index';
-import { UPDATE_CATALOG } from '../src/screens';
+import { UPDATE_CATALOG } from '../src/screens/strings';
 import { pseudoLocalize } from '../src/ui';
 import { createMemoryBackend } from '@cf/persistence';
 import { NOW, SOL_ROUTE, seedCurrentSave } from './save-support';

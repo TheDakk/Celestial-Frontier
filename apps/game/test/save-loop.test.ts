@@ -11,64 +11,12 @@ import {
 } from '@cf/persistence';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import {
-  CHECKPOINT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
-} from '../src/save/index';
-import { GALAXY_ROUTE, NOW, SOL_ROUTE, controlledClock, dump, seedCurrentSave } from './save-support';
+import { CHECKPOINT_MS } from '../src/save/save-loop';
+import { LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate } from '../src/save/index';
+import { boot, bootedHarness, pausable } from './save-loop-support';
+import { GALAXY_ROUTE, NOW, controlledClock, dump, seedCurrentSave } from './save-support';
 
 const TICK_MS = EPOCH_TICK * 1000;
-const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });
-
-/** bootSave, createSaveRuntime and createSaveLoop on one backend, as the page wires them, after the first heartbeat. */
-async function bootedHarness(backend: StorageBackend = createMemoryBackend(), token = 'document-a', time = controlledClock(1_000)) {
-  const booted = await boot(backend);
-  const gate = createWriteGate(booted.hold);
-  const runtime = createSaveRuntime({
-    backend, registry: REGISTRY,
-    initialRevision: booted.revision, initialExtensions: booted.extensions, initialState: booted.state,
-    restoredAuthority: booted.restoredAuthority, freshSessionSeed: 7,
-    ownerId: 'tab', token, leaseTtlMs: LEASE_TTL_MS, now: time.now, visible: true, answerable: true,
-  });
-  const bus = createBus<GameEvents>();
-  const committed: number[] = [];
-  const reloads: string[] = [];
-  bus.on('save:committed', ({ revision }) => { committed.push(revision); });
-  bus.on('save:reload-required', ({ reason }) => { reloads.push(reason); });
-  let route = booted.state.savedView;
-  const live = booted.state;
-  const loop = createSaveLoop({
-    runtime, gate, bus, backend,
-    clocks: { wallNow: () => NOW, monotonicNow: time.now },
-    live: () => live, route: () => route,
-  });
-  await loop.beat();
-  return { backend, booted, gate, runtime, loop, bus, live, time, committed, reloads, setRoute: (next: Record<string, unknown> | null) => { route = next; } };
-}
-
-/** A backend whose next write of save rows waits until `release` is called. */
-function pausable(): { backend: StorageBackend; pauseNext: () => Promise<void>; release: () => void } {
-  const base = createMemoryBackend();
-  let armed = false;
-  let entered: () => void = () => undefined;
-  let release: () => void = () => undefined;
-  const backend: StorageBackend = {
-    ...base,
-    async compareAndApply(checks, operations, clearStores) {
-      if (armed && operations.some((operation) => operation.store === 'player')) {
-        armed = false;
-        entered();
-        await new Promise<void>((resolve) => { release = resolve; });
-      }
-      return base.compareAndApply(checks, operations, clearStores);
-    },
-  };
-  return {
-    backend,
-    pauseNext: () => { armed = true; return new Promise<void>((resolve) => { entered = resolve; }); },
-    release: () => release(),
-  };
-}
-
 const withoutLease = (rows: Record<string, Record<string, string>>) => {
   const meta = { ...rows.meta };
   delete meta[F3_ACTIVE_PLAY_LEASE_KEY];
@@ -81,11 +29,11 @@ describe('save loop', () => {
     h.live.fsMode = 'fs-xl';
     h.setRoute(GALAXY_ROUTE);
     expect(await h.loop.request('settings')).toBe(true);
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect(h.live.savedView).toEqual(GALAXY_ROUTE);
     const again = await boot(h.backend);
     expect(again.kind).toBe('current');
-    expect(again.revision).toBe(2);
+    expect(again.revision).toBe(3);
     expect(again.state.fsMode).toBe('fs-xl');
     expect(again.state.savedView).toEqual(GALAXY_ROUTE);
   });
@@ -139,13 +87,13 @@ describe('save loop', () => {
 
   it('a refused commit makes the page read-only and emits save:reload-required once', async () => {
     const h = await bootedHarness();
-    await createRevisionedRepository(h.backend).mutate({ expectedRevision: 1, writes: [{ store: 'player', key: 'race', value: 'won' }] });
+    await createRevisionedRepository(h.backend).mutate({ expectedRevision: 2, writes: [{ store: 'player', key: 'race', value: 'won' }] });
     const others = await dump(h.backend);
 
     h.live.fsMode = 'fs-xl';
     expect(await h.loop.request('settings')).toBe(false);
     expect(h.loop.status).toBe('reload-required');
-    expect(h.reloads).toEqual(['stale revision 1/2']);
+    expect(h.reloads).toEqual(['stale revision 2/3']);
     expect(await h.loop.request('settings')).toBe(false);
     expect(await h.loop.request('route')).toBe(false);
     await h.loop.beat();
@@ -188,7 +136,7 @@ describe('save loop', () => {
     expect(await aborted.loop.request('settings')).toBe(false);
     expect(aborted.loop.status).toBe('reload-required');
     expect(aborted.reloads).toEqual(['save attempt rejected (injected abort)']);
-    expect(await base.get('meta', F3_REVISION_KEY)).toBe('1');
+    expect(await base.get('meta', F3_REVISION_KEY)).toBe('2');
   });
 
   it('ten requests during one write produce at most two commits', async () => {
@@ -210,9 +158,9 @@ describe('save loop', () => {
     expect(await Promise.all(later)).toEqual(new Array(10).fill(true));
     await h.loop.flush();
     expect(h.loop.status).toBe('idle');
-    expect(h.committed).toEqual([2, 3]);
+    expect(h.committed).toEqual([3, 4]);
     const again = await boot(h.backend);
-    expect(again.revision).toBe(3);
+    expect(again.revision).toBe(4);
     expect(again.state.fsMode).toBe('fs-xl');
     expect(again.state.sfxVol).toBe(0.9);
   });
@@ -262,7 +210,7 @@ describe('save loop', () => {
     await beat;
     expect(await stored).toBe(true);
     await h.loop.flush();
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect(h.reloads).toEqual([]);
     expect(h.loop.status).toBe('idle');
     expect((await boot(base)).state.fsMode).toBe('fs-xl');
@@ -275,7 +223,7 @@ describe('save loop', () => {
     h.time.advance(TICK_MS - 100);
     expect(await h.loop.request('settings')).toBe(true); // a checkpoint just before the tick
     expect(await h.loop.request('epoch-edge')).toBe(false); // no tick crossed: nothing to store
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect(h.loop.publishedEpoch()).toBe(start);
 
     h.time.advance(200);
@@ -287,7 +235,7 @@ describe('save loop', () => {
     expect(h.live.EPOCH_BASE).toBe(start);
     storage.release();
     await beat;
-    expect(h.committed).toEqual([2, 3]);
+    expect(h.committed).toEqual([3, 4]);
     expect(h.loop.publishedEpoch()).toBe(start + 1);
     expect(h.live.EPOCH_BASE).toBe(start + 1);
     expect(h.reloads).toEqual([]);
@@ -302,7 +250,7 @@ describe('save loop', () => {
     const h = await bootedHarness();
     const start = h.loop.publishedEpoch();
     h.time.advance(TICK_MS + 5);
-    await createRevisionedRepository(h.backend).mutate({ expectedRevision: 1, writes: [{ store: 'player', key: 'race', value: 'won' }] });
+    await createRevisionedRepository(h.backend).mutate({ expectedRevision: 2, writes: [{ store: 'player', key: 'race', value: 'won' }] });
     expect(await h.loop.request('epoch-edge')).toBe(false);
     expect(h.loop.status).toBe('reload-required');
     expect(h.loop.publishedEpoch()).toBe(start);
@@ -341,7 +289,7 @@ describe('save loop', () => {
     storage.release();
     await hidden;
     h.time.advance(60_000);
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect(h.runtime.activePlayMs()).toBe(4_500);
     expect(JSON.parse((await h.backend.get('meta', F3_ACTIVE_PLAY_LEASE_KEY))!)).toMatchObject({ held: false });
     const again = await boot(h.backend);
@@ -373,7 +321,7 @@ describe('save loop', () => {
     });
     h.live.fsMode = 'fs-lg';
     await h.loop.hide();
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect(JSON.parse((await base.get('meta', F3_ACTIVE_PLAY_LEASE_KEY))!)).toMatchObject({ held: false });
     expect(h.runtime.diagnostics()).toMatchObject({ leaseOwned: false, accruing: false });
   });
@@ -387,10 +335,10 @@ describe('save loop', () => {
     expect(h.committed).toEqual([]);
     h.time.advance(1);
     await h.loop.beat();
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     h.time.advance(CHECKPOINT_MS - 1);
     await h.loop.beat();
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
     expect((await boot(h.backend)).state.fsMode).toBe('fs-lg');
   });
 
@@ -419,7 +367,7 @@ describe('save loop', () => {
     for (const resume of waiting) resume();
     await both;
     expect(b.loop.status).toBe('reload-required');
-    expect(b.reloads).toEqual(['lease acquisition observed revision 1/3']); // the write and the hide checkpoint; asked once
+    expect(b.reloads).toEqual(['lease acquisition observed revision 2/4']); // the write and the hide checkpoint; asked once
     expect(await b.loop.request('settings')).toBe(false);
     expect(withoutLease(await dump(a.backend))).toEqual(before);
     expect(JSON.parse((await a.backend.get('meta', F3_ACTIVE_PLAY_LEASE_KEY))!)).toMatchObject({ held: false });
@@ -429,7 +377,7 @@ describe('save loop', () => {
     const h = await bootedHarness();
     h.live.fsMode = 'fs-lg';
     await Promise.all([h.loop.hide(), h.loop.hide()]);
-    expect(h.committed).toEqual([2]);
+    expect(h.committed).toEqual([3]);
 
     await h.loop.show();
     const before = h.runtime.activePlayMs();
@@ -457,30 +405,15 @@ describe('save loop', () => {
     expect(a.reloads).toEqual([]);
   });
 
-  it('a checkpoint that is stored but whose announcement fails counts as stored and asks for a reload', async () => {
+  it('a listener that fails on hearing of a stored checkpoint costs the page nothing: it is stored and the page keeps writing', async () => {
     const h = await bootedHarness();
     h.bus.on('save:committed', () => { throw new Error('listener failed'); });
     h.live.fsMode = 'fs-xl';
     expect(await h.loop.request('settings')).toBe(true);
-    expect(h.loop.status).toBe('reload-required');
-    expect(h.reloads).toEqual(['checkpoint committed; publication listener failed']);
-    expect((await boot(h.backend)).state.fsMode).toBe('fs-xl');
-  });
-
-  it('a lease that storage cannot renew makes the page read-only', async () => {
-    const base = createMemoryBackend();
-    let failing = false;
-    const h = await bootedHarness({
-      ...base,
-      async get(store, key) {
-        if (failing && key === F3_ACTIVE_PLAY_LEASE_KEY) throw new Error('lease read failed');
-        return base.get(store, key);
-      },
-    });
-    failing = true;
-    await h.loop.beat();
-    expect(h.loop.status).toBe('reload-required');
-    expect(h.reloads).toEqual(['lease renew storage failure (lease read failed)']);
-    expect(await h.loop.request('settings')).toBe(false);
+    expect([h.loop.status, h.reloads, h.loop.mayWrite()]).toEqual(['idle', [], true]);
+    h.live.toneMode = 'tone-max';
+    expect(await h.loop.request('settings')).toBe(true);
+    const stored = (await boot(h.backend)).state;
+    expect([stored.fsMode, stored.toneMode]).toEqual(['fs-xl', 'tone-max']);
   });
 });

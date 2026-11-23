@@ -145,10 +145,10 @@ describe('the clouds of a planet in the checker', () => {
 });
 
 describe('colours a map can show', () => {
-  it('a colour numbered past 255 is reported: a map picture holds one byte a pixel', () => {
+  it('a colour numbered past 255 does not parse: a map picture holds one byte a pixel', () => {
     expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 255 ffffff\nramp ink')).problems).toEqual([]);
-    expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 256 ffffff\ncolour 5000 ffffff\nramp ink')).problems)
-      .toEqual(['the palette runs to colour 5000: a map picture holds one byte a pixel, so colour numbers stop at 255']);
+    const past = checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 256 ffffff\nramp ink'));
+    expect([past.ok, past.parseError]).toEqual([false, expect.stringMatching(/^line \d+: bad colour index 256$/)]);
   });
 });
 

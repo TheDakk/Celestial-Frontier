@@ -142,7 +142,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
 
   const status = (): StatusFacts => ({
     build: env.build,
-    save: loop.status === 'reload-required' ? 'reload-required' : gate.mayWrite() ? 'ok' : 'held',
+    save: loop.status === 'reload-required' ? 'reload-required' : loop.mayWrite() ? 'ok' : 'held',
     revision: runtime.revision,
     packs: [...packs.values()],
     sheet: sheetState(),
@@ -191,6 +191,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   }));
   registry.registerScreen(settingsScreen({
     live: () => live,
+    readOnly: () => !loop.mayWrite(),
     changed(field) {
       if (field === 'sndOn' || field === 'sfxVol') sound.applyVolume();
       if (field === 'tipsOn' && !live.tipsOn) tooltips.hide();
@@ -205,7 +206,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     locale: localeFromSearch(env.search),
     protect: {
       registry: REGISTRY, clocks, bus, runtime, gate, toast,
-      settle: () => loop.flush(),
+      store: (extensionWrites) => loop.request('lifecycle', extensionWrites),
       persistState: () => persist,
       askAgain: () => asker.askAgain(),
       canBackUp: () => booted.revision > 0 || booted.kind === 'recovered-protected',
@@ -235,8 +236,10 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     if (reloading) return;
     reloading = true;
     shown.show(NOTICE_WORDS.reload.title, NOTICE_WORDS.reload.text, true);
-    env.reload();
+    // The reloaded page takes the lease at once only if this one has given it up.
+    void runtime.release().catch(() => undefined).then(env.reload);
   });
+  bus.on('save:held', refreshNotices);
   doc.addEventListener('visibilitychange', () => { void (visible() ? loop.show() : loop.hide()); });
   view.addEventListener('pagehide', () => { void loop.hide(); });
   view.addEventListener('pageshow', (event) => { if (event.persisted) void loop.show(); });

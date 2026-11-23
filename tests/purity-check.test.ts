@@ -364,6 +364,39 @@ describe('purity check: the game app', () => {
     expect(run('Math . sin(1); Math.sin(2); Math.cos(3); Date.now();', path)).toEqual([`${path}: uses Date.now`, `${path}: uses Math.sin`, `${path}: uses Math.cos`]);
     expect(run('const sine = 1; const o = { cos: 2 }; o.cos;', path)).toEqual([]);
   });
+  it.each(['cbrt', 'tanh', 'sinh', 'cosh', 'asin', 'acos', 'log2', 'log10', 'log1p', 'expm1', 'fround', 'PI'])('flags Math.%s under apps/game/src/space: only the listed exact functions pass', (name) => {
+    const path = 'apps/game/src/space/project.ts';
+    expect(run(`const v = Math.${name};`, path)).toEqual([`${path}: uses Math.${name}`]);
+    expect(run(`const v = Math.${name};`, SAVE)).toEqual([]);
+  });
+  it.each(['abs', 'floor', 'ceil', 'round', 'trunc', 'min', 'max', 'sqrt', 'imul', 'sign'])('passes Math.%s under apps/game/src/space', (name) => {
+    expect(run(`const v = Math.${name}(4);`, 'apps/game/src/space/project.ts')).toEqual([]);
+  });
+  it.each([
+    ['const d = (a - b) ** 2;', 'uses exponentiation'],
+    ['let d = 3; d **= 2;', 'uses exponentiation'],
+    ['const { sin, cos } = Math;', 'uses Math other than by a listed function'],
+    ['const M = Math; M.sin(1);', 'uses Math other than by a listed function'],
+    ["const s = Math['sin'](1);", 'uses Math other than by a listed function'],
+    ['const s = Math?.sin(1);', 'uses Math other than by a listed function'],
+  ])('flags %s under apps/game/src/space and nowhere else in the app', (text, reason) => {
+    const path = 'apps/game/src/space/label-place.ts';
+    expect(run(text, path)).toEqual([`${path}: ${reason}`]);
+    expect(run(text, SAVE)).toEqual([]);
+    expect(run(`/** ${text} */\nconst s = '${text.replaceAll("'", '"')}'; const d = (a - b) * (a - b);`, path)).toEqual([]);
+  });
+  it.each([
+    ['const d = new Date;', 'uses new Date'],
+    ['const d = new Date ();', 'uses new Date'],
+    ['const now = Date();', 'calls Date for the time'],
+    ['const start = performance.timeOrigin;', 'uses performance.timeOrigin'],
+    ['const at = event.timeStamp;', 'uses an event time stamp'],
+    ['const at = event?.timeStamp;', 'uses an event time stamp'],
+  ])('flags %s under apps/game/src and passes it in the platform folder', (text, reason) => {
+    expect(run(text, SAVE)).toEqual([`${SAVE}: ${reason}`]);
+    expect(run(text, CLOCK)).toEqual([]);
+    expect(run(`// ${text}\nconst validDate = 1; const updated = { Date: 1 }; const timeStampless = 2;`, SAVE)).toEqual([]);
+  });
   it('apps/diagnostics is not examined', () => {
     expect(run('Math.random(); performance.now(); new Date(0);', 'apps/diagnostics/src/main.ts')).toEqual([]);
   });

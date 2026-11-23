@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { createBus } from '../src/bus';
 import type { GameEvents, PersistState } from '../src/events';
-import { askToKeepData, createPersistAsker, readPersistState, type StorageManagerLike } from '../src/protect/index';
+import { askToKeepData } from '../src/protect/persist';
+import { createPersistAsker, readPersistState, type StorageManagerLike } from '../src/protect/index';
 
 /** A browser's storage manager that answers `answer`, and counts how often it was asked. */
 function browser(answer: boolean | Error): StorageManagerLike & { asked: number } {

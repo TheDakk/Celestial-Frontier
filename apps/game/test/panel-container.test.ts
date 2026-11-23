@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
-import { mountPanelContainer, panelWidthClass, PANEL_WIDTH_LIMITS, type ResizeObserverLike } from '../src/layout';
+import { mountPanelContainer, type ResizeObserverLike } from '../src/layout';
+import { panelWidthClass, PANEL_WIDTH_LIMITS } from '../src/layout/panel-container';
 
 function panel(width: number): HTMLElement {
   const el = document.createElement('section');

@@ -13,9 +13,9 @@ const ART_SRC = /^packages\/art-(?!testparts\/)[^/]+\/src\//;
 const APP_SRC = /^apps\/game\/src\//;
 const APP_PLATFORM = /^apps\/game\/src\/platform\//;
 // The map folder turns world positions into whole art pixels: before it rounds, it may use only operations every
-// device computes to the same bits. These functions are not among them.
+// device computes to the same bits. Of Math, these are the ones; `**` is not one, and Math may be reached no other way.
 const APP_SPACE = /^apps\/game\/src\/space\//;
-const INEXACT_MATH = new Set(['sin', 'cos', 'tan', 'atan', 'atan2', 'pow', 'exp', 'log', 'hypot']);
+const EXACT_MATH = new Set(['abs', 'floor', 'ceil', 'round', 'trunc', 'min', 'max', 'sqrt', 'imul', 'sign']);
 // String and template literals are matched first and kept, so `//` or `/*` inside a string
 // does not start a comment; only the comment matches are removed.
 const LITERALS_OR_COMMENTS = /'(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*"|`(?:[^`\\]|\\.)*`|\/\*[\s\S]*?\*\/|\/\/[^\n]*/g;
@@ -32,7 +32,11 @@ const FORBIDDEN_USES = [
 ];
 // The game app outside its platform folder: no clock and no entropy, however the entropy function is reached.
 const APP_USES = [
-  ...FORBIDDEN_USES,
+  ...FORBIDDEN_USES.filter(([, reason]) => reason !== 'uses new Date'),
+  [/\bnew\s+Date\b/, 'uses new Date'],
+  [/(?<!\bnew\s+)(?<![.\w$])Date\s*\(/, 'calls Date for the time'],
+  [/\bperformance\s*(?:\?\.|\.)\s*timeOrigin\b/, 'uses performance.timeOrigin'],
+  [/(?:\?\.|\.)\s*timeStamp\b/, 'uses an event time stamp'],
   [/\bgetRandomValues\b/, 'uses crypto.getRandomValues'],
   [/\brandomUUID\b/, 'uses crypto.randomUUID'],
 ];
@@ -119,8 +123,8 @@ const isChecked = (path) => ART_SRC.test(path) || APP_SRC.test(path) || GAMEPLAY
  *  gameplay rules, under packages/persistence/src/ and packages/audio/src/ the clock, random and art-import
  *  rules, and under packages/art-<name>/src/ (except art-testparts) the renderer rules; files under
  *  apps/game/src/ get the clock, random and entropy rules, and inside its platform/ folder only the
- *  Math.random rule; files under apps/game/src/space/ may also not use Math.sin, cos, tan, atan, atan2, pow, exp,
- *  log or hypot; everything else is ignored. A NUL byte in any examined file is reported. */
+ *  Math.random rule; files under apps/game/src/space/ may use of Math only abs, floor, ceil, round, trunc, min,
+ *  max, sqrt, imul and sign, each by its name, and no `**`; everything else is ignored. A NUL byte in any examined file is reported. */
 export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {
@@ -133,8 +137,10 @@ export function checkPurity(files) {
       const { bare } = scanCode(text);
       for (const [re, reason] of APP_PLATFORM.test(path) ? APP_PLATFORM_USES : APP_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
       if (APP_SPACE.test(path)) {
-        const inexact = new Set([...bare.matchAll(MATH_USE)].map((m) => m[1]).filter((name) => INEXACT_MATH.has(name)));
-        for (const name of inexact) problems.push(`${path}: uses Math.${name}`);
+        const uses = [...bare.matchAll(MATH_USE)];
+        for (const name of new Set(uses.map((m) => m[1]).filter((name) => !EXACT_MATH.has(name)))) problems.push(`${path}: uses Math.${name}`);
+        if ((bare.match(/(?<![.\w$])Math\b/g) ?? []).length !== uses.length) problems.push(`${path}: uses Math other than by a listed function`);
+        if (/\*\*/.test(bare)) problems.push(`${path}: uses exponentiation`);
       }
       continue;
     }

@@ -68,11 +68,35 @@ export async function loadPack(entry: PackEntry, deps: { cache: PackCache; sourc
   return { state: 'standin', reason: unreachable ? 'offline' : 'absent' };
 }
 
-/** Removes every cached pack the manifest no longer lists. */
+/** The cache's own note of which packs the last two manifests listed. No pack has this key: a pack's is its hash. */
+const MANIFESTS_KEY = 'manifests';
+const HASH = /^[0-9a-f]{64}$/;
+const hashList = (value: unknown): string[] | null =>
+  (Array.isArray(value) && value.every((hash) => typeof hash === 'string' && HASH.test(hash)) ? value as string[] : null);
+
+/** The hashes of the manifest loaded before a different one was; none when the note is absent or unreadable. */
+async function notedManifests(cache: PackCache): Promise<{ current: string[]; prior: string[] }> {
+  const bytes = await quietly(() => cache.get(MANIFESTS_KEY));
+  try {
+    const note = JSON.parse(new TextDecoder().decode(bytes ?? new Uint8Array())) as { current?: unknown; prior?: unknown } | null;
+    const current = hashList(note?.current);
+    const prior = hashList(note?.prior);
+    if (current !== null && prior !== null) return { current, prior };
+  } catch { /* no note */ }
+  return { current: [], prior: [] };
+}
+
+/** Keeps the packs this manifest lists and those the manifest before it listed, so the build before this one
+ *  still has its packs offline after a rollback. Every other cached pack is removed. */
 export async function prunePackCache(cache: PackCache, manifest: PackManifest): Promise<void> {
-  const listed = new Set(manifest.packs.map((entry) => entry.sha256));
+  const listed = manifest.packs.map((entry) => entry.sha256).sort();
+  const noted = await notedManifests(cache);
+  const same = noted.current.length === listed.length && noted.current.every((hash, i) => hash === listed[i]);
+  const note = same ? noted : { current: listed, prior: noted.current };
+  if (!same) await quietly(() => cache.put(MANIFESTS_KEY, new TextEncoder().encode(JSON.stringify(note))));
+  const kept = new Set([MANIFESTS_KEY, ...note.current, ...note.prior]);
   for (const key of (await quietly(() => cache.keys())) ?? []) {
-    if (!listed.has(key)) await quietly(() => cache.delete(key));
+    if (!kept.has(key)) await quietly(() => cache.delete(key));
   }
 }
 
@@ -90,8 +114,8 @@ export interface PackReport {
 
 /**
  * Loads every pack of the manifest, in its order. A ready `interface` pack that parses becomes the sheet in
- * use; one that does not parse is refused and the sheet in use stays. The cache is pruned to the manifest
- * only once every pack is ready, so the packs of the build before stay cached until this one's are.
+ * use; one that does not parse is refused and the sheet in use stays. The cache is pruned only once every pack
+ * is ready, and then to this manifest and the one before it.
  */
 export async function loadPacks(manifest: PackManifest, deps: PackLoadDeps): Promise<PackReport> {
   const results: Array<{ entry: PackEntry; result: PackResult }> = [];

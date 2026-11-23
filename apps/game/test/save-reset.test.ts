@@ -10,7 +10,8 @@ import {
 import { createBus } from '../src/bus';
 import type { GameEvents, WriteHold } from '../src/events';
 import { devicePreferences, deviceStorage } from '../src/platform/preferences';
-import { REGISTRY, bootSave, createSaveLoop, freshExpeditionPortable, resetExpedition } from '../src/save/index';
+import { REGISTRY, bootSave, createSaveLoop, resetExpedition } from '../src/save/index';
+import { freshExpeditionPortable } from '../src/save/reset';
 import { GALAXY_ROUTE, NOW, SOL_ROUTE, bootedPage, dump, namedState, withDeviceStorage } from './save-support';
 
 const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });

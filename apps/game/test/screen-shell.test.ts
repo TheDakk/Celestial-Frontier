@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
-import { V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
+import { F3_ACTIVE_PLAY_LEASE_KEY, F3_REVISION_KEY, V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
 import { HEARTBEAT_MS, REGISTRY, bootSave } from '../src/save/index';
-import { NOTICE_WORDS, heldNoticeFor } from '../src/screens';
+import { NOTICE_WORDS, heldNoticeFor } from '../src/screens/notices';
 import { SOL as SOL_STAR } from './nav-support';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, setVisibility, settled } from './shell-support';
@@ -86,6 +86,37 @@ describe('the booted page', () => {
     expect([other.reloads, page.reloads]).toEqual([1, 0]);
   });
 
+  it('a reload the page asks for waits until the save is given up, so the next page can take it at once', async () => {
+    const base = createMemoryBackend();
+    let entered: () => void = () => undefined;
+    let release: () => void = () => undefined;
+    const held = async (): Promise<boolean> => (JSON.parse((await base.get('meta', F3_ACTIVE_PLAY_LEASE_KEY))!) as { held: boolean }).held;
+    // The write that frees the lease waits until the test lets it through.
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        const lease = operations.find((operation) => operation.key === F3_ACTIVE_PLAY_LEASE_KEY);
+        if (lease !== undefined && 'value' in lease && !(JSON.parse(lease.value) as { held: boolean }).held) {
+          entered();
+          await new Promise<void>((resolve) => { release = resolve; });
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const page = await bootPage({ backend });
+    expect(page.runtime.diagnostics().leaseOwned).toBe(true);
+    // Another writer moved the stored revision on; the page's next heartbeat sees it.
+    await base.apply([{ store: 'meta', key: F3_REVISION_KEY, value: String(page.runtime.revision + 5) }]);
+    const givingUp = new Promise<void>((resolve) => { entered = resolve; });
+    page.timers[0]!.run();
+    await givingUp;
+    await settled();
+    expect([page.loop.status, page.reloads, await held()]).toEqual(['reload-required', 0, true]);
+    release();
+    await settled();
+    expect([page.reloads, await held()]).toEqual([1, false]);
+  });
+
   it('a future-version boot shows the newer-version notice and no control can start a write', async () => {
     const backend = await futureSave();
     const before = await dump(backend);
@@ -107,7 +138,8 @@ describe('the booted page', () => {
       control?.dispatchEvent(new Event('input', { bubbles: true }));
       await settled();
     }
-    expect(page.live.sndOn).toBe(false);
+    // Under a hold a setting is refused, as the game refuses it: nothing changes even on screen.
+    expect([page.live.sndOn, page.chrome.toast.textContent!.includes('Read-only expedition')]).toEqual([true, true]);
     page.time.advance(60_000);
     page.timers[0]!.run();
     setVisibility('hidden');
@@ -133,6 +165,39 @@ describe('the booted page', () => {
     again().click();
     await settled();
     expect(page.reloads).toBe(1);
+  });
+
+  it('a lease that cannot be taken at boot settles in a hold with Try again and asks for no reload, boot after boot', async () => {
+    const backend = createMemoryBackend();
+    await seedCurrentSave(backend, 'Vega');
+    // A lease row this build cannot decode: the boot read succeeds and every lease read throws.
+    await backend.apply([{ store: 'meta', key: F3_ACTIVE_PLAY_LEASE_KEY, value: 'not a lease this build reads' }]);
+    const before = await dump(backend);
+    const again = (): HTMLButtonElement => notice()!.querySelector<HTMLButtonElement>('[data-notice-action="retry"]')!;
+
+    let page = await bootPage({ backend });
+    for (let boot = 0; boot < 2; boot++) {
+      expect(page.booted.kind).toBe('current');
+      expect([page.reloads, page.loop.status, page.gate.hold]).toEqual([0, 'held', 'transient-read']);
+      expect(notice()!.dataset.notice).toBe('unavailable');
+      expect(again().textContent).toBe('Try again');
+      // Later heartbeats touch nothing and ask for nothing.
+      page.time.advance(60_000);
+      page.timers[0]!.run();
+      await settled();
+      expect(page.reloads).toBe(0);
+      // Backup stays in reach, and nothing else may start a write.
+      page.openSettings();
+      expect(['backup', 'restore', 'reset'].map((key) => page.control(key).disabled)).toEqual([false, true, true]);
+      expect(page.panel().textContent).toContain('Protected: nothing is written');
+      if (boot === 1) break;
+      // The player's own Try again reloads once, since the store reads; the next page settles the same way.
+      again().click();
+      await settled();
+      expect(page.reloads).toBe(1);
+      page = await bootPage({ backend });
+    }
+    expect(await dump(backend)).toEqual(before);
   });
 
   it('names each hold in words: newer, damaged, unavailable, or a reload', () => {

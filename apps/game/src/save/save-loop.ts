@@ -3,8 +3,11 @@
    A checkpoint is the last stored state with the route, the settings and the epoch laid over it. The epoch is
    a candidate until the checkpoint that carries it is stored; drawing reads only the published one. A commit
    that is refused, or a lease or revision this page can no longer prove, makes the page read-only until it
-   reloads. Under a write hold nothing here touches storage, the lease row included. */
-import { createRevisionedRepository, type SaveStateV2, type StorageBackend } from '@cf/persistence';
+   reloads. Storage that fails the lease before it has once answered is a hold instead: a reload would only
+   meet the same failure. A session seed this page minted is stored by the first heartbeat that holds the
+   lease, before anything can draw from it; if storage refuses it, that too is a hold. Under a write hold
+   nothing here touches storage, the lease row included. */
+import { createRevisionedRepository, type SaveStateV2, type StorageBackend, type V5ExtensionWrite } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
 import type { Clocks } from '../platform/clock';
@@ -19,8 +22,8 @@ export const CHECKPOINT_MS = 30_000;
 export type SaveReason = 'route' | 'settings' | 'epoch-edge' | 'lifecycle';
 
 export interface SaveLoop {
-  /** Resolves true when this request's state is stored. */
-  request(reason: SaveReason): Promise<boolean>;
+  /** Resolves true when this request's state is stored. `extensionWrites` are stored in the same checkpoint. */
+  request(reason: SaveReason, extensionWrites?: readonly V5ExtensionWrite[]): Promise<boolean>;
   /** Resolves when no write is running or waiting. */
   flush(): Promise<void>;
   /** One heartbeat: acquire or renew the lease, confirm the stored revision is this page's, and store a
@@ -32,6 +35,9 @@ export interface SaveLoop {
   /** The page is visible again: take the lease back and resume accrual. */
   show(): Promise<void>;
   readonly status: 'idle' | 'writing' | 'held' | 'reload-required';
+  /** True while a change made on this page would be stored: no hold, no reload owed, and the lease is this
+   *  page's over the revision it knows. */
+  mayWrite(): boolean;
   /** The epoch every drawing and descriptor reads: only ever a committed one. */
   publishedEpoch(): number;
 }
@@ -58,16 +64,27 @@ export function createSaveLoop(deps: {
   let reloadRequired = false;
   let lastCheckpointAt = clocks.monotonicNow();
   let active: Promise<boolean> | null = null;
-  let queued: { run: Promise<boolean>; edgeOnly: boolean } | null = null;
+  let queued: { run: Promise<boolean>; edgeOnly: boolean; extensionWrites: V5ExtensionWrite[] } | null = null;
   /** The lease and revision part of a heartbeat or a show; a write waits for it. */
   let proving: Promise<void> | null = null;
   let hiding: Promise<void> | null = null;
+  /** True once storage has answered for the lease, whoever holds it. */
+  let leaseAnswered = false;
 
   const closed = (): boolean => !gate.mayWrite() || reloadRequired;
   const mayWrite = (): boolean => {
     if (closed()) return false;
     const diagnostics = runtime.diagnostics();
     return diagnostics.leaseOwned && !diagnostics.staleBlocked;
+  };
+
+  let announced = false;
+  /** Says so when what `mayWrite` answers has changed. */
+  const announce = (): void => {
+    const writable = mayWrite();
+    if (writable === announced) return;
+    announced = writable;
+    bus.emit('save:authority', { writable });
   };
 
   /** Makes the page read-only and asks, once, for a reload. */
@@ -77,9 +94,19 @@ export function createSaveLoop(deps: {
     runtime.setAnswerable(false);
     void runtime.release().catch(() => undefined);
     bus.emit('save:reload-required', { reason });
+    announce();
   };
 
-  const write = async (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
+  /** Holds the page, with no reload: the player may try storage again. */
+  const holdTransient = (detail: string): void => {
+    gate.holdTransient(detail);
+    runtime.setAnswerable(false);
+    void runtime.release().catch(() => undefined);
+    bus.emit('save:held', { detail });
+    announce();
+  };
+
+  const write = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
     if (proving !== null) await proving.catch(() => undefined);
     if (!mayWrite()) return false;
     const staged = epoch.stage(runtime.activePlayMs(), intent);
@@ -97,7 +124,7 @@ export function createSaveLoop(deps: {
         trainingReplacement: false,
       });
       if (projection.kind !== 'projected') throw new Error(`checkpoint projection refused (${projection.detail})`);
-      const outcome = await runtime.commit(projection.state, clocks.wallNow());
+      const outcome = await runtime.commit(projection.state, clocks.wallNow(), extensionWrites);
       if (outcome.kind === 'committed') {
         durable = true;
         if (epoch.commit(stage, outcome.revision).kind === 'invalid-stage') {
@@ -107,7 +134,8 @@ export function createSaveLoop(deps: {
         live.savedView = outcome.saved.canonicalState.savedView;
         live.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;
         lastCheckpointAt = clocks.monotonicNow();
-        bus.emit('save:committed', { revision: outcome.revision });
+        // The checkpoint is stored and published. A listener that fails on hearing of it has not undone that.
+        try { bus.emit('save:committed', { revision: outcome.revision }); } catch { /* the listener's own fault */ }
         return true;
       }
       epoch.reject(stage);
@@ -122,29 +150,34 @@ export function createSaveLoop(deps: {
         return true;
       }
       if (stage !== null) epoch.reject(stage);
-      requireReload(`save attempt rejected (${message(error)})`);
+      // A page whose minted seed was never stored has stored nothing yet: a reload would mint another and fail
+      // the same way.
+      if (runtime.diagnostics().seedStored) requireReload(`save attempt rejected (${message(error)})`);
+      else holdTransient(`session seed not stored (${message(error)})`);
       return false;
     }
   };
 
   /** One write at a time. Requests made during a write share the one write that follows it. */
-  const start = (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
-    const run: Promise<boolean> = write(intent).finally(() => { if (active === run) active = null; });
+  const start = (edgeOnly: boolean, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
+    const run: Promise<boolean> = write(edgeOnly ? 'ecology-edge' : 'ordinary', extensionWrites)
+      .finally(() => { if (active === run) active = null; });
     active = run;
     return run;
   };
-  const request = (reason: SaveReason): Promise<boolean> => {
+  const request = (reason: SaveReason, extensionWrites: readonly V5ExtensionWrite[] = []): Promise<boolean> => {
     if (closed()) return Promise.resolve(false);
     const edgeOnly = reason === 'epoch-edge';
     if (queued !== null) {
       if (!edgeOnly) queued.edgeOnly = false;
+      queued.extensionWrites.push(...extensionWrites);
       return queued.run;
     }
-    if (active === null) return start(edgeOnly ? 'ecology-edge' : 'ordinary');
-    const waiting = { edgeOnly, run: Promise.resolve(false) };
+    if (active === null) return start(edgeOnly, extensionWrites);
+    const waiting = { edgeOnly, extensionWrites: [...extensionWrites], run: Promise.resolve(false) };
     waiting.run = active.then(() => false, () => false).then(() => {
       queued = null;
-      return start(waiting.edgeOnly ? 'ecology-edge' : 'ordinary');
+      return start(waiting.edgeOnly, waiting.extensionWrites);
     });
     queued = waiting;
     return waiting.run;
@@ -166,13 +199,16 @@ export function createSaveLoop(deps: {
     const run = (async () => {
       const outcome = await acquire();
       if (outcome.kind === 'storage-error') {
-        requireReload(`lease ${outcome.operation} storage failure (${outcome.message})`);
-      } else if (outcome.kind === 'owned' && await revisionIsCurrent()) {
-        owned = true;
+        const detail = `lease ${outcome.operation} storage failure (${outcome.message})`;
+        if (leaseAnswered) requireReload(detail); else holdTransient(detail);
+        return;
       }
+      if (outcome.kind !== 'lost') leaseAnswered = true;
+      if (outcome.kind === 'owned' && await revisionIsCurrent()) owned = true;
     })();
     proving = run;
     try { await run; } finally { if (proving === run) proving = null; }
+    announce();
     return owned;
   };
   return {
@@ -185,7 +221,8 @@ export function createSaveLoop(deps: {
       if (!await prove(() => runtime.heartbeat())) return;
       runtime.setAnswerable(true);
       if (active !== null) return;
-      if (clocks.monotonicNow() - lastCheckpointAt >= CHECKPOINT_MS) await request('lifecycle');
+      if (!runtime.diagnostics().seedStored) await request('lifecycle');
+      else if (clocks.monotonicNow() - lastCheckpointAt >= CHECKPOINT_MS) await request('lifecycle');
       else if (epoch.autoCheckpointDue(runtime.activePlayMs())) await request('epoch-edge');
     },
     hide() {
@@ -197,6 +234,7 @@ export function createSaveLoop(deps: {
           await request('lifecycle');
         } finally {
           try { await runtime.setVisible(false); } catch { await runtime.release(); }
+          announce();
         }
       })().finally(() => { if (hiding === run) hiding = null; });
       hiding = run;
@@ -212,6 +250,7 @@ export function createSaveLoop(deps: {
       if (!gate.mayWrite()) return 'held';
       return active !== null || queued !== null ? 'writing' : 'idle';
     },
+    mayWrite,
     publishedEpoch: () => epoch.published(),
   };
 }

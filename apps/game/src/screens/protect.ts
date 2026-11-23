@@ -1,12 +1,14 @@
 /* The save protection rows of Settings: whether the browser keeps the data, the backup door and the restore
    door. The flows are the protect system's; this draws them and passes the player's choices on. */
-import { PORTABLE_V5_MAX_BYTES, type ContentRegistry, type StorageOperation } from '@cf/persistence';
+import {
+  PORTABLE_V5_MAX_BYTES,
+  type ContentRegistry, type SaveStateV2, type StorageOperation, type V5ExtensionWrite, type V5Extensions,
+} from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents, PersistState } from '../events';
 import { wallDateParts, type Clocks } from '../platform/clock';
 import {
-  backupFileName, checkRestoreText, createBackupText, readLastBackupAt, recordBackup, restoreBackup,
-  type BackupGate, type BackupRuntime, type RestoreCheck,
+  backupFileName, checkRestoreText, createBackupText, readLastBackupAt, recordBackup, restoreBackup, type RestoreCheck,
 } from '../protect';
 import { icon, type Toast } from '../ui';
 import { el, row } from './dom';
@@ -15,10 +17,12 @@ export interface ProtectPorts {
   registry: ContentRegistry;
   clocks: Clocks;
   bus: Bus<GameEvents>;
-  runtime: BackupRuntime;
-  gate: BackupGate;
-  /** Resolves when no ordinary checkpoint is running or waiting. */
-  settle(): Promise<void>;
+  /** The last stored state (null when this page can no longer tell) and its extensions. */
+  runtime: { readonly extensions: V5Extensions; checkpointParent(): SaveStateV2 | null };
+  gate: { mayWrite(): boolean };
+  /** Stores what the player sees now, with these extension writes, in its turn among the page's writes. True
+   *  when it was stored; false at once on a page that may not write. */
+  store(extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean>;
   /** The last answer of the browser about keeping the data. */
   persistState(): PersistState;
   askAgain(): Promise<PersistState>;
@@ -66,6 +70,9 @@ export function createProtectView(ports: ProtectPorts, redraw: () => void): Prot
   let busy = false;
 
   const backUp = async (): Promise<void> => {
+    // What the player sees is stored first, so the file holds it. A page that may not write hands over the
+    // expedition as it was last stored.
+    await ports.store([]);
     const stored = ports.runtime.checkpointParent();
     if (stored === null) return;
     const wallNow = ports.clocks.wallNow();
@@ -73,7 +80,7 @@ export function createProtectView(ports: ProtectPorts, redraw: () => void): Prot
       createBackupText({ state: stored, extensions: ports.runtime.extensions, registry: ports.registry, wallNow }));
     backupNote = 'Backup file made.';
     redraw();
-    if (await recordBackup({ runtime: ports.runtime, gate: ports.gate, settle: ports.settle, wallNow })) {
+    if (await recordBackup({ extensions: () => ports.runtime.extensions, store: ports.store, wallNow })) {
       ports.bus.emit('protect:backup', { at: wallNow });
     }
     redraw();

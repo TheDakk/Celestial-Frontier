@@ -31,13 +31,11 @@ const { parseInterfaceSheet, codePointLabel, tierOf, subjectOf, planetOfClouds, 
 
 /** The side of every interface icon, in art pixels. */
 export const ICON_SIZE = 16;
-/** The highest colour number a map can show: its picture holds one byte a pixel. */
-export const MAX_MAP_COLOUR = 255;
 
 /**
  * The faults of a sheet, each as one line; `ok` only when there is none. A sheet that does not parse has only its
  * parse error. Otherwise: a required ramp, glyph, icon or element the sheet lacks; an icon or element name that is
- * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. An
+ * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE. An
  * optional element (a planet by its type, and the cloud deck of one) may be there or not; a cloud deck needs its
  * planet, at the planet's own size and with the planet's own tiers. A size tier (`<element>/x<width>`) of any listed
  * element is accepted; reported are a tier of a name that is not listed, a tier of an optional element the sheet does
@@ -53,8 +51,6 @@ export function checkInterface(text) {
     return { ok: false, parseError: error instanceof Error ? error.message : String(error), problems: [], summary: null };
   }
   const problems = [];
-  const top = sheet.palette.colours.length - 1;
-  if (top > MAX_MAP_COLOUR) problems.push(`the palette runs to colour ${top}: a map picture holds one byte a pixel, so colour numbers stop at ${MAX_MAP_COLOUR}`);
   for (const name of REQUIRED_RAMPS) if (!Object.hasOwn(sheet.palette.ramps, name)) problems.push(`missing ramp ${name}`);
   for (const codePoint of REQUIRED_GLYPHS) if (!sheet.font.glyphs.has(codePoint)) problems.push(`missing glyph ${codePointLabel(codePoint)}`);
   for (const name of ICON_NAMES) if (!sheet.icons.has(name)) problems.push(`missing icon ${name}`);

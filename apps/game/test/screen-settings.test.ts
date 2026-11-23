@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryBackend } from '@cf/persistence';
 import { REGISTRY, bootSave } from '../src/save/index';
-import { SETTINGS_CATALOG } from '../src/screens';
+import { SETTINGS_CATALOG } from '../src/screens/strings';
 import { LOCALIZED_ATTRIBUTES, pseudoLocalize } from '../src/ui';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, settled } from './shell-support';
@@ -112,6 +112,7 @@ describe('Settings', () => {
       async (page) => { page.chooser.answer = '{broken'; page.control('restore').click(); await settled(); },
       async (page) => {
         page.control('backup').click();
+        await settled();
         page.chooser.answer = JSON.stringify({ ...JSON.parse(page.files[0]!.text) as object, version: 2 });
         page.control('restore').click();
         await settled();
