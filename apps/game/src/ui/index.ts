@@ -5,3 +5,6 @@ export { currentSheet, interfaceGaps, placeholderSheet, sheetColours, sheetState
 export { DISPLAY_HEADINGS, displayText } from './display-text';
 export { icon } from './icon';
 export type { IconName, IconUse } from './icon';
+export { hideVisually } from './hidden';
+export { TOOLTIP_HOVER_MS, TOOLTIP_PRESS_MS, TooltipOwner } from './tooltips';
+export type { TooltipOwnerOptions } from './tooltips';

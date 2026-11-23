@@ -1,5 +1,6 @@
 import { drawText } from '@cf/art-interface';
 import { paintPixels } from '../platform/canvas';
+import { hideVisually } from './hidden';
 import { currentSheet, interfaceGaps, sheetColours } from './sheet-source';
 
 /** The fixed headings of the app. A test holds every character here to the glyphs the sheet must draw. */
@@ -25,7 +26,7 @@ export function displayText(text: string, opts: { level: 1 | 2 | 3 }): HTMLEleme
   canvas.style.imageRendering = 'pixelated';
   const reading = document.createElement('span');
   reading.textContent = text;
-  Object.assign(reading.style, { position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clipPath: 'inset(50%)', whiteSpace: 'nowrap' });
+  hideVisually(reading);
   heading.append(canvas, reading);
   return heading;
 }
