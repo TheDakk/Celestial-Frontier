@@ -70,6 +70,9 @@ describe('parseInterfaceSheet', () => {
     const sheet = parseInterfaceSheet(withAfter(6, 'colour 5000 123456', 'ramp far 5000 5000 5000 5000'));
     expect(sheet.palette.colours[5000]).toBe(0x123456);
     expect(sheet.palette.ramps['far']).toEqual([5000, 5000, 5000, 5000]);
+    // The numbers it defines, in order: the painter looks among these and never at the gap between.
+    expect(sheet.defined).toEqual([0, 1, 5000]);
+    expect(parseInterfaceSheet(withAfter(6, 'colour 7 000000', 'colour 3 000000')).defined).toEqual([0, 1, 3, 7]);
     expect(MAX_PALETTE_COLOURS).toBe(16777216);
   });
   it('an element may name its own ramps, up to five, for its values in fours; tint is the ramp its place on the map gives it', () => {

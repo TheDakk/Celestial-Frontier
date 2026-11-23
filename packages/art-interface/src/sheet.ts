@@ -6,7 +6,8 @@ export interface DisplayFont { readonly line: number; readonly base: number; rea
 /** `ramps`, on an element that names its own: the ramp of its values 1 to 4, then of 5 to 8, and so on in fours. */
 export interface Drawing { readonly w: number; readonly h: number; readonly pixels: Uint8Array; readonly anchor: readonly [number, number];
   readonly ramps?: readonly string[] }
-export interface InterfaceSheet { readonly version: 1; readonly palette: Palette; readonly font: DisplayFont;
+/** `defined`: the colour numbers its palette defines, lowest first. A number left out between two of them is no colour. */
+export interface InterfaceSheet { readonly version: 1; readonly palette: Palette; readonly defined: readonly number[]; readonly font: DisplayFont;
   readonly icons: ReadonlyMap<string, Drawing>; readonly elements: ReadonlyMap<string, Drawing> }
 
 /** The code point drawn for a character the font has no glyph for. Every sheet has it. */
@@ -41,7 +42,8 @@ export function codePointLabel(codePoint: number): string {
 
 /**
  * Reads an interface sheet, version 1. The first line that is neither blank nor a comment is `interface 1`. Then, in any
- * order: one `palette` section of `colour <index> <rrggbb>` and `ramp <name> <c> <c> <c> <c>` lines; one
+ * order: one `palette` section of `colour <index> <rrggbb>` and `ramp <name> <c> <c> <c> <c>` lines (a colour's
+ * number is any whole number from 0 to 16777215, and the numbers need not follow one another); one
  * `font display line=<n> base=<n> gap=<n> space=<n>` line, before the first glyph; and drawings, each a header line
  * followed by its pixel rows and ended by a blank line, another header or the end of the text:
  * `glyph U+<hex>` (values 0 to 4; as wide as its rows; at most `line` rows, placed from the top of the line box),
@@ -255,5 +257,5 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
   if (!icons.has(STAND_IN_ICON)) fail(last, `no icon named ${STAND_IN_ICON}`);
   // A sheet's palette has no outline, eye, highlight or glow colour: those four belong to creatures and stay 0.
   const palette: Palette = { colours, ramps, outline: 0, eye: 0, eyeHighlight: 0, glow: 0 };
-  return { version: 1, palette, font: { ...metrics, glyphs }, icons, elements };
+  return { version: 1, palette, defined: [...definedColours].sort((a, b) => a - b), font: { ...metrics, glyphs }, icons, elements };
 }

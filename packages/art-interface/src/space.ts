@@ -133,9 +133,9 @@ function nearestHue(candidates: readonly number[], rgb: number): number {
 }
 const HUE_WEIGHT = 2;
 
-/** The palette index nearest a 0xRRGGBB colour; ties go to the lower index. */
-export function nearestColour(palette: Palette, rgb: number): number {
-  return Math.max(0, nearestOf(palette.colours, rgb));
+/** The number of the colour a sheet defines that is nearest a 0xRRGGBB colour; ties go to the lower number. */
+export function nearestColour(sheet: InterfaceSheet, rgb: number): number {
+  return sheet.defined[nearestOf(sheet.defined.map((number) => sheet.palette.colours[number] ?? 0), rgb)] ?? 0;
 }
 
 /** The name of the palette ramp whose first colour is nearest a 0xRRGGBB colour; ties go to the ramp the sheet lists
@@ -164,13 +164,17 @@ function rootOf(n: number): number {
  * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one.
  */
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): SpacePicture {
-  const { palette } = sheet;
+  const { palette, defined } = sheet;
   const pixels = new Uint32Array(w * h);
-  const bright = palette.colours.map(brightness);
+  // Only the colours the sheet defines are looked among, and each table below holds only those: a picture costs by
+  // how many colours its sheet has, never by how high it numbers them.
+  const colours = defined.map((number) => palette.colours[number] ?? 0);
+  const bright: number[] = [];
+  for (let i = 0; i < defined.length; i++) bright[defined[i] ?? 0] = brightness(colours[i] ?? 0);
   const indexOf = new Map<number, number>();
   const index = (rgb: number): number => {
     let found = indexOf.get(rgb);
-    if (found === undefined) { found = nearestColour(palette, rgb); indexOf.set(rgb, found); }
+    if (found === undefined) { found = defined[nearestOf(colours, rgb)] ?? 0; indexOf.set(rgb, found); }
     return found;
   };
   const row = (y: number, x0: number, x1: number, value: number): void => {
@@ -269,9 +273,10 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
-  /** The palette index each index is shaded to at a share, worked out once for each share a picture uses. */
-  const shadedAt = new Map<number, Uint32Array>();
-  const solid = palette.colours.slice(1);
+  /** The colour number each number is shaded to at a share, worked out once for each share a picture uses. */
+  const shadedAt = new Map<number, number[]>();
+  const first = defined[0] === 0 ? 1 : 0;
+  const solid = colours.slice(first);
   const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
     const { x, y, r, clip, share } = item;
     if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
@@ -281,10 +286,11 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     if (shaded === undefined) {
       const rest = channels(toward).map((channel) => channel * Math.max(0, 16 - share));
       const at = (channel: number, i: number): number => Math.min(255, (channel * share + (rest[i] ?? 0)) >> 4);
-      shaded = Uint32Array.from(palette.colours, (rgb) => {
-        const [red, green, blue] = channels(rgb);
-        return nearestHue(solid, (at(red, 0) << 16) | (at(green, 1) << 8) | at(blue, 2)) + 1;
-      });
+      shaded = [];
+      for (let i = 0; i < defined.length; i++) {
+        const [red, green, blue] = channels(colours[i] ?? 0);
+        shaded[defined[i] ?? 0] = defined[nearestHue(solid, (at(red, 0) << 16) | (at(green, 1) << 8) | at(blue, 2)) + first] ?? 0;
+      }
       shadedAt.set(key, shaded);
     }
     for (let py = Math.max(0, y - r); py <= Math.min(h - 1, y + r); py++) {

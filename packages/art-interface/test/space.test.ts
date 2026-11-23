@@ -93,7 +93,7 @@ const arrowAt = (span: number | undefined, more: { flip?: boolean } = {}): Space
 const changes = (rows: readonly string[]): number => rows.reduce((n, row) => n + [...row].filter((c, i) => i > 0 && c !== row[i - 1]).length, 0);
 
 describe('a colour numbered above 255', () => {
-  const FAR = parseInterfaceSheet([
+  const FAR_TEXT = [
     'interface 1',
     'palette',
     'colour 0 000000', 'colour 1 ffffff', 'colour 5000 ff0000', 'colour 5001 800000', 'colour 70000 0000ff', 'colour 70001 00ff00',
@@ -103,7 +103,8 @@ describe('a colour numbered above 255', () => {
     'glyph U+FFFD', '1', '',
     'icon missing size=1', '1', '',
     'element flag anchor=0,0 ramps=far', '1234',
-  ].join('\n'));
+  ].join('\n');
+  const FAR = parseInterfaceSheet(FAR_TEXT);
   const rowOf = (items: readonly SpaceItem[]): number[] => Array.from(paintSpace(4, 1, items, FAR, noGaps()).pixels);
 
   it('is drawn as itself: a ramp naming colour 5000 draws 5000, and one past two bytes draws as itself too', () => {
@@ -114,6 +115,16 @@ describe('a colour numbered above 255', () => {
       { kind: 'disc', x: 2, y: 0, r: 0, bands: [0x00ff00] }, { kind: 'veil', x: 3, y: 0, r: 0, colour: 0x800000, level: 16 }])).toEqual([5000, 70000, 70001, 5001]);
     // Half of red is nearest the dark red, colour 5001.
     expect(rowOf([{ kind: 'dot', x: 0, y: 0, colour: RED }, { kind: 'shade', x: 0, y: 0, r: 0, share: 8 }])).toEqual([5001, 0, 0, 0]);
+  });
+  it('a number the sheet leaves out between two it defines is never drawn, though nothing is nearer black than a gap', () => {
+    const gapped = parseInterfaceSheet(FAR_TEXT.replace('colour 0 000000', 'colour 0 404040').replace('colour 1 ffffff', 'colour 1 ffffff\ncolour 9 101010'));
+    const row = (items: readonly SpaceItem[]): number[] => Array.from(paintSpace(2, 1, items, gapped, noGaps()).pixels);
+    expect(nearestColour(gapped, 0x000000)).toBe(9);
+    expect(row([{ kind: 'dot', x: 0, y: 0, colour: 0x000000 }, { kind: 'veil', x: 1, y: 0, r: 0, colour: 0x010101, level: 16 }])).toEqual([9, 9]);
+    // White shaded to nothing is black: the darkest colour the sheet defines, not a gap.
+    expect(row([{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'shade', x: 0, y: 0, r: 0, share: 0 }])).toEqual([9, 0]);
+    // A light veil leaves what is brighter than itself and covers what is darker, read by its number.
+    expect(row([{ kind: 'dot', x: 0, y: 0, colour: RED }, { kind: 'dot', x: 1, y: 0, colour: 0x101010 }, { kind: 'veil', x: 0, y: 0, r: 1, colour: 0x800000, level: 16, light: true }])).toEqual([5000, 5001]);
   });
 });
 
@@ -212,14 +223,14 @@ describe('a disc that the sheet may draw', () => {
 
 describe('nearest colour and ramp', () => {
   it('the nearest palette colour is chosen, and a tie goes to the lower index', () => {
-    expect(nearestColour(palette, 0xfefefe)).toBe(1);
-    expect(nearestColour(palette, 0x7a0505)).toBe(4);
-    expect(nearestColour(palette, 0x000001)).toBe(0);
+    expect(nearestColour(SHEET, 0xfefefe)).toBe(1);
+    expect(nearestColour(SHEET, 0x7a0505)).toBe(4);
+    expect(nearestColour(SHEET, 0x000001)).toBe(0);
     // Halfway between colour 0 (000000) and colour 6 (000080) on the blue channel alone.
-    expect(nearestColour(palette, 0x000040)).toBe(0);
+    expect(nearestColour(SHEET, 0x000040)).toBe(0);
     // Halfway between colour 4 (800000) and colour 3 (ff0000) is not a whole step; 0xc0 is one step nearer ff.
-    expect(nearestColour(palette, 0xbf0000)).toBe(4);
-    expect(nearestColour(palette, 0xc00000)).toBe(3);
+    expect(nearestColour(SHEET, 0xbf0000)).toBe(4);
+    expect(nearestColour(SHEET, 0xc00000)).toBe(3);
   });
 
   it('the nearest ramp is the one whose first colour is nearest', () => {
