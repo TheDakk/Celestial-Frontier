@@ -490,6 +490,25 @@ describe('painting space items', () => {
     expect(paint(2, 2, [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'shade', x: 0, y: 0, r: MAX_RADIUS + 1, share: 8 }, { kind: 'shade', x: 0, y: 0, r: -1, share: 8 }])).toEqual(['1.', '..']);
   });
 
+  it('a shade with `out` leaves the disc named, wherever that disc is centred: what is shaded is a crescent', () => {
+    const globe: SpaceItem = { kind: 'disc', x: 4, y: 3, r: 3, bands: [WHITE] };
+    // The night of a globe lit from the left: all of it but a disc of radius 3 about a point two pixels to the left.
+    expect(paint(9, 7, [globe, { kind: 'shade', x: 4, y: 3, r: 3, share: 8, out: { x: 2, y: 3, r: 3 } }])).toEqual([
+      '...122...',
+      '..11122..',
+      '.1111122.',
+      '.1111122.',
+      '.1111122.',
+      '..11122..',
+      '...122...',
+    ]);
+    // Without it the whole globe is shaded; a disc that holds the whole globe leaves it all; one of no size leaves nothing.
+    const all = paint(9, 7, [globe, { kind: 'shade', x: 4, y: 3, r: 3, share: 8 }]);
+    expect(all.join('')).not.toContain('1');
+    expect(paint(9, 7, [globe, { kind: 'shade', x: 4, y: 3, r: 3, share: 8, out: { x: 4, y: 3, r: 9 } }]).join('')).not.toContain('2');
+    expect(paint(9, 7, [globe, { kind: 'shade', x: 4, y: 3, r: 3, share: 8, out: { x: 4, y: 3, r: -1 } }])).toEqual(all);
+  });
+
   describe('a field', () => {
     const STEPS = [{ at: 40, colour: 0x800000 }, { at: 120, colour: RED }];
     /** A field over a picture `w` wide that rises evenly from 0 at its left edge to `top` at its right. */
@@ -523,6 +542,17 @@ describe('painting space items', () => {
       expect(paint(6, 1, [...under, all({ colour: 0x000080, share: 8 })])).toEqual(['246466']);
       // The same shadow is the same shade a `shade` item gives, pixel for pixel.
       expect(paint(4, 1, [...under, all({ colour: 0x000080, share: 8 })])).toEqual(paint(4, 1, [...under, { kind: 'shade', x: 0, y: 0, r: 9, share: 8, toward: 0x000080 }]));
+    });
+
+    it('a step is matched by a colour of its own hue before a grey of its own brightness, and is never the background', () => {
+      const sheet = parseInterfaceSheet(['interface 1', 'palette', 'colour 0 000000', 'colour 1 4060ff', 'colour 2 464646', 'colour 3 0a0f32', 'ramp ink 1 2 2 2', 'ramp accent 1 2 2 2',
+        'font display line=1 base=1 gap=0 space=1', 'glyph U+FFFD', '1', '', 'icon missing size=1', '1'].join('\n'));
+      const all = (colour: number): SpaceItem => ({ kind: 'field', cols: 2, rows: 2, values: [9, 9, 9, 9], u: 0, v: 0, du: 8192, steps: [{ at: 1, colour }] });
+      // 20307f is nearer the grey by plain distance (the shade's own test shows it) and takes the navy; a dot takes the grey.
+      expect([...paintSpace(1, 1, [all(0x20307f)], sheet, noGaps()).pixels]).toEqual([3]);
+      expect([...paintSpace(1, 1, [{ kind: 'dot', x: 0, y: 0, colour: 0x20307f }], sheet, noGaps()).pixels]).toEqual([2]);
+      // A light all but black is nearest the background: it is drawn in the darkest colour that is not.
+      expect([...paintSpace(1, 1, [all(0x010101)], sheet, noGaps()).pixels]).toEqual([3]);
     });
 
     it('is fixed to its grid: a view moved by k pixels shows the same shapes moved by k', () => {

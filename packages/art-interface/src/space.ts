@@ -27,14 +27,15 @@ import type { Gaps } from './text';
  *   nearest its own with each channel at `share` sixteenths (16 leaves it; more brightens, a channel stopping at its
  *   top), and never in the background. With `toward`, what a share under 16 does not keep of the pixel is taken from
  *   that colour. The nearest colour is judged by hue first, so a blue goes to a darker blue and not to a grey.
- *   `inner` and `clip` as for a veil.
+ *   `inner` and `clip` as for a veil; with `out`, only what lies outside that disc, which need not share its centre.
  * - field: a soft light or shadow as pixel art has it: solid steps with stepped edges and no pattern. `values` are
  *   whole numbers at the points of a grid `cols` by `rows`, row by row; between four points the field runs evenly. The
  *   picture's pixel (px, py) stands at (u + px * du, v + py * du) on the grid, counted in 65536ths of the way from one
  *   point to the next, so a grid fixed to the world keeps its shapes as the view moves. A pixel takes the last of
  *   `steps`, listed rising, whose `at` its value reaches. A step of a `colour` alone is a light: it is painted where
  *   the pixel is darker than it, as a veil that is a light. A step with a `share` is a shadow: a background pixel takes
- *   its colour, and any other is redrawn as a shade of that share toward it. What lies off the grid is left.
+ *   its colour, and any other is redrawn as a shade of that share toward it. What lies off the grid is left. A step's
+ *   colour is matched by hue first, as a shade's is, and is never the background: the faintest step still shows.
  */
 export type SpaceItem =
   | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number; clip?: { x: number; y: number; r: number } }
@@ -42,7 +43,7 @@ export type SpaceItem =
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
   | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean }
-  | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number } }
+  | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number }; out?: { x: number; y: number; r: number } }
   | { kind: 'field'; cols: number; rows: number; values: ArrayLike<number>; u: number; v: number; du: number; steps: readonly FieldStep[] };
 /** One step of a field: where it begins, and its colour; with `share`, the shade a shadow gives what it covers. */
 export interface FieldStep { at: number; colour: number; share?: number }
@@ -304,18 +305,19 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     return shaded;
   };
   const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
-    const { x, y, r, clip } = item;
+    const { x, y, r, clip, out } = item;
     if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
     const shaded = shadedFor(item.share, item.toward ?? 0);
     for (let py = Math.max(0, y - r); py <= Math.min(h - 1, y + r); py++) {
       const half = halfOf(r, Math.abs(py - y));
       const hole = item.inner === undefined ? -1 : halfOf(item.inner, Math.abs(py - y));
       const within = clip === undefined ? MAX_RADIUS * 4 : halfOf(clip.r, Math.abs(py - clip.y));
+      const kept = out === undefined ? -1 : halfOf(out.r, Math.abs(py - out.y));
       const from = Math.max(0, x - half, clip === undefined ? 0 : clip.x - within);
       const to = Math.min(w - 1, x + half, clip === undefined ? w - 1 : clip.x + within);
       for (let px = from; px <= to; px++) {
         const value = pixels[py * w + px] ?? 0;
-        if (value !== 0 && Math.abs(px - x) > hole) pixels[py * w + px] = shaded[value] ?? value;
+        if (value !== 0 && Math.abs(px - x) > hole && (out === undefined || Math.abs(px - out.x) > kept)) pixels[py * w + px] = shaded[value] ?? value;
       }
     }
   };
@@ -325,7 +327,7 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     if (cols < 2 || rows < 2 || du < 1 || steps.length === 0) return;
     // What each step paints: its colour number, how bright that is, and for a shadow the shade of every colour.
     const paints = steps.map((step) => {
-      const value = index(step.colour);
+      const value = defined[nearestHue(solid, step.colour) + first] ?? 0;
       return { value, floor: bright[value] ?? 0, shaded: step.share === undefined ? undefined : shadedFor(step.share, step.colour) };
     });
     /** The step a value has reached: -1 before the first. */
@@ -361,6 +363,7 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
           const fx = (gu & 0xffff) >> 8;
           s = stepOf(((a * (256 - fx) + b * fx) * (256 - fy) + (c * (256 - fx) + d * fx) * fy) >> 16);
         }
+        if (s < 0) continue;
         const paint = paints[s];
         if (paint === undefined) continue;
         const now = pixels[py * w + px] ?? 0;
