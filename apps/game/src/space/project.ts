@@ -1,7 +1,7 @@
 /* World positions in, whole art pixels out. What each body is drawn as is decided here; the picture itself is
    painted in whole numbers by the art-interface package. Only exact operations are used before rounding, so
    every device gives the same pixels. */
-import { paintSpace } from '@cf/art-interface';
+import { fittedWidth, paintSpace } from '@cf/art-interface';
 import type { Gaps, InterfaceSheet, SpaceItem } from '@cf/art-interface';
 import { mulberry32 } from '@cf/domain-rand';
 import { HOME_POS } from '@cf/domain-worldconfig';
@@ -107,7 +107,10 @@ function planetItems(p: PlanetNode, x: number, y: number, z: number, time: numbe
   if (r < 1) return [{ kind: 'dot', x, y, colour: bands[bands.length >> 1] ?? ICE }];
   const items: SpaceItem[] = [];
   if (p.ring) items.push({ kind: 'ring', x, y, r: Math.round(size * 2.1 * z), colour: ringColour(p) });
-  items.push({ kind: 'disc', x, y, r, bands });
+  // A planet whose type the sheet draws is that drawing, at the width the sheet draws it; its night follows that width.
+  const name = `planet/${p.type}`;
+  const drawn = sizing?.drawn?.(name, 2 * r + 1);
+  items.push(drawn === undefined ? { kind: 'disc', x, y, r, bands } : { kind: 'disc', x, y, r: drawn >> 1, bands, element: name });
   if (r < 2) return items;
   for (let m = 0; m < p.moons; m++) {
     const orbit = 1.7 + m * 0.48;
@@ -258,13 +261,15 @@ export interface MapFrame {
 }
 export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
 
-/** What a frame paints, from the back: the star field, the map's scenery, then its bodies. */
-export function mapItems(frame: MapFrame, grid: Grid, scale: number): SpaceItem[] {
+/** What a frame paints, from the back: the star field, the map's scenery, then its bodies. With the `sheet` of a
+ *  picture sized by the camera, a planet whose type the sheet draws is that drawing in place of its bands. */
+export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: InterfaceSheet): SpaceItem[] {
   const cam = artCamera(frame.cam, frame.dpr, scale);
   // Reduced motion holds every clock of the map at its start.
   const time = frame.passes?.motion === false ? 0 : frame.time;
   const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, time), ...supernovaBodies(frame.nav, frame.epoch)];
-  const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale } } : {};
+  const drawn = sheet === undefined ? {} : { drawn: (name: string, span: number) => fittedWidth(sheet, name, span) };
+  const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn } } : {};
   const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
   if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
   const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing };
@@ -284,5 +289,5 @@ export function mapCaptions(frame: MapFrame): Caption[] {
 export function mapPicture(frame: MapFrame, sheet: InterfaceSheet, gaps: Gaps): MapPicture {
   const scale = artScale(frame.view.w, frame.view.h, frame.dpr);
   const grid = artGrid(frame.view.w, frame.view.h, frame.dpr, scale);
-  return { ...paintSpace(grid.w, grid.h, mapItems(frame, grid, scale), sheet, gaps), scale };
+  return { ...paintSpace(grid.w, grid.h, mapItems(frame, grid, scale, sheet), sheet, gaps), scale };
 }

@@ -27,7 +27,7 @@ registerHooks({
   },
 });
 
-const { parseInterfaceSheet, codePointLabel, tierOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES } = await import('@cf/art-interface');
+const { parseInterfaceSheet, codePointLabel, tierOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES, OPTIONAL_ELEMENT_NAMES } = await import('@cf/art-interface');
 
 /** The side of every interface icon, in art pixels. */
 export const ICON_SIZE = 16;
@@ -37,9 +37,10 @@ export const MAX_MAP_COLOUR = 255;
 /**
  * The faults of a sheet, each as one line; `ok` only when there is none. A sheet that does not parse has only its
  * parse error. Otherwise: a required ramp, glyph, icon or element the sheet lacks; an icon or element name that is
- * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. A size
- * tier (`<element>/x<width>`) of any listed element is accepted; reported are a tier of a name that is not listed, a
- * tier not drawn at the width its name gives, and a tier no wider than its element.
+ * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. An
+ * optional element (a planet by its type) may be there or not. A size tier (`<element>/x<width>`) of any listed
+ * element is accepted; reported are a tier of a name that is not listed, a tier of an optional element the sheet does
+ * not draw, a tier not drawn at the width its name gives, and a tier no wider than its element.
  */
 export function checkInterface(text) {
   let sheet;
@@ -59,14 +60,16 @@ export function checkInterface(text) {
     if (icon.w !== ICON_SIZE || icon.h !== ICON_SIZE) problems.push(`icon ${name} is ${icon.w} by ${icon.h}, not ${ICON_SIZE} by ${ICON_SIZE}`);
   }
   for (const name of ELEMENT_NAMES) if (!sheet.elements.has(name)) problems.push(`missing element ${name}`);
+  const known = [...ELEMENT_NAMES, ...OPTIONAL_ELEMENT_NAMES];
   let tiers = 0;
   for (const [name, drawing] of sheet.elements) {
-    if (ELEMENT_NAMES.includes(name)) continue;
+    if (known.includes(name)) continue;
     const tier = tierOf(name);
     if (tier === undefined) { problems.push(`unknown element ${name}`); continue; }
     tiers++;
     const element = sheet.elements.get(tier.element);
-    if (!ELEMENT_NAMES.includes(tier.element)) problems.push(`tier ${name} is of an unknown element ${tier.element}`);
+    if (!known.includes(tier.element)) problems.push(`tier ${name} is of an unknown element ${tier.element}`);
+    else if (element === undefined && OPTIONAL_ELEMENT_NAMES.includes(tier.element)) problems.push(`tier ${name} has no element ${tier.element}`);
     else if (drawing.w !== tier.width) problems.push(`tier ${name} is ${drawing.w} wide, not ${tier.width}`);
     else if (element !== undefined && drawing.w <= element.w) problems.push(`tier ${name} is no wider than its element (${element.w})`);
   }

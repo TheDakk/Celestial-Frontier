@@ -37,6 +37,11 @@ export const ELEMENT_NAMES: readonly string[] = Object.freeze([
   ...['star/giant', 'quasar', 'protostar'].map((name) => `${name}/dim`),
 ]);
 
+/** The planet types the game makes. */
+export const PLANET_TYPES: readonly string[] = Object.freeze(['gas', 'rocky', 'desert', 'ice', 'terran', 'ocean', 'venus', 'lava']);
+/** The elements a sheet may draw or leave out: a planet by its type. A planet whose type has no drawing is banded by code. */
+export const OPTIONAL_ELEMENT_NAMES: readonly string[] = Object.freeze(PLANET_TYPES.map((type) => `planet/${type}`));
+
 const TIER_NAME = /^(.+)\/x([1-9][0-9]*)$/;
 /**
  * A size tier is the same subject as an element drawn again at a greater width, named `<element>/x<width>`: for

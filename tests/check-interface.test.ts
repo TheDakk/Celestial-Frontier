@@ -75,6 +75,18 @@ describe('size tiers in the checker', () => {
   });
 });
 
+describe('planet drawings in the checker', () => {
+  const drawing = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n`;
+  it('a planet type may have a drawing, and tiers of it, or none: none is required', () => {
+    const report = checkInterface(PLACEHOLDER + drawing('planet/gas', 8) + drawing('planet/gas/x16', 16) + drawing('planet/lava', 8));
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 62, tiers: 1, line: 12 } });
+  });
+  it('a planet of no type the game makes is unknown, and a tier of a planet the sheet does not draw is reported', () => {
+    expect(checkInterface(PLACEHOLDER + drawing('planet/mud', 8)).problems).toEqual(['unknown element planet/mud']);
+    expect(checkInterface(PLACEHOLDER + drawing('planet/gas/x16', 16)).problems).toEqual(['tier planet/gas/x16 has no element planet/gas']);
+  });
+});
+
 describe('colours a map can show', () => {
   it('a colour numbered past 255 is reported: a map picture holds one byte a pixel', () => {
     expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 255 ffffff\nramp ink')).problems).toEqual([]);

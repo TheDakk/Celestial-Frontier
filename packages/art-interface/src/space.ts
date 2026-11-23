@@ -17,7 +17,9 @@ import type { Gaps } from './text';
  *   up, and never under 1), each of its pixels a square block.
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
- * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top.
+ * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top. With
+ *   `element`, the sheet's drawing of that name is drawn in its place, tinted by the middle band and spanning the
+ *   disc's width, when the sheet has one no wider than the disc; a sheet without one is no gap: the bands are drawn.
  * - veil: the same circle in an ordered dither, `level` of every 16 pixels painted (0 none, 16 all). The pattern is fixed
  *   to the picture, so veils join without a seam and a higher level keeps every pixel of a lower one. With `inner` only
  *   the band outside the disc of that radius is painted; with `clip` only what lies inside that disc. A veil that is a
@@ -27,7 +29,7 @@ export type SpaceItem =
   | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number }
   | { kind: 'dot'; x: number; y: number; colour: number }
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
-  | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[] }
+  | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
   | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean };
 
 /** The ramp an element's values 5 to 8 are drawn in. */
@@ -50,6 +52,26 @@ function tiersOf(sheet: InterfaceSheet): ReadonlyMap<string, readonly Drawing[]>
     tiersOfSheet.set(sheet, tiers);
   }
   return tiers;
+}
+
+/** The drawing of an element for a span, and the whole number of times its size it is drawn at: the widest of the
+ *  element and its tiers that is no wider than the span (the element itself when none is), stepped up while a step and
+ *  a half of its width still fits in the span. Undefined when the sheet has no element of the name. */
+function fitted(sheet: InterfaceSheet, name: string, span: number): { drawing: Drawing; k: number } | undefined {
+  let drawing = sheet.elements.get(name);
+  if (drawing === undefined) return undefined;
+  for (const tier of tiersOf(sheet).get(name) ?? []) if (tier.w <= span && tier.w > drawing.w) drawing = tier;
+  let k = 1;
+  while ((2 * k + 1) * drawing.w <= 2 * span) k++;
+  return { drawing, k };
+}
+
+/** The width the painter draws an element at to span `span` art pixels. Undefined when the sheet has no element of
+ *  the name, or its smallest drawing is wider than the span. */
+export function fittedWidth(sheet: InterfaceSheet, name: string, span: number): number | undefined {
+  const plain = sheet.elements.get(name);
+  const fit = plain === undefined || plain.w > span ? undefined : fitted(sheet, name, Math.min(span, 2 * MAX_RADIUS));
+  return fit === undefined ? undefined : fit.k * fit.drawing.w;
 }
 
 /** The order the pixels of every 4 by 4 block of the picture join a veil in, by row then column. */
@@ -119,7 +141,6 @@ function rootOf(n: number): number {
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): PixelBuffer {
   const { palette } = sheet;
   const pixels = new Uint8Array(w * h);
-  const tiers = tiersOf(sheet);
   const bright = palette.colours.map(brightness);
   const indexOf = new Map<number, number>();
   const index = (rgb: number): number => {
@@ -134,22 +155,21 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
 
   const element = (item: Extract<SpaceItem, { kind: 'element' }>): void => {
     const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
-    let drawing: Drawing | undefined = sheet.elements.get(item.name);
-    if (drawing !== undefined) for (const tier of tiers.get(item.name) ?? []) if (tier.w <= span && tier.w > drawing.w) drawing = tier;
+    const fit = fitted(sheet, item.name, span);
+    let drawing = fit?.drawing;
     let [ax, ay] = drawing?.anchor ?? [0, 0];
+    let k = fit?.k ?? 1;
     if (drawing === undefined) {
       gaps.elements.push(item.name);
       drawing = sheet.icons.get(STAND_IN_ICON);
       if (drawing === undefined) throw new Error('the sheet has no stand-in icon');
       ax = drawing.w >> 1;
       ay = drawing.h >> 1;
+      while ((2 * k + 1) * drawing.w <= 2 * span) k++;
     }
     const first = palette.ramps[nearestRamp(palette, item.ramp) ?? ''];
     const ramps = drawing.ramps === undefined ? [first, palette.ramps[SECOND_RAMP] ?? first]
       : drawing.ramps.map((name) => (name === TINT_RAMP ? first : palette.ramps[name] ?? first));
-    // The whole number of times its size nearest the span: k steps up while k and a half widths still fit in it.
-    let k = 1;
-    while ((2 * k + 1) * drawing.w <= 2 * span) k++;
     const lead = k >> 1;
     for (let dy = 0; dy < drawing.h; dy++) {
       const top = item.y + (dy - ay) * k - lead;
@@ -181,8 +201,12 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
 
   const disc = (item: Extract<SpaceItem, { kind: 'disc' }>): void => {
     const { x, y, r, bands } = item;
-    if (bands.length === 0) return;
     const rows = 2 * r + 1;
+    if (item.element !== undefined && fittedWidth(sheet, item.element, rows) !== undefined) {
+      element({ kind: 'element', name: item.element, x, y, ramp: bands[bands.length >> 1] ?? 0, span: rows });
+      return;
+    }
+    if (bands.length === 0) return;
     let band = 0;
     let carried = 0;
     for (let dy = -r; dy <= r; dy++) {

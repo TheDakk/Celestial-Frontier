@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { hashBuffer, toAscii } from '@cf/art-compose';
-import { MAX_RADIUS, ditherRank, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, type Gaps, type SpaceItem } from '../src/index';
+import { MAX_RADIUS, ditherRank, fittedWidth, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, type Gaps, type SpaceItem } from '../src/index';
 
 const SHEET = parseInterfaceSheet([
   'interface 1',
@@ -136,6 +136,52 @@ describe('size tiers', () => {
   it('the same items and sheet give the same picture twice', () => {
     const items = [arrowAt(15), arrowAt(16, { flip: true })];
     expect(hashBuffer(paintSpace(40, 6, items, TIERED, noGaps()))).toBe(hashBuffer(paintSpace(40, 6, items.map((item) => ({ ...item })), TIERED, noGaps())));
+  });
+});
+
+/** The first sheet's colours, with a planet drawn 5 wide and again 9 wide. */
+const PLANETS = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 3 ff0000', 'colour 4 800000', 'colour 5 0000ff', 'colour 6 000080',
+  'ramp ink 1 2 2 2',
+  'ramp red 3 4 4 3',
+  'ramp accent 5 6 6 6',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '5', '',
+  'element planet/gas anchor=2,2', '.121.', '15551', '24142', '15551', '.121.', '',
+  'element planet/gas/x9 anchor=4,4', '...121...', '.1155511.', '.5141415.', '151414151', '254444452', '151414151', '.5141415.', '.1155511.', '...121...',
+].join('\n'));
+const paintPlanet = (r: number, bands: readonly number[], element?: string, gaps: Gaps = noGaps()): string[] =>
+  toAscii(paintSpace(11, 11, [{ kind: 'disc', x: 5, y: 5, r, bands, ...(element === undefined ? {} : { element }) }], PLANETS, gaps)).split('\n');
+
+describe('a disc that the sheet may draw', () => {
+  it('is the element of that name when the sheet has it, in the ramp nearest its middle band; the bands when it has not, and that is no gap', () => {
+    const banded = paintPlanet(2, [BLUE, RED, BLUE]);
+    expect(banded).toEqual(['...........', '...........', '...........', '....555....', '...55555...', '...33333...', '...33333...', '....555....', '...........', '...........', '...........']);
+    expect(paintPlanet(2, [BLUE, RED, BLUE], 'planet/gas')).toEqual(['...........', '...........', '...........', '....343....', '...35553...', '...43334...', '...35553...', '....343....', '...........', '...........', '...........']);
+    expect(paintPlanet(2, [BLUE, WHITE, BLUE], 'planet/gas')[5]).toBe('...22122...');
+    const gaps = noGaps();
+    expect(paintPlanet(2, [BLUE, RED, BLUE], 'planet/ice', gaps)).toEqual(banded);
+    expect(gaps.elements).toEqual([]);
+  });
+
+  it('is drawn to the width of the disc: a size tier when one fits, in whole steps beyond', () => {
+    expect(paintPlanet(4, [RED], 'planet/gas')).toEqual(['...........', '....343....', '..3355533..', '..5333335..', '.353333353.', '.453333354.', '.353333353.', '..5333335..', '..3355533..', '....343....', '...........']);
+    // Radius 3 is 7 wide: under the 9 tier, and under one and a half times the 5 wide drawing.
+    expect(paintPlanet(3, [RED], 'planet/gas')).toEqual(paintPlanet(2, [RED], 'planet/gas'));
+  });
+
+  it('keeps its bands while it is narrower than the smallest drawing', () => {
+    expect(paintPlanet(1, [RED], 'planet/gas')).toEqual(paintPlanet(1, [RED]));
+    expect(paintPlanet(1, [RED])[5]).toBe('....333....');
+  });
+
+  it('fittedWidth is the width an element is drawn at for a span it fits in', () => {
+    expect([5, 7, 8, 9, 13, 14, 22, 23].map((span) => fittedWidth(PLANETS, 'planet/gas', span))).toEqual([5, 5, 10, 9, 9, 18, 18, 27]);
+    expect(fittedWidth(PLANETS, 'planet/gas', 4)).toBeUndefined();
+    expect(fittedWidth(PLANETS, 'planet/ice', 40)).toBeUndefined();
   });
 });
 
