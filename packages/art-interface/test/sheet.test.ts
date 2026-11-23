@@ -65,7 +65,16 @@ describe('parseInterfaceSheet', () => {
     expect(() => parseInterfaceSheet(withLine(26, '1x1'))).toThrow(/^line 26: unknown pixel character 'x'$/);
     expect(() => parseInterfaceSheet(withAfter(12, '1..1', '1..1', '1..1'))).toThrow(/^line 15: glyph U\+0041 is taller than the line \(6\)$/);
   });
+  it('a colour and a ramp may name a colour far past the old limit of 95', () => {
+    const sheet = parseInterfaceSheet(withAfter(6, 'colour 5000 123456', 'ramp far 5000 5000 5000 5000'));
+    expect(sheet.palette.colours[5000]).toBe(0x123456);
+    expect(sheet.palette.ramps['far']).toEqual([5000, 5000, 5000, 5000]);
+  });
   it.each([
+    [withAfter(6, 'colour 16777216 ffffff'), 'line 7: bad colour index 16777216'],
+    [withAfter(6, 'colour -1 ffffff'), 'line 7: bad colour index -1'],
+    [withAfter(6, 'ramp far 1 1 1 16777216'), 'line 7: bad colour index 16777216'],
+    [withAfter(6, 'ramp far 1 1 1 -1'), 'line 7: bad colour index -1'],
     [withLine(1, 'interface 2'), 'line 1: expected interface 1'],
     [sheetOf(SMALL.slice(2)), 'line 1: expected interface 1'],
     [withLine(9, '.19.'), "line 9: pixel value '9' is above 8"],

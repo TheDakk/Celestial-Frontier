@@ -1,4 +1,4 @@
-import { PIXEL_CHARS } from '@cf/art-format';
+import { MAX_PALETTE_COLOURS, PIXEL_CHARS } from '@cf/art-format';
 import type { Palette } from '@cf/art-format';
 
 export interface Glyph { readonly w: number; readonly h: number; readonly pixels: Uint8Array }
@@ -64,6 +64,12 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
   const int = (s: string | undefined, line: number): number => {
     if (s === undefined || !/^-?\d+$/.test(s)) fail(line, 'expected an integer');
     return parseInt(s, 10);
+  };
+  /** A colour number: any below the part format's bound, which only stops a mistyped index being taken for one. */
+  const colourIndex = (s: string | undefined, line: number): number => {
+    const index = int(s, line);
+    if (index < 0 || index >= MAX_PALETTE_COLOURS) fail(line, `bad colour index ${index}`);
+    return index;
   };
   const name = (s: string, line: number, segmented: boolean): string => {
     const segments = segmented ? s.split('/') : [s];
@@ -152,8 +158,7 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
       case 'colour': {
         if (!inPalette) fail(n, 'colour outside a palette');
         if (args.length !== 2) fail(n, 'bad colour');
-        const index = int(args[0], n);
-        if (index < 0 || index > 95) fail(n, `bad colour index ${index}`);
+        const index = colourIndex(args[0], n);
         if (!/^[0-9a-fA-F]{6}$/.test(args[1] as string)) fail(n, 'bad colour');
         if (definedColours.has(index)) fail(n, `duplicate colour ${index}`);
         definedColours.add(index);
@@ -166,8 +171,7 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
         if (args.length !== 5) fail(n, 'bad ramp');
         const rampName = name(args[0] as string, n, false);
         if (rampName in ramps) fail(n, `duplicate ramp ${rampName}`);
-        const ramp = [int(args[1], n), int(args[2], n), int(args[3], n), int(args[4], n)] as const;
-        for (const index of ramp) if (index < 0 || index > 95) fail(n, `bad colour index ${index}`);
+        const ramp = [colourIndex(args[1], n), colourIndex(args[2], n), colourIndex(args[3], n), colourIndex(args[4], n)] as const;
         ramps[rampName] = ramp;
         rampLines.push({ name: rampName, line: n });
         break;
