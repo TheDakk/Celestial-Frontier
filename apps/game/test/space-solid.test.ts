@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { paintSpace } from '@cf/art-interface';
+import { paintSpace, parseInterfaceSheet } from '@cf/art-interface';
+import { testInterfaceSheetText } from '@cf/art-testparts';
 import type { Gaps, SpaceItem, SpacePicture } from '@cf/art-interface';
 import { HOME_POS, OBS_R, SOL_POS, UCELL } from '@cf/domain-worldconfig';
 import { galaxiesInCell } from '@cf/domain-worldgen';
@@ -307,6 +308,18 @@ describe('the charter in solid pixels: veil and fog', () => {
     // Banks, not a sheet: some of what lies beyond is fogged and most is not.
     expect(banked / beyond).toBeGreaterThan(0.03);
     expect(banked / beyond).toBeLessThan(0.5);
+  });
+
+  it('with a sheet that has three colours darker than space, a bank falls in three steps, the deepest the darkest', () => {
+    const deep = parseInterfaceSheet(testInterfaceSheetText().replace('ramp ink 1 2 3 4', 'colour 40 090e1e\ncolour 41 070a19\ncolour 42 050713\nramp ink 1 2 3 4'));
+    const picture = paintSpace(640, 360, fogItems(v), deep, noGaps());
+    const count = (value: number): number => picture.pixels.reduce((n, pixel) => n + (pixel === value ? 1 : 0), 0);
+    expect([...new Set(picture.pixels)].sort((a, b) => a - b)).toEqual([0, 40, 41, 42]);
+    // Each deeper step lies inside the one before it, so it covers less.
+    expect(count(40)).toBeGreaterThan(0);
+    expect(count(41)).toBeGreaterThan(0);
+    expect(count(42)).toBeGreaterThan(0);
+    expect(count(42)).toBeLessThan(count(40) + count(41));
   });
 
   it('a bank dims what it covers, a star never to nothing', () => {

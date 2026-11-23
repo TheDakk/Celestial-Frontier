@@ -29,8 +29,9 @@ const BRIDGE_STARS = 2.2;
 const WEB_RINGS = [[0.9, 0.13], [0.6, 0.4], [0.3, 0.72]] as const;
 const FOG_RINGS = [[0.9, 0.08], [0.6, 0.27], [0.3, 0.5]] as const;
 /** The fog in whole pixels: where the game's fog is this strong a bank begins, and what it leaves of the light of
- *  whatever it covers, in sixteenths; deeper in, less. */
-const FOG_STEPS = [{ at: 300, colour: FOG, share: 13 }, { at: 480, colour: FOG, share: 10 }] as const;
+ *  whatever it covers, in sixteenths; deeper in, less, and a darker colour where the sheet has one (a sheet with
+ *  one colour darker than space draws every step in it). */
+const FOG_STEPS = [{ at: 300, colour: 0x090e1e, share: 13 }, { at: 480, colour: 0x070a19, share: 10 }, { at: 560, colour: 0x050713, share: 8 }] as const;
 /** What the veil leaves of a light beyond the charter, in sixteenths: out to one and a half of its radius, and beyond. */
 const VEIL_SHARES = [13, 11] as const;
 /** The game's largest count of fog banks: when they drift, and when they stand still. */
