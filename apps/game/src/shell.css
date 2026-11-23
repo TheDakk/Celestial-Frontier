@@ -18,9 +18,10 @@ b { color: var(--emph); }
   position: absolute; z-index: 1; top: 0; left: 0; right: 0; height: calc(var(--safe-top) + var(--top-bar));
   background: var(--cf-color-surface); border-bottom: 1px solid var(--cf-color-border);
 }
-/* The title is 24px tall: it sits on the middle line of the search field beside it. */
+/* The title is 24px tall at every text size, so it fits the bar and keeps clear of the search field beside it: it sits
+   on the field's middle line. */
 #app > h1 {
-  position: absolute; z-index: 2; margin: 0; pointer-events: none;
+  position: absolute; z-index: 2; margin: 0; pointer-events: none; --display-scale: 2;
   top: calc(var(--safe-top) + var(--cf-space-2) + (var(--target-min, 44px) - 24px) / 2); left: calc(var(--safe-left) + var(--cf-space-3));
 }
 .display-text { line-height: 0; }
