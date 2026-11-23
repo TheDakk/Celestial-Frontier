@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/domain-naming": "*",
     "@cf/domain-rand": "*",
+    "@cf/domain-worldconfig": "*",
+    "@cf/domain-worldgen": "*",
     "@cf/scene": "*"
   },
   "devDependencies": {
