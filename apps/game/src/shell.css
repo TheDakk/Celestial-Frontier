@@ -13,6 +13,11 @@ b { color: var(--emph); }
   position: fixed; inset: 0; --dock-size: calc(var(--target-min, 44px) + var(--cf-space-4));
   --top-bar: calc(var(--target-min, 44px) + var(--cf-space-4));
 }
+/* The bar behind the title and the search field: solid, so both read over whatever the map shows. */
+.top-bar {
+  position: absolute; z-index: 1; top: 0; left: 0; right: 0; height: calc(var(--safe-top) + var(--top-bar));
+  background: var(--cf-color-surface); border-bottom: 1px solid var(--cf-color-border);
+}
 /* The title is 24px tall: it sits on the middle line of the search field beside it. */
 #app > h1 {
   position: absolute; z-index: 2; margin: 0; pointer-events: none;
@@ -92,10 +97,10 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 .confirm { padding: var(--cf-space-3); border: 1px solid var(--cf-color-danger); border-radius: var(--cf-radius-small); justify-content: flex-end; }
 [data-panel-w="narrow"] .row-label { flex-basis: 100%; }
 
-/* Standing notices, under the title; the toast, over the dock. */
+/* Standing notices, under the top bar; the toast, over the dock. */
 .notices {
   position: absolute; z-index: 5; display: grid; gap: var(--cf-space-2); justify-items: center; pointer-events: none;
-  top: calc(var(--safe-top) + var(--cf-space-8) + var(--cf-space-4)); left: var(--safe-left); right: var(--safe-right);
+  top: calc(var(--safe-top) + var(--top-bar) + var(--cf-space-2)); left: var(--safe-left); right: var(--safe-right);
   padding: 0 var(--cf-space-3);
 }
 .notice {
@@ -145,6 +150,7 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
   [data-size-class="compact"] .search {
     top: calc(var(--safe-top) + var(--top-bar)); right: auto; left: calc(var(--safe-left) + var(--cf-space-3)); width: min(180px, 60%);
   }
+  [data-size-class="compact"] .top-bar { height: calc(var(--safe-top) + 2 * var(--top-bar)); }
 }
 [data-size-class="compact"] .card {
   left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size)); max-height: 46%;

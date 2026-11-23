@@ -32,6 +32,9 @@ describe('the shell chrome', () => {
 
     const buttons = [...document.querySelectorAll<HTMLElement>('.dock button')];
     expect(buttons.map((b) => [b.dataset.screen, b.textContent])).toEqual([['settings', 'Settings'], ['guide', 'Guide']]);
+    // The bar behind the title and the search field is the first thing drawn: everything else stands on it or under it.
+    const bar = document.querySelector('#app > .top-bar')!;
+    expect([document.getElementById('app')!.firstElementChild, bar.getAttribute('aria-hidden'), bar.textContent]).toEqual([bar, 'true', '']);
     // A screen with no dock entry is drawn on the stage at once; a docked one only while its panel is open.
     expect(chrome.stage.textContent).toBe('map is shown');
     expect(document.getElementById('panel-settings')!.textContent).toBe('');

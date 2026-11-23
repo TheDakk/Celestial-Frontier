@@ -1,4 +1,5 @@
-/* The shell around every screen: the stage the map is drawn on, the dock that lists the screens that ask for
+/* The shell around every screen: the stage the map is drawn on, the solid bar behind the title and the search
+   field, the dock that lists the screens that ask for
    an entry, one panel per docked screen, the standing notices and the toast. Its arrangement for each size
    class is in the stylesheet, keyed on the root's data-size-class. */
 import { mountPanelContainer, type ResizeObserverLike } from '../layout';
@@ -20,11 +21,13 @@ export function mountChrome(root: HTMLElement, deps: {
   /** Watches a panel's own width (the layout system's observer in the browser). */
   panelObserver: (onWidth: (width: number) => void) => ResizeObserverLike;
 }): Chrome {
+  // The title and the search field stand on the bar, so both read over whatever the map shows.
+  const bar = el('div', { class: 'top-bar', 'aria-hidden': 'true' });
   const stage = el('main', { class: 'stage' });
   const notices = el('div', { class: 'notices', 'data-panel-boundary': true });
   const dock = el('nav', { class: 'dock', 'aria-label': 'Panels', 'data-panel-boundary': true });
   const toast = el('div', { class: 'toast' });
-  root.replaceChildren(stage, notices, dock, toast);
+  root.replaceChildren(bar, stage, notices, dock, toast);
   const disposers: Array<() => void> = [];
 
   for (const screen of deps.screens) {
