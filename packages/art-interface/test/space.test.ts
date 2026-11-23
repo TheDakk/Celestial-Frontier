@@ -68,6 +68,31 @@ describe('painting space items', () => {
     expect(paint(5, 3, [{ kind: 'element', name: 'arrow', x: 3, y: 0, ramp: WHITE, flip: true }])).toEqual(['...1.', '.521.', '...1.']);
   });
 
+  it('an element given a span is drawn in whole steps: each of its pixels a square block, the anchor block on its place', () => {
+    const big = ['..11......', '..11......', '..112255..', '..112255..', '..11......', '..11......', '..........'];
+    // The arrow is 4 wide: 8 is twice its width, and so is anything from one and a half widths up to under two and a half.
+    for (const span of [6, 8, 9]) expect(paint(10, 7, [{ kind: 'element', name: 'arrow', x: 3, y: 1, ramp: WHITE, span }]), `${span}`).toEqual(big);
+    expect(paint(13, 10, [{ kind: 'element', name: 'arrow', x: 4, y: 1, ramp: WHITE, span: 10 }])).toEqual([
+      '...111.......', '...111.......', '...111.......', '...111222555.', '...111222555.', '...111222555.', '...111.......', '...111.......', '...111.......', '.............']);
+    expect(paint(10, 7, [{ kind: 'element', name: 'arrow', x: 5, y: 1, ramp: WHITE, span: 8, flip: true }]))
+      .toEqual(['....11....', '....11....', '552211....', '552211....', '....11....', '....11....', '..........']);
+  });
+
+  it('a span of less than one and a half widths, or none, leaves the element as it is drawn', () => {
+    const plain = paint(5, 4, [{ kind: 'element', name: 'arrow', x: 1, y: 1, ramp: WHITE }]);
+    for (const span of [-3, 0, 1, 4, 5]) expect(paint(5, 4, [{ kind: 'element', name: 'arrow', x: 1, y: 1, ramp: WHITE, span }]), `${span}`).toEqual(plain);
+  });
+
+  it('a scaled element is cut at the edges of the picture, and a missing one scales its stand-in', () => {
+    expect(paint(4, 3, [{ kind: 'element', name: 'arrow', x: 1, y: 0, ramp: WHITE, span: 8 }])).toEqual(['11..', '1122', '1122']);
+    expect(paint(3, 2, [{ kind: 'element', name: 'arrow', x: -40, y: 900, ramp: WHITE, span: 4000 }])).toEqual(['...', '...']);
+    // A span so wide that one pixel of the arrow covers the whole picture.
+    expect(paint(3, 2, [{ kind: 'element', name: 'arrow', x: 1, y: 1, ramp: WHITE, span: 4000 }])).toEqual(['111', '111']);
+    const gaps = noGaps();
+    expect(paint(7, 6, [{ kind: 'element', name: 'comet', x: 3, y: 3, ramp: WHITE, span: 6 }], gaps)).toEqual(['11..11.', '11..11.', '..55...', '..55...', '11..11.', '11..11.']);
+    expect(gaps.elements).toEqual(['comet']);
+  });
+
   it('a missing element draws the stand-in centred on its place and is counted', () => {
     const gaps = noGaps();
     expect(paint(5, 4, [{ kind: 'element', name: 'comet', x: 2, y: 2, ramp: WHITE }, { kind: 'element', name: 'arrow', x: 0, y: 0, ramp: WHITE }], gaps))

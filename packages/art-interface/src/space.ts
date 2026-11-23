@@ -9,6 +9,8 @@ import type { Gaps } from './text';
  * Every colour is 0xRRGGBB and is shown in the sheet's palette colour nearest it.
  * - element: the sheet's drawing of that name with its anchor on (x, y), mirrored left to right about the anchor column
  *   with `flip`. Its values 1 to 4 take the palette ramp whose first colour is nearest `ramp`, 5 to 8 the ramp `accent`.
+ *   With `span`, the width in art pixels it is to cover, it is drawn in whole steps: at 1, 2, 3 ... times its size,
+ *   whichever brings its own width nearest (halfway goes up, and never under 1), each of its pixels a square block.
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
  * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top.
@@ -18,7 +20,7 @@ import type { Gaps } from './text';
  *   `light` never darkens: it leaves every pixel that is already as bright as its colour.
  */
 export type SpaceItem =
-  | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean }
+  | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number }
   | { kind: 'dot'; x: number; y: number; colour: number }
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[] }
@@ -120,15 +122,21 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
     const first = palette.ramps[nearestRamp(palette, item.ramp) ?? ''];
     const ramps = [first, palette.ramps[SECOND_RAMP] ?? first];
+    // The whole number of times its size nearest the span: k steps up while k and a half widths still fit in it.
+    const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
+    let k = 1;
+    while ((2 * k + 1) * drawing.w <= 2 * span) k++;
+    const lead = k >> 1;
     for (let dy = 0; dy < drawing.h; dy++) {
-      const y = item.y + dy - ay;
-      if (y < 0 || y >= h) continue;
+      const top = item.y + (dy - ay) * k - lead;
+      if (top + k <= 0 || top >= h) continue;
       for (let dx = 0; dx < drawing.w; dx++) {
         const value = drawing.pixels[dy * drawing.w + dx] ?? 0;
         if (value === 0) continue;
-        const x = item.flip === true ? item.x - (dx - ax) : item.x + dx - ax;
-        if (x < 0 || x >= w) continue;
-        pixels[y * w + x] = ramps[(value - 1) >> 2]?.[(value - 1) & 3] ?? 0;
+        const left = (item.flip === true ? item.x - (dx - ax) * k : item.x + (dx - ax) * k) - lead;
+        if (left + k <= 0 || left >= w) continue;
+        const colour = ramps[(value - 1) >> 2]?.[(value - 1) & 3] ?? 0;
+        for (let y = Math.max(0, top); y < Math.min(h, top + k); y++) row(y, left, left + k - 1, colour);
       }
     }
   };
