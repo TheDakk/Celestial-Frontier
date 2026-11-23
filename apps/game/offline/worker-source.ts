@@ -5,7 +5,8 @@
    and SHA-256, and of the worker's own program. A cache counts only when its marker, written last, and every
    file in it still match. One control row names the active build and the one before it. Every open page is
    pinned to the build it started with and is answered from that build alone, so a new build never changes
-   the files under a running page; the page takes the active build when it next loads. Nothing is ever
+   the files under a running page; the page takes the active build when it next loads. A waiting build is made
+   active when the player asks, or by the browser once no page of the app is open. Nothing is ever
    answered from the network in the shell's name. Art packs are not the shell's: their requests pass by, and
    the cache their loader keeps is never touched. */
 
@@ -76,7 +77,8 @@ export interface RequestFacts {
 export interface ShellWorker {
   /** Fetches and checks every file into this build's own cache. It throws, and leaves no cache, unless all match. */
   install(): Promise<void>;
-  /** Makes this build the active one and keeps the one before it. It throws rather than strand an open page. */
+  /** Makes this build the active one and keeps the one before it. It throws rather than strand an open page.
+   *  The browser calls it after the player's "Activate update", or by itself once every page has closed. */
   activate(): Promise<void>;
   message(data: unknown, source: { postMessage(message: unknown): void } | null): Promise<void>;
   /** False for a request the worker leaves to the network: an art pack. Decided at once, as the browser needs. */

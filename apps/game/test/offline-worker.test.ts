@@ -147,7 +147,7 @@ describe('the offline shell worker', () => {
     expect(w.fetched).toEqual([]);
   });
 
-  it('a new build waits; it serves only after activation is asked', async () => {
+  it('a new build waits while a page is open; it serves after activation is asked', async () => {
     const { w, a, b, tableA, tableB, first } = await waiting();
     // Installed beside the running build, and silent.
     expect(await state(w)).toEqual({ schema: SHELL_SCHEMA, activeBuildId: tableA.buildId, priorBuildId: null });

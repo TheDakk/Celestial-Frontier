@@ -1,7 +1,9 @@
 /* The page's side of the offline shell: it registers the worker and follows what the worker says, as a view a
-   screen draws. A new build is found, checked whole and held waiting; it becomes the active build only when
-   the player activates it, and this page enters it only when the player reloads. Nothing here reloads the page
-   by itself, and a change of controller proves nothing: only a message from the exact worker asked does. */
+   screen draws. A new build is found, checked whole and held waiting. It becomes the active build when the
+   player activates it, or by the browser's own rule once every page of the app has closed, so the next launch
+   may run it unasked. No open page is ever switched: this page enters another build only when the player
+   reloads. Nothing here reloads the page by itself, and a change of controller proves nothing: only a message
+   from the exact worker asked does. */
 import { SHELL_SCHEMA } from '../../offline/worker-source';
 
 const BUILD_ID = /^[a-f0-9]{64}$/;
@@ -18,7 +20,7 @@ export const UPDATE_WORDS = {
   current: 'This exact build is current and available offline.',
   checking: 'Checking for a complete update…',
   verifying: 'Verifying a complete exact update…',
-  waiting: 'A complete update is waiting. It will not replace this session until you activate it.',
+  waiting: 'A complete update is waiting. It will not replace this open page. It becomes active when you activate it, or after every Celestial Frontier window is closed.',
   updateReady: 'A complete update is ready. Activate it when you choose; this page will not reload automatically.',
   asking: 'Activating the verified update…',
   activating: 'The verified update is activating…',
