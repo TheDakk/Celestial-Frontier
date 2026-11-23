@@ -36,3 +36,13 @@ export const ELEMENT_NAMES: readonly string[] = Object.freeze([
   ...['wormhole', 'supernova/ns', 'primary/ns', 'primary/mag'].flatMap((name) => ['t1', 't2', 't3'].map((frame) => `${name}/${frame}`)),
   ...['star/giant', 'quasar', 'protostar'].map((name) => `${name}/dim`),
 ]);
+
+const TIER_NAME = /^(.+)\/x([1-9][0-9]*)$/;
+/**
+ * A size tier is the same subject as an element drawn again at a greater width, named `<element>/x<width>`: for
+ * `galaxy/spiral/v0/x64`, the element `galaxy/spiral/v0` and the width 64. Undefined for a name that is no tier's.
+ */
+export function tierOf(name: string): { element: string; width: number } | undefined {
+  const match = TIER_NAME.exec(name);
+  return match === null ? undefined : { element: match[1] ?? '', width: parseInt(match[2] ?? '', 10) };
+}

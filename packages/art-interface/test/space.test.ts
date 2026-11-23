@@ -71,6 +71,74 @@ describe('an element with its own ramps', () => {
   });
 });
 
+/** The first sheet, its arrow drawn again 8 and 16 wide, each with its own anchor; and a tier of a name with no plain drawing. */
+const TIERED = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 5 0000ff', 'colour 6 000080',
+  'ramp ink 1 2 2 2',
+  'ramp accent 5 6 6 6',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '5', '',
+  'element arrow anchor=1,0', '.125', '',
+  'element arrow/x16 anchor=4,1', '....1.....2.....', '....12121212125.', '....1.....2.....', '',
+  'element arrow/x8 anchor=2,0', '..12125.', '',
+  'element comet/x8 anchor=0,0', '11111111',
+].join('\n'));
+const PLAIN_ONLY = { ...TIERED, elements: new Map([...TIERED.elements].filter(([name]) => name === 'arrow')) };
+const paintTiered = (w: number, h: number, items: readonly SpaceItem[], sheet = TIERED, gaps: Gaps = noGaps()) => toAscii(paintSpace(w, h, items, sheet, gaps)).split('\n');
+const arrowAt = (span: number | undefined, more: { flip?: boolean } = {}): SpaceItem => ({ kind: 'element', name: 'arrow', x: 20, y: 2, ramp: WHITE, ...(span === undefined ? {} : { span }), ...more });
+/** How many times the colour changes along the rows of a picture: what a block-scaled drawing has few of. */
+const changes = (rows: readonly string[]): number => rows.reduce((n, row) => n + [...row].filter((c, i) => i > 0 && c !== row[i - 1]).length, 0);
+
+describe('size tiers', () => {
+  const pad = (row: string): string => row.padEnd(40, '.');
+  const rows = (...at: string[]): string[] => [...at, ...Array.from({ length: 6 - at.length }, () => '')].map(pad);
+  const PLAIN = rows('', '', `${'.'.repeat(20)}125`);
+  // A doubled drawing keeps the middle of its anchor block on its place: it starts one pixel up and to the left.
+  const PLAIN_TWICE = rows('', `${'.'.repeat(19)}112255`, `${'.'.repeat(19)}112255`);
+  const X8 = rows('', '', `${'.'.repeat(20)}12125`);
+  const X8_TWICE = rows('', `${'.'.repeat(19)}1122112255`, `${'.'.repeat(19)}1122112255`);
+  const X16 = rows('', `${'.'.repeat(20)}1.....2`, `${'.'.repeat(20)}12121212125`, `${'.'.repeat(20)}1.....2`);
+
+  it('the widest drawing no wider than the span is taken, the plain one when none is; then it is scaled in whole steps as ever', () => {
+    for (const span of [undefined, 0, 3, 4, 5]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(PLAIN);
+    // Just under the 8 tier the plain arrow (4 wide) is doubled; from 8 the tier is drawn as it is.
+    for (const span of [6, 7]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(PLAIN_TWICE);
+    for (const span of [8, 9, 11]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X8);
+    // Just under the 16 tier the 8 tier is doubled; from 16 the 16 tier is drawn as it is, on its own anchor.
+    for (const span of [12, 15]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X8_TWICE);
+    for (const span of [16, 17, 23]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X16);
+  });
+
+  it('a tier is mirrored about its own anchor column', () => {
+    expect(paintTiered(40, 6, [arrowAt(8, { flip: true })])).toEqual(rows('', '', `${'.'.repeat(16)}52121`));
+  });
+
+  it('a sheet with tiers draws more detail at a large span than the scaled plain drawing, and the same without a span', () => {
+    const wide = [arrowAt(16)];
+    expect(paintTiered(40, 6, wide, PLAIN_ONLY)).toEqual(rows(...Array.from({ length: 4 }, () => `${'.'.repeat(18)}111122225555`)));
+    expect(changes(paintTiered(40, 6, wide))).toBeGreaterThan(changes(paintTiered(40, 6, wide, PLAIN_ONLY)));
+    expect(paintTiered(40, 6, [arrowAt(undefined)])).toEqual(paintTiered(40, 6, [arrowAt(undefined)], PLAIN_ONLY));
+  });
+
+  it('a tier of a name the sheet has no plain drawing for is not drawn: the stand-in is, and it is counted', () => {
+    const gaps = noGaps();
+    expect(paintTiered(3, 1, [{ kind: 'element', name: 'comet', x: 1, y: 0, ramp: WHITE, span: 8 }], TIERED, gaps)).toEqual(['5'.repeat(3)]);
+    expect(gaps.elements).toEqual(['comet']);
+  });
+
+  it('a tier is asked for by its own name like any drawing', () => {
+    expect(paintTiered(40, 6, [{ ...arrowAt(undefined), name: 'arrow/x8' } as SpaceItem])).toEqual(X8);
+  });
+
+  it('the same items and sheet give the same picture twice', () => {
+    const items = [arrowAt(15), arrowAt(16, { flip: true })];
+    expect(hashBuffer(paintSpace(40, 6, items, TIERED, noGaps()))).toBe(hashBuffer(paintSpace(40, 6, items.map((item) => ({ ...item })), TIERED, noGaps())));
+  });
+});
+
 describe('nearest colour and ramp', () => {
   it('the nearest palette colour is chosen, and a tie goes to the lower index', () => {
     expect(nearestColour(palette, 0xfefefe)).toBe(1);

@@ -1,5 +1,6 @@
 import type { Palette } from '@cf/art-format';
 import type { PixelBuffer } from '@cf/art-compose';
+import { tierOf } from './names';
 import { STAND_IN_ICON, TINT_RAMP } from './sheet';
 import type { Drawing, InterfaceSheet } from './sheet';
 import type { Gaps } from './text';
@@ -10,8 +11,10 @@ import type { Gaps } from './text';
  * - element: the sheet's drawing of that name with its anchor on (x, y), mirrored left to right about the anchor column
  *   with `flip`. Its values 1 to 4 take the palette ramp whose first colour is nearest `ramp` (its tint), 5 to 8 the
  *   ramp `accent`; a drawing that names its own ramps takes those instead, four values to each in the order named.
- *   With `span`, the width in art pixels it is to cover, it is drawn in whole steps: at 1, 2, 3 ... times its size,
- *   whichever brings its own width nearest (halfway goes up, and never under 1), each of its pixels a square block.
+ *   With `span`, the width in art pixels it is to cover, the drawing is the widest of the element and its size tiers
+ *   (the sheet's drawings named `<name>/x<width>`) that is no wider than the span, or the element itself when none is;
+ *   and it is drawn in whole steps: at 1, 2, 3 ... times its size, whichever brings its own width nearest (halfway goes
+ *   up, and never under 1), each of its pixels a square block.
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
  * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top.
@@ -31,6 +34,23 @@ export type SpaceItem =
 const SECOND_RAMP = 'accent';
 /** The largest radius drawn: beyond it a circle is flat across any screen, and its squares stay exact whole numbers. */
 export const MAX_RADIUS = 1 << 20;
+
+const tiersOfSheet = new WeakMap<InterfaceSheet, ReadonlyMap<string, readonly Drawing[]>>();
+/** The size tiers of each element of a sheet that has any, narrowest first. Read from the sheet once. */
+function tiersOf(sheet: InterfaceSheet): ReadonlyMap<string, readonly Drawing[]> {
+  let tiers = tiersOfSheet.get(sheet);
+  if (tiers === undefined) {
+    const found = new Map<string, Drawing[]>();
+    for (const [name, drawing] of sheet.elements) {
+      const tier = tierOf(name);
+      if (tier !== undefined) found.set(tier.element, [...(found.get(tier.element) ?? []), drawing]);
+    }
+    for (const list of found.values()) list.sort((a, b) => a.w - b.w);
+    tiers = found;
+    tiersOfSheet.set(sheet, tiers);
+  }
+  return tiers;
+}
 
 /** The order the pixels of every 4 by 4 block of the picture join a veil in, by row then column. */
 const DITHER: readonly number[] = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
@@ -99,6 +119,7 @@ function rootOf(n: number): number {
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): PixelBuffer {
   const { palette } = sheet;
   const pixels = new Uint8Array(w * h);
+  const tiers = tiersOf(sheet);
   const bright = palette.colours.map(brightness);
   const indexOf = new Map<number, number>();
   const index = (rgb: number): number => {
@@ -112,7 +133,9 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
   };
 
   const element = (item: Extract<SpaceItem, { kind: 'element' }>): void => {
+    const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
     let drawing: Drawing | undefined = sheet.elements.get(item.name);
+    if (drawing !== undefined) for (const tier of tiers.get(item.name) ?? []) if (tier.w <= span && tier.w > drawing.w) drawing = tier;
     let [ax, ay] = drawing?.anchor ?? [0, 0];
     if (drawing === undefined) {
       gaps.elements.push(item.name);
@@ -125,7 +148,6 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     const ramps = drawing.ramps === undefined ? [first, palette.ramps[SECOND_RAMP] ?? first]
       : drawing.ramps.map((name) => (name === TINT_RAMP ? first : palette.ramps[name] ?? first));
     // The whole number of times its size nearest the span: k steps up while k and a half widths still fit in it.
-    const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
     let k = 1;
     while ((2 * k + 1) * drawing.w <= 2 * span) k++;
     const lead = k >> 1;

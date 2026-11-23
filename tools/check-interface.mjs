@@ -27,15 +27,19 @@ registerHooks({
   },
 });
 
-const { parseInterfaceSheet, codePointLabel, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES } = await import('@cf/art-interface');
+const { parseInterfaceSheet, codePointLabel, tierOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES } = await import('@cf/art-interface');
 
 /** The side of every interface icon, in art pixels. */
 export const ICON_SIZE = 16;
+/** The highest colour number a map can show: its picture holds one byte a pixel. */
+export const MAX_MAP_COLOUR = 255;
 
 /**
  * The faults of a sheet, each as one line; `ok` only when there is none. A sheet that does not parse has only its
  * parse error. Otherwise: a required ramp, glyph, icon or element the sheet lacks; an icon or element name that is
- * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE.
+ * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. A size
+ * tier (`<element>/x<width>`) of any listed element is accepted; reported are a tier of a name that is not listed, a
+ * tier not drawn at the width its name gives, and a tier no wider than its element.
  */
 export function checkInterface(text) {
   let sheet;
@@ -45,6 +49,8 @@ export function checkInterface(text) {
     return { ok: false, parseError: error instanceof Error ? error.message : String(error), problems: [], summary: null };
   }
   const problems = [];
+  const top = sheet.palette.colours.length - 1;
+  if (top > MAX_MAP_COLOUR) problems.push(`the palette runs to colour ${top}: a map picture holds one byte a pixel, so colour numbers stop at ${MAX_MAP_COLOUR}`);
   for (const name of REQUIRED_RAMPS) if (!Object.hasOwn(sheet.palette.ramps, name)) problems.push(`missing ramp ${name}`);
   for (const codePoint of REQUIRED_GLYPHS) if (!sheet.font.glyphs.has(codePoint)) problems.push(`missing glyph ${codePointLabel(codePoint)}`);
   for (const name of ICON_NAMES) if (!sheet.icons.has(name)) problems.push(`missing icon ${name}`);
@@ -53,8 +59,18 @@ export function checkInterface(text) {
     if (icon.w !== ICON_SIZE || icon.h !== ICON_SIZE) problems.push(`icon ${name} is ${icon.w} by ${icon.h}, not ${ICON_SIZE} by ${ICON_SIZE}`);
   }
   for (const name of ELEMENT_NAMES) if (!sheet.elements.has(name)) problems.push(`missing element ${name}`);
-  for (const name of sheet.elements.keys()) if (!ELEMENT_NAMES.includes(name)) problems.push(`unknown element ${name}`);
-  const summary = { glyphs: sheet.font.glyphs.size, icons: sheet.icons.size, elements: sheet.elements.size, line: sheet.font.line };
+  let tiers = 0;
+  for (const [name, drawing] of sheet.elements) {
+    if (ELEMENT_NAMES.includes(name)) continue;
+    const tier = tierOf(name);
+    if (tier === undefined) { problems.push(`unknown element ${name}`); continue; }
+    tiers++;
+    const element = sheet.elements.get(tier.element);
+    if (!ELEMENT_NAMES.includes(tier.element)) problems.push(`tier ${name} is of an unknown element ${tier.element}`);
+    else if (drawing.w !== tier.width) problems.push(`tier ${name} is ${drawing.w} wide, not ${tier.width}`);
+    else if (element !== undefined && drawing.w <= element.w) problems.push(`tier ${name} is no wider than its element (${element.w})`);
+  }
+  const summary = { glyphs: sheet.font.glyphs.size, icons: sheet.icons.size, elements: sheet.elements.size - tiers, tiers, line: sheet.font.line };
   return { ok: problems.length === 0, parseError: null, problems, summary };
 }
 
@@ -65,7 +81,7 @@ export function formatInterfaceReport(report) {
   for (const problem of report.problems) lines.push(`error: ${problem}`);
   if (report.summary !== null) {
     const s = report.summary;
-    lines.push(`summary: ${s.glyphs} glyphs (line ${s.line}), ${s.icons} icons, ${s.elements} elements`);
+    lines.push(`summary: ${s.glyphs} glyphs (line ${s.line}), ${s.icons} icons, ${s.elements} elements, ${s.tiers} size tiers`);
   }
   return lines.join('\n') + '\n';
 }
