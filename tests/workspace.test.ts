@@ -7,6 +7,6 @@ describe('workspace', () => {
     expect(pkg.workspaces).toEqual(['packages/domain/*', 'packages/*', 'apps/*']);
   });
   it('pins the toolchain exactly', () => {
-    expect(pkg.devDependencies).toEqual({ '@types/node': '26.1.2', rolldown: '1.2.19', typescript: '7.0.2', vitest: '4.1.10' });
+    expect(pkg.devDependencies).toEqual({ '@types/node': '26.1.2', jsdom: '29.1.1', rolldown: '1.2.19', typescript: '7.0.2', vitest: '4.1.10' });
   });
 });
