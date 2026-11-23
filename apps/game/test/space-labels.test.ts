@@ -30,9 +30,9 @@ describe('the words on the maps', () => {
   it('every word the maps letter is drawn by the placeholder sheet with no box, the em dash among them', () => {
     const sheet = parseInterfaceSheet(testInterfaceSheetText());
     const lettered = [
-      ...mapLabels(frame({ cam: { x: HOME_POS.x, y: HOME_POS.y, z: 6 } }), 'the Neighborhood'),
-      ...mapLabels(frame({ nav: galaxyNav(), cam: { x: 0, y: 0, z: 2 } }), 'x'),
-      ...mapLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: 2 }, charts: true }), 'x'),
+      ...mapLabels(frame({ cam: { x: HOME_POS.x, y: HOME_POS.y, z: 0.3 } }), 'the Neighborhood'),
+      ...mapLabels(frame({ nav: galaxyNav(), cam: { x: 0, y: 0, z: 1 } }), 'x'),
+      ...mapLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: 0.9 }, charts: true }), 'x'),
     ].map((label) => label.text);
     const fixed = ['quasar — a feeding black hole outshining its galaxy', 'blazar — a quasar jet aimed straight at you', 'radio galaxy — jets inflate giant lobes', 'galaxy cluster', 'cosmic void', 'interstellar object'];
     expect(lettered).toEqual(expect.arrayContaining(['Milky Way — you are here', 'your charter — the Neighborhood', 'Sun — our star', 'Earth', 'asteroid belt', 'habitable zone']));
@@ -51,8 +51,11 @@ describe('the words on the maps', () => {
       expect(mapLabels(frame({ cam: { x: home.x, y: home.y, z } }), 'x'), `${z}`)
         .toContainEqual({ text: 'Milky Way — you are here', wx: home.x, wy: home.y + home.size * 1.15 + 4, hold: 'below' });
     }
-    expect(mapLabels(frame({}), 'the Neighborhood')).toContainEqual({ text: 'your charter — the Neighborhood', wx: HOME_POS.x, wy: HOME_POS.y - 880 - 4, hold: 'above' });
+    const whole = { x: HOME_POS.x, y: HOME_POS.y, z: 0.3 };
+    expect(mapLabels(frame({ cam: whole }), 'the Neighborhood')).toContainEqual({ text: 'your charter — the Neighborhood', wx: HOME_POS.x, wy: HOME_POS.y - 880 - 4, hold: 'above' });
     expect(texts({ cam: { x: HOME_POS.x, y: HOME_POS.y, z: 0.01 } })).not.toContain('your charter — the Neighborhood');
+    // Close on home the top of the ring is far off the screen, and so are its words.
+    expect(texts({ cam: { ...whole, z: 3 } })).toEqual(['Milky Way — you are here']);
   });
 
   it('a galaxy earns its name once it is 34 screen pixels in size; a dwarf never does', () => {
@@ -88,6 +91,9 @@ describe('the words on the maps', () => {
     expect(mapLabels(frame({ nav: galaxyNav(), cam: { x: 0, y: 0, z: 720 / 900 * 0.99 } }), 'x')).toEqual([]);
     expect(mapLabels(frame({ nav: galaxyNav(), cam: { x: 0, y: 0, z: 390 / 900 * 1.01 }, view: { w: 390, h: 844 } }), 'x')).toEqual([sun]);
     expect(mapLabels(frame({ nav: galaxyNav(WORMHOLE_GALAXY), cam: { x: 0, y: 0, z: 2 } }), 'x')).toEqual([]);
+    // With the Sun far off the screen its words are not listed; just off its edge they still are.
+    expect(mapLabels(frame({ nav: galaxyNav(), cam: { x: 0, y: 0, z: 12 } }), 'x')).toEqual([]);
+    expect(mapLabels(frame({ nav: galaxyNav(), cam: { x: SOL_POS.x - 700 / 4, y: SOL_POS.y, z: 4 } }), 'x')).toEqual([sun]);
   });
 
   it('each planet on the screen is named under its disc and its name follows it; the belt is named with the star charts', () => {

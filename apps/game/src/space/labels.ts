@@ -3,7 +3,7 @@
 import { galaxyName } from '@cf/domain-naming';
 import { HOME_POS } from '@cf/domain-worldconfig';
 import { systemScene } from '@cf/scene';
-import { minSideOf } from './camera';
+import { minSideOf, toScreen } from './camera';
 import { galaxyContent, visibleBodies } from './model';
 import { webZoom } from './passes-universe';
 import { mapCaptions } from './project';
@@ -15,6 +15,10 @@ export interface Label { text: string; wx: number; wy: number; hold: 'centre' | 
 
 /** A galaxy is named once it is this many screen pixels in size; a quasar and a radio galaxy are told sooner. */
 export const NAME_GATE = { galaxy: 34, radio: 30, quasar: 26 } as const;
+/** How far outside the view, in screen pixels, a label's place may be while some of it may still show: to the sides
+ *  half the widest caption, above and below a line and the Sun's lift. */
+const OFF_SIDE = 320;
+const OFF_END = 48;
 const QUASAR = 'quasar — a feeding black hole outshining its galaxy';
 const BLAZAR = 'blazar — a quasar jet aimed straight at you';
 const RADIO = 'radio galaxy — jets inflate giant lobes';
@@ -54,5 +58,9 @@ export function mapLabels(frame: MapFrame, charter: string): Label[] {
     const belt = (systemScene(nav.star.seed).belt as { r?: number } | null)?.r;
     if (frame.charts && belt) labels.push({ text: 'asteroid belt', wx: 0, wy: -belt - 2, hold: 'above' });
   }
-  return labels;
+  // Words whose place is beyond the reach of the widest of them are not on the screen.
+  return labels.filter((label) => {
+    const at = toScreen(cam, view, label.wx, label.wy);
+    return at.x > -OFF_SIDE && at.x < view.w + OFF_SIDE && at.y > -OFF_END && at.y < view.h + OFF_END;
+  });
 }

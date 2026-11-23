@@ -3,6 +3,9 @@
 // Then, into fixtures/art/space-v2.json, the same maps with the game's passes on: the web, veil, fog and edge of the
 // universe, a tidal bridge, the galaxy haze, the habitable zone, day and night, a cloud deck, a comet, the visitor,
 // and what moves, at the same two screen sizes.
+// Then, into fixtures/art/space-v3.json, the map as the map screen draws it: everything the size the game gives it at
+// the camera's zoom, at a far, an entry and a near zoom of the universe, the home galaxy and the Sol system, with the
+// words lettered on each and where they stand on the screen.
 // Usage: node tools/record-space-hashes.mjs   (no arguments; reads and writes only inside this repository)
 // Re-record only on Dakk's word: the file is the promise that every device draws each map the same.
 // Deterministic: running it twice writes a byte-identical file.
@@ -30,14 +33,15 @@ registerHooks({
   },
 });
 
-const { NAV_HOME, enterGalaxy, enterSystem, reachRadiusOf, resolveCF1Galaxy, resolveCF1Star, systemScene } = await import('@cf/scene');
+const { NAV_HOME, currentRegionOf, enterGalaxy, enterSystem, reachRadiusOf, resolveCF1Galaxy, resolveCF1Star, systemScene } = await import('@cf/scene');
 const { HOME_GAL_SEED, HOME_POS, OBS_R, SOL_POS, SOL_SEED } = await import('@cf/domain-worldconfig');
 const { galaxyWormhole } = await import('@cf/domain-worldgen');
 const { hashBuffer } = await import('@cf/art-compose');
 const { parseInterfaceSheet } = await import('@cf/art-interface');
 const { testInterfaceSheetText } = await import('@cf/art-testparts');
-const { descentCamera } = await import('../apps/game/src/space/camera.ts');
+const { ascentCamera, descentCamera, toScreen } = await import('../apps/game/src/space/camera.ts');
 const { mapPicture } = await import('../apps/game/src/space/project.ts');
+const { mapLabels } = await import('../apps/game/src/space/labels.ts');
 
 const galaxy = resolveCF1Galaxy({ seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y });
 const homeGalaxy = enterGalaxy(NAV_HOME, galaxy.galaxy);
@@ -63,15 +67,20 @@ const SCENES = [
 const sheet = parseInterfaceSheet(testInterfaceSheetText());
 
 /** Paints every scene at every view and writes the file. A scene is [label, place, camera for a shorter side, time,
- *  epoch] and, for a map with the game's passes on, the settings they follow. */
-function record(file, navs, scenes) {
+ *  epoch] and, for a map with the game's passes on, the settings they follow. With `sized` the picture is the map
+ *  screen's, and the words lettered on it are recorded with it: each with the screen pixel it is held at. */
+function record(file, navs, scenes, sized = false) {
   const lines = [];
   for (const [label, place, camera, time, epoch, passes] of scenes) {
     for (const { w, h, dpr } of VIEWS) {
-      const frame = { place, cam: camera(Math.min(w, h)), view: { w, h }, dpr, time, epoch, reach, charts: true, ...(passes === undefined ? {} : { passes }) };
+      const frame = { place, cam: camera(Math.min(w, h)), view: { w, h }, dpr, time, epoch, reach, charts: true, ...(passes === undefined ? {} : { passes }), ...(sized ? { sized } : {}) };
       const gaps = { glyphs: [], icons: [], elements: [] };
       const picture = mapPicture({ ...frame, nav: navs[place] }, sheet, gaps);
-      lines.push('    ' + JSON.stringify({ label: `${label}, ${w} by ${h} at ${dpr}`, ...frame, w: picture.w, h: picture.h, scale: picture.scale, hash: hashBuffer(picture), gaps: gaps.elements }));
+      const labels = !sized ? {} : { labels: mapLabels({ ...frame, nav: navs[place] }, currentRegionOf(0).name).map(({ text, wx, wy, hold, lift }) => {
+        const at = toScreen(frame.cam, frame.view, wx, wy);
+        return { text, x: Math.round(at.x), y: Math.round(at.y) - (lift ?? 0), hold };
+      }) };
+      lines.push('    ' + JSON.stringify({ label: `${label}, ${w} by ${h} at ${dpr}`, ...frame, w: picture.w, h: picture.h, scale: picture.scale, hash: hashBuffer(picture), gaps: gaps.elements, ...labels }));
     }
   }
   const text = `{\n  "sheet": "art-testparts",\n  "entries": [\n${lines.join(',\n')}\n  ]\n}\n`;
@@ -139,3 +148,27 @@ const SCENES_2 = [
   ['a magnetar system, its beams turned', 'magnetar', systemEntry, 0.9, 0, ON],
 ];
 record('space-v2.json', NAVS_2, SCENES_2);
+
+// The map as the map screen draws it, sized by the camera, at a far, an entry and a near zoom of each map.
+const homeGalaxyNode = { kind: 'galaxy', x: HOME_POS.x, y: HOME_POS.y, size: galaxy.galaxy.size };
+/** Galaxies near home: one named once it is near, a quasar and a radio galaxy. */
+const NEIGHBOUR = { x: -353.9256348274648, y: 76.0142870247364, size: 63.054942834656686 };
+const QUASAR = { x: -3248.226942215115, y: 2709.3011943623424, size: 28.276660196483135 };
+const RADIO = { x: 1187.468503601849, y: -2042.271316703409, size: 50.723668528255075 };
+const SCENES_3 = [
+  ['the universe, far: the whole charter', 'universe', atHome, 0, 0, ON],
+  ['the universe, entry: as it is come back to from the home galaxy', 'universe', (min) => ascentCamera(homeGalaxyNode, min).to, 0, 0, ON],
+  ['the universe, near: the home galaxy just short of the dive', 'universe', (min) => ({ x: HOME_POS.x, y: HOME_POS.y, z: 0.55 * min / galaxy.galaxy.size * 0.97 }), 0, 0, ON],
+  ['the universe, near: a neighbour that has earned its name', 'universe', () => ({ x: NEIGHBOUR.x, y: NEIGHBOUR.y, z: 60 / NEIGHBOUR.size }), 0, 0, ON],
+  ['the universe, near: a quasar, told what it is', 'universe', () => ({ x: QUASAR.x, y: QUASAR.y, z: 60 / QUASAR.size }), 0, 0, ON],
+  ['the universe, near: a radio galaxy, told what it is', 'universe', () => ({ x: RADIO.x, y: RADIO.y, z: 60 / RADIO.size }), 0, 0, ON],
+  ['the home galaxy, far: just short of leaving it', 'home-galaxy', (min) => ({ ...galaxyEntry(min), z: galaxyEntry(min).z * 0.65 }), 0, 0, ON],
+  ['the home galaxy, entry', 'home-galaxy', galaxyEntry, 0, 0, ON],
+  ['the home galaxy, near: about the Sun just short of the dive', 'home-galaxy', (min) => ({ x: SOL_POS.x, y: SOL_POS.y, z: min / 34 * 0.97 }), 0, 0, ON],
+  ['the home galaxy, near: its core', 'home-galaxy', (min) => ({ x: 20, y: 10, z: min / 60 }), 0, 0, ON],
+  ['the Sol system, far: just short of leaving it', 'sol', (min) => ({ ...systemEntry(min), z: systemEntry(min).z * 0.65 }), 0, 0, ON],
+  ['the Sol system, entry', 'sol', systemEntry, 0, 0, ON],
+  ['the Sol system, near: about Earth', 'sol', (min) => ({ ...earth, z: min / 60 }), 0, 0, ON],
+  ['the Sol system, near: its star', 'sol', (min) => ({ x: 0, y: 0, z: min / 90 }), 0, 0, ON],
+];
+record('space-v3.json', NAVS, SCENES_3, true);

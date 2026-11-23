@@ -397,6 +397,9 @@ describe('the map screen', () => {
     const page = await atUniverse();
     const captions = (): string[] => [...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption!);
     const charter = `your charter — ${currentRegionOf(0).name}`;
+    // Out to where the top of the charter's ring is in the view.
+    for (let i = 0; i < 26; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
+    rest(page);
     expect(captions()).toContain(charter);
     const label = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="${charter}"]`)!;
     expect(label.width).toBeGreaterThan(charter.length * 2);

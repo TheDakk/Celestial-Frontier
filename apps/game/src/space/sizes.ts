@@ -2,7 +2,6 @@
    the game's does. A width is the width of the game's own sprite; the painter brings the element to the nearest
    whole number of times its drawn size. */
 import type { SpaceItem } from '@cf/art-interface';
-import { tone } from './draw';
 
 /** Present when a picture sizes its things by the camera: how many art pixels one screen pixel is. */
 export interface Sizing { perCss: number }
@@ -36,11 +35,11 @@ export function blob(x: number, y: number, width: number, colour: number): Space
 }
 
 /** A star whose glow is `width` art pixels across: a dot from afar; up close a lit disc a fifth as wide with a white
- *  heart, in a faint halo six tenths as wide. */
+ *  heart, in a halo six tenths as wide: a quarter of its pixels lit, as faint as the game's glow is there. */
 export function starLight(x: number, y: number, width: number, colour: number): SpaceItem[] {
   const core = Math.round(width * 0.1);
   if (core < 1) return [{ kind: 'dot', x, y, colour }];
-  const items: SpaceItem[] = [{ kind: 'veil', x, y, r: Math.round(width * 0.3), ...tone(colour, 0.25), light: true }, { kind: 'disc', x, y, r: core, bands: [colour] }];
+  const items: SpaceItem[] = [{ kind: 'veil', x, y, r: Math.round(width * 0.3), colour, level: 4, light: true }, { kind: 'disc', x, y, r: core, bands: [colour] }];
   const heart = Math.round(width * 0.04);
   if (heart >= 1) items.push({ kind: 'disc', x, y, r: heart, bands: [0xffffff] });
   return items;
