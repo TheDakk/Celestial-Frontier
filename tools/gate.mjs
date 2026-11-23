@@ -12,6 +12,7 @@ const steps = [
   ['node', ['tools/purity-check.mjs']],
   [process.execPath, [TSC, '-p', 'tsconfig.json'], 'typecheck: ok'],
   [process.execPath, [TSC, '-p', 'apps/diagnostics/tsconfig.json'], 'diagnostics typecheck: ok'],
+  [process.execPath, [TSC, '-p', 'apps/game/tsconfig.json'], 'game typecheck: ok'],
   [process.execPath, [TSC, '-p', 'packages/audio/tsconfig.json'], 'audio typecheck: ok'],
   [process.execPath, [TSC, '-p', 'packages/persistence/tsconfig.json'], 'persistence typecheck: ok'],
   ['npm', ['test']],

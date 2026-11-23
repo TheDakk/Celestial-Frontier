@@ -21,6 +21,7 @@
   ],
   "exclude": [
     "apps/diagnostics/src/main.ts",
+    "apps/game",
     "packages/audio",
     "packages/persistence",
     "tests/cross/persistence"
