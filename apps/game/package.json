@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/domain-progression": "*",
     "@cf/domain-rand": "*",
+    "@cf/domain-sessionrng": "*",
     "@cf/persistence": "*",
     "@cf/scene": "*"
   },

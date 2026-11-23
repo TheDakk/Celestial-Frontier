@@ -50,3 +50,9 @@ export async function seedCurrentSave(
   });
   if (written.kind !== 'committed') throw new Error(`seed write was ${written.kind}`);
 }
+
+/** A clock a test moves by hand. */
+export function controlledClock(start = 0): { now: () => number; advance: (amount: number) => void } {
+  let value = start;
+  return { now: () => value, advance: (amount) => { value += amount; } };
+}
