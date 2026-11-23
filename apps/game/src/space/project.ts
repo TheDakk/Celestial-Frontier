@@ -132,7 +132,7 @@ function starItems(body: Extract<MapBody, { kind: 'star' }>, x: number, y: numbe
     return marked ? [star, { kind: 'ring', x, y, r: SOL_MARK, colour: 0xffd9a0 }] : [star];
   }
   const glow = body.ref.s * starBase(cam.z / sizing.perCss) * (body.priority === 2 ? STAR_WIDTH.fine : STAR_WIDTH.coarse) * cam.z;
-  const star: SpaceItem[] = giant ? [{ kind: 'element', name: 'star/giant', x, y, ramp: colour, span: Math.round(glow * GLOW) }] : starLight(x, y, glow, colour);
+  const star: SpaceItem[] = giant ? [{ kind: 'element', name: 'star/giant', x, y, ramp: colour, span: Math.round(glow * GLOW) }] : starLight(x, y, glow, colour, sizing.solid);
   return marked ? [...star, { kind: 'ring', x, y, r: Math.round(SOL_MARK_CSS * sizing.perCss), colour: 0xffd9a0 }] : star;
 }
 
@@ -217,7 +217,7 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
       for (const [dx, dy, s] of knot.pts as [number, number, number][]) {
         const spot = at(knot.x + dx, knot.y + dy);
         if (sizing === undefined) items.push({ kind: 'dot', ...spot, colour: KNOT_COLOURS[knot.k] });
-        else items.push(...starLight(spot.x, spot.y, s * starBase(cam.z / sizing.perCss) * STAR_WIDTH[knot.k] * cam.z, KNOT_COLOURS[knot.k]));
+        else items.push(...starLight(spot.x, spot.y, s * starBase(cam.z / sizing.perCss) * STAR_WIDTH[knot.k] * cam.z, KNOT_COLOURS[knot.k], sizing.solid));
       }
     }
     if (cam.z > Math.min(grid.w, grid.h) / 700) items.push({ kind: 'element', name: 'black-hole', ...at(0, 0), ramp: 0xffffff, ...spanOf(sizing, WIDTH.blackHole, cam.z) });
@@ -253,8 +253,8 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
  *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
  *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. With
- *  `solid` a planet's night, its light and its cloud are drawn in whole pixels of the palette, as pixel art is: no
- *  dither lies on a planet. */
+ *  `solid` every light and shadow of the map is drawn in whole pixels of the palette, as pixel art is: solid steps with
+ *  stepped edges, and no dither anywhere. */
 export interface MapFrame {
   nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
@@ -273,7 +273,7 @@ export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: Int
   const time = frame.passes?.motion === false ? 0 : frame.time;
   const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, time), ...supernovaBodies(frame.nav, frame.epoch)];
   const drawn = sheet === undefined ? {} : { drawn: (name: string, span: number) => fittedWidth(sheet, name, span) };
-  const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn } } : {};
+  const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn, ...(frame.solid === true ? { solid: true } : {}) } } : {};
   const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
   if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
   const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };

@@ -9,7 +9,7 @@ import { systemFor } from '@cf/domain-worldgen';
 import { systemScene } from '@cf/scene';
 import type { PlanetNode } from '@cf/scene';
 import { minSideOf } from './camera';
-import { frameOf, framed, place, rgbOf, scaled, tone } from './draw';
+import { frameOf, framed, glow, lit, place, rgbOf, scaled, tone } from './draw';
 import type { PassView } from './draw';
 import { angleOf } from './exact';
 import { cosSin } from './model';
@@ -17,6 +17,7 @@ import { cosSin } from './model';
 const TAU = 6.283185307179586;
 const PI = 3.141592653589793;
 const ZONE = 0x50d282;
+const ZONE_LIGHT = 0.08;
 const NIGHT = 0x00000c;
 const CLOUD = 0xfafcff;
 const CLOUD_UNDER = 0xbfcbe0;
@@ -26,6 +27,9 @@ const COMA = 0xcfe6ff;
 const TAIL = 0xc8e6ff;
 const VISITOR = 0x8a6f58;
 const TRAIL = 0xd6aa8c;
+const VISITOR_LIT = 0xd9bc9a;
+const VISITOR_MIN = 4;
+const WAKE_MIN = 6;
 /** A planet in whole pixels. The night is a disc this many radii from the planet's middle, on the side away from the
  *  star; the half shade along its edge is this share of the planet's radius wide, half each side of the planet's
  *  middle. What each keeps of a colour's brightness, in sixteenths; the light adds to it. */
@@ -40,11 +44,16 @@ interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: 
 interface Visitor { speed: number; off: number; ang: number; b: number }
 const rawOf = (seed: number): { comets?: readonly Comet[]; visitor?: Visitor } => systemFor(seed) as { comets?: readonly Comet[]; visitor?: Visitor };
 
-/** The habitable zone: a faint green band between its two radii, shown with the star charts. */
+/** The habitable zone: a faint green band between its two radii, shown with the star charts. With the view's `solid`
+ *  the band is one whole colour, a green hardly lighter than space. */
 export function zoneItems(v: PassView): SpaceItem[] {
   if (v.nav.mode !== 'system' || !v.charts) return [];
   const hz = systemScene(v.nav.star.seed).hz as [number, number] | null;
   if (hz === null) return [];
+  if (v.solid === true) {
+    const at = place(v.cam, v.grid, 0, 0);
+    return [glow(at.x, at.y, Math.round(hz[1] * v.cam.z), lit(ZONE, ZONE_LIGHT), Math.round(hz[0] * v.cam.z))];
+  }
   return [{ kind: 'veil', ...place(v.cam, v.grid, 0, 0), r: Math.round(hz[1] * v.cam.z), inner: Math.round(hz[0] * v.cam.z), ...tone(ZONE, 0.055), light: true }];
 }
 
@@ -204,6 +213,19 @@ function run(x: number, y: number, dx: number, dy: number, from: number, length:
   return items;
 }
 
+/** A solid shape about a place of the picture, turned to a direction: each pixel within `reach` of the place is asked
+ *  for its colour by how far it lies along the direction and across it, and is left when there is none. */
+function shape(at: { x: number; y: number }, cos: number, sin: number, reach: number, v: PassView, colour: (along: number, across: number) => number | null): SpaceItem[] {
+  const items: SpaceItem[] = [];
+  const r = Math.ceil(reach);
+  for (let y = Math.max(0, at.y - r); y <= Math.min(v.grid.h - 1, at.y + r); y++) for (let x = Math.max(0, at.x - r); x <= Math.min(v.grid.w - 1, at.x + r); x++) {
+    const [dx, dy] = [x - at.x, y - at.y];
+    const found = colour(dx * cos + dy * sin, dy * cos - dx * sin);
+    if (found !== null) items.push({ kind: 'dot', x, y, colour: found });
+  }
+  return items;
+}
+
 /** A comet as the picture has it, in whole art pixels: its head, and each pixel of its tail from the head outward. */
 export interface CometDrawn { head: { x: number; y: number }; tail: { x: number; y: number }[] }
 /** The comets of a system where they are drawn: the tail is blown straight away from the star, longer the nearer the
@@ -226,7 +248,9 @@ export function cometItems(v: PassView): SpaceItem[] {
     const fade = (part: number): number => scaled(TAIL, part < 1 / 3 ? 0.8 : part < 2 / 3 ? 0.5 : 0.25);
     tail.forEach((at, i) => items.push({ kind: 'dot', ...at, colour: fade(tail.length <= 1 ? 0 : i / (tail.length - 1)) }));
     const coma = Math.round(6.8 / Math.max(0.2, Math.sqrt(v.zoom)) / 2 * v.cam.z);
-    items.push({ kind: 'veil', ...head, r: coma, colour: COMA, level: 8 }, { kind: 'dot', ...head, colour: 0xffffff });
+    // In whole pixels the coma is a dim disc with a brighter one half as wide inside it.
+    if (v.solid === true) items.push(glow(head.x, head.y, coma, lit(COMA, 0.35)), ...(coma >= 2 ? [glow(head.x, head.y, coma >> 1, lit(COMA, 0.7))] : []), { kind: 'dot', ...head, colour: 0xffffff });
+    else items.push({ kind: 'veil', ...head, r: coma, colour: COMA, level: 8 }, { kind: 'dot', ...head, colour: 0xffffff });
   }
   return items;
 }
@@ -239,6 +263,24 @@ export function visitorItems(v: PassView): SpaceItem[] {
   if (visitor === undefined) return [];
   const world = visitorAt(visitor, v.time);
   const at = place(v.cam, v.grid, world.x, world.y);
+  if (v.solid === true) {
+    // In whole pixels it is the game's own shape, and never too small to see: a tumbling rock 10 units long and 3.8
+    // thick (never under some 4 pixels by 1), lit on one flank, and behind it on its path a wake 15 units long (never
+    // under some 6 pixels) that narrows to a point and fades in three steps.
+    const [length, thick] = [Math.max(VISITOR_MIN, 10 * v.cam.z), Math.max(1, 3.8 * v.cam.z)];
+    const [cos, sin] = cosSin(visitor.ang + v.time * 0.35);
+    const [trail, wide] = [Math.max(WAKE_MIN, 15 * v.cam.z), Math.max(1, 1.6 * v.cam.z)];
+    return [
+      ...shape(at, -world.cos, -world.sin, trail, v, (a, b) => (a < 1 || a > trail || Math.abs(b) * 2 > Math.max(1, wide * (1 - a / trail)) ? null
+        : scaled(TRAIL, a * 3 < trail ? 0.8 : a * 3 < trail * 2 ? 0.5 : 0.3))),
+      ...shape(at, cos, sin, length / 2, v, (a, b) => {
+        // Too thin to round, it is a sliver one pixel wide.
+        if (thick < 2) return Math.abs(2 * a) > length || Math.abs(2 * b) > 1 ? null : VISITOR_LIT;
+        const [along, across] = [2 * a / length, 2 * b / thick];
+        return along * along + across * across > 1 ? null : thick >= 3 && across > 0.15 ? VISITOR : VISITOR_LIT;
+      }),
+    ];
+  }
   const wake = Math.round(11 * v.cam.z);
   const length = Math.max(2, Math.round(10 * v.cam.z));
   const [cos, sin] = cosSin(visitor.ang + v.time * 0.35);

@@ -2,11 +2,16 @@
    the game's does. A width is the width of the game's own sprite; the painter brings the element to the nearest
    whole number of times its drawn size. */
 import type { SpaceItem } from '@cf/art-interface';
+import { glow, lit } from './draw';
 import type { MapBody } from './model';
 
 /** Present when a picture sizes its things by the camera: how many art pixels one screen pixel is. With `drawn`, the
  *  width the sheet draws an element at for a span, where it has a drawing of that name that fits. */
-export interface Sizing { perCss: number; drawn?: (name: string, span: number) => number | undefined }
+export interface Sizing {
+  perCss: number; drawn?: (name: string, span: number) => number | undefined;
+  /** Every light is whole pixels of the palette: no dither carries a glow. */
+  solid?: boolean;
+}
 
 /** The share of a soft glow's sprite that is lit enough to draw; the game's glows fade to nothing toward their edge. */
 export const GLOW = 0.6;
@@ -37,11 +42,15 @@ export function blob(x: number, y: number, width: number, colour: number): Space
 }
 
 /** A star whose glow is `width` art pixels across: a dot from afar; up close a lit disc a fifth as wide with a white
- *  heart, in a halo six tenths as wide: a quarter of its pixels lit, as faint as the game's glow is there. */
-export function starLight(x: number, y: number, width: number, colour: number): SpaceItem[] {
+ *  heart, in a halo six tenths as wide: a quarter of its pixels lit, as faint as the game's glow is there. With
+ *  `solid` the halo is whole pixels: a dim disc of the star's colour, and a brighter one half as wide inside it. */
+export function starLight(x: number, y: number, width: number, colour: number, solid = false): SpaceItem[] {
   const core = Math.round(width * 0.1);
   if (core < 1) return [{ kind: 'dot', x, y, colour }];
-  const items: SpaceItem[] = [{ kind: 'veil', x, y, r: Math.round(width * 0.3), colour, level: 4, light: true }, { kind: 'disc', x, y, r: core, bands: [colour] }];
+  const halo = Math.round(width * 0.3);
+  const items: SpaceItem[] = solid
+    ? [glow(x, y, halo, lit(colour, 0.2)), ...(halo >= 6 ? [glow(x, y, (halo + core) >> 1, lit(colour, 0.4))] : []), { kind: 'disc', x, y, r: core, bands: [colour] }]
+    : [{ kind: 'veil', x, y, r: halo, colour, level: 4, light: true }, { kind: 'disc', x, y, r: core, bands: [colour] }];
   const heart = Math.round(width * 0.04);
   if (heart >= 1) items.push({ kind: 'disc', x, y, r: heart, bands: [0xffffff] });
   return items;

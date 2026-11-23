@@ -1,6 +1,8 @@
 import { NAV_HOME, enterGalaxy, enterSystem, resolveCF1Galaxy, resolveCF1Star } from '@cf/scene';
 import type { NavState } from '@cf/scene';
-import type { SpaceItem } from '@cf/art-interface';
+import { parseInterfaceSheet } from '@cf/art-interface';
+import type { InterfaceSheet, SpaceItem, SpacePicture } from '@cf/art-interface';
+import { testInterfaceSheetText } from '@cf/art-testparts';
 import type { Camera } from '../src/space/camera';
 import type { PassView } from '../src/space/draw';
 import { artCamera, artGrid, artScale } from '../src/space/project';
@@ -49,3 +51,33 @@ export const namesOf = (items: readonly SpaceItem[]): string[] => kindOf(items, 
 /** The items that stand at a place of the picture: all but a field, which lies over the whole of it. */
 export const placed = (items: readonly SpaceItem[]): Exclude<SpaceItem, { kind: 'field' }>[] =>
   items.filter((item): item is Exclude<SpaceItem, { kind: 'field' }> => item.kind !== 'field');
+
+/** The dark colours a map in solid steps is shaded with, beside the placeholder sheet's nine: one darker than space,
+ *  then navies, slates, a green and two embers, numbered from 9. */
+export const SHADES = [0x070a1b, 0x171535, 0x21243f, 0x272b42, 0x1c3550, 0x454357, 0x595766, 0x062027, 0x2e222b, 0x563133, 0x333a4f] as const;
+/** The placeholder sheet with those colours in its palette. */
+export function shadedSheet(): InterfaceSheet {
+  const colours = SHADES.map((colour, i) => `colour ${9 + i} ${colour.toString(16).padStart(6, '0')}`).join('\n');
+  return parseInterfaceSheet(testInterfaceSheetText().replace('ramp ink 1 2 3 4', `${colours}\nramp ink 1 2 3 4`));
+}
+
+/**
+ * How many pixels of a picture stand in a dot mesh: a pixel unlike the four beside it, with the pixels four to its
+ * right, four below and four along both its own colour and as alone. An ordered dither at any level makes thousands;
+ * stars strewn by a seed make none.
+ */
+export function meshDots(picture: SpacePicture): number {
+  const { w, h, pixels } = picture;
+  const alone = (x: number, y: number): boolean => {
+    if (x < 1 || y < 1 || x >= w - 1 || y >= h - 1) return false;
+    const value = pixels[y * w + x];
+    return pixels[y * w + x - 1] !== value && pixels[y * w + x + 1] !== value && pixels[(y - 1) * w + x] !== value && pixels[(y + 1) * w + x] !== value;
+  };
+  let found = 0;
+  for (let y = 1; y < h - 5; y++) for (let x = 1; x < w - 5; x++) {
+    const value = pixels[y * w + x];
+    if (pixels[y * w + x + 4] !== value || pixels[(y + 4) * w + x] !== value || pixels[(y + 4) * w + x + 4] !== value) continue;
+    if (alone(x, y) && alone(x + 4, y) && alone(x, y + 4) && alone(x + 4, y + 4)) found++;
+  }
+  return found;
+}

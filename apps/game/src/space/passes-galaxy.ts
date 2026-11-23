@@ -6,7 +6,7 @@ import { mulberry32 } from '@cf/domain-rand';
 import { GCELL } from '@cf/domain-worldconfig';
 import { galaxyProfile } from '@cf/domain-worldgen';
 import { GR } from '@cf/scene';
-import { frameOf, framed, hsl, place, scaled, tone } from './draw';
+import { frameOf, framed, glow, hsl, lit, place, scaled, tone, worldField } from './draw';
 import type { PassView } from './draw';
 import { angleOf, expOf, lnOf } from './exact';
 import { cosSin } from './model';
@@ -88,14 +88,78 @@ function hazeOf(seed: number): Haze {
   return kept;
 }
 
+/** The glow along an arm at a distance from its centre line, in widths of the arm: the game's three strokes, eased
+ *  into one another, as [distance, strength]. */
+const ARM_GLOW = [[0, 0.26], [9, 0.26], [20, 0.13], [34, 0.045], [46, 0]] as const;
+/** The game's disk at shares of the radius. */
+const DISK_GLOW = [[0, 0.92], [0.06, 0.5], [0.28, 0.2], [0.7, 0.08], [1, 0]] as const;
+/** A value along stops that rise in their first number: even between two, and the last beyond them. */
+function along(stops: readonly (readonly [number, number])[], at: number): number {
+  for (let i = 1; i < stops.length; i++) {
+    const [from, to] = [stops[i - 1]!, stops[i]!];
+    if (at <= to[0]) return from[1] + (to[1] - from[1]) * (at - from[0]) / (to[0] - from[0]);
+  }
+  return stops[stops.length - 1]![1];
+}
+/**
+ * The steps the haze is drawn in, from the rim to the core: the strength of the game's glow where each begins, which
+ * of the disk's shades it takes (0 the outer disk, 3 the warm core) and how much of that light it carries. The glow
+ * is all but gone at the rim, so the first step is hardly lighter than space, and the steps crowd toward the core.
+ * No step is a strong light: a star in front of the haze is always brighter than it.
+ */
+const HAZE_STEPS = [[0.075, 0, 0.09], [0.12, 0, 0.15], [0.18, 1, 0.19], [0.26, 1, 0.24], [0.36, 3, 0.2], [0.5, 3, 0.25], [0.68, 3, 0.3], [0.84, 3, 0.33]] as const;
+/** The arms begin 26 units from the centre and reach their full glow by 80. */
+const ARM_FROM = 26;
+const ARM_FULL = 80;
+
+/** The haze in whole pixels: the disk and the glow along the arms as one field of solid steps, the pink knots as
+ *  small lights of two steps, and the grain as single suns. */
+function solidHaze(v: PassView, haze: Haze): SpaceItem[] {
+  const { arms: armCount, wind } = galaxyProfile(haze.seed) as { arms: number; wind: number };
+  const pitch = wind / Math.sqrt(1 + wind * wind);
+  const z = v.cam.z;
+  const shades = [hsl(haze.hue, 0.45, 0.58), hsl(haze.hue, 0.52, 0.64), hsl(haze.hue, 0.58, 0.76), CORE];
+  const steps = HAZE_STEPS.map(([at, shade, light]) => ({ at: Math.round(at * 1000), colour: lit(shades[shade] ?? CORE, light) }));
+  const strength = (x: number, y: number): number => {
+    const rad = Math.sqrt(x * x + y * y);
+    const disk = along(DISK_GLOW, rad / GR);
+    if (rad <= ARM_FROM || rad >= GR * 0.97) return disk;
+    const turn = armCount * (lnOf(rad / 18) / wind - angleOf(y, x)) / TAU;
+    // How far from the centre line of the nearest arm, across it, in world units.
+    const across = Math.abs(turn - Math.floor(turn) - 0.5) * (TAU / armCount) * rad * pitch;
+    return disk + along(ARM_GLOW, across / (0.55 + 0.45 * expOf(-rad / 700))) * expOf(-rad / 850) * Math.min(1, (rad - ARM_FROM) / (ARM_FULL - ARM_FROM));
+  };
+  const items: SpaceItem[] = [worldField(v, steps, strength)];
+  const onPicture = (x: number, y: number, r: number): boolean => x >= -r && y >= -r && x < v.grid.w + r && y < v.grid.h + r;
+  for (const knot of haze.knots) {
+    const at = place(v.cam, v.grid, knot.x, knot.y);
+    const r = Math.round(knot.r * z);
+    if (r < 1 || !onPicture(at.x, at.y, r)) continue;
+    items.push(glow(at.x, at.y, r, lit(knot.colour, 0.22)));
+    if (r >= 4) items.push(glow(at.x, at.y, r >> 1, lit(knot.colour, 0.38)));
+  }
+  haze.grain.forEach((grain, i) => {
+    const at = place(v.cam, v.grid, grain.x, grain.y);
+    if (!onPicture(at.x, at.y, 0)) return;
+    const across = grain.size * GRAIN_SIZE * z;
+    const colour = lit(grain.colour, 0.25 + grain.alpha);
+    // Sized by the camera, a grain three or more pixels across is the light of one sun: a small disc.
+    if (across >= 3) items.push(glow(at.x, at.y, Math.round(across / 3), colour));
+    // A grain smaller than a pixel is seen in as many of every 16 as it would light, by its own number: no pattern.
+    else if ((Math.imul(i, 0x9e3779b1) >>> 28) < Math.round(16 * Math.min(1, across * across) * grain.alpha)) items.push({ kind: 'dot', ...at, colour });
+  });
+  return items;
+}
+
 /**
  * The haze of the galaxy `v.nav` is in, painted under everything else in it: the disk as rings of dither that thicken
  * and warm toward the core, the glow along each arm, the pink knots, and the grain, of which more shows the closer
- * the view.
+ * the view. With the view's `solid` it is whole pixels: steps of solid colour that fade out toward the rim.
  */
 export function hazeItems(v: PassView): SpaceItem[] {
   if (v.nav.mode !== 'galaxy') return [];
   const haze = hazeOf(v.nav.gal.seed);
+  if (v.solid === true) return solidHaze(v, haze);
   const z = v.cam.z;
   const centre = place(v.cam, v.grid, 0, 0);
   const onPicture = (x: number, y: number, r: number): boolean => x >= -r && y >= -r && x < v.grid.w + r && y < v.grid.h + r;
