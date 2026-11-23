@@ -8,10 +8,15 @@ body {
   -webkit-user-select: none; user-select: none; -webkit-text-size-adjust: 100%;
 }
 b { color: var(--emph); }
-#app { position: fixed; inset: 0; --dock-size: calc(var(--target-min, 44px) + var(--cf-space-4)); }
+/* --top-bar is the row the title and the search field share: an open panel or card starts below it or beside it. */
+#app {
+  position: fixed; inset: 0; --dock-size: calc(var(--target-min, 44px) + var(--cf-space-4));
+  --top-bar: calc(var(--target-min, 44px) + var(--cf-space-4));
+}
+/* The title is 24px tall: it sits on the middle line of the search field beside it. */
 #app > h1 {
   position: absolute; z-index: 2; margin: 0; pointer-events: none;
-  top: calc(var(--safe-top) + var(--cf-space-2)); left: calc(var(--safe-left) + var(--cf-space-3));
+  top: calc(var(--safe-top) + var(--cf-space-2) + (var(--target-min, 44px) - 24px) / 2); left: calc(var(--safe-left) + var(--cf-space-3));
 }
 .display-text { line-height: 0; }
 .icon { display: inline-flex; flex: none; }
@@ -55,15 +60,18 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 }
 [data-size-class="compact"] .panel {
   left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size));
-  max-height: calc(100% - var(--safe-top) - var(--safe-bottom) - var(--dock-size) - var(--cf-space-8));
+  max-height: calc(100% - var(--safe-top) - var(--safe-bottom) - var(--dock-size) - var(--top-bar));
   border-radius: var(--cf-radius-panel) var(--cf-radius-panel) 0 0;
 }
 [data-size-class="medium"] .panel, [data-size-class="wide"] .panel {
   top: var(--safe-top); right: var(--safe-right); bottom: var(--safe-bottom);
   border-radius: var(--cf-radius-panel) 0 0 var(--cf-radius-panel);
 }
-[data-size-class="medium"] .panel { width: min(400px, 62%); }
+/* The search field stays clear of an open panel: on a medium view the panel starts below the top bar; on a wide one
+   it is the full height and the field moves beside it. */
+[data-size-class="medium"] .panel { width: min(400px, 62%); top: calc(var(--safe-top) + var(--top-bar)); }
 [data-size-class="wide"] .panel { width: 440px; }
+[data-size-class="wide"] body.panel-open .stage .search { right: calc(var(--safe-right) + 440px + var(--cf-space-3)); }
 .panel-close {
   position: sticky; top: 0; float: right; z-index: 1; padding: 0;
   display: inline-flex; align-items: center; justify-content: center;
@@ -130,6 +138,13 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
   padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-4);
   background: var(--cf-color-surface); border: 1px solid var(--cf-color-border);
   -webkit-user-select: text; user-select: text;
+}
+/* On a compact view the field is narrower, so the title beside it keeps clear; on the narrowest it drops below the title. */
+[data-size-class="compact"] .search { width: min(140px, 32%); }
+@media (max-width: 359px) {
+  [data-size-class="compact"] .search {
+    top: calc(var(--safe-top) + var(--top-bar)); right: auto; left: calc(var(--safe-left) + var(--cf-space-3)); width: min(180px, 60%);
+  }
 }
 [data-size-class="compact"] .card {
   left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size)); max-height: 46%;

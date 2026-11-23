@@ -24,6 +24,6 @@ These rewrite files under `fixtures/`. Fixtures are protected: re-record only wh
 - Gameplay fixtures, from the current game: `node tools/record-fixtures.mjs --source <path to the current game's v2 folder> --only <name>`
 - v1 fixtures (`fixtures/v1/recorded/`), from the v1 game file: `node tools/record-v1-fixtures.mjs --ref <folder holding celestial-frontier.html> [--only <name>]`
 - Art golden hashes (`fixtures/art/quadruped-v1.json`), from the placeholder catalogue: `node tools/record-art-hashes.mjs`
-- Map golden hashes (`fixtures/art/space-v1.json`, and `fixtures/art/space-v2.json` for the maps with their passes on), from the placeholder interface sheet: `node tools/record-space-hashes.mjs`
+- Map golden hashes (`fixtures/art/space-v1.json`, `fixtures/art/space-v2.json` for the maps with their passes on, and `fixtures/art/space-v3.json` for the maps as the map screen draws them, sized by the camera, with their words), from the placeholder interface sheet: `node tools/record-space-hashes.mjs`
 
 Working rules for contributors and agents are in `CLAUDE.md` and `AGENTS.md` at the repository root.
