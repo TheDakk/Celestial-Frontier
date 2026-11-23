@@ -236,7 +236,8 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     if (reloading) return;
     reloading = true;
     shown.show(NOTICE_WORDS.reload.title, NOTICE_WORDS.reload.text, true);
-    env.reload();
+    // The reloaded page takes the lease at once only if this one has given it up.
+    void runtime.release().catch(() => undefined).then(env.reload);
   });
   bus.on('save:held', refreshNotices);
   doc.addEventListener('visibilitychange', () => { void (visible() ? loop.show() : loop.hide()); });

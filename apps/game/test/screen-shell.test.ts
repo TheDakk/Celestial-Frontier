@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
-import { F3_ACTIVE_PLAY_LEASE_KEY, V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
+import { F3_ACTIVE_PLAY_LEASE_KEY, F3_REVISION_KEY, V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
 import { HEARTBEAT_MS, REGISTRY, bootSave } from '../src/save/index';
 import { NOTICE_WORDS, heldNoticeFor } from '../src/screens';
 import { SOL as SOL_STAR } from './nav-support';
@@ -84,6 +84,37 @@ describe('the booted page', () => {
     expect(other.chrome.toast.textContent).toContain('Reload required');
     other.env.bus.emit('save:reload-required', { reason: 'again' });
     expect([other.reloads, page.reloads]).toEqual([1, 0]);
+  });
+
+  it('a reload the page asks for waits until the save is given up, so the next page can take it at once', async () => {
+    const base = createMemoryBackend();
+    let entered: () => void = () => undefined;
+    let release: () => void = () => undefined;
+    const held = async (): Promise<boolean> => (JSON.parse((await base.get('meta', F3_ACTIVE_PLAY_LEASE_KEY))!) as { held: boolean }).held;
+    // The write that frees the lease waits until the test lets it through.
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        const lease = operations.find((operation) => operation.key === F3_ACTIVE_PLAY_LEASE_KEY);
+        if (lease !== undefined && 'value' in lease && !(JSON.parse(lease.value) as { held: boolean }).held) {
+          entered();
+          await new Promise<void>((resolve) => { release = resolve; });
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const page = await bootPage({ backend });
+    expect(page.runtime.diagnostics().leaseOwned).toBe(true);
+    // Another writer moved the stored revision on; the page's next heartbeat sees it.
+    await base.apply([{ store: 'meta', key: F3_REVISION_KEY, value: String(page.runtime.revision + 5) }]);
+    const givingUp = new Promise<void>((resolve) => { entered = resolve; });
+    page.timers[0]!.run();
+    await givingUp;
+    await settled();
+    expect([page.loop.status, page.reloads, await held()]).toEqual(['reload-required', 0, true]);
+    release();
+    await settled();
+    expect([page.reloads, await held()]).toEqual([1, false]);
   });
 
   it('a future-version boot shows the newer-version notice and no control can start a write', async () => {
