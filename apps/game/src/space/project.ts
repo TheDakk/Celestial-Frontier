@@ -15,8 +15,10 @@ import { cosSin, galaxyContent, supernovaBodies, visibleBodies } from './model';
 import type { MapBody } from './model';
 import { passCaptions, withPasses } from './passes';
 import type { Caption } from './passes';
+import { DECO_RADII, GALAXY_WIDTH, GLOW, SOL_MARK_CSS, STAR_WIDTH, WIDTH, blob, starBase, starLight } from './sizes';
+import type { Sizing } from './sizes';
 
-export type { Caption, Grid, MapPasses };
+export type { Caption, Grid, MapPasses, Sizing };
 
 /** The shorter side of the picture is about this many art pixels: the design's 480 by 270 stage. */
 const SHORT_SIDE = 270;
@@ -85,16 +87,20 @@ function ringColour(planet: PlanetNode): number {
   return planet.type === 'ice' || (planet.type === 'gas' && random() < 0.4) ? 0xbcd4e8 : 0xe0cea6;
 }
 
-function galaxyItems(g: GalaxyNode, x: number, y: number, z: number): SpaceItem[] {
+/** The span of an element `world` units wide, when the picture is sized by the camera. */
+const spanOf = (sizing: Sizing | undefined, world: number, z: number): { span?: number } => (sizing === undefined ? {} : { span: Math.round(world * z) });
+
+function galaxyItems(g: GalaxyNode, x: number, y: number, z: number, sizing?: Sizing): SpaceItem[] {
   if (g.size * z < GALAXY_NEAR) return [{ kind: 'dot', x, y, colour: g.quasar ? 0xffffff : STARLIGHT }];
-  if (g.quasar) return [{ kind: 'element', name: 'quasar', x, y, ramp: 0xffffff }];
+  const wide = (k: number): { span?: number } => spanOf(sizing, g.size * k, z);
+  if (g.quasar) return [{ kind: 'element', name: 'quasar', x, y, ramp: 0xffffff, ...wide(GALAXY_WIDTH.quasar) }];
   const variant = `v${g.seed % ORIENTATIONS}`;
   const flip = ((g.seed >>> 2) & 1) === 1;
-  const galaxy: SpaceItem = { kind: 'element', name: `galaxy/${GALAXY_KINDS[g.sp] ?? 'spiral'}/${variant}`, x, y, ramp: STARLIGHT, flip };
-  return g.radio ? [{ kind: 'element', name: `radio-lobes/${variant}`, x, y, ramp: STARLIGHT, flip }, galaxy] : [galaxy];
+  const galaxy: SpaceItem = { kind: 'element', name: `galaxy/${GALAXY_KINDS[g.sp] ?? 'spiral'}/${variant}`, x, y, ramp: STARLIGHT, flip, ...wide(g.radio ? GALAXY_WIDTH.radioHost : GALAXY_WIDTH.galaxy) };
+  return g.radio ? [{ kind: 'element', name: `radio-lobes/${variant}`, x, y, ramp: STARLIGHT, flip, ...wide(GALAXY_WIDTH.lobes) }, galaxy] : [galaxy];
 }
 
-function planetItems(p: PlanetNode, x: number, y: number, z: number, time: number): SpaceItem[] {
+function planetItems(p: PlanetNode, x: number, y: number, z: number, time: number, sizing?: Sizing): SpaceItem[] {
   const size = 6 * (typeof p.P.sizeMul === 'number' && p.P.sizeMul !== 0 ? p.P.sizeMul : 1);
   const r = Math.round(size * z);
   const bands = planetBands(p);
@@ -107,39 +113,57 @@ function planetItems(p: PlanetNode, x: number, y: number, z: number, time: numbe
     const orbit = 1.7 + m * 0.48;
     const [cos, sin] = cosSin(time * (0.55 / (orbit * Math.sqrt(orbit))) + m * 2.4);
     const reach = size * orbit * z;
-    items.push({ kind: 'dot', x: x + Math.round(cos * reach), y: y + Math.round(sin * reach * 0.4), colour: 0xc8c8d0 });
+    // A moon is 0.108 of its planet's radius (never under half a unit), and 2.18 of that across.
+    items.push(blob(x + Math.round(cos * reach), y + Math.round(sin * reach * 0.4), sizing === undefined ? 1 : Math.max(0.5, size * 0.108) * 2.18 * z, 0xc8c8d0));
   }
   return items;
 }
 
-function bodyItems(body: MapBody, x: number, y: number, cam: Camera, grid: Grid, time: number): SpaceItem[] {
+/** A star of a galaxy map. Sized by the camera, its glow is its size times the star base times 8 (6.5 for a fine star). */
+function starItems(body: Extract<MapBody, { kind: 'star' }>, x: number, y: number, cam: Camera, grid: Grid, sizing?: Sizing): SpaceItem[] {
+  const colour = rgbOf(body.ref.c);
+  const giant = body.ref.s >= GIANT;
+  const marked = body.ref.sol === true && cam.z > Math.min(grid.w, grid.h) / 900;
+  if (sizing === undefined) {
+    const star: SpaceItem = giant ? { kind: 'element', name: 'star/giant', x, y, ramp: colour } : { kind: 'dot', x, y, colour };
+    return marked ? [star, { kind: 'ring', x, y, r: SOL_MARK, colour: 0xffd9a0 }] : [star];
+  }
+  const glow = body.ref.s * starBase(cam.z / sizing.perCss) * (body.priority === 2 ? STAR_WIDTH.fine : STAR_WIDTH.coarse) * cam.z;
+  const star: SpaceItem[] = giant ? [{ kind: 'element', name: 'star/giant', x, y, ramp: colour, span: Math.round(glow * GLOW) }] : starLight(x, y, glow, colour);
+  return marked ? [...star, { kind: 'ring', x, y, r: Math.round(SOL_MARK_CSS * sizing.perCss), colour: 0xffd9a0 }] : star;
+}
+
+function bodyItems(body: MapBody, x: number, y: number, cam: Camera, grid: Grid, time: number, sizing?: Sizing): SpaceItem[] {
   switch (body.kind) {
-    case 'galaxy': return galaxyItems(body.ref, x, y, cam.z);
-    case 'star': {
-      const colour = rgbOf(body.ref.c);
-      const star: SpaceItem = body.ref.s >= GIANT ? { kind: 'element', name: 'star/giant', x, y, ramp: colour } : { kind: 'dot', x, y, colour };
-      return body.ref.sol === true && cam.z > Math.min(grid.w, grid.h) / 900 ? [star, { kind: 'ring', x, y, r: SOL_MARK, colour: 0xffd9a0 }] : [star];
-    }
-    case 'planet': return planetItems(body.ref, x, y, cam.z, time);
+    case 'galaxy': return galaxyItems(body.ref, x, y, cam.z, sizing);
+    case 'star': return starItems(body, x, y, cam, grid, sizing);
+    case 'planet': return planetItems(body.ref, x, y, cam.z, time, sizing);
     case 'deco': {
       const k = body.ref.k;
       const tint = typeof body.ref.hue === 'number' ? hsl(body.ref.hue, 0.82, 0.6) : DECO_TINTS[k] ?? STARLIGHT;
       const radius = typeof body.ref.rr === 'number' ? body.ref.rr : 8;
+      const flip = (Math.floor(body.ref.x) & 1) === 1;
+      if (sizing !== undefined) {
+        // The game's width: by its radius, or for a rogue planet and a failed star its own. A dot under 4 art pixels.
+        const world = k === 'rogue' ? WIDTH.rogue : k === 'fbd' ? WIDTH.fbd : radius * (DECO_RADII[k] ?? 2.3);
+        if (world * cam.z < 2 * DECO_NEAR) return [{ kind: 'dot', x, y, colour: tint }];
+        return [{ kind: 'element', name: `deco/${k}`, x, y, ramp: tint, flip, span: Math.round(world * cam.z) }];
+      }
       if (radius * cam.z < DECO_NEAR) return [{ kind: 'dot', x, y, colour: tint }];
-      return [{ kind: 'element', name: `deco/${k}`, x, y, ramp: tint, flip: (Math.floor(body.ref.x) & 1) === 1 }];
+      return [{ kind: 'element', name: `deco/${k}`, x, y, ramp: tint, flip }];
     }
-    case 'worm': return [{ kind: 'element', name: 'wormhole', x, y, ramp: 0xb48cff }];
-    case 'snova': return [{ kind: 'element', name: `supernova/${body.ref.remnant.toLowerCase()}`, x, y, ramp: 0xffb080 }];
-    case 'protostar': return [{ kind: 'element', name: 'protostar', x, y, ramp: 0xffd2a0 }];
+    case 'worm': return [{ kind: 'element', name: 'wormhole', x, y, ramp: 0xb48cff, ...spanOf(sizing, WIDTH.wormhole, cam.z) }];
+    case 'snova': return [{ kind: 'element', name: `supernova/${body.ref.remnant.toLowerCase()}`, x, y, ramp: 0xffb080, ...spanOf(sizing, WIDTH.supernova, cam.z) }];
+    case 'protostar': return [{ kind: 'element', name: 'protostar', x, y, ramp: 0xffd2a0, ...spanOf(sizing, WIDTH.protostar, cam.z) }];
   }
 }
 
 /** The bodies of a map as things to paint, in their order. `cam` is in art pixels per world unit, and `time`
- *  the seconds the orbits have run: it turns the moons. */
-export function projectMap(bodies: readonly MapBody[], cam: Camera, grid: Grid, time: number): SpaceItem[] {
+ *  the seconds the orbits have run: it turns the moons. With `sizing` each takes the game's size at the camera's zoom. */
+export function projectMap(bodies: readonly MapBody[], cam: Camera, grid: Grid, time: number, sizing?: Sizing): SpaceItem[] {
   return bodies.flatMap((body) => {
     const at = place(cam, grid, body.wx, body.wy);
-    return bodyItems(body, at.x, at.y, cam, grid, time);
+    return bodyItems(body, at.x, at.y, cam, grid, time, sizing);
   });
 }
 
@@ -157,15 +181,17 @@ export function projectBackdrop(grid: Grid): SpaceItem[] {
   return items;
 }
 
-interface Belt { rocks: readonly { a: number; rr: number; sp: number }[] }
-interface Companion { sep: number; col2?: string }
+interface Belt { rocks: readonly { a: number; rr: number; s: number; sp: number }[] }
+interface Companion { sep: number; r2: number; col2?: string }
 
 /**
  * What a map shows besides its bodies, painted under them. The universe: the ring of the charter, `reach` world
  * units about home. A galaxy: its star knots, and the black hole at its centre. A system: the orbits when `charts`
- * is on, the belts, the dwarf planets, and the star itself with its companions.
+ * is on, the belts, the dwarf planets, and the star itself with its companions. With `sizing` each takes the game's
+ * size at the camera's zoom.
  */
-export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: number, options: { reach: number; charts: boolean }): SpaceItem[] {
+export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: number, options: { reach: number; charts: boolean; sizing?: Sizing }): SpaceItem[] {
+  const { sizing } = options;
   const at = (wx: number, wy: number): { x: number; y: number } => place(cam, grid, wx, wy);
   const turned = (angle: number, distance: number): { x: number; y: number } => {
     const [cos, sin] = cosSin(angle);
@@ -178,28 +204,38 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
   if (nav.mode === 'galaxy') {
     for (const knot of galaxyContent(nav.gal).deco) {
       if ((knot.k !== 'open' && knot.k !== 'glob') || !Array.isArray(knot.pts)) continue;
-      for (const [dx, dy] of knot.pts as [number, number, number][]) items.push({ kind: 'dot', ...at(knot.x + dx, knot.y + dy), colour: KNOT_COLOURS[knot.k] });
+      for (const [dx, dy, s] of knot.pts as [number, number, number][]) {
+        const spot = at(knot.x + dx, knot.y + dy);
+        if (sizing === undefined) items.push({ kind: 'dot', ...spot, colour: KNOT_COLOURS[knot.k] });
+        else items.push(...starLight(spot.x, spot.y, s * starBase(cam.z / sizing.perCss) * STAR_WIDTH[knot.k] * cam.z, KNOT_COLOURS[knot.k]));
+      }
     }
-    if (cam.z > Math.min(grid.w, grid.h) / 700) items.push({ kind: 'element', name: 'black-hole', ...at(0, 0), ramp: 0xffffff });
+    if (cam.z > Math.min(grid.w, grid.h) / 700) items.push({ kind: 'element', name: 'black-hole', ...at(0, 0), ramp: 0xffffff, ...spanOf(sizing, WIDTH.blackHole, cam.z) });
     return items;
   }
   if (nav.mode !== 'system') return items;
   const scene = systemScene(nav.star.seed);
   const raw = systemFor(nav.star.seed) as { binary?: Companion | null; trinary?: Companion | null; dwarfs?: readonly { orb: number }[] };
   if (options.charts) for (const p of scene.planets) items.push({ kind: 'ring', ...at(0, 0), r: Math.round(p.orb * cam.z), colour: 0x2a3a55 });
-  for (const [belt, colour, speed] of [[scene.belt, 0x9a8f80, 1], [scene.kuiper, 0xbcd4e8, 0.4]] as const) {
+  // A rock of the belt is 2.6 of its size across, one of the outer belt 2.4; a dwarf planet 4.84 units.
+  const small = (spot: { x: number; y: number }, world: number, colour: number): SpaceItem => blob(spot.x, spot.y, sizing === undefined ? 1 : world * cam.z, colour);
+  for (const [belt, colour, speed, width] of [[scene.belt, 0x9a8f80, 1, 2.6], [scene.kuiper, 0xbcd4e8, 0.4, 2.4]] as const) {
     if (belt === null) continue;
-    for (const rock of (belt as Belt).rocks) items.push({ kind: 'dot', ...turned(rock.a + time * rock.sp * speed, rock.rr), colour });
+    for (const rock of (belt as Belt).rocks) items.push(small(turned(rock.a + time * rock.sp * speed, rock.rr), rock.s * width, colour));
   }
   for (const dwarf of raw.dwarfs ?? []) {
-    items.push({ kind: 'dot', ...turned(dwarf.orb * 0.13 + time * 0.05 / (dwarf.orb * 0.012), dwarf.orb), colour: 0xb0a898 });
+    items.push(small(turned(dwarf.orb * 0.13 + time * 0.05 / (dwarf.orb * 0.012), dwarf.orb), WIDTH.dwarf, 0xb0a898));
   }
   const special = PRIMARY_KINDS[scene.kind];
   const tint = rgbOf(scene.starCol || '#ffe9c4');
-  items.push({ kind: 'element', name: `primary/${special ?? 'star'}`, ...at(0, 0), ramp: special === undefined ? tint : 0xffffff });
+  // The star's glow is 4.8 of its radius (at least 8) across; a black hole, a pair of beams and a protostar have their own widths.
+  const primary = special === undefined ? Math.max(scene.starR, 8) * 4.8 * GLOW : special === 'bh' ? WIDTH.primaryBh : special === 'proto' ? WIDTH.primaryProto : WIDTH.primaryBeams;
+  items.push({ kind: 'element', name: `primary/${special ?? 'star'}`, ...at(0, 0), ramp: special === undefined ? tint : 0xffffff, ...spanOf(sizing, primary, cam.z) });
+  const companion = (c: Companion, angle: number): SpaceItem =>
+    ({ kind: 'element', name: 'companion', ...turned(angle, c.sep), ramp: c.col2 ? rgbOf(c.col2) : tint, ...spanOf(sizing, c.r2 * 4.8 * GLOW, cam.z) });
   if (special === undefined && raw.binary) {
-    items.push({ kind: 'element', name: 'companion', ...turned(time * 0.25, raw.binary.sep), ramp: raw.binary.col2 ? rgbOf(raw.binary.col2) : tint });
-    if (raw.trinary) items.push({ kind: 'element', name: 'companion', ...turned(2.1 + time * 0.16, raw.trinary.sep), ramp: raw.trinary.col2 ? rgbOf(raw.trinary.col2) : tint });
+    items.push(companion(raw.binary, time * 0.25));
+    if (raw.trinary) items.push(companion(raw.trinary, 2.1 + time * 0.16));
   }
   return items;
 }
@@ -207,8 +243,9 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
 /** Everything a map picture is made from. `cam` and `view` are in CSS pixels; `time` is the seconds the orbits
  *  have run and `epoch` the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
- *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. */
-export interface MapFrame { nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses }
+ *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
+ *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. */
+export interface MapFrame { nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean }
 export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
 
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. */
@@ -217,10 +254,11 @@ export function mapItems(frame: MapFrame, grid: Grid, scale: number): SpaceItem[
   // Reduced motion holds every clock of the map at its start.
   const time = frame.passes?.motion === false ? 0 : frame.time;
   const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, time), ...supernovaBodies(frame.nav, frame.epoch)];
-  const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts });
-  if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time)];
-  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts };
-  return withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time) })));
+  const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale } } : {};
+  const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
+  if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
+  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing };
+  return withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
 }
 
 /** The captions of a frame's passes, each anchored at a world point: the far universe's clusters and voids, and in a

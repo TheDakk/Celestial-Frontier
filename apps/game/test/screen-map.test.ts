@@ -336,7 +336,7 @@ describe('the map screen', () => {
     const sheet = currentSheet();
     const shown = (): MapFrame => ({
       nav: page.nav.nav, cam, view: { w: 800, h: 600 }, dpr: 1, time: 0,
-      epoch: page.loop.publishedEpoch(), reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false },
+      epoch: page.loop.publishedEpoch(), reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false }, sized: true,
     });
     const colours = (frame: MapFrame): Array<number | null> =>
       Array.from(mapPicture(frame, sheet, { glyphs: [], icons: [], elements: [] }).pixels, (value) => (value === 0 ? null : sheet.palette.colours[value]!));
@@ -351,6 +351,46 @@ describe('the map screen', () => {
     page.env.bus.emit('settings:changed', { field: 'fxOn' });
     rest(page);
     expect(paintedBy(canvas())).toEqual(colours(shown()));
+  });
+
+  it('draws each thing the size the game gives it at the zoom, and letters the game\'s labels where they belong', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    rest(page);
+    const sheet = currentSheet();
+    const frame = (cam: MapFrame['cam']): MapFrame => ({
+      nav: page.nav.nav, cam, view: { w: 800, h: 600 }, dpr: 1, time: 0,
+      epoch: page.loop.publishedEpoch(), reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false }, sized: true,
+    });
+    const colours = (shown: MapFrame): Array<number | null> =>
+      Array.from(mapPicture(shown, sheet, { glyphs: [], icons: [], elements: [] }).pixels, (value) => (value === 0 ? null : sheet.palette.colours[value]!));
+    const label = (text: string): HTMLCanvasElement | null => document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="${text}"]`);
+    // Sol, zoomed in: the star is drawn larger than its one size, and each planet in view is named under its disc.
+    for (let i = 0; i < 12; i++) fire(canvas(), 'wheel', { deltaY: -120, clientX: 400, clientY: 300 });
+    rest(page);
+    const system = descentCamera('system', 600).to;
+    const near = { ...system, z: system.z * 1.14 ** 12 };
+    expect(paintedBy(canvas())).toEqual(colours(frame(near)));
+    const { sized: _sized, ...unsized } = frame(near);
+    expect(colours(unsized)).not.toEqual(colours(frame(near)));
+    const named = visibleBodies(page.nav.nav, near, { w: 800, h: 600 }, 0).filter((body) => toScreen(near, { w: 800, h: 600 }, body.wx, body.wy).x > 12);
+    expect(named.length).toBeGreaterThan(0);
+    for (const body of named) {
+      const at = toScreen(near, { w: 800, h: 600 }, body.wx, body.wy);
+      const drawn = label(body.label)!;
+      const radius = body.kind === 'planet' ? 6 * (Number(body.ref.P.sizeMul) || 1) * near.z : NaN;
+      expect(parseFloat(drawn.style.top), body.label).toBe(Math.round(at.y + radius));
+      expect(parseFloat(drawn.style.left) + parseFloat(drawn.style.width) / 2, body.label).toBeCloseTo(at.x, -1);
+    }
+    // The galaxy: the Sun is lettered over its mark. The universe: the home galaxy under it.
+    page.nav.ascend();
+    rest(page);
+    const sun = label('Sun — our star')!;
+    expect(parseFloat(sun.style.top) + parseFloat(sun.style.height)).toBe(300 - 14);
+    page.nav.ascend();
+    rest(page);
+    expect(label('Milky Way — you are here')).not.toBeNull();
+    expect(label('Sun — our star')).toBeNull();
   });
 
   it('letters the captions of the map: the charter over its ring from the zoom it shows at, the belt and the zone with the star charts', async () => {

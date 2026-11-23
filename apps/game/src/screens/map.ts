@@ -2,16 +2,16 @@
    selected and travel between the three by tap, zoom, keyboard and pasted code. */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
 import { drawText } from '@cf/art-interface';
-import { HOME_POS, OBS_R } from '@cf/domain-worldconfig';
+import { OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
-import { currentRegionOf, systemScene, type NavState } from '@cf/scene';
+import { currentRegionOf, type NavState } from '@cf/scene';
 import { paintPixels } from '../platform/canvas';
 import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapCaptions, mapPicture, minSideOf, parkBelowTrigger, showSpace,
-  supernovaBodies, toScreen, visibleBodies, webZoom, zoomAbout, zoomLimits, type Camera, type MapBody, type MapFrame, type Viewport,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapLabels, mapPicture, minSideOf, parkBelowTrigger, showSpace,
+  supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Label, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
@@ -39,8 +39,6 @@ const REFUSAL_TITLES = { 'prime-reach': 'Beyond Your Saved Reach', 'charter-reac
 const RING_PICK_PX = 30;
 const DEPTH = { universe: 0, galaxy: 1, system: 2, surface: 3 } as const;
 type Selected = { body: MapBody; x: number; y: number } & MapKeyTarget;
-/** A caption lettered on the map at a world point: centred on it, or standing on it. */
-interface Lettering { text: string; wx: number; wy: number; above?: boolean }
 
 export function mapScreen(ports: MapPorts): ScreenDef {
   const { nav } = ports;
@@ -227,22 +225,10 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         ctx.bus.on('save:committed', () => redraw.request()),
       ];
 
-      /** The captions of a frame: those of the map's passes, the charter's name over its ring, and the belt's. */
-      const letteringOf = (shown: MapFrame, region: { name: string; r: number }): Lettering[] => {
-        const out: Lettering[] = mapCaptions(shown);
-        if (shown.nav.mode === 'universe' && shown.cam.z > webZoom(shown.view) * 0.7) {
-          out.push({ text: `your charter — ${region.name}`, wx: HOME_POS.x, wy: HOME_POS.y - region.r - 4, above: true });
-        }
-        if (shown.nav.mode === 'system' && shown.charts) {
-          const belt = (systemScene(shown.nav.star.seed).belt as { r?: number } | null)?.r;
-          if (belt) out.push({ text: 'asteroid belt', wx: 0, wy: -belt - 2, above: true });
-        }
-        return out;
-      };
       /** Each caption is drawn once, in the display font, and then only moved. */
       const lettered = new Map<string, HTMLCanvasElement>();
       const seenGlyphs = new Set(interfaceGaps.glyphs);
-      const letter = (list: readonly Lettering[], shown: MapFrame, pixel: number): void => {
+      const letter = (list: readonly Label[], shown: MapFrame, pixel: number): void => {
         const sheet = currentSheet();
         const live = new Set<HTMLCanvasElement>();
         for (const caption of list) {
@@ -260,7 +246,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           const at = toScreen(shown.cam, shown.view, caption.wx, caption.wy);
           const w = drawn.width * pixel;
           const h = drawn.height * pixel;
-          Object.assign(drawn.style, { width: `${w}px`, height: `${h}px`, left: `${Math.round(at.x - w / 2)}px`, top: `${Math.round(caption.above ? at.y - h : at.y - h / 2)}px` });
+          Object.assign(drawn.style, { width: `${w}px`, height: `${h}px`, left: `${Math.round(at.x - w / 2)}px`,
+            top: `${Math.round(caption.hold === 'above' ? at.y - h - (caption.lift ?? 0) : caption.hold === 'below' ? at.y : at.y - h / 2)}px` });
         }
         captions.replaceChildren(...live);
       };
@@ -284,12 +271,13 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const region = currentRegionOf(Object.keys(state.primeFill || {}).length);
         const shown: MapFrame = {
           nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
-          // The whole map of the game; reduced motion holds every clock of it at its start.
-          passes: { effects: state.fxOn, motion: animate },
+          // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
+          // clock of it at its start.
+          passes: { effects: state.fxOn, motion: animate }, sized: true,
         };
         const picture = mapPicture(shown, sheet, gaps);
         showSpace(canvas, picture, sheet.palette.colours, ports.dpr());
-        letter(letteringOf(shown, region), shown, picture.scale / ports.dpr());
+        letter(mapLabels(shown, region.name), shown, picture.scale / ports.dpr());
         // A missing element is counted once, however many frames ask for it.
         for (const name of gaps.elements) if (!seen.has(name)) { seen.add(name); interfaceGaps.elements.push(name); }
 

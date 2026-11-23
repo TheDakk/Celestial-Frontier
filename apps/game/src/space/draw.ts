@@ -2,6 +2,7 @@
    game is drawn in pixel art. */
 import type { NavState } from '@cf/scene';
 import type { Camera, Viewport } from './camera';
+import type { Sizing } from './sizes';
 
 export interface Grid { w: number; h: number }
 
@@ -46,6 +47,8 @@ export interface MapPasses { effects: boolean; motion: boolean }
 export interface PassView {
   nav: NavState; cam: Camera; grid: Grid; view: Viewport; zoom: number; time: number;
   reach: number; charts: boolean; effects: boolean; motion: boolean;
+  /** Present when the picture sizes its things by the camera. */
+  sizing?: Sizing;
 }
 
 /** The frame of a turning thing drawn in `frames` steps over `period` radians, at `angle`. */

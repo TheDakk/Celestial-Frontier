@@ -134,6 +134,8 @@ export function hazeItems(v: PassView): SpaceItem[] {
     const at = place(v.cam, v.grid, grain.x, grain.y);
     if (!onPicture(at.x, at.y, 0)) continue;
     const across = grain.size * GRAIN_SIZE * z;
+    // Sized by the camera, a grain two or more pixels across is the soft light of one sun, as wide as the game draws it.
+    if (v.sizing !== undefined && across >= 2) { veil(at, Math.round(across / 2), grain.colour, grain.alpha); continue; }
     // A grain smaller than a pixel is seen in as many pixels as it would light: none from afar, more up close.
     if (ditherRank(at.x, at.y) < Math.round(16 * Math.min(1, across * across) * grain.alpha)) items.push({ kind: 'dot', ...at, colour: scaled(grain.colour, 0.6) });
   }
@@ -148,7 +150,8 @@ export function stirGalaxyBody(body: MapBody, items: readonly SpaceItem[], v: Pa
     if (!v.effects || body.priority === 2 || !(body.ref.s > 1.3)) return [...items];
     const light = v.motion ? 0.82 + 0.18 * cosSin(v.time * 2.4 + body.ref.seed % 97)[1] : 0.9;
     return items.map((item) => item.kind === 'dot' ? { ...item, colour: scaled(item.colour, light) }
-      : item.kind === 'element' && light < 0.82 ? { ...item, name: `${item.name}/dim` } : item);
+      : item.kind === 'disc' ? { ...item, bands: item.bands.map((band) => scaled(band, light)) }
+        : item.kind === 'element' && light < 0.82 ? { ...item, name: `${item.name}/dim` } : item);
   }
   const rename = (name: string): string => {
     if (body.kind === 'worm') return framed(name, frameOf(v.time * 1.2, TAU, 4));
