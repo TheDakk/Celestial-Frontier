@@ -19,6 +19,8 @@ const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid'
 const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
 /** The fields of a species line, each required once. */
 const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
+/** The most colours one palette may define: indices 0 to 127. */
+export const MAX_PALETTE_COLOURS = 128;
 const RESERVED_NAMES: readonly string[] = ['__proto__', 'constructor', 'prototype'];
 const nameOk = (name: string): boolean => NAME.test(name) && !RESERVED_NAMES.includes(name);
 function checkName(name: string, line: number): string {
@@ -223,7 +225,7 @@ export function parseCatalogueText(text: string): Catalogue {
         if (word === 'colour') {
           need(2);
           const index = int(args[0], n);
-          if (index >= 96) throw new Error('palette: more than 96 colours');
+          if (index >= MAX_PALETTE_COLOURS) throw new Error(`palette: more than ${MAX_PALETTE_COLOURS} colours`);
           if (index < 0) throw new Error(`line ${n}: bad colour index ${index}`);
           if (!/^[0-9a-fA-F]{6}$/.test(args[1] as string)) throw new Error(`line ${n}: bad colour`);
           if (definedColours.has(index)) throw new Error(`line ${n}: duplicate colour ${index}`);

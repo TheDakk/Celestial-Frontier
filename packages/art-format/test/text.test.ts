@@ -102,9 +102,9 @@ describe('parseCatalogueText', () => {
   it('rejects unknown directives', () => {
     expect(thrown('# c\n\nbogus 1 2')).toBe("line 3: unknown directive 'bogus'");
   });
-  it('rejects more than 96 colours', () => {
-    expect(thrown('palette\ncolour 95 ffffff')).toBe('did not throw');
-    expect(thrown('palette\ncolour 96 ffffff')).toBe('palette: more than 96 colours');
+  it('rejects more than 128 colours', () => {
+    expect(thrown('palette\ncolour 127 ffffff')).toBe('did not throw');
+    expect(thrown('palette\ncolour 128 ffffff')).toBe('palette: more than 128 colours');
   });
   it('rejects non-integers and duplicate ids', () => {
     expect(thrown('scaffold quadruped/sturdy/small origin=1.5,2')).toBe('line 1: expected an integer');
