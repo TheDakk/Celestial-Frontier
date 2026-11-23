@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/domain-rand": "*",
     "@cf/scene": "*"
   },
   "devDependencies": {

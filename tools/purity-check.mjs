@@ -9,6 +9,9 @@ const PERSISTENCE_SRC = /^packages\/persistence\/src\//;
 const AUDIO_SRC = /^packages\/audio\/src\//;
 // Every packages/art-<name>/src/ folder, at any depth below it, except the placeholder parts in art-testparts.
 const ART_SRC = /^packages\/art-(?!testparts\/)[^/]+\/src\//;
+// The game app, and inside it the one folder that may read the clocks and the browser's entropy.
+const APP_SRC = /^apps\/game\/src\//;
+const APP_PLATFORM = /^apps\/game\/src\/platform\//;
 // String and template literals are matched first and kept, so `//` or `/*` inside a string
 // does not start a comment; only the comment matches are removed.
 const LITERALS_OR_COMMENTS = /'(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*"|`(?:[^`\\]|\\.)*`|\/\*[\s\S]*?\*\/|\/\/[^\n]*/g;
@@ -23,6 +26,14 @@ const FORBIDDEN_USES = [
   [/\bperformance\.now\b/, 'uses performance.now'],
   [/\bnew\s+Date\s*\(/, 'uses new Date'],
 ];
+// The game app outside its platform folder: no clock and no entropy, however the entropy function is reached.
+const APP_USES = [
+  ...FORBIDDEN_USES,
+  [/\bgetRandomValues\b/, 'uses crypto.getRandomValues'],
+  [/\brandomUUID\b/, 'uses crypto.randomUUID'],
+];
+// The platform folder is where the clocks and the entropy are read; Math.random stays out even there.
+const APP_PLATFORM_USES = FORBIDDEN_USES.filter(([, reason]) => reason === 'uses Math.random');
 // Gameplay code never touches the page or draws: drawing belongs to the renderer. The page objects are
 // caught through `.`, `?.` or `[`; a property merely named window (`state.window`) is not the page's.
 const DOMAIN_USES = [
@@ -98,18 +109,24 @@ function checkArt(path, text) {
 }
 
 /** True for a path the purity check examines. */
-const isChecked = (path) => ART_SRC.test(path) || GAMEPLAY_RULES.some(([folder]) => folder.test(path));
+const isChecked = (path) => ART_SRC.test(path) || APP_SRC.test(path) || GAMEPLAY_RULES.some(([folder]) => folder.test(path));
 
 /** One message per reason per file; files under packages/domain/<name>/src/ and packages/scene/src/ get the
  *  gameplay rules, under packages/persistence/src/ and packages/audio/src/ the clock, random and art-import
- *  rules, and under packages/art-<name>/src/ (except art-testparts) the renderer rules; everything else is
- *  ignored. A NUL byte in any examined file is reported. */
+ *  rules, and under packages/art-<name>/src/ (except art-testparts) the renderer rules; files under
+ *  apps/game/src/ get the clock, random and entropy rules, and inside its platform/ folder only the
+ *  Math.random rule; everything else is ignored. A NUL byte in any examined file is reported. */
 export function checkPurity(files) {
   const problems = [];
   for (const { path, text } of files) {
     if (isChecked(path) && text.includes('\0')) problems.push(`${path}: contains a NUL byte`);
     if (ART_SRC.test(path)) {
       problems.push(...checkArt(path, text));
+      continue;
+    }
+    if (APP_SRC.test(path)) {
+      const { bare } = scanCode(text);
+      for (const [re, reason] of APP_PLATFORM.test(path) ? APP_PLATFORM_USES : APP_USES) if (re.test(bare)) problems.push(`${path}: ${reason}`);
       continue;
     }
     const rules = GAMEPLAY_RULES.find(([folder]) => folder.test(path))?.[1];

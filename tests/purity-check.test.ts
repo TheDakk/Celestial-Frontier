@@ -23,7 +23,7 @@ describe('purity check', () => {
     expect(run(text)).toEqual([`${P}: ${reason}`]);
   });
   it('ignores files outside domain src', () => {
-    expect(run('Date.now()', 'apps/game/src/a.ts')).toEqual([]);
+    expect(run('Date.now()', 'tools/a.ts')).toEqual([]);
     expect(run('Date.now()', 'packages/domain/x/tests/a.ts')).toEqual([]);
   });
   it('passes a mention inside comments but fails the same text outside one', () => {
@@ -308,5 +308,51 @@ describe('purity check: scene, persistence and audio', () => {
     for (const path of ['packages/scene/test/a.test.ts', 'packages/persistence/test/a.test.ts', 'packages/audio/test/a.test.ts']) {
       expect(run('Math.random(); Date.now(); window.x;', path)).toEqual([]);
     }
+  });
+});
+
+describe('purity check: the game app', () => {
+  const SAVE = 'apps/game/src/save/x.ts';
+  const ROOT = 'apps/game/src/main.ts';
+  const CLOCK = 'apps/game/src/platform/clock.ts';
+  const ENTROPY = 'apps/game/src/platform/sub/entropy.ts';
+  it.each([
+    ['Date.now()', 'uses Date.now'],
+    ['performance.now()', 'uses performance.now'],
+    ['const d = new Date(0);', 'uses new Date'],
+    ['crypto.getRandomValues(new Uint32Array(1));', 'uses crypto.getRandomValues'],
+    ['globalThis.crypto?.getRandomValues(buffer);', 'uses crypto.getRandomValues'],
+    ['const id = crypto.randomUUID();', 'uses crypto.randomUUID'],
+    ['const { randomUUID } = crypto;', 'uses crypto.randomUUID'],
+  ])('flags %s under apps/game/src and passes it in the platform folder', (text, reason) => {
+    expect(run(text, SAVE)).toEqual([`${SAVE}: ${reason}`]);
+    expect(run(text, ROOT)).toEqual([`${ROOT}: ${reason}`]);
+    expect(run(text, CLOCK)).toEqual([]);
+    expect(run(text, ENTROPY)).toEqual([]);
+  });
+  it('flags Math.random anywhere under apps/game/src, platform included', () => {
+    for (const path of [SAVE, ROOT, CLOCK, ENTROPY]) expect(run('const r = Math.random();', path)).toEqual([`${path}: uses Math.random`]);
+  });
+  it('a folder merely named like platform inside a system is not the platform folder', () => {
+    const path = 'apps/game/src/save/platform/x.ts';
+    expect(run('Date.now()', path)).toEqual([`${path}: uses Date.now`]);
+  });
+  it('passes the same text in comments and strings, and reports one message per reason', () => {
+    expect(run("// Date.now() and Math.random()\nconst s = 'crypto.randomUUID()';", SAVE)).toEqual([]);
+    expect(run('Date.now(); Date.now(); Math.random();', SAVE)).toEqual([`${SAVE}: uses Math.random`, `${SAVE}: uses Date.now`]);
+  });
+  it('the app may import the art packages and touch the page', () => {
+    expect(run("import { compose } from '@cf/art-compose';\nconst w = window.innerWidth; document.title = 'x';", SAVE)).toEqual([]);
+  });
+  it('reports a NUL byte in an app src file', () => {
+    expect(run('const a = 1;\0', CLOCK)).toEqual([`${CLOCK}: contains a NUL byte`]);
+  });
+  it('the app tests and files beside src are not examined', () => {
+    for (const path of ['apps/game/test/x.test.ts', 'apps/game/vite.config.ts']) {
+      expect(run('Math.random(); Date.now(); crypto.randomUUID();', path)).toEqual([]);
+    }
+  });
+  it('apps/diagnostics is not examined', () => {
+    expect(run('Math.random(); performance.now(); new Date(0);', 'apps/diagnostics/src/main.ts')).toEqual([]);
   });
 });
