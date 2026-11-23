@@ -7,7 +7,7 @@ export const REQUIRED_GLYPHS: readonly number[] = Object.freeze([...Array.from({
 export const REQUIRED_RAMPS: readonly string[] = Object.freeze(['ink', 'accent']);
 
 /** The interface icons, by name. `missing` is the stand-in drawn for a name the sheet lacks. */
-export const ICON_NAMES: readonly string[] = Object.freeze(['missing', 'settings']);
+export const ICON_NAMES: readonly string[] = Object.freeze(['missing', 'settings', 'close', 'warn', 'ok', 'search']);
 
 const ORIENTATIONS: readonly string[] = ['v0', 'v1', 'v2', 'v3'];
 const oriented = (name: string): string[] => ORIENTATIONS.map((orientation) => `${name}/${orientation}`);
