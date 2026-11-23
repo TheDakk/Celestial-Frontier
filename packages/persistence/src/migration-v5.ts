@@ -127,17 +127,12 @@ interface V5SegmentRow {
   readonly extensions?: Readonly<Record<string, V5ExtensionCarrier>>;
 }
 
-interface V5SnapshotRowV4 {
-  readonly schema: 5;
-  readonly sourceSchema: 4;
-  readonly raw: string;
-}
-interface V5SnapshotRowPortable {
+/** The recovery snapshot: the exact portable payload of the last whole-save replacement. */
+interface V5SnapshotRow {
   readonly schema: 5;
   readonly sourceSchema: 5;
   readonly raw: string;
 }
-type V5SnapshotRow = V5SnapshotRowV4 | V5SnapshotRowPortable;
 
 interface PortableV5EnvelopeV1 {
   readonly format: typeof PORTABLE_V5_FORMAT;
@@ -188,7 +183,7 @@ export type V5ReplacementPreparation =
     readonly exactRaw: string;
     readonly legacyV4Raw: string;
     readonly extensions: V5Extensions;
-    readonly source: 'legacy-v4' | 'portable-v5';
+    readonly source: 'portable-v5';
     readonly operations: readonly StorageOperation[];
   }
   | { readonly kind: 'future-version' }
@@ -202,9 +197,9 @@ export type FreshV5BootstrapOutcome =
 export type V5ReadOutcome =
   | { readonly kind: 'not-migrated' }
   | { readonly kind: 'loaded'; readonly state: SaveStateV2; readonly ingress: ImportRouteIngressV2; readonly extensions: V5Extensions; readonly legacyV4Raw: string }
-  /* Historical outcome name retained for app compatibility. A trusted
-     portable-v5 replacement snapshot also uses this read-only recovery shape
-     and carries its validated extensions instead of dropping them. */
+  /* Historical outcome name retained for app compatibility. The recovery
+     source is the portable snapshot of the last replacement, read-only, with
+     its validated extensions. */
   | { readonly kind: 'recovered-v4'; readonly state: SaveStateV2; readonly ingress: ImportRouteIngressV2; readonly extensions: V5Extensions; readonly raw: string; readonly normalizedV4Raw: string }
   | { readonly kind: 'future-version'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
   | { readonly kind: 'corrupt'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
@@ -560,43 +555,23 @@ export function classifyPortableV5Save(
 }
 
 /** Prepare one trusted complete-save replacement for RevisionedRepository.
- * Authentic v4 starts with no v5-only extensions. A strict portable-v5
- * envelope retains its validated extension namespaces. In either case the
- * old compatibility backup is deleted in the same CAS as split rows and the
- * replacement snapshot, so no prior expedition can resurrect. */
+ * Only a strict portable-v5 envelope is accepted; it retains its validated
+ * extension namespaces. A plain v4 save string, which only an older game
+ * wrote, is refused as corrupt. The old compatibility backup is deleted in
+ * the same CAS as split rows and the replacement snapshot, so no prior
+ * expedition can resurrect. */
 export function prepareV5Replacement(
   exactRaw: string,
   registry: ContentRegistry,
   now: number,
 ): V5ReplacementPreparation {
-  if (!withinUtf8Bound(exactRaw, PORTABLE_V5_MAX_BYTES)) return { kind: 'corrupt' };
-  const parsed = parseRecord(exactRaw);
-  const portable = parsed?.format === PORTABLE_V5_FORMAT;
-  let state: SaveStateV2;
-  let ingress: ImportRouteIngressV2;
-  let legacyV4Raw: string;
-  let extensions: V5Extensions;
-  let source: 'legacy-v4' | 'portable-v5';
-  if (portable) {
-    const classified = classifyPortableV5Save(exactRaw, registry, now);
-    if (classified.kind !== 'supported') return classified;
-    ({ state, ingress, legacyV4Raw, extensions } = classified);
-    source = 'portable-v5';
-  } else {
-    const classified = classifyV4Save(exactRaw, registry, now);
-    if (classified.kind !== 'supported') return classified;
-    state = classified.state;
-    ingress = classified.ingress;
-    legacyV4Raw = classified.normalizedRaw;
-    extensions = EMPTY_EXTENSIONS;
-    source = 'legacy-v4';
-  }
-  const snapshot: V5SnapshotRow = portable
-    ? { schema: V5_SCHEMA_VERSION, sourceSchema: 5, raw: exactRaw }
-    : { schema: V5_SCHEMA_VERSION, sourceSchema: 4, raw: exactRaw };
+  const classified = classifyPortableV5Save(exactRaw, registry, now);
+  if (classified.kind !== 'supported') return classified;
+  const { state, ingress, legacyV4Raw, extensions } = classified;
+  const snapshot: V5SnapshotRow = { schema: V5_SCHEMA_VERSION, sourceSchema: 5, raw: exactRaw };
   const operations = segmentOperations(legacyV4Raw, extensions);
   operations.push(
-    { store: 'meta', key: V4_PRIMARY_KEY, value: portable ? legacyV4Raw : exactRaw },
+    { store: 'meta', key: V4_PRIMARY_KEY, value: legacyV4Raw },
     { store: 'meta', key: V4_BACKUP_KEY },
     {
       store: 'journal',
@@ -608,7 +583,7 @@ export function prepareV5Replacement(
       key: V5_JOURNAL_KEY,
       value: JSON.stringify({
         schema: V5_SCHEMA_VERSION,
-        kind: portable ? 'trusted-portable-v5-replacement' : 'trusted-v4-replacement',
+        kind: 'trusted-portable-v5-replacement',
         phase: 'complete',
         snapshotKey: V5_SNAPSHOT_KEY,
         codec: V5_CODEC,
@@ -622,7 +597,7 @@ export function prepareV5Replacement(
     exactRaw,
     legacyV4Raw,
     extensions,
-    source,
+    source: 'portable-v5',
     operations: Object.freeze(operations),
   });
 }
@@ -843,7 +818,7 @@ export async function readSaveV5(
 }
 
 function decodeSnapshot(raw: string):
-  | { kind: 'current'; sourceSchema: 4 | 5; raw: string }
+  | { kind: 'current'; raw: string }
   | { kind: 'future' }
   | { kind: 'corrupt' } {
   const row = parseRecord(raw);
@@ -851,15 +826,17 @@ function decodeSnapshot(raw: string):
   const version = classifyVersion(row.schema);
   if (version !== 'current') return { kind: version };
   if (!exactKeys(row, ['schema', 'sourceSchema', 'raw'])
-    || (row.sourceSchema !== 4 && row.sourceSchema !== 5)
+    || row.sourceSchema !== 5
     || typeof row.raw !== 'string') {
     return { kind: 'corrupt' };
   }
-  return { kind: 'current', sourceSchema: row.sourceSchema, raw: row.raw };
+  return { kind: 'current', raw: row.raw };
 }
 
 /** Recovery is read-only. Only a corrupt current v5 topology may consult the
- * last replacement's snapshot; a future schema/row never yields to older bytes. */
+ * last replacement's snapshot; a future schema/row never yields to older bytes.
+ * A snapshot that is not a portable one (an older game's `sourceSchema` 4 row)
+ * is corrupt and is never used. */
 export async function readSaveV5WithRecovery(
   backend: StorageBackend,
   registry: ContentRegistry,
@@ -873,29 +850,16 @@ export async function readSaveV5WithRecovery(
     const snapshot = decodeSnapshot(snapshotRaw);
     if (snapshot.kind === 'future') return { kind: 'future-version', scope: 'snapshot' };
     if (snapshot.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
-    if (snapshot.sourceSchema === 5) {
-      const classified = classifyPortableV5Save(snapshot.raw, registry, now);
-      if (classified.kind === 'future-version') return { kind: 'future-version', scope: 'snapshot' };
-      if (classified.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
-      return {
-        kind: 'recovered-v4',
-        state: classified.state,
-        ingress: classified.ingress,
-        extensions: classified.extensions,
-        raw: snapshot.raw,
-        normalizedV4Raw: classified.legacyV4Raw,
-      };
-    }
-    const classified = classifyV4Save(snapshot.raw, registry, now);
+    const classified = classifyPortableV5Save(snapshot.raw, registry, now);
     if (classified.kind === 'future-version') return { kind: 'future-version', scope: 'snapshot' };
     if (classified.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
     return {
       kind: 'recovered-v4',
       state: classified.state,
       ingress: classified.ingress,
-      extensions: EMPTY_EXTENSIONS,
+      extensions: classified.extensions,
       raw: snapshot.raw,
-      normalizedV4Raw: classified.normalizedRaw,
+      normalizedV4Raw: classified.legacyV4Raw,
     };
   } catch (error) {
     return { kind: 'storage-error', message: error instanceof Error ? error.message : String(error) };

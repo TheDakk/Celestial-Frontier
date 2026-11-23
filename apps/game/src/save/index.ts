@@ -7,3 +7,4 @@ export {
   type SaveRuntime, type SaveRuntimeDiagnostics, type SaveRuntimeInput,
 } from './runtime';
 export { CHECKPOINT_MS, createSaveLoop, type SaveLoop, type SaveReason } from './save-loop';
+export { freshExpeditionPortable, replaceExpedition, resetExpedition } from './reset';
