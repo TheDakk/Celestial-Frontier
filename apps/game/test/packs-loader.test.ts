@@ -29,6 +29,9 @@ function memoryCache(): PackCache & { stored: Map<string, Uint8Array> } {
   };
 }
 
+/** The hashes of the packs a cache holds, in order. */
+const packsIn = (cache: { stored: Map<string, Uint8Array> }): string[] => [...cache.stored.keys()].filter((key) => /^[0-9a-f]{64}$/.test(key)).sort();
+
 /** A source that answers from a table of file names, and counts how often it was asked. */
 function fakeSource(files: Record<string, Uint8Array>): PackSource & { calls: number } {
   const source = {
@@ -110,7 +113,7 @@ describe('pack loader', () => {
     cache.stored.set(sha256Hex(old), old);
     cache.stored.set(ENTRY.sha256, BYTES);
     await prunePackCache(cache, manifestOf(ENTRY));
-    expect([...cache.stored.keys()]).toEqual([ENTRY.sha256]);
+    expect(packsIn(cache)).toEqual([ENTRY.sha256]);
   });
 
   it('the same loader takes a release base address', async () => {
@@ -213,13 +216,49 @@ describe('loading the manifest', () => {
     expect(currentSheet()).toBe(placeholderSheet());
   });
 
+  it('the packs of the manifest before stay cached, so a build rolled back to has them offline; the one before that is dropped', async () => {
+    const [a, b, c] = ['first\n', 'second\n', 'third\n'].map(utf8) as [Uint8Array, Uint8Array, Uint8Array];
+    const [one, two, three] = [entryOf('one', a), entryOf('two', b), entryOf('three', c)];
+    const online = fakeSource({ [one.file]: a, [two.file]: b, [three.file]: c });
+    const cache = memoryCache();
+    const load = (manifest: PackManifest, source: PackSource) => loadPacks(manifest, { cache, sources: [source], status: () => {} });
+    await load(manifestOf(one), online);
+    await load(manifestOf(two), online);
+    expect(packsIn(cache)).toEqual([one.sha256, two.sha256].sort());
+    // Rolled back with no network: the first build's pack is still here. Loading it again changes nothing.
+    expect((await load(manifestOf(one), failingSource())).standIns).toBe(0);
+    await load(manifestOf(one), failingSource());
+    expect(packsIn(cache)).toEqual([one.sha256, two.sha256].sort());
+    // Forward again, then a third build: the first is now two behind and goes.
+    await load(manifestOf(two), online);
+    await load(manifestOf(three), online);
+    expect(packsIn(cache)).toEqual([two.sha256, three.sha256].sort());
+  });
+
+  it('a manifest that lists no pack keeps the packs of the manifest before', async () => {
+    const cache = memoryCache();
+    await loadPacks(manifestOf(ENTRY), { cache, sources: [fakeSource({ [ENTRY.file]: BYTES })], status: () => {} });
+    await loadPacks(manifestOf(), { cache, sources: [failingSource()], status: () => {} });
+    expect(packsIn(cache)).toEqual([ENTRY.sha256]);
+    expect((await loadPacks(manifestOf(ENTRY), { cache, sources: [failingSource()], status: () => {} })).standIns).toBe(0);
+  });
+
+  it('a record of the manifests that cannot be read counts as none: only the listed packs stay', async () => {
+    const cache = memoryCache();
+    const old = utf8('last release\n');
+    cache.stored.set(sha256Hex(old), old);
+    cache.stored.set('manifests', utf8('{"current":7'));
+    await loadPacks(manifestOf(ENTRY), { cache, sources: [fakeSource({ [ENTRY.file]: BYTES })], status: () => {} });
+    expect(packsIn(cache)).toEqual([ENTRY.sha256]);
+  });
+
   it('the cache is pruned once every pack of the manifest is ready, and left alone until then', async () => {
     const old = utf8('last release\n');
     const cache = memoryCache();
     cache.stored.set(sha256Hex(old), old);
     await loadPacks(manifestOf(ENTRY), { cache, sources: [failingSource()], status: () => {} });
-    expect([...cache.stored.keys()]).toEqual([sha256Hex(old)]);
+    expect(packsIn(cache)).toEqual([sha256Hex(old)]);
     await loadPacks(manifestOf(ENTRY), { cache, sources: [fakeSource({ [ENTRY.file]: BYTES })], status: () => {} });
-    expect([...cache.stored.keys()]).toEqual([ENTRY.sha256]);
+    expect(packsIn(cache)).toEqual([ENTRY.sha256]);
   });
 });
