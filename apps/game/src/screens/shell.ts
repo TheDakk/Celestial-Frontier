@@ -162,6 +162,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     dpr: env.dpr,
     frames: env.frames,
     reducedMotion: () => motionReduced(live.motionMode, env.reducedMotion.matches()),
+    covers: () => [...env.host.querySelectorAll('.top-bar, .dock-button')].map((cover) => cover.getBoundingClientRect()),
   }));
   registry.registerScreen(settingsScreen({
     live: () => live,

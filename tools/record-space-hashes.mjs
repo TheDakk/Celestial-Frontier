@@ -6,6 +6,9 @@
 // Then, into fixtures/art/space-v3.json, the map as the map screen draws it: everything the size the game gives it at
 // the camera's zoom, at a far, an entry and a near zoom of the universe, the home galaxy and the Sol system, with the
 // words lettered on each and where they stand on the screen.
+// Then, into fixtures/art/space-v4.json, the words of the map as the map screen stands them: each clear of the other
+// words, of its body's disc or ring and of the top bar and the dock, wrapped where wider than the view, with the box
+// each fills in the picture's own pixels.
 // Usage: node tools/record-space-hashes.mjs   (no arguments; reads and writes only inside this repository)
 // Re-record only on Dakk's word: the file is the promise that every device draws each map the same.
 // Deterministic: running it twice writes a byte-identical file.
@@ -41,7 +44,7 @@ const { parseInterfaceSheet } = await import('@cf/art-interface');
 const { testInterfaceSheetText } = await import('@cf/art-testparts');
 const { ascentCamera, descentCamera, toScreen } = await import('../apps/game/src/space/camera.ts');
 const { mapPicture } = await import('../apps/game/src/space/project.ts');
-const { mapLabels } = await import('../apps/game/src/space/labels.ts');
+const { mapLabels, placedLabels } = await import('../apps/game/src/space/labels.ts');
 
 const galaxy = resolveCF1Galaxy({ seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y });
 const homeGalaxy = enterGalaxy(NAV_HOME, galaxy.galaxy);
@@ -172,3 +175,36 @@ const SCENES_3 = [
   ['the Sol system, near: its star', 'sol', (min) => ({ x: 0, y: 0, z: min / 90 }), 0, 0, ON],
 ];
 record('space-v3.json', NAVS, SCENES_3, true);
+
+// The words of the map as the map screen stands them. A scene is [label, place, camera for a shorter side and a view,
+// whether a top bar and a dock cover the map]. The bar is the top 60 screen pixels; the dock a button at the foot.
+const BARS = (view) => [{ x: 0, y: 0, w: view.w, h: 60 }, { x: view.w / 2 - 55, y: view.h - 60, w: 110, h: 52 }];
+/** A view with a galaxy near its right edge, an eighth of the view in from it. */
+const nearRightEdge = (g) => (min, view) => ({ x: g.x - view.w * 0.375 / (60 / g.size), y: g.y, z: 60 / g.size });
+const SCENES_4 = [
+  ['the universe, far: the whole charter', 'universe', atHome, false],
+  ['the universe, far: the whole charter under the top bar and the dock', 'universe', atHome, true],
+  ['the universe, entry: as it is come back to from the home galaxy', 'universe', (min) => ascentCamera(homeGalaxyNode, min).to, true],
+  ['the universe, near: a neighbour that has earned its name', 'universe', () => ({ x: NEIGHBOUR.x, y: NEIGHBOUR.y, z: 60 / NEIGHBOUR.size }), true],
+  ['the universe, near: a quasar, told what it is', 'universe', () => ({ x: QUASAR.x, y: QUASAR.y, z: 60 / QUASAR.size }), true],
+  ['the universe, near: a quasar by the edge of the view', 'universe', nearRightEdge(QUASAR), true],
+  ['the universe, near: a radio galaxy, told what it is', 'universe', () => ({ x: RADIO.x, y: RADIO.y, z: 60 / RADIO.size }), true],
+  ['the home galaxy, near: about the Sun just short of the dive', 'home-galaxy', (min) => ({ x: SOL_POS.x, y: SOL_POS.y, z: min / 34 * 0.97 }), true],
+  ['the Sol system, far: just short of leaving it', 'sol', (min) => ({ ...systemEntry(min), z: systemEntry(min).z * 0.65 }), true],
+  ['the Sol system, entry', 'sol', systemEntry, false],
+  ['the Sol system, entry under the top bar and the dock', 'sol', systemEntry, true],
+  ['the Sol system, near: about Earth', 'sol', (min) => ({ ...earth, z: min / 60 }), true],
+];
+{
+  const lines = [];
+  for (const [label, place, camera, bars] of SCENES_4) {
+    for (const { w, h, dpr } of VIEWS) {
+      const view = { w, h };
+      const frame = { place, cam: camera(Math.min(w, h), view), view, dpr, time: 0, epoch: 0, reach, charts: true, passes: ON, sized: true, placement: { keepOut: bars ? BARS(view) : [] } };
+      const labels = placedLabels({ ...frame, nav: NAVS[place] }, currentRegionOf(0).name, sheet.font);
+      lines.push('    ' + JSON.stringify({ label: `${label}, ${w} by ${h} at ${dpr}`, ...frame, labels }));
+    }
+  }
+  writeFileSync(new URL('../fixtures/art/space-v4.json', import.meta.url), `{\n  "sheet": "art-testparts",\n  "entries": [\n${lines.join(',\n')}\n  ]\n}\n`);
+  console.log(`recorded the words of ${lines.length} maps in space-v4.json`);
+}

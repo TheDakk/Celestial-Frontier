@@ -1,7 +1,6 @@
 /* The map screen: the universe, a galaxy or a system, drawn by seeded code, with the survey card of whatever is
    selected and travel between the three by tap, zoom, keyboard and pasted code. */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
-import { measureText } from '@cf/art-interface';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
@@ -10,8 +9,8 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapLabels, mapPicture, minSideOf, parkBelowTrigger, showSpace,
-  supernovaBodies, toScreen, visibleBodies, wrapWords, zoomAbout, zoomLimits, type Camera, type Label, type MapBody, type MapFrame, type Viewport,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, placedLabels, showSpace,
+  supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
@@ -32,13 +31,13 @@ export interface MapPorts {
   dpr(): number;
   frames: { request(run: () => void): number; cancel(handle: number): void };
   reducedMotion(): boolean;
+  /** The parts of the page the map's words keep off, as the browser lays them out: the top bar and the dock. */
+  covers(): readonly { left: number; top: number; width: number; height: number }[];
 }
 
 const REFUSAL_TITLES = { 'prime-reach': 'Beyond Your Saved Reach', 'charter-reach': 'Beyond Your Charter' } as const;
 /** How near the ring of the observable universe, in screen pixels, a tap on empty space opens the origin card. */
 const RING_PICK_PX = 30;
-/** Words keep this many screen pixels clear of each side of the view when they wrap. */
-const CAPTION_EDGE = 8;
 const DEPTH = { universe: 0, galaxy: 1, system: 2, surface: 3 } as const;
 type Selected = { body: MapBody; x: number; y: number } & MapKeyTarget;
 
@@ -227,33 +226,33 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         ctx.bus.on('save:committed', () => redraw.request()),
       ];
 
-      /** Each caption is drawn once, in the display font, and then only moved. Words wider than the view wrap. */
+      /** Each caption is drawn once, in the display font, and then only moved: its box is in the picture's own pixels. */
       const lettered = new Map<string, HTMLCanvasElement>();
       const seenGlyphs = new Set(interfaceGaps.glyphs);
-      const letter = (list: readonly Label[], shown: MapFrame, pixel: number): void => {
+      const letter = (list: readonly Lettered[], pixel: number): void => {
         const sheet = currentSheet();
         const live = new Set<HTMLCanvasElement>();
-        const max = Math.floor((shown.view.w - 2 * CAPTION_EDGE) / pixel);
-        for (const caption of list) {
-          const lines = wrapWords(caption.text, (line) => measureText(sheet.font, line).w, max);
-          const key = `${sheet.font.line}:${lines.join('\n')}`;
+        for (const words of list) {
+          const key = `${sheet.font.line}:${words.lines.join('\n')}`;
           let drawn = lettered.get(key);
           if (drawn === undefined || live.has(drawn)) {
             const gaps = { glyphs: [] as number[], icons: [] as string[], elements: [] as string[] };
-            const fresh = el('canvas', { 'data-caption': caption.text });
-            paintPixels(fresh, drawLines(sheet.font, lines, gaps), sheetColours(sheet));
+            const fresh = el('canvas', { 'data-caption': words.text });
+            paintPixels(fresh, drawLines(sheet.font, words.lines, gaps), sheetColours(sheet));
             for (const glyph of gaps.glyphs) if (!seenGlyphs.has(glyph)) { seenGlyphs.add(glyph); interfaceGaps.glyphs.push(glyph); }
             if (drawn === undefined) lettered.set(key, fresh);
             drawn = fresh;
           }
           live.add(drawn);
-          const at = toScreen(shown.cam, shown.view, caption.wx, caption.wy);
-          const w = drawn.width * pixel;
-          const h = drawn.height * pixel;
-          Object.assign(drawn.style, { width: `${w}px`, height: `${h}px`, left: `${Math.round(at.x - w / 2)}px`,
-            top: `${Math.round(caption.hold === 'above' ? at.y - h - (caption.lift ?? 0) : caption.hold === 'below' ? at.y : at.y - h / 2)}px` });
+          Object.assign(drawn.style, { width: `${words.w * pixel}px`, height: `${words.h * pixel}px`, left: `${words.x * pixel}px`, top: `${words.y * pixel}px` });
         }
         captions.replaceChildren(...live);
+      };
+      /** What covers the map, measured from the map's own corner. */
+      const covered = (): { x: number; y: number; w: number; h: number }[] => {
+        const box = area.getBoundingClientRect();
+        return ports.covers().filter((cover) => cover.width > 0 && cover.height > 0)
+          .map((cover) => ({ x: cover.left - box.left, y: cover.top - box.top, w: cover.width, h: cover.height }));
       };
 
       const seen = new Set(interfaceGaps.elements);
@@ -278,10 +277,12 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
+          // Its words stand clear of each other, of their bodies and of what covers the map.
+          placement: { keepOut: covered() },
         };
         const picture = mapPicture(shown, sheet, gaps);
         showSpace(canvas, picture, sheet.palette.colours, ports.dpr());
-        letter(mapLabels(shown, region.name), shown, picture.scale / ports.dpr());
+        letter(placedLabels(shown, region.name, sheet.font), picture.scale / ports.dpr());
         // A missing element is counted once, however many frames ask for it.
         for (const name of gaps.elements) if (!seen.has(name)) { seen.add(name); interfaceGaps.elements.push(name); }
 

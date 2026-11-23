@@ -5,7 +5,7 @@ import { encodeWhere } from '@cf/domain-strays';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { createMemoryBackend, initializeFreshV5 } from '@cf/persistence';
 import { ascHintFor, currentRegionOf, navToView, type NavState } from '@cf/scene';
-import { ascentCamera, descentCamera, mapPicture, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
+import { ascentCamera, descentCamera, mapPicture, placedLabels, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
 import { currentSheet } from '../src/ui';
 import type { GameEvents } from '../src/events';
 import { REGISTRY, bootSave } from '../src/save/index';
@@ -373,15 +373,16 @@ describe('the map screen', () => {
     expect(paintedBy(canvas())).toEqual(colours(frame(near)));
     const { sized: _sized, ...unsized } = frame(near);
     expect(colours(unsized)).not.toEqual(colours(frame(near)));
-    const named = visibleBodies(page.nav.nav, near, { w: 800, h: 600 }, 0).filter((body) => toScreen(near, { w: 800, h: 600 }, body.wx, body.wy).x > 12);
-    expect(named.length).toBeGreaterThan(0);
-    for (const body of named) {
-      const at = toScreen(near, { w: 800, h: 600 }, body.wx, body.wy);
-      const drawn = label(body.label)!;
-      const radius = body.kind === 'planet' ? 6 * (Number(body.ref.P.sizeMul) || 1) * near.z : NaN;
-      expect(parseFloat(drawn.style.top), body.label).toBe(Math.round(at.y + radius));
-      expect(parseFloat(drawn.style.left) + parseFloat(drawn.style.width) / 2, body.label).toBeCloseTo(at.x, -1);
+    // Each word stands where the placement puts it, in the picture's own pixels: here 2 screen pixels each.
+    const placed = placedLabels({ ...frame(near), placement: { keepOut: [] } }, currentRegionOf(0).name, sheet.font);
+    expect(placed.length).toBeGreaterThan(0);
+    expect(placed.map((words) => words.text)).toEqual(expect.arrayContaining(visibleBodies(page.nav.nav, near, { w: 800, h: 600 }, 0).filter((body) => body.kind === 'planet').map((body) => body.label)));
+    for (const words of placed) {
+      const drawn = label(words.text)!;
+      expect([drawn.style.left, drawn.style.top, drawn.style.width, drawn.style.height], words.text).toEqual([`${words.x * 2}px`, `${words.y * 2}px`, `${words.w * 2}px`, `${words.h * 2}px`]);
+      expect([drawn.width, drawn.height], words.text).toEqual([words.w, words.h]);
     }
+    expect(document.querySelectorAll('.map-captions canvas')).toHaveLength(placed.length);
     // The galaxy: the Sun is lettered over its mark. The universe: the home galaxy under it.
     page.nav.ascend();
     rest(page);
@@ -428,10 +429,32 @@ describe('the map screen', () => {
       const charter = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="your charter — ${currentRegionOf(0).name}"]`)!;
       expect(charter.height).toBeGreaterThan(currentSheet().font.line);
       expect(charter.height % currentSheet().font.line).toBe(0);
-      expect(parseFloat(charter.style.width)).toBeLessThanOrEqual(140 - 16);
+      expect(parseFloat(charter.style.width)).toBeLessThanOrEqual(140 - 8);
+      expect(parseFloat(charter.style.left)).toBeGreaterThanOrEqual(0);
+      expect(parseFloat(charter.style.left) + parseFloat(charter.style.width)).toBeLessThanOrEqual(140);
     } finally {
       pretendSize(800, 600);
     }
+  });
+
+  it('no word of the map stands under the top bar or the dock', async () => {
+    const page = await atUniverse();
+    const boxes = (): Array<{ text: string; top: number; bottom: number }> => [...document.querySelectorAll<HTMLCanvasElement>('.map-captions canvas')]
+      .map((c) => ({ text: c.dataset.caption!, top: parseFloat(c.style.top), bottom: parseFloat(c.style.top) + parseFloat(c.style.height) }));
+    const underBar = (): string[] => boxes().filter((box) => box.top < 60 && box.bottom > 0).map((box) => box.text);
+    // Out until some word stands in the top 60 pixels of the view.
+    for (let i = 0; i < 40 && underBar().length === 0; i++) {
+      fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
+      rest(page);
+    }
+    const hidden = underBar();
+    expect(hidden.length).toBeGreaterThan(0);
+    // The page then lays a bar over those 60 pixels.
+    const bar = document.querySelector('.top-bar')!;
+    vi.spyOn(bar, 'getBoundingClientRect').mockReturnValue({ left: 0, top: 0, width: 800, height: 60 } as DOMRect);
+    rest(page);
+    expect(underBar()).toEqual([]);
+    expect(boxes().length).toBeGreaterThan(0);
   });
 
   it('draws the map on its canvas at the size of the view, and again when the place changes', async () => {

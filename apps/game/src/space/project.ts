@@ -181,6 +181,13 @@ export function projectBackdrop(grid: Grid): SpaceItem[] {
   return items;
 }
 
+/** How wide a system's star is drawn, in world units: its glow is 4.8 of its radius (at least 8) across; a black
+ *  hole, a pair of beams and a protostar have their own widths. */
+export function primaryWidth(scene: { kind: string; starR: number }): number {
+  const special = PRIMARY_KINDS[scene.kind];
+  return special === undefined ? Math.max(scene.starR, 8) * 4.8 * GLOW : special === 'bh' ? WIDTH.primaryBh : special === 'proto' ? WIDTH.primaryProto : WIDTH.primaryBeams;
+}
+
 interface Belt { rocks: readonly { a: number; rr: number; s: number; sp: number }[] }
 interface Companion { sep: number; r2: number; col2?: string }
 
@@ -228,9 +235,7 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
   }
   const special = PRIMARY_KINDS[scene.kind];
   const tint = rgbOf(scene.starCol || '#ffe9c4');
-  // The star's glow is 4.8 of its radius (at least 8) across; a black hole, a pair of beams and a protostar have their own widths.
-  const primary = special === undefined ? Math.max(scene.starR, 8) * 4.8 * GLOW : special === 'bh' ? WIDTH.primaryBh : special === 'proto' ? WIDTH.primaryProto : WIDTH.primaryBeams;
-  items.push({ kind: 'element', name: `primary/${special ?? 'star'}`, ...at(0, 0), ramp: special === undefined ? tint : 0xffffff, ...spanOf(sizing, primary, cam.z) });
+  items.push({ kind: 'element', name: `primary/${special ?? 'star'}`, ...at(0, 0), ramp: special === undefined ? tint : 0xffffff, ...spanOf(sizing, primaryWidth(scene), cam.z) });
   const companion = (c: Companion, angle: number): SpaceItem =>
     ({ kind: 'element', name: 'companion', ...turned(angle, c.sep), ramp: c.col2 ? rgbOf(c.col2) : tint, ...spanOf(sizing, c.r2 * 4.8 * GLOW, cam.z) });
   if (special === undefined && raw.binary) {
@@ -245,7 +250,12 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
  *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
  *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. */
-export interface MapFrame { nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean }
+export interface MapFrame {
+  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean;
+  /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
+   *  pixels, that words keep off (the top bar and the dock). */
+  placement?: { keepOut: readonly { x: number; y: number; w: number; h: number }[] };
+}
 export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
 
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. */
