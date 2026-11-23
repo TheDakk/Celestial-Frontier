@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { applyMotion, motionReduced } from '../src/ui/motion';
 import { capturePanelRefillFocus } from '../src/ui/panel-refill-focus';
 import { TOAST_DEDUP_MS, TOAST_SHOW_MS, createToast } from '../src/ui/toast';
+import { UI_TOKENS } from '../src/ui/tokens';
 
 beforeEach(() => { vi.useFakeTimers(); document.body.innerHTML = '<div id="toast"></div><div id="panel"></div>'; });
 afterEach(() => { vi.useRealTimers(); });
@@ -87,5 +88,14 @@ describe('focus across a panel refill', () => {
     fill();
     none();
     expect(document.activeElement).toBe(document.body);
+  });
+});
+
+describe('interface colours', () => {
+  it('the surface of a sheet and of a raised control lets nothing behind it show: no colour has an alpha', () => {
+    expect([UI_TOKENS['color-surface'], UI_TOKENS['color-elevated']]).toEqual(['#0a101e', '#101828']);
+    for (const [name, value] of Object.entries(UI_TOKENS)) {
+      if (name.startsWith('color-')) expect(value, name).toMatch(/^(#[0-9a-f]{6}|var\(--[a-z]+\))$/);
+    }
   });
 });
