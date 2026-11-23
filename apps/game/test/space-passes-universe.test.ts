@@ -9,11 +9,11 @@ import { passCaptions } from '../src/space/passes';
 import { bridgeItems, charterShown, edgeItems, fogItems, turnGalaxy, veilItems, webItems, webZoom } from '../src/space/passes-universe';
 import { mapItems } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
-import { COLLIDING, kindOf, namesOf, passView } from './space-support';
+import { COLLIDING, kindOf, namesOf, passView, placed } from './space-support';
 
 const HOME = { x: HOME_POS.x, y: HOME_POS.y };
 const at = (z: number, over = {}) => passView(NAV_HOME, { ...HOME, z }, over);
-const centres = (items: readonly SpaceItem[]): string[] => [...new Set(items.map((item) => `${item.x},${item.y}`))];
+const centres = (items: readonly SpaceItem[]): string[] => [...new Set(placed(items).map((item) => `${item.x},${item.y}`))];
 const frame = (z: number, over: Partial<MapFrame> = {}): MapFrame =>
   ({ nav: NAV_HOME, cam: { ...HOME, z }, view: { w: 1280, h: 720 }, dpr: 1, time: 0, epoch: 0, reach: 880, charts: true, passes: { effects: true, motion: true }, ...over });
 const items = (f: MapFrame): SpaceItem[] => mapItems(f, { w: 640, h: 360 }, 2);
@@ -58,7 +58,7 @@ describe('tidal bridges', () => {
   const near = passView(NAV_HOME, { x: COLLIDING.x + 40, y: COLLIDING.y, z: 2 });
 
   it('a colliding galaxy is joined to its companion by an unbroken curved line as wide as the game draws it', () => {
-    const bridge = bridgeItems(near);
+    const bridge = placed(bridgeItems(near));
     expect(bridge.length).toBeGreaterThan(10);
     expect(bridge[0]).toMatchObject(place(near.cam, near.grid, COLLIDING.x, COLLIDING.y));
     expect(bridge[bridge.length - 1]).toMatchObject(place(near.cam, near.grid, COLLIDING.x2, COLLIDING.y2));

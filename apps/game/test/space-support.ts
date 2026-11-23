@@ -46,3 +46,6 @@ export function passView(nav: NavState, cam: Camera, over: Partial<PassView> = {
 export const kindOf = <K extends SpaceItem['kind']>(items: readonly SpaceItem[], kind: K): Extract<SpaceItem, { kind: K }>[] =>
   items.filter((item): item is Extract<SpaceItem, { kind: K }> => item.kind === kind);
 export const namesOf = (items: readonly SpaceItem[]): string[] => kindOf(items, 'element').map((item) => item.name);
+/** The items that stand at a place of the picture: all but a field, which lies over the whole of it. */
+export const placed = (items: readonly SpaceItem[]): Exclude<SpaceItem, { kind: 'field' }>[] =>
+  items.filter((item): item is Exclude<SpaceItem, { kind: 'field' }> => item.kind !== 'field');

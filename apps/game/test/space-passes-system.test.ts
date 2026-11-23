@@ -9,7 +9,7 @@ import { passCaptions } from '../src/space/passes';
 import { cometItems, dressPlanet, turnBeams, visitorItems, zoneItems } from '../src/space/passes-system';
 import { mapCaptions, mapItems, projectScenery } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
-import { MAGNETAR, PULSAR, SOL, VISITED, kindOf, namesOf, passView, systemNav } from './space-support';
+import { MAGNETAR, PULSAR, SOL, VISITED, kindOf, namesOf, passView, placed, systemNav } from './space-support';
 
 const sol = systemNav(SOL);
 const pulsar = systemNav(PULSAR);
@@ -265,10 +265,10 @@ describe('the interstellar visitor', () => {
     const along = ((time * VISITOR.speed + VISITOR.off) % 832) - 416;
     return place(v.cam, v.grid, -Math.sin(VISITOR.ang) * VISITOR.b + Math.cos(VISITOR.ang) * along, Math.cos(VISITOR.ang) * VISITOR.b + Math.sin(VISITOR.ang) * along);
   };
-  const body = (list: readonly SpaceItem[]): SpaceItem[] => list.filter((item) => item.kind === 'dot' && item.colour === 0x8a6f58);
+  const body = (list: readonly SpaceItem[]) => placed(list).filter((item) => item.kind === 'dot' && item.colour === 0x8a6f58);
 
   it('is a sliver of rock on its straight path, trailing a short wake behind it', () => {
-    const drawn = visitorItems(v);
+    const drawn = placed(visitorItems(v));
     const sliver = body(drawn);
     // Ten world units long: five art pixels, centred on its place.
     expect(sliver).toHaveLength(5);

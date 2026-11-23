@@ -490,6 +490,60 @@ describe('painting space items', () => {
     expect(paint(2, 2, [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'shade', x: 0, y: 0, r: MAX_RADIUS + 1, share: 8 }, { kind: 'shade', x: 0, y: 0, r: -1, share: 8 }])).toEqual(['1.', '..']);
   });
 
+  describe('a field', () => {
+    const STEPS = [{ at: 40, colour: 0x800000 }, { at: 120, colour: RED }];
+    /** A field over a picture `w` wide that rises evenly from 0 at its left edge to `top` at its right. */
+    const rising = (w: number, top: number, steps = STEPS): SpaceItem => ({ kind: 'field', cols: 2, rows: 2, values: [0, top, 0, top], u: 0, v: 0, du: 65536 / w, steps });
+
+    it('is solid steps: each pixel takes the last step its value has reached, and none is left out in a pattern', () => {
+      // 16 pixels across a rise of 160: the pixel at px holds 10 times px. Dark red from 40, red from 120.
+      expect(paint(16, 2, [rising(16, 160)])).toEqual(['....444444443333', '....444444443333']);
+      // No step is reached below the first; a field with no step paints nothing.
+      expect(paint(16, 1, [rising(16, 30)])).toEqual(['................']);
+      expect(paint(16, 1, [rising(16, 160, [])])).toEqual(['................']);
+    });
+
+    it('runs evenly between its points, so the edge of a step is a stair across a slope', () => {
+      // From 0 at the top left to 200 at the bottom right: the pixel at (px, py) holds 12.5 times px + py.
+      const slope: SpaceItem = { kind: 'field', cols: 2, rows: 2, values: [0, 100, 100, 200], u: 0, v: 0, du: 8192, steps: [{ at: 50, colour: WHITE }] };
+      expect(paint(8, 8, [slope])).toEqual(['....1111', '...11111', '..111111', '.1111111', '11111111', '11111111', '11111111', '11111111']);
+    });
+
+    it('a cell whose points all stand on one step is that step throughout, and joins its neighbour without a seam', () => {
+      const flat: SpaceItem = { kind: 'field', cols: 3, rows: 2, values: [0, 160, 160, 0, 160, 160], u: 0, v: 0, du: 8192, steps: STEPS };
+      expect(paint(16, 1, [flat])).toEqual(['..44443333333333']);
+    });
+
+    it('a light step leaves every pixel as bright as it or brighter; a shadow step fills the background and shades the rest', () => {
+      const under: SpaceItem[] = [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'dot', x: 1, y: 0, colour: 0x800000 }, { kind: 'dot', x: 2, y: 0, colour: 0x000080 }, { kind: 'dot', x: 3, y: 0, colour: RED }];
+      const all = (step: { colour: number; share?: number }): SpaceItem => ({ kind: 'field', cols: 2, rows: 2, values: [9, 9, 9, 9], u: 0, v: 0, du: 8192, steps: [{ at: 1, ...step }] });
+      expect(paint(6, 1, under)).toEqual(['1463..']);
+      expect(paint(6, 1, [...under, all({ colour: 0x800000 })])).toEqual(['144344']);
+      // A shadow of dark blue at a half: white to grey, the reds to dark red, and the background takes the dark blue.
+      expect(paint(6, 1, [...under, all({ colour: 0x000080, share: 8 })])).toEqual(['246466']);
+      // The same shadow is the same shade a `shade` item gives, pixel for pixel.
+      expect(paint(4, 1, [...under, all({ colour: 0x000080, share: 8 })])).toEqual(paint(4, 1, [...under, { kind: 'shade', x: 0, y: 0, r: 9, share: 8, toward: 0x000080 }]));
+    });
+
+    it('is fixed to its grid: a view moved by k pixels shows the same shapes moved by k', () => {
+      const values = [0, 30, 200, 90, 10, 160, 40, 220, 120, 20, 80, 250, 60, 140, 0, 180];
+      const at = (k: number, l: number): SpaceItem => ({ kind: 'field', cols: 4, rows: 4, values, u: k * 12000, v: l * 12000, du: 12000, steps: STEPS });
+      const base = paint(12, 12, [at(0, 0)]);
+      expect(new Set(base.join('')).size).toBe(3);
+      const moved = paint(12, 12, [at(3, 2)]);
+      for (let y = 0; y < 10; y++) expect(moved[y]!.slice(0, 9), `row ${y}`).toBe(base[y + 2]!.slice(3));
+    });
+
+    it('leaves what lies off its grid, and is not drawn with fewer than two points either way or a step of nothing', () => {
+      // The grid begins twelve pixels in, a cell and a half, and ends four pixels before the right edge.
+      expect(paint(24, 1, [{ kind: 'field', cols: 2, rows: 2, values: [200, 200, 200, 200], u: -12 * 8192, v: 0, du: 8192, steps: STEPS }])).toEqual(['............33333333....']);
+      expect(paint(2, 24, [{ kind: 'field', cols: 2, rows: 2, values: [200, 200, 200, 200], u: 0, v: -12 * 8192, du: 8192, steps: STEPS }]).map((line) => line[0]).join('')).toBe('............33333333....');
+      for (const broken of [{ cols: 1, rows: 2 }, { cols: 2, rows: 1 }, { du: 0 }]) {
+        expect(paint(4, 1, [{ kind: 'field', cols: 2, rows: 2, values: [200, 200, 200, 200], u: 0, v: 0, du: 8192, steps: STEPS, ...broken }])).toEqual(['....']);
+      }
+    });
+  });
+
   it('an element with a clip shows only what lies inside that disc', () => {
     const arrow = (clip?: { x: number; y: number; r: number }): SpaceItem => ({ kind: 'element', name: 'arrow', x: 2, y: 1, ramp: WHITE, ...(clip === undefined ? {} : { clip }) });
     expect(paint(6, 4, [arrow()])).toEqual(['......', '..1...', '..125.', '..1...']);
@@ -518,7 +572,7 @@ describe('painting space items', () => {
   it('moving every item by k art pixels moves the picture by k', () => {
     const base = paintSpace(48, 48, SCENE, SHEET, noGaps());
     for (const [kx, ky] of [[5, 0], [0, 7], [-3, 4], [-40, 2]] as const) {
-      const moved = paintSpace(48, 48, SCENE.map((item) => ({ ...item, x: item.x + kx, y: item.y + ky })), SHEET, noGaps());
+      const moved = paintSpace(48, 48, SCENE.map((item) => (item.kind === 'field' ? item : { ...item, x: item.x + kx, y: item.y + ky })), SHEET, noGaps());
       let compared = 0;
       for (let y = 0; y < 48; y++) for (let x = 0; x < 48; x++) {
         const fromX = x - kx, fromY = y - ky;

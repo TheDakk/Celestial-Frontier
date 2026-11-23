@@ -28,6 +28,13 @@ import type { Gaps } from './text';
  *   top), and never in the background. With `toward`, what a share under 16 does not keep of the pixel is taken from
  *   that colour. The nearest colour is judged by hue first, so a blue goes to a darker blue and not to a grey.
  *   `inner` and `clip` as for a veil.
+ * - field: a soft light or shadow as pixel art has it: solid steps with stepped edges and no pattern. `values` are
+ *   whole numbers at the points of a grid `cols` by `rows`, row by row; between four points the field runs evenly. The
+ *   picture's pixel (px, py) stands at (u + px * du, v + py * du) on the grid, counted in 65536ths of the way from one
+ *   point to the next, so a grid fixed to the world keeps its shapes as the view moves. A pixel takes the last of
+ *   `steps`, listed rising, whose `at` its value reaches. A step of a `colour` alone is a light: it is painted where
+ *   the pixel is darker than it, as a veil that is a light. A step with a `share` is a shadow: a background pixel takes
+ *   its colour, and any other is redrawn as a shade of that share toward it. What lies off the grid is left.
  */
 export type SpaceItem =
   | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number; clip?: { x: number; y: number; r: number } }
@@ -35,7 +42,10 @@ export type SpaceItem =
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
   | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean }
-  | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number } };
+  | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number } }
+  | { kind: 'field'; cols: number; rows: number; values: ArrayLike<number>; u: number; v: number; du: number; steps: readonly FieldStep[] };
+/** One step of a field: where it begins, and its colour; with `share`, the shade a shadow gives what it covers. */
+export interface FieldStep { at: number; colour: number; share?: number }
 
 /** A map picture: w by h colour numbers of the sheet's palette, row-major. A pixel holds any number a palette may. */
 export interface SpacePicture { w: number; h: number; pixels: Uint32Array }
@@ -161,7 +171,8 @@ function rootOf(n: number): number {
  * A picture w by h of palette indices, the items painted in order, later ones over earlier ones. Index 0 is the
  * background: a pixel given it shows what lies behind. Whatever falls outside the picture is dropped. An element the
  * sheet lacks draws the stand-in icon centred on its place and is counted in `gaps.elements`. A ring or disc with a
- * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one.
+ * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one. A field of fewer than two points
+ * either way, or finer than its grid can count (`du` under 1), is not drawn.
  */
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): SpacePicture {
   const { palette, defined } = sheet;
@@ -273,14 +284,11 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
-  /** The colour number each number is shaded to at a share, worked out once for each share a picture uses. */
+  /** The colour number each number is shaded to at a share toward a colour, worked out once for each a picture uses. */
   const shadedAt = new Map<number, number[]>();
   const first = defined[0] === 0 ? 1 : 0;
   const solid = colours.slice(first);
-  const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
-    const { x, y, r, clip, share } = item;
-    if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
-    const toward = item.toward ?? 0;
+  const shadedFor = (share: number, toward: number): number[] => {
     const key = share * (1 << 24) + toward;
     let shaded = shadedAt.get(key);
     if (shaded === undefined) {
@@ -293,6 +301,12 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
       }
       shadedAt.set(key, shaded);
     }
+    return shaded;
+  };
+  const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
+    const { x, y, r, clip } = item;
+    if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
+    const shaded = shadedFor(item.share, item.toward ?? 0);
     for (let py = Math.max(0, y - r); py <= Math.min(h - 1, y + r); py++) {
       const half = halfOf(r, Math.abs(py - y));
       const hole = item.inner === undefined ? -1 : halfOf(item.inner, Math.abs(py - y));
@@ -306,9 +320,60 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
+  const field = (item: Extract<SpaceItem, { kind: 'field' }>): void => {
+    const { cols, rows, values, steps, du } = item;
+    if (cols < 2 || rows < 2 || du < 1 || steps.length === 0) return;
+    // What each step paints: its colour number, how bright that is, and for a shadow the shade of every colour.
+    const paints = steps.map((step) => {
+      const value = index(step.colour);
+      return { value, floor: bright[value] ?? 0, shaded: step.share === undefined ? undefined : shadedFor(step.share, step.colour) };
+    });
+    /** The step a value has reached: -1 before the first. */
+    const stepOf = (value: number): number => {
+      let s = -1;
+      while (s + 1 < steps.length && value >= (steps[s + 1]?.at ?? 0)) s++;
+      return s;
+    };
+    const stepAt = new Int32Array(cols * rows);
+    for (let i = 0; i < stepAt.length; i++) stepAt[i] = stepOf(values[i] ?? 0);
+    for (let py = 0; py < h; py++) {
+      const gv = item.v + py * du;
+      const j = gv >> 16;
+      if (j < 0 || j >= rows - 1) continue;
+      const fy = (gv & 0xffff) >> 8;
+      let cell = -1;
+      let even = -2;
+      let [a, b, c, d] = [0, 0, 0, 0];
+      for (let px = 0; px < w; px++) {
+        const gu = item.u + px * du;
+        const i = gu >> 16;
+        if (i < 0 || i >= cols - 1) continue;
+        if (i !== cell) {
+          cell = i;
+          const at = j * cols + i;
+          [a, b, c, d] = [values[at] ?? 0, values[at + 1] ?? 0, values[at + cols] ?? 0, values[at + cols + 1] ?? 0];
+          // A cell whose four points have reached the same step is that step all over: nothing to work out in it.
+          const s = stepAt[at] ?? -1;
+          even = s === stepAt[at + 1] && s === stepAt[at + cols] && s === stepAt[at + cols + 1] ? s : -2;
+        }
+        let s = even;
+        if (s === -2) {
+          const fx = (gu & 0xffff) >> 8;
+          s = stepOf(((a * (256 - fx) + b * fx) * (256 - fy) + (c * (256 - fx) + d * fx) * fy) >> 16);
+        }
+        const paint = paints[s];
+        if (paint === undefined) continue;
+        const now = pixels[py * w + px] ?? 0;
+        if (paint.shaded === undefined) { if ((bright[now] ?? 0) < paint.floor) pixels[py * w + px] = paint.value; }
+        else pixels[py * w + px] = now === 0 ? paint.value : paint.shaded[now] ?? now;
+      }
+    }
+  };
+
   for (const item of items) {
     if (item.kind === 'element') element(item);
     else if (item.kind === 'dot') row(item.y, item.x, item.x, index(item.colour));
+    else if (item.kind === 'field') field(item);
     else if (item.r < 0 || item.r > MAX_RADIUS) continue;
     else if (item.kind === 'ring') ring(item);
     else if (item.kind === 'disc') disc(item);
