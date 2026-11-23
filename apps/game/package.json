@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@cf/domain-rand": "*",
+    "@cf/persistence": "*",
     "@cf/scene": "*"
   },
   "devDependencies": {
