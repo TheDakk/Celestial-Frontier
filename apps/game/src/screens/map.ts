@@ -228,13 +228,17 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         ctx.bus.on('layout:size-class', () => redraw.request()),
         ctx.bus.on('settings:changed', () => redraw.request()),
         ctx.bus.on('save:committed', () => redraw.request()),
+        ctx.bus.on('pack:status', () => redraw.request()),
       ];
 
       /** Each caption is drawn once, in the display font, and then only moved: its box is in the picture's own pixels. */
       const lettered = new Map<string, HTMLCanvasElement>();
+      let letteredFrom = currentSheet();
       const seenGlyphs = new Set(interfaceGaps.glyphs);
       const letter = (list: readonly Lettered[], pixel: number): void => {
         const sheet = currentSheet();
+        // A pack that arrives after the map was lettered brings its own font: everything is lettered again.
+        if (sheet !== letteredFrom) { lettered.clear(); letteredFrom = sheet; }
         const live = new Set<HTMLCanvasElement>();
         for (const words of list) {
           const key = `${sheet.font.line}:${words.lines.join('\n')}`;

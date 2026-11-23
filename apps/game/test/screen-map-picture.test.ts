@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { encodeWhere } from '@cf/domain-strays';
 import { currentRegionOf, type NavState } from '@cf/scene';
 import { ascentCamera, descentCamera, mapPicture, placedLabels, visibleBodies, type MapFrame } from '../src/space';
-import { currentSheet } from '../src/ui';
+import { currentSheet, placeholderSheet, useSheet } from '../src/ui';
 import { HOME as HOME_GALAXY, SOL as SOL_STAR } from './nav-support';
 import { atUniverse, canvas, fire, rest } from './screen-map-support';
 import { bootPage, pretendLayout, pretendSize } from './shell-support';
@@ -107,6 +107,24 @@ describe('the map screen\'s picture and words', () => {
       return tail.some((p) => p.x >= left && p.x < left + width && p.y >= top && p.y < top + height);
     });
     expect(crossed.map((name) => name.dataset.caption)).toEqual([]);
+  });
+
+  it('letters the map again in the pack\'s font when the pack arrives after the map was first lettered', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    rest(page);
+    const earth = (): HTMLCanvasElement => document.querySelector<HTMLCanvasElement>('.map-captions canvas[data-caption="Earth"]')!;
+    const before = paintedBy(earth()).join();
+    // A sheet whose E is drawn as its X: the same line height, other letters.
+    const sheet = placeholderSheet();
+    const glyphs = new Map(sheet.font.glyphs);
+    glyphs.set('E'.codePointAt(0)!, glyphs.get('X'.codePointAt(0)!)!);
+    try {
+      useSheet({ ...sheet, font: { ...sheet.font, glyphs } });
+      page.env.bus.emit('pack:status', { name: 'interface', state: 'ready', detail: null });
+      rest(page);
+      expect(paintedBy(earth()).join()).not.toBe(before);
+    } finally { useSheet(null); }
   });
 
   it('letters the captions of the map: the charter over its ring from the zoom it shows at, the belt and the zone with the star charts', async () => {
