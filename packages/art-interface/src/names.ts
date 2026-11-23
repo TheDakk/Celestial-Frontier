@@ -51,3 +51,13 @@ export function tierOf(name: string): { element: string; width: number } | undef
   const match = TIER_NAME.exec(name);
   return match === null ? undefined : { element: match[1] ?? '', width: parseInt(match[2] ?? '', 10) };
 }
+
+const FORM_NAME = /^(.+)\/(?:v[0-3]|t[1-3]|dim)$/;
+/**
+ * The subject an element is one form of: an orientation (`/v0` to `/v3`), a later frame (`/t1` to `/t3`) and a dimmed
+ * form (`/dim`) are forms of the name before that last part, and any other name is its own subject (the first frame
+ * and the undimmed form carry no such part). Elements of one subject are drawn in one place at one size.
+ */
+export function subjectOf(name: string): string {
+  return FORM_NAME.exec(name)?.[1] ?? name;
+}

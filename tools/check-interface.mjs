@@ -27,7 +27,7 @@ registerHooks({
   },
 });
 
-const { parseInterfaceSheet, codePointLabel, tierOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES, OPTIONAL_ELEMENT_NAMES } = await import('@cf/art-interface');
+const { parseInterfaceSheet, codePointLabel, tierOf, subjectOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES, OPTIONAL_ELEMENT_NAMES } = await import('@cf/art-interface');
 
 /** The side of every interface icon, in art pixels. */
 export const ICON_SIZE = 16;
@@ -40,7 +40,9 @@ export const MAX_MAP_COLOUR = 255;
  * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. An
  * optional element (a planet by its type) may be there or not. A size tier (`<element>/x<width>`) of any listed
  * element is accepted; reported are a tier of a name that is not listed, a tier of an optional element the sheet does
- * not draw, a tier not drawn at the width its name gives, and a tier no wider than its element.
+ * not draw, a tier not drawn at the width its name gives, and a tier no wider than its element. The forms of one
+ * subject (its orientations, its frames, its dimmed form) must carry the same tier widths as the first of them, or
+ * the thing would change size as it turns: each that differs is reported, when any of them has a tier at all.
  */
 export function checkInterface(text) {
   let sheet;
@@ -62,16 +64,26 @@ export function checkInterface(text) {
   for (const name of ELEMENT_NAMES) if (!sheet.elements.has(name)) problems.push(`missing element ${name}`);
   const known = [...ELEMENT_NAMES, ...OPTIONAL_ELEMENT_NAMES];
   let tiers = 0;
+  const widthsOf = new Map();
   for (const [name, drawing] of sheet.elements) {
     if (known.includes(name)) continue;
     const tier = tierOf(name);
     if (tier === undefined) { problems.push(`unknown element ${name}`); continue; }
     tiers++;
+    widthsOf.set(tier.element, [...(widthsOf.get(tier.element) ?? []), tier.width]);
     const element = sheet.elements.get(tier.element);
     if (!known.includes(tier.element)) problems.push(`tier ${name} is of an unknown element ${tier.element}`);
     else if (element === undefined && OPTIONAL_ELEMENT_NAMES.includes(tier.element)) problems.push(`tier ${name} has no element ${tier.element}`);
     else if (drawing.w !== tier.width) problems.push(`tier ${name} is ${drawing.w} wide, not ${tier.width}`);
     else if (element !== undefined && drawing.w <= element.w) problems.push(`tier ${name} is no wider than its element (${element.w})`);
+  }
+  const forms = new Map();
+  for (const name of known) forms.set(subjectOf(name), [...(forms.get(subjectOf(name)) ?? []), name]);
+  const ladder = (name) => [...(widthsOf.get(name) ?? [])].sort((a, b) => a - b).join(', ') || 'none';
+  for (const [first, ...others] of forms.values()) {
+    for (const other of others) {
+      if (ladder(other) !== ladder(first)) problems.push(`tiers of ${other} differ from ${first}: ${ladder(other)} against ${ladder(first)}`);
+    }
   }
   const summary = { glyphs: sheet.font.glyphs.size, icons: sheet.icons.size, elements: sheet.elements.size - tiers, tiers, line: sheet.font.line };
   return { ok: problems.length === 0, parseError: null, problems, summary };

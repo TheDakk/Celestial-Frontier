@@ -52,17 +52,17 @@ describe('checkInterface', () => {
 describe('size tiers in the checker', () => {
   /** A drawing `w` wide and two rows high. */
   const tier = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n${'2'.repeat(w)}\n`;
-  // The placeholder's quasar is 9 wide.
+  // The placeholder's black hole is 9 wide; it has no other form, so its tiers answer to no sibling.
   it('any tier of a listed element is accepted when it is drawn at the width its name gives, and is counted apart', () => {
-    const report = checkInterface(PLACEHOLDER + tier('quasar/x32', 32) + tier('quasar/x64', 64) + tier('galaxy/spiral/v0/x128', 128) + tier('wormhole/t1/x24', 24));
+    const report = checkInterface(PLACEHOLDER + tier('black-hole/x32', 32) + tier('black-hole/x64', 64) + tier('deco/neb/x128', 128) + tier('companion/x24', 24));
     expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 60, tiers: 4, line: 12 } });
     expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 97 glyphs (line 12), 6 icons, 60 elements, 4 size tiers\n');
   });
   it.each([
-    ['a tier drawn at another width than its name gives', tier('quasar/x32', 31), ['tier quasar/x32 is 31 wide, not 32']],
+    ['a tier drawn at another width than its name gives', tier('black-hole/x32', 31), ['tier black-hole/x32 is 31 wide, not 32']],
     ['a tier of an unknown element', tier('comet/x32', 32), ['tier comet/x32 is of an unknown element comet']],
-    ['a tier no wider than the element itself', tier('quasar/x9', 9), ['tier quasar/x9 is no wider than its element (9)']],
-    ['a tier of a tier', tier('quasar/x32', 32) + tier('quasar/x32/x64', 64), ['tier quasar/x32/x64 is of an unknown element quasar/x32']],
+    ['a tier no wider than the element itself', tier('black-hole/x9', 9), ['tier black-hole/x9 is no wider than its element (9)']],
+    ['a tier of a tier', tier('black-hole/x32', 32) + tier('black-hole/x32/x64', 64), ['tier black-hole/x32/x64 is of an unknown element black-hole/x32']],
     ['a tier whose number is not written plainly', tier('quasar/x032', 32), ['unknown element quasar/x032']],
   ])('reports %s', (_what, extra, problems) => {
     const report = checkInterface(PLACEHOLDER + extra);
@@ -71,7 +71,41 @@ describe('size tiers in the checker', () => {
     expect(report.ok).toBe(false);
   });
   it('a tier is no stand-in for its element: the element is still missing', () => {
-    expect(checkInterface(without('element quasar anchor=4,4') + tier('quasar/x32', 32)).problems).toEqual(['missing element quasar']);
+    expect(checkInterface(without('element black-hole anchor=4,4') + tier('black-hole/x32', 32)).problems).toEqual(['missing element black-hole']);
+  });
+});
+
+describe('the forms of one element carry the same tiers', () => {
+  const tier = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n`;
+  const ladder = (names: string[], widths: number[]): string => names.flatMap((name) => widths.map((w) => tier(`${name}/x${w}`, w))).join('');
+  const SPIRALS = ['v0', 'v1', 'v2', 'v3'].map((v) => `galaxy/spiral/${v}`);
+  const WORMHOLES = ['wormhole', 'wormhole/t1', 'wormhole/t2', 'wormhole/t3'];
+  it('orientations, frames and a dimmed form that all carry one ladder pass', () => {
+    const report = checkInterface(PLACEHOLDER + ladder(SPIRALS, [32, 64]) + ladder(WORMHOLES, [24]) + ladder(['quasar', 'quasar/dim'], [32, 48]));
+    expect(report.problems).toEqual([]);
+    expect(report.summary?.tiers).toBe(16);
+  });
+  it('a half-drawn set of orientations is reported, one line for each orientation that differs from the first', () => {
+    expect(checkInterface(PLACEHOLDER + ladder(SPIRALS.slice(0, 1), [32, 64]) + ladder(SPIRALS.slice(1, 2), [32])).problems).toEqual([
+      'tiers of galaxy/spiral/v1 differ from galaxy/spiral/v0: 32 against 32, 64',
+      'tiers of galaxy/spiral/v2 differ from galaxy/spiral/v0: none against 32, 64',
+      'tiers of galaxy/spiral/v3 differ from galaxy/spiral/v0: none against 32, 64',
+    ]);
+  });
+  it('a frame without the tier of the first frame is reported, and so is the first frame without a later one\'s', () => {
+    expect(checkInterface(PLACEHOLDER + ladder(WORMHOLES.slice(0, 3), [24])).problems).toEqual(['tiers of wormhole/t3 differ from wormhole: none against 24']);
+    expect(checkInterface(PLACEHOLDER + ladder(WORMHOLES.slice(1), [24])).problems).toEqual([
+      'tiers of wormhole/t1 differ from wormhole: 24 against none',
+      'tiers of wormhole/t2 differ from wormhole: 24 against none',
+      'tiers of wormhole/t3 differ from wormhole: 24 against none',
+    ]);
+  });
+  it('a dimmed form without the tiers of its element is reported; the same count at other widths is too', () => {
+    expect(checkInterface(PLACEHOLDER + tier('quasar/x32', 32)).problems).toEqual(['tiers of quasar/dim differ from quasar: none against 32']);
+    expect(checkInterface(PLACEHOLDER + tier('quasar/x32', 32) + tier('quasar/dim/x48', 48)).problems).toEqual(['tiers of quasar/dim differ from quasar: 48 against 32']);
+  });
+  it('elements that are no forms of one another answer to nothing: other kinds of galaxy, and the two neutron stars', () => {
+    expect(checkInterface(PLACEHOLDER + ladder(SPIRALS, [32]) + ladder(['primary/ns', 'primary/ns/t1', 'primary/ns/t2', 'primary/ns/t3'], [40])).problems).toEqual([]);
   });
 });
 
