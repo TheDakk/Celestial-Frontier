@@ -9,7 +9,7 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, placedLabels, showSpace,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, pictureWidth, placedLabels, showSpace,
   supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, interfaceGaps, sheetColours, type Toast } from '../ui';
@@ -138,6 +138,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const at = toScreen(cam, view(), body.wx, body.wy);
         return {
           body, key: body.key, x: at.x, y: at.y, priority: body.priority,
+          // A press anywhere on the body's picture selects it, as in the game: half its width each way.
+          reach: pictureWidth(body, cam.z) * cam.z / 2,
           // A catalogued body is announced by its name; the rest by the title of their card.
           get label(): string {
             return body.kind === 'galaxy' || body.kind === 'star' || body.kind === 'planet' ? body.label : cardOf(body).descriptor?.title ?? body.label;

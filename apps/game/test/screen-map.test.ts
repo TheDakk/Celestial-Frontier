@@ -5,7 +5,7 @@ import { encodeWhere } from '@cf/domain-strays';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { createMemoryBackend, initializeFreshV5 } from '@cf/persistence';
 import { ascHintFor, navToView } from '@cf/scene';
-import { ascentCamera, descentCamera, supernovaBodies, toScreen, visibleBodies } from '../src/space';
+import { ascentCamera, descentCamera, pictureWidth, supernovaBodies, toScreen, visibleBodies } from '../src/space';
 import type { GameEvents } from '../src/events';
 import { REGISTRY } from '../src/save/index';
 import descriptors from '../../../fixtures/current/descriptors.json' with { type: 'json' };
@@ -48,6 +48,26 @@ describe('the map screen', () => {
     // It follows the picture among the map's own children, which is how the stylesheet shows it for a focused map.
     expect(canvas().compareDocumentPosition(edge) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect([canvas().parentElement, canvas().tabIndex]).toEqual([edge.parentElement, 0]);
+  });
+
+  it('a press anywhere on a planet\'s picture opens its card, well past the pick radius; a press off it opens none', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    rest(page);
+    const cam = descentCamera('system', 600).to;
+    const jupiter = visibleBodies(page.nav.nav, cam, { w: 800, h: 600 }, 0).find((body) => body.label === 'Jupiter')!;
+    const at = toScreen(cam, { w: 800, h: 600 }, jupiter.wx, jupiter.wy);
+    // The game's picture of Jupiter is the square its night is drawn on: three of its radii wide.
+    const reach = pictureWidth(jupiter, cam.z) * cam.z / 2;
+    expect(reach).toBeGreaterThan(14);
+    tap(at.x + reach - 1, at.y);
+    expect(cardTitle()).toBe('Jupiter');
+    key(document, 'Escape');
+    tap(at.x - reach + 1, at.y + reach - 1);
+    expect(cardTitle()).toBe('Jupiter');
+    key(document, 'Escape');
+    tap(at.x + reach + 2, at.y);
+    expect(cardTitle()).toBeNull();
   });
 
   it('the same path works from the keyboard alone', async () => {

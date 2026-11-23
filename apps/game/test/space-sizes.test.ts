@@ -5,6 +5,7 @@ import { NAV_HOME, systemScene } from '@cf/scene';
 import type { GalaxyNode } from '@cf/scene';
 import type { MapBody } from '../src/space/model';
 import { artGrid, artScale, mapItems, projectMap, projectScenery, type MapFrame } from '../src/space/project';
+import { pictureWidth } from '../src/space/sizes';
 import { hazeItems } from '../src/space/passes-galaxy';
 import { MAGNETAR, SOL, galaxyNav, kindOf, passView, systemNav } from './space-support';
 
@@ -119,5 +120,25 @@ describe('sizes that follow the camera', () => {
     const home = (f: MapFrame) => kindOf(mapItems(f, grid, scale), 'element').find((item) => item.x === grid.w / 2 && item.y === grid.h / 2);
     expect(home(frame)?.span).toBeUndefined();
     expect(home({ ...frame, sized: true })?.span).toBeGreaterThan(100);
+  });
+});
+
+describe('how wide the game\'s own picture of a body is', () => {
+  const deco = (k: string, rr?: number): MapBody => ({ kind: 'deco', key: k, label: k, priority: 3, wx: 0, wy: 0, ref: { k, x: 0, y: 0, ...(rr === undefined ? {} : { rr }) } } as MapBody);
+  it('a galaxy two sizes, a radio galaxy\'s host six tenths of that, a quasar 5.6 sizes', () => {
+    expect([galaxy({}), galaxy({ radio: true }), galaxy({ quasar: true })].map((body) => pictureWidth(body, 1))).toEqual([80, 48, 224]);
+  });
+  it('a star its size times the star base times 8, or 6.5 for a fine star: constant on the screen from afar, growing up close', () => {
+    expect(pictureWidth(star(2), 0.5) * 0.5).toBeCloseTo(2 * 0.7 * 8, 9);
+    expect(pictureWidth(star(2), 1) * 1).toBeCloseTo(2 * 0.7 * 8, 9);
+    expect(pictureWidth(star(2), 4)).toBeCloseTo(2 * 0.55 * 8, 9);
+    expect(pictureWidth(star(2, { priority: 2 }), 4)).toBeCloseTo(2 * 0.55 * 6.5, 9);
+  });
+  it('a planet three of its radii, which is the square its night is drawn on; scenery and sites their own widths', () => {
+    const jupiter = systemScene(SOL.seed).planets.find((p) => p.name === 'Jupiter')!;
+    expect(pictureWidth({ kind: 'planet', key: 'p', label: 'p', priority: 1, wx: 0, wy: 0, ref: jupiter }, 1)).toBeCloseTo(3 * 6 * Number(jupiter.P.sizeMul), 9);
+    expect([deco('neb', 10), deco('rem', 10), deco('plan'), deco('rogue'), deco('fbd')].map((body) => pictureWidth(body, 1))).toEqual([23, 26, 8 * 2.4, 2.1, 3.2]);
+    const site = (kind: 'worm' | 'snova' | 'protostar'): MapBody => ({ kind, key: kind, label: kind, priority: 3, wx: 0, wy: 0, ref: {} } as MapBody);
+    expect([site('worm'), site('snova'), site('protostar')].map((body) => pictureWidth(body, 1))).toEqual([30, 48, 6.8]);
   });
 });
