@@ -1,4 +1,4 @@
-import { drawText } from '@cf/art-interface';
+import { drawText, type DisplayFont, type Gaps } from '@cf/art-interface';
 import { paintPixels } from '../platform/canvas';
 import { hideVisually } from './hidden';
 import { currentSheet, interfaceGaps, sheetColours } from './sheet-source';
@@ -8,6 +8,18 @@ export const DISPLAY_HEADINGS = Object.freeze({
   title: 'Celestial Frontier',
   settings: 'Settings',
 });
+
+/** Lines of text as one picture, each line centred, a line box apiece. */
+export function drawLines(font: DisplayFont, lines: readonly string[], gaps: Gaps): { w: number; h: number; pixels: Uint8Array } {
+  const drawn = lines.map((line) => drawText(font, line, gaps));
+  const w = Math.max(0, ...drawn.map((line) => line.w));
+  const pixels = new Uint8Array(w * font.line * drawn.length);
+  drawn.forEach((line, row) => {
+    const left = (w - line.w) >> 1;
+    for (let y = 0; y < line.h; y++) pixels.set(line.pixels.subarray(y * line.w, (y + 1) * line.w), (row * font.line + y) * w + left);
+  });
+  return { w, h: font.line * drawn.length, pixels };
+}
 
 /**
  * A heading: canvas for the eye, real text for a reader. The canvas holds the text as the current sheet draws it,

@@ -1,7 +1,7 @@
 /* The map screen: the universe, a galaxy or a system, drawn by seeded code, with the survey card of whatever is
    selected and travel between the three by tap, zoom, keyboard and pasted code. */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
-import { drawText } from '@cf/art-interface';
+import { measureText } from '@cf/art-interface';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
@@ -11,9 +11,9 @@ import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type G
 import type { NavController, NavOutcome } from '../nav';
 import {
   ascentCamera, descentCamera, diveIntent, entryZoom, mapLabels, mapPicture, minSideOf, parkBelowTrigger, showSpace,
-  supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Label, type MapBody, type MapFrame, type Viewport,
+  supernovaBodies, toScreen, visibleBodies, wrapWords, zoomAbout, zoomLimits, type Camera, type Label, type MapBody, type MapFrame, type Viewport,
 } from '../space';
-import { createFrameCoalescer, currentSheet, interfaceGaps, sheetColours, type Toast } from '../ui';
+import { createFrameCoalescer, currentSheet, drawLines, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
 import type { ScreenDef } from './registry';
 import { createSearchBox } from './search-box';
@@ -37,6 +37,8 @@ export interface MapPorts {
 const REFUSAL_TITLES = { 'prime-reach': 'Beyond Your Saved Reach', 'charter-reach': 'Beyond Your Charter' } as const;
 /** How near the ring of the observable universe, in screen pixels, a tap on empty space opens the origin card. */
 const RING_PICK_PX = 30;
+/** Words keep this many screen pixels clear of each side of the view when they wrap. */
+const CAPTION_EDGE = 8;
 const DEPTH = { universe: 0, galaxy: 1, system: 2, surface: 3 } as const;
 type Selected = { body: MapBody; x: number; y: number } & MapKeyTarget;
 
@@ -225,19 +227,21 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         ctx.bus.on('save:committed', () => redraw.request()),
       ];
 
-      /** Each caption is drawn once, in the display font, and then only moved. */
+      /** Each caption is drawn once, in the display font, and then only moved. Words wider than the view wrap. */
       const lettered = new Map<string, HTMLCanvasElement>();
       const seenGlyphs = new Set(interfaceGaps.glyphs);
       const letter = (list: readonly Label[], shown: MapFrame, pixel: number): void => {
         const sheet = currentSheet();
         const live = new Set<HTMLCanvasElement>();
+        const max = Math.floor((shown.view.w - 2 * CAPTION_EDGE) / pixel);
         for (const caption of list) {
-          const key = `${sheet.font.line}:${caption.text}`;
+          const lines = wrapWords(caption.text, (line) => measureText(sheet.font, line).w, max);
+          const key = `${sheet.font.line}:${lines.join('\n')}`;
           let drawn = lettered.get(key);
           if (drawn === undefined || live.has(drawn)) {
             const gaps = { glyphs: [] as number[], icons: [] as string[], elements: [] as string[] };
             const fresh = el('canvas', { 'data-caption': caption.text });
-            paintPixels(fresh, drawText(sheet.font, caption.text, gaps), sheetColours(sheet));
+            paintPixels(fresh, drawLines(sheet.font, lines, gaps), sheetColours(sheet));
             for (const glyph of gaps.glyphs) if (!seenGlyphs.has(glyph)) { seenGlyphs.add(glyph); interfaceGaps.glyphs.push(glyph); }
             if (drawn === undefined) lettered.set(key, fresh);
             drawn = fresh;

@@ -403,6 +403,7 @@ describe('the map screen', () => {
     expect(captions()).toContain(charter);
     const label = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="${charter}"]`)!;
     expect(label.width).toBeGreaterThan(charter.length * 2);
+    expect(label.height).toBe(currentSheet().font.line);
     expect(document.querySelector('.map-captions')!.getAttribute('aria-hidden')).toBe('true');
     // Far out, below the zoom the charter shows at, its label goes with its ring.
     for (let i = 0; i < 60; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
@@ -416,6 +417,21 @@ describe('the map screen', () => {
     page.live.chartsOn = false;
     rest(page);
     expect(captions()).not.toContain('asteroid belt');
+  });
+
+  it('words wider than the view wrap onto lines that fit it', async () => {
+    pretendSize(140, 600);
+    try {
+      const page = await atUniverse();
+      for (let i = 0; i < 26; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 70, clientY: 300 });
+      rest(page);
+      const charter = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="your charter — ${currentRegionOf(0).name}"]`)!;
+      expect(charter.height).toBeGreaterThan(currentSheet().font.line);
+      expect(charter.height % currentSheet().font.line).toBe(0);
+      expect(parseFloat(charter.style.width)).toBeLessThanOrEqual(140 - 16);
+    } finally {
+      pretendSize(800, 600);
+    }
   });
 
   it('draws the map on its canvas at the size of the view, and again when the place changes', async () => {

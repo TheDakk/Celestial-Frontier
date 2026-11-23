@@ -4,3 +4,4 @@ export { artCamera, artGrid, artScale, mapCaptions, mapItems, mapPicture, projec
 export { showSpace } from './canvas';
 export { mapLabels, type Label } from './labels';
 export { webZoom } from './passes-universe';
+export { wrapWords } from './label-place';

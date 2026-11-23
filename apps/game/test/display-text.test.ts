@@ -1,13 +1,33 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
 import { REQUIRED_GLYPHS, drawText, parseInterfaceSheet } from '@cf/art-interface';
-import { DISPLAY_HEADINGS, currentSheet, displayText, interfaceGaps, placeholderSheet, sheetState, useSheet } from '../src/ui';
+import { DISPLAY_HEADINGS, currentSheet, displayText, drawLines, interfaceGaps, placeholderSheet, sheetState, useSheet } from '../src/ui';
 import { paintedBy, recordCanvasPainting } from './support/fake-canvas';
 
 recordCanvasPainting();
 afterEach(() => { useSheet(null); interfaceGaps.glyphs.length = 0; interfaceGaps.icons.length = 0; });
 
 describe('displayText', () => {
+  it('lines of text are one picture: a line box each, every line centred, a missing glyph counted', () => {
+    const font = currentSheet().font;
+    const gaps = { glyphs: [] as number[], icons: [], elements: [] };
+    const wide = drawText(font, 'Agate', gaps);
+    const narrow = drawText(font, 'A', gaps);
+    const both = drawLines(font, ['Agate', 'A'], gaps);
+    expect([both.w, both.h, both.pixels.length]).toEqual([wide.w, 2 * font.line, wide.w * 2 * font.line]);
+    const row = (y: number): number[] => [...both.pixels.subarray(y * both.w, (y + 1) * both.w)];
+    const left = (wide.w - narrow.w) >> 1;
+    for (let y = 0; y < font.line; y++) {
+      expect(row(y), `first line, row ${y}`).toEqual([...wide.pixels.subarray(y * wide.w, (y + 1) * wide.w)]);
+      const second = new Array<number>(both.w).fill(0);
+      second.splice(left, narrow.w, ...narrow.pixels.subarray(y * narrow.w, (y + 1) * narrow.w));
+      expect(row(font.line + y), `second line, row ${y}`).toEqual(second);
+    }
+    expect(narrow.pixels.some((value) => value !== 0)).toBe(true);
+    drawLines(font, ['é'], gaps);
+    expect(gaps.glyphs).toEqual([0xe9]);
+  });
+
   it('a display heading exposes exactly its text to a reader and hides its canvas', () => {
     for (const level of [1, 2, 3] as const) {
       const el = displayText('Celestial Frontier', { level });
