@@ -47,6 +47,28 @@ describe('the shell chrome', () => {
     panels.dispose();
   });
 
+  it('a panel has a header that holds its close control and its title, apart from the rows that scroll', () => {
+    document.body.innerHTML = '<div id="app"></div>';
+    const panels = createPanelManager(document);
+    const titled: ScreenDef = { ...screen('settings', { icon: 'settings', label: 'Settings' }), title: () => Object.assign(document.createElement('h2'), { textContent: 'Settings' }) };
+    mountChrome(document.getElementById('app')!, {
+      screens: [titled, screen('guide', { icon: 'missing', label: 'Guide' })], ctx, panels,
+      panelObserver: () => ({ observe() {}, disconnect() {} }),
+    });
+    const panel = document.getElementById('panel-settings')!;
+    const [head, body] = [...panel.children] as [HTMLElement, HTMLElement];
+    expect([panel.children.length, head.className, body.className]).toEqual([2, 'sheet-head', 'panel-body']);
+    // Shut, the header holds only the close control; open, the screen's title too, and the rows are in the body alone.
+    expect([head.children.length, head.firstElementChild!.getAttribute('aria-label'), head.textContent]).toEqual([2, 'Close Settings', '']);
+    document.querySelector<HTMLElement>('.dock [data-screen="settings"]')!.click();
+    expect([head.querySelector('h2')!.textContent, body.textContent, body.querySelector('h2, [data-pnx]')]).toEqual(['Settings', 'settings is shown', null]);
+    expect(document.activeElement).toBe(head.firstElementChild);
+    // A screen that names no title has a header with its close control alone.
+    document.querySelector<HTMLElement>('.dock [data-screen="guide"]')!.click();
+    expect([head.textContent, document.querySelector('#panel-guide .sheet-head')!.textContent]).toEqual(['', '']);
+    panels.dispose();
+  });
+
   it('a panel whose content runs below its foot shows that it scrolls, until its foot is reached', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     const panels = createPanelManager(document);

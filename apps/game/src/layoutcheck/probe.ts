@@ -18,6 +18,20 @@ const scrolls = (style: CSSStyleDeclaration): boolean => /auto|scroll/.test(`${s
 const clips = (style: CSSStyleDeclaration): boolean => /hidden|clip/.test(`${style.overflowX} ${style.overflowY}`);
 const hasOwnText = (el: Element): boolean => [...el.childNodes].some((node) => node.nodeType === 3 && (node.nodeValue ?? '').trim() !== '');
 
+/** The foot of the bar held at the head of a scroll area, where one covers `el`: a child of the area that stays as it
+ *  scrolls, is solid and is as wide as it. What scrolls under such a bar is out of sight; a control that merely floats
+ *  over the rows covers nothing. Null when `el` is in the bar or the area has none. */
+function headBarFoot(area: Element, el: Element, view: Window): number | null {
+  for (const bar of area.children) {
+    const style = view.getComputedStyle(bar);
+    if (style.position !== 'sticky' || style.top === 'auto' || alphaOf(style.backgroundColor) !== 1 || Number.parseFloat(style.opacity) < 1) continue;
+    const rect = bar.getBoundingClientRect();
+    if (rect.width < area.clientWidth - 1) continue;
+    return bar.contains(el) ? null : rect.bottom;
+  }
+  return null;
+}
+
 /** A name a person can find the element by: its tag, what marks it, and the start of its text. */
 function nameOf(el: Element): string {
   const marks = ['data-caption', 'data-screen', 'data-set', 'data-value', 'data-act', 'data-row', 'data-notice', 'data-fault', 'aria-label']
@@ -84,7 +98,7 @@ export function collectBoxes(host: HTMLElement): Box[] {
       const cut = at.getBoundingClientRect();
       if (scrolls(outer)) {
         inScroll = true;
-        [left, top, right, bottom] = [Math.max(left, cut.left), Math.max(top, cut.top), Math.min(right, cut.right), Math.min(bottom, cut.bottom)];
+        [left, top, right, bottom] = [Math.max(left, cut.left), Math.max(top, cut.top, headBarFoot(at, el, view) ?? cut.top), Math.min(right, cut.right), Math.min(bottom, cut.bottom)];
       } else if (clips(outer) && !inScroll) {
         overflowX = Math.max(overflowX, cut.left - own.left, own.right - cut.right);
         overflowY = Math.max(overflowY, cut.top - own.top, own.bottom - cut.bottom);
@@ -121,4 +135,11 @@ export function collectScrollAreas(host: HTMLElement): ScrollArea[] {
     });
   }
   return areas;
+}
+
+/** The scroll areas shown in `host` with content below their window: the ones a player can scroll down. */
+export function scrollableAreas(host: HTMLElement): HTMLElement[] {
+  const view = host.ownerDocument.defaultView!;
+  return [...host.querySelectorAll<HTMLElement>('*')].filter((el) => /auto|scroll/.test(view.getComputedStyle(el).overflowY)
+    && el.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && el.scrollHeight - el.clientHeight > 1);
 }

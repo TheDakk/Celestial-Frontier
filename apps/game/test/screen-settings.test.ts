@@ -149,6 +149,8 @@ describe('Settings', () => {
     expect([...pseudo].filter((s) => known.has(s))).toEqual([]);
     expect(pseudo.has(pseudoLocalize('Reset expedition'))).toBe(true);
     expect(page.control('sound').getAttribute('aria-label')).toBe(pseudoLocalize('Sound'));
+    // The title stands in the panel's header, in the page's language, and nowhere among the rows.
+    expect([page.panel().querySelector('.sheet-head h2')!.textContent, page.panel().querySelector('.panel-body h2')]).toEqual([pseudoLocalize('Settings'), null]);
     // A localized control still does its job.
     page.control('sound').click();
     expect(page.live.sndOn).toBe(false);

@@ -60,7 +60,7 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 /* A panel: a sheet over the bottom of a compact view, a sheet down the right side otherwise. */
 .panel {
   position: absolute; z-index: 4; overflow: auto; overscroll-behavior: contain;
-  padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-4);
+  padding: 0 var(--cf-space-4) var(--cf-space-4);
   background: var(--cf-color-surface); border: 1px solid var(--cf-color-border);
   -webkit-user-select: text; user-select: text;
 }
@@ -79,19 +79,25 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 [data-size-class="wide"] .panel { width: 440px; }
 [data-size-class="wide"] body.panel-open .stage .search { right: calc(var(--safe-right) + 440px + var(--cf-space-3)); }
 /* A sheet with more below its foot shows it: a shadow along the foot, held there as the sheet scrolls and gone at
-   the end. It takes no room and no press. */
-.panel[data-more-below]::after, .card[data-more-below]::after {
-  content: ''; display: block; position: sticky; bottom: calc(-1 * var(--cf-space-4)); pointer-events: none;
-  height: var(--cf-space-5); margin: calc(-1 * var(--cf-space-5)) calc(-1 * var(--cf-space-4)) 0;
+   the end. It takes no room and no press. --sheet-pad is the sheet's own padding at its sides and foot. */
+.panel, .card { --sheet-pad: var(--cf-space-4); }
+[data-more-below]::after {
+  content: ''; display: block; position: sticky; bottom: calc(-1 * var(--sheet-pad, 0px)); z-index: 1; pointer-events: none;
+  height: var(--cf-space-5); margin: calc(-1 * var(--cf-space-5)) calc(-1 * var(--sheet-pad, 0px)) 0;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
 }
-.panel-close {
-  position: sticky; top: 0; float: right; z-index: 1; padding: 0;
-  display: inline-flex; align-items: center; justify-content: center;
+/* The header of a sheet: its title and its close control on a solid bar, as wide as the sheet, that stays at the
+   head while the rows scroll under it. */
+.sheet-head, .survey-head {
+  position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; gap: var(--cf-space-2);
+  margin: 0 calc(-1 * var(--cf-space-4)) var(--cf-space-2); padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-2);
+  background: var(--cf-color-surface); border-bottom: 1px solid var(--cf-color-border);
 }
-.panel h2 { margin: 0 0 var(--cf-space-3); min-height: var(--target-min, 44px); display: flex; align-items: center; }
+.sheet-head { align-items: center; }
+.panel-close { order: 1; flex: none; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.sheet-head h2 { margin: 0; min-height: var(--target-min, 44px); display: flex; align-items: center; }
 .panel h3 {
-  margin: var(--cf-space-5) 0 var(--cf-space-2); padding-top: var(--cf-space-3); clear: both;
+  margin: var(--cf-space-5) 0 var(--cf-space-2); padding-top: var(--cf-space-3);
   border-top: 1px solid var(--cf-color-border); font-size: var(--cf-type-section); font-weight: 600;
 }
 .row {
@@ -150,7 +156,7 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 }
 .card {
   position: absolute; z-index: 2; overflow: auto; overscroll-behavior: contain;
-  padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-4);
+  padding: 0 var(--cf-space-4) var(--cf-space-4);
   background: var(--cf-color-surface); border: 1px solid var(--cf-color-border);
   -webkit-user-select: text; user-select: text;
 }
@@ -174,9 +180,8 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 [data-size-class="wide"] .card { width: 380px; top: var(--safe-top); bottom: var(--safe-bottom); border-radius: 0; }
 [data-size-class="wide"] .stage[data-card="open"] .map-area { right: 380px; }
 [data-size-class="wide"] .stage[data-card="open"] .search { right: calc(380px + var(--cf-space-3)); }
-.survey-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--cf-space-2); }
+.survey-head { align-items: flex-start; }
 .survey-head h2 { margin: 0; font-size: var(--cf-type-title); font-weight: 600; overflow-wrap: anywhere; }
-.survey-head .panel-close { position: static; float: none; flex: none; }
 .card [data-sel="sub"] { color: var(--cf-color-muted); }
 .card-actions { display: flex; flex-wrap: wrap; gap: var(--cf-space-2); margin: var(--cf-space-3) 0 var(--cf-space-1); }
 button.primary { border-color: var(--cf-color-accent-gold); color: var(--cf-color-accent-gold); border-radius: var(--cf-radius-pill); padding: 0 var(--cf-space-4); }

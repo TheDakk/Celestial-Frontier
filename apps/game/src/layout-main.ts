@@ -4,7 +4,7 @@
 import { V5_SCHEMA_KEY, createMemoryBackend, importSaveV2, initializeFreshV5, type StorageBackend } from '@cf/persistence';
 import { createBus } from './bus';
 import type { GameEvents, InputMode } from './events';
-import { FAULTS, checkLayout, checkScrollCues, collectBoxes, collectScrollAreas, plantFault, type Fault, type LayoutProblem } from './layoutcheck';
+import { FAULTS, checkLayout, checkScrollCues, collectBoxes, collectScrollAreas, plantFault, scrollableAreas, type Fault, type LayoutProblem } from './layoutcheck';
 import { browserClocks } from './platform/clock';
 import { devicePreferences } from './platform/preferences';
 import { UPDATE_WORDS, type UpdateControl } from './offline';
@@ -16,7 +16,8 @@ declare global {
   interface Window {
     /** Resolves to the ids of every state the page can show, once the state the address names is drawn. */
     __cfLayoutReady?: Promise<readonly string[]>;
-    __cfLayoutProblems?: () => LayoutProblem[];
+    /** What is wrong with the state drawn: as it opens, and again with each scroll area at its middle and at its foot. */
+    __cfLayoutProblems?: () => Promise<LayoutProblem[]>;
   }
 }
 
@@ -118,5 +119,25 @@ async function show(): Promise<readonly string[]> {
   return [...MAP_FIXTURES, ...docked.flatMap((candidate) => candidate.fixtures.map((state) => state.id))];
 }
 
-window.__cfLayoutProblems = () => [...checkLayout(collectBoxes(host), { w: innerWidth, h: innerHeight }, input), ...checkScrollCues(collectScrollAreas(host))];
+const measured = (): LayoutProblem[] => [...checkLayout(collectBoxes(host), { w: innerWidth, h: innerHeight }, input), ...checkScrollCues(collectScrollAreas(host))];
+window.__cfLayoutProblems = async () => {
+  const problems = measured();
+  const known = new Set(problems.map((problem) => `${problem.kind} ${problem.ids.join(' + ')}`));
+  // A sheet is used scrolled: what is right at its head must be right at its middle and at its foot.
+  for (const area of scrollableAreas(host)) {
+    for (const [part, at] of [['middle', 0.5], ['foot', 1]] as const) {
+      area.scrollTop = Math.round((area.scrollHeight - area.clientHeight) * at);
+      await frames(2);
+      for (const problem of measured()) {
+        const key = `${problem.kind} ${problem.ids.join(' + ')}`;
+        if (known.has(key)) continue;
+        known.add(key);
+        problems.push({ ...problem, detail: `${problem.detail} (scrolled to its ${part})` });
+      }
+    }
+    area.scrollTop = 0;
+    await frames(2);
+  }
+  return problems;
+};
 window.__cfLayoutReady = show();

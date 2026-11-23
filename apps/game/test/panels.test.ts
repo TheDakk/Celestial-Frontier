@@ -52,6 +52,14 @@ describe('panels', () => {
     expect(onClose).toHaveBeenCalledOnce();
   });
 
+  it('seats the close control first in the header of a panel that has one', () => {
+    byId('firstpanel').innerHTML = '<header class="sheet-head"><h2>First</h2></header><div><header class="sheet-head"></header></div>';
+    panels.register({ id: 'first', el: byId('firstpanel'), btns: [byId('first')] });
+    const head = byId('firstpanel').firstElementChild!;
+    expect([...head.children].map((child) => child.getAttribute('data-pnx') ?? child.tagName)).toEqual(['first', 'H2']);
+    expect(byId('firstpanel').querySelectorAll('[data-pnx]')).toHaveLength(1);
+  });
+
   it('seats one close control first, named for its panel, and an opener toggles its panel', () => {
     byId('firstpanel').innerHTML = '<h2>First</h2><button data-pnx="stray">x</button>';
     panels.register({ id: 'first', el: byId('firstpanel'), btns: [byId('first')] });

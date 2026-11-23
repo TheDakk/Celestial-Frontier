@@ -64,6 +64,11 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       { id: 'settings-reset-confirm', setup() { prepared = 'reset-confirm'; } },
       { id: 'settings-restore-confirm', setup() { prepared = 'restore-confirm'; } },
     ],
+    title() {
+      const heading = displayText(translate(SETTINGS_CATALOG, ports.locale, DISPLAY_HEADINGS.settings), { level: 2 });
+      heading.dataset.l10nSkip = '';
+      return heading;
+    },
     mount(root, ctx) {
       let resetAsked = prepared === 'reset-confirm';
       let resetBusy = false;
@@ -102,9 +107,6 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       function draw(): void {
         const save = ports.live();
         const listening = ports.listening.get();
-        const heading = displayText(translate(SETTINGS_CATALOG, ports.locale, DISPLAY_HEADINGS.settings), { level: 2 });
-        heading.dataset.l10nSkip = '';
-
         const volume = el('input', { type: 'range', min: '0', max: '100', value: String(Math.round(save.sfxVol * 100)), 'data-set': 'volume', 'aria-label': 'Sound volume' });
         volume.addEventListener('input', () => { set('sfxVol', Number(volume.value) / 100); });
 
@@ -124,7 +126,6 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
         no.addEventListener('click', () => { resetAsked = false; redraw(); root.querySelector<HTMLElement>('[data-set="reset"]')?.focus(); });
 
         root.replaceChildren(
-          heading,
           toggle('sound', 'Sound', save.sndOn, () => set('sndOn', !save.sndOn)),
           row('Volume', volume),
           toggle('mono', 'Mono audio', listening.mono, () => ports.listening.set({ ...listening, mono: !listening.mono }),

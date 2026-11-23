@@ -13,6 +13,8 @@ export interface ScreenDef {
   readonly id: string;
   /** Listed in the dock when present, and shown as a panel. A screen without one is drawn on the stage. */
   readonly dock?: { icon: IconName; label: string };
+  /** The heading of a docked screen, drawn in the header of its panel, which stays while the panel scrolls. */
+  title?(): HTMLElement;
   /** Draws the screen into `root`; returns the function that takes it away. */
   mount(root: HTMLElement, ctx: ScreenContext): () => void;
   /** States the layout check draws: `setup` runs before the mount it prepares. */

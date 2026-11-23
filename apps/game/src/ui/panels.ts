@@ -1,5 +1,5 @@
 /* The panel manager. One panel is open at a time: opening one closes the rest. Every panel carries a close
-   control seated first. A press on empty space closes whatever is open, unless the press is inside a panel, on
+   control seated first: in its header (`.sheet-head`) when it has one. A press on empty space closes whatever is open, unless the press is inside a panel, on
    one of its openers, or inside chrome that declares `data-panel-boundary`. Closing returns the focus to what
    opened the panel. DOM only: no game state. */
 import { icon } from './icon';
@@ -58,7 +58,7 @@ export function createPanelManager(doc: Document, options: {
     x.setAttribute('aria-label', `Close ${def.el.getAttribute('aria-label') || def.id}`);
     x.replaceChildren(icon('close', { decorative: true }));
     x.classList.add('panel-close');
-    def.el.prepend(x);
+    (def.el.querySelector(':scope > .sheet-head') ?? def.el).prepend(x);
   }
 
   function focusIfRendered(target: HTMLElement | null): boolean {

@@ -38,14 +38,19 @@ export function mountChrome(root: HTMLElement, deps: {
     const button = el('button', { type: 'button', class: 'dock-button', 'data-screen': screen.id },
       icon(screen.dock.icon, { decorative: true }), el('span', {}, screen.dock.label));
     dock.append(button);
+    // The header holds the panel's title and its close control on a solid bar: the rows scroll under it.
+    const title = el('div', { class: 'sheet-title' });
     const body = el('div', { class: 'panel-body' });
-    const panel = el('aside', { class: 'panel', id: `panel-${screen.id}`, 'aria-label': screen.dock.label }, body);
+    const panel = el('aside', { class: 'panel', id: `panel-${screen.id}`, 'aria-label': screen.dock.label }, el('header', { class: 'sheet-head' }, title), body);
     root.append(panel);
     let unmount: (() => void) | null = null;
     deps.panels.register({
       id: screen.id, el: panel, btns: [button],
-      onOpen: () => { unmount = screen.mount(body, deps.ctx); },
-      onClose: () => { unmount?.(); unmount = null; body.replaceChildren(); },
+      onOpen: () => {
+        title.replaceChildren(...(screen.title === undefined ? [] : [screen.title()]));
+        unmount = screen.mount(body, deps.ctx);
+      },
+      onClose: () => { unmount?.(); unmount = null; body.replaceChildren(); title.replaceChildren(); },
     });
     disposers.push(mountPanelContainer(panel, deps.panelObserver), mountScrollCue(panel), () => unmount?.());
   }

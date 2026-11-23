@@ -2,10 +2,12 @@
 // browser already installed here (headless), and lays out every screen state at six sizes, under touch and mouse, at
 // the smallest and largest text size, in English and the pseudo-locale. It fails on clipped text, overlapping
 // controls, a control under 44 px under touch, text with no solid surface under it, anything off the screen,
-// words of the map wider than the view, and a scroll area with content below its foot that does not show it.
+// words of the map wider than the view, and a scroll area with content below its foot that does not show it. Every
+// scroll area is checked as it opens and again scrolled to its middle and to its foot.
 // Usage: node tools/layout-check.mjs [--selftest] [--plant <fault>]
 //   --selftest       only prove the check: each planted fault must be reported as itself and as nothing else
-//   --plant <fault>  plant a fault (clipped, overlap, small, see-through, wide-caption, no-scroll-cue) in every case of the run
+//   --plant <fault>  plant a fault (clipped, overlap, small, see-through, wide-caption, no-scroll-cue, covered-row) in
+//                    every case of the run
 // The browser is CF_BROWSER, else the first of the usual Edge, Chrome and Chromium places.
 // Exit 0: no problem. Exit 1: problems, each printed with its case. Exit 2: no browser, or the run could not start.
 // It uses no network beyond 127.0.0.1, downloads nothing, and is not part of `npm run gate`.
@@ -30,7 +32,7 @@ const BROWSERS = [
 // The sizes of LAYOUT_SIZES in apps/game/src/layoutcheck/check.ts: two for each size class.
 const SIZES = [[360, 640], [390, 844], [844, 390], [768, 1024], [1280, 800], [1920, 1080]];
 /** Each planted fault and the kind of problem it must be reported as (FAULT_KINDS in layoutcheck/faults.ts). */
-const FAULTS = { clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption', 'no-scroll-cue': 'scroll-cue' };
+const FAULTS = { clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption', 'no-scroll-cue': 'scroll-cue', 'covered-row': 'overlap' };
 const HELD_SAVES = ['newer', 'unavailable'];
 const CASE_TIMEOUT_MS = 20_000;
 const WORKERS = 6;
@@ -126,7 +128,7 @@ async function openPage() {
     await page('Page.navigate', { url: `${origin}/layout.html?${new URLSearchParams(one.query)}` });
     await within(load, 'loading the page');
     const out = await within(page('Runtime.evaluate', {
-      expression: '(async () => JSON.stringify({ fixtures: await window.__cfLayoutReady, problems: window.__cfLayoutProblems() }))()',
+      expression: '(async () => JSON.stringify({ fixtures: await window.__cfLayoutReady, problems: await window.__cfLayoutProblems() }))()',
       awaitPromise: true, returnByValue: true,
     }), 'drawing the screen');
     if (out.exceptionDetails) throw new Error(out.exceptionDetails.exception?.description ?? out.exceptionDetails.text);
