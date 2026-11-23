@@ -2,9 +2,9 @@
 import { describe, expect, it } from 'vitest';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import {
-  PICK_RADIUS_PX, TAP_SLOP_PX, TARGET_MIN_PX, createGestureRecognizer, inputModeFor, mountGestures, mountInputMode, type Gesture,
-} from '../src/input';
+import { PICK_RADIUS_PX, mountGestures, mountInputMode, type Gesture } from '../src/input';
+import { TAP_SLOP_PX, createGestureRecognizer } from '../src/input/gestures';
+import { TARGET_MIN_PX, inputModeFor } from '../src/input/mode';
 
 describe('gesture recognizer', () => {
   it('a press and release within the threshold is a tap; beyond it a pan, with no tap', () => {

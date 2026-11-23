@@ -2,7 +2,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import { createScreenRegistry, mountChrome, type ScreenContext, type ScreenDef } from '../src/screens';
+import { createScreenRegistry, type ScreenContext, type ScreenDef } from '../src/screens/registry';
+import { mountChrome } from '../src/screens/chrome';
 import { createPanelManager } from '../src/ui';
 import { pretendLayout } from './shell-support';
 import { recordCanvasPainting } from './support/fake-canvas';

@@ -1,8 +1,12 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { testInterfaceSheetText } from '@cf/art-testparts';
 import type { GameEvents } from '../src/events';
-import { loadPack, loadPacks, localFolderSource, prunePackCache, releaseSource } from '../src/packs';
-import type { PackCache, PackEntry, PackManifest, PackSource } from '../src/packs';
+import { loadPack, prunePackCache } from '../src/packs/loader';
+import { loadPacks, localFolderSource } from '../src/packs';
+import { releaseSource } from '../src/packs/sources';
+import type { PackCache } from '../src/packs/cache';
+import type { PackEntry, PackManifest } from '../src/packs/manifest';
+import type { PackSource } from '../src/packs/sources';
 import { sha256Hex } from '../src/packs/sha256';
 import { currentSheet, placeholderSheet, sheetState, useSheet } from '../src/ui';
 

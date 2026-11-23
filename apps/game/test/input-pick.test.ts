@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { pick, type Pickable } from '../src/input';
+import { pick } from '../src/input';
+import type { Pickable } from '../src/input/pick';
 
 const body = (key: string, x: number, y: number, priority = 1): Pickable => ({ key, x, y, priority });
 

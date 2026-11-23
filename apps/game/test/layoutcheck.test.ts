@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { sizeClass } from '../src/layout';
+import { sizeClass } from '../src/layout/size-class';
 import { LAYOUT_SIZES, checkLayout, type Box, type LayoutProblem } from '../src/layoutcheck/check';
 import { FAULTS, FAULT_KINDS } from '../src/layoutcheck/faults';
 import { alphaOf } from '../src/layoutcheck/probe';

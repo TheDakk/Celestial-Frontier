@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import {
-  KEY_ZOOM_IN, KEY_ZOOM_OUT, escapeTarget, keyboardOrder, mapKeyAction, mountMapKeys, stepTarget, type MapKeyTarget, type MapKeysPort,
-} from '../src/input';
+import { KEY_ZOOM_IN, KEY_ZOOM_OUT, keyboardOrder, mapKeyAction, stepTarget, type MapKeysPort } from '../src/input/keys';
+import { escapeTarget, mountMapKeys, type MapKeyTarget } from '../src/input';
 
 const target = (key: string, x: number, y: number, priority = 1): MapKeyTarget => ({ key, x, y, priority, label: `Label ${key}` });
 const VIEW = { width: 800, height: 600 };

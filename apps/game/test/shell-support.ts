@@ -3,7 +3,8 @@ import { createBus } from '../src/bus';
 import type { GameEvents, PersistState } from '../src/events';
 import type { Clocks } from '../src/platform/clock';
 import { devicePreferences } from '../src/platform/preferences';
-import { startShell, type Shell, type ShellEnv } from '../src/screens';
+import { startShell } from '../src/screens';
+import type { Shell, ShellEnv } from '../src/screens/shell';
 import type { UpdateControl } from '../src/offline';
 import { NOW, controlledClock } from './save-support';
 

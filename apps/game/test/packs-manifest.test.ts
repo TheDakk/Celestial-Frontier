@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { PACK_MAX_BYTES, checkPackBytes, parseManifest } from '../src/packs';
-import type { PackEntry } from '../src/packs';
+import { PACK_MAX_BYTES, checkPackBytes } from '../src/packs/manifest';
+import { parseManifest } from '../src/packs';
+import type { PackEntry } from '../src/packs/manifest';
 import { sha256Hex } from '../src/packs/sha256';
 import shipped from '../../../packs/manifest.json' with { type: 'json' };
 

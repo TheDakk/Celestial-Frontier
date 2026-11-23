@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryBackend } from '@cf/persistence';
 import { REGISTRY, bootSave } from '../src/save/index';
-import { SETTINGS_CATALOG } from '../src/screens';
+import { SETTINGS_CATALOG } from '../src/screens/strings';
 import { LOCALIZED_ATTRIBUTES, pseudoLocalize } from '../src/ui';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, settled } from './shell-support';

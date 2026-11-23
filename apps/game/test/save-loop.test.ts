@@ -11,9 +11,8 @@ import {
 } from '@cf/persistence';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import {
-  CHECKPOINT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
-} from '../src/save/index';
+import { CHECKPOINT_MS } from '../src/save/save-loop';
+import { LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate } from '../src/save/index';
 import { boot, bootedHarness, pausable } from './save-loop-support';
 import { GALAXY_ROUTE, NOW, controlledClock, dump, seedCurrentSave } from './save-support';
 

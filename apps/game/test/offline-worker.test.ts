@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PACK_CACHE_NAME } from '../src/packs';
+import { PACK_CACHE_NAME } from '../src/packs/cache';
 import { BUILD_CACHE_PREFIX, PACKS_FOLDER, SHELL_SCHEMA } from '../offline/worker-source';
 import { at, build, get, navigate, page, serve, text, worker, world } from './offline-support';
 

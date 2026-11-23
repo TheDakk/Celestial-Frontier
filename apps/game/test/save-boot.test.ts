@@ -13,7 +13,8 @@ import {
   type StorageBackend,
 } from '@cf/persistence';
 import { withFakeIndexedDB } from '../../../tests/support/fake-indexeddb';
-import { SAVE_DATABASE, bootSave, createWriteGate, openSaveBackend, retryHeldRead, REGISTRY } from '../src/save/index';
+import { SAVE_DATABASE } from '../src/save/boot';
+import { bootSave, createWriteGate, openSaveBackend, retryHeldRead, REGISTRY } from '../src/save/index';
 import { NOW, SOL_ROUTE, dump, namedState, seedCurrentSave } from './save-support';
 
 const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });

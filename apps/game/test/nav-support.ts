@@ -1,6 +1,7 @@
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import type { NavAuthoritySave, NavPorts } from '../src/nav';
+import type { NavAuthoritySave } from '../src/nav/search-travel';
+import type { NavPorts } from '../src/nav/controller';
 
 export const HOME = { seed: 999, x: 90, y: -60 };
 export const SOL = { seed: 424242, x: 560, y: 170 };

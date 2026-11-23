@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { NAV_HOME, navToView } from '@cf/scene';
 import { encodeWhere } from '@cf/domain-strays';
-import { createNavController, navigationAuthorityFailureFor, type NavController, type NavOutcome } from '../src/nav';
+import { createNavController, type NavController, type NavOutcome } from '../src/nav';
+import { navigationAuthorityFailureFor } from '../src/nav/search-travel';
 import { mapNavOf, provenNavForCode } from '../src/nav/search-travel';
 import { HOME, NEW_GAME, SOL, ownerOf, portsFor } from './nav-support';
 import reach from '../../../fixtures/current/reach.json' with { type: 'json' };

@@ -2,7 +2,8 @@
 import { describe, expect, it } from 'vitest';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import { mountViewport, sizeClass, SIZE_CLASS_LIMITS, windowViewportSource, type ViewportSource } from '../src/layout';
+import { mountViewport, windowViewportSource, type ViewportSource } from '../src/layout';
+import { sizeClass, SIZE_CLASS_LIMITS } from '../src/layout/size-class';
 
 describe('sizeClass', () => {
   it.each([

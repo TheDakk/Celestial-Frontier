@@ -4,7 +4,7 @@ import { createMemoryBackend } from '@cf/persistence';
 import type { GameEvents } from '../src/events';
 import { backupFileName, readLastBackupAt } from '../src/protect/index';
 import { REGISTRY, bootSave } from '../src/save/index';
-import { localDateTime } from '../src/screens';
+import { localDateTime } from '../src/screens/protect';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, settled } from './shell-support';
 import { recordCanvasPainting } from './support/fake-canvas';

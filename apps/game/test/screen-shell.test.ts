@@ -2,7 +2,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { F3_ACTIVE_PLAY_LEASE_KEY, F3_REVISION_KEY, V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
 import { HEARTBEAT_MS, REGISTRY, bootSave } from '../src/save/index';
-import { NOTICE_WORDS, heldNoticeFor } from '../src/screens';
+import { NOTICE_WORDS, heldNoticeFor } from '../src/screens/notices';
 import { SOL as SOL_STAR } from './nav-support';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
 import { bootPage, pretendLayout, setVisibility, settled } from './shell-support';

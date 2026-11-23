@@ -9,10 +9,8 @@ import {
 } from '@cf/persistence';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import {
-  PROTECT_NAMESPACE, PROTECT_VERSION, backupFileName, checkRestoreText, createBackupText, readLastBackupAt,
-  recordBackup, restoreBackup,
-} from '../src/protect/index';
+import { PROTECT_NAMESPACE, PROTECT_VERSION } from '../src/protect/backup';
+import { backupFileName, checkRestoreText, createBackupText, readLastBackupAt, recordBackup, restoreBackup } from '../src/protect/index';
 import { REGISTRY, bootSave, createSaveLoop, replaceExpedition, resetExpedition } from '../src/save/index';
 import { pausable } from './save-loop-support';
 import { GALAXY_ROUTE, NOW, SOL_ROUTE, bootedPage, dump, seedCurrentSave } from './save-support';
