@@ -70,7 +70,8 @@ function cloudItems(planet: PlanetNode, x: number, y: number, r: number, shift: 
 
 /**
  * A planet's own passes, painted over its disc and under its moons: the cloud deck of a living or ocean world once it
- * is near (it drifts with time), then night on the side away from the star and the star's light on the side facing it.
+ * is near (it drifts with time), then night on the side away from the star and, on a planet banded by code, the star's
+ * light on the side facing it.
  */
 export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: PassView): SpaceItem[] {
   const discAt = items.findIndex((item) => item.kind === 'disc');
@@ -91,8 +92,11 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
     dress.push(
       { kind: 'veil', ...away(0.9), r: Math.round(r * 1.2), colour: NIGHT, level: 2, clip },
       { kind: 'veil', ...away(1.5), r: Math.round(r * 1.2), colour: NIGHT, level: 4, clip },
-      { kind: 'veil', ...away(-0.5), r: Math.round(r * 0.6), colour: dayLight(systemScene(v.nav.star.seed).starCol || '#ffe9c4'), level: 2, clip },
     );
+    // A planet the sheet draws is painted lit: only a planet banded by code takes the star's light from here.
+    if (disc.element === undefined) {
+      dress.push({ kind: 'veil', ...away(-0.5), r: Math.round(r * 0.6), colour: dayLight(systemScene(v.nav.star.seed).starCol || '#ffe9c4'), level: 2, clip });
+    }
   }
   return [...items.slice(0, discAt + 1), ...dress, ...items.slice(discAt + 1)];
 }

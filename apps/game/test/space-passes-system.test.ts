@@ -83,6 +83,20 @@ describe('day and night on a planet', () => {
     expect(light.colour).not.toBe(star);
   });
 
+  it('a planet drawn from the sheet is lit by its own drawing: it takes the night, clipped to the drawn radius, and no light', () => {
+    const banded = dressPlanet(earth, disc(20), v);
+    const drawn = dressPlanet(earth, [{ kind: 'disc', x: 420, y: 80, r: 16, bands: [0xffffff], element: 'planet/terran' }, { kind: 'dot', x: 430, y: 80, colour: 0xc8c8d0 }], v);
+    const veils = kindOf(drawn, 'veil');
+    expect(veils.map((item) => [item.colour, item.level, item.clip])).toEqual([[0x00000c, 2, { x: 420, y: 80, r: 16 }], [0x00000c, 4, { x: 420, y: 80, r: 16 }]]);
+    // The night is where a banded planet of that radius has it, and the moon is still drawn over it.
+    const same = kindOf(dressPlanet(earth, disc(16), v), 'veil');
+    expect(veils).toEqual(same.slice(0, 2));
+    expect(same).toHaveLength(3);
+    expect(drawn[drawn.length - 1]).toEqual({ kind: 'dot', x: 430, y: 80, colour: 0xc8c8d0 });
+    // A banded planet keeps both.
+    expect(kindOf(banded, 'veil').map((item) => item.colour === 0x00000c)).toEqual([true, true, false]);
+  });
+
   it('follows the planet round the star, and a planet under 3 pixels in radius has no day or night', () => {
     const left: SpaceItem[] = [{ kind: 'disc', x: 100, y: 180, r: 20, bands: [0xffffff] }];
     expect(kindOf(dressPlanet(earth, left, v), 'veil').filter((item) => item.colour === 0x00000c).every((item) => item.x < 100 && item.y === 180)).toBe(true);

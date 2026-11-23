@@ -51,13 +51,16 @@ describe('planets the sheet draws', () => {
     expect(drawn.filter((disc) => disc.element === undefined)).toEqual(plain.filter((disc) => !gas.some((g) => g.x === disc.x && g.y === disc.y)));
   });
 
-  it('its night and its light are cut to the width it is drawn at', () => {
+  it('its night is cut to the width it is drawn at, and it takes no light: the drawing is painted lit', () => {
     const items = mapItems(frame(), GRID, 2, withGas);
     const at = items.findIndex((item) => item.kind === 'disc' && item.element !== undefined);
     const disc = items[at] as Extract<SpaceItem, { kind: 'disc' }>;
-    const veils = [items[at + 1], items[at + 2], items[at + 3]];
     expect(disc.r).toBeGreaterThanOrEqual(3);
-    for (const veil of veils) expect(veil).toMatchObject({ kind: 'veil', clip: { x: disc.x, y: disc.y, r: disc.r } });
+    for (const veil of [items[at + 1], items[at + 2]]) expect(veil).toMatchObject({ kind: 'veil', colour: 0x00000c, clip: { x: disc.x, y: disc.y, r: disc.r } });
+    expect(items.filter((item) => item.kind === 'veil' && item.clip?.x === disc.x && item.clip.y === disc.y)).toHaveLength(2);
+    // The same planet banded by code has its light as well.
+    const banded = mapItems(frame(), GRID, 2, placeholder);
+    expect(banded.filter((item) => item.kind === 'veil' && item.clip?.x === disc.x && item.clip.y === disc.y)).toHaveLength(3);
   });
 
   it('a sheet without planet drawings, or no sheet, gives the map its banded planets exactly as before', () => {
