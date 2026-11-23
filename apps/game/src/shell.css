@@ -146,7 +146,16 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 .map { position: absolute; top: 0; left: 0; display: block; }
 .map-captions { position: absolute; inset: 0; pointer-events: none; }
 .map-captions canvas { position: absolute; image-rendering: pixelated; opacity: 0.8; }
-.map:focus-visible { outline-offset: -2px; }
+/* The map held by the keyboard is ringed as the game rings it, 3 px of gold 5 px inside its edge: drawn on the part
+   of the map that shows, clear of the top bar. */
+.map:focus-visible { outline: none; }
+.map-edge {
+  display: none; position: absolute; pointer-events: none; border: 3px solid var(--cf-color-accent-gold);
+  top: calc(var(--safe-top) + var(--top-bar) + 5px); left: calc(var(--safe-left) + 5px);
+  right: calc(var(--safe-right) + 5px); bottom: calc(var(--safe-bottom) + 5px);
+}
+.map:focus-visible ~ .map-edge { display: block; }
+[data-size-class="wide"] .stage[data-card="open"] .map-edge { right: 5px; }
 .map-focus {
   position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; pointer-events: none;
   border: 2px solid var(--cf-color-accent-gold); border-radius: var(--cf-radius-pill);
@@ -175,6 +184,7 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
   }
   [data-size-class="compact"] .top-bar { height: calc(var(--safe-top) + 2 * var(--top-bar)); }
   [data-size-class="compact"] .card { --bar: calc(2 * var(--top-bar)); }
+  [data-size-class="compact"] .map-edge { top: calc(var(--safe-top) + 2 * var(--top-bar) + 5px); }
 }
 /* On a compact view the card floats at the top right under the bar, as the game's does, and leaves the foot of the
    view (172 px, the game's lower chrome) to the map. */

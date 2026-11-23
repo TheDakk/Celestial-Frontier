@@ -41,6 +41,15 @@ describe('the map screen', () => {
     expect(again.nav.nav).toMatchObject({ mode: 'galaxy', gal: { seed: HOME_GALAXY.seed } });
   });
 
+  it('the map carries the line that rings it for the keyboard: after the picture, inside the map\'s own box', async () => {
+    await atUniverse();
+    const edge = document.querySelector<HTMLElement>('.map-area > .map-edge')!;
+    expect([edge.getAttribute('aria-hidden'), edge.textContent]).toEqual(['true', '']);
+    // It follows the picture among the map's own children, which is how the stylesheet shows it for a focused map.
+    expect(canvas().compareDocumentPosition(edge) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect([canvas().parentElement, canvas().tabIndex]).toEqual([edge.parentElement, 0]);
+  });
+
   it('the same path works from the keyboard alone', async () => {
     const page = await atUniverse();
     canvas().focus();

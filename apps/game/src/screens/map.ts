@@ -51,7 +51,9 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       const ring = el('div', { class: 'map-focus', 'aria-hidden': 'true', hidden: true }, el('span'));
       // The map has its own box: beside an open card on a wide view it is narrower than the stage.
       const captions = el('div', { class: 'map-captions', 'aria-hidden': 'true' });
-      const area = el('div', { class: 'map-area' }, canvas, captions, ring);
+      // The line about the map while the keyboard has it: inside the map's own box and below the top bar.
+      const edge = el('div', { class: 'map-edge', 'aria-hidden': 'true' });
+      const area = el('div', { class: 'map-area' }, canvas, captions, ring, edge);
       root.append(area);
       const card = createSelectionCard(root, () => { root.dataset.card = card.open ? 'open' : 'closed'; redraw.request(); });
       root.dataset.card = 'closed';
