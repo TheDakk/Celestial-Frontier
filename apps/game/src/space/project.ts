@@ -2,7 +2,7 @@
    painted in whole numbers by the art-interface package. Only exact operations are used before rounding, so
    every device gives the same pixels. */
 import { fittedWidth, paintSpace } from '@cf/art-interface';
-import type { Gaps, InterfaceSheet, SpaceItem } from '@cf/art-interface';
+import type { Gaps, InterfaceSheet, SpaceItem, SpacePicture } from '@cf/art-interface';
 import { mulberry32 } from '@cf/domain-rand';
 import { HOME_POS } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
@@ -263,7 +263,7 @@ export interface MapFrame {
    *  two names on one line keep the width of a space between them. */
   placement?: { keepOut: readonly { x: number; y: number; w: number; h: number }[]; tails?: boolean; stand?: boolean; apart?: boolean };
 }
-export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
+export interface MapPicture extends SpacePicture { scale: number }
 
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. With the `sheet` of a
  *  picture sized by the camera, a planet whose type the sheet draws is that drawing in place of its bands. */

@@ -1,4 +1,4 @@
-import { PIXEL_CHARS } from '@cf/art-format';
+import { MAX_PALETTE_COLOURS, PIXEL_CHARS } from '@cf/art-format';
 import type { Palette } from '@cf/art-format';
 
 export interface Glyph { readonly w: number; readonly h: number; readonly pixels: Uint8Array }
@@ -15,8 +15,6 @@ export const BOX_GLYPH = 0xfffd;
 export const STAND_IN_ICON = 'missing';
 /** In an element's list of ramps: the ramp the map gives it, the one nearest its colour there. No palette ramp has this name. */
 export const TINT_RAMP = 'tint';
-/** How many colours a sheet's palette may number, from 0: a map picture holds one byte a pixel. */
-const MAX_SHEET_COLOURS = 256;
 /** The most ramps an element may name: its values then run to 20. */
 export const MAX_ELEMENT_RAMPS = 5;
 
@@ -79,10 +77,10 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
     if (s === undefined || !/^-?\d+$/.test(s)) fail(line, 'expected an integer');
     return parseInt(s, 10);
   };
-  /** A colour number: one a map picture can hold. */
+  /** A colour number: any a creature palette may hold. A map picture holds it whole. */
   const colourIndex = (s: string | undefined, line: number): number => {
     const index = int(s, line);
-    if (index < 0 || index >= MAX_SHEET_COLOURS) fail(line, `bad colour index ${index}`);
+    if (index < 0 || index >= MAX_PALETTE_COLOURS) fail(line, `bad colour index ${index}`);
     return index;
   };
   const name = (s: string, line: number, segmented: boolean): string => {

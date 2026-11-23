@@ -3,7 +3,7 @@
  * is shown in colours[v] (0xRRGGBB), and value 0 is left transparent. Does nothing where the browser gives no
  * 2D context.
  */
-export function paintPixels(canvas: HTMLCanvasElement, picture: { w: number; h: number; pixels: Uint8Array }, colours: readonly number[]): void {
+export function paintPixels(canvas: HTMLCanvasElement, picture: { w: number; h: number; pixels: ArrayLike<number> }, colours: readonly number[]): void {
   canvas.width = picture.w;
   canvas.height = picture.h;
   if (picture.w === 0 || picture.h === 0) return;

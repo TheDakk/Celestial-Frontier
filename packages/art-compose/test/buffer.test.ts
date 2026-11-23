@@ -109,6 +109,21 @@ describe('hashBuffer', () => {
     b.pixels[100] = 1;
     expect(hashBuffer(a)).not.toBe(hashBuffer(b));
   });
+  it('is the same for a picture whose values all fit a byte, whatever holds them', () => {
+    const b = createBuffer('small');
+    for (let i = 0; i < b.pixels.length; i++) b.pixels[i] = (i * 7) % 256;
+    expect(hashBuffer({ w: b.w, h: b.h, pixels: Uint32Array.from(b.pixels) })).toBe(hashBuffer(b));
+  });
+  it('takes a value above 255 whole, in one step: it is not its low byte, nor its bytes in turn', () => {
+    // Worked by hand in BigInt: the eight size bytes, then each value in one step.
+    let hash = 0x811c9dc5n;
+    for (const value of [0, 0, 0, 2, 0, 0, 0, 1, 5000, 3]) hash = ((hash ^ BigInt(value)) * 0x01000193n) % 0x100000000n;
+    const wide = hashBuffer({ w: 2, h: 1, pixels: Uint32Array.of(5000, 3) });
+    expect(wide).toBe(hash.toString(16).padStart(8, '0'));
+    expect(wide).not.toBe(hashBuffer({ w: 2, h: 1, pixels: Uint32Array.of(5000 & 255, 3) }));
+    expect(wide).not.toBe(hashBuffer({ w: 2, h: 1, pixels: Uint32Array.of(5000 >> 8, 5000 & 255, 3) }));
+    expect(hashBuffer({ w: 2, h: 1, pixels: Uint32Array.of(16777215, 3) })).not.toBe(wide);
+  });
   it('differs for equal pixels at different sizes', () => {
     const a: PixelBuffer = { w: 4, h: 6, pixels: new Uint8Array(24) };
     const b: PixelBuffer = { w: 6, h: 4, pixels: new Uint8Array(24) };

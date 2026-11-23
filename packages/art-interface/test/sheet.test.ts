@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { MAX_PALETTE_COLOURS } from '@cf/art-format';
 import { testInterfaceSheetText } from '@cf/art-testparts';
 import { ELEMENT_NAMES, ICON_NAMES, parseInterfaceSheet, REQUIRED_GLYPHS, REQUIRED_RAMPS } from '../src/index';
 
@@ -65,10 +66,11 @@ describe('parseInterfaceSheet', () => {
     expect(() => parseInterfaceSheet(withLine(26, '1x1'))).toThrow(/^line 26: unknown pixel character 'x'$/);
     expect(() => parseInterfaceSheet(withAfter(12, '1..1', '1..1', '1..1'))).toThrow(/^line 15: glyph U\+0041 is taller than the line \(6\)$/);
   });
-  it('a colour and a ramp may name any colour a map picture can hold in its one byte a pixel: up to 255', () => {
-    const sheet = parseInterfaceSheet(withAfter(6, 'colour 255 123456', 'ramp far 255 255 255 255'));
-    expect(sheet.palette.colours[255]).toBe(0x123456);
-    expect(sheet.palette.ramps['far']).toEqual([255, 255, 255, 255]);
+  it('a colour and a ramp may name any colour number a creature palette may: 5000 is as good as 5', () => {
+    const sheet = parseInterfaceSheet(withAfter(6, 'colour 5000 123456', 'ramp far 5000 5000 5000 5000'));
+    expect(sheet.palette.colours[5000]).toBe(0x123456);
+    expect(sheet.palette.ramps['far']).toEqual([5000, 5000, 5000, 5000]);
+    expect(MAX_PALETTE_COLOURS).toBe(16777216);
   });
   it('an element may name its own ramps, up to five, for its values in fours; tint is the ramp its place on the map gives it', () => {
     const sheet = parseInterfaceSheet(withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,tint,ink,ink,ink', '159dh', '48cgk'));
@@ -86,10 +88,9 @@ describe('parseInterfaceSheet', () => {
     [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink', '15'), "line 30: pixel value '5' is above 4"],
     [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,ink,ink,ink,ink', '1l'), "line 30: pixel value 'l' is above 20"],
     [withAfter(6, 'ramp tint 1 1 1 1'), "line 7: the ramp name tint is kept for an element's tint"],
-    [withAfter(6, 'colour 256 ffffff'), 'line 7: bad colour index 256'],
     [withAfter(6, 'colour 16777216 ffffff'), 'line 7: bad colour index 16777216'],
     [withAfter(6, 'colour -1 ffffff'), 'line 7: bad colour index -1'],
-    [withAfter(6, 'ramp far 1 1 1 256'), 'line 7: bad colour index 256'],
+    [withAfter(6, 'ramp far 1 1 1 16777216'), 'line 7: bad colour index 16777216'],
     [withAfter(6, 'ramp far 1 1 1 -1'), 'line 7: bad colour index -1'],
     [withLine(1, 'interface 2'), 'line 1: expected interface 1'],
     [sheetOf(SMALL.slice(2)), 'line 1: expected interface 1'],

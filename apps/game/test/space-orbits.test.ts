@@ -25,7 +25,7 @@ const orbitsOf = (frame: MapFrame): Extract<SpaceItem, { kind: 'ring' }>[] => {
 };
 
 /** The breaks in a line painted alone: lit pixels, away from the picture's edge, with fewer than two lit neighbours. */
-function breaks(w: number, h: number, pixels: Uint8Array): number {
+function breaks(w: number, h: number, pixels: ArrayLike<number>): number {
   let found = 0;
   for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
     if (pixels[y * w + x] === 0) continue;

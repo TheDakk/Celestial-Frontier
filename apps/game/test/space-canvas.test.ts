@@ -1,10 +1,11 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
-import type { Gaps } from '@cf/art-interface';
+import { parseInterfaceSheet, type Gaps } from '@cf/art-interface';
 import { NAV_HOME } from '@cf/scene';
 import { mapItems } from '../src/space/project';
 import { mapPicture, showSpace, type MapFrame } from '../src/space';
 import { placeholderSheet } from '../src/ui/sheet-source';
+import placeholderText from '../../../packages/art-testparts/src/interface.txt?raw';
 import { galaxyNav, systemNav } from './space-support';
 import { paintedBy, recordCanvasPainting } from './support/fake-canvas';
 
@@ -50,6 +51,25 @@ describe('the map picture', () => {
     expect(sites(0)).toHaveLength(3);
     expect(sites(12)).not.toEqual(sites(0));
     expect(mapItems({ ...frame, nav: NAV_HOME }, { w: 271, h: 601 }, 4).some((item) => item.kind === 'element' && item.name.startsWith('supernova/'))).toBe(false);
+  });
+});
+
+describe('a sheet that numbers its colours above 255', () => {
+  // The placeholder sheet with colour n numbered 1000 n: its ramps then name 1000 to 8000.
+  const far = parseInterfaceSheet(placeholderText.replace(/^colour (\d) /gm, (_, n: string) => `colour ${Number(n) * 1000} `)
+    .replace(/^ramp (\w+) (\d) (\d) (\d) (\d)$/gm, (_, name: string, ...c: string[]) => `ramp ${name} ${c.slice(0, 4).map((n) => Number(n) * 1000).join(' ')}`));
+
+  it('draws the same map, each pixel holding its colour number whole, and the canvas shows the same colours', () => {
+    expect(far.palette.ramps['accent']).toEqual([5000, 6000, 7000, 8000]);
+    const plain = mapPicture(FRAME, sheet, noGaps());
+    const picture = mapPicture(FRAME, far, noGaps());
+    expect(Array.from(picture.pixels)).toEqual(Array.from(plain.pixels, (value) => value * 1000));
+    expect(picture.pixels).toContain(5000);
+    const [canvas, canvasFar] = [document.createElement('canvas'), document.createElement('canvas')];
+    showSpace(canvas, plain, sheet.palette.colours, FRAME.dpr);
+    showSpace(canvasFar, picture, far.palette.colours, FRAME.dpr);
+    expect(paintedBy(canvasFar)).toEqual(paintedBy(canvas));
+    expect(paintedBy(canvasFar)).toContain(far.palette.colours[5000]);
   });
 });
 

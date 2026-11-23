@@ -17,6 +17,13 @@ export interface PixelBuffer {
   pixels: Uint8Array;
 }
 
+/** Any picture of whole numbers, w by h, row-major: a creature's pixel values, or a map's colour numbers. */
+export interface Picture {
+  readonly w: number;
+  readonly h: number;
+  readonly pixels: ArrayLike<number>;
+}
+
 /** A transparent (all zero) canvas of the tier's size. Pixels are row-major: pixels[y * w + x]. */
 export function createBuffer(tier: SizeTier): PixelBuffer {
   const [w, h] = TIER_SIZE[tier];
@@ -51,8 +58,11 @@ export function blit(target: PixelBuffer, frame: PartFrame, x: number, y: number
  * the height as 4 bytes big-endian, then every pixel byte in order.
  * Offset basis 0x811c9dc5, prime 0x01000193, multiplied with Math.imul,
  * result unsigned (>>> 0) as exactly 8 lowercase hex characters, zero-padded.
+ * A pixel above 255 (a colour number of a map picture; never below 0 nor above 0xFFFFFF) is taken whole in the one
+ * step a byte takes: hash = Math.imul(hash ^ pixel, prime). So a picture whose pixels all fit a byte hashes as its
+ * bytes, whatever holds them.
  */
-export function hashBuffer(buffer: PixelBuffer): string {
+export function hashBuffer(buffer: Picture): string {
   let hash = 0x811c9dc5;
   const feed = (byte: number): void => {
     hash = Math.imul(hash ^ byte, 0x01000193);
@@ -68,7 +78,7 @@ export function hashBuffer(buffer: PixelBuffer): string {
 }
 
 /** The text pixel form, one line per row, no trailing newline; values above 28 are '?'. */
-export function toAscii(buffer: PixelBuffer): string {
+export function toAscii(buffer: Picture): string {
   const lines: string[] = [];
   for (let y = 0; y < buffer.h; y++) {
     let line = '';

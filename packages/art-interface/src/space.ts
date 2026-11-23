@@ -1,5 +1,4 @@
 import type { Palette } from '@cf/art-format';
-import type { PixelBuffer } from '@cf/art-compose';
 import { tierOf } from './names';
 import { STAND_IN_ICON, TINT_RAMP } from './sheet';
 import type { Drawing, InterfaceSheet } from './sheet';
@@ -37,6 +36,9 @@ export type SpaceItem =
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
   | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean }
   | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number } };
+
+/** A map picture: w by h colour numbers of the sheet's palette, row-major. A pixel holds any number a palette may. */
+export interface SpacePicture { w: number; h: number; pixels: Uint32Array }
 
 /** The ramp an element's values 5 to 8 are drawn in. */
 const SECOND_RAMP = 'accent';
@@ -161,9 +163,9 @@ function rootOf(n: number): number {
  * sheet lacks draws the stand-in icon centred on its place and is counted in `gaps.elements`. A ring or disc with a
  * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one.
  */
-export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): PixelBuffer {
+export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): SpacePicture {
   const { palette } = sheet;
-  const pixels = new Uint8Array(w * h);
+  const pixels = new Uint32Array(w * h);
   const bright = palette.colours.map(brightness);
   const indexOf = new Map<number, number>();
   const index = (rgb: number): number => {
@@ -268,7 +270,7 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
   };
 
   /** The palette index each index is shaded to at a share, worked out once for each share a picture uses. */
-  const shadedAt = new Map<number, Uint8Array>();
+  const shadedAt = new Map<number, Uint32Array>();
   const solid = palette.colours.slice(1);
   const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
     const { x, y, r, clip, share } = item;
@@ -279,7 +281,7 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     if (shaded === undefined) {
       const rest = channels(toward).map((channel) => channel * Math.max(0, 16 - share));
       const at = (channel: number, i: number): number => Math.min(255, (channel * share + (rest[i] ?? 0)) >> 4);
-      shaded = Uint8Array.from(palette.colours, (rgb) => {
+      shaded = Uint32Array.from(palette.colours, (rgb) => {
         const [red, green, blue] = channels(rgb);
         return nearestHue(solid, (at(red, 0) << 16) | (at(green, 1) << 8) | at(blue, 2)) + 1;
       });

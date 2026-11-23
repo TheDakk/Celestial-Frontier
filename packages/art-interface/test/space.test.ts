@@ -92,6 +92,31 @@ const arrowAt = (span: number | undefined, more: { flip?: boolean } = {}): Space
 /** How many times the colour changes along the rows of a picture: what a block-scaled drawing has few of. */
 const changes = (rows: readonly string[]): number => rows.reduce((n, row) => n + [...row].filter((c, i) => i > 0 && c !== row[i - 1]).length, 0);
 
+describe('a colour numbered above 255', () => {
+  const FAR = parseInterfaceSheet([
+    'interface 1',
+    'palette',
+    'colour 0 000000', 'colour 1 ffffff', 'colour 5000 ff0000', 'colour 5001 800000', 'colour 70000 0000ff', 'colour 70001 00ff00',
+    'ramp ink 1 1 1 1',
+    'ramp far 5000 5001 70000 70001',
+    'font display line=1 base=1 gap=0 space=1',
+    'glyph U+FFFD', '1', '',
+    'icon missing size=1', '1', '',
+    'element flag anchor=0,0 ramps=far', '1234',
+  ].join('\n'));
+  const rowOf = (items: readonly SpaceItem[]): number[] => Array.from(paintSpace(4, 1, items, FAR, noGaps()).pixels);
+
+  it('is drawn as itself: a ramp naming colour 5000 draws 5000, and one past two bytes draws as itself too', () => {
+    expect(rowOf([{ kind: 'element', name: 'flag', x: 0, y: 0, ramp: WHITE }])).toEqual([5000, 5001, 70000, 70001]);
+  });
+  it('is found as the nearest colour by a dot, a ring, a disc, a veil and a shade', () => {
+    expect(rowOf([{ kind: 'dot', x: 0, y: 0, colour: RED }, { kind: 'ring', x: 1, y: 0, r: 0, colour: BLUE },
+      { kind: 'disc', x: 2, y: 0, r: 0, bands: [0x00ff00] }, { kind: 'veil', x: 3, y: 0, r: 0, colour: 0x800000, level: 16 }])).toEqual([5000, 70000, 70001, 5001]);
+    // Half of red is nearest the dark red, colour 5001.
+    expect(rowOf([{ kind: 'dot', x: 0, y: 0, colour: RED }, { kind: 'shade', x: 0, y: 0, r: 0, share: 8 }])).toEqual([5001, 0, 0, 0]);
+  });
+});
+
 describe('size tiers', () => {
   const pad = (row: string): string => row.padEnd(40, '.');
   const rows = (...at: string[]): string[] => [...at, ...Array.from({ length: 6 - at.length }, () => '')].map(pad);
