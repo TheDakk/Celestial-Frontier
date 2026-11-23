@@ -5,7 +5,9 @@ import { galaxyName } from '@cf/domain-naming';
 import { HOME_POS, SOL_POS } from '@cf/domain-worldconfig';
 import { NAV_HOME, systemScene, universeGalaxies } from '@cf/scene';
 import type { GalaxyNode } from '@cf/scene';
-import { NAME_GATE, mapLabels } from '../src/space/labels';
+import { NAME_GATE, mapLabels, placedLabels } from '../src/space/labels';
+import { cometsDrawn } from '../src/space/passes-system';
+import { artCamera, artGrid, artScale } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
 import { cosSin } from '../src/space/model';
 import { SOL, WORMHOLE_GALAXY, galaxyNav, systemNav } from './space-support';
@@ -118,5 +120,46 @@ describe('the words on the maps', () => {
     expect(mapLabels(frame({ nav, cam: wide, charts: true }), 'x')).toContainEqual({ text: 'asteroid belt', wx: 0, wy: -belt - 2, hold: 'above' });
     expect(texts({ nav, cam: wide, charts: true })).toContain('habitable zone');
     expect(texts({ nav, cam: wide })).not.toContain('asteroid belt');
+  });
+});
+
+describe('the words of a system keep off a comet\'s tail', () => {
+  const font = parseInterfaceSheet(testInterfaceSheetText()).font;
+  // A new game's view of Sol on a phone and on a desktop, under the top bar and the dock.
+  const VIEWS = [
+    { view: { w: 390, h: 844 }, dpr: 3, z: 0.511875, keepOut: [{ x: 0, y: 0, w: 390, h: 60 }, { x: 140, y: 784, w: 110, h: 52 }] },
+    { view: { w: 1280, h: 720 }, dpr: 1, z: 0.945, keepOut: [{ x: 0, y: 0, w: 1280, h: 60 }, { x: 585, y: 660, w: 110, h: 52 }] },
+  ];
+  /** The words that hold a pixel of the comet's tail, at a time. */
+  function crossed(at: (typeof VIEWS)[number], time: number, tails: boolean, passes = { effects: true, motion: true }): string[] {
+    const sol = frame({ nav: systemNav(), cam: { x: 0, y: 0, z: at.z }, view: at.view, dpr: at.dpr, time, passes, placement: tails ? { keepOut: at.keepOut, tails: true } : { keepOut: at.keepOut } });
+    const scale = artScale(at.view.w, at.view.h, at.dpr);
+    const tail = cometsDrawn({ ...passes, nav: sol.nav, cam: artCamera(sol.cam, at.dpr, scale), grid: artGrid(at.view.w, at.view.h, at.dpr, scale), view: at.view, zoom: at.z, time: passes.motion ? time : 0, reach: 880, charts: false })
+      .flatMap((comet) => comet.tail);
+    expect(tail.length).toBeGreaterThan(0);
+    return placedLabels(sol, 'x', font).filter((box) => tail.some((p) => p.x >= box.x && p.x < box.x + box.w && p.y >= box.y && p.y < box.y + box.h)).map((box) => box.text);
+  }
+  const ORBIT = Array.from({ length: 180 }, (_, i) => i * 0.25);
+
+  it('through an orbit of Sol\'s comet a planet\'s name is crossed by its tail only where none of its sides is clear, and every planet is still named', () => {
+    const moments = (at: (typeof VIEWS)[number]): string[] => ORBIT.flatMap((time) => crossed(at, time, true).map((text) => `${text} at ${time}`));
+    // What is left: Mercury and Venus close under the Sun, with the Sun, a planet or the tail on every side of them.
+    expect(moments(VIEWS[0]!)).toEqual(['Mercury at 0.25', 'Venus at 43.5', 'Venus at 43.75', 'Venus at 44']);
+    expect(moments(VIEWS[1]!)).toEqual(['Venus at 43.5', 'Venus at 43.75']);
+    for (const at of VIEWS) {
+      const named = placedLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: at.z }, view: at.view, dpr: at.dpr, placement: { keepOut: at.keepOut, tails: true } }), 'x', font).map((box) => box.text);
+      expect(named).toEqual(expect.arrayContaining(systemScene(SOL.seed).planets.map((p) => p.name)));
+    }
+  });
+  it('where a new game starts the tail runs through the place the game letters Mercury: the name moves off it', () => {
+    for (const at of VIEWS) {
+      expect(crossed(at, 0, false)).toEqual(['Mercury']);
+      expect(crossed(at, 0, true)).toEqual([]);
+      // With motion reduced the comet is held where it starts, and the words keep off it there at any time.
+      expect(crossed(at, 20, true, { effects: true, motion: false })).toEqual([]);
+    }
+  });
+  it('a frame that does not ask for it letters the words as before', () => {
+    for (const at of VIEWS) expect(ORBIT.flatMap((time) => crossed(at, time, false)).length).toBeGreaterThan(20);
   });
 });

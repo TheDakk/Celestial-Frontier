@@ -122,19 +122,29 @@ function run(x: number, y: number, dx: number, dy: number, from: number, length:
   return items;
 }
 
-/** The comets of a system: each a bright head in a soft coma, its tail blown straight away from the star, longer the
- *  nearer the star, fading in three steps. */
-export function cometItems(v: PassView): SpaceItem[] {
+/** A comet as the picture has it, in whole art pixels: its head, and each pixel of its tail from the head outward. */
+export interface CometDrawn { head: { x: number; y: number }; tail: { x: number; y: number }[] }
+/** The comets of a system where they are drawn: the tail is blown straight away from the star, longer the nearer the
+ *  star. Words on the map keep off a tail as they keep off a body. */
+export function cometsDrawn(v: PassView): CometDrawn[] {
   if (v.nav.mode !== 'system') return [];
-  const items: SpaceItem[] = [];
-  for (const comet of rawOf(v.nav.star.seed).comets ?? []) {
+  return (rawOf(v.nav.star.seed).comets ?? []).map((comet) => {
     const world = cometAt(comet, v.time);
     const far = Math.sqrt(world.x * world.x + world.y * world.y) || 1;
-    const at = place(v.cam, v.grid, world.x, world.y);
-    const tail = Math.round((Math.max(0, SYS_R * 0.55 - far) * 0.5 + 8) * v.cam.z);
-    items.push(...run(at.x, at.y, world.x / far, world.y / far, 1, tail, (part) => scaled(TAIL, part < 1 / 3 ? 0.8 : part < 2 / 3 ? 0.5 : 0.25)));
+    const head = place(v.cam, v.grid, world.x, world.y);
+    const length = Math.round((Math.max(0, SYS_R * 0.55 - far) * 0.5 + 8) * v.cam.z);
+    return { head, tail: Array.from({ length }, (_, i) => ({ x: Math.round(head.x + (world.x / far) * (i + 1)), y: Math.round(head.y + (world.y / far) * (i + 1)) })) };
+  });
+}
+
+/** The comets of a system: each a bright head in a soft coma, its tail fading in three steps. */
+export function cometItems(v: PassView): SpaceItem[] {
+  const items: SpaceItem[] = [];
+  for (const { head, tail } of cometsDrawn(v)) {
+    const fade = (part: number): number => scaled(TAIL, part < 1 / 3 ? 0.8 : part < 2 / 3 ? 0.5 : 0.25);
+    tail.forEach((at, i) => items.push({ kind: 'dot', ...at, colour: fade(tail.length <= 1 ? 0 : i / (tail.length - 1)) }));
     const coma = Math.round(6.8 / Math.max(0.2, Math.sqrt(v.zoom)) / 2 * v.cam.z);
-    items.push({ kind: 'veil', ...at, r: coma, colour: COMA, level: 8 }, { kind: 'dot', ...at, colour: 0xffffff });
+    items.push({ kind: 'veil', ...head, r: coma, colour: COMA, level: 8 }, { kind: 'dot', ...head, colour: 0xffffff });
   }
   return items;
 }

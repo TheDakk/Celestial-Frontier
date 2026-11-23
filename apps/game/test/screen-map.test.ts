@@ -397,6 +397,23 @@ describe('the map screen', () => {
     expect(label('Sun — our star')).toBeNull();
   });
 
+  it('on a new game\'s map of Sol no planet\'s name stands across the comet\'s tail', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    rest(page);
+    // With motion reduced the comet is held where it starts: 27 world units from the Sun along 1.1 radians, its tail
+    // 41 more straight on. In screen pixels about the middle of the view, at the zoom a system is entered at.
+    const z = descentCamera('system', 600).to.z;
+    const tail = Array.from({ length: 41 }, (_, i) => ({ x: 400 + (27 + i) * Math.cos(1.1) * z, y: 300 + (27 + i) * Math.sin(1.1) * z }));
+    const names = [...document.querySelectorAll<HTMLCanvasElement>('.map-captions canvas')];
+    expect(names.map((name) => name.dataset.caption)).toContain('Mercury');
+    const crossed = names.filter((name) => {
+      const [left, top, width, height] = [name.style.left, name.style.top, name.style.width, name.style.height].map(parseFloat) as [number, number, number, number];
+      return tail.some((p) => p.x >= left && p.x < left + width && p.y >= top && p.y < top + height);
+    });
+    expect(crossed.map((name) => name.dataset.caption)).toEqual([]);
+  });
+
   it('letters the captions of the map: the charter over its ring from the zoom it shows at, the belt and the zone with the star charts', async () => {
     const page = await atUniverse();
     const captions = (): string[] => [...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption!);

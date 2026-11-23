@@ -8,6 +8,7 @@ import { minSideOf, toScreen } from './camera';
 import { place } from './draw';
 import { placeLabels, wrapWords, type Disc, type LabelSpec, type PlacedLabel } from './label-place';
 import { galaxyContent, visibleBodies } from './model';
+import { cometsDrawn } from './passes-system';
 import { webZoom } from './passes-universe';
 import { artCamera, artGrid, artScale, mapCaptions, primaryWidth } from './project';
 import type { MapFrame } from './project';
@@ -109,7 +110,8 @@ export interface Lettered extends PlacedLabel { lines: string[] }
  * The words of `mapLabels` stood where they can be read (the frame carries `placement`): each on the game's own side
  * of its body at the game's own offset, or on the next free side when that would put it on other words, and never on
  * its body's disc or ring, the top bar or the dock; a label with no free side is left out. Words wider than the view
- * are wrapped. The current game has no such avoidance: its letters are smaller.
+ * are wrapped. With the placement's `tails`, a side a comet's tail crosses is taken only when no other is free. The
+ * current game has no such avoidance: its letters are smaller.
  */
 export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont): Lettered[] {
   const { view, dpr } = frame;
@@ -130,6 +132,11 @@ export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont
     };
   });
   const discs: Disc[] = drawn.map((body) => ({ ...place(cam, grid, body.wx, body.wy), r: Math.round(body.r * cam.z) })).filter((disc) => disc.r >= DISC_MIN);
+  // A comet's tail is a line across the map: each of its pixels is kept off as a body is.
+  if (frame.placement?.tails === true && frame.passes !== undefined) {
+    const passes = { ...frame.passes, nav: frame.nav, cam, grid, view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, reach: frame.reach, charts: frame.charts };
+    for (const comet of cometsDrawn(passes)) discs.push(...comet.tail.map((at) => ({ ...at, r: 1 })));
+  }
   const keepOut = (frame.placement?.keepOut ?? []).map((bar) => {
     const x = Math.floor(bar.x * perCss);
     const y = Math.floor(bar.y * perCss);

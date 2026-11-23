@@ -22,7 +22,8 @@ export type Side = 'below' | 'above' | 'right' | 'left';
  *  the point itself. A lower `rank` is placed sooner; within a rank the larger body (`size`, its radius) goes first. */
 export interface LabelSpec { text: string; w: number; h: number; x: number; y: number; clear: number; side: Side | 'centre'; rank: number; size: number }
 export interface PlacedLabel extends Box { text: string; side: Side | 'centre' }
-/** What words must keep off (`keepOut`: the top bar and the dock) and would rather keep off (`discs`: every body drawn). */
+/** What words must keep off (`keepOut`: the top bar and the dock) and would rather keep off (`discs`: every body drawn, and
+ *  each pixel of a line drawn across the map as a disc of radius 1). */
 export interface Surroundings { view: { w: number; h: number }; keepOut: readonly Box[]; discs: readonly Disc[] }
 
 const SIDES = ['below', 'above', 'right', 'left'] as const;
