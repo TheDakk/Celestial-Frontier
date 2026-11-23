@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { NAV_HOME, enterGalaxy, enterSystem, resolveCF1Galaxy, resolveCF1Star, systemScene } from '@cf/scene';
+import { GR, NAV_HOME, enterGalaxy, enterSystem, resolveCF1Galaxy, resolveCF1Star, systemScene } from '@cf/scene';
 import type { NavState } from '@cf/scene';
 import { entryZoom } from '../src/space/camera';
-import { diveIntent, keyboardOrder, parkBelowTrigger, visibleBodies } from '../src/space/model';
+import { diveIntent, galaxyContent, keyboardOrder, parkBelowTrigger, supernovaBodies, visibleBodies } from '../src/space/model';
 import type { MapBody } from '../src/space/model';
 import galaxyCells from '../../../fixtures/current/galaxies.json' with { type: 'json' };
 
@@ -63,12 +63,44 @@ describe('what the maps hold', () => {
   it("the home galaxy holds the Sun, marked as Sol, at the game's Sol position", () => {
     const bodies = visibleBodies(homeGalaxyNav(), { x: SOL.x, y: SOL.y, z: 1 }, VIEW, 0);
     expect(bodies.length).toBeGreaterThan(10);
-    expect(bodies.every((b) => b.kind === 'star')).toBe(true);
+    expect(bodies.every((b) => b.kind === 'star' || b.kind === 'deco')).toBe(true);
     const sun = bodies.filter((b) => b.priority === 0);
     expect(sun).toHaveLength(1);
     expect(sun[0]).toMatchObject({ key: 'star:424242:560:170', label: 'Sun — our star', wx: 560, wy: 170 });
     expect(sun[0]!.ref).toMatchObject({ seed: 424242, sol: true });
     expect(new Set(bodies.map((b) => b.label)).size).toBeGreaterThan(10);
+  });
+
+  it('a galaxy lists its nebulae, remnants, rogue planets and failed stars after its stars, and never its star knots', () => {
+    const nav = homeGalaxyNav();
+    const whole = { w: 4 * GR, h: 4 * GR };
+    const bodies = visibleBodies(nav, { x: 0, y: 0, z: 1 }, whole, 0);
+    const scenery = bodies.filter((b) => b.kind === 'deco');
+    const listed = galaxyContent(nav.gal).deco;
+    const knots = listed.filter((d) => d.k === 'open' || d.k === 'glob');
+    expect(knots.length).toBeGreaterThan(10);
+    expect(scenery.map((b) => b.ref)).toEqual(listed.filter((d) => !knots.includes(d)));
+    expect(new Set(scenery.map((b) => b.kind === 'deco' && b.ref.k))).toEqual(new Set(['h2', 'neb', 'mol', 'plan', 'rem', 'rogue', 'fbd']));
+    for (const b of scenery) expect(b).toMatchObject({ wx: b.ref.x, wy: b.ref.y, priority: 3 });
+    expect(new Set(scenery.map((b) => b.key)).size).toBe(scenery.length);
+    expect(scenery.every((b) => b.label.length > 0)).toBe(true);
+    expect(keyboardOrder(bodies).findIndex((b) => b.kind === 'deco')).toBe(bodies.length - scenery.length);
+  });
+
+  it('the supernova sites of a galaxy and their protostars are those of the epoch asked for', () => {
+    const nav = homeGalaxyNav();
+    const atStart = supernovaBodies(nav, 0);
+    expect(atStart.filter((b) => b.kind === 'snova').map((b) => b.key)).toEqual(['snova:1192668714', 'snova:3166234542', 'snova:3135350794']);
+    expect(atStart.filter((b) => b.kind === 'protostar')).toHaveLength(3);
+    expect(atStart[0]).toMatchObject({ kind: 'snova', priority: 3, ref: { remnant: 'shell' } });
+    expect(atStart[0]!.wx).toBe((atStart[0]!.ref as { x: number }).x);
+    expect(atStart[1]).toMatchObject({ kind: 'protostar', key: 'protostar:2414393848' });
+    expect(supernovaBodies(nav, 0)).toEqual(atStart);
+    expect(supernovaBodies(nav, 12).map((b) => b.key)).not.toEqual(atStart.map((b) => b.key));
+    expect(supernovaBodies(NAV_HOME, 0)).toEqual([]);
+    expect(supernovaBodies(solNav(), 0)).toEqual([]);
+    // The epoch moves nothing else: the galaxy's other bodies do not take it.
+    expect(visibleBodies(nav, { x: 0, y: 0, z: 1 }, VIEW, 0).some((b) => b.kind === 'snova' || b.kind === 'protostar')).toBe(false);
   });
 
   it('zoomed in, a galaxy lists its fine stars too, each star once', () => {

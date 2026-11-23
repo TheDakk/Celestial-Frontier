@@ -352,6 +352,18 @@ describe('purity check: the game app', () => {
       expect(run('Math.random(); Date.now(); crypto.randomUUID();', path)).toEqual([]);
     }
   });
+  it.each(['sin', 'cos', 'tan', 'atan', 'atan2', 'pow', 'exp', 'log', 'hypot'])('flags Math.%s under apps/game/src/space and nowhere else in the app', (name) => {
+    const text = `const v = Math.${name}(1);`;
+    for (const path of ['apps/game/src/space/project.ts', 'apps/game/src/space/deep/x.ts']) expect(run(text, path)).toEqual([`${path}: uses Math.${name}`]);
+    for (const path of [SAVE, ROOT, CLOCK, 'apps/game/src/spacesuit/x.ts', 'apps/game/test/space-project.test.ts']) expect(run(text, path)).toEqual([]);
+  });
+  it('the space folder may use the exact maths functions, and keeps the app rules', () => {
+    const path = 'apps/game/src/space/project.ts';
+    expect(run('const v = Math.round(Math.sqrt(2) * Math.floor(3)) + Math.min(1, Math.max(2, Math.abs(-3))) + Math.ceil(1);', path)).toEqual([]);
+    expect(run('// Math.sin(1)\nconst s = "Math.cos(1)";', path)).toEqual([]);
+    expect(run('Math . sin(1); Math.sin(2); Math.cos(3); Date.now();', path)).toEqual([`${path}: uses Date.now`, `${path}: uses Math.sin`, `${path}: uses Math.cos`]);
+    expect(run('const sine = 1; const o = { cos: 2 }; o.cos;', path)).toEqual([]);
+  });
   it('apps/diagnostics is not examined', () => {
     expect(run('Math.random(); performance.now(); new Date(0);', 'apps/diagnostics/src/main.ts')).toEqual([]);
   });

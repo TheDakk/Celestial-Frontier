@@ -1,8 +1,9 @@
 import { GR, galaxyCellWindow, galaxyFineCell, provenGalaxyCell, systemScene, universeGalaxies } from '@cf/scene';
-import type { GalaxyNode, NavState, PlanetNode, ProvenGalaxy, StarNode } from '@cf/scene';
+import type { DecoNode, GalaxyNode, NavState, PlanetNode, ProvenGalaxy, StarNode } from '@cf/scene';
 import { galaxyName, starName } from '@cf/domain-naming';
 import { SOL_SEED } from '@cf/domain-worldconfig';
-import { FCELL, galaxyProfile } from '@cf/domain-worldgen';
+import { FCELL, galaxyProfile, galaxyWormhole, supernovaSites } from '@cf/domain-worldgen';
+import type { SupernovaBirth, SupernovaSite } from '@cf/domain-worldgen';
 import { entryZoom, minSideOf, toScreen } from './camera';
 import type { Camera, Viewport } from './camera';
 
@@ -11,7 +12,11 @@ interface BodyBase { key: string; label: string; priority: number; wx: number; w
 export type MapBody = BodyBase & (
   | { kind: 'galaxy'; ref: GalaxyNode }
   | { kind: 'star'; ref: StarNode }
-  | { kind: 'planet'; ref: PlanetNode });
+  | { kind: 'planet'; ref: PlanetNode }
+  | { kind: 'deco'; ref: DecoNode }
+  | { kind: 'worm'; ref: { x: number; y: number } }
+  | { kind: 'snova'; ref: SupernovaSite }
+  | { kind: 'protostar'; ref: SupernovaBirth });
 
 /** What a zoom asks for: enter the body under the view, leave the map, or hold the zoom at `z`. */
 export type DiveIntent = { kind: 'none' } | { kind: 'dive'; body: MapBody } | { kind: 'ascend' } | { kind: 'park'; z: number };
@@ -26,9 +31,17 @@ const ASCEND_BELOW = 0.62;
 const PARK = 0.97;
 const starTrigger = (minSide: number): number => minSide / 34;
 
+/** What each kind of galaxy scenery is called. Star knots (`open`, `glob`) are scenery only and are not listed. */
+const DECO_LABELS: Readonly<Record<string, string>> = {
+  h2: 'emission nebula', neb: 'nebula', mol: 'molecular cloud', plan: 'planetary nebula', rem: 'supernova remnant',
+  rogue: 'rogue planet', fbd: 'failed brown dwarf',
+};
+/** Bodies that are neither galaxy, star nor planet come after those in the keyboard order. */
+const SCENERY_PRIORITY = 3;
+
 const HALF_PI = 1.5707963267948966;
 /** Cosine and sine by add, multiply, divide and round alone, which give the same bits on every device. */
-function cosSin(angle: number): readonly [number, number] {
+export function cosSin(angle: number): readonly [number, number] {
   const quarter = Math.round(angle / HALF_PI);
   const r = angle - quarter * HALF_PI;
   const r2 = r * r;
@@ -38,18 +51,22 @@ function cosSin(angle: number): readonly [number, number] {
   return turn === 0 ? [cos, sin] : turn === 1 ? [-sin, cos] : turn === 2 ? [-cos, -sin] : [sin, -cos];
 }
 
-let coarse: { galaxy: ProvenGalaxy; stars: readonly StarNode[] } | null = null;
-/** Every coarse star of a galaxy, out to 1.2 of its radius. Kept for the galaxy last asked about. */
-function coarseStars(galaxy: ProvenGalaxy): readonly StarNode[] {
-  if (coarse?.galaxy === galaxy) return coarse.stars;
+let coarse: { galaxy: ProvenGalaxy; stars: readonly StarNode[]; deco: readonly DecoNode[] } | null = null;
+/** Every coarse star and every piece of scenery of a galaxy, out to 1.2 of its radius. Kept for the galaxy last
+ *  asked about. */
+export function galaxyContent(galaxy: ProvenGalaxy): { stars: readonly StarNode[]; deco: readonly DecoNode[] } {
+  if (coarse?.galaxy === galaxy) return coarse;
   const prof = galaxyProfile(galaxy.seed) as Record<string, unknown>;
   const w = galaxyCellWindow(-GR * 1.2, -GR * 1.2, GR * 1.2, GR * 1.2);
   const stars: StarNode[] = [];
+  const deco: DecoNode[] = [];
   for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
-    stars.push(...provenGalaxyCell(galaxy, prof, cx, cy).stars);
+    const cell = provenGalaxyCell(galaxy, prof, cx, cy);
+    stars.push(...cell.stars);
+    deco.push(...cell.deco);
   }
-  coarse = { galaxy, stars };
-  return stars;
+  coarse = { galaxy, stars, deco };
+  return coarse;
 }
 
 /** The fine stars under the view, which resolve once the zoom passes 1/260 of the shorter side. */
@@ -75,7 +92,8 @@ function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): Map
   if (nav.mode === 'galaxy') {
     const bodies: MapBody[] = [];
     const seen = new Set<string>();
-    for (const [tier, stars] of [[1, coarseStars(nav.gal)], [2, fineStars(nav.gal, cam, view)]] as const) {
+    const content = galaxyContent(nav.gal);
+    for (const [tier, stars] of [[1, content.stars], [2, fineStars(nav.gal, cam, view)]] as const) {
       for (const star of stars) {
         const key = `star:${star.seed}:${star.x}:${star.y}`;
         if (seen.has(key)) continue;
@@ -84,6 +102,13 @@ function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): Map
         bodies.push({ kind: 'star', key, label: sun ? 'Sun — our star' : starName(star.seed), priority: sun ? 0 : tier, wx: star.x, wy: star.y, ref: star });
       }
     }
+    for (const deco of content.deco) {
+      const label = DECO_LABELS[deco.k];
+      if (label === undefined) continue;
+      bodies.push({ kind: 'deco', key: `deco:${deco.k}:${deco.x}:${deco.y}`, label, priority: SCENERY_PRIORITY, wx: deco.x, wy: deco.y, ref: deco });
+    }
+    const worm = galaxyWormhole(nav.gal.seed) as { x: number; y: number } | null;
+    if (worm) bodies.push({ kind: 'worm', key: `worm:${nav.gal.seed}`, label: 'wormhole', priority: SCENERY_PRIORITY, wx: worm.x, wy: worm.y, ref: worm });
     return bodies;
   }
   if (nav.mode === 'system') {
@@ -108,6 +133,20 @@ export function visibleBodies(nav: NavState, cam: Camera, viewport: Viewport, ti
     return at.x >= SCREEN_EDGE && at.y >= SCREEN_EDGE && at.x <= viewport.w - SCREEN_EDGE && at.y <= viewport.h - SCREEN_EDGE;
   });
   return visible.length > 0 ? visible : all;
+}
+
+/** The supernova sites of the galaxy `nav` is in, and the protostars born of each, as they stand at an ecology
+ *  epoch. They are the only bodies that move with the epoch, so they are asked for apart from the rest. */
+export function supernovaBodies(nav: NavState, epoch: number): MapBody[] {
+  if (nav.mode !== 'galaxy') return [];
+  const bodies: MapBody[] = [];
+  for (const site of supernovaSites(nav.gal.seed, epoch)) {
+    bodies.push({ kind: 'snova', key: `snova:${site.seed}`, label: 'supernova aftermath', priority: SCENERY_PRIORITY, wx: site.x, wy: site.y, ref: site });
+    for (const birth of site.births) {
+      bodies.push({ kind: 'protostar', key: `protostar:${birth.seed}`, label: 'protostar', priority: SCENERY_PRIORITY, wx: birth.x, wy: birth.y, ref: birth });
+    }
+  }
+  return bodies;
 }
 
 /** The order the keyboard steps through bodies: priority, then top to bottom, then left to right, then key. */

@@ -9,5 +9,25 @@ export const REQUIRED_RAMPS: readonly string[] = Object.freeze(['ink', 'accent']
 /** The interface icons, by name. `missing` is the stand-in drawn for a name the sheet lacks. */
 export const ICON_NAMES: readonly string[] = Object.freeze(['missing', 'settings']);
 
-/** The space elements, by name. */
-export const ELEMENT_NAMES: readonly string[] = Object.freeze([]);
+const ORIENTATIONS: readonly string[] = ['v0', 'v1', 'v2', 'v3'];
+const oriented = (name: string): string[] => ORIENTATIONS.map((orientation) => `${name}/${orientation}`);
+
+/**
+ * The space elements, by name: everything a map draws from the sheet. Galaxies by kind and the lobes of a radio galaxy,
+ * each in four orientations; the quasar; a giant star; the scenery of a galaxy (nebulae, remnants, a rogue planet, a
+ * failed star), its wormhole, its supernova sites by what they left, a protostar and the black hole at its centre; and
+ * in a system the star itself by kind, and a companion star.
+ */
+export const ELEMENT_NAMES: readonly string[] = Object.freeze([
+  ...['spiral', 'barred', 'lenticular', 'elliptical', 'irregular'].flatMap((kind) => oriented(`galaxy/${kind}`)),
+  ...oriented('radio-lobes'),
+  'quasar',
+  'star/giant',
+  ...['h2', 'neb', 'mol', 'plan', 'rem', 'rogue', 'fbd'].map((kind) => `deco/${kind}`),
+  'wormhole',
+  ...['shell', 'ns', 'bh'].map((remnant) => `supernova/${remnant}`),
+  'protostar',
+  'black-hole',
+  ...['star', 'bh', 'ns', 'mag', 'proto'].map((kind) => `primary/${kind}`),
+  'companion',
+]);

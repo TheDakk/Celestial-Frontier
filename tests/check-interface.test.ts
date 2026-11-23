@@ -24,8 +24,8 @@ const BLOCK_16 = Array.from({ length: 16 }, () => '1'.repeat(16)).join('\n');
 describe('checkInterface', () => {
   it('the placeholder sheet checks OK', () => {
     const report = checkInterface(PLACEHOLDER);
-    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 96, icons: 2, elements: 0, line: 12 } });
-    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 96 glyphs (line 12), 2 icons, 0 elements\n');
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 96, icons: 2, elements: 45, line: 12 } });
+    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 96 glyphs (line 12), 2 icons, 45 elements\n');
   });
   it('a sheet that does not parse reports the parser\'s line and nothing else', () => {
     const report = checkInterface(PLACEHOLDER.replace('interface 1', 'interface 3'));
@@ -37,6 +37,7 @@ describe('checkInterface', () => {
     ['a missing glyph', without('glyph U+0041'), ['missing glyph U+0041']],
     ['a missing ramp', PLACEHOLDER.replace('ramp accent 5 6 7 8\n', ''), ['missing ramp accent']],
     ['an unknown icon', `${PLACEHOLDER}\nicon rocket size=16\n${BLOCK_16}\n`, ['unknown icon rocket']],
+    ['a missing element', without('element quasar anchor=4,4'), ['missing element quasar']],
     ['an unknown element', `${PLACEHOLDER}\nelement star/small anchor=0,0\n1\n`, ['unknown element star/small']],
     ['an icon of another size', PLACEHOLDER.replace(/icon settings size=16\n(?:.{16}\n){16}/, 'icon settings size=2\n11\n11\n'), ['icon settings is 2 by 2, not 16 by 16']],
   ])('reports %s', (_what, text, problems) => {

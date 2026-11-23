@@ -1,0 +1,17 @@
+{
+  "sheet": "art-testparts",
+  "entries": [
+    {"label":"the home universe, 390 by 844 at 3","place":"universe","cam":{"x":90,"y":-60,"z":0.17727272727272725},"view":{"w":390,"h":844},"dpr":3,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"63ff9916","gaps":[]},
+    {"label":"the home universe, 1280 by 720 at 1","place":"universe","cam":{"x":90,"y":-60,"z":0.3272727272727272},"view":{"w":1280,"h":720},"dpr":1,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"42b81d8a","gaps":[]},
+    {"label":"the home galaxy, 390 by 844 at 3","place":"home-galaxy","cam":{"x":0,"y":0,"z":0.14332499999999998},"view":{"w":390,"h":844},"dpr":3,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"3c47a24d","gaps":[]},
+    {"label":"the home galaxy, 1280 by 720 at 1","place":"home-galaxy","cam":{"x":0,"y":0,"z":0.2646},"view":{"w":1280,"h":720},"dpr":1,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"1574733a","gaps":[]},
+    {"label":"the home galaxy at epoch 12, 390 by 844 at 3","place":"home-galaxy","cam":{"x":0,"y":0,"z":0.14332499999999998},"view":{"w":390,"h":844},"dpr":3,"time":0,"epoch":12,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"6df8a083","gaps":[]},
+    {"label":"the home galaxy at epoch 12, 1280 by 720 at 1","place":"home-galaxy","cam":{"x":0,"y":0,"z":0.2646},"view":{"w":1280,"h":720},"dpr":1,"time":0,"epoch":12,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"af4078f8","gaps":[]},
+    {"label":"the home galaxy about Sol, 390 by 844 at 3","place":"home-galaxy","cam":{"x":560,"y":170,"z":1.95},"view":{"w":390,"h":844},"dpr":3,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"137bc0c3","gaps":[]},
+    {"label":"the home galaxy about Sol, 1280 by 720 at 1","place":"home-galaxy","cam":{"x":560,"y":170,"z":3.6},"view":{"w":1280,"h":720},"dpr":1,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"e9c0da16","gaps":[]},
+    {"label":"the Sol system, 390 by 844 at 3","place":"sol","cam":{"x":0,"y":0,"z":0.511875},"view":{"w":390,"h":844},"dpr":3,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"e6fed07d","gaps":[]},
+    {"label":"the Sol system, 1280 by 720 at 1","place":"sol","cam":{"x":0,"y":0,"z":0.9450000000000001},"view":{"w":1280,"h":720},"dpr":1,"time":0,"epoch":0,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"46b75f2f","gaps":[]},
+    {"label":"the Sol system after ten minutes, 390 by 844 at 3","place":"sol","cam":{"x":0,"y":0,"z":0.511875},"view":{"w":390,"h":844},"dpr":3,"time":600,"epoch":0,"reach":880.0000000000001,"charts":true,"w":293,"h":633,"scale":4,"hash":"0e64b321","gaps":[]},
+    {"label":"the Sol system after ten minutes, 1280 by 720 at 1","place":"sol","cam":{"x":0,"y":0,"z":0.9450000000000001},"view":{"w":1280,"h":720},"dpr":1,"time":600,"epoch":0,"reach":880.0000000000001,"charts":true,"w":640,"h":360,"scale":2,"hash":"1fcf8bb3","gaps":[]}
+  ]
+}
