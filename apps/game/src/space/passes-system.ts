@@ -18,6 +18,7 @@ const TAU = 6.283185307179586;
 const PI = 3.141592653589793;
 const ZONE = 0x50d282;
 const ZONE_LIGHT = 0.08;
+const ZONE_EDGE = 0.3;
 const NIGHT = 0x00000c;
 const CLOUD = 0xfafcff;
 const CLOUD_UNDER = 0xbfcbe0;
@@ -44,14 +45,17 @@ interface Visitor { speed: number; off: number; ang: number; b: number }
 const rawOf = (seed: number): { comets?: readonly Comet[]; visitor?: Visitor } => systemFor(seed) as { comets?: readonly Comet[]; visitor?: Visitor };
 
 /** The habitable zone: a faint green band between its two radii, shown with the star charts. With the view's `solid`
- *  the band is one whole colour, a green hardly lighter than space. */
+ *  the band is one whole colour, a green hardly lighter than space; once it is wider than the view is across it is
+ *  its two edges alone, so that from close by it never fills the screen. */
 export function zoneItems(v: PassView): SpaceItem[] {
   if (v.nav.mode !== 'system' || !v.charts) return [];
   const hz = systemScene(v.nav.star.seed).hz as [number, number] | null;
   if (hz === null) return [];
   if (v.solid === true) {
     const at = place(v.cam, v.grid, 0, 0);
-    return [glow(at.x, at.y, Math.round(hz[1] * v.cam.z), lit(ZONE, ZONE_LIGHT), Math.round(hz[0] * v.cam.z))];
+    const [inner, outer] = [Math.round(hz[0] * v.cam.z), Math.round(hz[1] * v.cam.z)];
+    if (outer - inner > Math.min(v.grid.w, v.grid.h)) return [inner, outer].map((r) => ({ kind: 'ring', x: at.x, y: at.y, r, colour: lit(ZONE, ZONE_EDGE) }));
+    return [glow(at.x, at.y, outer, lit(ZONE, ZONE_LIGHT), inner)];
   }
   return [{ kind: 'veil', ...place(v.cam, v.grid, 0, 0), r: Math.round(hz[1] * v.cam.z), inner: Math.round(hz[0] * v.cam.z), ...tone(ZONE, 0.055), light: true }];
 }

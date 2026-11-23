@@ -380,6 +380,27 @@ describe('a system in solid pixels', () => {
     expect(zoneItems({ ...v, charts: false })).toEqual([]);
   });
 
+  it('the habitable zone is its two edges alone once the band is wider than the view, so it never fills the screen', () => {
+    const drawnAt = (cam: Camera) => {
+      const v = solid(sol, cam);
+      const picture = paint(zoneItems(v));
+      return { picture, filled: picture.pixels.reduce((n, value) => n + (value === 0 ? 0 : 1), 0), middle: at(picture, place(v.cam, v.grid, 116, 0)) };
+    };
+    // Mid-band (116 units from the star; the band runs from 92 to 140), still narrower than the view: it is filled.
+    const narrow = drawnAt({ x: 116, y: 0, z: 10 });
+    expect(colours[narrow.middle]).toBe(0x062027);
+    // The same place from closer: 48 units of band are 480 pixels, wider than the 360 of the view. Nothing fills it.
+    const inside = drawnAt({ x: 116, y: 0, z: 20 });
+    expect(inside.middle).toBe(0);
+    // Both edges cross the view (it is 640 wide) as lines a pixel thick: under a hundredth of the picture.
+    expect(inside.filled).toBeLessThan(640 * 360 / 100);
+    // On the inner edge at that zoom: the edge crosses the view as a thin line, and nothing else is drawn.
+    const edge = drawnAt({ x: 92, y: 0, z: 20 });
+    expect(edge.filled).toBeGreaterThan(300);
+    expect(edge.filled).toBeLessThan(640 * 360 / 100);
+    expect(meshDots(edge.picture)).toBe(0);
+  });
+
   it("a comet's coma is a dim disc with a brighter one inside it and a white head", () => {
     const v = solid(sol, { x: 12, y: 24, z: 8 });
     const comet = cometItems(v);
