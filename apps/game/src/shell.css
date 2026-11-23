@@ -82,7 +82,7 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
    upward, held there as the sheet scrolls; both are gone at the end. They take no room and no press. --sheet-pad is
    the sheet's own padding at its sides and foot. */
 .panel, .card { --sheet-pad: var(--cf-space-4); }
-[data-more-below] { box-shadow: inset 0 -2px 0 var(--cf-color-accent-teal); }
+[data-more-below] { --cue-line: inset 0 -2px 0 var(--cf-color-accent-teal); box-shadow: var(--cue-line); }
 [data-more-below]::after {
   content: ''; display: block; position: sticky; bottom: calc(-1 * var(--sheet-pad, 0px)); z-index: 1; pointer-events: none;
   height: var(--cf-space-5); margin: calc(-1 * var(--cf-space-5)) calc(-1 * var(--sheet-pad, 0px)) 0;
@@ -174,10 +174,15 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
     top: calc(var(--safe-top) + var(--top-bar)); right: auto; left: calc(var(--safe-left) + var(--cf-space-3)); width: min(180px, 60%);
   }
   [data-size-class="compact"] .top-bar { height: calc(var(--safe-top) + 2 * var(--top-bar)); }
+  [data-size-class="compact"] .card { --bar: calc(2 * var(--top-bar)); }
 }
+/* On a compact view the card floats at the top right under the bar, as the game's does, and leaves the foot of the
+   view (172 px, the game's lower chrome) to the map. */
 [data-size-class="compact"] .card {
-  left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size)); max-height: 46%;
-  border-radius: var(--cf-radius-panel) var(--cf-radius-panel) 0 0;
+  top: calc(var(--safe-top) + var(--bar, var(--top-bar)) + var(--cf-space-2)); right: calc(var(--safe-right) + var(--cf-space-3));
+  width: min(340px, calc(100% - var(--safe-left) - var(--safe-right) - 2 * var(--cf-space-3)));
+  max-height: max(var(--target-min, 44px), calc(100% - var(--safe-top) - var(--bar, var(--top-bar)) - var(--cf-space-2) - var(--safe-bottom) - 172px));
+  border-radius: var(--cf-radius-panel); box-shadow: var(--cue-line, 0 0 transparent), 0 10px 34px rgba(0, 0, 0, 0.55);
 }
 [data-size-class="medium"] .card, [data-size-class="wide"] .card {
   top: calc(var(--safe-top) + var(--target-min, 44px) + var(--cf-space-5)); right: var(--safe-right);
