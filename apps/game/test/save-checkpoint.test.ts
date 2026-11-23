@@ -1,0 +1,488 @@
+import { describe, expect, it } from 'vitest';
+
+import { exportSaveV2, importSaveV2, type SaveStateV2 } from '@cf/persistence';
+import {
+  CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS,
+  CHECKPOINT_STATE_OVERLAY_FIELDS,
+  CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS,
+  SAVE_STATE_V2_FIELD_INVENTORY,
+  projectCheckpointState,
+  type CheckpointStateInput,
+  type CheckpointStateProjection,
+} from '../src/save/checkpoint';
+import { REGISTRY } from '../src/save/registry';
+
+const NOW = 1_753_900_060_000;
+
+function baseState(): SaveStateV2 {
+  const imported = importSaveV2('{}', REGISTRY, NOW);
+  if (!imported.ok) throw new Error(`checkpoint base save failed: ${imported.reason}`);
+  return imported.state;
+}
+
+function projected(outcome: CheckpointStateProjection): Extract<CheckpointStateProjection, {
+  readonly kind: 'projected';
+}> {
+  if (outcome.kind !== 'projected') throw new Error(`checkpoint refused: ${outcome.detail}`);
+  return outcome;
+}
+
+function input(
+  durable: SaveStateV2,
+  live: SaveStateV2,
+  trainingReplacement = false,
+): CheckpointStateInput {
+  return {
+    durable,
+    live,
+    savedView: {
+      type: 'galaxy',
+      gal: { seed: 999, x: 90, y: -60 },
+    },
+    epoch: 42,
+    trainingReplacement,
+  };
+}
+
+function liveValue(field: keyof SaveStateV2, value: unknown): unknown {
+  switch (field) {
+    case 'EPOCH_BASE': return 9_999;
+    case 'savedView': return { type: 'planet', pseed: 999_999 };
+    case 'explorerName': return 'Live Explorer';
+    case 'nameHue': return 3;
+    case 'pinnedRecipe': return 'live-recipe';
+    case 'cargoTab': return 'gear';
+    case 'fsMode': return 'fs-xl';
+    case 'toneMode': return 'tone-max';
+    case 'fontMode': return 'font-mono';
+    case 'sndOn':
+    case 'fxOn':
+    case 'chartsOn':
+    case 'shakeOn':
+    case 'salvageConfirm':
+    case 'notifOn':
+    case 'tipsOn':
+    case 'seenGuide':
+    case 'voiceOn':
+    case 'combatSfxOn': return !value;
+    case 'sfxVol': return 0.31;
+    case 'glassTint': return 0.61;
+    case 'motionMode': return 1;
+    case 'cardExpand': return 7;
+    case 'notifications': return [{ id: 9, tt: 'Live notice', ms: 'Current session', t: NOW, read: false }];
+    case 'rnSeen': return 'live-rn';
+    case 'tutDone': return !value;
+    case 'tutSnapPending': return { view: { type: 'star', live: true } };
+    default:
+      if (typeof value === 'number') return value === 123 ? 124 : 123;
+      if (typeof value === 'string') return `live-${field}`;
+      if (typeof value === 'boolean') return !value;
+      if (Array.isArray(value)) return [`live-${field}`];
+      return { live: field };
+  }
+}
+
+function allFieldsMutated(state: SaveStateV2): SaveStateV2 {
+  const live = structuredClone(state) as SaveStateV2;
+  const record = live as unknown as Record<string, unknown>;
+  for (const field of SAVE_STATE_V2_FIELD_INVENTORY) {
+    record[field] = liveValue(field, record[field]);
+  }
+  return live;
+}
+
+describe('receipt-free checkpoint state projector', () => {
+  it('exports an exhaustive save inventory and the exact ordinary/training touch scopes', () => {
+    const stateKeys = Object.keys(baseState()).sort();
+    const inventory = [...SAVE_STATE_V2_FIELD_INVENTORY].sort();
+    expect(new Set(inventory).size).toBe(inventory.length);
+    expect(inventory).toEqual(stateKeys);
+    expect(CHECKPOINT_STATE_OVERLAY_FIELDS).toEqual([
+      'EPOCH_BASE', 'savedView', 'explorerName', 'nameHue', 'pinnedRecipe', 'cargoTab',
+      'fsMode', 'toneMode', 'fontMode', 'sndOn', 'fxOn', 'chartsOn', 'shakeOn',
+      'salvageConfirm', 'notifOn', 'tipsOn', 'sfxVol', 'glassTint', 'motionMode',
+      'cardExpand', 'notifications', 'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
+    ]);
+    expect(CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS).toEqual([
+      'explorerName', 'nameHue', 'pinnedRecipe', 'cargoTab', 'fsMode', 'toneMode',
+      'fontMode', 'sndOn', 'fxOn', 'chartsOn', 'shakeOn', 'salvageConfirm',
+      'notifOn', 'tipsOn', 'sfxVol', 'glassTint', 'motionMode', 'cardExpand',
+      'notifications', 'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
+    ]);
+    expect(CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS).toEqual([
+      'tutDone', 'tutSnapPending',
+    ]);
+    const overlap = CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS.filter((field) => (
+      (CHECKPOINT_STATE_OVERLAY_FIELDS as readonly string[]).includes(field)
+    ));
+    expect(overlap).toEqual([]);
+  });
+
+  it('mutates every live top-level field but overlays only the exact ordinary scope', () => {
+    const durable = baseState();
+    durable.stats.essenceEarned = 17;
+    durable.customNames = [['p133', 'Durable Earth']];
+    durable.logMap = [['durable-atlas', { id: 'durable-atlas', title: 'Keep' }]];
+    durable.tutDone = true;
+    durable.tutSnapPending = { durable: true };
+    const durableBefore = structuredClone(durable);
+    const live = allFieldsMutated(durable);
+    const request = input(durable, live, false);
+    const outcome = projected(projectCheckpointState(request));
+    const output = outcome.state as unknown as Record<string, unknown>;
+    const durableRecord = durableBefore as unknown as Record<string, unknown>;
+    const liveRecord = live as unknown as Record<string, unknown>;
+    const liveOverlay = new Set<string>(CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS);
+
+    expect(outcome.appliedFields).toEqual(CHECKPOINT_STATE_OVERLAY_FIELDS);
+    for (const field of SAVE_STATE_V2_FIELD_INVENTORY) {
+      if (field === 'EPOCH_BASE') expect(output[field], field).toBe(42);
+      else if (field === 'savedView') expect(output[field], field).toEqual(request.savedView);
+      else if (liveOverlay.has(field)) expect(output[field], field).toEqual(liveRecord[field]);
+      else expect(output[field], field).toEqual(durableRecord[field]);
+    }
+    expect(outcome.state.customNames).toEqual([['p133', 'Durable Earth']]);
+    expect(outcome.state.logMap).toEqual([
+      ['durable-atlas', { id: 'durable-atlas', title: 'Keep' }],
+    ]);
+    expect(outcome.state.tutDone).toBe(true);
+    expect(outcome.state.tutSnapPending).toEqual({ durable: true });
+    expect(durable).toEqual(durableBefore);
+  });
+
+  it('carries read/unread notification history through the existing export/import boundary without live gameplay', () => {
+    const durable = baseState();
+    durable.essence = 37;
+    durable.hp = Math.max(1, durable.HP_MAX - 1);
+    durable.stats.essenceEarned = 19;
+    durable.notifications = [{ id: 1, tt: 'Earlier', ms: 'Already durable', t: NOW - 100, read: false }];
+    const live = structuredClone(durable);
+    live.essence = 999;
+    live.hp = 1;
+    live.stats.essenceEarned = 800;
+    live.notifications = Array.from({ length: 60 }, (_, index) => ({
+      id: 60 - index, tt: `Notice ${60 - index}`, ms: 'Saved notification',
+      t: NOW - index, read: index % 2 === 0,
+    }));
+    const first = projected(projectCheckpointState(input(durable, live)));
+    expect(first.state.notifications).toEqual(live.notifications);
+    expect(first.state.notifications).toHaveLength(60);
+    expect(first.state.essence).toBe(37);
+    expect(first.state.hp).toBe(durable.hp);
+    expect(first.state.stats.essenceEarned).toBe(19);
+    const bytes = exportSaveV2(first.state, NOW);
+    const restored = importSaveV2(bytes, REGISTRY, NOW);
+    if (!restored.ok) throw new Error(`notification restore refused: ${restored.reason}`);
+    // Export's established newest-50 limit is retained; import can carry 60.
+    expect(restored.state.notifications).toEqual(live.notifications.slice(0, 50));
+    expect(restored.state.essence).toBe(37);
+    expect(restored.state.hp).toBe(durable.hp);
+    expect(restored.state.stats.essenceEarned).toBe(19);
+    const next = structuredClone(restored.state);
+    next.notifications[1]!.read = true;
+    const second = projected(projectCheckpointState(input(restored.state, next)));
+    const reread = importSaveV2(exportSaveV2(second.state, NOW), REGISTRY, NOW);
+    if (!reread.ok) throw new Error(`notification read-state restore refused: ${reread.reason}`);
+    expect(reread.state.notifications).toEqual(next.notifications);
+    expect(reread.state.notifications[1]!.read).toBe(true);
+    expect(durable.notifications[0]!.read).toBe(false);
+    expect(restored.state.notifications[1]!.read).toBe(false);
+  });
+
+  it('detaches notification arrays and rows from both input owners in both directions', () => {
+    const durable = baseState();
+    durable.notifications = [{ id: 1, tt: 'Durable', ms: 'Retained parent', t: NOW - 1, read: false }];
+    const live = structuredClone(durable);
+    live.notifications.unshift({ id: 2, tt: 'Live', ms: 'Current session', t: NOW, read: false });
+    const outcome = projected(projectCheckpointState(input(durable, live)));
+    expect(outcome.state.notifications).not.toBe(live.notifications);
+    expect(outcome.state.notifications).not.toBe(durable.notifications);
+    expect(outcome.state.notifications[0]).not.toBe(live.notifications[0]);
+    expect(outcome.state.notifications[1]).not.toBe(durable.notifications[0]);
+    live.notifications[0]!.tt = 'Live changed later';
+    durable.notifications[0]!.ms = 'Durable changed later';
+    expect(outcome.state.notifications.map(({ tt, ms }) => ({ tt, ms }))).toEqual([
+      { tt: 'Live', ms: 'Current session' }, { tt: 'Durable', ms: 'Retained parent' },
+    ]);
+    outcome.state.notifications[0]!.read = true;
+    outcome.state.notifications[1]!.read = true;
+    outcome.state.notifications.pop();
+    expect(live.notifications).toHaveLength(2);
+    expect(live.notifications.every(({ read }) => read === false)).toBe(true);
+    expect(durable.notifications[0]!.read).toBe(false);
+  });
+
+  it('degrades malformed or non-plain notification rows to the durable history without getters, partial state or unbounded arrays, never refusing route or preferences (K22)', () => {
+    const row = () => ({ id: 1, tt: 'Title', ms: 'Detail', t: NOW, read: false });
+    let getterCalls = 0;
+    const accessorRow = row();
+    Object.defineProperty(accessorRow, 'tt', { enumerable: true, get: () => { getterCalls++; return 'Unsafe'; } });
+    const accessorArray = [row()];
+    Object.defineProperty(accessorArray, '0', { enumerable: true, get: () => { getterCalls++; return row(); } });
+    const cyclicRow = { ...row(), self: null as unknown };
+    cyclicRow.self = cyclicRow;
+    const cyclicArray: unknown[] = [];
+    cyclicArray.push(cyclicArray);
+    const customRow = Object.assign(Object.create({ inherited: true }) as Record<string, unknown>, row());
+    const customArray = [row()];
+    Object.setPrototypeOf(customArray, Object.create(Array.prototype));
+    const decoratedArray = Object.assign([row()], { '999999999999': row() });
+    const hiddenRow = row();
+    Object.defineProperty(hiddenRow, 'read', { enumerable: false, value: false });
+    const malformed: ReadonlyArray<readonly [string, unknown]> = [
+      ['not an array', row()], ['61 rows', Array.from({ length: 61 }, row)],
+      ['sparse array', new Array(1)], ['decorated array', decoratedArray],
+      ['null row', [null]], ['extra row field', [{ ...row(), extra: true }]],
+      ['missing field', [{ id: 1, tt: 'Title', ms: 'Detail', t: NOW }]],
+      ['fractional id', [{ ...row(), id: 1.5 }]], ['id over signed32', [{ ...row(), id: 2_147_483_648 }]],
+      ['id under signed32', [{ ...row(), id: -2_147_483_649 }]],
+      ['long title', [{ ...row(), tt: 'x'.repeat(201) }]], ['long detail', [{ ...row(), ms: 'x'.repeat(401) }]],
+      ['non-string title', [{ ...row(), tt: 1 }]], ['non-string detail', [{ ...row(), ms: null }]],
+      ['negative timestamp', [{ ...row(), t: -1 }]], ['late timestamp', [{ ...row(), t: 4e12 + 1 }]],
+      ['NaN timestamp', [{ ...row(), t: Number.NaN }]], ['infinite timestamp', [{ ...row(), t: Number.POSITIVE_INFINITY }]],
+      ['non-boolean read', [{ ...row(), read: 1 }]], ['row accessor', [accessorRow]],
+      ['array accessor', accessorArray], ['cyclic row', [cyclicRow]], ['cyclic array', cyclicArray],
+      ['custom row prototype', [customRow]], ['custom array prototype', customArray], ['hidden field', [hiddenRow]],
+    ];
+    const validEpoch = projected(projectCheckpointState(input(baseState(), baseState()))).state.EPOCH_BASE;
+    for (const [label, value] of malformed) {
+      const durable = baseState();
+      durable.notifications = [{ id: 3, tt: 'Durable', ms: 'Retained parent row', t: NOW - 3, read: true }];
+      const live = baseState();
+      live.explorerName = 'Overlay still applies';
+      live.sndOn = !durable.sndOn;
+      (live as unknown as Record<string, unknown>).notifications = value;
+      const before = structuredClone(durable);
+      /* K22: one malformed presentation row degrades to the durable parent's
+         history with a recorded reason; route, epoch and preferences still
+         project instead of refusing (a refusal forces a convergence reload). */
+      const outcome = projected(projectCheckpointState(input(durable, live)));
+      expect(outcome.droppedFields, label).toEqual([{ field: 'notifications', detail: 'live-field:notifications:invalid' }]);
+      expect(outcome.appliedFields, label + ' applied').not.toContain('notifications');
+      expect(outcome.appliedFields, label + ' applied').toContain('explorerName');
+      expect(outcome.state.notifications, label + ' durable rows retained').toEqual(before.notifications);
+      expect(outcome.state.notifications, label + ' detached').not.toBe(durable.notifications);
+      expect(outcome.state.explorerName, label + ' preferences').toBe('Overlay still applies');
+      expect(outcome.state.sndOn, label + ' preferences').toBe(live.sndOn);
+      expect(outcome.state.EPOCH_BASE, label + ' epoch').toBe(validEpoch);
+      expect(durable, label + ' durable unchanged').toEqual(before);
+      live.notifications = [row()];
+      const repaired = projected(projectCheckpointState(input(durable, live)));
+      expect(repaired.state.notifications, label + ' restored').toEqual([row()]);
+      expect(repaired.droppedFields, label + ' restored reason cleared').toEqual([]);
+      expect(repaired.appliedFields, label + ' restored applied').toContain('notifications');
+    }
+    expect(getterCalls).toBe(0);
+    // Control: a malformed non-notification live field is still a whole-checkpoint refusal.
+    {
+      const durable = baseState();
+      const live = baseState();
+      (live as unknown as Record<string, unknown>).sndOn = 'yes';
+      expect(projectCheckpointState(input(durable, live))).toEqual({ kind: 'refused', detail: 'live-field:sndOn:invalid' });
+    }
+    const live = baseState();
+    live.notifications = [{ id: -2_147_483_648, tt: 'x'.repeat(200), ms: 'x'.repeat(400), t: 0, read: true },
+      { id: 2_147_483_647, tt: '', ms: '', t: 4e12, read: false }];
+    expect(projected(projectCheckpointState(input(baseState(), live))).state.notifications).toEqual(live.notifications);
+  });
+
+  it('adds only tutDone and tutSnapPending for an explicit Training replacement', () => {
+    const durable = baseState();
+    durable.tutDone = true;
+    durable.tutSnapPending = { durable: 'checkpoint' };
+    const live = allFieldsMutated(durable);
+    const outcome = projected(projectCheckpointState(input(durable, live, true)));
+
+    expect(outcome.appliedFields).toEqual([
+      ...CHECKPOINT_STATE_OVERLAY_FIELDS,
+      ...CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS,
+    ]);
+    expect(outcome.state.tutDone).toBe(live.tutDone);
+    expect(outcome.state.tutSnapPending).toEqual(live.tutSnapPending);
+    expect(outcome.state.stats).toEqual(durable.stats);
+    expect(outcome.state.customNames).toEqual(durable.customNames);
+    expect(outcome.state.logMap).toEqual(durable.logMap);
+  });
+
+  it('detaches the durable tree, explicit route, and Training evidence in both directions', () => {
+    const durable = baseState();
+    durable.stats = { ...durable.stats, essenceEarned: 9 };
+    durable.logMap = [['atlas-1', { id: 'atlas-1', nested: { durable: true } }]];
+    const live = structuredClone(durable);
+    live.tutDone = false;
+    live.tutSnapPending = { view: { type: 'galaxy', live: true } };
+    const savedView = { type: 'star', star: { seed: 424242, x: 560, y: 170 } };
+    const outcome = projected(projectCheckpointState({
+      durable, live, savedView, epoch: 19, trainingReplacement: true,
+    }));
+
+    expect(outcome.state).not.toBe(durable);
+    expect(outcome.state.stats).not.toBe(durable.stats);
+    expect(outcome.state.logMap).not.toBe(durable.logMap);
+    expect(outcome.state.savedView).not.toBe(savedView);
+    expect(outcome.state.tutSnapPending).not.toBe(live.tutSnapPending);
+
+    durable.stats.essenceEarned = 999;
+    (durable.logMap[0]![1].nested as { durable: boolean }).durable = false;
+    savedView.star.seed = 1;
+    (live.tutSnapPending as { view: { live: boolean } }).view.live = false;
+    expect(outcome.state.stats.essenceEarned).toBe(9);
+    expect(outcome.state.logMap[0]![1]).toEqual({
+      id: 'atlas-1', nested: { durable: true },
+    });
+    expect((outcome.state.savedView!.star as { seed: number }).seed).toBe(424242);
+    expect(outcome.state.tutSnapPending).toEqual({
+      view: { type: 'galaxy', live: true },
+    });
+
+    outcome.state.stats.essenceEarned = 111;
+    (outcome.state.savedView!.star as { seed: number }).seed = 222;
+    (outcome.state.tutSnapPending as { view: { live: boolean } }).view.live = true;
+    expect(durable.stats.essenceEarned).toBe(999);
+    expect(savedView.star.seed).toBe(1);
+    expect((live.tutSnapPending as { view: { live: boolean } }).view.live).toBe(false);
+  });
+
+  it('is deterministic and reaches the same ordinary and Training fixed points', () => {
+    const durable = baseState();
+    const live = allFieldsMutated(durable);
+    const ordinaryFirst = projected(projectCheckpointState(input(durable, live, false)));
+    const ordinarySecond = projected(projectCheckpointState({
+      durable: ordinaryFirst.state,
+      live: ordinaryFirst.state,
+      savedView: ordinaryFirst.state.savedView,
+      epoch: ordinaryFirst.state.EPOCH_BASE,
+      trainingReplacement: false,
+    }));
+    expect(ordinarySecond.state).toEqual(ordinaryFirst.state);
+    expect(ordinarySecond.state).not.toBe(ordinaryFirst.state);
+
+    const trainingFirst = projected(projectCheckpointState(input(durable, live, true)));
+    const trainingSecond = projected(projectCheckpointState({
+      durable: trainingFirst.state,
+      live: trainingFirst.state,
+      savedView: trainingFirst.state.savedView,
+      epoch: trainingFirst.state.EPOCH_BASE,
+      trainingReplacement: true,
+    }));
+    expect(trainingSecond.state).toEqual(trainingFirst.state);
+    expect(JSON.stringify(trainingSecond)).toBe(JSON.stringify(trainingFirst));
+  });
+
+  it('accepts the optional overflow binding as absent without minting it', () => {
+    const durable = baseState();
+    const live = baseState();
+    delete durable.xpFirstsBinding;
+    delete live.xpFirstsBinding;
+    const outcome = projected(projectCheckpointState(input(durable, live)));
+    expect(Object.prototype.hasOwnProperty.call(outcome.state, 'xpFirstsBinding')).toBe(false);
+  });
+
+  it.each([
+    ['durable cycle', (request: CheckpointStateInput) => {
+      (request.durable.stats as Record<string, unknown>).self = request.durable.stats;
+    }, 'durable:invalid'],
+    ['durable accessor', (request: CheckpointStateInput) => {
+      Object.defineProperty(request.durable, 'stats', { enumerable: true, get: () => ({}) });
+    }, 'durable:invalid'],
+    ['live top-level accessor', (request: CheckpointStateInput) => {
+      Object.defineProperty(request.live, 'stats', { enumerable: true, get: () => ({}) });
+    }, 'live:invalid'],
+    ['saved-view cycle', (request: CheckpointStateInput) => {
+      const view = request.savedView as Record<string, unknown>;
+      view.self = view;
+    }, 'saved-view:invalid'],
+    ['saved-view accessor', (request: CheckpointStateInput) => {
+      Object.defineProperty(request.savedView!, 'type', { enumerable: true, get: () => 'star' });
+    }, 'saved-view:invalid'],
+    ['Training snapshot cycle', (request: CheckpointStateInput) => {
+      const snapshot: Record<string, unknown> = {};
+      snapshot.self = snapshot;
+      request.live.tutSnapPending = snapshot;
+      Object.assign(request as unknown as { trainingReplacement: boolean }, {
+        trainingReplacement: true,
+      });
+    }, 'training-field:tutSnapPending:invalid'],
+  ] as const)('refuses %s without exposing a partial candidate', (_label, mutate, detail) => {
+    const request = input(baseState(), baseState());
+    mutate(request);
+    expect(projectCheckpointState(request)).toEqual({ kind: 'refused', detail });
+  });
+
+  it('fails closed on input, durable, live, and saved-view proxies', () => {
+    const addressable = input(baseState(), baseState());
+    const hostileInput = new Proxy(addressable, {
+      getPrototypeOf() { throw new Error('input proxy trap'); },
+    });
+    expect(projectCheckpointState(hostileInput)).toEqual({
+      kind: 'refused', detail: 'input:invalid',
+    });
+
+    const durableProxy = input(baseState(), baseState());
+    Object.assign(durableProxy as unknown as { durable: SaveStateV2 }, {
+      durable: new Proxy(durableProxy.durable, {
+        getPrototypeOf() { throw new Error('durable proxy trap'); },
+      }),
+    });
+    expect(projectCheckpointState(durableProxy).kind).toBe('refused');
+
+    const liveProxy = input(baseState(), baseState());
+    Object.assign(liveProxy as unknown as { live: SaveStateV2 }, {
+      live: new Proxy(liveProxy.live, {
+        ownKeys() { throw new Error('live proxy trap'); },
+      }),
+    });
+    expect(projectCheckpointState(liveProxy).kind).toBe('refused');
+
+    const viewProxy = input(baseState(), baseState());
+    Object.assign(viewProxy as unknown as { savedView: Record<string, unknown> }, {
+      savedView: new Proxy(viewProxy.savedView!, {
+        getPrototypeOf() { throw new Error('view proxy trap'); },
+      }),
+    });
+    expect(projectCheckpointState(viewProxy)).toEqual({
+      kind: 'refused', detail: 'saved-view:invalid',
+    });
+  });
+
+  it('does not traverse or inherit a cyclic forbidden live product subtree', () => {
+    const durable = baseState();
+    durable.stats.essenceEarned = 5;
+    const live = baseState();
+    const cyclic = live.stats as Record<string, unknown>;
+    cyclic.self = cyclic;
+    const outcome = projected(projectCheckpointState(input(durable, live, false)));
+    expect(outcome.state.stats).toEqual(durable.stats);
+    expect((outcome.state.stats as Record<string, unknown>).self).toBeUndefined();
+  });
+
+  it.each([
+    ['explorerName', 7, 'live-field:explorerName:invalid'],
+    ['sndOn', 'yes', 'live-field:sndOn:invalid'],
+    ['sfxVol', Number.NaN, 'live-field:sfxVol:invalid'],
+    ['pinnedRecipe', {}, 'live-field:pinnedRecipe:invalid'],
+  ] as const)('rejects malformed live %s', (field, value, detail) => {
+    const request = input(baseState(), baseState());
+    (request.live as unknown as Record<string, unknown>)[field] = value;
+    expect(projectCheckpointState(request)).toEqual({ kind: 'refused', detail });
+  });
+
+  it('rejects malformed replacement-only and explicit inputs', () => {
+    const badTraining = input(baseState(), baseState(), true);
+    (badTraining.live as unknown as Record<string, unknown>).tutDone = 'yes';
+    expect(projectCheckpointState(badTraining)).toEqual({
+      kind: 'refused', detail: 'training-field:tutDone:invalid',
+    });
+
+    for (const epoch of [-1, 10_001, 1.5, Number.NaN, Number.POSITIVE_INFINITY]) {
+      const request = input(baseState(), baseState());
+      Object.assign(request as unknown as { epoch: number }, { epoch });
+      expect(projectCheckpointState(request), String(epoch)).toEqual({
+        kind: 'refused', detail: 'epoch:invalid',
+      });
+    }
+
+    const extra = { ...input(baseState(), baseState()), extra: true } as unknown as CheckpointStateInput;
+    expect(projectCheckpointState(extra)).toEqual({ kind: 'refused', detail: 'input:invalid' });
+  });
+});

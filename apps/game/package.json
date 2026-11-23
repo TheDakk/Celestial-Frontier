@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/domain-ecology": "*",
     "@cf/domain-progression": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-sessionrng": "*",
