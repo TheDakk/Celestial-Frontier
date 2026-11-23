@@ -5,7 +5,7 @@
    that is refused, or a lease or revision this page can no longer prove, makes the page read-only until it
    reloads. Storage that fails the lease before it has once answered is a hold instead: a reload would only
    meet the same failure. Under a write hold nothing here touches storage, the lease row included. */
-import { createRevisionedRepository, type SaveStateV2, type StorageBackend } from '@cf/persistence';
+import { createRevisionedRepository, type SaveStateV2, type StorageBackend, type V5ExtensionWrite } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
 import type { Clocks } from '../platform/clock';
@@ -20,8 +20,8 @@ export const CHECKPOINT_MS = 30_000;
 export type SaveReason = 'route' | 'settings' | 'epoch-edge' | 'lifecycle';
 
 export interface SaveLoop {
-  /** Resolves true when this request's state is stored. */
-  request(reason: SaveReason): Promise<boolean>;
+  /** Resolves true when this request's state is stored. `extensionWrites` are stored in the same checkpoint. */
+  request(reason: SaveReason, extensionWrites?: readonly V5ExtensionWrite[]): Promise<boolean>;
   /** Resolves when no write is running or waiting. */
   flush(): Promise<void>;
   /** One heartbeat: acquire or renew the lease, confirm the stored revision is this page's, and store a
@@ -62,7 +62,7 @@ export function createSaveLoop(deps: {
   let reloadRequired = false;
   let lastCheckpointAt = clocks.monotonicNow();
   let active: Promise<boolean> | null = null;
-  let queued: { run: Promise<boolean>; edgeOnly: boolean } | null = null;
+  let queued: { run: Promise<boolean>; edgeOnly: boolean; extensionWrites: V5ExtensionWrite[] } | null = null;
   /** The lease and revision part of a heartbeat or a show; a write waits for it. */
   let proving: Promise<void> | null = null;
   let hiding: Promise<void> | null = null;
@@ -104,7 +104,7 @@ export function createSaveLoop(deps: {
     announce();
   };
 
-  const write = async (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
+  const write = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
     if (proving !== null) await proving.catch(() => undefined);
     if (!mayWrite()) return false;
     const staged = epoch.stage(runtime.activePlayMs(), intent);
@@ -122,7 +122,7 @@ export function createSaveLoop(deps: {
         trainingReplacement: false,
       });
       if (projection.kind !== 'projected') throw new Error(`checkpoint projection refused (${projection.detail})`);
-      const outcome = await runtime.commit(projection.state, clocks.wallNow());
+      const outcome = await runtime.commit(projection.state, clocks.wallNow(), extensionWrites);
       if (outcome.kind === 'committed') {
         durable = true;
         if (epoch.commit(stage, outcome.revision).kind === 'invalid-stage') {
@@ -153,23 +153,25 @@ export function createSaveLoop(deps: {
   };
 
   /** One write at a time. Requests made during a write share the one write that follows it. */
-  const start = (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
-    const run: Promise<boolean> = write(intent).finally(() => { if (active === run) active = null; });
+  const start = (edgeOnly: boolean, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
+    const run: Promise<boolean> = write(edgeOnly ? 'ecology-edge' : 'ordinary', extensionWrites)
+      .finally(() => { if (active === run) active = null; });
     active = run;
     return run;
   };
-  const request = (reason: SaveReason): Promise<boolean> => {
+  const request = (reason: SaveReason, extensionWrites: readonly V5ExtensionWrite[] = []): Promise<boolean> => {
     if (closed()) return Promise.resolve(false);
     const edgeOnly = reason === 'epoch-edge';
     if (queued !== null) {
       if (!edgeOnly) queued.edgeOnly = false;
+      queued.extensionWrites.push(...extensionWrites);
       return queued.run;
     }
-    if (active === null) return start(edgeOnly ? 'ecology-edge' : 'ordinary');
-    const waiting = { edgeOnly, run: Promise.resolve(false) };
+    if (active === null) return start(edgeOnly, extensionWrites);
+    const waiting = { edgeOnly, extensionWrites: [...extensionWrites], run: Promise.resolve(false) };
     waiting.run = active.then(() => false, () => false).then(() => {
       queued = null;
-      return start(waiting.edgeOnly ? 'ecology-edge' : 'ordinary');
+      return start(waiting.edgeOnly, waiting.extensionWrites);
     });
     queued = waiting;
     return waiting.run;

@@ -206,7 +206,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     locale: localeFromSearch(env.search),
     protect: {
       registry: REGISTRY, clocks, bus, runtime, gate, toast,
-      settle: () => loop.flush(),
+      store: (extensionWrites) => loop.request('lifecycle', extensionWrites),
       persistState: () => persist,
       askAgain: () => asker.askAgain(),
       canBackUp: () => booted.revision > 0 || booted.kind === 'recovered-protected',

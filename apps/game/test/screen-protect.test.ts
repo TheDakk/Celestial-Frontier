@@ -27,10 +27,11 @@ describe('save protection in Settings', () => {
 
     page.time.advance(90_000);
     const at = NOW + page.time.now();
+    // A change the page has not stored yet: the file holds it all the same.
+    page.live.toneMode = 'tone-max';
     page.control('backup').click();
-    // The file is handed over inside the press itself.
-    expect(page.files.map((file) => file.name)).toEqual([backupFileName(at)]);
     await settled();
+    expect(page.files.map((file) => file.name)).toEqual([backupFileName(at)]);
     expect(backups).toEqual([{ at }]);
     expect(text(page, 'last-backup')).toBe(localDateTime(at));
     expect(text(page, 'protect-note')).toBe('Backup file made.');
@@ -46,7 +47,8 @@ describe('save protection in Settings', () => {
     other.control('restore-yes').click();
     await settled();
     expect(other.reloads).toBe(1);
-    expect((await reboot(other.backend)).state.fsMode).toBe('fs-lg');
+    const restored = (await reboot(other.backend)).state;
+    expect([restored.fsMode, restored.toneMode]).toEqual(['fs-lg', 'tone-max']);
   });
 
   it('the local date and time are written year first, to the minute', () => {

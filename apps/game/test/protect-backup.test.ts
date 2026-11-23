@@ -14,6 +14,7 @@ import {
   recordBackup, restoreBackup,
 } from '../src/protect/index';
 import { REGISTRY, bootSave, createSaveLoop, replaceExpedition, resetExpedition } from '../src/save/index';
+import { pausable } from './save-loop-support';
 import { GALAXY_ROUTE, NOW, SOL_ROUTE, bootedPage, dump, seedCurrentSave } from './save-support';
 
 const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });
@@ -34,7 +35,10 @@ async function bootedHarness(backend: StorageBackend = createMemoryBackend(), to
   return {
     ...page, loop, reloads,
     setRoute: (next: Record<string, unknown> | null) => { route = next; },
-    record: { runtime: page.runtime, gate: page.gate, settle, wallNow: BACKED_UP_AT },
+    record: {
+      extensions: () => page.runtime.extensions, wallNow: BACKED_UP_AT,
+      store: (writes: Parameters<typeof loop.request>[1]) => loop.request('lifecycle', writes),
+    },
     reset: { ...replace, registry: REGISTRY, clocks: page.clocks, solView: SOL_ROUTE },
     deps: { replaceExpedition: (operations: Parameters<typeof replaceExpedition>[1]) => replaceExpedition(replace, operations) },
   };
@@ -155,6 +159,22 @@ describe('backup and restore', () => {
     expect(after.state.sndOn).toBe(false);
     expect(readLastBackupAt(after.extensions)).toBe(BACKED_UP_AT);
     expect(await h.loop.request('settings')).toBe(true); // the page still writes
+  });
+
+  it('a checkpoint asked for while the backup time is being stored waits its turn; both are stored and no reload is asked', async () => {
+    const store = pausable();
+    const h = await bootedHarness(store.backend);
+    const inFlight = store.pauseNext();
+    const recording = recordBackup(h.record);
+    await inFlight;
+    h.live.sndOn = false;
+    const storing = h.loop.request('settings');
+    store.release();
+    expect([await recording, await storing, h.loop.status]).toEqual([true, true, 'idle']);
+    const after = await boot(h.backend);
+    expect(after.state.sndOn).toBe(false);
+    expect(readLastBackupAt(after.extensions)).toBe(BACKED_UP_AT);
+    expect(h.runtime.diagnostics()).toMatchObject({ leaseOwned: true, staleBlocked: false });
   });
 
   it('a last-backup record this build cannot read shows as never and is left as it is', async () => {

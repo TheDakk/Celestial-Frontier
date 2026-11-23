@@ -2,8 +2,8 @@
    restore replaces the stored expedition with the one in such a file. The time of the last backup is part
    of the save, so it is gone with the expedition after a reset.
 
-   This system does not write the save itself. It is handed the save runtime and the write gate, and the
-   whole-expedition replacement, as ports. */
+   This system does not write the save itself. It is handed the save loop's write and the whole-expedition
+   replacement as ports. */
 import {
   PORTABLE_V5_MAX_BYTES,
   exportPortableV5Save,
@@ -67,48 +67,23 @@ export function checkRestoreText(raw: string, registry: ContentRegistry, wallNow
   return prepared.kind === 'prepared' ? { kind: 'ok', prepared } : prepared;
 }
 
-/** The parts of the save runtime and the write gate that storing the backup time uses. */
-export interface BackupRuntime {
-  readonly extensions: V5Extensions;
-  /** The last stored state, or null when this page can no longer tell. */
-  checkpointParent(): SaveStateV2 | null;
-  commit(state: SaveStateV2, wallNow: number, extensionWrites?: readonly V5ExtensionWrite[]): Promise<{ readonly kind: string }>;
-}
-export interface BackupGate {
-  mayWrite(): boolean;
-  protect(detail: string): void;
-}
-
-/** Stores `wallNow` as the time of the last backup, changing nothing else in the save. False when it was not
- *  stored: under a hold, without the lease, or over a record a newer build wrote. */
+/** Stores `wallNow` as the time of the last backup. False when it was not stored: under a hold, without the
+ *  lease, or over a record a newer build wrote. */
 export async function recordBackup(deps: {
-  runtime: BackupRuntime;
-  gate: BackupGate;
-  /** Resolves when no ordinary checkpoint is running or waiting, so this write does not race one. */
-  settle(): Promise<void>;
+  /** The extensions as last stored. */
+  extensions(): V5Extensions;
+  /** The save loop's write: a checkpoint carrying these extension writes, stored in its turn among the page's
+   *  writes. True when it was stored. */
+  store(extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean>;
   wallNow: number;
 }): Promise<boolean> {
-  const { runtime, gate } = deps;
-  await deps.settle();
-  if (!gate.mayWrite()) return false;
-  const stored = runtime.extensions.settings?.[PROTECT_NAMESPACE];
+  const stored = deps.extensions().settings?.[PROTECT_NAMESPACE];
   if (stored !== undefined && stored.version > PROTECT_VERSION) return false;
-  const parent = runtime.checkpointParent();
-  if (parent === null) return false;
-  let kind: string;
-  try {
-    kind = (await runtime.commit(parent, deps.wallNow, [{
-      segment: 'settings',
-      namespace: PROTECT_NAMESPACE,
-      carrier: { version: PROTECT_VERSION, json: JSON.stringify({ lastBackupAt: deps.wallNow }) },
-    }])).kind;
-  } catch {
-    return false;
-  }
-  if (kind === 'committed') return true;
-  // A refusal other than a missing lease means the save is no longer this page's to write.
-  if (kind !== 'lease-unavailable') gate.protect(`save authority ${kind}; reload required`);
-  return false;
+  return deps.store([{
+    segment: 'settings',
+    namespace: PROTECT_NAMESPACE,
+    carrier: { version: PROTECT_VERSION, json: JSON.stringify({ lastBackupAt: deps.wallNow }) },
+  }]);
 }
 
 /** Replaces the stored expedition with a checked backup, then the page reloads. `refused`: nothing was
