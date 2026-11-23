@@ -6,8 +6,9 @@ import { NAV_HOME, systemScene, universeGalaxies } from '@cf/scene';
 import { UCELL } from '@cf/domain-worldconfig';
 import { supernovaBodies, visibleBodies } from '../apps/game/src/space/model';
 import type { MapBody } from '../apps/game/src/space/model';
-import { GALAXY_KINDS, ORIENTATIONS, PLANET_BANDS, PRIMARY_KINDS, projectMap, projectScenery } from '../apps/game/src/space/project';
-import { HOME, KAUM, OSUM, SOL, galaxyNav, systemNav } from '../apps/game/test/space-support';
+import { GALAXY_KINDS, ORIENTATIONS, PLANET_BANDS, PRIMARY_KINDS, mapItems, projectMap, projectScenery } from '../apps/game/src/space/project';
+import { turnGalaxy } from '../apps/game/src/space/passes-universe';
+import { HOME, KAUM, MAGNETAR, OSUM, PULSAR, SOL, WORMHOLE_GALAXY, galaxyNav, passView, systemNav } from '../apps/game/test/space-support';
 import { GAL_KIND } from '../packages/domain/descriptors/src/apphooks.verbatim.js';
 import galaxyCells from '../fixtures/current/galaxies.json' with { type: 'json' };
 
@@ -91,10 +92,42 @@ describe('space element coverage', () => {
     for (const kind of Object.values(PRIMARY_KINDS)) possible.add(`primary/${kind}`);
     for (const kind of ['h2', 'neb', 'mol', 'plan', 'rem', 'rogue', 'fbd']) possible.add(`deco/${kind}`);
     for (const remnant of ['shell', 'ns', 'bh']) possible.add(`supernova/${remnant}`);
+    // What moves: three further frames of each thing that turns, and the dimmed form of each thing that pulses.
+    for (const name of ['wormhole', 'supernova/ns', 'primary/ns', 'primary/mag']) for (const frame of ['t1', 't2', 't3']) possible.add(`${name}/${frame}`);
+    for (const name of ['star/giant', 'quasar', 'protostar']) possible.add(`${name}/dim`);
     expect([...ELEMENT_NAMES].sort()).toEqual([...possible].sort());
     expect(new Set(ELEMENT_NAMES).size).toBe(ELEMENT_NAMES.length);
     expect([...sheet.elements.keys()].sort()).toEqual([...ELEMENT_NAMES].sort());
     expect(met.every((name) => possible.has(name))).toBe(true);
+  });
+
+  it('coverage walk in time: with the passes on, every frame and dimmed form the walked maps ask for over five seconds has a name and a stand-in', () => {
+    const view = { w: 9000, h: 9000 };
+    const moving: SpaceItem[] = [];
+    for (const time of [0, 0.3, 0.7, 1.1, 1.6, 2.2, 3.1, 4.5]) {
+      for (const nav of [NAV_HOME, galaxyNav(HOME), galaxyNav(WORMHOLE_GALAXY), ...[SOL, KAUM, OSUM, PULSAR, MAGNETAR].map((star) => systemNav(star))]) {
+        moving.push(...mapItems({ nav, cam: NEAR, view, dpr: 1, time, epoch: 0, ...OPTIONS, passes: { effects: true, motion: true } }, GRID, 1));
+      }
+    }
+    // No blazar lies in the cells about home: the first galaxy of the walk is made one, and walked through its pulse.
+    const blazar = { ...universeGalaxies(HOME.x, HOME.y, 0)[0]!, quasar: true, blazar: true };
+    expect(blazar.home).toBe(true);
+    for (const time of [0, 0.1, 0.2, 0.3, 0.4, 0.5]) {
+      moving.push(...turnGalaxy(blazar, [{ kind: 'element', name: 'quasar', x: 0, y: 0, ramp: 0xffffff }], passView(NAV_HOME, NEAR, { time })));
+    }
+    const names = namesOf(moving);
+    const unnamed = names.filter((name) => !ELEMENT_NAMES.includes(name));
+    if (unnamed.length > 0) console.log(`elements with no name in ELEMENT_NAMES: ${unnamed.join(', ')}`);
+    expect(unnamed).toEqual([]);
+    const missing = gapsOf(moving, sheet);
+    if (missing.length > 0) console.log(`elements the placeholder sheet lacks: ${missing.join(', ')}`);
+    expect(missing).toEqual([]);
+    expect(names.filter((name) => /\/(t\d|dim)$/.test(name)).sort()).toEqual([
+      'primary/mag/t1', 'primary/mag/t2', 'primary/mag/t3', 'primary/ns/t1', 'primary/ns/t2', 'primary/ns/t3', 'protostar/dim', 'quasar/dim', 'star/giant/dim',
+      'supernova/ns/t1', 'supernova/ns/t2', 'supernova/ns/t3', 'wormhole/t1', 'wormhole/t2', 'wormhole/t3',
+    ]);
+    const lacking = { ...sheet, elements: new Map([...sheet.elements].filter(([name]) => name !== 'wormhole/t2' && name !== 'star/giant/dim')) };
+    expect(gapsOf(moving, lacking).sort()).toEqual(['star/giant/dim', 'wormhole/t2']);
   });
 
   it("the galaxy kinds are the game's own, sprite by sprite", () => {

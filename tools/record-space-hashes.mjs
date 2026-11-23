@@ -1,5 +1,8 @@
 // Records the golden hashes of the map pictures into fixtures/art/space-v1.json: the universe about home, the home
 // galaxy, the home galaxy about Sol and the Sol system, each at two screen sizes, painted with the placeholder sheet.
+// Then, into fixtures/art/space-v2.json, the same maps with the game's passes on: the web, veil, fog and edge of the
+// universe, a tidal bridge, the galaxy haze, the habitable zone, day and night, a cloud deck, a comet, the visitor,
+// and what moves, at the same two screen sizes.
 // Usage: node tools/record-space-hashes.mjs   (no arguments; reads and writes only inside this repository)
 // Re-record only on Dakk's word: the file is the promise that every device draws each map the same.
 // Deterministic: running it twice writes a byte-identical file.
@@ -27,8 +30,9 @@ registerHooks({
   },
 });
 
-const { NAV_HOME, enterGalaxy, enterSystem, reachRadiusOf, resolveCF1Galaxy, resolveCF1Star } = await import('@cf/scene');
-const { HOME_GAL_SEED, HOME_POS, SOL_POS, SOL_SEED } = await import('@cf/domain-worldconfig');
+const { NAV_HOME, enterGalaxy, enterSystem, reachRadiusOf, resolveCF1Galaxy, resolveCF1Star, systemScene } = await import('@cf/scene');
+const { HOME_GAL_SEED, HOME_POS, OBS_R, SOL_POS, SOL_SEED } = await import('@cf/domain-worldconfig');
+const { galaxyWormhole } = await import('@cf/domain-worldgen');
 const { hashBuffer } = await import('@cf/art-compose');
 const { parseInterfaceSheet } = await import('@cf/art-interface');
 const { testInterfaceSheetText } = await import('@cf/art-testparts');
@@ -57,18 +61,81 @@ const SCENES = [
 ];
 
 const sheet = parseInterfaceSheet(testInterfaceSheetText());
-const lines = [];
-for (const [label, place, camera, time, epoch] of SCENES) {
-  for (const { w, h, dpr } of VIEWS) {
-    const frame = { place, cam: camera(Math.min(w, h)), view: { w, h }, dpr, time, epoch, reach, charts: true };
-    const gaps = { glyphs: [], icons: [], elements: [] };
-    const picture = mapPicture({ ...frame, nav: NAVS[place] }, sheet, gaps);
-    lines.push('    ' + JSON.stringify({ label: `${label}, ${w} by ${h} at ${dpr}`, ...frame, w: picture.w, h: picture.h, scale: picture.scale, hash: hashBuffer(picture), gaps: gaps.elements }));
+
+/** Paints every scene at every view and writes the file. A scene is [label, place, camera for a shorter side, time,
+ *  epoch] and, for a map with the game's passes on, the settings they follow. */
+function record(file, navs, scenes) {
+  const lines = [];
+  for (const [label, place, camera, time, epoch, passes] of scenes) {
+    for (const { w, h, dpr } of VIEWS) {
+      const frame = { place, cam: camera(Math.min(w, h)), view: { w, h }, dpr, time, epoch, reach, charts: true, ...(passes === undefined ? {} : { passes }) };
+      const gaps = { glyphs: [], icons: [], elements: [] };
+      const picture = mapPicture({ ...frame, nav: navs[place] }, sheet, gaps);
+      lines.push('    ' + JSON.stringify({ label: `${label}, ${w} by ${h} at ${dpr}`, ...frame, w: picture.w, h: picture.h, scale: picture.scale, hash: hashBuffer(picture), gaps: gaps.elements }));
+    }
   }
+  const text = `{\n  "sheet": "art-testparts",\n  "entries": [\n${lines.join(',\n')}\n  ]\n}\n`;
+  const out = new URL(`../fixtures/art/${file}`, import.meta.url);
+  mkdirSync(fileURLToPath(new URL('./', out)), { recursive: true });
+  writeFileSync(out, text);
+  console.log(`recorded ${lines.length} map pictures in ${file}`);
 }
 
-const text = `{\n  "sheet": "art-testparts",\n  "entries": [\n${lines.join(',\n')}\n  ]\n}\n`;
-const out = new URL('../fixtures/art/space-v1.json', import.meta.url);
-mkdirSync(fileURLToPath(new URL('./', out)), { recursive: true });
-writeFileSync(out, text);
-console.log(`recorded ${lines.length} map pictures`);
+record('space-v1.json', NAVS, SCENES);
+
+// The maps with the game's passes on.
+const system = (seed, x, y) => {
+  const entered = enterSystem(homeGalaxy.state, resolveCF1Star(galaxy.galaxy, { seed, x, y }).star);
+  if (!entered.ok) throw new Error(`the system of star ${seed} was not entered`);
+  return entered.state;
+};
+/** A galaxy of the galaxies fixture's cells that holds a wormhole; a star of the home galaxy with an interstellar
+ *  visitor, a pulsar and a magnetar: the places the tests name WORMHOLE_GALAXY, VISITED, PULSAR and MAGNETAR. */
+const WORMHOLE_GALAXY = { seed: 1490277435, x: -786.4846107451718, y: -2720.221214309881 };
+const wormhole = galaxyWormhole(WORMHOLE_GALAXY.seed);
+const NAVS_2 = {
+  ...NAVS,
+  'wormhole-galaxy': enterGalaxy(NAV_HOME, resolveCF1Galaxy(WORMHOLE_GALAXY).galaxy).state,
+  visited: system(1106282818, -897.8339749993756, -258.4198963288218),
+  pulsar: system(729068929, -736.7237938377075, 61.177555879577994),
+  magnetar: system(2563295997, -718.0755883874372, -258.9377444498241),
+};
+/** Where a planet of Sol stands at the start of time. */
+const planetAt = (pick) => {
+  const planet = systemScene(SOL_SEED).planets.find(pick);
+  return { x: Math.cos(planet.orb * 0.13) * planet.orb, y: Math.sin(planet.orb * 0.13) * planet.orb };
+};
+const earth = planetAt((planet) => planet.seed === 133);
+const giant = planetAt((planet) => planet.type === 'gas');
+/** A galaxy near home that is colliding with a companion: the view is midway between the two. */
+const COLLISION = { x: -2184, y: 1739 };
+const ON = { effects: true, motion: true };
+const STILL = { effects: true, motion: false };
+const atHome = (min) => ({ x: HOME_POS.x, y: HOME_POS.y, z: 0.4 * min / reach });
+const galaxyEntry = (min) => descentCamera('galaxy', min).to;
+const systemEntry = (min) => descentCamera('system', min).to;
+
+const SCENES_2 = [
+  ['the home universe: web, veil and fog', 'universe', atHome, 0, 0, ON],
+  ['the home universe after 100 seconds: the fog has drifted', 'universe', atHome, 100, 0, ON],
+  ['the home universe with motion reduced: fewer fog banks, standing still', 'universe', atHome, 100, 0, STILL],
+  ['the home universe with effects off: no fog', 'universe', atHome, 0, 0, { effects: false, motion: true }],
+  ['the universe from afar: the web and the edge of the observable universe', 'universe', (min) => ({ x: 0, y: 0, z: 0.45 * min / OBS_R }), 0, 0, ON],
+  ['the universe from farther than the charter shows: the edge alone', 'universe', (min) => ({ x: 0, y: 0, z: 0.012 * min / 390 }), 0, 0, ON],
+  ['the edge of the observable universe up close', 'universe', (min) => ({ x: 0, y: -OBS_R, z: min / 1500 }), 0, 0, ON],
+  ['a colliding pair and its tidal bridge', 'universe', (min) => ({ ...COLLISION, z: min / 220 }), 0, 0, ON],
+  ['the home galaxy: haze', 'home-galaxy', galaxyEntry, 0, 0, ON],
+  ['the home galaxy after 3.3 seconds: stars twinkle, beams turn, protostars pulse', 'home-galaxy', galaxyEntry, 3.3, 0, ON],
+  ['the home galaxy after 3.3 seconds with motion reduced', 'home-galaxy', galaxyEntry, 3.3, 0, STILL],
+  ['the home galaxy about Sol: grain', 'home-galaxy', (min) => ({ x: SOL_POS.x, y: SOL_POS.y, z: min / 200 }), 0, 0, ON],
+  ['the core of the home galaxy', 'home-galaxy', (min) => ({ x: 60, y: 30, z: min / 400 }), 0, 0, ON],
+  ['a wormhole, turned', 'wormhole-galaxy', (min) => ({ x: wormhole.x, y: wormhole.y, z: min / 300 }), 1.5, 0, ON],
+  ['the Sol system: habitable zone, comet, day and night', 'sol', systemEntry, 0, 0, ON],
+  ['the Sol system after ten seconds: the comet has moved', 'sol', systemEntry, 10, 0, ON],
+  ['Earth up close: cloud deck', 'sol', () => ({ ...earth, z: 6 }), 0, 0, ON],
+  ['a gas giant of Sol up close: day and night', 'sol', () => ({ ...giant, z: 5 }), 0, 0, ON],
+  ['a system with an interstellar visitor', 'visited', (min) => ({ x: 0, y: 0, z: min / 300 }), 5, 0, ON],
+  ['a pulsar system, its beams turned', 'pulsar', systemEntry, 0.6, 0, ON],
+  ['a magnetar system, its beams turned', 'magnetar', systemEntry, 0.9, 0, ON],
+];
+record('space-v2.json', NAVS_2, SCENES_2);
