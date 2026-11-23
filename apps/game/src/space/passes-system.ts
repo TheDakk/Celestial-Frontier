@@ -30,14 +30,13 @@ const TRAIL = 0xd6aa8c;
 const VISITOR_LIT = 0xd9bc9a;
 const VISITOR_MIN = 4;
 const WAKE_MIN = 6;
-/** A planet in whole pixels. The night is a disc this many radii from the planet's middle, on the side away from the
- *  star; the half shade along its edge is this share of the planet's radius wide, half each side of the planet's
- *  middle. What each keeps of a colour's brightness, in sixteenths; the light adds to it. */
-const NIGHT_REACH = 3;
-const TERMINATOR = 0.2;
-const HALF_SHADE = 10;
-const NIGHT_SHADE = 3;
-const NIGHT_SKY = 0x0a1230;
+/** A planet in whole pixels. The edge of the night is an arc from pole to pole of the globe that bows away from the
+ *  star, as the edge of a shadow lies on a ball. It falls in steps: each begins on the arc that crosses the line from
+ *  the star this share of the radius past the globe's middle, and keeps this many sixteenths of a pixel's own colour,
+ *  the last the full night. The rest is a little of the night sky, little enough that a surface keeps its own hue:
+ *  sand goes to a dark sand, not to slate. */
+const NIGHT_STEPS = [[0.28, 10], [0.42, 5], [0.68, 3]] as const;
+const NIGHT_SKY = 0x030610;
 const LIGHT_SHADE = 19;
 
 interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: number }
@@ -165,13 +164,16 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
     const clip = { x, y, r };
     const away = (k: number): { x: number; y: number } => ({ x: Math.round(x - ux * r * k), y: Math.round(y - uy * r * k) });
     if (v.solid === true) {
-      // Whole pixels, as pixel art has it: the night is a wide disc from the far side whose edge crosses the globe just
-      // past its middle, and along that edge runs a half shade a tenth of the globe wide.
-      const night = Math.round(r * NIGHT_REACH - r * TERMINATOR / 2);
-      dress.push(
-        { kind: 'shade', ...away(NIGHT_REACH), r: Math.round(r * NIGHT_REACH + r * TERMINATOR / 2), inner: night, share: HALF_SHADE, toward: NIGHT_SKY, clip },
-        { kind: 'shade', ...away(NIGHT_REACH), r: night, share: NIGHT_SHADE, toward: NIGHT_SKY, clip },
-      );
+      // Whole pixels, as pixel art has it. The arc through both poles that crosses the line from the star at `part` of
+      // the radius is on the circle about the point (1 - part * part) / (2 * part) radii toward the star; a step of
+      // the night is the globe outside that circle and inside the next one.
+      const day = NIGHT_STEPS.map(([part]) => {
+        const toward = (1 - part * part) / (2 * part);
+        return { ...away(-toward), r: Math.round(r * Math.sqrt(1 + toward * toward)) };
+      });
+      NIGHT_STEPS.forEach(([, share], i) => {
+        dress.push({ kind: 'shade', ...(day[i + 1] ?? clip), share, toward: NIGHT_SKY, clip, out: day[i]! });
+      });
       // The star's light on a planet banded by code: one lighter step about the point that faces the star.
       if (disc.element === undefined) dress.push({ kind: 'shade', ...away(-0.5), r: Math.round(r * 0.45), share: LIGHT_SHADE, clip });
       return [...items.slice(0, discAt + 1), ...dress, ...items.slice(discAt + 1)];

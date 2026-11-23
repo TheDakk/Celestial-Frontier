@@ -124,10 +124,10 @@ describe('a planet in solid pixels', () => {
   expect(cos).toBeGreaterThan(0.5);
 
   for (const [name, sheet] of [['banded by code', placeholder], ['drawn from the sheet', withGas]] as const) {
-    it(`${name}: asked for, its night and its light are whole pixels: each colour of the globe takes at most three (lit, half shade, night) and no dot stands alone`, () => {
+    it(`${name}: asked for, its night and its light are whole pixels: each colour of the globe takes at most four (lit, two half shades, night) and no dot stands alone`, () => {
       const solid = taken(sheet, { ...near, solid: true });
       expect(solid.size).toBeGreaterThan(1);
-      for (const [from, to] of solid) expect([...to.keys()].length, `colour ${from}`).toBeLessThanOrEqual(name === 'banded by code' ? 4 : 3);
+      for (const [from, to] of solid) expect([...to.keys()].length, `colour ${from}`).toBeLessThanOrEqual(name === 'banded by code' ? 5 : 4);
       expect(dots(sheet, { ...near, solid: true })).toBe(0);
       // Some of it is in the night and some is not.
       const changed = [...solid].reduce((n, [from, to]) => n + [...to].filter(([value]) => value !== from).reduce((sum, [, count]) => sum + count, 0), 0);
@@ -140,24 +140,77 @@ describe('a planet in solid pixels', () => {
     });
   }
 
-  it('asked for, a planet takes no veil at all: a half shade along the terminator and the night beyond it, on the side away from the star', () => {
-    for (const sheet of [placeholder, withGas]) {
-      const items = mapItems(frame({ ...near, solid: true }), GRID, 2, sheet);
-      const at = items.findIndex((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.r > 20);
-      const disc = items[at] as Extract<SpaceItem, { kind: 'disc' }>;
-      const clip = { x: disc.x, y: disc.y, r: disc.r };
-      expect(items.filter((item) => item.kind === 'veil' && item.clip !== undefined)).toEqual([]);
-      const shades = kindOf(items, 'shade').filter((item) => item.clip?.x === disc.x && item.clip.y === disc.y);
-      const [band, night] = shades;
-      expect(band).toMatchObject({ clip, inner: night!.r });
-      expect(night).toMatchObject({ clip, x: band!.x, y: band!.y });
-      expect(night!.share).toBeLessThan(band!.share);
-      expect(band!.share).toBeLessThan(16);
-      // The Sun is to the left of Jupiter here: the night is centred to its right, and the band is about a tenth of the disc wide.
-      expect(night!.x).toBeGreaterThan(disc.x + disc.r);
-      expect((band!.r - night!.r) / (2 * disc.r + 1)).toBeCloseTo(0.1, 1);
-      // A planet banded by code has the star's light as one more whole-pixel step on the side facing it; a drawn one none.
-      expect(shades.slice(2).map((light) => [light.share > 16, light.x < disc.x])).toEqual(sheet === placeholder ? [[true, true]] : []);
+  /** The planet's disc in the frame, and how far past the globe's middle, going straight away from the star, the night
+   *  first changes a pixel: asked on the line that runs `across` pixels to the side of the line from the star. */
+  function nightEdge(sheet: typeof placeholder, over: Partial<MapFrame>) {
+    const items = mapItems(frame(over), GRID, 2, sheet);
+    const disc = items.find((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.r > 20) as Extract<SpaceItem, { kind: 'disc' }>;
+    const { lit, dressed } = pictures(sheet, over);
+    const edge = (across: number): number => {
+      for (let t = -disc.r; t <= disc.r; t++) {
+        const at = (disc.y + Math.round(sin * t + cos * across)) * lit.w + disc.x + Math.round(cos * t - sin * across);
+        if (lit.pixels[at] !== 0 && dressed.pixels[at] !== lit.pixels[at]) return t;
+      }
+      return disc.r + 1;
+    };
+    return { disc, edge, lit, dressed };
+  }
+
+  it('asked for, a planet takes no veil at all, and the edge of its night is an arc from pole to pole that bows away from the star', () => {
+    const items = mapItems(frame({ ...near, solid: true }), GRID, 2, withGas);
+    expect(items.filter((item) => item.kind === 'veil' && item.clip !== undefined)).toEqual([]);
+    // The Sun is to the left of Jupiter here: the night is on the right.
+    const { disc, edge } = nightEdge(withGas, { ...near, solid: true });
+    const r = disc.r;
+    const across = [-0.92, -0.6, 0, 0.6, 0.92].map((part) => edge(Math.round(part * r)));
+    // Past the middle on the line to the star: the day is the larger part.
+    expect(across[2]).toBeGreaterThan(r * 0.15);
+    expect(across[2]).toBeLessThan(r * 0.45);
+    // Toward each pole the edge comes back to the globe's middle line, and reaches the limb there, not short of it.
+    expect(across[1]).toBeLessThan(across[2]!);
+    expect(across[3]).toBeLessThan(across[2]!);
+    expect(across[0]).toBeLessThan(across[1]!);
+    expect(across[4]).toBeLessThan(across[3]!);
+    for (const at of [across[0]!, across[4]!]) expect(Math.abs(at)).toBeLessThan(r * 0.25);
+    // Day and night both reach each pole: nine tenths of the way out to one there is lit globe and dark globe.
+    for (const end of [-0.9, 0.9]) {
+      const side = Math.round(end * r);
+      const half = Math.floor(Math.sqrt(r * r - side * side));
+      expect(edge(side), `${side} to the side`).toBeGreaterThan(-half + 2);
+      expect(edge(side), `${side} to the side`).toBeLessThan(half - 2);
     }
+  });
+
+  it('the night falls in steps, each darker than the last toward the far limb, and the half shades are narrow beside the night', () => {
+    // A planet banded by code: along a row inside one flat band every change of colour is a step of the night.
+    const { disc, lit, dressed } = nightEdge(placeholder, { ...near, solid: true });
+    const colours = placeholder.palette.colours;
+    const luma = (value: number): number => { const c = colours[value]!; return (c >> 16) * 299 + ((c >> 8) & 255) * 587 + (c & 255) * 114; };
+    const y = disc.y + Math.round(disc.r * 0.07);
+    const row = Array.from({ length: disc.r }, (_, i) => ({ lit: lit.pixels[y * lit.w + disc.x + i]!, now: dressed.pixels[y * lit.w + disc.x + i]! }));
+    expect(new Set(row.map((pixel) => pixel.lit)).size).toBe(1);
+    const lumas = row.map((pixel) => luma(pixel.now));
+    for (let i = 1; i < lumas.length; i++) expect(lumas[i], `pixel ${i}`).toBeLessThanOrEqual(lumas[i - 1]!);
+    expect(new Set(lumas).size).toBeGreaterThanOrEqual(3);
+    // From the first step to the full night is under half of the radius, and the full night is a quarter of it or more.
+    const first = lumas.findIndex((value) => value < lumas[0]!);
+    const last = lumas.indexOf(Math.min(...lumas));
+    expect(last - first).toBeLessThan(disc.r / 2);
+    expect(disc.r - last).toBeGreaterThan(disc.r / 4);
+    // A planet banded by code has the star's light as one more whole-pixel step on the side facing it; a drawn one none.
+    const lights = (sheet: typeof placeholder): number => kindOf(mapItems(frame({ ...near, solid: true }), GRID, 2, sheet), 'shade').filter((item) => item.share > 16 && item.clip?.x === disc.x && item.clip.y === disc.y).length;
+    expect([lights(placeholder), lights(withGas)]).toEqual([1, 0]);
+  });
+
+  it('a surface keeps its own hue in the night: sand goes to a dark sand, not to the slate that is as dark', () => {
+    // A gas planet drawn all in sand, in a palette that also holds a dark sand and a slate of the same brightness.
+    const sandy = parseInterfaceSheet([testInterfaceSheetText().replace('ramp ink 1 2 3 4', 'colour 9 e3c98b\ncolour 10 3a3020\ncolour 11 30333f\nramp sand 9 9 9 9\nramp ink 1 2 3 4'),
+      'element planet/gas anchor=16,16 ramps=sand', ...round(32)].join('\n'));
+    const { disc, lit, dressed } = nightEdge(sandy, { ...near, solid: true });
+    const farLimb = disc.y * lit.w + disc.x + disc.r - 3;
+    expect([lit.pixels[farLimb], dressed.pixels[farLimb]]).toEqual([9, 10]);
+    // The slate is no farther from black than the dark sand is: only its hue sets them apart.
+    const luma = (c: number): number => (c >> 16) * 299 + ((c >> 8) & 255) * 587 + (c & 255) * 114;
+    expect(Math.abs(luma(0x30333f) - luma(0x3a3020))).toBeLessThan(luma(0x3a3020) / 10);
   });
 });
