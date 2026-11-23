@@ -57,6 +57,8 @@ export interface SaveRuntimeDiagnostics {
   readonly activePlayMs: number;
   readonly accruing: boolean;
   readonly sessionSeed: number;
+  /** False while the seed is one this page minted and no checkpoint has yet stored it. */
+  readonly seedStored: boolean;
   readonly sessionOrdinal: number;
   readonly sessionDraws: Readonly<Record<string, number>>;
   readonly commits: number;
@@ -164,6 +166,7 @@ export function createSaveRuntime(input: SaveRuntimeInput): SaveRuntime {
   let staleWrites = 0;
   let leaseLosses = 0;
   let staleBlocked = false;
+  let seedStored = input.restoredAuthority !== null;
   let released = false;
   let serialized: Promise<void> = Promise.resolve();
 
@@ -283,6 +286,7 @@ export function createSaveRuntime(input: SaveRuntimeInput): SaveRuntime {
       revision = outcome.revision;
       extensions = outcome.saved.extensions;
       sessionRng = copySessionRng(outcome.authority.sessionRng);
+      seedStored = true;
       publishCheckpointParent(outcome.saved.canonicalState);
       commits++;
     } else if (outcome.kind === 'stale') {
@@ -395,6 +399,7 @@ export function createSaveRuntime(input: SaveRuntimeInput): SaveRuntime {
         activePlayMs: snapshot.activePlayMs,
         accruing: snapshot.eligible,
         sessionSeed: sessionRng.seed,
+        seedStored,
         sessionOrdinal: sessionRng.ordinal,
         sessionDraws: Object.freeze({ ...sessionRng.draws }),
         commits,

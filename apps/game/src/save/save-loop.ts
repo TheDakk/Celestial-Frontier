@@ -4,7 +4,9 @@
    a candidate until the checkpoint that carries it is stored; drawing reads only the published one. A commit
    that is refused, or a lease or revision this page can no longer prove, makes the page read-only until it
    reloads. Storage that fails the lease before it has once answered is a hold instead: a reload would only
-   meet the same failure. Under a write hold nothing here touches storage, the lease row included. */
+   meet the same failure. A session seed this page minted is stored by the first heartbeat that holds the
+   lease, before anything can draw from it; if storage refuses it, that too is a hold. Under a write hold
+   nothing here touches storage, the lease row included. */
 import { createRevisionedRepository, type SaveStateV2, type StorageBackend, type V5ExtensionWrite } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
@@ -148,7 +150,10 @@ export function createSaveLoop(deps: {
         return true;
       }
       if (stage !== null) epoch.reject(stage);
-      requireReload(`save attempt rejected (${message(error)})`);
+      // A page whose minted seed was never stored has stored nothing yet: a reload would mint another and fail
+      // the same way.
+      if (runtime.diagnostics().seedStored) requireReload(`save attempt rejected (${message(error)})`);
+      else holdTransient(`session seed not stored (${message(error)})`);
       return false;
     }
   };
@@ -216,7 +221,8 @@ export function createSaveLoop(deps: {
       if (!await prove(() => runtime.heartbeat())) return;
       runtime.setAnswerable(true);
       if (active !== null) return;
-      if (clocks.monotonicNow() - lastCheckpointAt >= CHECKPOINT_MS) await request('lifecycle');
+      if (!runtime.diagnostics().seedStored) await request('lifecycle');
+      else if (clocks.monotonicNow() - lastCheckpointAt >= CHECKPOINT_MS) await request('lifecycle');
       else if (epoch.autoCheckpointDue(runtime.activePlayMs())) await request('epoch-edge');
     },
     hide() {

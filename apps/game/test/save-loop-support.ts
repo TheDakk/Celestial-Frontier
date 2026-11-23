@@ -6,7 +6,8 @@ import { NOW, SOL_ROUTE, controlledClock } from './save-support';
 
 export const boot = (backend: StorageBackend) => bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });
 
-/** bootSave, createSaveRuntime and createSaveLoop on one backend, as the page wires them, after the first heartbeat. */
+/** bootSave, createSaveRuntime and createSaveLoop on one backend, as the page wires them, after the first heartbeat.
+ *  On a new expedition that heartbeat stores the session seed, at revision 2; `committed` lists what is stored after it. */
 export async function bootedHarness(backend: StorageBackend = createMemoryBackend(), token = 'document-a', time = controlledClock(1_000)) {
   const booted = await boot(backend);
   const gate = createWriteGate(booted.hold);
@@ -31,6 +32,7 @@ export async function bootedHarness(backend: StorageBackend = createMemoryBacken
     live: () => live, route: () => route,
   });
   await loop.beat();
+  committed.length = 0;
   return { backend, booted, gate, runtime, loop, bus, live, time, committed, reloads, held, setRoute: (next: Record<string, unknown> | null) => { route = next; } };
 }
 
