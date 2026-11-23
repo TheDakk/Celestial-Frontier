@@ -47,6 +47,9 @@ export interface SettingsPorts {
 const SAVE_WORDS: Readonly<Record<StatusFacts['save'], string>> = {
   ok: 'Stored on this device', held: 'Protected: nothing is written', 'reload-required': 'Reload needed',
 };
+/** How many characters of a build's identity Status shows: enough to tell two builds of one version apart. */
+const BUILD_ID_SHOWN = 8;
+const buildWords = (build: string, id: string | null): string => (id === null ? build : `${build} · ${id.slice(0, BUILD_ID_SHOWN)}`);
 const PACK_WORDS = { ready: 'ready', standin: 'stand-in', refused: 'refused' } as const;
 const FOCUS_KEYS = ['data-set', 'data-value'] as const;
 
@@ -156,7 +159,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
             el('span', { class: 'row-value', 'data-l10n-skip': true }, pack.name), el('span', { class: 'row-value' }, PACK_WORDS[pack.state])));
         statusHost.replaceChildren(
           el('h3', {}, 'Status'),
-          fact('Build', status.build, true),
+          fact('Build', buildWords(status.build, ports.update?.buildId() ?? null), true),
           fact('Save', SAVE_WORDS[status.save], false),
           fact('Save revision', String(status.revision), true),
           ...packs,
@@ -173,6 +176,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       const stops = [
         ...(['save:committed', 'save:reload-required', 'pack:status'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
         ...(['protect:persist', 'protect:backup'] as const).map((type) => ctx.bus.on(type, redraw)),
+        ...(ports.update === null ? [] : [ports.update.onChange(() => { if (live) drawStatus(); })]),
       ];
       return () => {
         live = false;

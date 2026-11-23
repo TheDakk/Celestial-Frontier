@@ -44,6 +44,7 @@ async function backendFor(save: string | null): Promise<StorageBackend> {
 /** The offline and update control at its widest: its longest words and every control it can offer. */
 const WIDEST_UPDATE: UpdateControl = {
   view: () => ({ state: 'error', message: UPDATE_WORDS.blocked, busy: false, check: true, activate: true, reload: true, rollback: true }),
+  buildId: () => '0123456789abcdef'.repeat(4),
   onChange: () => () => undefined,
   ready: Promise.resolve(),
   check: () => Promise.resolve(),

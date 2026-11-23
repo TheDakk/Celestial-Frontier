@@ -190,6 +190,35 @@ describe('the offline and update control', () => {
     expect(reloads).toEqual([]);
   });
 
+  it('names the build the page runs once its worker has said it, and keeps that name while a later build is activated', async () => {
+    const container = new FakeContainer();
+    const a = new FakeWorker();
+    container.registration.active = a;
+    container.controller = a;
+    const control = createUpdateControl({ container: container as unknown as ServiceWorkerContainer, workerUrl: 'w', scope: 's', reload() {} });
+    await control.ready;
+    expect(control.buildId()).toBeNull();
+    // A worker the page did not ask names nothing.
+    container.say(new FakeWorker(), status(B, 'active', B, null));
+    expect(control.buildId()).toBeNull();
+    let heard = 0;
+    control.onChange(() => { heard += 1; });
+    container.say(a, status(A, 'active', A, null));
+    expect([control.buildId(), heard]).toEqual([A, 1]);
+    // Build B is found, activated and offered as a reload: this page still runs A until it reloads.
+    const b = new FakeWorker();
+    container.registration.waiting = b;
+    container.say(b, status(B, 'waiting', A, null));
+    control.activate();
+    activated(container, b);
+    expect(control.view().state).toBe('reload');
+    expect(control.buildId()).toBe(A);
+    // Where there is no offline shell there is no name.
+    const none = createUpdateControl({ container: undefined, workerUrl: 'w', scope: 's', reload() {} });
+    await none.ready;
+    expect(none.buildId()).toBeNull();
+  });
+
   it('says so where the browser has no offline support, or the worker cannot be registered', async () => {
     const none = createUpdateControl({ container: undefined, workerUrl: 'w', scope: 's', reload() {} });
     await none.ready;
@@ -277,6 +306,27 @@ describe('the update control in Settings', () => {
     const offered = (): string[] => [...page.panel().querySelectorAll<HTMLElement>('.update-actions button')].map((button) => button.dataset['set']!);
     return { page, container, b, words, offered };
   }
+
+  it('Status names the build with the first eight characters of its identity, from the moment the worker says it', async () => {
+    const container = new FakeContainer();
+    const a = new FakeWorker();
+    container.registration.active = a;
+    container.controller = a;
+    let control!: UpdateControl;
+    const page = await bootPage({ update: (reload) => (control = createUpdateControl({ container: container as unknown as ServiceWorkerContainer, workerUrl: 'w', scope: 's', reload })) });
+    await control.ready;
+    page.openSettings();
+    const build = (): string => [...page.panel().querySelectorAll('[data-set="status"] .row')].find((row) => row.querySelector('.row-label')!.textContent === 'Build')!.querySelector('.row-value')!.textContent!;
+    expect(build()).toBe('test-build');
+    container.say(a, status('0123456789abcdef'.repeat(4), 'active', '0123456789abcdef'.repeat(4), null));
+    expect(build()).toBe('test-build · 01234567');
+    // Closed and opened again, it is still there; a page with no offline shell shows the version alone.
+    page.control('sound').click();
+    expect(build()).toBe('test-build · 01234567');
+    const plain = await bootPage();
+    plain.openSettings();
+    expect(plain.panel().querySelector('[data-set="status"]')!.textContent).toContain('Buildtest-buildSave');
+  });
 
   it('the update control shows a new build is ready, and reloads once after a durable save', async () => {
     const { page, container, b, words, offered } = await pageWithUpdate();

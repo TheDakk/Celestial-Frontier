@@ -51,6 +51,10 @@ export interface UpdateView {
 
 export interface UpdateControl {
   view(): UpdateView;
+  /** The identity of the build this page runs: the build that was active when the page's worker first answered it.
+   *  Null until then, and where there is no worker. A build activated later does not change it: the page keeps its
+   *  own build until it reloads. */
+  buildId(): string | null;
   /** Calls `listener` after each change of the view; the returned function stops it. */
   onChange(listener: () => void): () => void;
   /** Resolves when the worker is registered, or could not be. */
@@ -110,6 +114,7 @@ export function createUpdateControl(options: UpdateControlOptions): UpdateContro
   /** The words of a reload already offered: they come back after any other news. */
   let reloadWords: string | null = null;
   let observed: { worker: ServiceWorker; listener: () => void } | null = null;
+  let pageBuildId: string | null = null;
 
   const changed = (): void => { for (const listener of [...listeners]) listener(); };
   const show = (message: string, state: UpdateView['state'], more: Partial<UpdateView> = {}): void => {
@@ -160,6 +165,7 @@ export function createUpdateControl(options: UpdateControlOptions): UpdateContro
     const expected = asked !== null && source === asked.worker && status.workerBuildId === asked.buildId && status.activeBuildId === asked.buildId;
     if ((active === null || source !== active) && !expected) return;
     if (asked !== null && !expected) return;
+    pageBuildId ??= status.activeBuildId;
     waitingBuildId = null;
     waitingWorker = null;
     rollbackWorker = null;
@@ -239,6 +245,7 @@ export function createUpdateControl(options: UpdateControlOptions): UpdateContro
 
   return {
     view: () => ({ ...view }),
+    buildId: () => pageBuildId,
     onChange(listener) {
       listeners.add(listener);
       return () => { listeners.delete(listener); };
