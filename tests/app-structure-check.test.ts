@@ -58,7 +58,8 @@ describe('app structure check: module bounds', () => {
     expect(run(SAVE, text)).toEqual([]);
     expect(run('apps/game/src/save/inner/deep.ts', "import { a } from '../boot';\nimport { b } from '../../bus';")).toEqual([]);
   });
-  it('a file directly in src, other than main.ts, follows the same rule', () => {
+  it('a file directly in src, other than the two composition roots, follows the same rule', () => {
+    expect(run('apps/game/src/other-main.ts', "import { a } from './save';")).toHaveLength(1);
     expect(run('apps/game/src/events.ts', "import type { Route } from './nav/route';")).toHaveLength(1);
     expect(run('apps/game/src/events.ts', "import type { Bus } from './bus';\nimport type { Clocks } from './platform/clock';")).toEqual([]);
   });
@@ -67,7 +68,7 @@ describe('app structure check: module bounds', () => {
     expect(run('apps/game/src/ui/panel.ts', "import { a } from '../save';")).toHaveLength(1);
     expect(run('apps/game/src/ui/panel.ts', "import { a } from '../platform/clock';")).toEqual([]);
   });
-  it.each(['apps/game/src/main.ts', 'apps/game/src/screens/map.ts', 'apps/game/src/screens/cards/body.ts'])(
+  it.each(['apps/game/src/main.ts', 'apps/game/src/layout-main.ts', 'apps/game/src/screens/map.ts', 'apps/game/src/screens/cards/body.ts'])(
     '%s may import a system index but not a system\'s inner file',
     (path) => {
       const up = path.includes('/cards/') ? '../../' : path.includes('/screens/') ? '../' : './';
@@ -79,6 +80,7 @@ describe('app structure check: module bounds', () => {
   it('a system may not import screens, and a file named like main.ts inside a system gets no exemption', () => {
     expect(run(SAVE, "import { a } from '../screens';")).toHaveLength(1);
     expect(run('apps/game/src/save/main.ts', "import { a } from '../nav';")).toHaveLength(1);
+    expect(run('apps/game/src/save/layout-main.ts', "import { a } from '../nav';")).toHaveLength(1);
   });
   it('reads imports outside comments only, and reports each import once', () => {
     expect(run(SAVE, "// import { a } from '../nav/a';\n/* import '../nav/b'; */\nconst s = '../nav/c';")).toEqual([]);

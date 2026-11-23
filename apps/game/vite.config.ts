@@ -45,4 +45,8 @@ export function packs(places: PackPlaces = { manifestPath: MANIFEST_PATH, packsD
 
 // The workspace packages ship TypeScript source (their exports point at src/index.ts); Vite compiles them
 // in place, as vitest does, so no package has a build step of its own.
-export default defineConfig({ plugins: [packs()], build: { target: 'es2022' } });
+// The `layout` mode builds the page of the layout check (`npm run layout`) into its own folder, never the game's.
+export default defineConfig(({ mode }) => ({
+  plugins: [packs()],
+  build: mode === 'layout' ? { target: 'es2022', outDir: 'dist-layout', rollupOptions: { input: 'layout.html' } } : { target: 'es2022' },
+}));

@@ -12,6 +12,8 @@ const SCRIPT = /\.(?:ts|mts|mjs|js)$/;
 // the system's index.
 const SHARED_SYSTEMS = new Set(['platform', 'ui']);
 const SHARED_FILES = new Set(['bus', 'events']);
+// The composition roots: the game's page and the page of the layout check.
+const ROOTS = new Set(['main.ts', 'layout-main.ts']);
 const INDEX = /^index(?:\.(?:ts|mts|mjs|js))?$/;
 
 /** The number of lines in `text`; a final line ending starts no new line. */
@@ -26,7 +28,7 @@ const withoutExtension = (name) => name.replace(SCRIPT, '');
 function boundsProblems(path, text) {
   const from = path.slice(GAME_SRC.length).split('/');
   const own = from.length === 1 ? null : from[0];
-  const joins = own === 'screens' || (own === null && from[0] === 'main.ts');
+  const joins = own === 'screens' || (own === null && ROOTS.has(from[0]));
   const problems = new Set();
   for (const spec of importedSpecifiers(scanCode(text).kept)) {
     if (!spec.startsWith('./') && !spec.startsWith('../')) continue;
@@ -47,8 +49,8 @@ function boundsProblems(path, text) {
 
 /** One message per violation; empty when the tree is clean. No ts, mts, mjs, js, css or html file under apps/
  *  has more than LINE_LIMIT lines. A script under apps/game/src/ imports, of that folder, only its own system
- *  folder, bus, events, platform/ and ui/; main.ts and screens/ may also import any other system, by its
- *  index only. Imports that leave apps/game/src/, and packages, are not this check's concern. */
+ *  folder, bus, events, platform/ and ui/; main.ts, layout-main.ts and screens/ may also import any other system,
+ *  by its index only. Imports that leave apps/game/src/, and packages, are not this check's concern. */
 export function checkAppStructure(files) {
   const problems = [];
   for (const { path, text } of files) {

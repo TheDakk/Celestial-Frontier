@@ -1,0 +1,33 @@
+/* Faults planted on a screen so the layout check can be seen to catch each one. Never part of the game. */
+
+export const FAULTS = ['clipped', 'overlap', 'small', 'see-through', 'wide-caption'] as const;
+export type Fault = typeof FAULTS[number];
+/** The kind of problem each planted fault must be reported as. */
+export const FAULT_KINDS = Object.freeze({ clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption' } as const);
+
+/** Plants one fault in the app drawn in `host`: a label cut off by its box, two buttons sharing 10 pixels, a 30 pixel
+ *  button, a sheet the map shows through, or words of the map wider than the view. */
+export function plantFault(fault: Fault, host: HTMLElement): void {
+  const doc = host.ownerDocument;
+  const make = <K extends keyof HTMLElementTagNameMap>(tag: K, text: string, style: Partial<CSSStyleDeclaration>): HTMLElementTagNameMap[K] => {
+    const el = doc.createElement(tag);
+    el.textContent = text;
+    el.dataset.fault = fault;
+    Object.assign(el.style, style);
+    return el;
+  };
+  if (fault === 'wide-caption') {
+    const view = doc.defaultView!;
+    host.querySelector('.map-captions')!.append(Object.assign(make('canvas', '', { left: '-30px', top: '240px', width: `${view.innerWidth + 60}px`, height: '16px' }),
+      { width: 8, height: 2 }));
+    host.querySelector<HTMLElement>('.map-captions canvas[data-fault]')!.dataset.caption = 'a planted caption wider than the view';
+    return;
+  }
+  // A sheet in the middle of the view: solid, but for the fault that makes it see-through.
+  const sheet = make('div', '', { position: 'absolute', zIndex: '9', left: '24px', top: '160px', width: '260px', padding: '8px', background: fault === 'see-through' ? 'rgba(10,16,30,.84)' : '#0a101e' });
+  if (fault === 'clipped') sheet.append(make('div', 'A label too long for the box it was given', { width: '70px', whiteSpace: 'nowrap', overflow: 'hidden' }));
+  if (fault === 'overlap') sheet.append(make('button', 'First', {}), make('button', 'Second', { marginLeft: '-10px' }));
+  if (fault === 'small') sheet.append(make('button', 'x', { minWidth: '0', minHeight: '0', width: '30px', height: '30px', padding: '0' }));
+  if (fault === 'see-through') sheet.append(make('div', 'A sheet the map shows through', {}));
+  host.append(sheet);
+}

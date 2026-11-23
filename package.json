@@ -14,7 +14,8 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "gate": "node tools/gate.mjs"
+    "gate": "node tools/gate.mjs",
+    "layout": "node tools/layout-check.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",

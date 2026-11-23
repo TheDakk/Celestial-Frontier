@@ -8,3 +8,4 @@ export { SHIP_LIVERY_SEED, startShell, type Shell, type ShellEnv } from './shell
 export { mapScreen, type MapPorts } from './map';
 export { createSelectionCard, type CardAction, type SelectionCard } from './selection-card';
 export { createSearchBox, type SearchBox } from './search-box';
+export { browserShellEnv } from './browser-env';
