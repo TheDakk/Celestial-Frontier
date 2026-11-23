@@ -80,6 +80,32 @@ describe('the two stings', () => {
     expect([heard.starts, heard.buffers.length, heard.contexts]).toEqual([2, 1, 1]);
   });
 
+  it('until a gesture the browser counts has readied it, a sting makes no sound and starts no sound device', async () => {
+    const heard: Heard = { contexts: 0, buffers: [], starts: 0 };
+    const { sound, draws } = await shell({ sndOn: true, sfxVol: 0.8 }, heard);
+    sound.whoosh();
+    sound.ping();
+    sound.applyVolume();
+    expect([heard.contexts, heard.starts, draws()]).toEqual([0, 0, 0]);
+    sound.unlock();
+    expect([heard.contexts, heard.starts]).toEqual([1, 0]);
+    sound.whoosh();
+    sound.ping();
+    expect([heard.contexts, heard.starts]).toEqual([1, 2]);
+  });
+
+  it('a lifted pointer, a click and an ordinary key count as the player\'s gesture; a press, a wheel, Escape and a modifier alone do not', async () => {
+    const { countsAsGesture, GESTURE_EVENTS } = await import('../src/sound/index');
+    expect([...GESTURE_EVENTS]).toEqual(['pointerup', 'click', 'keydown']);
+    for (const event of [{ type: 'pointerup' }, { type: 'click' }, { type: 'keydown', key: 'Enter' }, { type: 'keydown', key: 'a' }, { type: 'keydown', key: 'ArrowLeft' }, { type: 'keydown', key: ' ' }]) {
+      expect(countsAsGesture(event), JSON.stringify(event)).toBe(true);
+    }
+    for (const event of [{ type: 'pointerdown' }, { type: 'wheel' }, { type: 'pointermove' }, { type: 'keyup', key: 'a' }, { type: 'keydown', key: 'Escape' },
+      { type: 'keydown', key: 'Shift' }, { type: 'keydown', key: 'Control' }, { type: 'keydown', key: 'Alt' }, { type: 'keydown', key: 'Meta' }, { type: 'keydown' }]) {
+      expect(countsAsGesture(event), JSON.stringify(event)).toBe(false);
+    }
+  });
+
   it('on a device with no sound, every call is quiet and nothing throws', async () => {
     Reflect.deleteProperty(globalThis, 'AudioContext');
     Reflect.deleteProperty(globalThis, 'webkitAudioContext');

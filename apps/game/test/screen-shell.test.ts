@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
 import { HEARTBEAT_MS, REGISTRY, bootSave } from '../src/save/index';
 import { NOTICE_WORDS, heldNoticeFor } from '../src/screens';
@@ -154,6 +154,20 @@ describe('the booted page', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     expect(page.panels.openId()).toBeNull();
     expect(document.activeElement).toBe(document.querySelector('.dock [data-screen="settings"]'));
+  });
+
+  it('sound is readied by the first gesture the browser counts, not by a press, a wheel or Escape', async () => {
+    const page = await bootPage();
+    const unlock = vi.spyOn(page.sound, 'unlock').mockImplementation(() => undefined);
+    const stage = document.querySelector('.stage')!;
+    for (const type of ['pointerdown', 'wheel', 'pointermove']) stage.dispatchEvent(new Event(type, { bubbles: true }));
+    for (const key of ['Escape', 'Shift']) stage.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+    expect(unlock).not.toHaveBeenCalled();
+    stage.dispatchEvent(new Event('pointerup', { bubbles: true }));
+    expect(unlock).toHaveBeenCalledTimes(1);
+    stage.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    stage.dispatchEvent(new Event('click', { bubbles: true }));
+    expect(unlock).toHaveBeenCalledTimes(3);
   });
 
   it('the page carries its title as a heading, its size class and its input mode', async () => {

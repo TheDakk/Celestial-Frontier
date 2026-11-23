@@ -14,7 +14,7 @@ import {
   HEARTBEAT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
   replaceExpedition, resetExpedition, retryHeldRead, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
 } from '../save';
-import { createShellSound, readAudioAccessibilityPrefs, writeAudioAccessibilityPrefs, type ShellSound } from '../sound';
+import { GESTURE_EVENTS, countsAsGesture, createShellSound, readAudioAccessibilityPrefs, writeAudioAccessibilityPrefs, type ShellSound } from '../sound';
 import {
   DISPLAY_HEADINGS, TooltipOwner, applyDisplayScale, applyMotion, applyTextPrefs, applyTokens, createPanelManager,
   createToast, displayText, interfaceGaps, localeFromSearch, motionReduced, sheetState, textSizeOf,
@@ -126,14 +126,16 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   let listening = readAudioAccessibilityPrefs(env.preferences);
   const tooltips = new TooltipOwner({ document: doc, enabled: () => live.tipsOn, blocked: () => false, mode: () => inputMode });
 
-  // Save protection: the browser is asked once, on the first gesture, which also readies sound.
+  // Save protection: the browser is asked once, on the first gesture. Sound is readied by a gesture the browser counts.
   let persist: PersistState = 'unknown';
   bus.on('protect:persist', (event) => { persist = event.state; });
   const asker = createPersistAsker({ storage: env.storage, bus });
   void readPersistState(env.storage).then((state) => bus.emit('protect:persist', { state }));
-  const onGesture = (): void => { asker.onFirstGesture(); sound.unlock(); };
+  const onGesture = (): void => { asker.onFirstGesture(); };
   doc.addEventListener('pointerdown', onGesture, true);
   doc.addEventListener('keydown', onGesture, true);
+  const onCounted = (event: Event): void => { if (countsAsGesture(event)) sound.unlock(); };
+  for (const type of GESTURE_EVENTS) doc.addEventListener(type, onCounted, true);
 
   const status = (): StatusFacts => ({
     build: env.build,
