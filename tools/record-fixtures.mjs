@@ -1093,6 +1093,104 @@ const recorders = {
       moons,
     };
   },
+  // Reach answers of the app's travel gate, navigationAuthorityFailureFor(save, target, liverySeed):
+  // null (allowed), 'prime-reach' (the galaxy lies outside the radius the prime signatures give) or
+  // 'charter-reach' (the ship cannot dive to that star). Every save is asked about every target. Each
+  // target is built by the current game's own address resolver from the recorded candidate, so a test
+  // rebuilds the case from the save and the target alone.
+  reach: async (source) => {
+    if ('GAL_SPRITES' in globalThis) throw new Error('reach: GAL_SPRITES must not be defined before recording');
+    // The current game's galaxy sprite seed list has 16 entries; its worldgen reads this free global.
+    globalThis.GAL_SPRITES = new Array(16);
+    const load = (rel) => import(pathToFileURL(join(source, rel)).href);
+    const { navigationAuthorityFailureFor } = await load('apps/game/src/search-travel.ts');
+    const scene = await load('packages/scene/src/index.ts');
+    const { galaxiesInCell } = await load('packages/domain/worldgen/src/index.ts');
+    const { REGIONS, ASC_RING_R } = await load('packages/domain/strays/src/index.ts');
+    const { PRIME_SIGNATURES_V1 } = await load('packages/domain/combatcore/src/index.ts');
+    const { UCELL, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } = await load('packages/domain/worldconfig/src/index.ts');
+    const LIVERY_SEED = 0;
+    const KAUM_STAR = 2737406570;
+    const OSUM_STAR = 1074947061;
+    const slim = ({ seed, x, y }) => ({ seed, x, y });
+
+    // Saves: four ship ladders by six prime signature counts (0 and every REGIONS threshold).
+    const SHIPS = [['new game', []], ['jumpdrive', [['jumpdrive', 1]]], ['jumpdrive and array', [['jumpdrive', 1], ['array', 1]]], ['igdrive', [['igdrive', 1]]]];
+    const counts = REGIONS.map((region) => region.sigs);
+    if (counts[0] !== 0 || counts.at(-1) > PRIME_SIGNATURES_V1.length) throw new Error('reach: unexpected REGIONS thresholds');
+    // Only the number of keys is read; the entries have the save's field shape and no content.
+    const primeFillOf = (count) => Object.fromEntries(PRIME_SIGNATURES_V1.slice(0, count).map(({ id }) => [id, { title: '', sub: '', tier: 0, hex: '', where: null }]));
+    const saves = SHIPS.flatMap(([ship, items]) => counts.map((count) => ({
+      label: `${ship}, ${count} prime signatures`,
+      save: { primeFill: primeFillOf(count), items, ascCh: 0 },
+    })));
+
+    // Galaxies: for every reach radius, the foreign galaxy nearest the radius on each side of it.
+    const home = { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y };
+    const fromHome = (g) => Math.hypot(g.x - HOME_POS.x, g.y - HOME_POS.y);
+    const span = Math.ceil(Math.max(...REGIONS.map((region) => region.r)) / UCELL) + 2;
+    const foreign = [];
+    for (let cy = -span; cy <= span; cy++) {
+      for (let cx = -span; cx <= span; cx++) {
+        for (const g of galaxiesInCell(cx, cy)) if (g.seed !== HOME_GAL_SEED) foreign.push(slim(g));
+      }
+    }
+    foreign.sort((a, b) => fromHome(a) - fromHome(b) || a.seed - b.seed);
+    const targets = [];
+    const add = (label, galaxy, star) => {
+      if (targets.some((t) => t.label === label)) throw new Error(`reach: repeated target ${label}`);
+      targets.push({ label, galaxy, star });
+    };
+    add('the home galaxy', home, null);
+    for (const region of REGIONS) {
+      const inside = foreign.findLast((g) => fromHome(g) <= region.r);
+      const outside = foreign.find((g) => fromHome(g) > region.r);
+      if (!inside || !outside) throw new Error(`reach: no galaxy on both sides of ${region.name}`);
+      add(`the galaxy just inside ${region.name}`, inside, null);
+      add(`the galaxy just outside ${region.name}`, outside, null);
+    }
+
+    // Stars: Sol, the home-galaxy stars nearest the Jump Drive ring on each side, Kaum's and Osum's
+    // stars, and the first star of the nearest foreign galaxy (inside every save's reach radius).
+    const homeStars = scene.galaxyScene(HOME_GAL_SEED).stars;
+    const fromSol = (s) => Math.hypot(s.x - SOL_POS.x, s.y - SOL_POS.y);
+    const byRing = homeStars.filter((s) => s.seed !== SOL_SEED).sort((a, b) => fromSol(a) - fromSol(b) || a.seed - b.seed);
+    const named = (seed) => {
+      const star = homeStars.find((s) => s.seed === seed);
+      if (!star) throw new Error(`reach: star ${seed} not found in the home galaxy`);
+      return slim(star);
+    };
+    add('Sol', home, { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y });
+    add('the star just inside the Jump Drive ring', home, slim(byRing.findLast((s) => fromSol(s) <= ASC_RING_R)));
+    add('the star just outside the Jump Drive ring', home, slim(byRing.find((s) => fromSol(s) > ASC_RING_R)));
+    add("Kaum's star", home, named(KAUM_STAR));
+    add("Osum's star", home, named(OSUM_STAR));
+    const nearest = foreign[0];
+    if (fromHome(nearest) > REGIONS[0].r) throw new Error('reach: the nearest foreign galaxy is outside the first reach radius');
+    add('a star in the nearest foreign galaxy', nearest, slim(scene.galaxyScene(nearest.seed).stars[0]));
+
+    const navOf = ({ label, galaxy, star }) => {
+      const address = star === null ? scene.resolveCF1GalaxyAddress({ galaxy }) : scene.resolveCF1StarAddress({ galaxy, star });
+      if (!address.ok) throw new Error(`reach: ${label} did not resolve: ${address.reason}`);
+      const nav = scene.navFromCanonicalCF1Address(address.address);
+      if (!nav.ok) throw new Error(`reach: ${label} is not a place: ${nav.reason}`);
+      return nav.state;
+    };
+    const cases = [];
+    for (const { label: saveLabel, save } of saves) {
+      for (const target of targets) {
+        const input = JSON.parse(JSON.stringify({ save, target: { mode: target.star === null ? 'galaxy' : 'system', galaxy: target.galaxy, star: target.star } }));
+        const expected = navigationAuthorityFailureFor(structuredClone(input.save), navOf(target), LIVERY_SEED);
+        cases.push({ label: `${saveLabel}: ${target.label}`, ...input, expected });
+      }
+    }
+    return {
+      freeGlobals: { GAL_SPRITES: 'an array of length 16, read by the current game\'s worldgen' },
+      recordedFrom: 'apps/game/src/search-travel.ts navigationAuthorityFailureFor(save, target, liverySeed)',
+      liverySeed: LIVERY_SEED,
+      cases,
+    };
+  },
 };
 
 function parseArgs(argv) {

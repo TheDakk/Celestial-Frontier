@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@cf/domain-ecology": "*",
+    "@cf/domain-naming": "*",
     "@cf/domain-progression": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-sessionrng": "*",
+    "@cf/domain-worldconfig": "*",
+    "@cf/domain-worldgen": "*",
     "@cf/persistence": "*",
     "@cf/scene": "*"
   },
