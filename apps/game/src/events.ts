@@ -12,6 +12,8 @@ export interface GameEvents {
   'save:boot': { kind: BootKind; hold: WriteHold; detail: string | null };
   'save:committed': { revision: number };
   'save:reload-required': { reason: string };
+  /** The page came under a write hold after its boot. */
+  'save:held': { detail: string };
   'settings:changed': { field: string };
   'nav:changed': { from: ZoomMode; to: ZoomMode; nav: NavState };
   'nav:refused': { reason: 'prime-reach' | 'charter-reach' | 'not-proven'; hint: string };

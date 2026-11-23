@@ -175,7 +175,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       // What Status shows can change while the panel is open.
       const stops = [
         ...(['save:committed', 'save:reload-required', 'pack:status'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
-        ...(['protect:persist', 'protect:backup'] as const).map((type) => ctx.bus.on(type, redraw)),
+        ...(['protect:persist', 'protect:backup', 'save:held'] as const).map((type) => ctx.bus.on(type, redraw)),
         ...(ports.update === null ? [] : [ports.update.onChange(() => { if (live) drawStatus(); })]),
       ];
       return () => {

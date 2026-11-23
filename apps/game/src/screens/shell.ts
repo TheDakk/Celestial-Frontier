@@ -237,6 +237,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     shown.show(NOTICE_WORDS.reload.title, NOTICE_WORDS.reload.text, true);
     env.reload();
   });
+  bus.on('save:held', refreshNotices);
   doc.addEventListener('visibilitychange', () => { void (visible() ? loop.show() : loop.hide()); });
   view.addEventListener('pagehide', () => { void loop.hide(); });
   view.addEventListener('pageshow', (event) => { if (event.persisted) void loop.show(); });

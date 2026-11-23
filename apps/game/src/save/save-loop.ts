@@ -3,7 +3,8 @@
    A checkpoint is the last stored state with the route, the settings and the epoch laid over it. The epoch is
    a candidate until the checkpoint that carries it is stored; drawing reads only the published one. A commit
    that is refused, or a lease or revision this page can no longer prove, makes the page read-only until it
-   reloads. Under a write hold nothing here touches storage, the lease row included. */
+   reloads. Storage that fails the lease before it has once answered is a hold instead: a reload would only
+   meet the same failure. Under a write hold nothing here touches storage, the lease row included. */
 import { createRevisionedRepository, type SaveStateV2, type StorageBackend } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
@@ -62,6 +63,8 @@ export function createSaveLoop(deps: {
   /** The lease and revision part of a heartbeat or a show; a write waits for it. */
   let proving: Promise<void> | null = null;
   let hiding: Promise<void> | null = null;
+  /** True once storage has answered for the lease, whoever holds it. */
+  let leaseAnswered = false;
 
   const closed = (): boolean => !gate.mayWrite() || reloadRequired;
   const mayWrite = (): boolean => {
@@ -77,6 +80,14 @@ export function createSaveLoop(deps: {
     runtime.setAnswerable(false);
     void runtime.release().catch(() => undefined);
     bus.emit('save:reload-required', { reason });
+  };
+
+  /** Holds the page, with no reload: the player may try storage again. */
+  const holdTransient = (detail: string): void => {
+    gate.holdTransient(detail);
+    runtime.setAnswerable(false);
+    void runtime.release().catch(() => undefined);
+    bus.emit('save:held', { detail });
   };
 
   const write = async (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
@@ -166,10 +177,12 @@ export function createSaveLoop(deps: {
     const run = (async () => {
       const outcome = await acquire();
       if (outcome.kind === 'storage-error') {
-        requireReload(`lease ${outcome.operation} storage failure (${outcome.message})`);
-      } else if (outcome.kind === 'owned' && await revisionIsCurrent()) {
-        owned = true;
+        const detail = `lease ${outcome.operation} storage failure (${outcome.message})`;
+        if (leaseAnswered) requireReload(detail); else holdTransient(detail);
+        return;
       }
+      if (outcome.kind !== 'lost') leaseAnswered = true;
+      if (outcome.kind === 'owned' && await revisionIsCurrent()) owned = true;
     })();
     proving = run;
     try { await run; } finally { if (proving === run) proving = null; }
