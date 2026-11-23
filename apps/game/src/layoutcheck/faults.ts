@@ -1,12 +1,13 @@
 /* Faults planted on a screen so the layout check can be seen to catch each one. Never part of the game. */
 
-export const FAULTS = ['clipped', 'overlap', 'small', 'see-through', 'wide-caption'] as const;
+export const FAULTS = ['clipped', 'overlap', 'small', 'see-through', 'wide-caption', 'no-scroll-cue'] as const;
 export type Fault = typeof FAULTS[number];
 /** The kind of problem each planted fault must be reported as. */
-export const FAULT_KINDS = Object.freeze({ clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption' } as const);
+export const FAULT_KINDS = Object.freeze({ clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption', 'no-scroll-cue': 'scroll-cue' } as const);
 
 /** Plants one fault in the app drawn in `host`: a label cut off by its box, two buttons sharing 10 pixels, a 30 pixel
- *  button, a sheet the map shows through, or words of the map wider than the view. */
+ *  button, a sheet the map shows through, words of the map wider than the view, or a list that scrolls and does not
+ *  show it. */
 export function plantFault(fault: Fault, host: HTMLElement): void {
   const doc = host.ownerDocument;
   const make = <K extends keyof HTMLElementTagNameMap>(tag: K, text: string, style: Partial<CSSStyleDeclaration>): HTMLElementTagNameMap[K] => {
@@ -29,5 +30,10 @@ export function plantFault(fault: Fault, host: HTMLElement): void {
   if (fault === 'overlap') sheet.append(make('button', 'First', {}), make('button', 'Second', { marginLeft: '-10px' }));
   if (fault === 'small') sheet.append(make('button', 'x', { minWidth: '0', minHeight: '0', width: '30px', height: '30px', padding: '0' }));
   if (fault === 'see-through') sheet.append(make('div', 'A sheet the map shows through', {}));
+  if (fault === 'no-scroll-cue') {
+    const list = make('div', '', { height: '60px', overflowY: 'auto' });
+    list.append(make('div', 'A list longer than its window', { height: '200px' }));
+    sheet.append(list);
+  }
   host.append(sheet);
 }

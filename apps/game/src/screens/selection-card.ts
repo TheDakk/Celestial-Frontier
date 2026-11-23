@@ -2,7 +2,7 @@
    body's descriptor; a galaxy or a star adds the one action that travels into it. */
 import type { Descriptor } from '@cf/domain-descriptors';
 import { displayRarity } from '@cf/domain-speciestraits';
-import { icon } from '../ui';
+import { icon, mountScrollCue } from '../ui';
 import { el } from './dom';
 
 export interface CardAction { label: 'Enter galaxy' | 'Enter system'; run(): void }
@@ -31,6 +31,8 @@ const surveyRow = (key: string, value: string, cls = ''): HTMLElement =>
 export function createSelectionCard(host: HTMLElement, onChange: () => void = () => undefined): SelectionCard {
   const card = el('aside', { class: 'card', 'aria-label': 'Survey card', 'aria-hidden': 'true', 'data-panel-boundary': true, hidden: true });
   host.append(card);
+  // The card lives as long as the map: its cue is never given up.
+  mountScrollCue(card);
   let opener: HTMLElement | null = null;
   let action: CardAction | null = null;
 

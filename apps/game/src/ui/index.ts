@@ -11,6 +11,7 @@ export type { TooltipOwnerOptions } from './tooltips';
 export { PANEL_LAYOUT_EVENT, createPanelManager } from './panels';
 export type { PanelDef, PanelManager } from './panels';
 export { capturePanelRefillFocus } from './panel-refill-focus';
+export { mountScrollCue } from './scroll-cue';
 export { createFrameCoalescer } from './frame-coalescer';
 export type { FrameCoalescer } from './frame-coalescer';
 export { TOAST_DEDUP_MS, TOAST_SHOW_MS, createToast } from './toast';

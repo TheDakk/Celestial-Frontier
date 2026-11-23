@@ -14,7 +14,7 @@ export interface Box {
   ancestors: readonly string[]; allow: readonly ('scroll' | 'overlap' | 'small')[];
   inScroll: boolean; backed: boolean; caption: boolean;
 }
-export type LayoutProblemKind = 'clipped-text' | 'overlap' | 'small-target' | 'off-screen' | 'see-through' | 'wide-caption';
+export type LayoutProblemKind = 'clipped-text' | 'overlap' | 'small-target' | 'off-screen' | 'see-through' | 'wide-caption' | 'scroll-cue';
 export interface LayoutProblem { kind: LayoutProblemKind; ids: readonly string[]; detail: string }
 /** The view, and how much of each side the device keeps for itself. */
 export interface LayoutViewport { w: number; h: number; safe?: { top: number; right: number; bottom: number; left: number } }
@@ -73,4 +73,18 @@ export function checkLayout(boxes: readonly Box[], viewport: LayoutViewport, inp
     }
   });
   return problems;
+}
+
+/** A scroll area as it is shown: `below` is how many pixels of its content lie under the foot of its window, and
+ *  `cue` whether it shows, along that foot, that it scrolls. */
+export interface ScrollArea { id: string; below: number; cue: boolean }
+
+/** scroll-cue: a scroll area with more than a pixel of content below its foot and nothing to show it, or one that
+ *  shows it with nothing below. */
+export function checkScrollCues(areas: readonly ScrollArea[]): LayoutProblem[] {
+  return areas.flatMap((area): LayoutProblem[] => {
+    const more = area.below > SLACK;
+    if (more === area.cue) return [];
+    return [{ kind: 'scroll-cue', ids: [area.id], detail: more ? `${px(area.below)} px of content lies below its foot and nothing shows that it scrolls` : 'it shows that it scrolls with nothing below its foot' }];
+  });
 }

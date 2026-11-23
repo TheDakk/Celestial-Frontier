@@ -28,6 +28,19 @@ describe('the survey card', () => {
     expect(card.el.querySelector('[data-act="travel"]')).toBeNull();
   });
 
+  it('a card whose rows run below its foot shows that it scrolls', async () => {
+    const card = createSelectionCard(host());
+    // jsdom lays nothing out: the card's window is 200 pixels over 500 of rows once it is drawn.
+    Object.defineProperty(card.el, 'clientHeight', { configurable: true, get: () => 200 });
+    Object.defineProperty(card.el, 'scrollHeight', { configurable: true, get: () => (card.el.childElementCount === 0 ? 200 : 500) });
+    card.show(GALAXY, null, null);
+    await new Promise((resolve) => { setTimeout(resolve, 0); });
+    expect(card.el.hasAttribute('data-more-below')).toBe(true);
+    card.hide();
+    await new Promise((resolve) => { setTimeout(resolve, 0); });
+    expect(card.el.hasAttribute('data-more-below')).toBe(false);
+  });
+
   it('shows no rarity for a world, nor for a grade that is missing or malformed', () => {
     const card = createSelectionCard(host());
     const rarity = (d: Descriptor): boolean => { card.show(d, null, null); return card.el.querySelector('[data-row="Rarity"]') !== null; };

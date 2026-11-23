@@ -78,6 +78,13 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 [data-size-class="medium"] .panel { width: min(400px, 62%); top: calc(var(--safe-top) + var(--top-bar)); }
 [data-size-class="wide"] .panel { width: 440px; }
 [data-size-class="wide"] body.panel-open .stage .search { right: calc(var(--safe-right) + 440px + var(--cf-space-3)); }
+/* A sheet with more below its foot shows it: a shadow along the foot, held there as the sheet scrolls and gone at
+   the end. It takes no room and no press. */
+.panel[data-more-below]::after, .card[data-more-below]::after {
+  content: ''; display: block; position: sticky; bottom: calc(-1 * var(--cf-space-4)); pointer-events: none;
+  height: var(--cf-space-5); margin: calc(-1 * var(--cf-space-5)) calc(-1 * var(--cf-space-4)) 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+}
 .panel-close {
   position: sticky; top: 0; float: right; z-index: 1; padding: 0;
   display: inline-flex; align-items: center; justify-content: center;

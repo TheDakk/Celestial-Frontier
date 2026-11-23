@@ -46,4 +46,25 @@ describe('the shell chrome', () => {
     expect(widths.map((el) => [el.id, el.dataset.panelW])).toEqual([['panel-settings', 'narrow'], ['panel-guide', 'narrow']]);
     panels.dispose();
   });
+
+  it('a panel whose content runs below its foot shows that it scrolls, until its foot is reached', async () => {
+    document.body.innerHTML = '<div id="app"></div>';
+    const panels = createPanelManager(document);
+    mountChrome(document.getElementById('app')!, {
+      screens: [screen('settings', { icon: 'settings', label: 'Settings' })], ctx, panels,
+      panelObserver: () => ({ observe() {}, disconnect() {} }),
+    });
+    const panel = document.getElementById('panel-settings')!;
+    // jsdom lays nothing out: the panel's window is 300 pixels over 900 of content once it is drawn.
+    Object.defineProperty(panel, 'clientHeight', { configurable: true, get: () => 300 });
+    Object.defineProperty(panel, 'scrollHeight', { configurable: true, get: () => (panel.textContent === '' ? 300 : 900) });
+    expect(panel.hasAttribute('data-more-below')).toBe(false);
+    document.querySelector<HTMLElement>('.dock button')!.click();
+    await new Promise((resolve) => { setTimeout(resolve, 0); });
+    expect(panel.hasAttribute('data-more-below')).toBe(true);
+    panel.scrollTop = 600;
+    panel.dispatchEvent(new Event('scroll'));
+    expect(panel.hasAttribute('data-more-below')).toBe(false);
+    panels.dispose();
+  });
 });

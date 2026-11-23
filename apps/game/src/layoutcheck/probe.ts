@@ -1,6 +1,6 @@
 /* Measures a laid-out screen for the layout check: every control, every piece of text and every word of the map
    becomes a box. It reads what the browser laid out and decides nothing. */
-import type { Box } from './check';
+import type { Box, ScrollArea } from './check';
 
 const CONTROLS = 'button, input, select, textarea, a[href], [role="button"]';
 const ALLOWED = ['scroll', 'overlap', 'small'] as const;
@@ -105,4 +105,20 @@ export function collectBoxes(host: HTMLElement): Box[] {
     } });
   }
   return found.map(({ el, box }) => ({ ...box, ancestors: found.filter((other) => other.el !== el && other.el.contains(el)).map((other) => other.box.id) }));
+}
+
+/** Every scroll area shown in `host` that scrolls down: how much of its content lies below its window, and whether
+ *  a cue is drawn along its foot (a generated box at the end of it, held to the foot of its window). */
+export function collectScrollAreas(host: HTMLElement): ScrollArea[] {
+  const view = host.ownerDocument.defaultView!;
+  const areas: ScrollArea[] = [];
+  for (const el of host.querySelectorAll<HTMLElement>('*')) {
+    if (!/auto|scroll/.test(view.getComputedStyle(el).overflowY) || !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) continue;
+    const foot = view.getComputedStyle(el, '::after');
+    areas.push({
+      id: nameOf(el), below: el.scrollHeight - el.clientHeight - el.scrollTop,
+      cue: foot.content !== 'none' && foot.position === 'sticky' && Number.parseFloat(foot.height) > 0 && foot.backgroundImage !== 'none',
+    });
+  }
+  return areas;
 }

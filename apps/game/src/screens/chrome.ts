@@ -3,7 +3,7 @@
    an entry, one panel per docked screen, the standing notices and the toast. Its arrangement for each size
    class is in the stylesheet, keyed on the root's data-size-class. */
 import { mountPanelContainer, type ResizeObserverLike } from '../layout';
-import { icon, type PanelManager } from '../ui';
+import { icon, mountScrollCue, type PanelManager } from '../ui';
 import { el } from './dom';
 import type { ScreenContext, ScreenDef } from './registry';
 
@@ -47,7 +47,7 @@ export function mountChrome(root: HTMLElement, deps: {
       onOpen: () => { unmount = screen.mount(body, deps.ctx); },
       onClose: () => { unmount?.(); unmount = null; body.replaceChildren(); },
     });
-    disposers.push(mountPanelContainer(panel, deps.panelObserver), () => unmount?.());
+    disposers.push(mountPanelContainer(panel, deps.panelObserver), mountScrollCue(panel), () => unmount?.());
   }
   return { stage, notices, toast, dispose: () => { for (const dispose of disposers) dispose(); } };
 }

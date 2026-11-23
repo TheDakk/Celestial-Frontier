@@ -4,7 +4,7 @@
 import { V5_SCHEMA_KEY, createMemoryBackend, importSaveV2, initializeFreshV5, type StorageBackend } from '@cf/persistence';
 import { createBus } from './bus';
 import type { GameEvents, InputMode } from './events';
-import { FAULTS, checkLayout, collectBoxes, plantFault, type Fault, type LayoutProblem } from './layoutcheck';
+import { FAULTS, checkLayout, checkScrollCues, collectBoxes, collectScrollAreas, plantFault, type Fault, type LayoutProblem } from './layoutcheck';
 import { browserClocks } from './platform/clock';
 import { devicePreferences } from './platform/preferences';
 import { UPDATE_WORDS, type UpdateControl } from './offline';
@@ -117,5 +117,5 @@ async function show(): Promise<readonly string[]> {
   return [...MAP_FIXTURES, ...docked.flatMap((candidate) => candidate.fixtures.map((state) => state.id))];
 }
 
-window.__cfLayoutProblems = () => checkLayout(collectBoxes(host), { w: innerWidth, h: innerHeight }, input);
+window.__cfLayoutProblems = () => [...checkLayout(collectBoxes(host), { w: innerWidth, h: innerHeight }, input), ...checkScrollCues(collectScrollAreas(host))];
 window.__cfLayoutReady = show();
