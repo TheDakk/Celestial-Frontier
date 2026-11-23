@@ -59,7 +59,8 @@ export function controlledClock(start = 0): { now: () => number; advance: (amoun
   return { now: () => value, advance: (amount) => { value += amount; } };
 }
 
-/** bootSave, the write gate and the save runtime on one backend, as the page wires them, holding the lease. */
+/** bootSave, the write gate and the save runtime on one backend, as the page wires them. The page holds the
+ *  lease unless the boot put it under a hold, when it touches nothing. */
 export async function bootedPage(backend: StorageBackend = createMemoryBackend(), token = 'document-a') {
   const booted = await bootSave({ backend, registry: REGISTRY, wallNow: NOW, freshRoute: SOL_ROUTE });
   const time = controlledClock(1_000);
@@ -70,7 +71,7 @@ export async function bootedPage(backend: StorageBackend = createMemoryBackend()
     restoredAuthority: booted.restoredAuthority, freshSessionSeed: 7,
     ownerId: 'tab', token, leaseTtlMs: LEASE_TTL_MS, now: time.now, visible: true, answerable: true,
   });
-  if ((await runtime.heartbeat()).kind !== 'owned') throw new Error('the page did not get the lease');
+  if (booted.hold === false && (await runtime.heartbeat()).kind !== 'owned') throw new Error('the page did not get the lease');
   const clocks: Clocks = { wallNow: () => NOW, monotonicNow: time.now };
   return { backend, booted, gate, runtime, time, clocks, live: booted.state };
 }
