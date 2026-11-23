@@ -1,14 +1,15 @@
 /* Faults planted on a screen so the layout check can be seen to catch each one. Never part of the game. */
 import { mountScrollCue } from '../ui';
 
-export const FAULTS = ['clipped', 'overlap', 'small', 'see-through', 'wide-caption', 'no-scroll-cue', 'covered-row'] as const;
+export const FAULTS = ['clipped', 'overlap', 'small', 'see-through', 'wide-caption', 'no-scroll-cue', 'faint-scroll-cue', 'covered-row'] as const;
 export type Fault = typeof FAULTS[number];
 /** The kind of problem each planted fault must be reported as. */
-export const FAULT_KINDS = Object.freeze({ clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption', 'no-scroll-cue': 'scroll-cue', 'covered-row': 'overlap' } as const);
+export const FAULT_KINDS = Object.freeze({ clipped: 'clipped-text', overlap: 'overlap', small: 'small-target', 'see-through': 'see-through', 'wide-caption': 'wide-caption', 'no-scroll-cue': 'scroll-cue', 'faint-scroll-cue': 'scroll-cue', 'covered-row': 'overlap' } as const);
 
 /** Plants one fault in the app drawn in `host`: a label cut off by its box, two buttons sharing 10 pixels, a 30 pixel
  *  button, a sheet the map shows through, words of the map wider than the view, a list that scrolls and does not
- *  show it, or one whose floating control comes to lie over a row only once it is scrolled. */
+ *  show it, one whose cue has no line along its foot, or one whose floating control comes to lie over a row only once
+ *  it is scrolled. */
 export function plantFault(fault: Fault, host: HTMLElement): void {
   const doc = host.ownerDocument;
   const make = <K extends keyof HTMLElementTagNameMap>(tag: K, text: string, style: Partial<CSSStyleDeclaration>): HTMLElementTagNameMap[K] => {
@@ -36,14 +37,16 @@ export function plantFault(fault: Fault, host: HTMLElement): void {
     list.append(make('div', 'A list longer than its window', { height: '200px' }));
     sheet.append(list);
   }
-  if (fault === 'covered-row') {
+  if (fault === 'faint-scroll-cue' || fault === 'covered-row') {
     const list = make('div', '', { height: '60px', overflowY: 'auto' });
     list.append(make('div', 'A list longer than its window', { height: '200px' }));
-    list.prepend(make('button', 'x', { position: 'sticky', top: '0', float: 'right' }));
-    list.append(make('button', 'A row at the foot', { float: 'right' }));
+    if (fault === 'covered-row') list.prepend(make('button', 'x', { position: 'sticky', top: '0', float: 'right' }));
+    if (fault === 'covered-row') list.append(make('button', 'A row at the foot', { float: 'right' }));
     sheet.append(list);
     host.append(sheet);
+    // The game's own cue; the faint one keeps its glow and loses the line that makes it seen.
     mountScrollCue(list);
+    if (fault === 'faint-scroll-cue') list.style.boxShadow = 'none';
     return;
   }
   host.append(sheet);

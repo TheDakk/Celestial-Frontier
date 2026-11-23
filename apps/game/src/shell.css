@@ -78,14 +78,21 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 [data-size-class="medium"] .panel { width: min(400px, 62%); top: calc(var(--safe-top) + var(--top-bar)); }
 [data-size-class="wide"] .panel { width: 440px; }
 [data-size-class="wide"] body.panel-open .stage .search { right: calc(var(--safe-right) + 440px + var(--cf-space-3)); }
-/* A sheet with more below its foot shows it: a shadow along the foot, held there as the sheet scrolls and gone at
-   the end. It takes no room and no press. --sheet-pad is the sheet's own padding at its sides and foot. */
+/* A sheet with more below its foot shows it: a light line along the foot of the sheet itself, under a glow that fades
+   upward, held there as the sheet scrolls; both are gone at the end. They take no room and no press. --sheet-pad is
+   the sheet's own padding at its sides and foot. */
 .panel, .card { --sheet-pad: var(--cf-space-4); }
+[data-more-below] { box-shadow: inset 0 -2px 0 var(--cf-color-accent-teal); }
 [data-more-below]::after {
   content: ''; display: block; position: sticky; bottom: calc(-1 * var(--sheet-pad, 0px)); z-index: 1; pointer-events: none;
   height: var(--cf-space-5); margin: calc(-1 * var(--cf-space-5)) calc(-1 * var(--sheet-pad, 0px)) 0;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+  background: linear-gradient(to bottom, transparent, rgba(126, 200, 240, 0.3));
 }
+/* The thin scrollbar of the game, where the browser draws one. */
+* { scrollbar-width: thin; scrollbar-color: #2a3c5e transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-thumb { background: #2a3c5e; border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
 /* The header of a sheet: its title and its close control on a solid bar, as wide as the sheet, that stays at the
    head while the rows scroll under it. */
 .sheet-head, .survey-head {

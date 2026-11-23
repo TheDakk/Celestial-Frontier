@@ -122,7 +122,8 @@ export function collectBoxes(host: HTMLElement): Box[] {
 }
 
 /** Every scroll area shown in `host` that scrolls down: how much of its content lies below its window, and whether
- *  a cue is drawn along its foot (a generated box at the end of it, held to the foot of its window). */
+ *  a cue is drawn along its foot: a line along the foot of the area itself, and a generated box at the end of its
+ *  content, held to the foot of its window. */
 export function collectScrollAreas(host: HTMLElement): ScrollArea[] {
   const view = host.ownerDocument.defaultView!;
   const areas: ScrollArea[] = [];
@@ -131,7 +132,7 @@ export function collectScrollAreas(host: HTMLElement): ScrollArea[] {
     const foot = view.getComputedStyle(el, '::after');
     areas.push({
       id: nameOf(el), below: el.scrollHeight - el.clientHeight - el.scrollTop,
-      cue: foot.content !== 'none' && foot.position === 'sticky' && Number.parseFloat(foot.height) > 0 && foot.backgroundImage !== 'none',
+      cue: view.getComputedStyle(el).boxShadow.includes('inset') && foot.content !== 'none' && foot.position === 'sticky' && Number.parseFloat(foot.height) > 0 && foot.backgroundImage !== 'none',
     });
   }
   return areas;
