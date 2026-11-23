@@ -3,8 +3,9 @@
    whole number of times its drawn size. */
 import type { SpaceItem } from '@cf/art-interface';
 
-/** Present when a picture sizes its things by the camera: how many art pixels one screen pixel is. */
-export interface Sizing { perCss: number }
+/** Present when a picture sizes its things by the camera: how many art pixels one screen pixel is. With `drawn`, the
+ *  width the sheet draws an element at for a span, where it has a drawing of that name that fits. */
+export interface Sizing { perCss: number; drawn?: (name: string, span: number) => number | undefined }
 
 /** The share of a soft glow's sprite that is lit enough to draw; the game's glows fade to nothing toward their edge. */
 export const GLOW = 0.6;

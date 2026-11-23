@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { hashBuffer, toAscii } from '@cf/art-compose';
-import { MAX_RADIUS, ditherRank, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, type Gaps, type SpaceItem } from '../src/index';
+import { MAX_RADIUS, ditherRank, fittedWidth, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, type Gaps, type SpaceItem } from '../src/index';
 
 const SHEET = parseInterfaceSheet([
   'interface 1',
@@ -33,6 +33,157 @@ const { palette } = SHEET;
 const noGaps = (): Gaps => ({ glyphs: [], icons: [], elements: [] });
 const paint = (w: number, h: number, items: readonly SpaceItem[], gaps: Gaps = noGaps()) => toAscii(paintSpace(w, h, items, SHEET, gaps)).split('\n');
 const WHITE = 0xffffff, RED = 0xff0000, BLUE = 0x0000ff;
+
+/** A sheet of nebulae with their own ramps: magenta 3 4, teal 5 6, dust 7 8, and the ramps a tint can fall on. */
+const NEBULAE = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 3 ff40c0', 'colour 4 802060', 'colour 5 40e0d0', 'colour 6 207068', 'colour 7 a08060', 'colour 8 504030',
+  'colour 9 ff0000', 'colour 10 800000',
+  'ramp ink 1 2 2 2',
+  'ramp accent 2 2 2 2',
+  'ramp red 9 10 10 10',
+  'ramp magenta 3 3 4 4',
+  'ramp teal 5 5 6 6',
+  'ramp dust 7 7 8 8',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '1', '',
+  'element deco/h2 anchor=0,0 ramps=magenta,dust', '1458', '',
+  'element deco/plan anchor=0,0 ramps=teal,magenta,dust', '158c', '',
+  'element deco/five anchor=0,0 ramps=tint,magenta,teal,dust,ink', '159dh', '48cgk', '',
+  'element deco/plain anchor=0,0', '15',
+].join('\n'));
+const paintNebulae = (w: number, h: number, items: readonly SpaceItem[]) => toAscii(paintSpace(w, h, items, NEBULAE, noGaps())).split('\n');
+
+describe('an element with its own ramps', () => {
+  it('an emission nebula in magenta and a planetary nebula in teal are drawn from one sheet, whatever tint the map gives them', () => {
+    for (const ramp of [WHITE, RED, 0x40e0d0]) {
+      expect(paintNebulae(4, 2, [{ kind: 'element', name: 'deco/h2', x: 0, y: 0, ramp }, { kind: 'element', name: 'deco/plan', x: 0, y: 1, ramp }]), `${ramp}`).toEqual(['3478', '5348']);
+    }
+  });
+  it('values in fours take the ramps in the order named, to twenty; tint is the ramp nearest the colour the map gives', () => {
+    expect(paintNebulae(5, 2, [{ kind: 'element', name: 'deco/five', x: 0, y: 0, ramp: WHITE }])).toEqual(['13571', '24682']);
+    expect(paintNebulae(5, 2, [{ kind: 'element', name: 'deco/five', x: 0, y: 0, ramp: RED }])).toEqual(['93571', 'a4682']);
+  });
+  it('an element that names no ramp keeps the tint for its values 1 to 4 and the accent ramp for 5 to 8', () => {
+    expect(paintNebulae(2, 1, [{ kind: 'element', name: 'deco/plain', x: 0, y: 0, ramp: RED }])).toEqual(['92']);
+  });
+});
+
+/** The first sheet, its arrow drawn again 8 and 16 wide, each with its own anchor; and a tier of a name with no plain drawing. */
+const TIERED = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 5 0000ff', 'colour 6 000080',
+  'ramp ink 1 2 2 2',
+  'ramp accent 5 6 6 6',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '5', '',
+  'element arrow anchor=1,0', '.125', '',
+  'element arrow/x16 anchor=4,1', '....1.....2.....', '....12121212125.', '....1.....2.....', '',
+  'element arrow/x8 anchor=2,0', '..12125.', '',
+  'element comet/x8 anchor=0,0', '11111111',
+].join('\n'));
+const PLAIN_ONLY = { ...TIERED, elements: new Map([...TIERED.elements].filter(([name]) => name === 'arrow')) };
+const paintTiered = (w: number, h: number, items: readonly SpaceItem[], sheet = TIERED, gaps: Gaps = noGaps()) => toAscii(paintSpace(w, h, items, sheet, gaps)).split('\n');
+const arrowAt = (span: number | undefined, more: { flip?: boolean } = {}): SpaceItem => ({ kind: 'element', name: 'arrow', x: 20, y: 2, ramp: WHITE, ...(span === undefined ? {} : { span }), ...more });
+/** How many times the colour changes along the rows of a picture: what a block-scaled drawing has few of. */
+const changes = (rows: readonly string[]): number => rows.reduce((n, row) => n + [...row].filter((c, i) => i > 0 && c !== row[i - 1]).length, 0);
+
+describe('size tiers', () => {
+  const pad = (row: string): string => row.padEnd(40, '.');
+  const rows = (...at: string[]): string[] => [...at, ...Array.from({ length: 6 - at.length }, () => '')].map(pad);
+  const PLAIN = rows('', '', `${'.'.repeat(20)}125`);
+  // A doubled drawing keeps the middle of its anchor block on its place: it starts one pixel up and to the left.
+  const PLAIN_TWICE = rows('', `${'.'.repeat(19)}112255`, `${'.'.repeat(19)}112255`);
+  const X8 = rows('', '', `${'.'.repeat(20)}12125`);
+  const X8_TWICE = rows('', `${'.'.repeat(19)}1122112255`, `${'.'.repeat(19)}1122112255`);
+  const X16 = rows('', `${'.'.repeat(20)}1.....2`, `${'.'.repeat(20)}12121212125`, `${'.'.repeat(20)}1.....2`);
+
+  it('the widest drawing no wider than the span is taken, the plain one when none is; then it is scaled in whole steps as ever', () => {
+    for (const span of [undefined, 0, 3, 4, 5]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(PLAIN);
+    // Just under the 8 tier the plain arrow (4 wide) is doubled; from 8 the tier is drawn as it is.
+    for (const span of [6, 7]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(PLAIN_TWICE);
+    for (const span of [8, 9, 11]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X8);
+    // Just under the 16 tier the 8 tier is doubled; from 16 the 16 tier is drawn as it is, on its own anchor.
+    for (const span of [12, 15]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X8_TWICE);
+    for (const span of [16, 17, 23]) expect(paintTiered(40, 6, [arrowAt(span)]), `${span}`).toEqual(X16);
+  });
+
+  it('a tier is mirrored about its own anchor column', () => {
+    expect(paintTiered(40, 6, [arrowAt(8, { flip: true })])).toEqual(rows('', '', `${'.'.repeat(16)}52121`));
+  });
+
+  it('a sheet with tiers draws more detail at a large span than the scaled plain drawing, and the same without a span', () => {
+    const wide = [arrowAt(16)];
+    expect(paintTiered(40, 6, wide, PLAIN_ONLY)).toEqual(rows(...Array.from({ length: 4 }, () => `${'.'.repeat(18)}111122225555`)));
+    expect(changes(paintTiered(40, 6, wide))).toBeGreaterThan(changes(paintTiered(40, 6, wide, PLAIN_ONLY)));
+    expect(paintTiered(40, 6, [arrowAt(undefined)])).toEqual(paintTiered(40, 6, [arrowAt(undefined)], PLAIN_ONLY));
+  });
+
+  it('a tier of a name the sheet has no plain drawing for is not drawn: the stand-in is, and it is counted', () => {
+    const gaps = noGaps();
+    expect(paintTiered(3, 1, [{ kind: 'element', name: 'comet', x: 1, y: 0, ramp: WHITE, span: 8 }], TIERED, gaps)).toEqual(['5'.repeat(3)]);
+    expect(gaps.elements).toEqual(['comet']);
+  });
+
+  it('a tier is asked for by its own name like any drawing', () => {
+    expect(paintTiered(40, 6, [{ ...arrowAt(undefined), name: 'arrow/x8' } as SpaceItem])).toEqual(X8);
+  });
+
+  it('the same items and sheet give the same picture twice', () => {
+    const items = [arrowAt(15), arrowAt(16, { flip: true })];
+    expect(hashBuffer(paintSpace(40, 6, items, TIERED, noGaps()))).toBe(hashBuffer(paintSpace(40, 6, items.map((item) => ({ ...item })), TIERED, noGaps())));
+  });
+});
+
+/** The first sheet's colours, with a planet drawn 5 wide and again 9 wide. */
+const PLANETS = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 3 ff0000', 'colour 4 800000', 'colour 5 0000ff', 'colour 6 000080',
+  'ramp ink 1 2 2 2',
+  'ramp red 3 4 4 3',
+  'ramp accent 5 6 6 6',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '5', '',
+  'element planet/gas anchor=2,2', '.121.', '15551', '24142', '15551', '.121.', '',
+  'element planet/gas/x9 anchor=4,4', '...121...', '.1155511.', '.5141415.', '151414151', '254444452', '151414151', '.5141415.', '.1155511.', '...121...',
+].join('\n'));
+const paintPlanet = (r: number, bands: readonly number[], element?: string, gaps: Gaps = noGaps()): string[] =>
+  toAscii(paintSpace(11, 11, [{ kind: 'disc', x: 5, y: 5, r, bands, ...(element === undefined ? {} : { element }) }], PLANETS, gaps)).split('\n');
+
+describe('a disc that the sheet may draw', () => {
+  it('is the element of that name when the sheet has it, in the ramp nearest its middle band; the bands when it has not, and that is no gap', () => {
+    const banded = paintPlanet(2, [BLUE, RED, BLUE]);
+    expect(banded).toEqual(['...........', '...........', '...........', '....555....', '...55555...', '...33333...', '...33333...', '....555....', '...........', '...........', '...........']);
+    expect(paintPlanet(2, [BLUE, RED, BLUE], 'planet/gas')).toEqual(['...........', '...........', '...........', '....343....', '...35553...', '...43334...', '...35553...', '....343....', '...........', '...........', '...........']);
+    expect(paintPlanet(2, [BLUE, WHITE, BLUE], 'planet/gas')[5]).toBe('...22122...');
+    const gaps = noGaps();
+    expect(paintPlanet(2, [BLUE, RED, BLUE], 'planet/ice', gaps)).toEqual(banded);
+    expect(gaps.elements).toEqual([]);
+  });
+
+  it('is drawn to the width of the disc: a size tier when one fits, in whole steps beyond', () => {
+    expect(paintPlanet(4, [RED], 'planet/gas')).toEqual(['...........', '....343....', '..3355533..', '..5333335..', '.353333353.', '.453333354.', '.353333353.', '..5333335..', '..3355533..', '....343....', '...........']);
+    // Radius 3 is 7 wide: under the 9 tier, and under one and a half times the 5 wide drawing.
+    expect(paintPlanet(3, [RED], 'planet/gas')).toEqual(paintPlanet(2, [RED], 'planet/gas'));
+  });
+
+  it('keeps its bands while it is narrower than the smallest drawing', () => {
+    expect(paintPlanet(1, [RED], 'planet/gas')).toEqual(paintPlanet(1, [RED]));
+    expect(paintPlanet(1, [RED])[5]).toBe('....333....');
+  });
+
+  it('fittedWidth is the width an element is drawn at for a span it fits in', () => {
+    expect([5, 7, 8, 9, 13, 14, 22, 23].map((span) => fittedWidth(PLANETS, 'planet/gas', span))).toEqual([5, 5, 10, 9, 9, 18, 18, 27]);
+    expect(fittedWidth(PLANETS, 'planet/gas', 4)).toBeUndefined();
+    expect(fittedWidth(PLANETS, 'planet/ice', 40)).toBeUndefined();
+  });
+});
 
 describe('nearest colour and ramp', () => {
   it('the nearest palette colour is chosen, and a tie goes to the lower index', () => {

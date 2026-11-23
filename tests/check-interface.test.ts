@@ -24,8 +24,8 @@ const BLOCK_16 = Array.from({ length: 16 }, () => '1'.repeat(16)).join('\n');
 describe('checkInterface', () => {
   it('the placeholder sheet checks OK', () => {
     const report = checkInterface(PLACEHOLDER);
-    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 60, line: 12 } });
-    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 97 glyphs (line 12), 6 icons, 60 elements\n');
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 60, tiers: 0, line: 12 } });
+    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 97 glyphs (line 12), 6 icons, 60 elements, 0 size tiers\n');
   });
   it('a sheet that does not parse reports the parser\'s line and nothing else', () => {
     const report = checkInterface(PLACEHOLDER.replace('interface 1', 'interface 3'));
@@ -46,6 +46,52 @@ describe('checkInterface', () => {
     expect(report.problems).toEqual(problems);
     expect(report.ok).toBe(false);
     expect(formatInterfaceReport(report).split('\n').slice(0, 2)).toEqual(['check-interface: FAILED', `error: ${problems[0]}`]);
+  });
+});
+
+describe('size tiers in the checker', () => {
+  /** A drawing `w` wide and two rows high. */
+  const tier = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n${'2'.repeat(w)}\n`;
+  // The placeholder's quasar is 9 wide.
+  it('any tier of a listed element is accepted when it is drawn at the width its name gives, and is counted apart', () => {
+    const report = checkInterface(PLACEHOLDER + tier('quasar/x32', 32) + tier('quasar/x64', 64) + tier('galaxy/spiral/v0/x128', 128) + tier('wormhole/t1/x24', 24));
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 60, tiers: 4, line: 12 } });
+    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 97 glyphs (line 12), 6 icons, 60 elements, 4 size tiers\n');
+  });
+  it.each([
+    ['a tier drawn at another width than its name gives', tier('quasar/x32', 31), ['tier quasar/x32 is 31 wide, not 32']],
+    ['a tier of an unknown element', tier('comet/x32', 32), ['tier comet/x32 is of an unknown element comet']],
+    ['a tier no wider than the element itself', tier('quasar/x9', 9), ['tier quasar/x9 is no wider than its element (9)']],
+    ['a tier of a tier', tier('quasar/x32', 32) + tier('quasar/x32/x64', 64), ['tier quasar/x32/x64 is of an unknown element quasar/x32']],
+    ['a tier whose number is not written plainly', tier('quasar/x032', 32), ['unknown element quasar/x032']],
+  ])('reports %s', (_what, extra, problems) => {
+    const report = checkInterface(PLACEHOLDER + extra);
+    expect(report.parseError).toBeNull();
+    expect(report.problems).toEqual(problems);
+    expect(report.ok).toBe(false);
+  });
+  it('a tier is no stand-in for its element: the element is still missing', () => {
+    expect(checkInterface(without('element quasar anchor=4,4') + tier('quasar/x32', 32)).problems).toEqual(['missing element quasar']);
+  });
+});
+
+describe('planet drawings in the checker', () => {
+  const drawing = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n`;
+  it('a planet type may have a drawing, and tiers of it, or none: none is required', () => {
+    const report = checkInterface(PLACEHOLDER + drawing('planet/gas', 8) + drawing('planet/gas/x16', 16) + drawing('planet/lava', 8));
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 62, tiers: 1, line: 12 } });
+  });
+  it('a planet of no type the game makes is unknown, and a tier of a planet the sheet does not draw is reported', () => {
+    expect(checkInterface(PLACEHOLDER + drawing('planet/mud', 8)).problems).toEqual(['unknown element planet/mud']);
+    expect(checkInterface(PLACEHOLDER + drawing('planet/gas/x16', 16)).problems).toEqual(['tier planet/gas/x16 has no element planet/gas']);
+  });
+});
+
+describe('colours a map can show', () => {
+  it('a colour numbered past 255 is reported: a map picture holds one byte a pixel', () => {
+    expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 255 ffffff\nramp ink')).problems).toEqual([]);
+    expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 256 ffffff\ncolour 5000 ffffff\nramp ink')).problems)
+      .toEqual(['the palette runs to colour 5000: a map picture holds one byte a pixel, so colour numbers stop at 255']);
   });
 });
 

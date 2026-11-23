@@ -65,7 +65,31 @@ describe('parseInterfaceSheet', () => {
     expect(() => parseInterfaceSheet(withLine(26, '1x1'))).toThrow(/^line 26: unknown pixel character 'x'$/);
     expect(() => parseInterfaceSheet(withAfter(12, '1..1', '1..1', '1..1'))).toThrow(/^line 15: glyph U\+0041 is taller than the line \(6\)$/);
   });
+  it('a colour and a ramp may name a colour far past the old limit of 95', () => {
+    const sheet = parseInterfaceSheet(withAfter(6, 'colour 5000 123456', 'ramp far 5000 5000 5000 5000'));
+    expect(sheet.palette.colours[5000]).toBe(0x123456);
+    expect(sheet.palette.ramps['far']).toEqual([5000, 5000, 5000, 5000]);
+  });
+  it('an element may name its own ramps, up to five, for its values in fours; tint is the ramp its place on the map gives it', () => {
+    const sheet = parseInterfaceSheet(withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,tint,ink,ink,ink', '159dh', '48cgk'));
+    expect(sheet.elements.get('nebula')).toEqual({ w: 5, h: 2, pixels: Uint8Array.from([1, 5, 9, 13, 17, 4, 8, 12, 16, 20]), anchor: [0, 0], ramps: ['ink', 'tint', 'ink', 'ink', 'ink'] });
+    // A ramp may be declared after the element that names it.
+    expect(parseInterfaceSheet(sheetOf([...SMALL.slice(0, 2), ...SMALL.slice(6), '', 'element nebula anchor=0,0 ramps=late', '4', '', 'palette', 'colour 0 101018', 'colour 1 e9edff', 'ramp ink 1 1 1 0', 'ramp late 1 1 1 1']))
+      .elements.get('nebula')?.ramps).toEqual(['late']);
+    expect(sheet.elements.get('star/small')).not.toHaveProperty('ramps');
+  });
   it.each([
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,rose', '1'), 'line 29: element nebula names the ramp rose, which is not defined'],
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,ink,ink,ink,ink,ink', '1'), 'line 29: an element names one to five ramps'],
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=', '1'), 'line 29: bad name '],
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,Ink', '1'), 'line 29: bad name Ink'],
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink', '15'), "line 30: pixel value '5' is above 4"],
+    [withAfter(27, '', 'element nebula anchor=0,0 ramps=ink,ink,ink,ink,ink', '1l'), "line 30: pixel value 'l' is above 20"],
+    [withAfter(6, 'ramp tint 1 1 1 1'), "line 7: the ramp name tint is kept for an element's tint"],
+    [withAfter(6, 'colour 16777216 ffffff'), 'line 7: bad colour index 16777216'],
+    [withAfter(6, 'colour -1 ffffff'), 'line 7: bad colour index -1'],
+    [withAfter(6, 'ramp far 1 1 1 16777216'), 'line 7: bad colour index 16777216'],
+    [withAfter(6, 'ramp far 1 1 1 -1'), 'line 7: bad colour index -1'],
     [withLine(1, 'interface 2'), 'line 1: expected interface 1'],
     [sheetOf(SMALL.slice(2)), 'line 1: expected interface 1'],
     [withLine(9, '.19.'), "line 9: pixel value '9' is above 8"],
