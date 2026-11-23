@@ -43,7 +43,12 @@ const DISC_MIN = 3;
 
 function lettering(frame: MapFrame, charter: string): { labels: Lettering[]; drawn: Drawn[] } {
   const { nav, cam, view } = frame;
-  const labels: Lettering[] = mapCaptions(frame).map((caption) => ({ ...caption, hold: 'centre', bx: caption.wx, by: caption.wy, off: 0, r: 0, ring: 0, rank: 3 }));
+  // The game stands the name of a comet and of the visitor on its foot above the thing; a frame that does not ask for
+  // that has every caption centred on its point.
+  const stood = frame.placement?.stand === true;
+  const labels: Lettering[] = mapCaptions(frame).map(({ text, wx, wy, stand }) => (stood && stand !== undefined
+    ? { text, wx, wy, hold: 'above', bx: wx, by: wy + stand, off: stand, r: 0, ring: 0, rank: 3 }
+    : { text, wx, wy, hold: 'centre', bx: wx, by: wy, off: 0, r: 0, ring: 0, rank: 3 }));
   const drawn: Drawn[] = [];
   // Reduced motion holds every clock of the map at its start.
   const time = frame.passes?.motion === false ? 0 : frame.time;

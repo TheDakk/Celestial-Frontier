@@ -278,7 +278,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
           // Its words stand clear of each other, of their bodies and of what covers the map.
-          placement: { keepOut: covered(), tails: true },
+          placement: { keepOut: covered(), tails: true, stand: true },
         };
         const picture = mapPicture(shown, sheet, gaps);
         showSpace(canvas, picture, sheet.palette.colours, ports.dpr());

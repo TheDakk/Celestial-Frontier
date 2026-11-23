@@ -177,24 +177,25 @@ export function turnBeams(items: readonly SpaceItem[], v: PassView): SpaceItem[]
 }
 
 /** The captions of a system map's passes: the habitable zone with the charts, each comet by its name, and the
- *  visitor, the last two once the view is near enough. In world units, where the game anchors them. */
-export function systemCaptions(v: PassView): { text: string; wx: number; wy: number }[] {
+ *  visitor, the last two once the view is near enough. In world units, where the game anchors them: the names of a
+ *  comet and of the visitor stand on their point, two and four units above the thing. */
+export function systemCaptions(v: PassView): { text: string; wx: number; wy: number; stand?: number }[] {
   if (v.nav.mode !== 'system') return [];
   const seed = v.nav.star.seed;
   const raw = rawOf(seed);
-  const captions: { text: string; wx: number; wy: number }[] = [];
+  const captions: { text: string; wx: number; wy: number; stand?: number }[] = [];
   const hz = systemScene(seed).hz as [number, number] | null;
   if (v.charts && hz !== null) captions.push({ text: 'habitable zone', wx: 0, wy: -(hz[0] + hz[1]) / 2 });
   const minSide = minSideOf(v.view);
   if (v.zoom > minSide / 520) {
     (raw.comets ?? []).forEach((comet, i) => {
       const at = cometAt(comet, v.time);
-      captions.push({ text: `Comet ${properName(hashInt(seed, 31 + i, 17), 2)}`, wx: at.x, wy: at.y - 2 });
+      captions.push({ text: `Comet ${properName(hashInt(seed, 31 + i, 17), 2)}`, wx: at.x, wy: at.y - 2, stand: 2 });
     });
   }
   if (raw.visitor !== undefined && v.zoom > minSide / 650) {
     const at = visitorAt(raw.visitor, v.time);
-    captions.push({ text: 'interstellar object', wx: at.x, wy: at.y - 4 });
+    captions.push({ text: 'interstellar object', wx: at.x, wy: at.y - 4, stand: 4 });
   }
   return captions;
 }

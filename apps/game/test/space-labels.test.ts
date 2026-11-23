@@ -10,7 +10,7 @@ import { cometsDrawn } from '../src/space/passes-system';
 import { artCamera, artGrid, artScale } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
 import { cosSin } from '../src/space/model';
-import { SOL, WORMHOLE_GALAXY, galaxyNav, systemNav } from './space-support';
+import { SOL, VISITED, WORMHOLE_GALAXY, galaxyNav, systemNav } from './space-support';
 
 const VIEW = { w: 1280, h: 720 };
 const frame = (over: Partial<MapFrame>): MapFrame =>
@@ -161,5 +161,42 @@ describe('the words of a system keep off a comet\'s tail', () => {
   });
   it('a frame that does not ask for it letters the words as before', () => {
     for (const at of VIEWS) expect(ORBIT.flatMap((time) => crossed(at, time, false)).length).toBeGreaterThan(20);
+  });
+});
+
+describe('the name of a comet and of the visitor', () => {
+  const font = parseInterfaceSheet(testInterfaceSheetText()).font;
+  // Near enough for both: 720 / 520 is 1.385.
+  const near = (nav: MapFrame['nav'], placement?: MapFrame['placement']): MapFrame => frame({ nav, cam: { x: 0, y: 0, z: 1.4 }, ...(placement === undefined ? {} : { placement }) });
+  const [cos, sin] = [Math.cos(1.1), Math.sin(1.1)];
+
+  it('stands on its foot two units above the comet where the frame asks for it, as the game anchors it', () => {
+    const asked = near(systemNav(), { keepOut: [], stand: true });
+    const label = mapLabels(asked, 'x').find((l) => l.text.startsWith('Comet '))!;
+    expect(label.hold).toBe('above');
+    expect([label.wx, label.wy]).toEqual([expect.closeTo(27 * cos, 9), expect.closeTo(27 * sin - 2, 9)]);
+    // On the map: centred over the comet's head, its foot two world units above it.
+    const scale = artScale(VIEW.w, VIEW.h, 1);
+    const cam = artCamera(asked.cam, 1, scale);
+    const [head] = cometsDrawn({ effects: true, motion: true, nav: asked.nav, cam, grid: artGrid(VIEW.w, VIEW.h, 1, scale), view: VIEW, zoom: 1.4, time: 0, reach: 880, charts: false }).map((comet) => comet.head);
+    const box = placedLabels(asked, 'x', font).find((l) => l.text.startsWith('Comet '))!;
+    expect([box.side, box.x, box.y + box.h]).toEqual(['above', head!.x - (box.w >> 1), head!.y - Math.round(2 * cam.z)]);
+  });
+
+  it('lies centred on the game\'s point in a frame that does not ask, as before', () => {
+    for (const placement of [undefined, { keepOut: [] }, { keepOut: [], tails: true }]) {
+      const label = mapLabels(near(systemNav(), placement), 'x').find((l) => l.text.startsWith('Comet '))!;
+      expect(label).toEqual({ text: label.text, wx: expect.closeTo(27 * cos, 9), wy: expect.closeTo(27 * sin - 2, 9), hold: 'centre' });
+    }
+    expect(placedLabels(near(systemNav(), { keepOut: [] }), 'x', font).find((l) => l.text.startsWith('Comet '))!.side).toBe('centre');
+  });
+
+  it('the visitor\'s stands four units above it', () => {
+    const visited = systemNav(VISITED);
+    const plain = mapLabels(near(visited), 'x').find((l) => l.text === 'interstellar object')!;
+    const stood = mapLabels(near(visited, { keepOut: [], stand: true }), 'x').find((l) => l.text === 'interstellar object')!;
+    expect([plain.hold, stood.hold, stood.wx, stood.wy]).toEqual(['centre', 'above', plain.wx, plain.wy]);
+    // The words of the place itself are not stood: the habitable zone lies on its band.
+    expect(mapLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: 1.4 }, charts: true, placement: { keepOut: [], stand: true } }), 'x').find((l) => l.text === 'habitable zone')!.hold).toBe('centre');
   });
 });

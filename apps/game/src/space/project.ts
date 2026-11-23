@@ -256,8 +256,9 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
 export interface MapFrame {
   nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
-   *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail. */
-  placement?: { keepOut: readonly { x: number; y: number; w: number; h: number }[]; tails?: boolean };
+   *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail; with
+   *  `stand`, the name of a comet and of the visitor stands on its foot above it, as the game anchors it. */
+  placement?: { keepOut: readonly { x: number; y: number; w: number; h: number }[]; tails?: boolean; stand?: boolean };
 }
 export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
 

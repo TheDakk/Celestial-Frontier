@@ -6,7 +6,9 @@ import { hazeItems, stirGalaxyBody } from './passes-galaxy';
 import { cometItems, dressPlanet, systemCaptions, turnBeams, visitorItems, zoneItems } from './passes-system';
 import { bridgeItems, charterShown, edgeItems, fogItems, turnGalaxy, veilItems, webCaptions, webItems } from './passes-universe';
 
-export interface Caption { text: string; wx: number; wy: number }
+/** Words anchored at a world point. With `stand` the game stands them on that point, their foot on it, this many
+ *  world units above the thing they name; without it they lie centred on the point. */
+export interface Caption { text: string; wx: number; wy: number; stand?: number }
 
 /**
  * Everything a map paints, from the back. The universe: the star field, the cosmic web, the bridges, the charter's
