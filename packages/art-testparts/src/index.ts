@@ -13,3 +13,4 @@ export function testCatalogue(): Catalogue {
   cached ??= parseCatalogueText(readFileSync(new URL('./quadruped.txt', import.meta.url), 'utf8'));
   return cached;
 }
+export const testInterfaceSheetText = (): string => readFileSync(new URL('./interface.txt', import.meta.url), 'utf8');
