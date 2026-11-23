@@ -132,7 +132,8 @@ export function createSaveLoop(deps: {
         live.savedView = outcome.saved.canonicalState.savedView;
         live.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;
         lastCheckpointAt = clocks.monotonicNow();
-        bus.emit('save:committed', { revision: outcome.revision });
+        // The checkpoint is stored and published. A listener that fails on hearing of it has not undone that.
+        try { bus.emit('save:committed', { revision: outcome.revision }); } catch { /* the listener's own fault */ }
         return true;
       }
       epoch.reject(stage);

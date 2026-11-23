@@ -406,13 +406,15 @@ describe('save loop', () => {
     expect(a.reloads).toEqual([]);
   });
 
-  it('a checkpoint that is stored but whose announcement fails counts as stored and asks for a reload', async () => {
+  it('a listener that fails on hearing of a stored checkpoint costs the page nothing: it is stored and the page keeps writing', async () => {
     const h = await bootedHarness();
     h.bus.on('save:committed', () => { throw new Error('listener failed'); });
     h.live.fsMode = 'fs-xl';
     expect(await h.loop.request('settings')).toBe(true);
-    expect(h.loop.status).toBe('reload-required');
-    expect(h.reloads).toEqual(['checkpoint committed; publication listener failed']);
-    expect((await boot(h.backend)).state.fsMode).toBe('fs-xl');
+    expect([h.loop.status, h.reloads, h.loop.mayWrite()]).toEqual(['idle', [], true]);
+    h.live.toneMode = 'tone-max';
+    expect(await h.loop.request('settings')).toBe(true);
+    const stored = (await boot(h.backend)).state;
+    expect([stored.fsMode, stored.toneMode]).toEqual(['fs-xl', 'tone-max']);
   });
 });
