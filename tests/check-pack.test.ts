@@ -1741,3 +1741,56 @@ describe('checkPack: the bone ramp, needed only when a part draws bone values', 
     expect(wholePack(planted(HEAD_ROWS, BONE_HEAD, own)).structure).toEqual([NO_BONE]);
   });
 });
+
+describe('checkPack: deep values (p to s), which need nothing of the palette', () => {
+  const HEAD_ROWS = '666666\n666666\n666666\n666666\n555555\n';
+  const DEEP_HEAD = 'qqqqqq\n666666\n666666\n666666\n555555\n';
+  const layered = planted(TORSO_ROWS, LAYERED_ROWS);
+
+  it('a part drawing deep, in its rows or in a hand-drawn layer, is OK with no ramp for it, and the report is that of the same pack drawn in hide', () => {
+    // The same pack drawn in hide: the good pack, and the good pack with a hand-drawn striped layer on the head.
+    const striped = (c: string): string => planted(HEAD_ROWS, `${HEAD_ROWS}layer striped\n.${c}....\n......\n......\n......\n......\n`);
+    for (const [text, hide] of [[planted(HEAD_ROWS, DEEP_HEAD), GOOD], [striped('s'), striped('8')]] as const) {
+      const r = checkPack(text);
+      expect(r.parseError).toBeNull();
+      expect(r.structure).toEqual([]);
+      expect(errorsOf(r)).toEqual([]);
+      expect(r.ok).toBe(true);
+      expect(formatReport(r)).toBe(formatReport(checkPack(hide)));
+    }
+    // The same from the command: OK, exit 0, no word of deep or bone.
+    const dir = mkdtempSync(join(tmpdir(), 'check-pack-deep-'));
+    try {
+      writeFileSync(join(dir, 'pack.txt'), planted(HEAD_ROWS, DEEP_HEAD));
+      const run = spawnSync(process.execPath, [TOOL, join(dir, 'pack.txt')], { encoding: 'utf8' });
+      expect(run.stdout.split('\n')[0]).toBe('check-pack: OK');
+      expect(run.stdout).not.toMatch(/deep|bone/);
+      expect(run.status).toBe(0);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('a layer pixel over deep is outside the drawn area, as one over bone or an eye value is', () => {
+    const over = (top: string): string[] => errorsOf(checkPack(planted('layer flow\n..3456789abc', 'layer flow\n123456789abc', planted('.d2222222222', top, layered))));
+    const line = (n: number): string => `error: part ${TORSO_ID} frame rest: layer flow has ${n} pixels outside the drawn area`;
+    for (const c of 'pqrs') expect(over(`.${c}2222222222`), c).toEqual([line(2)]);
+    expect(over('.l2222222222')).toContain(line(2));
+    expect(over('.d2222222222')).toEqual([line(2)]);
+    // Control: over hide, only the pixel over nothing is outside.
+    expect(over('.22222222222')).toEqual([line(1)]);
+  });
+
+  it('the neck rule reads no deep pixel, as it reads no bone pixel', () => {
+    // Accent shade 3 on the head against primary shade 1 on the torso: two steps, a warning counting the head's left column.
+    const torso = planted(TORSO_ROWS, TORSO_ROWS.replace('111111111111', '222222222222'));
+    const neckOf = (head: string) => checkPack(planted(HEAD_ROWS, head, torso)).neck.map((n) => n.pixels);
+    expect(neckOf('888888\n888888\n888888\n888888\n888888\n')).toEqual([9]);
+    // The left column in deep's lightest value (shade 3, as 8 is): those five pixels are no longer read.
+    const deep = neckOf('s88888\ns88888\ns88888\ns88888\ns88888\n');
+    expect(deep).toEqual([4]);
+    expect(neckOf('o88888\no88888\no88888\no88888\no88888\n')).toEqual(deep);
+    // A head all in deep is silent.
+    expect(neckOf('ssssss\nssssss\nssssss\nssssss\nssssss\n')).toEqual([]);
+  });
+});

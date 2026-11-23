@@ -78,8 +78,8 @@ const SHIFT_PAIRS = SHIFTS.flatMap((head) => SHIFTS.map((tail) => ({ head, tail 
 const HEAD_OR_TAIL_SHIFTS = [...HEAD_SHIFTS, ...TAIL_SHIFTS.filter((s) => s.tail[0] !== 0 || s.tail[1] !== 0)];
 // Each slot drawn in the label picture with its own value, so a detached region says which slot it is.
 const SLOT_LABEL = { torso: 1, tail: 2, farLimbs: 3, nearLimbs: 4, head: 5, eyes: 10, back: 7, headFeature: 8, glow: 9, bodyFeature: 6, farWings: 11, nearWings: 12 };
-/** The first per-part label of the hidden-part pictures: above every pixel value (0-24), so the composer's iris rewrite of 5-8 can never touch a label. */
-const LABEL_BASE = 25;
+/** The first per-part label of the hidden-part pictures: above every pixel value (0-28), so the composer's iris rewrite of 5-8 can never touch a label. */
+const LABEL_BASE = 29;
 const LABEL_SLOT = Object.fromEntries(Object.entries(SLOT_LABEL).map(([slot, v]) => [v, slot]));
 /** The palette's iris ramp names, iris0 to iris10: one per theme, in THEME_NAMES order. */
 const IRIS_RAMPS = Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => `iris${i}`);
@@ -94,7 +94,7 @@ const TRANSLUCENT_SKIN = SKIN_NAMES.indexOf('translucent');
 const FORCED_PATTERN = 1;
 /**
  * Hide ramp values are 1-12 (three ramps of four); a value's shade step is its position in its ramp, 0 darkest to 3 lightest.
- * Bone (21-24) is not hide: no mark or skin is painted on it, so a layer pixel over it is outside the drawn area, and the neck rule does not read it.
+ * Bone (21-24) and deep (25-28) are not hide: no mark or skin is painted on them, so a layer pixel over either is outside the drawn area, and the neck rule reads neither.
  */
 const inRamp = (v) => v >= 1 && v <= 12;
 const isBone = (v) => v >= PIXEL_BONE && v < PIXEL_BONE + 4;
