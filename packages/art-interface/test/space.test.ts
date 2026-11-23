@@ -34,6 +34,43 @@ const noGaps = (): Gaps => ({ glyphs: [], icons: [], elements: [] });
 const paint = (w: number, h: number, items: readonly SpaceItem[], gaps: Gaps = noGaps()) => toAscii(paintSpace(w, h, items, SHEET, gaps)).split('\n');
 const WHITE = 0xffffff, RED = 0xff0000, BLUE = 0x0000ff;
 
+/** A sheet of nebulae with their own ramps: magenta 3 4, teal 5 6, dust 7 8, and the ramps a tint can fall on. */
+const NEBULAE = parseInterfaceSheet([
+  'interface 1',
+  'palette',
+  'colour 0 000000', 'colour 1 ffffff', 'colour 2 808080', 'colour 3 ff40c0', 'colour 4 802060', 'colour 5 40e0d0', 'colour 6 207068', 'colour 7 a08060', 'colour 8 504030',
+  'colour 9 ff0000', 'colour 10 800000',
+  'ramp ink 1 2 2 2',
+  'ramp accent 2 2 2 2',
+  'ramp red 9 10 10 10',
+  'ramp magenta 3 3 4 4',
+  'ramp teal 5 5 6 6',
+  'ramp dust 7 7 8 8',
+  'font display line=1 base=1 gap=0 space=1',
+  'glyph U+FFFD', '1', '',
+  'icon missing size=1', '1', '',
+  'element deco/h2 anchor=0,0 ramps=magenta,dust', '1458', '',
+  'element deco/plan anchor=0,0 ramps=teal,magenta,dust', '158c', '',
+  'element deco/five anchor=0,0 ramps=tint,magenta,teal,dust,ink', '159dh', '48cgk', '',
+  'element deco/plain anchor=0,0', '15',
+].join('\n'));
+const paintNebulae = (w: number, h: number, items: readonly SpaceItem[]) => toAscii(paintSpace(w, h, items, NEBULAE, noGaps())).split('\n');
+
+describe('an element with its own ramps', () => {
+  it('an emission nebula in magenta and a planetary nebula in teal are drawn from one sheet, whatever tint the map gives them', () => {
+    for (const ramp of [WHITE, RED, 0x40e0d0]) {
+      expect(paintNebulae(4, 2, [{ kind: 'element', name: 'deco/h2', x: 0, y: 0, ramp }, { kind: 'element', name: 'deco/plan', x: 0, y: 1, ramp }]), `${ramp}`).toEqual(['3478', '5348']);
+    }
+  });
+  it('values in fours take the ramps in the order named, to twenty; tint is the ramp nearest the colour the map gives', () => {
+    expect(paintNebulae(5, 2, [{ kind: 'element', name: 'deco/five', x: 0, y: 0, ramp: WHITE }])).toEqual(['13571', '24682']);
+    expect(paintNebulae(5, 2, [{ kind: 'element', name: 'deco/five', x: 0, y: 0, ramp: RED }])).toEqual(['93571', 'a4682']);
+  });
+  it('an element that names no ramp keeps the tint for its values 1 to 4 and the accent ramp for 5 to 8', () => {
+    expect(paintNebulae(2, 1, [{ kind: 'element', name: 'deco/plain', x: 0, y: 0, ramp: RED }])).toEqual(['92']);
+  });
+});
+
 describe('nearest colour and ramp', () => {
   it('the nearest palette colour is chosen, and a tie goes to the lower index', () => {
     expect(nearestColour(palette, 0xfefefe)).toBe(1);

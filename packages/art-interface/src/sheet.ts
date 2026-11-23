@@ -3,7 +3,9 @@ import type { Palette } from '@cf/art-format';
 
 export interface Glyph { readonly w: number; readonly h: number; readonly pixels: Uint8Array }
 export interface DisplayFont { readonly line: number; readonly base: number; readonly gap: number; readonly space: number; readonly glyphs: ReadonlyMap<number, Glyph> }
-export interface Drawing { readonly w: number; readonly h: number; readonly pixels: Uint8Array; readonly anchor: readonly [number, number] }
+/** `ramps`, on an element that names its own: the ramp of its values 1 to 4, then of 5 to 8, and so on in fours. */
+export interface Drawing { readonly w: number; readonly h: number; readonly pixels: Uint8Array; readonly anchor: readonly [number, number];
+  readonly ramps?: readonly string[] }
 export interface InterfaceSheet { readonly version: 1; readonly palette: Palette; readonly font: DisplayFont;
   readonly icons: ReadonlyMap<string, Drawing>; readonly elements: ReadonlyMap<string, Drawing> }
 
@@ -11,11 +13,17 @@ export interface InterfaceSheet { readonly version: 1; readonly palette: Palette
 export const BOX_GLYPH = 0xfffd;
 /** The icon drawn for a name the sheet has no icon for. Every sheet has it. */
 export const STAND_IN_ICON = 'missing';
+/** In an element's list of ramps: the ramp the map gives it, the one nearest its colour there. No palette ramp has this name. */
+export const TINT_RAMP = 'tint';
+/** The most ramps an element may name: its values then run to 20. */
+export const MAX_ELEMENT_RAMPS = 5;
 
 const SPACE = 32;
 /** The highest pixel value a drawing may hold (two ramps of four), and the highest a glyph may (the first ramp). */
 const MAX_VALUE = 8;
 const MAX_GLYPH_VALUE = 4;
+/** The colours of a ramp: an element's values run four to each ramp it names. */
+const RAMP_STEPS = 4;
 /** The largest line height, glyph gap, space width and icon size a sheet may ask for. */
 const MAX_SIZE = 64;
 const DIRECTIVES: readonly string[] = ['interface', 'palette', 'colour', 'ramp', 'font', 'glyph', 'icon', 'element'];
@@ -24,7 +32,7 @@ const RESERVED_NAMES: readonly string[] = ['constructor', 'prototype'];
 const FONT_FIELDS: readonly string[] = ['line', 'base', 'gap', 'space'];
 
 interface Open { kind: 'glyph' | 'icon' | 'element'; label: string; line: number; w: number; h: number; data: number[];
-  codePoint: number; name: string; size: number; anchor: readonly [number, number] }
+  codePoint: number; name: string; size: number; anchor: readonly [number, number]; ramps: readonly string[] | undefined }
 
 /** `U+0041` for a code point. */
 export function codePointLabel(codePoint: number): string {
@@ -37,7 +45,10 @@ export function codePointLabel(codePoint: number): string {
  * `font display line=<n> base=<n> gap=<n> space=<n>` line, before the first glyph; and drawings, each a header line
  * followed by its pixel rows and ended by a blank line, another header or the end of the text:
  * `glyph U+<hex>` (values 0 to 4; as wide as its rows; at most `line` rows, placed from the top of the line box),
- * `icon <name> size=<n>` (values 0 to 8; n rows of n) and `element <name> anchor=<x>,<y>` (values 0 to 8).
+ * `icon <name> size=<n>` (values 0 to 8; n rows of n) and `element <name> anchor=<x>,<y>` (values 0 to 8: 1 to 4 in
+ * the ramp the map gives it, 5 to 8 in the ramp `accent`). An element may instead name its own ramps,
+ * `element <name> anchor=<x>,<y> ramps=<ramp>,<ramp>,...`: one to five, each a ramp of the palette or the word `tint`
+ * (the ramp the map gives it); its values 1 to 4 take the first, 5 to 8 the second, and so on to four times as many.
  * Rows use the part format's pixel characters; a line starting with `#` is a comment. The space (U+0020) is never
  * drawn in the sheet: the font line's `space` is its width. Every sheet has a glyph U+FFFD (the box) and an icon
  * `missing` (the stand-in).
@@ -48,6 +59,7 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
   const definedColours = new Set<number>();
   const ramps = Object.create(null) as Record<string, readonly [number, number, number, number]>;
   const rampLines: Array<{ name: string; line: number }> = [];
+  const rampUses: Array<{ label: string; ramp: string; line: number }> = [];
   const glyphs = new Map<number, Glyph>();
   const icons = new Map<string, Drawing>();
   const elements = new Map<string, Drawing>();
@@ -100,10 +112,10 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
     if (done.kind === 'icon' && (done.w !== done.size || done.h !== done.size)) {
       fail(done.line, `${done.label} is ${done.w} by ${done.h}, not ${done.size} by ${done.size}`);
     }
-    (done.kind === 'icon' ? icons : elements).set(done.name, { w: done.w, h: done.h, pixels, anchor: done.anchor });
+    (done.kind === 'icon' ? icons : elements).set(done.name, { w: done.w, h: done.h, pixels, anchor: done.anchor, ...(done.ramps === undefined ? {} : { ramps: done.ramps }) });
   };
   const start = (kind: Open['kind'], label: string, line: number, extra: Partial<Open>): void => {
-    drawing.open = { kind, label, line, w: -1, h: 0, data: [], codePoint: 0, name: '', size: 0, anchor: [0, 0], ...extra };
+    drawing.open = { kind, label, line, w: -1, h: 0, data: [], codePoint: 0, name: '', size: 0, anchor: [0, 0], ramps: undefined, ...extra };
   };
 
   const lines = text.split('\n');
@@ -129,11 +141,11 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
         fail(n, `unknown directive '${word}'`);
       }
       if (open === undefined) fail(n, 'pixel row outside a drawing');
-      const top = open.kind === 'glyph' ? MAX_GLYPH_VALUE : MAX_VALUE;
+      const most = open.ramps === undefined ? MAX_VALUE : RAMP_STEPS * open.ramps.length;
       for (const c of row) {
         const v = PIXEL_CHARS.indexOf(c);
-        if (v > MAX_VALUE) fail(n, `pixel value '${c}' is above ${MAX_VALUE}`);
-        if (v > top) fail(n, `glyph value '${c}' is above ${top}`);
+        if (v > most) fail(n, `pixel value '${c}' is above ${most}`);
+        if (open.kind === 'glyph' && v > MAX_GLYPH_VALUE) fail(n, `glyph value '${c}' is above ${MAX_GLYPH_VALUE}`);
         open.data.push(v);
       }
       if (open.w < 0) open.w = row.length;
@@ -170,6 +182,7 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
         if (!inPalette) fail(n, 'ramp outside a palette');
         if (args.length !== 5) fail(n, 'bad ramp');
         const rampName = name(args[0] as string, n, false);
+        if (rampName === TINT_RAMP) fail(n, `the ramp name ${TINT_RAMP} is kept for an element's tint`);
         if (rampName in ramps) fail(n, `duplicate ramp ${rampName}`);
         const ramp = [colourIndex(args[1], n), colourIndex(args[2], n), colourIndex(args[3], n), colourIndex(args[4], n)] as const;
         ramps[rampName] = ramp;
@@ -213,12 +226,17 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
       }
       case 'element': {
         const elementName = name(args[0] as string, n, true);
-        const anchor = options(args.slice(1), n, ['anchor']).get('anchor');
+        const opts = options(args.slice(1), n, ['anchor', 'ramps']);
+        const anchor = opts.get('anchor');
         if (anchor === undefined) fail(n, 'element needs an anchor');
         const xy = anchor.split(',');
         if (xy.length !== 2) fail(n, 'expected x,y');
         if (elements.has(elementName)) fail(n, `duplicate element ${elementName}`);
-        start('element', `element ${elementName}`, n, { name: elementName, anchor: [int(xy[0], n), int(xy[1], n)] });
+        const label = `element ${elementName}`;
+        const own = opts.get('ramps')?.split(',').map((ramp) => name(ramp, n, false));
+        if (own !== undefined && own.length > MAX_ELEMENT_RAMPS) fail(n, 'an element names one to five ramps');
+        for (const ramp of own ?? []) if (ramp !== TINT_RAMP) rampUses.push({ label, ramp, line: n });
+        start('element', label, n, { name: elementName, anchor: [int(xy[0], n), int(xy[1], n)], ramps: own });
         break;
       }
     }
@@ -231,6 +249,7 @@ export function parseInterfaceSheet(text: string): InterfaceSheet {
     const missing = (ramps[rampName] ?? []).find((index) => !definedColours.has(index));
     if (missing !== undefined) fail(line, `ramp ${rampName} uses colour ${missing}, which is not defined`);
   }
+  for (const { label, ramp, line } of rampUses) if (!(ramp in ramps)) fail(line, `${label} names the ramp ${ramp}, which is not defined`);
   if (metrics === undefined) fail(last, 'no font');
   if (!glyphs.has(BOX_GLYPH)) fail(last, `no glyph ${codePointLabel(BOX_GLYPH)}`);
   if (!icons.has(STAND_IN_ICON)) fail(last, `no icon named ${STAND_IN_ICON}`);

@@ -1,6 +1,6 @@
 import type { Palette } from '@cf/art-format';
 import type { PixelBuffer } from '@cf/art-compose';
-import { STAND_IN_ICON } from './sheet';
+import { STAND_IN_ICON, TINT_RAMP } from './sheet';
 import type { Drawing, InterfaceSheet } from './sheet';
 import type { Gaps } from './text';
 
@@ -8,7 +8,8 @@ import type { Gaps } from './text';
  * One thing on a map, placed in whole art pixels; x grows rightward and y downward from the picture's top left corner.
  * Every colour is 0xRRGGBB and is shown in the sheet's palette colour nearest it.
  * - element: the sheet's drawing of that name with its anchor on (x, y), mirrored left to right about the anchor column
- *   with `flip`. Its values 1 to 4 take the palette ramp whose first colour is nearest `ramp`, 5 to 8 the ramp `accent`.
+ *   with `flip`. Its values 1 to 4 take the palette ramp whose first colour is nearest `ramp` (its tint), 5 to 8 the
+ *   ramp `accent`; a drawing that names its own ramps takes those instead, four values to each in the order named.
  *   With `span`, the width in art pixels it is to cover, it is drawn in whole steps: at 1, 2, 3 ... times its size,
  *   whichever brings its own width nearest (halfway goes up, and never under 1), each of its pixels a square block.
  * - dot: one pixel.
@@ -121,7 +122,8 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
       ay = drawing.h >> 1;
     }
     const first = palette.ramps[nearestRamp(palette, item.ramp) ?? ''];
-    const ramps = [first, palette.ramps[SECOND_RAMP] ?? first];
+    const ramps = drawing.ramps === undefined ? [first, palette.ramps[SECOND_RAMP] ?? first]
+      : drawing.ramps.map((name) => (name === TINT_RAMP ? first : palette.ramps[name] ?? first));
     // The whole number of times its size nearest the span: k steps up while k and a half widths still fit in it.
     const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
     let k = 1;
