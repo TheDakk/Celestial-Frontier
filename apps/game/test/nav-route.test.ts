@@ -50,25 +50,25 @@ describe('the saved route at boot', () => {
     }
   });
 
-  it('a saved route that cannot be proven falls back to Sol and is repaired once, not on every boot', () => {
+  it('a saved route that cannot be proven falls back to the universe and is repaired once, not on every boot', () => {
     const noSuchStar = { type: 'star', gal: GALAXY, star: { x: 1, y: 2, seed: 3 } };
     for (const broken of [noSuchStar, { type: 'moon' }, 'CF1-', 7]) {
       const h = portsFor(NEW_GAME);
       const nav = createNavController(h.ports);
       nav.restore(stored(broken));
-      expect(nav.route()).toEqual(nav.solRoute());
-      expect(nav.route()).toMatchObject({ type: 'star', star: SOL });
+      expect(nav.nav).toBe(NAV_HOME);
+      expect(nav.route()).toEqual(navToView(NAV_HOME));
       expect(h.saves).toBe(1);
 
       const again = portsFor(NEW_GAME);
       const rebooted = createNavController(again.ports);
       rebooted.restore(stored(nav.route()));
-      expect(rebooted.route()).toEqual(nav.solRoute());
+      expect(rebooted.nav).toBe(NAV_HOME);
       expect(again.saves).toBe(0);
     }
   });
 
-  it('a saved route the save may no longer travel to falls back to Sol', () => {
+  it('a saved route the save may no longer travel to falls back to the universe', () => {
     const scout = createNavController(portsFor(ownerOf('igdrive')).ports);
     scout.enterGalaxy(HOME);
     scout.enterSystem(KAUM);
@@ -79,7 +79,7 @@ describe('the saved route at boot', () => {
     const h = portsFor(NEW_GAME);
     const nav = createNavController(h.ports);
     nav.restore(stored(scout.route()));
-    expect(nav.route()).toEqual(nav.solRoute());
+    expect(nav.nav).toBe(NAV_HOME);
     expect(h.saves).toBe(1);
   });
 
@@ -92,6 +92,14 @@ describe('the saved route at boot', () => {
     nav.restore({ ...(stored(scout.route()) as object), type: 'planet', pseed: 133 });
     expect(navToView(nav.nav)).toEqual(scout.route());
     expect(h.saves).toBe(0);
+  });
+
+  it('a new expedition is seated in Sol by the route it is first stored with', () => {
+    const h = portsFor(NEW_GAME);
+    const nav = createNavController(h.ports);
+    nav.restore(stored(nav.solRoute()));
+    expect(nav.route()).toMatchObject({ type: 'star', star: SOL });
+    expect([nav.nav.mode, h.saves]).toEqual(['system', 0]);
   });
 
   it('an empty saved route is the universe', () => {

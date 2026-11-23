@@ -11,6 +11,12 @@ export function pretendLayout(): void {
   Object.defineProperty(HTMLElement.prototype, 'getClientRects', { configurable: true, value: () => [{ width: 58, height: 44 }] });
 }
 
+/** Gives every element a size, as a laid-out page would: jsdom has none. */
+export function pretendSize(width: number, height: number): void {
+  Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, get: () => width });
+  Object.defineProperty(HTMLElement.prototype, 'clientHeight', { configurable: true, get: () => height });
+}
+
 export function setVisibility(state: 'visible' | 'hidden'): void {
   Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => state });
   document.dispatchEvent(new Event('visibilitychange'));
@@ -22,6 +28,8 @@ export interface Page extends Shell {
   time: ReturnType<typeof controlledClock>;
   /** What the page was asked to do every so often: the heartbeat. */
   timers: Array<{ ms: number; run: () => void }>;
+  /** The frames the page has asked for and not yet been given. */
+  frames: Array<() => void>;
   reloads: number;
   files: Array<{ name: string; text: string }>;
   /** What the next press of Restore is answered with: a file's text, null, or `never` for a chooser that does not answer. */
@@ -53,7 +61,7 @@ export async function bootPage(options: {
   const rows = new Map<string, string>();
   const tab = ++tabs;
   const page = {
-    backend, time, timers: [] as Page['timers'], reloads: 0, files: [] as Page['files'],
+    backend, time, timers: [] as Page['timers'], frames: [] as Array<() => void>, reloads: 0, files: [] as Page['files'],
     chooser: { answer: null } as Page['chooser'], devicePreferenceRows: rows, persistCalls: 0,
   };
   const answer = (state: PersistState | undefined): Promise<boolean> =>
@@ -78,6 +86,8 @@ export async function bootPage(options: {
       saveTextFile: (name, text) => { page.files.push({ name, text }); },
       pickTextFile: () => (page.chooser.answer === 'never' ? new Promise(() => undefined) : Promise.resolve(page.chooser.answer)),
     },
+    frames: { request: (run) => { page.frames.push(run); return page.frames.length; }, cancel() { page.frames.length = 0; } },
+    dpr: () => 1,
     every: (ms, run) => { page.timers.push({ ms, run }); },
     reload: () => { page.reloads += 1; },
     search: options.search ?? '',
@@ -96,6 +106,14 @@ export async function bootPage(options: {
     },
     openSettings(): void { document.querySelector<HTMLElement>('.dock [data-screen="settings"]')!.click(); },
   });
+}
+
+/** Gives the page `count` frames, a tenth of a second apart. */
+export function runFrames(page: Pick<Page, 'frames' | 'time'>, count = 1): void {
+  for (let i = 0; i < count; i++) {
+    page.time.advance(100);
+    for (const run of page.frames.splice(0)) run();
+  }
 }
 
 /** Lets every promise already under way run to its end. */

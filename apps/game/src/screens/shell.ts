@@ -3,7 +3,7 @@
 import type { SaveStateV2, StorageBackend } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents, InputMode, PersistState, SizeClass } from '../events';
-import { escapeTarget, mountInputMode } from '../input';
+import { mountInputMode } from '../input';
 import { mountViewport, type ResizeObserverLike, type ViewportSource } from '../layout';
 import { createNavController, type NavController } from '../nav';
 import type { Clocks } from '../platform/clock';
@@ -21,6 +21,7 @@ import {
   type PanelManager, type Toast,
 } from '../ui';
 import { mountChrome, type Chrome } from './chrome';
+import { mapScreen } from './map';
 import { NOTICE_WORDS, mountNotices } from './notices';
 import { createScreenRegistry, type ScreenContext, type ScreenRegistry } from './registry';
 import { settingsScreen, type StatusFacts } from './settings';
@@ -47,6 +48,10 @@ export interface ShellEnv {
   /** The device's own wish for reduced motion, and a call each time it changes. */
   reducedMotion: { matches(): boolean; onChange(listener: () => void): void };
   files: { saveTextFile(name: string, text: string): void; pickTextFile(maxBytes: number): Promise<string | null> };
+  /** The next frame the browser draws, and how to give it up. */
+  frames: { request(run: () => void): number; cancel(handle: number): void };
+  /** Screen pixels per CSS pixel. */
+  dpr(): number;
   /** Calls `run` every `ms`, for the life of the page. */
   every(ms: number, run: () => void): void;
   reload(): void;
@@ -141,12 +146,21 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
 
   const ctx: ScreenContext = { bus, sizeClass: () => sizeClass, inputMode: () => inputMode };
   const registry = createScreenRegistry();
-  const panels = createPanelManager(doc, { fallbackFocus: () => env.host.querySelector<HTMLElement>('.stage [tabindex]') });
+  const panels = createPanelManager(doc, { fallbackFocus: () => env.host.querySelector<HTMLElement>('.stage canvas') });
   // The toast and the notices are drawn in the chrome, which needs the screens, which need both.
   const toast: Toast = { show: (title, message, force) => shown.show(title, message, force) };
   const refreshNotices = (): void => notices.refresh();
   const replacement = { runtime, gate, settle: () => loop.flush(), reload: env.reload };
 
+  registry.registerScreen(mapScreen({
+    nav, sound, toast, panels,
+    live: () => live,
+    epoch: () => loop.publishedEpoch(),
+    now: clocks.monotonicNow,
+    dpr: env.dpr,
+    frames: env.frames,
+    reducedMotion: () => motionReduced(live.motionMode, env.reducedMotion.matches()),
+  }));
   registry.registerScreen(settingsScreen({
     live: () => live,
     changed(field) {
@@ -184,11 +198,6 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     boot: booted, gate, toast,
     retry: () => retryHeldRead({ backend, registry: REGISTRY, wallNow: clocks.wallNow(), gate }),
     reload: env.reload,
-  });
-
-  doc.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape' || event.defaultPrevented) return;
-    if (escapeTarget({ search: false, panel: panels.openId() !== null, card: false }) === 'panel') panels.close();
   });
 
   // The save: one heartbeat now and one every HEARTBEAT_MS while the page is seen; hidden pages give the save up.

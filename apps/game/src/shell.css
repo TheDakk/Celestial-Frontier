@@ -104,3 +104,48 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
   transition: opacity 0.25s;
 }
 [data-motion="reduced"] * { transition: none !important; animation: none !important; }
+
+/* The map: its picture, the mark of the body the keyboard holds, the search field and the survey card. */
+.map-area { position: absolute; inset: 0; overflow: hidden; }
+.map { position: absolute; top: 0; left: 0; display: block; }
+.map:focus-visible { outline-offset: -2px; }
+.map-focus {
+  position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; pointer-events: none;
+  border: 2px solid var(--cf-color-accent-gold); border-radius: var(--cf-radius-pill);
+}
+.map-focus span {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: var(--cf-space-1);
+  padding: 2px var(--cf-space-2); white-space: nowrap; font-size: var(--cf-type-small);
+  background: var(--cf-color-elevated); border-radius: var(--cf-radius-small);
+}
+.search {
+  position: absolute; z-index: 2; top: calc(var(--safe-top) + var(--cf-space-2)); right: calc(var(--safe-right) + var(--cf-space-3));
+  width: min(180px, 36%); min-height: var(--target-min, 44px); padding: 0 var(--cf-space-3);
+  background: var(--cf-color-surface); border: 1px solid var(--cf-color-border); border-radius: var(--cf-radius-pill);
+}
+.card {
+  position: absolute; z-index: 2; overflow: auto; overscroll-behavior: contain;
+  padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-4);
+  background: var(--cf-color-surface); border: 1px solid var(--cf-color-border);
+  -webkit-user-select: text; user-select: text;
+}
+[data-size-class="compact"] .card {
+  left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size)); max-height: 46%;
+  border-radius: var(--cf-radius-panel) var(--cf-radius-panel) 0 0;
+}
+[data-size-class="medium"] .card, [data-size-class="wide"] .card {
+  top: calc(var(--safe-top) + var(--target-min, 44px) + var(--cf-space-5)); right: var(--safe-right);
+  bottom: calc(var(--safe-bottom) + var(--dock-size)); border-radius: var(--cf-radius-panel) 0 0 var(--cf-radius-panel);
+}
+[data-size-class="medium"] .card { width: min(340px, 48%); }
+[data-size-class="wide"] .card { width: 380px; top: var(--safe-top); bottom: var(--safe-bottom); border-radius: 0; }
+[data-size-class="wide"] .stage[data-card="open"] .map-area { right: 380px; }
+[data-size-class="wide"] .stage[data-card="open"] .search { right: calc(380px + var(--cf-space-3)); }
+.survey-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--cf-space-2); }
+.survey-head h2 { margin: 0; font-size: var(--cf-type-title); font-weight: 600; overflow-wrap: anywhere; }
+.survey-head .panel-close { position: static; float: none; flex: none; }
+.card [data-sel="sub"] { color: var(--cf-color-muted); }
+.card-actions { display: flex; flex-wrap: wrap; gap: var(--cf-space-2); margin: var(--cf-space-3) 0 var(--cf-space-1); }
+button.primary { border-color: var(--cf-color-accent-gold); color: var(--cf-color-accent-gold); border-radius: var(--cf-radius-pill); padding: 0 var(--cf-space-4); }
+.survey-row { margin-top: var(--cf-space-2); }
+.survey-row span { color: var(--cf-color-faint); font-size: var(--cf-type-caption); text-transform: uppercase; letter-spacing: 0.04em; }

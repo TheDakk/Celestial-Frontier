@@ -35,7 +35,8 @@ export interface NavController {
   enterSystem(candidate: { seed: number; x: number; y: number }): NavOutcome;
   ascend(): NavOutcome;
   travelToCode(code: string): NavOutcome;
-  /** At boot: the saved route, or Sol when it cannot be proven. A route that had to change is stored once. */
+  /** At boot: the saved route, or the universe when it cannot be proven. A route that had to change is stored
+   *  once. A new expedition is seated in Sol by its first stored route (`solRoute`). */
   restore(savedView: unknown): NavOutcome;
   /** The route to store: where the player is, or the stored bytes while a failed proof holds them. */
   route(): Record<string, unknown> | null;
@@ -115,7 +116,8 @@ export function createNavController(ports: NavPorts): NavController {
       return target === null || shown === null ? refuse('not-proven') : gate(target, shown);
     },
     restore(savedView) {
-      const restored = restoreRoute(savedView, (target) => failureFor(target) === null, solSystemNav() ?? NAV_HOME);
+      // A route that cannot be proven, or that the save may no longer travel, falls back to the universe.
+      const restored = restoreRoute(savedView, (target) => failureFor(target) === null, NAV_HOME);
       const shown = restored.nav.mode === 'universe' ? restored.nav : mapNavOf(restored.nav) ?? NAV_HOME;
       nav = shown;
       held = restored.writeHeld ? { view: (savedView ?? null) as Record<string, unknown> | null } : null;

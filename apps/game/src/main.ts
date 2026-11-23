@@ -32,6 +32,8 @@ startShell({
   initialInput: navigator.maxTouchPoints > 0 || matchMedia('(pointer: coarse)').matches ? 'touch' : 'mouse',
   reducedMotion: { matches: () => reducedMotion.matches, onChange: (listener) => reducedMotion.addEventListener('change', listener) },
   files: { saveTextFile, pickTextFile },
+  frames: { request: (run) => requestAnimationFrame(run), cancel: (handle) => cancelAnimationFrame(handle) },
+  dpr: () => devicePixelRatio || 1,
   every: (ms, run) => { setInterval(run, ms); },
   reload: () => location.reload(),
   search: location.search,
