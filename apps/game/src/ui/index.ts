@@ -3,6 +3,7 @@ export { TEXT_FONTS, TEXT_SIZE_PX, TEXT_TONES, applyDisplayScale, applyTextPrefs
 export type { TextFont, TextSize, TextTone } from './text-prefs';
 export { currentSheet, interfaceGaps, placeholderSheet, sheetColours, sheetState, useSheet } from './sheet-source';
 export { DISPLAY_HEADINGS, displayText, drawLines } from './display-text';
+export { CAPTION_EDGE, edged } from './caption';
 export { icon } from './icon';
 export type { IconName, IconUse } from './icon';
 export { hideVisually } from './hidden';

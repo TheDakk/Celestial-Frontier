@@ -5,6 +5,7 @@ import type { Gaps, SpaceItem } from '@cf/art-interface';
 import { testInterfaceSheetText } from '@cf/art-testparts';
 import { systemScene } from '@cf/scene';
 import { cosSin } from '../src/space/model';
+import { placedLabels } from '../src/space/labels';
 import { PLANET_BANDS, mapItems, mapPicture, planetBands } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
 import { SOL, kindOf, systemNav } from './space-support';
@@ -80,6 +81,25 @@ describe('planets the sheet draws', () => {
     expect(gaps.elements).toEqual([]);
     expect(hashBuffer(mapPicture(frame(), withGas, noGaps()))).toBe(first);
     expect(hashBuffer(mapPicture(frame(), placeholder, noGaps()))).not.toBe(first);
+  });
+});
+
+describe('the name of a planet the sheet draws', () => {
+  it('hangs from the foot of the drawing, which in whole steps may be wider than the game sizes the planet', () => {
+    const [cos, sin] = cosSin(jupiter.orb * 0.13);
+    let checked = 0;
+    for (const z of [3, 3.5, 4, 5, 6.5]) {
+      const shown = frame({ cam: { x: cos * jupiter.orb, y: sin * jupiter.orb, z }, placement: { keepOut: [] } });
+      const disc = mapItems(shown, GRID, 2, withGas).find((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.element !== undefined) as Extract<SpaceItem, { kind: 'disc' }>;
+      const name = (sheet?: typeof withGas) => placedLabels(shown, 'the Solar Reach', withGas.font, sheet).find((label) => label.text === jupiter.name)!;
+      // With the sheet the words begin below the last row of the drawing; they are never moved off their side for it.
+      expect([name(withGas).side, name(withGas).y > disc.y + disc.r], `zoom ${z}`).toEqual(['below', true]);
+      expect(name(withGas).y - (disc.y + disc.r), `zoom ${z}`).toBeLessThanOrEqual(Math.max(2, name().y - (disc.y + disc.r)));
+      // Where the drawing is wider than the game's size, the game's own place for the words is on the drawing.
+      const own = Math.round(6 * (jupiter.P.sizeMul as number) * z / 2);
+      if (disc.r > own) { checked++; expect(name().y, `zoom ${z}`).toBeLessThanOrEqual(disc.y + disc.r); }
+    }
+    expect(checked).toBeGreaterThanOrEqual(2);
   });
 });
 

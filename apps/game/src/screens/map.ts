@@ -12,7 +12,7 @@ import {
   ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, pictureWidth, placedLabels, showSpace,
   supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
-import { createFrameCoalescer, currentSheet, drawLines, interfaceGaps, sheetColours, type Toast } from '../ui';
+import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
 import type { ScreenDef } from './registry';
 import { createSearchBox } from './search-box';
@@ -246,13 +246,15 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           if (drawn === undefined || live.has(drawn)) {
             const gaps = { glyphs: [] as number[], icons: [] as string[], elements: [] as string[] };
             const fresh = el('canvas', { 'data-caption': words.text });
-            paintPixels(fresh, drawLines(sheet.font, words.lines, gaps), sheetColours(sheet));
+            // Over art as light as the letters the words keep a dark edge: one pixel of the colour of space all round.
+            paintPixels(fresh, edged(drawLines(sheet.font, words.lines, gaps)), [...sheetColours(sheet), sheet.palette.colours[0] ?? 0]);
             for (const glyph of gaps.glyphs) if (!seenGlyphs.has(glyph)) { seenGlyphs.add(glyph); interfaceGaps.glyphs.push(glyph); }
             if (drawn === undefined) lettered.set(key, fresh);
             drawn = fresh;
           }
           live.add(drawn);
-          Object.assign(drawn.style, { width: `${words.w * pixel}px`, height: `${words.h * pixel}px`, left: `${words.x * pixel}px`, top: `${words.y * pixel}px` });
+          // The edge lies outside the box the words were placed in: one art pixel on every side.
+          Object.assign(drawn.style, { width: `${(words.w + 2) * pixel}px`, height: `${(words.h + 2) * pixel}px`, left: `${(words.x - 1) * pixel}px`, top: `${(words.y - 1) * pixel}px` });
         }
         captions.replaceChildren(...live);
       };
@@ -293,7 +295,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         };
         const picture = mapPicture(shown, sheet, gaps);
         showSpace(canvas, picture, sheet.palette.colours, ports.dpr());
-        letter(placedLabels(shown, region.name, sheet.font), picture.scale / ports.dpr());
+        letter(placedLabels(shown, region.name, sheet.font, sheet), picture.scale / ports.dpr());
         // A missing element is counted once, however many frames ask for it.
         for (const name of gaps.elements) if (!seen.has(name)) { seen.add(name); interfaceGaps.elements.push(name); }
 

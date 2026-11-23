@@ -1,6 +1,6 @@
 /* The words the game letters on its maps, each with the game's own gate: the names of galaxies as the view closes
    in, what a quasar and a radio galaxy are, the home galaxy and the charter, the Sun, the planets and the belt. */
-import { measureText, type DisplayFont } from '@cf/art-interface';
+import { fittedWidth, measureText, type DisplayFont, type InterfaceSheet } from '@cf/art-interface';
 import { galaxyName } from '@cf/domain-naming';
 import { HOME_POS } from '@cf/domain-worldconfig';
 import { systemScene } from '@cf/scene';
@@ -41,7 +41,7 @@ const VIEW_EDGE = 4;
 /** A galaxy under this many art pixels in radius is a dot: words may cross it. */
 const DISC_MIN = 3;
 
-function lettering(frame: MapFrame, charter: string): { labels: Lettering[]; drawn: Drawn[] } {
+function lettering(frame: MapFrame, charter: string, sheet?: InterfaceSheet): { labels: Lettering[]; drawn: Drawn[] } {
   const { nav, cam, view } = frame;
   // The game stands the name of a comet and of the visitor on its foot above the thing; a frame that does not ask for
   // that has every caption centred on its point.
@@ -82,8 +82,12 @@ function lettering(frame: MapFrame, charter: string): { labels: Lettering[]; dra
     drawn.push({ wx: 0, wy: 0, r: primaryWidth(scene) / 2 });
     for (const body of visibleBodies(nav, cam, view, time)) {
       if (body.kind !== 'planet') continue;
-      const size = 6 * (typeof body.ref.P.sizeMul === 'number' && body.ref.P.sizeMul !== 0 ? body.ref.P.sizeMul : 1);
-      const ring = body.ref.ring ? size * 2.1 : 0;
+      const own = 6 * (typeof body.ref.P.sizeMul === 'number' && body.ref.P.sizeMul !== 0 ? body.ref.P.sizeMul : 1);
+      // A planet the sheet draws is as wide as its drawing, in whole steps: its name hangs from the foot of that.
+      const z = artCamera(cam, frame.dpr, artScale(view.w, view.h, frame.dpr)).z;
+      const wide = sheet === undefined || frame.sized !== true ? undefined : fittedWidth(sheet, `planet/${body.ref.type}`, 2 * Math.round(own * z) + 1);
+      const size = wide === undefined ? own : Math.max(own, ((wide >> 1) + 1) / z);
+      const ring = body.ref.ring ? own * 2.1 : 0;
       drawn.push({ wx: body.wx, wy: body.wy, r: Math.max(size, ring) });
       labels.push({ text: body.ref.name, wx: body.wx, wy: body.wy + size, hold: 'below', bx: body.wx, by: body.wy, off: size, r: size, ring, rank: 1 });
     }
@@ -117,15 +121,16 @@ export interface Lettered extends PlacedLabel { lines: string[] }
  * its body's disc or ring, the top bar or the dock; a label with no free side is left out. Words wider than the view
  * are wrapped. With the placement's `tails`, a side a comet's tail crosses is taken only when no other is free. The
  * With its `apart`, two names on one line keep a space between them, or one moves. The current game has no such
- * avoidance: its letters are smaller.
+ * avoidance: its letters are smaller. With the `sheet` of a picture sized by the camera, a planet the sheet draws is
+ * kept off at the width it is drawn.
  */
-export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont): Lettered[] {
+export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont, sheet?: InterfaceSheet): Lettered[] {
   const { view, dpr } = frame;
   const scale = artScale(view.w, view.h, dpr);
   const grid = artGrid(view.w, view.h, dpr, scale);
   const cam = artCamera(frame.cam, dpr, scale);
   const perCss = dpr / scale;
-  const { labels, drawn } = lettering(frame, charter);
+  const { labels, drawn } = lettering(frame, charter, sheet);
   const lines = new Map<string, string[]>();
   const specs = labels.map((label): LabelSpec => {
     const wrapped = wrapWords(label.text, (line) => measureText(font, line).w, grid.w - 2 * VIEW_EDGE);

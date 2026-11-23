@@ -67,15 +67,20 @@ describe('the map screen\'s picture and words', () => {
     const { sized: _sized, ...unsized } = frame(near);
     expect(colours(unsized)).not.toEqual(colours(frame(near)));
     // Each word stands where the placement puts it, in the picture's own pixels: here 2 screen pixels each.
-    const placed = placedLabels({ ...frame(near), placement: { keepOut: [], tails: true, stand: true, apart: true } }, currentRegionOf(0).name, sheet.font);
+    const placed = placedLabels({ ...frame(near), placement: { keepOut: [], tails: true, stand: true, apart: true } }, currentRegionOf(0).name, sheet.font, sheet);
     expect(placed.length).toBeGreaterThan(0);
     // The comet's name stands on its foot above the comet, as the game anchors it.
     expect(placed.filter((words) => words.text.startsWith('Comet ')).map((words) => words.side)).toEqual(['above']);
     expect(placed.map((words) => words.text)).toEqual(expect.arrayContaining(visibleBodies(page.nav.nav, near, { w: 800, h: 600 }, 0).filter((body) => body.kind === 'planet').map((body) => body.label)));
     for (const words of placed) {
       const drawn = label(words.text)!;
-      expect([drawn.style.left, drawn.style.top, drawn.style.width, drawn.style.height], words.text).toEqual([`${words.x * 2}px`, `${words.y * 2}px`, `${words.w * 2}px`, `${words.h * 2}px`]);
-      expect([drawn.width, drawn.height], words.text).toEqual([words.w, words.h]);
+      // About the words lies their dark edge, one art pixel on every side: the canvas is that much larger than their box.
+      expect([drawn.style.left, drawn.style.top, drawn.style.width, drawn.style.height], words.text).toEqual([`${(words.x - 1) * 2}px`, `${(words.y - 1) * 2}px`, `${(words.w + 2) * 2}px`, `${(words.h + 2) * 2}px`]);
+      expect([drawn.width, drawn.height], words.text).toEqual([words.w + 2, words.h + 2]);
+      // The edge is painted in the colour of space, and the letters in the sheet's ink, which is not that colour.
+      const painted = paintedBy(drawn);
+      expect(painted.filter((colour) => colour === sheet.palette.colours[0]).length, words.text).toBeGreaterThan(words.w);
+      expect(painted.filter((colour) => colour !== null && colour !== sheet.palette.colours[0]).length, words.text).toBeGreaterThan(words.text.replaceAll(' ', '').length * 5);
     }
     expect(document.querySelectorAll('.map-captions canvas')).toHaveLength(placed.length);
     // The galaxy: the Sun is lettered over its mark. The universe: the home galaxy under it.
@@ -84,7 +89,7 @@ describe('the map screen\'s picture and words', () => {
     // Over its light, which up close is wider than the 14 pixels the game lifts the words.
     const sun = label('Sun — our star')!;
     const over = placedLabels({ ...frame(ascentCamera({ kind: 'star', x: SOL_STAR.x, y: SOL_STAR.y }, 600).to), placement: { keepOut: [] } }, currentRegionOf(0).name, sheet.font)[0]!;
-    expect([over.text, over.side, parseFloat(sun.style.top) + parseFloat(sun.style.height)]).toEqual(['Sun — our star', 'above', (over.y + over.h) * 2]);
+    expect([over.text, over.side, parseFloat(sun.style.top) + parseFloat(sun.style.height)]).toEqual(['Sun — our star', 'above', (over.y + over.h + 1) * 2]);
     expect((over.y + over.h) * 2).toBeLessThan(300 - 14);
     page.nav.ascend();
     rest(page);
@@ -127,6 +132,32 @@ describe('the map screen\'s picture and words', () => {
     } finally { useSheet(null); }
   });
 
+  it('a planet the sheet draws is named below its drawing, which in whole steps may be wider than the game sizes the planet', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    // The placeholder sheet with a gas planet drawn 8 wide: at one and a half times that it is drawn 16 wide.
+    const ball = Uint8Array.from({ length: 64 }, (_, i) => ((2 * (i % 8) - 7) ** 2 + (2 * (i >> 3) - 7) ** 2 > 64 ? 0 : 1));
+    const sheet = { ...placeholderSheet(), elements: new Map([...placeholderSheet().elements, ['planet/gas', { w: 8, h: 8, anchor: [4, 4] as const, pixels: ball }]]) };
+    try {
+      useSheet(sheet);
+      page.env.bus.emit('pack:status', { name: 'interface', state: 'ready', detail: null });
+      rest(page);
+      const system = descentCamera('system', 600).to;
+      const words = (clicks: number, drawn?: typeof sheet) => placedLabels({
+        nav: page.nav.nav, cam: { ...system, z: system.z * 1.14 ** clicks }, view: { w: 800, h: 600 }, dpr: 1, time: 0, epoch: page.loop.publishedEpoch(), reach: currentRegionOf(0).r,
+        charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false }, sized: true, solid: true, marks: true, placement: { keepOut: [], tails: true, stand: true, apart: true },
+      }, currentRegionOf(0).name, sheet.font, drawn);
+      // The first zoom at which a name stands lower for its drawing than the game's own size would put it.
+      const clicks = [1, 2, 3, 4, 5, 6, 7, 8].find((n) => JSON.stringify(words(n, sheet)) !== JSON.stringify(words(n)))!;
+      expect(clicks).toBeDefined();
+      for (let i = 0; i < clicks; i++) fire(canvas(), 'wheel', { deltaY: -120, clientX: 400, clientY: 300 });
+      rest(page);
+      const shown = [...document.querySelectorAll<HTMLCanvasElement>('.map-captions canvas')].map((c) => [c.dataset.caption, c.style.top]);
+      expect(shown).toEqual(expect.arrayContaining(words(clicks, sheet).map((label) => [label.text, `${(label.y - 1) * 2}px`])));
+      expect(shown).not.toEqual(expect.arrayContaining(words(clicks).map((label) => [label.text, `${(label.y - 1) * 2}px`])));
+    } finally { useSheet(null); }
+  });
+
   it('letters the captions of the map: the charter over its ring from the zoom it shows at, the belt and the zone with the star charts', async () => {
     const page = await atUniverse();
     const captions = (): string[] => [...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption!);
@@ -137,7 +168,7 @@ describe('the map screen\'s picture and words', () => {
     expect(captions()).toContain(charter);
     const label = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="${charter}"]`)!;
     expect(label.width).toBeGreaterThan(charter.length * 2);
-    expect(label.height).toBe(currentSheet().font.line);
+    expect(label.height).toBe(currentSheet().font.line + 2);
     expect(document.querySelector('.map-captions')!.getAttribute('aria-hidden')).toBe('true');
     // Far out, below the zoom the charter shows at, its label goes with its ring.
     for (let i = 0; i < 60; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
@@ -160,9 +191,9 @@ describe('the map screen\'s picture and words', () => {
       for (let i = 0; i < 26; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 70, clientY: 300 });
       rest(page);
       const charter = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="your charter — ${currentRegionOf(0).name}"]`)!;
-      expect(charter.height).toBeGreaterThan(currentSheet().font.line);
-      expect(charter.height % currentSheet().font.line).toBe(0);
-      expect(parseFloat(charter.style.width)).toBeLessThanOrEqual(140 - 8);
+      expect(charter.height).toBeGreaterThan(currentSheet().font.line + 2);
+      expect((charter.height - 2) % currentSheet().font.line).toBe(0);
+      expect(parseFloat(charter.style.width)).toBeLessThanOrEqual(140 - 6);
       expect(parseFloat(charter.style.left)).toBeGreaterThanOrEqual(0);
       expect(parseFloat(charter.style.left) + parseFloat(charter.style.width)).toBeLessThanOrEqual(140);
     } finally {
@@ -173,7 +204,8 @@ describe('the map screen\'s picture and words', () => {
   it('no word of the map stands under the top bar or the dock', async () => {
     const page = await atUniverse();
     const boxes = (): Array<{ text: string; top: number; bottom: number }> => [...document.querySelectorAll<HTMLCanvasElement>('.map-captions canvas')]
-      .map((c) => ({ text: c.dataset.caption!, top: parseFloat(c.style.top), bottom: parseFloat(c.style.top) + parseFloat(c.style.height) }));
+      // The words themselves: inside the one art pixel of edge, 2 screen pixels here, that lies about them.
+      .map((c) => ({ text: c.dataset.caption!, top: parseFloat(c.style.top) + 2, bottom: parseFloat(c.style.top) + parseFloat(c.style.height) - 2 }));
     const underBar = (): string[] => boxes().filter((box) => box.top < 60 && box.bottom > 0).map((box) => box.text);
     // Out until some word stands in the top 60 pixels of the view.
     for (let i = 0; i < 40 && underBar().length === 0; i++) {
