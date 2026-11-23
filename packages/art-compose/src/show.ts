@@ -1,4 +1,4 @@
-import { PIXEL_BONE, PIXEL_OUTLINE, PIXEL_PRIMARY, PIXEL_TRANSPARENT } from '@cf/art-format';
+import { OWN_RAMP_FIRST, OWN_RAMP_LAST, PIXEL_OUTLINE, PIXEL_PRIMARY, PIXEL_TRANSPARENT } from '@cf/art-format';
 import type { PixelBuffer } from './buffer';
 
 // Copied once into plain locals: the per-pixel loops below then read no module binding.
@@ -6,12 +6,12 @@ const TRANSPARENT = PIXEL_TRANSPARENT;
 const OUTLINE = PIXEL_OUTLINE;
 const FIRST_RAMP = PIXEL_PRIMARY;
 const LAST_RAMP = PIXEL_PRIMARY + 11; // 1-12: the primary, accent and underside ramps
-const FIRST_BONE = PIXEL_BONE;
-const LAST_BONE = PIXEL_BONE + 3; // 21-24: the bone ramp
+const FIRST_OWN = OWN_RAMP_FIRST;
+const LAST_OWN = OWN_RAMP_LAST; // 21-28: the bone and deep ramps
 
 /**
  * The luminous rim of a finished picture, found when it is shown and never stored: 1 where a ramp pixel (1 to 12, or
- * bone 21 to 24: the rim is light on the outer edge, whatever the material) has its upper or its left neighbour
+ * bone or deep 21 to 28: the rim is light on the outer edge, whatever the material) has its upper or its left neighbour
  * transparent, outline or off the canvas; else 0. Reads the buffer only.
  */
 export function rimPixels(buffer: PixelBuffer): Uint8Array {
@@ -22,7 +22,7 @@ export function rimPixels(buffer: PixelBuffer): Uint8Array {
     for (let x = 0; x < w; x++) {
       const i = y * w + x;
       const v = pixels[i] ?? 0;
-      if (v < FIRST_RAMP || (v > LAST_RAMP && (v < FIRST_BONE || v > LAST_BONE))) continue;
+      if (v < FIRST_RAMP || (v > LAST_RAMP && (v < FIRST_OWN || v > LAST_OWN))) continue;
       if (y === 0 || x === 0 || clear(pixels[i - w] ?? 0) || clear(pixels[i - 1] ?? 0)) out[i] = 1;
     }
   }

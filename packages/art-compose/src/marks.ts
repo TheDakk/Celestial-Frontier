@@ -1,4 +1,4 @@
-import { PIXEL_BONE, type PartFrame, type PatternName } from '@cf/art-format';
+import { isOwnRamp, type PartFrame, type PatternName } from '@cf/art-format';
 import { MOTTLE_LINE_STEP, MOTTLE_PAIR_SHIFT, MOTTLE_SPOT_STEP, PATTERN_TABLE, STRENGTH_KEEP, type PatternRule } from './patterns';
 
 // Flow values and spot values cycle at 15; a colour ramp holds 4 shades (values 1-4, 5-8, 9-12).
@@ -8,17 +8,17 @@ const LAST_DRAWN = 12;
 // A roll the part does not carry counts as the highest roll: it is kept only at full.
 const NO_ROLL = 99;
 
-/** A frame pixel a mark may replace: drawn with a value 1 to 12 (never empty, eye, highlight, glow, iris or bone). */
+/** A frame pixel a mark may replace: drawn with a value 1 to 12 (never empty, eye, highlight, glow, iris, bone or deep). */
 const markable = (v: number): boolean => v >= 1 && v <= LAST_DRAWN;
-/** A value a hand-drawn layer may write: a hide ramp value 1 to 12 or a bone value 21 to 24. */
-export const handValue = (v: number): boolean => markable(v) || (v >= PIXEL_BONE && v < PIXEL_BONE + RAMP);
+/** A value a hand-drawn layer may write: a hide ramp value 1 to 12 or an own-ramp value 21 to 28 (bone or deep). */
+export const handValue = (v: number): boolean => markable(v) || isOwnRamp(v);
 
 /**
  * Paints the creature's marks into a copy of one part frame's pixels.
  * A hand-drawn layer named after the pattern wins and is applied as drawn at every strength; otherwise the pattern's rule
  * paints the guide layers (`flow`, `spots`). Returns a new array of the frame's size, or `null` when the
  * frame has no layer that serves the pattern. Pattern `plain` returns an unchanged copy.
- * Only pixels drawn 1 to 12 are ever written, so bone (21 to 24) is never marked; the frame and its layers are never changed.
+ * Only pixels drawn 1 to 12 are ever written, so bone and deep (21 to 28) are never marked; the frame and its layers are never changed.
  */
 export function paintMarks(frame: PartFrame, pattern: PatternName, strength: 0 | 1 | 2, phase: number, rolls: readonly number[]): Uint8Array | null {
   const out = Uint8Array.from(frame.pixels);
@@ -31,7 +31,7 @@ export function paintMarks(frame: PartFrame, pattern: PatternName, strength: 0 |
   if (hand !== undefined) {
     for (let i = 0; i < out.length; i++) {
       const v = hand[i] ?? 0;
-      // Only a hide or bone value is written: a frame built in code could hold any value in its hand layer.
+      // Only a hide, bone or deep value is written: a frame built in code could hold any value in its hand layer.
       if (handValue(v) && markable(frame.pixels[i] ?? 0)) out[i] = v;
     }
     return out;

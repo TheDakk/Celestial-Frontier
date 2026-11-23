@@ -35,7 +35,7 @@ export function checkFinishLevel(level: unknown): asserts level is 0 | 1 | 2 | 3
 /**
  * The rarity finish, in place, on a finished picture. Level 0 changes nothing. Each pixel is decided by its own
  * coordinates and value and the picture's drawn rows only, and only a ramp pixel (1 to 12) is ever written, with a ramp value: 0, the eye,
- * highlight, glow, outline and iris (13 to 20) and bone (21 to 24: hard material takes no sheen, swirl or pearl) are never touched. In order, each on the value the step before left:
+ * highlight, glow, outline and iris (13 to 20) and bone and deep (21 to 28: hard material and deep shadow take no sheen, swirl or pearl) are never touched. In order, each on the value the step before left:
  * level 1 and up, the sheen; level 2 and up, the swirl; level 3, the pearl (FINISH). Any other level throws
  * (checkFinishLevel) before the buffer is read.
  */

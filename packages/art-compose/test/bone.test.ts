@@ -47,15 +47,15 @@ describe('finish: bone', () => {
     expect(tops.map((_, i) => b.pixels[6 * b.w + 2 + 3 * i])).toEqual([21, 21, 22, 23]);
   });
 
-  it('bone beside hide is solid: neither lights the other, and a value above 24 is never changed', () => {
+  it('bone beside hide is solid: neither lights the other, and a value above 28 is never changed', () => {
     const b = createBuffer('small');
     blit(b, frameOf(['22mm', '22mm']), 10, 10);
-    // A column of 25 over 26: were they a ramp, the top would be lit and the bottom shaded.
-    blit(b, { w: 1, h: 2, pixels: Uint8Array.from([25, 26]), anchor: [0, 0], attach: {} }, 30, 10);
+    // A column of 29 over 30: were they a ramp, the top would be lit and the bottom shaded.
+    blit(b, { w: 1, h: 2, pixels: Uint8Array.from([29, 30]), anchor: [0, 0], attach: {} }, 30, 10);
     finish(b);
     // Only the block's own top-left pixel is lit; the bone's top-left pixel has hide to its left. The bottom row is shaded.
     expect(crop(b, 10, 10, 4, 2)).toEqual(['32mm', '11ll']);
-    expect([b.pixels[10 * b.w + 30], b.pixels[11 * b.w + 30]]).toEqual([25, 26]);
+    expect([b.pixels[10 * b.w + 30], b.pixels[11 * b.w + 30]]).toEqual([29, 30]);
   });
 });
 

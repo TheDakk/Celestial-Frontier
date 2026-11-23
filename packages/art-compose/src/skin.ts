@@ -4,7 +4,7 @@ import { SKIN_TABLE, type SkinRule } from './skins';
 
 const LAST_DRAWN = 12;
 
-/** A frame pixel the skin may change: drawn with a value 1 to 12 (never empty, eye, highlight, glow, outline, iris or bone). */
+/** A frame pixel the skin may change: drawn with a value 1 to 12 (never empty, eye, highlight, glow, outline, iris, bone or deep). */
 const skinnable = (v: number): boolean => v >= 1 && v <= LAST_DRAWN;
 /** The colour ramp a value 1 to 12 belongs to: 0 for 1-4, 1 for 5-8, 2 for 9-12. */
 const rampOf = (v: number): number => (v - 1) >> 2;
@@ -12,9 +12,9 @@ const rampOf = (v: number): number => (v - 1) >> 2;
 /**
  * Paints the creature's skin texture into a copy of `pixels`, one part frame's pixels with its marks already painted
  * (the original draws the skin over the patterned hide). A hand-drawn layer named for the skin wins, exactly as a
- * hand-drawn marks layer does: each value 1 to 12 or 21 to 24 (bone) it holds replaces the pixel, in any ramp. Otherwise the skin's rule
+ * hand-drawn marks layer does: each value 1 to 12 or 21 to 28 (bone, deep) it holds replaces the pixel, in any ramp. Otherwise the skin's rule
  * (skins.ts) steps texture pixels one shade inside their own ramp, so the rule never moves a mark out of its ramp.
- * Only a pixel drawn 1 to 12 is ever written, so bone (21 to 24) never takes a skin; the rule writes only a value 1 to 12.
+ * Only a pixel drawn 1 to 12 is ever written, so bone and deep (21 to 28) never take a skin; the rule writes only a value 1 to 12.
  * Returns a new array, or `null` when the rule is `none` and the frame has no layer named for the skin.
  * Never changes its inputs. Pixels of any length but the frame's w x h throw a RangeError: a wrong array is refused,
  * never painted truncated or misaligned.
@@ -30,7 +30,7 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName):
     for (let i = 0; i < out.length; i++) {
       const host = pixels[i] ?? 0;
       const v = hand[i] ?? 0;
-      // As a hand-drawn marks layer: any hide or bone value replaces a drawn pixel. A frame built in code could hold
+      // As a hand-drawn marks layer: any hide, bone or deep value replaces a drawn pixel. A frame built in code could hold
       // any value in its hand layer, so a reserved value is never written.
       if (skinnable(host) && handValue(v)) out[i] = v;
     }

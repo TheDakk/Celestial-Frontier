@@ -5,7 +5,7 @@ import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
 import { paintSkin } from './skin';
 
-// The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-24 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
+// The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-28 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
 // So are a jelly's (family `gelatinous`) torso values 5-8, its organelles, before any mark is painted, so no mark covers one.
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 // Then, on a creature whose recipe names a skin, every part in a mark slot takes the skin texture (skin.ts), over its marks.

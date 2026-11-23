@@ -1,18 +1,18 @@
-import { PIXEL_BONE, PIXEL_EYE, PIXEL_OUTLINE, PIXEL_TRANSPARENT } from '@cf/art-format';
+import { OWN_RAMP_FIRST, OWN_RAMP_LAST, PIXEL_EYE, PIXEL_OUTLINE, PIXEL_TRANSPARENT } from '@cf/art-format';
 import type { PixelBuffer } from './buffer';
 
 // Copied once into plain locals: the per-pixel loops below then read no module binding (a large cost under the test runner).
 const TRANSPARENT = PIXEL_TRANSPARENT;
 const OUTLINE = PIXEL_OUTLINE;
 const EYE = PIXEL_EYE;
-const BONE = PIXEL_BONE;
-const LAST_BONE = PIXEL_BONE + 3;
+const FIRST_OWN = OWN_RAMP_FIRST;
+const LAST_OWN = OWN_RAMP_LAST; // 21-28: the bone and deep ramps
 
 /**
  * The finishing pass, in place: outline, then light and shade as one net change. Every decision is
  * read from a copy taken before the outline, so the outline is one pixel thick and light and shade
  * see the shape, not its outline. A ramp pixel moves by (lit ? 1 : 0) - (shaded ? 1 : 0), clamped
- * within its ramp, so a pixel that is both lit and shaded never changes. Bone (21-24) is a ramp like the hide's three.
+ * within its ramp, so a pixel that is both lit and shaded never changes. Bone (21-24) and deep (25-28) are ramps like the hide's three.
  * Neighbours outside the canvas count as transparent.
  */
 export function finish(buffer: PixelBuffer): void {
@@ -28,8 +28,8 @@ export function finish(buffer: PixelBuffer): void {
         if (!clear(x - 1, y) || !clear(x + 1, y) || !clear(x, y - 1) || !clear(x, y + 1)) pixels[i] = OUTLINE;
         continue;
       }
-      if (v >= EYE && (v < BONE || v > LAST_BONE)) continue; // 13 eye, 14 highlight, 15 glow, 16 outline, 17-20 iris: never changed
-      // Ramps are 1-4, 5-8, 9-12 and 21-24: shade is the position 0-3 inside the ramp.
+      if (v >= EYE && (v < FIRST_OWN || v > LAST_OWN)) continue; // 13 eye, 14 highlight, 15 glow, 16 outline, 17-20 iris: never changed
+      // Ramps are 1-4, 5-8, 9-12, 21-24 and 25-28: shade is the position 0-3 inside the ramp.
       const base = v - ((v - 1) & 3);
       const lit = clear(x, y - 1) && clear(x - 1, y);
       const shaded = clear(x, y + 1);
