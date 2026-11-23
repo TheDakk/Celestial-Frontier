@@ -1,7 +1,7 @@
 import { posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readRepoFiles } from './tracked-files.mjs';
-import { scanCode } from './scan-code.mjs';
+import { importedSpecifiers, scanCode } from './scan-code.mjs';
 
 const DOMAIN_SRC = /^packages\/domain\/[^/]+\/src\//;
 const SCENE_SRC = /^packages\/scene\/src\//;
@@ -42,13 +42,6 @@ const GAMEPLAY_RULES = [
   [PERSISTENCE_SRC, FORBIDDEN_USES],
   [AUDIO_SRC, FORBIDDEN_USES],
 ];
-// `from '<spec>'`, bare `import '<spec>'`, and `import('<spec>')`.
-const IMPORT_SPEC = /(?:\bfrom\s*|\bimport\s*\(?\s*)(['"])([^'"\n]+)\1/g;
-
-function importedSpecifiers(code) {
-  return [...code.matchAll(IMPORT_SPEC)].map((m) => m[2]);
-}
-
 
 // Rules for the renderer packages (every packages/art-*/src/ except art-testparts, which is test support).
 // A floating-point literal in comment-free, string-free code: digit.digit, a leading dot (.5), a trailing dot

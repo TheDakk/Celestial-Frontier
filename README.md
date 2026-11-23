@@ -11,7 +11,8 @@ Reference documents from version 1 live on the `celestial-frontier-v1-reference`
 - Install: `npm install`
 - Test: `npm test`
 - Typecheck: `npm run typecheck` (the root project only; the gate also typechecks the diagnostics app, the game app, audio and persistence, each with its own tsconfig)
-- Gate (clean-branch check, purity check, typecheck, tests; must pass before merging): `npm run gate`
+- Gate (clean-branch check, purity check, app structure check, typecheck, tests; must pass before merging): `npm run gate`
+- App structure check, run by the gate: no file under `apps/` over 500 lines; in the game app, a system folder imports only itself, `bus`, `events`, `platform/` and `ui/`, and only `main.ts` and `screens/` import other systems, by their `index.ts`
 - Game (`--host` makes it reachable from a phone on the same network): `npm run dev -w @cf/game -- --host`; build: `npm run build -w @cf/game`
 - Renderer diagnostics page (recomposes the recorded creatures and reports whether every hash matches; `--host` makes it reachable from a phone on the same network): `npm run dev -w @cf/diagnostics -- --host`
 - Check an art pack (one or more art text files, joined in order; reads only those files, writes nothing; exit code 0 only when there is no error): `node tools/check-pack.mjs <file> [more files...]`

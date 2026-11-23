@@ -97,3 +97,11 @@ export function scanCode(text) {
   code(false);
   return { kept, bare, division };
 }
+
+// `from '<spec>'`, bare `import '<spec>'`, and `import('<spec>')`.
+const IMPORT_SPEC = /(?:\bfrom\s*|\bimport\s*\(?\s*)(['"])([^'"\n]+)\1/g;
+
+/** Every module specifier imported or re-exported in `code`: comment-free text that keeps its string literals. */
+export function importedSpecifiers(code) {
+  return [...code.matchAll(IMPORT_SPEC)].map((m) => m[2]);
+}

@@ -10,6 +10,7 @@ const start = process.hrtime.bigint();
 const steps = [
   ['node', ['tools/clean-branch-check.mjs']],
   ['node', ['tools/purity-check.mjs']],
+  ['node', ['tools/app-structure-check.mjs']],
   [process.execPath, [TSC, '-p', 'tsconfig.json'], 'typecheck: ok'],
   [process.execPath, [TSC, '-p', 'apps/diagnostics/tsconfig.json'], 'diagnostics typecheck: ok'],
   [process.execPath, [TSC, '-p', 'apps/game/tsconfig.json'], 'game typecheck: ok'],
