@@ -18,7 +18,8 @@ export type SettingsField = 'sndOn' | 'sfxVol' | 'motionMode' | 'fsMode' | 'tone
 
 export interface StatusFacts {
   build: string;
-  /** `ok`: this page stores the expedition. `held`: it writes nothing. `reload-required`: it must reload first. */
+  /** `ok`: this page holds the save and stores the expedition. `held`: it writes nothing, under a hold or
+   *  while another page holds the save. `reload-required`: it must reload first. */
   save: 'ok' | 'held' | 'reload-required';
   /** The number of the stored revision this page knows. */
   revision: number;
@@ -30,6 +31,8 @@ export interface StatusFacts {
 
 export interface SettingsPorts {
   live(): SaveStateV2;
+  /** True while this page cannot store a change to the expedition: a change is then refused in words. */
+  readOnly(): boolean;
   /** A save field was changed: apply it and ask for it to be stored. */
   changed(field: SettingsField): void;
   listening: { get(): AudioAccessibilityModes; set(modes: AudioAccessibilityModes): void };
@@ -44,6 +47,11 @@ export interface SettingsPorts {
   toast: Toast;
 }
 
+/** What the game says when a control would change an expedition this page cannot store. */
+const READ_ONLY_WORDS = Object.freeze({
+  title: 'Read-only expedition',
+  text: 'Inspection remains available, but this action cannot change the expedition until save authority is restored.',
+});
 const SAVE_WORDS: Readonly<Record<StatusFacts['save'], string>> = {
   ok: 'Stored on this device', held: 'Protected: nothing is written', 'reload-required': 'Reload needed',
 };
@@ -94,7 +102,14 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
         }
         return row(label, group);
       };
+      /** True, with the game's words shown, when this page cannot store a change. */
+      const refused = (): boolean => {
+        if (!ports.readOnly()) return false;
+        ports.toast.show(READ_ONLY_WORDS.title, READ_ONLY_WORDS.text, true);
+        return true;
+      };
       const set = <F extends SettingsField>(field: F, value: SaveStateV2[F]): void => {
+        if (refused()) return;
         ports.live()[field] = value;
         ports.changed(field);
       };
@@ -106,12 +121,16 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
         heading.dataset.l10nSkip = '';
 
         const volume = el('input', { type: 'range', min: '0', max: '100', value: String(Math.round(save.sfxVol * 100)), 'data-set': 'volume', 'aria-label': 'Sound volume' });
-        volume.addEventListener('input', () => { set('sfxVol', Number(volume.value) / 100); });
+        volume.addEventListener('input', () => {
+          set('sfxVol', Number(volume.value) / 100);
+          volume.value = String(Math.round(ports.live().sfxVol * 100));
+        });
 
         const reset = el('button', { type: 'button', 'data-set': 'reset', 'aria-expanded': String(resetAsked), 'aria-controls': 'setresetconfirm', disabled: !ports.mayReplace() }, 'Reset…');
         reset.addEventListener('click', () => { resetAsked = true; redraw(); root.querySelector<HTMLElement>('[data-set="reset-no"]')?.focus(); });
         const yes = el('button', { type: 'button', 'data-set': 'reset-yes', class: 'danger', disabled: resetBusy || !ports.mayReplace() }, 'Erase and start over');
         yes.addEventListener('click', () => {
+          if (refused()) return;
           resetBusy = true;
           redraw();
           void ports.reset().then((outcome) => {
@@ -174,7 +193,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       draw();
       // What Status shows can change while the panel is open.
       const stops = [
-        ...(['save:committed', 'save:reload-required', 'pack:status'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
+        ...(['save:committed', 'save:reload-required', 'save:authority', 'pack:status'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
         ...(['protect:persist', 'protect:backup', 'save:held'] as const).map((type) => ctx.bus.on(type, redraw)),
         ...(ports.update === null ? [] : [ports.update.onChange(() => { if (live) drawStatus(); })]),
       ];

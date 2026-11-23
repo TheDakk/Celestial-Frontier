@@ -33,6 +33,9 @@ export interface SaveLoop {
   /** The page is visible again: take the lease back and resume accrual. */
   show(): Promise<void>;
   readonly status: 'idle' | 'writing' | 'held' | 'reload-required';
+  /** True while a change made on this page would be stored: no hold, no reload owed, and the lease is this
+   *  page's over the revision it knows. */
+  mayWrite(): boolean;
   /** The epoch every drawing and descriptor reads: only ever a committed one. */
   publishedEpoch(): number;
 }
@@ -73,6 +76,15 @@ export function createSaveLoop(deps: {
     return diagnostics.leaseOwned && !diagnostics.staleBlocked;
   };
 
+  let announced = false;
+  /** Says so when what `mayWrite` answers has changed. */
+  const announce = (): void => {
+    const writable = mayWrite();
+    if (writable === announced) return;
+    announced = writable;
+    bus.emit('save:authority', { writable });
+  };
+
   /** Makes the page read-only and asks, once, for a reload. */
   const requireReload = (reason: string): void => {
     if (reloadRequired) return;
@@ -80,6 +92,7 @@ export function createSaveLoop(deps: {
     runtime.setAnswerable(false);
     void runtime.release().catch(() => undefined);
     bus.emit('save:reload-required', { reason });
+    announce();
   };
 
   /** Holds the page, with no reload: the player may try storage again. */
@@ -88,6 +101,7 @@ export function createSaveLoop(deps: {
     runtime.setAnswerable(false);
     void runtime.release().catch(() => undefined);
     bus.emit('save:held', { detail });
+    announce();
   };
 
   const write = async (intent: EcologyEpochCheckpointIntent): Promise<boolean> => {
@@ -186,6 +200,7 @@ export function createSaveLoop(deps: {
     })();
     proving = run;
     try { await run; } finally { if (proving === run) proving = null; }
+    announce();
     return owned;
   };
   return {
@@ -210,6 +225,7 @@ export function createSaveLoop(deps: {
           await request('lifecycle');
         } finally {
           try { await runtime.setVisible(false); } catch { await runtime.release(); }
+          announce();
         }
       })().finally(() => { if (hiding === run) hiding = null; });
       hiding = run;
@@ -225,6 +241,7 @@ export function createSaveLoop(deps: {
       if (!gate.mayWrite()) return 'held';
       return active !== null || queued !== null ? 'writing' : 'idle';
     },
+    mayWrite,
     publishedEpoch: () => epoch.published(),
   };
 }

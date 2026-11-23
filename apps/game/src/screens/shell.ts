@@ -142,7 +142,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
 
   const status = (): StatusFacts => ({
     build: env.build,
-    save: loop.status === 'reload-required' ? 'reload-required' : gate.mayWrite() ? 'ok' : 'held',
+    save: loop.status === 'reload-required' ? 'reload-required' : loop.mayWrite() ? 'ok' : 'held',
     revision: runtime.revision,
     packs: [...packs.values()],
     sheet: sheetState(),
@@ -191,6 +191,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   }));
   registry.registerScreen(settingsScreen({
     live: () => live,
+    readOnly: () => !loop.mayWrite(),
     changed(field) {
       if (field === 'sndOn' || field === 'sfxVol') sound.applyVolume();
       if (field === 'tipsOn' && !live.tipsOn) tooltips.hide();

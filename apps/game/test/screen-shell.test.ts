@@ -107,7 +107,8 @@ describe('the booted page', () => {
       control?.dispatchEvent(new Event('input', { bubbles: true }));
       await settled();
     }
-    expect(page.live.sndOn).toBe(false);
+    // Under a hold a setting is refused, as the game refuses it: nothing changes even on screen.
+    expect([page.live.sndOn, page.chrome.toast.textContent!.includes('Read-only expedition')]).toEqual([true, true]);
     page.time.advance(60_000);
     page.timers[0]!.run();
     setVisibility('hidden');
