@@ -58,7 +58,9 @@ export interface ProtectView {
 
 /** `redraw` is called whenever the rows have changed and must be drawn again. */
 export function createProtectView(ports: ProtectPorts, redraw: () => void): ProtectView {
-  let note: string | null = null;
+  /** What the last backup and the last file chosen came to: each is said under its own row. */
+  let backupNote: string | null = null;
+  let restoreNote: string | null = null;
   let chosen: Extract<RestoreCheck, { kind: 'ok' }> | null = null;
   let confirming = false;
   let busy = false;
@@ -69,7 +71,7 @@ export function createProtectView(ports: ProtectPorts, redraw: () => void): Prot
     const wallNow = ports.clocks.wallNow();
     ports.saveTextFile(backupFileName(wallNow),
       createBackupText({ state: stored, extensions: ports.runtime.extensions, registry: ports.registry, wallNow }));
-    note = 'Backup file made.';
+    backupNote = 'Backup file made.';
     redraw();
     if (await recordBackup({ runtime: ports.runtime, gate: ports.gate, settle: ports.settle, wallNow })) {
       ports.bus.emit('protect:backup', { at: wallNow });
@@ -84,7 +86,7 @@ export function createProtectView(ports: ProtectPorts, redraw: () => void): Prot
     const check = checkRestoreText(text, ports.registry, ports.clocks.wallNow());
     chosen = check.kind === 'ok' ? check : null;
     confirming = check.kind === 'ok';
-    note = check.kind === 'ok' ? null : REFUSED_FILE[check.kind];
+    restoreNote = check.kind === 'ok' ? null : REFUSED_FILE[check.kind];
     redraw();
   };
 
@@ -114,20 +116,22 @@ export function createProtectView(ports: ProtectPorts, redraw: () => void): Prot
       const held = !ports.gate.mayWrite();
       const persist = PERSIST_WORDS[ports.persistState()];
       const last = readLastBackupAt(ports.runtime.extensions);
+      const said = (key: string, words: string | null): HTMLElement[] => (words === null ? [] : [el('p', { class: 'sub', role: 'status', 'data-set': key }, words)]);
       const rows: HTMLElement[] = [
         el('h3', {}, 'Save protection'),
         row('Saved data',
           el('span', { class: 'row-value', 'data-set': 'persist-state' }, icon(persist.icon, { decorative: true }), el('span', {}, persist.words)),
           button('persist-ask', 'Ask again', () => { void ports.askAgain().then(redraw); })),
         row('Backup', button('backup', 'Back up now', () => { void backUp(); }, { disabled: !ports.canBackUp() })),
+        ...said('backup-note', backupNote),
         row('Last backup', last === null
           ? el('span', { class: 'row-value', 'data-set': 'last-backup' }, 'Never')
           : el('span', { class: 'row-value', 'data-set': 'last-backup', 'data-l10n-skip': true }, localDateTime(last))),
         row('Restore', button('restore', 'Restore…', () => { void choose(); },
           { disabled: held, 'aria-expanded': String(confirming), 'aria-controls': 'setrestoreconfirm' })),
+        ...said('restore-note', restoreNote),
       ];
       if (held) rows.push(el('p', { class: 'sub' }, 'Not available while the save is protected.'));
-      if (note !== null) rows.push(el('p', { class: 'sub', role: 'status', 'data-set': 'protect-note' }, note));
       rows.push(el('div', { class: 'row confirm', id: 'setrestoreconfirm', role: 'group', 'aria-label': 'Confirm restore', hidden: !confirming },
         el('span', { class: 'sub' }, 'Replace this whole expedition with the one in the backup file? This cannot be undone.'),
         button('restore-yes', 'Replace and reload', () => { void restore(); }, { class: 'danger', disabled: busy || held }),

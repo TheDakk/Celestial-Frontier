@@ -33,7 +33,11 @@ describe('save protection in Settings', () => {
     await settled();
     expect(backups).toEqual([{ at }]);
     expect(text(page, 'last-backup')).toBe(localDateTime(at));
-    expect(text(page, 'protect-note')).toBe('Backup file made.');
+    expect(text(page, 'backup-note')).toBe('Backup file made.');
+    // The message stands with its own row: straight under Back up now, and nothing is said under Restore.
+    const rowOf = (key: string): Element => page.control(key).closest('.row')!;
+    expect(rowOf('backup').nextElementSibling).toBe(page.panel().querySelector('[data-set="backup-note"]'));
+    expect(page.panel().querySelector('[data-set="restore-note"]')).toBeNull();
     expect(readLastBackupAt((await reboot(page.backend)).extensions)).toBe(at);
 
     // The file restores on an empty device to the expedition as it was stored.
@@ -66,7 +70,10 @@ describe('save protection in Settings', () => {
     page.chooser.answer = '{"not":"a backup"}';
     page.control('restore').click();
     await settled();
-    expect(text(page, 'protect-note')).toBe('That file is damaged or is not a backup of this game. Nothing was changed.');
+    expect(text(page, 'restore-note')).toBe('That file is damaged or is not a backup of this game. Nothing was changed.');
+    expect(page.control('restore').closest('.row')!.nextElementSibling).toBe(page.panel().querySelector('[data-set="restore-note"]'));
+    // The backup made before is still said under Backup: the two rows never share their words.
+    expect(page.control('backup').closest('.row')!.nextElementSibling!.textContent).toBe('Backup file made.');
     expect(document.getElementById('setrestoreconfirm')!.hidden).toBe(true);
 
     page.chooser.answer = page.files[0]!.text;
