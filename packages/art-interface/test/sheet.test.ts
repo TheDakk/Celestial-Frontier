@@ -129,9 +129,9 @@ describe('the placeholder sheet', () => {
 });
 
 describe('names', () => {
-  it('the required glyphs are printable Basic Latin and the box, each once', () => {
+  it('the required glyphs are printable Basic Latin, the em dash and the box, each once', () => {
     expect(REQUIRED_GLYPHS.slice(0, 95)).toEqual(Array.from({ length: 95 }, (_, i) => 0x20 + i));
-    expect(REQUIRED_GLYPHS).toContain(0xfffd);
+    expect(REQUIRED_GLYPHS.slice(95)).toEqual([0x2014, 0xfffd]);
     expect(new Set(REQUIRED_GLYPHS).size).toBe(REQUIRED_GLYPHS.length);
   });
   it('the stand-in icon is always a required name, and no name repeats', () => {

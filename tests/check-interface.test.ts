@@ -24,8 +24,8 @@ const BLOCK_16 = Array.from({ length: 16 }, () => '1'.repeat(16)).join('\n');
 describe('checkInterface', () => {
   it('the placeholder sheet checks OK', () => {
     const report = checkInterface(PLACEHOLDER);
-    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 96, icons: 6, elements: 60, line: 12 } });
-    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 96 glyphs (line 12), 6 icons, 60 elements\n');
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 60, line: 12 } });
+    expect(formatInterfaceReport(report)).toBe('check-interface: OK\nsummary: 97 glyphs (line 12), 6 icons, 60 elements\n');
   });
   it('a sheet that does not parse reports the parser\'s line and nothing else', () => {
     const report = checkInterface(PLACEHOLDER.replace('interface 1', 'interface 3'));

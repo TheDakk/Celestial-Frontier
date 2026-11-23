@@ -1,7 +1,8 @@
 // The one list the app, the checker and the art request share.
 
-/** The code points the display font must draw: printable Basic Latin (U+0020 to U+007E), then the box U+FFFD. */
-export const REQUIRED_GLYPHS: readonly number[] = Object.freeze([...Array.from({ length: 95 }, (_, i) => 32 + i), 0xfffd]);
+/** The code points the display font must draw: printable Basic Latin (U+0020 to U+007E), the em dash U+2014 of the
+ *  map's captions, then the box U+FFFD. */
+export const REQUIRED_GLYPHS: readonly number[] = Object.freeze([...Array.from({ length: 95 }, (_, i) => 32 + i), 0x2014, 0xfffd]);
 
 /** The palette ramps a sheet must name: the ramp display text and icons are drawn in, and the second ramp of an icon. */
 export const REQUIRED_RAMPS: readonly string[] = Object.freeze(['ink', 'accent']);
