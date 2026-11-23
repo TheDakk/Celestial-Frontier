@@ -252,9 +252,11 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
  *  have run and `epoch` the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
  *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
- *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. */
+ *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. With
+ *  `solid` a planet's night, its light and its cloud are drawn in whole pixels of the palette, as pixel art is: no
+ *  dither lies on a planet. */
 export interface MapFrame {
-  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean;
+  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
    *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail; with
    *  `stand`, the name of a comet and of the visitor stands on its foot above it, as the game anchors it; with `apart`,
@@ -274,7 +276,7 @@ export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: Int
   const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn } } : {};
   const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
   if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
-  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing };
+  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };
   return withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
 }
 

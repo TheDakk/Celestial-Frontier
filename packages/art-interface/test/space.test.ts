@@ -388,6 +388,79 @@ describe('painting space items', () => {
     expect(paint(5, 1, [...under, veil(0x000001, true)])).toEqual(['1246.']);
   });
 
+  it('a shade redraws each pixel under it in the palette colour nearest its own at a share of its brightness: solid, no pattern', () => {
+    const under: SpaceItem[] = [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'dot', x: 1, y: 0, colour: RED }, { kind: 'dot', x: 2, y: 0, colour: BLUE }, { kind: 'dot', x: 3, y: 0, colour: 0x800000 }];
+    const shade = (share: number): SpaceItem => ({ kind: 'shade', x: 0, y: 0, r: 9, share });
+    expect(paint(5, 1, under)).toEqual(['1354.']);
+    // Half: white to grey, red to dark red, blue to dark blue. The background stays the background.
+    expect(paint(5, 1, [...under, shade(8)])).toEqual(['2464.']);
+    // All of it kept changes nothing; a share over the whole brightens, each channel stopping at its top.
+    expect(paint(5, 1, [...under, shade(16)])).toEqual(['1354.']);
+    expect(paint(5, 1, [...under, shade(32)])).toEqual(['1353.']);
+    // A pixel is never shaded away to the background, however dark: it takes the darkest colour that is one.
+    expect(paint(5, 1, [...under, shade(1)])).toEqual(['4464.']);
+    // Every pixel of a disc under a shade changes alike: there is no pixel left out in a pattern.
+    const lit = paint(9, 9, [{ kind: 'disc', x: 4, y: 4, r: 4, bands: [WHITE] }]);
+    const dark = paint(9, 9, [{ kind: 'disc', x: 4, y: 4, r: 4, bands: [WHITE] }, { kind: 'shade', x: 4, y: 4, r: 60, share: 8 }]);
+    expect(dark).toEqual(lit.map((line) => line.replaceAll('1', '2')));
+  });
+
+  it('a shade can draw toward a colour: what it does not keep of a pixel it takes from that colour', () => {
+    const under: SpaceItem[] = [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'dot', x: 1, y: 0, colour: RED }, { kind: 'dot', x: 2, y: 0, colour: BLUE }, { kind: 'dot', x: 3, y: 0, colour: 0x800000 }];
+    const night = (share: number): SpaceItem => ({ kind: 'shade', x: 0, y: 0, r: 9, share, toward: 0x000080 });
+    // Nothing kept: every pixel is the night's own colour. All kept: nothing changes.
+    expect(paint(5, 1, [...under, night(0)])).toEqual(['6666.']);
+    expect(paint(5, 1, [...under, night(16)])).toEqual(['1354.']);
+    // A quarter kept and three quarters night: in this palette still the night's dark blue.
+    expect(paint(5, 1, [...under, night(4)])).toEqual(['6666.']);
+    // Half kept: white is a pale blue grey, nearest the grey; red and the night's blue meet nearest dark red.
+    expect(paint(5, 1, [...under, night(8)])).toEqual(paint(5, 1, [...under, { kind: 'shade', x: 0, y: 0, r: 9, share: 8 }]).map((line) => line.replace(/^./, '2')));
+  });
+
+  it('a shaded colour is matched by a darker colour of its own hue before a grey of its own brightness', () => {
+    const sheet = parseInterfaceSheet(['interface 1', 'palette', 'colour 0 000000', 'colour 1 4060ff', 'colour 2 464646', 'colour 3 0a0f32', 'ramp ink 1 2 2 2', 'ramp accent 1 2 2 2',
+      'font display line=1 base=1 gap=0 space=1', 'glyph U+FFFD', '1', '', 'icon missing size=1', '1'].join('\n'));
+    // Half of the blue is 20307f: by plain distance the grey 464646 is nearer it than the navy 0a0f32.
+    const far = (a: number, b: number): number => ((a >> 16) - (b >> 16)) ** 2 + (((a >> 8) & 255) - ((b >> 8) & 255)) ** 2 + ((a & 255) - (b & 255)) ** 2;
+    expect(far(0x20307f, 0x464646)).toBeLessThan(far(0x20307f, 0x0a0f32));
+    const picture = paintSpace(1, 1, [{ kind: 'dot', x: 0, y: 0, colour: 0x4060ff }, { kind: 'shade', x: 0, y: 0, r: 2, share: 8 }], sheet, noGaps());
+    expect([...picture.pixels]).toEqual([3]);
+  });
+
+  it('a shade with an inner radius is the band outside that disc; with a clip only what lies inside the clip', () => {
+    const globe: SpaceItem = { kind: 'disc', x: 3, y: 3, r: 3, bands: [WHITE] };
+    expect(paint(7, 7, [globe, { kind: 'shade', x: 3, y: 3, r: 3, inner: 1, share: 8 }])).toEqual([
+      '..222..',
+      '.22222.',
+      '2211122',
+      '2211122',
+      '2211122',
+      '.22222.',
+      '..222..',
+    ]);
+    // The night of a globe: a disc from one side, kept to the globe.
+    expect(paint(7, 7, [globe, { kind: 'shade', x: 7, y: 3, r: 4, share: 8, clip: { x: 3, y: 3, r: 3 } }])).toEqual([
+      '..112..',
+      '.11222.',
+      '1112222',
+      '1112222',
+      '1112222',
+      '.11222.',
+      '..112..',
+    ]);
+    // A band and the disc inside it shade every pixel once: the same as two shades laid side by side.
+    const twice = paint(9, 9, [{ kind: 'disc', x: 4, y: 4, r: 4, bands: [RED] }, { kind: 'shade', x: 4, y: 4, r: 9, inner: 2, share: 8 }, { kind: 'shade', x: 4, y: 4, r: 2, share: 8 }]);
+    expect(twice).toEqual(paint(9, 9, [{ kind: 'disc', x: 4, y: 4, r: 4, bands: [0x800000] }]));
+    expect(paint(2, 2, [{ kind: 'dot', x: 0, y: 0, colour: WHITE }, { kind: 'shade', x: 0, y: 0, r: MAX_RADIUS + 1, share: 8 }, { kind: 'shade', x: 0, y: 0, r: -1, share: 8 }])).toEqual(['1.', '..']);
+  });
+
+  it('an element with a clip shows only what lies inside that disc', () => {
+    const arrow = (clip?: { x: number; y: number; r: number }): SpaceItem => ({ kind: 'element', name: 'arrow', x: 2, y: 1, ramp: WHITE, ...(clip === undefined ? {} : { clip }) });
+    expect(paint(6, 4, [arrow()])).toEqual(['......', '..1...', '..125.', '..1...']);
+    expect(paint(6, 4, [arrow({ x: 2, y: 2, r: 1 })])).toEqual(['......', '..1...', '..12..', '..1...']);
+    expect(paint(6, 4, [arrow({ x: 9, y: 9, r: 1 })])).toEqual(['......', '......', '......', '......']);
+  });
+
   const SCENE: readonly SpaceItem[] = [
     { kind: 'disc', x: 20, y: 18, r: 6, bands: [RED, BLUE, WHITE] },
     { kind: 'ring', x: 20, y: 18, r: 9, colour: WHITE },

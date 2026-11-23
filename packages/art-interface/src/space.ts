@@ -14,7 +14,7 @@ import type { Gaps } from './text';
  *   With `span`, the width in art pixels it is to cover, the drawing is the widest of the element and its size tiers
  *   (the sheet's drawings named `<name>/x<width>`) that is no wider than the span, or the element itself when none is;
  *   and it is drawn in whole steps: at 1, 2, 3 ... times its size, whichever brings its own width nearest (halfway goes
- *   up, and never under 1), each of its pixels a square block.
+ *   up, and never under 1), each of its pixels a square block. With `clip` only what lies inside that disc is drawn.
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
  * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top. With
@@ -24,13 +24,19 @@ import type { Gaps } from './text';
  *   to the picture, so veils join without a seam and a higher level keeps every pixel of a lower one. With `inner` only
  *   the band outside the disc of that radius is painted; with `clip` only what lies inside that disc. A veil that is a
  *   `light` never darkens: it leaves every pixel that is already as bright as its colour.
+ * - shade: the same circle with no pattern: every pixel in it that is not background is redrawn in the palette colour
+ *   nearest its own with each channel at `share` sixteenths (16 leaves it; more brightens, a channel stopping at its
+ *   top), and never in the background. With `toward`, what a share under 16 does not keep of the pixel is taken from
+ *   that colour. The nearest colour is judged by hue first, so a blue goes to a darker blue and not to a grey.
+ *   `inner` and `clip` as for a veil.
  */
 export type SpaceItem =
-  | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number }
+  | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number; clip?: { x: number; y: number; r: number } }
   | { kind: 'dot'; x: number; y: number; colour: number }
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
-  | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean };
+  | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean }
+  | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number } };
 
 /** The ramp an element's values 5 to 8 are drawn in. */
 const SECOND_RAMP = 'accent';
@@ -108,6 +114,23 @@ function nearestOf(candidates: readonly number[], rgb: number): number {
   return best;
 }
 
+/** The index of the candidate nearest `rgb` in hue first: a difference between its channels counts four times a
+ *  difference they share, so a colour is matched by one of its own hue before a grey of its own brightness. Ties go
+ *  to the lower index. -1 when there is none. */
+function nearestHue(candidates: readonly number[], rgb: number): number {
+  const [r, g, b] = channels(rgb);
+  let best = -1;
+  let least = 0;
+  for (let i = 0; i < candidates.length; i++) {
+    const [cr, cg, cb] = channels(candidates[i] ?? 0);
+    const [dr, dg, db] = [cr - r, cg - g, cb - b];
+    const d = (dr + dg + db) * (dr + dg + db) + HUE_WEIGHT * ((dr - dg) * (dr - dg) + (dg - db) * (dg - db) + (db - dr) * (db - dr));
+    if (best < 0 || d < least) { best = i; least = d; }
+  }
+  return best;
+}
+const HUE_WEIGHT = 2;
+
 /** The palette index nearest a 0xRRGGBB colour; ties go to the lower index. */
 export function nearestColour(palette: Palette, rgb: number): number {
   return Math.max(0, nearestOf(palette.colours, rgb));
@@ -136,7 +159,7 @@ function rootOf(n: number): number {
  * A picture w by h of palette indices, the items painted in order, later ones over earlier ones. Index 0 is the
  * background: a pixel given it shows what lies behind. Whatever falls outside the picture is dropped. An element the
  * sheet lacks draws the stand-in icon centred on its place and is counted in `gaps.elements`. A ring or disc with a
- * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil with one.
+ * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one.
  */
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): PixelBuffer {
   const { palette } = sheet;
@@ -153,7 +176,12 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     for (let x = Math.max(0, x0); x <= Math.min(w - 1, x1); x++) pixels[y * w + x] = value;
   };
 
+  /** How far a disc of radius r reaches to either side on the row `up` rows from its centre; -1 when it misses the row. */
+  const halfOf = (r: number, up: number): number => (up > r ? -1 : rootOf(r * r + r - up * up));
+
   const element = (item: Extract<SpaceItem, { kind: 'element' }>): void => {
+    const { clip } = item;
+    if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
     const span = Math.min(item.span ?? 0, 2 * MAX_RADIUS);
     const fit = fitted(sheet, item.name, span);
     let drawing = fit?.drawing;
@@ -180,7 +208,11 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
         const left = (item.flip === true ? item.x - (dx - ax) * k : item.x + (dx - ax) * k) - lead;
         if (left + k <= 0 || left >= w) continue;
         const colour = ramps[(value - 1) >> 2]?.[(value - 1) & 3] ?? 0;
-        for (let y = Math.max(0, top); y < Math.min(h, top + k); y++) row(y, left, left + k - 1, colour);
+        for (let y = Math.max(0, top); y < Math.min(h, top + k); y++) {
+          if (clip === undefined) { row(y, left, left + k - 1, colour); continue; }
+          const within = halfOf(clip.r, Math.abs(y - clip.y));
+          row(y, Math.max(left, clip.x - within), Math.min(left + k - 1, clip.x + within), colour);
+        }
       }
     }
   };
@@ -218,9 +250,6 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
-  /** How far a disc of radius r reaches to either side on the row `up` rows from its centre; -1 when it misses the row. */
-  const halfOf = (r: number, up: number): number => (up > r ? -1 : rootOf(r * r + r - up * up));
-
   const veil = (item: Extract<SpaceItem, { kind: 'veil' }>): void => {
     const { x, y, r, clip } = item;
     if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
@@ -238,13 +267,45 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
+  /** The palette index each index is shaded to at a share, worked out once for each share a picture uses. */
+  const shadedAt = new Map<number, Uint8Array>();
+  const solid = palette.colours.slice(1);
+  const shade = (item: Extract<SpaceItem, { kind: 'shade' }>): void => {
+    const { x, y, r, clip, share } = item;
+    if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
+    const toward = item.toward ?? 0;
+    const key = share * (1 << 24) + toward;
+    let shaded = shadedAt.get(key);
+    if (shaded === undefined) {
+      const rest = channels(toward).map((channel) => channel * Math.max(0, 16 - share));
+      const at = (channel: number, i: number): number => Math.min(255, (channel * share + (rest[i] ?? 0)) >> 4);
+      shaded = Uint8Array.from(palette.colours, (rgb) => {
+        const [red, green, blue] = channels(rgb);
+        return nearestHue(solid, (at(red, 0) << 16) | (at(green, 1) << 8) | at(blue, 2)) + 1;
+      });
+      shadedAt.set(key, shaded);
+    }
+    for (let py = Math.max(0, y - r); py <= Math.min(h - 1, y + r); py++) {
+      const half = halfOf(r, Math.abs(py - y));
+      const hole = item.inner === undefined ? -1 : halfOf(item.inner, Math.abs(py - y));
+      const within = clip === undefined ? MAX_RADIUS * 4 : halfOf(clip.r, Math.abs(py - clip.y));
+      const from = Math.max(0, x - half, clip === undefined ? 0 : clip.x - within);
+      const to = Math.min(w - 1, x + half, clip === undefined ? w - 1 : clip.x + within);
+      for (let px = from; px <= to; px++) {
+        const value = pixels[py * w + px] ?? 0;
+        if (value !== 0 && Math.abs(px - x) > hole) pixels[py * w + px] = shaded[value] ?? value;
+      }
+    }
+  };
+
   for (const item of items) {
     if (item.kind === 'element') element(item);
     else if (item.kind === 'dot') row(item.y, item.x, item.x, index(item.colour));
     else if (item.r < 0 || item.r > MAX_RADIUS) continue;
     else if (item.kind === 'ring') ring(item);
     else if (item.kind === 'disc') disc(item);
-    else veil(item);
+    else if (item.kind === 'veil') veil(item);
+    else shade(item);
   }
   return { w, h, pixels };
 }

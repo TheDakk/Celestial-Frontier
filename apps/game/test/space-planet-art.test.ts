@@ -4,6 +4,7 @@ import { PLANET_TYPES, fittedWidth, parseInterfaceSheet } from '@cf/art-interfac
 import type { Gaps, SpaceItem } from '@cf/art-interface';
 import { testInterfaceSheetText } from '@cf/art-testparts';
 import { systemScene } from '@cf/scene';
+import { cosSin } from '../src/space/model';
 import { PLANET_BANDS, mapItems, mapPicture, planetBands } from '../src/space/project';
 import type { MapFrame } from '../src/space/project';
 import { SOL, kindOf, systemNav } from './space-support';
@@ -79,5 +80,84 @@ describe('planets the sheet draws', () => {
     expect(gaps.elements).toEqual([]);
     expect(hashBuffer(mapPicture(frame(), withGas, noGaps()))).toBe(first);
     expect(hashBuffer(mapPicture(frame(), placeholder, noGaps()))).not.toBe(first);
+  });
+});
+
+describe('a planet in solid pixels', () => {
+  /** The picture of the frame and of the same frame with nothing dressing its planets, as palette indices. */
+  const pictures = (sheet: typeof placeholder, over: Partial<MapFrame>) => {
+    const { passes: _passes, ...bare } = frame(over);
+    return { lit: mapPicture(bare, sheet, noGaps()), dressed: mapPicture(frame(over), sheet, noGaps()) };
+  };
+  /** For each colour of the lit planet's disc, how many pixels took each colour once dressed. */
+  function taken(sheet: typeof placeholder, over: Partial<MapFrame>): Map<number, Map<number, number>> {
+    const items = mapItems(frame(over), GRID, 2, sheet);
+    const disc = items.find((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.r > 20) as Extract<SpaceItem, { kind: 'disc' }>;
+    const { lit, dressed } = pictures(sheet, over);
+    const out = new Map<number, Map<number, number>>();
+    for (let y = disc.y - disc.r; y <= disc.y + disc.r; y++) for (let x = disc.x - disc.r; x <= disc.x + disc.r; x++) {
+      if ((x - disc.x) ** 2 + (y - disc.y) ** 2 > (disc.r - 1) ** 2) continue;
+      const [from, to] = [lit.pixels[y * lit.w + x]!, dressed.pixels[y * lit.w + x]!];
+      out.set(from, new Map(out.get(from)).set(to, (out.get(from)?.get(to) ?? 0) + 1));
+    }
+    return out;
+  }
+  /** A pixel of the dressed picture that differs from all four of its neighbours while they agree: a dot. */
+  function dots(sheet: typeof placeholder, over: Partial<MapFrame>): number {
+    const items = mapItems(frame(over), GRID, 2, sheet);
+    const disc = items.find((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.r > 20) as Extract<SpaceItem, { kind: 'disc' }>;
+    const { lit, dressed } = pictures(sheet, over);
+    const at = (picture: typeof lit, x: number, y: number): number => picture.pixels[y * picture.w + x]!;
+    let found = 0;
+    for (let y = disc.y - disc.r + 2; y <= disc.y + disc.r - 2; y++) for (let x = disc.x - disc.r + 2; x <= disc.x + disc.r - 2; x++) {
+      if ((x - disc.x) ** 2 + (y - disc.y) ** 2 > (disc.r - 3) ** 2) continue;
+      const around = [at(dressed, x - 1, y), at(dressed, x + 1, y), at(dressed, x, y - 1), at(dressed, x, y + 1)];
+      const litAround = [at(lit, x - 1, y), at(lit, x + 1, y), at(lit, x, y - 1), at(lit, x, y + 1)];
+      // Only where the lit picture is one flat colour: a dot there was put by the dressing.
+      if (litAround.every((value) => value === at(lit, x, y)) && around.every((value) => value === around[0]) && at(dressed, x, y) !== around[0]) found++;
+    }
+    return found;
+  }
+  // Jupiter where it stands as a game starts, in the middle of the view; the Sun is off to its left.
+  const [cos, sin] = cosSin(jupiter.orb * 0.13);
+  const near = { cam: { x: cos * jupiter.orb, y: sin * jupiter.orb, z: 4 } };
+  expect(cos).toBeGreaterThan(0.5);
+
+  for (const [name, sheet] of [['banded by code', placeholder], ['drawn from the sheet', withGas]] as const) {
+    it(`${name}: asked for, its night and its light are whole pixels: each colour of the globe takes at most three (lit, half shade, night) and no dot stands alone`, () => {
+      const solid = taken(sheet, { ...near, solid: true });
+      expect(solid.size).toBeGreaterThan(1);
+      for (const [from, to] of solid) expect([...to.keys()].length, `colour ${from}`).toBeLessThanOrEqual(name === 'banded by code' ? 4 : 3);
+      expect(dots(sheet, { ...near, solid: true })).toBe(0);
+      // Some of it is in the night and some is not.
+      const changed = [...solid].reduce((n, [from, to]) => n + [...to].filter(([value]) => value !== from).reduce((sum, [, count]) => sum + count, 0), 0);
+      const all = [...solid].reduce((n, [, to]) => n + [...to.values()].reduce((sum, count) => sum + count, 0), 0);
+      expect(changed / all).toBeGreaterThan(0.25);
+      expect(changed / all).toBeLessThan(0.75);
+      // Without the asking the night is the dither it was: on the flat bands of a planet banded by code, dots stand
+      // alone all over it.
+      if (sheet === placeholder) expect(dots(sheet, near)).toBeGreaterThan(50);
+    });
+  }
+
+  it('asked for, a planet takes no veil at all: a half shade along the terminator and the night beyond it, on the side away from the star', () => {
+    for (const sheet of [placeholder, withGas]) {
+      const items = mapItems(frame({ ...near, solid: true }), GRID, 2, sheet);
+      const at = items.findIndex((item) => item.kind === 'disc' && item.x === GRID.w / 2 && item.r > 20);
+      const disc = items[at] as Extract<SpaceItem, { kind: 'disc' }>;
+      const clip = { x: disc.x, y: disc.y, r: disc.r };
+      expect(items.filter((item) => item.kind === 'veil' && item.clip !== undefined)).toEqual([]);
+      const shades = kindOf(items, 'shade').filter((item) => item.clip?.x === disc.x && item.clip.y === disc.y);
+      const [band, night] = shades;
+      expect(band).toMatchObject({ clip, inner: night!.r });
+      expect(night).toMatchObject({ clip, x: band!.x, y: band!.y });
+      expect(night!.share).toBeLessThan(band!.share);
+      expect(band!.share).toBeLessThan(16);
+      // The Sun is to the left of Jupiter here: the night is centred to its right, and the band is about a tenth of the disc wide.
+      expect(night!.x).toBeGreaterThan(disc.x + disc.r);
+      expect((band!.r - night!.r) / (2 * disc.r + 1)).toBeCloseTo(0.1, 1);
+      // A planet banded by code has the star's light as one more whole-pixel step on the side facing it; a drawn one none.
+      expect(shades.slice(2).map((light) => [light.share > 16, light.x < disc.x])).toEqual(sheet === placeholder ? [[true, true]] : []);
+    }
   });
 });

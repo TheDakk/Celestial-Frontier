@@ -281,6 +281,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
+          // A planet's night, light and cloud in whole pixels: no dither lies on a planet.
+          solid: true,
           // Its words stand clear of each other, of their bodies and of what covers the map.
           placement: { keepOut: covered(), tails: true, stand: true, apart: true },
         };

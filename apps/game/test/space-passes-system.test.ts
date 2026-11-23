@@ -142,6 +142,83 @@ describe('cloud decks', () => {
   });
 });
 
+describe('cloud decks in solid pixels', () => {
+  const R = 48;
+  const disc: SpaceItem[] = [{ kind: 'disc', x: 320, y: 180, r: R, bands: [0x3060a0] }];
+  /** Earth near: 5.1 world units in radius, 48 art pixels here. The star is off to the left of the view. */
+  const close = { ...passView(sol, { x: 30, y: 0, z: 18.8 }), solid: true };
+  const clouds = (planet: PlanetNode, v: typeof close = close): Extract<SpaceItem, { kind: 'dot' }>[] => kindOf(dressPlanet(planet, disc, v), 'dot');
+  const keyOf = (x: number, y: number): number => y * 4096 + x;
+  const WHITE = 0xfafcff;
+
+  it('asked for, the deck is whole shapes: every cloud pixel is part of a block at least 2 by 2, inside the disc and clear of the limb', () => {
+    const deck = clouds(earth);
+    expect(deck.length).toBeGreaterThan(200);
+    expect(deck.length).toBeLessThan(R * R * 2);
+    const at = new Set(deck.map((dot) => keyOf(dot.x, dot.y)));
+    expect(at.size).toBe(deck.length);
+    const has = (x: number, y: number): boolean => at.has(keyOf(x, y));
+    for (const { x, y } of deck) {
+      const blocks = [[0, 0], [-1, 0], [0, -1], [-1, -1]].filter(([dx, dy]) => has(x + dx!, y + dy!) && has(x + dx! + 1, y + dy!) && has(x + dx!, y + dy! + 1) && has(x + dx! + 1, y + dy! + 1));
+      expect(blocks.length, `${x},${y}`).toBeGreaterThan(0);
+      expect((x - 320) ** 2 + (y - 180) ** 2).toBeLessThan(R * R);
+    }
+    // The game's own deck, thinned by nothing but its lone pixels: the pattern laid over every pixel is gone.
+    const game = clouds(earth, { ...close, solid: false } as typeof close);
+    expect(game.some(({ x, y }) => !has(x, y))).toBe(true);
+    expect(game.every((dot) => dot.colour === WHITE)).toBe(true);
+  });
+
+  it('a cloud three or more pixels tall has one darker row along its underside, and nothing else is darker', () => {
+    const deck = clouds(earth);
+    const colourAt = new Map(deck.map((dot) => [keyOf(dot.x, dot.y), dot.colour]));
+    const colours = new Set(colourAt.values());
+    expect(colours.size).toBe(2);
+    const under = [...colours].find((colour) => colour !== WHITE)!;
+    expect(colours.has(WHITE) && under < WHITE).toBe(true);
+    let dark = 0;
+    for (const { x, y, colour } of deck) {
+      const foot = !colourAt.has(keyOf(x, y + 1)) && colourAt.has(keyOf(x, y - 1)) && colourAt.has(keyOf(x, y - 2));
+      expect(colour === under, `${x},${y}`).toBe(foot);
+      if (foot) dark++;
+    }
+    expect(dark).toBeGreaterThan(10);
+  });
+
+  it('drifts sideways with time in whole pixels, wrapping round; it lies under the night, which shades it', () => {
+    const start = clouds(earth);
+    expect(clouds(earth)).toEqual(start);
+    expect(clouds(earth, { ...close, time: 2 })).not.toEqual(start);
+    expect(clouds(earth, { ...close, time: 10.2 / 1.6 + 1e-9 })).toEqual(start);
+    const dressed = dressPlanet(earth, disc, close);
+    expect(dressed.map((item) => item.kind).lastIndexOf('dot')).toBeLessThan(dressed.findIndex((item) => item.kind === 'shade'));
+    expect(kindOf(dressed, 'veil')).toEqual([]);
+    // Not from afar, and not on a world without weather.
+    expect(clouds(earth, { ...passView(sol, { x: 0, y: 0, z: 4.3 }), solid: true })).toEqual([]);
+    expect(clouds(planets.find((p) => p.type === 'gas')!)).toEqual([]);
+  });
+
+  it('where the sheet draws the clouds of the planet at the width the planet is drawn, they are that drawing, kept to the disc and drifting; else the deck is the game\'s', () => {
+    const drawn = { ...close, sizing: { perCss: 0.5, drawn: (name: string, span: number) => (name === 'planet/terran/clouds' || name === 'planet/terran' ? span : undefined) } };
+    const sheetDisc: SpaceItem[] = [{ kind: 'disc', x: 320, y: 180, r: R, bands: [0x3060a0], element: 'planet/terran' }];
+    const dressed = dressPlanet(earth, sheetDisc, drawn);
+    expect(kindOf(dressed, 'dot')).toEqual([]);
+    const clip = { x: 320, y: 180, r: R };
+    expect(kindOf(dressed, 'element')).toEqual([
+      { kind: 'element', name: 'planet/terran/clouds', x: 320, y: 180, ramp: WHITE, span: 2 * R + 1, clip },
+      { kind: 'element', name: 'planet/terran/clouds', x: 320 - (2 * R + 1), y: 180, ramp: WHITE, span: 2 * R + 1, clip },
+    ]);
+    // Two seconds on it has slid 1.6 world units a second: 30 art pixels at this zoom, the second copy coming in behind.
+    expect(kindOf(dressPlanet(earth, sheetDisc, { ...drawn, time: 2 }), 'element').map((item) => item.x)).toEqual([350, 350 - (2 * R + 1)]);
+    // A drawing at another width than the planet's is not used: the clouds would not sit on the globe.
+    const other = { ...drawn, sizing: { perCss: 0.5, drawn: (name: string, span: number) => (name === 'planet/terran/clouds' ? span - 2 : span) } };
+    expect(kindOf(dressPlanet(earth, sheetDisc, other), 'element')).toEqual([]);
+    expect(kindOf(dressPlanet(earth, sheetDisc, other), 'dot').length).toBeGreaterThan(200);
+    // Without the asking the sheet's clouds are not drawn either.
+    expect(kindOf(dressPlanet(earth, sheetDisc, { ...drawn, solid: false } as typeof drawn), 'element')).toEqual([]);
+  });
+});
+
 describe('comets', () => {
   const v = passView(sol, CAM);
 

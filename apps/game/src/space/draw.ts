@@ -49,6 +49,8 @@ export interface PassView {
   reach: number; charts: boolean; effects: boolean; motion: boolean;
   /** Present when the picture sizes its things by the camera. */
   sizing?: Sizing;
+  /** A planet's night, light and cloud are whole pixels: no dither on a planet. */
+  solid?: boolean;
 }
 
 /** The frame of a turning thing drawn in `frames` steps over `period` radians, at `angle`. */

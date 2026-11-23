@@ -19,10 +19,22 @@ const PI = 3.141592653589793;
 const ZONE = 0x50d282;
 const NIGHT = 0x00000c;
 const CLOUD = 0xfafcff;
+const CLOUD_UNDER = 0xbfcbe0;
+/** How far from the middle of a planet, in radii, its cloud deck in whole pixels reaches. */
+const CLOUD_EDGE = 0.94;
 const COMA = 0xcfe6ff;
 const TAIL = 0xc8e6ff;
 const VISITOR = 0x8a6f58;
 const TRAIL = 0xd6aa8c;
+/** A planet in whole pixels. The night is a disc this many radii from the planet's middle, on the side away from the
+ *  star; the half shade along its edge is this share of the planet's radius wide, half each side of the planet's
+ *  middle. What each keeps of a colour's brightness, in sixteenths; the light adds to it. */
+const NIGHT_REACH = 3;
+const TERMINATOR = 0.2;
+const HALF_SHADE = 10;
+const NIGHT_SHADE = 3;
+const NIGHT_SKY = 0x0a1230;
+const LIGHT_SHADE = 19;
 
 interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: number }
 interface Visitor { speed: number; off: number; ang: number; b: number }
@@ -68,10 +80,55 @@ function cloudItems(planet: PlanetNode, x: number, y: number, r: number, shift: 
   return items;
 }
 
+/** Whether the game's cloud picture of a planet holds cloud at a point of its disc, `nx` and `ny` in radii from its
+ *  middle. The deck stops short of the limb. */
+function cloudAt(fbm: ReturnType<typeof makeNoise>, stretch: number, nx: number, ny: number): boolean {
+  const out2 = nx * nx + ny * ny;
+  if (out2 > CLOUD_EDGE * CLOUD_EDGE) return false;
+  return fbm(angleOf(nx, Math.sqrt(1 - out2)) * 1.4 * 2.2 * stretch + 7, ny * 2.2 / (0.75 + stretch * 0.35) + 11, 4) > 0.6;
+}
+
+/**
+ * The cloud deck in whole pixels: the same seeded cloud picture, slid by `shift` and wrapped, keeping only the pixels
+ * that are part of a block of cloud at least 2 by 2 (a lone pixel is no cloud), each a solid white; where a cloud is 3
+ * or more pixels tall its lowest pixel is one step darker, its underside.
+ */
+function solidCloudItems(planet: PlanetNode, x: number, y: number, r: number, shift: number, v: PassView): SpaceItem[] {
+  const seed = planet.seed >>> 0;
+  const fbm = makeNoise((seed ^ 0xc10d) >>> 0);
+  const stretch = 0.55 + ((hashInt(seed, 0x33d, 2) & 255) / 255) * 0.5;
+  // The part of the disc in the picture, and two pixels about it for what a pixel's neighbours say of it.
+  const [left, right] = [Math.max(-2, x - r - 2), Math.min(v.grid.w + 1, x + r + 2)];
+  const [top, bottom] = [Math.max(-2, y - r - 2), Math.min(v.grid.h + 1, y + r + 2)];
+  const [w, h] = [right - left + 1, bottom - top + 1];
+  if (w <= 0 || h <= 0) return [];
+  const raw = new Uint8Array(w * h);
+  for (let py = top; py <= bottom; py++) {
+    const ny = (py - y) / r;
+    for (let px = left; px <= right; px++) {
+      if ((px - x) * (px - x) + (py - y) * (py - y) > r * r + r) continue;
+      const nx = ((((px - x + r - shift) % (2 * r)) + 2 * r) % (2 * r) - r) / r;
+      if (cloudAt(fbm, stretch, nx, ny)) raw[(py - top) * w + (px - left)] = 1;
+    }
+  }
+  const rawAt = (cx: number, cy: number): boolean => cx >= 0 && cy >= 0 && cx < w && cy < h && raw[cy * w + cx] === 1;
+  const block = (cx: number, cy: number): boolean => rawAt(cx, cy) && rawAt(cx + 1, cy) && rawAt(cx, cy + 1) && rawAt(cx + 1, cy + 1);
+  const cloud = (cx: number, cy: number): boolean => block(cx, cy) || block(cx - 1, cy) || block(cx, cy - 1) || block(cx - 1, cy - 1);
+  const items: SpaceItem[] = [];
+  for (let cy = 0; cy < h; cy++) for (let cx = 0; cx < w; cx++) {
+    const [px, py] = [cx + left, cy + top];
+    if (px < 0 || py < 0 || px >= v.grid.w || py >= v.grid.h || !cloud(cx, cy)) continue;
+    const underside = !cloud(cx, cy + 1) && cloud(cx, cy - 1) && cloud(cx, cy - 2);
+    items.push({ kind: 'dot', x: px, y: py, colour: underside ? CLOUD_UNDER : CLOUD });
+  }
+  return items;
+}
+
 /**
  * A planet's own passes, painted over its disc and under its moons: the cloud deck of a living or ocean world once it
  * is near (it drifts with time), then night on the side away from the star and, on a planet banded by code, the star's
- * light on the side facing it.
+ * light on the side facing it. With the view's `solid` all three are whole pixels, and the cloud deck is the sheet's
+ * drawing `planet/<type>/clouds` where it has one as wide as the planet is drawn.
  */
 export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: PassView): SpaceItem[] {
   const discAt = items.findIndex((item) => item.kind === 'disc');
@@ -81,7 +138,16 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
   const size = 6 * (typeof planet.P.sizeMul === 'number' && planet.P.sizeMul !== 0 ? planet.P.sizeMul : 1);
   const dress: SpaceItem[] = [];
   if ((planet.type === 'terran' || planet.type === 'ocean') && size * v.zoom > 22) {
-    dress.push(...cloudItems(planet, x, y, r, Math.round(((v.time * 1.6) % (size * 2)) * v.cam.z), v));
+    const shift = Math.round(((v.time * 1.6) % (size * 2)) * v.cam.z);
+    const width = 2 * r + 1;
+    const drawing = `planet/${planet.type}/clouds`;
+    if (v.solid !== true) dress.push(...cloudItems(planet, x, y, r, shift, v));
+    // The sheet's own clouds, where it draws them at the width the planet is drawn: twice, a width apart, so the deck
+    // wraps as it drifts.
+    else if (disc.element !== undefined && v.sizing?.drawn?.(drawing, width) === width) {
+      const at = ((shift % width) + width) % width;
+      for (const dx of [at, at - width]) dress.push({ kind: 'element', name: drawing, x: x + dx, y, ramp: CLOUD, span: width, clip: { x, y, r } });
+    } else dress.push(...solidCloudItems(planet, x, y, r, shift, v));
   }
   const star = place(v.cam, v.grid, 0, 0);
   const far = Math.sqrt((star.x - x) * (star.x - x) + (star.y - y) * (star.y - y));
@@ -89,6 +155,18 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
     const [ux, uy] = [(star.x - x) / far, (star.y - y) / far];
     const clip = { x, y, r };
     const away = (k: number): { x: number; y: number } => ({ x: Math.round(x - ux * r * k), y: Math.round(y - uy * r * k) });
+    if (v.solid === true) {
+      // Whole pixels, as pixel art has it: the night is a wide disc from the far side whose edge crosses the globe just
+      // past its middle, and along that edge runs a half shade a tenth of the globe wide.
+      const night = Math.round(r * NIGHT_REACH - r * TERMINATOR / 2);
+      dress.push(
+        { kind: 'shade', ...away(NIGHT_REACH), r: Math.round(r * NIGHT_REACH + r * TERMINATOR / 2), inner: night, share: HALF_SHADE, toward: NIGHT_SKY, clip },
+        { kind: 'shade', ...away(NIGHT_REACH), r: night, share: NIGHT_SHADE, toward: NIGHT_SKY, clip },
+      );
+      // The star's light on a planet banded by code: one lighter step about the point that faces the star.
+      if (disc.element === undefined) dress.push({ kind: 'shade', ...away(-0.5), r: Math.round(r * 0.45), share: LIGHT_SHADE, clip });
+      return [...items.slice(0, discAt + 1), ...dress, ...items.slice(discAt + 1)];
+    }
     dress.push(
       { kind: 'veil', ...away(0.9), r: Math.round(r * 1.2), colour: NIGHT, level: 2, clip },
       { kind: 'veil', ...away(1.5), r: Math.round(r * 1.2), colour: NIGHT, level: 4, clip },
