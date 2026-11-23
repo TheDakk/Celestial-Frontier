@@ -61,7 +61,11 @@ function boxOn(spec: LabelSpec, side: Side | 'centre', view: { w: number; h: num
  */
 export function placeLabels(specs: readonly LabelSpec[], around: Surroundings): PlacedLabel[] {
   const { view } = around;
-  const from = (spec: LabelSpec): number => (2 * spec.x - view.w) ** 2 + (2 * spec.y - view.h) ** 2;
+  const from = (spec: LabelSpec): number => {
+    const dx = 2 * spec.x - view.w;
+    const dy = 2 * spec.y - view.h;
+    return dx * dx + dy * dy;
+  };
   const order = specs.map((spec, index) => ({ spec, index })).sort((a, b) =>
     a.spec.rank - b.spec.rank || b.spec.size - a.spec.size || from(a.spec) - from(b.spec)
     || (a.spec.text < b.spec.text ? -1 : a.spec.text > b.spec.text ? 1 : 0) || a.index - b.index);
