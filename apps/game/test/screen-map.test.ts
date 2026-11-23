@@ -386,8 +386,11 @@ describe('the map screen', () => {
     // The galaxy: the Sun is lettered over its mark. The universe: the home galaxy under it.
     page.nav.ascend();
     rest(page);
+    // Over its light, which up close is wider than the 14 pixels the game lifts the words.
     const sun = label('Sun — our star')!;
-    expect(parseFloat(sun.style.top) + parseFloat(sun.style.height)).toBe(300 - 14);
+    const over = placedLabels({ ...frame(ascentCamera({ kind: 'star', x: SOL_STAR.x, y: SOL_STAR.y }, 600).to), placement: { keepOut: [] } }, currentRegionOf(0).name, sheet.font)[0]!;
+    expect([over.text, over.side, parseFloat(sun.style.top) + parseFloat(sun.style.height)]).toEqual(['Sun — our star', 'above', (over.y + over.h) * 2]);
+    expect((over.y + over.h) * 2).toBeLessThan(300 - 14);
     page.nav.ascend();
     rest(page);
     expect(label('Milky Way — you are here')).not.toBeNull();

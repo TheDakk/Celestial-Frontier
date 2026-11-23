@@ -9,7 +9,8 @@ import { overlaps, reaches, type Box } from '../apps/game/src/space/label-place'
 import { mapLabels, placedLabels, type Lettered } from '../apps/game/src/space/labels';
 import { artCamera, artGrid, artScale, type MapFrame } from '../apps/game/src/space/project';
 import { toScreen } from '../apps/game/src/space/camera';
-import { visibleBodies } from '../apps/game/src/space/model';
+import { galaxyContent, visibleBodies } from '../apps/game/src/space/model';
+import { STAR_WIDTH, starBase } from '../apps/game/src/space/sizes';
 import { galaxyNav, systemNav } from '../apps/game/test/space-support';
 
 type Place = 'universe' | 'home-galaxy' | 'sol';
@@ -86,13 +87,23 @@ describe('the words of the maps, stood where they can be read', () => {
     expect(neighbours.some((disc) => reaches(words(far, home), disc))).toBe(false);
     expect(words(far, home).side).toBe('above');
     // Words alone in the view stand exactly where the game letters them.
-    for (const entry of [...scene('the home galaxy, near: about the Sun'), ...scene('the Sol system, near: about Earth'), ...scene('the universe, near: a quasar, told')]) {
+    for (const entry of [...scene('the Sol system, near: about Earth'), ...scene('the universe, near: a quasar, told')]) {
       const game = gameBoxes(entry);
       expect(entry.labels.map((label) => label.text), entry.label).toEqual(game.map((box) => box.text));
       entry.labels.forEach((label, i) => {
         // To the pixel, but for the rounding of a half.
         expect([Math.abs(label.x - game[i]!.x) <= 1, Math.abs(label.y - game[i]!.y) <= 1, label.w, label.h], `${entry.label}: ${label.text}`).toEqual([true, true, game[i]!.w, game[i]!.h]);
       });
+    }
+    // Up close the Sun's light is wider than the 14 pixels the game lifts its words: they stand over the light.
+    for (const entry of scene('the home galaxy, near: about the Sun')) {
+      const { grid, cam, perCss } = pictureOf(entry);
+      const sun = galaxyContent(galaxyNav().gal).stars.find((star) => star.sol === true)!;
+      const halo = { ...place(cam, grid, sun.x, sun.y), r: Math.round(sun.s * starBase(entry.cam.z) * STAR_WIDTH.coarse * 0.3 * cam.z) };
+      const game = gameBoxes(entry)[0]!;
+      expect(halo.r, entry.label).toBeGreaterThan(14 * perCss);
+      expect([reaches(game, halo), reaches(entry.labels[0]!, halo), entry.labels[0]!.side], entry.label).toEqual([true, false, 'above']);
+      expect(entry.labels[0]!.y + entry.labels[0]!.h, entry.label).toBe(halo.y - halo.r - 2);
     }
     // Under the top bar the charter's words leave the top of its ring; without the bar they stand over it.
     const [open, barred] = [scene('the universe, far: the whole charter,')[1]!, scene('the universe, far: the whole charter under')[1]!];

@@ -11,7 +11,7 @@ import { galaxyContent, visibleBodies } from './model';
 import { webZoom } from './passes-universe';
 import { artCamera, artGrid, artScale, mapCaptions, primaryWidth } from './project';
 import type { MapFrame } from './project';
-import { SOL_MARK_CSS } from './sizes';
+import { SOL_MARK_CSS, STAR_WIDTH, starBase } from './sizes';
 
 /** Words lettered on a map at a world point: centred on it, standing on it (`above`, lifted `lift` screen pixels
  *  more) or hanging from it (`below`). */
@@ -67,7 +67,9 @@ function lettering(frame: MapFrame, charter: string): { labels: Lettering[]; dra
   } else if (nav.mode === 'galaxy') {
     const sun = galaxyContent(nav.gal).stars.find((star) => star.sol === true);
     if (sun !== undefined && cam.z > minSideOf(view) / 900) {
-      labels.push({ text: 'Sun — our star', wx: sun.x, wy: sun.y, hold: 'above', lift: 14, bx: sun.x, by: sun.y, off: 14 / cam.z, r: 0, ring: SOL_MARK_CSS / cam.z, rank: 0 });
+      // Up close the Sun's light is wider than its mark: its halo is three tenths of its glow.
+      const halo = sun.s * starBase(cam.z) * STAR_WIDTH.coarse * 0.3;
+      labels.push({ text: 'Sun — our star', wx: sun.x, wy: sun.y, hold: 'above', lift: 14, bx: sun.x, by: sun.y, off: 14 / cam.z, r: halo, ring: Math.max(SOL_MARK_CSS / cam.z, halo), rank: 0 });
     }
   } else if (nav.mode === 'system') {
     const scene = systemScene(nav.star.seed);
