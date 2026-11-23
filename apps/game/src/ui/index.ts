@@ -16,3 +16,5 @@ export type { FrameCoalescer } from './frame-coalescer';
 export { TOAST_DEDUP_MS, TOAST_SHOW_MS, createToast } from './toast';
 export type { Toast } from './toast';
 export { applyMotion, motionReduced } from './motion';
+export { LOCALIZED_ATTRIBUTES, SUPPORTED_LOCALES, catalog, localeFromSearch, localizeElement, pseudoLocalize, translate } from './i18n';
+export type { LocaleId, StringCatalog } from './i18n';

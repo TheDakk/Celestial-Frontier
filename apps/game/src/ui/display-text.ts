@@ -6,6 +6,7 @@ import { currentSheet, interfaceGaps, sheetColours } from './sheet-source';
 /** The fixed headings of the app. A test holds every character here to the glyphs the sheet must draw. */
 export const DISPLAY_HEADINGS = Object.freeze({
   title: 'Celestial Frontier',
+  settings: 'Settings',
 });
 
 /**

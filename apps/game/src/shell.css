@@ -1,0 +1,106 @@
+/* The shell: the stage, the dock, panels, notices and the toast, arranged for each size class. Sizes and
+   colours are the tokens the app sets on the root (--cf-*), the text colours and font of the text settings
+   (--ink, --dim, --ui), the smallest control size of the input mode (--target-min) and the safe-area insets. */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  overflow: hidden; color: var(--cf-color-text); font: var(--cf-type-body)/1.5 var(--ui);
+  -webkit-user-select: none; user-select: none; -webkit-text-size-adjust: 100%;
+}
+b { color: var(--emph); }
+#app { position: fixed; inset: 0; --dock-size: calc(var(--target-min, 44px) + var(--cf-space-4)); }
+#app > h1 {
+  position: absolute; z-index: 2; margin: 0; pointer-events: none;
+  top: calc(var(--safe-top) + var(--cf-space-2)); left: calc(var(--safe-left) + var(--cf-space-3));
+}
+.display-text { line-height: 0; }
+.icon { display: inline-flex; flex: none; }
+:focus-visible { outline: 2px solid var(--cf-color-accent-teal); outline-offset: 2px; }
+
+button, input { font: inherit; color: inherit; }
+button {
+  min-height: var(--target-min, 44px); min-width: var(--target-min, 44px); padding: 0 var(--cf-space-3);
+  border: 1px solid var(--cf-color-border); border-radius: var(--cf-radius-small);
+  background: var(--cf-color-elevated); cursor: pointer;
+}
+button:hover { border-color: var(--cf-color-accent-teal); }
+button.on, button[aria-pressed="true"] { border-color: var(--cf-color-accent-teal); color: var(--cf-color-accent-teal); }
+button.danger { border-color: var(--cf-color-danger); color: var(--cf-color-danger); }
+button:disabled { opacity: 0.5; cursor: default; }
+input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-width: 220px; margin: 0; }
+
+.stage { position: absolute; inset: 0; overflow: hidden; }
+
+/* The dock: along the bottom, or down the left edge when the view is wide. */
+.dock {
+  position: absolute; z-index: 3; display: flex; gap: var(--cf-space-2); padding: var(--cf-space-2);
+  left: var(--safe-left); right: var(--safe-right); bottom: var(--safe-bottom); justify-content: center;
+}
+.dock-button {
+  display: inline-flex; align-items: center; gap: var(--cf-space-2);
+  font-size: var(--cf-type-small); background: var(--cf-color-surface);
+}
+[data-size-class="medium"] .dock { justify-content: flex-start; }
+[data-size-class="wide"] .dock {
+  top: var(--safe-top); right: auto; flex-direction: column; justify-content: center;
+}
+[data-size-class="wide"] .dock-button { flex-direction: column; gap: 2px; padding: var(--cf-space-2); }
+
+/* A panel: a sheet over the bottom of a compact view, a sheet down the right side otherwise. */
+.panel {
+  position: absolute; z-index: 4; overflow: auto; overscroll-behavior: contain;
+  padding: var(--cf-space-3) var(--cf-space-4) var(--cf-space-4);
+  background: var(--cf-color-surface); border: 1px solid var(--cf-color-border);
+  -webkit-user-select: text; user-select: text;
+}
+[data-size-class="compact"] .panel {
+  left: var(--safe-left); right: var(--safe-right); bottom: calc(var(--safe-bottom) + var(--dock-size));
+  max-height: calc(100% - var(--safe-top) - var(--safe-bottom) - var(--dock-size) - var(--cf-space-8));
+  border-radius: var(--cf-radius-panel) var(--cf-radius-panel) 0 0;
+}
+[data-size-class="medium"] .panel, [data-size-class="wide"] .panel {
+  top: var(--safe-top); right: var(--safe-right); bottom: var(--safe-bottom);
+  border-radius: var(--cf-radius-panel) 0 0 var(--cf-radius-panel);
+}
+[data-size-class="medium"] .panel { width: min(400px, 62%); }
+[data-size-class="wide"] .panel { width: 440px; }
+.panel-close {
+  position: sticky; top: 0; float: right; z-index: 1; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.panel h2 { margin: 0 0 var(--cf-space-3); min-height: var(--target-min, 44px); display: flex; align-items: center; }
+.panel h3 {
+  margin: var(--cf-space-5) 0 var(--cf-space-2); padding-top: var(--cf-space-3); clear: both;
+  border-top: 1px solid var(--cf-color-border); font-size: var(--cf-type-section); font-weight: 600;
+}
+.row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--cf-space-2) var(--cf-space-3); min-height: var(--target-min, 44px); padding: var(--cf-space-1) 0;
+}
+.row-label { flex: 1 1 96px; color: var(--cf-color-muted); }
+.row-value { display: inline-flex; align-items: center; gap: var(--cf-space-2); text-align: right; overflow-wrap: anywhere; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: var(--cf-space-1); justify-content: flex-end; }
+.sub { margin: 0; color: var(--cf-color-muted); font-size: var(--cf-type-small); flex: 1 1 100%; }
+.confirm { padding: var(--cf-space-3); border: 1px solid var(--cf-color-danger); border-radius: var(--cf-radius-small); justify-content: flex-end; }
+[data-panel-w="narrow"] .row-label { flex-basis: 100%; }
+
+/* Standing notices, under the title; the toast, over the dock. */
+.notices {
+  position: absolute; z-index: 5; display: grid; gap: var(--cf-space-2); justify-items: center; pointer-events: none;
+  top: calc(var(--safe-top) + var(--cf-space-8) + var(--cf-space-4)); left: var(--safe-left); right: var(--safe-right);
+  padding: 0 var(--cf-space-3);
+}
+.notice {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--cf-space-2); max-width: 560px; pointer-events: auto;
+  padding: var(--cf-space-2) var(--cf-space-3); background: var(--cf-color-elevated);
+  border: 1px solid var(--cf-color-warn); border-radius: var(--cf-radius-small);
+}
+.notice span:last-of-type { flex: 1 1 200px; }
+.toast {
+  position: absolute; z-index: 6; left: 50%; transform: translateX(-50%); pointer-events: none;
+  bottom: calc(var(--safe-bottom) + var(--dock-size) + var(--cf-space-3)); width: max-content; max-width: min(420px, calc(100% - 24px));
+  display: grid; gap: 2px; padding: var(--cf-space-2) var(--cf-space-3); text-align: center;
+  background: var(--cf-color-elevated); border: 1px solid var(--cf-color-border); border-radius: var(--cf-radius-small);
+  transition: opacity 0.25s;
+}
+[data-motion="reduced"] * { transition: none !important; animation: none !important; }

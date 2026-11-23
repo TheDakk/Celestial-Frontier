@@ -1,0 +1,50 @@
+/* The shell around every screen: the stage the map is drawn on, the dock that lists the screens that ask for
+   an entry, one panel per docked screen, the standing notices and the toast. Its arrangement for each size
+   class is in the stylesheet, keyed on the root's data-size-class. */
+import { mountPanelContainer, type ResizeObserverLike } from '../layout';
+import { icon, type PanelManager } from '../ui';
+import { el } from './dom';
+import type { ScreenContext, ScreenDef } from './registry';
+
+export interface Chrome {
+  readonly stage: HTMLElement;
+  readonly notices: HTMLElement;
+  readonly toast: HTMLElement;
+  dispose(): void;
+}
+
+export function mountChrome(root: HTMLElement, deps: {
+  screens: readonly ScreenDef[];
+  ctx: ScreenContext;
+  panels: PanelManager;
+  /** Watches a panel's own width (the layout system's observer in the browser). */
+  panelObserver: (onWidth: (width: number) => void) => ResizeObserverLike;
+}): Chrome {
+  const stage = el('main', { class: 'stage' });
+  const notices = el('div', { class: 'notices', 'data-panel-boundary': true });
+  const dock = el('nav', { class: 'dock', 'aria-label': 'Panels', 'data-panel-boundary': true });
+  const toast = el('div', { class: 'toast' });
+  root.replaceChildren(stage, notices, dock, toast);
+  const disposers: Array<() => void> = [];
+
+  for (const screen of deps.screens) {
+    if (screen.dock === undefined) {
+      disposers.push(screen.mount(stage, deps.ctx));
+      continue;
+    }
+    const button = el('button', { type: 'button', class: 'dock-button', 'data-screen': screen.id },
+      icon(screen.dock.icon, { decorative: true }), el('span', {}, screen.dock.label));
+    dock.append(button);
+    const body = el('div', { class: 'panel-body' });
+    const panel = el('aside', { class: 'panel', id: `panel-${screen.id}`, 'aria-label': screen.dock.label }, body);
+    root.append(panel);
+    let unmount: (() => void) | null = null;
+    deps.panels.register({
+      id: screen.id, el: panel, btns: [button],
+      onOpen: () => { unmount = screen.mount(body, deps.ctx); },
+      onClose: () => { unmount?.(); unmount = null; body.replaceChildren(); },
+    });
+    disposers.push(mountPanelContainer(panel, deps.panelObserver), () => unmount?.());
+  }
+  return { stage, notices, toast, dispose: () => { for (const dispose of disposers) dispose(); } };
+}
