@@ -183,31 +183,17 @@ describe('@cf/persistence — portable v5 backup/import authority', () => {
     }
   });
 
-  it('keeps authentic old-v4 replacement compatible and never treats v4 fields as extension authority', () => {
-    const ordinary = prepareV5Replacement(VETERAN_RAW, REGISTRY, NOW);
-    expect(ordinary.kind).toBe('prepared');
-    if (ordinary.kind !== 'prepared') return;
-    expect(ordinary.source).toBe('legacy-v4');
-    expect(ordinary.extensions).toEqual({});
-    expect(ordinary.operations).toContainEqual({ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW });
+  it('refuses a plain old-v4 save as a replacement, with or without fabricated extension fields', () => {
+    expect(classifyV4Save(VETERAN_RAW, REGISTRY, NOW).kind).toBe('supported');
+    expect(prepareV5Replacement(VETERAN_RAW, REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
 
     const fabricatedRaw = JSON.stringify({
       ...(FIXTURES.inputs.veteran_rich as Record<string, unknown>),
       extensions: extensionFixture(),
     });
-    const fabricated = prepareV5Replacement(fabricatedRaw, REGISTRY, NOW);
-    expect(fabricated.kind).toBe('prepared');
-    if (fabricated.kind === 'prepared') {
-      expect(fabricated.source).toBe('legacy-v4');
-      expect(fabricated.extensions).toEqual({});
-      for (const operation of fabricated.operations.filter(({ key }) => key.startsWith('v5:'))) {
-        const row = JSON.parse(operation.value ?? '{}') as { extensions?: unknown };
-        expect(row.extensions, `${operation.store}/${operation.key}`).toBeUndefined();
-      }
-    }
-    expect(prepareV5Replacement('{"v":9,"epoch":1}', REGISTRY, NOW)).toEqual({
-      kind: 'future-version',
-    });
+    expect(classifyV4Save(fabricatedRaw, REGISTRY, NOW).kind).toBe('supported');
+    expect(prepareV5Replacement(fabricatedRaw, REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
+    expect(prepareV5Replacement('{"v":9,"epoch":1}', REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
     expect(prepareV5Replacement('{}', REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
   });
 
