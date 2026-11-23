@@ -1,3 +1,4 @@
+import { UPDATE_WORDS } from '../offline';
 import { catalog, type StringCatalog } from '../ui';
 
 /** Every string the Settings panel shows, in the order it shows them. */
@@ -30,3 +31,6 @@ export const SETTINGS_CATALOG: StringCatalog = catalog('settings', [
   'Missing letters', 'Missing icons', 'Missing map art',
   'ready', 'stand-in', 'refused',
 ]);
+
+/** Every string the offline and update control shows. */
+export const UPDATE_CATALOG: StringCatalog = catalog('update', Object.values(UPDATE_WORDS));

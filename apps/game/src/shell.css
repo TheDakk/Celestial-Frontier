@@ -95,6 +95,8 @@ input[type="range"] { min-height: var(--target-min, 44px); flex: 1 1 120px; max-
 .row-value { display: inline-flex; align-items: center; gap: var(--cf-space-2); text-align: right; overflow-wrap: anywhere; }
 .seg { display: inline-flex; flex-wrap: wrap; gap: var(--cf-space-1); justify-content: flex-end; }
 .sub { margin: 0; color: var(--cf-color-muted); font-size: var(--cf-type-small); flex: 1 1 100%; }
+.update .sub { overflow-wrap: anywhere; }
+.update-actions { justify-content: flex-end; }
 .confirm { padding: var(--cf-space-3); border: 1px solid var(--cf-color-danger); border-radius: var(--cf-radius-small); justify-content: flex-end; }
 [data-panel-w="narrow"] .row-label { flex-basis: 100%; }
 

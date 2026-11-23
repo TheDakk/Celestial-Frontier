@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 import { MANIFEST_PATH, PACKS_DIR, verifyPacks } from '../../tools/verify-packs.mjs';
+import { offlineShell } from './offline/plugin';
 import type { VerifiedPack } from '../../tools/verify-packs.mjs';
 
 export interface PackPlaces { manifestPath: string; packsDir: string }
@@ -45,8 +46,9 @@ export function packs(places: PackPlaces = { manifestPath: MANIFEST_PATH, packsD
 
 // The workspace packages ship TypeScript source (their exports point at src/index.ts); Vite compiles them
 // in place, as vitest does, so no package has a build step of its own.
-// The `layout` mode builds the page of the layout check (`npm run layout`) into its own folder, never the game's.
+// The `layout` mode builds the page of the layout check (`npm run layout`) into its own folder, never the game's,
+// and without the offline shell: that page has no worker and is in no worker's cache.
 export default defineConfig(({ mode }) => ({
-  plugins: [packs()],
+  plugins: mode === 'layout' ? [packs()] : [packs(), offlineShell()],
   build: mode === 'layout' ? { target: 'es2022', outDir: 'dist-layout', rollupOptions: { input: 'layout.html' } } : { target: 'es2022' },
 }));

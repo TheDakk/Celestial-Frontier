@@ -6,6 +6,7 @@ import type { GameEvents, InputMode, PersistState, SizeClass } from '../events';
 import { mountInputMode } from '../input';
 import { mountViewport, type ResizeObserverLike, type ViewportSource } from '../layout';
 import { createNavController, type NavController } from '../nav';
+import { createReloadCoordinator, reloadRefusalWords, type UpdateControl } from '../offline';
 import type { Clocks } from '../platform/clock';
 import { presentationRandom } from '../platform/entropy';
 import type { DevicePreferences } from '../platform/preferences';
@@ -58,6 +59,8 @@ export interface ShellEnv {
   /** The page's address query: it may name a locale. */
   search: string;
   build: string;
+  /** The offline and update control, given the reload it asks for; null where the page has no offline shell. */
+  update: ((reload: () => void) => UpdateControl) | null;
 }
 
 export interface Shell {
@@ -153,6 +156,28 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   const toast: Toast = { show: (title, message, force) => shown.show(title, message, force) };
   const refreshNotices = (): void => notices.refresh();
   const replacement = { runtime, gate, settle: () => loop.flush(), reload: env.reload };
+  let replacing = 0;
+  const whileReplacing = <T>(run: Promise<T>): Promise<T> => {
+    replacing += 1;
+    return run.finally(() => { replacing -= 1; refreshNotices(); });
+  };
+  // A reload into another build of the app waits for the save, like every reload the page chooses.
+  const reloadForUpdate = createReloadCoordinator({
+    conflict() {
+      if (replacing > 0) return 'replacement';
+      const { leaseOwned, staleBlocked } = runtime.diagnostics();
+      return loop.status === 'reload-required' || !gate.mayWrite() || !leaseOwned || staleBlocked ? 'save-authority' : null;
+    },
+    store: () => loop.request('lifecycle'),
+    schedule() { void runtime.release().catch(() => undefined).then(env.reload); },
+  });
+  const update = env.update?.(() => {
+    void reloadForUpdate().then((outcome) => {
+      if (outcome.kind !== 'refused') return;
+      const words = reloadRefusalWords(outcome);
+      toast.show(words.title, words.text, words.force);
+    });
+  }) ?? null;
 
   registry.registerScreen(mapScreen({
     nav, sound, toast, panels,
@@ -184,13 +209,14 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
       persistState: () => persist,
       askAgain: () => asker.askAgain(),
       canBackUp: () => booted.revision > 0 || booted.kind === 'recovered-protected',
-      replaceExpedition: (operations) => replaceExpedition(replacement, operations).finally(refreshNotices),
+      replaceExpedition: (operations) => whileReplacing(replaceExpedition(replacement, operations)),
       saveTextFile: env.files.saveTextFile,
       pickTextFile: env.files.pickTextFile,
     },
     mayReplace: () => gate.mayWrite(),
-    reset: () => resetExpedition({ ...replacement, registry: REGISTRY, clocks, solView: nav.solRoute() }).finally(refreshNotices),
+    reset: () => whileReplacing(resetExpedition({ ...replacement, registry: REGISTRY, clocks, solView: nav.solRoute() })),
     status,
+    update,
     toast,
   }));
 

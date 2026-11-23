@@ -7,6 +7,7 @@ import type { GameEvents, InputMode } from './events';
 import { FAULTS, checkLayout, collectBoxes, plantFault, type Fault, type LayoutProblem } from './layoutcheck';
 import { browserClocks } from './platform/clock';
 import { devicePreferences } from './platform/preferences';
+import { UPDATE_WORDS, type UpdateControl } from './offline';
 import { REGISTRY } from './save';
 import { browserShellEnv, startShell } from './screens';
 import './shell.css';
@@ -40,6 +41,15 @@ async function backendFor(save: string | null): Promise<StorageBackend> {
   return { ...backend, get: refuse, keys: refuse } as StorageBackend;
 }
 
+/** The offline and update control at its widest: its longest words and every control it can offer. */
+const WIDEST_UPDATE: UpdateControl = {
+  view: () => ({ state: 'error', message: UPDATE_WORDS.blocked, busy: false, check: true, activate: true, reload: true, rollback: true }),
+  onChange: () => () => undefined,
+  ready: Promise.resolve(),
+  check: () => Promise.resolve(),
+  activate() {}, reload() {}, rollback() {}, dispose() {},
+};
+
 const frames = async (count: number): Promise<void> => {
   for (let i = 0; i < count; i++) await new Promise<void>((resolve) => { requestAnimationFrame(() => resolve()); });
 };
@@ -58,6 +68,7 @@ async function show(): Promise<readonly string[]> {
     initialInput: input,
     reducedMotion: { matches: () => true, onChange() {} },
     reload() {},
+    update: () => WIDEST_UPDATE,
   });
   await shell.ready;
   await frames(3);

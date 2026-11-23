@@ -29,5 +29,6 @@ export function browserShellEnv(win: Window, parts: { bus: Bus<GameEvents>; host
     every: (ms, run) => { win.setInterval(run, ms); },
     reload: () => win.location.reload(),
     search: win.location.search,
+    update: null,
   };
 }

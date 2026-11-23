@@ -1,6 +1,7 @@
 /* Settings. Every control changes a real field: of the save (stored by the save loop), or of the device for
    the two listening modes. The panel is drawn again after each change and the focus is kept on the control. */
 import type { SaveStateV2 } from '@cf/persistence';
+import type { UpdateControl } from '../offline';
 import type { AudioAccessibilityModes } from '../sound';
 import {
   DISPLAY_HEADINGS, capturePanelRefillFocus, displayText, localizeElement, translate,
@@ -10,6 +11,7 @@ import { el, row } from './dom';
 import { createProtectView, type ProtectPorts } from './protect';
 import type { ScreenDef } from './registry';
 import { SETTINGS_CATALOG } from './strings';
+import { createUpdateView } from './update';
 
 /** The save fields Settings changes in this milestone. */
 export type SettingsField = 'sndOn' | 'sfxVol' | 'motionMode' | 'fsMode' | 'toneMode' | 'fontMode' | 'tipsOn';
@@ -37,6 +39,8 @@ export interface SettingsPorts {
   mayReplace(): boolean;
   reset(): Promise<'reset' | 'refused'>;
   status(): StatusFacts;
+  /** The offline and update control: null where the page has no offline shell. */
+  update: UpdateControl | null;
   toast: Toast;
 }
 
@@ -69,6 +73,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       };
       const statusHost = el('div', { class: 'status', 'data-set': 'status' });
       const protect = createProtectView(ports.protect, redraw);
+      const update = ports.update === null ? null : createUpdateView(ports.update, ports.locale, root);
       if (prepared === 'restore-confirm') protect.showConfirm();
       prepared = null;
 
@@ -133,6 +138,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
           el('div', { class: 'row confirm', id: 'setresetconfirm', role: 'group', 'aria-label': 'Confirm expedition reset', hidden: !resetAsked },
             el('span', { class: 'sub' }, 'Erase this whole expedition — discoveries, companions, Charters and Stardust — and start over? This cannot be undone.'),
             yes, no),
+          ...(update === null ? [] : [update.element]),
           statusHost,
         );
         localizeElement(root, SETTINGS_CATALOG, ports.locale);
@@ -170,6 +176,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       ];
       return () => {
         live = false;
+        update?.stop();
         for (const stop of stops) stop();
       };
     },

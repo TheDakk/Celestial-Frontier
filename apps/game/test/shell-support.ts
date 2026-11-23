@@ -4,6 +4,7 @@ import type { GameEvents, PersistState } from '../src/events';
 import type { Clocks } from '../src/platform/clock';
 import { devicePreferences } from '../src/platform/preferences';
 import { startShell, type Shell, type ShellEnv } from '../src/screens';
+import type { UpdateControl } from '../src/offline';
 import { NOW, controlledClock } from './save-support';
 
 /** jsdom lays nothing out: every element counts as rendered unless a style hides it. */
@@ -51,6 +52,7 @@ export async function bootPage(options: {
   persist?: { persisted: PersistState; asked: PersistState };
   width?: number;
   height?: number;
+  update?: (reload: () => void) => UpdateControl;
 } = {}): Promise<Page> {
   document.body.className = '';
   document.body.innerHTML = '<div id="app"></div>';
@@ -92,6 +94,7 @@ export async function bootPage(options: {
     reload: () => { page.reloads += 1; },
     search: options.search ?? '',
     build: 'test-build',
+    update: options.update ?? null,
   };
   const shell = await startShell(env);
   await shell.ready;
