@@ -39,8 +39,18 @@ export const ELEMENT_NAMES: readonly string[] = Object.freeze([
 
 /** The planet types the game makes. */
 export const PLANET_TYPES: readonly string[] = Object.freeze(['gas', 'rocky', 'desert', 'ice', 'terran', 'ocean', 'venus', 'lava']);
-/** The elements a sheet may draw or leave out: a planet by its type. A planet whose type has no drawing is banded by code. */
-export const OPTIONAL_ELEMENT_NAMES: readonly string[] = Object.freeze(PLANET_TYPES.map((type) => `planet/${type}`));
+/** The planet types that wear a cloud deck. */
+export const CLOUDED_PLANET_TYPES: readonly string[] = Object.freeze(['terran', 'ocean']);
+const CLOUDS = '/clouds';
+/** The elements a sheet may draw or leave out: a planet by its type, and the cloud deck of a type that wears one
+ *  (`planet/<type>/clouds`, drawn over the planet at the planet's own size). A planet whose type has no drawing is
+ *  banded by code, and one without drawn clouds is clouded by code. */
+export const OPTIONAL_ELEMENT_NAMES: readonly string[] = Object.freeze([
+  ...PLANET_TYPES.map((type) => `planet/${type}`), ...CLOUDED_PLANET_TYPES.map((type) => `planet/${type}${CLOUDS}`)]);
+/** The planet a cloud deck is drawn over: `planet/terran` for `planet/terran/clouds`. Undefined for any other name. */
+export function planetOfClouds(name: string): string | undefined {
+  return OPTIONAL_ELEMENT_NAMES.includes(name) && name.endsWith(CLOUDS) ? name.slice(0, name.length - CLOUDS.length) : undefined;
+}
 
 const TIER_NAME = /^(.+)\/x([1-9][0-9]*)$/;
 /**
@@ -52,10 +62,10 @@ export function tierOf(name: string): { element: string; width: number } | undef
   return match === null ? undefined : { element: match[1] ?? '', width: parseInt(match[2] ?? '', 10) };
 }
 
-const FORM_NAME = /^(.+)\/(?:v[0-3]|t[1-3]|dim)$/;
+const FORM_NAME = /^(.+)\/(?:v[0-3]|t[1-3]|dim|clouds)$/;
 /**
- * The subject an element is one form of: an orientation (`/v0` to `/v3`), a later frame (`/t1` to `/t3`) and a dimmed
- * form (`/dim`) are forms of the name before that last part, and any other name is its own subject (the first frame
+ * The subject an element is one form of: an orientation (`/v0` to `/v3`), a later frame (`/t1` to `/t3`), a dimmed
+ * form (`/dim`) and a cloud deck (`/clouds`) are forms of the name before that last part, and any other name is its own subject (the first frame
  * and the undimmed form carry no such part). Elements of one subject are drawn in one place at one size.
  */
 export function subjectOf(name: string): string {

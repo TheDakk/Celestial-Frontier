@@ -27,7 +27,7 @@ registerHooks({
   },
 });
 
-const { parseInterfaceSheet, codePointLabel, tierOf, subjectOf, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES, OPTIONAL_ELEMENT_NAMES } = await import('@cf/art-interface');
+const { parseInterfaceSheet, codePointLabel, tierOf, subjectOf, planetOfClouds, REQUIRED_GLYPHS, REQUIRED_RAMPS, ICON_NAMES, ELEMENT_NAMES, OPTIONAL_ELEMENT_NAMES } = await import('@cf/art-interface');
 
 /** The side of every interface icon, in art pixels. */
 export const ICON_SIZE = 16;
@@ -38,7 +38,8 @@ export const MAX_MAP_COLOUR = 255;
  * The faults of a sheet, each as one line; `ok` only when there is none. A sheet that does not parse has only its
  * parse error. Otherwise: a required ramp, glyph, icon or element the sheet lacks; an icon or element name that is
  * not in the shared lists; an icon that is not ICON_SIZE by ICON_SIZE; a palette numbered past MAX_MAP_COLOUR. An
- * optional element (a planet by its type) may be there or not. A size tier (`<element>/x<width>`) of any listed
+ * optional element (a planet by its type, and the cloud deck of one) may be there or not; a cloud deck needs its
+ * planet, at the planet's own size and with the planet's own tiers. A size tier (`<element>/x<width>`) of any listed
  * element is accepted; reported are a tier of a name that is not listed, a tier of an optional element the sheet does
  * not draw, a tier not drawn at the width its name gives, and a tier no wider than its element. The forms of one
  * subject (its orientations, its frames, its dimmed form) must carry the same tier widths as the first of them, or
@@ -77,11 +78,21 @@ export function checkInterface(text) {
     else if (drawing.w !== tier.width) problems.push(`tier ${name} is ${drawing.w} wide, not ${tier.width}`);
     else if (element !== undefined && drawing.w <= element.w) problems.push(`tier ${name} is no wider than its element (${element.w})`);
   }
+  // A cloud deck lies over its planet: it needs the planet, drawn at the same size.
+  for (const [name, clouds] of sheet.elements) {
+    const planet = planetOfClouds(name);
+    if (planet === undefined) continue;
+    const globe = sheet.elements.get(planet);
+    if (globe === undefined) problems.push(`${name} has no element ${planet}`);
+    else if (clouds.w !== globe.w || clouds.h !== globe.h) problems.push(`${name} is ${clouds.w} by ${clouds.h}, not the ${globe.w} by ${globe.h} of ${planet}`);
+  }
   const forms = new Map();
   for (const name of known) forms.set(subjectOf(name), [...(forms.get(subjectOf(name)) ?? []), name]);
   const ladder = (name) => [...(widthsOf.get(name) ?? [])].sort((a, b) => a - b).join(', ') || 'none';
   for (const [first, ...others] of forms.values()) {
     for (const other of others) {
+      // An optional form the sheet does not draw answers to nothing; one whose subject it does not draw is told above.
+      if (OPTIONAL_ELEMENT_NAMES.includes(other) && (!sheet.elements.has(other) || !sheet.elements.has(first))) continue;
       if (ladder(other) !== ladder(first)) problems.push(`tiers of ${other} differ from ${first}: ${ladder(other)} against ${ladder(first)}`);
     }
   }

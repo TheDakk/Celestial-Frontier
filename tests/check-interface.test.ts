@@ -121,6 +121,29 @@ describe('planet drawings in the checker', () => {
   });
 });
 
+describe('the clouds of a planet in the checker', () => {
+  const drawing = (name: string, w: number): string => `\nelement ${name} anchor=0,0\n${'1'.repeat(w)}\n`;
+  const terran = drawing('planet/terran', 8) + drawing('planet/terran/x16', 16);
+  it('a planet may have clouds or none; with the planet\'s own size and tiers they pass', () => {
+    expect(checkInterface(PLACEHOLDER + terran).problems).toEqual([]);
+    const report = checkInterface(PLACEHOLDER + terran + drawing('planet/terran/clouds', 8) + drawing('planet/terran/clouds/x16', 16));
+    expect(report).toEqual({ ok: true, parseError: null, problems: [], summary: { glyphs: 97, icons: 6, elements: 62, tiers: 2, line: 12 } });
+  });
+  it('clouds without the tiers of their planet, or with tiers it has not, are reported: they would not sit on the globe', () => {
+    expect(checkInterface(PLACEHOLDER + terran + drawing('planet/terran/clouds', 8)).problems).toEqual(['tiers of planet/terran/clouds differ from planet/terran: none against 16']);
+    expect(checkInterface(PLACEHOLDER + drawing('planet/terran', 8) + drawing('planet/terran/clouds', 8) + drawing('planet/terran/clouds/x16', 16)).problems)
+      .toEqual(['tiers of planet/terran/clouds differ from planet/terran: 16 against none']);
+  });
+  it('clouds drawn at another size than their planet, clouds of a planet the sheet does not draw, and clouds of no planet are reported', () => {
+    expect(checkInterface(PLACEHOLDER + drawing('planet/terran', 8) + drawing('planet/terran/clouds', 7)).problems).toEqual(['planet/terran/clouds is 7 by 1, not the 8 by 1 of planet/terran']);
+    expect(checkInterface(PLACEHOLDER + drawing('planet/ocean/clouds', 8)).problems).toEqual(['planet/ocean/clouds has no element planet/ocean']);
+    expect(checkInterface(PLACEHOLDER + drawing('planet/mud/clouds', 8)).problems).toEqual(['unknown element planet/mud/clouds']);
+    expect(checkInterface(PLACEHOLDER + drawing('quasar/clouds', 8)).problems).toEqual(['unknown element quasar/clouds']);
+    // Only a living world and an ocean world wear a deck in the game: clouds of another type would never be shown.
+    expect(checkInterface(PLACEHOLDER + drawing('planet/gas', 8) + drawing('planet/gas/clouds', 8)).problems).toEqual(['unknown element planet/gas/clouds']);
+  });
+});
+
 describe('colours a map can show', () => {
   it('a colour numbered past 255 is reported: a map picture holds one byte a pixel', () => {
     expect(checkInterface(PLACEHOLDER.replace('ramp ink', 'colour 255 ffffff\nramp ink')).problems).toEqual([]);
