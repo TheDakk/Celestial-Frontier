@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/art-interface": "*",
+    "@cf/art-testparts": "*",
     "@cf/domain-rand": "*",
     "@cf/scene": "*"
   },
