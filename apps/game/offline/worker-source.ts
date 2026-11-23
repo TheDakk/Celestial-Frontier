@@ -169,6 +169,11 @@ export function createShellWorker(build: BuildTable, ports: WorkerPorts): ShellW
   const writePin = async (clientId: string, buildId: string): Promise<void> => {
     await (await caches.open(CONTROL_CACHE)).put(pinUrl(clientId), json({ schema: SHELL_SCHEMA, clientId, buildId }));
   };
+  /** Pins a page while answering it. A pin that cannot be written is gone without: the page is still answered. */
+  const pinIfPossible = async (clientId: string, buildId: string): Promise<void> => {
+    if (!validClientId(clientId)) return;
+    try { await writePin(clientId, buildId); } catch { /* answered unpinned */ }
+  };
 
   /** Pins every open page that has no pin to the active build, and forgets the pins of pages that are gone.
    *  False when an open page runs a build that would not be kept: neither the active nor the prior one, or,
@@ -213,6 +218,11 @@ export function createShellWorker(build: BuildTable, ports: WorkerPorts): ShellW
 
   return {
     async install() {
+      // The pins of pages that have closed are forgotten here too, not only when a build is made active.
+      try {
+        const state = await readState();
+        if (state) await keepLiveClientBuilds(state, false);
+      } catch { /* housekeeping: the install does not depend on it */ }
       // The browser may install the same worker again: a build already held whole is not fetched twice.
       if (await complete(build.buildId)) return;
       const name = cacheName(build.buildId);
@@ -293,9 +303,10 @@ export function createShellWorker(build: BuildTable, ports: WorkerPorts): ShellW
       if (url.origin !== ports.origin) return refuse(403, 'External resources are not part of this Celestial Frontier build.');
       const state = await readState();
       if (!state) return refuse(503, 'No complete Celestial Frontier build is active.');
-      // A page being loaded takes the active build; everything else is answered from the build its page is pinned to.
+      // A page being loaded takes the active build; everything else is answered from the build its page is pinned
+      // to. A page with no pin (the browser named none when it loaded, or the pin could not be written) is
+      // pinned to the active build now.
       const pinned = request.navigation ? null : await readPin(request.clientId);
-      if (!request.navigation && pinned === null) return refuse(503, 'This page has no retained Celestial Frontier build.');
       if (pinned !== null && pinned !== state.activeBuildId && pinned !== state.priorBuildId) return refuse(503, 'This page no longer owns a retained Celestial Frontier build.');
       const selected = pinned ?? state.activeBuildId;
       const cache = await caches.open(cacheName(selected));
@@ -306,10 +317,8 @@ export function createShellWorker(build: BuildTable, ports: WorkerPorts): ShellW
       if (!listed(path)) return refuse(503, 'Resource is not part of the selected Celestial Frontier build.');
       const response = await cache.match(absolute(path));
       if (!response) return refuse(503, 'A required Celestial Frontier build resource is missing.');
-      if (request.navigation) {
-        const next = validClientId(request.resultingClientId) ? request.resultingClientId : request.clientId;
-        if (validClientId(next)) await writePin(next, selected);
-      }
+      if (request.navigation) await pinIfPossible(validClientId(request.resultingClientId) ? request.resultingClientId : request.clientId, selected);
+      else if (pinned === null) await pinIfPossible(request.clientId, selected);
       return response;
     },
   };
