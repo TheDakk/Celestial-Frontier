@@ -67,6 +67,31 @@ describe('where the words of a map stand', () => {
     for (const a of placed) for (const b of placed) if (a !== b) expect(overlaps(a, b), `${a.text} and ${b.text}`).toBe(false);
   });
 
+  it('with a gap asked for, two names on one line stand at least that far apart, or one of them moves', () => {
+    // Two bodies whose names, each under its own, would end and begin one pixel apart on the same line.
+    const left = spec({ text: 'Earth', x: 100, size: 9 });
+    const right = spec({ text: 'Mercury', x: 141 });
+    const butting = placeLabels([left, right], NONE);
+    expect(butting.map((label) => [label.text, label.side, label.x, label.x + label.w])).toEqual([['Earth', 'below', 80, 120], ['Mercury', 'below', 121, 161]]);
+    const apart = placeLabels([left, right], { ...NONE, apart: 4 });
+    expect(apart.map((label) => [label.text, label.side])).toEqual([['Earth', 'below'], ['Mercury', 'above']]);
+    // Exactly the gap apart is apart enough; so are names on different lines, however near.
+    expect(sideOf(placeLabels([left, spec({ text: 'Mercury', x: 144 })], { ...NONE, apart: 4 }), 'Mercury')).toBe('below');
+    expect(sideOf(placeLabels([left, spec({ text: 'Mercury', x: 143 })], { ...NONE, apart: 4 }), 'Mercury')).toBe('above');
+    expect(sideOf(placeLabels([left, spec({ text: 'Mercury', x: 141, y: 112 })], { ...NONE, apart: 4 }), 'Mercury')).toBe('below');
+    // A name with no side a gap clear of the others still stands, where it overlaps none of them.
+    const walls: Box[] = [{ x: 0, y: 78, w: 300, h: 12 }, { x: 0, y: 94, w: 300, h: 12 }];
+    expect(placeLabels([left, right], { ...NONE, apart: 4, keepOut: walls }).map((label) => [label.text, label.side, label.x])).toEqual([['Earth', 'below', 80], ['Mercury', 'below', 121]]);
+    // Whatever is placed, no two names on one line are nearer than the gap.
+    const crowd = Array.from({ length: 30 }, (_, i) => spec({ text: `body ${i}`, x: 40 + (i % 6) * 37, y: 30 + (i >> 1) * 9, size: i % 4 }));
+    const placed = placeLabels(crowd, { ...NONE, apart: 4 });
+    expect(placed.length).toBeGreaterThan(5);
+    for (const a of placed) for (const b of placed) {
+      if (a === b || a.y >= b.y + b.h || b.y >= a.y + a.h) continue;
+      expect(Math.max(a.x - (b.x + b.w), b.x - (a.x + a.w)), `${a.text} and ${b.text}`).toBeGreaterThanOrEqual(4);
+    }
+  });
+
   it('words never stand on the top bar or the dock', () => {
     const bar: Box = { x: 0, y: 0, w: 300, h: 30 };
     const under = spec({ y: 34, clear: 6, side: 'above' });

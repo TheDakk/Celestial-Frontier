@@ -116,7 +116,8 @@ export interface Lettered extends PlacedLabel { lines: string[] }
  * of its body at the game's own offset, or on the next free side when that would put it on other words, and never on
  * its body's disc or ring, the top bar or the dock; a label with no free side is left out. Words wider than the view
  * are wrapped. With the placement's `tails`, a side a comet's tail crosses is taken only when no other is free. The
- * current game has no such avoidance: its letters are smaller.
+ * With its `apart`, two names on one line keep a space between them, or one moves. The current game has no such
+ * avoidance: its letters are smaller.
  */
 export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont): Lettered[] {
   const { view, dpr } = frame;
@@ -147,5 +148,7 @@ export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont
     const y = Math.floor(bar.y * perCss);
     return { x, y, w: Math.ceil((bar.x + bar.w) * perCss) - x, h: Math.ceil((bar.y + bar.h) * perCss) - y };
   });
-  return placeLabels(specs, { view: grid, keepOut, discs }).map((label) => ({ ...label, lines: lines.get(label.text)! }));
+  // Between two names on one line: a space of the font, with the gap the font sets either side of it.
+  const apart = frame.placement?.apart === true ? { apart: measureText(font, ' ').w + 2 * font.gap } : {};
+  return placeLabels(specs, { view: grid, keepOut, discs, ...apart }).map((label) => ({ ...label, lines: lines.get(label.text)! }));
 }

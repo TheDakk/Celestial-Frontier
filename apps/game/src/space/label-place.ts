@@ -23,8 +23,9 @@ export type Side = 'below' | 'above' | 'right' | 'left';
 export interface LabelSpec { text: string; w: number; h: number; x: number; y: number; clear: number; side: Side | 'centre'; rank: number; size: number }
 export interface PlacedLabel extends Box { text: string; side: Side | 'centre' }
 /** What words must keep off (`keepOut`: the top bar and the dock) and would rather keep off (`discs`: every body drawn, and
- *  each pixel of a line drawn across the map as a disc of radius 1). */
-export interface Surroundings { view: { w: number; h: number }; keepOut: readonly Box[]; discs: readonly Disc[] }
+ *  each pixel of a line drawn across the map as a disc of radius 1). With `apart`, two labels on one line stand at
+ *  least that many pixels from each other, so two names never read as one. */
+export interface Surroundings { view: { w: number; h: number }; keepOut: readonly Box[]; discs: readonly Disc[]; apart?: number }
 
 const SIDES = ['below', 'above', 'right', 'left'] as const;
 
@@ -54,7 +55,8 @@ function boxOn(spec: LabelSpec, side: Side | 'centre', view: { w: number; h: num
 
 /**
  * Stands each label by its body: on the game's own side when that is free, else on the next of below, above, right
- * and left. A side is free when the words there overlap no words already placed and neither the top bar nor the dock;
+ * and left. A side is free when the words there overlap no words already placed (nor, with `apart`, come nearer than
+ * that to words on their own line, unless no side is that clear) and neither the top bar nor the dock;
  * a side that also lies wholly in the view and off every body is taken before one that does not. A label with no free
  * side is left out. The nearest and largest bodies are placed first: by rank, then the larger body, then the one nearer
  * the middle of the view, then the text. Whole numbers in, whole numbers out.
@@ -66,9 +68,14 @@ export function placeLabels(specs: readonly LabelSpec[], around: Surroundings): 
     a.spec.rank - b.spec.rank || b.spec.size - a.spec.size || from(a.spec) - from(b.spec)
     || (a.spec.text < b.spec.text ? -1 : a.spec.text > b.spec.text ? 1 : 0) || a.index - b.index);
   const placed: PlacedLabel[] = [];
+  const apart = around.apart ?? 0;
+  const widened = (box: Box): Box => ({ x: box.x - apart, y: box.y, w: box.w + 2 * apart, h: box.h });
   for (const { spec } of order) {
     const boxes = [spec.side, ...SIDES.filter((side) => side !== spec.side)].map((side) => ({ side, box: boxOn(spec, side, view) }));
-    const free = boxes.filter(({ box }) => !placed.some((other) => overlaps(box, other)) && !around.keepOut.some((bar) => overlaps(box, bar)));
+    const clear = (box: Box, near: (box: Box) => Box): boolean => !placed.some((other) => overlaps(near(box), other)) && !around.keepOut.some((bar) => overlaps(box, bar));
+    // A name that can stand nowhere a space clear of the others stands where it only does not overlap them.
+    const spaced = boxes.filter(({ box }) => clear(box, widened));
+    const free = spaced.length > 0 || apart === 0 ? spaced : boxes.filter(({ box }) => clear(box, (same) => same));
     const best = free.find(({ box }) => box.x >= 0 && box.y >= 0 && box.x + box.w <= view.w && box.y + box.h <= view.h
       && !around.discs.some((disc) => reaches(box, disc))) ?? free[0];
     if (best !== undefined) placed.push({ text: spec.text, side: best.side, ...best.box });

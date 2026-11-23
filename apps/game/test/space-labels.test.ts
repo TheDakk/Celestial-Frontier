@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { drawText, parseInterfaceSheet } from '@cf/art-interface';
+import { drawText, measureText, parseInterfaceSheet } from '@cf/art-interface';
 import { testInterfaceSheetText } from '@cf/art-testparts';
 import { galaxyName } from '@cf/domain-naming';
 import { HOME_POS, SOL_POS } from '@cf/domain-worldconfig';
@@ -159,6 +159,27 @@ describe('the words of a system keep off a comet\'s tail', () => {
       expect(crossed(at, 20, true, { effects: true, motion: false })).toEqual([]);
     }
   });
+  it('as the planets of Sol pass each other no two names on one line stand nearer than a space where the frame asks for it; without, some butt', () => {
+    const space = measureText(font, ' ').w + 2 * font.gap;
+    expect(space).toBe(5);
+    // Two hundred seconds: the inner planets pass each other several times.
+    const LONG = Array.from({ length: 400 }, (_, i) => i * 0.5);
+    /** The pairs of names on one line nearer than a space, at a time. */
+    const butting = (at: (typeof VIEWS)[number], time: number, apart: boolean): string[] => {
+      const placed = placedLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: at.z }, view: at.view, dpr: at.dpr, time, placement: { keepOut: at.keepOut, tails: true, ...(apart ? { apart } : {}) } }), 'x', font);
+      return placed.flatMap((a, i) => placed.slice(i + 1).filter((b) => a.y < b.y + b.h && b.y < a.y + a.h && Math.max(a.x - (b.x + b.w), b.x - (a.x + a.w)) < space)
+        .map((b) => `${a.text} and ${b.text} at ${time}`));
+    };
+    const named = (at: (typeof VIEWS)[number], time: number, apart: boolean): string[] =>
+      placedLabels(frame({ nav: systemNav(), cam: { x: 0, y: 0, z: at.z }, view: at.view, dpr: at.dpr, time, placement: { keepOut: at.keepOut, tails: true, ...(apart ? { apart } : {}) } }), 'x', font).map((box) => box.text).sort();
+    for (const at of VIEWS) {
+      expect(LONG.flatMap((time) => butting(at, time, false)).length, `${at.view.w}`).toBeGreaterThan(5);
+      expect(LONG.flatMap((time) => butting(at, time, true)), `${at.view.w}`).toEqual([]);
+      // No name is lost to the gap: whatever was named without it is named with it.
+      for (const time of LONG) expect(named(at, time, true), `${time}`).toEqual(named(at, time, false));
+    }
+  });
+
   it('a frame that does not ask for it letters the words as before', () => {
     for (const at of VIEWS) expect(ORBIT.flatMap((time) => crossed(at, time, false)).length).toBeGreaterThan(20);
   });

@@ -67,7 +67,7 @@ describe('the map screen\'s picture and words', () => {
     const { sized: _sized, ...unsized } = frame(near);
     expect(colours(unsized)).not.toEqual(colours(frame(near)));
     // Each word stands where the placement puts it, in the picture's own pixels: here 2 screen pixels each.
-    const placed = placedLabels({ ...frame(near), placement: { keepOut: [], tails: true, stand: true } }, currentRegionOf(0).name, sheet.font);
+    const placed = placedLabels({ ...frame(near), placement: { keepOut: [], tails: true, stand: true, apart: true } }, currentRegionOf(0).name, sheet.font);
     expect(placed.length).toBeGreaterThan(0);
     // The comet's name stands on its foot above the comet, as the game anchors it.
     expect(placed.filter((words) => words.text.startsWith('Comet ')).map((words) => words.side)).toEqual(['above']);
