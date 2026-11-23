@@ -3,7 +3,6 @@ import { testInterfaceSheetText } from '@cf/art-testparts';
 import type { GameEvents } from '../src/events';
 import { loadPack, prunePackCache } from '../src/packs/loader';
 import { loadPacks, localFolderSource } from '../src/packs';
-import { releaseSource } from '../src/packs/sources';
 import type { PackCache } from '../src/packs/cache';
 import type { PackEntry, PackManifest } from '../src/packs/manifest';
 import type { PackSource } from '../src/packs/sources';
@@ -120,11 +119,11 @@ describe('pack loader', () => {
     expect(packsIn(cache)).toEqual([ENTRY.sha256]);
   });
 
-  it('the same loader takes a release base address', async () => {
+  it('a source takes any base address, a whole one too, and the loader asks each source in turn', async () => {
     const cache = memoryCache();
     const asked: string[] = [];
     const folder = localFolderSource('/art-packs/', async (url) => { asked.push(url); return null; });
-    const release = releaseSource('https://packs.example/v7', async (url) => { asked.push(url); return BYTES; });
+    const release = localFolderSource('https://packs.example/v7', async (url) => { asked.push(url); return BYTES; });
     expect(await loadPack(ENTRY, { cache, sources: [folder, release] })).toEqual({ state: 'ready', text: TEXT });
     expect(asked).toEqual(['/art-packs/quadruped-v1.txt', 'https://packs.example/v7/quadruped-v1.txt']);
     expect(cache.stored.get(ENTRY.sha256)).toEqual(BYTES);
