@@ -75,7 +75,7 @@ function options(tokens: readonly string[], line: number, allowed: readonly stri
 
 function colourIndex(s: string | undefined, line: number): number {
   const i = int(s, line);
-  if (i < 0 || i > 95) throw new Error(`line ${line}: bad colour index ${i}`);
+  if (i < 0 || i >= MAX_PALETTE_COLOURS) throw new Error(`line ${line}: bad colour index ${i}`);
   return i;
 }
 

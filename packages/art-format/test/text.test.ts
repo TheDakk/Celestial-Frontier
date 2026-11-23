@@ -102,6 +102,10 @@ describe('parseCatalogueText', () => {
   it('rejects unknown directives', () => {
     expect(thrown('# c\n\nbogus 1 2')).toBe("line 3: unknown directive 'bogus'");
   });
+  it('a ramp, the outline, the eye and the glow may name the last colour, 127', () => {
+    expect(thrown('palette\ncolour 127 ffffff\nramp r 127 127 127 127\noutline 127\neye 127\neyeHighlight 127\nglow 127')).toBe('did not throw');
+  });
+
   it('rejects more than 128 colours', () => {
     expect(thrown('palette\ncolour 127 ffffff')).toBe('did not throw');
     expect(thrown('palette\ncolour 128 ffffff')).toBe('palette: more than 128 colours');
@@ -123,9 +127,9 @@ const SCAF = 'scaffold quadruped/sturdy/small origin=0,0\n';
 describe('parseCatalogueText: palette checks', () => {
   it('rejects palette indices outside 0..95', () => {
     expect(thrown('palette\ncolour -1 ffffff')).toBe('line 2: bad colour index -1');
-    expect(thrown('palette\ncolour 0 ffffff\nramp r 0 0 0 96')).toBe('line 3: bad colour index 96');
+    expect(thrown('palette\ncolour 0 ffffff\nramp r 0 0 0 128')).toBe('line 3: bad colour index 128');
     expect(thrown('palette\noutline -2')).toBe('line 2: bad colour index -2');
-    expect(thrown('palette\neye 96')).toBe('line 2: bad colour index 96');
+    expect(thrown('palette\neye 128')).toBe('line 2: bad colour index 128');
     expect(thrown('palette\neyeHighlight 200')).toBe('line 2: bad colour index 200');
     expect(thrown('palette\nglow -1')).toBe('line 2: bad colour index -1');
   });
