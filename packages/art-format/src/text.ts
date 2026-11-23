@@ -1,4 +1,4 @@
-import { BONE_RAMP, IRIS_RAMP_COUNT, PIXEL_BONE, PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
+import { BONE_RAMP, IRIS_RAMP_COUNT, isOwnRamp, OWN_RAMP_FIRST, PIXEL_CHARS, PIXEL_IRIS, PIXEL_OUTLINE } from './pixels';
 import { DRAW_ORDER, EYE_COUNTS, LAYER_NAMES, LIMB_COUNTS } from './types';
 import type { Catalogue, LayerName, Palette, Part, PartFrame, Pose, PoseEntry, Scaffold, SizeTier, SlotName, Species } from './types';
 
@@ -88,13 +88,13 @@ function parsePartId(id: string): Omit<Part, 'frames'> | undefined {
 interface OpenFrame { name: string; line: number; anchor: [number, number]; attach: Record<string, readonly [number, number]>; w: number; h: number; data: number[]; layers: Map<LayerName, OpenLayer>; layer?: OpenLayer; }
 interface OpenLayer { name: LayerName; line: number; rows: number; data: number[]; }
 const GUIDE_LAYERS: readonly string[] = ['flow', 'spots'];
-/** The iris ramp (17-20), which the composer alone writes; the bone ramp above it (21-24) is a part's to draw. */
-const isIris = (v: number): boolean => v >= PIXEL_IRIS && v < PIXEL_BONE;
+/** The iris ramp (17-20), which the composer alone writes; the own-ramp values above it (21-28, bone and deep) are a part's to draw. */
+const isIris = (v: number): boolean => v >= PIXEL_IRIS && v < OWN_RAMP_FIRST;
 /**
  * Whether a layer may hold the value: 0 to 15 in a guide layer (flow, spots: counters, not colours); in a hand-drawn
- * pattern or skin layer the colours a part may draw there, 0 to 12 (the hide ramps) and 21 to 24 (bone).
+ * pattern or skin layer the colours a part may draw there, 0 to 12 (the hide ramps) and 21 to 28 (bone and deep).
  */
-const layerValueOk = (name: string, v: number): boolean => (GUIDE_LAYERS.includes(name) ? v <= 15 : v <= 12 || (v >= PIXEL_BONE && v < PIXEL_BONE + 4));
+const layerValueOk = (name: string, v: number): boolean => (GUIDE_LAYERS.includes(name) ? v <= 15 : v <= 12 || isOwnRamp(v));
 
 export function parseCatalogueText(text: string): Catalogue {
   const parts = new Map<string, Part>();
@@ -403,7 +403,7 @@ export function formatPart(part: Part): string {
       const grid = layers[layerName];
       if (grid === undefined) continue;
       if (grid.length !== f.w * f.h) fail(`frame ${name} layer ${layerName} has ${grid.length} pixels, expected ${f.w * f.h}`);
-      if (grid.some((v) => !layerValueOk(layerName, v))) fail(`frame ${name} layer ${layerName} holds a value above ${GUIDE_LAYERS.includes(layerName) ? '15' : '12 that is not bone (21 to 24)'}`);
+      if (grid.some((v) => !layerValueOk(layerName, v))) fail(`frame ${name} layer ${layerName} holds a value above ${GUIDE_LAYERS.includes(layerName) ? '15' : '12 that is not bone or deep (21 to 28)'}`);
       out.push(`layer ${layerName}`);
       for (let y = 0; y < f.h; y++) {
         let row = '';

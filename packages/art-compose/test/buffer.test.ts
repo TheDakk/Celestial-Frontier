@@ -137,7 +137,7 @@ describe('blit with iris', () => {
 
 describe('toAscii', () => {
   it('writes one line per row with the part-text characters', () => {
-    const b: PixelBuffer = { w: 4, h: 1, pixels: Uint8Array.from([17, 20, 24, 25]) };
-    expect(toAscii(b)).toBe('hko?');
+    const b: PixelBuffer = { w: 4, h: 1, pixels: Uint8Array.from([17, 20, 28, 29]) };
+    expect(toAscii(b)).toBe('hks?');
   });
 });

@@ -1,7 +1,7 @@
 import type { Palette } from './types';
 
-/** The text character for each pixel value 0-24: index = value. Used by the part text format and the text pixel form. */
-export const PIXEL_CHARS = '.123456789abcdefghijklmno';
+/** The text character for each pixel value 0-28: index = value. Used by the part text format and the text pixel form. */
+export const PIXEL_CHARS = '.123456789abcdefghijklmnopqrs';
 
 /** Pixel values. Each ramp is four values, dark to light, starting at its base. */
 export const PIXEL_TRANSPARENT = 0;
@@ -23,6 +23,21 @@ export const PIXEL_IRIS = 17;
 export const PIXEL_BONE = 21;
 /** The palette ramp bone is drawn in when the caller names no other. */
 export const BONE_RAMP = 'bone';
+/**
+ * 25-28: the deep ramp, dark to light: the hide's own colour, much darker (the mask round the eyes, a socket, a nostril,
+ * the mouth line, a deep crease), drawn by a part wherever it may draw bone. A named improvement on the original, whose
+ * darkest hide value the theme mix lifts. No palette ramp: colourTable computes it from the primary ramp as shown.
+ * Lit and shaded like a hide ramp; never marked, skinned or given the rarity finish.
+ */
+export const PIXEL_DEEP = 25;
+/**
+ * The own-ramp values, 21-28: bone, then deep. Each is a ramp of four a part draws, lit and shaded inside itself and
+ * rimmed as hide is, that no mark, skin or rarity finish ever paints.
+ */
+export const OWN_RAMP_FIRST = PIXEL_BONE;
+export const OWN_RAMP_LAST = PIXEL_DEEP + 3;
+/** Whether the value is an own-ramp value (OWN_RAMP_FIRST to OWN_RAMP_LAST): bone or deep. */
+export const isOwnRamp = (v: number): boolean => v >= OWN_RAMP_FIRST && v <= OWN_RAMP_LAST;
 /** Iris ramps iris0..iris10: one per theme, in THEME_NAMES order (a generated creature's iris is its theme's). */
 export const IRIS_RAMP_COUNT = 11;
 
@@ -37,9 +52,9 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
 });
 
 /**
- * Colour numbers (0xRRGGBB) for pixel values 0-24: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
+ * Colour numbers (0xRRGGBB) for pixel values 0-28: index 0 is transparent and holds 0; 1-4, 5-8 and 9-12 are the
  * named primary, accent and underside ramps; 13-16 are the palette's eye, eye highlight, glow and outline colours; 17-20 are the named iris ramp;
- * 21-24 are the bone ramp.
+ * 21-24 are the bone ramp; 25-28 are the deep ramp.
  * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws. So does a `bone` name.
  * With no `bone` name, bone is the palette's ramp `bone` (BONE_RAMP), and a palette without one gives four zeros and
  * lists nothing: no ramp was named.
@@ -47,6 +62,9 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
  * (62 parts colour, 38 parts theme), and entries 21-24 as boneTintChannel(a, t), a weak mix (85 parts bone, 15 parts
  * theme) that keeps bone pale under every theme; 0, 13-20 and the four zeros of a ramp the palette lacks are unchanged.
  * Without one, the table is untouched. A tint that is not a whole number 0 to 0xffffff throws a RangeError naming it.
+ * Deep is no palette ramp: entry 25 + i is entry 1 + i, the primary ramp as shown (after the tint, when there is one),
+ * with each channel as deepChannel(c), 55 hundredths of it. So deep is always the hide's own colour, darker, under
+ * every theme; a primary ramp the palette lacks (four zeros) gives four zeros, and nothing more is listed.
  */
 export function colourTable(
   palette: Palette,
@@ -80,6 +98,10 @@ export function colourTable(
     for (let v = 1; v <= 12; v++) if (held[(v - 1) >> 2] === true) mixed(v, tintChannel);
     if (boneHeld) for (let v = PIXEL_BONE; v < PIXEL_BONE + 4; v++) mixed(v, boneTintChannel);
   }
+  for (let i = 0; i < 4; i++) {
+    const c = table[PIXEL_PRIMARY + i] ?? 0;
+    table.push((deepChannel((c >>> 16) & 255) << 16) | (deepChannel((c >>> 8) & 255) << 8) | deepChannel(c & 255));
+  }
   return { table, unknown };
 }
 
@@ -106,4 +128,12 @@ function tintChannel(a: number, t: number): number {
  */
 function boneTintChannel(a: number, t: number): number {
   return hundredths(85 * a + 15 * t);
+}
+
+/**
+ * The deep scaling of one channel, round(c x 0.55), in whole numbers: 55c hundredths, halves rounded up. The same
+ * multiply and shift as the mixes (hundredths), so the same result on every device.
+ */
+function deepChannel(c: number): number {
+  return hundredths(55 * c);
 }

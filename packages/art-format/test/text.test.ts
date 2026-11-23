@@ -564,10 +564,10 @@ describe('bone values 21 to 24 (l to o)', () => {
     expect(rest(`${HEAD}lmno\n1c.d\n`).pixels).toEqual(Uint8Array.from([21, 22, 23, 24, 1, 12, 0, 13]));
   });
 
-  it('a part row still refuses the outline g and the iris h to k, and any character after o', () => {
+  it('a part row still refuses the outline g and the iris h to k, and any character after s', () => {
     expect(message(`${HEAD}lmno\n1g..\n`)).toBe(`part ${BID} frame rest line 4: outline value is written by the composer`);
     for (const c of 'hijk') expect(message(`${HEAD}lmno\n1${c}..\n`), c).toBe(`part ${BID} frame rest line 4: iris value is written by the composer`);
-    expect(message(`${HEAD}lmno\n1p..\n`)).toBe(`part ${BID} frame rest line 4: unknown pixel character 'p'`);
+    expect(message(`${HEAD}lmno\n1t..\n`)).toBe(`part ${BID} frame rest line 4: unknown pixel character 't'`);
   });
 
   it('a hand-drawn pattern or skin layer may hold l to o; a guide layer may not, and no layer holds d to k', () => {
@@ -590,12 +590,67 @@ describe('bone values 21 to 24 (l to o)', () => {
     expect(parseCatalogueText(text).parts.get(BID)).toEqual(part);
   });
 
-  it('formatPart still refuses what the parser refuses: an iris value in a row, 13 to 20 and 25 in a hand-drawn layer, bone in a guide layer', () => {
+  it('formatPart still refuses what the parser refuses: an iris value in a row, 13 to 20 and 29 in a hand-drawn layer, bone in a guide layer', () => {
     const framed = (pixels: number[], layers?: Record<string, Uint8Array>): Part => ({ id: BID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0,
       frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from(pixels), anchor: [0, 0], attach: {}, ...(layers === undefined ? {} : { layers }) } } });
     for (const v of [17, 20]) expect(() => formatPart(framed([1, v])), String(v)).toThrow('frame rest holds an iris value, which only the composer writes');
     expect(() => formatPart(framed([1, 24]))).not.toThrow();
-    for (const v of [13, 16, 17, 20, 25]) expect(() => formatPart(framed([1, 1], { striped: Uint8Array.from([0, v]) })), String(v)).toThrow('layer striped holds a value above 12 that is not bone (21 to 24)');
+    for (const v of [13, 16, 17, 20, 29]) expect(() => formatPart(framed([1, 1], { striped: Uint8Array.from([0, v]) })), String(v)).toThrow('layer striped holds a value above 12 that is not bone or deep (21 to 28)');
     expect(() => formatPart(framed([1, 1], { flow: Uint8Array.from([0, 21]) }))).toThrow('layer flow holds a value above 15');
+  });
+});
+
+describe('deep values 25 to 28 (p to s)', () => {
+  const BID = 'quadruped/torso/t1/medium/v0';
+  const HEAD = `part ${BID}\nframe rest anchor=0,0\n`;
+  const message = (text: string): string => {
+    try {
+      parseCatalogueText(text);
+      return 'did not throw';
+    } catch (e) {
+      return (e as Error).message;
+    }
+  };
+  const rest = (text: string) => parseCatalogueText(text).parts.get(BID)!.frames.rest!;
+
+  it('a part row may hold p, q, r and s, read as 25 to 28, beside bone and hide', () => {
+    expect(rest(`${HEAD}pqrs\n1o.d\n`).pixels).toEqual(Uint8Array.from([25, 26, 27, 28, 1, 24, 0, 13]));
+  });
+
+  it('a part row still refuses the outline g and the iris h to k, and any character after s', () => {
+    expect(message(`${HEAD}pqrs\n1g..\n`)).toBe(`part ${BID} frame rest line 4: outline value is written by the composer`);
+    for (const c of 'hijk') expect(message(`${HEAD}pqrs\n1${c}..\n`), c).toBe(`part ${BID} frame rest line 4: iris value is written by the composer`);
+    for (const c of 'tuz') expect(message(`${HEAD}pqrs\n1${c}..\n`), c).toBe(`part ${BID} frame rest line 4: unknown pixel character '${c}'`);
+  });
+
+  it('a hand-drawn pattern or skin layer may hold p to s; a guide layer may not, and no layer holds d to k', () => {
+    const f = rest(`${HEAD}1234\nlayer striped\npqrs\nlayer scaled\n.s1o\n`);
+    expect(f.layers!.striped).toEqual(Uint8Array.from([25, 26, 27, 28]));
+    expect(f.layers!.scaled).toEqual(Uint8Array.from([0, 28, 1, 24]));
+    for (const guide of ['flow', 'spots']) {
+      for (const c of 'pqrs') expect(message(`${HEAD}1234\nlayer ${guide}\n123${c}\n`), `${guide} ${c}`).toBe(`part ${BID} frame rest line 5: bad layer value '${c}'`);
+    }
+    for (const c of 'defghijk') {
+      for (const layer of ['striped', 'furred']) expect(message(`${HEAD}1234\nlayer ${layer}\n123${c}\n`), `${layer} ${c}`).toBe(`part ${BID} frame rest line 5: bad layer value '${c}'`);
+    }
+  });
+
+  it('formatPart writes deep and the parser reads it back the same, rows and layers', () => {
+    const part: Part = { id: BID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0,
+      frames: { rest: { w: 4, h: 1, pixels: Uint8Array.from([25, 26, 27, 28]), anchor: [0, 0], attach: {}, layers: { banded: Uint8Array.from([28, 0, 5, 25]), slick: Uint8Array.from([0, 26, 0, 21]) } } } };
+    const text = formatPart(part);
+    expect(text).toBe(`part ${BID}\nframe rest anchor=0,0\npqrs\nlayer banded\ns.5p\nlayer slick\n.q.l\n\n`);
+    expect(parseCatalogueText(text).parts.get(BID)).toEqual(part);
+  });
+
+  it('formatPart still refuses what the parser refuses: an iris value in a row, 13 to 20 and 29 in a hand-drawn layer, deep in a guide layer', () => {
+    const framed = (pixels: number[], layers?: Record<string, Uint8Array>): Part => ({ id: BID, family: 'quadruped', slot: 'torso', tier: 'medium', kind: 't1', variant: 0,
+      frames: { rest: { w: 2, h: 1, pixels: Uint8Array.from(pixels), anchor: [0, 0], attach: {}, ...(layers === undefined ? {} : { layers }) } } });
+    for (const v of [17, 20]) expect(() => formatPart(framed([25, v])), String(v)).toThrow('frame rest holds an iris value, which only the composer writes');
+    for (const v of [25, 28]) expect(() => formatPart(framed([1, v])), String(v)).not.toThrow();
+    expect(() => formatPart(framed([1, 29]))).toThrow('pixel value 29 out of range');
+    for (const v of [25, 28]) expect(() => formatPart(framed([1, 1], { striped: Uint8Array.from([0, v]) })), String(v)).not.toThrow();
+    for (const v of [13, 16, 17, 20, 29]) expect(() => formatPart(framed([1, 1], { striped: Uint8Array.from([0, v]) })), String(v)).toThrow('layer striped holds a value above 12 that is not bone or deep (21 to 28)');
+    for (const v of [25, 28]) expect(() => formatPart(framed([1, 1], { flow: Uint8Array.from([0, v]) })), String(v)).toThrow('layer flow holds a value above 15');
   });
 });

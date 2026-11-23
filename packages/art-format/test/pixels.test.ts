@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   colourTable, parseCatalogueText, PIXEL_ACCENT, PIXEL_CHARS, PIXEL_EYE, PIXEL_EYE_HIGHLIGHT, PIXEL_GLOW, PIXEL_OUTLINE,
-  PIXEL_PRIMARY, PIXEL_TRANSPARENT, PIXEL_UNDERSIDE, PIXEL_IRIS, PIXEL_BONE, IRIS_RAMP_COUNT,
+  PIXEL_PRIMARY, PIXEL_TRANSPARENT, PIXEL_UNDERSIDE, PIXEL_IRIS, PIXEL_BONE, PIXEL_DEEP, IRIS_RAMP_COUNT,
 } from '@cf/art-format';
 
 // Every colour is distinct, so a value mapped to the wrong palette entry shows as a wrong number.
@@ -37,10 +37,12 @@ describe('pixel values', () => {
     expect([PIXEL_TRANSPARENT, PIXEL_PRIMARY, PIXEL_ACCENT, PIXEL_UNDERSIDE, PIXEL_EYE, PIXEL_EYE_HIGHLIGHT, PIXEL_GLOW, PIXEL_OUTLINE])
       .toEqual([0, 1, 5, 9, 13, 14, 15, 16]);
   });
-  it('has one text character per value 0-24', () => {
-    expect(PIXEL_CHARS).toBe('.123456789abcdefghijklmno');
+  it('has one text character per value 0-28', () => {
+    expect(PIXEL_CHARS).toBe('.123456789abcdefghijklmnopqrs');
     expect(PIXEL_BONE).toBe(21);
     expect([PIXEL_CHARS[PIXEL_BONE], PIXEL_CHARS[PIXEL_BONE + 3]]).toEqual(['l', 'o']);
+    expect(PIXEL_DEEP).toBe(25);
+    expect([PIXEL_CHARS[PIXEL_DEEP], PIXEL_CHARS[PIXEL_DEEP + 3]]).toEqual(['p', 's']);
     expect(PIXEL_CHARS[PIXEL_OUTLINE]).toBe('g');
     expect(PIXEL_CHARS[PIXEL_IRIS]).toBe('h');
     expect(PIXEL_CHARS[PIXEL_IRIS + 3]).toBe('k');
@@ -54,14 +56,14 @@ describe('pixel values', () => {
 describe('colourTable', () => {
   it('maps 17-20 to the iris ramp', () => {
     const { table } = colourTable(palette, { primary: 'body', accent: 'spots', underside: 'belly', iris: 'ring' });
-    expect(table).toHaveLength(25);
+    expect(table).toHaveLength(29);
     expect(table.slice(PIXEL_IRIS, PIXEL_IRIS + 4)).toEqual([0x000040, 0x000041, 0x000042, 0x000022]);
   });
   it('reports an unknown iris ramp with four zeros, without throwing', () => {
     const { table, unknown } = colourTable(palette, { primary: 'body', accent: 'spots', underside: 'belly', iris: 'nope' });
     expect(unknown).toEqual(['nope']);
     expect(table.slice(PIXEL_IRIS, PIXEL_BONE)).toEqual([0, 0, 0, 0]);
-    expect(table).toHaveLength(25);
+    expect(table).toHaveLength(29);
   });
   it('maps values 1-16 to the right palette entries and keeps 0 transparent', () => {
     const { table, unknown } = colourTable(palette, { primary: 'body', accent: 'spots', underside: 'belly', iris: 'ring' });
@@ -73,13 +75,14 @@ describe('colourTable', () => {
       0x000041, 0x000042, 0x000010, 0x000040, // 13 eye, 14 highlight, 15 glow, 16 outline
       0x000040, 0x000041, 0x000042, 0x000022, // 17-20 iris ramp
       0, 0, 0, 0,                             // 21-24 bone: this palette has no bone ramp and none was named
+      0x000009, 0x00000a, 0x00000a, 0x00000b, // 25-28 deep: the primary ramp at 55 hundredths
     ]);
     expect(unknown).toEqual([]);
   });
   it('reports an unknown ramp name, including an inherited one, without throwing', () => {
     const { table, unknown } = colourTable(palette, { primary: 'body', accent: 'nope', underside: 'toString', iris: 'ring' });
     expect(unknown).toEqual(['nope', 'toString']);
-    expect(table).toHaveLength(25);
+    expect(table).toHaveLength(29);
     expect(table.slice(PIXEL_ACCENT, PIXEL_EYE)).toEqual([0, 0, 0, 0, 0, 0, 0, 0]);
     expect(table[PIXEL_PRIMARY]).toBe(0x000011);
   });
@@ -136,6 +139,7 @@ describe('colourTable: the theme tint', () => {
     expect(today.table).toEqual([
       0, 0x000011, 0x000012, 0x000013, 0x000014, 0x000020, 0x000021, 0x000022, 0x000023, 0x000030, 0x000031, 0x000032, 0x000033,
       0x000041, 0x000042, 0x000010, 0x000040, 0x000040, 0x000041, 0x000042, 0x000022, 0, 0, 0, 0,
+      0x000009, 0x00000a, 0x00000a, 0x00000b,
     ]);
     expect(colourTable(palette, RAMPS, undefined)).toEqual(today);
   });
@@ -163,7 +167,7 @@ describe('colourTable: the theme tint', () => {
       const { table, unknown } = colourTable(palette, RAMPS, t);
       expect(unknown).toEqual([]);
       expect(table[0]).toBe(0);
-      expect(table.slice(13), t.toString(16)).toEqual(plain.slice(13));
+      expect(table.slice(13, PIXEL_DEEP), t.toString(16)).toEqual(plain.slice(13, PIXEL_DEEP));
       expect(table.slice(1, 13), t.toString(16)).not.toEqual(plain.slice(1, 13));
     }
   });
@@ -178,10 +182,10 @@ describe('colourTable: bone', () => {
 
   it('maps 21-24 to the palette\'s bone ramp, and to a named bone ramp instead', () => {
     const plain = colourTable(boned, RAMPS);
-    expect(plain.table.slice(PIXEL_BONE)).toEqual([0x000014, 0x000013, 0x000012, 0x000011]);
+    expect(plain.table.slice(PIXEL_BONE, PIXEL_DEEP)).toEqual([0x000014, 0x000013, 0x000012, 0x000011]);
     expect(plain.unknown).toEqual([]);
     const own = colourTable(boned, { ...RAMPS, bone: 'civet-bone' });
-    expect(own.table.slice(PIXEL_BONE)).toEqual([0x000020, 0x000021, 0x000022, 0x000023]);
+    expect(own.table.slice(PIXEL_BONE, PIXEL_DEEP)).toEqual([0x000020, 0x000021, 0x000022, 0x000023]);
     expect(own.unknown).toEqual([]);
     expect(colourTable(boned, { ...RAMPS, bone: 'bone' })).toEqual(plain);
   });
@@ -199,7 +203,7 @@ describe('colourTable: bone', () => {
   it('a palette with no bone ramp gives four zeros and lists nothing when none was named, tinted or not', () => {
     for (const tint of [undefined, 0xff7a4a]) {
       const { table, unknown } = colourTable(palette, RAMPS, tint);
-      expect(table.slice(PIXEL_BONE), String(tint)).toEqual([0, 0, 0, 0]);
+      expect(table.slice(PIXEL_BONE, PIXEL_DEEP), String(tint)).toEqual([0, 0, 0, 0]);
       expect(unknown).toEqual([]);
     }
   });
@@ -208,7 +212,7 @@ describe('colourTable: bone', () => {
     for (const tint of [undefined, 0xff7a4a]) {
       for (const [pal, name] of [[palette, 'bone'], [boned, 'otter-bone'], [boned, 'toString']] as const) {
         const { table, unknown } = colourTable(pal, { ...RAMPS, bone: name }, tint);
-        expect(table.slice(PIXEL_BONE), `${name} ${String(tint)}`).toEqual([0, 0, 0, 0]);
+        expect(table.slice(PIXEL_BONE, PIXEL_DEEP), `${name} ${String(tint)}`).toEqual([0, 0, 0, 0]);
         expect(unknown, name).toEqual([name]);
       }
     }
@@ -239,10 +243,99 @@ describe('colourTable: bone', () => {
     const plain = colourTable(p, RAMPS).table;
     const { table } = colourTable(p, RAMPS, t);
     const mix = (c: number): number => [16, 8, 0].reduce((out, s) => out | (weak((c >> s) & 255, (t >> s) & 255) << s), 0);
-    expect(table.slice(PIXEL_BONE)).toEqual(p.colours.map(mix));
-    expect(table.slice(PIXEL_BONE)).not.toEqual(plain.slice(PIXEL_BONE));
+    expect(table.slice(PIXEL_BONE, PIXEL_DEEP)).toEqual(p.colours.map(mix));
+    expect(table.slice(PIXEL_BONE, PIXEL_DEEP)).not.toEqual(plain.slice(PIXEL_BONE, PIXEL_DEEP));
     // The same colours on the primary ramp take the hide's stronger mix: a different result.
-    expect(table.slice(PIXEL_BONE)).not.toEqual(table.slice(1, 5));
+    expect(table.slice(PIXEL_BONE, PIXEL_DEEP)).not.toEqual(table.slice(1, 5));
     expect([table[0], ...table.slice(13, PIXEL_BONE)]).toEqual([plain[0], ...plain.slice(13, PIXEL_BONE)]);
+  });
+});
+
+describe('colourTable: deep', () => {
+  const RAMPS = { primary: 'body', accent: 'spots', underside: 'belly', iris: 'ring' };
+  /** round(55c / 100), halves up, in exact whole numbers, for the test only. */
+  const dark = (c: number): number => Math.floor((55 * c + 50) / 100);
+  /** The hide mix of one channel, round((62a + 38t) / 100), halves up, for the test only. */
+  const hide = (a: number, t: number): number => Math.floor((62 * a + 38 * t + 50) / 100);
+  const each = (c: number, channel: (v: number, s: number) => number): number => [16, 8, 0].reduce((out, s) => out | (channel((c >> s) & 255, s) << s), 0);
+  /** A palette whose primary ramp `body` is the four colours; every other ramp is the same four. */
+  const withPrimary = (colours: readonly number[]) => ({ ...palette, colours: [...colours], ramps: { body: [0, 1, 2, 3], spots: [0, 1, 2, 3], belly: [0, 1, 2, 3], ring: [0, 1, 2, 3] } as const });
+  const PRIMARIES: readonly (readonly number[])[] = [
+    [0x203040, 0x405060, 0x607080, 0x8090a0],
+    [0x000000, 0xffffff, 0xff0000, 0x0000ff],
+    [0x0a1e32, 0x6e2a5a, 0xc8c0a8, 0xf8f0d8], // 0x0a, 0x1e, 0x32, 0x6e, 0x5a: 55 x c ends in 50, a half that rounds up
+    [0x010203, 0x7f8081, 0xfdfeff, 0x646464],
+  ];
+
+  it('maps 25-28 to the primary ramp as shown, each channel at 55 hundredths, when there is no tint', () => {
+    for (const colours of PRIMARIES) {
+      const { table, unknown } = colourTable(withPrimary(colours), RAMPS);
+      expect(table).toHaveLength(29);
+      expect(table.slice(1, 5)).toEqual(colours);
+      expect(table.slice(PIXEL_DEEP), colours.map((c) => c.toString(16)).join(' ')).toEqual(colours.map((c) => each(c, dark)));
+      expect(unknown).toEqual([]);
+    }
+    // By hand: 20 30 40 gives round(17.6) round(26.4) round(35.2) = 12 1a 23; ff gives round(140.25) = 8c; 0a gives round(5.5) = 06.
+    expect(colourTable(withPrimary(PRIMARIES[0]!), RAMPS).table[PIXEL_DEEP]).toBe(0x121a23);
+    expect(colourTable(withPrimary(PRIMARIES[1]!), RAMPS).table.slice(PIXEL_DEEP)).toEqual([0, 0x8c8c8c, 0x8c0000, 0x00008c]);
+    expect(colourTable(withPrimary(PRIMARIES[2]!), RAMPS).table[PIXEL_DEEP]).toBe(0x06111c);
+  });
+
+  it('with a tint, deep is 55 hundredths of the tinted primary: the hide as shown, not the palette colour', () => {
+    for (const colours of PRIMARIES) {
+      for (const tint of [0, 0xffffff, 0xff7a4a, 0x8fd6ff]) {
+        const { table } = colourTable(withPrimary(colours), RAMPS, tint);
+        const shown = colours.map((c) => each(c, (v, s) => hide(v, (tint >> s) & 255)));
+        expect(table.slice(1, 5)).toEqual(shown);
+        expect(table.slice(PIXEL_DEEP), `${colours.map((c) => c.toString(16)).join(' ')} tint ${tint.toString(16)}`).toEqual(shown.map((c) => each(c, dark)));
+      }
+    }
+    // By hand: 40 50 60 under fire ff 7a 4a shows 89 60 58 (137 96 88); 55 hundredths of that is round(75.35) round(52.8) round(48.4) = 4b 35 30.
+    const fire = colourTable(withPrimary(PRIMARIES[0]!), RAMPS, 0xff7a4a).table;
+    expect([fire[2], fire[PIXEL_DEEP + 1]]).toEqual([0x896058, 0x4b3530]);
+    // Not 55 hundredths of the plain colour, and not the plain deep tinted.
+    expect(fire[PIXEL_DEEP + 1]).not.toBe(colourTable(withPrimary(PRIMARIES[0]!), RAMPS).table[PIXEL_DEEP + 1]);
+  });
+
+  it('deep is 55 hundredths, halves up, for every channel value, and for every hide and theme channel pair', () => {
+    // The 256 channel values on the four primary entries, in R, G and B at once: untinted, then under each tint channel t.
+    let checked = 0;
+    for (let t = -1; t < 256; t++) {
+      for (let a0 = 0; a0 < 256; a0 += 4) {
+        const { table } = colourTable(withPrimary([a0, a0 + 1, a0 + 2, a0 + 3].map((a) => a * 0x010101)), RAMPS, t < 0 ? undefined : t * 0x010101);
+        for (let k = 0; k < 4; k++) {
+          const want = dark(t < 0 ? a0 + k : hide(a0 + k, t)) * 0x010101;
+          if (table[PIXEL_DEEP + k] !== want) throw new Error(`a=${a0 + k} t=${t}: ${table[PIXEL_DEEP + k]!.toString(16)}`);
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBe(257 * 256);
+    // The whole-number reference is the rounded scaling: the ends, halves that round up (55 x 10 = 550, 55 x 30 = 1650), and it is always darker.
+    expect([dark(0), dark(1), dark(2), dark(10), dark(30), dark(100), dark(255)]).toEqual([0, 1, 1, 6, 17, 55, 140]);
+    for (let c = 2; c < 256; c++) if (!(dark(c) < c)) throw new Error(`not darker at ${c}`);
+  });
+
+  it('a primary ramp the palette lacks gives four zeros for deep and lists nothing more, tinted or not', () => {
+    for (const tint of [undefined, 0xff7a4a]) {
+      for (const name of ['nope', 'toString']) {
+        const { table, unknown } = colourTable(palette, { ...RAMPS, primary: name }, tint);
+        expect(table.slice(1, 5)).toEqual([0, 0, 0, 0]);
+        expect(table.slice(PIXEL_DEEP), `${name} ${String(tint)}`).toEqual([0, 0, 0, 0]);
+        expect(unknown).toEqual([name]);
+        expect(table).toHaveLength(29);
+      }
+    }
+  });
+
+  it('deep reads the primary ramp alone: no other ramp, colour or bone name moves it, and no palette ramp named deep is read', () => {
+    const base = colourTable(palette, RAMPS, 0x8fd6ff).table.slice(PIXEL_DEEP);
+    expect(base).toEqual([0x1e2d3b, 0x1e2d3b, 0x1e2d3c, 0x1e2d3c]);
+    const others = { ...palette, outline: 1, eye: 2, eyeHighlight: 3, glow: 4, ramps: { ...palette.ramps, bone: [4, 3, 2, 1], deep: [30, 31, 32, 12], 'body-deep': [30, 31, 32, 12] } as const };
+    for (const ramps of [RAMPS, { ...RAMPS, accent: 'belly', underside: 'ring', iris: 'spots' }, { ...RAMPS, accent: 'nope' }, { ...RAMPS, bone: 'bone' }, { ...RAMPS, bone: 'nope' }]) {
+      expect(colourTable(others, ramps, 0x8fd6ff).table.slice(PIXEL_DEEP), JSON.stringify(ramps)).toEqual(base);
+    }
+    // Control: another primary ramp does move it.
+    expect(colourTable(others, { ...RAMPS, primary: 'spots' }, 0x8fd6ff).table.slice(PIXEL_DEEP)).not.toEqual(base);
   });
 });
