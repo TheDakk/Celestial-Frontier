@@ -9,10 +9,14 @@ import { systemFor } from '@cf/domain-worldgen';
 import { systemScene } from '@cf/scene';
 import type { GalaxyNode, NavState, PlanetNode } from '@cf/scene';
 import type { Camera, Viewport } from './camera';
+import { hsl, place, rgbOf } from './draw';
+import type { Grid, MapPasses } from './draw';
 import { cosSin, galaxyContent, supernovaBodies, visibleBodies } from './model';
 import type { MapBody } from './model';
+import { passCaptions, withPasses } from './passes';
+import type { Caption } from './passes';
 
-export interface Grid { w: number; h: number }
+export type { Caption, Grid, MapPasses };
 
 /** The shorter side of the picture is about this many art pixels: the design's 480 by 270 stage. */
 const SHORT_SIDE = 270;
@@ -45,18 +49,6 @@ const GALAXY_NEAR = 3;
 const DECO_NEAR = 2;
 const GIANT = 1.5;
 const SOL_MARK = 6;
-
-const rgbOf = (hex: string): number => parseInt(hex.slice(1), 16);
-
-/** 0xRRGGBB for a hue in degrees and a saturation and lightness from 0 to 1. */
-function hsl(hue: number, saturation: number, lightness: number): number {
-  const a = saturation * Math.min(lightness, 1 - lightness);
-  const channel = (n: number): number => {
-    const k = (n + hue / 30) % 12;
-    return Math.round((lightness - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))) * 255);
-  };
-  return (channel(0) << 16) | (channel(8) << 8) | channel(4);
-}
 
 /** How the bands of each planet type are coloured: a hue (its own field of the planet, or a fixed one), a
  *  saturation, and the range its seeded lightness runs over. */
@@ -142,11 +134,6 @@ function bodyItems(body: MapBody, x: number, y: number, cam: Camera, grid: Grid,
   }
 }
 
-/** Where a world point falls in the picture, in whole art pixels. */
-function place(cam: Camera, grid: Grid, wx: number, wy: number): { x: number; y: number } {
-  return { x: Math.round(grid.w / 2 + (wx - cam.x) * cam.z), y: Math.round(grid.h / 2 + (wy - cam.y) * cam.z) };
-}
-
 /** The bodies of a map as things to paint, in their order. `cam` is in art pixels per world unit, and `time`
  *  the seconds the orbits have run: it turns the moons. */
 export function projectMap(bodies: readonly MapBody[], cam: Camera, grid: Grid, time: number): SpaceItem[] {
@@ -219,19 +206,30 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
 
 /** Everything a map picture is made from. `cam` and `view` are in CSS pixels; `time` is the seconds the orbits
  *  have run and `epoch` the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
- *  charter in world units, and `charts` whether the orbit lines are shown. */
-export interface MapFrame { nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean }
+ *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
+ *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. */
+export interface MapFrame { nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses }
 export interface MapPicture { w: number; h: number; pixels: Uint8Array; scale: number }
 
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. */
 export function mapItems(frame: MapFrame, grid: Grid, scale: number): SpaceItem[] {
   const cam = artCamera(frame.cam, frame.dpr, scale);
-  const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, frame.time), ...supernovaBodies(frame.nav, frame.epoch)];
-  return [
-    ...projectBackdrop(grid),
-    ...projectScenery(frame.nav, cam, grid, frame.time, { reach: frame.reach, charts: frame.charts }),
-    ...projectMap(bodies, cam, grid, frame.time),
-  ];
+  // Reduced motion holds every clock of the map at its start.
+  const time = frame.passes?.motion === false ? 0 : frame.time;
+  const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, time), ...supernovaBodies(frame.nav, frame.epoch)];
+  const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts });
+  if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time)];
+  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts };
+  return withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time) })));
+}
+
+/** The captions of a frame's passes, each anchored at a world point: the far universe's clusters and voids, and in a
+ *  system the habitable zone, each comet by name and the visitor. None without `passes`. */
+export function mapCaptions(frame: MapFrame): Caption[] {
+  if (frame.passes === undefined) return [];
+  const scale = artScale(frame.view.w, frame.view.h, frame.dpr);
+  return passCaptions({ ...frame.passes, nav: frame.nav, cam: artCamera(frame.cam, frame.dpr, scale), grid: artGrid(frame.view.w, frame.view.h, frame.dpr, scale),
+    view: frame.view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, reach: frame.reach, charts: frame.charts });
 }
 
 /** The picture of a frame, in palette indices, and the whole number of screen pixels each of its pixels covers. */

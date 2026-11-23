@@ -12,19 +12,38 @@ import type { Gaps } from './text';
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
  * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top.
+ * - veil: the same circle in an ordered dither, `level` of every 16 pixels painted (0 none, 16 all). The pattern is fixed
+ *   to the picture, so veils join without a seam and a higher level keeps every pixel of a lower one. With `inner` only
+ *   the band outside the disc of that radius is painted; with `clip` only what lies inside that disc. A veil that is a
+ *   `light` never darkens: it leaves every pixel that is already as bright as its colour.
  */
 export type SpaceItem =
   | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean }
   | { kind: 'dot'; x: number; y: number; colour: number }
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
-  | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[] };
+  | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[] }
+  | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean };
 
 /** The ramp an element's values 5 to 8 are drawn in. */
 const SECOND_RAMP = 'accent';
 /** The largest radius drawn: beyond it a circle is flat across any screen, and its squares stay exact whole numbers. */
 export const MAX_RADIUS = 1 << 20;
 
+/** The order the pixels of every 4 by 4 block of the picture join a veil in, by row then column. */
+const DITHER: readonly number[] = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+
+/** Where a pixel of the picture stands in the order its 4 by 4 block joins a veil: 0 first, 15 last. */
+export function ditherRank(x: number, y: number): number {
+  return DITHER[(y & 3) * 4 + (x & 3)] ?? 0;
+}
+
 const channels = (rgb: number): readonly [number, number, number] => [(rgb >>> 16) & 255, (rgb >>> 8) & 255, rgb & 255];
+
+/** How bright a 0xRRGGBB colour is to the eye, in whole numbers. */
+function brightness(rgb: number): number {
+  const [r, g, b] = channels(rgb);
+  return r * 299 + g * 587 + b * 114;
+}
 
 /** The sum of the squared channel differences of two 0xRRGGBB colours. */
 function distance(a: number, b: number): number {
@@ -72,11 +91,12 @@ function rootOf(n: number): number {
  * A picture w by h of palette indices, the items painted in order, later ones over earlier ones. Index 0 is the
  * background: a pixel given it shows what lies behind. Whatever falls outside the picture is dropped. An element the
  * sheet lacks draws the stand-in icon centred on its place and is counted in `gaps.elements`. A ring or disc with a
- * radius below 0 or above MAX_RADIUS is not drawn.
+ * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil with one.
  */
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): PixelBuffer {
   const { palette } = sheet;
   const pixels = new Uint8Array(w * h);
+  const bright = palette.colours.map(brightness);
   const indexOf = new Map<number, number>();
   const index = (rgb: number): number => {
     let found = indexOf.get(rgb);
@@ -142,12 +162,33 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     }
   };
 
+  /** How far a disc of radius r reaches to either side on the row `up` rows from its centre; -1 when it misses the row. */
+  const halfOf = (r: number, up: number): number => (up > r ? -1 : rootOf(r * r + r - up * up));
+
+  const veil = (item: Extract<SpaceItem, { kind: 'veil' }>): void => {
+    const { x, y, r, clip } = item;
+    if (clip !== undefined && (clip.r < 0 || clip.r > MAX_RADIUS)) return;
+    const value = index(item.colour);
+    const floor = item.light === true ? bright[value] ?? 0 : Infinity;
+    for (let py = Math.max(0, y - r); py <= Math.min(h - 1, y + r); py++) {
+      const half = halfOf(r, Math.abs(py - y));
+      const hole = item.inner === undefined ? -1 : halfOf(item.inner, Math.abs(py - y));
+      const within = clip === undefined ? MAX_RADIUS * 4 : halfOf(clip.r, Math.abs(py - clip.y));
+      const from = Math.max(0, x - half, clip === undefined ? 0 : clip.x - within);
+      const to = Math.min(w - 1, x + half, clip === undefined ? w - 1 : clip.x + within);
+      for (let px = from; px <= to; px++) {
+        if (Math.abs(px - x) > hole && ditherRank(px, py) < item.level && (bright[pixels[py * w + px] ?? 0] ?? 0) < floor) pixels[py * w + px] = value;
+      }
+    }
+  };
+
   for (const item of items) {
     if (item.kind === 'element') element(item);
     else if (item.kind === 'dot') row(item.y, item.x, item.x, index(item.colour));
     else if (item.r < 0 || item.r > MAX_RADIUS) continue;
     else if (item.kind === 'ring') ring(item);
-    else disc(item);
+    else if (item.kind === 'disc') disc(item);
+    else veil(item);
   }
   return { w, h, pixels };
 }

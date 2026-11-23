@@ -16,7 +16,9 @@ const oriented = (name: string): string[] => ORIENTATIONS.map((orientation) => `
  * The space elements, by name: everything a map draws from the sheet. Galaxies by kind and the lobes of a radio galaxy,
  * each in four orientations; the quasar; a giant star; the scenery of a galaxy (nebulae, remnants, a rogue planet, a
  * failed star), its wormhole, its supernova sites by what they left, a protostar and the black hole at its centre; and
- * in a system the star itself by kind, and a companion star.
+ * in a system the star itself by kind, and a companion star. Then what moves: the three further frames of each thing
+ * that turns (the wormhole through a turn; the beams of a pulsar's remains, and of a pulsar or a magnetar at the heart
+ * of a system, through a half turn), and the dimmed form of each thing that pulses.
  */
 export const ELEMENT_NAMES: readonly string[] = Object.freeze([
   ...['spiral', 'barred', 'lenticular', 'elliptical', 'irregular'].flatMap((kind) => oriented(`galaxy/${kind}`)),
@@ -30,4 +32,6 @@ export const ELEMENT_NAMES: readonly string[] = Object.freeze([
   'black-hole',
   ...['star', 'bh', 'ns', 'mag', 'proto'].map((kind) => `primary/${kind}`),
   'companion',
+  ...['wormhole', 'supernova/ns', 'primary/ns', 'primary/mag'].flatMap((name) => ['t1', 't2', 't3'].map((frame) => `${name}/${frame}`)),
+  ...['star/giant', 'quasar', 'protostar'].map((name) => `${name}/dim`),
 ]);
