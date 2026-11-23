@@ -23,7 +23,7 @@ function pictureFrom(page: Page, cam: Camera): Array<number | null> {
   const sheet = currentSheet();
   const frame: MapFrame = {
     nav: page.nav.nav, cam, view: { w: 800, h: 600 }, dpr: 1, time: 0, epoch: page.loop.publishedEpoch(),
-    reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false }, sized: true, solid: true,
+    reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false }, sized: true, solid: true, marks: true,
   };
   return Array.from(mapPicture(frame, sheet, { glyphs: [], icons: [], elements: [] }).pixels, (value) => (value === 0 ? null : sheet.palette.colours[value]!));
 }

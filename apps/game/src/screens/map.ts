@@ -285,8 +285,9 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
-          // Every light and shadow in whole pixels: no dither lies anywhere on the map.
-          solid: true,
+          // Every light and shadow in whole pixels: no dither lies anywhere on the map. A thing smaller than its
+          // smallest drawing is a mark of its own size.
+          solid: true, marks: true,
           // Its words stand clear of each other, of their bodies and of what covers the map.
           placement: { keepOut: covered(), tails: true, stand: true, apart: true },
         };

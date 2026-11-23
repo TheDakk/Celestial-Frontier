@@ -55,7 +55,7 @@ describe('the whole map in solid pixels', () => {
 
   it('no dot mesh lies anywhere on any map: not on the haze, the fog, the web, the veil, the zone, the edge, the bridge or a glow', () => {
     for (const [name, nav, cam] of SCENES) {
-      const picture = mapPicture(frame(nav, cam, { solid: true }), sheet, noGaps());
+      const picture = mapPicture(frame(nav, cam, { solid: true, marks: true }), sheet, noGaps());
       expect(meshDots(picture), name).toBe(0);
       // The picture is not empty of what it shows: more than the star field and space are in it.
       expect(new Set(picture.pixels).size, name).toBeGreaterThan(4);

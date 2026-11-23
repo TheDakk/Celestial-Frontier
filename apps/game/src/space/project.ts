@@ -248,15 +248,32 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
   return items;
 }
 
+/** A thing too small for its smallest drawing, `span` art pixels across: one pixel, or from a span of 3 a cross
+ *  3 pixels across, in its own colour. */
+function mark(x: number, y: number, span: number, colour: number): SpaceItem[] {
+  const dot = (dx: number, dy: number): SpaceItem => ({ kind: 'dot', x: x + dx, y: y + dy, colour });
+  return span >= 3 ? [dot(0, -1), dot(-1, 0), dot(0, 0), dot(1, 0), dot(0, 1)] : [dot(0, 0)];
+}
+
+/** The items with every element that the sheet draws, but only wider than its span, as a mark of that span: nothing
+ *  is drawn larger than the game sizes it. An element the sheet lacks is left, to be drawn as a gap and counted. */
+function marked(items: readonly SpaceItem[], drawn: (name: string, span: number) => number | undefined): SpaceItem[] {
+  return items.flatMap((item) => (item.kind === 'element' && item.span !== undefined && item.clip === undefined
+    && drawn(item.name, item.span) === undefined && drawn(item.name, WIDEST) !== undefined ? mark(item.x, item.y, item.span, item.ramp) : [item]));
+}
+/** A span every drawing fits in. */
+const WIDEST = 1 << 20;
+
 /** Everything a map picture is made from. `cam` and `view` are in CSS pixels; `time` is the seconds the orbits
  *  have run and `epoch` the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
  *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
  *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. With
  *  `solid` every light and shadow of the map is drawn in whole pixels of the palette, as pixel art is: solid steps with
- *  stepped edges, and no dither anywhere. */
+ *  stepped edges, and no dither anywhere. With `marks` a thing the game sizes smaller than the sheet's smallest drawing
+ *  of it is a mark of its own size and colour, not that drawing: a far galaxy map is not crowded by its scenery. */
 export interface MapFrame {
-  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean;
+  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean; marks?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
    *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail; with
    *  `stand`, the name of a comet and of the visitor stands on its foot above it, as the game anchors it; with `apart`,
@@ -277,7 +294,8 @@ export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: Int
   const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
   if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
   const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };
-  return withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
+  const items = withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
+  return frame.marks === true && sizing.sizing?.drawn !== undefined ? marked(items, sizing.sizing.drawn) : items;
 }
 
 /** The captions of a frame's passes, each anchored at a world point: the far universe's clusters and voids, and in a
