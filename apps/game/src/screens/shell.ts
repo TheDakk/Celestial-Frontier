@@ -12,7 +12,7 @@ import type { DevicePreferences } from '../platform/preferences';
 import { createPersistAsker, readPersistState, type StorageManagerLike } from '../protect';
 import {
   HEARTBEAT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
-  replaceExpedition, resetExpedition, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
+  replaceExpedition, resetExpedition, retryHeldRead, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
 } from '../save';
 import { createShellSound, readAudioAccessibilityPrefs, writeAudioAccessibilityPrefs, type ShellSound } from '../sound';
 import {
@@ -21,6 +21,7 @@ import {
   type PanelManager, type Toast,
 } from '../ui';
 import { mountChrome, type Chrome } from './chrome';
+import { NOTICE_WORDS, mountNotices } from './notices';
 import { createScreenRegistry, type ScreenContext, type ScreenRegistry } from './registry';
 import { settingsScreen, type StatusFacts } from './settings';
 
@@ -141,8 +142,9 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   const ctx: ScreenContext = { bus, sizeClass: () => sizeClass, inputMode: () => inputMode };
   const registry = createScreenRegistry();
   const panels = createPanelManager(doc, { fallbackFocus: () => env.host.querySelector<HTMLElement>('.stage [tabindex]') });
-  // The toast is drawn in the chrome, which needs the screens, which need the toast.
+  // The toast and the notices are drawn in the chrome, which needs the screens, which need both.
   const toast: Toast = { show: (title, message, force) => shown.show(title, message, force) };
+  const refreshNotices = (): void => notices.refresh();
   const replacement = { runtime, gate, settle: () => loop.flush(), reload: env.reload };
 
   registry.registerScreen(settingsScreen({
@@ -165,12 +167,12 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
       persistState: () => persist,
       askAgain: () => asker.askAgain(),
       canBackUp: () => booted.revision > 0 || booted.kind === 'recovered-protected',
-      replaceExpedition: (operations) => replaceExpedition(replacement, operations),
+      replaceExpedition: (operations) => replaceExpedition(replacement, operations).finally(refreshNotices),
       saveTextFile: env.files.saveTextFile,
       pickTextFile: env.files.pickTextFile,
     },
     mayReplace: () => gate.mayWrite(),
-    reset: () => resetExpedition({ ...replacement, registry: REGISTRY, clocks, solView: nav.solRoute() }),
+    reset: () => resetExpedition({ ...replacement, registry: REGISTRY, clocks, solView: nav.solRoute() }).finally(refreshNotices),
     status,
     toast,
   }));
@@ -178,6 +180,11 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   const chrome = mountChrome(env.host, { screens: registry.screens(), ctx, panels, panelObserver: env.panelObserver });
   chrome.stage.before(displayText(DISPLAY_HEADINGS.title, { level: 1 }));
   const shown = createToast({ el: chrome.toast, now: clocks.monotonicNow, popUps: () => live.notifOn });
+  const notices = mountNotices(chrome.notices, {
+    boot: booted, gate, toast,
+    retry: () => retryHeldRead({ backend, registry: REGISTRY, wallNow: clocks.wallNow(), gate }),
+    reload: env.reload,
+  });
 
   doc.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape' || event.defaultPrevented) return;
@@ -189,7 +196,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   bus.on('save:reload-required', () => {
     if (reloading) return;
     reloading = true;
-    shown.show('Reload required', 'Another save authority won. This page is now read-only so no progress can be overwritten.', true);
+    shown.show(NOTICE_WORDS.reload.title, NOTICE_WORDS.reload.text, true);
     env.reload();
   });
   doc.addEventListener('visibilitychange', () => { void (visible() ? loop.show() : loop.hide()); });
