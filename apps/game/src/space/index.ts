@@ -2,3 +2,4 @@ export { ascentCamera, descentCamera, entryZoom, minSideOf, toScreen, zoomAbout,
 export { diveIntent, keyboardOrder, parkBelowTrigger, supernovaBodies, visibleBodies, type DiveIntent, type MapBody } from './model';
 export { artCamera, artGrid, artScale, mapCaptions, mapItems, mapPicture, projectBackdrop, projectMap, projectScenery, type Caption, type Grid, type MapFrame, type MapPasses, type MapPicture } from './project';
 export { showSpace } from './canvas';
+export { webZoom } from './passes-universe';

@@ -1,17 +1,19 @@
 /* The map screen: the universe, a galaxy or a system, drawn by seeded code, with the survey card of whatever is
    selected and travel between the three by tap, zoom, keyboard and pasted code. */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
-import { OBS_R } from '@cf/domain-worldconfig';
+import { drawText } from '@cf/art-interface';
+import { HOME_POS, OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
-import { reachRadiusOf, type NavState } from '@cf/scene';
+import { currentRegionOf, systemScene, type NavState } from '@cf/scene';
+import { paintPixels } from '../platform/canvas';
 import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, showSpace,
-  supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type MapBody, type Viewport,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapCaptions, mapPicture, minSideOf, parkBelowTrigger, showSpace,
+  supernovaBodies, toScreen, visibleBodies, webZoom, zoomAbout, zoomLimits, type Camera, type MapBody, type MapFrame, type Viewport,
 } from '../space';
-import { createFrameCoalescer, currentSheet, interfaceGaps, type Toast } from '../ui';
+import { createFrameCoalescer, currentSheet, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
 import type { ScreenDef } from './registry';
 import { createSearchBox } from './search-box';
@@ -19,7 +21,7 @@ import { createSelectionCard, type CardAction } from './selection-card';
 
 export interface MapPorts {
   nav: NavController;
-  live(): Pick<SaveStateV2, 'primeFill' | 'chartsOn' | 'customNames'>;
+  live(): Pick<SaveStateV2, 'primeFill' | 'chartsOn' | 'fxOn' | 'customNames'>;
   /** The committed ecology epoch: every card and picture reads this one. */
   epoch(): number;
   sound: { whoosh(): void; ping(): void };
@@ -37,6 +39,8 @@ const REFUSAL_TITLES = { 'prime-reach': 'Beyond Your Saved Reach', 'charter-reac
 const RING_PICK_PX = 30;
 const DEPTH = { universe: 0, galaxy: 1, system: 2, surface: 3 } as const;
 type Selected = { body: MapBody; x: number; y: number } & MapKeyTarget;
+/** A caption lettered on the map at a world point: centred on it, or standing on it. */
+interface Lettering { text: string; wx: number; wy: number; above?: boolean }
 
 export function mapScreen(ports: MapPorts): ScreenDef {
   const { nav } = ports;
@@ -47,7 +51,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       const canvas = el('canvas', { class: 'map' });
       const ring = el('div', { class: 'map-focus', 'aria-hidden': 'true', hidden: true }, el('span'));
       // The map has its own box: beside an open card on a wide view it is narrower than the stage.
-      const area = el('div', { class: 'map-area' }, canvas, ring);
+      const captions = el('div', { class: 'map-captions', 'aria-hidden': 'true' });
+      const area = el('div', { class: 'map-area' }, canvas, captions, ring);
       root.append(area);
       const card = createSelectionCard(root, () => { root.dataset.card = card.open ? 'open' : 'closed'; redraw.request(); });
       root.dataset.card = 'closed';
@@ -222,6 +227,44 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         ctx.bus.on('save:committed', () => redraw.request()),
       ];
 
+      /** The captions of a frame: those of the map's passes, the charter's name over its ring, and the belt's. */
+      const letteringOf = (shown: MapFrame, region: { name: string; r: number }): Lettering[] => {
+        const out: Lettering[] = mapCaptions(shown);
+        if (shown.nav.mode === 'universe' && shown.cam.z > webZoom(shown.view) * 0.7) {
+          out.push({ text: `your charter — ${region.name}`, wx: HOME_POS.x, wy: HOME_POS.y - region.r - 4, above: true });
+        }
+        if (shown.nav.mode === 'system' && shown.charts) {
+          const belt = (systemScene(shown.nav.star.seed).belt as { r?: number } | null)?.r;
+          if (belt) out.push({ text: 'asteroid belt', wx: 0, wy: -belt - 2, above: true });
+        }
+        return out;
+      };
+      /** Each caption is drawn once, in the display font, and then only moved. */
+      const lettered = new Map<string, HTMLCanvasElement>();
+      const seenGlyphs = new Set(interfaceGaps.glyphs);
+      const letter = (list: readonly Lettering[], shown: MapFrame, pixel: number): void => {
+        const sheet = currentSheet();
+        const live = new Set<HTMLCanvasElement>();
+        for (const caption of list) {
+          const key = `${sheet.font.line}:${caption.text}`;
+          let drawn = lettered.get(key);
+          if (drawn === undefined || live.has(drawn)) {
+            const gaps = { glyphs: [] as number[], icons: [] as string[], elements: [] as string[] };
+            const fresh = el('canvas', { 'data-caption': caption.text });
+            paintPixels(fresh, drawText(sheet.font, caption.text, gaps), sheetColours(sheet));
+            for (const glyph of gaps.glyphs) if (!seenGlyphs.has(glyph)) { seenGlyphs.add(glyph); interfaceGaps.glyphs.push(glyph); }
+            if (drawn === undefined) lettered.set(key, fresh);
+            drawn = fresh;
+          }
+          live.add(drawn);
+          const at = toScreen(shown.cam, shown.view, caption.wx, caption.wy);
+          const w = drawn.width * pixel;
+          const h = drawn.height * pixel;
+          Object.assign(drawn.style, { width: `${w}px`, height: `${h}px`, left: `${Math.round(at.x - w / 2)}px`, top: `${Math.round(caption.above ? at.y - h : at.y - h / 2)}px` });
+        }
+        captions.replaceChildren(...live);
+      };
+
       const seen = new Set(interfaceGaps.elements);
       function frame(): void {
         const size = view();
@@ -238,11 +281,15 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const sheet = currentSheet();
         const gaps = { glyphs: [] as number[], icons: [] as string[], elements: [] as string[] };
         const state = ports.live();
-        const picture = mapPicture({
-          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), epoch: ports.epoch(),
-          reach: reachRadiusOf(Object.keys(state.primeFill || {}).length), charts: state.chartsOn,
-        }, sheet, gaps);
+        const region = currentRegionOf(Object.keys(state.primeFill || {}).length);
+        const shown: MapFrame = {
+          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
+          // The whole map of the game; reduced motion holds every clock of it at its start.
+          passes: { effects: state.fxOn, motion: animate },
+        };
+        const picture = mapPicture(shown, sheet, gaps);
         showSpace(canvas, picture, sheet.palette.colours, ports.dpr());
+        letter(letteringOf(shown, region), shown, picture.scale / ports.dpr());
         // A missing element is counted once, however many frames ask for it.
         for (const name of gaps.elements) if (!seen.has(name)) { seen.add(name); interfaceGaps.elements.push(name); }
 
@@ -253,7 +300,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           ring.style.top = `${mark.y}px`;
           ring.firstElementChild!.textContent = mark.label;
         }
-        const moving = !settledNow || (animate && nav.nav.mode === 'system');
+        // With motion on the map is alive on every level: galaxies turn, fog drifts, worlds orbit.
+        const moving = !settledNow || animate;
         last = moving ? now : null;
         if (moving) redraw.request();
       }

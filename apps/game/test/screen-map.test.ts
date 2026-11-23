@@ -4,8 +4,9 @@ import { describePickWithState } from '@cf/domain-descriptors';
 import { encodeWhere } from '@cf/domain-strays';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { createMemoryBackend, initializeFreshV5 } from '@cf/persistence';
-import { ascHintFor, navToView, type NavState } from '@cf/scene';
-import { ascentCamera, descentCamera, supernovaBodies, toScreen, visibleBodies } from '../src/space';
+import { ascHintFor, currentRegionOf, navToView, type NavState } from '@cf/scene';
+import { ascentCamera, descentCamera, mapPicture, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
+import { currentSheet } from '../src/ui';
 import type { GameEvents } from '../src/events';
 import { REGISTRY, bootSave } from '../src/save/index';
 import descriptors from '../../../fixtures/current/descriptors.json' with { type: 'json' };
@@ -321,6 +322,59 @@ describe('the map screen', () => {
     expect(inside).not.toContain(origin);
   });
 
+  it('draws the whole map of the game: its passes with the effects switch, held still under reduced motion', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    page.nav.ascend();
+    const home = (page.nav.nav as Extract<NavState, { mode: 'galaxy' }>).gal;
+    page.nav.ascend();
+    rest(page);
+    // Out to where the fog beyond the charter is in the view.
+    const cam = ascentCamera({ kind: 'galaxy', x: home.x, y: home.y, size: home.size }, 600).to;
+    for (let i = 0; i < 26; i++) { fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 }); cam.z *= 0.88; }
+    rest(page);
+    const sheet = currentSheet();
+    const shown = (): MapFrame => ({
+      nav: page.nav.nav, cam, view: { w: 800, h: 600 }, dpr: 1, time: 0,
+      epoch: page.loop.publishedEpoch(), reach: currentRegionOf(0).r, charts: page.live.chartsOn, passes: { effects: page.live.fxOn, motion: false },
+    });
+    const colours = (frame: MapFrame): Array<number | null> =>
+      Array.from(mapPicture(frame, sheet, { glyphs: [], icons: [], elements: [] }).pixels, (value) => (value === 0 ? null : sheet.palette.colours[value]!));
+    expect(page.live.fxOn).toBe(true);
+    expect(paintedBy(canvas())).toEqual(colours(shown()));
+    // Each part of the frame shows in this picture: without the passes, with effects off, or with motion on, it differs.
+    const { passes: _passes, ...partial } = shown();
+    expect(colours(partial)).not.toEqual(colours(shown()));
+    expect(colours({ ...shown(), passes: { effects: true, motion: true } })).not.toEqual(colours(shown()));
+    page.live.fxOn = false;
+    expect(colours(shown())).not.toEqual(colours({ ...shown(), passes: { effects: true, motion: false } }));
+    page.env.bus.emit('settings:changed', { field: 'fxOn' });
+    rest(page);
+    expect(paintedBy(canvas())).toEqual(colours(shown()));
+  });
+
+  it('letters the captions of the map: the charter over its ring from the zoom it shows at, the belt and the zone with the star charts', async () => {
+    const page = await atUniverse();
+    const captions = (): string[] => [...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption!);
+    const charter = `your charter — ${currentRegionOf(0).name}`;
+    expect(captions()).toContain(charter);
+    const label = document.querySelector<HTMLCanvasElement>(`.map-captions canvas[data-caption="${charter}"]`)!;
+    expect(label.width).toBeGreaterThan(charter.length * 2);
+    expect(document.querySelector('.map-captions')!.getAttribute('aria-hidden')).toBe('true');
+    // Far out, below the zoom the charter shows at, its label goes with its ring.
+    for (let i = 0; i < 60; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
+    rest(page);
+    expect(captions()).not.toContain(charter);
+
+    page.live.chartsOn = true;
+    page.nav.travelToCode(encodeWhere(page.nav.solRoute() as never) as string);
+    rest(page);
+    expect(captions()).toEqual(expect.arrayContaining(['asteroid belt', 'habitable zone']));
+    page.live.chartsOn = false;
+    rest(page);
+    expect(captions()).not.toContain('asteroid belt');
+  });
+
   it('draws the map on its canvas at the size of the view, and again when the place changes', async () => {
     const page = await atUniverse();
     expect([canvas().style.width, canvas().style.height]).toEqual(['800px', '600px']);
@@ -329,10 +383,10 @@ describe('the map screen', () => {
     page.nav.enterGalaxy(HOME_GALAXY);
     rest(page);
     expect(paintedBy(canvas()).join()).not.toBe(universe);
-    // At rest outside a system nothing asks for another frame.
-    expect(page.frames).toHaveLength(0);
-    page.nav.enterSystem(SOL_STAR);
-    rest(page);
+    // With motion on the map is alive, and asks for its next frame; with motion reduced, at rest, it asks for none.
     expect(page.frames).toHaveLength(1);
+    page.live.motionMode = 1;
+    rest(page);
+    expect(page.frames).toHaveLength(0);
   });
 });
