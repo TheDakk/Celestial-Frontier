@@ -28,6 +28,7 @@ export * from './readiness.js';
 export * from './auto-extractor.js';
 export * from './achievements.js';
 export * from './rank.js';
+export * from './first-arrival.js';
 import { hashInt } from '@cf/domain-rand';
 
 /** Stable per-cycle Charter ordering, owned by the progression domain.
