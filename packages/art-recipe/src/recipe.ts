@@ -1,7 +1,7 @@
 import { BONE_RAMP, IRIS_RAMP_COUNT, VARIANTS } from '@cf/art-format';
 import type { Catalogue, SizeTier, SlotName, ThemeName } from '@cf/art-format';
 import { planBodyParts, planSpeciesParts, torsoKindOf } from './requests';
-import { resolveBody } from './route';
+import { resolveBody, seedShape } from './route';
 import { irisOf } from './states';
 import type { Body } from './route';
 import { artStream, identityKey, pick } from './streams';
@@ -85,7 +85,7 @@ function buildRecipeAt(
   const identity = identityKey(genome, lineage);
   const stream = (name: string): (() => number) => artStream(identity, name, version);
   const d = drawStreams(stream);
-  const b = resolveBody(genome, stream('sub-shape'));
+  const b = resolveBody(genome, seedShape(genome));
   const { parts, gaps } = planBodyParts(b, { ...d.variants, torso: bulk }, stream, catalogue);
   return deepFreeze({
     version, identity, family: b.family, tier: b.tier,
@@ -130,9 +130,9 @@ function drawStreams(stream: (name: string) => () => number): Drawn {
   return { variants: { head: headVariant, tail: tailVariant, limb: limbVariant }, headShift, tailShift, phase };
 }
 
-/** The body a genome draws as: resolveBody with the shape from the `sub-shape` stream of the creature's identity. */
-export function bodyOf(genome: Readonly<Record<string, unknown>>, lineage: readonly string[] = []): Body {
-  return resolveBody(genome, artStream(identityKey(genome, lineage), 'sub-shape', RENDERER_VERSION));
+/** The body a genome draws as: resolveBody with the shape the game gives the creature's seed (seedShape). */
+export function bodyOf(genome: Readonly<Record<string, unknown>>): Body {
+  return resolveBody(genome, seedShape(genome));
 }
 
 /**

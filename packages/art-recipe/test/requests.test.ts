@@ -244,8 +244,8 @@ describe('planBodyParts, four-legged: order', () => {
 });
 
 describe('planBodyParts', () => {
-  /** A fixed stream that picks shape `i` of `n`. */
-  const at = (i: number, n: number) => (): number => (2 * i + 1) / (2 * n);
+  /** A fixed choice of shape `i` of `n`. */
+  const at = (i: number, _n: number) => (): number => i;
   /** Land, medium, head 5, tail 3, limbs gene 3 (8 legs), eyes gene 1 (4 eyes), skin 3 (no back part), plain. */
   const land = { kingdom: 'fauna', loco: 0, habitat: 0, size: 2, head: 5, tail: 3, limbs: 3, eyes: 1, skin: 3, color: 3, accent: 5, pattern: 0 };
   const body = (genes: Record<string, unknown>, shape = 0, of = 1): Body => resolveBody({ ...land, ...genes }, at(shape, of));

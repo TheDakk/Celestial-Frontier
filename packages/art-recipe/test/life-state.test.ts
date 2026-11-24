@@ -134,7 +134,7 @@ describe('the shape of a body with more than one', () => {
         shapes.add(b.torso);
         if (bodyOf({ ...g, seed: seed + 1 }).torso !== b.torso) moved++;
       }
-      // Planted fault: a shape that does not follow the identity would pass the two checks above; across these seeds
+      // Planted fault: a shape that does not follow the seed would pass the two checks above; across these seeds
       // a change of seed changes at least one shape.
       expect(moved, `body ${body}`).toBeGreaterThan(0);
       expect(shapes.size, `body ${body}`).toBeGreaterThan(1);

@@ -182,7 +182,7 @@ const EYES_BY_FAMILY = (() => {
       const { family, shapes } = routeBody({ body, ...stateGenes });
       for (let i = 0; i < shapes.length; i++) {
         for (let eyes = 0; eyes < EYE_COUNTS.length; eyes++) {
-          const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes, head: 0, eyes }, () => (i + 0.5) / shapes.length);
+          const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes, head: 0, eyes }, () => i);
           const known = out.get(family) ?? { eyes: 0, pit: false };
           const onHead = b.head !== null && b.eyes !== null ? b.eyes : 0;
           out.set(family, { eyes: Math.max(known.eyes, onHead), pit: known.pit || b.eyes === 0 });
@@ -211,7 +211,7 @@ const NEW_KINDS = (() => {
     for (let body = 0; body < 16; body++) {
       const { shapes } = routeBody({ body, ...stateGenes });
       for (let i = 0; i < shapes.length; i++) {
-        const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes }, () => (i + 0.5) / shapes.length);
+        const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes }, () => i);
         const asked = [
           ...planBodyParts(b, variants, () => () => 0, holdsAll).parts.map((p) => p.partId),
           ...planBodyParts(b, variants, () => () => 0, holdsNone).gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)),
@@ -250,7 +250,7 @@ export function routeStates(scaffoldId) {
 
 /**
  * The genome with the smallest seed from 1 to SHAPE_SEEDS for which bodyOf gives this family and torso, every other gene
- * kept; undefined when none does. The shape follows the whole identity, so every sampled genome is shaped by this.
+ * kept; undefined when none does. The shape follows the seed alone, so every sampled genome is shaped by this.
  */
 export function shapedGenome(genome, family, torso) {
   for (let seed = 1; seed <= SHAPE_SEEDS; seed++) {
@@ -263,7 +263,7 @@ export function shapedGenome(genome, family, torso) {
 
 /**
  * The genome checkPack samples for a scaffold: `genome` shaped to `family` and `torso` (shapedGenome), drawn at `tier`.
- * shapedGenome can find no seed (about 1 in 10^8 for a shape of four) and never looks at the tier, so either is a
+ * shapedGenome finds no seed for a shape the genome's animal does not have, and never looks at the tier, so either is a
  * failure line here, not a crash or a creature drawn on another scaffold.
  */
 export function shapedFor(genome, family, torso, tier) {
@@ -1057,7 +1057,7 @@ export function checkPack(text, options = {}) {
       const route = routeBody(genes);
       const shapeAt = route.shapes.indexOf(torsoKind);
       /** The body of this scaffold's shape in this state, with these genes. */
-      const bodyWith = (g) => resolveBody({ kingdom: 'fauna', ...genes, head: 0, tail: 0, limbs: 0, eyes: 0, ...g }, () => (shapeAt + 0.5) / route.shapes.length);
+      const bodyWith = (g) => resolveBody({ kingdom: 'fauna', ...genes, head: 0, tail: 0, limbs: 0, eyes: 0, ...g }, () => shapeAt);
       /** For each distinct value the body gives `field` as `gene` runs over its values, the first gene value that gives it. */
       const firstGenes = (gene, length, field) => {
         const found = new Map();

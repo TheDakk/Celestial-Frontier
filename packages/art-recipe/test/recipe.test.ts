@@ -298,11 +298,67 @@ describe('buildRecipe: the animal and the routed fields', () => {
     expect(buildRecipe({ kingdom: 'flora', size: 2 }, [], every).scaffoldId).toBe('flora/body/medium');
   });
 
-  it('bodyOf picks the shape from the sub-shape stream of the creature\'s identity', () => {
-    for (let seed = 1; seed <= 20; seed++) {
-      const g = { ...base, body: 15, seed };
-      expect(bodyOf(g, ['a'])).toEqual(resolveBody(g, artStream(identityKey(g, ['a']), 'sub-shape', RENDERER_VERSION)));
+  /**
+   * The current game's choice of shape (its `_procFamily(G, seed)`), by the name of each of its lines: with s2, s3 and s4
+   * the seed's remainder by 2, 3 and 4, `s2 ? first : second` for a pair and the list's item at s3 or s4 otherwise. The
+   * seed is the one its portrait passes, `(g.seed ^ 0x9A11) >>> 0`.
+   */
+  const gameShape = (g: { seed: number; body: number; loco: number }): string => {
+    const seed = (g.seed ^ 0x9A11) >>> 0;
+    const s3 = seed % 3, s2 = seed % 2, s4 = seed % 4;
+    if (g.body === 4) return s2 ? 'snake' : 'viper';
+    if (g.body === 9) return 'body';
+    if (g.body === 15) return ['anemone', 'urchin', 'coral', 'cucumber'][s4]!;
+    if (g.body === 3) return ['octopus', 'squid', 'cuttlefish'][s3]!;
+    if (g.body === 5) return ['beetle', 'generic', 'mantis'][s3]!;
+    if (g.body === 1) return s2 ? 'crab' : 'lobster';
+    if (g.loco !== 4) throw new Error('not a body with more than one shape');
+    if (g.body === 13) return 'flat';
+    if ([6, 8, 10, 11].includes(g.body)) return s2 ? 'fusiform' : 'sturgeon';
+    return ['fusiform', 'shark', 'flat', 'angler'][s4]!;
+  };
+  // Seeds as makeGenome takes them, and unsigned 32-bit seeds as a cross gives its child (past 2^31, where `^` goes negative).
+  const SHAPE_SEEDS = [...Array.from({ length: 240 }, (_, i) => i + 1), 0x7fffffff, 0x80000000, 0x80000001, 0x80000002, 0x80000003, 0xfffffffe, 0xffffffff, 3735928559];
+
+  it('the shape is the one the current game gives the seed', () => {
+    const seen = new Set<string>();
+    // On land the six bodies with their own animal; swimming (movement 4), a plain fish, a squat one and the four that keep something.
+    const states = [...[1, 3, 4, 5, 9, 15].map((body) => ({ body, loco: 0 })), ...[0, 2, 12, 13, 6, 8, 10, 11].map((body) => ({ body, loco: 4 }))];
+    for (const state of states) {
+      for (const seed of SHAPE_SEEDS) {
+        const g = { ...base, ...state, seed };
+        const want = gameShape(g);
+        expect(bodyOf(g).torso, `body ${state.body} movement ${state.loco} seed ${seed}`).toBe(want);
+        expect(buildRecipe(g, [], every).scaffoldId.split('/')[1], `recipe: body ${state.body} movement ${state.loco} seed ${seed}`).toBe(want);
+        seen.add(`${state.body}/${want}`);
+      }
     }
+    // Every shape of every list was met: 2 + 3 + 2 + 3 + 1 + 4 on land, and 4 + 4 + 4 + 1 + 2 + 2 + 2 + 2 swimming.
+    expect(seen.size).toBe(36);
+    // A genome without a seed is drawn as the game draws it: `undefined ^ 0x9A11` is 0x9A11, an odd number.
+    expect(bodyOf({ ...base, body: 1 }).torso).toBe('crab');
+    expect(bodyOf({ ...base, body: 15 }).torso).toBe(['anemone', 'urchin', 'coral', 'cucumber'][0x9A11 % 4]);
+  });
+
+  it('a change of any gene that does not choose the animal leaves the shape as it was, and so does the lineage', () => {
+    // The genes the game's choice reads: the body, where it lives and how it moves (aquatic or not), and the seed.
+    const CHOOSING = ['seed', 'kingdom', 'body', 'habitat', 'loco', 'x', 'aq', 'af'];
+    let changed = 0;
+    for (let seed = 1; seed <= 200; seed++) {
+      const g = makeGenome(seed, 'fauna', 1) as unknown as Record<string, unknown>;
+      const shape = bodyOf(g).torso;
+      expect(buildRecipe(g, ['a', 'b'], every).scaffoldId, `seed ${seed} lineage`).toBe(buildRecipe(g, [], every).scaffoldId);
+      for (const gene of Object.keys(g)) {
+        if (CHOOSING.includes(gene)) continue;
+        const was = g[gene];
+        const other = typeof was === 'number' ? was + 1 : typeof was === 'boolean' ? !was : typeof was === 'string' ? `${was}x` : 1;
+        expect(bodyOf({ ...g, [gene]: other }).torso, `seed ${seed} gene ${gene}`).toBe(shape);
+        changed++;
+      }
+      // A gene the genome did not have (a mark the game adds later) changes nothing either.
+      expect(bodyOf({ ...g, par: 9 }).torso, `seed ${seed} gene par`).toBe(shape);
+    }
+    expect(changed).toBeGreaterThan(2000);
   });
 
   it('carries the body\'s opacity, airborne state, theme and skin, and the neutral rim', () => {
@@ -354,7 +410,7 @@ describe('buildRecipe: the animal and the routed fields', () => {
   });
 
   it('every creature-wide stream is drawn from its own name: the shifts, the phase and the head, tail and limb variants', () => {
-    // Adding the sub-shape stream (and taking the torso variant from the bulk step) moves no other stream's draw.
+    // Taking the shape from the seed (and the torso variant from the bulk step) moves no stream's draw.
     let compared = 0;
     for (let seed = 1; seed <= 200; seed++) {
       const g = makeGenome(seed, 'fauna', 1) as unknown as Record<string, unknown>;

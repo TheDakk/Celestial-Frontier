@@ -6,8 +6,8 @@ import {
 } from '../src/route';
 
 const land = { kingdom: 'fauna', loco: 0, habitat: 0, size: 2 };
-/** A fixed stream that picks shape `i` of `n`: it returns the middle of that shape's share of [0, 1). */
-const at = (i: number, n: number) => (): number => (2 * i + 1) / (2 * n);
+/** A fixed choice of shape `i` of `n`. */
+const at = (i: number, _n: number) => (): number => i;
 const first = (): number => 0;
 
 /** The plan's table, on land: body gene -> [family, shapes]. */
@@ -65,7 +65,7 @@ describe('routeBody and resolveBody', () => {
     expect(routeBody({ ...land, x: 1, habitat: 8, body: 0 }).family).toBe('quadruped');
   });
 
-  it('the shape is the stream\'s pick of the family\'s list, the stream read once', () => {
+  it('the shape is the one chosen of the family\'s list, the choice asked for once, with the length of the list', () => {
     const genomes: Record<string, number | Record<string, unknown>> = { crustacean: 1, tentacled: 3, serpent: 4, insect: 5, gelatinous: 9, radial: 15 };
     for (const [family, shapes] of Object.entries(SHAPES)) {
       const body = genomes[family] as number;
@@ -75,9 +75,9 @@ describe('routeBody and resolveBody', () => {
       for (const i of [0, shapes.length - 1]) expect(resolveBody({ ...land, loco: 4, body }, at(i, shapes.length)).torso, `fish ${body} ${i}`).toBe(shapes[i]);
     }
     for (const body of [0, 1, 2, 7, 13, 15]) {
-      let reads = 0;
-      resolveBody({ ...land, body }, () => { reads++; return 0; });
-      expect(reads, String(body)).toBe(1);
+      const asked: number[] = [];
+      resolveBody({ ...land, body }, (count) => { asked.push(count); return 0; });
+      expect(asked, String(body)).toEqual([routeBody({ ...land, body }).shapes.length]);
     }
   });
 
@@ -194,7 +194,7 @@ describe('wild genes', () => {
       genes.forEach((gene, i) => { genome[gene] = wild[(n * 7 + i * 11 + (n >> 3)) % wild.length]; });
       genome['kingdom'] = kingdoms[n % kingdoms.length];
       if (n % 5 === 0) genome['apex'] = 12;
-      const b = resolveBody(genome, () => (n % 13) / 13);
+      const b = resolveBody(genome, (count) => n % count);
       expect(['fauna', 'flora', 'fungi', 'microbe']).toContain(b.kingdom);
       expect(['small', 'medium', 'large', 'guardian']).toContain(b.tier);
       expect(families).toContain(b.family);

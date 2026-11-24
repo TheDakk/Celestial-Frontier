@@ -73,8 +73,8 @@ const TIER_GENES: Readonly<Record<SizeTier, Genome>> = { small: { size: 1 }, med
 const TIERS: readonly SizeTier[] = ['small', 'medium', 'large', 'guardian'];
 /** Every variant 0: the walk asserts the pack holds no other, so no variant can change a part id (see walk). */
 const V0 = { torso: 0, head: 0, tail: 0, limb: 0 };
-/** A stream that picks shape i of n. */
-const shapeAt = (i: number, n: number) => (): number => (2 * i + 1) / (2 * n);
+/** A fixed choice of shape i of n. */
+const shapeAt = (i: number, _n: number) => (): number => i;
 /** The genes the walk starts from: plain, slick skin (no back part), as the placeholder tests do. */
 const BASE = { head: 0, tail: 1, limbs: 1, eyes: 0, skin: 3, trait: 0, pattern: 0, color: 3, accent: 5 };
 

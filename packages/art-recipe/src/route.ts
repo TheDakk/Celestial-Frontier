@@ -2,7 +2,6 @@ import { EYE_COUNTS, LIMB_COUNTS } from '@cf/art-format';
 import type { SizeTier, ThemeName } from '@cf/art-format';
 import { EYELESS_HEAD, GENE_LENGTHS, isGuardianScale, marked, wrap } from './resolve';
 import { SIZE_TIER_BY_GENE, stateOf, themeOf } from './states';
-import { pick } from './streams';
 
 /** The animal the original draws for a genome, and only the genes that animal reads (buildRecipe draws it). */
 export interface Body {
@@ -26,7 +25,7 @@ export interface Body {
 /** Body genes whose animal is their own, on land or in water (the original's `_procFamily`, its first six tests). */
 export const OWN_FAMILY_BY_BODY: Readonly<Record<number, string>> = Object.freeze({ 1: 'crustacean', 3: 'tentacled', 4: 'serpent', 5: 'insect', 9: 'gelatinous', 15: 'radial' });
 
-/** The shapes of each own-animal family, in the design's order; the `sub-shape` stream picks one. */
+/** The shapes of each own-animal family, in the design's order; the seed picks one (seedShape). */
 export const SHAPES: Readonly<Record<string, readonly string[]>> = Object.freeze({
   crustacean: Object.freeze(['crab', 'lobster']),
   tentacled: Object.freeze(['octopus', 'squid', 'cuttlefish']),
@@ -76,11 +75,27 @@ export function routeBody(genome: Readonly<Record<string, unknown>>): { family: 
   return { family: 'quadruped', shapes: [TORSO_BY_BODY[body]!], aquatic, airborne };
 }
 
+/** What the game's portrait folds into a creature's seed before it draws the body (`hdBeastBare(G, (g.seed ^ 0x9A11) >>> 0)`). */
+const PORTRAIT_SALT = 0x9A11;
+
 /**
- * The body a genome draws as, with the genes its animal ignores dropped. The shape is the `shapeStream`'s pick of the
- * family's shapes, the stream read once for every fauna genome (a four-legged body has one shape) and never outside fauna.
+ * The game's choice among `count` shapes for a genome (its `_procFamily`), from the seed alone, so no other gene and
+ * no lineage can change the body: the portrait's seed, `(seed ^ 0x9A11) >>> 0`, and of that the remainder by `count`.
+ * Of a pair the game takes the first on an odd seed (`s2 ? 'crab' : 'lobster'`), so a pair is read the other way round.
+ * A seed that is not a number counts as the game's `^` counts it, as 0; permanent, part of renderer version 1.
  */
-export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStream: () => number): Body {
+export function seedShape(genome: Readonly<Record<string, unknown>>): (count: number) => number {
+  const own = genome['seed'];
+  const seed = ((typeof own === 'number' ? own : 0) ^ PORTRAIT_SALT) >>> 0;
+  return (count) => (count === 2 ? 1 - (seed % 2) : seed % count);
+}
+
+/**
+ * The body a genome draws as, with the genes its animal ignores dropped. The shape is the one `shapeAt` picks of the
+ * family's shapes (seedShape in the game), asked once for every fauna genome (a four-legged body has one shape) and
+ * never outside fauna.
+ */
+export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeAt: (count: number) => number): Body {
   const g = (name: string, length: number): number => wrap(genome[name], length);
   const L = GENE_LENGTHS;
   const guardian = isGuardianScale(genome);
@@ -102,7 +117,7 @@ export function resolveBody(genome: Readonly<Record<string, unknown>>, shapeStre
   }
 
   const { family, shapes, aquatic, airborne } = routeBody(genome);
-  const shape = shapes[pick(shapeStream, shapes.length)]!;
+  const shape = shapes[shapeAt(shapes.length)]!;
   const body = g('body', L.body);
   const headGene = g('head', L.head);
   const tailGene = g('tail', L.tail);
