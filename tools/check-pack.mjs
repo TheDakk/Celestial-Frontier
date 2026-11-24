@@ -587,10 +587,94 @@ function drawnExtent(frame) {
   return [x0 - frame.anchor[0], y0 - frame.anchor[1], x1 - frame.anchor[0], y1 - frame.anchor[1]];
 }
 
+// ---- A named species on a scaffold of its own (kind `<key>`): what its pack is held to. ----
+
+/**
+ * The poses a template needs where it is not the seven of REQUIRED_POSES: a gastropod never winds up or strikes, a
+ * plant is disturbed, harvested and grows. The one table of pose lists by template in the checker.
+ */
+const POSES_BY_TEMPLATE = Object.freeze({
+  gastropod: Object.freeze(['rest', 'approach', 'recover', 'hit', 'faint']),
+  plant: Object.freeze(['rest', 'disturb', 'harvest', 'grow']),
+});
+/** The poses a scaffold of this template needs. */
+const posesOfTemplate = (template) => (Object.hasOwn(POSES_BY_TEMPLATE, template) ? POSES_BY_TEMPLATE[template] : REQUIRED_POSES);
+
+/** The named species drawn on a scaffold (`<family>/<key>/<tier>`), or undefined for a generated scaffold. */
+function speciesOfScaffold(catalogue, scaffold) {
+  const s = catalogue.species.get(scaffold.id.split('/')[1]);
+  return s !== undefined && s.family === scaffold.family && s.tier === scaffold.tier ? s : undefined;
+}
+
+/** The poses a scaffold lacks, as one problem line, or none: a species scaffold is held to its template's poses, any other to the seven. */
+function missingPoses(catalogue, scaffold) {
+  const species = speciesOfScaffold(catalogue, scaffold);
+  const needed = species === undefined ? REQUIRED_POSES : posesOfTemplate(species.template);
+  const missing = needed.filter((p) => !Object.hasOwn(scaffold.poses, p));
+  if (missing.length === 0) return [];
+  const why = species === undefined ? '' : ` (species ${species.key}, template ${species.template}, needs ${needed.join(', ')})`;
+  return [`scaffold ${scaffold.id}: missing pose ${missing.join(', ')}${why}`];
+}
+
+/**
+ * The attach points a species' own torso or head needs: those the parts planSpeciesParts asks for hang from. Torso: `head`
+ * when it has one, `tail` when it has one, its legs, `wing` once the pack holds a wing of its own, `back` once it holds a
+ * back part or a body feature of its own, and with no head the eyes (`eye0` and up). Head: its eyes, and `feature` once
+ * the pack holds a head feature of its own; the head of a species with no head is asked for by nothing and needs none.
+ */
+function speciesPoints(catalogue, species, part) {
+  const holds = (slot) => catalogue.parts.has(`${species.family}/${slot}/${species.key}/${species.tier}/v0`);
+  const eyes = HEAD_POINTS.slice(0, species.eyes);
+  if (part.slot === 'head') return species.head ? [...eyes, ...(holds('headFeature') ? ['feature'] : [])] : [];
+  if (part.slot !== 'torso') return [];
+  return [
+    ...(species.head ? ['head'] : []),
+    ...(species.tail ? ['tail'] : []),
+    ...(holds('farWings') || holds('nearWings') ? ['wing'] : []),
+    ...(holds('back') || holds('bodyFeature') ? ['back'] : []),
+    ...speciesLegPoints(species.legs),
+    ...(species.head ? [] : eyes),
+  ];
+}
+
+/** Whether a wing or body feature is a species' own: kind `<key>` of a species of its family and tier, which asks for it (planSpeciesParts). */
+const isSpeciesOwnPart = (catalogue, part) => {
+  const s = catalogue.species.get(part.kind);
+  return (part.slot === 'farWings' || part.slot === 'nearWings' || part.slot === 'bodyFeature') && s !== undefined && s.family === part.family && s.tier === part.tier;
+};
+
+/** A head or head feature named for a species with no head (`head=0`): nothing asks for it. One line per such part. */
+function headlessParts(catalogue) {
+  const lines = [];
+  for (const part of catalogue.parts.values()) {
+    if (part.slot !== 'head' && part.slot !== 'headFeature') continue;
+    const s = catalogue.species.get(part.kind);
+    if (s === undefined || s.family !== part.family || s.tier !== part.tier || s.head) continue;
+    lines.push(`part ${part.id}: no creature asks for it: species ${s.key} has no head (head=0)`);
+  }
+  return lines;
+}
+
+/**
+ * The sizes a family needs a stand-in (fallback) at. A family that holds only species (it has a species, and no scaffold
+ * but a species') needs one at each size it uses: the sizes of its species, its scaffolds and its parts
+ * (a part its species share, a leg or an eye, makes it no generated family). `species` names the species of that size.
+ * Any other family needs one at every size the pack has parts or scaffolds for (`packTiers`), with `species` null.
+ */
+function standInTiers(catalogue, family, packTiers) {
+  const species = [...catalogue.species.values()].filter((s) => s.family === family);
+  const scaffolds = [...catalogue.scaffolds.values()].filter((s) => s.family === family);
+  if (species.length === 0 || scaffolds.some((s) => speciesOfScaffold(catalogue, s) === undefined)) return packTiers.map((tier) => ({ tier, species: null }));
+  const used = new Set([...species, ...scaffolds, ...[...catalogue.parts.values()].filter((p) => p.family === family)].map((x) => x.tier));
+  return packTiers.filter((tier) => used.has(tier)).map((tier) => ({ tier, species: species.filter((s) => s.tier === tier).map((s) => s.key) }));
+}
+
+// ---- End of the named species block. ----
+
 /**
  * Fallback problems: a fallback whose frame, anchored at the canvas centre or at the origin of a scaffold of its family
  * and tier (where compose draws it), does not fit its tier's canvas with a pixel to spare for the outline; and each
- * family present in the pack that has no fallback at a tier the pack has parts or scaffolds for.
+ * family present in the pack that has no fallback at a tier it needs one at (standInTiers).
  */
 function fallbackProblems(catalogue) {
   const problems = [];
@@ -610,7 +694,10 @@ function fallbackProblems(catalogue) {
   const tiers = Object.keys(TIER_SIZE).filter((t) => things.some((x) => x.tier === t));
   const families = [...new Set([...things.map((x) => x.family), ...[...catalogue.fallbacks.keys()].map((k) => k.split('/')[0])])];
   for (const family of families) {
-    for (const tier of tiers) if (!catalogue.fallbacks.has(fallbackKey(family, tier))) problems.push(`family ${family} has no fallback at ${tier}`);
+    for (const { tier, species } of standInTiers(catalogue, family, tiers)) {
+      if (catalogue.fallbacks.has(fallbackKey(family, tier))) continue;
+      problems.push(`family ${family} has no fallback at ${tier}${species === null ? '' : ` (it holds only species, and needs one stand-in at each size it uses; at this one: ${species.join(', ') || 'no species, only parts'})`}`);
+    }
   }
   return problems;
 }
@@ -770,11 +857,11 @@ function structureProblems(catalogue) {
     // A head needs the eye points its family hangs from a head (EYES_BY_FAMILY; all eight for a family not listed there),
     // and the eyeless head none: it carries two pits on eye0 and eye1 where its family has eye points.
     // Only the plain leg and eye points are required: they are the fallback.
-    // A species torso and head need only the points the species uses: head, tail when it has one, its legs; its eyes.
+    // A species torso and head need only the points the species uses (speciesPoints).
     const species = isSpeciesPart(catalogue, part) ? catalogue.species.get(part.kind) : undefined;
     const feature = part.slot === 'head' && featured.has(`${part.family}/${part.tier}/${part.kind}`) ? ['feature'] : [];
     const required = species !== undefined
-      ? (part.slot === 'torso' ? ['head', ...(species.tail ? ['tail'] : []), ...speciesLegPoints(species.legs)] : part.slot === 'head' ? HEAD_POINTS.slice(0, species.eyes) : [])
+      ? speciesPoints(catalogue, species, part)
       : part.slot === 'torso' && !fallbackParts.has(part.id) ? torsoPoints(part) : part.slot === 'head' ? [...headEyePoints(part), ...feature] : [];
     if (required.length === 0) continue;
     for (const name of frames) {
@@ -810,8 +897,7 @@ function structureProblems(catalogue) {
     problems.push(`palette: no ramp ${BONE_RAMP}: ${boned.length === 1 ? '1 part draws' : `${boned.length} parts draw`} bone values (${BONE_CHARS}), which would show black, e.g. part ${boned[0].id}; add 'ramp ${BONE_RAMP} <four colour numbers, dark to light>'`);
   }
   for (const scaffold of catalogue.scaffolds.values()) {
-    const missing = REQUIRED_POSES.filter((p) => !Object.hasOwn(scaffold.poses, p));
-    if (missing.length > 0) problems.push(`scaffold ${scaffold.id}: missing pose ${missing.join(', ')}`);
+    problems.push(...missingPoses(catalogue, scaffold));
     for (const [poseId, pose] of Object.entries(scaffold.poses)) {
       for (const e of pose.entries) {
         // Only an eyes entry carries an eye count (the parser's rule).
@@ -970,13 +1056,14 @@ export function checkPack(text, options = {}) {
     if (!named) unreachable.push(`part ${part.id}: no creature asks for a leg named '${part.kind}' (leg, fore, hind, mid, or one of those with -<torso type> for a torso type that has a scaffold at this tier)`);
   }
   // A wing, sails, body feature or flipper is asked for by the kind planBodyParts names (NEW_KINDS); one named for a torso
-  // type or fish shape (`<kind>-<type>`) only where that type has a scaffold at its tier.
+  // type or fish shape (`<kind>-<type>`) only where that type has a scaffold at its tier. A species' own is asked for by the species.
   for (const part of catalogue.parts.values()) {
-    if (!isNewPart(part)) continue;
+    if (!isNewPart(part) || isSpeciesOwnPart(catalogue, part)) continue;
     const type = part.kind.includes('-') ? part.kind.slice(part.kind.indexOf('-') + 1) : null;
     const named = NEW_KINDS.has(`${part.family}/${part.slot}/${part.kind}`) && (type === null || catalogue.scaffolds.has(`${part.family}/${type}/${part.tier}`));
     if (!named) unreachable.push(`part ${part.id}: no creature asks for a ${part.slot} part named '${part.kind}'`);
   }
+  unreachable.push(...headlessParts(catalogue));
 
   // A species is drawn on scaffold <family>/<key>/<tier>; without it the species is never drawn.
   const speciesByScaffold = new Map();
