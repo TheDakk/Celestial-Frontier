@@ -280,8 +280,8 @@ describe('@cf/audio — bounded sting facade', () => {
       'AUDIO_ROUTE_MANIFEST_AUDIT',
       'AUDIO_STATIC_PURITY_RULES', 'AUDIO_TAXONOMY',
       'AUDIO_VOICE_MIX_INTENT_SCHEMA_V1',
-      'COMBAT_CUE_PARTICIPANTS_SCHEMA_V1', 'COMBAT_CUE_PLAN_SCHEMA_V1',
-      'applySfxGain',
+      'COMBAT_CUE_PARTICIPANTS_SCHEMA_V1', 'COMBAT_CUE_PLAN_SCHEMA_V1', 'FEEDBACK_TONES',
+      'applySfxGain', 'arrivalChord',
       'assertPinnedAudioRouteInventory', 'audioAssetRightsManifestDigest',
       'audioCatalogueRouteKey',
       'audioRouteInventoryDigest', 'audioRouteManifestRow',
@@ -297,7 +297,7 @@ describe('@cf/audio — bounded sting facade', () => {
       'distantEcologyAudioEvent', 'initAudio', 'inspectAudioStaticPurity',
       'isAudioKingdom', 'isCombatCueParticipantsV1', 'isCombatCuePlanV1', 'playRaritySting',
       'playSurveyPing', 'playWhoosh', 'prepareStingAudioForGesture',
-      'projectCombatCueParticipantsV1', 'serializeAudioSignature', 'serializeAudioSoundOutputWitness',
+      'projectCombatCueParticipantsV1', 'scheduleTone', 'serializeAudioSignature', 'serializeAudioSoundOutputWitness',
     ]);
     const before = {
       oscillators: log.oscillatorStarts,

@@ -174,6 +174,17 @@ export type {
   AudioVoiceReservation,
   AudioVoiceStartResult,
 } from './runtime.js';
+export { FEEDBACK_TONES, arrivalChord, scheduleTone } from './feedback-tones.js';
+export type {
+  FeedbackTone,
+  Tone,
+  ToneContextLike,
+  ToneGainLike,
+  ToneMaster,
+  ToneNote,
+  ToneOscillatorLike,
+  ToneParamLike,
+} from './feedback-tones.js';
 export {
   AUDIO_ASSET_RIGHTS_MANIFEST,
   AUDIO_ASSET_RIGHTS_MANIFEST_AUDIT,
