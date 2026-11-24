@@ -405,7 +405,9 @@ describe('a system in solid pixels', () => {
     // The same place from closer: 48 units of band are 480 pixels, wider than the 360 of the view. Nothing fills it.
     const inside = drawnAt({ x: 116, y: 0, z: 20 });
     expect(inside.middle).toBe(0);
-    // Both edges cross the view (it is 640 wide) as lines a pixel thick: under a hundredth of the picture.
+    // Both edges cross the view (it is 640 wide, 64 units at this zoom: from 84 to 148) from top to bottom as lines a
+    // pixel thick: at least a pixel a row each, and under a hundredth of the picture.
+    expect(inside.filled).toBeGreaterThanOrEqual(2 * 360);
     expect(inside.filled).toBeLessThan(640 * 360 / 100);
     // On the inner edge at that zoom: the edge crosses the view as a thin line, and nothing else is drawn.
     const edge = drawnAt({ x: 92, y: 0, z: 20 });
