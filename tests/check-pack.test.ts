@@ -1977,10 +1977,19 @@ describe('check-pack coverage: what the generator asks for', () => {
       const skinless = run('--require-coverage', '--coverage-seeds=18396-18396');
       expect(skinless.stdout).toContain('coverage: gap skin:quadruped/torso/sturdy/small/v0:rest (x1)');
       expect([skinless.status, skinless.stderr]).toEqual([1, 'check-pack: coverage required: 1 of 1 generated creatures cannot be drawn in full\n']);
+      const usage = 'usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]\n';
+      // A seed is 32 bits: a greater one would be walked as another seed under its own name. One range is walked: a
+      // second is not dropped in silence.
+      const wide = run('--coverage-seeds=4294967296-4294967296');
+      expect([wide.status, wide.stdout, wide.stderr]).toEqual([2, '', `check-pack: --coverage-seeds=4294967296-4294967296 names a seed above 4294967295\n${usage}`]);
+      const twice = run('--coverage-seeds=1-2', '--coverage-seeds=3-4');
+      expect([twice.status, twice.stdout, twice.stderr]).toEqual([2, '', `check-pack: --coverage-seeds is given twice\n${usage}`]);
+      const top = run('--coverage-seeds=4294967295-4294967295');
+      expect(top.stdout).toContain('coverage: seeds 4294967295 to 4294967295 as the generator makes them');
+      expect(top.status).toBe(0);
       const unknown = run('--require-covrage');
       expect(unknown.status).toBe(2);
       // A range that runs backwards names no seed: a usage error, never a requirement met by nothing.
-      const usage = 'usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]\n';
       for (const flags of [['--coverage-seeds=9-3'], ['--require-coverage', '--coverage-seeds=9-3']]) {
         const reversed = run(...flags);
         expect([reversed.status, reversed.stdout, reversed.stderr], flags.join(' ')).toEqual([2, '', `check-pack: --coverage-seeds=9-3 names no seed: the first is after the last\n${usage}`]);

@@ -1330,8 +1330,13 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.error(usage);
     process.exit(2);
   }
-  if (range && Number(range[1]) > Number(range[2])) {
-    console.error(`check-pack: ${range[0]} names no seed: the first is after the last\n${usage}`);
+  // One range of 32-bit seeds, first to last: anything else is refused, never walked as something it does not say.
+  const refused = flags.filter((f) => f.startsWith('--coverage-seeds=')).length > 1 ? '--coverage-seeds is given twice'
+    : !range ? null
+      : Number(range[1]) > Number(range[2]) ? `${range[0]} names no seed: the first is after the last`
+        : Number(range[2]) > 0xffffffff ? `${range[0]} names a seed above ${0xffffffff}` : null;
+  if (refused !== null) {
+    console.error(`check-pack: ${refused}\n${usage}`);
     process.exit(2);
   }
   let text;
