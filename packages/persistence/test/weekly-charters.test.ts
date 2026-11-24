@@ -84,11 +84,41 @@ describe('weekly Charters — the expedition keeps its own clock', () => {
     const fresh = state(); expect(projectWeeklyCharterBoardV1(fresh, at).open).toBe(false);
     expect(stageWeeklyCharterAcceptV1({ draft: fresh, id, activePlayMs: at })).toMatchObject({ kind: 'refused' });
     const full = veteran(); full.chacc = ['st-mercury', 'st-mars', 'st-giants'];
-    expect(stageWeeklyCharterAcceptV1({ draft: full, id, activePlayMs: at })).toMatchObject({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+    expect(stageWeeklyCharterAcceptV1({ draft: full, id, activePlayMs: at })).toMatchObject({ kind: 'refused', reason: 'Three charters is a full slate — see one through first.' }); // LEGACY celestial-frontier.html 24886
     const quiet = veteran(); quiet.chWeek = 3; const before = structuredClone(quiet);
     expect(stageWeeklyCharterEventV1({ draft: quiet, event: { kind: 'scout-set' }, activePlayMs: at })).toMatchObject({ kind: 'ready', facts: { changed: false } }); expect(quiet).toEqual(before);
     // SOURCE tests/starter-charters.test.ts:642 reads the same words out of the drawn board.
     expect(formatActivePlayRemainingV1(projectWeeklyCharterBoardV1(veteran(), at).remainingActiveMs)).toBe('4h 0m');
+  });
+  it('LEGACY 24755-24759: the Charters the legacy pool also holds carry its titles, words, counts and Stardust', () => {
+    const read = (id: string) => { const d = WEEKLY_CHARTER_DEFINITIONS_V1.find((x) => x.id === id)!; return [d.event, d.count, d.title, d.description, d.stardust]; };
+    expect(read('wk-land')).toEqual(['landfall', 3, 'Boots on three worlds', 'Make planetfall on 3 worlds you have never stood on.', 20]);
+    expect(read('wk-mine')).toEqual(['mined', 3, 'Deep veins', 'Mine deposits on 3 dead worlds you have never mined.', 25]);
+    expect(read('wk-scan')).toEqual(['bioscan', 3, 'Field naturalist', 'Discover life on 3 new worlds.', 25]);
+    expect(read('wk-conq')).toEqual(['conquest', 1, 'Raise a flag', 'Conquer a world.', 30]);
+  });
+  it('LEGACY 24869: completion adds the Stardust paid to the Stardust ever earned', () => {
+    const cycle = [...Array(40).keys()].find((c) => weeklyCharterSlateV1(c).includes('wk-conq'))!, at = cycle * WEEK + 5;
+    const s = veteran(); s.chWeek = cycle; s.essence = 7; s.stats = { essenceEarned: 100, charters: 1 };
+    expect(stageWeeklyCharterAcceptV1({ draft: s, id: 'wk-conq', activePlayMs: at }).kind).toBe('ready');
+    expect(s.stats.essenceEarned).toBe(100); // accepting earns nothing
+    expect(stageWeeklyCharterEventV1({ draft: s, event: { kind: 'conquest' }, activePlayMs: at + 1 })).toMatchObject({ kind: 'ready', facts: { completions: [{ id: 'wk-conq', stardust: 30 }] } });
+    expect([s.essence, s.stats.essenceEarned, s.stats.charters]).toEqual([37, 130, 2]);
+    const none = veteran(); none.chWeek = cycle; none.stats = {};
+    stageWeeklyCharterAcceptV1({ draft: none, id: 'wk-conq', activePlayMs: at }); stageWeeklyCharterEventV1({ draft: none, event: { kind: 'conquest' }, activePlayMs: at + 1 });
+    expect(none.stats.essenceEarned).toBe(30); // LEGACY: (stats.essenceEarned||0)+c.sd
+  });
+  it('LEGACY 24756: Deep veins counts only a world mined for the first time, when the mined event says which it was', () => {
+    const cycle = [...Array(40).keys()].find((c) => weeklyCharterSlateV1(c).includes('wk-mine'))!, at = cycle * WEEK + 5;
+    const s = veteran(); s.chWeek = cycle;
+    stageWeeklyCharterAcceptV1({ draft: s, id: 'wk-mine', activePlayMs: at });
+    stageWeeklyCharterEventV1({ draft: s, event: { kind: 'mined', first: false }, activePlayMs: at + 1 });
+    expect(s.chProg['wk-mine']).toBe(0);
+    stageWeeklyCharterEventV1({ draft: s, event: { kind: 'mined', first: true }, activePlayMs: at + 2 });
+    expect(s.chProg['wk-mine']).toBe(1);
+  });
+  it('the board still turns every four hours of active play (Dakk\'s standing decision), not by the calendar week of LEGACY 24771', () => {
+    expect(WEEKLY_CHARTER_CYCLE_ACTIVE_MS).toBe(4 * 60 * 60 * 1000);
   });
   it('the time left on the board is told in hours and minutes of play, never less than a minute', () => {
     // SOURCE apps/game/src/weekly-charters.ts:5-8

@@ -8,7 +8,7 @@
    snapshot is in a later cycle rolls the board forward once (the active clock only grows, so a roll can never go backward).
 
    The slate for cycle k is deterministic (the same three Charters for every explorer in cycle k; no reroll exists). A weekly Charter
-   counts only deeds done AFTER it is accepted; completion pays Stardust and one honoured Charter exactly once per cycle. Weekly and
+   counts only deeds done AFTER it is accepted; completion pays Stardust (counted in the Stardust ever earned) and one honoured Charter exactly once per cycle. Weekly and
    starter Charters share the three-slot cap. The board opens when the five trades are learned. Pure: no Date.now, no Math.random. */
 import { weeklyCharterRankV1 } from '@cf/domain-progression';
 import type { SaveStateV2 } from './import-v2.js';
@@ -28,13 +28,19 @@ export interface WeeklyCharterDefinitionV1 {
 /** The live weekly pool: every definition has a v2 event owner. Arc 6 owns conquest;
  * species, feeding and breeding join when their owners report weekly progress. */
 export const WEEKLY_CHARTER_DEFINITIONS_V1: readonly WeeklyCharterDefinitionV1[] = Object.freeze([
-  Object.freeze({ id: 'wk-land', event: 'landfall', count: 3, title: 'Boots on new ground', description: 'Make planetfall on 3 worlds you have never landed on.', stardust: 20 }),
-  Object.freeze({ id: 'wk-mine', event: 'mined', count: 3, title: 'Deep veins', description: 'Mine deposits 3 times.', stardust: 20 }),
-  Object.freeze({ id: 'wk-scan', event: 'bioscan', count: 2, title: 'Field naturalist', description: 'Discover life on 2 worlds.', stardust: 25 }),
+  Object.freeze({ id: 'wk-land', event: 'landfall', count: 3, title: 'Boots on three worlds', description: 'Make planetfall on 3 worlds you have never stood on.', stardust: 20 }),
+  Object.freeze({ id: 'wk-mine', event: 'mined', count: 3, title: 'Deep veins', description: 'Mine deposits on 3 dead worlds you have never mined.', stardust: 25 }),
+  Object.freeze({ id: 'wk-scan', event: 'bioscan', count: 3, title: 'Field naturalist', description: 'Discover life on 3 new worlds.', stardust: 25 }),
   Object.freeze({ id: 'wk-craft', event: 'crafted', count: 2, title: 'Workshop hours', description: 'Fabricate 2 items at the Shipyard.', stardust: 20 }),
-  Object.freeze({ id: 'wk-conq', event: 'conquest', count: 1, title: 'Claim new ground', description: 'Conquer a world after accepting this Charter.', stardust: 30 }),
+  Object.freeze({ id: 'wk-conq', event: 'conquest', count: 1, title: 'Raise a flag', description: 'Conquer a world.', stardust: 30 }),
 ] as const);
 const BY_ID = new Map(WEEKLY_CHARTER_DEFINITIONS_V1.map((d) => [d.id, d]));
+/** The deed an event reports to the weekly board. `first`: for a mined event, whether that world had never been mined. */
+export type WeeklyCharterEventV1 = Readonly<{ kind: string; first?: boolean }>;
+/** Whether an event counts toward a Charter: its kind, and for Deep veins a world not mined before (an event that does
+ *  not say counts). */
+const counts = (definition: WeeklyCharterDefinitionV1 | undefined, event: WeeklyCharterEventV1): definition is WeeklyCharterDefinitionV1 =>
+  definition !== undefined && definition.event === event.kind && !(definition.id === 'wk-mine' && event.first === false);
 const isWeeklyId = (id: string): boolean => id.startsWith('wk-');
 
 export function weeklyCharterCycleV1(activePlayMs: number): number {
@@ -105,7 +111,7 @@ export function stageWeeklyCharterAcceptV1(input: Readonly<{ draft: SaveStateV2;
     if (!board.open) return Object.freeze({ kind: 'refused', reason: 'Learn the five trades to open the weekly board.' });
     if (!row) return Object.freeze({ kind: 'refused', reason: 'that Charter is not on this week’s board' });
     if (row.status !== 'available') return Object.freeze({ kind: 'refused', reason: row.status === 'accepted' ? 'already accepted' : 'already completed this week' });
-    if (input.draft.chacc.length >= WEEKLY_CHARTER_CAP_V1) return Object.freeze({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+    if (input.draft.chacc.length >= WEEKLY_CHARTER_CAP_V1) return Object.freeze({ kind: 'refused', reason: 'Three charters is a full slate — see one through first.' });
     input.draft.chacc = [...input.draft.chacc, row.definition.id];
     input.draft.chProg = { ...input.draft.chProg, [row.definition.id]: 0 }; // counts only deeds AFTER acceptance
     return Object.freeze({ kind: 'ready', facts: Object.freeze({ changed: true, rolled: roll.rolled, cycle: roll.cycle, expired: roll.expired, acceptedId: row.definition.id, progressIds: Object.freeze([]), completions: Object.freeze([]) }) });
@@ -113,25 +119,25 @@ export function stageWeeklyCharterAcceptV1(input: Readonly<{ draft: SaveStateV2;
 }
 
 /** Count one game event for every accepted weekly Charter it matches (mutates the draft); completion pays once. */
-export function stageWeeklyCharterEventV1(input: Readonly<{ draft: SaveStateV2; event: Readonly<{ kind: string }>; activePlayMs: number }>): WeeklyCharterStageOutcomeV1 {
+export function stageWeeklyCharterEventV1(input: Readonly<{ draft: SaveStateV2; event: WeeklyCharterEventV1; activePlayMs: number }>): WeeklyCharterStageOutcomeV1 {
   try {
     const roll = rollWeeklyCharterCycleV1(input.draft, input.activePlayMs);
     const progressIds: WeeklyCharterIdV1[] = [], completions: { id: WeeklyCharterIdV1; stardust: number }[] = [];
-    const matching = input.draft.chacc.filter(id => BY_ID.get(id as WeeklyCharterIdV1)?.event === input.event.kind);
+    const matching = input.draft.chacc.filter(id => counts(BY_ID.get(id as WeeklyCharterIdV1), input.event));
     if (new Set(matching).size !== matching.length) throw new Error('weekly Charter acceptance is duplicated');
     for (const id of matching) {
       const progress = input.draft.chProg[id] ?? 0, definition = BY_ID.get(id as WeeklyCharterIdV1)!;
       if (!Number.isSafeInteger(progress) || progress < 0 || progress >= definition.count) throw new Error('weekly Charter progress is stale or malformed');
     }
     for (const id of [...input.draft.chacc]) {
-      const definition = BY_ID.get(id as WeeklyCharterIdV1); if (!definition || definition.event !== input.event.kind) continue;
+      const definition = BY_ID.get(id as WeeklyCharterIdV1); if (!counts(definition, input.event)) continue;
       const next = Math.min(definition.count, (input.draft.chProg[id] ?? 0) + 1);
       input.draft.chProg = { ...input.draft.chProg, [id]: next }; progressIds.push(definition.id);
       if (next >= definition.count) {
         input.draft.chacc = input.draft.chacc.filter((a) => a !== id);
         if (!Number.isSafeInteger(input.draft.essence) || input.draft.essence > Number.MAX_SAFE_INTEGER - definition.stardust) throw new RangeError('Stardust would overflow');
         input.draft.essence += definition.stardust;
-        input.draft.stats = { ...input.draft.stats, charters: (input.draft.stats.charters ?? 0) + 1 };
+        input.draft.stats = { ...input.draft.stats, essenceEarned: (input.draft.stats.essenceEarned ?? 0) + definition.stardust, charters: (input.draft.stats.charters ?? 0) + 1 };
         completions.push({ id: definition.id, stardust: definition.stardust });
       }
     }
