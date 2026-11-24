@@ -95,7 +95,14 @@ describe('the world roster built from injected sources', () => {
       expect(fallback.roster.biomeProfileSchema).toBe(BIOME_PROFILE_AUTHORITY_V1.schema);
       expect(fallback.roster.biomeProfileDigest).toBe(BIOME_PROFILE_AUTHORITY_V1.digest);
       expect(fallback.roster.biomeProfileKey).toBe('temperate');
-      expect(fallback.roster.biomeProfile).toBe(BIOME_PROFILE_AUTHORITY_V1.profiles.temperate);
+      // A roster carries only what merged code reads: the profile's schema, digest and key (the sound of a world,
+      // packages/audio/src/ecology.ts) and the roster fingerprint (capture, packages/domain/acquisition/src/snapshot.ts).
+      // The legacy game has neither a whole-profile field nor an environment fingerprint, and nothing reads them.
+      expect('biomeProfile' in fallback.roster).toBe(false);
+      expect('environmentFingerprint' in fallback.roster).toBe(false);
+      expect([fallback.roster.biomeProfileKey, fallback.roster.biomeProfileSchema, fallback.roster.biomeProfileDigest])
+        .toEqual(['temperate', BIOME_PROFILE_AUTHORITY_V1.schema, BIOME_PROFILE_AUTHORITY_V1.digest]);
+      expect(fallback.roster.fullRosterFingerprint).toMatch(/^cwr1:/);
     }
 
     reject({ climateBand: () => 'humid' }, /unsupported climate band/u);

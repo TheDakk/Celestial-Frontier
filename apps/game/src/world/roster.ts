@@ -11,7 +11,6 @@ import {
   BIOME_PROFILE_KEYS_V1,
   type BiomeProfileDigestV1,
   type BiomeProfileKeyV1,
-  type BiomeProfileV1,
 } from '@cf/domain-biome-profile';
 import { _earthNamePass } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
@@ -77,8 +76,6 @@ interface WorldRosterSnapshot {
   readonly biomeProfileSchema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
   readonly biomeProfileDigest: BiomeProfileDigestV1;
   readonly biomeProfileKey: BiomeProfileKeyV1;
-  readonly biomeProfile: BiomeProfileV1;
-  readonly environmentFingerprint: string;
   /** Binds world, epoch, order, and every detached full-row field. */
   readonly fullRosterFingerprint: string;
   readonly view: WorldRosterView<Readonly<Record<string, unknown>>>;
@@ -240,7 +237,6 @@ function canonicalBiomePresentation(
   schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
   digest: BiomeProfileDigestV1;
   key: BiomeProfileKeyV1;
-  profile: BiomeProfileV1;
 }> {
   const type = canonicalPlanetType(planet.type);
   const selected = classifier(planet, band);
@@ -268,26 +264,7 @@ function canonicalBiomePresentation(
     schema: BIOME_PROFILE_AUTHORITY_V1.schema,
     digest: BIOME_PROFILE_AUTHORITY_V1.digest,
     key,
-    profile: BIOME_PROFILE_AUTHORITY_V1.profiles[key],
   });
-}
-
-function environmentFingerprint(
-  worldKey: CF1WorldKey,
-  ecologyEpoch: number,
-  biosphereKey: CanonicalBiosphereKey,
-  band: CanonicalClimateBand,
-  biome: Readonly<{
-    schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
-    digest: BiomeProfileDigestV1;
-    key: BiomeProfileKeyV1;
-  }>,
-): string {
-  const canonical = JSON.stringify([
-    worldKey, ecologyEpoch, biosphereKey, band,
-    biome.schema, biome.digest, biome.key,
-  ]);
-  return `cwe1:${canonical.length}:${fnv1a32(canonical).toString(16).padStart(8, '0')}`;
 }
 
 function fullRosterFingerprint(
@@ -404,14 +381,6 @@ function buildRoster(
         biomeProfileSchema: biome.schema,
         biomeProfileDigest: biome.digest,
         biomeProfileKey: biome.key,
-        biomeProfile: biome.profile,
-        environmentFingerprint: environmentFingerprint(
-          address.key,
-          ecologyEpoch,
-          biosphereKey,
-          band,
-          biome,
-        ),
         fullRosterFingerprint: fullRosterFingerprint(address.key, ecologyEpoch, frozenRows),
         view: worldRosterView(frozenRows),
       }),
