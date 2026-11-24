@@ -44,9 +44,20 @@ interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: 
 interface Visitor { speed: number; off: number; ang: number; b: number }
 const rawOf = (seed: number): { comets?: readonly Comet[]; visitor?: Visitor } => systemFor(seed) as { comets?: readonly Comet[]; visitor?: Visitor };
 
+/** How many pixels of a picture lie in the disc of radius r about (x, y), counted a row at a time. */
+function discPixels(grid: { w: number; h: number }, x: number, y: number, r: number): number {
+  let count = 0;
+  for (let py = Math.max(0, y - r); py <= Math.min(grid.h - 1, y + r); py++) {
+    const half = Math.floor(Math.sqrt(r * r - (py - y) * (py - y)));
+    count += Math.max(0, Math.min(grid.w - 1, x + half) - Math.max(0, x - half) + 1);
+  }
+  return count;
+}
+
 /** The habitable zone: a faint green band between its two radii, shown with the star charts. With the view's `solid`
- *  the band is one whole colour, a green hardly lighter than space; once it is wider than the view is across it is
- *  its two edges alone, so that from close by it never fills the screen. */
+ *  the band is one whole colour, a green hardly lighter than space; once it is wider than the view is across, or
+ *  would lie over more than half of the picture, it is its two edges alone, so that from close by it never fills the
+ *  screen. */
 export function zoneItems(v: PassView): SpaceItem[] {
   if (v.nav.mode !== 'system' || !v.charts) return [];
   const hz = systemScene(v.nav.star.seed).hz as [number, number] | null;
@@ -54,7 +65,8 @@ export function zoneItems(v: PassView): SpaceItem[] {
   if (v.solid === true) {
     const at = place(v.cam, v.grid, 0, 0);
     const [inner, outer] = [Math.round(hz[0] * v.cam.z), Math.round(hz[1] * v.cam.z)];
-    if (outer - inner > Math.min(v.grid.w, v.grid.h)) return [inner, outer].map((r) => ({ kind: 'ring', x: at.x, y: at.y, r, colour: lit(ZONE, ZONE_EDGE) }));
+    const covered = discPixels(v.grid, at.x, at.y, outer) - discPixels(v.grid, at.x, at.y, inner);
+    if (outer - inner > Math.min(v.grid.w, v.grid.h) || 2 * covered > v.grid.w * v.grid.h) return [inner, outer].map((r) => ({ kind: 'ring', x: at.x, y: at.y, r, colour: lit(ZONE, ZONE_EDGE) }));
     return [glow(at.x, at.y, outer, lit(ZONE, ZONE_LIGHT), inner)];
   }
   return [{ kind: 'veil', ...place(v.cam, v.grid, 0, 0), r: Math.round(hz[1] * v.cam.z), inner: Math.round(hz[0] * v.cam.z), ...tone(ZONE, 0.055), light: true }];
