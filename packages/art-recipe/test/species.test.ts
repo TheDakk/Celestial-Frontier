@@ -40,6 +40,7 @@ describe('buildSpeciesRecipe', () => {
       glow: false,
       gaps: [],
       opacity: 100, airborne: false, theme: null, rim: 0, skin: null,
+      template: 'quadruped',
     });
     for (const p of r.parts) expect('mark' in p).toBe(false);
   });

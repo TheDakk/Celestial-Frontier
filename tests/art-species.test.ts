@@ -1,6 +1,7 @@
 import { colourTable, parseCatalogueText, TIER_SIZE } from '@cf/art-format';
 import { buildSpeciesRecipe } from '@cf/art-recipe';
 import { compose } from '@cf/art-compose';
+import { testSpeciesCatalogue } from '@cf/art-testparts';
 import { describe, expect, it } from 'vitest';
 
 // A small named species, end to end: the torso is primary (1-4), the head and its own fore legs accent (5-8), the
@@ -113,5 +114,104 @@ describe('a named species composed end to end', () => {
     const { table, unknown } = colourTable(catalogue.palette, recipe.ramps);
     expect(unknown).toEqual([]);
     expect(table.slice(17, 21)).toEqual([0x000000, 0x778899, 0x778899, 0x445566]);
+  });
+});
+
+describe('the placeholder species with shapes of their own, composed end to end', () => {
+  const catalogue = testSpeciesCatalogue();
+  const POSES: Readonly<Record<string, readonly string[]>> = {
+    testbird: ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'],
+    testurchin: ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'],
+    testsnail: ['rest', 'approach', 'recover', 'hit', 'faint'],
+    testplant: ['rest', 'disturb', 'harvest', 'grow'],
+  };
+  /** Where a part's top left lands at rest: its anchor on the host's attach point; the host's top left is given. */
+  const frame = (id: string) => catalogue.parts.get(id)!.frames['rest']!;
+  const hung = (hostAt: readonly [number, number], hostId: string, point: string, id: string): [number, number] => {
+    const host = frame(hostId);
+    const part = frame(id);
+    return [hostAt[0] + host.attach[point]![0] - part.anchor[0], hostAt[1] + host.attach[point]![1] - part.anchor[1]];
+  };
+  const torsoAt = (key: string, family: string): [number, number] => {
+    const [ox, oy] = catalogue.scaffolds.get(`${family}/${key}/medium`)!.origin;
+    const anchor = frame(`${family}/torso/${key}/medium/v0`).anchor;
+    return [ox - anchor[0], oy - anchor[1]];
+  };
+
+  it('each composes in every pose of its own scaffold with no gap, and its scaffold holds exactly those poses', () => {
+    for (const [key, poses] of Object.entries(POSES)) {
+      const recipe = buildSpeciesRecipe(key, catalogue);
+      expect(Object.keys(catalogue.scaffolds.get(recipe.scaffoldId)!.poses), key).toEqual(poses);
+      for (const pose of poses) {
+        const out = compose(recipe, pose, catalogue);
+        expect(out.gaps, `${key} ${pose}`).toEqual([]);
+        expect(out.buffer.pixels.some((v) => v >= 1 && v <= 12), `${key} ${pose}`).toBe(true);
+      }
+      const { unknown } = colourTable(catalogue.palette, recipe.ramps);
+      expect(unknown, key).toEqual([]);
+    }
+    // Only a pose with a strike carries a contact point.
+    expect(compose(buildSpeciesRecipe('testbird', catalogue), 'strike', catalogue).contact).toEqual([62, 25]);
+    expect(compose(buildSpeciesRecipe('testsnail', catalogue), 'rest', catalogue).contact).toBeNull();
+  });
+
+  it('the test bird\'s wings rise from its torso\'s wing point, its crest sits on its head\'s feature point, its eye on its head', () => {
+    const { w, pixels } = compose(buildSpeciesRecipe('testbird', catalogue), 'rest', catalogue).buffer;
+    const value = ([x, y]: readonly [number, number], dx = 0, dy = 0): number => pixels[(y + dy) * w + x + dx]!;
+    const id = (slot: string): string => `avian/${slot}/testbird/medium/v0`;
+    const torso = torsoAt('testbird', 'avian');
+    // The far wing's top row stands above the near wing's, and both above the torso: accent (5-8).
+    const far = hung(torso, id('torso'), 'wing', id('farWings'));
+    const near = hung(torso, id('torso'), 'wing', id('nearWings'));
+    expect(far[1]).toBeLessThan(near[1]);
+    expect(near[1]).toBeLessThan(torso[1]);
+    expect(inRamp(5)(value(far, 1, 0))).toBe(true);
+    expect(inRamp(5)(value(near, 8, 0))).toBe(true);
+    // The near wing is drawn over the torso, the far wing under it: below the torso's top row the near wing's columns
+    // are wing, the far wing's own columns torso (primary, 1-4).
+    expect(inRamp(5)(value(near, 8, torso[1] - near[1] + 1))).toBe(true);
+    expect(inRamp(1)(value(far, 1, torso[1] - far[1] + 1))).toBe(true);
+    const head = hung(torso, id('torso'), 'head', id('head'));
+    const crest = hung(head, id('head'), 'feature', id('headFeature'));
+    expect(crest[1]).toBeLessThan(head[1]);
+    expect(inRamp(5)(value(crest, 1, 0))).toBe(true);
+    expect(inRamp(17)(value(hung(head, id('head'), 'eye0', id('eyes'))))).toBe(true);
+    // Its two legs hang below the torso, its tail behind it: underside (9-12).
+    for (const [slot, point] of [['farLimbs', 'far0'], ['nearLimbs', 'near0']] as const) {
+      expect(inRamp(9)(value(hung(torso, id('torso'), point, `avian/${slot}/hind-testbird/medium/v0`), 0, 6)), slot).toBe(true);
+    }
+    expect(inRamp(9)(value(hung(torso, id('torso'), 'tail', id('tail')), 1, 1))).toBe(true);
+  });
+
+  it('the test urchin, with no head, has its eye on its torso\'s eye point and its spines on its back; the test snail carries its shell', () => {
+    const urchin = compose(buildSpeciesRecipe('testurchin', catalogue), 'rest', catalogue).buffer;
+    const at = (buffer: typeof urchin, [x, y]: readonly [number, number], dx = 0, dy = 0): number => buffer.pixels[(y + dy) * buffer.w + x + dx]!;
+    const torso = torsoAt('testurchin', 'radial');
+    const eye = hung(torso, 'radial/torso/testurchin/medium/v0', 'eye0', 'radial/eyes/testurchin/medium/v0');
+    expect(inRamp(17)(at(urchin, eye))).toBe(true);
+    // Beside the eye the torso shows: the eye is drawn on it, inside its outline.
+    expect(inRamp(1)(at(urchin, eye, -1, 0))).toBe(true);
+    const spines = hung(torso, 'radial/torso/testurchin/medium/v0', 'back', 'radial/back/testurchin/medium/v0');
+    expect(spines[1]).toBeLessThan(torso[1]);
+    expect(inRamp(1)(at(urchin, spines, 1, 0))).toBe(true);
+
+    const snail = compose(buildSpeciesRecipe('testsnail', catalogue), 'rest', catalogue).buffer;
+    const foot = torsoAt('testsnail', 'gastropod');
+    const shell = hung(foot, 'gastropod/torso/testsnail/medium/v0', 'back', 'gastropod/bodyFeature/testsnail/medium/v0');
+    expect(shell[1]).toBeLessThan(foot[1]);
+    expect(inRamp(5)(at(snail, shell, 1, 1))).toBe(true);
+  });
+
+  it('a headless species whose torso has no eye point is told so: the eye is left out with an attach gap', () => {
+    const text = PACK.replace('tail=1', 'tail=1 head=0');
+    const out = compose(buildSpeciesRecipe('civet', parseCatalogueText(text)), 'rest', parseCatalogueText(text));
+    expect(out.gaps).toEqual(['attach:eye0', 'attach:eye1']);
+    const eyed = parseCatalogueText(text.replace('attach=head:10,1,', 'attach=eye0:9,1,eye1:10,1,head:10,1,'));
+    const drawn = compose(buildSpeciesRecipe('civet', eyed), 'rest', eyed);
+    expect(drawn.gaps).toEqual([]);
+    const [ox, oy] = eyed.scaffolds.get('quadruped/civet/small')!.origin;
+    for (const dx of [9, 10]) expect(inRamp(17)(drawn.buffer.pixels[(oy + 1) * drawn.buffer.w + ox + dx]!)).toBe(true);
+    // No head is drawn: where the head's far corner was, the canvas is clear.
+    expect(drawn.buffer.pixels[(oy + 1 + 3) * drawn.buffer.w + ox + 10 + 5]).toBe(0);
   });
 });

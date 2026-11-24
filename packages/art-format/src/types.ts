@@ -30,8 +30,12 @@ export interface PoseEntry { slot: SlotName; index: number; frame: string; dx: n
 export interface Pose { id: string; entries: readonly PoseEntry[]; contact?: readonly [number, number]; }
 export interface Scaffold { id: string; family: string; tier: SizeTier; origin: readonly [number, number]; poses: Readonly<Record<string, Pose>>; }
 export interface Palette { colours: readonly number[]; ramps: Readonly<Record<string, readonly [number, number, number, number]>>; outline: number; eye: number; eyeHighlight: number; glow: number; }
-/** A named species: one fixed look, drawn from its own parts (kind `key`) on scaffold `<family>/<key>/<tier>`. `legs` is from LIMB_COUNTS, `eyes` from EYE_COUNTS, `iris` an iris ramp number. */
-export interface Species { key: string; family: string; tier: SizeTier; legs: number; eyes: number; iris: number; tail: boolean }
+/**
+ * A named species: one fixed look, drawn from its own parts (kind `key`) on scaffold `<family>/<key>/<tier>`. `legs` is from LIMB_COUNTS, `eyes` from EYE_COUNTS, `iris` an iris ramp number.
+ * `head`: false for a body with no head part, whose eyes sit on its torso. `template`: the name of the pose set the
+ * species is held to (the family name unless its line says otherwise).
+ */
+export interface Species { key: string; family: string; tier: SizeTier; legs: number; eyes: number; iris: number; tail: boolean; head: boolean; template: string }
 /**
  * `fallbacks` maps `<family>/<tier>` to the id of the part drawn alone when a creature of that family and tier has nothing else to draw.
  * `species` maps each species key to its entry.

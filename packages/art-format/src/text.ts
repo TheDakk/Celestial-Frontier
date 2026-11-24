@@ -19,6 +19,8 @@ const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid'
 const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
 /** The fields of a species line, each required once. */
 const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
+/** The fields a species line may leave out: `head` (0 or 1; left out, 1) and `template` (a name; left out, the family name). */
+const SPECIES_OPTIONAL_FIELDS: readonly string[] = ['head', 'template'];
 /**
  * The most colours one palette may define: every colour a screen can show (2^24), so the palette is not limited in
  * practice. The bound only stops a mistyped index from being taken as a colour number.
@@ -345,7 +347,7 @@ export function parseCatalogueText(text: string): Catalogue {
         const family = checkName(args[1] as string, n);
         const tier = args[2] as string;
         if (!TIERS.includes(tier)) throw new Error(`line ${n}: bad tier '${tier}'`);
-        const opts = options(args.slice(3), n, SPECIES_FIELDS);
+        const opts = options(args.slice(3), n, [...SPECIES_FIELDS, ...SPECIES_OPTIONAL_FIELDS]);
         for (const field of SPECIES_FIELDS) if (!opts.has(field)) throw new Error(`species ${key} line ${n}: missing ${field}`);
         const field = (name: string, allowed: readonly number[]): number => {
           const value = opts.get(name) as string;
@@ -357,6 +359,8 @@ export function parseCatalogueText(text: string): Catalogue {
           key, family, tier: tier as SizeTier,
           legs: field('legs', LIMB_COUNTS), eyes: field('eyes', EYE_COUNTS),
           iris: field('iris', Array.from({ length: IRIS_RAMP_COUNT }, (_, i) => i)), tail: field('tail', [0, 1]) === 1,
+          head: !opts.has('head') || field('head', [0, 1]) === 1,
+          template: opts.has('template') ? checkName(opts.get('template') as string, n) : family,
         };
         if (species.has(key)) throw new Error(`line ${n}: duplicate species ${key}`);
         species.set(key, entry);

@@ -490,8 +490,8 @@ describe('parseCatalogueText: species lines', () => {
   it('parses a species line to its entry, its fields in any order', () => {
     const c = parseCatalogueText(`${LINE}\nspecies molerat2 serpent small tail=0 iris=7 eyes=0 legs=0\n`);
     expect([...c.species]).toEqual([
-      ['civet', { key: 'civet', family: 'quadruped', tier: 'medium', legs: 4, eyes: 2, iris: 3, tail: true }],
-      ['molerat2', { key: 'molerat2', family: 'serpent', tier: 'small', legs: 0, eyes: 0, iris: 7, tail: false }],
+      ['civet', { key: 'civet', family: 'quadruped', tier: 'medium', legs: 4, eyes: 2, iris: 3, tail: true, head: true, template: 'quadruped' }],
+      ['molerat2', { key: 'molerat2', family: 'serpent', tier: 'small', legs: 0, eyes: 0, iris: 7, tail: false, head: true, template: 'serpent' }],
     ]);
   });
 

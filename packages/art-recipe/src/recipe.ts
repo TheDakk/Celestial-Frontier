@@ -30,6 +30,7 @@ export interface Recipe {
   theme: ThemeName | null; // the creature's theme (routed builder, fauna); null otherwise
   rim: 0 | 50 | 75;       // percent of the theme colour the rim adds when shown (rimOf); 0 draws none
   skin: number | null;    // the skin gene 0-8 (SKIN_NAMES) the composer paints on every part in a mark slot; null paints none
+  template?: string;      // only on a named species' recipe: the template its species line names (the pose set it is held to)
 }
 
 /**
@@ -175,7 +176,8 @@ export function boneRampOf(recipe: Pick<Recipe, 'identity'>, catalogue: Catalogu
 
 /**
  * The recipe of a named species (catalogue line `species`): one fixed look, the same picture everywhere. Its own parts
- * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps (speciesIrisRamp), plain, no shift, no glow. No stream is drawn.
+ * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps (speciesIrisRamp), plain, no shift, no glow, with the
+ * template of its species line. No stream is drawn.
  * An unknown key throws. Frozen like buildRecipe's result.
  */
 export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
@@ -193,6 +195,7 @@ export function buildSpeciesRecipe(key: string, catalogue: Catalogue): Recipe {
     shift: { head: [0, 0], tail: [0, 0] },
     glow: false, gaps,
     ...NEUTRAL,
+    template: species.template,
   });
 }
 

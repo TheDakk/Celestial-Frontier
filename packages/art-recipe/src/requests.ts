@@ -192,25 +192,41 @@ export function planBodyParts(
   return { parts, gaps };
 }
 
+/** The slots a named species may bring a part of its own for, kind `<key>` at index 0: asked for only where the pack holds it. */
+const SPECIES_OPTIONAL_SLOTS: readonly SlotName[] = ['farWings', 'nearWings', 'bodyFeature', 'back', 'headFeature'];
+
 /**
  * The parts a named species asks for, in DRAW_ORDER then index, and the gaps met on the way: its own torso, head and
  * (with a tail) tail, kind `key`; legs by role, its own (`<role>-<key>`) before the shared role and the shared leg; the
  * its own eye (kind `key`) where the pack holds one, else the family's shared eye, `eyes` times. Every part at v0, none marked. A missing part is a `missing:` gap and is left out.
+ * Then each optional part of its own the pack holds, kind `key` at index 0: far and near wings, a body feature, a back
+ * part, a head feature; one the pack lacks is no gap. A species without a head (`head=0`) asks for no head and no head
+ * feature, and each eye hangs from its torso's `eye<i>`, as planBodyParts places the eyes of a body without a head part.
  */
 export function planSpeciesParts(species: Species, catalogue: Catalogue): { parts: RecipePart[]; gaps: string[] } {
   const parts: RecipePart[] = [];
   const gaps: string[] = [];
   const own = (slot: SlotName): Wanted => ({ slot, index: 0, kind: species.key, variant: 0, limb: false });
+  const holds = (slot: SlotName): boolean => catalogue.parts.has(partId(species.family, slot, species.key, species.tier, 0));
   const wanted: Wanted[] = legsWanted(species.legs, 0);
   if (species.tail) wanted.push(own('tail'));
-  wanted.push(own('torso'), own('head'));
+  wanted.push(own('torso'));
+  if (species.head) wanted.push(own('head'));
   // The species' own eye where the pack holds one; it is optional, so the shared eye is no gap.
-  const eyeKind = catalogue.parts.has(partId(species.family, 'eyes', species.key, species.tier, 0)) ? species.key : 'eye';
-  for (let i = 0; i < species.eyes; i++) wanted.push({ slot: 'eyes', index: i, kind: eyeKind, variant: 0, limb: false });
+  const eyeKind = holds('eyes') ? species.key : 'eye';
+  for (let i = 0; i < species.eyes; i++) {
+    const eye: Wanted = { slot: 'eyes', index: i, kind: eyeKind, variant: 0, limb: false };
+    if (!species.head) eye.at = { host: 'torso', point: `eye${i}` };
+    wanted.push(eye);
+  }
+  for (const slot of SPECIES_OPTIONAL_SLOTS) if (holds(slot) && (species.head || slot !== 'headFeature')) wanted.push(own(slot));
   wanted.sort(byDrawOrder);
   for (const w of wanted) {
     const found = lookUp(catalogue, species.family, species.tier, species.key, w, gaps);
-    if (found !== undefined) parts.push({ slot: w.slot, index: w.index, partId: found, source: 'own' });
+    if (found === undefined) continue;
+    const part: RecipePart = { slot: w.slot, index: w.index, partId: found, source: 'own' };
+    if (w.at !== undefined) part.at = w.at;
+    parts.push(part);
   }
   return { parts, gaps };
 }
