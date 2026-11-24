@@ -79,6 +79,31 @@ export interface PackReport {
   neck: NeckJoin[];
   /** Information about the pack that is not a fault, each printed as an `info:` line (a palette with no iris ramps). */
   info: string[];
+  /** What the generator asks of the pack (see PackCoverage); null on a parse failure. Never changes `ok`. */
+  coverage: PackCoverage | null;
+}
+/** The counts of one family and tier, or of the whole walk: every creature asked for is in exactly one of the three. */
+export interface CoverageCounts {
+  asked: number;
+  /** Creatures whose scaffold and every part the pack holds. */
+  full: number;
+  /** Creatures whose scaffold `<family>/<torso>/<tier>` the pack lacks; their parts are not looked at. */
+  noScaffold: number;
+  /** Creatures whose scaffold is there and at least one part is not. */
+  missingPart: number;
+}
+/**
+ * The generated fauna creatures of seeds `first` to `last` (makeGenome at heat 1, buildRecipe with no lineage), counted
+ * by whether the pack can draw them with no fallback. `scaffolds` and `parts` name each missing scaffold and part once
+ * (a part by the last id tried) with the creatures that met it, most met first.
+ */
+export interface PackCoverage extends CoverageCounts {
+  first: number;
+  last: number;
+  /** By family, then tier from small up. */
+  rows: (CoverageCounts & { family: string; tier: string })[];
+  scaffolds: { id: string; count: number }[];
+  parts: { id: string; count: number }[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;
@@ -89,8 +114,10 @@ export const TORSO_POINTS_BY_FAMILY: Readonly<Record<string, readonly string[]>>
 export function gapIsInfo(gap: string): boolean;
 /** For a picture assembled from the label catalogue (pixel value = slot label); null when it is one 4-connected region. */
 export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array }): string[] | null;
-/** Options of checkPack. `sample`: the generated scaffolds (by id) whose creatures are sampled; every one when absent. Whole-pack checks run either way. */
-export interface CheckOptions { sample?: (scaffoldId: string) => boolean }
+/** Options of checkPack. `sample`: the generated scaffolds (by id) whose creatures are sampled; every one when absent. Whole-pack checks run either way. `coverage`: the seeds of the coverage walk; COVERAGE_SEEDS when absent. */
+export interface CheckOptions { sample?: (scaffoldId: string) => boolean; coverage?: { first: number; last: number } }
+/** The seeds the coverage walk covers by default. */
+export const COVERAGE_SEEDS: { readonly first: number; readonly last: number };
 export function checkPack(text: string, options?: CheckOptions): PackReport;
 /** How numberedCopy draws a part: by its slot label, not at all, as it is, or each pixel as its frame column or row plus one. */
 export type NumberedMode = 'label' | 'blank' | 'real' | 'x' | 'y';

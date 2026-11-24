@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { EYE_COUNTS, LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
+import { makeGenome } from '@cf/domain-genome';
 import { assemble } from '@cf/art-compose';
 import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
 import { checkPack, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
@@ -982,7 +983,7 @@ describe('check-pack command line', () => {
   it('prints a usage line and fails with no arguments', () => {
     const r = run([]);
     expect(r.status).toBe(2);
-    expect(r.stderr).toBe('usage: node tools/check-pack.mjs <pack.txt> [more.txt ...]\n');
+    expect(r.stderr).toBe('usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]\n');
   });
 
   it('joins several files with a newline, exits 0 for a good pack and 1 for a fault', () => {
@@ -1792,5 +1793,104 @@ describe('checkPack: deep values (p to s), which need nothing of the palette', (
     expect(neckOf('o88888\no88888\no88888\no88888\no88888\n')).toEqual(deep);
     // A head all in deep is silent.
     expect(neckOf('ssssss\nssssss\nssssss\nssssss\nssssss\n')).toEqual([]);
+  });
+});
+
+describe('check-pack coverage: what the generator asks for', () => {
+  const RANGE = { first: 1, last: 20 };
+  const EMPTY = parseCatalogueText(PALETTE);
+  /** The creatures of RANGE as the game makes them, asked of a pack that holds nothing: every scaffold and every part's last-tried id is named. */
+  const asked = Array.from({ length: RANGE.last - RANGE.first + 1 }, (_, i) => buildRecipe(makeGenome(RANGE.first + i, 'fauna', 1), [], EMPTY))
+    .map((r) => ({ family: r.family, tier: r.tier, scaffold: r.scaffoldId, parts: new Set(r.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length))) }));
+  const allScaffolds = [...new Set(asked.map((a) => a.scaffold))];
+  const allParts = [...new Set(asked.flatMap((a) => [...a.parts]))];
+  /** A pack of one-pixel parts and bare scaffolds: wrong in most other ways, which coverage does not look at. */
+  const pack = (scaffolds: string[], parts: string[]): string => PALETTE
+    + parts.map((id) => `\npart ${id}\nframe rest anchor=0,0\n2\n`).join('')
+    + scaffolds.map((id) => `\nscaffold ${id} origin=16,12\npose rest\n`).join('');
+  const coverageOf = (text: string) => checkPack(text, { sample: () => false, coverage: RANGE }).coverage!;
+  const coverageLines = (text: string): string[] => formatReport(checkPack(text, { sample: () => false, coverage: RANGE })).split('\n').filter((l) => l.startsWith('coverage:'));
+
+  it('reports every creature drawn in full by a pack that holds all they ask for', () => {
+    const c = coverageOf(pack(allScaffolds, allParts));
+    expect({ asked: c.asked, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ asked: 20, full: 20, noScaffold: 0, missingPart: 0 });
+    expect(c.scaffolds).toEqual([]);
+    expect(c.parts).toEqual([]);
+    expect(c.rows.every((r) => r.full === r.asked)).toBe(true);
+    expect(c.rows.reduce((n, r) => n + r.asked, 0)).toBe(20);
+    expect(coverageLines(pack(allScaffolds, allParts))[0]).toBe('coverage: seeds 1 to 20 as the generator makes them: 20 creatures, 20 drawn in full, 0 with no scaffold, 0 with a part missing');
+  });
+
+  it('names a scaffold tier the pack lacks once, with the creatures that ask for it, and leaves the other tiers drawn', () => {
+    const gone = 'quadruped/membranous/small';
+    const hit = asked.filter((a) => a.scaffold === gone).length;
+    expect(hit).toBeGreaterThan(1);
+    const sameRow = asked.filter((a) => a.family === 'quadruped' && a.tier === 'small').length;
+    expect(sameRow).toBeGreaterThan(hit);
+    const text = pack(allScaffolds.filter((id) => id !== gone), allParts);
+    const c = coverageOf(text);
+    expect(c.scaffolds).toEqual([{ id: gone, count: hit }]);
+    expect(c.parts).toEqual([]);
+    expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 20 - hit, noScaffold: hit, missingPart: 0 });
+    expect(c.rows.find((r) => r.family === 'quadruped' && r.tier === 'small')).toEqual({ family: 'quadruped', tier: 'small', asked: sameRow, full: sameRow - hit, noScaffold: hit, missingPart: 0 });
+    expect(c.rows.filter((r) => r.noScaffold > 0)).toHaveLength(1);
+    const lines = coverageLines(text);
+    expect(lines).toContain(`coverage: no scaffold ${gone} (x${hit})`);
+    expect(lines).toContain(`coverage: quadruped small: ${sameRow} asked, ${sameRow - hit} in full, ${hit} no scaffold, 0 part missing`);
+    expect(lines.filter((l) => l.startsWith('coverage: no scaffold '))).toHaveLength(1);
+  });
+
+  it('names a part the pack lacks once, with the creatures that ask for it', () => {
+    const gone = 'quadruped/eyes/eye/large/v0';
+    const hit = asked.filter((a) => a.parts.has(gone)).length;
+    expect(hit).toBeGreaterThan(1);
+    const text = pack(allScaffolds, allParts.filter((id) => id !== gone));
+    const c = coverageOf(text);
+    expect(c.parts).toEqual([{ id: gone, count: hit }]);
+    expect(c.scaffolds).toEqual([]);
+    expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 20 - hit, noScaffold: 0, missingPart: hit });
+    expect(coverageLines(text)).toContain(`coverage: missing part ${gone} (x${hit})`);
+  });
+
+  it('a creature with no scaffold is counted there only, whatever parts it also lacks', () => {
+    const c = coverageOf(PALETTE);
+    expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 0, noScaffold: 20, missingPart: 0 });
+    expect(c.scaffolds.map((m) => m.id).sort()).toEqual([...allScaffolds].sort());
+    expect(c.parts).toEqual([]);
+  });
+
+  it('walks seeds 1 to 2000 unless told otherwise, changes no verdict, and is absent on a parse failure', () => {
+    const r = checkPack(GOOD);
+    expect(r.ok).toBe(true);
+    expect({ first: r.coverage!.first, last: r.coverage!.last, asked: r.coverage!.asked }).toEqual({ first: 1, last: 2000, asked: 2000 });
+    expect(r.coverage!.full).toBeLessThan(2000);
+    expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK');
+    expect(checkPack('part nonsense').coverage).toBeNull();
+  });
+
+  // The first seed whose creature the good pack draws in full (a small sturdy quadruped with no back part or feature).
+  const COVERED = 18396;
+  it('exits 0 with a gap, and 1 with --require-coverage only when there is a gap', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'check-pack-'));
+    try {
+      const file = join(dir, 'pack.txt');
+      writeFileSync(file, GOOD);
+      const run = (...flags: string[]) => spawnSync(process.execPath, [TOOL, ...flags, file], { encoding: 'utf8' });
+      const one = `--coverage-seeds=${COVERED}-${COVERED}`;
+      const two = `--coverage-seeds=${COVERED - 1}-${COVERED}`;
+      const covered = run('--require-coverage', one);
+      expect(covered.stdout).toContain(`coverage: seeds ${COVERED} to ${COVERED} as the generator makes them: 1 creatures, 1 drawn in full, 0 with no scaffold, 0 with a part missing`);
+      expect([covered.status, covered.stderr]).toEqual([0, '']);
+      const gap = run(two);
+      expect(gap.stdout).toContain('2 creatures, 1 drawn in full');
+      expect([gap.status, gap.stderr]).toEqual([0, '']);
+      const required = run('--require-coverage', two);
+      expect(required.stdout).toBe(gap.stdout);
+      expect([required.status, required.stderr]).toEqual([1, 'check-pack: coverage required: 1 of 2 generated creatures cannot be drawn in full\n']);
+      const unknown = run('--require-covrage');
+      expect(unknown.status).toBe(2);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });

@@ -1,6 +1,8 @@
 // Checks an art pack (palette, parts, scaffolds, fallbacks in the art text format) the way the renderer will use it.
-// Usage: node tools/check-pack.mjs <pack.txt> [more.txt ...]   (files are joined with a newline, then parsed)
-// Reads only the files given and writes nothing. Exit code 0 only when there is no error.
+// Usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]
+// (files are joined with a newline, then parsed). Reads only the files given and writes nothing. Exit code 0 only when
+// there is no error; a coverage gap (a generated creature the pack cannot draw in full) is no error unless
+// --require-coverage is given.
 import { registerHooks } from 'node:module';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -29,6 +31,7 @@ registerHooks({
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, PIXEL_BONE, PIXEL_CHARS, BONE_RAMP } = await import('@cf/art-format');
 const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
+const { makeGenome } = await import('@cf/domain-genome');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 /**
@@ -281,6 +284,45 @@ export function generatedTorsos() {
     }
   }
   return out;
+}
+
+/** The seeds whose generated creatures the coverage walk asks the pack for, unless the caller names others. */
+export const COVERAGE_SEEDS = Object.freeze({ first: 1, last: 2000 });
+const TIER_ORDER = ['small', 'medium', 'large', 'guardian'];
+
+/**
+ * What the generator asks of the pack: for each seed from `first` to `last`, the fauna creature the game makes
+ * (makeGenome at heat 1, buildRecipe with no lineage) is put in one of three counts of its family and tier. `noScaffold`:
+ * the pack holds no scaffold `<family>/<torso>/<tier>` for it, so nothing but a fallback can be drawn (its parts are not
+ * looked at). `missingPart`: the scaffold is there and at least one part it asks for is not (a `missing:` gap, named by
+ * the last id tried). `full`: neither. Each missing scaffold and part is named once, with the creatures that met it.
+ */
+function coverageOf(catalogue, { first, last }) {
+  const rows = new Map();
+  const scaffolds = new Map();
+  const parts = new Map();
+  const bump = (map, id) => map.set(id, (map.get(id) ?? 0) + 1);
+  for (let seed = first; seed <= last; seed++) {
+    const recipe = buildRecipe(makeGenome(seed, 'fauna', 1), [], catalogue);
+    const key = `${recipe.family} ${recipe.tier}`;
+    const row = rows.get(key) ?? { family: recipe.family, tier: recipe.tier, asked: 0, full: 0, noScaffold: 0, missingPart: 0 };
+    rows.set(key, row);
+    row.asked++;
+    if (!catalogue.scaffolds.has(recipe.scaffoldId)) {
+      row.noScaffold++;
+      bump(scaffolds, recipe.scaffoldId);
+      continue;
+    }
+    const missing = unique(recipe.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)));
+    if (missing.length === 0) row.full++;
+    else row.missingPart++;
+    for (const id of missing) bump(parts, id);
+  }
+  const named = (map) => [...map].map(([id, count]) => ({ id, count })).sort((a, b) => b.count - a.count || (a.id < b.id ? -1 : 1));
+  const byFamilyThenTier = (a, b) => (a.family === b.family ? TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) : a.family < b.family ? -1 : 1);
+  const list = [...rows.values()].sort(byFamilyThenTier);
+  const sum = (field) => list.reduce((n, row) => n + row[field], 0);
+  return { first, last, asked: sum('asked'), full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), rows: list, scaffolds: named(scaffolds), parts: named(parts) };
 }
 
 /** Whether a part is a named species' own torso, head or tail: kind `<key>` in the species' family and tier. */
@@ -850,7 +892,7 @@ export function checkPack(text, options = {}) {
   try {
     catalogue = parseCatalogueText(text);
   } catch (error) {
-    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, partial: null, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [], info: [] };
+    return { ok: false, parseError: error instanceof Error ? error.message : String(error), summary: null, sampled: SAMPLED, partial: null, composed: 0, variants: 0, gaps: [], edge: [], detached: [], hidden: [], structure: [], unreachable: [], failures: [], neck: [], info: [], coverage: null };
   }
   const parts = [...catalogue.parts.values()];
   const summary = {
@@ -1171,7 +1213,7 @@ export function checkPack(text, options = {}) {
   }
   const ok = gaps.every((g) => !g.error) && edge.length === 0 && detached.length === 0 && hidden.length === 0 && structure.length === 0 && unreachable.length === 0 && failures.length === 0;
   const partial = skipped.length === 0 ? null : skipped;
-  return { ok, parseError: null, summary, sampled: SAMPLED, partial, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info };
+  return { ok, parseError: null, summary, sampled: SAMPLED, partial, composed, variants, gaps, edge, detached, hidden, structure, unreachable, failures, neck, info, coverage: coverageOf(catalogue, options.coverage ?? COVERAGE_SEEDS) };
 }
 
 const compact = (record) => Object.entries(record).map(([k, v]) => `${k} ${v}`).join(', ');
@@ -1231,6 +1273,11 @@ export function formatReport(report) {
   for (const p of report.unreachable) lines.push(`error: ${p}`);
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
   for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pixels} head pixels more than one shade step from the torso beside them, in ${n.cases} pose shifts, e.g. ${n.example}`);
+  const c = report.coverage;
+  lines.push(`coverage: seeds ${c.first} to ${c.last} as the generator makes them: ${c.asked} creatures, ${c.full} drawn in full, ${c.noScaffold} with no scaffold, ${c.missingPart} with a part missing`);
+  for (const r of c.rows) lines.push(`coverage: ${r.family} ${r.tier}: ${r.asked} asked, ${r.full} in full, ${r.noScaffold} no scaffold, ${r.missingPart} part missing`);
+  for (const m of c.scaffolds) lines.push(`coverage: no scaffold ${m.id} (x${m.count})`);
+  for (const m of c.parts) lines.push(`coverage: missing part ${m.id} (x${m.count})`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
   const n = report.partial?.length ?? 0;
   const partial = n === 0 ? '' : ` (partial: ${n} scaffold${n === 1 ? '' : 's'} not sampled)`;
@@ -1238,9 +1285,13 @@ export function formatReport(report) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const files = process.argv.slice(2);
-  if (files.length === 0) {
-    console.error('usage: node tools/check-pack.mjs <pack.txt> [more.txt ...]');
+  const args = process.argv.slice(2);
+  const files = args.filter((a) => !a.startsWith('--'));
+  const flags = args.filter((a) => a.startsWith('--'));
+  const range = flags.map((f) => /^--coverage-seeds=(\d+)-(\d+)$/.exec(f)).find((m) => m !== null);
+  const known = (f) => f === '--require-coverage' || /^--coverage-seeds=\d+-\d+$/.test(f);
+  if (files.length === 0 || !flags.every(known)) {
+    console.error('usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]');
     process.exit(2);
   }
   let text;
@@ -1250,7 +1301,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.error(`check-pack: ${error instanceof Error ? error.message : String(error)}`);
     process.exit(2);
   }
-  const report = checkPack(text);
+  const report = checkPack(text, range ? { coverage: { first: Number(range[1]), last: Number(range[2]) } } : {});
   process.stdout.write(formatReport(report));
-  process.exit(report.ok ? 0 : 1);
+  const c = report.coverage;
+  const gap = flags.includes('--require-coverage') && c !== null && c.full < c.asked;
+  if (gap) console.error(`check-pack: coverage required: ${c.asked - c.full} of ${c.asked} generated creatures cannot be drawn in full`);
+  process.exit(report.ok && !gap ? 0 : 1);
 }
