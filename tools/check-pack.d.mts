@@ -82,28 +82,35 @@ export interface PackReport {
   /** What the generator asks of the pack (see PackCoverage); null on a parse failure. Never changes `ok`. */
   coverage: PackCoverage | null;
 }
-/** The counts of one family and tier, or of the whole walk: every creature asked for is in exactly one of the three. */
+/** The counts of one family and tier, or of the whole walk: every creature asked for is in exactly one of the four. */
 export interface CoverageCounts {
   asked: number;
-  /** Creatures whose scaffold and every part the pack holds. */
+  /** Creatures whose scaffold and every part the pack holds, and whose rest pose composes with no pose or skin gap. */
   full: number;
   /** Creatures whose scaffold `<family>/<torso>/<tier>` the pack lacks; their parts are not looked at. */
   noScaffold: number;
   /** Creatures whose scaffold is there and at least one part is not. */
   missingPart: number;
+  /** Creatures whose scaffold and parts are there, and whose rest pose meets a `pose:` or a `skin:` gap. */
+  composeGap: number;
 }
 /**
- * The generated fauna creatures of seeds `first` to `last` (makeGenome at heat 1, buildRecipe with no lineage), counted
- * by whether the pack can draw them with no fallback. `scaffolds` and `parts` name each missing scaffold and part once
- * (a part by the last id tried) with the creatures that met it, most met first.
+ * The generated fauna creatures of seeds `first` to `last` (makeGenome at heat 1) and the Guardians of the worlds of
+ * those seeds (guardianFor, where it gives one), each built with no lineage and composed at rest, counted by whether
+ * the pack can draw them with no fallback. `scaffolds`, `parts` and `gaps` name each missing scaffold, part (by the
+ * last id tried) and pose or skin gap once with the creatures that met it, most met first. Titans, bred creatures and
+ * every pose but rest are outside the walk.
  */
 export interface PackCoverage extends CoverageCounts {
   first: number;
   last: number;
+  /** How many of the creatures asked for are Guardians. */
+  guardians: number;
   /** By family, then tier from small up. */
   rows: (CoverageCounts & { family: string; tier: string })[];
   scaffolds: { id: string; count: number }[];
   parts: { id: string; count: number }[];
+  gaps: { id: string; count: number }[];
 }
 export const REQUIRED_POSES: readonly string[];
 export const SAMPLED: string;

@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { EYE_COUNTS, LIMB_COUNTS, VARIANTS, parseCatalogueText } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
-import { makeGenome } from '@cf/domain-genome';
+import { guardianFor, makeGenome } from '@cf/domain-genome';
 import { assemble } from '@cf/art-compose';
 import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
 import { checkPack, coverageShortfall, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
@@ -1804,21 +1804,22 @@ describe('check-pack coverage: what the generator asks for', () => {
     .map((r) => ({ family: r.family, tier: r.tier, scaffold: r.scaffoldId, parts: new Set(r.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length))) }));
   const allScaffolds = [...new Set(asked.map((a) => a.scaffold))];
   const allParts = [...new Set(asked.flatMap((a) => [...a.parts]))];
-  /** A pack of one-pixel parts and bare scaffolds: wrong in most other ways, which coverage does not look at. */
+  /** A pack of one-pixel parts and bare scaffolds: wrong in most other ways, which coverage does not look at. Each
+   *  torso has the layer a translucent skin is painted from. */
   const pack = (scaffolds: string[], parts: string[]): string => PALETTE
-    + parts.map((id) => `\npart ${id}\nframe rest anchor=0,0\n2\n`).join('')
+    + parts.map((id) => `\npart ${id}\nframe rest anchor=0,0\n2\n${id.split('/')[1] === 'torso' ? 'layer translucent\n3\n' : ''}`).join('')
     + scaffolds.map((id) => `\nscaffold ${id} origin=16,12\npose rest\n`).join('');
   const coverageOf = (text: string) => checkPack(text, { sample: () => false, coverage: RANGE }).coverage!;
   const coverageLines = (text: string): string[] => formatReport(checkPack(text, { sample: () => false, coverage: RANGE })).split('\n').filter((l) => l.startsWith('coverage:'));
 
   it('reports every creature drawn in full by a pack that holds all they ask for', () => {
     const c = coverageOf(pack(allScaffolds, allParts));
-    expect({ asked: c.asked, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ asked: 20, full: 20, noScaffold: 0, missingPart: 0 });
+    expect({ asked: c.asked, guardians: c.guardians, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart, composeGap: c.composeGap }).toEqual({ asked: 20, guardians: 0, full: 20, noScaffold: 0, missingPart: 0, composeGap: 0 });
     expect(c.scaffolds).toEqual([]);
     expect(c.parts).toEqual([]);
     expect(c.rows.every((r) => r.full === r.asked)).toBe(true);
     expect(c.rows.reduce((n, r) => n + r.asked, 0)).toBe(20);
-    expect(coverageLines(pack(allScaffolds, allParts))[0]).toBe('coverage: seeds 1 to 20 as the generator makes them: 20 creatures, 20 drawn in full, 0 with no scaffold, 0 with a part missing');
+    expect(coverageLines(pack(allScaffolds, allParts))[0]).toBe('coverage: seeds 1 to 20 as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 20 creatures (0 Guardians), 20 drawn in full, 0 with no scaffold, 0 with a part missing, 0 with a pose or skin gap');
   });
 
   it('names a scaffold tier the pack lacks once, with the creatures that ask for it, and leaves the other tiers drawn', () => {
@@ -1832,11 +1833,11 @@ describe('check-pack coverage: what the generator asks for', () => {
     expect(c.scaffolds).toEqual([{ id: gone, count: hit }]);
     expect(c.parts).toEqual([]);
     expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 20 - hit, noScaffold: hit, missingPart: 0 });
-    expect(c.rows.find((r) => r.family === 'quadruped' && r.tier === 'small')).toEqual({ family: 'quadruped', tier: 'small', asked: sameRow, full: sameRow - hit, noScaffold: hit, missingPart: 0 });
+    expect(c.rows.find((r) => r.family === 'quadruped' && r.tier === 'small')).toEqual({ family: 'quadruped', tier: 'small', asked: sameRow, full: sameRow - hit, noScaffold: hit, missingPart: 0, composeGap: 0 });
     expect(c.rows.filter((r) => r.noScaffold > 0)).toHaveLength(1);
     const lines = coverageLines(text);
     expect(lines).toContain(`coverage: no scaffold ${gone} (x${hit})`);
-    expect(lines).toContain(`coverage: quadruped small: ${sameRow} asked, ${sameRow - hit} in full, ${hit} no scaffold, 0 part missing`);
+    expect(lines).toContain(`coverage: quadruped small: ${sameRow} asked, ${sameRow - hit} in full, ${hit} no scaffold, 0 part missing, 0 pose or skin gap`);
     expect(lines.filter((l) => l.startsWith('coverage: no scaffold '))).toHaveLength(1);
   });
 
@@ -1862,10 +1863,86 @@ describe('check-pack coverage: what the generator asks for', () => {
   it('walks seeds 1 to 2000 unless told otherwise, changes no verdict, and is absent on a parse failure', () => {
     const r = checkPack(GOOD);
     expect(r.ok).toBe(true);
-    expect({ first: r.coverage!.first, last: r.coverage!.last, asked: r.coverage!.asked }).toEqual({ first: 1, last: 2000, asked: 2000 });
-    expect(r.coverage!.full).toBeLessThan(2000);
+    const c = r.coverage!;
+    // The 2,000 creatures and the 48 Guardians of those worlds. The good pack holds one small scaffold: 18 creatures
+    // reach it and each lacks a part.
+    expect({ first: c.first, last: c.last, asked: c.asked, guardians: c.guardians }).toEqual({ first: 1, last: 2000, asked: 2048, guardians: 48 });
+    expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart, composeGap: c.composeGap }).toEqual({ full: 0, noScaffold: 2030, missingPart: 18, composeGap: 0 });
+    expect(c.rows.filter((row) => row.tier === 'guardian').reduce((n, row) => n + row.asked, 0)).toBe(48);
     expect(formatReport(r).split('\n')[0]).toBe('check-pack: OK');
     expect(checkPack('part nonsense').coverage).toBeNull();
+  });
+
+  const unique = <T,>(values: T[]): T[] => [...new Set(values)];
+
+  describe('the Guardians of the worlds of the same seeds', () => {
+    /** The first world seed the game gives a Guardian. */
+    const WORLD = Array.from({ length: 2000 }, (_, i) => i + 1).find((seed) => guardianFor(seed) !== null)!;
+    const one = { first: WORLD, last: WORLD };
+    const recipeOf = (genome: object) => buildRecipe(genome as Parameters<typeof buildRecipe>[0], [], EMPTY);
+    const needs = (r: Recipe) => ({ scaffold: r.scaffoldId, parts: unique(r.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length))) });
+    const creature = needs(recipeOf(makeGenome(WORLD, 'fauna', 1)));
+    const guardian = recipeOf(guardianFor(WORLD)!.genome);
+    const guardianNeeds = needs(guardian);
+    const text = (scaffolds: string[]) => pack(scaffolds, unique([...creature.parts, ...guardianNeeds.parts]));
+    const walk = (packText: string) => checkPack(packText, { sample: () => false, coverage: one }).coverage!;
+
+    it('is drawn at the guardian tier, by the marker the game stores with it and not by a size gene', () => {
+      expect(guardian.tier).toBe('guardian');
+      expect(guardianNeeds.scaffold.endsWith('/guardian')).toBe(true);
+      expect(guardianNeeds.scaffold).not.toBe(creature.scaffold);
+    });
+
+    it('each is a creature of its own, in a row of the guardian tier', () => {
+      const c = walk(text([creature.scaffold, guardianNeeds.scaffold]));
+      expect({ asked: c.asked, guardians: c.guardians, full: c.full }).toEqual({ asked: 2, guardians: 1, full: 2 });
+      expect(c.rows.filter((r) => r.tier === 'guardian')).toEqual([{ family: guardian.family, tier: 'guardian', asked: 1, full: 1, noScaffold: 0, missingPart: 0, composeGap: 0 }]);
+    });
+
+    it('a pack that cannot draw a Guardian does not draw every creature in full', () => {
+      const c = walk(text([creature.scaffold]));
+      expect({ asked: c.asked, full: c.full, noScaffold: c.noScaffold }).toEqual({ asked: 2, full: 1, noScaffold: 1 });
+      expect(c.scaffolds).toEqual([{ id: guardianNeeds.scaffold, count: 1 }]);
+      expect(c.rows.find((r) => r.tier === 'guardian')).toEqual({ family: guardian.family, tier: 'guardian', asked: 1, full: 0, noScaffold: 1, missingPart: 0, composeGap: 0 });
+    });
+
+    it('the headline says how many of the creatures are Guardians and what the walk leaves out', () => {
+      const line = formatReport(checkPack(text([creature.scaffold]), { sample: () => false, coverage: one })).split('\n').find((l) => l.startsWith('coverage: seeds'))!;
+      expect(line).toBe(`coverage: seeds ${WORLD} to ${WORLD} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 2 creatures (1 Guardians), 1 drawn in full, 1 with no scaffold, 0 with a part missing, 0 with a pose or skin gap`);
+    });
+  });
+
+  describe('what composing the rest pose finds', () => {
+    /** The first seed whose creature has a translucent skin (gene 7) the composer paints: a radial is never skinned. */
+    const SEED = Array.from({ length: 2000 }, (_, i) => i + 1).find((seed) => buildRecipe(makeGenome(seed, 'fauna', 1), [], EMPTY).skin === 7)!;
+    const one = { first: SEED, last: SEED };
+    const recipe = buildRecipe(makeGenome(SEED, 'fauna', 1), [], EMPTY);
+    const parts = unique(recipe.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)));
+    const torso = parts.find((id) => id.split('/')[1] === 'torso')!;
+    const bare = (id: string) => `\npart ${id}\nframe rest anchor=0,0\n2\n`;
+    const text = (torsoText: string, scaffoldText: string) => PALETTE + parts.filter((id) => id !== torso).map(bare).join('') + torsoText + scaffoldText;
+    const scaffold = `\nscaffold ${recipe.scaffoldId} origin=16,12\npose rest\n`;
+    const walk = (packText: string) => checkPack(packText, { sample: () => false, coverage: one }).coverage!;
+
+    it('a translucent creature whose torso has its translucent layer is drawn in full', () => {
+      const c = walk(text(`${bare(torso)}layer translucent\n3\n`, scaffold));
+      expect({ asked: c.asked, full: c.full, composeGap: c.composeGap, gaps: c.gaps }).toEqual({ asked: 1, full: 1, composeGap: 0, gaps: [] });
+    });
+
+    it('without that layer it is not drawn in full: the skin gap is counted and named', () => {
+      const packText = text(bare(torso), scaffold);
+      const c = walk(packText);
+      expect({ asked: c.asked, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart, composeGap: c.composeGap }).toEqual({ asked: 1, full: 0, noScaffold: 0, missingPart: 0, composeGap: 1 });
+      expect(c.gaps).toEqual([{ id: `skin:${torso}:rest`, count: 1 }]);
+      const lines = formatReport(checkPack(packText, { sample: () => false, coverage: one })).split('\n');
+      expect(lines).toContain(`coverage: gap skin:${torso}:rest (x1)`);
+      expect(lines.find((l) => l.startsWith('coverage: seeds'))).toContain('0 drawn in full, 0 with no scaffold, 0 with a part missing, 1 with a pose or skin gap');
+    });
+
+    it('a scaffold with no rest pose is a pose gap, counted and named', () => {
+      const c = walk(text(`${bare(torso)}layer translucent\n3\n`, `\nscaffold ${recipe.scaffoldId} origin=16,12\npose faint\n`));
+      expect({ full: c.full, composeGap: c.composeGap, gaps: c.gaps }).toEqual({ full: 0, composeGap: 1, gaps: [{ id: 'pose:rest', count: 1 }] });
+    });
   });
 
   it('a requirement of coverage is met only by creatures: a walk that asked for none falls short, as one with a gap does', () => {
@@ -1877,8 +1954,9 @@ describe('check-pack coverage: what the generator asks for', () => {
     expect(coverageShortfall(none)).toBe('the walk asked for no creature');
   });
 
-  // The first seed whose creature the good pack draws in full (a small sturdy quadruped with no back part or feature).
-  const COVERED = 18396;
+  // The first seed whose creature the good pack draws in full (a small sturdy quadruped with no back part or feature,
+  // its skin slick). Seed 18396 has every part too, but its skin is translucent and the good torso has no layer for it.
+  const COVERED = 28460;
   it('exits 0 with a gap, and 1 with --require-coverage only when there is a gap', () => {
     const dir = mkdtempSync(join(tmpdir(), 'check-pack-'));
     try {
@@ -1888,14 +1966,17 @@ describe('check-pack coverage: what the generator asks for', () => {
       const one = `--coverage-seeds=${COVERED}-${COVERED}`;
       const two = `--coverage-seeds=${COVERED - 1}-${COVERED}`;
       const covered = run('--require-coverage', one);
-      expect(covered.stdout).toContain(`coverage: seeds ${COVERED} to ${COVERED} as the generator makes them: 1 creatures, 1 drawn in full, 0 with no scaffold, 0 with a part missing`);
+      expect(covered.stdout).toContain(`coverage: seeds ${COVERED} to ${COVERED} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 1 creatures (0 Guardians), 1 drawn in full, 0 with no scaffold, 0 with a part missing, 0 with a pose or skin gap`);
       expect([covered.status, covered.stderr]).toEqual([0, '']);
       const gap = run(two);
-      expect(gap.stdout).toContain('2 creatures, 1 drawn in full');
+      expect(gap.stdout).toContain('2 creatures (0 Guardians), 1 drawn in full');
       expect([gap.status, gap.stderr]).toEqual([0, '']);
       const required = run('--require-coverage', two);
       expect(required.stdout).toBe(gap.stdout);
       expect([required.status, required.stderr]).toEqual([1, 'check-pack: coverage required: 1 of 2 generated creatures cannot be drawn in full\n']);
+      const skinless = run('--require-coverage', '--coverage-seeds=18396-18396');
+      expect(skinless.stdout).toContain('coverage: gap skin:quadruped/torso/sturdy/small/v0:rest (x1)');
+      expect([skinless.status, skinless.stderr]).toEqual([1, 'check-pack: coverage required: 1 of 1 generated creatures cannot be drawn in full\n']);
       const unknown = run('--require-covrage');
       expect(unknown.status).toBe(2);
       // A range that runs backwards names no seed: a usage error, never a requirement met by nothing.

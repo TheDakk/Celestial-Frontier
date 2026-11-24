@@ -1,8 +1,8 @@
 // Checks an art pack (palette, parts, scaffolds, fallbacks in the art text format) the way the renderer will use it.
 // Usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]
 // (files are joined with a newline, then parsed). Reads only the files given and writes nothing. Exit code 0 only when
-// there is no error; a coverage gap (a generated creature the pack cannot draw in full) is no error unless
-// --require-coverage is given.
+// there is no error; a coverage gap (a generated creature or Guardian the pack cannot draw in full at rest) is no
+// error unless --require-coverage is given.
 import { registerHooks } from 'node:module';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -31,7 +31,7 @@ registerHooks({
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, PIXEL_BONE, PIXEL_CHARS, BONE_RAMP } = await import('@cf/art-format');
 const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
-const { makeGenome } = await import('@cf/domain-genome');
+const { guardianFor, makeGenome } = await import('@cf/domain-genome');
 
 export const REQUIRED_POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
 /**
@@ -291,38 +291,62 @@ export const COVERAGE_SEEDS = Object.freeze({ first: 1, last: 2000 });
 const TIER_ORDER = ['small', 'medium', 'large', 'guardian'];
 
 /**
- * What the generator asks of the pack: for each seed from `first` to `last`, the fauna creature the game makes
- * (makeGenome at heat 1, buildRecipe with no lineage) is put in one of three counts of its family and tier. `noScaffold`:
- * the pack holds no scaffold `<family>/<torso>/<tier>` for it, so nothing but a fallback can be drawn (its parts are not
- * looked at). `missingPart`: the scaffold is there and at least one part it asks for is not (a `missing:` gap, named by
- * the last id tried). `full`: neither. Each missing scaffold and part is named once, with the creatures that met it.
+ * What the generator asks of the pack. For each seed from `first` to `last`: the fauna creature the game makes of it
+ * (makeGenome at heat 1), and the Guardian of the world of that seed when the game gives that world one (guardianFor:
+ * about one world in forty; the marker it stores with the genome, not a size gene, puts it at the guardian tier). Each
+ * is built with no lineage and put in one of four counts of its family and tier. `noScaffold`: the pack holds no
+ * scaffold `<family>/<torso>/<tier>` for it, so nothing but a fallback can be drawn (its parts are not looked at).
+ * `missingPart`: the scaffold is there and at least one part it asks for is not (a `missing:` gap, named by the last id
+ * tried). `composeGap`: scaffold and parts are there, and composing its rest pose meets a pose the scaffold lacks
+ * (`pose:`) or a translucent skin its torso frame has no layer for (`skin:`). `full`: none of these. Each missing
+ * scaffold, part and such gap is named once, with the creatures that met it.
+ *
+ * Outside the walk: Titans (a battle genome made for a placed world), bred creatures (a lineage), every pose but rest,
+ * and the other gaps of composing (a `marks:` gap is listed for every frame by the report's own gap lines; a frame,
+ * attach point or index the composer cannot find is an error of the sampled creatures).
  */
 function coverageOf(catalogue, { first, last }) {
   const rows = new Map();
   const scaffolds = new Map();
   const parts = new Map();
+  const gaps = new Map();
+  let guardians = 0;
   const bump = (map, id) => map.set(id, (map.get(id) ?? 0) + 1);
-  for (let seed = first; seed <= last; seed++) {
-    const recipe = buildRecipe(makeGenome(seed, 'fauna', 1), [], catalogue);
+  const ask = (genome) => {
+    const recipe = buildRecipe(genome, [], catalogue);
     const key = `${recipe.family} ${recipe.tier}`;
-    const row = rows.get(key) ?? { family: recipe.family, tier: recipe.tier, asked: 0, full: 0, noScaffold: 0, missingPart: 0 };
+    const row = rows.get(key) ?? { family: recipe.family, tier: recipe.tier, asked: 0, full: 0, noScaffold: 0, missingPart: 0, composeGap: 0 };
     rows.set(key, row);
     row.asked++;
     if (!catalogue.scaffolds.has(recipe.scaffoldId)) {
       row.noScaffold++;
       bump(scaffolds, recipe.scaffoldId);
-      continue;
+      return;
     }
     const missing = unique(recipe.gaps.filter((g) => g.startsWith('missing:')).map((g) => g.slice('missing:'.length)));
-    if (missing.length === 0) row.full++;
-    else row.missingPart++;
     for (const id of missing) bump(parts, id);
+    if (missing.length > 0) {
+      row.missingPart++;
+      return;
+    }
+    const met = unique(assemble(recipe, 'rest', catalogue).gaps.filter((g) => g.startsWith('pose:') || g.startsWith('skin:')));
+    for (const gap of met) bump(gaps, gap);
+    if (met.length === 0) row.full++;
+    else row.composeGap++;
+  };
+  for (let seed = first; seed <= last; seed++) {
+    ask(makeGenome(seed, 'fauna', 1));
+    const guardian = guardianFor(seed);
+    if (guardian !== null) {
+      guardians++;
+      ask(guardian.genome);
+    }
   }
   const named = (map) => [...map].map(([id, count]) => ({ id, count })).sort((a, b) => b.count - a.count || (a.id < b.id ? -1 : 1));
   const byFamilyThenTier = (a, b) => (a.family === b.family ? TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) : a.family < b.family ? -1 : 1);
   const list = [...rows.values()].sort(byFamilyThenTier);
   const sum = (field) => list.reduce((n, row) => n + row[field], 0);
-  return { first, last, asked: sum('asked'), full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), rows: list, scaffolds: named(scaffolds), parts: named(parts) };
+  return { first, last, asked: sum('asked'), guardians, full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), composeGap: sum('composeGap'), rows: list, scaffolds: named(scaffolds), parts: named(parts), gaps: named(gaps) };
 }
 
 /**
@@ -1284,10 +1308,11 @@ export function formatReport(report) {
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
   for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pixels} head pixels more than one shade step from the torso beside them, in ${n.cases} pose shifts, e.g. ${n.example}`);
   const c = report.coverage;
-  lines.push(`coverage: seeds ${c.first} to ${c.last} as the generator makes them: ${c.asked} creatures, ${c.full} drawn in full, ${c.noScaffold} with no scaffold, ${c.missingPart} with a part missing`);
-  for (const r of c.rows) lines.push(`coverage: ${r.family} ${r.tier}: ${r.asked} asked, ${r.full} in full, ${r.noScaffold} no scaffold, ${r.missingPart} part missing`);
+  lines.push(`coverage: seeds ${c.first} to ${c.last} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): ${c.asked} creatures (${c.guardians} Guardians), ${c.full} drawn in full, ${c.noScaffold} with no scaffold, ${c.missingPart} with a part missing, ${c.composeGap} with a pose or skin gap`);
+  for (const r of c.rows) lines.push(`coverage: ${r.family} ${r.tier}: ${r.asked} asked, ${r.full} in full, ${r.noScaffold} no scaffold, ${r.missingPart} part missing, ${r.composeGap} pose or skin gap`);
   for (const m of c.scaffolds) lines.push(`coverage: no scaffold ${m.id} (x${m.count})`);
   for (const m of c.parts) lines.push(`coverage: missing part ${m.id} (x${m.count})`);
+  for (const m of c.gaps) lines.push(`coverage: gap ${m.id} (x${m.count})`);
   const errors = lines.filter((l) => l.startsWith('error:')).length;
   const n = report.partial?.length ?? 0;
   const partial = n === 0 ? '' : ` (partial: ${n} scaffold${n === 1 ? '' : 's'} not sampled)`;
