@@ -71,7 +71,7 @@ for (const loco of [0, 1, 2, 4, 10.6, -1]) specs.push([`extremophile loco ${loco
 specs.push(['aerial flora', { ...makeGenome(62, 'flora', 1), af: 1 }, REST]);
 // Body routing: what the design adds, each at rest and strike, with literal genomes. A medium creature on land (grazers,
 // the deep forest canopy), four legs, four eyes, spotted, slick skin (no back part); airborne is gliders, aquatic
-// swimmers. The fusiform fish's seeds were found once with shapedGenome (tools/check-pack.mjs) and are written out.
+// swimmers. A fish that keeps something is fusiform on an even seed (seedShape), so each of the four is given seed 2.
 const routed = { kingdom: 'fauna', size: 2, loco: 0, habitat: 0, body: 0, head: 0, tail: 1, limbs: 1, eyes: 1, pattern: 2, skin: 3, color: 3, accent: 5, lumin: false, trait: 0, seed: 1 };
 const AIRBORNE = { loco: 3 };
 const AQUATIC = { loco: 4 };
@@ -85,9 +85,9 @@ for (const [label, genes] of [
   ['crystalline land', { body: 8 }],
   ['spindly land', { body: 12 }],
   ['fusiform fish keeping its shell', { body: 6, ...AQUATIC, tail: 2, seed: 2 }],
-  ['fusiform fish keeping its crystals', { body: 8, ...AQUATIC, tail: 2, seed: 1 }],
-  ['fusiform fish keeping its tusks', { body: 10, ...AQUATIC, tail: 2, seed: 1 }],
-  ['fusiform fish keeping its horn', { body: 11, ...AQUATIC, tail: 2, seed: 1 }],
+  ['fusiform fish keeping its crystals', { body: 8, ...AQUATIC, tail: 2, seed: 2 }],
+  ['fusiform fish keeping its tusks', { body: 10, ...AQUATIC, tail: 2, seed: 2 }],
+  ['fusiform fish keeping its horn', { body: 11, ...AQUATIC, tail: 2, seed: 2 }],
   ['sturdy with tail 0 (t0)', { body: 0, tail: 0 }],
   ['sturdy with eyes gene 5 (pits)', { body: 0, eyes: 5 }],
   ['sturdy with the eyeless head (pits)', { body: 0, head: 2 }],
