@@ -438,6 +438,16 @@ describe('starter Charters', () => {
     expect(claims(s)).toEqual([[['st-mine', false], ['st-mercury', true]], 4]);
   });
 
+  it('after training\'s landing on Earth the planetfall Charter offers Accept, not Claim: the board reads the Charter\'s own check alone', () => {
+    // LEGACY celestial-frontier.html:25169-25170: `if(c.chk) _done=!!c.chk(); else if(c.ev==='landfall'){...landed replay...}`;
+    // every landfall starter has a check, and training puts Earth (133) in `landed` (13194-13198).
+    const s = state();
+    s.landed = [133];
+    const board = projectStarterCharterBoardV1(s, EXTENSIONS);
+    if (board.kind !== 'projected') throw new Error(board.reason);
+    expect(board.board.rows.find((row) => row.definition.id === 'st-land')).toMatchObject({ status: 'available', claimable: false });
+  });
+
   it('the board is inert until training ends, except the graduation accept, which is never already proven', () => {
     // LEGACY celestial-frontier.html:24882-24883 (refused) and 24889-24891 (no proof from training).
     const recruit = state();

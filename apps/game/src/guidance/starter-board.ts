@@ -9,7 +9,7 @@ import type { CopyPart } from './next-step';
 import {
   CHAINS,
   STARTER_CHARTER_CAP_V1,
-  alreadyProven,
+  checkProven,
   checkedState,
   definitionFor,
   type StarterCharterDefinitionV1,
@@ -79,7 +79,7 @@ export function projectStarterCharterBoardV1(state: SaveStateV2, extensions: V5E
         definition,
         status: 'available',
         progress: Math.min(checked.progress[id] ?? 0, definition.count),
-        claimable: alreadyProven(state, extensions, id),
+        claimable: checkProven(state, extensions, id),
       }));
     }
     const honored = state.stats.charters ?? 0;

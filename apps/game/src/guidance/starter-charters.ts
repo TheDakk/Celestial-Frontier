@@ -233,7 +233,8 @@ export function alreadyProven(
   return checkProven(state, extensions, id) || landedReplay(state, id);
 }
 
-function checkProven(
+/** The Charter's own check alone, with no replay of the landed worlds: what the board reads to offer Claim. */
+export function checkProven(
   state: SaveStateV2,
   extensions: V5Extensions,
   id: StarterCharterIdV1,
