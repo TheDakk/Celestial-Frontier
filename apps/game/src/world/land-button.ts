@@ -1,5 +1,8 @@
-/* The Land button of the survey card. The press lands at once: no survey step, prompt or warning stands before it.
-   A world never landed on rolls its descent first (the roll and its wave-off belong to the descent rules, not here). */
+/* The Land button of the survey card, as the legacy game has it (LEGACY celestial-frontier.html):
+   - the word and the tip: 14094; the notice when the world is not in the system in view: 14333-14334;
+   - the press lands at once, with no survey step, prompt or warning before it: 14330-14336 and `flyDown` 13664-13679;
+   - a world never landed on rolls its descent first: `descentSafe` 13435-13437, used at 13669 (the roll and its
+     wave-off belong to the descent rules, not here). */
 
 export const LAND_BUTTON = Object.freeze({
   label: 'Land',
