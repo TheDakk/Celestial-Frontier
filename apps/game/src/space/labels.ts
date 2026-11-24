@@ -80,11 +80,11 @@ function lettering(frame: MapFrame, charter: string, sheet?: InterfaceSheet): { 
   } else if (nav.mode === 'system') {
     const scene = systemScene(nav.star.seed);
     drawn.push({ wx: 0, wy: 0, r: primaryWidth(scene) / 2 });
+    const z = artCamera(cam, frame.dpr, artScale(view.w, view.h, frame.dpr)).z;
     for (const body of visibleBodies(nav, cam, view, time)) {
       if (body.kind !== 'planet') continue;
       const own = 6 * (typeof body.ref.P.sizeMul === 'number' && body.ref.P.sizeMul !== 0 ? body.ref.P.sizeMul : 1);
       // A planet the sheet draws is as wide as its drawing, in whole steps: its name hangs from the foot of that.
-      const z = artCamera(cam, frame.dpr, artScale(view.w, view.h, frame.dpr)).z;
       const wide = sheet === undefined || frame.sized !== true ? undefined : fittedWidth(sheet, `planet/${body.ref.type}`, 2 * Math.round(own * z) + 1);
       const size = wide === undefined ? own : Math.max(own, ((wide >> 1) + 1) / z);
       const ring = body.ref.ring ? own * 2.1 : 0;
