@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
-// The Compendium's kingdom and rarity filters and its shelves. Port of the module assertions of
-// SOURCE tests/d16-compendium-chips-outcome.test.ts; the species below are its list (lines 41-48).
+// The Compendium's kingdom and rarity filters, its order, its heading and its shelves, as the legacy game has them
+// (LEGACY celestial-frontier.html, renderCodex 15221-15307, the chips 15436-15449). Lines cited below are that file's.
 import { REALM_ICON, REALM_ORDER } from '@cf/domain-genome';
 import { describe, expect, it } from 'vitest';
 import {
   CODEX_KINGDOM_CHIPS_V1, CODEX_RARITY_CHIPS_V1, CODEX_SHELF_OF_V1, CODEX_SHELF_ORDER_V1, DEFAULT_CODEX_LIST_VIEW_V1,
-  codexChipBarV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, codexShelfOfV1,
-  shelveCodexRowsV1, type CodexEntryLikeV1, type CodexListViewV1,
+  codexChipBarV1, codexChipPressV1, codexChipsFilteringV1, codexChipsShownV1, codexEmptyNoteV1, codexEntryMatchesV1, codexHeadingV1,
+  codexShelfLabelV1, codexShelfOfV1, compareCodexEntriesV1, shelveCodexRowsV1, type CodexEntryLikeV1, type CodexListViewV1,
 } from '../src/compendium';
 import { recordCanvasPainting } from './support/fake-canvas';
 
@@ -26,13 +26,13 @@ const shown = (v: CodexListViewV1): string[] => CODEX.filter((e) => codexEntryMa
 const EMOJI = /\p{Extended_Pictographic}|\p{Regional_Indicator}|️|⃣/u;
 
 describe('Compendium filters', () => {
-  it('the two chip ladders are the current game\'s, with an icon name where it drew an emoji', () => {
-    // LEGACY main.js:12981 (kingdoms) and main.js:12985 (rarity floors); SOURCE apps/game/src/compendium-shelves.ts:16-21.
+  it('the two chip ladders are the legacy game\'s (15440, 15443), with an icon name where it drew an emoji; there is no Shelves chip and no text search', () => {
     expect(CODEX_KINGDOM_CHIPS_V1).toEqual([
       ['all', 'All', null], ['Fauna', 'Fauna', 'paw'], ['Flora', 'Flora', 'flora'], ['Fungi', 'Fungi', 'fungi'], ['Microbe', 'Microbes', 'microbe'],
     ]);
     expect(CODEX_RARITY_CHIPS_V1).toEqual([[0, 'All'], [3, 'Rare+'], [5, 'Legendary+'], [6, 'Mythic+']]);
-    expect(DEFAULT_CODEX_LIST_VIEW_V1).toEqual({ query: '', kingdom: 'all', rarityFloor: 0, shelves: false });
+    // LEGACY 15323-15324: the view is a kingdom and a rarity floor, nothing else; shelves are always on (15284-15306).
+    expect(DEFAULT_CODEX_LIST_VIEW_V1).toEqual({ kingdom: 'all', rarityFloor: 0 });
   });
 
   it('the kingdom chip filters by kind, and All restores', () => {
@@ -42,7 +42,6 @@ describe('Compendium filters', () => {
     expect(codexChipsFilteringV1(view())).toBe(false);
     expect(codexChipsFilteringV1(view({ kingdom: 'Fauna' }))).toBe(true);
     expect(codexChipsFilteringV1(view({ rarityFloor: 3 }))).toBe(true);
-    expect(codexChipsFilteringV1(view({ query: 'newt' }))).toBe(false);
   });
 
   it('the rarity floor compares the display tier: raw 12 passes Mythic+, and an unrated species passes no floor', () => {
@@ -60,24 +59,46 @@ describe('Compendium filters', () => {
     expect(codexEntryMatchesV1(entry('x', 'Fauna', 'Land Fauna', 14), view({ rarityFloor: 6 }))).toBe(true);
   });
 
-  it('the text query matches name, kind or realm without regard to case, together with the chips', () => {
-    expect(shown(view({ query: 'NEWT' }))).toEqual(['Newt']);
-    expect(shown(view({ query: 'aquatic' }))).toEqual(['Salmon']);
-    expect(shown(view({ query: 'fauna' }))).toEqual(['Civet', 'Newt', 'Salmon']);
-    expect(shown(view({ query: 'fauna', rarityFloor: 5 }))).toEqual(['Newt', 'Salmon']);
-    expect(shown(view({ query: 'zzz' }))).toEqual([]);
+  it('LEGACY 15439: the chips are shown only after training and with at least one species', () => {
+    expect(codexChipsShownV1({ tutDone: true, species: 1 })).toBe(true);
+    expect(codexChipsShownV1({ tutDone: false, species: 9 })).toBe(false);
+    expect(codexChipsShownV1({ tutDone: true, species: 0 })).toBe(false);
+  });
+
+  it('LEGACY 15232: the list reads rarest first by raw tier, then hybrids, then kind, then name', () => {
+    const list = [
+      entry('Bee', 'Fauna', 'Land Fauna', 3), entry('Ant', 'Fauna', 'Land Fauna', 3), entry('Moss', 'Flora', 'Flora', 3),
+      entry('Cross', 'Fungi', 'Fungi', 3, true), entry('Top', 'Microbe', 'Microbial Life', 12), entry('High', 'Fauna', 'Land Fauna', 9),
+      entry('None', 'Fauna', 'Land Fauna', null), entry('Zero', 'Fauna', 'Land Fauna', 0),
+    ];
+    expect([...list].sort(compareCodexEntriesV1).map((e) => e.name)).toEqual(['Top', 'High', 'Cross', 'Ant', 'Bee', 'Moss', 'None', 'Zero']);
+  });
+
+  it('LEGACY 15242-15244: the heading counts all species and hybrids, or what a filter shows', () => {
+    expect(codexHeadingV1(view(), { shown: 6, total: 6, hybrids: 1 })).toBe('6 species · 1 hybrid bred');
+    expect(codexHeadingV1(view(), { shown: 6, total: 6, hybrids: 2 })).toBe('6 species · 2 hybrids bred');
+    expect(codexHeadingV1(view({ kingdom: 'Fauna' }), { shown: 3, total: 6, hybrids: 1 })).toBe('3 fauna shown · 6 species in all');
+    expect(codexHeadingV1(view({ kingdom: 'Microbe' }), { shown: 1, total: 6, hybrids: 1 })).toBe('1 microbes shown · 6 species in all');
+    expect(codexHeadingV1(view({ rarityFloor: 5 }), { shown: 2, total: 6, hybrids: 1 })).toBe('2 species shown · 6 species in all');
+  });
+
+  it('LEGACY 15245-15248: an empty filtered list says why, the rarity floor first', () => {
+    expect(codexEmptyNoteV1(view(), 0)).toBeNull();
+    expect(codexEmptyNoteV1(view({ rarityFloor: 3 }), 2)).toBeNull();
+    expect(codexEmptyNoteV1(view({ rarityFloor: 3 }), 0)).toBe('No species at Rare or above yet — the rarest finds live farthest out.');
+    expect(codexEmptyNoteV1(view({ rarityFloor: 6, kingdom: 'Flora' }), 0)).toBe('No flora at Mythic or above yet — the rarest finds live farthest out.');
+    expect(codexEmptyNoteV1(view({ kingdom: 'Fauna' }), 0)).toBe('Nothing on this shelf yet — every creature you Discover will land here.');
+    expect(codexEmptyNoteV1(view({ kingdom: 'Fungi' }), 0)).toBe('Nothing on this shelf yet — every fungi you catalogue will land here.');
   });
 
   it('a chip press changes only its own part of the view; anything else is not a chip', () => {
-    const base = view({ query: 'a' });
-    expect(codexChipPressV1(base, { ck: 'Fauna' })).toEqual({ query: 'a', kingdom: 'Fauna', rarityFloor: 0, shelves: false });
-    expect(codexChipPressV1(base, { cr: '5' })).toEqual({ query: 'a', kingdom: 'all', rarityFloor: 5, shelves: false });
-    expect(codexChipPressV1(base, { cshelves: 'on' })).toEqual({ query: 'a', kingdom: 'all', rarityFloor: 0, shelves: true });
-    expect(codexChipPressV1(view({ shelves: true }), { cshelves: 'off' })?.shelves).toBe(false);
+    const base = view();
+    expect(codexChipPressV1(base, { ck: 'Fauna' })).toEqual({ kingdom: 'Fauna', rarityFloor: 0 });
+    expect(codexChipPressV1(base, { cr: '5' })).toEqual({ kingdom: 'all', rarityFloor: 5 });
     expect(codexChipPressV1(base, {})).toBeNull();
     expect(codexChipPressV1(base, { ck: 'Animal' })).toBeNull();
     expect(codexChipPressV1(base, { cr: '4' })).toBeNull();
-    expect(codexChipPressV1(base, { cshelves: 'maybe' })).toBeNull();
+    expect(codexChipPressV1(base, { cshelves: 'on' } as never)).toBeNull();
   });
 
   it('the chip bar is a toolbar of real buttons, each saying whether it is pressed, with icons and no emoji', () => {
@@ -86,17 +107,16 @@ describe('Compendium filters', () => {
     expect([...bar.children].map((row) => row.className)).toEqual(['codex-chip-row', 'codex-chip-row']);
     const chips = [...bar.querySelectorAll('button')];
     expect(chips.every((chip) => chip.type === 'button' && chip.classList.contains('codex-chip'))).toBe(true);
-    const read = (chip: HTMLButtonElement): string => `${chip.dataset.ck ?? chip.dataset.cr ?? `shelves:${chip.dataset.cshelves}`}=${chip.textContent}${chip.getAttribute('aria-pressed') === 'true' ? '*' : ''}`;
+    const read = (chip: HTMLButtonElement): string => `${chip.dataset.ck ?? chip.dataset.cr}=${chip.textContent}${chip.getAttribute('aria-pressed') === 'true' ? '*' : ''}`;
     expect(chips.map(read)).toEqual(['all=All', 'Fauna=Fauna*', 'Flora=Flora', 'Fungi=Fungi', 'Microbe=Microbes',
-      '0=All', '3=Rare+', '5=Legendary+*', '6=Mythic+', 'shelves:on=Shelves']);
-    expect(chips.map((chip) => chip.classList.contains('on'))).toEqual([false, true, false, false, false, false, false, true, false, false]);
-    // a floor chip wears the colour of its rarity (SOURCE tests/rarity-presentation.test.ts:11,13,14); All does not
+      '0=All', '3=Rare+', '5=Legendary+*', '6=Mythic+']);
+    expect(chips.map((chip) => chip.classList.contains('on'))).toEqual([false, true, false, false, false, false, false, true, false]);
+    // a floor chip wears the colour of its rarity (LEGACY 15446, the hex of 4190, 4192, 4193); All does not
     expect(chips.slice(5, 9).map((chip) => chip.style.color)).toEqual(['', 'rgb(61, 139, 255)', 'rgb(244, 166, 42)', 'rgb(229, 75, 141)']);
     // the icon is decoration: the words are the name
-    expect(chips.map((chip) => chip.querySelectorAll('.icon[aria-hidden="true"]').length)).toEqual([0, 1, 1, 1, 1, 0, 0, 0, 0, 1]);
+    expect(chips.map((chip) => chip.querySelectorAll('.icon[aria-hidden="true"]').length)).toEqual([0, 1, 1, 1, 1, 0, 0, 0, 0]);
     expect(EMOJI.test(bar.textContent ?? '')).toBe(false);
-    const shelved = codexChipBarV1(view({ shelves: true })).querySelector<HTMLButtonElement>('[data-cshelves]')!;
-    expect([shelved.dataset.cshelves, shelved.getAttribute('aria-pressed')]).toEqual(['off', 'true']);
+    expect(bar.querySelector('[data-cshelves]')).toBeNull();
   });
 });
 
@@ -105,8 +125,7 @@ describe('Compendium shelves', () => {
   const read = (open: readonly string[], forceOpen = false): string[] => shelveCodexRowsV1(rows, new Set(open), forceOpen)
     .map((item) => item.type === 'shelf' ? `[${item.header.shelf}${item.header.open ? '+' : ''} ${item.header.count}/${item.header.hybrids} ${item.header.kingdom}]` : item.row.value.name);
 
-  it('realms fold onto the current game\'s shelves, in realm order', () => {
-    // LEGACY main.js:12853; SOURCE apps/game/src/compendium-shelves.ts:47-51.
+  it('realms fold onto the legacy game\'s shelves (15311-15319), in realm order (15322)', () => {
     expect(CODEX_SHELF_OF_V1).toEqual({
       'Gas Giant Life': 'Aerial Fauna', 'Amphibious Life': 'Amphibious Fauna', 'Subterranean Life': 'Cave Fauna',
       'Extreme-World Life': 'Extremophile Fauna', 'Exotic Biochemistry': 'Extremophile Fauna',
@@ -123,11 +142,11 @@ describe('Compendium shelves', () => {
     expect(codexShelfOfV1({ realm: '', kind: 'Fauna' })).toBe('Fauna');
   });
 
-  it('nothing opens itself: closed shelves show only their headers, with counts', () => {
+  it('LEGACY 15297, 15308: nothing opens itself: closed shelves show only their headers, with counts', () => {
     expect(read([])).toEqual(['[Microbial Life 1/0 microbe]', '[Flora 1/0 flora]', '[Fungi 1/0 fungi]', '[Land Fauna 1/0 fauna]', '[Aquatic Fauna 1/0 fauna]', '[Amphibious Fauna 1/1 fauna]']);
   });
 
-  it('an opened shelf shows its rows, and a chip filter lays every shelf open', () => {
+  it('LEGACY 15297: an opened shelf shows its rows, and a chip filter lays every shelf open', () => {
     expect(read(['Land Fauna'])).toEqual(['[Microbial Life 1/0 microbe]', '[Flora 1/0 flora]', '[Fungi 1/0 fungi]', '[Land Fauna+ 1/0 fauna]', 'Civet', '[Aquatic Fauna 1/0 fauna]', '[Amphibious Fauna 1/1 fauna]']);
     expect(read([], true).filter((line) => !line.startsWith('['))).toEqual(['Diatom', 'Fern', 'Morel', 'Civet', 'Salmon', 'Newt']);
     expect(read([], true).filter((line) => line.startsWith('[')).every((line) => line.includes('+'))).toBe(true);

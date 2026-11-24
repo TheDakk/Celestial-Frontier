@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
-// The reveal of a newly catalogued species, and its queue. Port of the queue's outcomes of
-// SOURCE tests/d16-compendium-reveal-outcome.test.ts, pressed through the real buttons.
+// The reveal of a newly catalogued species, and its queue, as the legacy game has them
+// (LEGACY celestial-frontier.html: showReveal 15013-15023, the reveal's taps 15208-15213, the flush 14990-14995, Escape 5806).
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { CompendiumRevealQueueV1, anotherModalOpen, type RevealArtPortV1, type RevealEntryV1 } from '../src/compendium';
 
 const settle = async (): Promise<void> => { for (let i = 0; i < 5; i++) await new Promise((r) => setTimeout(r, 0)); };
-const entry = (logicalId: string, name: string, hybrid = false): RevealEntryV1 => ({ logicalId, name, kind: 'Fauna', hybrid, genome: { seed: logicalId.length } });
+const entry = (logicalId: string, name: string, hybrid = false): RevealEntryV1 => ({ logicalId, name, kind: 'Fauna', realm: 'Land Fauna', from: 'Earth', gen: hybrid ? 2 : 0, hybrid, genome: { seed: logicalId.length } });
 const host = (): HTMLElement | null => document.getElementById('reveal');
 const text = (sel: string): string | null => document.querySelector(`[data-sel="${sel}"]`)?.textContent ?? null;
 const press = (sel: string): void => { const b = document.querySelector<HTMLElement>(`[data-sel="${sel}"]`); if (!b) throw new Error(`no ${sel}`); b.click(); };
@@ -36,7 +36,7 @@ beforeEach(() => {
 afterEach(() => { queue?.dispose(); queue = null; });
 
 describe('the Compendium reveal queue', () => {
-  it('shows one species at a time; Continue walks the rest in order; the last Continue closes and returns focus', async () => {
+  it('LEGACY 15023, 15212-15213: shows one species at a time; a tap walks the rest in order; the last tap closes and returns focus', async () => {
     const { art, portraits } = artPort();
     const drained = vi.fn();
     const q = make({ art, onDrained: drained });
@@ -48,9 +48,12 @@ describe('the Compendium reveal queue', () => {
     expect(text('reveal-name')).toBe('Ochre Strider');
     expect(byId('rev-name').textContent).toBe('Ochre Strider');
     expect(text('reveal-title')).toBe('Compendium specimen');
-    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('Fauna');
-    expect(text('reveal-continue')).toBe('Continue · 1 more');
-    expect(text('reveal-skip')).toBe('Skip all (1)');
+    // LEGACY 15049: the realm (or kind) and where it was found; a hybrid reads its generation
+    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('Land Fauna · Earth');
+    // LEGACY 15023: one line, and no Skip all button
+    expect(text('reveal-continue')).toBe('tap to continue · 1 more — hold to skip all');
+    expect(document.querySelector('[data-sel="reveal-skip"]')).toBeNull();
+    expect(host()!.querySelectorAll('button').length).toBe(1);
     expect(q.state()).toEqual({ showing: 's22', queued: ['h333'] });
     const portrait = (): HTMLImageElement => document.querySelector<HTMLImageElement>('[data-sel="reveal-portrait"]')!;
     expect(portrait().dataset.artState).toBe('placeholder');
@@ -59,17 +62,16 @@ describe('the Compendium reveal queue', () => {
     expect(portrait().getAttribute('src')).toBe('data:image/png;base64,AA');
     expect(portraits[0]).toMatchObject({ owner: 'compendium-reveal', genome: { seed: 3 }, cancelled: false });
 
-    press('reveal-continue');
+    press('reveal-name'); // LEGACY 15212: a tap anywhere but the line shows the next
     expect(text('reveal-name')).toBe('Strider Hybrid');
     expect(text('reveal-title')).toBe('Hybrid specimen');
-    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('Fauna · hybrid');
-    expect(text('reveal-continue')).toBe('Continue');
-    expect(text('reveal-skip')).toBeNull();
+    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('Hybrid · generation 2');
+    expect(text('reveal-continue')).toBe('tap to continue');
     expect(portraits[0]!.cancelled).toBe(true); // the first species' portrait request left with it
-    expect(document.activeElement).toBe(document.querySelector('[data-sel="reveal-continue"]'));
+    expect(document.activeElement).toBe(host());
     expect(drained).not.toHaveBeenCalled();
 
-    press('reveal-continue');
+    press('reveal-continue'); // LEGACY 15213: with none waiting the line continues like any tap
     expect(host()!.hidden).toBe(true);
     expect(portraits[1]!.cancelled).toBe(true);
     expect(document.activeElement).toBe(byId('opener'));
@@ -80,23 +82,42 @@ describe('the Compendium reveal queue', () => {
   it('a species that arrives while one is showing queues behind it, and the card counts it', () => {
     const q = make();
     q.enqueue(entry('one', 'One'));
-    expect(text('reveal-continue')).toBe('Continue');
+    expect(text('reveal-continue')).toBe('tap to continue');
     q.enqueue(entry('two', 'Two'));
     expect(q.state()).toEqual({ showing: 'one', queued: ['two'] });
     expect(text('reveal-name')).toBe('One');
-    expect(text('reveal-continue')).toBe('Continue · 1 more');
+    expect(text('reveal-continue')).toBe('tap to continue · 1 more — hold to skip all');
   });
 
-  it('Skip all clears the queue and closes', () => {
+  it('LEGACY 15208-15210: with more waiting, the line itself skips all: the queue empties and the reveal closes', () => {
     const q = make();
     for (const e of [entry('a', 'A'), entry('bb', 'B'), entry('ccc', 'C')]) q.enqueue(e);
-    expect(text('reveal-skip')).toBe('Skip all (2)');
-    press('reveal-skip');
+    expect(text('reveal-continue')).toBe('tap to continue · 2 more — hold to skip all');
+    press('reveal-continue');
     expect(host()!.hidden).toBe(true);
     expect(q.state()).toEqual({ showing: null, queued: [] });
   });
 
-  it('Escape skips all', () => {
+  it('LEGACY 15212, 14995: a species shown from the queue is titled Hybrid specimen whatever it is', () => {
+    const q = make();
+    q.enqueue(entry('a', 'A')); q.enqueue(entry('bb', 'Plain'));
+    expect(text('reveal-title')).toBe('Compendium specimen');
+    press('reveal-name');
+    expect(text('reveal-name')).toBe('Plain');
+    expect(text('reveal-title')).toBe('Hybrid specimen');
+    expect(q.state()).toEqual({ showing: 'bb', queued: [] });
+  });
+
+  it('Enter or Space on the card continues, for a player with no pointer', () => {
+    const q = make();
+    q.enqueue(entry('a', 'A')); q.enqueue(entry('bb', 'B'));
+    host()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    expect(q.state()).toEqual({ showing: 'bb', queued: [] });
+    host()!.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }));
+    expect(q.state()).toEqual({ showing: null, queued: [] });
+  });
+
+  it('LEGACY 5806: Escape skips all', () => {
     const q = make();
     q.enqueue(entry('a', 'A')); q.enqueue(entry('bb', 'B'));
     host()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
@@ -137,15 +158,15 @@ describe('the Compendium reveal queue', () => {
   });
 
   it('a name is shown as written, never read as markup', () => {
-    make().enqueue({ logicalId: 'x', name: '<img id="planted"> & "Q"', kind: '<b>Fauna</b>', hybrid: false, genome: null });
+    make().enqueue({ logicalId: 'x', name: '<img id="planted"> & "Q"', kind: 'Fauna', realm: '<b>Fauna</b>', from: '<i>X</i>', gen: 0, hybrid: false, genome: null });
     expect(text('reveal-name')).toBe('<img id="planted"> & "Q"');
-    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('<b>Fauna</b>');
+    expect(host()!.querySelector('.reveal-kind')!.textContent).toBe('<b>Fauna</b> · <i>X</i>');
     expect(document.getElementById('planted')).toBeNull();
   });
 
   it('a species without a genome, or a queue without an art port, asks for no portrait; an art port that throws marks the picture', () => {
     const { art, portraits } = artPort();
-    make({ art }).enqueue({ logicalId: 'x', name: 'X', kind: 'Flora', hybrid: false, genome: null });
+    make({ art }).enqueue({ logicalId: 'x', name: 'X', kind: 'Flora', realm: '', from: 'Earth', gen: 0, hybrid: false, genome: null });
     expect(portraits).toEqual([]);
     queue!.dispose();
     make().enqueue(entry('y', 'Y'));

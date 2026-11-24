@@ -1,9 +1,10 @@
-/* The reveal of a newly catalogued species, and its queue.
+/* The reveal of a newly catalogued species, and its queue, as the legacy game has them.
  *
- * A newly catalogued page (a first catch, a bred hybrid) is revealed as a modal card: the portrait, the name, the kind and
- * "Continue". While another modal owns the screen the reveal queues: it never pops over an open modal and steals its Escape;
- * the next input after that modal closes shows it. With more waiting, Continue shows the next one and "Skip all (N)" clears
- * the rest. Escape skips all.
+ * A newly catalogued page (a first catch, a bred hybrid) is revealed as a modal card: the portrait, the name, where it
+ * comes from and one line, "tap to continue". While another modal owns the screen the reveal queues: it never pops over an
+ * open modal and steals its Escape; the next input after that modal closes shows it. With more waiting the line reads
+ * "tap to continue · N more — hold to skip all": a tap anywhere else shows the next one, the line itself clears the rest.
+ * Escape skips all. A species shown from the queue is titled "Hybrid specimen", as the legacy game titles it.
  *
  * View state only: nothing here writes the save. The portrait is asked of an injected art port and its request is cancelled
  * when the species leaves. */
@@ -12,6 +13,12 @@ export interface RevealEntryV1 {
   readonly logicalId: string;
   readonly name: string;
   readonly kind: string;
+  /** The precise realm; empty when unknown (the kind is read instead). */
+  readonly realm: string;
+  /** The world it was first catalogued on. */
+  readonly from: string;
+  /** A hybrid's generation. */
+  readonly gen: number;
   readonly hybrid: boolean;
   readonly genome: Readonly<Record<string, unknown>> | null;
 }
@@ -33,10 +40,9 @@ export interface CompendiumRevealStateV1 { readonly showing: string | null; read
 const WORDS = Object.freeze({
   title: 'Compendium specimen',
   hybridTitle: 'Hybrid specimen',
-  hybridMark: ' · hybrid',
-  continue: 'Continue',
-  continueMore: (more: number): string => `Continue · ${more} more`,
-  skipAll: (more: number): string => `Skip all (${more})`,
+  origin: (entry: RevealEntryV1): string => entry.hybrid ? `Hybrid · generation ${entry.gen}` : `${entry.realm || entry.kind} · ${entry.from}`,
+  continue: 'tap to continue',
+  continueMore: (more: number): string => `tap to continue · ${more} more — hold to skip all`,
 });
 
 /** Another modal owns the screen: an open dialog, or a shown element in the modal dialog role, other than the reveal. */
@@ -50,6 +56,8 @@ export class CompendiumRevealQueueV1 {
   readonly #o: CompendiumRevealOptionsV1;
   readonly #queue: RevealEntryV1[] = [];
   #showing: RevealEntryV1 | null = null;
+  /** The species on show came from the queue. */
+  #fromQueue = false;
   #host: HTMLElement | null = null;
   #portrait: RevealPortraitRequestV1 | null = null;
   /** The current specimen's portrait once it arrives — reapplied by every render (a queued arrival re-renders the card). */
@@ -85,7 +93,7 @@ export class CompendiumRevealQueueV1 {
   /** Show the next queued reveal when nothing blocks it (the input pulse calls this; so may the owner). */
   flush(): void {
     if (this.#disposed || this.#showing !== null || this.#queue.length === 0 || this.#o.blocked()) return;
-    this.#show(this.#queue.shift()!);
+    this.#show(this.#queue.shift()!, true);
   }
   state(): CompendiumRevealStateV1 {
     return Object.freeze({ showing: this.#showing?.logicalId ?? null, queued: Object.freeze(this.#queue.map((e) => e.logicalId)) });
@@ -105,23 +113,28 @@ export class CompendiumRevealQueueV1 {
     host.setAttribute('aria-modal', 'true');
     host.setAttribute('aria-labelledby', 'rev-name');
     host.hidden = true;
+    host.tabIndex = -1;
     host.addEventListener('click', (event) => {
-      const t = (event.target as HTMLElement).closest<HTMLElement>('[data-rev]');
-      if (!t) return;
       event.stopPropagation();
-      if (t.dataset.rev === 'skip') this.#skipAll(); else this.#continue();
+      // The line itself, with more waiting, skips them all; any other tap continues.
+      if ((event.target as HTMLElement).closest('[data-rev]') && this.#queue.length) this.#skipAll(); else this.#continue();
     });
-    host.addEventListener('keydown', (event) => { if ((event as KeyboardEvent).key === 'Escape') { event.stopPropagation(); this.#skipAll(); } });
+    host.addEventListener('keydown', (event) => {
+      const key = (event as KeyboardEvent).key;
+      if (key === 'Escape') { event.stopPropagation(); this.#skipAll(); }
+      else if ((key === 'Enter' || key === ' ') && event.target === host) { event.preventDefault(); event.stopPropagation(); this.#continue(); }
+    });
     doc.body.append(host);
     this.#host = host;
     return host;
   }
-  #show(entry: RevealEntryV1): void {
+  #show(entry: RevealEntryV1, fromQueue = false): void {
     this.#watchInput(false);
     const doc = this.#o.document;
     if (this.#showing === null) this.#returnFocus = doc.activeElement instanceof doc.defaultView!.HTMLElement ? doc.activeElement as HTMLElement : null;
     this.#portrait?.cancel(); this.#portrait = null; this.#portraitUrl = null;
     this.#showing = entry;
+    this.#fromQueue = fromQueue;
     const host = this.#ensureHost();
     host.hidden = false;
     this.#render();
@@ -133,19 +146,18 @@ export class CompendiumRevealQueueV1 {
         if (request.current) publish(request.current);
       } catch { const img = host.querySelector<HTMLImageElement>('[data-sel="reveal-portrait"]'); if (img) img.dataset.artState = 'error'; }
     }
-    host.querySelector<HTMLButtonElement>('[data-rev="continue"]')!.focus();
+    host.focus();
   }
   #render(): void {
     const host = this.#host, entry = this.#showing;
     if (!host || !entry) return;
     const more = this.#queue.length;
     host.innerHTML = '<div class="reveal-card">'
-      + `<div class="reveal-title" data-sel="reveal-title">${entry.hybrid ? WORDS.hybridTitle : WORDS.title}</div>`
+      + `<div class="reveal-title" data-sel="reveal-title">${entry.hybrid || this.#fromQueue ? WORDS.hybridTitle : WORDS.title}</div>`
       + '<img data-sel="reveal-portrait" data-art-state="placeholder" alt="" width="440" height="440">'
       + `<div class="reveal-name" id="rev-name" data-sel="reveal-name">${esc(entry.name)}</div>`
-      + `<div class="reveal-kind">${esc(entry.kind)}${entry.hybrid ? WORDS.hybridMark : ''}</div>`
+      + `<div class="reveal-kind">${esc(WORDS.origin(entry))}</div>`
       + `<button type="button" data-rev="continue" data-sel="reveal-continue">${more ? WORDS.continueMore(more) : WORDS.continue}</button>`
-      + (more ? `<button type="button" data-rev="skip" data-sel="reveal-skip">${WORDS.skipAll(more)}</button>` : '')
       + '</div>';
     this.#applyPortrait();
   }
@@ -154,7 +166,7 @@ export class CompendiumRevealQueueV1 {
     if (img && this.#portraitUrl) { img.src = this.#portraitUrl; img.dataset.artState = 'ready'; }
   }
   #continue(): void {
-    if (this.#queue.length) { this.#show(this.#queue.shift()!); return; }
+    if (this.#queue.length) { this.#show(this.#queue.shift()!, true); return; }
     this.#close(false);
   }
   #skipAll(): void { this.#queue.length = 0; this.#close(false); }

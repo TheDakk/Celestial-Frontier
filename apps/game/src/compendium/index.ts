@@ -9,9 +9,13 @@ export {
   codexChipBarV1,
   codexChipPressV1,
   codexChipsFilteringV1,
+  codexChipsShownV1,
+  codexEmptyNoteV1,
   codexEntryMatchesV1,
+  codexHeadingV1,
   codexShelfLabelV1,
   codexShelfOfV1,
+  compareCodexEntriesV1,
   shelveCodexRowsV1,
 } from './shelves';
 export type { CodexEntryLikeV1, CodexKingdomV1, CodexListItemV1, CodexListViewV1, CodexRarityFloorV1, CodexShelfHeaderV1 } from './shelves';

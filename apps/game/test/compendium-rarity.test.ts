@@ -1,4 +1,5 @@
-// Port of SOURCE tests/rarity-presentation.test.ts. The ten names and colours are SOURCE tests/rarity-presentation.test.ts:7-18.
+// The rarity words as data. The ten ids, names and colours are LEGACY celestial-frontier.html 4190-4201 (RARITY_V17), and raw
+// 10 to 14 read Transcendent (LEGACY 4202, displayRarity). Data only: nothing is wired to a screen from here.
 import { describe, expect, it } from 'vitest';
 import {
   projectDisplayRarity,
