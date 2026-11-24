@@ -125,7 +125,7 @@ const PART = `part ${ID}\nframe rest anchor=0,0\n1\n`;
 const SCAF = 'scaffold quadruped/sturdy/small origin=0,0\n';
 
 describe('parseCatalogueText: palette checks', () => {
-  it('rejects palette indices outside 0..95', () => {
+  it('rejects palette indices below 0 or from 16,777,216 (2 to the 24th) up', () => {
     expect(thrown('palette\ncolour -1 ffffff')).toBe('line 2: bad colour index -1');
     expect(thrown('palette\ncolour 0 ffffff\nramp r 0 0 0 16777216')).toBe('line 3: bad colour index 16777216');
     expect(thrown('palette\noutline -2')).toBe('line 2: bad colour index -2');
