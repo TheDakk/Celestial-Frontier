@@ -2021,3 +2021,38 @@ describe('check-pack coverage: what the generator asks for', () => {
     }
   });
 });
+
+describe('checkPack: a creature drawn as the fallback for a part the pack lacks is a counted gap', () => {
+  const membranous = withLayers(onTorso(GOOD, 'membranous'));
+  const FALLBACK = 'fallback:quadruped:missing-part';
+
+  it('a winged body in water whose pack lacks its flippers: information, by count, beside the missing part', () => {
+    const r = checkPack(membranous);
+    expect(errorsOf(r)).toEqual([]);
+    expect(r.ok).toBe(true);
+    const counted = r.gaps.find((g) => g.gap === FALLBACK)!;
+    expect(counted).toMatchObject({ error: false });
+    expect(counted.count).toBeGreaterThan(0);
+    expect(r.gaps.find((g) => g.gap === 'fallback:quadruped')).toBeUndefined();
+    const lines = formatReport(r).split('\n');
+    expect(lines[0]).toBe('check-pack: OK');
+    expect(lines).toContain(`info: gap ${FALLBACK} (x${counted.count})`);
+    expect(lines.some((l) => l.startsWith('info: gap missing:quadruped/nearLimbs/flipper/small/v0 (x'))).toBe(true);
+  });
+
+  it('a pack with one head kind passes, and fails only where coverage is required: the other heads are drawn as the fallback', () => {
+    const r = checkPack(GOOD);
+    expect(r.ok).toBe(true);
+    expect(r.coverage!.fallsBack).toBeGreaterThan(0);
+    expect(r.coverage!.parts.some((p) => /^quadruped\/head\/h[1-9]\/small\/v0$/.test(p.id))).toBe(true);
+    expect(coverageShortfall(r.coverage!)).toMatch(/generated creatures cannot be drawn in full$/);
+  });
+
+  it('a fallback for any other reason is still an error: the plain gap, and a pack with no fallback part', () => {
+    expect(gapIsInfo(FALLBACK)).toBe(true);
+    expect(gapIsInfo('fallback:quadruped')).toBe(false);
+    const r = checkPack(planted('fallback quadruped quadruped/torso/fallback/small/v0\n', '', membranous));
+    expect(r.ok).toBe(false);
+    expect(errorsOf(r).some((l) => l.includes('no fallback'))).toBe(true);
+  });
+});

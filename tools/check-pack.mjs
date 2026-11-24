@@ -145,10 +145,12 @@ const isFlipper = (kind) => kind === 'flipper' || kind.startsWith('flipper-');
  * creature's pattern (`marks:`), a translucent creature's torso frame with no `translucent` layer (`skin:`), a leg
  * role drawn with the shared leg (`role:`), a missing back part, head feature, wing,
  * sails or body feature (`missing:` of a part in slot back, headFeature, farWings, nearWings or bodyFeature), or a
- * missing flipper (in slot farLimbs or nearLimbs). Every other gap is an error, a missing `t0` tail or `pit` eye included.
+ * missing flipper (in slot farLimbs or nearLimbs), or a creature drawn as its family's fallback because the pack lacks a
+ * torso, a head or a limb it asks for (`fallback:<family>:missing-part`, counted beside the gap that names the part,
+ * which keeps its own class). Every other gap is an error, a missing `t0` tail or `pit` eye and a fallback for any other reason (`fallback:<family>`) included.
  */
 export function gapIsInfo(gap) {
-  if (/^(variant|marks|skin|role):/.test(gap)) return true;
+  if (/^(variant|marks|skin|role):/.test(gap) || /^fallback:[^:]+:missing-part$/.test(gap)) return true;
   const m = /^missing:[^/]*\/([^/]*)\/([^/]*)\//.exec(gap);
   return m !== null && (INFO_SLOTS.includes(m[1]) || ((m[1] === 'farLimbs' || m[1] === 'nearLimbs') && isFlipper(m[2])));
 }
@@ -1108,7 +1110,12 @@ export function checkPack(text, options = {}) {
         return undefined;
       }
       composed++;
-      for (const gap of out.gaps) gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+      // A fallback drawn because the pack lacks a part the creature cannot be drawn without is counted apart from one drawn for any other reason.
+      const lacks = out.gaps.some(lacksEssentialPart);
+      for (const gap of out.gaps) {
+        const key = lacks && gap.startsWith('fallback:') ? `${gap}:missing-part` : gap;
+        gapCounts.set(key, (gapCounts.get(key) ?? 0) + 1);
+      }
       return out;
     };
     /** Composes one recipe in every pose for its gaps and compose failures only. */
