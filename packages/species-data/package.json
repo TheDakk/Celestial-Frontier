@@ -1,0 +1,13 @@
+{
+  "name": "@cf/species-data",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Plain data about named species: the Earth fauna profiles, which give each of Earth's animal names its candidate body templates, the media it lives in and the moves intended for it.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@cf/domain-descriptors": "*"
+  }
+}
