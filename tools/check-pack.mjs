@@ -29,7 +29,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, PIXEL_BONE, PIXEL_CHARS, BONE_RAMP } = await import('@cf/art-format');
-const { buildRecipe, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
+const { buildRecipe, lacksEssentialPart, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 const { guardianFor, makeGenome } = await import('@cf/domain-genome');
 
@@ -297,7 +297,8 @@ const TIER_ORDER = ['small', 'medium', 'large', 'guardian'];
  * is built with no lineage and put in one of four counts of its family and tier. `noScaffold`: the pack holds no
  * scaffold `<family>/<torso>/<tier>` for it, so nothing but a fallback can be drawn (its parts are not looked at).
  * `missingPart`: the scaffold is there and at least one part it asks for is not (a `missing:` gap, named by the last id
- * tried). `composeGap`: scaffold and parts are there, and composing its rest pose meets a pose the scaffold lacks
+ * tried); `fallsBack` counts those of them drawn as their family's fallback, because the missing part is a torso, a
+ * head or a leg (lacksEssentialPart), where the others are drawn without the missing part. `composeGap`: scaffold and parts are there, and composing its rest pose meets a pose the scaffold lacks
  * (`pose:`) or a translucent skin its torso frame has no layer for (`skin:`). `full`: none of these. Each missing
  * scaffold, part and such gap is named once, with the creatures that met it.
  *
@@ -315,7 +316,7 @@ function coverageOf(catalogue, { first, last }) {
   const ask = (genome) => {
     const recipe = buildRecipe(genome, [], catalogue);
     const key = `${recipe.family} ${recipe.tier}`;
-    const row = rows.get(key) ?? { family: recipe.family, tier: recipe.tier, asked: 0, full: 0, noScaffold: 0, missingPart: 0, composeGap: 0 };
+    const row = rows.get(key) ?? { family: recipe.family, tier: recipe.tier, asked: 0, full: 0, noScaffold: 0, missingPart: 0, fallsBack: 0, composeGap: 0 };
     rows.set(key, row);
     row.asked++;
     if (!catalogue.scaffolds.has(recipe.scaffoldId)) {
@@ -327,6 +328,7 @@ function coverageOf(catalogue, { first, last }) {
     for (const id of missing) bump(parts, id);
     if (missing.length > 0) {
       row.missingPart++;
+      if (recipe.gaps.some(lacksEssentialPart)) row.fallsBack++;
       return;
     }
     const met = unique(assemble(recipe, 'rest', catalogue).gaps.filter((g) => g.startsWith('pose:') || g.startsWith('skin:')));
@@ -346,7 +348,7 @@ function coverageOf(catalogue, { first, last }) {
   const byFamilyThenTier = (a, b) => (a.family === b.family ? TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) : a.family < b.family ? -1 : 1);
   const list = [...rows.values()].sort(byFamilyThenTier);
   const sum = (field) => list.reduce((n, row) => n + row[field], 0);
-  return { first, last, asked: sum('asked'), guardians, full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), composeGap: sum('composeGap'), rows: list, scaffolds: named(scaffolds), parts: named(parts), gaps: named(gaps) };
+  return { first, last, asked: sum('asked'), guardians, full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), fallsBack: sum('fallsBack'), composeGap: sum('composeGap'), rows: list, scaffolds: named(scaffolds), parts: named(parts), gaps: named(gaps) };
 }
 
 /**
@@ -1405,8 +1407,8 @@ export function formatReport(report) {
   for (const p of report.failures) lines.push(`error: compose failed: ${p}`);
   for (const n of report.neck) lines.push(`warning: neck join ${n.head} on ${n.torso}: ${n.pixels} head pixels more than one shade step from the torso beside them, in ${n.cases} pose shifts, e.g. ${n.example}`);
   const c = report.coverage;
-  lines.push(`coverage: seeds ${c.first} to ${c.last} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): ${c.asked} creatures (${c.guardians} Guardians), ${c.full} drawn in full, ${c.noScaffold} with no scaffold, ${c.missingPart} with a part missing, ${c.composeGap} with a pose or skin gap`);
-  for (const r of c.rows) lines.push(`coverage: ${r.family} ${r.tier}: ${r.asked} asked, ${r.full} in full, ${r.noScaffold} no scaffold, ${r.missingPart} part missing, ${r.composeGap} pose or skin gap`);
+  lines.push(`coverage: seeds ${c.first} to ${c.last} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): ${c.asked} creatures (${c.guardians} Guardians), ${c.full} drawn in full, ${c.noScaffold} with no scaffold, ${c.missingPart} with a part missing (${c.fallsBack} of them drawn as the fallback), ${c.composeGap} with a pose or skin gap`);
+  for (const r of c.rows) lines.push(`coverage: ${r.family} ${r.tier}: ${r.asked} asked, ${r.full} in full, ${r.noScaffold} no scaffold, ${r.missingPart} part missing (${r.fallsBack} drawn as the fallback), ${r.composeGap} pose or skin gap`);
   for (const m of c.scaffolds) lines.push(`coverage: no scaffold ${m.id} (x${m.count})`);
   for (const m of c.parts) lines.push(`coverage: missing part ${m.id} (x${m.count})`);
   for (const m of c.gaps) lines.push(`coverage: gap ${m.id} (x${m.count})`);

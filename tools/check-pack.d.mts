@@ -91,6 +91,8 @@ export interface CoverageCounts {
   noScaffold: number;
   /** Creatures whose scaffold is there and at least one part is not. */
   missingPart: number;
+  /** Those of `missingPart` drawn as their family's fallback: the missing part is a torso, a head or a leg. The others are drawn without the part. */
+  fallsBack: number;
   /** Creatures whose scaffold and parts are there, and whose rest pose meets a `pose:` or a `skin:` gap. */
   composeGap: number;
 }

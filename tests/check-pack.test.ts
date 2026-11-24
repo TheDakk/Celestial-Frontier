@@ -1814,12 +1814,12 @@ describe('check-pack coverage: what the generator asks for', () => {
 
   it('reports every creature drawn in full by a pack that holds all they ask for', () => {
     const c = coverageOf(pack(allScaffolds, allParts));
-    expect({ asked: c.asked, guardians: c.guardians, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart, composeGap: c.composeGap }).toEqual({ asked: 20, guardians: 0, full: 20, noScaffold: 0, missingPart: 0, composeGap: 0 });
+    expect({ asked: c.asked, guardians: c.guardians, full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart, fallsBack: c.fallsBack, composeGap: c.composeGap }).toEqual({ asked: 20, guardians: 0, full: 20, noScaffold: 0, missingPart: 0, fallsBack: 0, composeGap: 0 });
     expect(c.scaffolds).toEqual([]);
     expect(c.parts).toEqual([]);
     expect(c.rows.every((r) => r.full === r.asked)).toBe(true);
     expect(c.rows.reduce((n, r) => n + r.asked, 0)).toBe(20);
-    expect(coverageLines(pack(allScaffolds, allParts))[0]).toBe('coverage: seeds 1 to 20 as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 20 creatures (0 Guardians), 20 drawn in full, 0 with no scaffold, 0 with a part missing, 0 with a pose or skin gap');
+    expect(coverageLines(pack(allScaffolds, allParts))[0]).toBe('coverage: seeds 1 to 20 as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 20 creatures (0 Guardians), 20 drawn in full, 0 with no scaffold, 0 with a part missing (0 of them drawn as the fallback), 0 with a pose or skin gap');
   });
 
   it('names a scaffold tier the pack lacks once, with the creatures that ask for it, and leaves the other tiers drawn', () => {
@@ -1833,11 +1833,11 @@ describe('check-pack coverage: what the generator asks for', () => {
     expect(c.scaffolds).toEqual([{ id: gone, count: hit }]);
     expect(c.parts).toEqual([]);
     expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 20 - hit, noScaffold: hit, missingPart: 0 });
-    expect(c.rows.find((r) => r.family === 'quadruped' && r.tier === 'small')).toEqual({ family: 'quadruped', tier: 'small', asked: sameRow, full: sameRow - hit, noScaffold: hit, missingPart: 0, composeGap: 0 });
+    expect(c.rows.find((r) => r.family === 'quadruped' && r.tier === 'small')).toEqual({ family: 'quadruped', tier: 'small', asked: sameRow, full: sameRow - hit, noScaffold: hit, missingPart: 0, fallsBack: 0, composeGap: 0 });
     expect(c.rows.filter((r) => r.noScaffold > 0)).toHaveLength(1);
     const lines = coverageLines(text);
     expect(lines).toContain(`coverage: no scaffold ${gone} (x${hit})`);
-    expect(lines).toContain(`coverage: quadruped small: ${sameRow} asked, ${sameRow - hit} in full, ${hit} no scaffold, 0 part missing, 0 pose or skin gap`);
+    expect(lines).toContain(`coverage: quadruped small: ${sameRow} asked, ${sameRow - hit} in full, ${hit} no scaffold, 0 part missing (0 drawn as the fallback), 0 pose or skin gap`);
     expect(lines.filter((l) => l.startsWith('coverage: no scaffold '))).toHaveLength(1);
   });
 
@@ -1851,6 +1851,28 @@ describe('check-pack coverage: what the generator asks for', () => {
     expect(c.scaffolds).toEqual([]);
     expect({ full: c.full, noScaffold: c.noScaffold, missingPart: c.missingPart }).toEqual({ full: 20 - hit, noScaffold: 0, missingPart: hit });
     expect(coverageLines(text)).toContain(`coverage: missing part ${gone} (x${hit})`);
+  });
+
+  it('splits the creatures with a part missing: lacking a head or a leg they are drawn as the fallback, lacking an eye they are drawn without it', () => {
+    const head = allParts.find((id) => id.split('/')[1] === 'head')!;
+    const leg = allParts.find((id) => id.split('/')[1] === 'nearLimbs' && !id.split('/')[2]!.startsWith('flipper'))!;
+    for (const gone of [head, leg]) {
+      const hit = asked.filter((a) => a.parts.has(gone)).length;
+      expect(hit).toBeGreaterThan(0);
+      const text = pack(allScaffolds, allParts.filter((id) => id !== gone));
+      const c = coverageOf(text);
+      expect({ missingPart: c.missingPart, fallsBack: c.fallsBack }).toEqual({ missingPart: hit, fallsBack: hit });
+      const [family, , , tier] = gone.split('/');
+      const row = c.rows.find((r) => r.family === family && r.tier === tier)!;
+      expect({ missingPart: row.missingPart, fallsBack: row.fallsBack }).toEqual({ missingPart: hit, fallsBack: hit });
+      const lines = coverageLines(text);
+      expect(lines[0]).toContain(`, ${hit} with a part missing (${hit} of them drawn as the fallback), `);
+      expect(lines).toContain(`coverage: ${family} ${tier}: ${row.asked} asked, ${row.asked - hit} in full, 0 no scaffold, ${hit} part missing (${hit} drawn as the fallback), 0 pose or skin gap`);
+    }
+    const eye = 'quadruped/eyes/eye/large/v0';
+    const c = coverageOf(pack(allScaffolds, allParts.filter((id) => id !== eye)));
+    expect(c.missingPart).toBeGreaterThan(1);
+    expect(c.fallsBack).toBe(0);
   });
 
   it('a creature with no scaffold is counted there only, whatever parts it also lacks', () => {
@@ -1896,19 +1918,19 @@ describe('check-pack coverage: what the generator asks for', () => {
     it('each is a creature of its own, in a row of the guardian tier', () => {
       const c = walk(text([creature.scaffold, guardianNeeds.scaffold]));
       expect({ asked: c.asked, guardians: c.guardians, full: c.full }).toEqual({ asked: 2, guardians: 1, full: 2 });
-      expect(c.rows.filter((r) => r.tier === 'guardian')).toEqual([{ family: guardian.family, tier: 'guardian', asked: 1, full: 1, noScaffold: 0, missingPart: 0, composeGap: 0 }]);
+      expect(c.rows.filter((r) => r.tier === 'guardian')).toEqual([{ family: guardian.family, tier: 'guardian', asked: 1, full: 1, noScaffold: 0, missingPart: 0, fallsBack: 0, composeGap: 0 }]);
     });
 
     it('a pack that cannot draw a Guardian does not draw every creature in full', () => {
       const c = walk(text([creature.scaffold]));
       expect({ asked: c.asked, full: c.full, noScaffold: c.noScaffold }).toEqual({ asked: 2, full: 1, noScaffold: 1 });
       expect(c.scaffolds).toEqual([{ id: guardianNeeds.scaffold, count: 1 }]);
-      expect(c.rows.find((r) => r.tier === 'guardian')).toEqual({ family: guardian.family, tier: 'guardian', asked: 1, full: 0, noScaffold: 1, missingPart: 0, composeGap: 0 });
+      expect(c.rows.find((r) => r.tier === 'guardian')).toEqual({ family: guardian.family, tier: 'guardian', asked: 1, full: 0, noScaffold: 1, missingPart: 0, fallsBack: 0, composeGap: 0 });
     });
 
     it('the headline says how many of the creatures are Guardians and what the walk leaves out', () => {
       const line = formatReport(checkPack(text([creature.scaffold]), { sample: () => false, coverage: one })).split('\n').find((l) => l.startsWith('coverage: seeds'))!;
-      expect(line).toBe(`coverage: seeds ${WORLD} to ${WORLD} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 2 creatures (1 Guardians), 1 drawn in full, 1 with no scaffold, 0 with a part missing, 0 with a pose or skin gap`);
+      expect(line).toBe(`coverage: seeds ${WORLD} to ${WORLD} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 2 creatures (1 Guardians), 1 drawn in full, 1 with no scaffold, 0 with a part missing (0 of them drawn as the fallback), 0 with a pose or skin gap`);
     });
   });
 
@@ -1936,7 +1958,7 @@ describe('check-pack coverage: what the generator asks for', () => {
       expect(c.gaps).toEqual([{ id: `skin:${torso}:rest`, count: 1 }]);
       const lines = formatReport(checkPack(packText, { sample: () => false, coverage: one })).split('\n');
       expect(lines).toContain(`coverage: gap skin:${torso}:rest (x1)`);
-      expect(lines.find((l) => l.startsWith('coverage: seeds'))).toContain('0 drawn in full, 0 with no scaffold, 0 with a part missing, 1 with a pose or skin gap');
+      expect(lines.find((l) => l.startsWith('coverage: seeds'))).toContain('0 drawn in full, 0 with no scaffold, 0 with a part missing (0 of them drawn as the fallback), 1 with a pose or skin gap');
     });
 
     it('a scaffold with no rest pose is a pose gap, counted and named', () => {
@@ -1966,7 +1988,7 @@ describe('check-pack coverage: what the generator asks for', () => {
       const one = `--coverage-seeds=${COVERED}-${COVERED}`;
       const two = `--coverage-seeds=${COVERED - 1}-${COVERED}`;
       const covered = run('--require-coverage', one);
-      expect(covered.stdout).toContain(`coverage: seeds ${COVERED} to ${COVERED} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 1 creatures (0 Guardians), 1 drawn in full, 0 with no scaffold, 0 with a part missing, 0 with a pose or skin gap`);
+      expect(covered.stdout).toContain(`coverage: seeds ${COVERED} to ${COVERED} as the generator makes them, and the Guardians of the worlds of those seeds, each composed at rest (no Titan, no bred creature): 1 creatures (0 Guardians), 1 drawn in full, 0 with no scaffold, 0 with a part missing (0 of them drawn as the fallback), 0 with a pose or skin gap`);
       expect([covered.status, covered.stderr]).toEqual([0, '']);
       const gap = run(two);
       expect(gap.stdout).toContain('2 creatures (0 Guardians), 1 drawn in full');

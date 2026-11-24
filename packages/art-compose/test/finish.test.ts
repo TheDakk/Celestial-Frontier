@@ -200,10 +200,46 @@ describe('compose', () => {
     const only = compose(recipeOf([['torso', 0, 'quadruped/torso/gone/small/v0']]), 'rest', catalogue);
     expect(crop(only.buffer, 8, 9, 4, 4)).toBe(FALLBACK_AT_ORIGIN);
     expect(only.gaps).toEqual(['missing:quadruped/torso/gone/small/v0', 'fallback:quadruped']);
-    // With the torso present, the missing head is just a gap: the torso is drawn and no fallback is used.
-    const some = compose(recipeOf([['torso', 0, TORSO], ['head', 0, 'quadruped/head/gone/small/v0']]), 'rest', catalogue);
-    expect(crop(some.buffer, 9, 9, 4, 4)).toBe(['.gg.', 'g32g', 'g11g', '.gg.'].join('\n'));
-    expect(some.gaps).toEqual(['missing:quadruped/head/gone/small/v0']);
+  });
+
+  // The picture of the fallback drawn alone at the scaffold origin: what an empty recipe composes.
+  const fallbackAlone = (): Uint8Array => compose(recipeOf([]), 'rest', catalogue).buffer.pixels;
+  const HEAD = 'quadruped/head/h1/small/v0';
+
+  it('a creature whose pack lacks the head it asks for is drawn as the fallback alone, and the gap names the head', () => {
+    // The head is missing whether the recipe still lists it or the planner already left it out with its gap.
+    const listed = compose(recipeOf([['torso', 0, TORSO], ['head', 0, 'quadruped/head/gone/small/v0']]), 'strike', catalogue);
+    expect(listed.buffer.pixels).toEqual(fallbackAlone());
+    expect(listed.gaps).toEqual(['missing:quadruped/head/gone/small/v0', 'fallback:quadruped']);
+    expect(listed.contact).toEqual([20, 12]);
+    const leftOut = compose(recipeOf([['torso', 0, TORSO]], { gaps: ['missing:quadruped/head/h9/small/v0'] }), 'rest', catalogue);
+    expect(leftOut.buffer.pixels).toEqual(fallbackAlone());
+    expect(leftOut.gaps).toEqual(['missing:quadruped/head/h9/small/v0', 'fallback:quadruped']);
+  });
+
+  it('a creature whose pack lacks a leg it asks for, far or near, is drawn as the fallback alone', () => {
+    for (const leg of ['quadruped/farLimbs/fore/small/v1', 'quadruped/nearLimbs/hind-sturdy/small/v0']) {
+      const r = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]], { gaps: [`missing:${leg}`] }), 'rest', catalogue);
+      expect(r.buffer.pixels).toEqual(fallbackAlone());
+      expect(r.gaps).toEqual([`missing:${leg}`, 'fallback:quadruped']);
+    }
+  });
+
+  it('a creature whose pack lacks an optional part is drawn with its head and without that part, and the gap is kept', () => {
+    const whole = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]]), 'rest', catalogue);
+    expect(crop(whole.buffer, 9, 9, 5, 4)).toBe(['.ggg.', 'g325g', 'g11g.', '.gg..'].join('\n'));
+    for (const optional of ['back/ridge-sturdy', 'headFeature/horns-h1', 'tail/t2', 'bodyFeature/shell-shelled', 'nearWings/sails', 'farWings/wing-membranous', 'eyes/eye', 'nearLimbs/flipper', 'nearLimbs/flipper-membranous']) {
+      const gap = `missing:quadruped/${optional}/small/v0`;
+      const r = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]], { gaps: [gap] }), 'rest', catalogue);
+      expect(r.buffer.pixels, optional).toEqual(whole.buffer.pixels);
+      expect(r.gaps).toEqual([gap]);
+    }
+  });
+
+  it('a body that asks for no head is drawn as it is: no head is missing', () => {
+    const r = compose(recipeOf([['torso', 0, TORSO]]), 'rest', catalogue);
+    expect(crop(r.buffer, 9, 9, 4, 4)).toBe(['.gg.', 'g32g', 'g11g', '.gg.'].join('\n'));
+    expect(r.gaps).toEqual([]);
   });
 
   it('a recipe whose parts all fail to place composes the fallback', () => {

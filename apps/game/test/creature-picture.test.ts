@@ -88,6 +88,23 @@ describe('a creature picture', () => {
     expect(told.filter((event) => event.gap === 'species:civet')).toHaveLength(1);
   });
 
+  it("a species whose pack lacks its head is drawn as its family's stand-in for its size, and both gaps are counted; lacking only an optional part of its own it is drawn", () => {
+    const start = CIVET_PACK.indexOf('part quadruped/head/civet/small/v0');
+    const headless = CIVET_PACK.slice(0, start) + CIVET_PACK.slice(CIVET_PACK.indexOf('part quadruped/tail/civet/small/v0'));
+    const loaded = buildCatalogue([testPartsText(), headless]);
+    expect(loaded.problems).toEqual([]);
+    const pictures = createCreaturePictures(loaded.catalogue);
+    const shown = pictures.picture(civet(), [], 'rest');
+    expect(shown.gaps).toEqual(['missing:quadruped/head/civet/small/v0', 'fallback:quadruped']);
+    expect([...pictures.gaps()]).toEqual([['missing:quadruped/head/civet/small/v0', 1], ['fallback:quadruped', 1]]);
+    // The stand-in alone: what a small quadruped with no scaffold in the placeholder pack is drawn as, moved to this scaffold's origin.
+    const standIn = loaded.catalogue.parts.get(loaded.catalogue.fallbacks.get('quadruped/small')!)!.frames['rest']!;
+    const solid = (pixels: Uint8Array): number => pixels.filter((p) => p !== 0 && p !== 16).length;
+    expect(solid(shown.buffer.pixels)).toBe(solid(standIn.pixels));
+    const whole = createCreaturePictures(buildCatalogue([testPartsText(), CIVET_PACK]).catalogue).picture(civet(), [], 'rest');
+    expect(shown.buffer.pixels).not.toEqual(whole.buffer.pixels);
+  });
+
   it('a plant with no flora stand-in in the catalogue gives a marked tile and the gap fallback:flora/medium, and does not throw', () => {
     expect(plant).toBeDefined();
     const text = testPartsText();
