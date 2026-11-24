@@ -249,8 +249,8 @@ describe('planBodyParts', () => {
   /** Land, medium, head 5, tail 3, limbs gene 3 (8 legs), eyes gene 1 (4 eyes), skin 3 (no back part), plain. */
   const land = { kingdom: 'fauna', loco: 0, habitat: 0, size: 2, head: 5, tail: 3, limbs: 3, eyes: 1, skin: 3, color: 3, accent: 5, pattern: 0 };
   const body = (genes: Record<string, unknown>, shape = 0, of = 1): Body => resolveBody({ ...land, ...genes }, at(shape, of));
-  /** A catalogue that holds every part id except a build's own legs, so each part comes back exactly as asked for. */
-  const shared = (): Catalogue => ({ ...catalogueOf([]), parts: { has: (id: string) => !/Limbs\/[a-z]+-/.test(id) } as unknown as Catalogue['parts'] });
+  /** A catalogue that holds every part id except a build's own legs and the eye kinds (both optional), so each part comes back exactly as asked for. */
+  const shared = (): Catalogue => ({ ...catalogueOf([]), parts: { has: (id: string) => !/Limbs\/[a-z]+-|\/eyes\/eye-\d/.test(id) } as unknown as Catalogue['parts'] });
   const asked = (b: Body, v = V0): string[] => {
     const r = planBodyParts(b, v, stream, shared());
     expect(r.gaps).toEqual([]);

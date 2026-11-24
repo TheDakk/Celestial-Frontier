@@ -78,6 +78,27 @@ export function lacksEssentialPart(gap: string): boolean {
   return m !== null && (m[1] === 'torso' || m[1] === 'head' || m[1] === 'farLimbs' || m[1] === 'nearLimbs');
 }
 
+/**
+ * The eye kind of an eye count: the one eye a pack may draw for a creature of that count (0: no eyes, its sensory pits),
+ * in place of the count's separate eyes. A creature is seen from the side, where its eyes have one place.
+ */
+export function eyeKind(eyes: number): string {
+  return `eye-${eyes}`;
+}
+
+/** Whether the pack holds the eye kind of this body's eye count (at v0): the body then asks for that one eye. */
+function holdsEyeKind(b: Body, catalogue: Catalogue): boolean {
+  return b.eyes !== null && catalogue.parts.has(partId(b.family, 'eyes', eyeKind(b.eyes), b.tier, 0));
+}
+
+/**
+ * The eye count a body's eyes are laid out for: 1 with an eye kind (the one-eyed creature's eye place, pose entries
+ * and frames), else the body's own count (0 for its two pits, or when it asks for no eye).
+ */
+export function eyesLaidOut(b: Body, catalogue: Catalogue): number {
+  return holdsEyeKind(b, catalogue) ? 1 : b.eyes ?? 0;
+}
+
 /** A wanted part; `shared` is the kind tried at v0 when `kind` is not held (no gap on the way; a miss names `shared`). */
 interface Wanted { slot: SlotName; index: number; kind: string; variant: number; limb: boolean; at?: RecipePart['at']; shared?: string }
 
@@ -142,7 +163,8 @@ const NO_BACK_FAMILY = 'radial';
  * torso, the skin's back part on the torso kind (none on a radial), the head features (headFeatureKinds, at index 0
  * and 1, all hung from the head's `feature` point), and a mark for every part in a mark slot when the creature is
  * patterned. Head `h<head>`
- * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null, `eye`
+ * only when `head` is not null; tail `t<tail>` whenever `tail` is not null, `t0` included. Eyes: none when null; one
+ * part of the count's eye kind (eyeKind) at index 0 where the pack holds it at v0; else `eye`
  * at 0 to `eyes - 1`, two `pit` parts when `eyes` is 0; a body without a head part places them on its torso (`at`).
  * A winged build asks for its WING_KINDS at each wing index in both wing slots, and, aquatic, for two `flipper-<torso>`
  * near limbs (falling back to `flipper`); any other airborne quadruped for `sails-<torso>` (falling back to `sails`) in
@@ -182,7 +204,8 @@ export function planBodyParts(
   const feature = bodyFeatureKind(b);
   if (feature !== null) wanted.push({ slot: 'bodyFeature', index: 0, kind: feature, variant: 0, limb: false });
   if (b.eyes !== null) {
-    const [kind, count] = b.eyes === 0 ? ['pit', 2] : ['eye', b.eyes];
+    const one = holdsEyeKind(b, catalogue);
+    const [kind, count] = one ? [eyeKind(b.eyes), 1] : b.eyes === 0 ? ['pit', 2] : ['eye', b.eyes];
     for (let i = 0; i < count; i++) {
       const eye: Wanted = { slot: 'eyes', index: i, kind, variant: 0, limb: false };
       if (b.head === null) eye.at = { host: 'torso', point: `eye${i}` };

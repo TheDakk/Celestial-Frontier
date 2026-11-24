@@ -29,7 +29,7 @@ registerHooks({
 });
 
 const { parseCatalogueText, fallbackKey, EYE_COUNTS, LIMB_COUNTS, TIER_SIZE, LAYER_NAMES, MARK_SLOTS, IRIS_RAMP_COUNT, PATTERN_NAMES, SKIN_NAMES, PIXEL_BONE, PIXEL_CHARS, BONE_RAMP } = await import('@cf/art-format');
-const { buildRecipe, lacksEssentialPart, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
+const { buildRecipe, lacksEssentialPart, buildSpeciesRecipe, speciesIrisRamp, speciesBoneRamp, planSpeciesParts, limbKind, EYELESS_HEAD, BACK_KIND_BY_SKIN, bodyOf, routeBody, resolveBody, planBodyParts, eyeKind, OWN_FAMILY_BY_BODY, WING_KINDS } = await import('@cf/art-recipe');
 const { assemble, compose, frameNameFor, paintMarks, poseEntryFor } = await import('@cf/art-compose');
 const { guardianFor, makeGenome } = await import('@cf/domain-genome');
 
@@ -173,7 +173,8 @@ const GENERATED_TORSOS = generatedTorsos();
  * What the head and eye parts of each family can be asked for, read from resolveBody over every route, shape and eye
  * gene: `eyes`, the most eyes a body of the family hangs from its head (a head part is shared by every shape of its
  * family, so a crustacean head serves the lobster's eyes though a crab's carries none); `pit`, whether a body of the
- * family asks for the two sensory pits (no eyes, or the eyeless head).
+ * family asks for the two sensory pits (no eyes, or the eyeless head); `kinds`, the eye kind (eyeKind) of every eye
+ * count a body of the family asks eye parts for.
  */
 const EYES_BY_FAMILY = (() => {
   const out = new Map();
@@ -183,9 +184,10 @@ const EYES_BY_FAMILY = (() => {
       for (let i = 0; i < shapes.length; i++) {
         for (let eyes = 0; eyes < EYE_COUNTS.length; eyes++) {
           const b = resolveBody({ kingdom: 'fauna', body, ...stateGenes, head: 0, eyes }, () => i);
-          const known = out.get(family) ?? { eyes: 0, pit: false };
+          const known = out.get(family) ?? { eyes: 0, pit: false, kinds: new Set() };
           const onHead = b.head !== null && b.eyes !== null ? b.eyes : 0;
-          out.set(family, { eyes: Math.max(known.eyes, onHead), pit: known.pit || b.eyes === 0 });
+          if (b.eyes !== null) known.kinds.add(eyeKind(b.eyes));
+          out.set(family, { eyes: Math.max(known.eyes, onHead), pit: known.pit || b.eyes === 0, kinds: known.kinds });
         }
       }
     }
@@ -511,6 +513,7 @@ export function labelPicture(recipe, pose, labels) {
  * Parts the recipe requests that show fewer than HIDDEN_MIN visible pixels (or fewer than they draw, when that is
  * less) in the unfinished picture: the picture compared with the same recipe minus that part, pixel by pixel. The
  * unfinished picture is used so that the outline a part adds is not counted. Returns [{ partId, visible, needed }].
+ * A part that draws nothing owes nothing, except an eye, which owes one pixel.
  *
  * The same answer, with fewer pictures: removing part k changes only pixels where k is drawn last, so a part on top
  * at fewer than `needed` pixels is hidden. A pixel where k is on top and is the only part drawn there always changes.
@@ -519,7 +522,8 @@ export function labelPicture(recipe, pose, labels) {
  */
 function hiddenParts(recipe, pose, catalogue, cache) {
   const n = recipe.parts.length;
-  const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.min(HIDDEN_MIN, drawnCount(part)); });
+  // An eye must show: an eye part that draws nothing (an eye kind's included) still owes one pixel, so it is reported.
+  const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.max(rp.slot === 'eyes' ? 1 : 0, Math.min(HIDDEN_MIN, drawnCount(part))); });
   const all = numberedCopy(recipe, catalogue, cache, () => 'label');
   const top = assemble(all.recipe, pose, all.catalogue).buffer.pixels;
   const bottom = assemble({ ...all.recipe, parts: [...all.recipe.parts].reverse() }, pose, all.catalogue).buffer.pixels;
@@ -1053,10 +1057,12 @@ export function checkPack(text, options = {}) {
 
   // A leg part is asked for as `leg`, as a role, or as a role on a torso type that has a scaffold at its tier. Any other
   // name is never drawn: most likely a misspelt build.
-  // An eye part is asked for as `eye`, as `pit` in a family whose bodies ask for sensory pits (EYES_BY_FAMILY), or by
+  // An eye part is asked for as `eye`, as `pit` in a family whose bodies ask for sensory pits (EYES_BY_FAMILY), as the
+  // eye kind of an eye count a body of its family has (`eye-<count>` at v0: the one eye drawn for that count), or by
   // the named species whose key it carries (same family and tier).
   for (const part of catalogue.parts.values()) {
     if (part.slot !== 'eyes' || part.kind === 'eye' || (part.kind === 'pit' && EYES_BY_FAMILY.get(part.family)?.pit === true)) continue;
+    if (part.variant === 0 && EYES_BY_FAMILY.get(part.family)?.kinds.has(part.kind) === true) continue;
     const s = catalogue.species.get(part.kind);
     if (s === undefined || s.family !== part.family || s.tier !== part.tier) unreachable.push(`part ${part.id}: no creature asks for an eye named '${part.kind}' (eye, pit where the family has sensory pits, or the key of a species of this family and tier)`);
   }
@@ -1170,6 +1176,8 @@ export function checkPack(text, options = {}) {
         if (e.eyes !== undefined) eyeCounts.add(e.eyes);
       }
     }
+    // And each count the pack draws as its eye kind: a drawing of its own, met by every part the eyes can meet.
+    for (const n of EYE_COUNTS) if (catalogue.parts.has(`${scaffold.family}/eyes/${eyeKind(n)}/${scaffold.tier}/v0`)) eyeCounts.add(n);
     for (const part of catalogue.parts.values()) {
       if (part.family !== scaffold.family || part.tier !== scaffold.tier) continue;
       const torso = part.slot === 'torso' && part.kind === torsoKind;
