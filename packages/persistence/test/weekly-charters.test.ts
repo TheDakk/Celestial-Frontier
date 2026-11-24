@@ -67,13 +67,14 @@ describe('weekly Charters — the expedition keeps its own clock', () => {
   });
   it('accept → progress only after acceptance → complete pays Stardust and one honoured Charter exactly once; cannot re-accept this cycle; the next cycle offers it again', () => {
     const at = 2 * WEEK + 10, cycleIds = weeklyCharterSlateV1(2), id = cycleIds[0]!, def = WEEKLY_CHARTER_DEFINITIONS_V1.find((d) => d.id === id)!;
+    // `first: true`: Deep veins counts no other mined event (LEGACY celestial-frontier.html 24756); the other Charters do not read it
     const s = veteran(); s.chWeek = 2; s.essence = 0; s.stats = { charters: 5 };
-    expect(stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at }).kind).toBe('ready');
+    expect(stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event, first: true }, activePlayMs: at }).kind).toBe('ready');
     expect(s.chProg[id]).toBeUndefined(); // a deed before acceptance counts for nothing
     expect(stageWeeklyCharterAcceptV1({ draft: s, id, activePlayMs: at }).kind).toBe('ready'); expect(s.chacc).toContain(id);
-    for (let i = 0; i < def.count; i++) stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at + i });
+    for (let i = 0; i < def.count; i++) stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event, first: true }, activePlayMs: at + i });
     expect(s.essence).toBe(def.stardust); expect(s.stats.charters).toBe(6); expect(s.chacc).not.toContain(id);
-    stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at + 50 }); expect(s.essence).toBe(def.stardust); // paid once
+    stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event, first: true }, activePlayMs: at + 50 }); expect(s.essence).toBe(def.stardust); // paid once
     expect(projectWeeklyCharterBoardV1(s, at).rows.find((r) => r.definition.id === id)?.status).toBe('completed');
     expect(stageWeeklyCharterAcceptV1({ draft: structuredClone(s), id, activePlayMs: at })).toMatchObject({ kind: 'refused' });
     const later = structuredClone(s); const nextCycle = [...Array(30).keys()].map((k) => k + 3).find((c) => weeklyCharterSlateV1(c).includes(id))!;
@@ -108,11 +109,14 @@ describe('weekly Charters — the expedition keeps its own clock', () => {
     stageWeeklyCharterAcceptV1({ draft: none, id: 'wk-conq', activePlayMs: at }); stageWeeklyCharterEventV1({ draft: none, event: { kind: 'conquest' }, activePlayMs: at + 1 });
     expect(none.stats.essenceEarned).toBe(30); // LEGACY: (stats.essenceEarned||0)+c.sd
   });
-  it('LEGACY 24756: Deep veins counts only a world mined for the first time, when the mined event says which it was', () => {
+  it('LEGACY 24756: Deep veins counts a mined event only when it carries first: true', () => {
     const cycle = [...Array(40).keys()].find((c) => weeklyCharterSlateV1(c).includes('wk-mine'))!, at = cycle * WEEK + 5;
     const s = veteran(); s.chWeek = cycle;
     stageWeeklyCharterAcceptV1({ draft: s, id: 'wk-mine', activePlayMs: at });
     stageWeeklyCharterEventV1({ draft: s, event: { kind: 'mined', first: false }, activePlayMs: at + 1 });
+    expect(s.chProg['wk-mine']).toBe(0);
+    // LEGACY 24756 `filt:x=>x&&x.first`: an event that does not say it was a first mine is not counted either
+    stageWeeklyCharterEventV1({ draft: s, event: { kind: 'mined' }, activePlayMs: at + 1 });
     expect(s.chProg['wk-mine']).toBe(0);
     stageWeeklyCharterEventV1({ draft: s, event: { kind: 'mined', first: true }, activePlayMs: at + 2 });
     expect(s.chProg['wk-mine']).toBe(1);

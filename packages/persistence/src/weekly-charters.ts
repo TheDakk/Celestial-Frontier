@@ -37,10 +37,10 @@ export const WEEKLY_CHARTER_DEFINITIONS_V1: readonly WeeklyCharterDefinitionV1[]
 const BY_ID = new Map(WEEKLY_CHARTER_DEFINITIONS_V1.map((d) => [d.id, d]));
 /** The deed an event reports to the weekly board. `first`: for a mined event, whether that world had never been mined. */
 export type WeeklyCharterEventV1 = Readonly<{ kind: string; first?: boolean }>;
-/** Whether an event counts toward a Charter: its kind, and for Deep veins a world not mined before (an event that does
- *  not say counts). */
+/** Whether an event counts toward a Charter: its kind, and for Deep veins only an event that carries `first: true`
+ *  (LEGACY celestial-frontier.html 24756, `filt:x=>x&&x.first`). */
 const counts = (definition: WeeklyCharterDefinitionV1 | undefined, event: WeeklyCharterEventV1): definition is WeeklyCharterDefinitionV1 =>
-  definition !== undefined && definition.event === event.kind && !(definition.id === 'wk-mine' && event.first === false);
+  definition !== undefined && definition.event === event.kind && (definition.id !== 'wk-mine' || event.first === true);
 const isWeeklyId = (id: string): boolean => id.startsWith('wk-');
 
 export function weeklyCharterCycleV1(activePlayMs: number): number {
