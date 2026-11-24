@@ -165,13 +165,14 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
     const shift = Math.round(((v.time * 1.6) % (size * 2)) * v.cam.z);
     const width = 2 * r + 1;
     const drawing = `planet/${planet.type}/clouds`;
-    if (v.solid !== true) dress.push(...cloudItems(planet, x, y, r, shift, v));
+    // A deck near at hand is tens of thousands of pixels, more than one call takes as arguments: each is added alone.
+    if (v.solid !== true) for (const item of cloudItems(planet, x, y, r, shift, v)) dress.push(item);
     // The sheet's own clouds, where it draws them at the width the planet is drawn: twice, a width apart, so the deck
     // wraps as it drifts.
     else if (disc.element !== undefined && v.sizing?.drawn?.(drawing, width) === width) {
       const at = ((shift % width) + width) % width;
       for (const dx of [at, at - width]) dress.push({ kind: 'element', name: drawing, x: x + dx, y, ramp: CLOUD, span: width, clip: { x, y, r } });
-    } else dress.push(...solidCloudItems(planet, x, y, r, shift, v));
+    } else for (const item of solidCloudItems(planet, x, y, r, shift, v)) dress.push(item);
   }
   const star = place(v.cam, v.grid, 0, 0);
   const far = Math.sqrt((star.x - x) * (star.x - x) + (star.y - y) * (star.y - y));
