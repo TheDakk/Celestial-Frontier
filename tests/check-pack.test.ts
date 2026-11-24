@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { makeGenome } from '@cf/domain-genome';
 import { assemble } from '@cf/art-compose';
 import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS } from '@cf/art-recipe';
-import { checkPack, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
+import { checkPack, coverageShortfall, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
 import type { Recipe } from '@cf/art-recipe';
 import type { Part } from '@cf/art-format';
 
@@ -1868,6 +1868,15 @@ describe('check-pack coverage: what the generator asks for', () => {
     expect(checkPack('part nonsense').coverage).toBeNull();
   });
 
+  it('a requirement of coverage is met only by creatures: a walk that asked for none falls short, as one with a gap does', () => {
+    const full = pack(allScaffolds, allParts);
+    expect(coverageShortfall(coverageOf(full))).toBeNull();
+    expect(coverageShortfall(coverageOf(pack(allScaffolds.slice(1), allParts)))).toMatch(/^\d+ of 20 generated creatures cannot be drawn in full$/);
+    const none = checkPack(full, { sample: () => false, coverage: { first: 5, last: 1 } }).coverage!;
+    expect(none.asked).toBe(0);
+    expect(coverageShortfall(none)).toBe('the walk asked for no creature');
+  });
+
   // The first seed whose creature the good pack draws in full (a small sturdy quadruped with no back part or feature).
   const COVERED = 18396;
   it('exits 0 with a gap, and 1 with --require-coverage only when there is a gap', () => {
@@ -1889,6 +1898,12 @@ describe('check-pack coverage: what the generator asks for', () => {
       expect([required.status, required.stderr]).toEqual([1, 'check-pack: coverage required: 1 of 2 generated creatures cannot be drawn in full\n']);
       const unknown = run('--require-covrage');
       expect(unknown.status).toBe(2);
+      // A range that runs backwards names no seed: a usage error, never a requirement met by nothing.
+      const usage = 'usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]\n';
+      for (const flags of [['--coverage-seeds=9-3'], ['--require-coverage', '--coverage-seeds=9-3']]) {
+        const reversed = run(...flags);
+        expect([reversed.status, reversed.stdout, reversed.stderr], flags.join(' ')).toEqual([2, '', `check-pack: --coverage-seeds=9-3 names no seed: the first is after the last\n${usage}`]);
+      }
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

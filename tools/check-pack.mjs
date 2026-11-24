@@ -325,6 +325,16 @@ function coverageOf(catalogue, { first, last }) {
   return { first, last, asked: sum('asked'), full: sum('full'), noScaffold: sum('noScaffold'), missingPart: sum('missingPart'), rows: list, scaffolds: named(scaffolds), parts: named(parts) };
 }
 
+/**
+ * Why a walk does not meet a requirement that every generated creature be drawn in full, or null when it does. A walk
+ * that asked for no creature never meets it: nothing was shown to be drawn.
+ */
+export function coverageShortfall(coverage) {
+  if (coverage.asked === 0) return 'the walk asked for no creature';
+  if (coverage.full < coverage.asked) return `${coverage.asked - coverage.full} of ${coverage.asked} generated creatures cannot be drawn in full`;
+  return null;
+}
+
 /** Whether a part is a named species' own torso, head or tail: kind `<key>` in the species' family and tier. */
 function isSpeciesPart(catalogue, part) {
   if (part.slot !== 'torso' && part.slot !== 'head' && part.slot !== 'tail') return false;
@@ -1290,8 +1300,13 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const flags = args.filter((a) => a.startsWith('--'));
   const range = flags.map((f) => /^--coverage-seeds=(\d+)-(\d+)$/.exec(f)).find((m) => m !== null);
   const known = (f) => f === '--require-coverage' || /^--coverage-seeds=\d+-\d+$/.test(f);
+  const usage = 'usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]';
   if (files.length === 0 || !flags.every(known)) {
-    console.error('usage: node tools/check-pack.mjs [--require-coverage] [--coverage-seeds=<first>-<last>] <pack.txt> [more.txt ...]');
+    console.error(usage);
+    process.exit(2);
+  }
+  if (range && Number(range[1]) > Number(range[2])) {
+    console.error(`check-pack: ${range[0]} names no seed: the first is after the last\n${usage}`);
     process.exit(2);
   }
   let text;
@@ -1303,8 +1318,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   const report = checkPack(text, range ? { coverage: { first: Number(range[1]), last: Number(range[2]) } } : {});
   process.stdout.write(formatReport(report));
-  const c = report.coverage;
-  const gap = flags.includes('--require-coverage') && c !== null && c.full < c.asked;
-  if (gap) console.error(`check-pack: coverage required: ${c.asked - c.full} of ${c.asked} generated creatures cannot be drawn in full`);
-  process.exit(report.ok && !gap ? 0 : 1);
+  const shortfall = flags.includes('--require-coverage') && report.coverage !== null ? coverageShortfall(report.coverage) : null;
+  if (shortfall !== null) console.error(`check-pack: coverage required: ${shortfall}`);
+  process.exit(report.ok && shortfall === null ? 0 : 1);
 }

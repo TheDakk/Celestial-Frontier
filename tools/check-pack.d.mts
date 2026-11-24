@@ -118,6 +118,8 @@ export function detachedSlots(buffer: { w: number; h: number; pixels: Uint8Array
 export interface CheckOptions { sample?: (scaffoldId: string) => boolean; coverage?: { first: number; last: number } }
 /** The seeds the coverage walk covers by default. */
 export const COVERAGE_SEEDS: { readonly first: number; readonly last: number };
+/** Why a walk does not meet a requirement that every generated creature be drawn in full (a walk that asked for none never meets it); null when it does. */
+export function coverageShortfall(coverage: PackCoverage): string | null;
 export function checkPack(text: string, options?: CheckOptions): PackReport;
 /** How numberedCopy draws a part: by its slot label, not at all, as it is, or each pixel as its frame column or row plus one. */
 export type NumberedMode = 'label' | 'blank' | 'real' | 'x' | 'y';
