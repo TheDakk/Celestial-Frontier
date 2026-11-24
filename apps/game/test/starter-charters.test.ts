@@ -1,6 +1,6 @@
-// Ported from SOURCE tests/starter-charters.test.ts (modules SOURCE apps/game/src/starter-charters.ts and
-// starter-charter-action.ts). The board comes back as data: the screen builds the elements. The accept that
-// commits through the runtime is not built yet; its SOURCE tests wait with it.
+// The Starter Charters follow the legacy game (LEGACY: celestial-frontier.html of the live branch, version 1.8.9);
+// each rule cites its line there. The board comes back as data: the screen builds the elements. The accept that
+// commits through the runtime is not built yet.
 import { describe, expect, it } from 'vitest';
 import {
   WEEKLY_CHARTER_CYCLE_ACTIVE_MS,
@@ -85,20 +85,20 @@ function lootExtensions(save: SaveStateV2): V5Extensions {
 
 describe('starter Charters', () => {
   it('the ten ids, events and payments equal the table', () => {
-    // SOURCE apps/game/src/starter-charters.ts:81-142 (the event of st-conq is the field SOURCE holds; no event completes it).
+    // LEGACY celestial-frontier.html:24720-24739 (st-conq listens for 'conquest', 24727; the combat settlement completes it).
     expect(STARTER_CHARTER_DEFINITIONS_V1.map(({ id, chain, event, count, stardust, gearId }) => [id, chain, event, count, stardust, gearId])).toEqual([
       ['st-land', 'trades', 'landfall', 1, 10, null],
       ['st-mine', 'trades', 'mined', 1, 15, null],
       ['st-scan', 'trades', 'bioscan', 1, 15, 'earpiece'],
       ['st-scout', 'trades', 'scout-set', 1, 15, null],
-      ['st-conq', 'trades', 'landfall', 1, 25, null],
+      ['st-conq', 'trades', 'conquest', 1, 25, null],
       ['st-mercury', 'tour', 'landfall', 1, 10, 'headlamp'],
       ['st-mars', 'tour', 'landfall', 1, 10, 'magboots'],
       ['st-giants', 'tour', 'mined', 5, 15, 'meteor'],
       ['st-ice', 'tour', 'landfall', 1, 10, 'fieldlegs'],
       ['st-comp', 'tour', 'crafted', 1, 15, null],
     ]);
-    expect(STARTER_CHARTER_CAP_V1).toBe(3); // SOURCE apps/game/src/starter-charters.ts:48
+    expect(STARTER_CHARTER_CAP_V1).toBe(3); // LEGACY celestial-frontier.html:24752
   });
 
   it('each Charter pays its table Stardust once when its deed completes it', () => {
@@ -166,7 +166,7 @@ describe('starter Charters', () => {
     expect(two.chacc).toEqual(['wk-land', 'wk-mine', 'st-land']);
     const before = structuredClone(two);
     expect(stageStarterCharterAcceptV1({ draft: two, extensions: EXTENSIONS, id: 'st-mercury', receiptOrdinal: 2 }))
-      .toEqual({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+      .toEqual({ kind: 'refused', reason: 'Three charters is a full slate — see one through first.' });
     expect(two).toEqual(before);
   });
 
@@ -178,14 +178,19 @@ describe('starter Charters', () => {
       return board.board.rows.find(({ definition }) => definition.id === 'st-conq');
     };
     const stage0 = learned();
-    // SOURCE apps/game/src/starter-charters.ts:275-282: the row is held back with its reason, never offered.
-    expect(row(stage0)).toMatchObject({ status: 'unavailable', lockedReason: 'Build the Jump Drive before the conquest trade is revealed.' });
-    expect(stageStarterCharterAcceptV1({ draft: stage0, extensions: EXTENSIONS, id: 'st-conq', receiptOrdinal: 1 }))
-      .toEqual({ kind: 'refused', reason: 'Build the Jump Drive before the conquest trade is revealed.' });
+    // LEGACY celestial-frontier.html:24826-24835 and 25176-25177: the row is left off and a note stands in its place.
+    expect(row(stage0)).toBeUndefined();
+    const held = projectStarterCharterBoardV1(stage0);
+    expect(held.kind === 'projected' && held.board.lockedNote).toEqual([
+      { icon: 'ascent' }, ' The next trade awaits the stars — build the ', { icon: 'jump-drive' }, ' Jump Drive.',
+    ]);
+    expect(stageStarterCharterAcceptV1({ draft: stage0, extensions: EXTENSIONS, id: 'st-conq', receiptOrdinal: 1 }).kind).toBe('refused');
     expect(stage0.chacc).toEqual([]);
     const stage1 = learned();
     stage1.items = [['jumpdrive', 1]];
-    expect(row(stage1)).toMatchObject({ status: 'available', lockedReason: null });
+    expect(row(stage1)).toMatchObject({ status: 'available' });
+    const open = projectStarterCharterBoardV1(stage1);
+    expect(open.kind === 'projected' && open.board.lockedNote).toBeNull();
     expect(stageStarterCharterAcceptV1({ draft: stage1, extensions: EXTENSIONS, id: 'st-conq', receiptOrdinal: 2 }).kind).toBe('ready');
     expect(stage1.chacc).toEqual(['st-conq']);
   });
@@ -208,7 +213,7 @@ describe('starter Charters', () => {
     const acceptance = stageStarterCharterAcceptV1({
       draft: structuredClone(full), extensions: EXTENSIONS, id: 'st-land', receiptOrdinal: 1,
     });
-    expect(acceptance).toMatchObject({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+    expect(acceptance).toMatchObject({ kind: 'refused', reason: 'Three charters is a full slate — see one through first.' });
   });
 
   it('makes st-scan count from acceptance and never backfills an older Survey record', () => {
@@ -300,15 +305,7 @@ describe('starter Charters', () => {
     expect(mine.chDone).toEqual(['st-mercury', 'st-mars']);
   });
 
-  it('rejects canonical Earth and foreign leaf-seed aliases from Sol-tour event credit', () => {
-    const earth = state();
-    earth.chacc = ['st-land'];
-    expect(stageStarterCharterEventV1({
-      draft: earth, extensions: EXTENSIONS,
-      event: { kind: 'landfall', address: solWorld(133) }, receiptOrdinal: 5,
-    }).kind).toBe('current');
-    expect(earth).toMatchObject({ chacc: ['st-land'], chDone: [], essence: 10 });
-
+  it('rejects foreign leaf-seed aliases from Sol-tour event credit', () => {
     const falseMercury = state();
     falseMercury.chacc = ['st-mercury'];
     const foreignBase = foreignWorld(133);
@@ -390,5 +387,99 @@ describe('starter Charters', () => {
     const plain = stageStarterCharterEventV1({ draft: without, extensions: EXTENSIONS, event: { kind: 'landfall', address: solWorld(134) }, receiptOrdinal: 3 });
     if (id) { expect(staged).toMatchObject({ kind: 'ready', facts: { weekly: { progressIds: [id] } } }); expect(withSnapshot.chProg[id]).toBe(1); }
     expect(plain.kind).toBe('current'); expect(without.chProg[id ?? 'none']).toBe(id ? 0 : undefined);
+  });
+
+  it('the ten descriptions are the legacy game\'s words', () => {
+    // LEGACY celestial-frontier.html:24720-24739 (&#8217; is the apostrophe).
+    expect(STARTER_CHARTER_DEFINITIONS_V1.map(({ description }) => description)).toEqual([
+      'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.',
+      'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.',
+      'Land on a living world and survey its biosphere — mind the danger percentage, or send a scout. Then tame what you find.',
+      'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.',
+      'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.',
+      'Sol’s innermost world bakes in the glare. Stand on it — the sunward veins run rich.',
+      'Mars waited a long age for boots. Land, and read the rust from the ground.',
+      'Mine Jupiter or Saturn’s deep decks — 5 loads between them.',
+      'Uranus or Neptune — stand at the edge of Sol’s long dark, where the ices wait.',
+      'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.',
+    ]);
+  });
+
+  it('accepted rows stand in the order they were accepted, then the open link of each chain', () => {
+    // LEGACY celestial-frontier.html:24850 ([...chacc] keeps the order of acceptance) and 25153-25175.
+    const s = state();
+    s.chacc = ['st-mercury', 'st-land'];
+    const board = projectStarterCharterBoardV1(s);
+    expect(board.kind === 'projected' && board.board.rows.map(({ definition, status }) => [definition.id, status]))
+      .toEqual([['st-mercury', 'accepted'], ['st-land', 'accepted']]);
+  });
+
+  it('no row is ever held back as unavailable: every row is accepted or available', () => {
+    // LEGACY celestial-frontier.html:24837-24853: the board lists only accepted and available Charters.
+    for (const definition of STARTER_CHARTER_DEFINITIONS_V1) expect(Object.keys(definition)).not.toContain('availability');
+    const board = projectStarterCharterBoardV1(state());
+    if (board.kind !== 'projected') throw new Error(board.reason);
+    for (const row of board.board.rows) expect(Object.keys(row).sort()).toEqual(['claimable', 'definition', 'progress', 'status']);
+  });
+
+  it('an available row whose deed is already done reads as a claim, and the board counts the honoured Charters', () => {
+    // LEGACY celestial-frontier.html:25167-25172 (Claim) and 25179-25180 (the honoured count).
+    const claims = (s: SaveStateV2) => {
+      const board = projectStarterCharterBoardV1(s, EXTENSIONS);
+      if (board.kind !== 'projected') throw new Error(board.reason);
+      return [board.board.rows.map(({ definition, claimable }) => [definition.id, claimable]), board.board.honored];
+    };
+    expect(claims(state())).toEqual([[['st-land', false], ['st-mercury', false]], 0]);
+    const s = state();
+    s.chDone = ['st-land'];
+    s.surfSeen.push(131);
+    s.stats = { ...s.stats, charters: 4 };
+    expect(claims(s)).toEqual([[['st-mine', false], ['st-mercury', true]], 4]);
+  });
+
+  it('the board is inert until training ends, except the graduation accept, which is never already proven', () => {
+    // LEGACY celestial-frontier.html:24882-24883 (refused) and 24889-24891 (no proof from training).
+    const recruit = state();
+    recruit.tutDone = false;
+    recruit.surfSeen.push(134);
+    const before = structuredClone(recruit);
+    expect(stageStarterCharterAcceptV1({ draft: recruit, extensions: EXTENSIONS, id: 'st-land', receiptOrdinal: 1 }).kind).toBe('refused');
+    expect(recruit).toEqual(before);
+    expect(stageStarterCharterAcceptV1({ draft: recruit, extensions: EXTENSIONS, id: 'st-land', receiptOrdinal: 1, graduation: true }).kind).toBe('ready');
+    expect(recruit).toMatchObject({ chacc: ['st-land'], chDone: [], essence: 10 });
+  });
+
+  it('a deed during training counts for no Charter', () => {
+    // LEGACY celestial-frontier.html:24908.
+    const recruit = state();
+    recruit.tutDone = false;
+    recruit.chacc = ['st-land'];
+    expect(stageStarterCharterEventV1({ draft: recruit, extensions: EXTENSIONS, event: { kind: 'landfall', address: solWorld(134) }, receiptOrdinal: 1 }).kind).toBe('current');
+    expect(recruit).toMatchObject({ chacc: ['st-land'], chDone: [], essence: 10 });
+  });
+
+  it('Make planetfall has no filter: any first landing counts, Earth included', () => {
+    // LEGACY celestial-frontier.html:24720 (no filt); the landfall event itself fires once per world, 13192-13200.
+    const s = state();
+    s.chacc = ['st-land'];
+    expect(stageStarterCharterEventV1({ draft: s, extensions: EXTENSIONS, event: { kind: 'landfall', address: solWorld(133) }, receiptOrdinal: 1 }).kind).toBe('ready');
+    expect(s.chDone).toEqual(['st-land']);
+  });
+
+  it('accepting a landfall Charter replays the worlds already landed on through its filter', () => {
+    // LEGACY celestial-frontier.html:24896-24900.
+    const mercury = state();
+    mercury.landed = [131];
+    expect(stageStarterCharterAcceptV1({ draft: mercury, extensions: lootExtensions(mercury), id: 'st-mercury', receiptOrdinal: 1 }))
+      .toMatchObject({ kind: 'ready', facts: { completions: [{ id: 'st-mercury', alreadyProven: true }] } });
+    const mars = state();
+    mars.landed = [131];
+    mars.chDone = ['st-mercury'];
+    expect(stageStarterCharterAcceptV1({ draft: mars, extensions: EXTENSIONS, id: 'st-mars', receiptOrdinal: 2 }))
+      .toMatchObject({ kind: 'ready', facts: { completions: [] } });
+    const land = state();
+    land.landed = [133];
+    expect(stageStarterCharterAcceptV1({ draft: land, extensions: EXTENSIONS, id: 'st-land', receiptOrdinal: 3 }))
+      .toMatchObject({ kind: 'ready', facts: { completions: [{ id: 'st-land', alreadyProven: true }] } });
   });
 });

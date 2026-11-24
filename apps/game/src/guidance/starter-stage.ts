@@ -1,7 +1,8 @@
 /* Staging a Starter Charter acceptance or deed on a draft state: progress,
    completion, Stardust, starter gear, and the achievement and rank refresh, all
-   in the caller's one transaction
-   (ported from SOURCE apps/game/src/starter-charters.ts:391-660). */
+   in the caller's one transaction. The rules are the legacy game's
+   (celestial-frontier.html of the live branch: accept 24878-24906, a deed
+   24907-24918, completion 24865-24877). */
 import { hashInt } from '@cf/domain-rand';
 import {
   createGearInstance,
@@ -221,23 +222,29 @@ export function stageStarterCharterAcceptV1(input: Readonly<{
   extensions: V5Extensions;
   id: StarterCharterIdV1;
   receiptOrdinal: number;
+  /** True only for the accept that is the last lesson of training (legacy 24882). */
+  graduation?: boolean;
 }>): StarterCharterStageOutcomeV1 {
   try {
-    const board = projectStarterCharterBoardV1(input.draft);
+    if (!input.draft.tutDone && input.graduation !== true) {
+      return Object.freeze({ kind: 'refused', reason: 'the board is inert until training ends' });
+    }
+    const board = projectStarterCharterBoardV1(input.draft, input.extensions);
     if (board.kind !== 'projected') return Object.freeze({ kind: 'refused', reason: board.reason });
     const row = board.board.rows.find(({ definition }) => definition.id === input.id);
     if (!row || row.status !== 'available') {
-      return Object.freeze({ kind: 'refused', reason: row?.lockedReason ?? 'starter Charter is not revealed' });
+      return Object.freeze({ kind: 'refused', reason: 'starter Charter is not revealed' });
     }
     if (board.board.acceptedCount >= STARTER_CHARTER_CAP_V1) {
-      return Object.freeze({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+      return Object.freeze({ kind: 'refused', reason: 'Three charters is a full slate — see one through first.' });
     }
     const definition = row.definition;
     const checked = checkedState(input.draft);
     input.draft.chacc = [...checked.accepted, definition.id];
     let completions: readonly StarterCharterCompletionV1[] = Object.freeze([]);
     let extensionWrites: readonly V5ExtensionWrite[] = Object.freeze([]);
-    if (alreadyProven(input.draft, input.extensions, definition.id)) {
+    /* never already proven from training's sandbox: deeds count only after graduation (legacy 24889-24891) */
+    if (input.draft.tutDone && alreadyProven(input.draft, input.extensions, definition.id)) {
       const completed = complete(
         input.draft, input.extensions, definition, input.receiptOrdinal, true,
       );
@@ -265,6 +272,9 @@ export function stageStarterCharterEventV1(input: Readonly<{
   activePlayMs?: number;
 }>): StarterCharterStageOutcomeV1 {
   try {
+    if (!input.draft.tutDone) {
+      return Object.freeze({ kind: 'current', facts: Object.freeze({ ...facts(false, null, [], [], [], null), weekly: null }) });
+    }
     const checked = checkedState(input.draft);
     const progress = { ...checked.progress };
     const progressIds: StarterCharterIdV1[] = [];
@@ -273,7 +283,7 @@ export function stageStarterCharterEventV1(input: Readonly<{
     for (const id of checked.accepted) {
       if (!(STARTER_CHARTER_IDS_V1 as readonly string[]).includes(id)) continue;
       const definition = definitionFor(id as StarterCharterIdV1);
-      if (definition.availability !== 'live' || !eventMatches(definition, input.event)) continue;
+      if (!eventMatches(definition, input.event)) continue;
       const next = Math.min(definition.count, (progress[definition.id] ?? 0) + 1);
       progress[definition.id] = next;
       progressIds.push(definition.id);

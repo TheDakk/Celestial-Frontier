@@ -1,10 +1,9 @@
-/* The ten Starter Charters: the table and the matching of deeds to rows
-   (ported from SOURCE apps/game/src/starter-charters.ts).
+/* The ten Starter Charters: the table and the matching of deeds to rows, as in
+   the legacy game (celestial-frontier.html of the live branch, 24719-24741).
 
-   The canonical two chains, accept-to-activate rule, three-slot cap, already-
-   proven checks, Stardust, starter gear and exact event filters are preserved.
-   Explicit Discover Life owns accepted `st-scan`; `st-conq` completes only in
-   the combat settlement. */
+   The two chains, accept-to-activate rule, three-slot cap, already-proven
+   checks, Stardust, starter gear and event filters are the legacy game's.
+   `st-conq` listens for a conquest; the combat settlement completes it. */
 import { isCanonicalEarthWorldAddress } from '@cf/domain-opportunity';
 import { readWorldIdentity, type SaveStateV2, type V5Extensions } from '@cf/persistence';
 import { isSolLandfallAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
@@ -28,75 +27,74 @@ export type StarterCharterEventV1 =
 export interface StarterCharterDefinitionV1 {
   readonly id: StarterCharterIdV1;
   readonly chain: 'trades' | 'tour';
-  readonly event: StarterCharterEventV1['kind'];
+  readonly event: StarterCharterEventV1['kind'] | 'conquest';
   readonly count: number;
   readonly title: string;
   readonly description: string;
   readonly stardust: number;
   readonly gearId: 'headlamp' | 'magboots' | 'meteor' | 'fieldlegs' | 'earpiece' | null;
-  readonly availability: 'live' | 'unavailable';
 }
 
 export const STARTER_CHARTER_DEFINITIONS_V1: readonly StarterCharterDefinitionV1[] = Object.freeze([
   Object.freeze({
     id: 'st-land', chain: 'trades', event: 'landfall', count: 1,
     title: 'Make planetfall',
-    description: 'Land on any world. A first field contract starts with boots on the ground.',
-    stardust: 10, gearId: null, availability: 'live',
+    description: 'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.',
+    stardust: 10, gearId: null,
   }),
   Object.freeze({
     id: 'st-mine', chain: 'trades', event: 'mined', count: 1,
     title: 'Prospect a dead world',
-    description: 'Land on a lifeless world and complete one Mine action.',
-    stardust: 15, gearId: null, availability: 'live',
+    description: 'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.',
+    stardust: 15, gearId: null,
   }),
   Object.freeze({
     id: 'st-scan', chain: 'trades', event: 'bioscan', count: 1,
     title: 'Discover life',
-    description: 'Complete one explicit Discover Life action after accepting this Charter.',
-    stardust: 15, gearId: 'earpiece', availability: 'live',
+    description: 'Land on a living world and survey its biosphere — mind the danger percentage, or send a scout. Then tame what you find.',
+    stardust: 15, gearId: 'earpiece',
   }),
   Object.freeze({
     id: 'st-scout', chain: 'trades', event: 'scout-set', count: 1,
     title: 'Name a Field Scout',
-    description: 'Assign one exact owned fauna companion as Field Scout.',
-    stardust: 15, gearId: null, availability: 'live',
+    description: 'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.',
+    stardust: 15, gearId: null,
   }),
   Object.freeze({
-    id: 'st-conq', chain: 'trades', event: 'landfall', count: 1,
+    id: 'st-conq', chain: 'trades', event: 'conquest', count: 1,
     title: 'Conquer a world',
-    description: 'Win one verified Surface conquest beyond the training world.',
-    stardust: 25, gearId: null, availability: 'live',
+    description: 'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.',
+    stardust: 25, gearId: null,
   }),
   Object.freeze({
     id: 'st-mercury', chain: 'tour', event: 'landfall', count: 1,
     title: 'First footfall: Mercury',
-    description: 'Stand on Sol’s innermost world.',
-    stardust: 10, gearId: 'headlamp', availability: 'live',
+    description: 'Sol’s innermost world bakes in the glare. Stand on it — the sunward veins run rich.',
+    stardust: 10, gearId: 'headlamp',
   }),
   Object.freeze({
     id: 'st-mars', chain: 'tour', event: 'landfall', count: 1,
     title: 'The red neighbor',
-    description: 'Make planetfall on Mars.',
-    stardust: 10, gearId: 'magboots', availability: 'live',
+    description: 'Mars waited a long age for boots. Land, and read the rust from the ground.',
+    stardust: 10, gearId: 'magboots',
   }),
   Object.freeze({
     id: 'st-giants', chain: 'tour', event: 'mined', count: 5,
     title: 'Wells of the giants',
-    description: 'Complete five Mine actions on Jupiter or Saturn.',
-    stardust: 15, gearId: 'meteor', availability: 'live',
+    description: 'Mine Jupiter or Saturn’s deep decks — 5 loads between them.',
+    stardust: 15, gearId: 'meteor',
   }),
   Object.freeze({
     id: 'st-ice', chain: 'tour', event: 'landfall', count: 1,
     title: 'The cold frontier',
-    description: 'Make planetfall on Uranus or Neptune.',
-    stardust: 10, gearId: 'fieldlegs', availability: 'live',
+    description: 'Uranus or Neptune — stand at the edge of Sol’s long dark, where the ices wait.',
+    stardust: 10, gearId: 'fieldlegs',
   }),
   Object.freeze({
     id: 'st-comp', chain: 'tour', event: 'crafted', count: 1,
     title: 'A working component',
-    description: 'Fabricate any canonical T2 component.',
-    stardust: 15, gearId: null, availability: 'live',
+    description: 'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.',
+    stardust: 15, gearId: null,
   }),
 ]);
 
@@ -213,7 +211,29 @@ function exactSolWorld(
   return isSolLandfallAddress(address) && acceptedSeeds.has(address.planet.seed);
 }
 
+/** The legacy game's replay at accept (24896-24900): a landfall Charter honours every world already in the
+ *  landed set that passes its filter. `st-land` has no filter, so any landed world counts. */
+function landedReplay(state: SaveStateV2, id: StarterCharterIdV1): boolean {
+  const seeds: ReadonlySet<number> | null = id === 'st-land' ? null
+    : id === 'st-mercury' ? new Set([131])
+      : id === 'st-mars' ? new Set([134])
+        : id === 'st-ice' ? new Set([137, 138]) : new Set<number>();
+  return state.landed.some((value) => {
+    const seed = legacySurfaceSeed(value);
+    return seed !== null && (seeds === null || seeds.has(seed));
+  });
+}
+
+/** Already done when accepted: the Charter's own check (24721-24740), or the landed replay. */
 export function alreadyProven(
+  state: SaveStateV2,
+  extensions: V5Extensions,
+  id: StarterCharterIdV1,
+): boolean {
+  return checkProven(state, extensions, id) || landedReplay(state, id);
+}
+
+function checkProven(
   state: SaveStateV2,
   extensions: V5Extensions,
   id: StarterCharterIdV1,
@@ -254,8 +274,7 @@ export function alreadyProven(
 export function eventMatches(definition: StarterCharterDefinitionV1, event: StarterCharterEventV1): boolean {
   if (definition.event !== event.kind) return false;
   switch (definition.id) {
-    case 'st-land': return event.kind === 'landfall'
-      && !isCanonicalEarthWorldAddress(event.address);
+    case 'st-land': return event.kind === 'landfall';
     case 'st-mine': return event.kind === 'mined';
     case 'st-scout': return event.kind === 'scout-set' && event.scoutId.length > 0;
     case 'st-mercury': return event.kind === 'landfall'
