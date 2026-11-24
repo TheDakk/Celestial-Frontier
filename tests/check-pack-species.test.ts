@@ -163,6 +163,21 @@ describe('checkPack on the placeholder named species', () => {
       expect(large.structure).toEqual(['family avian has no fallback at large (it holds only species, and needs one stand-in at each size it uses; at this one: no species, only parts)']);
     });
 
+    it('a family the generator makes creatures of is never one that holds only species, whatever the pack holds of it', () => {
+      // radial with its four generated scaffolds taken out and the urchin species kept: a seed still gives a small radial
+      // creature, which has nothing but the stand-in to be drawn with
+      const blocks = SPECIES_TEXT.split('\n\n');
+      const kept = blocks.filter((b) => !/^scaffold radial\/(?!testurchin\/)/.test(b.trimStart()));
+      expect(blocks.length - kept.length).toBe(4);
+      const cut = kept.join('\n\n');
+      expect(check(cut).structure).toEqual([]);
+      const text = planted('fallback radial radial/torso/fallback/small/v0\n', '', withoutPart(cut, 'radial/torso/fallback/small/v0'));
+      expect(check(text).structure).toEqual(['family radial has no fallback at small']);
+      // a kingdom likewise: flora holds only the plant species, and still needs every size
+      const flora = planted('fallback flora flora/torso/fallback/guardian/v0\n', '', withoutPart(SPECIES_TEXT, 'flora/torso/fallback/guardian/v0'));
+      expect(check(flora).structure).toEqual(['family flora has no fallback at guardian']);
+    });
+
     it('a family with generated bodies still needs one at every size the pack has', () => {
       const text = planted('fallback radial radial/torso/fallback/small/v0\n', '', withoutPart(SPECIES_TEXT, 'radial/torso/fallback/small/v0'));
       expect(check(text).structure).toEqual(['family radial has no fallback at small']);

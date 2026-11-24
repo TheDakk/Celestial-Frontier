@@ -656,16 +656,26 @@ function headlessParts(catalogue) {
 }
 
 /**
- * The sizes a family needs a stand-in (fallback) at. A family that holds only species (it has a species, and no scaffold
- * but a species') needs one at each size it uses: the sizes of its species, its scaffolds and its parts
- * (a part its species share, a leg or an eye, makes it no generated family). `species` names the species of that size.
- * Any other family needs one at every size the pack has parts or scaffolds for (`packTiers`), with `species` null.
+ * Every family the generator makes creatures of, whatever the pack holds: the fauna families a body gene routes to
+ * (GENERATED_TORSOS, from routeBody) and the family of each kingdom outside fauna (resolveBody: the kingdom's own name).
+ * A seed can ask for a creature of any of these at any size, and compose throws where the stand-in is missing.
+ */
+const GENERATED_FAMILIES = new Set([
+  ...[...GENERATED_TORSOS].map((id) => id.split('/')[0]),
+  ...['flora', 'fungi', 'microbe'].map((kingdom) => resolveBody({ kingdom }, () => 0).family),
+]);
+
+/**
+ * The sizes a family needs a stand-in (fallback) at. A family that holds only species (the generator makes no creature
+ * of it, GENERATED_FAMILIES, and it has a species) needs one at each size it uses: the sizes of its species, its
+ * scaffolds and its parts. `species` names the species of that size. Any other family needs one at every size the pack
+ * has parts or scaffolds for (`packTiers`), with `species` null.
  */
 function standInTiers(catalogue, family, packTiers) {
   const species = [...catalogue.species.values()].filter((s) => s.family === family);
-  const scaffolds = [...catalogue.scaffolds.values()].filter((s) => s.family === family);
-  if (species.length === 0 || scaffolds.some((s) => speciesOfScaffold(catalogue, s) === undefined)) return packTiers.map((tier) => ({ tier, species: null }));
-  const used = new Set([...species, ...scaffolds, ...[...catalogue.parts.values()].filter((p) => p.family === family)].map((x) => x.tier));
+  if (GENERATED_FAMILIES.has(family) || species.length === 0) return packTiers.map((tier) => ({ tier, species: null }));
+  const things = [...catalogue.scaffolds.values(), ...catalogue.parts.values()].filter((x) => x.family === family);
+  const used = new Set([...species, ...things].map((x) => x.tier));
   return packTiers.filter((tier) => used.has(tier)).map((tier) => ({ tier, species: species.filter((s) => s.tier === tier).map((s) => s.key) }));
 }
 
