@@ -1,27 +1,18 @@
-import type { DevicePreferences } from '../platform/preferences';
+/* The survey card's rows and folds, as the legacy game lays them out
+   (celestial-frontier.html of the live branch, 13813-13896 and 13994).
 
-/* The folded survey card is an option; the default stays the flat card. The switch describes how this device
-   reads cards, so it is a device preference and never part of the save. Whether each fold is open is kept in
-   the save's `cardExpand` bits 1 and 2. */
+   The card always folds: there is no switch. Whether each fold is open is kept
+   in the save's `cardExpand`, bits 1 and 2, and both start closed. This owns
+   the surveyed card only; the telescope's glance card, the hidden grade and the
+   biome line are the card builder's (legacy 13822-13862). */
 
-/** The device preference that holds the switch: `on` or `off`. */
-export const SURVEY_FOLD_PREFERENCE = 'survey-folds/v1';
 /** The environment rows, and the census detail rows; the census is headed by the `Civilization` row. */
 const ENVIRONMENT_KEYS: ReadonlySet<string> = new Set(['Made of', 'Atmosphere', 'Climate', 'Water', 'Gravity', 'Magnetism', 'Weather', 'Seasons']);
 const CENSUS_KEYS: ReadonlySet<string> = new Set(['Tech era', 'Local year', 'Population']);
 export const SURVEY_FOLD_BITS = Object.freeze({ environment: 1, census: 2 } as const);
 
-/** Only the exact value `on` turns the folds on; absent, unreadable or anything else is the flat card. */
-export function readSurveyFoldPreference(preferences: DevicePreferences): boolean {
-  return preferences.read(SURVEY_FOLD_PREFERENCE) === 'on';
-}
-/** Whether the device kept the choice (this session follows it either way). */
-export function writeSurveyFoldPreference(preferences: DevicePreferences, on: boolean): boolean {
-  return preferences.write(SURVEY_FOLD_PREFERENCE, on ? 'on' : 'off');
-}
-
-/** A row of the survey card: its key, its value and an optional class. */
-export type SurveyRow = readonly [string, string, string?];
+/** A row of the survey card: its key, its value, an optional class and an optional tag (`sp:` marks a species). */
+export type SurveyRow = readonly [string, string, string?, string?];
 
 export interface SurveyFold {
   readonly kind: 'fold';
@@ -35,37 +26,57 @@ export interface SurveyFold {
   readonly open: boolean;
   readonly rows: readonly SurveyRow[];
 }
-export type SurveyCardItem = { readonly kind: 'row'; readonly row: SurveyRow } | SurveyFold;
+/** The environment read from orbit: the fold's header line and the word to land, nothing to open. */
+export interface SurveySummary {
+  readonly kind: 'summary';
+  readonly title: string;
+  readonly digest: string;
+  readonly hint: string;
+}
+export type SurveyCardItem = { readonly kind: 'row'; readonly row: SurveyRow } | SurveyFold | SurveySummary;
 
-/** The survey card's rows, in the order they are shown. `folds: false` is the flat card. With folds, the
- *  environment rows become one `Environment` fold (its header keeps the world's character: the climate's first
- *  clause and the gravity line) placed where its first row stood, and a civilization with census detail
- *  becomes one fold headed by its `Civilization` row. */
-export function surveyRows(rows: readonly SurveyRow[], options: Readonly<{ folds: boolean; cardExpand: number }>): readonly SurveyCardItem[] {
-  if (!options.folds) return rows.map((row) => ({ kind: 'row', row }));
-  const environment = rows.filter(([k]) => ENVIRONMENT_KEYS.has(k));
-  const census = rows.filter(([k]) => CENSUS_KEYS.has(k));
-  const censusHead = rows.find(([k]) => k === 'Civilization');
-  const fold = (bit: 1 | 2, title: string, digest: string, body: readonly SurveyRow[], cls: string, headRow: boolean): SurveyFold =>
-    ({ kind: 'fold', bit, title, digest, cls, headRow, open: (options.cardExpand & bit) !== 0, rows: body });
-  const climate = (environment.find(([k]) => k === 'Climate')?.[1] ?? '').split(/[,—]/)[0]!.trim();
-  const gravity = environment.find(([k]) => k === 'Gravity')?.[1] ?? '';
+export interface SurveyCard {
+  /** The plain rows in their order, then the environment. */
+  readonly rows: readonly SurveyCardItem[];
+  /** The civilization and the signal: they read below the life roster. */
+  readonly below: readonly SurveyCardItem[];
+}
+
+/** The surveyed card. `grounded`: the explorer stands on the world. `known`: its people have been met (home, a
+ *  conquered world, or a successful first contact). */
+export function surveyRows(rows: readonly SurveyRow[], options: Readonly<{ grounded: boolean; known: boolean; cardExpand: number }>): SurveyCard {
+  const environment: SurveyRow[] = [];
+  const census: SurveyRow[] = [];
+  let censusHead: SurveyRow | null = null;
+  let signal: SurveyRow | null = null;
   const out: SurveyCardItem[] = [];
-  let environmentDone = false;
-  let censusDone = false;
   for (const row of rows) {
     const [k] = row;
-    if (ENVIRONMENT_KEYS.has(k) && environment.length > 1) {
-      if (!environmentDone) out.push(fold(SURVEY_FOLD_BITS.environment, 'Environment', [climate, gravity].filter(Boolean).join(' · '), environment, '', false));
-      environmentDone = true;
-      continue;
-    }
-    if (censusHead && census.length > 0 && (k === 'Civilization' || CENSUS_KEYS.has(k))) {
-      if (!censusDone) out.push(fold(SURVEY_FOLD_BITS.census, censusHead[0], censusHead[1], census, censusHead[2] ?? '', true));
-      censusDone = true;
-      continue;
-    }
-    out.push({ kind: 'row', row });
+    if (row[3]?.startsWith('sp:')) continue;
+    if (ENVIRONMENT_KEYS.has(k)) environment.push(row);
+    else if (CENSUS_KEYS.has(k)) census.push(row);
+    else if (k === 'Civilization') censusHead = row;
+    else if (k === '⟁ Signal') signal = row;
+    else out.push({ kind: 'row', row });
   }
-  return out;
+  const fold = (bit: 1 | 2, title: string, digest: string, body: readonly SurveyRow[], cls: string, headRow: boolean): SurveyFold =>
+    ({ kind: 'fold', bit, title, digest, cls, headRow, open: (options.cardExpand & bit) !== 0, rows: body });
+  if (environment.length > 0) {
+    const climate = (environment.find(([k]) => k === 'Climate')?.[1] ?? '').split(/[,—]/)[0]!.trim();
+    const gravity = environment.find(([k]) => k === 'Gravity')?.[1] ?? '';
+    const digest = [climate, gravity].filter(Boolean).join(' · ');
+    out.push(options.grounded
+      ? fold(SURVEY_FOLD_BITS.environment, 'Environment', digest, environment, '', false)
+      : { kind: 'summary', title: 'Environment', digest, hint: '— land for the full survey' });
+  }
+  const below: SurveyCardItem[] = [];
+  if (censusHead !== null) {
+    if (!options.known && !/^None/.test(censusHead[1])) {
+      below.push({ kind: 'row', row: [censusHead[0], 'Signals from an organized world — land to make contact', 'civ'] });
+    } else if (census.length > 0) {
+      below.push(fold(SURVEY_FOLD_BITS.census, censusHead[0], censusHead[1], census, censusHead[2] ?? '', true));
+    } else below.push({ kind: 'row', row: censusHead });
+  }
+  if (signal !== null) below.push({ kind: 'row', row: signal });
+  return { rows: out, below };
 }
