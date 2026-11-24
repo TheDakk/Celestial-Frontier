@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cf/art-compose": "*",
+    "@cf/art-format": "*",
     "@cf/art-interface": "*",
+    "@cf/art-recipe": "*",
     "@cf/art-testparts": "*",
     "@cf/audio": "*",
     "@cf/domain-descriptors": "*",

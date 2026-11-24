@@ -27,6 +27,9 @@ export interface StatusFacts {
   sheet: 'pack' | 'standin';
   /** How many different glyphs, icons and space elements were asked for and not found. */
   gaps: { glyphs: number; icons: number; elements: number };
+  /** The gaps creature pictures showed, by kind (the gap's first word: `species`, `fallback`, `missing`...), each
+   *  with how many different gaps of the kind there are; in the order shown. */
+  creatureGaps: ReadonlyArray<{ kind: string; count: number }>;
 }
 
 export interface SettingsPorts {
@@ -177,6 +180,11 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
           ? [fact('Art packs', 'None listed', false)]
           : status.packs.map((pack, i) => row(i === 0 ? 'Art packs' : '',
             el('span', { class: 'row-value', 'data-l10n-skip': true }, pack.name), el('span', { class: 'row-value' }, PACK_WORDS[pack.state])));
+        const creatures = status.creatureGaps.length === 0
+          ? [fact('Missing creature art', 'None', false)]
+          : status.creatureGaps.map((gap, i) => row(i === 0 ? 'Missing creature art' : '',
+            el('span', { class: 'row-value', 'data-l10n-skip': true }, gap.kind),
+            el('span', { class: 'row-value', 'data-l10n-skip': true, 'data-gap-kind': gap.kind }, String(gap.count))));
         statusHost.replaceChildren(
           el('h3', {}, 'Status'),
           fact('Build', buildWords(status.build, ports.update?.buildId() ?? null), true),
@@ -187,6 +195,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
           fact('Missing letters', String(status.gaps.glyphs), true),
           fact('Missing icons', String(status.gaps.icons), true),
           fact('Missing map art', String(status.gaps.elements), true),
+          ...creatures,
         );
         localizeElement(statusHost, SETTINGS_CATALOG, ports.locale);
       }
@@ -194,7 +203,7 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
       draw();
       // What Status shows can change while the panel is open.
       const stops = [
-        ...(['save:committed', 'save:reload-required', 'save:authority', 'pack:status'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
+        ...(['save:committed', 'save:reload-required', 'save:authority', 'pack:status', 'creature:gap'] as const).map((type) => ctx.bus.on(type, () => { if (live) drawStatus(); })),
         ...(['protect:persist', 'protect:backup', 'save:held'] as const).map((type) => ctx.bus.on(type, redraw)),
         ...(ports.update === null ? [] : [ports.update.onChange(() => { if (live) drawStatus(); })]),
       ];

@@ -2,6 +2,12 @@ import { readFileSync } from 'node:fs';
 import { parseCatalogueText } from '@cf/art-format';
 import type { Catalogue } from '@cf/art-format';
 
+const read = (name: string): string => readFileSync(new URL(name, import.meta.url), 'utf8');
+/** The placeholder pack's text (quadruped.txt): a palette and its parts, a catalogue alone. */
+export const testPartsText = (): string => read('./quadruped.txt');
+/** The placeholder species pack's text (species.txt): read after testPartsText, it does not parse alone. */
+export const testSpeciesPackText = (): string => read('./species.txt');
+
 let cached: Catalogue | undefined;
 
 /**
@@ -10,7 +16,7 @@ let cached: Catalogue | undefined;
  * quadruped.txt.
  */
 export function testCatalogue(): Catalogue {
-  cached ??= parseCatalogueText(readFileSync(new URL('./quadruped.txt', import.meta.url), 'utf8'));
+  cached ??= parseCatalogueText(testPartsText());
   return cached;
 }
 
@@ -23,8 +29,7 @@ let cachedSpecies: Catalogue | undefined;
  * testCatalogue holds none of it.
  */
 export function testSpeciesCatalogue(): Catalogue {
-  const read = (name: string): string => readFileSync(new URL(name, import.meta.url), 'utf8');
-  cachedSpecies ??= parseCatalogueText(`${read('./quadruped.txt')}\n${read('./species.txt')}`);
+  cachedSpecies ??= parseCatalogueText(`${testPartsText()}\n${testSpeciesPackText()}`);
   return cachedSpecies;
 }
-export const testInterfaceSheetText = (): string => readFileSync(new URL('./interface.txt', import.meta.url), 'utf8');
+export const testInterfaceSheetText = (): string => read('./interface.txt');

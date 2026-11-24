@@ -22,6 +22,8 @@ export interface GameEvents {
   'layout:size-class': { sizeClass: SizeClass; width: number; height: number };
   'input:mode': { mode: InputMode };
   'pack:status': { name: string; state: 'ready' | 'standin' | 'refused'; detail: string | null };
+  /** A creature's picture showed a gap no picture had shown before: `key` is that creature's, `gap` the gap's words. */
+  'creature:gap': { key: string; gap: string };
   'protect:persist': { state: PersistState };
   'protect:backup': { at: number };
 }

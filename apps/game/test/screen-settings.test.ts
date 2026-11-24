@@ -118,6 +118,7 @@ describe('Settings', () => {
         await settled();
       },
       async (page) => { page.chooser.answer = 'x'.repeat(40_000_000); page.control('restore').click(); await settled(); },
+      async (page) => { page.env.bus.emit('creature:gap', { key: 'k', gap: 'species:civet' }); },
       async (page) => { page.env.bus.emit('pack:status', { name: 'interface', state: 'standin', detail: 'absent' }); page.env.bus.emit('pack:status', { name: 'b', state: 'ready', detail: null }); page.env.bus.emit('pack:status', { name: 'c', state: 'refused', detail: 'wrong-hash' }); },
     ];
     for (const persisted of ['kept', 'not-kept', 'unknown', null] as const) {
@@ -169,5 +170,25 @@ describe('Settings', () => {
     page.control('sound').click();
     await page.loop.flush();
     expect(facts()['Save revision']).toBe(String(revision + 1));
+  });
+
+  it('Status lists the gaps in creature pictures by kind, each with the number of different gaps of that kind', async () => {
+    const page = await bootPage();
+    page.openSettings();
+    const rows = (): string[][] => [...page.panel().querySelectorAll('[data-set="status"] [data-gap-kind]')]
+      .map((value) => [value.getAttribute('data-gap-kind')!, value.textContent!]);
+    const label = (): string[] => [...page.panel().querySelectorAll('[data-set="status"] .row')]
+      .filter((row) => row.querySelector('.row-label')!.textContent === 'Missing creature art')
+      .map((row) => [...row.querySelectorAll('.row-value')].map((v) => v.textContent).join(' '));
+    expect([rows(), label()]).toEqual([[], ['None']]);
+    for (const gap of ['species:civet', 'fallback:flora/medium', 'species:frog', 'species:civet', 'attach:eye0']) page.env.bus.emit('creature:gap', { key: 'k', gap });
+    // Drawn again as the gaps arrive, the kinds in the order of the alphabet.
+    expect(rows()).toEqual([['attach', '1'], ['fallback', '1'], ['species', '2']]);
+    expect(label()).toEqual(['attach 1']);
+    // A kind and its number are data: the page's language leaves them as they are.
+    const other = await bootPage({ search: '?locale=qps-ploc' });
+    other.env.bus.emit('creature:gap', { key: 'k', gap: 'species:civet' });
+    other.openSettings();
+    expect([...other.panel().querySelectorAll('[data-set="status"] [data-gap-kind]')].map((v) => v.closest('.row')!.textContent)).toEqual([`${pseudoLocalize('Missing creature art')}species1`]);
   });
 });

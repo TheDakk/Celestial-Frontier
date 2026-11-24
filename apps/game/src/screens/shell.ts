@@ -87,6 +87,12 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   // Packs load beside the boot: what each came to is noted from the start.
   const packs = new Map<string, StatusFacts['packs'][number]>();
   bus.on('pack:status', (event) => { packs.set(event.name, { name: event.name, state: event.state }); });
+  // The gaps creature pictures showed, by kind: the gap's words up to its first colon.
+  const creatureGaps = new Map<string, Set<string>>();
+  bus.on('creature:gap', ({ gap }) => {
+    const kind = gap.split(':', 1)[0]!;
+    creatureGaps.set(kind, (creatureGaps.get(kind) ?? new Set()).add(gap));
+  });
   let started = false;
   let routeSaveWanted = false;
 
@@ -147,6 +153,7 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     packs: [...packs.values()],
     sheet: sheetState(),
     gaps: { glyphs: new Set(interfaceGaps.glyphs).size, icons: new Set(interfaceGaps.icons).size, elements: new Set(interfaceGaps.elements).size },
+    creatureGaps: [...creatureGaps].map(([kind, gaps]) => ({ kind, count: gaps.size })).sort((a, b) => (a.kind < b.kind ? -1 : 1)),
   });
 
   const ctx: ScreenContext = { bus, sizeClass: () => sizeClass, inputMode: () => inputMode };

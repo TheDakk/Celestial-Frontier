@@ -28,7 +28,7 @@ export const SETTINGS_CATALOG: StringCatalog = catalog('settings', [
   'Erase and start over',
   'Status', 'Build', 'Save', 'Stored on this device', 'Protected: nothing is written', 'Reload needed', 'Save revision',
   'Art packs', 'None listed', 'Interface art', 'From the art pack', 'Stand-in',
-  'Missing letters', 'Missing icons', 'Missing map art',
+  'Missing letters', 'Missing icons', 'Missing map art', 'Missing creature art', 'None',
   'ready', 'stand-in', 'refused',
 ]);
 

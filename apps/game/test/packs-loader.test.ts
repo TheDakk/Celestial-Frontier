@@ -264,4 +264,15 @@ describe('loading the manifest', () => {
     await loadPacks(manifestOf(ENTRY), { cache, sources: [fakeSource({ [ENTRY.file]: BYTES })], status: () => {} });
     expect(packsIn(cache)).toEqual([ENTRY.sha256]);
   });
+
+  it('the verified text of each parts pack is handed on in the order of the manifest, without the interface pack or a pack that did not load', async () => {
+    const texts = ['palette text\n', 'second pack\n', 'third pack\n', 'absent pack\n'];
+    const [palette, second, third, absent] = texts.map((text, i) => entryOf(`pack${i}`, utf8(text))) as [PackEntry, PackEntry, PackEntry, PackEntry];
+    const wrong = entryOf('wrong', utf8('expected bytes\n'));
+    const files = { [sheet.file]: utf8(sheetText), [palette.file]: utf8(texts[0]!), [second.file]: utf8(texts[1]!), [third.file]: utf8(texts[2]!), [wrong.file]: utf8('other bytes!!!\n') };
+    const report = await loadPacks(manifestOf(third, sheet, absent, palette, wrong, second), { cache: memoryCache(), sources: [fakeSource(files)], status: () => {} });
+    expect(report.partsTexts).toEqual([texts[2], texts[0], texts[1]]);
+    expect(report.standIns).toBe(2);
+    expect((await loadPacks(manifestOf(sheet), { cache: memoryCache(), sources: [fakeSource(files)], status: () => {} })).partsTexts).toEqual([]);
+  });
 });

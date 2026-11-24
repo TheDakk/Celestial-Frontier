@@ -110,6 +110,8 @@ export interface PackReport {
   readonly results: ReadonlyArray<{ readonly entry: PackEntry; readonly result: PackResult }>;
   /** How many packs of the manifest the game is drawing stand-ins for. */
   readonly standIns: number;
+  /** The verified text of each `parts` pack that is ready, in the manifest's order: what the creature catalogue is built from. */
+  readonly partsTexts: readonly string[];
 }
 
 /**
@@ -133,5 +135,6 @@ export async function loadPacks(manifest: PackManifest, deps: PackLoadDeps): Pro
   }
   const standIns = results.filter(({ result }) => result.state !== 'ready').length;
   if (standIns === 0) await prunePackCache(deps.cache, manifest);
-  return { results, standIns };
+  const partsTexts = results.flatMap(({ entry, result }) => (entry.kind === 'parts' && result.state === 'ready' ? [result.text] : []));
+  return { results, standIns, partsTexts };
 }
