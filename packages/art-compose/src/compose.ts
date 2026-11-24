@@ -14,7 +14,7 @@ export interface Composed {
 
 /**
  * Assembles, finishes and hashes one pose. When there is nothing to draw (no parts, no scaffold,
- * or every part failed), or the pack lacks a torso, a head or a leg the creature asks for (lacksEssentialPart: no part
+ * or every part failed), or the pack lacks a torso, a head or a limb the creature asks for (lacksEssentialPart: no part
  * of it is then drawn, and the gaps are the recipe's, the pose's and each such missing part's), the `rest` frame of the fallback for the recipe's family and tier is drawn instead, its anchor at the
  * scaffold origin (or the canvas centre when there is no scaffold), and `fallback:<family>` is noted. A missing fallback throws.
  * The rarity finish at `finishLevel` (the caller's choice; finishes.ts) goes on last; level 0, the default, draws none;

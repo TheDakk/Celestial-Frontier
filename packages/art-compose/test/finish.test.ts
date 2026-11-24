@@ -217,8 +217,8 @@ describe('compose', () => {
     expect(leftOut.gaps).toEqual(['missing:quadruped/head/h9/small/v0', 'fallback:quadruped']);
   });
 
-  it('a creature whose pack lacks a leg it asks for, far or near, is drawn as the fallback alone', () => {
-    for (const leg of ['quadruped/farLimbs/fore/small/v1', 'quadruped/nearLimbs/hind-sturdy/small/v0']) {
+  it('a creature whose pack lacks a limb it asks for, a leg far or near or a flipper, is drawn as the fallback alone', () => {
+    for (const leg of ['quadruped/farLimbs/fore/small/v1', 'quadruped/nearLimbs/hind-sturdy/small/v0', 'quadruped/nearLimbs/flipper/small/v0', 'quadruped/nearLimbs/flipper-membranous/small/v0']) {
       const r = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]], { gaps: [`missing:${leg}`] }), 'rest', catalogue);
       expect(r.buffer.pixels).toEqual(fallbackAlone());
       expect(r.gaps).toEqual([`missing:${leg}`, 'fallback:quadruped']);
@@ -228,7 +228,7 @@ describe('compose', () => {
   it('a creature whose pack lacks an optional part is drawn with its head and without that part, and the gap is kept', () => {
     const whole = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]]), 'rest', catalogue);
     expect(crop(whole.buffer, 9, 9, 5, 4)).toBe(['.ggg.', 'g325g', 'g11g.', '.gg..'].join('\n'));
-    for (const optional of ['back/ridge-sturdy', 'headFeature/horns-h1', 'tail/t2', 'bodyFeature/shell-shelled', 'nearWings/sails', 'farWings/wing-membranous', 'eyes/eye', 'nearLimbs/flipper', 'nearLimbs/flipper-membranous']) {
+    for (const optional of ['back/ridge-sturdy', 'headFeature/horns-h1', 'tail/t2', 'bodyFeature/shell-shelled', 'nearWings/sails', 'farWings/wing-membranous', 'eyes/eye']) {
       const gap = `missing:quadruped/${optional}/small/v0`;
       const r = compose(recipeOf([['torso', 0, TORSO], ['head', 0, HEAD]], { gaps: [gap] }), 'rest', catalogue);
       expect(r.buffer.pixels, optional).toEqual(whole.buffer.pixels);

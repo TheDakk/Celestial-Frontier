@@ -298,7 +298,7 @@ const TIER_ORDER = ['small', 'medium', 'large', 'guardian'];
  * scaffold `<family>/<torso>/<tier>` for it, so nothing but a fallback can be drawn (its parts are not looked at).
  * `missingPart`: the scaffold is there and at least one part it asks for is not (a `missing:` gap, named by the last id
  * tried); `fallsBack` counts those of them drawn as their family's fallback, because the missing part is a torso, a
- * head or a leg (lacksEssentialPart), where the others are drawn without the missing part. `composeGap`: scaffold and parts are there, and composing its rest pose meets a pose the scaffold lacks
+ * head or a limb (lacksEssentialPart), where the others are drawn without the missing part. `composeGap`: scaffold and parts are there, and composing its rest pose meets a pose the scaffold lacks
  * (`pose:`) or a translucent skin its torso frame has no layer for (`skin:`). `full`: none of these. Each missing
  * scaffold, part and such gap is named once, with the creatures that met it.
  *

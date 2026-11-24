@@ -69,16 +69,13 @@ export function headFeatureKinds(b: Body): string[] {
 }
 
 /**
- * Whether a gap says the pack lacks a part no creature is drawn without: a creature is drawn as its family's fallback, never in part, when a torso, a head or a leg it asks for is missing
- * (a `missing:` gap of a part in slot torso or head, or in farLimbs or nearLimbs and not a flipper); every other missing part is left out and the rest is drawn.
+ * Whether a gap says the pack lacks a part no creature is drawn without: a creature is drawn as its family's fallback, never in part, when a torso, a head or a limb it asks for is missing
+ * (a `missing:` gap of a part in slot torso, head, farLimbs or nearLimbs: a leg, or a flipper, the only limbs of an aquatic winged body); every other missing part is left out and the rest is drawn.
  * A body that asks for no head (a radial, a species with `head=0`) has no such gap: no head is missing.
  */
 export function lacksEssentialPart(gap: string): boolean {
-  const m = /^missing:[^/]*\/([^/]*)\/([^/]*)\//.exec(gap);
-  if (m === null) return false;
-  const [, slot, kind] = m as unknown as [string, string, string];
-  if (slot === 'torso' || slot === 'head') return true;
-  return (slot === 'farLimbs' || slot === 'nearLimbs') && kind !== 'flipper' && !kind.startsWith('flipper-');
+  const m = /^missing:[^/]*\/([^/]*)\//.exec(gap);
+  return m !== null && (m[1] === 'torso' || m[1] === 'head' || m[1] === 'farLimbs' || m[1] === 'nearLimbs');
 }
 
 /** A wanted part; `shared` is the kind tried at v0 when `kind` is not held (no gap on the way; a miss names `shared`). */
