@@ -3,7 +3,6 @@ import { systemScene } from '@cf/scene';
 import rosters from '../../../fixtures/current/rosters.json' with { type: 'json' };
 import {
   CANONICAL_BIOSPHERE_KEYS,
-  PLANETSIDE_PREVIEW_LIMIT,
   canonicalWorldRoster,
   isCanonicalWorldRoster,
   worldRosterView,
@@ -19,8 +18,9 @@ import {
   legacyEarthRosterOracle,
 } from './world-roster-support';
 
-// Ported from SOURCE tests/world-roster.test.ts (the source-injection half is world-roster-sources.test.ts).
-describe('the full world roster and the Planetside preview', () => {
+// The roster is the legacy game's (LEGACY: celestial-frontier.html of the live branch, 4862-4935 and 5097-5131).
+// The source-injection half is world-roster-sources.test.ts.
+describe('the full world roster', () => {
   it('pins the complete canonical biosphere key vocabulary', () => {
     expect(CANONICAL_BIOSPHERE_KEYS).toEqual([
       'earth', 'none', 'complex', 'flora', 'aquatic',
@@ -30,28 +30,27 @@ describe('the full world roster and the Planetside preview', () => {
     expect(Object.isFrozen(CANONICAL_BIOSPHERE_KEYS)).toBe(true);
   });
 
-  it('preserves every canonical row while bounding only the thumbnail view', () => {
+  it('a roster view is every row and their count: no row is ever held out of sight', () => {
+    // LEGACY celestial-frontier.html:5120-5131 (one survey row per species) and 13735 (a portrait for every species):
+    // the legacy game has no eight-row strip.
     const source = Array.from({ length: 13 }, (_, index) => ({ id: `species-${index}` }));
     const view = worldRosterView(source);
+    expect(Object.keys(view).sort()).toEqual(['all', 'total']);
     expect(view.all.map((row) => row.id)).toEqual(source.map((row) => row.id));
-    expect(view.preview.map((row) => row.id)).toEqual(source.slice(0, 8).map((row) => row.id));
     expect(view.total).toBe(13);
-    expect(view.hiddenFromPreview).toBe(5);
-    expect(PLANETSIDE_PREVIEW_LIMIT).toBe(8);
   });
 
-  it('does not let caller or preview-array mutation rewrite the canonical roster snapshot', () => {
+  it('does not let caller mutation rewrite the canonical roster snapshot', () => {
     const source = [{ id: 'a' }, { id: 'b' }];
     const view = worldRosterView(source);
     source.push({ id: 'c' });
     expect(view.all.map((row) => row.id)).toEqual(['a', 'b']);
     expect(Object.isFrozen(view.all)).toBe(true);
-    expect(Object.isFrozen(view.preview)).toBe(true);
   });
 
   it('keeps short/empty rosters exact and rejects non-arrays', () => {
-    expect(worldRosterView([])).toEqual({ all: [], preview: [], total: 0, hiddenFromPreview: 0 });
-    expect(worldRosterView([{ id: 1 }]).preview).toEqual([{ id: 1 }]);
+    expect(worldRosterView([])).toEqual({ all: [], total: 0 });
+    expect(worldRosterView([{ id: 1 }]).all).toEqual([{ id: 1 }]);
     expect(() => worldRosterView(null as never)).toThrow('world roster must be an array');
   });
 
@@ -65,7 +64,6 @@ describe('the full world roster and the Planetside preview', () => {
     expect(result.roster.biosphereKey).toBe('earth');
     expect(result.roster.ecologyEpoch).toBe(0);
     expect(result.roster.view.total).toBeGreaterThan(8);
-    expect(result.roster.view.preview).toHaveLength(8);
     expect(result.roster.view.all.every((row) => typeof row._earthName === 'string')).toBe(true);
     expect(result.roster.view.all.every((row) => row._cradle === 1)).toBe(true);
     expect(result.roster.view.all.some((row) => row._rare === 1)).toBe(false);
@@ -107,7 +105,6 @@ describe('the full world roster and the Planetside preview', () => {
       expect(result.roster.view.all, `epoch ${ecologyEpoch}`).toEqual(
         legacyEarthRosterOracle(ecologyEpoch),
       );
-      expect(result.roster.view.preview).toHaveLength(PLANETSIDE_PREVIEW_LIMIT);
       expect(result.roster.view.all.every((row) => row._cradle === 1)).toBe(true);
     }
   });
@@ -170,9 +167,7 @@ describe('the full world roster and the Planetside preview', () => {
     if (!result.ok) return;
     expect(result.roster.biosphereKey).toBe('none');
     expect(result.roster.ecologyEpoch).toBe(0);
-    expect(result.roster.view).toEqual({
-      all: [], preview: [], total: 0, hiddenFromPreview: 0,
-    });
+    expect(result.roster.view).toEqual({ all: [], total: 0 });
     const later = canonicalWorldRoster(address, 9);
     expect(later.ok).toBe(true);
     if (later.ok) {

@@ -10,10 +10,11 @@ import {
   isCanonicalWorldRoster,
   type CanonicalWorldRoster,
   type WorldRosterSources,
-} from '../src/world';
+} from '../src/world/roster';
 import { HOME_GALAXY, SOL, addressOf, independentFullRosterFingerprint } from './world-roster-support';
 
-// Ported from SOURCE tests/world-roster.test.ts:341-733: the roster built from injected sources.
+// The roster built from injected sources: a test seam, not a second way into the roster for the game
+// (the legacy game computes a world's roster in one place, celestial-frontier.html:5097-5131).
 describe('the world roster built from injected sources', () => {
   it('detaches memoized producer rows and distinguishes address mismatch/source failure from empty', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -35,7 +36,6 @@ describe('the world roster built from injected sources', () => {
     const cannotPromote: CanonicalWorldRoster = built.roster;
     expect(isCanonicalWorldRoster(cannotPromote)).toBe(false);
     expect(built.roster.view.total).toBe(13);
-    expect(built.roster.view.hiddenFromPreview).toBe(5);
     expect(() => { (built.roster.view.all[0]!.nested as { limbs: number }).limbs = 9; }).toThrow();
     expect(producerRow).toEqual({ seed: 5, kingdom: 'fauna', nested: { limbs: 4 } });
 
@@ -217,7 +217,7 @@ describe('the world roster built from injected sources', () => {
     expect(namedGetterReads).toBe(0);
   });
 
-  it('fingerprints the ordered detached full roster, including rows hidden from preview', () => {
+  it('fingerprints the ordered detached full roster, to its last row', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
     const realSystem = systemFor(SOL.seed) as unknown as Record<string, unknown>;
     const baseRows = Array.from({ length: 13 }, (_, index) => ({
@@ -247,7 +247,7 @@ describe('the world roster built from injected sources', () => {
     expect(original.roster.fullRosterFingerprint).not.toBe(independentFullRosterFingerprint(
       original.roster.worldKey,
       original.roster.ecologyEpoch,
-      original.roster.view.preview,
+      original.roster.view.all.slice(0, 8),
     ));
 
     const hiddenMutationRows = structuredClone(baseRows);
@@ -259,7 +259,7 @@ describe('the world roster built from injected sources', () => {
     );
     expect(hiddenMutation.ok).toBe(true);
     if (hiddenMutation.ok) {
-      expect(hiddenMutation.roster.view.preview).toEqual(original.roster.view.preview);
+      expect(hiddenMutation.roster.view.all.slice(0, 8)).toEqual(original.roster.view.all.slice(0, 8));
       expect(hiddenMutation.roster.fullRosterFingerprint).not.toBe(
         original.roster.fullRosterFingerprint,
       );
@@ -270,7 +270,7 @@ describe('the world roster built from injected sources', () => {
     const reordered = canonicalWorldRosterForDiagnostics(earth, 0, sourcesFor(reorderedRows));
     expect(reordered.ok).toBe(true);
     if (reordered.ok) {
-      expect(reordered.roster.view.preview).toEqual(original.roster.view.preview);
+      expect(reordered.roster.view.all.slice(0, 8)).toEqual(original.roster.view.all.slice(0, 8));
       expect(reordered.roster.fullRosterFingerprint).not.toBe(original.roster.fullRosterFingerprint);
     }
 
@@ -407,5 +407,14 @@ describe('the world roster built from injected sources', () => {
     });
     expect(coercions).toBe(0);
     expect(sourceCalls).toBe(0);
+  });
+});
+
+describe('the roster has one way in', () => {
+  it('the world folder offers the game one roster function and no injected-source one', async () => {
+    // LEGACY celestial-frontier.html:5097-5131: one computation of a world's roster.
+    const offered = Object.keys(await import('../src/world'));
+    expect(offered).toContain('canonicalWorldRoster');
+    expect(offered.filter((name) => /diagnostic|preview/i.test(name))).toEqual([]);
   });
 });
