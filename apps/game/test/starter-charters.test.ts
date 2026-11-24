@@ -390,7 +390,8 @@ describe('starter Charters', () => {
   });
 
   it('the ten descriptions are the legacy game\'s words', () => {
-    // LEGACY celestial-frontier.html:24720-24739 (&#8217; is the apostrophe).
+    // LEGACY celestial-frontier.html:24720-24739 (&#8217; is the apostrophe; the wrench picture before "Shipyard" at 24739 is
+    // left for the screen to draw as an icon: this branch holds no emoji).
     expect(STARTER_CHARTER_DEFINITIONS_V1.map(({ description }) => description)).toEqual([
       'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.',
       'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.',
@@ -401,7 +402,7 @@ describe('starter Charters', () => {
       'Mars waited a long age for boots. Land, and read the rust from the ground.',
       'Mine Jupiter or Saturn’s deep decks — 5 loads between them.',
       'Uranus or Neptune — stand at the edge of Sol’s long dark, where the ices wait.',
-      'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.',
+      'Assemble any T2 component at the Shipyard — the Jump Drive is built from these.',
     ]);
   });
 

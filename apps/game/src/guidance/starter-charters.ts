@@ -93,7 +93,7 @@ export const STARTER_CHARTER_DEFINITIONS_V1: readonly StarterCharterDefinitionV1
   Object.freeze({
     id: 'st-comp', chain: 'tour', event: 'crafted', count: 1,
     title: 'A working component',
-    description: 'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.',
+    description: 'Assemble any T2 component at the Shipyard — the Jump Drive is built from these.',
     stardust: 15, gearId: null,
   }),
 ]);
