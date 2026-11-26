@@ -1,7 +1,8 @@
 /* Pure Tame / Scavenge / Sample planner.
 
-   This closes deterministic selection, finite-yield spend, repeat ownership,
-   and truthful OwnershipSuccessorV1 construction. The app writer is exposed
+   This closes deterministic selection, finite-yield spend and truthful
+   OwnershipSuccessorV1 construction. As in the legacy game, a species already
+   in the Compendium cannot be caught again. The app writer is exposed
    only through the registered all-scenario, no-value capacity transaction. */
 import { describeSpecies, type Genome } from '@cf/domain-genome';
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
@@ -49,8 +50,8 @@ export const TAME_ODDS_V1 = Object.freeze([
 /** Machine-readable transaction policy. The app writer must present a
  * complete registered all-scenario capacity proof before either draw. */
 export const CAPTURE_PLANNER_POLICY_BLOCKERS_V1 = Object.freeze({
-  legacyEligibility: 'same-full-world-current-cycle-successful-species-and-verb-only',
-  reacquisition: 'new-individual-or-lot-with-first-only-catalogue',
+  legacyEligibility: 'species-not-in-the-compendium',
+  reacquisition: 'never',
   encodedExtensionByteCapacity: 'registered-all-scenario-certificate-required-before-draw',
   breedingProvenance: 'unsupported-by-ownership-v1',
   guardianProvenance: 'unsupported-by-ownership-v1',
@@ -333,8 +334,12 @@ function capturePoolsForCycleV1(
   const natural = Object.freeze(snapshot.candidates.filter((candidate) => (
     matchingKingdom(candidate, verb)
   )));
+  /* The legacy pool (celestial-frontier.html 1.8.9, `tryCapture` 14867): a species the Compendium already
+     holds is never offered again, on any world, by any verb, in any cycle. */
+  const catalogued = new Set(snapshot.ownership.catalogSpecies.map((row) => row.speciesId));
   const eligible = Object.freeze(natural.filter((candidate) => (
-    !successfulKeys.has(`${candidate.identity.speciesId}\u0000${verb}`)
+    !catalogued.has(candidate.identity.speciesId)
+      && !successfulKeys.has(`${candidate.identity.speciesId}\u0000${verb}`)
   )));
   return Object.freeze({ priorProgress, sameCycle, successful, natural, eligible });
 }
@@ -589,9 +594,8 @@ export function preflightCaptureV1(
   if (priorProgress !== null && priorProgress.cycle > snapshot.cycle) {
     return refusal('future-cycle-progress');
   }
-  /* A successful species/verb pair is spent only on this exact full world in
-     this active-play cycle. Misses never enter `successful`; a later cycle or
-     another full-world key can therefore acquire a new individual/lot. */
+  /* The pool is the kind's species the Compendium does not hold. Misses never
+     catalogue, so a missed species stays in the pool. */
   const pool = pools.eligible;
   if (pool.length === 0) return refusal('empty');
   const used = pools.sameCycle && priorProgress !== null ? priorProgress.used : 0;
