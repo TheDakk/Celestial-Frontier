@@ -162,7 +162,7 @@ export function nearestRamp(palette: Palette, rgb: number): string | undefined {
 }
 
 /** The largest whole number whose square is at most n, for 0 <= n and a root of at most MAX_RADIUS + 1. */
-function rootOf(n: number): number {
+export function rootOf(n: number): number {
   let low = 0;
   let high = MAX_RADIUS + 1;
   while (low < high) {
