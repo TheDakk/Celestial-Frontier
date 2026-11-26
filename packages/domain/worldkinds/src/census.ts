@@ -336,6 +336,8 @@ export class CensusHitCounter {
     this.hit('rarity roll', String(world.rarity));
     this.hit('tier before the ring cap', String(veins.rawTier));
     this.hit('tier', String(veins.tier));
+    // The ring's cap is the tier a cut world is left with (LEGACY 14733-14747).
+    if (veins.tier < veins.rawTier) this.hit('a tier the ring cut', `to ${veins.tier}`);
     this.hit('deposit count', String(veins.deposits.length));
     for (const symbol of veins.deposits) this.hit('deposit of a type', `${type}: ${symbol}`);
     if (veins.biomeVein !== null) this.hit('biome vein', veins.biomeVein);

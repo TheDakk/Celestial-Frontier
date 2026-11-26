@@ -1,6 +1,8 @@
 // The legacy game's own functions as the census's readers, for tools/census.mjs. Every reader is text cut from the
 // legacy script (LEGACY celestial-frontier.html, 1.8.9) and run under new Function; each cut starts at text that
-// occurs once. Nothing here is this game's code. This file is used by hand-run tools only; no test imports it.
+// occurs once. Nothing here is this game's code. tools/census.mjs runs it by hand. One test loads it, and only when
+// CF_CENSUS_REF names a folder holding the legacy file (apps/game/test/census-addressed.test.ts, to name the fields
+// that differ); the gate never sets it, so the gate never runs this file.
 
 /** What the recorder supplies in place of the legacy page, written into each fixture. */
 export const LEGACY_STAND_INS = 'Supplied by the recorder: st ({sys: the system being read; gal: unset for a seeded world, so no depth boost and no ring cap, and the galaxy of the address for an addressed world}), moonThumb (returns null), and for a first landing _waveOffs (empty), _descWx (no storm), descentBonus and _equipBonus (0).';

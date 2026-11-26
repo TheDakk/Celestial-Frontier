@@ -2,7 +2,10 @@
 // galaxies, the line built from the opportunity snapshot, the roster, the descent policy and the survey card equals
 // the line the legacy game's own functions gave (fixtures/v1/recorded/census-addressed.json, from LEGACY
 // celestial-frontier.html by tools/census.mjs). Here the depth boost and the ring cap are the legacy game's too.
-// CF_CENSUS_REF=<folder holding celestial-frontier.html> names the fields of any star that differs.
+// The recording must meet every outcome of type, band and life and every biome that the legacy game's seeded census
+// of 100,000 worlds met, and hold every real world the ring cuts: a thinner recording fails here.
+// CF_CENSUS_REF=<folder holding celestial-frontier.html> names the fields of any star that differs; that branch
+// is not run by the gate.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -11,11 +14,16 @@ import { loadRecorded } from '../../../tests/support/v1-recorded.js';
 import { productionCensusSources, type CensusPlace } from './census-support';
 
 interface StarCase { group: 'star'; input: CensusPlace; output: { planets: number; digest: string } }
+interface RingCase { group: 'ring'; output: { galaxies: number; stars: number; planets: number; cut: Record<string, number> } }
 interface HitsCase { group: 'hits'; output: CensusHits }
 
-const recorded = loadRecorded('census-addressed').cases as (StarCase | HitsCase)[];
+const recorded = loadRecorded('census-addressed').cases as (StarCase | RingCase | HitsCase)[];
 const stars = recorded.filter((c): c is StarCase => c.group === 'star');
 const recordedHits = recorded.find((c): c is HitsCase => c.group === 'hits')!.output;
+/** What the recorder read of every real star under a ring that caps; absent from a recording that did not look. */
+const ring = recorded.find((c): c is RingCase => c.group === 'ring')?.output;
+/** What the legacy game's seeded census of 100,000 worlds met (fixtures/v1/recorded/census.json). */
+const seededHits = (loadRecorded('census').cases as { group: string; hits?: CensusHits }[]).find((c) => c.group === 'full')!.hits!;
 const places = stars.map((c) => c.input);
 
 /** The legacy game's lines for these stars, when its file is at hand; else nothing. */
@@ -64,13 +72,50 @@ describe('the census of addressed worlds, read through the production paths', ()
     expect(planets).toBeGreaterThan(1500);
   });
 
-  it('covers the Neighborhood, the home galaxy and two galaxies of each region, and a world the ring cap cut', () => {
+  it('covers the Neighborhood, the home galaxy, two galaxies of each region and the deep worlds', () => {
     const galaxies = new Set(places.map((place) => place.galaxy.seed));
     expect(galaxies.size).toBeGreaterThanOrEqual(13);
     expect(places.filter((place) => place.galaxy.seed === 999).length).toBeGreaterThan(120);
     expect(Object.keys(recordedHits.tier!)).toEqual(expect.arrayContaining(['9', '10', '14']));
-    // A tier the ring cut is in the lines: the cap is read from the game, not only stated. Most caps bite too
-    // rarely for real stars to show them; packages/domain/opportunity/test/veins-legacy.test.ts holds each one.
-    expect(recordedHits['tier before the ring cap']).not.toEqual(recordedHits.tier);
+  });
+
+  it('meets every outcome of type, band and life the legacy game\'s seeded census met, three times or as often as that census did', () => {
+    // The rules of life (LEGACY 4944-4967) give 89 outcomes of type, band and life, Earth's and barren Mars's among
+    // them; every frozen, hot, cold and temperate world of every type is in them.
+    const seeded = seededHits['life of a type in a band']!;
+    const met = recordedHits['life of a type in a band'] ?? {};
+    expect(Object.keys(seeded)).toHaveLength(89);
+    expect(Object.keys(seeded).filter((entry) => (met[entry] ?? 0) < Math.min(3, seeded[entry]!)), 'outcomes the recording is short of').toEqual([]);
+    expect(Object.keys(met).sort()).toEqual(Object.keys(seeded).sort());
+  });
+
+  it('meets every biome of every type three times, and Earth, the one world with none', () => {
+    // BIOME_SETS (LEGACY 13221-13281) holds 43 biomes.
+    const seeded = seededHits.biome!;
+    const met = recordedHits.biome ?? {};
+    expect(Object.keys(seeded)).toHaveLength(44);
+    expect(Object.keys(seeded).filter((entry) => (met[entry] ?? 0) < Math.min(3, seeded[entry]!)), 'biomes the recording is short of').toEqual([]);
+    expect(met['terran: none']).toBe(1);
+    expect(Object.keys(met).sort()).toEqual(Object.keys(seeded).sort());
+  });
+
+  it('meets every entry the seeded census met of the type, band, life, landing, damage, vein and moon tables', () => {
+    for (const table of ['planet type', 'climate band', 'life', 'first-landing odds', 'damage rung', 'biome vein', 'deposit count', 'exceptional vein', 'moon type']) {
+      expect(Object.keys(recordedHits[table] ?? {}).sort(), table).toEqual(Object.keys(seededHits[table]!).sort());
+    }
+    // Every kind of star that holds a planet: a protostar holds none (LEGACY 4029).
+    expect(Object.keys(recordedHits['star kind']!).sort()).toEqual(Object.keys(seededHits['star kind']!).filter((kind) => kind !== 'PROTO').sort());
+  });
+
+  it('holds every real world the ring cuts: four in the Neighborhood and one in the Local Cluster', () => {
+    // The recorder read every real star with planets under a ring that caps: the whole home galaxy and every
+    // galaxy of the three inner regions. The legacy game cuts five of those worlds and no more: no real world
+    // rolls above the caps of 8, 9 and 11. Each of those caps is held at made places by
+    // packages/domain/opportunity/test/veins-legacy.test.ts, through the rule this snapshot is built by.
+    expect(ring, 'the recording holds what the search of the capped rings read').toBeDefined();
+    expect(ring!.galaxies).toBe(119);
+    expect(ring!.planets).toBeGreaterThan(600000);
+    expect(ring!.cut).toEqual({ 'to 5': 4, 'to 10': 1 });
+    expect(recordedHits['a tier the ring cut']).toEqual({ 'to 10': 1, 'to 5': 4 });
   });
 });

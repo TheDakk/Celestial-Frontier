@@ -6,7 +6,9 @@
 // is compared; each field that differs is listed by star and planet. Three censuses are held:
 //   seeded     Sol, then systems hashInt(0xCE5, i, 0), read through the game's world generation;
 //   veins      every tier with every planet type, and seeds of every rarity roll at every depth and ring cap;
-//   addressed  real stars of real galaxies, read through the game's production snapshot, roster, descent and card.
+//   addressed  real stars of real galaxies, read through the game's production snapshot, roster, descent and card:
+//              a first choice of 700 stars, then every real star under a ring that caps is read by the legacy game
+//              and kept when the ring cuts one of its worlds or it holds an outcome the choice is still short of.
 // With --record the legacy game's answers are written first, whatever this game says, to
 // fixtures/v1/recorded/census.json, census-veins.json and census-addressed.json; the comparison follows. This tool
 // compares the seeded census line by line; the veins and addressed censuses are compared by their tests.
@@ -40,6 +42,14 @@ const RECORDED_PLANETS = 100000;
 const GATE_PLANETS = 20000;
 const ROLL_SEEDS = 12;
 const TOP_ROLL_SEEDS = 6;
+/** How often the addressed census meets each outcome of type, band and life and each biome, or as often as the
+    seeded census of 100,000 worlds met it when that is fewer (Earth and Mars are met once). */
+const ADDRESSED_EACH = 3;
+/** The tables of which the addressed census meets every entry the seeded census met. */
+const ADDRESSED_OFTEN = ['life of a type in a band', 'biome'];
+const ADDRESSED_ONCE = ['planet type', 'climate band', 'life', 'first-landing odds', 'damage rung', 'biome vein', 'deposit count', 'exceptional vein', 'moon type'];
+/** The table the hit counter keeps of the worlds whose tier the ring cut. */
+const RING_CUT = 'a tier the ring cut';
 
 const percent = (part, whole) => (whole === 0 ? 'n/a' : `${((100 * part) / whole).toFixed(2)}%`);
 const seconds = (from) => `${(Number(process.hrtime.bigint() - from) / 1e9).toFixed(2)}s`;
@@ -140,7 +150,8 @@ function parseArgs(argv) {
 
 /* ---- the veins census: every tier with every type, and seeds of every rarity roll at every place ---- */
 
-/** The first seeds whose legacy rarity roll is each tier: 12 a tier, 6 at the summit. */
+/** The first seeds (1, 2, 3 and on) whose legacy rarity roll is each tier, up to 12 a tier; the search ends at the
+    sixth seed of the summit, so a tier may hold fewer (tier 13 holds 9). */
 function seedsOfEveryRoll(game, tiers) {
   const found = Array.from({ length: tiers }, () => []);
   for (let seed = 1; found[tiers - 1].length < TOP_ROLL_SEEDS; seed++) {
@@ -196,20 +207,35 @@ function legacyVeins(legacy, support, rollSeeds) {
 
 /* ---- the addressed census: real stars of real galaxies ---- */
 
-/** Stars with planets, each proven by the game's resolver: Sol and its Neighborhood, the far home galaxy, two
-    galaxies in each region of the universe, and the two deep worlds the mining tests name. */
-async function censusPlaces() {
-  const { fineStarsInCell, galaxiesInCell, galaxyProfile, starsInCell, systemFor } = await import('@cf/domain-worldgen');
+/** Stars with planets, each proven by the game's resolver. First the choice: Sol and its Neighborhood, the far home
+    galaxy, two galaxies in each region of the universe, and the two deep worlds the mining tests name. Then the
+    widening: every real star under a ring that caps (the whole home galaxy and every galaxy of the three inner
+    regions, both layers of stars) is read by the legacy game, and kept when the ring cuts the tier of one of its
+    worlds, or when it holds an entry of a table that `short` still asks for. `read(place)` gives what the legacy
+    game's census of that star hit. Returns the places and what the widening read. */
+async function censusPlaces(read, short) {
+  const { FCELL, fineStarsInCell, galaxiesInCell, galaxyProfile, starsInCell, systemFor } = await import('@cf/domain-worldgen');
+  const { GCELL, GR } = await import('@cf/domain-worldconfig');
   const { regionAt } = await import('@cf/domain-strays');
   const { resolveCF1WorldAddress } = await import('@cf/scene');
   const places = [];
   const seen = new Set();
-  const add = (galaxy, star) => {
+  const proven = (galaxy, star) => {
     const first = systemFor(star.seed).planets[0];
-    if (!first || seen.has(star.seed)) return false;
-    if (!resolveCF1WorldAddress({ galaxy, star, planet: { seed: first.P.seed } }).ok) return false;
-    seen.add(star.seed);
-    places.push({ galaxy, star });
+    return Boolean(first) && !seen.has(star.seed) && resolveCF1WorldAddress({ galaxy, star, planet: { seed: first.P.seed } }).ok;
+  };
+  const take = (place, hits) => {
+    seen.add(place.star.seed);
+    places.push(place);
+    for (const [table, counts] of Object.entries(hits)) for (const [entry, count] of Object.entries(counts)) {
+      const left = short.get(`${table}|${entry}`);
+      if (left !== undefined) short.set(`${table}|${entry}`, left - count);
+    }
+  };
+  const add = (galaxy, star) => {
+    if (!proven(galaxy, star)) return false;
+    const place = { galaxy, star };
+    take(place, read(place));
     return true;
   };
   const starsOf = (galaxy, cells, limit, fine = false) => {
@@ -245,7 +271,46 @@ async function censusPlaces() {
   }
   add({ seed: 2775120088, x: -15585.946043489894, y: -13862.482918268226 }, { seed: 510510541, x: -550.8509466005489, y: -8.055439678020775 });
   add({ seed: 1012779741, x: -599.7658047693408, y: -6073.942273357868 }, { seed: 3589953231, x: -138.81464905291796, y: -21.96363354055211 });
-  return places;
+  const chosen = places.length;
+
+  // The widening. A galaxy's stars lie inside its radius: every cell of both layers that could hold one is read.
+  const capped = [home];
+  const reach = 8;   // universe cells: the third region ends 7 cells from home
+  for (const [cx, cy] of square(-reach, reach, -reach, reach)) for (const g of galaxiesInCell(cx, cy)) {
+    if (g.seed !== home.seed && regionAt(g.x, g.y) <= 2) capped.push({ seed: g.seed, x: g.x, y: g.y });
+  }
+  const scan = { galaxies: capped.length, stars: 0, planets: 0, cut: {} };
+  const coarse = Math.ceil(GR / GCELL);
+  const fine = Math.ceil(GR / FCELL);
+  for (const galaxy of capped) {
+    const profile = galaxyProfile(galaxy.seed);
+    const stars = [];
+    for (const [cx, cy] of square(-coarse, coarse, -coarse, coarse)) stars.push(...starsInCell(galaxy.seed, profile, cx, cy).stars);
+    for (const [cx, cy] of square(-fine, fine, -fine, fine)) stars.push(...fineStarsInCell(galaxy.seed, profile, cx, cy));
+    for (const { seed, x, y } of stars) {
+      const place = { galaxy, star: { seed, x, y } };
+      const planets = systemFor(seed).planets.length;
+      if (planets === 0) continue;
+      const hits = read(place);
+      scan.stars++;
+      scan.planets += planets;
+      const cut = hits[RING_CUT];
+      for (const [entry, count] of Object.entries(cut ?? {})) scan.cut[entry] = (scan.cut[entry] ?? 0) + count;
+      const wanted = Object.entries(hits).some(([table, counts]) => Object.keys(counts).some((entry) => (short.get(`${table}|${entry}`) ?? 0) > 0));
+      if ((cut !== undefined || wanted) && proven(galaxy, place.star)) take(place, hits);
+    }
+  }
+  return { places, chosen, scan };
+}
+
+/** What the addressed census is asked to meet, from what the legacy game's seeded census met: each entry of the
+    often-met tables `ADDRESSED_EACH` times (or as often as the seeded census met it, when fewer), each entry of the
+    others once. A map of `table|entry` to how many are still wanted. */
+function addressedShort(seededHits) {
+  const short = new Map();
+  for (const table of ADDRESSED_OFTEN) for (const [entry, count] of Object.entries(seededHits[table])) short.set(`${table}|${entry}`, Math.min(ADDRESSED_EACH, count));
+  for (const table of ADDRESSED_ONCE) for (const entry of Object.keys(seededHits[table])) short.set(`${table}|${entry}`, 1);
+  return short;
 }
 
 /* ---- the run ---- */
@@ -318,8 +383,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const script = extractTrackedV1Script(htmlBytes.toString('utf8'));
     const source = `${GAME_HTML} sha256:${createHash('sha256').update(htmlBytes).digest('hex')} bytes:${htmlBytes.length}`;
     const support = await import('../tests/support/census-veins.ts');
-    const places = await censusPlaces();
-    const placeOf = new Map(places.map((place) => [place.star.seed, place]));
 
     // The legacy game first: its answers are recorded whatever this game says.
     const legacy = legacyCensusSources(script);
@@ -332,14 +395,37 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const rollSeeds = seedsOfEveryRoll(cut.game, support.VEIN_TIERS);
     console.log(`seeds of every rarity roll found, ${seconds(from)}`);
     const veinCases = legacyVeins(cut, support, rollSeeds);
+    // The addressed stars: the legacy game reads each star where it lives, and its answers choose the widening.
+    from = process.hrtime.bigint();
+    const placeOf = new Map();
     const legacyAddressed = legacyCensusSources(script, (starSeed) => placeOf.get(starSeed));
+    const legacyEntry = (place) => {
+      placeOf.set(place.star.seed, place);
+      return censusSystem(legacyAddressed, place.star.seed);
+    };
+    const short = addressedShort(theirs.hits);
+    const { places, chosen, scan } = await censusPlaces((place) => {
+      const hits = new CensusHitCounter();
+      const entry = legacyEntry(place);
+      hits.system(entry.system);
+      for (const world of entry.worlds) hits.world(world);
+      return hits.hits();
+    }, short);
+    console.log(`addressed stars: ${chosen} chosen, ${places.length - chosen} more from ${scan.stars} stars with planets (${scan.planets} planets) in ${scan.galaxies} galaxies under a ring that caps, ${seconds(from)}`);
+    console.log(`  worlds the ring cuts among them: ${JSON.stringify(scan.cut)}`);
+    const unmet = [...short].filter(([, left]) => left > 0).map(([key]) => key);
+    if (unmet.length > 0) {
+      console.error(`the addressed census could not meet: ${unmet.join('; ')}`);
+      process.exit(1);
+    }
     const addressedHits = new CensusHitCounter();
     const addressedCases = places.map((place) => {
-      const entry = censusSystem(legacyAddressed, place.star.seed);
+      const entry = legacyEntry(place);
       addressedHits.system(entry.system);
       for (const world of entry.worlds) addressedHits.world(world);
       return { group: 'star', input: place, output: { planets: entry.worlds.length, digest: censusSystemDigest(entry) } };
     });
+    addressedCases.push({ group: 'ring', input: {}, output: scan });
     addressedCases.push({ group: 'hits', input: {}, output: addressedHits.hits() });
     printHits(`Veins census of the legacy game: hits on each table (${veinCases.length - 1} groups of cases)`, veinCases.at(-1).output);
     printHits(`Addressed census of the legacy game: hits on each table (${places.length} stars)`, addressedHits.hits());
@@ -358,12 +444,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       });
       writeFixture('census-veins', {
         kind: 'outputs', source, test: 'packages/domain/opportunity/test/veins-legacy.test.ts',
-        taken: taken('The cases of tests/support/census-veins.ts. grid: for each tier 0 to 14 and each planet type, depositsFor, cosmicVeinFor, exVeinFor and reserveFor at that tier for 200 seeds; output is the first 16 hex digits of the sha256 of the lines. roll: the first seeds (1, 2, 3 and on) whose rarityRoll(seed, 3) is each tier, 12 a tier and 6 at tier 14; for each seed, at each of eight places and each of three life levels, the card\'s designation with st.gal set to the place, clamped by ringDesignation, and the veins and reserve at that tier. hits: how many answers hit each entry of each table.'),
+        taken: taken('The cases of tests/support/census-veins.ts. grid: for each tier 0 to 14 and each planet type, depositsFor, cosmicVeinFor, exVeinFor and reserveFor at that tier for 200 seeds; output is the first 16 hex digits of the sha256 of the lines. roll: the first seeds (1, 2, 3 and on) whose rarityRoll(seed, 3) is each tier, up to 12 a tier, the search ending at the sixth seed of tier 14 (so 9 at tier 13 and 6 at tier 14); for each seed, at each of eight places and each of three life levels, the card\'s designation with st.gal set to the place, clamped by ringDesignation, and the veins and reserve at that tier. hits: how many answers hit each entry of each table.'),
         cases: veinCases,
       });
       writeFixture('census-addressed', {
         kind: 'outputs', source, test: 'apps/game/test/census-addressed.test.ts',
-        taken: taken('censusSystem for real stars: Sol and its Neighborhood, the far home galaxy, two galaxies in each of the six regions, and two deep worlds. The stars were chosen and proven by this game\'s resolver; the legacy game was given each star\'s seed and place. An addressed line also holds the world\'s type, orbit, the descent\'s biome, the life and band, the card\'s Life and civilisation rows, its title and its spectral class with st.gal unset. One case a star: the count of its planets and the digest of its lines. hits: how many worlds hit each entry of each table.'),
+        taken: taken(`censusSystem for real stars. First ${chosen} stars: Sol and its Neighborhood, the far home galaxy, two galaxies in each of the six regions, and two deep worlds. Then every real star with planets under a ring that caps (the whole home galaxy and every galaxy of the three inner regions, both layers of stars) was read by the legacy game, and kept when the ring cut the tier of one of its worlds, or when it held an outcome of type, band and life or a biome met fewer than ${ADDRESSED_EACH} times so far (or fewer times than the seeded census of 100,000 worlds met it, when that is under ${ADDRESSED_EACH}). The stars were listed and proven by this game\'s star generation and resolver; the legacy game was given each star\'s seed and place. An addressed line also holds the world\'s type, orbit, the descent\'s biome, the life and band, the card\'s Life and civilisation rows, its title and its spectral class with st.gal unset. One case a star: the count of its planets and the digest of its lines. ring: what the widening read, and every world among it whose tier the ring cut, by the tier it was cut to. hits: how many worlds hit each entry of each table.`),
         cases: addressedCases,
       });
     }
