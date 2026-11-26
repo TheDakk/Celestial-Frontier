@@ -2,10 +2,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { encodeWhere } from '@cf/domain-strays';
 import { currentRegionOf } from '@cf/scene';
-import { descentCamera, mapPicture, pictureWidth, placedLabels, toScreen, visibleBodies, type MapFrame } from '../src/space';
-import { PICK_RADIUS_PX } from '../src/input';
+import { ascentCamera, descentCamera, mapPicture, pictureWidth, placedLabels, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
 import { currentSheet } from '../src/ui';
-import { canvas, cardTitle, key, rest, tap } from './screen-map-support';
+import { canvas, cardTitle, fire, key, rest, tap } from './screen-map-support';
 import { bootPage, pretendLayout, pretendSize, runFrames } from './shell-support';
 import { paintedBy, recordCanvasPainting } from './support/fake-canvas';
 
@@ -29,17 +28,22 @@ async function atSol() {
       const body = visibleBodies(page.nav.nav, cam, view, orbit).find((b) => b.label === name)!;
       return toScreen(cam, view, body.wx, body.wy);
     },
-    /** How far from a world's middle a press can still be its own: its picture or the pick radius, whichever is more. */
+    /** How far from a world's middle a press by mouse can still be its own: its picture or a planet's 19.2 pixels, whichever is more. */
     grasp(name: string): number {
       const body = visibleBodies(page.nav.nav, cam, view, 0).find((b) => b.label === name)!;
-      return Math.hypot(1, 1) * Math.max(PICK_RADIUS_PX.mouse, pictureWidth(body, cam.z) * cam.z / 2);
+      return Math.hypot(1, 1) * Math.max(19.2, pictureWidth(body, cam.z) * cam.z / 2);
     },
   });
 }
+/** A press and its release at one place, by mouse or by a finger. */
+const press = (x: number, y: number, by: 'mouse' | 'touch'): void => {
+  fire(canvas(), 'pointerdown', { pointerId: 1, clientX: x, clientY: y, pointerType: by });
+  fire(document, 'pointerup', { pointerId: 1, clientX: x, clientY: y, pointerType: by });
+};
 const apart = (a: { x: number; y: number }, b: { x: number; y: number }): number => Math.hypot(a.x - b.x, a.y - b.y);
 
-describe('the orbits of a system on the map screen', () => {
-  it('by mouse a press within 19.2 pixels of a small world\'s middle opens its card, as in the game, and one just beyond does not', async () => {
+describe('the map screen\'s bodies: where a press finds them, and how near it must be', () => {
+  it('a press within 19.2 pixels of a small world\'s middle by mouse, and 22.4 by touch, opens its card, as in the game; one just beyond does not', async () => {
     const page = await atSol();
     page.live.motionMode = 1;
     rest(page);
@@ -47,16 +51,48 @@ describe('the orbits of a system on the map screen', () => {
     // Its picture is far smaller than the floor: the floor alone decides.
     expect(pictureWidth(mercury, page.cam.z) * page.cam.z / 2).toBeLessThan(10);
     const at = page.placeOf('Mercury', 0);
-    tap(at.x - 19, at.y);
-    expect(cardTitle()).toBe('Mercury');
-    key(document, 'Escape');
-    tap(at.x, at.y + 19.2);
-    expect(cardTitle()).toBe('Mercury');
-    key(document, 'Escape');
-    tap(at.x - 19.5, at.y);
-    expect(cardTitle()).toBeNull();
-    tap(at.x - 14, at.y + 14);
-    expect(cardTitle()).toBeNull();
+    const pressed = (dx: number, dy: number, by: 'mouse' | 'touch'): string | null => {
+      if (cardTitle() !== null) key(document, 'Escape');
+      press(at.x + dx, at.y + dy, by);
+      return cardTitle();
+    };
+    expect([pressed(-19, 0, 'mouse'), pressed(0, 19, 'mouse'), pressed(-19.5, 0, 'mouse'), pressed(-14, 14, 'mouse')]).toEqual(['Mercury', 'Mercury', null, null]);
+    expect([pressed(22.2, 0, 'touch'), pressed(0, -22.2, 'touch'), pressed(22.6, 0, 'touch'), pressed(16, -16, 'touch')]).toEqual(['Mercury', 'Mercury', null, null]);
+  });
+
+  it('in a galaxy a star and scenery answer within 14.4 pixels by mouse and 16.8 by touch: nearer than a planet asks', async () => {
+    const page = await bootPage({ width: 800, height: 600 });
+    const sun = page.nav.nav.mode === 'system' ? page.nav.nav.star : null;
+    page.nav.ascend();
+    rest(page);
+    expect(page.nav.nav.mode).toBe('galaxy');
+    const view = { w: 800, h: 600 };
+    const near = ascentCamera({ kind: 'star', x: sun!.x, y: sun!.y }, 600).to;
+    /** The bodies of the view after `steps` turns of the wheel outward, each where it is on the screen. */
+    const from = (steps: number) => {
+      for (let i = 0; i < steps; i++) fire(canvas(), 'wheel', { deltaY: 120, clientX: 400, clientY: 300 });
+      rest(page);
+      const cam = { ...near, z: near.z * 0.88 ** steps };
+      const all = [...visibleBodies(page.nav.nav, cam, view, 0), ...supernovaBodies(page.nav.nav, page.loop.publishedEpoch())]
+        .map((body) => ({ body, ...toScreen(cam, view, body.wx, body.wy), reach: pictureWidth(body, cam.z) * cam.z / 2 }));
+      /** A body drawn smaller than any floor, with a side (left or right) where a press up to 18 pixels from its middle
+       *  is out of every other body's reach: there only its own floor decides. */
+      return (wanted: (body: (typeof all)[number]['body']) => boolean) => all.flatMap((a) => [-1, 1].map((side) => ({ ...a, side })))
+        .find((a) => wanted(a.body) && a.x > 60 && a.x < 740 && a.y > 60 && a.y < 540 && a.reach < 9
+          && all.every((b) => b.body === a.body || Math.hypot(b.x - (a.x + a.side * 18), b.y - a.y) > 22 + b.reach * Math.SQRT2))!;
+    };
+    /** Whether a press `far` pixels to that side of a body opens a card. */
+    const answers = (at: { x: number; y: number; side: number }, far: number, by: 'mouse' | 'touch'): boolean => {
+      if (cardTitle() !== null) key(document, 'Escape');
+      press(at.x + at.side * far, at.y, by);
+      return cardTitle() !== null;
+    };
+    const alone = from(18);
+    const star = alone((body) => body.kind === 'star' && body.priority === 1);
+    expect([answers(star, 14, 'mouse'), answers(star, 15, 'mouse'), answers(star, 16.5, 'touch'), answers(star, 17.2, 'touch')]).toEqual([true, false, true, false]);
+    const scenery = alone((body) => body.kind === 'deco');
+    expect([answers(scenery, 14, 'mouse'), answers(scenery, 15, 'mouse'), answers(scenery, 16.5, 'touch'), answers(scenery, 17.2, 'touch')]).toEqual([true, false, true, false]);
+    expect(page.nav.nav.mode).toBe('galaxy');
   });
 
   it('a tap follows a planet where it has moved to: its place at second 0 and at second 30 each open its card, and its old place does not', async () => {

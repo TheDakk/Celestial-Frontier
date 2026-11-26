@@ -6,7 +6,6 @@ import { OBS_R } from '@cf/domain-worldconfig';
 import { createMemoryBackend, initializeFreshV5 } from '@cf/persistence';
 import { ascHintFor, navToView } from '@cf/scene';
 import { ascentCamera, descentCamera, pictureWidth, supernovaBodies, toScreen, visibleBodies } from '../src/space';
-import { PICK_RADIUS_PX } from '../src/input';
 import type { GameEvents } from '../src/events';
 import { REGISTRY } from '../src/save/index';
 import descriptors from '../../../fixtures/current/descriptors.json' with { type: 'json' };
@@ -20,6 +19,9 @@ recordCanvasPainting();
 pretendLayout();
 pretendSize(800, 600);
 beforeEach(() => { vi.restoreAllMocks(); recordCanvasPainting(); });
+
+/** How near a planet's middle a press by mouse selects it, in screen pixels. */
+const PLANET_BY_MOUSE = 19.2;
 
 describe('the map screen', () => {
   it('tapping the home galaxy opens its card; Enter galaxy enters it; the route is saved', async () => {
@@ -61,7 +63,7 @@ describe('the map screen', () => {
     // The game's picture of Jupiter is the square its night is drawn on: three of its radii wide.
     const reach = pictureWidth(jupiter, cam.z) * cam.z / 2;
     // The corners of the picture lie past the pick radius: there the picture alone decides.
-    expect(Math.hypot(reach - 1, reach - 1)).toBeGreaterThan(PICK_RADIUS_PX.mouse + 2);
+    expect(Math.hypot(reach - 1, reach - 1)).toBeGreaterThan(PLANET_BY_MOUSE + 2);
     tap(at.x + reach - 1, at.y - reach + 1);
     expect(cardTitle()).toBe('Jupiter');
     key(document, 'Escape');
@@ -69,7 +71,7 @@ describe('the map screen', () => {
     expect(cardTitle()).toBe('Jupiter');
     key(document, 'Escape');
     // Off the picture and past the radius, to the side and at the corner.
-    tap(at.x + Math.max(reach, PICK_RADIUS_PX.mouse) + 1, at.y);
+    tap(at.x + Math.max(reach, PLANET_BY_MOUSE) + 1, at.y);
     expect(cardTitle()).toBeNull();
     tap(at.x + reach + 1, at.y + reach - 1);
     expect(cardTitle()).toBeNull();

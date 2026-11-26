@@ -11,10 +11,10 @@ import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
 import { currentRegionOf, type NavState } from '@cf/scene';
 import { paintPixels } from '../platform/canvas';
-import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
+import { PICK_PADDING, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pictureWidth, placedLabels, showSpace,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pickFloor, pictureWidth, placedLabels, showSpace,
   supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
@@ -176,7 +176,9 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         } else if (gesture.kind === 'back') {
           if (card.open) card.hide(false); else goUp();
         } else {
-          const hit = pick(targets(), gesture.x, gesture.y, PICK_RADIUS_PX[ctx.inputMode()]);
+          // Each kind of body has its own floor, wider under a finger than under a mouse.
+          const padding = PICK_PADDING[ctx.inputMode()];
+          const hit = pick(targets(), gesture.x, gesture.y, (target) => pickFloor(target.body, cam.z) * padding);
           if (hit !== null) select(hit.body, null);
           else if (nav.nav.mode === 'universe') {
             const { w, h } = view();

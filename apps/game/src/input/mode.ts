@@ -9,13 +9,13 @@ export function inputModeFor(pointerType: string): InputMode {
 /** The smallest height and width of a control, in CSS pixels, under each input mode. */
 export const TARGET_MIN_PX = Object.freeze({ touch: 44, mouse: 32 });
 /**
- * How far from a map body, in CSS pixels, a tap still selects it, under each input mode. By mouse it is the legacy
- * game's floor for a planet: 16 pixels times its mouse padding of 1.2 (celestial-frontier.html 7673 and 2542), raised
- * there because a planet drifts out from under a careful click. Its one reader is the map screen's press.
- * Two differences from the legacy game stand: its touch floor for a planet is 22.4 (16 times 1.4) against 22 here,
- * and its floor differs by kind of body (9 to 18 pixels before the padding) where this is one floor for every body.
+ * How much wider than its floor a map body's pick radius is under each input mode: the legacy game's padding
+ * (celestial-frontier.html 2542; fingers are wider than cursors, 2539-2541). The floor itself differs by the kind of
+ * body: `pickFloor` in space/sizes.ts. Its one reader is the map screen's press.
+ * A named difference from the legacy game: it chooses the padding by the device (a coarse pointer or touch events,
+ * 2538); here it is the pointer of each press, so a mouse on a touch laptop is a mouse.
  */
-export const PICK_RADIUS_PX = Object.freeze({ touch: 22, mouse: 19.2 });
+export const PICK_PADDING = Object.freeze({ touch: 1.4, mouse: 1.2 });
 
 /**
  * Keeps the input mode on the root as data-input, with the smallest control size as --target-min, starting from

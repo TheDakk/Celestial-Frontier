@@ -6,17 +6,20 @@ export const compareKeys = (a: string, b: string): number => (a < b ? -1 : a > b
 
 /**
  * The body a press at (x, y) selects. A body is under the press when the press is on its picture (the square `reach`
- * each way from its middle, as the game's sprite is) or within `radius` of its middle (the radius itself included),
- * which keeps a body drawn small easy to press. Of the bodies under it the one whose middle is nearest is selected;
- * equal distance goes to the lower priority, then the smaller key. Null when none is under it.
+ * each way from its middle, as the game's sprite is) or within its own radius of its middle (the radius itself
+ * included, where the legacy game's test is strictly nearer: celestial-frontier.html 5607), which keeps a body drawn
+ * small easy to press. `radiusOf` gives each body's radius: the legacy game's differs by the kind of body. Of the
+ * bodies under the press the one whose middle is nearest is selected, as in the legacy game (5604-5608); equal
+ * distance goes to the lower priority, then the smaller key. Null when none is under it.
  */
-export function pick<T extends Pickable>(bodies: readonly T[], x: number, y: number, radius: number): T | null {
+export function pick<T extends Pickable>(bodies: readonly T[], x: number, y: number, radiusOf: (body: T) => number): T | null {
   let best: T | null = null;
   let bestSquared = Infinity;
   for (const body of bodies) {
     const [dx, dy] = [Math.abs(body.x - x), Math.abs(body.y - y)];
     const squared = dx * dx + dy * dy;
     const reach = body.reach ?? 0;
+    const radius = radiusOf(body);
     if (squared > radius * radius && (dx > reach || dy > reach)) continue;
     if (best === null || squared < bestSquared || (squared === bestSquared && (body.priority < best.priority
       || (body.priority === best.priority && compareKeys(body.key, best.key) < 0)))) {

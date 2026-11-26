@@ -73,3 +73,24 @@ export function pictureWidth(body: MapBody, zoom: number): number {
     case 'protostar': return WIDTH.protostar;
   }
 }
+
+/** A galaxy smaller than this on the screen, in pixels, is one grain of light (celestial-frontier.html 6139). */
+const GRAIN_BELOW = 2.6;
+/**
+ * The floor of a body's pick radius, in screen pixels before the pointer's padding (input/mode.ts): however small the
+ * body is drawn, a press this near its middle selects it. The legacy game's own number for each kind of body
+ * (celestial-frontier.html): a planet 16 (7673); a galaxy 16 (6151), or 9 while it is a grain of light (6139, 6146);
+ * a wormhole 14 (6570); a supernova site 13 (6693); a star of a galaxy 12 (6628), a fine star 9 (6651); scenery of a
+ * galaxy 12 (6620); a protostar 11 (6700). `zoom` is in screen pixels a world unit.
+ */
+export function pickFloor(body: MapBody, zoom: number): number {
+  switch (body.kind) {
+    case 'planet': return 16;
+    case 'galaxy': return body.ref.size * zoom < GRAIN_BELOW ? 9 : 16;
+    case 'worm': return 14;
+    case 'snova': return 13;
+    case 'star': return body.priority === 2 ? 9 : 12;
+    case 'deco': return 12;
+    case 'protostar': return 11;
+  }
+}

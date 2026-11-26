@@ -4,4 +4,4 @@ export { orbitClock, type OrbitClock } from './orbit-clock';
 export { mapPicture, type MapFrame } from './project';
 export { showSpace } from './canvas';
 export { placedLabels, type Lettered } from './labels';
-export { pictureWidth } from './sizes';
+export { pickFloor, pictureWidth } from './sizes';

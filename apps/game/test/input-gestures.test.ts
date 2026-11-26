@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { createBus } from '../src/bus';
 import type { GameEvents } from '../src/events';
-import { PICK_RADIUS_PX, mountGestures, mountInputMode, type Gesture } from '../src/input';
+import { mountGestures, mountInputMode, type Gesture } from '../src/input';
 import { TAP_SLOP_PX, createGestureRecognizer } from '../src/input/gestures';
 import { TARGET_MIN_PX, inputModeFor } from '../src/input/mode';
 
@@ -114,8 +114,6 @@ describe('input mode', () => {
   it('a mouse is mouse; touch, pen and anything unknown are touch', () => {
     expect(['mouse', 'touch', 'pen', '', 'stylus'].map(inputModeFor)).toEqual(['mouse', 'touch', 'touch', 'touch', 'touch']);
     expect(TARGET_MIN_PX).toEqual({ touch: 44, mouse: 32 });
-    // By mouse the floor is the game's own for a planet: 16 pixels and a fifth more.
-    expect(PICK_RADIUS_PX).toEqual({ touch: 22, mouse: 19.2 });
   });
   it('follows the last pointer used: the root carries it with the smallest control size, and input:mode is sent on each change only', () => {
     const root = document.createElement('html');
