@@ -1,7 +1,7 @@
 /* The census's readers over this game's own world generation, for seeded worlds that have no address: the lifted
    legacy modules and the mining rules a world's snapshot is built with. The descent belongs to the app, so its
    reader is handed in. Addressed worlds are read through the production snapshot, roster, descent policy and card
-   instead (tests/support/census-addressed.ts). */
+   instead (apps/game/test/census-support.ts). */
 import { moonDescriptor } from '@cf/domain-descriptors';
 import { biosphere, civilization } from '@cf/domain-ecology';
 import { biomeComposition } from '@cf/domain-landing';
