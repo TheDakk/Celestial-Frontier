@@ -40,3 +40,32 @@ describe('a species line: head and template', () => {
     expect(thrown(`${LINE.replace(' tail=1', '')} head=1 template=x`)).toBe('species civet line 3: missing tail');
   });
 });
+
+describe('a species line: eyeHighlight', () => {
+  const PALETTE = 'palette\ncolour 0 000000\ncolour 7 fff1cf';
+  const own = (line: string) => parseCatalogueText(`${PALETTE}\n${line}\n`).species.get('civet')!;
+
+  it('eyeHighlight names the palette colour of the species\' own eye highlight; without the field the entry has none', () => {
+    expect(own(`${LINE} eyeHighlight=7`).eyeHighlight).toBe(7);
+    expect(own(`${LINE} eyeHighlight=0`).eyeHighlight).toBe(0);
+    expect(own(LINE.replace('legs=4', 'eyeHighlight=7 legs=4')).eyeHighlight).toBe(7);
+    expect('eyeHighlight' in own(LINE)).toBe(false);
+    // The colour may be defined after the line, in a palette block of the species' own file.
+    expect(parseCatalogueText(`${LINE} eyeHighlight=7\n${PALETTE}\n`).species.get('civet')!.eyeHighlight).toBe(7);
+  });
+
+  it('an eyeHighlight that names a colour no palette defines is refused by the species and the colour', () => {
+    expect(thrown(`${PALETTE}\n${LINE} eyeHighlight=7`)).toBe('no error');
+    for (const missing of [1, 6, 8, 5000]) {
+      expect(thrown(`${PALETTE}\n${LINE} eyeHighlight=${missing}`), String(missing)).toBe(`species civet line 6: eyeHighlight colour ${missing} is not defined`);
+    }
+    // No palette at all defines no colour.
+    expect(thrown(`${LINE} eyeHighlight=0`)).toBe('species civet line 3: eyeHighlight colour 0 is not defined');
+  });
+
+  it('an eyeHighlight that is no colour index is refused with the line number', () => {
+    for (const bad of ['', 'x', '1.5', '7x']) expect(thrown(`${LINE} eyeHighlight=${bad}`), bad).toBe('line 3: expected an integer');
+    for (const bad of ['-1', '20000000']) expect(thrown(`${LINE} eyeHighlight=${bad}`), bad).toBe(`line 3: bad colour index ${bad}`);
+    expect(thrown(`${LINE} eyeHighlight=7 eyeHighlight=7`)).toBe('line 3: bad option eyeHighlight');
+  });
+});

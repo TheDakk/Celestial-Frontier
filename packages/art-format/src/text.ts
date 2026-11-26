@@ -19,8 +19,15 @@ const GENERATED_NAMES: readonly string[] = ['body', 'leg', 'fore', 'hind', 'mid'
 const GENERATED_NAME = /^(h|t|c|iris)\d+$/;
 /** The fields of a species line, each required once. */
 const SPECIES_FIELDS: readonly string[] = ['legs', 'eyes', 'iris', 'tail'];
-/** The fields a species line may leave out: `head` (0 or 1; left out, 1) and `template` (a name; left out, the family name). */
-const SPECIES_OPTIONAL_FIELDS: readonly string[] = ['head', 'template'];
+/**
+ * The fields a species line may leave out: `head` (0 or 1; left out, 1), `template` (a name; left out, the family name)
+ * and `eyeHighlight` (a colour index; left out, the palette's `eyeHighlight`).
+ * A species' own ramps are found in the palette by name (`<key>-iris`, `<key>-bone`), but a palette names only ramps
+ * of four: its single colours (`outline`, `eye`, `eyeHighlight`, `glow`) are colour indices. So the species' own
+ * highlight is a colour index too, written with the same word on the one line that is already the species' own; a
+ * named entry would need either a ramp of four equal colours or a new kind of palette line.
+ */
+const SPECIES_OPTIONAL_FIELDS: readonly string[] = ['head', 'template', 'eyeHighlight'];
 /**
  * The most colours one palette may define: every colour a screen can show (2^24), so the palette is not limited in
  * practice. The bound only stops a mistyped index from being taken as a colour number.
@@ -113,6 +120,7 @@ export function parseCatalogueText(text: string): Catalogue {
   const palette = { outline: 0, eye: 0, eyeHighlight: 0, glow: 0 };
   const definedColours = new Set<number>();
   const usedColours: number[] = [];
+  const speciesColours: { key: string; line: number; index: number }[] = [];
   let sawPalette = false;
 
   let part: { id: string; head: Omit<Part, 'frames'>; frames: Record<string, PartFrame> } | undefined;
@@ -362,6 +370,10 @@ export function parseCatalogueText(text: string): Catalogue {
           head: !opts.has('head') || field('head', [0, 1]) === 1,
           template: opts.has('template') ? checkName(opts.get('template') as string, n) : family,
         };
+        if (opts.has('eyeHighlight')) {
+          entry.eyeHighlight = colourIndex(opts.get('eyeHighlight'), n);
+          speciesColours.push({ key, line: n, index: entry.eyeHighlight });
+        }
         if (species.has(key)) throw new Error(`line ${n}: duplicate species ${key}`);
         species.set(key, entry);
         break;
@@ -376,6 +388,10 @@ export function parseCatalogueText(text: string): Catalogue {
   }
   if (sawPalette) {
     for (const i of usedColours) if (!definedColours.has(i)) throw new Error(`palette: colour ${i} used but not defined`);
+  }
+  // A species' own colour is checked with or without a palette in the text: with none, no colour is defined.
+  for (const { key, line, index } of speciesColours) {
+    if (!definedColours.has(index)) throw new Error(`species ${key} line ${line}: eyeHighlight colour ${index} is not defined`);
   }
   const finished: Palette = { colours, ramps, ...palette };
   return { parts, scaffolds, palette: finished, fallbacks, species };

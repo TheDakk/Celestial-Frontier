@@ -339,3 +339,34 @@ describe('colourTable: deep', () => {
     expect(colourTable(others, { ...RAMPS, primary: 'spots' }, 0x8fd6ff).table.slice(PIXEL_DEEP)).not.toEqual(base);
   });
 });
+
+describe('colourTable: a named eye highlight', () => {
+  const RAMPS = { primary: 'body', accent: 'spots', underside: 'belly', iris: 'ring' };
+  const but14 = (table: readonly number[]): number[] => table.filter((_, v) => v !== PIXEL_EYE_HIGHLIGHT);
+
+  it('entry 14 is the palette colour of the index given and every other entry is as without it, with a tint or without', () => {
+    for (const tint of [undefined, 0, 0xffffff, 0xff7a4a]) {
+      const plain = colourTable(palette, RAMPS, tint);
+      expect(plain.table[PIXEL_EYE_HIGHLIGHT]).toBe(0x000042);
+      const own = colourTable(palette, { ...RAMPS, eyeHighlight: 13 }, tint);
+      expect(own.table[PIXEL_EYE_HIGHLIGHT], String(tint)).toBe(0x000023);
+      expect(but14(own.table)).toEqual(but14(plain.table));
+      expect(but14(own.table)).toHaveLength(28);
+      expect(own.unknown).toEqual(plain.unknown);
+    }
+  });
+
+  it('without one, or with the palette\'s own index, the table is today\'s', () => {
+    const today = colourTable(palette, RAMPS);
+    expect(colourTable(palette, { ...RAMPS, eyeHighlight: undefined })).toEqual(today);
+    expect(colourTable(palette, { ...RAMPS, eyeHighlight: palette.eyeHighlight })).toEqual(today);
+    // Index 0 is a colour like any other, not "none".
+    expect(colourTable(palette, { ...RAMPS, eyeHighlight: 0 }).table[PIXEL_EYE_HIGHLIGHT]).toBe(0x000010);
+  });
+
+  it('an index the palette does not hold gives 0, as every colour index does, and lists nothing', () => {
+    const { table, unknown } = colourTable(palette, { ...RAMPS, eyeHighlight: 9999 });
+    expect(table[PIXEL_EYE_HIGHLIGHT]).toBe(0);
+    expect(unknown).toEqual([]);
+  });
+});

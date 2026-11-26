@@ -33,9 +33,10 @@ export interface Palette { colours: readonly number[]; ramps: Readonly<Record<st
 /**
  * A named species: one fixed look, drawn from its own parts (kind `key`) on scaffold `<family>/<key>/<tier>`. `legs` is from LIMB_COUNTS, `eyes` from EYE_COUNTS, `iris` an iris ramp number.
  * `head`: false for a body with no head part, whose eyes sit on its torso. `template`: the name of the pose set the
- * species is held to (the family name unless its line says otherwise).
+ * species is held to (the family name unless its line says otherwise). `eyeHighlight`: the palette colour index of the
+ * species' own eye highlight (pixel value 14), only when its line gives one; without it the palette's `eyeHighlight`.
  */
-export interface Species { key: string; family: string; tier: SizeTier; legs: number; eyes: number; iris: number; tail: boolean; head: boolean; template: string }
+export interface Species { key: string; family: string; tier: SizeTier; legs: number; eyes: number; iris: number; tail: boolean; head: boolean; template: string; eyeHighlight?: number }
 /**
  * `fallbacks` maps `<family>/<tier>` to the id of the part drawn alone when a creature of that family and tier has nothing else to draw.
  * `species` maps each species key to its entry.

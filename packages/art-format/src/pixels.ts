@@ -58,6 +58,8 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
  * A ramp name the palette does not hold gives four zeros and is listed in `unknown`; never throws. So does a `bone` name.
  * With no `bone` name, bone is the palette's ramp `bone` (BONE_RAMP), and a palette without one gives four zeros and
  * lists nothing: no ramp was named.
+ * With an `eyeHighlight` (a palette colour index, a named species' own), entry 14 is that colour in place of the
+ * palette's; an index the palette does not hold gives 0, as any colour index does. Without one, the palette's.
  * With a `tint` (a theme colour, 0xRRGGBB), entries 1-12 take each channel as tintChannel(a, t), the original's hide mix
  * (62 parts colour, 38 parts theme), and entries 21-24 as boneTintChannel(a, t), a weak mix (85 parts bone, 15 parts
  * theme) that keeps bone pale under every theme; 0, 13-20 and the four zeros of a ramp the palette lacks are unchanged.
@@ -68,7 +70,7 @@ export const THEME_COLOURS: Readonly<Record<ThemeName, number>> = Object.freeze(
  */
 export function colourTable(
   palette: Palette,
-  ramps: { primary: string; accent: string; underside: string; iris: string; bone?: string },
+  ramps: { primary: string; accent: string; underside: string; iris: string; bone?: string; eyeHighlight?: number | undefined },
   tint?: number,
 ): { table: number[]; unknown: string[] } {
   if (tint !== undefined && !(Number.isInteger(tint) && tint >= 0 && tint <= 0xffffff)) throw new RangeError(`bad tint ${String(tint)}`);
@@ -83,7 +85,7 @@ export function colourTable(
     return indices.map(rgb);
   };
   const hide = [0, ...ramp(ramps.primary), ...ramp(ramps.accent), ...ramp(ramps.underside),
-    rgb(palette.eye), rgb(palette.eyeHighlight), rgb(palette.glow), rgb(palette.outline), ...ramp(ramps.iris)];
+    rgb(palette.eye), rgb(ramps.eyeHighlight ?? palette.eyeHighlight), rgb(palette.glow), rgb(palette.outline), ...ramp(ramps.iris)];
   const boneName = ramps.bone ?? BONE_RAMP;
   const boneHeld = Object.hasOwn(palette.ramps, boneName);
   const table = [...hide, ...(boneHeld || ramps.bone !== undefined ? ramp(boneName) : [0, 0, 0, 0])];
