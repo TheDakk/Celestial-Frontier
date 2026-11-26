@@ -7,11 +7,21 @@
 
    The clock is an argument, in seconds. Pure: no clock, no entropy.
 
-   A NAMED IMPROVEMENT over the legacy game, separate from the conversion (Dakk, 2026-11-26): the legacy descent
-   prompt asks its own copy of the spell (`_descWx` 13402-13420), which leaves the season out. In deep winter on a
-   rainy world it rolls rain's odds and says rain while the scene rolls snow's odds and shows snow, so the prompt
-   can warn of a storm the scene does not show, or stay silent under snowfall. `weatherNow` is the scene's rule;
-   the prompt is to ask it too, so the two agree. Outside deep winter the two were always the same. */
+   TWO RULES ARE HELD HERE, AND NOTHING IN THIS PACKAGE CHOOSES BETWEEN THEM.
+   The legacy descent prompt asks its own copy of the spell (`_descWx` 13402-13420), which leaves the season out:
+   that is `legacyPromptWeather`. The legacy scene asks the rule with the season in it: that is `weatherNow`.
+   Outside deep winter the two always agree. In deep winter on a rainy world the prompt rolls rain's odds (0.42) and
+   says rain while the scene rolls snow's odds (0.58) and shows snow.
+
+   A NAMED IMPROVEMENT, separate from the conversion, AWAITING DAKK'S WORD before the descent prompt is wired: the
+   prompt asks `weatherNow` too, so prompt and scene agree. In deep winter on a rainy world that moves three things,
+   not only the prompt's words:
+   - the "storm in progress" line (13620) follows the snow the scene shows;
+   - the storm's 5 off descent success (`descentFor` 13428-13430) is in force on snow's odds, 0.58, instead of
+     rain's, 0.42: more often;
+   - the prompt's weather event (13617) is asked with snow, so a terran world can show the ice storm (0.25) where
+     the legacy prompt could show the tornado (0.14).
+   Until he says, a caller that must match the legacy game exactly asks `legacyPromptWeather` for the prompt. */
 import { mulberry32 } from '@cf/domain-rand';
 import { seasonAt } from './environment.js';
 import type { WeatherToken, WorldEnvironment } from './environment.js';
@@ -55,11 +65,18 @@ export function weatherActive(seed: number, token: WeatherToken | null, seconds:
   return token !== null && mulberry32((seed ^ 0x77EA ^ spellOf(seconds)) >>> 0)() < WEATHER_ODDS[token];
 }
 
-/** The token falling on the world now, or null under a clear sky: the one answer for the scene and for the descent
-    prompt (see the named improvement above). */
+/** The token falling on the world now, or null under a clear sky: the legacy scene's rule (13530-13532, 13599), and
+    with the named improvement above the descent prompt's too. */
 export function weatherNow(planet: { readonly seed: number; readonly type: string }, env: WorldEnvironment, seconds: number): WeatherToken | null {
   const token = effectiveWeather(env, seasonAt(planet, env, seconds));
   return weatherActive(planet.seed, token, seconds) ? token : null;
+}
+
+/** The storm the legacy descent prompt sees (`_descWx` 13402-13420): the world's base weather while its spell falls,
+    with no season in it, so never snow on a rainy world. It decides the legacy prompt's "storm in progress" line,
+    the 5 off descent success and the token of the prompt's event. */
+export function legacyPromptWeather(planet: { readonly seed: number; readonly type: string }, env: WorldEnvironment, seconds: number): WeatherToken | null {
+  return weatherActive(planet.seed, env.baseWeather, seconds) ? env.baseWeather : null;
 }
 
 /** The weather event in the sky now, if any: rarer than the spell, rolled once per 90 seconds, and honest to the

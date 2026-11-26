@@ -101,13 +101,14 @@ describe('the region of one landing', () => {
 });
 
 describe('the salt of a landing', () => {
-  it('the salt is epoch * 997 + landings + descents * 131', () => {
+  it('the salt is epoch * 997 + landings + views * 131', () => {
     expect(landingSalt(0, 0, 0)).toBe(0);
     expect(landingSalt(2, 5, 3)).toBe(2 * 997 + 5 + 3 * 131);
   });
 
-  it('the first descent after a reload has the salt of one descent, so the regions restart on reload', () => {
-    // LEGACY 12974 and 13507: the descent count starts at 0 with the page and is raised before the roll.
+  it('the first landing view after a reload has the salt of one view, so the regions restart on reload', () => {
+    // LEGACY 12974 and 13507: the count starts at 0 with the page and is raised each time the landing view is
+    // composed (a real landing 13476, or the survey card's view with no held picture 14253), before the roll.
     expect(landingSalt(0, 0, 1)).toBe(131);
     expect(biomeForLanding(EARTH, 'temperate', landingSalt(0, 0, 1))!.k).toBe((one('earth').output as string[])[131]);
   });

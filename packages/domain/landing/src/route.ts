@@ -1,9 +1,9 @@
 /* The scene a landing shows (LEGACY celestial-frontier.html, v1.8.9, `showVistaBox` 12979-13100), in the order the
    legacy game decides it:
-   - a gas world has no ground: the cloud deck, 12986-13010;
-   - the abyssal region goes beneath the waves, 13046-13062;
-   - the coral region drops to its reef, 13065-13079;
-   - an ocean world is the shore and sea, 13018; so is a terran world whose landing rolled a sea region, 13042
+   - a gas world has no ground: the cloud deck, 12987-13009;
+   - the abyssal region goes beneath the waves, 13046-13061;
+   - the coral region drops to its reef, 13064-13079;
+   - an ocean world is the shore and sea, 13017; so is a terran world whose landing rolled a sea region, 13042
      (the sea regions: `_SEA_WB` 12966);
    - anything else is the land, 13080-13087.
 

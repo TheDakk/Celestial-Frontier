@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { loadRecorded } from '../../../../tests/support/v1-recorded.js';
 import {
   WEATHER_EVENT_WORD, WEATHER_ODDS, WEATHER_SPELL_SECONDS, WEATHER_WORD,
-  effectiveWeather, seasonAt, timeOfDayAt, weatherActive, weatherEventAt, weatherNow, worldEnvironment,
+  effectiveWeather, legacyPromptWeather, seasonAt, timeOfDayAt, weatherActive, weatherEventAt, weatherNow, worldEnvironment,
 } from '@cf/domain-landing';
 import type { TimeOfDay, WeatherEvent, WeatherToken } from '@cf/domain-landing';
 
@@ -39,6 +39,21 @@ describe("a world's fixed environment", () => {
         tilt: w.env.tilt, hasAir: w.env.hasAtmo, hasField: w.env.hasField, baseWeather: w.env.wx,
         phase: w.env.ph, dayLen: w.env.dayLen, yearLen: w.env.yearLen,
       });
+    }
+  });
+
+  it('the recorded environments of 1,001 seeds are reproduced for terran, ocean, gas and rocky worlds', () => {
+    // fixtures/v1/recorded/landing-environment.json: enough seeds to hold the odds of a tilt and of a field
+    // (LEGACY 13510, 13514) to about one part in 1,000.
+    type Row = [number, boolean, boolean, boolean, WeatherToken | null, number, number, number];
+    const sweeps = loadRecorded('landing-environment').cases as Array<{ input: { type: string; band: string }; output: Row[] }>;
+    expect(sweeps.map((c) => [c.input.type, c.output.length])).toEqual([['terran', 1001], ['ocean', 1001], ['gas', 1001], ['rocky', 1001]]);
+    for (const { input, output: rows } of sweeps) {
+      const got = rows.map(([seed]) => {
+        const env = worldEnvironment({ seed, type: input.type }, input.band);
+        return [seed, env.tilt, env.hasAir, env.hasField, env.baseWeather, env.phase, env.dayLen, env.yearLen];
+      });
+      expect(got, input.type).toEqual(rows);
     }
   });
 
@@ -156,6 +171,13 @@ describe('the descent prompt and the scene agree (a named improvement over the l
   // LEGACY 13402-13420: the prompt's storm ignores the season, so in deep winter it rolls rain's odds (0.42) and
   // says rain while the scene rolls snow's (0.58) and shows snow. weatherNow is the scene's rule, for both.
   const deepWinter = (w: World, a: At): boolean => w.env.wx === 'rain' && a[2] === 'snow';
+
+  it("the legacy prompt's own rule is kept, and gives the recorded prompt token at every recorded time", () => {
+    for (const w of worlds) {
+      const env = worldEnvironment(w.input, w.input.band);
+      for (const a of w.at) expect(legacyPromptWeather(w.input, env, a[0]), label(w, a)).toBe(a[5]);
+    }
+  });
 
   it('outside deep winter the legacy prompt and the token falling now are the same at every recorded time', () => {
     let compared = 0;

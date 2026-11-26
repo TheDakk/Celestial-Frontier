@@ -9,6 +9,7 @@
    The clock is an argument, in seconds. The legacy game passes seconds since the page was opened (`perfTime` 6009).
    Pure: no clock, no entropy. */
 import { TAU, mulberry32 } from '@cf/domain-rand';
+import { EARTH_SEED } from './region.js';
 
 /** The weather a world can have falling. */
 export type WeatherToken = 'rain' | 'snow' | 'dust' | 'ash' | 'haze';
@@ -30,9 +31,6 @@ export interface WorldEnvironment {
   /** The length of a year, 320 to 580 seconds. */
   readonly yearLen: number;
 }
-
-/** Earth's seed (LEGACY 13513). */
-const EARTH_SEED = 133;
 
 function baseWeatherOf(type: string, band: string): WeatherToken | null {
   if (type === 'terran') return band === 'temperate' ? 'rain' : (band === 'hot' ? 'haze' : 'snow');

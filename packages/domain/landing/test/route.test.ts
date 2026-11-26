@@ -1,6 +1,6 @@
 // The scene a landing shows, in the order the legacy game decides it (LEGACY celestial-frontier.html, showVistaBox:
-// the cloud deck of a gas world 12986-13010, a sea region of a terran world 13042, the deep 13046-13062, the reef
-// 13065-13079, the shore of an ocean world 13018, else the land 13080-13087; the sea regions 12966).
+// the cloud deck of a gas world 12987-13009, a sea region of a terran world 13042, the deep 13046-13061, the reef
+// 13064-13079, the shore of an ocean world 13017, else the land 13080-13087; the sea regions 12966).
 import { describe, expect, it } from 'vitest';
 import { BIOME_SETS } from '@cf/domain-strays';
 import { SEA_REGIONS, earthLandingComposition, landingSceneRoute } from '@cf/domain-landing';

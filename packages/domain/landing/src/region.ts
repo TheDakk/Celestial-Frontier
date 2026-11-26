@@ -2,12 +2,17 @@
    - a world's mix of regions, from its biome set, climate band and three seeded dials: `biomeComposition` 13294-13322;
    - Earth's own table of 14 regions: `_EARTH_LANDING` and `_earthLandingComp` 13330-13343;
    - the roll of one landing: `biomeForLanding` 13344-13356;
-   - the salt that makes each landing roll again: `_descSeq` and `_vistaSalt` 12974-12978, raised at 13507.
+   - the salt that makes each landing view roll again: `_descSeq` and `_vistaSalt` 12974-12978, raised at 13507.
 
    The region is the view of a landing: its scenery and the residents met there. The world's anchor biome
    (`biomeFor` of @cf/domain-strays), which sets veins, odds and generation, is not changed by it.
 
    The arithmetic keeps the legacy game's order of operations, so the shares are the same numbers to the last bit.
+
+   Four of the legacy game's lines are kept though today's biome sets never reach them, so no test holds them: the
+   land cover of 90 when a region names none (13312; every region names one), the whole set when no region fits the
+   band (13304; every type has a region for every band), the floor of 0.001 under a weight (13317), and a draw that
+   lands exactly on a boundary (13354).
    Pure: no clock, no entropy. */
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { BIOME_SETS, biomeFor } from '@cf/domain-strays';
@@ -39,8 +44,8 @@ export interface BiomeShare {
   readonly pct: number;
 }
 
-/** Earth's seed (LEGACY 13283, 13350). */
-const EARTH_SEED = 133;
+/** Earth's seed (LEGACY 13283, 13350, 13513). */
+export const EARTH_SEED = 133;
 
 const SETS = BIOME_SETS as unknown as Readonly<Record<string, readonly BiomeSetEntry[]>>;
 
@@ -79,9 +84,12 @@ const EARTH_LANDING: ReadonlyArray<readonly [string, number]> = [
   ['saltflat', 2], ['karst', 2], ['marsh', 1.5], ['swamp', 1.5], ['mangrove', 1.5],
 ];
 
+let earthComposition: readonly BiomeShare[] | null = null;
+
 /** Earth's own table, in table order (not sorted): 14 regions, shares summing to 1. A key is looked up in the
-    terran set first, then the ocean set; a key in neither is left out. */
+    terran set first, then the ocean set; a key in neither is left out. Built once, as in the legacy game. */
 export function earthLandingComposition(): readonly BiomeShare[] {
+  if (earthComposition) return earthComposition;
   const byKey = new Map<string, BiomeSetEntry>();
   for (const b of SETS.terran ?? []) byKey.set(b.k, b);
   for (const b of SETS.ocean ?? []) if (!byKey.has(b.k)) byKey.set(b.k, b);
@@ -91,7 +99,8 @@ export function earthLandingComposition(): readonly BiomeShare[] {
     const biome = byKey.get(k);
     if (biome) { out.push({ biome, w }); total += w; }
   }
-  return out.map((x) => ({ biome: x.biome, pct: x.w / total }));
+  earthComposition = out.map((x) => ({ biome: x.biome, pct: x.w / total }));
+  return earthComposition;
 }
 
 /** The region of one landing: a draw weighted by the world's mix, seeded by the world and the salt. Earth
@@ -104,10 +113,14 @@ export function biomeForLanding(planet: LandingPlanet, band: string, salt: numbe
   return comp[comp.length - 1]!.biome;
 }
 
-/** The salt of a landing: epoch * 997 + landings + descents * 131.
-    `landings` is the expedition's count of worlds first landed on. `descentsThisSession` counts every descent since
-    the game was opened, this one included (the legacy game raises it before it rolls, 13507), and is not saved:
-    after a reload the regions start again from the first descent. */
-export function landingSalt(epoch: number, landings: number, descentsThisSession: number): number {
-  return epoch * 997 + landings + descentsThisSession * 131;
+/** The salt of a landing view: epoch * 997 + landings + views * 131.
+    `landings` is the expedition's count of worlds first landed on. `viewsThisSession` is raised once each time the
+    landing view is composed, before the roll (13507), this time included. The legacy game composes it from two
+    places: a real landing (13476), and the survey card's view button when no composed view is held (14253), so a
+    look back at a world can roll a new region too; showing the held picture again (`reshowVista`, 14250) composes
+    nothing and raises nothing. The count is not saved: after a reload the regions start again from the first view.
+    One composition reads the one salt three times: for the region (13558), for the shuffle of the residents as
+    salt + 7 (13571), and for the scene (13087). */
+export function landingSalt(epoch: number, landings: number, viewsThisSession: number): number {
+  return epoch * 997 + landings + viewsThisSession * 131;
 }
