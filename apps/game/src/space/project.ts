@@ -4,7 +4,7 @@
 import { fittedWidth, paintSpace } from '@cf/art-interface';
 import type { Gaps, InterfaceSheet, SpaceItem, SpacePicture } from '@cf/art-interface';
 import { mulberry32 } from '@cf/domain-rand';
-import { HOME_POS } from '@cf/domain-worldconfig';
+import { HOME_POS, SYS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import { systemScene } from '@cf/scene';
 import type { GalaxyNode, NavState, PlanetNode } from '@cf/scene';
@@ -191,13 +191,39 @@ export function primaryWidth(scene: { kind: string; starR: number }): number {
   return special === undefined ? Math.max(scene.starR, 8) * 4.8 * GLOW : special === 'bh' ? WIDTH.primaryBh : special === 'proto' ? WIDTH.primaryProto : WIDTH.primaryBeams;
 }
 
+/** The comet shell of the star charts, as the legacy game draws it (celestial-frontier.html 7643 to 7649): a dashed
+ *  ring three units inside the system's edge, 2.5 units wide, 6 units of every 11 lit, which is 181 dashes round, in
+ *  a blue a little dimmer than the orbit lines. */
+const SHELL = { r: SYS_R - 3, width: 2.5, on: 6, off: 5, colour: 0x1f3155 } as const;
+/** A dash of the shell is never shorter than this many art pixels of the ring: it is a solid piece, not a dot. */
+const DASH_MIN = 3;
+const TAU = 6.283185307179586;
+
+/** The comet shell about a star at `at`, at `z` art pixels a world unit. Named difference from the legacy game: its
+ *  dashes shrink with the view until they are a faint line; here, from farther out than its 181 dashes can each be
+ *  DASH_MIN pixels long, the shell has fewer and longer dashes, in the same six parts lit of eleven. Unsized, it is
+ *  one pixel wide. Nothing where none of it can be in the picture: the view inside it, or beside it. */
+function shell(at: { x: number; y: number }, z: number, grid: Grid, sized: boolean): SpaceItem[] {
+  const r = Math.round(SHELL.r * z);
+  const width = sized ? Math.max(1, Math.round(SHELL.width * z)) : 1;
+  const outer = r + (width >> 1);
+  // How far the star is from the nearest pixel of the picture and from its farthest, squared.
+  const squares = (dx: number, dy: number): number => dx * dx + dy * dy;
+  const nearest = squares(Math.max(-at.x, 0, at.x - (grid.w - 1)), Math.max(-at.y, 0, at.y - (grid.h - 1)));
+  const farthest = squares(Math.max(at.x, grid.w - 1 - at.x), Math.max(at.y, grid.h - 1 - at.y));
+  if (nearest > squares(outer + 1, 0) || farthest < squares(Math.max(0, outer - width), 0)) return [];
+  const of = SHELL.on + SHELL.off;
+  const count = Math.max(1, Math.min(Math.round(TAU * SHELL.r / of), Math.floor(TAU * r * SHELL.on / (of * DASH_MIN))));
+  return [{ kind: 'dashes', ...at, r, width, count, on: SHELL.on, of, colour: SHELL.colour }];
+}
+
 interface Belt { rocks: readonly { a: number; rr: number; s: number; sp: number }[] }
 interface Companion { sep: number; r2: number; col2?: string }
 
 /**
  * What a map shows besides its bodies, painted under them. The universe: the ring of the charter, `reach` world
- * units about home. A galaxy: its star knots, and the black hole at its centre. A system: the orbits when `charts`
- * is on, the belts, the dwarf planets, and the star itself with its companions. With `sizing` each takes the game's
+ * units about home. A galaxy: its star knots, and the black hole at its centre. A system: the orbits and the comet
+ * shell when `charts` is on, the belts, the dwarf planets, and the star itself with its companions. With `sizing` each takes the game's
  * size at the camera's zoom. With `orbit` the dwarf planets stand where their orbits have run that many seconds.
  */
 export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: number, options: { reach: number; charts: boolean; sizing?: Sizing; orbit?: number }): SpaceItem[] {
@@ -226,7 +252,10 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
   if (nav.mode !== 'system') return items;
   const scene = systemScene(nav.star.seed);
   const raw = systemFor(nav.star.seed) as { binary?: Companion | null; trinary?: Companion | null; dwarfs?: readonly { orb: number }[] };
-  if (options.charts) for (const p of scene.planets) items.push({ kind: 'ring', ...at(0, 0), r: Math.round(p.orb * cam.z), colour: 0x2a3a55 });
+  if (options.charts) {
+    for (const p of scene.planets) items.push({ kind: 'ring', ...at(0, 0), r: Math.round(p.orb * cam.z), colour: 0x2a3a55 });
+    items.push(...shell(at(0, 0), cam.z, grid, sizing !== undefined));
+  }
   // A rock of the belt is 2.6 of its size across, one of the outer belt 2.4; a dwarf planet 4.84 units.
   const small = (spot: { x: number; y: number }, world: number, colour: number): SpaceItem => blob(spot.x, spot.y, sizing === undefined ? 1 : world * cam.z, colour);
   for (const [belt, colour, speed, width] of [[scene.belt, 0x9a8f80, 1, 2.6], [scene.kuiper, 0xbcd4e8, 0.4, 2.4]] as const) {

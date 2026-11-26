@@ -2,9 +2,9 @@
    the two listening modes. The panel is drawn again after each change and the focus is kept on the control.
    Star charts is the legacy game's one control for the orbit lines, the habitable zone and the chart labels
    together (celestial-frontier.html 2221-2222, its words and its hint; 26089-26094, the press, which asks for a
-   save; 15973, off in a new game; 16790, off where a save does not say). Of the five things the legacy game's charts
-   draw (the zone 7530, its name 7536-7539, the belt's name 7622, the orbit lines 7664 and a dashed comet shell at the
-   system's edge 7643-7649) the map draws four: the comet shell is not drawn yet. */
+   save; 15973, off in a new game; 16790, off where a save does not say). The map draws the five things the legacy
+   game's charts draw: the zone (7530), its name (7536-7539), the belt's name (7622), the orbit lines (7664) and the
+   dashed comet shell at the system's edge (7643-7649). */
 import type { SaveStateV2 } from '@cf/persistence';
 import type { UpdateControl } from '../offline';
 import type { AudioAccessibilityModes } from '../sound';
