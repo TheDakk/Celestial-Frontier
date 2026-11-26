@@ -246,11 +246,12 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
     firstScan = reveal.firstScan;
     draft.surveyedSet = [...draft.surveyedSet, seed];
     draft.stats = { ...draft.stats, surveys: reveal.surveys };
+    // The deed: the Charters' own staging hears nothing in training (24908); neither does the Ascent (25285).
+    const staged = input.charters({ draft, extensions, event: { kind: 'bioscan', address }, receiptOrdinal: receipt.receiptOrdinal, activePlayMs: receipt.activePlayMs });
+    if (staged.kind === 'refused') return refuse(`charter:${staged.reason}`);
+    charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
+    writes.push(...staged.facts.extensionWrites);
     if (draft.tutDone) {
-      const staged = input.charters({ draft, extensions, event: { kind: 'bioscan', address }, receiptOrdinal: receipt.receiptOrdinal, activePlayMs: receipt.activePlayMs });
-      if (staged.kind === 'refused') return refuse(`charter:${staged.reason}`);
-      charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
-      writes.push(...staged.facts.extensionWrites);
       const progress = { ...draft.ascProg };
       if (bankBioscan(draft.ascCh, progress, address)) {
         const reconciled = reconcileV2Chapters(draft.ascCh, progress, ascStageOf(draft.items, draft.ascCh));

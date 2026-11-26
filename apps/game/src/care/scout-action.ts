@@ -59,7 +59,8 @@ export function commitScoutV1(input: ScoutActionInputV1): Promise<ScoutActionOut
         draft, extensions, parent: ownership, contents: { ...contentsOf(ownership), scoutCreatureId: standDown ? null : creature.creatureId }, touched: [],
       })];
       let charters: ScoutFactsV1['charters'] = { progressIds: [], completedIds: [] };
-      if (!standDown && draft.tutDone) {
+      // Naming is the deed; the Charters' own staging hears nothing in training (24908).
+      if (!standDown) {
         const staged = input.charters({ draft, extensions, event: { kind: 'scout-set', scoutId: speciesId }, receiptOrdinal, activePlayMs });
         if (staged.kind === 'refused') return refuse(`charter:${staged.reason}`);
         charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
