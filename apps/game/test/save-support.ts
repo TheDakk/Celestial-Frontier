@@ -42,8 +42,10 @@ export async function seedCurrentSave(
   backend: StorageBackend,
   explorerName = 'Vega',
   extensions: V5Extensions = {},
+  change: (state: SaveStateV2) => void = () => undefined,
 ): Promise<void> {
   const state = namedState(explorerName);
+  change(state);
   const started = await initializeFreshV5(backend, { state, extensions: {} }, REGISTRY, NOW);
   if (started.kind !== 'initialized') throw new Error(`seed was ${started.kind}`);
   const written = await createRevisionedRepository(backend).mutate({

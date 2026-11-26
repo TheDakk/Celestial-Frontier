@@ -22,6 +22,8 @@ export interface GameEvents {
    *  lease, or storage or the action's own rule refused it (`reason` is then the refusal's kind, followed by a
    *  colon and its own reason where it has one: `pre-draw-refused:capacity`). */
   'outcome:refused': { kind: string; reason: string };
+  /** A product carrier of the save could not be read or made at boot; said at every boot while it is so. */
+  'save:carrier-refused': { carrier: string; reason: string };
   'settings:changed': { field: string };
   'nav:changed': { from: ZoomMode; to: ZoomMode; nav: NavState };
   'nav:refused': { reason: 'prime-reach' | 'charter-reach' | 'not-proven'; hint: string };

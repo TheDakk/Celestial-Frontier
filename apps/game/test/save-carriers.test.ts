@@ -16,6 +16,7 @@ import {
   type V5Extensions,
 } from '@cf/persistence';
 import { CARRIERS, REGISTRY, bootstrapCarriers, startCarriers, watchCarriers } from '../src/save/index';
+import { heldNoticeFor } from '../src/screens/notices';
 import { bootedHarness } from './save-loop-support';
 import { NOW, controlledClock, dump, namedState, seedCurrentSave } from './save-support';
 
@@ -25,6 +26,15 @@ const loadedKinds = (extensions: V5Extensions) => ({
   engineering: readArc3Engineering(extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER).kind,
   ownership: readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER).kind,
 });
+/** Extensions holding only a loot carrier one version ahead of this build's. */
+function newerLoot(): V5Extensions {
+  const out: Record<string, Record<string, { version: number; json: string }>> = {};
+  for (const write of bootstrapCarriers(namedState('Vega'), {}).writes) {
+    if (readArc2Loot({ [write.segment]: { [write.namespace]: write.carrier } }).kind !== 'loaded') continue;
+    out[write.segment] = { [write.namespace]: { version: write.carrier.version + 1, json: write.carrier.json } };
+  }
+  return out as V5Extensions;
+}
 const ALL = (status: string) => Object.fromEntries(CARRIERS.map((name) => [name, status]));
 async function stored(backend: StorageBackend) {
   const read = await readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW);
@@ -40,7 +50,8 @@ describe('the product carriers of a save', () => {
   it('a state with no carrier gains all four, each readable from the extensions returned', () => {
     const boot = bootstrapCarriers(namedState('Vega'), {});
     expect(boot.status).toEqual(ALL('created'));
-    expect(boot.refused).toBeNull();
+    expect(boot.refused).toEqual([]);
+    expect(boot.newer).toBe(false);
     expect(boot.writes.length).toBeGreaterThanOrEqual(4);
     expect(loadedKinds({})).toEqual(ALL('absent'));
     expect(loadedKinds(boot.extensions)).toEqual(ALL('loaded'));
@@ -79,19 +90,110 @@ describe('the product carriers of a save', () => {
     expect(bare.kind === 'loaded' && bare.capabilities.landingSuccessBonus).toBe(0);
   });
 
-  it('a carrier written by a newer build is refused by name, and then no carrier is written at all', () => {
-    const made = bootstrapCarriers(namedState('Vega'), {});
-    const newer: Record<string, Record<string, { version: number; json: string }>> = {};
-    for (const write of made.writes) {
+  /** Extensions holding only a loot carrier, as made for a new game, with its version or its text changed. */
+  const lootCarrier = (change: (carrier: { version: number; json: string }) => { version: number; json: string }): V5Extensions => {
+    const out: Record<string, Record<string, { version: number; json: string }>> = {};
+    for (const write of bootstrapCarriers(namedState('Vega'), {}).writes) {
       if (readArc2Loot({ [write.segment]: { [write.namespace]: write.carrier } }).kind !== 'loaded') continue;
-      newer[write.segment] = { [write.namespace]: { version: write.carrier.version + 1, json: write.carrier.json } };
+      out[write.segment] = { [write.namespace]: change(write.carrier) };
     }
-    expect(Object.keys(newer).length).toBe(1);
-    const boot = bootstrapCarriers(namedState('Vega'), newer as V5Extensions);
-    expect(boot.status.loot).toBe('refused');
-    expect(boot.refused).toMatchObject({ carrier: 'loot', reason: 'target-future' });
+    expect(Object.keys(out).length).toBe(1);
+    return out as V5Extensions;
+  };
+  const NEWER = lootCarrier((carrier) => ({ version: carrier.version + 1, json: carrier.json }));
+  const DAMAGED = lootCarrier((carrier) => ({ version: carrier.version, json: '{}' }));
+
+  it('a carrier written by a newer build: nothing is written at all, and no status says created', () => {
+    const boot = bootstrapCarriers(namedState('Vega'), NEWER);
+    expect(boot.newer).toBe(true);
+    expect(boot.status).toEqual({ ...ALL('waiting'), loot: 'refused' });
+    expect(boot.refused).toEqual([{ carrier: 'loot', reason: 'target-future' }]);
     expect(boot.writes).toEqual([]);
-    expect(boot.extensions).toEqual(newer);
+    expect(boot.extensions).toEqual(NEWER);
+  });
+
+  it('a damaged carrier is refused alone: it is left as it is and the other three are made', () => {
+    const boot = bootstrapCarriers(namedState('Vega'), DAMAGED);
+    expect(boot.newer).toBe(false);
+    expect(boot.status).toEqual({ ...ALL('created'), loot: 'refused' });
+    expect(boot.refused).toEqual([{ carrier: 'loot', reason: 'target-corrupt' }]);
+    expect(loadedKinds(boot.extensions)).toEqual({ ...ALL('loaded'), loot: 'corrupt' });
+    expect(boot.writes.length).toBeGreaterThanOrEqual(3);
+    for (const write of boot.writes) expect(readArc2Loot({ [write.segment]: { [write.namespace]: write.carrier } }).kind).toBe('absent');
+  });
+
+  it('a carrier that cannot be made from the state (a world mined, known by its seed alone) is refused alone', () => {
+    const state = namedState('Vega');
+    state.mineX = [[134, 2]];
+    const boot = bootstrapCarriers(state, {});
+    expect(boot.status).toEqual({ ...ALL('created'), engineering: 'refused' });
+    expect(boot.refused).toEqual([{ carrier: 'engineering', reason: 'legacy-refused' }]);
+    expect(loadedKinds(boot.extensions)).toEqual({ ...ALL('loaded'), engineering: 'absent' });
+    // Every status that says created has its rows in the writes.
+    const written: Record<string, Record<string, unknown>> = {};
+    for (const write of boot.writes) (written[write.segment] ??= {})[write.namespace] = write.carrier;
+    expect(loadedKinds(written as V5Extensions)).toEqual({ ...ALL('loaded'), engineering: 'absent' });
+  });
+});
+
+describe('a carrier that is refused at boot', () => {
+  const heardRefusals = (h: Awaited<ReturnType<typeof bootedHarness>>) => {
+    const refusals: unknown[] = [];
+    h.bus.on('save:carrier-refused', (event) => { refusals.push(event); });
+    return refusals;
+  };
+
+  it('the other three are stored, the refusal is said once on the bus, and the page stays writable', async () => {
+    const backend = createMemoryBackend();
+    await seedCurrentSave(backend, 'Vega', {}, (state) => { state.mineX = [[134, 2]]; });
+    const h = await bootedHarness(backend);
+    const refusals = heardRefusals(h);
+    const watch = watchCarriers({ runtime: h.runtime, loop: h.loop, bus: h.bus });
+    expect(watch.state()).toBeNull();
+    await watch.ensure();
+    expect(watch.state()).toMatchObject({ kind: 'created', boot: { status: { ...ALL('created'), engineering: 'refused' } } });
+    expect(watch.ready('ownership')).toBe(true);
+    expect(watch.ready('engineering')).toBe(false);
+    expect(refusals).toEqual([{ carrier: 'engineering', reason: 'legacy-refused' }]);
+    expect(loadedKinds((await stored(backend)).extensions)).toEqual({ ...ALL('loaded'), engineering: 'absent' });
+    expect(h.loop.mayWrite()).toBe(true);
+    expect(h.held).toEqual([]);
+    await watch.ensure();
+    expect(refusals.length).toBe(1);
+    await h.runtime.release();
+
+    // The next boot stores nothing, and says the same refusal again: it is never silent.
+    const again = await bootedHarness(backend, 'document-b');
+    const refusedAgain = heardRefusals(again);
+    const revision = again.runtime.revision;
+    const next = watchCarriers({ runtime: again.runtime, loop: again.loop, bus: again.bus });
+    await next.ensure();
+    expect(next.state()).toMatchObject({ kind: 'refused', boot: { status: { ...ALL('loaded'), engineering: 'refused' } } });
+    expect(again.runtime.revision).toBe(revision);
+    expect(refusedAgain).toEqual([{ carrier: 'engineering', reason: 'legacy-refused' }]);
+  });
+
+  it('a carrier written by a newer build holds the whole page: nothing is stored, and the notice says a newer build', async () => {
+    const backend = createMemoryBackend();
+    await seedCurrentSave(backend, 'Vega', newerLoot());
+    const h = await bootedHarness(backend);
+    const refusals = heardRefusals(h);
+    const before = (await stored(backend));
+    const watch = watchCarriers({ runtime: h.runtime, loop: h.loop, bus: h.bus });
+    await watch.ensure();
+    expect(watch.state()).toMatchObject({ kind: 'held', boot: { newer: true, status: { ...ALL('waiting'), loot: 'refused' } } });
+    expect(watch.ready('ownership')).toBe(false);
+    expect(refusals).toEqual([{ carrier: 'loot', reason: 'target-future' }]);
+    expect(h.gate.hold).toBe('protected-payload');
+    expect(h.gate.detail).toContain('newer build');
+    expect(heldNoticeFor('current', h.gate.hold, h.gate.detail)).toBe('newer');
+    expect(h.held.length).toBe(1);
+    expect(h.loop.mayWrite()).toBe(false);
+    expect(h.runtime.diagnostics().leaseOwned).toBe(false);
+    const after = await stored(backend);
+    expect([after.revision, after.state, after.extensions]).toEqual([before.revision, before.state, before.extensions]);
+    await expect(h.loop.request('settings')).resolves.toBe(false);
+    await expect(h.loop.settle('test.add', async () => ({ kind: 'rejected' as const }))).resolves.toEqual({ kind: 'refused', reason: 'held' });
   });
 });
 

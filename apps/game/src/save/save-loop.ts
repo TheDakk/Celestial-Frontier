@@ -46,6 +46,9 @@ export interface SaveLoop {
   mayWrite(): boolean;
   /** The epoch every drawing and descriptor reads: only ever a committed one. */
   publishedEpoch(): number;
+  /** Holds the page for good (until a reload): the save holds something this build must not change. Gives the
+   *  lease up and says so (`save:held`). */
+  protect(detail: string): void;
   /** Settles one product action. `commit` is given the runtime and the last stored state, and commits through one
    *  of the runtime's receipt-bearing paths. It is not called when the page is held, owes a reload, has another
    *  action in flight or does not hold the lease: the answer is then `refused`. A committed outcome is written
@@ -349,6 +352,13 @@ export function createSaveLoop(deps: {
     },
     mayWrite,
     publishedEpoch: () => epoch.published(),
+    protect(detail) {
+      gate.protect(detail);
+      runtime.setAnswerable(false);
+      void runtime.release().catch(() => undefined);
+      bus.emit('save:held', { detail });
+      announce();
+    },
     settle,
     get actionInFlight() { return actions.operation; },
   };

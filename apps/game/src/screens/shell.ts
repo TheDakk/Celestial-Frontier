@@ -13,7 +13,7 @@ import type { DevicePreferences } from '../platform/preferences';
 import { createPersistAsker, readPersistState, type StorageManagerLike } from '../protect';
 import {
   HEARTBEAT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
-  replaceExpedition, resetExpedition, retryHeldRead, watchCarriers, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
+  replaceExpedition, resetExpedition, retryHeldRead, watchCarriers, type BootResult, type CarrierWatch, type SaveLoop, type SaveRuntime, type WriteGate,
 } from '../save';
 import { GESTURE_EVENTS, countsAsGesture, createShellSound, readAudioAccessibilityPrefs, writeAudioAccessibilityPrefs, type ShellSound } from '../sound';
 import {
@@ -69,6 +69,8 @@ export interface Shell {
   readonly gate: WriteGate;
   readonly runtime: SaveRuntime;
   readonly loop: SaveLoop;
+  /** Whether each product carrier of the save is ready: what an action asks before it acts. */
+  readonly carriers: CarrierWatch;
   readonly nav: NavController;
   readonly panels: PanelManager;
   readonly registry: ScreenRegistry;
@@ -259,5 +261,5 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
     if (routeSaveWanted) void loop.request('route');
   });
 
-  return { booted, live, gate, runtime, loop, nav, panels, registry, chrome, sound, toast, ready };
+  return { booted, live, gate, runtime, loop, carriers, nav, panels, registry, chrome, sound, toast, ready };
 }
