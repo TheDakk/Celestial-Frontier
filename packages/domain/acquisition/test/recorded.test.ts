@@ -62,7 +62,9 @@ import {
    tools/record-fixtures.mjs (the acquisition recorder): taming (capture) and breeding outcomes. Every
    case holds its whole input beside the answer. The only clock is the injected active-play time and
    the only random source is the injected SessionRNG state, both given in each input. The recorder
-   installed the current game's capture hooks first; here the descriptors package imports them. */
+   installed the current game's capture hooks first; here the descriptors package imports them.
+   Steps 6 and 7 of both taming chains were retired from the file on 2026-11-26: they offered a species already
+   caught, which contradicts LEGACY 14867. Nothing else in the file was changed or re-recorded. */
 
 type Json = Record<string, unknown>;
 interface World { galaxy: { seed: number; x: number; y: number }; star: { seed: number; x: number; y: number }; planetSeed: number; biosphereKey: string; rows: Json[] }
@@ -183,10 +185,6 @@ function chainAnswer(chain: AcquisitionFixture['taming']['chains'][number]) {
   });
 }
 
-/** The recorded steps of a chain the legacy rule agrees with: those before the capture cycle turns (the first six). */
-const legacySteps = (chain: AcquisitionFixture['taming']['chains'][number]): ChainStep[] =>
-  chain.steps.filter(({ input }) => input.activePlayMs < 1_200_000);
-
 /* ---- breeding ---- */
 
 function ownershipOf(parents: Parent[]) {
@@ -288,39 +286,28 @@ describe('@cf/domain-acquisition — recorded taming outcomes', () => {
     expect(plain(taming.captures.map(captureAnswer))).toEqual(taming.captures);
   });
 
-  it('repeated captures from each successor and next SessionRNG state, up to the capture cycle\'s turn', () => {
+  it('repeated captures from each successor and next SessionRNG state', () => {
     expect(taming.chains).toHaveLength(2);
     for (const chain of taming.chains) {
-      expect(legacySteps(chain)).toHaveLength(6);
-      expect((plain(chainAnswer(chain)) as unknown[]).slice(0, 6)).toEqual(legacySteps(chain));
+      expect(chain.steps).toHaveLength(6);
+      expect(plain(chainAnswer(chain))).toEqual(chain.steps);
     }
   });
 
-  it('the recorded steps after the cycle\'s turn offer a species already caught, which the legacy game never does', () => {
+  it('after the capture cycle turns, a species a chain has caught is still not offered', () => {
     // LEGACY celestial-frontier.html 1.8.9, `tryCapture` 14867: the pool is the species not in the Compendium.
-    // The fixture was recorded from the painted port, where a caught species came back when the cycle turned.
-    // Steps 6 and 7 of both chains (at 1,200,000 and 1,201,000 ms) are those cases; they are not held here.
-    // The fixture is left as it is: retiring or re-recording those four steps needs Dakk's word.
-    const contradicting = taming.chains.map((chain) => {
-      const caught = new Set<number>();
-      return chain.steps.flatMap((step, index) => {
-        const offered = ((step.preflight.pool as number[] | undefined) ?? []).filter((ordinal) => caught.has(ordinal));
-        const plan = step.plan as { hit?: boolean; candidate?: { sourceOrdinal: number } } | null;
-        if (plan?.hit) caught.add(plan.candidate!.sourceOrdinal);
-        return offered.length > 0 ? [{ step: index, activePlayMs: step.input.activePlayMs, offered }] : [];
+    // Each recorded chain is carried on past its last step into the next cycle, one press of each verb.
+    for (const chain of taming.chains) {
+      const caught = chain.steps.flatMap(({ plan }) => {
+        const made = plan as { hit?: boolean; candidate?: { sourceOrdinal: number } } | null;
+        return made?.hit ? [made.candidate!.sourceOrdinal] : [];
       });
-    });
-    expect(contradicting).toEqual([
-      [{ step: 6, activePlayMs: 1200000, offered: [2] }, { step: 7, activePlayMs: 1201000, offered: [2] }],
-      [{ step: 6, activePlayMs: 1200000, offered: [11, 14] }, { step: 7, activePlayMs: 1201000, offered: [14] }],
-    ]);
-    // Here the caught species stay out of the pool after the turn.
-    for (const [index, chain] of taming.chains.entries()) {
-      const answered = chainAnswer(chain);
-      for (const { step, offered } of contradicting[index]!) {
-        const pool = (answered[step]!.preflight as { pool?: number[] }).pool ?? [];
-        for (const ordinal of offered) expect(pool).not.toContain(ordinal);
-      }
+      expect(caught.length).toBeGreaterThan(1);
+      const later = (['tame', 'scavenge', 'sample'] as const).map((verb, n) => ({ ...chain.steps[0]!, input: { ...chain.steps[0]!.input, verb, activePlayMs: 1_200_000 + n } }));
+      const answered = chainAnswer({ ...chain, steps: [...chain.steps, ...later] }).slice(chain.steps.length);
+      const offered = answered.flatMap(({ preflight }) => (preflight as { pool?: number[] }).pool ?? []);
+      expect(offered.length).toBeGreaterThan(0);
+      for (const ordinal of caught) expect(offered).not.toContain(ordinal);
     }
   });
 });
@@ -372,7 +359,7 @@ describe('@cf/domain-acquisition — injected clock and random source', () => {
   it('no recorded case reads the device clock or Math.random', () => {
     withoutAmbientSources(() => {
       expect(plain(taming.captures.map(captureAnswer))).toEqual(taming.captures);
-      for (const chain of taming.chains) expect((plain(chainAnswer(chain)) as unknown[]).slice(0, 6)).toEqual(legacySteps(chain));
+      for (const chain of taming.chains) expect(plain(chainAnswer(chain))).toEqual(chain.steps);
       expect(plain([...breeding.cases, ...breeding.injectedOnly].map((c) => breedAnswer(c.input))))
         .toEqual([...breeding.cases, ...breeding.injectedOnly]);
       expect(missions.seals.map((c) => sealAnswer(c.input))).toEqual(missions.seals);

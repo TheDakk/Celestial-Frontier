@@ -676,6 +676,8 @@ const recorders = {
     }
     // Repeated tames on one world: each attempt starts from the previous successor and next SessionRNG
     // state; the clock crosses the 20-minute cycle once, so spent species and the yield reset.
+    // The stored fixture holds the first six steps of each chain: steps 6 and 7 were retired on 2026-11-26
+    // because they offered a species already caught, which contradicts LEGACY 14867.
     const chains = [];
     for (const [world, seed] of [['deepLiving', 12345], ['earth', 777]]) {
       const w = WORLDS[world];
