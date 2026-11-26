@@ -4,7 +4,8 @@
    Exact action owners stage a Charter event against their already-staged
    product extensions, then land the Charter successor and any reward carrier
    replacement in the same F4 transaction. The compact fact is suitable for
-   postcommit UI; no presentation or live singleton crosses this boundary. */
+   postcommit UI; no presentation or live singleton crosses this boundary.
+   A committed state reaches the live one through the save loop alone. */
 import {
   applyV5ExtensionWrites,
   type SaveStateV2,
@@ -156,24 +157,4 @@ export function stageStarterCharterActionV1(input: Readonly<{
       reason: error instanceof Error ? error.message : 'starter Charter action staging failed',
     });
   }
-}
-
-/** Publish only the fields owned by Starter Charter progress, rewards, and
- * the progression refresh that follows a newly completed Charter. */
-export function publishStarterCharterActionFieldsV1(
-  target: SaveStateV2,
-  committed: SaveStateV2,
-): void {
-  target.chacc = [...committed.chacc];
-  target.chDone = [...committed.chDone];
-  target.chProg = { ...committed.chProg };
-  target.chWeek = committed.chWeek;
-  target.essence = committed.essence;
-  target.stats = { ...committed.stats };
-  target.items = committed.items.map(([id, count]) => [id, count]);
-  target.equip = { ...committed.equip };
-  target.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
-    slot, { ...affix },
-  ]));
-  target.unlocked = [...committed.unlocked];
 }

@@ -9,7 +9,7 @@ import {
   type V5Extensions,
 } from '@cf/persistence';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
-import { publishStarterCharterActionFieldsV1, stageStarterCharterActionV1 } from '../src/guidance';
+import { stageStarterCharterActionV1 } from '../src/guidance';
 
 function state(): SaveStateV2 {
   return {
@@ -114,27 +114,5 @@ describe('the Starter Charter join of a deed', () => {
     expect(loot.kind === 'loaded' && loot.state.kind === 'inventory' && loot.state.inventory.entries.map(({ instance }) => instance.baseId))
       .toEqual(['headlamp']); // SOURCE tests/starter-charters.test.ts:386-392
     expect(draft).toMatchObject({ chDone: ['st-mercury'], essence: 20, items: [['headlamp', 1]], equip: { helmet: 'headlamp' } });
-  });
-
-  it('publishes the Charter fields of a committed state and no other field', () => {
-    const committed = state();
-    committed.chacc = ['st-mine'];
-    committed.chDone = ['st-land'];
-    committed.chProg = { 'st-land': 1 };
-    committed.chWeek = 4;
-    committed.essence = 20;
-    committed.stats = { essenceEarned: 30, bestRank: 1, charters: 1 };
-    committed.items = [['headlamp', 1]];
-    committed.equip = { helmet: 'headlamp' };
-    committed.equipAff = { helmet: { k: 'hp', v: 2, forId: 'headlamp' } };
-    committed.unlocked = ['first'];
-    committed.hp = 3;
-    committed.explorerName = 'Other';
-    const target = state();
-    publishStarterCharterActionFieldsV1(target, committed);
-    // SOURCE apps/game/src/starter-charter-action.ts:169-180: these ten fields, and only these.
-    const { chacc, chDone, chProg, chWeek, essence, stats, items, equip, equipAff, unlocked } = committed;
-    expect(target).toEqual({ ...state(), chacc, chDone, chProg, chWeek, essence, stats, items, equip, equipAff, unlocked });
-    expect(target.items[0]).not.toBe(committed.items[0]);
   });
 });
