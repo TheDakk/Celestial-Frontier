@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { madeRamp, nightOf, type RampRule } from '../src/index';
+import { madeRamp, nightOf, type ShadeRule, type SwatchRule } from '../src/index';
 
 /** The gas kit's four reference ramps at its reference hue, as its kit.md lists them. */
 const KIT_HUE = 32;
-const KIT: Record<string, RampRule> = {
+const KIT: Record<string, SwatchRule> = {
   jovian: { hue: KIT_HUE, swatches: [0xd5ae82, 0xbc8458, 0xa96742, 0x854536] },
   'cloud-cream': { hue: KIT_HUE, swatches: [0xfff1d9, 0xf8d9a4, 0xe8b76f, 0xd69963] },
   'storm-umber': { hue: KIT_HUE, swatches: [0xd68041, 0xad532f, 0x803e32, 0x573943] },
@@ -95,6 +95,65 @@ describe('a ramp made at any whole hue', () => {
   it('a grey stays the grey it is at every hue, and a hue that is not whole is refused', () => {
     for (let hue = 0; hue < 360; hue += 7) expect(madeRamp({ hue: 32, swatches: [0xeeeeee, 0x999999, 0x555555, 0x111111] }, hue)).toEqual([0xeeeeee, 0x999999, 0x555555, 0x111111]);
     expect(() => madeRamp(KIT['jovian']!, 0.5)).toThrow('a ramp is made at a whole hue, not 0.5');
+  });
+});
+
+/** The terran kit's nine roles as its kit.md lists them, dark to light: reference hue, hue offsets, saturation and
+ *  lightness in hundredths, and the kit's own reference colours. */
+const TERRAN: Record<string, [ShadeRule, number[]]> = {
+  pelagic: [{ hue: 213, offsets: [10, 3, -4, -10], saturation: [58, 65, 63, 60], lightness: [26, 31, 36, 42] }, [0x1c3269, 0x1c4582, 0x225e96, 0x2b7aab]],
+  shoal: [{ hue: 177, offsets: [11, 4, -3, -9], saturation: [67, 60, 54, 54], lightness: [32, 40, 54, 70] }, [0x1b7a88, 0x29a1a3, 0x4ac9bc, 0x89dccb]],
+  meadow: [{ hue: 81, offsets: [13, 5, -4, -12], saturation: [34, 39, 49, 54], lightness: [34, 46, 59, 71] }, [0x537439, 0x7ba348, 0xadca63, 0xd1dd8d]],
+  canopy: [{ hue: 146, offsets: [12, 6, -4, -16], saturation: [37, 40, 38, 32], lightness: [24, 33, 42, 53] }, [0x275443, 0x327656, 0x429460, 0x61ae6e]],
+  stone: [{ hue: 29, offsets: [-11, -6, 1, 8], saturation: [24, 29, 32, 34], lightness: [36, 47, 60, 74] }, [0x725346, 0x9b7055, 0xba9978, 0xd3c2a6]],
+  sand: [{ hue: 42, offsets: [-14, -8, -2, 4], saturation: [46, 53, 63, 66], lightness: [46, 57, 68, 81] }, [0xab723f, 0xcb9957, 0xe1bf7a, 0xefe0af]],
+  tundra: [{ hue: 100, offsets: [40, 25, 4, -13], saturation: [17, 17, 22, 26], lightness: [36, 46, 58, 71] }, [0x4c6b57, 0x618965, 0x89ab7c, 0xb7c8a2]],
+  ice: [{ hue: 194, offsets: [14, 5, -4, -13], saturation: [38, 46, 44, 40], lightness: [56, 72, 84, 93] }, [0x6492b9, 0x97c4d8, 0xc4e2e8, 0xe6f4f4]],
+  vapour: [{ hue: 201, offsets: [14, 6, -2, -11], saturation: [34, 36, 43, 44], lightness: [68, 79, 88, 96] }, [0x92a9c9, 0xb6cbdd, 0xd3e5ee, 0xf0f8f9]],
+};
+/** A hue, saturation and lightness as a colour, in fractions, each channel unrounded. */
+function shaded(hue: number, s: number, l: number): [number, number, number] {
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
+  const part = (at: number): number => {
+    const t = ((at % 360) + 360) % 360;
+    return (t < 60 ? p + ((q - p) * t) / 60 : t < 180 ? q : t < 240 ? p + ((q - p) * (240 - t)) / 60 : p) * 255;
+  };
+  return [part(hue + 120), part(hue), part(hue - 120)];
+}
+
+describe('a ramp made from hue offsets, saturations and lightnesses', () => {
+  it('at each role\'s reference hue is the terran kit\'s own reference ramp, colour for colour, dark to light', () => {
+    for (const [rule, reference] of Object.values(TERRAN)) expect(madeRamp(rule, rule.hue)).toEqual(reference);
+  });
+  it('at every one of the 360 hues, each of the nine roles\' 1,440 colours is the kit\'s rule worked in fractions and rounded to the nearest byte', () => {
+    for (const [rule] of Object.values(TERRAN)) {
+      let checked = 0;
+      for (let hue = 0; hue < 360; hue++) {
+        const ramp = madeRamp(rule, hue);
+        expect(new Set(ramp).size).toBe(4);
+        ramp.forEach((made, i) => {
+          const want = shaded(hue + rule.offsets[i]!, rule.saturation[i]! / 100, rule.lightness[i]! / 100);
+          // Six channels in all land halfway between two bytes; there the fractions may fall either way.
+          if (want.some((exact) => Math.abs(Math.abs(exact - Math.floor(exact)) - 0.5) < 1e-6)) return;
+          expect(channels(made)).toEqual(want.map((exact) => Math.round(exact)));
+          if (i > 0) expect(light(made)).toBeGreaterThan(light(ramp[i - 1]!));
+          checked++;
+        });
+      }
+      expect(checked).toBeGreaterThanOrEqual(1434);
+    }
+  });
+  it('a channel that lands halfway goes to the even byte, hues a whole turn apart agree, and no saturation is a grey', () => {
+    // Lightness 50 and saturation 100 at hue 30: the middle channel is 127 and a half.
+    const rule: ShadeRule = { hue: 0, offsets: [0, 0, 0, 0], saturation: [100, 100, 0, 0], lightness: [50, 30, 40, 100] };
+    expect(madeRamp(rule, 30)).toEqual([0xff8000, 0x994c00, 0x666666, 0xffffff]);
+    expect(madeRamp(TERRAN['ice']![0], 360 + 194)).toEqual(TERRAN['ice']![1]);
+    expect(madeRamp(TERRAN['ice']![0], 194 - 720)).toEqual(TERRAN['ice']![1]);
+  });
+  it('refuses a saturation or lightness that is not a whole number of hundredths from 0 to 100', () => {
+    expect(() => madeRamp({ hue: 0, offsets: [0, 0, 0, 0], saturation: [10, 20, 30, 101], lightness: [10, 20, 30, 40] }, 0)).toThrow('a ramp\'s saturation and lightness are whole hundredths, 0 to 100, not 101');
+    expect(() => madeRamp({ hue: 0, offsets: [0, 0, 0, 0], saturation: [10, 20, 30, 40], lightness: [10, 20, -1, 40] }, 0)).toThrow('a ramp\'s saturation and lightness are whole hundredths, 0 to 100, not -1');
   });
 });
 
