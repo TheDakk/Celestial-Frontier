@@ -75,6 +75,22 @@ describe('a globe\'s table of map rows and columns', () => {
       }
     }
   });
+  it('holds from the narrowest globe to the widest, and at the two smaller tiers: the painter\'s disc, every row and column on the map', () => {
+    for (const [width, mapW, mapH] of [[3, 384, 128], [17, 48, 16], [33, 96, 32], [511, 384, 128], [511, 768, 384]] as const) {
+      const points = globePoints((width - 1) >> 1);
+      for (const tilt of [0, 37, -90]) {
+        const t = globeTable(width, mapW, mapH, tilt);
+        let bad = 0;
+        for (let i = 0; i < width * width; i++) {
+          const on = points.on[i] === 1;
+          if (on ? !(t.row[i]! >= 0 && t.row[i]! < mapH && t.col[i]! >= 0 && t.col[i]! < mapW) : !(t.row[i] === -1 && t.col[i] === -1)) bad++;
+        }
+        expect(bad).toBe(0);
+        if (width > 3) expect(apart(t, tilt, true).awayFromPole).toBe(0);
+      }
+    }
+    expect(() => globeTable(513, 384, 128, 0)).toThrow('a globe is an odd number of pixels wide, from 3 to 511, not 513');
+  });
   it('upright, a screen row reads one map row, the rows run north to south, and each is mirrored about the middle and never falls left to right', () => {
     for (const [width, mapW, mapH] of SIZES) {
       const t = globeTable(width, mapW, mapH, 0);
