@@ -2,7 +2,7 @@
    own), and the rule set that replaces the legacy rules for it. A type file fills these in; nothing else changes. */
 import type { WeatherToken } from '@cf/domain-landing';
 import type { LandingFamily } from '@cf/domain-loot';
-import type { CensusSystem } from './census.js';
+import type { CensusMoon, CensusSystem } from './census.js';
 import type { TypeStream } from './streams.js';
 import type { WorldTypeKey } from './switches.js';
 
@@ -73,10 +73,17 @@ export interface SliceStep {
   readonly test: (P: PlanetNumbers, band: string, sol: boolean) => boolean;
 }
 
-/** One count of a type's source rule in a system, for the census's tables. */
+/** What the legacy game made of a system beside its record, handed to a type as facts. A type is given no reader:
+    it can ask nothing of a seed of its own choosing. */
+export interface SystemFacts {
+  /** Each planet's moons, planet by planet in the system's order, as their cards name them (LEGACY 5320-5338). */
+  readonly moons: readonly (readonly CensusMoon[])[];
+}
+
+/** One count of a type's source rule in a system. */
 export interface SourceStep {
   readonly name: string;
-  readonly count: (starSeed: number, system: CensusSystem) => number;
+  readonly count: (starSeed: number, system: CensusSystem, facts: SystemFacts) => number;
 }
 
 export interface WorldTypeDefinition {

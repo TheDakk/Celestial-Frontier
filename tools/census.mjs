@@ -335,14 +335,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   printHits(`Seeded census: hits on each table (${mine.planets} planets)`, mine.hits);
 
   // The new types: each slice of planets step by step, and what each design's source rule counts.
-  const { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPES, sliceStepsPassed } = kinds;
+  const { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPES, sliceStepsPassed, sourceCounts } = kinds;
   const { switchCensus } = await import('../tests/support/census-switches.ts');
   const steps = new Map(WORLD_TYPES.map((type) => [type.key, new Array((type.slice ?? type.source ?? []).length).fill(0)]));
   for (const entry of censusSystems(game, planets)) {
     const sol = entry.system.sol === true;
     for (const type of WORLD_TYPES) {
       const counts = steps.get(type.key);
-      if (type.source !== null) type.source.forEach((step, i) => { counts[i] += step.count(entry.starSeed, entry.system); });
+      sourceCounts(type, entry.starSeed, entry.system).forEach((count, i) => { counts[i] += count; });
       if (type.slice !== null) for (const world of entry.worlds) {
         const passed = sliceStepsPassed(type, world.planet.P, world.survey.band, sol);
         for (let i = 0; i < passed; i++) counts[i]++;

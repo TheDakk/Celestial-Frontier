@@ -1,7 +1,8 @@
 /* The thirteen new world types, and the questions the game asks of them. A switch that is off answers as if its
    type were not there. A type's file is the only place its rules live. */
-import type { CensusSystem } from './census.js';
-import type { BodyRecord, PlanetNumbers, WorldRules, WorldTypeDefinition } from './rules.js';
+import type { CensusMoon, CensusSystem } from './census.js';
+import type { BodyRecord, PlanetNumbers, SystemFacts, WorldRules, WorldTypeDefinition } from './rules.js';
+import { moonOf } from './sources.js';
 import type { WorldSwitches, WorldTypeKey } from './switches.js';
 import { artefact } from './types/artefact.js';
 import { double } from './types/double.js';
@@ -33,6 +34,23 @@ export function sliceStepsPassed(type: WorldTypeDefinition, P: PlanetNumbers, ba
 /** Whether a planet is in a type's slice, whatever the switches say. */
 export function inSlice(type: WorldTypeDefinition, P: PlanetNumbers, band: string, sol: boolean): boolean {
   return type.slice !== null && sliceStepsPassed(type, P, band, sol) === type.slice.length;
+}
+
+/** What each step of a type's source rule counts in a system; empty for a type with no such rule. The moons are
+    read here, for the type: it is handed what they are, never the reader. */
+export function sourceCounts(type: WorldTypeDefinition, starSeed: number, system: CensusSystem): readonly number[] {
+  if (type.source === null) return [];
+  let moons: readonly (readonly CensusMoon[])[] | undefined;
+  const facts: SystemFacts = {
+    get moons() {
+      moons ??= Object.freeze(system.planets.map((planet) => {
+        const count = typeof planet.P.moons === 'number' ? planet.P.moons : 0;
+        return Object.freeze(Array.from({ length: count }, (_, m) => Object.freeze(moonOf(planet, m))));
+      }));
+      return moons;
+    },
+  };
+  return type.source.map((step) => step.count(starSeed, system, facts));
 }
 
 /** A copy a type cannot write to, all the way down: what the legacy game made is never handed out itself. */

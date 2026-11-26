@@ -14,8 +14,8 @@ export type { WorldSwitches, WorldTypeKey } from './switches.js';
 export { LEGACY_FIRST_SALTS, declareStream, declaredStreams, isLegacyStream, ownDraw, ownStream } from './streams.js';
 export type { TypeStream } from './streams.js';
 export type {
-  BodyRecord, LegacyType, PlanetNumbers, RuleBiome, RuleCardRow, SliceStep, SourceStep, WorldRules, WorldTypeDefinition,
+  BodyRecord, LegacyType, PlanetNumbers, RuleBiome, RuleCardRow, SliceStep, SourceStep, SystemFacts, WorldRules, WorldTypeDefinition,
 } from './rules.js';
-export { WORLD_TYPES, extraBodies, inSlice, rogueBody, rulesFor, sliceOf, sliceStepsPassed } from './registry.js';
+export { WORLD_TYPES, extraBodies, inSlice, rogueBody, rulesFor, sliceOf, sliceStepsPassed, sourceCounts } from './registry.js';
 export { effectiveWorld, legacyFactsOf } from './effective.js';
 export type { EffectiveWorld, LegacyWorldFacts } from './effective.js';
