@@ -1,6 +1,6 @@
 import { SKIN_NAMES, type PartFrame, type SizeTier, type SkinName } from '@cf/art-format';
 import { handValue } from './marks';
-import { SKIN_TABLE, STAMP_MOST, type Scatter, type Spacing } from './skins';
+import { SKIN_TABLE, type Scatter, type Spacing } from './skins';
 
 const LAST_DRAWN = 12;
 
@@ -35,6 +35,7 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
   if (pixels.length !== frame.w * frame.h) throw new RangeError(`paintSkin: ${pixels.length} pixels for a ${frame.w}x${frame.h} frame`);
   const hand = frame.layers?.[skin];
   const rule = SKIN_TABLE[skin];
+  if (hand === undefined && rule.mode === 'none') return null;
   const out = Uint8Array.from(pixels);
   const { w, h } = frame;
 
@@ -48,7 +49,7 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
     }
     return out;
   }
-  if (rule.mode === 'none') return null;
+  if (rule.mode === 'none') return null; // not reached: a rule of none with no layer returned above
 
   if (rule.mode === 'edge') {
     for (let i = 0; i < out.length; i++) {
@@ -102,42 +103,45 @@ function steps(d: Draft, x: number, y: number, step: number): boolean {
 
 /** A box of pixels, both corners inside it. */
 export interface Box { x0: number; y0: number; x1: number; y1: number }
-/** Where a frame's hide lies: the box round its skinnable pixels, the first and last skinnable row of each column and the first and last skinnable column of each row (-1: none). */
-interface Shape extends Box { top: Int16Array; bottom: Int16Array; left: Int16Array; right: Int16Array }
+/** Where a frame's hide lies: the box round its skinnable pixels, and the first and last skinnable row of each column (-1: none). */
+interface Shape extends Box { top: Int16Array; bottom: Int16Array }
 
 function shapeOf(w: number, h: number, pixels: Uint8Array): Shape | null {
   const top = new Int16Array(w).fill(-1);
   const bottom = new Int16Array(w).fill(-1);
-  const left = new Int16Array(h).fill(-1);
-  const right = new Int16Array(h).fill(-1);
   let x0 = w; let x1 = -1; let y0 = h; let y1 = -1;
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
       if (!skinnable(pixels[y * w + x] ?? 0)) continue;
       if (top[x] === -1) top[x] = y;
       bottom[x] = y;
-      if (left[y] === -1) left[y] = x;
-      right[y] = x;
       if (x < x0) x0 = x;
       if (x > x1) x1 = x;
       if (y < y0) y0 = y;
       if (y > y1) y1 = y;
     }
   }
-  return x1 < 0 ? null : { x0, x1, y0, y1, top, bottom, left, right };
+  return x1 < 0 ? null : { x0, x1, y0, y1, top, bottom };
 }
 
-/** Sets a line's wish where the pixel can take it and has none. */
+/** Sets a line's wish where the pixel has none: `step` where it can take it, else one shade less of it (two darker falls back to one darker). */
 function want(d: Draft, x: number, y: number, step: number): void {
-  if (steps(d, x, y, step) && d.wish[y * d.w + x] === 0) wishFor(d, x, y, step);
+  if (x < 0 || y < 0 || x >= d.w || y >= d.h || d.wish[y * d.w + x] !== 0) return;
+  if (steps(d, x, y, step)) wishFor(d, x, y, step);
+  else if (step < -1 && steps(d, x, y, step + 1)) wishFor(d, x, y, step + 1);
 }
+
+// Where a cluster is tried round the place its roll gave it, in turn.
+const NUDGE_X = [0, 1, 0, -1, 0, 1, -1, 1, -1];
+const NUDGE_Y = [0, 0, 1, 0, -1, 1, -1, -1, 1];
 
 /**
- * At most one cluster for each kept cell of a staggered grid over the hide's box. The cell's roll picks a stamp and where
- * in the cell its top-left is tried first; the other places of the cell follow in turn, then the other stamps. The
- * cluster is drawn at the first place it fits (fitting) with no pixel of an earlier cluster within two columns and two
- * rows of any of its own, so two clusters are never nearer than two pixels and no row or column runs cluster, gap,
- * cluster, gap. A cell with no such place stays bare.
+ * Clusters thrown over the hide's box: one throw for every `room` pixels of the box, each at a place rolled from the
+ * seed anywhere in the box, so the clusters have no fixed pitch along a row or down a column. The roll also picks the
+ * stamp; it is tried at the place and at the eight pixels round it, then the other stamps are, then the spare (smaller)
+ * ones, which is what a thin part such as a leg mostly takes. The cluster is drawn at the first place it fits (fitting)
+ * with no pixel of an earlier cluster within two columns and two rows of any of its own, so two clusters are never nearer
+ * than two pixels and no row or column runs cluster, gap, cluster, gap. A throw with no such place draws nothing.
  */
 function scatter(d: Draft, shape: Shape, rule: Scatter, seed: number): void {
   const near = new Uint8Array(d.w * d.h); // 1: within two columns and two rows of a cluster's pixel
@@ -156,56 +160,42 @@ function scatter(d: Draft, shape: Shape, rule: Scatter, seed: number): void {
       }
     }
   };
-  let odd = false;
-  let j = 0;
-  for (let cellY = shape.y0; cellY <= shape.y1; cellY += rule.down) {
-    let i = 0;
-    for (let cellX = shape.x0 - (odd ? rule.stagger : 0); cellX <= shape.x1; cellX += rule.across) {
-      const r = roll(seed, i, j);
-      i++;
-      if (r % 100 >= rule.keep || !reaches(shape, cellX, cellY, cellX + rule.across + STAMP_MOST, cellY + rule.down + STAMP_MOST)) continue;
-      let placed = false;
-      for (let ts = 0; ts < rule.stamps.length && !placed; ts++) {
-        const stamp = rule.stamps[((r >>> 8) + ts) % rule.stamps.length] as readonly string[];
-        for (let ty = 0; ty < rule.down && !placed; ty++) {
-          for (let tx = 0; tx < rule.across && !placed; tx++) {
-            const x = cellX + ((r >>> 12) + tx) % rule.across;
-            const y = cellY + ((r >>> 16) + ty) % rule.down;
-            const parts = fitting(d, stamp, x, y, rule.loose);
-            if (parts === 0 || crowded(stamp, x, y)) continue;
-            placed = true;
-            d.clusters++;
-            for (let sy = 0; sy < stamp.length; sy++) {
-              const row = stamp[sy] as string;
-              for (let sx = 0; sx < row.length; sx++) {
-                const c = row[sx];
-                if (c === '.') continue;
-                // A part left out still keeps its place, so the next cluster stays clear of the whole stamp.
-                claim(x + sx, y + sy);
-                d.cluster[(y + sy) * d.w + x + sx] = rule.loose ? -d.clusters : d.clusters;
-                const step = c === 'L' ? 1 : -1;
-                if ((parts & (c === 'L' ? LIGHT : DARK)) === 0) continue;
-                if (steps(d, x + sx, y + sy, step)) wishFor(d, x + sx, y + sy, step);
-                // A loose cluster's pixel on the last shade of its ramp steps the other way, so the facet keeps its whole shape.
-                else if (rule.loose && steps(d, x + sx, y + sy, -step)) wishFor(d, x + sx, y + sy, -step);
-              }
-            }
-          }
-        }
+  /** Draws the stamp with its top-left at (x, y) if it fits there clear of the others. */
+  const draw = (stamp: readonly string[], x: number, y: number): boolean => {
+    const parts = fitting(d, stamp, x, y, rule.loose);
+    if (parts === 0 || crowded(stamp, x, y)) return false;
+    d.clusters++;
+    for (let sy = 0; sy < stamp.length; sy++) {
+      const row = stamp[sy] as string;
+      for (let sx = 0; sx < row.length; sx++) {
+        const c = row[sx];
+        if (c === '.') continue;
+        // A part left out still keeps its place, so the next cluster stays clear of the whole stamp.
+        claim(x + sx, y + sy);
+        d.cluster[(y + sy) * d.w + x + sx] = rule.loose ? -d.clusters : d.clusters;
+        const step = c === 'L' ? 1 : -1;
+        if ((parts & (c === 'L' ? LIGHT : DARK)) === 0) continue;
+        if (steps(d, x + sx, y + sy, step)) wishFor(d, x + sx, y + sy, step);
+        // A loose cluster's pixel on the last shade of its ramp steps the other way, so the facet keeps its whole shape.
+        else if (rule.loose && steps(d, x + sx, y + sy, -step)) wishFor(d, x + sx, y + sy, -step);
       }
     }
-    j++;
-    odd = !odd;
+    return true;
+  };
+  const wide = shape.x1 - shape.x0 + 1;
+  const tall = shape.y1 - shape.y0 + 1;
+  let k = 0;
+  for (let left = wide * tall; left > 0; left -= rule.room) {
+    const x = shape.x0 + roll(seed, k, 0) % wide;
+    const y = shape.y0 + roll(seed, k, 1) % tall;
+    const first = roll(seed, k, 2) % rule.stamps.length;
+    k++;
+    let placed = false;
+    for (let t = 0; t < rule.stamps.length + rule.spare.length && !placed; t++) {
+      const stamp = (t < rule.stamps.length ? rule.stamps[(first + t) % rule.stamps.length] : rule.spare[t - rule.stamps.length]) as readonly string[];
+      for (let n = 0; n < NUDGE_X.length && !placed; n++) placed = draw(stamp, x + (NUDGE_X[n] as number), y + (NUDGE_Y[n] as number));
+    }
   }
-}
-
-/** Whether any hide lies in the box x0..x1, y0..y1: a cell's own box grown by the largest stamp holds every cluster tried from it. */
-function reaches(shape: Shape, x0: number, y0: number, x1: number, y1: number): boolean {
-  for (let y = y0 < 0 ? 0 : y0; y <= y1 && y < shape.left.length; y++) {
-    const l = shape.left[y] ?? -1;
-    if (l >= 0 && l <= x1 && (shape.right[y] ?? -1) >= x0) return true;
-  }
-  return false;
 }
 
 const DARK = 1;
@@ -213,15 +203,15 @@ const LIGHT = 2;
 
 /**
  * Which of a cluster's two parts can be drawn with its top-left at (x, y): DARK, LIGHT, both or neither (0). Every pixel
- * of the cluster must be hide, the darker pixels all on one value and the lighter pixels all on one value, so a cluster
- * never straddles the edge of a shadow or of a mark. A part whose pixels lie on the last shade of their ramp cannot take
- * its change and is left out (on the lightest hide only the darker part is drawn; on the darkest only the lighter).
+ * of the cluster must be hide of one value, so a cluster never straddles the edge of a shadow or of a mark, in any
+ * direction. A part that value cannot take (it is the last shade of its ramp) is left out: on the lightest hide only
+ * the darker part is drawn, on the darkest only the lighter.
  * A `loose` cluster need only lie whole on the hide: it may cross shades, and a pixel of it that cannot take its change
  * takes the opposite one (scatter).
  */
 function fitting(d: Draft, stamp: readonly string[], x: number, y: number, loose: boolean): number {
-  let under = 0; // the hide value under the darker pixels, once known
-  let over = 0;
+  let under = 0; // the hide value under the cluster, once known
+  let dark = false; let light = false;
   for (let sy = 0; sy < stamp.length; sy++) {
     const row = stamp[sy] as string;
     for (let sx = 0; sx < row.length; sx++) {
@@ -229,72 +219,84 @@ function fitting(d: Draft, stamp: readonly string[], x: number, y: number, loose
       if (c === '.') continue;
       const px = x + sx; const py = y + sy;
       const host = px < 0 || py < 0 || px >= d.w || py >= d.h ? 0 : d.pixels[py * d.w + px] ?? 0;
-      if (!skinnable(host)) return 0;
-      if (loose) continue;
-      if (c === 'L') {
-        if (over !== 0 && host !== over) return 0;
-        over = host;
-      } else {
-        if (under !== 0 && host !== under) return 0;
-        under = host;
-      }
+      if (!skinnable(host) || (!loose && under !== 0 && host !== under)) return 0;
+      under = host;
+      if (c === 'L') light = true; else dark = true;
     }
   }
   if (loose) return DARK | LIGHT;
-  const canStep = (host: number, step: number): boolean => host !== 0 && skinnable(host + step) && rampOf(host + step) === rampOf(host);
-  return (canStep(under, -1) ? DARK : 0) | (canStep(over, 1) ? LIGHT : 0);
+  const canStep = (step: number): boolean => skinnable(under + step) && rampOf(under + step) === rampOf(under);
+  return (dark && canStep(-1) ? DARK : 0) | (light && canStep(1) ? LIGHT : 0);
+}
+
+/** How many of the spacings the next line's is moved on by: it shares no factor with any tier's count of spacings (jitter + 1). */
+const SPACING_STRIDE = 5;
+/**
+ * The distance from line `k` to the next: `gap` to `gap + jitter`. The seed rolls where the round of spacings starts;
+ * each line then takes the spacing a stride further round, so no spacing comes twice before every other has come once
+ * and neighbouring lines are never evenly ruled.
+ */
+function spacing(rule: Spacing, seed: number, k: number): number {
+  return rule.gap + (roll(seed, 0, 1) + k * SPACING_STRIDE) % (rule.jitter + 1);
 }
 
 /**
- * Lines across the short side of the hide, unevenly spaced. A part wider than tall: each line runs down a column, bowed
- * one column toward the front through its middle half. A part taller than wide: each line runs along a row.
- * Seams: the dark line with a lit line beside it (behind it; under it on a tall part), the lit line along half of it only
- * (the upper half; the back half on a tall part).
- * Plates: the stretch between two lines is one plate: its dark side line and dark lower rim reach five eighths of the way
- * down the hide, and a lit line runs one pixel under its top edge. On a tall part a plate is a band: lit second row, dark last row.
+ * Lines across the short side of the hide, unevenly spaced (`gap` to `gap + jitter` apart, by the seed: spacing).
+ * A part wider than tall (a body, a head, a tail):
+ * - seams (chitin): narrow segments along the body. Each seam is a line two shades darker down the hide from its top edge
+ *   (to the underside, or short of it by a rolled part of the lower half), bowed one
+ *   column toward the front through its middle half, with, on a hide twelve or more tall, a line one shade darker behind it over its top third (the
+ *   segment in front overlaps the one behind), and a gloss: a block two columns wide and a quarter of the hide tall, one
+ *   shade lighter, just in front of the seam under the top edge.
+ * - plates: broad sections. Each has a lit upper edge under its top edge (two rows thick on a hide twelve or more tall), a seam two shades darker down
+ *   its front side to five eighths of the hide's height, and a lower rim one shade darker along that height.
+ * A part taller than wide (a leg) takes the lighter version: lines one shade darker along rows, as joints; a plate's
+ * band has a lit second row besides.
  */
 function lines(d: Draft, shape: Shape, rule: Spacing, plates: boolean, seed: number): void {
   const wide = shape.x1 - shape.x0 >= shape.y1 - shape.y0;
-  if (wide) {
-    let from = shape.x0;
-    for (let k = 0; from <= shape.x1; k++) {
-      const to = from + rule.gap + roll(seed, k, 1) % (rule.jitter + 1); // the line's column; the next plate starts after it
-      if (plates) {
-        const mid = (from + (to < shape.x1 ? to : shape.x1)) >> 1;
-        const tall = (shape.bottom[mid] ?? -1) - (shape.top[mid] ?? -1) + 1;
-        const depth = (tall * 5) >> 3;
-        if (depth >= 3) {
-          for (let x = from; x <= to && x <= shape.x1; x++) {
-            const t = shape.top[x] ?? -1;
-            if (t < 0) continue;
-            if (x > from && x < to - 1) want(d, x, t + 1, 1);
-            want(d, x, t + depth, -1);
-            if (x === to) for (let y = t; y < t + depth; y++) want(d, x, y, -1);
-          }
-        }
-      } else if (to <= shape.x1) {
-        const t = shape.top[to] ?? -1;
-        const tall = (shape.bottom[to] ?? -1) - t + 1;
-        const quarter = tall >> 2;
-        for (let y = t; t >= 0 && y < t + tall; y++) {
-          const bow = y - t >= quarter && y - t < tall - quarter ? 1 : 0;
-          want(d, to + bow, y, -1);
-          if (y - t < tall >> 1) want(d, to + bow - 1, y, 1);
+  if (!wide) {
+    let from = shape.y0;
+    for (let k = 0; from <= shape.y1; k++) {
+      const to = from + spacing(rule, seed, k);
+      if (to <= shape.y1) {
+        for (let x = shape.x0; x <= shape.x1; x++) {
+          want(d, x, to, -1);
+          if (plates) want(d, x, from + 1, 1);
         }
       }
       from = to + 1;
     }
     return;
   }
-  let from = shape.y0;
-  for (let k = 0; from <= shape.y1; k++) {
-    const to = from + rule.gap + roll(seed, k, 1) % (rule.jitter + 1);
-    if (to <= shape.y1) {
-      for (let x = shape.x0; x <= shape.x1; x++) {
-        want(d, x, to, -1);
-        if (plates) want(d, x, from + 1, 1);
-        else if (x <= (shape.x0 + shape.x1) >> 1) want(d, x, to + 1, 1);
+  let from = shape.x0;
+  for (let k = 0; from <= shape.x1; k++) {
+    const to = from + spacing(rule, seed, k); // the line's column; the next section starts after it
+    if (plates) {
+      const mid = (from + (to < shape.x1 ? to : shape.x1)) >> 1;
+      const tall = (shape.bottom[mid] ?? -1) - (shape.top[mid] ?? -1) + 1;
+      const depth = (tall * 5) >> 3;
+      if (depth >= 4) {
+        for (let x = from; x <= to && x <= shape.x1; x++) {
+          const t = shape.top[x] ?? -1;
+          if (t < 0) continue;
+          if (x === to) { for (let y = t; y <= t + depth; y++) want(d, x, y, -2); continue; }
+          if (x > from && x < to - 1) { want(d, x, t + 1, 1); if (tall >= 12) want(d, x, t + 2, 1); }
+          want(d, x, t + depth, -1);
+        }
       }
+    } else if (to <= shape.x1) {
+      const t = shape.top[to] ?? -1;
+      const tall = (shape.bottom[to] ?? -1) - t + 1;
+      const quarter = tall >> 2;
+      // The seam stops short of the underside by a rolled part of the lower half, so no two seams are one line moved along.
+      const reach = tall - (tall >= 8 ? roll(seed, k, 2) % (tall >> 1) : 0);
+      for (let y = t; t >= 0 && y < t + reach; y++) {
+        const bow = y - t >= quarter && y - t < tall - quarter ? 1 : 0;
+        want(d, to + bow, y, -2);
+        if (tall >= 12 && (y - t) * 3 < tall) want(d, to + bow - 1, y, -1);
+      }
+      for (let y = t + 1; t >= 0 && quarter >= 2 && y <= t + quarter; y++) { want(d, to + 2, y, 1); want(d, to + 3, y, 1); }
     }
     from = to + 1;
   }

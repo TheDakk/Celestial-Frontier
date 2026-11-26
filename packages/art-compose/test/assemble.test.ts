@@ -1225,19 +1225,23 @@ entry torso 0 hop 0 0
   });
 
   it('the texture goes over the marks, in their ramp', () => {
-    // Striped on flow 1-2 at phase 0 marks flow 1 (x 10-15) with 5. Warts (a lit top over a shaded foot) then step the
-    // mark only inside the accent ramp (5 is its darkest, so only the lit top shows: 6) and the bare 3 only inside the hide's.
+    // Striped on flow 1-2 at phase 0 marks flow 1 (x 10-15) with 5, the darkest of the accent ramp. Every textured skin
+    // then steps the mark only inside the accent ramp (so only up, to 6) and the bare 3 only inside the hide's.
     const marked = assemble(creature(P.torso, null, 1), 'rest', skinCat);
     expect(row(marked.buffer, 10, 10, 21)).toEqual([5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3]);
-    const both = assemble(creature(P.torso, 5, 1), 'rest', skinCat);
-    // Only the torso has a flow layer: the other parts' marks: gaps, and no skin: gap.
-    expect(both.gaps).toEqual(marked.gaps);
-    const left = changes(marked.buffer, both.buffer, 10, 10, 15, 14);
-    const right = changes(marked.buffer, both.buffer, 16, 10, 21, 14);
-    expect(left.length).toBeGreaterThan(0);
-    expect(right.length).toBeGreaterThan(0);
-    expect(left.every((c) => c === '5>6'), left.join(' ')).toBe(true);
-    expect(right.every((c) => c === '3>4' || c === '3>2'), right.join(' ')).toBe(true);
+    let onMark = 0; let onHide = 0;
+    for (const skin of [0, 1, 2, 4, 5, 6, 8]) {
+      const both = assemble(creature(P.torso, skin, 1), 'rest', skinCat);
+      // Only the torso has a flow layer: the other parts' marks: gaps, and no skin: gap.
+      expect(both.gaps).toEqual(marked.gaps);
+      const left = changes(marked.buffer, both.buffer, 10, 10, 15, 14);
+      const right = changes(marked.buffer, both.buffer, 16, 10, 21, 14);
+      expect(left.every((c) => c === '5>6'), `skin ${skin}: ${left.join(' ')}`).toBe(true);
+      expect(right.every((c) => c === '3>4' || c === '3>2' || c === '3>1'), `skin ${skin}: ${right.join(' ')}`).toBe(true);
+      onMark += left.length; onHide += right.length;
+    }
+    expect(onMark).toBeGreaterThan(0);
+    expect(onHide).toBeGreaterThan(0);
   });
 
   it('a translucent torso frame with its layer is drawn from it; without it the gap skin:<id>:<frame> is counted and nothing else changes', () => {

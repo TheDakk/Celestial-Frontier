@@ -73,5 +73,59 @@ export function repeat(p: Picture): number {
   }
   return worst;
 }
+/**
+ * How regular the spacing of the texture's pieces is, on any hide but meant for a flat one. A piece is a run of texture
+ * pixels joined above, below, left or right; its place is its first pixel (topmost, then leftmost). Move every place by
+ * one offset (up to sixteen each way, at least three in one direction; straight along a row or a column counts) and
+ * take, of the places that land on a drawn pixel, the share that land within one pixel of another piece's place; the
+ * largest such share over the offsets that keep at least half the places on the picture. A grid scores 1, a grid
+ * whose pieces are each nudged a pixel still well over a half; pieces placed with no fixed pitch do not.
+ */
+export function pitch(p: Picture): number {
+  const place = new Uint8Array(p.w * p.h);
+  const seen = new Uint8Array(p.w * p.h);
+  const xs: number[] = []; const ys: number[] = [];
+  for (let y = 0; y < p.h; y++) {
+    for (let x = 0; x < p.w; x++) {
+      if (seen[y * p.w + x] === 1 || !changed(p, x, y)) continue;
+      place[y * p.w + x] = 1; xs.push(x); ys.push(y);
+      const queue = [[x, y]];
+      seen[y * p.w + x] = 1;
+      while (queue.length > 0) {
+        const [qx, qy] = queue.pop() as [number, number];
+        for (const [nx, ny] of [[qx - 1, qy], [qx + 1, qy], [qx, qy - 1], [qx, qy + 1]] as const) {
+          if (nx < 0 || ny < 0 || nx >= p.w || ny >= p.h || seen[ny * p.w + nx] === 1 || !changed(p, nx, ny)) continue;
+          seen[ny * p.w + nx] = 1;
+          queue.push([nx, ny]);
+        }
+      }
+    }
+  }
+  const near = (x: number, y: number): boolean => {
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (x + dx >= 0 && y + dy >= 0 && x + dx < p.w && y + dy < p.h && place[(y + dy) * p.w + x + dx] === 1) return true;
+    return false;
+  };
+  let worst = 0;
+  for (let dy = 0; dy <= 16; dy++) {
+    for (let dx = -16; dx <= 16; dx++) {
+      if (Math.max(Math.abs(dx), dy) < 3 || (dy === 0 && dx < 0)) continue;
+      let hits = 0; let landed = 0;
+      for (let k = 0; k < xs.length; k++) {
+        const x = (xs[k] as number) + dx; const y = (ys[k] as number) + dy;
+        if (at(p.after, p, x, y) === 0) continue;
+        landed++;
+        if (near(x, y)) hits++;
+      }
+      if (landed * 2 >= xs.length && landed > 0) worst = Math.max(worst, hits / landed);
+    }
+  }
+  return worst;
+}
+/** The most of the hide a texture may cover. */
 export const COVER_MOST = 0.3;
-export const REPEAT_MOST = 0.75;
+/** The most a texture may repeat (`repeat`): half, for scattered clusters anywhere and for lines on a flat hide. */
+export const REPEAT_MOST = 0.5;
+/** The most a line skin's few lines on one body may repeat: with three or four lines, one landing on the next is a third of them. */
+export const LINES_ON_A_BODY_REPEAT_MOST = 0.75;
+/** The most regular the spacing of scattered clusters may be (`pitch`): a grid nudged a pixel each way scores about 0.64. */
+export const PITCH_MOST = 0.5;

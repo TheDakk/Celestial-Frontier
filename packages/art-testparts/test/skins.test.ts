@@ -3,7 +3,7 @@ import { SKIN_NAMES } from '@cf/art-format';
 import { buildRecipe } from '@cf/art-recipe';
 import { assemble, SKIN_TABLE } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
-import { alternations, checkers, lonePixels, type Picture } from '../../art-compose/test/texture-measures';
+import { alternations, checkers, coverage, COVER_MOST, lonePixels, type Picture } from '../../art-compose/test/texture-measures';
 
 const cat = testCatalogue();
 const POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
@@ -19,7 +19,7 @@ describe('a textured skin on a whole creature', () => {
   });
 
   for (const { name, gene } of TEXTURED) {
-    it(`${name}: stacked, posed and patterned, no texture pixel stands alone and none makes a checker or a run of every other pixel`, () => {
+    it(`${name}: stacked, posed and patterned, no texture pixel stands alone, none makes a checker or a run of every other pixel, and the texture stays sparse`, () => {
       let textured = 0;
       for (const body of BODIES) {
         for (let seed = 1; seed <= 6; seed++) {
@@ -35,6 +35,7 @@ describe('a textured skin on a whole creature', () => {
             expect(lonePixels(p), `lone pixels: ${label}`).toBe(0);
             expect(checkers(p), `checkers: ${label}`).toBe(0);
             expect(alternations(p), `runs of every other pixel: ${label}`).toBe(0);
+            expect(coverage(p), `coverage: ${label}`).toBeLessThanOrEqual(COVER_MOST);
             if (after.pixels.some((v, i) => v !== before.pixels[i])) textured++;
           }
         }

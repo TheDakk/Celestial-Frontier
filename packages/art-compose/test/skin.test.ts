@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PIXEL_CHARS, SKIN_NAMES, TIER_SIZE, type LayerName, type PartFrame, type SizeTier, type SkinName } from '@cf/art-format';
-import { SKIN_TABLE, STAMP_MOST, paintSkin, type Stamp } from '@cf/art-compose';
-import { alternations, checkers, coverage, COVER_MOST, lonePixels, repeat, REPEAT_MOST, type Picture } from './texture-measures';
+import { SKIN_TABLE, paintSkin, type Stamp } from '@cf/art-compose';
+import { alternations, checkers, coverage, COVER_MOST, lonePixels, LINES_ON_A_BODY_REPEAT_MOST, pitch, PITCH_MOST, repeat, REPEAT_MOST, type Picture } from './texture-measures';
 
 /** Rows of pixel characters ('.' is 0) as one row-major array. */
 const grid = (rows: readonly string[]): Uint8Array => Uint8Array.from(rows.join('').split('').map((c) => PIXEL_CHARS.indexOf(c)));
@@ -100,6 +100,40 @@ describe('the measures of a texture, each proved on a picture that must fail it 
     expect(alternations(pictureOf(flat, clusters))).toBe(0);
   });
 
+  it('pitch tells a grid from scattered clusters, even a grid of dashes each nudged a pixel, which repeat lets through', () => {
+    // A 5 by 4 grid of two-pixel dashes, each nudged by -1, 0 or 1 pixel each way: a low repeat and a low coverage.
+    const nudged = block(96, 64, '2').map((row) => row.split(''));
+    let state = 12345;
+    const nudge = (): number => { state = (Math.imul(state, 1103515245) + 12345) >>> 0; return ((state >>> 16) % 3) - 1; };
+    for (let y = 2; y < 62; y += 4) {
+      for (let x = 2; x < 93; x += 5) {
+        const jx = nudge(); const jy = nudge();
+        nudged[y + jy]![x + jx] = '1';
+        nudged[y + jy]![x + jx + 1] = '1';
+      }
+    }
+    const p = pictureOf(block(96, 64, '2'), nudged.map((row) => row.join('')));
+    expect(repeat(p)).toBeLessThanOrEqual(REPEAT_MOST);
+    expect(coverage(p)).toBeLessThanOrEqual(COVER_MOST);
+    expect(pitch(p)).toBeGreaterThan(0.6);
+    // The first rules' dot grid and ruled rows score 1; the scattered clusters stay under the limit.
+    expect(pitch(pictureOf(flat, dots))).toBe(1);
+    expect(pitch(pictureOf(flat, lines))).toBe(1);
+    // Crescents thrown at places with no pitch, none within two pixels of another, stay under the limit.
+    const thrown = block(96, 64, '2').map((row) => row.split(''));
+    const next = (n: number): number => { state = (Math.imul(state, 1103515245) + 12345) >>> 0; return (state >>> 16) % n; };
+    for (let k = 0; k < 400; k++) {
+      const x = 3 + next(86); const y = 3 + next(56);
+      let clear = true;
+      for (let dy = -2; dy <= 3; dy++) for (let dx = -2; dx <= 5; dx++) if (thrown[y + dy]![x + dx] !== '2') clear = false;
+      if (!clear) continue;
+      for (const [dx, dy] of [[0, 0], [3, 0], [0, 1], [1, 1], [2, 1], [3, 1]] as const) thrown[y + dy]![x + dx] = '1';
+    }
+    const scattered = pictureOf(block(96, 64, '2'), thrown.map((row) => row.join('')));
+    expect(coverage(scattered)).toBeGreaterThan(0.08);
+    expect(pitch(scattered)).toBeLessThanOrEqual(PITCH_MOST);
+  });
+
   it('coverage and repeat tell a grid from scattered clusters', () => {
     expect(coverage(pictureOf(flat, lines))).toBeGreaterThan(COVER_MOST);
     expect(coverage(pictureOf(flat, mesh))).toBeGreaterThan(COVER_MOST);
@@ -139,7 +173,27 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
           const p = painted(body(tier), skin, tier, seed);
           expect(coverage(p), `${skin} ${tier} seed ${seed}`).toBeGreaterThan(0.02);
           expect(coverage(p), `${skin} ${tier} seed ${seed}`).toBeLessThanOrEqual(COVER_MOST);
-          expect(repeat(p), `${skin} ${tier} seed ${seed}`).toBeLessThanOrEqual(REPEAT_MOST);
+          // A body holds only three or four of a line skin's lines, and one landing on the next is already a third of them:
+          // their spacing is measured on the flat hide below, and held here to the looser limit.
+          expect(repeat(p), `${skin} ${tier} seed ${seed}`).toBeLessThanOrEqual(SKIN_TABLE[skin].mode === 'scatter' ? REPEAT_MOST : LINES_ON_A_BODY_REPEAT_MOST);
+        }
+      }
+    });
+  }
+
+  for (const tier of TIERS) {
+    it(`${tier}: on a flat hide the texture has no fixed pitch: scattered clusters are spaced unevenly, and lines do not repeat`, () => {
+      // A flat hide is where a grid shows: nothing in the shading breaks it up.
+      const flat = frameOf(block(96, 64, '2'));
+      for (const skin of TEXTURED) {
+        for (let seed = 0; seed < 12; seed++) {
+          const p = painted(flat, skin, tier, seed);
+          const label = `${skin} ${tier} seed ${seed}`;
+          expect(coverage(p), label).toBeGreaterThan(0.02);
+          expect(coverage(p), label).toBeLessThanOrEqual(COVER_MOST);
+          expect(repeat(p), `repeat: ${label}`).toBeLessThanOrEqual(REPEAT_MOST);
+          // A line skin's pieces are whole lines, too few to measure a pitch on: its repeat is its measure.
+          if (SKIN_TABLE[skin].mode === 'scatter') expect(pitch(p), `pitch: ${label}`).toBeLessThanOrEqual(PITCH_MOST);
         }
       }
     });
@@ -158,7 +212,7 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
       if (rule.mode !== 'scatter') continue;
       for (const tier of TIERS) {
         if (rule.tiers[tier].loose) continue;
-        const allowed = new Set(rule.tiers[tier].stamps.flatMap((s) => ['D', 'L'].map((c) => partsOf(s, c)).filter((t) => t.includes('#')).map((t) => trim(t.split('/')))));
+        const allowed = new Set([...rule.tiers[tier].stamps, ...rule.tiers[tier].spare].flatMap((s) => ['D', 'L'].map((c) => partsOf(s, c)).filter((t) => t.includes('#')).map((t) => trim(t.split('/')))));
         const frame = frameOf(block(60, 40, '2'));
         const out = paintSkin(frame, frame.pixels, skin, tier, 3)!;
         // Each connected piece of one value, cut out and compared.
@@ -191,22 +245,38 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
     }
   });
 
-  it('a cluster never straddles two shades of the hide, so the edge of a shadow stays as drawn', () => {
-    // Two flat shades side by side. Two clusters are never side by side, so texture on both sides of the edge in one row is one cluster across it.
-    const rows = new Array<string>(30).fill('2'.repeat(25) + '3'.repeat(25));
-    const frame = frameOf(rows);
+  it('a cluster never straddles two shades of the hide, side to side or top to bottom, so the edge of a shadow stays as drawn', () => {
+    // Bands of two flat shades, upright and lying. Two clusters are never side by side, so texture on both sides of an
+    // edge, touching across it, is one cluster across it.
+    const upright = frameOf(new Array<string>(40).fill(('2'.repeat(10) + '3'.repeat(10)).repeat(3)));
+    const lying = frameOf(Array.from({ length: 40 }, (_, y) => (y % 20 < 10 ? '2' : '3').repeat(60)));
+    const crossings = (frame: PartFrame, out: Uint8Array): number => {
+      let n = 0;
+      for (let y = 0; y < frame.h; y++) {
+        for (let x = 0; x < frame.w; x++) {
+          const i = y * frame.w + x;
+          if (out[i] === frame.pixels[i]) continue;
+          for (const j of [x + 1 < frame.w ? i + 1 : -1, y + 1 < frame.h ? i + frame.w : -1]) {
+            if (j >= 0 && out[j] !== frame.pixels[j] && frame.pixels[j] !== frame.pixels[i]) n++;
+          }
+        }
+      }
+      return n;
+    };
     for (const skin of ['scaled', 'furred', 'warty', 'feathered'] as const) {
-      for (const seed of SEEDS) {
-        const out = paintSkin(frame, frame.pixels, skin, 'large', seed)!;
-        for (let y = 0; y < frame.h; y++) expect(out[y * frame.w + 24] !== 2 && out[y * frame.w + 25] !== 3, `${skin} seed ${seed} row ${y}`).toBe(false);
-        expect(out.some((v, i) => v !== frame.pixels[i]), skin).toBe(true);
+      for (const tier of TIERS) {
+        for (const seed of SEEDS) {
+          for (const frame of [upright, lying]) {
+            const out = paintSkin(frame, frame.pixels, skin, tier, seed)!;
+            expect(crossings(frame, out), `${skin} ${tier} seed ${seed}`).toBe(0);
+            expect(out.some((v, i) => v !== frame.pixels[i]), skin).toBe(true);
+          }
+        }
       }
     }
-    // Control: a facet may cross (crystalline is loose), and at some seed one does.
-    expect(SEEDS.some((seed) => {
-      const out = paintSkin(frame, frame.pixels, 'crystalline', 'large', seed)!;
-      return rows.some((_, y) => out[y * frame.w + 24] !== 2 && out[y * frame.w + 25] !== 3);
-    })).toBe(true);
+    // Control: a facet may cross (crystalline is loose), and does.
+    expect(crossings(upright, paintSkin(upright, upright.pixels, 'crystalline', 'large', 1)!)).toBeGreaterThan(0);
+    expect(crossings(lying, paintSkin(lying, lying.pixels, 'crystalline', 'large', 1)!)).toBeGreaterThan(0);
   });
 
   it('a facet keeps its whole shape on the lightest and on the darkest shade, where one of its two changes cannot be made', () => {
@@ -278,7 +348,8 @@ describe('paintSkin', () => {
     const fours = frameOf(block(24, 16, '4'));
     for (const skin of RULED) {
       expect(paintSkin(ones, ones.pixels, skin, 'medium', 0)!.every((v) => v === 1 || v === 2), skin).toBe(true);
-      expect(paintSkin(fours, fours.pixels, skin, 'medium', 0)!.every((v) => v === 4 || v === 3), skin).toBe(true);
+      // A seam is two shades darker where the ramp has them.
+      expect(paintSkin(fours, fours.pixels, skin, 'medium', 0)!.every((v) => v >= 2 && v <= 4), skin).toBe(true);
     }
     // Both changes are used on a middle shade, so both clamps above were reached.
     for (const step of [1, 3]) expect(TEXTURED.some((s) => paintSkin(PLAIN, PLAIN.pixels, s, 'medium', 0)!.includes(step)), String(step)).toBe(true);
@@ -345,7 +416,7 @@ describe('paintSkin', () => {
     const marked = Uint8Array.from(PLAIN.pixels).fill(7, 0, 24 * 8);
     for (const skin of TEXTURED) {
       const out = paintSkin(PLAIN, marked, skin, 'medium', 0)!;
-      expect(out.subarray(0, 24 * 8).every((v) => v >= 6 && v <= 8), skin).toBe(true);
+      expect(out.subarray(0, 24 * 8).every((v) => v >= 5 && v <= 8), skin).toBe(true);
       expect(out.subarray(24 * 8).every((v) => v >= 1 && v <= 3), skin).toBe(true);
       expect(out.subarray(0, 24 * 8).some((v) => v !== 7) || out.subarray(24 * 8).some((v) => v !== 2), skin).toBe(true);
     }
@@ -380,12 +451,11 @@ describe('the table', () => {
       if (rule.mode !== 'scatter') continue;
       for (const tier of TIERS) {
         const t = rule.tiers[tier];
-        expect(t.across >= 2 && t.down >= 2 && t.stagger >= 0 && t.stagger < t.across && t.keep >= 1 && t.keep <= 100, `${skin} ${tier}`).toBe(true);
+        expect(t.room >= 8, `${skin} ${tier}`).toBe(true);
         expect(t.stamps.length, `${skin} ${tier}`).toBeGreaterThan(0);
-        for (const stamp of t.stamps) {
+        for (const stamp of [...t.stamps, ...t.spare]) {
           const w = stamp[0]!.length;
           expect(stamp.every((row) => row.length === w && /^[DL.]+$/.test(row)), `${skin} ${tier} ${stamp.join('/')}`).toBe(true);
-          expect(w <= STAMP_MOST && stamp.length <= STAMP_MOST, `${skin} ${tier} ${stamp.join('/')}`).toBe(true);
           for (const part of ['D', 'L']) {
             if (!stamp.some((row) => row.includes(part))) continue;
             // Drawn alone on a flat hide, the part leaves no lone pixel and no checker.
@@ -399,11 +469,12 @@ describe('the table', () => {
     }
   });
 
-  it('lines are at least four pixels apart', () => {
+  it('lines are at least four pixels apart, and their spacing varies by at least half of that', () => {
     for (const skin of SKIN_NAMES) {
       const rule = SKIN_TABLE[skin];
       if (rule.mode !== 'seams' && rule.mode !== 'plates') continue;
-      for (const tier of TIERS) expect(rule.tiers[tier].gap >= 4 && rule.tiers[tier].jitter >= 1, `${skin} ${tier}`).toBe(true);
+      // The count of spacings (jitter + 1) shares no factor with the stride of five the painter steps through them by.
+      for (const tier of TIERS) expect(rule.tiers[tier].gap >= 4 && rule.tiers[tier].jitter * 2 >= rule.tiers[tier].gap && (rule.tiers[tier].jitter + 1) % 5 !== 0, `${skin} ${tier}`).toBe(true);
     }
   });
 
