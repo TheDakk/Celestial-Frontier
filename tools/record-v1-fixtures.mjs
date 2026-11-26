@@ -279,6 +279,194 @@ function recordLegacyCapture(script) {
   return cases;
 }
 
+/* ---- the v1 field care: the biosphere scan, its hazard, the Field Scout and the Fifty Paragons ---- */
+
+/** One v1 module, from its opening to the line that hands out its names. */
+const cutModule = (script, name) => cutUnique(script, `const ${name}=(()=>{`, `}=${name};`);
+
+/** Runs the v1 biosphere scan (the press, its hazard and what it writes), the scout's lesson at a capture and the
+    walk to each Paragon's home world. */
+function recordLegacyCare(script) {
+  const cases = [];
+
+  // paragon-site: paragonWhere(i) for the Fifty, over the v1 universe itself.
+  const sites = new Function('Math', `
+    ${['Rand', 'PlanetGen', 'WorldConfig'].map((name) => cutModule(script, name)).join('\n')}
+    ${cutUnique(script, 'const GAL_SPRITE_SEEDS=[', '];')}
+    const GAL_SPRITES=GAL_SPRITE_SEEDS;
+    ${['Naming', 'StarCatalog', 'WorldGen'].map((name) => cutModule(script, name)).join('\n')}
+    ${cutUnique(script, 'function slimGal(g){', 'dwarf:g.dwarf||false};\n}')}
+    const _parWhere=new Map();
+    ${cutUnique(script, 'function paragonWhere(i){', '_parWhere.set(i, out);\n  return out;\n}')}
+    return paragonWhere;`)(Math);
+  for (let index = 0; index < 50; index++) cases.push({ group: 'paragon-site', input: { index }, output: sites(index) });
+
+  const v1 = new Function('Math', 'battleStats', 'regionAt', '_equipBonus', 'document', 'setTimeout', 'note', `
+    const HOME_GAL_SEED=999; const TIER_MAX=14;
+    const codex=new Map(), conquered=new Set(), surveyedSet=new Set(), techOwned=new Set(), unlocked=new Set(), _parSites=new Map();
+    const stats={surveys:0}; let scoutId=null, hp=100, essence=0;
+    let _spExpanded=null, _lifeExpanded=null, _panelKey=null, codexOpen=false, _lastDesc=null;
+    const toast=(title, text)=>note('toast', [title, text]);
+    const unlock=(id)=>{ if(!unlocked.has(id)){ unlocked.add(id); note('unlock', id); } };
+    const gameEvent=(type)=>note('event', type);
+    const checkAch=()=>{}, renderRank=()=>{}, queueSave=()=>{}, renderHP=()=>{}, renderCodex=()=>{}, playFailTone=()=>{}, fxShake=()=>{}, fxBurst=()=>{};
+    const playRaritySting=()=>{}, cinematic=()=>{}, flashCodex=()=>{}, FX_GOLD=[];
+    const showDeath=(why)=>note('death', why);
+    const removeFromCodex=(id)=>{ codex.delete(id); note('removed', id); };
+    const paragonGenome=(i)=>({seed:9000+i, kingdom:'fauna'});
+    const crossGenome=(a)=>({seed:(a.seed+500000), kingdom:a.kingdom, parents:1});
+    const _storeSpecies=(g, from, where)=>{ const id=codexId(g); if(codex.has(id)) return null;
+      const entry={id, name:'Species '+g.seed, kind:g.kingdom==='fauna'?'Fauna':'Flora', genome:g, from, where:where||null, grade:g.tier==null?null:{tier:g.tier, name:'Grade '+g.tier, hex:'#fff'}};
+      codex.set(id, entry); note('stored', [id, from]); return entry; };
+    ${cutUnique(script, 'function clamp(v,a,b){', '}')}
+    ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+    ${cutUnique(script, 'function codexId(g){', '}')}
+    ${cutUnique(script, 'function levelOf(g){', '}')}
+    ${cutUnique(script, 'function creatureCondition(g){', "col:'#ff5a4a'};\n}")}
+    ${cutUnique(script, 'function hazardFlavor(d, foe){', "('Mid-scan, '+env+'.');\n}")}
+    ${cutUnique(script, 'const DEPTH_TAX=[', '];')}
+    ${cutUnique(script, 'function depthTax(where){', 'catch(_){ return 1; }\n}')}
+    ${cutUnique(script, 'function dangerOf(d){', 'return {pct, dmg, top};\n}')}
+    ${cutUnique(script, 'function damageExplorer(amount, why){', 'return false;\n}')}
+    ${cutUnique(script, 'function routeHit(dmg, why){', 'return dead;\n}')}
+    ${cutUnique(script, 'function awardXP(id, n, why){', 'queueSave();\n}')}
+    ${cutUnique(script, 'function autoScanWorld(d){', '  if(codexOpen) renderCodex();\n}')}
+    ${cutUnique(script, 'function discoverSpecies(g, from, where){', '  if(codexOpen) renderCodex();\n}')}
+    function pressScan(e){
+    ${cutUnique(script, "  const scan=e.target.closest('[data-scanlife]');", '    _panelKey=null;\n    return;\n  }')}
+    }
+    return {
+      dangerOf, hazardFlavor, creatureCondition, routeHit, awardXP, autoScanWorld, discoverSpecies, levelOf,
+      pressScan(d){ _lastDesc=d; pressScan({target:{closest:(q)=>q==='[data-scanlife]'}}); },
+      set(o){ codex.clear(); for(const e of o.codex||[]) codex.set(e.id, {id:e.id, name:e.name||('Species '+e.id), kind:e.kind||'Fauna', genome:{...(e.genome||{})}});
+        conquered.clear(); for(const s of o.conquered||[]) conquered.add(s); surveyedSet.clear(); for(const s of o.surveyed||[]) surveyedSet.add(s);
+        techOwned.clear(); for(const t of o.tech||[]) techOwned.add(t); unlocked.clear(); _parSites.clear(); for(const [s,i] of o.sites||[]) _parSites.set(s,i);
+        for(const k in stats) delete stats[k]; Object.assign(stats, {surveys:surveyedSet.size}, o.stats||{}); scoutId=o.scout||null; hp=o.hp==null?100:o.hp; essence=o.essence||0; },
+      get(){ return { hp, scout:scoutId, surveyed:[...surveyedSet], stats:{...stats}, essence,
+        genomes:[...codex.values()].map((e)=>[e.id, {...e.genome}]) }; },
+    };`);
+  let randoms = [];
+  let region = 0;
+  let suit = 0;
+  let notes = [];
+  const math = Object.create(Math);
+  math.random = () => {
+    if (randoms.length === 0) throw new Error('a random value was drawn that the case did not supply');
+    return randoms.shift();
+  };
+  const game = v1(math,
+    (g) => ({ total: g.power }),
+    () => region,
+    (key) => (key === 'scut' ? suit : 0),
+    { getElementById: () => null },
+    () => {},
+    (kind, value) => { notes.push([kind, value]); });
+  const HOME = { seed: 999, x: 90, y: -60 };
+  const FAR = { seed: 5, x: 1, y: 1 };
+  // place: 'home' is the home galaxy; a number is another galaxy in that region (regionAt is the recorder's).
+  const where = (place) => { if (place === 'home') return { gal: HOME }; if (place === 'none') return null; region = place; return { gal: FAR }; };
+  const fauna = (powers) => powers.map((power, i) => ({ seed: 2000 + i, kingdom: 'fauna', power }));
+  const POWERS = [0, 100, 169, 170, 171, 200, 222, 300, 430, 431, 690, 691, 1200];
+  const PLACES = ['home', 'none', 0, 1, 2, 3, 4, 5, 6];
+  const TYPES = ['terran', 'ocean', 'lava', 'venus', 'ice', 'desert', 'gas', 'rocky', 'unknown'];
+
+  // danger: dangerOf for the strongest beast's power, the world's type, whether it is conquered, and the place.
+  for (const power of POWERS) for (const ptype of ['terran', 'lava', 'venus', 'ice']) for (const place of PLACES) for (const settled of [false, true]) {
+    game.set({ conquered: settled ? [77] : [] });
+    cases.push({ group: 'danger', input: { powers: [50, power, 120], ptype, place, settled }, output: game.dangerOf({ species: [...fauna([50, power, 120]), { seed: 1, kingdom: 'flora', power: 5000 }], ptype, planetSeed: 77, where: where(place) }) });
+  }
+  // danger-none: a world with no beast, and one with no species at all.
+  game.set({});
+  cases.push({ group: 'danger-none', input: { species: 'flora-only' }, output: game.dangerOf({ species: [{ seed: 1, kingdom: 'flora', power: 900 }], ptype: 'terran', planetSeed: 77, where: where('home') }) });
+  cases.push({ group: 'danger-none', input: { species: 'none' }, output: game.dangerOf({ ptype: 'terran', planetSeed: 77, where: where('home') }) });
+  // flavor: hazardFlavor per world type and random value.
+  for (const ptype of TYPES) for (const value of [0, 0.2, 0.34, 0.5, 0.67, 0.999]) {
+    randoms = [value];
+    cases.push({ group: 'flavor', input: { ptype, value }, output: game.hazardFlavor({ ptype }, null) });
+  }
+  // condition: creatureCondition for a hurt value.
+  for (const hurt of [null, 0, 0.049, 0.05, 0.12, 0.299, 0.3, 0.599, 0.6, 0.85, 0.95]) cases.push({ group: 'condition', input: { hurt }, output: game.creatureCondition(hurt === null ? {} : { hurt }) });
+
+  const SCOUT = 's4000';
+  const snap = () => { const now = game.get(); return { ...now, notes }; };
+  // route: routeHit for a strike, the suit's cut, the explorer's health, and a Field Scout with a hurt (null: no scout).
+  for (const dmg of [1, 5, 9, 10, 20, 47, 48, 49, 60, 100]) for (const cut of [0, 0.25, 0.7, 0.9]) for (const scoutHurt of [null, 0, 0.3, 0.4, 0.41, 0.6, 0.85, 0.88, 0.95]) for (const hp of [100, 21, 20, 1]) {
+    if (scoutHurt !== null && hp !== 100) continue;
+    suit = cut; notes = [];
+    game.set({ hp, scout: scoutHurt === null ? null : SCOUT, codex: scoutHurt === null ? [] : [{ id: SCOUT, name: 'Scout', genome: scoutHurt === 0 ? {} : { hurt: scoutHurt } }] });
+    const dead = game.routeHit(dmg, 'Mid-scan, a test.');
+    cases.push({ group: 'route', input: { dmg, suit: cut, hp, scoutHurt }, output: { dead, ...snap() } });
+  }
+  suit = 0;
+  // route-other: a scout that is not a beast, and a scout no longer in the Compendium, do not take the strike.
+  for (const [name, codex] of [['flora-scout', [{ id: SCOUT, kind: 'Flora', genome: {} }]], ['gone-scout', []]]) {
+    notes = []; game.set({ hp: 100, scout: SCOUT, codex });
+    const dead = game.routeHit(20, 'Mid-scan, a test.');
+    cases.push({ group: 'route-other', input: { name, dmg: 20 }, output: { dead, ...snap() } });
+  }
+
+  // press: one press of Discover Life. Output: what the game holds afterwards, what it said, and the random
+  // values left unread.
+  const world = (o) => ({ logId: 'p' + o.seed, planetSeed: o.seed, ptype: o.ptype, badge: o.badge || null, title: 'A world', where: where(o.place),
+    species: [...fauna(o.powers), { seed: 3000, kingdom: 'flora', power: 1 }] });
+  const press = (name, o) => {
+    suit = o.suit || 0; notes = [];
+    game.set({ hp: o.hp, scout: o.scoutHurt == null ? null : SCOUT, codex: [...(o.scoutHurt == null ? [] : [{ id: SCOUT, name: 'Scout', genome: o.scoutHurt === 0 ? {} : { hurt: o.scoutHurt } }]), ...(o.known || []).map((id) => ({ id }))],
+      conquered: o.settled ? [o.seed] : [], surveyed: o.surveyed || [], tech: o.tech || [], sites: o.sites || [], stats: o.stats || {} });
+    randoms = [...o.values];
+    game.pressScan(world(o));
+    cases.push({ group: 'press', input: { name, ...o }, output: { ...snap(), unread: randoms.length } });
+  };
+  const BASE = { seed: 77, ptype: 'terran', place: 'home', powers: [430], hp: 100, values: [0.999] };
+  press('clear', BASE);
+  press('safe-no-roll', { ...BASE, powers: [100], values: [] });
+  press('settled-no-roll', { ...BASE, settled: true, values: [] });
+  for (const value of [0, 0.25, 0.4999, 0.5, 0.5001]) press('edge', { ...BASE, values: [value, 0.5] });
+  for (const place of PLACES) press('hostile-place', { ...BASE, place, values: [0, 0] });
+  for (const ptype of ['lava', 'venus']) for (const value of [0.61, 0.62, 0.63]) press('hot-edge', { ...BASE, ptype, values: [value, 0.9] });
+  press('hull', { ...BASE, tech: ['hull1'], values: [0, 0] });
+  press('hull-suit', { ...BASE, tech: ['hull1'], suit: 0.25, place: 4, values: [0, 0] });
+  press('suit-capped', { ...BASE, suit: 0.9, place: 5, values: [0, 0] });
+  for (const hp of [100, 40, 37, 36, 35, 20, 8]) press('explorer', { ...BASE, hp, place: 0, values: [0, 0.4] });
+  press('explorer-dies', { ...BASE, hp: 30, place: 5, values: [0, 0.4] });
+  press('explorer-dies-exact', { ...BASE, hp: 39, place: 0, powers: [1200], values: [0, 0.4] });
+  for (const scoutHurt of [0, 0.2, 0.5, 0.62, 0.63, 0.64, 0.85]) press('scout', { ...BASE, scoutHurt, place: 0, values: [0, 0.4] });
+  press('scout-lost', { ...BASE, scoutHurt: 0.9, place: 5, values: [0, 0.4] });
+  press('second-world', { ...BASE, seed: 78, surveyed: [77, 5], stats: { scanhits: 2 }, values: [0, 0.1] });
+  press('all-known-already-surveyed', { ...BASE, surveyed: [77], values: [0.999] });
+  for (const badge of ['Civilized', 'Advanced', 'Home', 'Life', 'Biosphere']) press('badge', { ...BASE, badge, values: [0.999] });
+  press('paragon', { ...BASE, sites: [[77, 6]], values: [0.999] });
+  press('paragon-known', { ...BASE, sites: [[77, 6]], known: ['s9006'], stats: { paragons: 3 }, values: [0.999] });
+  press('paragon-counted', { ...BASE, sites: [[77, 6]], stats: { paragons: 3 }, values: [0.999] });
+  press('paragon-elsewhere', { ...BASE, sites: [[78, 6]], values: [0.999] });
+  press('paragon-after-strike', { ...BASE, sites: [[77, 6]], place: 0, values: [0, 0.4] });
+
+  // xp: awardXP of n to a creature holding xp; output is its xp and level afterwards, and what was said.
+  for (const [xp, n] of [[null, 2], [0, 2], [4, 2], [5, 1], [52, 2], [484, 2], [485, 2], [486, 2], [999999, 2]]) {
+    notes = []; game.set({ codex: [{ id: SCOUT, name: 'Scout', genome: xp === null ? {} : { xp } }] });
+    game.awardXP(SCOUT, n);
+    const g = game.get().genomes[0][1];
+    cases.push({ group: 'xp', input: { xp, n }, output: { xp: g.xp, level: game.levelOf(g), notes } });
+  }
+  notes = []; game.set({ codex: [{ id: 's1', kind: 'Flora', genome: {} }] }); game.awardXP('s1', 2);
+  cases.push({ group: 'xp', input: { kind: 'Flora', n: 2 }, output: { xp: game.get().genomes[0][1].xp ?? null, level: 0, notes } });
+
+  // discover: discoverSpecies of a new species with a Field Scout standing; output is the scout's xp afterwards
+  // (null: it holds none), whether the species was new, and the Stardust held.
+  for (const [name, o] of [
+    ['scout-learns', { scout: SCOUT, tier: 0 }], ['no-scout', { scout: null, tier: 0 }], ['scout-gone', { scout: 's4999', tier: 0 }],
+    ['already-known', { scout: SCOUT, tier: 0, known: true }], ['the-scout-itself', { scout: 's6000', tier: 0 }], ['rare', { scout: SCOUT, tier: 5 }], ['rarer', { scout: SCOUT, tier: 9 }],
+    ['flora-scout', { scout: SCOUT, tier: 0, scoutKind: 'Flora' }],
+  ]) {
+    notes = [];
+    game.set({ scout: o.scout, codex: [{ id: SCOUT, name: 'Scout', kind: o.scoutKind || 'Fauna', genome: { xp: 4 } }, ...(o.known ? [{ id: 's6000' }] : [])] });
+    game.discoverSpecies({ seed: 6000, kingdom: 'fauna', tier: o.tier }, 'A world', null);
+    const now = game.get();
+    cases.push({ group: 'discover', input: { name, ...o }, output: { scoutXp: now.genomes.find(([id]) => id === SCOUT)[1].xp ?? null, essence: now.essence, stats: now.stats, stored: notes.filter(([kind]) => kind === 'stored').map(([, value]) => value) } });
+  }
+  return cases;
+}
+
 /* ---- the v1 descent, shared by its two recorders ---- */
 
 /** Runs the v1 descent rules. `edges` false: the cases of landing-descent. true: those of landing-descent-edges. */
@@ -700,6 +888,12 @@ export const recorders = {
     kind: 'outputs',
     taken: 'The v1 capture rules, run with new Function over unique script slices: clamp, mulberry32, hashInt, codexId, TAME_ODDS, _captureRing, captureOdds, _captureKind, bioX, bioPool, _bioUsed, bioLeft, tryCapture. Supplied by the recorder: Math (the real one with random replaced by the case\'s queue of values), describeSpecies (a name and the grade {tier} the case gives the species), ringGrade (the grade unchanged), regionAt (the case\'s region), _equipBonus (the case\'s contact points), HOME_GAL_SEED 999, SOL_POS {560,170} and ASC_RING_R 300 (GR 1200 × 0.25) as the script declares them, discoverSpecies (notes the species and puts its id in the Compendium), gameEvent, toast, queueSave, and the containers the script declares beside them (codex, COSMIC_EPOCH, _panelKey). Species are {seed, kingdom, tier}. Groups, in order. odds: captureOdds per verb, tier, ring and worn contact points. ring: _captureRing for the named place. pool: bioPool for a world seed and each species count 0..19. used: for a stored row [used, stamp] read at an epoch, [_bioUsed, bioLeft, the row after]. press: one tryCapture on a roster of the input\'s kingdoms (species i has seed 1000+i and tier 0) with the roster indices in `known` already in the Compendium and the two random values pick then success; output is [caught species seed or null, the bioX row after or null, toast as [title, text] or null, events said, random values left unread]. worked-out: the same with `used` attempts already spent of a pool of `pool`. edge: one species of the input\'s tier with a success value on and beside the odds; output is [odds, caught seed or null]. chain: presses in order on one roster, the Compendium and pool carried on; before a step listed in `turn` the epoch rises by one; output is one press output per step.',
     record: ({ script }) => recordLegacyCapture(script),
+  },
+  'care-field': {
+    test: 'apps/game/test/care-legacy.test.ts',
+    kind: 'outputs',
+    taken: 'The v1 biosphere scan, the Field Scout and the Fifty Paragons. paragon-site: paragonWhere(i) for i = 0..49, run with new Function over the v1 modules Rand, PlanetGen, WorldConfig, Naming, StarCatalog and WorldGen (each from "const <Name>=(()=>{" to "}=<Name>;"), GAL_SPRITE_SEEDS (GAL_SPRITES is supplied as that list: the walk reads only its length), slimGal and paragonWhere, with the real Math. Every other group runs new Function over unique script slices: clamp, mulberry32, codexId, levelOf, creatureCondition, hazardFlavor, DEPTH_TAX, depthTax, dangerOf, damageExplorer, routeHit, awardXP, autoScanWorld, discoverSpecies, and the statements of the survey card\'s click listener from "  const scan=e.target.closest(\'[data-scanlife]\');" to its "return;" (inline in that listener, so wrapped unchanged in function pressScan(e)). Supplied by the recorder: Math (the real one with random replaced by the case\'s queue of values), battleStats (a species\' power as the case gives it), regionAt (the case\'s region), _equipBonus (the case\'s suit cut under scut, 0 otherwise), HOME_GAL_SEED 999 as the script declares it, a document with no elements, and the containers and hooks the script declares beside them (codex, conquered, surveyedSet, techOwned, stats, scoutId, hp, essence, _parSites, toast, unlock, gameEvent, showDeath, removeFromCodex), each noting what it was told; paragonGenome gives {seed 9000+i}, _storeSpecies stores an entry whose grade is the tier the case gives the species, crossGenome a child of seed + 500000. A place is "home" (the home galaxy), "none" (no place) or a region number (another galaxy in that region). Groups, in order. paragon-site: the home world as paragonWhere returns it. danger: dangerOf for a world of three beasts of the input\'s powers and one plant. danger-none: a world with no beast. flavor: hazardFlavor(d, null) for a world type and a random value. condition: creatureCondition for a hurt. route: routeHit(dmg) with the suit\'s cut, the health and a scout of the input\'s hurt (null: none); output holds dead, the health, the scout, each genome, and notes (what was said, removed, unlocked) in order. route-other: a scout that is a plant, or gone from the Compendium. press: one press of Discover Life on a world of the input (beasts of `powers` and one plant) with the random values of the input; output holds the health, scout, surveyed set, stats, genomes, notes in order and the count of values left unread. xp: awardXP(n) to a beast holding xp; output is its xp, level and notes. discover: discoverSpecies of a new beast of the input\'s tier with a scout standing; output is the scout\'s xp, the Stardust, the stats and what was stored.',
+    record: ({ script }) => recordLegacyCare(script),
   },
   'landing-descent': {
     test: 'apps/game/test/descent-policy.test.ts',
