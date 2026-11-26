@@ -47,12 +47,13 @@ const colours = Array.from({ length: 16 }, (_, i) => 0x101010 * (i % 15) + 0x030
 
 /** Over a full turn and two steps more, the night fixed: how many times a pixel shows one colour, then another, then
  *  the first again on three steps running; and how many times a pixel changed at all. */
-function flicker(width: number, mapW: number, mapH: number, tilt: number, surface: GlobeLayer, clouds: GlobeLayer | undefined): { flickers: number; changes: number } {
+function flicker(width: number, mapW: number, mapH: number, tilt: number, surface: GlobeLayer, clouds: GlobeLayer | undefined, lag = 0, back = false): { flickers: number; changes: number } {
   const table = globeTable(width, mapW, mapH, tilt);
   const inks = (rgb: number): number => rgb + 1000;
   const light = { ux: -3, uy: -2 };
-  // The clouds ride with the surface, a fixed way round from it.
-  const frameAt = (step: number): Uint32Array => globeFrame(surface, clouds, table, step, step + 5, light, inks).pixels;
+  // With no lag the clouds ride with the surface; with one they fall a column behind it every `lag` steps. A globe
+  // turning backwards counts its steps down.
+  const frameAt = (step: number): Uint32Array => globeFrame(surface, clouds, table, back ? 1000 - step : step, lag, light, inks).pixels;
   let [before, here] = [frameAt(0), frameAt(1)];
   let [flickers, changes] = [0, 0];
   for (let step = 2; step < mapW + 2; step++) {
@@ -67,7 +68,7 @@ function flicker(width: number, mapW: number, mapH: number, tilt: number, surfac
 }
 
 const SIZES = [[65, 192, 64], [129, 384, 128]] as const;
-const LEANS = [0, 23, -67] as const;
+const LEANS = [0, 14, 23, -67, 90] as const;
 
 describe('a turning globe does not flicker', () => {
   it('the test\'s maps keep the rule: no run of one pixel in any row, the seam included', () => {
@@ -89,6 +90,17 @@ describe('a turning globe does not flicker', () => {
         const surface: GlobeLayer = { w: mapW, h: mapH, values: runMap(mapW, mapH, 41, 1, 16), colours };
         const clouds: GlobeLayer = { w: mapW, h: mapH, values: runMap(mapW, mapH, 43, 0, 3), colours: [0xffffff, 0xe8e8f0, 0xc8c8d8] };
         expect(flicker(width, mapW, mapH, tilt, surface, clouds).flickers).toBe(0);
+      });
+      it(`${width} wide, leaning ${tilt}: nor under clouds that drift against the surface, fast or slow, the globe turning either way`, () => {
+        const surface: GlobeLayer = { w: mapW, h: mapH, values: runMap(mapW, mapH, 41, 1, 16), colours };
+        const clouds: GlobeLayer = { w: mapW, h: mapH, values: runMap(mapW, mapH, 43, 0, 3), colours: [0xffffff, 0xe8e8f0, 0xc8c8d8] };
+        const riding = flicker(width, mapW, mapH, tilt, surface, clouds);
+        for (const [lag, back] of [[8, false], [3, false], [2, false], [1, false], [8, true], [3, true]] as const) {
+          const found = flicker(width, mapW, mapH, tilt, surface, clouds, lag, back);
+          expect(found.flickers).toBe(0);
+          // The clouds did drift: the turn is not the one the riding clouds make.
+          expect(found.changes).not.toBe(riding.changes);
+        }
       });
       it(`${width} wide, leaning ${tilt}: a stripe one column wide in the map does flicker, at every pixel it passes`, () => {
         const values = runMap(mapW, mapH, 41, 1, 16);

@@ -163,22 +163,56 @@ describe('the night on a globe', () => {
 });
 
 describe('a cloud layer over a globe', () => {
-  it('covers the surface where it is set, shows it where it is clear, and turns by its own step', () => {
+  it('covers the surface where it is set, shows it where it is clear, and falls a column behind the surface every `lag` steps', () => {
     const surface: GlobeLayer = { w: 192, h: 64, values: seededMap(192, 64, 31, 4), colours: [0x103050, 0x205070, 0x307090, 0x4090b0] };
     const clouds: GlobeLayer = { w: 192, h: 64, values: seededMap(192, 64, 37, 2, true), colours: [0xffffff, 0xdddddd] };
     const well = inkwell();
-    for (const [step, cloudStep] of [[0, 0], [40, 0], [40, 77], [3, -9]] as const) {
-      const frame = globeFrame(surface, clouds, SMALL, step, cloudStep, NO_LIGHT, well.inks);
+    for (const [step, lag] of [[0, 0], [40, 0], [40, 7], [-13, 4], [191, 1], [1000, 3]] as const) {
+      const cloudStep = lag === 0 ? step : step - Math.floor(step / lag);
+      const frame = globeFrame(surface, clouds, SMALL, step, lag, NO_LIGHT, well.inks);
       let [covered, bare] = [0, 0];
       for (let i = 0; i < frame.pixels.length; i++) {
         if (SMALL.row[i]! < 0) continue;
-        const cloud = clouds.values[SMALL.row[i]! * 192 + ((SMALL.col[i]! + cloudStep + 192) % 192)]!;
-        const land = surface.values[SMALL.row[i]! * 192 + ((SMALL.col[i]! + step) % 192)]!;
+        const cloud = clouds.values[SMALL.row[i]! * 192 + ((((SMALL.col[i]! + cloudStep) % 192) + 192) % 192)]!;
+        const land = surface.values[SMALL.row[i]! * 192 + ((((SMALL.col[i]! + step) % 192) + 192) % 192)]!;
         expect(well.rgb(frame.pixels[i]!)).toBe(cloud === 0 ? surface.colours[land - 1] : clouds.colours[cloud - 1]);
         if (cloud === 0) bare++; else covered++;
       }
       expect(Math.min(covered, bare)).toBeGreaterThan(500);
     }
+  });
+  it('from one step to the next the clouds move one column on the screen or none, never two, whichever way the globe turns', () => {
+    // One cloud column marked: where it shows on the screen says how far round the clouds are.
+    const surface: GlobeLayer = { w: 192, h: 64, values: new Uint8Array(192 * 64).fill(1), colours: [0x204060] };
+    const marked = new Uint8Array(192 * 64);
+    for (let y = 0; y < 64; y++) marked[y * 192 + 100] = 1;
+    const clouds: GlobeLayer = { w: 192, h: 64, values: marked, colours: [0xffffff] };
+    const upright = globeTable(65, 192, 64, 0);
+    const middle = 32 * 65;
+    /** How many columns round the clouds are at a step: the mark's column less the column the screen shows it in. */
+    const round = (step: number, lag: number): number => {
+      const frame = globeFrame(surface, clouds, upright, step, lag, NO_LIGHT, (rgb) => rgb + 1);
+      const shown = new Set<number>();
+      for (let dx = 0; dx < 65; dx++) if (frame.pixels[middle + dx] === 0xffffff + 1) shown.add(upright.col[middle + dx]!);
+      expect(shown.size).toBeLessThanOrEqual(1);
+      return shown.size === 0 ? -1 : (100 - [...shown][0]! + 192) % 192;
+    };
+    for (const lag of [1, 2, 3, 8, 50]) {
+      let behind = 0;
+      for (let step = -400; step < 400; step++) {
+        const [here, next] = [round(step, lag), round(step + 1, lag)];
+        if (here < 0 || next < 0) continue;
+        const moved = (next - here + 192) % 192;
+        expect(moved === 0 || moved === 1).toBe(true);
+        if (moved === 0) behind++;
+        // Read backwards, the same two frames are a globe turning the other way.
+        expect((here - next + 192) % 192 === 0 || (here - next + 192) % 192 === 191).toBe(true);
+      }
+      if (lag > 1) expect(behind).toBeGreaterThan(0);
+    }
+    // With no lag the clouds are always as far round as the surface.
+    for (const step of [-7, 0, 5, 150]) { const at = round(step, 0); if (at >= 0) expect(at).toBe(((step % 192) + 192) % 192); }
+    expect(() => globeFrame(surface, clouds, upright, 0, -1, NO_LIGHT, (rgb) => rgb)).toThrow('clouds fall behind a whole number of steps, 0 or more, not -1');
   });
   it('a layer that is not the size of the table\'s map is refused, and so is a value with no colour', () => {
     const surface: GlobeLayer = { w: 192, h: 64, values: new Uint8Array(192 * 64).fill(1), colours: [0x808080] };

@@ -70,16 +70,32 @@ function inkOf(layer: GlobeLayer, shares: readonly number[], inks: (rgb: number)
   };
 }
 
+/** How many columns round the clouds are at a step: with no lag as many as the surface, else one fewer for every
+ *  `lag` steps the globe has turned, counted down from the step's whole part so a step below 0 keeps the rule. */
+function cloudsAt(step: number, lag: number): number {
+  if (lag === 0) return step;
+  return step - (step >= 0 ? quotient(step, lag) : -quotient(-step - 1, lag) - 1);
+}
+
 /**
  * A globe's picture at one moment of its turn. Each pixel of the disc is one map pixel: the one in its table's row,
- * `step` columns east of its table's column, wrapped, so a step on, every pixel reads one column on. A cloud layer,
- * when there is one, is read the same way by its own `cloudStep` and covers the surface wherever it is not clear.
+ * `step` columns east of its table's column, wrapped, so a step on, every pixel reads one column on. `step` is a whole
+ * number under 2^31 either side of 0; a globe turning backwards counts it down.
+ *
+ * A cloud layer, when there is one, covers the surface wherever it is not clear. It drifts against the surface by
+ * falling behind it: with `cloudLag` 0 it rides with the surface, and otherwise it is one column farther behind for
+ * every `cloudLag` steps turned (1 holds it still on the screen). So from one step to the next the clouds move one
+ * column on the screen or none, whichever way the globe turns, and never two: a cloud two pixels wide that moved two
+ * columns in a step would show for one frame and be gone, and the globe would flicker. Clouds cannot lead the surface.
+ * A caller that wraps its step wraps it at mapW * cloudLag, where both layers are back where they began.
+ *
  * The night is laid over both in three solid steps, the land keeping LAND_NIGHT's shares and the clouds CLOUD_NIGHT's;
  * a glowing value is left as it is. `inks` gives the colour number a 0xRRGGBB colour is drawn with: a number above
  * the sheet's own, the same for the same colour. A disc pixel clear in both layers is 0.
  */
-export function globeFrame(surface: GlobeLayer, clouds: GlobeLayer | undefined, table: GlobeTable, step: number, cloudStep: number, light: GlobeLight, inks: (rgb: number) => number): GlobeFrame {
+export function globeFrame(surface: GlobeLayer, clouds: GlobeLayer | undefined, table: GlobeTable, step: number, cloudLag: number, light: GlobeLight, inks: (rgb: number) => number): GlobeFrame {
   const { side, mapW, mapH } = table;
+  if (!Number.isInteger(cloudLag) || cloudLag < 0) throw new Error(`clouds fall behind a whole number of steps, 0 or more, not ${cloudLag}`);
   for (const layer of [surface, clouds]) {
     if (layer !== undefined && (layer.w !== mapW || layer.h !== mapH)) throw new Error(`a layer ${layer.w} by ${layer.h} does not fit a globe whose map is ${mapW} by ${mapH}`);
   }
@@ -87,7 +103,7 @@ export function globeFrame(surface: GlobeLayer, clouds: GlobeLayer | undefined, 
   const landInk = inkOf(surface, LAND_NIGHT, inks);
   const cloudInk = clouds === undefined ? undefined : inkOf(clouds, CLOUD_NIGHT, inks);
   const on = ((step % mapW) + mapW) % mapW;
-  const cloudOn = ((cloudStep % mapW) + mapW) % mapW;
+  const cloudOn = ((cloudsAt(step, cloudLag) % mapW) + mapW) % mapW;
   const pixels = new Uint32Array(side * side);
   for (let i = 0; i < pixels.length; i++) {
     const row = table.row[i] ?? -1;
