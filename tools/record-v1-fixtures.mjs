@@ -219,6 +219,97 @@ export const recorders = {
       return { role, file, sha256: sha256(bytes), bytes: bytes.length };
     }),
   },
+  'landing-region': {
+    test: 'packages/domain/landing/test/region.test.ts',
+    kind: 'outputs',
+    taken: 'v1 biomeComposition and biomeForLanding, run with new Function over three unique script slices: "function mulberry32(a){" to "/4294967296}}", "function hashInt(seed,x,y){" to "return h>>>0;\\n}", and "const BIOME_SETS={" to "return comp[comp.length-1].biome;\\n}" (BIOME_SETS, biomeFor, biomeComposition, _EARTH_LANDING, _earthLandingComp, biomeForLanding). Groups, in order. composition: biomeComposition({seed, type, iceAmt}, band) as [[key, pct], ...] or null, iceAmt left off the planet when null. roll: biomeForLanding({seed, type}, band, salt) for salt 0..39, as region keys or null. salt: the same for the salts listed in the input. earth: seed 133, terran, temperate, salts 0..4999. edge: over every roll, salt and earth draw, the smallest distance between the draw (walked by the recorder as biomeForLanding walks it) and a boundary of the list, with the case it belongs to.',
+    record: ({ script }) => {
+      const { biomeComposition, biomeForLanding, walk } = new Function(`
+        ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+        ${cutUnique(script, 'function hashInt(seed,x,y){', 'return h>>>0;\n}')}
+        ${cutUnique(script, 'const BIOME_SETS={', 'return comp[comp.length-1].biome;\n}')}
+        function walk(P, band, salt){
+          const comp=(P.seed===133)?_earthLandingComp():biomeComposition(P, band);
+          if(!comp||!comp.length) return null;
+          let v=mulberry32(hashInt(P.seed, 0x1A2D, (salt|0)+1)>>>0)(), near=Infinity;
+          for(const c of comp){ v-=c.pct; near=Math.min(near, Math.abs(v)); }
+          return near;
+        }
+        return { biomeComposition, biomeForLanding, walk };`)();
+      const types = ['terran', 'ocean', 'rocky', 'ice', 'desert', 'gas', 'venus', 'lava'];
+      const bands = ['hot', 'temperate', 'cold', 'frozen'];
+      const seeds = [133, 131, 134, 1757105165, 51464061, 1, 2, 3, 999, 424242];
+      const oddSalts = [-1, -2, -0.5, 2.7, 997, 1128, 2147483647, 2147483648, 4294967301, 1000000];
+      const cases = [];
+      let edge = { smallest: Infinity };
+      const rolled = (planet, band, salt) => {
+        const near = walk(planet, band, salt);
+        if (near !== null && near < edge.smallest) edge = { smallest: near, seed: planet.seed, type: planet.type, band, salt };
+        const region = biomeForLanding(planet, band, salt);
+        return region === null ? null : region.k;
+      };
+      for (const type of types) for (const band of bands) for (const seed of seeds) for (const iceAmt of [null, 0, 0.5, 1]) {
+        const mix = biomeComposition(iceAmt === null ? { seed, type } : { seed, type, iceAmt }, band);
+        cases.push({ group: 'composition', input: { seed, type, band, iceAmt }, output: mix === null ? null : mix.map((c) => [c.biome.k, c.pct]) });
+      }
+      cases.push({ group: 'composition', input: { seed: 131, type: 'unknown', band: 'temperate', iceAmt: null }, output: biomeComposition({ seed: 131, type: 'unknown' }, 'temperate') });
+      for (const type of [...types, 'unknown']) for (const band of bands) for (const seed of seeds) {
+        cases.push({ group: 'roll', input: { seed, type, band }, output: Array.from({ length: 40 }, (_, salt) => rolled({ seed, type }, band, salt)) });
+      }
+      for (const seed of [133, 131, 1757105165]) {
+        cases.push({ group: 'salt', input: { seed, type: 'terran', band: 'temperate', salts: oddSalts }, output: oddSalts.map((salt) => rolled({ seed, type: 'terran' }, 'temperate', salt)) });
+      }
+      cases.push({ group: 'earth', input: { seed: 133, type: 'terran', band: 'temperate' }, output: Array.from({ length: 5000 }, (_, salt) => rolled({ seed: 133, type: 'terran' }, 'temperate', salt)) });
+      cases.push({ group: 'edge', output: edge });
+      return cases;
+    },
+  },
+  'landing-weather': {
+    test: 'packages/domain/landing/test/weather.test.ts',
+    kind: 'outputs',
+    taken: 'v1 weather, season and time of day, run with new Function over five unique script slices, with perfTime, climateBand and st supplied by the recorder (perfTime returns the case\'s seconds, climateBand its band, st is {sys: null}): "function mulberry32(a){" to "/4294967296}}"; "const TAU = Math.PI*2;"; the statements of openLandingVista from "  if(!pl._env){" to "const tod=Bc>0.72?\'day\':(Bc>0.42?\'twilight\':\'night\');" (they sit inline in that function, so they are wrapped unchanged in function(pl, P, time) returning their own locals); "function _descWx(pl){" to "return now?wx:null;\\n}"; "function wxEventFor(P, wb, wxTok){" to "ironrain:\'iron rain glowing as it falls\'};" (with WX_EVENT_WORD); "const WXW={rain:\'rain\'" to "};" (the weather words of showVistaBox). Groups, in order. words: events is WX_EVENT_WORD, weather is WXW, odds is the WX_ODDS of the openLandingVista statements. world: one per type, band and seed: env is the world\'s pl._env; at holds, per seconds, [seconds, seasonT, effWx, wxNow, tod, the token _descWx returns, wxEventFor for regions null, stormsea, cryogeyser, hotglow with the token (wxNow ? effWx : null)]. edge: the smallest distances found between seasonT and -0.45 (worlds whose base weather is rain) and between Bc and its two thresholds.',
+    record: ({ script }) => {
+      const tod = "const tod=Bc>0.72?'day':(Bc>0.42?'twilight':'night');";
+      const v1 = new Function('perfTime', 'climateBand', 'st', `
+        ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+        ${cutUnique(script, 'const TAU = Math.PI*2;', ';')}
+        function landingClock(pl, P, time){
+        ${cutUnique(script, '  if(!pl._env){\n    const er=mulberry32((P.seed^0xE57)>>>0);', tod)}
+          return { env, seasonT, effWx, wxNow, tod, Bc, WX_ODDS };
+        }
+        ${cutUnique(script, "const WXW={rain:'rain'", '};')}
+        ${cutUnique(script, 'function _descWx(pl){', 'return now?wx:null;\n}')}
+        ${cutUnique(script, 'function wxEventFor(P, wb, wxTok){', "ironrain:'iron rain glowing as it falls'};")}
+        return { landingClock, _descWx, wxEventFor, WX_EVENT_WORD, WXW };`);
+      let seconds = 0;
+      let band = 'temperate';
+      const { landingClock, _descWx, wxEventFor, WX_EVENT_WORD, WXW } = v1(() => seconds, () => band, { sys: null });
+      const types = ['terran', 'ocean', 'rocky', 'ice', 'desert', 'gas', 'venus', 'lava'];
+      const bands = ['hot', 'temperate', 'cold', 'frozen'];
+      const seeds = [133, 131, 134, 1757105165, 51464061, 7, 8, 9];
+      const times = [0, 45, 89, 90, 91, 500, 1234.5, 9999, 86400, ...Array.from({ length: 20 }, (_, i) => (i + 2) * 90 + 45)];
+      const regions = [null, 'stormsea', 'cryogeyser', 'hotglow'];
+      const odds = landingClock({ P: { seed: 133, type: 'terran' }, orb: 100 }, { seed: 133, type: 'terran' }, 0).WX_ODDS;
+      const cases = [{ group: 'words', output: { events: { ...WX_EVENT_WORD }, weather: { ...WXW }, odds: { ...odds } } }];
+      const edge = { season: Infinity, day: Infinity, twilight: Infinity };
+      for (const type of types) for (const b of bands) for (const seed of seeds) {
+        band = b;
+        const pl = { P: { seed, type }, orb: 100 };
+        const at = times.map((t) => {
+          seconds = t;
+          const now = landingClock(pl, pl.P, t);
+          if (now.env.wx === 'rain' && now.seasonT !== 0) edge.season = Math.min(edge.season, Math.abs(now.seasonT + 0.45));
+          edge.day = Math.min(edge.day, Math.abs(now.Bc - 0.72));
+          edge.twilight = Math.min(edge.twilight, Math.abs(now.Bc - 0.42));
+          const token = now.wxNow ? now.effWx : null;
+          return [t, now.seasonT, now.effWx, now.wxNow, now.tod, _descWx(pl), regions.map((region) => wxEventFor(pl.P, region, token))];
+        });
+        cases.push({ group: 'world', input: { seed, type, band: b }, env: { ...pl._env }, at });
+      }
+      cases.push({ group: 'edge', output: edge });
+      return cases;
+    },
+  },
 };
 
 /** Builds one fixture object from the v1 folder's files. `readV1File(relativePath)` returns a Buffer. */
