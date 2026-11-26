@@ -1,5 +1,10 @@
 /* The map screen: the universe, a galaxy or a system, drawn by seeded code, with the survey card of whatever is
-   selected and travel between the three by tap, zoom, keyboard and pasted code. */
+   selected and travel between the three by tap, zoom, keyboard and pasted code.
+
+   The orbits hold while a planet's survey card is open, and go on from where they were when it closes or the map
+   changes (the legacy game lifts its hold on a change of map: celestial-frontier.html 26942). Holding for an open
+   card is a named difference from the legacy game, which holds only on approach and landing: see space/orbit-clock.ts.
+   A press is tested against each world where its orbit has it now, which is where it is drawn (7668, 7673). */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
@@ -9,7 +14,7 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_RADIUS_PX, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, parkBelowTrigger, pictureWidth, placedLabels, showSpace,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pictureWidth, placedLabels, showSpace,
   supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
@@ -55,7 +60,12 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       const edge = el('div', { class: 'map-edge', 'aria-hidden': 'true' });
       const area = el('div', { class: 'map-area' }, canvas, captions, ring, edge);
       root.append(area);
-      const card = createSelectionCard(root, () => { root.dataset.card = card.open ? 'open' : 'closed'; redraw.request(); });
+      const card = createSelectionCard(root, () => {
+        root.dataset.card = card.open ? 'open' : 'closed';
+        // However the card closes, the orbits go on.
+        if (!card.open) orbits.release();
+        redraw.request();
+      });
       root.dataset.card = 'closed';
       const view = (): Viewport => ({ w: area.clientWidth, h: area.clientHeight });
       const minSide = (): number => minSideOf(view());
@@ -77,8 +87,10 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       const start = ports.now();
       let last: number | null = null;
       const time = (): number => (ports.reducedMotion() ? 0 : (ports.now() - start) / 1000);
+      /** The clock of the planets' orbits: the map's own, but held while a planet's card is open. */
+      const orbits = orbitClock(time);
       const bodiesAt = (camera: Camera): MapBody[] =>
-        [...visibleBodies(nav.nav, camera, view(), time()), ...supernovaBodies(nav.nav, ports.epoch())];
+        [...visibleBodies(nav.nav, camera, view(), orbits.time()), ...supernovaBodies(nav.nav, ports.epoch())];
 
       const describe = (kind: string, data: unknown): Descriptor | null => {
         const names = ports.live().customNames;
@@ -111,6 +123,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const { descriptor, action, ping } = cardOf(body);
         if (descriptor === null) return false;
         card.show(descriptor, action, opener);
+        if (body.kind === 'planet') orbits.hold(); else orbits.release();
         if (ping) ports.sound.ping();
         return true;
       };
@@ -283,7 +296,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const state = ports.live();
         const region = currentRegionOf(Object.keys(state.primeFill || {}).length);
         const shown: MapFrame = {
-          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
+          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), orbit: orbits.time(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,

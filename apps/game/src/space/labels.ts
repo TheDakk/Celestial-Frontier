@@ -10,7 +10,7 @@ import { placeLabels, wrapWords, type Disc, type LabelSpec, type PlacedLabel } f
 import { galaxyContent, visibleBodies } from './model';
 import { cometsDrawn } from './passes-system';
 import { webZoom } from './passes-universe';
-import { artCamera, artGrid, artScale, mapCaptions, primaryWidth } from './project';
+import { artCamera, artGrid, artScale, mapCaptions, orbitTime, primaryWidth } from './project';
 import type { MapFrame } from './project';
 import { SOL_MARK_CSS, STAR_WIDTH, starBase } from './sizes';
 
@@ -50,10 +50,9 @@ function lettering(frame: MapFrame, charter: string, sheet?: InterfaceSheet): { 
     ? { text, wx, wy, hold: 'above', bx: wx, by: wy + stand, off: stand, r: 0, ring: 0, rank: 3 }
     : { text, wx, wy, hold: 'centre', bx: wx, by: wy, off: 0, r: 0, ring: 0, rank: 3 }));
   const drawn: Drawn[] = [];
-  // Reduced motion holds every clock of the map at its start.
-  const time = frame.passes?.motion === false ? 0 : frame.time;
+  const orbit = orbitTime(frame);
   if (nav.mode === 'universe') {
-    for (const body of visibleBodies(nav, cam, view, time)) {
+    for (const body of visibleBodies(nav, cam, view, orbit)) {
       if (body.kind !== 'galaxy') continue;
       const g = body.ref;
       drawn.push({ wx: g.x, wy: g.y, r: g.size });
@@ -81,7 +80,7 @@ function lettering(frame: MapFrame, charter: string, sheet?: InterfaceSheet): { 
     const scene = systemScene(nav.star.seed);
     drawn.push({ wx: 0, wy: 0, r: primaryWidth(scene) / 2 });
     const z = artCamera(cam, frame.dpr, artScale(view.w, view.h, frame.dpr)).z;
-    for (const body of visibleBodies(nav, cam, view, time)) {
+    for (const body of visibleBodies(nav, cam, view, orbit)) {
       if (body.kind !== 'planet') continue;
       const own = 6 * (typeof body.ref.P.sizeMul === 'number' && body.ref.P.sizeMul !== 0 ? body.ref.P.sizeMul : 1);
       // A planet the sheet draws is as wide as its drawing, in whole steps: its name hangs from the foot of that.

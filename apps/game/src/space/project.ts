@@ -198,9 +198,9 @@ interface Companion { sep: number; r2: number; col2?: string }
  * What a map shows besides its bodies, painted under them. The universe: the ring of the charter, `reach` world
  * units about home. A galaxy: its star knots, and the black hole at its centre. A system: the orbits when `charts`
  * is on, the belts, the dwarf planets, and the star itself with its companions. With `sizing` each takes the game's
- * size at the camera's zoom.
+ * size at the camera's zoom. With `orbit` the dwarf planets stand where their orbits have run that many seconds.
  */
-export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: number, options: { reach: number; charts: boolean; sizing?: Sizing }): SpaceItem[] {
+export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: number, options: { reach: number; charts: boolean; sizing?: Sizing; orbit?: number }): SpaceItem[] {
   const { sizing } = options;
   const at = (wx: number, wy: number): { x: number; y: number } => place(cam, grid, wx, wy);
   const turned = (angle: number, distance: number): { x: number; y: number } => {
@@ -234,7 +234,7 @@ export function projectScenery(nav: NavState, cam: Camera, grid: Grid, time: num
     for (const rock of (belt as Belt).rocks) items.push(small(turned(rock.a + time * rock.sp * speed, rock.rr), rock.s * width, colour));
   }
   for (const dwarf of raw.dwarfs ?? []) {
-    items.push(small(turned(dwarf.orb * 0.13 + time * 0.05 / (dwarf.orb * 0.012), dwarf.orb), WIDTH.dwarf, 0xb0a898));
+    items.push(small(turned(dwarf.orb * 0.13 + (options.orbit ?? time) * 0.05 / (dwarf.orb * 0.012), dwarf.orb), WIDTH.dwarf, 0xb0a898));
   }
   const special = PRIMARY_KINDS[scene.kind];
   const tint = rgbOf(scene.starCol || '#ffe9c4');
@@ -264,8 +264,10 @@ function marked(items: readonly SpaceItem[], drawn: (name: string, span: number)
 /** A span every drawing fits in. */
 const WIDEST = 1 << 20;
 
-/** Everything a map picture is made from. `cam` and `view` are in CSS pixels; `time` is the seconds the orbits
- *  have run and `epoch` the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
+/** Everything a map picture is made from. `cam` and `view` are in CSS pixels; `time` is the seconds the map's clock
+ *  has run, and `orbit` the seconds the orbits of the planets and the dwarf planets have run where they are held apart
+ *  from it (the orbit hold; without it they run with `time`), as the game places those two by its held clock and all
+ *  else by the running one; `epoch` is the committed ecology epoch (it places the supernova sites); `reach` is the radius of the
  *  charter in world units, and `charts` whether the orbit lines are shown. With `passes` the picture is the whole
  *  map of the game: its lights, veils, comets and motion are drawn too, as the settings in it allow. With `sized`
  *  everything takes the game's size at the camera's zoom, in whole steps; without it each is drawn at one size. With
@@ -273,7 +275,7 @@ const WIDEST = 1 << 20;
  *  stepped edges, and no dither anywhere. With `marks` a thing the game sizes smaller than the sheet's smallest drawing
  *  of it is a mark of its own size and colour, not that drawing: a far galaxy map is not crowded by its scenery. */
 export interface MapFrame {
-  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean; marks?: boolean;
+  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; orbit?: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean; marks?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
    *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail; with
    *  `stand`, the name of a comet and of the visitor stands on its foot above it, as the game anchors it; with `apart`,
@@ -282,16 +284,20 @@ export interface MapFrame {
 }
 export interface MapPicture extends SpacePicture { scale: number }
 
+/** The seconds a frame's orbits have run: none under reduced motion, which holds every clock of the map at its start. */
+export const orbitTime = (frame: MapFrame): number => (frame.passes?.motion === false ? 0 : frame.orbit ?? frame.time);
+
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. With the `sheet` of a
  *  picture sized by the camera, a planet whose type the sheet draws is that drawing in place of its bands. */
 export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: InterfaceSheet): SpaceItem[] {
   const cam = artCamera(frame.cam, frame.dpr, scale);
   // Reduced motion holds every clock of the map at its start.
   const time = frame.passes?.motion === false ? 0 : frame.time;
-  const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, time), ...supernovaBodies(frame.nav, frame.epoch)];
+  const orbit = orbitTime(frame);
+  const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, orbit), ...supernovaBodies(frame.nav, frame.epoch)];
   const drawn = sheet === undefined ? {} : { drawn: (name: string, span: number) => fittedWidth(sheet, name, span) };
   const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn, ...(frame.solid === true ? { solid: true } : {}) } } : {};
-  const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, ...sizing });
+  const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, orbit, ...sizing });
   if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
   const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };
   const items = withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
