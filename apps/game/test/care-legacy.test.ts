@@ -9,7 +9,7 @@ import { regionAt } from '@cf/domain-strays';
 import { HOME_POS, UCELL } from '@cf/domain-worldconfig';
 import {
   bioscanDanger, bioscanNotices, creatureCondition, depthTax, depthTaxOf, discoverLifeRow, hazardFlavour, paragonIndexAt, paragonSite, renameNotice,
-  resolveBioscanPress, scoutNotice, scoutWound, suitedDamage, SCOUT_BUTTON, type BioscanFactsV1, type BioscanPressResolution, type CareNotice,
+  resolveBioscanPress, revealBiosphere, routeStrike, scoutNotice, SCOUT_BUTTON, type BioscanFactsV1, type BioscanPressResolution, type CareNotice,
 } from '../src/care';
 import { scoutLessonXp } from '../src/capture';
 
@@ -76,18 +76,35 @@ describe('the scan hazard against the legacy game', () => {
     }
   });
 
-  it('a strike is cut by the suit and taken by the scout or the explorer as in all 480 recorded strikes', () => {
+  it('a strike is cut by the suit and taken by the scout or the explorer as in all 480 recorded strikes, with what it unlocks', () => {
+    let brinks = 0;
     for (const { input, output } of group('route')) {
-      const damage = suitedDamage(input.dmg, input.suit);
-      if (input.scoutHurt === null) {
-        expect(Math.max(0, input.hp - damage), JSON.stringify(input)).toBe(output.hp);
-        expect(output.dead).toBe(input.hp - damage <= 0);
-        continue;
-      }
-      const wound = scoutWound(damage, input.scoutHurt);
-      expect(output.hp).toBe(input.hp);
-      if (wound.lost) expect(said(output.notes, 'removed'), JSON.stringify(input)).toEqual(['s4000']);
-      else expect(output.genomes[0]?.[1].hurt, JSON.stringify(input)).toBe(wound.hurt);
+      const got = routeStrike({ dmg: input.dmg, suitCut: input.suit, hp: input.hp, scoutHurt: input.scoutHurt });
+      const label = JSON.stringify(input);
+      expect(got.hpAfter, label).toBe(output.hp);
+      expect(got.dead, label).toBe(output.dead);
+      expect(got.target, label).toBe(input.scoutHurt === null ? 'explorer' : 'scout');
+      // What the legacy game unlocked, in its order: `brink` under 20 health and alive, then `survivor`; nothing for a scout.
+      expect(got.unlocks, label).toEqual(said(output.notes, 'unlock'));
+      if (got.unlocks.includes('brink')) brinks++;
+      expect(got.scoutLost, label).toBe(said(output.notes, 'removed').length === 1);
+      if (got.scoutLost) expect(said(output.notes, 'removed'), label).toEqual(['s4000']);
+      else if (input.scoutHurt !== null) expect(got.scoutHurtAfter, label).toBe(output.genomes[0]?.[1].hurt);
+      else expect(got.scoutHurtAfter, label).toBeNull();
+    }
+    // The fixture holds the edge itself: 21 health less 1 leaves 20 and no `brink`; 20 less 1 leaves 19 and unlocks it.
+    const at = (hp: number) => group('route').find((c) => c.input.dmg === 1 && c.input.suit === 0 && c.input.hp === hp && c.input.scoutHurt === null)!;
+    expect([at(21).output.hp, said(at(21).output.notes, 'unlock')]).toEqual([20, ['survivor']]);
+    expect([at(20).output.hp, said(at(20).output.notes, 'unlock')]).toEqual([19, ['brink', 'survivor']]);
+    expect(brinks).toBeGreaterThan(20);
+  });
+
+  it('with no beast for a scout the explorer takes the strike, as in the two recorded cases of a scout that is a plant or gone', () => {
+    // The save's carrier cannot name a plant or a missing creature the scout, so the action finds no scout there.
+    for (const { input, output } of group('route-other')) {
+      const got = routeStrike({ dmg: input.dmg, suitCut: 0, hp: 100, scoutHurt: null });
+      expect([got.target, got.hpAfter, got.dead, got.unlocks], input.name).toEqual(['explorer', output.hp, output.dead, said(output.notes, 'unlock')]);
+      expect(said(output.notes, 'removed'), input.name).toEqual([]);
     }
   });
 
@@ -115,12 +132,38 @@ describe('the scan hazard against the legacy game', () => {
     }
   });
 
-  it('a scout that is a plant, or gone from the Compendium, takes no strike: the explorer does', () => {
-    for (const { input, output } of group('route-other')) {
-      expect(output.hp, input.name).toBe(100 - suitedDamage(input.dmg, 0));
-      expect(said(output.notes, 'removed'), input.name).toEqual([]);
-      expect(said(output.notes, 'unlock'), input.name).toEqual(['survivor']);
+  it('what each of the 55 recorded presses unlocked, counted, said to the Charters and catalogued is what the legacy game did', () => {
+    const seen = { civ: 0, spacefar: 0, brink: 0, deeds: 0, quiet: 0, stored: 0, held: 0, unscanned: 0 };
+    for (const { input, output } of group('press')) {
+      const danger = bioscanDanger({ powers: input.powers, planetType: input.ptype, settled: input.settled === true, depthTax: taxOf(input.place) });
+      const strike = resolveBioscanPress({
+        danger, planetType: input.ptype, draws: input.values, reinforcedHull: (input.tech ?? []).includes('hull1'), suitCut: input.suit ?? 0,
+        hp: input.hp, scoutHurt: input.scoutHurt ?? null,
+      });
+      const label = JSON.stringify(input);
+      // The recorder's Paragon table is the case's own; its Paragon i has seed 9000 + i.
+      const site = (input.sites ?? []).find(([seed]) => seed === input.seed);
+      const before = { surveyed: input.surveyed ?? [], surveys: (input.surveyed ?? []).length, paragons: input.stats?.paragons ?? 0 };
+      const reveal = !strike.scanCompletes ? null : revealBiosphere({
+        planetSeed: input.seed, surveyed: before.surveyed, surveys: before.surveys, badge: input.badge ?? null,
+        paragon: site === undefined ? null : { index: site[1], held: (input.known ?? []).includes(`s${9000 + site[1]}`) }, paragons: before.paragons,
+      });
+      // Everything the legacy game unlocked, in its order: the strike's, then the civilization's.
+      expect([...strike.unlocks, ...(reveal?.unlocks ?? [])], label).toEqual(said(output.notes, 'unlock'));
+      // The `bioscan` deed is said once, by a world new to the surveyed set, and by no other press.
+      expect(reveal?.firstScan === true ? ['bioscan'] : [], label).toEqual(said(output.notes, 'event'));
+      expect(reveal?.surveyed ?? before.surveyed, label).toEqual(output.surveyed);
+      expect(reveal?.surveys ?? before.surveys, label).toBe(output.stats.surveys);
+      // A Paragon is stored at its home unless the Compendium holds it, as "Paragon site #N", and only then counted.
+      expect(reveal == null || reveal.paragon === null ? [] : [[`s${9000 + reveal.paragon}`, `Paragon site #${reveal.paragon + 1}`]], label).toEqual(said(output.notes, 'stored'));
+      expect(reveal?.paragons ?? before.paragons, label).toBe(output.stats.paragons ?? 0);
+      for (const id of said(output.notes, 'unlock')) if (id === 'civ' || id === 'spacefar' || id === 'brink') seen[id]++;
+      if (reveal === null) seen.unscanned++; else if (reveal.firstScan) seen.deeds++; else seen.quiet++;
+      if (reveal != null && reveal.paragon !== null) seen.stored++;
+      if (site !== undefined && reveal != null && reveal.paragon === null) seen.held++;
     }
+    // The fixture holds each answer both ways, so none of the comparisons above is empty.
+    expect(seen).toEqual({ civ: 2, spacefar: 1, brink: 4, deeds: 50, quiet: 1, stored: 3, held: 1, unscanned: 4 });
   });
 
   it('what a scan says is what the legacy game said, for every recorded press the save can hold', () => {
@@ -168,15 +211,6 @@ describe('the scan hazard against the legacy game', () => {
       icon: null, title: 'Renamed', message: ['Rex it is — the name travels inside its creature code too.'],
     });
   });
-
-  it('a scan that kills the explorer does not complete, and one that costs the scout its life does', () => {
-    const fatal = group('press').find((c) => c.input.name === 'explorer-dies')!;
-    expect(fatal.output.surveyed).toEqual([]);
-    expect(fatal.output.hp).toBe(0);
-    const lost = group('press').find((c) => c.input.name === 'scout-lost')!;
-    expect(lost.output.surveyed).toEqual([77]);
-    expect(lost.output.scout).toBeNull();
-  });
 });
 
 describe('the scout\'s lesson against the legacy game', () => {
@@ -187,13 +221,7 @@ describe('the scout\'s lesson against the legacy game', () => {
       expect(scoutLessonXp(input.xp ?? null, input.n), JSON.stringify(input)).toBe(Math.min(486, output.xp!));
     }
   });
-
-  it('a newly catalogued species teaches a standing scout 2, and only then', () => {
-    const lesson = Object.fromEntries(group('discover').map((c) => [c.input.name, c.output.scoutXp]));
-    expect(lesson).toEqual({
-      'scout-learns': 6, 'no-scout': 4, 'scout-gone': 4, 'already-known': 4, 'the-scout-itself': 4, rare: 6, rarer: 6, 'flora-scout': 4,
-    });
-  });
+  // The recorded `discover` cases are compared where the lesson is made: through a capture, in care-scout.test.ts.
 });
 
 describe('the Fifty Paragons against the legacy game', () => {

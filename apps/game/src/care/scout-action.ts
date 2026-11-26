@@ -10,8 +10,7 @@
    unchanged press; here the press is the legacy toggle on the Compendium's page. A Paragon's page has no creature
    behind it in the save's carrier, so it cannot be named the scout (the legacy game could). */
 import type { SaveStateV2, V5ExtensionWrite } from '@cf/persistence';
-import type { CareCharterStager, CareSettleDeps } from './bioscan-action';
-import { commitCare, refuse, settleCare, type CareAuthority, type CareOutcome } from './commit';
+import { commitCare, refuse, settleCare, type CareAuthority, type CareCharterStager, type CareOutcome, type CareSettleDeps } from './commit';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 
 export const SCOUT_ACTION = 'scout' as const;

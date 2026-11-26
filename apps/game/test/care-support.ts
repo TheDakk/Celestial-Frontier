@@ -4,7 +4,7 @@ import { classifyRealm, describeSpecies, sapienceTier, type Genome } from '@cf/d
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership, type CodexEntry, type SaveStateV2 } from '@cf/persistence';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
-import { settleBioscanV1, settleRenameV1, settleScoutV1 } from '../src/care';
+import { bioscanFenceV1, settleBioscanV1, settleRenameV1, settleScoutV1 } from '../src/care';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { actionPage, type ActionPageOptions } from './action-support';
 import { earthRows } from './capture-support';
@@ -22,6 +22,14 @@ export const CIVILIZED = () => world(HOME, { seed: 515201657, x: -336.4370926050
 export const ADVANCED = () => world(HOME, { seed: 4052891079, x: -101.48705160291865, y: -45.18662302521989 }, 3661060526);
 /** The home world of the first Paragon: an ocean world of four species and no beast, far from home. */
 export const PARAGON_HOME = () => world({ seed: 2833478784, x: 385503.1449741684, y: -142745.095927082 }, { seed: 102306174, x: -11.75427312310785, y: 613.6321912351996 }, 3877631020);
+
+/** A terran world of another galaxy, in the outermost region (depth tax 2.5): its strongest beast has power 314, so
+    danger (314 - 170) / 520 and a wound of (10 + 314 / 22) x 2.5 = 61. At home's 0.8 the wound would be 19. */
+export const FAR = () => world({ seed: 2833478784, x: 385503.1449741684, y: -142745.095927082 }, { seed: 2629704336, x: -210.78917986806482, y: -226.7044459632598 }, 728254392);
+/** A venus world with a beast, in a galaxy of the outermost region. At epoch 0 its beast has power 350: danger
+    (350 - 170) / 520 + 0.12 and a wound of (10 + 350 / 22) x 2.5 = 65. At epoch 1 the beast is another (279):
+    danger 0.3296, wound 57. */
+export const VENUS = () => world({ seed: 2868094357, x: -239784.7076361999, y: 733857.9793787561 }, { seed: 2817075071, x: 268.7715036738664, y: 643.8762226877734 }, 2615200176);
 
 /** Earth's danger: its strongest beast has power 284, so (284 - 170) / 520, and a wound of (10 + 284 / 22) x 0.8. */
 export const EARTH_DANGER = (284 - 170) / 520;
@@ -63,7 +71,12 @@ export async function carePage(options: ActionPageOptions & { readonly held?: Re
   const deps = { door: page.loop, charters: stageStarterCharterEventV1 };
   return {
     ...page,
-    scan: (address: CanonicalCF1WorldAddress) => settleBioscanV1(deps, { address, codecNow: NOW }),
+    /** The fence of the Discover Life row as the stored state shows it now. */
+    fence: (address: CanonicalCF1WorldAddress) => bioscanFenceV1(page.durable(), address),
+    /** One press of Discover Life on the row shown now, or on the row whose fence is `shown`. */
+    scan: (address: CanonicalCF1WorldAddress, shown?: string) =>
+      settleBioscanV1(deps, { address, shown: shown ?? bioscanFenceV1(page.durable(), address), codecNow: NOW }),
+    deps,
     scout: (speciesId: string) => settleScoutV1(deps, { speciesId, codecNow: NOW }),
     rename: (speciesId: string, rawName: string) => settleRenameV1({ door: page.loop, live: () => page.live }, { speciesId, rawName, codecNow: NOW }),
     /** Whether the stored ownership carrier and the stored state's Compendium, names and scout say the same. */

@@ -13,6 +13,7 @@ import type {
   V5ExtensionWrite,
   V5Extensions,
 } from '@cf/persistence';
+import type { CanonicalCF1WorldAddress } from '@cf/scene';
 
 /** A refusal of the action's own, raised before storage or inside the receipt's derivation: nothing is written. */
 export class CareRefusal extends Error {
@@ -145,4 +146,22 @@ export async function settleCare<Facts>(
     return outcome.kind !== 'refused' ? outcome.transaction : outcome.transaction ?? { kind: 'declined', reason: outcome.detail };
   });
   return own ?? Object.freeze({ kind: 'refused', detail: answer.kind === 'refused' ? answer.reason : answer.kind, transaction: null });
+}
+
+/** What the guidance system's Charter staging answers, as far as a care action reads it. */
+export type CareCharterStage =
+  | Readonly<{ kind: 'refused'; reason: string }>
+  | Readonly<{ kind: 'ready' | 'current'; facts: Readonly<{ progressIds: readonly string[]; completions: ReadonlyArray<Readonly<{ id: string }>>; extensionWrites: readonly V5ExtensionWrite[] }> }>;
+/** Stages a deed on the draft against the Charters accepted: the guidance system's own function. */
+export type CareCharterStager = (input: {
+  draft: SaveStateV2;
+  extensions: V5Extensions;
+  event: Readonly<{ kind: 'bioscan'; address: CanonicalCF1WorldAddress }> | Readonly<{ kind: 'scout-set'; scoutId: string }>;
+  receiptOrdinal: number;
+  activePlayMs?: number;
+}) => CareCharterStage;
+/** What a care action that says a deed needs of the page: the save loop's door and the Charters' staging. */
+export interface CareSettleDeps {
+  readonly door: CareDoor;
+  readonly charters: CareCharterStager;
 }

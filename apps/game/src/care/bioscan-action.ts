@@ -5,16 +5,20 @@
    - the row stands on a world with life that is grounded (Earth, landed on or conquered) and not yet revealed: its
      seed is not in the surveyed set and some species of it is not in the Compendium (13719, 13932-13937); the
      lessons of training do not gate it (14236-14243 gate only the card's `data-act` buttons);
-   - the press rolls the hazard, counts a strike in `stats.scanhits`, and routes it to the scout or the explorer;
-     an explorer who dies ends the press there (14294-14298; the rules are `bioscan-hazard.ts`);
-   - a strike on the explorer unlocks `survivor`, dead or alive, and `brink` when under 20 health is left
-     (`routeHit` 13167-13169, `damageExplorer` 19336-19337);
-   - then the scan: a world new to the surveyed set joins it, `stats.surveys` becomes the set's size, and the
-     `bioscan` deed is said to the Charters and the Ascent (`autoScanWorld` 14889-14894, `gameEvent`
-     25358-25363); a civilized world unlocks `civ`, a spacefaring one `spacefar` as well (14895-14896, the card's
-     badge 5145-5147 with `civBadge` at the civilization rows);
-   - at a Paragon's home world the Paragon is catalogued without a capture and `stats.paragons` rises (14904-14917);
-     a stored page raises the best find and the achievements are looked at (`onSpeciesStored` 16474-16480).
+   - the press rolls with the danger of the card on screen (`dangerOf(_lastDesc)` 14293), counts a strike in
+     `stats.scanhits` whoever takes it (14295), and routes it to the scout or the explorer; an explorer who dies
+     ends the press there (14294-14298; the rules, and what a strike unlocks, are `bioscan-hazard.ts`);
+   - then the scan: the world joins the surveyed set, `stats.surveys` becomes the set's size, a civilized world
+     unlocks its achievements and a Paragon's home gives up its Paragon (`autoScanWorld` 14888-14922; the rules
+     are `bioscan-reveal.ts`); the `bioscan` deed is said to the Charters and the Ascent (`gameEvent`
+     25358-25363), which hear nothing in training (24908, 25285). The Ascent's goal `c2-scan` has no place filter
+     (25232), so Earth's scan counts;
+   - a stored page raises the best find and the achievements are looked at (`onSpeciesStored` 16474-16480).
+
+   The press is held to the card it was made on, as a capture is: the row's fence names the world, the epoch its
+   roster was read at and the danger shown. A press whose fence is not the stored state's is refused and writes
+   nothing, so the roll is never made at a danger the player was not shown. (The legacy game kept the card on
+   screen and rolled with it, epoch turned or not; here the player is shown the new row and presses again.)
 
    NOT BUILT, and refused by name so that nothing else happens in its place:
    - a strike that would cost the scout its life (13154-13159 removes it from the Compendium and the scan goes on).
@@ -58,7 +62,10 @@ import {
 } from '@cf/persistence';
 import { ascStageOf, bankBioscan, reconcileV2Chapters, type CanonicalCF1WorldAddress } from '@cf/scene';
 import { bioscanDanger, creatureCondition, depthTax, resolveBioscanPress, type BioscanDanger, type CreatureConditionLabel } from './bioscan-hazard';
-import { commitCare, refuse, settleCare, type CareAuthority, type CareDoor, type CareOutcome, type CareReceipt, type CareStaged } from './commit';
+import { revealBiosphere } from './bioscan-reveal';
+import {
+  commitCare, refuse, settleCare, type CareAuthority, type CareCharterStager, type CareOutcome, type CareReceipt, type CareSettleDeps, type CareStaged,
+} from './commit';
 import { compendiumId, compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 import { paragonIndexAt } from './paragon-finder';
 
@@ -67,23 +74,9 @@ export const BIOSCAN_RECEIPT_KIND_V1 = 'care-bioscan-v1' as const;
 /** The hazard's value, then the value that picks the mishap's words. */
 export const BIOSCAN_DOMAINS_V1 = Object.freeze([DOMAINS.surveyHazard, DOMAINS.hazardFlavor] as const);
 const REINFORCED_HULL = 'hull1';
-const BRINK_HP = 20;
 
 /** Why Discover Life does not stand on a world, in the legacy card's order. */
 export type BioscanGateV1 = 'no-life' | 'not-landed' | 'already-revealed';
-
-/** What the guidance system's Charter staging answers, as far as a care action reads it. */
-export type CareCharterStage =
-  | Readonly<{ kind: 'refused'; reason: string }>
-  | Readonly<{ kind: 'ready' | 'current'; facts: Readonly<{ progressIds: readonly string[]; completions: ReadonlyArray<Readonly<{ id: string }>>; extensionWrites: readonly V5ExtensionWrite[] }> }>;
-/** Stages a deed on the draft against the Charters accepted: the guidance system's own function. */
-export type CareCharterStager = (input: {
-  draft: SaveStateV2;
-  extensions: V5Extensions;
-  event: Readonly<{ kind: 'bioscan'; address: CanonicalCF1WorldAddress }> | Readonly<{ kind: 'scout-set'; scoutId: string }>;
-  receiptOrdinal: number;
-  activePlayMs?: number;
-}) => CareCharterStage;
 
 interface WorldCard {
   readonly planetType: string;
@@ -124,6 +117,11 @@ export function bioscanGateV1(state: SaveStateV2, extensions: V5Extensions, addr
 /** The danger the card shows for this world now. */
 export function bioscanDangerV1(state: SaveStateV2, address: CanonicalCF1WorldAddress): BioscanDanger {
   return dangerOf(state, address, cardOf(address, state.EPOCH_BASE));
+}
+const fenceOf = (address: CanonicalCF1WorldAddress, epoch: number, danger: BioscanDanger): string => `${address.key}|${epoch}|${danger.pct}|${danger.dmg}`;
+/** What the Discover Life row showed, to hold a press to: the world, the epoch its roster was read at and its danger. */
+export function bioscanFenceV1(state: SaveStateV2, address: CanonicalCF1WorldAddress): string {
+  return fenceOf(address, state.EPOCH_BASE, bioscanDangerV1(state, address));
 }
 function dangerOf(state: SaveStateV2, address: CanonicalCF1WorldAddress, card: WorldCard): BioscanDanger {
   return bioscanDanger({
@@ -169,8 +167,20 @@ export interface BioscanActionInputV1 {
   /** The last stored state. */
   readonly state: SaveStateV2;
   readonly address: CanonicalCF1WorldAddress;
+  /** The fence of the row the player pressed (`bioscanFenceV1`). */
+  readonly shown: string;
   readonly codecNow: number;
   readonly charters: CareCharterStager;
+}
+
+/** Everything a press must pass before a value is drawn: the row stands, and it is the row the player was shown. */
+function ready(input: BioscanActionInputV1, state: SaveStateV2, extensions: V5Extensions): Readonly<{ card: WorldCard; danger: BioscanDanger }> {
+  const card = cardOf(input.address, state.EPOCH_BASE);
+  const gate = gateOf(state, extensions, input.address, card);
+  if (gate !== null) return refuse(gate);
+  const danger = dangerOf(state, input.address, card);
+  if (fenceOf(input.address, state.EPOCH_BASE, danger) !== input.shown) return refuse('presentation:changed');
+  return { card, danger };
 }
 
 function unlock(draft: SaveStateV2, id: 'survivor' | 'brink' | 'civ' | 'spacefar'): void {
@@ -179,24 +189,20 @@ function unlock(draft: SaveStateV2, id: 'survivor' | 'brink' | 'civ' | 'spacefar
   if (join.added) draft.unlocked = [...join.nextUnlockedIds];
 }
 
-function stage(input: BioscanActionInputV1, receipt: CareReceipt, rolled: boolean): CareStaged<BioscanFactsV1> {
+function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<BioscanFactsV1> {
   const { address } = input;
   const { draft, extensions } = receipt;
   const seed = address.planet.seed;
-  const card = cardOf(address, draft.EPOCH_BASE);
-  const gate = gateOf(draft, extensions, address, card);
-  if (gate !== null) return refuse(gate);
-  const danger = dangerOf(draft, address, card);
-  if ((danger.pct > 0) !== rolled) return refuse('hazard:route-changed');
+  const { card, danger } = ready(input, draft, extensions);
   const loadout = readArc2EngineeringLoadout(extensions);
   if (loadout.kind !== 'loaded') return refuse(`gear:${loadout.kind}`);
   const ownership = ownershipOf(extensions);
   // The scout takes a strike only while it is a beast of the Compendium (13150-13151).
-  const scoutRow = draft.scoutId === null ? null : compendiumRow(ownership, draft.scoutId);
-  const scout = scoutRow?.creature ?? null;
+  const creature = draft.scoutId === null ? null : compendiumRow(ownership, draft.scoutId)?.creature ?? null;
+  const standing = draft.scoutId === null || creature === null ? null : { id: draft.scoutId, creature };
   const resolved = resolveBioscanPress({
     danger, planetType: card.planetType, draws: receipt.draws, reinforcedHull: draft.techOwned.includes(REINFORCED_HULL),
-    suitCut: loadout.capabilities.bioscanDamageReduction, hp: draft.hp, scoutHurt: scout === null ? null : scout.hurt ?? 0,
+    suitCut: loadout.capabilities.bioscanDamageReduction, hp: draft.hp, scoutHurt: standing === null ? null : standing.creature.hurt ?? 0,
   });
   if (resolved.scoutLost) return refuse('scout-loss:not-carried');
 
@@ -207,20 +213,22 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt, rolled: boolea
   const touched: string[] = [];
   let scoutFact: BioscanFactsV1['scout'] = null;
   if (resolved.hostile) {
+    // A strike is counted whoever takes it (14295).
     draft.stats = { ...draft.stats, scanhits: (draft.stats.scanhits ?? 0) + 1 };
-    if (resolved.target === 'scout' && scout !== null && resolved.scoutHurtAfter !== null && draft.scoutId !== null) {
-      const hurt = resolved.scoutHurtAfter;
+    if (resolved.target === 'scout') {
+      // The strike was routed to the scout because one stands, and a scout it would cost its life is refused above.
+      const { id, creature: scout } = standing!;
+      const hurt = resolved.scoutHurtAfter!;
       contents.creatures = contents.creatures.map((row) => row === scout ? createCreatureInstanceV1({ ...scout, hurt }) : row);
-      touched.push(draft.scoutId);
+      touched.push(id);
       scoutFact = {
-        id: draft.scoutId, name: draft.codex.find(([id]) => id === draft.scoutId)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0, hurtAfter: hurt,
+        id, name: draft.codex.find(([held]) => held === id)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0, hurtAfter: hurt,
         condition: creatureCondition(hurt).label,
       };
     } else {
       draft.hp = resolved.hpAfter;
-      unlock(draft, 'survivor');
-      if (!resolved.dead && resolved.hpAfter < BRINK_HP) unlock(draft, 'brink');
     }
+    for (const id of resolved.unlocks) unlock(draft, id);
   }
 
   let firstScan = false;
@@ -228,40 +236,42 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt, rolled: boolea
   let paragon: BioscanFactsV1['paragon'] = null;
   let paragonEntry: CodexEntry | null = null;
   if (resolved.scanCompletes) {
-    if (!draft.surveyedSet.some((world) => Number(world) === seed)) {
-      firstScan = true;
-      // The set holds planet seeds as the legacy save does.
-      draft.surveyedSet = [...draft.surveyedSet, seed as unknown as string];
-      draft.stats = { ...draft.stats, surveys: draft.surveyedSet.length };
-      if (draft.tutDone) {
-        const staged = input.charters({ draft, extensions, event: { kind: 'bioscan', address }, receiptOrdinal: receipt.receiptOrdinal, activePlayMs: receipt.activePlayMs });
-        if (staged.kind === 'refused') return refuse(`charter:${staged.reason}`);
-        charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
-        writes.push(...staged.facts.extensionWrites);
-        const progress = { ...draft.ascProg };
-        if (bankBioscan(draft.ascCh, progress, address)) {
-          const reconciled = reconcileV2Chapters(draft.ascCh, progress, ascStageOf(draft.items, draft.ascCh));
-          if (reconciled === null) return refuse('ascent:invalid');
-          draft.ascProg = progress;
-          draft.ascCh = reconciled.nextChapter;
-        }
+    const index = paragonIndexAt(seed);
+    const reveal = revealBiosphere({
+      planetSeed: seed, surveyed: draft.surveyedSet.map(Number), surveys: draft.stats.surveys ?? 0, badge: card.badge,
+      paragon: index === null ? null : { index, held: draft.codex.some(([id]) => id === compendiumId(paragonSeedV1(index))) },
+      paragons: draft.stats.paragons ?? 0,
+    });
+    // The gate has refused a world already in the set, so this scan is the world's first and its deed is said.
+    firstScan = reveal.firstScan;
+    draft.surveyedSet = [...draft.surveyedSet, seed];
+    draft.stats = { ...draft.stats, surveys: reveal.surveys };
+    if (draft.tutDone) {
+      const staged = input.charters({ draft, extensions, event: { kind: 'bioscan', address }, receiptOrdinal: receipt.receiptOrdinal, activePlayMs: receipt.activePlayMs });
+      if (staged.kind === 'refused') return refuse(`charter:${staged.reason}`);
+      charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
+      writes.push(...staged.facts.extensionWrites);
+      const progress = { ...draft.ascProg };
+      if (bankBioscan(draft.ascCh, progress, address)) {
+        const reconciled = reconcileV2Chapters(draft.ascCh, progress, ascStageOf(draft.items, draft.ascCh));
+        if (reconciled === null) return refuse('ascent:invalid');
+        draft.ascProg = progress;
+        draft.ascCh = reconciled.nextChapter;
       }
     }
-    if (card.badge === 'Civilized' || card.badge === 'Advanced') unlock(draft, 'civ');
-    if (card.badge === 'Advanced') unlock(draft, 'spacefar');
-    const index = paragonIndexAt(seed);
-    if (index !== null && !draft.codex.some(([id]) => id === compendiumId(paragonSeedV1(index)))) {
-      const genome = paragonGenomeV1(index);
+    for (const id of reveal.unlocks) unlock(draft, id);
+    if (reveal.paragon !== null) {
+      const genome = paragonGenomeV1(reveal.paragon);
       const identity = canonicalGenomeIdentityV1(genome);
       const recordId = ownershipContentId('discovery', JSON.stringify({
-        schema: 'care-paragon-scan/v1', parent: ownershipStateDigestV1(ownership), receiptOrdinal: receipt.receiptOrdinal, index, worldKey: address.key,
+        schema: 'care-paragon-scan/v1', parent: ownershipStateDigestV1(ownership), receiptOrdinal: receipt.receiptOrdinal, index: reveal.paragon, worldKey: address.key,
       })) as DiscoveryRecordId;
       contents.discoveries = [...contents.discoveries, createParagonDiscoveryRecordV1({
-        recordId, speciesId: identity.speciesId, paragonIndex: index, worldAddress: address, receiptOrdinal: receipt.receiptOrdinal,
+        recordId, speciesId: identity.speciesId, paragonIndex: reveal.paragon, worldAddress: address, receiptOrdinal: receipt.receiptOrdinal,
       })];
       contents.catalogSpecies = [...contents.catalogSpecies, createCatalogSpeciesV1({ identity, alias: null, firstObservationId: recordId })];
-      draft.stats = { ...draft.stats, paragons: (draft.stats.paragons ?? 0) + 1 };
-      paragon = { index, speciesId: compendiumId(genome.seed), name: '', tier: null };
+      draft.stats = { ...draft.stats, paragons: reveal.paragons };
+      paragon = { index: reveal.paragon, speciesId: compendiumId(genome.seed), name: '', tier: null };
     }
   }
   if (touched.length > 0 || paragon !== null) {
@@ -293,7 +303,7 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt, rolled: boolea
   }
   const held = new Set(draft.codex.map(([id]) => id));
   const facts: BioscanFactsV1 = {
-    worldKey: address.key, planetSeed: seed, danger: { pct: danger.pct, dmg: danger.dmg }, rolled, hostile: resolved.hostile, damage: resolved.damage,
+    worldKey: address.key, planetSeed: seed, danger: { pct: danger.pct, dmg: danger.dmg }, rolled: danger.pct > 0, hostile: resolved.hostile, damage: resolved.damage,
     flavour: resolved.flavour, target: resolved.target, hpBefore, hpAfter: draft.hp, dead: resolved.dead, scout: scoutFact,
     scanned: resolved.scanCompletes, firstScan, lifeForms: card.species.length,
     uncatalogued: card.species.filter((g) => !held.has(compendiumId(g.seed))).length,
@@ -310,13 +320,8 @@ export async function commitBioscanV1(input: BioscanActionInputV1): Promise<Bios
     runtime: input.runtime, state: input.state, codecNow: input.codecNow, receiptKind: BIOSCAN_RECEIPT_KIND_V1,
     // A world with no danger reads no random value (14294): its scan is a receipt ordinal alone.
     route: () => rolled ? { domains: BIOSCAN_DOMAINS_V1 } : { operation: `care.bioscan:${address.key}` },
-    preflight: (state, extensions) => {
-      const card = cardOf(address, state.EPOCH_BASE);
-      const gate = gateOf(state, extensions, address, card);
-      if (gate !== null) refuse(gate);
-      rolled = dangerOf(state, address, card).pct > 0;
-    },
-    stage: (receipt) => stage(input, receipt, rolled),
+    preflight: (state, extensions) => { rolled = ready(input, state, extensions).danger.pct > 0; },
+    stage: (receipt) => stage(input, receipt),
     // The save never holds a dead explorer: its reader lifts the health to 1 (16783).
     verify: (stored, facts) => stored.hp !== Math.max(1, facts.hpAfter) ? 'health'
       : facts.scanned !== stored.surveyedSet.some((world) => Number(world) === address.planet.seed) ? 'surveyed-set'
@@ -328,11 +333,7 @@ export async function commitBioscanV1(input: BioscanActionInputV1): Promise<Bios
   });
 }
 
-export interface CareSettleDeps {
-  readonly door: CareDoor;
-  readonly charters: CareCharterStager;
-}
 /** One press of Discover Life as the page makes it. */
-export function settleBioscanV1(deps: CareSettleDeps, input: Pick<BioscanActionInputV1, 'address' | 'codecNow'>): Promise<BioscanActionOutcomeV1> {
+export function settleBioscanV1(deps: CareSettleDeps, input: Pick<BioscanActionInputV1, 'address' | 'shown' | 'codecNow'>): Promise<BioscanActionOutcomeV1> {
   return settleCare(deps.door, BIOSCAN_ACTION, (runtime, durable) => commitBioscanV1({ ...input, runtime, state: durable, charters: deps.charters }));
 }

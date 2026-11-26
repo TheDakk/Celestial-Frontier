@@ -14,7 +14,9 @@
    - a Field Scout that is a beast of the Compendium takes it: its hurt rises by the wound / 80 held to 0.12..0.6,
      up to 0.95; a scout that would reach 1 is lost (13150-13166);
    - with no scout the explorer takes it and may die; a dead explorer's scan does not complete (`damageExplorer`
-     19329-19339, `routeHit` 13167-13170, 14298).
+     19329-19339, `routeHit` 13167-13170, 14298);
+   - a strike the explorer lives through with under 20 health left unlocks `brink` (19337), and a strike on the
+     explorer unlocks `survivor`, dead or alive (13168).
    The painted port (`bioscan-hazard.ts`, `bioscan.ts`) kept the explorer at 1 health and the scout at 0.85: neither
    is the legacy game's, and neither is carried. */
 import { regionAt } from '@cf/domain-strays';
@@ -25,6 +27,8 @@ export const DEPTH_TAX_BY_REGION: readonly number[] = Object.freeze([1.0, 1.3, 1
 export const REINFORCED_HULL_SHARE = 0.75;
 export const SUIT_CUT_MAX = 0.7;
 export const SCOUT_HURT_MAX = 0.95;
+/** Under this health after a strike, an explorer who lived was at the brink (19337). */
+export const BRINK_HP = 20;
 
 /** The depth tax of the home galaxy, of a region beyond it, or of no place at all. */
 export function depthTaxOf(home: boolean, region: number | null): number {
@@ -95,6 +99,37 @@ export function creatureCondition(hurt: number | null | undefined): Readonly<{ h
   return Object.freeze({ h, label: h < 0.3 ? 'Bruised' : h < 0.6 ? 'Injured' : 'Critical' });
 }
 
+/** What a strike on the explorer unlocks, in the legacy order. */
+export type StrikeUnlock = 'brink' | 'survivor';
+export interface StrikeRoute {
+  /** The wound after the suit. */
+  readonly damage: number;
+  readonly target: 'scout' | 'explorer';
+  readonly hpAfter: number;
+  readonly dead: boolean;
+  readonly scoutLost: boolean;
+  /** The scout's hurt after the strike; null when it took none or was lost. */
+  readonly scoutHurtAfter: number | null;
+  readonly unlocks: readonly StrikeUnlock[];
+}
+/** Who takes a strike of `dmg` (the wound behind the hull) and what it does (`routeHit` 13144-13171). `scoutHurt`
+    is the hurt of a standing scout that is a beast of the Compendium, null with none. */
+export function routeStrike(input: Readonly<{ dmg: number; suitCut: number; hp: number; scoutHurt: number | null }>): StrikeRoute {
+  const damage = suitedDamage(input.dmg, input.suitCut);
+  if (input.scoutHurt !== null) {
+    const wound = scoutWound(damage, input.scoutHurt);
+    return Object.freeze({
+      damage, target: 'scout', hpAfter: input.hp, dead: false, scoutLost: wound.lost, scoutHurtAfter: wound.lost ? null : wound.hurt, unlocks: Object.freeze([]),
+    });
+  }
+  const hpAfter = Math.max(0, input.hp - damage);
+  const dead = hpAfter <= 0;
+  return Object.freeze({
+    damage, target: 'explorer', hpAfter, dead, scoutLost: false, scoutHurtAfter: null,
+    unlocks: Object.freeze<StrikeUnlock[]>(!dead && hpAfter < BRINK_HP ? ['brink', 'survivor'] : ['survivor']),
+  });
+}
+
 export interface BioscanPressResolution {
   /** How many of the two random values the legacy game would have read: 0 with no danger, 1 on a clear roll, 2 on a strike. */
   readonly drawsRead: 0 | 1 | 2;
@@ -109,6 +144,8 @@ export interface BioscanPressResolution {
   readonly scoutLost: boolean;
   /** The scout's hurt after the strike; null when it took none or was lost. */
   readonly scoutHurtAfter: number | null;
+  /** What the strike unlocks, in the legacy order; none when nothing struck or the scout took it. */
+  readonly unlocks: readonly StrikeUnlock[];
   /** Whether the scan goes on to reveal the roster: always, unless the explorer died. */
   readonly scanCompletes: boolean;
 }
@@ -119,7 +156,8 @@ export function resolveBioscanPress(input: Readonly<{
 }>): BioscanPressResolution {
   const { danger, hp } = input;
   const clear = (drawsRead: 0 | 1): BioscanPressResolution => Object.freeze({
-    drawsRead, hostile: false, damage: 0, flavour: null, target: 'none', hpAfter: hp, dead: false, scoutLost: false, scoutHurtAfter: null, scanCompletes: true,
+    drawsRead, hostile: false, damage: 0, flavour: null, target: 'none', hpAfter: hp, dead: false, scoutLost: false, scoutHurtAfter: null,
+    unlocks: Object.freeze([]), scanCompletes: true,
   });
   if (!(danger.pct > 0)) return clear(0);
   const [hazard, flavourValue] = input.draws;
@@ -127,17 +165,6 @@ export function resolveBioscanPress(input: Readonly<{
   if (!(hazard < danger.pct)) return clear(1);
   if (flavourValue === undefined) throw new RangeError('a strike needs its flavour value');
   const flavour = hazardFlavour(input.planetType, flavourValue);
-  const damage = suitedDamage(hullDamage(danger.dmg, input.reinforcedHull), input.suitCut);
-  if (input.scoutHurt !== null) {
-    const wound = scoutWound(damage, input.scoutHurt);
-    return Object.freeze({
-      drawsRead: 2, hostile: true, damage, flavour, target: 'scout', hpAfter: hp, dead: false,
-      scoutLost: wound.lost, scoutHurtAfter: wound.lost ? null : wound.hurt, scanCompletes: true,
-    });
-  }
-  const hpAfter = Math.max(0, hp - damage);
-  return Object.freeze({
-    drawsRead: 2, hostile: true, damage, flavour, target: 'explorer', hpAfter, dead: hpAfter <= 0, scoutLost: false, scoutHurtAfter: null,
-    scanCompletes: hpAfter > 0,
-  });
+  const route = routeStrike({ dmg: hullDamage(danger.dmg, input.reinforcedHull), suitCut: input.suitCut, hp, scoutHurt: input.scoutHurt });
+  return Object.freeze({ ...route, drawsRead: 2, hostile: true, flavour, scanCompletes: !route.dead });
 }

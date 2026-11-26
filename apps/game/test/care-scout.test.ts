@@ -1,6 +1,7 @@
 // Naming a Field Scout, and the lesson a new species teaches it.
 // LEGACY celestial-frontier.html v1.8.9: the Scout button 15150 and its press 15197-15204; `discoverSpecies` 14942;
 // `awardXP` 18224-18234.
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { carePage, earthId, heldPage } from './care-support';
 import { capturePage, captureSession } from './capture-support';
@@ -43,19 +44,59 @@ describe('the Field Scout', () => {
     expect(down).toMatchObject({ kind: 'committed', facts: { scoutAfter: null, charters: { progressIds: [], completedIds: [] } } });
     expect(standing.durable().chDone).toEqual([]);
   });
+
+  it('in training a scout is named and no Charter moves (LEGACY 24908)', async () => {
+    const page = await carePage({ held: [heldPage(11)], change: (state) => { state.tutDone = false; state.chacc = ['st-scout']; } });
+    const named = await page.scout(earthId(11));
+    expect(named).toMatchObject({ kind: 'committed', facts: { scoutAfter: earthId(11), named: true, charters: { progressIds: [], completedIds: [] } } });
+    expect(page.durable().scoutId).toBe(earthId(11));
+    expect(page.durable().chDone).toEqual([]);
+    expect(page.durable().chacc).toEqual(['st-scout']);
+  });
 });
+
+/** The legacy game's own answers: `discoverSpecies` of a new species, with a beast holding 4 experience in the
+    Compendium; `scoutXp` is that beast's experience afterwards (fixtures/v1/recorded/care-field.json, `discover`). */
+type Discover = { group: string; input: { name: string; scout: string | null; tier: number }; output: { scoutXp: number | null; stored: unknown[] } };
+const recorded = (JSON.parse(readFileSync(new URL('../../../fixtures/v1/recorded/care-field.json', import.meta.url), 'utf8')) as { cases: Discover[] })
+  .cases.filter((c) => c.group === 'discover');
+const legacy = (name: string): Discover => {
+  const found = recorded.find((c) => c.input.name === name);
+  if (found === undefined) throw new Error(`the fixture holds no discover case ${name}`);
+  return found;
+};
 
 describe('the scout\'s lesson at a capture', () => {
   const hit = captureSession((success) => success < 0.01);
   const miss = captureSession((success) => success > 0.99);
+  const xpOf = (page: { durable(): { codex: ReadonlyArray<readonly [string, { g: Record<string, unknown> }]> } }) => page.durable().codex.find(([id]) => id === earthId(11))?.[1].g.xp;
 
-  it('a newly catalogued species teaches the standing scout 2', async () => {
+  it('a newly catalogued species teaches the standing scout what the legacy game taught it', async () => {
+    // The recorded scout holds 4 experience before; so does this one.
+    const learns = legacy('scout-learns');
+    expect(learns.input.scout).not.toBeNull();
+    expect(learns.output.stored.length).toBeGreaterThan(0);
     const page = await capturePage({ sessionSeed: hit, change: (state) => { state.codex = [heldPage(11, { xp: 4 })]; state.scoutId = earthId(11); } });
     const outcome = await page.press('tame');
-    expect(outcome).toMatchObject({ kind: 'committed', facts: { hit: true, scoutXp: 6 } });
-    expect(page.durable().codex.find(([id]) => id === earthId(11))?.[1].g.xp).toBe(6);
+    expect(outcome).toMatchObject({ kind: 'committed', facts: { hit: true, scoutXp: learns.output.scoutXp } });
+    expect(xpOf(page)).toBe(learns.output.scoutXp);
+    expect(learns.output.scoutXp).toBe(6);
     expect(page.durable().codex).toHaveLength(2);
+    // The species' rarity does not change the lesson: the legacy game taught the same at tier 5 and tier 9.
+    expect([legacy('rare').output.scoutXp, legacy('rarer').output.scoutXp]).toEqual([learns.output.scoutXp, learns.output.scoutXp]);
   });
+
+  it('with no scout standing the same beast learns nothing, as in the legacy game', async () => {
+    const none = legacy('no-scout');
+    expect(none.input.scout).toBeNull();
+    const page = await capturePage({ sessionSeed: hit, change: (state) => { state.codex = [heldPage(11, { xp: 4 })]; } });
+    expect(await page.press('tame')).toMatchObject({ kind: 'committed', facts: { hit: true, scoutXp: null } });
+    expect(xpOf(page)).toBe(none.output.scoutXp);
+    expect(none.output.scoutXp).toBe(4);
+  });
+  // Not compared, for want of a state the save can hold: `scout-gone` and `flora-scout` (the carrier names only a
+  // living beast the scout), `the-scout-itself` and `already-known` (a capture's pool holds no species the
+  // Compendium has, 14866-14872, so neither press can be made).
 
   it('a scout with no experience yet holds 2 after its first lesson', async () => {
     const page = await capturePage({ sessionSeed: hit, change: (state) => { state.codex = [heldPage(11)]; state.scoutId = earthId(11); } });
