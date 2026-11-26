@@ -10,6 +10,7 @@
      Yield, hit or miss (14875); a hit puts the species in the Compendium (14879, `discoverSpecies` 14924-14946,
      `_storeSpecies` 14771-14800);
    - a first-ever species of tier 5 or more pays its tier less 3 in Stardust, counted as earned (14936-14939);
+   - a new species teaches a standing Field Scout 2 experience (14941-14942; `scout-lesson.ts`);
    - a new page raises the best find to its tier, then looks at every achievement and the rank
      (`onSpeciesStored` 16474-16480).
    The odds, the pool and the Yield are `@cf/domain-acquisition`'s rules; the Yield refills by 1,200,000 ms of
@@ -36,6 +37,7 @@ import {
   prepareArc4OwnershipWrite,
   prepareArc9ProgressionRefreshV1,
   projectLegacyOwnershipMirror,
+  readArc4Ownership,
   readF4Authority,
   readWorldIdentity,
   worldIdentityRecord,
@@ -47,6 +49,7 @@ import {
   type V5Extensions,
 } from '@cf/persistence';
 import type { CanonicalCF1WorldAddress } from '@cf/scene';
+import { teachScout } from './scout-lesson';
 import { captureSnapshotV1, type CaptureRosterSource, type CaptureWorldRoster } from './snapshot';
 
 export const CAPTURE_RECEIPT_KIND_V1 = 'arc4-capture' as const;
@@ -113,6 +116,8 @@ export interface CaptureFactsV1 {
   readonly stardust: number;
   /** The Stardust held after the press. */
   readonly essence: number;
+  /** The Field Scout's experience after the lesson a new species taught it; null when nobody was taught. */
+  readonly scoutXp: number | null;
   readonly achievementIds: readonly string[];
 }
 
@@ -188,9 +193,14 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
   const planned = planCaptureV1(preflight, bundle);
   if (planned.kind !== 'planned') throw new CaptureRefusal(`plan:${planned.reason}`);
   const { plan } = planned;
-  const write = prepareArc4OwnershipWrite({ extensions, state: plan.successor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
+  // A new species teaches the scout in the same step of the carrier as the capture itself.
+  const parent = readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+  if (parent.kind !== 'loaded') throw new CaptureRefusal(`ownership:${parent.kind}`);
+  const lesson = plan.hit && plan.firstForSpecies ? teachScout(parent.state, plan.successor, plan.candidate.identity.speciesId) : null;
+  const successor = lesson?.successor ?? plan.successor;
+  const write = prepareArc4OwnershipWrite({ extensions, state: successor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
   if (write.kind !== 'prepared') throw new CaptureRefusal(`ownership:${write.reason}`);
-  const mirror = projectLegacyOwnershipMirror(plan.successor);
+  const mirror = projectLegacyOwnershipMirror(successor);
   if (mirror.kind !== 'projected') throw new CaptureRefusal(`ownership:${mirror.kind}`);
 
   const row = roster.view.all[plan.candidate.sourceOrdinal] as { _earthName?: unknown } | undefined;
@@ -202,8 +212,12 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
   draft.bioX = mirror.bioX.map(([seed, [used, stamp]]) => [seed, [used, stamp]]);
   if (plan.hit) {
     const held = new Map(draft.codex);
-    draft.codex = mirror.codex.map((entry) => [entry.legacyCodexId, held.get(entry.legacyCodexId)
-      ?? codexEntry(entry.legacyCodexId, entry.g as Record<string, unknown>, entry.f, entry.w as Record<string, unknown> | null, plan.tier, name)]);
+    const taught = lesson === null ? null : `s${String(lesson.scoutSeed)}`;
+    draft.codex = mirror.codex.map((entry) => {
+      const was = held.get(entry.legacyCodexId);
+      if (was === undefined) return [entry.legacyCodexId, codexEntry(entry.legacyCodexId, entry.g as Record<string, unknown>, entry.f, entry.w as Record<string, unknown> | null, plan.tier, name)];
+      return [entry.legacyCodexId, entry.legacyCodexId === taught ? { ...was, g: entry.g as Record<string, unknown> } : was];
+    });
     stardust = rareFindStardustV1(plan.tier, plan.firstForSpecies);
     if (stardust > 0) {
       draft.essence += stardust;
@@ -227,7 +241,7 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
   const facts: CaptureFactsV1 = Object.freeze({
     verb: input.verb, worldKey: input.address.key, hit: plan.hit,
     sourceOrdinal: plan.candidate.sourceOrdinal, speciesId: plan.candidate.legacyCatalogueId, name,
-    tier: plan.tier, chance: plan.chance, left: plan.remainingAfter, stardust, essence: draft.essence,
+    tier: plan.tier, chance: plan.chance, left: plan.remainingAfter, stardust, essence: draft.essence, scoutXp: lesson?.xp ?? null,
     achievementIds: Object.freeze(draft.unlocked.filter((id) => !unlockedBefore.has(id))),
   });
   return {

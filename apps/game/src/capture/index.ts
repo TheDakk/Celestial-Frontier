@@ -7,5 +7,6 @@ export {
 export type {
   CaptureActionInputV1, CaptureActionOutcomeV1, CaptureAuthorityV1, CaptureDoorV1, CaptureFactsV1, CaptureGateV1, CaptureTransactionV1,
 } from './action';
+export { CREATURE_XP_MAX, SCOUT_LESSON_XP, scoutLessonXp } from './scout-lesson';
 export { CAPTURE_VERBS, CAPTURE_VERB_COPY, captureCardModel, captureRefusalNotice, captureResultNotices } from './card-model';
 export type { CaptureCardModel, CaptureCopyPart, CaptureNotice } from './card-model';

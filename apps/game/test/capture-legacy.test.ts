@@ -180,7 +180,7 @@ describe('a rare first find', () => {
     expect(rareFindStardustV1(9, false)).toBe(0);
     expect(captureResultNotices({
       verb: 'tame', worldKey: EARTH.key, hit: true, sourceOrdinal: 0, speciesId: 's1', name: 'Auroch', tier: 6, chance: 0.09,
-      left: 3, stardust: 3, essence: 41, achievementIds: [],
+      left: 3, stardust: 3, essence: 41, scoutXp: null, achievementIds: [],
     })[1]).toEqual({ icon: 'stardust', title: 'Rare Find Bonus', message: ['+3 Stardust for a legendary specimen. Total: 41.'] });
   });
 });
@@ -198,7 +198,7 @@ describe('what a press says is what the legacy game said', () => {
       const notice = legacy.refusal !== null ? captureRefusalNotice(verb, legacy.refusal)! : captureResultNotices({
         verb, worldKey: EARTH.key, hit: false, sourceOrdinal: legacy.picked!, speciesId: `s${1000 + legacy.picked!}`, name: `Species ${1000 + legacy.picked!}`,
         tier: 0, chance: captureChanceV1({ verb, tier: 0, ring: 0, contactCapturePoints: 0 }),
-        left: (input.pool ?? group('pool').find(({ input: i }) => i.seed === 133)!.output[19]!) - output[1]![0], stardust: 0, essence: 0, achievementIds: [],
+        left: (input.pool ?? group('pool').find(({ input: i }) => i.seed === 133)!.output[19]!) - output[1]![0], stardust: 0, essence: 0, scoutXp: null, achievementIds: [],
       })[0]!;
       expect([notice.title, notice.message.join('')], JSON.stringify(input)).toEqual([plain(toast[0]), toast[1]]);
       seen++;
