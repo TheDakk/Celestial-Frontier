@@ -86,11 +86,15 @@ export function mapScreen(ports: MapPorts): ScreenDef {
 
       const start = ports.now();
       let last: number | null = null;
-      const time = (): number => (ports.reducedMotion() ? 0 : (ports.now() - start) / 1000);
+      const seconds = (): number => (ports.now() - start) / 1000;
+      const time = (): number => (ports.reducedMotion() ? 0 : seconds());
       /** The clock of the planets' orbits: the map's own, but held while a planet's card is open. */
-      const orbits = orbitClock(time);
+      const orbits = orbitClock(seconds);
+      /** The seconds the orbits have run, for the picture and for a press alike: none under reduced motion, which
+       *  holds every clock of the map at its start whatever the orbit clock has counted. */
+      const orbit = (): number => (ports.reducedMotion() ? 0 : orbits.time());
       const bodiesAt = (camera: Camera): MapBody[] =>
-        [...visibleBodies(nav.nav, camera, view(), orbits.time()), ...supernovaBodies(nav.nav, ports.epoch())];
+        [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch())];
 
       const describe = (kind: string, data: unknown): Descriptor | null => {
         const names = ports.live().customNames;
@@ -123,7 +127,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const { descriptor, action, ping } = cardOf(body);
         if (descriptor === null) return false;
         card.show(descriptor, action, opener);
-        if (body.kind === 'planet') orbits.hold(); else orbits.release();
+        if (body.kind === 'planet') orbits.hold();
         if (ping) ports.sound.ping();
         return true;
       };
@@ -296,7 +300,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const state = ports.live();
         const region = currentRegionOf(Object.keys(state.primeFill || {}).length);
         const shown: MapFrame = {
-          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), orbit: orbits.time(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
+          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), orbit: orbit(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
