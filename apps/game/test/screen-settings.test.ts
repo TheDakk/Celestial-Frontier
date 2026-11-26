@@ -111,6 +111,21 @@ describe('Settings', () => {
     expect((await stored(page.backend)).chartsOn).toBe(false);
   });
 
+  it('a page opened on a save with Star charts on shows On and the charted map', async () => {
+    pretendSize(800, 600);
+    const first = await bootPage({ width: 800, height: 600 });
+    first.openSettings();
+    first.control('charts').click();
+    await first.loop.flush();
+
+    const page = await bootPage({ backend: first.backend, width: 800, height: 600 });
+    runFrames(page, 80);
+    expect(page.live.chartsOn).toBe(true);
+    expect([...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption)).toEqual(expect.arrayContaining(['asteroid belt', 'habitable zone']));
+    page.openSettings();
+    expect([page.control('charts').textContent, page.control('charts').getAttribute('aria-pressed')]).toEqual(['On', 'true']);
+  });
+
   it('the two listening modes are kept on the device, not in the save, and the focus stays on the control pressed', async () => {
     const page = await bootPage();
     page.openSettings();
