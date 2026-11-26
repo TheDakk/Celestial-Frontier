@@ -5,7 +5,7 @@
    characters kept) and a name with nothing left changes nothing (24618); otherwise it becomes the page's name, is
    kept in the names under `c` and the page's id, and unlocks `namer`; then the achievements are looked at, which
    count the names (`commitExplorerName` 24615-24626, `names5` and `names15` 16443-16444). The page's own name is
-   not written here: the save's writer names every page from the names (the legacy reader's rule, 14795-14796).
+   not written here: the save's writer names every page from the names (the legacy rule, 14796-14797).
 
    Ported from the painted port's `arc5-rename-action.ts`, which named a living beast alone; the legacy game names
    any page. A name already the page's own is not stored a second time. */
@@ -20,7 +20,7 @@ export const RENAME_RECEIPT_KIND_V1 = 'care-rename-v1' as const;
 /** The characters a name keeps at most. */
 export const SPECIES_NAME_MAX = 24;
 /** The name as it will be stored; empty when nothing of it is left. Cleaned twice: the cut to 24 characters can
-    leave a space at the end, which the save's reader trims when it cleans every name again (16770; the legacy
+    leave a space at the end, which the save's reader trims when it cleans every name again (16674-16675; the legacy
     game showed that space until the next load). */
 export const cleanSpeciesName = (raw: string): string => cleanName(cleanName(raw, SPECIES_NAME_MAX), SPECIES_NAME_MAX);
 
