@@ -16,6 +16,10 @@ import type { Gaps } from './text';
  *   up, and never under 1), each of its pixels a square block. With `clip` only what lies inside that disc is drawn.
  * - dot: one pixel.
  * - ring: a circle outline of radius r about (x, y), one pixel wide.
+ * - dashes: a ring `width` pixels wide about (x, y), the band between the discs of radius r + (width >> 1) and of
+ *   `width` less, cut into `count` equal arcs. The first begins due right of the middle and they run on toward the
+ *   foot of the picture. Of each arc the first `on` of `of` equal parts are painted and the rest left: solid dashes,
+ *   the same all the way round, with no part of one where the last meets the first.
  * - disc: a filled circle of radius r about (x, y), in level bands of equal height, listed from the top. With
  *   `element`, the sheet's drawing of that name is drawn in its place, tinted by the middle band and spanning the
  *   disc's width, when the sheet has one no wider than the disc; a sheet without one is no gap: the bands are drawn.
@@ -41,6 +45,7 @@ export type SpaceItem =
   | { kind: 'element'; name: string; x: number; y: number; ramp: number; flip?: boolean; span?: number; clip?: { x: number; y: number; r: number } }
   | { kind: 'dot'; x: number; y: number; colour: number }
   | { kind: 'ring'; x: number; y: number; r: number; colour: number }
+  | { kind: 'dashes'; x: number; y: number; r: number; width: number; count: number; on: number; of: number; colour: number }
   | { kind: 'disc'; x: number; y: number; r: number; bands: readonly number[]; element?: string }
   | { kind: 'veil'; x: number; y: number; r: number; colour: number; level: number; inner?: number; clip?: { x: number; y: number; r: number }; light?: boolean }
   | { kind: 'shade'; x: number; y: number; r: number; share: number; toward?: number; inner?: number; clip?: { x: number; y: number; r: number }; out?: { x: number; y: number; r: number } }
@@ -168,11 +173,38 @@ function rootOf(n: number): number {
   return low;
 }
 
+/** A whole turn, in the parts a direction is counted in. */
+const TURN = 65536;
+/** The direction (dx, dy) as a share of a turn, in 65536ths: 0 due right, a quarter of a turn toward the foot of the
+ *  picture; 0 for no direction. By whole numbers alone, and within 42 parts (a 1,500th of a turn) of the true angle;
+ *  a quarter turn of the direction adds a quarter turn exactly. */
+export function turnOf(dx: number, dy: number): number {
+  const ax = Math.abs(dx);
+  const ay = Math.abs(dy);
+  if (ax === 0 && ay === 0) return 0;
+  // The slope from the nearer axis, from 0 to 1 in 32768ths: the largest whole number of them that the long side,
+  // times it, does not pass the short side. Its angle is the slope's own share of an eighth of a turn and a bow of
+  // 2847 parts at most, in the middle of the eighth.
+  const [short, long] = [Math.min(ax, ay), Math.max(ax, ay)];
+  let slope = 0;
+  let high = 32768;
+  while (slope < high) {
+    const middle = (slope + high + 1) >> 1;
+    if (middle * long <= short * 32768) slope = middle;
+    else high = middle - 1;
+  }
+  const eighth = (slope >> 2) + ((((slope * (32768 - slope)) >> 15) * 2847) >> 15);
+  const quarter = ay <= ax ? eighth : (TURN >> 2) - eighth;
+  if (dy >= 0) return dx >= 0 ? quarter : (TURN >> 1) - quarter;
+  return dx < 0 ? (TURN >> 1) + quarter : (TURN - quarter) % TURN;
+}
+
 /**
  * A picture w by h of palette indices, the items painted in order, later ones over earlier ones. Index 0 is the
  * background: a pixel given it shows what lies behind. Whatever falls outside the picture is dropped. An element the
  * sheet lacks draws the stand-in icon centred on its place and is counted in `gaps.elements`. A ring or disc with a
- * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one. A field of fewer than two points
+ * radius below 0 or above MAX_RADIUS is not drawn, nor is a veil or a shade with one, nor dashes whose outer edge is
+ * beyond it or that are of no count; dashes of no width have no pixel. A field of fewer than two points
  * either way, or finer than its grid can count (`du` under 1), is not drawn.
  */
 export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sheet: InterfaceSheet, gaps: Gaps): SpacePicture {
@@ -246,6 +278,21 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
       const inner = up === r ? 0 : Math.min(outer, rootOf(r * r + r - (up + 1) * (up + 1)) + 1);
       row(y + dy, x + inner, x + outer, value);
       row(y + dy, x - outer, x - inner, value);
+    }
+  };
+
+  const dashes = (item: Extract<SpaceItem, { kind: 'dashes' }>): void => {
+    const { x, y, width, count, on, of } = item;
+    const outer = item.r + (width >> 1);
+    if (count < 1 || outer > MAX_RADIUS) return;
+    const value = index(item.colour);
+    for (let dy = Math.max(-outer, -y); dy <= Math.min(outer, h - 1 - y); dy++) {
+      const far = halfOf(outer, Math.abs(dy));
+      const near = halfOf(outer - width, Math.abs(dy));
+      for (let px = Math.max(0, x - far); px <= Math.min(w - 1, x + far); px++) {
+        if (Math.abs(px - x) <= near) { px = Math.max(px, Math.min(w - 1, x + near)); continue; }
+        if (((turnOf(px - x, dy) * count) % TURN) * of < on * TURN) pixels[(y + dy) * w + px] = value;
+      }
     }
   };
 
@@ -379,6 +426,7 @@ export function paintSpace(w: number, h: number, items: readonly SpaceItem[], sh
     else if (item.kind === 'field') field(item);
     else if (item.r < 0 || item.r > MAX_RADIUS) continue;
     else if (item.kind === 'ring') ring(item);
+    else if (item.kind === 'dashes') dashes(item);
     else if (item.kind === 'disc') disc(item);
     else if (item.kind === 'veil') veil(item);
     else shade(item);

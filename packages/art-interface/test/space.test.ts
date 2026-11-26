@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { hashBuffer, toAscii } from '@cf/art-compose';
-import { MAX_RADIUS, ditherRank, fittedWidth, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, type Gaps, type SpaceItem } from '../src/index';
+import { MAX_RADIUS, ditherRank, fittedWidth, nearestColour, nearestRamp, paintSpace, parseInterfaceSheet, turnOf, type Gaps, type SpaceItem } from '../src/index';
 
 const SHEET = parseInterfaceSheet([
   'interface 1',
@@ -342,6 +342,102 @@ describe('painting space items', () => {
   it('a circle too large or with a radius below nothing is not drawn; a very large one is drawn where it crosses', () => {
     expect(paint(2, 2, [{ kind: 'ring', x: -MAX_RADIUS - 1, y: 0, r: MAX_RADIUS + 1, colour: WHITE }, { kind: 'disc', x: 0, y: 0, r: -1, bands: [WHITE] }])).toEqual(['..', '..']);
     expect(paint(3, 3, [{ kind: 'ring', x: 1 - MAX_RADIUS, y: 1, r: MAX_RADIUS, colour: WHITE }])).toEqual(['.1.', '.1.', '.1.']);
+  });
+
+  describe('dashes', () => {
+    const dashed = (r: number, width: number, count: number, on: number, of: number): string[] => {
+      const side = 2 * (r + width) + 1;
+      return paint(side, side, [{ kind: 'dashes', x: r + width, y: r + width, r, width, count, on, of, colour: WHITE }]);
+    };
+    const lit = (lines: readonly string[]): number => lines.join('').split('1').length - 1;
+    /** The pieces of a picture: its lit pixels grouped where they touch, corners included; each piece's pixel count. */
+    const pieces = (lines: readonly string[]): number[] => {
+      const seen = new Set<string>();
+      const sizes: number[] = [];
+      lines.forEach((line, y) => [...line].forEach((c, x) => {
+        if (c !== '1' || seen.has(`${x},${y}`)) return;
+        const queue: [number, number][] = [[x, y]];
+        seen.add(`${x},${y}`);
+        let size = 0;
+        while (queue.length > 0) {
+          const [px, py] = queue.pop()!;
+          size++;
+          for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+            const key = `${px + dx},${py + dy}`;
+            if (lines[py + dy]?.[px + dx] === '1' && !seen.has(key)) { seen.add(key); queue.push([px + dx, py + dy]); }
+          }
+        }
+        sizes.push(size);
+      }));
+      return sizes;
+    };
+    const turned = (lines: readonly string[]): string[] => lines.map((_, y) => lines.map((line) => line[y]).reverse().join(''));
+
+    it('a direction is told as a share of a turn by whole numbers: true to a 1,500th of a turn, and exact by quarter turns', () => {
+      expect([turnOf(5, 0), turnOf(0, 5), turnOf(-5, 0), turnOf(0, -5), turnOf(7, 7), turnOf(-7, 7), turnOf(0, 0)]).toEqual([0, 16384, 32768, 49152, 8192, 24576, 0]);
+      let worst = 0;
+      for (let i = 0; i < 4000; i++) {
+        const [dx, dy] = [Math.round(Math.cos(i * 0.37) * (3 + i)), Math.round(Math.sin(i * 0.37) * (3 + i))];
+        const truth = ((Math.atan2(dy, dx) / (2 * Math.PI)) * 65536 + 65536) % 65536;
+        const off = Math.abs(turnOf(dx, dy) - truth);
+        worst = Math.max(worst, Math.min(off, 65536 - off));
+        expect(turnOf(-dy, dx), `${dx},${dy}`).toBe((turnOf(dx, dy) + 16384) % 65536);
+        expect(Number.isInteger(turnOf(dx, dy))).toBe(true);
+      }
+      expect(worst).toBeLessThan(65536 / 1500);
+      expect(worst).toBeGreaterThan(0);
+    });
+
+    it('painted for the whole of each arc, they are the band between two discs: a ring of their width', () => {
+      for (const [r, width] of [[4, 1], [9, 1], [20, 2], [20, 3], [31, 5]] as const) {
+        const side = 2 * (r + width) + 1;
+        const disc = (radius: number): string[] => paint(side, side, [{ kind: 'disc', x: r + width, y: r + width, r: radius, bands: [WHITE] }]);
+        const [outer, inner] = [disc(r + (width >> 1)), disc(r + (width >> 1) - width)];
+        const band = outer.map((line, y) => [...line].map((c, x) => (c === '1' && inner[y]![x] !== '1' ? '1' : '.')).join(''));
+        expect(dashed(r, width, 7, 1, 1), `radius ${r}, width ${width}`).toEqual(band);
+      }
+    });
+
+    it('are as many separate solid pieces as counted, each a part of the ring, the same all the way round', () => {
+      for (const [r, width, count] of [[60, 1, 12], [60, 3, 12], [45, 2, 8], [100, 1, 40], [150, 1, 172]] as const) {
+        const whole = dashed(r, width, count, 1, 1);
+        const cut = dashed(r, width, count, 6, 11);
+        const found = pieces(cut);
+        expect(found, `radius ${r}, ${count} dashes`).toHaveLength(count);
+        cut.forEach((line, y) => [...line].forEach((c, x) => { if (c === '1') expect(whole[y]![x], `${x},${y}`).toBe('1'); }));
+        // Six parts in eleven of the ring are lit, to within a pixel or two a dash.
+        expect(Math.abs(lit(cut) * 11 - lit(whole) * 6), `radius ${r}`).toBeLessThanOrEqual(2 * width * count * 11);
+        // No dash is a lone dot, and a quarter turn of the picture is the picture.
+        expect(Math.min(...found), `radius ${r}`).toBeGreaterThanOrEqual(2 * width);
+        expect(turned(cut), `radius ${r}`).toEqual(cut);
+      }
+    });
+
+    it('the first dash begins due right of the middle and runs toward the foot of the picture', () => {
+      const cut = dashed(20, 1, 4, 1, 2);
+      // Four dashes of an eighth of a turn each: from the right down to the lower right, and so on round.
+      expect([cut[21]![41], cut[26]![40], cut[20]![41], cut[16]![40]]).toEqual(['1', '1', '.', '.']);
+      expect([cut[41]![21], cut[40]![16], cut[40]![26]]).toEqual(['1', '1', '.']);
+      // The dash ends at the eighth of a turn: lit just short of the diagonal, dark on it and past it.
+      expect([cut[21 + 13]![21 + 15], cut[21 + 14]![21 + 14], cut[21 + 15]![21 + 13]]).toEqual(['1', '.', '.']);
+    });
+
+    it('a share of none paints nothing, and what cannot be drawn is not: no width, no dashes, too large a circle', () => {
+      const blank = Array.from({ length: 9 }, () => '.........');
+      const one = { kind: 'dashes', x: 4, y: 4, r: 3, width: 1, count: 4, on: 1, of: 2, colour: WHITE } as const;
+      expect(lit(paint(9, 9, [one]))).toBeGreaterThan(0);
+      // The last two would cross the middle of the picture, were they drawn.
+      for (const change of [{ on: 0 }, { width: 0 }, { count: 0 }, { r: -1 }, { r: MAX_RADIUS + 1, x: 3 - MAX_RADIUS }, { r: MAX_RADIUS, width: 2, x: 3 - MAX_RADIUS }]) {
+        expect(paint(9, 9, [{ ...one, ...change }]), JSON.stringify(change)).toEqual(blank);
+      }
+      expect(lit(paint(9, 9, [{ ...one, r: MAX_RADIUS, x: 4 - MAX_RADIUS }]))).toBeGreaterThan(0);
+      // A very large one is drawn where a dash of it crosses the picture and not where a gap does: its first dash
+      // begins at its right, and its first gap at its foot. What falls outside is dropped.
+      const vast = { kind: 'dashes', r: MAX_RADIUS, width: 1, count: 2, on: 1, of: 2, colour: WHITE } as const;
+      expect(paint(3, 3, [{ ...vast, x: 1 - MAX_RADIUS, y: 1 }])).toEqual(['.1.', '.1.', '.1.']);
+      expect(paint(3, 3, [{ ...vast, x: 1, y: 1 - MAX_RADIUS }])).toEqual(['...', '...', '...']);
+      expect(paint(3, 3, [{ ...one, x: -9 }])).toEqual(['...', '...', '...']);
+    });
   });
 
   it('a veil is a disc in an ordered dither: its level of every 16 pixels, in a pattern fixed to the picture', () => {
