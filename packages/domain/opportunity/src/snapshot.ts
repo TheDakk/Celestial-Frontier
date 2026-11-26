@@ -249,28 +249,12 @@ function worldSourceFacts(address: CanonicalCF1WorldAddress): WorldOpportunitySo
   });
 }
 
-function worldRawTier(address: CanonicalCF1WorldAddress, source: WorldOpportunitySourceFacts): EngineeringRawTier {
-  const depthBoost = Math.floor(regionAt(address.galaxy.x, address.galaxy.y) / 2);
-  return rawTierOf(source.planetSeed, source.biosphereLevel, isCanonicalEarthWorldAddress(address), depthBoost);
-}
-
 /* The designation's tier (LEGACY 5158-5163): the rarity roll, raised by life and by depth; Earth is 5. */
 function rawTierOf(planetSeed: number, biosphereLevel: string, earth: boolean, depthBoost: number): EngineeringRawTier {
   if (earth) return 5;
   const lifey = /Abundant|Aquatic|flora|Sparse/i.test(biosphereLevel);
   const lifeBoost = /Abundant/i.test(biosphereLevel) ? 2 : (lifey ? 1 : 0);
   return asRawTier(Math.min(14, rarityRoll(planetSeed, 3) + lifeBoost + depthBoost));
-}
-
-function worldEffectiveTier(
-  address: CanonicalCF1WorldAddress,
-  rawTier: EngineeringRawTier,
-): EngineeringRawTier {
-  const cap = gradeCapAt({ gal: address.galaxy, star: address.star });
-  if (!Number.isInteger(cap) || cap < 0 || cap > 14) {
-    throw new Error('legacy designation ring returned an invalid tier cap');
-  }
-  return asRawTier(Math.min(rawTier, cap));
 }
 
 /** What a world's tier decides: its veins and how many pulls it holds. */
@@ -306,28 +290,56 @@ function veinsAt(
   });
 }
 
-export interface WorldVeinsBySeedInput {
+/** What is known of a world wherever it lives. */
+export interface WorldVeinsWorld {
   readonly planetSeed: number;
   readonly planetType: string;
   readonly biosphereLevel: string;
   readonly biomeKey: string | null;
   /** Whether this is Sol's Earth, which the caller alone can say. */
   readonly earth: boolean;
+}
+
+export interface WorldVeinsBySeedInput extends WorldVeinsWorld {
   /** Half the region number of the world's galaxy, rounded down; 0 at home. */
   readonly depthBoost: number;
   /** The ring's tier cap; 14 is no cap. */
   readonly tierCap: number;
 }
 
-/** A world's tier, veins and reserve from its seed and the facts the caller states: the rules a snapshot is built
-    with, for a census of seeds that have no address. The result is evidence: it is not a snapshot, names no world
-    and unlocks nothing. */
+/** A world's tier, veins and reserve from its seed and the facts the caller states, for a census of seeds that have
+    no address. This holds the one clamp of a tier by its ring's cap. The result is evidence: it is not a snapshot,
+    names no world and unlocks nothing. */
 export function worldVeinsBySeed(input: WorldVeinsBySeedInput): WorldVeins {
   if (!Number.isInteger(input.depthBoost) || input.depthBoost < 0) {
     throw new RangeError('depth boost must be a whole number, 0 or more');
   }
   const rawTier = rawTierOf(input.planetSeed, input.biosphereLevel, input.earth, input.depthBoost);
   return veinsAt(input.planetSeed, input.planetType, input.biomeKey, rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))));
+}
+
+/** Where a world lives: its galaxy and its star's place in it. */
+export interface WorldVeinsPlace {
+  readonly galaxy: { readonly seed: number; readonly x: number; readonly y: number };
+  readonly star: { readonly x: number; readonly y: number };
+}
+
+/** A world's tier, veins and reserve where it lives: the depth boost of its galaxy's region (LEGACY 5162) and the
+    cap of its ring (14685-14695). The one rule of place: a world's snapshot is built by it. */
+export function worldVeinsAt(place: WorldVeinsPlace, world: WorldVeinsWorld): WorldVeins {
+  const { galaxy, star } = place;
+  if (![galaxy.seed, galaxy.x, galaxy.y, star.x, star.y].every(Number.isFinite)) {
+    throw new RangeError('a place is a galaxy and a star with finite numbers');
+  }
+  return worldVeinsBySeed({
+    planetSeed: world.planetSeed,
+    planetType: world.planetType,
+    biosphereLevel: world.biosphereLevel,
+    biomeKey: world.biomeKey,
+    earth: world.earth,
+    depthBoost: Math.floor(regionAt(galaxy.x, galaxy.y) / 2),
+    tierCap: gradeCapAt({ gal: galaxy, star }),
+  });
 }
 
 /** Exact Earth identity. A foreign canonical world whose leaf seed happens to
@@ -359,9 +371,8 @@ function starRawTier(starSeed: number, kind: string): EngineeringRawTier {
 export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress): WorldOpportunitySnapshot {
   const address = checkedWorldAddress(addressValue);
   const source = worldSourceFacts(address);
-  const rawTier = worldRawTier(address, source);
-  const effectiveTier = worldEffectiveTier(address, rawTier);
-  const veins = veinsAt(source.planetSeed, source.planetType, source.biomeKey, rawTier, effectiveTier);
+  const veins = worldVeinsAt(address, { ...source, earth: isCanonicalEarthWorldAddress(address) });
+  const { rawTier, effectiveTier } = veins;
   const snapshot: WorldOpportunitySnapshot = Object.freeze({
     schema: WORLD_OPPORTUNITY_SCHEMA,
     key: address.key,

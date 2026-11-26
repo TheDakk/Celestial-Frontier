@@ -1,17 +1,20 @@
-// Every tier, every rare-vein entry, the cosmic veins, the depth boost and the ring cap, against the legacy game's
+// Every tier, every rare-vein entry, the cosmic veins, the depth boost and every ring cap, against the legacy game's
 // own answers (LEGACY celestial-frontier.html: depositsFor 21260-21275, cosmicVeinFor 21308-21316, exVeinFor
 // 21335-21341, reserveFor 21407-21411, rarityRoll 4240-4260, the designation 5158-5163, regionAt 24421, gradeCapAt
 // 14685-14695, ringDesignation 14733-14747). fixtures/v1/recorded/census-veins.json holds them; tools/census.mjs
 // wrote it. The seeded census reaches tier 9 once in 100,000 worlds; these cases are aimed at what it cannot reach.
+// The places are read through worldVeinsAt, the one rule a world's snapshot is built by: the depth boost and the ring
+// cap are worked out there and nowhere in this test. Of every real star under a capped ring the legacy game cuts
+// five worlds (four in the Neighborhood, one in the Local Cluster: apps/game/test/census-addressed.test.ts holds
+// them); the other caps cut no real world, so made places are the only way to see them bite.
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { rarityRoll } from '@cf/domain-speciestraits';
-import { gradeCapAt, regionAt } from '@cf/domain-strays';
 import { loadRecorded } from '../../../../tests/support/v1-recorded.js';
 import {
   GRID_SEEDS, VEIN_LIFE, VEIN_PLACES, VEIN_TIERS, VEIN_TYPES, VeinHits, gridSeeds, veinLine, type VeinAnswer,
 } from '../../../../tests/support/census-veins.js';
-import { DEPOSIT_PROFILES, RARE_VEIN, worldVeinsBySeed, type WorldVeinsBySeedInput } from '../src/index.js';
+import { DEPOSIT_PROFILES, RARE_VEIN, worldVeinsAt, worldVeinsBySeed, type WorldVeins } from '../src/index.js';
 
 interface GridCase { group: 'grid'; input: { tier: number; type: string; seeds: number }; output: string }
 interface RollCase { group: 'roll'; input: { roll: number; seeds: number[] }; output: string }
@@ -24,8 +27,7 @@ const recordedHits = recorded.find((c): c is HitsCase => c.group === 'hits')!.ou
 
 const digestOf = (lines: readonly string[]): string => createHash('sha256').update(lines.join('\n')).digest('hex').slice(0, 16);
 
-function read(input: Partial<WorldVeinsBySeedInput> & { planetSeed: number; planetType: string }): VeinAnswer {
-  const veins = worldVeinsBySeed({ biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 0, tierCap: 14, ...input });
+function answerOf(veins: WorldVeins): VeinAnswer {
   return {
     rawTier: veins.rawTier, tier: veins.effectiveTier, deposits: veins.deposits,
     cosmicVein: veins.cosmicVein, exceptionalVein: veins.exceptionalVein, reserve: veins.reservePulls,
@@ -42,7 +44,9 @@ describe('a world\'s veins against the legacy game\'s, where the seeded census c
       expect(input.seeds).toBe(GRID_SEEDS);
       // A depth boost of 14 lifts any roll to the summit; the cap then sets the tier asked for.
       const lines = gridSeeds(input.tier, input.type).map((seed) => {
-        const answer = read({ planetSeed: seed, planetType: input.type, depthBoost: 14, tierCap: input.tier });
+        const answer = answerOf(worldVeinsBySeed({
+          planetSeed: seed, planetType: input.type, biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 14, tierCap: input.tier,
+        }));
         hits.answer(input.type, { ...answer, rawTier: input.tier });
         return veinLine(seed, input.type, { ...answer, rawTier: input.tier });
       });
@@ -61,11 +65,10 @@ describe('a world\'s veins against the legacy game\'s, where the seeded census c
         expect(rarityRoll(seed, 3), `the roll of seed ${seed}`).toBe(input.roll);
         const type = VEIN_TYPES[i % VEIN_TYPES.length]!;
         for (const place of VEIN_PLACES) for (const level of VEIN_LIFE) {
-          const answer = read({
-            planetSeed: seed, planetType: type, biosphereLevel: level,
-            depthBoost: Math.floor(regionAt(place.gal.x, place.gal.y) / 2),
-            tierCap: gradeCapAt({ gal: place.gal, star: place.star }),
-          });
+          const answer = answerOf(worldVeinsAt(
+            { galaxy: place.gal, star: place.star },
+            { planetSeed: seed, planetType: type, biosphereLevel: level, biomeKey: null, earth: false },
+          ));
           hits.answer(type, answer);
           hits.hit('place', `${place.name}: ${answer.tier < answer.rawTier ? 'capped' : 'not capped'}`);
           hits.hit('rarity roll', String(input.roll));
