@@ -1,15 +1,15 @@
 /* The descent: the odds of landing on a world never stood on, and what a failed attempt costs.
 
    The rules are the legacy game's (LEGACY celestial-frontier.html, v1.8.9):
-   - the ladder by world type, the fallback when a world has no biome: `DESCENT_TIERS` 13375-13378;
+   - the ladder by world type, the fallback when a world has no biome: `DESCENT_TIERS` 13376-13379;
    - the biome's own landing value sets the odds and the damage rung: `descentFor` 13421-13434,
      `descentTierFromPct` 13357-13359;
    - an active storm takes 5 off, never below 90 from 90 or more, never below 5 otherwise: 13428-13430;
-   - each wave-off on the same world adds 20, worn landing gear adds its own: 13431, `descentBonus` 13386-13393,
+   - each wave-off on the same world adds 20, worn landing gear adds its own: 13431, `descentBonus` 13390-13397,
      `_equipBonus` 23224-23236, `_equipLandFam` 23237-23244; the Gravitic Anchor makes it 100: 13432;
    - no roll in training, on Earth, or on a world already landed on: `descentSafe` 13435-13437;
    - the roll, the wave-off's damage (a reinforced hull takes 1 off a scrape above 1, then landing struts take
-     theirs, and a wave-off never kills), the learned approach and the two notices: `_descRoll` 13438-13461;
+     theirs, and a wave-off never kills), the learned approach and the two notices: `_descRoll` 13438-13462;
    - a saved count of wave-offs is at most 5: 16904.
 
    The shape (registered authorities in, one frozen policy out, the draws supplied by the receipt's owner) is the
@@ -39,7 +39,9 @@ export const DESCENT_SUCCESS_DOMAIN_V1 = DOMAINS.descentSuccess;
 export const DESCENT_DAMAGE_DOMAIN_V1 = DOMAINS.descentDamage;
 export const DESCENT_OUTCOME_DOMAINS_V1 = Object.freeze([DESCENT_SUCCESS_DOMAIN_V1, DESCENT_DAMAGE_DOMAIN_V1] as const);
 
-/** What an active storm takes off, what a wave-off teaches, and how many wave-offs a world remembers. */
+/** What an active storm takes off, what a wave-off teaches, and how many wave-offs a world remembers. The legacy
+    roll does not cap its count (13448) and only a loaded save is held to 5 (16904); the cap cannot be reached by a
+    roll in either game, because five wave-offs already make the odds 100. */
 export const DESCENT_STORM_PENALTY = 5;
 export const DESCENT_LEARNED_PER_WAVE_OFF = 20;
 export const DESCENT_MAX_WAVE_OFFS = 5;
@@ -149,6 +151,51 @@ export function waveOffDamage(input: Readonly<{
   return Object.freeze({ rawDamage, gearAdjustedDamage, damage: Math.min(gearAdjustedDamage, Math.max(0, input.hp - 1)) });
 }
 
+/** The worn bonus tuned to a world's type (`_equipLandFam`): lava, venus, gas and ice worlds have one. */
+export function descentFamilyBonus(planetType: string, values: Readonly<Record<LandingFamily, number>>): number {
+  return planetType === 'lava' || planetType === 'venus' || planetType === 'gas' || planetType === 'ice'
+    ? values[planetType] : 0;
+}
+
+export interface DescentRollInput {
+  /** The first draw decides the landing, the second the scrape of a wave-off. */
+  readonly success: number;
+  readonly damage: number;
+  readonly hp: number;
+  readonly reinforcedHull: boolean;
+  readonly strutReduction: number;
+}
+
+export type DescentRoll =
+  | Readonly<{ landed: true; odds: DescentOdds; hpAfter: number; waveOffCountAfter: 0; throughTheFire: boolean }>
+  | Readonly<{
+    landed: false; odds: DescentOdds; hpAfter: number; waveOffCountAfter: number;
+    rawDamage: number; gearAdjustedDamage: number; damage: number;
+    /** The odds of the next attempt in the same weather, with this approach learned. */
+    nextSuccessPercent: number;
+  }>;
+
+/** The legacy `_descRoll`: one attempt at these odds with these two draws. It lands when the first draw, as a
+    percent, is below the odds; a rolled landing where the biome lands at 30 or less is Through the Fire. */
+export function descentRoll(oddsInput: DescentOddsInput, roll: DescentRollInput): DescentRoll {
+  const odds = descentOdds(oddsInput);
+  if (roll.success * 100 < odds.successPercent) {
+    return Object.freeze({
+      landed: true, odds, hpAfter: roll.hp, waveOffCountAfter: 0,
+      throughTheFire: odds.biomeLanding !== null && odds.biomeLanding <= DESCENT_HOSTILE_LANDING,
+    });
+  }
+  const cost = waveOffDamage({
+    damageMin: odds.damageMin, damageMax: odds.damageMax, draw: roll.damage,
+    reinforcedHull: roll.reinforcedHull, strutReduction: roll.strutReduction, hp: roll.hp,
+  });
+  const waveOffCountAfter = Math.min(DESCENT_MAX_WAVE_OFFS, oddsInput.waveOffCount + 1);
+  return Object.freeze({
+    landed: false, odds, hpAfter: roll.hp - cost.damage, waveOffCountAfter, ...cost,
+    nextSuccessPercent: descentOdds({ ...oddsInput, waveOffCount: waveOffCountAfter }).successPercent,
+  });
+}
+
 export type DescentSafeReasonV1 = 'earth' | 'training' | 'revisit' | null;
 
 export interface DescentPolicyInputV1 {
@@ -170,6 +217,8 @@ export interface DescentApproachPolicyV1 extends DescentOdds {
   readonly opportunityIdentity: string;
   readonly capabilityFingerprint: string;
   readonly planetType: string;
+  /** What the odds were worked out from; the roll is worked out from the same. */
+  readonly oddsInput: DescentOddsInput;
   readonly reinforcedHull: boolean;
   readonly waveOffCount: number;
   readonly learnedApproachBonus: number;
@@ -259,20 +308,15 @@ function capturedInput(value: DescentPolicyInputV1): DescentPolicyInputV1 | null
   }
 }
 
-function matchingFamilyBonus(planetType: string, values: Readonly<Record<LandingFamily, number>>): number {
-  return planetType === 'lava' || planetType === 'venus' || planetType === 'gas' || planetType === 'ice'
-    ? values[planetType] : 0;
-}
-
 /** The whole approach, before any random value is asked for. */
 export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentApproachPolicyV1 {
   const input = capturedInput(value);
   if (input === null) throw new TypeError('descent policy requires exact registered authorities');
   const planetType = input.opportunity.source.planetType;
   const waveOffCount = descentWaveOffCountV1(input.waveOffs, input.address);
-  const familyGearBonus = matchingFamilyBonus(planetType, input.capabilities.landingFamilyBonus);
-  const odds = descentOdds({
-    planet: { seed: input.address.planet.seed, type: planetType },
+  const familyGearBonus = descentFamilyBonus(planetType, input.capabilities.landingFamilyBonus);
+  const oddsInput: DescentOddsInput = Object.freeze({
+    planet: Object.freeze({ seed: input.address.planet.seed, type: planetType }),
     band: input.opportunity.source.climateBand,
     stormActive: input.stormActive,
     waveOffCount,
@@ -280,6 +324,7 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
     familyGearBonus,
     landingGuaranteed: input.capabilities.landingGuaranteed,
   });
+  const odds = descentOdds(oddsInput);
   const safeReason: DescentSafeReasonV1 = input.trainingActive
     ? 'training'
     : isCanonicalEarthWorldAddress(input.address) ? 'earth' : input.alreadyLanded ? 'revisit' : null;
@@ -292,6 +337,7 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
     opportunityIdentity: input.opportunity.schema + ':' + input.opportunity.key,
     capabilityFingerprint: input.capabilities.fingerprint,
     planetType,
+    oddsInput,
     reinforcedHull: input.reinforcedHull,
     waveOffCount,
     learnedApproachBonus: waveOffCount * DESCENT_LEARNED_PER_WAVE_OFF,
@@ -362,26 +408,25 @@ export function resolveDescentAttemptV1(
       throughTheFire: false,
     });
   }
-  if (draws[0]!.value * 100 < policy.successPercent) {
+  const roll = descentRoll(policy.oddsInput, {
+    success: draws[0]!.value, damage: draws[1]!.value, hp: hpBefore,
+    reinforcedHull: policy.reinforcedHull, strutReduction: policy.waveOffDamageReduction,
+  });
+  if (roll.landed) {
     return Object.freeze({
       kind: 'landed', navigation: 'surface', policy, drawsConsumed: 2,
-      hpBefore, hpAfter: hpBefore, damage: 0,
-      waveOffCountBefore: policy.waveOffCount, waveOffCountAfter: 0,
+      hpBefore, hpAfter: roll.hpAfter, damage: 0,
+      waveOffCountBefore: policy.waveOffCount, waveOffCountAfter: roll.waveOffCountAfter,
       persistenceOutcome: 'success',
-      throughTheFire: policy.biomeLanding !== null && policy.biomeLanding <= DESCENT_HOSTILE_LANDING,
+      throughTheFire: roll.throughTheFire,
     });
   }
-  const cost = waveOffDamage({
-    damageMin: policy.damageMin, damageMax: policy.damageMax, draw: draws[1]!.value,
-    reinforcedHull: policy.reinforcedHull, strutReduction: policy.waveOffDamageReduction, hp: hpBefore,
-  });
-  const waveOffCountAfter = Math.min(DESCENT_MAX_WAVE_OFFS, policy.waveOffCount + 1);
   return Object.freeze({
     kind: 'wave-off', navigation: 'orbit', policy, drawsConsumed: 2,
-    hpBefore, hpAfter: hpBefore - cost.damage, ...cost,
-    waveOffCountBefore: policy.waveOffCount, waveOffCountAfter,
+    hpBefore, hpAfter: roll.hpAfter,
+    rawDamage: roll.rawDamage, gearAdjustedDamage: roll.gearAdjustedDamage, damage: roll.damage,
+    waveOffCountBefore: policy.waveOffCount, waveOffCountAfter: roll.waveOffCountAfter,
     persistenceOutcome: 'failure',
-    nextSuccessPercent: Math.min(100, policy.stormAdjustedPercent + DESCENT_LEARNED_PER_WAVE_OFF * waveOffCountAfter
-      + policy.globalGearBonus + policy.familyGearBonus),
+    nextSuccessPercent: roll.nextSuccessPercent,
   });
 }

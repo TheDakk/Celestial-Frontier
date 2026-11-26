@@ -133,7 +133,9 @@ describe('save runtime: outcomes with receipts', () => {
     expect(await receipts(backend)).toEqual(['receipt:0']);
     expect(rng(runtime)).toEqual({ ordinal: 1, draws: { 'capture.candidate': 2, 'capture.success': 1 } });
     expect(() => runtime.commitMultiOutcome({ state: live, domains: null as never, receiptKind: 'x', codecNow: NOW, derive: ({ draft }) => ({ state: draft, witness: 'x' }) }))
-      .toThrow(/draw plan/);
+      .toThrow(/draw plan must contain 0–/);
+    expect(() => runtime.commitPreDrawMultiOutcome({ state: live, domains: [], receiptKind: 'x', codecNow: NOW, preDraw: () => ({ kind: 'refused', reason: 'x' }) }))
+      .toThrow(/draw plan must contain 1–/);
   });
 
   it('a pre-draw refusal draws nothing and writes nothing; a ready plan commits its draws under one receipt', async () => {
@@ -441,6 +443,19 @@ describe('save loop: settling a product action', () => {
     expect(h.reloads.length).toBe(1);
     expect(h.loop.status).toBe('reload-required');
     await expect(h.loop.settle('test.add', addEssence(1))).resolves.toEqual({ kind: 'refused', reason: 'reload-required' });
+  });
+
+  it('a refusal with a reason of its own (a full roster) says the reason on the bus', async () => {
+    const h = await bootedHarness();
+    const events = heard(h);
+    const outcome = await h.loop.settle('capture.tame', (runtime, durable) => runtime.commitPreDrawMultiOutcome({
+      state: durable, domains: ['capture.success'], receiptKind: 'capture-attempt', codecNow: NOW,
+      preDraw: () => ({ kind: 'refused', reason: 'capacity' }),
+    }));
+    expect(outcome).toEqual({ kind: 'pre-draw-refused', reason: 'capacity' });
+    expect(events).toEqual([['refused', { kind: 'capture.tame', reason: 'pre-draw-refused:capacity' }]]);
+    expect(h.reloads).toEqual([]);
+    expect(h.loop.mayWrite()).toBe(true);
   });
 
   it('a policy refusal leaves the page writable and owes no reload', async () => {

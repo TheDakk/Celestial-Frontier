@@ -58,8 +58,8 @@ export interface SaveLoop {
 /** What a receipt-bearing path of the runtime answers, as far as the loop reads it. */
 export type ProductOutcome =
   | { readonly kind: 'committed'; readonly revision: number; readonly state: SaveStateV2; readonly receipt: { readonly ordinal: number } }
-  | { readonly kind: 'protected'; readonly reason: string }
-  | { readonly kind: 'stale' | 'revision-exhausted' | 'duplicate-receipt' | 'lost' | 'rejected' | 'storage-error' | 'pre-draw-refused' | 'lease-unavailable' };
+  | { readonly kind: 'protected' | 'pre-draw-refused'; readonly reason: string }
+  | { readonly kind: 'stale' | 'revision-exhausted' | 'duplicate-receipt' | 'lost' | 'rejected' | 'storage-error' | 'lease-unavailable' };
 
 const OVERLAY_FIELDS: ReadonlySet<string> = new Set(CHECKPOINT_STATE_OVERLAY_FIELDS);
 
@@ -245,7 +245,9 @@ export function createSaveLoop(deps: {
         || outcome.kind === 'lost' || (outcome.kind === 'protected' && outcome.reason !== 'authority-absent')) {
         requireReload(`outcome ${kind} refused (${outcome.kind})`);
       }
-      try { bus.emit('outcome:refused', { kind, reason: outcome.kind }); } catch { /* the listener's own fault */ }
+      // A refusal that carries its own reason (a full roster, a protected authority) says it on the bus too.
+      const reason = outcome.kind === 'protected' || outcome.kind === 'pre-draw-refused' ? `${outcome.kind}:${outcome.reason}` : outcome.kind;
+      try { bus.emit('outcome:refused', { kind, reason }); } catch { /* the listener's own fault */ }
       return outcome;
     } finally {
       claim.settle();

@@ -19,7 +19,8 @@ export interface GameEvents {
   /** A product action was stored with its receipt: `kind` names the action, `receiptOrdinal` its receipt. */
   'outcome:committed': { kind: string; receiptOrdinal: number };
   /** A product action was not stored: the page is held, owes a reload, is busy with another action, has no
-   *  lease, or storage or the action's own rule refused it (`reason` is then the refusal's kind). */
+   *  lease, or storage or the action's own rule refused it (`reason` is then the refusal's kind, followed by a
+   *  colon and its own reason where it has one: `pre-draw-refused:capacity`). */
   'outcome:refused': { kind: string; reason: string };
   'settings:changed': { field: string };
   'nav:changed': { from: ZoomMode; to: ZoomMode; nav: NavState };

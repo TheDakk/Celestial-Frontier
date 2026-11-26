@@ -126,7 +126,7 @@ type Settled =
 function boundDomains(value: readonly string[], least: number): readonly string[] {
   const count = Array.isArray(value) ? value.length : -1;
   if (count < least || count > MAX_SESSION_RNG_DRAWS_PER_PLAN) {
-    throw new RangeError(`SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`);
+    throw new RangeError(`SessionRNG draw plan must contain ${least}–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`);
   }
   return Object.freeze([...value]);
 }

@@ -13,15 +13,16 @@
    Outside deep winter the two always agree. In deep winter on a rainy world the prompt rolls rain's odds (0.42) and
    says rain while the scene rolls snow's odds (0.58) and shows snow.
 
-   A NAMED IMPROVEMENT, separate from the conversion, AWAITING DAKK'S WORD before the descent prompt is wired: the
-   prompt asks `weatherNow` too, so prompt and scene agree. In deep winter on a rainy world that moves three things,
-   not only the prompt's words:
+   A NAMED IMPROVEMENT, separate from the conversion (Dakk's ruling of 2026-11-26): the descent asks `weatherNow`
+   too, so prompt and scene agree. The game's descent is wired to it (`apps/game/src/landing/descent-weather.ts`).
+   In deep winter on a rainy world that moves three things, not only the prompt's words:
    - the "storm in progress" line (13620) follows the snow the scene shows;
    - the storm's 5 off descent success (`descentFor` 13428-13430) is in force on snow's odds, 0.58, instead of
      rain's, 0.42: more often;
    - the prompt's weather event (13617) is asked with snow, so a terran world can show the ice storm (0.25) where
      the legacy prompt could show the tornado (0.14).
-   Until he says, a caller that must match the legacy game exactly asks `legacyPromptWeather` for the prompt. */
+   `legacyPromptWeather` stays for a caller that must match the legacy game exactly, and for the tests that hold
+   the two rules apart. */
 import { mulberry32 } from '@cf/domain-rand';
 import { seasonAt } from './environment.js';
 import type { WeatherToken, WorldEnvironment } from './environment.js';

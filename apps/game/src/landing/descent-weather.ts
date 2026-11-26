@@ -16,10 +16,15 @@
      line; only the event can differ (on a terran world an ice storm, 1 spell in 4, where the legacy prompt could
      show a tornado, about 1 in 7; on an ocean world no rain hurricane);
    - in about 1 spell in 6 (a roll from 0.42 to 0.58) the legacy prompt saw clear sky while snow fell on the
-     scene; the repaired one shows "storm in progress −5" and takes the 5 off (a base of 90 to 94 is held at 90).
+     scene; the repaired one shows "storm in progress −5" and takes the 5 off (a base of 90 to 94 is held at 90),
+     so a wave-off's "next attempt" is 5 lower too; and because the event is now asked with snow where the legacy
+     prompt asked with no weather at all, a terran world's prompt can also gain the ice-storm line (1 in 4 of
+     these spells), where the legacy prompt showed no event.
    The repaired rule never loses a storm the legacy prompt had.
 
-   The clock is an argument: seconds of active play (the legacy game used seconds since the page opened). */
+   The clock is an argument: seconds of active play. The legacy game used seconds since the page opened, so which
+   spell a player is in at a given moment differs from the legacy game on every world (a named improvement of its
+   own: the weather is the same after a reload). */
 import {
   legacyPromptWeather, weatherEventAt, weatherNow, worldEnvironment,
   type WeatherEvent, type WeatherToken,

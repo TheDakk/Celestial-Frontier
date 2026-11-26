@@ -9,7 +9,9 @@ export {
   DESCENT_SUCCESS_DOMAIN_V1,
   DESCENT_TYPE_TIERS_V1,
   descentDamageRangeForBaseSuccessV1,
+  descentFamilyBonus,
   descentOdds,
+  descentRoll,
   isDescentApproachPolicyV1,
   projectDescentApproachV1,
   resolveDescentAttemptV1,
@@ -24,6 +26,8 @@ export type {
   DescentOutcomeDrawV1,
   DescentPlanetTypeV1,
   DescentPolicyInputV1,
+  DescentRoll,
+  DescentRollInput,
   DescentSafeReasonV1,
 } from './descent-policy';
 export { descentStormActive, descentWeather } from './descent-weather';

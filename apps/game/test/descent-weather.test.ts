@@ -20,7 +20,7 @@ import {
   waveOffNotice,
   type DescentOdds,
 } from '../src/landing';
-import { recorded, wearing, world, type Token } from './descent-support';
+import { recorded, rolled, wearing, world, type Token } from './descent-support';
 
 /** [seconds, season, the scene's token in force, whether it is falling, time of day, the legacy prompt's token, events]. */
 type At = [number, number, Token | null, boolean, string, Token | null, unknown];
@@ -211,7 +211,7 @@ describe('the descent prompt', () => {
     let fire = 0;
     let waved = 0;
     for (const { input, output } of recorded('roll')) {
-      const [landed, hpAfter, , toast, nextPct] = output;
+      const [landed, , , toast] = output;
       if (landed) {
         if (toast === null) continue;
         fire++;
@@ -220,7 +220,10 @@ describe('the descent prompt', () => {
         continue;
       }
       waved++;
-      const notice = waveOffNotice(input.hp - hpAfter, nextPct);
+      // The notice is built from the game's own roll, not from the recorded numbers.
+      const { roll } = rolled(input);
+      if (roll.landed) throw new Error('the game landed a recorded wave-off');
+      const notice = waveOffNotice(roll.damage, roll.nextSuccessPercent);
       expect([`${PICTURES[notice.icon]} ${notice.title}`, text(notice.message)], JSON.stringify(input)).toEqual(toast);
     }
     expect(fire).toBeGreaterThan(0);
