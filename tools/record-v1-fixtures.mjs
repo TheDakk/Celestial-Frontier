@@ -310,6 +310,38 @@ export const recorders = {
       return cases;
     },
   },
+  'landing-weather-events': {
+    test: 'packages/domain/landing/test/weather.test.ts',
+    kind: 'outputs',
+    taken: 'v1 wxEventFor over 1,000 weather spells, run with new Function over two unique script slices, with perfTime supplied by the recorder (it returns spell * 90 + 45): "function mulberry32(a){" to "/4294967296}}" and "function wxEventFor(P, wb, wxTok){" to "ironrain:\'iron rain glowing as it falls\'};". One case per world type, seed, region and token, for the pairs of region and token under which the type can show an event: output names each event that occurred with the spells (0..999) it occurred in.',
+    record: ({ script }) => {
+      let spell = 0;
+      const wxEventFor = new Function('perfTime', `
+        ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+        ${cutUnique(script, 'function wxEventFor(P, wb, wxTok){', "ironrain:'iron rain glowing as it falls'};")}
+        return wxEventFor;`)(() => spell * 90 + 45);
+      const pairs = {
+        lava: [[null, 'ash'], [null, null]],
+        desert: [[null, 'dust'], [null, null]],
+        ocean: [['stormsea', null], [null, 'rain'], ['stormsea', 'rain'], [null, 'snow']],
+        terran: [[null, 'rain'], [null, 'snow'], [null, null]],
+        ice: [['cryogeyser', null], [null, 'snow'], ['cryogeyser', 'snow'], [null, null]],
+        venus: [[null, null], [null, 'haze']],
+        gas: [['hotglow', null], [null, null]],
+        rocky: [[null, null]],
+      };
+      const cases = [];
+      for (const [type, list] of Object.entries(pairs)) for (const seed of [133, 131, 1757105165, 51464061]) for (const [region, token] of list) {
+        const output = {};
+        for (spell = 0; spell < 1000; spell++) {
+          const event = wxEventFor({ seed, type }, region, token);
+          if (event !== null) (output[event] ??= []).push(spell);
+        }
+        cases.push({ input: { type, seed, region, token }, output });
+      }
+      return cases;
+    },
+  },
 };
 
 /** Builds one fixture object from the v1 folder's files. `readV1File(relativePath)` returns a Buffer. */
