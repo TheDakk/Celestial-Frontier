@@ -366,6 +366,134 @@ export const recorders = {
       return cases;
     },
   },
+  'landing-descent': {
+    test: 'apps/game/test/descent-policy.test.ts',
+    kind: 'outputs',
+    taken: 'The v1 descent rules, run with new Function over unique script slices: mulberry32, hashInt, "const BIOME_SETS={" to the end of biomeForLanding (for biomeFor), descentTierFromPct, DESCENT_TIERS, descentBonus, descentTierLabel, _descWx, descentFor, descentSafe, _descRoll, wxEventFor with WX_EVENT_WORD, openDescentBox, and the gear readers ITEMS, ITEM_BY, EQ_SLOTS, itemCount, _slotAffix, _equipBonus, _equipLandFam. Supplied by the recorder: perfTime (the case\'s seconds), climateBand (the case\'s band), st ({sys: null}), Math (the real one with random replaced by the case\'s queue of values), techOwned, landed, toast, queueSave, renderHP, playFailTone, fxShake, a document whose elements keep textContent and innerHTML, and the containers the script declares beside them (_waveOffs, items, equip, equipAff, hp, tutDone, _descCleared, _descOpenFor). Groups, in order. tiers: DESCENT_TIERS; label and damage hold descentTierLabel(p) and descentTierFromPct(p) as [lo, hi] for p = 0..100. descent: per world {seed, type, band}, biome is biomeFor as [key, name, land] or null, and at holds, per seconds and then per wave-off count listed in the input, descentFor as [pct, lo, hi, wx]. gear: descentFor(...).pct at 45 seconds for the worn items and wave-offs of the input. roll: _descRoll with the two random values, the health, the wave-offs, hull1 and the worn items of the input; output is [landed, health after, wave-offs after, toast as [title, text] or null, descentFor(...).pct afterwards]. prompt: openDescentBox for a world with the name of the input (null: no name) at the seconds of the input, as [title, the risk element\'s innerHTML]. safe: rows of [tutDone, seed, landed, cleared seed, descentSafe(seed)].',
+    record: ({ script }) => {
+      const v1 = new Function('perfTime', 'climateBand', 'st', 'Math', 'techOwned', 'landed', 'toast', 'queueSave', 'renderHP', 'playFailTone', 'fxShake', 'document', `
+        const _waveOffs=new Map(); let _descCleared=null, _descOpenFor=null, hp=0, tutDone=true;
+        const items=new Map(); const equip={}; const equipAff={};
+        const _descBoxEl=()=>document.getElementById('descbox');
+        ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+        ${cutUnique(script, 'function hashInt(seed,x,y){', 'return h>>>0;\n}')}
+        ${cutUnique(script, 'const BIOME_SETS={', 'return comp[comp.length-1].biome;\n}')}
+        ${cutUnique(script, 'function descentTierFromPct(p){', '{lo:6,hi:8};\n}')}
+        ${cutUnique(script, 'const DESCENT_TIERS={', 'lava:{p:20,lo:6,hi:8}};')}
+        ${cutUnique(script, 'const ITEMS=[', '\n];')}
+        ${cutUnique(script, 'const ITEM_BY=new Map(', ';')}
+        ${cutUnique(script, 'const EQ_SLOTS=[', '\n];')}
+        ${cutUnique(script, 'function itemCount(id){', '}')}
+        ${cutUnique(script, 'function _slotAffix(slot){', 'a : null;\n}')}
+        ${cutUnique(script, 'function _equipBonus(key){', 'return v;\n}')}
+        ${cutUnique(script, 'function _equipLandFam(type){', 'return v;\n}')}
+        ${cutUnique(script, 'function descentBonus(P){', 'return b;\n}')}
+        ${cutUnique(script, 'function descentTierLabel(p){', "'Hostile descent';\n}")}
+        ${cutUnique(script, 'function _descWx(pl){', 'return now?wx:null;\n}')}
+        ${cutUnique(script, 'function descentFor(pl){', 'biome:bio};\n}')}
+        ${cutUnique(script, 'function descentSafe(seed){', '}')}
+        ${cutUnique(script, 'function _descRoll(pl){', 'queueSave();\n  return false;\n}')}
+        ${cutUnique(script, 'function wxEventFor(P, wb, wxTok){', "ironrain:'iron rain glowing as it falls'};")}
+        ${cutUnique(script, 'function openDescentBox(pl){', "b.style.display='flex';\n}")}
+        return {
+          DESCENT_TIERS, descentTierLabel, descentTierFromPct, descentFor, descentSafe, _descRoll, openDescentBox, biomeFor,
+          set(o){ _waveOffs.clear(); if(o.waveOffs) _waveOffs.set(o.seed, o.waveOffs); hp=o.hp||0; _descCleared=o.cleared??null;
+            tutDone=o.tutDone!==false; for(const k in equip) delete equip[k]; Object.assign(equip, o.equip||{}); },
+          get(seed){ return { hp, waveOffs:_waveOffs.get(seed)||0 }; },
+        };`);
+      let seconds = 0;
+      let band = 'temperate';
+      let randoms = [];
+      let toasted = null;
+      const math = Object.create(Math);
+      math.random = () => {
+        if (randoms.length === 0) throw new Error('a random value was drawn that the case did not supply');
+        return randoms.shift();
+      };
+      const tech = new Set();
+      const landedSet = new Set();
+      const elements = new Map();
+      const doc = {
+        getElementById: (id) => {
+          if (!elements.has(id)) elements.set(id, { style: {}, textContent: '', innerHTML: '' });
+          return elements.get(id);
+        },
+      };
+      const game = v1(() => seconds, () => band, { sys: null }, math, tech, landedSet, (title, text) => { toasted = [title, text]; },
+        () => {}, () => {}, () => {}, () => {}, doc);
+      const types = ['terran', 'ocean', 'rocky', 'ice', 'desert', 'gas', 'venus', 'lava'];
+      const bands = ['hot', 'temperate', 'cold', 'frozen'];
+      const world = (seed, type, name) => ({ P: { seed, type }, orb: 100, name });
+      const pcts = Array.from({ length: 101 }, (_, p) => p);
+      const cases = [{
+        group: 'tiers',
+        output: {
+          tiers: game.DESCENT_TIERS,
+          label: pcts.map((p) => game.descentTierLabel(p)),
+          damage: pcts.map((p) => { const t = game.descentTierFromPct(p); return [t.lo, t.hi]; }),
+        },
+      }];
+      const times = [45, 135, 225, 500, 1234.5];
+      const counts = [0, 1, 3, 5];
+      for (const type of [...types, 'unknown']) for (const b of bands) for (const seed of [131, 132, 134, 135, 1757105165, 51464061, 7, 8]) {
+        band = b;
+        const pl = world(seed, type);
+        const biome = game.biomeFor(pl.P, b);
+        const at = [];
+        for (const t of times) for (const n of counts) {
+          seconds = t;
+          game.set({ seed, waveOffs: n });
+          const d = game.descentFor(pl);
+          at.push([d.pct, d.lo, d.hi, d.wx]);
+        }
+        cases.push({ group: 'descent', input: { seed, type, band: b, times, waveOffs: counts }, biome: biome ? [biome.k, biome.n, biome.land] : null, at });
+      }
+      const worn = [{}, { suit: 'thermal' }, { suit: 'presshull' }, { suit: 'cryoline' }, { module: 'struts' }, { module: 'stabil' }, { module: 'anchor' },
+        { suit: 'thermal', module: 'stabil' }, { legs: 'greaves', boots: 'gravboots' }, { suit: 'rl-stone', boots: 'rl-ocean' }];
+      seconds = 45;
+      for (const type of types) for (const seed of [131, 7]) for (const equip of worn) for (const n of [0, 2]) {
+        band = 'temperate';
+        game.set({ seed, waveOffs: n, equip });
+        cases.push({ group: 'gear', input: { seed, type, band, equip, waveOffs: n }, output: game.descentFor(world(seed, type)).pct });
+      }
+      for (const type of ['terran', 'gas', 'venus', 'lava']) for (const equip of [{}, { module: 'struts' }, { module: 'stabil' }, { suit: 'rl-stone', legs: 'greaves' }])
+        for (const hull1 of [false, true]) for (const hp of [1, 3, 9]) for (const n of [0, 4]) for (const success of [0, 0.5, 0.999]) for (const damage of [0, 0.5, 0.999]) {
+          band = 'temperate';
+          const seed = 7;
+          const pl = world(seed, type, 'Testworld');
+          game.set({ seed, waveOffs: n, equip, hp });
+          tech.clear();
+          if (hull1) tech.add('hull1');
+          landedSet.clear();
+          toasted = null;
+          randoms = [success, damage];
+          const landed = game._descRoll(pl);
+          const after = game.get(seed);
+          cases.push({
+            group: 'roll',
+            input: { seed, type, band, equip, hull1, hp, waveOffs: n, success, damage },
+            output: [landed, after.hp, after.waveOffs, toasted, game.descentFor(pl).pct],
+          });
+        }
+      tech.clear();
+      for (const type of types) for (const b of bands) for (const seed of [131, 7]) for (const t of [45, 135]) for (const name of ['Testworld', null]) {
+        band = b;
+        seconds = t;
+        game.set({ seed });
+        game.openDescentBox(world(seed, type, name ?? undefined));
+        cases.push({ group: 'prompt', input: { seed, type, band: b, seconds: t, name }, output: [elements.get('desc-title').textContent, elements.get('desc-risk').innerHTML] });
+      }
+      const safe = [];
+      for (const tutDone of [true, false]) for (const seed of [133, 134]) for (const wasLanded of [false, true]) for (const cleared of [null, 134]) {
+        game.set({ seed, tutDone, cleared });
+        landedSet.clear();
+        if (wasLanded) landedSet.add(seed);
+        safe.push([tutDone, seed, wasLanded, cleared, game.descentSafe(seed)]);
+      }
+      cases.push({ group: 'safe', output: safe });
+      return cases;
+    },
+  },
 };
 
 /** Builds one fixture object from the v1 folder's files. `readV1File(relativePath)` returns a Buffer. */
