@@ -250,11 +250,16 @@ function worldSourceFacts(address: CanonicalCF1WorldAddress): WorldOpportunitySo
 }
 
 function worldRawTier(address: CanonicalCF1WorldAddress, source: WorldOpportunitySourceFacts): EngineeringRawTier {
-  if (isCanonicalEarthWorldAddress(address)) return 5;
-  const lifey = /Abundant|Aquatic|flora|Sparse/i.test(source.biosphereLevel);
-  const lifeBoost = /Abundant/i.test(source.biosphereLevel) ? 2 : (lifey ? 1 : 0);
   const depthBoost = Math.floor(regionAt(address.galaxy.x, address.galaxy.y) / 2);
-  return asRawTier(Math.min(14, rarityRoll(source.planetSeed, 3) + lifeBoost + depthBoost));
+  return rawTierOf(source.planetSeed, source.biosphereLevel, isCanonicalEarthWorldAddress(address), depthBoost);
+}
+
+/* The designation's tier (LEGACY 5158-5163): the rarity roll, raised by life and by depth; Earth is 5. */
+function rawTierOf(planetSeed: number, biosphereLevel: string, earth: boolean, depthBoost: number): EngineeringRawTier {
+  if (earth) return 5;
+  const lifey = /Abundant|Aquatic|flora|Sparse/i.test(biosphereLevel);
+  const lifeBoost = /Abundant/i.test(biosphereLevel) ? 2 : (lifey ? 1 : 0);
+  return asRawTier(Math.min(14, rarityRoll(planetSeed, 3) + lifeBoost + depthBoost));
 }
 
 function worldEffectiveTier(
@@ -266,6 +271,63 @@ function worldEffectiveTier(
     throw new Error('legacy designation ring returned an invalid tier cap');
   }
   return asRawTier(Math.min(rawTier, cap));
+}
+
+/** What a world's tier decides: its veins and how many pulls it holds. */
+export interface WorldVeins {
+  readonly rawTier: EngineeringRawTier;
+  readonly effectiveTier: EngineeringRawTier;
+  readonly depositProfile: DepositProfileKey;
+  readonly deposits: readonly MaterialSymbol[];
+  readonly biomeVein: MaterialSymbol | null;
+  readonly cosmicVein: MaterialSymbol | null;
+  readonly exceptionalVein: MaterialSymbol | null;
+  readonly reservePulls: number;
+}
+
+function veinsAt(
+  planetSeed: number,
+  planetType: string,
+  biomeKey: string | null,
+  rawTier: EngineeringRawTier,
+  effectiveTier: EngineeringRawTier,
+): WorldVeins {
+  return Object.freeze({
+    rawTier,
+    effectiveTier,
+    depositProfile: profileFor(planetType),
+    deposits: depositsFor(planetSeed, planetType, effectiveTier),
+    biomeVein: biomeKey !== null && Object.prototype.hasOwnProperty.call(BIOME_VEIN, biomeKey)
+      ? BIOME_VEIN[biomeKey as keyof typeof BIOME_VEIN]
+      : null,
+    cosmicVein: cosmicVeinFor(planetSeed, effectiveTier),
+    exceptionalVein: exceptionalVeinFor(planetSeed, planetType, effectiveTier),
+    reservePulls: reserveFor(planetSeed, effectiveTier),
+  });
+}
+
+export interface WorldVeinsBySeedInput {
+  readonly planetSeed: number;
+  readonly planetType: string;
+  readonly biosphereLevel: string;
+  readonly biomeKey: string | null;
+  /** Whether this is Sol's Earth, which the caller alone can say. */
+  readonly earth: boolean;
+  /** Half the region number of the world's galaxy, rounded down; 0 at home. */
+  readonly depthBoost: number;
+  /** The ring's tier cap; 14 is no cap. */
+  readonly tierCap: number;
+}
+
+/** A world's tier, veins and reserve from its seed and the facts the caller states: the rules a snapshot is built
+    with, for a census of seeds that have no address. The result is evidence: it is not a snapshot, names no world
+    and unlocks nothing. */
+export function worldVeinsBySeed(input: WorldVeinsBySeedInput): WorldVeins {
+  if (!Number.isInteger(input.depthBoost) || input.depthBoost < 0) {
+    throw new RangeError('depth boost must be a whole number, 0 or more');
+  }
+  const rawTier = rawTierOf(input.planetSeed, input.biosphereLevel, input.earth, input.depthBoost);
+  return veinsAt(input.planetSeed, input.planetType, input.biomeKey, rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))));
 }
 
 /** Exact Earth identity. A foreign canonical world whose leaf seed happens to
@@ -299,10 +361,7 @@ export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress):
   const source = worldSourceFacts(address);
   const rawTier = worldRawTier(address, source);
   const effectiveTier = worldEffectiveTier(address, rawTier);
-  const biomeVein = source.biomeKey !== null
-    && Object.prototype.hasOwnProperty.call(BIOME_VEIN, source.biomeKey)
-    ? BIOME_VEIN[source.biomeKey as keyof typeof BIOME_VEIN]
-    : null;
+  const veins = veinsAt(source.planetSeed, source.planetType, source.biomeKey, rawTier, effectiveTier);
   const snapshot: WorldOpportunitySnapshot = Object.freeze({
     schema: WORLD_OPPORTUNITY_SCHEMA,
     key: address.key,
@@ -311,12 +370,12 @@ export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress):
     rawTier,
     effectiveTier,
     displayRarity: frozenDisplayRarity(effectiveTier),
-    depositProfile: profileFor(source.planetType),
-    deposits: depositsFor(source.planetSeed, source.planetType, effectiveTier),
-    biomeVein,
-    cosmicVein: cosmicVeinFor(source.planetSeed, effectiveTier),
-    exceptionalVein: exceptionalVeinFor(source.planetSeed, source.planetType, effectiveTier),
-    reservePulls: reserveFor(source.planetSeed, effectiveTier),
+    depositProfile: veins.depositProfile,
+    deposits: veins.deposits,
+    biomeVein: veins.biomeVein,
+    cosmicVein: veins.cosmicVein,
+    exceptionalVein: veins.exceptionalVein,
+    reservePulls: veins.reservePulls,
   });
   WORLD_SNAPSHOTS.add(snapshot);
   return snapshot;
