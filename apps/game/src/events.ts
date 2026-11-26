@@ -16,6 +16,11 @@ export interface GameEvents {
   'save:authority': { writable: boolean };
   /** The page came under a write hold after its boot. */
   'save:held': { detail: string };
+  /** A product action was stored with its receipt: `kind` names the action, `receiptOrdinal` its receipt. */
+  'outcome:committed': { kind: string; receiptOrdinal: number };
+  /** A product action was not stored: the page is held, owes a reload, is busy with another action, has no
+   *  lease, or storage or the action's own rule refused it (`reason` is then the refusal's kind). */
+  'outcome:refused': { kind: string; reason: string };
   'settings:changed': { field: string };
   'nav:changed': { from: ZoomMode; to: ZoomMode; nav: NavState };
   'nav:refused': { reason: 'prime-reach' | 'charter-reach' | 'not-proven'; hint: string };

@@ -6,14 +6,20 @@
    reloads. Storage that fails the lease before it has once answered is a hold instead: a reload would only
    meet the same failure. A session seed this page minted is stored by the first heartbeat that holds the
    lease, before anything can draw from it; if storage refuses it, that too is a hold. Under a write hold
-   nothing here touches storage, the lease row included. */
+   nothing here touches storage, the lease row included.
+
+   A product action (anything settled with a receipt) goes through `settle`: one at a time, never under a hold,
+   after the checkpoint in flight and before the next one, so an action and a checkpoint never race for the same
+   revision. What it stored is then written into the state the player sees. */
 import { createRevisionedRepository, type SaveStateV2, type StorageBackend, type V5ExtensionWrite } from '@cf/persistence';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
 import type { Clocks } from '../platform/clock';
-import { projectCheckpointState } from './checkpoint';
+import { createProductActionCoordinator, type ProductActionCoordinator } from './action-coordinator';
+import { CHECKPOINT_STATE_OVERLAY_FIELDS, SAVE_STATE_V2_FIELD_INVENTORY, projectCheckpointState } from './checkpoint';
 import { createEcologyEpochEdgeAuthority, type EcologyEpochCheckpointIntent, type EcologyEpochStage } from './epoch';
 import type { WriteGate } from './hold';
+import type { OutcomeRefused } from './outcomes';
 import type { SaveRuntime } from './runtime';
 
 /** A page holding the lease stores a checkpoint at least this often. */
@@ -40,6 +46,35 @@ export interface SaveLoop {
   mayWrite(): boolean;
   /** The epoch every drawing and descriptor reads: only ever a committed one. */
   publishedEpoch(): number;
+  /** Settles one product action. `commit` is given the runtime and the last stored state, and commits through one
+   *  of the runtime's receipt-bearing paths. It is not called when the page is held, owes a reload, has another
+   *  action in flight or does not hold the lease: the answer is then `refused`. A committed outcome is written
+   *  into the live state before this resolves; `outcome:committed` or `outcome:refused` says which it was. */
+  settle<O extends ProductOutcome>(kind: string, commit: (runtime: SaveRuntime, durable: SaveStateV2) => Promise<O>): Promise<O | OutcomeRefused>;
+  /** The product action now in flight, or null. */
+  readonly actionInFlight: string | null;
+}
+
+/** What a receipt-bearing path of the runtime answers, as far as the loop reads it. */
+export type ProductOutcome =
+  | { readonly kind: 'committed'; readonly revision: number; readonly state: SaveStateV2; readonly receipt: { readonly ordinal: number } }
+  | { readonly kind: 'protected'; readonly reason: string }
+  | { readonly kind: 'stale' | 'revision-exhausted' | 'duplicate-receipt' | 'lost' | 'rejected' | 'storage-error' | 'pre-draw-refused' | 'lease-unavailable' };
+
+const OVERLAY_FIELDS: ReadonlySet<string> = new Set(CHECKPOINT_STATE_OVERLAY_FIELDS);
+
+/** Writes a committed outcome into the state the player sees. Every product field is taken from what was
+ *  stored. A field an ordinary checkpoint lays over the save (the route, the settings, the explorer's name) is
+ *  taken only where the outcome changed it, so a setting changed and not yet stored is not undone. */
+function publishCommitted(live: SaveStateV2, durable: SaveStateV2, committed: SaveStateV2): void {
+  const target = live as unknown as Record<string, unknown>;
+  const before = durable as unknown as Record<string, unknown>;
+  const after = structuredClone(committed) as unknown as Record<string, unknown>;
+  for (const field of SAVE_STATE_V2_FIELD_INVENTORY) {
+    if (OVERLAY_FIELDS.has(field) && JSON.stringify(after[field]) === JSON.stringify(before[field])) continue;
+    if (field in after) target[field] = after[field];
+    else delete target[field];
+  }
 }
 
 const message = (error: unknown): string => error instanceof Error ? error.message : String(error);
@@ -51,12 +86,15 @@ export function createSaveLoop(deps: {
   clocks: Clocks;
   /** Read only, for the stored revision. Every write goes through the runtime. */
   backend: StorageBackend;
+  /** The page's one latch for product actions; the loop makes its own when none is given. */
+  actions?: ProductActionCoordinator;
   /** The state the player sees. A stored checkpoint writes its route and epoch back into it. */
   live(): SaveStateV2;
   route(): Record<string, unknown> | null;
 }): SaveLoop {
   const { runtime, gate, bus, clocks } = deps;
   const repository = createRevisionedRepository(deps.backend);
+  const actions = deps.actions ?? createProductActionCoordinator();
   const epoch = createEcologyEpochEdgeAuthority({
     restoredEpoch: deps.live().EPOCH_BASE,
     activePlayAtBootMs: runtime.activePlayMs(),
@@ -64,6 +102,8 @@ export function createSaveLoop(deps: {
   let reloadRequired = false;
   let lastCheckpointAt = clocks.monotonicNow();
   let active: Promise<boolean> | null = null;
+  /** The checkpoint now past the action latch and on its way to storage; an action waits for it. */
+  let storing: Promise<boolean> | null = null;
   let queued: { run: Promise<boolean>; edgeOnly: boolean; extensionWrites: V5ExtensionWrite[] } | null = null;
   /** The lease and revision part of a heartbeat or a show; a write waits for it. */
   let proving: Promise<void> | null = null;
@@ -106,7 +146,7 @@ export function createSaveLoop(deps: {
     announce();
   };
 
-  const write = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
+  const store = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
     if (proving !== null) await proving.catch(() => undefined);
     if (!mayWrite()) return false;
     const staged = epoch.stage(runtime.activePlayMs(), intent);
@@ -155,6 +195,59 @@ export function createSaveLoop(deps: {
       if (runtime.diagnostics().seedStored) requireReload(`save attempt rejected (${message(error)})`);
       else holdTransient(`session seed not stored (${message(error)})`);
       return false;
+    }
+  };
+
+  /** A checkpoint waits for the product action in flight, so the two never bind to the same revision. */
+  const write = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
+    await actions.idle();
+    const run = store(intent, extensionWrites);
+    storing = run;
+    try { return await run; } finally { if (storing === run) storing = null; }
+  };
+
+  const refuse = (kind: string, reason: OutcomeRefused['reason']): OutcomeRefused => {
+    try { bus.emit('outcome:refused', { kind, reason }); } catch { /* the listener's own fault */ }
+    return { kind: 'refused', reason };
+  };
+  const settle = async <O extends ProductOutcome>(
+    kind: string,
+    commit: (runtime: SaveRuntime, durable: SaveStateV2) => Promise<O>,
+  ): Promise<O | OutcomeRefused> => {
+    const claim = actions.tryClaim(kind);
+    if (claim === null) return refuse(kind, 'busy');
+    try {
+      if (storing !== null) await storing.catch(() => false);
+      if (proving !== null) await proving.catch(() => undefined);
+      if (reloadRequired) return refuse(kind, 'reload-required');
+      if (!gate.mayWrite()) return refuse(kind, 'held');
+      const durable = mayWrite() ? runtime.checkpointParent() : null;
+      if (durable === null) return refuse(kind, 'lease-unavailable');
+      const outcome = await commit(runtime, durable);
+      if (outcome.kind === 'committed') {
+        try {
+          publishCommitted(deps.live(), durable, outcome.state);
+        } catch (error) {
+          requireReload(`outcome committed; publication ${message(error)}`);
+          return outcome;
+        }
+        try {
+          bus.emit('save:committed', { revision: outcome.revision });
+          bus.emit('outcome:committed', { kind, receiptOrdinal: outcome.receipt.ordinal });
+        } catch { /* the listener's own fault: the outcome is stored and published */ }
+        return outcome;
+      }
+      // The runtime has already blocked itself or dropped its lease for these: this page no longer speaks for
+      // the save. Any other refusal (the action's own rule, a storage abort, no seed stored yet) changes nothing.
+      if (outcome.kind === 'stale' || outcome.kind === 'revision-exhausted' || outcome.kind === 'duplicate-receipt'
+        || outcome.kind === 'lost' || (outcome.kind === 'protected' && outcome.reason !== 'authority-absent')) {
+        requireReload(`outcome ${kind} refused (${outcome.kind})`);
+      }
+      try { bus.emit('outcome:refused', { kind, reason: outcome.kind }); } catch { /* the listener's own fault */ }
+      return outcome;
+    } finally {
+      claim.settle();
+      announce();
     }
   };
 
@@ -252,5 +345,7 @@ export function createSaveLoop(deps: {
     },
     mayWrite,
     publishedEpoch: () => epoch.published(),
+    settle,
+    get actionInFlight() { return actions.operation; },
   };
 }

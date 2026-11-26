@@ -3,7 +3,8 @@
    The active-play clock, the session random state, the tab lease and the revisioned transaction live in
    their own packages. This keeps the four on one page lifecycle: a page accrues active play only while
    visible, answerable and holding its exact lease, and a checkpoint commits the clock and random state under
-   that same lease and the revision its caller saw. It owns no DOM, wall clock, entropy source or retry. */
+   that same lease and the revision its caller saw. An outcome with a receipt is committed under the same lease,
+   revision and clock (`outcomes.ts`). It owns no DOM, wall clock, entropy source, retry or product rule. */
 import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progression';
 import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
 import {
@@ -23,6 +24,7 @@ import {
   type V5ExtensionWrite,
   type V5Extensions,
 } from '@cf/persistence';
+import { createOutcomeCommits, type OutcomeCommits } from './outcomes';
 
 /** How long a tab's lease on the save lasts without a heartbeat, and how often a page renews it. */
 export const LEASE_TTL_MS = 10_000;
@@ -87,7 +89,7 @@ export type ReplacementOutcome =
   | RevisionedReplacementOutcome
   | { readonly kind: 'lease-unavailable' };
 
-export interface SaveRuntime {
+export interface SaveRuntime extends OutcomeCommits {
   /** Acquire or renew this page's lease once. Never retries internally. */
   heartbeat(): Promise<HeartbeatOutcome>;
   /** Stop accrual before asynchronous release when the document hides. */
@@ -299,7 +301,26 @@ export function createSaveRuntime(input: SaveRuntimeInput): SaveRuntime {
     return outcome;
   };
 
+  const outcomeCommits = createOutcomeCommits({
+    repository,
+    registry: input.registry,
+    parent: () => ({ revision, extensions }),
+    grant: () => (staleBlocked || released ? null : grant),
+    activePlayMs: () => clock.current(input.now()).activePlayMs,
+    enqueue,
+    adopt(committed) {
+      revision = committed.revision;
+      extensions = committed.saved.extensions;
+      sessionRng = copySessionRng(committed.authority.sessionRng);
+      publishCheckpointParent(committed.saved.canonicalState);
+      commits++;
+    },
+    block: blockAndRelease,
+    loseGrant: () => clearGrant(true),
+  });
+
   return Object.freeze({
+    ...outcomeCommits,
     heartbeat(): Promise<HeartbeatOutcome> {
       return enqueue(heartbeatUnsafe);
     },
