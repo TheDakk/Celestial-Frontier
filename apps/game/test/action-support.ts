@@ -14,13 +14,15 @@ export interface ActionPageOptions {
   readonly change?: (state: SaveStateV2) => void;
   /** The active play the expedition already holds, in milliseconds. */
   readonly activePlayMs?: number;
+  /** The seed of the session's random streams; the page's own when left out. */
+  readonly sessionSeed?: number;
   readonly backend?: StorageBackend;
 }
 
 export async function actionPage(options: ActionPageOptions = {}) {
   const backend = options.backend ?? createMemoryBackend();
-  const extensions: V5Extensions = options.activePlayMs === undefined ? {}
-    : prepareF4AuthorityUpdate({}, { activePlayMs: options.activePlayMs }, createSessionRNG(0xC4A7_0002).state()).extensions;
+  const extensions: V5Extensions = options.activePlayMs === undefined && options.sessionSeed === undefined ? {}
+    : prepareF4AuthorityUpdate({}, { activePlayMs: options.activePlayMs ?? 0 }, createSessionRNG(options.sessionSeed ?? 0xC4A7_0002).state()).extensions;
   await seedCurrentSave(backend, 'Vega', extensions, (state) => {
     state.tutDone = true;
     options.change?.(state);

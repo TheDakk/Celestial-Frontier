@@ -1,4 +1,5 @@
-import type { NavState, ZoomMode } from '@cf/scene';
+import type { SceneRoute } from '@cf/domain-landing';
+import type { CanonicalCF1StarAddress, CanonicalCF1WorldAddress, NavState, ZoomMode } from '@cf/scene';
 
 export type SizeClass = 'compact' | 'medium' | 'wide';
 export type InputMode = 'touch' | 'mouse';
@@ -22,6 +23,11 @@ export interface GameEvents {
    *  lease, or storage or the action's own rule refused it (`reason` is then the refusal's kind, followed by a
    *  colon and its own reason where it has one: `pre-draw-refused:capacity`, `declined:current`). */
   'outcome:refused': { kind: string; reason: string };
+  /** A landing is stored: the explorer stands on the world, in the region this landing rolled, shown by `route`.
+   *  `firstLanding`: the world was never stood on before. A wave-off says nothing here. */
+  'landing:arrived': { address: CanonicalCF1WorldAddress; regionKey: string | null; route: SceneRoute; firstLanding: boolean };
+  /** A survey of a star or a world is stored: something it showed was new to the expedition's record. */
+  'survey:done': { address: CanonicalCF1StarAddress | CanonicalCF1WorldAddress };
   /** A product carrier of the save could not be read or made at boot; said at every boot while it is so. */
   'save:carrier-refused': { carrier: string; reason: string };
   'settings:changed': { field: string };
