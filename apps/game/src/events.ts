@@ -26,7 +26,7 @@ export interface GameEvents {
   /** A landing is stored: the explorer stands on the world, in the region this landing rolled, shown by `route`.
    *  `firstLanding`: the world was never stood on before. A wave-off says nothing here. */
   'landing:arrived': { address: CanonicalCF1WorldAddress; regionKey: string | null; route: SceneRoute; firstLanding: boolean };
-  /** A survey of a star or a world is stored: something it showed was new to the expedition's record. */
+  /** A star or a world was surveyed (its card locked, or stood on), whether or not that showed anything new. */
   'survey:done': { address: CanonicalCF1StarAddress | CanonicalCF1WorldAddress };
   /** A product carrier of the save could not be read or made at boot; said at every boot while it is so. */
   'save:carrier-refused': { carrier: string; reason: string };
