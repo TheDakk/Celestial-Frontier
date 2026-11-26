@@ -279,6 +279,33 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
     expect(crossings(lying, paintSkin(lying, lying.pixels, 'crystalline', 'large', 1)!)).toBeGreaterThan(0);
   });
 
+  it('the texture keeps clear of every eye point of the part, so no cluster or seam lies under an eye', () => {
+    // An eye is drawn over the hide at the part's eye points; a seam of its own shade under a closed eye would swallow it.
+    const CLEAR = { small: 2, medium: 3, large: 4, guardian: 4 } as const;
+    const eyed = (names: readonly string[]): PartFrame => ({ ...frameOf(block(60, 40, '2')), attach: Object.fromEntries(names.map((n, k) => [n, [20 + 14 * k, 12 + 9 * k] as const])) });
+    const near = (frame: PartFrame, out: Uint8Array, reach: number): number => {
+      let n = 0;
+      for (const [x, y] of [[20, 12], [34, 21]] as const) {
+        for (let dy = -reach; dy <= reach; dy++) for (let dx = -reach; dx <= reach; dx++) if (out[(y + dy) * frame.w + x + dx] !== 2) n++;
+      }
+      return n;
+    };
+    for (const tier of TIERS) {
+      for (const skin of TEXTURED) {
+        let bare = 0;
+        for (let seed = 0; seed < 15; seed++) {
+          // Eye points by any of their names: plain, and for an eye count.
+          const frame = eyed(['eye0', 'eye1_4']);
+          expect(near(frame, paintSkin(frame, frame.pixels, skin, tier, seed)!, CLEAR[tier]), `${skin} ${tier} seed ${seed}`).toBe(0);
+          // Control: points that are not eye points keep nothing clear.
+          const other = eyed(['head', 'feature']);
+          bare += near(other, paintSkin(other, other.pixels, skin, tier, seed)!, CLEAR[tier]);
+        }
+        expect(bare, `${skin} ${tier}`).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it('a facet keeps its whole shape on the lightest and on the darkest shade, where one of its two changes cannot be made', () => {
     const maskOn = (shade: string, skin: SkinName): string => {
       const frame = frameOf(block(60, 40, shade));

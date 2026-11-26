@@ -60,9 +60,11 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
     return out;
   }
 
-  const shape = shapeOf(w, h, pixels);
+  // The hide the texture may use: the frame's pixels with a box round every eye point emptied, so nothing lies under an eye.
+  const hide = clearOfEyes(frame, pixels, EYE_CLEAR[tier]);
+  const shape = shapeOf(w, h, hide);
   if (shape === null) return out;
-  const draft: Draft = { w, h, pixels, wish: new Int8Array(w * h), cluster: new Int32Array(w * h), clusters: 0, xs: [], ys: [] };
+  const draft: Draft = { w, h, pixels: hide, wish: new Int8Array(w * h), cluster: new Int32Array(w * h), clusters: 0, xs: [], ys: [] };
   const salted = roll(seed, SKIN_NAMES.indexOf(skin), 0);
   if (rule.mode === 'scatter') scatter(draft, shape, rule.tiers[tier], salted);
   else lines(draft, shape, rule.tiers[tier], rule.mode === 'plates', salted);
@@ -72,6 +74,27 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
   }
   settle(w, h, pixels, out, draft.cluster, draft.xs, draft.ys);
   return out;
+}
+
+/** How far from an eye point, each way, the texture keeps clear, by tier: about an eye's own size. */
+const EYE_CLEAR: Readonly<Record<SizeTier, number>> = { small: 2, medium: 3, large: 4, guardian: 4 };
+
+/**
+ * The frame's pixels, with every pixel within `reach` columns and rows of one of the frame's eye points (an attach point
+ * named `eye...`) made empty. An eye is drawn over the hide there, and a closed eye is drawn in the hide's own shades:
+ * a cluster or a seam under it could be told from it at too few pixels. Returns `pixels` itself when the frame has no eye point.
+ */
+function clearOfEyes(frame: PartFrame, pixels: Uint8Array, reach: number): Uint8Array {
+  let hide = pixels;
+  for (const name of Object.keys(frame.attach)) {
+    if (!name.startsWith('eye')) continue;
+    const [ex, ey] = frame.attach[name] as readonly [number, number];
+    if (hide === pixels) hide = Uint8Array.from(pixels);
+    for (let y = ey - reach; y <= ey + reach; y++) {
+      for (let x = ex - reach; x <= ex + reach; x++) if (x >= 0 && y >= 0 && x < frame.w && y < frame.h) hide[y * frame.w + x] = 0;
+    }
+  }
+  return hide;
 }
 
 /** Whether paintSkin textures this frame by the skin's rule: the frame has no layer drawn for the skin, and the rule is one that draws clusters or lines (not slick's edge light, not `none`). */

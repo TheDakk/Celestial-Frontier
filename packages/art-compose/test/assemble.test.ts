@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { DRAW_ORDER, MARK_SLOTS, SKIN_NAMES, parseCatalogueText } from '@cf/art-format';
+import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
 import type { Catalogue, PartFrame, PoseEntry, SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
-import { assemble, compose, frameNameFor, paintSkin, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
+import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 
@@ -1182,8 +1182,10 @@ entry torso 0 hop 0 0
     expect(changes(plain.buffer, scaled.buffer, 0, 0, plain.buffer.w - 1, plain.buffer.h - 1)).toHaveLength(counted);
   });
 
-  it('a cluster one part half hides is taken back, so no texture pixel stands alone on the creature', () => {
-    // A head drawn 7 with a column of eyes down its middle: a head-wide dash under them would show as two lone pixels.
+  it('no texture lies under the eye, and no texture pixel stands alone on the creature', () => {
+    // The head's eye point is (4,1): the texture keeps two pixels clear of it each way at the small tier, so the whole
+    // head right of its first two columns stays as drawn, whatever the skin and the phase. (That one part may hide half
+    // of another's cluster, and the composer then takes the rest back, is proved on the test catalogue's creatures.)
     const lone = (b: PixelBuffer, plain: PixelBuffer): number => {
       let n = 0;
       for (let y = 0; y < b.h; y++) {
@@ -1194,20 +1196,19 @@ entry torso 0 hop 0 0
       }
       return n;
     };
-    let hidden = 0;
+    let onHead = 0;
     for (let phase = 0; phase < 15; phase++) {
       for (const skin of [0, 1, 2, 4, 5, 6, 8]) {
         const of = (s: number | null): Recipe => ({ ...creature(P.torso, s), marking: { pattern: 0, strength: 2, phase } });
         const plain = assemble(of(null), 'rest', skinCat).buffer;
         const skinned = assemble(of(skin), 'rest', skinCat).buffer;
         expect(lone(skinned, plain), `skin ${skin} phase ${phase}`).toBe(0);
-        // Control: the head painted alone holds texture where the eye then sits, at some phase of some skin.
-        const head = skinCat.parts.get(P.head)!.frames['rest']!;
-        const alone = paintSkin(head, head.pixels, SKIN_NAMES[skin]!, 'small', phase)!;
-        if (alone[1 * head.w + 4] !== head.pixels[1 * head.w + 4]) hidden++;
+        expect(changes(plain, skinned, 24, 10, 27, 13), `skin ${skin} phase ${phase}`).toEqual([]);
+        onHead += changes(plain, skinned, 22, 10, 23, 13).length;
       }
     }
-    expect(hidden).toBeGreaterThan(0);
+    // Control: the head's first two columns, clear of the eye, do take texture.
+    expect(onHead).toBeGreaterThan(0);
   });
 
   it('skin null draws today\'s picture', () => {
