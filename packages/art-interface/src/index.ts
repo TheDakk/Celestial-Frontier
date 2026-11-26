@@ -4,3 +4,4 @@ export * from './names';
 export * from './space';
 export * from './planet-noise';
 export * from './planet-ramp';
+export * from './planet-globe';
