@@ -1,0 +1,17 @@
+{
+  "name": "@cf/domain-worldkinds",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "New world types beside the legacy game's eight: one switch a type, all off; and the census that shows every seeded world's numbers are the legacy game 1.8.9's and that no switch moves a world outside its own slice.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@cf/domain-descriptors": "*",
+    "@cf/domain-ecology": "*",
+    "@cf/domain-opportunity": "*",
+    "@cf/domain-rand": "*",
+    "@cf/domain-strays": "*",
+    "@cf/domain-surveyphrases": "*",
+    "@cf/domain-worldgen": "*"
+  }
+}
