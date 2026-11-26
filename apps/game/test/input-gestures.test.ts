@@ -114,7 +114,8 @@ describe('input mode', () => {
   it('a mouse is mouse; touch, pen and anything unknown are touch', () => {
     expect(['mouse', 'touch', 'pen', '', 'stylus'].map(inputModeFor)).toEqual(['mouse', 'touch', 'touch', 'touch', 'touch']);
     expect(TARGET_MIN_PX).toEqual({ touch: 44, mouse: 32 });
-    expect(PICK_RADIUS_PX).toEqual({ touch: 22, mouse: 10 });
+    // By mouse the floor is the game's own for a planet: 16 pixels and a fifth more.
+    expect(PICK_RADIUS_PX).toEqual({ touch: 22, mouse: 19.2 });
   });
   it('follows the last pointer used: the root carries it with the smallest control size, and input:mode is sent on each change only', () => {
     const root = document.createElement('html');

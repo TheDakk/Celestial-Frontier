@@ -85,14 +85,38 @@ describe('the map screen', () => {
     const at = toScreen(cam, { w: 800, h: 600 }, jupiter.wx, jupiter.wy);
     // The game's picture of Jupiter is the square its night is drawn on: three of its radii wide.
     const reach = pictureWidth(jupiter, cam.z) * cam.z / 2;
-    expect(reach).toBeGreaterThan(14);
-    tap(at.x + reach - 1, at.y);
+    // The corners of the picture lie past the pick radius: there the picture alone decides.
+    expect(Math.hypot(reach - 1, reach - 1)).toBeGreaterThan(PICK_RADIUS_PX.mouse + 2);
+    tap(at.x + reach - 1, at.y - reach + 1);
     expect(cardTitle()).toBe('Jupiter');
     key(document, 'Escape');
     tap(at.x - reach + 1, at.y + reach - 1);
     expect(cardTitle()).toBe('Jupiter');
     key(document, 'Escape');
-    tap(at.x + reach + 2, at.y);
+    // Off the picture and past the radius, to the side and at the corner.
+    tap(at.x + Math.max(reach, PICK_RADIUS_PX.mouse) + 1, at.y);
+    expect(cardTitle()).toBeNull();
+    tap(at.x + reach + 1, at.y + reach - 1);
+    expect(cardTitle()).toBeNull();
+  });
+
+  it('by mouse a press within 19.2 pixels of a small world\'s middle opens its card, as in the game, and one just beyond does not', async () => {
+    const page = await atSol();
+    page.live.motionMode = 1;
+    rest(page);
+    const mercury = visibleBodies(page.nav.nav, page.cam, page.view, 0).find((body) => body.label === 'Mercury')!;
+    // Its picture is far smaller than the floor: the floor alone decides.
+    expect(pictureWidth(mercury, page.cam.z) * page.cam.z / 2).toBeLessThan(10);
+    const at = page.placeOf('Mercury', 0);
+    tap(at.x - 19, at.y);
+    expect(cardTitle()).toBe('Mercury');
+    key(document, 'Escape');
+    tap(at.x, at.y + 19.2);
+    expect(cardTitle()).toBe('Mercury');
+    key(document, 'Escape');
+    tap(at.x - 19.5, at.y);
+    expect(cardTitle()).toBeNull();
+    tap(at.x - 14, at.y + 14);
     expect(cardTitle()).toBeNull();
   });
 

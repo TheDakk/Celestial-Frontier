@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { pick } from '../src/input';
+import { PICK_RADIUS_PX, pick } from '../src/input';
 import type { Pickable } from '../src/input/pick';
 
 const body = (key: string, x: number, y: number, priority = 1): Pickable => ({ key, x, y, priority });
@@ -29,10 +29,10 @@ describe('pick', () => {
     expect(pick([body('diag', 116, 116)], 100, 100, 22)).toBeNull();
     expect(pick([], 100, 100, 22)).toBeNull();
   });
-  it('the radius is the caller\'s: a body 15 px away is picked under touch and missed under mouse', () => {
-    const bodies = [body('moon', 115, 100)];
-    expect(pick(bodies, 100, 100, 22)?.key).toBe('moon');
-    expect(pick(bodies, 100, 100, 10)).toBeNull();
+  it('the radius is the caller\'s: a body 20 px away is picked under touch and missed under mouse', () => {
+    const bodies = [body('moon', 120, 100)];
+    expect(pick(bodies, 100, 100, PICK_RADIUS_PX.touch)?.key).toBe('moon');
+    expect(pick(bodies, 100, 100, PICK_RADIUS_PX.mouse)).toBeNull();
   });
   it('a press anywhere on a body\'s own picture selects it, however far from its middle; off the picture only the radius counts', () => {
     // A star drawn 60 px wide: its picture is a square 30 px each way from its middle, as the game's sprite is.
