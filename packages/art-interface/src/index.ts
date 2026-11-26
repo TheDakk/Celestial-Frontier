@@ -6,3 +6,4 @@ export * from './planet-noise';
 export * from './planet-ramp';
 export * from './planet-globe';
 export * from './planet-frame';
+export * from './planet-mend';
