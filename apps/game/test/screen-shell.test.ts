@@ -1,6 +1,11 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
-import { F3_ACTIVE_PLAY_LEASE_KEY, F3_REVISION_KEY, V5_SCHEMA_KEY, createMemoryBackend, type StorageBackend } from '@cf/persistence';
+import { SCENE_OWNERSHIP_ADDRESS_RESOLVER } from '@cf/domain-acquisition';
+import { SCENE_ENGINEERING_ADDRESS_RESOLVER } from '@cf/domain-opportunity';
+import {
+  F3_ACTIVE_PLAY_LEASE_KEY, F3_REVISION_KEY, V5_SCHEMA_KEY, createMemoryBackend, readArc2Loot, readArc3Engineering, readArc4Ownership,
+  readWorldIdentity, type StorageBackend,
+} from '@cf/persistence';
 import { HEARTBEAT_MS, REGISTRY, bootSave } from '../src/save/index';
 import { NOTICE_WORDS, heldNoticeFor } from '../src/screens/notices';
 import { SOL as SOL_STAR } from './nav-support';
@@ -51,6 +56,30 @@ describe('the booted page', () => {
     expect(again.booted.kind).toBe('current');
     expect(again.nav.nav).toMatchObject({ mode: 'system', star: { seed: SOL_STAR.seed } });
     expect(again.live.savedView).toEqual(page.nav.solRoute());
+  });
+
+  it('a new game holds its four product carriers after the boot heartbeat, in the one checkpoint that stores its seed; the next boot writes nothing', async () => {
+    const page = await bootPage();
+    const kinds = (extensions: Parameters<typeof readArc2Loot>[0]) => [
+      readWorldIdentity(extensions).kind, readArc2Loot(extensions).kind,
+      readArc3Engineering(extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER).kind, readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER).kind,
+    ];
+    expect(page.booted.revision).toBe(1);
+    expect(kinds(page.booted.extensions)).toEqual(['absent', 'absent', 'absent', 'absent']);
+    expect(page.runtime.revision).toBe(2);
+    expect(page.runtime.diagnostics().seedStored).toBe(true);
+    expect(kinds(page.runtime.extensions)).toEqual(['loaded', 'loaded', 'loaded', 'loaded']);
+    await page.runtime.release();
+
+    const rows = await dump(page.backend);
+    const again = await bootPage({ backend: page.backend });
+    expect(kinds(again.booted.extensions)).toEqual(['loaded', 'loaded', 'loaded', 'loaded']);
+    expect(again.runtime.revision).toBe(2);
+    const after = await dump(page.backend);
+    // Only the lease row differs: this page took it.
+    delete rows.meta![F3_ACTIVE_PLAY_LEASE_KEY];
+    delete after.meta![F3_ACTIVE_PLAY_LEASE_KEY];
+    expect(after).toEqual(rows);
   });
 
   it('a hidden page stores a checkpoint and gives the save up; shown again it takes it back; hidden, the heartbeat does nothing', async () => {

@@ -15,6 +15,7 @@
     "@cf/art-recipe": "*",
     "@cf/art-testparts": "*",
     "@cf/audio": "*",
+    "@cf/domain-acquisition": "*",
     "@cf/domain-biome-profile": "*",
     "@cf/domain-descriptors": "*",
     "@cf/domain-ecology": "*",

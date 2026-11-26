@@ -9,3 +9,4 @@ export type {
   ActionCommitOutcome, ActionInput, MultiOutcomeCommitOutcome, MultiOutcomeInput, OutcomeCommitOutcome, OutcomeInput,
   OutcomeRefusalReason, OutcomeRefused, PreDrawMultiOutcomeCommitOutcome, PreDrawMultiOutcomeInput,
 } from './outcomes';
+export { CARRIERS, bootstrapCarriers, startCarriers, watchCarriers, type CarrierBootstrap, type CarrierName, type CarrierStart, type CarrierStatus } from './carriers';

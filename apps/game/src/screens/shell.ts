@@ -13,7 +13,7 @@ import type { DevicePreferences } from '../platform/preferences';
 import { createPersistAsker, readPersistState, type StorageManagerLike } from '../protect';
 import {
   HEARTBEAT_MS, LEASE_TTL_MS, REGISTRY, bootSave, createSaveLoop, createSaveRuntime, createWriteGate,
-  replaceExpedition, resetExpedition, retryHeldRead, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
+  replaceExpedition, resetExpedition, retryHeldRead, watchCarriers, type BootResult, type SaveLoop, type SaveRuntime, type WriteGate,
 } from '../save';
 import { GESTURE_EVENTS, countsAsGesture, createShellSound, readAudioAccessibilityPrefs, writeAudioAccessibilityPrefs, type ShellSound } from '../sound';
 import {
@@ -250,8 +250,11 @@ export async function startShell(env: ShellEnv): Promise<Shell> {
   doc.addEventListener('visibilitychange', () => { void (visible() ? loop.show() : loop.hide()); });
   view.addEventListener('pagehide', () => { void loop.hide(); });
   view.addEventListener('pageshow', (event) => { if (event.persisted) void loop.show(); });
+  // The product carriers: a save that has none gains them the first time this page may write, in the same
+  // checkpoint that stores a new game's session seed.
+  const carriers = watchCarriers({ runtime, loop, bus });
   env.every(HEARTBEAT_MS, () => { void loop.beat(); });
-  const ready = (visible() ? loop.beat() : Promise.resolve()).then(() => {
+  const ready = (visible() ? loop.beat().then(carriers.ensure) : Promise.resolve()).then(() => {
     started = true;
     if (routeSaveWanted) void loop.request('route');
   });
