@@ -351,6 +351,80 @@ describe('save loop: settling a product action', () => {
     expect(read.kind === 'loaded' && [read.state.essence, read.state.sfxVol]).toEqual([essence + 2, 0.75]);
   });
 
+  const storedNow = async (h: Awaited<ReturnType<typeof bootedHarness>>) => {
+    const read = await readRevisionedSaveV5WithRecovery(h.backend, REGISTRY, NOW);
+    if (read.kind !== 'loaded') throw new Error(`stored save was ${read.kind}`);
+    return { essence: read.state.essence, sfxVol: read.state.sfxVol, revision: read.revision };
+  };
+
+  it('a checkpoint and an action asked for in the same turn are both stored, each once, and no reload is asked', async () => {
+    const h = await bootedHarness();
+    const essence = h.live.essence;
+    const revision = h.runtime.revision;
+    h.live.sfxVol = 0.3;
+    const checkpoint = h.loop.request('settings');
+    const action = h.loop.settle('test.add', addEssence(6));
+    await expect(checkpoint).resolves.toBe(true);
+    expect((await action).kind).toBe('committed');
+    await h.loop.flush();
+    expect(h.reloads).toEqual([]);
+    expect(h.loop.status).toBe('idle');
+    expect(await storedNow(h)).toEqual({ essence: essence + 6, sfxVol: 0.3, revision: revision + 2 });
+    expect(await receipts(h.backend)).toEqual(['receipt:0']);
+  });
+
+  it('an action and then a checkpoint asked for in the same turn are both stored, each once', async () => {
+    const h = await bootedHarness();
+    const essence = h.live.essence;
+    const revision = h.runtime.revision;
+    h.live.sfxVol = 0.35;
+    const action = h.loop.settle('test.add', addEssence(8));
+    const checkpoint = h.loop.request('settings');
+    expect((await action).kind).toBe('committed');
+    await expect(checkpoint).resolves.toBe(true);
+    await h.loop.flush();
+    expect(h.reloads).toEqual([]);
+    expect(await storedNow(h)).toEqual({ essence: essence + 8, sfxVol: 0.35, revision: revision + 2 });
+    expect(await receipts(h.backend)).toEqual(['receipt:0']);
+  });
+
+  it('a checkpoint, an action and another checkpoint in one turn: the action once, the settings stored, no reload', async () => {
+    const h = await bootedHarness();
+    const essence = h.live.essence;
+    const revision = h.runtime.revision;
+    h.live.sfxVol = 0.4;
+    const first = h.loop.request('settings');
+    const action = h.loop.settle('test.add', addEssence(9));
+    h.live.sfxVol = 0.45;
+    const second = h.loop.request('route');
+    const busy = h.loop.settle('test.other', addEssence(1000));
+    await expect(first).resolves.toBe(true);
+    expect((await action).kind).toBe('committed');
+    await expect(second).resolves.toBe(true);
+    await expect(busy).resolves.toEqual({ kind: 'refused', reason: 'busy' });
+    await h.loop.flush();
+    expect(h.reloads).toEqual([]);
+    expect(await storedNow(h)).toEqual({ essence: essence + 9, sfxVol: 0.45, revision: revision + 3 });
+    expect(await receipts(h.backend)).toEqual(['receipt:0']);
+    expect(h.live.essence).toBe(essence + 9);
+  });
+
+  it('a page hidden and an action pressed in the same turn: the action is stored or refused whole, and no reload is asked', async () => {
+    const h = await bootedHarness();
+    const essence = h.live.essence;
+    const hiding = h.loop.hide();
+    const action = h.loop.settle('test.add', addEssence(5));
+    await hiding;
+    const outcome = await action;
+    expect(h.reloads).toEqual([]);
+    expect(h.loop.status).toBe('idle');
+    const now = await storedNow(h);
+    expect(now.essence).toBe(outcome.kind === 'committed' ? essence + 5 : essence);
+    expect(h.live.essence).toBe(now.essence);
+    expect(await receipts(h.backend)).toEqual(outcome.kind === 'committed' ? ['receipt:0'] : []);
+    expect(outcome.kind === 'committed' || outcome.kind === 'refused').toBe(true);
+  });
+
   it('a stale press (another page moved the save) is refused, spends nothing, and the page asks for a reload', async () => {
     const h = await bootedHarness();
     const events = heard(h);

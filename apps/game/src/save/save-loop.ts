@@ -198,9 +198,11 @@ export function createSaveLoop(deps: {
     }
   };
 
-  /** A checkpoint waits for the product action in flight, so the two never bind to the same revision. */
+  /** A checkpoint waits for the product action in flight, so the two never bind to the same revision. With no
+   *  action in flight it must not yield before `storing` is set: an action pressed in the same turn has to see
+   *  this checkpoint and wait for it. */
   const write = async (intent: EcologyEpochCheckpointIntent, extensionWrites: readonly V5ExtensionWrite[]): Promise<boolean> => {
-    await actions.idle();
+    while (actions.busy) await actions.idle();
     const run = store(intent, extensionWrites);
     storing = run;
     try { return await run; } finally { if (storing === run) storing = null; }
