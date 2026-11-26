@@ -175,6 +175,16 @@ export function boneRampOf(recipe: Pick<Recipe, 'identity'>, catalogue: Catalogu
 }
 
 /**
+ * The palette colour index a recipe's eye highlight (value 14) is shown in, for colourTable's `eyeHighlight`: a named
+ * species' own when its species line gives one (`eyeHighlight=`), else the palette's, as for every generated creature.
+ * Not a field of the recipe, as the bone ramp is not: the recorded recipes stay as they are.
+ */
+export function eyeHighlightOf(recipe: Pick<Recipe, 'identity'>, catalogue: Catalogue): number {
+  const species = recipe.identity.startsWith(SPECIES_IDENTITY) ? catalogue.species.get(recipe.identity.slice(SPECIES_IDENTITY.length)) : undefined;
+  return species?.eyeHighlight ?? catalogue.palette.eyeHighlight;
+}
+
+/**
  * The recipe of a named species (catalogue line `species`): one fixed look, the same picture everywhere. Its own parts
  * (planSpeciesParts) on scaffold `<family>/<key>/<tier>`, its own ramps (speciesIrisRamp), plain, no shift, no glow, with the
  * template of its species line. No stream is drawn.

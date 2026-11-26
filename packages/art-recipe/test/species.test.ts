@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { parseCatalogueText, partId } from '@cf/art-format';
+import { colourTable, parseCatalogueText, partId, PIXEL_EYE_HIGHLIGHT } from '@cf/art-format';
 import type { Catalogue, SlotName } from '@cf/art-format';
-import { boneRampOf, buildRecipe, buildSpeciesRecipe, RENDERER_VERSION, speciesBoneRamp } from '../src/recipe';
+import { boneRampOf, buildRecipe, buildSpeciesRecipe, eyeHighlightOf, RENDERER_VERSION, speciesBoneRamp } from '../src/recipe';
+import type { Recipe } from '../src/recipe';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 const partText = (id: string): string => `part ${id}\nframe rest anchor=0,0\n1\n`;
@@ -197,5 +198,45 @@ species civet quadruped small legs=4 eyes=2 iris=3 tail=1
   it('the bone ramp is no field of a recipe\'s ramps', () => {
     const own = withRamps('ramp civet-bone 0 0 0 0\n');
     expect(Object.keys(buildSpeciesRecipe('civet', own).ramps)).toEqual(['primary', 'accent', 'underside', 'iris']);
+  });
+});
+
+describe('the eye highlight of a recipe', () => {
+  const PACK = `palette
+colour 0 000000
+colour 5 fff0bf
+colour 9 fff1cf
+ramp civet 0 0 0 0
+ramp civet-accent 0 0 0 0
+ramp civet-under 0 0 0 0
+ramp iris3 0 0 0 0
+eyeHighlight 5
+species civet quadruped small legs=4 eyes=2 iris=3 tail=1 OWN
+species otter quadruped small legs=4 eyes=2 iris=3 tail=1
+`;
+  const own = parseCatalogueText(PACK.replace('OWN', 'eyeHighlight=9'));
+  const shared = parseCatalogueText(PACK.replace(' OWN', ''));
+  const shown = (recipe: Recipe, catalogue: Catalogue): number =>
+    colourTable(catalogue.palette, { ...recipe.ramps, eyeHighlight: eyeHighlightOf(recipe, catalogue) }).table[PIXEL_EYE_HIGHLIGHT]!;
+
+  it('a species with eyeHighlight= on its line is shown with that colour; any other species with the palette\'s', () => {
+    expect(eyeHighlightOf(buildSpeciesRecipe('civet', own), own)).toBe(9);
+    expect(shown(buildSpeciesRecipe('civet', own), own)).toBe(0xfff1cf);
+    // Another species of the same catalogue, and the same species without the field.
+    expect(eyeHighlightOf(buildSpeciesRecipe('otter', own), own)).toBe(5);
+    expect(shown(buildSpeciesRecipe('otter', own), own)).toBe(0xfff0bf);
+    expect(shown(buildSpeciesRecipe('civet', shared), shared)).toBe(0xfff0bf);
+  });
+
+  it('a generated creature always takes the palette\'s, and its colour table is the one made without the argument', () => {
+    for (const seed of [1, 2, 3]) {
+      const generated = buildRecipe({ kingdom: 'fauna', seed, color: 3 }, [], own);
+      expect(eyeHighlightOf(generated, own)).toBe(5);
+      expect(colourTable(own.palette, { ...generated.ramps, eyeHighlight: eyeHighlightOf(generated, own) })).toEqual(colourTable(own.palette, generated.ramps));
+    }
+  });
+
+  it('the eye highlight is no field of a recipe: the species\' recipe is the same with the field and without', () => {
+    expect(buildSpeciesRecipe('civet', own)).toEqual(buildSpeciesRecipe('civet', shared));
   });
 });

@@ -183,4 +183,23 @@ describe('checkPack on the placeholder named species', () => {
       expect(check(text).structure).toEqual(['family radial has no fallback at small']);
     });
   });
+
+  describe('a species\' own eye highlight', () => {
+    const BIRD = 'species testbird avian medium legs=2 eyes=1 iris=0 tail=1 template=biped-bird';
+
+    it('one that names a colour the palette defines checks OK, and the species is still composed in every pose', () => {
+      const r = check(planted(`${BIRD}\n`, `${BIRD} eyeHighlight=13\n`, SPECIES_TEXT));
+      expect(errorsOf(r)).toEqual([]);
+      expect(r.ok).toBe(true);
+      expect(r.composed).toBe(23);
+    });
+
+    it('one that names a colour the palette does not define is refused by the species and the colour', () => {
+      const text = planted(`${BIRD}\n`, `${BIRD} eyeHighlight=9999999\n`, SPECIES_TEXT);
+      const line = text.split('\n').indexOf(`${BIRD} eyeHighlight=9999999`) + 1;
+      const r = check(text);
+      expect(r.ok).toBe(false);
+      expect(formatReport(r)).toBe(`check-pack: FAIL\nerror: parse: species testbird line ${line}: eyeHighlight colour 9999999 is not defined\n`);
+    });
+  });
 });
