@@ -310,6 +310,30 @@ export const recorders = {
       return cases;
     },
   },
+  'landing-environment': {
+    test: 'packages/domain/landing/test/weather.test.ts',
+    kind: 'outputs',
+    taken: 'The v1 environment of a world (pl._env) for seeds 1..1000 and 133, for each of the types terran, ocean, gas and rocky in a temperate band, run with new Function over three unique script slices, with climateBand (returns temperate) and st ({sys: null}) supplied by the recorder: "function mulberry32(a){" to "/4294967296}}"; "const TAU = Math.PI*2;"; the statements of openLandingVista from "  if(!pl._env){" to "const tod=Bc>0.72?\'day\':(Bc>0.42?\'twilight\':\'night\');" (inline in that function, so wrapped unchanged in function(pl, P, time)). One case per type: output holds, per seed in order, [seed, tilt, hasAtmo, hasField, wx, ph, dayLen, yearLen].',
+    record: ({ script }) => {
+      const landingClock = new Function('climateBand', 'st', `
+        ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+        ${cutUnique(script, 'const TAU = Math.PI*2;', ';')}
+        function landingClock(pl, P, time){
+        ${cutUnique(script, '  if(!pl._env){\n    const er=mulberry32((P.seed^0xE57)>>>0);', "const tod=Bc>0.72?'day':(Bc>0.42?'twilight':'night');")}
+          return env;
+        }
+        return landingClock;`)(() => 'temperate', { sys: null });
+      const seeds = [...Array.from({ length: 1000 }, (_, i) => i + 1), 133];
+      return ['terran', 'ocean', 'gas', 'rocky'].map((type) => ({
+        input: { type, band: 'temperate' },
+        output: seeds.map((seed) => {
+          const pl = { P: { seed, type }, orb: 100 };
+          const env = landingClock(pl, pl.P, 0);
+          return [seed, env.tilt, env.hasAtmo, env.hasField, env.wx, env.ph, env.dayLen, env.yearLen];
+        }),
+      }));
+    },
+  },
   'landing-weather-events': {
     test: 'packages/domain/landing/test/weather.test.ts',
     kind: 'outputs',
