@@ -8,6 +8,7 @@ export const SETTINGS_CATALOG: StringCatalog = catalog('settings', [
   'Mono audio', 'Both ears hear every sound (one earbud, one speaker). Saved on this device.',
   'Reduced intensity', 'Quieter, gentler sound with no sudden loud peaks. Saved on this device.',
   'Motion', 'Auto', 'Full', 'Reduced',
+  'Star charts', 'Orbit paths, the habitable zone and chart labels in system view. Off keeps the sky looking like a universe.',
   'Text size', 'A', 'A+', 'A++',
   'Text tone', 'Soft', 'Bright', 'Max',
   'Font', 'Rounded', 'System', 'Mono',

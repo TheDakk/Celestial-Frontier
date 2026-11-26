@@ -9,8 +9,8 @@ recordCanvasPainting();
 pretendLayout();
 
 const READ_ONLY = 'Read-only expeditionInspection remains available, but this action cannot change the expedition until save authority is restored.';
-const settingsOf = (state: { sndOn: boolean; tipsOn: boolean; motionMode: number; fsMode: string; toneMode: string; fontMode: string; sfxVol: number }) =>
-  [state.sndOn, state.tipsOn, state.motionMode, state.fsMode, state.toneMode, state.fontMode, state.sfxVol];
+const settingsOf = (state: { sndOn: boolean; tipsOn: boolean; chartsOn: boolean; motionMode: number; fsMode: string; toneMode: string; fontMode: string; sfxVol: number }) =>
+  [state.sndOn, state.tipsOn, state.chartsOn, state.motionMode, state.fsMode, state.toneMode, state.fontMode, state.sfxVol];
 
 describe('a page without the save', () => {
   it('refuses each setting with the read-only words, says it stores nothing, and stores again once the save is its own', async () => {
@@ -28,6 +28,7 @@ describe('a page without the save', () => {
     const presses: Array<() => void> = [
       () => page.control('sound').click(),
       () => page.control('tips').click(),
+      () => page.control('charts').click(),
       () => page.control('motion', '1').click(),
       () => page.control('size', 'fs-xl').click(),
       () => page.control('tone', 'tone-max').click(),
@@ -46,6 +47,7 @@ describe('a page without the save', () => {
     }
     await settled();
     expect(page.control('sound').getAttribute('aria-pressed')).toBe('true');
+    expect([page.control('charts').getAttribute('aria-pressed'), page.control('charts').textContent]).toEqual(['false', 'Off']);
     expect(page.control('size', 'fs-xl').getAttribute('aria-pressed')).toBe('false');
     expect(page.panel().querySelector<HTMLInputElement>('[data-set="volume"]')!.value).toBe(String(Math.round(page.live.sfxVol * 100)));
     expect(document.documentElement.style.fontSize).toBe(look);

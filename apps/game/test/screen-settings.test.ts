@@ -1,12 +1,14 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
 import { createMemoryBackend } from '@cf/persistence';
+import { currentRegionOf } from '@cf/scene';
+import { descentCamera, mapPicture, type MapFrame } from '../src/space';
 import { REGISTRY, bootSave } from '../src/save/index';
 import { SETTINGS_CATALOG } from '../src/screens/strings';
-import { LOCALIZED_ATTRIBUTES, pseudoLocalize } from '../src/ui';
+import { LOCALIZED_ATTRIBUTES, currentSheet, pseudoLocalize } from '../src/ui';
 import { NOW, SOL_ROUTE, dump, seedCurrentSave } from './save-support';
-import { bootPage, pretendLayout, settled } from './shell-support';
-import { recordCanvasPainting } from './support/fake-canvas';
+import { bootPage, pretendLayout, pretendSize, runFrames, settled } from './shell-support';
+import { paintedBy, recordCanvasPainting } from './support/fake-canvas';
 
 recordCanvasPainting();
 pretendLayout();
@@ -61,6 +63,54 @@ describe('Settings', () => {
     expect(root.style.getPropertyValue('--cf-space-2')).toBe('8px');
   });
 
+  it('Star charts is off in a new game; a press turns it on, stores it, and the map then draws the orbit lines, the zone and the chart labels', async () => {
+    pretendSize(800, 600);
+    const page = await bootPage({ width: 800, height: 600 });
+    page.live.motionMode = 1;
+    runFrames(page, 80);
+    const sheet = currentSheet();
+    const canvas = document.querySelector<HTMLCanvasElement>('canvas.map')!;
+    const captions = (): string[] => [...document.querySelectorAll<HTMLElement>('.map-captions canvas')].map((c) => c.dataset.caption!);
+    const picture = (charts: boolean): Array<number | null> => {
+      const frame: MapFrame = {
+        nav: page.nav.nav, cam: descentCamera('system', 600).to, view: { w: 800, h: 600 }, dpr: 1, time: 0, epoch: page.loop.publishedEpoch(),
+        reach: currentRegionOf(0).r, charts, passes: { effects: page.live.fxOn, motion: false }, sized: true, solid: true, marks: true,
+      };
+      return Array.from(mapPicture(frame, sheet, { glyphs: [], icons: [], elements: [] }).pixels, (value) => (value === 0 ? null : sheet.palette.colours[value]!));
+    };
+    // The charts are the orbit lines and the zone: the two pictures differ, and each is the game's own.
+    expect(picture(true)).not.toEqual(picture(false));
+    const changes: string[] = [];
+    page.env.bus.on('settings:changed', (event) => changes.push(event.field));
+
+    page.openSettings();
+    expect([page.live.chartsOn, page.control('charts').textContent, page.control('charts').getAttribute('aria-pressed')]).toEqual([false, 'Off', 'false']);
+    expect(page.control('charts').title).toBe('Orbit paths, the habitable zone and chart labels in system view. Off keeps the sky looking like a universe.');
+    // It stands after Motion, before the text controls.
+    const order = [...page.panel().querySelectorAll('[data-set]')].map((control) => control.getAttribute('data-set'));
+    expect(order.indexOf('charts')).toBe(order.lastIndexOf('motion') + 1);
+    expect(paintedBy(canvas)).toEqual(picture(false));
+    expect(captions()).not.toContain('habitable zone');
+
+    page.control('charts').click();
+    expect([page.live.chartsOn, page.control('charts').textContent, page.control('charts').getAttribute('aria-pressed')]).toEqual([true, 'On', 'true']);
+    expect(changes).toEqual(['chartsOn']);
+    runFrames(page, 2);
+    expect(paintedBy(canvas)).toEqual(picture(true));
+    expect(captions()).toEqual(expect.arrayContaining(['asteroid belt', 'habitable zone']));
+    await page.loop.flush();
+    expect((await stored(page.backend)).chartsOn).toBe(true);
+
+    // Off again: the clean sky, stored as well.
+    page.control('charts').click();
+    runFrames(page, 2);
+    expect([page.live.chartsOn, page.control('charts').textContent]).toEqual([false, 'Off']);
+    expect(paintedBy(canvas)).toEqual(picture(false));
+    expect(captions()).not.toContain('habitable zone');
+    await page.loop.flush();
+    expect((await stored(page.backend)).chartsOn).toBe(false);
+  });
+
   it('the two listening modes are kept on the device, not in the save, and the focus stays on the control pressed', async () => {
     const page = await bootPage();
     page.openSettings();
@@ -106,7 +156,7 @@ describe('Settings', () => {
     const seen = new Set<string>();
     const states: Array<(page: Awaited<ReturnType<typeof bootPage>>) => Promise<void>> = [
       async () => undefined,
-      async (page) => { for (const key of ['sound', 'mono', 'soft', 'tips']) page.control(key).click(); page.control('reset').click(); },
+      async (page) => { for (const key of ['sound', 'mono', 'soft', 'charts', 'tips']) page.control(key).click(); page.control('reset').click(); },
       async (page) => { page.control('backup').click(); await settled(); },
       async (page) => { page.control('backup').click(); await settled(); page.chooser.answer = page.files[0]!.text; page.control('restore').click(); await settled(); },
       async (page) => { page.chooser.answer = '{broken'; page.control('restore').click(); await settled(); },

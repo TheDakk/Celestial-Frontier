@@ -1,5 +1,8 @@
 /* Settings. Every control changes a real field: of the save (stored by the save loop), or of the device for
-   the two listening modes. The panel is drawn again after each change and the focus is kept on the control. */
+   the two listening modes. The panel is drawn again after each change and the focus is kept on the control.
+   Star charts is the legacy game's one control for the orbit lines, the habitable zone and the chart labels
+   together (celestial-frontier.html 2221-2222, its words and its hint; 26089-26094, the press, which asks for a
+   save; 15973, off in a new game; 16790, off where a save does not say). */
 import type { SaveStateV2 } from '@cf/persistence';
 import type { UpdateControl } from '../offline';
 import type { AudioAccessibilityModes } from '../sound';
@@ -14,7 +17,7 @@ import { SETTINGS_CATALOG } from './strings';
 import { createUpdateView } from './update';
 
 /** The save fields Settings changes in this milestone. */
-export type SettingsField = 'sndOn' | 'sfxVol' | 'motionMode' | 'fsMode' | 'toneMode' | 'fontMode' | 'tipsOn';
+export type SettingsField = 'sndOn' | 'sfxVol' | 'motionMode' | 'chartsOn' | 'fsMode' | 'toneMode' | 'fontMode' | 'tipsOn';
 
 export interface StatusFacts {
   build: string;
@@ -155,6 +158,8 @@ export function settingsScreen(ports: SettingsPorts): ScreenDef {
           toggle('soft', 'Reduced intensity', listening.reducedIntensity, () => ports.listening.set({ ...listening, reducedIntensity: !listening.reducedIntensity }),
             'Quieter, gentler sound with no sudden loud peaks. Saved on this device.'),
           choice('motion', 'Motion', save.motionMode, [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']], (v) => set('motionMode', v)),
+          toggle('charts', 'Star charts', save.chartsOn, () => set('chartsOn', !save.chartsOn),
+            'Orbit paths, the habitable zone and chart labels in system view. Off keeps the sky looking like a universe.'),
           choice('size', 'Text size', save.fsMode, [['', 'A'], ['fs-lg', 'A+'], ['fs-xl', 'A++']], (v) => set('fsMode', v)),
           choice('tone', 'Text tone', save.toneMode, [['', 'Soft'], ['tone-bright', 'Bright'], ['tone-max', 'Max']], (v) => set('toneMode', v)),
           choice('font', 'Font', save.fontMode, [['', 'Rounded'], ['font-sys', 'System'], ['font-mono', 'Mono']], (v) => set('fontMode', v)),
