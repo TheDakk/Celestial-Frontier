@@ -82,19 +82,19 @@ describe('marks and skin: bone', () => {
   });
 
   it('no skin rule steps a bone pixel, and each steps the hide beside it', () => {
-    const wide = frameOf(new Array<string>(8).fill('222222mmmmmm'));
+    const wide = frameOf(new Array<string>(16).fill('222222222222222222222222mmmmmm'));
     const ruled = SKIN_NAMES.filter((s) => SKIN_TABLE[s].mode !== 'none');
     expect(ruled.length).toBe(8);
     for (const skin of ruled) {
-      const out = rowsOf(wide, paintSkin(wide, wide.pixels, skin));
-      expect(out.map((row) => row.slice(6)), skin).toEqual(new Array<string>(8).fill('mmmmmm'));
-      expect(out.map((row) => row.slice(0, 6)), skin).not.toEqual(new Array<string>(8).fill('222222'));
+      const out = rowsOf(wide, paintSkin(wide, wide.pixels, skin, 'medium', 0));
+      expect(out.map((row) => row.slice(24)), skin).toEqual(new Array<string>(16).fill('mmmmmm'));
+      expect(out.map((row) => row.slice(0, 24)), skin).not.toEqual(new Array<string>(16).fill('222222222222222222222222'));
     }
   });
 
   it('a hand-drawn skin layer never replaces a bone pixel, and may draw bone on hide', () => {
     const f = frameOf(['22mm'], { furred: ['1l1l'] });
-    expect(rowsOf(f, paintSkin(f, f.pixels, 'furred'))).toEqual(['1lmm']);
+    expect(rowsOf(f, paintSkin(f, f.pixels, 'furred', 'medium', 0))).toEqual(['1lmm']);
   });
 });
 

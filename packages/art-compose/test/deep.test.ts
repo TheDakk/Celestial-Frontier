@@ -82,19 +82,19 @@ describe('marks and skin: deep', () => {
   });
 
   it('no skin rule steps a deep pixel, and each steps the hide beside it', () => {
-    const wide = frameOf(new Array<string>(8).fill('222222qqqqqq'));
+    const wide = frameOf(new Array<string>(16).fill('222222222222222222222222qqqqqq'));
     const ruled = SKIN_NAMES.filter((s) => SKIN_TABLE[s].mode !== 'none');
     expect(ruled.length).toBe(8);
     for (const skin of ruled) {
-      const out = rowsOf(wide, paintSkin(wide, wide.pixels, skin));
-      expect(out.map((row) => row.slice(6)), skin).toEqual(new Array<string>(8).fill('qqqqqq'));
-      expect(out.map((row) => row.slice(0, 6)), skin).not.toEqual(new Array<string>(8).fill('222222'));
+      const out = rowsOf(wide, paintSkin(wide, wide.pixels, skin, 'medium', 0));
+      expect(out.map((row) => row.slice(24)), skin).toEqual(new Array<string>(16).fill('qqqqqq'));
+      expect(out.map((row) => row.slice(0, 24)), skin).not.toEqual(new Array<string>(16).fill('222222222222222222222222'));
     }
   });
 
   it('a hand-drawn skin layer never replaces a deep pixel, and may draw deep on hide but not on bone', () => {
     const f = frameOf(['22qqmm'], { furred: ['1p1ppl'] });
-    expect(rowsOf(f, paintSkin(f, f.pixels, 'furred'))).toEqual(['1pqqmm']);
+    expect(rowsOf(f, paintSkin(f, f.pixels, 'furred', 'medium', 0))).toEqual(['1pqqmm']);
   });
 });
 

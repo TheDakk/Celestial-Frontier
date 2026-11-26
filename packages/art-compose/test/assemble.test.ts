@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { DRAW_ORDER, MARK_SLOTS, parseCatalogueText } from '@cf/art-format';
+import { DRAW_ORDER, MARK_SLOTS, SKIN_NAMES, parseCatalogueText } from '@cf/art-format';
 import type { Catalogue, PartFrame, PoseEntry, SlotName } from '@cf/art-format';
 import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
-import { assemble, compose, frameNameFor, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
+import { assemble, compose, frameNameFor, paintSkin, poseEntryFor, type PixelBuffer } from '@cf/art-compose';
 
 const HEADER = 'palette\ncolour 0 000000\ncolour 1 ffffff\ncolour 2 eeeeee\ncolour 3 00ff00\ncolour 4 111111\nramp r 1 2 3 4\noutline 0\neye 1\neyeHighlight 2\nglow 3\n';
 
@@ -1048,22 +1048,31 @@ entry torso 0 rest 0 0
 });
 
 describe('assemble: skin', () => {
-  // A torso 6x2 drawn 3 (ramp 0, shade 2) at origin (10,10): it covers x 10-15, y 10-11. Every other part lands with
-  // its anchor at its top-left pixel: the head (16,10) to (18,11), the eye (18,10), the tail (9,10), the back part
-  // (12,9), the far leg (10,12) to (10,13), the near leg (14,12) to (14,13). Each part's row 0 is a texture row of
-  // every grid, rows or dots rule (its cell row 0), so the first row of each painted part changes shade.
+  // A small torso 12x5 drawn 3 (ramp 0, shade 2) at origin (10,10): it covers x 10-21, y 10-14. Every other part lands
+  // with its anchor at its top-left pixel (the tail at its top-right): the head (22,10) to (27,13), the eye (26,11), the
+  // tail (6,10) to (9,11), the back part (13,9), the far leg (10,15) to (12,19), the near leg (17,15) to (19,19). Each
+  // part in a mark slot is wide enough to hold a small cluster.
   const SKIN_TEXT = HEADER + `
 part quadruped/torso/sturdy/small/v0
-frame rest anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
-333333
-333333
+frame rest anchor=0,0 attach=head:12,0,tail:-1,0,back:3,-1,far0:0,5,near0:7,5
+333333333333
+333333333333
+333333333333
+333333333333
+333333333333
 layer flow
-111333
-111333
+111111333333
+111111333333
+111111333333
+111111333333
+111111333333
 
-frame hop anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
-333333
-333333
+frame hop anchor=0,0 attach=head:12,0,tail:-1,0,back:3,-1,far0:0,5,near0:7,5
+333333333333
+333333333333
+333333333333
+333333333333
+333333333333
 
 part quadruped/torso/clear/small/v0
 frame rest anchor=0,0 attach=head:6,0,tail:-1,0,back:2,-1,far0:0,2,near0:4,2
@@ -1085,17 +1094,20 @@ frame rest anchor=0,0
 666666666666
 
 part quadruped/head/h1/small/v0
-frame rest anchor=0,0 attach=eye0:2,0
-777
-777
+frame rest anchor=0,0 attach=eye0:4,1
+777777
+777777
+777777
+777777
 
 part quadruped/eyes/eye/small/v0
 frame rest anchor=0,0
 d
 
 part quadruped/tail/t1/small/v0
-frame rest anchor=0,0
-3
+frame rest anchor=3,0
+3333
+3333
 
 part quadruped/back/fin/small/v0
 frame rest anchor=0,0
@@ -1105,13 +1117,19 @@ layer scaled
 
 part quadruped/farLimbs/leg/small/v0
 frame rest anchor=0,0
-3
-3
+333
+333
+333
+333
+333
 
 part quadruped/nearLimbs/leg/small/v0
 frame rest anchor=0,0
-b
-b
+bbb
+bbb
+bbb
+bbb
+bbb
 
 scaffold quadruped/sturdy/small origin=10,10
 pose rest
@@ -1134,27 +1152,62 @@ entry torso 0 hop 0 0
   });
   const row = (b: PixelBuffer, y: number, x0: number, x1: number): number[] => Array.from({ length: x1 - x0 + 1 }, (_, i) => at(b, x0 + i, y));
 
-  it('a scaled creature\'s torso, head and legs show the texture, its eyes and back part do not', () => {
+  /** The pixels of the box x0..x1, y0..y1 that differ between two pictures, as [before, after] value pairs. */
+  const changes = (a: PixelBuffer, b: PixelBuffer, x0: number, y0: number, x1: number, y1: number): string[] => {
+    const out: string[] = [];
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) if (at(a, x, y) !== at(b, x, y)) out.push(`${at(a, x, y)}>${at(b, x, y)}`);
+    return out;
+  };
+
+  it('a scaled creature\'s torso, head, tail and legs show the texture, its eyes and back part do not', () => {
     const plain = assemble(creature(P.torso, null), 'rest', skinCat);
     const scaled = assemble(creature(P.torso, 0), 'rest', skinCat);
     expect(scaled.gaps).toEqual([]);
-    // Torso row 0 is a cell row: every pixel steps 3 -> 2; row 1 only on cell columns 0 and 3 (scaled: 3 across).
-    expect(row(plain.buffer, 10, 10, 15)).toEqual([3, 3, 3, 3, 3, 3]);
-    expect(row(scaled.buffer, 10, 10, 15)).toEqual([2, 2, 2, 2, 2, 2]);
-    expect(row(scaled.buffer, 11, 10, 15)).toEqual([2, 3, 3, 2, 3, 3]);
-    // Head (two pixels showing beside the eye), tail and both legs change; the eye and the back part do not.
-    expect(row(scaled.buffer, 10, 16, 17)).toEqual([6, 6]);
-    expect([at(scaled.buffer, 9, 10), at(scaled.buffer, 10, 12), at(scaled.buffer, 14, 12)]).toEqual([2, 2, 10]);
-    expect([at(plain.buffer, 9, 10), at(plain.buffer, 10, 12), at(plain.buffer, 14, 12)]).toEqual([3, 3, 11]);
-    expect(at(scaled.buffer, 18, 10)).toBe(13);
-    // The back part keeps its drawn 3, though its frame carries a scaled layer that would write 2.
-    expect([at(plain.buffer, 12, 9), at(scaled.buffer, 12, 9)]).toEqual([3, 3]);
+    // Scales are darker clusters: on each part some pixels step one shade down inside the part's own ramp, and none any other way.
+    const boxes: [string, number, number, number, number, string][] = [
+      ['torso', 10, 10, 21, 14, '3>2'], ['head', 22, 10, 27, 13, '7>6'], ['tail', 6, 10, 9, 11, '3>2'],
+      ['far leg', 10, 15, 12, 19, '3>2'], ['near leg', 17, 15, 19, 19, '11>10'],
+    ];
+    let counted = 0;
+    for (const [name, x0, y0, x1, y1, step] of boxes) {
+      const found = changes(plain.buffer, scaled.buffer, x0, y0, x1, y1);
+      expect(found.length, name).toBeGreaterThanOrEqual(2);
+      expect(new Set(found), name).toEqual(new Set([step]));
+      counted += found.length;
+    }
+    // The eye is drawn, and the back part keeps its drawn 3, though its frame carries a scaled layer that would write 2.
+    expect(at(scaled.buffer, 26, 11)).toBe(13);
+    expect([at(plain.buffer, 13, 9), at(scaled.buffer, 13, 9)]).toEqual([3, 3]);
     // Nothing outside the mark-slot parts changes.
-    const changed = drawn(plain.buffer).filter((s, i) => s !== drawn(scaled.buffer)[i]).map((s) => s.split('=')[0]);
-    expect(changed).not.toContain('18,10');
-    expect(changed).not.toContain('12,9');
-    // Torso 6 + 2, head 2 + 1 (its row 1 on cell column 0), tail 1, each one-pixel-wide leg 2 (column 0 is a cell column).
-    expect(changed).toHaveLength(8 + 3 + 1 + 2 + 2);
+    expect(changes(plain.buffer, scaled.buffer, 0, 0, plain.buffer.w - 1, plain.buffer.h - 1)).toHaveLength(counted);
+  });
+
+  it('a cluster one part half hides is taken back, so no texture pixel stands alone on the creature', () => {
+    // A head drawn 7 with a column of eyes down its middle: a head-wide dash under them would show as two lone pixels.
+    const lone = (b: PixelBuffer, plain: PixelBuffer): number => {
+      let n = 0;
+      for (let y = 0; y < b.h; y++) {
+        for (let x = 0; x < b.w; x++) {
+          const v = at(b, x, y);
+          if (v !== 0 && v !== at(plain, x, y) && at(b, x - 1, y) !== v && at(b, x + 1, y) !== v && at(b, x, y - 1) !== v && at(b, x, y + 1) !== v) n++;
+        }
+      }
+      return n;
+    };
+    let hidden = 0;
+    for (let phase = 0; phase < 15; phase++) {
+      for (const skin of [0, 1, 2, 4, 5, 6, 8]) {
+        const of = (s: number | null): Recipe => ({ ...creature(P.torso, s), marking: { pattern: 0, strength: 2, phase } });
+        const plain = assemble(of(null), 'rest', skinCat).buffer;
+        const skinned = assemble(of(skin), 'rest', skinCat).buffer;
+        expect(lone(skinned, plain), `skin ${skin} phase ${phase}`).toBe(0);
+        // Control: the head painted alone holds texture where the eye then sits, at some phase of some skin.
+        const head = skinCat.parts.get(P.head)!.frames['rest']!;
+        const alone = paintSkin(head, head.pixels, SKIN_NAMES[skin]!, 'small', phase)!;
+        if (alone[1 * head.w + 4] !== head.pixels[1 * head.w + 4]) hidden++;
+      }
+    }
+    expect(hidden).toBeGreaterThan(0);
   });
 
   it('skin null draws today\'s picture', () => {
@@ -1166,21 +1219,25 @@ entry torso 0 hop 0 0
     for (const torso of [P.torso, P.clear]) {
       const r = creature(torso, null);
       expect(compose(r, 'rest', skinCat).hash).toBe(compose(r, 'rest', stripped).hash);
-      expect(row(assemble(r, 'rest', skinCat).buffer, 10, 9, 17)).toEqual([3, 3, 3, 3, 3, 3, 3, 7, 7]);
-      expect(at(assemble(r, 'rest', skinCat).buffer, 12, 9)).toBe(3);
+      expect(row(assemble(r, 'rest', skinCat).buffer, 10, 9, 15)).toEqual([3, 3, 3, 3, 3, 3, 3]);
+      expect(at(assemble(r, 'rest', skinCat).buffer, torso === P.torso ? 13 : 12, 9)).toBe(3);
     }
   });
 
   it('the texture goes over the marks, in their ramp', () => {
-    // Striped on flow 1-2 at phase 0 marks flow 1 (x 10-12) with 5; crystalline (grid 4x4, step +1) then steps
-    // row 0 and column 0 of its cell up one shade: the mark 5 -> 6 (still ramp 1), the bare 3 -> 4 (still ramp 0).
+    // Striped on flow 1-2 at phase 0 marks flow 1 (x 10-15) with 5. Warts (a lit top over a shaded foot) then step the
+    // mark only inside the accent ramp (5 is its darkest, so only the lit top shows: 6) and the bare 3 only inside the hide's.
     const marked = assemble(creature(P.torso, null, 1), 'rest', skinCat);
-    expect(row(marked.buffer, 10, 10, 15)).toEqual([5, 5, 5, 3, 3, 3]);
-    const both = assemble(creature(P.torso, 8, 1), 'rest', skinCat);
+    expect(row(marked.buffer, 10, 10, 21)).toEqual([5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3]);
+    const both = assemble(creature(P.torso, 5, 1), 'rest', skinCat);
     // Only the torso has a flow layer: the other parts' marks: gaps, and no skin: gap.
     expect(both.gaps).toEqual(marked.gaps);
-    expect(row(both.buffer, 10, 10, 15)).toEqual([6, 6, 6, 4, 4, 4]);
-    expect(row(both.buffer, 11, 10, 15)).toEqual([6, 5, 5, 3, 4, 3]);
+    const left = changes(marked.buffer, both.buffer, 10, 10, 15, 14);
+    const right = changes(marked.buffer, both.buffer, 16, 10, 21, 14);
+    expect(left.length).toBeGreaterThan(0);
+    expect(right.length).toBeGreaterThan(0);
+    expect(left.every((c) => c === '5>6'), left.join(' ')).toBe(true);
+    expect(right.every((c) => c === '3>4' || c === '3>2'), right.join(' ')).toBe(true);
   });
 
   it('a translucent torso frame with its layer is drawn from it; without it the gap skin:<id>:<frame> is counted and nothing else changes', () => {

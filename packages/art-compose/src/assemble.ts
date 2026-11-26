@@ -3,12 +3,14 @@ import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { accentAsIris, blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
-import { paintSkin } from './skin';
+import { paintSkin, settleTexture, texturedByRule } from './skin';
 
 // The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-28 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
 // So are a jelly's (family `gelatinous`) torso values 5-8, its organelles, before any mark is painted, so no mark covers one.
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 // Then, on a creature whose recipe names a skin, every part in a mark slot takes the skin texture (skin.ts), over its marks.
+// Once every part is stacked, a texture pixel a rule painted that the stacking left alone (half its cluster under another
+// part) is taken back (settleTexture); a drawn skin layer's pixels are never taken back.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -24,6 +26,9 @@ interface Placed {
   y: number;
   gaps: string[];
 }
+
+/** A part's skin texture seed is the creature's phase (0 to 14) plus this for each step of the part's place among the mark slots and indexes. */
+const SKIN_SEED_STEP = 15;
 
 /** The family whose torso draws its organelles in the accent values 5-8, shown in the iris ramp (the original paints them in the eye colour). */
 const ORGANELLE_FAMILY = 'gelatinous';
@@ -158,11 +163,15 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   const pattern = PATTERN_NAMES[recipe.marking.pattern];
   // Skin null (buildRecipe, buildSpeciesRecipe, a radial) paints nothing. A gene outside SKIN_NAMES cannot occur (resolveBody wraps it to 0-8).
   const skin = recipe.skin === null ? undefined : SKIN_NAMES[recipe.skin];
+  // The same creature without any texture a rule paints, kept beside the picture from the first such part on.
+  let untextured: PixelBuffer | null = null;
+  const textured = { x0: buffer.w, y0: buffer.h, x1: -1, y1: -1 }; // the box round every part a rule textured
   for (const rp of recipe.parts) {
     const p = place(rp);
     gaps.push(...p.gaps);
     if (p.frame === undefined) continue;
     let frame = p.frame;
+    let bare: PartFrame | null = null;
     // A new frame object, so the catalogue's frame is never changed.
     if (rp.slot === 'torso' && recipe.family === ORGANELLE_FAMILY) frame = { ...frame, pixels: organellesInIris(frame.pixels) };
     // Only the mark slots take marks: an eye, back part, head feature or glow is never painted and never gets a marks gap.
@@ -177,11 +186,23 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     // own layers are read, the marked pixels painted. Only a torso frame with nothing to paint (a translucent skin
     // without its layer) is a gap; another part with nothing to paint is drawn as it is, silently.
     if (skin !== undefined && MARK_SLOTS.includes(rp.slot)) {
-      const skinned = paintSkin(frame, frame.pixels, skin);
-      if (skinned !== null) frame = { ...frame, pixels: skinned };
-      else if (rp.slot === 'torso') gaps.push(`skin:${rp.partId}:${p.frameName}`);
+      // The texture's seed: the creature's phase, and the part's slot and index so two legs sharing a drawing differ.
+      const nth = rp.index * MARK_SLOTS.length + MARK_SLOTS.indexOf(rp.slot);
+      const skinned = paintSkin(frame, frame.pixels, skin, recipe.tier, recipe.marking.phase + SKIN_SEED_STEP * nth);
+      if (skinned !== null) {
+        if (texturedByRule(frame, skin)) {
+          bare = frame;
+          untextured ??= { w: buffer.w, h: buffer.h, pixels: Uint8Array.from(buffer.pixels) };
+          const left = p.x - frame.anchor[0]; const top = p.y - frame.anchor[1];
+          textured.x0 = Math.min(textured.x0, left); textured.y0 = Math.min(textured.y0, top);
+          textured.x1 = Math.max(textured.x1, left + frame.w - 1); textured.y1 = Math.max(textured.y1, top + frame.h - 1);
+        }
+        frame = { ...frame, pixels: skinned };
+      } else if (rp.slot === 'torso') gaps.push(`skin:${rp.partId}:${p.frameName}`);
     }
     blit(buffer, frame, p.x, p.y, false, rp.slot === 'eyes');
+    if (untextured !== null) blit(untextured, bare ?? frame, p.x, p.y, false, rp.slot === 'eyes');
   }
+  if (untextured !== null) settleTexture(buffer.w, buffer.h, untextured.pixels, buffer.pixels, textured);
   return { buffer, contact: pose?.contact ?? null, gaps, scaffold };
 }
