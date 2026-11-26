@@ -463,10 +463,22 @@ export function detachedSlots(buffer) {
   return Object.keys(SLOT_LABEL).filter((slot) => off.has(slot));
 }
 
-/** The drawn (non-zero) pixel count of a part's rest frame (else its first frame); 0 when it has none. */
-function drawnCount(part) {
-  const frame = Object.hasOwn(part.frames, 'rest') ? part.frames['rest'] : part.frames[Object.keys(part.frames)[0]];
-  return frame === undefined ? 0 : frame.pixels.reduce((n, v) => (v === 0 ? n : n + 1), 0);
+const drawnIn = (frame) => (frame === undefined ? 0 : frame.pixels.reduce((n, v) => (v === 0 ? n : n + 1), 0));
+
+/**
+ * The pixels a recipe part can owe in a pose: the drawn (non-zero) count of its rest frame (else its first frame), and
+ * no more than the frame it shows in that pose draws, chosen by the composer's own rule (assemble: the scaffold's pose,
+ * else its rest pose, else no entry; poseEntryFor, frameNameFor). So a posed frame smaller than rest (a closed eye) owes
+ * only what it draws, and a posed frame larger than rest owes no more than rest: eyes built of several parts laid over
+ * one another show less of each than it draws. 0 when the part has no frame.
+ */
+function drawnCount(part, rp, recipe, pose, catalogue) {
+  const rest = drawnIn(Object.hasOwn(part.frames, 'rest') ? part.frames['rest'] : part.frames[Object.keys(part.frames)[0]]);
+  const scaffold = catalogue.scaffolds.get(recipe.scaffoldId);
+  const poses = scaffold === undefined ? {} : scaffold.poses;
+  const held = Object.hasOwn(poses, pose) ? poses[pose] : Object.hasOwn(poses, 'rest') ? poses['rest'] : undefined;
+  const name = frameNameFor(part, poseEntryFor(held === undefined ? [] : held.entries, rp.slot, rp.index, recipe.legs, recipe.eyes));
+  return Object.hasOwn(part.frames, name) ? Math.min(rest, drawnIn(part.frames[name])) : rest;
 }
 
 /**
@@ -525,7 +537,7 @@ export function labelPicture(recipe, pose, labels) {
 function hiddenParts(recipe, pose, catalogue, cache) {
   const n = recipe.parts.length;
   // An eye must show: an eye part that draws nothing (an eye kind's included) still owes one pixel, so it is reported.
-  const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.max(rp.slot === 'eyes' ? 1 : 0, Math.min(HIDDEN_MIN, drawnCount(part))); });
+  const needed = recipe.parts.map((rp) => { const part = catalogue.parts.get(rp.partId); return part === undefined ? 0 : Math.max(rp.slot === 'eyes' ? 1 : 0, Math.min(HIDDEN_MIN, drawnCount(part, rp, recipe, pose, catalogue))); });
   const all = numberedCopy(recipe, catalogue, cache, () => 'label');
   const top = assemble(all.recipe, pose, all.catalogue).buffer.pixels;
   const bottom = assemble({ ...all.recipe, parts: [...all.recipe.parts].reverse() }, pose, all.catalogue).buffer.pixels;

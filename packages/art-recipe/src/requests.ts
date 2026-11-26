@@ -81,6 +81,12 @@ export function lacksEssentialPart(gap: string): boolean {
 /**
  * The eye kind of an eye count: the one eye a pack may draw for a creature of that count (0: no eyes, its sensory pits),
  * in place of the count's separate eyes. A creature is seen from the side, where its eyes have one place.
+ *
+ * The pack's side of it: an eye kind is an ordinary eyes part `<family>/eyes/eye-<count>/<tier>/v0` (count 1, 2, 4, 6 or 8,
+ * or 0, which replaces the two pits); one a family and tier, v0 only. A body whose pack holds the kind of its count asks
+ * for that one part at index 0 and is laid out as a one-eyed creature (eyesLaidOut): the one-eyed eye point and the pose
+ * entries a one-eyed creature takes, so the kind must hold every frame those entries name. A pack without the kind
+ * draws the count's separate eyes.
  */
 export function eyeKind(eyes: number): string {
   return `eye-${eyes}`;

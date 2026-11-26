@@ -121,6 +121,14 @@ describe('checkPack on a pack with an eye kind', () => {
     expect(r.hidden.some((h) => h.partId === KIND_ID && h.pose === 'faint' && h.visible === 0)).toBe(true);
   });
 
+  it('accepts a kind whose closed frame is smaller than its rest frame and shows in full', () => {
+    // The rest frame draws four pixels and the closed frame two: in faint the part owes the two it draws there, not rest's four.
+    const r = check(kindsText('frame rest anchor=0,1\ne7\n6d\nframe closed anchor=0,1\n..\ndd\n'));
+    expect(r.hidden.filter((h) => h.partId === KIND_ID)).toEqual([]);
+    expect(errorsOf(r)).toEqual([]);
+    expect(r.ok).toBe(true);
+  });
+
   it('refuses a kind that draws nothing', () => {
     const r = check(kindsText('frame rest anchor=0,1\n..\n..\nframe closed anchor=0,1\n..\n..\n'));
     expect(r.ok).toBe(false);
