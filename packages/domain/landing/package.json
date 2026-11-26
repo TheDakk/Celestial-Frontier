@@ -1,0 +1,9 @@
+{
+  "name": "@cf/domain-landing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Where and when a landing touches down: the region rolled from the world's biome mix and its scene route; the world's weather spell, weather events, season and time of day as functions of a clock. Ported from the legacy game 1.8.9 (celestial-frontier.html).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-strays": "*" }
+}
