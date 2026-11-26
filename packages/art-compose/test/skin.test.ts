@@ -209,6 +209,20 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
     })).toBe(true);
   });
 
+  it('a facet keeps its whole shape on the lightest and on the darkest shade, where one of its two changes cannot be made', () => {
+    const maskOn = (shade: string, skin: SkinName): string => {
+      const frame = frameOf(block(60, 40, shade));
+      return Array.from(paintSkin(frame, frame.pixels, skin, 'large', 6)!, (v, i) => (v === frame.pixels[i] ? '.' : '#')).join('');
+    };
+    // Crystal: the same pixels are textured whatever the shade (a pixel that cannot take its change takes the opposite one).
+    expect(maskOn('2', 'crystalline')).toContain('#');
+    expect(maskOn('4', 'crystalline')).toBe(maskOn('2', 'crystalline'));
+    expect(maskOn('1', 'crystalline')).toBe(maskOn('2', 'crystalline'));
+    // Control: a whole-cluster skin leaves the part it cannot draw out, so its texture is thinner there (scales are all darker: none on the darkest shade).
+    expect(maskOn('1', 'scaled')).not.toContain('#');
+    expect(maskOn('4', 'feathered')).not.toBe(maskOn('2', 'feathered'));
+  });
+
   it('the same frame, pixels, skin, tier and seed give the same picture; the seed and the tier each change it', () => {
     const frame = body('large');
     for (const skin of TEXTURED) {

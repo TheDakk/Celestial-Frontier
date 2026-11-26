@@ -184,7 +184,10 @@ function scatter(d: Draft, shape: Shape, rule: Scatter, seed: number): void {
                 claim(x + sx, y + sy);
                 d.cluster[(y + sy) * d.w + x + sx] = rule.loose ? -d.clusters : d.clusters;
                 const step = c === 'L' ? 1 : -1;
-                if ((parts & (c === 'L' ? LIGHT : DARK)) !== 0 && steps(d, x + sx, y + sy, step)) wishFor(d, x + sx, y + sy, step);
+                if ((parts & (c === 'L' ? LIGHT : DARK)) === 0) continue;
+                if (steps(d, x + sx, y + sy, step)) wishFor(d, x + sx, y + sy, step);
+                // A loose cluster's pixel on the last shade of its ramp steps the other way, so the facet keeps its whole shape.
+                else if (rule.loose && steps(d, x + sx, y + sy, -step)) wishFor(d, x + sx, y + sy, -step);
               }
             }
           }
@@ -213,7 +216,8 @@ const LIGHT = 2;
  * of the cluster must be hide, the darker pixels all on one value and the lighter pixels all on one value, so a cluster
  * never straddles the edge of a shadow or of a mark. A part whose pixels lie on the last shade of their ramp cannot take
  * its change and is left out (on the lightest hide only the darker part is drawn; on the darkest only the lighter).
- * A `loose` cluster need only lie whole on the hide: it may cross shades, and each of its pixels changes where it can.
+ * A `loose` cluster need only lie whole on the hide: it may cross shades, and a pixel of it that cannot take its change
+ * takes the opposite one (scatter).
  */
 function fitting(d: Draft, stamp: readonly string[], x: number, y: number, loose: boolean): number {
   let under = 0; // the hide value under the darker pixels, once known
