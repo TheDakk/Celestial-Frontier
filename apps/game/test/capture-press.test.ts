@@ -2,7 +2,8 @@
 // is never offered again; an attempt is spent hit or miss; a press not allowed spends nothing.
 // LEGACY celestial-frontier.html, v1.8.9: `tryCapture` 14865-14887, the card 13973-13988, the gates 13798 and 13734.
 import { describe, expect, it } from 'vitest';
-import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, captureChanceV1 } from '@cf/domain-acquisition';
+import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, captureChanceV1, preflightCaptureV1, projectCaptureCapacityScenariosV1 } from '@cf/domain-acquisition';
+import { resolveCF1WorldAddress } from '@cf/scene';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { CAPTURE_RECEIPT_KIND_V1, captureGateV1, captureResultNotices, commitCaptureV1, type CaptureAuthorityV1, type CaptureTransactionV1 } from '../src/capture';
 import { LEASE_TTL_MS, REGISTRY, createSaveRuntime } from '../src/save/index';
@@ -101,6 +102,30 @@ describe('a press is one committed receipt', () => {
     expect(page.live.codex).toHaveLength(1);
     expect(page.outcomes.committed).toEqual([{ kind: 'capture.tame', receiptOrdinal: before.ordinal }]);
     expect(captureResultNotices(facts)[0]).toMatchObject({ title: 'Species Catalogued', message: [`${facts.name} — view it in your Compendium.`] });
+  });
+
+  it('a rare first catch raises the best find and unlocks its rarity achievements in the same press', async () => {
+    // LEGACY 16474-16480: storing a species raises `stats.best` to its tier, then every achievement is looked at;
+    // `rare` asks for a best of 3, `legend` for 5 (16355-16356). Kaum, in the home galaxy, has fauna of tier 5.
+    const resolved = resolveCF1WorldAddress({ galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 2737406570, x: 160.5956227169372, y: -89.13221201486886 }, planet: { seed: 1757105165 } });
+    if (!resolved.ok) throw new Error(resolved.reason);
+    const kaum = resolved.address;
+    const grounded = { scanned: [kaum.planet.seed], change: (state: { landed: number[] }) => { state.landed = [kaum.planet.seed]; } };
+    const preflight = preflightCaptureV1((await capturePage(grounded)).snapshot(kaum), 'tame');
+    if (preflight.kind !== 'ready') throw new Error(preflight.reason);
+    const tiers = projectCaptureCapacityScenariosV1(preflight, 0).scenarios.slice(1).map(({ tier }) => tier!);
+    const wanted = tiers.findIndex((tier) => tier >= 5);
+    expect(wanted).toBeGreaterThanOrEqual(0);
+    // A session whose first press picks that species and surely lands.
+    const page = await capturePage({ ...grounded, sessionSeed: captureSession((success, pick) => success < 0.02 && ((pick * tiers.length) | 0) === wanted) });
+    const before = page.durable();
+    const { facts, state } = committed(await page.press('tame', kaum));
+    expect(facts).toMatchObject({ hit: true, tier: tiers[wanted], stardust: tiers[wanted]! - 3 });
+    expect(state.essence).toBe(before.essence + facts.stardust);
+    expect(state.stats.best).toBe(facts.tier);
+    expect(facts.achievementIds).toEqual(expect.arrayContaining(['first', 'rare', 'legend']));
+    expect(state.unlocked).toEqual(expect.arrayContaining(['first', 'rare', 'legend']));
+    expect(page.live.unlocked).toEqual(expect.arrayContaining(['rare', 'legend']));
   });
 
   it('a miss lowers the remaining Yield by one and adds nothing', async () => {

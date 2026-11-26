@@ -10,7 +10,8 @@
      Yield, hit or miss (14875); a hit puts the species in the Compendium (14879, `discoverSpecies` 14924-14946,
      `_storeSpecies` 14771-14800);
    - a first-ever species of tier 5 or more pays its tier less 3 in Stardust, counted as earned (14936-14939);
-   - a new page looks at every achievement and the rank (`onSpeciesStored` 16474-16480).
+   - a new page raises the best find to its tier, then looks at every achievement and the rank
+     (`onSpeciesStored` 16474-16480).
    The odds, the pool and the Yield are `@cf/domain-acquisition`'s rules; the Yield refills by 1,200,000 ms of
    active play where the legacy game counted its epoch from the page's load (the plan's named change).
 
@@ -208,6 +209,14 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
       draft.essence += stardust;
       draft.stats = { ...draft.stats, essenceEarned: (draft.stats.essenceEarned ?? 0) + stardust };
     }
+    // A stored species raises the best find and the deepest generation before the achievements are looked at
+    // (`onSpeciesStored` 16476-16479).
+    const generation = Number(plan.candidate.identity.genome.gen ?? 0);
+    draft.stats = {
+      ...draft.stats,
+      best: Math.max(draft.stats.best ?? 0, plan.tier),
+      maxGen: Math.max(draft.stats.maxGen ?? 0, Number.isFinite(generation) ? generation : 0),
+    };
     const refresh = prepareArc9ProgressionRefreshV1(draft);
     if (refresh.kind === 'protected') throw new CaptureRefusal(`progression:${refresh.reason}`);
     if (refresh.kind === 'ready') {
