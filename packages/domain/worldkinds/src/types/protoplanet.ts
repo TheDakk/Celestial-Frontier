@@ -12,9 +12,9 @@ const CHANCES = [0.7, 0.4, 0.1] as const;
 
 function protoplanets(starSeed: number, system: CensusSystem): number {
   if (system.kind !== 'PROTO') return 0;
-  const random = ownStream(starSeed, DISK_STREAM);
+  const draw = ownStream(starSeed, DISK_STREAM);
   let count = 0;
-  while (count < CHANCES.length && random() < CHANCES[count]!) count++;
+  while (count < CHANCES.length && draw() < CHANCES[count]!) count++;
   return count;
 }
 

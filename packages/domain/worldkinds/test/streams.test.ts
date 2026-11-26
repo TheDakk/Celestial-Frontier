@@ -1,7 +1,10 @@
 // A new type draws only from streams of its own: declared once, never one the legacy game draws from, and its
-// file has no other way to a random value. It is shown copies it cannot write to.
+// file can take a value from no module but the declared streams, by any way of importing. It is shown copies it
+// cannot write to. What is not held here: a type that works a hash out by hand, with no import and none of the
+// refused names, is not seen by a reading of its file.
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { parseAst } from 'rolldown/parseAst';
 import { describe, expect, it } from 'vitest';
 import {
   CENSUS_SOL_SEED, SWITCHES_ON, WORLD_TYPES, WORLD_TYPE_KEYS,
@@ -63,29 +66,80 @@ describe('a type\'s file', () => {
     expect(typeFiles).toEqual([...WORLD_TYPE_KEYS].sort().map((key) => `${key}.ts`));
   });
 
-  /** What a type file says is wrong with it; empty when it keeps to its own streams. */
+  /** The one module a type file may take values from. */
+  const GATE = '../streams.js';
+  /** Names that reach beyond a file with no import, or draw a number that is no declared stream's. */
+  const REFUSED = ['require', 'globalThis', 'global', 'process', 'eval', 'Function', 'crypto', 'WebAssembly', 'constructor', 'getBuiltinModule', 'random', 'imul'];
+
+  /** What a type file says is wrong with it; empty when the only values it can reach are the declared streams'.
+      The file is parsed, not searched: every way a module can take a value from another (an import of either quote,
+      a re-export, an import while running, a require) is a node of its syntax tree, whatever it is spelled like. */
   function faults(text: string): string[] {
-    const found: string[] = [];
-    const code = text.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, '');
-    for (const match of code.matchAll(/\bfrom\s+'([^']+)'|\bimport\s*\(\s*'([^']+)'|\brequire\s*\(\s*'([^']+)'/g)) {
-      const spec = match[1] ?? match[2] ?? match[3]!;
-      if (!['../rules.js', '../census.js', '../sources.js', '../streams.js'].includes(spec)) found.push(`imports ${spec}`);
-    }
-    for (const word of ['mulberry32', 'hashInt', 'cellRng', 'makeNoise', 'Math.random', 'systemFor', 'planetParams', 'Math.imul']) {
-      if (code.includes(word)) found.push(`uses ${word}`);
-    }
-    return found;
+    const found = new Set<string>();
+    const visit = (node: unknown): void => {
+      if (Array.isArray(node)) {
+        node.forEach(visit);
+        return;
+      }
+      if (typeof node !== 'object' || node === null) return;
+      const n = node as { type?: string; importKind?: string; exportKind?: string; source?: { value?: unknown } | null; specifiers?: { importKind?: string }[]; name?: unknown; value?: unknown };
+      const from = String(n.source?.value);
+      if (n.type === 'ImportDeclaration') {
+        // Types are erased before the game runs: an import of types alone hands a file no value.
+        const typesOnly = n.importKind === 'type' || ((n.specifiers?.length ?? 0) > 0 && n.specifiers!.every((s) => s.importKind === 'type'));
+        if (!typesOnly && from !== GATE) found.add(`takes values from ${from}`);
+        return;
+      }
+      if ((n.type === 'ExportNamedDeclaration' || n.type === 'ExportAllDeclaration') && n.source && n.exportKind !== 'type') found.add(`passes on ${from}`);
+      if (n.type === 'TSImportEqualsDeclaration') found.add('imports by require');
+      if (n.type === 'ImportExpression') found.add('imports while it runs');
+      if (n.type === 'MetaProperty') found.add('reads import.meta');
+      if (n.type === 'Identifier' && REFUSED.includes(String(n.name))) found.add(`uses ${String(n.name)}`);
+      if ((n.type === 'Literal' || n.type === 'TemplateElement') && REFUSED.some((name) => JSON.stringify(n.value ?? '').includes(name))) found.add('spells a refused name in a string');
+      for (const value of Object.values(n)) visit(value);
+    };
+    visit(parseAst(text, { lang: 'ts' }, 'type.ts'));
+    return [...found];
   }
 
-  it('reaches no generator but its own declared streams', () => {
+  it('can take values from the declared streams and from nowhere else', () => {
     for (const name of typeFiles) expect(faults(readFileSync(TYPES_DIR + name, 'utf8')), name).toEqual([]);
   });
 
-  it('proved both ways: a type file that reads a legacy stream is named', () => {
-    expect(faults("import { mulberry32 } from '@cf/domain-rand';\nconst r = mulberry32(starSeed);")).toEqual(['imports @cf/domain-rand', 'uses mulberry32']);
-    expect(faults("import { hashInt } from '../../../rand/src/index.js';")).toEqual(['imports ../../../rand/src/index.js', 'uses hashInt']);
-    expect(faults("const r = (await import('@cf/domain-worldgen')).systemFor(1);")).toEqual(['imports @cf/domain-worldgen', 'uses systemFor']);
-    expect(faults('let a = seed; a = Math.imul(a ^ a >>> 15, 1 | a);')).toEqual(['uses Math.imul']);
+  it('and the declared streams hand out six things, none of them a generator of the legacy game', async () => {
+    // What a type file can reach: declaring a stream (refused when the legacy game draws there, above), drawing
+    // from a declared one, and three readings of what is declared. A seventh export would be a new way out.
+    expect(Object.keys(await import('../src/streams.js')).sort()).toEqual(['LEGACY_FIRST_SALTS', 'declareStream', 'declaredStreams', 'isLegacyStream', 'ownDraw', 'ownStream']);
+  });
+
+  it('proved both ways: each way round the old check is named', () => {
+    // A double-quoted import of the legacy game's rarity roll.
+    expect(faults('import { rarityRoll } from "@cf/domain-speciestraits";\nexport const roll = (seed: number) => rarityRoll(seed, 3);')).toEqual(['takes values from @cf/domain-speciestraits']);
+    // A roll on the census's own hash, which no stream declares.
+    expect(faults("import { censusDigest } from '../census.js';\nexport const roll = (seed: number) => parseInt(censusDigest(String(seed)), 16);")).toEqual(['takes values from ../census.js']);
+    // Any other system the legacy game makes, through the census's readers.
+    expect(faults("import { gameCensusSources } from '../sources.js';\nexport const other = (seed: number) => gameCensusSources(() => ({ percent: 0, damageMin: 0, damageMax: 0 })).system(seed);")).toEqual(['takes values from ../sources.js']);
+  });
+
+  it('proved both ways: every other way to a value is named, and types alone are let through', () => {
+    expect(faults("import { mulberry32 } from '@cf/domain-rand';\nconst r = mulberry32(1);")).toEqual(['takes values from @cf/domain-rand']);
+    expect(faults('import * as rand from "../../../rand/src/index.js";')).toEqual(['takes values from ../../../rand/src/index.js']);
+    expect(faults("import { type TypeStream, hashInt } from '@cf/domain-rand';")).toEqual(['takes values from @cf/domain-rand']);
+    expect(faults("import '@cf/domain-worldgen';")).toEqual(['takes values from @cf/domain-worldgen']);
+    expect(faults("export { systemFor } from '@cf/domain-worldgen';")).toEqual(['passes on @cf/domain-worldgen']);
+    expect(faults("export * from '../sources.js';")).toEqual(['passes on ../sources.js']);
+    expect(faults("const r = (await import('@cf/domain-worldgen')).systemFor(1);")).toEqual(['imports while it runs']);
+    expect(faults('const name = "@cf/domain-" + "rand"; const r = await import(name);')).toEqual(['imports while it runs']);
+    expect(faults("import rand = require('@cf/domain-rand');")).toEqual(['imports by require']);
+    expect(faults("const rand = require('@cf/domain-rand');")).toEqual(['uses require']);
+    expect(faults("const rand = globalThis.process.getBuiltinModule('node:module');")).toEqual(['uses globalThis', 'uses process', 'uses getBuiltinModule']);
+    expect(faults('const here = import.meta.url;')).toEqual(['reads import.meta']);
+    expect(faults('let a = seed; a = Math.imul(a ^ a >>> 15, 1 | a);')).toEqual(['uses imul']);
+    expect(faults("const draw = Math['random']();")).toEqual(['spells a refused name in a string']);
+    // A string that looks like the start of a comment hides nothing from a parser.
+    expect(faults('const s = "//"; import("@cf/domain-rand");')).toEqual(['imports while it runs']);
+    // Types alone, from anywhere, and the declared streams: nothing is wrong.
+    expect(faults("import type { CensusSystem } from '../census.js';\nimport { type TypeStream, declareStream, ownDraw } from \"../streams.js\";\nimport type { Rng } from '@cf/domain-rand';\n// mulberry32 and hashInt are the legacy game's.\nexport const x = 1;")).toEqual([]);
   });
 });
 
