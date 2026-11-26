@@ -2,14 +2,14 @@
    own), and the rule set that replaces the legacy rules for it. A type file fills these in; nothing else changes. */
 import type { WeatherToken } from '@cf/domain-landing';
 import type { LandingFamily } from '@cf/domain-loot';
-import { hashInt, mulberry32 } from '@cf/domain-rand';
 import type { CensusSystem } from './census.js';
+import type { TypeStream } from './streams.js';
 import type { WorldTypeKey } from './switches.js';
 
 /** The legacy game's eight planet types (planetParams, LEGACY 2669-2677). */
 export type LegacyType = 'gas' | 'rocky' | 'desert' | 'ice' | 'terran' | 'ocean' | 'venus' | 'lava';
 
-/** A planet's numbers as the legacy game made them. A type reads them and never writes them. */
+/** A planet's numbers as the legacy game made them. A type is shown a copy it cannot write to. */
 export type PlanetNumbers = Readonly<Record<string, unknown>> & {
   readonly seed: number;
   readonly type: string;
@@ -47,9 +47,9 @@ export type RuleCardRow = readonly [label: string, text: string];
 export interface WorldRules {
   readonly key: WorldTypeKey;
   readonly label: string;
-  /** The type's own biome set, rolled on `biomeSalt`; 'parent' keeps the legacy biome; null is no biome. */
+  /** The type's own biome set, rolled on `biomeStream`; 'parent' keeps the legacy biome; null is no biome. */
   readonly biomes: readonly RuleBiome[] | 'parent' | null;
-  readonly biomeSalt?: readonly [number, number];
+  readonly biomeStream?: TypeStream;
   readonly landing: {
     readonly delta?: number;
     readonly floor?: number;
@@ -86,20 +86,11 @@ export interface WorldTypeDefinition {
   readonly slice: readonly SliceStep[] | null;
   /** What the design's source rule counts in a system; null when the design gives no rule a system census can count. */
   readonly source: readonly SourceStep[] | null;
-  /** The type's bodies in a system, from their own streams only; null until the type's record is built. */
+  /** The type's bodies in a system, from its own declared streams only; it is shown a copy of the system that
+      cannot be written to. null until the type's record is built. */
   readonly bodies: ((starSeed: number, system: CensusSystem) => readonly BodyRecord[]) | null;
   /** The world of a starless sight of the galaxy map; null for every type but the one that makes them. */
   readonly rogue: ((galaxySeed: number, deco: Readonly<Record<string, unknown>>) => BodyRecord | null) | null;
   /** null until the type's rules are built: its worlds play by the legacy rules. */
   readonly rules: WorldRules | null;
-}
-
-/** A type's own stream: never the system's, never the planet's. */
-export function ownStream(seed: number, a: number, b: number): () => number {
-  return mulberry32(hashInt(seed >>> 0, a, b) >>> 0);
-}
-
-/** The first value of a type's own stream, in [0, 1). */
-export function ownDraw(seed: number, a: number, b: number): number {
-  return ownStream(seed, a, b)();
 }

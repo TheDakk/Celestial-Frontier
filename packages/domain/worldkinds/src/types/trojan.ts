@@ -1,10 +1,11 @@
 /* N8 trojan world: one small world on the orbit of a large seeded gas giant, 4% of them, on the giant's own new
    stream. It is not in the planet list, so no planet seed and no system roll moves. None in Sol. */
-import { ownDraw, type PlanetNumbers, type WorldTypeDefinition } from '../rules.js';
+import type { PlanetNumbers, WorldTypeDefinition } from '../rules.js';
+import { declareStream, ownDraw } from '../streams.js';
 import type { CensusSystem } from '../census.js';
 
 /** The host's roll: the design's salt, taken as written. */
-const HOST_STREAM = [0x7A0, 1] as const;
+const HOST_STREAM = declareStream('trojan', 0x7A0, 1);
 const HOST_CHANCE = 0.04;
 
 const giants = (system: CensusSystem): PlanetNumbers[] => (system.sol === true ? [] : system.planets.map(({ P }) => P).filter((P) => P.type === 'gas'));
@@ -19,7 +20,7 @@ export const trojan: WorldTypeDefinition = {
     { name: 'of size 2.0 or more', count: (_starSeed, system) => giants(system).filter(large).length },
     {
       name: 'holding a trojan world (own stream under 4%)',
-      count: (_starSeed, system) => giants(system).filter((P) => large(P) && ownDraw(P.seed, HOST_STREAM[0], HOST_STREAM[1]) < HOST_CHANCE).length,
+      count: (_starSeed, system) => giants(system).filter((P) => large(P) && ownDraw(P.seed, HOST_STREAM) < HOST_CHANCE).length,
     },
   ],
   bodies: null,

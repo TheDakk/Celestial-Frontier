@@ -1,6 +1,7 @@
 // The switches, the registry of the thirteen types and the seam a world is read through. No type has rules yet,
 // so the rule set is tried with types that exist only here.
 import { describe, expect, it } from 'vitest';
+import { hashInt, mulberry32 } from '@cf/domain-rand';
 import {
   CENSUS_SOL_SEED,
   SWITCHES_OFF,
@@ -9,11 +10,11 @@ import {
   WORLD_TYPE_KEYS,
   censusSystems,
   censusWorld,
+  declareStream,
   effectiveWorld,
   extraBodies,
   gameCensusSources,
   legacyFactsOf,
-  ownDraw,
   rogueBody,
   rulesFor,
   sliceOf,
@@ -31,6 +32,10 @@ const only = (key: keyof WorldSwitches): WorldSwitches => ({ ...SWITCHES_OFF, [k
 const slice = (world: CensusWorld, switches: WorldSwitches, registry?: readonly WorldTypeDefinition[]): string | null =>
   sliceOf(world.planet.P, world.survey.band, world.starSeed === CENSUS_SOL_SEED, switches, registry);
 
+/** What a stream of these salts gives a seed, worked out apart from the package. */
+const drawOf = (seed: number, a: number, b: number): number => mulberry32(hashInt(seed >>> 0, a, b) >>> 0)();
+const TEST_STREAM = declareStream('test giant', 0x7E57, 3);
+
 const RULES: WorldRules = {
   key: 'iceGiant',
   label: 'Test giant',
@@ -38,7 +43,7 @@ const RULES: WorldRules = {
     { k: 'testcalm', n: 'Calm test giant', w: 3, land: 70, f: 'calm' },
     { k: 'testwild', n: 'Wild test giant', w: 1, land: 20, f: 'wild' },
   ],
-  biomeSalt: [0x7E57, 3],
+  biomeStream: TEST_STREAM,
   landing: null,
   weather: 'parent',
   landFamily: 'gas',
@@ -124,13 +129,13 @@ describe('a planet\'s slice', () => {
       }
       if (key === 'hycean') {
         expect(P.sizeMul as number).toBeGreaterThan(1.15);
-        expect(ownDraw(P.seed, 0x4C3A, 13)).toBeLessThan(0.5);
+        expect(drawOf(P.seed, 0x4C3A, 13)).toBeLessThan(0.5);
       }
       if (key === 'megaEarth') {
         expect(P.sizeMul as number).toBeGreaterThan(1.2);
-        expect(ownDraw(P.seed, 0x3E6A, 17)).toBeLessThan(0.5);
+        expect(drawOf(P.seed, 0x3E6A, 17)).toBeLessThan(0.5);
       }
-      if (P.type === 'ocean' && (P.sizeMul as number) > 1.15 && key === null) expect(ownDraw(P.seed, 0x4C3A, 13)).toBeGreaterThanOrEqual(0.5);
+      if (P.type === 'ocean' && (P.sizeMul as number) > 1.15 && key === null) expect(drawOf(P.seed, 0x4C3A, 13)).toBeGreaterThanOrEqual(0.5);
     }
   });
 });
@@ -193,7 +198,7 @@ describe('the effective world', () => {
         continue;
       }
       expect(on).toEqual({ ...facts, type: 'iceGiant', label: 'Test giant', biomeKey: on.biomeKey });
-      expect(on.biomeKey).toBe(ownDraw(world.planet.P.seed, 0x7E57, 3) * 4 < 3 ? 'testcalm' : 'testwild');
+      expect(on.biomeKey).toBe(drawOf(world.planet.P.seed, 0x7E57, 3) * 4 < 3 ? 'testcalm' : 'testwild');
       picked[on.biomeKey!] = (picked[on.biomeKey!] ?? 0) + 1;
     }
     // Three to one, by the weights.
@@ -211,7 +216,7 @@ describe('the effective world', () => {
   });
 
   it('refuses a biome set with no stream of its own', () => {
-    const { biomeSalt: _none, ...noSalt } = RULES;
+    const { biomeStream: _none, ...noSalt } = RULES;
     const registry = [{ ...TEST_TYPE, rules: noSalt }];
     const world = worlds(4000).find((w) => slice(w, SWITCHES_ON, registry) !== null)!;
     expect(() => effectiveWorld(legacyFactsOf(world, false), game.system(world.starSeed), SWITCHES_ON, registry)).toThrow(/own stream/);

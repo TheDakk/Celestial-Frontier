@@ -8,6 +8,8 @@ import {
   censusFingerprint,
   censusRow,
   censusStarSeed,
+  censusSystem,
+  censusSystemDigest,
   censusSystems,
   censusWorld,
   gameCensusSources,
@@ -89,6 +91,8 @@ describe('the census line', () => {
         const planted = typeof value === 'number' ? value + 1 : typeof value === 'boolean' ? !value : `${String(value)}x`;
         expect(censusRow(withPlanet(starSeed, ordinal, (copy) => ({ ...copy, [key]: planted })), starSeed, ordinal), key).not.toBe(plain);
       }
+      // What the renderer keeps on a planet once it is drawn is not the planet's numbers.
+      expect(censusRow(withPlanet(starSeed, ordinal, (copy) => ({ ...copy, _pal: [[1, 2, 3]] })), starSeed, ordinal)).toBe(plain);
       // A key the legacy game never wrote is seen too.
       expect(censusRow(withPlanet(starSeed, ordinal, (copy) => ({ ...copy, added: 1 })), starSeed, ordinal)).not.toBe(plain);
     }
@@ -120,7 +124,7 @@ describe('the census line', () => {
 
   it('changes when a moon changes', () => {
     const jupiter = censusRow(game, CENSUS_SOL_SEED, 4);
-    expect(jupiter).toContain('moons=Volcanic moon:Io;Icy moon:Europa;');
+    expect(jupiter).toContain('|moons=[["Volcanic moon","Io"],["Icy moon","Europa"],');
     expect(censusRow({ ...game, moon: (p, m) => (m === 7 ? { type: 'x', name: 'y' } : game.moon(p, m)) }, CENSUS_SOL_SEED, 4)).not.toBe(jupiter);
   });
 });
@@ -183,8 +187,14 @@ describe('the census fingerprint', () => {
 describe('the census text', () => {
   it('writes equal values alike whatever the order of their keys', () => {
     expect(stableText({ b: 1, a: [true, null, 'x'] })).toBe('{a:[true,~,"x"],b:1}');
-    expect(stableText({ a: [true, undefined, 'x'], b: 1 })).toBe('{a:[true,~,"x"],b:1}');
+    expect(stableText({ a: [true, null, 'x'], b: 1 })).toBe('{a:[true,~,"x"],b:1}');
     expect(() => stableText(() => 1)).toThrow(TypeError);
+  });
+
+  it('writes null, a missing value, zero and minus zero each apart', () => {
+    expect(new Set([null, undefined, 0, -0, '', '~', '?', false].map(stableText)).size).toBe(8);
+    expect(stableText({ a: undefined })).not.toBe(stableText({ a: null }));
+    expect(stableText({ a: undefined })).not.toBe(stableText({}));
   });
 
   it('tells apart texts that differ, where they are cut, and their order', () => {
@@ -193,5 +203,65 @@ describe('the census text', () => {
     expect(new CensusDigest().add('ab').add('c').hex()).not.toBe(new CensusDigest().add('a').add('bc').hex());
     expect(new CensusDigest().add('ab').add('c').hex()).toBe(new CensusDigest().add('ab').add('c').hex());
     expect(censusDigest('a')).toMatch(/^[0-9a-f]{16}$/);
+  });
+});
+
+describe('what else a line holds', () => {
+  const starSeed = censusStarSeed(1);
+  const plain = censusRow(game, starSeed, 0);
+  const changed = (over: Partial<CensusSources>): string => censusRow({ ...game, ...over }, starSeed, 0);
+
+  it('the rarity roll, the tier before the ring cap and the mix of landing regions', () => {
+    expect(changed({ rarity: (p) => game.rarity(p) + 1 })).not.toBe(plain);
+    expect(changed({ veins: (p, s, v, b) => { const read = game.veins(p, s, v, b); return { ...read, rawTier: read.rawTier + 1 }; } })).not.toBe(plain);
+    expect(changed({ mix: () => null })).not.toBe(plain);
+    expect(changed({ mix: (p, band) => game.mix(p, band)!.map(([key, part], i) => [key, i === 0 ? part + 1e-8 : part] as const) })).not.toBe(plain);
+    expect(changed({ mix: (p, band) => [...game.mix(p, band)!].reverse() })).not.toBe(plain);
+    const world = censusWorld(game, starSeed, 0);
+    expect(world.mix!.reduce((sum, [, part]) => sum + part, 0)).toBeCloseTo(1, 9);
+    expect(plain).toContain(`|roll=${world.rarity}|tier=${world.veins.rawTier}/${world.veins.tier}|`);
+  });
+
+  it('whatever more its reader gives, each fact by name', () => {
+    const more = changed({ extras: () => [['card', ['Life', 'None']], ['title', 'A world']] });
+    expect(more).toContain('|card=["Life","None"]|title="A world"|star=');
+    expect(changed({ extras: () => [['card', ['Life', 'Some']], ['title', 'A world']] })).not.toBe(more);
+    expect(changed({ extras: () => [] })).toBe(plain);
+  });
+
+  it('a moon whose name holds the line\'s own marks cannot pass for two moons', () => {
+    const one = censusRow({ ...game, moon: () => ({ type: 'a', name: 'b;c:d' }) }, CENSUS_SOL_SEED, 2);
+    const other = censusRow({ ...game, moon: () => ({ type: 'a', name: 'b"],["c' }) }, CENSUS_SOL_SEED, 2);
+    expect(one).toContain('|moons=[["a","b;c:d"]]|');
+    expect(other).not.toContain('["a","b"],["c"');
+    expect(censusRow({ ...game, moon: () => ({ type: 'a|b', name: 'c' }) }, CENSUS_SOL_SEED, 2)).toContain('[["a|b","c"]]');
+  });
+});
+
+describe('one system', () => {
+  it('is its own line and every world of it, and its digest moves with any of them', () => {
+    const sol = censusSystem(game, CENSUS_SOL_SEED);
+    expect(sol.worlds.map((world) => world.planet.name)).toEqual(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']);
+    expect(sol.worlds[2]!.row).toBe(censusRow(game, CENSUS_SOL_SEED, 2));
+    const digest = censusSystemDigest(sol);
+    expect(censusSystemDigest(censusSystem(game, CENSUS_SOL_SEED))).toBe(digest);
+    expect(censusSystemDigest(censusSystem(withPlanet(CENSUS_SOL_SEED, 7, (P) => ({ ...P, hue: 221 })), CENSUS_SOL_SEED))).not.toBe(digest);
+    expect(censusSystemDigest(censusSystem({ ...game, system: (seed) => ({ ...game.system(seed), visitor: { ang: 1 } }) }, CENSUS_SOL_SEED))).not.toBe(digest);
+  });
+});
+
+describe('the count of what was hit', () => {
+  it('names, table by table, every entry the worlds read touched', () => {
+    const { hits, shares } = censusFingerprint(game, 3000);
+    expect(hits['planet type']).toEqual(shares.types);
+    expect(hits['climate band']).toEqual(shares.bands);
+    expect(hits['star kind']).toEqual(shares.starKinds);
+    expect(Object.values(hits.tier!).reduce((a, b) => a + b, 0)).toBe(3000);
+    expect(Object.values(hits['moon type']!).reduce((a, b) => a + b, 0)).toBe(shares.moons);
+    expect(Object.keys(hits['exceptional vein']!).sort()).toEqual(['held', 'none']);
+    expect(hits.biome!['gas: banded']).toBeGreaterThan(300);
+    expect(hits['deposit of a type']!['gas: He3']).toBeGreaterThan(300);
+    expect(hits.biome!['terran: none']).toBe(1);
+    expect(Object.keys(hits)).toEqual([...Object.keys(hits)].sort());
   });
 });

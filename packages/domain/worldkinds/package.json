@@ -12,6 +12,7 @@
     "@cf/domain-loot": "*",
     "@cf/domain-opportunity": "*",
     "@cf/domain-rand": "*",
+    "@cf/domain-speciestraits": "*",
     "@cf/domain-strays": "*",
     "@cf/domain-surveyphrases": "*",
     "@cf/domain-worldgen": "*"

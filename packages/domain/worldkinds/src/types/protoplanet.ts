@@ -2,16 +2,17 @@
    system stream is not read: the count comes from the star's own new stream. 70% of disks hold one; a second at
    40%; a third at 10%. (guess) The second and third are drawn in turn from that same stream, each only when the
    one before it exists. */
-import { ownStream, type WorldTypeDefinition } from '../rules.js';
+import type { WorldTypeDefinition } from '../rules.js';
+import { declareStream, ownStream } from '../streams.js';
 import type { CensusSystem } from '../census.js';
 
 /** The disk's roll: the design's salt, taken as written. */
-const DISK_STREAM = [0x9B0, 1] as const;
+const DISK_STREAM = declareStream('protoplanet', 0x9B0, 1);
 const CHANCES = [0.7, 0.4, 0.1] as const;
 
 function protoplanets(starSeed: number, system: CensusSystem): number {
   if (system.kind !== 'PROTO') return 0;
-  const random = ownStream(starSeed, DISK_STREAM[0], DISK_STREAM[1]);
+  const random = ownStream(starSeed, DISK_STREAM);
   let count = 0;
   while (count < CHANCES.length && random() < CHANCES[count]!) count++;
   return count;

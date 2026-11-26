@@ -7,7 +7,8 @@
    and the roster. */
 import type { CensusSystem, CensusWorld } from './census.js';
 import { WORLD_TYPES, rulesFor, sliceOf } from './registry.js';
-import { ownDraw, type PlanetNumbers, type RuleBiome, type WorldTypeDefinition } from './rules.js';
+import type { PlanetNumbers, RuleBiome, WorldTypeDefinition } from './rules.js';
+import { ownDraw, type TypeStream } from './streams.js';
 import type { WorldSwitches, WorldTypeKey } from './switches.js';
 
 /** A planet as the legacy rules have it: what the descent, the snapshot and the roster say today. */
@@ -52,9 +53,9 @@ export function legacyFactsOf(world: CensusWorld, sol: boolean): LegacyWorldFact
   };
 }
 
-function ownBiome(seed: number, biomes: readonly RuleBiome[], salt: readonly [number, number] | undefined): RuleBiome {
-  if (salt === undefined) throw new Error('a type\'s biome set is rolled on its own stream: the rules name none');
-  let v = ownDraw(seed, salt[0], salt[1]) * biomes.reduce((total, biome) => total + biome.w, 0);
+function ownBiome(seed: number, biomes: readonly RuleBiome[], stream: TypeStream | undefined): RuleBiome {
+  if (stream === undefined) throw new Error('a type\'s biome set is rolled on its own stream: the rules name none');
+  let v = ownDraw(seed, stream) * biomes.reduce((total, biome) => total + biome.w, 0);
   for (const biome of biomes) {
     v -= biome.w;
     if (v <= 0) return biome;
@@ -74,7 +75,7 @@ export function effectiveWorld(
   if (rules === null) return { ...world, type, label: null };
   const biomeKey = rules.biomes === 'parent' ? world.biomeKey
     : rules.biomes === null ? null
-      : ownBiome(world.P.seed, rules.biomes, rules.biomeSalt).k;
+      : ownBiome(world.P.seed, rules.biomes, rules.biomeStream).k;
   const fixed = rules.landing?.fixed;
   const landing = fixed === undefined ? world.landing : { percent: fixed.p, damageMin: fixed.lo, damageMax: fixed.hi };
   return { ...world, type, label: rules.label, biomeKey, landing };

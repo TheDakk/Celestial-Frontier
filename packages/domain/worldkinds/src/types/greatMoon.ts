@@ -1,9 +1,9 @@
 /* N7 great moon: a moon big enough to be a world. The legacy game gives every moon a seed and one of four types
    (LEGACY 5321-5324, 5298); a rocky, icy or volcanic one may be great, a captured asteroid never. The design rolls
    1 in 20 on a new stream of the moon's and names no salt for it, so only the moons that could be great are counted. */
-import { moonDescriptor } from '@cf/domain-descriptors';
 import type { CensusPlanet, CensusSystem } from '../census.js';
 import type { WorldTypeDefinition } from '../rules.js';
+import { moonOf } from '../sources.js';
 
 const CAPTURED = 'Captured asteroid';
 
@@ -12,8 +12,7 @@ function eligibleMoons(planet: CensusPlanet): number {
   const moons = typeof planet.P.moons === 'number' ? planet.P.moons : 0;
   let eligible = 0;
   for (let m = 0; m < moons; m++) {
-    const card = moonDescriptor(planet as unknown as Record<string, unknown>, m as unknown as Record<string, unknown>);
-    if (card.sub !== CAPTURED) eligible++;
+    if (moonOf(planet, m).type !== CAPTURED) eligible++;
   }
   return eligible;
 }

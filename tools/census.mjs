@@ -1,15 +1,22 @@
-// The census of seeded worlds: prints the share tables and the time taken, and holds this game against the legacy game.
+// The census of worlds: prints the share tables, the hits on every table and the time taken, and holds this game
+// against the legacy game.
 // Usage: node tools/census.mjs [--planets 100000]
 //        node tools/census.mjs --ref <folder holding celestial-frontier.html> [--planets 100000] [--record]
-// With --ref the legacy game's own functions are run over the same worlds and every line is compared; each field that
-// differs is listed by star seed and planet. With --record the legacy game's fingerprint is written to
-// fixtures/current/census-v1.json (100,000 worlds, with the fingerprint of the first 20,000 beside it). The path
-// given is not written to any output. This tool is run by hand; no test imports it.
+// With --ref the legacy game's own functions (tools/census-legacy.mjs) are run over the same worlds and every line
+// is compared; each field that differs is listed by star and planet. Three censuses are held:
+//   seeded     Sol, then systems hashInt(0xCE5, i, 0), read through the game's world generation;
+//   veins      every tier with every planet type, and seeds of every rarity roll at every depth and ring cap;
+//   addressed  real stars of real galaxies, read through the game's production snapshot, roster, descent and card.
+// With --record the legacy game's answers are written first, whatever this game says, to
+// fixtures/v1/recorded/census.json, census-veins.json and census-addressed.json; the comparison follows. This tool
+// compares the seeded census line by line; the veins and addressed censuses are compared by their tests.
+// The path given is not written to any output. This tool is run by hand; no test imports it.
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { registerHooks } from 'node:module';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LEGACY_SLICES, LEGACY_STAND_INS, legacyCensusSources, legacyFirstSalts, legacyGame } from './census-legacy.mjs';
 import { extractTrackedV1Script } from './record-v1-fixtures.mjs';
 
 // The game's sources import some .ts files with .js specifiers, and the app imports its own with none.
@@ -19,137 +26,23 @@ registerHooks({
       return nextResolve(specifier, context);
     } catch (error) {
       if (specifier.endsWith('.js')) return nextResolve(specifier.slice(0, -3) + '.ts', context);
-      if (specifier.startsWith('.')) return nextResolve(specifier + '.ts', context);
+      if (specifier.startsWith('.')) {
+        try { return nextResolve(specifier + '.ts', context); } catch { return nextResolve(specifier + '/index.ts', context); }
+      }
       throw error;
     }
   },
 });
 
 const GAME_HTML = 'celestial-frontier.html';
-const FIXTURE = fileURLToPath(new URL('../fixtures/current/census-v1.json', import.meta.url));
+const RECORDED = fileURLToPath(new URL('../fixtures/v1/recorded/', import.meta.url));
 const RECORDED_PLANETS = 100000;
 const GATE_PLANETS = 20000;
-
-/* ---- the legacy game's readers ---- */
-
-/** The legacy game's own functions as the census's readers. Each slice starts at text that occurs once. */
-export function legacyCensusSources(script) {
-  const start = (text) => {
-    const i = script.indexOf(text);
-    if (i < 0) throw new Error(`the legacy script has no ${text}`);
-    if (script.indexOf(text, i + 1) !== -1) throw new Error(`${text} is not unique in the legacy script`);
-    return i;
-  };
-  /** From `from` through the first `to` after it. */
-  const cut = (from, to) => {
-    const i = start(from);
-    const j = script.indexOf(to, i);
-    if (j < 0) throw new Error(`the legacy script has no ${to} after ${from}`);
-    return script.slice(i, j + to.length);
-  };
-  /** From `from` up to, not including, the first `before` after it. */
-  const upTo = (from, before) => {
-    const text = cut(from, before);
-    return text.slice(0, text.length - before.length);
-  };
-  const legacy = new Function('st', 'moonThumb', `
-    ${cut('function mulberry32(a){', '/4294967296}}')}
-    ${cut('function hashInt(seed,x,y){', 'return h>>>0;\n}')}
-    ${cut('function clamp(v,a,b){', '}')}
-    ${cut('const TAU = Math.PI*2;', ';')}
-    ${cut('const SYL=[', '];')}
-    ${cut('function properName(seed, parts){', 's.slice(1);\n}')}
-    ${cut('const UCELL=400;', 'const SYS_R=320;')}
-    ${upTo('function starClass(seed){', 'const KIND_DESC={')}
-    ${cut('const SOL_PLANETS=[', '\n];')}
-    ${cut('function planetParams(seed){', '  return P;\n}')}
-    ${cut('function genRocks(r, beltR){', '  return rocks;\n}')}
-    ${cut('function _systemFor(starSeed){', '  return sys;\n}')}
-    ${cut('function climateBand(P, sys, orb){', "  return 'cold';\n}")}
-    ${cut('function biosphere(P, sys, band, r){', "key:level};\n}")}
-    ${cut('const ERAS=[', '\n];')}
-    ${cut('function civilization(P, sys, band, bio, r){', 'pop:pop};\n}')}
-    function survey(P, sys, pl){
-      ${upTo('  const r=mulberry32((P.seed^0x1234567)>>>0);\n  const orb = pl?pl.orb:120;', '  /* publish the card')}
-      return {band, bio, civ};
-    }
-    ${cut('const BIOME_SETS={', 'return pool[pool.length-1];\n}')}
-    ${cut('function descentTierFromPct(p){', '{lo:6,hi:8};\n}')}
-    ${cut('const DESCENT_TIERS={', 'lava:{p:20,lo:6,hi:8}};')}
-    /* A first landing: no storm, no wave-off, no gear. */
-    const _waveOffs=new Map(); const _descWx=()=>null; const descentBonus=()=>0; const _equipBonus=()=>0;
-    ${cut('function descentFor(pl){', 'biome:bio};\n}')}
-    ${upTo('function rarityRoll(seed, salt){', '/* build a color-graded label')}
-    ${cut('const GRADE_TIERS=[', '\n];')}
-    ${cut('const TIER_MAX=', ';')}
-    ${cut('const SPECTRA={', '\n};')}
-    ${cut('function spectral(domain, seed, opts){', 'name:T.name};\n}')}
-    function designation(P, bio){
-      ${cut('  const lifey=/Abundant|Aquatic|flora|Sparse/i.test(bio.level);', ';')}
-      ${cut("  const HUEMAP={ocean:'ocean',", 'force:P.seed===133?5:undefined});')}
-      return desig;
-    }
-    ${cut('const DEPOSIT_PROFILES={', '\n};')}
-    ${cut('const RARE_VEIN=[', ';')}
-    ${cut('function depositsFor(seed, type, tier){', '  return picks;\n}')}
-    ${cut('const BIOME_VEIN={', ';')}
-    ${cut('function biomeVeinFor(seed){', 'catch(_){ return null; }\n}')}
-    ${cut('const COSMIC_FOUND=[', ';')}
-    ${cut('const COSMIC_BREAK=[', ';')}
-    ${cut('function cosmicVeinFor(seed, tier){', 'return pool[(r()*pool.length)|0];\n}')}
-    ${upTo('function exVeinFor(seed, type, tier){', 'function exTierOf(k){')}
-    ${cut('function reserveFor(seed, tier){', '(1+(tier||0)*0.35));\n}')}
-    ${cut('const MOON_TYPES=[', '\n];')}
-    ${cut('function roman(n){', 'return s;\n}')}
-    ${cut('const SOL_MOONS={', '\n};')}
-    ${cut('function moonDescriptor(pl, m){', "logId:'m'+seed, badge};\n}")}
-    return { _systemFor, survey, biomeFor, descentFor, designation, depositsFor, biomeVeinFor, cosmicVeinFor, exVeinFor, reserveFor, moonDescriptor };
-  `);
-  const st = { sys: null, gal: undefined, planet: null };
-  const game = legacy(st, () => null);
-  let last = null;
-  return {
-    system: (starSeed) => {
-      if (last === null || last.starSeed !== starSeed) last = { starSeed, system: game._systemFor(starSeed) };
-      return last.system;
-    },
-    survey: (planet, system) => {
-      const { band, bio, civ } = game.survey(planet.P, system, planet);
-      return { band, life: bio, civ };
-    },
-    biome: (planet, band) => {
-      const biome = game.biomeFor(planet.P, band);
-      return biome ? biome.k : null;
-    },
-    descent: (planet, system) => {
-      st.sys = system;
-      const odds = game.descentFor(planet);
-      return { percent: odds.pct, damageMin: odds.lo, damageMax: odds.hi };
-    },
-    veins: (planet, system, survey) => {
-      // As mineWorld reads them (21425-21436): the tier is the card's designation's, the list the planet type's.
-      st.sys = system;
-      const seed = planet.P.seed;
-      const tier = game.designation(planet.P, survey.life).tier;
-      return {
-        tier,
-        deposits: game.depositsFor(seed, planet.P.type || 'rocky', tier),
-        biomeVein: game.biomeVeinFor(seed),
-        cosmicVein: game.cosmicVeinFor(seed, tier),
-        exceptionalVein: game.exVeinFor(seed, planet.P.type || 'rocky', tier),
-        reserve: game.reserveFor(seed, tier),
-      };
-    },
-    moon: (planet, index) => {
-      const card = game.moonDescriptor(planet, index);
-      return { type: String(card.sub), name: card.title };
-    },
-  };
-}
-
-/* ---- the tables ---- */
+const ROLL_SEEDS = 12;
+const TOP_ROLL_SEEDS = 6;
 
 const percent = (part, whole) => (whole === 0 ? 'n/a' : `${((100 * part) / whole).toFixed(2)}%`);
+const seconds = (from) => `${(Number(process.hrtime.bigint() - from) / 1e9).toFixed(2)}s`;
 
 function table(title, rows) {
   const width = Math.max(...rows.map(([name]) => name.length));
@@ -157,7 +50,7 @@ function table(title, rows) {
   for (const [name, count, share] of rows) console.log(`  ${name.padEnd(width)}  ${String(count).padStart(8)}  ${share ?? ''}`);
 }
 
-export function printShares(shares) {
+function printShares(shares) {
   const order = (counts) => Object.entries(counts).sort((a, b) => b[1] - a[1]);
   table(`Planet types (of ${shares.planets} planets)`, order(shares.types).map(([k, n]) => [k, n, percent(n, shares.planets)]));
   table('Climate bands (of planets)', order(shares.bands).map(([k, n]) => [k, n, percent(n, shares.planets)]));
@@ -179,19 +72,23 @@ export function printShares(shares) {
   ]);
 }
 
-/* ---- the run ---- */
-
-function parseArgs(argv) {
-  const args = {};
-  for (let i = 0; i < argv.length; i++) {
-    const name = argv[i].replace(/^--/, '');
-    if (name === 'record') args.record = true;
-    else args[name] = argv[++i];
+/** Every table and how many cases hit each entry, fewest first within a table. */
+function printHits(title, hits) {
+  console.log(`\n${title}`);
+  for (const [name, counts] of Object.entries(hits)) {
+    const entries = Object.entries(counts).sort((a, b) => a[1] - b[1]);
+    console.log(`  ${name} (${entries.length} entries, fewest ${entries[0][1]}): ${entries.map(([k, n]) => `${k} ${n}`).join('; ')}`);
   }
-  return args;
 }
 
-const seconds = (from) => `${(Number(process.hrtime.bigint() - from) / 1e9).toFixed(2)}s`;
+/** A fixture as text: the header fields one a line, then one case a line. */
+function writeFixture(name, fixture) {
+  const { cases, ...head } = fixture;
+  const text = ['{', ...Object.entries(head).map(([key, value]) => ` ${JSON.stringify(key)}: ${JSON.stringify(value)},`),
+    ' "cases": [', ...cases.map((c, i) => `  ${JSON.stringify(c)}${i < cases.length - 1 ? ',' : ''}`), ' ]', '}', ''].join('\n');
+  writeFileSync(join(RECORDED, `${name}.json`), text);
+  console.log(`recorded fixtures/v1/recorded/${name}.json: ${cases.length} cases`);
+}
 
 /** The fields of two lines that differ, as `name: this game / the legacy game`. */
 function differingFields(mine, theirs) {
@@ -205,52 +102,175 @@ function differingFields(mine, theirs) {
     .map((key) => `${key}: game ${a.get(key)} / legacy ${b.get(key)}`);
 }
 
+/** Compares two runs of systems line by line; prints the first differences and returns how many lines differ. */
+function compareSystems(mine, theirs) {
+  let lines = 0;
+  let differing = 0;
+  const fields = new Map();
+  const other = theirs[Symbol.iterator]();
+  for (const entry of mine) {
+    const their = other.next().value;
+    const pairs = [[entry.row, their.row, `star ${entry.starSeed}`], ...entry.worlds.map((world, i) => [world.row, their.worlds[i]?.row ?? '', `star ${entry.starSeed} planet ${world.ordinal} (seed ${world.planet.P.seed})`])];
+    for (const [a, b, where] of pairs) {
+      lines++;
+      if (a === b) continue;
+      differing++;
+      const names = differingFields(a, b);
+      for (const name of names) {
+        const field = name.slice(0, name.indexOf(':'));
+        fields.set(field, (fields.get(field) ?? 0) + 1);
+      }
+      if (differing <= 40) console.log(`DIFFERS ${where}\n  ${names.join('\n  ')}`);
+    }
+  }
+  console.log(`${lines} lines compared, ${differing} differ`);
+  for (const [field, count] of fields) console.log(`  ${field}: ${count} lines`);
+  return differing;
+}
+
+function parseArgs(argv) {
+  const args = {};
+  for (let i = 0; i < argv.length; i++) {
+    const name = argv[i].replace(/^--/, '');
+    if (name === 'record') args.record = true;
+    else args[name] = argv[++i];
+  }
+  return args;
+}
+
+/* ---- the veins census: every tier with every type, and seeds of every rarity roll at every place ---- */
+
+/** The first seeds whose legacy rarity roll is each tier: 12 a tier, 6 at the summit. */
+function seedsOfEveryRoll(game, tiers) {
+  const found = Array.from({ length: tiers }, () => []);
+  for (let seed = 1; found[tiers - 1].length < TOP_ROLL_SEEDS; seed++) {
+    const roll = game.rarityRoll(seed, 3);
+    if (found[roll].length < ROLL_SEEDS) found[roll].push(seed);
+  }
+  return found;
+}
+
+/** The legacy game's answers to the veins cases, and what they hit. `support` is tests/support/census-veins.ts. */
+function legacyVeins(legacy, support, rollSeeds) {
+  const { st, game } = legacy;
+  const hits = new support.VeinHits(game.DEPOSIT_PROFILES, game.RARE_VEIN);
+  const answerAt = (seed, type, rawTier, tier) => ({
+    rawTier, tier,
+    deposits: game.depositsFor(seed, type, tier),
+    cosmicVein: game.cosmicVeinFor(seed, tier),
+    exceptionalVein: game.exVeinFor(seed, type, tier),
+    reserve: game.reserveFor(seed, tier),
+  });
+  const digestOf = (lines) => createHash('sha256').update(lines.join('\n')).digest('hex').slice(0, 16);
+  const cases = [];
+  for (let tier = 0; tier < support.VEIN_TIERS; tier++) for (const type of support.VEIN_TYPES) {
+    const lines = support.gridSeeds(tier, type).map((seed) => {
+      const answer = answerAt(seed, type, tier, tier);
+      hits.answer(type, answer);
+      return support.veinLine(seed, type, answer);
+    });
+    cases.push({ group: 'grid', input: { tier, type, seeds: lines.length }, output: digestOf(lines) });
+  }
+  rollSeeds.forEach((seeds, roll) => {
+    const lines = [];
+    seeds.forEach((seed, i) => {
+      const type = support.VEIN_TYPES[i % support.VEIN_TYPES.length];
+      for (const place of support.VEIN_PLACES) for (const level of support.VEIN_LIFE) {
+        // The card's designation where the world lives, then the ring's clamp (5158-5163, 14733-14747).
+        st.gal = place.gal;
+        const raw = game.card({ seed, type }, null, { level }, { civ: false }).desig;
+        st.gal = undefined;
+        const ringed = game.ringDesignation({ designation: raw, where: { gal: place.gal, star: place.star } }).designation;
+        const answer = answerAt(seed, type, raw.tier, ringed.tier);
+        hits.answer(type, answer);
+        hits.hit('place', `${place.name}: ${ringed.tier < raw.tier ? 'capped' : 'not capped'}`);
+        hits.hit('rarity roll', String(roll));
+        lines.push(`${place.name}|${level}|${support.veinLine(seed, type, answer)}`);
+      }
+    });
+    cases.push({ group: 'roll', input: { roll, seeds }, output: digestOf(lines) });
+  });
+  cases.push({ group: 'hits', input: {}, output: hits.hits() });
+  return cases;
+}
+
+/* ---- the addressed census: real stars of real galaxies ---- */
+
+/** Stars with planets, each proven by the game's resolver: Sol and its Neighborhood, the far home galaxy, two
+    galaxies in each region of the universe, and the two deep worlds the mining tests name. */
+async function censusPlaces() {
+  const { fineStarsInCell, galaxiesInCell, galaxyProfile, starsInCell, systemFor } = await import('@cf/domain-worldgen');
+  const { regionAt } = await import('@cf/domain-strays');
+  const { resolveCF1WorldAddress } = await import('@cf/scene');
+  const places = [];
+  const seen = new Set();
+  const add = (galaxy, star) => {
+    const first = systemFor(star.seed).planets[0];
+    if (!first || seen.has(star.seed)) return false;
+    if (!resolveCF1WorldAddress({ galaxy, star, planet: { seed: first.P.seed } }).ok) return false;
+    seen.add(star.seed);
+    places.push({ galaxy, star });
+    return true;
+  };
+  const starsOf = (galaxy, cells, limit, fine = false) => {
+    const profile = galaxyProfile(galaxy.seed);
+    let taken = 0;
+    for (const [cx, cy] of cells) for (const star of fine ? fineStarsInCell(galaxy.seed, profile, cx, cy) : starsInCell(galaxy.seed, profile, cx, cy).stars) {
+      if (taken < limit && add(galaxy, { seed: star.seed, x: star.x, y: star.y })) taken++;
+    }
+  };
+  const square = (x0, x1, y0, y1) => {
+    const cells = [];
+    for (let cy = y0; cy <= y1; cy++) for (let cx = x0; cx <= x1; cx++) cells.push([cx, cy]);
+    return cells;
+  };
+  const home = { seed: 999, x: 90, y: -60 };
+  add(home, { seed: 424242, x: 560, y: 170 });
+  starsOf(home, square(6, 20, -3, 11), 200);            // around Sol: the Neighborhood and just beyond it
+  starsOf(home, square(24, 56, -2, 26), 700, true);     // the Neighborhood's fainter stars, under the ring's cap of 5
+  starsOf(home, square(-24, -15, -6, 3), 120);          // far across the home galaxy
+  starsOf(home, square(-60, -45, -8, 8), 150, true);
+  const perRegion = new Map();
+  for (let ring = 0; ring <= 21 && [...perRegion.values()].filter((n) => n >= 2).length < 6; ring++) {
+    for (const [cx, cy] of square(-ring, ring, -ring, ring)) {
+      if (Math.max(Math.abs(cx), Math.abs(cy)) !== ring) continue;
+      for (const g of galaxiesInCell(cx, cy)) {
+        const region = regionAt(g.x, g.y);
+        if (g.seed === home.seed || (perRegion.get(region) ?? 0) >= 2) continue;
+        const before = places.length;
+        starsOf({ seed: g.seed, x: g.x, y: g.y }, square(-3, 3, -3, 3), 45);
+        if (places.length > before) perRegion.set(region, (perRegion.get(region) ?? 0) + 1);
+      }
+    }
+  }
+  add({ seed: 2775120088, x: -15585.946043489894, y: -13862.482918268226 }, { seed: 510510541, x: -550.8509466005489, y: -8.055439678020775 });
+  add({ seed: 1012779741, x: -599.7658047693408, y: -6073.942273357868 }, { seed: 3589953231, x: -138.81464905291796, y: -21.96363354055211 });
+  return places;
+}
+
+/* ---- the run ---- */
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = parseArgs(process.argv.slice(2));
   const planets = Number(args.planets ?? RECORDED_PLANETS);
-  if (!Number.isInteger(planets) || planets < 1 || (args.record && !args.ref)) {
-    console.error('usage: node tools/census.mjs [--planets <count>] [--ref <folder holding celestial-frontier.html> [--record]]');
+  if (!Number.isInteger(planets) || planets < 1 || (args.record && (!args.ref || planets !== RECORDED_PLANETS))) {
+    console.error(`usage: node tools/census.mjs [--planets <count>] [--ref <folder holding celestial-frontier.html> [--record]]; a recording is of ${RECORDED_PLANETS} planets`);
     process.exit(2);
   }
-  const { censusFingerprint, censusSystems } = await import('@cf/domain-worldkinds');
-  // The same readers the gate's test reads through.
+  const kinds = await import('@cf/domain-worldkinds');
+  const { censusFingerprint, censusSystem, censusSystemDigest, censusSystems, CensusHitCounter } = kinds;
+  // The same readers the gate's tests read through.
   const game = (await import('../tests/support/census.ts')).gameSources();
 
   let from = process.hrtime.bigint();
   const mine = censusFingerprint(game, planets);
-  console.log(`census of this game: ${mine.planets} planets in ${mine.shares.systems} systems, ${seconds(from)}`);
+  console.log(`seeded census of this game: ${mine.planets} planets in ${mine.shares.systems} systems, ${seconds(from)}`);
   console.log(`fingerprint ${mine.total}`);
   printShares(mine.shares);
-
-  // What the lines held, so an agreement is known not to be an agreement of blanks.
-  const held = { life: {}, tier: {}, civilised: 0, wild: 0, biomeVein: 0, cosmicVein: 0, exceptionalVein: 0, rareVein: 0, landing: {} };
-  const count = (counts, key) => { counts[key] = (counts[key] ?? 0) + 1; };
-  for (const entry of censusSystems(game, planets)) for (const world of entry.worlds) {
-    count(held.life, world.survey.life.key);
-    count(held.tier, world.veins.tier);
-    count(held.landing, world.descent.percent);
-    if (world.survey.civ.civ) held.civilised++;
-    if (world.survey.civ.wild) held.wild++;
-    if (world.veins.biomeVein) held.biomeVein++;
-    if (world.veins.cosmicVein) held.cosmicVein++;
-    if (world.veins.exceptionalVein) held.exceptionalVein++;
-    if (world.veins.deposits.some((symbol) => ['Ag', 'Au', 'Pt', 'Ir', 'U', 'Nd', 'Pm', 'Vg', 'Pz'].includes(symbol))) held.rareVein++;
-  }
-  const byKey = (counts) => Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, n, percent(n, mine.planets)]);
-  table('Life (of planets)', byKey(held.life));
-  table('Tier, with no depth and no ring cap (of planets)', Object.entries(held.tier).sort((a, b) => a[0] - b[0]).map(([k, n]) => [`tier ${k}`, n, percent(n, mine.planets)]));
-  table('First-landing odds (of planets)', Object.entries(held.landing).sort((a, b) => b[0] - a[0]).map(([k, n]) => [`${k}%`, n, percent(n, mine.planets)]));
-  table('Worlds holding', [
-    ['a civilisation', held.civilised, percent(held.civilised, mine.planets)],
-    ['a wilderness note', held.wild, percent(held.wild, mine.planets)],
-    ['a rare-vein symbol in the deposits', held.rareVein, percent(held.rareVein, mine.planets)],
-    ['a biome vein', held.biomeVein, percent(held.biomeVein, mine.planets)],
-    ['an exceptional vein', held.exceptionalVein, percent(held.exceptionalVein, mine.planets)],
-    ['a cosmic vein', held.cosmicVein, percent(held.cosmicVein, mine.planets)],
-  ]);
+  printHits(`Seeded census: hits on each table (${mine.planets} planets)`, mine.hits);
 
   // The new types: each slice of planets step by step, and what each design's source rule counts.
-  const { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPES, sliceStepsPassed } = await import('@cf/domain-worldkinds');
+  const { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPES, sliceStepsPassed } = kinds;
   const { switchCensus } = await import('../tests/support/census-switches.ts');
   const steps = new Map(WORLD_TYPES.map((type) => [type.key, new Array((type.slice ?? type.source ?? []).length).fill(0)]));
   for (const entry of censusSystems(game, planets)) {
@@ -290,64 +310,81 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     ['worlds moved with every switch off', off.movedWhenOff + on.movedWhenOff],
     ['bodies added', on.bodies],
   ]);
-  if (on.legacy.total !== mine.total || off.legacy.total !== mine.total || on.changedOutside + on.movedWhenOff + off.movedWhenOff > 0) {
-    console.error('a switch MOVED a world outside its slice');
-    process.exit(1);
-  }
+  let failed = on.legacy.total !== mine.total || off.legacy.total !== mine.total || on.changedOutside + on.movedWhenOff + off.movedWhenOff > 0;
+  if (failed) console.error('a switch MOVED a world outside its slice');
 
   if (args.ref) {
     const htmlBytes = readFileSync(join(resolve(args.ref), GAME_HTML));
-    const legacy = legacyCensusSources(extractTrackedV1Script(htmlBytes.toString('utf8')));
+    const script = extractTrackedV1Script(htmlBytes.toString('utf8'));
+    const source = `${GAME_HTML} sha256:${createHash('sha256').update(htmlBytes).digest('hex')} bytes:${htmlBytes.length}`;
+    const support = await import('../tests/support/census-veins.ts');
+    const places = await censusPlaces();
+    const placeOf = new Map(places.map((place) => [place.star.seed, place]));
+
+    // The legacy game first: its answers are recorded whatever this game says.
+    const legacy = legacyCensusSources(script);
     from = process.hrtime.bigint();
     const theirs = censusFingerprint(legacy, planets);
-    console.log(`\ncensus of the legacy game: ${theirs.planets} planets in ${theirs.shares.systems} systems, ${seconds(from)}`);
+    console.log(`\nseeded census of the legacy game: ${theirs.planets} planets in ${theirs.shares.systems} systems, ${seconds(from)}`);
     console.log(`fingerprint ${theirs.total}`);
-
-    // Line by line, so a disagreement names its worlds and fields.
-    const walk = censusSystems(legacy, planets);
-    let lines = 0;
-    let differing = 0;
-    const fields = new Map();
-    for (const entry of censusSystems(game, planets)) {
-      const other = walk.next().value;
-      const pairs = [[entry.row, other.row, `star ${entry.starSeed}`], ...entry.worlds.map((world, i) => [world.row, other.worlds[i]?.row ?? '', `star ${entry.starSeed} planet ${world.ordinal} (seed ${world.planet.P.seed})`])];
-      for (const [a, b, where] of pairs) {
-        lines++;
-        if (a === b) continue;
-        differing++;
-        const names = differingFields(a, b);
-        for (const name of names) fields.set(name.slice(0, name.indexOf(':')), (fields.get(name.slice(0, name.indexOf(':'))) ?? 0) + 1);
-        if (differing <= 40) console.log(`DIFFERS ${where}\n  ${names.join('\n  ')}`);
-      }
-    }
-    console.log(`\n${lines} lines compared, ${differing} differ`);
-    for (const [field, count] of fields) console.log(`  ${field}: ${count} lines`);
-    if (differing > 0 || mine.total !== theirs.total) {
-      console.error('this game and the legacy game DISAGREE');
-      process.exit(1);
-    }
-    console.log('this game and the legacy game agree on every line');
+    from = process.hrtime.bigint();
+    const cut = legacyGame(script);
+    const rollSeeds = seedsOfEveryRoll(cut.game, support.VEIN_TIERS);
+    console.log(`seeds of every rarity roll found, ${seconds(from)}`);
+    const veinCases = legacyVeins(cut, support, rollSeeds);
+    const legacyAddressed = legacyCensusSources(script, (starSeed) => placeOf.get(starSeed));
+    const addressedHits = new CensusHitCounter();
+    const addressedCases = places.map((place) => {
+      const entry = censusSystem(legacyAddressed, place.star.seed);
+      addressedHits.system(entry.system);
+      for (const world of entry.worlds) addressedHits.world(world);
+      return { group: 'star', input: place, output: { planets: entry.worlds.length, digest: censusSystemDigest(entry) } };
+    });
+    addressedCases.push({ group: 'hits', input: {}, output: addressedHits.hits() });
+    printHits(`Veins census of the legacy game: hits on each table (${veinCases.length - 1} groups of cases)`, veinCases.at(-1).output);
+    printHits(`Addressed census of the legacy game: hits on each table (${places.length} stars)`, addressedHits.hits());
 
     if (args.record) {
-      if (planets !== RECORDED_PLANETS) {
-        console.error(`the fixture is recorded at ${RECORDED_PLANETS} planets`);
-        process.exit(2);
-      }
       const gate = censusFingerprint(legacy, GATE_PLANETS);
-      const sha = createHash('sha256').update(htmlBytes).digest('hex');
-      const fixture = {
-        schema: 'cf-census/v1',
-        source: `${GAME_HTML} sha256:${sha} bytes:${htmlBytes.length}`,
-        taken: 'censusFingerprint (packages/domain/worldkinds/src/census.ts) read through the legacy game\'s own functions, cut from its script by tools/census.mjs legacyCensusSources and run with new Function: mulberry32, hashInt, clamp, TAU, SYL, properName, the WorldConfig constants, starClass, SOL_PLANETS, planetParams, genRocks, _systemFor, climateBand, biosphere, ERAS, civilization, the first statements of planetDescriptor (the survey stream, band, biosphere, civilization), BIOME_SETS, biomeFor, descentTierFromPct, DESCENT_TIERS, descentFor, rarityRoll, GRADE_TIERS, TIER_MAX, SPECTRA, spectral, the designation statements of planetDescriptor, DEPOSIT_PROFILES, RARE_VEIN, depositsFor, BIOME_VEIN, biomeVeinFor, COSMIC_FOUND, COSMIC_BREAK, cosmicVeinFor, exVeinFor, reserveFor, MOON_TYPES, roman, SOL_MOONS, moonDescriptor. Supplied by the recorder: st ({sys: the system being read, gal: undefined, so no depth boost and no ring cap}), moonThumb (returns null), and for a first landing _waveOffs (empty), _descWx (no storm), descentBonus and _equipBonus (0). Worlds: Sol, then systems hashInt(0xCE5, i, 0), until the count is reached.',
-        full: { planets: theirs.planets, total: theirs.total, shares: theirs.shares },
-        gate: { planets: gate.planets, total: gate.total, shares: gate.shares },
-        perThousand: theirs.perThousand,
-      };
-      const { perThousand, ...head } = fixture;
-      const text = ['{', ...Object.entries(head).map(([key, value]) => ` ${JSON.stringify(key)}: ${JSON.stringify(value)},`),
-        ' "perThousand": [', ...perThousand.map((digest, i) => `  ${JSON.stringify(digest)}${i < perThousand.length - 1 ? ',' : ''}`), ' ]', '}', ''].join('\n');
-      writeFileSync(FIXTURE, text);
-      console.log(`recorded fixtures/current/census-v1.json: ${theirs.planets} planets, ${perThousand.length} digests`);
+      const taken = (what) => `${what} Read through the legacy game's own functions, cut from its script by tools/census-legacy.mjs and run with new Function: ${LEGACY_SLICES}. ${LEGACY_STAND_INS}`;
+      writeFixture('census', {
+        kind: 'outputs', source, test: 'tests/census.test.ts',
+        taken: taken('censusFingerprint (packages/domain/worldkinds/src/census.ts) over Sol and then the systems hashInt(0xCE5, i, 0), until the count is reached. Cases: full is the whole census with what it hit on each table; gate its first 20,000 worlds; thousands one digest for each thousand worlds.'),
+        cases: [
+          { group: 'full', planets: theirs.planets, total: theirs.total, shares: theirs.shares, hits: theirs.hits },
+          { group: 'gate', planets: gate.planets, total: gate.total, shares: gate.shares },
+          { group: 'thousands', digests: theirs.perThousand },
+        ],
+      });
+      writeFixture('census-veins', {
+        kind: 'outputs', source, test: 'packages/domain/opportunity/test/veins-legacy.test.ts',
+        taken: taken('The cases of tests/support/census-veins.ts. grid: for each tier 0 to 14 and each planet type, depositsFor, cosmicVeinFor, exVeinFor and reserveFor at that tier for 200 seeds; output is the first 16 hex digits of the sha256 of the lines. roll: the first seeds (1, 2, 3 and on) whose rarityRoll(seed, 3) is each tier, 12 a tier and 6 at tier 14; for each seed, at each of eight places and each of three life levels, the card\'s designation with st.gal set to the place, clamped by ringDesignation, and the veins and reserve at that tier. hits: how many answers hit each entry of each table.'),
+        cases: veinCases,
+      });
+      writeFixture('census-addressed', {
+        kind: 'outputs', source, test: 'apps/game/test/census-addressed.test.ts',
+        taken: taken('censusSystem for real stars: Sol and its Neighborhood, the far home galaxy, two galaxies in each of the six regions, and two deep worlds. The stars were chosen and proven by this game\'s resolver; the legacy game was given each star\'s seed and place. An addressed line also holds the world\'s type, orbit, the descent\'s biome, the life and band, the card\'s Life and civilisation rows, its title and its spectral class with st.gal unset. One case a star: the count of its planets and the digest of its lines. hits: how many worlds hit each entry of each table.'),
+        cases: addressedCases,
+      });
+    }
+
+    console.log('\nSeeded census, this game against the legacy game:');
+    const differing = compareSystems(censusSystems(game, planets), censusSystems(legacy, planets));
+
+    // The veins and addressed censuses are held by tests, which can load the whole app: the production paths need
+    // it. With the legacy file at hand the addressed test names each differing field.
+    console.log('\nVeins census against the legacy game: npx vitest run packages/domain/opportunity/test/veins-legacy.test.ts');
+    console.log('Addressed census, the production paths against the legacy game: CF_CENSUS_REF=<folder> npx vitest run apps/game/test/census-addressed.test.ts');
+
+    const salts = legacyFirstSalts(script);
+    const missing = salts.filter((salt) => !kinds.LEGACY_FIRST_SALTS.includes(salt));
+    console.log(`\nLegacy first salts: ${salts.length} in the script, ${missing.length} missing from the guard${missing.length ? `: ${missing.map((s) => `0x${s.toString(16)}`).join(', ')}` : ''}`);
+    if (differing > 0 || mine.total !== theirs.total || missing.length > 0) {
+      console.error('this game and the legacy game DISAGREE');
+      failed = true;
+    } else {
+      console.log('this game and the legacy game agree on every line');
     }
   }
+  if (failed) process.exit(1);
 }

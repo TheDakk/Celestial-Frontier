@@ -1,16 +1,19 @@
-/* The census: every seeded world's numbers as one line of text, and a fingerprint of many lines.
+/* The census: every world's numbers as one line of text, and a fingerprint of many lines.
 
-   One formatter, any reader. The game's own readers (sources.ts) and the legacy game's functions
-   (tools/census.mjs runs LEGACY celestial-frontier.html, 1.8.9) are both read through `CensusSources`, so
-   two fingerprints are equal exactly when every field of every world is equal.
+   One formatter, any reader. The game's readers (sources.ts for seeded worlds; the production snapshot, roster,
+   descent policy and card for addressed worlds) and the legacy game's own functions (tools/census.mjs runs LEGACY
+   celestial-frontier.html, 1.8.9) are all read through `CensusSources`, so two fingerprints are equal exactly
+   when every field of every world is equal.
 
-   A line holds: every key of the planet's parameters (LEGACY planetParams 2666-2702, Sol 3683-3692), its name
+   A line holds: every key of the planet's parameters but the renderer's caches (LEGACY planetParams 2666-2702, Sol
+   3683-3692), its name
    and orbit (4033-4037), climate band (4140-4152), life and civilisation (4944-4977, 5002-5028), biome
-   (13282-13292), the odds and damage rung of a first landing (13357-13359, 13376-13379, 13421-13434), the
-   designation's tier with no depth and no ring cap (5158-5163), the deposits, the three veins and the reserve
-   (21260-21275, 21285, 21308-21316, 21335-21341, 21407-21411), each moon's type and name (5320-5338), and a
-   digest of everything else the system holds: star kind, companions, belt, comets, outer ring, dwarf planets,
-   visitor and habitable zone (4018-4075). */
+   (13282-13292), the mix of landing regions (13294-13322), the odds and damage rung of a first landing
+   (13357-13359, 13376-13379, 13421-13434), the raw rarity roll (4240-4260), the designation's tier before and
+   after the ring cap (5158-5163, 14685-14747), the deposits, the three veins and the reserve (21260-21275, 21285,
+   21308-21316, 21335-21341, 21407-21411), each moon's type and name (5320-5338), whatever more its reader gives,
+   and a digest of everything else the system holds: star kind, companions, belt, comets, outer ring, dwarf
+   planets, visitor and habitable zone (4018-4075). */
 import { hashInt } from '@cf/domain-rand';
 
 export interface CensusPlanet {
@@ -44,6 +47,9 @@ export interface CensusDescent {
 }
 
 export interface CensusVeins {
+  /** The designation's tier before the ring cap. */
+  readonly rawTier: number;
+  /** The tier the veins and the reserve are worked out at. */
   readonly tier: number;
   readonly deposits: readonly string[];
   readonly biomeVein: string | null;
@@ -57,16 +63,25 @@ export interface CensusMoon {
   readonly name: string;
 }
 
-/** The readers a census is taken through. Each answers for one world from seeds alone. */
+/** One landing region and its share of landings. */
+export type CensusMixEntry = readonly [key: string, share: number];
+
+/** The readers a census is taken through. Each answers for one world. */
 export interface CensusSources {
   system(starSeed: number): CensusSystem;
   survey(planet: CensusPlanet, system: CensusSystem): CensusSurvey;
   /** The biome's key; null when the world has none. */
   biome(planet: CensusPlanet, band: string): string | null;
+  /** The landing regions, largest first; null when the type has no biome set. */
+  mix(planet: CensusPlanet, band: string): readonly CensusMixEntry[] | null;
   /** A first landing with no storm, no wave-off and no gear. */
   descent(planet: CensusPlanet, system: CensusSystem, band: string): CensusDescent;
+  /** The designation's rarity roll, before life, depth and the ring cap. */
+  rarity(planet: CensusPlanet): number;
   veins(planet: CensusPlanet, system: CensusSystem, survey: CensusSurvey, biomeKey: string | null): CensusVeins;
   moon(planet: CensusPlanet, index: number): CensusMoon;
+  /** More facts of the world, each a name and its value, for a census that reads them. */
+  extras?(planet: CensusPlanet, system: CensusSystem, survey: CensusSurvey): readonly (readonly [string, unknown])[];
 }
 
 /** One world as the census read it. */
@@ -76,7 +91,9 @@ export interface CensusWorld {
   readonly planet: CensusPlanet;
   readonly survey: CensusSurvey;
   readonly biomeKey: string | null;
+  readonly mix: readonly CensusMixEntry[] | null;
   readonly descent: CensusDescent;
+  readonly rarity: number;
   readonly veins: CensusVeins;
   readonly moons: readonly CensusMoon[];
   readonly row: string;
@@ -87,7 +104,7 @@ export interface CensusSystemEntry {
   readonly system: CensusSystem;
   /** The line of the system itself: everything it holds beside its planets. */
   readonly row: string;
-  /** The worlds counted, in orbit order: all of them, except in the last system of a census. */
+  /** The worlds counted, in orbit order: all of them, except in the last system of a counted census. */
   readonly worlds: readonly CensusWorld[];
 }
 
@@ -99,10 +116,13 @@ export function censusStarSeed(index: number): number {
   return index === 0 ? CENSUS_SOL_SEED : hashInt(CENSUS_STREAM, index - 1, 0);
 }
 
-/** A value as text, the same for equal values whatever order their keys were written in. */
+/** A value as text, the same for equal values whatever order their keys were written in. Null, a missing value
+    and minus zero are each written apart. */
 export function stableText(value: unknown): string {
-  if (value === null || value === undefined) return '~';
-  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  if (value === null) return '~';
+  if (value === undefined) return '?';
+  if (typeof value === 'number') return Object.is(value, -0) ? '-0' : String(value);
+  if (typeof value === 'boolean') return String(value);
   if (typeof value === 'string') return JSON.stringify(value);
   if (Array.isArray(value)) return `[${value.map(stableText).join(',')}]`;
   if (typeof value === 'object') {
@@ -163,25 +183,37 @@ function systemRow(starSeed: number, system: CensusSystem): string {
   ].join('|');
 }
 
-function worldRow(systemLine: string, world: Omit<CensusWorld, 'row'>): string {
+/** A planet's numbers without what the renderer keeps on them: a key that starts with an underscore is a cache
+    (the gas palette `_pal`, LEGACY 2720), written when a world is first drawn and no part of what the world is. */
+function numbersOf(P: Readonly<Record<string, unknown>>): Record<string, unknown> {
+  return Object.fromEntries(Object.entries(P).filter(([key]) => !key.startsWith('_')));
+}
+
+/** A share as text: nine decimals, so the last bit of a power is not in the line. */
+const share = (value: number): string => value.toFixed(9);
+
+function worldRow(systemLine: string, world: Omit<CensusWorld, 'row'>, extras: readonly (readonly [string, unknown])[]): string {
   const { planet, survey, descent, veins } = world;
   const civ = survey.civ;
   return [
     `#${world.ordinal}`,
-    `P=${stableText(planet.P)}`,
+    `P=${stableText(numbersOf(planet.P))}`,
     `name=${stableText(planet.name)}`,
     `orb=${stableText(planet.orb)}`,
     `band=${survey.band}`,
-    `life=${survey.life.key}/${survey.life.level}`,
+    `life=${survey.life.key}/${stableText(survey.life.level)}`,
     `civ=${stableText([civ.civ, civ.wild, civ.name, civ.era?.key, civ.year, civ.pop])}`,
     `biome=${stableText(world.biomeKey)}`,
+    `mix=${world.mix === null ? '~' : world.mix.map(([key, part]) => `${key}:${share(part)}`).join(',')}`,
     `land=${descent.percent}`,
     `damage=${descent.damageMin}-${descent.damageMax}`,
-    `tier=${veins.tier}`,
+    `roll=${world.rarity}`,
+    `tier=${veins.rawTier}/${veins.tier}`,
     `deposits=${veins.deposits.join(',')}`,
     `veins=${stableText([veins.biomeVein, veins.cosmicVein, veins.exceptionalVein])}`,
     `reserve=${veins.reserve}`,
-    `moons=${world.moons.map((moon) => `${moon.type}:${moon.name}`).join(';')}`,
+    `moons=${stableText(world.moons.map((moon) => [moon.type, moon.name]))}`,
+    ...extras.map(([name, value]) => `${name}=${stableText(value)}`),
     systemLine,
   ].join('|');
 }
@@ -191,13 +223,15 @@ function readWorld(sources: CensusSources, starSeed: number, system: CensusSyste
   if (planet === undefined) throw new RangeError(`star ${starSeed} has no planet ${ordinal}`);
   const survey = sources.survey(planet, system);
   const biomeKey = sources.biome(planet, survey.band);
+  const mix = sources.mix(planet, survey.band);
   const descent = sources.descent(planet, system, survey.band);
+  const rarity = sources.rarity(planet);
   const veins = sources.veins(planet, system, survey, biomeKey);
   const count = typeof planet.P.moons === 'number' ? planet.P.moons : 0;
   const moons: CensusMoon[] = [];
   for (let m = 0; m < count; m++) moons.push(sources.moon(planet, m));
-  const world = { starSeed, ordinal, planet, survey, biomeKey, descent, veins, moons };
-  return { ...world, row: worldRow(systemLine, world) };
+  const world = { starSeed, ordinal, planet, survey, biomeKey, mix, descent, rarity, veins, moons };
+  return { ...world, row: worldRow(systemLine, world, sources.extras?.(planet, system, survey) ?? []) };
 }
 
 /** One world of one system, as the census reads it. */
@@ -209,6 +243,20 @@ export function censusWorld(sources: CensusSources, starSeed: number, ordinal: n
 /** The line of one world: every field the census holds, as text. */
 export function censusRow(sources: CensusSources, starSeed: number, ordinal: number): string {
   return censusWorld(sources, starSeed, ordinal).row;
+}
+
+/** One system and every world of it. */
+export function censusSystem(sources: CensusSources, starSeed: number): CensusSystemEntry {
+  const system = sources.system(starSeed);
+  const row = systemRow(starSeed, system);
+  return { starSeed, system, row, worlds: system.planets.map((_planet, ordinal) => readWorld(sources, starSeed, system, ordinal, row)) };
+}
+
+/** The digest of one system: its own line and the line of each of its worlds. */
+export function censusSystemDigest(entry: CensusSystemEntry): string {
+  const digest = new CensusDigest().add(entry.row);
+  for (const world of entry.worlds) digest.add(world.row);
+  return digest.hex();
 }
 
 /** The census's systems in order, until exactly `planets` worlds are read. A system with no planet is still visited. */
@@ -245,17 +293,61 @@ export interface CensusShares {
   readonly systemsWithVisitor: number;
 }
 
+/** How many of the worlds read hit each entry of each table the census touches. */
+export type CensusHits = Readonly<Record<string, Readonly<Record<string, number>>>>;
+
 export interface CensusFingerprint {
   readonly planets: number;
   /** One digest for each thousand worlds, in order; the last may cover fewer. */
   readonly perThousand: readonly string[];
   readonly total: string;
   readonly shares: CensusShares;
+  readonly hits: CensusHits;
 }
 
 const bump = (counts: Record<string, number>, key: string): void => { counts[key] = (counts[key] ?? 0) + 1; };
 const sorted = (counts: Record<string, number>): Record<string, number> =>
   Object.fromEntries(Object.keys(counts).sort().map((key) => [key, counts[key]!]));
+
+/** Counts, table by table, what each world read hit. */
+export class CensusHitCounter {
+  private readonly tables: Record<string, Record<string, number>> = {};
+
+  private hit(table: string, entry: string): void {
+    bump(this.tables[table] ??= {}, entry);
+  }
+
+  system(system: CensusSystem): void {
+    this.hit('star kind', String(system.kind));
+  }
+
+  world(world: CensusWorld): void {
+    const { planet, survey, veins } = world;
+    const type = planet.P.type;
+    this.hit('planet type', type);
+    this.hit('climate band', survey.band);
+    this.hit('life', survey.life.key);
+    this.hit('life of a type in a band', `${type} ${survey.band}: ${survey.life.key}`);
+    if (survey.civ.era) this.hit('civilisation era', survey.civ.era.key);
+    if (survey.civ.pop !== undefined) this.hit('civilisation population', survey.civ.pop);
+    this.hit('biome', `${type}: ${world.biomeKey ?? 'none'}`);
+    this.hit('first-landing odds', String(world.descent.percent));
+    this.hit('damage rung', `${world.descent.damageMin}-${world.descent.damageMax}`);
+    this.hit('rarity roll', String(world.rarity));
+    this.hit('tier before the ring cap', String(veins.rawTier));
+    this.hit('tier', String(veins.tier));
+    this.hit('deposit count', String(veins.deposits.length));
+    for (const symbol of veins.deposits) this.hit('deposit of a type', `${type}: ${symbol}`);
+    if (veins.biomeVein !== null) this.hit('biome vein', veins.biomeVein);
+    if (veins.cosmicVein !== null) this.hit('cosmic vein', veins.cosmicVein);
+    this.hit('exceptional vein', veins.exceptionalVein === null ? 'none' : 'held');
+    for (const moon of world.moons) this.hit('moon type', moon.type);
+  }
+
+  hits(): CensusHits {
+    return Object.fromEntries(Object.keys(this.tables).sort().map((table) => [table, sorted(this.tables[table]!)]));
+  }
+}
 
 /** The fingerprint of the first `planets` worlds. The digests of a smaller census are the first digests of a larger
     one, up to its last whole thousand. `visit` sees every system as it is read. */
@@ -268,6 +360,7 @@ export function censusFingerprint(
   const types: Record<string, number> = {};
   const bands: Record<string, number> = {};
   const starKinds: Record<string, number> = {};
+  const hits = new CensusHitCounter();
   const counts = {
     systems: 0, planets: 0, moons: 0, ringed: 0, systemsWithPlanets: 0, systemsWithBelt: 0, systemsWithOuterRing: 0,
     systemsWithDwarfs: 0, dwarfs: 0, systemsWithComets: 0, comets: 0, systemsWithVisitor: 0,
@@ -277,6 +370,7 @@ export function censusFingerprint(
   for (const entry of censusSystems(sources, planets)) {
     const { system } = entry;
     counts.systems++;
+    hits.system(system);
     bump(starKinds, String(system.kind));
     if (system.planets.length > 0) counts.systemsWithPlanets++;
     if (system.belt) counts.systemsWithBelt++;
@@ -295,6 +389,7 @@ export function censusFingerprint(
       if (world.planet.P.ring === true) counts.ringed++;
       bump(types, world.planet.P.type);
       bump(bands, world.survey.band);
+      hits.world(world);
       chunk.add(world.row);
       if (++inChunk === 1000) {
         perThousand.push(chunk.hex());
@@ -310,5 +405,6 @@ export function censusFingerprint(
     perThousand,
     total: censusDigest(`${counts.planets}:${perThousand.join(',')}`),
     shares: { ...counts, types: sorted(types), bands: sorted(bands), starKinds: sorted(starKinds) },
+    hits: hits.hits(),
   };
 }

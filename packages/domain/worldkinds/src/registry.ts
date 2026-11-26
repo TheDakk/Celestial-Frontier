@@ -35,10 +35,20 @@ export function inSlice(type: WorldTypeDefinition, P: PlanetNumbers, band: strin
   return type.slice !== null && sliceStepsPassed(type, P, band, sol) === type.slice.length;
 }
 
+/** A copy a type cannot write to, all the way down: what the legacy game made is never handed out itself. */
+function shown<T>(value: T): T {
+  if (typeof value !== 'object' || value === null) return value;
+  if (Array.isArray(value)) return Object.freeze(value.map(shown)) as T;
+  return Object.freeze(Object.fromEntries(Object.entries(value).map(([key, inner]) => [key, shown(inner)]))) as T;
+}
+
 function sliceType(
   P: PlanetNumbers, band: string, sol: boolean, switches: WorldSwitches, registry: readonly WorldTypeDefinition[],
 ): WorldTypeDefinition | null {
-  return registry.find((type) => switches[type.key] && inSlice(type, P, band, sol)) ?? null;
+  const asked = registry.filter((type) => switches[type.key] && type.slice !== null);
+  if (asked.length === 0) return null;
+  const copy = shown(P);
+  return asked.find((type) => inSlice(type, copy, band, sol)) ?? null;
 }
 
 /** The new type a planet is of: the first switched-on type whose slice holds it, or null. */
@@ -61,7 +71,10 @@ export function rulesFor(
 export function extraBodies(
   starSeed: number, sys: CensusSystem, switches: WorldSwitches, registry: readonly WorldTypeDefinition[] = WORLD_TYPES,
 ): readonly BodyRecord[] {
-  return registry.flatMap((type) => (switches[type.key] && type.bodies !== null ? type.bodies(starSeed, sys) : []));
+  const asked = registry.filter((type) => switches[type.key] && type.bodies !== null);
+  if (asked.length === 0) return [];
+  const copy = shown(sys);
+  return asked.flatMap((type) => type.bodies!(starSeed, copy));
 }
 
 /** The world of a starless sight of the galaxy map, when a switched-on type makes one. */
