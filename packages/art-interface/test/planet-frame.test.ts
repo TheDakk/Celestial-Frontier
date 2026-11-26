@@ -104,6 +104,9 @@ describe('the night on a globe', () => {
     expect(nightSteps(129, { ux: -3, uy: 0 })).toEqual(nightSteps(129, { ux: -3000, uy: 0 }));
     expect(nightSteps(65, { ux: 2, uy: -2 })).toEqual(nightSteps(65, { ux: 90000, uy: -90000 }));
     expect(nightSteps(65, { ux: 1, uy: 2 })).not.toEqual(nightSteps(65, { ux: 2, uy: 1 }));
+    // Two far lights that mirror each other give nights that mirror each other.
+    const [one, other] = [nightSteps(129, { ux: 16385, uy: 1 }), nightSteps(129, { ux: -16385, uy: -1 })];
+    for (let dy = -64; dy <= 64; dy++) for (let dx = -64; dx <= 64; dx++) expect(one[at(129, dx, dy)]).toBe(other[at(129, -dx, -dy)]);
     expect(new Set(nightSteps(65, NO_LIGHT))).toEqual(new Set([0]));
   });
   it('a frame\'s colours are the made ramps\' and their three night steps, and no other shade', () => {
@@ -182,5 +185,13 @@ describe('a cloud layer over a globe', () => {
     expect(() => globeFrame(surface, undefined, BIG, 0, 0, NO_LIGHT, (rgb) => rgb)).toThrow('a layer 192 by 64 does not fit a globe whose map is 384 by 128');
     expect(() => globeFrame({ ...surface, w: 384, h: 128, values: new Uint8Array(384 * 128).fill(1) }, surface, BIG, 0, 0, NO_LIGHT, (rgb) => rgb)).toThrow('a layer 192 by 64 does not fit a globe whose map is 384 by 128');
     expect(() => globeFrame({ ...surface, values: new Uint8Array(192 * 64).fill(2) }, undefined, SMALL, 0, 0, NO_LIGHT, (rgb) => rgb)).toThrow('a map value of 2 has no colour: its layer has 1');
+    // Any value past the layer's colours, met in daylight low on a globe whose every other value, in every step of
+    // the night, is drawn before it.
+    for (const stray of [3, 4, 5, 6, 7, 8, 9, 255]) {
+      const values = new Uint8Array(192 * 64).fill(1);
+      for (let i = 0; i < 40 * 192; i++) values[i] = 1 + (i & 1);
+      for (let y = 40; y < 64; y++) values[y * 192 + 2] = stray;
+      expect(() => globeFrame({ ...surface, values, colours: [0x808080, 0x404040] }, undefined, SMALL, 0, 0, { ux: 1, uy: 0 }, (rgb) => rgb)).toThrow(`a map value of ${stray} has no colour: its layer has 2`);
+    }
   });
 });

@@ -1,4 +1,5 @@
 import type { GlobeTable } from './planet-globe';
+import { quotient } from './planet-noise';
 import { nightOf } from './planet-ramp';
 import { rootOf } from './space';
 
@@ -27,13 +28,16 @@ const ARCS: readonly (readonly [number, number])[] = [[576, 175], [2059, 1050], 
  * The step of the night at each pixel of a globe `side` wide (odd): 0 in daylight, then 1, 2 and 3, the last the full
  * night; 0 off the disc. A pixel is in a step when it lies outside that step's circle: with `far` how far it is past
  * the middle away from the star and `rim` how far inside the disc's edge its square distance is, that is
- * far * 2 * toward * radius > rim. The way to the star is brought to a length rootOf can measure closely first.
+ * far * 2 * toward * radius > rim. The way to the star is brought to a length rootOf can measure closely first; each
+ * part of it is under 2^31 either side of 0.
  */
 export function nightSteps(side: number, light: GlobeLight): Uint8Array {
   const steps = new Uint8Array(side * side);
   let [ux, uy] = [light.ux, light.uy];
   if (ux === 0 && uy === 0) return steps;
-  while (Math.max(Math.abs(ux), Math.abs(uy)) > 1 << 14) [ux, uy] = [ux >> 1, uy >> 1];
+  // Halved by size and the sign put back, so two lights that mirror each other give nights that do.
+  const halved = (part: number): number => (part < 0 ? -quotient(-part, 2) : quotient(part, 2));
+  while (Math.max(Math.abs(ux), Math.abs(uy)) > 1 << 14) [ux, uy] = [halved(ux), halved(uy)];
   while (Math.max(Math.abs(ux), Math.abs(uy)) < 1 << 7) [ux, uy] = [ux * 2, uy * 2];
   const length = rootOf(ux * ux + uy * uy);
   const r = (side - 1) >> 1;
@@ -53,13 +57,13 @@ export function nightSteps(side: number, light: GlobeLight): Uint8Array {
 /** The colour number of each value of a layer in daylight and in each step of the night, asked of `inks` once each. */
 function inkOf(layer: GlobeLayer, shares: readonly number[], inks: (rgb: number) => number): (value: number, night: number) => number {
   const count = layer.colours.length;
-  const made = new Int32Array(4 * (count + 1)).fill(-1);
+  const made: (number | undefined)[] = [];
   const glows = new Set(layer.glow ?? []);
   return (value, night) => {
-    const known = made[night * (count + 1) + value] ?? -1;
-    if (known >= 0) return known;
-    const day = layer.colours[value - 1];
+    const day = value > count ? undefined : layer.colours[value - 1];
     if (day === undefined) throw new Error(`a map value of ${value} has no colour: its layer has ${count}`);
+    const known = made[night * (count + 1) + value];
+    if (known !== undefined) return known;
     const ink = inks(night === 0 || glows.has(value) ? day : nightOf(day, shares[night - 1] ?? 0, NIGHT_SKY));
     made[night * (count + 1) + value] = ink;
     return ink;
