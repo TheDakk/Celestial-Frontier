@@ -8,3 +8,12 @@ export type {
   CensusSystemEntry, CensusVeins, CensusWorld,
 } from './census.js';
 export { gameCensusSources, surveyOf } from './sources.js';
+export { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPE_KEYS } from './switches.js';
+export type { WorldSwitches, WorldTypeKey } from './switches.js';
+export { ownDraw, ownStream } from './rules.js';
+export type {
+  BodyRecord, LegacyType, PlanetNumbers, RuleBiome, RuleCardRow, SliceStep, SourceStep, WorldRules, WorldTypeDefinition,
+} from './rules.js';
+export { WORLD_TYPES, extraBodies, inSlice, rogueBody, rulesFor, sliceOf, sliceStepsPassed } from './registry.js';
+export { effectiveWorld, legacyFactsOf } from './effective.js';
+export type { EffectiveWorld, LegacyWorldFacts } from './effective.js';

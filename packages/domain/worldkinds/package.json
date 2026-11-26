@@ -8,6 +8,8 @@
   "dependencies": {
     "@cf/domain-descriptors": "*",
     "@cf/domain-ecology": "*",
+    "@cf/domain-landing": "*",
+    "@cf/domain-loot": "*",
     "@cf/domain-opportunity": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-strays": "*",

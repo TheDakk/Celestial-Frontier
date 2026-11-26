@@ -14,6 +14,7 @@ export type {
 } from './roster';
 export { SURVEY_FOLD_BITS, surveyRows } from './survey-folds';
 export type { SurveyCard, SurveyCardItem, SurveyFold, SurveyRow, SurveySummary } from './survey-folds';
+export { WORLD_SWITCHES } from './switches';
 export { LAND_BUTTON, landButtonStep } from './land-button';
 export type { LandButtonPress, LandButtonStep } from './land-button';
 export { deriveSurveyFactV1, prepareSurveySettlementV1 } from './survey-fact';

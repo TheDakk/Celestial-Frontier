@@ -33,6 +33,7 @@
     "@cf/domain-surveyphrases": "*",
     "@cf/domain-worldconfig": "*",
     "@cf/domain-worldgen": "*",
+    "@cf/domain-worldkinds": "*",
     "@cf/persistence": "*",
     "@cf/scene": "*"
   },

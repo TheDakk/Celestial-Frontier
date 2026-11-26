@@ -249,6 +249,52 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     ['a cosmic vein', held.cosmicVein, percent(held.cosmicVein, mine.planets)],
   ]);
 
+  // The new types: each slice of planets step by step, and what each design's source rule counts.
+  const { SWITCHES_OFF, SWITCHES_ON, WORLD_TYPES, sliceStepsPassed } = await import('@cf/domain-worldkinds');
+  const { switchCensus } = await import('../tests/support/census-switches.ts');
+  const steps = new Map(WORLD_TYPES.map((type) => [type.key, new Array((type.slice ?? type.source ?? []).length).fill(0)]));
+  for (const entry of censusSystems(game, planets)) {
+    const sol = entry.system.sol === true;
+    for (const type of WORLD_TYPES) {
+      const counts = steps.get(type.key);
+      if (type.source !== null) type.source.forEach((step, i) => { counts[i] += step.count(entry.starSeed, entry.system); });
+      if (type.slice !== null) for (const world of entry.worlds) {
+        const passed = sliceStepsPassed(type, world.planet.P, world.survey.band, sol);
+        for (let i = 0; i < passed; i++) counts[i]++;
+      }
+    }
+  }
+  const oneIn = (part, whole) => (part === 0 ? 'none' : `1 in ${(whole / part).toFixed(1)}`);
+  console.log(`\nNew world types, switches on (${mine.planets} planets, ${mine.shares.systems} systems; no type has rules yet).`);
+  console.log('A source rule is counted over whole systems, so the last system\'s planets beyond the count are in it.');
+  for (const type of WORLD_TYPES) {
+    const counts = steps.get(type.key);
+    if (type.slice !== null) {
+      table(`${type.label}: a slice of planets`, type.slice.map((step, i) => [step.name, counts[i],
+        `${percent(counts[i], i === 0 ? mine.planets : counts[i - 1])} of ${i === 0 ? 'planets' : 'the step above'}; ${percent(counts[i], mine.planets)} of planets, ${oneIn(counts[i], mine.planets)}`]));
+    } else if (type.source !== null) {
+      table(`${type.label}: what its source rule counts`, type.source.map((step, i) => [step.name, counts[i],
+        `${(counts[i] / mine.shares.systems).toFixed(4)} a system; ${oneIn(counts[i], mine.planets)} planets`]));
+    } else {
+      console.log(`\n${type.label}: not counted by a census of systems`);
+    }
+  }
+  from = process.hrtime.bigint();
+  const on = switchCensus(planets, SWITCHES_ON);
+  const off = switchCensus(planets, SWITCHES_OFF);
+  table(`Every switch on against every switch off, ${seconds(from)} for both`, [
+    ['legacy layer: fingerprint with every switch on', on.legacy.total, on.legacy.total === mine.total ? 'the same as with none' : 'DIFFERS'],
+    ['legacy layer: fingerprint with every switch off', off.legacy.total, off.legacy.total === mine.total ? 'the same' : 'DIFFERS'],
+    ['effective layer: worlds changed outside a slice', on.changedOutside],
+    ['effective layer: worlds changed inside a slice', on.changedInside, 'no type has rules yet'],
+    ['worlds moved with every switch off', off.movedWhenOff + on.movedWhenOff],
+    ['bodies added', on.bodies],
+  ]);
+  if (on.legacy.total !== mine.total || off.legacy.total !== mine.total || on.changedOutside + on.movedWhenOff + off.movedWhenOff > 0) {
+    console.error('a switch MOVED a world outside its slice');
+    process.exit(1);
+  }
+
   if (args.ref) {
     const htmlBytes = readFileSync(join(resolve(args.ref), GAME_HTML));
     const legacy = legacyCensusSources(extractTrackedV1Script(htmlBytes.toString('utf8')));
