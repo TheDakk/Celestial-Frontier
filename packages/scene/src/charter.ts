@@ -223,19 +223,19 @@ function bankGoal(prog: Record<string, number>, goal: AscGoal): boolean {
   return true;
 }
 
-/** Bank one source-proven alien-world life discovery. The app transaction is
+/** Bank one source-proven life discovery. The app transaction is
     responsible for calling this only for the first durable successful
     observation on that complete canonical world; misses, repeats and stale
-    presentation paths never reach this pure counter. Sol is excluded by its
-    exact hierarchy rather than by the globally non-unique planet seed. */
+    presentation paths never reach this pure counter. No place is shut out:
+    the legacy goal `c2-scan` (25232) has no filter, where `c2-land` (25231)
+    has one, so the scan of Earth counts as any other. */
 export function bankBioscan(
   ascCh: number,
   prog: Record<string, number>,
   source: CanonicalCF1WorldAddress,
 ): boolean {
   if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length
-    || !isCanonicalCF1Address(source) || !('planet' in source)
-    || isSolLandfallAddress(source)) return false;
+    || !isCanonicalCF1Address(source) || !('planet' in source)) return false;
   let changed = false;
   for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
     for (const goal of ASC_CHAPTERS_DATA[ci]!.goals) {
@@ -348,7 +348,7 @@ export function chapterGoalsDone(ascCh: number, prog: Record<string, number>): b
 }
 
 /* The playable Phase-4 slice has exact landfall, mining, fixed-fabrication,
-   successful-breeding and first-successful-alien-world bioscan goal writers. Imported chapter
+   successful-breeding and first-successful bioscan goal writers. Imported chapter
    reconciliation may acknowledge already-proven progress, but creates no
    goal credit, drive, reward, or reach. Keep that capability boundary in the
    pure scene layer so the board, objective chip and chapter-advance seam

@@ -172,15 +172,16 @@ describe('what a completed scan leads to', () => {
     expect(state.unlocked).not.toContain('civ');
   });
 
-  it('the first scan moves the accepted Discover-life Charter and, away from Sol, the Ascent; in training neither', async () => {
+  it('the first scan moves the accepted Discover-life Charter and the Ascent, on Earth as on any world; in training neither', async () => {
     const civilized = CIVILIZED();
     const page = await carePage({ sessionSeed: clearSession(), change: (state) => { state.chacc = ['st-scan']; state.landed = [civilized.planet.seed]; } });
     const home = await committed(page.scan(EARTH));
     expect(home.facts.charters).toEqual({ progressIds: ['st-scan'], completedIds: ['st-scan'] });
     expect(home.state.chDone).toContain('st-scan');
-    expect(home.state.ascProg['c2-scan']).toBeUndefined();
+    // LEGACY 25232: `c2-scan` has no place filter (its neighbour `c2-land`, 25231, has one), so Earth's scan is 1 of 2.
+    expect(home.state.ascProg['c2-scan']).toBe(1);
     const away = await committed(page.scan(civilized));
-    expect(away.state.ascProg['c2-scan']).toBe(1);
+    expect(away.state.ascProg['c2-scan']).toBe(2);
 
     const training = await carePage({ sessionSeed: clearSession(), change: (state) => { state.tutDone = false; state.chacc = ['st-scan']; } });
     const lesson = await committed(training.scan(EARTH));

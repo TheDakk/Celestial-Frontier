@@ -497,12 +497,15 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(isSolLandfallAddress(earth)).toBe(true);
     expect(isSolLandfallAddress(foreignSameLeaf)).toBe(false);
     expect(bankLandfall(0, {}, foreignSameLeaf)).toBe(false);
-    /* Bioscan banking accepts only a registered non-Sol hierarchy. Lifetime
-       first-success uniqueness belongs to the atomic Arc 4 caller. */
+    /* Bioscan banking has no place filter: the legacy goal `c2-scan` (25232)
+       carries none, where its neighbour `c2-land` (25231) shuts out Sol, so
+       Earth's scan counts. Lifetime first-success uniqueness belongs to the
+       caller. */
     const scanProgress: Record<string, number> = {};
-    expect(bankBioscan(0, scanProgress, earth)).toBe(false);
-    expect(bankBioscan(0, scanProgress, foreignResult.address)).toBe(true);
+    expect(bankBioscan(0, scanProgress, earth)).toBe(true);
     expect(scanProgress['c2-scan']).toBe(1);
+    expect(bankBioscan(0, scanProgress, foreignResult.address)).toBe(true);
+    expect(scanProgress['c2-scan']).toBe(2);
     expect(bankBioscan(0, { 'c2-scan': 2 }, foreignResult.address)).toBe(false);
     expect(bankBioscan(0, {}, foreignSameLeaf)).toBe(false);
     /* Breeding parity is the legacy `{ ok: true }` filter: only a successful
