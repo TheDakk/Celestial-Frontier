@@ -136,6 +136,149 @@ function cutUnique(text, start, end) {
   return text.slice(i, j + end.length);
 }
 
+/* ---- the v1 capture: Tame, Scavenge, Sample and the Yield pool ---- */
+
+/** Runs the v1 capture rules over species the cases describe as {seed, kingdom, tier}. */
+function recordLegacyCapture(script) {
+  const v1 = new Function('Math', 'describeSpecies', 'ringGrade', 'regionAt', '_equipBonus', 'discoverSpecies', 'gameEvent', 'toast', 'queueSave', `
+    const codex=new Map(); let COSMIC_EPOCH=0, _panelKey=null;
+    const HOME_GAL_SEED=999; const SOL_POS={x:560,y:170}; const GR=1200; const ASC_RING_R=GR*0.25;
+    ${cutUnique(script, 'function clamp(v,a,b){', '}')}
+    ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+    ${cutUnique(script, 'function hashInt(seed,x,y){', 'return h>>>0;\n}')}
+    ${cutUnique(script, 'function codexId(g){', '}')}
+    ${cutUnique(script, 'const TAME_ODDS=[', '];')}
+    ${cutUnique(script, 'function _captureRing(where){', 'catch(_){ return 0; }\n}')}
+    ${cutUnique(script, 'function captureOdds(g, d, kind){', 'return clamp(base + gear, 0.02, 0.95);\n}')}
+    ${cutUnique(script, 'function _captureKind(kind){', "pressed into your Compendium.'};\n}")}
+    ${cutUnique(script, 'const bioX=new Map();', ';')}
+    ${cutUnique(script, 'function bioPool(d){', '3, 16);\n}')}
+    ${cutUnique(script, 'function _bioUsed(seed){', 'return e?e[0]:0;\n}')}
+    ${cutUnique(script, 'function bioLeft(d){', '}')}
+    ${cutUnique(script, 'function tryCapture(d, kind){', "the biosphere is worked out.'));\n  }\n}")}
+    return {
+      captureOdds, _captureRing, bioPool, _bioUsed, bioLeft, tryCapture, _captureKind,
+      set(o){ codex.clear(); for(const id of o.codex||[]) codex.set(id, {id}); bioX.clear(); for(const [seed, row] of o.bioX||[]) bioX.set(seed, [...row]); COSMIC_EPOCH=o.epoch||0; },
+      catalogue(g){ codex.set(codexId(g), {id:codexId(g)}); },
+      epoch(n){ COSMIC_EPOCH=n; },
+      bioX(seed){ const row=bioX.get(seed); return row?[...row]:null; },
+    };`);
+  let randoms = [];
+  let region = 0;
+  let contact = 0;
+  let caught = null;
+  let events = [];
+  let toasted = null;
+  const math = Object.create(Math);
+  math.random = () => {
+    if (randoms.length === 0) throw new Error('a random value was drawn that the case did not supply');
+    return randoms.shift();
+  };
+  let game = null;
+  game = v1(math,
+    (g) => ({ name: `Species ${g.seed}`, grade: { tier: g.tier } }),
+    (g, grade) => grade,
+    () => region,
+    (key) => (key === 'contact' ? contact : 0),
+    (g) => { caught = g.seed; game.catalogue(g); },
+    (type) => { events.push(type); },
+    (title, text) => { toasted = [title, text]; },
+    () => {});
+  const HOME = { seed: 999, x: 90, y: -60 };
+  const WHERE = {
+    // ring 0: the home galaxy, within the Neighborhood of Sol; ring 1: the home galaxy beyond it;
+    // rings 2 to 5: another galaxy, in the region the recorder supplies (regionAt is the recorder's).
+    0: { gal: HOME, star: { x: 560, y: 170 } },
+    1: { gal: HOME, star: { x: 560 + 301, y: 170 } },
+    2: { gal: { seed: 5, x: 1, y: 1 } }, 3: { gal: { seed: 5, x: 1, y: 1 } }, 4: { gal: { seed: 5, x: 1, y: 1 } }, 5: { gal: { seed: 5, x: 1, y: 1 } },
+  };
+  const where = (ring) => { region = Math.max(0, ring - 2); return WHERE[ring]; };
+  const cases = [];
+
+  // odds: captureOdds for every verb, tier 0 to 16 (the table has 15 rows), ring 0 to 5, and worn contact points.
+  for (const kind of ['tame', 'scavenge', 'sample']) for (let tier = 0; tier <= 16; tier++) for (let ring = 0; ring <= 5; ring++) for (const points of [0, 1, 5, 16, 17, 40]) {
+    contact = points;
+    cases.push({ group: 'odds', input: { kind, tier, ring, contact: points }, output: game.captureOdds({ seed: 1, tier }, { where: where(ring) }, kind) });
+  }
+  contact = 0;
+  // ring: _captureRing on and beside the Neighborhood's edge, with no place, and in each outer region (a region
+  // outside 0..3 is held to it).
+  for (const [name, place] of [
+    ['none', null], ['no-galaxy', {}], ['sol', WHERE[0]], ['edge', { gal: HOME, star: { x: 560 + 300, y: 170 } }],
+    ['beyond', { gal: HOME, star: { x: 560 + 300.001, y: 170 } }], ['home-no-star', { gal: HOME }],
+  ]) cases.push({ group: 'ring', input: { name }, output: game._captureRing(place) });
+  for (const r of [-1, 0, 1, 2, 3, 4]) { region = r; cases.push({ group: 'ring', input: { name: 'region', region: r }, output: game._captureRing(WHERE[2]) }); }
+
+  // pool: bioPool for 200 world seeds and every species count from 0 to 19.
+  for (let seed = 131; seed < 331; seed++) {
+    const output = [];
+    for (let count = 0; count <= 19; count++) output.push(game.bioPool({ planetSeed: seed, species: Array.from({ length: count }, (_, i) => ({ seed: i })) }));
+    cases.push({ group: 'pool', input: { seed }, output });
+  }
+  // used: _bioUsed and bioLeft for a stored row [used, stamp] read at an epoch; output is [used, left, the row after].
+  for (const [used, stamp, epoch] of [[0, 0, 0], [3, 0, 0], [3, 0, 1], [3, 2, 2], [3, 2, 5], [3, 5, 2], [20, 0, 0], [null, 0, 4]]) {
+    game.set({ bioX: used === null ? [] : [[133, [used, stamp]]], epoch });
+    const d = { planetSeed: 133, species: Array.from({ length: 19 }, (_, i) => ({ seed: i })) };
+    cases.push({ group: 'used', input: { used, stamp, epoch, species: 19 }, output: [game._bioUsed(133), game.bioLeft(d), game.bioX(133)] });
+  }
+
+  /** One press of tryCapture; the output is [caught species seed or null, bioX row after or null, toast or null,
+      events said, random values left unread]. */
+  const press = (d, kind, values) => {
+    randoms = [...values]; caught = null; events = []; toasted = null;
+    game.tryCapture(d, kind);
+    return [caught, game.bioX(d.planetSeed), toasted, events, randoms.length];
+  };
+  // Earth's roster by kingdom, in its order (6 flora, 2 fungi, 3 microbes, 8 fauna), every tier 0.
+  const EARTH = ['flora', 'flora', 'flora', 'flora', 'flora', 'flora', 'fungi', 'fungi', 'microbe', 'microbe', 'microbe', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna'];
+  const roster = (kingdoms, tier = 0) => kingdoms.map((kingdom, i) => ({ seed: 1000 + i, kingdom, tier }));
+  const world = (species) => ({ planetSeed: 133, species, planetName: 'Earth', where: WHERE[0] });
+  // press: one press on Earth's roster, for each verb, with part of the roster already in the Compendium, a
+  // pick value across the pool and a success value that always hits (0) or always misses (0.999).
+  const KNOWN = [[], [11], [11, 12, 13], [0, 1, 6], [8], [11, 12, 13, 14, 15, 16, 17], [11, 12, 13, 14, 15, 16, 17, 18], [0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10]];
+  for (const kind of ['fauna', 'flora', 'microbe']) for (const known of KNOWN) for (const pick of [0, 0.124, 0.125, 0.34, 0.5, 0.75, 0.999]) for (const success of [0, 0.999]) {
+    const species = roster(EARTH);
+    game.set({ codex: known.map((i) => 's' + species[i].seed), bioX: [], epoch: 0 });
+    cases.push({ group: 'press', input: { kind, kingdoms: EARTH, known, used: 0, pick, success }, output: press(world(species), kind, [pick, success]) });
+  }
+  // worked-out: the pool's last attempt, and a press on a spent world; a press with every species known on a spent world.
+  for (const kind of ['fauna', 'flora', 'microbe']) {
+    const species = roster(EARTH);
+    const size = game.bioPool(world(species));
+    for (const [used, known] of [[size - 1, []], [size, []], [size + 2, []], [size, species.map((_, i) => i)], [size - 2, []]]) for (const success of [0, 0.999]) {
+      game.set({ codex: known.map((i) => 's' + species[i].seed), bioX: [[133, [used, 0]]], epoch: 0 });
+      cases.push({ group: 'worked-out', input: { kind, kingdoms: EARTH, known, used, pool: size, pick: 0.5, success }, output: press(world(species), kind, [0.5, success]) });
+    }
+  }
+  // edge: the success value on and beside the odds, for one species of each tier. Output is [odds, caught or null].
+  for (const kind of ['fauna', 'flora', 'microbe']) for (const tier of [0, 1, 4, 9, 14]) {
+    const verb = { fauna: 'tame', flora: 'scavenge', microbe: 'sample' }[kind];
+    const species = [{ seed: 7, kingdom: kind, tier }];
+    const odds = game.captureOdds(species[0], world(species), verb);
+    for (const success of [odds - 1e-9, odds, odds + 1e-9]) {
+      game.set({ codex: [], bioX: [], epoch: 0 });
+      cases.push({ group: 'edge', input: { kind, tier, success }, output: [odds, press(world(species), kind, [0, success])[0]] });
+    }
+  }
+  // chain: presses one after another on one world, the Compendium and the pool carried from each to the next.
+  // `turn` raises the epoch before the press. Output per press as in `press`.
+  const CHAINS = [
+    { kinds: ['fauna', 'fauna', 'fauna', 'flora', 'microbe', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna', 'fauna'], values: [[0, 0], [0, 0], [0.999, 0.999], [0.5, 0], [0, 0], [0.999, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], turn: [] },
+    { kinds: ['microbe', 'microbe', 'microbe', 'microbe', 'flora', 'flora'], values: [[0.9, 0], [0.9, 0], [0.9, 0], [0, 0], [0.99, 0.999], [0.99, 0]], turn: [4] },
+  ];
+  for (const chain of CHAINS) {
+    const species = roster(EARTH);
+    game.set({ codex: [], bioX: [], epoch: 0 });
+    let epoch = 0;
+    const output = chain.kinds.map((kind, step) => {
+      if (chain.turn.includes(step)) game.epoch(++epoch);
+      return press(world(species), kind, chain.values[step]);
+    });
+    cases.push({ group: 'chain', input: { kingdoms: EARTH, ...chain }, output });
+  }
+  return cases;
+}
+
 /* ---- the v1 descent, shared by its two recorders ---- */
 
 /** Runs the v1 descent rules. `edges` false: the cases of landing-descent. true: those of landing-descent-edges. */
@@ -551,6 +694,12 @@ export const recorders = {
       }
       return cases;
     },
+  },
+  'capture-press': {
+    test: 'apps/game/test/capture-legacy.test.ts',
+    kind: 'outputs',
+    taken: 'The v1 capture rules, run with new Function over unique script slices: clamp, mulberry32, hashInt, codexId, TAME_ODDS, _captureRing, captureOdds, _captureKind, bioX, bioPool, _bioUsed, bioLeft, tryCapture. Supplied by the recorder: Math (the real one with random replaced by the case\'s queue of values), describeSpecies (a name and the grade {tier} the case gives the species), ringGrade (the grade unchanged), regionAt (the case\'s region), _equipBonus (the case\'s contact points), HOME_GAL_SEED 999, SOL_POS {560,170} and ASC_RING_R 300 (GR 1200 × 0.25) as the script declares them, discoverSpecies (notes the species and puts its id in the Compendium), gameEvent, toast, queueSave, and the containers the script declares beside them (codex, COSMIC_EPOCH, _panelKey). Species are {seed, kingdom, tier}. Groups, in order. odds: captureOdds per verb, tier, ring and worn contact points. ring: _captureRing for the named place. pool: bioPool for a world seed and each species count 0..19. used: for a stored row [used, stamp] read at an epoch, [_bioUsed, bioLeft, the row after]. press: one tryCapture on a roster of the input\'s kingdoms (species i has seed 1000+i and tier 0) with the roster indices in `known` already in the Compendium and the two random values pick then success; output is [caught species seed or null, the bioX row after or null, toast as [title, text] or null, events said, random values left unread]. worked-out: the same with `used` attempts already spent of a pool of `pool`. edge: one species of the input\'s tier with a success value on and beside the odds; output is [odds, caught seed or null]. chain: presses in order on one roster, the Compendium and pool carried on; before a step listed in `turn` the epoch rises by one; output is one press output per step.',
+    record: ({ script }) => recordLegacyCapture(script),
   },
   'landing-descent': {
     test: 'apps/game/test/descent-policy.test.ts',
