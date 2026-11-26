@@ -84,7 +84,10 @@ export interface SaveStateV2 {
   salvageConfirm: boolean; notifOn: boolean; tipsOn: boolean;
   sfxVol: number; glassTint: number; motionMode: number; cardExpand: number;
   notifications: Array<{ id: number; tt: string; ms: string; t: number; read: boolean }>;
-  surveyedSet: string[]; galSeen: unknown[]; surfSeen: unknown[]; xpFirsts: string[];
+  /** The worlds whose biosphere was scanned: planet seeds (numbers), as the legacy game added them (14889).
+   * The reader keeps whatever a save held, so an entry is read with `Number(...)`. */
+  surveyedSet: unknown[];
+  galSeen: unknown[]; surfSeen: unknown[]; xpFirsts: string[];
   /** Optional v5 overflow binding mirrored into the additive v4 `xpa` field.
    * Older saves omit it. Once present, the matching v5 extension is required;
    * silently treating a lost extension as an old save would re-arm XP. */
@@ -646,8 +649,8 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (n && n.tt != null && notifications.length < 60)
         notifications.push({ id: num(n.id) | 0, tt: String(n.tt).slice(0, 200), ms: String(n.ms == null ? '' : n.ms).slice(0, 400), t: clamp(num(n.t), 0, 4e12) || now, read: !!n.read });
     }
-    const surveyedSet = new Set<string>();
-    for (const s of _capA(data.surveyed, 60000)) surveyedSet.add(s as string);
+    const surveyedSet = new Set<unknown>();
+    for (const s of _capA(data.surveyed, 60000)) surveyedSet.add(s);
     stats.surveys = surveyedSet.size;
     const galSeen = new Set<unknown>(); for (const s of _capA(data.gals, 20000)) galSeen.add(s);
     const surfSeen = new Set<unknown>(); for (const s of _capA(data.surf, 60000)) surfSeen.add(s);
@@ -689,7 +692,10 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (codex.has(id)) continue;                     /* _storeSpecies: first sighting wins */
       const d = describeSpecies(g);
       const grade = ringGrade(g as never, d.grade as never, where) as { tier?: number } | null;
-      let name = d.name;
+      /* _storeSpecies 14774: the cradle's real names carry into the Compendium.
+         The genome keeps its Earth name in the save, so the format is unmoved. */
+      const earthName = (g as { _earthName?: unknown })._earthName;
+      let name = typeof earthName === 'string' && earthName.length > 0 ? earthName : d.name;
       const cn = customNames.get('c' + id);
       if (cn) name = cn;
       /* realmModifiers/ecologyRole/realmBiome are computed by _storeSpecies

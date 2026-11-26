@@ -486,6 +486,33 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
       if (imported.ok) expect(imported.state.frontierEnding).toBeNull();
     }
   });
+  it('a page whose genome holds an Earth name is named by it; the player\'s own name for it still wins', () => {
+    /* LEGACY `_storeSpecies` 14774: `if(g._earthName) d.name=g._earthName`, then the custom name (14796-14797).
+       The legacy reader runs that function for every stored page (16839). */
+    const template = structuredClone(
+      ((FX.inputs.veteran_rich as { codex: Array<{ g: Record<string, unknown> }> }).codex[0]!.g),
+    );
+    const codex = [
+      { g: { ...template, seed: 7100001, _earthName: 'Civet' } },
+      { g: { ...template, seed: 7100002, _earthName: 'Otter' } },
+      { g: { ...template, seed: 7100003 } },
+      { g: { ...template, seed: 7100004, _earthName: '' } },
+    ];
+    const imported = importSaveV2(JSON.stringify({ epoch: 0, codex, land: [], names: [['cs7100002', 'Rex']] }), REGISTRY, NOW);
+    expect(imported.ok).toBe(true);
+    if (!imported.ok) return;
+    const pages = new Map(imported.state.codex);
+    const procedural = pages.get('s7100003')!.name;
+    expect(pages.get('s7100001')!.name).toBe('Civet');
+    expect(pages.get('s7100002')!.name).toBe('Rex');
+    expect(procedural).not.toBe('Civet');
+    expect(procedural.length).toBeGreaterThan(0);
+    expect(pages.get('s7100004')!.name.length).toBeGreaterThan(0);
+    /* The format does not move: the stored page is still its genome, origin and place, and reads back the same. */
+    const again = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+    expect(again.ok && new Map(again.state.codex).get('s7100001')!.name).toBe('Civet');
+    expect((JSON.parse(exportSaveV2(imported.state, NOW)) as { codex: unknown[] }).codex[0]).toEqual({ g: pages.get('s7100001')!.g, f: 'Unknown world', w: null });
+  });
   it('valid unwrapped size is an import/export fixed point across honest and large values', () => {
     const template = structuredClone(
       ((FX.inputs.veteran_rich as { codex: Array<{ g: Record<string, unknown> }> }).codex[0]!.g),

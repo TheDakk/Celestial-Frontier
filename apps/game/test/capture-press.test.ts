@@ -91,6 +91,8 @@ describe('a press is one committed receipt', () => {
     expect(stored.codex[0]![0]).toBe(`s${row.seed as number}`);
     expect(stored.codex[0]![1].g).toMatchObject({ seed: row.seed, kingdom: 'fauna' });
     expect(facts.name).toBe(row._earthName);
+    // The page read back from storage is named the same (LEGACY 14774: the reader names it from the genome's Earth name).
+    expect(stored.codex[0]![1].name).toBe(row._earthName);
     expect(stored.bioX).toEqual([[SOL.earth, [1, 0]]]);
     expect(facts.left).toBe(15);
     // The carrier and the state agree, and the carrier holds one creature.
