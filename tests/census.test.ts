@@ -124,6 +124,40 @@ describe('the census of seeded worlds', () => {
       expect(entries('tier').map(Number).sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
       expect(Object.values(hits['cosmic vein']!).reduce((a, b) => a + b, 0)).toBe(6);
     });
+
+    it('every outcome of every rule of life (LEGACY 4944-4967), the rarest twice', () => {
+      const table = hits['life of a type in a band']!;
+      const hit = (type: string, bands: readonly string[], level: string): number => bands.reduce((n, band) => n + (table[`${type} ${band}: ${level}`] ?? 0), 0);
+      const any = ['temperate', 'cold', 'hot', 'frozen'];
+      const rules: [string, readonly string[], readonly string[]][] = [
+        ['terran', ['temperate'], ['complex', 'flora']],
+        ['terran', ['cold'], ['sparse', 'flora', 'microbial']],
+        ['terran', ['hot'], ['sparse', 'microbial', 'none']],
+        ['terran', ['frozen'], ['none']],
+        ['ocean', ['temperate'], ['aquatic', 'flora']],
+        ['ocean', ['cold'], ['aquatic', 'subsurface']],
+        ['ocean', ['hot'], ['xfauna', 'microbial', 'none']],
+        ['ocean', ['frozen'], ['none']],
+        ['desert', ['temperate'], ['sparse', 'xfauna', 'microbial']],
+        ['desert', ['cold', 'hot', 'frozen'], ['sparse', 'xfauna', 'microbial']],
+        ['ice', any, ['xfauna', 'subsurface', 'microbial', 'none']],
+        ['rocky', any, ['xfauna', 'microbial', 'none']],
+        ['venus', any, ['xfauna', 'aerial', 'none']],
+        ['lava', any, ['xfauna', 'microbial', 'none']],
+        ['gas', any, ['xfauna', 'aerial', 'none']],
+      ];
+      let fewest = Infinity;
+      for (const [type, bands, levels] of rules) for (const level of levels) {
+        const count = hit(type, bands, level);
+        expect(count, `${type} ${bands.join('/')} ${level}`).toBeGreaterThanOrEqual(2);
+        fewest = Math.min(fewest, count);
+      }
+      // A magma-sea beast: 4 lava worlds in 10,000.
+      expect(fewest).toBe(hit('lava', any, 'xfauna'));
+      // Sol is barren but for Earth: Mars is the one temperate desert with no life.
+      expect(table['desert temperate: none']).toBe(1);
+      expect(table['terran temperate: earth']).toBe(1);
+    });
   });
 
   describe('proved both ways with a stand-in biome table', () => {
