@@ -48,4 +48,4 @@ export type {
 export { JOURNAL_MAX_ROWS, JOURNAL_NAME_MAX, JOURNAL_REGION_MAX } from './landing-mirror';
 export type { LandingCharterStageV1, LandingCharterStagerV1 } from './landing-mirror';
 export { LANDING_ACTION, commitLandingActionV1, operationForLandingV1, settleLandingV1 } from './landing-action';
-export type { LandingActionInputV1, LandingActionOutcomeV1, LandingAuthorityV1, LandingDoorV1, LandingSettleDepsV1 } from './landing-action';
+export type { LandingActionInputV1, LandingActionOutcomeV1, LandingAuthorityV1, LandingDoorV1, LandingSettleDepsV1, LandingWorldRulesV1 } from './landing-action';

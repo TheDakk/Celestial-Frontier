@@ -55,14 +55,24 @@ export interface WorldRules {
     readonly floor?: number;
     readonly fixed?: { readonly p: number; readonly lo: number; readonly hi: number };
   } | null;
+  /** The base weather of the descent: the parent type's, none, or one named. */
   readonly weather: 'parent' | 'none' | WeatherToken;
-  readonly landFamily: LandingFamily;
+  /** The worn landing gear tuned to this world: the parent type's family (none for most types), or one named. */
+  readonly landFamily: LandingFamily | 'parent';
   readonly hazard: LegacyType;
+  /** 'parent' keeps the legacy life; a rule is given the one value the legacy life roll reads first and the band, and
+      gives a life key, or 'parent' where it changes nothing (see play.ts). */
   readonly life: 'parent' | 'none' | ((v: number, band: string) => string);
+  /** The type's own deposit list, picked from by the legacy picker on the legacy stream (LEGACY 21260-21265). */
   readonly deposits: readonly string[] | 'parent';
+  /** How many are picked, where the type fixes it; the legacy count is 3 to 5 (21263). */
   readonly depositCount?: number;
-  readonly trickle?: { readonly material: string | 'core'; readonly chance: number; readonly ownsStrike: boolean };
+  /** One unit of a named material on `chance` of pulls, read on the roll every pull already spends (21451); with
+      `ownsStrike` the rich strike is that material too, as on a biome-vein world (21457). */
+  readonly trickle?: { readonly material: string; readonly chance: number; readonly ownsStrike: boolean };
+  /** The legacy reserve (21410) times this, rounded. */
   readonly reserveMul: number;
+  /** The tier the veins and the reserve are worked out at, where the type fixes it at 0. */
   readonly tierFixed?: 0;
   readonly card: { readonly rows: readonly RuleCardRow[]; readonly replace: readonly string[] };
 }

@@ -296,6 +296,7 @@ function buildRoster(
   candidate: unknown,
   ecologyEpochValue: unknown,
   sources: WorldRosterSources,
+  rules: WorldLifeRules | null,
 ): WorldRosterBuildResult {
   if (!isCanonicalCF1Address(candidate) || !('planet' in candidate)
     || candidate.key !== getProvenPlanetKey(candidate.planet)) {
@@ -333,7 +334,7 @@ function buildRoster(
     if (!bio || typeof bio.key !== 'string' || !bio.key) {
       throw new TypeError('biosphere source returned a malformed key');
     }
-    const biosphereKey = canonicalBiosphereKey(bio.key, planet.seed);
+    const biosphereKey = canonicalBiosphereKey(rules === null || rules.lifeKey === 'parent' ? bio.key : rules.lifeKey, planet.seed);
     const biome = canonicalBiomePresentation(
       planet.P as { seed: number; type?: string },
       band,
@@ -390,11 +391,16 @@ function buildRoster(
   }
 }
 
+/** What a new world type's rules change of a world's life: its life key; 'parent' keeps the legacy game's. */
+export interface WorldLifeRules { readonly lifeKey: string }
+
+/** `rules` are a new world type's for this world; with none it is the legacy game's life. */
 export function canonicalWorldRoster(
   address: CanonicalCF1WorldAddress,
   ecologyEpoch: number,
+  rules: WorldLifeRules | null = null,
 ): CanonicalWorldRosterResult {
-  const built = buildRoster(address, ecologyEpoch, SOURCES);
+  const built = buildRoster(address, ecologyEpoch, SOURCES, rules);
   if (!built.ok) return built;
   const roster = built.roster as CanonicalWorldRoster;
   CANONICAL_WORLD_ROSTERS.add(roster);
@@ -407,7 +413,7 @@ export function canonicalWorldRosterForDiagnostics(
   ecologyEpoch: unknown,
   sources: WorldRosterSources,
 ): DiagnosticWorldRosterResult {
-  const built = buildRoster(address, ecologyEpoch, sources);
+  const built = buildRoster(address, ecologyEpoch, sources, null);
   if (!built.ok) return built;
   const roster: DiagnosticWorldRoster = Object.freeze({
     ...built.roster,

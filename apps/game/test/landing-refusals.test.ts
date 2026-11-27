@@ -4,13 +4,14 @@ import { describe, expect, it } from 'vitest';
 import { commitLandingActionV1, type LandingAuthorityV1, type LandingTransactionV1 } from '../src/landing';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { applyV5ExtensionWrites, prepareDescentWaveOffMutationV1 } from '@cf/persistence';
+import { worldRulesAt } from '../src/world';
 import { LEASE_TTL_MS, REGISTRY, createSaveRuntime } from '../src/save/index';
 import { SOL, landingPage, landingSession, solWorld, waveOffSession, type LandingPage } from './landing-support';
 import { NOW, dump } from './save-support';
 
 type Committed = Extract<LandingTransactionV1, { readonly kind: 'committed' }>;
 const direct = (page: LandingPage, seed: number, runtime: LandingAuthorityV1 = page.runtime) => commitLandingActionV1({
-  runtime, state: page.durable(), address: solWorld(seed), worldName: 'A world', view: 1, codecNow: NOW, charters: stageStarterCharterEventV1,
+  runtime, state: page.durable(), address: solWorld(seed), worldName: 'A world', view: 1, codecNow: NOW, charters: stageStarterCharterEventV1, rules: worldRulesAt,
 });
 
 describe('a landing that cannot be stored changes nothing', () => {
@@ -83,7 +84,7 @@ describe('a landing that cannot be stored changes nothing', () => {
     const before = await dump(page.backend);
     const outcome = await commitLandingActionV1({
       runtime: page.runtime, state: { ...page.durable(), items: [['headlamp', 1]] }, address: solWorld(SOL.earth),
-      worldName: 'Earth', view: 1, codecNow: NOW, charters: stageStarterCharterEventV1,
+      worldName: 'Earth', view: 1, codecNow: NOW, charters: stageStarterCharterEventV1, rules: worldRulesAt,
     });
     expect(outcome).toMatchObject({ kind: 'refused', detail: 'gear:mirror-diverged' });
     expect(await dump(page.backend)).toEqual(before);

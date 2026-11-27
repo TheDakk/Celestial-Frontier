@@ -15,7 +15,7 @@
    from them, which stores the same thing with one staging. What a landing writes is in `landing-mirror.ts`; what
    its receipt says, and the check after storage, in `landing-receipt.ts`. */
 import { sha256Hex } from '@cf/domain-acquisition';
-import { projectWorldOpportunity, type FieldSampleLandingAuthority, type WorldOpportunitySnapshot } from '@cf/domain-opportunity';
+import { projectWorldOpportunity, type FieldSampleLandingAuthority, type WorldOpportunityRules, type WorldOpportunitySnapshot } from '@cf/domain-opportunity';
 import {
   arc2LootLegacyMirrorMatches,
   loadDescentWaveOffAuthorityV1,
@@ -33,7 +33,7 @@ import type { CanonicalCF1WorldAddress } from '@cf/scene';
 import type { Bus } from '../bus';
 import type { GameEvents } from '../events';
 import { DESCENT_OUTCOME_DOMAINS_V1, projectDescentApproachV1, resolveDescentAttemptV1, type DescentOutcomeDrawV1 } from './descent-policy';
-import { descentStormActive } from './descent-weather';
+import { descentStormActive, type WeatherRules } from './descent-weather';
 import { LandingRefusal, stageLanded, stageWaveOff, type LandingCharterStagerV1, type LandingStageInputV1 } from './landing-mirror';
 import {
   LANDING_RECEIPT_KIND_V1,
@@ -77,7 +77,13 @@ export interface LandingActionInputV1 {
   readonly codecNow: number;
   /** The guidance system's staging of a deed against the accepted Charters. */
   readonly charters: LandingCharterStagerV1;
+  /** The world system's rules for a world. */
+  readonly rules: LandingWorldRulesV1;
 }
+
+/** The rules a world plays by, as the world system gives them (`worldRulesAt`): a new world type's, or null for the
+    legacy rules. */
+export type LandingWorldRulesV1 = (address: CanonicalCF1WorldAddress) => (WorldOpportunityRules & WeatherRules) | null;
 
 export type LandingActionOutcomeV1 =
   | Readonly<{ kind: 'committed'; state: SaveStateV2; facts: LandingFactsV1; transaction: LandingCommittedV1 }>
@@ -97,7 +103,7 @@ interface Approach {
 
 /** The carriers a descent reads, and the approach they give at this moment of active play. Raises a
     `LandingRefusal` when one of them cannot be read. */
-function approach(address: CanonicalCF1WorldAddress, state: SaveStateV2, extensions: V5Extensions, activePlayMs: number): Approach {
+function approach(address: CanonicalCF1WorldAddress, rulesOf: LandingWorldRulesV1, state: SaveStateV2, extensions: V5Extensions, activePlayMs: number): Approach {
   const identity = readWorldIdentity(extensions);
   if (identity.kind !== 'loaded') throw new LandingRefusal(`world-identity:${identity.kind}`);
   const loadout = readArc2EngineeringLoadout(extensions);
@@ -109,14 +115,15 @@ function approach(address: CanonicalCF1WorldAddress, state: SaveStateV2, extensi
   // Landed already, exactly or by the seed alone as an imported save holds it (the legacy set is by seed).
   const landing: FieldSampleLandingAuthority = worldIdentityRecord(identity.state, address)?.landed === true ? 'repeat'
     : identity.state.unresolved.some((row) => row.seed === address.planet.seed && row.landed) ? 'unresolved-already-landed' : 'first';
-  const opportunity = projectWorldOpportunity(address);
+  const rules = rulesOf(address);
+  const opportunity = projectWorldOpportunity(address, rules);
   const { planetType, climateBand } = opportunity.source;
   const policy = projectDescentApproachV1({
     address,
     opportunity,
     capabilities: loadout.capabilities,
     waveOffs: waveOffs.state,
-    stormActive: descentStormActive({ seed: address.planet.seed, type: planetType }, climateBand, activePlayMs / 1000),
+    stormActive: descentStormActive({ seed: address.planet.seed, type: planetType }, climateBand, activePlayMs / 1000, rules),
     reinforcedHull: state.techOwned.includes(REINFORCED_HULL),
     trainingActive: !state.tutDone,
     alreadyLanded: landing !== 'first',
@@ -131,7 +138,7 @@ export async function commitLandingActionV1(input: LandingActionInputV1): Promis
     Object.freeze({ kind: 'refused', detail, transaction });
   let rolled: boolean;
   try {
-    rolled = approach(address, input.state, input.runtime.extensions, 0).stage.policy.safeReason === null;
+    rolled = approach(address, input.rules, input.state, input.runtime.extensions, 0).stage.policy.safeReason === null;
   } catch (error) {
     return refused(error instanceof LandingRefusal ? error.detail : `input:${error instanceof Error ? error.message : String(error)}`);
   }
@@ -144,7 +151,7 @@ export async function commitLandingActionV1(input: LandingActionInputV1): Promis
   ): F4OutcomeDerivation => {
     try {
       const { draft, extensions, receiptOrdinal, activePlayMs } = receipt;
-      const current = approach(address, draft, extensions, activePlayMs);
+      const current = approach(address, input.rules, draft, extensions, activePlayMs);
       if ((current.stage.policy.safeReason === null) !== rolled) throw new LandingRefusal('descent:route-changed');
       const descent = resolveDescentAttemptV1(current.stage.policy, draws, draft.hp);
       const stageInput: LandingStageInputV1 = {
@@ -192,6 +199,7 @@ export interface LandingSettleDepsV1 {
   /** The session's landing views: a landing composes one. */
   readonly views: LandingViews;
   readonly charters: LandingCharterStagerV1;
+  readonly rules: LandingWorldRulesV1;
 }
 
 /** One press of Land as the page makes it: one product action at a time, never under a write hold, from the last
@@ -203,7 +211,7 @@ export async function settleLandingV1(
 ): Promise<LandingActionOutcomeV1> {
   let own: LandingActionOutcomeV1 | null = null;
   const answer = await deps.door.settle(LANDING_ACTION, async (runtime, durable) => {
-    const outcome = await commitLandingActionV1({ ...input, runtime, state: durable, view: deps.views.count + 1, charters: deps.charters });
+    const outcome = await commitLandingActionV1({ ...input, runtime, state: durable, view: deps.views.count + 1, charters: deps.charters, rules: deps.rules });
     own = outcome;
     return outcome.kind !== 'refused' ? outcome.transaction : outcome.transaction ?? { kind: 'declined', reason: outcome.detail };
   });

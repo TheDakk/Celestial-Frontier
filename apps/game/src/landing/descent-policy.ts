@@ -28,6 +28,7 @@ import {
   isDescentWaveOffStateV1,
   isWorldOpportunitySnapshot,
   type DescentWaveOffStateV1,
+  type WorldDescentRules,
   type WorldOpportunitySnapshot,
 } from '@cf/domain-opportunity';
 import { DOMAINS } from '@cf/domain-sessionrng';
@@ -94,6 +95,8 @@ export interface DescentOddsInput {
   /** The worn bonus tuned to this world's type. */
   readonly familyGearBonus: number;
   readonly landingGuaranteed: boolean;
+  /** A new world type's descent rules for this world; absent on every world that plays by the legacy rules. */
+  readonly rules?: WorldDescentRules;
 }
 
 export interface DescentOdds {
@@ -116,11 +119,19 @@ export function descentOdds(input: DescentOddsInput): DescentOdds {
   const type = Object.prototype.hasOwnProperty.call(DESCENT_TYPE_TIERS_V1, input.planet.type)
     ? input.planet.type as DescentPlanetTypeV1 : 'terran';
   const typeBase = DESCENT_TYPE_TIERS_V1[type];
-  const biome = biomeFor(input.planet, input.band);
+  const rules = input.rules ?? null;
+  const biome = rules === null || rules.biome === 'parent' ? biomeFor(input.planet, input.band) : rules.biome;
   const biomeLanding = biome && typeof biome.land === 'number' && Number.isFinite(biome.land)
     && biome.land >= 0 && biome.land <= 100 ? biome.land : null;
-  const baseSuccessPercent = biomeLanding ?? typeBase.successPercent;
-  const damage = descentDamageRangeForBaseSuccessV1(baseSuccessPercent);
+  // A type's own landing: fixed outright, or the legacy value moved by a step and held above a floor.
+  const landing = rules?.landing ?? null;
+  const legacyBase = biomeLanding ?? typeBase.successPercent;
+  const baseSuccessPercent = landing === null ? legacyBase
+    : landing.fixed !== undefined ? landing.fixed.p
+      : Math.min(100, Math.max(landing.floor ?? 0, legacyBase + (landing.delta ?? 0)));
+  const damage = landing?.fixed !== undefined
+    ? Object.freeze({ damageMin: landing.fixed.lo, damageMax: landing.fixed.hi })
+    : descentDamageRangeForBaseSuccessV1(baseSuccessPercent);
   const stormAdjustedPercent = !input.stormActive
     ? baseSuccessPercent
     : Math.max(baseSuccessPercent >= 90 ? 90 : 5, baseSuccessPercent - DESCENT_STORM_PENALTY);
@@ -314,7 +325,8 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
   if (input === null) throw new TypeError('descent policy requires exact registered authorities');
   const planetType = input.opportunity.source.planetType;
   const waveOffCount = descentWaveOffCountV1(input.waveOffs, input.address);
-  const familyGearBonus = descentFamilyBonus(planetType, input.capabilities.landingFamilyBonus);
+  const rules = input.opportunity.descentRules;
+  const familyGearBonus = descentFamilyBonus(rules === null || rules.landFamily === 'parent' ? planetType : rules.landFamily, input.capabilities.landingFamilyBonus);
   const oddsInput: DescentOddsInput = Object.freeze({
     planet: Object.freeze({ seed: input.address.planet.seed, type: planetType }),
     band: input.opportunity.source.climateBand,
@@ -323,6 +335,7 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
     gearBonus: input.capabilities.landingSuccessBonus,
     familyGearBonus,
     landingGuaranteed: input.capabilities.landingGuaranteed,
+    ...(rules === null ? {} : { rules }),
   });
   const odds = descentOdds(oddsInput);
   const safeReason: DescentSafeReasonV1 = input.trainingActive

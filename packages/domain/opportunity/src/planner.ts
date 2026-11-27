@@ -443,6 +443,8 @@ function worldOpportunityFingerprint(opportunity: WorldOpportunitySnapshot): str
     cosmicVein: opportunity.cosmicVein,
     exceptionalVein: opportunity.exceptionalVein,
     reservePulls: opportunity.reservePulls,
+    // Named only where a world has one, so a legacy world's fingerprint is what it was.
+    ...(opportunity.trickle === null ? {} : { trickle: opportunity.trickle }),
   }));
 }
 
@@ -560,8 +562,16 @@ export function planWorldMining(
       materialTotals.set(material, (materialTotals.get(material) ?? 0) + 1);
       row.push(`biome:${material}:1`);
     }
+    /* A new world type's trickle is read on that same roll: nothing more is drawn, so pull n of a world is the
+       legacy game's wherever no type has one. */
+    const trickle = input.opportunity.trickle;
+    if (trickle !== null && biomeRoll < trickle.chance) {
+      materialTotals.set(trickle.material, (materialTotals.get(trickle.material) ?? 0) + 1);
+      row.push(`trickle:${trickle.material}:1`);
+    }
     if (random() < 0.05 + input.opportunity.effectiveTier * 0.01 + capabilities.richStrikeChanceBonus) {
       const material = input.opportunity.biomeVein
+        || (trickle !== null && trickle.ownsStrike ? trickle.material : null)
         || RARE_VEIN[Math.min(
           RARE_VEIN.length - 1,
           (random() * (1 + input.opportunity.effectiveTier)) | 0,

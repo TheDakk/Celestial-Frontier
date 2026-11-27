@@ -42,16 +42,27 @@ export interface DescentWeather {
   readonly event: WeatherEvent | null;
 }
 
-/** The weather of a descent to this world in its climate band at this time of active play. */
+/** What a new world type's rules change of a world's weather: its base weather (the parent type's, none, or one
+    named) and its biome, the anchor of a weather event. */
+export interface WeatherRules {
+  readonly weather: 'parent' | 'none' | WeatherToken;
+  readonly biome: { readonly k: string } | 'parent' | null;
+}
+
+/** The weather of a descent to this world in its climate band at this time of active play. `rules` are a new world
+    type's for this world; with none it is the legacy game's weather. */
 export function descentWeather(
   planet: { readonly seed: number; readonly type: string },
   band: string,
   activePlaySeconds: number,
   rule: DescentWeatherRule = 'repaired',
+  rules: WeatherRules | null = null,
 ): DescentWeather {
-  const env = worldEnvironment(planet, band);
+  const legacyEnv = worldEnvironment(planet, band);
+  const env = rules === null || rules.weather === 'parent' ? legacyEnv
+    : { ...legacyEnv, baseWeather: rules.weather === 'none' ? null : rules.weather };
   const token = (rule === 'legacy' ? legacyPromptWeather : weatherNow)(planet, env, activePlaySeconds);
-  const anchor = biomeFor(planet, band);
+  const anchor = rules === null || rules.biome === 'parent' ? biomeFor(planet, band) : rules.biome;
   return Object.freeze({
     rule,
     token,
@@ -66,6 +77,7 @@ export function descentStormActive(
   planet: { readonly seed: number; readonly type: string },
   band: string,
   activePlaySeconds: number,
+  rules: WeatherRules | null = null,
 ): boolean {
-  return descentWeather(planet, band, activePlaySeconds).stormActive;
+  return descentWeather(planet, band, activePlaySeconds, 'repaired', rules).stormActive;
 }

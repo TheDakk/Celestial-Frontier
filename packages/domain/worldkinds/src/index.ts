@@ -18,4 +18,6 @@ export type {
 } from './rules.js';
 export { WORLD_TYPES, extraBodies, inSlice, rogueBody, rulesFor, sliceOf, sliceStepsPassed, sourceCounts } from './registry.js';
 export { effectiveWorld, legacyFactsOf } from './effective.js';
+export { playRulesFor } from './play.js';
+export type { PlayRules } from './play.js';
 export type { EffectiveWorld, LegacyWorldFacts } from './effective.js';

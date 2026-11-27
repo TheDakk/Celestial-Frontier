@@ -1,14 +1,13 @@
 /* The effective world: what the game plays, once a new type's rules have been laid over the legacy game's record.
 
    The legacy record is never written. A world outside every switched-on slice comes back as it went in. Applied
-   here: the type, its label, its own biome (rolled on the type's own stream as the legacy picker rolls, LEGACY
-   13289-13291) and a fixed landing. The rest of a rule set (landing changes, weather, life, veins, reserve, card)
-   is applied where the game works those numbers out, when the rules are plugged into the descent, the snapshot
-   and the roster. */
+   here: the type, its label, its own biome and a fixed landing, as the census of switches reads them. What a world
+   plays by is `playRulesFor` (play.ts): the descent, the weather, the snapshot, the planner and the roster are each
+   handed that. */
 import type { CensusSystem, CensusWorld } from './census.js';
-import { WORLD_TYPES, rulesFor, sliceOf } from './registry.js';
-import type { PlanetNumbers, RuleBiome, WorldTypeDefinition } from './rules.js';
-import { ownDraw, type TypeStream } from './streams.js';
+import { playRulesFor } from './play.js';
+import { WORLD_TYPES, sliceOf } from './registry.js';
+import type { PlanetNumbers, WorldTypeDefinition } from './rules.js';
 import type { WorldSwitches, WorldTypeKey } from './switches.js';
 
 /** A planet as the legacy rules have it: what the descent, the snapshot and the roster say today. */
@@ -53,16 +52,6 @@ export function legacyFactsOf(world: CensusWorld, sol: boolean): LegacyWorldFact
   };
 }
 
-function ownBiome(seed: number, biomes: readonly RuleBiome[], stream: TypeStream | undefined): RuleBiome {
-  if (stream === undefined) throw new Error('a type\'s biome set is rolled on its own stream: the rules name none');
-  let v = ownDraw(seed, stream) * biomes.reduce((total, biome) => total + biome.w, 0);
-  for (const biome of biomes) {
-    v -= biome.w;
-    if (v <= 0) return biome;
-  }
-  return biomes[biomes.length - 1]!;
-}
-
 /** The world as the game plays it. The system is handed in for the rules that will read it; none does yet. */
 export function effectiveWorld(
   world: LegacyWorldFacts,
@@ -71,11 +60,9 @@ export function effectiveWorld(
   registry: readonly WorldTypeDefinition[] = WORLD_TYPES,
 ): EffectiveWorld {
   const type = sliceOf(world.P, world.band, world.sol, switches, registry);
-  const rules = rulesFor(world, switches, registry);
+  const rules = type === null ? null : playRulesFor(world, switches, registry);
   if (rules === null) return { ...world, type, label: null };
-  const biomeKey = rules.biomes === 'parent' ? world.biomeKey
-    : rules.biomes === null ? null
-      : ownBiome(world.P.seed, rules.biomes, rules.biomeStream).k;
+  const biomeKey = rules.biome === 'parent' ? world.biomeKey : rules.biome === null ? null : rules.biome.k;
   const fixed = rules.landing?.fixed;
   const landing = fixed === undefined ? world.landing : { percent: fixed.p, damageMin: fixed.lo, damageMax: fixed.hi };
   return { ...world, type, label: rules.label, biomeKey, landing };

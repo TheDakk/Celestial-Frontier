@@ -7,6 +7,7 @@ import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene
 import type { GameEvents } from '../src/events';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { createLandingViews, settleLandingV1, type LandingActionOutcomeV1, type LandingSettleDepsV1 } from '../src/landing';
+import { worldRulesAt } from '../src/world';
 import { actionPage, type ActionPageOptions } from './action-support';
 import { NOW } from './save-support';
 
@@ -45,7 +46,7 @@ export async function landingPage(options: ActionPageOptions = {}) {
   const views = createLandingViews();
   const arrived: Array<GameEvents['landing:arrived']> = [];
   page.bus.on('landing:arrived', (event) => { arrived.push(event); });
-  const deps: LandingSettleDepsV1 = { door: page.loop, bus: page.bus, views, charters: stageStarterCharterEventV1 };
+  const deps: LandingSettleDepsV1 = { door: page.loop, bus: page.bus, views, charters: stageStarterCharterEventV1, rules: worldRulesAt };
   const land = (address: CanonicalCF1WorldAddress, worldName = 'A world'): Promise<LandingActionOutcomeV1> =>
     settleLandingV1(deps, { address, worldName, codecNow: NOW });
   return {

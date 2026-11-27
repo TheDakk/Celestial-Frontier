@@ -4,6 +4,7 @@
    production-registered CF1 scene address and carries that exact address/key
    through the result. Structural clones consequently cannot become authority.
  */
+import type { LandingFamily } from '@cf/domain-loot';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { biosphere } from '@cf/domain-ecology';
 import { displayRarity, rarityRoll } from '@cf/domain-speciestraits';
@@ -20,7 +21,7 @@ import {
   type CF1WorldKey,
 } from '@cf/scene';
 
-export const WORLD_OPPORTUNITY_SCHEMA = 'cf-v2-world-opportunity/v3' as const;
+export const WORLD_OPPORTUNITY_SCHEMA = 'cf-v2-world-opportunity/v4' as const;
 export const STAR_OPPORTUNITY_SCHEMA = 'cf-v2-star-opportunity/v2' as const;
 
 export type EngineeringRawTier =
@@ -77,6 +78,46 @@ const STELLAR_YIELD: Readonly<Record<string, 'Pls' | 'Crn'>> = Object.freeze({
 });
 const REMNANT_KINDS = new Set(['WD', 'NS', 'MAG', 'BH']);
 
+/** What a new world type's rules change of a world's descent, worked out for that one world. */
+export interface WorldDescentRules {
+  /** The world's biome of the type's own set; 'parent' keeps the legacy biome; null is no biome. */
+  readonly biome: { readonly k: string; readonly n: string; readonly land: number } | 'parent' | null;
+  /** `fixed` is the landing itself: its odds and the damage of a wave-off. Else `delta` is added to the biome's
+      landing (or the type's, with no biome) and the sum is never under `floor`. */
+  readonly landing: {
+    readonly delta?: number;
+    readonly floor?: number;
+    readonly fixed?: { readonly p: number; readonly lo: number; readonly hi: number };
+  } | null;
+  /** The worn landing gear tuned to this world: the parent type's family, or one named. */
+  readonly landFamily: LandingFamily | 'parent';
+}
+
+/** What a new world type's rules change of a world, worked out for that one world: its descent, and its mining.
+    A world with none plays by the legacy rules, untouched. */
+export interface WorldOpportunityRules extends WorldDescentRules {
+  /** The world's life key under the type's rule; 'parent' keeps the legacy game's. */
+  readonly lifeKey: string;
+  /** The type's own deposit list, picked from by the legacy picker on the legacy stream; 'parent' keeps the type's. */
+  readonly deposits: readonly MaterialSymbol[] | 'parent';
+  /** How many are picked, where the type fixes it. The legacy count is still rolled, so every later roll of the
+      stream stands where the legacy game has it. */
+  readonly depositCount?: number;
+  readonly trickle?: WorldTrickle;
+  /** The legacy reserve times this, rounded. */
+  readonly reserveMul: number;
+  /** The tier the veins and the reserve are worked out at, where the type fixes it at 0. */
+  readonly tierFixed?: 0;
+}
+
+/** One unit of a material on `chance` of pulls, read on the roll every pull already spends (LEGACY 21451). With
+    `ownsStrike` the rich strike is that material too, as on a biome-vein world (21457). */
+export interface WorldTrickle {
+  readonly material: MaterialSymbol;
+  readonly chance: number;
+  readonly ownsStrike: boolean;
+}
+
 export interface WorldOpportunitySourceFacts {
   readonly planetSeed: number;
   readonly planetType: string;
@@ -103,7 +144,11 @@ export interface WorldOpportunitySnapshot {
   readonly biomeVein: MaterialSymbol | null;
   readonly cosmicVein: MaterialSymbol | null;
   readonly exceptionalVein: MaterialSymbol | null;
+  /** A new world type's steady trickle; null on every world that plays by the legacy rules. */
+  readonly trickle: WorldTrickle | null;
   readonly reservePulls: number;
+  /** A new world type's descent rules for this world; null on every world that plays by the legacy rules. */
+  readonly descentRules: WorldDescentRules | null;
 }
 
 export interface StarOpportunitySourceFacts {
@@ -173,10 +218,11 @@ function profileFor(planetType: string): DepositProfileKey {
 
 /* Exact v1.8.9 `depositsFor` body: main.js:18814-18831 (source pin).
    Kept private so no public seed-only authority escapes this package. */
-function depositsFor(seed: number, planetType: string, tier: EngineeringRawTier): readonly MaterialSymbol[] {
-  const pool: string[] = [...DEPOSIT_PROFILES[profileFor(planetType)]];
+function depositsFor(seed: number, planetType: string, tier: EngineeringRawTier, rules: WorldOpportunityRules | null): readonly MaterialSymbol[] {
+  const pool: string[] = rules === null || rules.deposits === 'parent' ? [...DEPOSIT_PROFILES[profileFor(planetType)]] : [...rules.deposits];
   const random = mulberry32(hashInt(seed >>> 0, 0xE1E, 9) >>> 0);
-  const count = 3 + ((random() * 3) | 0);
+  const rolled = 3 + ((random() * 3) | 0);
+  const count = rules?.depositCount ?? rolled;
   const picks: string[] = [];
   for (let index = 0; index < count && pool.length; index++) {
     picks.push(pool.splice((random() * pool.length) | 0, 1)[0]!);
@@ -189,9 +235,10 @@ function depositsFor(seed: number, planetType: string, tier: EngineeringRawTier)
 }
 
 /* Exact v1.8.9 reserve formula: main.js:18949-18953 (source pin). */
-function reserveFor(seed: number, tier: EngineeringRawTier): number {
+function reserveFor(seed: number, tier: EngineeringRawTier, rules: WorldOpportunityRules | null): number {
   const random = mulberry32(hashInt(seed >>> 0, 0x2E5, 3) >>> 0);
-  return Math.round((420 + ((random() * 380) | 0)) * (1 + tier * 0.35));
+  const legacy = Math.round((420 + ((random() * 380) | 0)) * (1 + tier * 0.35));
+  return rules === null || rules.reserveMul === 1 ? legacy : Math.round(legacy * rules.reserveMul);
 }
 
 /* Exact v1.8.9 world-cosmic vein formula: main.js:18850-18861. */
@@ -210,10 +257,11 @@ function exceptionalVeinFor(
   seed: number,
   planetType: string,
   tier: EngineeringRawTier,
+  rules: WorldOpportunityRules | null,
 ): MaterialSymbol | null {
   const random = mulberry32(hashInt(seed >>> 0, 0xE8C, 5) >>> 0);
   if (random() >= 0.15) return null;
-  const deposits = depositsFor(seed, planetType, tier);
+  const deposits = depositsFor(seed, planetType, tier, rules);
   return deposits.length === 0 ? null : deposits[(random() * deposits.length) | 0]!;
 }
 
@@ -223,7 +271,7 @@ function skimReserveFor(seed: number): number {
   return 24 + ((random() * 24) | 0);
 }
 
-function worldSourceFacts(address: CanonicalCF1WorldAddress): WorldOpportunitySourceFacts {
+function worldSourceFacts(address: CanonicalCF1WorldAddress, rules: WorldOpportunityRules | null): WorldOpportunitySourceFacts {
   const system = systemFor(address.star.seed);
   const planetEntry = system.planets[address.planet.ordinal];
   if (!planetEntry || planetEntry.P.seed !== address.planet.seed) {
@@ -243,9 +291,10 @@ function worldSourceFacts(address: CanonicalCF1WorldAddress): WorldOpportunitySo
     planetType,
     orbitalDistance: planetEntry.orb,
     climateBand: band,
-    biosphereKey: bio.key,
+    biosphereKey: rules === null || rules.lifeKey === 'parent' ? bio.key : rules.lifeKey,
+    // The legacy level stays under any rule: the tier reads it (LEGACY 5160), and no type moves a world's tier by its life.
     biosphereLevel: bio.level,
-    biomeKey,
+    biomeKey: rules === null || rules.biome === 'parent' ? biomeKey : rules.biome === null ? null : rules.biome.k,
   });
 }
 
@@ -266,6 +315,7 @@ export interface WorldVeins {
   readonly biomeVein: MaterialSymbol | null;
   readonly cosmicVein: MaterialSymbol | null;
   readonly exceptionalVein: MaterialSymbol | null;
+  readonly trickle: WorldTrickle | null;
   readonly reservePulls: number;
 }
 
@@ -275,18 +325,20 @@ function veinsAt(
   biomeKey: string | null,
   rawTier: EngineeringRawTier,
   effectiveTier: EngineeringRawTier,
+  rules: WorldOpportunityRules | null,
 ): WorldVeins {
   return Object.freeze({
     rawTier,
     effectiveTier,
     depositProfile: profileFor(planetType),
-    deposits: depositsFor(planetSeed, planetType, effectiveTier),
+    deposits: depositsFor(planetSeed, planetType, effectiveTier, rules),
     biomeVein: biomeKey !== null && Object.prototype.hasOwnProperty.call(BIOME_VEIN, biomeKey)
       ? BIOME_VEIN[biomeKey as keyof typeof BIOME_VEIN]
       : null,
     cosmicVein: cosmicVeinFor(planetSeed, effectiveTier),
-    exceptionalVein: exceptionalVeinFor(planetSeed, planetType, effectiveTier),
-    reservePulls: reserveFor(planetSeed, effectiveTier),
+    exceptionalVein: exceptionalVeinFor(planetSeed, planetType, effectiveTier, rules),
+    trickle: rules?.trickle === undefined ? null : Object.freeze({ ...rules.trickle }),
+    reservePulls: reserveFor(planetSeed, effectiveTier, rules),
   });
 }
 
@@ -298,6 +350,8 @@ export interface WorldVeinsWorld {
   readonly biomeKey: string | null;
   /** Whether this is Sol's Earth, which the caller alone can say. */
   readonly earth: boolean;
+  /** A new world type's rules for this world; absent or null is the legacy rules. */
+  readonly rules?: WorldOpportunityRules | null;
 }
 
 export interface WorldVeinsBySeedInput extends WorldVeinsWorld {
@@ -314,8 +368,9 @@ export function worldVeinsBySeed(input: WorldVeinsBySeedInput): WorldVeins {
   if (!Number.isInteger(input.depthBoost) || input.depthBoost < 0) {
     throw new RangeError('depth boost must be a whole number, 0 or more');
   }
-  const rawTier = rawTierOf(input.planetSeed, input.biosphereLevel, input.earth, input.depthBoost);
-  return veinsAt(input.planetSeed, input.planetType, input.biomeKey, rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))));
+  const rules = input.rules ?? null;
+  const rawTier = rules?.tierFixed === 0 ? 0 : rawTierOf(input.planetSeed, input.biosphereLevel, input.earth, input.depthBoost);
+  return veinsAt(input.planetSeed, input.planetType, input.biomeKey, rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))), rules);
 }
 
 /** Where a world lives: its galaxy and its star's place in it. */
@@ -337,6 +392,7 @@ export function worldVeinsAt(place: WorldVeinsPlace, world: WorldVeinsWorld): Wo
     biosphereLevel: world.biosphereLevel,
     biomeKey: world.biomeKey,
     earth: world.earth,
+    rules: world.rules ?? null,
     depthBoost: Math.floor(regionAt(galaxy.x, galaxy.y) / 2),
     tierCap: gradeCapAt({ gal: galaxy, star }),
   });
@@ -367,11 +423,12 @@ function starRawTier(starSeed: number, kind: string): EngineeringRawTier {
   return asRawTier(Math.min(14, rarityRoll(starSeed, 5) + boost));
 }
 
-/** Build a detached, frozen snapshot from source facts behind a trusted world address. */
-export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress): WorldOpportunitySnapshot {
+/** Build a detached, frozen snapshot from source facts behind a trusted world address. `rules` are a new world
+    type's rules for this world; with none it is the legacy game's world. */
+export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress, rules: WorldOpportunityRules | null = null): WorldOpportunitySnapshot {
   const address = checkedWorldAddress(addressValue);
-  const source = worldSourceFacts(address);
-  const veins = worldVeinsAt(address, { ...source, earth: isCanonicalEarthWorldAddress(address) });
+  const source = worldSourceFacts(address, rules);
+  const veins = worldVeinsAt(address, { ...source, earth: isCanonicalEarthWorldAddress(address), rules });
   const { rawTier, effectiveTier } = veins;
   const snapshot: WorldOpportunitySnapshot = Object.freeze({
     schema: WORLD_OPPORTUNITY_SCHEMA,
@@ -386,7 +443,13 @@ export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress):
     biomeVein: veins.biomeVein,
     cosmicVein: veins.cosmicVein,
     exceptionalVein: veins.exceptionalVein,
+    trickle: veins.trickle,
     reservePulls: veins.reservePulls,
+    descentRules: rules === null ? null : Object.freeze({
+      biome: rules.biome === 'parent' || rules.biome === null ? rules.biome : Object.freeze({ k: rules.biome.k, n: rules.biome.n, land: rules.biome.land }),
+      landing: rules.landing === null ? null : Object.freeze({ ...rules.landing, ...(rules.landing.fixed === undefined ? {} : { fixed: Object.freeze({ ...rules.landing.fixed }) }) }),
+      landFamily: rules.landFamily,
+    }),
   });
   WORLD_SNAPSHOTS.add(snapshot);
   return snapshot;
