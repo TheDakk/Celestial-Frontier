@@ -4,18 +4,19 @@
 import { describe, expect, it } from 'vitest';
 import { biosphere } from '@cf/domain-ecology';
 import {
-  DEPOSIT_PROFILES, createEngineeringState, planWorldMining, projectWorldOpportunity,
+  DEPOSIT_PROFILES, NO_WORLD_RULES, WORLD_OPPORTUNITY_SCHEMA, WORLD_RULES_RESERVE_MAX, WorldRulesRefused, createEngineeringState, planWorldMining,
+  projectWorldOpportunity, worldVeinsAt, worldVeinsBySeed,
   type EngineeringQuantity, type EngineeringStateV2, type WorldOpportunityRules,
 } from '@cf/domain-opportunity';
-import { mulberry32 } from '@cf/domain-rand';
+import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { systemFor } from '@cf/domain-worldgen';
 import {
   SWITCHES_OFF, SWITCHES_ON, censusStarSeed, declareStream, playRulesFor,
   type PlanetNumbers, type WorldRules, type WorldTypeDefinition,
 } from '@cf/domain-worldkinds';
-import { navFromCanonicalCF1Address } from '@cf/scene';
-import { descentOdds, descentWeather, projectDescentApproachV1 } from '../src/landing';
+import { navFromCanonicalCF1Address, resolveCF1WorldAddress } from '@cf/scene';
+import { descentOdds, descentWeather, projectDescentApproachV1, type WeatherRules } from '../src/landing';
 import { loadDescentWaveOffAuthorityV1 } from '@cf/persistence';
 import { canonicalWorldRoster, worldRulesAt } from '../src/world';
 import { wearing, world } from './descent-support';
@@ -65,15 +66,15 @@ describe('a world with no rules plays as before', () => {
 
   it('rules that keep the parent\'s everything give the snapshot, the odds and the pulls of no rules at all', () => {
     for (const seed of [VENUS, MARS, JUPITER]) {
-      const [bare, kept] = [projectWorldOpportunity(world(seed)), projectWorldOpportunity(world(seed), PARENT)];
+      const [bare, kept] = [projectWorldOpportunity(world(seed), null), projectWorldOpportunity(world(seed), PARENT)];
       expect({ ...kept, descentRules: null }).toEqual(bare);
       expect(bare).toMatchObject({ trickle: null, descentRules: null });
       const { planetType, climateBand: band } = bare.source;
       expect(odds(seed, planetType, band, PARENT)).toEqual(odds(seed, planetType, band));
-      expect(descentWeather({ seed, type: planetType }, band, 45, 'repaired', { weather: 'parent', biome: 'parent' })).toEqual(descentWeather({ seed, type: planetType }, band, 45));
+      expect(descentWeather({ seed, type: planetType }, band, 45, 'repaired', { weather: 'parent', biome: 'parent' })).toEqual(descentWeather({ seed, type: planetType }, band, 45, 'repaired', null));
     }
     expect(pulls(MARS, PARENT, 40)).toEqual(pulls(MARS, null, 40));
-    expect(canonicalWorldRoster(world(EARTH), 0, { lifeKey: 'parent' })).toEqual(canonicalWorldRoster(world(EARTH), 0));
+    expect(canonicalWorldRoster(world(EARTH), 0, { lifeKey: 'parent' })).toEqual(canonicalWorldRoster(world(EARTH), 0, null));
   });
 });
 
@@ -129,21 +130,24 @@ describe('a rule set gives exactly what it says', () => {
   });
 
   it('a list of three with three picked is those three; a longer list is picked from by the legacy picker; half the reserve is half, rounded', () => {
-    const legacy = projectWorldOpportunity(world(MARS));
-    const three = projectWorldOpportunity(world(MARS), rules({ deposits: ['Xa', 'Xb', 'Xc'], depositCount: 3, reserveMul: 0.5 }));
-    expect([...three.deposits].filter((symbol) => symbol.startsWith('X')).sort()).toEqual(['Xa', 'Xb', 'Xc']);
+    const legacy = projectWorldOpportunity(world(MARS), null);
+    // Three materials Mars's own list does not hold.
+    const three = projectWorldOpportunity(world(MARS), rules({ deposits: ['C', 'He3', 'W'], depositCount: 3, reserveMul: 0.5 }));
+    expect([...three.deposits].filter((symbol) => symbol !== 'Ag').sort()).toEqual(['C', 'He3', 'W']);
     expect(three.reservePulls).toBe(Math.round(legacy.reservePulls * 0.5));
     expect(three).toMatchObject({ rawTier: legacy.rawTier, effectiveTier: legacy.effectiveTier, cosmicVein: legacy.cosmicVein });
     // The same places of the same stream: a list as long as the parent's, picked from at the legacy positions.
     const parent: readonly string[] = DEPOSIT_PROFILES[legacy.depositProfile];
-    const renamed = projectWorldOpportunity(world(MARS), rules({ deposits: parent.map((symbol) => `X${symbol}`) }));
-    expect(renamed.deposits).toEqual(legacy.deposits.map((symbol) => (parent.includes(symbol) ? `X${symbol}` : symbol)));
+    const other: readonly string[] = DEPOSIT_PROFILES.lava;
+    expect([legacy.depositProfile, parent.length, other.length]).toEqual(['desert', 8, 8]);
+    const renamed = projectWorldOpportunity(world(MARS), rules({ deposits: other }));
+    expect(renamed.deposits).toEqual(legacy.deposits.map((symbol) => (parent.includes(symbol) ? other[parent.indexOf(symbol)] : symbol)));
     expect(renamed.reservePulls).toBe(legacy.reservePulls);
     // A fixed count equal to the count the legacy game rolled changes nothing: the rolls after it stand where they did.
     const rolled = legacy.deposits.filter((symbol) => parent.includes(symbol)).length;
     expect(projectWorldOpportunity(world(MARS), rules({ depositCount: rolled })).deposits).toEqual(legacy.deposits);
     for (const seed of [VENUS, JUPITER, 131, 136]) {
-      const own = projectWorldOpportunity(world(seed));
+      const own = projectWorldOpportunity(world(seed), null);
       const count = own.deposits.filter((symbol) => (DEPOSIT_PROFILES[own.depositProfile] as readonly string[]).includes(symbol)).length;
       expect(projectWorldOpportunity(world(seed), rules({ depositCount: count })).deposits, String(seed)).toEqual(own.deposits);
     }
@@ -151,7 +155,7 @@ describe('a rule set gives exactly what it says', () => {
 
   it('a tier fixed at 0 is tier 0 for the veins and the reserve, whatever the world rolled', () => {
     const flat = projectWorldOpportunity(world(EARTH), rules({ tierFixed: 0 }));
-    expect(projectWorldOpportunity(world(EARTH))).toMatchObject({ rawTier: 5, effectiveTier: 5 });
+    expect(projectWorldOpportunity(world(EARTH), null)).toMatchObject({ rawTier: 5, effectiveTier: 5 });
     expect(flat).toMatchObject({ rawTier: 0, effectiveTier: 0 });
     expect(flat.reservePulls).toBeLessThan(800);
   });
@@ -195,14 +199,14 @@ describe('a rule set gives exactly what it says', () => {
   });
 
   it('a life key of the rules is the world\'s life: none empties a living world, and the snapshot says the same', () => {
-    const living = canonicalWorldRoster(world(EARTH), 0);
+    const living = canonicalWorldRoster(world(EARTH), 0, null);
     if (!living.ok) throw new Error(living.message);
     expect(living.roster.view.total).toBeGreaterThan(0);
     // A living world of the seeded stars, off Sol.
     const none = projectWorldOpportunity(world(MARS), rules({ lifeKey: 'microbial' }));
-    expect(projectWorldOpportunity(world(MARS)).source.biosphereKey).toBe('none');
+    expect(projectWorldOpportunity(world(MARS), null).source.biosphereKey).toBe('none');
     expect(none.source.biosphereKey).toBe('microbial');
-    expect(none.rawTier).toBe(projectWorldOpportunity(world(MARS)).rawTier);
+    expect(none.rawTier).toBe(projectWorldOpportunity(world(MARS), null).rawTier);
     const seeded = canonicalWorldRoster(world(MARS), 0, { lifeKey: 'microbial' });
     if (!seeded.ok) throw new Error(seeded.message);
     expect(seeded.roster.biosphereKey).toBe('microbial');
@@ -224,11 +228,143 @@ describe('a rule set gives exactly what it says', () => {
   });
 });
 
+describe('what a rule set changes is read the same by every reader', () => {
+  const seeds = Array.from({ length: 3000 }, (_, i) => hashInt(0x5EED, i, 7));
+  const veins = (planetSeed: number, ruled: WorldOpportunityRules | null, biomeKey: string | null = null) => worldVeinsBySeed({
+    planetSeed, planetType: 'rocky', biosphereLevel: 'No known life', biomeKey, earth: false, depthBoost: 0, tierCap: 14, rules: ruled,
+  });
+
+  it('the snapshot is schema v4, which carries the trickle and the descent rules', () => {
+    expect(WORLD_OPPORTUNITY_SCHEMA).toBe('cf-v2-world-opportunity/v4');
+    expect(Object.keys(projectWorldOpportunity(world(MARS), null))).toEqual(expect.arrayContaining(['schema', 'trickle', 'descentRules']));
+    expect(projectWorldOpportunity(world(MARS), null).schema).toBe('cf-v2-world-opportunity/v4');
+  });
+
+  it('a type\'s own biome has no vein of the parent biome\'s: the veins by seed and the snapshot say the same', () => {
+    const own = rules({ biome: { k: 'stillblue', n: 'Still-Blue giant', land: 75 } });
+    expect([veins(1, null, 'geode').biomeVein, veins(1, PARENT, 'geode').biomeVein, veins(1, own, 'geode').biomeVein, veins(1, rules({ biome: null }), 'geode').biomeVein])
+      .toEqual(['Nd', 'Nd', null, null]);
+    // A real world whose legacy biome has a vein.
+    const resolved = resolveCF1WorldAddress({ galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 3037235558, x: -897.1608293121681, y: -86.20030916528776 }, planet: { seed: 171668249 } });
+    if (!resolved.ok) throw new Error(resolved.reason);
+    const legacy = projectWorldOpportunity(resolved.address, null);
+    expect(legacy.biomeVein).not.toBeNull();
+    const ruled = projectWorldOpportunity(resolved.address, own);
+    expect(ruled.biomeVein).toBeNull();
+    const bySeed = worldVeinsAt(resolved.address, { ...legacy.source, earth: false, rules: own });
+    expect({ ...bySeed }).toEqual({
+      rawTier: ruled.rawTier, effectiveTier: ruled.effectiveTier, depositProfile: ruled.depositProfile, deposits: ruled.deposits,
+      biomeVein: ruled.biomeVein, cosmicVein: ruled.cosmicVein, exceptionalVein: ruled.exceptionalVein, trickle: ruled.trickle, reservePulls: ruled.reservePulls,
+    });
+  });
+
+  it('a typed world\'s exceptional vein is one of its own deposits, never a material of the parent\'s list', () => {
+    const own = rules({ deposits: ['H', 'He', 'CH4', 'NH3', 'He3', 'H2O', 'N'] });
+    const held = seeds.map((seed) => veins(seed, own)).filter((read) => read.exceptionalVein !== null);
+    expect(held.length).toBeGreaterThan(300);
+    for (const read of held) expect(read.deposits).toContain(read.exceptionalVein);
+  });
+
+  it('a reserve times a half is rounded, not cut: odd reserves round up', () => {
+    const half = rules({ reserveMul: 0.5 });
+    const odd = seeds.filter((seed) => veins(seed, null).reservePulls % 2 === 1);
+    expect(odd.length).toBeGreaterThan(500);
+    for (const seed of odd.slice(0, 200)) expect(veins(seed, half).reservePulls).toBe((veins(seed, null).reservePulls + 1) / 2);
+    const third = rules({ reserveMul: 0.35 });
+    for (const seed of seeds.slice(0, 200)) expect(veins(seed, third).reservePulls).toBe(Math.round(veins(seed, null).reservePulls * 0.35));
+  });
+
+  it('a world with a trickle and the same world without one are two worlds to a mining receipt, even where the trickle never pays', () => {
+    const plan = (ruled: WorldOpportunityRules | null) => {
+      const nav = navFromCanonicalCF1Address(world(MARS));
+      if (!nav.ok || nav.state.mode !== 'surface') throw new Error('no surface');
+      const made = planWorldMining({ state: createEngineeringState(), opportunity: projectWorldOpportunity(world(MARS), ruled), currentSurface: nav.state, capabilities: wearing(), activePlay: { activePlayMs: 0 }, receiptOrdinal: 1 });
+      if (made.status !== 'planned') throw new Error(made.reason);
+      return made;
+    };
+    const [bare, kept, silent] = [plan(null), plan(PARENT), plan(rules({ trickle: { material: 'C', chance: 0, ownsStrike: false } }))];
+    expect(silent.result).toEqual(bare.result);
+    expect(kept.witness).toBe(bare.witness);
+    expect(silent.witness).not.toBe(bare.witness);
+  });
+
+  it('the weather event of a descent is asked over the type\'s own biome: iron rain falls on a gas giant only where its biome is the hot glow', () => {
+    const jupiter = { seed: JUPITER, type: 'gas' };
+    const event = (t: number, biome: WeatherRules['biome'] | undefined) => descentWeather(jupiter, 'cold', t, 'repaired', biome === undefined ? null : { weather: 'parent', biome }).event;
+    const times = Array.from({ length: 400 }, (_, i) => i * 90);
+    expect(times.filter((t) => event(t, undefined) === 'ironrain')).toEqual([]);
+    expect(times.filter((t) => event(t, 'parent') === 'ironrain')).toEqual([]);
+    expect(times.filter((t) => event(t, { k: 'hotglow' }) === 'ironrain').length).toBeGreaterThan(20);
+    expect(times.filter((t) => event(t, null) !== event(t, undefined))).toEqual([]);
+  });
+});
+
+describe('a rule set is checked as it enters, and refused by name', () => {
+  const refusal = (over: Partial<WorldOpportunityRules>): string => {
+    try { projectWorldOpportunity(world(MARS), rules(over)); } catch (error) { return error instanceof WorldRulesRefused ? error.refusal : `other: ${String(error)}`; }
+    return 'accepted';
+  };
+  it.each([
+    ['a reserve a thousand times over', { reserveMul: 1000 }, 'reserve'],
+    ['a reserve past the margin', { reserveMul: 1.16 }, 'reserve'],
+    ['a reserve of nothing', { reserveMul: 0 }, 'reserve'],
+    ['a material the game does not have, in a list', { deposits: ['Fe', 'NotAMaterial'] }, 'material'],
+    ['a material the game does not have, as a trickle', { trickle: { material: 'NotAMaterial', chance: 0.2, ownsStrike: false } }, 'material'],
+    ['a trickle on five pulls in one', { trickle: { material: 'C', chance: 5, ownsStrike: false } }, 'trickle'],
+    ['a landing of 250%', { landing: { fixed: { p: 250, lo: 4, hi: 5 } } }, 'landing'],
+    ['a scrape below nothing', { landing: { fixed: { p: 60, lo: -2, hi: 5 } } }, 'landing'],
+    ['a scrape whose most is under its least', { landing: { fixed: { p: 60, lo: 5, hi: 4 } } }, 'landing'],
+    ['a floor past 100', { landing: { delta: -5, floor: 120 } }, 'landing'],
+    ['a biome that lands at 130', { biome: { k: 'x', n: 'X', land: 130 } }, 'biome'],
+    ['an empty list', { deposits: [] }, 'deposits'],
+    ['a list of one', { deposits: ['Fe'] }, 'deposits'],
+    ['a list that names a material twice', { deposits: ['Fe', 'Fe', 'Ni'] }, 'deposits'],
+    ['a count over the list', { deposits: ['Fe', 'Ni'], depositCount: 3 }, 'deposit-count'],
+    ['a count of one', { depositCount: 1 }, 'deposit-count'],
+    ['a family no gear is tuned to', { landFamily: 'ocean' as never }, 'land-family'],
+    ['a life key of nothing', { lifeKey: '' }, 'life'],
+    ['a tier fixed above 0', { tierFixed: 3 as never }, 'tier'],
+  ] as const)('%s is refused: %o → %s', (_name, over, named) => {
+    expect(refusal(over as Partial<WorldOpportunityRules>)).toBe(named);
+  });
+
+  it('the bounds themselves are accepted: a reserve at the margin, a landing of 0 and of 100, a list of two, a trickle on every pull', () => {
+    expect([refusal({ reserveMul: 1.15 }), refusal({ landing: { fixed: { p: 0, lo: 0, hi: 0 } } }), refusal({ landing: { fixed: { p: 100, lo: 6, hi: 8 } } }),
+      refusal({ deposits: ['Fe', 'C'], depositCount: 2 }), refusal({ trickle: { material: 'Au', chance: 1, ownsStrike: true } })]).toEqual(Array(5).fill('accepted'));
+    expect(WORLD_RULES_RESERVE_MAX).toBe(1.15);
+  });
+
+  it('the veins by seed, the type\'s own rules for a world and a snapshot asked with no answer at all refuse too', () => {
+    expect(() => worldVeinsBySeed({ planetSeed: 1, planetType: 'rocky', biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 0, tierCap: 14, rules: rules({ reserveMul: 9 }) })).toThrow(WorldRulesRefused);
+    expect(() => (projectWorldOpportunity as (address: unknown) => unknown)(world(MARS))).toThrow(/NO_WORLD_RULES/);
+    expect(() => (worldVeinsBySeed as (input: unknown) => unknown)({ planetSeed: 1, planetType: 'rocky', biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 0, tierCap: 14 })).toThrow(/NO_WORLD_RULES/);
+    expect(NO_WORLD_RULES).toBeNull();
+    const greedy: WorldTypeDefinition = {
+      key: 'megaEarth', label: 'Greedy', slice: [{ name: 'any', test: () => true }], source: null, bodies: null, rogue: null,
+      rules: { key: 'megaEarth', label: 'Greedy', biomes: 'parent', landing: null, weather: 'parent', landFamily: 'parent', life: 'parent', deposits: 'parent', reserveMul: 9, card: { rows: [], replace: [] } },
+    };
+    expect(() => playRulesFor({ P: { seed: 7, type: 'terran' }, band: 'temperate', sol: false }, SWITCHES_ON, [greedy])).toThrow(WorldRulesRefused);
+  });
+});
+
+describe('the app\'s seam asks the game\'s own switches, and they are all off', () => {
+  it('types with rules for every world rule none of Sol while the game\'s switches are off', () => {
+    const everywhere: WorldTypeDefinition[] = (['iceGiant', 'hycean', 'megaEarth', 'dwarf', 'rogue', 'double', 'greatMoon', 'trojan', 'protoplanet', 'shattered', 'smallBody', 'artefact', 'eccentric'] as const).map((key) => ({
+      key, label: 'Everywhere', slice: [{ name: 'any', test: () => true }], source: null, bodies: null, rogue: null,
+      rules: { key, label: 'Everywhere', biomes: 'parent', landing: { fixed: { p: 60, lo: 4, hi: 5 } }, weather: 'none', landFamily: 'parent', life: 'parent', deposits: 'parent', reserveMul: 1, card: { rows: [], replace: [] } },
+    }));
+    for (const seed of [131, VENUS, EARTH, MARS, JUPITER, 136, 137, 138]) expect(worldRulesAt(world(seed), everywhere), String(seed)).toBeNull();
+    // The same types answer when their switches are on: the registry is read.
+    const system = systemFor(424242);
+    expect(playRulesFor({ P: system.planets[0]!.P as PlanetNumbers, band: 'hot', sol: true }, SWITCHES_ON, everywhere)?.landing).toEqual({ fixed: { p: 60, lo: 4, hi: 5 } });
+  });
+});
+
 describe('the rules of one world, worked out from its type\'s', () => {
   const STREAM = declareStream('world-rules test', 0x7E58, 5);
   const BASE: WorldRules = {
     key: 'hycean', label: 'Test sea', biomes: [{ k: 'testsea', n: 'Test sea', w: 1, land: 60, f: 'sea' }], biomeStream: STREAM,
-    landing: null, weather: 'parent', landFamily: 'gas', hazard: 'ocean', life: 'parent', deposits: 'parent', reserveMul: 1, card: { rows: [], replace: [] },
+    landing: null, weather: 'parent', landFamily: 'gas', life: 'parent', deposits: 'parent', reserveMul: 1, card: { rows: [], replace: [] },
   };
   const type = (over: Partial<WorldRules>): WorldTypeDefinition => ({
     key: 'hycean', label: 'Test sea', slice: [{ name: 'ocean', test: (P) => P.type === 'ocean' }], source: null, bodies: null, rogue: null, rules: { ...BASE, ...over },
@@ -257,6 +393,12 @@ describe('the rules of one world, worked out from its type\'s', () => {
       keys.add(key);
     }
     expect([...keys]).toEqual(expect.arrayContaining(['microbial', 'none']));
+  });
+
+  it('a life rule is handed the world\'s own band', () => {
+    const byBand = type({ life: (_v, band) => (band === 'hot' ? 'aquatic' : band === 'cold' ? 'subsurface' : 'none') });
+    const P = hotOceans[0]!.P;
+    expect(['hot', 'cold', 'temperate'].map((band) => playRulesFor({ P, band, sol: false }, SWITCHES_ON, [byBand])!.lifeKey)).toEqual(['aquatic', 'subsurface', 'none']);
   });
 
   it('Sol, Earth and seed 134 keep the legacy life whatever the rule; a switch that is off gives no rules', () => {

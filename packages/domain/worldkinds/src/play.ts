@@ -1,6 +1,7 @@
 /* A world's rule set worked out for that one world: plain numbers and names, with nothing left to roll. This is what
    the descent, the weather, the snapshot, the planner, the roster and the card are handed. A world outside every
    switched-on slice has none (null), and plays by the legacy rules, untouched. */
+import { checkedWorldRules } from '@cf/domain-opportunity';
 import { mulberry32 } from '@cf/domain-rand';
 import { WORLD_TYPES, rulesFor } from './registry.js';
 import type { PlanetNumbers, RuleBiome, WorldRules, WorldTypeDefinition } from './rules.js';
@@ -44,9 +45,10 @@ export function playRulesFor(
   const rules = rulesFor(world, switches, registry);
   if (rules === null) return null;
   const { biomes, biomeStream: _stream, life: _life, ...rest } = rules;
-  return Object.freeze({
+  // Checked as it is made: a type file that says what the game cannot play is refused by name at its first world.
+  return checkedWorldRules(Object.freeze({
     ...rest,
     biome: biomes === 'parent' || biomes === null ? biomes : ownBiome(world.P.seed, { ...rules, biomes }),
     lifeKey: lifeKey(rules, world.P, world.band, world.sol),
-  });
+  }));
 }

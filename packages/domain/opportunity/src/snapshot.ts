@@ -77,6 +77,10 @@ const STELLAR_YIELD: Readonly<Record<string, 'Pls' | 'Crn'>> = Object.freeze({
   BH: 'Crn',
 });
 const REMNANT_KINDS = new Set(['WD', 'NS', 'MAG', 'BH']);
+/** Every material a world can pay: the lists, the rare and biome veins and the cosmic finds. */
+const KNOWN_MATERIALS: ReadonlySet<string> = new Set([
+  ...Object.values(DEPOSIT_PROFILES).flat(), ...RARE_VEIN, ...Object.values(BIOME_VEIN), ...COSMIC_FOUND, ...COSMIC_BREAK,
+]);
 
 /** What a new world type's rules change of a world's descent, worked out for that one world. */
 export interface WorldDescentRules {
@@ -116,6 +120,70 @@ export interface WorldTrickle {
   readonly material: MaterialSymbol;
   readonly chance: number;
   readonly ownsStrike: boolean;
+}
+
+/** The explicit answer of a caller whose world is of no new type: it plays by the legacy rules. */
+export const NO_WORLD_RULES = null;
+
+/** The most a type may multiply a reserve by: the designs' margin over the best existing world. */
+export const WORLD_RULES_RESERVE_MAX = 1.15;
+
+/** Why a rule set was refused. */
+export type WorldRulesRefusal = 'biome' | 'landing' | 'land-family' | 'life' | 'deposits' | 'deposit-count' | 'material' | 'trickle' | 'reserve' | 'tier';
+
+export class WorldRulesRefused extends RangeError {
+  constructor(readonly refusal: WorldRulesRefusal, detail: string) {
+    super(`world rules refused: ${refusal}: ${detail}`);
+  }
+}
+
+const isPercent = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 100;
+
+/** A rule set as it enters: the same rules, or a named refusal. Every number a snapshot would carry is held to what
+    the game can play: odds from 0 to 100, a scrape of whole points, materials the game has, a reserve no more than
+    the margin over the legacy game's, and at least two deposit lines (the first landing samples two: `projectFieldSamples`). */
+export function checkedWorldRules<T extends WorldOpportunityRules | null>(rules: T): T {
+  // A caller outside the type checker that says nothing is refused: it must say NO_WORLD_RULES to play the legacy rules.
+  if (rules === undefined) throw new TypeError('a world is asked with its rules, or with NO_WORLD_RULES');
+  if (rules === null) return rules;
+  const refuse = (refusal: WorldRulesRefusal, detail: string): never => { throw new WorldRulesRefused(refusal, detail); };
+  const { biome, landing, deposits, depositCount, trickle } = rules;
+  if (biome !== 'parent' && biome !== null && (typeof biome.k !== 'string' || biome.k === '' || typeof biome.n !== 'string' || !isPercent(biome.land))) {
+    refuse('biome', 'a biome has a key, a name and a landing from 0 to 100');
+  }
+  if (landing !== null) {
+    const { fixed, delta, floor } = landing;
+    if (fixed !== undefined && (!isPercent(fixed.p) || !Number.isInteger(fixed.lo) || !Number.isInteger(fixed.hi) || fixed.lo < 0 || fixed.hi < fixed.lo)) {
+      refuse('landing', 'a fixed landing is odds from 0 to 100 and a scrape of whole points, the least first');
+    }
+    if (delta !== undefined && !Number.isFinite(delta)) refuse('landing', 'a landing step is a finite number');
+    if (floor !== undefined && !isPercent(floor)) refuse('landing', 'a landing floor is from 0 to 100');
+  }
+  if (!['parent', 'lava', 'venus', 'gas', 'ice'].includes(rules.landFamily)) refuse('land-family', String(rules.landFamily));
+  if (typeof rules.lifeKey !== 'string' || rules.lifeKey === '') refuse('life', 'a life key is a word, or parent');
+  if (deposits !== 'parent') {
+    if (!Array.isArray(deposits) || deposits.length < 2 || new Set(deposits).size !== deposits.length) refuse('deposits', 'a list holds two or more different materials');
+    for (const symbol of deposits) if (!KNOWN_MATERIALS.has(symbol)) refuse('material', String(symbol));
+  }
+  const listed = deposits === 'parent' ? Infinity : deposits.length;
+  if (depositCount !== undefined && (!Number.isInteger(depositCount) || depositCount < 2 || depositCount > listed)) {
+    refuse('deposit-count', 'a count is a whole number from 2 to the length of the list');
+  }
+  if (trickle !== undefined) {
+    if (!KNOWN_MATERIALS.has(trickle.material)) refuse('material', String(trickle.material));
+    if (typeof trickle.chance !== 'number' || !(trickle.chance >= 0 && trickle.chance <= 1) || typeof trickle.ownsStrike !== 'boolean') refuse('trickle', 'a trickle pays on a share of pulls from 0 to 1');
+  }
+  if (typeof rules.reserveMul !== 'number' || !(rules.reserveMul > 0 && rules.reserveMul <= WORLD_RULES_RESERVE_MAX)) {
+    refuse('reserve', `a reserve is multiplied by more than 0 and no more than ${WORLD_RULES_RESERVE_MAX}`);
+  }
+  if (rules.tierFixed !== undefined && rules.tierFixed !== 0) refuse('tier', 'a tier is fixed at 0 or not at all');
+  return rules;
+}
+
+/** A world's biome key under its rules: the type's own where it has one, else the legacy biome's. The one rule: the
+    snapshot and the veins by seed both read it. */
+function ruledBiomeKey(rules: WorldOpportunityRules | null, legacyKey: string | null): string | null {
+  return rules === null || rules.biome === 'parent' ? legacyKey : rules.biome === null ? null : rules.biome.k;
 }
 
 export interface WorldOpportunitySourceFacts {
@@ -294,7 +362,7 @@ function worldSourceFacts(address: CanonicalCF1WorldAddress, rules: WorldOpportu
     biosphereKey: rules === null || rules.lifeKey === 'parent' ? bio.key : rules.lifeKey,
     // The legacy level stays under any rule: the tier reads it (LEGACY 5160), and no type moves a world's tier by its life.
     biosphereLevel: bio.level,
-    biomeKey: rules === null || rules.biome === 'parent' ? biomeKey : rules.biome === null ? null : rules.biome.k,
+    biomeKey: ruledBiomeKey(rules, biomeKey),
   });
 }
 
@@ -350,8 +418,8 @@ export interface WorldVeinsWorld {
   readonly biomeKey: string | null;
   /** Whether this is Sol's Earth, which the caller alone can say. */
   readonly earth: boolean;
-  /** A new world type's rules for this world; absent or null is the legacy rules. */
-  readonly rules?: WorldOpportunityRules | null;
+  /** A new world type's rules for this world; `NO_WORLD_RULES` is the legacy rules. */
+  readonly rules: WorldOpportunityRules | null;
 }
 
 export interface WorldVeinsBySeedInput extends WorldVeinsWorld {
@@ -368,9 +436,9 @@ export function worldVeinsBySeed(input: WorldVeinsBySeedInput): WorldVeins {
   if (!Number.isInteger(input.depthBoost) || input.depthBoost < 0) {
     throw new RangeError('depth boost must be a whole number, 0 or more');
   }
-  const rules = input.rules ?? null;
+  const rules = checkedWorldRules(input.rules);
   const rawTier = rules?.tierFixed === 0 ? 0 : rawTierOf(input.planetSeed, input.biosphereLevel, input.earth, input.depthBoost);
-  return veinsAt(input.planetSeed, input.planetType, input.biomeKey, rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))), rules);
+  return veinsAt(input.planetSeed, input.planetType, ruledBiomeKey(rules, input.biomeKey), rawTier, asRawTier(Math.min(rawTier, asRawTier(input.tierCap))), rules);
 }
 
 /** Where a world lives: its galaxy and its star's place in it. */
@@ -392,7 +460,7 @@ export function worldVeinsAt(place: WorldVeinsPlace, world: WorldVeinsWorld): Wo
     biosphereLevel: world.biosphereLevel,
     biomeKey: world.biomeKey,
     earth: world.earth,
-    rules: world.rules ?? null,
+    rules: world.rules,
     depthBoost: Math.floor(regionAt(galaxy.x, galaxy.y) / 2),
     tierCap: gradeCapAt({ gal: galaxy, star }),
   });
@@ -424,9 +492,11 @@ function starRawTier(starSeed: number, kind: string): EngineeringRawTier {
 }
 
 /** Build a detached, frozen snapshot from source facts behind a trusted world address. `rules` are a new world
-    type's rules for this world; with none it is the legacy game's world. */
-export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress, rules: WorldOpportunityRules | null = null): WorldOpportunitySnapshot {
+    type's rules for this world, checked as they enter; `NO_WORLD_RULES` is the legacy game's world. The argument is
+    required, so no caller plays the legacy rules by forgetting it. */
+export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress, rulesValue: WorldOpportunityRules | null): WorldOpportunitySnapshot {
   const address = checkedWorldAddress(addressValue);
+  const rules = checkedWorldRules(rulesValue);
   const source = worldSourceFacts(address, rules);
   const veins = worldVeinsAt(address, { ...source, earth: isCanonicalEarthWorldAddress(address), rules });
   const { rawTier, effectiveTier } = veins;

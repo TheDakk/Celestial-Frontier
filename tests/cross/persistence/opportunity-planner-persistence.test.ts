@@ -143,7 +143,7 @@ function stateAfterWorldExtractions(
 describe('@cf/domain-opportunity — canonical world mining planner', () => {
   it('pins the exact E1F pull and binds capability factors to the canonical witness', () => {
     const mars = world({ ...SOL, planet: { seed: 134 } });
-    const opportunity = projectWorldOpportunity(mars);
+    const opportunity = projectWorldOpportunity(mars, null);
     const plain = planWorldMining({
       state: createEngineeringState(),
       opportunity,
@@ -206,7 +206,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
 
   it('uses one ring-capped tier for deposits, reserves, haul quantity, rich strikes, and grades', () => {
     const address = world(RING_CAPPED_WORLD);
-    const opportunity = projectWorldOpportunity(address);
+    const opportunity = projectWorldOpportunity(address, null);
     expect(opportunity).toMatchObject({
       rawTier: expect.any(Number),
       effectiveTier: 5,
@@ -256,9 +256,9 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
 
   it('pins positive biome, rich-strike, cosmic, and exceptional planner outputs', () => {
     const biomeAddress = world(BIOME_VEIN_WORLD);
-    const biomeOpportunity = projectWorldOpportunity(biomeAddress);
+    const biomeOpportunity = projectWorldOpportunity(biomeAddress, null);
     const highAddress = world(TIER_10_COSMIC_EXCEPTIONAL_WORLD);
-    const highOpportunity = projectWorldOpportunity(highAddress);
+    const highOpportunity = projectWorldOpportunity(highAddress, null);
     const run = (
       address: CanonicalCF1WorldAddress,
       opportunity: ReturnType<typeof projectWorldOpportunity>,
@@ -322,7 +322,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
 
   it('computes capped Auto-Extractor settlement internally and ignores a forged settlement lookalike', () => {
     const mars = world({ ...SOL, planet: { seed: 134 } });
-    const opportunity = projectWorldOpportunity(mars);
+    const opportunity = projectWorldOpportunity(mars, null);
     const capabilities = systemCapabilities('autoext');
     const first = planWorldMining({
       state: createEngineeringState(), opportunity, currentSurface: surface(mars), capabilities,
@@ -385,7 +385,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
 
   it('preserves Auto-Extractor remainders and discards matured loads beyond finite reserves', () => {
     const mars = world({ ...SOL, planet: { seed: 134 } });
-    const opportunity = projectWorldOpportunity(mars);
+    const opportunity = projectWorldOpportunity(mars, null);
     const capabilities = systemCapabilities('autoext');
     const anchored = planWorldMining({
       state: createEngineeringState(), opportunity, currentSurface: surface(mars), capabilities,
@@ -455,7 +455,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     const earth = world({ ...SOL, planet: { seed: 133 } });
     const base = {
       state: createEngineeringState(),
-      opportunity: projectWorldOpportunity(mars),
+      opportunity: projectWorldOpportunity(mars, null),
       currentSurface: surface(mars),
       capabilities: emptyCapabilities(),
       activePlay: { activePlayMs: 0 },
@@ -472,9 +472,9 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     expect(planWorldMining({ ...base, currentSurface: surface(biomeWorld) }))
       .toEqual({ status: 'refused', reason: 'current-world-mismatch' });
     expect(planWorldMining({
-      ...base, opportunity: projectWorldOpportunity(earth), currentSurface: surface(earth),
+      ...base, opportunity: projectWorldOpportunity(earth, null), currentSurface: surface(earth),
     })).toEqual({ status: 'refused', reason: 'earth-protected' });
-    const tier14Opportunity = projectWorldOpportunity(tier14);
+    const tier14Opportunity = projectWorldOpportunity(tier14, null);
     expect(tier14Opportunity.rawTier).toBe(14);
     expect(planWorldMining({
       ...base, opportunity: tier14Opportunity, currentSurface: surface(tier14),
@@ -489,7 +489,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     const biomePlan = planWorldMining({
       ...base,
       state: marsPlan.nextState,
-      opportunity: projectWorldOpportunity(biomeWorld),
+      opportunity: projectWorldOpportunity(biomeWorld, null),
       currentSurface: surface(biomeWorld),
       receiptOrdinal: 1,
     });
@@ -624,7 +624,7 @@ describe('@cf/domain-opportunity — canonical stellar skimming planner', () => 
 describe('@cf/domain-opportunity — Deep Scanners reveal without mining authority', () => {
   it('withholds orbit minerals without scan1 and reveals only ordinary plus biome veins with it', () => {
     const address = world(BIOME_VEIN_WORLD);
-    const opportunity = projectWorldOpportunity(address);
+    const opportunity = projectWorldOpportunity(address, null);
     const orbit = system(star({
       galaxy: BIOME_VEIN_WORLD.galaxy,
       star: BIOME_VEIN_WORLD.star,
@@ -687,7 +687,7 @@ describe('@cf/domain-opportunity — Deep Scanners reveal without mining authori
 
   it('reveals full grounded opportunity, grades, and finite progress without becoming action authority', () => {
     const address = world(TIER_10_COSMIC_EXCEPTIONAL_WORLD);
-    const opportunity = projectWorldOpportunity(address);
+    const opportunity = projectWorldOpportunity(address, null);
     const state = stateAfterWorldExtractions(address, 9);
     const revealed = projectWorldMineralReveal({
       state,
@@ -734,7 +734,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const mars = world({ ...SOL, planet: { seed: 134 } });
     const mined = planWorldMining({
       state: createEngineeringState(),
-      opportunity: projectWorldOpportunity(mars),
+      opportunity: projectWorldOpportunity(mars, null),
       currentSurface: surface(mars),
       capabilities: emptyCapabilities(),
       activePlay: { activePlayMs: 100 },
@@ -789,7 +789,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
 describe('@cf/domain-opportunity — canonical witness factor binding', () => {
   it('changes for each one-factor mutation: receipt, clock, cursor, source, capability, HP, assets, and recipe', () => {
     const mars = world({ ...SOL, planet: { seed: 134 } });
-    const marsOpportunity = projectWorldOpportunity(mars);
+    const marsOpportunity = projectWorldOpportunity(mars, null);
     const baseMiningInput = {
       state: createEngineeringState(),
       opportunity: marsOpportunity,
@@ -842,7 +842,7 @@ describe('@cf/domain-opportunity — canonical witness factor binding', () => {
     const other = world(BIOME_VEIN_WORLD);
     const sourceMutation = witnessOf(planWorldMining({
       ...baseMiningInput,
-      opportunity: projectWorldOpportunity(other),
+      opportunity: projectWorldOpportunity(other, null),
       currentSurface: surface(other),
     }));
     const capabilityMutation = witnessOf(planWorldMining({

@@ -62,7 +62,7 @@ describe('an active storm takes 5 off the descent', () => {
     const earth = world(133);
     for (const stormActive of [false, true]) {
       expect(projectDescentApproachV1({
-        address: earth, opportunity: projectWorldOpportunity(earth), capabilities: wearing(),
+        address: earth, opportunity: projectWorldOpportunity(earth, null), capabilities: wearing(),
         waveOffs: createEmptyDescentWaveOffStateV1(), stormActive, reinforcedHull: false, trainingActive: false, alreadyLanded: false,
       })).toMatchObject({ successPercent: 100, safeReason: 'earth', stormActive });
     }
@@ -79,7 +79,7 @@ describe('the storm the descent prompt sees', () => {
     const desert = weatherWorlds.filter((w) => w.env.wx === 'dust');
     const flags = desert.flatMap((w) => [0, 90].map((seconds) => {
       const active = weatherActive(w.input.seed, 'dust', seconds);
-      expect(descentStormActive(w.input, w.input.band, seconds), JSON.stringify(w.input)).toBe(active);
+      expect(descentStormActive(w.input, w.input.band, seconds, null), JSON.stringify(w.input)).toBe(active);
       return active;
     }));
     expect(flags).toContain(true);
@@ -88,7 +88,7 @@ describe('the storm the descent prompt sees', () => {
 
   it('the legacy rule gives the token the legacy prompt saw, at every recorded world and time', () => {
     for (const w of weatherWorlds) for (const a of w.at) {
-      const weather = descentWeather(w.input, w.input.band, a[0], 'legacy');
+      const weather = descentWeather(w.input, w.input.band, a[0], 'legacy', null);
       expect([weather.token, weather.stormActive], JSON.stringify([w.input, a[0]])).toEqual([a[5], a[5] !== null]);
     }
   });
@@ -96,17 +96,17 @@ describe('the storm the descent prompt sees', () => {
   it('the repaired rule gives the token the legacy scene showed, at every recorded world and time, and is the default', () => {
     for (const w of weatherWorlds) for (const a of w.at) {
       const scene = a[3] ? a[2] : null;
-      const weather = descentWeather(w.input, w.input.band, a[0]);
+      const weather = descentWeather(w.input, w.input.band, a[0], 'repaired', null);
       expect([weather.rule, weather.token, weather.stormActive], JSON.stringify([w.input, a[0]])).toEqual(['repaired', scene, scene !== null]);
-      expect(descentStormActive(w.input, w.input.band, a[0])).toBe(scene !== null);
+      expect(descentStormActive(w.input, w.input.band, a[0], null)).toBe(scene !== null);
     }
   });
 
   it('the two rules differ only in deep winter on a rainy world: the prompt says snow where it said rain, and sees the snow it missed', () => {
     const seen = { same: 0, snowForRain: 0, stormOnlyRepaired: 0 };
     for (const w of weatherWorlds) for (const a of w.at) {
-      const legacy = descentWeather(w.input, w.input.band, a[0], 'legacy');
-      const repaired = descentWeather(w.input, w.input.band, a[0], 'repaired');
+      const legacy = descentWeather(w.input, w.input.band, a[0], 'legacy', null);
+      const repaired = descentWeather(w.input, w.input.band, a[0], 'repaired', null);
       const label = JSON.stringify([w.input, a[0]]);
       if (legacy.token === repaired.token) { seen.same++; continue; }
       // Every difference is on a world whose base weather is rain, in deep winter (season below -0.45).
@@ -126,8 +126,8 @@ describe('the storm the descent prompt sees', () => {
     let lower = 0;
     let held = 0;
     for (const w of weatherWorlds) for (const a of w.at) {
-      const legacy = descentWeather(w.input, w.input.band, a[0], 'legacy');
-      const repaired = descentWeather(w.input, w.input.band, a[0]);
+      const legacy = descentWeather(w.input, w.input.band, a[0], 'legacy', null);
+      const repaired = descentWeather(w.input, w.input.band, a[0], 'repaired', null);
       if (legacy.stormActive === repaired.stormActive) continue;
       const before = odds(w.input, legacy.stormActive);
       const after = odds(w.input, repaired.stormActive);
@@ -145,10 +145,10 @@ describe('the storm the descent prompt sees', () => {
       const biome = biomeFor(w.input, w.input.band);
       const anchor = biome && typeof biome.k === 'string' ? biome.k : null;
       for (const rule of ['legacy', 'repaired'] as const) {
-        const weather = descentWeather(w.input, w.input.band, a[0], rule);
+        const weather = descentWeather(w.input, w.input.band, a[0], rule, null);
         expect(weather.event, JSON.stringify([w.input, a[0], rule])).toBe(weatherEventAt(w.input, anchor, weather.token, a[0]));
       }
-      if (descentWeather(w.input, w.input.band, a[0], 'legacy').event !== descentWeather(w.input, w.input.band, a[0]).event) differing++;
+      if (descentWeather(w.input, w.input.band, a[0], 'legacy', null).event !== descentWeather(w.input, w.input.band, a[0], 'repaired', null).event) differing++;
     }
     // In the recorded worlds the repair changes the event somewhere (an ice storm for a tornado, or one of them alone).
     expect(differing).toBeGreaterThan(0);
@@ -175,7 +175,7 @@ describe('the descent prompt', () => {
     expect(prompts.length).toBe(8 * 4 * 2 * 2 * 2);
     const seen = { storm: 0, calm: 0, event: 0, certain: 0 };
     for (const { input, output } of prompts) {
-      const weather = descentWeather(input, input.band, input.seconds, 'legacy');
+      const weather = descentWeather(input, input.band, input.seconds, 'legacy', null);
       const prompt = descentPrompt(input.name, odds(input, weather.stormActive), weather);
       expect([prompt.title, legacyRiskHtml(prompt)], JSON.stringify(input)).toEqual(output);
       if (prompt.stormLine !== null) seen.storm++; else seen.calm++;
@@ -187,7 +187,7 @@ describe('the descent prompt', () => {
 
   it('says "storm in progress −5" when, and only when, the storm is active, under either rule', () => {
     for (const w of weatherWorlds) for (const a of w.at) for (const rule of ['legacy', 'repaired'] as const) {
-      const weather = descentWeather(w.input, w.input.band, a[0], rule);
+      const weather = descentWeather(w.input, w.input.band, a[0], rule, null);
       const prompt = descentPrompt('X', odds(w.input, weather.stormActive), weather);
       expect(prompt.stormLine, JSON.stringify([w.input, a[0], rule])).toBe(weather.stormActive ? 'storm in progress −5' : null);
       expect(prompt.eventLine).toBe(weather.event === null ? null : WEATHER_EVENT_WORD[weather.event]);

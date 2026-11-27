@@ -5,7 +5,7 @@
 import { moonDescriptor } from '@cf/domain-descriptors';
 import { biosphere, civilization } from '@cf/domain-ecology';
 import { biomeComposition } from '@cf/domain-landing';
-import { worldVeinsBySeed } from '@cf/domain-opportunity';
+import { NO_WORLD_RULES, worldVeinsBySeed } from '@cf/domain-opportunity';
 import { mulberry32 } from '@cf/domain-rand';
 import { rarityRoll } from '@cf/domain-speciestraits';
 import { biomeFor } from '@cf/domain-strays';
@@ -54,6 +54,8 @@ export function gameCensusSources(descent: CensusSources['descent']): CensusSour
         earth: system.sol === true && planet.P.seed === 133,
         depthBoost: 0,
         tierCap: 14,
+        // The census of seeds is the legacy record: no type's rules.
+        rules: NO_WORLD_RULES,
       });
       return {
         rawTier: read.rawTier,

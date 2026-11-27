@@ -101,7 +101,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     expect(RAW_TIER_WORLD_FIXTURES.map((fixture) => {
       const { expectedRawTier, ...candidate } = fixture;
       const address = world(candidate);
-      const opportunity = projectWorldOpportunity(address);
+      const opportunity = projectWorldOpportunity(address, null);
       return { expectedRawTier, actualRawTier: opportunity.rawTier, sourceKey: opportunity.key };
     })).toEqual(RAW_TIER_WORLD_FIXTURES.map(({ expectedRawTier }) => ({
       expectedRawTier,
@@ -115,7 +115,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
 describe('@cf/domain-opportunity — Deep Scanners reveal without mining authority', () => {
   it('rejects cloned authorities and mismatched orbit or ground locations', () => {
     const address = world(BIOME_VEIN_WORLD);
-    const opportunity = projectWorldOpportunity(address);
+    const opportunity = projectWorldOpportunity(address, null);
     const orbit = system(star({
       galaxy: BIOME_VEIN_WORLD.galaxy,
       star: BIOME_VEIN_WORLD.star,
@@ -163,7 +163,7 @@ describe('@cf/domain-opportunity — Deep Scanners reveal without mining authori
 
   it('keeps the legacy mineral read model exclusive to proven lifeless non-Earth worlds', () => {
     const lifeless = world(BIOME_VEIN_WORLD);
-    const lifelessOpportunity = projectWorldOpportunity(lifeless);
+    const lifelessOpportunity = projectWorldOpportunity(lifeless, null);
     const scannedState = legacySparseState(['scan1']);
     expect(lifelessOpportunity.source.biosphereKey).toBe('none');
     expect(projectWorldMineralReveal({
@@ -181,7 +181,7 @@ describe('@cf/domain-opportunity — Deep Scanners reveal without mining authori
     })).toMatchObject({ status: 'projected', revealLevel: 'orbit' });
 
     const living = world(TIER_14_LIVING_WORLD);
-    const livingOpportunity = projectWorldOpportunity(living);
+    const livingOpportunity = projectWorldOpportunity(living, null);
     expect(livingOpportunity.source.biosphereKey).not.toBe('none');
     expect(projectWorldMineralReveal({
       state: scannedState,
@@ -198,7 +198,7 @@ describe('@cf/domain-opportunity — Deep Scanners reveal without mining authori
     })).toEqual({ status: 'refused', reason: 'biosphere-present' });
 
     const earth = world({ ...SOL, planet: { seed: 133 } });
-    const earthOpportunity = projectWorldOpportunity(earth);
+    const earthOpportunity = projectWorldOpportunity(earth, null);
     expect(projectWorldMineralReveal({
       state: scannedState,
       opportunity: earthOpportunity,

@@ -50,13 +50,13 @@ export interface WeatherRules {
 }
 
 /** The weather of a descent to this world in its climate band at this time of active play. `rules` are a new world
-    type's for this world; with none it is the legacy game's weather. */
+    type's for this world; null is the legacy game's weather. Required, so no caller forgets them. */
 export function descentWeather(
   planet: { readonly seed: number; readonly type: string },
   band: string,
   activePlaySeconds: number,
-  rule: DescentWeatherRule = 'repaired',
-  rules: WeatherRules | null = null,
+  rule: DescentWeatherRule,
+  rules: WeatherRules | null,
 ): DescentWeather {
   const legacyEnv = worldEnvironment(planet, band);
   const env = rules === null || rules.weather === 'parent' ? legacyEnv
@@ -77,7 +77,7 @@ export function descentStormActive(
   planet: { readonly seed: number; readonly type: string },
   band: string,
   activePlaySeconds: number,
-  rules: WeatherRules | null = null,
+  rules: WeatherRules | null,
 ): boolean {
   return descentWeather(planet, band, activePlaySeconds, 'repaired', rules).stormActive;
 }

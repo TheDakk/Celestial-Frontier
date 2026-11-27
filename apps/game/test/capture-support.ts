@@ -11,13 +11,13 @@ import { SOL, solWorld } from './landing-support';
 import { NOW } from './save-support';
 
 export const rosterFor: CaptureRosterSource = (address, epoch) => {
-  const built = canonicalWorldRoster(address, epoch);
+  const built = canonicalWorldRoster(address, epoch, null);
   return built.ok ? { ok: true, roster: built.roster } : { ok: false, reason: built.reason };
 };
 export const EARTH = solWorld(SOL.earth);
 /** Earth's roster at epoch 0, a row a species. */
 export const earthRows = (): readonly Readonly<Record<string, unknown>>[] => {
-  const built = canonicalWorldRoster(EARTH, 0);
+  const built = canonicalWorldRoster(EARTH, 0, null);
   if (!built.ok) throw new Error(built.reason);
   return built.roster.view.all;
 };

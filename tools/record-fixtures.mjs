@@ -903,7 +903,7 @@ const recorders = {
     const marsAddress = resolveCF1WorldAddress(mars).address;
     const marsSurface = navFromCanonicalCF1Address(marsAddress).state;
     const mine = (state, loadout, activePlayMs, receiptOrdinal) => o.planWorldMining({
-      state, opportunity: o.projectWorldOpportunity(marsAddress), currentSurface: marsSurface,
+      state, opportunity: o.projectWorldOpportunity(marsAddress, o.NO_WORLD_RULES), currentSurface: marsSurface,
       capabilities: capabilitiesOf(LOADOUTS[loadout]), activePlay: { activePlayMs }, receiptOrdinal,
     });
     const receipt = (fn, plan, activePlayMs) => attempt(() => fn(plan, { receiptId: `receipt-${plan.receiptOrdinal}`, activePlayMs }));
@@ -941,7 +941,7 @@ const recorders = {
         }
       }
     }
-    const samples = o.projectFieldSamples({ address: marsAddress, opportunity: o.projectWorldOpportunity(marsAddress), landing: 'first', training: false });
+    const samples = o.projectFieldSamples({ address: marsAddress, opportunity: o.projectWorldOpportunity(marsAddress, o.NO_WORLD_RULES), landing: 'first', training: false });
     const fieldSamples = [500, 90000].map((activePlayMs) => ({ input: { landing: 'first', training: false, activePlayMs }, receipt: plain(attempt(() => o.economyReceiptFromFieldSamplesV1(samples, { receiptId: 'land-receipt-1', activePlayMs }))) }));
     for (const name of ['COSMIC_EPOCH', 'st', 'customNames']) if (name in globalThis) throw new Error(`opportunity: ${name} was left defined`);
     return {

@@ -59,7 +59,6 @@ export interface WorldRules {
   readonly weather: 'parent' | 'none' | WeatherToken;
   /** The worn landing gear tuned to this world: the parent type's family (none for most types), or one named. */
   readonly landFamily: LandingFamily | 'parent';
-  readonly hazard: LegacyType;
   /** 'parent' keeps the legacy life; a rule is given the one value the legacy life roll reads first and the band, and
       gives a life key, or 'parent' where it changes nothing (see play.ts). */
   readonly life: 'parent' | 'none' | ((v: number, band: string) => string);

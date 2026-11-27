@@ -6,7 +6,7 @@ import { descentWaveOffCountV1 } from '@cf/domain-opportunity';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import type { GameEvents } from '../src/events';
 import { stageStarterCharterEventV1 } from '../src/guidance';
-import { createLandingViews, settleLandingV1, type LandingActionOutcomeV1, type LandingSettleDepsV1 } from '../src/landing';
+import { createLandingViews, settleLandingV1, type LandingActionOutcomeV1, type LandingSettleDepsV1, type LandingWorldRulesV1 } from '../src/landing';
 import { worldRulesAt } from '../src/world';
 import { actionPage, type ActionPageOptions } from './action-support';
 import { NOW } from './save-support';
@@ -21,7 +21,7 @@ export function solWorld(seed: number): CanonicalCF1WorldAddress {
 
 /** The world's generated type and climate band. */
 export const worldFacts = (address: CanonicalCF1WorldAddress) => {
-  const { source, effectiveTier, deposits } = projectWorldOpportunity(address);
+  const { source, effectiveTier, deposits } = projectWorldOpportunity(address, null);
   return { planet: { seed: address.planet.seed, type: source.planetType }, band: source.climateBand, effectiveTier, deposits };
 };
 
@@ -41,12 +41,13 @@ export function landingSession(ceiling = 0.05): number {
   throw new Error('no session seed lands');
 }
 
-export async function landingPage(options: ActionPageOptions = {}) {
+/** `rules` is the world system's answer for a world; the game's own unless a test brings rules of its own. */
+export async function landingPage(options: ActionPageOptions = {}, rules: LandingWorldRulesV1 = worldRulesAt) {
   const page = await actionPage(options);
   const views = createLandingViews();
   const arrived: Array<GameEvents['landing:arrived']> = [];
   page.bus.on('landing:arrived', (event) => { arrived.push(event); });
-  const deps: LandingSettleDepsV1 = { door: page.loop, bus: page.bus, views, charters: stageStarterCharterEventV1, rules: worldRulesAt };
+  const deps: LandingSettleDepsV1 = { door: page.loop, bus: page.bus, views, charters: stageStarterCharterEventV1, rules };
   const land = (address: CanonicalCF1WorldAddress, worldName = 'A world'): Promise<LandingActionOutcomeV1> =>
     settleLandingV1(deps, { address, worldName, codecNow: NOW });
   return {

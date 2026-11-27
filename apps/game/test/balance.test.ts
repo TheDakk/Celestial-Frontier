@@ -2,8 +2,8 @@
 // sample, on real addressed worlds with bare hands. The legacy baselines are the figures the accepted designs of the
 // new world types argue from; a new type's measure is held within 15% of the best existing world's.
 import { describe, expect, it } from 'vitest';
-import type { WorldOpportunityRules } from '@cf/domain-opportunity';
-import { BALANCE_MARGIN, bestExisting, simulate, withinMargin, type WorldMeasure } from '@cf/domain-worldkinds';
+import { DEPOSIT_PROFILES, projectWorldOpportunity, type WorldOpportunityRules } from '@cf/domain-opportunity';
+import { BALANCE_MARGIN, bestExisting, simulate, withinMargin, type WorldMeasure } from './balance-sim';
 import { addressedWorlds, balanceSources, lifelessOf } from './balance-support';
 import { wearing } from './descent-support';
 
@@ -56,6 +56,24 @@ describe('the legacy baselines are the designs\' figures', () => {
     expect(bestClass.cls).toBe('4 lines, 1 precious');
     expect(bestWorlds.length).toBeGreaterThanOrEqual(5);
     expect(Math.abs(bestAt(null) - 1.30)).toBeLessThan(0.08);
+  });
+
+  it('with bare hands at tier 0 a pull hauls 5 units over a type\'s list, so each material pays 5 over the list\'s length: the eight types\' figures', () => {
+    // Ocean and terran have no list of their own and mine the rocky one (LEGACY 21261).
+    const figure = (type: string): number => 5 / DEPOSIT_PROFILES[projectWorldOpportunity(lifelessOf(all, type)[0]!.address, null).depositProfile].length;
+    const figures = Object.fromEntries(TYPES.map((type) => [type, Math.round(figure(type) * 100) / 100]));
+    expect(figures).toEqual({ gas: 1, ice: 0.71, rocky: 0.5, desert: 0.63, lava: 0.63, venus: 0.83, terran: 0.5, ocean: 0.5 });
+    expect(Object.fromEntries(TYPES.map((type) => [type, of(type).measured[0]!.snapshot.depositProfile])))
+      .toEqual({ gas: 'gas', ice: 'ice', rocky: 'rocky', desert: 'desert', lava: 'lava', venus: 'venus', terran: 'rocky', ocean: 'rocky' });
+    // The dwarf list the designs give N4 has six, 0.83; with two more, 0.63, equal to desert.
+    expect([5 / DEPOSIT_PROFILES.dwarf.length, 5 / (DEPOSIT_PROFILES.dwarf.length + 2)].map((value) => Math.round(value * 100) / 100)).toEqual([0.83, 0.63]);
+    // Where enough worlds were mined the simulation agrees: the mean of a list's materials is that figure, within 0.06.
+    for (const type of ['gas', 'rocky', 'lava', 'venus']) {
+      const list: readonly string[] = DEPOSIT_PROFILES[of(type).measured[0]!.snapshot.depositProfile];
+      const mean = list.reduce((sum, id) => sum + (of(type).unitsAPull.get(id) ?? 0), 0) / list.length;
+      expect(of(type).mined, type).toBeGreaterThanOrEqual(18);
+      expect(Math.abs(mean - figure(type)), type).toBeLessThan(0.06);
+    }
   });
 
   it('a gas giant lands at 58 in the mean, within 2; a tier 0 reserve is 420 to 799 pulls; a first landing there samples 3 Stardust', () => {

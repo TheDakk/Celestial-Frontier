@@ -1,4 +1,4 @@
-/* The balance simulation: what worlds pay, measured by the game's own rules. Each world is given its address and the
+/* Test equipment: the balance simulation. What worlds pay, measured by the game's own rules. Each world is given its address and the
    rules it plays by (a new type's, or none); its snapshot, its pulls and its first landing's sample are the
    opportunity package's own (projectWorldOpportunity, planWorldMining, projectFieldSamples), and its landing and its
    animals are read by the app's descent odds and roster, handed in. No formula of the game is written here again.

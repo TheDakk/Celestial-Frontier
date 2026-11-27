@@ -3,13 +3,14 @@
    weather, the snapshot, the roster and the card. */
 import { climateBand } from '@cf/domain-surveyphrases';
 import { systemFor } from '@cf/domain-worldgen';
-import { playRulesFor, type PlanetNumbers, type PlayRules, type WorldSwitches } from '@cf/domain-worldkinds';
+import { WORLD_TYPES, playRulesFor, type PlanetNumbers, type PlayRules, type WorldTypeDefinition } from '@cf/domain-worldkinds';
 import type { CanonicalCF1WorldAddress } from '@cf/scene';
 import { WORLD_SWITCHES } from './switches';
 
-export function worldRulesAt(address: CanonicalCF1WorldAddress, switches: WorldSwitches = WORLD_SWITCHES): PlayRules | null {
+/** `types` are the world types asked; the game's own unless a test brings its own. The switches are always the game's. */
+export function worldRulesAt(address: CanonicalCF1WorldAddress, types: readonly WorldTypeDefinition[] = WORLD_TYPES): PlayRules | null {
   const system = systemFor(address.star.seed);
   const planet = system.planets[address.planet.ordinal];
   if (planet === undefined || planet.P.seed !== address.planet.seed) throw new Error('canonical world address no longer matches its source system');
-  return playRulesFor({ P: planet.P as PlanetNumbers, band: climateBand(planet.P, system, planet.orb), sol: system.sol === true }, switches);
+  return playRulesFor({ P: planet.P as PlanetNumbers, band: climateBand(planet.P, system, planet.orb), sol: system.sol === true }, WORLD_SWITCHES, types);
 }

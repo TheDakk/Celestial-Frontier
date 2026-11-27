@@ -21,5 +21,3 @@ export { effectiveWorld, legacyFactsOf } from './effective.js';
 export { playRulesFor } from './play.js';
 export type { PlayRules } from './play.js';
 export type { EffectiveWorld, LegacyWorldFacts } from './effective.js';
-export { BALANCE_MARGIN, bestExisting, meanUnitsAPull, simulate, withinMargin } from './balance.js';
-export type { BalanceResult, BalanceSources, BalanceWorld, WorldMeasure } from './balance.js';

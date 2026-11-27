@@ -33,7 +33,7 @@ import {
   type CompanionMissionSealedV1,
   type CompanionMissionTypeV1,
 } from '@cf/domain-acquisition/missions-internal';
-import { projectWorldOpportunity } from '@cf/domain-opportunity';
+import { NO_WORLD_RULES, projectWorldOpportunity } from '@cf/domain-opportunity';
 import { combatOpenEncounterMemberIdsV1 } from './combat-open-encounter.js';
 import { companionLegacyCodexIdV1 } from './friendly-duel.js';
 import { prepareArc5OwnershipV2Successor, readArc5OwnershipMigration } from './arc5-ownership-migration.js';
@@ -169,7 +169,9 @@ export function arc5MissionWorldsV1(extensions: V5Extensions): readonly Readonly
   for (const record of identity.state.records) {
     if (!record.landed) continue;
     let deposits: readonly string[] = [];
-    try { deposits = Object.freeze([...projectWorldOpportunity(record.address).deposits]); } catch { deposits = Object.freeze([]); }
+    // The legacy list, said outright: this package cannot see the game's world switches. The first new world type that
+    // changes a world's deposits must hand this call that world's rules.
+    try { deposits = Object.freeze([...projectWorldOpportunity(record.address, NO_WORLD_RULES).deposits]); } catch { deposits = Object.freeze([]); }
     out.push(Object.freeze({ worldKey: record.key, worldName: (record.name ?? `World ${record.address.planet.seed}`).slice(0, 128), deposits }));
   }
   return Object.freeze(out);

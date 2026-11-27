@@ -225,7 +225,6 @@ export interface DescentApproachPolicyV1 extends DescentOdds {
   readonly schema: typeof DESCENT_POLICY_SCHEMA_V1;
   readonly key: CF1WorldKey;
   readonly address: CanonicalCF1WorldAddress;
-  readonly opportunityIdentity: string;
   readonly capabilityFingerprint: string;
   readonly planetType: string;
   /** What the odds were worked out from; the roll is worked out from the same. */
@@ -347,7 +346,6 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
     schema: DESCENT_POLICY_SCHEMA_V1,
     key: input.address.key,
     address: input.address,
-    opportunityIdentity: input.opportunity.schema + ':' + input.opportunity.key,
     capabilityFingerprint: input.capabilities.fingerprint,
     planetType,
     oddsInput,

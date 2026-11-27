@@ -185,7 +185,7 @@ describe('@cf/persistence — fresh Arc 2 engineering loadout bridge', () => {
     if (!nav.ok || nav.state.mode !== 'surface') return;
     const appFacingPlan = planWorldMining({
       state: createEngineeringState(),
-      opportunity: projectWorldOpportunity(mars.address),
+      opportunity: projectWorldOpportunity(mars.address, null),
       currentSurface: nav.state,
       capabilities: read.capabilities,
       activePlay: { activePlayMs: 10 },

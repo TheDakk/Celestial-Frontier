@@ -38,7 +38,7 @@ function policy(
 ) {
   return projectDescentApproachV1({
     address,
-    opportunity: projectWorldOpportunity(address),
+    opportunity: projectWorldOpportunity(address, null),
     capabilities: options.capabilities ?? wearing(),
     waveOffs: options.waveOffs ?? createEmptyDescentWaveOffStateV1(),
     stormActive: options.stormActive ?? false,
@@ -395,7 +395,7 @@ describe('the descent policy over its authorities', () => {
     const mars = world(134);
     const input = {
       address: mars,
-      opportunity: projectWorldOpportunity(mars),
+      opportunity: projectWorldOpportunity(mars, null),
       capabilities: wearing(),
       waveOffs: createEmptyDescentWaveOffStateV1(),
       stormActive: false, reinforcedHull: false, trainingActive: false, alreadyLanded: false,

@@ -51,7 +51,7 @@ describe('@cf/domain-opportunity — registered economy source model', () => {
     if (!navResult.ok || navResult.state.mode !== 'surface') throw new Error('surface fixture failed');
     const plan = planWorldMining({
       state: createEngineeringState(),
-      opportunity: projectWorldOpportunity(addressResult.address),
+      opportunity: projectWorldOpportunity(addressResult.address, null),
       currentSurface: navResult.state,
       capabilities: capabilities(),
       activePlay: { activePlayMs: 1_000 },
@@ -109,7 +109,7 @@ describe('@cf/domain-opportunity — registered economy source model', () => {
     if (!worldResult.ok) throw new Error(worldResult.reason);
     const samples = projectFieldSamples({
       address: worldResult.address,
-      opportunity: projectWorldOpportunity(worldResult.address),
+      opportunity: projectWorldOpportunity(worldResult.address, null),
       landing: 'first',
       training: false,
     });

@@ -56,7 +56,7 @@ describe('the full world roster', () => {
 
   it('builds the real Earth roster with detached, deeply frozen names', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
-    const result = canonicalWorldRoster(earth, 0);
+    const result = canonicalWorldRoster(earth, 0, null);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(result.roster.address).toBe(earth);
@@ -98,7 +98,7 @@ describe('the full world roster', () => {
     });
 
     for (const ecologyEpoch of [0, 1, 3, 7, 10_000]) {
-      const result = canonicalWorldRoster(earth, ecologyEpoch);
+      const result = canonicalWorldRoster(earth, ecologyEpoch, null);
       expect(result.ok, `epoch ${ecologyEpoch}`).toBe(true);
       if (!result.ok) continue;
       expect(result.roster.ecologyEpoch).toBe(ecologyEpoch);
@@ -141,7 +141,7 @@ describe('the full world roster', () => {
     ]);
 
     for (const [ecologyEpoch, expectation] of expected) {
-      const result = canonicalWorldRoster(earth, ecologyEpoch);
+      const result = canonicalWorldRoster(earth, ecologyEpoch, null);
       expect(result.ok).toBe(true);
       if (!result.ok) continue;
       const vagrants = result.roster.view.all.slice(starterCount);
@@ -162,13 +162,13 @@ describe('the full world roster', () => {
     const barren = systemScene(SOL.seed).planets.find((planet) => planet.seed !== 133);
     expect(barren).toBeDefined();
     const address = addressOf(HOME_GALAXY, SOL, barren!.seed);
-    const result = canonicalWorldRoster(address, 0);
+    const result = canonicalWorldRoster(address, 0, null);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(result.roster.biosphereKey).toBe('none');
     expect(result.roster.ecologyEpoch).toBe(0);
     expect(result.roster.view).toEqual({ all: [], total: 0 });
-    const later = canonicalWorldRoster(address, 9);
+    const later = canonicalWorldRoster(address, 9, null);
     expect(later.ok).toBe(true);
     if (later.ok) {
       expect(later.roster.view).toEqual(result.roster.view);
@@ -181,7 +181,7 @@ describe('the full world roster', () => {
     const scene = systemScene(FOREIGN_STAR.seed);
     const results = scene.planets.map((planet) => canonicalWorldRoster(
       addressOf(FOREIGN_GALAXY, FOREIGN_STAR, planet.seed),
-      0,
+      0, null
     ));
     expect(results.every((result) => result.ok)).toBe(true);
     expect(results.some((result) => result.ok && result.roster.biosphereKey !== 'earth')).toBe(true);
@@ -202,7 +202,7 @@ describe('the full world roster', () => {
       set: () => { writes++; throw new Error('ambient epoch write'); },
     })) throw new Error('could not install roster ambient-epoch tripwire');
     try {
-      const result = canonicalWorldRoster(earth, 7);
+      const result = canonicalWorldRoster(earth, 7, null);
       expect(result.ok).toBe(true);
       if (result.ok) expect(result.roster.ecologyEpoch).toBe(7);
       expect(reads).toBe(0);
@@ -236,7 +236,7 @@ const NEIGHBOURS = {
 
 describe('the roster of a world, against the recorded rosters', () => {
   it('Earth at epoch 0 is the 19 recorded genomes, named, each marked cradle', () => {
-    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 0);
+    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 0, null);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(recorded.earth[0]).toHaveLength(19);
@@ -244,7 +244,7 @@ describe('the roster of a world, against the recorded rosters', () => {
   });
 
   it('Earth at epoch 3 is the 19 plus Polychaete Worm and Sea Snail', () => {
-    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 3);
+    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 3, null);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     const all = result.roster.view.all;
@@ -259,7 +259,7 @@ describe('the roster of a world, against the recorded rosters', () => {
       const address = addressOf(HOME_GALAXY, NEIGHBOURS[name].star, NEIGHBOURS[name].planet);
       expect(recorded[name]).toHaveLength(RECORDED_EPOCHS.length);
       RECORDED_EPOCHS.forEach((epoch, index) => {
-        const result = canonicalWorldRoster(address, epoch);
+        const result = canonicalWorldRoster(address, epoch, null);
         expect(result.ok, `${name} at epoch ${epoch}`).toBe(true);
         if (!result.ok) return;
         expect(recorded[name][index]!.length).toBeGreaterThan(0);
@@ -269,7 +269,7 @@ describe('the roster of a world, against the recorded rosters', () => {
   });
 
   it('the roster is frozen: a write to a row throws', () => {
-    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 0);
+    const result = canonicalWorldRoster(addressOf(HOME_GALAXY, SOL, 133), 0, null);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     const row = result.roster.view.all[0] as Row;

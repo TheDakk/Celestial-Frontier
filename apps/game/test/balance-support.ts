@@ -3,7 +3,7 @@
 import type { EngineeringCapabilitySnapshot } from '@cf/domain-loot';
 import { projectWorldOpportunity, type WorldOpportunityRules } from '@cf/domain-opportunity';
 import { systemFor } from '@cf/domain-worldgen';
-import type { BalanceSources, BalanceWorld } from '@cf/domain-worldkinds';
+import type { BalanceSources, BalanceWorld } from './balance-sim';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import { loadRecorded } from '../../../tests/support/v1-recorded.js';
 import { descentOdds } from '../src/landing/descent-policy';
@@ -49,7 +49,7 @@ export function balanceSources(capabilities: EngineeringCapabilitySnapshot): Bal
 /** The worlds of one planet type that hold no life, so they can be mined. */
 export function lifelessOf(worlds: readonly BalanceWorld[], type: string, rules: WorldOpportunityRules | null = null): BalanceWorld[] {
   return worlds.filter((world) => {
-    const { planetType, biosphereKey } = projectWorldOpportunity(world.address).source;
+    const { planetType, biosphereKey } = projectWorldOpportunity(world.address, null).source;
     return planetType === type && biosphereKey === 'none';
   }).map((world) => ({ ...world, rules }));
 }

@@ -41,8 +41,8 @@ export function productionCensusSources(places: readonly CensusPlace[]): CensusS
     const resolved = resolveCF1WorldAddress({ galaxy: place.galaxy, star: place.star, planet: { seed: planet.P.seed } });
     if (!resolved.ok) throw new Error(`a world did not resolve: ${resolved.reason}`);
     const address = resolved.address;
-    const snapshot = projectWorldOpportunity(address);
-    const roster = canonicalWorldRoster(address, 0);
+    const snapshot = projectWorldOpportunity(address, null);
+    const roster = canonicalWorldRoster(address, 0, null);
     if (!roster.ok) throw new Error(`a roster was refused: ${roster.message}`);
     const policy = projectDescentApproachV1({
       address, opportunity: snapshot, capabilities, waveOffs, stormActive: false, reinforcedHull: false, trainingActive: false, alreadyLanded: false,

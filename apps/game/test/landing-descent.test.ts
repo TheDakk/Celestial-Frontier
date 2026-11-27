@@ -115,7 +115,7 @@ describe('the storm of the moment', () => {
   const { planet, band } = worldFacts(venus);
   /** The first weather spell, in seconds, whose storm is as asked. */
   const spell = (storm: boolean): number => {
-    for (let seconds = 45; seconds < 90 * 400; seconds += 90) if (descentStormActive(planet, band, seconds) === storm) return seconds;
+    for (let seconds = 45; seconds < 90 * 400; seconds += 90) if (descentStormActive(planet, band, seconds, null) === storm) return seconds;
     throw new Error(`Venus has no spell with storm ${storm}`);
   };
 

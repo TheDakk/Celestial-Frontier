@@ -86,7 +86,7 @@ const WORLD_INPUT = Object.freeze({
 const resolved = resolveCF1WorldAddress(WORLD_INPUT);
 if (!resolved.ok) throw new Error(`combat persistence world failed: ${resolved.reason}`);
 const WORLD = resolved.address;
-const OPPORTUNITY = projectWorldOpportunity(WORLD);
+const OPPORTUNITY = projectWorldOpportunity(WORLD, null);
 const DEFENDER = makeGenome(999, 'fauna', 0.5);
 const projectedEncounter = projectGuardianPrimeEncounterV1({
   world: WORLD,
@@ -728,7 +728,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 2456455053 },
     });
     if (!guardianWorld.ok) throw new Error(guardianWorld.reason);
-    const opportunity = projectWorldOpportunity(guardianWorld.address);
+    const opportunity = projectWorldOpportunity(guardianWorld.address, null);
     const guardian = projectGuardianPrimeEncounterV1({
       world: guardianWorld.address,
       descriptor: { worldType: opportunity.source.planetType },
@@ -819,7 +819,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 2456455053 },
     });
     if (!guardianWorld.ok) throw new Error(guardianWorld.reason);
-    const guardianOpportunity = projectWorldOpportunity(guardianWorld.address);
+    const guardianOpportunity = projectWorldOpportunity(guardianWorld.address, null);
     const guardian = projectGuardianPrimeEncounterV1({
       world: guardianWorld.address,
       descriptor: { worldType: guardianOpportunity.source.planetType },
@@ -946,7 +946,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 3933259603 },
     });
     if (!titanWorld.ok) throw new Error(titanWorld.reason);
-    const opportunity = projectWorldOpportunity(titanWorld.address);
+    const opportunity = projectWorldOpportunity(titanWorld.address, null);
     const titan = projectGuardianPrimeEncounterV1({
       world: titanWorld.address,
       descriptor: { worldType: opportunity.source.planetType },
@@ -1018,7 +1018,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 2456455053 },
     });
     if (!captureWorld.ok) throw new Error(captureWorld.reason);
-    const captureOpportunity = projectWorldOpportunity(captureWorld.address);
+    const captureOpportunity = projectWorldOpportunity(captureWorld.address, null);
     const capturedGuardian = projectGuardianPrimeEncounterV1({
       world: captureWorld.address,
       descriptor: { worldType: captureOpportunity.source.planetType },
@@ -1062,7 +1062,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 3386214749 },
     });
     if (!challengerWorld.ok) throw new Error(challengerWorld.reason);
-    const challengerOpportunity = projectWorldOpportunity(challengerWorld.address);
+    const challengerOpportunity = projectWorldOpportunity(challengerWorld.address, null);
     const challenger = projectGuardianPrimeEncounterV1({
       world: challengerWorld.address,
       descriptor: { worldType: challengerOpportunity.source.planetType },
@@ -1153,7 +1153,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       planet: { seed: 3933259603 },
     });
     if (!resolvedWorld.ok) throw new Error(resolvedWorld.reason);
-    const opportunity = projectWorldOpportunity(resolvedWorld.address);
+    const opportunity = projectWorldOpportunity(resolvedWorld.address, null);
     const titan = projectGuardianPrimeEncounterV1({
       world: resolvedWorld.address,
       descriptor: { worldType: opportunity.source.planetType },

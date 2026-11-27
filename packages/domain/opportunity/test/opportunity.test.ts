@@ -90,8 +90,8 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
   it('derives registered CF1 world facts and keeps raw tiers 10 and 14 distinct from display rarity', () => {
     const tier10Address = world(TIER_10_WORLD);
     const tier14Address = world(TIER_14_WORLD);
-    const tier10 = projectWorldOpportunity(tier10Address);
-    const tier14 = projectWorldOpportunity(tier14Address);
+    const tier10 = projectWorldOpportunity(tier10Address, null);
+    const tier14 = projectWorldOpportunity(tier14Address, null);
 
     expect(tier10.key).toBe(tier10Address.key);
     expect(tier10.source).toMatchObject({
@@ -140,7 +140,7 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
       },
       planet: { seed: 4_260_876_100 },
     });
-    const snapshot = projectWorldOpportunity(address);
+    const snapshot = projectWorldOpportunity(address, null);
 
     expect(snapshot.rawTier).toBeGreaterThan(5);
     expect(snapshot.effectiveTier).toBe(5);
@@ -153,8 +153,8 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
     const earthAddress = world({ ...SOL, planet: { seed: 133 } });
     const marsAddress = world({ ...SOL, planet: { seed: 134 } });
     const solAddress = star(SOL);
-    const earth = projectWorldOpportunity(earthAddress);
-    const mars = projectWorldOpportunity(marsAddress);
+    const earth = projectWorldOpportunity(earthAddress, null);
+    const mars = projectWorldOpportunity(marsAddress, null);
     const sol = projectStarOpportunity(solAddress);
 
     expect(earth.rawTier).toBe(5);
@@ -185,7 +185,7 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
     expect(isStarOpportunitySnapshot(sol)).toBe(true);
     expect(isStarOpportunitySnapshot({ ...sol })).toBe(false);
 
-    expect(() => projectWorldOpportunity({ ...marsAddress } as CanonicalCF1WorldAddress))
+    expect(() => projectWorldOpportunity({ ...marsAddress } as CanonicalCF1WorldAddress, null))
       .toThrow(/registered canonical CF1 world address/);
     expect(() => projectStarOpportunity({ ...solAddress } as CanonicalCF1StarAddress))
       .toThrow(/registered canonical CF1 star address/);
@@ -193,7 +193,7 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
 
   it('pins the positive biome-vein path independently of ordinary and rare veins', () => {
     const address = world(BIOME_VEIN_WORLD);
-    const snapshot = projectWorldOpportunity(address);
+    const snapshot = projectWorldOpportunity(address, null);
     expect(snapshot).toMatchObject({
       key: address.key,
       source: { biomeKey: 'carbon', biosphereKey: 'none' },

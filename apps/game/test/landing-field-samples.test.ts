@@ -6,7 +6,7 @@ import { FIELD_SAMPLE_CARGO_MAX, FIELD_SAMPLE_STARDUST_MAX, deriveFieldSamples }
 import { SOL, solWorld } from './landing-support';
 
 const mars = solWorld(SOL.mars);
-const world = projectWorldOpportunity(mars);
+const world = projectWorldOpportunity(mars, null);
 const [first, second] = world.deposits as readonly [string, string];
 const source = () => ({ cargo: [[first, 4]] as Array<[string, number]>, essence: 7, stats: { essenceEarned: 20, landings: 2, surveys: 9 } });
 const derive = (over: Partial<Parameters<typeof deriveFieldSamples>[0]> = {}) =>
@@ -31,7 +31,7 @@ describe('first-landing field samples', () => {
 
   it('none on Earth, in training, on a world landed on before, or on one the save knows as landed by its seed', () => {
     const earth = solWorld(SOL.earth);
-    expect(derive({ address: earth, opportunity: projectWorldOpportunity(earth) })).toEqual({ kind: 'unchanged', reason: 'canonical-earth' });
+    expect(derive({ address: earth, opportunity: projectWorldOpportunity(earth, null) })).toEqual({ kind: 'unchanged', reason: 'canonical-earth' });
     expect(derive({ training: true })).toEqual({ kind: 'unchanged', reason: 'training' });
     expect(derive({ landing: 'repeat' })).toEqual({ kind: 'unchanged', reason: 'repeat' });
     expect(derive({ landing: 'unresolved-already-landed' })).toEqual({ kind: 'unchanged', reason: 'unresolved-already-landed' });
@@ -47,6 +47,6 @@ describe('first-landing field samples', () => {
   });
 
   it('facts of another world are refused', () => {
-    expect(() => derive({ opportunity: projectWorldOpportunity(solWorld(SOL.venus)) })).toThrow();
+    expect(() => derive({ opportunity: projectWorldOpportunity(solWorld(SOL.venus), null) })).toThrow();
   });
 });

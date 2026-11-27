@@ -47,7 +47,6 @@ const RULES: WorldRules = {
   landing: null,
   weather: 'parent',
   landFamily: 'gas',
-  hazard: 'gas',
   life: 'parent',
   deposits: 'parent',
   reserveMul: 1,

@@ -25,7 +25,6 @@ const RULES: WorldRules = {
   landing: null,
   weather: 'none',
   landFamily: 'gas',
-  hazard: 'gas',
   life: 'none',
   deposits: ['H', 'He', 'CH4', 'NH3', 'He3', 'H2O', 'N'],
   trickle: { material: 'C', chance: 0.25, ownsStrike: false },

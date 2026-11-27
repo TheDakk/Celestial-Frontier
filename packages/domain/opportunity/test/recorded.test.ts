@@ -104,7 +104,7 @@ function remnant() {
 const mine = (state: EngineeringStateV2, loadout: string, activePlay: unknown, receiptOrdinal: number) => {
   const m = mars();
   return planWorldMining({
-    state, opportunity: projectWorldOpportunity(m.address), currentSurface: m.surface,
+    state, opportunity: projectWorldOpportunity(m.address, null), currentSurface: m.surface,
     capabilities: capabilitiesOf(fixture.loadouts[loadout]!), activePlay: activePlay as never, receiptOrdinal,
   });
 };
@@ -136,7 +136,7 @@ const skimmingAnswer = ({ input }: OpportunityFixture['skimming'][number]) => {
 };
 const fieldSamplesAnswer = ({ input }: OpportunityFixture['fieldSamples'][number]) => {
   const m = mars();
-  const samples = projectFieldSamples({ address: m.address, opportunity: projectWorldOpportunity(m.address), landing: input.landing, training: input.training });
+  const samples = projectFieldSamples({ address: m.address, opportunity: projectWorldOpportunity(m.address, null), landing: input.landing, training: input.training });
   return plain({ input, receipt: attempt(() => economyReceiptFromFieldSamplesV1(samples as never, { receiptId: 'land-receipt-1', activePlayMs: input.activePlayMs })) });
 };
 const replayAll = () => ({
@@ -255,7 +255,7 @@ describe('@cf/domain-opportunity — injected clock and receipt', () => {
     expect(receipt(economyReceiptFromWorldMiningV1, mined, undefined)).toEqual(unbounded);
     expect(receipt(economyReceiptFromStellarSkimV1, skimmed, undefined)).toEqual(unbounded);
     const m = mars();
-    const samples = projectFieldSamples({ address: m.address, opportunity: projectWorldOpportunity(m.address), landing: 'first', training: false });
+    const samples = projectFieldSamples({ address: m.address, opportunity: projectWorldOpportunity(m.address, null), landing: 'first', training: false });
     expect(attempt(() => economyReceiptFromFieldSamplesV1(samples as never, { receiptId: 'land-receipt-1', activePlayMs: undefined } as never))).toEqual(unbounded);
     expect(attempt(() => economyReceiptFromWorldMiningV1(mined as never, { receiptId: 'no-clock' } as never)))
       .toEqual({ throws: 'economy source receipt options have unknown or missing fields' });

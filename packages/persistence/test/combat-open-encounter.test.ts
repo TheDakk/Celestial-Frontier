@@ -88,7 +88,7 @@ const resolved = resolveCF1WorldAddress({
 });
 if (!resolved.ok) throw new Error(`combat party world failed: ${resolved.reason}`);
 const WORLD = resolved.address;
-const OPPORTUNITY = projectWorldOpportunity(WORLD);
+const OPPORTUNITY = projectWorldOpportunity(WORLD, null);
 const projectedEncounter = projectGuardianPrimeEncounterV1({
   world: WORLD,
   descriptor: { worldType: OPPORTUNITY.source.planetType },

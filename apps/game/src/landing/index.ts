@@ -31,7 +31,7 @@ export type {
   DescentSafeReasonV1,
 } from './descent-policy';
 export { descentStormActive, descentWeather } from './descent-weather';
-export type { DescentWeather, DescentWeatherRule } from './descent-weather';
+export type { DescentWeather, DescentWeatherRule, WeatherRules } from './descent-weather';
 export {
   DESCENT_PROMPT_BUTTONS, DESCENT_STORM_LINE, descentPrompt, descentTierLabel, throughTheFireNotice, waveOffNotice,
 } from './descent-prompt';

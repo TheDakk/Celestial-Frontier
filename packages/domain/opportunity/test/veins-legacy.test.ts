@@ -45,7 +45,7 @@ describe('a world\'s veins against the legacy game\'s, where the seeded census c
       // A depth boost of 14 lifts any roll to the summit; the cap then sets the tier asked for.
       const lines = gridSeeds(input.tier, input.type).map((seed) => {
         const answer = answerOf(worldVeinsBySeed({
-          planetSeed: seed, planetType: input.type, biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 14, tierCap: input.tier,
+          planetSeed: seed, planetType: input.type, biosphereLevel: 'No known life', biomeKey: null, earth: false, depthBoost: 14, tierCap: input.tier, rules: null
         }));
         hits.answer(input.type, { ...answer, rawTier: input.tier });
         return veinLine(seed, input.type, { ...answer, rawTier: input.tier });
@@ -67,7 +67,7 @@ describe('a world\'s veins against the legacy game\'s, where the seeded census c
         for (const place of VEIN_PLACES) for (const level of VEIN_LIFE) {
           const answer = answerOf(worldVeinsAt(
             { galaxy: place.gal, star: place.star },
-            { planetSeed: seed, planetType: type, biosphereLevel: level, biomeKey: null, earth: false },
+            { planetSeed: seed, planetType: type, biosphereLevel: level, biomeKey: null, earth: false, rules: null },
           ));
           hits.answer(type, answer);
           hits.hit('place', `${place.name}: ${answer.tier < answer.rawTier ? 'capped' : 'not capped'}`);
